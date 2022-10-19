@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2022-10-19 12:12+0000\n"
-"Last-Translator: Tony Silva <tonysilvatsd@gmail.com>\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
 "Language: pt\n"
@@ -222,21 +222,19 @@ msgid "Unable to Launch Desktop File: "
 msgstr "Não é possível iniciar o ficheiro: "
 
 #: libcore/File.vala:1112
-#, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
-msgstr "Ficheiro vazio"
+msgstr "Vazio"
 
 #: libcore/File.vala:1114
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i item"
+msgstr[1] "%i itens"
 
 #: libcore/File.vala:1121
 msgid "----"
-msgstr ""
+msgstr "----"
 
 #: libcore/File.vala:1128
 #, c-format
@@ -671,8 +669,6 @@ msgstr ""
 "consulte os detalhes abaixo."
 
 #: libcore/marlin-file-operations.c:842
-#, fuzzy
-#| msgid "Cannot move file to trash.  Try to delete it?"
 msgid "Cannot move file to trash. Try to delete it?"
 msgstr "Não foi possível mover o ficheiro para o lixo. Tentar eliminá-lo?"
 
@@ -1176,13 +1172,11 @@ msgstr "Propriedades"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr ""
+msgstr "Ejetar"
 
 #: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
-msgstr "Remover"
+msgstr "Remover com segurança"
 
 #: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2025
 msgid "Add to Bookmarks"
@@ -1344,10 +1338,9 @@ msgid "Emptying Trash"
 msgstr "A esvaziar o lixo"
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
-#| msgid "Unable to mount '%s'"
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "Não foi possível montar '%s'"
+msgstr "Não foi possível desmontar '%s'"
 
 #: libcore/FileOperations/MountUtils.vala:52
 #, c-format
