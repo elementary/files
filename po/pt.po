@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
-"PO-Revision-Date: 2022-10-19 12:16+0000\n"
-"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+"PO-Revision-Date: 2022-10-19 12:18+0000\n"
+"Last-Translator: Tony Silva <tonysilvatsd@gmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
 "Language: pt\n"
@@ -2070,7 +2070,7 @@ msgstr ""
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Não formatado ou sem mídia"
 
 #: src/View/Sidebar/NetworkListBox.vala:121
 msgid "Entire Network"
