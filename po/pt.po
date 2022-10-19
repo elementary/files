@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
 "PO-Revision-Date: 2022-10-19 12:13+0000\n"
-"Last-Translator: Tony Silva <tonysilvatsd@gmail.com>\n"
+"Last-Translator: David Lopes <david.cantiga.lopes@gmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
 "Language: pt\n"
@@ -1726,10 +1726,8 @@ msgid "Invert Selection"
 msgstr "Inverter Seleção"
 
 #: src/View/AbstractDirectoryView.vala:2063
-#, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
-msgstr "Restaurar tudo"
+msgstr "Desselecionar Tudo"
 
 #: src/View/AbstractDirectoryView.vala:2071
 msgid "Cut"
