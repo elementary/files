@@ -41,9 +41,17 @@
 
 #include "pantheon-files-core.h"
 
-typedef void (* MarlinOpCallback)        (gpointer    callback_data);
+typedef struct _CommonJob CommonJob;
+typedef struct _CopyMoveJob CopyMoveJob;
+typedef struct _DeleteJob DeleteJob;
+typedef struct _CreateJob CreateJob;
+typedef struct _SourceInfo SourceInfo;
+typedef struct _TransferInfo TransferInfo;
 
-typedef struct {
+typedef void (* MarlinOpCallback)      (gpointer   callback_data);
+typedef void (* CountProgressCallback) (CommonJob *job, SourceInfo *source_info);
+
+struct _CommonJob {
     GTimer *time;
     GtkWindow *parent_window;
     int inhibit_cookie;
@@ -58,24 +66,24 @@ typedef struct {
     gboolean keep_all_newest;
     gboolean delete_all;
     FilesUndoActionData *undo_redo_data;
-} CommonJob;
+};
 
-typedef struct {
+struct _CopyMoveJob {
     CommonJob common;
     gboolean is_move;
     GList *files;
     GFile *destination;
     GHashTable *debuting_files;
-} CopyMoveJob;
+};
 
-typedef struct {
+struct _DeleteJob {
     CommonJob common;
     GList *files;
     gboolean try_trash;
     gboolean user_cancel;
-} DeleteJob;
+};
 
-typedef struct {
+struct _CreateJob {
     CommonJob common;
     GFile *dest_dir;
     char *filename;
@@ -84,7 +92,7 @@ typedef struct {
     char *src_data;
     int length;
     GFile *created_file;
-} CreateJob;
+};
 
 typedef enum {
     OP_KIND_COPY,
@@ -92,20 +100,21 @@ typedef enum {
     OP_KIND_DELETE
 } OpKind;
 
-typedef struct {
+struct _SourceInfo {
     int num_files;
     goffset num_bytes;
     int num_files_since_progress;
     OpKind op;
-} SourceInfo;
+    CountProgressCallback count_callback;
+};
 
-typedef struct {
+struct _TransferInfo {
     int num_files;
     goffset num_bytes;
     OpKind op;
     guint64 last_report_time;
     int last_reported_files_left;
-} TransferInfo;
+};
 
 #define SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE 15
 //#define NSEC_PER_SEC 1000000000
@@ -117,6 +126,7 @@ typedef struct {
 
 static void scan_sources (GList *files,
                           SourceInfo *source_info,
+                          CountProgressCallback count_callback,
                           CommonJob *job,
                           OpKind kind);
 
@@ -670,6 +680,28 @@ skip:
 }
 
 static void
+report_delete_count_progress (DeleteJob *job,
+                              SourceInfo *source_info)
+{
+    CommonJob *common = COMMON_JOB(job);
+    char *s;
+    gchar *num_bytes_format;
+
+    num_bytes_format = g_format_size (source_info->num_bytes);
+    /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
+    /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+    /// So this represents something like "Preparing to delete 100 files (200 MB)"
+    /// The order in which %'d and %s appear can be changed by using the right positional specifier.
+    s = g_strdup_printf (ngettext("Preparing to delete %'d file (%s)",
+                                  "Preparing to delete %'d files (%s)",
+                                  source_info->num_files),
+                         source_info->num_files, num_bytes_format);
+    g_free (num_bytes_format);
+    pf_progress_info_take_details (common->progress, s);
+    pf_progress_info_pulse_progress (common->progress);
+}
+
+static void
 delete_files (DeleteJob *del_job, GList *files, int *files_skipped)
 {
     GList *l;
@@ -685,6 +717,7 @@ delete_files (DeleteJob *del_job, GList *files, int *files_skipped)
 
     scan_sources (files,
                   &source_info,
+                  report_delete_count_progress,
                   job,
                   OP_KIND_DELETE);
     if (job_aborted (job)) {
@@ -1060,15 +1093,14 @@ marlin_file_operations_delete_finish (GAsyncResult  *result,
 }
 
 static void
-report_count_progress (CommonJob *job,
-                       SourceInfo *source_info)
+report_copy_move_count_progress (CopyMoveJob *job,
+                                 SourceInfo *source_info)
 {
+    CommonJob *common = COMMON_JOB(job);
     char *s;
     gchar *num_bytes_format;
 
-    switch (source_info->op) {
-    default:
-    case OP_KIND_COPY:
+    if (!job->is_move) {
         num_bytes_format = g_format_size (source_info->num_bytes);
         /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
         /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1078,9 +1110,7 @@ report_count_progress (CommonJob *job,
                                       "Preparing to copy %'d files (%s)",
                                       source_info->num_files),
                              source_info->num_files, num_bytes_format);
-        g_free (num_bytes_format);
-        break;
-    case OP_KIND_MOVE:
+    } else {
         num_bytes_format = g_format_size (source_info->num_bytes);
         /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
         /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1090,24 +1120,11 @@ report_count_progress (CommonJob *job,
                                       "Preparing to move %'d files (%s)",
                                       source_info->num_files),
                              source_info->num_files, num_bytes_format);
-        g_free (num_bytes_format);
-        break;
-    case OP_KIND_DELETE:
-        num_bytes_format = g_format_size (source_info->num_bytes);
-        /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
-        /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
-        /// So this represents something like "Preparing to delete 100 files (200 MB)"
-        /// The order in which %'d and %s appear can be changed by using the right positional specifier.
-        s = g_strdup_printf (ngettext("Preparing to delete %'d file (%s)",
-                                      "Preparing to delete %'d files (%s)",
-                                      source_info->num_files),
-                             source_info->num_files, num_bytes_format);
-        g_free (num_bytes_format);
-        break;
     }
 
-    pf_progress_info_take_details (job->progress, s);
-    pf_progress_info_pulse_progress (job->progress);
+    g_free (num_bytes_format);
+    pf_progress_info_take_details (common->progress, s);
+    pf_progress_info_pulse_progress (common->progress);
 }
 
 static void
@@ -1119,7 +1136,7 @@ count_file (GFileInfo *info,
     source_info->num_bytes += g_file_info_get_size (info);
 
     if (source_info->num_files_since_progress++ > 100) {
-        report_count_progress (job, source_info);
+        source_info->count_callback (job, source_info);
         source_info->num_files_since_progress = 0;
     }
 }
@@ -1380,6 +1397,7 @@ retry:
 static void
 scan_sources (GList *files,
               SourceInfo *source_info,
+              CountProgressCallback count_callback,
               CommonJob *job,
               OpKind kind)
 {
@@ -1388,8 +1406,8 @@ scan_sources (GList *files,
 
     memset (source_info, 0, sizeof (SourceInfo));
     source_info->op = kind;
-
-    report_count_progress (job, source_info);
+    source_info->count_callback = count_callback;
+    source_info->count_callback (job, source_info);
 
     for (l = files; l != NULL && !job_aborted (job); l = l->next) {
         file = l->data;
@@ -1400,7 +1418,7 @@ scan_sources (GList *files,
     }
 
     /* Make sure we report the final count */
-    report_count_progress (job, source_info);
+    source_info->count_callback (job, source_info);
 }
 
 static void
@@ -3178,6 +3196,7 @@ copy_job (GTask *task,
     pf_progress_info_start (common->progress);
     scan_sources (job->files,
                   &source_info,
+                  report_copy_move_count_progress,
                   common,
                   OP_KIND_COPY);
     if (job_aborted (common)) {
@@ -3678,6 +3697,7 @@ move_job (GTask *task,
     fallback_files = get_files_from_fallbacks (fallbacks);
     scan_sources (fallback_files,
                   &source_info,
+                  report_copy_move_count_progress,
                   common,
                   OP_KIND_MOVE);
 
