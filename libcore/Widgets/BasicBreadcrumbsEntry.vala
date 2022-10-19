@@ -335,7 +335,10 @@ namespace Files.View.Chrome {
                 }
 
                 // Do not lose entry text if another window is focused
-                if (((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
+                // Reset if window has top level focus or is iconified
+                var top_level = (Gtk.Window)(get_toplevel ());
+                if (top_level.has_toplevel_focus ||
+                     (top_level.get_window ().get_state () & Gdk.WindowState.FOCUSED) > 0) {
                     reset ();
                 }
 
