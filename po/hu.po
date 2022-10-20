@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
-"PO-Revision-Date: 2022-10-06 16:31+0000\n"
+"PO-Revision-Date: 2022-10-20 13:57+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -1216,7 +1216,7 @@ msgstr "Kuka"
 
 #: libcore/Resources.vala:70
 msgid "Recent"
-msgstr "Előzmények"
+msgstr "Legutóbbiak"
 
 #: libcore/Resources.vala:71
 msgid "MTP"
@@ -1877,7 +1877,7 @@ msgstr "Adatvédelmi mód bekapcsolva"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr "Nincsenek korábban használt fájlok"
+msgstr "Nincsenek mostanában használt fájlok"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
@@ -1897,7 +1897,7 @@ msgstr "A kuka üres"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
-msgstr "Nincsenek előzmények"
+msgstr "Nincsenek mostanában használt fájlok"
 
 #: src/View/Slot.vala:34
 msgid "Access Denied"
@@ -2019,7 +2019,7 @@ msgstr "Saját mappa megjelenítése"
 
 #: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
-msgstr "A nemrég használt fájlok megtekintése"
+msgstr "A mostanában használt fájlok megjelenítése"
 
 #: src/View/Sidebar/BookmarkListBox.vala:171
 msgid "Open the Trash"
@@ -2194,7 +2194,7 @@ msgstr "Ezen mappa alatt"
 
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
-msgstr "Nemrég használt"
+msgstr "Mostanában használt"
 
 #~ msgid "Paste Link"
 #~ msgstr "Hivatkozás beillesztése"
