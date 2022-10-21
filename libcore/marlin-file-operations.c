@@ -125,6 +125,7 @@ static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
 
 #define op_job_new(__type, parent_window) ((__type *)(init_common (sizeof(__type), parent_window)))
+#define COMMON_JOB(obj) (&obj->common)
 
 static gpointer
 init_common (gsize job_size,
@@ -936,15 +937,13 @@ delete_job (GTask *task,
     GList *l;
     GFile *file;
     gboolean confirmed;
-    CommonJob *common;
+    CommonJob *common = COMMON_JOB(job);
     gboolean must_confirm_delete_in_trash;
     gboolean must_confirm_delete;
     int files_skipped;
     int job_files;
 
-    common = (CommonJob *)job;
-
-    pf_progress_info_start (job->common.progress);
+    pf_progress_info_start (common->progress);
 
     to_trash_files = NULL;
     to_delete_files = NULL;
@@ -1020,10 +1019,12 @@ marlin_file_operations_delete (GList               *files,
 
     GTask *task;
     DeleteJob *job;
+    CommonJob *common;
 
     /* TODO: special case desktop icon link files ... */
 
     job = op_job_new (DeleteJob, parent_window);
+    common = COMMON_JOB(job);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->try_trash = try_trash;
     job->user_cancel = FALSE;
@@ -1035,9 +1036,9 @@ marlin_file_operations_delete (GList               *files,
     }
 
     if (try_trash) {
-        job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
+        common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
         GFile* src_dir = g_file_get_parent (files->data);
-        files_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+        files_undo_action_data_set_src_dir (common->undo_redo_data, src_dir);
     }
 
     task = g_task_new (NULL, cancellable, callback, user_data);
@@ -3098,7 +3099,7 @@ copy_files (CopyMoveJob *job,
             SourceInfo *source_info,
             TransferInfo *transfer_info)
 {
-    CommonJob *common;
+    CommonJob *common = COMMON_JOB(job);
     GList *l;
     GFile *src;
     gboolean same_fs;
@@ -3114,7 +3115,6 @@ copy_files (CopyMoveJob *job,
     dest_fs_type = NULL;
     readonly_source_fs = FALSE;
 
-    common = &job->common;
     report_copy_progress (job, source_info, transfer_info);
 
     /* Query the source dir, not the file because if its a symlink we'll follow it */
@@ -3183,19 +3183,14 @@ copy_job (GTask *task,
           gpointer task_data,
           GCancellable *cancellable)
 {
-    CopyMoveJob *job;
-    CommonJob *common;
+    CopyMoveJob *job = task_data;
+    CommonJob *common = COMMON_JOB(job);
     SourceInfo source_info;
     TransferInfo transfer_info;
-    char *dest_fs_id;
+    char *dest_fs_id = NULL;
     GFile *dest;
 
-    job = task_data;
-    common = &job->common;
-
-    dest_fs_id = NULL;
-
-    pf_progress_info_start (job->common.progress);
+    pf_progress_info_start (common->progress);
     scan_sources (job->files,
                   &source_info,
                   common,
@@ -3213,7 +3208,7 @@ copy_job (GTask *task,
         dest = g_file_get_parent (job->files->data);
     }
 
-    verify_destination (&job->common,
+    verify_destination (common,
                         dest,
                         &dest_fs_id,
                         source_info.num_bytes);
@@ -3222,7 +3217,7 @@ copy_job (GTask *task,
         goto aborted;
     }
 
-    g_timer_start (job->common.time);
+    g_timer_start (common->time);
 
     memset (&transfer_info, 0, sizeof (transfer_info));
     copy_files (job,
@@ -3246,7 +3241,10 @@ marlin_file_operations_copy (GList               *files,
 {
     GTask *task;
     CopyMoveJob *job;
+    CommonJob *common;
+
     job = op_job_new (CopyMoveJob, parent_window);
+    common = COMMON_JOB(job);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
@@ -3254,11 +3252,11 @@ marlin_file_operations_copy (GList               *files,
     inhibit_power_manager ((CommonJob *)job, _("Copying Files"));
 
     // Start UNDO-REDO
-    job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_COPY, g_list_length(files));
+    common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_COPY, g_list_length(files));
     GFile* src_dir = g_file_get_parent (files->data);
-    files_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    files_undo_action_data_set_src_dir (common->undo_redo_data, src_dir);
     g_object_ref (target_dir);
-    files_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
+    files_undo_action_data_set_dest_dir (common->undo_redo_data, target_dir);
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
@@ -3279,10 +3277,9 @@ marlin_file_operations_copy_finish (GAsyncResult  *result,
 static void
 report_move_progress (CopyMoveJob *move_job, int total, int left)
 {
-    CommonJob *job;
+    CommonJob *job = COMMON_JOB(move_job);
     gchar *s, *dest_basename;
 
-    job = (CommonJob *)move_job;
     dest_basename = files_file_utils_custom_basename_from_file (move_job->destination);
     /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
     /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -3344,18 +3341,13 @@ move_file_prepare (CopyMoveJob *move_job,
 {
     GFile *dest, *new_dest;
     GError *error;
-    CommonJob *job;
-    gboolean overwrite;
+    CommonJob *job = COMMON_JOB(move_job);
+    gboolean overwrite = FALSE;
     char *primary, *secondary, *details;
     int response;
     GFileCopyFlags flags;
     MoveFileCopyFallback *fallback;
-    gboolean handled_invalid_filename;
-
-    overwrite = FALSE;
-    handled_invalid_filename = *dest_fs_type != NULL;
-
-    job = (CommonJob *)move_job;
+    gboolean handled_invalid_filename= *dest_fs_type != NULL;
 
     dest = get_target_file (src, dest_dir, *dest_fs_type, same_fs);
 
@@ -3574,14 +3566,12 @@ move_files_prepare (CopyMoveJob *job,
                     char **dest_fs_type,
                     GList **fallbacks)
 {
-    CommonJob *common;
+    CommonJob *common = COMMON_JOB(job);
     GList *l;
     GFile *src;
     gboolean same_fs;
     int i;
     int total, left;
-
-    common = &job->common;
 
     total = left = g_list_length (job->files);
 
@@ -3620,14 +3610,13 @@ move_files (CopyMoveJob *job,
             SourceInfo *source_info,
             TransferInfo *transfer_info)
 {
-    CommonJob *common;
+    CommonJob *common = COMMON_JOB(job);
     GList *l;
     GFile *src;
     gboolean same_fs;
     int i;
     gboolean skipped_file;
     MoveFileCopyFallback *fallback;
-    common = &job->common;
 
     report_copy_progress (job, source_info, transfer_info);
 
@@ -3674,25 +3663,17 @@ move_job (GTask *task,
           gpointer task_data,
           GCancellable *cancellable)
 {
-    CopyMoveJob *job;
-    CommonJob *common;
-    GList *fallbacks;
+    CopyMoveJob *job = task_data;
+    CommonJob *common = COMMON_JOB(job);
+    GList *fallbacks = NULL;
     SourceInfo source_info;
     TransferInfo transfer_info;
-    char *dest_fs_id;
-    char *dest_fs_type;
+    char *dest_fs_id = NULL;
+    char *dest_fs_type = NULL;
     GList *fallback_files;
 
-    job = task_data;
-    common = &job->common;
-
-    dest_fs_id = NULL;
-    dest_fs_type = NULL;
-
-    fallbacks = NULL;
-
-    pf_progress_info_start (job->common.progress);
-    verify_destination (&job->common,
+    pf_progress_info_start (common->progress);
+    verify_destination (common,
                         job->destination,
                         &dest_fs_id,
                         -1);
@@ -3721,7 +3702,7 @@ move_job (GTask *task,
         goto aborted;
     }
 
-    verify_destination (&job->common,
+    verify_destination (common,
                         job->destination,
                         NULL,
                         source_info.num_bytes);
@@ -3754,8 +3735,10 @@ marlin_file_operations_move (GList               *files,
 {
     GTask *task;
     CopyMoveJob *job;
+    CommonJob *common;
 
     job = op_job_new (CopyMoveJob, parent_window);
+    common = COMMON_JOB(job);
     job->is_move = TRUE;
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
@@ -3764,14 +3747,14 @@ marlin_file_operations_move (GList               *files,
     inhibit_power_manager ((CommonJob *)job, _("Moving Files"));
     // Start UNDO-REDO
     if (g_file_has_uri_scheme (g_list_first(files)->data, "trash")) {
-        job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_RESTOREFROMTRASH, g_list_length(files));
+        common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_RESTOREFROMTRASH, g_list_length(files));
     } else {
-        job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_MOVE, g_list_length(files));
+        common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_MOVE, g_list_length(files));
     }
     GFile* src_dir = g_file_get_parent (files->data);
-    files_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    files_undo_action_data_set_src_dir (common->undo_redo_data, src_dir);
     g_object_ref (target_dir);
-    files_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
+    files_undo_action_data_set_dest_dir (common->undo_redo_data, target_dir);
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
@@ -3978,21 +3961,16 @@ link_job (GTask *task,
           gpointer task_data,
           GCancellable *cancellable)
 {
-    CopyMoveJob *job;
-    CommonJob *common;
+    CopyMoveJob *job = task_data;
+    CommonJob *common = COMMON_JOB(job);
     GFile *src;
-    char *dest_fs_type;
+    char *dest_fs_type = NULL;
     int total, left;
     int i;
     GList *l;
 
-    job = task_data;
-    common = &job->common;
-
-    dest_fs_type = NULL;
-
-    pf_progress_info_start (job->common.progress);
-    verify_destination (&job->common,
+    pf_progress_info_start (common->progress);
+    verify_destination (common,
                         job->destination,
                         NULL,
                         -1);
@@ -4035,18 +4013,20 @@ marlin_file_operations_link (GList               *files,
 {
     GTask *task;
     CopyMoveJob *job;
+    CommonJob *common;
 
     job = op_job_new (CopyMoveJob, parent_window);
+    common = COMMON_JOB(job);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     // Start UNDO-REDO
-    job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATELINK, g_list_length(files));
+    common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATELINK, g_list_length(files));
     GFile* src_dir = g_file_get_parent (files->data);
-    files_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    files_undo_action_data_set_src_dir (common->undo_redo_data, src_dir);
     g_object_ref (target_dir);
-    files_undo_action_data_set_dest_dir (job->common.undo_redo_data, target_dir);
+    files_undo_action_data_set_dest_dir (common->undo_redo_data, target_dir);
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
@@ -4073,18 +4053,20 @@ marlin_file_operations_duplicate (GList               *files,
 {
     GTask *task;
     CopyMoveJob *job;
+    CommonJob *common;
 
     job = op_job_new (CopyMoveJob, parent_window);
+    common = COMMON_JOB(job);
     job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = NULL;
     job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
 
     // Start UNDO-REDO
-    job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_DUPLICATE, g_list_length(files));
+    common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_DUPLICATE, g_list_length(files));
     GFile* src_dir = g_file_get_parent (files->data);
-    files_undo_action_data_set_src_dir (job->common.undo_redo_data, src_dir);
+    files_undo_action_data_set_src_dir (common->undo_redo_data, src_dir);
     g_object_ref (src_dir);
-    files_undo_action_data_set_dest_dir (job->common.undo_redo_data, src_dir);
+    files_undo_action_data_set_dest_dir (common->undo_redo_data, src_dir);
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
@@ -4212,9 +4194,9 @@ set_permissions_job (GIOSchedulerJob *io_job,
     SetPermissionsJob *job = user_data;
     CommonJob *common;
 
-    common = (CommonJob *)job;
+    common = COMMON_JOB(job);
 
-    pf_progress_info_start (job->common.progress);
+    pf_progress_info_start (common->progress);
     pf_progress_info_set_status (common->progress, _("Setting permissions"));
     set_permissions_file (job, job->file, NULL);
 
@@ -4238,8 +4220,10 @@ marlin_file_set_permissions_recursive (const char *directory,
                                        gpointer  callback_data)
 {
     SetPermissionsJob *job;
+    CommonJob *common;
 
     job = op_job_new (SetPermissionsJob, NULL);
+    common = COMMON_JOB(job);
     job->file = g_file_new_for_uri (directory);
     job->file_permissions = file_permissions;
     job->file_mask = file_mask;
@@ -4249,10 +4233,10 @@ marlin_file_set_permissions_recursive (const char *directory,
     job->done_callback_data = callback_data;
 
     // Start UNDO-REDO
-    job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_RECURSIVESETPERMISSIONS, 1);
+    common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_RECURSIVESETPERMISSIONS, 1);
     g_object_ref (job->file);
-    files_undo_action_data_set_dest_dir (job->common.undo_redo_data, job->file);
-    files_undo_action_data_set_recursive_permissions(job->common.undo_redo_data, file_permissions, file_mask, dir_permissions, dir_mask);
+    files_undo_action_data_set_dest_dir (common->undo_redo_data, job->file);
+    files_undo_action_data_set_recursive_permissions(common->undo_redo_data, file_permissions, file_mask, dir_permissions, dir_mask);
     // End UNDO-REDO
 
     g_io_scheduler_push_job (set_permissions_job,
@@ -4509,8 +4493,8 @@ create_job (GTask *task,
             gpointer task_data,
             GCancellable *cancellable)
 {
-    CreateJob *job;
-    CommonJob *common;
+    CreateJob *job = task_data;
+    CommonJob *common = COMMON_JOB(job);
     int count;
     GFile *dest;
     char *filename, *filename2, *new_filename;
@@ -4526,10 +4510,7 @@ create_job (GTask *task,
     gboolean handled_invalid_filename;
     int max_length;
 
-    job = task_data;
-    common = &job->common;
-
-    pf_progress_info_start (job->common.progress);
+    pf_progress_info_start (common->progress);
 
     handled_invalid_filename = FALSE;
 
@@ -4784,6 +4765,7 @@ marlin_file_operations_new_folder (GtkWidget           *parent_view,
 {
     GTask *task;
     CreateJob *job;
+    CommonJob *common;
     GtkWindow *parent_window;
 
     parent_window = NULL;
@@ -4792,11 +4774,12 @@ marlin_file_operations_new_folder (GtkWidget           *parent_view,
     }
 
     job = op_job_new (CreateJob, parent_window);
+    common = COMMON_JOB(job);
     job->dest_dir = g_object_ref (parent_dir);
     job->make_dir = TRUE;
 
     // Start UNDO-REDO
-    job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATEFOLDER, 1);
+    common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATEFOLDER, 1);
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
@@ -4825,6 +4808,7 @@ marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
 {
     GTask *task;
     CreateJob *job;
+    CommonJob *common;
     GtkWindow *parent_window = NULL;
 
     if (parent_view) {
@@ -4832,6 +4816,7 @@ marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
     }
 
     job = op_job_new (CreateJob, parent_window);
+    common = COMMON_JOB(job);
     job->dest_dir = g_object_ref (parent_dir);
     job->filename = g_strdup (target_filename);
 
@@ -4840,7 +4825,7 @@ marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
     }
 
     // Start UNDO-REDO
-    job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATEFILEFROMTEMPLATE, 1);
+    common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATEFILEFROMTEMPLATE, 1);
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
@@ -4870,6 +4855,7 @@ marlin_file_operations_new_file (GtkWidget           *parent_view,
 {
     GTask *task;
     CreateJob *job;
+    CommonJob *common;
     GtkWindow *parent_window = NULL;
 
     if (parent_view) {
@@ -4877,13 +4863,14 @@ marlin_file_operations_new_file (GtkWidget           *parent_view,
     }
 
     job = op_job_new (CreateJob, parent_window);
+    common = COMMON_JOB(job);
     job->dest_dir = g_file_new_for_uri (parent_dir);
     job->src_data = g_memdup (initial_contents, length);
     job->length = length;
     job->filename = g_strdup (target_filename);
 
     // Start UNDO-REDO
-    job->common.undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATEEMPTYFILE, 1);
+    common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATEEMPTYFILE, 1);
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);

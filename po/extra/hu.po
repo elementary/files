@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 21:44+0000\n"
-"PO-Revision-Date: 2022-10-06 16:31+0000\n"
+"PO-Revision-Date: 2022-10-20 13:57+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/extra/hu/"
 ">\n"
@@ -294,7 +294,7 @@ msgstr "Több fájlcsoport egyidejű megnyitása javítva"
 
 #: data/io.elementary.files.appdata.xml.in.in:124
 msgid "Allow dropping bookmark directly below the Recent bookmark"
-msgstr ""
+msgstr "Egyenesen a Legutóbbiak könyvjelző alá is helyezhetők könyvjelzők"
 
 #: data/io.elementary.files.appdata.xml.in.in:125
 msgid "Do not show unusable drop target below the Trash bookmark"
