@@ -30,6 +30,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"redo", action_redo},
         {"bookmark", action_bookmark},
         {"toggle-sort-reversed", action_toggle_sort_reversed},
+        {"toggle-sort-directories-first", action_toggle_sort_directories_first},
         {"find", action_find, "s"},
         {"edit-path", action_edit_path},
         {"tab", action_tab, "s"},
@@ -108,6 +109,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.find::", {"<Ctrl>F"});
             marlin_app.set_accels_for_action ("win.edit-path", {"<Ctrl>L"});
             marlin_app.set_accels_for_action ("win.toggle-sort-reversed", {"<Alt>0"});
+            marlin_app.set_accels_for_action ("win.toggle-sort-directories-first", {"<Alt>minus"});
             marlin_app.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
             marlin_app.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             marlin_app.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
@@ -942,6 +944,22 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
 
         view_widget.sort_reversed = !view_widget.sort_reversed;
+    }
+
+    private void action_toggle_sort_directories_first () {
+        if (current_container.view  == null ||
+            !(current_container.view is Files.Slot)) {
+
+            debug ("current container view is null or not Slot");
+            return;
+        }
+
+        var view_widget = ((Files.Slot)current_container.view).view_widget;
+        if (view_widget == null) {
+            return;
+        }
+
+        view_widget.sort_directories_first = !view_widget.sort_directories_first;
     }
 
     private void action_undo (GLib.SimpleAction action, GLib.Variant? param) {

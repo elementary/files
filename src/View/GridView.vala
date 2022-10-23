@@ -118,6 +118,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         notify["sort-reversed"].connect (() => {
             sorter.set_sort_func (file_compare_func);
         });
+        notify["sort-directories-first"].connect (() => {
+            sorter.set_sort_func (file_compare_func);
+        });
     }
 
     public override void add_file (Files.File file) {
