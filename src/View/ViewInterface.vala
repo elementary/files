@@ -46,7 +46,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void file_changed (Files.File file) {}
     public virtual void add_file (Files.File file) {}
     public virtual void clear () {}
-
+    public virtual void set_renaming (bool is_renaming) {}
 
     public abstract uint get_selected_files (out List<Files.File> selected_files);
 

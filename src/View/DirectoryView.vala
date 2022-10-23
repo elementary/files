@@ -27,7 +27,6 @@ namespace Files {
         public Files.ViewInterface view_widget { get; construct; }
         public Gtk.Stack stack { get; construct; }
 
-        private Gtk.ScrolledWindow scrolled_window;
         private enum ClickZone {
             EXPANDER,
             HELPER,
@@ -218,17 +217,9 @@ namespace Files {
                 path_change_request (uri, Files.OpenFlag.DEFAULT, false);
             });
 
-            scrolled_window = new Gtk.ScrolledWindow () {
-                can_focus = true,
-                hscrollbar_policy = Gtk.PolicyType.AUTOMATIC,
-                vscrollbar_policy = Gtk.PolicyType.AUTOMATIC
-            };
-
-            scrolled_window.set_child (view_widget);
-
             stack = new Gtk.Stack ();
             stack.add_named (new Gtk.Label ("EMPTY"), "empty-label");
-            stack.add_child (scrolled_window);
+            stack.add_named (view_widget, "view-widget");
             stack.visible_child_name = "empty-label";
             stack.set_parent (this);
 
@@ -268,8 +259,7 @@ namespace Files {
             notify["renaming"].connect (() => {
                 // Suppress ability to scroll with the scrollbar while renaming
                 // No obvious way to disable it so just hide it
-                var vscroll_bar = scrolled_window.get_vscrollbar ();
-                vscroll_bar.visible = !renaming;
+                view_widget.set_renaming (renaming);
             });
 
             var prefs = (Files.Preferences.get_default ());
@@ -1041,9 +1031,8 @@ return null;
             // assert (file != null);
 //             if (file != null) {
             if (file != null) {
-warning ("adding file");
                 view_widget.add_file (file);
-                stack.visible_child = scrolled_window;
+                stack.visible_child_name = "view-widget";
             }
 //                 view_widget show_and_select_file (file, false, true); /* Always select files added to view after initial load */
 //                 handle_free_space_change ();
@@ -1054,7 +1043,7 @@ warning ("adding file");
 
         private void on_directory_file_loaded (Directory dir, Files.File file) {
             view_widget.add_file (file); /* Do not select files added during initial load */
-            stack.visible_child = scrolled_window;
+            stack.visible_child_name = "view-widget";
 //             /* no freespace change signal required */
         }
 

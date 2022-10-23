@@ -30,6 +30,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     public signal void selection_changed ();
 
+    private Gtk.ScrolledWindow scrolled_window;
+
     ~GridView () {
         while (this.get_last_child () != null) {
             this.get_last_child ().unparent ();
@@ -38,6 +40,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     construct {
         set_layout_manager (new Gtk.BinLayout ());
+        scrolled_window = new Gtk.ScrolledWindow () {
+            hexpand = true,
+            vexpand = true
+        };
+
         model = new GLib.ListStore (typeof (Files.File));
         var sorter = new Gtk.StringSorter (null); //TODO Provide expression to get strings from File
         var sorted_model = new Gtk.SortListModel (model, sorter);
@@ -87,7 +94,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             }
         });
 
-        grid_view.set_parent (this);
+        scrolled_window.child = grid_view;
+        scrolled_window.set_parent (this);
     }
 
     public override void add_file (Files.File file) {
@@ -117,6 +125,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         Files.icon_view_settings.set_enum ("zoom-level", zoom);
 
         return (ZoomLevel)zoom;
+    }
+
+    public override void set_renaming (bool is_renaming) {
+        var vscroll_bar = scrolled_window.get_vscrollbar ();
+        vscroll_bar.visible = !is_renaming;
     }
 
     public override void show_and_select_file (Files.File file, bool show, bool select) {}
