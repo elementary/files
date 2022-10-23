@@ -22,6 +22,15 @@ public class Slot : Files.AbstractSlot {
     private ViewMode mode;
     private int preferred_column_width;
     private Files.DirectoryView? dir_view = null;
+    public Files.ViewInterface? view_widget {
+        get {
+            if (dir_view != null) {
+                return dir_view.view_widget;
+            } else {
+                return null;
+            }
+        }
+    }
 
     private uint reload_timeout_id = 0;
     private uint path_change_timeout_id = 0;

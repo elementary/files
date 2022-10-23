@@ -39,8 +39,6 @@ public interface Files.ViewInterface : Gtk.Widget {
     ) {}
     public virtual void invert_selection () {}
     public virtual void set_show_hidden_files (bool show_hidden_files) {}
-    public virtual void set_sort (Files.SortType? sort_type, Gtk.SortType reverse) {}
-    public virtual void get_sort (out string sort_type, out string sort_order) {}
     public virtual void start_renaming_file (Files.File file) {}
     public virtual void select_all () {}
     public virtual void unselect_all () {}

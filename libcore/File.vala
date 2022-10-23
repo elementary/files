@@ -66,8 +66,8 @@ public class Files.File : GLib.Object {
     public int pix_scale = 1;
     public int width = 0;
     public int height = 0;
-    public int sort_type = Files.SortType.FILENAME;
-    public Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
+    public Files.SortType sort_type = Files.SortType.FILENAME;
+    public bool sort_reversed = false;
     public GLib.FileType file_type;
     public bool is_hidden = false;
     public bool is_directory = false;
@@ -455,8 +455,9 @@ public class Files.File : GLib.Object {
             }
 
             if (info.has_attribute ("metadata::marlin-sort-reversed")) {
-                sort_order = info.get_attribute_string ("metadata::marlin-sort-reversed") == "true" ?
-                                                        Gtk.SortType.DESCENDING : Gtk.SortType.ASCENDING;
+                sort_reversed = bool.parse (
+                    info.get_attribute_string ("metadata::marlin-sort-reversed")
+                );
             }
         }
 

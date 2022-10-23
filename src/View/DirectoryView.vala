@@ -24,6 +24,7 @@ namespace Files {
         static construct {
             set_layout_manager_type (typeof (Gtk.BinLayout));
         }
+
         public Files.ViewInterface view_widget { get; construct; }
         public Gtk.Stack stack { get; construct; }
 
@@ -1097,9 +1098,11 @@ return null;
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
                 if (in_recent) {
-                    view_widget.set_sort (Files.SortType.MODIFIED, Gtk.SortType.DESCENDING);
+                    view_widget.sort_type = Files.SortType.MODIFIED;
+                    view_widget.sort_reversed = false;
                 } else if (slot.directory.file.info != null) {
-                    view_widget.set_sort (slot.directory.file.sort_type, slot.directory.file.sort_order);
+                    view_widget.sort_type = slot.directory.file.sort_type;
+                    view_widget.sort_reversed = slot.directory.file.sort_reversed;
                 }
             } else {
                 is_writable = false;

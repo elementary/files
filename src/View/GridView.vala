@@ -111,6 +111,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         scrolled_window.child = grid_view;
         scrolled_window.set_parent (this);
+
+        notify["sort-type"].connect (() => {
+            sorter.set_sort_func (file_compare_func);
+        });
     }
 
     public override void add_file (Files.File file) {
@@ -174,11 +178,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public override void invert_selection () {}
 
     public override void set_show_hidden_files (bool show_hidden_files) {}
-    public override void set_sort (Files.SortType? col_name, Gtk.SortType reverse) {}
-    public override void get_sort (out string sort_column_id, out string sort_order) {}
     public override void start_renaming_file (Files.File file) {}
-
-
     public override void select_all () { grid_view.model.select_all (); }
     public override void unselect_all () { grid_view.model.unselect_all (); }
     public override void file_icon_changed (Files.File file) {}

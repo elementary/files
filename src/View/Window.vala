@@ -35,6 +35,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"go-to", action_go_to, "s"},
         {"zoom", action_zoom, "s"},
         {"info", action_info, "s"},
+        {"sort-type", action_sort_type, "s"},
         {"view-mode", action_view_mode, "u", "0" },
         {"show-hidden", null, null, "false", change_state_show_hidden},
         {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
@@ -132,6 +133,10 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.go-to::FORWARD", {"<Alt>Right", "XF86Forward"});
             marlin_app.set_accels_for_action ("win.go-to::BACK", {"<Alt>Left", "XF86Back"});
             marlin_app.set_accels_for_action ("win.info::HELP", {"F1"});
+            marlin_app.set_accels_for_action ("win.sort-type::FILENAME", {"<Alt>1"});
+            marlin_app.set_accels_for_action ("win.sort-type::SIZE", {"<Alt>2"});
+            marlin_app.set_accels_for_action ("win.sort-type::TYPE", {"<Alt>3"});
+            marlin_app.set_accels_for_action ("win.sort-type::MODIFIED", {"<Alt>4"});
             marlin_app.set_accels_for_action ("win.tab::TAB", {"<Ctrl><Alt>T"});
             marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
         }
@@ -881,6 +886,38 @@ public class Files.Window : Gtk.ApplicationWindow {
         switch (param.get_string ()) {
             case "HELP":
                 show_app_help ();
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void action_sort_type (GLib.SimpleAction action, GLib.Variant? param) {
+        if (current_container.view  == null ||
+            !(current_container.view is Files.Slot)) {
+
+            debug ("current container view is null or not Slot");
+            return;
+        }
+
+        var view_widget = ((Files.Slot)current_container.view).view_widget;
+        if (view_widget == null) {
+            return;
+        }
+
+        switch (param.get_string ()) {
+            case "FILENAME":
+                view_widget.sort_type = Files.SortType.FILENAME;
+                break;
+            case "SIZE":
+                view_widget.sort_type = Files.SortType.SIZE;
+                break;
+            case "TYPE":
+                view_widget.sort_type = Files.SortType.TYPE;
+                break;
+            case "MODIFIED":
+                view_widget.sort_type = Files.SortType.MODIFIED;
                 break;
 
             default:
