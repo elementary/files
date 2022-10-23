@@ -46,7 +46,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         };
 
         model = new GLib.ListStore (typeof (Files.File));
-        var sorter = new Gtk.StringSorter (null); //TODO Provide expression to get strings from File
+        var display_name_expr = new Gtk.PropertyExpression (
+            typeof (Files.File), null, "custom-display-name"
+        );
+        var sorter = new Gtk.StringSorter (display_name_expr);
         var sorted_model = new Gtk.SortListModel (model, sorter);
         var selection_model = new Gtk.MultiSelection (sorted_model);
         selection_model.selection_changed.connect (() => {
@@ -58,7 +61,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = new FileItem ();
-            bind_property ("zoom-level", file_item, "zoom-level", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
+            bind_property (
+                "zoom-level",
+                file_item, "zoom-level",
+                BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+            );
             list_item.child = file_item;
             list_item.activatable = true;
             list_item.selectable = true;
