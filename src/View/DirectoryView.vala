@@ -257,8 +257,6 @@ namespace Files {
             });
 
             notify["renaming"].connect (() => {
-                // Suppress ability to scroll with the scrollbar while renaming
-                // No obvious way to disable it so just hide it
                 view_widget.set_renaming (renaming);
             });
 
@@ -476,9 +474,9 @@ return null;
 //             view_widget.show_and_select_file (file, false, true);
         }
 
-//         private void select_and_scroll_to_gof_file (Files.File file) {
-//             view_widget.show_and_select_file (file, true, true);
-//         }
+        private void select_and_scroll_to_gof_file (Files.File file, bool unselect_others) {
+            view_widget.show_and_select_file (file, true, true, unselect_others);
+        }
 
 //     /** Directory signal handlers. */
 //         /* Signal could be from subdirectory as well as slot directory */
@@ -1906,7 +1904,7 @@ return null;
 //             slot.directory.file_added.disconnect (after_renamed_file_added);
 //             /* new_file will be null if rename failed */
 //             if (new_file != null) {
-//                 select_and_scroll_to_gof_file (new_file);
+//                 select_and_scroll_to_gof_file (new_file, true);
 //             }
         }
 

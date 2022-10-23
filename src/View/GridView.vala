@@ -132,7 +132,20 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         vscroll_bar.visible = !is_renaming;
     }
 
-    public override void show_and_select_file (Files.File file, bool show, bool select) {}
+    public override void show_and_select_file (
+        Files.File file, bool show, bool select, bool unselect_others
+    ) {
+        uint pos;
+        model.find (file, out pos); //Inefficient?
+        if (select) {
+            grid_view.model.select_item (pos, unselect_others);
+        }
+
+        if (show) {
+        //TODO How to determine scroll position of item
+        }
+    }
+
     public override void invert_selection () {}
     public override void set_should_sort_directories_first (bool sort_directories_first) {}
     public override void set_show_hidden_files (bool show_hidden_files) {}
@@ -141,8 +154,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public override void start_renaming_file (Files.File file) {}
 
     public override void focus_first_for_empty_selection (bool select) {}
-    public override void select_all () {}
-    public override void unselect_all () {}
+    public override void select_all () { grid_view.model.select_all (); }
+    public override void unselect_all () { grid_view.model.unselect_all (); }
     public override void file_icon_changed (Files.File file) {}
     public override void file_deleted (Files.File file) {}
     public override void file_changed (Files.File file) {} //TODO Update thumbnail

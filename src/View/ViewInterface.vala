@@ -31,7 +31,9 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void zoom_out () {}
     public virtual void zoom_normal () {}
 
-    public virtual void show_and_select_file (Files.File file, bool show, bool select) {}
+    public virtual void show_and_select_file (
+        Files.File file, bool show, bool select, bool unselect_others
+    ) {}
     public virtual void invert_selection () {}
     public virtual void set_should_sort_directories_first (bool sort_directories_first) {}
     public virtual void set_show_hidden_files (bool show_hidden_files) {}
