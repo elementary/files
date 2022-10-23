@@ -57,7 +57,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         });
 
         var item_factory = new Gtk.SignalListItemFactory ();
-
         item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = new FileItem ();
@@ -140,17 +139,27 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     }
 
     public override void show_and_select_file (
-        Files.File file, bool show, bool select, bool unselect_others
+        Files.File? file, bool select, bool unselect_others
     ) {
-        uint pos;
-        model.find (file, out pos); //Inefficient?
+        uint pos = 0;
+        if (file != null) {
+            model.find (file, out pos); //Inefficient?
+        }
+
         if (select) {
             grid_view.model.select_item (pos, unselect_others);
         }
 
-        if (show) {
-        //TODO How to determine scroll position of item
-        }
+        // Move focused item to top
+        //TODO Work out how to move to middle of visible area?
+        Idle.add (() => {
+            var adj = scrolled_window.vadjustment;
+            var val = adj.upper * double.min (
+                (double)100 / (double) model.get_n_items (), adj.upper
+            );
+
+            return Source.REMOVE;
+        });
     }
 
     public override void invert_selection () {}
@@ -160,7 +169,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public override void get_sort (out string sort_column_id, out string sort_order) {}
     public override void start_renaming_file (Files.File file) {}
 
-    public override void focus_first_for_empty_selection (bool select) {}
+
     public override void select_all () { grid_view.model.select_all (); }
     public override void unselect_all () { grid_view.model.unselect_all (); }
     public override void file_icon_changed (Files.File file) {}
@@ -212,8 +221,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             set_layout_manager_type (typeof (Gtk.BoxLayout));
         }
 
-        int thumbnail_request = -1;
-
+        private int thumbnail_request = -1;
         private Files.File? file = null;
         public Gtk.Image image { get; set; }
         public Gtk.Label label { get; set; }
@@ -309,7 +317,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
 
         ~FileItem () {
-            // warning ("FileItem destruct");
             while (this.get_last_child () != null) {
                 this.get_last_child ().unparent ();
             }

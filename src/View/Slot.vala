@@ -275,7 +275,6 @@ public class Slot : Files.AbstractSlot {
                 break;
 
             default:
-warning ("mode %s, created IconView instead", mode.to_string ());
                 dir_view = new Files.DirectoryView (mode, this);
                 break;
         }

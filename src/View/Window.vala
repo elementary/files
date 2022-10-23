@@ -754,7 +754,6 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_reload () {
-warning ("WIN action reload");
         /* avoid spawning reload when key kept pressed */
         if (((ViewContainer)(tab_view.selected_page.child)).working) {
             warning ("Too rapid reloading suppressed");

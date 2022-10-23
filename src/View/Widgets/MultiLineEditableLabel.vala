@@ -87,7 +87,6 @@ namespace Files {
         }
 
         public void set_padding (int xpad, int ypad) {
-warning ("SET PADDING");
             textview.set_margin_start (xpad);
             textview.set_margin_end (xpad);
             textview.set_margin_top (ypad);

@@ -315,7 +315,7 @@ namespace Files {
         }
 
         public void focus_first_for_empty_selection (bool select) {
-//             view_widget.focus_first_for_empty_selection (select);
+            view_widget.show_and_select_file (null, false, false);
         }
 
 //         /* This function is only called by Slot in order to select a file item after loading has completed.
@@ -475,7 +475,7 @@ return null;
         }
 
         private void select_and_scroll_to_gof_file (Files.File file, bool unselect_others) {
-            view_widget.show_and_select_file (file, true, true, unselect_others);
+            view_widget.show_and_select_file (file, true, unselect_others);
         }
 
 //     /** Directory signal handlers. */
