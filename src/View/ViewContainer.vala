@@ -35,8 +35,38 @@ namespace Files {
             container_id = -1;
         }
 
-        public int id {get; construct;}
-        public Gtk.Widget? content_item;
+        private Gtk.Widget? content_item;
+        public Gtk.Widget? content {
+            set {
+                if (content_item != null) {
+                    remove (content_item);
+                }
+
+                content_item = value;
+
+                if (content_item != null) {
+                    append (content_item);
+                }
+            }
+            get {
+                return content_item;
+            }
+        }
+
+        private string label = "";
+        public string tab_name {
+            private set {
+                if (label != value) { /* Do not signal if no change */
+                    label = value;
+                    tab_name_changed (value);
+                }
+            }
+            get {
+                return label;
+            }
+        }
+
+        public int id { get; construct; }
         public bool can_show_folder { get; private set; default = false; }
         private Files.Window? _window = null;
         public bool working { get; set; }
@@ -117,20 +147,21 @@ namespace Files {
         public signal void active ();
         /* path-changed signal no longer used */
 
-        construct {
-            id = ViewContainer.get_next_container_id ();
-        }
-
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (Window win) {
-            window = win;
-            browser = new Browser ();
-
-            connect_signals ();
+            Object (
+                window:win
+            );
         }
 
         ~ViewContainer () {
             debug ("ViewContainer destruct");
+        }
+
+        construct {
+            browser = new Browser ();
+            id = ViewContainer.get_next_container_id ();
+            connect_signals ();
         }
 
         private void connect_signals () {
@@ -170,36 +201,6 @@ namespace Files {
         public void close () {
             disconnect_signals ();
             view.close ();
-        }
-
-        public Gtk.Widget? content {
-            set {
-                if (content_item != null) {
-                    remove (content_item);
-                }
-
-                content_item = value;
-
-                if (content_item != null) {
-                    append (content_item);
-                }
-            }
-            get {
-                return content_item;
-            }
-        }
-
-        private string label = "";
-        public string tab_name {
-            private set {
-                if (label != value) { /* Do not signal if no change */
-                    label = value;
-                    tab_name_changed (value);
-                }
-            }
-            get {
-                return label;
-            }
         }
 
         public bool go_up () {
