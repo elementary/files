@@ -28,9 +28,15 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public ZoomLevel minimum_zoom { get; set; default = ZoomLevel.SMALLEST; }
     public ZoomLevel maximum_zoom { get; set; default = ZoomLevel.LARGEST; }
 
+    public bool sort_directories_first { get; set; default = true; }
+    public Files.SortType sort_type { get; set; default = Files.SortType.FILENAME; }
+    public bool sort_reversed { get; set; default = false; }
+
     public signal void selection_changed ();
 
     private Gtk.ScrolledWindow scrolled_window;
+    private Gtk.CustomSorter sorter;
+    private CompareDataFunc<Files.File>? file_compare_func;
 
     ~GridView () {
         while (this.get_last_child () != null) {
@@ -46,10 +52,13 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         };
 
         model = new GLib.ListStore (typeof (Files.File));
-        var display_name_expr = new Gtk.PropertyExpression (
-            typeof (Files.File), null, "custom-display-name"
-        );
-        var sorter = new Gtk.StringSorter (display_name_expr);
+        sorter = new Gtk.CustomSorter (null);
+        file_compare_func = ((filea, fileb) => {
+            return filea.compare_for_sort (
+                fileb, sort_type, sort_directories_first, sort_reversed
+            );
+        });
+        sorter.set_sort_func (file_compare_func);
         var sorted_model = new Gtk.SortListModel (model, sorter);
         var selection_model = new Gtk.MultiSelection (sorted_model);
         selection_model.selection_changed.connect (() => {
@@ -163,9 +172,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     }
 
     public override void invert_selection () {}
-    public override void set_should_sort_directories_first (bool sort_directories_first) {}
+
     public override void set_show_hidden_files (bool show_hidden_files) {}
-    public override void set_sort (Files.ListModel.ColumnID? col_name, Gtk.SortType reverse) {}
+    public override void set_sort (Files.SortType? col_name, Gtk.SortType reverse) {}
     public override void get_sort (out string sort_column_id, out string sort_order) {}
     public override void start_renaming_file (Files.File file) {}
 

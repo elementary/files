@@ -66,7 +66,7 @@ public class Files.File : GLib.Object {
     public int pix_scale = 1;
     public int width = 0;
     public int height = 0;
-    public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
+    public int sort_type = Files.SortType.FILENAME;
     public Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
     public GLib.FileType file_type;
     public bool is_hidden = false;
@@ -449,9 +449,9 @@ public class Files.File : GLib.Object {
         /* metadata */
         if (is_directory) {
             if (info.has_attribute ("metadata::marlin-sort-column-id")) {
-                sort_column_id = Files.ListModel.ColumnID.from_string (
-                                     info.get_attribute_string ("metadata::marlin-sort-column-id")
-                                 );
+                sort_type= Files.SortType.from_string (
+                    info.get_attribute_string ("metadata::marlin-sort-column-id")
+                );
             }
 
             if (info.has_attribute ("metadata::marlin-sort-reversed")) {
@@ -912,42 +912,41 @@ public class Files.File : GLib.Object {
         return true;
     }
 
-    public int compare_for_sort (Files.File other, int sort_type, bool directories_first, bool reversed) {
+    public int compare_for_sort (
+        Files.File other, Files.SortType sort_type, bool directories_first, bool reversed
+    ) {
         if (other == this) {
             return 0;
         }
 
         if (directories_first) {
-            /* When comparing files of different type, need to cancel out the native sorting of the TreeView
-             * so directories always come first. */
             if (is_folder () && !other.is_folder ()) {
-                return reversed ? 1 : -1;
+                return -1;
             } else if (other.is_folder () && !is_folder ()) {
-                return reversed ? -1 : 1;
+                return 1;
             }
         }
 
-        //Always sort files of same type in ASCENDING order as the TreeView will reverse them if needed
         int result = 0;
         switch (sort_type) {
-            case Files.ListModel.ColumnID.FILENAME:
+            case Files.SortType.FILENAME:
                 result = compare_by_display_name (other);
                 break;
-            case Files.ListModel.ColumnID.SIZE:
+            case Files.SortType.SIZE:
                 result = compare_by_size (other);
                 if (result == 0) {
                     result = compare_by_display_name (other);
                 }
 
                 break;
-            case Files.ListModel.ColumnID.TYPE:
+            case Files.SortType.TYPE:
                 result = compare_by_type (other);
                 if (result == 0) {
                     result = compare_by_display_name (other);
                 }
 
                 break;
-            case Files.ListModel.ColumnID.MODIFIED:
+            case Files.SortType.MODIFIED:
                 result = compare_files_by_time (other);
                 if (result == 0) {
                     result = compare_by_display_name (other);
@@ -958,7 +957,7 @@ public class Files.File : GLib.Object {
                 assert_not_reached ();
         }
 
-        return result;
+        return reversed ? -result : result;
     }
 
     public int compare_by_display_name (Files.File other) {

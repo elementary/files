@@ -23,6 +23,9 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract ZoomLevel zoom_level { get; set; }
     public abstract ZoomLevel minimum_zoom { get; set; }
     public abstract ZoomLevel maximum_zoom { get; set; }
+    public abstract bool sort_directories_first { get; set; }
+    public abstract Files.SortType sort_type { get; set; }
+    public abstract bool sort_reversed { get; set; }
 
     public signal void path_change_request (GLib.File location);
 
@@ -35,12 +38,10 @@ public interface Files.ViewInterface : Gtk.Widget {
         Files.File? file, bool select, bool unselect_others
     ) {}
     public virtual void invert_selection () {}
-    public virtual void set_should_sort_directories_first (bool sort_directories_first) {}
     public virtual void set_show_hidden_files (bool show_hidden_files) {}
-    public virtual void set_sort (Files.ListModel.ColumnID? col_name, Gtk.SortType reverse) {}
-    public virtual void get_sort (out string sort_column_id, out string sort_order) {}
+    public virtual void set_sort (Files.SortType? sort_type, Gtk.SortType reverse) {}
+    public virtual void get_sort (out string sort_type, out string sort_order) {}
     public virtual void start_renaming_file (Files.File file) {}
-    // public virtual void focus_first_for_empty_selection (bool select) {}
     public virtual void select_all () {}
     public virtual void unselect_all () {}
     public virtual void file_icon_changed (Files.File file) {}

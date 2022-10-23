@@ -1097,9 +1097,9 @@ return null;
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
                 if (in_recent) {
-                    view_widget.set_sort (Files.ListModel.ColumnID.MODIFIED, Gtk.SortType.DESCENDING);
+                    view_widget.set_sort (Files.SortType.MODIFIED, Gtk.SortType.DESCENDING);
                 } else if (slot.directory.file.info != null) {
-                    view_widget.set_sort (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+                    view_widget.set_sort (slot.directory.file.sort_type, slot.directory.file.sort_order);
                 }
             } else {
                 is_writable = false;

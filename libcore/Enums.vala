@@ -59,7 +59,47 @@ namespace Files {
         }
     }
 
+    public enum SortType {
+        FILE_COLUMN,
+        COLOR,
+        PIXBUF,
+        FILENAME,
+        SIZE,
+        TYPE,
+        MODIFIED,
+        CUSTOM;
 
+        public static SortType from_string (string sort_name) {
+            switch (sort_name) {
+                case "name":
+                    return SortType.FILENAME;
+                case "size":
+                    return SortType.SIZE;
+                case "type":
+                    return SortType.TYPE;
+                case "modified":
+                    return SortType.MODIFIED;
+                default:
+                    return SortType.FILENAME;
+            }
+        }
+
+        public unowned string to_string () {
+            switch (this) {
+                case SortType.FILENAME:
+                    return "name";
+                case SortType.SIZE:
+                    return "size";
+                case SortType.TYPE:
+                    return "type";
+                case SortType.MODIFIED:
+                    return "modified";
+                default:
+                    critical ("COLUMN id %u unsupported", this);
+                    return "";
+            }
+        }
+    }
 
     public enum ViewMode {
         /* First three modes must match the corresponding mode switch indices */

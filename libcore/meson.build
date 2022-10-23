@@ -25,7 +25,7 @@ pantheon_files_core_vala_files = files(
     'FileConflictDialog.vala',
     'FileUtils.vala',
     'IconInfo.vala',
-    'ListModel.vala',
+    # 'ListModel.vala',
     'PixbufUtils.vala',
     'Preferences.vala',
     'PluginManager.vala',
