@@ -365,8 +365,16 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 selection_helper.visible = selected;
             });
             add_controller (motion_controller);
-            selection_helper.bind_property ("active", this, "selected", BindingFlags.BIDIRECTIONAL);
-
+            selection_helper.bind_property (
+                "active", this, "selected", BindingFlags.BIDIRECTIONAL
+            );
+            selection_helper.toggled.connect (() => {
+                if (selection_helper.active) {
+                    gridview.model.select_item (pos, false);
+                } else {
+                    gridview.model.unselect_item (pos);
+                }
+            });
         }
 
         public void set_file (Files.File? file) {
