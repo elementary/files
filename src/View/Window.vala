@@ -71,6 +71,18 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
     }
 
+    public ViewInterface? current_view_widget {
+        get {
+            if (current_container == null ||
+                !(current_container.content is Files.Slot)) {
+
+                return null;
+            }
+
+            return ((Files.Slot)(current_container.content)).view_widget;
+        }
+    }
+
     private bool tabs_restored = false;
     private int restoring_tabs = 0;
     private bool doing_undo_redo = false;
@@ -129,6 +141,8 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
             marlin_app.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
             marlin_app.set_accels_for_action ("win.show-hidden", {"<Ctrl>H"});
+            marlin_app.set_accels_for_action ("win.show-remote-thumbnails", {"<Ctrl>bracketleft"});
+            marlin_app.set_accels_for_action ("win.hide-local-thumbnails", {"<Ctrl>bracketright"});
             marlin_app.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
             marlin_app.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
             marlin_app.set_accels_for_action ("win.go-to::RECENT", {"<Alt>R"});
@@ -229,6 +243,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         var prefs = Files.app_settings;
         get_action ("show-hidden").set_state (prefs.get_boolean ("show-hiddenfiles"));
         get_action ("show-remote-thumbnails").set_state (prefs.get_boolean ("show-remote-thumbnails"));
+        get_action ("hide-local-thumbnails").set_state (prefs.get_boolean ("hide-local-thumbnails"));
     }
 
     private void connect_signals () {
@@ -901,30 +916,22 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_sort_type (GLib.SimpleAction action, GLib.Variant? param) {
-        if (current_container.view  == null ||
-            !(current_container.view is Files.Slot)) {
-
-            debug ("current container view is null or not Slot");
-            return;
-        }
-
-        var view_widget = ((Files.Slot)current_container.view).view_widget;
-        if (view_widget == null) {
+        if (current_view_widget == null) {
             return;
         }
 
         switch (param.get_string ()) {
             case "FILENAME":
-                view_widget.sort_type = Files.SortType.FILENAME;
+                current_view_widget.sort_type = Files.SortType.FILENAME;
                 break;
             case "SIZE":
-                view_widget.sort_type = Files.SortType.SIZE;
+                current_view_widget.sort_type = Files.SortType.SIZE;
                 break;
             case "TYPE":
-                view_widget.sort_type = Files.SortType.TYPE;
+                current_view_widget.sort_type = Files.SortType.TYPE;
                 break;
             case "MODIFIED":
-                view_widget.sort_type = Files.SortType.MODIFIED;
+                current_view_widget.sort_type = Files.SortType.MODIFIED;
                 break;
 
             default:
@@ -933,54 +940,30 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_toggle_sort_reversed () {
-        if (current_container.view  == null ||
-            !(current_container.view is Files.Slot)) {
-
-            debug ("current container view is null or not Slot");
+        if (current_view_widget == null) {
             return;
         }
 
-        var view_widget = ((Files.Slot)current_container.view).view_widget;
-        if (view_widget == null) {
-            return;
-        }
-
-        view_widget.sort_reversed = !view_widget.sort_reversed;
+        current_view_widget.sort_reversed = !current_view_widget.sort_reversed;
     }
 
     private void action_toggle_sort_directories_first () {
-        if (current_container.view  == null ||
-            !(current_container.view is Files.Slot)) {
-
-            debug ("current container view is null or not Slot");
+        if (current_view_widget == null) {
             return;
         }
 
-        var view_widget = ((Files.Slot)current_container.view).view_widget;
-        if (view_widget == null) {
-            return;
-        }
-
-        view_widget.sort_directories_first = !view_widget.sort_directories_first;
+        current_view_widget.sort_directories_first = !current_view_widget.sort_directories_first;
     }
 
     private void action_toggle_select_all () {
-        if (current_container.view  == null ||
-            !(current_container.view is Files.Slot)) {
-
-            debug ("current container view is null or not Slot");
+        if (current_view_widget == null) {
             return;
         }
 
-        var view_widget = ((Files.Slot)current_container.view).view_widget;
-        if (view_widget == null) {
-            return;
-        }
-
-        if (view_widget.all_selected) {
-            view_widget.unselect_all ();
+        if (current_view_widget.all_selected) {
+            current_view_widget.unselect_all ();
         } else {
-            view_widget.select_all ();
+            current_view_widget.select_all ();
         }
     }
 

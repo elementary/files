@@ -142,6 +142,25 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             // This refreshes the filter as well
             model.sort (file_compare_func);
         });
+        prefs.notify["show-remote-thumbnails"].connect (() => {
+            if (prefs.show_remote_thumbnails) {
+                refresh_view ();
+            }
+        });
+        prefs.notify["hide-local-thumbnails"].connect (() => {
+            if (!prefs.hide_local_thumbnails) {
+                refresh_view ();
+            }
+        });
+    }
+
+    private void refresh_view () {
+        // Needed to load thumbnails when settings change.  Is there a better way?
+        grid_view.model = null;
+        Idle.add (() => {
+            grid_view.model = multi_selection;
+            return Source.REMOVE;
+        });
     }
 
     public override void add_file (Files.File file) {
@@ -348,9 +367,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             Thumbnailer.@get ().finished.connect ((req) => {
                 if (req == thumbnail_request) {
                     thumbnail_request = -1;
+                    update_pix ();
                 }
-
-                update_pix ();
             });
 
             notify["selected"].connect (() => {
@@ -399,19 +417,24 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             if (file != null) {
                 file.ensure_query_info ();
                 label.label = file.custom_display_name ?? file.basename;
-                file_icon.icon_name = "image-missing";
-                update_pix ();
-
                 if (file.pix == null) {
+                    file_icon.paintable = null;
                     file.query_thumbnail_update (); // Ensure thumbstate up to date
-                    if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
-                        get_thumbnail ();
+                    if (file.thumbstate == Files.File.ThumbState.UNKNOWN &&
+                        (prefs.show_remote_thumbnails || !file.is_remote_uri_scheme ()) &&
+                        !prefs.hide_local_thumbnails) { // Also hide remote if local hidden?
+
+                            Thumbnailer.@get ().queue_file (
+                                file, out thumbnail_request, file_icon.pixel_size > 128
+                            );
                     }
 
                     if (file.icon != null) {
                         file_icon.gicon = file.icon;
                     }
                 }
+
+                update_pix ();
             } else {
                 label.label = "Unbound";
                 file_icon.icon_name = "image-missing";
@@ -420,27 +443,17 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
 
         private void update_pix () {
-            if (file == null) {
-                return;
-            }
-
-            file.update_icon (file_icon.pixel_size, 1); //TODO Deal with scale
-            if (file.pix != null) {
-                file_icon.paintable = Gdk.Texture.for_pixbuf (file.pix);
-                queue_draw ();
+            if (file != null) {
+                file.update_icon (file_icon.pixel_size, 1); //TODO Deal with scale
+                if (file.pix != null) {
+                    file_icon.paintable = Gdk.Texture.for_pixbuf (file.pix);
+                    queue_draw ();
+                }
             }
         }
 
         public void get_color_tag () {
 
-        }
-
-        private void get_thumbnail () {
-            if (thumbnail_request > -1) {
-                return;
-            }
-
-            Thumbnailer.@get ().queue_file (file, out thumbnail_request, file_icon.pixel_size > 128);
         }
 
         ~FileItem () {

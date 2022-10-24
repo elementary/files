@@ -250,10 +250,6 @@ namespace Files {
                 view_widget.set_renaming (renaming);
             });
 
-            var prefs = (Files.Preferences.get_default ());
-            prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
-            prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
-
             connect_directory_handlers (slot.directory);
         }
 
@@ -1074,18 +1070,7 @@ return null;
             }
         }
 
-//     /** Handle Preference changes */
-        private void on_show_remote_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-//             show_remote_thumbnails = ((Files.Preferences) prefs).show_remote_thumbnails;
-//             action_set_state (background_actions, "show-remote-thumbnails", show_remote_thumbnails);
-//             slot.reload ();
-        }
-
-        private void on_hide_local_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-//             hide_local_thumbnails = ((Files.Preferences) prefs).hide_local_thumbnails;
-//             action_set_state (background_actions, "hide-local-thumbnails", hide_local_thumbnails);
-//             slot.reload ();
-        }
+/** Handle Preference changes */
 
 // /** Handle popup menu events */
 //         private bool on_popup_menu () {
