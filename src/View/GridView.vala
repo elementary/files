@@ -105,7 +105,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         grid_view.activate.connect ((pos) => {
             var file = (Files.File)grid_view.model.get_item (pos);
-            if (file.is_folder ()) {
+            if (file.is_folder () && multi_selection.get_selection ().get_size () == 1) {
                 path_change_request (file.location);
             } else {
                 warning ("Open file with app");
