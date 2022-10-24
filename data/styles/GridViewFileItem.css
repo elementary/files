@@ -1,7 +1,7 @@
 fileitem {
     background: transparent;
-    border: none;
-    box-shadow: none;
+    border: 5px solid transparent;
+    border-radius: 1.0rem;
 }
 
 fileitem.selected {
