@@ -63,7 +63,6 @@ namespace Files {
             {"sort-by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"},
             {"folders-first", on_background_action_folders_first_changed, null, "true"},
-            {"show-hidden", null, null, "false", change_state_show_hidden},
             {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
             {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
         };
@@ -255,7 +254,6 @@ namespace Files {
             });
 
             var prefs = (Files.Preferences.get_default ());
-            prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
             prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
@@ -892,10 +890,6 @@ return null;
         }
 
 // /** Background actions */
-        private void change_state_show_hidden (GLib.SimpleAction action) {
-//             window.change_state_show_hidden (action);
-        }
-
         private void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
 //             window.change_state_show_remote_thumbnails (action);
         }
@@ -1104,13 +1098,6 @@ return null;
         }
 
 //     /** Handle Preference changes */
-        private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-//             bool show = ((Files.Preferences) prefs).show_hidden_files;
-//             view_widget.set_show_hidden_files (show);
-//             directory_hidden_changed (slot.directory, show);
-//             action_set_state (background_actions, "show-hidden", show);
-        }
-
         private void on_show_remote_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
 //             show_remote_thumbnails = ((Files.Preferences) prefs).show_remote_thumbnails;
 //             action_set_state (background_actions, "show-remote-thumbnails", show_remote_thumbnails);
@@ -1127,12 +1114,6 @@ return null;
 //             var sort_directories_first = ((Files.Preferences) prefs).sort_directories_first;
 //             view_widget.set_should_sort_directories_first (sort_directories_first);
         }
-
-//         private void directory_hidden_changed (Directory dir, bool show) {
-//             /* May not be slot.directory - could be subdirectory */
-//             dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
-//             dir.load_hiddens ();
-//         }
 
 // /** Handle popup menu events */
 //         private bool on_popup_menu () {

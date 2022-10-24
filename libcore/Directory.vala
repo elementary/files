@@ -599,10 +599,9 @@ public class Files.Directory : Object {
 
         state = State.LOADING;
         displayed_files_count = 0;
-        bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
         foreach (unowned Files.File gof in file_hash.get_values ()) {
             if (gof != null) {
-                after_load_file (gof, show_hidden, file_loaded_func);
+                after_load_file (gof, file_loaded_func);
             }
         }
 
@@ -639,7 +638,6 @@ public class Files.Directory : Object {
         can_load = true;
         displayed_files_count = 0;
         state = State.LOADING;
-        bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
 
         try {
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
@@ -679,7 +677,7 @@ public class Files.Directory : Object {
                             gof.update ();
 
                             file_hash.insert (gof.location, gof);
-                            after_load_file (gof, show_hidden, file_loaded_func);
+                            after_load_file (gof, file_loaded_func);
                         }
                     }
                 } catch (Error e) {
@@ -713,15 +711,13 @@ public class Files.Directory : Object {
         }
     }
 
-    private void after_load_file (Files.File gof, bool show_hidden, FileLoadedFunc? file_loaded_func) {
-        if (!gof.is_hidden || show_hidden) {
-            displayed_files_count++;
+    private void after_load_file (Files.File gof, FileLoadedFunc? file_loaded_func) {
+        displayed_files_count++;
 
-            if (file_loaded_func == null) {
-                file_loaded (gof);
-            } else {
-                file_loaded_func (gof);
-            }
+        if (file_loaded_func == null) {
+            file_loaded (gof);
+        } else {
+            file_loaded_func (gof);
         }
     }
 
@@ -764,22 +760,20 @@ public class Files.Directory : Object {
         return file_hash.get_values ();
     }
 
-    public void load_hiddens () {
-        if (!can_load) {
-            return;
-        }
-        if (state != State.LOADED) {
-            list_directory_async.begin (null);
-        } else {
-            list_cached_files ();
-        }
-    }
+    // public void load_hiddens () {
+    //     if (!can_load) {
+    //         return;
+    //     }
+    //     if (state != State.LOADED) {
+    //         list_directory_async.begin (null);
+    //     } else {
+    //         list_cached_files ();
+    //     }
+    // }
 
     public void update_files () {
         foreach (unowned Files.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null &&
-                (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
-
+            if (gof != null && gof.info != null) {
                 gof.update ();
             }
         }
@@ -787,10 +781,7 @@ public class Files.Directory : Object {
 
     public void update_desktop_files () {
         foreach (unowned Files.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null &&
-                (!gof.is_hidden || Preferences.get_default ().show_hidden_files) &&
-                gof.is_desktop) {
-
+            if (gof != null && gof.info != null &&  gof.is_desktop) {
                 gof.update_desktop_file ();
             }
         }
@@ -855,11 +846,8 @@ public class Files.Directory : Object {
 
     private void changed_and_refresh (Files.File gof) {
         gof.update ();
-
-        if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
-            file_changed (gof);
-            gof.changed ();
-        }
+        file_changed (gof);
+        gof.changed ();
     }
 
     private void add_and_refresh (Files.File gof) {
@@ -868,10 +856,7 @@ public class Files.Directory : Object {
         }
 
         gof.update ();
-
-        if ((!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
-            file_added (gof);
-        }
+        file_added (gof);
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* add to sorted_dirs */
@@ -892,10 +877,7 @@ public class Files.Directory : Object {
 
     private void notify_file_removed (Files.File gof) {
         remove_file_from_cache (gof);
-
-        if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
-            file_deleted (gof);
-        }
+        file_deleted (gof);
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* remove from sorted_dirs */

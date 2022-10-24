@@ -17,12 +17,16 @@
 ***/
 
 public class Files.GridView : Gtk.Widget, Files.ViewInterface {
+    private static Files.Preferences prefs;
     static construct {
         set_layout_manager_type (typeof (Gtk.BinLayout));
+        prefs = Files.Preferences.get_default ();
     }
 
     public Gtk.GridView grid_view { get; construct; }
     public GLib.ListStore model { get; construct; }
+    public Gtk.FilterListModel filter_model { get; construct; }
+    public Gtk.CustomFilter custom_filter { get; construct; }
     public Gtk.MultiSelection multi_selection { get; construct; }
     public ZoomLevel zoom_level { get; set; default = ZoomLevel.NORMAL; }
     public ZoomLevel minimum_zoom { get; set; default = ZoomLevel.SMALLEST; }
@@ -32,6 +36,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public Files.SortType sort_type { get; set; default = Files.SortType.FILENAME; }
     public bool sort_reversed { get; set; default = false; }
     public bool all_selected { get; set; default = false; }
+    public bool show_hidden_files { get; set; default = true; }
 
     public signal void selection_changed ();
 
@@ -54,13 +59,21 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         };
 
         model = new GLib.ListStore (typeof (Files.File));
-        multi_selection = new Gtk.MultiSelection (model);
+
+        filter_model = new Gtk.FilterListModel (model, null);
+        multi_selection = new Gtk.MultiSelection (filter_model);
 
         file_compare_func = ((filea, fileb) => {
             return filea.compare_for_sort (
                 fileb, sort_type, sort_directories_first, sort_reversed
             );
         });
+
+        custom_filter = new Gtk.CustomFilter ((obj) => {
+            var file = (Files.File)obj;
+            return prefs.show_hidden_files || !file.is_hidden;
+        });
+        filter_model.set_filter (custom_filter);
 
         var item_factory = new Gtk.SignalListItemFactory ();
         item_factory.setup.connect ((obj) => {
@@ -122,6 +135,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             model.sort (file_compare_func);
         });
         notify["sort-directories-first"].connect (() => {
+            model.sort (file_compare_func);
+        });
+
+        prefs.notify["show-hidden-files"].connect (() => {
+            // This refreshes the filter as well
             model.sort (file_compare_func);
         });
     }
@@ -211,7 +229,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
     }
 
-    public override void set_show_hidden_files (bool show_hidden_files) {}
     public override void start_renaming_file (Files.File file) {}
     public override void file_icon_changed (Files.File file) {}
     public override void file_deleted (Files.File file) {}
