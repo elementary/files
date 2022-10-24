@@ -1,0 +1,11 @@
+fileitem {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+fileitem.selected {
+    background: alpha(@accent_color_100, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.35);
+}
+

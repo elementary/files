@@ -76,7 +76,6 @@ namespace Files {
             {"bookmark", on_common_action_bookmark},
             {"properties", on_common_action_properties},
             {"copy-link", on_common_action_copy_link},
-            {"select-all", toggle_select_all}
         };
 
         GLib.SimpleActionGroup common_actions;
@@ -226,9 +225,6 @@ namespace Files {
             selectable_cursor = new Gdk.Cursor.from_name ("default", null);
 
             var app = (Files.Application)(GLib.Application.get_default ());
-            app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
-            app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
-
             recent = app.get_recent_manager ();
             clipboard = ClipboardManager.get_instance ();
 
@@ -274,7 +270,7 @@ namespace Files {
         }
 // }}
 
-//         private void set_up__menu_actions () {
+//        private void setup_menu_actions () {
 //             selection_actions = new GLib.SimpleActionGroup ();
 //             selection_actions.add_action_entries (SELECTION_ENTRIES, this);
 //             insert_action_group ("selection", selection_actions);
@@ -295,7 +291,7 @@ namespace Files {
 
 //             action_set_state (background_actions, "hide-local-thumbnails",
 //                               Files.app_settings.get_boolean ("hide-local-thumbnails"));
-//         }
+//      }
 
         public void zoom_in () {
             view_widget.zoom_in ();
@@ -1011,15 +1007,6 @@ return null;
 //                         after_trash_or_delete ();
 //                     }
 //                 });
-//             }
-        }
-
-        private void toggle_select_all () {
-//             update_selected_files_and_menu ();
-//             if (all_selected) {
-//                 unselect_all ();
-//             } else {
-//                 select_all ();
 //             }
         }
 

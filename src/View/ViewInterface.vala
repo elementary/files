@@ -26,6 +26,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract bool sort_directories_first { get; set; }
     public abstract Files.SortType sort_type { get; set; }
     public abstract bool sort_reversed { get; set; }
+    public abstract bool all_selected { get; set; }
 
     public signal void path_change_request (GLib.File location);
 

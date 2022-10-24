@@ -31,6 +31,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public bool sort_directories_first { get; set; default = true; }
     public Files.SortType sort_type { get; set; default = Files.SortType.FILENAME; }
     public bool sort_reversed { get; set; default = false; }
+    public bool all_selected { get; set; default = false; }
 
     public signal void selection_changed ();
 
@@ -79,6 +80,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             var file = (Files.File)list_item.get_item ();
             var file_item = (FileItem)list_item.child;
             file_item.set_file (file);
+            file_item.selected = list_item.selected;
         });
 
         item_factory.unbind.connect ((obj) => {
@@ -180,10 +182,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     public override void select_all () {
         multi_selection.select_all ();
+        all_selected = true;
     }
 
     public override void unselect_all () {
         multi_selection.unselect_all ();
+        all_selected = false;
     }
 
     public override void invert_selection () {
@@ -247,12 +251,18 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     }
 
     private class FileItem : Gtk.Widget {
+        private static Gtk.CssProvider fileitem_provider;
         static construct {
             set_layout_manager_type (typeof (Gtk.BoxLayout));
+            set_css_name ("fileitem");
+            fileitem_provider = new Gtk.CssProvider ();
+            fileitem_provider.load_from_resource ("/io/elementary/files/GridViewFileItem.css");
         }
 
         private int thumbnail_request = -1;
         private Files.File? file = null;
+
+
         public Gtk.Image image { get; set; }
         public Gtk.Label label { get; set; }
         public ZoomLevel zoom_level {
@@ -265,10 +275,15 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 image.margin_top = size / 4;
             }
         }
+        public bool selected { get; set; default = false; }
 
         construct {
             var lm = new Gtk.BoxLayout (Gtk.Orientation.VERTICAL);
             set_layout_manager (lm);
+
+            get_style_context ().add_provider (
+                fileitem_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            );
 
             image = new Gtk.Image () {
                 icon_name = "image-missing",
@@ -294,6 +309,14 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 }
 
                 update_pix ();
+            });
+
+            notify["selected"].connect (() => {
+                if (selected && !has_css_class ("selected")) {
+                    add_css_class ("selected");
+                } else if (!selected && has_css_class ("selected")) {
+                    remove_css_class ("selected");
+                }
             });
         }
 
