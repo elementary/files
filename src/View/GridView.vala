@@ -64,14 +64,17 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         var item_factory = new Gtk.SignalListItemFactory ();
         item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var file_item = new FileItem ();
+            var file_item = new FileItem () {
+                gridview = grid_view
+            };
             bind_property (
                 "zoom-level",
                 file_item, "zoom-level",
                 BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
             );
             list_item.child = file_item;
-            list_item.activatable = true;
+            // We handle file activation ourselves in FileItem
+            list_item.activatable = false;
             list_item.selectable = true;
         });
 
@@ -81,6 +84,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             var file_item = (FileItem)list_item.child;
             file_item.set_file (file);
             file_item.selected = list_item.selected;
+            file_item.pos = list_item.position;
         });
 
         item_factory.unbind.connect ((obj) => {
@@ -102,6 +106,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             var file = (Files.File)grid_view.model.get_item (pos);
             if (file.is_folder ()) {
                 path_change_request (file.location);
+            } else {
+                warning ("Open file with app");
             }
         });
 
@@ -265,6 +271,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         public Gtk.Image image { get; set; }
         public Gtk.Label label { get; set; }
+        public Gtk.GridView gridview { get; set construct; }
+        public uint pos;
+
         public ZoomLevel zoom_level {
             set {
                 var size = value.to_icon_size ();
@@ -284,6 +293,19 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             get_style_context ().add_provider (
                 fileitem_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             );
+
+            var gesture_click = new Gtk.GestureClick () {
+                button = 1
+            };
+
+            gesture_click.pressed.connect ((n_press, x, y) => {
+                if (n_press == 2 || file.is_folder ()) {
+                    // GridView will take appropriate action
+                    gridview.activate (pos);
+                }
+            });
+
+            add_controller (gesture_click);
 
             image = new Gtk.Image () {
                 icon_name = "image-missing",
