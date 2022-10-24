@@ -5,7 +5,8 @@ fileitem {
 }
 
 fileitem.selected {
-    background: alpha(@accent_color_100, 0.2);
-    border: 1px solid rgba(0, 0, 0, 0.35);
+    background: @selected_bg_color;
+    border: 5px solid @theme_bg_color;
+    border-radius: 1.0rem;
 }
 
