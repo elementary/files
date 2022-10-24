@@ -249,9 +249,16 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
     }
 
+    public override void file_deleted (Files.File file) {
+        uint pos;
+        if (model.find (file, out pos)) {
+            model.remove (pos);
+        }
+    }
+
     public override void start_renaming_file (Files.File file) {}
     public override void file_icon_changed (Files.File file) {}
-    public override void file_deleted (Files.File file) {}
+
     public override void file_changed (Files.File file) {} //TODO Update thumbnail
 
     public uint get_selected_files (out GLib.List<Files.File> selected_files) {

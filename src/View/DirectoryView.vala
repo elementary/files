@@ -467,7 +467,7 @@ return null;
         private void connect_directory_handlers (Directory dir) {
             dir.file_added.connect (on_directory_file_added);
 //             dir.file_changed.connect (on_directory_file_changed);
-//             dir.file_deleted.connect (on_directory_file_deleted);
+            dir.file_deleted.connect (on_directory_file_deleted);
 //             dir.icon_changed.connect (on_directory_file_icon_changed);
             connect_directory_loading_handlers (dir);
         }
@@ -491,7 +491,7 @@ return null;
 
             dir.file_added.disconnect (on_directory_file_added);
 //             dir.file_changed.disconnect (on_directory_file_changed);
-//             dir.file_deleted.disconnect (on_directory_file_deleted);
+            dir.file_deleted.disconnect (on_directory_file_deleted);
 //             dir.icon_changed.disconnect (on_directory_file_icon_changed);
             dir.done_loading.disconnect (on_directory_done_loading);
         }
@@ -1017,24 +1017,25 @@ return null;
 //             /* The deleted file could be the whole directory, which is not in the model but that
 //              * that does not matter.  */
 
-//             file.exists = false;
-//             view_widget.file_deleted (file);
-//             if (file.get_thumbnail_path () != null) {
-//                 FileUtils.remove_thumbnail_paths_for_uri (file.uri);
-//             }
+            file.exists = false;
+            view_widget.file_deleted (file);
 
-//             if (plugins != null) {
-//                 plugins.update_file_info (file);
-//             }
+            if (file.get_thumbnail_path () != null) {
+                FileUtils.remove_thumbnail_paths_for_uri (file.uri);
+            }
 
-//             if (file.is_folder ()) {
-//                 /* Check whether the deleted file is the directory */
-//                 var file_dir = Directory.cache_lookup (file.location);
-//                 if (file_dir != null) {
-//                     Directory.purge_dir_from_cache (file_dir);
-//                     slot.folder_deleted (file, file_dir);
-//                 }
-//             }
+            // if (plugins != null) {
+            //     plugins.update_file_info (file);
+            // }
+
+            if (file.is_folder ()) {
+                /* Check whether the deleted file is the directory */
+                var file_dir = Directory.cache_lookup (file.location);
+                if (file_dir != null) {
+                    Directory.purge_dir_from_cache (file_dir);
+                    slot.folder_deleted (file, file_dir);
+                }
+            }
 
 //             handle_free_space_change ();
         }
