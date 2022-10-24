@@ -119,9 +119,6 @@ namespace Files {
         public string proposed_name = "";
         public bool renaming {get; private set; default = false;}
 
-        /* Support for zoom by smooth scrolling */
-        private double total_delta_y = 0.0;
-
         // /* Cursors for different areas */
         private Gdk.Cursor editable_cursor;
         private Gdk.Cursor activatable_cursor;

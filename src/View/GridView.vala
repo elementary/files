@@ -23,7 +23,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     public Gtk.GridView grid_view { get; construct; }
     public GLib.ListStore model { get; construct; }
-
+    public Gtk.MultiSelection multi_selection { get; construct; }
     public ZoomLevel zoom_level { get; set; default = ZoomLevel.NORMAL; }
     public ZoomLevel minimum_zoom { get; set; default = ZoomLevel.SMALLEST; }
     public ZoomLevel maximum_zoom { get; set; default = ZoomLevel.LARGEST; }
@@ -52,17 +52,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         };
 
         model = new GLib.ListStore (typeof (Files.File));
-        sorter = new Gtk.CustomSorter (null);
+        multi_selection = new Gtk.MultiSelection (model);
+
         file_compare_func = ((filea, fileb) => {
             return filea.compare_for_sort (
                 fileb, sort_type, sort_directories_first, sort_reversed
             );
-        });
-        sorter.set_sort_func (file_compare_func);
-        var sorted_model = new Gtk.SortListModel (model, sorter);
-        var selection_model = new Gtk.MultiSelection (sorted_model);
-        selection_model.selection_changed.connect (() => {
-
         });
 
         var item_factory = new Gtk.SignalListItemFactory ();
@@ -95,13 +90,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         item_factory.teardown.connect ((obj) => {
         });
 
-        grid_view = new Gtk.GridView (selection_model, item_factory) {
+        grid_view = new Gtk.GridView (multi_selection, item_factory) {
             orientation = Gtk.Orientation.VERTICAL,
-            // Setting min and max columns affects row spacing unexpectedly!
-            // Also depends on size of model!!
             min_columns = 5,
             max_columns = 20
         };
+
         grid_view.activate.connect ((pos) => {
             var file = (Files.File)grid_view.model.get_item (pos);
             if (file.is_folder ()) {
@@ -113,18 +107,19 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         scrolled_window.set_parent (this);
 
         notify["sort-type"].connect (() => {
-            sorter.set_sort_func (file_compare_func);
+            model.sort (file_compare_func);
         });
         notify["sort-reversed"].connect (() => {
-            sorter.set_sort_func (file_compare_func);
+            model.sort (file_compare_func);
         });
         notify["sort-directories-first"].connect (() => {
-            sorter.set_sort_func (file_compare_func);
+            model.sort (file_compare_func);
         });
     }
 
     public override void add_file (Files.File file) {
-        model.append (file);
+        //TODO Delay sorting until adding finished?
+        model.insert_sorted (file, file_compare_func);
     }
 
     public override void clear () {
@@ -165,12 +160,14 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             model.find (file, out pos); //Inefficient?
         }
 
+        //TODO Check pos same in sorted model and model
         if (select) {
-            grid_view.model.select_item (pos, unselect_others);
+            multi_selection.select_item (pos, unselect_others);
         }
 
         // Move focused item to top
         //TODO Work out how to move to middle of visible area?
+        //Idle until gridview layed out.
         Idle.add (() => {
             var adj = scrolled_window.vadjustment;
             var val = adj.upper * double.min (
@@ -181,12 +178,30 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         });
     }
 
-    public override void invert_selection () {}
+    public override void select_all () {
+        multi_selection.select_all ();
+    }
+
+    public override void unselect_all () {
+        multi_selection.unselect_all ();
+    }
+
+    public override void invert_selection () {
+        uint pos = 0;
+        var item = multi_selection.get_item (pos);
+        while (item != null) {
+            if (multi_selection.is_selected (pos)) {
+                multi_selection.unselect_item (pos);
+            } else {
+                multi_selection.select_item (pos, false);
+            }
+
+            item = multi_selection.get_item (++pos);
+        }
+    }
 
     public override void set_show_hidden_files (bool show_hidden_files) {}
     public override void start_renaming_file (Files.File file) {}
-    public override void select_all () { grid_view.model.select_all (); }
-    public override void unselect_all () { grid_view.model.unselect_all (); }
     public override void file_icon_changed (Files.File file) {}
     public override void file_deleted (Files.File file) {}
     public override void file_changed (Files.File file) {} //TODO Update thumbnail
