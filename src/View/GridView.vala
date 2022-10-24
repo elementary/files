@@ -49,7 +49,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         set_layout_manager (new Gtk.BinLayout ());
         scrolled_window = new Gtk.ScrolledWindow () {
             hexpand = true,
-            vexpand = true
+            vexpand = true,
+            hscrollbar_policy = Gtk.PolicyType.NEVER
         };
 
         model = new GLib.ListStore (typeof (Files.File));
@@ -269,7 +270,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         private Files.File? file = null;
 
 
-        public Gtk.Image image { get; set; }
+        public Gtk.Image file_icon { get; set; }
+        public Gtk.CheckButton selection_helper { get; set; }
         public Gtk.Label label { get; set; }
         public Gtk.GridView gridview { get; set construct; }
         public uint pos;
@@ -277,11 +279,15 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         public ZoomLevel zoom_level {
             set {
                 var size = value.to_icon_size ();
-                image.pixel_size = size;
+                file_icon.pixel_size = size;
                 update_pix ();
-                image.margin_start = size / 2;
-                image.margin_end = size / 2;
-                image.margin_top = size / 4;
+                file_icon.margin_start = size / 2;
+                file_icon.margin_end = size / 2;
+                file_icon.margin_top = size / 4;
+                selection_helper.margin_start = size / 3;
+                selection_helper.margin_end = size / 3;
+                selection_helper.margin_top = size / 6;
+                selection_helper.margin_bottom = size / 6;
             }
         }
         public bool selected { get; set; default = false; }
@@ -294,22 +300,19 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 fileitem_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             );
 
-            var gesture_click = new Gtk.GestureClick () {
-                button = 1
-            };
 
-            gesture_click.pressed.connect ((n_press, x, y) => {
-                if (n_press == 2 || file.is_folder ()) {
-                    // GridView will take appropriate action
-                    gridview.activate (pos);
-                }
-            });
-
-            add_controller (gesture_click);
-
-            image = new Gtk.Image () {
+            var icon_overlay = new Gtk.Overlay ();
+            file_icon = new Gtk.Image () {
                 icon_name = "image-missing",
             };
+            icon_overlay.child = file_icon;
+
+            selection_helper = new Gtk.CheckButton () {
+                visible = false,
+                halign = Gtk.Align.START,
+                valign = Gtk.Align.START
+            };
+            icon_overlay.add_overlay (selection_helper);
 
             label = new Gtk.Label ("Unbound") {
                 wrap = true,
@@ -322,7 +325,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 margin_end = 3,
             };
 
-            image.set_parent (this);
+            icon_overlay.set_parent (this);
             label.set_parent (this);
 
             Thumbnailer.@get ().finished.connect ((req) => {
@@ -336,10 +339,34 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             notify["selected"].connect (() => {
                 if (selected && !has_css_class ("selected")) {
                     add_css_class ("selected");
+                    selection_helper.visible = true;
                 } else if (!selected && has_css_class ("selected")) {
                     remove_css_class ("selected");
+                    selection_helper.visible = false;
                 }
             });
+
+            var gesture_click = new Gtk.GestureClick () {
+                button = 1
+            };
+            gesture_click.pressed.connect ((n_press, x, y) => {
+                if (n_press == 2 || file.is_folder ()) {
+                    // GridView will take appropriate action
+                    gridview.activate (pos);
+                }
+            });
+            file_icon.add_controller (gesture_click);
+
+            var motion_controller = new Gtk.EventControllerMotion ();
+            motion_controller.enter.connect (() => {
+                selection_helper.visible = true;
+            });
+            motion_controller.leave.connect (() => {
+                selection_helper.visible = selected;
+            });
+            add_controller (motion_controller);
+            selection_helper.bind_property ("active", this, "selected", BindingFlags.BIDIRECTIONAL);
+
         }
 
         public void set_file (Files.File? file) {
@@ -347,7 +374,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             if (file != null) {
                 file.ensure_query_info ();
                 label.label = file.custom_display_name ?? file.basename;
-                image.icon_name = "image-missing";
+                file_icon.icon_name = "image-missing";
                 update_pix ();
 
                 if (file.pix == null) {
@@ -357,12 +384,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                     }
 
                     if (file.icon != null) {
-                        image.gicon = file.icon;
+                        file_icon.gicon = file.icon;
                     }
                 }
             } else {
                 label.label = "Unbound";
-                image.icon_name = "image-missing";
+                file_icon.icon_name = "image-missing";
                 thumbnail_request = -1;
             }
         }
@@ -372,9 +399,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 return;
             }
 
-            file.update_icon (image.pixel_size, 1); //TODO Deal with scale
+            file.update_icon (file_icon.pixel_size, 1); //TODO Deal with scale
             if (file.pix != null) {
-                image.paintable = Gdk.Texture.for_pixbuf (file.pix);
+                file_icon.paintable = Gdk.Texture.for_pixbuf (file.pix);
                 queue_draw ();
             }
         }
@@ -388,7 +415,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 return;
             }
 
-            Thumbnailer.@get ().queue_file (file, out thumbnail_request, image.pixel_size > 128);
+            Thumbnailer.@get ().queue_file (file, out thumbnail_request, file_icon.pixel_size > 128);
         }
 
         ~FileItem () {
