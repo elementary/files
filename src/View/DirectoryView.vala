@@ -60,9 +60,6 @@ namespace Files {
         const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
             {"new", on_background_action_new, "s"},
             {"create-from", on_background_action_create_from, "s"},
-            {"sort-by", on_background_action_sort_by_changed, "s", "'name'"},
-            {"reverse", on_background_action_reverse_changed, null, "false"},
-            {"folders-first", on_background_action_folders_first_changed, null, "true"},
             {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
             {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
         };
@@ -256,7 +253,6 @@ namespace Files {
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
             prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
-            prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
 
             connect_directory_handlers (slot.directory);
         }
@@ -918,25 +914,6 @@ return null;
 //             create_from_template (templates.nth_data ((uint)index));
         }
 
-        private void on_background_action_sort_by_changed (GLib.SimpleAction action, GLib.Variant? val) {
-//             set_sort (val != null ? val.get_string () : null, false);
-        }
-
-        private void on_background_action_reverse_changed (GLib.SimpleAction action, GLib.Variant? val) {
-//             set_sort (null, true);
-        }
-
-        private void on_background_action_folders_first_changed (
-            GLib.SimpleAction action, GLib.Variant? val
-        ) {
-//             var prefs = Files.Preferences.get_default ();
-//             prefs.sort_directories_first = !prefs.sort_directories_first;
-//         }
-
-//         private void set_sort (string? col_name, bool reverse) {
-//             view_widget.set_sort (col_name, reverse);
-        }
-
 // /** Common actions */
         private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) {
 //             default_app = null;
@@ -1108,11 +1085,6 @@ return null;
 //             hide_local_thumbnails = ((Files.Preferences) prefs).hide_local_thumbnails;
 //             action_set_state (background_actions, "hide-local-thumbnails", hide_local_thumbnails);
 //             slot.reload ();
-        }
-
-        private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-//             var sort_directories_first = ((Files.Preferences) prefs).sort_directories_first;
-//             view_widget.set_should_sort_directories_first (sort_directories_first);
         }
 
 // /** Handle popup menu events */
