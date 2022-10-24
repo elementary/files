@@ -244,7 +244,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 multi_selection.select_item (pos, false);
             }
 
-            item = multi_selection.get_item (++pos);
+            pos++;
+            item = multi_selection.get_item (pos);
         }
     }
 
