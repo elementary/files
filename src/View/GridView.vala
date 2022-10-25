@@ -59,7 +59,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             vexpand = true,
             hscrollbar_policy = Gtk.PolicyType.NEVER
         };
-        bind_property ("is_renaming", scrolled_window.vadjustment, "visible", BindingFlags.INVERT_BOOLEAN);
 
         model = new GLib.ListStore (typeof (Files.File));
         filter_model = new Gtk.FilterListModel (model, null);
@@ -120,7 +119,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         grid_view = new Gtk.GridView (multi_selection, item_factory) {
             orientation = Gtk.Orientation.VERTICAL,
-            min_columns = 5,
             max_columns = 20
         };
 
@@ -145,7 +143,14 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         notify["sort-directories-first"].connect (() => {
             model.sort (file_compare_func);
         });
-
+        notify["is_renaming"].connect (() => {
+            if (is_renaming) {
+warning ("is renaming");
+                scrolled_window.vscrollbar_policy = Gtk.PolicyType.NEVER;
+            } else {
+                scrolled_window.vscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
+            }
+        });
         prefs.notify["show-hidden-files"].connect (() => {
             // This refreshes the filter as well
             model.sort (file_compare_func);
@@ -201,10 +206,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         return (ZoomLevel)zoom;
     }
 
-    public override void set_renaming (bool is_renaming) {
-        var vscroll_bar = scrolled_window.get_vscrollbar ();
-        vscroll_bar.visible = !is_renaming;
-    }
+    // public override void set_renaming (bool is_renaming) {
+    //     var vscroll_bar = scrolled_window.get_vscrollbar ();
+    //     vscroll_bar.visible = !is_renaming;
+    // }
 
     public override void show_and_select_file (
         Files.File? file, bool select, bool unselect_others
@@ -268,10 +273,31 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         unowned var selected_file_item = get_selected_file_item ();
         if (selected_file_item != null) {
             is_renaming = true;
-            selected_file_item.rename.begin ((obj, res) => {
-                selected_file_item.rename.end (res);
-                warning ("finished renaming");
+            var layout = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
+            var name_label = new Gtk.Label (_("Enter the new name"));
+            var name_entry = new Gtk.Entry () {
+                text = selected_file_item.file.basename
+            };
+            layout.append (name_label);
+            layout.append (name_entry);
+            var rename_dialog = new Granite.Dialog () {
+                modal = true
+            };
+            rename_dialog.get_content_area ().append (layout);
+            rename_dialog.add_button ("Cancel", Gtk.ResponseType.CANCEL);
+
+            var suggested_button = rename_dialog.add_button ("Suggested Action", Gtk.ResponseType.ACCEPT);
+            suggested_button.add_css_class ("suggested-action");
+
+            rename_dialog.response.connect ((response_id) => {
+                if (response_id == Gtk.ResponseType.ACCEPT) {
+                    warning ("Do rename");
+                }
+
+                rename_dialog.destroy ();
+                is_renaming = false;
             });
+            rename_dialog.present ();
         }
     }
 
@@ -349,9 +375,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         private int thumbnail_request = -1;
 
         public Files.File? file { get; set; default = null; }
-        public Gtk.Image file_icon { get; set; }
-        public Gtk.CheckButton selection_helper { get; set; }
-        public Gtk.Label label { get; set; }
+        public Gtk.Image file_icon { get; construct; }
+        public Gtk.CheckButton selection_helper { get; construct; }
+        public Gtk.Label label { get; construct; }
+        public Gtk.TextView text_view { get; construct; }
+        public Gtk.Stack name_stack { get; construct; }
         public Gtk.GridView gridview { get; set construct; }
         public uint pos;
 
@@ -404,8 +432,13 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 margin_end = 3,
             };
 
+            text_view = new Gtk.TextView ();
+            name_stack = new Gtk.Stack ();
+            name_stack.add_child (label);
+            name_stack.add_child (text_view);
+            name_stack.visible_child = label;
             icon_overlay.set_parent (this);
-            label.set_parent (this);
+            name_stack.set_parent (this);
 
             Thumbnailer.@get ().finished.connect ((req) => {
                 if (req == thumbnail_request) {
@@ -497,11 +530,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         public void get_color_tag () {
 
-        }
-
-        public async void rename () throws GLib.Error {
-            //TODO Get new name
-            yield FileUtils.set_file_display_name (file.location, "New Name", null);
         }
 
         ~FileItem () {

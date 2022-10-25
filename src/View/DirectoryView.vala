@@ -245,9 +245,9 @@ namespace Files {
                 on_clipboard_changed ();
             });
 
-            notify["renaming"].connect (() => {
-                view_widget.set_renaming (renaming);
-            });
+            // notify["renaming"].connect (() => {
+            //     view_widget.set_renaming (renaming);
+            // });
 
             connect_directory_handlers (slot.directory);
         }
