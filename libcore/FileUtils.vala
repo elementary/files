@@ -571,6 +571,7 @@ namespace Files.FileUtils {
                 added_files.append (new_location);
                 var removed_files = new GLib.List<GLib.File> ();
                 removed_files.append (old_location);
+                // NOTE: If directory is monitored we get duplicate calls to these functions.
                 Files.Directory.notify_files_removed (removed_files);
                 Files.Directory.notify_files_added (added_files);
             } else {

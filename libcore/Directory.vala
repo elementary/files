@@ -993,7 +993,9 @@ public class Files.Directory : Object {
         foreach (unowned var loc in files) {
             Directory? dir = cache_lookup_parent (loc);
 
-            if (dir != null) {
+            if (dir != null &&
+                dir.file_hash_lookup_location (loc) == null) { // Avoid duplicate signals
+
                 Files.File gof = dir.file_cache_find_or_insert (loc, true);
                 dir.notify_file_added (gof);
             }

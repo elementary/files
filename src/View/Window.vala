@@ -29,6 +29,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"undo", action_undo},
         {"redo", action_redo},
         {"bookmark", action_bookmark},
+        {"rename", action_rename},
         {"toggle-sort-reversed", action_toggle_sort_reversed},
         {"toggle-sort-directories-first", action_toggle_sort_directories_first},
         {"toggle-select-all", action_toggle_select_all},
@@ -120,6 +121,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
             marlin_app.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             marlin_app.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
+            marlin_app.set_accels_for_action ("win.rename", {"F2"});
             marlin_app.set_accels_for_action ("win.find::", {"<Ctrl>F"});
             marlin_app.set_accels_for_action ("win.edit-path", {"<Ctrl>L"});
             marlin_app.set_accels_for_action ("win.toggle-sort-reversed", {"<Alt>0"});
@@ -748,6 +750,14 @@ public class Files.Window : Gtk.ApplicationWindow {
         } else if (selected_files.first ().next == null) {
             sidebar.add_favorite_uri (selected_files.first ().data.uri);
         } // Ignore if more than one item selected
+    }
+
+    private void action_rename (GLib.SimpleAction action, GLib.Variant? param) {
+        if (current_view_widget == null) {
+            return;
+        }
+
+        current_view_widget.start_renaming_selected_file ();
     }
 
     private void action_find (GLib.SimpleAction action, GLib.Variant? param) {

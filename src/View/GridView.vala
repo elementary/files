@@ -37,12 +37,14 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public bool sort_reversed { get; set; default = false; }
     public bool all_selected { get; set; default = false; }
     public bool show_hidden_files { get; set; default = true; }
+    public bool is_renaming { get; set; default = false; }
 
     public signal void selection_changed ();
 
     private Gtk.ScrolledWindow scrolled_window;
     private Gtk.CustomSorter sorter;
     private CompareDataFunc<Files.File>? file_compare_func;
+    private GLib.List<FileItem> fileitem_list;
 
     ~GridView () {
         while (this.get_last_child () != null) {
@@ -57,9 +59,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             vexpand = true,
             hscrollbar_policy = Gtk.PolicyType.NEVER
         };
+        bind_property ("is_renaming", scrolled_window.vadjustment, "visible", BindingFlags.INVERT_BOOLEAN);
 
         model = new GLib.ListStore (typeof (Files.File));
-
         filter_model = new Gtk.FilterListModel (model, null);
         multi_selection = new Gtk.MultiSelection (filter_model);
 
@@ -75,12 +77,14 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         });
         filter_model.set_filter (custom_filter);
 
+        fileitem_list = new GLib.List<FileItem>();
         var item_factory = new Gtk.SignalListItemFactory ();
         item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = new FileItem () {
                 gridview = grid_view
             };
+            fileitem_list.prepend (file_item);
             bind_property (
                 "zoom-level",
                 file_item, "zoom-level",
@@ -96,7 +100,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             var list_item = ((Gtk.ListItem)obj);
             var file = (Files.File)list_item.get_item ();
             var file_item = (FileItem)list_item.child;
-            file_item.set_file (file);
+            file_item.bind_file (file);
             file_item.selected = list_item.selected;
             file_item.pos = list_item.position;
         });
@@ -104,10 +108,14 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         item_factory.unbind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = (FileItem)list_item.child;
-            file_item.set_file (null);
+            file_item.bind_file (null);
         });
 
         item_factory.teardown.connect ((obj) => {
+            var list_item = ((Gtk.ListItem)obj);
+            var file_item = (FileItem)list_item.child;
+            fileitem_list.remove (file_item);
+            //Do we need to destroy the FileItem?
         });
 
         grid_view = new Gtk.GridView (multi_selection, item_factory) {
@@ -256,9 +264,18 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
     }
 
-    public override void start_renaming_file (Files.File file) {}
-    public override void file_icon_changed (Files.File file) {}
+    public override void start_renaming_selected_file () {
+        unowned var selected_file_item = get_selected_file_item ();
+        if (selected_file_item != null) {
+            is_renaming = true;
+            selected_file_item.rename.begin ((obj, res) => {
+                selected_file_item.rename.end (res);
+                warning ("finished renaming");
+            });
+        }
+    }
 
+    public override void file_icon_changed (Files.File file) {}
     public override void file_changed (Files.File file) {} //TODO Update thumbnail
 
     public uint get_selected_files (out GLib.List<Files.File> selected_files) {
@@ -280,6 +297,25 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
 
         return count;
+    }
+
+    private unowned FileItem? get_selected_file_item () {
+        GLib.List<Files.File>? selected_files = null;
+        if (get_selected_files (out selected_files) == 1) {
+            return get_file_item_for_file (selected_files.data);
+        }
+
+        return null;
+    }
+
+    private unowned FileItem? get_file_item_for_file (Files.File file) {
+        foreach (unowned var file_item in fileitem_list) {
+            if (file_item.file == file) {
+                return file_item;
+            }
+        }
+
+        return null;
     }
 
     protected override void set_up_zoom_level () {
@@ -311,9 +347,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
 
         private int thumbnail_request = -1;
-        private Files.File? file = null;
 
-
+        public Files.File? file { get; set; default = null; }
         public Gtk.Image file_icon { get; set; }
         public Gtk.CheckButton selection_helper { get; set; }
         public Gtk.Label label { get; set; }
@@ -420,7 +455,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             });
         }
 
-        public void set_file (Files.File? file) {
+        public void bind_file (Files.File? file) {
             this.file = file;
             if (file != null) {
                 file.ensure_query_info ();
@@ -462,6 +497,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         public void get_color_tag () {
 
+        }
+
+        public async void rename () throws GLib.Error {
+            //TODO Get new name
+            yield FileUtils.set_file_display_name (file.location, "New Name", null);
         }
 
         ~FileItem () {

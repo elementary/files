@@ -28,6 +28,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract bool sort_reversed { get; set; }
     public abstract bool all_selected { get; set; }
     public abstract bool show_hidden_files { get; set; }
+    public abstract bool is_renaming { get; set; }
 
     public signal void path_change_request (GLib.File location);
 
@@ -40,7 +41,7 @@ public interface Files.ViewInterface : Gtk.Widget {
         Files.File? file, bool select, bool unselect_others
     ) {}
     public virtual void invert_selection () {}
-    public virtual void start_renaming_file (Files.File file) {}
+    public virtual void start_renaming_selected_file () {}
     public virtual void select_all () {}
     public virtual void unselect_all () {}
     public virtual void file_icon_changed (Files.File file) {}

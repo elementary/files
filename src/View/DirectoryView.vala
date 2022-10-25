@@ -47,7 +47,6 @@ namespace Files {
             {"open-with-app", on_selection_action_open_with_app, "u"},
             {"open-with-default", on_selection_action_open_with_default},
             {"open-with-other-app", on_selection_action_open_with_other_app},
-            {"rename", on_selection_action_rename},
             {"view-in-location", on_selection_action_view_in_location},
             {"forget", on_selection_action_forget},
             {"cut", on_selection_action_cut},
@@ -488,7 +487,6 @@ return null;
             if (dir.is_loading ()) {
                 disconnect_directory_loading_handlers (dir);
             }
-
             dir.file_added.disconnect (on_directory_file_added);
 //             dir.file_changed.disconnect (on_directory_file_changed);
             dir.file_deleted.disconnect (on_directory_file_deleted);
@@ -1826,17 +1824,17 @@ return null;
 return null;
         }
 
-        private void after_renamed_file_added (Files.File? new_file) {
-//             slot.directory.file_added.disconnect (after_renamed_file_added);
-//             /* new_file will be null if rename failed */
-//             if (new_file != null) {
-//                 select_and_scroll_to_gof_file (new_file, true);
-//             }
-        }
+//         private void after_renamed_file_added (Files.File? new_file) {
+// //             slot.directory.file_added.disconnect (after_renamed_file_added);
+// //             /* new_file will be null if rename failed */
+// //             if (new_file != null) {
+// //                 select_and_scroll_to_gof_file (new_file, true);
+// //             }
+//         }
 
-        private void start_renaming_file (Files.File file) {
+        // private void start_renaming_file (Files.File file) {
 //             view_widget.start_renaming_file (file);
-        }
+        // }
 
         private void cancel_timeout (ref uint id) {
 //             if (id > 0) {
