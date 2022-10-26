@@ -64,9 +64,6 @@ namespace Files {
         };
 
         const GLib.ActionEntry [] COMMON_ENTRIES = {
-            {"copy", on_common_action_copy},
-            {"paste-into", on_common_action_paste_into}, // Paste into selected folder
-            {"paste", on_common_action_paste}, // Paste into background folder
             {"open-in", on_common_action_open_in, "s"},
             {"bookmark", on_common_action_bookmark},
             {"properties", on_common_action_properties},

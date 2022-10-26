@@ -1244,6 +1244,23 @@ namespace Files.FileUtils {
     public bool protocol_is_supported (string protocol) {
         return protocol in GLib.Vfs.get_default ().get_supported_uri_schemes ();
     }
+
+    // Make string suitable for use in DnD and CLipboard operations
+    public string make_string_from_file_list (GLib.List<Files.File> file_list) {
+        var sb = new GLib.StringBuilder ("");
+        bool in_recent = file_list.data.is_recent_uri_scheme ();
+        file_list.@foreach ((file) => {
+            var target = in_recent ?
+                         file.get_display_target_uri () :
+                         file.get_target_location ().get_uri ();
+                // target = FileUtils.sanitize_path (target, null, false);
+
+            sb.append (target);
+            sb.append ("\r\n"); /* Drop onto Filezilla does not work without the "\r" */
+        });
+
+        return sb.str;
+    }
 }
 
 namespace Files {

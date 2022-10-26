@@ -34,6 +34,8 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"new-window", action_new_window},
         {"new-folder", action_new_folder},
         {"new-file", action_new_file},
+        {"copy", action_copy_to_clipboard},
+        {"paste", action_paste_from_clipboard},
         {"quit", action_quit},
         {"refresh", action_reload},
         {"undo", action_undo},
@@ -130,6 +132,8 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.new-window", {"<Ctrl>N"});
             marlin_app.set_accels_for_action ("win.new-folder", {"<Shift><Ctrl>N"});
             marlin_app.set_accels_for_action ("win.new-file", {"<Ctrl><Alt>N"});
+            marlin_app.set_accels_for_action ("win.copy", {"<Ctrl>C"});
+            marlin_app.set_accels_for_action ("win.paste", {"<Ctrl>V"});
             marlin_app.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
             marlin_app.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             marlin_app.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
@@ -930,9 +934,28 @@ public class Files.Window : Gtk.ApplicationWindow {
     private void show_select_and_rename (Files.ViewInterface view, Files.File file) {
         view.file_added.disconnect (show_select_and_rename);
         view.show_and_select_file (file, true, true);
-        action_rename ();
+        activate_action ("rename", null);
     }
 
+    private void action_copy_to_clipboard () {
+        if (current_view_widget != null) {
+            List<Files.File> selected_files = null;
+            if (current_view_widget.get_selected_files (out selected_files) > 0) {
+                ClipboardManager.get_instance ().copy_files (selected_files);
+            }
+        }
+    }
+
+    private void action_paste_from_clipboard () {
+            List<Files.File> selected_files = null;
+            ClipboardManager.get_instance ().paste_files.begin (
+                current_container.slot.location,
+                current_view_widget,
+                (obj, res) => {
+                    warning ("after paste complete");
+                }
+            );
+    }
     private void action_quit (GLib.SimpleAction action, GLib.Variant? param) {
         ((Files.Application)(application)).quit ();
     }
