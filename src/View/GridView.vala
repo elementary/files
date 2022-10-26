@@ -417,10 +417,13 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             var gesture_click = new Gtk.GestureClick () {
                 button = 1
             };
-            gesture_click.pressed.connect ((n_press, x, y) => {
-                if (n_press == 2 || file.is_folder ()) {
-                    // GridView will take appropriate action
-                    gridview.activate (pos);
+            gesture_click.released.connect ((n_press, x, y) => {
+                if (n_press == 1 && file.is_folder ()) {
+                    // Need to idle to allow selection to update
+                    Idle.add (() => {
+                        gridview.activate (pos);
+                        return Source.REMOVE;
+                    });
                 }
             });
             file_icon.add_controller (gesture_click);
