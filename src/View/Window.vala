@@ -22,9 +22,18 @@
 */
 
 public class Files.Window : Gtk.ApplicationWindow {
+    enum CreateType {
+        FOLDER,
+        FILE,
+        TEMPLATE,
+        DUPLICATE,
+        LINK
+    }
+
     const GLib.ActionEntry [] WIN_ENTRIES = {
         {"new-window", action_new_window},
         {"new-folder", action_new_folder},
+        {"new-file", action_new_file},
         {"quit", action_quit},
         {"refresh", action_reload},
         {"undo", action_undo},
@@ -120,6 +129,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.quit", {"<Ctrl>Q"});
             marlin_app.set_accels_for_action ("win.new-window", {"<Ctrl>N"});
             marlin_app.set_accels_for_action ("win.new-folder", {"<Shift><Ctrl>N"});
+            marlin_app.set_accels_for_action ("win.new-file", {"<Ctrl><Alt>N"});
             marlin_app.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
             marlin_app.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             marlin_app.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
@@ -862,25 +872,59 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_new_folder () {
+        create_new (CreateType.FOLDER);
+    }
+
+    private void action_new_file () {
+        create_new (CreateType.FILE);
+    }
+
+    private void create_new (CreateType type) {
         if (current_view_widget == null) {
             return;
         }
 
-        FileOperations.new_folder.begin (this, current_container.slot.location, null, (obj, res) => {
-            try {
-                var gfile = FileOperations.new_folder.end (res);
-                if (gfile != null) {
-                    var file = Files.File.@get (gfile);
-                    if (file != null) {
-                        //Wait for file to appear in view. Assumes current view widget will not
-                        //change in the next few milliseconds
-                        current_view_widget.file_added.connect (show_select_and_rename);
+        switch (type) {
+            case CreateType.FOLDER:
+                FileOperations.new_folder.begin (
+                    this, current_container.slot.location, null, (obj, res) => {
+                    try {
+                        var gfile = FileOperations.new_folder.end (res);
+                        if (gfile != null) {
+                            var file = Files.File.@get (gfile);
+                            if (file != null) {
+                                //Wait for file to appear in view. Assumes current view widget will not
+                                //change in the next few milliseconds
+                                current_view_widget.file_added.connect (show_select_and_rename);
+                            }
+                        }
+                    } catch (Error e) {
+                        critical (e.message);
                     }
-                }
-            } catch (Error e) {
-                critical (e.message);
-            }
-        });
+                });
+                break;
+            case CreateType.FILE:
+                FileOperations.new_file.begin (
+                    this, current_container.slot.uri, null, null, 0, null, (obj, res) => {
+                    try {
+                        var gfile = FileOperations.new_file.end (res);
+                        if (gfile != null) {
+                            var file = Files.File.@get (gfile);
+                            if (file != null) {
+                                //Wait for file to appear in view. Assumes current view widget will not
+                                //change in the next few milliseconds
+                                current_view_widget.file_added.connect (show_select_and_rename);
+                            }
+                        }
+                    } catch (Error e) {
+                        critical (e.message);
+                    }
+                });
+                break;
+            default:
+                //To implement template create_file_done
+                break;
+        }
     }
 
     private void show_select_and_rename (Files.ViewInterface view, Files.File file) {
