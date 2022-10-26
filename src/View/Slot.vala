@@ -298,11 +298,11 @@ public class Slot : Files.AbstractSlot {
 
     public override bool set_all_selected (bool select_all) {
         if (dir_view != null) {
-            if (select_all) {
-                dir_view.select_all ();
-            } else {
-                dir_view.unselect_all ();
-            }
+            // if (select_all) {
+            //     dir_view.select_all ();
+            // } else {
+            //     dir_view.unselect_all ();
+            // }
             return true;
         } else {
             return false;
@@ -310,28 +310,28 @@ public class Slot : Files.AbstractSlot {
     }
 
     public override unowned GLib.List<Files.File>? get_selected_files () {
-        if (dir_view != null) {
-            return dir_view.get_selected_files ();
-        } else {
+        // if (dir_view != null) {
+            // return dir_view.get_selected_files ();
+        // } else {
             return null;
-        }
+        // }
     }
 
     public override void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {
         if (dir_view != null) {
-            dir_view.select_glib_files_when_thawed (files, focus_location);
+            // dir_view.select_glib_files_when_thawed (files, focus_location);
         }
     }
 
     public void select_gof_file (Files.File gof) {
         if (dir_view != null) {
-            dir_view.select_gof_file (gof);
+            // dir_view.select_gof_file (gof);
         }
     }
 
     public override void focus_first_for_empty_selection (bool select = true) {
         if (dir_view != null) {
-            dir_view.focus_first_for_empty_selection (select);
+            // dir_view.focus_first_for_empty_selection (select);
         }
     }
 

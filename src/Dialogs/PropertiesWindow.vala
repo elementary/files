@@ -338,30 +338,30 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
     }
 
     private void rename_file (Files.File file, string _new_name) {
-        /* Only rename if name actually changed */
-        original_name = file.info.get_name ();
+        // /* Only rename if name actually changed */
+        // original_name = file.info.get_name ();
 
-        var new_name = _new_name.strip (); // Disallow leading and trailing space
+        // var new_name = _new_name.strip (); // Disallow leading and trailing space
 
-        if (new_name != "") { // Do not want a filename consisting of spaces only (even if legal)
-            if (new_name != original_name) {
-                proposed_name = new_name;
-                view.set_file_display_name.begin (file.location, new_name, null, (obj, res) => {
-                    GLib.File? new_location = null;
-                    try {
-                        new_location = view.set_file_display_name.end (res);
-                        reset_entry_text (new_location.get_basename ());
-                        goffile = Files.File.@get (new_location);
-                        files.first ().data = goffile;
-                    } catch (Error e) {} // Warning dialog already shown
-                });
-            }
-        } else {
-            warning ("Blank name not allowed");
-            new_name = original_name;
-        }
+        // if (new_name != "") { // Do not want a filename consisting of spaces only (even if legal)
+        //     if (new_name != original_name) {
+        //         proposed_name = new_name;
+        //         view.window.set_file_display_name.begin (file.location, new_name, null, (obj, res) => {
+        //             GLib.File? new_location = null;
+        //             try {
+        //                 new_location = view.set_file_display_name.end (res);
+        //                 reset_entry_text (new_location.get_basename ());
+        //                 goffile = Files.File.@get (new_location);
+        //                 files.first ().data = goffile;
+        //             } catch (Error e) {} // Warning dialog already shown
+        //         });
+        //     }
+        // } else {
+        //     warning ("Blank name not allowed");
+        //     new_name = original_name;
+        // }
 
-        reset_entry_text (new_name);
+        // reset_entry_text (new_name);
     }
 
     public void reset_entry_text (string? new_name = null) {

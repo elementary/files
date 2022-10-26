@@ -52,15 +52,15 @@ namespace Files {
             {"cut", on_selection_action_cut},
             {"trash", on_selection_action_trash},
             {"delete", on_selection_action_delete},
-            {"restore", on_selection_action_restore},
-            {"invert-selection", invert_selection}
+            {"restore", on_selection_action_restore}
+            // {"invert-selection", invert_selection}
         };
 
         const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
-            {"new", on_background_action_new, "s"},
+            // {"new", on_background_action_new, "s"},
             {"create-from", on_background_action_create_from, "s"},
-            {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-            {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
+            // {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
+            // {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
         };
 
         const GLib.ActionEntry [] COMMON_ENTRIES = {
@@ -705,51 +705,7 @@ return null;
 //             );
 //         }
 
-//         private void new_empty_folder () {
-//             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
-//             slot.directory.block_monitor ();
-//             FileOperations.new_folder.begin (this, slot.location, null, (obj, res) => {
-//                 try {
-//                     var file = FileOperations.new_folder.end (res);
-//                     create_file_done (file);
-//                 } catch (Error e) {
-//                     critical (e.message);
-//                 }
-//             });
-//         }
-
-//         private void after_new_file_added (Files.File? file) {
-//             slot.directory.file_added.disconnect (after_new_file_added);
-//             if (file != null) {
-//                 rename_file (file);
-//             }
-//         }
-
-//         private void rename_file (Files.File file_to_rename) {
-//             if (renaming) {
-//                 warning ("already renaming %s", file_to_rename.basename);
-//                 return;
-//             }
-//             /* Assume writability on remote locations */
-//             /**TODO** Reliably determine writability with various remote protocols.*/
-//             if (is_writable || !slot.directory.is_local) {
-//                 start_renaming_file (file_to_rename);
-//             } else {
-//                 warning ("You do not have permission to rename this file");
-//             }
-//         }
-
 // /** File operation callbacks */
-//         [CCode (instance_pos = -1)]
-        public void create_file_done (GLib.File? new_file) {
-//             if (new_file == null) {
-//                 return;
-//             }
-
-//             /* Start to rename the file once we get signal that it has been added to model */
-//             slot.directory.file_added.connect_after (after_new_file_added);
-//             unblock_directory_monitor ();
-        }
 
         public void after_trash_or_delete () {
 //             unblock_directory_monitor ();
@@ -809,22 +765,6 @@ return null;
 //             }
 //         }
 
-        private void on_selection_action_rename (GLib.SimpleAction action, GLib.Variant? param) {
-//             rename_selected_file ();
-        }
-
-//         private void rename_selected_file () {
-//             if (selected_files == null) {
-//                 return;
-//             }
-
-//             if (selected_files.next != null) {
-//                 warning ("Cannot rename multiple files (yet) - renaming first only");
-//             }
-
-//             /* Batch renaming will be provided by a contractor */
-//             rename_file (selected_files.first ().data);
-//         }
 
         private void on_selection_action_cut (GLib.SimpleAction action, GLib.Variant? param) {
 //             GLib.List<Files.File> selection = get_selected_files_for_transfer ();
@@ -880,13 +820,6 @@ return null;
         }
 
 // /** Background actions */
-        private void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
-//             window.change_state_show_remote_thumbnails (action);
-        }
-
-        private void change_state_hide_local_thumbnails (GLib.SimpleAction action) {
-//             window.change_state_hide_local_thumbnails (action);
-        }
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
 //             switch (param.get_string ()) {
@@ -1809,33 +1742,6 @@ return null;
 
 //         }
 
-        public async GLib.File? set_file_display_name (
-            GLib.File old_location,
-            string new_name,
-            GLib.Cancellable? cancellable = null
-        ) throws GLib.Error {
-//             /* Wait for the file to be added to the model before trying to select and scroll to it */
-//             slot.directory.file_added.connect_after (after_renamed_file_added);
-//             try {
-//                 return yield FileUtils.set_file_display_name (old_location, new_name, cancellable);
-//             } catch (GLib.Error e) {
-//                 throw e;
-//             }
-return null;
-        }
-
-//         private void after_renamed_file_added (Files.File? new_file) {
-// //             slot.directory.file_added.disconnect (after_renamed_file_added);
-// //             /* new_file will be null if rename failed */
-// //             if (new_file != null) {
-// //                 select_and_scroll_to_gof_file (new_file, true);
-// //             }
-//         }
-
-        // private void start_renaming_file (Files.File file) {
-//             view_widget.start_renaming_file (file);
-        // }
-
         private void cancel_timeout (ref uint id) {
 //             if (id > 0) {
 //                 GLib.Source.remove (id);
@@ -1870,20 +1776,6 @@ return null;
 //             is_frozen = true; /* stop signal handlers running during destruction */
 //             cancel ();
 //             unselect_all ();
-        }
-
-        private void invert_selection () {
-//             view_widget.invert_selection ();
-        }
-
-        public void select_all () {
-//             view_widget.select_all ();
-//             update_selected_files_and_menu ();
-        }
-
-        public void unselect_all () {
-//             view_widget.unselect_all ();
-//             update_selected_files_and_menu ();
         }
 
 //         public virtual void highlight_path (Gtk.TreePath? path) {}
