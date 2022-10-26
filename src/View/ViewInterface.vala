@@ -37,11 +37,8 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void zoom_out () {}
     public virtual void zoom_normal () {}
 
-    public virtual void show_and_select_file (
-        Files.File? file, bool select, bool unselect_others
-    ) {}
+    public virtual void show_and_select_file (Files.File? file, bool select, bool unselect_others) {}
     public virtual void invert_selection () {}
-    public virtual void start_renaming_selected_file () {}
     public virtual void select_all () {}
     public virtual void unselect_all () {}
     public virtual void file_icon_changed (Files.File file) {}
@@ -49,9 +46,6 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void file_changed (Files.File file) {}
     public virtual void add_file (Files.File file) {}
     public virtual void clear () {}
-    // public virtual void set_renaming (bool is_renaming) {}
 
     public abstract uint get_selected_files (out List<Files.File> selected_files);
-
-
 }

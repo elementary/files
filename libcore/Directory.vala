@@ -760,17 +760,6 @@ public class Files.Directory : Object {
         return file_hash.get_values ();
     }
 
-    // public void load_hiddens () {
-    //     if (!can_load) {
-    //         return;
-    //     }
-    //     if (state != State.LOADED) {
-    //         list_directory_async.begin (null);
-    //     } else {
-    //         list_cached_files ();
-    //     }
-    // }
-
     public void update_files () {
         foreach (unowned Files.File gof in file_hash.get_values ()) {
             if (gof != null && gof.info != null) {
@@ -781,7 +770,7 @@ public class Files.Directory : Object {
 
     public void update_desktop_files () {
         foreach (unowned Files.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null &&  gof.is_desktop) {
+            if (gof != null && gof.info != null && gof.is_desktop) {
                 gof.update_desktop_file ();
             }
         }

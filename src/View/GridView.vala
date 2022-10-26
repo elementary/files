@@ -76,7 +76,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         });
         filter_model.set_filter (custom_filter);
 
-        fileitem_list = new GLib.List<FileItem>();
+        fileitem_list = new GLib.List<FileItem> ();
         var item_factory = new Gtk.SignalListItemFactory ();
         item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
@@ -143,14 +143,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         notify["sort-directories-first"].connect (() => {
             model.sort (file_compare_func);
         });
-        notify["is_renaming"].connect (() => {
-            if (is_renaming) {
-warning ("is renaming");
-                scrolled_window.vscrollbar_policy = Gtk.PolicyType.NEVER;
-            } else {
-                scrolled_window.vscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
-            }
-        });
+
         prefs.notify["show-hidden-files"].connect (() => {
             // This refreshes the filter as well
             model.sort (file_compare_func);
@@ -205,11 +198,6 @@ warning ("is renaming");
 
         return (ZoomLevel)zoom;
     }
-
-    // public override void set_renaming (bool is_renaming) {
-    //     var vscroll_bar = scrolled_window.get_vscrollbar ();
-    //     vscroll_bar.visible = !is_renaming;
-    // }
 
     public override void show_and_select_file (
         Files.File? file, bool select, bool unselect_others
@@ -269,38 +257,6 @@ warning ("is renaming");
         }
     }
 
-    public override void start_renaming_selected_file () {
-        unowned var selected_file_item = get_selected_file_item ();
-        if (selected_file_item != null) {
-            is_renaming = true;
-            var layout = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
-            var name_label = new Gtk.Label (_("Enter the new name"));
-            var name_entry = new Gtk.Entry () {
-                text = selected_file_item.file.basename
-            };
-            layout.append (name_label);
-            layout.append (name_entry);
-            var rename_dialog = new Granite.Dialog () {
-                modal = true
-            };
-            rename_dialog.get_content_area ().append (layout);
-            rename_dialog.add_button ("Cancel", Gtk.ResponseType.CANCEL);
-
-            var suggested_button = rename_dialog.add_button ("Suggested Action", Gtk.ResponseType.ACCEPT);
-            suggested_button.add_css_class ("suggested-action");
-
-            rename_dialog.response.connect ((response_id) => {
-                if (response_id == Gtk.ResponseType.ACCEPT) {
-                    warning ("Do rename");
-                }
-
-                rename_dialog.destroy ();
-                is_renaming = false;
-            });
-            rename_dialog.present ();
-        }
-    }
-
     public override void file_icon_changed (Files.File file) {}
     public override void file_changed (Files.File file) {} //TODO Update thumbnail
 
@@ -326,6 +282,7 @@ warning ("is renaming");
     }
 
     private unowned FileItem? get_selected_file_item () {
+        //NOTE This assumes that the target selected file is bound to a FileItem (ie visible?)
         GLib.List<Files.File>? selected_files = null;
         if (get_selected_files (out selected_files) == 1) {
             return get_file_item_for_file (selected_files.data);

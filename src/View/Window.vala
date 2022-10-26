@@ -757,7 +757,65 @@ public class Files.Window : Gtk.ApplicationWindow {
             return;
         }
 
-        current_view_widget.start_renaming_selected_file ();
+        List<Files.File> selected_files = null;
+        if (current_view_widget.get_selected_files (out selected_files) == 1) {
+            var file = selected_files.data;
+            current_view_widget.is_renaming = true; //Needed??
+
+            var layout = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
+            var header = new Granite.HeaderLabel (_("Enter the new name")) {
+                halign = Gtk.Align.CENTER
+            };
+            var name_entry = new Gtk.Entry () { //TODO Use a validated entry?
+                text = file.basename,
+                width_chars = int.min (file.basename.length + 6, 100)
+            };
+            layout.append (header);
+            layout.append (name_entry);
+            var rename_dialog = new Granite.Dialog () {
+                modal = true
+            };
+            rename_dialog.get_content_area ().append (layout);
+            rename_dialog.add_button ("Cancel", Gtk.ResponseType.CANCEL);
+
+            var suggested_button = rename_dialog.add_button ("Rename", Gtk.ResponseType.ACCEPT);
+            suggested_button.add_css_class ("suggested-action");
+            name_entry.bind_property (
+                "text",
+                suggested_button,
+                "sensitive",
+                BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE,
+                (binding, src, ref tgt) => {
+                    unowned var text = src.get_string ();
+                    bool sensitive = (
+                        (text != "") &&
+                        !(text.contains (Path.DIR_SEPARATOR_S)) &&
+                        (text != file.basename)
+                    );
+                    tgt.set_boolean (sensitive);
+                    return true;
+                },
+                null
+            );
+
+            name_entry.activate.connect (() => {
+                rename_dialog.response (suggested_button.sensitive ? Gtk.ResponseType.ACCEPT : Gtk.ResponseType.CANCEL);
+            });
+
+            rename_dialog.response.connect ((response_id) => {
+                if (response_id == Gtk.ResponseType.ACCEPT) {
+                    FileUtils.set_file_display_name.begin (
+                        file.location,
+                        name_entry.text,
+                        null //TODO Do we need a cancellable?
+                    );
+                }
+
+                rename_dialog.destroy ();
+                current_view_widget.is_renaming = false;
+            });
+            rename_dialog.present ();
+        }
     }
 
     private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
