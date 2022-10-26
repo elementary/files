@@ -744,12 +744,23 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
         /* Note: Duplicate bookmarks will not be created by BookmarkList */
-        unowned var selected_files = current_container.view.get_selected_files ();
-        if (selected_files == null) {
-            sidebar.add_favorite_uri (current_container.location.get_uri ());
-        } else if (selected_files.first ().next == null) {
-            sidebar.add_favorite_uri (selected_files.first ().data.uri);
-        } // Ignore if more than one item selected
+        if (current_view_widget == null) {
+            return;
+        }
+
+        List<Files.File> selected_files = null;
+        switch (current_view_widget.get_selected_files (out selected_files)) {
+            case 0:
+                // Bookmark the background folder
+                sidebar.add_favorite_uri (current_container.location.get_uri ());
+                break;
+            case 1:
+                // Bookmark the selected file/folder
+                sidebar.add_favorite_uri (selected_files.data.uri);
+                break;
+            default:
+                break;
+        }
     }
 
     private void action_rename (GLib.SimpleAction action, GLib.Variant? param) {
