@@ -24,6 +24,7 @@
 public class Files.Window : Gtk.ApplicationWindow {
     const GLib.ActionEntry [] WIN_ENTRIES = {
         {"new-window", action_new_window},
+        {"new-folder", action_new_folder},
         {"quit", action_quit},
         {"refresh", action_reload},
         {"undo", action_undo},
@@ -118,6 +119,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         if (is_first_window) {
             marlin_app.set_accels_for_action ("win.quit", {"<Ctrl>Q"});
             marlin_app.set_accels_for_action ("win.new-window", {"<Ctrl>N"});
+            marlin_app.set_accels_for_action ("win.new-folder", {"<Shift><Ctrl>N"});
             marlin_app.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
             marlin_app.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             marlin_app.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
@@ -742,7 +744,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         top_menu.enter_navigate_mode ();
     }
 
-    private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
+    private void action_bookmark () {
         /* Note: Duplicate bookmarks will not be created by BookmarkList */
         if (current_view_widget == null) {
             return;
@@ -763,7 +765,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
     }
 
-    private void action_rename (GLib.SimpleAction action, GLib.Variant? param) {
+    private void action_rename () {
         if (current_view_widget == null) {
             return;
         }
@@ -810,7 +812,9 @@ public class Files.Window : Gtk.ApplicationWindow {
             );
 
             name_entry.activate.connect (() => {
-                rename_dialog.response (suggested_button.sensitive ? Gtk.ResponseType.ACCEPT : Gtk.ResponseType.CANCEL);
+                rename_dialog.response (
+                    suggested_button.sensitive ? Gtk.ResponseType.ACCEPT : Gtk.ResponseType.CANCEL
+                );
             });
 
             rename_dialog.response.connect ((response_id) => {
@@ -855,6 +859,34 @@ public class Files.Window : Gtk.ApplicationWindow {
                 return GLib.Source.REMOVE;
             });
         }
+    }
+
+    private void action_new_folder () {
+        if (current_view_widget == null) {
+            return;
+        }
+
+        FileOperations.new_folder.begin (this, current_container.slot.location, null, (obj, res) => {
+            try {
+                var gfile = FileOperations.new_folder.end (res);
+                if (gfile != null) {
+                    var file = Files.File.@get (gfile);
+                    if (file != null) {
+                        //Wait for file to appear in view. Assumes current view widget will not
+                        //change in the next few milliseconds
+                        current_view_widget.file_added.connect (show_select_and_rename);
+                    }
+                }
+            } catch (Error e) {
+                critical (e.message);
+            }
+        });
+    }
+
+    private void show_select_and_rename (Files.ViewInterface view, Files.File file) {
+        view.file_added.disconnect (show_select_and_rename);
+        view.show_and_select_file (file, true, true);
+        action_rename ();
     }
 
     private void action_quit (GLib.SimpleAction action, GLib.Variant? param) {

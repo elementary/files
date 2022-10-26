@@ -39,11 +39,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public bool show_hidden_files { get; set; default = true; }
     public bool is_renaming { get; set; default = false; }
 
-    public signal void selection_changed ();
-
     private Gtk.ScrolledWindow scrolled_window;
     private Gtk.CustomSorter sorter;
     private CompareDataFunc<Files.File>? file_compare_func;
+    private EqualFunc<Files.File>? file_equal_func;
     private GLib.List<FileItem> fileitem_list;
 
     ~GridView () {
@@ -63,6 +62,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         model = new GLib.ListStore (typeof (Files.File));
         filter_model = new Gtk.FilterListModel (model, null);
         multi_selection = new Gtk.MultiSelection (filter_model);
+
+        file_equal_func = ((filea, fileb) => {
+            return filea.basename == fileb.basename;
+        });
 
         file_compare_func = ((filea, fileb) => {
             return filea.compare_for_sort (
@@ -119,7 +122,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         grid_view = new Gtk.GridView (multi_selection, item_factory) {
             orientation = Gtk.Orientation.VERTICAL,
-            max_columns = 20
+            max_columns = 20,
+            enable_rubberband = true
         };
 
         grid_view.activate.connect ((pos) => {
@@ -172,6 +176,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public override void add_file (Files.File file) {
         //TODO Delay sorting until adding finished?
         model.insert_sorted (file, file_compare_func);
+        Idle.add (() => {
+            file_added (file);
+            return Source.REMOVE;
+        });
     }
 
     public override void clear () {
@@ -204,7 +212,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     ) {
         uint pos = 0;
         if (file != null) {
-            model.find (file, out pos); //Inefficient?
+            model.find_with_equal_func (file, file_equal_func, out pos); //Inefficient?
+        } else {
+            return;
         }
 
         //TODO Check pos same in sorted model and model
@@ -213,14 +223,13 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
 
         // Move focused item to top
-        //TODO Work out how to move to middle of visible area?
+        //TODO Work out how to move to middle of visible area? Need number of columns/width of fileitem?
         //Idle until gridview layed out.
         Idle.add (() => {
             var adj = scrolled_window.vadjustment;
-            var val = adj.upper * double.min (
-                (double)100 / (double) model.get_n_items (), adj.upper
+            adj.value = adj.upper * double.min (
+                (double)pos / (double) model.get_n_items (), adj.upper
             );
-
             return Source.REMOVE;
         });
     }

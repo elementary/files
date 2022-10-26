@@ -30,7 +30,9 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract bool show_hidden_files { get; set; }
     public abstract bool is_renaming { get; set; }
 
+    public signal void selection_changed ();
     public signal void path_change_request (GLib.File location);
+    public signal void file_added (Files.File file);
 
     public virtual void set_up_zoom_level () {}
     public virtual void zoom_in () {}
