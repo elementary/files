@@ -148,6 +148,8 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             marlin_app.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
             marlin_app.set_accels_for_action ("win.tab::PREVIOUS", {"<Ctrl>Page_Up", "<Shift><Ctrl>Tab"});
+            marlin_app.set_accels_for_action ("win.tab::DUP", {"<Ctrl><Alt>T"});
+            marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Super>N"});
             marlin_app.set_accels_for_action (
                 GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (0)), {"<Ctrl>1"}
             );
@@ -178,8 +180,6 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.sort-type::SIZE", {"<Alt>2"});
             marlin_app.set_accels_for_action ("win.sort-type::TYPE", {"<Alt>3"});
             marlin_app.set_accels_for_action ("win.sort-type::MODIFIED", {"<Alt>4"});
-            marlin_app.set_accels_for_action ("win.tab::TAB", {"<Ctrl><Alt>T"});
-            marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
         }
 
         build_window ();
@@ -410,18 +410,8 @@ public class Files.Window : Gtk.ApplicationWindow {
 
         //TODO Reimplement in Gtk4
         tab_view.create_window.connect (() => {
-            // /* Called when tab dragged out of notebook */
-            // var vc = (ViewContainer)(tab.child) ;
-            // /* Close view now to disconnect signal handler closures which can trigger after slot destruction */
-            // vc.close ();
-
-            // marlin_app.create_window (vc.location, real_mode (vc.view_mode));
-
-            // /* remove_tab function uses Idle loop to close tab */
-            // remove_tab (tab);
-            return marlin_app.create_window ().tab_view;
+            return marlin_app.create_empty_window ().tab_view;
         });
-
 
         tab_view.page_attached.connect ((tab, pos) => {
             var vc = (ViewContainer)(tab.child) ;
@@ -482,7 +472,7 @@ public class Files.Window : Gtk.ApplicationWindow {
                            ViewMode mode = ViewMode.PREFERRED,
                            bool ignore_duplicate = false) {
 
-        if (files == null || files.length == 0 || files[0] == null) {
+        if (files == null) { //If files is empty assume this is intentional
             /* Restore session if not root and settings allow */
             if (Files.is_admin () ||
                 !Files.app_settings.get_boolean ("restore-tabs") ||
@@ -1071,12 +1061,13 @@ public class Files.Window : Gtk.ApplicationWindow {
                 tab_view.select_previous_page ();
                 break;
 
-            case "TAB":
+            case "DUB":
                 add_tab (current_container.location, current_container.view_mode);
                 break;
 
-            case "WINDOW":
-                tab_view.create_window ();
+            case "WINDOW": // Move tab to new window
+                var new_window = marlin_app.create_empty_window ();
+                tab_view.transfer_page (tab_view.selected_page, new_window.tab_view, 0);
                 break;
 
             default:

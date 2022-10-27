@@ -299,8 +299,12 @@ public class Files.Application : Gtk.Application {
         return create_window_with_tabs ({location}, viewmode);
     }
 
+    public Files.Window? create_empty_window () { // Used when moving a tab into a new window
+        return create_window_with_tabs ({});
+    }
+
     /* All window creation should be done via this function */
-    private Files.Window? create_window_with_tabs (GLib.File[] locations = {},
+    private Files.Window? create_window_with_tabs (GLib.File[] locations = null,
                                                   ViewMode viewmode = ViewMode.PREFERRED) {
 
         if (this.get_windows ().length () >= MAX_WINDOWS) { //Can be assumed to be limited in length
