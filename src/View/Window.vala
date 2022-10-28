@@ -38,6 +38,8 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"link", action_link_to_clipboard},
         {"cut", action_cut_to_clipboard},
         {"paste", action_paste_from_clipboard},
+        {"trash", action_trash},
+        {"delete", action_delete},
         {"quit", action_quit},
         {"refresh", action_reload},
         {"undo", action_undo},
@@ -138,6 +140,8 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.link", {"<Ctrl><Shift>C"});
             marlin_app.set_accels_for_action ("win.cut", {"<Ctrl>X"});
             marlin_app.set_accels_for_action ("win.paste", {"<Ctrl>V"});
+            marlin_app.set_accels_for_action ("win.trash", {"Delete"});
+            marlin_app.set_accels_for_action ("win.delete", {"<Shift>Delete"});
             marlin_app.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
             marlin_app.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             marlin_app.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
@@ -960,7 +964,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_paste_from_clipboard () {
-            List<Files.File> selected_files = null;
+        if (current_view_widget != null) {
             ClipboardManager.get_instance ().paste_files.begin (
                 current_container.slot.location,
                 current_view_widget,
@@ -968,7 +972,59 @@ public class Files.Window : Gtk.ApplicationWindow {
                     warning ("after paste complete");
                 }
             );
+        }
     }
+
+    private void action_trash () {
+        delete_selected_files (true);
+    }
+
+    private void action_delete () {
+        delete_selected_files (false);
+    }
+
+    private void delete_selected_files (bool try_trash) {
+        //TODO Warning/confirming dialog under some circumstances
+        var aslot = current_container.slot;
+        if (aslot != null &&
+            !(aslot.in_trash && try_trash) &&
+            aslot.is_writable) {
+
+                List<Files.File> selected_files = null;
+                if (current_view_widget.get_selected_files (out selected_files) > 0) {
+
+                GLib.List<GLib.File> locations = null;
+                if (aslot.in_recent) {
+                    selected_files.@foreach ((file) => {
+                        locations.prepend (GLib.File.new_for_uri (file.get_display_target_uri ()));
+                    });
+                    // Refresh view?
+                } else {
+                    selected_files.@foreach ((file) => {
+                        locations.prepend (file.location);
+                    });
+                }
+
+                aslot.directory.block_monitor (); //Needed?
+                FileOperations.@delete.begin (
+                    locations,
+                    this,
+                    true, // Do not delete immediately
+                    null,
+                    (obj, res) => {
+                        try {
+                            FileOperations.@delete.end (res);
+                        } catch (Error e) {
+                            debug (e.message);
+                        }
+
+                        aslot.directory.unblock_monitor ();
+                    }
+                );
+            }
+        }
+    }
+
     private void action_quit (GLib.SimpleAction action, GLib.Variant? param) {
         ((Files.Application)(application)).quit ();
     }

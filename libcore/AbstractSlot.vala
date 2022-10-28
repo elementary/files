@@ -50,6 +50,24 @@ namespace Files {
             }
         }
 
+        public bool in_trash {
+            get {
+                return directory.file.is_trashed ();
+            }
+        }
+
+        public bool in_recent {
+            get {
+                return directory.file.is_recent_uri_scheme ();
+            }
+        }
+
+        public bool is_writable {
+            get {
+                return directory.file.is_writable ();
+            }
+        }
+
         public virtual bool is_frozen {get; set; default = true;}
 
         protected Gtk.Box extra_location_widgets;
