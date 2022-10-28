@@ -1,4 +1,4 @@
-/* Copyright (c) 2018-20 elementary LLC (https://elementary.io)
+/* Copyright (c) 2022 elementary LLC (https://elementary.io)
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as

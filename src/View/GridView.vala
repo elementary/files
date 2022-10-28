@@ -40,10 +40,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public bool is_renaming { get; set; default = false; }
 
     private Gtk.ScrolledWindow scrolled_window;
-    private Gtk.CustomSorter sorter;
     private CompareDataFunc<Files.File>? file_compare_func;
     private EqualFunc<Files.File>? file_equal_func;
-    private GLib.List<FileItem> fileitem_list;
+    private GLib.List<GridFileItem> fileitem_list;
 
     ~GridView () {
         while (this.get_last_child () != null) {
@@ -79,11 +78,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         });
         filter_model.set_filter (custom_filter);
 
-        fileitem_list = new GLib.List<FileItem> ();
+        fileitem_list = new GLib.List<GridFileItem> ();
         var item_factory = new Gtk.SignalListItemFactory ();
         item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var file_item = new FileItem () {
+            var file_item = new GridFileItem () {
                 gridview = grid_view
             };
             fileitem_list.prepend (file_item);
@@ -93,7 +92,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
             );
             list_item.child = file_item;
-            // We handle file activation ourselves in FileItem
+            // We handle file activation ourselves in GridFileItem
             list_item.activatable = false;
             list_item.selectable = true;
         });
@@ -101,7 +100,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         item_factory.bind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file = (Files.File)list_item.get_item ();
-            var file_item = (FileItem)list_item.child;
+            var file_item = (GridFileItem)list_item.child;
             file_item.bind_file (file);
             file_item.selected = list_item.selected;
             file_item.pos = list_item.position;
@@ -109,13 +108,13 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         item_factory.unbind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var file_item = (FileItem)list_item.child;
+            var file_item = (GridFileItem)list_item.child;
             file_item.bind_file (null);
         });
 
         item_factory.teardown.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var file_item = (FileItem)list_item.child;
+            var file_item = (GridFileItem)list_item.child;
             fileitem_list.remove (file_item);
 
         });
@@ -296,8 +295,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         return count;
     }
 
-    private unowned FileItem? get_selected_file_item () {
-        //NOTE This assumes that the target selected file is bound to a FileItem (ie visible?)
+    private unowned GridFileItem? get_selected_file_item () {
+        //NOTE This assumes that the target selected file is bound to a GridFileItem (ie visible?)
         GLib.List<Files.File>? selected_files = null;
         if (get_selected_files (out selected_files) == 1) {
             return get_file_item_for_file (selected_files.data);
@@ -306,7 +305,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         return null;
     }
 
-    private unowned FileItem? get_file_item_for_file (Files.File file) {
+    private unowned GridFileItem? get_file_item_for_file (Files.File file) {
         foreach (unowned var file_item in fileitem_list) {
             if (file_item.file == file) {
                 return file_item;
@@ -332,197 +331,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         if (zoom_level > maximum_zoom) {
             zoom_level = maximum_zoom;
-        }
-    }
-
-    private class FileItem : Gtk.Widget {
-        private static Gtk.CssProvider fileitem_provider;
-        static construct {
-            set_layout_manager_type (typeof (Gtk.BoxLayout));
-            set_css_name ("fileitem");
-            fileitem_provider = new Gtk.CssProvider ();
-            fileitem_provider.load_from_resource ("/io/elementary/files/GridViewFileItem.css");
-        }
-
-        private int thumbnail_request = -1;
-
-        public Files.File? file { get; set; default = null; }
-        public Gtk.Image file_icon { get; construct; }
-        public Gtk.CheckButton selection_helper { get; construct; }
-        public Gtk.Label label { get; construct; }
-        public Gtk.TextView text_view { get; construct; }
-        public Gtk.Stack name_stack { get; construct; }
-        public Gtk.GridView gridview { get; set construct; }
-        public uint pos;
-
-        public ZoomLevel zoom_level {
-            set {
-                var size = value.to_icon_size ();
-                file_icon.pixel_size = size;
-                update_pix ();
-                file_icon.margin_start = size / 2;
-                file_icon.margin_end = size / 2;
-                file_icon.margin_top = size / 4;
-                selection_helper.margin_start = size / 3;
-                selection_helper.margin_end = size / 3;
-                selection_helper.margin_top = size / 6;
-                selection_helper.margin_bottom = size / 6;
-            }
-        }
-
-        public bool selected { get; set; default = false; }
-        public bool cut_pending { get; set; default = false; }
-
-        construct {
-            var lm = new Gtk.BoxLayout (Gtk.Orientation.VERTICAL);
-            set_layout_manager (lm);
-
-            get_style_context ().add_provider (
-                fileitem_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-            );
-
-
-            var icon_overlay = new Gtk.Overlay ();
-            file_icon = new Gtk.Image () {
-                icon_name = "image-missing",
-            };
-            icon_overlay.child = file_icon;
-
-            selection_helper = new Gtk.CheckButton () {
-                visible = false,
-                halign = Gtk.Align.START,
-                valign = Gtk.Align.START
-            };
-            icon_overlay.add_overlay (selection_helper);
-
-            label = new Gtk.Label ("Unbound") {
-                wrap = true,
-                wrap_mode = Pango.WrapMode.WORD_CHAR,
-                ellipsize = Pango.EllipsizeMode.END,
-                lines = 5,
-                margin_top = 3,
-                margin_bottom = 3,
-                margin_start = 3,
-                margin_end = 3,
-            };
-
-            text_view = new Gtk.TextView ();
-            name_stack = new Gtk.Stack ();
-            name_stack.add_child (label);
-            name_stack.add_child (text_view);
-            name_stack.visible_child = label;
-            icon_overlay.set_parent (this);
-            name_stack.set_parent (this);
-
-            Thumbnailer.@get ().finished.connect ((req) => {
-                if (req == thumbnail_request) {
-                    thumbnail_request = -1;
-                    update_pix ();
-                }
-            });
-
-            notify["selected"].connect (() => {
-                if (selected && !has_css_class ("selected")) {
-                    add_css_class ("selected");
-                    selection_helper.visible = true;
-                } else if (!selected && has_css_class ("selected")) {
-                    remove_css_class ("selected");
-                    selection_helper.visible = false;
-                }
-            });
-
-            var gesture_click = new Gtk.GestureClick () {
-                button = 1
-            };
-            gesture_click.released.connect ((n_press, x, y) => {
-                if (n_press == 1 && file.is_folder ()) {
-                    // Need to idle to allow selection to update
-                    Idle.add (() => {
-                        gridview.activate (pos);
-                        return Source.REMOVE;
-                    });
-                }
-            });
-            file_icon.add_controller (gesture_click);
-
-            var motion_controller = new Gtk.EventControllerMotion ();
-            motion_controller.enter.connect (() => {
-                selection_helper.visible = true;
-            });
-            motion_controller.leave.connect (() => {
-                selection_helper.visible = selected;
-            });
-            add_controller (motion_controller);
-            selection_helper.bind_property (
-                "active", this, "selected", BindingFlags.BIDIRECTIONAL
-            );
-            selection_helper.toggled.connect (() => {
-                if (selection_helper.active) {
-                    gridview.model.select_item (pos, false);
-                } else {
-                    gridview.model.unselect_item (pos);
-                }
-            });
-        }
-
-        public void bind_file (Files.File? file) {
-            this.file = file;
-            if (file != null) {
-                file.ensure_query_info ();
-                label.label = file.custom_display_name ?? file.basename;
-                if (file.pix == null) {
-                    file_icon.paintable = null;
-                    file.query_thumbnail_update (); // Ensure thumbstate up to date
-                    if (file.thumbstate == Files.File.ThumbState.UNKNOWN &&
-                        (prefs.show_remote_thumbnails || !file.is_remote_uri_scheme ()) &&
-                        !prefs.hide_local_thumbnails) { // Also hide remote if local hidden?
-
-                            Thumbnailer.@get ().queue_file (
-                                file, out thumbnail_request, file_icon.pixel_size > 128
-                            );
-                    }
-
-                    if (file.icon != null) {
-                        file_icon.gicon = file.icon;
-                    }
-                }
-
-                update_pix ();
-                var cut_pending = ClipboardManager.get_instance ().has_cut_file (file);
-                if (cut_pending && !has_css_class ("cut")) {
-                    add_css_class ("cut");
-                } else if (!cut_pending && has_css_class ("cut")) {
-                    remove_css_class ("cut");
-                }
-            } else {
-                label.label = "Unbound";
-                file_icon.icon_name = "image-missing";
-                thumbnail_request = -1;
-            }
-        }
-
-        public void rebind () {
-            bind_file (file);
-        }
-
-        private void update_pix () {
-            if (file != null) {
-                file.update_icon (file_icon.pixel_size, 1); //TODO Deal with scale
-                if (file.pix != null) {
-                    file_icon.paintable = Gdk.Texture.for_pixbuf (file.pix);
-                    queue_draw ();
-                }
-            }
-        }
-
-        public void get_color_tag () {
-
-        }
-
-        ~FileItem () {
-            while (this.get_last_child () != null) {
-                this.get_last_child ().unparent ();
-            }
         }
     }
 }
