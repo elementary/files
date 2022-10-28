@@ -41,19 +41,13 @@ public class Files.GridFileItem : Gtk.Widget {
 
     private Gtk.Image[] emblems;
     private Gtk.Box emblem_box;
+    private Gtk.Overlay icon_overlay;
 
     public ZoomLevel zoom_level {
         set {
             var size = value.to_icon_size ();
             file_icon.pixel_size = size;
             update_pix ();
-            file_icon.margin_start = size / 2;
-            file_icon.margin_end = size / 2;
-            file_icon.margin_top = size / 4;
-            selection_helper.margin_start = size / 3;
-            selection_helper.margin_end = size / 3;
-            selection_helper.margin_top = size / 6;
-            selection_helper.margin_bottom = size / 6;
         }
     }
 
@@ -68,8 +62,16 @@ public class Files.GridFileItem : Gtk.Widget {
             fileitem_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         );
 
-        var icon_overlay = new Gtk.Overlay ();
+        // Spread grid items out a little more than native GridView
+        icon_overlay = new Gtk.Overlay () {
+            margin_start = 12,
+            margin_end = 12,
+            margin_bottom = 8
+        };
+
         file_icon = new Gtk.Image () {
+            margin_end = 8,
+            margin_start = 8,
             icon_name = "image-missing",
         };
         icon_overlay.child = file_icon;
