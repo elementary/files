@@ -1,5 +1,5 @@
 /*
-* Copyright 2015-2020 elementary, Inc. (https://elementary.io)
+* Copyright 2022 elementary, Inc. (https://elementary.io)
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -50,5 +50,6 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void clear () {}
     public virtual void refresh_visible_items () {}
 
+    public abstract void show_context_menu (Files.FileItemInterface? clicked_item);
     public abstract uint get_selected_files (out List<Files.File> selected_files);
 }

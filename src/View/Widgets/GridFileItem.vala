@@ -17,7 +17,7 @@
  */
 
 
-public class Files.GridFileItem : Gtk.Widget {
+public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     private static Gtk.CssProvider fileitem_provider;
     private static Files.Preferences prefs;
     static construct {
@@ -36,7 +36,7 @@ public class Files.GridFileItem : Gtk.Widget {
     public Gtk.Label label { get; construct; }
     public Gtk.TextView text_view { get; construct; }
     public Gtk.Stack name_stack { get; construct; }
-    public Gtk.GridView gridview { get; set construct; }
+    public Files.GridView view { get; set construct; }
     public uint pos;
 
     private Gtk.Image[] emblems;
@@ -53,6 +53,10 @@ public class Files.GridFileItem : Gtk.Widget {
 
     public bool selected { get; set; default = false; }
     public bool cut_pending { get; set; default = false; }
+
+    public GridFileItem (Files.GridView view) {
+        Object (view: view);
+    }
 
     construct {
         var lm = new Gtk.BoxLayout (Gtk.Orientation.VERTICAL);
@@ -134,19 +138,30 @@ public class Files.GridFileItem : Gtk.Widget {
             }
         });
 
+        // Implement single-click navigate
         var gesture_click = new Gtk.GestureClick () {
-            button = 1
+            button = Gdk.BUTTON_PRIMARY
         };
         gesture_click.released.connect ((n_press, x, y) => {
             if (n_press == 1 && file.is_folder ()) {
                 // Need to idle to allow selection to update
                 Idle.add (() => {
-                    gridview.activate (pos);
+                    view.grid_view.activate (pos);
                     return Source.REMOVE;
                 });
             }
         });
         file_icon.add_controller (gesture_click);
+
+        // Implement context menu launching
+        var gesture_secondary_click = new Gtk.GestureClick () {
+            button = Gdk.BUTTON_SECONDARY
+        };
+        gesture_secondary_click.released.connect ((n_press, x, y) => {
+            warning ("Show context");
+            view.show_context_menu (this);
+        });
+        add_controller (gesture_secondary_click);
 
         var motion_controller = new Gtk.EventControllerMotion ();
         motion_controller.enter.connect (() => {
@@ -161,9 +176,9 @@ public class Files.GridFileItem : Gtk.Widget {
         );
         selection_helper.toggled.connect (() => {
             if (selection_helper.active) {
-                gridview.model.select_item (pos, false);
+                view.grid_view.model.select_item (pos, false);
             } else {
-                gridview.model.unselect_item (pos);
+                view.grid_view.model.unselect_item (pos);
             }
         });
     }
@@ -204,10 +219,6 @@ public class Files.GridFileItem : Gtk.Widget {
         }
     }
 
-    public void rebind () {
-        bind_file (file);
-    }
-
     private void update_pix () {
         if (file != null) {
             file.update_icon (file_icon.pixel_size, 1); //TODO Deal with scale
@@ -225,10 +236,6 @@ public class Files.GridFileItem : Gtk.Widget {
                 // queue_draw ();
             }
         }
-    }
-
-    public void get_color_tag () {
-
     }
 
     ~GridFileItem () {

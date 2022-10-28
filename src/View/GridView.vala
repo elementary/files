@@ -82,9 +82,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         var item_factory = new Gtk.SignalListItemFactory ();
         item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var file_item = new GridFileItem () {
-                gridview = grid_view
-            };
+            var file_item = new GridFileItem (this);
             fileitem_list.prepend (file_item);
             bind_property (
                 "zoom-level",
@@ -269,6 +267,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         if (model.find (file, out pos)) {
             model.remove (pos);
         }
+    }
+
+    public void show_context_menu (Files.FileItemInterface? item) {
+        warning ("show context menu");
     }
 
     public override void file_icon_changed (Files.File file) {}
