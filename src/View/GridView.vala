@@ -117,7 +117,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = (FileItem)list_item.child;
             fileitem_list.remove (file_item);
-            //Do we need to destroy the FileItem?
+
         });
 
         grid_view = new Gtk.GridView (multi_selection, item_factory) {
@@ -171,6 +171,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             grid_view.model = multi_selection;
             return Source.REMOVE;
         });
+    }
+
+    public override void refresh_visible_items () {
+        foreach (var file_item in fileitem_list) {
+            file_item.rebind ();
+        }
     }
 
     public override void add_file (Files.File file) {
@@ -363,7 +369,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 selection_helper.margin_bottom = size / 6;
             }
         }
+
         public bool selected { get; set; default = false; }
+        public bool cut_pending { get; set; default = false; }
 
         construct {
             var lm = new Gtk.BoxLayout (Gtk.Orientation.VERTICAL);
@@ -480,11 +488,21 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 }
 
                 update_pix ();
+                var cut_pending = ClipboardManager.get_instance ().has_cut_file (file);
+                if (cut_pending && !has_css_class ("cut")) {
+                    add_css_class ("cut");
+                } else if (!cut_pending && has_css_class ("cut")) {
+                    remove_css_class ("cut");
+                }
             } else {
                 label.label = "Unbound";
                 file_icon.icon_name = "image-missing";
                 thumbnail_request = -1;
             }
+        }
+
+        public void rebind () {
+            bind_file (file);
         }
 
         private void update_pix () {

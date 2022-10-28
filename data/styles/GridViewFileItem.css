@@ -10,3 +10,7 @@ fileitem.selected {
     border-radius: 1.0rem;
 }
 
+fileitem.cut {
+    opacity: 0.5;
+}
+

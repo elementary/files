@@ -34,9 +34,9 @@ namespace Files {
 
         private static ClipboardManager manager;
         private Gdk.Clipboard clipboard;
-        // private GLib.List<Files.File> files = null;
-        // private bool files_cutted = false;
-        // public bool files_linked {get; private set; default = false;}
+        private GLib.List<Files.File> files = null;
+        private bool files_cut = false;
+        public bool files_linked {get; private set; default = false;}
 
         /** Returns TRUE if the contents of the clipboard can be pasted into a folder.
         **/
@@ -56,47 +56,55 @@ namespace Files {
             return manager;
         }
 
-        // ~ClipboardManager () {
-        //     release_pending_files ();
-        // }
+        ~ClipboardManager () {
+            release_pending_files ();
+        }
 
         // /** If @file is null, returns whether there are ANY cut files
         //  * otherwise whether @file is amongst the cut files
         // **/
-        // public bool has_cutted_file (Files.File? file) {
-        //     return files_cutted && (file == null || has_file (file));
-        // }
-
-        // public bool has_file (Files.File file) {
-        //     return files != null && (files.find (file) != null);
-        // }
-
-        public void copy_files (GLib.List<Files.File> files) {
-warning ("copy files");
-            var data = FileUtils.make_string_from_file_list (files);
-            if (data != "") {
-                clipboard.set_text ("copy" + data);
-            }
-
-            warning ("data copied %s", data);
+        public bool has_cut_file (Files.File? file) {
+            return files_cut && (file == null || has_file (file));
         }
 
-        public void copy_link_files (GLib.List<Files.File> files) {
-            // transfer_files (true, true, files);
+        public bool has_file (Files.File file) {
+            return files != null && (files.find (file) != null);
+        }
+
+        public void copy_files (GLib.List<Files.File> files) {
+            var data = FileUtils.make_string_from_file_list (files);
+            if (data != "") {
+                set_file_list (true, false, files);
+                clipboard.set_text ("copy" + data);
+            }
         }
 
         public void cut_files (GLib.List<Files.File> files) {
-            // transfer_files (false, false, files);
+            var data = FileUtils.make_string_from_file_list (files);
+            if (data != "") {
+                set_file_list (false, false, files);
+                clipboard.set_text ("cut" + data);
+            }
+        }
+
+        public void copy_link_files (GLib.List<Files.File> files) {
+            var data = FileUtils.make_string_from_file_list (files);
+            if (data != "") {
+                set_file_list (true, true, files);
+                clipboard.set_text ("link" + data);
+            }
         }
 
         public async void paste_files (GLib.File target_file, Gtk.Widget? widget = null) {
             unowned var cp = clipboard.get_content ();
-            Value content = new Value (typeof (string));
+            var content = Value (typeof (string));
             string text = "";
-            if (cp.get_value (ref content)) {
-                text = content.get_string ();
-            } else {
-                return;
+            try {
+                if (cp.get_value (ref content)) {
+                    text = content.get_string ();
+                }
+            } catch (Error e) {
+                warning ("Error getting clipboard contents. %s", e.message);
             }
 
             //TODO Rework DnD for Gtk4
@@ -128,169 +136,40 @@ warning ("copy files");
             }
 
             if (action != Gdk.DragAction.COPY) {
-                clipboard.set_content (null);
+                clear_clipboard ();
             }
         }
 
-        // private async void contents_received (Gdk.ContentProvider cp,
-        //                                       GLib.File target_file,
-        //                                       Gtk.Widget? widget = null) throws GLib.Error {
-        //     /* check whether the retrieval worked */
-        //     Value content = new Value (typeof (string));
-        //     string text = "";
-        //     if (cp.get_value (ref content)) {
-        //         text = content.get_string ();
-        //     } else {
-        //         return;
-        //     }
+        public void clear_clipboard () {
+            clipboard.set_content (null);
+            release_pending_files ();
+            files_cut = false;
+            files_linked = false;
+        }
 
-        //     //TODO Rework DnD for Gtk4
-        //     Gdk.DragAction? action = null;
-        //     if (text.has_prefix ("copy")) {
-        //         action = Gdk.DragAction.COPY;
-        //         text = text.substring (4);
-        //     } else if (text.has_prefix ("cut")) {
-        //         action = Gdk.DragAction.MOVE;
-        //         text = text.substring (3);
-        //     } else if (text.has_prefix ("link")) {
-        //         action = Gdk.DragAction.LINK;
-        //         text = text.substring (4);
-        //     } else {
-        //         warning ("Invalid selection data in Files.ClipboardManager contents_received");
-        //         return;
-        //     }
+        private void set_file_list (bool copy, bool link, GLib.List<Files.File> files_for_transfer) {
+            release_pending_files ();
+            files_cut = !copy;
+            files_linked = link;
 
-        //     var file_list = FileUtils.files_from_uris (text);
-        //     if (file_list != null) {
-        //         try {
-        //             yield FileOperations.copy_move_link (file_list,
-        //                                                  target_file,
-        //                                                  action,
-        //                                                  widget);
-        //         } catch (Error e) {
-        //             throw e;
-        //         }
-        //     }
+            /* setup the new file list */
+            foreach (var file in files_for_transfer) {
+                files.prepend (file);
+                file.destroy.connect (on_file_destroyed);
+            }
+        }
 
-        //     /* clear the clipboard if it contained "cutted data"
-        //      * (gtk_clipboard_clear takes care of not clearing
-        //      * the selection if we don't own it)
-        //      */
-        //     if (action != Gdk.DragAction.COPY) {
-        //         clipboard.set_content (null);
-        //     }
-        //     // /* check the contents of the clipboard again if either the Xserver or
-        //     //  * our GTK+ version doesn't support the XFixes extension */
-        //     // if (!clipboard.get_display ().supports_selection_notification ()) {
-        //     //     owner_changed (null);
-        //     // }
-        // }
+        private void on_file_destroyed (Files.File file) {
+            file.destroy.disconnect (on_file_destroyed);
+            files.remove (file);
+        }
 
-//         private void owner_changed (Gdk.Event? owner_change_event) {
-// warning ("owner changed");
-//             unowned var cp = clipboard.get_content ();
-//             // clipboard.request_contents (Gdk.Atom.intern_static_string ("TARGETS"), (cb, sd) => {
-//                 can_paste = false;
-//                 // Gdk.Atom[] targets = null;
+        private void release_pending_files () {
+            foreach (var file in this.files) {
+                file.destroy.disconnect (on_file_destroyed);
+            }
 
-//                 // sd.get_targets (out targets);
-//                 // var formats = cp.formats;
-
-//                 //TODO Rework for ContentFormat
-//                 // foreach (var target in targets) {
-//                 //     if (target == x_special_gnome_copied_files) {
-//                 //         can_paste = true;
-//                 //         break;
-//                 //     }
-//                 // }
-
-//                 /* notify listeners that we have a new clipboard state */
-//                 changed ();
-//                 notify_property ("can-paste");
-//             // });
-//         }
-
-        /**
-        //  * Sets the clipboard to contain @files_for_transfer and marks them to be copied
-        //  * or moved according to @copy when the user pastes from the clipboard.
-        // **/
-        // private void transfer_files (bool copy, bool link, GLib.List<Files.File> files_for_transfer) {
-        //     release_pending_files ();
-        //     files_cutted = !copy;
-        //     files_linked = link;
-
-        //     /* setup the new file list */
-        //     foreach (var file in files_for_transfer) {
-        //         files.prepend (file);
-        //         file.destroy.connect (on_file_destroyed);
-        //     }
-
-            // /* acquire the Clipboard ownership */
-            // clipboard.set_with_owner (CLIPBOARD_TARGETS, get_callback, clear_callback, this);
-
-            // /* Need to fake a "owner-change" event here if the Xserver doesn't support clipboard notification */
-            // if (!clipboard.get_display ().supports_selection_notification ()) {
-            //     owner_changed (null);
-            // }
-        // }
-
-        // private void on_file_destroyed (Files.File file) {
-        //     file.destroy.disconnect (on_file_destroyed);
-        //     files.remove (file);
-        // }
-
-        // public static void get_callback (Gtk.Clipboard cb, Gdk.ContentProvider sd, uint target_info, void* parent) {
-        //     var manager = parent as ClipboardManager;
-        //     if (manager == null || manager.clipboard != cb) {
-        //         return;
-        //     }
-
-        //     switch (target_info) {
-        //         case ClipboardTarget.GNOME_COPIED_FILES: /* Pasting into a file handler */
-        //             string prefix = manager.files_cutted ? "cut" : (manager.files_linked ? "link" : "copy");
-        //             DndHandler.set_selection_data_from_file_list (sd,
-        //                                                           manager.files,
-        //                                                           prefix);
-        //             break;
-
-        //         case ClipboardTarget.PNG_IMAGE: /* Pasting into a (single) image handler */
-        //             if (manager.files == null) {
-        //                 break;
-        //             }
-
-        //             var filename = manager.files.data.location.get_path ();
-        //             try {
-        //                 var pixbuf = new Gdk.Pixbuf.from_file (filename);
-        //                 sd.set_pixbuf (pixbuf);
-        //             } catch (Error e) {
-        //                 warning ("failed to get pixbuf from file %s ", filename);
-        //             }
-
-        //             break;
-
-        //         case ClipboardTarget.UTF8_STRING: /* Pasting into a text handler */
-        //             DndHandler.set_selection_text_from_file_list (sd, manager.files, "");
-        //             break;
-        //         default:
-        //             break;
-        //     }
-        // }
-
-        // public static void clear_callback (Gtk.Clipboard cb, void* parent) {
-        //     var manager = (ClipboardManager)parent;
-        //     if (manager == null || manager.clipboard != cb) {
-        //         return;
-        //     }
-
-        //     manager.release_pending_files ();
-        // }
-
-        // private void release_pending_files () {
-        //     foreach (var file in this.files) {
-        //         file.destroy.disconnect (on_file_destroyed);
-        //     }
-
-        //     files = null;
-        // }
+            files = null;
+        }
     }
 }

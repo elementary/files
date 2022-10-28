@@ -304,7 +304,7 @@ public class Files.Application : Gtk.Application {
     }
 
     /* All window creation should be done via this function */
-    private Files.Window? create_window_with_tabs (GLib.File[] locations = null,
+    private Files.Window? create_window_with_tabs (GLib.File[]? locations = null,
                                                   ViewMode viewmode = ViewMode.PREFERRED) {
 
         if (this.get_windows ().length () >= MAX_WINDOWS) { //Can be assumed to be limited in length

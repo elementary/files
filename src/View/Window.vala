@@ -35,6 +35,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"new-folder", action_new_folder},
         {"new-file", action_new_file},
         {"copy", action_copy_to_clipboard},
+        {"cut", action_cut_to_clipboard},
         {"paste", action_paste_from_clipboard},
         {"quit", action_quit},
         {"refresh", action_reload},
@@ -133,6 +134,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.new-folder", {"<Shift><Ctrl>N"});
             marlin_app.set_accels_for_action ("win.new-file", {"<Ctrl><Alt>N"});
             marlin_app.set_accels_for_action ("win.copy", {"<Ctrl>C"});
+            marlin_app.set_accels_for_action ("win.cut", {"<Ctrl>X"});
             marlin_app.set_accels_for_action ("win.paste", {"<Ctrl>V"});
             marlin_app.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
             marlin_app.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
@@ -932,6 +934,16 @@ public class Files.Window : Gtk.ApplicationWindow {
             List<Files.File> selected_files = null;
             if (current_view_widget.get_selected_files (out selected_files) > 0) {
                 ClipboardManager.get_instance ().copy_files (selected_files);
+            }
+        }
+    }
+
+    private void action_cut_to_clipboard () {
+        if (current_view_widget != null) {
+            List<Files.File> selected_files = null;
+            if (current_view_widget.get_selected_files (out selected_files) > 0) {
+                ClipboardManager.get_instance ().cut_files (selected_files);
+                current_view_widget.refresh_visible_items ();
             }
         }
     }
