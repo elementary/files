@@ -269,8 +269,40 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
     }
 
-    public void show_context_menu (Files.FileItemInterface? item) {
-        warning ("show context menu");
+    public void show_item_context_menu (Files.FileItemInterface? clicked_item, double x, double y) {
+        var item = clicked_item;
+        // clicked_item is null if called by keyboard action
+        if (item == null) {
+            List<Files.File> selected_files = null;
+            if (get_selected_files (out selected_files) > 0) {
+                Files.File first_file = selected_files.first ().data;
+                show_and_select_file (first_file, false, false); //Do not change selection
+                item = get_file_item_for_file (first_file);
+            }
+        }
+        // If no selected item show background context menu
+        if (item == null) {
+            show_background_context_menu (x, y);
+        }
+
+        // If unselected item clicked, select clicked item and unselect others to reproduce previous behaviour
+        if (!item.selected) {
+            multi_selection.select_item (item.pos, true);
+        }
+
+        var menu_builder = new PopupMenuBuilder ()
+            .add_bookmark ("win.bookmark");
+
+        var popover = menu_builder.build ();
+        popover.has_arrow = false;
+        popover.set_parent (item);
+        popover.set_pointing_to ({(int)x, (int)y, 1, 1});
+        popover.popup ();
+        // TODO Work out how to grab keyboard focus/select first item
+    }
+
+    public void show_background_context_menu (double x, double y) {
+        warning ("GridVoew show background menu");
     }
 
     public override void file_icon_changed (Files.File file) {}

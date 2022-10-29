@@ -50,6 +50,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"toggle-sort-directories-first", action_toggle_sort_directories_first},
         {"toggle-select-all", action_toggle_select_all},
         {"invert-selection", action_invert_selection},
+        {"context-menu", action_context_menu},
         {"find", action_find, "s"},
         {"edit-path", action_edit_path},
         {"tab", action_tab, "s"},
@@ -152,6 +153,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.toggle-sort-directories-first", {"<Alt>minus"});
             marlin_app.set_accels_for_action ("win.toggle-select-all", {"<Ctrl>A"});
             marlin_app.set_accels_for_action ("win.invert-selection", {"<Shift><Ctrl>A"});
+            marlin_app.set_accels_for_action ("win.context-menu", {"Menu", "MenuKB"});
             marlin_app.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
             marlin_app.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             marlin_app.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
@@ -1214,6 +1216,19 @@ public class Files.Window : Gtk.ApplicationWindow {
     private void action_invert_selection () {
         if (current_view_widget != null) {
             current_view_widget.invert_selection ();
+        }
+    }
+
+    private void action_context_menu () {
+        if (current_view_widget != null) {
+            List<Files.File> selected_files = null;
+            if (current_view_widget.get_selected_files (out selected_files) > 0) {
+            //Show item context
+                current_view_widget.show_item_context_menu (null, 0.0, 0.0);
+            } else {
+            //Show background menu
+                current_view_widget.show_background_context_menu (0.0, 0.0);
+            }
         }
     }
 

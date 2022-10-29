@@ -37,7 +37,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     public Gtk.TextView text_view { get; construct; }
     public Gtk.Stack name_stack { get; construct; }
     public Files.GridView view { get; set construct; }
-    public uint pos;
+    public uint pos { get; set; default = 0; }
 
     private Gtk.Image[] emblems;
     private Gtk.Box emblem_box;
@@ -153,13 +153,13 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         });
         file_icon.add_controller (gesture_click);
 
-        // Implement context menu launching
+        // Implement item context menu launching
         var gesture_secondary_click = new Gtk.GestureClick () {
             button = Gdk.BUTTON_SECONDARY
         };
         gesture_secondary_click.released.connect ((n_press, x, y) => {
             warning ("Show context");
-            view.show_context_menu (this);
+            view.show_item_context_menu (this, x, y);
         });
         add_controller (gesture_secondary_click);
 
