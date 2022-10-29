@@ -1136,7 +1136,7 @@ public class Files.Window : Gtk.ApplicationWindow {
                 tab_view.select_previous_page ();
                 break;
 
-            case "DUB":
+            case "DUP":
                 add_tab (current_container.location, current_container.view_mode);
                 break;
 
@@ -1610,8 +1610,13 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     private void show_tab_context_menu (double x, double y) {
         var menu_builder = new PopupMenuBuilder ()
-            .add_item (_("Toggle sort reversed"), "win.toggle-sort-reversed")
-            .add_item (_("New Tab"), "win.tab::NEW");
+            .add_item (_("New Tab"), "win.tab::NEW")
+            .add_item (_("Duplicate Tab"), "win.tab::DUP")
+            .add_item (_("Move Tab to New Window"), "win.tab::WINDOW")
+            .add_item (_("Close Tab"), "win.tab::CLOSE")
+            .add_separator ()
+            .add_item (_("Toggle sort reversed"), "win.toggle-sort-reversed");
+
 
         var popover = menu_builder.build ();
         popover.has_arrow = false;
