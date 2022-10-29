@@ -236,26 +236,20 @@ public class Files.Window : Gtk.ApplicationWindow {
             autohide = false,
             expand_tabs = false
         };
+
         var tab_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         tab_box.append (tab_bar);
         tab_box.append (tab_view);
-        // .with_accellabels (
-        //     new Granite.AccelLabel (_("New Tab"), "<Ctrl>t"),
-        //     new Granite.AccelLabel (_("Undo Close Tab"), "<Shift><Ctrl>t")
-        // )
-        // {
-            // show_tabs = true,
-            // allow_restoring = true,
-            // allow_duplication = true,
-            // allow_new_window = true,
-            // group_name = Config.APP_NAME
-        // };
-
-        //TODO Reimplement if needed
-        // this.configure_event.connect_after ((e) => {
-        //     tab_view.set_size_request (e.width / 2, -1);
-        //     return false;
-        // });
+        // Implement tab context menu
+        var gesture_secondary_click = new Gtk.GestureClick () {
+            button = Gdk.BUTTON_SECONDARY,
+            propagation_phase = Gtk.PropagationPhase.CAPTURE // Receive before tab_bar
+        };
+        gesture_secondary_click.released.connect ((n_press, x, y) => {
+            show_tab_context_menu (x, y);
+            gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED); // Do not propagate
+        });
+        tab_bar.add_controller (gesture_secondary_click);
 
         sidebar = new Sidebar.SidebarWindow ();
         free_space_change.connect (sidebar.on_free_space_change);
@@ -1612,5 +1606,20 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     public new void grab_focus () {
         current_container.grab_focus ();
+    }
+
+    private void show_tab_context_menu (double x, double y) {
+        var menu_builder = new PopupMenuBuilder ()
+            .add_item (_("Toggle sort reversed"), "win.toggle-sort-reversed");
+
+        var popover = menu_builder.build ();
+        popover.has_arrow = false;
+        popover.set_parent (tab_bar);
+        popover.set_pointing_to ({(int)x, (int)y, 1, 1});
+        // Need idle for menu to display properly
+        Idle.add (() => {
+            popover.popup ();
+            return Source.REMOVE;
+        });
     }
 }

@@ -158,8 +158,8 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             button = Gdk.BUTTON_SECONDARY
         };
         gesture_secondary_click.released.connect ((n_press, x, y) => {
-            warning ("Show context");
             view.show_item_context_menu (this, x, y);
+            gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED);
         });
         add_controller (gesture_secondary_click);
 

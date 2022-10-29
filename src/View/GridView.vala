@@ -132,6 +132,18 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             }
         });
 
+        // Implement background context menu
+        var gesture_secondary_click = new Gtk.GestureClick () {
+            button = Gdk.BUTTON_SECONDARY,
+            propagation_phase = Gtk.PropagationPhase.BUBBLE // Receive after items
+        };
+        gesture_secondary_click.released.connect ((n_press, x, y) => {
+            warning ("tab sec click");
+            show_background_context_menu (x, y);
+            gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED); // Do not propagate
+        });
+        grid_view.add_controller (gesture_secondary_click);
+
         scrolled_window.child = grid_view;
         scrolled_window.set_parent (this);
 
@@ -299,6 +311,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             .add_trash ("win.trash")
             .add_delete ("win.delete")
             .add_separator ()
+            .add_item (all_selected ? _("Deselect all") : _("Select all"), "win.toggle-select-all")
             .add_rename ("win.rename")
             .add_bookmark ("win.bookmark");
 
@@ -311,11 +324,22 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             popover.popup ();
             return Source.REMOVE;
         });
-        // TODO Work out how to grab keyboard focus/select first item
     }
 
     public void show_background_context_menu (double x, double y) {
-        warning ("GridVoew show background menu");
+        //TODO Mostly the same as tab context meny in Window - DRY?
+        var menu_builder = new PopupMenuBuilder ()
+            .add_item (_("Toggle sort reversed"), "win.toggle-sort-reversed");
+
+        var popover = menu_builder.build ();
+        popover.has_arrow = false;
+        popover.set_parent (this); // Get error if attached to GridView (no LayoutManager)
+        popover.set_pointing_to ({(int)x, (int)y, 1, 1});
+        // Need idle for menu to display properly
+        Idle.add (() => {
+            popover.popup ();
+            return Source.REMOVE;
+        });
     }
 
     public override void file_icon_changed (Files.File file) {}
