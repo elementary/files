@@ -1610,7 +1610,8 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     private void show_tab_context_menu (double x, double y) {
         var menu_builder = new PopupMenuBuilder ()
-            .add_item (_("Toggle sort reversed"), "win.toggle-sort-reversed");
+            .add_item (_("Toggle sort reversed"), "win.toggle-sort-reversed")
+            .add_item (_("New Tab"), "win.tab::NEW");
 
         var popover = menu_builder.build ();
         popover.has_arrow = false;
