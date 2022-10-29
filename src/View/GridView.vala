@@ -291,13 +291,26 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
 
         var menu_builder = new PopupMenuBuilder ()
+            .add_copy ("win.copy")
+            .add_copy_link ("win.link")
+            .add_cut ("win.cut")
+            .add_paste ("win.paste")
+            .add_separator ()
+            .add_trash ("win.trash")
+            .add_delete ("win.delete")
+            .add_separator ()
+            .add_rename ("win.rename")
             .add_bookmark ("win.bookmark");
 
         var popover = menu_builder.build ();
         popover.has_arrow = false;
         popover.set_parent (item);
         popover.set_pointing_to ({(int)x, (int)y, 1, 1});
-        popover.popup ();
+        // Need idle for menu to display properly
+        Idle.add (() => {
+            popover.popup ();
+            return Source.REMOVE;
+        });
         // TODO Work out how to grab keyboard focus/select first item
     }
 

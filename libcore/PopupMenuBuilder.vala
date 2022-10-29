@@ -19,29 +19,22 @@
 
 public class PopupMenuBuilder : Object {
     public delegate void MenuitemCallback (MenuItem menu_item);
-    MenuItem[] menu_items = {};
-    public uint n_items { get { return menu_items.length; }}
+    Menu[] section_menus;
+    private int section_index;
+    construct {
+        section_menus = new Menu[1];
+        section_menus[0] = new Menu ();
+        section_index = 0;
+    }
 
     public Gtk.PopoverMenu build () {
-        var menu = new Menu ();
-        foreach (var menu_item in menu_items) {
-            menu.append_item (menu_item);
+        var menu = section_menus[0];
+        for (int i = 1; i <= section_index; i++) {
+            menu.append_section (null, section_menus[i]);
         }
-
         return new Gtk.PopoverMenu.from_model (menu);
     }
 
-    // public Gtk.PopoverMenu build_from_model (MenuModel model) {
-    //     var menu = new Menu.from_model (model);
-    //     menu.insert_action_group (action_group_namespace, action_group);
-
-    //     for (int i = 0; i < menu_items.length; i++) {
-    //         menu.append (menu_items[i]);
-    //         menu.reorder_child (menu_items[i], i);
-    //     }
-
-    //     return menu;
-    // }
 
     public PopupMenuBuilder add_open (string? detailed_action_name) {
         return add_item (_("Open"), detailed_action_name);
@@ -76,6 +69,25 @@ public class PopupMenuBuilder : Object {
     public PopupMenuBuilder add_bookmark (string? detailed_action_name) {
         return add_item (_("Add to Bookmarks"), detailed_action_name);
     }
+    public PopupMenuBuilder add_copy (string? detailed_action_name) {
+        return add_item (_("Copy"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_cut (string? detailed_action_name) {
+        return add_item (_("Cut"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_paste (string? detailed_action_name) {
+        return add_item (_("Paste"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_copy_link (string? detailed_action_name) {
+        return add_item (_("Copy Link"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_trash (string? detailed_action_name) {
+        return add_item (_("Move to trash"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_delete (string? detailed_action_name) {
+        return add_item (_("Delete permanently"), detailed_action_name);
+    }
+
     public PopupMenuBuilder add_empty_all_trash (string? detailed_action_name) {
         var volume_monitor = VolumeMonitor.@get ();
         int mounts_with_trash = 0;
@@ -96,14 +108,15 @@ public class PopupMenuBuilder : Object {
     }
 
     public PopupMenuBuilder add_separator () {
-        //TODO Use add section
-        menu_items += new MenuItem ("---", null);
+        // Start a new section menu
+        section_index++;
+        section_menus += new Menu ();
         return this;
     }
 
     //TODO Link MenuItems to actions not callbacks
     public PopupMenuBuilder add_item (string name, string? detailed_action_name) {
-        menu_items += new MenuItem (name, detailed_action_name);
+        section_menus[section_index].append_item (new MenuItem (name, detailed_action_name));
         return this;
     }
 }
