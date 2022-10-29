@@ -46,12 +46,12 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"redo", action_redo},
         {"bookmark", action_bookmark},
         {"rename", action_rename},
-        {"toggle-sort-reversed", action_toggle_sort_reversed},
+        {"context-menu", action_context_menu},
         {"toggle-sort-directories-first", action_toggle_sort_directories_first},
         {"toggle-select-all", action_toggle_select_all},
         {"toggle-sidebar", action_toggle_sidebar},
         {"invert-selection", action_invert_selection},
-        {"context-menu", action_context_menu},
+
         {"find", action_find, "s"},
         {"edit-path", action_edit_path},
         {"tab", action_tab, "s"},
@@ -59,13 +59,14 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"zoom", action_zoom, "s"},
         {"info", action_info, "s"},
         {"sort-type", action_sort_type, "s"},
+        {"forward", action_forward, "i"},
+        {"back", action_back, "i"},
 
         {"view-mode", action_view_mode, "u", "0" },
+        {"sort-reversed", null, null, "false", change_state_sort_reversed},
         {"show-hidden", null, null, "false", change_state_show_hidden},
         {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-        {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails},
-        {"forward", action_forward, "i"},
-        {"back", action_back, "i"}
+        {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
     };
 
     public uint window_number { get; construct; }
@@ -150,7 +151,6 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.rename", {"F2"});
             marlin_app.set_accels_for_action ("win.find::", {"<Ctrl>F"});
             marlin_app.set_accels_for_action ("win.edit-path", {"<Ctrl>L"});
-            marlin_app.set_accels_for_action ("win.toggle-sort-reversed", {"<Alt>0"});
             marlin_app.set_accels_for_action ("win.toggle-sort-directories-first", {"<Alt>minus"});
             marlin_app.set_accels_for_action ("win.toggle-select-all", {"<Ctrl>A"});
             marlin_app.set_accels_for_action ("win.toggle-sidebar", {"<Ctrl>backslash"});
@@ -175,6 +175,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
             marlin_app.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
             marlin_app.set_accels_for_action ("win.show-hidden", {"<Ctrl>H"});
+            marlin_app.set_accels_for_action ("win.sort-reversed", {"<Alt>0"});
             marlin_app.set_accels_for_action ("win.show-remote-thumbnails", {"<Ctrl>bracketleft"});
             marlin_app.set_accels_for_action ("win.hide-local-thumbnails", {"<Ctrl>bracketright"});
             marlin_app.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
@@ -1200,12 +1201,6 @@ public class Files.Window : Gtk.ApplicationWindow {
         sidebar.visible = !sidebar.visible;
     }
 
-    private void action_toggle_sort_reversed () {
-        if (current_view_widget != null) {
-            current_view_widget.sort_reversed = !current_view_widget.sort_reversed;
-        }
-    }
-
     private void action_toggle_sort_directories_first () {
         if (current_view_widget != null) {
             current_view_widget.sort_directories_first = !current_view_widget.sort_directories_first;
@@ -1288,6 +1283,14 @@ public class Files.Window : Gtk.ApplicationWindow {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
         Files.app_settings.set_boolean ("show-hiddenfiles", state);
+    }
+
+    public void change_state_sort_reversed (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+        if (current_view_widget != null) {
+            current_view_widget.sort_reversed = state; // This will persist setting in metadata
+        }
     }
 
     public void change_state_show_remote_thumbnails (GLib.SimpleAction action) {

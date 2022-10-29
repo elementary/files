@@ -32,7 +32,11 @@ public class PopupMenuBuilder : Object {
         for (int i = 1; i <= section_index; i++) {
             menu.append_section (null, section_menus[i]);
         }
-        return new Gtk.PopoverMenu.from_model (menu);
+
+        return new Gtk.PopoverMenu.from_model (menu) {
+            has_arrow = false,
+            can_focus = false //Else focus does not return when closed?
+        };
     }
 
 

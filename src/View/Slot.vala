@@ -110,7 +110,7 @@ public class Slot : Files.AbstractSlot {
             }
 
             is_active = true;
-            dir_view.grab_focus ();
+            view_widget.grab_focus ();
         });
 
         inactive.connect (() => {
@@ -352,8 +352,8 @@ public class Slot : Files.AbstractSlot {
     }
 
     public override void grab_focus () {
-        if (dir_view != null) {
-            dir_view.grab_focus ();
+        if (view_widget != null) {
+            view_widget.grab_focus ();
         }
     }
 

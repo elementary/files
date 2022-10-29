@@ -152,6 +152,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         });
         notify["sort-reversed"].connect (() => {
             model.sort (file_compare_func);
+            //TODO Persist setting in file metadata
         });
         notify["sort-directories-first"].connect (() => {
             model.sort (file_compare_func);
@@ -316,7 +317,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             .add_bookmark ("win.bookmark");
 
         var popover = menu_builder.build ();
-        popover.has_arrow = false;
         popover.set_parent (item);
         popover.set_pointing_to ({(int)x, (int)y, 1, 1});
         // Need idle for menu to display properly
@@ -329,12 +329,17 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public void show_background_context_menu (double x, double y) {
         //TODO Mostly the same as tab context meny in Window - DRY?
         var menu_builder = new PopupMenuBuilder ()
-            .add_item (_("Toggle sort reversed"), "win.toggle-sort-reversed");
+            .add_item (_("Toggle sort reversed"), "win.sort-reversed");
 
         var popover = menu_builder.build ();
         popover.has_arrow = false;
         popover.set_parent (this); // Get error if attached to GridView (no LayoutManager)
         popover.set_pointing_to ({(int)x, (int)y, 1, 1});
+        //FIXME Else keyboard focus does not return for some reason
+        popover.closed.connect (() => {
+            grab_focus ();
+            popover.destroy ();
+        });
         // Need idle for menu to display properly
         Idle.add (() => {
             popover.popup ();
@@ -402,6 +407,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         if (zoom_level > maximum_zoom) {
             zoom_level = maximum_zoom;
+        }
+    }
+
+    public void grab_focus () {
+        if (grid_view != null) {
+            grid_view.grab_focus ();
         }
     }
 }
