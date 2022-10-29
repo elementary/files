@@ -49,6 +49,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"toggle-sort-reversed", action_toggle_sort_reversed},
         {"toggle-sort-directories-first", action_toggle_sort_directories_first},
         {"toggle-select-all", action_toggle_select_all},
+        {"toggle-sidebar", action_toggle_sidebar},
         {"invert-selection", action_invert_selection},
         {"context-menu", action_context_menu},
         {"find", action_find, "s"},
@@ -152,6 +153,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.toggle-sort-reversed", {"<Alt>0"});
             marlin_app.set_accels_for_action ("win.toggle-sort-directories-first", {"<Alt>minus"});
             marlin_app.set_accels_for_action ("win.toggle-select-all", {"<Ctrl>A"});
+            marlin_app.set_accels_for_action ("win.toggle-sidebar", {"<Ctrl>backslash"});
             marlin_app.set_accels_for_action ("win.invert-selection", {"<Shift><Ctrl>A"});
             marlin_app.set_accels_for_action ("win.context-menu", {"Menu", "MenuKB"});
             marlin_app.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
@@ -251,11 +253,20 @@ public class Files.Window : Gtk.ApplicationWindow {
         });
         tab_bar.add_controller (gesture_secondary_click);
 
+        var add_tab_button = new Gtk.Button () {
+            icon_name = "add",
+            action_name = "win.tab::NEW"
+        };
+        add_tab_button.add_css_class ("flat");
+        tab_bar.start_action_widget = add_tab_button;
+
         sidebar = new Sidebar.SidebarWindow ();
         free_space_change.connect (sidebar.on_free_space_change);
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-            position = Files.app_settings.get_int ("sidebar-width")
+            position = Files.app_settings.get_int ("sidebar-width"),
+            resize_start_child = false,
+            shrink_start_child = false
         };
         lside_pane.start_child = sidebar;
         lside_pane.end_child = tab_box;
@@ -1185,6 +1196,10 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
     }
 
+    private void action_toggle_sidebar () {
+        sidebar.visible = !sidebar.visible;
+    }
+
     private void action_toggle_sort_reversed () {
         if (current_view_widget != null) {
             current_view_widget.sort_reversed = !current_view_widget.sort_reversed;
@@ -1554,7 +1569,6 @@ public class Files.Window : Gtk.ApplicationWindow {
         GLib.File root = mount.get_root ();
 
         for (uint i = 0; i < tab_view.pages.get_n_items (); i++) {
-        // foreach (var page in tab_view.get_children ()) {
             var view_container = (ViewContainer)(tab_view.pages.get_item (i)) ;
             GLib.File location = view_container.location;
 
