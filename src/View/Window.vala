@@ -113,7 +113,6 @@ public class Files.Window : Gtk.ApplicationWindow {
     public signal void free_space_change ();
 
     public Window (Files.Application application) {
-    // , Gdk.Screen myscreen = Gdk.Screen.get_default ()) {
         Object (
             application: application,
             marlin_app: application,
@@ -402,6 +401,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         tab_view.indicator_activated.connect (() => {});
         tab_view.setup_menu.connect (() => {});
         tab_view.close_page.connect ((tab) => {
+            //TODO Implement save and restore closed tabs
             // tab_view.close_page_finish (tab, false); // No need to confirm
             var view_container = (ViewContainer)(tab.child);
             view_container.close ();
@@ -419,12 +419,6 @@ public class Files.Window : Gtk.ApplicationWindow {
         //     add_tab_by_uri (restore_data);
         // });
 
-        //TODO Implement in Gtk4 (Signal absent in TabBar)
-        // tab_view.tab_duplicated.connect ((tab) => {
-        //     add_tab_by_uri (((ViewContainer)(tab.child)).uri);
-        // });
-
-        //TODO Reimplement in Gtk4
         tab_view.create_window.connect (() => {
             return marlin_app.create_empty_window ().tab_view;
         });
@@ -550,20 +544,6 @@ public class Files.Window : Gtk.ApplicationWindow {
 
         mode = real_mode (mode);
         var content = new ViewContainer (this);
-        // var tab = new Adw.TabPage ()
-        // .with_accellabels (
-        //     "",
-        //     null,
-        //     content,
-        //     new Granite.AccelLabel (_("Close Tab"), "<Ctrl>w"),
-        //     new Granite.AccelLabel (_("Duplicate Tab"), "<Ctrl><Alt>t"),
-        //     new Granite.AccelLabel (_("Open in New Window"), "<Ctrl><Alt>n")
-        // )
-        // {
-        //     child = content
-        // };
-
-        // change_tab ((int)tab_view.insert_tab (tab, -1));
         var tab = tab_view.append (content);
         tab_view.selected_page = tab;
         /* Capturing ViewContainer object reference in closure prevents its proper destruction
@@ -605,8 +585,8 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     private int location_is_duplicate (GLib.File location, out bool is_child) {
         is_child = false;
-        string parent_path = "";
-        string uri = location.get_uri ();
+        var parent_path = "";
+        unowned string uri = location.get_uri ();
         bool is_folder = location.query_file_type (FileQueryInfoFlags.NONE) == FileType.DIRECTORY;
         /* Ensures consistent format of protocol and path */
         parent_path = FileUtils.get_parent_path_from_path (location.get_path ());
