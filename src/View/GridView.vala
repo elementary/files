@@ -32,11 +32,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public ZoomLevel minimum_zoom { get; set; default = ZoomLevel.SMALLEST; }
     public ZoomLevel maximum_zoom { get; set; default = ZoomLevel.LARGEST; }
 
-    public bool sort_directories_first { get; set; default = true; }
     public Files.SortType sort_type { get; set; default = Files.SortType.FILENAME; }
     public bool sort_reversed { get; set; default = false; }
     public bool all_selected { get; set; default = false; }
-    public bool show_hidden_files { get; set; default = true; }
     public bool is_renaming { get; set; default = false; }
 
     private Gtk.ScrolledWindow scrolled_window;
@@ -68,7 +66,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         file_compare_func = ((filea, fileb) => {
             return filea.compare_for_sort (
-                fileb, sort_type, sort_directories_first, sort_reversed
+                fileb, sort_type, prefs.sort_directories_first, sort_reversed
             );
         });
 
@@ -154,10 +152,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             model.sort (file_compare_func);
             //TODO Persist setting in file metadata
         });
-        notify["sort-directories-first"].connect (() => {
+        prefs.notify["sort-directories-first"].connect (() => {
             model.sort (file_compare_func);
         });
 
+        // show_hidden_files = prefs.show_hidden_files;
         prefs.notify["show-hidden-files"].connect (() => {
             // This refreshes the filter as well
             model.sort (file_compare_func);
@@ -407,12 +406,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         if (zoom_level > maximum_zoom) {
             zoom_level = maximum_zoom;
-        }
-    }
-
-    public void grab_focus () {
-        if (grid_view != null) {
-            grid_view.grab_focus ();
         }
     }
 }

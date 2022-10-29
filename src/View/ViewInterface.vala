@@ -23,11 +23,9 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract ZoomLevel zoom_level { get; set; }
     public abstract ZoomLevel minimum_zoom { get; set; }
     public abstract ZoomLevel maximum_zoom { get; set; }
-    public abstract bool sort_directories_first { get; set; }
     public abstract Files.SortType sort_type { get; set; }
     public abstract bool sort_reversed { get; set; }
     public abstract bool all_selected { get; set; }
-    public abstract bool show_hidden_files { get; set; }
     public abstract bool is_renaming { get; set; }
 
     public signal void selection_changed ();

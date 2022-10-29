@@ -22,6 +22,11 @@
 */
 
 public class Files.Window : Gtk.ApplicationWindow {
+    private static Files.Preferences prefs;
+    static construct {
+        prefs = Files.Preferences.get_default ();
+    }
+
     enum CreateType {
         FOLDER,
         FILE,
@@ -47,7 +52,6 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"bookmark", action_bookmark},
         {"rename", action_rename},
         {"context-menu", action_context_menu},
-        {"toggle-sort-directories-first", action_toggle_sort_directories_first},
         {"toggle-select-all", action_toggle_select_all},
         {"toggle-sidebar", action_toggle_sidebar},
         {"invert-selection", action_invert_selection},
@@ -64,6 +68,7 @@ public class Files.Window : Gtk.ApplicationWindow {
 
         {"view-mode", action_view_mode, "u", "0" },
         {"sort-reversed", null, null, "false", change_state_sort_reversed},
+        {"sort-directories-first", null, null, "false", change_state_sort_directories_first},
         {"show-hidden", null, null, "false", change_state_show_hidden},
         {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
         {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
@@ -150,7 +155,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.rename", {"F2"});
             marlin_app.set_accels_for_action ("win.find::", {"<Ctrl>F"});
             marlin_app.set_accels_for_action ("win.edit-path", {"<Ctrl>L"});
-            marlin_app.set_accels_for_action ("win.toggle-sort-directories-first", {"<Alt>minus"});
+            marlin_app.set_accels_for_action ("win.sort-directories-first", {"<Alt>minus"});
             marlin_app.set_accels_for_action ("win.toggle-select-all", {"<Ctrl>A"});
             marlin_app.set_accels_for_action ("win.toggle-sidebar", {"<Ctrl>backslash"});
             marlin_app.set_accels_for_action ("win.invert-selection", {"<Shift><Ctrl>A"});
@@ -275,10 +280,10 @@ public class Files.Window : Gtk.ApplicationWindow {
         set_child (lside_pane);
 
         /** Apply preferences */
-        var prefs = Files.app_settings;
-        get_action ("show-hidden").set_state (prefs.get_boolean ("show-hiddenfiles"));
-        get_action ("show-remote-thumbnails").set_state (prefs.get_boolean ("show-remote-thumbnails"));
-        get_action ("hide-local-thumbnails").set_state (prefs.get_boolean ("hide-local-thumbnails"));
+        get_action ("show-hidden").set_state (prefs.show_hidden_files);
+        get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
+        get_action ("hide-local-thumbnails").set_state (prefs.hide_local_thumbnails);
+        get_action ("sort-directories-first").set_state (prefs.sort_directories_first);
     }
 
     private void connect_signals () {
@@ -586,7 +591,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     private int location_is_duplicate (GLib.File location, out bool is_child) {
         is_child = false;
         var parent_path = "";
-        unowned string uri = location.get_uri ();
+        var uri = location.get_uri ();
         bool is_folder = location.query_file_type (FileQueryInfoFlags.NONE) == FileType.DIRECTORY;
         /* Ensures consistent format of protocol and path */
         parent_path = FileUtils.get_parent_path_from_path (location.get_path ());
@@ -1181,11 +1186,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         sidebar.visible = !sidebar.visible;
     }
 
-    private void action_toggle_sort_directories_first () {
-        if (current_view_widget != null) {
-            current_view_widget.sort_directories_first = !current_view_widget.sort_directories_first;
-        }
-    }
+
 
     private void action_toggle_select_all () {
         if (current_view_widget != null) {
@@ -1262,7 +1263,13 @@ public class Files.Window : Gtk.ApplicationWindow {
     public void change_state_show_hidden (GLib.SimpleAction action) {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("show-hiddenfiles", state);
+        prefs.get_default ().show_hidden_files = state;
+    }
+
+    private void change_state_sort_directories_first (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+        prefs.sort_directories_first = state;
     }
 
     public void change_state_sort_reversed (GLib.SimpleAction action) {
