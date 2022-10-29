@@ -328,9 +328,25 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public void show_background_context_menu (double x, double y) {
         //TODO Mostly the same as tab context meny in Window - DRY?
         var menu_builder = new PopupMenuBuilder ()
-            .add_item (_("Toggle sort reversed"), "win.sort-reversed");
+            .add_item (_("Toggle sort reversed"), "win.sort-reversed")
+            .add_custom (new Variant.string ("sort"));
 
         var popover = menu_builder.build ();
+        var sort_widget = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        var sort_name_button = new Gtk.CheckButton.with_label ("Name") {
+            action_name = "win.sort-type",
+            action_target = "FILENAME"
+        };
+        var sort_size_button = new Gtk.CheckButton.with_label ("Size") {
+            action_name = "win.sort-type",
+            action_target = "SIZE",
+            group = sort_name_button
+        };
+        sort_widget.append (new Gtk.Label (_("Sort By")));
+        sort_widget.append (sort_name_button);
+        sort_widget.append (sort_size_button);
+
+        popover.add_child (sort_widget, "sort");
         popover.has_arrow = false;
         popover.set_parent (this); // Get error if attached to GridView (no LayoutManager)
         popover.set_pointing_to ({(int)x, (int)y, 1, 1});

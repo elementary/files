@@ -21,10 +21,12 @@ public class PopupMenuBuilder : Object {
     public delegate void MenuitemCallback (MenuItem menu_item);
     Menu[] section_menus;
     private int section_index;
+    private int item_index;
     construct {
         section_menus = new Menu[1];
         section_menus[0] = new Menu ();
         section_index = 0;
+        item_index = 0;
     }
 
     public Gtk.PopoverMenu build () {
@@ -118,9 +120,18 @@ public class PopupMenuBuilder : Object {
         return this;
     }
 
+    public PopupMenuBuilder add_custom (Variant id) {
+        // Insert a custom item with specified id
+        var item = new MenuItem (null, null);
+        item.set_attribute_value ("custom", id);
+        section_menus[section_index].append_item (item);
+        return this;
+    }
+
     //TODO Link MenuItems to actions not callbacks
     public PopupMenuBuilder add_item (string name, string? detailed_action_name) {
-        section_menus[section_index].append_item (new MenuItem (name, detailed_action_name));
+        var item = new MenuItem (name, detailed_action_name);
+        section_menus[section_index].append_item (item);
         return this;
     }
 }

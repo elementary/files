@@ -1263,7 +1263,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     public void change_state_show_hidden (GLib.SimpleAction action) {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
-        prefs.get_default ().show_hidden_files = state;
+        prefs.show_hidden_files = state;
     }
 
     private void change_state_sort_directories_first (GLib.SimpleAction action) {
