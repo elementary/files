@@ -48,7 +48,6 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void clear () {}
     public virtual void refresh_visible_items () {}
 
-    public abstract void show_item_context_menu (Files.FileItemInterface? clicked_item, double x, double y);
-    public abstract void show_background_context_menu (double x, double y);
-    public abstract uint get_selected_files (out List<Files.File> selected_files);
+    public abstract void show_appropriate_context_menu ();
+    public abstract uint get_selected_files (out GLib.List<Files.File>? selected_files = null);
 }

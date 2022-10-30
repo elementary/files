@@ -62,7 +62,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"go-to", action_go_to, "s"},
         {"zoom", action_zoom, "s"},
         {"info", action_info, "s"},
-        {"sort-type", action_sort_type, "s"},
+        {"sort-type", action_sort_type, "s", "'FILENAME'"},
         {"forward", action_forward, "i"},
         {"back", action_back, "i"},
 
@@ -1166,15 +1166,19 @@ public class Files.Window : Gtk.ApplicationWindow {
         switch (param.get_string ()) {
             case "FILENAME":
                 current_view_widget.sort_type = Files.SortType.FILENAME;
+                action.set_state ("FILENAME");
                 break;
             case "SIZE":
                 current_view_widget.sort_type = Files.SortType.SIZE;
+                action.set_state ("SIZE");
                 break;
             case "TYPE":
                 current_view_widget.sort_type = Files.SortType.TYPE;
+                action.set_state ("TYPE");
                 break;
             case "MODIFIED":
                 current_view_widget.sort_type = Files.SortType.MODIFIED;
+                action.set_state ("MODIFIED");
                 break;
 
             default:
@@ -1206,14 +1210,15 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     private void action_context_menu () {
         if (current_view_widget != null) {
-            List<Files.File> selected_files = null;
-            if (current_view_widget.get_selected_files (out selected_files) > 0) {
-            //Show item context
-                current_view_widget.show_item_context_menu (null, 0.0, 0.0);
-            } else {
-            //Show background menu
-                current_view_widget.show_background_context_menu (0.0, 0.0);
-            }
+            current_view_widget.show_appropriate_context_menu ();
+            // List<Files.File> selected_files = null;
+            // if (current_view_widget.get_selected_files (out selected_files) > 0) {
+            // //Show item context
+            //     current_view_widget.show_item_context_menu (null, 0.0, 0.0);
+            // } else {
+            // //Show background menu
+            //     current_view_widget.show_background_context_menu (0.0, 0.0);
+            // }
         }
     }
 
@@ -1619,7 +1624,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             .add_item (_("Move Tab to New Window"), "win.tab::WINDOW")
             .add_item (_("Close Tab"), "win.tab::CLOSE")
             .add_separator ()
-            .add_item (_("Toggle sort reversed"), "win.toggle-sort-reversed");
+            .add_item (_("Sort reversed"), "win.sort-reversed");
 
 
         var popover = menu_builder.build ();

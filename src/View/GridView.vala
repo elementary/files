@@ -28,12 +28,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     [GtkChild]
     private unowned Gtk.ScrolledWindow? scrolled_window;
     [GtkChild]
-    private unowned Gtk.PopoverMenu? background_menu;
-    [GtkChild]
-    private unowned Gtk.PopoverMenu? item_menu;
+    private unowned Gtk.PopoverMenu? menu_popover;
     [GtkCallback]
     public void secondary_release_handler (int n_press, double x, double y) {
-        show_background_context_menu (x, y);
+        show_context_menu (background_gmenu, x, y);
     }
     [GtkCallback]
     public void on_grid_view_activate (uint pos) {
@@ -48,7 +46,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     // Properties defined in template NOTE: cannot use construct; here
     public Gtk.GridView grid_view { get; set; }
     public MenuModel background_gmenu { get; set; }
-    public MenuModel extra_gmenu { get; set; }
+    public MenuModel item_gmenu { get; set; }
 
     // Construct properties
     public GLib.ListStore list_store { get; construct; }
@@ -161,6 +159,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             if (!prefs.hide_local_thumbnails) {
                 refresh_view ();
             }
+        });
+        //FIXME This should happen automatically?
+        menu_popover.closed.connect (() => {
+            grid_view.grab_focus ();
         });
     }
 
@@ -285,27 +287,37 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
         // If no selected item show background context menu
         if (item == null) {
-            show_background_context_menu (x, y);
-        }
+            show_context_menu (background_gmenu, x, y);
+        } else {
+            if (!item.selected) {
+                multi_selection.select_item (item.pos, true);
+            }
 
-        // If unselected item clicked, select clicked item and unselect others
-        if (!item.selected) {
-            multi_selection.select_item (item.pos, true);
+            show_context_menu (item_gmenu, x, y);
         }
-
-        //TODO Attach plugin items
-        item_menu.set_pointing_to ({(int)x, (int)y, 1, 1});
-        item_menu.popup ();
     }
 
-    public void show_background_context_menu (double x, double y) {
-        //TODO Provide different menus according to location
-        background_menu.menu_model = background_gmenu;
-        background_menu.set_pointing_to ({(int)x, (int)y, 1, 1});
-        background_menu.popup ();
+    private void show_context_menu (MenuModel menu_model, double x, double y) {
+        menu_popover.menu_model = menu_model;
+        menu_popover.set_pointing_to ({(int)x, (int)y, 1, 1});
+        Idle.add (() => {
+          menu_popover.popup ();
+          return Source.REMOVE;
+        });
     }
 
-    public uint get_selected_files (out GLib.List<Files.File> selected_files) {
+    //Deal with Menu Key
+    public void show_appropriate_context_menu () {
+        if (list_store.get_n_items () > 0) {
+            if (get_selected_files () > 0) {
+                show_context_menu (item_gmenu, 0.0, 0.0);
+            } else {
+                show_context_menu (background_gmenu, 0.0, 0.0);
+            }
+        }
+    }
+
+    public uint get_selected_files (out GLib.List<Files.File>? selected_files = null) {
         selected_files = null;
         uint pos = 0;
         uint count = 0;
