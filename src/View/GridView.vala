@@ -16,6 +16,7 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
+[GtkTemplate (ui = "/io/elementary/files/GridView.ui")]
 public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     private static Files.Preferences prefs;
     static construct {
@@ -23,21 +24,45 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         prefs = Files.Preferences.get_default ();
     }
 
-    public Gtk.GridView grid_view { get; construct; }
-    public GLib.ListStore model { get; construct; }
-    public Gtk.FilterListModel filter_model { get; construct; }
-    public Gtk.CustomFilter custom_filter { get; construct; }
+    // Components defined in GridView.ui template file
+    [GtkChild]
+    private unowned Gtk.ScrolledWindow? scrolled_window;
+    [GtkChild]
+    private unowned Gtk.PopoverMenu? background_menu;
+    [GtkChild]
+    private unowned Gtk.PopoverMenu? item_menu;
+    [GtkCallback]
+    public void secondary_release_handler (int n_press, double x, double y) {
+        show_background_context_menu (x, y);
+    }
+    [GtkCallback]
+    public void on_grid_view_activate (uint pos) {
+        var file = (Files.File)grid_view.model.get_item (pos);
+        if (file.is_folder () && multi_selection.get_selection ().get_size () == 1) {
+            path_change_request (file.location);
+        } else {
+            warning ("Open file with app");
+        }
+    }
+
+    // Properties defined in template NOTE: cannot use construct; here
+    public Gtk.GridView grid_view { get; set; }
+    public MenuModel background_gmenu { get; set; }
+    public MenuModel extra_gmenu { get; set; }
+
+    // Construct properties
+    public GLib.ListStore list_store { get; construct; }
     public Gtk.MultiSelection multi_selection { get; construct; }
+
+    //Interface properties
     public ZoomLevel zoom_level { get; set; default = ZoomLevel.NORMAL; }
     public ZoomLevel minimum_zoom { get; set; default = ZoomLevel.SMALLEST; }
     public ZoomLevel maximum_zoom { get; set; default = ZoomLevel.LARGEST; }
-
     public Files.SortType sort_type { get; set; default = Files.SortType.FILENAME; }
     public bool sort_reversed { get; set; default = false; }
     public bool all_selected { get; set; default = false; }
     public bool is_renaming { get; set; default = false; }
 
-    private Gtk.ScrolledWindow scrolled_window;
     private CompareDataFunc<Files.File>? file_compare_func;
     private EqualFunc<Files.File>? file_equal_func;
     private GLib.List<GridFileItem> fileitem_list;
@@ -50,14 +75,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     construct {
         set_layout_manager (new Gtk.BinLayout ());
-        scrolled_window = new Gtk.ScrolledWindow () {
-            hexpand = true,
-            vexpand = true,
-            hscrollbar_policy = Gtk.PolicyType.NEVER
-        };
-
-        model = new GLib.ListStore (typeof (Files.File));
-        filter_model = new Gtk.FilterListModel (model, null);
+        list_store = new GLib.ListStore (typeof (Files.File));
+        var filter_model = new Gtk.FilterListModel (list_store, null);
         multi_selection = new Gtk.MultiSelection (filter_model);
 
         file_equal_func = ((filea, fileb) => {
@@ -70,7 +89,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             );
         });
 
-        custom_filter = new Gtk.CustomFilter ((obj) => {
+        var custom_filter = new Gtk.CustomFilter ((obj) => {
             var file = (Files.File)obj;
             return prefs.show_hidden_files || !file.is_hidden;
         });
@@ -115,51 +134,23 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         });
 
-        grid_view = new Gtk.GridView (multi_selection, item_factory) {
-            orientation = Gtk.Orientation.VERTICAL,
-            max_columns = 20,
-            enable_rubberband = true
-        };
-
-        grid_view.activate.connect ((pos) => {
-            var file = (Files.File)grid_view.model.get_item (pos);
-            if (file.is_folder () && multi_selection.get_selection ().get_size () == 1) {
-                path_change_request (file.location);
-            } else {
-                warning ("Open file with app");
-            }
-        });
-
-        // Implement background context menu
-        var gesture_secondary_click = new Gtk.GestureClick () {
-            button = Gdk.BUTTON_SECONDARY,
-            propagation_phase = Gtk.PropagationPhase.BUBBLE // Receive after items
-        };
-        gesture_secondary_click.released.connect ((n_press, x, y) => {
-            warning ("tab sec click");
-            show_background_context_menu (x, y);
-            gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED); // Do not propagate
-        });
-        grid_view.add_controller (gesture_secondary_click);
-
+        grid_view.model = multi_selection;
+        grid_view.factory = item_factory;
         scrolled_window.child = grid_view;
-        scrolled_window.set_parent (this);
 
         notify["sort-type"].connect (() => {
-            model.sort (file_compare_func);
+            list_store.sort (file_compare_func);
         });
         notify["sort-reversed"].connect (() => {
-            model.sort (file_compare_func);
+            list_store.sort (file_compare_func);
             //TODO Persist setting in file metadata
         });
         prefs.notify["sort-directories-first"].connect (() => {
-            model.sort (file_compare_func);
+            list_store.sort (file_compare_func);
         });
-
-        // show_hidden_files = prefs.show_hidden_files;
         prefs.notify["show-hidden-files"].connect (() => {
             // This refreshes the filter as well
-            model.sort (file_compare_func);
+            list_store.sort (file_compare_func);
         });
         prefs.notify["show-remote-thumbnails"].connect (() => {
             if (prefs.show_remote_thumbnails) {
@@ -190,7 +181,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     public override void add_file (Files.File file) {
         //TODO Delay sorting until adding finished?
-        model.insert_sorted (file, file_compare_func);
+        list_store.insert_sorted (file, file_compare_func);
         Idle.add (() => {
             file_added (file);
             return Source.REMOVE;
@@ -198,7 +189,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     }
 
     public override void clear () {
-        model.remove_all ();
+        list_store.remove_all ();
     }
 
     public override void zoom_in () {
@@ -227,12 +218,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     ) {
         uint pos = 0;
         if (file != null) {
-            model.find_with_equal_func (file, file_equal_func, out pos); //Inefficient?
+            list_store.find_with_equal_func (file, file_equal_func, out pos); //Inefficient?
         } else {
             return;
         }
 
-        //TODO Check pos same in sorted model and model
+        //TODO Check pos same in sorted model and list_store
         if (select) {
             multi_selection.select_item (pos, unselect_others);
         }
@@ -243,7 +234,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         Idle.add (() => {
             var adj = scrolled_window.vadjustment;
             adj.value = adj.upper * double.min (
-                (double)pos / (double) model.get_n_items (), adj.upper
+                (double)pos / (double) list_store.get_n_items (), adj.upper
             );
             return Source.REMOVE;
         });
@@ -276,8 +267,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     public override void file_deleted (Files.File file) {
         uint pos;
-        if (model.find (file, out pos)) {
-            model.remove (pos);
+        if (list_store.find (file, out pos)) {
+            list_store.remove (pos);
         }
     }
 
@@ -297,73 +288,22 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             show_background_context_menu (x, y);
         }
 
-        // If unselected item clicked, select clicked item and unselect others to reproduce previous behaviour
+        // If unselected item clicked, select clicked item and unselect others
         if (!item.selected) {
             multi_selection.select_item (item.pos, true);
         }
 
-        var menu_builder = new PopupMenuBuilder ()
-            .add_copy ("win.copy")
-            .add_copy_link ("win.link")
-            .add_cut ("win.cut")
-            .add_paste ("win.paste")
-            .add_separator ()
-            .add_trash ("win.trash")
-            .add_delete ("win.delete")
-            .add_separator ()
-            .add_item (all_selected ? _("Deselect all") : _("Select all"), "win.toggle-select-all")
-            .add_rename ("win.rename")
-            .add_bookmark ("win.bookmark");
-
-        var popover = menu_builder.build ();
-        popover.set_parent (item);
-        popover.set_pointing_to ({(int)x, (int)y, 1, 1});
-        // Need idle for menu to display properly
-        Idle.add (() => {
-            popover.popup ();
-            return Source.REMOVE;
-        });
+        //TODO Attach plugin items
+        item_menu.set_pointing_to ({(int)x, (int)y, 1, 1});
+        item_menu.popup ();
     }
 
     public void show_background_context_menu (double x, double y) {
-        //TODO Mostly the same as tab context meny in Window - DRY?
-        var menu_builder = new PopupMenuBuilder ()
-            .add_item (_("Toggle sort reversed"), "win.sort-reversed")
-            .add_custom (new Variant.string ("sort"));
-
-        var popover = menu_builder.build ();
-        var sort_widget = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        var sort_name_button = new Gtk.CheckButton.with_label ("Name") {
-            action_name = "win.sort-type",
-            action_target = "FILENAME"
-        };
-        var sort_size_button = new Gtk.CheckButton.with_label ("Size") {
-            action_name = "win.sort-type",
-            action_target = "SIZE",
-            group = sort_name_button
-        };
-        sort_widget.append (new Gtk.Label (_("Sort By")));
-        sort_widget.append (sort_name_button);
-        sort_widget.append (sort_size_button);
-
-        popover.add_child (sort_widget, "sort");
-        popover.has_arrow = false;
-        popover.set_parent (this); // Get error if attached to GridView (no LayoutManager)
-        popover.set_pointing_to ({(int)x, (int)y, 1, 1});
-        //FIXME Else keyboard focus does not return for some reason
-        popover.closed.connect (() => {
-            grab_focus ();
-            popover.destroy ();
-        });
-        // Need idle for menu to display properly
-        Idle.add (() => {
-            popover.popup ();
-            return Source.REMOVE;
-        });
+        //TODO Provide different menus according to location
+        background_menu.menu_model = background_gmenu;
+        background_menu.set_pointing_to ({(int)x, (int)y, 1, 1});
+        background_menu.popup ();
     }
-
-    public override void file_icon_changed (Files.File file) {}
-    public override void file_changed (Files.File file) {} //TODO Update thumbnail
 
     public uint get_selected_files (out GLib.List<Files.File> selected_files) {
         selected_files = null;
@@ -424,4 +364,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             zoom_level = maximum_zoom;
         }
     }
+
+
+    public override void file_icon_changed (Files.File file) {}
+    public override void file_changed (Files.File file) {} //TODO Update thumbnail
 }

@@ -1,0 +1,95 @@
+<interface>
+  <menu id="item_model">
+    <section>
+        <item>
+          <attribute name="label" translatable="yes">Copy</attribute>
+          <attribute name="action">win.copy</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Link</attribute>
+          <attribute name="action">win.link</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Cut</attribute>
+          <attribute name="action">win.cut</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Paste</attribute>
+          <attribute name="action">win.cut</attribute>
+        </item>
+    </section>
+    <section>
+        <item>
+          <attribute name="label" translatable="yes">Move to Trash</attribute>
+          <attribute name="action">win.trash</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Delete Permanently</attribute>
+          <attribute name="action">win.delete</attribute>
+        </item>
+    </section>
+  </menu>
+  <menu id="extra">
+    <section>
+        <item>
+          <attribute name="label" translatable="yes">Rename</attribute>
+          <attribute name="action">win.rename</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Bookmark</attribute>
+          <attribute name="action">win.bookmark</attribute>
+        </item>
+    </section>
+  </menu>
+  <menu id="background_model">
+    <section>
+        <item>
+          <attribute name="label" translatable="yes">Toggle Select All</attribute>
+          <attribute name="action">win.toggle-select-all</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Invert Selection</attribute>
+          <attribute name="action">win.invert-selection</attribute>
+        </item>
+    </section>
+  </menu>
+
+  <template class="FilesGridView" parent="GtkWidget">
+    <property name="background-gmenu">background_model</property>
+    <property name="extra-gmenu">extra</property>
+    <property name="grid-view">
+       <object class="GtkGridView">
+           <property name="orientation">vertical</property>
+           <property name="max-columns">20</property>
+           <property name="enable-rubberband">true</property>
+           <signal name="activate" handler="on_grid_view_activate"></signal>
+       </object>
+    </property>
+    <child>
+      <object class="GtkScrolledWindow" id="scrolled_window">
+        <property name="hexpand">1</property>
+        <property name="vexpand">1</property>
+        <property name="hscrollbar-policy">never</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkPopoverMenu" id="item_menu">
+        <property name="has-arrow">0</property>
+        <property name="menu-model">item_model</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkPopoverMenu" id="background_menu">
+        <property name="has-arrow">0</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkGestureClick">
+        <property name="button">3</property>
+        <signal name="released" handler="secondary_release_handler"/>
+      </object>
+    </child>
+  </template>
+</interface>
+

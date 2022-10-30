@@ -5,5 +5,6 @@
     <file alias="DiskRenderer.css" compressed="true">styles/DiskRenderer.css</file>
     <file alias="SidebarExpander.css" compressed="true">styles/SidebarExpander.css</file>
     <file alias="GridViewFileItem.css" compressed="true">styles/GridViewFileItem.css</file>
+    <file alias="GridView.ui" compressed="true">ui/GridView.ui</file>
   </gresource>
 </gresources>
