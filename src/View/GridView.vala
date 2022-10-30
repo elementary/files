@@ -24,11 +24,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         prefs = Files.Preferences.get_default ();
     }
 
-    // Components defined in GridView.ui template file
+    // UI Components defined in GridView.ui template file
     [GtkChild]
     private unowned Gtk.ScrolledWindow? scrolled_window;
-    [GtkChild]
-    private unowned Gtk.PopoverMenu? menu_popover;
     [GtkCallback]
     public void secondary_release_handler (int n_press, double x, double y) {
         show_context_menu (background_gmenu, x, y);
@@ -51,6 +49,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     // Construct properties
     public GLib.ListStore list_store { get; construct; }
     public Gtk.MultiSelection multi_selection { get; construct; }
+    public Gtk.PopoverMenu menu_popover { get; construct; }
 
     //Interface properties
     public ZoomLevel zoom_level { get; set; default = ZoomLevel.NORMAL; }
@@ -73,6 +72,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     construct {
         set_layout_manager (new Gtk.BinLayout ());
+
         list_store = new GLib.ListStore (typeof (Files.File));
         var filter_model = new Gtk.FilterListModel (list_store, null);
         multi_selection = new Gtk.MultiSelection (filter_model);
@@ -136,6 +136,14 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         grid_view.factory = item_factory;
         scrolled_window.child = grid_view;
 
+        //No obvious way to create nested submenus with template??
+        menu_popover = new Gtk.PopoverMenu.from_model_full (new Menu (), Gtk.PopoverMenuFlags.NESTED);
+        menu_popover.set_parent (this);
+        //FIXME This should happen automatically?
+        menu_popover.closed.connect (() => {
+            grid_view.grab_focus ();
+        });
+
         notify["sort-type"].connect (() => {
             list_store.sort (file_compare_func);
         });
@@ -159,10 +167,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             if (!prefs.hide_local_thumbnails) {
                 refresh_view ();
             }
-        });
-        //FIXME This should happen automatically?
-        menu_popover.closed.connect (() => {
-            grid_view.grab_focus ();
         });
     }
 

@@ -1211,14 +1211,6 @@ public class Files.Window : Gtk.ApplicationWindow {
     private void action_context_menu () {
         if (current_view_widget != null) {
             current_view_widget.show_appropriate_context_menu ();
-            // List<Files.File> selected_files = null;
-            // if (current_view_widget.get_selected_files (out selected_files) > 0) {
-            // //Show item context
-            //     current_view_widget.show_item_context_menu (null, 0.0, 0.0);
-            // } else {
-            // //Show background menu
-            //     current_view_widget.show_background_context_menu (0.0, 0.0);
-            // }
         }
     }
 
