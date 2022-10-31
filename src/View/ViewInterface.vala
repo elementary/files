@@ -47,6 +47,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void add_file (Files.File file) {}
     public virtual void clear () {}
     public virtual void refresh_visible_items () {}
+    public virtual void open_selected (Files.OpenFlag flag) {}
 
     public abstract void show_appropriate_context_menu ();
     public abstract uint get_selected_files (out GLib.List<Files.File>? selected_files = null);

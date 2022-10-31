@@ -59,6 +59,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"find", action_find, "s"},
         {"edit-path", action_edit_path},
         {"tab", action_tab, "s"},
+        {"open-selected", action_open_selected, "s"},
         {"go-to", action_go_to, "s"},
         {"zoom", action_zoom, "s"},
         {"info", action_info, "s"},
@@ -1140,6 +1141,37 @@ public class Files.Window : Gtk.ApplicationWindow {
             case "WINDOW": // Move tab to new window
                 var new_window = marlin_app.create_empty_window ();
                 tab_view.transfer_page (tab_view.selected_page, new_window.tab_view, 0);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void action_open_selected (GLib.SimpleAction action, GLib.Variant? param) {
+        if (current_view_widget == null) { // can occur during startup
+            return;
+        }
+
+        switch (param.get_string ()) {
+            case "DEFAULT":
+                current_view_widget.open_selected (Files.OpenFlag.DEFAULT);
+                break;
+
+            case "NEW_ROOT":
+                current_view_widget.open_selected (Files.OpenFlag.NEW_ROOT);
+                break;
+
+            case "NEW_TAB":
+                current_view_widget.open_selected (Files.OpenFlag.NEW_TAB);
+                break;
+
+            case "NEW_WINDOW":
+                current_view_widget.open_selected (Files.OpenFlag.NEW_WINDOW);
+                break;
+
+            case "APP":
+                current_view_widget.open_selected (Files.OpenFlag.APP);
                 break;
 
             default:

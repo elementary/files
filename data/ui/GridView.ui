@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <menu id="item_model">
+  <!--TODO - Open in, Properties, Plugins-->
+    <section>
+      <submenu>
+          <attribute name="label" translatable="yes">Open In</attribute>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">New Tab</attribute>
+              <attribute name="action">win.open-selected</attribute>
+              <attribute name="target">NEW_TAB</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">New Window</attribute>
+              <attribute name="action">win.open-selected</attribute>
+              <attribute name="target">NEW_WINDOW</attribute>
+            </item>
+          </section>
+      </submenu>
+    </section>
     <section>
       <item>
         <attribute name="label" translatable="yes">Copy</attribute>
@@ -40,7 +58,26 @@
       </item>
     </section>
   </menu>
+
+<!--Context menu shown when clicking on GridView background-->
   <menu id="background_model">
+    <section>
+      <submenu>
+          <attribute name="label" translatable="yes">Open In</attribute>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">New Tab</attribute>
+              <attribute name="action">win.tab</attribute>
+              <attribute name="target">DUP</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">New Window</attribute>
+              <attribute name="action">win.tab</attribute>
+              <attribute name="target">WINDOW</attribute>
+            </item>
+          </section>
+      </submenu>
+    </section>
     <section>
       <item>
         <attribute name="label" translatable="yes">Toggle Select All</attribute>

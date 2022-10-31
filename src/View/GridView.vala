@@ -271,6 +271,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
     }
 
+    public override void open_selected (Files.OpenFlag flag) {
+        warning ("open selected");
+    }
+
     public override void file_deleted (Files.File file) {
         uint pos;
         if (list_store.find (file, out pos)) {
