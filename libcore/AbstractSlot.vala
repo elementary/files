@@ -113,7 +113,7 @@ namespace Files {
         }
 
         public abstract void initialize_directory ();
-        public abstract unowned GLib.List<Files.File>? get_selected_files ();
+        public abstract GLib.List<Files.File> get_selected_files ();
         public abstract void set_active_state (bool set_active, bool animate = true);
         public abstract unowned AbstractSlot? get_current_slot ();
         public abstract void reload (bool non_local_only = false);

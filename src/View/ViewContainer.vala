@@ -458,7 +458,7 @@ namespace Files {
         }
 
         private void store_selection () {
-            unowned GLib.List<Files.File> selected_files = view.get_selected_files ();
+            var selected_files = view.get_selected_files ();
             selected_locations = null;
 
             if (selected_files != null) {
@@ -483,13 +483,6 @@ namespace Files {
             }
         }
 
-        private void set_all_selected (bool select_all) {
-            var aslot = get_current_slot ();
-            if (aslot != null) {
-                aslot.set_all_selected (select_all);
-            }
-        }
-
         public void focus_location (GLib.File? loc,
                                     bool no_path_change = false,
                                     bool unselect_others = false) {
@@ -503,7 +496,7 @@ namespace Files {
             }
             /* Search can generate null focus requests if no match - deselect previous search selection */
             if (loc == null) {
-                set_all_selected (false);
+                aslot.set_all_selected (false);
                 return;
             }
 

@@ -331,8 +331,13 @@ public class Slot : Files.AbstractSlot {
         }
     }
 
-    public override unowned GLib.List<Files.File> get_selected_files () {
-        return view_widget == null ? {} : view_widget.get_selected_files ();
+    public override List<Files.File> get_selected_files () {
+        List<Files.File> selected_files = null;
+        if (view_widget != null) {
+            view_widget.get_selected_files (out selected_files);
+        }
+
+        return (owned)selected_files;
     }
 
     public override void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {
