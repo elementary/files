@@ -29,7 +29,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     private unowned Gtk.ScrolledWindow? scrolled_window;
     [GtkCallback]
     public void secondary_release_handler (int n_press, double x, double y) {
-        show_context_menu (background_gmenu, x, y);
+        show_context_menu (background_menu, x, y);
     }
     [GtkCallback]
     public void on_grid_view_activate (uint pos) {
@@ -43,8 +43,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     // Properties defined in template NOTE: cannot use construct; here
     public Gtk.GridView grid_view { get; set; }
-    public MenuModel background_gmenu { get; set; }
-    public MenuModel item_gmenu { get; set; }
+    public MenuModel background_menu { get; set; }
+    public MenuModel item_menu { get; set; }
 
     // Construct properties
     public GLib.ListStore list_store { get; construct; }
@@ -136,8 +136,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         grid_view.factory = item_factory;
         scrolled_window.child = grid_view;
 
-        //No obvious way to create nested submenus with template??
-        menu_popover = new Gtk.PopoverMenu.from_model_full (new Menu (), Gtk.PopoverMenuFlags.NESTED);
+        //No obvious way to create nested submenus with template so create manually
+        //No obvious way to position at corner
+        menu_popover = new Gtk.PopoverMenu.from_model_full (new Menu (), Gtk.PopoverMenuFlags.NESTED) {
+          has_arrow = false
+        };
         menu_popover.set_parent (this);
         //FIXME This should happen automatically?
         menu_popover.closed.connect (() => {
@@ -272,7 +275,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     }
 
     public override void open_selected (Files.OpenFlag flag) {
-        warning ("open selected");
+        warning ("open selected %s", flag.to_string ());
     }
 
     public override void file_deleted (Files.File file) {
@@ -295,13 +298,16 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
         // If no selected item show background context menu
         if (item == null) {
-            show_context_menu (background_gmenu, x, y);
+            show_context_menu (background_menu, x, y);
         } else {
+            Graphene.Point point_item, point_gridview;
+            item.compute_point (grid_view, {(float)x, (float)y}, out point_gridview);
+
             if (!item.selected) {
                 multi_selection.select_item (item.pos, true);
             }
 
-            show_context_menu (item_gmenu, x, y);
+            show_context_menu (item_menu, (double)point_gridview.x, (double)point_gridview.y);
         }
     }
 
@@ -318,9 +324,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public void show_appropriate_context_menu () {
         if (list_store.get_n_items () > 0) {
             if (get_selected_files () > 0) {
-                show_context_menu (item_gmenu, 0.0, 0.0);
+                show_context_menu (item_menu, 0.0, 0.0);
             } else {
-                show_context_menu (background_gmenu, 0.0, 0.0);
+                show_context_menu (background_menu, 0.0, 0.0);
             }
         }
     }

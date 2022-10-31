@@ -126,8 +126,8 @@
   </menu>
 
   <template class="FilesGridView" parent="GtkWidget">
-    <property name="background-gmenu">background_model</property>
-    <property name="item-gmenu">item_model</property>
+    <property name="background-menu">background_model</property>
+    <property name="item-menu">item_model</property>
     <property name="grid-view">
       <object class="GtkGridView">
          <property name="orientation">vertical</property>
@@ -143,7 +143,6 @@
         <property name="hscrollbar-policy">never</property>
       </object>
     </child>
-
     <child>
       <object class="GtkGestureClick">
         <property name="button">3</property>
