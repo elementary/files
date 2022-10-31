@@ -43,8 +43,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     // Properties defined in template NOTE: cannot use construct; here
     public Gtk.GridView grid_view { get; set; }
-    public MenuModel background_menu { get; set; }
-    public MenuModel item_menu { get; set; }
+    public Menu background_menu { get; set; }
+    public Menu item_menu { get; set; }
 
     // Construct properties
     public GLib.ListStore list_store { get; construct; }
@@ -145,7 +145,13 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         //FIXME This should happen automatically?
         menu_popover.closed.connect (() => {
             grid_view.grab_focus ();
+            if (item_menu.get_data<List<AppInfo>> ("open-with-apps") != null) {
+                item_menu.remove (0);
+                item_menu.steal_data<List<AppInfo>>("open-with-apps");
+            }
         });
+
+        item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
 
         notify["sort-type"].connect (() => {
             list_store.sort (file_compare_func);
@@ -311,10 +317,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     public void show_item_context_menu (Files.FileItemInterface? clicked_item, double x, double y) {
         var item = clicked_item;
+        List<Files.File> selected_files = null;
+        var n_selected = get_selected_files (out selected_files);
         // clicked_item is null if called by keyboard action
         if (item == null) {
-            List<Files.File> selected_files = null;
-            if (get_selected_files (out selected_files) > 0) {
+            if (n_selected > 0) {
                 Files.File first_file = selected_files.first ().data;
                 show_and_select_file (first_file, false, false); //Do not change selection
                 item = get_file_item_for_file (first_file);
@@ -329,13 +336,23 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
             if (!item.selected) {
                 multi_selection.select_item (item.pos, true);
+                selected_files = null;
+                selected_files.append (item.file); //FIXME Duplication needed?
             }
 
+            var open_with_menu = new Menu ();
+            var open_with_apps = MimeActions.get_applications_for_files (selected_files, true, true);
+            foreach (var appinfo in open_with_apps) {
+                open_with_menu.append (appinfo.get_name (), null);
+            }
+
+            item_menu.set_data<List<AppInfo>> ("open-with-apps", (owned)open_with_apps);
+            item_menu.prepend_submenu (_("Open With"), open_with_menu);
             show_context_menu (item_menu, (double)point_gridview.x, (double)point_gridview.y);
         }
     }
 
-    private void show_context_menu (MenuModel menu_model, double x, double y) {
+    private void show_context_menu (Menu menu_model, double x, double y) {
         menu_popover.menu_model = menu_model;
         menu_popover.set_pointing_to ({(int)x, (int)y, 1, 1});
         Idle.add (() => {
