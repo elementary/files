@@ -64,25 +64,7 @@ namespace Files {
         GLib.SimpleActionGroup selection_actions;
         GLib.SimpleActionGroup background_actions;
 
-        public ZoomLevel zoom_level {
-            get {
-                return view_widget.zoom_level;
-            }
-
-            set {
-                view_widget.zoom_level = value;
-            }
-        }
-
-        public int icon_size {
-            get {
-                return view_widget.zoom_level.to_icon_size ();
-            }
-        }
-
         private ClipboardManager clipboard;
-        // private ZoomLevel view_widget.minimum_zoom = ZoomLevel.SMALLEST;
-        // private ZoomLevel view_widget.maximum_zoom = ZoomLevel.LARGEST;
         private bool large_thumbnails = false;
 
         uint drag_scroll_timer_id = 0;
@@ -287,67 +269,6 @@ namespace Files {
         public void focus_first_for_empty_selection (bool select) {
             view_widget.show_and_select_file (null, false, false);
         }
-
-//         /* This function is only called by Slot in order to select a file item after loading has completed.
-//          * If called before initial loading is complete then tree_frozen is true.  Otherwise, e.g. when selecting search items
-//          * tree_frozen is false.
-//          */
-//         private ulong select_source_handler = 0;
-        public void select_glib_files_when_thawed (
-            GLib.List<GLib.File> location_list,
-            GLib.File? focus_location
-        ) {
-//             var files_to_select_list = new Gee.LinkedList<Files.File> ();
-//             location_list.@foreach ((loc) => {
-//                 files_to_select_list.add (Files.File.@get (loc));
-//             });
-
-//             GLib.File? focus_after_select = focus_location != null ? focus_location.dup () : null;
-
-//             /* Because the Icon View disconnects the model while loading, we need to wait until
-//              * the tree is thawed and the model reconnected before selecting the files.
-//              * Using a timeout helps ensure that the files appear in the model before selecting. Using an Idle
-//              * sometimes results in the pasted file not being selected because it is not found yet in the model. */
-//             if (tree_frozen) {
-//                 select_source_handler = notify["tree-frozen"].connect (() => {
-//                     select_files_and_update_if_thawed (files_to_select_list, focus_after_select);
-//                 });
-//             } else {
-//                 select_files_and_update_if_thawed (files_to_select_list, focus_after_select);
-//             }
-        }
-
-//         private void select_files_and_update_if_thawed (
-//             Gee.LinkedList<Files.File> files_to_select,
-//             GLib.File? focus_file
-//         ) {
-//             if (tree_frozen) {
-//                 return;
-//             }
-
-//             if (select_source_handler > 0) {
-//                 disconnect (select_source_handler);
-//                 select_source_handler = 0;
-//             }
-
-//             // disconnect_tree_signals (); /* Avoid unnecessary signal processing */
-//             view_widget.unselect_all ();
-
-//             uint count = 0;
-//             foreach (Files.File file in files_to_select) {
-//                 bool show = focus_file != null && focus_file.equal (f.location);
-//                 view_widget.show_and_select_file (file, show, true);
-//                 count++;
-//             }
-
-//             if (count == 0) {
-//                 focus_first_for_empty_selection (false);
-//             }
-
-//             on_view_selection_changed (); /* Mark selected_file list as invalid */
-//             /* Update menu and selected file list now in case autoselected */
-//             update_selected_files_and_menu ();
-//         }
 
         public unowned GLib.List<GLib.AppInfo>? get_open_with_apps () {
 //             return open_with_apps;

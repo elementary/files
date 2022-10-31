@@ -223,7 +223,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     }
 
     public override void show_and_select_file (
-        Files.File? file, bool select, bool unselect_others
+        Files.File? file, bool select, bool unselect_others, bool show = true
     ) {
         uint pos = 0;
         if (file != null) {
@@ -237,16 +237,24 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             multi_selection.select_item (pos, unselect_others);
         }
 
-        // Move focused item to top
-        //TODO Work out how to move to middle of visible area? Need number of columns/width of fileitem?
-        //Idle until gridview layed out.
-        Idle.add (() => {
-            var adj = scrolled_window.vadjustment;
-            adj.value = adj.upper * double.min (
-                (double)pos / (double) list_store.get_n_items (), adj.upper
-            );
-            return Source.REMOVE;
-        });
+        if (show) {
+            // Move focused item to top
+            //TODO Work out how to move to middle of visible area? Need number of columns/width of fileitem?
+            //Idle until gridview layed out.
+            Idle.add (() => {
+                var adj = scrolled_window.vadjustment;
+                adj.value = adj.upper * double.min (
+                    (double)pos / (double) list_store.get_n_items (), adj.upper
+                );
+                return Source.REMOVE;
+            });
+        }
+    }
+
+    public virtual void select_files (List<Files.File> files_to_select) {
+        foreach (var file in files_to_select) {
+            show_and_select_file (file, true, false, false);
+        }
     }
 
     public override void select_all () {

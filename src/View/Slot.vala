@@ -164,7 +164,7 @@ public class Slot : Files.AbstractSlot {
                 width = preferred_column_width;
             }
 
-            width += dir_view.icon_size + 64; /* allow some extra room for icon padding and right margin*/
+            width += view_widget.zoom_level.to_icon_size () + 64; /* allow some extra room for icon padding and right margin*/
 
             /* Allow extra room for MESSAGE_CLASS styling of special messages */
             if (dir.is_empty () || dir.permission_denied) {
@@ -340,21 +340,31 @@ public class Slot : Files.AbstractSlot {
         return (owned)selected_files;
     }
 
-    public override void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {
-        if (dir_view != null) {
-            // dir_view.select_glib_files_when_thawed (files, focus_location);
+    public override void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location) {
+        if (view_widget != null) {
+            var files_to_select = new List<Files.File> ();
+            locations.@foreach ((loc) => {
+                files_to_select.prepend (Files.File.@get (loc));
+            });
+
+            var focus_after_select = focus_location != null ? focus_location.dup () : null;
+
+            view_widget.select_files (files_to_select);
+            if (focus_location != null) {
+                view_widget.show_and_select_file (Files.File.@get (focus_location), false, false, true);
+            }
         }
     }
 
     public void select_gof_file (Files.File gof) {
-        if (dir_view != null) {
-            // dir_view.select_gof_file (gof);
+        if (view_widget != null) {
+            view_widget.show_and_select_file (gof, true, false, false);
         }
     }
 
     public override void focus_first_for_empty_selection (bool select = true) {
-        if (dir_view != null) {
-            // dir_view.focus_first_for_empty_selection (select);
+        if (view_widget != null) {
+            view_widget.show_and_select_file (null, select, false);
         }
     }
 

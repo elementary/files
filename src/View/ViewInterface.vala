@@ -37,7 +37,8 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void zoom_out () {}
     public virtual void zoom_normal () {}
 
-    public virtual void show_and_select_file (Files.File? file, bool select, bool unselect_others) {}
+    public virtual void show_and_select_file (Files.File? file, bool select, bool unselect_others, bool show = true) {}
+    public virtual void select_files (List<Files.File> files_to_select) {}
     public virtual void invert_selection () {}
     public virtual void select_all () {}
     public virtual void unselect_all () {}
