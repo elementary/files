@@ -35,7 +35,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
 
     private GLib.List<Files.File> files;
     private bool only_one;
-    private Files.File goffile;
+    private Files.File first_selected_file;
 
     public Files.DirectoryView view {get; private set;}
     public Gtk.Entry entry {get; private set;}
@@ -184,19 +184,19 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             }
         }
 
-        goffile = (Files.File) files.data;
+        first_selected_file = (Files.File) files.data;
         only_one = files.nth_data (1) == null;
 
-        construct_info_panel (goffile);
+        construct_info_panel ();
         cancellable = new GLib.Cancellable ();
 
         update_selection_size (); /* Start counting first to get number of selected files and folders */
 
         /* create some widgets first (may be hidden by update_selection_size ()) */
-        var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), Files.File.IconFlags.NONE);
+        var file_pix = first_selected_file.get_icon_pixbuf (48, get_scale_factor (), Files.File.IconFlags.NONE);
         if (file_pix != null) {
             var file_icon = new Gtk.Image.from_gicon (file_pix);
-            overlay_emblems (file_icon, goffile.emblems_list);
+            overlay_emblems (file_icon, first_selected_file.emblems_list);
         }
 
         /* Build header box */
@@ -204,23 +204,23 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             var label = new Gtk.Label (get_selected_label (selected_folders, selected_files));
             label.halign = Gtk.Align.START;
             header_title = label;
-        } else if (!goffile.is_writable ()) {
-            var label = new Gtk.Label (goffile.info.get_name ()) {
+        } else if (!first_selected_file.is_writable ()) {
+            var label = new Gtk.Label (first_selected_file.info.get_name ()) {
                 halign = Gtk.Align.START,
                 selectable = true
             };
             header_title = label;
         } else {
             entry = new Gtk.Entry ();
-            original_name = goffile.info.get_name ();
+            original_name = first_selected_file.info.get_name ();
             reset_entry_text ();
 
             entry.activate.connect (() => {
-                rename_file (goffile, entry.get_text ());
+                rename_file (first_selected_file, entry.get_text ());
             });
 
             // entry.focus_out_event.connect (() => {
-            //     rename_file (goffile, entry.get_text ());
+            //     rename_file (first_selected_file, entry.get_text ());
             //     return false;
             // });
 
@@ -231,7 +231,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
 
         /* Permissions */
         if (construct_perm_panel () != null) {
-            if (!goffile.can_set_permissions ()) {
+            if (!first_selected_file.can_set_permissions ()) {
                 var child = perm_grid.get_first_child ();
                 while (child != null) {
                     child.set_sensitive (false);
@@ -351,8 +351,8 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
         //             try {
         //                 new_location = view.set_file_display_name.end (res);
         //                 reset_entry_text (new_location.get_basename ());
-        //                 goffile = Files.File.@get (new_location);
-        //                 files.first ().data = goffile;
+        //                 first_selected_file = Files.File.@get (new_location);
+        //                 files.first ().data = first_selected_file;
         //             } catch (Error e) {} // Warning dialog already shown
         //         });
         //     }
@@ -450,7 +450,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             return ftype;
         } else {
             /* show list of mimetypes only if we got a default application in common */
-            if (view.get_default_app () != null && !goffile.is_directory) {
+            if (MimeActions.get_default_application_for_files (files) != null && !first_selected_file.is_directory) {
                 string str = null;
                 foreach (var mime in mimes) {
                     (str == null) ? str = mime : str = string.join (", ", str, mime);
@@ -465,7 +465,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
         /* get image size in pixels using an asynchronous method to stop the interface blocking on
          * large images. */
         if (file.width > 0) { /* resolution has already been determined */
-            return goffile.width.to_string () + " × " + goffile.height.to_string () + " px";
+            return first_selected_file.width.to_string () + " × " + first_selected_file.height.to_string () + " px";
         } else {
             /* Async function will update info when resolution determined */
             get_resolution.begin (file);
@@ -500,9 +500,9 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
         return _("Unknown");
     }
 
-    private async void get_resolution (Files.File goffile) {
+    private async void get_resolution (Files.File first_selected_file) {
         GLib.FileInputStream? stream = null;
-        GLib.File file = goffile.location;
+        GLib.File file = first_selected_file.location;
         string resolution = _("Could not be determined");
 
         try {
@@ -511,9 +511,9 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
                 error ("Could not read image file's size data");
             } else {
                 var pixbuf = yield new Gdk.Pixbuf.from_stream_async (stream, cancellable);
-                goffile.width = pixbuf.get_width ();
-                goffile.height = pixbuf.get_height ();
-                resolution = goffile.width.to_string () + " × " + goffile.height.to_string () + " px";
+                first_selected_file.width = pixbuf.get_width ();
+                first_selected_file.height = pixbuf.get_height ();
+                resolution = first_selected_file.width.to_string () + " × " + first_selected_file.height.to_string () + " px";
             }
         } catch (Error e) {
             warning ("Error loading image resolution in PropertiesWindow: %s", e.message);
@@ -527,7 +527,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
         resolution_value.label = resolution;
     }
 
-    private void construct_info_panel (Files.File file) {
+    private void construct_info_panel () {
         /* Have to have these separate as size call is async */
         var size_key_label = Files.make_key_label (_("Size:"));
 
@@ -560,7 +560,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
 
         if (only_one) {
             /* Note most Linux filesystem do not store file creation time */
-            var time_created = FileUtils.get_formatted_time_attribute_from_info (file.info,
+            var time_created = FileUtils.get_formatted_time_attribute_from_info (first_selected_file.info,
                                                                                  FileAttribute.TIME_CREATED);
             if (time_created != "") {
                 var key_label = Files.make_key_label (_("Created:"));
@@ -570,7 +570,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
                 n++;
             }
 
-            var time_modified = FileUtils.get_formatted_time_attribute_from_info (file.info,
+            var time_modified = FileUtils.get_formatted_time_attribute_from_info (first_selected_file.info,
                                                                                   FileAttribute.TIME_MODIFIED);
 
             if (time_modified != "") {
@@ -582,8 +582,8 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             }
         }
 
-        if (only_one && file.is_trashed ()) {
-            var deletion_date = FileUtils.get_formatted_time_attribute_from_info (file.info,
+        if (only_one && first_selected_file.is_trashed ()) {
+            var deletion_date = FileUtils.get_formatted_time_attribute_from_info (first_selected_file.info,
                                                                                   FileAttribute.TRASH_DELETION_DATE);
             if (deletion_date != "") {
                 var key_label = Files.make_key_label (_("Deleted:"));
@@ -594,8 +594,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             }
         }
 
-        var ftype = filetype (file);
-
+        var ftype = filetype (first_selected_file);
         var mimetype_key = Files.make_key_label (_("Media type:"));
         var mimetype_value = Files.make_value_label (ftype);
         info_grid.attach (mimetype_key, 0, n, 1, 1);
@@ -604,7 +603,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
 
         if (only_one && "image" in ftype) {
             var resolution_key = Files.make_key_label (_("Resolution:"));
-            resolution_value = Files.make_value_label (resolution (file));
+            resolution_value = Files.make_value_label (resolution (first_selected_file));
             info_grid.attach (resolution_key, 0, n, 1, 1);
             info_grid.attach_next_to (resolution_value, resolution_key, Gtk.PositionType.RIGHT, 3, 1);
             n++;
@@ -612,7 +611,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
 
         if (got_common_location ()) {
             var location_key = Files.make_key_label (_("Location:"));
-            var location_value = Files.make_value_label (location (file));
+            var location_value = Files.make_value_label (location (first_selected_file));
             location_value.ellipsize = Pango.EllipsizeMode.MIDDLE;
             location_value.max_width_chars = 32;
             info_grid.attach (location_key, 0, n, 1, 1);
@@ -620,29 +619,28 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             n++;
         }
 
-        if (only_one && file.info.get_is_symlink ()) {
+        if (only_one && first_selected_file.info.get_is_symlink ()) {
             var key_label = Files.make_key_label (_("Target:"));
-            var value_label = Files.make_value_label (file.info.get_symlink_target ());
+            var value_label = Files.make_value_label (first_selected_file.info.get_symlink_target ());
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;
         }
 
-        if (file.is_trashed ()) {
+        if (first_selected_file.is_trashed ()) {
             var key_label = Files.make_key_label (_("Original Location:"));
-            var value_label = Files.make_value_label (original_location (file));
+            var value_label = Files.make_value_label (original_location (first_selected_file));
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;
         }
 
         /* Open with */
-        if (view.get_default_app () != null && !goffile.is_directory) {
+        var default_app = MimeActions.get_default_application_for_file (first_selected_file);
+        if (default_app != null && !first_selected_file.is_directory) {
             Gtk.TreeIter iter;
-
-            AppInfo default_app = view.get_default_app ();
             store_apps = new Gtk.ListStore (3, typeof (AppInfo), typeof (string), typeof (Icon));
-            unowned List<AppInfo> apps = view.get_open_with_apps ();
+            List<AppInfo> apps = MimeActions.get_applications_for_file (first_selected_file);
             foreach (var app in apps) {
                 store_apps.append (out iter);
                 store_apps.set (iter,
@@ -682,7 +680,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
         /* Device Usage */
         if (should_show_device_usage ()) {
             try {
-                var info = goffile.get_target_location ().query_filesystem_info ("filesystem::*");
+                var info = first_selected_file.get_target_location ().query_filesystem_info ("filesystem::*");
                 create_storage_bar (info, n);
             } catch (Error e) {
                 warning ("error: %s", e.message);
@@ -696,12 +694,12 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
         }
 
         if (only_one) {
-            if (goffile.can_unmount ()) {
+            if (first_selected_file.can_unmount ()) {
                 return true;
             }
 
             var rootfs_loc = GLib.File.new_for_uri ("file:///");
-            if (goffile.get_target_location ().equal (rootfs_loc)) {
+            if (first_selected_file.get_target_location ().equal (rootfs_loc)) {
                 return true;
             }
         }
@@ -846,7 +844,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
 
                         /* update permission label once */
                         if (n < 1) {
-                            l_perm.label = "<tt>%s</tt>".printf (goffile.get_permissions_as_string ());
+                            l_perm.label = "<tt>%s</tt>".printf (first_selected_file.get_permissions_as_string ());
                         }
 
                         /* real update permissions */
@@ -875,7 +873,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
 
         store_users.get (iter, 0, out user);
 
-        if (!goffile.can_set_owner ()) {
+        if (!first_selected_file.can_set_owner ()) {
             critical ("error can't set user");
             return;
         }
@@ -890,7 +888,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             return;
         }
 
-        if (uid == goffile.uid) {
+        if (uid == first_selected_file.uid) {
             return;
         }
 
@@ -910,7 +908,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
 
         store_groups.get (iter, 0, out group);
 
-        if (!goffile.can_set_group ()) {
+        if (!first_selected_file.can_set_group ()) {
             critical ("error can't set group");
             return;
         }
@@ -927,7 +925,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             return;
         }
 
-        if (gid == goffile.gid) {
+        if (gid == first_selected_file.gid) {
             return;
         }
 
@@ -961,7 +959,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             perm_code.text = "000";
             perm_code.max_length = perm_code.max_width_chars = perm_code.width_chars = 3;
 
-            l_perm = new Gtk.Label ("<tt>%s</tt>".printf (goffile.get_permissions_as_string ()));
+            l_perm = new Gtk.Label ("<tt>%s</tt>".printf (first_selected_file.get_permissions_as_string ()));
             l_perm.halign = Gtk.Align.START;
             l_perm.use_markup = true;
 
@@ -983,7 +981,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             perm_grid.attach (l_perm, 1, 6, 1, 1);
             perm_grid.attach (perm_code, 2, 6, 1, 1);
 
-            update_perm_grid_toggle_states (goffile.permissions);
+            update_perm_grid_toggle_states (first_selected_file.permissions);
 
             perm_code.changed.connect (entry_changed);
         }
@@ -1018,7 +1016,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             }
         }
 
-        return goffile.owner;
+        return first_selected_file.owner;
     }
 
     private bool selection_can_set_group () {
@@ -1048,7 +1046,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             }
         }
 
-        return goffile.group;
+        return first_selected_file.group;
     }
 
     private Gtk.Widget? create_owner_choice () {
@@ -1062,7 +1060,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             int owner_index = -1;
             int i = 0;
             foreach (var user in users) {
-                if (user == goffile.owner) {
+                if (user == first_selected_file.owner) {
                     owner_index = i;
                 }
                 store_users.append (out iter);
@@ -1075,7 +1073,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
              */
             if (owner_index == -1) {
                 store_users.prepend (out iter);
-                store_users.set (iter, 0, goffile.owner);
+                store_users.set (iter, 0, first_selected_file.owner);
             }
 
             var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_users);
@@ -1114,11 +1112,11 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             Gtk.TreeIter iter;
 
             store_groups = new Gtk.ListStore (1, typeof (string));
-            groups = goffile.get_settable_group_names ();
+            groups = first_selected_file.get_settable_group_names ();
             int group_index = -1;
             int i = 0;
             foreach (var group in groups) {
-                if (group == goffile.group) {
+                if (group == first_selected_file.group) {
                     group_index = i;
                 }
 
@@ -1132,7 +1130,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
              */
             if (group_index == -1) {
                 store_groups.prepend (out iter);
-                store_groups.set (iter, 0, goffile.owner);
+                store_groups.set (iter, 0, first_selected_file.owner);
             }
 
             var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_groups);
@@ -1187,7 +1185,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
                         AppsColumn.APP_INFO, out app);
 
         if (app == null) {
-            var app_chosen = MimeActions.choose_app_for_glib_file (goffile.location, this);
+            var app_chosen = MimeActions.choose_app_for_glib_file (first_selected_file.location, this);
             if (app_chosen != null) {
                 store_apps.prepend (out iter);
                 store_apps.set (iter,
@@ -1288,15 +1286,15 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             type_value.hide ();
         } else {
             if (ftype != null) {
-                type_value.label = goffile.formated_type;
+                type_value.label = first_selected_file.formated_type;
             }
         }
 
         if ((header_title is Gtk.Entry) && !view.in_recent) {
             int start_offset= 0, end_offset = -1;
 
-            FileUtils.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset,
-                                         goffile.is_folder ());
+            FileUtils.get_rename_region (first_selected_file.info.get_name (), out start_offset, out end_offset,
+                                         first_selected_file.is_folder ());
 
             ((Gtk.Entry) header_title).select_region (start_offset, end_offset);
         }

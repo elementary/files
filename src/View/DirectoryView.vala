@@ -87,8 +87,8 @@ namespace Files {
         private Gdk.Cursor activatable_cursor;
         private Gdk.Cursor selectable_cursor;
 
-        private GLib.List<GLib.AppInfo> open_with_apps;
-        private GLib.AppInfo default_app;
+        // private GLib.List<GLib.AppInfo> open_with_apps;
+        // private GLib.AppInfo default_app;
 
         private GLib.List<Files.File> selected_files = null;
         private bool selected_files_invalid = true;
@@ -266,18 +266,9 @@ namespace Files {
             on_zoom_level_changed (view_widget.zoom_level);
         }
 
-        public void focus_first_for_empty_selection (bool select) {
-            view_widget.show_and_select_file (null, false, false);
-        }
-
-        public unowned GLib.List<GLib.AppInfo>? get_open_with_apps () {
-//             return open_with_apps;
-return null;
-        }
-
-        public GLib.AppInfo get_default_app () {
-            return default_app;
-        }
+        // public void focus_first_for_empty_selection (bool select) {
+        //     view_widget.show_and_select_file (null, false, false);
+        // }
 
         public new void grab_focus () {
 //             if (view_widget.get_realized ()) {

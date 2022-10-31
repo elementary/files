@@ -129,19 +129,22 @@ public class Files.MimeActions {
         return result;
     }
 
-    public static List<AppInfo> get_applications_for_files (GLib.List<Files.File> files) {
+    public static List<AppInfo> get_applications_for_files (
+        GLib.List<Files.File> files,
+        bool filter_default_if_not_executable,
+        bool filter_this_app
+    ) {
         /* Need to make a new list to avoid corrupting the selection */
-        GLib.List<unowned Files.File> sorted_files = null;
+        GLib.List<Files.File> sorted_files = null;
         files.@foreach ((file) => {
             sorted_files.prepend (file);
         });
 
         sorted_files.sort (file_compare_by_mime_type);
-
         List<AppInfo> result = null;
-        unowned Files.File previous_file = null;
+        Files.File previous_file = null;
 
-        foreach (unowned Files.File file in sorted_files) {
+        foreach (var file in sorted_files) {
             if (previous_file == null) {
                 result = get_applications_for_file (file);
                 if (result == null) {
@@ -162,22 +165,76 @@ public class Files.MimeActions {
             one_result.sort (application_compare_by_id);
 
             if (result != null && result.data != null) {
+                //Get applications able to open all file types (if possible)
                 result = intersect_application_lists (result, one_result);
             } else {
                 result = (owned) one_result;
             }
 
-
-            if (result == null || result.data == null) {
-                return result;
+            if (result == null) {
+                break;
             }
 
             previous_file = file;
         }
 
+        if (result == null) {
+            return result;
+        }
+
         result.sort (application_compare_by_name);
+        if (filter_default_if_not_executable) {
+            var default_app = get_default_application_for_files (files);
+            if (default_app != null) {
+                string? id1, id2;
+                id2 = default_app.get_id ();
+
+                if (id2 != null) {
+                    unowned GLib.List<AppInfo> l = result;
+                    while (l != null && l.data is AppInfo) {
+                        id1 = l.data.get_id ();
+
+                        if (id1 != null && id1 == id2) {
+                            result.delete_link (l);
+                            break;
+                        }
+
+                        l = l.next;
+                    }
+                }
+            }
+        }
+
+        if (result == null) {
+            return result;
+        }
+
+        if (filter_this_app) {
+            unowned GLib.List<AppInfo> l = result;
+            while (l != null) {
+                if (l.data is AppInfo) {
+                    if (app_is_this_app (l.data)) {
+                        result.delete_link (l);
+                        break;
+                    }
+                } else {
+                    result.delete_link (l);
+                    l = result;
+                    if (l == null) {
+                        break;
+                    }
+                }
+
+                l = l.next;
+            }
+        }
 
         return result;
+    }
+
+    public static bool app_is_this_app (AppInfo ai) {
+        string exec_name = ai.get_executable ();
+        return (exec_name == Config.APP_NAME);
     }
 
     private static bool file_has_local_path (Files.File file) {
