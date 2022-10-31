@@ -819,7 +819,7 @@ namespace Files {
 
                     default:
                         if (only_one_file) {
-                            load_location (location);
+                            path_change_request (location, Files.OpenFlag.DEFAULT, false);
                         }
 
                         break;

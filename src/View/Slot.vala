@@ -92,6 +92,7 @@ public class Slot : Files.AbstractSlot {
         set_up_directory (_location); /* Connect dir signals before making view */
         make_view ();
         connect_dir_view_signals ();
+        connect_view_widget_signals ();
         connect_slot_signals ();
 
         is_frozen = true;
@@ -122,21 +123,16 @@ public class Slot : Files.AbstractSlot {
         });
     }
 
+    private void connect_view_widget_signals () {
+        view_widget.path_change_request.connect (path_change_requested);
+    }
     private void connect_dir_view_signals () {
-        dir_view.path_change_request.connect (on_dir_view_path_change_request);
-        // dir_view.size_allocate.connect (on_dir_view_size_allocate);
         dir_view.selection_changed.connect (on_dir_view_selection_changed);
     }
 
     private void disconnect_dir_view_signals () {
-        dir_view.path_change_request.disconnect (on_dir_view_path_change_request);
-        // dir_view.size_allocate.disconnect (on_dir_view_size_allocate);
         dir_view.selection_changed.disconnect (on_dir_view_selection_changed);
     }
-
-    // private void on_dir_view_size_allocate (Gtk.Allocation alloc) {
-    //     width = alloc.width;
-    // }
 
     private void on_dir_view_selection_changed (GLib.List<Files.File> files) {
         selection_changed (files);
@@ -232,19 +228,45 @@ public class Slot : Files.AbstractSlot {
         connect_dir_signals ();
     }
 
+    public override void path_change_requested (GLib.File loc, Files.OpenFlag flag) {
+        switch (flag) {
+            case Files.OpenFlag.DEFAULT:
+                if (mode == ViewMode.MILLER_COLUMNS) {
+                    miller_slot_request (loc, false); /* signal to parent MillerView */
+                } else {
+                    user_path_change_request (loc); /* Handle ourselves */
+                }
+                break;
+            case Files.OpenFlag.NEW_TAB:
+            case Files.OpenFlag.NEW_WINDOW:
+                new_container_request (loc, flag);
+                break;
+            case Files.OpenFlag.NEW_ROOT:
+                if (mode == ViewMode.MILLER_COLUMNS) {
+                    miller_slot_request (loc, true); /* signal to parent MillerView */
+                } else {
+                    user_path_change_request (loc); /* Handle ourselves */
+                }
+                break;
+            case Files.OpenFlag.APP:
+                warning ("Unexpected flag");
+                break;
+        }
+    }
+
     private void on_dir_view_path_change_request (GLib.File loc, Files.OpenFlag flag, bool make_root) {
         if (flag == 0) { /* make view in existing container */
             if (mode == ViewMode.MILLER_COLUMNS) {
                 miller_slot_request (loc, make_root); /* signal to parent MillerView */
             } else {
-                user_path_change_request (loc, make_root); /* Handle ourselves */
+                user_path_change_request (loc); /* Handle ourselves */
             }
         } else {
             new_container_request (loc, flag);
         }
     }
 
-    public override void user_path_change_request (GLib.File loc, bool make_root = true) {
+    private void user_path_change_request (GLib.File loc) {
     /** Only this function must be used to change or reload the path **/
         var old_dir = directory;
         set_up_directory (loc);
@@ -309,12 +331,8 @@ public class Slot : Files.AbstractSlot {
         }
     }
 
-    public override unowned GLib.List<Files.File>? get_selected_files () {
-        // if (dir_view != null) {
-            // return dir_view.get_selected_files ();
-        // } else {
-            return null;
-        // }
+    public override unowned GLib.List<Files.File> get_selected_files () {
+        return view_widget == null ? {} : view_widget.get_selected_files ();
     }
 
     public override void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {

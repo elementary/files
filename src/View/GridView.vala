@@ -35,7 +35,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public void on_grid_view_activate (uint pos) {
         var file = (Files.File)grid_view.model.get_item (pos);
         if (file.is_folder () && multi_selection.get_selection ().get_size () == 1) {
-            path_change_request (file.location);
+            path_change_request (file.location, Files.OpenFlag.DEFAULT);
         } else {
             warning ("Open file with app");
         }
@@ -276,6 +276,22 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     public override void open_selected (Files.OpenFlag flag) {
         warning ("open selected %s", flag.to_string ());
+        List<Files.File> selected_files = null;
+        var n_files = get_selected_files (out selected_files);
+        if (n_files == 0) {
+            return;
+        }
+        //TODO Apply upper limit to number of files?
+        switch (n_files) {
+            case 1:
+                open_file (selected_files.data, flag);
+                break;
+            default:
+                //TODO Deal with multiple selection
+                //Check common type
+                //
+                break;
+        }
     }
 
     public override void file_deleted (Files.File file) {

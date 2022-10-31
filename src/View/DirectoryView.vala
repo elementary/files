@@ -57,10 +57,7 @@ namespace Files {
         };
 
         const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
-            // {"new", on_background_action_new, "s"},
             {"create-from", on_background_action_create_from, "s"},
-            // {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-            // {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
         };
 
         const GLib.ActionEntry [] COMMON_ENTRIES = {

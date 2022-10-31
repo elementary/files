@@ -309,7 +309,7 @@ namespace Files {
                     } else {
                         PF.Dialogs.show_error_dialog (_("Original location could not be determined"),
                                                       _("Open trash folder and restore manually"),
-                                                      widget.get_root ());
+                                                      (Gtk.Window)widget.get_ancestor (typeof (Gtk.Window)));
                     }
 
                     undo_redo_done_transfer (action);

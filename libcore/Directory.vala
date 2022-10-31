@@ -95,8 +95,6 @@ public class Files.Directory : Object {
     public bool has_mounts {get; private set;}
     public bool has_trash_dirs {get; private set;}
     public bool can_load {get; private set;}
-    public bool can_open_files {get; private set;}
-    public bool can_stream_files {get; private set;}
     public bool allow_user_interaction {get; set; default = true;}
 
     private bool is_ready = false;
@@ -130,15 +128,7 @@ public class Files.Directory : Object {
         is_no_info = ("cdda mtp gphoto2 ssh sftp afp afc dav davs".contains (scheme));
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("smb ftp sftp afp dav davs".contains (scheme));
-        /* Previously, mtp protocol had problems launching files but this currently works
-         * using newer devices such as Android phones so this restriction is lifted. The flag is
-         * retained in case it needs reinstating or using for another protocol.
-         */
-        can_open_files = true;
-        /* Previously, mtp protocol had problems streaming files but this currently works
-         * using newer devices such as Android phones so this restriction is lifted.
-         */
-        can_stream_files = !("ftp sftp".contains (scheme));
+
 
         file_hash = new HashTable<GLib.File, Files.File> (GLib.File.hash, GLib.File.equal);
 

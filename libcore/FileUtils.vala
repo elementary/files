@@ -1261,6 +1261,61 @@ namespace Files.FileUtils {
 
         return sb.str;
     }
+
+    public bool can_open_file (Files.File file, bool show_error_dialog = false, Gtk.Window? parent = null) {
+        string err_msg1 = _("Cannot open this file");
+        string err_msg2 = "";
+
+        var content_type = get_or_guess_content_type (file);
+        if (content_type == null) {
+            err_msg2 = _("Cannot identify file type to open");
+        } else {
+            var scheme = file.location.get_uri_scheme ();
+            if (!can_open_files (scheme)) {
+                err_msg2 = _("Cannot open files with the %s protocol").printf (scheme);
+            } else if (!can_stream_files (scheme) &&
+                   (content_type.contains ("video") || content_type.contains ("audio"))) {
+
+                err_msg2 = _("Cannot stream files with the %s protocol").printf (scheme);
+            }
+        }
+
+        bool success = err_msg2.length < 1;
+        if (!success && show_error_dialog) {
+            PF.Dialogs.show_warning_dialog (err_msg1, err_msg2, parent);
+        }
+
+        return success;
+    }
+
+    public bool can_open_files (string scheme) {
+        /* Previously, mtp protocol had problems launching files but this currently works
+         * using newer devices such as Android phones so this restriction is lifted. The flag is
+         * retained in case it needs reinstating or using for another protocol.
+         */
+        return true;
+    }
+
+    public bool can_stream_files (string scheme) {
+        /* Previously, mtp protocol had problems streaming files but this currently works
+         * using newer devices such as Android phones so this restriction is now limited to ftp and sftp.
+         */
+        return "ftp sftp".contains (scheme);
+    }
+
+    public string get_or_guess_content_type (Files.File file) {
+        var content_type = file.get_ftype ();
+
+        if (content_type == null) {
+            bool result_uncertain = true;
+            content_type = ContentType.guess (file.basename, null, out result_uncertain);
+            debug ("Guessed content type to be %s from name - result_uncertain %s",
+                      content_type,
+                      result_uncertain.to_string ());
+        }
+
+        return content_type;
+    }
 }
 
 namespace Files {

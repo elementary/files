@@ -216,7 +216,7 @@ namespace Files {
 
             /* Certain parents such as ftp:// will be returned as null as they are not browsable */
             if (parent != null) {
-                open_location (parent);
+                open_location (parent, Files.OpenFlag.DEFAULT);
                 return true;
             } else {
                 return false;
@@ -229,7 +229,7 @@ namespace Files {
             if (path != null) {
                 selected_locations = null;
                 selected_locations.append (this.location);
-                open_location (GLib.File.new_for_commandline_arg (path));
+                open_location (GLib.File.new_for_commandline_arg (path), Files.OpenFlag.DEFAULT);
             }
         }
 
@@ -237,7 +237,7 @@ namespace Files {
             string? path = browser.go_forward (n);
 
             if (path != null) {
-                open_location (GLib.File.new_for_commandline_arg (path));
+                open_location (GLib.File.new_for_commandline_arg (path), Files.OpenFlag.DEFAULT);
             }
         }
 
@@ -312,28 +312,42 @@ namespace Files {
             refresh_slot_info (slot.location);
         }
 
-        private void open_location (GLib.File loc,
-                                    Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT) {
-
-            switch ((Files.OpenFlag)flag) {
+        private void open_location (GLib.File loc, Files.OpenFlag flag) {
+            switch (flag) {
                 case Files.OpenFlag.NEW_TAB:
                 case Files.OpenFlag.NEW_WINDOW:
-                    /* Must pass through this function in order to properly handle unusual characters properly */
+                    /* Must pass through this function in order to properly handle
+                     * unusual characters properly */
                     window.uri_path_change_request (loc.get_uri (), flag);
                     break;
 
                 case Files.OpenFlag.NEW_ROOT:
-                    view.user_path_change_request (loc, true);
+                case Files.OpenFlag.DEFAULT:
+                    // These can be handled by slot
+                    view.path_change_requested (loc, flag);
                     break;
-
-                default:
-                    view.user_path_change_request (loc, false);
+                case Files.OpenFlag.APP:
+                    warning ("View Container cannot handle Files.OpenFlag.APP - ignoring");
                     break;
             }
         }
 
-        private void on_slot_new_container_request (GLib.File loc, Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT) {
-            open_location (loc, flag);
+        private void on_slot_new_container_request (GLib.File loc, Files.OpenFlag flag) {
+            switch (flag) {
+                case Files.OpenFlag.NEW_TAB:
+                case Files.OpenFlag.NEW_WINDOW:
+                    /* Must pass through this function in order to properly handle
+                     * unusual characters properly */
+                    window.uri_path_change_request (loc.get_uri (), flag);
+                    break;
+
+                case Files.OpenFlag.DEFAULT:
+                case Files.OpenFlag.NEW_ROOT:
+                case Files.OpenFlag.APP:
+                    //Should already have been handled by Slot
+                    warning ("Unexpected File.OpenFlag - ignoring");
+                    break;
+            }
         }
 
         public void on_slot_path_changed (Files.AbstractSlot slot) {
@@ -520,7 +534,7 @@ namespace Files {
             }
             /* Attempt to navigate to the location */
             if (loc != null) {
-                open_location (loc);
+                open_location (loc, Files.OpenFlag.DEFAULT);
             }
         }
 

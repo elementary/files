@@ -118,7 +118,7 @@ namespace Files {
         public abstract unowned AbstractSlot? get_current_slot ();
         public abstract void reload (bool non_local_only = false);
         public abstract void grab_focus ();
-        public abstract void user_path_change_request (GLib.File loc, bool make_root);
+        public abstract void path_change_requested (GLib.File loc, Files.OpenFlag flag);
 
         public abstract void focus_first_for_empty_selection (bool select);
         public abstract void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location);
