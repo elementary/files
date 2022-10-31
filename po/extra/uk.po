@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 16:59+0000\n"
-"PO-Revision-Date: 2022-09-26 21:57+0000\n"
+"PO-Revision-Date: 2022-11-01 12:53+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -80,11 +80,14 @@ msgid ""
 "Provide option to select folders with single click and activate with double "
 "click"
 msgstr ""
+"Можливість вибору тек одним клацанням миші та активації подвійним клацанням"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid ""
 "Only show the properties overlay when files are selected, not when hovered"
 msgstr ""
+"Показ накладення властивостей лише за умови виділення файлів, а не за "
+"наведення на них курсору миші"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:56
@@ -106,36 +109,38 @@ msgstr "Виправлення:"
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Fix unexpected file activation after navigation with double-click"
 msgstr ""
+"Виправлено неочікувану активацію файлу після переходу за подвійним клацанням"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid "Add file filters and New Folder options to file chooser portal"
 msgid "Fix dimmed window after use of filechooser portal"
-msgstr "Додано фільтри файлів і опції нової теки до порталу оглядача файлів"
+msgstr "Виправлено затемнення вікна після використання порталу вибору файлів"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid "Fix possible crash when rapidly changing view modes"
-msgstr ""
+msgstr "Усунено можливий збій під час швидкої зміни режимів перегляду"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Fix startup when restored remote location is no longer connected"
 msgstr ""
+"Виправлено запуск, коли відновлене віддалене розташування більше не "
+"під'єднане"
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid ""
 "Ensure infobar shows in connection server dialog when connection attempt "
 "fails"
 msgstr ""
+"Забезпечено показ інформаційної панелі в діалоговому вікні сервера "
+"підключення за невдалої спроби з'єднання"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Ensure correct icon for bookmark to a file that is not a folder"
 msgstr ""
+"Піктограма закладки файлу, який не є текою, відтепер показується коректно"
 
 #: data/io.elementary.files.appdata.xml.in.in:46
-#, fuzzy
-#| msgid "Fix a crash when restoring items from the Trash"
 msgid "Fix possible crash when removing a bookmark"
-msgstr "Виправлено збої під час відновлення елементів зі Смітника"
+msgstr "Усунуто можливий збій під час вилучення закладки"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:60
