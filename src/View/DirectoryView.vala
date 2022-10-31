@@ -49,11 +49,7 @@ namespace Files {
             {"open-with-other-app", on_selection_action_open_with_other_app},
             {"view-in-location", on_selection_action_view_in_location},
             {"forget", on_selection_action_forget},
-            {"cut", on_selection_action_cut},
-            {"trash", on_selection_action_trash},
-            {"delete", on_selection_action_delete},
             {"restore", on_selection_action_restore}
-            // {"invert-selection", invert_selection}
         };
 
         const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
@@ -61,10 +57,7 @@ namespace Files {
         };
 
         const GLib.ActionEntry [] COMMON_ENTRIES = {
-            {"open-in", on_common_action_open_in, "s"},
-            {"bookmark", on_common_action_bookmark},
             {"properties", on_common_action_properties},
-            {"copy-link", on_common_action_copy_link},
         };
 
         GLib.SimpleActionGroup common_actions;
@@ -701,9 +694,6 @@ return null;
 
 // /** File operation callbacks */
 
-        public void after_trash_or_delete () {
-//             unblock_directory_monitor ();
-        }
 
 //         private void unblock_directory_monitor () {
 //             /* Using an idle stops two file deleted/added signals being received (one via the file monitor
@@ -759,20 +749,6 @@ return null;
 //             }
 //         }
 
-
-        private void on_selection_action_cut (GLib.SimpleAction action, GLib.Variant? param) {
-//             GLib.List<Files.File> selection = get_selected_files_for_transfer ();
-//             clipboard.cut_files (selection);
-        }
-
-        private void on_selection_action_trash (GLib.SimpleAction action, GLib.Variant? param) {
-//             trash_or_delete_selected_files (Files.is_admin ());
-        }
-
-        private void on_selection_action_delete (GLib.SimpleAction action, GLib.Variant? param) {
-//             trash_or_delete_selected_files (true);
-        }
-
         private void on_selection_action_restore (GLib.SimpleAction action, GLib.Variant? param) {
 //             GLib.List<Files.File> selection = get_selected_files_for_transfer ();
 //             FileUtils.restore_files_from_trash (selection, window);
@@ -802,81 +778,18 @@ return null;
 //             open_file (file, null);
         }
 
-        private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
-//             GLib.File location;
-//             if (selected_files != null) {
-//                 location = selected_files.data.get_target_location ();
-//             } else {
-//                 location = slot.directory.file.get_target_location ();
-//             }
-
-//             window.bookmark_uri (location.get_uri ());
-        }
-
 // /** Background actions */
-
-        private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
-//             switch (param.get_string ()) {
-//                 case "FOLDER":
-//                     new_empty_folder ();
-//                     break;
-
-//                 case "FILE":
-//                     new_empty_file ();
-//                     break;
-
-//                 default:
-//                     break;
-//             }
-        }
-
         private void on_background_action_create_from (GLib.SimpleAction action, GLib.Variant? param) {
 //             int index = int.parse (param.get_string ());
 //             create_from_template (templates.nth_data ((uint)index));
         }
 
 // /** Common actions */
-        private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) {
-//             default_app = null;
-
-//             switch (param.get_string ()) {
-//                 case "TAB":
-//                     activate_selected_items (Files.OpenFlag.NEW_TAB, get_files_for_action ());
-//                     break;
-
-//                 case "WINDOW":
-//                     activate_selected_items (Files.OpenFlag.NEW_WINDOW, get_files_for_action ());
-//                     break;
-
-//                 default:
-//                     break;
-//             }
-        }
 
         private void on_common_action_properties (GLib.SimpleAction action, GLib.Variant? param) {
 //             new PropertiesWindow (get_files_for_action (), this, window);
         }
 
-        private void on_common_action_copy_link (GLib.SimpleAction action, GLib.Variant? param) {
-//             clipboard.copy_link_files (get_selected_files_for_transfer (get_files_for_action ()));
-        }
-
-        private void on_common_action_copy (GLib.SimpleAction action, GLib.Variant? param) {
-//             clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
-        }
-
-        private void on_common_action_paste (GLib.SimpleAction action, GLib.Variant? param) {
-//             if (clipboard.can_paste && !(clipboard.files_linked && in_trash)) {
-//                 var target = slot.location;
-//                 clipboard.paste_files.begin (target, this as Gtk.Widget, (obj, res) => {
-//                     clipboard.paste_files.end (res);
-//                     if (target.has_uri_scheme ("trash")) {
-//                         /* Pasting files into trash is equivalent to trash or delete action */
-//                         after_trash_or_delete ();
-//                     }
-//                 });
-//             }
-        }
 
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
 //             var file = get_files_for_action ().nth_data (0);
