@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 16:59+0000\n"
-"PO-Revision-Date: 2022-07-03 17:45+0000\n"
+"PO-Revision-Date: 2022-11-01 12:53+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,11 +79,15 @@ msgid ""
 "Provide option to select folders with single click and activate with double "
 "click"
 msgstr ""
+"Proporciona una opció per seleccionar carpetes amb un sol clic i activar amb "
+"dos."
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid ""
 "Only show the properties overlay when files are selected, not when hovered"
 msgstr ""
+"Només es mostren les propietats quan se seleccionen els fitxers, no quan "
+"s'hi passa per damunt."
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:56
@@ -104,39 +108,41 @@ msgstr "Correccions:"
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Fix unexpected file activation after navigation with double-click"
-msgstr ""
+msgstr "Correcció de l'activació de fitxers en navegar després d'un clic doble"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid "Add file filters and New Folder options to file chooser portal"
 msgid "Fix dimmed window after use of filechooser portal"
 msgstr ""
-"Addicció de filtres de fitxers i opcions de carpeta nova al portal de "
-"selecció de fitxers"
+"Correcció de la finestra enfosquida després d'usar el portal de selecció de "
+"fitxers"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid "Fix possible crash when rapidly changing view modes"
 msgstr ""
+"Correcció de la fallada possible en canviar ràpidament de mode de "
+"visualització"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Fix startup when restored remote location is no longer connected"
 msgstr ""
+"Correcció de l'inici quan la ubicació remota restaurada ja no està connectada"
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid ""
 "Ensure infobar shows in connection server dialog when connection attempt "
 "fails"
 msgstr ""
+"Assegura que la barra d'informació mostri un diàleg de la connexió del "
+"servidor quan falli l'intent de connexió."
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Ensure correct icon for bookmark to a file that is not a folder"
 msgstr ""
+"Assegura la icona correcta del marcador d'un fitxer que no sigui una carpeta."
 
 #: data/io.elementary.files.appdata.xml.in.in:46
-#, fuzzy
-#| msgid "Fix a crash when restoring items from the Trash"
 msgid "Fix possible crash when removing a bookmark"
-msgstr "Corregeix una fallada en restaurar elements de la paperera"
+msgstr "Correcció d'una fallada possible en suprimir un marcador"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:60
