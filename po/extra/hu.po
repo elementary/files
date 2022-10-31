@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 16:59+0000\n"
-"PO-Revision-Date: 2022-10-20 13:57+0000\n"
+"PO-Revision-Date: 2022-11-01 12:53+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/extra/hu/"
 ">\n"
@@ -78,11 +78,15 @@ msgid ""
 "Provide option to select folders with single click and activate with double "
 "click"
 msgstr ""
+"Lehetőség mappák kiválasztására egyetlen kattintással és aktiválására dupla "
+"kattintással"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid ""
 "Only show the properties overlay when files are selected, not when hovered"
 msgstr ""
+"A tulajdonságok átfedés megjelenítése csak akkor, ha fájlok is ki vannak "
+"jelölve, nem csak felette lebeg a kurzor"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:56
@@ -103,35 +107,35 @@ msgstr "Javítások:"
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Fix unexpected file activation after navigation with double-click"
-msgstr ""
+msgstr "A duplakattintásos vezérlés közbeni váratlan fájlaktiválások javítva"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
 msgid "Fix dimmed window after use of filechooser portal"
-msgstr ""
+msgstr "A fájlválasztó portál utáni elsötétített ablak javítva"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid "Fix possible crash when rapidly changing view modes"
-msgstr ""
+msgstr "Lehetséges összeomlás gyors nézetváltás közben javítva"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Fix startup when restored remote location is no longer connected"
-msgstr ""
+msgstr "Indítás nem elérhető visszaállított távoli mappával javítva"
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid ""
 "Ensure infobar shows in connection server dialog when connection attempt "
 "fails"
 msgstr ""
+"Információs sáv megjelenítése a szervercsatlakozás párbeszédablakon, ha a "
+"csatlakozási kísérlet sikertelen"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Ensure correct icon for bookmark to a file that is not a folder"
-msgstr ""
+msgstr "Helyes ikon olyan könyvjelzőkhöz, amik fájlok, nem mappák"
 
 #: data/io.elementary.files.appdata.xml.in.in:46
-#, fuzzy
-#| msgid "Fix a crash when restoring items from the Trash"
 msgid "Fix possible crash when removing a bookmark"
-msgstr "Javítva a Kukában visszaállítás művelet közben összeomlást okozó hiba"
+msgstr "Javítva egy összeomlást okozó hiba könyvjelzők eltávolításánál"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:60
