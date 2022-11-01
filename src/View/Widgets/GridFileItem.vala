@@ -143,7 +143,10 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             button = Gdk.BUTTON_PRIMARY
         };
         gesture_click.released.connect ((n_press, x, y) => {
-            if (n_press == 1 && file.is_folder ()) {
+            if (n_press == 1 &&
+                !Files.Preferences.get_default ().singleclick_select &&
+                file.is_folder ()) {
+
                 // Need to idle to allow selection to update
                 Idle.add (() => {
                     view.grid_view.activate (pos);
