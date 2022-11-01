@@ -21,13 +21,8 @@
  */
 
 public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
-    public Gtk.Widget list_widget { get; construct; }
-    private Gtk.ListBox list_box {
-        get {
-            return (Gtk.ListBox)list_widget;
-        }
-    }
-    private Files.BookmarkList bookmark_list;
+    public Gtk.ListBox list_box { get; construct; }
+    public Files.BookmarkList bookmark_list { get; construct; }
     private unowned Files.TrashMonitor trash_monitor;
 
     public Files.SidebarInterface sidebar {get; construct;}
@@ -39,12 +34,12 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
     construct {
-        list_widget = new Gtk.ListBox () {
+        list_box = new Gtk.ListBox () {
             hexpand = true,
             selection_mode = Gtk.SelectionMode.SINGLE
         };
 
-        append (list_widget);
+        append (list_box);
 
         var open_bookmark_action = new SimpleAction ("open-bookmark", new VariantType ("u"));
         open_bookmark_action.activate.connect ((param) => {
@@ -173,7 +168,6 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             home_uri = GLib.Filename.to_uri (PF.UserUtils.get_real_user_home (), null);
         }
         catch (ConvertError e) {}
-
         if (home_uri != "") {
             row = add_bookmark (
                 _("Home"),

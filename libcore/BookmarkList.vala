@@ -99,7 +99,7 @@ public class Files.BookmarkList : GLib.Object {
         }
     }
 
-    private void add_special_directories () {
+    public void add_special_directories () {
         const GLib.UserDirectory[] DIRECTORIES = {
             GLib.UserDirectory.DOCUMENTS,
             GLib.UserDirectory.DOWNLOAD,
@@ -190,7 +190,7 @@ public class Files.BookmarkList : GLib.Object {
     public void delete_items_with_uri (string uri) {
         bool list_changed = false;
         unowned GLib.List<Files.Bookmark> node = list;
-        unowned GLib.List<Files.Bookmark> next = node.next;
+        unowned GLib.List<Files.Bookmark> next = node != null ? node.next : null;
 
         for (node = list; node != null; node = next) {
             next = node.next;

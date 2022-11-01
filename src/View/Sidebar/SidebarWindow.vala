@@ -22,10 +22,9 @@
 
 public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     Gtk.ScrolledWindow scrolled_window;
-    // Gtk.Box bookmarklists_grid;
-    SidebarListInterface bookmark_listbox;
-    SidebarListInterface device_listbox;
-    SidebarListInterface network_listbox;
+    BookmarkListBox bookmark_listbox;
+    DeviceListBox device_listbox;
+    NetworkListBox network_listbox;
 
     private string selected_uri = "";
     private bool loading = false;
@@ -98,12 +97,25 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
             device_expander.set_active (false);
             network_expander.set_active (false);
         });
+        var refresh_action = new SimpleAction ("refresh", null);
+        refresh_action.activate.connect (() => {
+            reload ();
+        });
+        var restore_action = new SimpleAction ("restore", null);
+        restore_action.activate.connect (() => {
+            bookmark_listbox.bookmark_list.add_special_directories (); // Ignores duplicates
+            activate_action ("sb.refresh", null);
+        });
         var sidebar_action_group = new SimpleActionGroup ();
         sidebar_action_group.add_action (collapse_all_action);
+        sidebar_action_group.add_action (refresh_action);
+        sidebar_action_group.add_action (restore_action);
         this.insert_action_group ("sb", sidebar_action_group);
 
         var sidebar_menu = new Menu ();
         sidebar_menu.append (_("Collapse all"), "sb.collapse-all");
+        sidebar_menu.append (_("Refresh"), "sb.refresh");
+        sidebar_menu.append (_("Restore Special Directories"), "sb.restore");
 
         var sidebar_menu_button = new Gtk.MenuButton () {
             icon_name = "view-more-symbolic",

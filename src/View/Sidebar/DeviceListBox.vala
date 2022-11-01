@@ -21,14 +21,8 @@
  */
 
 public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
-    public Gtk.Widget list_widget { get; construct; }
+    public Gtk.ListBox list_box { get; construct; }
     public Files.SidebarInterface sidebar { get; construct; }
-
-    private Gtk.ListBox list_box {
-        get {
-            return (Gtk.ListBox)list_widget;
-        }
-    }
     private VolumeMonitor volume_monitor;
 
     public signal void refresh_freespace ();
@@ -40,12 +34,12 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
     construct {
-        list_widget = new Gtk.ListBox () {
+        list_box = new Gtk.ListBox () {
             hexpand = true,
             selection_mode = Gtk.SelectionMode.SINGLE
         };
 
-        append (list_widget);
+        append (list_box);
 
         var safely_remove_action = new SimpleAction ("safely-remove", new VariantType ("u"));
         safely_remove_action.activate.connect ((param) => {

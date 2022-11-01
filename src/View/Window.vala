@@ -1007,8 +1007,8 @@ public class Files.Window : Gtk.ApplicationWindow {
             warning ("Too rapid reloading suppressed");
             return;
         }
+
         current_container.reload ();
-        sidebar.reload ();
     }
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1160,24 +1160,28 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
 
         var commandline = param.get_string ();
-        var appinfo = AppInfo.create_from_commandline (commandline, null, AppInfoCreateFlags.NONE);
-        List<Files.File> selected_files;
-        current_view_widget.get_selected_files (out selected_files);
-        List<string> uris = null;
-        foreach (var file in selected_files) {
-            uris.append (file.uri);
-        }
-        appinfo.launch_uris_async.begin (uris, new AppLaunchContext (), null, (source, task) => {
-            try {
-                appinfo.launch_uris_async.end (task);
-            } catch (Error e) {
-                PF.Dialogs.show_error_dialog (
-                    _("Could not open selected files with %s").printf (appinfo.get_name ()),
-                    e.message,
-                    this
-                );
+        try {
+            var appinfo = AppInfo.create_from_commandline (commandline, null, AppInfoCreateFlags.NONE);
+            List<Files.File> selected_files;
+            current_view_widget.get_selected_files (out selected_files);
+            List<string> uris = null;
+            foreach (var file in selected_files) {
+                uris.append (file.uri);
             }
-        });
+            appinfo.launch_uris_async.begin (uris, new AppLaunchContext (), null, (source, task) => {
+                try {
+                    appinfo.launch_uris_async.end (task);
+                } catch (Error e) {
+                    PF.Dialogs.show_error_dialog (
+                        _("Could not open selected files with %s").printf (appinfo.get_name ()),
+                        e.message,
+                        this
+                    );
+                }
+            });
+        } catch (Error e) {
+            warning ("Unable to create appinfo from commandline. %s", e.message);
+        }
     }
 
     private void action_info (GLib.SimpleAction action, GLib.Variant? param) {

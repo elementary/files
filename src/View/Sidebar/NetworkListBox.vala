@@ -21,14 +21,8 @@
  */
 
 public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
-    public Gtk.Widget list_widget { get; construct; }
+    public Gtk.ListBox list_box { get; construct; }
     public Files.SidebarInterface sidebar { get; construct; }
-
-    private Gtk.ListBox list_box {
-        get {
-            return (Gtk.ListBox)list_widget;
-        }
-    }
 
     public NetworkListBox (Files.SidebarInterface sidebar) {
         Object (
@@ -37,12 +31,12 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
     construct {
-        list_widget = new Gtk.ListBox () {
+        list_box = new Gtk.ListBox () {
             hexpand = true,
             selection_mode = Gtk.SelectionMode.SINGLE
         };
 
-        append (list_widget);
+        append (list_box);
 
         var volume_monitor = VolumeMonitor.@get ();
         volume_monitor.mount_added.connect (bookmark_mount_if_not_shadowed);
