@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 16:59+0000\n"
-"PO-Revision-Date: 2022-07-03 10:43+0000\n"
+"PO-Revision-Date: 2022-11-01 19:47+0000\n"
 "Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/extra/en_GB/>\n"
@@ -77,11 +77,14 @@ msgid ""
 "Provide option to select folders with single click and activate with double "
 "click"
 msgstr ""
+"Provide option to select folders with single click and activate with double "
+"click"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid ""
 "Only show the properties overlay when files are selected, not when hovered"
 msgstr ""
+"Only show the properties overlay when files are selected, not when hovered"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:56
@@ -102,37 +105,35 @@ msgstr "Fixes:"
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Fix unexpected file activation after navigation with double-click"
-msgstr ""
+msgstr "Fix unexpected file activation after navigation with double-click"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid "Add file filters and New Folder options to file chooser portal"
 msgid "Fix dimmed window after use of filechooser portal"
-msgstr "Add file filters and New Folder options to file chooser portal"
+msgstr "Fix dimmed window after use of filechooser portal"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid "Fix possible crash when rapidly changing view modes"
-msgstr ""
+msgstr "Fix possible crash when rapidly changing view modes"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Fix startup when restored remote location is no longer connected"
-msgstr ""
+msgstr "Fix startup when restored remote location is no longer connected"
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid ""
 "Ensure infobar shows in connection server dialog when connection attempt "
 "fails"
 msgstr ""
+"Ensure infobar shows in connection server dialog when connection attempt "
+"fails"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Ensure correct icon for bookmark to a file that is not a folder"
-msgstr ""
+msgstr "Ensure correct icon for bookmark to a file that is not a folder"
 
 #: data/io.elementary.files.appdata.xml.in.in:46
-#, fuzzy
-#| msgid "Fix a crash when restoring items from the Trash"
 msgid "Fix possible crash when removing a bookmark"
-msgstr "Fix a crash when restoring items from the Rubbish Bin"
+msgstr "Fix possible crash when removing a bookmark"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:60
