@@ -145,10 +145,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         //FIXME This should happen automatically?
         menu_popover.closed.connect (() => {
             grid_view.grab_focus ();
-            if (item_menu.get_data<List<AppInfo>> ("open-with-apps") != null) {
-                item_menu.remove (0);
-                item_menu.steal_data<List<AppInfo>>("open-with-apps");
-            }
         });
 
         item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
@@ -343,10 +339,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             var open_with_menu = new Menu ();
             var open_with_apps = MimeActions.get_applications_for_files (selected_files, true, true);
             foreach (var appinfo in open_with_apps) {
-                open_with_menu.append (appinfo.get_name (), null);
+                open_with_menu.append (
+                    appinfo.get_name (),
+                    Action.print_detailed_name ("win.open-with", new Variant.string (appinfo.get_commandline ()))
+                );
             }
 
-            item_menu.set_data<List<AppInfo>> ("open-with-apps", (owned)open_with_apps);
             item_menu.prepend_submenu (_("Open With"), open_with_menu);
             show_context_menu (item_menu, (double)point_gridview.x, (double)point_gridview.y);
         }

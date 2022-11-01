@@ -60,6 +60,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"edit-path", action_edit_path},
         {"tab", action_tab, "s"},
         {"open-selected", action_open_selected, "s"},
+        {"open-with", action_open_with, "s"},
         {"go-to", action_go_to, "s"},
         {"zoom", action_zoom, "s"},
         {"info", action_info, "s"},
@@ -1149,7 +1150,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_open_selected (GLib.SimpleAction action, GLib.Variant? param) {
-        if (current_view_widget == null) { // can occur during startup
+        if (current_view_widget == null) {
             return;
         }
 
@@ -1173,10 +1174,33 @@ public class Files.Window : Gtk.ApplicationWindow {
             case "APP":
                 current_view_widget.open_selected (Files.OpenFlag.APP);
                 break;
-
-            default:
-                break;
         }
+    }
+
+    private void action_open_with (GLib.SimpleAction action, GLib.Variant? param) {
+        if (current_view_widget == null) {
+            return;
+        }
+
+        var commandline = param.get_string ();
+        var appinfo = AppInfo.create_from_commandline (commandline, null, AppInfoCreateFlags.NONE);
+        List<Files.File> selected_files;
+        current_view_widget.get_selected_files (out selected_files);
+        List<string> uris = null;
+        foreach (var file in selected_files) {
+            uris.append (file.uri);
+        }
+        appinfo.launch_uris_async.begin (uris, new AppLaunchContext (), null, (source, task) => {
+            try {
+                appinfo.launch_uris_async.end (task);
+            } catch (Error e) {
+                PF.Dialogs.show_error_dialog (
+                    _("Could not open selected files with %s").printf (appinfo.get_name ()),
+                    e.message,
+                    this
+                );
+            }
+        });
     }
 
     private void action_info (GLib.SimpleAction action, GLib.Variant? param) {
