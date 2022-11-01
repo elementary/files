@@ -73,7 +73,8 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"sort-directories-first", null, null, "false", change_state_sort_directories_first},
         {"show-hidden", null, null, "false", change_state_show_hidden},
         {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-        {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
+        {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails},
+        {"singleclick-select", null, null, "false", change_state_single_click_select}
     };
 
     public uint window_number { get; construct; }
@@ -286,6 +287,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
         get_action ("hide-local-thumbnails").set_state (prefs.hide_local_thumbnails);
         get_action ("sort-directories-first").set_state (prefs.sort_directories_first);
+        get_action ("singleclick-select").set_state (prefs.singleclick_select);
     }
 
     private void connect_signals () {
@@ -1246,8 +1248,6 @@ public class Files.Window : Gtk.ApplicationWindow {
         sidebar.visible = !sidebar.visible;
     }
 
-
-
     private void action_toggle_select_all () {
         if (current_view_widget != null) {
             if (current_view_widget.all_selected) {
@@ -1343,6 +1343,12 @@ public class Files.Window : Gtk.ApplicationWindow {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
         Files.app_settings.set_boolean ("hide-local-thumbnails", state);
+    }
+
+    public void change_state_single_click_select (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+        Files.app_settings.set_boolean ("singleclick-select", state);
     }
 
     private void connect_to_server () {

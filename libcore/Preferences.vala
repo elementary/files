@@ -16,9 +16,9 @@
 ***/
 
 namespace Files {
-
     public static Preferences? preferences = null;
-
+    //This just makes it easier to get and set settings - we could just access the settings directly.
+    //The properties are bound to the settings in Application.
     public class Preferences : Object {
         /* First element set to null in order that the text renderer background is not set */
         public const string?[] TAGS_COLORS = {
@@ -28,6 +28,7 @@ namespace Files {
         public bool show_hidden_files {get; set; default = false;}
         public bool show_remote_thumbnails {set; get; default = true;}
         public bool hide_local_thumbnails {set; get; default = false;}
+        public bool singleclick_select {set; get; default = false;}
         public bool confirm_trash {set; get; default = true;}
         public bool force_icon_size {set; get; default = true;}
         public bool sort_directories_first { get; set; default = true; }

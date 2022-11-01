@@ -116,12 +116,18 @@
             <attribute name="target">TYPE</attribute>
           </item>
           <item>
-            <attribute name="label" translatable="yes">MODIFIED</attribute>
+            <attribute name="label" translatable="yes">Modified</attribute>
             <attribute name="action">win.sort-type</attribute>
             <attribute name="target">MODIFIED</attribute>
           </item>
         </section>
       </submenu>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Select Folders with Single Click</attribute>
+        <attribute name="action">win.singleclick-select</attribute>
+      </item>
     </section>
   </menu>
 
