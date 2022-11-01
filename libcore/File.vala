@@ -89,7 +89,11 @@ public class Files.File : GLib.Object {
     public bool is_connected = true;
     public string? utf8_collation_key = null;
 
-    public static new Files.File @get (GLib.File location) {
+    public static new Files.File? @get (GLib.File? location) {
+        if (location == null) {
+            return null;
+        }
+
         var parent = location.get_parent ();
         if (parent != null) {
             var dir = Files.Directory.cache_lookup (parent);
