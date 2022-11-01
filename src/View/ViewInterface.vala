@@ -27,10 +27,12 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract bool sort_reversed { get; set; }
     public abstract bool all_selected { get; set; }
     public abstract bool is_renaming { get; set; }
+    public abstract bool rename_after_add { get; set; }
+    public abstract bool select_after_add { get; set; }
 
     public signal void selection_changed ();
     public signal void path_change_request (GLib.File location, Files.OpenFlag open_flag);
-    public signal void file_added (Files.File file);
+    // public signal void file_added (Files.File file);
 
     public virtual void set_up_zoom_level () {}
     public virtual void zoom_in () {}

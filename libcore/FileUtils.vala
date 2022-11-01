@@ -586,6 +586,7 @@ namespace Files.FileUtils {
                                           null);
 
             if (dir != null) {
+                //TODO Do we need this in Gtk4 version?
                 /* We emit this signal anyway so callers can know rename failed and disconnect */
                 dir.file_added (null);
             }

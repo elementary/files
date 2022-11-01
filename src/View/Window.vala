@@ -820,10 +820,19 @@ public class Files.Window : Gtk.ApplicationWindow {
 
             rename_dialog.response.connect ((response_id) => {
                 if (response_id == Gtk.ResponseType.ACCEPT) {
+                    current_view_widget.select_after_add = true;
                     FileUtils.set_file_display_name.begin (
                         file.location,
                         name_entry.text,
-                        null //TODO Do we need a cancellable?
+                        null, //TODO Do we need a cancellable?
+                        (obj, res) => {
+                            try {
+                                //For now assume new file will be added to view if no error
+                                FileUtils.set_file_display_name.end (res);
+                            } catch (Error e) {
+                                current_view_widget.select_after_add = false;
+                            }
+                        }
                     );
                 }
 
@@ -867,11 +876,14 @@ public class Files.Window : Gtk.ApplicationWindow {
             return;
         }
 
+        current_view_widget.rename_after_add = true;
         FileOperations.new_folder.begin (
             this, current_container.slot.location, null, (obj, res) => {
             try {
-                wait_to_rename (FileOperations.new_folder.end (res));
+                //For now assume file will be added to view if no error
+                FileOperations.new_folder.end (res);
             } catch (Error e) {
+                current_view_widget.rename_after_add = false;
                 critical (e.message);
             }
         });
@@ -882,33 +894,17 @@ public class Files.Window : Gtk.ApplicationWindow {
             return;
         }
 
+        current_view_widget.rename_after_add = true;
         FileOperations.new_file.begin (
             this, current_container.slot.uri, null, null, 0, null, (obj, res) => {
             try {
-                wait_to_rename (FileOperations.new_folder.end (res));
+                //For now assume file will be added to view if no error
+                FileOperations.new_folder.end (res);
             } catch (Error e) {
+                current_view_widget.rename_after_add = false;
                 critical (e.message);
             }
         });
-    }
-
-    private void wait_to_rename (GLib.File? gfile) {
-        //When new file appears in view, start to rename it
-        if (Files.File.@get (gfile) != null) {
-            var view = current_view_widget; //Capture current view widget in closure
-            view.file_added.connect (show_select_and_rename);
-            //Ensure signal disconnects if the file does not appear for any reason
-            Timeout.add (100, () => {
-                view.file_added.disconnect (show_select_and_rename);
-                return Source.REMOVE;
-            });
-        }
-    }
-
-    private void show_select_and_rename (Files.ViewInterface view, Files.File file) {
-        view.file_added.disconnect (show_select_and_rename);
-        view.show_and_select_file (file, true, true);
-        activate_action ("rename", null);
     }
 
     private void action_copy_to_clipboard () {

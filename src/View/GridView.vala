@@ -59,6 +59,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public bool sort_reversed { get; set; default = false; }
     public bool all_selected { get; set; default = false; }
     public bool is_renaming { get; set; default = false; }
+    // Simpler than using signals and delegates to call actions after file has been added
+    public bool rename_after_add { get; set; default = false;}
+    public bool select_after_add { get; set; default = false;}
 
     private CompareDataFunc<Files.File>? file_compare_func;
     private EqualFunc<Files.File>? file_equal_func;
@@ -193,8 +196,18 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public override void add_file (Files.File file) {
         //TODO Delay sorting until adding finished?
         list_store.insert_sorted (file, file_compare_func);
+
         Idle.add (() => {
-            file_added (file);
+            if (rename_after_add) {
+                warning ("rename adter add");
+                rename_after_add = false;
+                show_and_select_file (file, true, true);
+                activate_action ("win.rename", null);
+            } else if (select_after_add) {
+                select_after_add = false;
+                show_and_select_file (file, true, true);
+            }
+
             return Source.REMOVE;
         });
     }
