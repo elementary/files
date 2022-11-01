@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 16:59+0000\n"
-"PO-Revision-Date: 2022-11-01 19:47+0000\n"
+"PO-Revision-Date: 2022-11-01 23:47+0000\n"
 "Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
 "\n"
@@ -80,7 +80,7 @@ msgstr "Улучшения:"
 msgid ""
 "Provide option to select folders with single click and activate with double "
 "click"
-msgstr "Опция для выбора папок одинарным щелчком и активации на двойной щелчок"
+msgstr "Опция для выбора папок одинарным щелчком и активации двойным щелчоком"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid ""
@@ -116,7 +116,7 @@ msgstr "Исправлено затемнение окна после испол
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid "Fix possible crash when rapidly changing view modes"
-msgstr "Исправлен краш при быстром переключении видов отображения"
+msgstr "Исправлено падение программы при быстром переключении видов отображения"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Fix startup when restored remote location is no longer connected"
@@ -137,7 +137,7 @@ msgstr "Исправлена иконка закладок файлов"
 
 #: data/io.elementary.files.appdata.xml.in.in:46
 msgid "Fix possible crash when removing a bookmark"
-msgstr "Исправлен краш при удалении закладки"
+msgstr "Исправлено падание программы при удалении закладки"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:60
