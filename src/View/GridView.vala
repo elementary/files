@@ -132,7 +132,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = (GridFileItem)list_item.child;
             fileitem_list.remove (file_item);
-
         });
 
         grid_view.model = multi_selection;
@@ -214,6 +213,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
     public override void clear () {
         list_store.remove_all ();
+        rename_after_add = false;
+        select_after_add = false;
     }
 
     public override void zoom_in () {
