@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 16:59+0000\n"
-"PO-Revision-Date: 2022-07-02 20:28+0000\n"
+"PO-Revision-Date: 2022-11-03 00:03+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -70,12 +70,12 @@ msgstr "שיפורים:"
 msgid ""
 "Provide option to select folders with single click and activate with double "
 "click"
-msgstr ""
+msgstr "אספקת אפשרות לבחור תיקיות בלחיצה בודדת ולהפעיל בלחיצה כפולה"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid ""
 "Only show the properties overlay when files are selected, not when hovered"
-msgstr ""
+msgstr "שכבת המאפיינים תוצג רק כאשר נבחרים קבצים, לא בעת ריחוף מעליהם"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:56
@@ -96,37 +96,34 @@ msgstr "תיקונים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Fix unexpected file activation after navigation with double-click"
-msgstr ""
+msgstr "תוקנה הפעלת קובץ בלתי צפויה לאחר ניווט עם לחיצה כפולה"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid "Add file filters and New Folder options to file chooser portal"
 msgid "Fix dimmed window after use of filechooser portal"
-msgstr "נוספו מסנני קבצים ואפשרויות תיקיות חדשות לשער בוחר הקבצים"
+msgstr "תוקן חלום מעומעם לאחר השימוש בשער בוחר הקבצים"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid "Fix possible crash when rapidly changing view modes"
-msgstr ""
+msgstr "תוקנה קריסה שקרתה לפעמים בעת החלפת מצבי תצוגה במהירות"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Fix startup when restored remote location is no longer connected"
-msgstr ""
+msgstr "תוקנה ההפעלה כאשר מיקום מרוחק ששוחזר אינו מחובר עוד"
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid ""
 "Ensure infobar shows in connection server dialog when connection attempt "
 "fails"
 msgstr ""
+"מתבצע וידוא שסרגל המידע מופיע בחלונית שרת החיבור כאשר ניסיון ההתחברות נכשל"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Ensure correct icon for bookmark to a file that is not a folder"
-msgstr ""
+msgstr "וידוא שמדובר בסמל הנכון לסימנייה לקובץ שאינו תיקייה"
 
 #: data/io.elementary.files.appdata.xml.in.in:46
-#, fuzzy
-#| msgid "Fix a crash when restoring items from the Trash"
 msgid "Fix possible crash when removing a bookmark"
-msgstr "תיקון קריסה בעת שחזור קבצים מהאשפה"
+msgstr "תיקון קריסה שקרתה לפעמים בעת הסרת סימנייה"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:60
