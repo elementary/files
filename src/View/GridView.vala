@@ -158,13 +158,15 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
 
         //Setup as drop target
+        //TODO May need to limit actions depending on location
         var drop_target = new Gtk.DropTarget (
             Type.STRING,
-            Gdk.DragAction.COPY | Gdk.DragAction.LINK| Gdk.DragAction.MOVE | Gdk.DragAction.ASK
+            Gdk.DragAction.COPY | Gdk.DragAction.MOVE
         );
-        grid_view.add_controller (drop_target);
+        add_controller (drop_target);
         drop_target.accept.connect ((drop) => {
             warning ("accept");
+            drop.drag.selected_action = Gdk.DragAction.MOVE; // Ignored??
             return true;
         });
         drop_target.enter.connect ((x, y) => {
@@ -174,13 +176,17 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             warning ("leave");
         });
         drop_target.motion.connect ((x, y) => {
-            // warning ("motion");
-            return Gdk.DragAction.COPY;
+            warning ("motion");
+            return Gdk.DragAction.MOVE;
         });
-        drop_target.on_drop.connect ((val, x, y) => {
+        drop_target.on_drop.connect ((val, x, y) => { //C signal name is "drop" ?
             warning ("dropped %s", val.get_string ());
-            return false;
+            var drop = drop_target.get_current_drop ();
+            warning ("Current drop drag selected action %s", drop.drag.selected_action.to_string ());
+            return true;
         });
+        //FIXME Weird rubberband type selection after dropping.???
+
         notify["sort-type"].connect (() => {
             list_store.sort (file_compare_func);
         });
