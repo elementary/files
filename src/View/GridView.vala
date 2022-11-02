@@ -280,8 +280,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
 
         //TODO Check pos same in sorted model and list_store
-        if (!select) {
-            multi_selection.unselect_item (pos);
+        if (select) {
+            multi_selection.select_item (pos, unselect_others);
         }
 
         if (show) {
@@ -293,11 +293,18 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 adj.value = adj.upper * double.min (
                     (double)pos / (double) list_store.get_n_items (), adj.upper
                 );
+                focus_item (pos);
                 return Source.REMOVE;
             });
         }
+    }
 
-        //FIXME No obvious way to control where keyboard focus is :(
+    private void focus_item (uint pos) {
+        foreach (var item in fileitem_list) {
+            if (item.pos == pos) {
+                item.grab_focus ();
+            }
+        }
     }
 
     public virtual void select_files (List<Files.File> files_to_select) {

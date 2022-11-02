@@ -5,6 +5,12 @@ fileitem {
 }
 
 fileitem.selected {
+    background: shade(@theme_bg_color, 1.5);
+    border: 5px solid @theme_bg_color;
+    border-radius: 1.0rem;
+}
+
+fileitem.focussed {
     background: @selected_bg_color;
     border: 5px solid @theme_bg_color;
     border-radius: 1.0rem;
