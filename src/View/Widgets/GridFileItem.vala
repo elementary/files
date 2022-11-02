@@ -223,7 +223,31 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         drag_source.drag_end.connect ((drag) => {
             drag_source.set_icon (null, 0, 0);
         });
-        //TODO Deal with dragging multiple selected items.
+
+        //Setup as drop target
+        var drop_target = new Gtk.DropTarget (
+            Type.STRING,
+            Gdk.DragAction.COPY | Gdk.DragAction.LINK| Gdk.DragAction.MOVE | Gdk.DragAction.ASK
+        );
+        add_controller (drop_target);
+        drop_target.accept.connect ((drop) => {
+            warning ("item accept");
+            return true;
+        });
+        drop_target.enter.connect ((x, y) => {
+            warning ("item enter");
+        });
+        drop_target.leave.connect (() => {
+            warning ("item leave");
+        });
+        drop_target.motion.connect ((x, y) => {
+            // warning ("motion");
+            return Gdk.DragAction.COPY;
+        });
+        drop_target.on_drop.connect ((val, x, y) => {
+            warning ("item dropped %s", val.get_string ());
+            return false;
+        });
     }
 
     public void bind_file (Files.File? file) {

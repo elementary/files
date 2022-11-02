@@ -151,6 +151,30 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
 
+        //Setup as drop target
+        var drop_target = new Gtk.DropTarget (
+            Type.STRING,
+            Gdk.DragAction.COPY | Gdk.DragAction.LINK| Gdk.DragAction.MOVE | Gdk.DragAction.ASK
+        );
+        grid_view.add_controller (drop_target);
+        drop_target.accept.connect ((drop) => {
+            warning ("accept");
+            return true;
+        });
+        drop_target.enter.connect ((x, y) => {
+            warning ("enter");
+        });
+        drop_target.leave.connect (() => {
+            warning ("leave");
+        });
+        drop_target.motion.connect ((x, y) => {
+            // warning ("motion");
+            return Gdk.DragAction.COPY;
+        });
+        drop_target.on_drop.connect ((val, x, y) => {
+            warning ("dropped %s", val.get_string ());
+            return false;
+        });
         notify["sort-type"].connect (() => {
             list_store.sort (file_compare_func);
         });
