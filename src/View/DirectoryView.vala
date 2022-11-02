@@ -356,10 +356,6 @@ return null;
 //             view_widget.show_and_select_file (file, false, true);
         }
 
-        private void select_and_scroll_to_gof_file (Files.File file, bool unselect_others) {
-            view_widget.show_and_select_file (file, true, unselect_others);
-        }
-
 //     /** Directory signal handlers. */
 //         /* Signal could be from subdirectory as well as slot directory */
         private void connect_directory_handlers (Directory dir) {

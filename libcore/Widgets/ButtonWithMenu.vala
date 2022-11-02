@@ -99,17 +99,7 @@ namespace Files.Chrome {
 
         construct {
             timeout = 0;
-
-            // realize.connect (() => {
-            //     get_toplevel ().configure_event.connect (() => {
-            //         if (timeout > 0) {
-            //             Source.remove (timeout);
-            //             timeout = 0;
-            //         }
-
-            //         return false;
-            //     });
-            // });
+            focusable = false; // Have a shortcut to operate so no need to focus
         }
 
         public ButtonWithMenu.from_icon_name (string icon_name) {

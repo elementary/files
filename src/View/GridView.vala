@@ -33,8 +33,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     }
     [GtkCallback]
     public void primary_press_handler (int n_press, double x, double y) {
-warning ("view pP");
+        // Deselect all when clicking on empty part of view
         unselect_all ();
+        grid_view.grab_focus ();
     }
     [GtkCallback]
     public void on_grid_view_activate (uint pos) {
@@ -204,12 +205,15 @@ warning ("view pP");
                 refresh_view ();
             }
         });
+
+        grab_focus ();
     }
 
     public override void clear () {
         list_store.remove_all ();
         rename_after_add = false;
         select_after_add = false;
+        grab_focus ();
     }
 
     private void refresh_view () {
@@ -273,17 +277,15 @@ warning ("view pP");
         uint pos = 0;
         if (file != null) {
             list_store.find_with_equal_func (file, file_equal_func, out pos); //Inefficient?
-        } else {
-            return;
         }
 
         //TODO Check pos same in sorted model and list_store
-        if (select) {
-            multi_selection.select_item (pos, unselect_others);
+        if (!select) {
+            multi_selection.unselect_item (pos);
         }
 
         if (show) {
-            // Move focused item to top
+            // Move specified item to top
             //TODO Work out how to move to middle of visible area? Need number of columns/width of fileitem?
             //Idle until gridview layed out.
             Idle.add (() => {
@@ -294,6 +296,8 @@ warning ("view pP");
                 return Source.REMOVE;
             });
         }
+
+        //FIXME No obvious way to control where keyboard focus is :(
     }
 
     public virtual void select_files (List<Files.File> files_to_select) {

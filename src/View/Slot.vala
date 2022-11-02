@@ -341,6 +341,7 @@ public class Slot : Files.AbstractSlot {
     }
 
     public override void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location) {
+
         if (view_widget != null) {
             var files_to_select = new List<Files.File> ();
             locations.@foreach ((loc) => {
@@ -357,14 +358,15 @@ public class Slot : Files.AbstractSlot {
     }
 
     public void select_gof_file (Files.File gof) {
+
         if (view_widget != null) {
             view_widget.show_and_select_file (gof, true, false, false);
         }
     }
 
-    public override void focus_first_for_empty_selection (bool select = true) {
+    public override void show_first_item () {
         if (view_widget != null) {
-            view_widget.show_and_select_file (null, select, false);
+            view_widget.show_and_select_file (null, false, false);
         }
     }
 

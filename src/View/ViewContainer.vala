@@ -435,7 +435,7 @@ namespace Files {
                     can_show_folder = false;
                 }
             } else {
-                view.focus_first_for_empty_selection (false); /* Does not select */
+                view.show_first_item (); /* Focus does not work with Gtk4 GridView*/
             }
 
             if (can_show_folder) {
@@ -522,7 +522,7 @@ namespace Files {
                     return;
                 }
             } else if (no_path_change) { /* not in current, do not navigate to it*/
-                view.focus_first_for_empty_selection (false); /* Just focus first file */
+                view.show_first_item (); /* Focus does not work with Gtk4 GridView */
                 return;
             }
             /* Attempt to navigate to the location */

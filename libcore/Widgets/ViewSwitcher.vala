@@ -39,7 +39,8 @@ namespace Files.Chrome {
                 child = new Gtk.Image.from_icon_name ("view-grid-symbolic"),
                 tooltip_markup = get_tooltip_for_id (id, _("View as Grid")),
                 action_name = this.action_name,
-                action_target = new Variant.uint32 (id)
+                action_target = new Variant.uint32 (id),
+                focusable = false
             };
             grid_view_btn.toggled.connect (() => {
                 if (grid_view_btn.active) {
@@ -54,7 +55,8 @@ namespace Files.Chrome {
                 child = new Gtk.Image.from_icon_name ("view-list-symbolic"),
                 tooltip_markup = get_tooltip_for_id (id, _("View as List")),
                 action_name = this.action_name,
-                action_target = new Variant.uint32 (id)
+                action_target = new Variant.uint32 (id),
+                focusable = false
             };
             list_view_btn.toggled.connect (() => {
                 if (list_view_btn.active) {
@@ -70,7 +72,8 @@ namespace Files.Chrome {
                 child = new Gtk.Image.from_icon_name ("view-column-symbolic"),
                 tooltip_markup = get_tooltip_for_id (id, _("View in Columns")),
                 action_name = this.action_name,
-                action_target = new Variant.uint32 (id)
+                action_target = new Variant.uint32 (id),
+                focusable = false
             };
             column_view_btn.toggled.connect (() => {
                 if (column_view_btn.active) {

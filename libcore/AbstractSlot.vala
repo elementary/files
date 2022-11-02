@@ -120,7 +120,7 @@ namespace Files {
         public abstract void grab_focus ();
         public abstract void path_change_requested (GLib.File loc, Files.OpenFlag flag);
 
-        public abstract void focus_first_for_empty_selection (bool select);
+        public abstract void show_first_item ();
         public abstract void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location);
         protected abstract void make_view ();
         public abstract void close ();
