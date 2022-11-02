@@ -160,6 +160,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         //Set up drag source
         //NOTE Setting FileItems as drag source caused weird problems
         var drag_source = new Gtk.DragSource ();
+        drag_source.set_actions (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
         grid_view.add_controller (drag_source);
         drag_source.prepare.connect ((x, y) => {
             Files.GridFileItem fileitem;
@@ -174,14 +175,20 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 return null;
             }
 
-            var val = Value (typeof (string));
+            //Provide both File and text type content
+            var val_text = Value (typeof (string));
+            var val_file = Value (typeof (GLib.File));
             // Current behaviour is to use the icon of the first file in the selection list
             // Try to use a more appropriate icon for multiple selection.
             if (fileitem.selected) {
                 List<Files.File> selected_files = null;
                 get_selected_files (out selected_files);
-                var drag_data = FileUtils.make_string_from_file_list (selected_files);
-                val.set_string (drag_data);
+                //FIXME Need Gdk.FileList to box multiple files and constructors missing in .vapi
+                //Issue raised
+                //For now just send clicked file
+                var drag_data_text = FileUtils.make_string_from_file_list (selected_files);
+                val_text.set_string (drag_data_text);
+                val_file.set_object (fileitem.file.location.dup ());
                 var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
                 drag_source.set_icon (
                     theme.lookup_icon (
@@ -195,18 +202,18 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                     16, 16
                 );
             } else {
-                val.set_string (fileitem.file.uri);
+                val_text.set_string (fileitem.file.uri);
+                val_file.set_object (fileitem.file.location.dup ());
                 // Easier to use WidgetPaintable
                 drag_source.set_icon (new Gtk.WidgetPaintable (fileitem.file_icon), 16, 16);
             }
-            var cp = new Gdk.ContentProvider.for_value (val);
-            return cp;
+            var cp_text = new Gdk.ContentProvider.for_value (val_text);
+            var cp_file = new Gdk.ContentProvider.for_value (val_file);
+            return new Gdk.ContentProvider.union ({cp_text,cp_file});
         });
 
         drag_source.drag_begin.connect ((drag) => {
             //TODO May need to limit actions when dragging some files depending on permissions
-            drag.actions = Gdk.DragAction.COPY | Gdk.DragAction.MOVE;
-            drag.selected_action = Gdk.DragAction.MOVE;
         });
         drag_source.drag_end.connect ((drag) => {
             drag_source.set_icon (null, 0, 0);
@@ -217,30 +224,28 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         //Setup as drop target
         //TODO May need to limit actions depending on location
-        var drop_target = new Gtk.DropTarget (
-            Type.STRING,
-            Gdk.DragAction.COPY | Gdk.DragAction.MOVE
+        var formats = new Gdk.ContentFormats.for_gtype (typeof (GLib.File));
+        var drop_target = new Gtk.DropTargetAsync (
+            formats,
+            Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK
         );
         add_controller (drop_target);
         drop_target.accept.connect ((drop) => {
-            warning ("accept");
-            drop.drag.selected_action = Gdk.DragAction.MOVE; // Ignored??
+            drop.status (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK, Gdk.DragAction.MOVE);
             return true;
         });
-        drop_target.enter.connect ((x, y) => {
-            warning ("enter");
+        drop_target.drag_enter.connect ((x, y) => {
+            return Gdk.DragAction.MOVE; // Ignored??
         });
-        drop_target.leave.connect (() => {
-            warning ("leave");
+        drop_target.drag_leave.connect (() => {
+            // warning ("leave");
         });
-        drop_target.motion.connect ((x, y) => {
-            warning ("motion");
-            return Gdk.DragAction.MOVE;
+        drop_target.drag_motion.connect ((drop, x, y) => {
+            drop.status (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK, Gdk.DragAction.MOVE);
+            return Gdk.DragAction.MOVE; // Ignored??
         });
-        drop_target.on_drop.connect ((val, x, y) => { //C signal name is "drop" ?
-            warning ("dropped %s", val.get_string ());
-            var drop = drop_target.get_current_drop ();
-            warning ("Current drop drag selected action %s", drop.drag.selected_action.to_string ());
+        drop_target.drop.connect ((drop, x, y) => { //C signal name is "drop" ?
+            drop.finish (drop.drag.selected_action);
             return true;
         });
         //FIXME Weird rubberband type selection after dropping.???
