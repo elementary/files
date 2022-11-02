@@ -20,12 +20,14 @@
 public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     private static Gtk.CssProvider fileitem_provider;
     private static Files.Preferences prefs;
+
     static construct {
         set_layout_manager_type (typeof (Gtk.BoxLayout));
         set_css_name ("fileitem");
         fileitem_provider = new Gtk.CssProvider ();
         fileitem_provider.load_from_resource ("/io/elementary/files/GridViewFileItem.css");
         prefs = Files.Preferences.get_default ();
+
     }
 
     private int thumbnail_request = -1;
@@ -86,6 +88,16 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             valign = Gtk.Align.START
         };
         icon_overlay.add_overlay (selection_helper);
+        selection_helper.bind_property (
+            "active", this, "selected", BindingFlags.BIDIRECTIONAL
+        );
+        selection_helper.toggled.connect (() => {
+            if (selection_helper.active) {
+                view.grid_view.model.select_item (pos, false);
+            } else {
+                view.grid_view.model.unselect_item (pos);
+            }
+        });
 
         emblems = new Gtk.Image[4];
         emblem_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
@@ -175,16 +187,43 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             selection_helper.visible = selected;
         });
         add_controller (motion_controller);
-        selection_helper.bind_property (
-            "active", this, "selected", BindingFlags.BIDIRECTIONAL
-        );
-        selection_helper.toggled.connect (() => {
-            if (selection_helper.active) {
-                view.grid_view.model.select_item (pos, false);
+
+        //Set up drag source
+        var drag_source = new Gtk.DragSource ();
+        add_controller (drag_source);
+        drag_source.prepare.connect ((x, y) => {
+            var val = Value (typeof (string));
+            // Current behaviour is to use the icon of the first file in the selection list
+            // Try to use a more appropriate icon for multiple selection.
+            if (selected) {
+                List<Files.File> selected_files = null;
+                view.get_selected_files (out selected_files);
+                var drag_data = FileUtils.make_string_from_file_list (selected_files);
+                val.set_string (drag_data);
+                var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
+                drag_source.set_icon (
+                    theme.lookup_icon (
+                        "edit-copy", //TODO Provide better icon?
+                         null,
+                         file_icon.pixel_size,
+                         this.scale_factor,
+                         get_default_direction (),
+                         Gtk.IconLookupFlags.FORCE_REGULAR | Gtk.IconLookupFlags.PRELOAD
+                    ),
+                    16, 16
+                );
             } else {
-                view.grid_view.model.unselect_item (pos);
+                val.set_string (file.uri);
+                // Easier to use WidgetPaintable
+                drag_source.set_icon (new Gtk.WidgetPaintable (file_icon), 16, 16);
             }
+            var cp = new Gdk.ContentProvider.for_value (val);
+            return cp;
         });
+        drag_source.drag_end.connect ((drag) => {
+            drag_source.set_icon (null, 0, 0);
+        });
+        //TODO Deal with dragging multiple selected items.
     }
 
     public void bind_file (Files.File? file) {
@@ -237,7 +276,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             }
             if (file.pix != null) {
                 file_icon.paintable = Gdk.Texture.for_pixbuf (file.pix);
-                // queue_draw ();
             }
         }
     }
