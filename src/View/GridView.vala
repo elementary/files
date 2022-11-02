@@ -157,6 +157,64 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
 
+        //Set up drag source
+        //NOTE Setting FileItems as drag source caused weird problems
+        var drag_source = new Gtk.DragSource ();
+        grid_view.add_controller (drag_source);
+        drag_source.prepare.connect ((x, y) => {
+            Files.GridFileItem fileitem;
+            var widget = grid_view.pick (x, y, Gtk.PickFlags.DEFAULT);
+            if (!(widget is Files.GridFileItem)) {
+                fileitem = (GridFileItem)(widget.get_ancestor (typeof (GridFileItem)));
+            } else {
+                fileitem = (GridFileItem)widget;
+            }
+
+            if (fileitem == null) {
+                return null;
+            }
+
+            var val = Value (typeof (string));
+            // Current behaviour is to use the icon of the first file in the selection list
+            // Try to use a more appropriate icon for multiple selection.
+            if (fileitem.selected) {
+                List<Files.File> selected_files = null;
+                get_selected_files (out selected_files);
+                var drag_data = FileUtils.make_string_from_file_list (selected_files);
+                val.set_string (drag_data);
+                var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
+                drag_source.set_icon (
+                    theme.lookup_icon (
+                        "edit-copy", //TODO Provide better icon?
+                         null,
+                         fileitem.file_icon.pixel_size,
+                         this.scale_factor,
+                         get_default_direction (),
+                         Gtk.IconLookupFlags.FORCE_REGULAR | Gtk.IconLookupFlags.PRELOAD
+                    ),
+                    16, 16
+                );
+            } else {
+                val.set_string (fileitem.file.uri);
+                // Easier to use WidgetPaintable
+                drag_source.set_icon (new Gtk.WidgetPaintable (fileitem.file_icon), 16, 16);
+            }
+            var cp = new Gdk.ContentProvider.for_value (val);
+            return cp;
+        });
+
+        drag_source.drag_begin.connect ((drag) => {
+            //TODO May need to limit actions when dragging some files depending on permissions
+            drag.actions = Gdk.DragAction.COPY | Gdk.DragAction.MOVE;
+            drag.selected_action = Gdk.DragAction.MOVE;
+        });
+        drag_source.drag_end.connect ((drag) => {
+            drag_source.set_icon (null, 0, 0);
+        });
+        drag_source.drag_cancel.connect ((drag, reason) => {
+            return false;
+        });
+
         //Setup as drop target
         //TODO May need to limit actions depending on location
         var drop_target = new Gtk.DropTarget (
