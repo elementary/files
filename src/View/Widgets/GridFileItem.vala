@@ -160,8 +160,9 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
                 file.is_folder ()) ||
                 n_press == 2) {
 
-                // Need to idle to allow selection to update
                 Idle.add (() => {
+                    //Ensure file selected so that it will be activated
+                    view.show_and_select_file (file, true, false,false);
                     view.grid_view.activate (pos);
                     return Source.REMOVE;
                 });
@@ -171,7 +172,8 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
 
         // Implement item context menu launching
         var gesture_secondary_click = new Gtk.GestureClick () {
-            button = Gdk.BUTTON_SECONDARY
+            button = Gdk.BUTTON_SECONDARY,
+            propagation_phase = Gtk.PropagationPhase.CAPTURE
         };
         gesture_secondary_click.released.connect ((n_press, x, y) => {
             view.show_item_context_menu (this, x, y);

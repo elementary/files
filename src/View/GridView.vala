@@ -32,9 +32,14 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         show_context_menu (background_menu, x, y);
     }
     [GtkCallback]
+    public void primary_press_handler (int n_press, double x, double y) {
+warning ("view pP");
+        unselect_all ();
+    }
+    [GtkCallback]
     public void on_grid_view_activate (uint pos) {
         var file = (Files.File)grid_view.model.get_item (pos);
-        if (file.is_folder () && multi_selection.get_selection ().get_size () == 1) {
+        if (file.is_folder () && multi_selection.get_selection ().get_size () <= 1) {
             path_change_request (file.location, Files.OpenFlag.DEFAULT);
         } else {
             warning ("Open file with app");
@@ -201,6 +206,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         });
     }
 
+    public override void clear () {
+        list_store.remove_all ();
+        rename_after_add = false;
+        select_after_add = false;
+    }
+
     private void refresh_view () {
         // Needed to load thumbnails when settings change.  Is there a better way?
         grid_view.model = null;
@@ -233,12 +244,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
             return Source.REMOVE;
         });
-    }
-
-    public override void clear () {
-        list_store.remove_all ();
-        rename_after_add = false;
-        select_after_add = false;
     }
 
     public override void zoom_in () {
