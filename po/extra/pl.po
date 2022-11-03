@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 16:59+0000\n"
-"PO-Revision-Date: 2022-07-05 07:52+0000\n"
+"PO-Revision-Date: 2022-11-03 10:15+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
 "Language: pl\n"
@@ -81,11 +81,15 @@ msgid ""
 "Provide option to select folders with single click and activate with double "
 "click"
 msgstr ""
+"Dodano możliwość wybierania folderów pojedynczym kliknięciem i aktywacji "
+"podwójnym"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid ""
 "Only show the properties overlay when files are selected, not when hovered"
 msgstr ""
+"Nakładka z właściwościami pokazywana jest tylko gdy pliki są wybrane, a nie "
+"najechane myszką"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:56
@@ -107,36 +111,39 @@ msgstr "Poprawki:"
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Fix unexpected file activation after navigation with double-click"
 msgstr ""
+"Naprawiono niespodziewaną aktywację pliku po nawigacji podwójnym kliknięciem"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid "Add file filters and New Folder options to file chooser portal"
 msgid "Fix dimmed window after use of filechooser portal"
-msgstr "Dodano filtry plików oraz opcję Nowy folder do portalu wyboru pliku"
+msgstr "Naprawiono przyciemnione okno po użyciu portalu wyboru pliku"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid "Fix possible crash when rapidly changing view modes"
-msgstr ""
+msgstr "Naprawiono potencjalny błąd krytyczny przy szybkiej zmianie trybów"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Fix startup when restored remote location is no longer connected"
 msgstr ""
+"Naprawiono uruchamianie w przypadku gdy zewnętrzna lokalizacja nie jest już "
+"połączona"
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid ""
 "Ensure infobar shows in connection server dialog when connection attempt "
 "fails"
 msgstr ""
+"Upewniono się, że pasek informacyjny jest pokazany w oknie łączenia z "
+"serwerem w przypadku gdy połączenie nie powiedzie się"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Ensure correct icon for bookmark to a file that is not a folder"
 msgstr ""
+"Upewniono się, że poprawna ikona jest pokazana na okładce plików, które nie "
+"są folderami"
 
 #: data/io.elementary.files.appdata.xml.in.in:46
-#, fuzzy
-#| msgid "Fix a crash when restoring items from the Trash"
 msgid "Fix possible crash when removing a bookmark"
-msgstr "Naprawione błędy występujące podczas przywracania elementów z kosza"
+msgstr "Naprawiono potencjalny błąd występujące podczas usuwania zakładki"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:60
