@@ -277,17 +277,19 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             }
 
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
-            switch (widget.name) {
-                case "GtkGridView":
-                    target_file = file;
-                    break;
-                case "FilesGridFileItem":
+            if (widget.name == "GtkGridView") {
+                target_file = file;
+            } else {
+                if (!(widget.name == "FilesGridFileItem")) {
+                    widget = (GridFileItem)(widget.get_ancestor (typeof (GridFileItem)));
+                }
+
+                if (widget.name == "FilesGridFileItem") {
                     target_file = ((Files.GridFileItem)widget).file;
-                    break;
-                default:
-                    critical ("uNHANDLED");
+                } else {
                     target_file = null;
                     return 0;
+                }
             }
 
             Gdk.DragAction suggested = 0;
@@ -300,39 +302,18 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             return suggested;
         });
         drop_target.drop.connect ((drop, x, y) => {
-            if (target_file == null) {
+            if (target_file == null || drop_file_list == null) {
                 drop.finish (0);
             }
-            drop.read_value_async.begin (
-                typeof(GLib.File),
-                Priority.DEFAULT,
-                null,
-                (obj, res) => {
-                    try {
-                        //TODO get action depending on source and dest
-                        switch (drop.drag.selected_action) {
-                            case Gdk.DragAction.MOVE:
-                                warning ("MOVE");
-                                break;
-                            case Gdk.DragAction.COPY:
-                                warning ("COPY");
-                                break;
-                            case Gdk.DragAction.LINK:
-                                warning ("LINK");
-                                break;
-                            default:
-                                //Ask?
-                                drop.finish (Gdk.DragAction.COPY);
-                                return;
-                        }
-                        drop.finish (drop.drag.selected_action);
-                    } catch (Error e) {
-                        warning ("Could not get file from drop data. %s", e.message);
-                        drop.finish (Gdk.DragAction.COPY);
-                    }
-                }
+
+            Files.DndHandler.get_default ().dnd_perform (
+                this,
+                target_file,
+                drop_file_list,
+                drop.drag.selected_action
             );
 
+            drop.finish (drop.drag.selected_action);
             return true;
         });
 

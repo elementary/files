@@ -43,7 +43,6 @@ namespace Files {
         private bool drop_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
         private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs in the drop data */
-        protected static DndHandler dnd_handler = new DndHandler ();
         Gdk.DragAction current_suggested_action = 0; /* No action */
         Gdk.DragAction current_actions = 0; /* No action */
         Files.File? drop_target_file = null;
@@ -334,7 +333,7 @@ namespace Files {
         //     if (!drop_data_ready) {
         //         /* We don't have the drop data - extract uri list from selection data */
         //         string? text;
-        //         if (DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
+        //         if (Files.DndHandler.get_default ().selection_data_is_uri_list (selection_data, info, out text)) {
         //             drop_file_list = FileUtils.files_from_uris (text);
         //             drop_data_ready = true;
         //         }

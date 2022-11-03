@@ -418,7 +418,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     //                 break;
 
     //             case Files.TargetType.TEXT_URI_LIST:
-    //                 if (!Files.DndHandler.selection_data_is_uri_list (sel_data, info, out drop_text)) {
+    //                 if (!Files.DndHandler.get_default ().selection_data_is_uri_list (sel_data, info, out drop_text)) {
     //                     warning ("sel data not uri list");
     //                     drop_text = null;
     //                 } else {
@@ -580,7 +580,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             pos++;
             return list.add_favorite (drop_file_list.data.get_uri (), "", pos);
         } else {
-            var dnd_handler = new Files.DndHandler ();
+            var dnd_handler = Files.DndHandler.get_default ();
             var real_action = ctx.get_selected_action ();
 
             if (real_action == Gdk.DragAction.ASK) {

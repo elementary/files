@@ -21,9 +21,17 @@
 
 namespace Files {
     public class DndHandler : GLib.Object {
-        Gdk.DragAction? chosen = null;
+        static Gdk.DragAction? chosen = null;
+        static Files.DndHandler? instance = null;
+        public static Files.DndHandler get_default () {
+            if (instance == null) {
+                instance = new DndHandler ();
+            }
 
-        public DndHandler () {}
+            return instance;
+        }
+
+        protected DndHandler () {}
 
         public bool dnd_perform (Gtk.Widget widget,
                                  Files.File drop_target,
