@@ -107,8 +107,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         icon_overlay = new Gtk.Overlay () {
             margin_start = 12,
             margin_end = 12,
-            margin_bottom = 8,
-            can_target = false
+            margin_bottom = 8
         };
         icon_overlay.child = file_icon;
         icon_overlay.add_overlay (selection_helper);
@@ -146,7 +145,8 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
 
         // Implement single-click navigate
         var gesture_click = new Gtk.GestureClick () {
-            button = Gdk.BUTTON_PRIMARY
+            button = Gdk.BUTTON_PRIMARY,
+            propagation_phase = Gtk.PropagationPhase.CAPTURE
         };
         gesture_click.released.connect ((n_press, x, y) => {
             if ((n_press == 1 &&

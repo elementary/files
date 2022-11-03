@@ -882,7 +882,6 @@ namespace Files.FileUtils {
             valid_actions |= Gdk.DragAction.ASK; // Allow ASK if there is a possible action
         }
 
-warning ("valid actions %s", valid_actions.to_string ());
         return valid_actions;
     }
 

@@ -237,9 +237,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         var drop_target = new Gtk.DropTargetAsync (
             formats,
             Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK | Gdk.DragAction.ASK
-        ) {
-            propagation_phase = Gtk.PropagationPhase.BUBBLE
-        };
+        );
         add_controller (drop_target);
         drop_target.accept.connect ((drop) => {
             // We cannot ever drop on some locations
