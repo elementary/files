@@ -63,7 +63,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     construct {
         var lm = new Gtk.BoxLayout (Gtk.Orientation.VERTICAL);
         set_layout_manager (lm);
-
+        can_target = true;
         get_style_context ().add_provider (
             fileitem_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         );
@@ -72,7 +72,8 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         icon_overlay = new Gtk.Overlay () {
             margin_start = 12,
             margin_end = 12,
-            margin_bottom = 8
+            margin_bottom = 8,
+            can_target = false
         };
 
         file_icon = new Gtk.Image () {
@@ -189,31 +190,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             selection_helper.visible = selected;
         });
         add_controller (motion_controller);
-
-        // //Setup as drop target
-        // var drop_target = new Gtk.DropTarget (
-        //     Type.STRING,
-        //     Gdk.DragAction.COPY | Gdk.DragAction.LINK| Gdk.DragAction.MOVE | Gdk.DragAction.ASK
-        // );
-        // add_controller (drop_target);
-        // drop_target.accept.connect ((drop) => {
-        //     warning ("item accept");
-        //     return true;
-        // });
-        // drop_target.enter.connect ((x, y) => {
-        //     warning ("item enter");
-        // });
-        // drop_target.leave.connect (() => {
-        //     warning ("item leave");
-        // });
-        // drop_target.motion.connect ((x, y) => {
-        //     // warning ("motion");
-        //     return Gdk.DragAction.COPY;
-        // });
-        // drop_target.on_drop.connect ((val, x, y) => {
-        //     warning ("item dropped %s", val.get_string ());
-        //     return false;
-        // });
 
         //Handle focus events to change appearance when has focus (but not selected)
         focusable = true;

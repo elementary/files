@@ -165,10 +165,10 @@ namespace Files {
                 case ViewMode.ICON:
                 case ViewMode.LIST:
                 case ViewMode.MILLER_COLUMNS:
-                    view_widget = new Files.GridView ();
+                    view_widget = new Files.GridView (slot.directory.file);
                     break;
                 default:
-                    view_widget = new Files.GridView ();
+                    view_widget = new Files.GridView (slot.directory.file);
                     warning ("Unexpected mode %s", mode.to_string ());
                     break;
             }

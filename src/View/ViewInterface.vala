@@ -29,6 +29,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract bool is_renaming { get; set; }
     public abstract bool rename_after_add { get; set; }
     public abstract bool select_after_add { get; set; }
+    public abstract Files.File file { get; set construct; }
 
     public signal void selection_changed ();
     public signal void path_change_request (GLib.File location, Files.OpenFlag open_flag);

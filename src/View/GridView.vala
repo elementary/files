@@ -56,6 +56,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public GLib.ListStore list_store { get; construct; }
     public Gtk.MultiSelection multi_selection { get; construct; }
     public Gtk.PopoverMenu menu_popover { get; construct; }
+    public Files.File file { get; set construct; }
 
     //Interface properties
     public ZoomLevel zoom_level { get; set; default = ZoomLevel.NORMAL; }
@@ -72,6 +73,13 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     private CompareDataFunc<Files.File>? file_compare_func;
     private EqualFunc<Files.File>? file_equal_func;
     private GLib.List<GridFileItem> fileitem_list;
+
+    private List<GLib.File> drop_file_list = null;
+    private Files.File? target_file = null;
+
+    public GridView (Files.File file) {
+        Object (file: file);
+    }
 
     ~GridView () {
         while (this.get_last_child () != null) {
@@ -158,9 +166,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
 
         //Set up drag source
-        //NOTE Setting FileItems as drag source caused weird problems
         var drag_source = new Gtk.DragSource ();
-        drag_source.set_actions (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
+        drag_source.set_actions (
+            Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK | Gdk.DragAction.ASK
+        );
         grid_view.add_controller (drag_source);
         drag_source.prepare.connect ((x, y) => {
             Files.GridFileItem fileitem;
@@ -227,28 +236,107 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         var formats = new Gdk.ContentFormats.for_gtype (typeof (GLib.File));
         var drop_target = new Gtk.DropTargetAsync (
             formats,
-            Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK
-        );
+            Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK | Gdk.DragAction.ASK
+        ) {
+            propagation_phase = Gtk.PropagationPhase.BUBBLE
+        };
         add_controller (drop_target);
         drop_target.accept.connect ((drop) => {
-            drop.status (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK, Gdk.DragAction.MOVE);
+            // We cannot ever drop on some locations
+            if (!file.is_folder () ||file.is_recent_uri_scheme ()) {
+                return false;
+            }
+
+            // Obtain file list
+            drop.read_value_async.begin (
+                typeof(GLib.File),
+                Priority.DEFAULT,
+                null,
+                (obj, res) => {
+                    try {
+                    warning ("Read content");
+                        var content = drop.read_value_async.end (res);
+                        drop_file_list.append ((GLib.File)(content.get_object ()));
+                    } catch (Error e) {
+                        warning ("Failed to get drop content as file");
+                    }
+                }
+            );
+
             return true;
         });
         drop_target.drag_enter.connect ((x, y) => {
-            return Gdk.DragAction.MOVE; // Ignored??
+            warning ("grid enter");
+            return Gdk.DragAction.COPY; // Ignored??
         });
         drop_target.drag_leave.connect (() => {
-            // warning ("leave");
+            warning ("grid leave");
+            drop_file_list = null;
         });
         drop_target.drag_motion.connect ((drop, x, y) => {
-            drop.status (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK, Gdk.DragAction.MOVE);
-            return Gdk.DragAction.MOVE; // Ignored??
+            if (drop_file_list == null) {
+                return 0;
+            }
+
+            var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
+            switch (widget.name) {
+                case "GtkGridView":
+                    target_file = file;
+                    break;
+                case "FilesGridFileItem":
+                    target_file = ((Files.GridFileItem)widget).file;
+                    break;
+                default:
+                    critical ("uNHANDLED");
+                    target_file = null;
+                    return 0;
+            }
+
+            Gdk.DragAction suggested = 0;
+            var actions = FileUtils.file_accepts_drop (
+                target_file,
+                drop_file_list,
+                drop,
+                out suggested
+            );
+            return suggested;
         });
-        drop_target.drop.connect ((drop, x, y) => { //C signal name is "drop" ?
-            drop.finish (drop.drag.selected_action);
+        drop_target.drop.connect ((drop, x, y) => {
+            if (target_file == null) {
+                drop.finish (0);
+            }
+            drop.read_value_async.begin (
+                typeof(GLib.File),
+                Priority.DEFAULT,
+                null,
+                (obj, res) => {
+                    try {
+                        //TODO get action depending on source and dest
+                        switch (drop.drag.selected_action) {
+                            case Gdk.DragAction.MOVE:
+                                warning ("MOVE");
+                                break;
+                            case Gdk.DragAction.COPY:
+                                warning ("COPY");
+                                break;
+                            case Gdk.DragAction.LINK:
+                                warning ("LINK");
+                                break;
+                            default:
+                                //Ask?
+                                drop.finish (Gdk.DragAction.COPY);
+                                return;
+                        }
+                        drop.finish (drop.drag.selected_action);
+                    } catch (Error e) {
+                        warning ("Could not get file from drop data. %s", e.message);
+                        drop.finish (Gdk.DragAction.COPY);
+                    }
+                }
+            );
+
             return true;
         });
-        //FIXME Weird rubberband type selection after dropping.???
 
         notify["sort-type"].connect (() => {
             list_store.sort (file_compare_func);

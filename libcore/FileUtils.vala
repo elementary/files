@@ -764,29 +764,32 @@ namespace Files.FileUtils {
     }
 
 
-    public Gdk.DragAction? file_accepts_drop (Files.File dest,
+    public Gdk.DragAction file_accepts_drop (Files.File dest,
                                              GLib.List<GLib.File> drop_file_list, // read-only
-                                             Gdk.Drag context,
-                                             // Gdk.DragContext context,
-                                             out Gdk.DragAction? suggested_action_return) {
+                                             Gdk.Drop drop,
+                                             out Gdk.DragAction suggested_action_return) {
 
-        var actions = context.get_actions ();
-        var suggested_action = context.get_selected_action ();
+        var actions = drop.get_actions ();
+        var selected_action = drop.drag.get_selected_action ();
         var target_location = dest.get_target_location ();
-        suggested_action_return = Gdk.DragAction.ASK;
+        suggested_action_return = 0;
 
         if (drop_file_list == null || drop_file_list.data == null) {
-            return Gdk.DragAction.ASK;
+            return 0;
+        }
+
+        if (dest.location.equal (drop_file_list.data)) {
+            return 0;
         }
 
         if (dest.is_folder ()) {
             if (!dest.is_writable ()) {
-                actions = Gdk.DragAction.ASK;
+                actions = Gdk.DragAction.COPY;
             } else {
-                /* Modify actions and suggested_action according to source files */
+                /* Modify actions and selected_action according to source files */
                 actions &= valid_actions_for_file_list (target_location,
                                                         drop_file_list,
-                                                        ref suggested_action);
+                                                        ref selected_action);
             }
         } else if (dest.is_executable ()) {
             actions |= (Gdk.DragAction.COPY |
@@ -797,13 +800,13 @@ namespace Files.FileUtils {
         }
 
         if (actions == Gdk.DragAction.ASK) { // No point asking if no other valid actions
-            return null;
+            return 0;
         } else if (location_is_in_trash (target_location)) { // cannot copy or link to trash
             actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
         }
 
-        if (suggested_action in actions) {
-            suggested_action_return = suggested_action;
+        if (selected_action != 0 && selected_action in actions) {
+            suggested_action_return = selected_action;
         } else if (Gdk.DragAction.ASK in actions) {
             suggested_action_return = Gdk.DragAction.ASK;
         } else if (Gdk.DragAction.COPY in actions) {
@@ -874,11 +877,12 @@ namespace Files.FileUtils {
         }
 
         if (valid_actions == Gdk.DragAction.ASK) {
-            return null;
+            return 0;
         } else {
             valid_actions |= Gdk.DragAction.ASK; // Allow ASK if there is a possible action
         }
 
+warning ("valid actions %s", valid_actions.to_string ());
         return valid_actions;
     }
 
