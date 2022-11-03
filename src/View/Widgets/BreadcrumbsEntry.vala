@@ -351,7 +351,7 @@ namespace Files {
         //                                                              out current_suggested_action);
 
         //             if ((current_actions & FILE_DRAG_ACTIONS) != 0) {
-        //                 success = dnd_handler.handle_file_drag_actions (
+        //                 success = dnd_handler.handle_file_drop_actions (
         //                     this,
         //                     context,
         //                     drop_target_file,

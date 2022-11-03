@@ -764,20 +764,19 @@ namespace Files.FileUtils {
     }
 
 
-    //Drag with Ctrl - actions == COPY
-    //Drag with Shift - actions = MOVE
-    //Drag with Alt - actions == LINK
+    //Drag with Ctrl - selected action == COPY
+    //Drag with Shift - selected action = MOVE
+    //Drag with Alt - selected action == LINK
     public Gdk.DragAction file_accepts_drop (Files.File dest,
                                              GLib.List<GLib.File> drop_file_list, // read-only
-                                             Gtk.DropTargetAsync drop_target,
                                              Gdk.DragAction selected_action,
                                              out Gdk.DragAction suggested_action_return) {
 
-        var actions = drop_target.actions;
-warning ("selected action start %s", selected_action.to_string ());
         var target_location = dest.get_target_location ();
-        suggested_action_return = selected_action;
+        Gdk.DragAction  actions = 0;
+        suggested_action_return = 0;
 
+        //TODO take into account selected action
         if (drop_file_list == null || drop_file_list.data == null) {
             return 0;
         }
@@ -786,54 +785,35 @@ warning ("selected action start %s", selected_action.to_string ());
             return 0;
         }
 
-        if (dest.is_folder ()) {
-            if (!dest.is_writable ()) {
-                actions = Gdk.DragAction.COPY;
-            } else {
-                /* Modify valid actions according to source files */
-                actions &= valid_actions_for_file_list (
-                    target_location, drop_file_list
-                );
-            }
+        if (dest.is_folder () && dest.is_writable ()) {
+            actions = valid_actions_for_file_list (target_location, drop_file_list);
         } else if (dest.is_executable ()) {
             //Always drop on executable and allow app to determine success
-            actions |= (Gdk.DragAction.COPY |
-                       Gdk.DragAction.MOVE |
-                       Gdk.DragAction.LINK);
-        } else {
-            actions = 0;
+            actions = Gdk.DragAction.COPY;
         }
 
         if (location_is_in_trash (target_location)) { // cannot copy or link to trash
             actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
         }
 
-        if (selected_action == 0) {
-            selected_action = Gdk.DragAction.LINK;
-        }
-        if (selected_action != 0 && selected_action in actions) {
-            suggested_action_return = selected_action;
-        } else if (Gdk.DragAction.ASK in actions) {
-            suggested_action_return = Gdk.DragAction.ASK;
-        } else if (Gdk.DragAction.COPY in actions) {
-            suggested_action_return = Gdk.DragAction.COPY;
-        } else if (Gdk.DragAction.LINK in actions) {
-            suggested_action_return = Gdk.DragAction.LINK;
-        } else if (Gdk.DragAction.MOVE in actions) {
-            suggested_action_return = Gdk.DragAction.MOVE;
+        uint count = 0;
+        if (Gdk.DragAction.COPY in actions) { count++; }
+        if (Gdk.DragAction.MOVE in actions) { count++; }
+        if (Gdk.DragAction.LINK in actions) { count++; }
+
+        switch (count) {
+            case 0:
+                break;
+            case 1:
+                suggested_action_return = actions;
+                break;
+            default:
+                //FIXME Do we always want to ask? If not how to decide?
+                actions |= Gdk.DragAction.ASK;
+                suggested_action_return = Gdk.DragAction.ASK;
+                break;
         }
 
-        /* Modify suggested COPY action to MOVE if source is in
-         * same filesystem and if MOVE is a valid action.  We assume that it is not possible
-         * to drop files both from remote and local filesystems simultaneously
-         */
-        if (suggested_action_return == Gdk.DragAction.COPY &&
-            (actions & Gdk.DragAction.MOVE) > 0 &&
-            (same_file_system (drop_file_list.first ().data, target_location))) {
-warning ("changing COPY to MOVE");
-            suggested_action_return = Gdk.DragAction.MOVE;
-        }
-warning ("suggested action return %s", suggested_action_return.to_string ());
         return actions;
     }
 
@@ -875,10 +855,6 @@ warning ("suggested action return %s", suggested_action_return.to_string ());
 
                 break;
             }
-        }
-
-        if (valid_actions != 0) {
-            valid_actions |= Gdk.DragAction.ASK; // Allow ASK if there is a possible action
         }
 
         return valid_actions;

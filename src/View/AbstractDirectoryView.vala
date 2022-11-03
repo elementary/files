@@ -1678,7 +1678,7 @@ namespace Files {
 //                             unselect_all ();
 //                         }
 
-//                         success = dnd_handler.handle_file_drag_actions (
+//                         success = dnd_handler.handle_file_drop_actions (
 //                             get_child (),
 //                             context,
 //                             drop_target_file,

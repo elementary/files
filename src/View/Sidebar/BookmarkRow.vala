@@ -389,18 +389,18 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     // }
 
     // /* Set up as a drag destination. */
-    private void set_up_drop () {
-        var drop_revealer_child = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
-            margin_top = 12,
-            margin_bottom = 0
-        };
+    // private void set_up_drop () {
+    //     var drop_revealer_child = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
+    //         margin_top = 12,
+    //         margin_bottom = 0
+    //     };
 
-        drop_revealer = new Gtk.Revealer () {
-            transition_type = Gtk.RevealerTransitionType.SLIDE_UP
-        };
-        drop_revealer.set_child (drop_revealer_child);
+    //     drop_revealer = new Gtk.Revealer () {
+    //         transition_type = Gtk.RevealerTransitionType.SLIDE_UP
+    //     };
+    //     drop_revealer.set_child (drop_revealer_child);
 
-        content_grid.attach (drop_revealer, 0, 1);
+    //     content_grid.attach (drop_revealer, 0, 1);
 
     //     Gtk.drag_dest_set (
     //         this,
@@ -537,7 +537,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     //         return true;
     //     });
-    }
+    // }
 
     // protected void highlight (bool show) {
     //     if (show && !get_style_context ().has_class (Gtk.STYLE_CLASS_HIGHLIGHT)) {
@@ -556,68 +556,67 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     //     highlight (false);
     // }
 
-    private bool process_dropped_row (Gdk.Drag ctx, string drop_text, bool dropped_between) {
-        var id = (uint32)(uint.parse (drop_text));
-        var item = SidebarItemInterface.get_item_by_id (id);
+    // private bool process_dropped_row (Gdk.Drag ctx, string drop_text, bool dropped_between) {
+    //     var id = (uint32)(uint.parse (drop_text));
+    //     var item = SidebarItemInterface.get_item_by_id (id);
 
-        if (item == null ||
-            !dropped_between ||
-            item.list != list) { //Cannot drop on self or different list
+    //     if (item == null ||
+    //         !dropped_between ||
+    //         item.list != list) { //Cannot drop on self or different list
 
-            return false;
-        }
+    //         return false;
+    //     }
 
-        list.move_item_after (item, get_index ()); // List takes care of saving changes
-        return true;
-    }
+    //     list.move_item_after (item, get_index ()); // List takes care of saving changes
+    //     return true;
+    // }
 
-    private bool process_dropped_uris (Gdk.Drag ctx,
-                                       List<GLib.File> drop_file_list,
-                                       bool dropped_between) {
+    // private bool process_dropped_uris (Gdk.Drag ctx,
+    //                                    List<GLib.File> drop_file_list,
+    //                                    bool dropped_between) {
 
-        if (dropped_between && drop_file_list.next == null) { //Only create one new bookmark at a time
-            var pos = get_index ();
-            pos++;
-            return list.add_favorite (drop_file_list.data.get_uri (), "", pos);
-        } else {
-            var dnd_handler = Files.DndHandler.get_default ();
-            var real_action = ctx.get_selected_action ();
+    //     if (dropped_between && drop_file_list.next == null) { //Only create one new bookmark at a time
+    //         var pos = get_index ();
+    //         pos++;
+    //         return list.add_favorite (drop_file_list.data.get_uri (), "", pos);
+    //     } else {
+    //         var dnd_handler = Files.DndHandler.get_default ();
+    //         var real_action = ctx.get_selected_action ();
 
-            if (real_action == Gdk.DragAction.ASK) {
-                var actions = ctx.get_actions ();
+    //         if (real_action == Gdk.DragAction.ASK) {
+    //             var actions = ctx.get_actions ();
 
-                if (uri.has_prefix ("trash://")) {
-                    actions &= Gdk.DragAction.MOVE;
-                }
+    //             if (uri.has_prefix ("trash://")) {
+    //                 actions &= Gdk.DragAction.MOVE;
+    //             }
 
-                real_action = dnd_handler.drag_drop_action_ask (
-                    this,
-                    (Gtk.ApplicationWindow)(Files.get_active_window ()),
-                    actions
-                );
-            }
+    //             real_action = dnd_handler.drag_drop_action_ask (
+    //                 this,
+    //                 actions
+    //             );
+    //         }
 
-            // if (real_action == null) {
-            //     return false;
-            // }
+    //         if (real_action == 0) {
+    //             return false;
+    //         }
 
-            dnd_handler.dnd_perform (
-                this,
-                target_file,
-                drop_file_list,
-                real_action
-            );
+    //         dnd_handler.dnd_perform (
+    //             this,
+    //             target_file,
+    //             drop_file_list,
+    //             real_action
+    //         );
 
-            return true;
-        }
-    }
+    //         return true;
+    //     }
+    // }
 
-    protected bool reveal_drop_target (bool reveal) {
-        if (list.is_drop_target ()) {
-            drop_revealer.reveal_child = reveal;
-            return reveal;
-        } else {
-            return false; //Suppress dropping between rows (e.g. for Storage list)
-        }
-    }
+    // protected bool reveal_drop_target (bool reveal) {
+    //     if (list.is_drop_target ()) {
+    //         drop_revealer.reveal_child = reveal;
+    //         return reveal;
+    //     } else {
+    //         return false; //Suppress dropping between rows (e.g. for Storage list)
+    //     }
+    // }
 }

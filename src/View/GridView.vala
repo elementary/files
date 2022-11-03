@@ -81,6 +81,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         Object (file: file);
     }
 
+    public Gdk.DragAction suggested = 0;
+
     ~GridView () {
         while (this.get_last_child () != null) {
             this.get_last_child ().unparent ();
@@ -168,7 +170,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         //Set up drag source
         var drag_source = new Gtk.DragSource ();
         drag_source.set_actions (
-            Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK
+            Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK | Gdk.DragAction.ASK
         );
         grid_view.add_controller (drag_source);
         drag_source.prepare.connect ((x, y) => {
@@ -225,9 +227,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             //TODO May need to limit actions when dragging some files depending on permissions
         });
         drag_source.drag_end.connect ((drag) => {
+warning ("drag end");
             drag_source.set_icon (null, 0, 0);
         });
         drag_source.drag_cancel.connect ((drag, reason) => {
+warning ("drag cancel");
             return false;
         });
 
@@ -263,7 +267,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             return true;
         });
         // drop_target.drag_enter.connect ((x, y) => {
-        //     return Gdk.DragAction.COPY; // Ignored??
+                //Sets preferred action - but can change
+        //     return Gdk.DragAction.ASK; // Ignored??
         // });
         drop_target.drag_leave.connect (() => {
             drop_file_list = null;
@@ -289,35 +294,37 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 }
             }
 
-            Gdk.DragAction suggested = 0;
+            suggested = 0;
             var actions = FileUtils.file_accepts_drop (
                 target_file,
                 drop_file_list,
-                drop_target,
                 drop.drag.get_selected_action (),
                 out suggested
             );
-            return suggested;
+
+            //Sets preferred action
+            drop_target.actions = actions;
+            return suggested; //NOTE: Returning Gdk.DragAction.ASK gets ignored??
         });
+
         drop_target.drop.connect ((drop, x, y) => {
             if (target_file == null || drop_file_list == null) {
                 drop.finish (0);
-                return false;
+                return true;
             }
 
-            var selected_action = drop.drag.get_selected_action ();
-            drop.finish (selected_action);
-            Idle.add (() => {
-                Files.DndHandler.get_default ().dnd_perform (
-                    this,
-                    target_file,
-                    drop_file_list,
-                    selected_action
-                );
-
-                return Source.REMOVE;
-            });
-
+            // var selected_action = drop.drag.get_selected_action ();
+warning ("suggested %s", suggested.to_string ());
+            var performed = Files.DndHandler.get_default ().handle_file_drop_actions (
+                this,
+                x, y,
+                target_file,
+                drop_file_list,
+                drop_target.actions,
+                suggested
+            );
+warning ("Finish drop %s", performed.to_string ());
+            drop.finish (performed);
             return true;
         });
 
