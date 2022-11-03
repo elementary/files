@@ -37,7 +37,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     public Gtk.CheckButton selection_helper { get; construct; }
     public Gtk.Label label { get; construct; }
     public Gtk.TextView text_view { get; construct; }
-    public Gtk.Stack name_stack { get; construct; }
     public Files.GridView view { get; set construct; }
     public uint pos { get; set; default = 0; }
 
@@ -68,27 +67,18 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             fileitem_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         );
 
-        // Spread grid items out a little more than native GridView
-        icon_overlay = new Gtk.Overlay () {
-            margin_start = 12,
-            margin_end = 12,
-            margin_bottom = 8,
-            can_target = false
-        };
-
         file_icon = new Gtk.Image () {
             margin_end = 8,
             margin_start = 8,
             icon_name = "image-missing",
         };
-        icon_overlay.child = file_icon;
+
 
         selection_helper = new Gtk.CheckButton () {
             visible = false,
             halign = Gtk.Align.START,
             valign = Gtk.Align.START
         };
-        icon_overlay.add_overlay (selection_helper);
         selection_helper.bind_property (
             "active", this, "selected", BindingFlags.BIDIRECTIONAL
         );
@@ -113,7 +103,17 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             emblem_box.prepend (emblems[i]);
         }
 
+        // Spread grid items out a little more than native GridView
+        icon_overlay = new Gtk.Overlay () {
+            margin_start = 12,
+            margin_end = 12,
+            margin_bottom = 8,
+            can_target = false
+        };
+        icon_overlay.child = file_icon;
+        icon_overlay.add_overlay (selection_helper);
         icon_overlay.add_overlay (emblem_box);
+        icon_overlay.set_parent (this);
 
         label = new Gtk.Label ("Unbound") {
             wrap = true,
@@ -125,14 +125,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             margin_start = 3,
             margin_end = 3,
         };
-
-        text_view = new Gtk.TextView ();
-        name_stack = new Gtk.Stack ();
-        name_stack.add_child (label);
-        name_stack.add_child (text_view);
-        name_stack.visible_child = label;
-        icon_overlay.set_parent (this);
-        name_stack.set_parent (this);
+        label.set_parent (this);
 
         Thumbnailer.@get ().finished.connect ((req) => {
             if (req == thumbnail_request) {
@@ -197,13 +190,11 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         focus_controller.enter.connect (() => {
             if (!has_css_class ("focussed")) {
                 add_css_class ("focussed");
-                // selection_helper.visible = true;
             }
         });
         focus_controller.leave.connect (() => {
             if (has_css_class ("focussed")) {
                 remove_css_class ("focussed");
-                // selection_helper.visible = false;
             }
         });
         add_controller (focus_controller);
