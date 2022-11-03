@@ -23,6 +23,7 @@ namespace Files {
     public class DndHandler : GLib.Object {
         static Gdk.DragAction? chosen = null;
         static Files.DndHandler? instance = null;
+        //Since can only be one DnD operation in progress at a time, we can use a singleton
         public static Files.DndHandler get_default () {
             if (instance == null) {
                 instance = new DndHandler ();
@@ -122,7 +123,7 @@ namespace Files {
         //         var item = new Gtk.MenuItem.with_label (label);
 
         //         item.activate.connect (() => {
-        //             this.chosen = action;
+        //             chosen = action;
         //         });
 
         //         menu.append (item);
@@ -139,18 +140,18 @@ namespace Files {
 
             switch (choice) {
                 case "move":
-                    this.chosen = Gdk.DragAction.MOVE;
+                    chosen = Gdk.DragAction.MOVE;
                     break;
                 case "copy":
-                    this.chosen = Gdk.DragAction.COPY;
+                    chosen = Gdk.DragAction.COPY;
                     break;
                 case "link":
-                    this.chosen = Gdk.DragAction.LINK;
+                    chosen = Gdk.DragAction.LINK;
                     break;
                 case "background": /* not implemented yet */
                 case "cancel":
                 default:
-                    this.chosen = null;
+                    chosen = null;
                     break;
             }
         }

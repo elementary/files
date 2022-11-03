@@ -764,15 +764,19 @@ namespace Files.FileUtils {
     }
 
 
+    //Drag with Ctrl - actions == COPY
+    //Drag with Shift - actions = MOVE
+    //Drag with Alt - actions == LINK
     public Gdk.DragAction file_accepts_drop (Files.File dest,
                                              GLib.List<GLib.File> drop_file_list, // read-only
-                                             Gdk.Drop drop,
+                                             Gtk.DropTargetAsync drop_target,
+                                             Gdk.DragAction selected_action,
                                              out Gdk.DragAction suggested_action_return) {
 
-        var actions = drop.get_actions ();
-        var selected_action = drop.drag.get_selected_action ();
+        var actions = drop_target.actions;
+warning ("selected action start %s", selected_action.to_string ());
         var target_location = dest.get_target_location ();
-        suggested_action_return = 0;
+        suggested_action_return = selected_action;
 
         if (drop_file_list == null || drop_file_list.data == null) {
             return 0;
@@ -786,25 +790,27 @@ namespace Files.FileUtils {
             if (!dest.is_writable ()) {
                 actions = Gdk.DragAction.COPY;
             } else {
-                /* Modify actions and selected_action according to source files */
-                actions &= valid_actions_for_file_list (target_location,
-                                                        drop_file_list,
-                                                        ref selected_action);
+                /* Modify valid actions according to source files */
+                actions &= valid_actions_for_file_list (
+                    target_location, drop_file_list
+                );
             }
         } else if (dest.is_executable ()) {
+            //Always drop on executable and allow app to determine success
             actions |= (Gdk.DragAction.COPY |
                        Gdk.DragAction.MOVE |
                        Gdk.DragAction.LINK);
         } else {
-            actions = Gdk.DragAction.ASK;
+            actions = 0;
         }
 
-        if (actions == Gdk.DragAction.ASK) { // No point asking if no other valid actions
-            return 0;
-        } else if (location_is_in_trash (target_location)) { // cannot copy or link to trash
+        if (location_is_in_trash (target_location)) { // cannot copy or link to trash
             actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
         }
 
+        if (selected_action == 0) {
+            selected_action = Gdk.DragAction.LINK;
+        }
         if (selected_action != 0 && selected_action in actions) {
             suggested_action_return = selected_action;
         } else if (Gdk.DragAction.ASK in actions) {
@@ -817,13 +823,23 @@ namespace Files.FileUtils {
             suggested_action_return = Gdk.DragAction.MOVE;
         }
 
+        /* Modify suggested COPY action to MOVE if source is in
+         * same filesystem and if MOVE is a valid action.  We assume that it is not possible
+         * to drop files both from remote and local filesystems simultaneously
+         */
+        if (suggested_action_return == Gdk.DragAction.COPY &&
+            (actions & Gdk.DragAction.MOVE) > 0 &&
+            (same_file_system (drop_file_list.first ().data, target_location))) {
+warning ("changing COPY to MOVE");
+            suggested_action_return = Gdk.DragAction.MOVE;
+        }
+warning ("suggested action return %s", suggested_action_return.to_string ());
         return actions;
     }
 
     private const uint MAX_FILES_CHECKED = 100; // Max checked copied from gof_file.c version
     private Gdk.DragAction? valid_actions_for_file_list (GLib.File target_location,
-                                                        GLib.List<GLib.File> drop_file_list,
-                                                        ref Gdk.DragAction suggested_action) {
+                                                         GLib.List<GLib.File> drop_file_list) {
 
         var valid_actions = Gdk.DragAction.COPY |
                             Gdk.DragAction.MOVE |
@@ -836,21 +852,17 @@ namespace Files.FileUtils {
          * folders. The valid actions are the lowest common denominator.
          */
         uint count = 0;
-        bool from_trash = false;
-
         foreach (var drop_file in drop_file_list) {
-            if (location_is_in_trash (drop_file)) {
-                from_trash = true;
+            if (location_is_in_trash (drop_file) &&
+                location_is_in_trash (target_location)) {
 
-                if (location_is_in_trash (target_location)) {
-                    valid_actions = Gdk.DragAction.ASK; // No DnD within trash
-                }
+                valid_actions = 0; // No DnD within trash
+                break;
             }
 
             var parent = drop_file.get_parent ();
-
             if (parent != null && parent.equal (target_location)) {
-                valid_actions &= Gdk.DragAction.LINK; // Only LINK is valid
+                valid_actions &= ~(Gdk.DragAction.MOVE); // Cannot move within same location
             }
 
             var scheme = drop_file.get_uri_scheme ();
@@ -859,26 +871,13 @@ namespace Files.FileUtils {
             }
 
             if (++count > MAX_FILES_CHECKED ||
-                valid_actions == Gdk.DragAction.ASK) {
+                valid_actions == 0) {
 
                 break;
             }
         }
 
-        /* Modify Gtk suggested COPY action to MOVE if source is trash or dest is in
-         * same filesystem and if MOVE is a valid action.  We assume that it is not possible
-         * to drop files both from remote and local filesystems simultaneously
-         */
-        if ((Gdk.DragAction.COPY in valid_actions && Gdk.DragAction.MOVE in valid_actions) &&
-             suggested_action == Gdk.DragAction.COPY &&
-             (from_trash || same_file_system (drop_file_list.first ().data, target_location))) {
-
-            suggested_action = Gdk.DragAction.MOVE;
-        }
-
-        if (valid_actions == Gdk.DragAction.ASK) {
-            return 0;
-        } else {
+        if (valid_actions != 0) {
             valid_actions |= Gdk.DragAction.ASK; // Allow ASK if there is a possible action
         }
 

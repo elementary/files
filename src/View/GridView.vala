@@ -168,7 +168,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         //Set up drag source
         var drag_source = new Gtk.DragSource ();
         drag_source.set_actions (
-            Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK | Gdk.DragAction.ASK
+            Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK
         );
         grid_view.add_controller (drag_source);
         drag_source.prepare.connect ((x, y) => {
@@ -252,7 +252,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 null,
                 (obj, res) => {
                     try {
-                    warning ("Read content");
                         var content = drop.read_value_async.end (res);
                         drop_file_list.append ((GLib.File)(content.get_object ()));
                     } catch (Error e) {
@@ -263,12 +262,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
             return true;
         });
-        drop_target.drag_enter.connect ((x, y) => {
-            warning ("grid enter");
-            return Gdk.DragAction.COPY; // Ignored??
-        });
+        // drop_target.drag_enter.connect ((x, y) => {
+        //     return Gdk.DragAction.COPY; // Ignored??
+        // });
         drop_target.drag_leave.connect (() => {
-            warning ("grid leave");
             drop_file_list = null;
         });
         drop_target.drag_motion.connect ((drop, x, y) => {
@@ -296,7 +293,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             var actions = FileUtils.file_accepts_drop (
                 target_file,
                 drop_file_list,
-                drop,
+                drop_target,
+                drop.drag.get_selected_action (),
                 out suggested
             );
             return suggested;
@@ -304,16 +302,22 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         drop_target.drop.connect ((drop, x, y) => {
             if (target_file == null || drop_file_list == null) {
                 drop.finish (0);
+                return false;
             }
 
-            Files.DndHandler.get_default ().dnd_perform (
-                this,
-                target_file,
-                drop_file_list,
-                drop.drag.selected_action
-            );
+            var selected_action = drop.drag.get_selected_action ();
+            drop.finish (selected_action);
+            Idle.add (() => {
+                Files.DndHandler.get_default ().dnd_perform (
+                    this,
+                    target_file,
+                    drop_file_list,
+                    selected_action
+                );
 
-            drop.finish (drop.drag.selected_action);
+                return Source.REMOVE;
+            });
+
             return true;
         });
 
