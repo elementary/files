@@ -227,20 +227,16 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
             //TODO May need to limit actions when dragging some files depending on permissions
         });
         drag_source.drag_end.connect ((drag) => {
-warning ("drag end");
             drag_source.set_icon (null, 0, 0);
         });
         drag_source.drag_cancel.connect ((drag, reason) => {
-warning ("drag cancel");
             return false;
         });
 
         //Setup as drop target
-        //TODO May need to limit actions depending on location
         var formats = new Gdk.ContentFormats.for_gtype (typeof (GLib.File));
-        var drop_target = new Gtk.DropTargetAsync (
-            formats,
-            Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK | Gdk.DragAction.ASK
+        var drop_target = new Gtk.DropTarget (
+            typeof (GLib.File), Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK
         );
         add_controller (drop_target);
         drop_target.accept.connect ((drop) => {
@@ -266,14 +262,7 @@ warning ("drag cancel");
 
             return true;
         });
-        // drop_target.drag_enter.connect ((x, y) => {
-                //Sets preferred action - but can change
-        //     return Gdk.DragAction.ASK; // Ignored??
-        // });
-        drop_target.drag_leave.connect (() => {
-            drop_file_list = null;
-        });
-        drop_target.drag_motion.connect ((drop, x, y) => {
+        drop_target.motion.connect ((x, y) => {
             if (drop_file_list == null) {
                 return 0;
             }
@@ -298,23 +287,20 @@ warning ("drag cancel");
             var actions = FileUtils.file_accepts_drop (
                 target_file,
                 drop_file_list,
-                drop.drag.get_selected_action (),
+                drop_target.get_current_drop (),
                 out suggested
             );
 
-            //Sets preferred action
-            drop_target.actions = actions;
-            return suggested; //NOTE: Returning Gdk.DragAction.ASK gets ignored??
+            drop_target.get_current_drop ().status (actions, suggested);
+            return suggested;
         });
 
-        drop_target.drop.connect ((drop, x, y) => {
+        drop_target.on_drop.connect ((val, x, y) => {
             if (target_file == null || drop_file_list == null) {
-                drop.finish (0);
-                return true;
+                // drop_target.get_current_drop ().finish (0);
+                return false;
             }
 
-            // var selected_action = drop.drag.get_selected_action ();
-warning ("suggested %s", suggested.to_string ());
             var performed = Files.DndHandler.get_default ().handle_file_drop_actions (
                 this,
                 x, y,
@@ -323,8 +309,6 @@ warning ("suggested %s", suggested.to_string ());
                 drop_target.actions,
                 suggested
             );
-warning ("Finish drop %s", performed.to_string ());
-            drop.finish (performed);
             return true;
         });
 

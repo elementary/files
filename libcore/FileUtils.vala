@@ -766,17 +766,16 @@ namespace Files.FileUtils {
 
     //Drag with Ctrl - selected action == COPY
     //Drag with Shift - selected action = MOVE
-    //Drag with Alt - selected action == LINK
+    //Drag with Alt - selected action == LINK ?? Doesnt seem to work
     public Gdk.DragAction file_accepts_drop (Files.File dest,
                                              GLib.List<GLib.File> drop_file_list, // read-only
-                                             Gdk.DragAction selected_action,
+                                             Gdk.Drop drop,
                                              out Gdk.DragAction suggested_action_return) {
 
         var target_location = dest.get_target_location ();
-        Gdk.DragAction  actions = 0;
+        Gdk.DragAction actions = drop.actions;
         suggested_action_return = 0;
 
-        //TODO take into account selected action
         if (drop_file_list == null || drop_file_list.data == null) {
             return 0;
         }
@@ -786,10 +785,10 @@ namespace Files.FileUtils {
         }
 
         if (dest.is_folder () && dest.is_writable ()) {
-            actions = valid_actions_for_file_list (target_location, drop_file_list);
+            actions &= valid_actions_for_file_list (target_location, drop_file_list);
         } else if (dest.is_executable ()) {
             //Always drop on executable and allow app to determine success
-            actions = Gdk.DragAction.COPY;
+            actions &= Gdk.DragAction.COPY;
         }
 
         if (location_is_in_trash (target_location)) { // cannot copy or link to trash
@@ -808,9 +807,11 @@ namespace Files.FileUtils {
                 suggested_action_return = actions;
                 break;
             default:
-                //FIXME Do we always want to ask? If not how to decide?
-                actions |= Gdk.DragAction.ASK;
-                suggested_action_return = Gdk.DragAction.ASK;
+                suggested_action_return = drop.drag.selected_action;
+                if (suggested_action_return in actions) {
+                    actions |= Gdk.DragAction.ASK;
+                    suggested_action_return = Gdk.DragAction.ASK;
+                }
                 break;
         }
 
