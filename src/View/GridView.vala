@@ -248,15 +248,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return null;
     }
 
-    /* View Interface methods */
-    public override void clear () {
-        list_store.remove_all ();
-        rename_after_add = false;
-        select_after_add = false;
-        grab_focus ();
-    }
-
-
     private void show_context_menu (Menu menu_model, double x, double y) {
         menu_popover.menu_model = menu_model;
         menu_popover.set_pointing_to ({(int)x, (int)y, 1, 1});
@@ -264,6 +255,64 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
           menu_popover.popup ();
           return Source.REMOVE;
         });
+    }
+
+    /* View Interface abstract methods */
+    public void show_item_context_menu (Files.FileItemInterface? clicked_item, double x, double y) {
+        var item = clicked_item;
+        List<Files.File> selected_files = null;
+        var n_selected = get_selected_files (out selected_files);
+        // clicked_item is null if called by keyboard action
+        if (item == null) {
+            if (n_selected > 0) {
+                Files.File first_file = selected_files.first ().data;
+                show_and_select_file (first_file, false, false); //Do not change selection
+                item = get_file_item_for_file (first_file);
+            }
+        }
+        // If no selected item show background context menu
+        if (item == null) {
+            show_context_menu (background_menu, x, y);
+        } else {
+            Graphene.Point point_item, point_gridview;
+            item.compute_point (grid_view, {(float)x, (float)y}, out point_gridview);
+
+            if (!item.selected) {
+                multi_selection.select_item (item.pos, true);
+                selected_files = null;
+                selected_files.append (item.file); //FIXME Duplication needed?
+            }
+
+            var open_with_menu = new Menu ();
+            var open_with_apps = MimeActions.get_applications_for_files (selected_files, true, true);
+            foreach (var appinfo in open_with_apps) {
+                open_with_menu.append (
+                    appinfo.get_name (),
+                    Action.print_detailed_name ("win.open-with", new Variant.string (appinfo.get_commandline ()))
+                );
+            }
+
+            item_menu.prepend_submenu (_("Open With"), open_with_menu);
+            show_context_menu (item_menu, (double)point_gridview.x, (double)point_gridview.y);
+        }
+    }
+
+    public void show_appropriate_context_menu () { //Deal with Menu Key
+        if (list_store.get_n_items () > 0) {
+            if (get_selected_files () > 0) {
+                show_context_menu (item_menu, 0.0, 0.0);
+            } else {
+                show_context_menu (background_menu, 0.0, 0.0);
+            }
+        }
+    }
+
+    /* View Interface virtual methods */
+    public override void clear () {
+        list_store.remove_all ();
+        rename_after_add = false;
+        select_after_add = false;
+        grab_focus ();
     }
 
     public override void refresh_visible_items () {
@@ -392,56 +441,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    public void show_item_context_menu (Files.FileItemInterface? clicked_item, double x, double y) {
-        var item = clicked_item;
-        List<Files.File> selected_files = null;
-        var n_selected = get_selected_files (out selected_files);
-        // clicked_item is null if called by keyboard action
-        if (item == null) {
-            if (n_selected > 0) {
-                Files.File first_file = selected_files.first ().data;
-                show_and_select_file (first_file, false, false); //Do not change selection
-                item = get_file_item_for_file (first_file);
-            }
-        }
-        // If no selected item show background context menu
-        if (item == null) {
-            show_context_menu (background_menu, x, y);
-        } else {
-            Graphene.Point point_item, point_gridview;
-            item.compute_point (grid_view, {(float)x, (float)y}, out point_gridview);
-
-            if (!item.selected) {
-                multi_selection.select_item (item.pos, true);
-                selected_files = null;
-                selected_files.append (item.file); //FIXME Duplication needed?
-            }
-
-            var open_with_menu = new Menu ();
-            var open_with_apps = MimeActions.get_applications_for_files (selected_files, true, true);
-            foreach (var appinfo in open_with_apps) {
-                open_with_menu.append (
-                    appinfo.get_name (),
-                    Action.print_detailed_name ("win.open-with", new Variant.string (appinfo.get_commandline ()))
-                );
-            }
-
-            item_menu.prepend_submenu (_("Open With"), open_with_menu);
-            show_context_menu (item_menu, (double)point_gridview.x, (double)point_gridview.y);
-        }
-    }
-
-    //Deal with Menu Key
-    public void show_appropriate_context_menu () {
-        if (list_store.get_n_items () > 0) {
-            if (get_selected_files () > 0) {
-                show_context_menu (item_menu, 0.0, 0.0);
-            } else {
-                show_context_menu (background_menu, 0.0, 0.0);
-            }
-        }
-    }
-
     public uint get_selected_files (out GLib.List<Files.File>? selected_files = null) {
         selected_files = null;
         uint pos = 0;
@@ -485,7 +484,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public override void file_icon_changed (Files.File file) {}
     public override void file_changed (Files.File file) {} //TODO Update thumbnail
 
-    /* DNDInterface methods */
+    /* DNDInterface abstract methods */
 
     //Need to ensure fileitem gets selected before drag
     public List<Files.File> get_file_list_for_drag (double x, double y, out Gdk.Paintable? paintable) {
