@@ -56,9 +56,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     public GLib.ListStore list_store { get; construct; }
     public Gtk.MultiSelection multi_selection { get; construct; }
     public Gtk.PopoverMenu menu_popover { get; construct; }
-    public Files.File file { get; set construct; }
+
 
     //Interface properties
+    public Files.File root_file { get; set construct; }
     public ZoomLevel zoom_level { get; set; default = ZoomLevel.NORMAL; }
     public ZoomLevel minimum_zoom { get; set; default = ZoomLevel.SMALLEST; }
     public ZoomLevel maximum_zoom { get; set; default = ZoomLevel.LARGEST; }
@@ -74,14 +75,15 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     private EqualFunc<Files.File>? file_equal_func;
     private GLib.List<GridFileItem> fileitem_list;
 
+    //DnD support
     private List<GLib.File> drop_file_list = null;
     private Files.File? target_file = null;
+    public Gdk.DragAction preferred_action = 0;
+    public bool ask = false;
 
     public GridView (Files.File file) {
-        Object (file: file);
+        Object (root_file: file);
     }
-
-    public Gdk.DragAction suggested = 0;
 
     ~GridView () {
         while (this.get_last_child () != null) {
@@ -240,8 +242,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         );
         add_controller (drop_target);
         drop_target.accept.connect ((drop) => {
+            target_file = null;
+            drop_file_list = null;
             // We cannot ever drop on some locations
-            if (!file.is_folder () ||file.is_recent_uri_scheme ()) {
+            if (!root_file.is_folder () || root_file.is_recent_uri_scheme ()) {
                 return false;
             }
 
@@ -259,7 +263,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                     }
                 }
             );
-
             return true;
         });
         drop_target.motion.connect ((x, y) => {
@@ -267,9 +270,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 return 0;
             }
 
+            var previous_target_location = target_file != null ? target_file.location : null;
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             if (widget.name == "GtkGridView") {
-                target_file = file;
+                target_file = root_file;
             } else {
                 if (!(widget.name == "FilesGridFileItem")) {
                     widget = (GridFileItem)(widget.get_ancestor (typeof (GridFileItem)));
@@ -283,21 +287,26 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 }
             }
 
-            suggested = 0;
-            var actions = FileUtils.file_accepts_drop (
-                target_file,
-                drop_file_list,
-                drop_target.get_current_drop (),
-                out suggested
-            );
+            if (previous_target_location == null ||
+                !(previous_target_location.equal (target_file.location))) {
 
-            drop_target.get_current_drop ().status (actions, suggested);
-            return suggested;
+                preferred_action = 0;
+                var drop = drop_target.get_current_drop ();
+                ask = (drop.drag.actions & Gdk.DragAction.ASK) > 0;
+                var actions = Files.DndHandler.get_default ().file_accepts_drop (
+                    target_file,
+                    drop_file_list,
+                    drop,
+                    out preferred_action
+                );
+                drop_target.actions = actions;
+            }
+
+            return preferred_action;
         });
 
         drop_target.on_drop.connect ((val, x, y) => {
             if (target_file == null || drop_file_list == null) {
-                // drop_target.get_current_drop ().finish (0);
                 return false;
             }
 
@@ -307,7 +316,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
                 target_file,
                 drop_file_list,
                 drop_target.actions,
-                suggested
+                preferred_action,
+                ask
             );
             return true;
         });

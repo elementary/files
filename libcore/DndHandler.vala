@@ -40,14 +40,17 @@ namespace Files {
             Files.File drop_target,
             GLib.List<GLib.File> drop_file_list,
             Gdk.DragAction possible_actions,
-            Gdk.DragAction suggested_action
+            Gdk.DragAction suggested_action,
+            bool ask
         ) {
             bool success = false;
             Gdk.DragAction action = suggested_action;
 
             if (drop_file_list != null) {
-                if (suggested_action == Gdk.DragAction.ASK) {
-                    action = drag_drop_action_ask (dest_widget, x, y, possible_actions);
+                if (ask) {
+                    action = drag_drop_action_ask (
+                        dest_widget, x, y, possible_actions, suggested_action
+                    );
                 }
 
                 if (action != 0) {
@@ -60,13 +63,13 @@ namespace Files {
                 critical ("Attempt to drop null file list");
             }
 
-warning ("finish handling");
             return success ? action : 0;
         }
 
         public Gdk.DragAction drag_drop_action_ask (Gtk.Widget dest_widget,
                                                     double x, double y,
-                                                    Gdk.DragAction possible_actions) {
+                                                    Gdk.DragAction possible_actions,
+                                                    Gdk.DragAction suggested_action) {
 
             Gdk.DragAction chosen = 0;
 
@@ -85,11 +88,12 @@ warning ("finish handling");
                     case "LINK":
                         chosen = Gdk.DragAction.LINK;
                         break;
+                    case "CANCEL":
                     default:
-                        // Drop will be cancelled
                         break;
                 }
             });
+
             var ask_menu = new Menu ();
             if (Gdk.DragAction.COPY in possible_actions) {
                 ask_menu.append (_("Copy"), "dnd.choice::COPY");
@@ -111,6 +115,9 @@ warning ("finish handling");
             ask_popover.set_parent (dest_widget);
 
             var loop = new GLib.MainLoop (null, false);
+            ask_popover.activate_default.connect (() => {
+                chosen = suggested_action;
+            });
             ask_popover.closed.connect (() => {
                 if (loop.is_running ()) {
                     loop.quit ();
@@ -120,7 +127,6 @@ warning ("finish handling");
             loop.run ();
             ask_popover.destroy ();
             dest_widget.insert_action_group ("dnd", null);
-warning ("finish ask");
             return chosen;
         }
 
@@ -130,7 +136,6 @@ warning ("finish ask");
                                  Gdk.DragAction action)
         requires (drop_target != null && drop_file_list != null) {
 
-warning ("dnd perform");
             if (drop_target.is_folder ()) {
                 Files.FileOperations.copy_move_link.begin (
                     drop_file_list,
@@ -156,6 +161,115 @@ warning ("dnd perform");
 
             return false;
         }
+
+    //Drag unmodified =selected_action = COPY or MOVE drag_actions = drop_target common actions
+    //Drag with Ctrl - selected action == 0 drag actions = COPY
+    //Drag with Shift - selected action = 0 drag_actions = MOVE
+    //Drag with Alt - selected action == 0, drag actions includes ASK (Generates criticals)
+    public Gdk.DragAction file_accepts_drop (Files.File dest,
+                                             GLib.List<GLib.File> drop_file_list, // read-only
+                                             Gdk.Drop drop,
+                                             out Gdk.DragAction preferred_action) {
+
+        var target_location = dest.get_target_location ();
+        Gdk.DragAction actions = drop.actions;
+        preferred_action = 0;
+
+        if (drop_file_list == null || drop_file_list.data == null) {
+            return 0;
+        }
+
+        if (dest.location.equal (drop_file_list.data)) {
+            return 0;
+        }
+
+        if (dest.is_folder () && dest.is_writable ()) {
+            actions = valid_actions_for_file_list (target_location, drop_file_list, out preferred_action);
+        } else if (dest.is_executable ()) {
+            //Always drop on executable and allow app to determine success
+            actions &= Gdk.DragAction.COPY;
+        }
+
+        if (Files.FileUtils.location_is_in_trash (target_location)) { // cannot copy or link to trash
+            actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
+        }
+
+        uint count = 0;
+        if (Gdk.DragAction.COPY in drop.actions) { count++; }
+        if (Gdk.DragAction.MOVE in drop.actions) { count++; }
+        if (Gdk.DragAction.LINK in drop.actions) { count++; }
+
+        //If there is only one drop/drag action (e.g. control pressed) do not override it
+        if (count == 1) {
+            preferred_action = drop.actions;
+        }
+
+        return actions;
+    }
+
+    private const uint MAX_FILES_CHECKED = 100; // Max checked copied from gof_file.c version
+    private Gdk.DragAction? valid_actions_for_file_list (GLib.File target_location,
+                                                         GLib.List<GLib.File> drop_file_list,
+                                                         out Gdk.DragAction preferred_action) {
+
+        var valid_actions = Gdk.DragAction.COPY |
+                            Gdk.DragAction.MOVE |
+                            Gdk.DragAction.LINK;
+
+        /* Check the first MAX_FILES_CHECKED and let
+         * the operation fail for file the same as target if it is
+         * buried in a large selection.  We can normally assume that all source files
+         * come from the same folder, but drops from outside Files could be from multiple
+         * folders. Try to find valid and preferred actions common to all files.
+         */
+        uint count = 0;
+        preferred_action = valid_actions;
+        foreach (var drop_file in drop_file_list) {
+            if (Files.FileUtils.location_is_in_trash (drop_file) &&
+                Files.FileUtils.location_is_in_trash (target_location)) {
+
+                valid_actions = 0; // No DnD within trash
+                break;
+            }
+
+            var scheme = drop_file.get_uri_scheme ();
+            var parent = drop_file.get_parent ();
+            var remote = scheme == null || !scheme.has_prefix ("file");
+            var same_location = (parent != null && parent.equal (target_location));
+            var same_system = Files.FileUtils.same_file_system (drop_file, target_location);
+
+            if (same_location) {
+                valid_actions &= ~(Gdk.DragAction.MOVE); // Cannot move within same location
+            }
+
+            if (remote) {
+                valid_actions &= ~(Gdk.DragAction.LINK); // Can only LINK local files
+            }
+
+            if (same_location && !remote) {
+                preferred_action &= Gdk.DragAction.LINK;
+            } else if (same_system && !same_location) {
+                preferred_action &= Gdk.DragAction.MOVE;
+            } else {
+                preferred_action &= Gdk.DragAction.COPY;
+            }
+
+            if (++count > MAX_FILES_CHECKED ||
+                valid_actions == 0) {
+                break;
+            }
+        }
+
+        if (Gdk.DragAction.LINK in preferred_action) {
+            preferred_action = Gdk.DragAction.LINK;
+        } else if (Gdk.DragAction.MOVE in preferred_action) {
+            preferred_action = Gdk.DragAction.MOVE;
+        } else {
+            preferred_action = Gdk.DragAction.COPY;
+        }
+
+        return valid_actions;
+    }
 
 
         // public bool handle_xdnddirectsave (Gdk.DragContext context,

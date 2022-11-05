@@ -177,7 +177,6 @@ namespace Files {
             view_widget.path_change_request.connect ((uri) => {
                 path_change_request (uri, Files.OpenFlag.DEFAULT, false);
             });
-
             stack = new Gtk.Stack ();
             stack.add_named (new Gtk.Label ("EMPTY"), "empty-label");
             stack.add_named (view_widget, "view-widget");
@@ -787,7 +786,8 @@ return null;
         }
 
         private void on_directory_done_loading (Directory dir) {
-//             /* Should only be called on directory creation or reload */
+            /* Should only be called on directory creation or reload */
+            view_widget.root_file = slot.directory.file;
             disconnect_directory_loading_handlers (dir);
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;
