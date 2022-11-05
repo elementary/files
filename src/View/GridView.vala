@@ -57,7 +57,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public Gtk.MultiSelection multi_selection { get; construct; }
     public Gtk.PopoverMenu menu_popover { get; construct; }
 
-
     //Interface properties
     public AbstractSlot slot { get; set construct; }
     public ZoomLevel zoom_level { get; set; default = ZoomLevel.NORMAL; }
@@ -195,6 +194,61 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         grab_focus ();
     }
 
+    /* Private methods */
+    private void refresh_view () {
+        // Needed to load thumbnails when settings change.  Is there a better way?
+        grid_view.model = null;
+        Idle.add (() => {
+            grid_view.model = multi_selection;
+            return Source.REMOVE;
+        });
+    }
+
+    private ZoomLevel get_normal_zoom_level () {
+        var zoom = Files.icon_view_settings.get_enum ("default-zoom-level");
+        Files.icon_view_settings.set_enum ("zoom-level", zoom);
+
+        return (ZoomLevel)zoom;
+    }
+
+    private void focus_item (uint pos) {
+        foreach (var item in fileitem_list) {
+            if (item.pos == pos) {
+                item.grab_focus ();
+            }
+        }
+    }
+
+    private Files.GridFileItem? get_item_at (double x, double y) {
+        var widget = grid_view.pick (x, y, Gtk.PickFlags.DEFAULT);
+        if (widget is GridFileItem) {
+            return (GridFileItem)widget;
+        } else {
+            return (GridFileItem)(widget.get_ancestor (typeof (Files.GridFileItem)));
+        }
+    }
+
+    private unowned GridFileItem? get_selected_file_item () {
+        //NOTE This assumes that the target selected file is bound to a GridFileItem (ie visible?)
+        GLib.List<Files.File>? selected_files = null;
+        if (get_selected_files (out selected_files) == 1) {
+            return get_file_item_for_file (selected_files.data);
+        }
+
+        return null;
+    }
+
+    private unowned GridFileItem? get_file_item_for_file (Files.File file) {
+        foreach (unowned var file_item in fileitem_list) {
+            if (file_item.file == file) {
+                return file_item;
+            }
+        }
+
+        return null;
+    }
+
+    /* View Interface methods */
     public override void clear () {
         list_store.remove_all ();
         rename_after_add = false;
@@ -202,12 +256,13 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         grab_focus ();
     }
 
-    private void refresh_view () {
-        // Needed to load thumbnails when settings change.  Is there a better way?
-        grid_view.model = null;
+
+    private void show_context_menu (Menu menu_model, double x, double y) {
+        menu_popover.menu_model = menu_model;
+        menu_popover.set_pointing_to ({(int)x, (int)y, 1, 1});
         Idle.add (() => {
-            grid_view.model = multi_selection;
-            return Source.REMOVE;
+          menu_popover.popup ();
+          return Source.REMOVE;
         });
     }
 
@@ -241,6 +296,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             zoom_level = zoom_level + 1;
         }
     }
+
     public override void zoom_out () {
         if (zoom_level > minimum_zoom) {
             zoom_level = zoom_level - 1;
@@ -248,13 +304,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
     public override void zoom_normal () {
         zoom_level = get_normal_zoom_level ();
-    }
-
-    private ZoomLevel get_normal_zoom_level () {
-        var zoom = Files.icon_view_settings.get_enum ("default-zoom-level");
-        Files.icon_view_settings.set_enum ("zoom-level", zoom);
-
-        return (ZoomLevel)zoom;
     }
 
     public override void show_and_select_file (
@@ -285,15 +334,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    private void focus_item (uint pos) {
-        foreach (var item in fileitem_list) {
-            if (item.pos == pos) {
-                item.grab_focus ();
-            }
-        }
-    }
-
-    public virtual void select_files (List<Files.File> files_to_select) {
+    public override void select_files (List<Files.File> files_to_select) {
         foreach (var file in files_to_select) {
             show_and_select_file (file, true, false, false);
         }
@@ -390,15 +431,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    private void show_context_menu (Menu menu_model, double x, double y) {
-        menu_popover.menu_model = menu_model;
-        menu_popover.set_pointing_to ({(int)x, (int)y, 1, 1});
-        Idle.add (() => {
-          menu_popover.popup ();
-          return Source.REMOVE;
-        });
-    }
-
     //Deal with Menu Key
     public void show_appropriate_context_menu () {
         if (list_store.get_n_items () > 0) {
@@ -431,36 +463,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return count;
     }
 
-    private Files.GridFileItem? get_item_at (double x, double y) {
-        var widget = grid_view.pick (x, y, Gtk.PickFlags.DEFAULT);
-        if (widget is GridFileItem) {
-            return (GridFileItem)widget;
-        } else {
-            return (GridFileItem)(widget.get_ancestor (typeof (Files.GridFileItem)));
-        }
-    }
-
-    private unowned GridFileItem? get_selected_file_item () {
-        //NOTE This assumes that the target selected file is bound to a GridFileItem (ie visible?)
-        GLib.List<Files.File>? selected_files = null;
-        if (get_selected_files (out selected_files) == 1) {
-            return get_file_item_for_file (selected_files.data);
-        }
-
-        return null;
-    }
-
-    private unowned GridFileItem? get_file_item_for_file (Files.File file) {
-        foreach (unowned var file_item in fileitem_list) {
-            if (file_item.file == file) {
-                return file_item;
-            }
-        }
-
-        return null;
-    }
-
-    protected override void set_up_zoom_level () {
+    public override void set_up_zoom_level () {
         Files.icon_view_settings.bind (
             "zoom-level",
             this, "zoom-level",
@@ -478,6 +481,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             zoom_level = maximum_zoom;
         }
     }
+
+    public override void file_icon_changed (Files.File file) {}
+    public override void file_changed (Files.File file) {} //TODO Update thumbnail
+
+    /* DNDInterface methods */
 
     //Need to ensure fileitem gets selected before drag
     public List<Files.File> get_file_list_for_drag (double x, double y, out Gdk.Paintable? paintable) {
@@ -541,6 +549,4 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return root_file.is_readable ();
     }
 
-    public override void file_icon_changed (Files.File file) {}
-    public override void file_changed (Files.File file) {} //TODO Update thumbnail
 }
