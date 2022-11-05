@@ -165,10 +165,10 @@ namespace Files {
                 case ViewMode.ICON:
                 case ViewMode.LIST:
                 case ViewMode.MILLER_COLUMNS:
-                    view_widget = new Files.GridView (slot.directory.file);
+                    view_widget = new Files.GridView (slot);
                     break;
                 default:
-                    view_widget = new Files.GridView (slot.directory.file);
+                    view_widget = new Files.GridView (slot);
                     warning ("Unexpected mode %s", mode.to_string ());
                     break;
             }
@@ -787,7 +787,6 @@ return null;
 
         private void on_directory_done_loading (Directory dir) {
             /* Should only be called on directory creation or reload */
-            view_widget.root_file = slot.directory.file;
             disconnect_directory_loading_handlers (dir);
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;

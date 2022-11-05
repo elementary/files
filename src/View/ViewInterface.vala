@@ -20,7 +20,12 @@
 */
 
 public interface Files.ViewInterface : Gtk.Widget {
-    public abstract Files.File root_file { get; set construct; }
+    public abstract AbstractSlot slot { get; set construct; }
+    public virtual Files.File? root_file {
+        get {
+            return slot.file;
+        }
+    }
     public abstract ZoomLevel zoom_level { get; set; }
     public abstract ZoomLevel minimum_zoom { get; set; }
     public abstract ZoomLevel maximum_zoom { get; set; }

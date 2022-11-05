@@ -59,7 +59,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
 
     //Interface properties
-    public Files.File root_file { get; set construct; }
+    public AbstractSlot slot { get; set construct; }
     public ZoomLevel zoom_level { get; set; default = ZoomLevel.NORMAL; }
     public ZoomLevel minimum_zoom { get; set; default = ZoomLevel.SMALLEST; }
     public ZoomLevel maximum_zoom { get; set; default = ZoomLevel.LARGEST; }
@@ -80,9 +80,14 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     private Files.File? target_file = null;
     public Gdk.DragAction preferred_action = 0;
     public bool ask = false;
+    // public Files.File? root_file {
+    //     get {
+    //         return slot.file;
+    //     }
+    // }
 
-    public GridView (Files.File file) {
-        Object (root_file: file);
+    public GridView (Files.AbstractSlot slot) {
+        Object (slot: slot);
     }
 
     ~GridView () {
