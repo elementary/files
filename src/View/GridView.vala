@@ -17,7 +17,7 @@
 ***/
 
 [GtkTemplate (ui = "/io/elementary/files/GridView.ui")]
-public class Files.GridView : Gtk.Widget, Files.ViewInterface {
+public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterface {
     private static Files.Preferences prefs;
     static construct {
         set_layout_manager_type (typeof (Gtk.BinLayout));
@@ -75,16 +75,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
     private EqualFunc<Files.File>? file_equal_func;
     private GLib.List<GridFileItem> fileitem_list;
 
-    //DnD support
-    private List<GLib.File> drop_file_list = null;
-    private Files.File? target_file = null;
-    public Gdk.DragAction preferred_action = 0;
-    public bool ask = false;
-    // public Files.File? root_file {
-    //     get {
-    //         return slot.file;
-    //     }
-    // }
+    private Files.DndHandler dnd_handler;
 
     public GridView (Files.AbstractSlot slot) {
         Object (slot: slot);
@@ -174,158 +165,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
 
         item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
 
-        //Set up drag source
-        var drag_source = new Gtk.DragSource ();
-        drag_source.set_actions (
-            Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK | Gdk.DragAction.ASK
-        );
-        grid_view.add_controller (drag_source);
-        drag_source.prepare.connect ((x, y) => {
-            Files.GridFileItem fileitem;
-            var widget = grid_view.pick (x, y, Gtk.PickFlags.DEFAULT);
-            if (!(widget is Files.GridFileItem)) {
-                fileitem = (GridFileItem)(widget.get_ancestor (typeof (GridFileItem)));
-            } else {
-                fileitem = (GridFileItem)widget;
-            }
-
-            if (fileitem == null) {
-                return null;
-            }
-
-            //Provide both File and text type content
-            var val_text = Value (typeof (string));
-            var val_file = Value (typeof (GLib.File));
-            // Current behaviour is to use the icon of the first file in the selection list
-            // Try to use a more appropriate icon for multiple selection.
-            if (fileitem.selected) {
-                List<Files.File> selected_files = null;
-                get_selected_files (out selected_files);
-                //FIXME Need Gdk.FileList to box multiple files and constructors missing in .vapi
-                //Issue raised
-                //For now just send clicked file
-                var drag_data_text = FileUtils.make_string_from_file_list (selected_files);
-                val_text.set_string (drag_data_text);
-                val_file.set_object (fileitem.file.location.dup ());
-                var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
-                drag_source.set_icon (
-                    theme.lookup_icon (
-                        "edit-copy", //TODO Provide better icon?
-                         null,
-                         fileitem.file_icon.pixel_size,
-                         this.scale_factor,
-                         get_default_direction (),
-                         Gtk.IconLookupFlags.FORCE_REGULAR | Gtk.IconLookupFlags.PRELOAD
-                    ),
-                    16, 16
-                );
-            } else {
-                val_text.set_string (fileitem.file.uri);
-                val_file.set_object (fileitem.file.location.dup ());
-                // Easier to use WidgetPaintable
-                drag_source.set_icon (new Gtk.WidgetPaintable (fileitem.file_icon), 16, 16);
-            }
-            var cp_text = new Gdk.ContentProvider.for_value (val_text);
-            var cp_file = new Gdk.ContentProvider.for_value (val_file);
-            return new Gdk.ContentProvider.union ({cp_text,cp_file});
-        });
-
-        drag_source.drag_begin.connect ((drag) => {
-            //TODO May need to limit actions when dragging some files depending on permissions
-        });
-        drag_source.drag_end.connect ((drag) => {
-            drag_source.set_icon (null, 0, 0);
-        });
-        drag_source.drag_cancel.connect ((drag, reason) => {
-            return false;
-        });
-
-        //Setup as drop target
-        var formats = new Gdk.ContentFormats.for_gtype (typeof (GLib.File));
-        var drop_target = new Gtk.DropTarget (
-            typeof (GLib.File), Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK
-        );
-        add_controller (drop_target);
-        drop_target.accept.connect ((drop) => {
-            target_file = null;
-            drop_file_list = null;
-            // We cannot ever drop on some locations
-            if (!root_file.is_folder () || root_file.is_recent_uri_scheme ()) {
-                return false;
-            }
-
-            // Obtain file list
-            drop.read_value_async.begin (
-                typeof(GLib.File),
-                Priority.DEFAULT,
-                null,
-                (obj, res) => {
-                    try {
-                        var content = drop.read_value_async.end (res);
-                        drop_file_list.append ((GLib.File)(content.get_object ()));
-                    } catch (Error e) {
-                        warning ("Failed to get drop content as file");
-                    }
-                }
-            );
-            return true;
-        });
-        drop_target.motion.connect ((x, y) => {
-            if (drop_file_list == null) {
-                return 0;
-            }
-
-            var previous_target_location = target_file != null ? target_file.location : null;
-            var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
-            if (widget.name == "GtkGridView") {
-                target_file = root_file;
-            } else {
-                if (!(widget.name == "FilesGridFileItem")) {
-                    widget = (GridFileItem)(widget.get_ancestor (typeof (GridFileItem)));
-                }
-
-                if (widget.name == "FilesGridFileItem") {
-                    target_file = ((Files.GridFileItem)widget).file;
-                } else {
-                    target_file = null;
-                    return 0;
-                }
-            }
-
-            if (previous_target_location == null ||
-                !(previous_target_location.equal (target_file.location))) {
-
-                preferred_action = 0;
-                var drop = drop_target.get_current_drop ();
-                ask = (drop.drag.actions & Gdk.DragAction.ASK) > 0;
-                var actions = Files.DndHandler.get_default ().file_accepts_drop (
-                    target_file,
-                    drop_file_list,
-                    drop,
-                    out preferred_action
-                );
-                drop_target.actions = actions;
-            }
-
-            return preferred_action;
-        });
-
-        drop_target.on_drop.connect ((val, x, y) => {
-            if (target_file == null || drop_file_list == null) {
-                return false;
-            }
-
-            var performed = Files.DndHandler.get_default ().handle_file_drop_actions (
-                this,
-                x, y,
-                target_file,
-                drop_file_list,
-                drop_target.actions,
-                preferred_action,
-                ask
-            );
-            return true;
-        });
+        dnd_handler = new Files.DndHandler (this, grid_view, grid_view);
 
         notify["sort-type"].connect (() => {
             list_store.sort (file_compare_func);
@@ -591,6 +431,15 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         return count;
     }
 
+    private Files.GridFileItem? get_item_at (double x, double y) {
+        var widget = grid_view.pick (x, y, Gtk.PickFlags.DEFAULT);
+        if (widget is GridFileItem) {
+            return (GridFileItem)widget;
+        } else {
+            return (GridFileItem)(widget.get_ancestor (typeof (Files.GridFileItem)));
+        }
+    }
+
     private unowned GridFileItem? get_selected_file_item () {
         //NOTE This assumes that the target selected file is bound to a GridFileItem (ie visible?)
         GLib.List<Files.File>? selected_files = null;
@@ -630,6 +479,67 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface {
         }
     }
 
+    //Need to ensure fileitem gets selected before drag
+    public List<Files.File> get_file_list_for_drag (double x, double y, out Gdk.Paintable? paintable) {
+        paintable = null;
+        var dragitem = get_item_at (x, y);
+        List<Files.File> drag_files = null;
+        if (dragitem == null) {
+            return null;
+        }
+
+        uint n_items = 0;
+        if (!dragitem.selected) {
+            drag_files.append (dragitem.file);
+            n_items = 1;
+        } else {
+            n_items = get_selected_files (out drag_files);
+        }
+
+        paintable = get_paintable_for_drag (dragitem, n_items);
+        return (owned) drag_files;
+    }
+
+    private Gdk.Paintable get_paintable_for_drag (GridFileItem dragged_item, uint item_count) {
+        Gdk.Paintable paintable;
+        if (item_count > 1) {
+            var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
+            paintable = theme.lookup_icon (
+                "edit-copy", //TODO Provide better icon?
+                 null,
+                 16,
+                 this.scale_factor,
+                 get_default_direction (),
+                 Gtk.IconLookupFlags.FORCE_REGULAR | Gtk.IconLookupFlags.PRELOAD
+            );
+        } else {
+            paintable = new Gtk.WidgetPaintable (dragged_item.file_icon);
+        }
+
+        return paintable;
+    }
+
+    public Files.File get_target_file_for_drop (double x, double y) {
+        var droptarget = get_item_at (x, y);
+        if (droptarget == null) {
+            return root_file;
+        } else {
+            return droptarget.file;
+        }
+    }
+
+    // Whether is accepting any drops at all
+    public bool can_accept_drops () {
+       // We cannot ever drop on some locations
+        if (!root_file.is_folder () || root_file.is_recent_uri_scheme ()) {
+            return false;
+        }
+        return true;
+    }
+    // Whether is accepting any drags at all
+    public bool can_start_drags () {
+        return root_file.is_readable ();
+    }
 
     public override void file_icon_changed (Files.File file) {}
     public override void file_changed (Files.File file) {} //TODO Update thumbnail

@@ -51,6 +51,7 @@ pantheon_files_core_vala_files = files(
     'Interfaces/SearchableInterface.vala',
     'Interfaces/SidebarListInterface.vala',
     'Interfaces/SidebarItemInterface.vala',
+    'Interfaces/DNDInterface.vala',
     'Widgets/BasicBreadcrumbsEntry.vala',
     'Widgets/BasicLocationBar.vala',
     'Widgets/BreadcrumbElement.vala',

@@ -21,20 +21,141 @@
 
 namespace Files {
     public class DndHandler : GLib.Object {
-        // static Gdk.DragAction? chosen = null;
-        static Files.DndHandler? instance = null;
-        //Since can only be one DnD operation in progress at a time, we can use a singleton
-        public static Files.DndHandler get_default () {
-            if (instance == null) {
-                instance = new DndHandler ();
-            }
+        static Gdk.DragAction? chosen = null;
+        static List<GLib.File> drop_file_list = null;
+        static Files.File? target_file = null;
+        static Gdk.DragAction preferred_action = 0;
+        static bool ask = false;
 
-            return instance;
+        public Files.DNDInterface dnd_widget { get; construct; } //Needs to have layout manager
+        public Gtk.Widget? drag_widget { get; construct; }
+        public Gtk.Widget? drop_widget { get; construct; }
+        public  DndHandler (Files.DNDInterface dnd_widget, Gtk.Widget? drag_widget, Gtk.Widget? drop_widget) {
+            Object (
+                dnd_widget: dnd_widget,
+                drag_widget: drag_widget,
+                drop_widget: drop_widget
+            );
         }
 
-        protected DndHandler () {}
+        construct {
+            assert (dnd_widget.get_layout_manager () != null);
+            if (drag_widget != null) {
+                //Set up drag source
+                var drag_source = new Gtk.DragSource ();
+                drag_source.set_actions (
+                    Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK | Gdk.DragAction.ASK
+                );
+                drag_widget.add_controller (drag_source);
+                drag_source.prepare.connect ((x, y) => {
+                    //Provide both File and text type content
+                    var val_text = Value (typeof (string));
+                    var val_file = Value (typeof (GLib.File));
+                    bool is_multiple;
+                    Gdk.Paintable? paintable = null;
+                    var drag_files = dnd_widget.get_file_list_for_drag (x, y, out paintable);
+                    if (drag_files == null) {
+                        return null;
+                    }
+                    // var drag_files = dragitem.get_file_list_for_drag (out is_multiple);
+                    //FIXME Need Gdk.FileList to box multiple files and constructors missing in .vapi
+                    //Issue raised
+                    //For now just send clicked file
+                    var drag_data_text = FileUtils.make_string_from_file_list (drag_files);
+                    val_text.set_string (drag_data_text);
+                    val_file.set_object (drag_files.first ().data.get_target_location ().dup ());
+                    drag_source.set_icon (
+                        paintable, paintable.get_intrinsic_width (), paintable.get_intrinsic_height ()
+                    );
+                    var cp_text = new Gdk.ContentProvider.for_value (val_text);
+                    var cp_file = new Gdk.ContentProvider.for_value (val_file);
+                    return new Gdk.ContentProvider.union ({cp_text,cp_file});
+                });
 
-        public Gdk.DragAction handle_file_drop_actions (
+                drag_source.drag_begin.connect ((drag) => {
+                    //TODO May need to limit actions when dragging some files depending on permissions
+                });
+                drag_source.drag_end.connect ((drag) => {
+                    drag_source.set_icon (null, 0, 0);
+                });
+                drag_source.drag_cancel.connect ((drag, reason) => {
+                    return false;
+                });
+            }
+
+            if (drop_widget != null) {
+                //Setup as drop target
+                // var formats = new Gdk.ContentFormats.for_gtype (typeof (GLib.File));
+                var drop_target = new Gtk.DropTarget (
+                    typeof (GLib.File), Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK
+                );
+                drop_widget.add_controller (drop_target);
+                drop_target.accept.connect ((drop) => {
+                    target_file = null;
+                    drop_file_list = null;
+                    // Obtain file list
+                    drop.read_value_async.begin (
+                        typeof(GLib.File),
+                        Priority.DEFAULT,
+                        null,
+                        (obj, res) => {
+                            try {
+                                var content = drop.read_value_async.end (res);
+                                drop_file_list.append ((GLib.File)(content.get_object ()));
+                            } catch (Error e) {
+                                warning ("Failed to get drop content as file");
+                            }
+                        }
+                    );
+                    return true;
+                });
+                drop_target.motion.connect ((x, y) => {
+                    if (drop_file_list == null) {
+                        return 0;
+                    }
+
+                    var previous_target_location = target_file != null ? target_file.location : null;
+
+
+                    target_file = dnd_widget.get_target_file_for_drop (x, y);
+                    if (previous_target_location == null ||
+                        !(previous_target_location.equal (target_file.location))) {
+
+                        preferred_action = 0;
+                        var drop = drop_target.get_current_drop ();
+                        ask = (drop.drag.actions & Gdk.DragAction.ASK) > 0;
+                        var actions = Files.DndHandler.file_accepts_drop (
+                            target_file,
+                            drop_file_list,
+                            drop,
+                            out preferred_action
+                        );
+                        drop_target.actions = actions;
+                    }
+
+                    return preferred_action;
+                });
+
+                drop_target.on_drop.connect ((val, x, y) => {
+                    if (target_file == null || drop_file_list == null) {
+                        return false;
+                    }
+
+                    var performed = Files.DndHandler.handle_file_drop_actions (
+                        dnd_widget,
+                        x, y,
+                        target_file,
+                        drop_file_list,
+                        drop_target.actions,
+                        preferred_action,
+                        ask
+                    );
+                    return true;
+                });
+            }
+        }
+
+        public static Gdk.DragAction handle_file_drop_actions (
             Gtk.Widget dest_widget,
             double x, double y,
             Files.File drop_target,
@@ -66,17 +187,18 @@ namespace Files {
             return success ? action : 0;
         }
 
-        public Gdk.DragAction drag_drop_action_ask (Gtk.Widget dest_widget,
-                                                    double x, double y,
-                                                    Gdk.DragAction possible_actions,
-                                                    Gdk.DragAction suggested_action) {
+        public static Gdk.DragAction drag_drop_action_ask (
+            Gtk.Widget popover_parent, //Needs to have a layout manager
+            double x, double y,
+            Gdk.DragAction possible_actions,
+            Gdk.DragAction suggested_action
+        ) {
 
             Gdk.DragAction chosen = 0;
-
             var action = new GLib.SimpleAction ("choice", GLib.VariantType.STRING);
             var dnd_actions = new SimpleActionGroup ();
             dnd_actions.add_action (action);
-            dest_widget.insert_action_group ("dnd", dnd_actions);
+            popover_parent.insert_action_group ("dnd", dnd_actions);
             action.activate.connect ((source, param) => {
                 switch (param.get_string ()) {
                     case "COPY":
@@ -112,8 +234,7 @@ namespace Files {
                 has_arrow = false,
                 pointing_to = {(int)x, (int)y, 1, 1}
             };
-            ask_popover.set_parent (dest_widget);
-
+            ask_popover.set_parent (popover_parent);
             var loop = new GLib.MainLoop (null, false);
             ask_popover.activate_default.connect (() => {
                 chosen = suggested_action;
@@ -126,11 +247,11 @@ namespace Files {
             ask_popover.popup ();
             loop.run ();
             ask_popover.destroy ();
-            dest_widget.insert_action_group ("dnd", null);
+            popover_parent.insert_action_group ("dnd", null);
             return chosen;
         }
 
-        private bool dnd_perform (Gtk.Widget widget,
+        private static bool dnd_perform (Gtk.Widget widget,
                                  Files.File drop_target,
                                  GLib.List<GLib.File> drop_file_list,
                                  Gdk.DragAction action)
@@ -166,7 +287,7 @@ namespace Files {
     //Drag with Ctrl - selected action == 0 drag actions = COPY
     //Drag with Shift - selected action = 0 drag_actions = MOVE
     //Drag with Alt - selected action == 0, drag actions includes ASK (Generates criticals)
-    public Gdk.DragAction file_accepts_drop (Files.File dest,
+    public static Gdk.DragAction file_accepts_drop (Files.File dest,
                                              GLib.List<GLib.File> drop_file_list, // read-only
                                              Gdk.Drop drop,
                                              out Gdk.DragAction preferred_action) {
@@ -208,7 +329,7 @@ namespace Files {
     }
 
     private const uint MAX_FILES_CHECKED = 100; // Max checked copied from gof_file.c version
-    private Gdk.DragAction? valid_actions_for_file_list (GLib.File target_location,
+    private static Gdk.DragAction? valid_actions_for_file_list (GLib.File target_location,
                                                          GLib.List<GLib.File> drop_file_list,
                                                          out Gdk.DragAction preferred_action) {
 
