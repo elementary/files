@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 16:59+0000\n"
-"PO-Revision-Date: 2022-02-10 15:17+0000\n"
+"PO-Revision-Date: 2022-11-08 00:58+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
-">\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -128,10 +128,8 @@ msgid "Ensure correct icon for bookmark to a file that is not a folder"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:46
-#, fuzzy
-#| msgid "Fix a crash when restoring items from the Trash"
 msgid "Fix possible crash when removing a bookmark"
-msgstr "Çöp kutusundaki öğeleri geri yüklerken bir kilitlenme düzeltildi"
+msgstr "Bir yer imini kaldırırken oluşabilecek olası kilitlenme düzeltildi"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:60
