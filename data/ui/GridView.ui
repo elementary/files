@@ -79,6 +79,21 @@
       </submenu>
     </section>
     <section>
+      <submenu>
+          <attribute name="label" translatable="yes">Create New</attribute>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">Folder</attribute>
+              <attribute name="action">win.new-folder</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">File</attribute>
+              <attribute name="action">win.new-file</attribute>
+            </item>
+          </section>
+      </submenu>
+    </section>
+    <section>
       <item>
         <attribute name="label" translatable="yes">Toggle Select All</attribute>
         <attribute name="action">win.toggle-select-all</attribute>
