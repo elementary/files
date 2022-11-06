@@ -56,12 +56,14 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     public bool cut_pending { get; set; default = false; }
     public bool drop_pending {
         get {
-            return file.drop_pending;
+            return file != null ? file.drop_pending : false;
         }
 
         set {
-            file.drop_pending = value;
-            update_pix ();
+            if (file != null) {
+                file.drop_pending = value;
+                update_pix ();
+            }
         }
     }
 

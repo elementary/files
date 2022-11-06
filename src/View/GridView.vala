@@ -236,9 +236,13 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     private Files.GridFileItem? get_item_at (double x, double y) {
         var widget = grid_view.pick (x, y, Gtk.PickFlags.DEFAULT);
         if (widget is GridFileItem) {
+warning ("widget name %s is GridFileItem", widget.name);
             return (GridFileItem)widget;
         } else {
-            return (GridFileItem)(widget.get_ancestor (typeof (Files.GridFileItem)));
+warning ("getting ancestor");
+            var ancestor = (GridFileItem)(widget.get_ancestor (typeof (Files.GridFileItem)));
+warning ("ancestor is %s", ancestor != null ? ancestor.name : null);
+            return ancestor;
         }
     }
 
@@ -508,19 +512,17 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         paintable = null;
         var dragitem = get_item_at (x, y);
         List<Files.File> drag_files = null;
-        if (dragitem == null) {
-            {};
-        }
+        if (dragitem != null) {
+            uint n_items = 0;
+            if (!dragitem.selected) {
+                drag_files.append (dragitem.file);
+                n_items = 1;
+            } else {
+                n_items = get_selected_files (out drag_files);
+            }
 
-        uint n_items = 0;
-        if (!dragitem.selected) {
-            drag_files.append (dragitem.file);
-            n_items = 1;
-        } else {
-            n_items = get_selected_files (out drag_files);
+            paintable = get_paintable_for_drag (dragitem, n_items);
         }
-
-        paintable = get_paintable_for_drag (dragitem, n_items);
         return (owned) drag_files;
     }
 

@@ -107,7 +107,7 @@ namespace Files {
                             }
                         }
                     );
-                    return true;
+                    return false;
                 });
                 drop_target.motion.connect ((x, y) => {
                     if (drop_file_list == null) {
