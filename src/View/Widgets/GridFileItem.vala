@@ -214,7 +214,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         if (file != null) {
             file.ensure_query_info ();
             label.label = file.custom_display_name ?? file.basename;
-            if (file.pix == null) {
+            if (file.paintable == null) {
                 file_icon.paintable = null;
                 file.query_thumbnail_update (); // Ensure thumbstate up to date
                 if (file.thumbstate == Files.File.ThumbState.UNKNOWN &&
@@ -246,6 +246,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
 
     private void update_pix () {
         if (file != null) {
+            file.update_gicon ();
             // file.update_icon (file_icon.pixel_size, 1); //TODO Deal with scale
             if (file.gicon != null) {
                 file_icon.gicon = file.gicon;
@@ -260,10 +261,9 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
                 emblems[index].visible = true;
                 index++;
             }
-            if (file.pix != null) {
+            if (file.paintable != null) {
                 file_icon.paintable = file.paintable;
             }
-warning ("updated pix");
         }
     }
 

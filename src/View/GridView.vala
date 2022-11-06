@@ -560,8 +560,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 if (!droptarget.drop_pending) {
                     droptarget.drop_pending = true;
                     if (previous_target_item != null) {
-                        // previous_target_item.drop_pending = false;
+                        previous_target_item.drop_pending = false;
                     }
+
                     previous_target_item = droptarget;
                     warning ("dropping on folder");
                     //TODO Start time for auto open
