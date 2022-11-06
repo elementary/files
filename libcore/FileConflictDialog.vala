@@ -68,8 +68,11 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         destination.query_update ();
         var thumbnailer = Files.Thumbnailer.get ();
         thumbnailer.finished.connect (() => {
-            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   Files.File.IconFlags.USE_THUMBNAILS);
+            if (destination.gicon != null) {
+                destination_image.gicon = destination.gicon;
+            } else {
+                destination_image.paintable = destination.paintable;
+            }
         });
 
         thumbnailer.queue_file (destination, null, false);
@@ -321,7 +324,11 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         }
 
         secondary_label.label = "%s %s".printf (message, message_extra);
-        source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), Files.File.IconFlags.USE_THUMBNAILS);
+        if (source.gicon != null) {
+            source_image.gicon = source.gicon;
+        } else {
+            source_image.paintable = source.paintable;
+        }
         source_size_label.label = source.format_size;
         source_time_label.label = source.formated_modified;
         if (should_show_type && src_ftype != null) {
@@ -344,12 +351,19 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         }
 
         source.changed.connect (() => {
-            source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), Files.File.IconFlags.USE_THUMBNAILS);
+            if (source.gicon != null) {
+                source_image.gicon = source.gicon;
+            } else {
+                source_image.paintable = source.paintable;
+            }
         });
 
         destination.changed.connect (() => {
-            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   Files.File.IconFlags.USE_THUMBNAILS);
+            if (destination.gicon != null) {
+                destination_image.gicon = destination.gicon;
+            } else {
+                destination_image.paintable = destination.paintable;
+            }
         });
     }
 }

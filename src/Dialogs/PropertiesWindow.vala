@@ -193,11 +193,12 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
         update_selection_size (); /* Start counting first to get number of selected files and folders */
 
         /* create some widgets first (may be hidden by update_selection_size ()) */
-        var file_pix = first_selected_file.get_icon_pixbuf (48, get_scale_factor (), Files.File.IconFlags.NONE);
-        if (file_pix != null) {
-            var file_icon = new Gtk.Image.from_gicon (file_pix);
-            overlay_emblems (file_icon, first_selected_file.emblems_list);
-        }
+        var file_icon = new Gtk.Image () {
+            pixel_size = 64,
+            gicon = first_selected_file.gicon,
+            paintable = first_selected_file.paintable
+        };
+        overlay_emblems (file_icon, first_selected_file.emblems_list);
 
         /* Build header box */
         if (!only_one ) {

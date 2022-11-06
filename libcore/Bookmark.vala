@@ -77,8 +77,8 @@ namespace Files {
         }
 
         public GLib.Icon get_icon () {
-            if (gof_file.icon != null) {
-                return gof_file.icon;
+            if (gof_file.gicon != null) {
+                return gof_file.gicon;
             } else {
                 // Get minimal info to determine icon
                 var ftype = gof_file.location.query_file_type (FileQueryInfoFlags.NONE);

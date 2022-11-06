@@ -46,7 +46,8 @@ public class Files.File : GLib.Object {
     public GLib.File target_location = null;
     public Files.File target_gof = null;
     public GLib.File directory { get; construct; } /* parent directory location */
-    public GLib.Icon? icon = null;
+    public GLib.Icon? gicon = null;
+    public Gdk.Paintable? paintable = null;
     public GLib.List<string>? emblems_list = null;
     public uint n_emblems = 0;
     public GLib.FileInfo? info = null;
@@ -60,7 +61,7 @@ public class Files.File : GLib.Object {
     public string formated_modified = null;
     public string formated_type = null;
     public string tagstype = null;
-    public Gdk.Pixbuf? pix { get; set; default = null; }
+    public Gdk.Paintable? pix { get; set; default = null; }
     public string? custom_icon_name = null;
     public int pix_size = -1;
     public int pix_scale = 1;
@@ -73,6 +74,17 @@ public class Files.File : GLib.Object {
     public bool is_directory = false;
     public bool is_desktop = false;
     public bool is_expanded = false;
+    // private bool _drop_pending = false;
+    // public bool drop_pending {
+    //     get {
+    //         return _drop_pending;
+    //     }
+    //     set {
+    //         _drop_pending = value;
+    //         update_icon ();
+    //     }
+    // }
+    public bool drop_pending { get; set; default = false; }
     [CCode (cname = "can_unmount")]
     public bool _can_unmount;
     public uint thumbstate = Files.File.ThumbState.UNKNOWN;
@@ -382,61 +394,58 @@ public class Files.File : GLib.Object {
         return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
-    public Gdk.Pixbuf? get_icon_pixbuf (int size, int scale, Files.File.IconFlags flags) {
-        GLib.return_val_if_fail (size >= 1, null);
-
-        var nicon = get_icon (size, scale, flags);
-        return nicon != null ? nicon.get_pixbuf_nodefault () : null;
+    public Gdk.Paintable? get_icon_paintable () {
+        return paintable;
     }
 
     public void get_folder_icon_from_uri_or_path () {
-        if (icon != null) {
+        if (gicon != null) {
             return;
         }
 
         if (!is_hidden && uri != null) {
             try {
                 var path = GLib.Filename.from_uri (uri);
-                icon = get_icon_user_special_dirs (path);
+                gicon = get_gicon_user_special_dirs (path);
             } catch (Error e) {
                 debug (e.message);
             }
         }
 
-        if (icon == null && !location.is_native () && is_remote_uri_scheme ()) {
-            icon = new GLib.ThemedIcon ("folder-remote");
+        if (gicon == null && !location.is_native () && is_remote_uri_scheme ()) {
+            gicon = new GLib.ThemedIcon ("folder-remote");
         }
 
-        if (icon == null) {
-            icon = new GLib.ThemedIcon ("folder");
+        if (gicon == null) {
+            gicon = new GLib.ThemedIcon ("folder");
         }
     }
 
-    public Files.IconInfo? get_icon (int size, int scale, Files.File.IconFlags flags) {
-        GLib.return_val_if_fail (size >= 1, null);
-
-        Files.IconInfo? icon = get_special_icon (size, scale, flags);
-        if (icon != null && !icon.is_fallback ()) {
-            return icon;
-        }
-
-        GLib.Icon? gicon = null;
+    public bool update_gicon (Files.File.IconFlags flags) {
         if (Files.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == Files.File.ThumbState.LOADING) {
             gicon = new GLib.ThemedIcon ("image-loading");
-        } else {
-            gicon = this.icon;
+            return true;
         }
 
-        if (gicon != null) {
-            icon = Files.IconInfo.lookup (gicon, size, scale);
-            if (icon == null || icon.is_fallback ()) {
-                icon = Files.IconInfo.get_generic_icon (size, scale);
+        if (get_special_gicon_or_paintable (flags)) {
+            if (gicon != null &&
+                gicon.to_string ().has_prefix ("folder") && (drop_pending || is_expanded)) {
+warning ("dropping gicon %s", gicon.to_string ());
+                try {
+                    if (drop_pending) {
+                        gicon = GLib.Icon.new_for_string (gicon.to_string () + "-drag-accept");
+                    } else if (is_expanded) {
+                        gicon = GLib.Icon.new_for_string (gicon.to_string () + "-open");
+                    }
+                } catch (Error e) {
+                    critical ("Could not create modified icon. %s", e.message);
+                }
             }
         } else {
-            icon = Files.IconInfo.get_generic_icon (size, scale);
+            gicon = new ThemedIcon ("text-generic");
         }
 
-        return icon;
+        return gicon != null;
     }
 
     public void update () {
@@ -466,7 +475,7 @@ public class Files.File : GLib.Object {
         }
 
         if (info.has_attribute (GLib.FileAttribute.STANDARD_ICON)) {
-            icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
+            gicon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
         }
 
         /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
@@ -551,11 +560,11 @@ public class Files.File : GLib.Object {
         if (is_directory) {
             get_folder_icon_from_uri_or_path ();
         } else if (info.get_file_type () == GLib.FileType.MOUNTABLE) {
-            icon = new GLib.ThemedIcon.with_default_fallbacks ("folder-remote");
+            gicon = new GLib.ThemedIcon.with_default_fallbacks ("folder-remote");
         } else {
             unowned string? ftype = get_ftype ();
-            if (ftype != null && icon == null) {
-                icon = GLib.ContentType.get_icon (ftype);
+            if (ftype != null && gicon == null) {
+                gicon = GLib.ContentType.get_icon (ftype);
             }
         }
 
@@ -608,25 +617,10 @@ public class Files.File : GLib.Object {
 
         unowned string? ftype = get_ftype ();
         if (ftype != null) {
-            icon = GLib.ContentType.get_icon (ftype);
+            gicon = GLib.ContentType.get_icon (ftype);
         }
 
-        if (pix_size > 1 && pix_scale > 0) {
-            update_icon (pix_size, pix_scale);
-            icon_changed ();
-        }
-    }
-
-    public void update_icon (int size, int scale) {
-        if (size <= 1) {
-            return;
-        }
-
-        if (pix != null && pix_size == size && pix_scale == scale) {
-            return;
-        }
-
-        update_icon_internal (size, scale);
+        icon_changed ();
     }
 
     public void update_desktop_file () {
@@ -666,8 +660,6 @@ public class Files.File : GLib.Object {
                 base_name
             );
         }
-
-        update_icon_internal (pix_size, pix_scale);
     }
 
     public bool ensure_query_info () {
@@ -1051,7 +1043,8 @@ public class Files.File : GLib.Object {
         formated_type = null;
         format_size = null;
         formated_modified = null;
-        icon = null;
+        gicon = null;
+        paintable = null;
         custom_display_name = null;
         custom_icon_name = null;
 
@@ -1138,7 +1131,7 @@ public class Files.File : GLib.Object {
         }
     }
 
-    private GLib.Icon? get_icon_user_special_dirs (string path) {
+    private GLib.Icon? get_gicon_user_special_dirs (string path) {
         if (path == GLib.Environment.get_home_dir ()) {
             return new GLib.ThemedIcon ("user-home");
         } else if (path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.DESKTOP)) {
@@ -1244,31 +1237,28 @@ public class Files.File : GLib.Object {
         return compare_files_by_size (other);
     }
 
-    private void update_icon_internal (int size, int scale) {
-        GLib.return_if_fail (size >= 1);
-        pix = get_icon_pixbuf (size, scale, Files.File.IconFlags.USE_THUMBNAILS);
-        pix_size = size;
-        pix_scale = scale;
-    }
-
-    private Files.IconInfo? get_special_icon (int size, int scale, Files.File.IconFlags flags) {
-        GLib.return_val_if_fail (size >= 1, null);
+    private bool get_special_gicon_or_paintable (Files.File.IconFlags flags) {
+        gicon = null;
+        paintable = null;
 
         if (custom_icon_name != null) {
             if (GLib.Path.is_absolute (custom_icon_name)) {
-                return Files.IconInfo.lookup_from_path (custom_icon_name, size, scale);
+                paintable = Files.IconInfo.lookup_paintable_from_path (custom_icon_name);
             } else {
-                return Files.IconInfo.lookup_from_name (custom_icon_name, size, scale);
+                gicon = new ThemedIcon (custom_icon_name);
             }
+
+            return true;
         }
 
         if (Files.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == Files.File.ThumbState.READY) {
             unowned string? thumb_path = get_thumbnail_path ();
             if (thumb_path != null) {
-                return Files.IconInfo.lookup_from_path (thumb_path, size, scale);
+                paintable = Files.IconInfo.lookup_paintable_from_path (thumb_path);
+                return true;
             }
         }
 
-        return null;
+        return false;
     }
 }

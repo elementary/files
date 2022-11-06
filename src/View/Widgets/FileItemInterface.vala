@@ -21,6 +21,7 @@
 
 public interface Files.FileItemInterface : Gtk.Widget {
     public abstract bool selected { get; set; default = false; }
+    public abstract bool drop_pending { get; set; default = false; }
     public abstract bool cut_pending { get; set; default = false; }
     public abstract Files.File? file { get; set; default = null; }
     public abstract uint pos { get; set; default = 0; }

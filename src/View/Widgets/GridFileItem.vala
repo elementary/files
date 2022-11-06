@@ -54,6 +54,16 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
 
     public bool selected { get; set; default = false; }
     public bool cut_pending { get; set; default = false; }
+    public bool drop_pending {
+        get {
+            return file.drop_pending;
+        }
+
+        set {
+            file.drop_pending = value;
+            update_pix ();
+        }
+    }
 
     public GridFileItem (Files.GridView view) {
         Object (view: view);
@@ -72,7 +82,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             margin_start = 8,
             icon_name = "image-missing",
         };
-
 
         selection_helper = new Gtk.CheckButton () {
             visible = false,
@@ -216,10 +225,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
                             file, out thumbnail_request, file_icon.pixel_size > 128
                         );
                 }
-
-                if (file.icon != null) {
-                    file_icon.gicon = file.icon;
-                }
             }
 
             update_pix ();
@@ -233,12 +238,19 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             label.label = "Unbound";
             file_icon.icon_name = "image-missing";
             thumbnail_request = -1;
+            drop_pending = false;
+            selected = false;
+            cut_pending = false;
         }
     }
 
     private void update_pix () {
         if (file != null) {
-            file.update_icon (file_icon.pixel_size, 1); //TODO Deal with scale
+            // file.update_icon (file_icon.pixel_size, 1); //TODO Deal with scale
+            if (file.gicon != null) {
+                file_icon.gicon = file.gicon;
+                warning ("update file_icon to %s", file_icon.gicon.to_string ());
+            }
             foreach (var emblem in emblems) {
                 emblem.visible = false;
             }
@@ -249,8 +261,9 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
                 index++;
             }
             if (file.pix != null) {
-                file_icon.paintable = Gdk.Texture.for_pixbuf (file.pix);
+                file_icon.paintable = file.paintable;
             }
+warning ("updated pix");
         }
     }
 

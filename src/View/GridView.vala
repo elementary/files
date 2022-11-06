@@ -496,7 +496,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    public override void file_icon_changed (Files.File file) {}
+    public override void file_icon_changed (Files.File file) {
+        warning ("file icon changed");
+    }
     public override void file_changed (Files.File file) {} //TODO Update thumbnail
 
     /* DNDInterface abstract methods */
@@ -507,7 +509,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         var dragitem = get_item_at (x, y);
         List<Files.File> drag_files = null;
         if (dragitem == null) {
-            return null;
+            {};
         }
 
         uint n_items = 0;
@@ -541,12 +543,41 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return paintable;
     }
 
+    private uint auto_open_timeout_id = 0;
+    private FileItemInterface? previous_target_item = null;
     public Files.File get_target_file_for_drop (double x, double y) {
         var droptarget = get_item_at (x, y);
         if (droptarget == null) {
+            if (auto_open_timeout_id > 0) {
+                Source.remove (auto_open_timeout_id);
+                previous_target_item = null;
+                auto_open_timeout_id = 0;
+            }
             return root_file;
         } else {
-            return droptarget.file;
+            var target_file = droptarget.file;
+            if (target_file.is_folder ()) {
+                if (!droptarget.drop_pending) {
+                    droptarget.drop_pending = true;
+                    if (previous_target_item != null) {
+                        // previous_target_item.drop_pending = false;
+                    }
+                    previous_target_item = droptarget;
+                    warning ("dropping on folder");
+                    //TODO Start time for auto open
+                    if (auto_open_timeout_id > 0) {
+                        Source.remove (auto_open_timeout_id);
+                    }
+
+                    auto_open_timeout_id = Timeout.add (1000, () => {
+                        auto_open_timeout_id = 0;
+                        // path_change_request (droptarget.file.location, Files.OpenFlag.DEFAULT);
+                        return Source.REMOVE;
+                    });
+                }
+            }
+
+            return target_file;
         }
     }
 
