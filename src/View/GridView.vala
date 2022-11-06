@@ -564,7 +564,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                     }
 
                     previous_target_item = droptarget;
-                    warning ("dropping on folder");
                     //TODO Start time for auto open
                     if (auto_open_timeout_id > 0) {
                         Source.remove (auto_open_timeout_id);
@@ -572,7 +571,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
                     auto_open_timeout_id = Timeout.add (1000, () => {
                         auto_open_timeout_id = 0;
-                        // path_change_request (droptarget.file.location, Files.OpenFlag.DEFAULT);
+                        path_change_request (droptarget.file.location, Files.OpenFlag.DEFAULT);
                         return Source.REMOVE;
                     });
                 }
