@@ -69,6 +69,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     // Simpler than using signals and delegates to call actions after file has been added
     public bool rename_after_add { get; set; default = false;}
     public bool select_after_add { get; set; default = false;}
+    protected bool has_open_with { get; set; default = false;}
 
     private CompareDataFunc<Files.File>? file_compare_func;
     private EqualFunc<Files.File>? file_equal_func;
@@ -160,6 +161,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         //FIXME This should happen automatically?
         menu_popover.closed.connect (() => {
             grid_view.grab_focus ();
+            //Open with submenu must always be at pos 0
+            //This is awkward but can only amend open-with-menu by removing and re-adding.
+            if (has_open_with) {
+                item_menu.remove (0);
+                has_open_with = false;
+            }
         });
 
         item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
@@ -292,7 +299,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 );
             }
 
+            assert (!has_open_with); //Must not add twice
             item_menu.prepend_submenu (_("Open With"), open_with_menu);
+            has_open_with = true;
             show_context_menu (item_menu, (double)point_gridview.x, (double)point_gridview.y);
         }
     }

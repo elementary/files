@@ -35,6 +35,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract bool is_renaming { get; set; }
     public abstract bool rename_after_add { get; set; }
     public abstract bool select_after_add { get; set; }
+    protected abstract bool has_open_with { get; set; default = false;}
 
     public signal void selection_changed ();
     public signal void path_change_request (GLib.File location, Files.OpenFlag open_flag);
