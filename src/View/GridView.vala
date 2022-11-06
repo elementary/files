@@ -28,14 +28,21 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     [GtkChild]
     private unowned Gtk.ScrolledWindow? scrolled_window;
     [GtkCallback]
-    public void secondary_release_handler (int n_press, double x, double y) {
-        show_context_menu (background_menu, x, y);
-    }
-    [GtkCallback]
-    public void primary_press_handler (int n_press, double x, double y) {
-        // Deselect all when clicking on empty part of view
-        unselect_all ();
-        grid_view.grab_focus ();
+    public void button_release_handler (Gtk.EventController source, int n_press, double x, double y) {
+        var button = ((Gtk.GestureSingle)source).get_current_button ();
+        switch (button) {
+            case Gdk.BUTTON_PRIMARY:
+                warning ("primary");
+                unselect_all ();
+                grid_view.grab_focus ();
+                break;
+            case Gdk.BUTTON_SECONDARY:
+                show_context_menu (background_menu, x, y);
+                break;
+            default:
+                break;
+        }
+
     }
     [GtkCallback]
     public void on_grid_view_activate (uint pos) {
@@ -336,7 +343,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
         Idle.add (() => {
             if (rename_after_add) {
-                warning ("rename adter add");
                 rename_after_add = false;
                 show_and_select_file (file, true, true);
                 activate_action ("win.rename", null);
@@ -556,5 +562,4 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public bool can_start_drags () {
         return root_file.is_readable ();
     }
-
 }

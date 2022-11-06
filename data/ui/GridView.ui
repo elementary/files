@@ -151,14 +151,8 @@
     </child>
     <child>
       <object class="GtkGestureClick">
-        <property name="button">3</property>
-        <property name="propagation-phase">GTK_PHASE_CAPTURE</property>
-        <signal name="released" handler="secondary_release_handler"/>
-      </object>
-      <object class="GtkGestureClick">
-        <property name="button">1</property>
-        <property name="propagation-phase">GTK_PHASE_BUBBLE</property>
-        <signal name="released" handler="primary_press_handler"/>
+        <property name="button">0</property>
+        <signal name="released" handler="button_release_handler"/>
       </object>
     </child>
   </template>
