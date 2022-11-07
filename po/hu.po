@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 16:59+0000\n"
-"PO-Revision-Date: 2022-10-20 13:57+0000\n"
+"PO-Revision-Date: 2022-11-08 00:58+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -1604,7 +1604,7 @@ msgstr "Formátum:"
 
 #: src/Utils/MimeActions.vala:282
 msgid "Multiple file types selected"
-msgstr "Több fájltípus van kiválasztva"
+msgstr "Több fájltípus van kijelölve"
 
 #: src/Utils/MimeActions.vala:283
 msgid "No single app can open all these types of file"
@@ -1758,7 +1758,7 @@ msgstr "Miniatűrök elrejtése"
 
 #: src/View/AbstractDirectoryView.vala:2246
 msgid "Select Folders with Single Click"
-msgstr "Mappák kiválasztása egy kattintással"
+msgstr "Mappák kijelölése egy kattintással"
 
 #: src/View/AbstractDirectoryView.vala:2343
 msgid "Name"
@@ -2110,17 +2110,17 @@ msgstr "%u mappa"
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] " és %u egyéb elem (%s) kiválasztva"
-msgstr[1] " és %u egyéb elem (%s) kiválasztva"
+msgstr[0] " és %u egyéb elem (%s) kijelölve"
+msgstr[1] " és %u egyéb elem (%s) kijelölve"
 
 #: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
 msgid " selected"
-msgstr " kiválasztva"
+msgstr " kijelölve"
 
 #: src/View/Widgets/OverlayBar.vala:181
 #, c-format
 msgid "%u items selected (%s)"
-msgstr "%u elem kiválasztva (%s)"
+msgstr "%u elem kijelölve (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:226
