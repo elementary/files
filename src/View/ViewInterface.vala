@@ -50,7 +50,6 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void invert_selection () {}
     public virtual void select_all () {}
     public virtual void unselect_all () {}
-    public virtual void file_icon_changed (Files.File file) {}
     public virtual void file_deleted (Files.File file) {}
     public virtual void file_changed (Files.File file) {}
     public virtual void add_file (Files.File file) {}

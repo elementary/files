@@ -37,8 +37,8 @@ public class Files.File : GLib.Object {
         "standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem," +
         "thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed";
 
+    // public signal void changed ();
     public signal void changed ();
-    public signal void icon_changed ();
     public signal void destroy ();
 
     public bool is_gone;
@@ -172,11 +172,11 @@ public class Files.File : GLib.Object {
     }
 
     construct {
-        icon_changed.connect (() => {
+        changed.connect (() => {
             if (directory != null) {
                 var dir = Files.Directory.cache_lookup (directory);
                 if (dir != null && (!is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
-                    dir.icon_changed (this);
+                    dir.changed_and_refresh (this);
                 }
             }
         });
@@ -417,12 +417,15 @@ public class Files.File : GLib.Object {
         if (thumbstate == Files.File.ThumbState.READY) {
             unowned string? thumb_path = get_thumbnail_path ();
             if (thumb_path != null) {
+                warning ("FILE setting paintable from thumbpath %s", thumb_path);
                 paintable = Files.IconInfo.lookup_paintable_from_path (thumb_path);
                 // gicon = null;
                 if (paintable != null) {
+                    thumbstate = Files.File.ThumbState.UNKNOWN;
                     return true;
                 } else {
                     critical ("READY but could not get paintable from cache");
+                    thumbstate = Files.File.ThumbState.NONE;
                 }
             } else {
                 critical ("READY but no thumbnail path");
@@ -431,6 +434,7 @@ public class Files.File : GLib.Object {
 
         if (thumbstate == ThumbState.LOADING) {
             gicon = new GLib.ThemedIcon ("image-loading");
+            warning ("setting paintable null - loading");
             paintable = null;
             return true;
         } else if (thumbstate == ThumbState.UNKNOWN) {
@@ -439,6 +443,7 @@ public class Files.File : GLib.Object {
 
         if (custom_icon_name != null) {
             if (GLib.Path.is_absolute (custom_icon_name)) {
+                warning ("setting paintable from custom name");
                 paintable = Files.IconInfo.lookup_paintable_from_path (custom_icon_name);
                 gicon = null;
             } else {
@@ -635,21 +640,22 @@ public class Files.File : GLib.Object {
     }
 
     public void update_type () {
-        update_formated_type ();
+        if (update_formated_type ()) {
+            unowned string? ftype = get_ftype ();
+            if (ftype != null) {
+                gicon = GLib.ContentType.get_icon (ftype);
+            }
 
-        unowned string? ftype = get_ftype ();
-        if (ftype != null) {
-            gicon = GLib.ContentType.get_icon (ftype);
+            changed ();
         }
-
-        icon_changed ();
     }
 
     public void update_desktop_file () {
         utf8_collation_key = get_display_name ().collate_key_for_filename ();
-        update_formated_type ();
         update_size ();
-        icon_changed ();
+        if (update_formated_type ()) {
+            changed ();
+        }
     }
 
     public void query_update () {
@@ -1042,7 +1048,7 @@ public class Files.File : GLib.Object {
 
         emblems_list.append (emblem);
         n_emblems++;
-        icon_changed ();
+        changed ();
     }
 
     private void target_location_update () {
@@ -1136,8 +1142,9 @@ public class Files.File : GLib.Object {
         return _("----");
     }
 
-    private void update_formated_type () {
+    private bool update_formated_type () {
         unowned string? ftype = get_ftype ();
+        var previous_type = formated_type;
         if (ftype != null) {
             if (is_symlink ()) {
                 formated_type = _("link to %s").printf (GLib.ContentType.get_description (ftype));
@@ -1147,6 +1154,8 @@ public class Files.File : GLib.Object {
         } else {
             formated_type = "";
         }
+
+        return formated_type != previous_type;
     }
 
     private GLib.Icon? get_gicon_user_special_dirs (string path) {

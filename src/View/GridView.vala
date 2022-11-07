@@ -146,7 +146,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         item_factory.unbind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = (GridFileItem)list_item.child;
-            file_item.bind_file (null);
+            // file_item.bind_file (null);
         });
 
         item_factory.teardown.connect ((obj) => {
@@ -236,12 +236,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     private Files.GridFileItem? get_item_at (double x, double y) {
         var widget = grid_view.pick (x, y, Gtk.PickFlags.DEFAULT);
         if (widget is GridFileItem) {
-warning ("widget name %s is GridFileItem", widget.name);
             return (GridFileItem)widget;
         } else {
-warning ("getting ancestor");
             var ancestor = (GridFileItem)(widget.get_ancestor (typeof (Files.GridFileItem)));
-warning ("ancestor is %s", ancestor != null ? ancestor.name : null);
             return ancestor;
         }
     }
@@ -344,19 +341,18 @@ warning ("ancestor is %s", ancestor != null ? ancestor.name : null);
     public override void add_file (Files.File file) {
         //TODO Delay sorting until adding finished?
         list_store.insert_sorted (file, file_compare_func);
-
-        Idle.add (() => {
-            if (rename_after_add) {
-                rename_after_add = false;
+        if (select_after_add) {
+            select_after_add = false;
+            warning ("show and select file");
+            show_and_select_file (file, true, true);
+        } else if (rename_after_add) {
+            rename_after_add = false;
+            Idle.add (() => {
                 show_and_select_file (file, true, true);
                 activate_action ("win.rename", null);
-            } else if (select_after_add) {
-                select_after_add = false;
-                show_and_select_file (file, true, true);
-            }
-
-            return Source.REMOVE;
-        });
+                return Source.REMOVE;
+            });
+        }
     }
 
     public override void zoom_in () {
@@ -500,10 +496,13 @@ warning ("ancestor is %s", ancestor != null ? ancestor.name : null);
         }
     }
 
-    public override void file_icon_changed (Files.File file) {
-        warning ("file icon changed");
+    public override void file_changed (Files.File file) {
+        warning ("file changed");
+        var item = get_file_item_for_file (file);
+        if (item != null) {
+            item.bind_file (file); // Forces image to update
+        }
     }
-    public override void file_changed (Files.File file) {} //TODO Update thumbnail
 
     /* DNDInterface abstract methods */
 

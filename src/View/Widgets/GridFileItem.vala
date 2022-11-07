@@ -94,13 +94,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         selection_helper.bind_property (
             "active", this, "selected", BindingFlags.BIDIRECTIONAL
         );
-        selection_helper.toggled.connect (() => {
-            if (selection_helper.active) {
-                view.grid_view.model.select_item (pos, false);
-            } else {
-                view.grid_view.model.unselect_item (pos);
-            }
-        });
 
         emblems = new Gtk.Image[4];
         emblem_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
@@ -144,9 +137,11 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             if (selected && !has_css_class ("selected")) {
                 add_css_class ("selected");
                 selection_helper.visible = true;
+                view.grid_view.model.select_item (pos, false);
             } else if (!selected && has_css_class ("selected")) {
                 remove_css_class ("selected");
                 selection_helper.visible = false;
+                view.grid_view.model.unselect_item (pos);
             }
         });
 
@@ -208,42 +203,31 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     }
 
     public void bind_file (Files.File? file) {
-        this.file = file;
-        if (file != null) {
-            file.ensure_query_info ();
-            label.label = file.custom_display_name ?? file.basename;
-            if (file.paintable == null) {
-                if (file.thumbstate == Files.File.ThumbState.UNKNOWN &&
-                    (prefs.show_remote_thumbnails || !file.is_remote_uri_scheme ()) &&
-                    !prefs.hide_local_thumbnails) { // Also hide remote if local hidden?
-
-                        Thumbnailer.@get ().queue_file (
-                            file, out thumbnail_request, file_icon.pixel_size > 128
-                        );
-                }
-            }
-
-            update_pix ();
-            var cut_pending = ClipboardManager.get_instance ().has_cut_file (file);
-            if (cut_pending && !has_css_class ("cut")) {
-                add_css_class ("cut");
-            } else if (!cut_pending && has_css_class ("cut")) {
-                remove_css_class ("cut");
-            }
-        } else {
-            label.label = "Unbound";
-            file_icon.set_from_icon_name ("dialog-error");
-            thumbnail_request = -1;
-            drop_pending = false;
-            selected = false;
-            cut_pending = false;
+        if (file != this.file) {
+            unbind ();
+            this.file = file;
         }
-    }
 
-    private void update_pix () {
-        if (file != null) {
+        if (file == null) {
+            return;
+        }
+
+        file.ensure_query_info ();
+        label.label = file.custom_display_name ?? file.basename;
+        if (file.paintable == null) {
+            if (file.thumbstate == Files.File.ThumbState.UNKNOWN &&
+                (prefs.show_remote_thumbnails || !file.is_remote_uri_scheme ()) &&
+                !prefs.hide_local_thumbnails) { // Also hide remote if local hidden?
+                    Thumbnailer.@get ().queue_file (
+                        file, out thumbnail_request, file_icon.pixel_size > 128
+                    );
+            }
+        }
+
+        Idle.add (() => {
             file.update_gicon_and_paintable ();
             if (file.paintable != null) {
+                warning ("setting paintable from file");
                 file_icon.set_from_paintable (file.paintable);
             } else {
                 if (file.gicon != null) {
@@ -263,18 +247,38 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
                 emblems[index].visible = true;
                 index++;
             }
-        } else {
-            critical ("updating null file pix");
-        }
 
-        file_icon.queue_draw ();
+            file_icon.queue_draw ();
+            return Source.REMOVE;
+        });
+
+        var cut_pending = ClipboardManager.get_instance ().has_cut_file (file);
+        if (cut_pending && !has_css_class ("cut")) {
+            add_css_class ("cut");
+        } else if (!cut_pending && has_css_class ("cut")) {
+            remove_css_class ("cut");
+        }
+    }
+
+    private void unbind () {
+        label.label = "Unbound";
+        file_icon.paintable = null;
+        file_icon.set_from_icon_name ("dialog-error");
+        thumbnail_request = -1;
+        drop_pending = false;
+        selected = false;
+        cut_pending = false;
+    }
+
+    private void update_pix () {
+
     }
 
     private void handle_thumbnailer_finished (uint req) {
         if (req == thumbnail_request && file != null) {
             // Thumbnailer has already updated the file thumbnail path and state
             thumbnail_request = -1;
-            update_pix ();
+            bind_file (file);
         }
     }
 

@@ -350,20 +350,6 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
             replace_button.label = _("Merge");
         }
 
-        source.changed.connect (() => {
-            if (source.gicon != null) {
-                source_image.gicon = source.gicon;
-            } else {
-                source_image.paintable = source.paintable;
-            }
-        });
-
-        destination.changed.connect (() => {
-            if (destination.gicon != null) {
-                destination_image.gicon = destination.gicon;
-            } else {
-                destination_image.paintable = destination.paintable;
-            }
-        });
+        //Source and directory icons assumed not to change during operation
     }
 }

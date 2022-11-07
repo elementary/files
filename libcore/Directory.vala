@@ -65,8 +65,6 @@ public class Files.Directory : Object {
     public signal void file_added (Files.File? file); /* null used to signal failed operation */
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
-    public signal void icon_changed (Files.File file); /* Called directly by Files.File - handled by DirectoryView
-                                                        Gets emitted for any kind of file operation */
 
     public signal void done_loading ();
     public signal void thumbs_loaded ();
@@ -823,10 +821,16 @@ public class Files.Directory : Object {
         return gof.info != null;
     }
 
-    private void changed_and_refresh (Files.File gof) {
+    public void changed_and_refresh (Files.File gof) {
+        var tp = gof.get_thumbnail_path ();
+        // cannot tell what has changed so force update of thumbnail in cache
+        if (tp != null) {
+            IconInfo.remove_cache (tp);
+        }
+
         gof.update ();
+        // Signal views to update
         file_changed (gof);
-        gof.changed ();
     }
 
     private void add_and_refresh (Files.File gof) {
@@ -1128,7 +1132,6 @@ public class Files.Directory : Object {
     public static bool remove_dir_from_cache (Directory dir) {
         if (dir.file.is_directory) {
             dir.file.is_expanded = false;
-            dir.file.changed ();
         }
 
         lock (directory_cache) {

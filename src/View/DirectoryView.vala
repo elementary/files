@@ -359,9 +359,8 @@ return null;
 //         /* Signal could be from subdirectory as well as slot directory */
         private void connect_directory_handlers (Directory dir) {
             dir.file_added.connect (on_directory_file_added);
-//             dir.file_changed.connect (on_directory_file_changed);
+            dir.file_changed.connect (on_directory_file_changed);
             dir.file_deleted.connect (on_directory_file_deleted);
-//             dir.icon_changed.connect (on_directory_file_icon_changed);
             connect_directory_loading_handlers (dir);
         }
 
@@ -382,9 +381,8 @@ return null;
                 disconnect_directory_loading_handlers (dir);
             }
             dir.file_added.disconnect (on_directory_file_added);
-//             dir.file_changed.disconnect (on_directory_file_changed);
+            dir.file_changed.disconnect (on_directory_file_changed);
             dir.file_deleted.disconnect (on_directory_file_deleted);
-//             dir.icon_changed.disconnect (on_directory_file_icon_changed);
             dir.done_loading.disconnect (on_directory_done_loading);
         }
 
@@ -743,20 +741,15 @@ return null;
         }
 
         private void on_directory_file_changed (Directory dir, Files.File file) {
-//             if (file.location.equal (dir.file.location)) {
-//                 /* The slot directory has changed - it can only be the properties */
-//                 is_writable = slot.directory.file.is_writable ();
-//             } else {
-//                 view_widget.file_changed (file);
-//                 }
-//             }
-
-//             draw_when_idle ();
+            if (file.location.equal (dir.file.location)) {
+                /* The slot directory has changed - it can only be the properties */
+                is_writable = slot.directory.file.is_writable ();
+            } else {
+                view_widget.file_changed (file);
+                // view_widget.file_changed (file);
+            }
         }
 
-        private void on_directory_file_icon_changed (Directory dir, Files.File file) {
-//             view_widget.file_icon_changed (file);
-        }
 
         private void on_directory_file_deleted (Directory dir, Files.File file) {
 //             /* The deleted file could be the whole directory, which is not in the model but that

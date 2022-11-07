@@ -32,7 +32,7 @@ public class Files.IconInfo : GLib.Object {
         }
     }
 
-    public static void remove_cache (string path, int size, int scale) {
+    public static void remove_cache (string path) {
         if (loadable_icon_cache != null) {
             var loadable_key = new FileIcon (GLib.File.new_for_path (path));
             loadable_icon_cache.remove (loadable_key);
