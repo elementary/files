@@ -83,7 +83,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         file_icon = new Gtk.Image () {
             margin_end = 8,
             margin_start = 8,
-            icon_name = "dialog-error" // Shouldnt see this
+            icon_name = "image-missing" // Shouldnt see this
         };
 
         selection_helper = new Gtk.CheckButton () {
@@ -263,7 +263,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     private void unbind () {
         label.label = "Unbound";
         file_icon.paintable = null;
-        file_icon.set_from_icon_name ("dialog-error");
+        file_icon.set_from_icon_name ("image-missing");
         thumbnail_request = -1;
         drop_pending = false;
         selected = false;

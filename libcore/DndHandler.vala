@@ -48,6 +48,10 @@ namespace Files {
                 );
                 drag_widget.add_controller (drag_source);
                 drag_source.prepare.connect ((x, y) => {
+                    if (!dnd_widget.can_start_drags ()) {
+                        return null;
+                    }
+
                     //Provide both File and text type content
                     var val_text = Value (typeof (string));
                     var val_file = Value (typeof (GLib.File));
@@ -57,10 +61,8 @@ namespace Files {
                     if (drag_files == null) {
                         return null;
                     }
-                    // var drag_files = dragitem.get_file_list_for_drag (out is_multiple);
                     //FIXME Need Gdk.FileList to box multiple files and constructors missing in .vapi
-                    //Issue raised
-                    //For now just send clicked file
+                    //Issue raised - for now just send clicked file
                     var drag_data_text = FileUtils.make_string_from_file_list (drag_files);
                     val_text.set_string (drag_data_text);
                     val_file.set_object (drag_files.first ().data.get_target_location ().dup ());
@@ -85,29 +87,32 @@ namespace Files {
 
             if (drop_widget != null) {
                 //Setup as drop target
-                // var formats = new Gdk.ContentFormats.for_gtype (typeof (GLib.File));
                 var drop_target = new Gtk.DropTarget (
                     typeof (GLib.File), Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK
                 );
                 drop_widget.add_controller (drop_target);
                 drop_target.accept.connect ((drop) => {
-                    target_file = null;
-                    drop_file_list = null;
-                    // Obtain file list
-                    drop.read_value_async.begin (
-                        typeof (GLib.File),
-                        Priority.DEFAULT,
-                        null,
-                        (obj, res) => {
-                            try {
-                                var content = drop.read_value_async.end (res);
-                                drop_file_list.append ((GLib.File)(content.get_object ()));
-                            } catch (Error e) {
-                                warning ("Failed to get drop content as file");
+                if (dnd_widget.can_accept_drops ()) {
+                        target_file = null;
+                        drop_file_list = null;
+                        // Obtain file list
+                        drop.read_value_async.begin (
+                            typeof (GLib.File),
+                            Priority.DEFAULT,
+                            null,
+                            (obj, res) => {
+                                try {
+                                    var content = drop.read_value_async.end (res);
+                                    drop_file_list.append ((GLib.File)(content.get_object ()));
+                                } catch (Error e) {
+                                    warning ("Failed to get drop content as file");
+                                }
                             }
-                        }
-                    );
-                    return false;
+                        );
+                        return true;
+                    } else {
+                        return false;
+                    }
                 });
                 drop_target.motion.connect ((x, y) => {
                     if (drop_file_list == null) {
