@@ -594,6 +594,8 @@ public class Files.File : GLib.Object {
                 gicon = GLib.ContentType.get_icon (ftype);
                 if (ftype == "inode/symlink") {
                     custom_display_name = _("Broken link");
+                    gicon = new GLib.ThemedIcon ("computer-fail");
+                    //TODO Need better icon for a broken link
                 }
             }
         }
