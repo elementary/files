@@ -225,30 +225,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         }
 
         Idle.add (() => {
-            file.update_gicon_and_paintable ();
-            if (file.paintable != null) {
-                warning ("setting paintable from file");
-                file_icon.set_from_paintable (file.paintable);
-            } else {
-                if (file.gicon != null) {
-                    file_icon.set_from_gicon (file.gicon);
-                } else {
-                    critical ("File %s has neither paintable nor gicon", file.uri);
-                    file_icon.set_from_icon_name ("dialog-error");
-                }
-            }
-
-            foreach (var emblem in emblems) {
-                emblem.visible = false;
-            }
-            int index = 0;
-            foreach (string emblem in file.emblems_list) {
-                emblems[index].icon_name = emblem;
-                emblems[index].visible = true;
-                index++;
-            }
-
-            file_icon.queue_draw ();
+            update_pix ();
             return Source.REMOVE;
         });
 
@@ -271,7 +248,29 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     }
 
     private void update_pix () {
+            file.update_gicon_and_paintable ();
+            if (file.paintable != null) {
+                file_icon.set_from_paintable (file.paintable);
+            } else {
+                if (file.gicon != null) {
+                    file_icon.set_from_gicon (file.gicon);
+                } else {
+                    critical ("File %s has neither paintable nor gicon", file.uri);
+                    file_icon.set_from_icon_name ("dialog-error");
+                }
+            }
 
+            foreach (var emblem in emblems) {
+                emblem.visible = false;
+            }
+            int index = 0;
+            foreach (string emblem in file.emblems_list) {
+                emblems[index].icon_name = emblem;
+                emblems[index].visible = true;
+                index++;
+            }
+
+            file_icon.queue_draw ();
     }
 
     private void handle_thumbnailer_finished (uint req) {

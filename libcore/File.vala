@@ -387,7 +387,7 @@ public class Files.File : GLib.Object {
         return paintable;
     }
 
-    public bool get_folder_icon_from_uri_or_path () {
+    private bool get_folder_icon_from_uri_or_path () {
         if (gicon != null) {
             return false;
         }
@@ -417,7 +417,6 @@ public class Files.File : GLib.Object {
         if (thumbstate == Files.File.ThumbState.READY) {
             unowned string? thumb_path = get_thumbnail_path ();
             if (thumb_path != null) {
-                warning ("FILE setting paintable from thumbpath %s", thumb_path);
                 paintable = Files.IconInfo.lookup_paintable_from_path (thumb_path);
                 // gicon = null;
                 if (paintable != null) {

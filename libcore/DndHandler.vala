@@ -120,8 +120,6 @@ namespace Files {
                     }
 
                     var previous_target_location = target_file != null ? target_file.location : null;
-
-
                     target_file = dnd_widget.get_target_file_for_drop (x, y);
                     if (previous_target_location == null ||
                         !(previous_target_location.equal (target_file.location))) {
@@ -140,7 +138,6 @@ namespace Files {
 
                     return preferred_action;
                 });
-
                 drop_target.on_drop.connect ((val, x, y) => {
                     if (target_file == null || drop_file_list == null) {
                         return false;
@@ -156,6 +153,9 @@ namespace Files {
                         ask
                     );
                     return true;
+                });
+                drop_target.leave.connect (() => {
+                    dnd_widget.leave ();
                 });
             }
         }

@@ -22,6 +22,7 @@
 public interface Files.DNDInterface : Gtk.Widget {
     public abstract List<Files.File> get_file_list_for_drag (double x, double y, out Gdk.Paintable? paintable);
     public abstract Files.File get_target_file_for_drop (double x, double y);
+    public abstract void leave ();
     public abstract bool can_accept_drops ();
     public abstract bool can_start_drags ();
 }

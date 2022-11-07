@@ -551,7 +551,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         if (droptarget == null) {
             if (auto_open_timeout_id > 0) {
                 Source.remove (auto_open_timeout_id);
-                previous_target_item = null;
+                if (previous_target_item != null) {
+                    previous_target_item.drop_pending = false;
+                    previous_target_item = null;
+                }
                 auto_open_timeout_id = 0;
             }
             return root_file;
@@ -559,11 +562,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             var target_file = droptarget.file;
             if (target_file.is_folder ()) {
                 if (!droptarget.drop_pending) {
-                    droptarget.drop_pending = true;
                     if (previous_target_item != null) {
                         previous_target_item.drop_pending = false;
                     }
 
+                    droptarget.drop_pending = true;
                     previous_target_item = droptarget;
                     //TODO Start time for auto open
                     if (auto_open_timeout_id > 0) {
@@ -593,5 +596,17 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     // Whether is accepting any drags at all
     public bool can_start_drags () {
         return root_file.is_readable ();
+    }
+
+    public void leave () {
+        // Cancel auto-open and restore normal icon
+        if (auto_open_timeout_id > 0) {
+            Source.remove (auto_open_timeout_id);
+            auto_open_timeout_id = 0;
+        }
+
+        if (previous_target_item != null) {
+            previous_target_item.drop_pending = false;
+        }
     }
 }
