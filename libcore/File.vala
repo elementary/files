@@ -416,12 +416,12 @@ public class Files.File : GLib.Object {
 
         if (custom_icon_name != null) {
             if (GLib.Path.is_absolute (custom_icon_name)) {
-                warning ("setting paintable from custom name");
                 paintable = Files.IconInfo.lookup_paintable_from_path (custom_icon_name);
-                gicon = null;
+                if (paintable == null) {
+                    gicon = new ThemedIcon ("image-missing");
+                }
             } else {
                 gicon = new ThemedIcon (custom_icon_name);
-                paintable = null;
             }
 
             return true;
@@ -509,28 +509,30 @@ public class Files.File : GLib.Object {
         <lazy>The performance gain would not be that great</lazy>*/
         is_desktop = is_desktop_file ();
         if (is_desktop) {
+            KeyFile? key_file = null;
             try {
-                var key_file = FileUtils.key_file_from_file (location);
-                custom_icon_name = key_file.get_string (GLib.KeyFileDesktop.GROUP, GLib.KeyFileDesktop.KEY_ICON);
-                /* drop any suffix (e.g. '.png') from themed icons */
-                if (!GLib.Path.is_absolute (custom_icon_name)) {
-                    custom_icon_name = custom_icon_name.split (".", 2)[0];
-                }
+                key_file = FileUtils.key_file_from_file (location);
             } catch (Error e) {
-                debug (e.message);
+                debug ("Unable to get key file from %s", location.get_uri ());
             }
-
-            /* Do not show name from desktop file as this can be used as an exploit (lp:1660742) */
-            try {
-                var key_file = FileUtils.key_file_from_file (location);
-                var type = key_file.get_string (GLib.KeyFileDesktop.GROUP, GLib.KeyFileDesktop.KEY_TYPE);
-                if (type == GLib.KeyFileDesktop.TYPE_LINK) {
-                    var url = key_file.get_string (GLib.KeyFileDesktop.GROUP, GLib.KeyFileDesktop.KEY_URL);
-                    target_location = GLib.File.new_for_uri (url);
-                    target_location_update ();
+            if (key_file != null) {
+                try {
+                    custom_icon_name = key_file.get_string (GLib.KeyFileDesktop.GROUP, GLib.KeyFileDesktop.KEY_ICON);
+                } catch (Error e) {
+                    debug (e.message);
                 }
-            } catch (Error e) {
-                debug (e.message);
+
+                /* Do not show name from desktop file as this can be used as an exploit (lp:1660742) */
+                try {
+                    var type = key_file.get_string (GLib.KeyFileDesktop.GROUP, GLib.KeyFileDesktop.KEY_TYPE);
+                    if (type == GLib.KeyFileDesktop.TYPE_LINK) {
+                        var url = key_file.get_string (GLib.KeyFileDesktop.GROUP, GLib.KeyFileDesktop.KEY_URL);
+                        target_location = GLib.File.new_for_uri (url);
+                        target_location_update ();
+                    }
+                } catch (Error e) {
+                    debug (e.message);
+                }
             }
         }
 
@@ -592,6 +594,7 @@ public class Files.File : GLib.Object {
             unowned string? ftype = get_ftype ();
             if (ftype != null && gicon == null) {
                 gicon = GLib.ContentType.get_icon (ftype);
+                // warning ("icon from content is %s", gicon.to_string ());
                 if (ftype == "inode/symlink") {
                     custom_display_name = _("Broken link");
                     gicon = new GLib.ThemedIcon ("computer-fail");
