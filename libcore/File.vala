@@ -60,7 +60,7 @@ public class Files.File : GLib.Object {
     public string formated_modified = null;
     public string formated_type = null;
     public string tagstype = null;
-    public Gdk.Paintable? paintable{ get; set; default = null; }
+    public Gdk.Paintable? paintable { get; set; default = null; }
     public string? custom_icon_name = null;
     public int pix_size = -1;
     public int pix_scale = 1;
@@ -73,20 +73,10 @@ public class Files.File : GLib.Object {
     public bool is_directory = false;
     public bool is_desktop = false;
     public bool is_expanded = false;
-    // private bool _drop_pending = false;
-    // public bool drop_pending {
-    //     get {
-    //         return _drop_pending;
-    //     }
-    //     set {
-    //         _drop_pending = value;
-    //         update_icon ();
-    //     }
-    // }
     public bool drop_pending { get; set; default = false; }
     [CCode (cname = "can_unmount")]
     public bool _can_unmount;
-    public uint thumbstate = Files.File.ThumbState.UNKNOWN;
+    public ThumbState thumbstate = Files.File.ThumbState.UNKNOWN;
     public string thumbnail_path = null;
     public bool is_mounted = true;
     public bool exists = true;
@@ -422,12 +412,44 @@ public class Files.File : GLib.Object {
         return gicon != null;
     }
 
-    public bool update_gicon () { // Modify gicon according to various state
-        if (thumbstate == Files.File.ThumbState.LOADING) {
+    public bool update_gicon_and_paintable () { // Modify gicon according to various state
+        query_thumbnail_update ();
+        if (thumbstate == Files.File.ThumbState.READY) {
+            unowned string? thumb_path = get_thumbnail_path ();
+            if (thumb_path != null) {
+                paintable = Files.IconInfo.lookup_paintable_from_path (thumb_path);
+                // gicon = null;
+                if (paintable != null) {
+                    return true;
+                } else {
+                    critical ("READY but could not get paintable from cache");
+                }
+            } else {
+                critical ("READY but no thumbnail path");
+            }
+        }
+
+        if (thumbstate == ThumbState.LOADING) {
             gicon = new GLib.ThemedIcon ("image-loading");
             paintable = null;
             return true;
+        } else if (thumbstate == ThumbState.UNKNOWN) {
+            gicon = new GLib.ThemedIcon ("image-missing");
         }
+
+        if (custom_icon_name != null) {
+            if (GLib.Path.is_absolute (custom_icon_name)) {
+                paintable = Files.IconInfo.lookup_paintable_from_path (custom_icon_name);
+                gicon = null;
+            } else {
+                gicon = new ThemedIcon (custom_icon_name);
+                paintable = null;
+            }
+
+            return true;
+        }
+
+
 
         if (gicon != null && gicon is ThemedIcon) {
             if (((ThemedIcon)gicon).names[0].has_prefix ("folder")) {
@@ -446,32 +468,6 @@ public class Files.File : GLib.Object {
         }
 
         return gicon != null;
-    }
-
-    private bool get_special_gicon_or_paintable (Files.File.IconFlags flags) {
-        if (custom_icon_name != null) {
-warning ("custom name %s", custom_icon_name);
-            if (GLib.Path.is_absolute (custom_icon_name)) {
-                paintable = Files.IconInfo.lookup_paintable_from_path (custom_icon_name);
-                gicon = null;
-            } else {
-                gicon = new ThemedIcon (custom_icon_name);
-                paintable = null;
-            }
-
-            return true;
-        }
-
-        if (Files.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == Files.File.ThumbState.READY) {
-            unowned string? thumb_path = get_thumbnail_path ();
-            if (thumb_path != null) {
-                paintable = Files.IconInfo.lookup_paintable_from_path (thumb_path);
-                gicon = null;
-                return true;
-            }
-        }
-
-        return false;
     }
 
     public void update () {
@@ -665,10 +661,6 @@ warning ("custom name %s", custom_icon_name);
     }
 
     public void query_thumbnail_update () {
-        /* Silently ignore invalid requests */
-        if (pix_size <= 1 || pix_scale <= 0) {
-            return;
-        }
         if (get_thumbnail_path () == null && thumbstate == ThumbState.READY) {
             var md5_hash = GLib.Checksum.compute_for_string (GLib.ChecksumType.MD5, uri);
             var base_name = "%s.png".printf (md5_hash);

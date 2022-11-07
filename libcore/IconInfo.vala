@@ -95,11 +95,16 @@ public class Files.IconInfo : GLib.Object {
     public static Gdk.Paintable? lookup_paintable (GLib.LoadableIcon loadable) {
         if (loadable_icon_cache == null) {
             loadable_icon_cache = new GLib.HashTable<Icon, Files.IconInfo> (Icon.hash, Icon.equal);
-        }
-
-        var icon_info = loadable_icon_cache.lookup (loadable);
-        if (icon_info != null) {
-            return icon_info.paintable;
+        } else {
+            var icon_info = loadable_icon_cache.lookup (loadable);
+            if (icon_info != null) {
+                var paintable = icon_info.paintable;
+                if (paintable == null) {
+                    critical ("IconInfo with null paintable");
+                } else {
+                    return icon_info.paintable;
+                }
+            }
         }
 
         //TODO Paintable only has intrinsic dimensions from file so do not need size and scale in key?
@@ -111,12 +116,14 @@ public class Files.IconInfo : GLib.Object {
         }
 
         if (paintable != null) {
-            icon_info = new IconInfo (paintable);
+            var icon_info = new IconInfo (paintable);
             try {
-                loadable_icon_cache.insert (Icon.new_for_string (loadable.to_string ()), icon_info);
+                loadable_icon_cache.insert ((Icon)loadable, icon_info);
             } catch (Error e) {
                 critical ("Could not insert new icon info. %s", e.message);
             }
+        } else {
+            critical ("Null paintable after loading texture");
         }
 
         return paintable;
@@ -150,10 +157,9 @@ public class Files.IconInfo : GLib.Object {
 
     /* INSTANCE METHODS */
     private int64 last_use_time;
-    public Gdk.Paintable? paintable { get; construct; }
-    private string icon_name;
+    public Gdk.Paintable paintable { get; construct; }
 
-    public IconInfo (Gdk.Paintable? paintable) {
+    public IconInfo (Gdk.Paintable paintable) {
         Object (
             paintable: paintable
         );
@@ -162,7 +168,6 @@ public class Files.IconInfo : GLib.Object {
     construct {
         last_use_time = GLib.get_monotonic_time ();
         schedule_reap_cache ();
-        paintable = null;
     }
 
 

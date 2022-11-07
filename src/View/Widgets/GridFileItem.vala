@@ -31,24 +31,25 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     }
 
     private int thumbnail_request = -1;
-
-    public Files.File? file { get; set; default = null; }
-    public Gtk.Image file_icon { get; construct; }
-    public Gtk.CheckButton selection_helper { get; construct; }
-    public Gtk.Label label { get; construct; }
-    public Gtk.TextView text_view { get; construct; }
-    public Files.GridView view { get; set construct; }
-    public uint pos { get; set; default = 0; }
-
+    private Gtk.Image file_icon;
+    private Gtk.Label label;
+    private Gtk.CheckButton selection_helper;
+    private Gtk.TextView text_view;
     private Gtk.Image[] emblems;
     private Gtk.Box emblem_box;
     private Gtk.Overlay icon_overlay;
+
+    public Files.File? file { get; set; default = null; }
+    public Files.GridView view { get; set construct; }
+    public uint pos { get; set; default = 0; }
 
     public ZoomLevel zoom_level {
         set {
             var size = value.to_icon_size ();
             file_icon.pixel_size = size;
-            update_pix ();
+            if (file != null) {
+                update_pix ();
+            }
         }
     }
 
@@ -82,7 +83,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         file_icon = new Gtk.Image () {
             margin_end = 8,
             margin_start = 8,
-            icon_name = "image-missing",
+            icon_name = "dialog-error" // Shouldnt see this
         };
 
         selection_helper = new Gtk.CheckButton () {
@@ -137,12 +138,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         };
         label.set_parent (this);
 
-        Thumbnailer.@get ().finished.connect ((req) => {
-            if (req == thumbnail_request) {
-                thumbnail_request = -1;
-                update_pix ();
-            }
-        });
+        Thumbnailer.@get ().finished.connect (handle_thumbnailer_finished);
 
         notify["selected"].connect (() => {
             if (selected && !has_css_class ("selected")) {
@@ -167,7 +163,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
 
                 Idle.add (() => {
                     //Ensure file selected so that it will be activated
-                    view.show_and_select_file (file, true, false,false);
+                    view.show_and_select_file (file, true, false, false);
                     view.grid_view.activate (pos);
                     return Source.REMOVE;
                 });
@@ -217,8 +213,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             file.ensure_query_info ();
             label.label = file.custom_display_name ?? file.basename;
             if (file.paintable == null) {
-                file_icon.paintable = null;
-                file.query_thumbnail_update (); // Ensure thumbstate up to date
                 if (file.thumbstate == Files.File.ThumbState.UNKNOWN &&
                     (prefs.show_remote_thumbnails || !file.is_remote_uri_scheme ()) &&
                     !prefs.hide_local_thumbnails) { // Also hide remote if local hidden?
@@ -238,7 +232,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             }
         } else {
             label.label = "Unbound";
-            file_icon.icon_name = "image-missing";
+            file_icon.set_from_icon_name ("dialog-error");
             thumbnail_request = -1;
             drop_pending = false;
             selected = false;
@@ -248,12 +242,18 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
 
     private void update_pix () {
         if (file != null) {
-            file.update_gicon ();
-            // file.update_icon (file_icon.pixel_size, 1); //TODO Deal with scale
-            if (file.gicon != null) {
-                file_icon.gicon = file.gicon;
-                warning ("update file_icon to %s", file_icon.gicon.to_string ());
+            file.update_gicon_and_paintable ();
+            if (file.paintable != null) {
+                file_icon.set_from_paintable (file.paintable);
+            } else {
+                if (file.gicon != null) {
+                    file_icon.set_from_gicon (file.gicon);
+                } else {
+                    critical ("File %s has neither paintable nor gicon", file.uri);
+                    file_icon.set_from_icon_name ("dialog-error");
+                }
             }
+
             foreach (var emblem in emblems) {
                 emblem.visible = false;
             }
@@ -263,13 +263,27 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
                 emblems[index].visible = true;
                 index++;
             }
-            if (file.paintable != null) {
-                file_icon.paintable = file.paintable;
-            }
+        } else {
+            critical ("updating null file pix");
+        }
+
+        file_icon.queue_draw ();
+    }
+
+    private void handle_thumbnailer_finished (uint req) {
+        if (req == thumbnail_request && file != null) {
+            // Thumbnailer has already updated the file thumbnail path and state
+            thumbnail_request = -1;
+            update_pix ();
         }
     }
 
+    public Gdk.Paintable get_paintable_for_drag () {
+        return new Gtk.WidgetPaintable (file_icon);
+    }
+
     ~GridFileItem () {
+        Thumbnailer.@get ().finished.disconnect (handle_thumbnailer_finished);
         while (this.get_last_child () != null) {
             this.get_last_child ().unparent ();
         }

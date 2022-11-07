@@ -19,7 +19,7 @@
 ***/
 
 namespace Files {
-    public class Bookmark : Object{
+    public class Bookmark : Object {
         public signal void contents_changed ();
         public signal void deleted ();
 

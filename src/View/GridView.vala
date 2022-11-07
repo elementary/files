@@ -539,7 +539,7 @@ warning ("ancestor is %s", ancestor != null ? ancestor.name : null);
                  Gtk.IconLookupFlags.FORCE_REGULAR | Gtk.IconLookupFlags.PRELOAD
             );
         } else {
-            paintable = new Gtk.WidgetPaintable (dragged_item.file_icon);
+            paintable = dragged_item.get_paintable_for_drag ();
         }
 
         return paintable;

@@ -27,5 +27,6 @@ public interface Files.FileItemInterface : Gtk.Widget {
     public abstract uint pos { get; set; default = 0; }
 
     public abstract void bind_file (Files.File? file);
+    public abstract Gdk.Paintable get_paintable_for_drag ();
     public virtual void rebind () {bind_file (this.file);}
 }

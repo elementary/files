@@ -367,7 +367,6 @@ namespace Files {
                 var goffile = Files.File.get_by_uri (uri);
                 if (goffile.thumbstate == Files.File.ThumbState.LOADING) {
                     goffile.thumbstate = Files.File.ThumbState.NONE;
-                    goffile.query_thumbnail_update ();
                 }
             }
 

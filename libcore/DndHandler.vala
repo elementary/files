@@ -30,7 +30,7 @@ namespace Files {
         public Files.DNDInterface dnd_widget { get; construct; } //Needs to have layout manager
         public Gtk.Widget? drag_widget { get; construct; }
         public Gtk.Widget? drop_widget { get; construct; }
-        public  DndHandler (Files.DNDInterface dnd_widget, Gtk.Widget? drag_widget, Gtk.Widget? drop_widget) {
+        public DndHandler (Files.DNDInterface dnd_widget, Gtk.Widget? drag_widget, Gtk.Widget? drop_widget) {
             Object (
                 dnd_widget: dnd_widget,
                 drag_widget: drag_widget,
@@ -69,7 +69,7 @@ namespace Files {
                     );
                     var cp_text = new Gdk.ContentProvider.for_value (val_text);
                     var cp_file = new Gdk.ContentProvider.for_value (val_file);
-                    return new Gdk.ContentProvider.union ({cp_text,cp_file});
+                    return new Gdk.ContentProvider.union ({cp_text, cp_file});
                 });
 
                 drag_source.drag_begin.connect ((drag) => {
@@ -95,7 +95,7 @@ namespace Files {
                     drop_file_list = null;
                     // Obtain file list
                     drop.read_value_async.begin (
-                        typeof(GLib.File),
+                        typeof (GLib.File),
                         Priority.DEFAULT,
                         null,
                         (obj, res) => {
