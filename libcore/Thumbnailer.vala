@@ -231,7 +231,6 @@ namespace Files {
                     foreach (var file in files) {
                         // Do not leave in LOADING state
                         file.thumbstate= Files.File.ThumbState.NONE;
-                        file.query_thumbnail_update ();
                     }
                 }
             });
@@ -382,7 +381,7 @@ namespace Files {
             var goffile = Files.File.get_by_uri (uri);
             if (goffile != null) {
                 goffile.thumbstate = state;
-                goffile.query_thumbnail_update ();
+                goffile.update_thumbnail_path ();
             }
         }
     }

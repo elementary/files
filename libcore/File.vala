@@ -334,7 +334,7 @@ public class Files.File : GLib.Object {
     }
 
     public unowned string get_display_name () {
-        return custom_display_name ?? basename;
+        return (custom_display_name ?? basename) ?? "NULL NAME";
     }
 
     public unowned GLib.File get_target_location () {
@@ -387,38 +387,12 @@ public class Files.File : GLib.Object {
         return paintable;
     }
 
-    private bool get_folder_icon_from_uri_or_path () {
-        if (gicon != null) {
-            return false;
-        }
-
-        if (!is_hidden && uri != null) {
-            try {
-                var path = GLib.Filename.from_uri (uri);
-                gicon = get_gicon_user_special_dirs (path);
-            } catch (Error e) {
-                debug (e.message);
-            }
-        }
-
-        if (gicon == null && !location.is_native () && is_remote_uri_scheme ()) {
-            gicon = new GLib.ThemedIcon ("folder-remote");
-        }
-
-        if (gicon == null) {
-            gicon = new GLib.ThemedIcon ("folder");
-        }
-
-        return gicon != null;
-    }
-
     public bool update_gicon_and_paintable () { // Modify gicon according to various state
-        query_thumbnail_update ();
+        update_thumbnail_path ();
         if (thumbstate == Files.File.ThumbState.READY) {
             unowned string? thumb_path = get_thumbnail_path ();
             if (thumb_path != null) {
                 paintable = Files.IconInfo.lookup_paintable_from_path (thumb_path);
-                // gicon = null;
                 if (paintable != null) {
                     thumbstate = Files.File.ThumbState.UNKNOWN;
                     return true;
@@ -484,7 +458,6 @@ public class Files.File : GLib.Object {
         file_type = info.get_file_type ();
         is_directory = (file_type == GLib.FileType.DIRECTORY);
         modified = info.get_attribute_uint64 (GLib.FileAttribute.TIME_MODIFIED);
-
         /* metadata */
         if (is_directory) {
             if (info.has_attribute ("metadata::marlin-sort-column-id")) {
@@ -584,13 +557,44 @@ public class Files.File : GLib.Object {
 
         /* icon */
         if (is_directory) {
-            get_folder_icon_from_uri_or_path ();
+            try {
+                var path = GLib.Filename.from_uri (uri);
+                if (path == GLib.Environment.get_home_dir ()) {
+                    gicon = new GLib.ThemedIcon ("user-home");
+                } else if (path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.DESKTOP)) {
+                    gicon = new GLib.ThemedIcon ("user-desktop");
+                } else if (path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.DOCUMENTS)) {
+                    gicon = new GLib.ThemedIcon ("folder-documents");
+                } else if (path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.DOWNLOAD)) {
+                    gicon = new GLib.ThemedIcon ("folder-download");
+                } else if (path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.MUSIC)) {
+                    gicon = new GLib.ThemedIcon ("folder-music");
+                } else if (path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.PICTURES)) {
+                    gicon = new GLib.ThemedIcon ("folder-pictures");
+                } else if (path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.PUBLIC_SHARE)) {
+                    gicon = new GLib.ThemedIcon ("folder-publicshare");
+                } else if (path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES)) {
+                    gicon = new GLib.ThemedIcon ("folder-templates");
+                } else if (path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.VIDEOS)) {
+                    gicon = new GLib.ThemedIcon ("folder-videos");
+                } else if (!location.is_native () && is_remote_uri_scheme ()) {
+                    gicon = new GLib.ThemedIcon ("folder-remote");
+                } else {
+                    gicon = new GLib.ThemedIcon ("folder");
+                }
+            } catch (Error e) {
+                debug (e.message);
+                gicon = new GLib.ThemedIcon ("folder");
+            }
         } else if (info.get_file_type () == GLib.FileType.MOUNTABLE) {
             gicon = new GLib.ThemedIcon.with_default_fallbacks ("folder-remote");
         } else {
             unowned string? ftype = get_ftype ();
             if (ftype != null && gicon == null) {
                 gicon = GLib.ContentType.get_icon (ftype);
+                if (ftype == "inode/symlink") {
+                    custom_display_name = _("Broken link");
+                }
             }
         }
 
@@ -635,7 +639,32 @@ public class Files.File : GLib.Object {
             _can_unmount = info.get_attribute_boolean (GLib.FileAttribute.MOUNTABLE_CAN_UNMOUNT);
         }
 
-        update_emblem ();
+        //Update emblems
+        /* Do not try to add emblems to network and remote files & smb shares
+         * can cause blocking io */
+        if (is_other_uri_scheme () || is_network_uri_scheme () || is_smb_share ()) {
+            return;
+        }
+
+        /* erase previous stored emblems */
+        if (emblems_list != null) {
+            emblems_list = null;
+            n_emblems = 0;
+        }
+
+        if (is_symlink () || (is_desktop && target_gof != null)) {
+            add_emblem ("emblem-symbolic-link");
+        }
+
+        /* We hide lock emblems if in Recents, because files here are not
+         * real files and emblems would always shown. */
+        if (!is_writable () && !is_recent_uri_scheme ()) {
+            if (is_readable ()) {
+                add_emblem ("emblem-readonly");
+            } else {
+                add_emblem ("emblem-unreadable");
+            }
+        }
     }
 
     public void update_type () {
@@ -665,7 +694,7 @@ public class Files.File : GLib.Object {
         }
     }
 
-    public void query_thumbnail_update () {
+    public void update_thumbnail_path () {
         if (get_thumbnail_path () == null && thumbstate == ThumbState.READY) {
             var md5_hash = GLib.Checksum.compute_for_string (GLib.ChecksumType.MD5, uri);
             var base_name = "%s.png".printf (md5_hash);
@@ -1001,40 +1030,7 @@ public class Files.File : GLib.Object {
         }
     }
 
-    public void update_emblem () {
-        /* Do not try to add emblems to network and remote files (except smb)
-         * can cause blocking io */
-        if (is_other_uri_scheme () || is_network_uri_scheme ()) {
-            return;
-        }
-
-        /* Do not try to add emblems to smb shares either */
-        if (is_smb_share ()) {
-            return;
-        }
-
-        /* erase previous stored emblems */
-        if (emblems_list != null) {
-            emblems_list = null;
-            n_emblems = 0;
-        }
-
-        if (is_symlink () || (is_desktop && target_gof != null)) {
-            add_emblem ("emblem-symbolic-link");
-        }
-
-        /* We hide lock emblems if in Recents, because files here are not
-         * real files and emblems would always shown. */
-        if (!is_writable () && !is_recent_uri_scheme ()) {
-            if (is_readable ()) {
-                add_emblem ("emblem-readonly");
-            } else {
-                add_emblem ("emblem-unreadable");
-            }
-        }
-    }
-
-    public void add_emblem (string emblem) {
+    private void add_emblem (string emblem) {
         if (emblems_list != null) {
             foreach (unowned string emblem_item in emblems_list) {
                 if (emblem_item == emblem) {
@@ -1047,7 +1043,6 @@ public class Files.File : GLib.Object {
 
         emblems_list.append (emblem);
         n_emblems++;
-        changed ();
     }
 
     private void target_location_update () {

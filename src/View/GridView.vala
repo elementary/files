@@ -32,7 +32,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         var button = ((Gtk.GestureSingle)source).get_current_button ();
         switch (button) {
             case Gdk.BUTTON_PRIMARY:
-                warning ("primary");
                 unselect_all ();
                 grid_view.grab_focus ();
                 break;
@@ -497,7 +496,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     public override void file_changed (Files.File file) {
-        warning ("file changed");
         var item = get_file_item_for_file (file);
         if (item != null) {
             item.bind_file (file); // Forces image to update
