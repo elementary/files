@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 16:59+0000\n"
-"PO-Revision-Date: 2022-07-04 08:46+0000\n"
+"PO-Revision-Date: 2022-11-08 12:49+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -77,11 +77,15 @@ msgid ""
 "Provide option to select folders with single click and activate with double "
 "click"
 msgstr ""
+"Ajout de la possibilité de sélectionner les dossiers avec un seul clic et de "
+"les ouvrir avec un double-clic"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid ""
 "Only show the properties overlay when files are selected, not when hovered"
 msgstr ""
+"Affichage de l'aperçu des propriétés uniquement lorsque les fichiers sont "
+"sélectionnés, et non lorsqu'ils sont survolés"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:56
@@ -103,6 +107,8 @@ msgstr "Corrections :"
 #: data/io.elementary.files.appdata.xml.in.in:40
 msgid "Fix unexpected file activation after navigation with double-click"
 msgstr ""
+"Correction de l'ouverture inattendue d'un fichier après une navigation par "
+"double-clic"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
 #, fuzzy
@@ -125,16 +131,16 @@ msgid ""
 "Ensure infobar shows in connection server dialog when connection attempt "
 "fails"
 msgstr ""
+"Nous nous sommes assurés que la barre d'information s'affiche dans la boîte "
+"de dialogue du serveur de connexion lorsque la tentative de connexion échoue"
 
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Ensure correct icon for bookmark to a file that is not a folder"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:46
-#, fuzzy
-#| msgid "Fix a crash when restoring items from the Trash"
 msgid "Fix possible crash when removing a bookmark"
-msgstr "Réparer une erreur lors de la restoration d'un élément de la corbeille"
+msgstr "Correction d'un plantage potentiel lors de la suppression d'un favori"
 
 #: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:60
@@ -496,8 +502,7 @@ msgstr "Correction des montages MTP"
 
 #: data/io.elementary.files.appdata.xml.in.in:230
 msgid "Launch files with double click instead of single click"
-msgstr ""
-"Exécution des fichiers avec un double-clique au lieu d'un simple clique"
+msgstr "Ouvrez des fichiers avec un double-clic au lieu d'un simple clic"
 
 #: data/io.elementary.files.appdata.xml.in.in:231
 msgid "Provide a File Chooser portal for Flatpak apps"
