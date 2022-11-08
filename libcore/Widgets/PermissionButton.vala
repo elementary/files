@@ -17,12 +17,12 @@
 * Boston, MA 02110-1335 USA.
 */
 
-public class PermissionButton : Gtk.Box {
+public class Files.PermissionButton : Gtk.Box {
     public Gtk.ToggleButton btn_read;
     public Gtk.ToggleButton btn_write;
     public Gtk.ToggleButton btn_exe;
 
-    public Permissions.Type permission_type { get; construct; }
+    public Files.Permissions.Type permission_type { get; construct; }
 
     private Posix.mode_t[,] vfs_perms = {
         { Posix.S_IRUSR, Posix.S_IWUSR, Posix.S_IXUSR },
@@ -30,7 +30,7 @@ public class PermissionButton : Gtk.Box {
         { Posix.S_IROTH, Posix.S_IWOTH, Posix.S_IXOTH }
     };
 
-    public PermissionButton (Permissions.Type permission_type) {
+    public PermissionButton (Files.Permissions.Type permission_type) {
         Object (permission_type: permission_type);
     }
 
@@ -39,7 +39,7 @@ public class PermissionButton : Gtk.Box {
 
         btn_read = new Gtk.ToggleButton.with_label (_("Read"));
         btn_read.set_data ("permissiontype", permission_type);
-        btn_read.set_data ("permissionvalue", Permissions.Value.READ);
+        btn_read.set_data ("permissionvalue", Files.Permissions.Value.READ);
 
         btn_write = new Gtk.ToggleButton.with_label (_("Write"));
         btn_write.set_data ("permissiontype", permission_type);

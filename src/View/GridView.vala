@@ -298,7 +298,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             }
 
             var open_with_menu = new Menu ();
-            var open_with_apps = MimeActions.get_applications_for_files (selected_files, true, true);
+            var open_with_apps = MimeActions.get_applications_for_files (selected_files, Config.APP_NAME, true, true);
             foreach (var appinfo in open_with_apps) {
                 open_with_menu.append (
                     appinfo.get_name (),

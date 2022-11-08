@@ -26,6 +26,10 @@ namespace Files {
     public Settings icon_view_settings;
     public Settings list_view_settings;
     public Settings column_view_settings;
+
+    static bool is_admin () {
+        return Posix.getuid () == 0;
+    }
 }
 
 public class Files.Application : Gtk.Application {

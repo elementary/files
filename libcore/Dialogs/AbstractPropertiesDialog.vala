@@ -86,6 +86,22 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
         });
     }
 
+    protected Gtk.Label make_key_label (string label) {
+        return new Gtk.Label (label) {
+            halign = Gtk.Align.END,
+            margin_start = 12
+        };
+    }
+
+    protected Gtk.Label make_value_label (string label) {
+        return new Gtk.Label (label) {
+            can_focus = true,
+            halign = Gtk.Align.START,
+            selectable = true,
+            use_markup = true
+        };
+    }
+
     protected void create_header_title () {
         header_title.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
         header_title.hexpand = true;
@@ -159,14 +175,14 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
         } else {
             /* We're not able to gether the usage statistics, show an error
              * message to let the user know. */
-            var capacity_label = Files.make_key_label (_("Capacity:"));
-            var capacity_value = Files.make_value_label (_("Unknown"));
+            var capacity_label = make_key_label (_("Capacity:"));
+            var capacity_value = make_value_label (_("Unknown"));
 
-            var available_label = Files.make_key_label (_("Available:"));
-            var available_value = Files.make_value_label (_("Unknown"));
+            var available_label = make_key_label (_("Available:"));
+            var available_value = make_value_label (_("Unknown"));
 
-            var used_label = Files.make_key_label (_("Used:"));
-            var used_value = Files.make_value_label (_("Unknown"));
+            var used_label = make_key_label (_("Used:"));
+            var used_value = make_value_label (_("Unknown"));
 
             info_grid.attach (capacity_label, 0, line + 1, 1, 1);
             info_grid.attach_next_to (capacity_value, capacity_label, Gtk.PositionType.RIGHT);

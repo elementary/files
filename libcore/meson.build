@@ -17,16 +17,14 @@ pantheon_files_core_vala_files = files(
     'CallWhenReady.vala',
     'ConnectServerOperation.vala',
     'ConnectServerDialog.vala',
+    'DeepCount.vala',
     'Directory.vala',
     'DndHandler.vala',
     'Enums.vala',
     'File.vala',
     'FileChanges.vala',
     'FileConflictDialog.vala',
-    'FileUtils.vala',
     'IconInfo.vala',
-    # 'ListModel.vala',
-    'PixbufUtils.vala',
     'Preferences.vala',
     'PluginManager.vala',
     'Plugin.vala',
@@ -41,6 +39,12 @@ pantheon_files_core_vala_files = files(
     'TrashMonitor.vala',
     'UserUtils.vala',
     'UndoManager.vala',
+
+    'Dialogs/AbstractPropertiesDialog.vala',
+    'Dialogs/ChooseAppDialog.vala',
+    'Dialogs/PropertiesWindow.vala',
+    'Dialogs/VolumePropertiesWindow.vala',
+
     'FileOperations/CommonJob.vala',
     'FileOperations/CopyMoveJob.vala',
     'FileOperations/CreateJob.vala',
@@ -48,18 +52,27 @@ pantheon_files_core_vala_files = files(
     'FileOperations/EmptyTrashJob.vala',
     'FileOperations/MountUtils.vala',
     'FileOperations/DialogUtils.vala',
+
     'Interfaces/SidebarInterface.vala',
     'Interfaces/LocatableInterface.vala',
     'Interfaces/NavigatableInterface.vala',
     'Interfaces/SearchableInterface.vala',
     'Interfaces/SidebarListInterface.vala',
     'Interfaces/SidebarItemInterface.vala',
+    'Interfaces/FileItemInterface.vala',
+    'Interfaces/ViewInterface.vala',
     'Interfaces/DNDInterface.vala',
+
+    'Utils/FileUtils.vala',
+    'Utils/MimeActions.vala',
+
     'Widgets/BasicBreadcrumbsEntry.vala',
     'Widgets/BasicLocationBar.vala',
     'Widgets/BreadcrumbElement.vala',
     'Widgets/BreadcrumbIconList.vala',
     'Widgets/ButtonWithMenu.vala',
+    'Widgets/PermissionButton.vala',
+    'Widgets/StorageBar.vala',
     'Widgets/ViewSwitcher.vala'
 )
 

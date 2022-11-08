@@ -185,4 +185,29 @@ namespace Files {
         NETSCAPE_URL,
         BOOKMARK_ROW
     }
+
+    public enum Permissions.Type {
+        USER,
+        GROUP,
+        OTHER
+    }
+
+    public enum Permissions.Value {
+        READ,
+        WRITE,
+        EXE
+    }
+
+    public static bool is_chmod_code (string str) {
+        try {
+            var regex = new Regex ("^[0-7]{3}$");
+            if (regex.match (str)) {
+                return true;
+            }
+        } catch (RegexError e) {
+            assert_not_reached ();
+        }
+
+        return false;
+    }
 }

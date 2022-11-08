@@ -20,6 +20,13 @@
              Julián Unrrein <junrrein@gmail.com>
 ***/
 
+namespace Files {
+    public Gtk.Window get_active_window () {
+        unowned Gtk.Application gtk_app = (Gtk.Application)(GLib.Application.get_default ());
+        return gtk_app.get_active_window ();
+    }
+}
+
 public class Files.MimeActions {
 
     public static AppInfo? get_default_application_for_file (Files.File file) {
@@ -131,6 +138,7 @@ public class Files.MimeActions {
 
     public static List<AppInfo> get_applications_for_files (
         GLib.List<Files.File> files,
+        string this_app_name,
         bool filter_default_if_not_executable,
         bool filter_this_app
     ) {
@@ -213,7 +221,7 @@ public class Files.MimeActions {
             unowned GLib.List<AppInfo> l = result;
             while (l != null) {
                 if (l.data is AppInfo) {
-                    if (app_is_this_app (l.data)) {
+                    if (l.data.get_executable () == this_app_name) {
                         result.delete_link (l);
                         break;
                     }
@@ -230,11 +238,6 @@ public class Files.MimeActions {
         }
 
         return result;
-    }
-
-    public static bool app_is_this_app (AppInfo ai) {
-        string exec_name = ai.get_executable ();
-        return (exec_name == Config.APP_NAME);
     }
 
     private static bool file_has_local_path (Files.File file) {
