@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 16:59+0000\n"
-"PO-Revision-Date: 2022-11-08 12:49+0000\n"
+"PO-Revision-Date: 2022-11-09 14:29+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
@@ -111,20 +111,21 @@ msgstr ""
 "double-clic"
 
 #: data/io.elementary.files.appdata.xml.in.in:41
-#, fuzzy
-#| msgid "Add file filters and New Folder options to file chooser portal"
 msgid "Fix dimmed window after use of filechooser portal"
 msgstr ""
-"Ajout de filtres pour les fichiers et d'une option Nouveau dossier au "
-"portail de sélection de fichier"
+"Correction de la fenêtre grisée après l'utilisation du portail de sélection "
+"de fichiers"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 msgid "Fix possible crash when rapidly changing view modes"
 msgstr ""
+"Correction d'un plantage potentiel lors d'un changement rapide du mode "
+"d'affichage"
 
 #: data/io.elementary.files.appdata.xml.in.in:43
 msgid "Fix startup when restored remote location is no longer connected"
 msgstr ""
+"Correction du lancement lorsque l'emplacement distant n'est plus connecté"
 
 #: data/io.elementary.files.appdata.xml.in.in:44
 msgid ""
@@ -137,6 +138,8 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:45
 msgid "Ensure correct icon for bookmark to a file that is not a folder"
 msgstr ""
+"Nous nous sommes assurés que l'icône de favori soit correcte lorsqu'il "
+"pointe vers un fichier"
 
 #: data/io.elementary.files.appdata.xml.in.in:46
 msgid "Fix possible crash when removing a bookmark"
