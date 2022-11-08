@@ -28,6 +28,29 @@
   </screenshots>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="6.2.0" date="2022-11-04" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Provide option to select folders with single click and activate with double click</li>
+          <li>Only show the properties overlay when files are selected, not when hovered</li>
+        </ul>
+        <p>Fixes:</p>
+        <ul>
+          <li>Fix unexpected file activation after navigation with double-click</li>
+          <li>Fix dimmed window after use of filechooser portal</li>
+          <li>Fix possible crash when rapidly changing view modes</li>
+          <li>Fix startup when restored remote location is no longer connected</li>
+          <li>Ensure infobar shows in connection server dialog when connection attempt fails</li>
+          <li>Ensure correct icon for bookmark to a file that is not a folder</li>
+          <li>Fix possible crash when removing a bookmark</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="6.1.4" date="2022-06-17" urgency="medium">
       <description>
         <p>Fixes:</p>

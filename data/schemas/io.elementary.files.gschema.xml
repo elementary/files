@@ -51,6 +51,11 @@
       <summary>Show hidden files</summary>
       <description>If set to true, hidden files will also be shown (files starting with a "." for example)</description>
     </key>
+    <key type="b" name="singleclick-select">
+      <default>false</default>
+      <summary>Single click selects folders</summary>
+      <description>If set to true, single clicking a folder will select it instead of opening it</description>
+    </key>
     <key name="date-format" enum="dateformatmode">
       <default>'informal'</default>
       <summary>Date Format</summary>
