@@ -393,13 +393,13 @@ public class Files.File : GLib.Object {
             unowned string? thumb_path = get_thumbnail_path ();
             if (thumb_path != null) {
                 paintable = Files.IconInfo.lookup_paintable_from_path (thumb_path);
-                if (paintable != null) {
-                    thumbstate = Files.File.ThumbState.UNKNOWN;
-                    return true;
-                } else {
-                    critical ("READY but could not get paintable from cache");
-                    thumbstate = Files.File.ThumbState.NONE;
-                }
+                // if (paintable != null) {
+                //     thumbstate = Files.File.ThumbState.UNKNOWN;
+                //     return true;
+                // } else {
+                //     critical ("READY but could not get paintable from cache");
+                //     thumbstate = Files.File.ThumbState.NONE;
+                // }
             } else {
                 critical ("READY but no thumbnail path");
             }
@@ -407,7 +407,6 @@ public class Files.File : GLib.Object {
 
         if (thumbstate == ThumbState.LOADING) {
             gicon = new GLib.ThemedIcon ("image-loading");
-            warning ("setting paintable null - loading");
             paintable = null;
             return true;
         } else if (thumbstate == ThumbState.UNKNOWN) {

@@ -100,7 +100,7 @@ public class Files.IconInfo : GLib.Object {
             if (icon_info != null) {
                 var paintable = icon_info.paintable;
                 if (paintable == null) {
-                    critical ("IconInfo with null paintable");
+                    debug ("IconInfo with null paintable");
                 } else {
                     return icon_info.paintable;
                 }
@@ -112,7 +112,7 @@ public class Files.IconInfo : GLib.Object {
         try {
             paintable = Gdk.Texture.from_filename (loadable.to_string ());
         } catch (Error e) {
-            critical ("Unable to load %s", loadable.to_string ());
+            debug ("Unable to load %s", loadable.to_string ());
         }
 
         if (paintable != null) {
@@ -120,10 +120,10 @@ public class Files.IconInfo : GLib.Object {
             try {
                 loadable_icon_cache.insert ((Icon)loadable, icon_info);
             } catch (Error e) {
-                critical ("Could not insert new icon info. %s", e.message);
+                debug ("Could not insert new icon info. %s", e.message);
             }
         } else {
-            critical ("Null paintable after loading texture");
+            debug ("Null paintable after loading texture %s", loadable.to_string ());
         }
 
         return paintable;

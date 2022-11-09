@@ -156,7 +156,7 @@ public class Files.HeaderBar : Gtk.Box {
 
     public void update_path_bar (string new_path, bool with_animation = true) {
         path_bar.with_animation = with_animation;
-        path_bar.set_display_path (new_path);
+        path_bar.set_display_uri (new_path);
         path_bar.with_animation = true;
     }
 

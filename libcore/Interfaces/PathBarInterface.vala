@@ -26,8 +26,8 @@ public interface PathBarInterface : Gtk.Widget {
     public virtual bool enter_search_mode (string term) {return false;}
     public virtual bool enter_navigate_mode () {return false;}
     public virtual void cancel () {}
-    public abstract void set_display_path (string path);
-    public abstract string get_display_path ();
+    public abstract void set_display_uri (string uri);
+    public abstract string get_display_uri ();
     public abstract bool set_focussed ();
 }
 

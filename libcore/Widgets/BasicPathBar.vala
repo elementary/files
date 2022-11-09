@@ -27,14 +27,15 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface{
 
     private BasicBreadcrumbs breadcrumbs;
     private BasicPathEntry path_entry;
-    protected string displayed_path {
+    protected string displayed_uri {
         set {
-            breadcrumbs.path = value;
+warning ("set path to %s", value);
+            breadcrumbs.uri = value;
             showing_breadcrumbs = true;
         }
 
         get {
-            return breadcrumbs.path;
+            return breadcrumbs.uri;
         }
     }
 
@@ -53,97 +54,146 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface{
         stack.add_child (breadcrumbs);
         stack.add_child (path_entry);
         stack.visible_child = breadcrumbs;
-        notify["showing-breadcrumbs"].connect (() => {
-            if (showing_breadcrumbs) {
-                stack.visible_child = breadcrumbs;
-            } else {
-                stack.visible_child = path_entry;
-            }
-        });
+        // notify["showing-breadcrumbs"].connect (() => {
+        //     if (showing_breadcrumbs) {
+        //         stack.visible_child = breadcrumbs;
+        //     } else {
+        //         stack.visible_child = path_entry;
+        //     }
+        // });
 
         stack.set_parent (this);
     }
 
     /* Interface methods */
-    public void set_display_path (string path) { displayed_path = path; }
-    public string get_display_path () { return displayed_path; }
+    public void set_display_uri (string uri) { displayed_uri = uri; }
+    public string get_display_uri () { return displayed_uri; }
     public bool set_focussed () {return false;}
 
-    // protected virtual void connect_signals () {
-    //     bread.entry_text_changed.connect_after (after_bread_text_changed);
-    //     bread.activate_path.connect (on_bread_activate_path);
-    //     bread.action_icon_press.connect (on_bread_action_icon_press);
-    //     // bread.focus_in_event.connect_after (after_bread_focus_in_event);
-    //     // bread.focus_out_event.connect_after (after_bread_focus_out_event);
-    // }
-
-    // protected virtual void after_bread_text_changed (string txt) {
-    //     if (txt == "") {
-    //         bread.set_placeholder (_("Type a path"));
-    //         bread.set_action_icon_tooltip ("");
-    //         bread.hide_action_icon ();
-    //     } else {
-    //         bread.set_placeholder ("");
-    //         bread.set_default_action_icon_tooltip ();
-    //     }
-    // }
-
-    // // protected virtual bool after_bread_focus_in_event (Gdk.EventFocus event) {
-    // //     show_navigate_icon ();
-    // //     return true;
-    // // }
-    // // protected virtual bool after_bread_focus_out_event (Gdk.EventFocus event) {
-    // //     hide_navigate_icon ();
-    // //     return true;
-    // // }
-
-    // protected virtual void on_bread_action_icon_press () {
-    //     bread.activate ();
-    // }
-
-    // protected virtual void on_bread_activate_path (string path, Files.OpenFlag flag) {
-    //     /* Navigatable is responsible for providing a valid path or empty string
-    //      * and for translating e.g. ~/ */
-    //     path_change_request (path, flag);
-    // }
-
-    // protected virtual void show_navigate_icon () {
-    //     bread.show_default_action_icon ();
-    // }
-    // protected virtual void hide_navigate_icon () {
-    //     bread.hide_action_icon ();
-    // }
-
-    // protected void show_breadcrumbs () {
-    //     bread.set_breadcrumbs_path (displayed_path);
-    //     this.minimum_width = bread.get_minimum_width () + 48; /* Allow extra space for margins */
-    //     this.set_size_request (this.minimum_width, -1);
-    // }
-
-    // public virtual void set_display_path (string path) {
-    //     displayed_path = path; /* Will also change breadcrumbs */
-    // }
-
-    // public string get_display_path () {
-    //     return displayed_path;
-    // }
-
-    // public bool set_focussed () {
-    //     bread.grab_focus ();
-    //     return bread.has_focus;
-    // }
-
     private class BasicBreadcrumbs : Gtk.Widget {
-        static construct {
-            set_layout_manager_type (typeof (Gtk.BinLayout));
-        }
+        // private Gtk.Overlay overlay;
+        private List<Crumb> crumbs;
+        private Gtk.Box main_child;
+        // private Gtk.Button refresh_button;
+        private string protocol;
+        private string path;
 
-        private Gtk.DrawingArea drawing_area;
-        public string path { get; set; }
+        public string uri { get; set; }
         public bool animate { get; set; }
         construct {
-            drawing_area = new Gtk.DrawingArea ();
-            drawing_area.set_parent (this);
+            var layout = new Gtk.BoxLayout (Gtk.Orientation.HORIZONTAL);
+            set_layout_manager (layout);
+            crumbs = new List<Crumb> ();
+            // overlay = new Gtk.Overlay ();
+            // overlay.set_parent (this);
+            main_child = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
+                hexpand = true,
+                halign = Gtk.Align.START
+            };
+            // };
+            var refresh_button = new Gtk.Button () {
+                icon_name = "view-refresh-symbolic",
+                hexpand = false,
+                halign = Gtk.Align.END
+            };
+            var search_button = new Gtk.Button () {
+                icon_name = "edit-find-symbolic",
+                hexpand = false,
+                halign = Gtk.Align.START
+            };
+            search_button.set_parent (this);
+            main_child.set_parent (this);
+            refresh_button.set_parent (this);
+
+            notify["uri"].connect (() => {
+                FileUtils.split_protocol_from_path (uri, out protocol, out path);
+                draw_crumbs ();
+            });
+        }
+
+        private void draw_crumbs () {
+            foreach (var crumb in crumbs) {
+                crumb.unparent ();
+                crumb.destroy ();
+            }
+
+            crumbs = null;
+            //Break apart
+            string[] parts;
+warning ("protocol %s, path %s", protocol, path);
+            parts = path.split (Path.DIR_SEPARATOR_S);
+
+            //Make crumbs
+            string crumb_path = "";
+            if (parts.length == 0) {
+                crumbs.append (new Crumb (Path.DIR_SEPARATOR_S));
+            } else {
+                // int margin = 0;
+                foreach (unowned var part in parts) {
+                    warning ("part %s", part);
+                    if (part != "") {
+                        crumb_path += Path.DIR_SEPARATOR_S + part;
+                        var crumb = new Crumb (crumb_path);
+                        crumbs.append (crumb);
+//                         // Measure natural width of crumb before assigning margin
+//                         int min, nat;
+//                         crumb.measure (
+//                             Gtk.Orientation.HORIZONTAL,
+//                             main_child.get_allocated_height (),
+//                             out min,
+//                             out nat,
+//                             null, null
+//                         );
+// warning ("min %i, nat %i,", min, nat);
+                        //NOTE min appears to be set to total offset not crumb width??
+                        // crumb.margin_start = margin;
+                        // margin += nat;
+                    }
+                }
+            }
+
+            foreach (var crumb in crumbs) {
+                warning ("add crumb");
+                main_child.append (crumb);
+            }
+        }
+    }
+
+    private class Crumb : Gtk.Widget {
+        public string dir_path { get; construct; }
+        private Gtk.Label name_label;
+        private Gtk.Image dir_icon;
+        private Gtk.Revealer icon_revealer;
+        private Gtk.Revealer name_revealer;
+        private bool show_icon = false;
+
+        public Crumb (string path) {
+            Object (dir_path: path);
+            warning ("new crumb %s", path);
+        }
+
+        ~Crumb () {
+            icon_revealer.unparent ();
+            name_revealer.unparent ();
+        }
+
+        construct {
+            var layout = new Gtk.BoxLayout (Gtk.Orientation.HORIZONTAL);
+            set_layout_manager (layout);
+            name_label = new Gtk.Label (Path.get_basename (dir_path));
+            dir_icon = new Gtk.Image () {
+                icon_name = "image-missing-symbolic"
+            };
+            icon_revealer = new Gtk.Revealer ();
+            icon_revealer.child = dir_icon;
+            name_revealer = new Gtk.Revealer ();
+            name_revealer.child = name_label;
+
+            icon_revealer.set_parent (this);
+            name_revealer.set_parent (this);
+
+            icon_revealer.set_reveal_child (false);
+            name_revealer.set_reveal_child (true);
         }
     }
 
