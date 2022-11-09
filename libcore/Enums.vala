@@ -210,4 +210,10 @@ namespace Files {
 
         return false;
     }
+
+    public enum PathBarMode {
+        CRUMBS,
+        ENTRY,
+        SEARCH
+    }
 }

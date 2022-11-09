@@ -21,7 +21,7 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.HeaderBar : Gtk.Box {
+public class Files.HeaderBar : Object {
     public signal void forward (int steps);
     public signal void back (int steps); /* TODO combine using negative step */
     public signal void focus_location_request (GLib.File? location);
@@ -30,7 +30,7 @@ public class Files.HeaderBar : Gtk.Box {
     public signal void reload_request ();
 
 
-    public Chrome.ViewSwitcher? view_switcher { get; construct; }
+
     public bool locked_focus { get; private set; default = false; }
 
     public bool working {
@@ -51,8 +51,9 @@ public class Files.HeaderBar : Gtk.Box {
         }
     }
 
-    private Adw.HeaderBar headerbar;
-    private BasicPathBar? path_bar;
+    public Adw.HeaderBar headerbar { get; construct; }
+    public BasicPathBar path_bar { get; construct; }
+    public Chrome.ViewSwitcher? view_switcher { get; construct; }
     private Chrome.ButtonWithMenu button_forward;
     private Chrome.ButtonWithMenu button_back;
 
@@ -61,7 +62,7 @@ public class Files.HeaderBar : Gtk.Box {
             hexpand = true,
         };
         headerbar.set_centering_policy (Adw.CenteringPolicy.LOOSE);
-        append (headerbar);
+        // append (headerbar);
 
         button_back = new Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic");
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
@@ -83,16 +84,16 @@ public class Files.HeaderBar : Gtk.Box {
         headerbar.set_title_widget (path_bar);
 
         button_forward.toggled.connect (() => {
-            forward (1);
+            path_bar.activate_action ("win.forward", "i", 1);
         });
 
         button_back.toggled.connect (() => {
-            back (1);
+            path_bar.activate_action ("win.back", "i", 1);
         });
 
-        path_bar.reload_request.connect (() => {
-            reload_request ();
-        });
+        // path_bar.reload_request.connect (() => {
+        //     reload_request ();
+        // });
 
         path_bar.focus_file_request.connect ((file) => {
             focus_location_request (file);
@@ -116,13 +117,13 @@ public class Files.HeaderBar : Gtk.Box {
         path_bar.escape.connect (() => {escape ();});
     }
 
-    public bool enter_search_mode (string term = "") {
-        return path_bar.enter_search_mode (term);
-    }
+    // public bool enter_search_mode (string term = "") {
+    //     return path_bar.enter_search_mode (term);
+    // }
 
-    public bool enter_navigate_mode () {
-        return path_bar.enter_navigate_mode ();
-    }
+    // public bool enter_navigate_mode () {
+    //     return path_bar.enter_navigate_mode ();
+    // }
 
     public void set_back_menu (Gee.List<string> path_list) {
         /* Clear the back menu and re-add the correct entries. */
@@ -156,7 +157,7 @@ public class Files.HeaderBar : Gtk.Box {
 
     public void update_path_bar (string new_path, bool with_animation = true) {
         path_bar.with_animation = with_animation;
-        path_bar.set_display_uri (new_path);
+        path_bar.display_uri = new_path;
         path_bar.with_animation = true;
     }
 

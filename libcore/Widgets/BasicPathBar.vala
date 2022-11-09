@@ -27,18 +27,8 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
     private BasicBreadcrumbs breadcrumbs;
     private BasicPathEntry path_entry;
-    protected string displayed_uri {
-        set {
-            breadcrumbs.uri = value;
-            showing_breadcrumbs = true;
-        }
-
-        get {
-            return breadcrumbs.uri;
-        }
-    }
-
-    public bool showing_breadcrumbs { get; set; }
+    public PathBarMode mode { get; set; default = PathBarMode.CRUMBS; }
+    public string display_uri { get; set; }
 
     public bool with_animation {
         set {
@@ -54,11 +44,28 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         stack.add_child (path_entry);
         stack.visible_child = breadcrumbs;
         stack.set_parent (this);
+
+        notify["display-uri"].connect (() => {
+            stack.visible_child = breadcrumbs;
+        });
+
+        notify["mode"].connect (() => {
+            switch (mode) {
+                case PathBarMode.CRUMBS:
+                    stack.visible_child = breadcrumbs;
+                    break;
+                case PathBarMode.ENTRY:
+                    stack.visible_child = path_entry;
+                    break;
+            }
+        });
+        bind_property ("display-uri", breadcrumbs, "uri", BindingFlags.DEFAULT);
     }
 
+    public override void enter_navigate_mode () {
+        mode = PathBarMode.ENTRY;
+    }
     /* Interface methods */
-    public void set_display_uri (string uri) { displayed_uri = uri; }
-    public string get_display_uri () { return displayed_uri; }
     public bool set_focussed () { return false; }
 
     private class BasicBreadcrumbs : Gtk.Widget {
@@ -101,11 +108,14 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
             var refresh_button = new Gtk.Button () {
                 icon_name = "view-refresh-symbolic",
+                action_name = "win.refresh",
                 hexpand = false,
                 halign = Gtk.Align.END
             };
             var search_button = new Gtk.Button () {
                 icon_name = "edit-find-symbolic",
+                action_name = "win.find",
+                action_target = "",
                 hexpand = false,
                 halign = Gtk.Align.START
             };
@@ -138,6 +148,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                     var widget = main_child.pick (x, y, Gtk.PickFlags.DEFAULT);
                     if (widget == null) {
                         // Clicked on free space
+                        path_bar.enter_navigate_mode ();
                     } else {
                         var crumb =(Crumb)(widget.get_ancestor (typeof (Crumb)));
                         assert (crumb is Crumb);
