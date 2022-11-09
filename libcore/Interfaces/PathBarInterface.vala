@@ -30,4 +30,3 @@ public interface PathBarInterface : Gtk.Widget {
     public abstract string get_display_uri ();
     public abstract bool set_focussed ();
 }
-

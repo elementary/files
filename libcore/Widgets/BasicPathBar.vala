@@ -18,7 +18,7 @@
 
 /* Contains basic breadcrumb and path entry entry widgets for use in FileChooser */
 
-public class Files.BasicPathBar : Gtk.Widget, PathBarInterface{
+public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
     static construct {
         set_layout_manager_type (typeof (Gtk.BinLayout));
     }
@@ -29,7 +29,6 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface{
     private BasicPathEntry path_entry;
     protected string displayed_uri {
         set {
-warning ("set path to %s", value);
             breadcrumbs.uri = value;
             showing_breadcrumbs = true;
         }
@@ -54,43 +53,49 @@ warning ("set path to %s", value);
         stack.add_child (breadcrumbs);
         stack.add_child (path_entry);
         stack.visible_child = breadcrumbs;
-        // notify["showing-breadcrumbs"].connect (() => {
-        //     if (showing_breadcrumbs) {
-        //         stack.visible_child = breadcrumbs;
-        //     } else {
-        //         stack.visible_child = path_entry;
-        //     }
-        // });
-
         stack.set_parent (this);
     }
 
     /* Interface methods */
     public void set_display_uri (string uri) { displayed_uri = uri; }
     public string get_display_uri () { return displayed_uri; }
-    public bool set_focussed () {return false;}
+    public bool set_focussed () { return false; }
 
     private class BasicBreadcrumbs : Gtk.Widget {
-        // private Gtk.Overlay overlay;
         private List<Crumb> crumbs;
+        private Gtk.Widget spacer; // Maintain minimum clickable space after crumbs
         private Gtk.Box main_child;
-        // private Gtk.Button refresh_button;
         private string protocol;
         private string path;
 
         public string uri { get; set; }
         public bool animate { get; set; }
+
         construct {
             var layout = new Gtk.BoxLayout (Gtk.Orientation.HORIZONTAL);
             set_layout_manager (layout);
             crumbs = new List<Crumb> ();
-            // overlay = new Gtk.Overlay ();
-            // overlay.set_parent (this);
+            var scrolled_window = new Gtk.ScrolledWindow () {
+                hscrollbar_policy = Gtk.PolicyType.EXTERNAL,
+                vscrollbar_policy = Gtk.PolicyType.NEVER
+            };
+            var hadj = new Gtk.Adjustment (0.0, 0.0, 100.0, 1.0, 1.0 , 1.0);
+            hadj.changed.connect (() => {
+                hadj.value = main_child.get_allocated_width () - scrolled_window.get_allocated_width ();
+            });
+            scrolled_window.hadjustment = hadj;
+
+            spacer = new Gtk.Label ("SPACE") {
+                hexpand = true
+            };
+
             main_child = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
                 hexpand = true,
                 halign = Gtk.Align.START
             };
-            // };
+            main_child.append (spacer);
+            scrolled_window.child = main_child;
+
             var refresh_button = new Gtk.Button () {
                 icon_name = "view-refresh-symbolic",
                 hexpand = false,
@@ -101,8 +106,9 @@ warning ("set path to %s", value);
                 hexpand = false,
                 halign = Gtk.Align.START
             };
+
             search_button.set_parent (this);
-            main_child.set_parent (this);
+            scrolled_window.set_parent (this);
             refresh_button.set_parent (this);
 
             notify["uri"].connect (() => {
@@ -120,41 +126,23 @@ warning ("set path to %s", value);
             crumbs = null;
             //Break apart
             string[] parts;
-warning ("protocol %s, path %s", protocol, path);
             parts = path.split (Path.DIR_SEPARATOR_S);
-
             //Make crumbs
             string crumb_path = "";
             if (parts.length == 0) {
                 crumbs.append (new Crumb (Path.DIR_SEPARATOR_S));
             } else {
-                // int margin = 0;
                 foreach (unowned var part in parts) {
-                    warning ("part %s", part);
                     if (part != "") {
                         crumb_path += Path.DIR_SEPARATOR_S + part;
                         var crumb = new Crumb (crumb_path);
                         crumbs.append (crumb);
-//                         // Measure natural width of crumb before assigning margin
-//                         int min, nat;
-//                         crumb.measure (
-//                             Gtk.Orientation.HORIZONTAL,
-//                             main_child.get_allocated_height (),
-//                             out min,
-//                             out nat,
-//                             null, null
-//                         );
-// warning ("min %i, nat %i,", min, nat);
-                        //NOTE min appears to be set to total offset not crumb width??
-                        // crumb.margin_start = margin;
-                        // margin += nat;
                     }
                 }
             }
 
             foreach (var crumb in crumbs) {
-                warning ("add crumb");
-                main_child.append (crumb);
+                main_child.prepend (crumb);
             }
         }
     }
@@ -210,4 +198,3 @@ warning ("protocol %s, path %s", protocol, path);
         }
     }
 }
-
