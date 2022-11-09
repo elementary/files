@@ -29,8 +29,6 @@ public class Files.HeaderBar : Object {
     public signal void escape ();
     public signal void reload_request ();
 
-
-
     public bool locked_focus { get; private set; default = false; }
 
     public bool working {

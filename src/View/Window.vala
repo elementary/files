@@ -23,8 +23,12 @@
 
 public class Files.Window : Gtk.ApplicationWindow {
     private static Files.Preferences prefs;
+    private static UndoManager undo_manager;
+    private static Files.Application marlin_app;
     static construct {
         prefs = Files.Preferences.get_default ();
+        undo_manager = UndoManager.instance ();
+        marlin_app = (Files.Application)(GLib.Application.get_default ());
     }
 
     const GLib.ActionEntry [] WIN_ENTRIES = {
@@ -70,19 +74,17 @@ public class Files.Window : Gtk.ApplicationWindow {
     };
 
     public uint window_number { get; construct; }
-    private bool is_first_window {
-        get {
-            return (window_number == 0);
-        }
-    }
 
-    public Files.Application marlin_app { get; construct; }
-    private unowned UndoManager undo_manager;
     private Gtk.Paned lside_pane;
     private Files.HeaderBar top_menu;
     private Adw.TabView tab_view;
     private Adw.TabBar tab_bar;
     private SidebarInterface sidebar;
+    private bool is_first_window {
+        get {
+            return (window_number == 0);
+        }
+    }
     private ViewContainer? current_container {
         get {
             return tab_view.selected_page != null ?
@@ -108,71 +110,13 @@ public class Files.Window : Gtk.ApplicationWindow {
     public signal void folder_deleted (GLib.File location);
     public signal void free_space_change ();
 
-    public Window (Files.Application application) {
-        Object (
-            application: application,
-            marlin_app: application,
-            height_request: 300,
-            icon_name: "system-file-manager",
-            // screen: myscreen,
-            title: _(APP_TITLE),
-            width_request: 500,
-            window_number: application.window_count
-        );
-    }
-
     construct {
+        title = _(APP_TITLE);
+        height_request = 300;
+        width_request = 500;
+        window_number = marlin_app.window_count;
+
         add_action_entries (WIN_ENTRIES, this);
-        undo_actions_set_insensitive ();
-
-        undo_manager = UndoManager.instance ();
-
-
-
-        top_menu = new Files.HeaderBar ();
-        tab_view = new Adw.TabView ();
-        tab_bar = new Adw.TabBar () {
-            view = tab_view,
-            inverted = true,
-            autohide = false,
-            expand_tabs = false
-        };
-
-        var tab_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        tab_box.append (tab_bar);
-        tab_box.append (tab_view);
-        // Implement tab context menu
-        var gesture_secondary_click = new Gtk.GestureClick () {
-            button = Gdk.BUTTON_SECONDARY,
-            propagation_phase = Gtk.PropagationPhase.CAPTURE // Receive before tab_bar
-        };
-        gesture_secondary_click.released.connect ((n_press, x, y) => {
-            show_tab_context_menu (x, y);
-            gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED); // Do not propagate
-        });
-        tab_bar.add_controller (gesture_secondary_click);
-
-        var add_tab_button = new Gtk.Button () {
-            icon_name = "add",
-            action_name = "win.tab::NEW"
-        };
-        add_tab_button.add_css_class ("flat");
-        tab_bar.start_action_widget = add_tab_button;
-
-        sidebar = new Sidebar.SidebarWindow ();
-        free_space_change.connect (sidebar.on_free_space_change);
-
-        lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-            position = Files.app_settings.get_int ("sidebar-width"),
-            resize_start_child = false,
-            shrink_start_child = false
-        };
-        lside_pane.start_child = sidebar;
-        lside_pane.end_child = tab_box;
-
-        set_titlebar (top_menu.headerbar);
-        set_child (lside_pane);
-
         // Setting accels on `application` does not work in construct clause
         // Must set before building window so ViewSwitcher can lookup the accels for tooltips
         if (is_first_window) {
@@ -236,12 +180,58 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.sort-type::MODIFIED", {"<Alt>4"});
         }
 
+        get_action ("undo").set_enabled (false);
+        get_action ("redo").set_enabled (false);
         /** Apply preferences */
         get_action ("show-hidden").set_state (prefs.show_hidden_files);
         get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
         get_action ("hide-local-thumbnails").set_state (prefs.hide_local_thumbnails);
         get_action ("sort-directories-first").set_state (prefs.sort_directories_first);
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
+
+        top_menu = new Files.HeaderBar ();
+        tab_view = new Adw.TabView ();
+        tab_bar = new Adw.TabBar () {
+            view = tab_view,
+            inverted = true,
+            autohide = false,
+            expand_tabs = false
+        };
+        // Implement tab context menu
+        var gesture_secondary_click = new Gtk.GestureClick () {
+            button = Gdk.BUTTON_SECONDARY,
+            propagation_phase = Gtk.PropagationPhase.CAPTURE // Receive before tab_bar
+        };
+        gesture_secondary_click.released.connect ((n_press, x, y) => {
+            show_tab_context_menu (x, y);
+            gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED); // Do not propagate
+        });
+        tab_bar.add_controller (gesture_secondary_click);
+
+        var add_tab_button = new Gtk.Button () {
+            icon_name = "add",
+            action_name = "win.tab::NEW"
+        };
+        add_tab_button.add_css_class ("flat");
+        tab_bar.start_action_widget = add_tab_button;
+
+        var tab_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        tab_box.append (tab_bar);
+        tab_box.append (tab_view);
+
+        sidebar = new Sidebar.SidebarWindow ();
+        free_space_change.connect (sidebar.on_free_space_change);
+
+        lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+            position = Files.app_settings.get_int ("sidebar-width"),
+            resize_start_child = false,
+            shrink_start_child = false
+        };
+        lside_pane.start_child = sidebar;
+        lside_pane.end_child = tab_box;
+
+        set_titlebar (top_menu.headerbar);
+        set_child (lside_pane);
 
         tab_view.indicator_activated.connect (() => {});
         tab_view.setup_menu.connect (() => {});
@@ -286,157 +276,9 @@ public class Files.Window : Gtk.ApplicationWindow {
         Files.app_settings.get ("window-size", "(ii)", out width, out height);
         default_width = width;
         default_height = height;
-
-        // if (is_first_window) {
-        //     Files.app_settings.bind ("sidebar-width", lside_pane,
-        //                                "position", SettingsBindFlags.DEFAULT);
-
-        //     var state = (Files.WindowState)(Files.app_settings.get_enum ("window-state"));
-
-        //     switch (state) {
-        //         case Files.WindowState.MAXIMIZED:
-        //             maximize ();
-        //             break;
-        //         default:
-        //             int default_x, default_y;
-        //             Files.app_settings.get ("window-position", "(ii)", out default_x, out default_y);
-
-        //             if (default_x != -1 && default_y != -1) {
-        //                 move (default_x, default_y);
-        //             }
-
-        //             break;
-        //     }
-        // }
-
         loading_uri.connect (update_labels);
         present ();
     }
-
-    // private void build_window () {
-
-
-    // }
-
-    // private void connect_signals () {
-        /*/
-        /* Connect and abstract signals to local ones
-        /*/
-
-        // top_menu.forward.connect ((steps) => { current_container.go_forward (steps); });
-        // top_menu.back.connect ((steps) => { current_container.go_back (steps); });
-        // top_menu.escape.connect (grab_focus);
-        // top_menu.path_change_request.connect ((loc, flag) => {
-        //     current_container.is_frozen = false;
-        //     uri_path_change_request (loc, flag);
-        // });
-        // top_menu.reload_request.connect (action_reload);
-        // top_menu.focus_location_request.connect ((loc) => {
-        //     current_container.focus_location_if_in_current_directory (loc, true);
-        // });
-        // top_menu.state_flags_changed.connect ((previous_flags) => {
-        //     var flags = get_state_flags ();
-        //     if (Gtk.StateFlags.FOCUSED in flags &&
-        //         !(Gtk.StateFlags.FOCUSED in previous_flags)) {
-
-        //         //Focus in
-        //         current_container.is_frozen = true;
-        //     } else if (Gtk.StateFlags.FOCUSED in previous_flags &&
-        //         !(Gtk.StateFlags.FOCUSED in flags)) {
-
-        //         //Focus out
-        //         current_container.is_frozen = false;
-        //     }
-        // });
-
-        // top_menu.focus_in_event.connect (() => {
-        //     current_container.is_frozen = true;
-        //     return true;
-        // });
-        // top_menu.focus_out_event.connect (() => {
-        //     current_container.is_frozen = false;
-        //     return true;
-        // });
-
-
-
-        //TODO Use EventController
-        // key_press_event.connect ((event) => {
-        //     Gdk.ModifierType state;
-        //     event.get_state (out state);
-        //     uint keyval;
-        //     event.get_keyval (out keyval);
-        //     var mods = state & Gtk.accelerator_get_default_mod_mask ();
-        //     bool no_mods = (mods == 0);
-        //     bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
-        //     bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
-
-        //     /* Use Tab to toggle View and Sidebar keyboard focus.  This works better than using a focus chain
-        //      * because cannot tab out of location bar and also unwanted items tend to get focused.
-        //      * There are other hotkeys for operating/focusing other widgets.
-        //      * Using modified Arrow keys no longer works due to recent changes.  */
-        //     switch (keyval) {
-        //         case Gdk.Key.Tab:
-        //             if (top_menu.locked_focus) {
-        //                 return false;
-        //             }
-
-        //             if (no_mods || only_shift_pressed) {
-        //                 if (!sidebar.has_focus) {
-        //                     sidebar.grab_focus ();
-        //                 } else {
-        //                     current_container.grab_focus ();
-        //                 }
-
-        //                 return true;
-        //             }
-
-        //             break;
-        //     }
-
-        //     return false;
-        // });
-
-        //TODO Use EventController
-        // key_press_event.connect_after ((event) => {
-        //     Gdk.ModifierType state;
-        //     event.get_state (out state);
-        //     uint keyval;
-        //     event.get_keyval (out keyval);
-        //     /* Use find function instead of view interactive search */
-        //     if (state == 0 || state == Gdk.ModifierType.SHIFT_MASK) {
-        //         /* Use printable characters to initiate search */
-        //         var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
-        //         if (uc.isprint ()) {
-        //             activate_action ("find", uc.to_string ());
-        //             return true;
-        //         }
-        //     }
-
-        //     return false;
-        // });
-
-
-//         //TODO Rewrite for Gtk4
-//         var surface = get_surface ();
-//         surface.layout.connect ((w, h) => {
-// warning ("WINDOW SURFACE LAYOUT");
-//             if (((Gdk.Toplevel)surface).state == Gdk.ToplevelState.MINIMIZED) {
-//                 top_menu.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
-//             }
-//         });
-
-        // close_request.connect (() => {
-        //     quit ();
-        //     return false;
-        // });
-
-        // tab_view.new_tab_requested.connect (() => {
-        //     add_tab ();
-        // });
-        //TODO Implement handlers for new signals
-
-    // }
 
     private void on_page_detached () {
         if (tab_view.n_pages == 0) {
@@ -714,18 +556,15 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
     }
 
-    private void add_window (GLib.File location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
-                             ViewMode mode = ViewMode.PREFERRED) {
-
+    private void add_window (
+        GLib.File location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
+        ViewMode mode = ViewMode.PREFERRED
+    ) {
         marlin_app.create_window (location, real_mode (mode));
     }
 
     private void undo_actions_set_insensitive () {
-        GLib.SimpleAction action;
-        action = get_action ("undo");
-        action.set_enabled (false);
-        action = get_action ("redo");
-        action.set_enabled (false);
+
     }
 
     private void update_undo_actions () {
@@ -1025,7 +864,6 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
-warning ("action go to");
         switch (param.get_string ()) {
             case "RECENT":
                 uri_path_change_request (Files.RECENT_URI);

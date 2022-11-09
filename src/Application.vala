@@ -316,7 +316,7 @@ public class Files.Application : Gtk.Application {
             return null;
         }
 
-        var win = new Files.Window (this);
+        var win = new Files.Window ();
         add_window (win as Gtk.Window);
         plugins.interface_loaded (win as Gtk.Widget);
         win.open_tabs (locations, viewmode);
