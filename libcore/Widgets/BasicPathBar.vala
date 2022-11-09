@@ -63,7 +63,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
     private class BasicBreadcrumbs : Gtk.Widget {
         private List<Crumb> crumbs;
-        private Gtk.Widget spacer; // Maintain minimum clickable space after crumbs
+        private Crumb spacer; // Maintain minimum clickable space after crumbs
         private Gtk.Box main_child;
         private string protocol;
         private string path;
@@ -77,7 +77,8 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             crumbs = new List<Crumb> ();
             var scrolled_window = new Gtk.ScrolledWindow () {
                 hscrollbar_policy = Gtk.PolicyType.EXTERNAL,
-                vscrollbar_policy = Gtk.PolicyType.NEVER
+                vscrollbar_policy = Gtk.PolicyType.NEVER,
+                hexpand = true
             };
             var hadj = new Gtk.Adjustment (0.0, 0.0, 100.0, 1.0, 1.0 , 1.0);
             hadj.changed.connect (() => {
@@ -85,12 +86,9 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             });
             scrolled_window.hadjustment = hadj;
 
-            spacer = new Gtk.Label ("SPACE") {
-                hexpand = true
-            };
+            spacer = new Crumb ("SPACE");
 
             main_child = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
-                hexpand = true,
                 halign = Gtk.Align.START
             };
             main_child.append (spacer);
@@ -111,10 +109,41 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             scrolled_window.set_parent (this);
             refresh_button.set_parent (this);
 
+            var click_gesture = new Gtk.GestureClick () {
+                button = 0,
+                propagation_phase = Gtk.PropagationPhase.CAPTURE
+            };
+            click_gesture.pressed.connect (() => {
+                // Need to block primary press to stop window menu appearing
+                click_gesture.set_state (Gtk.EventSequenceState.CLAIMED);
+            });
+            click_gesture.released.connect (button_release_handler);
+            scrolled_window.add_controller (click_gesture);
+
             notify["uri"].connect (() => {
                 FileUtils.split_protocol_from_path (uri, out protocol, out path);
                 draw_crumbs ();
             });
+        }
+
+        private void button_release_handler (Gtk.EventController source, int n_press, double x, double y) {
+            var button = ((Gtk.GestureSingle)source).get_current_button ();
+            switch (button) {
+                case Gdk.BUTTON_PRIMARY:
+                    var widget = main_child.pick (x, y, Gtk.PickFlags.DEFAULT);
+                    if (widget == null) {
+                        // Clicked on free space
+                    } else {
+                        widget =(Crumb)(widget.get_ancestor (typeof (Crumb)));
+                        assert (widget is Crumb);
+                    }
+
+                    break;
+                case Gdk.BUTTON_SECONDARY:
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void draw_crumbs () {
@@ -166,6 +195,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         }
 
         construct {
+            name ="crumb";
             var layout = new Gtk.BoxLayout (Gtk.Orientation.HORIZONTAL);
             set_layout_manager (layout);
             name_label = new Gtk.Label (Path.get_basename (dir_path));

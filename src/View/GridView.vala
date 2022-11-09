@@ -41,7 +41,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             default:
                 break;
         }
-
     }
     [GtkCallback]
     public void on_grid_view_activate (uint pos) {
