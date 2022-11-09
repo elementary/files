@@ -209,8 +209,9 @@ public class Files.Window : Gtk.ApplicationWindow {
         tab_bar.add_controller (gesture_secondary_click);
 
         var add_tab_button = new Gtk.Button () {
-            icon_name = "add",
-            action_name = "win.tab::NEW"
+            icon_name = "list-add-symbolic",
+            action_name = "win.tab",
+            action_target = "NEW"
         };
         add_tab_button.add_css_class ("flat");
         tab_bar.start_action_widget = add_tab_button;
