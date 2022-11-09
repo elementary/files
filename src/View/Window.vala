@@ -1530,7 +1530,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
 
         /* Render the final path in the location bar without animation */
-        top_menu.update_location_bar (path, false);
+        top_menu.update_path_bar (path, false);
         return restoring_tabs;
     }
 
@@ -1587,7 +1587,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     private void update_labels (string uri) {
         if (current_container != null) { /* Can happen during restore */
             set_title (current_container.tab_name); /* Not actually visible on elementaryos */
-            top_menu.update_location_bar (uri);
+            top_menu.update_path_bar (uri);
             sidebar.sync_uri (uri);
         }
     }
