@@ -70,30 +70,26 @@ public class Files.Window : Gtk.ApplicationWindow {
     };
 
     public uint window_number { get; construct; }
-
-    public bool is_first_window {
+    private bool is_first_window {
         get {
             return (window_number == 0);
         }
     }
 
-    public Gtk.Builder ui;
     public Files.Application marlin_app { get; construct; }
     private unowned UndoManager undo_manager;
-    // public Adw.HeaderBar header_bar;
-    public Files.HeaderBar top_menu;
-    public Adw.TabView tab_view;
-    public Adw.TabBar tab_bar;
     private Gtk.Paned lside_pane;
-    public SidebarInterface sidebar;
-    public ViewContainer? current_container {
+    private Files.HeaderBar top_menu;
+    private Adw.TabView tab_view;
+    private Adw.TabBar tab_bar;
+    private SidebarInterface sidebar;
+    private ViewContainer? current_container {
         get {
             return tab_view.selected_page != null ?
                 (ViewContainer)(tab_view.selected_page.child) : null;
         }
     }
-
-    public ViewInterface? current_view_widget {
+    private ViewInterface? current_view_widget {
         get {
             if (current_container == null || current_container.view == null ||
                 !(current_container.slot is Files.Slot)) {
@@ -104,7 +100,6 @@ public class Files.Window : Gtk.ApplicationWindow {
             return ((Files.Slot)(current_container.slot)).view_widget;
         }
     }
-
     private bool tabs_restored = false;
     private int restoring_tabs = 0;
     private bool doing_undo_redo = false;
