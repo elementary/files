@@ -290,10 +290,10 @@ public class Files.Window : Gtk.ApplicationWindow {
         top_menu.forward.connect ((steps) => { current_container.go_forward (steps); });
         top_menu.back.connect ((steps) => { current_container.go_back (steps); });
         top_menu.escape.connect (grab_focus);
-        top_menu.path_change_request.connect ((loc, flag) => {
-            current_container.is_frozen = false;
-            uri_path_change_request (loc, flag);
-        });
+        // top_menu.path_change_request.connect ((loc, flag) => {
+        //     current_container.is_frozen = false;
+        //     uri_path_change_request (loc, flag);
+        // });
         top_menu.reload_request.connect (action_reload);
         top_menu.focus_location_request.connect ((loc) => {
             current_container.focus_location_if_in_current_directory (loc, true);
@@ -1030,6 +1030,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
+warning ("action go to");
         switch (param.get_string ()) {
             case "RECENT":
                 uri_path_change_request (Files.RECENT_URI);
@@ -1068,6 +1069,7 @@ public class Files.Window : Gtk.ApplicationWindow {
                 break;
 
             default:
+                uri_path_change_request (param.get_string ());
                 break;
         }
     }

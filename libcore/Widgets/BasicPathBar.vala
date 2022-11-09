@@ -47,7 +47,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
     }
 
     construct {
-        breadcrumbs = new BasicBreadcrumbs ();
+        breadcrumbs = new BasicBreadcrumbs (this);
         path_entry = new BasicPathEntry ();
         var stack = new Gtk.Stack ();
         stack.add_child (breadcrumbs);
@@ -70,6 +70,11 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
         public string uri { get; set; }
         public bool animate { get; set; }
+        public PathBarInterface path_bar { get; construct; }
+
+        public BasicBreadcrumbs (PathBarInterface path_bar) {
+            Object (path_bar: path_bar);
+        }
 
         construct {
             var layout = new Gtk.BoxLayout (Gtk.Orientation.HORIZONTAL);
@@ -134,8 +139,9 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                     if (widget == null) {
                         // Clicked on free space
                     } else {
-                        widget =(Crumb)(widget.get_ancestor (typeof (Crumb)));
-                        assert (widget is Crumb);
+                        var crumb =(Crumb)(widget.get_ancestor (typeof (Crumb)));
+                        assert (crumb is Crumb);
+                        activate_action ("win.go-to", "s", protocol + crumb.dir_path);
                     }
 
                     break;
@@ -186,7 +192,6 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
         public Crumb (string path) {
             Object (dir_path: path);
-            warning ("new crumb %s", path);
         }
 
         ~Crumb () {
