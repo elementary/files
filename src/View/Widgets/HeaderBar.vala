@@ -60,7 +60,6 @@ public class Files.HeaderBar : Object {
             hexpand = true,
         };
         headerbar.set_centering_policy (Adw.CenteringPolicy.LOOSE);
-        // append (headerbar);
 
         button_back = new Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic");
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));

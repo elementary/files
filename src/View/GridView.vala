@@ -203,7 +203,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             }
         });
 
-        grab_focus ();
+        // grab_focus ();
     }
 
     /* Private methods */
@@ -327,7 +327,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         list_store.remove_all ();
         rename_after_add = false;
         select_after_add = false;
-        grab_focus ();
     }
 
     public override void refresh_visible_items () {
@@ -341,7 +340,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         list_store.insert_sorted (file, file_compare_func);
         if (select_after_add) {
             select_after_add = false;
-            warning ("show and select file");
             show_and_select_file (file, true, true);
         } else if (rename_after_add) {
             rename_after_add = false;
@@ -502,7 +500,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     public override bool grab_focus () {
-        return grid_view.grab_focus ();
+        if (grid_view != null) {
+            return grid_view.grab_focus ();
+        } else {
+            return false;
+        }
     }
     /* DNDInterface abstract methods */
 

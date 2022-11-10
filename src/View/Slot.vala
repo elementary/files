@@ -21,26 +21,18 @@ public class Slot : Files.AbstractSlot {
     private unowned Files.ViewContainer ctab;
     private ViewMode mode;
     private int preferred_column_width;
-    private Files.DirectoryView? dir_view = null;
-    public Files.ViewInterface? view_widget {
-        get {
-            if (dir_view != null) {
-                return dir_view.view_widget;
-            } else {
-                return null;
-            }
-        }
-    }
 
     private uint reload_timeout_id = 0;
     private uint path_change_timeout_id = 0;
     private bool original_reload_request = false;
 
+    private Gtk.Label empty_label;
     private const string EMPTY_MESSAGE = _("This Folder Is Empty");
     private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
     private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
     private const string DENIED_MESSAGE = _("Access Denied");
 
+    public Files.ViewInterface? view_widget { get; set; }
     public bool is_active {get; protected set;}
     public int displayed_files_count {
         get {
@@ -56,24 +48,26 @@ public class Slot : Files.AbstractSlot {
         get {return ctab.window;}
     }
 
-    public override bool is_frozen {
-        set {
-            dir_view.is_frozen = value;
-            frozen_changed (value);
-        }
+    //TODO Needed in Gtk4 version?
+    // public override bool is_frozen {
+    //     set {
+    //         // dir_view.is_frozen = value;
+    //         frozen_changed (value);
+    //     }
 
-        get {
-            return dir_view == null || dir_view.is_frozen;
-        }
-    }
+    //     get {
+    //         return dir_view == null || dir_view.is_frozen;
+    //     }
+    // }
 
-    public override bool locked_focus {
-        get {
-            return dir_view.renaming;
-        }
-    }
+    // TODO Gtk4 version needed?
+    // public override bool locked_focus {
+    //     get {
+    //         return view_widget.renaming;
+    //     }
+    // }
 
-    public signal void frozen_changed (bool freeze);
+    // public signal void frozen_changed (bool freeze);
     public signal void folder_deleted (Files.File file, Directory parent);
 
     /* Support for multi-slot view (Miller)*/
@@ -91,7 +85,7 @@ public class Slot : Files.AbstractSlot {
 
         set_up_directory (_location); /* Connect dir signals before making view */
         make_view ();
-        connect_dir_view_signals ();
+        // connect_dir_view_signals ();
         connect_view_widget_signals ();
         connect_slot_signals ();
 
@@ -101,7 +95,16 @@ public class Slot : Files.AbstractSlot {
     ~Slot () {
         debug ("Slot %i destruct", slot_number);
         // Ensure dir view does not redraw with invalid slot, causing a crash
-        dir_view.destroy ();
+        view_widget.unparent ();
+        view_widget.destroy ();
+    }
+
+    construct {
+        empty_label = new Gtk.Label ("") {
+            halign = Gtk.Align.CENTER,
+            valign = Gtk.Align.CENTER
+        };
+        empty_label.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
     }
 
     private void connect_slot_signals () {
@@ -111,7 +114,9 @@ public class Slot : Files.AbstractSlot {
             }
 
             is_active = true;
-            view_widget.grab_focus ();
+            if (view_widget != null) {
+                view_widget.grab_focus ();
+            }
         });
 
         inactive.connect (() => {
@@ -125,80 +130,172 @@ public class Slot : Files.AbstractSlot {
 
     private void connect_view_widget_signals () {
         view_widget.path_change_request.connect (path_change_requested);
-    }
-    private void connect_dir_view_signals () {
-        dir_view.selection_changed.connect (on_dir_view_selection_changed);
+        view_widget.selection_changed.connect (on_view_widget_selection_changed);
     }
 
-    private void disconnect_dir_view_signals () {
-        dir_view.selection_changed.disconnect (on_dir_view_selection_changed);
+    private void disconnect_view_widget_signals () {
+        view_widget.selection_changed.disconnect (on_view_widget_selection_changed);
+        view_widget.path_change_request.disconnect (path_change_requested);
     }
 
-    private void on_dir_view_selection_changed (GLib.List<Files.File> files) {
-        selection_changed (files);
+    private void on_view_widget_selection_changed () {
+        List<Files.File> selected_files = null;
+        view_widget.get_selected_files (out selected_files);
+        selection_changed (selected_files); // Updates properties overlay
     }
 
-    private void connect_dir_signals () {
-        directory.done_loading.connect (on_directory_done_loading);
-        directory.need_reload.connect (on_directory_need_reload);
+    // Signal could be from subdirectory as well as slot directory
+    private void connect_directory_handlers (Directory dir) {
+        dir.file_added.connect (on_directory_file_added);
+        dir.file_changed.connect (on_directory_file_changed);
+        dir.file_deleted.connect (on_directory_file_deleted);
+        connect_directory_loading_handlers (dir);
+        dir.need_reload.connect (on_directory_need_reload);
     }
 
-    private void disconnect_dir_signals () {
-        directory.done_loading.disconnect (on_directory_done_loading);
-        directory.need_reload.disconnect (on_directory_need_reload);
+    private void connect_directory_loading_handlers (Directory dir) {
+        dir.file_loaded.connect (on_directory_file_loaded);
+        dir.done_loading.connect (on_directory_done_loading);
     }
 
-    private void on_directory_done_loading (Directory dir) {
-        directory_loaded (dir);
+    private void disconnect_directory_handlers (Directory dir) {
+        /* If the directory is still loading the file_loaded signal handler
+        /* will not have been disconnected */
+        if (dir.is_loading ()) {
+            disconnect_directory_loading_handlers (dir);
+        }
 
-        /*  Column View requires slots to determine their own width (other views' width determined by Window */
-        if (mode == ViewMode.MILLER_COLUMNS) {
+        dir.file_added.disconnect (on_directory_file_added);
+        dir.file_changed.disconnect (on_directory_file_changed);
+        dir.file_deleted.disconnect (on_directory_file_deleted);
+        dir.done_loading.disconnect (on_directory_done_loading);
+        dir.need_reload.disconnect (on_directory_need_reload);
+    }
 
-            if (dir.is_empty ()) { /* No files in the file cache */
-                Pango.Rectangle extents;
-                var layout = dir_view.create_pango_layout (null);
-                layout.set_markup (get_empty_message (), -1);
-                layout.get_extents (null, out extents);
-                width = (int) Pango.units_to_double (extents.width);
-            } else {
-                width = preferred_column_width;
-            }
+    private void disconnect_directory_loading_handlers (Directory dir) {
+        dir.file_loaded.disconnect (on_directory_file_loaded);
+        dir.done_loading.disconnect (on_directory_done_loading);
+    }
 
-            width += view_widget.zoom_level.to_icon_size () + 64; /* allow some extra room for icon padding and right margin*/
+    // * Directory signal handlers moved from DirectoryView.
+    private void on_directory_file_added (Directory dir, Files.File? file) {
+        if (file != null) {
+            warning ("add file %s", file.basename);
+            view_widget.add_file (file); //FIXME Should we select files added after load?
+        }
+    }
 
-            /* Allow extra room for MESSAGE_CLASS styling of special messages */
-            if (dir.is_empty () || dir.permission_denied) {
-                width += width;
-            }
+    private void on_directory_file_loaded (Directory dir, Files.File file) {
+        if (file != null) {
+            warning ("load file %s", file.basename);
+            view_widget.add_file (file); //FIXME Should we select files added after load?
+        }
+        /* no freespace change signal required */
+    }
 
-            size_change ();
-            hpane.set_position (width);
+    private void on_directory_file_changed (Directory dir, Files.File file) {
+        if (file.location.equal (dir.file.location)) {
+            /* The slot directory has changed - it can only be the properties */
+        } else {
+            view_widget.file_changed (file);
+        }
+    }
 
-            if (colpane.get_realized ()) {
-                colpane.queue_draw ();
+    private void on_directory_file_deleted (Directory dir, Files.File file) {
+        /* The deleted file could be the whole directory, which is not in the model but that
+         * that does not matter.  */
+
+        file.exists = false;
+        view_widget.file_deleted (file);
+
+        if (file.get_thumbnail_path () != null) {
+            FileUtils.remove_thumbnail_paths_for_uri (file.uri);
+        }
+
+        // if (plugins != null) {
+        //     plugins.update_file_info (file); //TODO Reimplement in Gtk4
+        // }
+
+        if (file.is_folder ()) {
+            /* Check whether the deleted file is the directory */
+            var file_dir = Directory.cache_lookup (file.location);
+            if (file_dir != null) {
+                Directory.purge_dir_from_cache (file_dir);
+                this.folder_deleted (file, file_dir);
             }
         }
 
-        is_frozen = false;
+        // handle_free_space_change (); //TODO Reimplement in Gtk4
+    }
+
+    private void on_directory_done_loading (Directory dir) {
+        /* Should only be called on directory creation or reload */
+        disconnect_directory_loading_handlers (dir);
+        if (this.directory.can_load) {
+            if (in_recent) {
+                view_widget.sort_type = Files.SortType.MODIFIED;
+                view_widget.sort_reversed = false;
+            } else if (this.directory.file.info != null) {
+                view_widget.sort_type = this.directory.file.sort_type;
+                view_widget.sort_reversed = this.directory.file.sort_reversed;
+            }
+        }
+
+        directory_loaded (dir); // Signal to ViewContainer //TODO Replace with direct call
+        if (dir.is_empty ()) { /* No files in the file cache */
+            empty_label.label = get_empty_message ();
+            if (empty_label.parent == null) {
+                overlay.add_overlay (empty_label);
+            }
+        } else {
+            if (empty_label.parent == overlay) {
+                overlay.remove_overlay (empty_label);
+            }
+        }
+        /*  Column View requires slots to determine their own width (other views' width determined by Window */
+        if (mode == ViewMode.MILLER_COLUMNS) {
+        //TODO Reimplement in Gtk4 version if required for MILLER
+            // if (dir.is_empty ()) { /* No files in the file cache */
+            //     Pango.Rectangle extents;
+            //     var layout = dir_view.create_pango_layout (null);
+            //     layout.set_markup (get_empty_message (), -1);
+            //     layout.get_extents (null, out extents);
+            //     width = (int) Pango.units_to_double (extents.width);
+            // } else {
+            //     width = preferred_column_width;
+            // }
+
+            // width += view_widget.zoom_level.to_icon_size () + 64; /* allow some extra room for icon padding and right margin*/
+
+            // /* Allow extra room for MESSAGE_CLASS styling of special messages */
+            // if (dir.is_empty () || dir.permission_denied) {
+            //     width += width;
+            // }
+
+            // size_change ();
+            // hpane.set_position (width);
+
+            // if (colpane.get_realized ()) {
+            //     colpane.queue_draw ();
+            // }
+        }
     }
 
     private void on_directory_need_reload (Directory dir, bool original_request) {
-        if (!is_frozen) {
-            dir_view.prepare_reload (dir); /* clear model but do not change directory */
-            /* view and slot are unfrozen when done loading signal received */
-            is_frozen = true;
-            path_changed ();
-            /* if original_request false, leave original_load_request as it is (it may already be true
-             * if reloading in response to reload button press). */
-            if (original_request) {
-                original_reload_request = true;
-            }
-            /* Only need to initialise directory once - the slot that originally received the
-             * reload request does this */
-            if (original_reload_request) {
-                schedule_reload ();
-                original_reload_request = false;
-            }
+        view_widget.clear ();
+        connect_directory_loading_handlers (dir);
+        /* view and slot are unfrozen when done loading signal received */
+        path_changed ();
+        /* if original_request false, leave original_load_request as it is (it may already be true
+         * if reloading in response to reload button press). */
+        if (original_request) {
+            original_reload_request = true;
+        }
+        /* Only need to initialise directory once - the slot that originally received the
+         * reload request does this */
+        if (original_reload_request) {
+            schedule_reload ();
+            original_reload_request = false;
         }
     }
 
@@ -219,13 +316,12 @@ public class Slot : Files.AbstractSlot {
 
     private void set_up_directory (GLib.File loc) {
         if (directory != null) {
-            disconnect_dir_signals ();
+            disconnect_directory_handlers (directory);
         }
 
         directory = Directory.from_gfile (loc);
         assert (directory != null);
-
-        connect_dir_signals ();
+        connect_directory_handlers (directory);
     }
 
     public override void path_change_requested (GLib.File loc, Files.OpenFlag flag) {
@@ -268,13 +364,14 @@ public class Slot : Files.AbstractSlot {
 
     private void user_path_change_request (GLib.File loc) {
     /** Only this function must be used to change or reload the path **/
+        view_widget.clear ();
         var old_dir = directory;
-        set_up_directory (loc);
-
-        path_changed ();
-        /* ViewContainer listens to this signal takes care of updating appearance */
-        dir_view.change_directory (old_dir, directory);
+        disconnect_directory_handlers (old_dir);
+        set_up_directory (loc); // Connects signals
         initialize_directory ();
+
+        /* ViewContainer listens to this signal takes care of updating appearance */
+        path_changed ();
     }
 
     public override void initialize_directory () {
@@ -283,8 +380,8 @@ public class Slot : Files.AbstractSlot {
             debug ("Slot.initialize_directory () called when directory already loading - ignoring");
             return;
         }
-        /* view and slot are unfrozen when done loading signal received */
-        is_frozen = true;
+        // /* view and slot are unfrozen when done loading signal received */
+        // is_frozen = true;
         directory.init ();
     }
 
@@ -298,33 +395,38 @@ public class Slot : Files.AbstractSlot {
     }
 
     protected override void make_view () {
-        assert (dir_view == null);
-
+        assert (view_widget == null);
         switch (mode) {
             case ViewMode.ICON:
-                dir_view = new Files.DirectoryView (mode, this);
+                view_widget = new Files.GridView (this);
+                break;
+            case ViewMode.LIST:
+                view_widget = new Files.GridView (this);
+                break;
+            case ViewMode.MILLER_COLUMNS:
+                view_widget = new Files.GridView (this);
                 break;
 
             default:
-                dir_view = new Files.DirectoryView (mode, this);
+                view_widget = new Files.GridView (this);
                 break;
         }
 
         /* Miller View creates its own overlay and handles packing of the directory view */
-        if (dir_view != null && mode != ViewMode.MILLER_COLUMNS) {
-            add_overlay (dir_view);
+        if (view_widget != null && mode != ViewMode.MILLER_COLUMNS) {
+            add_main_child (view_widget);
         }
 
-        assert (dir_view != null);
+        assert (view_widget != null);
     }
 
     public override bool set_all_selected (bool select_all) {
-        if (dir_view != null) {
-            // if (select_all) {
-            //     dir_view.select_all ();
-            // } else {
-            //     dir_view.unselect_all ();
-            // }
+        if (view_widget != null) {
+            if (select_all) {
+                view_widget.select_all ();
+            } else {
+                view_widget.unselect_all ();
+            }
             return true;
         } else {
             return false;
@@ -341,7 +443,6 @@ public class Slot : Files.AbstractSlot {
     }
 
     public override void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location) {
-
         if (view_widget != null) {
             var files_to_select = new List<Files.File> ();
             locations.@foreach ((loc) => {
@@ -358,7 +459,6 @@ public class Slot : Files.AbstractSlot {
     }
 
     public void select_gof_file (Files.File gof) {
-
         if (view_widget != null) {
             view_widget.show_and_select_file (gof, true, false, false);
         }
@@ -382,10 +482,6 @@ public class Slot : Files.AbstractSlot {
         return this as Files.AbstractSlot;
     }
 
-    public unowned Files.DirectoryView? get_directory_view () {
-        return dir_view;
-    }
-
     public override void grab_focus () {
         if (view_widget != null) {
             view_widget.grab_focus ();
@@ -393,35 +489,27 @@ public class Slot : Files.AbstractSlot {
     }
 
     public override void zoom_in () {
-        if (dir_view != null) {
-            dir_view.zoom_in ();
-        }
+        view_widget.zoom_in ();
     }
 
     public override void zoom_out () {
-        if (dir_view != null) {
-            dir_view.zoom_out ();
-        }
+        view_widget.zoom_out ();
     }
 
     public override void zoom_normal () {
-        if (dir_view != null) {
-            dir_view.zoom_normal ();
-        }
+        view_widget.zoom_normal ();
     }
 
     public override void close () {
-        debug ("SLOT close %s", uri);
         cancel_timeouts ();
 
         if (directory != null) {
             directory.cancel ();
-            disconnect_dir_signals ();
+            disconnect_directory_handlers (directory);
         }
 
-        if (dir_view != null) {
-            dir_view.close ();
-            disconnect_dir_view_signals ();
+        if (view_widget != null) {
+            disconnect_view_widget_signals ();
         }
     }
 
