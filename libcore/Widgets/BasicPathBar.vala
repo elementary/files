@@ -99,7 +99,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             });
             scrolled_window.hadjustment = hadj;
 
-            spacer = new Crumb ("SPACE");
+            spacer = new Crumb.spacer (); //TODO Use different widget or omit?
             main_child = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
                 halign = Gtk.Align.START
             };
@@ -157,15 +157,16 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             switch (button) {
                 case Gdk.BUTTON_PRIMARY:
                     var widget = main_child.pick (x, y, Gtk.PickFlags.DEFAULT);
-                    if (widget == null) {
-                        // Clicked on free space
-                        path_bar.mode = PathBarMode.ENTRY;
-                    } else {
+                    if (widget != null) {
                         var crumb = (Crumb)(widget.get_ancestor (typeof (Crumb)));
                         assert (crumb is Crumb);
-                        activate_action ("win.go-to", "s", protocol + crumb.dir_path);
+                        if (crumb.dir_path != null) {
+                            activate_action ("win.go-to", "s", protocol + crumb.dir_path);
+                            break;
+                        }
                     }
 
+                    path_bar.mode = PathBarMode.ENTRY; // Clicked on spacer or empty
                     break;
                 case Gdk.BUTTON_SECONDARY:
                     break;
@@ -207,15 +208,30 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
     }
 
     private class Crumb : Gtk.Widget {
-        public string dir_path { get; construct; }
+        public string? dir_path { get; construct; }
+        public bool show_icon { get; construct; }
+        public bool show_name { get; construct; }
+
         private Gtk.Label name_label;
         private Gtk.Image dir_icon;
         private Gtk.Revealer icon_revealer;
         private Gtk.Revealer name_revealer;
-        private bool show_icon = false;
 
-        public Crumb (string path) {
-            Object (dir_path: path);
+
+        public Crumb (string? path, bool show_icon = false, bool show_name = true) {
+            Object (
+                dir_path: path,
+                show_icon: show_icon,
+                show_name: show_name
+            );
+        }
+
+        public Crumb.spacer () {
+            Object (
+                dir_path: null,
+                show_icon: false,
+                show_name: false
+            );
         }
 
         ~Crumb () {
@@ -227,7 +243,9 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             name ="crumb";
             var layout = new Gtk.BoxLayout (Gtk.Orientation.HORIZONTAL);
             set_layout_manager (layout);
-            name_label = new Gtk.Label (Path.get_basename (dir_path));
+            name_label = new Gtk.Label (
+                dir_path != null ? Path.get_basename (dir_path) : "SPACE"
+            );
             dir_icon = new Gtk.Image () {
                 icon_name = "image-missing-symbolic"
             };
@@ -239,8 +257,8 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             icon_revealer.set_parent (this);
             name_revealer.set_parent (this);
 
-            icon_revealer.set_reveal_child (false);
-            name_revealer.set_reveal_child (true);
+            icon_revealer.set_reveal_child (show_icon);
+            name_revealer.set_reveal_child (show_name);
         }
     }
 
