@@ -41,7 +41,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             default:
                 break;
         }
-
     }
     [GtkCallback]
     public void on_grid_view_activate (uint pos) {
@@ -502,6 +501,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
+    public override bool grab_focus () {
+        return grid_view.grab_focus ();
+    }
     /* DNDInterface abstract methods */
 
     //Need to ensure fileitem gets selected before drag
