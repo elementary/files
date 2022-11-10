@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-31 16:59+0000\n"
-"PO-Revision-Date: 2022-08-22 13:43+0000\n"
+"PO-Revision-Date: 2022-11-09 14:29+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -56,7 +56,7 @@ msgstr "Remplacer « %s » ?"
 
 #: filechooser-portal/Main.vala:352
 msgid "Replacing this file will overwrite its current contents"
-msgstr "Remplacer ce fichier écrasera son contenu actuel."
+msgstr "Remplacer ce fichier écrasera son contenu actuel"
 
 #: filechooser-portal/Main.vala:361
 #, c-format
@@ -1796,7 +1796,7 @@ msgstr "Masquer les miniatures"
 
 #: src/View/AbstractDirectoryView.vala:2246
 msgid "Select Folders with Single Click"
-msgstr ""
+msgstr "Sélectionnez les dossiers avec un simple clic"
 
 #: src/View/AbstractDirectoryView.vala:2343
 msgid "Name"
