@@ -16,18 +16,19 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 /* Interface implemented by BasicPathBar and PathBar */
-public interface PathBarInterface : Gtk.Widget {
+public interface Files.PathBarInterface : Gtk.Widget {
     // public signal void path_change_request (string path, Files.OpenFlag flag = Files.OpenFlag.DEFAULT);
     /* Not used by BasicPathBar? */
     public abstract string display_uri { get; set; }
+    public abstract Files.PathBarMode mode { get; set; default = PathBarMode.CRUMBS; }
     public signal void focus_file_request (GLib.File? file);
     public signal void reload_request ();
-    public signal void escape ();
+    // public signal void escape ();
 
-    public virtual void enter_search_mode (string term) {}
-    public virtual void enter_navigate_mode () {} //TODO Improve name
+    public virtual void search (string term) {}
+    // public virtual void enter_navigate_mode () {} //TODO Improve name
     public virtual void cancel () {}
     // public abstract void set_display_uri (string uri);
     // public abstract string get_display_uri ();
-    public abstract bool set_focussed ();
+    // public abstract bool set_focussed ();
 }

@@ -112,7 +112,7 @@ public class Files.HeaderBar : Object {
         //     path_change_request (path, flag);
         // });
 
-        path_bar.escape.connect (() => {escape ();});
+        // path_bar.escape.connect (() => {escape ();});
     }
 
     // public bool enter_search_mode (string term = "") {

@@ -38,7 +38,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
     construct {
         breadcrumbs = new BasicBreadcrumbs (this);
-        path_entry = new BasicPathEntry ();
+        path_entry = new BasicPathEntry (this);
         var stack = new Gtk.Stack ();
         stack.add_child (breadcrumbs);
         stack.add_child (path_entry);
@@ -56,17 +56,17 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                     break;
                 case PathBarMode.ENTRY:
                     stack.visible_child = path_entry;
+                    path_entry.grab_focus ();
                     break;
             }
         });
         bind_property ("display-uri", breadcrumbs, "uri", BindingFlags.DEFAULT);
     }
 
-    public override void enter_navigate_mode () {
-        mode = PathBarMode.ENTRY;
-    }
-    /* Interface methods */
-    public bool set_focussed () { return false; }
+    // public override void search (string term) {
+    //     mode = PathBarMode.SEARCH;
+    //     search_widget.term = term;
+    // }
 
     private class BasicBreadcrumbs : Gtk.Widget {
         private List<Crumb> crumbs;
@@ -148,7 +148,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                     var widget = main_child.pick (x, y, Gtk.PickFlags.DEFAULT);
                     if (widget == null) {
                         // Clicked on free space
-                        path_bar.enter_navigate_mode ();
+                        path_bar.mode = PathBarMode.ENTRY;
                     } else {
                         var crumb =(Crumb)(widget.get_ancestor (typeof (Crumb)));
                         assert (crumb is Crumb);
@@ -236,11 +236,30 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             set_layout_manager_type (typeof (Gtk.BinLayout));
         }
 
+        public PathBarInterface path_bar { get; construct; }
         private Gtk.Entry path_entry;
+
+        public BasicPathEntry (PathBarInterface path_bar) {
+            Object (path_bar: path_bar);
+        }
 
         construct {
             path_entry = new Gtk.Entry (); //TODO Use validated entry?
             path_entry.set_parent (this);
+            // var escape_action = new SimpleAction ("escape", null);
+            // var action_group = new SimpleActionGroup ();
+            // action_group.add_action (escape_action);
+            // path_entry.insert_action_group ("entry", action_group);
+            // var escape_shortcut = new Gtk.Shortcut (
+            //     Gtk.ShortcutTrigger.parse_string ("<Ctrl>Y"),
+            //     Gtk.ShortcutAction.parse_string ("win.focus-view")
+            // );
+
+            // path_entry.add_shortcut (escape_shortcut);
+        }
+
+        public override bool grab_focus () {
+            return path_entry.grab_focus ();
         }
     }
 }

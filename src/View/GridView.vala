@@ -501,6 +501,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
+    public override bool grab_focus () {
+        return grid_view.grab_focus ();
+    }
     /* DNDInterface abstract methods */
 
     //Need to ensure fileitem gets selected before drag
