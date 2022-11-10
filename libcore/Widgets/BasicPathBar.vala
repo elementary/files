@@ -161,7 +161,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                         // Clicked on free space
                         path_bar.mode = PathBarMode.ENTRY;
                     } else {
-                        var crumb =(Crumb)(widget.get_ancestor (typeof (Crumb)));
+                        var crumb = (Crumb)(widget.get_ancestor (typeof (Crumb)));
                         assert (crumb is Crumb);
                         activate_action ("win.go-to", "s", protocol + crumb.dir_path);
                     }
