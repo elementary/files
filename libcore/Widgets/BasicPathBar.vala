@@ -45,9 +45,9 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         stack.visible_child = breadcrumbs;
         stack.set_parent (this);
 
-        notify["display-uri"].connect (() => {
-            stack.visible_child = breadcrumbs;
-        });
+        // notify["display-uri"].connect (() => {
+        //     stack.visible_child = breadcrumbs;
+        // });
 
         notify["mode"].connect (() => {
             switch (mode) {
@@ -55,6 +55,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                     stack.visible_child = breadcrumbs;
                     break;
                 case PathBarMode.ENTRY:
+                    path_entry.text = breadcrumbs.get_uri_from_crumbs ();
                     stack.visible_child = path_entry;
                     path_entry.grab_focus ();
                     break;
@@ -99,7 +100,6 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             scrolled_window.hadjustment = hadj;
 
             spacer = new Crumb ("SPACE");
-
             main_child = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
                 halign = Gtk.Align.START
             };
@@ -138,7 +138,18 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             notify["uri"].connect (() => {
                 FileUtils.split_protocol_from_path (uri, out protocol, out path);
                 draw_crumbs ();
+                activate_action ("win.go-to", "s", uri);
             });
+        }
+
+        public string get_uri_from_crumbs () {
+            var sb = new StringBuilder (protocol);
+            foreach (unowned var crumb in crumbs) {
+                sb.append (Path.DIR_SEPARATOR_S);
+                sb.append (Path.get_basename (crumb.dir_path));
+            }
+
+            return sb.str;
         }
 
         private void button_release_handler (Gtk.EventController source, int n_press, double x, double y) {
@@ -164,11 +175,11 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         }
 
         private void draw_crumbs () {
+            spacer.unparent ();
             foreach (var crumb in crumbs) {
                 crumb.unparent ();
                 crumb.destroy ();
             }
-
             crumbs = null;
             //Break apart
             string[] parts;
@@ -188,8 +199,10 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             }
 
             foreach (var crumb in crumbs) {
-                main_child.prepend (crumb);
+                main_child.append (crumb);
             }
+
+            main_child.append (spacer);
         }
     }
 
@@ -237,6 +250,16 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         }
 
         public PathBarInterface path_bar { get; construct; }
+        public string text {
+            get {
+                return path_entry.text;
+            }
+
+            set {
+                path_entry.text = value;
+            }
+        }
+
         private Gtk.Entry path_entry;
 
         public BasicPathEntry (PathBarInterface path_bar) {
@@ -246,16 +269,10 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         construct {
             path_entry = new Gtk.Entry (); //TODO Use validated entry?
             path_entry.set_parent (this);
-            // var escape_action = new SimpleAction ("escape", null);
-            // var action_group = new SimpleActionGroup ();
-            // action_group.add_action (escape_action);
-            // path_entry.insert_action_group ("entry", action_group);
-            // var escape_shortcut = new Gtk.Shortcut (
-            //     Gtk.ShortcutTrigger.parse_string ("<Ctrl>Y"),
-            //     Gtk.ShortcutAction.parse_string ("win.focus-view")
-            // );
-
-            // path_entry.add_shortcut (escape_shortcut);
+            path_entry.activate.connect (() => {
+                path_bar.display_uri = FileUtils.sanitize_path (path_entry.text);
+                path_bar.mode = PathBarMode.CRUMBS;
+            });
         }
 
         public override bool grab_focus () {

@@ -319,9 +319,11 @@ public class Files.Window : Gtk.ApplicationWindow {
         save_active_tab_position ();
     }
 
-    public void open_tabs (GLib.File[]? files = null,
-                           ViewMode mode = ViewMode.PREFERRED,
-                           bool ignore_duplicate = false) {
+    public void open_tabs (
+        GLib.File[]? files = null,
+        ViewMode mode = ViewMode.PREFERRED,
+        bool ignore_duplicate = false)
+    {
 
         if (files == null) { //If files is empty assume this is intentional
             /* Restore session if not root and settings allow */
@@ -353,9 +355,11 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
     }
 
-    private void add_tab (GLib.File _location = GLib.File.new_for_commandline_arg (Environment.get_home_dir ()),
-                         ViewMode mode = ViewMode.PREFERRED,
-                         bool ignore_duplicate = false) {
+    private void add_tab (
+        GLib.File _location = GLib.File.new_for_commandline_arg (Environment.get_home_dir ()),
+        ViewMode mode = ViewMode.PREFERRED,
+        bool ignore_duplicate = false)
+    {
 
         GLib.File location;
         // For simplicity we do not use cancellable. If issues arise may need to do this.
