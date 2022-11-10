@@ -73,7 +73,7 @@ namespace Files {
         protected Gtk.Box extra_location_widgets;
         protected Gtk.Box extra_action_widgets;
         protected Gtk.Box content_box;
-        public Gtk.Overlay overlay {get; protected set;}
+        public Gtk.Overlay overlay {get; protected set;} // Overlaid with empty message and property overlay
         public int slot_number { get; protected set; }
         protected int width;
 
@@ -92,8 +92,11 @@ namespace Files {
             extra_action_widgets.prepend (widget);
         }
 
-        public void add_overlay (Gtk.Widget widget) {
-            overlay = new Gtk.Overlay ();
+        protected void add_main_child (Gtk.Widget widget) {
+            overlay = new Gtk.Overlay () {
+                hexpand = true,
+                vexpand = true
+            };
             content_box.prepend (overlay);
             overlay.child = widget;
         }

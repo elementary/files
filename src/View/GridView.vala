@@ -203,7 +203,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             }
         });
 
-        grab_focus ();
+        // grab_focus ();
     }
 
     /* Private methods */
@@ -324,10 +324,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     /* View Interface virtual methods */
     public override void clear () {
+warning ("clearing list store items %u", list_store.get_n_items ());
         list_store.remove_all ();
+warning ("done remaining items %u", list_store.get_n_items ());
         rename_after_add = false;
         select_after_add = false;
-        grab_focus ();
+        // grid_view.grab_focus ();
     }
 
     public override void refresh_visible_items () {
@@ -337,6 +339,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     public override void add_file (Files.File file) {
+warning ("add file");
         //TODO Delay sorting until adding finished?
         list_store.insert_sorted (file, file_compare_func);
         if (select_after_add) {
@@ -502,7 +505,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     public override bool grab_focus () {
-        return grid_view.grab_focus ();
+        if (grid_view != null) {
+            return grid_view.grab_focus ();
+        } else {
+            return false;
+        }
     }
     /* DNDInterface abstract methods */
 

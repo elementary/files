@@ -1496,7 +1496,9 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     public new void grab_focus () {
-        current_container.grab_focus ();
+        if (current_container != null) {
+            current_container.grab_focus ();
+        }
     }
 
     private void show_tab_context_menu (double x, double y) {

@@ -575,7 +575,7 @@ namespace Files {
             is_frozen = false;
             if (can_show_folder && view != null) {
                 view.grab_focus ();
-            } else {
+            } else if (content != null) {
                 content.grab_focus ();
             }
         }

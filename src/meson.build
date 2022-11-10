@@ -29,7 +29,7 @@ pantheon_files_exec = executable (
     # 'Utils/AppUtils.vala',
     'Utils/KeyUtils.vala',
 
-    'View/DirectoryView.vala',
+    # 'View/DirectoryView.vala',
     'View/Browser.vala',
     'View/DirectoryNotFound.vala',
     'View/GridView.vala',
