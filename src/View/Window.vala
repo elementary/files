@@ -870,7 +870,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_forward (GLib.SimpleAction action, GLib.Variant? param) {
-        current_container.go_back (param.get_int32 ());
+        current_container.go_forward (param.get_int32 ());
     }
 
     private void action_back (GLib.SimpleAction action, GLib.Variant? param) {

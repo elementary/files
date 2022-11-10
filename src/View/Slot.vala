@@ -139,7 +139,6 @@ public class Slot : Files.AbstractSlot {
     }
 
     private void on_view_widget_selection_changed () {
-warning ("selection changed");
         List<Files.File> selected_files = null;
         view_widget.get_selected_files (out selected_files);
         selection_changed (selected_files); // Updates properties overlay
@@ -155,7 +154,6 @@ warning ("selection changed");
     }
 
     private void connect_directory_loading_handlers (Directory dir) {
-warning ("connect directory loading");
         dir.file_loaded.connect (on_directory_file_loaded);
         dir.done_loading.connect (on_directory_done_loading);
     }
@@ -175,7 +173,6 @@ warning ("connect directory loading");
     }
 
     private void disconnect_directory_loading_handlers (Directory dir) {
-warning ("disconnect directory loading");
         dir.file_loaded.disconnect (on_directory_file_loaded);
         dir.done_loading.disconnect (on_directory_done_loading);
     }
@@ -233,7 +230,6 @@ warning ("disconnect directory loading");
 
     private void on_directory_done_loading (Directory dir) {
         /* Should only be called on directory creation or reload */
-warning ("done loading %s", dir.file.basename);
         disconnect_directory_loading_handlers (dir);
         if (this.directory.can_load) {
             if (in_recent) {
@@ -286,7 +282,6 @@ warning ("done loading %s", dir.file.basename);
     }
 
     private void on_directory_need_reload (Directory dir, bool original_request) {
-warning ("directory reload");
         view_widget.clear ();
         connect_directory_loading_handlers (dir);
         /* view and slot are unfrozen when done loading signal received */
@@ -448,11 +443,9 @@ warning ("directory reload");
     }
 
     public override void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location) {
-// warning ("Slot select glib files");
         if (view_widget != null) {
             var files_to_select = new List<Files.File> ();
             locations.@foreach ((loc) => {
-                warning ("select %s", loc.get_basename ());
                 files_to_select.prepend (Files.File.@get (loc));
             });
 
@@ -460,7 +453,6 @@ warning ("directory reload");
 
             view_widget.select_files (files_to_select);
             if (focus_location != null) {
-                warning ("focus_location %s", focus_location.get_basename ());
                 view_widget.show_and_select_file (Files.File.@get (focus_location), false, false, true);
             }
         }

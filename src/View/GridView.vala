@@ -324,12 +324,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     /* View Interface virtual methods */
     public override void clear () {
-warning ("clearing list store items %u", list_store.get_n_items ());
         list_store.remove_all ();
-warning ("done remaining items %u", list_store.get_n_items ());
         rename_after_add = false;
         select_after_add = false;
-        // grid_view.grab_focus ();
     }
 
     public override void refresh_visible_items () {
@@ -339,12 +336,10 @@ warning ("done remaining items %u", list_store.get_n_items ());
     }
 
     public override void add_file (Files.File file) {
-warning ("add file");
         //TODO Delay sorting until adding finished?
         list_store.insert_sorted (file, file_compare_func);
         if (select_after_add) {
             select_after_add = false;
-            warning ("show and select file");
             show_and_select_file (file, true, true);
         } else if (rename_after_add) {
             rename_after_add = false;
