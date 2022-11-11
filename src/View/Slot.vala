@@ -129,13 +129,13 @@ public class Slot : Files.AbstractSlot {
     }
 
     private void connect_view_widget_signals () {
-        view_widget.path_change_request.connect (path_change_requested);
+        view_widget.path_change_request.connect (on_view_path_change_request);
         view_widget.selection_changed.connect (on_view_widget_selection_changed);
     }
 
     private void disconnect_view_widget_signals () {
         view_widget.selection_changed.disconnect (on_view_widget_selection_changed);
-        view_widget.path_change_request.disconnect (path_change_requested);
+        view_widget.path_change_request.disconnect (on_view_path_change_request);
     }
 
     uint selection_changed_timeout_id = 0;
@@ -262,7 +262,7 @@ public class Slot : Files.AbstractSlot {
             }
         }
         /*  Column View requires slots to determine their own width (other views' width determined by Window */
-        if (mode == ViewMode.MILLER_COLUMNS) {
+        if (mode == ViewMode.MULTI_COLUMN) {
         //TODO Reimplement in Gtk4 version if required for MILLER
             // if (dir.is_empty ()) { /* No files in the file cache */
             //     Pango.Rectangle extents;
@@ -333,11 +333,11 @@ public class Slot : Files.AbstractSlot {
         connect_directory_handlers (directory);
     }
 
-    public override void path_change_requested (GLib.File loc, Files.OpenFlag flag) {
+    private void on_view_path_change_request (GLib.File loc, Files.OpenFlag flag) {
         cancel_timeouts ();
         switch (flag) {
             case Files.OpenFlag.DEFAULT:
-                if (mode == ViewMode.MILLER_COLUMNS) {
+                if (mode == ViewMode.MULTI_COLUMN) {
                     miller_slot_request (loc, false); /* signal to parent MillerView */
                 } else {
                     user_path_change_request (loc); /* Handle ourselves */
@@ -348,7 +348,7 @@ public class Slot : Files.AbstractSlot {
                 new_container_request (loc, flag);
                 break;
             case Files.OpenFlag.NEW_ROOT:
-                if (mode == ViewMode.MILLER_COLUMNS) {
+                if (mode == ViewMode.MULTI_COLUMN) {
                     miller_slot_request (loc, true); /* signal to parent MillerView */
                 } else {
                     user_path_change_request (loc); /* Handle ourselves */
@@ -360,19 +360,19 @@ public class Slot : Files.AbstractSlot {
         }
     }
 
-    private void on_dir_view_path_change_request (GLib.File loc, Files.OpenFlag flag, bool make_root) {
-        if (flag == 0) { /* make view in existing container */
-            if (mode == ViewMode.MILLER_COLUMNS) {
-                miller_slot_request (loc, make_root); /* signal to parent MillerView */
-            } else {
-                user_path_change_request (loc); /* Handle ourselves */
-            }
-        } else {
-            new_container_request (loc, flag);
-        }
-    }
+    // private void on_dir_view_path_change_request (GLib.File loc, Files.OpenFlag flag, bool make_root) {
+    //     if (flag == 0) { /* make view in existing container */
+    //         if (mode == ViewMode.MULTI_COLUMN) {
+    //             miller_slot_request (loc, make_root); /* signal to parent MillerView */
+    //         } else {
+    //             user_path_change_request (loc); /* Handle ourselves */
+    //         }
+    //     } else {
+    //         new_container_request (loc, flag);
+    //     }
+    // }
 
-    private void user_path_change_request (GLib.File loc) {
+    public override void user_path_change_request (GLib.File loc) {
     /** Only this function must be used to change or reload the path **/
         view_widget.clear ();
         var old_dir = directory;
@@ -413,7 +413,7 @@ public class Slot : Files.AbstractSlot {
             case ViewMode.LIST:
                 view_widget = new Files.GridView (this);
                 break;
-            case ViewMode.MILLER_COLUMNS:
+            case ViewMode.MULTI_COLUMN:
                 view_widget = new Files.GridView (this);
                 break;
 
@@ -423,7 +423,7 @@ public class Slot : Files.AbstractSlot {
         }
 
         /* Miller View creates its own overlay and handles packing of the directory view */
-        if (view_widget != null && mode != ViewMode.MILLER_COLUMNS) {
+        if (view_widget != null && mode != ViewMode.MULTI_COLUMN) {
             add_main_child (view_widget);
         }
 
@@ -488,7 +488,7 @@ public class Slot : Files.AbstractSlot {
         }
     }
 
-    public override unowned Files.AbstractSlot? get_current_slot () {
+    public override Files.AbstractSlot? get_current_slot () {
         return this as Files.AbstractSlot;
     }
 

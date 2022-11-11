@@ -1212,7 +1212,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         switch (mode) {
             case ViewMode.ICON:
             case ViewMode.LIST:
-            case ViewMode.MILLER_COLUMNS:
+            case ViewMode.MULTI_COLUMN:
                 return mode;
 
             case ViewMode.CURRENT:
@@ -1343,7 +1343,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             restoring_tabs++;
             add_tab_by_uri (root_uri, mode);
 
-            if (mode == ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
+            if (mode == ViewMode.MULTI_COLUMN && tip_uri != root_uri) {
                 // expand_miller_view (tip_uri, root_uri);
             }
 

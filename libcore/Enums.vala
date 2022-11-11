@@ -105,7 +105,7 @@ namespace Files {
         /* First three modes must match the corresponding mode switch indices */
         ICON = 0,
         LIST,
-        MILLER_COLUMNS,
+        MULTI_COLUMN,
         CURRENT,
         PREFERRED,
         INVALID

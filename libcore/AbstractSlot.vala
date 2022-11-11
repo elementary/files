@@ -117,13 +117,13 @@ namespace Files {
         }
 
         public abstract void initialize_directory ();
-        public abstract GLib.List<Files.File> get_selected_files ();
+        public abstract List<Files.File> get_selected_files ();
         public abstract void set_active_state (bool set_active, bool animate = true);
-        public abstract unowned AbstractSlot? get_current_slot ();
+        public abstract AbstractSlot? get_current_slot ();
         public abstract void reload (bool non_local_only = false);
         public abstract void grab_focus ();
-        public abstract void path_change_requested (GLib.File loc, Files.OpenFlag flag);
-
+        // public abstract void path_change_requested (GLib.File loc, Files.OpenFlag flag);
+        public abstract void user_path_change_request (GLib.File loc);
         public abstract void show_first_item ();
         public abstract void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location);
         protected abstract void make_view ();

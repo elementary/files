@@ -101,7 +101,7 @@ namespace Files {
         }
 
         public Files.AbstractSlot? slot {
-            get {
+            owned get {
                 return view != null ? view.get_current_slot () : null;
             }
         }
@@ -252,11 +252,11 @@ namespace Files {
                 }
             }
 
-            // if (mode == ViewMode.MILLER_COLUMNS) {
-            //     this.view = new Miller (loc, this, mode);
-            // } else {
+            if (mode == ViewMode.MULTI_COLUMN) {
+                this.view = new MultiSlot (loc, this);
+            } else {
                 this.view = new Slot (loc, this, mode);
-            // }
+            }
 
             overlay_statusbar = new OverlayBar (view.overlay);
 
@@ -324,9 +324,14 @@ namespace Files {
                     break;
 
                 case Files.OpenFlag.NEW_ROOT:
+                    if (view is MultiSlot) {
+                        //Clear slots;
+                    }
+
+                    view.user_path_change_request (loc);
+                    break;
                 case Files.OpenFlag.DEFAULT:
-                    // These can be handled by slot
-                    view.path_change_requested (loc, flag);
+                    view.user_path_change_request (loc);
                     break;
                 case Files.OpenFlag.APP:
                     warning ("View Container cannot handle Files.OpenFlag.APP - ignoring");
@@ -470,7 +475,7 @@ namespace Files {
             }
         }
 
-        public unowned Files.AbstractSlot? get_current_slot () {
+        public Files.AbstractSlot? get_current_slot () {
            return view != null ? view.get_current_slot () : null;
         }
 
@@ -503,7 +508,7 @@ namespace Files {
             }
 
             /* Using file_a.equal (file_b) can fail to detect equivalent locations */
-            // if (!(view is Miller) && FileUtils.same_location (uri, loc.get_uri ())) {
+            // if (!(view is MultiSlot) && FileUtils.same_location (uri, loc.get_uri ())) {
             if (FileUtils.same_location (uri, loc.get_uri ())) {
                 return;
             }

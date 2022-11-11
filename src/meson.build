@@ -21,6 +21,7 @@ pantheon_files_exec = executable (
 
     'View/DirectoryNotFound.vala',
     'View/GridView.vala',
+    'View/MultiSlot.vala',
     'View/PrivacyModeOn.vala',
     'View/ViewContainer.vala',
     'View/Window.vala',
