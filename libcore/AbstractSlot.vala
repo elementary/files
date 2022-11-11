@@ -81,7 +81,8 @@ namespace Files {
         public signal void inactive ();
         public signal void path_changed ();
         public signal void new_container_request (GLib.File loc, Files.OpenFlag flag);
-        public signal void selection_changed (GLib.List<Files.File> files);
+        public signal void selection_changing ();
+        public signal void update_selection (GLib.List<Files.File> files);
         public signal void directory_loaded (Files.Directory dir);
 
         public void add_extra_widget (Gtk.Widget widget) {

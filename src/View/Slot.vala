@@ -138,10 +138,21 @@ public class Slot : Files.AbstractSlot {
         view_widget.path_change_request.disconnect (path_change_requested);
     }
 
+    uint selection_changed_timeout_id = 0;
+    List<Files.File> selected_files = null; // Maintain a reference for overlaybar
     private void on_view_widget_selection_changed () {
-        List<Files.File> selected_files = null;
-        view_widget.get_selected_files (out selected_files);
-        selection_changed (selected_files); // Updates properties overlay
+        selection_changing ();
+
+        if (selection_changed_timeout_id > 0) {
+            Source.remove (selection_changed_timeout_id);
+        }
+
+        selection_changed_timeout_id = Timeout.add (100, () => {
+            selection_changed_timeout_id = 0;
+            view_widget.get_selected_files (out selected_files);
+            update_selection (selected_files); // Updates properties overlay
+            return Source.REMOVE;
+        });
     }
 
     // Signal could be from subdirectory as well as slot directory
@@ -180,14 +191,12 @@ public class Slot : Files.AbstractSlot {
     // * Directory signal handlers moved from DirectoryView.
     private void on_directory_file_added (Directory dir, Files.File? file) {
         if (file != null) {
-            warning ("add file %s", file.basename);
             view_widget.add_file (file); //FIXME Should we select files added after load?
         }
     }
 
     private void on_directory_file_loaded (Directory dir, Files.File file) {
         if (file != null) {
-            warning ("load file %s", file.basename);
             view_widget.add_file (file); //FIXME Should we select files added after load?
         }
         /* no freespace change signal required */
@@ -325,6 +334,7 @@ public class Slot : Files.AbstractSlot {
     }
 
     public override void path_change_requested (GLib.File loc, Files.OpenFlag flag) {
+        cancel_timeouts ();
         switch (flag) {
             case Files.OpenFlag.DEFAULT:
                 if (mode == ViewMode.MILLER_COLUMNS) {
@@ -531,6 +541,7 @@ public class Slot : Files.AbstractSlot {
     private void cancel_timeouts () {
         cancel_timeout (ref reload_timeout_id);
         cancel_timeout (ref path_change_timeout_id);
+        cancel_timeout (ref selection_changed_timeout_id);
     }
 
     private void cancel_timeout (ref uint id) {

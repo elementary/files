@@ -296,7 +296,8 @@ namespace Files {
             aslot.active.connect (on_slot_active);
             aslot.path_changed.connect (on_slot_path_changed);
             aslot.new_container_request.connect (on_slot_new_container_request);
-            aslot.selection_changed.connect (on_slot_selection_changed);
+            aslot.selection_changing.connect (on_slot_selection_changing);
+            aslot.update_selection.connect (on_slot_update_selection);
             aslot.directory_loaded.connect (on_slot_directory_loaded);
         }
 
@@ -304,7 +305,8 @@ namespace Files {
             aslot.active.disconnect (on_slot_active);
             aslot.path_changed.disconnect (on_slot_path_changed);
             aslot.new_container_request.disconnect (on_slot_new_container_request);
-            aslot.selection_changed.disconnect (on_slot_selection_changed);
+            aslot.selection_changing.disconnect (on_slot_selection_changing);
+            aslot.update_selection.disconnect (on_slot_update_selection);
             aslot.directory_loaded.disconnect (on_slot_directory_loaded);
         }
 
@@ -580,8 +582,12 @@ namespace Files {
             }
         }
 
-        private void on_slot_selection_changed (GLib.List<unowned Files.File> files) {
-            overlay_statusbar.selection_changed (files);
+        private void on_slot_selection_changing () {
+            overlay_statusbar.selection_changing ();
+        }
+
+        private void on_slot_update_selection (List<Files.File> selected_files) {
+            overlay_statusbar.update_selection (selected_files);
         }
 
     //TODO Use EventController

@@ -1200,6 +1200,32 @@ namespace Files.FileUtils {
 
         return content_type;
     }
+
+    public static uint64 file_real_size (Files.File gof) {
+        if (!gof.is_connected) {
+            return 0;
+        }
+
+        uint64 file_size = gof.size;
+        if (gof.location is GLib.File) {
+            try {
+                var info = gof.location.query_info (FileAttribute.STANDARD_ALLOCATED_SIZE, FileQueryInfoFlags.NONE);
+                uint64 allocated_size = info.get_attribute_uint64 (FileAttribute.STANDARD_ALLOCATED_SIZE);
+                /* Check for sparse file, allocated size will be smaller, for normal files allocated size
+                 * includes overhead size so we don't use it for those here
+                 */
+                if (allocated_size > 0 && allocated_size < file_size && !gof.is_directory) {
+                    file_size = allocated_size;
+                }
+            } catch (Error err) {
+                debug ("%s", err.message);
+                gof.is_connected = false;
+            }
+        }
+
+        return file_size;
+    }
+
 }
 
 namespace Files {

@@ -203,6 +203,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             }
         });
 
+        multi_selection.selection_changed.connect (() => {
+            selection_changed ();
+        });
         // grab_focus ();
     }
 

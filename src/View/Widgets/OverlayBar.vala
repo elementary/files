@@ -27,7 +27,7 @@ namespace Files {
         private uint files_count = 0;
         private uint64 files_size = 0;
         private Files.File? goffile = null;
-        private GLib.List<unowned Files.File>? selected_files = null;
+        private GLib.List<Files.File>? selected_files = null;
         private uint8 [] buffer;
         private GLib.FileInputStream? stream;
         private Gdk.PixbufLoader loader;
@@ -49,25 +49,13 @@ namespace Files {
             cancel ();
         }
 
-        public void selection_changed (GLib.List<unowned Files.File> files) {
-            cancel ();
-            visible = false;
-
-            update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
-                if (files != null) {
-                    selected_files = files.copy ();
-                } else {
-                    selected_files = null;
-                }
-
-                real_update (selected_files);
-                update_timeout_id = 0;
-                return GLib.Source.REMOVE;
-            });
+        public void update_selection (GLib.List<Files.File> files) {
+            real_update (files);
         }
 
-        public void reset_selection () {
-            selected_files = null;
+        public void selection_changing () {
+            cancel ();
+            visible = false;
         }
 
         /**
@@ -101,28 +89,36 @@ namespace Files {
             }
         }
 
-        private void real_update (GLib.List<unowned Files.File>? files) {
+        private void real_update (GLib.List<Files.File> files) {
+            uint n_files = files.length ();
             goffile = null;
             folders_count = 0;
             files_count = 0;
             files_size = 0;
             label = "";
 
-            if (files != null) {
-                if (files != null && files.data != null) {
-                    if (files.next == null) {
-                        /* List contains only one element. */
-                        goffile = files.first ().data;
+            if (n_files == 1) {
+                goffile = files.first ().data;
+            } else {
+                foreach (var gof in files) {
+                    if (gof != null && gof is Files.File) {
+                        if (gof.is_folder ()) {
+                            folders_count++;
+                        } else {
+                            files_count++;
+                            files_size += FileUtils.file_real_size (gof);
+                        }
                     } else {
-                        scan_list (files);
-                    }
-                    // Only set status with string returned by update status if it has not already
-                    // been set by load resolution.
-                    var s = update_status ();
-                    if (label == "") {
-                        label = s;
+                        warning ("Null file found in OverlayBar scan_list - this should not happen");
                     }
                 }
+                // scan_list (files);
+            }
+            // Only set status with string returned by update status if it has not already
+            // been set by load resolution.
+            var s = update_status ();
+            if (label == "") {
+                label = s;
             }
 
             visible = label != "";
@@ -139,7 +135,7 @@ namespace Files {
                     string? type = goffile.get_ftype ();
 
                     if (goffile.format_size == "" ) { /* No need to keep recalculating the formatted size. */
-                        goffile.format_size = format_size (PropertiesWindow.file_real_size (goffile));
+                        goffile.format_size = format_size (FileUtils.file_real_size (goffile));
                     }
                     str = "%s - %s (%s)".printf (goffile.info.get_name (),
                                                  goffile.formated_type,
@@ -251,21 +247,13 @@ namespace Files {
             }
         }
 
-        private void scan_list (GLib.List<unowned Files.File>? files) {
-            if (files == null) {
-                return;
-            }
-
-            foreach (unowned Files.File gof in files) {
-                if (gof != null && gof is Files.File) {
-                    if (gof.is_folder ()) {
-                        folders_count++;
-                    } else {
-                        files_count++;
-                        files_size += PropertiesWindow.file_real_size (gof);
-                    }
+        private void scan_list (GLib.List<Files.File> files) {
+            foreach (Files.File gof in files) {
+                if (gof.is_folder ()) {
+                    folders_count++;
                 } else {
-                    warning ("Null file found in OverlayBar scan_list - this should not happen");
+                    files_count++;
+                    files_size += FileUtils.file_real_size (gof);
                 }
             }
         }
