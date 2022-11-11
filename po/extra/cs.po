@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 07:38+0000\n"
+"POT-Creation-Date: 2022-10-31 16:59+0000\n"
 "PO-Revision-Date: 2022-01-25 22:09+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/extra/cs/>\n"
@@ -36,11 +36,6 @@ msgstr "složka;správce;procházet;disk;souborový systém;"
 msgid "File Manager"
 msgstr "Správce souborů"
 
-#. TRANSLATORS This string is an icon name and should not be translated.
-#: data/io.elementary.files.desktop.in.in:9
-msgid "system-file-manager"
-msgstr "system-file-manager"
-
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
 msgstr "Nové okno"
@@ -67,89 +62,149 @@ msgstr ""
 "AFP, Webdav nebo sdílení Windows."
 
 #: data/io.elementary.files.appdata.xml.in.in:33
-#: data/io.elementary.files.appdata.xml.in.in:45
-#: data/io.elementary.files.appdata.xml.in.in:72
-#: data/io.elementary.files.appdata.xml.in.in:92
-#: data/io.elementary.files.appdata.xml.in.in:120
-#: data/io.elementary.files.appdata.xml.in.in:137
-#: data/io.elementary.files.appdata.xml.in.in:152
-#: data/io.elementary.files.appdata.xml.in.in:168
-#: data/io.elementary.files.appdata.xml.in.in:183
-#: data/io.elementary.files.appdata.xml.in.in:200
-#: data/io.elementary.files.appdata.xml.in.in:237
-#: data/io.elementary.files.appdata.xml.in.in:258
-#: data/io.elementary.files.appdata.xml.in.in:278
+#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:109
+#: data/io.elementary.files.appdata.xml.in.in:134
+#: data/io.elementary.files.appdata.xml.in.in:211
+#: data/io.elementary.files.appdata.xml.in.in:228
+#: data/io.elementary.files.appdata.xml.in.in:252
+#: data/io.elementary.files.appdata.xml.in.in:276
+msgid "Improvements:"
+msgstr "Vylepšení:"
+
+#: data/io.elementary.files.appdata.xml.in.in:35
+msgid ""
+"Provide option to select folders with single click and activate with double "
+"click"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:36
+msgid ""
+"Only show the properties overlay when files are selected, not when hovered"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/io.elementary.files.appdata.xml.in.in:56
+#: data/io.elementary.files.appdata.xml.in.in:68
+#: data/io.elementary.files.appdata.xml.in.in:95
+#: data/io.elementary.files.appdata.xml.in.in:115
+#: data/io.elementary.files.appdata.xml.in.in:143
+#: data/io.elementary.files.appdata.xml.in.in:160
+#: data/io.elementary.files.appdata.xml.in.in:175
+#: data/io.elementary.files.appdata.xml.in.in:191
+#: data/io.elementary.files.appdata.xml.in.in:206
+#: data/io.elementary.files.appdata.xml.in.in:223
+#: data/io.elementary.files.appdata.xml.in.in:260
+#: data/io.elementary.files.appdata.xml.in.in:281
+#: data/io.elementary.files.appdata.xml.in.in:301
 msgid "Fixes:"
 msgstr "Opravy:"
 
-#: data/io.elementary.files.appdata.xml.in.in:35
-msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
+#: data/io.elementary.files.appdata.xml.in.in:40
+msgid "Fix unexpected file activation after navigation with double-click"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:37
+#: data/io.elementary.files.appdata.xml.in.in:41
+#, fuzzy
+#| msgid "Add file filters and New Folder options to file chooser portal"
+msgid "Fix dimmed window after use of filechooser portal"
+msgstr ""
+"Přidány filtry souborů do voleb Nová složka do portálu dialogu výběru souboru"
+
+#: data/io.elementary.files.appdata.xml.in.in:42
+msgid "Fix possible crash when rapidly changing view modes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:43
+msgid "Fix startup when restored remote location is no longer connected"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:44
+msgid ""
+"Ensure infobar shows in connection server dialog when connection attempt "
+"fails"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:45
+msgid "Ensure correct icon for bookmark to a file that is not a folder"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:46
+#, fuzzy
+#| msgid "Fix a crash when restoring items from the Trash"
+msgid "Fix possible crash when removing a bookmark"
+msgstr "Oprava padání při obnově položek z koše"
+
+#: data/io.elementary.files.appdata.xml.in.in:48
 #: data/io.elementary.files.appdata.xml.in.in:60
-#: data/io.elementary.files.appdata.xml.in.in:78
-#: data/io.elementary.files.appdata.xml.in.in:103
-#: data/io.elementary.files.appdata.xml.in.in:129
-#: data/io.elementary.files.appdata.xml.in.in:293
-#: data/io.elementary.files.appdata.xml.in.in:307
+#: data/io.elementary.files.appdata.xml.in.in:83
+#: data/io.elementary.files.appdata.xml.in.in:101
+#: data/io.elementary.files.appdata.xml.in.in:126
+#: data/io.elementary.files.appdata.xml.in.in:152
+#: data/io.elementary.files.appdata.xml.in.in:316
+#: data/io.elementary.files.appdata.xml.in.in:330
 msgid "Minor updates:"
 msgstr "Drobné aktualizace:"
 
-#: data/io.elementary.files.appdata.xml.in.in:39
+#: data/io.elementary.files.appdata.xml.in.in:50
 #: data/io.elementary.files.appdata.xml.in.in:62
-#: data/io.elementary.files.appdata.xml.in.in:80
-#: data/io.elementary.files.appdata.xml.in.in:105
-#: data/io.elementary.files.appdata.xml.in.in:131
-#: data/io.elementary.files.appdata.xml.in.in:146
-#: data/io.elementary.files.appdata.xml.in.in:162
-#: data/io.elementary.files.appdata.xml.in.in:177
-#: data/io.elementary.files.appdata.xml.in.in:194
-#: data/io.elementary.files.appdata.xml.in.in:223
-#: data/io.elementary.files.appdata.xml.in.in:247
-#: data/io.elementary.files.appdata.xml.in.in:265
-#: data/io.elementary.files.appdata.xml.in.in:287
-#: data/io.elementary.files.appdata.xml.in.in:301
-#: data/io.elementary.files.appdata.xml.in.in:314
-#: data/io.elementary.files.appdata.xml.in.in:327
-#: data/io.elementary.files.appdata.xml.in.in:359
-#: data/io.elementary.files.appdata.xml.in.in:381
-#: data/io.elementary.files.appdata.xml.in.in:390
-#: data/io.elementary.files.appdata.xml.in.in:399
-#: data/io.elementary.files.appdata.xml.in.in:410
-#: data/io.elementary.files.appdata.xml.in.in:419
-#: data/io.elementary.files.appdata.xml.in.in:438
-#: data/io.elementary.files.appdata.xml.in.in:449
-#: data/io.elementary.files.appdata.xml.in.in:457
-#: data/io.elementary.files.appdata.xml.in.in:489
+#: data/io.elementary.files.appdata.xml.in.in:85
+#: data/io.elementary.files.appdata.xml.in.in:103
+#: data/io.elementary.files.appdata.xml.in.in:128
+#: data/io.elementary.files.appdata.xml.in.in:154
+#: data/io.elementary.files.appdata.xml.in.in:169
+#: data/io.elementary.files.appdata.xml.in.in:185
+#: data/io.elementary.files.appdata.xml.in.in:200
+#: data/io.elementary.files.appdata.xml.in.in:217
+#: data/io.elementary.files.appdata.xml.in.in:246
+#: data/io.elementary.files.appdata.xml.in.in:270
+#: data/io.elementary.files.appdata.xml.in.in:288
+#: data/io.elementary.files.appdata.xml.in.in:310
+#: data/io.elementary.files.appdata.xml.in.in:324
+#: data/io.elementary.files.appdata.xml.in.in:337
+#: data/io.elementary.files.appdata.xml.in.in:350
+#: data/io.elementary.files.appdata.xml.in.in:382
+#: data/io.elementary.files.appdata.xml.in.in:404
+#: data/io.elementary.files.appdata.xml.in.in:413
+#: data/io.elementary.files.appdata.xml.in.in:422
+#: data/io.elementary.files.appdata.xml.in.in:433
+#: data/io.elementary.files.appdata.xml.in.in:442
+#: data/io.elementary.files.appdata.xml.in.in:461
+#: data/io.elementary.files.appdata.xml.in.in:472
+#: data/io.elementary.files.appdata.xml.in.in:480
+#: data/io.elementary.files.appdata.xml.in.in:512
 msgid "Updated translations"
 msgstr "Aktualizovány překlady"
 
-#: data/io.elementary.files.appdata.xml.in.in:47
+#: data/io.elementary.files.appdata.xml.in.in:58
+msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:70
 msgid "Renaming with the same name no longer shows an error dialog"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:48
+#: data/io.elementary.files.appdata.xml.in.in:71
 msgid "Ctrl + A when renaming now selects all the text in the entry"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:49
+#: data/io.elementary.files.appdata.xml.in.in:72
 msgid "Selecting multiple items with Shift + Arrow keys now works properly"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:50
+#: data/io.elementary.files.appdata.xml.in.in:73
 msgid "The appearance of the cursor now matches the action"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:51
+#: data/io.elementary.files.appdata.xml.in.in:74
 msgid "The Trash sidebar item can no longer be removed"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:52
+#: data/io.elementary.files.appdata.xml.in.in:75
 msgid "Network sidebar plugins such as NextCloud are now added correctly"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:53
+#: data/io.elementary.files.appdata.xml.in.in:76
 #, fuzzy
 #| msgid ""
 #| "Fix truncation of final column in Column View under some circumstances"
@@ -158,113 +213,103 @@ msgstr ""
 "Opraveno zkracování posledního sloupce ve sloupcovém zobrazení za určitých "
 "podmínek"
 
-#: data/io.elementary.files.appdata.xml.in.in:54
+#: data/io.elementary.files.appdata.xml.in.in:77
 msgid ""
 "Bookmarks are now highlighted when a file they can accept is dragged onto "
 "them"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:55
+#: data/io.elementary.files.appdata.xml.in.in:78
 msgid "Folders not being restored properly under some circumstances is fixed"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:56
+#: data/io.elementary.files.appdata.xml.in.in:79
 msgid ""
 "Show confirmation dialog in file chooser before overwriting an existing file"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:57
+#: data/io.elementary.files.appdata.xml.in.in:80
 msgid "Ctrl + V now always pastes into background folder"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:58
+#: data/io.elementary.files.appdata.xml.in.in:81
 msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:68
-#: data/io.elementary.files.appdata.xml.in.in:86
-#: data/io.elementary.files.appdata.xml.in.in:111
-#: data/io.elementary.files.appdata.xml.in.in:188
-#: data/io.elementary.files.appdata.xml.in.in:205
-#: data/io.elementary.files.appdata.xml.in.in:229
-#: data/io.elementary.files.appdata.xml.in.in:253
-msgid "Improvements:"
-msgstr "Vylepšení:"
-
-#: data/io.elementary.files.appdata.xml.in.in:70
+#: data/io.elementary.files.appdata.xml.in.in:93
 msgid "Show New Tab and New Window shortcuts in context menus"
 msgstr ""
 "V kontextových nabídkách zobrazovány zkratky pro Nový panel a Nové okno"
 
-#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:97
 msgid "Double click selects instead of exiting while renaming in list view"
 msgstr ""
 "Při přejmenovávání v zobrazení seznamu dvojklik namísto ukončení provede "
 "výběr"
 
-#: data/io.elementary.files.appdata.xml.in.in:75
+#: data/io.elementary.files.appdata.xml.in.in:98
 msgid "Show public share icon in breadcrumbs"
 msgstr "V drobečkových navigacích zobrazována ikona veřejného sdílení"
 
-#: data/io.elementary.files.appdata.xml.in.in:76
+#: data/io.elementary.files.appdata.xml.in.in:99
 msgid "Prevent a crash when dragging to re-arrange bookmarks"
 msgstr "Zabráněno pádu při změně pořadí záložek jejich přetahováním"
 
-#: data/io.elementary.files.appdata.xml.in.in:88
+#: data/io.elementary.files.appdata.xml.in.in:111
 msgid "Close FileChooser with Esc key"
 msgstr "Dialog pro výběr souboru zavřete klávesou Esc"
 
-#: data/io.elementary.files.appdata.xml.in.in:89
+#: data/io.elementary.files.appdata.xml.in.in:112
 msgid "Use new emblems for git status"
 msgstr "Použity nové emblémy pro git stav"
 
-#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:113
 msgid "Show selection actions in secondary click menu"
 msgstr "Zobrazeny akce výběru v kontextové nabídce (pravé tlačítko myši)"
 
-#: data/io.elementary.files.appdata.xml.in.in:94
+#: data/io.elementary.files.appdata.xml.in.in:117
 msgid "Always show Permissions page in Properties dialog"
 msgstr "V dialogu Vlastnosti vždy zobrazována stránka Oprávnění"
 
-#: data/io.elementary.files.appdata.xml.in.in:95
+#: data/io.elementary.files.appdata.xml.in.in:118
 msgid ""
 "In Permissions page, show user and group numeric IDs when names not available"
 msgstr ""
 "Na stránce Oprávnění, když nejsou k dispozici jména/názvy, náhradně "
 "zobrazovány číselné identifikátory uživatele a skupiny"
 
-#: data/io.elementary.files.appdata.xml.in.in:96
+#: data/io.elementary.files.appdata.xml.in.in:119
 msgid "In Permissions page, show message when no information available"
 msgstr ""
 "Na stránce Oprávnění, když nejsou k dispozici potřebné údaje, zobrazena "
 "zpráva o tom"
 
-#: data/io.elementary.files.appdata.xml.in.in:98
-#: data/io.elementary.files.appdata.xml.in.in:143
-#: data/io.elementary.files.appdata.xml.in.in:160
-#: data/io.elementary.files.appdata.xml.in.in:175
-#: data/io.elementary.files.appdata.xml.in.in:192
-#: data/io.elementary.files.appdata.xml.in.in:220
-#: data/io.elementary.files.appdata.xml.in.in:244
-#: data/io.elementary.files.appdata.xml.in.in:263
-#: data/io.elementary.files.appdata.xml.in.in:285
-#: data/io.elementary.files.appdata.xml.in.in:338
+#: data/io.elementary.files.appdata.xml.in.in:121
+#: data/io.elementary.files.appdata.xml.in.in:166
+#: data/io.elementary.files.appdata.xml.in.in:183
+#: data/io.elementary.files.appdata.xml.in.in:198
+#: data/io.elementary.files.appdata.xml.in.in:215
+#: data/io.elementary.files.appdata.xml.in.in:243
+#: data/io.elementary.files.appdata.xml.in.in:267
+#: data/io.elementary.files.appdata.xml.in.in:286
+#: data/io.elementary.files.appdata.xml.in.in:308
+#: data/io.elementary.files.appdata.xml.in.in:361
 msgid "Other updates:"
 msgstr "Ostatní aktualizace:"
 
-#: data/io.elementary.files.appdata.xml.in.in:100
+#: data/io.elementary.files.appdata.xml.in.in:123
 msgid "Only allow one FileChooser per parent window"
 msgstr ""
 "V rámci jednoho nadřazeného okna umožněn pouze jeden dialog pro výběr souboru"
 
-#: data/io.elementary.files.appdata.xml.in.in:101
+#: data/io.elementary.files.appdata.xml.in.in:124
 msgid ""
 "Navigate to folder when pressing enter in FileChooser instead of selecting"
 msgstr ""
 "Přejít do složky při stisknutí klávesy Enter v dialogu pro výběr souboru "
 "namísto jejího vybrání"
 
-#: data/io.elementary.files.appdata.xml.in.in:113
+#: data/io.elementary.files.appdata.xml.in.in:136
 msgid ""
 "Use \"Send Mail\" portal instead of contract, improving compatibility with "
 "alternate email apps"
@@ -272,72 +317,72 @@ msgstr ""
 "Použití portálu „Odeslat e-mail“ namísto smlouvy, což zlepšuje kompatibilitu "
 "s alternativními e-mailovými aplikacemi"
 
-#: data/io.elementary.files.appdata.xml.in.in:114
+#: data/io.elementary.files.appdata.xml.in.in:137
 msgid "Add file filters and New Folder options to file chooser portal"
 msgstr ""
 "Přidány filtry souborů do voleb Nová složka do portálu dialogu výběru souboru"
 
-#: data/io.elementary.files.appdata.xml.in.in:115
+#: data/io.elementary.files.appdata.xml.in.in:138
 msgid ""
 "Allow blank passwords for remote connections, e.g. for SSH via a private key"
 msgstr ""
 "Umožněna prázdná hesla pro vzdálená připojení, např. pro SSH prostřednictvím "
 "soukromého klíče"
 
-#: data/io.elementary.files.appdata.xml.in.in:116
+#: data/io.elementary.files.appdata.xml.in.in:139
 msgid "Make ejecting devices safer"
 msgstr "Bezpečnější odpojování zařízení"
 
-#: data/io.elementary.files.appdata.xml.in.in:117
+#: data/io.elementary.files.appdata.xml.in.in:140
 msgid "Add option to stop drive if possible"
 msgstr "Přidána volba pro zastavení jednotky, pokud je to možné"
 
-#: data/io.elementary.files.appdata.xml.in.in:118
+#: data/io.elementary.files.appdata.xml.in.in:141
 msgid "Show unformatted drives and drives without media"
 msgstr ""
 "Zobrazovány nenaformátované jednotky nebo ty, ve kterých se nenachází médium"
 
-#: data/io.elementary.files.appdata.xml.in.in:122
+#: data/io.elementary.files.appdata.xml.in.in:145
 msgid ""
 "Fix pasting of selected pathbar text into another window using middle-click"
 msgstr ""
 "Opraveno vkládán vybraného textu z pruhu popisu umístění do jiného okna "
 "použitím kliknutí prostředním tlačítkem"
 
-#: data/io.elementary.files.appdata.xml.in.in:123
+#: data/io.elementary.files.appdata.xml.in.in:146
 msgid "Fix selecting multiple groups of files"
 msgstr "Opraveno vybírání vícero skupin souborů"
 
-#: data/io.elementary.files.appdata.xml.in.in:124
+#: data/io.elementary.files.appdata.xml.in.in:147
 msgid "Allow dropping bookmark directly below the Recent bookmark"
 msgstr "Umožněno přetahování záložky přímo pod Nedávnou záložku"
 
-#: data/io.elementary.files.appdata.xml.in.in:125
+#: data/io.elementary.files.appdata.xml.in.in:148
 msgid "Do not show unusable drop target below the Trash bookmark"
 msgstr "Nezobrazován nepoužitelný cíl upuštění pod záložkou Koš"
 
-#: data/io.elementary.files.appdata.xml.in.in:126
+#: data/io.elementary.files.appdata.xml.in.in:149
 msgid "Fix sidebar showing both drive and volume for same device"
 msgstr ""
 "Opraven postranní panel zobrazující jak jednotku tak hlasitost pro stejné "
 "zařízení"
 
-#: data/io.elementary.files.appdata.xml.in.in:127
+#: data/io.elementary.files.appdata.xml.in.in:150
 msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
 msgstr ""
 "Opraven postranní pruh zobrazující SSH servery jak v sekci Úložiště, tak Síť"
 
-#: data/io.elementary.files.appdata.xml.in.in:139
+#: data/io.elementary.files.appdata.xml.in.in:162
 msgid "Show translated bookmark names when changing languages"
 msgstr "Při změně jazyka zobrazovány přeložené názvy záložek"
 
-#: data/io.elementary.files.appdata.xml.in.in:140
+#: data/io.elementary.files.appdata.xml.in.in:163
 msgid "Stop some audio file icons disappearing when scrolling or changing view"
 msgstr ""
 "Odstraněno mizení ikon některých souborů se zvukem při posunování nebo změně "
 "pohledu"
 
-#: data/io.elementary.files.appdata.xml.in.in:141
+#: data/io.elementary.files.appdata.xml.in.in:164
 msgid ""
 "Stop brief appearance of status overlay when changing root folder in Column "
 "View"
@@ -345,139 +390,139 @@ msgstr ""
 "Odstraněno chvilkové zobrazení stavového překryvu při změně kořenové složky "
 "ve sloupcovém zobrazení"
 
-#: data/io.elementary.files.appdata.xml.in.in:145
+#: data/io.elementary.files.appdata.xml.in.in:168
 msgid "Remove message about reporting issues when running from Terminal"
 msgstr "Odebrána zpráva o hlášení problémů při spouštění z Terminálu"
 
-#: data/io.elementary.files.appdata.xml.in.in:154
+#: data/io.elementary.files.appdata.xml.in.in:177
 msgid "Open bookmarks in a new tab with Ctrl + Click"
 msgstr "Záložky otevřete v nových panelech přidržením klávesy Ctrl při klikání"
 
-#: data/io.elementary.files.appdata.xml.in.in:155
+#: data/io.elementary.files.appdata.xml.in.in:178
 msgid "Fix dropping uris onto storage devices and network locations in sidebar"
 msgstr ""
 "Opraveno upouštění URI adres na úložná zařízení a síťová umístění v "
 "postranním panelu"
 
-#: data/io.elementary.files.appdata.xml.in.in:156
+#: data/io.elementary.files.appdata.xml.in.in:179
 msgid "Fix restoring tabs after a system restart"
 msgstr "Opraveno obnovování panelů po restartu systému"
 
-#: data/io.elementary.files.appdata.xml.in.in:157
+#: data/io.elementary.files.appdata.xml.in.in:180
 msgid ""
 "Don't unselect when secondary clicking blank space around a file or folder"
 msgstr ""
 "Nerušit výběr při kliknutí pravým tlačítkem na volný prostor okolo souboru "
 "či složky"
 
-#: data/io.elementary.files.appdata.xml.in.in:158
+#: data/io.elementary.files.appdata.xml.in.in:181
 msgid ""
 "Show the folder context menu when secondary clicking outside of a selection"
 msgstr ""
 "Zobrazit kontextovou nabídku složky při kliknutí pravým tlačítkem myši mimo "
 "výběr"
 
-#: data/io.elementary.files.appdata.xml.in.in:170
+#: data/io.elementary.files.appdata.xml.in.in:193
 msgid "Fix small context menus on breadcrumbs"
 msgstr "Opraveny malé kontextové nabídky na drobečkové navigaci"
 
-#: data/io.elementary.files.appdata.xml.in.in:171
+#: data/io.elementary.files.appdata.xml.in.in:194
 msgid "Fix bookmarking a single selected item with Ctrl + D"
 msgstr ""
 "Opraveno přidávání do záložek jediné označené položky stisknutím Ctrl+D"
 
-#: data/io.elementary.files.appdata.xml.in.in:172
+#: data/io.elementary.files.appdata.xml.in.in:195
 msgid "Fix renaming bookmarks in the sidebar"
 msgstr "Opraveno přejmenovávání záložek v postranním panelu"
 
-#: data/io.elementary.files.appdata.xml.in.in:173
+#: data/io.elementary.files.appdata.xml.in.in:196
 msgid "Fix an issue with showing color tags when thumbnails are hidden"
 msgstr "Opraven problém se zobrazování barevných štítků při skrytých náhledech"
 
-#: data/io.elementary.files.appdata.xml.in.in:185
+#: data/io.elementary.files.appdata.xml.in.in:208
 msgid "Fix freeze when comparing copied files"
 msgstr "Opraveno mrznutí při porovnávání zkopírovaných souborů"
 
-#: data/io.elementary.files.appdata.xml.in.in:186
+#: data/io.elementary.files.appdata.xml.in.in:209
 msgid "Fix truncation of final column in Column View under some circumstances"
 msgstr ""
 "Opraveno zkracování posledního sloupce ve sloupcovém zobrazení za určitých "
 "podmínek"
 
-#: data/io.elementary.files.appdata.xml.in.in:190
+#: data/io.elementary.files.appdata.xml.in.in:213
 msgid "Show more keyboard accelerators in menus"
 msgstr "Zobrazováno více klávesových akcelerátorů v nabídkách"
 
-#: data/io.elementary.files.appdata.xml.in.in:202
+#: data/io.elementary.files.appdata.xml.in.in:225
 msgid "Fix connecting to AFP servers so that passwords are remembered"
 msgstr "Opraveno připojování k AFP serverům, takže jsou zapamatována hesla"
 
-#: data/io.elementary.files.appdata.xml.in.in:203
+#: data/io.elementary.files.appdata.xml.in.in:226
 msgid "Fix MTP mounts"
 msgstr "Opravena MTP připojení"
 
-#: data/io.elementary.files.appdata.xml.in.in:207
+#: data/io.elementary.files.appdata.xml.in.in:230
 msgid "Launch files with double click instead of single click"
 msgstr "Spouštění souborů dvojklikem namísto jediného kliknutí"
 
-#: data/io.elementary.files.appdata.xml.in.in:208
+#: data/io.elementary.files.appdata.xml.in.in:231
 msgid "Provide a File Chooser portal for Flatpak apps"
 msgstr ""
 "Poskytuje portál pro výběr souborů pro aplikace pocházející z Flatpak balíčků"
 
-#: data/io.elementary.files.appdata.xml.in.in:209
+#: data/io.elementary.files.appdata.xml.in.in:232
 msgid "Brand new animated Sidebar"
 msgstr "Zcela nový animovaný postranní panel"
 
-#: data/io.elementary.files.appdata.xml.in.in:210
+#: data/io.elementary.files.appdata.xml.in.in:233
 msgid "Dark style support"
 msgstr "Podpora pro tmavý vzhled"
 
-#: data/io.elementary.files.appdata.xml.in.in:211
+#: data/io.elementary.files.appdata.xml.in.in:234
 msgid "Mint and Bubblegum color tags"
 msgstr "Mátová a žvýkačková barva pro štítky"
 
-#: data/io.elementary.files.appdata.xml.in.in:212
+#: data/io.elementary.files.appdata.xml.in.in:235
 msgid "Do not restore locations that have become inaccessible"
 msgstr "Neobnovovat umístění, která přestanou být dostupná"
 
-#: data/io.elementary.files.appdata.xml.in.in:213
+#: data/io.elementary.files.appdata.xml.in.in:236
 msgid "Clicking between thumbnail and text now activates/selects in Grid view"
 msgstr "Kliknutí mezi náhled a text nyní v zobrazení v mřížce aktivuje/vybírá"
 
-#: data/io.elementary.files.appdata.xml.in.in:214
+#: data/io.elementary.files.appdata.xml.in.in:237
 msgid "AFC protocol support"
 msgstr "Podpora protokolu AFC"
 
-#: data/io.elementary.files.appdata.xml.in.in:215
+#: data/io.elementary.files.appdata.xml.in.in:238
 msgid "Add a smaller minimum icon size in list view"
 msgstr "Přidána menší minimální velikost ikon v zobrazení v seznamu"
 
-#: data/io.elementary.files.appdata.xml.in.in:216
+#: data/io.elementary.files.appdata.xml.in.in:239
 msgid "Show emblems inline in list views"
 msgstr "V zobrazení v seznamu zobrazovat emblémy"
 
-#: data/io.elementary.files.appdata.xml.in.in:217
+#: data/io.elementary.files.appdata.xml.in.in:240
 msgid "Performance improvements"
 msgstr "Vylepšení výkonu"
 
-#: data/io.elementary.files.appdata.xml.in.in:218
+#: data/io.elementary.files.appdata.xml.in.in:241
 msgid "Stability improvements"
 msgstr "Vylepšení stability"
 
-#: data/io.elementary.files.appdata.xml.in.in:222
+#: data/io.elementary.files.appdata.xml.in.in:245
 msgid "Rename \"Devices\" to \"Storage\""
 msgstr "„Zařízení“ přejmenována na „Úložiště“"
 
-#: data/io.elementary.files.appdata.xml.in.in:231
+#: data/io.elementary.files.appdata.xml.in.in:254
 msgid "Bookmark menu option for network mounts in sidebar"
 msgstr "Volba záložka pro síťová připojení (mount) v postranním panelu"
 
-#: data/io.elementary.files.appdata.xml.in.in:232
+#: data/io.elementary.files.appdata.xml.in.in:255
 msgid "Show folder item count in List View"
 msgstr "V zobrazení v seznamu zobrazovat počet položek"
 
-#: data/io.elementary.files.appdata.xml.in.in:233
+#: data/io.elementary.files.appdata.xml.in.in:256
 msgid ""
 "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
 "network locations by default"
@@ -485,35 +530,35 @@ msgstr ""
 "Nyní ve výchozím stavu zobrazuje náhledy na lokálně připojených MTP a PTP "
 "zařízeních. To stejné na umístěních na síti"
 
-#: data/io.elementary.files.appdata.xml.in.in:234
+#: data/io.elementary.files.appdata.xml.in.in:257
 msgid ""
 "Properties window: Allow the filename to be copied when it cannot be edited"
 msgstr ""
 "Okno s vlastnostmi: Umožnit zkopírování názvu souboru, když ho není možné "
 "upravit"
 
-#: data/io.elementary.files.appdata.xml.in.in:235
+#: data/io.elementary.files.appdata.xml.in.in:258
 msgid "Improved tooltip formatting for devices in the sidebar"
 msgstr ""
 "Vylepšeno formátování nástrojového tipu pro zařízení v postranním panelu"
 
-#: data/io.elementary.files.appdata.xml.in.in:239
+#: data/io.elementary.files.appdata.xml.in.in:262
 msgid "Fix crash when pressing Enter and another key at the same time"
 msgstr "Opraven pád při stisku Enter a další klávesy naráz"
 
-#: data/io.elementary.files.appdata.xml.in.in:240
+#: data/io.elementary.files.appdata.xml.in.in:263
 msgid "Fix pathbar handling of \"~\" and \"..\" in path"
 msgstr ""
 "Opraveno zacházení pruhu pro popis umístění se znaky „~“ (tilda) a „..“ (dvě "
 "tečky – o úroveň výš) v popisu umístění"
 
-#: data/io.elementary.files.appdata.xml.in.in:241
+#: data/io.elementary.files.appdata.xml.in.in:264
 msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
 msgstr ""
 "Pruh s popisem umístění dialogu volby souboru už nepadá, když je vyvolán z "
 "aplikace, nainstalované z Flatpak balíčku"
 
-#: data/io.elementary.files.appdata.xml.in.in:242
+#: data/io.elementary.files.appdata.xml.in.in:265
 msgid ""
 "Do not show git status for repositories on FUSE filesystems to prevent "
 "possible blocking"
@@ -521,270 +566,270 @@ msgstr ""
 "Nezobrazovat stav gitu pro repozitáře, nacházející se na FUSE souborových "
 "systémech (prevence možného blokování)"
 
-#: data/io.elementary.files.appdata.xml.in.in:246
+#: data/io.elementary.files.appdata.xml.in.in:269
 msgid "\"Personal\" is now \"Bookmarks\""
 msgstr "„Osobní“ je nyní „Záložky“"
 
-#: data/io.elementary.files.appdata.xml.in.in:255
+#: data/io.elementary.files.appdata.xml.in.in:278
 msgid ""
 "Add warning and error colored disk usage bars when disk becomes too full"
 msgstr ""
 "Přidány vodorovné barevné varovné a chybové ukazatele když se disk zaplňuje"
 
-#: data/io.elementary.files.appdata.xml.in.in:256
+#: data/io.elementary.files.appdata.xml.in.in:279
 msgid ""
 "Prevent window resizing when filename column width exceeds available space"
 msgstr ""
 "Zabráněno změně velikosti okna pokud šířka sloupce s názvy souborů překročí "
 "dostupný prostor"
 
-#: data/io.elementary.files.appdata.xml.in.in:260
+#: data/io.elementary.files.appdata.xml.in.in:283
 msgid "Fix handling of filenames containing the # character"
 msgstr "Opraveno zacházení s názvy souborů obsahujících znak # (mřížka)"
 
-#: data/io.elementary.files.appdata.xml.in.in:261
+#: data/io.elementary.files.appdata.xml.in.in:284
 msgid "Fix regressions regarding pathbar context menus and clicking"
 msgstr ""
 "Opraven návrat chyby týkající se nabídek v pruhu s popisem umístění a klikání"
 
-#: data/io.elementary.files.appdata.xml.in.in:272
+#: data/io.elementary.files.appdata.xml.in.in:295
 msgid "Paste images into other apps instead of file paths where possible"
 msgstr ""
 "Kde je to možné, jsou do ostatních aplikací vkládány obrázky namísto popisů "
 "umístění souborů"
 
-#: data/io.elementary.files.appdata.xml.in.in:273
+#: data/io.elementary.files.appdata.xml.in.in:296
 msgid "Paste into a selected folder when using Ctrl + V"
 msgstr "Vložení do označené složky při použití Ctrl + V"
 
-#: data/io.elementary.files.appdata.xml.in.in:274
+#: data/io.elementary.files.appdata.xml.in.in:297
 msgid "Show file info overlay in List View as well"
 msgstr ""
 "Překryvné okno s informacemi o souboru zobrazováno také v zobrazení v seznamu"
 
-#: data/io.elementary.files.appdata.xml.in.in:275
+#: data/io.elementary.files.appdata.xml.in.in:298
 msgid "Traverse search results with Tab key"
 msgstr "Pohyb po výsledcích hledání pomocí klávesy Tab"
 
-#: data/io.elementary.files.appdata.xml.in.in:276
+#: data/io.elementary.files.appdata.xml.in.in:299
 msgid "Show an error message when attempting to open trashed files"
 msgstr ""
 "Při pokusu o otevření souborů, přesunutých do koše, už se zobrazuje chybové "
 "hlášení"
 
-#: data/io.elementary.files.appdata.xml.in.in:280
+#: data/io.elementary.files.appdata.xml.in.in:303
 msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
 msgstr ""
 "Opravena neupravovatelná oblast v liště s popisem umístění, která zobrazuje "
 "výplň pro domovskou složku"
 
-#: data/io.elementary.files.appdata.xml.in.in:281
+#: data/io.elementary.files.appdata.xml.in.in:304
 msgid "Fix an issue that prevented file modification times from showing"
 msgstr "Oprava problému který bránil zobrazování okamžiků úpravy souborů"
 
-#: data/io.elementary.files.appdata.xml.in.in:282
+#: data/io.elementary.files.appdata.xml.in.in:305
 msgid "Fix size of restored tiled window"
 msgstr "Pevná velikost obnoveného dlaždicového okna"
 
-#: data/io.elementary.files.appdata.xml.in.in:283
+#: data/io.elementary.files.appdata.xml.in.in:306
 msgid "Fix color tags disappearing when thumbnails hidden"
 msgstr "Opraveno mizení barevných štítků při skrytí náhledů"
 
-#: data/io.elementary.files.appdata.xml.in.in:295
+#: data/io.elementary.files.appdata.xml.in.in:318
 msgid "Fix crash when a device icon is coming from a file"
 msgstr "Oprava padání v případě, kdy ikona zařízení pochází ze souboru"
 
-#: data/io.elementary.files.appdata.xml.in.in:296
+#: data/io.elementary.files.appdata.xml.in.in:319
 msgid "Fix device icon sometimes missing"
 msgstr "Opraveno to, že občas chyběla ikona zařízení"
 
-#: data/io.elementary.files.appdata.xml.in.in:297
+#: data/io.elementary.files.appdata.xml.in.in:320
 msgid "Fix occasional view freeze after renaming"
 msgstr "Opraveno občasné zamrznutí pohledu po přejmenování"
 
-#: data/io.elementary.files.appdata.xml.in.in:298
+#: data/io.elementary.files.appdata.xml.in.in:321
 msgid "Improve renaming logic when dealing with leading/trailing whitespace"
 msgstr ""
 "Vylepšena logika při přejmenovávání při setkání se s mezerami před či za "
 "názvem"
 
-#: data/io.elementary.files.appdata.xml.in.in:299
+#: data/io.elementary.files.appdata.xml.in.in:322
 msgid "Fix breadcrumbs sometimes incorrect at startup"
 msgstr "Opraveno to, že drobečková navigace občas po spuštění nebyla správně"
 
-#: data/io.elementary.files.appdata.xml.in.in:300
+#: data/io.elementary.files.appdata.xml.in.in:323
 msgid "Do not show file:// prefix in navigation buttons menus"
 msgstr ""
 "V nabídkách pod navigačními tlačítky už se nezobrazuje předpona file://"
 
-#: data/io.elementary.files.appdata.xml.in.in:309
+#: data/io.elementary.files.appdata.xml.in.in:332
 msgid "Fix \"New Folder\" keyboard shortcut label in menu"
 msgstr "Opraven štítek klávesové zkratky pro „Nová složka“ v nabídce"
 
-#: data/io.elementary.files.appdata.xml.in.in:310
+#: data/io.elementary.files.appdata.xml.in.in:333
 msgid "Fix navigation with back/forward button context menu"
 msgstr "Oprava navigace s tlačítkem zpět/znovu v kontextové nabídce tlačítka"
 
-#: data/io.elementary.files.appdata.xml.in.in:311
+#: data/io.elementary.files.appdata.xml.in.in:334
 msgid "Fix path bar sometimes showing wrong path when closing a tab"
 msgstr ""
 "Opraveno občasné zobrazování nesprávného popisu umístění při zavření karty"
 
-#: data/io.elementary.files.appdata.xml.in.in:312
+#: data/io.elementary.files.appdata.xml.in.in:335
 msgid ""
 "Ensure keyboard shortcuts work immediately after creating or renaming a file"
 msgstr ""
 "Zajištěno aby klávesové zkratky fungovaly okamžitě po vytvoření či "
 "přejmenování souboru"
 
-#: data/io.elementary.files.appdata.xml.in.in:313
+#: data/io.elementary.files.appdata.xml.in.in:336
 msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
 msgstr ""
 "Do textu v liště s popisem umístění už není zahrnováno „file://“ (stejně tak "
 "při vkládání jako text)"
 
-#: data/io.elementary.files.appdata.xml.in.in:321
+#: data/io.elementary.files.appdata.xml.in.in:344
 msgid "Show keyboard shortcuts in menu items"
 msgstr "U položek nabídek už jsou zobrazovány klávesové zkratky"
 
-#: data/io.elementary.files.appdata.xml.in.in:322
+#: data/io.elementary.files.appdata.xml.in.in:345
 msgid "Fix an issue with breadcrumbs in the file chooser"
 msgstr "Opraven problém s drobečkovou navigací ve voliči souborů"
 
-#: data/io.elementary.files.appdata.xml.in.in:323
+#: data/io.elementary.files.appdata.xml.in.in:346
 msgid "Show a warning when ejecting a volume that's still in use"
 msgstr ""
 "Už se zobrazuje varování při odpojování svazku, který je něčím využíván"
 
-#: data/io.elementary.files.appdata.xml.in.in:324
+#: data/io.elementary.files.appdata.xml.in.in:347
 msgid "Fix cursor update after horizontal scroll in Column View"
 msgstr ""
 "Opraveno překreslení kurzoru po vodorovném posunutí ve sloupcovém zobrazení"
 
-#: data/io.elementary.files.appdata.xml.in.in:325
+#: data/io.elementary.files.appdata.xml.in.in:348
 msgid "Fix folder-open icon persisting after closing Column View"
 msgstr ""
 "Opravena zůstávání ikony otevřené složky po zavření sloupcového zobrazení"
 
-#: data/io.elementary.files.appdata.xml.in.in:326
+#: data/io.elementary.files.appdata.xml.in.in:349
 msgid "Use destructive action styling for some trash dialog buttons"
 msgstr "Použito stylování desktruktivní akce pro některá tlačítka dialogu Koše"
 
-#: data/io.elementary.files.appdata.xml.in.in:333
+#: data/io.elementary.files.appdata.xml.in.in:356
 msgid "New features:"
 msgstr "Nové funkce:"
 
-#: data/io.elementary.files.appdata.xml.in.in:335
+#: data/io.elementary.files.appdata.xml.in.in:358
 msgid "Initial git plugin support"
 msgstr "Počáteční podpora zásuvného modulu pro git"
 
-#: data/io.elementary.files.appdata.xml.in.in:336
+#: data/io.elementary.files.appdata.xml.in.in:359
 msgid "Follow global history setting when restoring and saving tabs"
 msgstr ""
 "Při obnovování a ukládání karet se už řídí globálním nastavením ohledně "
 "historie"
 
-#: data/io.elementary.files.appdata.xml.in.in:340
+#: data/io.elementary.files.appdata.xml.in.in:363
 msgid "Ensure tabs showing same folder remain synchronized"
 msgstr ""
 "Zajištěno, že karty zobrazující stejnou složku zůstanou synchronizované"
 
-#: data/io.elementary.files.appdata.xml.in.in:341
+#: data/io.elementary.files.appdata.xml.in.in:364
 msgid "Fix drag with secondary button on empty space"
 msgstr "Opraveno přetahování sekundárním tlačítkem do prázdného prostoru"
 
-#: data/io.elementary.files.appdata.xml.in.in:342
+#: data/io.elementary.files.appdata.xml.in.in:365
 msgid "Show custom media type icons for installed apps"
 msgstr ""
 "Už se zobrazují uživatelsky určené ikony typu média pro nainstalované "
 "aplikace"
 
-#: data/io.elementary.files.appdata.xml.in.in:343
+#: data/io.elementary.files.appdata.xml.in.in:366
 msgid "Fix appearance of inactive diskspace indicator"
 msgstr "Opraven vzhled neaktivního indikátoru diskového prostoru"
 
-#: data/io.elementary.files.appdata.xml.in.in:344
+#: data/io.elementary.files.appdata.xml.in.in:367
 msgid "Improve pathbar animation"
 msgstr "Vylepšena animace lišty s popisem umístění"
 
-#: data/io.elementary.files.appdata.xml.in.in:345
+#: data/io.elementary.files.appdata.xml.in.in:368
 msgid "Update documentation"
 msgstr "Aktualizována dokumentace"
 
-#: data/io.elementary.files.appdata.xml.in.in:346
+#: data/io.elementary.files.appdata.xml.in.in:369
 msgid "Update translations"
 msgstr "Aktualizovány překlady"
 
-#: data/io.elementary.files.appdata.xml.in.in:353
+#: data/io.elementary.files.appdata.xml.in.in:376
 msgid "Initial cloudproviders plugin support"
 msgstr "Počáteční podpora zásuvného modulu pro poskytovatele cloudových služeb"
 
-#: data/io.elementary.files.appdata.xml.in.in:354
+#: data/io.elementary.files.appdata.xml.in.in:377
 msgid "Fix selecting pasted files"
 msgstr "Opraveno vybírání vložených souborů"
 
-#: data/io.elementary.files.appdata.xml.in.in:355
+#: data/io.elementary.files.appdata.xml.in.in:378
 msgid "Fix color label visibility while using dark theme"
 msgstr "Opravena viditelnost barevného štítku při použití tmavého motivu"
 
-#: data/io.elementary.files.appdata.xml.in.in:356
+#: data/io.elementary.files.appdata.xml.in.in:379
 msgid "Fix selecting files using Shift key"
 msgstr "Opraven výběr souborů pomocí klávesy Shift"
 
-#: data/io.elementary.files.appdata.xml.in.in:357
+#: data/io.elementary.files.appdata.xml.in.in:380
 msgid "Draw checkerboard background for image items"
 msgstr "Vykreslováno šachovnicové pozadí pro položky obrázků"
 
-#: data/io.elementary.files.appdata.xml.in.in:358
+#: data/io.elementary.files.appdata.xml.in.in:381
 msgid "Improved styling for disk space bars"
 msgstr "Vylepšen styl pro ukazatele prostoru na disku"
 
-#: data/io.elementary.files.appdata.xml.in.in:366
+#: data/io.elementary.files.appdata.xml.in.in:389
 msgid "Show more search results"
 msgstr "Zobrazováno více výsledků vyhledávání"
 
-#: data/io.elementary.files.appdata.xml.in.in:367
+#: data/io.elementary.files.appdata.xml.in.in:390
 msgid "Ensure valid tab name generation"
 msgstr "Zajištěno vytváření platných názvů pro karty"
 
-#: data/io.elementary.files.appdata.xml.in.in:368
+#: data/io.elementary.files.appdata.xml.in.in:391
 msgid "Properly sort folders by date and size"
 msgstr "Správné řazení složek podle data a velikosti"
 
-#: data/io.elementary.files.appdata.xml.in.in:369
+#: data/io.elementary.files.appdata.xml.in.in:392
 msgid "Launching Files from Terminal now opens new tab instead of new window"
 msgstr ""
 "Spouštění Souborů z Terminálu nyní otevře novou kartu namísto nového okna"
 
-#: data/io.elementary.files.appdata.xml.in.in:370
+#: data/io.elementary.files.appdata.xml.in.in:393
 msgid "Improve MTP support"
 msgstr "Vylepšená podpora protokolu MTP"
 
-#: data/io.elementary.files.appdata.xml.in.in:371
+#: data/io.elementary.files.appdata.xml.in.in:394
 msgid "Various tagging feature refinements"
 msgstr "Různá doladění funkce označování štítky"
 
-#: data/io.elementary.files.appdata.xml.in.in:372
+#: data/io.elementary.files.appdata.xml.in.in:395
 msgid "Keyboard navigation improvements"
 msgstr "Vylepšení navigace pomocí klávesnice"
 
-#: data/io.elementary.files.appdata.xml.in.in:373
+#: data/io.elementary.files.appdata.xml.in.in:396
 msgid "Symlink copy and paste fixes"
 msgstr "Opravy kopírování a vkládání symbolických odkazů"
 
-#: data/io.elementary.files.appdata.xml.in.in:374
+#: data/io.elementary.files.appdata.xml.in.in:397
 msgid "Avoid crash when Templates folder is null"
 msgstr "Vyhnutí se pádu když je složka Šablon null"
 
-#: data/io.elementary.files.appdata.xml.in.in:375
+#: data/io.elementary.files.appdata.xml.in.in:398
 msgid "Reduce memory footprint of FileChooserDialog"
 msgstr "Snížení nároků na paměť dialogu voliče souborů"
 
-#: data/io.elementary.files.appdata.xml.in.in:376
+#: data/io.elementary.files.appdata.xml.in.in:399
 msgid "Avoid crash when selecting image file in some situations"
 msgstr "Vyhnuto se pádu v některých situacích při výběru souboru s obrázkem"
 
-#: data/io.elementary.files.appdata.xml.in.in:377
+#: data/io.elementary.files.appdata.xml.in.in:400
 msgid ""
 "Fix unclosable progress window while copying network files to removable "
 "storage"
@@ -792,48 +837,48 @@ msgstr ""
 "Opravena nemožnost zavřít okno s ukazatelem průběhu při kopírování souborů "
 "ze sítě na vyjímatelné úložiště"
 
-#: data/io.elementary.files.appdata.xml.in.in:378
+#: data/io.elementary.files.appdata.xml.in.in:401
 msgid "Fix drag and drop after double clicking a blank area"
 msgstr "Opraveno přetahování položek po dvojkliku do prázdné oblasti"
 
-#: data/io.elementary.files.appdata.xml.in.in:379
+#: data/io.elementary.files.appdata.xml.in.in:402
 msgid "Avoid crash while scrolling over view switcher"
 msgstr "Vyhnutí se pádu při otáčením kolečkem myši nad přepínačem pohledů"
 
-#: data/io.elementary.files.appdata.xml.in.in:380
+#: data/io.elementary.files.appdata.xml.in.in:403
 msgid "Avoid possible crash in some copy and paste situations"
 msgstr ""
 "Vyhnutí se možnému pádu v některých situacích při kopírování a vkládání"
 
-#: data/io.elementary.files.appdata.xml.in.in:388
+#: data/io.elementary.files.appdata.xml.in.in:411
 msgid "Keyboard navigation fix for cherry picking select files in Grid view"
 msgstr ""
 "Opravena navigace pomocí klávesnice pro vybírání jednotlivých souborů v "
 "zobrazení v mřížce"
 
-#: data/io.elementary.files.appdata.xml.in.in:389
+#: data/io.elementary.files.appdata.xml.in.in:412
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
 "Styl textu výplně není napevno ve zdrojovém kódu – řeší problém s tmavým "
 "motivem vzhledu"
 
-#: data/io.elementary.files.appdata.xml.in.in:397
+#: data/io.elementary.files.appdata.xml.in.in:420
 msgid "Minor spacing adjustments to location bar"
 msgstr "Drobné úpravy rozestupů v pruhu umístění"
 
-#: data/io.elementary.files.appdata.xml.in.in:398
+#: data/io.elementary.files.appdata.xml.in.in:421
 msgid "Fix F2 renaming behavior"
 msgstr "Opraveno chování přejmenovávání klávesou F2"
 
-#: data/io.elementary.files.appdata.xml.in.in:406
+#: data/io.elementary.files.appdata.xml.in.in:429
 msgid "Minor spacing adjustments to location breadcrumbs"
 msgstr "Drobné úpravy rozestupů drobečkové navigace v umístění"
 
-#: data/io.elementary.files.appdata.xml.in.in:407
+#: data/io.elementary.files.appdata.xml.in.in:430
 msgid "Consistently remember color tags"
 msgstr "Jednotné zapamatování barevných štítků"
 
-#: data/io.elementary.files.appdata.xml.in.in:408
+#: data/io.elementary.files.appdata.xml.in.in:431
 msgid ""
 "Reload thumbnails when changing zoom level to avoid showing placeholder "
 "unnecessarily"
@@ -841,211 +886,211 @@ msgstr ""
 "Při změně úrovně přiblížení jsou znovu načteny náhledy aby se zabránilo "
 "zbytečnému zobrazování výplní"
 
-#: data/io.elementary.files.appdata.xml.in.in:409
+#: data/io.elementary.files.appdata.xml.in.in:432
 msgid "Fix running scripts with spaces in filename"
 msgstr "Opraveno spouštění skriptů s mezerami v názvu"
 
-#: data/io.elementary.files.appdata.xml.in.in:417
+#: data/io.elementary.files.appdata.xml.in.in:440
 msgid "Fix high CPU regression in version 4.1.4"
 msgstr "Oprava regrese nadměrného vytěžování procesoru ve verzi 4.1.4"
 
-#: data/io.elementary.files.appdata.xml.in.in:418
+#: data/io.elementary.files.appdata.xml.in.in:441
 msgid "File sorting fixes"
 msgstr "Opravy řazení souborů"
 
-#: data/io.elementary.files.appdata.xml.in.in:426
+#: data/io.elementary.files.appdata.xml.in.in:449
 msgid "Meson: fix soversion names"
 msgstr "Meson: opraveny soversion názvy"
 
-#: data/io.elementary.files.appdata.xml.in.in:427
+#: data/io.elementary.files.appdata.xml.in.in:450
 msgid "Remove CMake build system"
 msgstr "Odebrán systém pro sestavování CMake"
 
-#: data/io.elementary.files.appdata.xml.in.in:428
+#: data/io.elementary.files.appdata.xml.in.in:451
 msgid "Fix missing File System properties menu"
 msgstr "Opravena absence nabídky ohledně vlastností souborového systému"
 
-#: data/io.elementary.files.appdata.xml.in.in:429
+#: data/io.elementary.files.appdata.xml.in.in:452
 msgid "Drop intltool dependency"
 msgstr "Zahozena závislost na nástroji intltool"
 
-#: data/io.elementary.files.appdata.xml.in.in:430
+#: data/io.elementary.files.appdata.xml.in.in:453
 msgid "Fix default file type handler logic"
 msgstr "Opravena výchozí logika obsluhy typu souboru"
 
-#: data/io.elementary.files.appdata.xml.in.in:431
+#: data/io.elementary.files.appdata.xml.in.in:454
 msgid "Fix initial search window size too small"
 msgstr "Opravena příliš malá počáteční velikost okna vyhledáávní"
 
-#: data/io.elementary.files.appdata.xml.in.in:432
+#: data/io.elementary.files.appdata.xml.in.in:455
 msgid "Add option to disable local file thumbnails"
 msgstr "Přidána volba pro vypnutí vytváření náhledů místních souborů"
 
-#: data/io.elementary.files.appdata.xml.in.in:433
+#: data/io.elementary.files.appdata.xml.in.in:456
 msgid "Fix crash when opening multiple video files"
 msgstr "Oprava padání při otevírání vícero videosouborů"
 
-#: data/io.elementary.files.appdata.xml.in.in:434
+#: data/io.elementary.files.appdata.xml.in.in:457
 msgid "Fix some timing issues around adding and removing files"
 msgstr ""
 "Opraveny některé problémy s časováním při přidávání a odebírání souborů"
 
-#: data/io.elementary.files.appdata.xml.in.in:435
+#: data/io.elementary.files.appdata.xml.in.in:458
 msgid "Meson: fix missing library headers"
 msgstr "Meson:přidány chybějící hlavičky knihoven"
 
-#: data/io.elementary.files.appdata.xml.in.in:436
+#: data/io.elementary.files.appdata.xml.in.in:459
 msgid "Fix color tag display"
 msgstr "Opraveno zobrazení barevných štítků"
 
-#: data/io.elementary.files.appdata.xml.in.in:437
+#: data/io.elementary.files.appdata.xml.in.in:460
 msgid "Show reserved space in Properties window"
 msgstr "Do okna Vlastnosti přidáno zobrazování vyhrazeného místa"
 
-#: data/io.elementary.files.appdata.xml.in.in:445
+#: data/io.elementary.files.appdata.xml.in.in:468
 msgid "Add border radius to text background"
 msgstr "K pozadí textu přidán rádius ohraničení"
 
-#: data/io.elementary.files.appdata.xml.in.in:446
+#: data/io.elementary.files.appdata.xml.in.in:469
 msgid "Fix file mimetype association regression"
 msgstr "Opravena regrese v přiřazení mimetypu souboru"
 
-#: data/io.elementary.files.appdata.xml.in.in:447
+#: data/io.elementary.files.appdata.xml.in.in:470
 msgid "New pathbar tooltips"
 msgstr "Nové nástrojové tipy v pruhu s popisem umístění"
 
-#: data/io.elementary.files.appdata.xml.in.in:448
+#: data/io.elementary.files.appdata.xml.in.in:471
 msgid "Build fixes"
 msgstr "Opravy pro sestavování (build)"
 
-#: data/io.elementary.files.appdata.xml.in.in:456
+#: data/io.elementary.files.appdata.xml.in.in:479
 msgid "Plugin build fixes"
 msgstr "Opravy sestavování (build) zásuvných modulů"
 
-#: data/io.elementary.files.appdata.xml.in.in:464
+#: data/io.elementary.files.appdata.xml.in.in:487
 msgid "Fix Ctrl+Tab behavior"
 msgstr "Opraveno chování Ctrl+Tab"
 
-#: data/io.elementary.files.appdata.xml.in.in:465
+#: data/io.elementary.files.appdata.xml.in.in:488
 msgid "Fix building without Unity library"
 msgstr "Opraveno sestavování (build) bez knihovny Unity"
 
-#: data/io.elementary.files.appdata.xml.in.in:472
+#: data/io.elementary.files.appdata.xml.in.in:495
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
 msgstr ""
 "Skrytí drobečkové navigace a zobrazení výplně a ikony hledání v domovské "
 "složce"
 
-#: data/io.elementary.files.appdata.xml.in.in:473
+#: data/io.elementary.files.appdata.xml.in.in:496
 msgid "Style error dialogs"
 msgstr "Opatření dialogových oken chyb styly"
 
-#: data/io.elementary.files.appdata.xml.in.in:474
+#: data/io.elementary.files.appdata.xml.in.in:497
 msgid "Right click fixes"
 msgstr "Opravy klikání pravým tlačítkem"
 
-#: data/io.elementary.files.appdata.xml.in.in:475
+#: data/io.elementary.files.appdata.xml.in.in:498
 msgid "Reload recent view when privacy setting changes"
 msgstr ""
 "Znovunačtení nedávno zobrazeného při změnách nastavení ochrany soukromí"
 
-#: data/io.elementary.files.appdata.xml.in.in:476
+#: data/io.elementary.files.appdata.xml.in.in:499
 msgid "`Connect Server` fixes"
 msgstr "Opravy pro `Připojit k serverům`"
 
-#: data/io.elementary.files.appdata.xml.in.in:477
+#: data/io.elementary.files.appdata.xml.in.in:500
 msgid "Do not activate multiple files with single click"
 msgstr "Neaktivování vícero souborů jedním kliknutím"
 
-#: data/io.elementary.files.appdata.xml.in.in:478
+#: data/io.elementary.files.appdata.xml.in.in:501
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
 msgstr ""
 "Použití`Tab` pro přepínání pohledu a zaměření klávesnice pro postranní lištu"
 
-#: data/io.elementary.files.appdata.xml.in.in:479
+#: data/io.elementary.files.appdata.xml.in.in:502
 msgid "Delete color tag database entries for trashed files"
 msgstr "Mazání položek barevných štítků pro smazané soubory"
 
-#: data/io.elementary.files.appdata.xml.in.in:480
+#: data/io.elementary.files.appdata.xml.in.in:503
 msgid "Throttle tab closing"
 msgstr "Zpomaleno zavírání karet"
 
-#: data/io.elementary.files.appdata.xml.in.in:481
+#: data/io.elementary.files.appdata.xml.in.in:504
 msgid "`Ctrl` key fixes"
 msgstr "Opravy chování klávesy `Ctrl`"
 
-#: data/io.elementary.files.appdata.xml.in.in:482
+#: data/io.elementary.files.appdata.xml.in.in:505
 msgid "Drag and drop fixes"
 msgstr "Opravy přetahování položek"
 
-#: data/io.elementary.files.appdata.xml.in.in:483
+#: data/io.elementary.files.appdata.xml.in.in:506
 msgid "Show icons in `Open with` menus"
 msgstr "Zobrazení ikon v nabídkách `Otevřít pomocí`"
 
-#: data/io.elementary.files.appdata.xml.in.in:484
+#: data/io.elementary.files.appdata.xml.in.in:507
 msgid "Tooltip fixes"
 msgstr "Opravy nástrojových tipů"
 
-#: data/io.elementary.files.appdata.xml.in.in:485
+#: data/io.elementary.files.appdata.xml.in.in:508
 msgid "Memory leak fixes"
 msgstr "Opravy neuvolňování operační paměti (leak)"
 
-#: data/io.elementary.files.appdata.xml.in.in:486
+#: data/io.elementary.files.appdata.xml.in.in:509
 msgid "Crash fixes"
 msgstr "Opravy pádů"
 
-#: data/io.elementary.files.appdata.xml.in.in:487
+#: data/io.elementary.files.appdata.xml.in.in:510
 msgid "Trash: respect sound setting"
 msgstr "Koš: respektováno nastavení zvuků"
 
-#: data/io.elementary.files.appdata.xml.in.in:488
+#: data/io.elementary.files.appdata.xml.in.in:511
 msgid "Localization fixes"
 msgstr "Opravy lokalizace"
 
-#: data/io.elementary.files.appdata.xml.in.in:496
+#: data/io.elementary.files.appdata.xml.in.in:519
 msgid "Over 100 major and minor bug fixes and improvements"
 msgstr "Přes 100 oprav malých a velkých chyb a vylepšení"
 
-#: data/io.elementary.files.appdata.xml.in.in:503
+#: data/io.elementary.files.appdata.xml.in.in:526
 msgid "Honor 12/24hr system setting"
 msgstr "Řízení se nastavení systému ohledně 12/24hodinového času"
 
-#: data/io.elementary.files.appdata.xml.in.in:504
+#: data/io.elementary.files.appdata.xml.in.in:527
 msgid "Distinguish between tabs with the same name"
 msgstr "Rozlišování mezi kartami se stejným názvem"
 
-#: data/io.elementary.files.appdata.xml.in.in:505
+#: data/io.elementary.files.appdata.xml.in.in:528
 msgid "Support launching from other applications with a target file selected"
 msgstr "Podpora pro spouštění z ostatních aplikací s vybraným cílovým souborem"
 
-#: data/io.elementary.files.appdata.xml.in.in:506
-#: data/io.elementary.files.appdata.xml.in.in:519
-#: data/io.elementary.files.appdata.xml.in.in:533
-#: data/io.elementary.files.appdata.xml.in.in:543
-#: data/io.elementary.files.appdata.xml.in.in:554
+#: data/io.elementary.files.appdata.xml.in.in:529
+#: data/io.elementary.files.appdata.xml.in.in:542
+#: data/io.elementary.files.appdata.xml.in.in:556
+#: data/io.elementary.files.appdata.xml.in.in:566
+#: data/io.elementary.files.appdata.xml.in.in:577
 msgid "New translations"
 msgstr "Nové překlady"
 
-#: data/io.elementary.files.appdata.xml.in.in:507
-#: data/io.elementary.files.appdata.xml.in.in:520
-#: data/io.elementary.files.appdata.xml.in.in:534
-#: data/io.elementary.files.appdata.xml.in.in:544
-#: data/io.elementary.files.appdata.xml.in.in:555
-#: data/io.elementary.files.appdata.xml.in.in:562
-#: data/io.elementary.files.appdata.xml.in.in:569
-#: data/io.elementary.files.appdata.xml.in.in:593
+#: data/io.elementary.files.appdata.xml.in.in:530
+#: data/io.elementary.files.appdata.xml.in.in:543
+#: data/io.elementary.files.appdata.xml.in.in:557
+#: data/io.elementary.files.appdata.xml.in.in:567
+#: data/io.elementary.files.appdata.xml.in.in:578
+#: data/io.elementary.files.appdata.xml.in.in:585
+#: data/io.elementary.files.appdata.xml.in.in:592
+#: data/io.elementary.files.appdata.xml.in.in:616
 msgid "Minor bug fixes"
 msgstr "Opravy drobných chyb"
 
-#: data/io.elementary.files.appdata.xml.in.in:514
+#: data/io.elementary.files.appdata.xml.in.in:537
 msgid "Improved networking support"
 msgstr "Vylepšená podpora práce v síti"
 
-#: data/io.elementary.files.appdata.xml.in.in:515
+#: data/io.elementary.files.appdata.xml.in.in:538
 msgid "Correct window geometry when snapping to left or right"
 msgstr "Oprava geometrie okna, když je připnuto nalevo nebo napravo"
 
-#: data/io.elementary.files.appdata.xml.in.in:516
+#: data/io.elementary.files.appdata.xml.in.in:539
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
@@ -1053,18 +1098,18 @@ msgstr ""
 "Stisknutí Ctrl už nezruší přejmenování, když je aktivována funkce „Zobrazit "
 "ukazatel“"
 
-#: data/io.elementary.files.appdata.xml.in.in:517
+#: data/io.elementary.files.appdata.xml.in.in:540
 msgid "Switching input language cancels actions"
 msgstr "Přepnutí vstupního jazyka zruší akce"
 
-#: data/io.elementary.files.appdata.xml.in.in:518
-#: data/io.elementary.files.appdata.xml.in.in:532
-#: data/io.elementary.files.appdata.xml.in.in:542
-#: data/io.elementary.files.appdata.xml.in.in:553
+#: data/io.elementary.files.appdata.xml.in.in:541
+#: data/io.elementary.files.appdata.xml.in.in:555
+#: data/io.elementary.files.appdata.xml.in.in:565
+#: data/io.elementary.files.appdata.xml.in.in:576
 msgid "Various crash fixes"
 msgstr "Různé opravy pádů"
 
-#: data/io.elementary.files.appdata.xml.in.in:527
+#: data/io.elementary.files.appdata.xml.in.in:550
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
@@ -1072,55 +1117,55 @@ msgstr ""
 "Webové prohlížeče jako např. Firefox si nyní pamatují naposledy použitou "
 "složku pro stahování"
 
-#: data/io.elementary.files.appdata.xml.in.in:528
+#: data/io.elementary.files.appdata.xml.in.in:551
 msgid "Remember preferred zoom level"
 msgstr "Je zapamatovávána upřednostňovaná úroveň přiblížení"
 
-#: data/io.elementary.files.appdata.xml.in.in:529
+#: data/io.elementary.files.appdata.xml.in.in:552
 msgid "Improved input method support"
 msgstr "Vylepšena podpora vstupních metod"
 
-#: data/io.elementary.files.appdata.xml.in.in:530
+#: data/io.elementary.files.appdata.xml.in.in:553
 msgid "910x640 minimum window size"
 msgstr "910x640 minimální velikost okna"
 
-#: data/io.elementary.files.appdata.xml.in.in:531
+#: data/io.elementary.files.appdata.xml.in.in:554
 msgid "Security fixes"
 msgstr "Opravy zabezpečení"
 
-#: data/io.elementary.files.appdata.xml.in.in:541
+#: data/io.elementary.files.appdata.xml.in.in:564
 msgid "Enable drag and drop tabs between windows"
 msgstr "Umožněno přetahování karet mezi okny"
 
-#: data/io.elementary.files.appdata.xml.in.in:551
+#: data/io.elementary.files.appdata.xml.in.in:574
 msgid "Merge search functionality into Ctrl+F"
 msgstr "Sloučena funkce hledání do Ctrl+F"
 
-#: data/io.elementary.files.appdata.xml.in.in:552
+#: data/io.elementary.files.appdata.xml.in.in:575
 msgid "Improved translation support"
 msgstr "Vylepšena podpora pro překládání"
 
-#: data/io.elementary.files.appdata.xml.in.in:576
+#: data/io.elementary.files.appdata.xml.in.in:599
 msgid "Fix appdata release dates"
 msgstr "Oprava dat vydání v appdata metadatech"
 
-#: data/io.elementary.files.appdata.xml.in.in:583
+#: data/io.elementary.files.appdata.xml.in.in:606
 msgid "Improve file opening over Samba shares"
 msgstr "Vylepšeno otevírání souborů ze Samba sdílení"
 
-#: data/io.elementary.files.appdata.xml.in.in:584
+#: data/io.elementary.files.appdata.xml.in.in:607
 msgid "Fix a crash when restoring items from the Trash"
 msgstr "Oprava padání při obnově položek z koše"
 
-#: data/io.elementary.files.appdata.xml.in.in:585
+#: data/io.elementary.files.appdata.xml.in.in:608
 msgid "Improve cut/copy/paste sensitivity in context menu"
 msgstr "Vylepšena citlivost vyjmout/kopírovat/vložit v kontextové nabídce"
 
-#: data/io.elementary.files.appdata.xml.in.in:586
+#: data/io.elementary.files.appdata.xml.in.in:609
 msgid "Translation updates"
 msgstr "Aktualizovány překlady"
 
-#: data/io.elementary.files.appdata.xml.in.in:598
+#: data/io.elementary.files.appdata.xml.in.in:621
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
@@ -1133,6 +1178,9 @@ msgid "Authentication is required to run Files as Administrator"
 msgstr ""
 "Pro spuštění aplikace Soubory s oprávněními na úrovni správce systému je "
 "vyžadováno ověření se"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-file-manager"
 
 #~ msgid "About Files"
 #~ msgstr "O aplikaci Soubory"

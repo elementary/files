@@ -22,12 +22,17 @@ public class Files.FileOperations.CommonJob {
     protected unowned GLib.Cancellable? cancellable;
     protected PF.Progress.Info progress;
     protected Files.UndoActionData? undo_redo_data;
+    protected GLib.Timer time;
+    protected bool skip_all_error;
+    protected GLib.HashTable<GLib.File, bool>? skip_readdir_error;
+    protected GLib.HashTable<GLib.File, unowned GLib.File>? skip_files;
     protected CommonJob (Gtk.Window? parent_window = null) {
         this.parent_window = parent_window;
         inhibit_cookie = 0;
         progress = new PF.Progress.Info ();
         cancellable = progress.cancellable;
         undo_redo_data = null;
+        time = new GLib.Timer ();
     }
 
     ~CommonJob () {
