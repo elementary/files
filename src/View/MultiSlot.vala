@@ -55,8 +55,6 @@ public class Files.MultiSlot : Files.AbstractSlot {
             show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
         });
 
-        // colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-
         scrolled_window = new Gtk.ScrolledWindow () {
             hscrollbar_policy = Gtk.PolicyType.ALWAYS,
             vscrollbar_policy = Gtk.PolicyType.NEVER
@@ -64,8 +62,9 @@ public class Files.MultiSlot : Files.AbstractSlot {
 
         hadj = scrolled_window.get_hadjustment ();
 
-        viewport = new Gtk.Viewport (null, null);
-        // viewport.set_child (this.colpane);
+        viewport = new Gtk.Viewport (null, null) {
+            scroll_to_focus = true //TODO Is this sufficient?
+        };
 
         scrolled_window.set_child (viewport);
         add_main_child (scrolled_window);
@@ -159,7 +158,6 @@ public class Files.MultiSlot : Files.AbstractSlot {
     }
 
     private void change_path (GLib.File loc) {
-warning ("Miller change path %s", loc.get_uri ());
         var first_slot = slot_list.first ().data;
         string root_uri = first_slot.uri;
         string target_uri = loc.get_uri ();
@@ -171,7 +169,6 @@ warning ("Miller change path %s", loc.get_uri ());
             copy_slot_list.reverse ();
             foreach (Slot s in copy_slot_list) {
                 if (add_relative_path (s, loc)) {
-warning ("found parent slot");
                     found = true;
                     break;
                 }
@@ -180,7 +177,6 @@ warning ("found parent slot");
 
         /* If requested location is not a child of any slot, start a new tree */
         if (!found) {
-warning ("not found - make root");
             truncate_list_after_slot (first_slot);
             if (loc.get_uri () != first_slot.uri) {
                 first_slot.user_path_change_request (loc);
@@ -237,7 +233,7 @@ warning ("not found - make root");
         slot.active.connect (on_slot_active);
         slot.miller_slot_request.connect (on_miller_slot_request);
         slot.new_container_request.connect (on_new_container_request);
-        slot.size_change.connect (update_total_width);
+        // slot.size_change.connect (update_total_width);
         slot.folder_deleted.connect (on_slot_folder_deleted);
         //TODO Use EventController
         // slot.colpane.key_press_event.connect (on_key_pressed);
@@ -252,7 +248,7 @@ warning ("not found - make root");
         slot.active.disconnect (on_slot_active);
         slot.miller_slot_request.disconnect (on_miller_slot_request);
         slot.new_container_request.disconnect (on_new_container_request);
-        slot.size_change.disconnect (update_total_width);
+        // slot.size_change.disconnect (update_total_width);
         slot.folder_deleted.disconnect (on_slot_folder_deleted);
         // slot.colpane.key_press_event.disconnect (on_key_pressed);
         slot.path_changed.disconnect (on_slot_path_changed);
@@ -303,9 +299,9 @@ warning ("not found - make root");
             slot = aslot as Slot;
         }
 
-        if (scroll) {
-            schedule_scroll_to_slot (slot, animate);
-        }
+        // if (scroll) {
+        //     schedule_scroll_to_slot (slot, animate);
+        // }
 
         if (this.current_slot != slot) {
             slot_list.@foreach ((s) => {
@@ -451,53 +447,54 @@ warning ("not found - make root");
 
 /** Helper functions */
 
-    private void schedule_scroll_to_slot (Slot slot, bool animate = true) {
-        if (scroll_to_slot_timeout_id > 0) {
-            GLib.Source.remove (scroll_to_slot_timeout_id);
-        }
+//     private void schedule_scroll_to_slot (Slot slot, bool animate = true) {
+// return;
+//         if (scroll_to_slot_timeout_id > 0) {
+//             GLib.Source.remove (scroll_to_slot_timeout_id);
+//         }
 
-        scroll_to_slot_timeout_id = GLib.Timeout.add (200, () => {
-            /* Wait until slot realized and loaded before scrolling
-             * Cannot accurately scroll until directory finishes loading because width will change
-             * according the length of the longest filename */
-            if (!scrolled_window.get_realized () || slot.directory.state != Directory.State.LOADED) {
-                return Source.CONTINUE;
-            }
+//         scroll_to_slot_timeout_id = GLib.Timeout.add (200, () => {
+//             /* Wait until slot realized and loaded before scrolling
+//              * Cannot accurately scroll until directory finishes loading because width will change
+//              * according the length of the longest filename */
+//             if (!scrolled_window.get_realized () || slot.directory.state != Directory.State.LOADED) {
+//                 return Source.CONTINUE;
+//             }
 
-            if (get_animating ()) {
-                cancel_animation ();
-            }
+//             if (get_animating ()) {
+//                 cancel_animation ();
+//             }
 
-            // Calculate position to scroll to
-            int total_width_before = 0; /* left edge of active slot */
-            slot_list.@foreach ((abs) => {
-                if (abs.slot_number < slot.slot_number) {
-                    total_width_before += abs.width;
-                }
-            });
+//             // Calculate position to scroll to
+//             int total_width_before = 0; /* left edge of active slot */
+//             slot_list.@foreach ((abs) => {
+//                 if (abs.slot_number < slot.slot_number) {
+//                     total_width_before += abs.width;
+//                 }
+//             });
 
-            int hadj_value = (int) this.hadj.get_value ();
-            int offset = total_width_before - hadj_value;
-            if (offset < 0) { /*scroll until left hand edge of active slot is in view*/
-                hadj_value += offset;
-            }
+//             int hadj_value = (int) this.hadj.get_value ();
+//             int offset = total_width_before - hadj_value;
+//             if (offset < 0) { /*scroll until left hand edge of active slot is in view*/
+//                 hadj_value += offset;
+//             }
 
-            offset = total_width_before + slot.width - hadj_value - viewport.child.get_width ();
-            if (offset > 0) { /*scroll  until right hand edge of active slot is in view*/
-                hadj_value += offset;
-            }
+//             offset = total_width_before + slot.width - hadj_value - viewport.child.get_width ();
+//             if (offset > 0) { /*scroll  until right hand edge of active slot is in view*/
+//                 hadj_value += offset;
+//             }
 
-            // Perform scroll
-            if (animate) {
-                smooth_adjustment_to (this.hadj, hadj_value);
-            } else { /* On startup we do not want to animate */
-                hadj.set_value (hadj_value);
-            }
+//             // Perform scroll
+//             if (animate) {
+//                 smooth_adjustment_to (this.hadj, hadj_value);
+//             } else { /* On startup we do not want to animate */
+//                 hadj.set_value (hadj_value);
+//             }
 
-            scroll_to_slot_timeout_id = 0;
-            return Source.REMOVE;
-        });
-    }
+//             scroll_to_slot_timeout_id = 0;
+//             return Source.REMOVE;
+//         });
+//     }
 
     public override Files.AbstractSlot? get_current_slot () {
         return current_slot;
@@ -581,54 +578,54 @@ warning ("not found - make root");
         return current_slot.lookup_file_info (loc);
     }
 
-    /* Animation functions */
+    // /* Animation functions */
 
-    private uint animation_timeout_source_id = 0;
-    private void smooth_adjustment_to (Gtk.Adjustment adj, int final) {
-        cancel_animation ();
+    // private uint animation_timeout_source_id = 0;
+    // private void smooth_adjustment_to (Gtk.Adjustment adj, int final) {
+    //     cancel_animation ();
 
-        var initial = adj.value;
-        var to_do = final - initial;
+    //     var initial = adj.value;
+    //     var to_do = final - initial;
 
-        int factor;
-        (to_do > 0) ? factor = 1 : factor = -1;
-        to_do = (double) (((int) to_do).abs () + 1);
+    //     int factor;
+    //     (to_do > 0) ? factor = 1 : factor = -1;
+    //     to_do = (double) (((int) to_do).abs () + 1);
 
-        var newvalue = 0;
-        var old_adj_value = adj.value;
+    //     var newvalue = 0;
+    //     var old_adj_value = adj.value;
 
-        animation_timeout_source_id = Timeout.add (1000 / 60, () => {
-            /* If the user move it at the same time, just stop the animation */
-            if (old_adj_value != adj.value) {
-                animation_timeout_source_id = 0;
-                return GLib.Source.REMOVE;
-            }
+    //     animation_timeout_source_id = Timeout.add (1000 / 60, () => {
+    //         /* If the user move it at the same time, just stop the animation */
+    //         if (old_adj_value != adj.value) {
+    //             animation_timeout_source_id = 0;
+    //             return GLib.Source.REMOVE;
+    //         }
 
-            if (newvalue >= to_do - 10) {
-                /* to be sure that there is not a little problem */
-                adj.value = final;
-                animation_timeout_source_id = 0;
-                return GLib.Source.REMOVE;
-            }
+    //         if (newvalue >= to_do - 10) {
+    //             /* to be sure that there is not a little problem */
+    //             adj.value = final;
+    //             animation_timeout_source_id = 0;
+    //             return GLib.Source.REMOVE;
+    //         }
 
-            newvalue += 10;
+    //         newvalue += 10;
 
-            adj.value = initial + factor *
-                        Math.sin (((double) newvalue / (double) to_do) * Math.PI / 2) * to_do;
+    //         adj.value = initial + factor *
+    //                     Math.sin (((double) newvalue / (double) to_do) * Math.PI / 2) * to_do;
 
-            old_adj_value = adj.value;
-            return GLib.Source.CONTINUE;
-        });
-    }
+    //         old_adj_value = adj.value;
+    //         return GLib.Source.CONTINUE;
+    //     });
+    // }
 
-    private bool get_animating () {
-        return animation_timeout_source_id > 0;
-    }
+    // private bool get_animating () {
+    //     return animation_timeout_source_id > 0;
+    // }
 
-    private void cancel_animation () {
-        if (animation_timeout_source_id > 0) {
-            Source.remove (animation_timeout_source_id);
-            animation_timeout_source_id = 0;
-        }
-    }
+    // private void cancel_animation () {
+    //     if (animation_timeout_source_id > 0) {
+    //         Source.remove (animation_timeout_source_id);
+    //         animation_timeout_source_id = 0;
+    //     }
+    // }
 }

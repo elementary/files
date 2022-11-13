@@ -412,7 +412,9 @@ public class Slot : Files.AbstractSlot {
                 preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
                 width = preferred_column_width;
         warning ("new slot width %u", width);
-                hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+                hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+                    wide_handle = true
+                };
                 view_widget.width_request = preferred_column_width;
                 hpaned.start_child = view_widget;
                 var end_child = new Gtk.Label ("");
