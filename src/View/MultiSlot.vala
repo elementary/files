@@ -23,7 +23,7 @@ public class Files.MultiSlot : Files.AbstractSlot {
      * does not have its own Asyncdirectory object */
     private GLib.File root_location;
 
-    private Gtk.Box colpane;
+    // private Gtk.Box colpane;
 
     private uint scroll_to_slot_timeout_id = 0;
 
@@ -55,17 +55,17 @@ public class Files.MultiSlot : Files.AbstractSlot {
             show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
         });
 
-        colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        // colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
 
         scrolled_window = new Gtk.ScrolledWindow () {
-            hscrollbar_policy = Gtk.PolicyType.AUTOMATIC,
+            hscrollbar_policy = Gtk.PolicyType.ALWAYS,
             vscrollbar_policy = Gtk.PolicyType.NEVER
         };
 
         hadj = scrolled_window.get_hadjustment ();
 
         viewport = new Gtk.Viewport (null, null);
-        viewport.set_child (this.colpane);
+        // viewport.set_child (this.colpane);
 
         scrolled_window.set_child (viewport);
         add_main_child (scrolled_window);
@@ -90,25 +90,15 @@ public class Files.MultiSlot : Files.AbstractSlot {
         /* Notify view container of path change - will set tab to working and change pathbar */
         path_changed ();
         guest.slot_number = (host != null) ? host.slot_number + 1 : 0;
-        guest.colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        guest.colpane.set_size_request (guest.width, -1);
-        guest.hpane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-            hexpand = true
-        };
-
-        guest.view_widget.unparent ();
-        guest.hpane.start_child = guest.view_widget;
-        guest.hpane.end_child = guest.colpane;
-
         connect_slot_signals (guest);
 
         if (host != null) {
             truncate_list_after_slot (host);
             host.select_gof_file (guest.file);
-            host.colpane.append (guest.hpane);
+            host.hpaned.end_child = guest.hpaned;
             guest.initialize_directory ();
         } else {
-            this.colpane.append (guest.hpane);
+            viewport.child = guest.hpaned;
         }
 
         slot_list.append (guest); // Must add to list before scrolling
@@ -124,7 +114,6 @@ public class Files.MultiSlot : Files.AbstractSlot {
         }
 
         uint n = slot.slot_number;
-
         slot_list.@foreach ((s) => {
             if (s.slot_number > n) {
                 disconnect_slot_signals (s);
@@ -132,7 +121,7 @@ public class Files.MultiSlot : Files.AbstractSlot {
             }
         });
 
-        var child = ((Slot)slot).colpane.get_first_child ();
+        var child = ((Slot)slot).hpaned.end_child;
         while (child != null) {
             var next = child.get_next_sibling ();
             child.destroy ();
@@ -146,6 +135,7 @@ public class Files.MultiSlot : Files.AbstractSlot {
     }
 
     private void calculate_total_width () {
+warning ("calculate total width");
         total_width = 100; // Extra space to allow increasing the size of columns by dragging the edge
         slot_list.@foreach ((slot) => {
             total_width += slot.width;
@@ -154,7 +144,9 @@ public class Files.MultiSlot : Files.AbstractSlot {
 
     private void update_total_width () {
         calculate_total_width ();
-        this.colpane.set_size_request (total_width, -1);
+warning ("update viewport size requested to %i", total_width);
+        // this.colpane.set_size_request (total_width, -1);
+        viewport.set_size_request (total_width, -1);
     }
 
 /*********************/
@@ -170,6 +162,7 @@ public class Files.MultiSlot : Files.AbstractSlot {
     }
 
     private void change_path (GLib.File loc) {
+warning ("Miller change path %s", loc.get_uri ());
         var first_slot = slot_list.first ().data;
         string root_uri = first_slot.uri;
         string target_uri = loc.get_uri ();
@@ -181,6 +174,7 @@ public class Files.MultiSlot : Files.AbstractSlot {
             copy_slot_list.reverse ();
             foreach (Slot s in copy_slot_list) {
                 if (add_relative_path (s, loc)) {
+warning ("found parent slot");
                     found = true;
                     break;
                 }
@@ -189,6 +183,7 @@ public class Files.MultiSlot : Files.AbstractSlot {
 
         /* If requested location is not a child of any slot, start a new tree */
         if (!found) {
+warning ("not found - make root");
             truncate_list_after_slot (first_slot);
             if (loc.get_uri () != first_slot.uri) {
                 first_slot.user_path_change_request (loc);

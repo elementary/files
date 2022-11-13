@@ -94,11 +94,6 @@ namespace Files {
         }
 
         protected void add_main_child (Gtk.Widget widget) {
-            overlay = new Gtk.Overlay () {
-                hexpand = true,
-                vexpand = true
-            };
-            content_box.prepend (overlay);
             overlay.child = widget;
         }
 
@@ -107,6 +102,12 @@ namespace Files {
                 vexpand = true,
                 hexpand = true
             };
+
+            overlay = new Gtk.Overlay () {
+                hexpand = true,
+                vexpand = true
+            };
+            content_box.prepend (overlay);
 
             extra_location_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             content_box.prepend (extra_location_widgets);
@@ -122,7 +123,6 @@ namespace Files {
         public abstract AbstractSlot? get_current_slot ();
         public abstract void reload (bool non_local_only = false);
         public abstract void grab_focus ();
-        // public abstract void path_change_requested (GLib.File loc, Files.OpenFlag flag);
         public abstract void user_path_change_request (GLib.File loc);
         public abstract void show_first_item ();
         public abstract void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location);

@@ -71,8 +71,8 @@ public class Slot : Files.AbstractSlot {
     public signal void folder_deleted (Files.File file, Directory parent);
 
     /* Support for multi-slot view (Miller)*/
-    public Gtk.Box colpane;
-    public Gtk.Paned hpane;
+    // public Gtk.Box colpane;
+    public Gtk.Paned hpaned;
     public signal void miller_slot_request (GLib.File file, bool make_root);
     public signal void size_change ();
 
@@ -80,12 +80,8 @@ public class Slot : Files.AbstractSlot {
         ctab = _ctab;
         mode = _mode;
         is_active = false;
-        preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
-        width = preferred_column_width;
-
         set_up_directory (_location); /* Connect dir signals before making view */
         make_view ();
-        // connect_dir_view_signals ();
         connect_view_widget_signals ();
         connect_slot_signals ();
 
@@ -263,16 +259,13 @@ public class Slot : Files.AbstractSlot {
         }
         /*  Column View requires slots to determine their own width (other views' width determined by Window */
         if (mode == ViewMode.MULTI_COLUMN) {
-        //TODO Reimplement in Gtk4 version if required for MILLER
-            // if (dir.is_empty ()) { /* No files in the file cache */
-            //     Pango.Rectangle extents;
-            //     var layout = dir_view.create_pango_layout (null);
-            //     layout.set_markup (get_empty_message (), -1);
-            //     layout.get_extents (null, out extents);
-            //     width = (int) Pango.units_to_double (extents.width);
-            // } else {
-            //     width = preferred_column_width;
-            // }
+            if (dir.is_empty ()) { /* No files in the file cache */
+                int min, nat;
+                empty_label.measure (Gtk.Orientation.HORIZONTAL, 100, out min, out nat, null, null);
+                width = nat + 48;
+            } else {
+                width = preferred_column_width;
+            }
 
             // width += view_widget.zoom_level.to_icon_size () + 64; /* allow some extra room for icon padding and right margin*/
 
@@ -281,8 +274,8 @@ public class Slot : Files.AbstractSlot {
             //     width += width;
             // }
 
-            // size_change ();
-            // hpane.set_position (width);
+            size_change ();
+            hpaned.set_position (width);
 
             // if (colpane.get_realized ()) {
             //     colpane.queue_draw ();
@@ -360,18 +353,6 @@ public class Slot : Files.AbstractSlot {
         }
     }
 
-    // private void on_dir_view_path_change_request (GLib.File loc, Files.OpenFlag flag, bool make_root) {
-    //     if (flag == 0) { /* make view in existing container */
-    //         if (mode == ViewMode.MULTI_COLUMN) {
-    //             miller_slot_request (loc, make_root); /* signal to parent MillerView */
-    //         } else {
-    //             user_path_change_request (loc); /* Handle ourselves */
-    //         }
-    //     } else {
-    //         new_container_request (loc, flag);
-    //     }
-    // }
-
     public override void user_path_change_request (GLib.File loc) {
     /** Only this function must be used to change or reload the path **/
         view_widget.clear ();
@@ -423,8 +404,23 @@ public class Slot : Files.AbstractSlot {
         }
 
         /* Miller View creates its own overlay and handles packing of the directory view */
-        if (view_widget != null && mode != ViewMode.MULTI_COLUMN) {
-            add_main_child (view_widget);
+        if (view_widget != null) {
+            if (mode != ViewMode.MULTI_COLUMN) {
+                add_main_child (view_widget);
+            } else {
+                preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
+                width = preferred_column_width;
+        warning ("new slot width %u", width);
+                hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+                view_widget.width_request = preferred_column_width;
+                hpaned.start_child = view_widget;
+                hpaned.end_child = new Gtk.Label ("Test");
+                hpaned.shrink_start_child = false;
+                hpaned.resize_start_child = false;
+                hpaned.shrink_end_child = false;
+                hpaned.resize_end_child = false;
+                hpaned.position = preferred_column_width;
+            }
         }
 
         assert (view_widget != null);
