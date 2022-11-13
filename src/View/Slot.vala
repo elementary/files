@@ -1,6 +1,4 @@
 /***
-    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
-
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
     by the Free Software Foundation.
@@ -86,6 +84,7 @@ public class Slot : Files.AbstractSlot {
         connect_slot_signals ();
 
         is_frozen = true;
+
     }
 
     ~Slot () {
@@ -395,7 +394,9 @@ public class Slot : Files.AbstractSlot {
                 view_widget = new Files.GridView (this);
                 break;
             case ViewMode.MULTI_COLUMN:
-                view_widget = new Files.GridView (this);
+                var gv = new Files.GridView (this);
+                gv.grid_view.max_columns = 1;
+                view_widget = gv;
                 break;
 
             default:
@@ -414,11 +415,13 @@ public class Slot : Files.AbstractSlot {
                 hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
                 view_widget.width_request = preferred_column_width;
                 hpaned.start_child = view_widget;
-                hpaned.end_child = new Gtk.Label ("Test");
+                var end_child = new Gtk.Label ("");
+                end_child.width_request = preferred_column_width;
+                hpaned.end_child = end_child;
                 hpaned.shrink_start_child = false;
                 hpaned.resize_start_child = false;
                 hpaned.shrink_end_child = false;
-                hpaned.resize_end_child = false;
+                hpaned.resize_end_child = true;
                 hpaned.position = preferred_column_width;
             }
         }

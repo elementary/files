@@ -129,14 +129,13 @@ public class Files.MultiSlot : Files.AbstractSlot {
         }
 
         slot_list.nth (n).next = null;
-        calculate_total_width ();
+        // calculate_total_width ();
         current_slot = slot;
         slot.active ();
     }
 
     private void calculate_total_width () {
-warning ("calculate total width");
-        total_width = 100; // Extra space to allow increasing the size of columns by dragging the edge
+        total_width = 300; // Extra space to allow increasing the size of columns by dragging the edge
         slot_list.@foreach ((slot) => {
             total_width += slot.width;
         });
@@ -144,8 +143,6 @@ warning ("calculate total width");
 
     private void update_total_width () {
         calculate_total_width ();
-warning ("update viewport size requested to %i", total_width);
-        // this.colpane.set_size_request (total_width, -1);
         viewport.set_size_request (total_width, -1);
     }
 
