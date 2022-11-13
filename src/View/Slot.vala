@@ -79,7 +79,47 @@ public class Slot : Files.AbstractSlot {
         mode = _mode;
         is_active = false;
         set_up_directory (_location); /* Connect dir signals before making view */
-        make_view ();
+        switch (mode) {
+            case ViewMode.ICON:
+                view_widget = new Files.GridView (this);
+                break;
+            case ViewMode.LIST:
+                view_widget = new Files.GridView (this);
+                break;
+            case ViewMode.MULTI_COLUMN:
+                var gv = new Files.GridView (this);
+                gv.grid_view.max_columns = 1;
+                view_widget = gv;
+                break;
+
+            default:
+                view_widget = new Files.GridView (this);
+                break;
+        }
+
+        /* Miller View creates its own overlay and handles packing of the directory view */
+        if (view_widget != null) {
+            if (mode != ViewMode.MULTI_COLUMN) {
+                add_main_child (view_widget);
+            } else {
+                preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
+                width = preferred_column_width;
+                hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+                    wide_handle = true
+                };
+                view_widget.width_request = preferred_column_width;
+                hpaned.start_child = view_widget;
+                var end_child = new Gtk.Label ("");
+                end_child.width_request = preferred_column_width;
+                hpaned.end_child = end_child;
+                hpaned.shrink_start_child = false;
+                hpaned.resize_start_child = false;
+                hpaned.shrink_end_child = false;
+                hpaned.resize_end_child = true;
+                hpaned.position = preferred_column_width;
+            }
+        }
+
         connect_view_widget_signals ();
         connect_slot_signals ();
 
@@ -382,53 +422,6 @@ public class Slot : Files.AbstractSlot {
              * the original signal */
             directory.need_reload (false);
         }
-    }
-
-    protected override void make_view () {
-        assert (view_widget == null);
-        switch (mode) {
-            case ViewMode.ICON:
-                view_widget = new Files.GridView (this);
-                break;
-            case ViewMode.LIST:
-                view_widget = new Files.GridView (this);
-                break;
-            case ViewMode.MULTI_COLUMN:
-                var gv = new Files.GridView (this);
-                gv.grid_view.max_columns = 1;
-                view_widget = gv;
-                break;
-
-            default:
-                view_widget = new Files.GridView (this);
-                break;
-        }
-
-        /* Miller View creates its own overlay and handles packing of the directory view */
-        if (view_widget != null) {
-            if (mode != ViewMode.MULTI_COLUMN) {
-                add_main_child (view_widget);
-            } else {
-                preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
-                width = preferred_column_width;
-        warning ("new slot width %u", width);
-                hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-                    wide_handle = true
-                };
-                view_widget.width_request = preferred_column_width;
-                hpaned.start_child = view_widget;
-                var end_child = new Gtk.Label ("");
-                end_child.width_request = preferred_column_width;
-                hpaned.end_child = end_child;
-                hpaned.shrink_start_child = false;
-                hpaned.resize_start_child = false;
-                hpaned.shrink_end_child = false;
-                hpaned.resize_end_child = true;
-                hpaned.position = preferred_column_width;
-            }
-        }
-
-        assert (view_widget != null);
     }
 
     public override bool set_all_selected (bool select_all) {

@@ -69,18 +69,14 @@ public class Files.MultiSlot : Files.AbstractSlot {
         scrolled_window.set_child (viewport);
         add_main_child (scrolled_window);
 
-        make_view ();
+        current_slot = null;
+        add_location (root_location, null); /* current slot gets set by this */
 
         is_frozen = true;
     }
 
     ~MultiSlot () {
         debug ("MultiSlot destruct");
-    }
-
-    protected override void make_view () {
-        current_slot = null;
-        add_location (root_location, null); /* current slot gets set by this */
     }
 
     /** Creates a new slot in the host slot hpane */
