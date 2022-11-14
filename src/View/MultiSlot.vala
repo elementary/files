@@ -115,12 +115,9 @@ public class Files.MultiSlot : Files.AbstractSlot {
         });
 
         var child = ((Slot)slot).hpaned.end_child;
-        while (child != null) {
-            var next = child.get_next_sibling ();
-            child.destroy ();
-            child = next;
-        }
-
+        child.unparent ();
+        child.destroy ();
+//TODO Check for memory leak
         slot_list.nth (n).next = null;
         current_slot = slot;
         slot.active ();
@@ -391,9 +388,6 @@ public class Files.MultiSlot : Files.AbstractSlot {
             case Gdk.Key.BackSpace:
                     if (current_position > 0) {
                         truncate_list_after_slot (slot_list.nth_data (current_position - 1));
-                    } else {
-                        ctab.go_up ();
-                        return true;
                     }
 
                 break;
