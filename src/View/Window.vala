@@ -71,7 +71,12 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"show-hidden", null, null, "false", change_state_show_hidden},
         {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
         {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails},
-        {"singleclick-select", null, null, "false", change_state_single_click_select}
+        {"singleclick-select", null, null, "false", change_state_single_click_select},
+
+        //Actions only used internally (no shortcut)
+        {"remove-content", action_remove_content, "i"},
+        {"path-change-request", action_path_change_request, "(su)"},
+        {"loading-uri", action_loading_uri, "s"}
     };
 
     public uint window_number { get; construct; }
@@ -94,9 +99,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
     private ViewInterface? current_view_widget {
         get {
-            if (current_container == null || current_container.view == null ||
-                !(current_container.slot is Files.Slot)) {
-
+            if (current_container == null || current_container.slot == null) {
                 return null;
             }
 
@@ -107,8 +110,10 @@ public class Files.Window : Gtk.ApplicationWindow {
     private int restoring_tabs = 0;
     private bool doing_undo_redo = false;
 
-    public signal void loading_uri (string location);
-    public signal void folder_deleted (GLib.File location);
+    public void loading_uri (string location) {
+        update_labels (location);
+    }
+    // public signal void folder_deleted (GLib.File location);
     public signal void free_space_change ();
 
     construct {
@@ -259,8 +264,6 @@ public class Files.Window : Gtk.ApplicationWindow {
             return marlin_app.create_empty_window ().tab_view;
         });
         tab_view.page_attached.connect ((tab, pos) => {
-            var vc = (ViewContainer)(tab.child) ;
-            vc.window = this;
         });
         tab_view.page_detached.connect (on_page_detached);
 
@@ -279,8 +282,17 @@ public class Files.Window : Gtk.ApplicationWindow {
         Files.app_settings.get ("window-size", "(ii)", out width, out height);
         default_width = width;
         default_height = height;
-        loading_uri.connect (update_labels);
+        // loading_uri.connect (update_labels);
         present ();
+    }
+
+    public void folder_deleted (GLib.File folder) {
+        uint i = 0;
+        var tab = (Adw.TabPage)(tab_view.pages.get_item (i));
+        while (tab != null) {
+            ((ViewContainer)(tab.child)).folder_deleted (folder);
+            tab = (Adw.TabPage)(tab_view.pages.get_item (++i));
+        }
     }
 
     private void on_page_detached () {
@@ -309,13 +321,13 @@ public class Files.Window : Gtk.ApplicationWindow {
 
         if (old_tab != null) {
             old_tab.set_active_state (false);
-            old_tab.is_frozen = false;
+            // old_tab.is_frozen = false;
         }
 
         loading_uri (current_container.uri);
         current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
         sidebar.sync_uri (current_container.uri);
-        top_menu.working = current_container.is_frozen;
+        // top_menu.working = current_container.is_frozen;
         save_active_tab_position ();
     }
 
@@ -388,17 +400,21 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
 
         mode = real_mode (mode);
-        var content = new ViewContainer (this);
+        var content = new ViewContainer ();
         var tab = tab_view.append (content);
         tab_view.selected_page = tab;
         /* Capturing ViewContainer object reference in closure prevents its proper destruction
          * so capture its unique id instead */
         var id = content.id;
-        content.tab_name_changed.connect ((tab_name) => {
+        // content.tab_name_changed.connect ((tab_name) => {
+        //     set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
+        // });
+        content.notify["tab-name"].connect (() => {
+            var tab_name = content.tab_name;
             set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
         });
-
-        content.loading.connect ((is_loading) => {
+        content.notify["loading"].connect (() => {
+            var is_loading = content.is_loading;
             if (restoring_tabs > 0 && !is_loading) {
                 restoring_tabs--;
                 /* Each restored tab must signal with is_loading false once */
@@ -417,14 +433,14 @@ public class Files.Window : Gtk.ApplicationWindow {
             }
         });
 
-        content.active.connect (() => {
+        content.notify["active"].connect (() => {
             update_top_menu ();
         });
 
         if (!location.equal (_location)) {
-            content.add_view (mode, location, {_location});
+            content.set_location_and_mode (mode, location, {_location});
         } else {
-            content.add_view (mode, location);
+            content.set_location_and_mode (mode, location);
         }
     }
 
@@ -686,7 +702,8 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
         /* Do not initiate search while slot is frozen e.g. during loading */
-        if (current_container == null || current_container.is_frozen) {
+        if (current_container == null) {
+        // if (current_container == null || current_container.is_frozen) {
             return;
         }
 
@@ -865,7 +882,8 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
 
         ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
-        current_container.change_view_mode (mode);
+        current_container.set_location_and_mode (mode);
+        // current_container.change_view_mode (mode);
         /* ViewContainer takes care of changing appearance */
     }
 
@@ -923,18 +941,18 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     private void action_zoom (GLib.SimpleAction action, GLib.Variant? param) {
         if (current_container != null) {
-            assert (current_container.view != null);
+            assert (current_container.slot != null);
             switch (param.get_string ()) {
                 case "ZOOM_IN":
-                    current_container.view.zoom_in ();
+                    current_container.slot.zoom_in ();
                     break;
 
                 case "ZOOM_OUT":
-                    current_container.view.zoom_out ();
+                    current_container.slot.zoom_out ();
                     break;
 
                 case "ZOOM_NORMAL":
-                    current_container.view.zoom_normal ();
+                    current_container.slot.zoom_normal ();
                     break;
 
                 default:
@@ -1126,6 +1144,25 @@ public class Files.Window : Gtk.ApplicationWindow {
                 critical (e.message);
             }
         });
+    }
+
+    private void action_remove_content (GLib.SimpleAction action, GLib.Variant? param) {
+        var content_id = param.get_int32 ();
+        //TODO Find and remove content
+    }
+
+    private void action_path_change_request (GLib.SimpleAction action, GLib.Variant? param) {
+        var iter = param.iterator ();
+        string uri;
+        uint flag;
+        iter.next ("(su)", out uri, out flag);
+        uri_path_change_request (uri, flag);
+    }
+
+    private void action_loading_uri (GLib.SimpleAction action, GLib.Variant? param) {
+        var uri = param.get_string ();
+
+        //TODO Find and remove content
     }
 
     private void before_undo_redo () {

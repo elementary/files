@@ -16,9 +16,12 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-public class Files.MultiSlot : Files.AbstractSlot {
+public class Files.MultiSlot : Object {
+    public Gtk.Box content_box { get; construct; }
+    public Gtk.Overlay overlay { get; construct; }
     public ViewContainer ctab { get; construct; }
     public GLib.File root_location { get; set construct; }
+    public ViewMode view_mode { get; set; }
     /* Need private copy of initial location as MultiSlot
      * does not have its own Asyncdirectory object */
 
@@ -30,7 +33,7 @@ public class Files.MultiSlot : Files.AbstractSlot {
     private GLib.List<Slot> slot_list = null;
     private int total_width = 0;
 
-    // public override bool is_frozen {
+    // public bool is_frozen {
     //     set {
     //         if (current_slot != null) {
     //             current_slot.is_frozen = value;
@@ -42,10 +45,9 @@ public class Files.MultiSlot : Files.AbstractSlot {
     //     }
     // }
 
-    public MultiSlot (GLib.File loc, ViewContainer ctab) {
+    public MultiSlot (ViewContainer ctab) {
         Object (
-            ctab: ctab,
-            root_location: loc
+            ctab: ctab
         );
     }
 
@@ -63,7 +65,9 @@ public class Files.MultiSlot : Files.AbstractSlot {
             scroll_to_focus = true //TODO Is this sufficient?
         };
         scrolled_window.set_child (viewport);
-        add_main_child (scrolled_window);
+        overlay.child = scrolled_window;
+        //
+        // add_main_child (scrolled_window);
 
         var key_controller = new Gtk.EventControllerKey () {
             propagation_phase = Gtk.PropagationPhase.CAPTURE
@@ -74,7 +78,7 @@ public class Files.MultiSlot : Files.AbstractSlot {
             show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
         });
 
-        add_location (root_location, null); /* current slot gets set by this */
+        // add_location (root_location, null); /* current slot gets set by this */
         // is_frozen = true;
     }
 
@@ -82,7 +86,7 @@ public class Files.MultiSlot : Files.AbstractSlot {
     public void add_location (GLib.File loc, Slot? host = null) {
         var guest = new Slot (loc, ctab, ViewMode.MULTI_COLUMN);
         /* Notify view container of path change - will set tab to working and change pathbar */
-        path_changed ();
+        // path_changed ();
         guest.slot_number = (host != null) ? host.slot_number + 1 : 0;
         connect_slot_signals (guest);
 
@@ -101,12 +105,20 @@ public class Files.MultiSlot : Files.AbstractSlot {
         update_total_width ();
     }
 
-    private void truncate_list_after_slot (Slot slot) {
+    public void clear () {
+        current_slot = null;
+        truncate_list_after_slot (null);
+        // while (viewport.get_last_child () != null) {
+        //     viewport.get_last_child ().unparent ();
+        // }
+    }
+
+    private void truncate_list_after_slot (Slot? slot) {
         if (slot_list.length () <= 0) { //Can be assumed to limited in length
             return;
         }
 
-        uint n = slot.slot_number;
+        uint n = slot != null ? slot.slot_number : -1;
         slot_list.@foreach ((s) => {
             if (s.slot_number > n) {
                 disconnect_slot_signals (s);
@@ -118,9 +130,11 @@ public class Files.MultiSlot : Files.AbstractSlot {
         child.unparent ();
         child.destroy ();
 //TODO Check for memory leak
-        slot_list.nth (n).next = null;
-        current_slot = slot;
-        slot.active ();
+        if (n >= 0) {
+            slot_list.nth (n).next = null;
+            current_slot = slot;
+            slot.active ();
+        }
     }
 
     private void calculate_total_width () {
@@ -139,7 +153,7 @@ public class Files.MultiSlot : Files.AbstractSlot {
 /** Signal handling **/
 /*********************/
 
-    public override void user_path_change_request (GLib.File loc) {
+    public void user_path_change_request (GLib.File loc) {
         /* Requests from history buttons, pathbar come here with make_root = false.
          * These do not create a new root.
          * Requests from the sidebar have make_root = true
@@ -217,32 +231,32 @@ public class Files.MultiSlot : Files.AbstractSlot {
     }
 
     private void connect_slot_signals (Slot slot) {
-        slot.selection_changing.connect (on_slot_selection_changing);
-        slot.update_selection.connect (on_slot_update_selection);
+        // slot.selection_changing.connect (on_slot_selection_changing);
+        // slot.update_selection.connect (on_slot_update_selection);
         // slot.frozen_changed.connect (on_slot_frozen_changed);
         slot.active.connect (on_slot_active);
         slot.miller_slot_request.connect (on_miller_slot_request);
-        slot.new_container_request.connect (on_new_container_request);
+        // slot.new_container_request.connect (on_new_container_request);
         // slot.size_change.connect (update_total_width);
         slot.folder_deleted.connect (on_slot_folder_deleted);
         //TODO Use EventController
         // slot.colpane.key_press_event.connect (on_key_pressed);
-        slot.path_changed.connect (on_slot_path_changed);
-        slot.directory_loaded.connect (on_slot_directory_loaded);
+        // slot.path_changed.connect (on_slot_path_changed);
+        // slot.directory_loaded.connect (on_slot_directory_loaded);
     }
 
     private void disconnect_slot_signals (Slot slot) {
-        slot.selection_changing.disconnect (on_slot_selection_changing);
-        slot.update_selection.disconnect (on_slot_update_selection);
+        // slot.selection_changing.disconnect (on_slot_selection_changing);
+        // slot.update_selection.disconnect (on_slot_update_selection);
         // slot.frozen_changed.disconnect (on_slot_frozen_changed);
         slot.active.disconnect (on_slot_active);
         slot.miller_slot_request.disconnect (on_miller_slot_request);
-        slot.new_container_request.disconnect (on_new_container_request);
+        // slot.new_container_request.disconnect (on_new_container_request);
         // slot.size_change.disconnect (update_total_width);
         slot.folder_deleted.disconnect (on_slot_folder_deleted);
         // slot.colpane.key_press_event.disconnect (on_key_pressed);
-        slot.path_changed.disconnect (on_slot_path_changed);
-        slot.directory_loaded.disconnect (on_slot_directory_loaded);
+        // slot.path_changed.disconnect (on_slot_path_changed);
+        // slot.directory_loaded.disconnect (on_slot_directory_loaded);
     }
 
     private void on_miller_slot_request (Slot slot, GLib.File loc, bool make_root) {
@@ -258,17 +272,17 @@ public class Files.MultiSlot : Files.AbstractSlot {
         }
     }
 
-    private void on_new_container_request (GLib.File loc, Files.OpenFlag flag) {
-        new_container_request (loc, flag);
-    }
+    // private void on_new_container_request (GLib.File loc, Files.OpenFlag flag) {
+    //     new_container_request (loc, flag);
+    // }
 
-    private void on_slot_path_changed () {
-        path_changed ();
-    }
+    // private void on_slot_path_changed () {
+    //     path_changed ();
+    // }
 
-    private void on_slot_directory_loaded (Directory dir) {
-        directory_loaded (dir);
-    }
+    // private void on_slot_directory_loaded (Directory dir) {
+    //     directory_loaded (dir);
+    // }
 
     private void on_slot_folder_deleted (Slot slot, Files.File file, Directory dir) {
         Slot? next_slot = slot_list.nth_data (slot.slot_number + 1);
@@ -303,10 +317,10 @@ public class Files.MultiSlot : Files.AbstractSlot {
             current_slot = slot;
         }
         /* Always emit this signal so that UI updates (e.g. pathbar) */
-        active ();
+        ctab.refresh_slot_info (current_slot.location);
     }
 
-    public override void show_first_item () {
+    public void show_first_item () {
         if (current_slot != null) {
             current_slot.show_first_item ();
         }
@@ -405,11 +419,12 @@ public class Files.MultiSlot : Files.AbstractSlot {
     }
 
     private void on_slot_update_selection (GLib.List<Files.File> files) {
-        update_selection (files);
+        // update_selection (files);
     }
 
     private void on_slot_selection_changing () {
-        selection_changing ();
+        // selection_changing ();
+
     }
 
     // private void on_slot_frozen_changed (Slot slot, bool frozen) {
@@ -427,16 +442,16 @@ public class Files.MultiSlot : Files.AbstractSlot {
 
 
 /** Helper functions */
-    public override Files.AbstractSlot? get_current_slot () {
+    public unowned Slot? get_current_slot () {
         return current_slot;
     }
 
-    public override List<Files.File> get_selected_files () {
+    public List<Files.File> get_selected_files () {
         List<Files.File> selected_files = ((Slot)(current_slot)).get_selected_files ();
         return (owned)selected_files;
     }
 
-    public override void set_active_state (bool set_active, bool animate = true) {
+    public void set_active_state (bool set_active, bool animate = true) {
         if (set_active) {
             current_slot.active (true, animate);
         } else {
@@ -444,7 +459,7 @@ public class Files.MultiSlot : Files.AbstractSlot {
         }
     }
 
-    public override string? get_tip_uri () {
+    public string? get_tip_uri () {
         if (slot_list != null &&
             slot_list.last () != null &&
             slot_list.last ().data is Files.AbstractSlot) {
@@ -455,39 +470,39 @@ public class Files.MultiSlot : Files.AbstractSlot {
         }
     }
 
-    public override string? get_root_uri () {
+    public string? get_root_uri () {
         return root_location.get_uri ();
     }
 
-    public override void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {
+    public void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {
         current_slot.select_glib_files (files, focus_location);
     }
 
-    public override void zoom_in () {
+    public void zoom_in () {
         ((Slot)(current_slot)).zoom_in ();
     }
 
-    public override void zoom_out () {
+    public void zoom_out () {
         ((Slot)(current_slot)).zoom_out ();
     }
 
-    public override void zoom_normal () {
+    public void zoom_normal () {
         ((Slot)(current_slot)).zoom_normal ();
     }
 
-    public override void grab_focus () {
+    public void grab_focus () {
         ((Slot)(current_slot)).grab_focus ();
     }
 
-    public override void initialize_directory () {
+    public void initialize_directory () {
         ((Slot)(current_slot)).initialize_directory ();
     }
 
-    public override void reload (bool non_local_only = false) {
+    public void reload (bool non_local_only = false) {
         ((Slot)(current_slot)).reload (non_local_only);
     }
 
-    public override void close () {
+    public void close () {
         current_slot = null;
 
         if (scroll_to_slot_timeout_id > 0) {
@@ -497,11 +512,11 @@ public class Files.MultiSlot : Files.AbstractSlot {
         truncate_list_after_slot (slot_list.first ().data);
     }
 
-    public override bool set_all_selected (bool all) {
+    public bool set_all_selected (bool all) {
         return ((Slot)(current_slot)).set_all_selected (all);
     }
 
-    public override FileInfo? lookup_file_info (GLib.File loc) {
+    public FileInfo? lookup_file_info (GLib.File loc) {
         return current_slot.lookup_file_info (loc);
     }
 }

@@ -19,19 +19,7 @@
 
 namespace Files {
     public abstract class AbstractSlot : GLib.Object {
-        Files.Directory _directory;
-        public Files.Directory? directory {
-            get {
-                AbstractSlot? current = get_current_slot ();
-                if (current != null) {
-                    return current._directory;
-                } else {
-                    return null;
-                }
-            }
-
-            protected set {_directory = value;}
-        }
+        public Files.Directory? directory { get; set; }
 
         // Directory may be destroyed before the slot so handle case that it is null
         public Files.File? file {
@@ -74,12 +62,12 @@ namespace Files {
         protected Gtk.Box extra_action_widgets;
         protected Gtk.Box content_box;
         public Gtk.Overlay overlay {get; protected set;} // Overlaid with empty message and property overlay
-        public int slot_number { get; protected set; }
-        protected int width;
+        public int slot_number { get; set; }
+        // protected int width;
 
         public signal void active (bool scroll = true, bool animate = true);
         public signal void inactive ();
-        public signal void path_changed ();
+        // public signal void path_changed ();
         public signal void new_container_request (GLib.File loc, Files.OpenFlag flag);
         public signal void selection_changing ();
         public signal void update_selection (GLib.List<Files.File> files);
@@ -120,7 +108,7 @@ namespace Files {
         public abstract void initialize_directory ();
         public abstract List<Files.File> get_selected_files ();
         public abstract void set_active_state (bool set_active, bool animate = true);
-        public abstract AbstractSlot? get_current_slot ();
+        // public abstract AbstractSlot? get_current_slot ();
         public abstract void reload (bool non_local_only = false);
         public abstract void grab_focus ();
         public abstract void user_path_change_request (GLib.File loc);

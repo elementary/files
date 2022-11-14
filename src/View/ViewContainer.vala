@@ -35,21 +35,22 @@ namespace Files {
             container_id = -1;
         }
 
-        private Gtk.Widget? content_item;
+        private Gtk.Widget? _content;
         public Gtk.Widget? content {
             set {
-                if (content_item != null) {
-                    remove (content_item);
+                if (_content != null) {
+                    _content.unparent ();
+                    _content.destroy ();
                 }
 
-                content_item = value;
-
-                if (content_item != null) {
-                    append (content_item);
+                _content = value;
+                if (_content != null) {
+                    append (_content);
                 }
             }
+
             get {
-                return content_item;
+                return _content;
             }
         }
 
@@ -68,25 +69,25 @@ namespace Files {
 
         public int id { get; construct; }
         public bool can_show_folder { get; private set; default = false; }
-        private Files.Window? _window = null;
+        // private Files.Window? _window = null;
         public bool working { get; set; }
         public Files.Window window {
             get {
-                return _window;
-            }
-
-            set {
-                if (_window != null) {
-                    disconnect_window_signals ();
-                }
-
-                _window = value;
-                connect_window_signals ();
+                return (Files.Window)(get_ancestor (typeof (Files.Window)));
             }
         }
+        //     set {
+        //         if (_window != null) {
+        //             disconnect_window_signals ();
+        //         }
 
-        public Files.AbstractSlot? view = null;
-        public ViewMode view_mode = ViewMode.ICON;
+        //         _window = value;
+        //         connect_window_signals ();
+        //     }
+        // }
+
+        public Files.MultiSlot? multi_slot { get; construct; }
+        public ViewMode view_mode = ViewMode.INVALID;
 
         public GLib.File? location {
             get {
@@ -100,9 +101,9 @@ namespace Files {
             }
         }
 
-        public Files.AbstractSlot? slot {
-            owned get {
-                return view != null ? view.get_current_slot () : null;
+        public Files.Slot? slot {
+            get {
+                return  multi_slot.get_current_slot ();
             }
         }
 
@@ -124,17 +125,17 @@ namespace Files {
             }
         }
 
-        public bool is_frozen {
-            get {
-                return slot == null || slot.is_frozen;
-            }
+        // public bool is_frozen {
+        //     get {
+        //         return slot == null || slot.is_frozen;
+        //     }
 
-            set {
-                if (slot != null) {
-                    slot.is_frozen = value;
-                }
-            }
-        }
+        //     set {
+        //         if (slot != null) {
+        //             slot.is_frozen = value;
+        //         }
+        //     }
+        // }
 
         public bool is_loading {get; private set; default = false;}
 
@@ -145,14 +146,7 @@ namespace Files {
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
         public signal void active ();
-        /* path-changed signal no longer used */
 
-        /* Initial location now set by Window.make_tab after connecting signals */
-        public ViewContainer (Window win) {
-            Object (
-                window:win
-            );
-        }
 
         ~ViewContainer () {
             debug ("ViewContainer destruct");
@@ -161,54 +155,90 @@ namespace Files {
         construct {
             browser = new Browser ();
             id = ViewContainer.get_next_container_id ();
-            connect_signals ();
-        }
+            multi_slot = new MultiSlot (this);
+            overlay_statusbar = new OverlayBar (multi_slot.overlay); // Adds itself to overlay
 
-        private void connect_signals () {
             loading.connect ((loading) => {
                 is_loading = loading;
             });
-            //TODO Use EventController
-            // button_press_event.connect (on_button_press_event);
+            // window.folder_deleted.connect ((deleted_file) => {
+
+            // });
         }
 
-        private void connect_window_signals () {
-            if (window != null) {
-                window.folder_deleted.connect (on_folder_deleted);
-            }
-        }
+        // // the locations in @to_select must be children of @loc
+        // //Called once after creation of ViewContainer
+        // public void add_view (ViewMode mode, GLib.File loc, GLib.File[]? to_select = null) {
 
-        private void disconnect_signals () {
-            disconnect_slot_signals (view);
-            disconnect_window_signals ();
-        }
+        // }
 
-        private void disconnect_window_signals () {
-            if (window != null) {
-                window.folder_deleted.disconnect (on_folder_deleted);
-            }
-        }
-
-        private void on_folder_deleted (GLib.File deleted) {
-            if (deleted.equal (this.location)) {
+        public void folder_deleted (GLib.File deleted_file) {
+            if (deleted_file.equal (this.location)) {
                 if (!go_up ()) {
                     close ();
-                    window.remove_content (this);
+                    activate_action ("win.remove-content", "i", id);
                 }
             }
         }
+        /** By default changes the view mode to @mode at the same location.
+            @loc - new location to show.
+        **/
+        public void set_location_and_mode (
+            ViewMode mode,
+            GLib.File? loc = null,
+            GLib.File[]? to_select = null
+        ) {
+            var aslot = get_current_slot ();
+            if (mode != view_mode) { //Always the case on creation
+                if (aslot == null) {
+                    aslot.close ();
+                }
+
+                if (to_select != null) {
+                    selected_locations = null;
+                    foreach (GLib.File f in to_select) {
+                        selected_locations.prepend (f);
+                    }
+                } else {
+                    var selected_files = multi_slot.get_selected_files ();
+                    selected_locations = null;
+
+                    if (selected_files != null) {
+                        selected_files.@foreach ((file) => {
+                            selected_locations.prepend (file.location);
+                        });
+                    }
+                }
+                multi_slot.clear ();
+                multi_slot.view_mode = mode;
+                loading (false);
+            }
+
+            // add_view (mode, loc ?? location);
+
+            if (mode != ViewMode.MULTI_COLUMN) {
+                multi_slot.clear ();
+            }
+
+            multi_slot.add_location (loc);
+            // connect_slot_signals (this.view);
+            directory_is_loading (loc);
+            slot.initialize_directory ();
+
+            set_active_state (true);
+        }
 
         public void close () {
-            disconnect_signals ();
-            view.close ();
+            // disconnect_signals ();
+            multi_slot.clear ();
         }
 
         public bool go_up () {
             selected_locations = null;
             selected_locations.append (this.location);
             GLib.File parent = location;
-            if (view.directory.has_parent ()) { /* May not work for some protocols */
-                parent = view.directory.get_parent ();
+            if (slot.directory.has_parent ()) { /* May not work for some protocols */
+                parent = slot.directory.get_parent ();
             } else {
                 var parent_path = FileUtils.get_parent_path_from_path (location.get_uri ());
                 parent = FileUtils.get_file_for_path (parent_path);
@@ -241,97 +271,51 @@ namespace Files {
             }
         }
 
-        // the locations in @to_select must be children of @loc
-        public void add_view (ViewMode mode, GLib.File loc, GLib.File[]? to_select = null) {
-            view_mode = mode;
 
-            if (to_select != null) {
-                selected_locations = null;
-                foreach (GLib.File f in to_select) {
-                    selected_locations.prepend (f);
-                }
-            }
 
-            if (mode == ViewMode.MULTI_COLUMN) {
-                this.view = new MultiSlot (loc, this);
-            } else {
-                this.view = new Slot (loc, this, mode);
-            }
+        // private void connect_slot_signals (Files.AbstractSlot aslot) {
+        //     aslot.active.connect (on_slot_active);
+        //     aslot.path_changed.connect (on_slot_path_changed);
+        //     aslot.new_container_request.connect (on_slot_new_container_request);
+        //     aslot.selection_changing.connect (on_slot_selection_changing);
+        //     aslot.update_selection.connect (on_slot_update_selection);
+        //     aslot.directory_loaded.connect (on_slot_directory_loaded);
+        // }
 
-            overlay_statusbar = new OverlayBar (view.overlay);
+        // private void disconnect_slot_signals (Files.AbstractSlot aslot) {
+        //     aslot.active.disconnect (on_slot_active);
+        //     aslot.path_changed.disconnect (on_slot_path_changed);
+        //     aslot.new_container_request.disconnect (on_slot_new_container_request);
+        //     aslot.selection_changing.disconnect (on_slot_selection_changing);
+        //     aslot.update_selection.disconnect (on_slot_update_selection);
+        //     aslot.directory_loaded.disconnect (on_slot_directory_loaded);
+        // }
 
-            connect_slot_signals (this.view);
-            directory_is_loading (loc);
-            slot.initialize_directory ();
+        // private void on_slot_active (Files.AbstractSlot aslot, bool scroll, bool animate) {
+        //     refresh_slot_info (slot.location);
+        // }
 
-            /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
-             * The slot becomes active when the tab becomes current */
-        }
-
-        /** By default changes the view mode to @mode at the same location.
-            @loc - new location to show.
-        **/
-        public void change_view_mode (ViewMode mode, GLib.File? loc = null) {
-            var aslot = get_current_slot ();
-            if (aslot == null) {
-                return;
-            }
-
-            if (mode != view_mode) {
-                aslot.close ();
-                view_mode = mode;
-                loading (false);
-                store_selection ();
-                /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
-                disconnect_slot_signals (view);
-                add_view (mode, loc ?? location);
-                /* Slot is created inactive so we activate now since we must be the current tab
-                 * to have received a change mode instruction */
-                set_active_state (true);
-                /* Do not update top menu (or record uri) unless folder loads successfully */
-            }
-        }
-
-        private void connect_slot_signals (Files.AbstractSlot aslot) {
-            aslot.active.connect (on_slot_active);
-            aslot.path_changed.connect (on_slot_path_changed);
-            aslot.new_container_request.connect (on_slot_new_container_request);
-            aslot.selection_changing.connect (on_slot_selection_changing);
-            aslot.update_selection.connect (on_slot_update_selection);
-            aslot.directory_loaded.connect (on_slot_directory_loaded);
-        }
-
-        private void disconnect_slot_signals (Files.AbstractSlot aslot) {
-            aslot.active.disconnect (on_slot_active);
-            aslot.path_changed.disconnect (on_slot_path_changed);
-            aslot.new_container_request.disconnect (on_slot_new_container_request);
-            aslot.selection_changing.disconnect (on_slot_selection_changing);
-            aslot.update_selection.disconnect (on_slot_update_selection);
-            aslot.directory_loaded.disconnect (on_slot_directory_loaded);
-        }
-
-        private void on_slot_active (Files.AbstractSlot aslot, bool scroll, bool animate) {
-            refresh_slot_info (slot.location);
-        }
-
-        private void open_location (GLib.File loc, Files.OpenFlag flag) {
+        public void open_location (GLib.File loc, Files.OpenFlag flag) {
             switch (flag) {
                 case Files.OpenFlag.NEW_TAB:
                 case Files.OpenFlag.NEW_WINDOW:
                     /* Must pass through this function in order to properly handle
                      * unusual characters properly */
-                    window.uri_path_change_request (loc.get_uri (), flag);
+                     activate_action ("win.path-change-request", "(su)", loc.get_uri (), flag);
+                    // window.uri_path_change_request (loc.get_uri (), flag);
                     break;
 
                 case Files.OpenFlag.NEW_ROOT:
-                    if (view is MultiSlot) {
-                        //Clear slots;
-                    }
-
-                    view.user_path_change_request (loc);
+                    // if (view is MultiSlot) {
+                    //     //Clear slots;
+                    // }
+                    multi_slot.clear ();
+                    set_location_and_mode (multi_slot.view_mode, loc, null);
+                    // view.user_path_change_request (loc);
                     break;
                 case Files.OpenFlag.DEFAULT:
-                    view.user_path_change_request (loc);
+                    set_location_and_mode (multi_slot.view_mode, loc, null);
+                    // view.user_path_change_request (loc);
                     break;
                 case Files.OpenFlag.APP:
                     warning ("View Container cannot handle Files.OpenFlag.APP - ignoring");
@@ -339,13 +323,14 @@ namespace Files {
             }
         }
 
-        private void on_slot_new_container_request (GLib.File loc, Files.OpenFlag flag) {
+        public void on_slot_new_container_request (GLib.File loc, Files.OpenFlag flag) {
             switch (flag) {
                 case Files.OpenFlag.NEW_TAB:
                 case Files.OpenFlag.NEW_WINDOW:
                     /* Must pass through this function in order to properly handle
                      * unusual characters properly */
-                    window.uri_path_change_request (loc.get_uri (), flag);
+                    activate_action ("win.path-change-request", "(su)", loc.get_uri (), flag);
+                    // window.uri_path_change_request (loc.get_uri (), flag);
                     break;
 
                 case Files.OpenFlag.DEFAULT:
@@ -370,9 +355,10 @@ namespace Files {
             loading (true);
         }
 
-        private void refresh_slot_info (GLib.File loc) {
+        public void refresh_slot_info (GLib.File loc) {
             update_tab_name ();
-            window.loading_uri (loc.get_uri ()); /* Updates labels as well */
+            activate_action ("win.loading-uri", "s", loc.get_uri ());
+            // window.loading_uri (loc.get_uri ()); /* Updates labels as well */
             /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
@@ -431,7 +417,7 @@ namespace Files {
                 }
             /* Now deal with cases where file (s) within the loaded folder has to be selected */
             } else if (selected_locations != null) {
-                view.select_glib_files (selected_locations, selected_locations.first ().data);
+                slot.select_glib_files (selected_locations, selected_locations.first ().data);
                 selected_locations = null;
             } else if (dir.selected_file != null) {
                 if (dir.selected_file.query_exists ()) {
@@ -442,12 +428,11 @@ namespace Files {
                     can_show_folder = false;
                 }
             } else {
-                view.show_first_item (); /* Focus does not work with Gtk4 GridView*/
+                slot.show_first_item ();
             }
 
             if (can_show_folder) {
-                assert (view != null);
-                content = view.get_content_box ();
+                content = multi_slot.overlay;
                 var directory = dir.file;
 
                 /* Only record valid folders (will also log Zeitgeist event) */
@@ -465,18 +450,11 @@ namespace Files {
         }
 
         private void store_selection () {
-            var selected_files = view.get_selected_files ();
-            selected_locations = null;
 
-            if (selected_files != null) {
-                selected_files.@foreach ((file) => {
-                    selected_locations.prepend (file.location);
-                });
-            }
         }
 
         public Files.AbstractSlot? get_current_slot () {
-           return view != null ? view.get_current_slot () : null;
+           return multi_slot.get_current_slot ();
         }
 
         public void set_active_state (bool is_active, bool animate = true) {
@@ -529,7 +507,7 @@ namespace Files {
                     return;
                 }
             } else if (no_path_change) { /* not in current, do not navigate to it*/
-                view.show_first_item (); /* Focus does not work with Gtk4 GridView */
+                slot.show_first_item (); /* Focus does not work with Gtk4 GridView */
                 return;
             }
             /* Attempt to navigate to the location */
@@ -544,21 +522,11 @@ namespace Files {
         }
 
         public string get_root_uri () {
-            string path = "";
-            if (view != null) {
-                path = view.get_root_uri () ?? "";
-            }
-
-            return path;
+            return multi_slot.get_root_uri () ?? "";
         }
 
         public string get_tip_uri () {
-            string path = "";
-            if (view != null) {
-                path = view.get_tip_uri () ?? "";
-            }
-
-            return path;
+            return multi_slot.get_tip_uri () ?? "";
         }
 
         public void reload () {
@@ -579,19 +547,19 @@ namespace Files {
         }
 
         public new void grab_focus () {
-            is_frozen = false;
-            if (can_show_folder && view != null) {
-                view.grab_focus ();
+            // is_frozen = false;
+            if (can_show_folder && slot != null) {
+                slot.grab_focus ();
             } else if (content != null) {
                 content.grab_focus ();
             }
         }
 
-        private void on_slot_selection_changing () {
+        public void on_slot_selection_changing () {
             overlay_statusbar.selection_changing ();
         }
 
-        private void on_slot_update_selection (List<Files.File> selected_files) {
+        public void on_slot_update_selection (List<Files.File> selected_files) {
             overlay_statusbar.update_selection (selected_files);
         }
 
