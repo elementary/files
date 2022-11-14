@@ -253,11 +253,22 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return (ZoomLevel)zoom;
     }
 
-    private void focus_item (uint pos) {
+    private bool focus_item (uint pos) {
         foreach (var item in fileitem_list) {
             if (item.pos == pos) {
-                item.grab_focus ();
+                return item.grab_focus ();
             }
+        }
+
+        return false;
+    }
+
+    private bool focus_appropriate_item () {
+        var item = get_selected_file_item ();
+        if (item != null) {
+            return item.grab_focus ();
+        } else {
+            return focus_item (0);
         }
     }
 
@@ -537,7 +548,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     public override bool grab_focus () {
         if (grid_view != null) {
-            return grid_view.grab_focus ();
+            return focus_appropriate_item ();
         } else {
             return false;
         }

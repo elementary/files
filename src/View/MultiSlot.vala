@@ -26,7 +26,7 @@ public class Files.MultiSlot : Files.AbstractSlot {
     private Gtk.ScrolledWindow scrolled_window;
     private Gtk.Viewport viewport;
     private Gtk.Adjustment hadj;
-    private AbstractSlot? current_slot;
+    private Slot? current_slot = null;
     private GLib.List<Slot> slot_list = null;
     private int total_width = 0;
 
@@ -65,8 +65,11 @@ public class Files.MultiSlot : Files.AbstractSlot {
         scrolled_window.set_child (viewport);
         add_main_child (scrolled_window);
 
-        current_slot = null;
-
+        var key_controller = new Gtk.EventControllerKey () {
+            propagation_phase = Gtk.PropagationPhase.CAPTURE
+        };
+        viewport.add_controller (key_controller);
+        key_controller.key_pressed.connect (on_key_pressed);
         (Files.Preferences.get_default ()).notify["show-hidden-files"].connect ((s, p) => {
             show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
         });
@@ -337,81 +340,75 @@ public class Files.MultiSlot : Files.AbstractSlot {
         }
     }
 
-    //TODO Use EventController
-    // private bool on_key_pressed (Gtk.Widget box, Gdk.EventKey event) {
-    //     /* Only handle unmodified keys */
-    //     Gdk.ModifierType state;
-    //     event.get_state (out state);
-    //     if ((state & Gtk.accelerator_get_default_mod_mask ()) > 0) {
-    //         return false;
-    //     }
+    private bool on_key_pressed (uint keyval, uint keycode, Gdk.ModifierType state) {
+        /* Only handle unmodified keys */
+        if ((state & Gtk.accelerator_get_default_mod_mask ()) > 0) {
+            return false;
+        }
 
-    //     int current_position = slot_list.index (current_slot);
+        int current_position = slot_list.index (current_slot);
 
-    //     if (slot_list.nth_data (current_position).get_directory_view ().renaming) {
-    //         return false;
-    //     }
+        // if (slot_list.nth_data (current_position).get_view_widget ().renaming) {
+        //     return false;
+        // }
 
-    //     Slot to_activate = null;
+        Slot to_activate = null;
+        switch (keyval) {
+            case Gdk.Key.Left:
+                if (current_position > 0) {
+                    to_activate = slot_list.nth_data (current_position - 1);
+                }
 
-    //     uint keyval;
-    //     event.get_keyval (out keyval);
-    //     switch (keyval) {
-    //         case Gdk.Key.Left:
-    //             if (current_position > 0) {
-    //                 to_activate = slot_list.nth_data (current_position - 1);
-    //             }
+                break;
 
-    //             break;
+            case Gdk.Key.Right:
+                if (current_slot.get_selected_files () == null) {
+                    return true;
+                }
 
-    //         case Gdk.Key.Right:
-    //             if (current_slot.get_selected_files () == null) {
-    //                 return true;
-    //             }
+                Files.File? selected_file = current_slot.get_selected_files ().data;
 
-    //             Files.File? selected_file = current_slot.get_selected_files ().data;
+                if (selected_file == null) {
+                    return true;
+                }
 
-    //             if (selected_file == null) {
-    //                 return true;
-    //             }
+                GLib.File current_location = selected_file.location;
+                GLib.File? next_location = null;
 
-    //             GLib.File current_location = selected_file.location;
-    //             GLib.File? next_location = null;
+                if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
+                    next_location = slot_list.nth_data (current_position + 1).location;
+                }
 
-    //             if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
-    //                 next_location = slot_list.nth_data (current_position + 1).location;
-    //             }
+                if (next_location != null && next_location.equal (current_location)) {
+                    to_activate = slot_list.nth_data (current_position + 1);
+                } else if (selected_file.is_folder ()) {
+                    add_location (current_location, current_slot);
+                    return true;
+                }
 
-    //             if (next_location != null && next_location.equal (current_location)) {
-    //                 to_activate = slot_list.nth_data (current_position + 1);
-    //             } else if (selected_file.is_folder ()) {
-    //                 add_location (current_location, current_slot);
-    //                 return true;
-    //             }
+                break;
 
-    //             break;
+            case Gdk.Key.BackSpace:
+                    if (current_position > 0) {
+                        truncate_list_after_slot (slot_list.nth_data (current_position - 1));
+                    } else {
+                        ctab.go_up ();
+                        return true;
+                    }
 
-    //         case Gdk.Key.BackSpace:
-    //                 if (current_position > 0) {
-    //                     truncate_list_after_slot (slot_list.nth_data (current_position - 1));
-    //                 } else {
-    //                     ctab.go_up ();
-    //                     return true;
-    //                 }
+                break;
 
-    //             break;
+            default:
+                return false;
+        }
 
-    //         default:
-    //             break;
-    //     }
+        if (to_activate != null) {
+            to_activate.active ();
+            // to_activate.focus_first_for_empty_selection (true); /* Selects as well as focusses */
+        }
 
-    //     if (to_activate != null) {
-    //         to_activate.active ();
-    //         to_activate.focus_first_for_empty_selection (true); /* Selects as well as focusses */
-    //     }
-
-    //     return false;
-    // }
+        return true;
+    }
 
     private void on_slot_update_selection (GLib.List<Files.File> files) {
         update_selection (files);
