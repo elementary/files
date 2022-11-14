@@ -89,7 +89,8 @@ public class Files.MultiSlot : Files.AbstractSlot {
 
         if (host != null) {
             truncate_list_after_slot (host);
-            host.select_gof_file (guest.file);
+// warning ("MILLER add loc select gof %s", guest.file.basename);
+//             host.select_gof_file (guest.file);
             host.hpaned.end_child = guest.hpaned;
             guest.initialize_directory ();
         } else {
@@ -313,6 +314,7 @@ public class Files.MultiSlot : Files.AbstractSlot {
     }
 
     public override void show_first_item () {
+warning ("MILLER shoe first");
         if (current_slot != null) {
             current_slot.show_first_item ();
         }
@@ -527,10 +529,6 @@ public class Files.MultiSlot : Files.AbstractSlot {
     public override void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {
         current_slot.select_glib_files (files, focus_location);
     }
-
-    // public override void focus_first_for_empty_selection (bool select = true) {
-    //     current_slot.focus_first_for_empty_selection (select);
-    // }
 
     public override void zoom_in () {
         ((Slot)(current_slot)).zoom_in ();

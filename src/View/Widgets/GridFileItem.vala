@@ -34,13 +34,11 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     private Gtk.Image file_icon;
     private Gtk.Label label;
     private Gtk.CheckButton selection_helper;
-    private Gtk.TextView text_view;
     private Gtk.Image[] emblems;
     private Gtk.Box emblem_box;
     private Gtk.Overlay icon_overlay;
 
     public Files.File? file { get; set; default = null; }
-    public Files.GridView view { get; set construct; }
     public uint pos { get; set; default = 0; }
 
     public ZoomLevel zoom_level {
@@ -66,10 +64,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
                 update_pix ();
             }
         }
-    }
-
-    public GridFileItem (Files.GridView view) {
-        Object (view: view);
     }
 
     construct {
@@ -137,11 +131,12 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             if (selected && !has_css_class ("selected")) {
                 add_css_class ("selected");
                 selection_helper.visible = true;
-                view.grid_view.model.select_item (pos, false);
+warning ("Item selectin self, pos %u", pos);
+                // view.grid_view.model.select_item (pos, false);
             } else if (!selected && has_css_class ("selected")) {
                 remove_css_class ("selected");
                 selection_helper.visible = false;
-                view.grid_view.model.unselect_item (pos);
+                // view.grid_view.model.unselect_item (pos);
             }
         });
 
@@ -171,14 +166,19 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     }
 
     public void bind_file (Files.File? file) {
-        if (file != this.file) {
-            unbind ();
-            this.file = file;
-        }
-
+        this.file = file;
+        //Assume that item will not be bound without being unbound first
         if (file == null) {
+            label.label = "Unbound";
+            file_icon.paintable = null;
+            file_icon.set_from_icon_name ("image-missing");
+            thumbnail_request = -1;
+            drop_pending = false;
+            selected = false;
+            cut_pending = false;
+
             return;
-        }
+        } else
 
         file.ensure_query_info ();
         label.label = file.custom_display_name ?? file.basename;
@@ -205,47 +205,39 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         }
     }
 
-    private void unbind () {
-        label.label = "Unbound";
-        file_icon.paintable = null;
-        file_icon.set_from_icon_name ("image-missing");
-        thumbnail_request = -1;
-        drop_pending = false;
-        selected = false;
-        cut_pending = false;
-    }
-
-    private void update_pix () {
-            file.update_gicon_and_paintable ();
-            if (file.paintable != null) {
-                file_icon.set_from_paintable (file.paintable);
+    private void update_pix () requires (file != null) {
+        file.update_gicon_and_paintable ();
+        if (file.paintable != null) {
+            file_icon.set_from_paintable (file.paintable);
+        } else {
+            if (file.gicon != null) {
+                file_icon.set_from_gicon (file.gicon);
             } else {
-                if (file.gicon != null) {
-                    file_icon.set_from_gicon (file.gicon);
-                } else {
-                    critical ("File %s has neither paintable nor gicon", file.uri);
-                    file_icon.set_from_icon_name ("dialog-error");
-                }
+                critical ("File %s has neither paintable nor gicon", file.uri);
+                file_icon.set_from_icon_name ("dialog-error");
             }
+        }
 
-            foreach (var emblem in emblems) {
-                emblem.visible = false;
-            }
-            int index = 0;
-            foreach (string emblem in file.emblems_list) {
-                emblems[index].icon_name = emblem;
-                emblems[index].visible = true;
-                index++;
-            }
+        foreach (var emblem in emblems) {
+            emblem.visible = false;
+        }
+        int index = 0;
+        foreach (string emblem in file.emblems_list) {
+            emblems[index].icon_name = emblem;
+            emblems[index].visible = true;
+            index++;
+        }
 
-            file_icon.queue_draw ();
+        file_icon.queue_draw ();
     }
 
     private void handle_thumbnailer_finished (uint req) {
         if (req == thumbnail_request && file != null) {
             // Thumbnailer has already updated the file thumbnail path and state
             thumbnail_request = -1;
-            bind_file (file);
+            if (file != null) {
+                bind_file (file);
+            }
         }
     }
 

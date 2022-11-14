@@ -134,7 +134,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 // Activate item
                 var item = get_item_at (x, y);
                 if (should_activate) {
-                    multi_selection.select_item (item.pos, true);
+                    unselect_all ();
                     var file = item.file;
                     if (file.is_folder ()) {
                         path_change_request (file.location, Files.OpenFlag.DEFAULT);
@@ -165,7 +165,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
         item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var file_item = new GridFileItem (this);
+            var file_item = new GridFileItem ();
+            // var file_item = new GridFileItem (this);
             fileitem_list.prepend (file_item);
             bind_property (
                 "zoom-level",
@@ -190,7 +191,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         item_factory.unbind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = (GridFileItem)list_item.child;
-            // file_item.bind_file (null);
+            file_item.bind_file (null);
         });
 
         item_factory.teardown.connect ((obj) => {
@@ -289,10 +290,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
         return null;
     }
-
-    // private void show_context_menu (Menu menu_model, double x, double y) {
-
-    // }
 
     /* View Interface abstract methods */
     private void show_context_menu_at (double x, double y) {
@@ -433,6 +430,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     public override void select_files (List<Files.File> files_to_select) {
+    warning ("GV select files");
         foreach (var file in files_to_select) {
             show_and_select_file (file, true, false, false);
         }
