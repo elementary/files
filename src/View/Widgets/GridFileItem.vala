@@ -131,12 +131,9 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             if (selected && !has_css_class ("selected")) {
                 add_css_class ("selected");
                 selection_helper.visible = true;
-warning ("Item selectin self, pos %u", pos);
-                // view.grid_view.model.select_item (pos, false);
             } else if (!selected && has_css_class ("selected")) {
                 remove_css_class ("selected");
                 selection_helper.visible = false;
-                // view.grid_view.model.unselect_item (pos);
             }
         });
 
@@ -192,17 +189,14 @@ warning ("Item selectin self, pos %u", pos);
             }
         }
 
-        Idle.add (() => {
-            update_pix ();
-            return Source.REMOVE;
-        });
-
         var cut_pending = ClipboardManager.get_instance ().has_cut_file (file);
         if (cut_pending && !has_css_class ("cut")) {
             add_css_class ("cut");
         } else if (!cut_pending && has_css_class ("cut")) {
             remove_css_class ("cut");
         }
+
+        update_pix ();
     }
 
     private void update_pix () requires (file != null) {
