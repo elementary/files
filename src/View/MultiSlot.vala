@@ -340,7 +340,12 @@ public class Files.MultiSlot : Files.AbstractSlot {
         }
     }
 
-    private bool on_key_pressed (uint keyval, uint keycode, Gdk.ModifierType state) {
+    private bool on_key_pressed (
+        uint keyval,
+        uint keycode,
+        Gdk.ModifierType state
+    ) requires (current_slot != null) {
+
         /* Only handle unmodified keys */
         if ((state & Gtk.accelerator_get_default_mod_mask ()) > 0) {
             return false;
@@ -362,19 +367,14 @@ public class Files.MultiSlot : Files.AbstractSlot {
                 break;
 
             case Gdk.Key.Right:
-                if (current_slot.get_selected_files () == null) {
-                    return true;
-                }
+                    var selected_files = current_slot.get_selected_files ();
+                    if (selected_files == null) {
+                        return true;
+                    }
 
-                Files.File? selected_file = current_slot.get_selected_files ().data;
-
-                if (selected_file == null) {
-                    return true;
-                }
-
-                GLib.File current_location = selected_file.location;
+                    var selected_file = selected_files.first ().data;
+                unowned var current_location = selected_files.first ().data.location;
                 GLib.File? next_location = null;
-
                 if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
                     next_location = slot_list.nth_data (current_position + 1).location;
                 }
@@ -433,56 +433,6 @@ public class Files.MultiSlot : Files.AbstractSlot {
 
 
 /** Helper functions */
-
-//     private void schedule_scroll_to_slot (Slot slot, bool animate = true) {
-// return;
-//         if (scroll_to_slot_timeout_id > 0) {
-//             GLib.Source.remove (scroll_to_slot_timeout_id);
-//         }
-
-//         scroll_to_slot_timeout_id = GLib.Timeout.add (200, () => {
-//             /* Wait until slot realized and loaded before scrolling
-//              * Cannot accurately scroll until directory finishes loading because width will change
-//              * according the length of the longest filename */
-//             if (!scrolled_window.get_realized () || slot.directory.state != Directory.State.LOADED) {
-//                 return Source.CONTINUE;
-//             }
-
-//             if (get_animating ()) {
-//                 cancel_animation ();
-//             }
-
-//             // Calculate position to scroll to
-//             int total_width_before = 0; /* left edge of active slot */
-//             slot_list.@foreach ((abs) => {
-//                 if (abs.slot_number < slot.slot_number) {
-//                     total_width_before += abs.width;
-//                 }
-//             });
-
-//             int hadj_value = (int) this.hadj.get_value ();
-//             int offset = total_width_before - hadj_value;
-//             if (offset < 0) { /*scroll until left hand edge of active slot is in view*/
-//                 hadj_value += offset;
-//             }
-
-//             offset = total_width_before + slot.width - hadj_value - viewport.child.get_width ();
-//             if (offset > 0) { /*scroll  until right hand edge of active slot is in view*/
-//                 hadj_value += offset;
-//             }
-
-//             // Perform scroll
-//             if (animate) {
-//                 smooth_adjustment_to (this.hadj, hadj_value);
-//             } else { /* On startup we do not want to animate */
-//                 hadj.set_value (hadj_value);
-//             }
-
-//             scroll_to_slot_timeout_id = 0;
-//             return Source.REMOVE;
-//         });
-//     }
-
     public override Files.AbstractSlot? get_current_slot () {
         return current_slot;
     }
@@ -560,55 +510,4 @@ public class Files.MultiSlot : Files.AbstractSlot {
     public override FileInfo? lookup_file_info (GLib.File loc) {
         return current_slot.lookup_file_info (loc);
     }
-
-    // /* Animation functions */
-
-    // private uint animation_timeout_source_id = 0;
-    // private void smooth_adjustment_to (Gtk.Adjustment adj, int final) {
-    //     cancel_animation ();
-
-    //     var initial = adj.value;
-    //     var to_do = final - initial;
-
-    //     int factor;
-    //     (to_do > 0) ? factor = 1 : factor = -1;
-    //     to_do = (double) (((int) to_do).abs () + 1);
-
-    //     var newvalue = 0;
-    //     var old_adj_value = adj.value;
-
-    //     animation_timeout_source_id = Timeout.add (1000 / 60, () => {
-    //         /* If the user move it at the same time, just stop the animation */
-    //         if (old_adj_value != adj.value) {
-    //             animation_timeout_source_id = 0;
-    //             return GLib.Source.REMOVE;
-    //         }
-
-    //         if (newvalue >= to_do - 10) {
-    //             /* to be sure that there is not a little problem */
-    //             adj.value = final;
-    //             animation_timeout_source_id = 0;
-    //             return GLib.Source.REMOVE;
-    //         }
-
-    //         newvalue += 10;
-
-    //         adj.value = initial + factor *
-    //                     Math.sin (((double) newvalue / (double) to_do) * Math.PI / 2) * to_do;
-
-    //         old_adj_value = adj.value;
-    //         return GLib.Source.CONTINUE;
-    //     });
-    // }
-
-    // private bool get_animating () {
-    //     return animation_timeout_source_id > 0;
-    // }
-
-    // private void cancel_animation () {
-    //     if (animation_timeout_source_id > 0) {
-    //         Source.remove (animation_timeout_source_id);
-    //         animation_timeout_source_id = 0;
-    //     }
-    // }
 }

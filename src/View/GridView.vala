@@ -165,7 +165,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
         item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var file_item = new GridFileItem ();
+            var file_item = new GridFileItem (this);
             // var file_item = new GridFileItem (this);
             fileitem_list.prepend (file_item);
             bind_property (
@@ -191,7 +191,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         item_factory.unbind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = (GridFileItem)list_item.child;
-            file_item.bind_file (null);
+            // It seems items can be unbound even while visible (???) so we do not want to
+            // unbind file til new one bound.
         });
 
         item_factory.teardown.connect ((obj) => {
@@ -423,6 +424,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         //TODO Check pos same in sorted model and list_store
         if (select) {
             multi_selection.select_item (pos, unselect_others);
+        } else {
+            multi_selection.unselect_item (pos);
         }
 
         if (show) {

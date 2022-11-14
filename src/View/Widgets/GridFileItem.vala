@@ -39,6 +39,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     private Gtk.Overlay icon_overlay;
 
     public Files.File? file { get; set; default = null; }
+    public ViewInterface view { get; construct; }
     public uint pos { get; set; default = 0; }
 
     public ZoomLevel zoom_level {
@@ -66,6 +67,12 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         }
     }
 
+    public GridFileItem (ViewInterface view) {
+        Object (
+            view: view
+        );
+    }
+
     construct {
         var lm = new Gtk.BoxLayout (Gtk.Orientation.VERTICAL);
         set_layout_manager (lm);
@@ -85,9 +92,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             halign = Gtk.Align.START,
             valign = Gtk.Align.START
         };
-        selection_helper.bind_property (
-            "active", this, "selected", BindingFlags.BIDIRECTIONAL
-        );
 
         emblems = new Gtk.Image[4];
         emblem_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
@@ -127,14 +131,19 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
 
         Thumbnailer.@get ().finished.connect (handle_thumbnailer_finished);
 
+        bind_property ("selected", selection_helper, "active", BindingFlags.BIDIRECTIONAL);
+        bind_property ("selected", selection_helper, "visible", BindingFlags.DEFAULT);
         notify["selected"].connect (() => {
             if (selected && !has_css_class ("selected")) {
                 add_css_class ("selected");
-                selection_helper.visible = true;
             } else if (!selected && has_css_class ("selected")) {
                 remove_css_class ("selected");
-                selection_helper.visible = false;
             }
+
+            if (file != null) {
+                view.show_and_select_file (file, selection_helper.active, false, false);
+            }
+
         });
 
         var motion_controller = new Gtk.EventControllerMotion ();
@@ -150,13 +159,11 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         focusable = true;
         var focus_controller = new Gtk.EventControllerFocus ();
         focus_controller.enter.connect (() => {
-warning ("item focus enter");
             if (!has_css_class ("focussed")) {
                 add_css_class ("focussed");
             }
         });
         focus_controller.leave.connect (() => {
-warning ("item focus leave");
             if (has_css_class ("focussed")) {
                 remove_css_class ("focussed");
             }
@@ -164,8 +171,9 @@ warning ("item focus leave");
         add_controller (focus_controller);
     }
 
-    public void bind_file (Files.File? file) {
-        this.file = file;
+    public void bind_file (Files.File? new_file) {
+        var old_file = file;
+        file = new_file;
         //Assume that item will not be bound without being unbound first
         if (file == null) {
             label.label = "Unbound";
@@ -177,7 +185,7 @@ warning ("item focus leave");
             cut_pending = false;
 
             return;
-        } else
+        }
 
         file.ensure_query_info ();
         label.label = file.custom_display_name ?? file.basename;
