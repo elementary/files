@@ -17,23 +17,18 @@
 ***/
 
 public class Files.MultiSlot : Files.AbstractSlot {
-    private unowned ViewContainer ctab;
-
+    public ViewContainer ctab { get; construct; }
+    public GLib.File root_location { get; set construct; }
     /* Need private copy of initial location as MultiSlot
      * does not have its own Asyncdirectory object */
-    private GLib.File root_location;
-
-    // private Gtk.Box colpane;
 
     private uint scroll_to_slot_timeout_id = 0;
-
     private Gtk.ScrolledWindow scrolled_window;
     private Gtk.Viewport viewport;
-    public Gtk.Adjustment hadj;
+    private Gtk.Adjustment hadj;
     private AbstractSlot? current_slot;
-
-    public GLib.List<Slot> slot_list = null;
-    public int total_width = 0;
+    private GLib.List<Slot> slot_list = null;
+    private int total_width = 0;
 
     // public override bool is_frozen {
     //     set {
@@ -48,35 +43,36 @@ public class Files.MultiSlot : Files.AbstractSlot {
     // }
 
     public MultiSlot (GLib.File loc, ViewContainer ctab) {
-        this.ctab = ctab;
-        this.root_location = loc;
+        Object (
+            ctab: ctab,
+            root_location: loc
+        );
+    }
+
+    ~MultiSlot () {
+        debug ("MultiSlot destruct");
+    }
+
+    construct {
+        scrolled_window = new Gtk.ScrolledWindow () {
+            hscrollbar_policy = Gtk.PolicyType.ALWAYS,
+            vscrollbar_policy = Gtk.PolicyType.NEVER
+        };
+        hadj = scrolled_window.get_hadjustment ();
+        viewport = new Gtk.Viewport (null, null) {
+            scroll_to_focus = true //TODO Is this sufficient?
+        };
+        scrolled_window.set_child (viewport);
+        add_main_child (scrolled_window);
+
+        current_slot = null;
 
         (Files.Preferences.get_default ()).notify["show-hidden-files"].connect ((s, p) => {
             show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
         });
 
-        scrolled_window = new Gtk.ScrolledWindow () {
-            hscrollbar_policy = Gtk.PolicyType.ALWAYS,
-            vscrollbar_policy = Gtk.PolicyType.NEVER
-        };
-
-        hadj = scrolled_window.get_hadjustment ();
-
-        viewport = new Gtk.Viewport (null, null) {
-            scroll_to_focus = true //TODO Is this sufficient?
-        };
-
-        scrolled_window.set_child (viewport);
-        add_main_child (scrolled_window);
-
-        current_slot = null;
         add_location (root_location, null); /* current slot gets set by this */
-
-        is_frozen = true;
-    }
-
-    ~MultiSlot () {
-        debug ("MultiSlot destruct");
+        // is_frozen = true;
     }
 
     /** Creates a new slot in the host slot hpane */
@@ -89,8 +85,6 @@ public class Files.MultiSlot : Files.AbstractSlot {
 
         if (host != null) {
             truncate_list_after_slot (host);
-// warning ("MILLER add loc select gof %s", guest.file.basename);
-//             host.select_gof_file (guest.file);
             host.hpaned.end_child = guest.hpaned;
             guest.initialize_directory ();
         } else {
@@ -125,7 +119,6 @@ public class Files.MultiSlot : Files.AbstractSlot {
         }
 
         slot_list.nth (n).next = null;
-        // calculate_total_width ();
         current_slot = slot;
         slot.active ();
     }
@@ -314,7 +307,6 @@ public class Files.MultiSlot : Files.AbstractSlot {
     }
 
     public override void show_first_item () {
-warning ("MILLER shoe first");
         if (current_slot != null) {
             current_slot.show_first_item ();
         }
