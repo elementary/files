@@ -229,9 +229,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         if (req == thumbnail_request && file != null) {
             // Thumbnailer has already updated the file thumbnail path and state
             thumbnail_request = -1;
-            if (file != null) {
-                bind_file (file);
-            }
+            bind_file (file);
         }
     }
 
