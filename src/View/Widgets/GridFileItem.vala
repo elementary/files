@@ -145,38 +145,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             }
         });
 
-        // Implement single-click navigate
-        var gesture_click = new Gtk.GestureClick () {
-            button = Gdk.BUTTON_PRIMARY,
-            propagation_phase = Gtk.PropagationPhase.CAPTURE
-        };
-        gesture_click.released.connect ((n_press, x, y) => {
-            if ((n_press == 1 &&
-                !prefs.singleclick_select &&
-                file.is_folder ()) ||
-                n_press == 2) {
-
-                Idle.add (() => {
-                    //Ensure file selected so that it will be activated
-                    view.show_and_select_file (file, true, false, false);
-                    view.grid_view.activate (pos);
-                    return Source.REMOVE;
-                });
-            }
-        });
-        file_icon.add_controller (gesture_click);
-
-        // Implement item context menu launching
-        var gesture_secondary_click = new Gtk.GestureClick () {
-            button = Gdk.BUTTON_SECONDARY,
-            propagation_phase = Gtk.PropagationPhase.CAPTURE
-        };
-        gesture_secondary_click.released.connect ((n_press, x, y) => {
-            view.show_item_context_menu (this, x, y);
-            gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED);
-        });
-        add_controller (gesture_secondary_click);
-
         var motion_controller = new Gtk.EventControllerMotion ();
         motion_controller.enter.connect (() => {
             selection_helper.visible = true;
