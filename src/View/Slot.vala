@@ -77,7 +77,6 @@ public class Slot : Files.AbstractSlot {
             ctab: _ctab,
             mode: _mode
         );
-warning ("Create slot mode %s", _mode.to_string ());
         set_up_directory (_location ?? GLib.File.new_for_commandline_arg (Environment.get_home_dir ()));
         //Directory is initialized by ctab
         // is_frozen = true;
@@ -351,9 +350,8 @@ warning ("Create slot mode %s", _mode.to_string ());
         if (directory != null) {
             disconnect_directory_handlers (directory);
         }
-warning ("creating directory %s", loc.get_uri ());
+
         directory = Directory.from_gfile (loc);
-        // assert (directory != null);
         connect_directory_handlers (directory);
     }
 
@@ -401,7 +399,6 @@ warning ("creating directory %s", loc.get_uri ());
     // }
 
     public async bool initialize_directory () {
-warning ("initialising %s", directory.file.basename);
         if (directory.is_loading ()) {
             /* This can happen when restoring duplicate tabs */
             warning ("Slot.initialize_directory () called when directory already loading - ignoring");

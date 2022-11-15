@@ -799,7 +799,7 @@ public class Files.Window : Gtk.ApplicationWindow {
                 current_container.slot.location,
                 current_view_widget,
                 (obj, res) => {
-                    warning ("after paste complete");
+                    // warning ("after paste complete");
                 }
             );
         }
@@ -1510,7 +1510,7 @@ public class Files.Window : Gtk.ApplicationWindow {
                     break;
             }
         } else {
-            warning ("Cannot browse %s", p);
+            // warning ("Cannot browse %s", p);
         }
     }
 
