@@ -28,7 +28,7 @@ public class Files.MultiSlot : Gtk.Box {
     private Gtk.ScrolledWindow scrolled_window;
     private Gtk.Viewport viewport;
     private Gtk.Adjustment hadj;
-    public unowned Slot? current_slot { get; private set; }
+    private Slot? current_slot;
     private Gee.ArrayList<Slot> slot_list = null;
     // private GLib.List<Slot> slot_list = null;
     private int total_width = 0;
@@ -92,10 +92,13 @@ public class Files.MultiSlot : Gtk.Box {
         var guest = new Slot (loc, ctab, view_mode);
 // warning ("new slot refs %u", guest.ref_count);
         var size = slot_list.size;
-        var host = (size == 0 ? null : slot_list.@get (size - 1));
+        Slot? host = null;
+        if (view_mode == ViewMode.MULTICOLUMN) {
+            host = get_host_for_loc (loc);
+        }
 
-        if (view_mode == ViewMode.MULTICOLUMN && host != null) {
-            guest.slot_number = host.slot_number + 1;
+        if (host != null) {
+            truncate_list_after_slot (host);
             host.hpaned.end_child = guest.hpaned;
         } else {
             clear ();
@@ -104,15 +107,30 @@ public class Files.MultiSlot : Gtk.Box {
 // warning ("after add hpaned slot refs %u", guest.ref_count);
         guest.slot_number = slot_list.size;
         slot_list.insert (guest.slot_number, guest); // Must add to list before scrolling
+        current_slot = guest;
 // warning ("after add slot list refs %u", guest.ref_count);
-        connect_slot_signals (guest);
+        // connect_slot_signals (guest);
 // warning ("after connect refs %u", guest.ref_count);
         // Must set the new slot to be  active here as the tab does not change (which normally sets its slot active)
-        guest.active (true, true);
+        // guest.active (true, true);
 // warning ("aftersignal active refs %u", guest.ref_count);
         update_total_width ();
 // warning ("after update total wi refs %u", guest.ref_count);
 // warning ("after add location slot refs %u", guest.ref_count);
+    }
+
+    private Slot? get_host_for_loc (GLib.File file) {
+        int index = 0;
+        while (index < slot_list.size &&
+               slot_list.@get (index).location.get_relative_path (file) != null)
+        {
+            index++;
+        }
+        if (index == 0 || index > slot_list.size) {
+            return null;
+        }
+
+        return slot_list.@get (index - 1);
     }
 
     public void clear () {
@@ -128,39 +146,19 @@ public class Files.MultiSlot : Gtk.Box {
         int index = slot_list.size;
         while (--index > n) {
             var s = slot_list.remove_at (index);
-warning ("truncate slot %i - remaining refs %u", s.slot_number, s.ref_count);
-                disconnect_slot_signals (s);
+// warning ("truncate slot %i - remaining refs %u", s.slot_number, s.ref_count);
+                // disconnect_slot_signals (s);
                 s.close ();
                 s.hpaned.unparent ();
                 s.dispose ();
-warning ("disposed slot %i - remaining refs %u", s.slot_number, s.ref_count);
+// warning ("disposed slot %i - remaining refs %u", s.slot_number, s.ref_count);
         }
 
-warning ("slot list size now %u", slot_list.size);
         if (slot_list.size == 0) {
             current_slot = null;
         } else {
             current_slot = slot_list.@get (slot_list.size - 1);
         }
-
-        // if (n >= 0) {
-        //     var child = ((Slot)slot).hpaned.end_child;
-        //     child.unparent ();
-        //     child.destroy ();
-        // } else {
-        //     var child = viewport.child;
-        //     child.unparent ();
-        //     child.destroy ();
-        // }
-        // //TODO Check for memory leak
-        // if (n >= 0) {
-        //     slot_list.nth (n).next = null;
-        //     current_slot = slot;
-        //     slot.active ();
-        // } else {
-        //     slot_list = null;
-        //     current_slot = null;
-        // }
     }
 
     private void calculate_total_width () {
@@ -178,84 +176,84 @@ warning ("slot list size now %u", slot_list.size);
 /*********************/
 /** Signal handling **/
 /*********************/
-    private void change_path (GLib.File loc) {
-        var first_slot = slot_list.@get (0);
-        string root_uri = first_slot.uri;
-        string target_uri = loc.get_uri ();
-        bool found = false;
+    // private void change_path (GLib.File loc) {
+    //     var first_slot = slot_list.@get (0);
+    //     string root_uri = first_slot.uri;
+    //     string target_uri = loc.get_uri ();
+    //     bool found = false;
 
-        if (target_uri.has_prefix (root_uri) && target_uri != root_uri) {
-            /* Try to add location relative to each slot in turn, starting at end */
-            // var copy_slot_list = slot_list.copy ();
-            // copy_slot_list.reverse ();
-            int index = slot_list.size;
-            while (--index >= 0) {
-                var s = slot_list.@get (index);
-                if (add_relative_path (s, loc)) {
-                    found = true;
-                    break;
-                }
-            }
-        }
+    //     if (target_uri.has_prefix (root_uri) && target_uri != root_uri) {
+    //         /* Try to add location relative to each slot in turn, starting at end */
+    //         // var copy_slot_list = slot_list.copy ();
+    //         // copy_slot_list.reverse ();
+    //         int index = slot_list.size;
+    //         while (--index >= 0) {
+    //             var s = slot_list.@get (index);
+    //             if (add_relative_path (s, loc)) {
+    //                 found = true;
+    //                 break;
+    //             }
+    //         }
+    //     }
 
-        /* If requested location is not a child of any slot, start a new tree */
-        if (!found) {
-            truncate_list_after_slot (first_slot);
-            if (loc.get_uri () != first_slot.uri) {
-                root_location = loc;
-                // Sidebar requests make_root true - first directory will be selected;
-                //  * Go_up requests make_root false - previous directory will be selected
-                //
-                // if (make_root) {
-                //     /* Do not select (match behaviour of other views) */
-                //     first_slot.focus_first_for_empty_selection (false);
-                // }
-            }
-        }
-    }
+    //     /* If requested location is not a child of any slot, start a new tree */
+    //     if (!found) {
+    //         truncate_list_after_slot (first_slot);
+    //         if (loc.get_uri () != first_slot.uri) {
+    //             root_location = loc;
+    //             // Sidebar requests make_root true - first directory will be selected;
+    //             //  * Go_up requests make_root false - previous directory will be selected
+    //             //
+    //             // if (make_root) {
+    //             //     /* Do not select (match behaviour of other views) */
+    //             //     first_slot.focus_first_for_empty_selection (false);
+    //             // }
+    //         }
+    //     }
+    // }
 
-    private bool add_relative_path (Slot root, GLib.File loc) {
-        if (root.location.get_uri () == loc.get_uri ()) {
-            truncate_list_after_slot (root);
-            return true;
-        }
-        string? relative_path = FileUtils.escape_uri (root.location.get_relative_path (loc), false);
-        if (relative_path != null && relative_path.length > 0) {
-            truncate_list_after_slot (root);
-            string [] dirs = relative_path.split (Path.DIR_SEPARATOR_S);
-            string last_uri = root.uri;
-            if (last_uri.has_suffix (Path.DIR_SEPARATOR_S)) {
-                last_uri = last_uri.slice (0, -1);
-            }
+    // private bool add_relative_path (Slot root, GLib.File loc) {
+    //     if (root.location.get_uri () == loc.get_uri ()) {
+    //         truncate_list_after_slot (root);
+    //         return true;
+    //     }
+    //     string? relative_path = FileUtils.escape_uri (root.location.get_relative_path (loc), false);
+    //     if (relative_path != null && relative_path.length > 0) {
+    //         truncate_list_after_slot (root);
+    //         string [] dirs = relative_path.split (Path.DIR_SEPARATOR_S);
+    //         string last_uri = root.uri;
+    //         if (last_uri.has_suffix (Path.DIR_SEPARATOR_S)) {
+    //             last_uri = last_uri.slice (0, -1);
+    //         }
 
-            foreach (unowned string d in dirs) {
-                if (d.length > 0) {
-                    last_uri = GLib.Path.build_path (Path.DIR_SEPARATOR_S, last_uri, d);
+    //         foreach (unowned string d in dirs) {
+    //             if (d.length > 0) {
+    //                 last_uri = GLib.Path.build_path (Path.DIR_SEPARATOR_S, last_uri, d);
 
-                    var last_slot = slot_list.@get (slot_list.size - 1);
-                    var file = GLib.File.new_for_uri (last_uri);
-                    var list = new List<GLib.File> ();
-                    list.prepend (file);
-                    last_slot.select_glib_files (list, file);
-                    Thread.usleep (100000);
-                    add_location (file);
-                    // add_location (file, last_slot);
+    //                 var last_slot = slot_list.@get (slot_list.size - 1);
+    //                 var file = GLib.File.new_for_uri (last_uri);
+    //                 var list = new List<GLib.File> ();
+    //                 list.prepend (file);
+    //                 last_slot.select_glib_files (list, file);
+    //                 Thread.usleep (100000);
+    //                 add_location (file);
+    //                 // add_location (file, last_slot);
 
-                }
-            }
-        } else {
-            return false;
-        }
-        return true;
-    }
+    //             }
+    //         }
+    //     } else {
+    //         return false;
+    //     }
+    //     return true;
+    // }
 
-    private void connect_slot_signals (Slot slot) {
-        slot.active.connect (on_slot_active);
-    }
+    // private void connect_slot_signals (Slot slot) {
+    //     slot.active.connect (on_slot_active);
+    // }
 
-    private void disconnect_slot_signals (Slot slot) {
-        slot.active.disconnect (on_slot_active);
-    }
+    // private void disconnect_slot_signals (Slot slot) {
+    //     slot.active.disconnect (on_slot_active);
+    // }
 
     public void folder_deleted (GLib.File file) {
         foreach (var slot in slot_list) {
@@ -274,34 +272,45 @@ warning ("slot list size now %u", slot_list.size);
         }
     }
 
-    /** Called in response to slot active signal.
-     *  Should not be called directly
-     **/
-    private void on_slot_active (Files.AbstractSlot aslot, bool scroll = true, bool animate = true) {
-        Slot slot;
-
-        if (!(aslot is Slot)) {
-            return;
-        } else {
-            slot = aslot as Slot;
-        }
-
-        // if (scroll) {
-        //     schedule_scroll_to_slot (slot, animate);
-        // }
-
-        if (this.current_slot != slot) {
-            foreach (var s in slot_list) {
-                if (s != slot) {
-                    s.inactive ();
-                }
-            }
-
-            current_slot = slot;
-        }
-        /* Always emit this signal so that UI updates (e.g. pathbar) */
-        ctab.refresh_slot_info (current_slot.location);
+    public void set_current_slot (Slot slot) {
+        current_slot = slot;  //TODO Anything else needed?
     }
+    public unowned Slot? get_current_slot () {
+        return current_slot;  //TODO Anything else needed?
+    }
+//     /** Called in response to slot active signal.
+//      *  Should not be called directly
+//      **/
+//     private void on_slot_active (
+//         Files.AbstractSlot aslot,
+//         bool scroll = true,
+//         bool animate = true
+//     ) {
+//         Slot slot;
+
+//         if (!(aslot is Slot)) {
+//             return;
+//         } else {
+//             slot = aslot as Slot;
+//         }
+
+//         // if (scroll) {
+//         //     schedule_scroll_to_slot (slot, animate);
+//         // }
+
+//         if (this.current_slot != slot) {
+//             foreach (var s in slot_list) {
+//                 if (s != slot) {
+//                     s.inactive ();
+//                 }
+//             }
+
+//             current_slot = slot;
+//         }
+//         /* Always emit this signal so that UI updates (e.g. pathbar) */
+// warning ("slot active");
+//         ctab.refresh_slot_info (current_slot.location);
+//     }
 
     private void show_hidden_files_changed (bool show_hidden) {
         if (!show_hidden) {
@@ -324,7 +333,7 @@ warning ("slot list size now %u", slot_list.size);
             /* Remove hidden slots and make the slot before the first hidden slot active */
             var slot = slot_list.@get (hidden - 1);
             truncate_list_after_slot (slot);
-            slot.active ();
+            // slot.active ();
         }
     }
 
@@ -390,7 +399,7 @@ warning ("slot list size now %u", slot_list.size);
         }
 
         if (to_activate != null) {
-            to_activate.active ();
+            // to_activate.active ();
             // to_activate.focus_first_for_empty_selection (true); /* Selects as well as focusses */
         }
 

@@ -321,12 +321,12 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
 
         if (old_tab != null) {
-            old_tab.set_active_state (false);
+            // old_tab.set_active_state (false);
             // old_tab.is_frozen = false;
         }
 
         update_labels (current_container.uri);
-        current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
+        // current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
         sidebar.sync_uri (current_container.uri);
         // top_menu.working = current_container.is_frozen;
         save_active_tab_position ();
@@ -347,8 +347,8 @@ public class Files.Window : Gtk.ApplicationWindow {
                 /* Open a tab pointing at the default location if no tabs restored*/
                 var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
                 add_tab (location, mode);
-                /* Ensure default tab's slot is active so it can be focused */
-                current_container.set_active_state (true, false);
+                // /* Ensure default tab's slot is active so it can be focused */
+                // current_container.set_active_state (true, false);
             }
         } else {
             /* Open tabs at each requested location */

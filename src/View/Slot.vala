@@ -113,20 +113,20 @@ public class Slot : Files.AbstractSlot {
         view_widget.path_change_request.connect (on_view_path_change_request);
         view_widget.selection_changed.connect (on_view_widget_selection_changed);
 
-        active.connect (() => {
-            if (is_active) {
-                return;
-            }
+        // active.connect (() => {
+        //     if (is_active) {
+        //         return;
+        //     }
 
-            is_active = true;
-            if (view_widget != null) {
-                view_widget.grab_focus ();
-            }
-        });
+        //     is_active = true;
+        //     if (view_widget != null) {
+        //         view_widget.grab_focus ();
+        //     }
+        // });
 
-        inactive.connect (() => {
-            is_active = false;
-        });
+        // inactive.connect (() => {
+        //     is_active = false;
+        // });
     }
 
     uint selection_changed_timeout_id = 0;
@@ -316,6 +316,7 @@ public class Slot : Files.AbstractSlot {
     }
 
     private void set_up_directory (GLib.File loc) {
+// warning ("set up directory %s", loc.get_uri ());
         if (directory != null) {
             disconnect_directory_handlers (directory);
         }
@@ -401,11 +402,12 @@ public class Slot : Files.AbstractSlot {
     }
 
     public override void set_active_state (bool set_active, bool animate = true) {
-        if (set_active) {
-            active (true, animate);
-        } else {
-            inactive ();
-        }
+warning ("set active state");
+        // if (set_active) {
+        //     active (true, animate);
+        // } else {
+        //     inactive ();
+        // }
     }
 
     public override void grab_focus () {

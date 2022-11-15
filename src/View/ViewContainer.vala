@@ -64,7 +64,7 @@ public class Files.ViewContainer : Gtk.Box {
 
     public Files.Slot? slot {
         get {
-            return multi_slot.current_slot;
+            return multi_slot.get_current_slot ();
         }
     }
 
@@ -249,7 +249,8 @@ public class Files.ViewContainer : Gtk.Box {
             is_loading = false; /* Will cause topmenu to update */
         });
 
-        set_active_state (true);
+        // set_active_state (true);
+        multi_slot.set_current_slot (slot);
     }
 
     public void close () {
@@ -358,12 +359,12 @@ public class Files.ViewContainer : Gtk.Box {
         overlay_statusbar.hide ();
     }
 
-    public void set_active_state (bool is_active, bool animate = true) {
-        if (slot != null) {
-            /* Since async loading it may not have been determined whether slot is loadable */
-            slot.set_active_state (is_active, animate);
-        }
-    }
+    // public void set_active_state (bool is_active, bool animate = true) {
+    //     if (slot != null) {
+    //         /* Since async loading it may not have been determined whether slot is loadable */
+    //         slot.set_active_state (is_active, animate);
+    //     }
+    // }
 
     public void focus_location (GLib.File? loc,
                                 bool no_path_change = false,

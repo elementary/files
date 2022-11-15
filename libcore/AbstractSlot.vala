@@ -65,8 +65,8 @@ namespace Files {
 
         // protected int width;
 
-        public signal void active (bool scroll = true, bool animate = true);
-        public signal void inactive ();
+        // public signal void active (bool scroll = true, bool animate = true);
+        // public signal void inactive ();
         // public signal void path_changed ();
         public signal void new_container_request (GLib.File loc, Files.OpenFlag flag);
         public signal void selection_changing ();
