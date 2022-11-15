@@ -24,8 +24,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         prefs = Files.Preferences.get_default ();
     }
 
-
-
     // Properties defined in template NOTE: cannot use construct; here
     public Menu background_menu { get; set; }
     public Menu item_menu { get; set; }

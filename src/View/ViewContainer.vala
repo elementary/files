@@ -183,6 +183,8 @@ public class Files.ViewContainer : Gtk.Box {
                 return;
             }
 
+            slot.after_directory_done_loading ();
+            multi_slot.update_total_width ();
             var dir = slot.directory;
             can_show_folder = dir.can_load;
             /* First deal with all cases where directory could not be loaded */

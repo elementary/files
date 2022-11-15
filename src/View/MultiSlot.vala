@@ -58,20 +58,18 @@ public class Files.MultiSlot : Gtk.Box {
     construct {
         slot_list = new Gee.ArrayList<Slot> (null);
         scrolled_window = new Gtk.ScrolledWindow () {
-            hscrollbar_policy = Gtk.PolicyType.ALWAYS,
+            hscrollbar_policy = Gtk.PolicyType.AUTOMATIC,
             vscrollbar_policy = Gtk.PolicyType.NEVER
         };
         hadj = scrolled_window.get_hadjustment ();
         viewport = new Gtk.Viewport (null, null) {
-            scroll_to_focus = true //TODO Is this sufficient?
+            hexpand = true
         };
         scrolled_window.set_child (viewport);
 
         overlay = new Gtk.Overlay ();
         overlay.child = scrolled_window;
         overlay.set_parent (this);
-        //
-        // add_main_child (scrolled_window);
 
         var key_controller = new Gtk.EventControllerKey () {
             propagation_phase = Gtk.PropagationPhase.CAPTURE
@@ -81,8 +79,6 @@ public class Files.MultiSlot : Gtk.Box {
         (Files.Preferences.get_default ()).notify["show-hidden-files"].connect ((s, p) => {
             show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
         });
-
-        // is_frozen = true;
     }
 
     /** Creates a new slot in the last slot hpane */
@@ -122,8 +118,8 @@ public class Files.MultiSlot : Gtk.Box {
     private Slot? get_host_for_loc (GLib.File file) {
         int index = 0;
         while (index < slot_list.size &&
-               slot_list.@get (index).location.get_relative_path (file) != null)
-        {
+               slot_list.@get (index).location.get_relative_path (file) != null) {
+
             index++;
         }
         if (index == 0 || index > slot_list.size) {
@@ -166,9 +162,11 @@ public class Files.MultiSlot : Gtk.Box {
         foreach (var slot in slot_list) {
             total_width += slot.width;
         }
+
+        scrolled_window.min_content_width = total_width;
     }
 
-    private void update_total_width () {
+    public void update_total_width () {
         calculate_total_width ();
         viewport.set_size_request (total_width, -1);
     }

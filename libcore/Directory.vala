@@ -61,7 +61,7 @@ public class Files.Directory : Object {
     private FileMonitor? monitor = null;
     private List<unowned Files.File>? sorted_dirs = null;
 
-    public signal void file_loaded (Files.File file);
+    // public signal void file_loaded (Files.File file);
     public signal void file_added (Files.File? file); /* null used to signal failed operation */
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
@@ -147,7 +147,7 @@ public class Files.Directory : Object {
         file.set_expanded (false); // Ensure any remaining folder icons are not displayed as expanded
     }
 
-    /** Views call the following function with null parameter - file_loaded and done_loading
+    /** Views call the following function with null parameter - file_added and done_loading
       * signals are emitted and cause the view and view container to update.
       *
       * LocationBar calls this function, with a callback, on its own Directory instances in order
@@ -704,7 +704,7 @@ public class Files.Directory : Object {
         displayed_files_count++;
 
         if (file_loaded_func == null) {
-            file_loaded (gof);
+            file_added (gof);
         } else {
             file_loaded_func (gof);
         }

@@ -43,7 +43,7 @@ public class Slot : Files.AbstractSlot {
     private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
     private const string DENIED_MESSAGE = _("Access Denied");
     public signal void folder_deleted (Files.File file, Directory parent);
-    public signal void size_change ();
+    // public signal void size_change ();
 
     public Slot (GLib.File? _location, ViewContainer _ctab, ViewMode _mode) {
         Object (
@@ -107,7 +107,7 @@ public class Slot : Files.AbstractSlot {
             hpaned.resize_end_child = true;
             hpaned.shrink_start_child = false;
             hpaned.resize_start_child = false;
-            hpaned.position = preferred_column_width;
+            hpaned.position = -1;
         }
 
         view_widget.path_change_request.connect (on_view_path_change_request);
@@ -153,48 +153,25 @@ public class Slot : Files.AbstractSlot {
         dir.file_added.connect (on_directory_file_added);
         dir.file_changed.connect (on_directory_file_changed);
         dir.file_deleted.connect (on_directory_file_deleted);
-        connect_directory_loading_handlers (dir);
+        // connect_directory_loading_handlers (dir);
         dir.need_reload.connect (on_directory_need_reload);
     }
 
     private void disconnect_directory_handlers (Directory dir) {
-        /* If the directory is still loading the file_loaded signal handler
-        /* will not have been disconnected */
-        if (dir.is_loading ()) {
-            disconnect_directory_loading_handlers (dir);
-        }
-
         dir.file_added.disconnect (on_directory_file_added);
         dir.file_changed.disconnect (on_directory_file_changed);
         dir.file_deleted.disconnect (on_directory_file_deleted);
-        // dir.done_loading.disconnect (on_directory_done_loading);
         dir.need_reload.disconnect (on_directory_need_reload);
     }
-
-    private void connect_directory_loading_handlers (Directory dir) {
-        dir.file_loaded.connect (on_directory_file_loaded);
-        // dir.done_loading.connect (on_directory_done_loading);
-    }
-
-    private void disconnect_directory_loading_handlers (Directory dir) {
-        dir.file_loaded.disconnect (on_directory_file_loaded);
-        // dir.done_loading.disconnect (on_directory_done_loading);
-    }
-
 
     // * Directory signal handlers moved from DirectoryView not requiring changes
     // to Window
     private void on_directory_file_added (Directory dir, Files.File? file) {
         if (file != null) {
-            view_widget.add_file (file); //FIXME Should we select files added after load?
+            view_widget.add_file (file);
         }
-    }
 
-    private void on_directory_file_loaded (Directory dir, Files.File file) {
-        if (file != null) {
-            view_widget.add_file (file); //FIXME Should we select files added after load?
-        }
-        /* no freespace change signal required */
+        //TODO Determine whether dir is loading or freespace update required.
     }
 
     private void on_directory_file_changed (Directory dir, Files.File file) {
@@ -231,10 +208,11 @@ public class Slot : Files.AbstractSlot {
     }
 
     // Called by ViewContainer after handling loading directory
-    public void after_directory_done_loading (Directory dir) {
+    public void after_directory_done_loading () {
+    // public void after_directory_done_loading (Directory dir) {
         /* Should only be called on directory creation or reload */
-        disconnect_directory_loading_handlers (dir); //Necessary?
-        if (this.directory.can_load) {
+        // disconnect_directory_loading_handlers (dir); //Necessary?
+        if (directory.can_load) {
             if (in_recent) {
                 view_widget.sort_type = Files.SortType.MODIFIED;
                 view_widget.sort_reversed = false;
@@ -244,8 +222,7 @@ public class Slot : Files.AbstractSlot {
             }
         }
 
-        // ctab.on_slot_directory_loaded (dir); // Signal to ViewContainer //TODO Replace with direct call
-        if (dir.is_empty ()) { /* No files in the file cache */
+        if (directory.is_empty ()) { /* No files in the file cache */
             empty_label.label = get_empty_message ();
             if (empty_label.parent == null) {
                 overlay.add_overlay (empty_label);
@@ -257,7 +234,7 @@ public class Slot : Files.AbstractSlot {
         }
         /*  Column View requires slots to determine their own width (other views' width determined by Window */
         if (mode == ViewMode.MULTICOLUMN) {
-            if (dir.is_empty ()) { /* No files in the file cache */
+            if (directory.is_empty ()) { /* No files in the file cache */
                 int min, nat;
                 empty_label.measure (Gtk.Orientation.HORIZONTAL, 100, out min, out nat, null, null);
                 width = nat + 48;
@@ -265,25 +242,13 @@ public class Slot : Files.AbstractSlot {
                 width = preferred_column_width;
             }
 
-            // width += view_widget.zoom_level.to_icon_size () + 64; /* allow some extra room for icon padding and right margin*/
-
-            // /* Allow extra room for MESSAGE_CLASS styling of special messages */
-            // if (dir.is_empty () || dir.permission_denied) {
-            //     width += width;
-            // }
-
-            size_change ();
             hpaned.set_position (width);
-
-            // if (colpane.get_realized ()) {
-            //     colpane.queue_draw ();
-            // }
         }
     }
 
     private void on_directory_need_reload (Directory dir, bool original_request) {
         view_widget.clear ();
-        connect_directory_loading_handlers (dir);
+        // connect_directory_loading_handlers (dir);
         /* view and slot are unfrozen when done loading signal received */
         // path_changed ();
         ctab.on_slot_path_changed (this);
@@ -338,7 +303,7 @@ public class Slot : Files.AbstractSlot {
         }
         // /* view and slot are unfrozen when done loading signal received */
         // is_frozen = true;
-        yield directory.init ();
+        yield directory.init (view_widget.add_file);
         return true;
     }
 
