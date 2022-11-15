@@ -34,58 +34,39 @@ public class Files.ViewContainer : Gtk.Box {
         container_id = -1;
     }
 
-    private Gtk.Widget? _content;
-    public Gtk.Widget? content {
-        set {
-            if (_content != null) {
-                _content.unparent ();
-                _content.destroy ();
-            }
-
-            _content = value;
-            if (_content != null) {
-                append (_content);
-            }
-        }
-
-        get {
-            return _content;
-        }
-    }
-
-    private string label = "";
-    public string tab_name {
-        private set {
-            if (label != value) { /* Do not signal if no change */
-                label = value;
-                tab_name_changed (value);
-            }
-        }
-        get {
-            return label;
-        }
-    }
-
-    public int id { get; construct; }
-    public bool can_show_folder { get; private set; default = false; }
-    // private Files.Window? _window = null;
-    public bool working { get; set; }
-    public Files.Window window {
-        get {
-            return (Files.Window)(get_ancestor (typeof (Files.Window)));
-        }
-    }
-    //     set {
-    //         if (_window != null) {
-    //             disconnect_window_signals ();
+    // private string label = "";
+    public string tab_name { get; set; }
+    //     private set {
+    //         if (label != value) { /* Do not signal if no change */
+    //             label = value;
+    //             // tab_name_changed (value);
     //         }
-
-    //         _window = value;
-    //         connect_window_signals ();
+    //     }
+    //     get {
+    //         return label;
     //     }
     // }
 
-    public Files.MultiSlot multi_slot { get; construct; }
+    public int id { get; construct; }
+    public bool can_show_folder { get; private set; default = false; }
+    public bool working { get; set; }
+
+    // public Gtk.Overlay overlay { get; construct; }
+    // public ViewContainer ctab { get; construct; }
+    // public GLib.File root_location { get; set construct; }
+    // public ViewMode view_mode { get; set; }
+    // /* Need private copy of initial location as MultiSlot
+    //  * does not have its own Asyncdirectory object */
+
+    // private uint scroll_to_slot_timeout_id = 0;
+    // private Gtk.ScrolledWindow scrolled_window;
+    // private Gtk.Viewport viewport;
+    // private Gtk.Adjustment hadj;
+    // public Slot? current_slot { get; private set; }
+    // private GLib.List<Slot> slot_list = null;
+    // private int total_width = 0;
+
+    private Files.MultiSlot multi_slot;
     public ViewMode view_mode {
         get {
             return multi_slot.view_mode;
@@ -140,15 +121,33 @@ public class Files.ViewContainer : Gtk.Box {
     //     }
     // }
 
-    public bool is_loading {get; private set; default = false;}
+    public bool is_loading { get; private set; default = false;}
 
+    private Gtk.Widget? _content;
+    private Gtk.Widget? content {
+        set {
+            if (_content != null) {
+                _content.unparent ();
+                // _content.destroy ();
+            }
+
+            _content = value;
+            if (_content != null) {
+                append (_content);
+            }
+        }
+
+        get {
+            return _content;
+        }
+    }
     private OverlayBar overlay_statusbar;
     private Browser browser;
     private GLib.List<GLib.File>? selected_locations = null;
 
-    public signal void tab_name_changed (string tab_name);
+    // public signal void tab_name_changed (string tab_name);
     // public signal void loading (bool is_loading);
-    public signal void active ();
+    // public signal void active ();
 
 
     ~ViewContainer () {
@@ -180,8 +179,11 @@ public class Files.ViewContainer : Gtk.Box {
         GLib.File? loc = null,
         GLib.File[]? to_select = null
     ) {
-        // var aslot = get_current_slot ();
-        if (mode != multi_slot.view_mode) { //Always the case on creation
+
+        var current_location = location;
+        is_loading = false;
+        var change_mode = mode != multi_slot.view_mode;
+        if (change_mode) { //Always the case on creation
             if (to_select != null) {
                 selected_locations = null;
                 foreach (GLib.File f in to_select) {
@@ -197,20 +199,12 @@ public class Files.ViewContainer : Gtk.Box {
                     });
                 }
             }
-            if (slot != null) {
-                slot.close ();
-            }
-            // multi_slot.clear ();
-            multi_slot.view_mode = mode;
-            is_loading = false;
-        }
 
-        if (mode != ViewMode.MULTI_COLUMN) {
             multi_slot.clear ();
+            multi_slot.view_mode = mode;
         }
 
-        multi_slot.add_location (loc ?? location);
-        // connect_slot_signals (this.view);
+        multi_slot.add_location (loc ?? current_location);
         directory_is_loading (location);
         is_loading = true;
 
@@ -379,25 +373,6 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
-    // public void on_slot_new_container_request (GLib.File loc, Files.OpenFlag flag) {
-    //     switch (flag) {
-    //         case Files.OpenFlag.NEW_TAB:
-    //         case Files.OpenFlag.NEW_WINDOW:
-    //             /* Must pass through this function in order to properly handle
-    //              * unusual characters properly */
-    //             activate_action ("win.path-change-request", "(su)", loc.get_uri (), flag);
-    //             // window.uri_path_change_request (loc.get_uri (), flag);
-    //             break;
-
-    //         case Files.OpenFlag.DEFAULT:
-    //         case Files.OpenFlag.NEW_ROOT:
-    //         case Files.OpenFlag.APP:
-    //             //Should already have been handled by Slot
-    //             warning ("Unexpected File.OpenFlag - ignoring");
-    //             break;
-    //     }
-    // }
-
     public void on_slot_path_changed (Files.AbstractSlot slot) {
         directory_is_loading (slot.location);
     }
@@ -438,13 +413,9 @@ public class Files.ViewContainer : Gtk.Box {
     }
 
     public void set_active_state (bool is_active, bool animate = true) {
-        // var aslot = get_current_slot ();
         if (slot != null) {
             /* Since async loading it may not have been determined whether slot is loadable */
             slot.set_active_state (is_active, animate);
-            if (is_active) {
-                active ();
-            }
         }
     }
 
@@ -495,8 +466,10 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
-    public void focus_location_if_in_current_directory (GLib.File? loc,
-                                                        bool unselect_others = false) {
+    public void focus_location_if_in_current_directory (
+        GLib.File? loc,
+        bool unselect_others = false
+    ) {
         focus_location (loc, true, unselect_others);
     }
 

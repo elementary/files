@@ -80,39 +80,33 @@ public class Files.MultiSlot : Gtk.Box {
             show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
         });
 
-        // add_location (root_location, null); /* current slot gets set by this */
         // is_frozen = true;
     }
 
-    /** Creates a new slot in the host slot hpane */
-    public void add_location (GLib.File? loc, Slot? host = null) {
+    /** Creates a new slot in the last slot hpane */
+    public void add_location (GLib.File? loc) {
+        // Always create new Slot rather than navigate for simplicity.
+        //TODO Check for performance/memory leak
         var guest = new Slot (loc, ctab, view_mode);
-        /* Notify view container of path change - will set tab to working and change pathbar */
-        // path_changed ();
-        guest.slot_number = (host != null) ? host.slot_number + 1 : 0;
         connect_slot_signals (guest);
-
-        if (host != null) {
-            truncate_list_after_slot (host);
+        var host = slot_list == null ? null : slot_list.last ().data;
+        guest.slot_number = (host != null) ? host.slot_number + 1 : 0;
+        if (view_mode == ViewMode.MULTICOLUMN && host != null) {
+            guest.slot_number = host.slot_number + 1;
             host.hpaned.end_child = guest.hpaned;
-            guest.initialize_directory ();
         } else {
+            clear ();
             viewport.child = guest.hpaned;
         }
-
         slot_list.append (guest); // Must add to list before scrolling
-        // Must set the new slot to be  activehere as the tab does not change (which normally sets its slot active)
+        // Must set the new slot to be  active here as the tab does not change (which normally sets its slot active)
         guest.active (true, true);
 
         update_total_width ();
     }
 
     public void clear () {
-        current_slot = null;
         truncate_list_after_slot (null);
-        // while (viewport.get_last_child () != null) {
-        //     viewport.get_last_child ().unparent ();
-        // }
     }
 
     private void truncate_list_after_slot (Slot? slot) {
@@ -127,6 +121,7 @@ public class Files.MultiSlot : Gtk.Box {
                 s.close ();
             }
         });
+
         if (n >= 0) {
             var child = ((Slot)slot).hpaned.end_child;
             child.unparent ();
@@ -136,11 +131,14 @@ public class Files.MultiSlot : Gtk.Box {
             child.unparent ();
             child.destroy ();
         }
-//TODO Check for memory leak
+        //TODO Check for memory leak
         if (n >= 0) {
             slot_list.nth (n).next = null;
             current_slot = slot;
             slot.active ();
+        } else {
+            slot_list = null;
+            current_slot = null;
         }
     }
 
@@ -159,15 +157,6 @@ public class Files.MultiSlot : Gtk.Box {
 /*********************/
 /** Signal handling **/
 /*********************/
-
-    // public void get_ir  (GLib.File loc) {
-    //     /* Requests from history buttons, pathbar come here with make_root = false.
-    //      * These do not create a new root.
-    //      * Requests from the sidebar have make_root = true
-    //      */
-    //     change_path (loc);
-    // }
-
     private void change_path (GLib.File loc) {
         var first_slot = slot_list.first ().data;
         string root_uri = first_slot.uri;
@@ -190,7 +179,6 @@ public class Files.MultiSlot : Gtk.Box {
         if (!found) {
             truncate_list_after_slot (first_slot);
             if (loc.get_uri () != first_slot.uri) {
-                // first_slot.user_path_change_request (loc);
                 root_location = loc;
                 // Sidebar requests make_root true - first directory will be selected;
                 //  * Go_up requests make_root false - previous directory will be selected
@@ -227,7 +215,8 @@ public class Files.MultiSlot : Gtk.Box {
                     list.prepend (file);
                     last_slot.select_glib_files (list, file);
                     Thread.usleep (100000);
-                    add_location (file, last_slot);
+                    add_location (file);
+                    // add_location (file, last_slot);
 
                 }
             }
@@ -238,32 +227,11 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
     private void connect_slot_signals (Slot slot) {
-        // slot.selection_changing.connect (on_slot_selection_changing);
-        // slot.update_selection.connect (on_slot_update_selection);
-        // slot.frozen_changed.connect (on_slot_frozen_changed);
         slot.active.connect (on_slot_active);
-        // slot.miller_slot_request.connect (on_miller_slot_request);
-        // slot.new_container_request.connect (on_new_container_request);
-        // slot.size_change.connect (update_total_width);
-        // slot.folder_deleted.connect (on_slot_folder_deleted);
-        //TODO Use EventController
-        // slot.colpane.key_press_event.connect (on_key_pressed);
-        // slot.path_changed.connect (on_slot_path_changed);
-        // slot.directory_loaded.connect (on_slot_directory_loaded);
     }
 
     private void disconnect_slot_signals (Slot slot) {
-        // slot.selection_changing.disconnect (on_slot_selection_changing);
-        // slot.update_selection.disconnect (on_slot_update_selection);
-        // slot.frozen_changed.disconnect (on_slot_frozen_changed);
         slot.active.disconnect (on_slot_active);
-        // slot.miller_slot_request.disconnect (on_miller_slot_request);
-        // slot.new_container_request.disconnect (on_new_container_request);
-        // slot.size_change.disconnect (update_total_width);
-        // slot.folder_deleted.disconnect (on_slot_folder_deleted);
-        // slot.colpane.key_press_event.disconnect (on_key_pressed);
-        // slot.path_changed.disconnect (on_slot_path_changed);
-        // slot.directory_loaded.disconnect (on_slot_directory_loaded);
     }
 
     public void folder_deleted (GLib.File file) {
@@ -364,12 +332,12 @@ public class Files.MultiSlot : Gtk.Box {
                 break;
 
             case Gdk.Key.Right:
-                    var selected_files = current_slot.get_selected_files ();
-                    if (selected_files == null) {
-                        return true;
-                    }
+                var selected_files = current_slot.get_selected_files ();
+                if (selected_files == null) {
+                    return true;
+                }
 
-                    var selected_file = selected_files.first ().data;
+                var selected_file = selected_files.first ().data;
                 unowned var current_location = selected_files.first ().data.location;
                 GLib.File? next_location = null;
                 if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
@@ -379,7 +347,9 @@ public class Files.MultiSlot : Gtk.Box {
                 if (next_location != null && next_location.equal (current_location)) {
                     to_activate = slot_list.nth_data (current_position + 1);
                 } else if (selected_file.is_folder ()) {
-                    add_location (current_location, current_slot);
+                    truncate_list_after_slot (slot_list.nth_data (current_position));
+                    add_location (current_location);
+                    // add_location (current_location, current_slot);
                     return true;
                 }
 

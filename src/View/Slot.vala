@@ -16,6 +16,7 @@
 
 namespace Files {
 public class Slot : Files.AbstractSlot {
+    public int slot_number { get; set; default = 0;}
     public Files.ViewContainer ctab { get; construct; }
     public ViewMode mode { get; construct; }
     public Gtk.Paned hpaned { get; construct; }
@@ -32,11 +33,11 @@ public class Slot : Files.AbstractSlot {
         }
     }
 
-    public Files.Window window {
-        get {
-            return ctab.window;
-        }
-    }
+    // public Files.Window window {
+    //     get {
+    //         return ctab.window;
+    //     }
+    // }
 
     private int preferred_column_width;
     private uint reload_timeout_id = 0;
@@ -107,7 +108,7 @@ public class Slot : Files.AbstractSlot {
             case ViewMode.LIST:
                 view_widget = new Files.GridView (this);
                 break;
-            case ViewMode.MULTI_COLUMN:
+            case ViewMode.MULTICOLUMN:
                 var gv = new Files.GridView (this);
                 gv.grid_view.max_columns = 1;
                 view_widget = gv;
@@ -121,7 +122,7 @@ public class Slot : Files.AbstractSlot {
         add_main_child (view_widget);
         hpaned.start_child = content_box;
 
-        if (mode == ViewMode.MULTI_COLUMN) {
+        if (mode == ViewMode.MULTICOLUMN) {
             preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
             width = preferred_column_width;
             view_widget.width_request = preferred_column_width;
@@ -155,9 +156,9 @@ public class Slot : Files.AbstractSlot {
             is_active = false;
         });
 
-        folder_deleted.connect ((file, dir) => {
-           ((Files.Application)(window.application)).folder_deleted (file.location);
-        });
+        // folder_deleted.connect ((file, dir) => {
+        //    ((Files.Application)(window.application)).folder_deleted (file.location);
+        // });
     }
 
     uint selection_changed_timeout_id = 0;
@@ -287,7 +288,7 @@ public class Slot : Files.AbstractSlot {
             }
         }
         /*  Column View requires slots to determine their own width (other views' width determined by Window */
-        if (mode == ViewMode.MULTI_COLUMN) {
+        if (mode == ViewMode.MULTICOLUMN) {
             if (dir.is_empty ()) { /* No files in the file cache */
                 int min, nat;
                 empty_label.measure (Gtk.Orientation.HORIZONTAL, 100, out min, out nat, null, null);
@@ -360,7 +361,7 @@ public class Slot : Files.AbstractSlot {
         ctab.open_location (loc, flag);
         // switch (flag) {
         //     case Files.OpenFlag.DEFAULT:
-        //         // if (mode == ViewMode.MULTI_COLUMN) {
+        //         // if (mode == ViewMode.MULTICOLUMN) {
         //         //     miller_slot_request (loc, false); /* signal to parent MillerView */
         //         // } else {
         //         //     user_path_change_request (loc); /* Handle ourselves */
@@ -374,7 +375,7 @@ public class Slot : Files.AbstractSlot {
         //         // new_container_request (loc, flag);
         //         break;
         //     case Files.OpenFlag.NEW_ROOT:
-        //         // if (mode == ViewMode.MULTI_COLUMN) {
+        //         // if (mode == ViewMode.MULTICOLUMN) {
         //         //     miller_slot_request (loc, true); /* signal to parent MillerView */
         //         // } else {
         //         //     user_path_change_request (loc); /* Handle ourselves */

@@ -66,7 +66,7 @@ public class Files.ViewSwitcher : Gtk.Box {
 
 
         /* Item 2 */
-        id = (uint32)ViewMode.MULTI_COLUMN;
+        id = (uint32)ViewMode.MULTICOLUMN;
         var column_view_btn = new Gtk.ToggleButton () {
             child = new Gtk.Image.from_icon_name ("view-column-symbolic"),
             tooltip_markup = get_tooltip_for_id (id, _("View in Columns")),
@@ -76,10 +76,10 @@ public class Files.ViewSwitcher : Gtk.Box {
         };
         column_view_btn.toggled.connect (() => {
             if (column_view_btn.active) {
-                set_mode ((uint32)ViewMode.MULTI_COLUMN);
+                set_mode ((uint32)ViewMode.MULTICOLUMN);
             }
         });
-        column_view_btn.set_data<uint32> ("id", ViewMode.MULTI_COLUMN);
+        column_view_btn.set_data<uint32> ("id", ViewMode.MULTICOLUMN);
 
         valign = Gtk.Align.CENTER;
         append (grid_view_btn);

@@ -62,7 +62,7 @@ namespace Files {
         protected Gtk.Box extra_action_widgets;
         protected Gtk.Box content_box;
         public Gtk.Overlay overlay {get; protected set;} // Overlaid with empty message and property overlay
-        public int slot_number { get; set; }
+
         // protected int width;
 
         public signal void active (bool scroll = true, bool animate = true);
@@ -102,7 +102,6 @@ namespace Files {
 
             extra_action_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             content_box.append (extra_action_widgets);
-            slot_number = -1;
         }
 
         // public abstract void initialize_directory ();
