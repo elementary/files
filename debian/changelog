@@ -1,3 +1,13 @@
+pantheon-files (6.2.1) focal; urgency=medium
+
+  * Release 6.2.1 (#2101)
+  * Update translation files
+  * Update translation template
+  * Update io.elementary.files.appdata.xml.in.in (#2100)
+  * FileOperations: Fix crash creating new empty file (#2099)
+
+ -- elementary, Inc. <builds@elementary.io>  Tue, 15 Nov 2022 15:58:44 +0000
+
 pantheon-files (6.2.0) focal; urgency=medium
 
   * New upstream release
