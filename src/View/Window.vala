@@ -1154,10 +1154,9 @@ warning ("setting mode %s", mode.to_string ());
     }
 
     private void action_path_change_request (GLib.SimpleAction action, GLib.Variant? param) {
-        var iter = param.iterator ();
         string uri;
-        uint flag;
-        iter.next ("(su)", out uri, out flag);
+        uint32 flag;
+        param.@get ("(su)", out uri, out flag);
         uri_path_change_request (uri, flag);
     }
 
