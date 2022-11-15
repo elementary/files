@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-31 16:59+0000\n"
-"PO-Revision-Date: 2022-10-01 04:25+0000\n"
-"Last-Translator: lenemter <lenemter@gmail.com>\n"
+"POT-Creation-Date: 2022-11-14 16:32+0000\n"
+"PO-Revision-Date: 2022-11-15 12:15+0000\n"
+"Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
 ">\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -1796,7 +1796,7 @@ msgstr "Скрыть миниатюры"
 
 #: src/View/AbstractDirectoryView.vala:2246
 msgid "Select Folders with Single Click"
-msgstr "Выбирать папки щелчком"
+msgstr "Выбирать папки одним щелчком"
 
 #: src/View/AbstractDirectoryView.vala:2343
 msgid "Name"
