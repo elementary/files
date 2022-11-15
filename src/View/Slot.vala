@@ -361,32 +361,34 @@ warning ("creating directory %s", loc.get_uri ());
 
     private void on_view_path_change_request (GLib.File loc, Files.OpenFlag flag) {
         cancel_timeouts ();
-        switch (flag) {
-            case Files.OpenFlag.DEFAULT:
-                // if (mode == ViewMode.MULTI_COLUMN) {
-                //     miller_slot_request (loc, false); /* signal to parent MillerView */
-                // } else {
-                //     user_path_change_request (loc); /* Handle ourselves */
-                // }
-                ctab.open_location (loc, flag);
-                break;
-            case Files.OpenFlag.NEW_TAB:
-            case Files.OpenFlag.NEW_WINDOW:
-                ctab.on_slot_new_container_request (loc, flag);
-                // new_container_request (loc, flag);
-                break;
-            case Files.OpenFlag.NEW_ROOT:
-                // if (mode == ViewMode.MULTI_COLUMN) {
-                //     miller_slot_request (loc, true); /* signal to parent MillerView */
-                // } else {
-                //     user_path_change_request (loc); /* Handle ourselves */
-                // }
-                ctab.open_location (loc, flag);
-                break;
-            case Files.OpenFlag.APP:
-                warning ("Unexpected flag");
-                break;
-        }
+        ctab.open_location (loc, flag);
+        // switch (flag) {
+        //     case Files.OpenFlag.DEFAULT:
+        //         // if (mode == ViewMode.MULTI_COLUMN) {
+        //         //     miller_slot_request (loc, false); /* signal to parent MillerView */
+        //         // } else {
+        //         //     user_path_change_request (loc); /* Handle ourselves */
+        //         // }
+        //         ctab.open_location (loc, flag);
+        //         break;
+        //     case Files.OpenFlag.NEW_TAB:
+        //     case Files.OpenFlag.NEW_WINDOW:
+        //         ctab.open_location (loc, flag);
+        //         // ctab.on_slot_new_container_request (loc, flag);
+        //         // new_container_request (loc, flag);
+        //         break;
+        //     case Files.OpenFlag.NEW_ROOT:
+        //         // if (mode == ViewMode.MULTI_COLUMN) {
+        //         //     miller_slot_request (loc, true); /* signal to parent MillerView */
+        //         // } else {
+        //         //     user_path_change_request (loc); /* Handle ourselves */
+        //         // }
+        //         ctab.open_location (loc, flag);
+        //         break;
+        //     case Files.OpenFlag.APP:
+        //         warning ("Unexpected flag");
+        //         break;
+        // }
     }
 
     // public override void user_path_change_request (GLib.File loc) {
