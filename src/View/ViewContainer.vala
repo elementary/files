@@ -86,8 +86,12 @@ namespace Files {
         //     }
         // }
 
-        public Files.MultiSlot? multi_slot { get; construct; }
-        public ViewMode view_mode = ViewMode.INVALID;
+        public Files.MultiSlot multi_slot { get; construct; }
+        public ViewMode view_mode {
+            get {
+                return multi_slot.view_mode;
+            }
+        }
 
         public GLib.File? location {
             get {
@@ -188,12 +192,10 @@ namespace Files {
             GLib.File? loc = null,
             GLib.File[]? to_select = null
         ) {
+warning ("set location and mode %s, loc %s", mode.to_string (), loc != null ? loc.get_uri () : "null");
             var aslot = get_current_slot ();
-            if (mode != view_mode) { //Always the case on creation
-                if (aslot == null) {
-                    aslot.close ();
-                }
-
+            if (mode != multi_slot.view_mode) { //Always the case on creation
+warning ("changing mode");
                 if (to_select != null) {
                     selected_locations = null;
                     foreach (GLib.File f in to_select) {
@@ -209,9 +211,13 @@ namespace Files {
                         });
                     }
                 }
-                multi_slot.clear ();
+                if (aslot != null) {
+warning ("closing slot");
+                    aslot.close ();
+                }
+                // multi_slot.clear ();
                 multi_slot.view_mode = mode;
-                loading (false);
+                is_loading = false;
             }
 
             // add_view (mode, loc ?? location);
@@ -220,10 +226,15 @@ namespace Files {
                 multi_slot.clear ();
             }
 
-            multi_slot.add_location (loc);
+            multi_slot.add_location (loc ?? location);
             // connect_slot_signals (this.view);
-            directory_is_loading (loc);
-            slot.initialize_directory ();
+            directory_is_loading (location);
+            is_loading = true;
+            slot.initialize_directory.begin ((obj, res) => {
+                if (slot.initialize_directory.end (res)) {
+                    on_slot_directory_loaded (slot.directory);
+                }
+            });
 
             set_active_state (true);
         }
@@ -310,11 +321,11 @@ namespace Files {
                     //     //Clear slots;
                     // }
                     multi_slot.clear ();
-                    set_location_and_mode (multi_slot.view_mode, loc, null);
+                    set_location_and_mode (view_mode, loc, null);
                     // view.user_path_change_request (loc);
                     break;
                 case Files.OpenFlag.DEFAULT:
-                    set_location_and_mode (multi_slot.view_mode, loc, null);
+                    set_location_and_mode (view_mode, loc, null);
                     // view.user_path_change_request (loc);
                     break;
                 case Files.OpenFlag.APP:
@@ -383,7 +394,8 @@ namespace Files {
         }
 
 
-        public void on_slot_directory_loaded (Directory dir) {
+        private void on_slot_directory_loaded (Directory dir) {
+warning ("slot dir loaded");
             can_show_folder = dir.can_load;
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
@@ -432,7 +444,7 @@ namespace Files {
             }
 
             if (can_show_folder) {
-                content = multi_slot.overlay;
+                content = multi_slot;
                 var directory = dir.file;
 
                 /* Only record valid folders (will also log Zeitgeist event) */

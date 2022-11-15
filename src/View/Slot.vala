@@ -72,14 +72,13 @@ public class Slot : Files.AbstractSlot {
     public signal void miller_slot_request (GLib.File file, bool make_root);
     public signal void size_change ();
 
-    public Slot (GLib.File _location, ViewContainer _ctab, ViewMode _mode) {
+    public Slot (GLib.File? _location, ViewContainer _ctab, ViewMode _mode) {
         Object (
-            location: _location,
             ctab: _ctab,
             mode: _mode
         );
-
-        set_up_directory (location);
+warning ("Create slot mode %s", _mode.to_string ());
+        set_up_directory (_location ?? GLib.File.new_for_commandline_arg (Environment.get_home_dir ()));
         //Directory is initialized by ctab
         // is_frozen = true;
     }
@@ -185,14 +184,9 @@ public class Slot : Files.AbstractSlot {
     private void connect_directory_handlers (Directory dir) {
         dir.file_added.connect (on_directory_file_added);
         dir.file_changed.connect (on_directory_file_changed);
-        dir.file_deleted.connect (on_directory_file_deleted);
+        // dir.file_deleted.connect (on_directory_file_deleted);
         connect_directory_loading_handlers (dir);
         dir.need_reload.connect (on_directory_need_reload);
-    }
-
-    private void connect_directory_loading_handlers (Directory dir) {
-        dir.file_loaded.connect (on_directory_file_loaded);
-        dir.done_loading.connect (on_directory_done_loading);
     }
 
     private void disconnect_directory_handlers (Directory dir) {
@@ -204,17 +198,24 @@ public class Slot : Files.AbstractSlot {
 
         dir.file_added.disconnect (on_directory_file_added);
         dir.file_changed.disconnect (on_directory_file_changed);
-        dir.file_deleted.disconnect (on_directory_file_deleted);
-        dir.done_loading.disconnect (on_directory_done_loading);
+        // dir.file_deleted.disconnect (on_directory_file_deleted);
+        // dir.done_loading.disconnect (on_directory_done_loading);
         dir.need_reload.disconnect (on_directory_need_reload);
+    }
+
+    private void connect_directory_loading_handlers (Directory dir) {
+        dir.file_loaded.connect (on_directory_file_loaded);
+        // dir.done_loading.connect (on_directory_done_loading);
     }
 
     private void disconnect_directory_loading_handlers (Directory dir) {
         dir.file_loaded.disconnect (on_directory_file_loaded);
-        dir.done_loading.disconnect (on_directory_done_loading);
+        // dir.done_loading.disconnect (on_directory_done_loading);
     }
 
-    // * Directory signal handlers moved from DirectoryView.
+
+    // * Directory signal handlers moved from DirectoryView not requiring changes
+    // to Window
     private void on_directory_file_added (Directory dir, Files.File? file) {
         if (file != null) {
             view_widget.add_file (file); //FIXME Should we select files added after load?
@@ -236,7 +237,7 @@ public class Slot : Files.AbstractSlot {
         }
     }
 
-    private void on_directory_file_deleted (Directory dir, Files.File file) {
+    public void after_directory_file_deleted (Directory dir, Files.File file) {
         /* The deleted file could be the whole directory, which is not in the model but that
          * that does not matter.  */
 
@@ -263,9 +264,10 @@ public class Slot : Files.AbstractSlot {
         // handle_free_space_change (); //TODO Reimplement in Gtk4
     }
 
-    private void on_directory_done_loading (Directory dir) {
+    // Called by ViewContainer after handling loading directory
+    public void after_directory_done_loading (Directory dir) {
         /* Should only be called on directory creation or reload */
-        disconnect_directory_loading_handlers (dir);
+        disconnect_directory_loading_handlers (dir); //Necessary?
         if (this.directory.can_load) {
             if (in_recent) {
                 view_widget.sort_type = Files.SortType.MODIFIED;
@@ -276,7 +278,7 @@ public class Slot : Files.AbstractSlot {
             }
         }
 
-        ctab.on_slot_directory_loaded (dir); // Signal to ViewContainer //TODO Replace with direct call
+        // ctab.on_slot_directory_loaded (dir); // Signal to ViewContainer //TODO Replace with direct call
         if (dir.is_empty ()) { /* No files in the file cache */
             empty_label.label = get_empty_message ();
             if (empty_label.parent == null) {
@@ -351,9 +353,9 @@ public class Slot : Files.AbstractSlot {
         if (directory != null) {
             disconnect_directory_handlers (directory);
         }
-
+warning ("creating directory %s", loc.get_uri ());
         directory = Directory.from_gfile (loc);
-        assert (directory != null);
+        // assert (directory != null);
         connect_directory_handlers (directory);
     }
 
@@ -387,26 +389,28 @@ public class Slot : Files.AbstractSlot {
         }
     }
 
-    public override void user_path_change_request (GLib.File loc) {
-    /** Only this function must be used to change or reload the path **/
-        view_widget.clear ();
-        var old_dir = directory;
-        disconnect_directory_handlers (old_dir);
-        set_up_directory (loc); // Connects signals
-        initialize_directory ();
+    // public override void user_path_change_request (GLib.File loc) {
+    // /** Only this function must be used to change or reload the path **/
+    //     view_widget.clear ();
+    //     var old_dir = directory;
+    //     disconnect_directory_handlers (old_dir);
+    //     set_up_directory (loc); // Connects signals
+    //     initialize_directory ();
 
-        ctab.on_slot_path_changed (this);
-    }
+    //     ctab.on_slot_path_changed (this);
+    // }
 
-    public override void initialize_directory () {
+    public async bool initialize_directory () {
+warning ("initialising %s", directory.file.basename);
         if (directory.is_loading ()) {
             /* This can happen when restoring duplicate tabs */
-            debug ("Slot.initialize_directory () called when directory already loading - ignoring");
-            return;
+            warning ("Slot.initialize_directory () called when directory already loading - ignoring");
+            return false;
         }
         // /* view and slot are unfrozen when done loading signal received */
         // is_frozen = true;
-        directory.init ();
+        yield directory.init ();
+        return true;
     }
 
     public override void reload (bool non_local_only = false) {

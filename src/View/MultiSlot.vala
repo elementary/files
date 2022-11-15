@@ -16,8 +16,7 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-public class Files.MultiSlot : Object {
-    public Gtk.Box content_box { get; construct; }
+public class Files.MultiSlot : Gtk.Box {
     public Gtk.Overlay overlay { get; construct; }
     public ViewContainer ctab { get; construct; }
     public GLib.File root_location { get; set construct; }
@@ -65,7 +64,10 @@ public class Files.MultiSlot : Object {
             scroll_to_focus = true //TODO Is this sufficient?
         };
         scrolled_window.set_child (viewport);
+
+        overlay = new Gtk.Overlay ();
         overlay.child = scrolled_window;
+        overlay.set_parent (this);
         //
         // add_main_child (scrolled_window);
 
@@ -83,8 +85,8 @@ public class Files.MultiSlot : Object {
     }
 
     /** Creates a new slot in the host slot hpane */
-    public void add_location (GLib.File loc, Slot? host = null) {
-        var guest = new Slot (loc, ctab, ViewMode.MULTI_COLUMN);
+    public void add_location (GLib.File? loc, Slot? host = null) {
+        var guest = new Slot (loc, ctab, view_mode);
         /* Notify view container of path change - will set tab to working and change pathbar */
         // path_changed ();
         guest.slot_number = (host != null) ? host.slot_number + 1 : 0;
@@ -118,17 +120,22 @@ public class Files.MultiSlot : Object {
             return;
         }
 
-        uint n = slot != null ? slot.slot_number : -1;
+        int n = slot != null ? slot.slot_number : -1;
         slot_list.@foreach ((s) => {
             if (s.slot_number > n) {
                 disconnect_slot_signals (s);
                 s.close ();
             }
         });
-
-        var child = ((Slot)slot).hpaned.end_child;
-        child.unparent ();
-        child.destroy ();
+        if (n >= 0) {
+            var child = ((Slot)slot).hpaned.end_child;
+            child.unparent ();
+            child.destroy ();
+        } else {
+            var child = viewport.child;
+            child.unparent ();
+            child.destroy ();
+        }
 //TODO Check for memory leak
         if (n >= 0) {
             slot_list.nth (n).next = null;
@@ -153,13 +160,13 @@ public class Files.MultiSlot : Object {
 /** Signal handling **/
 /*********************/
 
-    public void user_path_change_request (GLib.File loc) {
-        /* Requests from history buttons, pathbar come here with make_root = false.
-         * These do not create a new root.
-         * Requests from the sidebar have make_root = true
-         */
-        change_path (loc);
-    }
+    // public void get_ir  (GLib.File loc) {
+    //     /* Requests from history buttons, pathbar come here with make_root = false.
+    //      * These do not create a new root.
+    //      * Requests from the sidebar have make_root = true
+    //      */
+    //     change_path (loc);
+    // }
 
     private void change_path (GLib.File loc) {
         var first_slot = slot_list.first ().data;
@@ -183,7 +190,7 @@ public class Files.MultiSlot : Object {
         if (!found) {
             truncate_list_after_slot (first_slot);
             if (loc.get_uri () != first_slot.uri) {
-                first_slot.user_path_change_request (loc);
+                // first_slot.user_path_change_request (loc);
                 root_location = loc;
                 // Sidebar requests make_root true - first directory will be selected;
                 //  * Go_up requests make_root false - previous directory will be selected
@@ -447,8 +454,12 @@ public class Files.MultiSlot : Object {
     }
 
     public List<Files.File> get_selected_files () {
-        List<Files.File> selected_files = ((Slot)(current_slot)).get_selected_files ();
-        return (owned)selected_files;
+        if (current_slot != null) {
+            List<Files.File> selected_files = ((Slot)(current_slot)).get_selected_files ();
+            return (owned)selected_files;
+        } else {
+            return null;
+        }
     }
 
     public void set_active_state (bool set_active, bool animate = true) {
@@ -471,7 +482,7 @@ public class Files.MultiSlot : Object {
     }
 
     public string? get_root_uri () {
-        return root_location.get_uri ();
+        return root_location != null ? root_location.get_uri () : null;
     }
 
     public void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {

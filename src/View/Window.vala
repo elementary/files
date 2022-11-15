@@ -413,9 +413,9 @@ public class Files.Window : Gtk.ApplicationWindow {
             var tab_name = content.tab_name;
             set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
         });
-        content.notify["loading"].connect (() => {
-            var is_loading = content.is_loading;
-            if (restoring_tabs > 0 && !is_loading) {
+        content.notify["is-loading"].connect (() => {
+warning ("content loading changed");
+            if (restoring_tabs > 0 && !content.is_loading) {
                 restoring_tabs--;
                 /* Each restored tab must signal with is_loading false once */
                 assert (restoring_tabs >= 0);
@@ -426,9 +426,9 @@ public class Files.Window : Gtk.ApplicationWindow {
                 }
             }
 
-            content.working = is_loading;
+            content.working = content.is_loading;
             update_top_menu ();
-            if (restoring_tabs == 0 && !is_loading) {
+            if (restoring_tabs == 0 && !content.is_loading) {
                 save_tabs ();
             }
         });
@@ -877,11 +877,13 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
+warning ("action view mode");
         if (current_container == null) { // can occur during startup
             return;
         }
 
-        ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
+        var mode = real_mode ((ViewMode)(param.get_uint32 ()));
+warning ("setting mode %s", mode.to_string ());
         current_container.set_location_and_mode (mode);
         // current_container.change_view_mode (mode);
         /* ViewContainer takes care of changing appearance */

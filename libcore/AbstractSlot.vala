@@ -105,13 +105,13 @@ namespace Files {
             slot_number = -1;
         }
 
-        public abstract void initialize_directory ();
+        // public abstract void initialize_directory ();
         public abstract List<Files.File> get_selected_files ();
         public abstract void set_active_state (bool set_active, bool animate = true);
         // public abstract AbstractSlot? get_current_slot ();
         public abstract void reload (bool non_local_only = false);
         public abstract void grab_focus ();
-        public abstract void user_path_change_request (GLib.File loc);
+        // public abstract void user_path_change_request (GLib.File loc);
         public abstract void show_first_item ();
         public abstract void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location);
         // protected abstract void make_view ();
