@@ -36,17 +36,6 @@ public class Files.ViewContainer : Gtk.Box {
 
     // private string label = "";
     public string tab_name { get; set; }
-    //     private set {
-    //         if (label != value) { /* Do not signal if no change */
-    //             label = value;
-    //             // tab_name_changed (value);
-    //         }
-    //     }
-    //     get {
-    //         return label;
-    //     }
-    // }
-
     public int id { get; construct; }
     public bool can_show_folder { get; private set; default = false; }
     public bool working { get; set; }
@@ -73,6 +62,12 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
+    public Files.Slot? slot {
+        get {
+            return multi_slot.current_slot;
+        }
+    }
+
     public GLib.File? location {
         get {
             return slot != null ? slot.location : null;
@@ -82,12 +77,6 @@ public class Files.ViewContainer : Gtk.Box {
     public string uri {
         get {
             return slot != null ? slot.uri : "";
-        }
-    }
-
-    public Files.Slot? slot {
-        get {
-            return  multi_slot.current_slot;
         }
     }
 
@@ -108,18 +97,6 @@ public class Files.ViewContainer : Gtk.Box {
             return browser.get_can_go_forward ();
         }
     }
-
-    // public bool is_frozen {
-    //     get {
-    //         return slot == null || slot.is_frozen;
-    //     }
-
-    //     set {
-    //         if (slot != null) {
-    //             slot.is_frozen = value;
-    //         }
-    //     }
-    // }
 
     public bool is_loading { get; private set; default = false;}
 
@@ -145,11 +122,6 @@ public class Files.ViewContainer : Gtk.Box {
     private Browser browser;
     private GLib.List<GLib.File>? selected_locations = null;
 
-    // public signal void tab_name_changed (string tab_name);
-    // public signal void loading (bool is_loading);
-    // public signal void active ();
-
-
     ~ViewContainer () {
         debug ("ViewContainer destruct");
     }
@@ -171,9 +143,7 @@ public class Files.ViewContainer : Gtk.Box {
             multi_slot.folder_deleted (deleted_file);
         }
     }
-    /** By default changes the view mode to @mode at the same location.
-        @loc - new location to show.
-    **/
+
     public void set_location_and_mode (
         ViewMode mode,
         GLib.File? loc = null,
@@ -324,30 +294,6 @@ public class Files.ViewContainer : Gtk.Box {
             open_location (GLib.File.new_for_commandline_arg (path), Files.OpenFlag.DEFAULT);
         }
     }
-
-
-
-    // private void connect_slot_signals (Files.AbstractSlot aslot) {
-    //     aslot.active.connect (on_slot_active);
-    //     aslot.path_changed.connect (on_slot_path_changed);
-    //     aslot.new_container_request.connect (on_slot_new_container_request);
-    //     aslot.selection_changing.connect (on_slot_selection_changing);
-    //     aslot.update_selection.connect (on_slot_update_selection);
-    //     aslot.directory_loaded.connect (on_slot_directory_loaded);
-    // }
-
-    // private void disconnect_slot_signals (Files.AbstractSlot aslot) {
-    //     aslot.active.disconnect (on_slot_active);
-    //     aslot.path_changed.disconnect (on_slot_path_changed);
-    //     aslot.new_container_request.disconnect (on_slot_new_container_request);
-    //     aslot.selection_changing.disconnect (on_slot_selection_changing);
-    //     aslot.update_selection.disconnect (on_slot_update_selection);
-    //     aslot.directory_loaded.disconnect (on_slot_directory_loaded);
-    // }
-
-    // private void on_slot_active (Files.AbstractSlot aslot, bool scroll, bool animate) {
-    //     refresh_slot_info (slot.location);
-    // }
 
     public void open_location (GLib.File loc, Files.OpenFlag flag) {
         switch (flag) {

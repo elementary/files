@@ -17,7 +17,7 @@
 namespace Files {
 public class Slot : Files.AbstractSlot {
     public int slot_number { get; set; default = 0;}
-    public Files.ViewContainer ctab { get; construct; }
+    private unowned Files.ViewContainer ctab;
     public ViewMode mode { get; construct; }
     public Gtk.Paned hpaned { get; construct; }
     public int width { get; private set; }
@@ -33,12 +33,6 @@ public class Slot : Files.AbstractSlot {
         }
     }
 
-    // public Files.Window window {
-    //     get {
-    //         return ctab.window;
-    //     }
-    // }
-
     private int preferred_column_width;
     private uint reload_timeout_id = 0;
     private uint path_change_timeout_id = 0;
@@ -48,43 +42,22 @@ public class Slot : Files.AbstractSlot {
     private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
     private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
     private const string DENIED_MESSAGE = _("Access Denied");
-
-    //TODO Needed in Gtk4 version?
-    // public override bool is_frozen {
-    //     set {
-    //         // dir_view.is_frozen = value;
-    //         frozen_changed (value);
-    //     }
-
-    //     get {
-    //         return dir_view == null || dir_view.is_frozen;
-    //     }
-    // }
-
-    // TODO Gtk4 version needed?
-    // public override bool locked_focus {
-    //     get {
-    //         return view_widget.renaming;
-    //     }
-    // }
-
-    // public signal void frozen_changed (bool freeze);
     public signal void folder_deleted (Files.File file, Directory parent);
-    // public signal void miller_slot_request (GLib.File file, bool make_root);
     public signal void size_change ();
 
     public Slot (GLib.File? _location, ViewContainer _ctab, ViewMode _mode) {
         Object (
-            ctab: _ctab,
             mode: _mode
         );
+
+        ctab = _ctab;
         set_up_directory (_location ?? GLib.File.new_for_commandline_arg (Environment.get_home_dir ()));
         //Directory is initialized by ctab
         // is_frozen = true;
     }
 
     ~Slot () {
-        debug ("Slot %i destruct", slot_number);
+        warning ("Slot %i destruct", slot_number);
         while (hpaned.get_last_child () != null) {
             hpaned.get_last_child ().unparent ();
         }
@@ -140,7 +113,6 @@ public class Slot : Files.AbstractSlot {
         view_widget.path_change_request.connect (on_view_path_change_request);
         view_widget.selection_changed.connect (on_view_widget_selection_changed);
 
-        //AbstractSlot signal
         active.connect (() => {
             if (is_active) {
                 return;
@@ -155,10 +127,6 @@ public class Slot : Files.AbstractSlot {
         inactive.connect (() => {
             is_active = false;
         });
-
-        // folder_deleted.connect ((file, dir) => {
-        //    ((Files.Application)(window.application)).folder_deleted (file.location);
-        // });
     }
 
     uint selection_changed_timeout_id = 0;
@@ -359,45 +327,7 @@ public class Slot : Files.AbstractSlot {
     private void on_view_path_change_request (GLib.File loc, Files.OpenFlag flag) {
         cancel_timeouts ();
         ctab.open_location (loc, flag);
-        // switch (flag) {
-        //     case Files.OpenFlag.DEFAULT:
-        //         // if (mode == ViewMode.MULTICOLUMN) {
-        //         //     miller_slot_request (loc, false); /* signal to parent MillerView */
-        //         // } else {
-        //         //     user_path_change_request (loc); /* Handle ourselves */
-        //         // }
-        //         ctab.open_location (loc, flag);
-        //         break;
-        //     case Files.OpenFlag.NEW_TAB:
-        //     case Files.OpenFlag.NEW_WINDOW:
-        //         ctab.open_location (loc, flag);
-        //         // ctab.on_slot_new_container_request (loc, flag);
-        //         // new_container_request (loc, flag);
-        //         break;
-        //     case Files.OpenFlag.NEW_ROOT:
-        //         // if (mode == ViewMode.MULTICOLUMN) {
-        //         //     miller_slot_request (loc, true); /* signal to parent MillerView */
-        //         // } else {
-        //         //     user_path_change_request (loc); /* Handle ourselves */
-        //         // }
-        //         ctab.open_location (loc, flag);
-        //         break;
-        //     case Files.OpenFlag.APP:
-        //         warning ("Unexpected flag");
-        //         break;
-        // }
     }
-
-    // public override void user_path_change_request (GLib.File loc) {
-    // /** Only this function must be used to change or reload the path **/
-    //     view_widget.clear ();
-    //     var old_dir = directory;
-    //     disconnect_directory_handlers (old_dir);
-    //     set_up_directory (loc); // Connects signals
-    //     initialize_directory ();
-
-    //     ctab.on_slot_path_changed (this);
-    // }
 
     public async bool initialize_directory () {
         if (directory.is_loading ()) {
@@ -498,11 +428,19 @@ public class Slot : Files.AbstractSlot {
 
     public override void close () {
         cancel_timeouts ();
-
         if (directory != null) {
             directory.cancel ();
             disconnect_directory_handlers (directory);
         }
+
+        while (hpaned.get_last_child () != null) {
+            hpaned.get_last_child ().unparent ();
+        }
+
+        view_widget.unparent ();
+        view_widget.destroy ();
+        view_widget = null;
+        ctab = null;
     }
 
     public void refresh_files () {

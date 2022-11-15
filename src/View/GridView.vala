@@ -61,6 +61,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     ~GridView () {
+warning ("GridView destruct");
         while (this.get_last_child () != null) {
             this.get_last_child ().unparent ();
         }
