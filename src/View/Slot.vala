@@ -184,7 +184,7 @@ warning ("Create slot mode %s", _mode.to_string ());
     private void connect_directory_handlers (Directory dir) {
         dir.file_added.connect (on_directory_file_added);
         dir.file_changed.connect (on_directory_file_changed);
-        // dir.file_deleted.connect (on_directory_file_deleted);
+        dir.file_deleted.connect (on_directory_file_deleted);
         connect_directory_loading_handlers (dir);
         dir.need_reload.connect (on_directory_need_reload);
     }
@@ -198,7 +198,7 @@ warning ("Create slot mode %s", _mode.to_string ());
 
         dir.file_added.disconnect (on_directory_file_added);
         dir.file_changed.disconnect (on_directory_file_changed);
-        // dir.file_deleted.disconnect (on_directory_file_deleted);
+        dir.file_deleted.disconnect (on_directory_file_deleted);
         // dir.done_loading.disconnect (on_directory_done_loading);
         dir.need_reload.disconnect (on_directory_need_reload);
     }
@@ -237,10 +237,8 @@ warning ("Create slot mode %s", _mode.to_string ());
         }
     }
 
-    public void after_directory_file_deleted (Directory dir, Files.File file) {
-        /* The deleted file could be the whole directory, which is not in the model but that
-         * that does not matter.  */
-
+    public void on_directory_file_deleted (Directory dir, Files.File file) {
+        /* The deleted file could be the whole directory */
         file.exists = false;
         view_widget.file_deleted (file);
 
@@ -256,7 +254,7 @@ warning ("Create slot mode %s", _mode.to_string ());
             /* Check whether the deleted file is the directory */
             var file_dir = Directory.cache_lookup (file.location);
             if (file_dir != null) {
-                Directory.purge_dir_from_cache (file_dir);
+                Directory.purge_dir_from_cache (file_dir); //Needed?
                 this.folder_deleted (file, file_dir);
             }
         }

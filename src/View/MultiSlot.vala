@@ -245,7 +245,7 @@ public class Files.MultiSlot : Gtk.Box {
         // slot.miller_slot_request.connect (on_miller_slot_request);
         // slot.new_container_request.connect (on_new_container_request);
         // slot.size_change.connect (update_total_width);
-        slot.folder_deleted.connect (on_slot_folder_deleted);
+        // slot.folder_deleted.connect (on_slot_folder_deleted);
         //TODO Use EventController
         // slot.colpane.key_press_event.connect (on_key_pressed);
         // slot.path_changed.connect (on_slot_path_changed);
@@ -260,16 +260,26 @@ public class Files.MultiSlot : Gtk.Box {
         // slot.miller_slot_request.disconnect (on_miller_slot_request);
         // slot.new_container_request.disconnect (on_new_container_request);
         // slot.size_change.disconnect (update_total_width);
-        slot.folder_deleted.disconnect (on_slot_folder_deleted);
+        // slot.folder_deleted.disconnect (on_slot_folder_deleted);
         // slot.colpane.key_press_event.disconnect (on_key_pressed);
         // slot.path_changed.disconnect (on_slot_path_changed);
         // slot.directory_loaded.disconnect (on_slot_directory_loaded);
     }
 
-    private void on_slot_folder_deleted (Slot slot, Files.File file, Directory dir) {
-        Slot? next_slot = slot_list.nth_data (slot.slot_number + 1);
-        if (next_slot != null && next_slot.directory == dir) {
-            truncate_list_after_slot (slot);
+    public void folder_deleted (GLib.File file) {
+        foreach (var slot in slot_list) {
+            if (slot.file.uri == file.get_uri()) { // Showing a deleted location
+                if (slot.slot_number > 0) {
+                    Slot? previous_slot = slot_list.nth_data (slot.slot_number - 1);
+                    if (previous_slot != null) {
+                        truncate_list_after_slot (slot);
+                    }
+                } else {
+                    clear ();
+                }
+
+                break;
+            }
         }
     }
 

@@ -168,6 +168,8 @@ public class Files.ViewContainer : Gtk.Box {
                 close ();
                 activate_action ("win.remove-content", "i", id);
             }
+        } else {
+            multi_slot.folder_deleted (deleted_file);
         }
     }
     /** By default changes the view mode to @mode at the same location.
