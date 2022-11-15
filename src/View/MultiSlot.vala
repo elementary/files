@@ -28,7 +28,7 @@ public class Files.MultiSlot : Gtk.Box {
     private Gtk.ScrolledWindow scrolled_window;
     private Gtk.Viewport viewport;
     private Gtk.Adjustment hadj;
-    private Slot? current_slot = null;
+    public Slot? current_slot { get; private set; }
     private GLib.List<Slot> slot_list = null;
     private int total_width = 0;
 
@@ -242,7 +242,7 @@ public class Files.MultiSlot : Gtk.Box {
         // slot.update_selection.connect (on_slot_update_selection);
         // slot.frozen_changed.connect (on_slot_frozen_changed);
         slot.active.connect (on_slot_active);
-        slot.miller_slot_request.connect (on_miller_slot_request);
+        // slot.miller_slot_request.connect (on_miller_slot_request);
         // slot.new_container_request.connect (on_new_container_request);
         // slot.size_change.connect (update_total_width);
         slot.folder_deleted.connect (on_slot_folder_deleted);
@@ -257,7 +257,7 @@ public class Files.MultiSlot : Gtk.Box {
         // slot.update_selection.disconnect (on_slot_update_selection);
         // slot.frozen_changed.disconnect (on_slot_frozen_changed);
         slot.active.disconnect (on_slot_active);
-        slot.miller_slot_request.disconnect (on_miller_slot_request);
+        // slot.miller_slot_request.disconnect (on_miller_slot_request);
         // slot.new_container_request.disconnect (on_new_container_request);
         // slot.size_change.disconnect (update_total_width);
         slot.folder_deleted.disconnect (on_slot_folder_deleted);
@@ -265,31 +265,6 @@ public class Files.MultiSlot : Gtk.Box {
         // slot.path_changed.disconnect (on_slot_path_changed);
         // slot.directory_loaded.disconnect (on_slot_directory_loaded);
     }
-
-    private void on_miller_slot_request (Slot slot, GLib.File loc, bool make_root) {
-        if (make_root) {
-            /* Start a new tree with root at loc */
-            if (make_root) {
-                //Clear slots
-            }
-            change_path (loc);
-        } else {
-            /* Just add another column to the end. */
-            add_location (loc, slot);
-        }
-    }
-
-    // private void on_new_container_request (GLib.File loc, Files.OpenFlag flag) {
-    //     new_container_request (loc, flag);
-    // }
-
-    // private void on_slot_path_changed () {
-    //     path_changed ();
-    // }
-
-    // private void on_slot_directory_loaded (Directory dir) {
-    //     directory_loaded (dir);
-    // }
 
     private void on_slot_folder_deleted (Slot slot, Files.File file, Directory dir) {
         Slot? next_slot = slot_list.nth_data (slot.slot_number + 1);
@@ -325,12 +300,6 @@ public class Files.MultiSlot : Gtk.Box {
         }
         /* Always emit this signal so that UI updates (e.g. pathbar) */
         ctab.refresh_slot_info (current_slot.location);
-    }
-
-    public void show_first_item () {
-        if (current_slot != null) {
-            current_slot.show_first_item ();
-        }
     }
 
     private void show_hidden_files_changed (bool show_hidden) {
@@ -425,14 +394,6 @@ public class Files.MultiSlot : Gtk.Box {
         return true;
     }
 
-    private void on_slot_update_selection (GLib.List<Files.File> files) {
-        // update_selection (files);
-    }
-
-    private void on_slot_selection_changing () {
-        // selection_changing ();
-
-    }
 
     // private void on_slot_frozen_changed (Slot slot, bool frozen) {
     //     /* Ensure all slots synchronise the frozen state */
@@ -449,24 +410,12 @@ public class Files.MultiSlot : Gtk.Box {
 
 
 /** Helper functions */
-    public unowned Slot? get_current_slot () {
-        return current_slot;
-    }
-
     public List<Files.File> get_selected_files () {
         if (current_slot != null) {
             List<Files.File> selected_files = ((Slot)(current_slot)).get_selected_files ();
             return (owned)selected_files;
         } else {
             return null;
-        }
-    }
-
-    public void set_active_state (bool set_active, bool animate = true) {
-        if (set_active) {
-            current_slot.active (true, animate);
-        } else {
-            current_slot.inactive ();
         }
     }
 
@@ -483,51 +432,5 @@ public class Files.MultiSlot : Gtk.Box {
 
     public string? get_root_uri () {
         return root_location != null ? root_location.get_uri () : null;
-    }
-
-    public void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {
-        current_slot.select_glib_files (files, focus_location);
-    }
-
-    public void zoom_in () {
-        ((Slot)(current_slot)).zoom_in ();
-    }
-
-    public void zoom_out () {
-        ((Slot)(current_slot)).zoom_out ();
-    }
-
-    public void zoom_normal () {
-        ((Slot)(current_slot)).zoom_normal ();
-    }
-
-    public void grab_focus () {
-        ((Slot)(current_slot)).grab_focus ();
-    }
-
-    public void initialize_directory () {
-        ((Slot)(current_slot)).initialize_directory ();
-    }
-
-    public void reload (bool non_local_only = false) {
-        ((Slot)(current_slot)).reload (non_local_only);
-    }
-
-    public void close () {
-        current_slot = null;
-
-        if (scroll_to_slot_timeout_id > 0) {
-            GLib.Source.remove (scroll_to_slot_timeout_id);
-        }
-
-        truncate_list_after_slot (slot_list.first ().data);
-    }
-
-    public bool set_all_selected (bool all) {
-        return ((Slot)(current_slot)).set_all_selected (all);
-    }
-
-    public FileInfo? lookup_file_info (GLib.File loc) {
-        return current_slot.lookup_file_info (loc);
     }
 }

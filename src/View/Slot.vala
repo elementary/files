@@ -69,7 +69,7 @@ public class Slot : Files.AbstractSlot {
 
     // public signal void frozen_changed (bool freeze);
     public signal void folder_deleted (Files.File file, Directory parent);
-    public signal void miller_slot_request (GLib.File file, bool make_root);
+    // public signal void miller_slot_request (GLib.File file, bool make_root);
     public signal void size_change ();
 
     public Slot (GLib.File? _location, ViewContainer _ctab, ViewMode _mode) {

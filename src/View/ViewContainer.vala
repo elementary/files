@@ -106,7 +106,7 @@ public class Files.ViewContainer : Gtk.Box {
 
     public Files.Slot? slot {
         get {
-            return  multi_slot.get_current_slot ();
+            return  multi_slot.current_slot;
         }
     }
 
