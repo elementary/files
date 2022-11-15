@@ -110,10 +110,8 @@ public class Files.Window : Gtk.ApplicationWindow {
     private int restoring_tabs = 0;
     private bool doing_undo_redo = false;
 
-    public void loading_uri (string location) {
-        update_labels (location);
-    }
     // public signal void folder_deleted (GLib.File location);
+
     public signal void free_space_change ();
 
     construct {
@@ -241,6 +239,9 @@ public class Files.Window : Gtk.ApplicationWindow {
         set_titlebar (top_menu.headerbar);
         set_child (lside_pane);
 
+        tab_view.notify["selected-page"].connect (() => {
+            update_labels (((ViewContainer)(tab_view.selected_page.child)).uri);
+        });
         tab_view.indicator_activated.connect (() => {});
         tab_view.setup_menu.connect (() => {});
         tab_view.close_page.connect ((tab) => {
@@ -271,7 +272,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             return !current_container.locked_focus && !top_menu.locked_focus;
         });
         sidebar.sync_needed.connect (() => {
-            loading_uri (current_container.uri);
+            update_labels (current_container.uri);
         });
         sidebar.path_change_request.connect (uri_path_change_request);
         sidebar.connect_server_request.connect (connect_to_server);
@@ -324,7 +325,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             // old_tab.is_frozen = false;
         }
 
-        loading_uri (current_container.uri);
+        update_labels (current_container.uri);
         current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
         sidebar.sync_uri (current_container.uri);
         // top_menu.working = current_container.is_frozen;
@@ -414,7 +415,6 @@ public class Files.Window : Gtk.ApplicationWindow {
             set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
         });
         content.notify["is-loading"].connect (() => {
-warning ("content loading changed");
             if (restoring_tabs > 0 && !content.is_loading) {
                 restoring_tabs--;
                 /* Each restored tab must signal with is_loading false once */
@@ -877,15 +877,12 @@ warning ("content loading changed");
     }
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
-warning ("action view mode");
         if (current_container == null) { // can occur during startup
             return;
         }
 
         var mode = real_mode ((ViewMode)(param.get_uint32 ()));
-warning ("setting mode %s", mode.to_string ());
         current_container.set_location_and_mode (mode);
-        // current_container.change_view_mode (mode);
         /* ViewContainer takes care of changing appearance */
     }
 
@@ -1162,8 +1159,7 @@ warning ("setting mode %s", mode.to_string ());
 
     private void action_loading_uri (GLib.SimpleAction action, GLib.Variant? param) {
         var uri = param.get_string ();
-
-        //TODO Find and remove content
+        update_labels (uri);
     }
 
     private void before_undo_redo () {
