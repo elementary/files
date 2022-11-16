@@ -30,20 +30,7 @@ public class Files.MultiSlot : Gtk.Box {
     private Gtk.Adjustment hadj;
     private Slot? current_slot;
     private Gee.ArrayList<Slot> slot_list = null;
-    // private GLib.List<Slot> slot_list = null;
     private int total_width = 0;
-
-    // public bool is_frozen {
-    //     set {
-    //         if (current_slot != null) {
-    //             current_slot.is_frozen = value;
-    //         }
-    //     }
-
-    //     get {
-    //         return current_slot == null || current_slot.is_frozen;
-    //     }
-    // }
 
     public MultiSlot (ViewContainer ctab) {
         Object (
@@ -171,88 +158,6 @@ public class Files.MultiSlot : Gtk.Box {
         viewport.set_size_request (total_width, -1);
     }
 
-/*********************/
-/** Signal handling **/
-/*********************/
-    // private void change_path (GLib.File loc) {
-    //     var first_slot = slot_list.@get (0);
-    //     string root_uri = first_slot.uri;
-    //     string target_uri = loc.get_uri ();
-    //     bool found = false;
-
-    //     if (target_uri.has_prefix (root_uri) && target_uri != root_uri) {
-    //         /* Try to add location relative to each slot in turn, starting at end */
-    //         // var copy_slot_list = slot_list.copy ();
-    //         // copy_slot_list.reverse ();
-    //         int index = slot_list.size;
-    //         while (--index >= 0) {
-    //             var s = slot_list.@get (index);
-    //             if (add_relative_path (s, loc)) {
-    //                 found = true;
-    //                 break;
-    //             }
-    //         }
-    //     }
-
-    //     /* If requested location is not a child of any slot, start a new tree */
-    //     if (!found) {
-    //         truncate_list_after_slot (first_slot);
-    //         if (loc.get_uri () != first_slot.uri) {
-    //             root_location = loc;
-    //             // Sidebar requests make_root true - first directory will be selected;
-    //             //  * Go_up requests make_root false - previous directory will be selected
-    //             //
-    //             // if (make_root) {
-    //             //     /* Do not select (match behaviour of other views) */
-    //             //     first_slot.focus_first_for_empty_selection (false);
-    //             // }
-    //         }
-    //     }
-    // }
-
-    // private bool add_relative_path (Slot root, GLib.File loc) {
-    //     if (root.location.get_uri () == loc.get_uri ()) {
-    //         truncate_list_after_slot (root);
-    //         return true;
-    //     }
-    //     string? relative_path = FileUtils.escape_uri (root.location.get_relative_path (loc), false);
-    //     if (relative_path != null && relative_path.length > 0) {
-    //         truncate_list_after_slot (root);
-    //         string [] dirs = relative_path.split (Path.DIR_SEPARATOR_S);
-    //         string last_uri = root.uri;
-    //         if (last_uri.has_suffix (Path.DIR_SEPARATOR_S)) {
-    //             last_uri = last_uri.slice (0, -1);
-    //         }
-
-    //         foreach (unowned string d in dirs) {
-    //             if (d.length > 0) {
-    //                 last_uri = GLib.Path.build_path (Path.DIR_SEPARATOR_S, last_uri, d);
-
-    //                 var last_slot = slot_list.@get (slot_list.size - 1);
-    //                 var file = GLib.File.new_for_uri (last_uri);
-    //                 var list = new List<GLib.File> ();
-    //                 list.prepend (file);
-    //                 last_slot.select_glib_files (list, file);
-    //                 Thread.usleep (100000);
-    //                 add_location (file);
-    //                 // add_location (file, last_slot);
-
-    //             }
-    //         }
-    //     } else {
-    //         return false;
-    //     }
-    //     return true;
-    // }
-
-    // private void connect_slot_signals (Slot slot) {
-    //     slot.active.connect (on_slot_active);
-    // }
-
-    // private void disconnect_slot_signals (Slot slot) {
-    //     slot.active.disconnect (on_slot_active);
-    // }
-
     public void folder_deleted (GLib.File file) {
         foreach (var slot in slot_list) {
             if (slot.file.uri == file.get_uri ()) { // Showing a deleted location
@@ -273,42 +178,10 @@ public class Files.MultiSlot : Gtk.Box {
     public void set_current_slot (Slot slot) {
         current_slot = slot;  //TODO Anything else needed?
     }
+
     public unowned Slot? get_current_slot () {
         return current_slot;  //TODO Anything else needed?
     }
-//     /** Called in response to slot active signal.
-//      *  Should not be called directly
-//      **/
-//     private void on_slot_active (
-//         Files.AbstractSlot aslot,
-//         bool scroll = true,
-//         bool animate = true
-//     ) {
-//         Slot slot;
-
-//         if (!(aslot is Slot)) {
-//             return;
-//         } else {
-//             slot = aslot as Slot;
-//         }
-
-//         // if (scroll) {
-//         //     schedule_scroll_to_slot (slot, animate);
-//         // }
-
-//         if (this.current_slot != slot) {
-//             foreach (var s in slot_list) {
-//                 if (s != slot) {
-//                     s.inactive ();
-//                 }
-//             }
-
-//             current_slot = slot;
-//         }
-//         /* Always emit this signal so that UI updates (e.g. pathbar) */
-// warning ("slot active");
-//         ctab.refresh_slot_info (current_slot.location);
-//     }
 
     private void show_hidden_files_changed (bool show_hidden) {
         if (!show_hidden) {
@@ -348,10 +221,6 @@ public class Files.MultiSlot : Gtk.Box {
 
         int current_position = current_slot.slot_number;
 
-        // if (slot_list.nth_data (current_position).get_view_widget ().renaming) {
-        //     return false;
-        // }
-
         Slot to_activate = null;
         switch (keyval) {
             case Gdk.Key.Left:
@@ -379,7 +248,6 @@ public class Files.MultiSlot : Gtk.Box {
                 } else if (selected_file.is_folder ()) {
                     truncate_list_after_slot (slot_list.@get (current_position));
                     add_location (current_location);
-                    // add_location (current_location, current_slot);
                     return true;
                 }
 
@@ -396,28 +264,8 @@ public class Files.MultiSlot : Gtk.Box {
                 return false;
         }
 
-        if (to_activate != null) {
-            // to_activate.active ();
-            // to_activate.focus_first_for_empty_selection (true); /* Selects as well as focusses */
-        }
-
         return true;
     }
-
-
-    // private void on_slot_frozen_changed (Slot slot, bool frozen) {
-    //     /* Ensure all slots synchronise the frozen state */
-
-    //     slot_list.@foreach ((abstract_slot) => {
-    //         var s = abstract_slot as Slot;
-    //         if (s != null) {
-    //             s.frozen_changed.disconnect (on_slot_frozen_changed);
-    //             s.is_frozen = frozen;
-    //             s.frozen_changed.connect (on_slot_frozen_changed);
-    //         }
-    //     });
-    // }
-
 
 /** Helper functions */
     public List<Files.File> get_selected_files () {
