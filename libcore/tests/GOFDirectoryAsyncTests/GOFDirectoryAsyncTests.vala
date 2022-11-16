@@ -48,7 +48,7 @@ void run_load_folder_test (LoadFolderTest test) {
 
     assert (dir.state == Directory.State.NOT_LOADED);
 
-    dir.init ();
+    dir.init.begin ();
     loop.run ();
 
     /* Tear down test folder*/
@@ -98,7 +98,7 @@ Directory load_populated_local_test (string test_dir_path, MainLoop loop) {
 
     assert (dir.ref_count == 1); //Extra ref from pending cache;
 
-    dir.file_loaded.connect (() => {
+    dir.file_added.connect (() => {
         file_loaded_signal_count++;
     });
 
@@ -124,12 +124,12 @@ Directory load_cached_local_test (string test_dir_path, MainLoop loop) {
     dir.done_loading.connect (() => {
         if (first_load) {
             first_load = false;
-            dir.file_loaded.connect (() => {
+            dir.file_added.connect (() => {
                 file_loaded_signal_count++;
             });
 
             assert (!dir.loaded_from_cache);
-            dir.init ();
+            dir.init.begin ();
         } else {
             assert (dir.displayed_files_count == n_files);
             assert (dir.can_load);

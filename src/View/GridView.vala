@@ -24,40 +24,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         prefs = Files.Preferences.get_default ();
     }
 
-    // UI Components defined in GridView.ui template file
-    [GtkChild]
-    private unowned Gtk.ScrolledWindow? scrolled_window;
-    [GtkCallback]
-    public void button_release_handler (Gtk.EventController source, int n_press, double x, double y) {
-        var button = ((Gtk.GestureSingle)source).get_current_button ();
-        switch (button) {
-            case Gdk.BUTTON_PRIMARY:
-                unselect_all ();
-                grid_view.grab_focus ();
-                break;
-            case Gdk.BUTTON_SECONDARY:
-                show_context_menu (background_menu, x, y);
-                break;
-            default:
-                break;
-        }
-    }
-    [GtkCallback]
-    public void on_grid_view_activate (uint pos) {
-        var file = (Files.File)grid_view.model.get_item (pos);
-        if (file.is_folder () && multi_selection.get_selection ().get_size () <= 1) {
-            path_change_request (file.location, Files.OpenFlag.DEFAULT);
-        } else {
-            warning ("Open file with app");
-        }
-    }
-
     // Properties defined in template NOTE: cannot use construct; here
-    public Gtk.GridView grid_view { get; set; }
     public Menu background_menu { get; set; }
     public Menu item_menu { get; set; }
 
     // Construct properties
+    public Gtk.GridView grid_view { get; construct; }
     public GLib.ListStore list_store { get; construct; }
     public Gtk.MultiSelection multi_selection { get; construct; }
     public Gtk.PopoverMenu menu_popover { get; construct; }
@@ -79,14 +51,15 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     private CompareDataFunc<Files.File>? file_compare_func;
     private EqualFunc<Files.File>? file_equal_func;
     private GLib.List<GridFileItem> fileitem_list;
-
     private Files.DndHandler dnd_handler;
+    private Gtk.ScrolledWindow? scrolled_window;
 
     public GridView (Files.AbstractSlot slot) {
         Object (slot: slot);
     }
 
     ~GridView () {
+warning ("GridView destruct");
         while (this.get_last_child () != null) {
             this.get_last_child ().unparent ();
         }
@@ -94,32 +67,105 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     construct {
         set_layout_manager (new Gtk.BinLayout ());
+        //Menu structure defined by GridView.ui
+        item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
+        dnd_handler = new Files.DndHandler (this, grid_view, grid_view);
+        fileitem_list = new GLib.List<GridFileItem> ();
 
+        //Set up models
         list_store = new GLib.ListStore (typeof (Files.File));
         var filter_model = new Gtk.FilterListModel (list_store, null);
         multi_selection = new Gtk.MultiSelection (filter_model);
-
         file_equal_func = ((filea, fileb) => {
             return filea.basename == fileb.basename;
         });
-
         file_compare_func = ((filea, fileb) => {
             return filea.compare_for_sort (
                 fileb, sort_type, prefs.sort_directories_first, sort_reversed
             );
         });
-
         var custom_filter = new Gtk.CustomFilter ((obj) => {
             var file = (Files.File)obj;
             return prefs.show_hidden_files || !file.is_hidden;
         });
         filter_model.set_filter (custom_filter);
 
-        fileitem_list = new GLib.List<GridFileItem> ();
+        //Setup gridview
         var item_factory = new Gtk.SignalListItemFactory ();
+        grid_view = new Gtk.GridView (multi_selection, item_factory) {
+            orientation = Gtk.Orientation.VERTICAL,
+            max_columns = 20,
+            enable_rubberband = true
+        };
+        scrolled_window = new Gtk.ScrolledWindow () {
+            hexpand = true,
+            vexpand = true,
+            hscrollbar_policy = Gtk.PolicyType.NEVER
+        };
+        scrolled_window.child = grid_view;
+        scrolled_window.set_parent (this);
+
+        //Setup context menu popover
+        //No obvious way to create nested submenus with template so create manually
+        //No obvious way to position at corner
+        menu_popover = new Gtk.PopoverMenu.from_model_full (new Menu (), Gtk.PopoverMenuFlags.NESTED) {
+          has_arrow = false
+        };
+        menu_popover.set_parent (this);
+
+
+        // Implement single-click navigate
+        var gesture_primary_click = new Gtk.GestureClick () {
+            button = Gdk.BUTTON_PRIMARY,
+            propagation_phase = Gtk.PropagationPhase.CAPTURE
+        };
+        gesture_primary_click.released.connect ((n_press, x, y) => {
+            var widget = grid_view.pick (x, y, Gtk.PickFlags.DEFAULT);
+            if (widget is Gtk.GridView) { // Click on background
+                unselect_all ();
+                grid_view.grab_focus ();
+            } else {
+                var should_activate = (
+                    widget is Gtk.Image && // Not ideal as it relies on details of item structure but do not want to activate on label
+                    (n_press == 1 && !prefs.singleclick_select ||
+                    n_press == 2)
+                );
+                // Activate item
+                var item = get_item_at (x, y);
+                if (should_activate) {
+                    unselect_all ();
+                    var file = item.file;
+                    if (file.is_folder ()) {
+                        path_change_request (file.location, Files.OpenFlag.DEFAULT);
+                    } else {
+                        warning ("Open file with app");
+                    }
+                }
+            }
+            //Allow click to propagate to item selection helper and then Gtk
+        });
+        grid_view.add_controller (gesture_primary_click);
+
+        // Implement item context menu launching
+        var gesture_secondary_click = new Gtk.GestureClick () {
+            button = Gdk.BUTTON_SECONDARY,
+            propagation_phase = Gtk.PropagationPhase.CAPTURE
+        };
+        gesture_secondary_click.released.connect ((n_press, x, y) => {
+            show_context_menu_at (x, y);
+            gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED);
+        });
+        add_controller (gesture_secondary_click);
+
+        //Signal Handlers
+        multi_selection.selection_changed.connect (() => {
+            selection_changed ();
+        });
+
         item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = new GridFileItem (this);
+            // var file_item = new GridFileItem (this);
             fileitem_list.prepend (file_item);
             bind_property (
                 "zoom-level",
@@ -144,7 +190,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         item_factory.unbind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = (GridFileItem)list_item.child;
-            // file_item.bind_file (null);
+            // It seems items can be unbound even while visible (???) so we do not want to
+            // unbind file til new one bound.
         });
 
         item_factory.teardown.connect ((obj) => {
@@ -153,19 +200,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             fileitem_list.remove (file_item);
         });
 
-        grid_view.model = multi_selection;
-        grid_view.factory = item_factory;
-        scrolled_window.child = grid_view;
-
-        //No obvious way to create nested submenus with template so create manually
-        //No obvious way to position at corner
-        menu_popover = new Gtk.PopoverMenu.from_model_full (new Menu (), Gtk.PopoverMenuFlags.NESTED) {
-          has_arrow = false
-        };
-        menu_popover.set_parent (this);
-        //FIXME This should happen automatically?
         menu_popover.closed.connect (() => {
-            grid_view.grab_focus ();
+            grid_view.grab_focus (); //FIXME This should happen automatically?
             //Open with submenu must always be at pos 0
             //This is awkward but can only amend open-with-menu by removing and re-adding.
             if (has_open_with) {
@@ -173,10 +209,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 has_open_with = false;
             }
         });
-
-        item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
-
-        dnd_handler = new Files.DndHandler (this, grid_view, grid_view);
 
         notify["sort-type"].connect (() => {
             list_store.sort (file_compare_func);
@@ -202,11 +234,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 refresh_view ();
             }
         });
-
-        multi_selection.selection_changed.connect (() => {
-            selection_changed ();
-        });
-        // grab_focus ();
     }
 
     /* Private methods */
@@ -226,11 +253,22 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return (ZoomLevel)zoom;
     }
 
-    private void focus_item (uint pos) {
+    private bool focus_item (uint pos) {
         foreach (var item in fileitem_list) {
             if (item.pos == pos) {
-                item.grab_focus ();
+                return item.grab_focus ();
             }
+        }
+
+        return false;
+    }
+
+    private bool focus_appropriate_item () {
+        var item = get_selected_file_item ();
+        if (item != null) {
+            return item.grab_focus ();
+        } else {
+            return focus_item (0);
         }
     }
 
@@ -264,40 +302,30 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return null;
     }
 
-    private void show_context_menu (Menu menu_model, double x, double y) {
-        menu_popover.menu_model = menu_model;
-        menu_popover.set_pointing_to ({(int)x, (int)y, 1, 1});
-        Idle.add (() => {
-          menu_popover.popup ();
-          return Source.REMOVE;
-        });
+    /* View Interface abstract methods */
+    private void show_context_menu_at (double x, double y) {
+        var item = get_item_at (x, y);
+        show_context_menu (item, x, y);
     }
 
-    /* View Interface abstract methods */
-    public void show_item_context_menu (Files.FileItemInterface? clicked_item, double x, double y) {
-        var item = clicked_item;
-        List<Files.File> selected_files = null;
-        var n_selected = get_selected_files (out selected_files);
-        // clicked_item is null if called by keyboard action
-        if (item == null) {
-            if (n_selected > 0) {
-                Files.File first_file = selected_files.first ().data;
-                show_and_select_file (first_file, false, false); //Do not change selection
-                item = get_file_item_for_file (first_file);
-            }
-        }
+    public void show_context_menu (FileItemInterface? item, double x, double y) {
         // If no selected item show background context menu
+        double menu_x, menu_y;
+        MenuModel menu;
         if (item == null) {
-            show_context_menu (background_menu, x, y);
+            menu_x = x;
+            menu_y = y;
+            menu = background_menu;
         } else {
             Graphene.Point point_item, point_gridview;
             item.compute_point (grid_view, {(float)x, (float)y}, out point_gridview);
 
             if (!item.selected) {
                 multi_selection.select_item (item.pos, true);
-                selected_files = null;
-                selected_files.append (item.file); //FIXME Duplication needed?
             }
+
+            List<Files.File> selected_files = null;
+            get_selected_files (out selected_files);
 
             var open_with_menu = new Menu ();
             var open_with_apps = MimeActions.get_applications_for_files (selected_files, Config.APP_NAME, true, true);
@@ -311,18 +339,33 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             assert (!has_open_with); //Must not add twice
             item_menu.prepend_submenu (_("Open With"), open_with_menu);
             has_open_with = true;
-            show_context_menu (item_menu, (double)point_gridview.x, (double)point_gridview.y);
+            menu_x = (double)point_gridview.x;
+            menu_y = (double)point_gridview.y;
+            menu = item_menu;
         }
+
+        menu_popover.menu_model = menu;
+        menu_popover.set_pointing_to ({(int)x, (int)y, 1, 1});
+        Idle.add (() => {
+          menu_popover.popup ();
+          return Source.REMOVE;
+        });
     }
 
     public void show_appropriate_context_menu () { //Deal with Menu Key
         if (list_store.get_n_items () > 0) {
-            if (get_selected_files () > 0) {
-                show_context_menu (item_menu, 0.0, 0.0);
-            } else {
-                show_context_menu (background_menu, 0.0, 0.0);
+            List<Files.File> selected_files = null;
+            var n_selected = get_selected_files (out selected_files);
+            if (n_selected > 0) {
+                Files.File first_file = selected_files.first ().data;
+                show_and_select_file (first_file, false, false); //Do not change selection
+                var item = get_file_item_for_file (first_file);
+                show_context_menu (item, 0.0, 0.0);
+                return;
             }
         }
+
+        show_context_menu (null, 0.0, 0.0);
     }
 
     /* View Interface virtual methods */
@@ -380,6 +423,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         //TODO Check pos same in sorted model and list_store
         if (select) {
             multi_selection.select_item (pos, unselect_others);
+        } else {
+            multi_selection.unselect_item (pos);
         }
 
         if (show) {
@@ -398,6 +443,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     public override void select_files (List<Files.File> files_to_select) {
+    warning ("GV select files");
         foreach (var file in files_to_select) {
             show_and_select_file (file, true, false, false);
         }
@@ -504,7 +550,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     public override bool grab_focus () {
         if (grid_view != null) {
-            return grid_view.grab_focus ();
+            return focus_appropriate_item ();
         } else {
             return false;
         }

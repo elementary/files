@@ -51,7 +51,7 @@ public class Files.HeaderBar : Object {
 
     public Adw.HeaderBar headerbar { get; construct; }
     public BasicPathBar path_bar { get; construct; }
-    public Chrome.ViewSwitcher? view_switcher { get; construct; }
+    public ViewSwitcher view_switcher { get; construct; }
     private Chrome.ButtonWithMenu button_forward;
     private Chrome.ButtonWithMenu button_back;
 
@@ -73,7 +73,7 @@ public class Files.HeaderBar : Object {
             hexpand = true
         };
 
-        view_switcher = new Chrome.ViewSwitcher ("win.view-mode");
+        view_switcher = new ViewSwitcher ("win.view-mode");
         view_switcher.set_mode (Files.app_settings.get_enum ("default-viewmode"));
         headerbar.pack_start (button_back);
         headerbar.pack_start (button_forward);

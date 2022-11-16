@@ -13,40 +13,25 @@ pantheon_files_exec = executable (
 
     'Application.vala',
     'main.vala',
-
-    # 'Dialogs/AbstractPropertiesDialog.vala',
-    # 'Dialogs/ChooseAppDialog.vala',
-    # 'Dialogs/PropertiesWindow.vala',
-    # 'Dialogs/VolumePropertiesWindow.vala',
-
     'Services/ClipboardManager.vala',
-    # 'Services/DeepCount.vala',
     'Services/ProgressUIHandler.vala',
     'Services/ZeitgeistManager.vala',
-
-    # 'Utils/MimeActions.vala',
-    # 'Utils/Permissions.vala',
-    # 'Utils/AppUtils.vala',
+    'Services/Browser.vala',
     'Utils/KeyUtils.vala',
 
-    # 'View/DirectoryView.vala',
-    'View/Browser.vala',
     'View/DirectoryNotFound.vala',
     'View/GridView.vala',
+    'View/MultiSlot.vala',
     'View/PrivacyModeOn.vala',
     'View/ViewContainer.vala',
     'View/Window.vala',
     'View/Slot.vala',
 
-    # 'View/Widgets/BreadcrumbsEntry.vala',
     'View/Widgets/HeaderBar.vala',
     'View/Widgets/GridFileItem.vala',
-    # 'View/Widgets/LocationBar.vala',
     'View/Widgets/OverlayBar.vala',
-    # 'View/Widgets/PermissionButton.vala',
     'View/Widgets/ProgressInfoWidget.vala',
     'View/Widgets/SearchResults.vala',
-    # 'View/Widgets/StorageBar.vala',
     'View/Widgets/Welcome.vala',
 
     'View/Sidebar/AbstractMountableRow.vala',

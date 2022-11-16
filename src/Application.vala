@@ -267,7 +267,7 @@ public class Files.Application : Gtk.Application {
     public void folder_deleted (GLib.File file) {
         unowned List<Gtk.Window> window_list = this.get_windows ();
         window_list.@foreach ((window) => {
-            ( (Files.Window)window).folder_deleted (file);
+            ((Files.Window)window).folder_deleted (file);
         });
     }
 

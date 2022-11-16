@@ -61,7 +61,7 @@ public class Files.Directory : Object {
     private FileMonitor? monitor = null;
     private List<unowned Files.File>? sorted_dirs = null;
 
-    public signal void file_loaded (Files.File file);
+    // public signal void file_loaded (Files.File file);
     public signal void file_added (Files.File? file); /* null used to signal failed operation */
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
@@ -147,17 +147,17 @@ public class Files.Directory : Object {
         file.set_expanded (false); // Ensure any remaining folder icons are not displayed as expanded
     }
 
-    /** Views call the following function with null parameter - file_loaded and done_loading
+    /** Views call the following function with null parameter - file_added and done_loading
       * signals are emitted and cause the view and view container to update.
       *
       * LocationBar calls this function, with a callback, on its own Directory instances in order
       * to perform filename completion.- Emitting a done_loaded signal in that case would cause
       * the premature ending of text entry.
      **/
-    public void init (FileLoadedFunc? file_loaded_func = null) {
+    public async bool init (FileLoadedFunc? file_loaded_func = null) {
         if (state == State.LOADING) {
             debug ("Directory Init re-entered - already loading");
-            return; /* Do not re-enter */
+            return false; /* Do not re-enter */
         }
 
         var previous_state = state;
@@ -172,9 +172,10 @@ public class Files.Directory : Object {
         /* else fully initialise the directory */
         } else {
             state = State.LOADING;
-            prepare_directory.begin (file_loaded_func);
+            yield prepare_directory (file_loaded_func);
         }
         /* done_loaded signal is emitted when ready */
+        return true;
     }
 
     /* This is also called when reloading the directory so that another attempt to connect to
@@ -536,7 +537,7 @@ public class Files.Directory : Object {
     }
 
 
-    public void reload () {
+    public void reload () { //TODO Make async?
         debug ("Reload - state is %s", state.to_string ());
         if (state == State.TIMED_OUT && file.is_mounted) {
             debug ("Unmounting because of timeout");
@@ -548,7 +549,7 @@ public class Files.Directory : Object {
         }
 
         clear_directory_info ();
-        init ();
+        init.begin ();
     }
 
     /** Called in preparation for a reload **/
@@ -703,7 +704,7 @@ public class Files.Directory : Object {
         displayed_files_count++;
 
         if (file_loaded_func == null) {
-            file_loaded (gof);
+            file_added (gof);
         } else {
             file_loaded_func (gof);
         }

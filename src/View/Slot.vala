@@ -1,6 +1,4 @@
 /***
-    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
-
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
     by the Free Software Foundation.
@@ -18,22 +16,13 @@
 
 namespace Files {
 public class Slot : Files.AbstractSlot {
+    public int slot_number { get; set; default = 0;}
     private unowned Files.ViewContainer ctab;
-    private ViewMode mode;
-    private int preferred_column_width;
-
-    private uint reload_timeout_id = 0;
-    private uint path_change_timeout_id = 0;
-    private bool original_reload_request = false;
-
-    private Gtk.Label empty_label;
-    private const string EMPTY_MESSAGE = _("This Folder Is Empty");
-    private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
-    private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
-    private const string DENIED_MESSAGE = _("Access Denied");
-
+    public ViewMode mode { get; construct; }
+    public Gtk.Paned hpaned { get; construct; }
+    public int width { get; private set; }
     public Files.ViewInterface? view_widget { get; set; }
-    public bool is_active {get; protected set;}
+    public bool is_active {get; protected set; default = false;}
     public int displayed_files_count {
         get {
             if (directory != null && directory.state == Directory.State.LOADED) {
@@ -44,59 +33,34 @@ public class Slot : Files.AbstractSlot {
         }
     }
 
-    public unowned Files.Window window {
-        get {return ctab.window;}
-    }
-
-    //TODO Needed in Gtk4 version?
-    // public override bool is_frozen {
-    //     set {
-    //         // dir_view.is_frozen = value;
-    //         frozen_changed (value);
-    //     }
-
-    //     get {
-    //         return dir_view == null || dir_view.is_frozen;
-    //     }
-    // }
-
-    // TODO Gtk4 version needed?
-    // public override bool locked_focus {
-    //     get {
-    //         return view_widget.renaming;
-    //     }
-    // }
-
-    // public signal void frozen_changed (bool freeze);
+    private int preferred_column_width;
+    private uint reload_timeout_id = 0;
+    private uint path_change_timeout_id = 0;
+    private bool original_reload_request = false;
+    private Gtk.Label empty_label;
+    private const string EMPTY_MESSAGE = _("This Folder Is Empty");
+    private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
+    private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
+    private const string DENIED_MESSAGE = _("Access Denied");
     public signal void folder_deleted (Files.File file, Directory parent);
+    // public signal void size_change ();
 
-    /* Support for multi-slot view (Miller)*/
-    public Gtk.Box colpane;
-    public Gtk.Paned hpane;
-    public signal void miller_slot_request (GLib.File file, bool make_root);
-    public signal void size_change ();
+    public Slot (GLib.File? _location, ViewContainer _ctab, ViewMode _mode) {
+        Object (
+            mode: _mode
+        );
 
-    public Slot (GLib.File _location, ViewContainer _ctab, ViewMode _mode) {
         ctab = _ctab;
-        mode = _mode;
-        is_active = false;
-        preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
-        width = preferred_column_width;
-
-        set_up_directory (_location); /* Connect dir signals before making view */
-        make_view ();
-        // connect_dir_view_signals ();
-        connect_view_widget_signals ();
-        connect_slot_signals ();
-
-        is_frozen = true;
+        set_up_directory (_location ?? GLib.File.new_for_commandline_arg (Environment.get_home_dir ()));
+        //Directory is initialized by ctab
+        // is_frozen = true;
     }
 
     ~Slot () {
-        debug ("Slot %i destruct", slot_number);
-        // Ensure dir view does not redraw with invalid slot, causing a crash
-        view_widget.unparent ();
-        view_widget.destroy ();
+        warning ("Slot %i destruct", slot_number);
+        while (hpaned.get_last_child () != null) {
+            hpaned.get_last_child ().unparent ();
+        }
     }
 
     construct {
@@ -105,43 +69,71 @@ public class Slot : Files.AbstractSlot {
             valign = Gtk.Align.CENTER
         };
         empty_label.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
-    }
 
-    private void connect_slot_signals () {
-        active.connect (() => {
-            if (is_active) {
-                return;
-            }
+        hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+            wide_handle = true
+        };
 
-            is_active = true;
-            if (view_widget != null) {
-                view_widget.grab_focus ();
-            }
-        });
+        switch (mode) {
+            case ViewMode.ICON:
+                view_widget = new Files.GridView (this);
+                break;
+            case ViewMode.LIST:
+                view_widget = new Files.GridView (this);
+                break;
+            case ViewMode.MULTICOLUMN:
+                var gv = new Files.GridView (this);
+                gv.grid_view.max_columns = 1;
+                view_widget = gv;
+                break;
 
-        inactive.connect (() => {
-            is_active = false;
-        });
+            default:
+                view_widget = new Files.GridView (this);
+                break;
+        }
 
-        folder_deleted.connect ((file, dir) => {
-           ((Files.Application)(window.application)).folder_deleted (file.location);
-        });
-    }
+        add_main_child (view_widget);
+        hpaned.start_child = content_box;
 
-    private void connect_view_widget_signals () {
-        view_widget.path_change_request.connect (path_change_requested);
+        if (mode == ViewMode.MULTICOLUMN) {
+            preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
+            width = preferred_column_width;
+            view_widget.width_request = preferred_column_width;
+
+            var end_child = new Gtk.Label ("");
+            end_child.width_request = preferred_column_width;
+            hpaned.end_child = end_child;
+            hpaned.shrink_end_child = false;
+            hpaned.resize_end_child = true;
+            hpaned.shrink_start_child = false;
+            hpaned.resize_start_child = false;
+            hpaned.position = -1;
+        }
+
+        view_widget.path_change_request.connect (on_view_path_change_request);
         view_widget.selection_changed.connect (on_view_widget_selection_changed);
-    }
 
-    private void disconnect_view_widget_signals () {
-        view_widget.selection_changed.disconnect (on_view_widget_selection_changed);
-        view_widget.path_change_request.disconnect (path_change_requested);
+        // active.connect (() => {
+        //     if (is_active) {
+        //         return;
+        //     }
+
+        //     is_active = true;
+        //     if (view_widget != null) {
+        //         view_widget.grab_focus ();
+        //     }
+        // });
+
+        // inactive.connect (() => {
+        //     is_active = false;
+        // });
     }
 
     uint selection_changed_timeout_id = 0;
     List<Files.File> selected_files = null; // Maintain a reference for overlaybar
     private void on_view_widget_selection_changed () {
-        selection_changing ();
+        ctab.on_slot_selection_changing ();
+        // selection_changing ();
 
         if (selection_changed_timeout_id > 0) {
             Source.remove (selection_changed_timeout_id);
@@ -150,7 +142,8 @@ public class Slot : Files.AbstractSlot {
         selection_changed_timeout_id = Timeout.add (100, () => {
             selection_changed_timeout_id = 0;
             view_widget.get_selected_files (out selected_files);
-            update_selection (selected_files); // Updates properties overlay
+            ctab.on_slot_update_selection (selected_files);
+            // update_selection (selected_files); // Updates properties overlay
             return Source.REMOVE;
         });
     }
@@ -160,46 +153,25 @@ public class Slot : Files.AbstractSlot {
         dir.file_added.connect (on_directory_file_added);
         dir.file_changed.connect (on_directory_file_changed);
         dir.file_deleted.connect (on_directory_file_deleted);
-        connect_directory_loading_handlers (dir);
+        // connect_directory_loading_handlers (dir);
         dir.need_reload.connect (on_directory_need_reload);
     }
 
-    private void connect_directory_loading_handlers (Directory dir) {
-        dir.file_loaded.connect (on_directory_file_loaded);
-        dir.done_loading.connect (on_directory_done_loading);
-    }
-
     private void disconnect_directory_handlers (Directory dir) {
-        /* If the directory is still loading the file_loaded signal handler
-        /* will not have been disconnected */
-        if (dir.is_loading ()) {
-            disconnect_directory_loading_handlers (dir);
-        }
-
         dir.file_added.disconnect (on_directory_file_added);
         dir.file_changed.disconnect (on_directory_file_changed);
         dir.file_deleted.disconnect (on_directory_file_deleted);
-        dir.done_loading.disconnect (on_directory_done_loading);
         dir.need_reload.disconnect (on_directory_need_reload);
     }
 
-    private void disconnect_directory_loading_handlers (Directory dir) {
-        dir.file_loaded.disconnect (on_directory_file_loaded);
-        dir.done_loading.disconnect (on_directory_done_loading);
-    }
-
-    // * Directory signal handlers moved from DirectoryView.
+    // * Directory signal handlers moved from DirectoryView not requiring changes
+    // to Window
     private void on_directory_file_added (Directory dir, Files.File? file) {
         if (file != null) {
-            view_widget.add_file (file); //FIXME Should we select files added after load?
+            view_widget.add_file (file);
         }
-    }
 
-    private void on_directory_file_loaded (Directory dir, Files.File file) {
-        if (file != null) {
-            view_widget.add_file (file); //FIXME Should we select files added after load?
-        }
-        /* no freespace change signal required */
+        //TODO Determine whether dir is loading or freespace update required.
     }
 
     private void on_directory_file_changed (Directory dir, Files.File file) {
@@ -210,10 +182,8 @@ public class Slot : Files.AbstractSlot {
         }
     }
 
-    private void on_directory_file_deleted (Directory dir, Files.File file) {
-        /* The deleted file could be the whole directory, which is not in the model but that
-         * that does not matter.  */
-
+    public void on_directory_file_deleted (Directory dir, Files.File file) {
+        /* The deleted file could be the whole directory */
         file.exists = false;
         view_widget.file_deleted (file);
 
@@ -229,7 +199,7 @@ public class Slot : Files.AbstractSlot {
             /* Check whether the deleted file is the directory */
             var file_dir = Directory.cache_lookup (file.location);
             if (file_dir != null) {
-                Directory.purge_dir_from_cache (file_dir);
+                Directory.purge_dir_from_cache (file_dir); //Needed?
                 this.folder_deleted (file, file_dir);
             }
         }
@@ -237,10 +207,12 @@ public class Slot : Files.AbstractSlot {
         // handle_free_space_change (); //TODO Reimplement in Gtk4
     }
 
-    private void on_directory_done_loading (Directory dir) {
+    // Called by ViewContainer after handling loading directory
+    public void after_directory_done_loading () {
+    // public void after_directory_done_loading (Directory dir) {
         /* Should only be called on directory creation or reload */
-        disconnect_directory_loading_handlers (dir);
-        if (this.directory.can_load) {
+        // disconnect_directory_loading_handlers (dir); //Necessary?
+        if (directory.can_load) {
             if (in_recent) {
                 view_widget.sort_type = Files.SortType.MODIFIED;
                 view_widget.sort_reversed = false;
@@ -250,8 +222,7 @@ public class Slot : Files.AbstractSlot {
             }
         }
 
-        directory_loaded (dir); // Signal to ViewContainer //TODO Replace with direct call
-        if (dir.is_empty ()) { /* No files in the file cache */
+        if (directory.is_empty ()) { /* No files in the file cache */
             empty_label.label = get_empty_message ();
             if (empty_label.parent == null) {
                 overlay.add_overlay (empty_label);
@@ -262,39 +233,25 @@ public class Slot : Files.AbstractSlot {
             }
         }
         /*  Column View requires slots to determine their own width (other views' width determined by Window */
-        if (mode == ViewMode.MILLER_COLUMNS) {
-        //TODO Reimplement in Gtk4 version if required for MILLER
-            // if (dir.is_empty ()) { /* No files in the file cache */
-            //     Pango.Rectangle extents;
-            //     var layout = dir_view.create_pango_layout (null);
-            //     layout.set_markup (get_empty_message (), -1);
-            //     layout.get_extents (null, out extents);
-            //     width = (int) Pango.units_to_double (extents.width);
-            // } else {
-            //     width = preferred_column_width;
-            // }
+        if (mode == ViewMode.MULTICOLUMN) {
+            if (directory.is_empty ()) { /* No files in the file cache */
+                int min, nat;
+                empty_label.measure (Gtk.Orientation.HORIZONTAL, 100, out min, out nat, null, null);
+                width = nat + 48;
+            } else {
+                width = preferred_column_width;
+            }
 
-            // width += view_widget.zoom_level.to_icon_size () + 64; /* allow some extra room for icon padding and right margin*/
-
-            // /* Allow extra room for MESSAGE_CLASS styling of special messages */
-            // if (dir.is_empty () || dir.permission_denied) {
-            //     width += width;
-            // }
-
-            // size_change ();
-            // hpane.set_position (width);
-
-            // if (colpane.get_realized ()) {
-            //     colpane.queue_draw ();
-            // }
+            hpaned.set_position (width);
         }
     }
 
     private void on_directory_need_reload (Directory dir, bool original_request) {
         view_widget.clear ();
-        connect_directory_loading_handlers (dir);
+        // connect_directory_loading_handlers (dir);
         /* view and slot are unfrozen when done loading signal received */
-        path_changed ();
+        // path_changed ();
+        ctab.on_slot_path_changed (this);
         /* if original_request false, leave original_load_request as it is (it may already be true
          * if reloading in response to reload button press). */
         if (original_request) {
@@ -324,75 +281,30 @@ public class Slot : Files.AbstractSlot {
     }
 
     private void set_up_directory (GLib.File loc) {
+// warning ("set up directory %s", loc.get_uri ());
         if (directory != null) {
             disconnect_directory_handlers (directory);
         }
 
         directory = Directory.from_gfile (loc);
-        assert (directory != null);
         connect_directory_handlers (directory);
     }
 
-    public override void path_change_requested (GLib.File loc, Files.OpenFlag flag) {
+    private void on_view_path_change_request (GLib.File loc, Files.OpenFlag flag) {
         cancel_timeouts ();
-        switch (flag) {
-            case Files.OpenFlag.DEFAULT:
-                if (mode == ViewMode.MILLER_COLUMNS) {
-                    miller_slot_request (loc, false); /* signal to parent MillerView */
-                } else {
-                    user_path_change_request (loc); /* Handle ourselves */
-                }
-                break;
-            case Files.OpenFlag.NEW_TAB:
-            case Files.OpenFlag.NEW_WINDOW:
-                new_container_request (loc, flag);
-                break;
-            case Files.OpenFlag.NEW_ROOT:
-                if (mode == ViewMode.MILLER_COLUMNS) {
-                    miller_slot_request (loc, true); /* signal to parent MillerView */
-                } else {
-                    user_path_change_request (loc); /* Handle ourselves */
-                }
-                break;
-            case Files.OpenFlag.APP:
-                warning ("Unexpected flag");
-                break;
-        }
+        ctab.open_location (loc, flag);
     }
 
-    private void on_dir_view_path_change_request (GLib.File loc, Files.OpenFlag flag, bool make_root) {
-        if (flag == 0) { /* make view in existing container */
-            if (mode == ViewMode.MILLER_COLUMNS) {
-                miller_slot_request (loc, make_root); /* signal to parent MillerView */
-            } else {
-                user_path_change_request (loc); /* Handle ourselves */
-            }
-        } else {
-            new_container_request (loc, flag);
-        }
-    }
-
-    private void user_path_change_request (GLib.File loc) {
-    /** Only this function must be used to change or reload the path **/
-        view_widget.clear ();
-        var old_dir = directory;
-        disconnect_directory_handlers (old_dir);
-        set_up_directory (loc); // Connects signals
-        initialize_directory ();
-
-        /* ViewContainer listens to this signal takes care of updating appearance */
-        path_changed ();
-    }
-
-    public override void initialize_directory () {
+    public async bool initialize_directory () {
         if (directory.is_loading ()) {
             /* This can happen when restoring duplicate tabs */
-            debug ("Slot.initialize_directory () called when directory already loading - ignoring");
-            return;
+            warning ("Slot.initialize_directory () called when directory already loading - ignoring");
+            return false;
         }
         // /* view and slot are unfrozen when done loading signal received */
         // is_frozen = true;
-        directory.init ();
+        yield directory.init (view_widget.add_file);
+        return true;
     }
 
     public override void reload (bool non_local_only = false) {
@@ -402,32 +314,6 @@ public class Slot : Files.AbstractSlot {
              * the original signal */
             directory.need_reload (false);
         }
-    }
-
-    protected override void make_view () {
-        assert (view_widget == null);
-        switch (mode) {
-            case ViewMode.ICON:
-                view_widget = new Files.GridView (this);
-                break;
-            case ViewMode.LIST:
-                view_widget = new Files.GridView (this);
-                break;
-            case ViewMode.MILLER_COLUMNS:
-                view_widget = new Files.GridView (this);
-                break;
-
-            default:
-                view_widget = new Files.GridView (this);
-                break;
-        }
-
-        /* Miller View creates its own overlay and handles packing of the directory view */
-        if (view_widget != null && mode != ViewMode.MILLER_COLUMNS) {
-            add_main_child (view_widget);
-        }
-
-        assert (view_widget != null);
     }
 
     public override bool set_all_selected (bool select_all) {
@@ -481,15 +367,12 @@ public class Slot : Files.AbstractSlot {
     }
 
     public override void set_active_state (bool set_active, bool animate = true) {
-        if (set_active) {
-            active (true, animate);
-        } else {
-            inactive ();
-        }
-    }
-
-    public override unowned Files.AbstractSlot? get_current_slot () {
-        return this as Files.AbstractSlot;
+warning ("set active state");
+        // if (set_active) {
+        //     active (true, animate);
+        // } else {
+        //     inactive ();
+        // }
     }
 
     public override void grab_focus () {
@@ -512,15 +395,19 @@ public class Slot : Files.AbstractSlot {
 
     public override void close () {
         cancel_timeouts ();
-
         if (directory != null) {
             directory.cancel ();
             disconnect_directory_handlers (directory);
         }
 
-        if (view_widget != null) {
-            disconnect_view_widget_signals ();
+        while (hpaned.get_last_child () != null) {
+            hpaned.get_last_child ().unparent ();
         }
+
+        view_widget.unparent ();
+        view_widget.destroy ();
+        view_widget = null;
+        ctab = null;
     }
 
     public void refresh_files () {

@@ -19,19 +19,7 @@
 
 namespace Files {
     public abstract class AbstractSlot : GLib.Object {
-        Files.Directory _directory;
-        public Files.Directory? directory {
-            get {
-                AbstractSlot? current = get_current_slot ();
-                if (current != null) {
-                    return current._directory;
-                } else {
-                    return null;
-                }
-            }
-
-            protected set {_directory = value;}
-        }
+        public Files.Directory? directory { get; set; }
 
         // Directory may be destroyed before the slot so handle case that it is null
         public Files.File? file {
@@ -74,12 +62,12 @@ namespace Files {
         protected Gtk.Box extra_action_widgets;
         protected Gtk.Box content_box;
         public Gtk.Overlay overlay {get; protected set;} // Overlaid with empty message and property overlay
-        public int slot_number { get; protected set; }
-        protected int width;
 
-        public signal void active (bool scroll = true, bool animate = true);
-        public signal void inactive ();
-        public signal void path_changed ();
+        // protected int width;
+
+        // public signal void active (bool scroll = true, bool animate = true);
+        // public signal void inactive ();
+        // public signal void path_changed ();
         public signal void new_container_request (GLib.File loc, Files.OpenFlag flag);
         public signal void selection_changing ();
         public signal void update_selection (GLib.List<Files.File> files);
@@ -94,11 +82,6 @@ namespace Files {
         }
 
         protected void add_main_child (Gtk.Widget widget) {
-            overlay = new Gtk.Overlay () {
-                hexpand = true,
-                vexpand = true
-            };
-            content_box.prepend (overlay);
             overlay.child = widget;
         }
 
@@ -108,25 +91,29 @@ namespace Files {
                 hexpand = true
             };
 
+            overlay = new Gtk.Overlay () {
+                hexpand = true,
+                vexpand = true
+            };
+            content_box.prepend (overlay);
+
             extra_location_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             content_box.prepend (extra_location_widgets);
 
             extra_action_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             content_box.append (extra_action_widgets);
-            slot_number = -1;
         }
 
-        public abstract void initialize_directory ();
-        public abstract GLib.List<Files.File> get_selected_files ();
+        // public abstract void initialize_directory ();
+        public abstract List<Files.File> get_selected_files ();
         public abstract void set_active_state (bool set_active, bool animate = true);
-        public abstract unowned AbstractSlot? get_current_slot ();
+        // public abstract AbstractSlot? get_current_slot ();
         public abstract void reload (bool non_local_only = false);
         public abstract void grab_focus ();
-        public abstract void path_change_requested (GLib.File loc, Files.OpenFlag flag);
-
+        // public abstract void user_path_change_request (GLib.File loc);
         public abstract void show_first_item ();
         public abstract void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location);
-        protected abstract void make_view ();
+        // protected abstract void make_view ();
         public abstract void close ();
         public abstract FileInfo? lookup_file_info (GLib.File loc);
 

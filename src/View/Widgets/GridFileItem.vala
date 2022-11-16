@@ -34,13 +34,12 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     private Gtk.Image file_icon;
     private Gtk.Label label;
     private Gtk.CheckButton selection_helper;
-    private Gtk.TextView text_view;
     private Gtk.Image[] emblems;
     private Gtk.Box emblem_box;
     private Gtk.Overlay icon_overlay;
 
     public Files.File? file { get; set; default = null; }
-    public Files.GridView view { get; set construct; }
+    public ViewInterface view { get; construct; }
     public uint pos { get; set; default = 0; }
 
     public ZoomLevel zoom_level {
@@ -68,8 +67,10 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         }
     }
 
-    public GridFileItem (Files.GridView view) {
-        Object (view: view);
+    public GridFileItem (ViewInterface view) {
+        Object (
+            view: view
+        );
     }
 
     construct {
@@ -91,9 +92,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             halign = Gtk.Align.START,
             valign = Gtk.Align.START
         };
-        selection_helper.bind_property (
-            "active", this, "selected", BindingFlags.BIDIRECTIONAL
-        );
 
         emblems = new Gtk.Image[4];
         emblem_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
@@ -133,49 +131,20 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
 
         Thumbnailer.@get ().finished.connect (handle_thumbnailer_finished);
 
+        bind_property ("selected", selection_helper, "active", BindingFlags.BIDIRECTIONAL);
+        bind_property ("selected", selection_helper, "visible", BindingFlags.DEFAULT);
         notify["selected"].connect (() => {
             if (selected && !has_css_class ("selected")) {
                 add_css_class ("selected");
-                selection_helper.visible = true;
-                view.grid_view.model.select_item (pos, false);
             } else if (!selected && has_css_class ("selected")) {
                 remove_css_class ("selected");
-                selection_helper.visible = false;
-                view.grid_view.model.unselect_item (pos);
             }
-        });
 
-        // Implement single-click navigate
-        var gesture_click = new Gtk.GestureClick () {
-            button = Gdk.BUTTON_PRIMARY,
-            propagation_phase = Gtk.PropagationPhase.CAPTURE
-        };
-        gesture_click.released.connect ((n_press, x, y) => {
-            if ((n_press == 1 &&
-                !prefs.singleclick_select &&
-                file.is_folder ()) ||
-                n_press == 2) {
-
-                Idle.add (() => {
-                    //Ensure file selected so that it will be activated
-                    view.show_and_select_file (file, true, false, false);
-                    view.grid_view.activate (pos);
-                    return Source.REMOVE;
-                });
+            if (file != null) {
+                view.show_and_select_file (file, selection_helper.active, false, false);
             }
-        });
-        file_icon.add_controller (gesture_click);
 
-        // Implement item context menu launching
-        var gesture_secondary_click = new Gtk.GestureClick () {
-            button = Gdk.BUTTON_SECONDARY,
-            propagation_phase = Gtk.PropagationPhase.CAPTURE
-        };
-        gesture_secondary_click.released.connect ((n_press, x, y) => {
-            view.show_item_context_menu (this, x, y);
-            gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED);
         });
-        add_controller (gesture_secondary_click);
 
         var motion_controller = new Gtk.EventControllerMotion ();
         motion_controller.enter.connect (() => {
@@ -202,13 +171,19 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         add_controller (focus_controller);
     }
 
-    public void bind_file (Files.File? file) {
-        if (file != this.file) {
-            unbind ();
-            this.file = file;
-        }
-
+    public void bind_file (Files.File? new_file) {
+        var old_file = file;
+        file = new_file;
+        //Assume that item will not be bound without being unbound first
         if (file == null) {
+            label.label = "Unbound";
+            file_icon.paintable = null;
+            file_icon.set_from_icon_name ("image-missing");
+            thumbnail_request = -1;
+            drop_pending = false;
+            selected = false;
+            cut_pending = false;
+
             return;
         }
 
@@ -224,53 +199,40 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             }
         }
 
-        Idle.add (() => {
-            update_pix ();
-            return Source.REMOVE;
-        });
-
         var cut_pending = ClipboardManager.get_instance ().has_cut_file (file);
         if (cut_pending && !has_css_class ("cut")) {
             add_css_class ("cut");
         } else if (!cut_pending && has_css_class ("cut")) {
             remove_css_class ("cut");
         }
+
+        update_pix ();
     }
 
-    private void unbind () {
-        label.label = "Unbound";
-        file_icon.paintable = null;
-        file_icon.set_from_icon_name ("image-missing");
-        thumbnail_request = -1;
-        drop_pending = false;
-        selected = false;
-        cut_pending = false;
-    }
-
-    private void update_pix () {
-            file.update_gicon_and_paintable ();
-            if (file.paintable != null) {
-                file_icon.set_from_paintable (file.paintable);
+    private void update_pix () requires (file != null) {
+        file.update_gicon_and_paintable ();
+        if (file.paintable != null) {
+            file_icon.set_from_paintable (file.paintable);
+        } else {
+            if (file.gicon != null) {
+                file_icon.set_from_gicon (file.gicon);
             } else {
-                if (file.gicon != null) {
-                    file_icon.set_from_gicon (file.gicon);
-                } else {
-                    critical ("File %s has neither paintable nor gicon", file.uri);
-                    file_icon.set_from_icon_name ("dialog-error");
-                }
+                critical ("File %s has neither paintable nor gicon", file.uri);
+                file_icon.set_from_icon_name ("dialog-error");
             }
+        }
 
-            foreach (var emblem in emblems) {
-                emblem.visible = false;
-            }
-            int index = 0;
-            foreach (string emblem in file.emblems_list) {
-                emblems[index].icon_name = emblem;
-                emblems[index].visible = true;
-                index++;
-            }
+        foreach (var emblem in emblems) {
+            emblem.visible = false;
+        }
+        int index = 0;
+        foreach (string emblem in file.emblems_list) {
+            emblems[index].icon_name = emblem;
+            emblems[index].visible = true;
+            index++;
+        }
 
-            file_icon.queue_draw ();
+        file_icon.queue_draw ();
     }
 
     private void handle_thumbnailer_finished (uint req) {

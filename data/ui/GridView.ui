@@ -149,27 +149,6 @@
   <template class="FilesGridView" parent="GtkWidget">
     <property name="background-menu">background_model</property>
     <property name="item-menu">item_model</property>
-    <property name="grid-view">
-      <object class="GtkGridView">
-         <property name="orientation">vertical</property>
-         <property name="max-columns">20</property>
-         <property name="enable-rubberband">true</property>
-         <signal name="activate" handler="on_grid_view_activate"></signal>
-      </object>
-    </property>
-    <child>
-      <object class="GtkScrolledWindow" id="scrolled_window">
-        <property name="hexpand">1</property>
-        <property name="vexpand">1</property>
-        <property name="hscrollbar-policy">never</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkGestureClick">
-        <property name="button">0</property>
-        <signal name="released" handler="button_release_handler"/>
-      </object>
-    </child>
   </template>
 </interface>
 
