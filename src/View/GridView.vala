@@ -99,7 +99,6 @@ warning ("GridView destruct");
         };
         scrolled_window = new Gtk.ScrolledWindow () {
             hexpand = true,
-            vexpand = true,
             hscrollbar_policy = Gtk.PolicyType.NEVER
         };
         scrolled_window.child = grid_view;

@@ -52,7 +52,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     public Slot (GLib.File? _location, ViewContainer _ctab, ViewMode _mode) {
         Object (
             mode: _mode,
-            orientation: Gtk.Orientation.HORIZONTAL,
+            orientation: Gtk.Orientation.VERTICAL,
             vexpand: true,
             hexpand: true
         );
@@ -70,7 +70,10 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
     construct {
         extra_location_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        overlay = new Gtk.Overlay ();
+        overlay = new Gtk.Overlay () {
+            hexpand = true,
+            vexpand = true
+        };
         extra_action_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         empty_label = new Gtk.Label ("") {
             halign = Gtk.Align.CENTER,
