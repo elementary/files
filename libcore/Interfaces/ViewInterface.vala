@@ -20,10 +20,10 @@
 */
 
 public interface Files.ViewInterface : Gtk.Widget {
-    public abstract AbstractSlot slot { get; set construct; }
+    public abstract SlotInterface slot { get; set construct; }
     public virtual Files.File? root_file {
         get {
-            return slot.file;
+            return slot.directory.file;
         }
     }
 

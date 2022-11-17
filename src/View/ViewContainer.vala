@@ -68,23 +68,29 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
+    public Files.File? file {
+        get {
+            return slot != null ? slot.file : null;
+        }
+    }
+
     public GLib.File? location {
         get {
-            return slot != null ? slot.location : null;
+            return file != null ? file.location : null;
         }
     }
 
     public string uri {
         get {
-            return slot != null ? slot.uri : "";
+            return file != null ? file.uri : "";
         }
     }
 
-    public bool locked_focus {
-        get {
-            return slot != null && slot.locked_focus;
-        }
-    }
+    // public bool locked_focus {
+    //     get {
+    //         return slot != null && slot.locked_focus;
+    //     }
+    // }
 
     public bool can_go_back {
         get {
@@ -322,8 +328,8 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
-    public void on_slot_path_changed (Files.AbstractSlot slot) {
-        directory_is_loading (slot.location);
+    public void path_changed (GLib.File location) {
+        directory_is_loading (location);
     }
 
     private void directory_is_loading (GLib.File loc) {
@@ -455,11 +461,11 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
-    public void on_slot_selection_changing () {
+    public void selection_changing () {
         overlay_statusbar.selection_changing ();
     }
 
-    public void on_slot_update_selection (List<Files.File> selected_files) {
+    public void update_selection (List<Files.File> selected_files) {
         overlay_statusbar.update_selection (selected_files);
     }
 

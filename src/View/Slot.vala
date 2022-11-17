@@ -14,15 +14,14 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace Files {
-public class Slot : Files.AbstractSlot {
-    public int slot_number { get; set; default = 0;}
+public class Files.Slot : Gtk.Box, SlotInterface {
     private unowned Files.ViewContainer ctab;
     public ViewMode mode { get; construct; }
-    public Gtk.Paned hpaned { get; construct; }
     public int width { get; private set; }
-    public Files.ViewInterface? view_widget { get; set; }
-    public bool is_active {get; protected set; default = false;}
+    public Directory? directory { get; set; }
+    public Files.File? file { get { return directory != null ? directory.file : null; }}
+    public string uri { get { return file != null ? file.uri : ""; }}
+    public Files.ViewInterface? view_widget { get; private set; }
     public int displayed_files_count {
         get {
             if (directory != null && directory.state == Directory.State.LOADED) {
@@ -33,47 +32,51 @@ public class Slot : Files.AbstractSlot {
         }
     }
 
+    private Gtk.Overlay overlay;
+    private Gtk.Box extra_location_widgets;
+    private Gtk.Box extra_action_widgets;
+    private Gtk.Label empty_label;
+
     private int preferred_column_width;
     private uint reload_timeout_id = 0;
     private uint path_change_timeout_id = 0;
     private bool original_reload_request = false;
-    private Gtk.Label empty_label;
+
     private const string EMPTY_MESSAGE = _("This Folder Is Empty");
     private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
     private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
     private const string DENIED_MESSAGE = _("Access Denied");
+
     public signal void folder_deleted (Files.File file, Directory parent);
-    // public signal void size_change ();
 
     public Slot (GLib.File? _location, ViewContainer _ctab, ViewMode _mode) {
         Object (
-            mode: _mode
+            mode: _mode,
+            orientation: Gtk.Orientation.HORIZONTAL,
+            vexpand: true,
+            hexpand: true
         );
 
         ctab = _ctab;
         set_up_directory (_location ?? GLib.File.new_for_commandline_arg (Environment.get_home_dir ()));
-        //Directory is initialized by ctab
-        // is_frozen = true;
     }
 
     ~Slot () {
-        warning ("Slot %i destruct", slot_number);
-        while (hpaned.get_last_child () != null) {
-            hpaned.get_last_child ().unparent ();
+        warning ("Slot %s destruct", file.basename);
+        while (get_last_child () != null) {
+            get_last_child ().unparent ();
         }
     }
 
     construct {
+        extra_location_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        overlay = new Gtk.Overlay ();
+        extra_action_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         empty_label = new Gtk.Label ("") {
             halign = Gtk.Align.CENTER,
             valign = Gtk.Align.CENTER
         };
         empty_label.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
-
-        hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-            wide_handle = true
-        };
-
         switch (mode) {
             case ViewMode.ICON:
                 view_widget = new Files.GridView (this);
@@ -83,7 +86,7 @@ public class Slot : Files.AbstractSlot {
                 break;
             case ViewMode.MULTICOLUMN:
                 var gv = new Files.GridView (this);
-                gv.grid_view.max_columns = 1;
+                // gv.grid_view.max_columns = 1;
                 view_widget = gv;
                 break;
 
@@ -92,48 +95,33 @@ public class Slot : Files.AbstractSlot {
                 break;
         }
 
-        add_main_child (view_widget);
-        hpaned.start_child = content_box;
-
+        overlay.child = view_widget;
         if (mode == ViewMode.MULTICOLUMN) {
             preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
             width = preferred_column_width;
             view_widget.width_request = preferred_column_width;
-
-            var end_child = new Gtk.Label ("");
-            end_child.width_request = preferred_column_width;
-            hpaned.end_child = end_child;
-            hpaned.shrink_end_child = false;
-            hpaned.resize_end_child = true;
-            hpaned.shrink_start_child = false;
-            hpaned.resize_start_child = false;
-            hpaned.position = -1;
         }
 
         view_widget.path_change_request.connect (on_view_path_change_request);
         view_widget.selection_changed.connect (on_view_widget_selection_changed);
 
-        // active.connect (() => {
-        //     if (is_active) {
-        //         return;
-        //     }
+        append (extra_location_widgets);
+        append (overlay);
+        append (extra_action_widgets);
+    }
 
-        //     is_active = true;
-        //     if (view_widget != null) {
-        //         view_widget.grab_focus ();
-        //     }
-        // });
+    public void add_extra_widget (Gtk.Widget widget) {
+        extra_location_widgets.append (widget);
+    }
 
-        // inactive.connect (() => {
-        //     is_active = false;
-        // });
+    public void add_extra_action_widget (Gtk.Widget widget) {
+        extra_action_widgets.append (widget);
     }
 
     uint selection_changed_timeout_id = 0;
     List<Files.File> selected_files = null; // Maintain a reference for overlaybar
     private void on_view_widget_selection_changed () {
-        ctab.on_slot_selection_changing ();
-        // selection_changing ();
+        ctab.selection_changing ();
 
         if (selection_changed_timeout_id > 0) {
             Source.remove (selection_changed_timeout_id);
@@ -142,8 +130,8 @@ public class Slot : Files.AbstractSlot {
         selection_changed_timeout_id = Timeout.add (100, () => {
             selection_changed_timeout_id = 0;
             view_widget.get_selected_files (out selected_files);
-            ctab.on_slot_update_selection (selected_files);
-            // update_selection (selected_files); // Updates properties overlay
+            ctab.update_selection (selected_files);
+            selection_changed (selected_files); // Trash plughin listens to this.
             return Source.REMOVE;
         });
     }
@@ -153,7 +141,6 @@ public class Slot : Files.AbstractSlot {
         dir.file_added.connect (on_directory_file_added);
         dir.file_changed.connect (on_directory_file_changed);
         dir.file_deleted.connect (on_directory_file_deleted);
-        // connect_directory_loading_handlers (dir);
         dir.need_reload.connect (on_directory_need_reload);
     }
 
@@ -213,7 +200,7 @@ public class Slot : Files.AbstractSlot {
         /* Should only be called on directory creation or reload */
         // disconnect_directory_loading_handlers (dir); //Necessary?
         if (directory.can_load) {
-            if (in_recent) {
+            if (file.is_recent_uri_scheme ()) {
                 view_widget.sort_type = Files.SortType.MODIFIED;
                 view_widget.sort_reversed = false;
             } else if (this.directory.file.info != null) {
@@ -241,19 +228,12 @@ public class Slot : Files.AbstractSlot {
             } else {
                 width = preferred_column_width;
             }
-
-            hpaned.set_position (width);
         }
     }
 
     private void on_directory_need_reload (Directory dir, bool original_request) {
         view_widget.clear ();
-        // connect_directory_loading_handlers (dir);
-        /* view and slot are unfrozen when done loading signal received */
-        // path_changed ();
-        ctab.on_slot_path_changed (this);
-        /* if original_request false, leave original_load_request as it is (it may already be true
-         * if reloading in response to reload button press). */
+        ctab.path_changed (dir.file.location);
         if (original_request) {
             original_reload_request = true;
         }
@@ -281,7 +261,6 @@ public class Slot : Files.AbstractSlot {
     }
 
     private void set_up_directory (GLib.File loc) {
-// warning ("set up directory %s", loc.get_uri ());
         if (directory != null) {
             disconnect_directory_handlers (directory);
         }
@@ -297,17 +276,15 @@ public class Slot : Files.AbstractSlot {
 
     public async bool initialize_directory () {
         if (directory.is_loading ()) {
-            /* This can happen when restoring duplicate tabs */
             warning ("Slot.initialize_directory () called when directory already loading - ignoring");
             return false;
         }
-        // /* view and slot are unfrozen when done loading signal received */
-        // is_frozen = true;
+
         yield directory.init (view_widget.add_file);
         return true;
     }
 
-    public override void reload (bool non_local_only = false) {
+    public void reload (bool non_local_only = false) {
         if (!non_local_only || !directory.is_local) {
             original_reload_request = true;
             /* Propagate reload signal to any other slot showing this directory indicating it is not
@@ -329,7 +306,7 @@ public class Slot : Files.AbstractSlot {
         }
     }
 
-    public override List<Files.File> get_selected_files () {
+    public List<Files.File> get_selected_files () {
         List<Files.File> selected_files = null;
         if (view_widget != null) {
             view_widget.get_selected_files (out selected_files);
@@ -338,7 +315,7 @@ public class Slot : Files.AbstractSlot {
         return (owned)selected_files;
     }
 
-    public override void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location) {
+    public void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location) {
         if (view_widget != null) {
             var files_to_select = new List<Files.File> ();
             locations.@foreach ((loc) => {
@@ -360,48 +337,41 @@ public class Slot : Files.AbstractSlot {
         }
     }
 
-    public override void show_first_item () {
+    public void show_first_item () {
         if (view_widget != null) {
             view_widget.show_and_select_file (null, false, false);
         }
     }
 
-    public override void set_active_state (bool set_active, bool animate = true) {
+    public void set_active_state (bool set_active, bool animate = true) {
 warning ("set active state");
-        // if (set_active) {
-        //     active (true, animate);
-        // } else {
-        //     inactive ();
-        // }
+        //TODO Reimplement if needed
     }
 
-    public override void grab_focus () {
+    public void grab_focus () {
         if (view_widget != null) {
             view_widget.grab_focus ();
         }
     }
 
-    public override void zoom_in () {
+    public void zoom_in () {
         view_widget.zoom_in ();
     }
 
-    public override void zoom_out () {
+    public void zoom_out () {
         view_widget.zoom_out ();
     }
 
-    public override void zoom_normal () {
+    public void zoom_normal () {
         view_widget.zoom_normal ();
     }
 
-    public override void close () {
+    public void close () {
+        // Need to reduce references to one if poss
         cancel_timeouts ();
         if (directory != null) {
             directory.cancel ();
             disconnect_directory_handlers (directory);
-        }
-
-        while (hpaned.get_last_child () != null) {
-            hpaned.get_last_child ().unparent ();
         }
 
         view_widget.unparent ();
@@ -416,7 +386,7 @@ warning ("set active state");
         }
     }
 
-    public override FileInfo? lookup_file_info (GLib.File loc) {
+    public FileInfo? lookup_file_info (GLib.File loc) {
         Files.File? gof = directory.file_hash_lookup_location (loc);
         if (gof != null) {
             return gof.info;
@@ -447,7 +417,7 @@ warning ("set active state");
         } else if (directory.permission_denied) {
             msg = DENIED_MESSAGE;
         }
+
         return msg;
     }
-}
 }

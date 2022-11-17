@@ -35,7 +35,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public Gtk.PopoverMenu menu_popover { get; construct; }
 
     //Interface properties
-    public AbstractSlot slot { get; set construct; }
+    public SlotInterface slot { get; set construct; }
     public ZoomLevel zoom_level { get; set; default = ZoomLevel.NORMAL; }
     public ZoomLevel minimum_zoom { get; set; default = ZoomLevel.SMALLEST; }
     public ZoomLevel maximum_zoom { get; set; default = ZoomLevel.LARGEST; }
@@ -54,7 +54,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     private Files.DndHandler dnd_handler;
     private Gtk.ScrolledWindow? scrolled_window;
 
-    public GridView (Files.AbstractSlot slot) {
+    public GridView (Files.SlotInterface slot) {
         Object (slot: slot);
     }
 
@@ -94,7 +94,7 @@ warning ("GridView destruct");
         var item_factory = new Gtk.SignalListItemFactory ();
         grid_view = new Gtk.GridView (multi_selection, item_factory) {
             orientation = Gtk.Orientation.VERTICAL,
-            max_columns = 20,
+            // max_columns = 20,
             enable_rubberband = true
         };
         scrolled_window = new Gtk.ScrolledWindow () {

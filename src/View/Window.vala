@@ -269,7 +269,8 @@ public class Files.Window : Gtk.ApplicationWindow {
         tab_view.page_detached.connect (on_page_detached);
 
         sidebar.request_focus.connect (() => {
-            return !current_container.locked_focus && !top_menu.locked_focus;
+            return true;
+            // return !current_container.locked_focus && !top_menu.locked_focus;
         });
         sidebar.sync_needed.connect (() => {
             update_labels (current_container.uri);
@@ -736,7 +737,7 @@ public class Files.Window : Gtk.ApplicationWindow {
 
         current_view_widget.rename_after_add = true;
         FileOperations.new_folder.begin (
-            this, current_container.slot.location, null, (obj, res) => {
+            this, current_container.slot.file.location, null, (obj, res) => {
             try {
                 //For now assume file will be added to view if no error
                 FileOperations.new_folder.end (res);
@@ -796,7 +797,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     private void action_paste_from_clipboard () {
         if (current_view_widget != null) {
             ClipboardManager.get_instance ().paste_files.begin (
-                current_container.slot.location,
+                current_container.location,
                 current_view_widget,
                 (obj, res) => {
                     // warning ("after paste complete");
@@ -815,27 +816,27 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     private void delete_selected_files (bool try_trash) {
         //TODO Warning/confirming dialog under some circumstances
-        var aslot = current_container.slot;
-        if (aslot != null &&
-            !(aslot.in_trash && try_trash) &&
-            aslot.is_writable) {
+        var file = current_container.file;
+        if (file != null &&
+            !(file.is_trashed () && try_trash) &&
+            file.is_writable ()) {
 
                 List<Files.File> selected_files = null;
                 if (current_view_widget.get_selected_files (out selected_files) > 0) {
 
                 GLib.List<GLib.File> locations = null;
-                if (aslot.in_recent) {
-                    selected_files.@foreach ((file) => {
-                        locations.prepend (GLib.File.new_for_uri (file.get_display_target_uri ()));
+                if (file.is_recent_uri_scheme ()) {
+                    selected_files.@foreach ((f) => {
+                        locations.prepend (GLib.File.new_for_uri (f.get_display_target_uri ()));
                     });
                     // Refresh view?
                 } else {
-                    selected_files.@foreach ((file) => {
-                        locations.prepend (file.location);
+                    selected_files.@foreach ((f) => {
+                        locations.prepend (f.location);
                     });
                 }
 
-                aslot.directory.block_monitor (); //Needed?
+                // aslot.directory.block_monitor (); //Needed?
                 FileOperations.@delete.begin (
                     locations,
                     this,
@@ -848,7 +849,7 @@ public class Files.Window : Gtk.ApplicationWindow {
                             debug (e.message);
                         }
 
-                        aslot.directory.unblock_monitor ();
+                        // aslot.directory.unblock_monitor ();
                     }
                 );
             }

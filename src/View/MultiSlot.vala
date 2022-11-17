@@ -29,7 +29,6 @@ public class Files.MultiSlot : Gtk.Box {
     private Gtk.Viewport viewport;
     private Gtk.Adjustment hadj;
     private Slot? current_slot;
-    private Gee.ArrayList<Slot> slot_list = null;
     private int total_width = 0;
 
     public MultiSlot (ViewContainer ctab) {
@@ -43,7 +42,6 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
     construct {
-        slot_list = new Gee.ArrayList<Slot> (null);
         scrolled_window = new Gtk.ScrolledWindow () {
             hscrollbar_policy = Gtk.PolicyType.AUTOMATIC,
             vscrollbar_policy = Gtk.PolicyType.NEVER
@@ -73,81 +71,67 @@ public class Files.MultiSlot : Gtk.Box {
         // Always create new Slot rather than navigate for simplicity.
         //TODO Check for performance/memory leak
         var guest = new Slot (loc, ctab, view_mode);
-// warning ("new slot refs %u", guest.ref_count);
-        var size = slot_list.size;
-        Slot? host = null;
+        var hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+        hpaned.start_child = guest;
+        Gtk.Paned? host = null;
         if (view_mode == ViewMode.MULTICOLUMN) {
             host = get_host_for_loc (loc);
         }
 
         if (host != null) {
-            truncate_list_after_slot (host);
-            host.hpaned.end_child = guest.hpaned;
+            truncate_list_after_host (host);
+            host.end_child = hpaned;
         } else {
             clear ();
-            viewport.child = guest.hpaned;
+            viewport.child = hpaned;
         }
-// warning ("after add hpaned slot refs %u", guest.ref_count);
-        guest.slot_number = slot_list.size;
-        slot_list.insert (guest.slot_number, guest); // Must add to list before scrolling
         current_slot = guest;
-// warning ("after add slot list refs %u", guest.ref_count);
-        // connect_slot_signals (guest);
-// warning ("after connect refs %u", guest.ref_count);
-        // Must set the new slot to be  active here as the tab does not change (which normally sets its slot active)
-        // guest.active (true, true);
-// warning ("aftersignal active refs %u", guest.ref_count);
         update_total_width ();
-// warning ("after update total wi refs %u", guest.ref_count);
-// warning ("after add location slot refs %u", guest.ref_count);
     }
 
-    private Slot? get_host_for_loc (GLib.File file) {
-        int index = 0;
-        while (index < slot_list.size &&
-               slot_list.@get (index).location.get_relative_path (file) != null) {
+    private Gtk.Paned? get_host_for_loc (GLib.File file) {
+        var host = (Gtk.Paned)(viewport.child);
+        while (host != null) {
+            var slot = (Slot)(host.start_child);
+            if (slot.file.location.get_relative_path (file) == null) {
+                break;
+            }
 
-            index++;
-        }
-        if (index == 0 || index > slot_list.size) {
-            return null;
+            if (host.end_child is Gtk.Paned) {
+                host = (Gtk.Paned)(host.end_child);
+                break;
+            }
         }
 
-        return slot_list.@get (index - 1);
+        return host;
     }
 
     public void clear () {
-        truncate_list_after_slot (null);
+        while (viewport.get_last_child () != null) {
+            viewport.get_last_child ().unparent ();
+        }
     }
 
-    private void truncate_list_after_slot (Slot? slot) {
-        if (slot_list.size <= 0) { //Can be assumed to limited in length
-            return;
+    private void truncate_list_after_host (Gtk.Paned host) {
+        var to_unparent = host.end_child;
+        while (to_unparent.get_last_child () != null) {
+            to_unparent.get_last_child ().unparent ();
         }
-
-        int n = slot != null ? slot.slot_number : -1;
-        int index = slot_list.size;
-        while (--index > n) {
-            var s = slot_list.remove_at (index);
-// warning ("truncate slot %i - remaining refs %u", s.slot_number, s.ref_count);
-                // disconnect_slot_signals (s);
-                s.close ();
-                s.hpaned.unparent ();
-                s.dispose ();
-// warning ("disposed slot %i - remaining refs %u", s.slot_number, s.ref_count);
-        }
-
-        if (slot_list.size == 0) {
-            current_slot = null;
-        } else {
-            current_slot = slot_list.@get (slot_list.size - 1);
-        }
+        to_unparent.unparent ();
     }
 
     private void calculate_total_width () {
         total_width = 300; // Extra space to allow increasing the size of columns by dragging the edge
-        foreach (var slot in slot_list) {
+        var host = (Gtk.Paned)(viewport.child);
+        while (host != null && (host is Gtk.Paned)) {
+            var slot = (Slot)(((Gtk.Paned)host).start_child);
             total_width += slot.width;
+
+            if (host.end_child is Gtk.Paned) {
+                host = (Gtk.Paned)(host.end_child);
+            } else {
+                break;
+            }
         }
 
         scrolled_window.min_content_width = total_width;
@@ -155,21 +139,28 @@ public class Files.MultiSlot : Gtk.Box {
 
     public void update_total_width () {
         calculate_total_width ();
+warning ("setting total width %i", total_width);
         viewport.set_size_request (total_width, -1);
     }
 
     public void folder_deleted (GLib.File file) {
-        foreach (var slot in slot_list) {
+        var host = (Gtk.Paned)(viewport.child);
+        while (host != null) {
+            var slot = (Slot)(((Gtk.Paned)host).start_child);
             if (slot.file.uri == file.get_uri ()) { // Showing a deleted location
-                if (slot.slot_number > 0) {
-                    Slot? previous_slot = slot_list.@get (slot.slot_number - 1);
-                    if (previous_slot != null) {
-                        truncate_list_after_slot (slot);
-                    }
+                var parent = host.get_parent ();
+                if (parent is Gtk.Paned) {
+                    truncate_list_after_host ((Gtk.Paned)parent);
                 } else {
                     clear ();
                 }
 
+                break;
+            }
+
+            if (host.end_child is Gtk.Paned) {
+                host = (Gtk.Paned)(host.end_child);
+            } else {
                 break;
             }
         }
@@ -184,27 +175,32 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
     private void show_hidden_files_changed (bool show_hidden) {
-        if (!show_hidden) {
-            /* we are hiding hidden files - check whether any slot is a hidden directory */
-            int i = -1;
-            int hidden = -1;
+        if (show_hidden) {
+            return;
+        }
+        /* we are hiding hidden files - check whether any slot is a hidden directory */
+        int i = -1;
+        int hidden = -1;
 
-            foreach (var s in slot_list) {
-                i ++;
-                if (s.directory.file.is_hidden && hidden <= 0) {
-                    hidden = i;
+        var host = (Gtk.Paned)(viewport.child);
+        while (host != null) {
+            var slot = (Slot)(((Gtk.Paned)host).start_child);
+            if (slot.file.is_hidden) {
+                var parent = host.get_parent ();
+                if (parent is Gtk.Paned) {
+                    truncate_list_after_host ((Gtk.Paned)parent);
+                } else {
+                    clear ();
                 }
+
+                break;
             }
 
-            /* Return if no hidden folder found or only first folder hidden */
-            if (hidden <= 0) {
-                return;
+            if (host.end_child is Gtk.Paned) {
+                host = (Gtk.Paned)(host.end_child);
+            } else {
+                break;
             }
-
-            /* Remove hidden slots and make the slot before the first hidden slot active */
-            var slot = slot_list.@get (hidden - 1);
-            truncate_list_after_slot (slot);
-            // slot.active ();
         }
     }
 
@@ -219,13 +215,14 @@ public class Files.MultiSlot : Gtk.Box {
             return false;
         }
 
-        int current_position = current_slot.slot_number;
-
+        var current_host = (Gtk.Paned)(current_slot.parent);
+        var parent_host = current_host.parent;
         Slot to_activate = null;
         switch (keyval) {
             case Gdk.Key.Left:
-                if (current_position > 0) {
-                    to_activate = slot_list.@get (current_position - 1);
+                if (parent_host is Gtk.Viewport) {
+                } else {
+                    to_activate = (Slot)((Gtk.Paned)parent_host).start_child;
                 }
 
                 break;
@@ -237,25 +234,26 @@ public class Files.MultiSlot : Gtk.Box {
                 }
 
                 var selected_file = selected_files.first ().data;
-                unowned var current_location = selected_files.first ().data.location;
+                unowned var selected_location = selected_files.first ().data.location;
                 GLib.File? next_location = null;
-                if (current_position < slot_list.size - 1) { //Can be assumed to limited in length
-                    next_location = slot_list.@get (current_position + 1).location;
+                var next_host = current_host.end_child;
+                if (next_host != null && (next_host is Gtk.Paned)) {
+                    next_location = ((Slot)(((Gtk.Paned)next_host).start_child)).file.location;
                 }
 
-                if (next_location != null && next_location.equal (current_location)) {
-                    to_activate = slot_list.@get (current_position + 1);
+                if (next_location != null && next_location.equal (selected_location)) {
+                    to_activate = ((Slot)(((Gtk.Paned)next_host).start_child));
                 } else if (selected_file.is_folder ()) {
-                    truncate_list_after_slot (slot_list.@get (current_position));
-                    add_location (current_location);
+                    // truncate_list_after_host (current_host);
+                    add_location (((Slot)(current_host.start_child)).file.location);
                     return true;
                 }
 
                 break;
 
             case Gdk.Key.BackSpace:
-                    if (current_position > 0) {
-                        truncate_list_after_slot (slot_list.@get (current_position - 1));
+                    if (!(parent_host is Gtk.Viewport)) {
+                        truncate_list_after_host ((Gtk.Paned)parent_host);
                     }
 
                 break;
@@ -268,7 +266,7 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
 /** Helper functions */
-    public List<Files.File> get_selected_files () {
+    public List<Files.File>? get_selected_files () {
         if (current_slot != null) {
             List<Files.File> selected_files = ((Slot)(current_slot)).get_selected_files ();
             return (owned)selected_files;
@@ -278,14 +276,24 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
     public string? get_tip_uri () {
-        if (slot_list.size > 0) {
-            return slot_list.@get (slot_list.size - 1).uri;
-        } else {
-            return null;
+        var host = (Gtk.Paned)(viewport.child);
+        while (host != null && (host.end_child is Gtk.Paned)) {
+            host = (Gtk.Paned)(host.end_child);
         }
+
+        if (host != null) {
+            return ((Slot)((host.start_child))).file.uri;
+        }
+
+        return null;
     }
 
     public string? get_root_uri () {
-        return root_location != null ? root_location.get_uri () : null;
+        var host = (Gtk.Paned)(viewport.child);
+        if (host != null) {
+            return ((Slot)(host.start_child)).file.uri;
+        }
+
+        return null;
     }
 }
