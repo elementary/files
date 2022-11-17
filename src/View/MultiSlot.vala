@@ -120,7 +120,7 @@ public class Files.MultiSlot : Gtk.Box {
         to_unparent.unparent ();
     }
 
-    private void calculate_total_width () {
+    public void update_total_width () {
         total_width = 300; // Extra space to allow increasing the size of columns by dragging the edge
         var host = (Gtk.Paned)(viewport.child);
         while (host != null && (host is Gtk.Paned)) {
@@ -135,10 +135,6 @@ public class Files.MultiSlot : Gtk.Box {
         }
 
         scrolled_window.min_content_width = total_width;
-    }
-
-    public void update_total_width () {
-        calculate_total_width ();
 warning ("setting total width %i", total_width);
         viewport.set_size_request (total_width, -1);
     }
