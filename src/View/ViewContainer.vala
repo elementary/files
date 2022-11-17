@@ -265,6 +265,7 @@ public class Files.ViewContainer : Gtk.Box {
     }
 
     public bool go_up () {
+        // No mode change
         selected_locations = null;
         selected_locations.append (this.location);
         GLib.File parent = location;
@@ -277,7 +278,7 @@ public class Files.ViewContainer : Gtk.Box {
 
         /* Certain parents such as ftp:// will be returned as null as they are not browsable */
         if (parent != null) {
-            open_location (parent, Files.OpenFlag.DEFAULT);
+            set_location_and_mode (view_mode, parent, null);
             return true;
         } else {
             return false;
@@ -285,57 +286,27 @@ public class Files.ViewContainer : Gtk.Box {
     }
 
     public void go_back (uint n) {
+        // No mode change
         string? path = browser.go_back (n);
-
         if (path != null) {
             selected_locations = null;
             selected_locations.append (this.location);
-            open_location (GLib.File.new_for_commandline_arg (path), Files.OpenFlag.DEFAULT);
+            set_location_and_mode (view_mode, GLib.File.new_for_commandline_arg (path), null);
         }
     }
 
     public void go_forward (uint n) {
+        // No mode change
         string? path = browser.go_forward (n);
-
         if (path != null) {
-            open_location (GLib.File.new_for_commandline_arg (path), Files.OpenFlag.DEFAULT);
+            set_location_and_mode (view_mode, GLib.File.new_for_commandline_arg (path), null);
         }
     }
-
-    private void open_location (GLib.File loc, Files.OpenFlag flag) {
-        switch (flag) {
-            case Files.OpenFlag.NEW_TAB:
-            case Files.OpenFlag.NEW_WINDOW:
-                /* Must pass through this function in order to properly handle
-                 * unusual characters properly */
-                critical ("Unexpected flag  in open loc%s", flag.to_string ());
-                break;
-
-            case Files.OpenFlag.NEW_ROOT:
-                multi_slot.clear ();
-                set_location_and_mode (view_mode, loc, null);
-                break;
-
-            case Files.OpenFlag.DEFAULT:
-                set_location_and_mode (view_mode, loc, null);
-                break;
-
-            case Files.OpenFlag.APP:
-                warning ("View Container cannot handle Files.OpenFlag.APP - ignoring");
-                break;
-        }
-    }
-
-    // public void path_changed (GLib.File location) {
-    //     directory_is_loading (location);
-    // }
 
     public void uri_is_loading (string uri) {
         overlay_statusbar.cancel ();
         overlay_statusbar.halign = Gtk.Align.END;
         overlay_statusbar.hide ();
-        // refresh_slot_info (loc);
-        // update_tab_name ();
         string? slot_path = Uri.unescape_string (this.uri);
         string tab_name = Files.INVALID_TAB_NAME;
 
@@ -406,7 +377,7 @@ public class Files.ViewContainer : Gtk.Box {
         }
         /* Attempt to navigate to the location */
         if (loc != null) {
-            open_location (loc, Files.OpenFlag.DEFAULT);
+            set_location_and_mode (view_mode, loc, null);
         }
     }
 
