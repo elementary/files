@@ -22,10 +22,9 @@
 */
 
 public class Files.HeaderBar : Object {
-    public signal void forward (int steps);
-    public signal void back (int steps); /* TODO combine using negative step */
+    // public signal void forward (int steps);
+    // public signal void back (int steps); /* TODO combine using negative step */
     public signal void focus_location_request (GLib.File? location);
-    // public signal void path_change_request (string path, Files.OpenFlag flag);
     public signal void escape ();
     public signal void reload_request ();
 
@@ -153,6 +152,7 @@ public class Files.HeaderBar : Object {
     }
 
     public void update_path_bar (string new_path, bool with_animation = true) {
+warning ("update pb %s", new_path);
         path_bar.with_animation = with_animation;
         path_bar.display_uri = new_path;
         path_bar.with_animation = true;

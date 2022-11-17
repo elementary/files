@@ -86,7 +86,7 @@ public class Files.MultiSlot : Gtk.Box {
             viewport.child = hpaned;
         }
         current_slot = guest;
-        update_total_width ();
+        // update_total_width ();
     }
 
     private Gtk.Paned? get_host_for_loc (GLib.File file) {
@@ -135,7 +135,7 @@ public class Files.MultiSlot : Gtk.Box {
         }
 
         scrolled_window.min_content_width = total_width;
-warning ("setting total width %i", total_width);
+// warning ("setting total width %i", total_width);
         viewport.set_size_request (total_width, -1);
     }
 

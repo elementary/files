@@ -194,46 +194,9 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         // handle_free_space_change (); //TODO Reimplement in Gtk4
     }
 
-    // Called by ViewContainer after handling loading directory
-    public void after_directory_done_loading () {
-    // public void after_directory_done_loading (Directory dir) {
-        /* Should only be called on directory creation or reload */
-        // disconnect_directory_loading_handlers (dir); //Necessary?
-        if (directory.can_load) {
-            if (file.is_recent_uri_scheme ()) {
-                view_widget.sort_type = Files.SortType.MODIFIED;
-                view_widget.sort_reversed = false;
-            } else if (this.directory.file.info != null) {
-                view_widget.sort_type = this.directory.file.sort_type;
-                view_widget.sort_reversed = this.directory.file.sort_reversed;
-            }
-        }
-
-        if (directory.is_empty ()) { /* No files in the file cache */
-            empty_label.label = get_empty_message ();
-            if (empty_label.parent == null) {
-                overlay.add_overlay (empty_label);
-            }
-        } else {
-            if (empty_label.parent == overlay) {
-                overlay.remove_overlay (empty_label);
-            }
-        }
-        /*  Column View requires slots to determine their own width (other views' width determined by Window */
-        if (mode == ViewMode.MULTICOLUMN) {
-            if (directory.is_empty ()) { /* No files in the file cache */
-                int min, nat;
-                empty_label.measure (Gtk.Orientation.HORIZONTAL, 100, out min, out nat, null, null);
-                width = nat + 48;
-            } else {
-                width = preferred_column_width;
-            }
-        }
-    }
-
     private void on_directory_need_reload (Directory dir, bool original_request) {
         view_widget.clear ();
-        activate_action ("win.loading-uri", "s", dir.file.location);
+        activate_action ("win.loading-uri", "s", dir.file.uri);
         if (original_request) {
             original_reload_request = true;
         }
@@ -280,7 +243,40 @@ public class Files.Slot : Gtk.Box, SlotInterface {
             return false;
         }
 
+        //NOTE activate_action does not work in async function ??
         yield directory.init (view_widget.add_file);
+
+        if (directory.can_load) {
+            if (file.is_recent_uri_scheme ()) {
+                view_widget.sort_type = Files.SortType.MODIFIED;
+                view_widget.sort_reversed = false;
+            } else if (this.directory.file.info != null) {
+                view_widget.sort_type = this.directory.file.sort_type;
+                view_widget.sort_reversed = this.directory.file.sort_reversed;
+            }
+        }
+
+        if (directory.is_empty ()) { /* No files in the file cache */
+            empty_label.label = get_empty_message ();
+            if (empty_label.parent == null) {
+                overlay.add_overlay (empty_label);
+            }
+        } else {
+            if (empty_label.parent == overlay) {
+                overlay.remove_overlay (empty_label);
+            }
+        }
+        /*  Column View requires slots to determine their own width (other views' width determined by Window */
+        if (mode == ViewMode.MULTICOLUMN) {
+            if (directory.is_empty ()) { /* No files in the file cache */
+                int min, nat;
+                empty_label.measure (Gtk.Orientation.HORIZONTAL, 100, out min, out nat, null, null);
+                width = nat + 48;
+            } else {
+                width = preferred_column_width;
+            }
+        }
+
         return true;
     }
 
@@ -344,7 +340,6 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     public void set_active_state (bool set_active, bool animate = true) {
-warning ("set active state");
         //TODO Reimplement if needed
     }
 

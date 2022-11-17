@@ -77,6 +77,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"remove-content", action_remove_content, "i"},
         {"path-change-request", action_path_change_request, "(su)"},
         {"loading-uri", action_loading_uri, "s"},
+        {"loading-finished", action_loading_finished},
         {"selection-changing", action_selection_changing},
         {"update-selection", action_update_selection}
     };
@@ -242,7 +243,8 @@ public class Files.Window : Gtk.ApplicationWindow {
         set_child (lside_pane);
 
         tab_view.notify["selected-page"].connect (() => {
-            update_labels (((ViewContainer)(tab_view.selected_page.child)).uri);
+            update_top_menu ();
+            //NOTE Current container is ill-defined at this point
         });
         tab_view.indicator_activated.connect (() => {});
         tab_view.setup_menu.connect (() => {});
@@ -275,7 +277,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             // return !current_container.locked_focus && !top_menu.locked_focus;
         });
         sidebar.sync_needed.connect (() => {
-            update_labels (current_container.uri);
+            sidebar.sync_uri (current_container.uri);
         });
         sidebar.path_change_request.connect (uri_path_change_request);
         sidebar.connect_server_request.connect (connect_to_server);
@@ -328,10 +330,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             // old_tab.is_frozen = false;
         }
 
-        update_labels (current_container.uri);
-        // current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
-        sidebar.sync_uri (current_container.uri);
-        // top_menu.working = current_container.is_frozen;
+        update_top_menu ();
         save_active_tab_position ();
     }
 
@@ -417,28 +416,28 @@ public class Files.Window : Gtk.ApplicationWindow {
             var tab_name = content.tab_name;
             set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
         });
-        content.notify["is-loading"].connect (() => {
-            if (restoring_tabs > 0 && !content.is_loading) {
-                restoring_tabs--;
-                /* Each restored tab must signal with is_loading false once */
-                assert (restoring_tabs >= 0);
-                if (!content.can_show_folder) {
-                    warning ("Cannot restore %s, ignoring", content.uri);
-                    /* remove_tab function uses Idle loop to close tab */
-                    remove_content (content);
-                }
-            }
+        // content.notify["is-loading"].connect (() => {
+        //     if (restoring_tabs > 0 && !content.is_loading) {
+        //         restoring_tabs--;
+        //         /* Each restored tab must signal with is_loading false once */
+        //         assert (restoring_tabs >= 0);
+        //         if (!content.can_show_folder) {
+        //             warning ("Cannot restore %s, ignoring", content.uri);
+        //             /* remove_tab function uses Idle loop to close tab */
+        //             remove_content (content); //TODO Reimplement
+        //         }
+        //     }
 
-            content.working = content.is_loading;
-            update_top_menu ();
-            if (restoring_tabs == 0 && !content.is_loading) {
-                save_tabs ();
-            }
-        });
+        //     content.working = content.is_loading;
+        //     update_top_menu ();
+        //     if (restoring_tabs == 0 && !content.is_loading) {
+        //         save_tabs (); //TODO Reimplement
+        //     }
+        // });
 
-        content.notify["active"].connect (() => {
-            update_top_menu ();
-        });
+        // content.notify["active"].connect (() => {
+        //     update_top_menu ();
+        // });
 
         if (!location.equal (_location)) {
             content.set_location_and_mode (mode, location, {_location});
@@ -1154,18 +1153,25 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_path_change_request (GLib.SimpleAction action, GLib.Variant? param) {
-
         string uri;
         uint32 flag;
         param.@get ("(su)", out uri, out flag);
-warning ("path change request %s, %s", uri, ((OpenFlag)flag).to_string ());
         uri_path_change_request (uri, flag);
     }
 
     private void action_loading_uri (GLib.SimpleAction action, GLib.Variant? param) {
         var uri = param.get_string ();
-        update_labels (uri);
-        current_container.uri_is_loading (uri);
+        update_top_menu (uri);
+        top_menu.working = true;
+    }
+
+    private void action_loading_finished () {
+        if (restoring_tabs > 0) {
+            restoring_tabs--;
+        }
+
+        update_top_menu ();
+        top_menu.working = false;
     }
 
     private void action_selection_changing () {
@@ -1463,33 +1469,41 @@ warning ("path change request %s, %s", uri, ((OpenFlag)flag).to_string ());
     //     }
     // }
 
-    private void update_top_menu () {
-        if (restoring_tabs > 0 || current_container == null) {
+    private void update_top_menu (string? uri = null) {
+        if (restoring_tabs > 0 || (current_container == null && uri == null)) {
             return;
         }
 
+        if (current_container == null) {
+            top_menu.update_path_bar (uri);
+            sidebar.sync_uri (uri);
+        } else {
+            top_menu.update_path_bar (current_container.uri);
+            sidebar.sync_uri (current_container.uri);
+        }
+
+
+        set_title (current_container.tab_name); /* Not actually visible on elementaryos */
         /* Update browser buttons */
         top_menu.set_back_menu (current_container.get_go_back_path_list ());
         top_menu.set_forward_menu (current_container.get_go_forward_path_list ());
         top_menu.can_go_back = current_container.can_go_back;
         top_menu.can_go_forward = (current_container.can_show_folder && current_container.can_go_forward);
-        top_menu.working = current_container.is_loading;
 
         /* Update viewmode switch, action state and settings */
         var mode = current_container.view_mode;
         top_menu.view_switcher.set_mode (mode);
-        top_menu.view_switcher.sensitive = current_container.can_show_folder;
         get_action ("view-mode").change_state (new Variant.uint32 (mode));
         Files.app_settings.set_enum ("default-viewmode", mode);
     }
 
-    private void update_labels (string uri) {
-        if (current_container != null) { /* Can happen during restore */
-            set_title (current_container.tab_name); /* Not actually visible on elementaryos */
-            top_menu.update_path_bar (uri);
-            sidebar.sync_uri (uri);
-        }
-    }
+    // private void update_labels (string uri) {
+    //     if (current_container != null) { /* Can happen during restore */
+    //         set_title (current_container.tab_name); /* Not actually visible on elementaryos */
+    //         top_menu.update_path_bar (uri);
+    //         sidebar.sync_uri (uri);
+    //     }
+    // }
 
     public void mount_removed (Mount mount) {
         debug ("Mount %s removed", mount.get_name ());

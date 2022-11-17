@@ -102,8 +102,6 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
-    public bool is_loading { get; private set; default = false;}
-
     private Gtk.Widget? _content;
     private Gtk.Widget? content {
         set {
@@ -148,6 +146,7 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
+    // For simplicity every navigation results in a new slot and starts here.
     public void set_location_and_mode (
         ViewMode mode,
         GLib.File? loc = null,
@@ -155,7 +154,6 @@ public class Files.ViewContainer : Gtk.Box {
     ) {
 
         var current_location = location;
-        is_loading = false;
         var change_mode = mode != multi_slot.view_mode;
         if (change_mode) { //Always the case on creation
             if (to_select != null) {
@@ -179,15 +177,37 @@ public class Files.ViewContainer : Gtk.Box {
         }
 
         multi_slot.add_location (loc ?? current_location);
-        uri_is_loading (location.get_uri ());
-        is_loading = true;
+        //TODO Move overlaybar to Window
+        overlay_statusbar.cancel ();
+        overlay_statusbar.halign = Gtk.Align.END;
+        overlay_statusbar.hide ();
+
+        string? slot_path = Uri.unescape_string (this.uri);
+        string tab_name = Files.INVALID_TAB_NAME;
+
+        if (slot_path != null) {
+            string protocol, path;
+            FileUtils.split_protocol_from_path (slot_path, out protocol, out path);
+            if (path == "" || path == Path.DIR_SEPARATOR_S) {
+                tab_name = Files.protocol_to_name (protocol);
+            } else if (protocol == "" && path == Environment.get_home_dir ()) {
+                tab_name = _("Home");
+            } else {
+                tab_name = Path.get_basename (path);
+            }
+        }
+
+        this.tab_name = tab_name;
+        can_show_folder = false;
+        activate_action ("selection-changing", null);
+        activate_action ("win.loading-uri", "s", location.get_uri ());
 
         slot.initialize_directory.begin ((obj, res) => {
+            activate_action ("win.loading-finished", null);
             if (!slot.initialize_directory.end (res)) {
                 return;
             }
 
-            slot.after_directory_done_loading ();
             multi_slot.update_total_width ();
             var dir = slot.directory;
             can_show_folder = dir.can_load;
@@ -252,7 +272,7 @@ public class Files.ViewContainer : Gtk.Box {
                 browser.record_uri (null);
             }
 
-            is_loading = false; /* Will cause topmenu to update */
+            multi_slot.update_total_width ();
         });
 
         // set_active_state (true);
@@ -260,7 +280,6 @@ public class Files.ViewContainer : Gtk.Box {
     }
 
     public void close () {
-        // disconnect_signals ();
         multi_slot.clear ();
     }
 
@@ -301,31 +320,6 @@ public class Files.ViewContainer : Gtk.Box {
         if (path != null) {
             set_location_and_mode (view_mode, GLib.File.new_for_commandline_arg (path), null);
         }
-    }
-
-    public void uri_is_loading (string uri) {
-        overlay_statusbar.cancel ();
-        overlay_statusbar.halign = Gtk.Align.END;
-        overlay_statusbar.hide ();
-        string? slot_path = Uri.unescape_string (this.uri);
-        string tab_name = Files.INVALID_TAB_NAME;
-
-        if (slot_path != null) {
-            string protocol, path;
-            FileUtils.split_protocol_from_path (slot_path, out protocol, out path);
-            if (path == "" || path == Path.DIR_SEPARATOR_S) {
-                tab_name = Files.protocol_to_name (protocol);
-            } else if (protocol == "" && path == Environment.get_home_dir ()) {
-                tab_name = _("Home");
-            } else {
-                tab_name = Path.get_basename (path);
-            }
-        }
-
-        this.tab_name = tab_name;
-
-        can_show_folder = false;
-        is_loading = true;
     }
 
     // public void set_active_state (bool is_active, bool animate = true) {

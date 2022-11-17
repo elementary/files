@@ -49,7 +49,8 @@ public class Files.Directory : Object {
         LOADED,
         TIMED_OUT
     }
-    public State state {get; private set;}
+
+    public State state { get; private set; }
 
     private HashTable<GLib.File,Files.File> file_hash;
     public uint displayed_files_count {get; private set;}
