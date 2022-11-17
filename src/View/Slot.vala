@@ -15,7 +15,6 @@
 ***/
 
 public class Files.Slot : Gtk.Box, SlotInterface {
-    private unowned Files.ViewContainer ctab;
     public ViewMode mode { get; construct; }
     public int width { get; private set; }
     public Directory? directory { get; set; }
@@ -49,7 +48,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
     public signal void folder_deleted (Files.File file, Directory parent);
 
-    public Slot (GLib.File? _location, ViewContainer _ctab, ViewMode _mode) {
+    public Slot (GLib.File? _location, ViewMode _mode) {
         Object (
             mode: _mode,
             orientation: Gtk.Orientation.VERTICAL,
@@ -57,7 +56,6 @@ public class Files.Slot : Gtk.Box, SlotInterface {
             hexpand: true
         );
 
-        ctab = _ctab;
         set_up_directory (_location ?? GLib.File.new_for_commandline_arg (Environment.get_home_dir ()));
     }
 
@@ -124,7 +122,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     uint selection_changed_timeout_id = 0;
     List<Files.File> selected_files = null; // Maintain a reference for overlaybar
     private void on_view_widget_selection_changed () {
-        ctab.selection_changing ();
+        activate_action ("win.selection-changing", null);
 
         if (selection_changed_timeout_id > 0) {
             Source.remove (selection_changed_timeout_id);
@@ -132,8 +130,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
         selection_changed_timeout_id = Timeout.add (100, () => {
             selection_changed_timeout_id = 0;
-            view_widget.get_selected_files (out selected_files);
-            ctab.update_selection (selected_files);
+            activate_action ("win.update-selection", null);
             selection_changed (selected_files); // Trash plughin listens to this.
             return Source.REMOVE;
         });
@@ -236,7 +233,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
     private void on_directory_need_reload (Directory dir, bool original_request) {
         view_widget.clear ();
-        ctab.path_changed (dir.file.location);
+        activate_action ("win.loading-uri", "s", dir.file.location);
         if (original_request) {
             original_reload_request = true;
         }
@@ -274,7 +271,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
     private void on_view_path_change_request (GLib.File loc, Files.OpenFlag flag) {
         cancel_timeouts ();
-        ctab.open_location (loc, flag);
+        activate_action ("win.path-change-request", "(su)", loc.get_uri (), flag);
     }
 
     public async bool initialize_directory () {
@@ -380,7 +377,6 @@ warning ("set active state");
         view_widget.unparent ();
         view_widget.destroy ();
         view_widget = null;
-        ctab = null;
     }
 
     public void refresh_files () {

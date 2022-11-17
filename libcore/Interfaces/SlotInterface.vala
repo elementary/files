@@ -26,4 +26,3 @@ public interface Files.SlotInterface : Gtk.Widget {
     public virtual void add_extra_action_widget (Gtk.Widget widget) {}
     public virtual bool set_all_selected (bool all_selected) { return false; }
 }
-

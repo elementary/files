@@ -76,7 +76,9 @@ public class Files.Window : Gtk.ApplicationWindow {
         //Actions only used internally (no shortcut)
         {"remove-content", action_remove_content, "i"},
         {"path-change-request", action_path_change_request, "(su)"},
-        {"loading-uri", action_loading_uri, "s"}
+        {"loading-uri", action_loading_uri, "s"},
+        {"selection-changing", action_selection_changing},
+        {"update-selection", action_update_selection}
     };
 
     public uint window_number { get; construct; }
@@ -1152,15 +1154,28 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_path_change_request (GLib.SimpleAction action, GLib.Variant? param) {
+
         string uri;
         uint32 flag;
         param.@get ("(su)", out uri, out flag);
+warning ("path change request %s, %s", uri, ((OpenFlag)flag).to_string ());
         uri_path_change_request (uri, flag);
     }
 
     private void action_loading_uri (GLib.SimpleAction action, GLib.Variant? param) {
         var uri = param.get_string ();
         update_labels (uri);
+        current_container.uri_is_loading (uri);
+    }
+
+    private void action_selection_changing () {
+        current_container.selection_changing ();
+    }
+
+    private void action_update_selection () {
+        List<Files.File> selected_files = null;
+        current_view_widget.get_selected_files (out selected_files);
+        current_container.update_selection (selected_files);
     }
 
     private void before_undo_redo () {
@@ -1511,7 +1526,7 @@ public class Files.Window : Gtk.ApplicationWindow {
                     break;
             }
         } else {
-            // warning ("Cannot browse %s", p);
+            warning ("Cannot browse %s", p);
         }
     }
 

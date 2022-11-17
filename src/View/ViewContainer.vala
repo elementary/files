@@ -6,7 +6,7 @@
        ammonkey <am.monkeyd@gmail.com>
 
     Copyright (c) 2010 Mathijs Henquet
-                  2017–2020 elementary, Inc. <https://elementary.io>
+                  2017–2022 elementary, Inc. <https://elementary.io>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,7 +25,6 @@
 
 public class Files.ViewContainer : Gtk.Box {
     private static int container_id;
-
     protected static int get_next_container_id () {
         return ++container_id;
     }
@@ -34,7 +33,6 @@ public class Files.ViewContainer : Gtk.Box {
         container_id = -1;
     }
 
-    // private string label = "";
     public string tab_name { get; set; }
     public int id { get; construct; }
     public bool can_show_folder { get; private set; default = false; }
@@ -181,7 +179,7 @@ public class Files.ViewContainer : Gtk.Box {
         }
 
         multi_slot.add_location (loc ?? current_location);
-        directory_is_loading (location);
+        uri_is_loading (location.get_uri ());
         is_loading = true;
 
         slot.initialize_directory.begin ((obj, res) => {
@@ -304,13 +302,13 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
-    public void open_location (GLib.File loc, Files.OpenFlag flag) {
+    private void open_location (GLib.File loc, Files.OpenFlag flag) {
         switch (flag) {
             case Files.OpenFlag.NEW_TAB:
             case Files.OpenFlag.NEW_WINDOW:
                 /* Must pass through this function in order to properly handle
                  * unusual characters properly */
-                 activate_action ("win.path-change-request", "(su)", loc.get_uri (), flag);
+                critical ("Unexpected flag  in open loc%s", flag.to_string ());
                 break;
 
             case Files.OpenFlag.NEW_ROOT:
@@ -328,26 +326,16 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
-    public void path_changed (GLib.File location) {
-        directory_is_loading (location);
-    }
+    // public void path_changed (GLib.File location) {
+    //     directory_is_loading (location);
+    // }
 
-    private void directory_is_loading (GLib.File loc) {
+    public void uri_is_loading (string uri) {
         overlay_statusbar.cancel ();
         overlay_statusbar.halign = Gtk.Align.END;
-        refresh_slot_info (loc);
-
-        can_show_folder = false;
-        is_loading = true;
-    }
-
-    public void refresh_slot_info (GLib.File loc) {
-        update_tab_name ();
-        activate_action ("win.loading-uri", "s", loc.get_uri ());
-        /* Do not update top menu (or record uri) unless folder loads successfully */
-    }
-
-   private void update_tab_name () {
+        overlay_statusbar.hide ();
+        // refresh_slot_info (loc);
+        // update_tab_name ();
         string? slot_path = Uri.unescape_string (this.uri);
         string tab_name = Files.INVALID_TAB_NAME;
 
@@ -364,7 +352,9 @@ public class Files.ViewContainer : Gtk.Box {
         }
 
         this.tab_name = tab_name;
-        overlay_statusbar.hide ();
+
+        can_show_folder = false;
+        is_loading = true;
     }
 
     // public void set_active_state (bool is_active, bool animate = true) {
@@ -391,7 +381,6 @@ public class Files.ViewContainer : Gtk.Box {
         }
 
         /* Using file_a.equal (file_b) can fail to detect equivalent locations */
-        // if (!(view is MultiSlot) && FileUtils.same_location (uri, loc.get_uri ())) {
         if (FileUtils.same_location (uri, loc.get_uri ())) {
             return;
         }

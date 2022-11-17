@@ -70,7 +70,7 @@ public class Files.MultiSlot : Gtk.Box {
     public void add_location (GLib.File? loc) {
         // Always create new Slot rather than navigate for simplicity.
         //TODO Check for performance/memory leak
-        var guest = new Slot (loc, ctab, view_mode);
+        var guest = new Slot (loc, view_mode);
         var hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
         hpaned.start_child = guest;
         Gtk.Paned? host = null;
