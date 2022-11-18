@@ -238,6 +238,7 @@ public class Files.MultiSlot : Gtk.Box {
         Slot to_activate = null;
         switch (keyval) {
             case Gdk.Key.Left:
+warning ("key LEFT");
                 if (parent_host is Gtk.Viewport) {
                 } else {
                     current_slot = (((Slot)((Gtk.Paned)parent_host).start_child));

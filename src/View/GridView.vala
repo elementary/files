@@ -94,7 +94,8 @@ warning ("GridView destruct");
         var item_factory = new Gtk.SignalListItemFactory ();
         grid_view = new Gtk.GridView (multi_selection, item_factory) {
             orientation = Gtk.Orientation.VERTICAL,
-            enable_rubberband = true
+            enable_rubberband = true,
+            can_focus = true
         };
         scrolled_window = new Gtk.ScrolledWindow () {
             hexpand = true,
@@ -121,6 +122,7 @@ warning ("GridView destruct");
             var widget = grid_view.pick (x, y, Gtk.PickFlags.DEFAULT);
             if (widget is Gtk.GridView) { // Click on background
                 unselect_all ();
+warning ("grid_view.grab_focus");
                 grid_view.grab_focus ();
             } else {
                 var should_activate = (
@@ -265,8 +267,10 @@ warning ("GridView destruct");
         var item = get_selected_file_item ();
         if (item != null) {
             return item.grab_focus ();
-        } else {
+        } else if (list_store.get_n_items () > 0) {
             return focus_item (0);
+        } else {
+            return grid_view.grab_focus ();
         }
     }
 
@@ -546,11 +550,10 @@ warning ("GridView destruct");
         }
     }
 
-    public override bool grab_focus () {
+    public void grab_focus () {
         if (grid_view != null) {
-            return focus_appropriate_item ();
-        } else {
-            return false;
+warning ("GV %s grab focus", slot.directory.file.uri);
+            focus_appropriate_item ();
         }
     }
     /* DNDInterface abstract methods */

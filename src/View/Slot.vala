@@ -75,7 +75,9 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         extra_action_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         empty_label = new Gtk.Label ("") {
             halign = Gtk.Align.CENTER,
-            valign = Gtk.Align.CENTER
+            valign = Gtk.Align.CENTER,
+            can_focus = true,
+            selectable = true
         };
         empty_label.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
         switch (mode) {
@@ -345,7 +347,9 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     public void grab_focus () {
+warning ("SLOT %s try focus", directory.file.uri);
         if (view_widget != null) {
+// warning ("SLOT %s grab focus directory empty %s", directory.file.uri, directory.is_empty ().to_string ());
             view_widget.grab_focus ();
         }
     }

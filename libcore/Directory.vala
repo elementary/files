@@ -1185,7 +1185,8 @@ public class Files.Directory : Object {
 
     public bool is_empty () {
         /* only return true when loaded to avoid temporary appearance of empty message while loading */
-        return (state == State.LOADED && file_hash.size () == 0);
+// warning ("dir state %s, hash size %u", state.to_string (), file_hash.size ());
+        return (state != State.LOADED || file_hash.size () == 0);
     }
 
     public unowned List<unowned Files.File>? get_sorted_dirs () {

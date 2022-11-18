@@ -27,9 +27,7 @@ public interface Files.ViewInterface : Gtk.Widget {
         }
     }
 
-    public virtual bool grab_focus () {
-        return false;
-    }
+    public virtual void grab_focus () {}
     public abstract ZoomLevel zoom_level { get; set; }
     public abstract ZoomLevel minimum_zoom { get; set; }
     public abstract ZoomLevel maximum_zoom { get; set; }

@@ -110,14 +110,16 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 icon_name = "view-refresh-symbolic",
                 action_name = "win.refresh",
                 hexpand = false,
-                halign = Gtk.Align.END
+                halign = Gtk.Align.END,
+                can_focus = false
             };
             var search_button = new Gtk.Button () {
                 icon_name = "edit-find-symbolic",
                 action_name = "win.find",
                 action_target = "",
                 hexpand = false,
-                halign = Gtk.Align.START
+                halign = Gtk.Align.START,
+                can_focus = false
             };
 
             search_button.set_parent (this);

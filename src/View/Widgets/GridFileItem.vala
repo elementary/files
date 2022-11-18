@@ -159,11 +159,13 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         focusable = true;
         var focus_controller = new Gtk.EventControllerFocus ();
         focus_controller.enter.connect (() => {
+warning ("item %s focus enter", label.label);
             if (!has_css_class ("focussed")) {
                 add_css_class ("focussed");
             }
         });
         focus_controller.leave.connect (() => {
+warning ("item %s focus leave", label.label);
             if (has_css_class ("focussed")) {
                 remove_css_class ("focussed");
             }
