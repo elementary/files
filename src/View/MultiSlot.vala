@@ -98,6 +98,7 @@ public class Files.MultiSlot : Gtk.Box {
         }
 
         if (host != null) {
+            viewport.child.width_request = -1;
             truncate_list_after_host (host);
             host.end_child = hpaned;
 
@@ -157,8 +158,11 @@ public class Files.MultiSlot : Gtk.Box {
         );
 
         // Allow extra space to grab last slider
-        warning ("child min_ w %i, allocated w %i", min_w, viewport.get_allocated_width ());
-        viewport.child.set_size_request (min_w + 20, -1);
+        min_w += 20;
+        var viewport_width = viewport.get_allocated_width ();
+        viewport.child.set_size_request (min_w, -1);
+        //Scroll to end
+        scrolled_window.hadjustment.@value = min_w - viewport_width;
     }
 
     public void folder_deleted (GLib.File file) {
