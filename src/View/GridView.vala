@@ -59,7 +59,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     ~GridView () {
-warning ("GridView destruct");
+        warning ("GridView destruct");
         while (this.get_last_child () != null) {
             this.get_last_child ().unparent ();
         }
@@ -126,7 +126,7 @@ warning ("GridView destruct");
                 grid_view.grab_focus ();
             } else {
                 var should_activate = (
-                    widget is Gtk.Image && // Not ideal as it relies on details of item structure but do not want to activate on label
+                    widget is Gtk.Image &&
                     (n_press == 1 && !prefs.singleclick_select ||
                     n_press == 2)
                 );
@@ -328,11 +328,15 @@ warning ("GridView destruct");
             get_selected_files (out selected_files);
 
             var open_with_menu = new Menu ();
-            var open_with_apps = MimeActions.get_applications_for_files (selected_files, Config.APP_NAME, true, true);
+            var open_with_apps = MimeActions.get_applications_for_files (
+                selected_files, Config.APP_NAME, true, true
+            );
             foreach (var appinfo in open_with_apps) {
                 open_with_menu.append (
                     appinfo.get_name (),
-                    Action.print_detailed_name ("win.open-with", new Variant.string (appinfo.get_commandline ()))
+                    Action.print_detailed_name (
+                        "win.open-with", new Variant.string (appinfo.get_commandline ())
+                    )
                 );
             }
 

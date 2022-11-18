@@ -458,7 +458,9 @@ public class Files.Window : Gtk.ApplicationWindow {
 
             if (FileUtils.same_location (uri, tab_uri)) {
                 return existing_position;
-            } else if (!is_folder && FileUtils.same_location (location.get_parent ().get_uri (), tab_uri)) {
+            } else if (!is_folder &&
+                        FileUtils.same_location (location.get_parent ().get_uri (), tab_uri)) {
+
                 is_child = true;
                 return existing_position;
             }
@@ -487,7 +489,9 @@ public class Files.Window : Gtk.ApplicationWindow {
                         if (content_label == tab.title) {
                             /* Also relabel conflicting tab (but not before this function finishes) */
                             Idle.add_full (GLib.Priority.LOW, () => {
-                                var unique_name = disambiguate_name (content_label, content_path, path);
+                                var unique_name = disambiguate_name (
+                                    content_label, content_path, path
+                                );
                                 set_tab_label (unique_name, tab, content_path);
                                 return GLib.Source.REMOVE;
                             });
@@ -541,7 +545,9 @@ public class Files.Window : Gtk.ApplicationWindow {
             var parent_path= FileUtils.get_parent_path_from_path (path_temp);
             var parent_conflict_path = FileUtils.get_parent_path_from_path (conflict_path_temp);
             prefix = Path.get_basename (parent_path) + Path.DIR_SEPARATOR_S + prefix;
-            prefix_conflict = Path.get_basename (parent_conflict_path) + Path.DIR_SEPARATOR_S + prefix_conflict;
+            prefix_conflict = Path.get_basename (parent_conflict_path) +
+                              Path.DIR_SEPARATOR_S +
+                              prefix_conflict;
             path_temp= parent_path;
             conflict_path_temp = parent_conflict_path;
         }
@@ -1489,7 +1495,8 @@ public class Files.Window : Gtk.ApplicationWindow {
         top_menu.set_back_menu (current_container.get_go_back_path_list ());
         top_menu.set_forward_menu (current_container.get_go_forward_path_list ());
         top_menu.can_go_back = current_container.can_go_back;
-        top_menu.can_go_forward = (current_container.can_show_folder && current_container.can_go_forward);
+        top_menu.can_go_forward = (current_container.can_show_folder &&
+                                   current_container.can_go_forward);
 
         /* Update viewmode switch, action state and settings */
         var mode = current_container.view_mode;
@@ -1516,7 +1523,9 @@ public class Files.Window : Gtk.ApplicationWindow {
 
             if (location == null || location.has_prefix (root) || location.equal (root)) {
                 if (view_container == current_container) {
-                    view_container.focus_location (GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()));
+                    view_container.focus_location (
+                        GLib.File.new_for_path (PF.UserUtils.get_real_user_home ())
+                    );
                 } else {
                     remove_content (view_container);
                 }

@@ -47,7 +47,9 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void zoom_out () {}
     public virtual void zoom_normal () {}
 
-    public virtual void show_and_select_file (Files.File? file, bool select, bool unselect_others, bool show = true) {}
+    public virtual void show_and_select_file (
+        Files.File? file, bool select, bool unselect_others, bool show = true
+    ) {}
     public virtual void select_files (List<Files.File> files_to_select) {}
     public virtual void invert_selection () {}
     public virtual void select_all () {}
@@ -102,21 +104,27 @@ public interface Files.ViewInterface : Gtk.Widget {
                             file.execute (null);
                         } catch (Error e) {
                             PF.Dialogs.show_warning_dialog (
-                                _("Cannot execute this file"), e.message, (Gtk.Window)get_ancestor (typeof (Gtk.Window)
+                                _("Cannot execute this file"),
+                                e.message,
+                                (Gtk.Window)get_ancestor (typeof (Gtk.Window)
                             ));
                         }
 
                         return;
                     }
                 } else {
-                    if (FileUtils.can_open_file (file, true, (Gtk.Window)get_ancestor (typeof (Gtk.Window)))) {
+                    if (FileUtils.can_open_file (
+                            file, true, (Gtk.Window)get_ancestor (typeof (Gtk.Window)))
+                        ) {
                         MimeActions.open_glib_file_request (file.location, this, default_app);
                     }
                 }
 
                 break;
             case Files.OpenFlag.APP:
-                if (FileUtils.can_open_file (file, true, (Gtk.Window)get_ancestor (typeof (Gtk.Window)))) {
+                if (FileUtils.can_open_file (
+                        file, true, (Gtk.Window)get_ancestor (typeof (Gtk.Window)))
+                    ) {
                     MimeActions.open_glib_file_request (file.location, this, default_app);
                 }
                 break;

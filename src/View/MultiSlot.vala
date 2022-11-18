@@ -267,9 +267,13 @@ public class Files.MultiSlot : Gtk.Box {
                 }
 
                 if (next_location != null && next_location.equal (selected_location)) {
-                    activate_action ("win.path-change-request", "(su)", next_location.get_uri (), OpenFlag.DEFAULT);
+                    activate_action (
+                        "win.path-change-request", "(su)", next_location.get_uri (), OpenFlag.DEFAULT
+                    );
                 } else if (selected_file.is_folder ()) {
-                    activate_action ("win.path-change-request", "(su)", selected_file.uri, OpenFlag.DEFAULT);
+                    activate_action (
+                        "win.path-change-request", "(su)", selected_file.uri, OpenFlag.DEFAULT
+                    );
                 }
 
                 break;
