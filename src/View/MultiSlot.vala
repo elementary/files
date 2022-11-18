@@ -54,10 +54,9 @@ public class Files.MultiSlot : Gtk.Box {
 
     construct {
         scrolled_window = new Gtk.ScrolledWindow () {
-            hscrollbar_policy = Gtk.PolicyType.AUTOMATIC,
-            vscrollbar_policy = Gtk.PolicyType.NEVER
+            hscrollbar_policy = Gtk.PolicyType.ALWAYS,
+            vscrollbar_policy = Gtk.PolicyType.NEVER,
         };
-        hadj = scrolled_window.get_hadjustment ();
         viewport = new Gtk.Viewport (null, null) {
             hexpand = view_mode != ViewMode.MULTICOLUMN
         };
@@ -85,11 +84,14 @@ public class Files.MultiSlot : Gtk.Box {
         var hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
         hpaned.start_child = guest;
         if (view_mode == ViewMode.MULTICOLUMN) {
-            hpaned.end_child = new Gtk.Label ("Test");
+            hpaned.end_child = new Gtk.Label ("Test") {
+                hexpand = false
+            };
         }
-        hpaned.resize_start_child = view_mode != ViewMode.MULTICOLUMN;
+        hpaned.resize_start_child = false;
         hpaned.shrink_start_child = false;
-        hpaned.resize_end_child = view_mode == ViewMode.MULTICOLUMN;
+        hpaned.shrink_end_child = false;
+        hpaned.resize_end_child = true;
         Gtk.Paned? host = null;
         if (view_mode == ViewMode.MULTICOLUMN) {
             host = get_host_for_loc (guest.file.location);
@@ -98,12 +100,14 @@ public class Files.MultiSlot : Gtk.Box {
         if (host != null) {
             truncate_list_after_host (host);
             host.end_child = hpaned;
+
         } else {
             clear ();
             viewport.child = hpaned;
         }
+
         current_slot = guest;
-        // update_total_width ();
+        update_total_width ();
     }
 
     private Gtk.Paned? get_host_for_loc (GLib.File file) {
@@ -142,22 +146,19 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
     public void update_total_width () {
-        total_width = 300; // Extra space to allow increasing the size of columns by dragging the edge
-        var host = (Gtk.Paned)(viewport.child);
-        while (host != null && (host is Gtk.Paned)) {
-            var slot = (Slot)(((Gtk.Paned)host).start_child);
-            total_width += slot.width;
+        int min_w, nat_w;
+        viewport.child.measure (
+            Gtk.Orientation.HORIZONTAL,
+            viewport.get_allocated_height (),
+            out min_w,
+            out nat_w,
+            null,
+            null
+        );
 
-            if (host.end_child is Gtk.Paned) {
-                host = (Gtk.Paned)(host.end_child);
-            } else {
-                break;
-            }
-        }
-
-        scrolled_window.min_content_width = total_width;
-// warning ("setting total width %i", total_width);
-        viewport.set_size_request (total_width, -1);
+        // Allow extra space to grab last slider
+        warning ("child min_ w %i, allocated w %i", min_w, viewport.get_allocated_width ());
+        viewport.child.set_size_request (min_w + 20, -1);
     }
 
     public void folder_deleted (GLib.File file) {

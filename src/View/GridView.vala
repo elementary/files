@@ -123,7 +123,6 @@ warning ("GridView destruct");
             var widget = grid_view.pick (x, y, Gtk.PickFlags.DEFAULT);
             if (widget is Gtk.GridView) { // Click on background
                 unselect_all ();
-warning ("grid_view.grab_focus");
                 grid_view.grab_focus ();
             } else {
                 var should_activate = (
@@ -269,7 +268,6 @@ warning ("grid_view.grab_focus");
         } else if (list_store.get_n_items () > 0) {
             focus_item (0);
         } else {
-warning ("focus appropriate:  grid view grab focus");
             grid_view.grab_focus ();
         }
     }
@@ -552,7 +550,6 @@ warning ("focus appropriate:  grid view grab focus");
 
     public void grab_focus () {
         if (grid_view != null) {
-warning ("GV %s grab focus", slot.directory.file.uri);
             focus_appropriate_item ();
         }
     }

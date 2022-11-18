@@ -400,11 +400,11 @@ public class Files.ViewContainer : Gtk.Box {
     }
 
     public void selection_changing () {
-        overlay_statusbar.selection_changing ();
+        // overlay_statusbar.selection_changing ();
     }
 
     public void update_selection (List<Files.File> selected_files) {
-        overlay_statusbar.update_selection (selected_files);
+        // overlay_statusbar.update_selection (selected_files);
     }
 
 //TODO Use EventController
