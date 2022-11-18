@@ -74,24 +74,39 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     }
 
     construct {
-        var lm = new Gtk.BoxLayout (Gtk.Orientation.VERTICAL);
+        var lm = new Gtk.BoxLayout (
+            view.slot.view_mode == ViewMode.MULTICOLUMN ?
+            Gtk.Orientation.HORIZONTAL :
+            Gtk.Orientation.VERTICAL
+        );
         set_layout_manager (lm);
         can_target = true;
         get_style_context ().add_provider (
             fileitem_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         );
 
-        file_icon = new Gtk.Image () {
-            margin_end = 8,
-            margin_start = 8,
-            icon_name = "image-missing" // Shouldnt see this
-        };
+        if (view.slot.view_mode == ViewMode.ICON) {
+            file_icon = new Gtk.Image () {
+                margin_end = 8,
+                margin_start = 8,
+                icon_name = "image-missing" // Shouldnt see this
+            };
+        } else {
+            file_icon = new Gtk.Image () {
+                margin_end = 8,
+                margin_start = 16,
+                icon_name = "image-missing" // Shouldnt see this
+            };
+        }
 
+        //TODO Apply CSS to selection_helper to get look/size right
         selection_helper = new Gtk.CheckButton () {
             visible = false,
             halign = Gtk.Align.START,
             valign = Gtk.Align.START
         };
+
+        selection_helper.set_css_name ("selection-helper");
 
         emblems = new Gtk.Image[4];
         emblem_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
@@ -108,25 +123,37 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
 
         // Spread grid items out a little more than native GridView
         icon_overlay = new Gtk.Overlay () {
-            margin_start = 12,
-            margin_end = 12,
-            margin_bottom = 8
+            // margin_start = 12,
+            // margin_end = 12,
+            // margin_bottom = 8
         };
         icon_overlay.child = file_icon;
         icon_overlay.add_overlay (selection_helper);
         icon_overlay.add_overlay (emblem_box);
         icon_overlay.set_parent (this);
 
-        label = new Gtk.Label ("Unbound") {
-            wrap = true,
-            wrap_mode = Pango.WrapMode.WORD_CHAR,
-            ellipsize = Pango.EllipsizeMode.END,
-            lines = 5,
-            margin_top = 3,
-            margin_bottom = 3,
-            margin_start = 3,
-            margin_end = 3,
-        };
+        if (view.slot.view_mode == ViewMode.ICON) {
+            label = new Gtk.Label ("Unbound") {
+                wrap = true,
+                wrap_mode = Pango.WrapMode.WORD_CHAR,
+                ellipsize = Pango.EllipsizeMode.END,
+                lines = 5,
+                margin_top = 3,
+                margin_bottom = 3,
+                margin_start = 3,
+                margin_end = 3,
+            };
+        } else {
+            label = new Gtk.Label ("Unbound") {
+                wrap = false,
+                ellipsize = Pango.EllipsizeMode.END,
+                lines = 1,
+                margin_top = 3,
+                margin_bottom = 3,
+                // margin_start = 3,
+                // margin_end = 3,
+            };
+        }
         label.set_parent (this);
 
         Thumbnailer.@get ().finished.connect (handle_thumbnailer_finished);

@@ -19,6 +19,7 @@
 
 public interface Files.SlotInterface : Gtk.Widget {
     public abstract Directory? directory { get; set; }
+    public abstract ViewMode view_mode { get; construct; }
     public signal void selection_changed (List<Files.File> selected_files);
 
     public abstract GLib.List<Files.File> get_selected_files ();

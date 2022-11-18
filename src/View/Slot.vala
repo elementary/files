@@ -15,7 +15,7 @@
 ***/
 
 public class Files.Slot : Gtk.Box, SlotInterface {
-    public ViewMode mode { get; construct; }
+    public ViewMode view_mode { get; construct; }
     public int width { get; private set; }
     public Directory? directory { get; set; }
     public Files.File? file { get { return directory != null ? directory.file : null; }}
@@ -50,7 +50,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
     public Slot (GLib.File? _location, ViewMode _mode) {
         Object (
-            mode: _mode,
+            view_mode: _mode,
             orientation: Gtk.Orientation.VERTICAL,
             vexpand: true,
             hexpand: _mode != ViewMode.MULTICOLUMN
@@ -81,7 +81,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
             margin_end = 48
         };
         empty_label.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
-        switch (mode) {
+        switch (view_mode) {
             case ViewMode.ICON:
                 view_widget = new Files.GridView (this);
                 break;
@@ -100,7 +100,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         }
 
         overlay.child = view_widget;
-        if (mode == ViewMode.MULTICOLUMN) {
+        if (view_mode == ViewMode.MULTICOLUMN) {
             preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
             width = preferred_column_width;
             view_widget.width_request = preferred_column_width;

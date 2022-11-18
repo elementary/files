@@ -234,6 +234,13 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 refresh_view ();
             }
         });
+
+        // Restore saved zoom level
+        if (slot.view_mode == ViewMode.ICON) {
+            zoom_level = (ZoomLevel)(Files.icon_view_settings.get_enum ("zoom-level"));
+        } else {
+            zoom_level = (ZoomLevel)(Files.column_view_settings.get_enum ("zoom-level"));
+        }
     }
 
     /* Private methods */
@@ -247,8 +254,14 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     private ZoomLevel get_normal_zoom_level () {
-        var zoom = Files.icon_view_settings.get_enum ("default-zoom-level");
-        Files.icon_view_settings.set_enum ("zoom-level", zoom);
+        int zoom;
+        if (slot.view_mode == ViewMode.ICON) {
+            zoom = Files.icon_view_settings.get_enum ("default-zoom-level");
+            Files.icon_view_settings.set_enum ("zoom-level", zoom);
+        } else {
+            zoom = Files.column_view_settings.get_enum ("default-zoom-level");
+            Files.column_view_settings.set_enum ("zoom-level", zoom);
+        }
 
         return (ZoomLevel)zoom;
     }
