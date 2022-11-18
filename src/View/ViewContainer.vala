@@ -38,21 +38,6 @@ public class Files.ViewContainer : Gtk.Box {
     public bool can_show_folder { get; private set; default = false; }
     public bool working { get; set; }
 
-    // public Gtk.Overlay overlay { get; construct; }
-    // public ViewContainer ctab { get; construct; }
-    // public GLib.File root_location { get; set construct; }
-    // public ViewMode view_mode { get; set; }
-    // /* Need private copy of initial location as MultiSlot
-    //  * does not have its own Asyncdirectory object */
-
-    // private uint scroll_to_slot_timeout_id = 0;
-    // private Gtk.ScrolledWindow scrolled_window;
-    // private Gtk.Viewport viewport;
-    // private Gtk.Adjustment hadj;
-    // public Slot? current_slot { get; private set; }
-    // private GLib.List<Slot> slot_list = null;
-    // private int total_width = 0;
-
     private Files.MultiSlot multi_slot;
     public ViewMode view_mode {
         get {
@@ -62,7 +47,7 @@ public class Files.ViewContainer : Gtk.Box {
 
     public Files.Slot? slot {
         get {
-            return multi_slot.get_current_slot ();
+            return multi_slot.current_slot;
         }
     }
 
@@ -275,7 +260,7 @@ public class Files.ViewContainer : Gtk.Box {
         });
 
         // set_active_state (true);
-        multi_slot.set_current_slot (slot);
+        // multi_slot.current_slot(slot);
     }
 
     public void close () {
@@ -407,7 +392,7 @@ public class Files.ViewContainer : Gtk.Box {
 
     public new void grab_focus () {
         // is_frozen = false;
-        if (can_show_folder && slot != null) {
+        if (slot != null && can_show_folder) {
             slot.grab_focus ();
         } else if (content != null) {
             content.grab_focus ();

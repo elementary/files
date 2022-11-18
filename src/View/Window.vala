@@ -1540,7 +1540,6 @@ public class Files.Window : Gtk.ApplicationWindow {
                     add_window (file, current_container.view_mode);
                     break;
                 default:
-                    grab_focus ();
                     current_container.focus_location (file);
                     break;
             }

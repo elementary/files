@@ -28,7 +28,18 @@ public class Files.MultiSlot : Gtk.Box {
     private Gtk.ScrolledWindow scrolled_window;
     private Gtk.Viewport viewport;
     private Gtk.Adjustment hadj;
-    private Slot? current_slot;
+    private Slot? _current_slot;
+    public Slot? current_slot {
+        get {
+            return _current_slot;
+        }
+
+        set {
+            _current_slot = value;
+            current_slot.grab_focus ();
+        }
+    }
+
     private int total_width = 0;
 
     public MultiSlot (ViewContainer ctab) {
@@ -172,13 +183,14 @@ public class Files.MultiSlot : Gtk.Box {
         }
     }
 
-    public void set_current_slot (Slot slot) {
-        current_slot = slot;  //TODO Anything else needed?
-    }
+    // public void set_current_slot (Slot slot) {
+    //     current_slot = slot;  //TODO Anything else needed?
+    //     current_slot.grab_focus ();
+    // }
 
-    public unowned Slot? get_current_slot () {
-        return current_slot;  //TODO Anything else needed?
-    }
+    // public unowned Slot? get_current_slot () {
+    //     return current_slot;  //TODO Anything else needed?
+    // }
 
     private void show_hidden_files_changed (bool show_hidden) {
         if (show_hidden) {
@@ -228,7 +240,7 @@ public class Files.MultiSlot : Gtk.Box {
             case Gdk.Key.Left:
                 if (parent_host is Gtk.Viewport) {
                 } else {
-                    to_activate = (Slot)((Gtk.Paned)parent_host).start_child;
+                    current_slot = (((Slot)((Gtk.Paned)parent_host).start_child));
                 }
 
                 break;
