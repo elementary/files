@@ -248,10 +248,9 @@ public class Files.MultiSlot : Gtk.Box {
                 }
 
                 if (next_location != null && next_location.equal (selected_location)) {
-                    to_activate = ((Slot)(((Gtk.Paned)next_host).start_child));
+                    activate_action ("win.path-change-request", "(su)", next_location.get_uri (), OpenFlag.DEFAULT);
                 } else if (selected_file.is_folder ()) {
-                    // truncate_list_after_host (current_host);
-                    add_location (((Slot)(current_host.start_child)).file.location);
+                    activate_action ("win.path-change-request", "(su)", selected_file.uri, OpenFlag.DEFAULT);
                     return true;
                 }
 
