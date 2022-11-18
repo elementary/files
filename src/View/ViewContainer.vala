@@ -152,7 +152,6 @@ public class Files.ViewContainer : Gtk.Box {
         GLib.File? loc = null,
         GLib.File[]? to_select = null
     ) {
-
         var current_location = location;
         var change_mode = mode != multi_slot.view_mode;
         if (change_mode) { //Always the case on creation

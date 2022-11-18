@@ -48,7 +48,7 @@ public class Files.MultiSlot : Gtk.Box {
         };
         hadj = scrolled_window.get_hadjustment ();
         viewport = new Gtk.Viewport (null, null) {
-            hexpand = true
+            hexpand = view_mode != ViewMode.MULTICOLUMN
         };
         scrolled_window.set_child (viewport);
 
@@ -73,9 +73,15 @@ public class Files.MultiSlot : Gtk.Box {
         var guest = new Slot (loc, view_mode);
         var hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
         hpaned.start_child = guest;
+        if (view_mode == ViewMode.MULTICOLUMN) {
+            hpaned.end_child = new Gtk.Label ("Test");
+        }
+        hpaned.resize_start_child = view_mode != ViewMode.MULTICOLUMN;
+        hpaned.shrink_start_child = false;
+        hpaned.resize_end_child = view_mode == ViewMode.MULTICOLUMN;
         Gtk.Paned? host = null;
         if (view_mode == ViewMode.MULTICOLUMN) {
-            host = get_host_for_loc (loc);
+            host = get_host_for_loc (guest.file.location);
         }
 
         if (host != null) {
@@ -90,20 +96,23 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
     private Gtk.Paned? get_host_for_loc (GLib.File file) {
-        var host = (Gtk.Paned)(viewport.child);
+        Gtk.Paned? host = (Gtk.Paned?)(viewport.child);
+        Gtk.Paned? previous_host = host;
         while (host != null) {
             var slot = (Slot)(host.start_child);
             if (slot.file.location.get_relative_path (file) == null) {
                 break;
             }
 
+            previous_host = host;
             if (host.end_child is Gtk.Paned) {
                 host = (Gtk.Paned)(host.end_child);
+            } else {
                 break;
             }
         }
 
-        return host;
+        return previous_host;
     }
 
     public void clear () {

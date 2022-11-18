@@ -309,10 +309,6 @@ public class Files.Window : Gtk.ApplicationWindow {
         save_tabs ();
     }
 
-    public new void set_title (string title) {
-        this.title = title;
-    }
-
     private void change_tab (int offset) {
         ViewContainer? old_tab = current_container;
         tab_view.selected_page = tab_view.get_nth_page (offset);
@@ -1477,11 +1473,16 @@ public class Files.Window : Gtk.ApplicationWindow {
         if (current_container == null) {
             top_menu.update_path_bar (uri);
             sidebar.sync_uri (uri);
-        } else {
-            top_menu.update_path_bar (current_container.uri);
-            sidebar.sync_uri (current_container.uri);
+            return;
         }
 
+        top_menu.update_path_bar (current_container.uri);
+        sidebar.sync_uri (current_container.uri);
+
+        if (current_container.tab_name == null) {
+            // Wait until container finished setting up and loading
+            return;
+        }
 
         set_title (current_container.tab_name); /* Not actually visible on elementaryos */
         /* Update browser buttons */

@@ -94,7 +94,6 @@ warning ("GridView destruct");
         var item_factory = new Gtk.SignalListItemFactory ();
         grid_view = new Gtk.GridView (multi_selection, item_factory) {
             orientation = Gtk.Orientation.VERTICAL,
-            // max_columns = 20,
             enable_rubberband = true
         };
         scrolled_window = new Gtk.ScrolledWindow () {

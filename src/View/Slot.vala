@@ -53,7 +53,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
             mode: _mode,
             orientation: Gtk.Orientation.VERTICAL,
             vexpand: true,
-            hexpand: true
+            hexpand: _mode != ViewMode.MULTICOLUMN
         );
 
         set_up_directory (_location ?? GLib.File.new_for_commandline_arg (Environment.get_home_dir ()));
@@ -87,7 +87,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
                 break;
             case ViewMode.MULTICOLUMN:
                 var gv = new Files.GridView (this);
-                // gv.grid_view.max_columns = 1;
+                gv.grid_view.max_columns = 1;
                 view_widget = gv;
                 break;
 
@@ -260,22 +260,23 @@ public class Files.Slot : Gtk.Box, SlotInterface {
             empty_label.label = get_empty_message ();
             if (empty_label.parent == null) {
                 overlay.add_overlay (empty_label);
+                overlay.set_measure_overlay (empty_label, true); //Expand column to accomodate label
             }
         } else {
             if (empty_label.parent == overlay) {
                 overlay.remove_overlay (empty_label);
             }
         }
-        /*  Column View requires slots to determine their own width (other views' width determined by Window */
-        if (mode == ViewMode.MULTICOLUMN) {
-            if (directory.is_empty ()) { /* No files in the file cache */
-                int min, nat;
-                empty_label.measure (Gtk.Orientation.HORIZONTAL, 100, out min, out nat, null, null);
-                width = nat + 48;
-            } else {
-                width = preferred_column_width;
-            }
-        }
+        // /*  Column View requires slots to determine their own width (other views' width determined by Window */
+        // if (mode == ViewMode.MULTICOLUMN) {
+        //     if (directory.is_empty ()) { /* No files in the file cache */
+        //         int min, nat;
+        //         empty_label.measure (Gtk.Orientation.HORIZONTAL, 100, out min, out nat, null, null);
+        //         width = nat + 48;
+        //     } else {
+        //         width = preferred_column_width;
+        //     }
+        // }
 
         return true;
     }
