@@ -71,6 +71,7 @@ public class Files.MultiSlot : Gtk.Box {
         };
         viewport.add_controller (key_controller);
         key_controller.key_pressed.connect (on_key_pressed);
+
         (Files.Preferences.get_default ()).notify["show-hidden-files"].connect ((s, p) => {
             show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
         });
@@ -233,6 +234,10 @@ public class Files.MultiSlot : Gtk.Box {
         Gdk.ModifierType state
     ) requires (current_slot != null) {
 
+        //Only handle keys in MULTICOLUMN mode
+        if (view_mode != ViewMode.MULTICOLUMN) {
+            return false;
+        }
         /* Only handle unmodified keys */
         if ((state & Gtk.accelerator_get_default_mod_mask ()) > 0) {
             return false;
