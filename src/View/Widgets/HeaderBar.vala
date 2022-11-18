@@ -57,6 +57,7 @@ public class Files.HeaderBar : Object {
     construct {
         headerbar = new Adw.HeaderBar () {
             hexpand = true,
+            focusable = false
         };
         headerbar.set_centering_policy (Adw.CenteringPolicy.LOOSE);
 

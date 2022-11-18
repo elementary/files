@@ -868,9 +868,8 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_focus_view () {
-warning ("action focus view");
-        if (current_view_widget != null) {
-            // current_view_widget.grab_focus ();
+        if (current_container != null) {
+            current_container.grab_focus ();
             top_menu.path_bar.mode = PathBarMode.CRUMBS;
         }
     }

@@ -95,11 +95,12 @@ warning ("GridView destruct");
         grid_view = new Gtk.GridView (multi_selection, item_factory) {
             orientation = Gtk.Orientation.VERTICAL,
             enable_rubberband = true,
-            can_focus = true
+            focusable = true
         };
         scrolled_window = new Gtk.ScrolledWindow () {
             hexpand = true,
-            hscrollbar_policy = Gtk.PolicyType.NEVER
+            hscrollbar_policy = Gtk.PolicyType.NEVER,
+            focusable = false
         };
         scrolled_window.child = grid_view;
         scrolled_window.set_parent (this);
@@ -253,24 +254,23 @@ warning ("grid_view.grab_focus");
         return (ZoomLevel)zoom;
     }
 
-    private bool focus_item (uint pos) {
+    private void focus_item (uint pos) {
         foreach (var item in fileitem_list) {
             if (item.pos == pos) {
-                return item.grab_focus ();
+                item.grab_focus ();
             }
         }
-
-        return false;
     }
 
-    private bool focus_appropriate_item () {
+    private void focus_appropriate_item () {
         var item = get_selected_file_item ();
         if (item != null) {
-            return item.grab_focus ();
+            item.grab_focus ();
         } else if (list_store.get_n_items () > 0) {
-            return focus_item (0);
+            focus_item (0);
         } else {
-            return grid_view.grab_focus ();
+warning ("focus appropriate:  grid view grab focus");
+            grid_view.grab_focus ();
         }
     }
 

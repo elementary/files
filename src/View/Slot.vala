@@ -76,8 +76,9 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         empty_label = new Gtk.Label ("") {
             halign = Gtk.Align.CENTER,
             valign = Gtk.Align.CENTER,
-            can_focus = true,
-            selectable = true
+            focusable = false,
+            margin_start = 48,
+            margin_end = 48
         };
         empty_label.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
         switch (mode) {
@@ -269,16 +270,6 @@ public class Files.Slot : Gtk.Box, SlotInterface {
                 overlay.remove_overlay (empty_label);
             }
         }
-        // /*  Column View requires slots to determine their own width (other views' width determined by Window */
-        // if (mode == ViewMode.MULTICOLUMN) {
-        //     if (directory.is_empty ()) { /* No files in the file cache */
-        //         int min, nat;
-        //         empty_label.measure (Gtk.Orientation.HORIZONTAL, 100, out min, out nat, null, null);
-        //         width = nat + 48;
-        //     } else {
-        //         width = preferred_column_width;
-        //     }
-        // }
 
         return true;
     }
@@ -347,9 +338,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     public void grab_focus () {
-warning ("SLOT %s try focus", directory.file.uri);
         if (view_widget != null) {
-// warning ("SLOT %s grab focus directory empty %s", directory.file.uri, directory.is_empty ().to_string ());
             view_widget.grab_focus ();
         }
     }

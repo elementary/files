@@ -91,7 +91,8 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             var scrolled_window = new Gtk.ScrolledWindow () {
                 hscrollbar_policy = Gtk.PolicyType.EXTERNAL,
                 vscrollbar_policy = Gtk.PolicyType.NEVER,
-                hexpand = true
+                hexpand = true,
+                focusable = false
             };
             var hadj = new Gtk.Adjustment (0.0, 0.0, 100.0, 1.0, 1.0 , 1.0);
             hadj.changed.connect (() => {

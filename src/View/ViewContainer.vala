@@ -256,6 +256,7 @@ public class Files.ViewContainer : Gtk.Box {
                 browser.record_uri (null);
             }
 
+            grab_focus ();
             multi_slot.update_total_width ();
         });
 
@@ -391,7 +392,6 @@ public class Files.ViewContainer : Gtk.Box {
     }
 
     public new void grab_focus () {
-        // is_frozen = false;
         if (slot != null && can_show_folder) {
             slot.grab_focus ();
         } else if (content != null) {

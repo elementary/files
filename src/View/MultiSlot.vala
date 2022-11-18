@@ -238,10 +238,11 @@ public class Files.MultiSlot : Gtk.Box {
         Slot to_activate = null;
         switch (keyval) {
             case Gdk.Key.Left:
-warning ("key LEFT");
                 if (parent_host is Gtk.Viewport) {
+                    return false;
                 } else {
                     current_slot = (((Slot)((Gtk.Paned)parent_host).start_child));
+                    // return true;
                 }
 
                 break;
@@ -249,7 +250,7 @@ warning ("key LEFT");
             case Gdk.Key.Right:
                 var selected_files = current_slot.get_selected_files ();
                 if (selected_files == null) {
-                    return true;
+                    return false;
                 }
 
                 var selected_file = selected_files.first ().data;
@@ -264,7 +265,6 @@ warning ("key LEFT");
                     activate_action ("win.path-change-request", "(su)", next_location.get_uri (), OpenFlag.DEFAULT);
                 } else if (selected_file.is_folder ()) {
                     activate_action ("win.path-change-request", "(su)", selected_file.uri, OpenFlag.DEFAULT);
-                    return true;
                 }
 
                 break;
