@@ -1526,6 +1526,10 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     public void uri_path_change_request (string p, Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
         /* Make a sanitized file from the uri */
+        if (p == "") {
+            return;
+        }
+
         var file = get_file_from_uri (p);
         if (file != null) {
             switch (flag) {

@@ -122,11 +122,12 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
     private void truncate_list_after_host (Gtk.Paned host) {
-        var to_unparent = host.end_child;
-        while (to_unparent.get_last_child () != null) {
-            to_unparent.get_last_child ().unparent ();
+        if (host == null || host.end_child == null) {
+            return;
         }
-        to_unparent.unparent ();
+
+        //TODO Memory leak?
+        host.end_child = null;
     }
 
     public void update_total_width () {
