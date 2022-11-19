@@ -19,7 +19,19 @@
 public class Files.MultiSlot : Gtk.Box {
     public Gtk.Overlay overlay { get; construct; }
     public ViewContainer ctab { get; construct; }
-    public GLib.File root_location { get; set construct; }
+    public GLib.File? root_location {
+        get {
+            var first_host = viewport.child;
+            if (first_host != null) {
+                var first_slot = (Slot)(((Gtk.Paned)(first_host)).start_child);
+                if (first_slot != null) {
+                    return first_slot.directory.file.location;
+                }
+            }
+
+            return null;
+        }
+    }
     public ViewMode view_mode { get; set; }
     /* Need private copy of initial location as MultiSlot
      * does not have its own Asyncdirectory object */
@@ -78,7 +90,8 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
     /** Creates a new slot in the last slot hpane */
-    public void add_location (GLib.File? loc) {
+    public Slot add_location (GLib.File? loc) {
+        warning ("add_location %s", loc.get_uri ());
         // Always create new Slot rather than navigate for simplicity.
         //TODO Check for performance/memory leak
         var guest = new Slot (loc, view_mode);
@@ -110,6 +123,7 @@ public class Files.MultiSlot : Gtk.Box {
 
         current_slot = guest;
         update_total_width ();
+        return guest;
     }
 
     private Gtk.Paned? get_host_for_loc (GLib.File file) {
@@ -136,6 +150,8 @@ public class Files.MultiSlot : Gtk.Box {
         while (viewport.get_last_child () != null) {
             viewport.get_last_child ().unparent ();
         }
+
+        current_slot = null;
     }
 
     private void truncate_list_after_host (Gtk.Paned host) {
@@ -144,7 +160,10 @@ public class Files.MultiSlot : Gtk.Box {
         }
 
         //TODO Memory leak?
+        host.end_child.destroy ();
         host.end_child = null;
+
+        //Calling function must end up setting the end child and current_slot
     }
 
     public void update_total_width () {
@@ -188,15 +207,6 @@ public class Files.MultiSlot : Gtk.Box {
             }
         }
     }
-
-    // public void set_current_slot (Slot slot) {
-    //     current_slot = slot;  //TODO Anything else needed?
-    //     current_slot.grab_focus ();
-    // }
-
-    // public unowned Slot? get_current_slot () {
-    //     return current_slot;  //TODO Anything else needed?
-    // }
 
     private void show_hidden_files_changed (bool show_hidden) {
         if (show_hidden) {
@@ -331,5 +341,33 @@ public class Files.MultiSlot : Gtk.Box {
         }
 
         return null;
+    }
+
+    public async void set_tip_uri (string tip_uri) {
+        var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri, null);
+        if (unescaped_tip_uri == null) {
+            warning ("Invalid tip uri for Miller View");
+            return;
+        }
+
+        var tip_location = FileUtils.get_file_for_path (unescaped_tip_uri);
+        // var root_location = FileUtils.get_file_for_path (unescaped_root_uri);
+warning ("root location %s", root_location.get_uri ());
+        var relative_path = root_location.get_relative_path (tip_location);
+        GLib.File gfile;
+
+        if (relative_path != null) {
+            string [] dirs = relative_path.split (GLib.Path.DIR_SEPARATOR_S);
+            string uri = root_location.get_uri ();
+
+            foreach (string dir in dirs) {
+                uri += (GLib.Path.DIR_SEPARATOR_S + dir);
+                gfile = GLib.File.new_for_uri (FileUtils.escape_uri (uri));
+                var added_slot = add_location (gfile);
+                yield added_slot.initialize_directory ();
+            }
+        } else {
+            warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);
+        }
     }
 }

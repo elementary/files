@@ -357,16 +357,16 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
     }
 
-    private void add_tab_by_uri (string uri, ViewMode mode = ViewMode.PREFERRED) {
+    private ViewContainer? add_tab_by_uri (string uri, ViewMode mode = ViewMode.PREFERRED) {
         var file = get_file_from_uri (uri);
         if (file != null) {
-            add_tab (file, mode);
+            return add_tab (file, mode);
         } else {
-            add_tab ();
+            return add_tab ();
         }
     }
 
-    private void add_tab (
+    private ViewContainer? add_tab (
         GLib.File _location = GLib.File.new_for_commandline_arg (Environment.get_home_dir ()),
         ViewMode mode = ViewMode.PREFERRED,
         bool ignore_duplicate = false
@@ -394,7 +394,7 @@ public class Files.Window : Gtk.ApplicationWindow {
                     current_container.focus_location_if_in_current_directory (location);
                 }
 
-                return;
+                return null;
             }
         }
 
@@ -440,6 +440,8 @@ public class Files.Window : Gtk.ApplicationWindow {
         } else {
             content.set_location_and_mode (mode, location);
         }
+
+        return content;
     }
 
     private int location_is_duplicate (GLib.File location, out bool is_child) {
@@ -1367,7 +1369,9 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     public uint restore_tabs () {
         /* Do not restore tabs if history off nor more than once */
-        if (!Files.Preferences.get_default ().remember_history || tabs_restored || !is_first_window) { //TODO Restore all windows
+        if (!Files.Preferences.get_default ().remember_history ||
+            tabs_restored ||
+            !is_first_window) { //TODO Restore all windows?
             return 0;
         } else {
             tabs_restored = true;
@@ -1385,7 +1389,6 @@ public class Files.Window : Gtk.ApplicationWindow {
         restoring_tabs = 0;
 
         while (iter.next ("(uss)", out mode, out root_uri, out tip_uri)) {
-
             if (mode < 0 || mode >= ViewMode.INVALID ||
                 root_uri == null || root_uri == "" || tip_uri == null) {
 
@@ -1399,10 +1402,14 @@ public class Files.Window : Gtk.ApplicationWindow {
              */
 
             restoring_tabs++;
-            add_tab_by_uri (root_uri, mode);
+            var container = add_tab_by_uri (root_uri, mode);
 
-            if (mode == ViewMode.MULTICOLUMN && tip_uri != root_uri) {
-                // expand_miller_view (tip_uri, root_uri);
+            if (container != null && tip_uri != null && tip_uri != root_uri) {
+                var tip = tip_uri; //Take local copy else will be overwritten
+                Idle.add (() => { //Wait for initial view to complete construction
+                    container.set_tip_uri (tip);
+                    return Source.REMOVE;
+                });
             }
 
             mode = ViewMode.ICON;
@@ -1441,36 +1448,6 @@ public class Files.Window : Gtk.ApplicationWindow {
         return restoring_tabs;
     }
 
-    // private void expand_miller_view (string tip_uri, string unescaped_root_uri) {
-    //     /* It might be more elegant for Miller.vala to handle this */
-    //     var mwcols = (Miller)(current_container.view) ;
-    //     var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri);
-
-    //     if (unescaped_tip_uri == null) {
-    //         warning ("Invalid tip uri for Miller View");
-    //         return;
-    //     }
-
-    //     var tip_location = FileUtils.get_file_for_path (unescaped_tip_uri);
-    //     var root_location = FileUtils.get_file_for_path (unescaped_root_uri);
-    //     var relative_path = root_location.get_relative_path (tip_location);
-    //     GLib.File gfile;
-
-    //     if (relative_path != null) {
-    //         string [] dirs = relative_path.split (GLib.Path.DIR_SEPARATOR_S);
-    //         string uri = root_location.get_uri ();
-
-    //         foreach (string dir in dirs) {
-    //             uri += (GLib.Path.DIR_SEPARATOR_S + dir);
-    //             gfile = get_file_from_uri (uri);
-
-    //             mwcols.add_location (gfile, mwcols.current_slot); // MillerView can deal with multiple scroll requests
-    //         }
-    //     } else {
-    //         warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);
-    //     }
-    // }
-
     private void update_top_menu (string? uri = null) {
         if (restoring_tabs > 0 || (current_container == null && uri == null)) {
             return;
@@ -1504,14 +1481,6 @@ public class Files.Window : Gtk.ApplicationWindow {
         get_action ("view-mode").change_state (new Variant.uint32 (mode));
         Files.app_settings.set_enum ("default-viewmode", mode);
     }
-
-    // private void update_labels (string uri) {
-    //     if (current_container != null) { /* Can happen during restore */
-    //         set_title (current_container.tab_name); /* Not actually visible on elementaryos */
-    //         top_menu.update_path_bar (uri);
-    //         sidebar.sync_uri (uri);
-    //     }
-    // }
 
     public void mount_removed (Mount mount) {
         debug ("Mount %s removed", mount.get_name ());

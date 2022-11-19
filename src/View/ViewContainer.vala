@@ -160,7 +160,7 @@ public class Files.ViewContainer : Gtk.Box {
             multi_slot.view_mode = mode;
         }
 
-        multi_slot.add_location (loc ?? current_location);
+        var added_slot = multi_slot.add_location (loc ?? current_location);
         //TODO Move overlaybar to Window
         overlay_statusbar.cancel ();
         overlay_statusbar.halign = Gtk.Align.END;
@@ -186,14 +186,14 @@ public class Files.ViewContainer : Gtk.Box {
         activate_action ("selection-changing", null);
         activate_action ("win.loading-uri", "s", location.get_uri ());
 
-        slot.initialize_directory.begin ((obj, res) => {
+        added_slot.initialize_directory.begin ((obj, res) => {
             activate_action ("win.loading-finished", null);
-            if (!slot.initialize_directory.end (res)) {
+            if (!added_slot.initialize_directory.end (res)) {
                 return;
             }
 
             multi_slot.update_total_width ();
-            var dir = slot.directory;
+            var dir = added_slot.directory;
             can_show_folder = dir.can_load;
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
@@ -201,44 +201,60 @@ public class Files.ViewContainer : Gtk.Box {
                     content = new PrivacyModeOn (this);
                 } else if (!dir.file.exists) {
                     if (!dir.is_trash) {
-                        content = new DirectoryNotFound (slot.directory, this);
+                        content = new DirectoryNotFound (dir, this);
                     } else {
-                        content = new Welcome (_("This Folder Does Not Exist"),
-                                                    _("You cannot create a folder here."));
+                        content = new Welcome (
+                            _("This Folder Does Not Exist"),
+                            _("You cannot create a folder here.")
+                        );
                     }
                 } else if (!dir.network_available) {
-                    content = new Welcome (_("The network is unavailable"),
-                                                _("A working network is needed to reach this folder") + "\n\n" +
-                                                dir.last_error_message);
+                    content = new Welcome (
+                        _("The network is unavailable"),
+                        _("A working network is needed to reach this folder") +
+                        "\n\n" +
+                        dir.last_error_message);
                 } else if (dir.permission_denied) {
-                    content = new Welcome (_("This Folder Does Not Belong to You"),
-                                                _("You don't have permission to view this folder."));
+                    content = new Welcome (
+                        _("This Folder Does Not Belong to You"),
+                        _("You don't have permission to view this folder.")
+                    );
                 } else if (!dir.file.is_connected) {
-                    content = new Welcome (_("Unable to Mount Folder"),
-                                                _("Could not connect to the server for this folder.") + "\n\n" +
-                                                dir.last_error_message);
-                } else if (slot.directory.state == Directory.State.TIMED_OUT) {
-                    content = new Welcome (_("Unable to Display Folder Contents"),
-                                                _("The operation timed out.") + "\n\n" + dir.last_error_message);
+                    content = new Welcome (
+                        _("Unable to Mount Folder"),
+                        _("Could not connect to the server for this folder.") +
+                        "\n\n" +
+                        dir.last_error_message
+                    );
+                } else if (added_slot.directory.state == Directory.State.TIMED_OUT) {
+                    content = new Welcome (
+                        _("Unable to Display Folder Contents"),
+                        _("The operation timed out.") + "\n\n" + dir.last_error_message
+                    );
                 } else {
-                    content = new Welcome (_("Unable to Show Folder"),
-                                                _("The server for this folder could not be located.") + "\n\n" +
-                                                dir.last_error_message);
+                    content = new Welcome (
+                        _("Unable to Show Folder"),
+                        _("The server for this folder could not be located.") +
+                        "\n\n" +
+                        dir.last_error_message
+                    );
                 }
             /* Now deal with cases where file (s) within the loaded folder has to be selected */
             } else if (selected_locations != null) {
-                slot.select_glib_files (selected_locations, selected_locations.first ().data);
+                added_slot.select_glib_files (selected_locations, selected_locations.first ().data);
                 selected_locations = null;
             } else if (dir.selected_file != null) {
                 if (dir.selected_file.query_exists ()) {
                     focus_location_if_in_current_directory (dir.selected_file);
                 } else {
-                    content = new Welcome (_("File not Found"),
-                                                _("The file selected no longer exists."));
+                    content = new Welcome (
+                        _("File not Found"),
+                        _("The file selected no longer exists.")
+                    );
                     can_show_folder = false;
                 }
             } else {
-                slot.show_first_item ();
+                added_slot.show_first_item ();
             }
 
             if (can_show_folder) {
@@ -256,12 +272,16 @@ public class Files.ViewContainer : Gtk.Box {
                 browser.record_uri (null);
             }
 
-            grab_focus ();
             multi_slot.update_total_width ();
         });
+    }
 
-        // set_active_state (true);
-        // multi_slot.current_slot(slot);
+    public void set_tip_uri (string tip_uri) {
+        activate_action ("win.loading-uri", "s", tip_uri);
+        multi_slot.set_tip_uri.begin (tip_uri, (obj, res) => {
+            multi_slot.set_tip_uri.end (res);
+            activate_action ("win.loading-finished", null);
+        });
     }
 
     public void close () {
