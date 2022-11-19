@@ -252,7 +252,6 @@ public class Files.MultiSlot : Gtk.Box {
                     return false;
                 } else {
                     current_slot = (((Slot)((Gtk.Paned)parent_host).start_child));
-                    // return true;
                 }
 
                 break;
@@ -285,7 +284,12 @@ public class Files.MultiSlot : Gtk.Box {
 
             case Gdk.Key.BackSpace:
                     if (!(parent_host is Gtk.Viewport)) {
-                        truncate_list_after_host ((Gtk.Paned)parent_host);
+                        var host = (Gtk.Paned)parent_host;
+                        truncate_list_after_host (host);
+                        host.end_child = new Gtk.Label ("") {
+                            hexpand = false
+                        };
+                        current_slot = (Slot)(host.start_child);
                     }
 
                 break;
