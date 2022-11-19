@@ -48,7 +48,9 @@ public class Files.MultiSlot : Gtk.Box {
 
         set {
             _current_slot = value;
-            current_slot.grab_focus ();
+            if (value != null) {
+                current_slot.grab_focus ();
+            }
         }
     }
 
@@ -91,7 +93,6 @@ public class Files.MultiSlot : Gtk.Box {
 
     /** Creates a new slot in the last slot hpane */
     public Slot add_location (GLib.File? loc) {
-        warning ("add_location %s", loc.get_uri ());
         // Always create new Slot rather than navigate for simplicity.
         //TODO Check for performance/memory leak
         var guest = new Slot (loc, view_mode);
@@ -352,7 +353,6 @@ public class Files.MultiSlot : Gtk.Box {
 
         var tip_location = FileUtils.get_file_for_path (unescaped_tip_uri);
         // var root_location = FileUtils.get_file_for_path (unescaped_root_uri);
-warning ("root location %s", root_location.get_uri ());
         var relative_path = root_location.get_relative_path (tip_location);
         GLib.File gfile;
 

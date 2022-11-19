@@ -288,7 +288,11 @@ public class Files.Window : Gtk.ApplicationWindow {
         Files.app_settings.get ("window-size", "(ii)", out width, out height);
         default_width = width;
         default_height = height;
-        // loading_uri.connect (update_labels);
+
+        close_request.connect (() => {
+            quit ();
+            return false;
+        });
         present ();
     }
 
@@ -862,7 +866,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_quit (GLib.SimpleAction action, GLib.Variant? param) {
-        ((Files.Application)(application)).quit ();
+        close_request ();
     }
 
     private void action_reload () {
