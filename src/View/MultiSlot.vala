@@ -85,7 +85,7 @@ public class Files.MultiSlot : Gtk.Box {
         var hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
         hpaned.start_child = guest;
         if (view_mode == ViewMode.MULTICOLUMN) {
-            hpaned.end_child = new Gtk.Label ("Test") {
+            hpaned.end_child = new Gtk.Label ("") {
                 hexpand = false
             };
         }

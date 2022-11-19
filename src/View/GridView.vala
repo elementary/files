@@ -165,7 +165,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = new GridFileItem (this);
-            // var file_item = new GridFileItem (this);
             fileitem_list.prepend (file_item);
             bind_property (
                 "zoom-level",

@@ -74,28 +74,57 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     }
 
     construct {
+        var is_multicolumn = view.slot.view_mode == ViewMode.MULTICOLUMN;
         var lm = new Gtk.BoxLayout (
-            view.slot.view_mode == ViewMode.MULTICOLUMN ?
-            Gtk.Orientation.HORIZONTAL :
-            Gtk.Orientation.VERTICAL
+            is_multicolumn ? Gtk.Orientation.HORIZONTAL : Gtk.Orientation.VERTICAL
         );
         set_layout_manager (lm);
         can_target = true;
         get_style_context ().add_provider (
             fileitem_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         );
-
-        if (view.slot.view_mode == ViewMode.ICON) {
+        if (is_multicolumn) {
             file_icon = new Gtk.Image () {
                 margin_end = 8,
                 margin_start = 8,
+                valign = Gtk.Align.CENTER,
                 icon_name = "image-missing" // Shouldnt see this
+            };
+            label = new Gtk.Label ("Unbound") {
+                wrap = false,
+                ellipsize = Pango.EllipsizeMode.END,
+                lines = 1,
+                // margin_top = 3,
+                // margin_bottom = 3,
+                margin_start = 3,
+                margin_end = 3,
+            };
+            emblem_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
+                halign = Gtk.Align.END,
+                valign = Gtk.Align.CENTER,
+                hexpand = true
             };
         } else {
             file_icon = new Gtk.Image () {
                 margin_end = 8,
                 margin_start = 16,
+                halign = Gtk.Align.CENTER,
                 icon_name = "image-missing" // Shouldnt see this
+            };
+            label = new Gtk.Label ("Unbound") {
+                wrap = true,
+                wrap_mode = Pango.WrapMode.WORD_CHAR,
+                ellipsize = Pango.EllipsizeMode.END,
+                lines = 5,
+                margin_start = 3,
+                margin_end = 3,
+                margin_top = 3,
+                margin_bottom = 3,
+            };
+            emblem_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
+                halign = Gtk.Align.END,
+                valign = Gtk.Align.END,
+                vexpand = true
             };
         }
 
@@ -105,14 +134,13 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             halign = Gtk.Align.START,
             valign = Gtk.Align.START
         };
-
         selection_helper.set_css_name ("selection-helper");
 
+        icon_overlay = new Gtk.Overlay ();
+        icon_overlay.child = file_icon;
+        icon_overlay.add_overlay (selection_helper);
+
         emblems = new Gtk.Image[4];
-        emblem_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
-            halign = Gtk.Align.END,
-            valign = Gtk.Align.END
-        };
         for (int i = 0; i < 4; i++) {
             emblems[i] = new Gtk.Image () {
                 pixel_size = 16,
@@ -121,40 +149,13 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             emblem_box.prepend (emblems[i]);
         }
 
-        // Spread grid items out a little more than native GridView
-        icon_overlay = new Gtk.Overlay () {
-            // margin_start = 12,
-            // margin_end = 12,
-            // margin_bottom = 8
-        };
-        icon_overlay.child = file_icon;
-        icon_overlay.add_overlay (selection_helper);
-        icon_overlay.add_overlay (emblem_box);
         icon_overlay.set_parent (this);
-
-        if (view.slot.view_mode == ViewMode.ICON) {
-            label = new Gtk.Label ("Unbound") {
-                wrap = true,
-                wrap_mode = Pango.WrapMode.WORD_CHAR,
-                ellipsize = Pango.EllipsizeMode.END,
-                lines = 5,
-                margin_top = 3,
-                margin_bottom = 3,
-                margin_start = 3,
-                margin_end = 3,
-            };
-        } else {
-            label = new Gtk.Label ("Unbound") {
-                wrap = false,
-                ellipsize = Pango.EllipsizeMode.END,
-                lines = 1,
-                margin_top = 3,
-                margin_bottom = 3,
-                // margin_start = 3,
-                // margin_end = 3,
-            };
-        }
         label.set_parent (this);
+        if (is_multicolumn) {
+            emblem_box.set_parent (this);
+        } else {
+            icon_overlay.add_overlay (emblem_box);
+        }
 
         Thumbnailer.@get ().finished.connect (handle_thumbnailer_finished);
 
