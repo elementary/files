@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-14 16:32+0000\n"
-"PO-Revision-Date: 2022-11-17 20:09+0000\n"
+"PO-Revision-Date: 2022-11-23 10:41+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
 "\n"
@@ -150,39 +150,36 @@ msgstr "修正点:"
 
 #: data/io.elementary.files.appdata.xml.in.in:51
 msgid "Fix unexpected file activation after navigation with double-click"
-msgstr ""
+msgstr "ダブルクリックでフォルダを開くと、意図せずフォルダ内のファイルも開かれてしま"
+"う不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:52
-#, fuzzy
-#| msgid "Add file filters and New Folder options to file chooser portal"
 msgid "Fix dimmed window after use of filechooser portal"
-msgstr ""
-"ファイル選択ポータルにファイルの種類を絞ったり新しいフォルダーを作成したりで"
-"きるオプションを追加"
+msgstr "ファイル選択ポータル使用後、ウィンドウが薄暗く表示される不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:53
 msgid "Fix possible crash when rapidly changing view modes"
-msgstr ""
+msgstr "表示モードを頻繁に切り替えるとクラッシュすることがある不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:54
 msgid "Fix startup when restored remote location is no longer connected"
-msgstr ""
+msgstr "最後に開いていたのが切断済みのネットワーク上の場所だった場合のアプリ起動後の"
+"状態を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:55
 msgid ""
 "Ensure infobar shows in connection server dialog when connection attempt "
 "fails"
-msgstr ""
+msgstr "“サーバーを接続”ダイアログ: 接続失敗時に情報バーが表示されるように修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:56
 msgid "Ensure correct icon for bookmark to a file that is not a folder"
-msgstr ""
+msgstr "ブックマークがフォルダーではなくファイルの場合に正しいアイコンが表示されるよ"
+"うに修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:57
-#, fuzzy
-#| msgid "Fix a crash when restoring items from the Trash"
 msgid "Fix possible crash when removing a bookmark"
-msgstr "ゴミ箱からアイテムを復元する際にクラッシュする不具合を修正"
+msgstr "ブックマーク削除時にクラッシュすることがある不具合を修正"
 
 #: data/io.elementary.files.appdata.xml.in.in:69
 msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
