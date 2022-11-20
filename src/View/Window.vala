@@ -347,8 +347,15 @@ public class Files.Window : Gtk.ApplicationWindow {
                 restore_tabs () < 1) {
 
                 /* Open a tab pointing at the default location if no tabs restored*/
-                var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
-                add_tab (location, mode);
+                // var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
+                add_tab ();
+                set_current_location_and_mode (
+                    mode,
+                    GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
+                    OpenFlag.DEFAULT
+                );
+                // new_container.set_location_and_mode (mode, location);
+                // add_tab (location, mode);
                 // /* Ensure default tab's slot is active so it can be focused */
                 // current_container.set_active_state (true, false);
             }
@@ -356,53 +363,58 @@ public class Files.Window : Gtk.ApplicationWindow {
             /* Open tabs at each requested location */
             /* As files may be derived from commandline, we use a new sanitized one */
             foreach (var file in files) {
-                add_tab (get_file_from_uri (file.get_uri ()), mode, ignore_duplicate);
+                add_tab ();
+                set_current_location_and_mode (mode, file, OpenFlag.DEFAULT);
+                // add_tab (get_file_from_uri (file.get_uri ()), mode, ignore_duplicate);
             }
         }
     }
 
-    private ViewContainer? add_tab_by_uri (string uri, ViewMode mode = ViewMode.PREFERRED) {
-        var file = get_file_from_uri (uri);
-        if (file != null) {
-            return add_tab (file, mode);
-        } else {
-            return add_tab ();
-        }
-    }
+    // private ViewContainer? add_tab_by_uri (string uri, ViewMode mode = ViewMode.PREFERRED) {
+    //     var file = get_file_from_uri (uri);
+    //     if (file != null) {
+    //         return add_tab (file, mode);
+    //     } else {
+    //         return add_tab ();
+    //     }
+    // }
 
-    private ViewContainer? add_tab (
-        GLib.File _location = GLib.File.new_for_commandline_arg (Environment.get_home_dir ()),
-        ViewMode mode = ViewMode.PREFERRED,
-        bool ignore_duplicate = false
-    ) {
+    // private ViewContainer? add_tab (
+    //     GLib.File _location = GLib.File.new_for_commandline_arg (Environment.get_home_dir ()),
+    //     ViewMode mode = ViewMode.PREFERRED,
+    //     bool ignore_duplicate = false
+    // ) {
+    private ViewContainer? add_tab () {
 
-        GLib.File location;
+
+warning ("add tab");
+        // GLib.File location;
         // For simplicity we do not use cancellable. If issues arise may need to do this.
-        var ftype = _location.query_file_type (FileQueryInfoFlags.NONE, null);
+        // var ftype = _location.query_file_type (FileQueryInfoFlags.NONE, null);
 
-        if (ftype == FileType.REGULAR) {
-            location = _location.get_parent ();
-        } else {
-            location = _location.dup ();
-        }
+        // if (ftype == FileType.REGULAR) {
+        //     location = _location.get_parent ();
+        // } else {
+        //     location = _location.dup ();
+        // }
 
-        if (ignore_duplicate) {
-            bool is_child;
-            var existing_tab_position = location_is_duplicate (location, out is_child);
-            if (existing_tab_position >= 0) {
-                tab_view.selected_page = tab_view.get_nth_page (existing_tab_position);
-                change_tab (existing_tab_position);
+        // if (ignore_duplicate) {
+        //     bool is_child;
+        //     var existing_tab_position = location_is_duplicate (location, out is_child);
+        //     if (existing_tab_position >= 0) {
+        //         tab_view.selected_page = tab_view.get_nth_page (existing_tab_position);
+        //         change_tab (existing_tab_position);
 
-                if (is_child) {
-                    /* Select the child  */
-                    current_container.focus_location_if_in_current_directory (location);
-                }
+        //         if (is_child) {
+        //             /* Select the child  */
+        //             current_container.focus_location_if_in_current_directory (location);
+        //         }
 
-                return null;
-            }
-        }
+        //         return null;
+        //     }
+        // }
 
-        mode = real_mode (mode);
+        // mode = real_mode (mode);
         var content = new ViewContainer ();
         var tab = tab_view.append (content);
         tab_view.selected_page = tab;
@@ -439,11 +451,11 @@ public class Files.Window : Gtk.ApplicationWindow {
         //     update_top_menu ();
         // });
 
-        if (!location.equal (_location)) {
-            content.set_location_and_mode (mode, location, {_location});
-        } else {
-            content.set_location_and_mode (mode, location);
-        }
+        // if (!location.equal (_location)) {
+        //     content.set_location_and_mode (mode, location, {_location});
+        // } else {
+        //     content.set_location_and_mode (mode, location);
+        // }
 
         return content;
     }
@@ -892,7 +904,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
 
         var mode = real_mode ((ViewMode)(param.get_uint32 ()));
-        current_container.set_location_and_mode (mode);
+        set_current_location_and_mode (mode, current_container.location, OpenFlag.DEFAULT);
         /* ViewContainer takes care of changing appearance */
     }
 
@@ -905,25 +917,26 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
+warning ("Action go to");
         switch (param.get_string ()) {
             case "RECENT":
-                uri_path_change_request (Files.RECENT_URI);
+                uri_path_change_request (Files.RECENT_URI, OpenFlag.DEFAULT);
                 break;
 
             case "HOME":
-                uri_path_change_request ("file://" + PF.UserUtils.get_real_user_home ());
+                uri_path_change_request ("file://" + PF.UserUtils.get_real_user_home (), OpenFlag.DEFAULT);
                 break;
 
             case "TRASH":
-                uri_path_change_request (Files.TRASH_URI);
+                uri_path_change_request (Files.TRASH_URI, OpenFlag.DEFAULT);
                 break;
 
             case "ROOT":
-                uri_path_change_request (Files.ROOT_FS_URI);
+                uri_path_change_request (Files.ROOT_FS_URI, OpenFlag.DEFAULT);
                 break;
 
             case "NETWORK":
-                uri_path_change_request (Files.NETWORK_URI);
+                uri_path_change_request (Files.NETWORK_URI, OpenFlag.DEFAULT);
                 break;
 
             case "SERVER":
@@ -943,7 +956,7 @@ public class Files.Window : Gtk.ApplicationWindow {
                 break;
 
             default:
-                uri_path_change_request (param.get_string ());
+                uri_path_change_request (param.get_string (), OpenFlag.DEFAULT);
                 break;
         }
     }
@@ -973,7 +986,13 @@ public class Files.Window : Gtk.ApplicationWindow {
     private void action_tab (GLib.SimpleAction action, GLib.Variant? param) {
         switch (param.get_string ()) {
             case "NEW":
+                //TODO DRY adding default tab
                 add_tab ();
+                set_current_location_and_mode (
+                    ViewMode.PREFERRED,
+                    GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
+                    OpenFlag.DEFAULT
+                );
                 break;
 
             case "CLOSE":
@@ -989,7 +1008,11 @@ public class Files.Window : Gtk.ApplicationWindow {
                 break;
 
             case "DUP":
-                add_tab (current_container.location, current_container.view_mode);
+                var current_location = current_container.location;
+                var current_mode = current_container.view_mode;
+                add_tab ();
+                set_current_location_and_mode (current_mode, current_container.location, OpenFlag.DEFAULT);
+                // add_tab (current_container.location, current_container.view_mode);
                 break;
 
             case "WINDOW": // Move tab to new window
@@ -1161,6 +1184,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_path_change_request (GLib.SimpleAction action, GLib.Variant? param) {
+warning ("action path change");
         string uri;
         uint32 flag;
         param.@get ("(su)", out uri, out flag);
@@ -1251,7 +1275,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             server_uri = dialog.server_uri;
             dialog.destroy ();
             if (response_id == Gtk.ResponseType.OK && server_uri != "") {
-                uri_path_change_request (server_uri);
+                uri_path_change_request (server_uri, OpenFlag.DEFAULT);
             }
         });
 
@@ -1406,7 +1430,9 @@ public class Files.Window : Gtk.ApplicationWindow {
              */
 
             restoring_tabs++;
-            var container = add_tab_by_uri (root_uri, mode);
+            // Capture ref to added container as we need it in closure
+            var container = add_tab ();
+            set_current_location_and_mode (mode, GLib.File.new_for_uri (root_uri), OpenFlag.DEFAULT);
 
             if (container != null && tip_uri != null && tip_uri != root_uri) {
                 var tip = tip_uri; //Take local copy else will be overwritten
@@ -1487,6 +1513,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     public void mount_removed (Mount mount) {
+warning ("mount removed");
         debug ("Mount %s removed", mount.get_name ());
         GLib.File root = mount.get_root ();
 
@@ -1507,7 +1534,8 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
     }
 
-    public void uri_path_change_request (string p, Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
+    public void uri_path_change_request (string p, OpenFlag flag) {
+warning ("WINDOW: uri path change");
         /* Make a sanitized file from the uri */
         if (p == "") {
             return;
@@ -1517,18 +1545,29 @@ public class Files.Window : Gtk.ApplicationWindow {
         if (file != null) {
             switch (flag) {
                 case Files.OpenFlag.NEW_TAB:
-                    add_tab (file, current_container.view_mode);
+                    // add_tab (file, current_container.view_mode);
+                    var mode = current_container.view_mode;
+                    add_tab ();
+                    set_current_location_and_mode (mode, file, flag);
+                    // current_container.focus_location (file, OpenFlag.DEFAULT);
                     break;
                 case Files.OpenFlag.NEW_WINDOW:
                     add_window (file, current_container.view_mode);
                     break;
                 default:
-                    current_container.focus_location (file, flag);
+                    var mode = current_container.view_mode;
+                    // current_container.focus_location (file, flag);
+                    set_current_location_and_mode (mode, file, flag);
                     break;
             }
         } else {
             warning ("Cannot browse %s", p);
         }
+    }
+
+    private void set_current_location_and_mode (ViewMode mode, GLib.File loc, OpenFlag flag) {
+        update_top_menu (loc.get_uri ());
+        current_container.set_location_and_mode (mode, loc, null, flag);
     }
 
     /** Use this function to standardise how locations are generated from uris **/

@@ -29,6 +29,7 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
     public abstract void unselect_all_items ();
 
     public virtual void open_item (SidebarItemInterface item, Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
+    warning ("sidebar open item");
         sidebar.path_change_request (item.uri, flag);
     }
 

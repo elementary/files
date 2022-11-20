@@ -134,9 +134,9 @@ public class Files.ViewContainer : Gtk.Box {
     // For simplicity every navigation results in a new slot and starts here.
     public void set_location_and_mode (
         ViewMode mode,
-        GLib.File? loc = null,
-        GLib.File[]? to_select = null,
-        OpenFlag flag = OpenFlag.DEFAULT
+        GLib.File? loc,
+        GLib.File[]? to_select,
+        OpenFlag flag
     ) {
         var current_location = location;
         var change_mode = mode != multi_slot.view_mode;
@@ -250,6 +250,7 @@ public class Files.ViewContainer : Gtk.Box {
                 selected_locations = null;
             } else if (dir.selected_file != null) {
                 if (dir.selected_file.query_exists ()) {
+warning ("after load focus");
                     focus_location_if_in_current_directory (dir.selected_file);
                 } else {
                     content = new Welcome (
@@ -307,7 +308,7 @@ public class Files.ViewContainer : Gtk.Box {
 
         /* Certain parents such as ftp:// will be returned as null as they are not browsable */
         if (parent != null) {
-            set_location_and_mode (view_mode, parent, null);
+            set_location_and_mode (view_mode, parent, null, OpenFlag.DEFAULT);
             return true;
         } else {
             return false;
@@ -320,7 +321,7 @@ public class Files.ViewContainer : Gtk.Box {
         if (path != null) {
             selected_locations = null;
             selected_locations.append (this.location);
-            set_location_and_mode (view_mode, GLib.File.new_for_commandline_arg (path), null);
+            set_location_and_mode (view_mode, GLib.File.new_for_commandline_arg (path), null, OpenFlag.APPEND);
         }
     }
 
@@ -328,7 +329,7 @@ public class Files.ViewContainer : Gtk.Box {
         // No mode change
         string? path = browser.go_forward (n);
         if (path != null) {
-            set_location_and_mode (view_mode, GLib.File.new_for_commandline_arg (path), null);
+            set_location_and_mode (view_mode, GLib.File.new_for_commandline_arg (path), null, OpenFlag.APPEND);
         }
     }
 
@@ -350,7 +351,7 @@ public class Files.ViewContainer : Gtk.Box {
         if (slot == null) {
             return;
         }
-
+warning ("focus location %s", loc != null ? loc.get_basename () : "null");
         /* Search can generate null focus requests if no match - deselect previous search selection */
         if (loc == null) {
             slot.set_all_selected (false);
@@ -359,7 +360,9 @@ public class Files.ViewContainer : Gtk.Box {
 
         /* Using file_a.equal (file_b) can fail to detect equivalent locations */
         if (FileUtils.same_location (uri, loc.get_uri ())) {
-            return;
+            if (slot.directory.is_loading ()) {
+                return;
+            }
         }
 
         var info = slot.lookup_file_info (loc);
@@ -388,10 +391,12 @@ public class Files.ViewContainer : Gtk.Box {
     }
 
     public void focus_location_if_in_current_directory (
+
         GLib.File? loc,
         OpenFlag flag = OpenFlag.DEFAULT,
         bool unselect_others = false
     ) {
+warning ("focus if in current");
         focus_location (loc, flag, true, unselect_others);
     }
 

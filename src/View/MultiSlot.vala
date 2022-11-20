@@ -169,8 +169,11 @@ public class Files.MultiSlot : Gtk.Box {
     public void clear () {
         truncate_list_after_host (first_host);
         var first_slot = first_host.start_child;
-        first_slot.unparent ();
-        first_slot.destroy ();
+        if (first_slot != null) {
+            first_slot.unparent ();
+            first_slot.destroy ();
+        }
+
         current_slot = null;
         first_host.start_child = null;
         first_host.end_child = null;
@@ -183,9 +186,11 @@ public class Files.MultiSlot : Gtk.Box {
 
         //TODO Memory leak?
         var end_child = host.end_child;
-        end_child.unparent ();
-        end_child.destroy ();
-        host.end_child = null;
+        if (end_child != null) {
+            end_child.unparent ();
+            end_child.destroy ();
+            host.end_child = null;
+        }
         current_slot = (Slot?)(host.start_child);
     }
 

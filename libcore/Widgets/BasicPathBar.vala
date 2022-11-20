@@ -28,7 +28,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
     private BasicBreadcrumbs breadcrumbs;
     private BasicPathEntry path_entry;
     public PathBarMode mode { get; set; default = PathBarMode.CRUMBS; }
-    public string display_uri { get; set; }
+    public string display_uri { get; set; default = ""; }
 
     public bool with_animation {
         set {
@@ -44,10 +44,6 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         stack.add_child (path_entry);
         stack.visible_child = breadcrumbs;
         stack.set_parent (this);
-
-        // notify["display-uri"].connect (() => {
-        //     stack.visible_child = breadcrumbs;
-        // });
 
         notify["mode"].connect (() => {
             switch (mode) {
@@ -140,8 +136,34 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
             notify["uri"].connect (() => {
                 FileUtils.split_protocol_from_path (uri, out protocol, out path);
-                draw_crumbs ();
-                activate_action ("win.go-to", "s", uri);
+                spacer.unparent ();
+                foreach (var crumb in crumbs) {
+                    crumb.unparent ();
+                    crumb.destroy ();
+                }
+                crumbs = null;
+                //Break apart
+                string[] parts;
+                parts = path.split (Path.DIR_SEPARATOR_S);
+                //Make crumbs
+                string crumb_path = "";
+                if (parts.length == 0) {
+                    crumbs.append (new Crumb (Path.DIR_SEPARATOR_S));
+                } else {
+                    foreach (unowned var part in parts) {
+                        if (part != "") {
+                            crumb_path += Path.DIR_SEPARATOR_S + part;
+                            var crumb = new Crumb (crumb_path);
+                            crumbs.append (crumb);
+                        }
+                    }
+                }
+
+                foreach (var crumb in crumbs) {
+                    main_child.append (crumb);
+                }
+
+                main_child.append (spacer);
             });
         }
 
@@ -164,6 +186,8 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                         var crumb = (Crumb)(widget.get_ancestor (typeof (Crumb)));
                         assert (crumb is Crumb);
                         if (crumb.dir_path != null) {
+// warning ("pathbar goto");
+                            // uri = protocol + crumb.dir_path;
                             activate_action ("win.go-to", "s", protocol + crumb.dir_path);
                             break;
                         }
@@ -179,34 +203,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         }
 
         private void draw_crumbs () {
-            spacer.unparent ();
-            foreach (var crumb in crumbs) {
-                crumb.unparent ();
-                crumb.destroy ();
-            }
-            crumbs = null;
-            //Break apart
-            string[] parts;
-            parts = path.split (Path.DIR_SEPARATOR_S);
-            //Make crumbs
-            string crumb_path = "";
-            if (parts.length == 0) {
-                crumbs.append (new Crumb (Path.DIR_SEPARATOR_S));
-            } else {
-                foreach (unowned var part in parts) {
-                    if (part != "") {
-                        crumb_path += Path.DIR_SEPARATOR_S + part;
-                        var crumb = new Crumb (crumb_path);
-                        crumbs.append (crumb);
-                    }
-                }
-            }
 
-            foreach (var crumb in crumbs) {
-                main_child.append (crumb);
-            }
-
-            main_child.append (spacer);
         }
     }
 

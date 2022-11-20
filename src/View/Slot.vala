@@ -236,6 +236,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     private void on_view_path_change_request (GLib.File loc, Files.OpenFlag flag) {
+warning ("SLOT view path change req");
         cancel_timeouts ();
         activate_action ("win.path-change-request", "(su)", loc.get_uri (), flag);
     }
