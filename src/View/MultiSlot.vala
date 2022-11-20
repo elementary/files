@@ -129,15 +129,14 @@ public class Files.MultiSlot : Gtk.Box {
 
         if (host.start_child != null) {
             truncate_list_after_host (host);
-            var hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-            hpaned.start_child = guest;
-            // if (view_mode == ViewMode.MULTICOLUMN) {
-            hpaned.end_child = end_widget;
-            // }
-            hpaned.resize_start_child = false;
-            hpaned.shrink_start_child = false;
-            hpaned.shrink_end_child = false;
-            hpaned.resize_end_child = true;
+            var hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+                start_child = guest,
+                end_child = end_widget,
+                resize_start_child = false,
+                shrink_start_child = false,
+                shrink_end_child = false,
+                resize_end_child = true
+            };
             host.end_child = hpaned;
         } else {
             host.start_child = guest;
