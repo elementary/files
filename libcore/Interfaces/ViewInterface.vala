@@ -40,7 +40,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     protected abstract bool has_open_with { get; set; default = false;}
 
     public signal void selection_changed ();
-    public signal void path_change_request (GLib.File location, Files.OpenFlag open_flag);
+    // public signal void path_change_request (GLib.File location, Files.OpenFlag open_flag);
 
     public virtual void set_up_zoom_level () {}
     public virtual void zoom_in () {}
@@ -65,69 +65,69 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract void show_appropriate_context_menu ();
     public abstract uint get_selected_files (out GLib.List<Files.File>? selected_files = null);
 
-    protected void open_file (Files.File _file, Files.OpenFlag flag) {
-        Files.File file = _file;
-        if (_file.is_recent_uri_scheme ()) {
-            file = Files.File.get_by_uri (file.get_display_target_uri ());
-        }
+    // protected void open_file (Files.File _file, Files.OpenFlag flag) {
+    //     Files.File file = _file;
+    //     if (_file.is_recent_uri_scheme ()) {
+    //         file = Files.File.get_by_uri (file.get_display_target_uri ());
+    //     }
 
-        var is_folder_type = file.is_folder () ||
-                             (file.get_ftype () == "inode/directory") ||
-                             file.is_root_network_folder ();
+    //     var is_folder_type = file.is_folder () ||
+    //                          (file.get_ftype () == "inode/directory") ||
+    //                          file.is_root_network_folder ();
 
-        if (file.is_trashed () && !is_folder_type && flag == Files.OpenFlag.APP) {
-            PF.Dialogs.show_error_dialog (
-                ///TRANSLATORS: '%s' is a quoted placehorder for the name of a file.
-                _("“%s” must be moved from Trash before opening").printf (file.basename),
-                _("Files inside Trash cannot be opened. To open this file, it must be moved elsewhere."),
-                (Gtk.Window)get_ancestor (typeof (Gtk.Window))
-            );
-            return;
-        }
+    //     if (file.is_trashed () && !is_folder_type && flag == Files.OpenFlag.APP) {
+    //         PF.Dialogs.show_error_dialog (
+    //             ///TRANSLATORS: '%s' is a quoted placehorder for the name of a file.
+    //             _("“%s” must be moved from Trash before opening").printf (file.basename),
+    //             _("Files inside Trash cannot be opened. To open this file, it must be moved elsewhere."),
+    //             (Gtk.Window)get_ancestor (typeof (Gtk.Window))
+    //         );
+    //         return;
+    //     }
 
-        var default_app = MimeActions.get_default_application_for_file (file);
-        var location = file.get_target_location ();
-        switch (flag) {
-            case Files.OpenFlag.NEW_TAB:
-            case Files.OpenFlag.NEW_WINDOW:
-            case Files.OpenFlag.NEW_ROOT:
-                path_change_request (location, flag);
-                break;
-            case Files.OpenFlag.DEFAULT: // Take default action
-                if (is_folder_type) {
-                    path_change_request (location, flag);
-                } else if (file.is_executable ()) {
-                    var content_type = FileUtils.get_or_guess_content_type (file);
-                    //Do not execute scripts, desktop files etc
-                    if (!ContentType.is_a (content_type, "text/plain")) {
-                        try {
-                            file.execute (null);
-                        } catch (Error e) {
-                            PF.Dialogs.show_warning_dialog (
-                                _("Cannot execute this file"),
-                                e.message,
-                                (Gtk.Window)get_ancestor (typeof (Gtk.Window)
-                            ));
-                        }
+    //     var default_app = MimeActions.get_default_application_for_file (file);
+    //     var location = file.get_target_location ();
+    //     switch (flag) {
+    //         case Files.OpenFlag.NEW_TAB:
+    //         case Files.OpenFlag.NEW_WINDOW:
+    //         case Files.OpenFlag.NEW_ROOT:
+    //             path_change_request (location, flag);
+    //             break;
+    //         case Files.OpenFlag.DEFAULT: // Take default action
+    //             if (is_folder_type) {
+    //                 path_change_request (location, flag);
+    //             } else if (file.is_executable ()) {
+    //                 var content_type = FileUtils.get_or_guess_content_type (file);
+    //                 //Do not execute scripts, desktop files etc
+    //                 if (!ContentType.is_a (content_type, "text/plain")) {
+    //                     try {
+    //                         file.execute (null);
+    //                     } catch (Error e) {
+    //                         PF.Dialogs.show_warning_dialog (
+    //                             _("Cannot execute this file"),
+    //                             e.message,
+    //                             (Gtk.Window)get_ancestor (typeof (Gtk.Window)
+    //                         ));
+    //                     }
 
-                        return;
-                    }
-                } else {
-                    if (FileUtils.can_open_file (
-                            file, true, (Gtk.Window)get_ancestor (typeof (Gtk.Window)))
-                        ) {
-                        MimeActions.open_glib_file_request (file.location, this, default_app);
-                    }
-                }
+    //                     return;
+    //                 }
+    //             } else {
+    //                 if (FileUtils.can_open_file (
+    //                         file, true, (Gtk.Window)get_ancestor (typeof (Gtk.Window)))
+    //                     ) {
+    //                     MimeActions.open_glib_file_request (file.location, this, default_app);
+    //                 }
+    //             }
 
-                break;
-            case Files.OpenFlag.APP:
-                if (FileUtils.can_open_file (
-                        file, true, (Gtk.Window)get_ancestor (typeof (Gtk.Window)))
-                    ) {
-                    MimeActions.open_glib_file_request (file.location, this, default_app);
-                }
-                break;
-        }
-    }
+    //             break;
+    //         case Files.OpenFlag.APP:
+    //             if (FileUtils.can_open_file (
+    //                     file, true, (Gtk.Window)get_ancestor (typeof (Gtk.Window)))
+    //                 ) {
+    //                 MimeActions.open_glib_file_request (file.location, this, default_app);
+    //             }
+    //             break;
+    //     }
+    // }
 }

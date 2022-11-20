@@ -157,17 +157,17 @@ public class Files.ViewContainer : Gtk.Box {
                 }
             }
 
-            multi_slot.clear ();
             multi_slot.view_mode = mode;
         }
 
         var added_location = loc ?? current_location;
         Slot added_slot;
-        if (flag != OpenFlag.APPEND) {
-            added_slot = multi_slot.set_root_location (loc ?? current_location);
-        } else {
-            added_slot = multi_slot.add_location (loc ?? current_location);
+        if (flag != OpenFlag.APPEND || view_mode != ViewMode.MULTICOLUMN) {
+            multi_slot.clear ();
         }
+
+        added_slot = multi_slot.add_location (loc ?? current_location);
+
         //TODO Move overlaybar to Window
         overlay_statusbar.cancel ();
         overlay_statusbar.halign = Gtk.Align.END;

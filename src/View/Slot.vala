@@ -106,7 +106,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
             view_widget.width_request = preferred_column_width;
         }
 
-        view_widget.path_change_request.connect (on_view_path_change_request);
+        // view_widget.path_change_request.connect (on_view_path_change_request);
         view_widget.selection_changed.connect (on_view_widget_selection_changed);
 
         append (extra_location_widgets);
@@ -235,11 +235,12 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         connect_directory_handlers (directory);
     }
 
-    private void on_view_path_change_request (GLib.File loc, Files.OpenFlag flag) {
-warning ("SLOT view path change req");
-        cancel_timeouts ();
-        activate_action ("win.path-change-request", "(su)", loc.get_uri (), flag);
-    }
+    //TODO Cancel timeouts when destroyed.
+//     private void on_view_path_change_request (GLib.File loc, Files.OpenFlag flag) {
+// warning ("SLOT view path change req");
+//         cancel_timeouts ();
+//         activate_action ("win.path-change-request", "(su)", loc.get_uri (), flag);
+//     }
 
     public async bool initialize_directory () {
         if (directory.is_loading ()) {

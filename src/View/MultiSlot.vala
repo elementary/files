@@ -103,11 +103,6 @@ public class Files.MultiSlot : Gtk.Box {
         });
     }
 
-    public Slot set_root_location (GLib.File? loc) {
-        clear ();
-        return add_location (loc);
-    }
-
     /** Creates a new slot in the last slot hpane */
     public Slot add_location (GLib.File? loc) {
         // Always create new Slot rather than navigate for simplicity.
