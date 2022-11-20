@@ -316,13 +316,14 @@ public class Files.MultiSlot : Gtk.Box {
                 Slot? next_slot = null;
                 var next_host = current_host.end_child;
                 if (next_host != null && (next_host is Gtk.Paned)) {
-                    next_slot =  (Slot?)(((Gtk.Paned)next_host).start_child);
+                    next_slot = (Slot?)(((Gtk.Paned)next_host).start_child);
                     next_location = next_slot != null ? next_slot.file.location : null;
                 }
 
                 if (next_location != null && next_location.equal (selected_location)) {
+                    //No need for new slot
                     current_slot = next_slot;
-                    //Ensure window updates
+                    //Ensure window updates nevertheless - fake new slot loading
                     activate_action (
                         "win.loading-finished",
                         null
