@@ -36,7 +36,7 @@ public class Files.MultiSlot : Gtk.Box {
     /* Need private copy of initial location as MultiSlot
      * does not have its own Asyncdirectory object */
 
-    private uint scroll_to_slot_timeout_id = 0;
+    // private uint scroll_to_slot_timeout_id = 0;
     private Gtk.ScrolledWindow scrolled_window;
     private Gtk.Viewport viewport;
     private Gtk.Paned first_host;
@@ -115,6 +115,7 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
     /** Creates a new slot in the last slot hpane */
+    //NOTE Always appends so callers need to clear multislot first if required
     public Slot add_location (GLib.File? loc) {
         // Always create new Slot rather than navigate for simplicity.
         //TODO Check for performance/memory leak
@@ -156,11 +157,15 @@ public class Files.MultiSlot : Gtk.Box {
 
     private Gtk.Paned? get_host_for_loc (GLib.File file) {
         Gtk.Paned? host = first_host;
-        // Slot? slot = (Slot?)(first_host.start_child);
         Gtk.Paned? previous_host = host;
         while (host != null) {
             var slot = (Slot?)(host.start_child);
-            if (slot == null || slot.file.location.get_relative_path (file) == null) {
+            if (slot == null) {
+                break;
+            }
+
+            if (slot.file.location.get_relative_path (file) == null) {
+                //NOTE relative path is null when files are equal
                 break;
             }
 
@@ -205,6 +210,7 @@ public class Files.MultiSlot : Gtk.Box {
 
     public void update_total_width () {
         int min_w, nat_w;
+        first_host.set_size_request (-1, -1);
         first_host.measure (
             Gtk.Orientation.HORIZONTAL,
             first_host.get_allocated_height (),
@@ -217,7 +223,6 @@ public class Files.MultiSlot : Gtk.Box {
         // Allow extra space to grab last slider
         min_w += 20;
         var scrolled_window_width = scrolled_window.get_allocated_width ();
-        // var viewport_width = viewport.get_allocated_width ();
         first_host.set_size_request (min_w, -1);
         //Scroll to end
         scrolled_window.hadjustment.@value = min_w - scrolled_window_width;
@@ -395,7 +400,6 @@ public class Files.MultiSlot : Gtk.Box {
         }
 
         var tip_location = FileUtils.get_file_for_path (unescaped_tip_uri);
-        // var root_location = FileUtils.get_file_for_path (unescaped_root_uri);
         var relative_path = root_location.get_relative_path (tip_location);
         GLib.File gfile;
 

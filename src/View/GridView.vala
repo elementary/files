@@ -136,6 +136,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                     unselect_all ();
                     var file = item.file;
                     if (file.is_folder ()) {
+                        // We know we can append to multislot
                         change_path (file.location, Files.OpenFlag.APPEND);
                     } else {
                         warning ("Open file with app");

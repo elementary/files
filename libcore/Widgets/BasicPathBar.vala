@@ -184,8 +184,8 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                     var widget = main_child.pick (x, y, Gtk.PickFlags.DEFAULT);
                     if (widget != null) {
                         var crumb = (Crumb)(widget.get_ancestor (typeof (Crumb)));
-                        assert (crumb is Crumb);
-                        if (crumb.dir_path != null) {
+                        // assert (crumb is Crumb);
+                        if (crumb == null || crumb.dir_path != null) {
                             activate_action ("win.path-change-request", "(su)", protocol + crumb.dir_path, OpenFlag.DEFAULT);
                             break;
                         }

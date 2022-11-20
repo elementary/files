@@ -166,6 +166,7 @@ public class Files.ViewContainer : Gtk.Box {
             multi_slot.clear ();
         }
 
+        // added_slot = multi_slot.set_tip_uri (loc.get_uri () ?? current_location.get_uri ());
         added_slot = multi_slot.add_location (loc ?? current_location);
 
         //TODO Move overlaybar to Window
@@ -307,6 +308,7 @@ public class Files.ViewContainer : Gtk.Box {
 
         /* Certain parents such as ftp:// will be returned as null as they are not browsable */
         if (parent != null) {
+            //Cannot append
             set_location_and_mode (view_mode, parent, null, OpenFlag.DEFAULT);
             return true;
         } else {
@@ -320,7 +322,8 @@ public class Files.ViewContainer : Gtk.Box {
         if (path != null) {
             selected_locations = null;
             selected_locations.append (this.location);
-            set_location_and_mode (view_mode, GLib.File.new_for_commandline_arg (path), null, OpenFlag.APPEND);
+            // Uncertain whether we can append so start new root
+            set_location_and_mode (view_mode, GLib.File.new_for_commandline_arg (path), null, OpenFlag.DEFAULT);
         }
     }
 
@@ -328,7 +331,8 @@ public class Files.ViewContainer : Gtk.Box {
         // No mode change
         string? path = browser.go_forward (n);
         if (path != null) {
-            set_location_and_mode (view_mode, GLib.File.new_for_commandline_arg (path), null, OpenFlag.APPEND);
+            // Uncertain whether we can append so start new root
+            set_location_and_mode (view_mode, GLib.File.new_for_commandline_arg (path), null, OpenFlag.DEFAULT);
         }
     }
 
