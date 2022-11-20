@@ -236,9 +236,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
         // Restore saved zoom level
         if (slot.view_mode == ViewMode.ICON) {
-            zoom_level = (ZoomLevel)(Files.icon_view_settings.get_enum ("zoom-level"));
+            Files.icon_view_settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.DEFAULT);
         } else {
-            zoom_level = (ZoomLevel)(Files.column_view_settings.get_enum ("zoom-level"));
+            Files.column_view_settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.DEFAULT);
         }
     }
 
