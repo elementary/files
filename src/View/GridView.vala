@@ -282,6 +282,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         if (item != null) {
             item.grab_focus ();
         } else if (list_store.get_n_items () > 0) {
+            multi_selection.select_item (0, false);
             focus_item (0);
         } else {
             grid_view.grab_focus ();

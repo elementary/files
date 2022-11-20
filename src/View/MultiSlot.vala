@@ -50,7 +50,11 @@ public class Files.MultiSlot : Gtk.Box {
         set {
             _current_slot = value;
             if (value != null) {
-                current_slot.grab_focus ();
+                Idle.add (() => {
+                    //Ensure slot realized before focussing
+                    current_slot.grab_focus ();
+                    return Source.REMOVE;
+                });
             }
         }
     }
@@ -309,18 +313,23 @@ public class Files.MultiSlot : Gtk.Box {
                 var selected_file = selected_files.first ().data;
                 unowned var selected_location = selected_files.first ().data.location;
                 GLib.File? next_location = null;
+                Slot? next_slot = null;
                 var next_host = current_host.end_child;
                 if (next_host != null && (next_host is Gtk.Paned)) {
-                    next_location = ((Slot)(((Gtk.Paned)next_host).start_child)).file.location;
+                    next_slot =  (Slot?)(((Gtk.Paned)next_host).start_child);
+                    next_location = next_slot != null ? next_slot.file.location : null;
                 }
 
                 if (next_location != null && next_location.equal (selected_location)) {
+                    current_slot = next_slot;
+                    //Ensure window updates
                     activate_action (
-                        "win.path-change-request", "(su)", next_location.get_uri (), OpenFlag.DEFAULT
+                        "win.loading-finished",
+                        null
                     );
                 } else if (selected_file.is_folder ()) {
                     activate_action (
-                        "win.path-change-request", "(su)", selected_file.uri, OpenFlag.DEFAULT
+                        "win.path-change-request", "(su)", selected_file.uri, OpenFlag.APPEND
                     );
                 }
 
@@ -399,6 +408,7 @@ public class Files.MultiSlot : Gtk.Box {
                 var added_slot = add_location (gfile);
                 yield added_slot.initialize_directory ();
             }
+
         } else {
             warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);
         }
