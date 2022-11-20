@@ -127,8 +127,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             } else {
                 var should_activate = (
                     widget is Gtk.Image &&
-                    (n_press == 1 && !prefs.singleclick_select ||
-                    n_press == 2)
+                    (n_press == 1 && !prefs.singleclick_select) ||
+                    n_press == 2 // Always activate on double click
                 );
                 // Activate item
                 var item = get_item_at (x, y);
