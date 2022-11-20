@@ -956,7 +956,8 @@ warning ("Action go to");
                 break;
 
             default:
-                uri_path_change_request (param.get_string (), OpenFlag.DEFAULT);
+                assert_not_reached ();
+                // uri_path_change_request (param.get_string (), OpenFlag.DEFAULT);
                 break;
         }
     }
