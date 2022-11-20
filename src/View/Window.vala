@@ -1164,7 +1164,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         string uri;
         uint32 flag;
         param.@get ("(su)", out uri, out flag);
-        uri_path_change_request (uri, flag);
+        uri_path_change_request (uri, (OpenFlag)flag);
     }
 
     private void action_loading_uri (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1251,7 +1251,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             server_uri = dialog.server_uri;
             dialog.destroy ();
             if (response_id == Gtk.ResponseType.OK && server_uri != "") {
-                uri_path_change_request (server_uri, Files.OpenFlag.DEFAULT);
+                uri_path_change_request (server_uri);
             }
         });
 
@@ -1497,7 +1497,8 @@ public class Files.Window : Gtk.ApplicationWindow {
             if (location == null || location.has_prefix (root) || location.equal (root)) {
                 if (view_container == current_container) {
                     view_container.focus_location (
-                        GLib.File.new_for_path (PF.UserUtils.get_real_user_home ())
+                        GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
+                        OpenFlag.DEFAULT
                     );
                 } else {
                     remove_content (view_container);
@@ -1522,7 +1523,7 @@ public class Files.Window : Gtk.ApplicationWindow {
                     add_window (file, current_container.view_mode);
                     break;
                 default:
-                    current_container.focus_location (file);
+                    current_container.focus_location (file, flag);
                     break;
             }
         } else {

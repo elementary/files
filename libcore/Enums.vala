@@ -113,6 +113,7 @@ namespace Files {
 
     public enum OpenFlag {
         DEFAULT,
+        APPEND,
         NEW_ROOT,
         NEW_TAB,
         NEW_WINDOW,

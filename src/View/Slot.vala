@@ -248,7 +248,6 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
         //NOTE activate_action does not work in async function ??
         yield directory.init (view_widget.add_file);
-
         if (directory.can_load) {
             if (file.is_recent_uri_scheme ()) {
                 view_widget.sort_type = Files.SortType.MODIFIED;
@@ -257,6 +256,8 @@ public class Files.Slot : Gtk.Box, SlotInterface {
                 view_widget.sort_type = this.directory.file.sort_type;
                 view_widget.sort_reversed = this.directory.file.sort_reversed;
             }
+        } else {
+            return false;
         }
 
         if (directory.is_empty ()) { /* No files in the file cache */

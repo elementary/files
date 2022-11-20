@@ -39,6 +39,7 @@ public class Files.MultiSlot : Gtk.Box {
     private uint scroll_to_slot_timeout_id = 0;
     private Gtk.ScrolledWindow scrolled_window;
     private Gtk.Viewport viewport;
+    private Gtk.Paned first_host;
     private Gtk.Adjustment hadj;
     private Slot? _current_slot;
     public Slot? current_slot {
@@ -72,8 +73,15 @@ public class Files.MultiSlot : Gtk.Box {
             vscrollbar_policy = Gtk.PolicyType.NEVER,
         };
         viewport = new Gtk.Viewport (null, null) {
-            hexpand = view_mode != ViewMode.MULTICOLUMN
+            hexpand = true
         };
+        first_host = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+            resize_start_child = false,
+            shrink_start_child = false,
+            shrink_end_child = false,
+            resize_end_child = true
+        };
+        viewport.child = first_host;
         scrolled_window.set_child (viewport);
 
         overlay = new Gtk.Overlay ();
@@ -89,6 +97,15 @@ public class Files.MultiSlot : Gtk.Box {
         (Files.Preferences.get_default ()).notify["show-hidden-files"].connect ((s, p) => {
             show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
         });
+
+        notify["view-mode"].connect (() => {
+            first_host.hexpand = view_mode != ViewMode.MULTICOLUMN;
+        });
+    }
+
+    public Slot set_root_location (GLib.File? loc) {
+        clear ();
+        return add_location (loc);
     }
 
     /** Creates a new slot in the last slot hpane */
@@ -96,30 +113,31 @@ public class Files.MultiSlot : Gtk.Box {
         // Always create new Slot rather than navigate for simplicity.
         //TODO Check for performance/memory leak
         var guest = new Slot (loc, view_mode);
-        var hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-        hpaned.start_child = guest;
-        if (view_mode == ViewMode.MULTICOLUMN) {
-            hpaned.end_child = new Gtk.Label ("") {
-                hexpand = false
-            };
-        }
-        hpaned.resize_start_child = false;
-        hpaned.shrink_start_child = false;
-        hpaned.shrink_end_child = false;
-        hpaned.resize_end_child = true;
-        Gtk.Paned? host = null;
+        Gtk.Paned host;
         if (view_mode == ViewMode.MULTICOLUMN) {
             host = get_host_for_loc (guest.file.location);
+        } else {
+            host = first_host;
         }
 
-        if (host != null) {
-            viewport.child.width_request = -1;
+        var end_label = new Gtk.Label ("") {
+            hexpand = false
+        };
+        if (host.start_child != null) {
             truncate_list_after_host (host);
+            var hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+            hpaned.start_child = guest;
+            // if (view_mode == ViewMode.MULTICOLUMN) {
+            hpaned.end_child = end_label;
+            // }
+            hpaned.resize_start_child = false;
+            hpaned.shrink_start_child = false;
+            hpaned.shrink_end_child = false;
+            hpaned.resize_end_child = true;
             host.end_child = hpaned;
-
         } else {
-            clear ();
-            viewport.child = hpaned;
+            host.start_child = guest;
+            host.end_child = end_label;
         }
 
         current_slot = guest;
@@ -128,11 +146,12 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
     private Gtk.Paned? get_host_for_loc (GLib.File file) {
-        Gtk.Paned? host = (Gtk.Paned?)(viewport.child);
+        Gtk.Paned? host = first_host;
+        // Slot? slot = (Slot?)(first_host.start_child);
         Gtk.Paned? previous_host = host;
         while (host != null) {
-            var slot = (Slot)(host.start_child);
-            if (slot.file.location.get_relative_path (file) == null) {
+            var slot = (Slot?)(host.start_child);
+            if (slot == null || slot.file.location.get_relative_path (file) == null) {
                 break;
             }
 
@@ -148,11 +167,13 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
     public void clear () {
-        while (viewport.get_last_child () != null) {
-            viewport.get_last_child ().unparent ();
-        }
-
+        truncate_list_after_host (first_host);
+        var first_slot = first_host.start_child;
+        first_slot.unparent ();
+        first_slot.destroy ();
         current_slot = null;
+        first_host.start_child = null;
+        first_host.end_child = null;
     }
 
     private void truncate_list_after_host (Gtk.Paned host) {
@@ -161,17 +182,18 @@ public class Files.MultiSlot : Gtk.Box {
         }
 
         //TODO Memory leak?
-        host.end_child.destroy ();
+        var end_child = host.end_child;
+        end_child.unparent ();
+        end_child.destroy ();
         host.end_child = null;
-
-        //Calling function must end up setting the end child and current_slot
+        current_slot = (Slot?)(host.start_child);
     }
 
     public void update_total_width () {
         int min_w, nat_w;
-        viewport.child.measure (
+        first_host.measure (
             Gtk.Orientation.HORIZONTAL,
-            viewport.get_allocated_height (),
+            first_host.get_allocated_height (),
             out min_w,
             out nat_w,
             null,
@@ -180,10 +202,11 @@ public class Files.MultiSlot : Gtk.Box {
 
         // Allow extra space to grab last slider
         min_w += 20;
-        var viewport_width = viewport.get_allocated_width ();
-        viewport.child.set_size_request (min_w, -1);
+        var scrolled_window_width = scrolled_window.get_allocated_width ();
+        // var viewport_width = viewport.get_allocated_width ();
+        first_host.set_size_request (min_w, -1);
         //Scroll to end
-        scrolled_window.hadjustment.@value = min_w - viewport_width;
+        scrolled_window.hadjustment.@value = min_w - scrolled_window_width;
     }
 
     public void folder_deleted (GLib.File file) {

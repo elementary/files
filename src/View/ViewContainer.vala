@@ -135,7 +135,8 @@ public class Files.ViewContainer : Gtk.Box {
     public void set_location_and_mode (
         ViewMode mode,
         GLib.File? loc = null,
-        GLib.File[]? to_select = null
+        GLib.File[]? to_select = null,
+        OpenFlag flag = OpenFlag.DEFAULT
     ) {
         var current_location = location;
         var change_mode = mode != multi_slot.view_mode;
@@ -160,7 +161,13 @@ public class Files.ViewContainer : Gtk.Box {
             multi_slot.view_mode = mode;
         }
 
-        var added_slot = multi_slot.add_location (loc ?? current_location);
+        var added_location = loc ?? current_location;
+        Slot added_slot;
+        if (flag != OpenFlag.APPEND) {
+            added_slot = multi_slot.set_root_location (loc ?? current_location);
+        } else {
+            added_slot = multi_slot.add_location (loc ?? current_location);
+        }
         //TODO Move overlaybar to Window
         overlay_statusbar.cancel ();
         overlay_statusbar.halign = Gtk.Align.END;
@@ -185,14 +192,12 @@ public class Files.ViewContainer : Gtk.Box {
         can_show_folder = false;
         activate_action ("selection-changing", null);
         activate_action ("win.loading-uri", "s", location.get_uri ());
-
         added_slot.initialize_directory.begin ((obj, res) => {
             activate_action ("win.loading-finished", null);
             if (!added_slot.initialize_directory.end (res)) {
                 return;
             }
 
-            multi_slot.update_total_width ();
             var dir = added_slot.directory;
             can_show_folder = dir.can_load;
             /* First deal with all cases where directory could not be loaded */
@@ -335,6 +340,7 @@ public class Files.ViewContainer : Gtk.Box {
     // }
 
     public void focus_location (GLib.File? loc,
+                                OpenFlag flag,
                                 bool no_path_change = false,
                                 bool unselect_others = false) {
 
@@ -344,6 +350,7 @@ public class Files.ViewContainer : Gtk.Box {
         if (slot == null) {
             return;
         }
+
         /* Search can generate null focus requests if no match - deselect previous search selection */
         if (loc == null) {
             slot.set_all_selected (false);
@@ -376,15 +383,16 @@ public class Files.ViewContainer : Gtk.Box {
         }
         /* Attempt to navigate to the location */
         if (loc != null) {
-            set_location_and_mode (view_mode, loc, null);
+            set_location_and_mode (view_mode, loc, null, flag);
         }
     }
 
     public void focus_location_if_in_current_directory (
         GLib.File? loc,
+        OpenFlag flag = OpenFlag.DEFAULT,
         bool unselect_others = false
     ) {
-        focus_location (loc, true, unselect_others);
+        focus_location (loc, flag, true, unselect_others);
     }
 
     public string get_root_uri () {

@@ -136,7 +136,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                     unselect_all ();
                     var file = item.file;
                     if (file.is_folder ()) {
-                        path_change_request (file.location, Files.OpenFlag.DEFAULT);
+                        path_change_request (file.location, Files.OpenFlag.APPEND);
                     } else {
                         warning ("Open file with app");
                     }
