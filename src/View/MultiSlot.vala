@@ -32,7 +32,7 @@ public class Files.MultiSlot : Gtk.Box {
             return null;
         }
     }
-    public ViewMode view_mode { get; set; }
+    public ViewMode view_mode { get; set; default = ViewMode.INVALID; }
     /* Need private copy of initial location as MultiSlot
      * does not have its own Asyncdirectory object */
 
@@ -69,7 +69,6 @@ public class Files.MultiSlot : Gtk.Box {
 
     construct {
         scrolled_window = new Gtk.ScrolledWindow () {
-            hscrollbar_policy = Gtk.PolicyType.ALWAYS,
             vscrollbar_policy = Gtk.PolicyType.NEVER,
         };
         viewport = new Gtk.Viewport (null, null) {
@@ -99,8 +98,16 @@ public class Files.MultiSlot : Gtk.Box {
         });
 
         notify["view-mode"].connect (() => {
-            first_host.hexpand = view_mode != ViewMode.MULTICOLUMN;
+            if (view_mode != ViewMode.MULTICOLUMN) {
+                first_host.hexpand = true;
+                scrolled_window.hscrollbar_policy = Gtk.PolicyType.NEVER;
+            } else {
+                first_host.hexpand = false;
+                scrolled_window.hscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
+            }
         });
+
+        view_mode = ViewMode.PREFERRED;
     }
 
     /** Creates a new slot in the last slot hpane */

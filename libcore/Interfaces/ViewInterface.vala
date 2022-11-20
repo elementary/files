@@ -39,7 +39,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract bool select_after_add { get; set; }
     protected abstract bool has_open_with { get; set; default = false;}
 
-    public signal void selection_changed ();
+    public signal void selection_changed (); // No obvious way to avoid this signal
 
     public virtual void set_up_zoom_level () {}
     public virtual void zoom_in () {}

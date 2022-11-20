@@ -349,11 +349,12 @@ public class Files.Window : Gtk.ApplicationWindow {
                 /* Open a tab pointing at the default location if no tabs restored*/
                 // var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
                 add_tab ();
-                set_current_location_and_mode (
-                    mode,
-                    GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
-                    OpenFlag.DEFAULT
-                );
+                set_default_location_and_mode ();
+                // set_current_location_and_mode (
+                //     mode,
+                //     GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
+                //     OpenFlag.DEFAULT
+                // );
                 // new_container.set_location_and_mode (mode, location);
                 // add_tab (location, mode);
                 // /* Ensure default tab's slot is active so it can be focused */
@@ -370,93 +371,17 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
     }
 
-    // private ViewContainer? add_tab_by_uri (string uri, ViewMode mode = ViewMode.PREFERRED) {
-    //     var file = get_file_from_uri (uri);
-    //     if (file != null) {
-    //         return add_tab (file, mode);
-    //     } else {
-    //         return add_tab ();
-    //     }
-    // }
-
-    // private ViewContainer? add_tab (
-    //     GLib.File _location = GLib.File.new_for_commandline_arg (Environment.get_home_dir ()),
-    //     ViewMode mode = ViewMode.PREFERRED,
-    //     bool ignore_duplicate = false
-    // ) {
     private ViewContainer? add_tab () {
-
-
-warning ("add tab");
-        // GLib.File location;
-        // For simplicity we do not use cancellable. If issues arise may need to do this.
-        // var ftype = _location.query_file_type (FileQueryInfoFlags.NONE, null);
-
-        // if (ftype == FileType.REGULAR) {
-        //     location = _location.get_parent ();
-        // } else {
-        //     location = _location.dup ();
-        // }
-
-        // if (ignore_duplicate) {
-        //     bool is_child;
-        //     var existing_tab_position = location_is_duplicate (location, out is_child);
-        //     if (existing_tab_position >= 0) {
-        //         tab_view.selected_page = tab_view.get_nth_page (existing_tab_position);
-        //         change_tab (existing_tab_position);
-
-        //         if (is_child) {
-        //             /* Select the child  */
-        //             current_container.focus_location_if_in_current_directory (location);
-        //         }
-
-        //         return null;
-        //     }
-        // }
-
-        // mode = real_mode (mode);
         var content = new ViewContainer ();
         var tab = tab_view.append (content);
         tab_view.selected_page = tab;
         /* Capturing ViewContainer object reference in closure prevents its proper destruction
          * so capture its unique id instead */
         var id = content.id;
-        // content.tab_name_changed.connect ((tab_name) => {
-        //     set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
-        // });
         content.notify["tab-name"].connect (() => {
             var tab_name = content.tab_name;
             set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
         });
-        // content.notify["is-loading"].connect (() => {
-        //     if (restoring_tabs > 0 && !content.is_loading) {
-        //         restoring_tabs--;
-        //         /* Each restored tab must signal with is_loading false once */
-        //         assert (restoring_tabs >= 0);
-        //         if (!content.can_show_folder) {
-        //             warning ("Cannot restore %s, ignoring", content.uri);
-        //             /* remove_tab function uses Idle loop to close tab */
-        //             remove_content (content); //TODO Reimplement
-        //         }
-        //     }
-
-        //     content.working = content.is_loading;
-        //     update_top_menu ();
-        //     if (restoring_tabs == 0 && !content.is_loading) {
-        //         save_tabs (); //TODO Reimplement
-        //     }
-        // });
-
-        // content.notify["active"].connect (() => {
-        //     update_top_menu ();
-        // });
-
-        // if (!location.equal (_location)) {
-        //     content.set_location_and_mode (mode, location, {_location});
-        // } else {
-        //     content.set_location_and_mode (mode, location);
-        // }
-
         return content;
     }
 
@@ -917,14 +842,13 @@ warning ("add tab");
     }
 
     private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
-warning ("Action go to");
         switch (param.get_string ()) {
             case "RECENT":
                 uri_path_change_request (Files.RECENT_URI, OpenFlag.DEFAULT);
                 break;
 
             case "HOME":
-                uri_path_change_request ("file://" + PF.UserUtils.get_real_user_home (), OpenFlag.DEFAULT);
+                set_default_location_and_mode ();
                 break;
 
             case "TRASH":
@@ -1185,7 +1109,6 @@ warning ("Action go to");
     }
 
     private void action_path_change_request (GLib.SimpleAction action, GLib.Variant? param) {
-warning ("action path change");
         string uri;
         uint32 flag;
         param.@get ("(su)", out uri, out flag);
@@ -1514,7 +1437,6 @@ warning ("action path change");
     }
 
     public void mount_removed (Mount mount) {
-warning ("mount removed");
         debug ("Mount %s removed", mount.get_name ());
         GLib.File root = mount.get_root ();
 
@@ -1524,10 +1446,11 @@ warning ("mount removed");
 
             if (location == null || location.has_prefix (root) || location.equal (root)) {
                 if (view_container == current_container) {
-                    view_container.focus_location (
-                        GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
-                        OpenFlag.DEFAULT
-                    );
+                    set_default_location_and_mode ();
+                    // view_container.focus_location (
+                    //     GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
+                    //     OpenFlag.DEFAULT
+                    // );
                 } else {
                     remove_content (view_container);
                 }
@@ -1535,8 +1458,8 @@ warning ("mount removed");
         }
     }
 
+    // Called when have URI and OpenFlag but not mode
     public void uri_path_change_request (string p, OpenFlag flag) {
-warning ("WINDOW: uri path change");
         /* Make a sanitized file from the uri */
         if (p == "") {
             return;
@@ -1566,9 +1489,18 @@ warning ("WINDOW: uri path change");
         }
     }
 
+    //Called when have mode, location file and OpenFlag
     private void set_current_location_and_mode (ViewMode mode, GLib.File loc, OpenFlag flag) {
         update_top_menu (loc.get_uri ());
         current_container.set_location_and_mode (mode, loc, null, flag);
+    }
+
+    private void set_default_location_and_mode () {
+        set_current_location_and_mode (
+            current_container.view_mode,
+            GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
+            OpenFlag.DEFAULT
+        );
     }
 
     /** Use this function to standardise how locations are generated from uris **/
