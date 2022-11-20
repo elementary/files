@@ -120,15 +120,19 @@ public class Files.MultiSlot : Gtk.Box {
             host = first_host;
         }
 
-        var end_label = new Gtk.Label ("") {
-            hexpand = false
-        };
+        Gtk.Widget? end_widget = null;
+        if (view_mode == ViewMode.MULTICOLUMN) {
+            end_widget = new Gtk.Label ("") {
+                hexpand = false
+            };
+        }
+
         if (host.start_child != null) {
             truncate_list_after_host (host);
             var hpaned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
             hpaned.start_child = guest;
             // if (view_mode == ViewMode.MULTICOLUMN) {
-            hpaned.end_child = end_label;
+            hpaned.end_child = end_widget;
             // }
             hpaned.resize_start_child = false;
             hpaned.shrink_start_child = false;
@@ -137,7 +141,7 @@ public class Files.MultiSlot : Gtk.Box {
             host.end_child = hpaned;
         } else {
             host.start_child = guest;
-            host.end_child = end_label;
+            host.end_child = end_widget;
         }
 
         current_slot = guest;
