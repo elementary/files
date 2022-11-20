@@ -136,9 +136,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                     unselect_all ();
                     var file = item.file;
                     if (file.is_folder ()) {
-warning ("activate action ");
-                        // path_change_request (file.location, Files.OpenFlag.APPEND);
-                        activate_action ("win.path-change-request", "(su)", file.uri, OpenFlag.APPEND);
+                        change_path (file.location, Files.OpenFlag.APPEND);
                     } else {
                         warning ("Open file with app");
                     }
@@ -244,76 +242,8 @@ warning ("activate action ");
         }
     }
 
-    private void open_file (Files.File _file, Files.OpenFlag flag) {
-        Files.File file = _file;
-        if (_file.is_recent_uri_scheme ()) {
-            file = Files.File.get_by_uri (file.get_display_target_uri ());
-        }
-
-        var is_folder_type = file.is_folder () ||
-                             (file.get_ftype () == "inode/directory") ||
-                             file.is_root_network_folder ();
-
-        if (file.is_trashed () && !is_folder_type && flag == Files.OpenFlag.APP) {
-            PF.Dialogs.show_error_dialog (
-                ///TRANSLATORS: '%s' is a quoted placehorder for the name of a file.
-                _("“%s” must be moved from Trash before opening").printf (file.basename),
-                _("Files inside Trash cannot be opened. To open this file, it must be moved elsewhere."),
-                (Gtk.Window)get_ancestor (typeof (Gtk.Window))
-            );
-            return;
-        }
-
-        var default_app = MimeActions.get_default_application_for_file (file);
-        var location = file.get_target_location ();
-        switch (flag) {
-            case Files.OpenFlag.NEW_TAB:
-            case Files.OpenFlag.NEW_WINDOW:
-            case Files.OpenFlag.NEW_ROOT:
-                change_path (location, flag);
-                // path_change_request (location, flag);
-                break;
-            case Files.OpenFlag.DEFAULT: // Take default action
-                if (is_folder_type) {
-                    change_path (location, flag);
-                    // path_change_request (location, flag);
-                } else if (file.is_executable ()) {
-                    var content_type = FileUtils.get_or_guess_content_type (file);
-                    //Do not execute scripts, desktop files etc
-                    if (!ContentType.is_a (content_type, "text/plain")) {
-                        try {
-                            file.execute (null);
-                        } catch (Error e) {
-                            PF.Dialogs.show_warning_dialog (
-                                _("Cannot execute this file"),
-                                e.message,
-                                (Gtk.Window)get_ancestor (typeof (Gtk.Window)
-                            ));
-                        }
-
-                        return;
-                    }
-                } else {
-                    if (FileUtils.can_open_file (
-                            file, true, (Gtk.Window)get_ancestor (typeof (Gtk.Window)))
-                        ) {
-                        MimeActions.open_glib_file_request (file.location, this, default_app);
-                    }
-                }
-
-                break;
-            case Files.OpenFlag.APP:
-                if (FileUtils.can_open_file (
-                        file, true, (Gtk.Window)get_ancestor (typeof (Gtk.Window)))
-                    ) {
-                    MimeActions.open_glib_file_request (file.location, this, default_app);
-                }
-                break;
-        }
-    }
-
     /* Private methods */
-    private void change_path (GLib.File loc, OpenFlag flag) {
+    protected override void change_path (GLib.File loc, OpenFlag flag) {
         activate_action ("win.path-change-request", "(su)", loc.get_uri (), flag);
     }
 
