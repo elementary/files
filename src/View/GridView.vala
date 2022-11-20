@@ -464,7 +464,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     public override void select_files (List<Files.File> files_to_select) {
-    warning ("GV select files");
         foreach (var file in files_to_select) {
             show_and_select_file (file, true, false, false);
         }
@@ -496,7 +495,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     public override void open_selected (Files.OpenFlag flag) {
-        warning ("open selected %s", flag.to_string ());
         List<Files.File> selected_files = null;
         var n_files = get_selected_files (out selected_files);
         if (n_files == 0) {

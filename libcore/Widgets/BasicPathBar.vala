@@ -186,8 +186,6 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                         var crumb = (Crumb)(widget.get_ancestor (typeof (Crumb)));
                         assert (crumb is Crumb);
                         if (crumb.dir_path != null) {
-// warning ("pathbar goto");
-                            // uri = protocol + crumb.dir_path;
                             activate_action ("win.path-change-request", "(su)", protocol + crumb.dir_path, OpenFlag.DEFAULT);
                             break;
                         }

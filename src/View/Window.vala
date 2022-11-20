@@ -1469,18 +1469,15 @@ public class Files.Window : Gtk.ApplicationWindow {
         if (file != null) {
             switch (flag) {
                 case Files.OpenFlag.NEW_TAB:
-                    // add_tab (file, current_container.view_mode);
                     var mode = current_container.view_mode;
                     add_tab ();
                     set_current_location_and_mode (mode, file, flag);
-                    // current_container.focus_location (file, OpenFlag.DEFAULT);
                     break;
                 case Files.OpenFlag.NEW_WINDOW:
                     add_window (file, current_container.view_mode);
                     break;
                 default:
                     var mode = current_container.view_mode;
-                    // current_container.focus_location (file, flag);
                     set_current_location_and_mode (mode, file, flag);
                     break;
             }

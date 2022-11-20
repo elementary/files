@@ -131,7 +131,7 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
-    // For simplicity every navigation results in a new slot and starts here.
+    // For simplicity every navigation (except internal to multislot) results in a new slot and starts here.
     public void set_location_and_mode (
         ViewMode mode,
         GLib.File? loc,
@@ -193,92 +193,91 @@ public class Files.ViewContainer : Gtk.Box {
         activate_action ("selection-changing", null);
         activate_action ("win.loading-uri", "s", location.get_uri ());
         added_slot.initialize_directory.begin ((obj, res) => {
-            activate_action ("win.loading-finished", null);
-            if (!added_slot.initialize_directory.end (res)) {
-                return;
-            }
-
-            var dir = added_slot.directory;
-            can_show_folder = dir.can_load;
-            /* First deal with all cases where directory could not be loaded */
-            if (!can_show_folder) {
-                if (dir.is_recent && !Files.Preferences.get_default ().remember_history) {
-                    content = new PrivacyModeOn (this);
-                } else if (!dir.file.exists) {
-                    if (!dir.is_trash) {
-                        content = new DirectoryNotFound (dir, this);
+            if (added_slot.initialize_directory.end (res)) {
+                var dir = added_slot.directory;
+                can_show_folder = dir.can_load;
+                /* First deal with all cases where directory could not be loaded */
+                if (!can_show_folder) {
+                    if (dir.is_recent && !Files.Preferences.get_default ().remember_history) {
+                        content = new PrivacyModeOn (this);
+                    } else if (!dir.file.exists) {
+                        if (!dir.is_trash) {
+                            content = new DirectoryNotFound (dir, this);
+                        } else {
+                            content = new Welcome (
+                                _("This Folder Does Not Exist"),
+                                _("You cannot create a folder here.")
+                            );
+                        }
+                    } else if (!dir.network_available) {
+                        content = new Welcome (
+                            _("The network is unavailable"),
+                            _("A working network is needed to reach this folder") +
+                            "\n\n" +
+                            dir.last_error_message);
+                    } else if (dir.permission_denied) {
+                        content = new Welcome (
+                            _("This Folder Does Not Belong to You"),
+                            _("You don't have permission to view this folder.")
+                        );
+                    } else if (!dir.file.is_connected) {
+                        content = new Welcome (
+                            _("Unable to Mount Folder"),
+                            _("Could not connect to the server for this folder.") +
+                            "\n\n" +
+                            dir.last_error_message
+                        );
+                    } else if (added_slot.directory.state == Directory.State.TIMED_OUT) {
+                        content = new Welcome (
+                            _("Unable to Display Folder Contents"),
+                            _("The operation timed out.") + "\n\n" + dir.last_error_message
+                        );
                     } else {
                         content = new Welcome (
-                            _("This Folder Does Not Exist"),
-                            _("You cannot create a folder here.")
+                            _("Unable to Show Folder"),
+                            _("The server for this folder could not be located.") +
+                            "\n\n" +
+                            dir.last_error_message
                         );
                     }
-                } else if (!dir.network_available) {
-                    content = new Welcome (
-                        _("The network is unavailable"),
-                        _("A working network is needed to reach this folder") +
-                        "\n\n" +
-                        dir.last_error_message);
-                } else if (dir.permission_denied) {
-                    content = new Welcome (
-                        _("This Folder Does Not Belong to You"),
-                        _("You don't have permission to view this folder.")
-                    );
-                } else if (!dir.file.is_connected) {
-                    content = new Welcome (
-                        _("Unable to Mount Folder"),
-                        _("Could not connect to the server for this folder.") +
-                        "\n\n" +
-                        dir.last_error_message
-                    );
-                } else if (added_slot.directory.state == Directory.State.TIMED_OUT) {
-                    content = new Welcome (
-                        _("Unable to Display Folder Contents"),
-                        _("The operation timed out.") + "\n\n" + dir.last_error_message
-                    );
+                /* Now deal with cases where file (s) within the loaded folder has to be selected */
+                } else if (selected_locations != null) {
+                    added_slot.select_glib_files (selected_locations, selected_locations.first ().data);
+                    selected_locations = null;
+                } else if (dir.selected_file != null) {
+                    if (dir.selected_file.query_exists ()) {
+    warning ("after load focus");
+                        focus_location_if_in_current_directory (dir.selected_file);
+                    } else {
+                        content = new Welcome (
+                            _("File not Found"),
+                            _("The file selected no longer exists.")
+                        );
+                        can_show_folder = false;
+                    }
                 } else {
-                    content = new Welcome (
-                        _("Unable to Show Folder"),
-                        _("The server for this folder could not be located.") +
-                        "\n\n" +
-                        dir.last_error_message
-                    );
+                    added_slot.show_first_item ();
                 }
-            /* Now deal with cases where file (s) within the loaded folder has to be selected */
-            } else if (selected_locations != null) {
-                added_slot.select_glib_files (selected_locations, selected_locations.first ().data);
-                selected_locations = null;
-            } else if (dir.selected_file != null) {
-                if (dir.selected_file.query_exists ()) {
-warning ("after load focus");
-                    focus_location_if_in_current_directory (dir.selected_file);
+
+                if (can_show_folder) {
+                    content = multi_slot;
+                    var directory = dir.file;
+
+                    /* Only record valid folders (will also log Zeitgeist event) */
+                    browser.record_uri (directory.uri); /* will ignore null changes i.e reloading*/
+
+                    /* Notify plugins */
+                    /* infobars are added to the view, not the active slot */
+                    // plugins.directory_loaded (window, view, directory);
                 } else {
-                    content = new Welcome (
-                        _("File not Found"),
-                        _("The file selected no longer exists.")
-                    );
-                    can_show_folder = false;
+                    /* Save previous uri but do not record current one */
+                    browser.record_uri (null);
                 }
-            } else {
-                added_slot.show_first_item ();
+
+                multi_slot.update_total_width ();
             }
 
-            if (can_show_folder) {
-                content = multi_slot;
-                var directory = dir.file;
-
-                /* Only record valid folders (will also log Zeitgeist event) */
-                browser.record_uri (directory.uri); /* will ignore null changes i.e reloading*/
-
-                /* Notify plugins */
-                /* infobars are added to the view, not the active slot */
-                // plugins.directory_loaded (window, view, directory);
-            } else {
-                /* Save previous uri but do not record current one */
-                browser.record_uri (null);
-            }
-
-            multi_slot.update_total_width ();
+            activate_action ("win.loading-finished", null);
         });
     }
 
