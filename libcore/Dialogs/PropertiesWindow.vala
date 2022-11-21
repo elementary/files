@@ -294,15 +294,20 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
         cancellable = new GLib.Cancellable ();
         update_selection_size (); /* Start counting first to get number of selected files and folders */
 
-        /* create some widgets first (may be hidden by update_selection_size ()) */
+        /* Build header box */
         var file_icon = new Gtk.Image () {
             pixel_size = 64,
-            gicon = first_selected_file.gicon,
-            paintable = first_selected_file.paintable
         };
-        overlay_emblems (file_icon, first_selected_file.emblems_list);
+        first_selected_file.update_gicon_and_paintable ();
 
-        /* Build header box */
+        if (first_selected_file.paintable != null) {
+            file_icon.set_from_paintable (first_selected_file.paintable);
+        } else if (first_selected_file.gicon != null) {
+            file_icon.set_from_gicon (first_selected_file.gicon);
+        } else {
+            file_icon.set_from_icon_name ("image-missing");
+        }
+        var image_widget = create_image_widget (file_icon, first_selected_file.emblems_list);
         if (!only_one ) {
             var label = new Gtk.Label (get_selected_label (selected_folders, selected_files));
             label.halign = Gtk.Align.START;
@@ -330,7 +335,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             header_widget = entry;
         }
 
-        create_header (header_widget);
+        create_header (image_widget, header_widget);
 
         /* Permissions */
         var owner_user_choice = create_owner_choice ();

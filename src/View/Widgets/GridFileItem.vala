@@ -94,8 +94,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
                 wrap = false,
                 ellipsize = Pango.EllipsizeMode.END,
                 lines = 1,
-                // margin_top = 3,
-                // margin_bottom = 3,
                 margin_start = 3,
                 margin_end = 3,
             };
@@ -241,13 +239,11 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         file.update_gicon_and_paintable ();
         if (file.paintable != null) {
             file_icon.set_from_paintable (file.paintable);
+        } else if (file.gicon != null) {
+            file_icon.set_from_gicon (file.gicon);
         } else {
-            if (file.gicon != null) {
-                file_icon.set_from_gicon (file.gicon);
-            } else {
-                critical ("File %s has neither paintable nor gicon", file.uri);
-                file_icon.set_from_icon_name ("dialog-error");
-            }
+            critical ("File %s has neither paintable nor gicon", file.uri);
+            file_icon.set_from_icon_name ("dialog-error");
         }
 
         foreach (var emblem in emblems) {

@@ -24,13 +24,7 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
     protected Gtk.Grid info_grid;
     protected int line; //Next free line in info grid
     protected Gtk.Grid layout;
-    // protected Gtk.Widget header_title;
     protected Files.StorageBar? storagebar = null;
-
-    // protected enum PanelType {
-    //     INFO,
-    //     PERMISSIONS
-    // }
 
     protected AbstractPropertiesDialog (string _title, Gtk.Window parent) {
         Object (title: _title,
@@ -43,18 +37,6 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
 
     construct {
         set_default_size (220, -1);
-
-        var info_header = new Granite.HeaderLabel (_("Info"));
-
-        info_grid = new Gtk.Grid () {
-            column_spacing = 6,
-            row_spacing = 6
-        };
-
-        line = 0;
-        info_grid.attach (info_header, 0, line++, 2, 1);
-
-
         layout = new Gtk.Grid () {
             margin_bottom = 12,
             margin_start = 12,
@@ -63,27 +45,22 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
             column_spacing = 12,
             row_spacing = 6
         };
-
-
-
+        info_grid = new Gtk.Grid () {
+            column_spacing = 6,
+            row_spacing = 6
+        };
+        line = 0;
+        info_grid.attach (new Granite.HeaderLabel (_("Info")), 0, line++, 2, 1);
         get_content_area ().append (layout);
-
         add_button (_("Close"), Gtk.ResponseType.CLOSE);
-        response.connect ((source, type) => {
-            switch (type) {
-                case Gtk.ResponseType.CLOSE:
-                    destroy ();
-                    break;
-            }
-        });
     }
 
     protected Gtk.Label make_key_label (string label) {
         var key_label = new Gtk.Label (label) {
-            // halign = Gtk.Align.START,
-            // margin_start = 12
+            halign = Gtk.Align.END,
+            margin_start = 12
         };
-        key_label.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
+        // key_label.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
         return key_label;
     }
 
@@ -91,23 +68,28 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
     protected Gtk.Label make_value_label (string label) {
         var val_label = new Gtk.Label (label) {
             can_focus = true,
-            // halign = Gtk.Align.START,
+            halign = Gtk.Align.START,
             selectable = true,
             use_markup = true
         };
-        val_label.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
+        // val_label.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
         return val_label;
     }
 
-    protected void create_header (Gtk.Widget header_widget) {
+    protected void create_header (Gtk.Widget? image_widget, Gtk.Widget header_widget) {
+        if (image_widget != null) {
+            layout.attach (image_widget, 0, 0, 1, 1);
+        }
+
         header_widget.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
         header_widget.hexpand = true;
         header_widget.margin_top = 6;
         header_widget.valign = Gtk.Align.CENTER;
+        header_widget.halign = Gtk.Align.START;
         layout.attach (header_widget, 1, 0, 1, 1);
     }
 
-    protected void overlay_emblems (Gtk.Image file_icon, List<string>? emblems_list) {
+    protected Gtk.Widget create_image_widget (Gtk.Image file_image, List<string>? emblems_list) {
         if (emblems_list != null) {
             int pos = 0;
             var emblem_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
@@ -125,18 +107,17 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
                 }
             }
 
-            var file_img = new Gtk.Overlay () {
+            var image_overlay = new Gtk.Overlay () {
                 valign = Gtk.Align.CENTER,
                 width_request = 48,
                 height_request = 48
             };
 
-            file_img.add_overlay (file_icon);
-            file_img.add_overlay (emblem_box);
-
-            layout.attach (file_img, 0, 0, 1, 1);
+            image_overlay.child = file_image;
+            image_overlay.add_overlay (emblem_box);
+            return image_overlay;
         } else {
-            layout.attach (file_icon, 0, 0, 1, 1);
+            return file_image;
         }
     }
 

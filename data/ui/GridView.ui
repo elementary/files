@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <menu id="item_model">
-  <!--TODO - Open in, Properties, Plugins-->
+  <!--TODO - Open in, Plugins-->
     <section>
       <submenu>
           <attribute name="label" translatable="yes">Open In</attribute>
@@ -55,6 +55,12 @@
       <item>
         <attribute name="label" translatable="yes">Bookmark</attribute>
         <attribute name="action">win.bookmark</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Properties</attribute>
+        <attribute name="action">win.properties</attribute>
       </item>
     </section>
   </menu>

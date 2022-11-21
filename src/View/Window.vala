@@ -79,7 +79,8 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"loading-uri", action_loading_uri, "s"},
         {"loading-finished", action_loading_finished},
         {"selection-changing", action_selection_changing},
-        {"update-selection", action_update_selection}
+        {"update-selection", action_update_selection},
+        {"properties", action_properties}
     };
 
     public uint window_number { get; construct; }
@@ -1125,6 +1126,16 @@ public class Files.Window : Gtk.ApplicationWindow {
         List<Files.File> selected_files = null;
         current_view_widget.get_selected_files (out selected_files);
         current_container.update_selection (selected_files);
+    }
+
+    private void action_properties () {
+        List<Files.File> selected_files = null;
+        current_view_widget.get_selected_files (out selected_files);
+        var properties_window = new PropertiesWindow (selected_files, current_view_widget, this);
+        properties_window.response.connect ((res) => {
+            properties_window.destroy ();
+        });
+        properties_window.present ();
     }
 
     private void before_undo_redo () {

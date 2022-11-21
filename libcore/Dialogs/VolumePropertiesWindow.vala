@@ -53,10 +53,9 @@ public class Files.VolumePropertiesWindow : Files.AbstractPropertiesDialog {
 
         /* Build the header box */
         var file_icon = new Gtk.Image.from_gicon (mount_icon);
-
+        Gtk.Widget? image_widget = null; //TODO Provide fallback
         if (file_icon != null) {
             var emblems_list = new GLib.List<string> ();
-
             /* Overlay the 'readonly' emblem to tell the user the disk is
              * mounted as RO */
             if (info != null &&
@@ -65,10 +64,11 @@ public class Files.VolumePropertiesWindow : Files.AbstractPropertiesDialog {
                 emblems_list.append ("emblem-readonly");
             }
 
-            overlay_emblems (file_icon, emblems_list);
+            image_widget = create_image_widget (file_icon, emblems_list);
         }
 
         create_header (
+            image_widget,
             new Gtk.Label (mount_name) {
                 halign = Gtk.Align.START
             }
