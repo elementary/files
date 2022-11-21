@@ -87,24 +87,8 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
-    private Gtk.Widget? _content;
-    private Gtk.Widget? content {
-        set {
-            if (_content != null) {
-                _content.unparent ();
-                // _content.destroy ();
-            }
-
-            _content = value;
-            if (_content != null) {
-                append (_content);
-            }
-        }
-
-        get {
-            return _content;
-        }
-    }
+    private Gtk.Widget? content = null;
+    private Gtk.Overlay overlay;
     private OverlayBar overlay_statusbar;
     private Browser browser;
     private GLib.List<GLib.File>? selected_locations = null;
@@ -116,8 +100,11 @@ public class Files.ViewContainer : Gtk.Box {
     construct {
         browser = new Browser ();
         id = ViewContainer.get_next_container_id ();
-        multi_slot = new MultiSlot (this);
-        overlay_statusbar = new OverlayBar (multi_slot.overlay); // Adds itself to overlay
+        multi_slot = new MultiSlot ();
+        overlay = new Gtk.Overlay ();
+        overlay.child = multi_slot;
+        overlay_statusbar = new OverlayBar (overlay); // Overlays itself on overlay
+        append (overlay);
     }
 
     public void folder_deleted (GLib.File deleted_file) {
@@ -169,10 +156,13 @@ public class Files.ViewContainer : Gtk.Box {
         // added_slot = multi_slot.set_tip_uri (loc.get_uri () ?? current_location.get_uri ());
         added_slot = multi_slot.add_location (loc ?? current_location);
 
-        //TODO Move overlaybar to Window
         overlay_statusbar.cancel ();
         overlay_statusbar.halign = Gtk.Align.END;
         overlay_statusbar.hide ();
+        if (content != null) {
+            overlay.remove_overlay (content);
+            content = null;
+        }
 
         string? slot_path = Uri.unescape_string (this.uri);
         string tab_name = Files.INVALID_TAB_NAME;
@@ -247,7 +237,6 @@ public class Files.ViewContainer : Gtk.Box {
                     selected_locations = null;
                 } else if (dir.selected_file != null) {
                     if (dir.selected_file.query_exists ()) {
-    warning ("after load focus");
                         focus_location_if_in_current_directory (dir.selected_file);
                     } else {
                         content = new Welcome (
@@ -261,9 +250,8 @@ public class Files.ViewContainer : Gtk.Box {
                 }
 
                 if (can_show_folder) {
-                    content = multi_slot;
                     var directory = dir.file;
-
+                    overlay_statusbar.visible = true;
                     /* Only record valid folders (will also log Zeitgeist event) */
                     browser.record_uri (directory.uri); /* will ignore null changes i.e reloading*/
 
@@ -273,6 +261,12 @@ public class Files.ViewContainer : Gtk.Box {
                 } else {
                     /* Save previous uri but do not record current one */
                     browser.record_uri (null);
+                    assert (content != null);
+                    content.halign = Gtk.Align.START;
+                    content.valign = Gtk.Align.START;
+                    content.visible = true;
+
+                    overlay.add_overlay (content);
                 }
 
                 multi_slot.update_total_width ();
@@ -336,13 +330,6 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
-    // public void set_active_state (bool is_active, bool animate = true) {
-    //     if (slot != null) {
-    //         /* Since async loading it may not have been determined whether slot is loadable */
-    //         slot.set_active_state (is_active, animate);
-    //     }
-    // }
-
     public void focus_location (GLib.File? loc,
                                 OpenFlag flag,
                                 bool no_path_change = false,
@@ -354,7 +341,6 @@ public class Files.ViewContainer : Gtk.Box {
         if (slot == null) {
             return;
         }
-warning ("focus location %s", loc != null ? loc.get_basename () : "null");
         /* Search can generate null focus requests if no match - deselect previous search selection */
         if (loc == null) {
             slot.set_all_selected (false);
@@ -399,7 +385,6 @@ warning ("focus location %s", loc != null ? loc.get_basename () : "null");
         OpenFlag flag = OpenFlag.DEFAULT,
         bool unselect_others = false
     ) {
-warning ("focus if in current");
         focus_location (loc, flag, true, unselect_others);
     }
 
@@ -436,11 +421,11 @@ warning ("focus if in current");
     }
 
     public void selection_changing () {
-        // overlay_statusbar.selection_changing ();
+        overlay_statusbar.selection_changing ();
     }
 
     public void update_selection (List<Files.File> selected_files) {
-        // overlay_statusbar.update_selection (selected_files);
+        overlay_statusbar.update_selection (selected_files);
     }
 
 //TODO Use EventController

@@ -106,8 +106,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
             view_widget.width_request = preferred_column_width;
         }
 
-        // view_widget.path_change_request.connect (on_view_path_change_request);
-        // view_widget.selection_changed.connect (on_view_widget_selection_changed);
+        view_widget.selection_changed.connect (on_view_widget_selection_changed);
 
         append (extra_location_widgets);
         append (overlay);

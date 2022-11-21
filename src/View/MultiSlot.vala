@@ -17,16 +17,11 @@
 ***/
 
 public class Files.MultiSlot : Gtk.Box {
-    public Gtk.Overlay overlay { get; construct; }
-    public ViewContainer ctab { get; construct; }
     public GLib.File? root_location {
         get {
-            var first_host = viewport.child;
-            if (first_host != null) {
-                var first_slot = (Slot)(((Gtk.Paned)(first_host)).start_child);
-                if (first_slot != null) {
-                    return first_slot.directory.file.location;
-                }
+            var first_slot = (Slot)(first_host.start_child);
+            if (first_slot != null) {
+                return first_slot.directory.file.location;
             }
 
             return null;
@@ -41,6 +36,7 @@ public class Files.MultiSlot : Gtk.Box {
     private Gtk.Viewport viewport;
     private Gtk.Paned first_host;
     private Gtk.Adjustment hadj;
+
     private Slot? _current_slot;
     public Slot? current_slot {
         get {
@@ -50,21 +46,13 @@ public class Files.MultiSlot : Gtk.Box {
         set {
             _current_slot = value;
             if (value != null) {
+                //Idle to ensure slot realized before focussing
                 Idle.add (() => {
-                    //Ensure slot realized before focussing
                     current_slot.grab_focus ();
                     return Source.REMOVE;
                 });
             }
         }
-    }
-
-    private int total_width = 0;
-
-    public MultiSlot (ViewContainer ctab) {
-        Object (
-            ctab: ctab
-        );
     }
 
     ~MultiSlot () {
@@ -86,10 +74,7 @@ public class Files.MultiSlot : Gtk.Box {
         };
         viewport.child = first_host;
         scrolled_window.set_child (viewport);
-
-        overlay = new Gtk.Overlay ();
-        overlay.child = scrolled_window;
-        overlay.set_parent (this);
+        scrolled_window.set_parent (this);
 
         var key_controller = new Gtk.EventControllerKey () {
             propagation_phase = Gtk.PropagationPhase.CAPTURE
@@ -116,7 +101,7 @@ public class Files.MultiSlot : Gtk.Box {
 
     /** Creates a new slot in the last slot hpane */
     //NOTE Always appends so callers need to clear multislot first if required
-    public Slot add_location (GLib.File? loc) {
+    public Slot add_location (GLib.File loc) {
         // Always create new Slot rather than navigate for simplicity.
         //TODO Check for performance/memory leak
         var guest = new Slot (loc, view_mode);
@@ -194,7 +179,7 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
     private void truncate_list_after_host (Gtk.Paned host) {
-        if (host == null || host.end_child == null) {
+        if (host.end_child == null) {
             return;
         }
 
@@ -313,6 +298,7 @@ public class Files.MultiSlot : Gtk.Box {
                         } else {
                             flag = OpenFlag.DEFAULT;
                         }
+
                         activate_action (
                             "win.path-change-request", "(su)", selected_file.uri, flag
                         );
@@ -322,7 +308,6 @@ public class Files.MultiSlot : Gtk.Box {
                 }
 
                 return false;
-
             default:
                 break;
 
