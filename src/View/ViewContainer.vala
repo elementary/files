@@ -184,93 +184,84 @@ public class Files.ViewContainer : Gtk.Box {
         activate_action ("selection-changing", null);
         activate_action ("win.loading-uri", "s", location.get_uri ());
         added_slot.initialize_directory.begin ((obj, res) => {
-            if (added_slot.initialize_directory.end (res)) {
-                var dir = added_slot.directory;
-                can_show_folder = dir.can_load;
-                /* First deal with all cases where directory could not be loaded */
-                if (!can_show_folder) {
-                    if (dir.is_recent && !Files.Preferences.get_default ().remember_history) {
-                        content = new PrivacyModeOn (this);
-                    } else if (!dir.file.exists) {
-                        if (!dir.is_trash) {
-                            content = new DirectoryNotFound (dir, this);
-                        } else {
-                            content = new Welcome (
-                                _("This Folder Does Not Exist"),
-                                _("You cannot create a folder here.")
-                            );
-                        }
-                    } else if (!dir.network_available) {
-                        content = new Welcome (
-                            _("The network is unavailable"),
-                            _("A working network is needed to reach this folder") +
-                            "\n\n" +
-                            dir.last_error_message);
-                    } else if (dir.permission_denied) {
-                        content = new Welcome (
-                            _("This Folder Does Not Belong to You"),
-                            _("You don't have permission to view this folder.")
-                        );
-                    } else if (!dir.file.is_connected) {
-                        content = new Welcome (
-                            _("Unable to Mount Folder"),
-                            _("Could not connect to the server for this folder.") +
-                            "\n\n" +
-                            dir.last_error_message
-                        );
-                    } else if (added_slot.directory.state == Directory.State.TIMED_OUT) {
-                        content = new Welcome (
-                            _("Unable to Display Folder Contents"),
-                            _("The operation timed out.") + "\n\n" + dir.last_error_message
-                        );
+            added_slot.initialize_directory.end (res);
+            var dir = added_slot.directory;
+            can_show_folder = dir.can_load;
+            /* First deal with all cases where directory could not be loaded */
+            if (!can_show_folder) {
+                if (dir.is_recent && !Files.Preferences.get_default ().remember_history) {
+                    content = new PrivacyModeOn (this);
+                } else if (!dir.file.exists) {
+                    if (!dir.is_trash) {
+                        content = new DirectoryNotFound (dir, this);
                     } else {
-                        content = new Welcome (
-                            _("Unable to Show Folder"),
-                            _("The server for this folder could not be located.") +
-                            "\n\n" +
-                            dir.last_error_message
-                        );
+                        content = new Granite.Placeholder (_("This Folder Does Not Exist")) {
+                            description = _("You cannot create a folder here.")
+                        };
                     }
-                /* Now deal with cases where file (s) within the loaded folder has to be selected */
-                } else if (selected_locations != null) {
-                    added_slot.select_glib_files (selected_locations, selected_locations.first ().data);
-                    selected_locations = null;
-                } else if (dir.selected_file != null) {
-                    if (dir.selected_file.query_exists ()) {
-                        focus_location_if_in_current_directory (dir.selected_file);
-                    } else {
-                        content = new Welcome (
-                            _("File not Found"),
-                            _("The file selected no longer exists.")
-                        );
-                        can_show_folder = false;
-                    }
+                } else if (!dir.network_available) {
+                    content = new Granite.Placeholder (_("The network is unavailable")) {
+                        description = _("A working network is needed to reach this folder") +
+                                    "\n\n" +
+                                    dir.last_error_message
+                    };
+                } else if (dir.permission_denied) {
+                    content = new Granite.Placeholder (_("This Folder Does Not Belong to You")) {
+                        description = _("You don't have permission to view this folder.")
+                    };
+                } else if (!dir.file.is_connected) {
+                    content = new Granite.Placeholder (_("Unable to Mount Folder")) {
+                        description = _("Could not connect to the server for this folder.") +
+                        "\n\n" +
+                        dir.last_error_message
+                    };
+                } else if (added_slot.directory.state == Directory.State.TIMED_OUT) {
+                    content = new Granite.Placeholder (_("Unable to Display Folder Contents")) {
+                        description = _("The operation timed out") + "\n\n" + dir.last_error_message
+                    };
                 } else {
-                    added_slot.show_first_item ();
+                    content = new Granite.Placeholder (_("Unable to Show Folder")) {
+                        description = dir.last_error_message
+                    };
                 }
-
-                if (can_show_folder) {
-                    var directory = dir.file;
-                    overlay_statusbar.visible = true;
-                    /* Only record valid folders (will also log Zeitgeist event) */
-                    browser.record_uri (directory.uri); /* will ignore null changes i.e reloading*/
-
-                    /* Notify plugins */
-                    /* infobars are added to the view, not the active slot */
-                    // plugins.directory_loaded (window, view, directory);
+            /* Now deal with cases where file (s) within the loaded folder has to be selected */
+            } else if (selected_locations != null) {
+                added_slot.select_glib_files (selected_locations, selected_locations.first ().data);
+                selected_locations = null;
+            } else if (dir.selected_file != null) {
+                if (dir.selected_file.query_exists ()) {
+                    focus_location_if_in_current_directory (dir.selected_file);
                 } else {
-                    /* Save previous uri but do not record current one */
-                    browser.record_uri (null);
-                    assert (content != null);
-                    content.halign = Gtk.Align.START;
-                    content.valign = Gtk.Align.START;
-                    content.visible = true;
-
-                    overlay.add_overlay (content);
+                    content = new Granite.Placeholder (_("File not Found")) {
+                        description = _("The file selected no longer exists")
+                    };
+                    can_show_folder = false;
                 }
-
-                multi_slot.update_total_width ();
+            } else {
+                added_slot.show_first_item ();
             }
+
+            if (can_show_folder) {
+                multi_slot.update_total_width ();
+                var directory = dir.file;
+                overlay_statusbar.visible = true;
+                /* Only record valid folders (will also log Zeitgeist event) */
+                browser.record_uri (directory.uri); /* will ignore null changes i.e reloading*/
+
+                /* Notify plugins */
+                /* infobars are added to the view, not the active slot */
+                // plugins.directory_loaded (window, view, directory);
+            } else {
+                /* Save previous uri but do not record current one */
+                browser.record_uri (null);
+                assert (content != null);
+                content.halign = Gtk.Align.CENTER;
+                content.valign = Gtk.Align.CENTER;
+                // content.visible = true;
+
+                overlay.add_overlay (content);
+            }
+
 
             activate_action ("win.loading-finished", null);
         });

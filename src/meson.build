@@ -32,7 +32,6 @@ pantheon_files_exec = executable (
     'View/Widgets/OverlayBar.vala',
     'View/Widgets/ProgressInfoWidget.vala',
     'View/Widgets/SearchResults.vala',
-    'View/Widgets/Welcome.vala',
 
     'View/Sidebar/AbstractMountableRow.vala',
     'View/Sidebar/BookmarkListBox.vala',
