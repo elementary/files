@@ -20,7 +20,6 @@
        ammonkey <am.monkeyd@gmail.com>
 ***/
 
-// namespace Files.Chrome {
 public class Files.ViewSwitcher : Gtk.Box {
     public string action_name { get; construct; }
     private GLib.ListModel children;
@@ -29,7 +28,6 @@ public class Files.ViewSwitcher : Gtk.Box {
     }
 
     construct {
-        // children = observe_children ();
         add_css_class ("linked");
 
         /* Grid View item */
@@ -105,5 +103,19 @@ public class Files.ViewSwitcher : Gtk.Box {
 
             child = child.get_next_sibling ();
         }
+    }
+
+    public ViewMode get_mode () {
+        var child = get_first_child ();
+        while (child != null) {
+            if (((Gtk.ToggleButton)child).active) {
+                return (ViewMode)(child.get_data<uint32> ("id"));
+            }
+
+            child = child.get_next_sibling ();
+        }
+
+        critical ("No active mode found - return 0");
+        return 0;
     }
 }

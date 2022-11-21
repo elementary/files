@@ -347,26 +347,15 @@ public class Files.Window : Gtk.ApplicationWindow {
                 restore_tabs () < 1) {
 
                 /* Open a tab pointing at the default location if no tabs restored*/
-                // var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
                 add_tab ();
                 set_default_location_and_mode ();
-                // set_current_location_and_mode (
-                //     mode,
-                //     GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
-                //     OpenFlag.DEFAULT
-                // );
-                // new_container.set_location_and_mode (mode, location);
-                // add_tab (location, mode);
-                // /* Ensure default tab's slot is active so it can be focused */
-                // current_container.set_active_state (true, false);
             }
         } else {
             /* Open tabs at each requested location */
             /* As files may be derived from commandline, we use a new sanitized one */
             foreach (var file in files) {
                 add_tab ();
-                set_current_location_and_mode (mode, file, OpenFlag.DEFAULT);
-                // add_tab (get_file_from_uri (file.get_uri ()), mode, ignore_duplicate);
+                set_current_location_and_mode (real_mode (mode), file, OpenFlag.DEFAULT);
             }
         }
     }
@@ -530,7 +519,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         GLib.File location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
         ViewMode mode = ViewMode.PREFERRED
     ) {
-        marlin_app.create_window (location, real_mode (mode));
+        marlin_app.create_window (location, mode);
     }
 
     private void undo_actions_set_insensitive () {
@@ -828,7 +817,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             return;
         }
 
-        var mode = real_mode ((ViewMode)(param.get_uint32 ()));
+        var mode = (ViewMode)(param.get_uint32 ());
         set_current_location_and_mode (mode, current_container.location, OpenFlag.DEFAULT);
         /* ViewContainer takes care of changing appearance */
     }
@@ -1109,11 +1098,9 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_path_change_request (GLib.SimpleAction action, GLib.Variant? param) {
-
         string uri;
         uint32 flag;
         param.@get ("(su)", out uri, out flag);
-warning ("action path change %s %s", uri, ((OpenFlag)flag).to_string ());
         uri_path_change_request (uri, (OpenFlag)flag);
     }
 
@@ -1230,10 +1217,13 @@ warning ("action path change %s %s", uri, ((OpenFlag)flag).to_string ());
                 return mode;
 
             case ViewMode.CURRENT:
-                return current_container.view_mode;
+critical ("Do not use ViewMode CURRENT");
+                return top_menu.view_switcher.get_mode ();
+            case ViewMode.PREFERRED:
+                return (ViewMode)(Files.app_settings.get_enum ("default-viewmode"));
 
             default:
-                break;
+                assert_not_reached ();
         }
 
         return (ViewMode)(Files.app_settings.get_enum ("default-viewmode"));
@@ -1449,10 +1439,6 @@ warning ("action path change %s %s", uri, ((OpenFlag)flag).to_string ());
             if (location == null || location.has_prefix (root) || location.equal (root)) {
                 if (view_container == current_container) {
                     set_default_location_and_mode ();
-                    // view_container.focus_location (
-                    //     GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
-                    //     OpenFlag.DEFAULT
-                    // );
                 } else {
                     remove_content (view_container);
                 }
@@ -1491,7 +1477,7 @@ warning ("action path change %s %s", uri, ((OpenFlag)flag).to_string ());
     //Called when have mode, location file and OpenFlag
     private void set_current_location_and_mode (ViewMode mode, GLib.File loc, OpenFlag flag) {
         update_top_menu (loc.get_uri ());
-        current_container.set_location_and_mode (mode, loc, null, flag);
+        current_container.set_location_and_mode (real_mode (mode), loc, null, flag);
     }
 
     private void set_default_location_and_mode () {

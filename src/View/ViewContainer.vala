@@ -124,7 +124,7 @@ public class Files.ViewContainer : Gtk.Box {
         GLib.File? loc,
         GLib.File[]? to_select,
         OpenFlag flag
-    ) {
+    ) requires (mode < ViewMode.INVALID) {
         var current_location = location;
         var change_mode = mode != multi_slot.view_mode;
         if (change_mode) { //Always the case on creation
@@ -146,6 +146,8 @@ public class Files.ViewContainer : Gtk.Box {
 
             multi_slot.view_mode = mode;
         }
+
+
 
         var added_location = loc ?? current_location;
         Slot added_slot;
@@ -183,7 +185,6 @@ public class Files.ViewContainer : Gtk.Box {
         can_show_folder = false;
         activate_action ("selection-changing", null);
         activate_action ("win.loading-uri", "s", location.get_uri ());
-warning ("set location and mode %s, %s", location.get_uri (), mode.to_string ());
         added_slot.initialize_directory.begin ((obj, res) => {
             added_slot.initialize_directory.end (res);
             var dir = added_slot.directory;
@@ -245,7 +246,7 @@ warning ("set location and mode %s, %s", location.get_uri (), mode.to_string ())
             if (can_show_folder) {
                 multi_slot.update_total_width ();
                 var directory = dir.file;
-                overlay_statusbar.visible = true;
+                // overlay_statusbar.visible = true;
                 /* Only record valid folders (will also log Zeitgeist event) */
                 browser.record_uri (directory.uri); /* will ignore null changes i.e reloading*/
 
@@ -265,7 +266,6 @@ warning ("set location and mode %s, %s", location.get_uri (), mode.to_string ())
 
 
             activate_action ("win.loading-finished", null);
-warning ("loading finished");
         });
     }
 
@@ -414,6 +414,7 @@ warning ("loading finished");
     }
 
     public void selection_changing () {
+        overlay_statusbar.hide ();
         overlay_statusbar.selection_changing ();
     }
 

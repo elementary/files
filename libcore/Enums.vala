@@ -106,9 +106,9 @@ namespace Files {
         ICON = 0,
         LIST,
         MULTICOLUMN,
+        INVALID, //End of real modes.
         CURRENT,
         PREFERRED,
-        INVALID
     }
 
     public enum OpenFlag {

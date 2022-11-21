@@ -121,7 +121,7 @@ namespace Files {
                 label = s;
             }
 
-            visible = label != "";
+            visible = files.first () != null && label != "";
         }
 
         private string update_status () {
