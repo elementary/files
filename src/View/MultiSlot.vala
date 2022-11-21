@@ -287,77 +287,113 @@ public class Files.MultiSlot : Gtk.Box {
         Gdk.ModifierType state
     ) requires (current_slot != null) {
 
-        //Only handle keys in MULTICOLUMN mode
-        if (view_mode != ViewMode.MULTICOLUMN) {
-            return false;
-        }
-        /* Only handle unmodified keys */
-        if ((state & Gtk.accelerator_get_default_mod_mask ()) > 0) {
-            return false;
-        }
-
+        // /* Only handle unmodified keys */
+        var no_mods = (state & Gtk.accelerator_get_default_mod_mask ()) == 0;
         var current_host = (Gtk.Paned)(current_slot.parent);
         var parent_host = current_host.parent;
         Slot to_activate = null;
+
+        //Handle certain keys in all modes
+        switch (keyval) {
+            case Gdk.Key.KP_Enter:
+            case Gdk.Key.Return:
+                var selected_files = current_slot.get_selected_files ();
+                if (selected_files.length () == 1) {
+                    var selected_file = selected_files.first ().data;
+                    if (selected_file.is_folder ()) {
+                        OpenFlag flag;
+                        if (view_mode == ViewMode.MULTICOLUMN) {
+                            if (no_mods) {
+                                flag = OpenFlag.APPEND;
+                            } else if ((state & Gdk.ModifierType.CONTROL_MASK) > 0) {
+                                flag = OpenFlag.DEFAULT;
+                            } else {
+                                return false;
+                            }
+                        } else {
+                            flag = OpenFlag.DEFAULT;
+                        }
+                        activate_action (
+                            "win.path-change-request", "(su)", selected_file.uri, flag
+                        );
+
+                        return true;
+                    }
+                }
+
+                return false;
+
+            default:
+                break;
+
+        }
+
+        //Only handle certain unmodified other keys in MULTICOLUMN mode
+        if (!no_mods || view_mode != ViewMode.MULTICOLUMN) {
+            return false;
+        }
+
         switch (keyval) {
             case Gdk.Key.Left:
-                if (parent_host is Gtk.Viewport) {
-                    return false;
-                } else {
+                if (parent_host is Gtk.Paned) {
                     current_slot = (((Slot)((Gtk.Paned)parent_host).start_child));
+                    return true;
                 }
 
                 break;
-
             case Gdk.Key.Right:
                 var selected_files = current_slot.get_selected_files ();
-                if (selected_files == null) {
-                    return false;
-                }
+                if (selected_files.length () == 1) {
+                    var selected_file = selected_files.first ().data;
+                    unowned var selected_location = selected_files.first ().data.location;
+                    GLib.File? next_location = null;
+                    Slot? next_slot = null;
+                    var next_host = current_host.end_child;
+                    if (next_host != null && (next_host is Gtk.Paned)) {
+                        next_slot = (Slot?)(((Gtk.Paned)next_host).start_child);
+                        next_location = next_slot != null ? next_slot.file.location : null;
+                    }
 
-                var selected_file = selected_files.first ().data;
-                unowned var selected_location = selected_files.first ().data.location;
-                GLib.File? next_location = null;
-                Slot? next_slot = null;
-                var next_host = current_host.end_child;
-                if (next_host != null && (next_host is Gtk.Paned)) {
-                    next_slot = (Slot?)(((Gtk.Paned)next_host).start_child);
-                    next_location = next_slot != null ? next_slot.file.location : null;
-                }
+                    if (next_location != null && next_location.equal (selected_location)) {
+                        //No need for new slot
+                        current_slot = next_slot;
+                        //Ensure window updates nevertheless - fake new slot loading
+                        activate_action (
+                            "win.loading-finished",
+                            null
+                        );
+                    } else if (selected_file.is_folder ()) {
+                        activate_action (
+                            "win.path-change-request", "(su)", selected_file.uri, OpenFlag.APPEND
+                        );
+                    }
 
-                if (next_location != null && next_location.equal (selected_location)) {
-                    //No need for new slot
-                    current_slot = next_slot;
-                    //Ensure window updates nevertheless - fake new slot loading
-                    activate_action (
-                        "win.loading-finished",
-                        null
-                    );
-                } else if (selected_file.is_folder ()) {
-                    activate_action (
-                        "win.path-change-request", "(su)", selected_file.uri, OpenFlag.APPEND
-                    );
+                    return true;
                 }
 
                 break;
-
             case Gdk.Key.BackSpace:
-                    if (!(parent_host is Gtk.Viewport)) {
+                    if (parent_host is Gtk.Paned) {
                         var host = (Gtk.Paned)parent_host;
                         truncate_list_after_host (host);
                         host.end_child = new Gtk.Label ("") {
                             hexpand = false
                         };
                         current_slot = (Slot)(host.start_child);
+                        //Ensure window updates nevertheless - fake new slot loading
+                        activate_action (
+                            "win.loading-finished",
+                            null
+                        );
+                        return true;
                     }
 
                 break;
-
             default:
-                return false;
+                break;
         }
 
-        return true;
+        return false;
     }
 
 /** Helper functions */
