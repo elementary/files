@@ -37,6 +37,7 @@ public class Files.MultiSlot : Gtk.Box {
     private Gtk.Paned first_host;
     private Gtk.Adjustment hadj;
 
+    private uint focus_idle_id = 0;
     private Slot? _current_slot;
     public Slot? current_slot {
         get {
@@ -45,13 +46,20 @@ public class Files.MultiSlot : Gtk.Box {
 
         set {
             _current_slot = value;
-            if (value != null) {
-                //Idle to ensure slot realized before focussing
-                Idle.add (() => {
-                    current_slot.grab_focus ();
-                    return Source.REMOVE;
-                });
+            //Idle to ensure slot realized before focussing
+            //Throttle to deal with rapidly changing current_slot
+            if (focus_idle_id > 0) {
+                Source.remove (focus_idle_id);
+                focus_idle_id = 0;
             }
+            focus_idle_id = Idle.add (() => {
+                focus_idle_id = 0;
+                if (current_slot != null) {
+                    current_slot.grab_focus ();
+                }
+
+                return Source.REMOVE;
+            });
         }
     }
 
@@ -419,22 +427,20 @@ public class Files.MultiSlot : Gtk.Box {
         }
 
         var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri, null);
-        if (unescaped_tip_uri == "") {
+        var tip_location = FileUtils.get_file_for_path (unescaped_tip_uri);
+        if (tip_location == null) {
             warning ("Invalid tip uri %S for MultiColumn view", tip_uri);
             return;
         }
 
-        var tip_location = FileUtils.get_file_for_path (unescaped_tip_uri);
         var relative_path = root_location.get_relative_path (tip_location);
-        GLib.File gfile;
-
         if (relative_path != null) {
             string [] dirs = relative_path.split (GLib.Path.DIR_SEPARATOR_S);
             string uri = root_location.get_uri ();
 
             foreach (string dir in dirs) {
                 uri += (GLib.Path.DIR_SEPARATOR_S + dir);
-                gfile = GLib.File.new_for_uri (FileUtils.escape_uri (uri));
+                var gfile = GLib.File.new_for_uri (FileUtils.escape_uri (uri));
                 var added_slot = add_location (gfile);
                 yield added_slot.initialize_directory ();
             }

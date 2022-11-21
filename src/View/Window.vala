@@ -806,10 +806,8 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_focus_view () {
-        if (current_container != null) {
-            current_container.grab_focus ();
-            top_menu.path_bar.mode = PathBarMode.CRUMBS;
-        }
+        grab_focus ();
+        top_menu.path_bar.mode = PathBarMode.CRUMBS;
     }
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
