@@ -414,9 +414,13 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
     public async void set_tip_uri (string tip_uri) {
+        if (view_mode != ViewMode.MULTICOLUMN) {
+            return;
+        }
+
         var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri, null);
-        if (unescaped_tip_uri == null) {
-            warning ("Invalid tip uri for Miller View");
+        if (unescaped_tip_uri == "") {
+            warning ("Invalid tip uri %S for MultiColumn view", tip_uri);
             return;
         }
 

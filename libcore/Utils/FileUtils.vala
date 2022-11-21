@@ -47,10 +47,10 @@ namespace Files.FileUtils {
         return keyfile;
     }
 
-    public GLib.File? get_file_for_path (string? path) {
-        string? new_path = sanitize_path (path);
+    public GLib.File? get_file_for_path (string path) {
+        var new_path = sanitize_path (path);
 
-        if (new_path != null && new_path.length > 0) {
+        if (new_path.length > 0) {
             return GLib.File.new_for_commandline_arg (new_path);
         } else {
             return null;
