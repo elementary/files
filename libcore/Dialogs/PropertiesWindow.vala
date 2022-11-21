@@ -21,6 +21,10 @@
 */
 
 public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
+    private Gtk.Stack stack;
+    private Gtk.StackSwitcher stack_switcher;
+    private Gtk.Widget header_widget;
+
     private Gtk.Entry perm_code;
     private bool perm_code_should_update = true;
     private Gtk.Label l_perm;
@@ -104,15 +108,10 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
         GLib.List<Files.File> _files, Files.ViewInterface _view, Gtk.Window parent
     ) {
         base (_("Properties"), parent);
-
-        if (_files == null) {
-            critical ("Properties Window constructor called with null file list");
-            return;
-        }
-
-        if (_view == null) {
-            critical ("Properties Window constructor called with null Directory View");
-            return;
+        assert (_files.first () != null); // Must be created with at least one selected file
+        // The properties window may outlive the passed-in file object lifetimes.
+        foreach (Files.File file in _files) {
+            files.prepend (file);
         }
 
         view = _view;
@@ -126,37 +125,8 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             return false;
         });
 
-        /* The properties window may outlive the passed-in file object
-           lifetimes. The objects must be referenced as a precaution.
-
-           GLib.List.copy() would not guarantee valid references: because it
-           does a shallow copy (copying the pointer values only) the objects'
-           memory may be freed even while this code is using it. */
-        foreach (Files.File file in _files) {
-            /* prepend(G) is declared "owned G", so ref() will be called once
-               on the unowned foreach value. */
-            files.prepend (file);
-        }
-
-        var empty = (files == null || files.nth_data (0) == null); // May be large  - avoid length ()
-
-        if (empty ) {
-            critical ("Properties Window constructor called with empty file list");
-            return;
-        }
-
-        if (!(files.data is Files.File)) {
-            critical ("Properties Window constructor called with invalid file data (1)");
-            return;
-        }
-
         mimes = new Gee.HashSet<string> ();
         foreach (var gof in files) {
-            if (!(gof is Files.File)) {
-                critical ("Properties Window constructor called with invalid file data (2)");
-                return;
-            }
-
             var ftype = gof.get_ftype ();
             if (ftype != null) {
                 mimes.add (ftype);
@@ -170,9 +140,158 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
         first_selected_file = (Files.File) files.data;
         only_one = files.nth_data (1) == null;
 
-        construct_info_panel ();
-        cancellable = new GLib.Cancellable ();
 
+        stack = new Gtk.Stack ();
+        stack.add_titled (info_grid, "INFO", _("General"));
+
+        stack_switcher = new Gtk.StackSwitcher () {
+            margin_top = 12,
+            stack = stack
+        };
+
+        layout.attach (stack_switcher, 0, 1, 2, 1);
+        layout.attach (stack, 0, 2, 2, 1);
+
+        //Construct info grid
+        var size_key_label = make_key_label (_("Size:"));
+        spinner = new Gtk.Spinner () {
+            halign = Gtk.Align.START
+        };
+        size_value = make_value_label ("");
+        type_key_label = make_key_label (_("Type:"));
+        type_value = make_value_label ("");
+        contains_key_label = make_key_label (_("Contains:"));
+        contains_value = make_value_label ("");
+
+        info_grid.attach (size_key_label, 0, line++, 1, 1);
+        info_grid.attach_next_to (spinner, size_key_label, Gtk.PositionType.RIGHT);
+        info_grid.attach_next_to (size_value, size_key_label, Gtk.PositionType.RIGHT);
+        info_grid.attach (type_key_label, 0, line++, 1, 1);
+        info_grid.attach_next_to (type_value, type_key_label, Gtk.PositionType.RIGHT, 3, 1);
+        info_grid.attach (contains_key_label, 0, line++, 1, 1);
+        info_grid.attach_next_to (contains_value, contains_key_label, Gtk.PositionType.RIGHT, 3, 1);
+
+        if (only_one) {
+            /* Note most Linux filesystem do not store file creation time */
+            var time_created = FileUtils.get_formatted_time_attribute_from_info (first_selected_file.info,
+                                                                                 FileAttribute.TIME_CREATED);
+            if (time_created != "") {
+                var key_label = make_key_label (_("Created:"));
+                var value_label = make_value_label (time_created);
+                info_grid.attach (key_label, 0, line++, 1, 1);
+                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            }
+
+            var time_modified = FileUtils.get_formatted_time_attribute_from_info (first_selected_file.info,
+                                                                                  FileAttribute.TIME_MODIFIED);
+
+            if (time_modified != "") {
+                var key_label = make_key_label (_("Modified:"));
+                var value_label = make_value_label (time_modified);
+                info_grid.attach (key_label, 0, line++, 1, 1);
+                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            }
+        }
+
+        if (only_one && first_selected_file.is_trashed ()) {
+            var deletion_date = FileUtils.get_formatted_time_attribute_from_info (first_selected_file.info,
+                                                                                  FileAttribute.TRASH_DELETION_DATE);
+            if (deletion_date != "") {
+                var key_label = make_key_label (_("Deleted:"));
+                var value_label = make_value_label (deletion_date);
+                info_grid.attach (key_label, 0, line++, 1, 1);
+                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            }
+        }
+
+        var ftype = filetype (first_selected_file);
+        var mimetype_key = make_key_label (_("Media type:"));
+        var mimetype_value = make_value_label (ftype);
+        info_grid.attach (mimetype_key, 0, line++, 1, 1);
+        info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
+
+        if (only_one && "image" in ftype) {
+            var resolution_key = make_key_label (_("Resolution:"));
+            resolution_value = make_value_label (resolution (first_selected_file));
+            info_grid.attach (resolution_key, 0, line++, 1, 1);
+            info_grid.attach_next_to (resolution_value, resolution_key, Gtk.PositionType.RIGHT, 3, 1);
+        }
+
+        if (got_common_location ()) {
+            var location_key = make_key_label (_("Location:"));
+            var location_value = make_value_label (location (first_selected_file));
+            location_value.ellipsize = Pango.EllipsizeMode.MIDDLE;
+            location_value.max_width_chars = 32;
+            info_grid.attach (location_key, 0, line++, 1, 1);
+            info_grid.attach_next_to (location_value, location_key, Gtk.PositionType.RIGHT, 3, 1);
+        }
+
+        if (only_one && first_selected_file.info.get_is_symlink ()) {
+            var key_label = make_key_label (_("Target:"));
+            var value_label = make_value_label (first_selected_file.info.get_symlink_target ());
+            info_grid.attach (key_label, 0, line++, 1, 1);
+            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+        }
+
+        if (first_selected_file.is_trashed ()) {
+            var key_label = make_key_label (_("Original Location:"));
+            var value_label = make_value_label (original_location (first_selected_file));
+            info_grid.attach (key_label, 0, line++, 1, 1);
+            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+        }
+
+        /* Open with */
+        var default_app = MimeActions.get_default_application_for_file (first_selected_file);
+        if (default_app != null && !first_selected_file.is_directory) {
+            Gtk.TreeIter iter;
+            store_apps = new Gtk.ListStore (3, typeof (AppInfo), typeof (string), typeof (Icon));
+            List<AppInfo> apps = MimeActions.get_applications_for_file (first_selected_file);
+            foreach (var app in apps) {
+                store_apps.append (out iter);
+                store_apps.set (iter,
+                                AppsColumn.APP_INFO, app,
+                                AppsColumn.LABEL, app.get_name (),
+                                AppsColumn.ICON, ensure_icon (app));
+            }
+            store_apps.append (out iter);
+            store_apps.set (iter,
+                            AppsColumn.LABEL, _("Other Application…"));
+            store_apps.prepend (out iter);
+            store_apps.set (iter,
+                            AppsColumn.APP_INFO, default_app,
+                            AppsColumn.LABEL, default_app.get_name (),
+                            AppsColumn.ICON, ensure_icon (default_app));
+
+            var renderer = new Gtk.CellRendererText ();
+            var pix_renderer = new Gtk.CellRendererPixbuf ();
+
+            var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_apps);
+            combo.active = 0;
+            combo.valign = Gtk.Align.CENTER;
+            combo.pack_start (pix_renderer, false);
+            combo.pack_start (renderer, true);
+            combo.add_attribute (renderer, "text", AppsColumn.LABEL);
+            combo.add_attribute (pix_renderer, "gicon", AppsColumn.ICON);
+
+            combo.changed.connect (combo_open_with_changed);
+
+            var key_label = make_key_label (_("Open with:"));
+
+            info_grid.attach (key_label, 0, line++, 1, 1);
+            info_grid.attach_next_to (combo, key_label, Gtk.PositionType.RIGHT);
+        }
+
+        /* Device Usage */
+        if (should_show_device_usage ()) {
+            try {
+                var info = first_selected_file.get_target_location ().query_filesystem_info ("filesystem::*");
+                create_storage_bar (info);
+            } catch (Error e) {
+                warning ("error: %s", e.message);
+            }
+        }
+
+        cancellable = new GLib.Cancellable ();
         update_selection_size (); /* Start counting first to get number of selected files and folders */
 
         /* create some widgets first (may be hidden by update_selection_size ()) */
@@ -187,13 +306,13 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
         if (!only_one ) {
             var label = new Gtk.Label (get_selected_label (selected_folders, selected_files));
             label.halign = Gtk.Align.START;
-            header_title = label;
+            header_widget = label;
         } else if (!first_selected_file.is_writable ()) {
             var label = new Gtk.Label (first_selected_file.info.get_name ()) {
                 halign = Gtk.Align.START,
                 selectable = true
             };
-            header_title = label;
+            header_widget = label;
         } else {
             entry = new Gtk.Entry ();
             original_name = first_selected_file.info.get_name ();
@@ -208,13 +327,67 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             //     return false;
             // });
 
-            header_title = entry;
+            header_widget = entry;
         }
 
-        create_header_title ();
+        create_header (header_widget);
 
         /* Permissions */
-        if (construct_perm_panel () != null) {
+        var owner_user_choice = create_owner_choice ();
+        if (owner_user_choice == null) {
+            perm_grid = new Gtk.Grid () {
+                valign = Gtk.Align.CENTER
+            };
+
+            var label = new Gtk.Label (_("Unable to determine file ownership and permissions"));
+            perm_grid.attach (label, 0, 0);
+        } else {
+            var owner_user_label = make_key_label (_("Owner:"));
+            var group_combo_label = make_key_label (_("Group:"));
+            group_combo_label.margin_bottom = 12;
+
+            var group_combo = create_group_choice ();
+            group_combo.margin_bottom = 12;
+
+            var owner_label = make_key_label (_("Owner:"));
+            perm_button_user = create_perm_choice (Permissions.Type.USER);
+
+            var group_label = make_key_label (_("Group:"));
+            perm_button_group = create_perm_choice (Permissions.Type.GROUP);
+
+            var other_label = make_key_label (_("Everyone:"));
+            perm_button_other = create_perm_choice (Permissions.Type.OTHER);
+
+            perm_code = new Gtk.Entry ();
+            perm_code.text = "000";
+            perm_code.max_length = perm_code.max_width_chars = perm_code.width_chars = 3;
+
+            l_perm = new Gtk.Label ("<tt>%s</tt>".printf (first_selected_file.get_permissions_as_string ()));
+            l_perm.halign = Gtk.Align.START;
+            l_perm.use_markup = true;
+
+            perm_grid = new Gtk.Grid () {
+                column_spacing = 6,
+                row_spacing = 6,
+                halign = Gtk.Align.CENTER
+            };
+            perm_grid.attach (owner_user_label, 0, 1, 1, 1);
+            perm_grid.attach (owner_user_choice, 1, 1, 2, 1);
+            perm_grid.attach (group_combo_label, 0, 2, 1, 1);
+            perm_grid.attach (group_combo, 1, 2, 2, 1);
+            perm_grid.attach (owner_label, 0, 3, 1, 1);
+            perm_grid.attach (perm_button_user, 1, 3, 2, 1);
+            perm_grid.attach (group_label, 0, 4, 1, 1);
+            perm_grid.attach (perm_button_group, 1, 4, 2, 1);
+            perm_grid.attach (other_label, 0, 5, 1, 1);
+            perm_grid.attach (perm_button_other, 1, 5, 2, 1);
+            perm_grid.attach (l_perm, 1, 6, 1, 1);
+            perm_grid.attach (perm_code, 2, 6, 1, 1);
+
+            update_perm_grid_toggle_states (first_selected_file.permissions);
+
+            perm_code.changed.connect (entry_changed);
+
             if (!first_selected_file.can_set_permissions ()) {
                 var child = perm_grid.get_first_child ();
                 while (child != null) {
@@ -222,17 +395,11 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
                     child = child.get_next_sibling ();
                 }
             }
-        } else {
-            perm_grid = new Gtk.Grid () {
-                valign = Gtk.Align.CENTER
-            };
-
-            var label = new Gtk.Label (_("Unable to determine file ownership and permissions"));
-            perm_grid.attach (label, 0, 0);
         }
 
-        add_section (stack, _("Permissions"), PanelType.PERMISSIONS.to_string (), perm_grid);
-    }
+
+        stack.add_titled (perm_grid, "PERMISSIONS", _("Permissions"));
+    }  //End construct
 
     private void update_size_value () {
         size_value.label = format_size (total_size);
@@ -512,164 +679,7 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
     }
 
     private void construct_info_panel () {
-        /* Have to have these separate as size call is async */
-        var size_key_label = make_key_label (_("Size:"));
 
-        spinner = new Gtk.Spinner ();
-        spinner.halign = Gtk.Align.START;
-
-        size_value = make_value_label ("");
-
-        type_key_label = make_key_label (_("Type:"));
-        type_value = make_value_label ("");
-
-        contains_key_label = make_key_label (_("Contains:"));
-        contains_value = make_value_label ("");
-
-        // /* Dialog may get displayed after these labels are hidden so we set no_show_all to true */
-        // type_key_label.no_show_all = true;
-        // type_value.no_show_all = true;
-        // contains_key_label.no_show_all = true;
-        // contains_value.no_show_all = true;
-
-        info_grid.attach (size_key_label, 0, 1, 1, 1);
-        info_grid.attach_next_to (spinner, size_key_label, Gtk.PositionType.RIGHT);
-        info_grid.attach_next_to (size_value, size_key_label, Gtk.PositionType.RIGHT);
-        info_grid.attach (type_key_label, 0, 2, 1, 1);
-        info_grid.attach_next_to (type_value, type_key_label, Gtk.PositionType.RIGHT, 3, 1);
-        info_grid.attach (contains_key_label, 0, 3, 1, 1);
-        info_grid.attach_next_to (contains_value, contains_key_label, Gtk.PositionType.RIGHT, 3, 1);
-
-        int n = 4;
-
-        if (only_one) {
-            /* Note most Linux filesystem do not store file creation time */
-            var time_created = FileUtils.get_formatted_time_attribute_from_info (first_selected_file.info,
-                                                                                 FileAttribute.TIME_CREATED);
-            if (time_created != "") {
-                var key_label = make_key_label (_("Created:"));
-                var value_label = make_value_label (time_created);
-                info_grid.attach (key_label, 0, n, 1, 1);
-                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-                n++;
-            }
-
-            var time_modified = FileUtils.get_formatted_time_attribute_from_info (first_selected_file.info,
-                                                                                  FileAttribute.TIME_MODIFIED);
-
-            if (time_modified != "") {
-                var key_label = make_key_label (_("Modified:"));
-                var value_label = make_value_label (time_modified);
-                info_grid.attach (key_label, 0, n, 1, 1);
-                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-                n++;
-            }
-        }
-
-        if (only_one && first_selected_file.is_trashed ()) {
-            var deletion_date = FileUtils.get_formatted_time_attribute_from_info (first_selected_file.info,
-                                                                                  FileAttribute.TRASH_DELETION_DATE);
-            if (deletion_date != "") {
-                var key_label = make_key_label (_("Deleted:"));
-                var value_label = make_value_label (deletion_date);
-                info_grid.attach (key_label, 0, n, 1, 1);
-                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-                n++;
-            }
-        }
-
-        var ftype = filetype (first_selected_file);
-        var mimetype_key = make_key_label (_("Media type:"));
-        var mimetype_value = make_value_label (ftype);
-        info_grid.attach (mimetype_key, 0, n, 1, 1);
-        info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
-        n++;
-
-        if (only_one && "image" in ftype) {
-            var resolution_key = make_key_label (_("Resolution:"));
-            resolution_value = make_value_label (resolution (first_selected_file));
-            info_grid.attach (resolution_key, 0, n, 1, 1);
-            info_grid.attach_next_to (resolution_value, resolution_key, Gtk.PositionType.RIGHT, 3, 1);
-            n++;
-        }
-
-        if (got_common_location ()) {
-            var location_key = make_key_label (_("Location:"));
-            var location_value = make_value_label (location (first_selected_file));
-            location_value.ellipsize = Pango.EllipsizeMode.MIDDLE;
-            location_value.max_width_chars = 32;
-            info_grid.attach (location_key, 0, n, 1, 1);
-            info_grid.attach_next_to (location_value, location_key, Gtk.PositionType.RIGHT, 3, 1);
-            n++;
-        }
-
-        if (only_one && first_selected_file.info.get_is_symlink ()) {
-            var key_label = make_key_label (_("Target:"));
-            var value_label = make_value_label (first_selected_file.info.get_symlink_target ());
-            info_grid.attach (key_label, 0, n, 1, 1);
-            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-            n++;
-        }
-
-        if (first_selected_file.is_trashed ()) {
-            var key_label = make_key_label (_("Original Location:"));
-            var value_label = make_value_label (original_location (first_selected_file));
-            info_grid.attach (key_label, 0, n, 1, 1);
-            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-            n++;
-        }
-
-        /* Open with */
-        var default_app = MimeActions.get_default_application_for_file (first_selected_file);
-        if (default_app != null && !first_selected_file.is_directory) {
-            Gtk.TreeIter iter;
-            store_apps = new Gtk.ListStore (3, typeof (AppInfo), typeof (string), typeof (Icon));
-            List<AppInfo> apps = MimeActions.get_applications_for_file (first_selected_file);
-            foreach (var app in apps) {
-                store_apps.append (out iter);
-                store_apps.set (iter,
-                                AppsColumn.APP_INFO, app,
-                                AppsColumn.LABEL, app.get_name (),
-                                AppsColumn.ICON, ensure_icon (app));
-            }
-            store_apps.append (out iter);
-            store_apps.set (iter,
-                            AppsColumn.LABEL, _("Other Application…"));
-            store_apps.prepend (out iter);
-            store_apps.set (iter,
-                            AppsColumn.APP_INFO, default_app,
-                            AppsColumn.LABEL, default_app.get_name (),
-                            AppsColumn.ICON, ensure_icon (default_app));
-
-            var renderer = new Gtk.CellRendererText ();
-            var pix_renderer = new Gtk.CellRendererPixbuf ();
-
-            var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_apps);
-            combo.active = 0;
-            combo.valign = Gtk.Align.CENTER;
-            combo.pack_start (pix_renderer, false);
-            combo.pack_start (renderer, true);
-            combo.add_attribute (renderer, "text", AppsColumn.LABEL);
-            combo.add_attribute (pix_renderer, "gicon", AppsColumn.ICON);
-
-            combo.changed.connect (combo_open_with_changed);
-
-            var key_label = make_key_label (_("Open with:"));
-
-            info_grid.attach (key_label, 0, n, 1, 1);
-            info_grid.attach_next_to (combo, key_label, Gtk.PositionType.RIGHT);
-            n++;
-        }
-
-        /* Device Usage */
-        if (should_show_device_usage ()) {
-            try {
-                var info = first_selected_file.get_target_location ().query_filesystem_info ("filesystem::*");
-                create_storage_bar (info, n);
-            } catch (Error e) {
-                warning ("error: %s", e.message);
-            }
-        }
     }
 
     private bool should_show_device_usage () {
@@ -916,61 +926,6 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
         foreach (Files.File gof in files) {
             file_set_attributes.begin (gof, FileAttribute.UNIX_GID, (uint32) gid);
         }
-    }
-
-    private Gtk.Grid? construct_perm_panel () {
-        var owner_user_choice = create_owner_choice ();
-        if (owner_user_choice == null) {
-            return null;
-        } else {
-            var owner_user_label = make_key_label (_("Owner:"));
-            var group_combo_label = make_key_label (_("Group:"));
-            group_combo_label.margin_bottom = 12;
-
-            var group_combo = create_group_choice ();
-            group_combo.margin_bottom = 12;
-
-            var owner_label = make_key_label (_("Owner:"));
-            perm_button_user = create_perm_choice (Permissions.Type.USER);
-
-            var group_label = make_key_label (_("Group:"));
-            perm_button_group = create_perm_choice (Permissions.Type.GROUP);
-
-            var other_label = make_key_label (_("Everyone:"));
-            perm_button_other = create_perm_choice (Permissions.Type.OTHER);
-
-            perm_code = new Gtk.Entry ();
-            perm_code.text = "000";
-            perm_code.max_length = perm_code.max_width_chars = perm_code.width_chars = 3;
-
-            l_perm = new Gtk.Label ("<tt>%s</tt>".printf (first_selected_file.get_permissions_as_string ()));
-            l_perm.halign = Gtk.Align.START;
-            l_perm.use_markup = true;
-
-            perm_grid = new Gtk.Grid () {
-                column_spacing = 6,
-                row_spacing = 6,
-                halign = Gtk.Align.CENTER
-            };
-            perm_grid.attach (owner_user_label, 0, 1, 1, 1);
-            perm_grid.attach (owner_user_choice, 1, 1, 2, 1);
-            perm_grid.attach (group_combo_label, 0, 2, 1, 1);
-            perm_grid.attach (group_combo, 1, 2, 2, 1);
-            perm_grid.attach (owner_label, 0, 3, 1, 1);
-            perm_grid.attach (perm_button_user, 1, 3, 2, 1);
-            perm_grid.attach (group_label, 0, 4, 1, 1);
-            perm_grid.attach (perm_button_group, 1, 4, 2, 1);
-            perm_grid.attach (other_label, 0, 5, 1, 1);
-            perm_grid.attach (perm_button_other, 1, 5, 2, 1);
-            perm_grid.attach (l_perm, 1, 6, 1, 1);
-            perm_grid.attach (perm_code, 2, 6, 1, 1);
-
-            update_perm_grid_toggle_states (first_selected_file.permissions);
-
-            perm_code.changed.connect (entry_changed);
-        }
-
-        return perm_grid;
     }
 
     private bool selection_can_set_owner () {
@@ -1251,13 +1206,13 @@ public class Files.PropertiesWindow : Files.AbstractPropertiesDialog {
             }
         }
 
-        if ((header_title is Gtk.Entry) && !view.root_file.is_recent_uri_scheme ()) {
+        if ((header_widget is Gtk.Entry) && !view.root_file.is_recent_uri_scheme ()) {
             int start_offset= 0, end_offset = -1;
 
             FileUtils.get_rename_region (first_selected_file.info.get_name (), out start_offset, out end_offset,
                                          first_selected_file.is_folder ());
 
-            ((Gtk.Entry) header_title).select_region (start_offset, end_offset);
+            ((Gtk.Entry) header_widget).select_region (start_offset, end_offset);
         }
 
         /* Only show 'contains' label when only folders selected - otherwise could be ambiguous whether

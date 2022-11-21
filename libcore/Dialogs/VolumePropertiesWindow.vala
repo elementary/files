@@ -68,17 +68,17 @@ public class Files.VolumePropertiesWindow : Files.AbstractPropertiesDialog {
             overlay_emblems (file_icon, emblems_list);
         }
 
-        header_title = new Gtk.Label (mount_name) {
-            halign = Gtk.Align.START
-        };
-
-        create_header_title ();
+        create_header (
+            new Gtk.Label (mount_name) {
+                halign = Gtk.Align.START
+            }
+        );
 
         var location_label = make_key_label (_("Location:"));
         var location_value = make_value_label ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) +
                                              "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
 
-        info_grid.attach (location_label, 0, 1, 1, 1);
+        info_grid.attach (location_label, 0, line++, 1, 1);
         info_grid.attach_next_to (location_value, location_label, Gtk.PositionType.RIGHT);
 
         uint64 used_space = 0;
@@ -87,13 +87,13 @@ public class Files.VolumePropertiesWindow : Files.AbstractPropertiesDialog {
             var key_label = make_key_label (_("Format:"));
             var value_label = make_value_label (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
 
-            info_grid.attach (key_label, 0, 2, 1, 1);
+            info_grid.attach (key_label, 0, line++, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT);
 
             used_space = info.get_attribute_uint64 (GLib.FileAttribute.FILESYSTEM_USED);
         }
 
-        create_storage_bar (info, 3);
+        create_storage_bar (info);
         update_storage_block_size (used_space, Files.StorageBar.ItemDescription.FILES);
     }
 }

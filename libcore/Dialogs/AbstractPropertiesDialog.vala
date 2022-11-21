@@ -22,16 +22,15 @@
 
 protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
     protected Gtk.Grid info_grid;
+    protected int line; //Next free line in info grid
     protected Gtk.Grid layout;
-    protected Gtk.Stack stack;
-    protected Gtk.StackSwitcher stack_switcher;
-    protected Gtk.Widget header_title;
+    // protected Gtk.Widget header_title;
     protected Files.StorageBar? storagebar = null;
 
-    protected enum PanelType {
-        INFO,
-        PERMISSIONS
-    }
+    // protected enum PanelType {
+    //     INFO,
+    //     PERMISSIONS
+    // }
 
     protected AbstractPropertiesDialog (string _title, Gtk.Window parent) {
         Object (title: _title,
@@ -52,15 +51,9 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
             row_spacing = 6
         };
 
-        info_grid.attach (info_header, 0, 0, 2, 1);
+        line = 0;
+        info_grid.attach (info_header, 0, line++, 2, 1);
 
-        stack = new Gtk.Stack ();
-        stack.add_titled (info_grid, PanelType.INFO.to_string (), _("General"));
-
-        stack_switcher = new Gtk.StackSwitcher () {
-            margin_top = 12,
-            stack = stack
-        };
 
         layout = new Gtk.Grid () {
             margin_bottom = 12,
@@ -71,8 +64,7 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
             row_spacing = 6
         };
 
-        layout.attach (stack_switcher, 0, 1, 2, 1);
-        layout.attach (stack, 0, 2, 2, 1);
+
 
         get_content_area ().append (layout);
 
@@ -87,27 +79,32 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
     }
 
     protected Gtk.Label make_key_label (string label) {
-        return new Gtk.Label (label) {
-            halign = Gtk.Align.END,
-            margin_start = 12
+        var key_label = new Gtk.Label (label) {
+            // halign = Gtk.Align.START,
+            // margin_start = 12
         };
+        key_label.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
+        return key_label;
     }
 
+    //Make value label focusable and selectable to enable copying to other app
     protected Gtk.Label make_value_label (string label) {
-        return new Gtk.Label (label) {
+        var val_label = new Gtk.Label (label) {
             can_focus = true,
-            halign = Gtk.Align.START,
+            // halign = Gtk.Align.START,
             selectable = true,
             use_markup = true
         };
+        val_label.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
+        return val_label;
     }
 
-    protected void create_header_title () {
-        header_title.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-        header_title.hexpand = true;
-        header_title.margin_top = 6;
-        header_title.valign = Gtk.Align.CENTER;
-        layout.attach (header_title, 1, 0, 1, 1);
+    protected void create_header (Gtk.Widget header_widget) {
+        header_widget.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
+        header_widget.hexpand = true;
+        header_widget.margin_top = 6;
+        header_widget.valign = Gtk.Align.CENTER;
+        layout.attach (header_widget, 1, 0, 1, 1);
     }
 
     protected void overlay_emblems (Gtk.Image file_icon, List<string>? emblems_list) {
@@ -143,20 +140,11 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
         }
     }
 
-    protected void add_section (Gtk.Stack stack, string title, string name, Gtk.Widget content) {
-        if (content != null) {
-            stack.add_titled (content, name, title);
-        }
 
-        /* Only show the stack switcher when there's more than a single tab */
-        if (stack.get_pages ().get_n_items () > 1) {
-            stack_switcher.show ();
-        }
-    }
 
-    protected void create_storage_bar (GLib.FileInfo file_info, int line) {
+    protected void create_storage_bar (GLib.FileInfo file_info) {
         var storage_header = new Granite.HeaderLabel (_("Device Usage"));
-        info_grid.attach (storage_header, 0, line, 1, 1);
+        info_grid.attach (storage_header, 0, line++, 1, 1);
 
         if (file_info != null &&
             file_info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
@@ -171,7 +159,7 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
             storagebar = new Files.StorageBar.with_total_usage (fs_capacity, fs_used + fs_reserved);
             update_storage_block_size (fs_reserved, Files.StorageBar.ItemDescription.OTHER);
 
-            info_grid.attach (storagebar, 0, line + 1, 4, 1);
+            info_grid.attach (storagebar, 0, line++, 4, 1);
         } else {
             /* We're not able to gether the usage statistics, show an error
              * message to let the user know. */
@@ -184,11 +172,11 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
             var used_label = make_key_label (_("Used:"));
             var used_value = make_value_label (_("Unknown"));
 
-            info_grid.attach (capacity_label, 0, line + 1, 1, 1);
+            info_grid.attach (capacity_label, 0, line++, 1, 1);
             info_grid.attach_next_to (capacity_value, capacity_label, Gtk.PositionType.RIGHT);
-            info_grid.attach (available_label, 0, line + 2, 1, 1);
+            info_grid.attach (available_label, 0, line++, 1, 1);
             info_grid.attach_next_to (available_value, available_label, Gtk.PositionType.RIGHT);
-            info_grid.attach (used_label, 0, line + 3, 1, 1);
+            info_grid.attach (used_label, 0, line++, 1, 1);
             info_grid.attach_next_to (used_value, used_label, Gtk.PositionType.RIGHT);
         }
     }
