@@ -339,7 +339,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         //TODO Reimplement if needed
     }
 
-    public void grab_focus () {
+    public new void grab_focus () {
         if (view_widget != null) {
             view_widget.grab_focus ();
         }

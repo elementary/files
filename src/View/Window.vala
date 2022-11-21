@@ -1109,9 +1109,11 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_path_change_request (GLib.SimpleAction action, GLib.Variant? param) {
+
         string uri;
         uint32 flag;
         param.@get ("(su)", out uri, out flag);
+warning ("action path change %s %s", uri, ((OpenFlag)flag).to_string ());
         uri_path_change_request (uri, (OpenFlag)flag);
     }
 

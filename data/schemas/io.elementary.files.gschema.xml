@@ -3,7 +3,7 @@
   <enum id="viewmode">
     <value value="0" nick="icon"/>
     <value value="1" nick="list"/>
-    <value value="2" nick="miller_columns"/>
+    <value value="2" nick="multicolumn"/>
   </enum>
   <enum id="io.elementary.files.ZoomLevel">
     <value value="0" nick="smallest"/>
@@ -121,7 +121,7 @@
     <key type="a(uss)" name="tab-info-list">
       <summary>Details of open tabs</summary>
       <default>[(0,'','')]</default>
-      <description>Array of tab info:  View mode, root uri, tip uri (for Miller view)</description>
+      <description>Array of tab info:  View mode, root uri, tip uri (for MultiColumn view)</description>
     </key>
   </schema>
 
@@ -170,22 +170,22 @@
     <key name="default-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'small'</default>
       <summary>icon default zoom level</summary>
-      <description>Default Zoom level used by the  Miller Column View.</description>
+      <description>Default Zoom level used by the  MultiColumn View.</description>
     </key>
     <key name="zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'small'</default>
       <summary>icon zoom level</summary>
-      <description>Zoom level used by the  Miller Column View.</description>
+      <description>Zoom level used by the  MultiColumn View.</description>
     </key>
     <key name="maximum-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'normal'</default>
       <summary>Maximum icon zoom level</summary>
-      <description>The maximum zoom level used by the Miller Column View.</description>
+      <description>The maximum zoom level used by the MultiColumn View.</description>
     </key>
     <key type="i" name="preferred-column-width">
       <default>180</default>
       <summary>prefered column width</summary>
-      <description>The column width preferred by the  Miller Column View.</description>
+      <description>The column width preferred by the  MultiColumn View.</description>
     </key>
   </schema>
 

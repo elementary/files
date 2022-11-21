@@ -183,6 +183,7 @@ public class Files.ViewContainer : Gtk.Box {
         can_show_folder = false;
         activate_action ("selection-changing", null);
         activate_action ("win.loading-uri", "s", location.get_uri ());
+warning ("set location and mode %s, %s", location.get_uri (), mode.to_string ());
         added_slot.initialize_directory.begin ((obj, res) => {
             added_slot.initialize_directory.end (res);
             var dir = added_slot.directory;
@@ -193,7 +194,7 @@ public class Files.ViewContainer : Gtk.Box {
                     content = new PrivacyModeOn (this);
                 } else if (!dir.file.exists) {
                     if (!dir.is_trash) {
-                        content = new DirectoryNotFound (dir, this);
+                        content = new DirectoryNotFound (dir.file.uri);
                     } else {
                         content = new Granite.Placeholder (_("This Folder Does Not Exist")) {
                             description = _("You cannot create a folder here.")
@@ -264,6 +265,7 @@ public class Files.ViewContainer : Gtk.Box {
 
 
             activate_action ("win.loading-finished", null);
+warning ("loading finished");
         });
     }
 
