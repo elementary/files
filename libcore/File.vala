@@ -28,7 +28,8 @@ public class Files.File : GLib.Object {
         UNKNOWN,
         NONE,
         READY,
-        LOADING
+        LOADING,
+        LOADED
     }
 
     public const string GIO_DEFAULT_ATTRIBUTES =
@@ -392,14 +393,15 @@ public class Files.File : GLib.Object {
         if (thumbstate == Files.File.ThumbState.READY) {
             unowned string? thumb_path = get_thumbnail_path ();
             if (thumb_path != null) {
+                //Paintable will be loaded and cached if not already in cache
                 paintable = Files.IconInfo.lookup_paintable_from_path (thumb_path);
-                // if (paintable != null) {
-                //     thumbstate = Files.File.ThumbState.UNKNOWN;
-                //     return true;
-                // } else {
-                //     critical ("READY but could not get paintable from cache");
-                //     thumbstate = Files.File.ThumbState.NONE;
-                // }
+                if (paintable != null) {
+                    thumbstate = Files.File.ThumbState.LOADED;
+                    return true;
+                } else {
+                    critical ("READY but could not get paintable from cache");
+                    thumbstate = Files.File.ThumbState.NONE;
+                }
             } else {
                 critical ("READY but no thumbnail path");
             }
@@ -425,8 +427,6 @@ public class Files.File : GLib.Object {
 
             return true;
         }
-
-
 
         if (gicon != null && gicon is ThemedIcon) {
             if (((ThemedIcon)gicon).names[0].has_prefix ("folder")) {
@@ -705,6 +705,7 @@ public class Files.File : GLib.Object {
 
             /* Use $XDG_CACHE_HOME specified thumbnail directory instead of hard coding */
             unowned string folder_size = "normal";
+            //TODO Switch to "large" folder when required
             if (pix_size * pix_scale > 128) {
                 folder_size = "large";
             }

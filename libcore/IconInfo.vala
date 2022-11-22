@@ -20,6 +20,7 @@
 // Cache of Paintables, removed if not used withing reap time.
 public class Files.IconInfo : GLib.Object {
     private static GLib.HashTable<Icon, Files.IconInfo> loadable_icon_cache;
+    //TODO Do we need to reimplement thened icon cache?
     private static uint reap_cache_timeout = 0;
     private static uint reap_time = 5000;
 
@@ -170,20 +171,6 @@ public class Files.IconInfo : GLib.Object {
         schedule_reap_cache ();
     }
 
-
-
-    // public static Files.IconInfo? get_generic_icon (int size, int scale) {
-    //     var generic_icon = new GLib.ThemedIcon ("text-x-generic");
-    //     return IconInfo.lookup (generic_icon, size, scale);
-    // }
-
-    // public static Files.IconInfo? lookup_from_name (string icon_name, int size, int scale) {
-    //     var themed_icon = new GLib.ThemedIcon (icon_name);
-    //     return Files.IconInfo.lookup (themed_icon, size, scale);
-    // }
-
-
-
     public bool is_fallback () {
         return paintable == null;
     }
@@ -192,62 +179,4 @@ public class Files.IconInfo : GLib.Object {
         last_use_time = GLib.get_monotonic_time ();
         return paintable;
     }
-
-
-
-    // [Compact]
-    // private class LoadableIconKey {
-    //     public GLib.Icon icon;
-    //     public int size;
-    //     public int scale;
-
-    //     public LoadableIconKey (GLib.Icon _icon, int _size, int _scale) {
-    //         icon = _icon;
-    //         size = _size;
-    //         scale = _scale;
-    //     }
-
-    //     public LoadableIconKey.from_path (string path, int _size, int _scale) {
-    //         icon = new GLib.FileIcon (GLib.File.new_for_path (path));
-    //         size = _size;
-    //         scale = _scale;
-    //     }
-
-    //     public LoadableIconKey dup () {
-    //         return new LoadableIconKey (icon, size, scale);
-    //     }
-
-    //     public static uint hash (LoadableIconKey a) {
-    //         return a.icon.hash () ^ a.size;
-    //     }
-
-    //     public static bool equal (LoadableIconKey a, LoadableIconKey b) {
-    //         return (a.size == b.size && a.scale == b.scale && a.icon.equal (b.icon));
-    //     }
-    // }
-
-    // [Compact]
-    // private class ThemedIconKey {
-    //     public GLib.ThemedIcon icon;
-    //     public int size;
-    //     public int scale;
-
-    //     public ThemedIconKey (GLib.ThemedIcon _icon, int _size, int _scale) {
-    //         icon = _icon;
-    //         size = _size;
-    //         scale = _scale;
-    //     }
-
-    //     public uint hash () {
-    //         return icon.hash () ^ (size * scale);
-    //     }
-
-    //     public bool equal (ThemedIconKey other) {
-    //         if (this.size != other.size || this.scale != other.scale)
-    //             return false;
-
-    //         return this.icon.equal (other.icon);
-    //     }
-    // }
-
 }

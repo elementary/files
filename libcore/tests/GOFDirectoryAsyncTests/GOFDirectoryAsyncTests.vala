@@ -46,7 +46,7 @@ void run_load_folder_test (LoadFolderTest test) {
     var dir = test (test_dir_path, loop);
     dir.allow_user_interaction = false;
 
-    assert (dir.state == Directory.State.NOT_LOADED);
+    assert_true (dir.state == Directory.State.NOT_LOADED);
 
     dir.init.begin ();
     loop.run ();
@@ -58,16 +58,16 @@ void run_load_folder_test (LoadFolderTest test) {
 /*** Test functions ***/
 Directory load_non_existent_local_test (string test_dir_path, MainLoop loop) {
     GLib.File gfile = GLib.File.new_for_commandline_arg (test_dir_path);
-    assert (!gfile.query_exists (null));
+    assert_false (gfile.query_exists (null));
 
     var dir = Directory.from_gfile (gfile);
     dir.done_loading.connect (() => {
-        assert (dir.displayed_files_count == 0);
-        assert (!dir.can_load);
-        assert (!dir.file.is_connected);
-        assert (!dir.file.is_mounted);
-        assert (!dir.file.exists);
-        assert (dir.state == Directory.State.NOT_LOADED);
+        assert_true (dir.displayed_files_count == 0);
+        assert_false (dir.can_load);
+        assert_false (dir.file.is_connected);
+        assert_false (dir.file.is_mounted);
+        assert_false (dir.file.exists);
+        assert_true (dir.state == Directory.State.NOT_LOADED);
         loop.quit ();
     });
 
@@ -78,12 +78,12 @@ Directory load_empty_local_test (string test_dir_path, MainLoop loop) {
     var dir = setup_temp_async (test_dir_path, 0);
 
     dir.done_loading.connect (() => {
-        assert (dir.displayed_files_count == 0);
+        assert_true (dir.displayed_files_count == 0);
         assert (dir.can_load);
-        assert (dir.file.is_connected);
-        assert (!dir.file.is_mounted);
-        assert (dir.file.exists);
-        assert (dir.state == Directory.State.LOADED);
+        assert_true (dir.file.is_connected);
+        assert_false (dir.file.is_mounted);
+        assert_true (dir.file.exists);
+        assert_true (dir.state == Directory.State.LOADED);
         loop.quit ();
     });
 
@@ -96,17 +96,17 @@ Directory load_populated_local_test (string test_dir_path, MainLoop loop) {
 
     var dir = setup_temp_async (test_dir_path, n_files);
 
-    assert (dir.ref_count == 1); //Extra ref from pending cache;
+    assert_true (dir.ref_count == 1); //Extra ref from pending cache;
 
     dir.file_added.connect (() => {
         file_loaded_signal_count++;
     });
 
     dir.done_loading.connect (() => {
-        assert (dir.displayed_files_count == n_files);
-        assert (dir.can_load);
-        assert (dir.state == Directory.State.LOADED);
-        assert (file_loaded_signal_count == n_files);
+        assert_true (dir.displayed_files_count == n_files);
+        assert_true (dir.can_load);
+        assert_true (dir.state == Directory.State.LOADED);
+        assert_true (file_loaded_signal_count == n_files);
 
         loop.quit ();
     });
@@ -128,14 +128,14 @@ Directory load_cached_local_test (string test_dir_path, MainLoop loop) {
                 file_loaded_signal_count++;
             });
 
-            assert (!dir.loaded_from_cache);
+            assert_false (dir.loaded_from_cache);
             dir.init.begin ();
         } else {
-            assert (dir.displayed_files_count == n_files);
-            assert (dir.can_load);
-            assert (dir.state == Directory.State.LOADED);
-            assert (file_loaded_signal_count == n_files);
-            assert (dir.loaded_from_cache);
+            assert_true (dir.displayed_files_count == n_files);
+            assert_true (dir.can_load);
+            assert_true (dir.state == Directory.State.LOADED);
+            assert_true (file_loaded_signal_count == n_files);
+            assert_true (dir.loaded_from_cache);
             loop.quit ();
         }
     });
@@ -152,7 +152,7 @@ Directory reload_populated_local_test (string test_dir_path, MainLoop loop) {
     var dir = setup_temp_async (test_dir_path, n_files, "txt", tmp_pth);
 
     dir.done_loading.connect (() => {
-        assert (!dir.loaded_from_cache);
+        assert_false (dir.loaded_from_cache);
 
         if (loads == 0) {
             ref_count_before_reload = dir.ref_count;
@@ -163,10 +163,10 @@ Directory reload_populated_local_test (string test_dir_path, MainLoop loop) {
             dir.cancel ();
             dir.reload ();
         } else {
-            assert (dir.displayed_files_count == n_files);
-            assert (dir.can_load);
-            assert (dir.state == Directory.State.LOADED);
-            assert (dir.ref_count == ref_count_before_reload);
+            assert_true (dir.displayed_files_count == n_files);
+            assert_true (dir.can_load);
+            assert_true (dir.state == Directory.State.LOADED);
+            assert_true (dir.ref_count == ref_count_before_reload);
 
             tear_down_file (tmp_pth);
 
@@ -203,10 +203,10 @@ Directory setup_temp_async (string path, uint n_files, string? extension = null,
     }
 
     GLib.File gfile = GLib.File.new_for_commandline_arg (path);
-    assert (gfile.query_exists (null));
+    assert_true (gfile.query_exists (null));
 
     Directory dir = Directory.from_gfile (gfile);
-    assert (dir != null);
+    assert_true (dir != null);
     return dir;
 }
 
