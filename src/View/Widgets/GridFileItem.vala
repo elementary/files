@@ -202,6 +202,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     public void bind_file (Files.File? new_file) {
         var old_file = file;
         file = new_file;
+        file.pix_size = file_icon.pixel_size;
         //Assume that item will not be bound without being unbound first
         if (file == null) {
             label.label = "Unbound";

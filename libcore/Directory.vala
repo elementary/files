@@ -823,16 +823,19 @@ public class Files.Directory : Object {
         return gof.info != null;
     }
 
-    public void changed_and_refresh (Files.File gof) {
-        var tp = gof.get_thumbnail_path ();
+    public void changed_and_refresh (Files.File file) {
+        if (file.thumbstate == Files.File.ThumbState.LOADED) {
+            file.thumbstate = Files.File.ThumbState.UNKNOWN;
+        }
+        var tp = file.get_thumbnail_path ();
         // cannot tell what has changed so force update of thumbnail in cache
         if (tp != null) {
             IconInfo.remove_cache (tp);
         }
 
-        gof.update ();
+        file.update ();
         // Signal views to update
-        file_changed (gof);
+        file_changed (file);
     }
 
     private void add_and_refresh (Files.File gof) {
