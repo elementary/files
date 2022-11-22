@@ -179,7 +179,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         working = item.show_spinner;
     }
 
-    protected async bool unmount_mount () {
+    public async bool unmount_mount () {
         if (working || !valid || permanent) {
             return false;
         }
@@ -204,13 +204,13 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     public async void safely_remove_drive () {
-        if (working || !valid) {
+        if (working || !valid || drive == null) {
             return;
         }
 
         debug ("Eject/stop drive %s: can_eject %s, can_stop %s, can start %s, can start degraded %s, media_removable %s, drive removable %s",
-            drive.get_name (), drive.can_eject ().to_string (), drive.can_stop ().to_string (), drive.can_start ().to_string (),
-            drive.can_start_degraded ().to_string (), drive.is_media_removable ().to_string (), drive.is_removable ().to_string ());
+        drive.get_name (), drive.can_eject ().to_string (), drive.can_stop ().to_string (), drive.can_start ().to_string (),
+        drive.can_start_degraded ().to_string (), drive.is_media_removable ().to_string (), drive.is_removable ().to_string ());
 
         working = true;
         yield Files.FileOperations.safely_remove_drive (drive, Files.get_active_window ());
@@ -218,8 +218,8 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         update_visibilities ();
     }
 
-    protected async void eject_drive (Drive drive) {
-        if (working || !valid) {
+    public async void eject_drive () {
+        if (working || !valid || drive == null) {
             return;
         }
         working = true;
@@ -229,29 +229,33 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     protected void add_extra_menu_items_for_mount (Mount? mount, PopupMenuBuilder menu_builder) {
-        // // Do not add items for a volume that is in the middle of being mounted or unmounted
-        // if (working) {
-        //     return;
-        // }
+        // Do not add items for a volume that is in the middle of being mounted or unmounted
+        if (working) {
+            return;
+        }
 
-        // if (mount != null) {
-        //     if (Files.FileOperations.has_trash_files (mount)) {
-        //         menu_builder
-        //             .add_separator ()
-        //             .add_empty_mount_trash (() => {
-        //                 Files.FileOperations.empty_trash_for_mount (this, mount);
-        //             })
-        //         ;
-        //     }
+        if (mount != null) {
+            if (Files.FileOperations.has_trash_files (mount)) {
+                // menu_builder
+                //     .add_separator ()
+                //     .add_empty_mount_trash (() => {
+                //         Files.FileOperations.empty_trash_for_mount (this, mount);
+                //     })
+                ;
+            }
 
-        //     if (mount.can_unmount ()) {
-        //         menu_builder.add_unmount (() => {unmount_mount.begin ();});
-        //     }
-        // }
+            if (mount.can_unmount ()) {
+                menu_builder.add_unmount (Action.print_detailed_name (
+                    "device.unmount", new Variant.uint32 (id))
+                ); // This will moun
+            }
+        }
 
-        // menu_builder
-        //     .add_separator ()
-        //     .add_drive_property (() => {show_mount_info ();}); // This will mount if necessary
+        menu_builder
+            .add_separator ()
+            .add_properties (Action.print_detailed_name (
+                "device.properties", new Variant.uint32 (id))
+            ); // This will mount if necessary
     }
 
     protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {
@@ -342,7 +346,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
     protected virtual void on_mount_removed (Mount removed_mount) {}
     protected virtual void on_mount_added (Mount added_mount) {}
-    protected virtual void show_mount_info () {}
+    public virtual void show_mount_info () {}
     protected virtual async bool get_filesystem_space (Cancellable? update_cancellable) {
         return false;
     }

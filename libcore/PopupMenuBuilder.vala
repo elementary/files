@@ -128,7 +128,6 @@ public class PopupMenuBuilder : Object {
         return this;
     }
 
-    //TODO Link MenuItems to actions not callbacks
     public PopupMenuBuilder add_item (string name, string? detailed_action_name) {
         var item = new MenuItem (name, detailed_action_name);
         section_menus[section_index].append_item (item);

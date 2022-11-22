@@ -149,24 +149,25 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
     }
 
     protected void add_extra_menu_items_for_drive (Drive? drive, PopupMenuBuilder menu_builder) {
-        // if (drive == null) {
-        //     return;
-        // }
+        if (drive == null) {
+            return;
+        }
 
-        // var sort_key = drive.get_sort_key ();
-        // if (sort_key != null && sort_key.contains ("hotplug")) {
-        //     menu_builder
-        //         .add_separator ()
-        //         .add_safely_remove (() => {
-        //             safely_remove_drive.begin (volume.get_drive ());
-        //         });
-        // } else if (mount == null && drive.can_eject ()) {
-        //     menu_builder
-        //         .add_separator ()
-        //         .add_eject_drive (() => {
-        //             eject_drive.begin (volume.get_drive ());
-        //         });
-        // }
+warning ("add extra menu items for drive");
+        var sort_key = drive.get_sort_key ();
+        if (sort_key != null && sort_key.contains ("hotplug")) {
+warning ("hotplug");
+            menu_builder
+                .add_separator ()
+                .add_safely_remove (Action.print_detailed_name ("device.safely-remove", new Variant.uint32 (id))
+            );
+        } else if (mount == null && drive.can_eject ()) {
+warning ("can eject");
+            menu_builder
+                .add_separator ()
+                .add_eject_drive (Action.print_detailed_name ("device.eject", new Variant.uint32 (id))
+            );
+        }
     }
 
     protected override async bool get_filesystem_space (Cancellable? update_cancellable) {
@@ -178,13 +179,18 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
     }
 
     private void open_volume_property_window () {
-        new Files.VolumePropertiesWindow (
-            volume.get_mount (),
+        var properties_window = new Files.VolumePropertiesWindow (
+            mount,
             Files.get_active_window ()
         );
+        properties_window.response.connect ((res) => {
+            properties_window.destroy ();
+        });
+        properties_window.present ();
     }
 
-    protected override void show_mount_info () requires (!working) {
+    public override void show_mount_info () requires (!working) {
+warning ("Vol show info");
         if (!is_mounted) {
             /* Mount the device if possible, defer showing the dialog after
              * we're done */

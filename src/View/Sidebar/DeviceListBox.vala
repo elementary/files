@@ -48,8 +48,38 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
                 ((AbstractMountableRow)row).safely_remove_drive.begin ();
             }
         });
+        var eject_action = new SimpleAction ("eject", new VariantType ("u"));
+        eject_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                ((AbstractMountableRow)row).eject_drive.begin ();
+            }
+        });
+        var properties_action = new SimpleAction ("properties", new VariantType ("u"));
+        properties_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                if (row is AbstractMountableRow) {
+                    ((AbstractMountableRow)row).show_mount_info ();
+                }
+            }
+        });
+        var unmount_action = new SimpleAction ("unmount", new VariantType ("u"));
+        unmount_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                if (row is AbstractMountableRow) {
+                    ((AbstractMountableRow)row).unmount_mount.begin ((obj, res) => {
+                        //TODO Deal with failure
+                    });
+                }
+            }
+        });
         var device_action_group = new SimpleActionGroup ();
         device_action_group.add_action (safely_remove_action);
+        device_action_group.add_action (eject_action);
+        device_action_group.add_action (properties_action);
+        device_action_group.add_action (unmount_action);
         insert_action_group ("device", device_action_group);
 
         volume_monitor = VolumeMonitor.@get ();

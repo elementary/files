@@ -277,12 +277,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 .add_open_window (Action.print_detailed_name ("bm.open-window", new Variant.uint32 (id)))
                 .add_remove (Action.print_detailed_name ("bm.remove-bookmark", new Variant.uint32 (id)));
 
-            // add_extra_menu_items (menu_builder);
+            add_extra_menu_items (menu_builder);
 
             popover = menu_builder.build ();
         }
 
-        popover.set_parent (label);
+        popover.set_parent (this);
         popover.position = Gtk.PositionType.RIGHT;
         popover.popup ();
     }
