@@ -5,7 +5,11 @@
 
 //Moved here from Granite
 public class Files.StorageBar : Gtk.Widget {
-    private Gtk.CenterBox center_box;
+    static construct {
+        set_layout_manager_type (typeof (Gtk.BoxLayout));
+    }
+
+    // private Gtk.CenterBox center_box;
     public enum ItemDescription {
         OTHER,
         AUDIO,
@@ -77,14 +81,14 @@ public class Files.StorageBar : Gtk.Widget {
         }
     }
 
-    public int inner_margin_sides {
-        get {
-            return fillblock_box.margin_start;
-        }
-        set {
-            fillblock_box.margin_end = fillblock_box.margin_start = value;
-        }
-    }
+    // public int inner_margin_sides {
+    //     get {
+    //         return fillblock_box.margin_start;
+    //     }
+    //     set {
+    //         fillblock_box.margin_end = fillblock_box.margin_start = value;
+    //     }
+    // }
 
     private Gtk.Label description_label;
     private GLib.HashTable<int, FillBlock> blocks;
@@ -114,36 +118,45 @@ public class Files.StorageBar : Gtk.Widget {
     }
 
     construct {
-        center_box = new Gtk.CenterBox ();
-
-        center_box.set_parent (this);
+        set_layout_manager (new Gtk.BoxLayout (Gtk.Orientation.VERTICAL));
+        // center_box = new Gtk.CenterBox ();
+        // center_box.set_parent (this);
         // orientation = Gtk.Orientation.VERTICAL;
-        description_label = new Gtk.Label (null);
-        description_label.hexpand = true;
-        description_label.margin_top = 6;
-        get_style_context ().add_class ("storage-bar");
-        blocks = new GLib.HashTable<int, FillBlock> (null, null);
-        fillblock_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        fillblock_box.add_css_class ("trough");
-        fillblock_box.hexpand = true;
-        inner_margin_sides = 12;
-        legend_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
-        var legend_center_box = new Gtk.CenterBox ();
-        legend_center_box.set_center_widget (legend_box);
-        var legend_scrolled = new Gtk.ScrolledWindow () {
-            vscrollbar_policy = Gtk.PolicyType.NEVER,
-            hexpand = true
+        description_label = new Gtk.Label ("DESCRIPTION LABEL") {
+            hexpand = true,
+            margin_top = 6
         };
-        legend_scrolled.set_child (legend_center_box);
-        var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        box.append (legend_scrolled);
-        box.append (fillblock_box);
-        box.append (description_label);
-        center_box.set_center_widget (box);
-
-
-
+        // add_css_class ("storage-bar");
+        blocks = new GLib.HashTable<int, FillBlock> (null, null);
+        fillblock_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
+            hexpand = true,
+            margin_start = 12,
+            margin_end = 12
+        };
+        fillblock_box.add_css_class ("trough");
+        // fillblock_box.hexpand = true;
+        // inner_margin_sides = 12;
+        legend_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
+        // var legend_center_box = new Gtk.CenterBox ();
+        // legend_center_box.set_center_widget (legend_box);
+        var legend_scrolled = new Gtk.ScrolledWindow () {
+            vscrollbar_policy = Gtk.PolicyType.ALWAYS,
+            hscrollbar_policy = Gtk.PolicyType.ALWAYS,
+            hexpand = true,
+            vexpand = true
+        };
+        legend_scrolled.set_child (legend_box);
+        // var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         create_default_blocks ();
+
+        legend_scrolled.set_parent (this);
+        fillblock_box.set_parent (this);
+        description_label.set_parent (this);
+        // box.set_parent (this);
+        // center_box.set_center_widget (box);
+        // center_box.set_start_widget (new Gtk.Label ("START"));
+        // center_box.set_end_widget (new Gtk.Label ("END"));
+
     }
 
     //TODO Work out what is needed in Gtk4
@@ -186,7 +199,7 @@ public class Files.StorageBar : Gtk.Widget {
 
         seq.foreach ((description) => {
             var fill_block = new FillBlock (description, 0);
-            fillblock_box.append (fill_block);
+            fillblock_box.append (fill_block.legend_fill);
             legend_box.append (fill_block.legend_item);
             blocks.set (index, fill_block);
             index++;
@@ -194,13 +207,13 @@ public class Files.StorageBar : Gtk.Widget {
 
         free_space = new FillBlock (ItemDescription.FILES, storage);
         used_space = new FillBlock (ItemDescription.FILES, total_usage);
-        free_space.get_style_context ().add_class ("empty-block");
-        free_space.get_style_context ().remove_class ("files");
-        used_space.get_style_context ().remove_class ("files");
+        free_space.legend_fill.add_css_class ("empty-block");
+        free_space.legend_fill.remove_css_class ("files");
+        used_space.legend_fill.remove_css_class ("files");
         blocks.set (index++, used_space);
         blocks.set (index++, free_space);
-        fillblock_box.append (used_space);
-        fillblock_box.append (free_space);
+        fillblock_box.append (used_space.legend_fill);
+        fillblock_box.append (free_space.legend_fill);
 
         update_size_description ();
     }
@@ -208,8 +221,10 @@ public class Files.StorageBar : Gtk.Widget {
     private void update_size_description () {
         uint64 user_size = 0;
         foreach (weak FillBlock block in blocks.get_values ()) {
-            if (block.visible == false || block == free_space || block == used_space)
+            if (block == free_space || block == used_space) {
                 continue;
+            }
+
             user_size += block.size;
         }
 
@@ -242,7 +257,7 @@ public class Files.StorageBar : Gtk.Widget {
         }
     }
 
-    internal class FillBlock : FillRound {
+    internal class FillBlock : Object {
         private uint64 _size = 0;
         public uint64 size {
             get {
@@ -251,13 +266,8 @@ public class Files.StorageBar : Gtk.Widget {
             set {
                 _size = value;
                 if (_size == 0) {
-                    visible = false;
-                    legend_item.visible = false;
                 } else {
-                    visible = true;
-                    legend_item.visible = true;
                     size_label.label = GLib.format_size (_size);
-                    queue_resize ();
                 }
             }
         }
@@ -266,55 +276,58 @@ public class Files.StorageBar : Gtk.Widget {
         public Gtk.Grid legend_item { public get; private set; }
         private Gtk.Label name_label;
         private Gtk.Label size_label;
-        private FillRound legend_fill;
+        public Gtk.Label legend_fill { public get; private set; }
 
         internal FillBlock (ItemDescription description, uint64 size) {
             Object (size: size, description: description);
             var clas = ItemDescription.get_class (description);
             if (clas != null) {
-                get_style_context ().add_class (clas);
-                legend_fill.get_style_context ().add_class (clas);
+                legend_fill.add_css_class (clas);
             }
 
             name_label.label = "<b>%s</b>".printf (GLib.Markup.escape_text (ItemDescription.get_name (description)));
         }
 
         construct {
-            legend_item = new Gtk.Grid ();
-            legend_item.column_spacing = 6;
-            name_label = new Gtk.Label (null);
-            name_label.halign = Gtk.Align.START;
-            name_label.use_markup = true;
-            size_label = new Gtk.Label (null);
-            size_label.halign = Gtk.Align.START;
-            legend_fill = new FillRound ();
-            legend_fill.get_style_context ().add_class ("legend");
-            var legend_box = new Gtk.CenterBox ();
-            legend_box.set_center_widget (legend_fill);
-            legend_item.attach (legend_box, 0, 0, 1, 2);
-            legend_item.attach (name_label, 1, 0, 1, 1);
-            legend_item.attach (size_label, 1, 1, 1, 1);
+            legend_item = new Gtk.Grid () {
+                column_spacing = 6
+            };
+
+            name_label = new Gtk.Label (null) {
+                halign = Gtk.Align.START,
+                use_markup = true,
+            };
+            size_label = new Gtk.Label ("SIZE") {
+                halign = Gtk.Align.START
+            };
+
+            legend_fill = new Gtk.Label ("FILL");
+            legend_fill.add_css_class ("legend");
+
+            // legend_item.attach (legend_fill, 0, 0, 2, 1);
+            legend_item.attach (name_label, 0, 0, 1, 1);
+            legend_item.attach (size_label, 0, 1, 1, 1);
         }
     }
 
-    internal class FillRound : Gtk.Widget {
-        // internal FillRound () {
+    // internal class FillRound : Gtk.Widget {
+    //     // internal FillRound () {
 
-        // }
+    //     // }
 
-        construct {
-            // set_has_window (false);
-            add_css_class ("fill-block");
-        }
+    //     construct {
+    //         // set_has_window (false);
+    //         add_css_class ("fill-block");
+    //     }
 
-        public override void snapshot (Gtk.Snapshot ss) {
-        // public override bool draw (Cairo.Context cr) {
-            var width = get_allocated_width ();
-            var height = get_allocated_height ();
-            var context = get_style_context ();
-            ss.render_background (context, 0, 0, width, height);
-            ss.render_frame (context, 0, 0, width, height);
-        }
+    //     public override void snapshot (Gtk.Snapshot ss) {
+    //     // public override bool draw (Cairo.Context cr) {
+    //         var width = get_allocated_width ();
+    //         var height = get_allocated_height ();
+    //         var context = get_style_context ();
+    //         ss.render_background (context, 0, 0, width, height);
+    //         ss.render_frame (context, 0, 0, width, height);
+    //     }
 
         //TODO Implement get_preferred_size if required
         // public override void get_preferred_size (out Gtk.Requisition min_size, out Gtk.Requisition nat_size) {
@@ -337,5 +350,5 @@ public class Files.StorageBar : Gtk.Widget {
         //     minimum_height = int.max (1, minimum_height);
         //     natural_height = int.max (minimum_height, natural_height);
         // }
-    }
+    // }
 }

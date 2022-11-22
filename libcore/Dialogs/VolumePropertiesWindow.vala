@@ -52,7 +52,9 @@ public class Files.VolumePropertiesWindow : Files.AbstractPropertiesDialog {
         }
 
         /* Build the header box */
-        var file_icon = new Gtk.Image.from_gicon (mount_icon);
+        var file_icon = new Gtk.Image.from_gicon (mount_icon) {
+            pixel_size = 64
+        };
         Gtk.Widget? image_widget = null; //TODO Provide fallback
         if (file_icon != null) {
             var emblems_list = new GLib.List<string> ();
@@ -93,7 +95,9 @@ public class Files.VolumePropertiesWindow : Files.AbstractPropertiesDialog {
             used_space = info.get_attribute_uint64 (GLib.FileAttribute.FILESYSTEM_USED);
         }
 
+        layout.attach (info_grid, 0, 1);
         create_storage_bar (info);
-        update_storage_block_size (used_space, Files.StorageBar.ItemDescription.FILES);
+        // update_storage_block_size (used_space, Files.StorageBar.ItemDescription.FILES);
+
     }
 }

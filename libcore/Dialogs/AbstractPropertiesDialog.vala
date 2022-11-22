@@ -121,8 +121,6 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
         }
     }
 
-
-
     protected void create_storage_bar (GLib.FileInfo file_info) {
         var storage_header = new Granite.HeaderLabel (_("Device Usage"));
         info_grid.attach (storage_header, 0, line++, 1, 1);
@@ -131,7 +129,7 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
             file_info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
             file_info.has_attribute (FileAttribute.FILESYSTEM_FREE) &&
             file_info.has_attribute (FileAttribute.FILESYSTEM_USED)) {
-
+warning ("got storage info");
             uint64 fs_capacity = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
             uint64 fs_used = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
             uint64 fs_available = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
@@ -139,9 +137,10 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
 
             storagebar = new Files.StorageBar.with_total_usage (fs_capacity, fs_used + fs_reserved);
             update_storage_block_size (fs_reserved, Files.StorageBar.ItemDescription.OTHER);
-
+warning ("attach storage bar");
             info_grid.attach (storagebar, 0, line++, 4, 1);
         } else {
+warning ("no storage info");
             /* We're not able to gether the usage statistics, show an error
              * message to let the user know. */
             var capacity_label = make_key_label (_("Capacity:"));
