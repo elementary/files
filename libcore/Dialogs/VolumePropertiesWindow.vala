@@ -99,7 +99,5 @@ public class Files.VolumePropertiesWindow : Files.AbstractPropertiesDialog {
 
         layout.attach (info_grid, 0, 1, 2, 1);
         create_storage_bar (info);
-        // update_storage_block_size (used_space, Files.StorageBar.ItemDescription.FILES);
-
     }
 }
