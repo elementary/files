@@ -58,6 +58,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private string? drop_text = null;
     private bool drop_occurred = false;
     private Gdk.DragAction? current_suggested_action = null;
+    private bool is_renaming = false;
 
     protected Gtk.Grid content_grid;
     protected Gtk.Box icon_label_box;
@@ -139,11 +140,16 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 if (custom_name != editable.text) {
                     custom_name = editable.text;
                     list.rename_bookmark_by_uri (uri, custom_name);
+                    cancel_rename ();
                 }
             });
 
-            editable.editing_done.connect (() =>{
-                label_stack.visible_child_name = "label";
+            var focus_controller = new Gtk.EventControllerFocus ();
+            editable.add_controller (focus_controller);
+            focus_controller.leave.connect (() => {
+                if (is_renaming) {
+                    cancel_rename ();
+                }
             });
         }
 
@@ -194,16 +200,22 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         action_group_namespace = item.action_group_namespace;
     }
 
-    private void rename () {
+    public void start_renaming () {
         if (!pinned) {
-            editable.text = display_name;
             label_stack.visible_child_name = "editable";
             editable.grab_focus ();
+            //Need to idle so that spurious editable focus-leave event is ignored :(
+            Idle.add (() => {
+                is_renaming = true;
+                return Source.REMOVE;
+            });
+            editable.text = display_name;
         }
     }
 
     protected void cancel_rename () {
         label_stack.visible_child_name = "label";
+        is_renaming = false;
         grab_focus ();
     }
 
@@ -274,9 +286,21 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             var menu_builder = new PopupMenuBuilder ()
                 .add_open (Action.print_detailed_name ("bm.open-bookmark", new Variant.uint32 (id)))
                 .add_open_tab (Action.print_detailed_name ("bm.open-tab", new Variant.uint32 (id)))
-                .add_open_window (Action.print_detailed_name ("bm.open-window", new Variant.uint32 (id)))
-                .add_remove (Action.print_detailed_name ("bm.remove-bookmark", new Variant.uint32 (id)));
+                .add_open_window (Action.print_detailed_name ("bm.open-window", new Variant.uint32 (id)));
 
+            if (!permanent || !pinned) {
+                menu_builder.add_separator ();
+            }
+
+            if (!permanent) {
+                menu_builder.add_remove (Action.print_detailed_name ("bm.remove-bookmark", new Variant.uint32 (id)));
+            }
+
+            if (!pinned) {
+                menu_builder.add_rename (Action.print_detailed_name ("bm.rename-bookmark", new Variant.uint32 (id)));
+            }
+
+            menu_builder.add_separator ();
             add_extra_menu_items (menu_builder);
 
             popover = menu_builder.build ();
@@ -289,19 +313,15 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
     // /* Rows under "Bookmarks" can be removed or renamed */
-        if (!permanent) {
-            menu_builder
-                .add_separator ()
-                .add_remove (
-                    Action.print_detailed_name ("bm.remove-bookmark", new Variant.uint32 (id))
-            );
-        }
+        // if (!permanent) {
+        //     menu_builder
+        //         .add_separator ()
+        //         .add_remove (
+        //             Action.print_detailed_name ("bm.remove-bookmark", new Variant.uint32 (id))
+        //     );
+        // }
 
-    //     if (!pinned) {
-    //         menu_builder.add_rename (() => {
-    //             rename ();
-    //         });
-    //     }
+
 
     //     if (Uri.parse_scheme (uri) == "trash") {
     //         menu_builder

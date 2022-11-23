@@ -37,6 +37,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     }
 
     construct {
+
         orientation = Gtk.Orientation.VERTICAL;
         bookmark_listbox = new BookmarkListBox (this);
         device_listbox = new DeviceListBox (this);
@@ -91,27 +92,6 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         csb_box.append (new Gtk.Label (_("Connect Server…")));
         connect_server_button.set_child (csb_box);
 
-        var collapse_all_action = new SimpleAction ("collapse-all", null);
-        collapse_all_action.activate.connect (() => {
-            bookmark_expander.set_active (false);
-            device_expander.set_active (false);
-            network_expander.set_active (false);
-        });
-        var refresh_action = new SimpleAction ("refresh", null);
-        refresh_action.activate.connect (() => {
-            reload ();
-        });
-        var restore_action = new SimpleAction ("restore", null);
-        restore_action.activate.connect (() => {
-            bookmark_listbox.bookmark_list.add_special_directories (); // Ignores duplicates
-            activate_action ("sb.refresh", null);
-        });
-        var sidebar_action_group = new SimpleActionGroup ();
-        sidebar_action_group.add_action (collapse_all_action);
-        sidebar_action_group.add_action (refresh_action);
-        sidebar_action_group.add_action (restore_action);
-        this.insert_action_group ("sb", sidebar_action_group);
-
         var sidebar_menu = new Menu ();
         sidebar_menu.append (_("Collapse all"), "sb.collapse-all");
         sidebar_menu.append (_("Refresh"), "sb.refresh");
@@ -136,8 +116,69 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         append (scrolled_window);
         append (action_bar);
 
-        // Do not need to reload as the lists load themselves on creation
+        //Create sidebar action group
+        var collapse_all_action = new SimpleAction ("collapse-all", null);
+        collapse_all_action.activate.connect (() => {
+            bookmark_expander.set_active (false);
+            device_expander.set_active (false);
+            network_expander.set_active (false);
+        });
+        var refresh_action = new SimpleAction ("refresh", null);
+        refresh_action.activate.connect (() => {
+            reload ();
+        });
+        var restore_action = new SimpleAction ("restore", null);
+        restore_action.activate.connect (() => {
+            bookmark_listbox.bookmark_list.add_special_directories (); // Ignores duplicates
+            activate_action ("sb.refresh", null);
+        });
+        var sidebar_action_group = new SimpleActionGroup ();
+        sidebar_action_group.add_action (collapse_all_action);
+        sidebar_action_group.add_action (refresh_action);
+        sidebar_action_group.add_action (restore_action);
+        this.insert_action_group ("sb", sidebar_action_group);
 
+        //Create common bookmark action group (insert here so available to all listboxes)
+        var open_bookmark_action = new SimpleAction ("open-bookmark", new VariantType ("u"));
+        open_bookmark_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                row.list.open_item (row, Files.OpenFlag.DEFAULT);
+            }
+        });
+        var open_tab_action = new SimpleAction ("open-tab", new VariantType ("u"));
+        open_tab_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                row.list.open_item (row, Files.OpenFlag.NEW_TAB);
+            }
+        });
+        var open_window_action = new SimpleAction ("open-window", new VariantType ("u"));
+        open_window_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                row.list.open_item (row, Files.OpenFlag.NEW_WINDOW);
+            }
+        });
+        var remove_bookmark_action = new SimpleAction ("remove-bookmark", new VariantType ("u"));
+        remove_bookmark_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            row.list.remove_item (row, false);
+        });
+        var rename_bookmark_action = new SimpleAction ("rename-bookmark", new VariantType ("u"));
+        rename_bookmark_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            row.start_renaming ();
+        });
+        var bookmark_action_group = new SimpleActionGroup ();
+        bookmark_action_group.add_action (open_bookmark_action);
+        bookmark_action_group.add_action (open_tab_action);
+        bookmark_action_group.add_action (open_window_action);
+        bookmark_action_group.add_action (remove_bookmark_action);
+        bookmark_action_group.add_action (rename_bookmark_action);
+        insert_action_group ("bm", bookmark_action_group);
+
+        //Bind properties, connect signals
         Files.app_settings.bind (
             "sidebar-cat-personal-expander", bookmark_expander, "active", SettingsBindFlags.DEFAULT
         );

@@ -72,7 +72,7 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
 
     public virtual void add_extra_menu_items (PopupMenuBuilder menu_builder) {}
     public virtual void update_plugin_data (Files.SidebarPluginItem item) {}
-
+    public virtual void start_renaming () {} // Get new name from user (only overridden for Bookmark.Row for now)
     public virtual void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
         list.open_item (this, flag);
     }

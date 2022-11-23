@@ -41,39 +41,6 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
         append (list_box);
 
-        var open_bookmark_action = new SimpleAction ("open-bookmark", new VariantType ("u"));
-        open_bookmark_action.activate.connect ((param) => {
-            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
-            if (row != null) {
-                open_item (row, Files.OpenFlag.DEFAULT);
-            }
-        });
-        var open_tab_action = new SimpleAction ("open-tab", new VariantType ("u"));
-        open_tab_action.activate.connect ((param) => {
-            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
-            if (row != null) {
-                open_item (row, Files.OpenFlag.NEW_TAB);
-            }
-        });
-        var open_window_action = new SimpleAction ("open-window", new VariantType ("u"));
-        open_window_action.activate.connect ((param) => {
-            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
-            if (row != null) {
-                open_item (row, Files.OpenFlag.NEW_WINDOW);
-            }
-        });
-        var remove_bookmark_action = new SimpleAction ("remove-bookmark", new VariantType ("u"));
-        remove_bookmark_action.activate.connect ((param) => {
-            var item = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
-            remove_item (item, false);
-        });
-        var bookmark_action_group = new SimpleActionGroup ();
-        bookmark_action_group.add_action (open_bookmark_action);
-        bookmark_action_group.add_action (open_tab_action);
-        bookmark_action_group.add_action (open_window_action);
-        bookmark_action_group.add_action (remove_bookmark_action);
-        insert_action_group ("bm", bookmark_action_group);
-
         trash_monitor = Files.TrashMonitor.get_default ();
         bookmark_list = Files.BookmarkList.get_instance ();
         if (bookmark_list.loaded) {

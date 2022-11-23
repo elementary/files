@@ -29,7 +29,6 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
     public abstract void unselect_all_items ();
 
     public virtual void open_item (SidebarItemInterface item, Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
-    warning ("sidebar open item");
         sidebar.path_change_request (item.uri, flag);
     }
 
@@ -50,7 +49,7 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
         }
     }
 
-    public virtual void rename_bookmark_by_uri (string uri, string new_name) {}
+    public virtual void rename_bookmark_by_uri (string uri, string new_name) {} //Do the renaming
 
     public virtual void remove_bookmark_by_uri (string uri) {
         SidebarItemInterface? row = null;
