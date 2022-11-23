@@ -53,6 +53,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     private bool valid = true; //Set to false if scheduled for removal
     private Gtk.Image icon;
+    public bool can_accept_drops { get; set; default = true; }
     private Files.File target_file;
     private List<GLib.File> drop_file_list = null;
     private string? drop_text = null;
@@ -187,62 +188,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             label.label = display_name;
         });
 
-        //Set up as drag source
-        var drag_source = new Gtk.DragSource () {
-            propagation_phase = Gtk.PropagationPhase.CAPTURE,
-            actions = Gdk.DragAction.COPY
-        };
-        icon_label_box.add_controller (drag_source);
-        drag_source.prepare.connect ((x, y) => {
-        warning ("drag prepare");
-            Gdk.ContentProvider[] cps = {};
-            var uri_val = new Value (typeof (string));
-            uri_val.set_string (uri);
-            cps += new Gdk.ContentProvider.for_value (uri_val);
-            var id_val = new Value (typeof (uint));
-            id_val.set_uint (id);
-            cps += new Gdk.ContentProvider.for_value (id_val);
-
-            return new Gdk.ContentProvider.union (cps);
-        });
-        drag_source.drag_begin.connect ((drag) => {
-        warning ("drag begin");
-            return;
-        });
-        drag_source.drag_end.connect ((drag, delete_data) => {
-        warning ("drag end");
-            return;
-        });
-        drag_source.drag_cancel.connect ((drag, reason) => {
-        warning ("drag cancel");
-            return true;
-        });
-        //Set up as drag target
-        var drop_target = new Gtk.DropTarget (typeof (string), Gdk.DragAction.COPY) {
-            propagation_phase = Gtk.PropagationPhase.CAPTURE
-        };
-        icon_label_box.add_controller (drop_target);
-        drop_target.accept.connect ((drop) => {
-            warning ("Actions %s", drop.get_actions ().to_string ());
-            warning ("Content %s", drop.get_formats ().to_string ());
-            return false;
-        });
-        drop_target.enter.connect ((x, y) => {
-            warning ("enter");
-            return 0;
-        });
-        drop_target.leave.connect (() => {
-            warning ("leave");
-            return;
-        });
-        drop_target.motion.connect ((x, y) => {
-            warning ("motion");
-            return 0;
-        });
-        drop_target.on_drop.connect ((val, x, y) => {
-            warning ("on drop");
-            return false;
-        });
 
     }
 
