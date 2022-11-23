@@ -188,7 +188,17 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             label.label = display_name;
         });
 
+        var drop_revealer_child = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
+            margin_top = 12,
+            margin_bottom = 0
+        };
 
+        drop_revealer = new Gtk.Revealer () {
+            transition_type = Gtk.RevealerTransitionType.SLIDE_UP
+        };
+        drop_revealer.set_child (drop_revealer_child);
+
+        content_grid.attach (drop_revealer, 0, 1);
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
@@ -631,12 +641,16 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     //     }
     // }
 
-    // protected bool reveal_drop_target (bool reveal) {
-    //     if (list.is_drop_target ()) {
-    //         drop_revealer.reveal_child = reveal;
-    //         return reveal;
-    //     } else {
-    //         return false; //Suppress dropping between rows (e.g. for Storage list)
-    //     }
-    // }
+    public void reveal_drop_target (bool reveal) {
+        // if (list.is_drop_target ()) {
+            drop_revealer.reveal_child = reveal;
+        //     return reveal;
+        // } else {
+        //     return false; //Suppress dropping between rows (e.g. for Storage list)
+        // }
+    }
+
+    public bool drop_target_revealed () {
+        return drop_revealer.reveal_child;
+    }
 }

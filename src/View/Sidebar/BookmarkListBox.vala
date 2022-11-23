@@ -25,6 +25,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     public Files.BookmarkList bookmark_list { get; construct; }
     private unowned Files.TrashMonitor trash_monitor;
     private bool drop_accepted = false;
+    private BookmarkRow? current_drop_target = null;
 
     public Files.SidebarInterface sidebar {get; construct;}
 
@@ -80,34 +81,23 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             var bm = ((BookmarkRow)row);
             warning ("got bmr %s", bm.uri);
             list_box.set_data<BookmarkRow> ("dragged-row", bm);
-            // Gdk.ContentProvider[] cps = {};
             var uri_val = new Value (typeof (string));
             uri_val.set_string (bm.uri);
             return new Gdk.ContentProvider.for_value (uri_val);
             }
 
             return null;
-            // obj_val.set_object (this);
-            // cps += new Gdk.ContentProvider.for_value (obj_val);
-
-            // return new Gdk.ContentProvider.union (cps);
-            // var obj_val = new Value (typeof (Object));
-            // obj_val.set_object (this);
-            // var widget_content = new Gdk.ContentProvider.for_value (obj_val);
-            // return widget_content;
-            // return null;
         });
         drag_source.drag_begin.connect ((drag) => {
-        warning ("drag begin");
+            //TODO Set drag icon
             return;
         });
         drag_source.drag_end.connect ((drag, delete_data) => {
-        warning ("drag end");
             list_box.set_data<BookmarkRow> ("dragged-row", null);
             return;
         });
         drag_source.drag_cancel.connect ((drag, reason) => {
-        warning ("drag cancel");
+            list_box.set_data<BookmarkRow> ("dragged-row", null);
             return true;
         });
         //Set up as drag target
@@ -119,8 +109,8 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         drop_target.accept.connect ((drop) => {
             var bm = list_box.get_data<BookmarkRow> ("dragged-data");
             if (bm != null) {
-                drop_accepted = bm.can_accept_drops;
-                return drop_accepted;
+                drop_accepted = true;
+                return true;
             } else {
                 var formats = drop.get_formats ();
                 if (formats.contain_gtype (typeof (string))) {
@@ -150,12 +140,14 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             return true;
         });
         drop_target.enter.connect ((x, y) => {
-            warning ("enter");
-
             return Gdk.DragAction.COPY;
         });
         drop_target.leave.connect (() => {
             drop_accepted = false;
+            if (current_drop_target != null) {
+                current_drop_target.reveal_drop_target (false);
+                current_drop_target = null;
+            }
         });
         drop_target.motion.connect ((x, y) => {
             if (!drop_accepted) {
@@ -164,16 +156,39 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             var row = widget.get_ancestor (typeof (BookmarkRow));
             if (row != null && (row is BookmarkRow)) {
-            var bm = ((BookmarkRow)row);
-            // warning ("got bmr %s", bm.uri);
-            return bm.can_accept_drops ? Gdk.DragAction.COPY : 0;
+                var bm = ((BookmarkRow)row);
+                if (current_drop_target != bm) {
+                    current_drop_target.reveal_drop_target (false);
+                    current_drop_target = bm;
+                }
+                Graphene.Point bm_point;
+                list_box.compute_point (bm, {(float)x, (float)y}, out bm_point);
+                //TODO Avoid hard coded threshold values
+                if (bm_point.y > 16) {
+                    bm.reveal_drop_target (true);
+                } else {
+                    bm.reveal_drop_target (false);
+                }
+
+                return bm.can_accept_drops ? Gdk.DragAction.COPY : 0;
             }
             return 0;
         });
 
         drop_target.on_drop.connect ((val, x, y) => {
             warning ("on drop");
+            if (current_drop_target != null) {
+                if (current_drop_target.drop_target_revealed ()) {
+                    warning ("dropping after %s", current_drop_target.display_name);
+                } else {
+                    warning ("dropping onto %s", current_drop_target.display_name);
+                }
+            }
             drop_accepted = false;
+            if (current_drop_target != null) {
+                current_drop_target.reveal_drop_target (false);
+                current_drop_target = null;
+            }
             return true;
         });
 
