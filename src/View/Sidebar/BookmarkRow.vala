@@ -189,7 +189,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         //Set up as drag source
         var drag_source = new Gtk.DragSource () {
-            propagation_phase = Gtk.PropagationPhase.CAPTURE
+            propagation_phase = Gtk.PropagationPhase.CAPTURE,
+            actions = Gdk.DragAction.COPY
         };
         icon_label_box.add_controller (drag_source);
         drag_source.prepare.connect ((x, y) => {
@@ -209,13 +210,40 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             return;
         });
         drag_source.drag_end.connect ((drag, delete_data) => {
-        warning ("drag enf");
+        warning ("drag end");
             return;
         });
         drag_source.drag_cancel.connect ((drag, reason) => {
         warning ("drag cancel");
             return true;
         });
+        //Set up as drag target
+        var drop_target = new Gtk.DropTarget (typeof (string), Gdk.DragAction.COPY) {
+            propagation_phase = Gtk.PropagationPhase.CAPTURE
+        };
+        icon_label_box.add_controller (drop_target);
+        drop_target.accept.connect ((drop) => {
+            warning ("Actions %s", drop.get_actions ().to_string ());
+            warning ("Content %s", drop.get_formats ().to_string ());
+            return false;
+        });
+        drop_target.enter.connect ((x, y) => {
+            warning ("enter");
+            return 0;
+        });
+        drop_target.leave.connect (() => {
+            warning ("leave");
+            return;
+        });
+        drop_target.motion.connect ((x, y) => {
+            warning ("motion");
+            return 0;
+        });
+        drop_target.on_drop.connect ((val, x, y) => {
+            warning ("on drop");
+            return false;
+        });
+
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
