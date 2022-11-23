@@ -53,7 +53,8 @@ public class Files.VolumePropertiesWindow : Files.AbstractPropertiesDialog {
 
         /* Build the header box */
         var file_icon = new Gtk.Image.from_gicon (mount_icon) {
-            pixel_size = 64
+            pixel_size = 64,
+            hexpand = false
         };
         Gtk.Widget? image_widget = null; //TODO Provide fallback
         if (file_icon != null) {
@@ -72,7 +73,8 @@ public class Files.VolumePropertiesWindow : Files.AbstractPropertiesDialog {
         create_header (
             image_widget,
             new Gtk.Label (mount_name) {
-                halign = Gtk.Align.START
+                halign = Gtk.Align.START,
+                hexpand = true
             }
         );
 
@@ -95,7 +97,7 @@ public class Files.VolumePropertiesWindow : Files.AbstractPropertiesDialog {
             used_space = info.get_attribute_uint64 (GLib.FileAttribute.FILESYSTEM_USED);
         }
 
-        layout.attach (info_grid, 0, 1);
+        layout.attach (info_grid, 0, 1, 2, 1);
         create_storage_bar (info);
         // update_storage_block_size (used_space, Files.StorageBar.ItemDescription.FILES);
 
