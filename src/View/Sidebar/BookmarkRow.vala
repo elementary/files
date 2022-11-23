@@ -187,8 +187,35 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             label.label = display_name;
         });
 
-        // set_up_drag ();
-        // set_up_drop ();
+        //Set up as drag source
+        var drag_source = new Gtk.DragSource () {
+            propagation_phase = Gtk.PropagationPhase.CAPTURE
+        };
+        icon_label_box.add_controller (drag_source);
+        drag_source.prepare.connect ((x, y) => {
+        warning ("drag prepare");
+            Gdk.ContentProvider[] cps = {};
+            var uri_val = new Value (typeof (string));
+            uri_val.set_string (uri);
+            cps += new Gdk.ContentProvider.for_value (uri_val);
+            var id_val = new Value (typeof (uint));
+            id_val.set_uint (id);
+            cps += new Gdk.ContentProvider.for_value (id_val);
+
+            return new Gdk.ContentProvider.union (cps);
+        });
+        drag_source.drag_begin.connect ((drag) => {
+        warning ("drag begin");
+            return;
+        });
+        drag_source.drag_end.connect ((drag, delete_data) => {
+        warning ("drag enf");
+            return;
+        });
+        drag_source.drag_cancel.connect ((drag, reason) => {
+        warning ("drag cancel");
+            return true;
+        });
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
