@@ -38,7 +38,7 @@ public class Files.MultiSlot : Gtk.Box {
     private Gtk.Adjustment hadj;
 
     private uint focus_idle_id = 0;
-    private Slot? _current_slot;
+    private Slot? _current_slot = null;
     public Slot? current_slot {
         get {
             return _current_slot;

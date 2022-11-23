@@ -79,7 +79,6 @@ public class Files.Application : Gtk.Application {
 
         progress_handler = new Progress.UIHandler ();
 
-        // this.clipboard = ClipboardManager.get_for_display ();
         this.recent = new Gtk.RecentManager ();
 
         // Deactivate plugins while porting main to Gtk4
@@ -90,7 +89,12 @@ public class Files.Application : Gtk.Application {
         /**TODO** gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
 
         this.volume_monitor = VolumeMonitor.get ();
-        this.volume_monitor.mount_removed.connect (mount_removed_callback);
+        this.volume_monitor.mount_removed.connect ((mount) => {
+            /* Notify each window */
+            foreach (var window in this.get_windows ()) {
+                ((Files.Window)window).mount_removed (mount);
+            }
+        });
 
 #if HAVE_UNITY
         QuicklistHandler.get_singleton ();
@@ -112,10 +116,6 @@ public class Files.Application : Gtk.Application {
             // Files.EmblemRenderer.clear_cache ();
         });
     }
-
-    // public unowned ClipboardManager get_clipboard_manager () {
-    //     return this.clipboard;
-    // }
 
     public unowned Gtk.RecentManager get_recent_manager () {
         return this.recent;
@@ -269,13 +269,6 @@ public class Files.Application : Gtk.Application {
         window_list.@foreach ((window) => {
             ((Files.Window)window).folder_deleted (file);
         });
-    }
-
-    private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
-        /* Notify each window */
-        foreach (var window in this.get_windows ()) {
-            ( (Files.Window)window).mount_removed (mount);
-        }
     }
 
     private void init_schemas () {

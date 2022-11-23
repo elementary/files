@@ -1438,13 +1438,11 @@ critical ("Do not use ViewMode CURRENT");
     }
 
     public void mount_removed (Mount mount) {
-        debug ("Mount %s removed", mount.get_name ());
         GLib.File root = mount.get_root ();
-
         for (uint i = 0; i < tab_view.pages.get_n_items (); i++) {
-            var view_container = (ViewContainer)(tab_view.pages.get_item (i)) ;
-            GLib.File location = view_container.location;
-
+            var view_container = (ViewContainer)(((Adw.TabPage)(tab_view.pages.get_item (i))).child) ;
+            assert (view_container != null);
+            GLib.File? location = view_container.location;
             if (location == null || location.has_prefix (root) || location.equal (root)) {
                 if (view_container == current_container) {
                     set_default_location_and_mode ();

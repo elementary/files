@@ -41,12 +41,14 @@ public class Files.ViewContainer : Gtk.Box {
     private Files.MultiSlot multi_slot;
     public ViewMode view_mode {
         get {
+            assert (multi_slot != null);
             return multi_slot.view_mode;
         }
     }
 
     public Files.Slot? slot {
         get {
+            assert (multi_slot != null);
             return multi_slot.current_slot;
         }
     }
