@@ -32,7 +32,6 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     private double storage_free = 0;
     public string sort_key { get; set construct; default = "";} // Higher index -> further down list
 
-    protected static Gtk.CssProvider devicerow_provider;
     protected static VolumeMonitor volume_monitor;
 
     private Gtk.Stack unmount_eject_working_stack;
@@ -104,8 +103,6 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
     static construct {
         volume_monitor = VolumeMonitor.@get ();
-        devicerow_provider = new Gtk.CssProvider ();
-        devicerow_provider.load_from_resource ("/io/elementary/files/DiskRenderer.css");
     }
 
     construct {
@@ -113,8 +110,6 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             icon_name = "media-eject-symbolic",
             tooltip_text = (can_eject ? _("Eject '%s'") : _("Unmount '%s'")).printf (custom_name)
         };
-
-        unmount_eject_button.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         working_spinner = new Gtk.Spinner ();
 
@@ -141,14 +136,13 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             hexpand = true,
             margin_top = 3
         };
-        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, 0.9);
-        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, 0.95);
-        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_FULL, 1);
+        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, Files.DISK_OFFSET_LOW);
+        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, Files.DISK_OFFSET_HIGH);
+        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_FULL, Files.DISK_OFFSET_FULL);
 
         unowned var storage_style_context = storage_levelbar.get_style_context ();
         storage_style_context.add_class ("flat");
         storage_style_context.add_class ("inverted");
-        storage_style_context.add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         content_grid.attach (storage_levelbar, 0, 1, 2, 1);
 

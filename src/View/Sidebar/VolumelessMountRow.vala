@@ -71,9 +71,7 @@ public class Sidebar.VolumelessMountRow : Sidebar.AbstractMountableRow, SidebarI
     }
 
     public override void show_mount_info () {
-warning ("Mount show info");
         if ((mount != null) || uri == Files.ROOT_FS_URI) {
-warning ("new VPW");
             var properties_window = new Files.VolumePropertiesWindow (
                 mount,
                 Files.get_active_window ()

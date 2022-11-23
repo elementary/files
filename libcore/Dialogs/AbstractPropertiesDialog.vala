@@ -24,7 +24,7 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
     protected Gtk.Grid info_grid;
     protected int line; //Next free line in info grid
     protected Gtk.Grid layout;
-    protected Files.StorageBar? storagebar = null;
+    protected Gtk.LevelBar? storage_levelbar = null;
 
     protected AbstractPropertiesDialog (string _title, Gtk.Window parent) {
         Object (title: _title,
@@ -53,6 +53,19 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
         info_grid.attach (new Granite.HeaderLabel (_("Info")), 0, line++, 2, 1);
         get_content_area ().append (layout);
         add_button (_("Close"), Gtk.ResponseType.CLOSE);
+
+        storage_levelbar = new Gtk.LevelBar () {
+            value = 0.5,
+            hexpand = true,
+            margin_top = 3
+        };
+        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, Files.DISK_OFFSET_LOW);
+        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, Files.DISK_OFFSET_HIGH);
+        storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_FULL, Files.DISK_OFFSET_FULL);
+
+        unowned var storage_style_context = storage_levelbar.get_style_context ();
+        storage_style_context.add_class ("flat");
+        storage_style_context.add_class ("inverted");
     }
 
     protected Gtk.Label make_key_label (string label) {
@@ -60,7 +73,6 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
             halign = Gtk.Align.END,
             margin_start = 12
         };
-        // key_label.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
         return key_label;
     }
 
@@ -72,7 +84,6 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
             selectable = true,
             use_markup = true
         };
-        // val_label.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
         return val_label;
     }
 
@@ -129,18 +140,13 @@ protected abstract class Files.AbstractPropertiesDialog : Granite.Dialog {
             file_info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
             file_info.has_attribute (FileAttribute.FILESYSTEM_FREE) &&
             file_info.has_attribute (FileAttribute.FILESYSTEM_USED)) {
-warning ("got storage info");
             uint64 fs_capacity = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
             uint64 fs_used = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
             uint64 fs_available = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
             uint64 fs_reserved = fs_capacity - fs_used - fs_available;
-
-            storagebar = new Files.StorageBar.with_total_usage (fs_capacity, fs_used + fs_reserved);
-            update_storage_block_size (fs_reserved, Files.StorageBar.ItemDescription.OTHER);
-warning ("attach storage bar");
-            info_grid.attach (storagebar, 0, line++, 4, 1);
+            storage_levelbar.@value = (double)((fs_capacity - fs_available)) / (double) (fs_capacity);
+            info_grid.attach (storage_levelbar, 0, line++, 4, 1);
         } else {
-warning ("no storage info");
             /* We're not able to gether the usage statistics, show an error
              * message to let the user know. */
             var capacity_label = make_key_label (_("Capacity:"));
@@ -158,13 +164,6 @@ warning ("no storage info");
             info_grid.attach_next_to (available_value, available_label, Gtk.PositionType.RIGHT);
             info_grid.attach (used_label, 0, line++, 1, 1);
             info_grid.attach_next_to (used_value, used_label, Gtk.PositionType.RIGHT);
-        }
-    }
-
-    protected void update_storage_block_size (uint64 size,
-                                              Files.StorageBar.ItemDescription item_description) {
-        if (storagebar != null) {
-            storagebar.update_block_size (item_description, size);
         }
     }
 }

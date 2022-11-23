@@ -80,6 +80,10 @@ namespace Files {
 
     public const string[] SKIP_IMAGES = {"image/svg+xml", "image/tiff", "image/jp2"};
 
+    public const double DISK_OFFSET_LOW = 0.6;
+    public const double DISK_OFFSET_HIGH = 0.9;
+    public const double DISK_OFFSET_FULL = 1.0;
+
     public string protocol_to_name (string protocol) {
         /* Deal with protocol with or without : or / characters at the end */
         string s = protocol.delimit (":/", ' ').chomp ();
