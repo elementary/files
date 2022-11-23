@@ -37,10 +37,8 @@ void goffile_icon_update_test () {
     assert_true (file.thumbstate == Files.File.ThumbState.UNKNOWN);
     assert_true (file.gicon != null); //A placeholder icon should be present
     assert_true (file.gicon.to_string ().contains ("image-missing"));
-    int thumbnail_request;
-    Files.Thumbnailer.@get ().queue_file (
-        file, out thumbnail_request, false
-    );
+    //Cannot test thumbnailer in CI Environment so fake it
+    file.thumbstate = Files.File.ThumbState.LOADING;
     file.update_gicon_and_paintable ();
     assert_true (file.gicon.to_string ().contains ("image-loading"));
 }
