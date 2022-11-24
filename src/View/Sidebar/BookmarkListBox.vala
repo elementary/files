@@ -98,7 +98,10 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             return true;
         });
         //Set up as drag target
-        var drop_target = new Gtk.DropTarget (typeof (string), Gdk.DragAction.LINK) {
+        var drop_target = new Gtk.DropTarget (
+            typeof (string),
+            Gdk.DragAction.LINK | Gdk.DragAction.COPY
+        ) {
             propagation_phase = Gtk.PropagationPhase.CAPTURE,
             preload = true
         };
@@ -134,7 +137,12 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             return true;
         });
         drop_target.enter.connect ((x, y) => {
-            return Gdk.DragAction.LINK;
+            var dragged_row = (BookmarkRow)list_box.get_data<BookmarkRow> ("dragged-row");
+            if (dragged_row != null) {
+                return Gdk.DragAction.LINK;
+            } else {
+                return Gdk.DragAction.COPY;
+            }
         });
         drop_target.leave.connect (() => {
             drop_accepted = false;
@@ -166,39 +174,52 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                     bm.reveal_drop_target (false);
                 }
 
-                return bm.can_accept_drops ? Gdk.DragAction.LINK : 0;
+                if (bm.can_accept_drops) {
+                    var dragged_row = (BookmarkRow)list_box.get_data<BookmarkRow> ("dragged-row");
+                    if (dragged_row != null) {
+                        return Gdk.DragAction.LINK;
+                    } else {
+                        return Gdk.DragAction.COPY;
+                    }
+                }
             }
+
             return 0;
         });
-
         drop_target.on_drop.connect ((val, x, y) => {
             warning ("on drop");
+            bool accepted = false;
             var dragged_row = (BookmarkRow)list_box.get_data<BookmarkRow> ("dragged-row");
             var dragged_uri = val.get_string (); //This has already been checked as valid
+            warning ("dragged_uri %s", dragged_uri);
             if (current_drop_target != null) {
                 if (current_drop_target.drop_target_revealed ()) {
                     if (dragged_row != null) {
                         move_item_after (dragged_row, current_drop_target.get_index ());
+                        accepted = true;
                     } else {
                         warning ("dragged uri");
-
+                        add_favorite (dragged_uri, "", current_drop_target.get_index () + 1);
+                        accepted = true;
                     }
                 } else {
                     //Dropping row onto another row not supported
                     warning ("dropping onto %s", current_drop_target.display_name);
-                    if (dragged_uri != null) {
-                        warning ("dragged uri");
+                    if (dragged_row != null) {
+                        warning ("dragged row");
                     } else {
                         warning ("dragged uri");
                     }
                 }
             }
+
             drop_accepted = false;
             if (current_drop_target != null) {
                 current_drop_target.reveal_drop_target (false);
                 current_drop_target = null;
             }
-            return true;
+
+            return accepted;
         });
 
     }
@@ -347,16 +368,20 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                                        int pos = 0) {
 
         int pinned = 0; // Assume pinned items only at start and end of list
-        var child = list_box.get_first_child ();
-        while (child != null && ((SidebarItemInterface)child).pinned) {
+        int index = 0;
+        var row = list_box.get_row_at_index (index);
+        while (row != null && ((SidebarItemInterface)row).pinned) {
             pinned++;
-            child = child.get_next_sibling ();
+            index++;
+            row = list_box.get_row_at_index (index);
         }
 
+        // pinned now index of row after last pinned item
         if (pos < pinned) {
             pos = pinned;
         }
 
+        //Bookmark list does not include pinned items like Home and Recent
         var bm = bookmark_list.insert_uri (uri, pos - pinned, custom_name); //Assume non_builtin items are not pinned
         if (bm != null) {
             insert_bookmark (bm.custom_name, bm.uri, bm.get_icon (), pos);
@@ -364,10 +389,6 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         } else {
             return false;
         }
-    }
-
-    public SidebarItemInterface? get_item_at_index (int index) {
-        return (SidebarItemInterface?)(list_box.get_row_at_index (index));
     }
 
     public override bool move_item_after (SidebarItemInterface item, int target_index) {
