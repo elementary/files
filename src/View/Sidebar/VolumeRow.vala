@@ -153,16 +153,13 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
             return;
         }
 
-warning ("add extra menu items for drive");
         var sort_key = drive.get_sort_key ();
         if (sort_key != null && sort_key.contains ("hotplug")) {
-warning ("hotplug");
             menu_builder
                 .add_separator ()
                 .add_safely_remove (Action.print_detailed_name ("device.safely-remove", new Variant.uint32 (id))
             );
         } else if (mount == null && drive.can_eject ()) {
-warning ("can eject");
             menu_builder
                 .add_separator ()
                 .add_eject_drive (Action.print_detailed_name ("device.eject", new Variant.uint32 (id))
@@ -190,7 +187,6 @@ warning ("can eject");
     }
 
     public override void show_mount_info () requires (!working) {
-warning ("Vol show info");
         if (!is_mounted) {
             /* Mount the device if possible, defer showing the dialog after
              * we're done */

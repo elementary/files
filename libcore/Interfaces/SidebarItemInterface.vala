@@ -51,7 +51,7 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
     public abstract bool permanent { get; construct; } // Whether can be deleted
     public abstract bool can_insert_before { get; set; default = true; }
     public abstract bool can_insert_after { get; set; default = true; }
-    public abstract int get_index ();
+    public abstract int get_index (); //Implemented by Gtk.ListBoxRow
 
     /* Provision of plugin items with additional menu options */
     //TODO Make a separate interface?

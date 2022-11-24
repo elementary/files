@@ -69,21 +69,18 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         //Set up as drag source
         var drag_source = new Gtk.DragSource () {
             propagation_phase = Gtk.PropagationPhase.CAPTURE,
-            actions = Gdk.DragAction.COPY
+            actions = Gdk.DragAction.LINK
         };
         list_box.add_controller (drag_source);
         drag_source.prepare.connect ((x, y) => {
-        warning ("drag prepare");
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
-            warning ("picked widget type %s", widget.name);
             var row = widget.get_ancestor (typeof (BookmarkRow));
             if (row != null && (row is BookmarkRow)) {
-            var bm = ((BookmarkRow)row);
-            warning ("got bmr %s", bm.uri);
-            list_box.set_data<BookmarkRow> ("dragged-row", bm);
-            var uri_val = new Value (typeof (string));
-            uri_val.set_string (bm.uri);
-            return new Gdk.ContentProvider.for_value (uri_val);
+                var bm = ((BookmarkRow)row);
+                list_box.set_data<BookmarkRow> ("dragged-row", bm);
+                var uri_val = new Value (typeof (string));
+                uri_val.set_string (bm.uri);
+                return new Gdk.ContentProvider.for_value (uri_val);
             }
 
             return null;
@@ -101,7 +98,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             return true;
         });
         //Set up as drag target
-        var drop_target = new Gtk.DropTarget (typeof (string), Gdk.DragAction.COPY) {
+        var drop_target = new Gtk.DropTarget (typeof (string), Gdk.DragAction.LINK) {
             propagation_phase = Gtk.PropagationPhase.CAPTURE,
             preload = true
         };
@@ -124,9 +121,6 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                                 if (val != null) {
                                     Uri.is_valid (val.get_string (), UriFlags.PARSE_RELAXED);
                                     drop_accepted = true;
-                                    warning ("drop accepted");
-                                } else {
-                                warning ("Null val");
                                 }
                             } catch (Error e) {
                                 warning ("Could not retrieve valid uri");
@@ -140,7 +134,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             return true;
         });
         drop_target.enter.connect ((x, y) => {
-            return Gdk.DragAction.COPY;
+            return Gdk.DragAction.LINK;
         });
         drop_target.leave.connect (() => {
             drop_accepted = false;
@@ -153,6 +147,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             if (!drop_accepted) {
                 return 0;
             }
+
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             var row = widget.get_ancestor (typeof (BookmarkRow));
             if (row != null && (row is BookmarkRow)) {
@@ -161,6 +156,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                     current_drop_target.reveal_drop_target (false);
                     current_drop_target = bm;
                 }
+
                 Graphene.Point bm_point;
                 list_box.compute_point (bm, {(float)x, (float)y}, out bm_point);
                 //TODO Avoid hard coded threshold values
@@ -170,18 +166,31 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                     bm.reveal_drop_target (false);
                 }
 
-                return bm.can_accept_drops ? Gdk.DragAction.COPY : 0;
+                return bm.can_accept_drops ? Gdk.DragAction.LINK : 0;
             }
             return 0;
         });
 
         drop_target.on_drop.connect ((val, x, y) => {
             warning ("on drop");
+            var dragged_row = (BookmarkRow)list_box.get_data<BookmarkRow> ("dragged-row");
+            var dragged_uri = val.get_string (); //This has already been checked as valid
             if (current_drop_target != null) {
                 if (current_drop_target.drop_target_revealed ()) {
-                    warning ("dropping after %s", current_drop_target.display_name);
+                    if (dragged_row != null) {
+                        move_item_after (dragged_row, current_drop_target.get_index ());
+                    } else {
+                        warning ("dragged uri");
+
+                    }
                 } else {
+                    //Dropping row onto another row not supported
                     warning ("dropping onto %s", current_drop_target.display_name);
+                    if (dragged_uri != null) {
+                        warning ("dragged uri");
+                    } else {
+                        warning ("dragged uri");
+                    }
                 }
             }
             drop_accepted = false;
