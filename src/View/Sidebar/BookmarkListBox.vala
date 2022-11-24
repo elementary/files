@@ -25,7 +25,8 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     public Files.BookmarkList bookmark_list { get; construct; }
     private unowned Files.TrashMonitor trash_monitor;
     private bool drop_accepted = false;
-    private BookmarkRow? current_drop_target = null;
+    private unowned BookmarkRow? current_drop_target = null;
+    private unowned BookmarkRow? dragged_row = null;
 
     public Files.SidebarInterface sidebar {get; construct;}
 
@@ -77,7 +78,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             var row = widget.get_ancestor (typeof (BookmarkRow));
             if (row != null && (row is BookmarkRow)) {
                 var bm = ((BookmarkRow)row);
-                list_box.set_data<BookmarkRow> ("dragged-row", bm);
+                dragged_row = bm;
                 var uri_val = new Value (typeof (string));
                 uri_val.set_string (bm.uri);
                 return new Gdk.ContentProvider.for_value (uri_val);
@@ -90,11 +91,11 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             return;
         });
         drag_source.drag_end.connect ((drag, delete_data) => {
-            list_box.set_data<BookmarkRow> ("dragged-row", null);
+            dragged_row = null;
             return;
         });
         drag_source.drag_cancel.connect ((drag, reason) => {
-            list_box.set_data<BookmarkRow> ("dragged-row", null);
+            dragged_row = null;
             return true;
         });
         //Set up as drag target
@@ -107,7 +108,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         };
         list_box.add_controller (drop_target);
         drop_target.accept.connect ((drop) => {
-            var bm = list_box.get_data<BookmarkRow> ("dragged-data");
+            var bm = dragged_row;
             if (bm != null) {
                 drop_accepted = true;
                 return true;
@@ -137,7 +138,6 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             return true;
         });
         drop_target.enter.connect ((x, y) => {
-            var dragged_row = (BookmarkRow)list_box.get_data<BookmarkRow> ("dragged-row");
             if (dragged_row != null) {
                 return Gdk.DragAction.LINK;
             } else {
@@ -175,7 +175,6 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                 }
 
                 if (bm.can_accept_drops) {
-                    var dragged_row = (BookmarkRow)list_box.get_data<BookmarkRow> ("dragged-row");
                     if (dragged_row != null) {
                         return Gdk.DragAction.LINK;
                     } else {
@@ -189,7 +188,6 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         drop_target.on_drop.connect ((val, x, y) => {
             warning ("on drop");
             bool accepted = false;
-            var dragged_row = (BookmarkRow)list_box.get_data<BookmarkRow> ("dragged-row");
             var dragged_uri = val.get_string (); //This has already been checked as valid
             warning ("dragged_uri %s", dragged_uri);
             if (current_drop_target != null) {
