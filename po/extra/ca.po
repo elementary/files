@@ -761,7 +761,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:367
 msgid "New features:"
-msgstr "Funcions noves:"
+msgstr "Noves característiques"
 
 #: data/io.elementary.files.appdata.xml.in.in:369
 msgid "Initial git plugin support"
