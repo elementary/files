@@ -169,12 +169,20 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
             var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
             row.start_renaming ();
         });
+        var empty_all_trash_action = new SimpleAction ("empty-all-trash", null);
+        empty_all_trash_action.activate.connect (() => {
+            var job = new Files.FileOperations.EmptyTrashJob (
+                (Gtk.Window)get_ancestor (typeof (Gtk.Window))
+            );
+            job.empty_trash.begin ();
+        });
         var bookmark_action_group = new SimpleActionGroup ();
         bookmark_action_group.add_action (open_bookmark_action);
         bookmark_action_group.add_action (open_tab_action);
         bookmark_action_group.add_action (open_window_action);
         bookmark_action_group.add_action (remove_bookmark_action);
         bookmark_action_group.add_action (rename_bookmark_action);
+        bookmark_action_group.add_action (empty_all_trash_action);
         insert_action_group ("bm", bookmark_action_group);
 
         var secondary_click_controller = new Gtk.GestureClick ();

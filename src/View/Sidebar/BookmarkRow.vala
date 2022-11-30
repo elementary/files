@@ -23,25 +23,9 @@
 public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     /* Targets available from BookmarkRow when it is the dragged
      * Just the row ID as text at the moment
-     */
-
-     //TODO Rework DnD for Gtk4
-    // static Gtk.TargetEntry[] source_targets = {
-    //     {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.BOOKMARK_ROW}
-    // };
-
-    // /* Targets accepted when dropped onto movable BookmarkRow
-    //  * Either BookmarkRow id as text or a list of uris as text is accepted at the moment
-    //  * Depending on where it is dropped (edge or middle) it will either be used to create a
-    //  * new bookmark or to initiate a file operation with the bookmark uri as target  */
-    // static Gtk.TargetEntry[] dest_targets = {
-    //     {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
-    //     {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.BOOKMARK_ROW},
-    // };
-
-    // static Gdk.Atom text_data_atom = Gdk.Atom.intern_static_string ("text/plain");
-
-    /* Each row gets a unique id.  The methods relating to this are in the SidebarItemInterface */
+     * Each row gets a unique id.  The methods relating to this are in the SidebarItemInterface */
+    //TODO Implement key control once means to focus keyboard on sidebar provided?
+    //TODO Impement modified button event to open in new tab??
     static construct {
         SidebarItemInterface.row_id = new Rand.with_seed (
             int.parse (get_real_time ().to_string ())
@@ -55,10 +39,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private Gtk.Image icon;
     public bool can_accept_drops { get; set; default = true; }
     private Files.File target_file;
-    private List<GLib.File> drop_file_list = null;
-    private string? drop_text = null;
-    private bool drop_occurred = false;
-    private Gdk.DragAction? current_suggested_action = null;
     private bool is_renaming = false;
 
     protected Gtk.Grid content_grid;
@@ -167,10 +147,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         set_child (content_grid);
 
-        //TODO Use EventControllers
-        // key_press_event.connect (on_key_press_event);
-        // button_release_event.connect_after (after_button_release_event);
-
         notify["gicon"].connect (() => {
             icon.set_from_gicon (gicon);
         });
@@ -220,65 +196,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         grab_focus ();
     }
 
-    //TODO Use EventControllers
-    // protected virtual bool on_key_press_event (Gdk.EventKey event) {
-    //     uint keyval;
-    //     event.get_keyval (out keyval);
-    //     switch (keyval) {
-    //         case Gdk.Key.F2:
-    //             rename ();
-    //             return true;
-
-    //         case Gdk.Key.Escape:
-    //             cancel_rename ();
-    //             return true;
-
-    //         default:
-    //             break;
-    //     }
-    //     return false;
-    // }
-
-    // protected virtual bool after_button_release_event (Gdk.EventButton event) {
-    //     if (!valid) { //Ignore if in the process of being removed
-    //         return true;
-    //     }
-
-    //     if (label_stack.visible_child_name == "editable") { //Do not interfere with renaming
-    //         return false;
-    //     }
-
-    //     Gdk.ModifierType state;
-    //     event.get_state (out state);
-    //     var mods = state & Gtk.accelerator_get_default_mod_mask ();
-    //     var control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
-    //     var other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
-    //     var only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
-
-    //     uint button;
-    //     event.get_button (out button);
-    //     switch (button) {
-    //         case Gdk.BUTTON_PRIMARY:
-    //             if (only_control_pressed) {
-    //                 activated (Files.OpenFlag.NEW_TAB);
-    //                 return true;
-    //             } else {
-    //                 return false;
-    //             }
-
-    //         case Gdk.BUTTON_SECONDARY:
-    //             popup_context_menu (event);
-    //             return true;
-
-    //         case Gdk.BUTTON_MIDDLE:
-    //             activated (Files.OpenFlag.NEW_TAB);
-    //             return true;
-
-    //         default:
-    //             return false;
-    //     }
-    // }
-
     public virtual Gtk.PopoverMenu? get_context_menu () {
         Gtk.PopoverMenu popover;
         if (menu_model != null) {
@@ -312,27 +229,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
-    // /* Rows under "Bookmarks" can be removed or renamed */
-        // if (!permanent) {
-        //     menu_builder
-        //         .add_separator ()
-        //         .add_remove (
-        //             Action.print_detailed_name ("bm.remove-bookmark", new Variant.uint32 (id))
-        //     );
-        // }
-
-
-
-    //     if (Uri.parse_scheme (uri) == "trash") {
-    //         menu_builder
-    //             .add_separator ()
-    //             .add_empty_all_trash (() => {
-    //                 new Files.FileOperations.EmptyTrashJob (
-    //                     (Gtk.Window)get_ancestor (typeof (Gtk.Window)
-    //                 )).empty_trash.begin ();
-    //             })
-    //         ;
-    //     }
+        if (Uri.parse_scheme (uri) == "trash") {
+            menu_builder.add_empty_all_trash ("bm.empty-all-trash");
+        }
     }
 
 
