@@ -37,7 +37,6 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     }
 
     construct {
-
         orientation = Gtk.Orientation.VERTICAL;
         bookmark_listbox = new BookmarkListBox (this);
         device_listbox = new DeviceListBox (this);
@@ -177,6 +176,27 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         bookmark_action_group.add_action (remove_bookmark_action);
         bookmark_action_group.add_action (rename_bookmark_action);
         insert_action_group ("bm", bookmark_action_group);
+
+        var secondary_click_controller = new Gtk.GestureClick ();
+        secondary_click_controller.set_button (Gdk.BUTTON_SECONDARY);
+        secondary_click_controller.released.connect ((n_press, x, y) => {
+            if (n_press == 1) {
+                var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
+                if (widget != null) {
+                    var row = widget.get_ancestor (typeof (BookmarkRow));
+                    if (row != null && row is BookmarkRow) {
+                        var popover = ((BookmarkRow)row).get_context_menu ();
+                        if (popover != null) {
+                            popover.set_parent (this);
+                            popover.pointing_to = { (int)x, (int)y, 1, 1 };
+                            popover.popup ();
+                        }
+                    }
+                }
+            }
+        });
+
+        add_controller (secondary_click_controller);
 
         //Bind properties, connect signals
         Files.app_settings.bind (

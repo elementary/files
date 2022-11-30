@@ -118,7 +118,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
         set_tooltip_markup (custom_name);
     }
 
-    protected override void popup_context_menu () {
+    public override Gtk.PopoverMenu? get_context_menu () {
         // At present, this type of row only shows when there is no media or unformatted
         // In future, actions like "Format" might be added.
         var sort_key = drive.get_sort_key ();
@@ -128,9 +128,10 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
                 Action.print_detailed_name ("device.safely-remove", new Variant.uint32 (id))
             );
 
-            var popup = menu_builder.build ();
-            popup.set_parent (label);
-            popup.popup ();
+            var popover = menu_builder.build ();
+            return popover;
         }
+
+        return null;
     }
 }
