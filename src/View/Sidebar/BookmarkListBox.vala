@@ -27,6 +27,9 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     private bool drop_accepted = false;
     private unowned BookmarkRow? current_drop_target = null;
     private unowned BookmarkRow? dragged_row = null;
+    private List<GLib.File> dropped_files = null;
+    private bool dropping_uri_list = false;
+
 
     public Files.SidebarInterface sidebar {get; construct;}
 
@@ -98,41 +101,39 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             dragged_row = null;
             return true;
         });
-        //Set up as drag target
+
+        //Set up as drag target. Use simple (synchronous) string target for now as most reliable
+        //TODO Use Gdk.FileList target when Gtk4 version 4.8+ available
         var drop_target = new Gtk.DropTarget (
-            typeof (string),
+            Type.STRING,
             Gdk.DragAction.LINK | Gdk.DragAction.COPY
         ) {
             propagation_phase = Gtk.PropagationPhase.CAPTURE,
-            preload = true
         };
         list_box.add_controller (drop_target);
         drop_target.accept.connect ((drop) => {
+            drop_accepted = false;
             var bm = dragged_row;
             if (bm != null) {
                 drop_accepted = true;
-                return true;
             } else {
-                var formats = drop.get_formats ();
-                if (formats.contain_gtype (typeof (string))) {
-                    drop.read_value_async.begin (
-                        typeof (string),
-                        Priority.DEFAULT,
-                        null,
-                        (obj, res) => {
-                            try {
-                                var val = drop.read_value_async.end (res);
-                                if (val != null) {
-                                    Uri.is_valid (val.get_string (), UriFlags.PARSE_RELAXED);
-                                    drop_accepted = true;
-                                }
-                            } catch (Error e) {
-                                warning ("Could not retrieve valid uri");
-                                drop_accepted = false;
+                drop.read_value_async.begin (
+                    Type.STRING,
+                    Priority.DEFAULT,
+                    null,
+                    (obj, res) => {
+                        try {
+                            var val = drop.read_value_async.end (res);
+                            if (val != null) {
+                                // Error thrown if string does not contain valid uris as uri-list
+                                dropped_files = Files.FileUtils.files_from_uris (val.get_string ());
+                                drop_accepted = true;
                             }
+                        } catch (Error e) {
+                            warning ("Could not retrieve valid uri (s)");
                         }
-                    );
-                }
+                    }
+                );
             }
 
             return true;
@@ -146,6 +147,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         });
         drop_target.leave.connect (() => {
             drop_accepted = false;
+            dropped_files = null;
             if (current_drop_target != null) {
                 current_drop_target.reveal_drop_target (false);
                 current_drop_target = null;
@@ -155,7 +157,6 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             if (!drop_accepted) {
                 return 0;
             }
-
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             var row = widget.get_ancestor (typeof (BookmarkRow));
             if (row != null && (row is BookmarkRow)) {
@@ -186,29 +187,36 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             return 0;
         });
         drop_target.on_drop.connect ((val, x, y) => {
-            warning ("on drop");
-            bool accepted = false;
-            var dragged_uri = val.get_string (); //This has already been checked as valid
-            warning ("dragged_uri %s", dragged_uri);
-            if (current_drop_target != null) {
-                if (current_drop_target.drop_target_revealed ()) {
-                    if (dragged_row != null) {
-                        move_item_after (dragged_row, current_drop_target.get_index ());
-                        accepted = true;
+            if (dropped_files != null || dragged_row != null) {
+                if (current_drop_target != null) {
+                    if (current_drop_target.drop_target_revealed ()) {
+                        if (dragged_row != null) {
+                            move_item_after (dragged_row, current_drop_target.get_index ());
+                        } else {
+                            var index = 1;
+                            //TODO Limit list length to sensible value?
+                            foreach (var file in dropped_files) {
+                                add_favorite (file.get_uri (), "", current_drop_target.get_index () + index++);
+                            }
+                        }
                     } else {
-                        warning ("dragged uri");
-                        add_favorite (dragged_uri, "", current_drop_target.get_index () + 1);
-                        accepted = true;
-                    }
-                } else {
-                    //Dropping row onto another row not supported
-                    warning ("dropping onto %s", current_drop_target.display_name);
-                    if (dragged_row != null) {
-                        warning ("dragged row");
-                    } else {
-                        warning ("dragged uri");
+                        if (dragged_row != null) {
+                            warning ("dragged row onto row - not supported");
+                        } else {
+                            Files.DndHandler.handle_file_drop_actions (
+                                this,
+                                x, y,
+                                Files.File.@get (File.new_for_uri (current_drop_target.uri)),
+                                dropped_files,
+                                Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK,
+                                Gdk.DragAction.COPY,
+                                true
+                            );
+                        }
                     }
                 }
+            } else {
+                warning ("no dropped files found");
             }
 
             drop_accepted = false;
@@ -216,8 +224,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                 current_drop_target.reveal_drop_target (false);
                 current_drop_target = null;
             }
-
-            return accepted;
+            return true;
         });
 
     }

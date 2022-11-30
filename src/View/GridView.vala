@@ -52,6 +52,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     private EqualFunc<Files.File>? file_equal_func;
     private GLib.List<GridFileItem> fileitem_list;
     private Files.DndHandler dnd_handler;
+    private string? uri_string = null;
     private Gtk.ScrolledWindow? scrolled_window;
 
     public GridView (Files.SlotInterface slot) {
@@ -69,7 +70,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         set_layout_manager (new Gtk.BinLayout ());
         //Menu structure defined by GridView.ui
         item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
-        dnd_handler = new Files.DndHandler (this, grid_view, grid_view);
+        // dnd_handler = new Files.DndHandler (this, grid_view, grid_view);
         fileitem_list = new GLib.List<GridFileItem> ();
 
         //Set up models
@@ -210,6 +211,46 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             }
         });
 
+        //Set up as drag source for bookmarking
+        var drag_source = new Gtk.DragSource () {
+            propagation_phase = Gtk.PropagationPhase.CAPTURE,
+            actions = Gdk.DragAction.LINK | Gdk.DragAction.COPY | Gdk.DragAction.MOVE
+        };
+        grid_view.add_controller (drag_source);
+        drag_source.prepare.connect ((x, y) => {
+            var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
+            var item = widget.get_ancestor (typeof (GridFileItem));
+            if (item != null && (item is GridFileItem)) {
+                var fileitem = ((GridFileItem)item);
+                if (!fileitem.selected) {
+                    multi_selection.select_item (fileitem.pos, true);
+                }
+
+                var selected_files = new GLib.List<Files.File> ();
+                get_selected_files (out selected_files);
+                uri_string = FileUtils.make_string_from_file_list (selected_files);
+                // Use a simple string content to match sidebar drop target
+                var list_val = new GLib.Value (Type.STRING);
+                list_val.set_string (uri_string);
+                return new Gdk.ContentProvider.for_value (list_val);
+            }
+
+            return null;
+        });
+        drag_source.drag_begin.connect ((drag) => {
+            //TODO Set drag icon
+            return;
+        });
+        drag_source.drag_end.connect ((drag, delete_data) => {
+            //FIXME Does this leak memory?
+            uri_string = null;
+            return;
+        });
+        drag_source.drag_cancel.connect ((drag, reason) => {
+            //FIXME Does this leak memory?
+            uri_string = null;
+            return true;
+        });
         notify["sort-type"].connect (() => {
             list_store.sort (file_compare_func);
         });
