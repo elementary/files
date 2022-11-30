@@ -4394,7 +4394,7 @@ retry:
             }
             // End UNDO-REDO
         } else {
-            data[0] = '\0';
+            data = "";
             length = 0;
             if (job->src_data) {
                 data = job->src_data;
