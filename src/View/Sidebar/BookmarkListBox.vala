@@ -161,8 +161,11 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             var row = widget.get_ancestor (typeof (BookmarkRow));
             if (row != null && (row is BookmarkRow)) {
                 var bm = ((BookmarkRow)row);
-                if (current_drop_target != bm) {
-                    current_drop_target.reveal_drop_target (false);
+                if (current_drop_target == null || current_drop_target != bm) {
+                    if (current_drop_target != null) {
+                        current_drop_target.reveal_drop_target (false);
+                    }
+
                     current_drop_target = bm;
                 }
 
