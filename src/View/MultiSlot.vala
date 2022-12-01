@@ -16,7 +16,7 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-public class Files.MultiSlot : Gtk.Box {
+public class Files.MultiSlot : Gtk.Box, SlotContainerInterface {
     public GLib.File? root_location {
         get {
             var first_slot = (Slot)(first_host.start_child);
@@ -68,6 +68,7 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
     construct {
+        orientation = Gtk.Orientation.VERTICAL;
         scrolled_window = new Gtk.ScrolledWindow () {
             vscrollbar_policy = Gtk.PolicyType.NEVER,
         };
@@ -390,6 +391,14 @@ public class Files.MultiSlot : Gtk.Box {
     }
 
 /** Helper functions */
+    public void add_extra_action_widget (Gtk.Widget widget) {
+        append (widget);
+    }
+
+    public SlotInterface get_slot () {
+        return (SlotInterface)current_slot;
+    }
+
     public List<Files.File>? get_selected_files () {
         if (current_slot != null) {
             List<Files.File> selected_files = ((Slot)(current_slot)).get_selected_files ();

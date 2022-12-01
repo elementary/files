@@ -225,7 +225,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
             connect_server_request ();
         });
 
-        // plugins.sidebar_loaded (this);
+        plugins.sidebar_loaded (this);
     }
 
     /* SidebarInterface */

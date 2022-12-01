@@ -116,7 +116,7 @@ subdir('libcore')
 subdir('src')
 subdir('data')
 # subdir('pantheon-files-daemon')
-# subdir('plugins')
+subdir('plugins')
 # subdir('filechooser-portal')
 meson.add_install_script('meson/post_install.py')
 

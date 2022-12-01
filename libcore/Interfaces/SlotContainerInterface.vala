@@ -17,11 +17,9 @@
               Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-public interface Files.SlotInterface : Gtk.Widget {
-    public abstract Directory? directory { get; set; }
-    public abstract ViewMode view_mode { get; construct; }
-    public signal void selection_changed (List<Files.File> selected_files);
-
-    public abstract GLib.List<Files.File> get_selected_files ();
-    public virtual bool set_all_selected (bool all_selected) { return false; }
+public interface Files.SlotContainerInterface : Gtk.Widget {
+    public abstract ViewMode view_mode { get; set; default = ViewMode.INVALID; }
+    public abstract SlotInterface get_slot ();
+    public virtual void add_extra_widget (Gtk.Widget widget) {}
+    public virtual void add_extra_action_widget (Gtk.Widget widget) {}
 }

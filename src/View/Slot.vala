@@ -113,14 +113,6 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         append (extra_action_widgets);
     }
 
-    public void add_extra_widget (Gtk.Widget widget) {
-        extra_location_widgets.append (widget);
-    }
-
-    public void add_extra_action_widget (Gtk.Widget widget) {
-        extra_action_widgets.append (widget);
-    }
-
     uint selection_changed_timeout_id = 0;
     List<Files.File> selected_files = null; // Maintain a reference for overlaybar
     private void on_view_widget_selection_changed () {
@@ -180,9 +172,9 @@ public class Files.Slot : Gtk.Box, SlotInterface {
             FileUtils.remove_thumbnail_paths_for_uri (file.uri);
         }
 
-        // if (plugins != null) {
-        //     plugins.update_file_info (file); //TODO Reimplement in Gtk4
-        // }
+        if (plugins != null) {
+            plugins.update_file_info (file);
+        }
 
         if (file.is_folder ()) {
             /* Check whether the deleted file is the directory */

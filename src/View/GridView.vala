@@ -55,7 +55,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     private string? uri_string = null;
     private Gtk.ScrolledWindow? scrolled_window;
 
-    public GridView (Files.SlotInterface slot) {
+    public GridView (Files.Slot slot) {
         Object (slot: slot);
     }
 

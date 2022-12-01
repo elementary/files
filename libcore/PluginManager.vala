@@ -210,9 +210,9 @@ public class Files.PluginManager : Object {
         menus = null;
     }
 
-    public void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
+    public void directory_loaded (Files.SlotContainerInterface multi_slot, Files.File directory) {
         foreach (var plugin in plugin_hash.values) {
-            plugin.directory_loaded (window, view, directory);
+            plugin.directory_loaded (multi_slot, directory);
         }
     }
 

@@ -24,17 +24,17 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
     private unowned TrashMonitor trash_monitor;
     private bool trash_is_empty = false;
 
-    private Gee.HashMap<Files.AbstractSlot,Gtk.ActionBar> actionbars;
+    private Gee.HashMap<Files.SlotContainerInterface,Gtk.ActionBar> actionbars;
 
     private Gtk.Button delete_button;
     private Gtk.Button restore_button;
 
     public Trash () {
-        actionbars = new Gee.HashMap<Files.AbstractSlot, Gtk.ActionBar> ();
+        actionbars = new Gee.HashMap<Files.SlotContainerInterface, Gtk.ActionBar> ();
         trash_monitor = TrashMonitor.get_default ();
         trash_monitor.notify["is-empty"].connect (() => {
             trash_is_empty = trash_monitor.is_empty;
-            var to_remove = new Gee.ArrayList<Gee.Map.Entry<Files.AbstractSlot,Gtk.ActionBar>> ();
+            var to_remove = new Gee.ArrayList<Gee.Map.Entry<Files.SlotContainerInterface,Gtk.ActionBar>> ();
             foreach (var entry in actionbars.entries) {
                 var actionbar = entry.value;
                 if (actionbar.get_parent () != null) {
@@ -51,25 +51,32 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
         });
     }
 
-    public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
-        Gtk.ActionBar? actionbar = actionbars.@get (view);
+    public override void directory_loaded (
+        Files.SlotContainerInterface multi_slot, Files.File directory
+    ) {
+        Gtk.ActionBar? actionbar = actionbars.@get (multi_slot);
+        var slot = multi_slot.get_slot ();
+        var window = (Gtk.ApplicationWindow)multi_slot.get_ancestor (
+            typeof (Gtk.ApplicationWindow)
+        );
         /* Ignore directories other than trash and ignore reloading trash */
-        if (directory.location.get_uri_scheme () == "trash") {
+        if (directory.location.get_uri () == "trash:///") {
             /* Only add actionbar once */
             if (actionbar == null) {
                 actionbar = new Gtk.ActionBar ();
-                actionbar.get_style_context ().add_class (Gtk.STYLE_CLASS_INLINE_TOOLBAR);
+                //TODO Add suitable Gtk4 style class
 
                 restore_button = new Gtk.Button.with_label (_(RESTORE_ALL)) {
                     valign = Gtk.Align.CENTER
                 };
 
                 delete_button = new Gtk.Button.with_label (_(DELETE_ALL)) {
-                    margin = 6,
-                    margin_start = 0
+                    margin_start = 0,
+                    margin_end = 6,
+                    margin_top = 6,
+                    margin_bottom = 6
                 };
-
-                delete_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                delete_button.add_css_class (Granite.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
                 var size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
                 size_group.add_widget (restore_button);
@@ -80,10 +87,10 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
 
                 restore_button.clicked.connect (() => {
                     if (restore_button.label == _(RESTORE_ALL)) {
-                        view.set_all_selected (true);
+                        slot.set_all_selected (true);
                     }
 
-                    unowned GLib.List<Files.File> selection = view.get_selected_files ();
+                    GLib.List<Files.File> selection = slot.get_selected_files ();
                     FileUtils.restore_files_from_trash (selection, window);
                 });
 
@@ -93,7 +100,7 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
                         job.empty_trash.begin ();
                     } else {
                         GLib.List<GLib.File> to_delete = null;
-                        foreach (Files.File gof in view.get_selected_files ()) {
+                        foreach (Files.File gof in slot.get_selected_files ()) {
                             to_delete.prepend (gof.location);
                         }
 
@@ -103,7 +110,7 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
                     }
                 });
 
-                view.selection_changed.connect_after ((files) => {
+                slot.selection_changed.connect_after ((files) => {
                     if (files == null) {
                         restore_button.label = _(RESTORE_ALL);
                         delete_button.label = _(DELETE_ALL);
@@ -113,24 +120,22 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
                     }
                 });
 
-                view.add_extra_action_widget (actionbar);
-                actionbars.@set (view, actionbar);
+                multi_slot.add_extra_action_widget (actionbar);
+                actionbars.@set (multi_slot, actionbar);
             }
 
             set_actionbar (actionbar);
         } else if (actionbar != null) {  /* not showing trash directory */
+            actionbar.unparent ();
+            actionbars.unset (multi_slot);
             actionbar.destroy ();
-            actionbars.unset (view);
         }
     }
 
     private void set_actionbar (Gtk.Widget bar) {
         restore_button.sensitive = !trash_is_empty;
         delete_button.sensitive = !trash_is_empty;
-
         bar.set_visible (!trash_is_empty);
-        bar.no_show_all = trash_is_empty;
-        bar.show_all ();
     }
 }
 

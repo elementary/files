@@ -59,6 +59,7 @@ pantheon_files_core_vala_files = files(
     'Interfaces/SidebarListInterface.vala',
     'Interfaces/SidebarItemInterface.vala',
     'Interfaces/SlotInterface.vala',
+    'Interfaces/SlotContainerInterface.vala',
     'Interfaces/FileItemInterface.vala',
     'Interfaces/ViewInterface.vala',
     'Interfaces/DNDInterface.vala',

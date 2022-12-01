@@ -253,8 +253,8 @@ public class Files.ViewContainer : Gtk.Box {
                 browser.record_uri (directory.uri); /* will ignore null changes i.e reloading*/
 
                 /* Notify plugins */
-                /* infobars are added to the view, not the active slot */
-                // plugins.directory_loaded (window, view, directory);
+                /* infobars are added to the multislot, not the active slot */
+                plugins.directory_loaded (multi_slot, directory);
             } else {
                 /* Save previous uri but do not record current one */
                 browser.record_uri (null);
