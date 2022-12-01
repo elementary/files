@@ -24,7 +24,7 @@
 ***/
 
 namespace Files.View {
-    public class ViewContainer : Gtk.Bin {
+    public class ViewContainer : Gtk.Box {
         public Gtk.Widget? content_item;
         public bool can_show_folder { get; private set; default = false; }
         private View.Window? _window = null;
