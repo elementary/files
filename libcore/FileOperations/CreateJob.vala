@@ -46,7 +46,7 @@ public class Files.FileOperations.CreateJob : CommonJob {
         undo_redo_data = new UndoActionData (Files.UndoActionType.CREATEFILEFROMTEMPLATE, 1);
     }
 
-    public CreateJob.file (Gtk.Window? parent_window, GLib.File dest_dir, string target_filename, [CCode (array_length_cname = "length")] uint8[] src_data) {
+    public CreateJob.file (Gtk.Window? parent_window, GLib.File dest_dir, string? target_filename, [CCode (array_length_cname = "length")] uint8[] src_data) {
         base (parent_window);
         this.dest_dir = dest_dir;
         this.filename = target_filename;
