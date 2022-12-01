@@ -573,6 +573,10 @@ namespace Files.View {
                 }
 
                 var path = content.location.get_path ();
+                if (path == null) { // e.g. for uris like network://
+                    set_tab_label (content.tab_name, tab, content.tab_name);
+                    continue;
+                }
                 var basename = Path.get_basename (path);
 
                 // Ignore content not named from the path
@@ -592,6 +596,9 @@ namespace Files.View {
                     }
 
                     var path2 = content2.location.get_path ();
+                    if (path2 == null) { // e.g. for uris like network://
+                        continue;
+                    }
                     var basename2 = Path.get_basename (path2);
 
                     // Ignore content not named from the path
