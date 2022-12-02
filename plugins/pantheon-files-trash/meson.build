@@ -1,4 +1,4 @@
-trash_plugin_dir = join_paths(plugin_dir, 'core')
+trash_plugin_dir = join_paths(plugin_dir, 'gtk4')
 
 shared_module(
     'pantheon-files-trash',

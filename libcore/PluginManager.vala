@@ -45,7 +45,7 @@ public class Files.PluginManager : Object {
         plugin_dirs = new string[0];
 
         if (!is_admin) {
-            plugin_dirs += Path.build_filename (plugin_dir, "core");
+            plugin_dirs += Path.build_filename (plugin_dir, "gtk4");
             plugin_dirs += plugin_dir;
 
             load_plugins ();
