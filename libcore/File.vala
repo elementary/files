@@ -1157,7 +1157,7 @@ public class Files.File : GLib.Object {
         return formated_type != previous_type;
     }
 
-    private GLib.Icon? get_gicon_user_special_dirs (string path) {
+    public GLib.Icon? get_icon_user_special_dirs (string path) {
         if (path == GLib.Environment.get_home_dir ()) {
             return new GLib.ThemedIcon ("user-home");
         } else if (path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.DESKTOP)) {

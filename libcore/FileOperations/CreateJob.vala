@@ -33,6 +33,8 @@ public class Files.FileOperations.CreateJob : CommonJob {
         base (parent_window);
         this.dest_dir = dest_dir;
         this.make_dir = true;
+
+        undo_redo_data = new UndoActionData (Files.UndoActionType.CREATEFOLDER, 1);
     }
 
     public CreateJob.file_from_template (Gtk.Window? parent_window, GLib.File dest_dir, string target_filename, GLib.File? src) {
@@ -40,6 +42,8 @@ public class Files.FileOperations.CreateJob : CommonJob {
         this.dest_dir = dest_dir;
         this.filename = target_filename;
         this.src = src;
+
+        undo_redo_data = new UndoActionData (Files.UndoActionType.CREATEFILEFROMTEMPLATE, 1);
     }
 
     public CreateJob.file (Gtk.Window? parent_window, GLib.File dest_dir, string? target_filename, [CCode (array_length_cname = "length")] uint8[] src_data) {
@@ -47,5 +51,7 @@ public class Files.FileOperations.CreateJob : CommonJob {
         this.dest_dir = dest_dir;
         this.filename = target_filename;
         this.src_data = src_data;
+
+        undo_redo_data = new UndoActionData (Files.UndoActionType.CREATEEMPTYFILE, 1);
     }
 }
