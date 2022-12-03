@@ -26,15 +26,12 @@ interface MarlinDaemon : Object {
 public class Files.Plugins.CTags : Files.Plugins.Base {
     /* May be used by more than one directory simultaneously so do not make assumptions */
     private MarlinDaemon daemon;
-    private bool ignore_dir;
-
     private Queue<Files.File> unknowns;
     private Queue<Files.File> knowns;
     private uint idle_consume_unknowns = 0;
     private uint t_consume_knowns = 0;
     private Cancellable cancellable;
     private GLib.List<Files.File> current_selected_files;
-
     public CTags () {
         unknowns = new Queue<Files.File> ();
         knowns = new Queue<Files.File> ();
@@ -54,12 +51,14 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         "file:///media"
     };
 
-    private const string IGNORE_SCHEMES [5] = {
+    private const string[] IGNORE_SCHEMES = {
         "ftp",
         "sftp",
         "afp",
         "dav",
-        "davs"
+        "davs",
+        "recent",
+        "network"
     };
 
     private bool f_is_user_dir (GLib.File dir) {
@@ -256,17 +255,30 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     public override void context_menu (
         Gtk.PopoverMenu popover_menu, GLib.List<Files.File> selected_files
     ) {
-        if (selected_files == null || ignore_dir) {
+        if (selected_files == null) {
+            return;
+        }
+
+        var first_file = (Files.File)(selected_files.first ().data);
+        if (f_ignore_dir (first_file.location)) {
             return;
         }
 
         var color_menu_item = new ColorWidget ();
         current_selected_files = selected_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
 
-        // /* Check the colors currently set */
-        // foreach (Files.File gof in current_selected_files) {
-        //     color_menu_item.check_color (gof.color);
-        // }
+        /* Check whether the colors currently set are the same*/
+        int previous_color = -1;
+        foreach (Files.File gof in current_selected_files) {
+            if (previous_color == -1) {
+                color_menu_item.check_color (gof.color);
+                continue;
+            } else if (gof.color != previous_color) {
+                color_menu_item.set_inconsistent (gof.color);
+                color_menu_item.set_inconsistent (previous_color);
+                previous_color = gof.color;
+            }
+        }
 
         color_menu_item.color_changed.connect ((ncolor) => {
             set_color.begin (current_selected_files, ncolor);
@@ -375,17 +387,25 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             }
         }
 
-        // private void clear_checks () {
-        //     color_buttons.foreach ((b) => { b.active = false; return true;});
-        // }
+        private void clear_inconsistent () {
+            color_buttons.foreach ((b) => { b.inconsistent = false; return true;});
+        }
 
-        // public void check_color (int color) {
-        //     if (color == 0 || color > color_buttons.size) {
-        //         return;
-        //     }
+        public void check_color (int color) {
+            if (color == 0 || color > color_buttons.size) {
+                return;
+            }
 
-        //     color_buttons[color - 1].active = true;
-        // }
+            color_buttons[color - 1].active = true;
+        }
+
+        public void set_inconsistent (int color) {
+            if (color == 0 || color > color_buttons.size) {
+                return;
+            }
+
+            color_buttons[color - 1].inconsistent = true;
+        }
     }
 }
 

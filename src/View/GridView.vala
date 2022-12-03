@@ -209,6 +209,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 item_menu.remove (0);
                 has_open_with = false;
             }
+            // This removes any custom widgets (?)
+            menu_popover.menu_model = null;
         });
 
         //Set up as drag source for bookmarking
