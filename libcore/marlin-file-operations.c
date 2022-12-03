@@ -44,7 +44,6 @@
 typedef struct _SourceInfo SourceInfo;
 typedef struct _TransferInfo TransferInfo;
 
-typedef void (* MarlinOpCallback)      (gpointer   callback_data);
 typedef void (* CountProgressCallback) (FilesFileOperationsCommonJob *job, SourceInfo *source_info);
 
 typedef enum {
@@ -64,7 +63,6 @@ struct _SourceInfo {
 struct _TransferInfo {
     int num_files;
     goffset num_bytes;
-    OpKind op;
     guint64 last_report_time;
     int last_reported_files_left;
 };
@@ -3660,168 +3658,6 @@ marlin_file_operations_duplicate_finish (GAsyncResult  *result,
     return g_task_propagate_boolean (G_TASK (result), error);
 }
 
-#if 0  /* TODO: Implement recursive permissions in PropertiesWindow.vala - may use this code */
-static gboolean
-set_permissions_job_done (gpointer user_data)
-{
-    SetPermissionsJob *job;
-
-    job = user_data;
-
-    g_object_unref (job->file);
-
-    if (job->done_callback) {
-        job->done_callback (job->done_callback_data);
-    }
-
-    finalize_common (COMMON_JOB (job));
-    return FALSE;
-}
-
-static void
-set_permissions_file (SetPermissionsJob *job,
-                      GFile *file,
-                      GFileInfo *info)
-{
-    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
-    GFileInfo *child_info;
-    gboolean free_info;
-    guint32 current;
-    guint32 value;
-    guint32 mask;
-    GFileEnumerator *enumerator;
-    GFile *child;
-
-    pf_progress_info_pulse_progress (common->progress);
-    free_info = FALSE;
-    if (info == NULL) {
-        free_info = TRUE;
-        info = g_file_query_info (file,
-                                  G_FILE_ATTRIBUTE_STANDARD_TYPE","
-                                  G_FILE_ATTRIBUTE_UNIX_MODE,
-                                  G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                                  common->cancellable,
-                                  NULL);
-        /* Ignore errors */
-        if (info == NULL) {
-            return;
-        }
-    }
-
-    if (g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY) {
-        value = job->dir_permissions;
-        mask = job->dir_mask;
-    } else {
-        value = job->file_permissions;
-        mask = job->file_mask;
-    }
-
-
-    if (!marlin_file_operations_common_job_aborted (common) &&
-        g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_UNIX_MODE)) {
-        current = g_file_info_get_attribute_uint32 (info, G_FILE_ATTRIBUTE_UNIX_MODE);
-
-        // Start UNDO-REDO
-        files_undo_action_data_add_file_permissions(common->undo_redo_data, file, current);
-        // End UNDO-REDO
-
-        current = (current & ~mask) | value;
-
-        g_file_set_attribute_uint32 (file, G_FILE_ATTRIBUTE_UNIX_MODE,
-                                     current, G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                                     common->cancellable, NULL);
-    }
-
-    if (!marlin_file_operations_common_job_aborted (common) &&
-        g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY) {
-        enumerator = g_file_enumerate_children (file,
-                                                G_FILE_ATTRIBUTE_STANDARD_NAME","
-                                                G_FILE_ATTRIBUTE_STANDARD_TYPE","
-                                                G_FILE_ATTRIBUTE_UNIX_MODE,
-                                                G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                                                common->cancellable,
-                                                NULL);
-        if (enumerator) {
-            while (!marlin_file_operations_common_job_aborted (common) &&
-                   (child_info = g_file_enumerator_next_file (enumerator, common->cancellable, NULL)) != NULL) {
-                child = g_file_get_child (file,
-                                          g_file_info_get_name (child_info));
-                set_permissions_file (job, child, child_info);
-                g_object_unref (child);
-                g_object_unref (child_info);
-            }
-            g_file_enumerator_close (enumerator, common->cancellable, NULL);
-            g_object_unref (enumerator);
-        }
-    }
-    if (free_info) {
-        g_object_unref (info);
-    }
-}
-
-
-static gboolean
-set_permissions_job (GIOSchedulerJob *io_job,
-                     GCancellable *cancellable,
-                     gpointer user_data)
-{
-    SetPermissionsJob *job = user_data;
-    FilesFileOperationsCommonJob *common;
-
-    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
-
-    pf_progress_info_start (common->progress);
-    pf_progress_info_set_status (common->progress, _("Setting permissions"));
-    set_permissions_file (job, job->file, NULL);
-
-    g_io_scheduler_job_send_to_mainloop_async (io_job,
-                                               set_permissions_job_done,
-                                               job,
-                                               NULL);
-
-    return FALSE;
-}
-
-
-
-void
-marlin_file_set_permissions_recursive (const char *directory,
-                                       guint32         file_permissions,
-                                       guint32         file_mask,
-                                       guint32         dir_permissions,
-                                       guint32         dir_mask,
-                                       MarlinOpCallback  callback,
-                                       gpointer  callback_data)
-{
-    SetPermissionsJob *job;
-    FilesFileOperationsCommonJob *common;
-
-    job = op_job_new (SetPermissionsJob, NULL);
-    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
-    job->file = g_file_new_for_uri (directory);
-    job->file_permissions = file_permissions;
-    job->file_mask = file_mask;
-    job->dir_permissions = dir_permissions;
-    job->dir_mask = dir_mask;
-    job->done_callback = callback;
-    job->done_callback_data = callback_data;
-
-    // Start UNDO-REDO
-    common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_RECURSIVESETPERMISSIONS, 1);
-    g_object_ref (job->file);
-    files_undo_action_data_set_dest_dir (common->undo_redo_data, job->file);
-    files_undo_action_data_set_recursive_permissions(common->undo_redo_data, file_permissions, file_mask, dir_permissions, dir_mask);
-    // End UNDO-REDO
-
-    g_io_scheduler_push_job (set_permissions_job,
-                             job,
-                             NULL,
-                             0,
-                             NULL);
-}
-#endif
-
-
 void
 copy_move_link_delete_finish (GObject *source_object,
                               GAsyncResult *res,
@@ -4325,7 +4161,6 @@ marlin_file_operations_new_folder (GtkWidget           *parent_view,
 {
     GTask *task;
     FilesFileOperationsCreateJob *job;
-    FilesFileOperationsCommonJob *common;
     GtkWindow *parent_window;
 
     parent_window = NULL;
@@ -4334,7 +4169,6 @@ marlin_file_operations_new_folder (GtkWidget           *parent_view,
     }
 
     job = marlin_file_operations_create_job_new_folder (parent_window, parent_dir);
-    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
 
     task = g_task_new (NULL, cancellable, callback, user_data);
     g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
@@ -4362,7 +4196,6 @@ marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
 {
     GTask *task;
     FilesFileOperationsCreateJob *job;
-    FilesFileOperationsCommonJob *common;
     GtkWindow *parent_window = NULL;
 
     if (parent_view) {
@@ -4373,7 +4206,6 @@ marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
                                                                     parent_dir,
                                                                     target_filename,
                                                                     template);
-    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
 
     task = g_task_new (NULL, cancellable, callback, user_data);
     g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
@@ -4402,7 +4234,6 @@ marlin_file_operations_new_file (GtkWidget           *parent_view,
 {
     GTask *task;
     FilesFileOperationsCreateJob *job;
-    FilesFileOperationsCommonJob *common;
     GtkWindow *parent_window = NULL;
 
     if (parent_view) {
@@ -4413,9 +4244,8 @@ marlin_file_operations_new_file (GtkWidget           *parent_view,
     job = marlin_file_operations_create_job_new_file (parent_window,
                                                       dest_dir,
                                                       target_filename,
-                                                      initial_contents,
+                                                      (guint8 *)initial_contents,
                                                       length);
-    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     g_object_unref (dest_dir);
 
     task = g_task_new (NULL, cancellable, callback, user_data);
