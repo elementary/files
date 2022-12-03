@@ -49,14 +49,11 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                                file_count).printf (file_count);
         }
 
-        return PF.run_warning (parent_window,
-                               time,
-                               progress,
-                               prompt,
-                               _("If you delete an item, it will be permanently lost."),
-                               null,
-                               false,
-                               CANCEL, DELETE, null) == 1;
+        return run_warning (prompt,
+                            _("If you delete an item, it will be permanently lost."),
+                            null,
+                            false,
+                            CANCEL, DELETE) == 1;
     }
 
     protected bool confirm_delete_directly (GLib.List<GLib.File> to_delete_files) {
@@ -75,13 +72,10 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                                file_count).printf (file_count);
         }
 
-        return PF.run_warning (parent_window,
-                               time,
-                               progress,
-                               prompt,
-                               _("Deleted items are not sent to Trash and are not recoverable."),
-                               null,
-                               false,
-                               CANCEL, DELETE, null) == 1;
+        return run_warning (prompt,
+                            _("Deleted items are not sent to Trash and are not recoverable."),
+                            null,
+                            false,
+                            CANCEL, DELETE) == 1;
     }
 }

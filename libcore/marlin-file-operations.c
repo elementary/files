@@ -234,15 +234,14 @@ retry:
             }
 
             g_free (dir_basename);
-            response = pf_run_warning (job->parent_window,
-                                       job->time,
-                                       job->progress,
-                                       primary,
-                                       secondary,
-                                       details,
-                                       FALSE,
-                                       CANCEL, _("_Skip files"),
-                                       NULL);
+            response = marlin_file_operations_common_job_run_warning (
+                job,
+                primary,
+                secondary,
+                details,
+                FALSE,
+                CANCEL, _("_Skip files"),
+                NULL);
 
             g_error_free (error);
 
@@ -275,15 +274,14 @@ retry:
         }
 
         g_free (dir);
-        response = pf_run_warning (job->parent_window,
-                                   job->time,
-                                   job->progress,
-                                   primary,
-                                   secondary,
-                                   details,
-                                   FALSE,
-                                   CANCEL, SKIP, RETRY,
-                                   NULL);
+        response = marlin_file_operations_common_job_run_warning (
+            job,
+            primary,
+            secondary,
+            details,
+            FALSE,
+            CANCEL, SKIP, RETRY,
+            NULL);
 
         g_error_free (error);
 
@@ -316,15 +314,14 @@ retry:
 
             details = error->message;
 
-            response = pf_run_warning (job->parent_window,
-                                       job->time,
-                                       job->progress,
-                                       primary,
-                                       secondary,
-                                       details,
-                                       (source_info->num_files - transfer_info->num_files) > 1,
-                                       CANCEL, SKIP_ALL, SKIP,
-                                       NULL);
+            response = marlin_file_operations_common_job_run_warning (
+                job,
+                primary,
+                secondary,
+                details,
+                (source_info->num_files - transfer_info->num_files) > 1,
+                CANCEL, SKIP_ALL, SKIP,
+                NULL);
 
             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
                 marlin_file_operations_common_job_abort_job (job);
@@ -400,15 +397,14 @@ delete_file (FilesFileOperationsDeleteJob *del_job, GFile *file,
         g_free (dir_basename);
         details = error->message;
 
-        response = pf_run_warning (job->parent_window,
-                                   job->time,
-                                   job->progress,
-                                   primary,
-                                   secondary,
-                                   details,
-                                   (source_info->num_files - transfer_info->num_files) > 1,
-                                   CANCEL, SKIP_ALL, SKIP,
-                                   NULL);
+        response = marlin_file_operations_common_job_run_warning (
+            job,
+            primary,
+            secondary,
+            details,
+            (source_info->num_files - transfer_info->num_files) > 1,
+            CANCEL, SKIP_ALL, SKIP,
+            NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
             marlin_file_operations_common_job_abort_job (job);
@@ -639,25 +635,23 @@ trash_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_ski
 
             /* Note primary and secondary text is freed by run_simple_dialog_va */
             if (can_delete) {
-                response = pf_run_question (job->parent_window,
-                                            job->time,
-                                            job->progress,
-                                            primary,
-                                            secondary,
-                                            details,
-                                            (total_files - files_trashed) > 1,
-                                            CANCEL, SKIP_ALL, SKIP, DELETE_ALL, DELETE,
-                                            NULL);
+                response = marlin_file_operations_common_job_run_question (
+                    job,
+                    primary,
+                    secondary,
+                    details,
+                    (total_files - files_trashed) > 1,
+                    CANCEL, SKIP_ALL, SKIP, DELETE_ALL, DELETE,
+                    NULL);
             } else {
-                response = pf_run_question (job->parent_window,
-                                            job->time,
-                                            job->progress,
-                                            primary,
-                                            secondary,
-                                            details,
-                                            (total_files - files_trashed) > 1,
-                                            CANCEL, SKIP_ALL, SKIP,
-                                            NULL);
+                response = marlin_file_operations_common_job_run_question (
+                    job,
+                    primary,
+                    secondary,
+                    details,
+                    (total_files - files_trashed) > 1,
+                    CANCEL, SKIP_ALL, SKIP,
+                    NULL);
 
             }
 
@@ -952,15 +946,14 @@ retry:
             }
 
             g_free (dir_basename);
-            response = pf_run_warning (job->parent_window,
-                                       job->time,
-                                       job->progress,
-                                       primary,
-                                       secondary,
-                                       details,
-                                       FALSE,
-                                       CANCEL, RETRY, SKIP,
-                                       NULL);
+            response = marlin_file_operations_common_job_run_warning (
+                job,
+                primary,
+                secondary,
+                details,
+                FALSE,
+                CANCEL, RETRY, SKIP,
+                NULL);
 
             g_error_free (error);
 
@@ -1002,15 +995,14 @@ retry:
         /* set show_all to TRUE here, as we don't know how many
          * files we'll end up processing yet.
          */
-        response = pf_run_warning (job->parent_window,
-                                   job->time,
-                                   job->progress,
-                                   primary,
-                                   secondary,
-                                   details,
-                                   TRUE,
-                                   CANCEL, SKIP_ALL, SKIP, RETRY,
-                                   NULL);
+        response = marlin_file_operations_common_job_run_warning (
+            job,
+            primary,
+            secondary,
+            details,
+            TRUE,
+            CANCEL, SKIP_ALL, SKIP, RETRY,
+            NULL);
 
         g_error_free (error);
 
@@ -1091,15 +1083,14 @@ retry:
         /* set show_all to TRUE here, as we don't know how many
          * files we'll end up processing yet.
          */
-        response = pf_run_warning (job->parent_window,
-                                   job->time,
-                                   job->progress,
-                                   primary,
-                                   secondary,
-                                   details,
-                                   TRUE,
-                                   CANCEL, SKIP_ALL, SKIP, RETRY,
-                                   NULL);
+        response = marlin_file_operations_common_job_run_warning (
+            job,
+            primary,
+            secondary,
+            details,
+            TRUE,
+            CANCEL, SKIP_ALL, SKIP, RETRY,
+            NULL);
 
         g_error_free (error);
 
@@ -1610,15 +1601,14 @@ retry:
 
         g_free (src_name);
 
-        response = pf_run_warning (job->parent_window,
-                                   job->time,
-                                   job->progress,
-                                   primary,
-                                   secondary,
-                                   details,
-                                   FALSE,
-                                   CANCEL, SKIP, RETRY,
-                                   NULL);
+        response = marlin_file_operations_common_job_run_warning (
+            job,
+            primary,
+            secondary,
+            details,
+            FALSE,
+            CANCEL, SKIP, RETRY,
+            NULL);
 
         g_error_free (error);
 
@@ -1750,15 +1740,14 @@ retry:
             }
 
             g_free (src_name);
-            response = pf_run_warning (job->parent_window,
-                                       job->time,
-                                       job->progress,
-                                       primary,
-                                       secondary,
-                                       details,
-                                       FALSE,
-                                       CANCEL, _("_Skip files"),
-                                       NULL);
+            response = marlin_file_operations_common_job_run_warning (
+                job,
+                primary,
+                secondary,
+                details,
+                FALSE,
+                CANCEL, _("_Skip files"),
+                NULL);
 
             g_error_free (error);
 
@@ -1804,15 +1793,14 @@ retry:
         }
 
         g_free (src_name);
-        response = pf_run_warning (job->parent_window,
-                                   job->time,
-                                   job->progress,
-                                   primary,
-                                   secondary,
-                                   details,
-                                   FALSE,
-                                   CANCEL, SKIP, RETRY,
-                                   NULL);
+        response = marlin_file_operations_common_job_run_warning (
+            job,
+            primary,
+            secondary,
+            details,
+            FALSE,
+            CANCEL, SKIP, RETRY,
+            NULL);
 
         g_error_free (error);
 
@@ -1854,15 +1842,14 @@ retry:
             secondary = g_strdup (_("Could not remove the source folder."));
             details = error->message;
 
-            response = pf_run_warning (job->parent_window,
-                                       job->time,
-                                       job->progress,
-                                       primary,
-                                       secondary,
-                                       details,
-                                       (source_info->num_files - transfer_info->num_files) > 1,
-                                       CANCEL, SKIP_ALL, SKIP,
-                                       NULL);
+            response = marlin_file_operations_common_job_run_warning (
+                job,
+                primary,
+                secondary,
+                details,
+                (source_info->num_files - transfer_info->num_files) > 1,
+                CANCEL, SKIP_ALL, SKIP,
+                NULL);
 
             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
                 marlin_file_operations_common_job_abort_job (job);
@@ -1954,15 +1941,14 @@ remove_target_recursively (FilesFileOperationsCommonJob *job,
         /* set show_all to TRUE here, as we don't know how many
          * files we'll end up processing yet.
          */
-        response = pf_run_warning (job->parent_window,
-                                   job->time,
-                                   job->progress,
-                                   primary,
-                                   secondary,
-                                   details,
-                                   TRUE,
-                                   CANCEL, SKIP_ALL, SKIP,
-                                   NULL);
+        response = marlin_file_operations_common_job_run_warning (
+            job,
+            primary,
+            secondary,
+            details,
+            TRUE,
+            CANCEL, SKIP_ALL, SKIP,
+            NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
             marlin_file_operations_common_job_abort_job (job);
@@ -2007,15 +1993,14 @@ skip1:
         /* set show_all to TRUE here, as we don't know how many
          * files we'll end up processing yet.
          */
-        response = pf_run_warning (job->parent_window,
-                                   job->time,
-                                   job->progress,
-                                   primary,
-                                   secondary,
-                                   details,
-                                   TRUE,
-                                   CANCEL, SKIP_ALL, SKIP,
-                                   NULL);
+        response = marlin_file_operations_common_job_run_warning (
+            job,
+            primary,
+            secondary,
+            details,
+            TRUE,
+            CANCEL, SKIP_ALL, SKIP,
+            NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
             marlin_file_operations_common_job_abort_job (job);
@@ -2232,20 +2217,19 @@ copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
             goto out;
         }
 
-        /*  the pf_run_warning() frees all strings passed in automatically  */
+        /*  the marlin_file_operations_common_job_run_warning() frees all strings passed in automatically  */
         primary = copy_job->is_move ? g_strdup (_("You cannot move a folder into itself."))
             : g_strdup (_("You cannot copy a folder into itself."));
         secondary = g_strdup (_("The destination folder is inside the source folder."));
 
-        response = pf_run_warning (job->parent_window,
-                                   job->time,
-                                   job->progress,
-                                   primary,
-                                   secondary,
-                                   NULL,
-                                   (source_info->num_files - transfer_info->num_files) > 1,
-                                   CANCEL, SKIP_ALL, SKIP,
-                                   NULL);
+        response = marlin_file_operations_common_job_run_warning (
+            job,
+            primary,
+            secondary,
+            NULL,
+            (source_info->num_files - transfer_info->num_files) > 1,
+            CANCEL, SKIP_ALL, SKIP,
+            NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
             marlin_file_operations_common_job_abort_job (job);
@@ -2267,20 +2251,19 @@ copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
             goto out;
         }
 
-        /*  the pf_run_warning() frees all strings passed in automatically  */
+        /*  the marlin_file_operations_common_job_run_warning() frees all strings passed in automatically  */
         primary = copy_job->is_move ? g_strdup (_("You cannot move a file over itself."))
             : g_strdup (_("You cannot copy a file over itself."));
         secondary = g_strdup (_("The source file would be overwritten by the destination."));
 
-        response = pf_run_warning (job->parent_window,
-                                   job->time,
-                                   job->progress,
-                                   primary,
-                                   secondary,
-                                   NULL,
-                                   (source_info->num_files - transfer_info->num_files) > 1,
-                                   CANCEL, SKIP_ALL, SKIP,
-                                   NULL);
+        response = marlin_file_operations_common_job_run_warning (
+            job,
+            primary,
+            secondary,
+            NULL,
+            (source_info->num_files - transfer_info->num_files) > 1,
+            CANCEL, SKIP_ALL, SKIP,
+            NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
             marlin_file_operations_common_job_abort_job (job);
@@ -2424,7 +2407,8 @@ retry:
             }
         }
 
-        response = pf_run_conflict_dialog (job->parent_window, job->time, job->progress, src, dest, dest_dir, &new_name, &apply_to_all);
+        response = marlin_file_operations_common_job_run_conflict_dialog (
+            job, src, dest, dest_dir, &new_name, &apply_to_all);
 
         if (response == GTK_RESPONSE_CANCEL ||
             response == GTK_RESPONSE_DELETE_EVENT) {
@@ -2521,15 +2505,14 @@ retry:
                 /* setting TRUE on show_all here, as we could have
                  * another error on the same file later.
                  */
-                response = pf_run_warning (job->parent_window,
-                                           job->time,
-                                           job->progress,
-                                           primary,
-                                           secondary,
-                                           details,
-                                           TRUE,
-                                           CANCEL, SKIP_ALL, SKIP,
-                                           NULL);
+                response = marlin_file_operations_common_job_run_warning (
+                    job,
+                    primary,
+                    secondary,
+                    details,
+                    TRUE,
+                    CANCEL, SKIP_ALL, SKIP,
+                    NULL);
 
                 g_error_free (error);
 
@@ -2595,15 +2578,14 @@ retry:
         g_free (dest_basename);
         details = error->message;
 
-        response = pf_run_warning (job->parent_window,
-                                   job->time,
-                                   job->progress,
-                                   primary,
-                                   secondary,
-                                   details,
-                                   (source_info->num_files - transfer_info->num_files) > 1,
-                                   CANCEL, SKIP_ALL, SKIP,
-                                   NULL);
+        response = marlin_file_operations_common_job_run_warning (
+            job,
+            primary,
+            secondary,
+            details,
+            (source_info->num_files - transfer_info->num_files) > 1,
+            CANCEL, SKIP_ALL, SKIP,
+            NULL);
 
         g_error_free (error);
 
@@ -2874,20 +2856,19 @@ move_file_prepare (FilesFileOperationsCopyMoveJob *move_job,
             goto out;
         }
 
-        /*  the pf_run_warning() frees all strings passed in automatically  */
+        /*  the marlin_file_operations_common_job_run_warning() frees all strings passed in automatically  */
         primary = move_job->is_move ? g_strdup (_("You cannot move a folder into itself."))
             : g_strdup (_("You cannot copy a folder into itself."));
         secondary = g_strdup (_("The destination folder is inside the source folder."));
 
-        response = pf_run_warning (job->parent_window,
-                                   job->time,
-                                   job->progress,
-                                   primary,
-                                   secondary,
-                                   NULL,
-                                   files_left > 1,
-                                   CANCEL, SKIP_ALL, SKIP,
-                                   NULL);
+        response = marlin_file_operations_common_job_run_warning (
+            job,
+            primary,
+            secondary,
+            NULL,
+            files_left > 1,
+            CANCEL, SKIP_ALL, SKIP,
+            NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
             marlin_file_operations_common_job_abort_job (job);
@@ -2977,7 +2958,7 @@ retry:
             goto out;
         }
 
-        response = pf_run_conflict_dialog (job->parent_window, job->time, job->progress, src, dest, dest_dir, &new_name, &apply_to_all);
+        response = marlin_file_operations_common_job_run_conflict_dialog (job, src, dest, dest_dir, &new_name, &apply_to_all);
 
         if (response == GTK_RESPONSE_CANCEL ||
             response == GTK_RESPONSE_DELETE_EVENT) {
@@ -3047,15 +3028,14 @@ retry:
         g_free (dest_name);
         details = error->message;
 
-        response = pf_run_warning (job->parent_window,
-                                   job->time,
-                                   job->progress,
-                                   primary,
-                                   secondary,
-                                   details,
-                                   files_left > 1,
-                                   CANCEL, SKIP_ALL, SKIP,
-                                   NULL);
+        response = marlin_file_operations_common_job_run_warning (
+            job,
+            primary,
+            secondary,
+            details,
+            files_left > 1,
+            CANCEL, SKIP_ALL, SKIP,
+            NULL);
 
         g_error_free (error);
 
@@ -3405,15 +3385,14 @@ retry:
             details = error->message;
         }
 
-        response = pf_run_warning (common->parent_window,
-                                   common->time,
-                                   common->progress,
-                                   primary,
-                                   secondary,
-                                   details,
-                                   files_left > 1,
-                                   CANCEL, SKIP_ALL, SKIP,
-                                   NULL);
+        response = marlin_file_operations_common_job_run_warning (
+            common,
+            primary,
+            secondary,
+            details,
+            files_left > 1,
+            CANCEL, SKIP_ALL, SKIP,
+            NULL);
 
         if (error) {
             g_error_free (error);
@@ -4020,15 +3999,14 @@ retry:
             g_free (dest_dir_name);
             details = error->message;
 
-            response = pf_run_warning (common->parent_window,
-                                       common->time,
-                                       common->progress,
-                                       primary,
-                                       secondary,
-                                       details,
-                                       FALSE,
-                                       CANCEL, SKIP,
-                                       NULL);
+            response = marlin_file_operations_common_job_run_warning (
+                common,
+                primary,
+                secondary,
+                details,
+                FALSE,
+                CANCEL, SKIP,
+                NULL);
 
             g_error_free (error);
 
