@@ -103,88 +103,6 @@ should_confirm_trash (void)
     return files_preferences_get_confirm_trash (files_preferences_get_default ());
 }
 
-static gboolean
-confirm_delete_from_trash (FilesFileOperationsCommonJob *job,
-                           GList *files)
-{
-    char *prompt;
-    int file_count;
-    int response;
-
-    file_count = g_list_length (files);
-    g_assert (file_count > 0);
-
-    /* Only called if confirmation known to be required - do not second guess */
-
-    if (file_count == 1) {
-        gchar *basename = files_file_utils_custom_basename_from_file (files->data);
-        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        prompt = g_strdup_printf (_("Are you sure you want to permanently delete \"%s\" "
-                                  "from the trash?"), basename);
-        g_free (basename);
-    } else {
-        prompt = g_strdup_printf (ngettext("Are you sure you want to permanently delete "
-                                           "the %'d selected item from the trash?",
-                                           "Are you sure you want to permanently delete "
-                                           "the %'d selected items from the trash?",
-                                           file_count),
-                                  file_count);
-    }
-
-    response = pf_run_warning (job->parent_window,
-                               job->time,
-                               job->progress,
-                               prompt,
-                               g_strdup (_("If you delete an item, it will be permanently lost.")),
-                               NULL,
-                               FALSE,
-                               CANCEL, DELETE,
-                               NULL);
-
-    return (response == 1);
-}
-
-static gboolean
-confirm_delete_directly (FilesFileOperationsCommonJob *job,
-                         GList *files)
-{
-    char *prompt;
-    int file_count;
-    int response;
-
-    /* Only called if confirmation known to be required - do not second guess */
-
-    file_count = g_list_length (files);
-    g_assert (file_count > 0);
-
-    if (file_count == 1) {
-        gchar *basename = files_file_utils_custom_basename_from_file (files->data);
-        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        prompt = g_strdup_printf (_("Permanently delete “%s”?"), basename);
-        g_free (basename);
-    } else {
-        prompt = g_strdup_printf (ngettext("Are you sure you want to permanently delete "
-                                           "the %'d selected item?",
-                                           "Are you sure you want to permanently delete "
-                                           "the %'d selected items?", file_count),
-                                  file_count);
-    }
-
-    response = pf_run_warning (job->parent_window,
-                               job->time,
-                               job->progress,
-                               prompt,
-                               g_strdup (_("Deleted items are not sent to Trash and are not recoverable.")),
-                               NULL,
-                               FALSE,
-                               CANCEL, DELETE,
-                               NULL);
-
-    return response == 1;
-}
-
 static void
 report_delete_progress (FilesFileOperationsCommonJob *job,
                         SourceInfo *source_info,
@@ -833,9 +751,9 @@ delete_job (GTask *task,
         to_delete_files = g_list_reverse (to_delete_files);
         confirmed = TRUE;
         if (must_confirm_delete_in_trash) {
-            confirmed = !should_confirm_trash () || confirm_delete_from_trash (common, to_delete_files);
+            confirmed = !should_confirm_trash () || marlin_file_operations_delete_job_confirm_delete_from_trash (job, to_delete_files);
         } else if (must_confirm_delete) {
-            confirmed = confirm_delete_directly (common, to_delete_files);
+            confirmed = marlin_file_operations_delete_job_confirm_delete_directly (job, to_delete_files);
         }
 
         if (confirmed) {
@@ -1595,25 +1513,6 @@ has_fs_id (GFile *file, const char *fs_id)
             res = TRUE;
         }
 
-        g_object_unref (info);
-    }
-
-    return res;
-}
-
-static gboolean
-is_dir (GFile *file)
-{
-    GFileInfo *info;
-    gboolean res;
-
-    res = FALSE;
-    info = g_file_query_info (file,
-                              G_FILE_ATTRIBUTE_STANDARD_TYPE,
-                              G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                              NULL, NULL);
-    if (info) {
-        res = g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY;
         g_object_unref (info);
     }
 
@@ -2502,7 +2401,7 @@ retry:
 
         is_merge = FALSE;
 
-        if (is_dir (dest) && is_dir (src)) {
+        if (files_file_utils_file_is_dir (dest) && files_file_utils_file_is_dir (src)) {
             is_merge = TRUE;
         }
 
@@ -3064,7 +2963,7 @@ retry:
         g_error_free (error);
 
         is_merge = FALSE;
-        if (is_dir (dest) && is_dir (src)) {
+        if (files_file_utils_file_is_dir (dest) && files_file_utils_file_is_dir (src)) {
             is_merge = TRUE;
         }
 
