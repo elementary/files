@@ -371,6 +371,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         // If no selected item show background context menu
         double menu_x, menu_y;
         MenuModel menu;
+        List<Files.File> selected_files = null;
+
         if (item == null) {
             menu_x = x;
             menu_y = y;
@@ -383,7 +385,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 multi_selection.select_item (item.pos, true);
             }
 
-            List<Files.File> selected_files = null;
             get_selected_files (out selected_files);
 
             var open_with_menu = new Menu ();
@@ -400,8 +401,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             }
 
             assert (!has_open_with); //Must not add twice
+            // Base item menu is constructed by template
             item_menu.prepend_submenu (_("Open With"), open_with_menu);
             has_open_with = true;
+
             menu_x = (double)point_gridview.x;
             menu_y = (double)point_gridview.y;
             menu = item_menu;
@@ -409,6 +412,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
         menu_popover.menu_model = menu;
         menu_popover.set_pointing_to ({(int)x, (int)y, 1, 1});
+        plugins.hook_context_menu (menu_popover, selected_files);
+
         Idle.add (() => {
           menu_popover.popup ();
           return Source.REMOVE;

@@ -177,8 +177,8 @@ public class Files.PluginManager : Object {
         }
     }
 
-    public void hook_context_menu (Gtk.Widget menu, List<Files.File> files) {
-        drop_menu_references (menu);
+    public void hook_context_menu (Gtk.PopoverMenu menu, List<Files.File> files) {
+        // drop_menu_references (menu);
 
         // if (menu is Gtk.Menu) {
         //     drop_plugin_menuitems ();
@@ -189,26 +189,26 @@ public class Files.PluginManager : Object {
         }
     }
 
-    private void drop_plugin_menuitems () {
-        foreach (var menu_item in menuitem_references) {
-            menu_item.unparent ();
-        }
+    // private void drop_plugin_menuitems () {
+    //     foreach (var menu_item in menuitem_references) {
+    //         menu_item.unparent ();
+    //     }
 
-        menuitem_references.clear ();
-    }
+    //     menuitem_references.clear ();
+    // }
 
-    [Version (deprecated = true, deprecated_since = "0.2", replacement = "Files.PluginManager.drop_plugin_menuitems")]
-    private void drop_menu_references (Gtk.Widget menu) {
-        if (menus == null) {
-            return;
-        }
+    // [Version (deprecated = true, deprecated_since = "0.2", replacement = "Files.PluginManager.drop_plugin_menuitems")]
+    // private void drop_menu_references (Gtk.Widget menu) {
+    //     if (menus == null) {
+    //         return;
+    //     }
 
-        foreach (var item in menus) {
-            item.destroy ();
-        }
+    //     foreach (var item in menus) {
+    //         item.destroy ();
+    //     }
 
-        menus = null;
-    }
+    //     menus = null;
+    // }
 
     public void directory_loaded (Files.SlotContainerInterface multi_slot, Files.File directory) {
         foreach (var plugin in plugin_hash.values) {

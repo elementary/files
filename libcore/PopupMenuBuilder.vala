@@ -120,13 +120,13 @@ public class PopupMenuBuilder : Object {
         return this;
     }
 
-    public PopupMenuBuilder add_custom (Variant id) {
-        // Insert a custom item with specified id
-        var item = new MenuItem (null, null);
-        item.set_attribute_value ("custom", id);
-        section_menus[section_index].append_item (item);
-        return this;
-    }
+    // public PopupMenuBuilder add_custom (Variant id) {
+    //     // Insert a custom item with specified id
+    //     var item = new MenuItem (null, null);
+    //     item.set_attribute_value ("custom", id);
+    //     section_menus[section_index].append_item (item);
+    //     return this;
+    // }
 
     public PopupMenuBuilder add_item (string name, string? detailed_action_name) {
         var item = new MenuItem (name, detailed_action_name);

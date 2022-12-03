@@ -93,10 +93,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         return false;
     }
 
-    public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
-        /* It is possible more than one directory will call this simultaneously so do not cancel */
-    }
-
     private void add_entry (Files.File gof, GenericArray<Variant> entries) {
         var entry = new Variant.strv (
                         { gof.uri,
@@ -195,7 +191,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 var color = int.parse (row_iter.next_value ().get_string ());
                 if (file.color != color) {
                     file.color = color;
-                    file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
+                    // file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
                 }
                 /* check modified time field only on user dirs. We don't want to query again and
                  * again system directories */
@@ -257,12 +253,14 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         }
     }
 
-    public override void context_menu (Gtk.Widget widget, GLib.List<Files.File> selected_files) {
+    public override void context_menu (
+        Gtk.PopoverMenu popover_menu, GLib.List<Files.File> selected_files
+    ) {
         if (selected_files == null || ignore_dir) {
             return;
         }
 
-        var menu = widget as Gtk.Menu;
+        // var menu = widget as Gtk.Menu;
         var color_menu_item = new ColorWidget ();
         current_selected_files = selected_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
 
@@ -275,14 +273,22 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             set_color.begin (current_selected_files, ncolor);
         });
 
-        add_menuitem (menu, new Gtk.SeparatorMenuItem ());
-        add_menuitem (menu, color_menu_item);
+        // add_menuitem (menu, new Gtk.SeparatorMenuItem ());
+        var menu_model = (Menu)(popover_menu.menu_model);
+        var color_tag_section = new Menu ();
+        var color_tag_item = new MenuItem (null, null);
+        color_tag_item.set_attribute ("custom", "s", "color-tags");
+        color_tag_section.append_item (color_tag_item);
+        menu_model.append_section (null, color_tag_section);
+        popover_menu.add_child (color_menu_item, "color-tags");
+// warning ("adding dummy child");
+//         popover_menu.add_child (new Gtk.Label ("Test item"), "test");
     }
 
-    private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
-        menu.append (menu_item);
-        menu_item.show ();
-    }
+    // private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
+    //     menu.append (menu_item);
+    //     menu_item.show ();
+    // }
 
     private async void set_color (GLib.List<Files.File> files, int n) throws IOError {
         var entries = new GenericArray<Variant> ();
@@ -312,7 +318,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 foreach (unowned Files.File file in files) {
                     if (file.location.has_uri_scheme ("recent")) {
                         update_file_info (file);
-                        file.icon_changed (); /* Just need to trigger redraw */
+                        // file.icon_changed (); /* Just need to trigger redraw */
                     }
                 }
             } catch (Error err) {
@@ -342,12 +348,17 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         }
     }
 
-    private class ColorWidget : Gtk.MenuItem {
+    private class ColorWidget : Gtk.Box {
         public signal void color_changed (int ncolor);
         private Gee.ArrayList<ColorButton> color_buttons;
         private const int COLORBOX_SPACING = 3;
 
         construct {
+            orientation = Gtk.Orientation.HORIZONTAL;
+            spacing = COLORBOX_SPACING;
+            margin_start = 3;
+            halign = Gtk.Align.START;
+
             var color_button_remove = new ColorButton ("none");
             color_buttons = new Gee.ArrayList<ColorButton> ();
             color_buttons.add (new ColorButton ("blue"));
@@ -361,25 +372,22 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             color_buttons.add (new ColorButton ("brown"));
             color_buttons.add (new ColorButton ("slate"));
 
-            var colorbox = new Gtk.Grid () {
-                column_spacing = COLORBOX_SPACING,
-                margin_start = 3,
-                halign = Gtk.Align.START
-            };
+            // var colorbox = new Gtk.Box () {
 
-            colorbox.add (color_button_remove);
+            // };
+
+            append (color_button_remove);
 
             for (int i = 0; i < color_buttons.size; i++) {
-                colorbox.add (color_buttons[i]);
+                append (color_buttons[i]);
             }
 
-            add (colorbox);
+            // add (colorbox);
 
             try {
                 string css = ".nohover { background: none; }";
-
                 var css_provider = new Gtk.CssProvider ();
-                css_provider.load_from_data (css, -1);
+                css_provider.load_from_data (css.data);
 
                 var style_context = get_style_context ();
                 style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
@@ -388,10 +396,53 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 warning ("Failed to parse css style : %s", e.message);
             }
 
-            show_all ();
+            // show_all ();
 
             // Cannot use this for every button due to this being a MenuItem
-            button_press_event.connect (button_pressed_cb);
+            // button_press_event.connect (button_pressed_cb);
+            // var gesture_primary_click = new Gtk.GestureClick () {
+            //     button = Gdk.BUTTON_PRIMARY,
+            //     propagation_phase = Gtk.PropagationPhase.CAPTURE
+            // };
+            // add_controller (gesture_primary_click);
+            // gesture_primary_click.pressed.connect ((n_press, x, y) => {
+            //     var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
+            //     ColorButton pressed_button;
+            //     if (!widget is ColorButton) {
+            //         return true;
+            //     } else {
+            //         pressed_button = (ColorButton)widget;
+            //     }
+
+            //     if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
+            //         var width = get_allocated_width ();
+            //         int x = width - 27;
+            //         for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
+            //             if (ex <= x && ex >= x - color_button_width) {
+            //                 color_changed (i);
+            //                 clear_checks ();
+            //                 check_color (i);
+            //                 break;
+            //             }
+
+            //             x -= x0;
+            //         }
+            //     } else {
+            //         int x = 27;
+            //         for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
+            //             if (ex >= x && ex <= x + color_button_width) {
+            //                 color_changed (i);
+            //                 clear_checks ();
+            //                 check_color (i);
+            //                 break;
+            //             }
+
+            //             x += x0;
+            //         }
+            //     }
+
+            //     return true;
+            // });
         }
 
         private void clear_checks () {
@@ -404,48 +455,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             }
 
             color_buttons[color - 1].active = true;
-        }
-
-        private bool button_pressed_cb (Gdk.EventButton event) {
-            var color_button_width = color_buttons[0].get_allocated_width ();
-
-            int y0 = (get_allocated_height () - color_button_width) / 2;
-            int x0 = COLORBOX_SPACING + color_button_width;
-
-            double ex, ey;
-            event.get_coords (out ex, out ey);
-            if (ey < y0 || ey > y0 + color_button_width) {
-                return true;
-            }
-
-            if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
-                var width = get_allocated_width ();
-                int x = width - 27;
-                for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
-                    if (ex <= x && ex >= x - color_button_width) {
-                        color_changed (i);
-                        clear_checks ();
-                        check_color (i);
-                        break;
-                    }
-
-                    x -= x0;
-                }
-            } else {
-                int x = 27;
-                for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
-                    if (ex >= x && ex <= x + color_button_width) {
-                        color_changed (i);
-                        clear_checks ();
-                        check_color (i);
-                        break;
-                    }
-
-                    x += x0;
-                }
-            }
-
-            return true;
         }
     }
 }
