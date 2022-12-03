@@ -284,12 +284,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             set_color.begin (current_selected_files, ncolor);
         });
 
-        var menu_model = (Menu)(popover_menu.menu_model);
-        var color_tag_section = new Menu ();
-        var color_tag_item = new MenuItem (null, null);
-        color_tag_item.set_attribute ("custom", "s", "color-tags");
-        color_tag_section.append_item (color_tag_item);
-        menu_model.append_section (null, color_tag_section);
+        //A placeholder item was added by the ui template
         popover_menu.add_child (color_menu_item, "color-tags");
     }
 

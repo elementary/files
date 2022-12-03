@@ -224,6 +224,10 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
                         file, out thumbnail_request, file_icon.pixel_size > 128
                     );
             }
+
+            if (plugins != null) {
+                plugins.update_file_info (file);
+            }
         }
 
         var cut_pending = ClipboardManager.get_instance ().has_cut_file (file);

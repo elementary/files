@@ -63,6 +63,11 @@
         <attribute name="action">win.properties</attribute>
       </item>
     </section>
+    <section>
+      <item>
+        <attribute name="custom" translatable="no">color-tags</attribute>
+      </item>
+    </section>
   </menu>
 
 <!--Context menu shown when clicking on GridView background-->
