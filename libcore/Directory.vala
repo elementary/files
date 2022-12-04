@@ -550,7 +550,7 @@ public class Files.Directory : Object {
 
     public void reload () {
         debug ("Reload - state is %s", state.to_string ());
-        if (state == State.TIMED_OUT && file.is_mounted = true) {
+        if (state == State.TIMED_OUT && file.is_mounted) {
             debug ("Unmounting because of timeout");
             cancellable.cancel ();
             cancellable = new Cancellable ();
