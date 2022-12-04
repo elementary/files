@@ -190,11 +190,11 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 var color = int.parse (row_iter.next_value ().get_string ());
                 if (file.color != color) {
                     file.color = color;
-                    file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
+                    /* Just need to trigger redraw */
+                    file.icon_changed ();
                 }
                 /* check modified time field only on user dirs. We don't want to query again and
                  * again system directories */
-
                 /* Is this necessary ? */
                 if (file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified &&
                     f_is_user_dir (file.directory)) {
@@ -268,16 +268,10 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         current_selected_files = selected_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
 
         /* Check whether the colors currently set are the same*/
-        int previous_color = -1;
+        /* We cannot check multiple buttons in a group so set all inconsistent if more than
+         * one color tag selected */
         foreach (Files.File gof in current_selected_files) {
-            if (previous_color == -1) {
-                color_menu_item.check_color (gof.color);
-                continue;
-            } else if (gof.color != previous_color) {
-                color_menu_item.set_inconsistent (gof.color);
-                color_menu_item.set_inconsistent (previous_color);
-                previous_color = gof.color;
-            }
+            color_menu_item.check_color (gof.color);
         }
 
         color_menu_item.color_changed.connect ((ncolor) => {
@@ -304,6 +298,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
             if (target_file.color != n) {
                 target_file.color = n;
+                target_file.icon_changed ();
                 add_entry (target_file, entries);
             }
         }
@@ -364,13 +359,33 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             }
             append (color_buttons[0]);
             for (int i = 1; i < color_buttons.size; i++) {
-                color_buttons[i].set_group (color_buttons[0]);
                 append (color_buttons[i]);
             }
-        }
 
-        private void clear_inconsistent () {
-            color_buttons.foreach ((b) => { b.inconsistent = false; return true;});
+            //Rather than connecting to each button toggled, check which active after any click
+            var gesture_click = new Gtk.GestureClick () {
+                button = Gdk.BUTTON_PRIMARY,
+                propagation_phase = Gtk.PropagationPhase.CAPTURE
+            };
+            add_controller (gesture_click);
+            gesture_click.pressed.connect ((n_press, x, y) => {
+                color_buttons.foreach ((b) => { b.active = false; return Source.CONTINUE; });
+            });
+            gesture_click.released.connect ((n_press, x, y) => {
+                Idle.add (() => {
+                    int index = 0;
+                    color_buttons.foreach ((b) => {
+                        if (b.active) {
+                            color_changed (index);
+                            return Source.REMOVE;
+                        }
+
+                        index++;
+                        return Source.CONTINUE;
+                    });
+                    return Source.REMOVE;
+                });
+            });
         }
 
         public void check_color (int color) {
@@ -379,14 +394,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             }
 
             color_buttons[color].active = true;
-        }
-
-        public void set_inconsistent (int color) {
-            if (color == 0 || color > color_buttons.size) {
-                return;
-            }
-
-            color_buttons[color - 1].inconsistent = true;
         }
     }
 }

@@ -272,6 +272,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             if (tag_color != "" && label.has_css_class (tag_color)) {
                 label.remove_css_class (tag_color);
             }
+
             label.add_css_class (Preferences.TAGS_COLORS[file.color]);
             tag_color = Preferences.TAGS_COLORS[file.color];
         }
