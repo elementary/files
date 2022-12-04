@@ -190,7 +190,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 var color = int.parse (row_iter.next_value ().get_string ());
                 if (file.color != color) {
                     file.color = color;
-                    // file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
+                    file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
                 }
                 /* check modified time field only on user dirs. We don't want to query again and
                  * again system directories */
@@ -358,26 +358,13 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             margin_end = 12;
             halign = Gtk.Align.CENTER;
 
-            var color_button_remove = new ColorButton ("none");
             color_buttons = new Gee.ArrayList<ColorButton> ();
-            color_buttons.add (new ColorButton ("blue"));
-            color_buttons.add (new ColorButton ("mint"));
-            color_buttons.add (new ColorButton ("green"));
-            color_buttons.add (new ColorButton ("yellow"));
-            color_buttons.add (new ColorButton ("orange"));
-            color_buttons.add (new ColorButton ("red"));
-            color_buttons.add (new ColorButton ("pink"));
-            color_buttons.add (new ColorButton ("purple"));
-            color_buttons.add (new ColorButton ("brown"));
-            color_buttons.add (new ColorButton ("slate"));
-
-            foreach (var button in color_buttons) {
-                button.set_group (color_button_remove);
+            for (int i = 0; i < Preferences.TAGS_COLORS.length; i++) {
+                color_buttons.add (new ColorButton (Preferences.TAGS_COLORS[i]));
             }
-
-            append (color_button_remove);
-
-            for (int i = 0; i < color_buttons.size; i++) {
+            append (color_buttons[0]);
+            for (int i = 1; i < color_buttons.size; i++) {
+                color_buttons[i].set_group (color_buttons[0]);
                 append (color_buttons[i]);
             }
         }
@@ -387,11 +374,11 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         }
 
         public void check_color (int color) {
-            if (color == 0 || color > color_buttons.size) {
+            if (color < 0 || color > color_buttons.size) {
                 return;
             }
 
-            color_buttons[color - 1].active = true;
+            color_buttons[color].active = true;
         }
 
         public void set_inconsistent (int color) {

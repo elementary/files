@@ -20,3 +20,47 @@ fileitem.cut {
     opacity: 0.5;
 }
 
+fileitem > label.none {
+  background-color: @theme_bg_color;
+  -gtk-icon-shadow: 0 1px 1px shade(@theme_bg_color, 1.5); }
+
+fileitem > label.red {
+  background-color: @STRAWBERRY_300;
+  -gtk-icon-shadow: 0 1px 1px @STRAWBERRY_500; }
+
+fileitem > label.orange {
+  background-color: @ORANGE_300;
+  -gtk-icon-shadow: 0 1px 1px @ORANGE_500; }
+
+fileitem > label.yellow {
+  background-color: @BANANA_500;
+  -gtk-icon-shadow: 0 1px 1px @BANANA_700; }
+
+fileitem > label.green {
+  background-color: @LIME_500;
+  -gtk-icon-shadow: 0 1px 1px @LIME_700; }
+
+fileitem > label.blue {
+  background-color: @BLUEBERRY_500;
+  -gtk-icon-shadow: 0 1px 1px @BLUEBERRY_700; }
+
+fileitem > label.purple {
+  background-color: @GRAPE_500;
+  -gtk-icon-shadow: 0 1px 1px @GRAPE_700; }
+
+fileitem > label.brown {
+  background-color: @COCOA_300;
+  -gtk-icon-shadow: 0 1px 1px @COCOA_500; }
+
+fileitem > label.mint {
+  background-color: @MINT_500;
+  -gtk-icon-shadow: 0 1px 1px @MINT_700; }
+
+fileitem > label.pink {
+  background-color: @BUBBLEGUM_500;
+  -gtk-icon-shadow: 0 1px 1px @BUBBLEGUM_700; }
+
+fileitem > label.slate {
+  background-color: @SLATE_300;
+  -gtk-icon-shadow: 0 1px 1px @SLATE_500; }
+

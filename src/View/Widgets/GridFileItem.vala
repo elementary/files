@@ -33,6 +33,8 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     private int thumbnail_request = -1;
     private Gtk.Image file_icon;
     private Gtk.Label label;
+    private Gtk.CssProvider label_provider;
+    private string tag_color = "";
     private Gtk.CheckButton selection_helper;
     private Gtk.Image[] emblems;
     private Gtk.Box emblem_box;
@@ -126,6 +128,10 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             };
         }
 
+        label.get_style_context ().add_provider (
+            fileitem_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
+        );
+
         //TODO Apply CSS to selection_helper to get look/size right
         selection_helper = new Gtk.CheckButton () {
             visible = false,
@@ -210,12 +216,13 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             drop_pending = false;
             selected = false;
             cut_pending = false;
-
+            old_file.icon_changed.disconnect (update_pix);
             return;
         }
 
         file.ensure_query_info ();
         label.label = file.custom_display_name ?? file.basename;
+        file.icon_changed.connect (update_pix);
         if (file.paintable == null) {
             if (file.thumbstate == Files.File.ThumbState.UNKNOWN &&
                 (prefs.show_remote_thumbnails || !file.is_remote_uri_scheme ()) &&
@@ -226,6 +233,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             }
 
             if (plugins != null) {
+                warning ("updating info for %s", file.basename);
                 plugins.update_file_info (file);
             }
         }
@@ -261,7 +269,16 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             index++;
         }
 
+        if (file.color >= 0 && file.color < Preferences.TAGS_COLORS.length) {
+            if (label.has_css_class (tag_color)) {
+                label.remove_css_class (tag_color);
+            }
+            label.add_css_class (Preferences.TAGS_COLORS[file.color]);
+            tag_color = Preferences.TAGS_COLORS[file.color];
+        }
+
         file_icon.queue_draw ();
+        label.queue_draw ();
     }
 
     private void handle_thumbnailer_finished (uint req) {

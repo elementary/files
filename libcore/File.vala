@@ -91,6 +91,8 @@ public class Files.File : GLib.Object {
     public bool is_connected = true;
     public string? utf8_collation_key = null;
 
+    public signal void icon_changed ();
+
     public static new Files.File? @get (GLib.File? location) {
         if (location == null) {
             return null;
