@@ -78,7 +78,7 @@ public class Files.File : GLib.Object {
     public bool _can_unmount;
     public uint thumbstate = Files.File.ThumbState.UNKNOWN;
     public string thumbnail_path = null;
-    public bool is_mounted = true;
+    public bool is_mounted = false;
     public bool exists = true;
     public uint32 uid;
     public uint32 gid;
