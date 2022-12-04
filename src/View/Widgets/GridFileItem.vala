@@ -233,7 +233,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             }
 
             if (plugins != null) {
-                warning ("updating info for %s", file.basename);
                 plugins.update_file_info (file);
             }
         }
@@ -270,7 +269,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         }
 
         if (file.color >= 0 && file.color < Preferences.TAGS_COLORS.length) {
-            if (label.has_css_class (tag_color)) {
+            if (tag_color != "" && label.has_css_class (tag_color)) {
                 label.remove_css_class (tag_color);
             }
             label.add_css_class (Preferences.TAGS_COLORS[file.color]);
