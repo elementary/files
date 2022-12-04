@@ -71,6 +71,7 @@ public class Files.File : GLib.Object {
     public GLib.FileType file_type;
     public bool is_hidden = false;
     public bool is_directory = false;
+    public bool target_is_local = false;
     public bool is_desktop = false;
     public bool is_expanded = false;
     [CCode (cname = "can_unmount")]
@@ -465,6 +466,7 @@ public class Files.File : GLib.Object {
         }
 
         /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
+        /* Local files default to is_mounted = true so that item count is performed */
         unowned string target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
         if (target_uri != null) {
             if (Uri.parse_scheme (target_uri) == "afp") {
@@ -474,21 +476,26 @@ public class Files.File : GLib.Object {
             }
 
             target_location_update ();
-
-            try {
-                mount = target_location.find_enclosing_mount ();
-                is_mounted = (mount != null);
-            } catch (Error e) {
-                is_mounted = false;
-                debug (e.message);
+            target_is_local = target_location.get_uri_scheme () == "file";
+            if (!target_is_local) {
+                try {
+                    mount = target_location.find_enclosing_mount ();
+                    is_mounted = (mount != null);
+                } catch (Error e) {
+                    is_mounted = false;
+                    debug (e.message);
+                }
             }
         } else {
-            try {
-                mount = location.find_enclosing_mount ();
-                is_mounted = (mount != null);
-            } catch (Error e) {
-                is_mounted = false;
-                debug (e.message);
+            target_is_local = location.get_uri_scheme () == "file";
+            if (!target_is_local) {
+                try {
+                    mount = location.find_enclosing_mount ();
+                    is_mounted = (mount != null);
+                } catch (Error e) {
+                    is_mounted = false;
+                    debug (e.message);
+                }
             }
         }
 
@@ -1100,7 +1107,7 @@ public class Files.File : GLib.Object {
     }
 
     private string item_count () {
-        if (is_mounted && location.is_native ()) {
+        if (target_is_local || (is_mounted && location.is_native ())) {
             try {
                 var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
                 var count = 0;
