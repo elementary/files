@@ -251,8 +251,6 @@ public class Files.Directory : Object {
             /* Previously mounted Samba servers still appear mounted even if disconnected
              * e.g. by unplugging the network cable.  So the following function can block for
              * a long time; we therefore use a timeout */
-                debug ("successful mount %s", file.uri);
-                file.is_mounted = true;
                 return (yield try_query_info ()) || is_no_info;
             } else {
                 debug ("failed mount %s", file.uri);
@@ -346,6 +344,7 @@ public class Files.Directory : Object {
             if (e is IOError.ALREADY_MOUNTED) {
                 debug ("Already mounted %s", file.uri);
                 file.is_connected = true;
+                file.is_mounted = file.mount != null;
                 res = true;
             } else if (e is IOError.NOT_FOUND) {
                 debug ("Enclosing mount not found %s (may be remote share)", file.uri);
@@ -353,12 +352,12 @@ public class Files.Directory : Object {
                 try {
                     yield location.mount_mountable (GLib.MountMountFlags.NONE, mount_op, cancellable);
                     res = true;
+                    file.is_mounted = file.mount != null;
                 } catch (GLib.Error e2) {
                     last_error_message = e2.message;
                     debug ("Unable to mount mountable");
                     res = false;
                 }
-
             } else {
                 file.is_connected = false;
                 file.is_mounted = false;

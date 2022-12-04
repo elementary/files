@@ -38,16 +38,18 @@ void existing_local_folder_test () {
 
     assert (file != null);
     assert (file.location != null);
-    /* File is assumed to exist, to be mounted and be accessible when created */
+    /* File is assumed to exist and be accessible when created */
     assert (file.exists);
     assert (file.is_connected);
-    assert (file.is_mounted);
+    assert (!file.is_mounted);
+    assert (!file.target_is_local);
 
     file.query_update ();
     assert (file.exists);
     assert (file.is_connected);
     /* file.is_mounted only true of the file is associated with a mount */
     assert (!file.is_mounted);
+    assert (file.target_is_local);
     assert (file.basename == basename);
     assert (file.is_directory);
     assert (!file.is_hidden);
@@ -103,7 +105,8 @@ void new_non_existent_local_test () {
 
     file.query_update ();
     assert (file.info == null);
-    assert (!file.exists); /* is_mounted and is_connected undefined if !exists */
+    assert (!file.is_mounted);
+    assert (!file.exists); /* is_connected undefined if !exists */
 }
 
 void new_hidden_local_test () {
@@ -120,13 +123,14 @@ void new_hidden_local_test () {
     /* File is assumed to exist and be accessible when created */
     assert (file.exists == true);
     assert (file.is_connected == true);
-    assert (file.is_mounted);
+    assert (!file.is_mounted);
 
     file.query_update ();
     assert (file.info != null);
     assert (file.exists);
     assert (file.is_connected);
     assert (!file.is_mounted);
+    assert (file.target_is_local);
 
     assert (!file.is_directory);
     assert (file.is_hidden);

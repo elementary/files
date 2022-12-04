@@ -466,7 +466,6 @@ public class Files.File : GLib.Object {
         }
 
         /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
-        /* Local files default to is_mounted = true so that item count is performed */
         unowned string target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
         if (target_uri != null) {
             if (Uri.parse_scheme (target_uri) == "afp") {
@@ -476,7 +475,9 @@ public class Files.File : GLib.Object {
             }
 
             target_location_update ();
-            target_is_local = target_location.get_uri_scheme () == "file";
+            target_is_local = target_location.get_uri_scheme () == "file" ||
+                              target_location.get_uri_scheme () == null;
+
             if (!target_is_local) {
                 try {
                     mount = target_location.find_enclosing_mount ();
@@ -487,7 +488,8 @@ public class Files.File : GLib.Object {
                 }
             }
         } else {
-            target_is_local = location.get_uri_scheme () == "file";
+            target_is_local = location.get_uri_scheme () == "file" ||
+                              location.get_uri_scheme () == null;
             if (!target_is_local) {
                 try {
                     mount = location.find_enclosing_mount ();
@@ -1072,7 +1074,6 @@ public class Files.File : GLib.Object {
             return null;
         }
 
-        is_mounted = true;
         exists = true;
         is_connected = true;
         try {
