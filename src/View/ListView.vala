@@ -97,11 +97,11 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
         column_view = new Gtk.ColumnView (multi_selection) {
             enable_rubberband = true,
-            focusable = true
+            focusable = true,
+            show_column_separators = true
         };
         scrolled_window = new Gtk.ScrolledWindow () {
             hexpand = true,
-            hscrollbar_policy = Gtk.PolicyType.NEVER,
             focusable = false
         };
         scrolled_window.child = column_view;
@@ -180,21 +180,30 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         });
         size_item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var size_item = new Gtk.Label ("");
+            var size_item = new Gtk.Label ("") {
+                margin_start = 12,
+                halign = Gtk.Align.START
+            };
             list_item.child = size_item;
             list_item.activatable = false;
             list_item.selectable = false;
         });
         type_item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var type_item = new Gtk.Label ("");
+            var type_item = new Gtk.Label ("") {
+                margin_start = 12,
+                halign = Gtk.Align.START
+            };
             list_item.child = type_item;
             list_item.activatable = false;
             list_item.selectable = false;
         });
         modified_item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var modified_item = new Gtk.Label ("");
+            var modified_item = new Gtk.Label ("") {
+                margin_start = 12,
+                halign = Gtk.Align.START
+            };
             list_item.child = modified_item;
             list_item.activatable = false;
             list_item.selectable = false;
@@ -234,11 +243,21 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         });
 
         var name_column = new Gtk.ColumnViewColumn (_("Name"), name_item_factory) {
-            expand = true
+            expand = true,
+            resizable = true
         };
-        var size_column = new Gtk.ColumnViewColumn (_("Size"), size_item_factory);
-        var type_column = new Gtk.ColumnViewColumn (_("Type"), type_item_factory);
-        var modified_column = new Gtk.ColumnViewColumn (_("Modified"), modified_item_factory);
+        var size_column = new Gtk.ColumnViewColumn (_("Size"), size_item_factory) {
+            expand = false,
+            resizable = false
+        };
+        var type_column = new Gtk.ColumnViewColumn (_("Type"), type_item_factory) {
+            expand = false,
+            resizable = true
+        };
+        var modified_column = new Gtk.ColumnViewColumn (_("Modified"), modified_item_factory) {
+            expand = true,
+            resizable = true
+        };
 
         column_view.append_column (name_column);
         column_view.append_column (size_column);
