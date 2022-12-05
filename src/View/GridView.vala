@@ -43,6 +43,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public bool sort_reversed { get; set; default = false; }
     public bool all_selected { get; set; default = false; }
     public bool is_renaming { get; set; default = false; }
+
     // Simpler than using signals and delegates to call actions after file has been added
     public bool rename_after_add { get; set; default = false;}
     public bool select_after_add { get; set; default = false;}
@@ -51,7 +52,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     private CompareDataFunc<Files.File>? file_compare_func;
     private EqualFunc<Files.File>? file_equal_func;
     private GLib.List<GridFileItem> fileitem_list;
-    private Files.DndHandler dnd_handler;
     private string? uri_string = null;
     private Gtk.ScrolledWindow? scrolled_window;
 
@@ -70,7 +70,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         set_layout_manager (new Gtk.BinLayout ());
         //Menu structure defined by GridView.ui
         item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
-        // dnd_handler = new Files.DndHandler (this, grid_view, grid_view);
         fileitem_list = new GLib.List<GridFileItem> ();
 
         //Set up models

@@ -51,7 +51,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     private CompareDataFunc<Files.File>? file_compare_func;
     private EqualFunc<Files.File>? file_equal_func;
     private GLib.List<GridFileItem> fileitem_list;
-    private Files.DndHandler dnd_handler;
     private string? uri_string = null;
     private Gtk.ScrolledWindow? scrolled_window;
 
@@ -68,9 +67,8 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     construct {
         set_layout_manager (new Gtk.BinLayout ());
-        //Menu structure defined by GridView.ui
+        //Menu structure defined by ListView.ui
         item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
-        // dnd_handler = new Files.DndHandler (this, column_view, column_view);
         fileitem_list = new GLib.List<GridFileItem> ();
 
         //Set up models
