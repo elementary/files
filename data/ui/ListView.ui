@@ -162,7 +162,7 @@
   <!--  <property name="item-menu">item_model</property>-->
   <!--</template>-->
 
-  <template class="FilesGridView" parent="GtkWidget">
+  <template class="FilesListView" parent="GtkWidget">
     <property name="background-menu">background_model</property>
     <property name="item-menu">item_model</property>
   </template>

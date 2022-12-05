@@ -86,7 +86,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
                 view_widget = new Files.GridView (this);
                 break;
             case ViewMode.LIST:
-                view_widget = new Files.GridView (this);
+                view_widget = new Files.ListView (this);
                 break;
             case ViewMode.MULTICOLUMN:
                 var gv = new Files.GridView (this);

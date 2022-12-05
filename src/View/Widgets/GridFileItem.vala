@@ -76,7 +76,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     }
 
     construct {
-        var is_multicolumn = view.slot.view_mode == ViewMode.MULTICOLUMN;
+        var is_multicolumn = view.slot.view_mode != ViewMode.ICON;
         var lm = new Gtk.BoxLayout (
             is_multicolumn ? Gtk.Orientation.HORIZONTAL : Gtk.Orientation.VERTICAL
         );

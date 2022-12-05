@@ -16,8 +16,8 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-[GtkTemplate (ui = "/io/elementary/files/GridView.ui")]
-public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterface {
+[GtkTemplate (ui = "/io/elementary/files/ListView.ui")]
+public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterface {
     private static Files.Preferences prefs;
     static construct {
         set_layout_manager_type (typeof (Gtk.BinLayout));
@@ -29,7 +29,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public Menu item_menu { get; set; }
 
     // Construct properties
-    public Gtk.GridView grid_view { get; construct; }
+    public Gtk.ColumnView column_view { get; construct; }
     public GLib.ListStore list_store { get; construct; }
     public Gtk.MultiSelection multi_selection { get; construct; }
     public Gtk.PopoverMenu menu_popover { get; construct; }
@@ -55,11 +55,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     private string? uri_string = null;
     private Gtk.ScrolledWindow? scrolled_window;
 
-    public GridView (Files.Slot slot) {
+    public ListView (Files.Slot slot) {
         Object (slot: slot);
     }
 
-    ~GridView () {
+    ~ListView () {
         warning ("GridView destruct");
         while (this.get_last_child () != null) {
             this.get_last_child ().unparent ();
@@ -70,7 +70,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         set_layout_manager (new Gtk.BinLayout ());
         //Menu structure defined by GridView.ui
         item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
-        // dnd_handler = new Files.DndHandler (this, grid_view, grid_view);
+        // dnd_handler = new Files.DndHandler (this, column_view, column_view);
         fileitem_list = new GLib.List<GridFileItem> ();
 
         //Set up models
@@ -91,10 +91,13 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         });
         filter_model.set_filter (custom_filter);
 
-        //Setup gridview
-        var item_factory = new Gtk.SignalListItemFactory ();
-        grid_view = new Gtk.GridView (multi_selection, item_factory) {
-            orientation = Gtk.Orientation.VERTICAL,
+        //Setup columnview
+        var name_item_factory = new Gtk.SignalListItemFactory ();
+        var size_item_factory = new Gtk.SignalListItemFactory ();
+        var type_item_factory = new Gtk.SignalListItemFactory ();
+        var modified_item_factory = new Gtk.SignalListItemFactory ();
+
+        column_view = new Gtk.ColumnView (multi_selection) {
             enable_rubberband = true,
             focusable = true
         };
@@ -103,7 +106,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             hscrollbar_policy = Gtk.PolicyType.NEVER,
             focusable = false
         };
-        scrolled_window.child = grid_view;
+        scrolled_window.child = column_view;
         scrolled_window.set_parent (this);
 
         //Setup context menu popover
@@ -114,17 +117,16 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         };
         menu_popover.set_parent (this);
 
-
         // Implement single-click navigate
         var gesture_primary_click = new Gtk.GestureClick () {
             button = Gdk.BUTTON_PRIMARY,
             propagation_phase = Gtk.PropagationPhase.CAPTURE
         };
         gesture_primary_click.released.connect ((n_press, x, y) => {
-            var widget = grid_view.pick (x, y, Gtk.PickFlags.DEFAULT);
-            if (widget is Gtk.GridView) { // Click on background
+            var widget = column_view.pick (x, y, Gtk.PickFlags.DEFAULT);
+            if (widget is Gtk.ColumnView) { // Click on background
                 unselect_all ();
-                grid_view.grab_focus ();
+                column_view.grab_focus ();
             } else {
                 var should_activate = (
                     widget is Gtk.Image &&
@@ -146,7 +148,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             }
             //Allow click to propagate to item selection helper and then Gtk
         });
-        grid_view.add_controller (gesture_primary_click);
+        column_view.add_controller (gesture_primary_click);
 
         // Implement item context menu launching
         var gesture_secondary_click = new Gtk.GestureClick () {
@@ -164,7 +166,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             selection_changed ();
         });
 
-        item_factory.setup.connect ((obj) => {
+        name_item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = new GridFileItem (this);
             fileitem_list.prepend (file_item);
@@ -178,8 +180,29 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             list_item.activatable = false;
             list_item.selectable = true;
         });
+        size_item_factory.setup.connect ((obj) => {
+            var list_item = ((Gtk.ListItem)obj);
+            var size_item = new Gtk.Label ("");
+            list_item.child = size_item;
+            list_item.activatable = false;
+            list_item.selectable = false;
+        });
+        type_item_factory.setup.connect ((obj) => {
+            var list_item = ((Gtk.ListItem)obj);
+            var type_item = new Gtk.Label ("");
+            list_item.child = type_item;
+            list_item.activatable = false;
+            list_item.selectable = false;
+        });
+        modified_item_factory.setup.connect ((obj) => {
+            var list_item = ((Gtk.ListItem)obj);
+            var modified_item = new Gtk.Label ("");
+            list_item.child = modified_item;
+            list_item.activatable = false;
+            list_item.selectable = false;
+        });
 
-        item_factory.bind.connect ((obj) => {
+        name_item_factory.bind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file = (Files.File)list_item.get_item ();
             var file_item = (GridFileItem)list_item.child;
@@ -187,22 +210,45 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             file_item.selected = list_item.selected;
             file_item.pos = list_item.position;
         });
-
-        item_factory.unbind.connect ((obj) => {
+        size_item_factory.bind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var file_item = (GridFileItem)list_item.child;
-            // It seems items can be unbound even while visible (???) so we do not want to
-            // unbind file til new one bound.
+            var file = (Files.File)list_item.get_item ();
+            var size_item = (Gtk.Label)list_item.child;
+            size_item.label = file.format_size;
+        });
+        type_item_factory.bind.connect ((obj) => {
+            var list_item = ((Gtk.ListItem)obj);
+            var file = (Files.File)list_item.get_item ();
+            var type_item = (Gtk.Label)list_item.child;
+            type_item.label = file.formated_type;
+        });
+        modified_item_factory.bind.connect ((obj) => {
+            var list_item = ((Gtk.ListItem)obj);
+            var file = (Files.File)list_item.get_item ();
+            var modified_item = (Gtk.Label)list_item.child;
+            modified_item.label = file.formated_modified;
         });
 
-        item_factory.teardown.connect ((obj) => {
+        name_item_factory.teardown.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = (GridFileItem)list_item.child;
             fileitem_list.remove (file_item);
         });
 
+        var name_column = new Gtk.ColumnViewColumn (_("Name"), name_item_factory) {
+            expand = true
+        };
+        var size_column = new Gtk.ColumnViewColumn (_("Size"), size_item_factory);
+        var type_column = new Gtk.ColumnViewColumn (_("Type"), type_item_factory);
+        var modified_column = new Gtk.ColumnViewColumn (_("Modified"), modified_item_factory);
+
+        column_view.append_column (name_column);
+        column_view.append_column (size_column);
+        column_view.append_column (type_column);
+        column_view.append_column (modified_column);
+
         menu_popover.closed.connect (() => {
-            grid_view.grab_focus (); //FIXME This should happen automatically?
+            column_view.grab_focus (); //FIXME This should happen automatically?
             //Open with submenu must always be at pos 0
             //This is awkward but can only amend open-with-menu by removing and re-adding.
             if (has_open_with) {
@@ -218,7 +264,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             propagation_phase = Gtk.PropagationPhase.CAPTURE,
             actions = Gdk.DragAction.LINK | Gdk.DragAction.COPY | Gdk.DragAction.MOVE
         };
-        grid_view.add_controller (drag_source);
+        column_view.add_controller (drag_source);
         drag_source.prepare.connect ((x, y) => {
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             var item = widget.get_ancestor (typeof (GridFileItem));
@@ -293,9 +339,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     private void refresh_view () {
         // Needed to load thumbnails when settings change.  Is there a better way?
-        grid_view.model = null;
+        column_view.model = null;
         Idle.add (() => {
-            grid_view.model = multi_selection;
+            column_view.model = multi_selection;
             return Source.REMOVE;
         });
     }
@@ -329,12 +375,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             multi_selection.select_item (0, false);
             focus_item (0);
         } else {
-            grid_view.grab_focus ();
+            column_view.grab_focus ();
         }
     }
 
     private Files.GridFileItem? get_item_at (double x, double y) {
-        var widget = grid_view.pick (x, y, Gtk.PickFlags.DEFAULT);
+        var widget = column_view.pick (x, y, Gtk.PickFlags.DEFAULT);
         if (widget is GridFileItem) {
             return (GridFileItem)widget;
         } else {
@@ -381,7 +427,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             menu = background_menu;
         } else {
             Graphene.Point point_item, point_gridview;
-            item.compute_point (grid_view, {(float)x, (float)y}, out point_gridview);
+            item.compute_point (column_view, {(float)x, (float)y}, out point_gridview);
 
             if (!item.selected) {
                 multi_selection.select_item (item.pos, true);
@@ -574,14 +620,14 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         uint pos = 0;
         uint count = 0;
         var iter = Gtk.BitsetIter ();
-        if (iter.init_first (grid_view.model.get_selection (), out pos)) {
+        if (iter.init_first (column_view.model.get_selection (), out pos)) {
             selected_files.prepend (
-                (Files.File)(grid_view.model.get_item (pos))
+                (Files.File)(column_view.model.get_item (pos))
             );
             count++;
             while (iter.next (out pos)) {
                 selected_files.prepend (
-                    (Files.File)(grid_view.model.get_item (pos))
+                    (Files.File)(column_view.model.get_item (pos))
                 );
                 count++;
             }
@@ -617,7 +663,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     public void grab_focus () {
-        if (grid_view != null) {
+        if (column_view != null) {
             focus_appropriate_item ();
         }
     }
