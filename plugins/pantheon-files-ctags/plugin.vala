@@ -276,6 +276,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
         color_menu_item.color_changed.connect ((ncolor) => {
             set_color.begin (current_selected_files, ncolor);
+            popover_menu.popdown ();
         });
 
         //A placeholder item was added by the ui template
