@@ -20,6 +20,8 @@
 */
 
 public interface Files.ViewInterface : Gtk.Widget {
+    protected static Files.Preferences prefs;
+
     public abstract SlotInterface slot { get; set construct; }
     public virtual Files.File? root_file {
         get {
@@ -64,6 +66,56 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract void show_context_menu (Files.FileItemInterface? clicked_item, double x, double y);
     public abstract void show_appropriate_context_menu ();
     public abstract uint get_selected_files (out GLib.List<Files.File>? selected_files = null);
+
+    protected abstract unowned Gtk.Widget get_view_widget ();
+    protected virtual void set_up_single_click_navigate () {
+        // Implement single-click navigate
+        var gesture_primary_click = new Gtk.GestureClick () {
+            button = Gdk.BUTTON_PRIMARY,
+            propagation_phase = Gtk.PropagationPhase.CAPTURE
+        };
+        gesture_primary_click.released.connect (handle_primary_release);
+        get_view_widget ().add_controller (gesture_primary_click);
+    }
+
+    protected virtual void handle_primary_release (int n_press, double x, double y) {
+        var view_widget = get_view_widget ();
+        var widget = view_widget.pick (x, y, Gtk.PickFlags.DEFAULT);
+        if (widget == view_widget) { // Click on background
+            unselect_all ();
+            view_widget.grab_focus ();
+        } else {
+            var should_activate = (
+                widget is Gtk.Image &&
+                (n_press == 1 && !prefs.singleclick_select) ||
+                n_press == 2 // Always activate on double click
+            );
+            // Activate item
+            var item = get_item_at (x, y);
+            if (should_activate) {
+                unselect_all ();
+                var file = item.file;
+                if (file.is_folder ()) {
+                    // We know we can append to multislot
+                    change_path (file.location, Files.OpenFlag.APPEND);
+                } else {
+                    warning ("Open file with app");
+                }
+            }
+        }
+        //Allow click to propagate to item selection helper and then Gtk
+    }
+
+    protected Files.FileItemInterface? get_item_at (double x, double y) {
+        var view_widget = get_view_widget ();
+        var widget = view_widget.pick (x, y, Gtk.PickFlags.DEFAULT);
+        if (widget is FileItemInterface) {
+            return (FileItemInterface)widget;
+        } else {
+            var ancestor = (FileItemInterface)(widget.get_ancestor (typeof (Files.FileItemInterface)));
+            return ancestor;
+        }
+    }
 
     protected void open_file (Files.File _file, Files.OpenFlag flag) {
         Files.File file = _file;

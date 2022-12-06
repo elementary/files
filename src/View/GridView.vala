@@ -18,7 +18,7 @@
 
 [GtkTemplate (ui = "/io/elementary/files/GridView.ui")]
 public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterface {
-    private static Files.Preferences prefs;
+    protected static Files.Preferences prefs;
     static construct {
         set_layout_manager_type (typeof (Gtk.BinLayout));
         prefs = Files.Preferences.get_default ();
@@ -113,39 +113,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         };
         menu_popover.set_parent (this);
 
-
-        // Implement single-click navigate
-        var gesture_primary_click = new Gtk.GestureClick () {
-            button = Gdk.BUTTON_PRIMARY,
-            propagation_phase = Gtk.PropagationPhase.CAPTURE
-        };
-        gesture_primary_click.released.connect ((n_press, x, y) => {
-            var widget = grid_view.pick (x, y, Gtk.PickFlags.DEFAULT);
-            if (widget is Gtk.GridView) { // Click on background
-                unselect_all ();
-                grid_view.grab_focus ();
-            } else {
-                var should_activate = (
-                    widget is Gtk.Image &&
-                    (n_press == 1 && !prefs.singleclick_select) ||
-                    n_press == 2 // Always activate on double click
-                );
-                // Activate item
-                var item = get_item_at (x, y);
-                if (should_activate) {
-                    unselect_all ();
-                    var file = item.file;
-                    if (file.is_folder ()) {
-                        // We know we can append to multislot
-                        change_path (file.location, Files.OpenFlag.APPEND);
-                    } else {
-                        warning ("Open file with app");
-                    }
-                }
-            }
-            //Allow click to propagate to item selection helper and then Gtk
-        });
-        grid_view.add_controller (gesture_primary_click);
+        set_up_single_click_navigate ();
 
         // Implement item context menu launching
         var gesture_secondary_click = new Gtk.GestureClick () {
@@ -332,16 +300,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    private Files.GridFileItem? get_item_at (double x, double y) {
-        var widget = grid_view.pick (x, y, Gtk.PickFlags.DEFAULT);
-        if (widget is GridFileItem) {
-            return (GridFileItem)widget;
-        } else {
-            var ancestor = (GridFileItem)(widget.get_ancestor (typeof (Files.GridFileItem)));
-            return ancestor;
-        }
-    }
-
     private unowned GridFileItem? get_selected_file_item () {
         //NOTE This assumes that the target selected file is bound to a GridFileItem (ie visible?)
         GLib.List<Files.File>? selected_files = null;
@@ -362,7 +320,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return null;
     }
 
-    /* View Interface abstract methods */
+    /* ViewInterface methods */
+    protected unowned Gtk.Widget get_view_widget () {
+        return grid_view;
+    }
     private void show_context_menu_at (double x, double y) {
         var item = get_item_at (x, y);
         show_context_menu (item, x, y);
@@ -620,8 +581,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             focus_appropriate_item ();
         }
     }
-    /* DNDInterface abstract methods */
 
+    /* DNDInterface abstract methods */
     //Need to ensure fileitem gets selected before drag
     public List<Files.File> get_file_list_for_drag (double x, double y, out Gdk.Paintable? paintable) {
         paintable = null;
@@ -641,7 +602,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return (owned) drag_files;
     }
 
-    private Gdk.Paintable get_paintable_for_drag (GridFileItem dragged_item, uint item_count) {
+    private Gdk.Paintable get_paintable_for_drag (FileItemInterface dragged_item, uint item_count) {
         Gdk.Paintable paintable;
         if (item_count > 1) {
             var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());

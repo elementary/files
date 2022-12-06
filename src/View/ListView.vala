@@ -18,7 +18,7 @@
 
 [GtkTemplate (ui = "/io/elementary/files/ListView.ui")]
 public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterface {
-    private static Files.Preferences prefs;
+    protected static Files.Preferences prefs;
     static construct {
         set_layout_manager_type (typeof (Gtk.BinLayout));
         prefs = Files.Preferences.get_default ();
@@ -75,6 +75,9 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         list_store = new GLib.ListStore (typeof (Files.File));
         var filter_model = new Gtk.FilterListModel (list_store, null);
         multi_selection = new Gtk.MultiSelection (filter_model);
+        multi_selection.selection_changed.connect (() => {
+            selection_changed ();
+        });
         file_equal_func = ((filea, fileb) => {
             return filea.basename == fileb.basename;
         });
@@ -90,11 +93,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         filter_model.set_filter (custom_filter);
 
         //Setup columnview
-        var name_item_factory = new Gtk.SignalListItemFactory ();
-        var size_item_factory = new Gtk.SignalListItemFactory ();
-        var type_item_factory = new Gtk.SignalListItemFactory ();
-        var modified_item_factory = new Gtk.SignalListItemFactory ();
-
         column_view = new Gtk.ColumnView (multi_selection) {
             enable_rubberband = true,
             focusable = true,
@@ -115,38 +113,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         };
         menu_popover.set_parent (this);
 
-        // Implement single-click navigate
-        var gesture_primary_click = new Gtk.GestureClick () {
-            button = Gdk.BUTTON_PRIMARY,
-            propagation_phase = Gtk.PropagationPhase.CAPTURE
-        };
-        gesture_primary_click.released.connect ((n_press, x, y) => {
-            var widget = column_view.pick (x, y, Gtk.PickFlags.DEFAULT);
-            if (widget is Gtk.ColumnView) { // Click on background
-                unselect_all ();
-                column_view.grab_focus ();
-            } else {
-                var should_activate = (
-                    widget is Gtk.Image &&
-                    (n_press == 1 && !prefs.singleclick_select) ||
-                    n_press == 2 // Always activate on double click
-                );
-                // Activate item
-                var item = get_item_at (x, y);
-                if (should_activate) {
-                    unselect_all ();
-                    var file = item.file;
-                    if (file.is_folder ()) {
-                        // We know we can append to multislot
-                        change_path (file.location, Files.OpenFlag.APPEND);
-                    } else {
-                        warning ("Open file with app");
-                    }
-                }
-            }
-            //Allow click to propagate to item selection helper and then Gtk
-        });
-        column_view.add_controller (gesture_primary_click);
+        set_up_single_click_navigate ();
 
         // Implement item context menu launching
         var gesture_secondary_click = new Gtk.GestureClick () {
@@ -159,10 +126,10 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         });
         add_controller (gesture_secondary_click);
 
-        //Signal Handlers
-        multi_selection.selection_changed.connect (() => {
-            selection_changed ();
-        });
+        var name_item_factory = new Gtk.SignalListItemFactory ();
+        var size_item_factory = new Gtk.SignalListItemFactory ();
+        var type_item_factory = new Gtk.SignalListItemFactory ();
+        var modified_item_factory = new Gtk.SignalListItemFactory ();
 
         name_item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
@@ -396,16 +363,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    private Files.GridFileItem? get_item_at (double x, double y) {
-        var widget = column_view.pick (x, y, Gtk.PickFlags.DEFAULT);
-        if (widget is GridFileItem) {
-            return (GridFileItem)widget;
-        } else {
-            var ancestor = (GridFileItem)(widget.get_ancestor (typeof (Files.GridFileItem)));
-            return ancestor;
-        }
-    }
-
     private unowned GridFileItem? get_selected_file_item () {
         //NOTE This assumes that the target selected file is bound to a GridFileItem (ie visible?)
         GLib.List<Files.File>? selected_files = null;
@@ -501,7 +458,11 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         show_context_menu (null, 0.0, 0.0);
     }
 
-    /* View Interface virtual methods */
+    /* ViewInterface virtual methods */
+    protected unowned Gtk.Widget get_view_widget () {
+        return column_view;
+    }
+
     public override void clear () {
         list_store.remove_all ();
         rename_after_add = false;
@@ -705,7 +666,8 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return (owned) drag_files;
     }
 
-    private Gdk.Paintable get_paintable_for_drag (GridFileItem dragged_item, uint item_count) {
+    // private Gdk.Paintable get_paintable_for_drag (GridFileItem dragged_item, uint item_count) {
+    private Gdk.Paintable get_paintable_for_drag (FileItemInterface dragged_item, uint item_count) {
         Gdk.Paintable paintable;
         if (item_count > 1) {
             var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
