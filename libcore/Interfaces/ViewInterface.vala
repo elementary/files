@@ -89,7 +89,7 @@ public interface Files.ViewInterface : Gtk.Widget {
         popover_menu.set_parent (this);
     }
 
-    protected virtual void set_up_single_click_navigate () {
+    protected virtual void set_up_gestures () {
         // Implement single-click navigate
         var gesture_primary_click = new Gtk.GestureClick () {
             button = Gdk.BUTTON_PRIMARY,
@@ -97,6 +97,18 @@ public interface Files.ViewInterface : Gtk.Widget {
         };
         gesture_primary_click.released.connect (handle_primary_release);
         get_view_widget ().add_controller (gesture_primary_click);
+
+        // Implement item context menu launching
+        var gesture_secondary_click = new Gtk.GestureClick () {
+            button = Gdk.BUTTON_SECONDARY,
+            propagation_phase = Gtk.PropagationPhase.CAPTURE
+        };
+        gesture_secondary_click.released.connect ((n_press, x, y) => {
+            var item = get_item_at (x, y);
+            show_context_menu (item, x, y);
+            gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED);
+        });
+        get_view_widget ().add_controller (gesture_secondary_click);
     }
 
     protected virtual void handle_primary_release (int n_press, double x, double y) {

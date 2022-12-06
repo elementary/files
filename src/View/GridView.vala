@@ -95,18 +95,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             focusable = true
         };
         build_ui (grid_view);
-        set_up_single_click_navigate ();
-
-        // Implement item context menu launching
-        var gesture_secondary_click = new Gtk.GestureClick () {
-            button = Gdk.BUTTON_SECONDARY,
-            propagation_phase = Gtk.PropagationPhase.CAPTURE
-        };
-        gesture_secondary_click.released.connect ((n_press, x, y) => {
-            show_context_menu_at (x, y);
-            gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED);
-        });
-        add_controller (gesture_secondary_click);
+        set_up_gestures ();
 
         //Signal Handlers
         multi_selection.selection_changed.connect (() => {
@@ -305,10 +294,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     /* ViewInterface methods */
     protected unowned Gtk.Widget get_view_widget () {
         return grid_view;
-    }
-    private void show_context_menu_at (double x, double y) {
-        var item = get_item_at (x, y);
-        show_context_menu (item, x, y);
     }
 
     public void show_context_menu (FileItemInterface? item, double x, double y) {
