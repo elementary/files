@@ -20,8 +20,6 @@
 */
 
 public interface Files.ViewInterface : Gtk.Widget {
-    protected static Files.Preferences prefs;
-
     // Properties defined in template.
     protected abstract Menu background_menu { get; set; }
     protected abstract Menu item_menu { get; set; }
@@ -34,6 +32,11 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     /* Abstract properties */
+    protected abstract Files.Preferences prefs { get; default = Files.Preferences.get_default (); }
+    protected abstract GLib.ListStore list_store { get; set; }
+    protected abstract Gtk.FilterListModel filter_model { get; set; }
+    protected abstract Gtk.MultiSelection multi_selection { get; set; }
+
     protected abstract Gtk.ScrolledWindow scrolled_window { get; set; }
     protected abstract Gtk.PopoverMenu popover_menu { get; set; }
     protected abstract unowned GLib.List<Gtk.Widget> fileitem_list { get; set; default = null; }
@@ -90,7 +93,17 @@ public interface Files.ViewInterface : Gtk.Widget {
     protected abstract unowned Gtk.Widget get_view_widget ();
 
     protected virtual void set_up_model () {
-
+        list_store = new GLib.ListStore (typeof (Files.File));
+        filter_model = new Gtk.FilterListModel (list_store, null);
+        var custom_filter = new Gtk.CustomFilter ((obj) => {
+            var file = (Files.File)obj;
+            return prefs.show_hidden_files || !file.is_hidden;
+        });
+        filter_model.set_filter (custom_filter);
+        multi_selection = new Gtk.MultiSelection (filter_model);
+        multi_selection.selection_changed.connect (() => {
+            selection_changed ();
+        });
     }
 
     protected virtual void build_ui (Gtk.Widget view_widget) {

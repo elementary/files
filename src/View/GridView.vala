@@ -17,25 +17,24 @@
 ***/
 
 public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterface {
-    protected static Files.Preferences prefs;
     static construct {
         set_layout_manager_type (typeof (Gtk.BinLayout));
-        prefs = Files.Preferences.get_default ();
     }
 
     // Properties defined in View.ui template
     protected Menu background_menu { get; set; }
     protected Menu item_menu { get; set; }
     protected Gtk.ScrolledWindow scrolled_window { get; set; }
-    protected Gtk.PopoverMenu popover_menu { get; set; }
 
+    // ViewInterface properties
+    protected Gtk.PopoverMenu popover_menu { get; set; }
+    protected GLib.ListStore list_store { get; set; }
+    protected Gtk.FilterListModel filter_model { get; set; }
+    protected Gtk.MultiSelection multi_selection { get; set; }
+    protected Files.Preferences prefs { get; default = Files.Preferences.get_default (); }
     // Construct properties
     public Gtk.GridView grid_view { get; construct; }
-    public GLib.ListStore list_store { get; construct; }
-    public Gtk.MultiSelection multi_selection { get; construct; }
-    // public Gtk.PopoverMenu popover_menu { get; construct; }
 
-    //Interface properties
     protected unowned GLib.List<Gtk.Widget> fileitem_list  { get; set; default = null; }
     public SlotInterface slot { get; set construct; }
     public ZoomLevel zoom_level { get; set; default = ZoomLevel.NORMAL; }
@@ -71,10 +70,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         set_layout_manager (new Gtk.BinLayout ());
         set_up_model ();
 
-        //Set up models
-        list_store = new GLib.ListStore (typeof (Files.File));
-        var filter_model = new Gtk.FilterListModel (list_store, null);
-        multi_selection = new Gtk.MultiSelection (filter_model);
         file_equal_func = ((filea, fileb) => {
             return filea.basename == fileb.basename;
         });
@@ -83,11 +78,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 fileb, sort_type, prefs.sort_directories_first, sort_reversed
             );
         });
-        var custom_filter = new Gtk.CustomFilter ((obj) => {
-            var file = (Files.File)obj;
-            return prefs.show_hidden_files || !file.is_hidden;
-        });
-        filter_model.set_filter (custom_filter);
 
         //Setup view widget
         var item_factory = new Gtk.SignalListItemFactory ();
