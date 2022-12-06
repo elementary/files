@@ -35,6 +35,7 @@ public interface Files.ViewInterface : Gtk.Widget {
 
     public virtual void grab_focus () {}
     protected abstract Gtk.ScrolledWindow scrolled_window { get; set; }
+    protected abstract Gtk.PopoverMenu popover_menu { get; set; }
     public abstract ZoomLevel zoom_level { get; set; }
     public abstract ZoomLevel minimum_zoom { get; set; }
     public abstract ZoomLevel maximum_zoom { get; set; }
@@ -82,6 +83,10 @@ public interface Files.ViewInterface : Gtk.Widget {
         scrolled_window = (Gtk.ScrolledWindow)(builder.get_object ("scrolled-window"));
         scrolled_window.child = view_widget;
         scrolled_window.set_parent (this);
+        popover_menu = new Gtk.PopoverMenu.from_model_full (new Menu (), Gtk.PopoverMenuFlags.NESTED) {
+          has_arrow = false
+        };
+        popover_menu.set_parent (this);
     }
 
     protected virtual void set_up_single_click_navigate () {

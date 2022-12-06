@@ -27,11 +27,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     protected Menu background_menu { get; set; }
     protected Menu item_menu { get; set; }
     protected Gtk.ScrolledWindow scrolled_window { get; set; }
+    protected Gtk.PopoverMenu popover_menu { get; set; }
     // Construct properties
     public Gtk.GridView grid_view { get; construct; }
     public GLib.ListStore list_store { get; construct; }
     public Gtk.MultiSelection multi_selection { get; construct; }
-    public Gtk.PopoverMenu menu_popover { get; construct; }
+    // public Gtk.PopoverMenu popover_menu { get; construct; }
 
     //Interface properties
     public SlotInterface slot { get; set construct; }
@@ -94,15 +95,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             focusable = true
         };
         build_ui (grid_view);
-
-        //Setup context menu popover
-        //No obvious way to create nested submenus with template so create manually
-        //No obvious way to position at corner
-        menu_popover = new Gtk.PopoverMenu.from_model_full (new Menu (), Gtk.PopoverMenuFlags.NESTED) {
-          has_arrow = false
-        };
-        menu_popover.set_parent (this);
-
         set_up_single_click_navigate ();
 
         // Implement item context menu launching
@@ -158,7 +150,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             fileitem_list.remove (file_item);
         });
 
-        menu_popover.closed.connect (() => {
+        popover_menu.closed.connect (() => {
             grid_view.grab_focus (); //FIXME This should happen automatically?
             //Open with submenu must always be at pos 0
             //This is awkward but can only amend open-with-menu by removing and re-adding.
@@ -167,7 +159,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 has_open_with = false;
             }
             // This removes any custom widgets (?)
-            menu_popover.menu_model = null;
+            popover_menu.menu_model = null;
         });
 
         //Set up as drag source for bookmarking
@@ -362,12 +354,12 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             menu = item_menu;
         }
 
-        menu_popover.menu_model = menu;
-        menu_popover.set_pointing_to ({(int)x, (int)y, 1, 1});
-        plugins.hook_context_menu (menu_popover, selected_files);
+        popover_menu.menu_model = menu;
+        popover_menu.set_pointing_to ({(int)x, (int)y, 1, 1});
+        plugins.hook_context_menu (popover_menu, selected_files);
 
         Idle.add (() => {
-          menu_popover.popup ();
+          popover_menu.popup ();
           return Source.REMOVE;
         });
     }
