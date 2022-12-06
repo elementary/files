@@ -107,7 +107,12 @@ public interface Files.ViewInterface : Gtk.Widget {
         }
     }
 
-    public virtual void select_files (List<Files.File> files_to_select) {}
+    public void select_files (List<Files.File> files_to_select) {
+        foreach (var file in files_to_select) {
+            show_and_select_file (file, true, false, false);
+        }
+    }
+
     public virtual void invert_selection () {}
     public virtual void select_all () {}
     public virtual void unselect_all () {}

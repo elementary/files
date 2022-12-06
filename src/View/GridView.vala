@@ -349,12 +349,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    public override void select_files (List<Files.File> files_to_select) {
-        foreach (var file in files_to_select) {
-            show_and_select_file (file, true, false, false);
-        }
-    }
-
     public override void select_all () {
         multi_selection.select_all ();
         all_selected = true;
