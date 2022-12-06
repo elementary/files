@@ -164,7 +164,25 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void add_file (Files.File file) {}
     public virtual void clear () {}
 
-    public virtual void open_selected (Files.OpenFlag flag) {}
+    public void open_selected (Files.OpenFlag flag) {
+        List<Files.File> selected_files = null;
+        var n_files = get_selected_files (out selected_files);
+        if (n_files == 0) {
+            return;
+        }
+        //TODO Apply upper limit to number of files?
+        switch (n_files) {
+            case 1:
+                open_file (selected_files.data, flag);
+                break;
+            default:
+                //TODO Deal with multiple selection
+                //Check common type
+                //
+                break;
+        }
+    }
+
     public virtual void change_path (GLib.File loc, OpenFlag flag) {}
 
     public abstract void show_context_menu (Files.FileItemInterface? clicked_item, double x, double y);
@@ -258,7 +276,7 @@ public interface Files.ViewInterface : Gtk.Widget {
                     // We know we can append to multislot
                     change_path (file.location, Files.OpenFlag.APPEND);
                 } else {
-                    warning ("Open file with app");
+                    open_file (file, Files.OpenFlag.APP);
                 }
             }
         }

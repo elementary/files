@@ -332,25 +332,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    public override void open_selected (Files.OpenFlag flag) {
-        List<Files.File> selected_files = null;
-        var n_files = get_selected_files (out selected_files);
-        if (n_files == 0) {
-            return;
-        }
-        //TODO Apply upper limit to number of files?
-        switch (n_files) {
-            case 1:
-                open_file (selected_files.data, flag);
-                break;
-            default:
-                //TODO Deal with multiple selection
-                //Check common type
-                //
-                break;
-        }
-    }
-
     public override void file_deleted (Files.File file) {
         uint pos;
         if (list_store.find (file, out pos)) {
