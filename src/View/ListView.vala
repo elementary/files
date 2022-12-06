@@ -317,6 +317,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     /* View Interface abstract methods */
+    //Cannot move to interface because of plugins and Config.APP_NAME
     public void show_context_menu (FileItemInterface? item, double x, double y) {
         // If no selected item show background context menu
         double menu_x, menu_y;
@@ -368,22 +369,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
           popover_menu.popup ();
           return Source.REMOVE;
         });
-    }
-
-    public void show_appropriate_context_menu () { //Deal with Menu Key
-        if (list_store.get_n_items () > 0) {
-            List<Files.File> selected_files = null;
-            var n_selected = get_selected_files (out selected_files);
-            if (n_selected > 0) {
-                Files.File first_file = selected_files.first ().data;
-                show_and_select_file (first_file, false, false); //Do not change selection
-                var item = get_file_item_for_file (first_file);
-                show_context_menu (item, 0.0, 0.0);
-                return;
-            }
-        }
-
-        show_context_menu (null, 0.0, 0.0);
     }
 
     /* ViewInterface virtual methods */

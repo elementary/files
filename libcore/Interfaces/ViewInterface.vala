@@ -168,7 +168,23 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void change_path (GLib.File loc, OpenFlag flag) {}
 
     public abstract void show_context_menu (Files.FileItemInterface? clicked_item, double x, double y);
-    public abstract void show_appropriate_context_menu ();
+
+    public void show_appropriate_context_menu () { //Deal with Menu Key
+        if (list_store.get_n_items () > 0) {
+            List<Files.File> selected_files = null;
+            var n_selected = get_selected_files (out selected_files);
+            if (n_selected > 0) {
+                Files.File first_file = selected_files.first ().data;
+                show_and_select_file (first_file, false, false); //Do not change selection
+                var item = get_file_item_for_file (first_file);
+                show_context_menu (item, 0.0, 0.0);
+                return;
+            }
+        }
+
+        show_context_menu (null, 0.0, 0.0);
+    }
+
     protected abstract unowned Gtk.Widget get_view_widget ();
 
     protected virtual void set_up_model () {
