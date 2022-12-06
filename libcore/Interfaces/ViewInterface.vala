@@ -50,10 +50,23 @@ public interface Files.ViewInterface : Gtk.Widget {
 
     public signal void selection_changed (); // No obvious way to avoid this signal
     public virtual void grab_focus () {}
-    public virtual void set_up_zoom_level () {}
-    public virtual void zoom_in () {}
-    public virtual void zoom_out () {}
-    public virtual void zoom_normal () {}
+    public abstract void set_up_zoom_level ();
+    public abstract ZoomLevel get_normal_zoom_level ();
+
+    public void zoom_in () {
+        if (zoom_level < maximum_zoom) {
+            zoom_level = zoom_level + 1;
+        }
+    }
+
+    public void zoom_out () {
+        if (zoom_level > minimum_zoom) {
+            zoom_level = zoom_level - 1;
+        }
+    }
+    public void zoom_normal () {
+        zoom_level = get_normal_zoom_level ();
+    }
 
     public virtual void show_and_select_file (
         Files.File? file, bool select, bool unselect_others, bool show = true

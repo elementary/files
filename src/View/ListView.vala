@@ -427,21 +427,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    public override void zoom_in () {
-        if (zoom_level < maximum_zoom) {
-            zoom_level = zoom_level + 1;
-        }
-    }
-
-    public override void zoom_out () {
-        if (zoom_level > minimum_zoom) {
-            zoom_level = zoom_level - 1;
-        }
-    }
-    public override void zoom_normal () {
-        zoom_level = get_normal_zoom_level ();
-    }
-
     public override void show_and_select_file (
         Files.File? file, bool select, bool unselect_others, bool show = true
     ) {
