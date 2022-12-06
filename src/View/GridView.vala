@@ -16,7 +16,6 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-[GtkTemplate (ui = "/io/elementary/files/GridView.ui")]
 public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterface {
     protected static Files.Preferences prefs;
     static construct {
@@ -24,9 +23,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         prefs = Files.Preferences.get_default ();
     }
 
-    // Properties defined in template NOTE: cannot use construct; here
-    public Menu background_menu { get; set; }
-    public Menu item_menu { get; set; }
+    // Properties defined in View.ui template
+    protected Menu background_menu { get; set; }
+    protected Menu item_menu { get; set; }
 
     // Construct properties
     public Gtk.GridView grid_view { get; construct; }
@@ -68,8 +67,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     construct {
         set_layout_manager (new Gtk.BinLayout ());
-        //Menu structure defined by GridView.ui
-        item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
+        set_up_menus ();
         fileitem_list = new GLib.List<GridFileItem> ();
 
         //Set up models

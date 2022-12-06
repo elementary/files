@@ -22,6 +22,10 @@
 public interface Files.ViewInterface : Gtk.Widget {
     protected static Files.Preferences prefs;
 
+    // Properties defined in template.
+    protected abstract Menu background_menu { get; set; }
+    protected abstract Menu item_menu { get; set; }
+
     public abstract SlotInterface slot { get; set construct; }
     public virtual Files.File? root_file {
         get {
@@ -68,6 +72,14 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract uint get_selected_files (out GLib.List<Files.File>? selected_files = null);
 
     protected abstract unowned Gtk.Widget get_view_widget ();
+
+    protected virtual void set_up_menus () {
+        var builder = new Gtk.Builder.from_resource ("/io/elementary/files/View.ui");
+        item_menu = (Menu)(builder.get_object ("item_model"));
+        background_menu = (Menu)(builder.get_object ("background_model"));
+        item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
+    }
+
     protected virtual void set_up_single_click_navigate () {
         // Implement single-click navigate
         var gesture_primary_click = new Gtk.GestureClick () {

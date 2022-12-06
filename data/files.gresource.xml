@@ -4,7 +4,6 @@
     <file alias="ColorButton.css" compressed="true">styles/ColorButton.css</file>
     <file alias="SidebarExpander.css" compressed="true">styles/SidebarExpander.css</file>
     <file alias="GridViewFileItem.css" compressed="true">styles/GridViewFileItem.css</file>
-    <file alias="GridView.ui" compressed="true">ui/GridView.ui</file>
-    <file alias="ListView.ui" compressed="true">ui/ListView.ui</file>
+    <file alias="View.ui" compressed="true">ui/View.ui</file>
   </gresource>
 </gresources>
