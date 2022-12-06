@@ -138,9 +138,27 @@ public interface Files.ViewInterface : Gtk.Widget {
         }
     }
 
-    // public virtual void invert_selection () {}
-    // public virtual void select_all () {}
-    // public virtual void unselect_all () {}
+    public uint get_selected_files (out GLib.List<Files.File>? selected_files = null) {
+        selected_files = null;
+        uint pos = 0;
+        uint count = 0;
+        var iter = Gtk.BitsetIter ();
+        if (iter.init_first (multi_selection.get_selection (), out pos)) {
+            selected_files.prepend (
+                (Files.File)(multi_selection.get_item (pos))
+            );
+            count++;
+            while (iter.next (out pos)) {
+                selected_files.prepend (
+                    (Files.File)(multi_selection.get_item (pos))
+                );
+                count++;
+            }
+        }
+
+        return count;
+    }
+
     public virtual void file_deleted (Files.File file) {}
     public virtual void file_changed (Files.File file) {}
     public virtual void add_file (Files.File file) {}
@@ -151,8 +169,6 @@ public interface Files.ViewInterface : Gtk.Widget {
 
     public abstract void show_context_menu (Files.FileItemInterface? clicked_item, double x, double y);
     public abstract void show_appropriate_context_menu ();
-    public abstract uint get_selected_files (out GLib.List<Files.File>? selected_files = null);
-
     protected abstract unowned Gtk.Widget get_view_widget ();
 
     protected virtual void set_up_model () {

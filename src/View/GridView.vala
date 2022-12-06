@@ -349,31 +349,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    // public override void select_all () {
-    //     multi_selection.select_all ();
-    //     all_selected = true;
-    // }
-
-    // public override void unselect_all () {
-    //     multi_selection.unselect_all ();
-    //     all_selected = false;
-    // }
-
-    // public override void invert_selection () {
-    //     uint pos = 0;
-    //     var item = multi_selection.get_item (pos);
-    //     while (item != null) {
-    //         if (multi_selection.is_selected (pos)) {
-    //             multi_selection.unselect_item (pos);
-    //         } else {
-    //             multi_selection.select_item (pos, false);
-    //         }
-
-    //         pos++;
-    //         item = multi_selection.get_item (pos);
-    //     }
-    // }
-
     public override void open_selected (Files.OpenFlag flag) {
         List<Files.File> selected_files = null;
         var n_files = get_selected_files (out selected_files);
@@ -398,27 +373,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         if (list_store.find (file, out pos)) {
             list_store.remove (pos);
         }
-    }
-
-    public uint get_selected_files (out GLib.List<Files.File>? selected_files = null) {
-        selected_files = null;
-        uint pos = 0;
-        uint count = 0;
-        var iter = Gtk.BitsetIter ();
-        if (iter.init_first (grid_view.model.get_selection (), out pos)) {
-            selected_files.prepend (
-                (Files.File)(grid_view.model.get_item (pos))
-            );
-            count++;
-            while (iter.next (out pos)) {
-                selected_files.prepend (
-                    (Files.File)(grid_view.model.get_item (pos))
-                );
-                count++;
-            }
-        }
-
-        return count;
     }
 
     public override void set_up_zoom_level () {
