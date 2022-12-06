@@ -33,9 +33,10 @@ public interface Files.ViewInterface : Gtk.Widget {
         }
     }
 
-    public virtual void grab_focus () {}
+    /* Abstract properties */
     protected abstract Gtk.ScrolledWindow scrolled_window { get; set; }
     protected abstract Gtk.PopoverMenu popover_menu { get; set; }
+    protected abstract unowned GLib.List<Gtk.Widget> fileitem_list { get; set; default = null; }
     public abstract ZoomLevel zoom_level { get; set; }
     public abstract ZoomLevel minimum_zoom { get; set; }
     public abstract ZoomLevel maximum_zoom { get; set; }
@@ -48,7 +49,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     protected abstract bool has_open_with { get; set; default = false;}
 
     public signal void selection_changed (); // No obvious way to avoid this signal
-
+    public virtual void grab_focus () {}
     public virtual void set_up_zoom_level () {}
     public virtual void zoom_in () {}
     public virtual void zoom_out () {}
@@ -65,7 +66,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void file_changed (Files.File file) {}
     public virtual void add_file (Files.File file) {}
     public virtual void clear () {}
-    public virtual void refresh_visible_items () {}
+
     public virtual void open_selected (Files.OpenFlag flag) {}
     public virtual void change_path (GLib.File loc, OpenFlag flag) {}
 
@@ -74,6 +75,10 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract uint get_selected_files (out GLib.List<Files.File>? selected_files = null);
 
     protected abstract unowned Gtk.Widget get_view_widget ();
+
+    protected virtual void set_up_model () {
+
+    }
 
     protected virtual void build_ui (Gtk.Widget view_widget) {
         var builder = new Gtk.Builder.from_resource ("/io/elementary/files/View.ui");
@@ -139,6 +144,26 @@ public interface Files.ViewInterface : Gtk.Widget {
         //Allow click to propagate to item selection helper and then Gtk
     }
 
+    protected void focus_item (uint pos) {
+        foreach (var widget in fileitem_list) {
+            assert_nonnull (widget);
+            var item = (FileItemInterface)widget;
+            if (item.pos == pos) {
+                item.grab_focus ();
+            }
+        }
+    }
+
+    protected unowned FileItemInterface? get_selected_file_item () {
+        //NOTE This assumes that the target selected file is bound to a GridFileItem (ie visible?)
+        GLib.List<Files.File>? selected_files = null;
+        if (get_selected_files (out selected_files) == 1) {
+            return get_file_item_for_file (selected_files.data);
+        }
+
+        return null;
+    }
+
     protected Files.FileItemInterface? get_item_at (double x, double y) {
         var view_widget = get_view_widget ();
         var widget = view_widget.pick (x, y, Gtk.PickFlags.DEFAULT);
@@ -147,6 +172,26 @@ public interface Files.ViewInterface : Gtk.Widget {
         } else {
             var ancestor = (FileItemInterface)(widget.get_ancestor (typeof (Files.FileItemInterface)));
             return ancestor;
+        }
+    }
+
+    protected unowned FileItemInterface? get_file_item_for_file (Files.File file) {
+        foreach (unowned var widget in fileitem_list) {
+            assert_nonnull (widget);
+            unowned var item = (FileItemInterface)widget;
+            if (item.file == file) {
+                return item;
+            }
+        }
+
+        return null;
+    }
+
+    public void refresh_visible_items () {
+        foreach (var widget in fileitem_list) {
+            assert_nonnull (widget);
+            unowned var item = (FileItemInterface)widget;
+            item.rebind ();
         }
     }
 

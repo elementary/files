@@ -36,6 +36,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     // public Gtk.PopoverMenu popover_menu { get; construct; }
 
     //Interface properties
+    protected unowned GLib.List<Gtk.Widget> fileitem_list  { get; set; default = null; }
     public SlotInterface slot { get; set construct; }
     public ZoomLevel zoom_level { get; set; default = ZoomLevel.NORMAL; }
     public ZoomLevel minimum_zoom { get; set; default = ZoomLevel.SMALLEST; }
@@ -51,7 +52,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     private CompareDataFunc<Files.File>? file_compare_func;
     private EqualFunc<Files.File>? file_equal_func;
-    private GLib.List<GridFileItem> fileitem_list;
     private string? uri_string = null;
 
     public ListView (Files.Slot slot) {
@@ -67,7 +67,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     construct {
         set_layout_manager (new Gtk.BinLayout ());
-        fileitem_list = new GLib.List<GridFileItem> ();
+        set_up_model ();
 
         //Set up models
         list_store = new GLib.ListStore (typeof (Files.File));
@@ -119,6 +119,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             list_item.activatable = false;
             list_item.selectable = true;
         });
+        //TODO Use Gtk.Inscription when v4.9 available
         size_item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var size_item = new Gtk.Label ("") {
@@ -317,14 +318,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return (ZoomLevel)zoom;
     }
 
-    private void focus_item (uint pos) {
-        foreach (var item in fileitem_list) {
-            if (item.pos == pos) {
-                item.grab_focus ();
-            }
-        }
-    }
-
     private void focus_appropriate_item () {
         var item = get_selected_file_item ();
         if (item != null) {
@@ -337,28 +330,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    private unowned GridFileItem? get_selected_file_item () {
-        //NOTE This assumes that the target selected file is bound to a GridFileItem (ie visible?)
-        GLib.List<Files.File>? selected_files = null;
-        if (get_selected_files (out selected_files) == 1) {
-            return get_file_item_for_file (selected_files.data);
-        }
-
-        return null;
-    }
-
-    private unowned GridFileItem? get_file_item_for_file (Files.File file) {
-        foreach (unowned var file_item in fileitem_list) {
-            if (file_item.file == file) {
-                return file_item;
-            }
-        }
-
-        return null;
-    }
-
     /* View Interface abstract methods */
-
     public void show_context_menu (FileItemInterface? item, double x, double y) {
         // If no selected item show background context menu
         double menu_x, menu_y;
@@ -437,12 +409,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         list_store.remove_all ();
         rename_after_add = false;
         select_after_add = false;
-    }
-
-    public override void refresh_visible_items () {
-        foreach (var file_item in fileitem_list) {
-            file_item.rebind ();
-        }
     }
 
     public override void add_file (Files.File file) {
