@@ -34,6 +34,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     public virtual void grab_focus () {}
+    protected abstract Gtk.ScrolledWindow scrolled_window { get; set; }
     public abstract ZoomLevel zoom_level { get; set; }
     public abstract ZoomLevel minimum_zoom { get; set; }
     public abstract ZoomLevel maximum_zoom { get; set; }
@@ -73,11 +74,14 @@ public interface Files.ViewInterface : Gtk.Widget {
 
     protected abstract unowned Gtk.Widget get_view_widget ();
 
-    protected virtual void set_up_menus () {
+    protected virtual void build_ui (Gtk.Widget view_widget) {
         var builder = new Gtk.Builder.from_resource ("/io/elementary/files/View.ui");
         item_menu = (Menu)(builder.get_object ("item_model"));
         background_menu = (Menu)(builder.get_object ("background_model"));
         item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
+        scrolled_window = (Gtk.ScrolledWindow)(builder.get_object ("scrolled-window"));
+        scrolled_window.child = view_widget;
+        scrolled_window.set_parent (this);
     }
 
     protected virtual void set_up_single_click_navigate () {

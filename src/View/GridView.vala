@@ -26,7 +26,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     // Properties defined in View.ui template
     protected Menu background_menu { get; set; }
     protected Menu item_menu { get; set; }
-
+    protected Gtk.ScrolledWindow scrolled_window { get; set; }
     // Construct properties
     public Gtk.GridView grid_view { get; construct; }
     public GLib.ListStore list_store { get; construct; }
@@ -52,7 +52,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     private EqualFunc<Files.File>? file_equal_func;
     private GLib.List<GridFileItem> fileitem_list;
     private string? uri_string = null;
-    private Gtk.ScrolledWindow? scrolled_window;
 
     public GridView (Files.Slot slot) {
         Object (slot: slot);
@@ -67,7 +66,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     construct {
         set_layout_manager (new Gtk.BinLayout ());
-        set_up_menus ();
         fileitem_list = new GLib.List<GridFileItem> ();
 
         //Set up models
@@ -88,20 +86,14 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         });
         filter_model.set_filter (custom_filter);
 
-        //Setup gridview
+        //Setup view widget
         var item_factory = new Gtk.SignalListItemFactory ();
         grid_view = new Gtk.GridView (multi_selection, item_factory) {
             orientation = Gtk.Orientation.VERTICAL,
             enable_rubberband = true,
             focusable = true
         };
-        scrolled_window = new Gtk.ScrolledWindow () {
-            hexpand = true,
-            hscrollbar_policy = Gtk.PolicyType.NEVER,
-            focusable = false
-        };
-        scrolled_window.child = grid_view;
-        scrolled_window.set_parent (this);
+        build_ui (grid_view);
 
         //Setup context menu popover
         //No obvious way to create nested submenus with template so create manually

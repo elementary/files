@@ -156,5 +156,10 @@
       </item>
     </section>
   </menu>
+
+  <object class="GtkScrolledWindow" id="scrolled-window">
+    <property name="hexpand">True</property>
+    <property name="focusable">False</property>
+  </object>
 </interface>
 
