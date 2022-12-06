@@ -159,10 +159,22 @@ public interface Files.ViewInterface : Gtk.Widget {
         return count;
     }
 
-    public virtual void file_deleted (Files.File file) {}
+    // public virtual void file_deleted (Files.File file) {}
+    public void file_deleted (Files.File file) {
+        uint pos;
+        if (list_store.find (file, out pos)) {
+            list_store.remove (pos);
+        }
+    }
+
     public virtual void file_changed (Files.File file) {}
     public virtual void add_file (Files.File file) {}
-    public virtual void clear () {}
+
+    public void clear () {
+        list_store.remove_all ();
+        rename_after_add = false;
+        select_after_add = false;
+    }
 
     public void open_selected (Files.OpenFlag flag) {
         List<Files.File> selected_files = null;

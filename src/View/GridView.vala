@@ -309,13 +309,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         });
     }
 
-    /* View Interface virtual methods */
-    public override void clear () {
-        list_store.remove_all ();
-        rename_after_add = false;
-        select_after_add = false;
-    }
-
     public override void add_file (Files.File file) {
         //TODO Delay sorting until adding finished?
         list_store.insert_sorted (file, file_compare_func);
@@ -329,13 +322,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 activate_action ("win.rename", null);
                 return Source.REMOVE;
             });
-        }
-    }
-
-    public override void file_deleted (Files.File file) {
-        uint pos;
-        if (list_store.find (file, out pos)) {
-            list_store.remove (pos);
         }
     }
 
