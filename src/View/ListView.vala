@@ -413,30 +413,30 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    public override void select_all () {
-        multi_selection.select_all ();
-        all_selected = true;
-    }
+    // public override void select_all () {
+    //     multi_selection.select_all ();
+    //     all_selected = true;
+    // }
 
-    public override void unselect_all () {
-        multi_selection.unselect_all ();
-        all_selected = false;
-    }
+    // public override void unselect_all () {
+    //     multi_selection.unselect_all ();
+    //     all_selected = false;
+    // }
 
-    public override void invert_selection () {
-        uint pos = 0;
-        var item = multi_selection.get_item (pos);
-        while (item != null) {
-            if (multi_selection.is_selected (pos)) {
-                multi_selection.unselect_item (pos);
-            } else {
-                multi_selection.select_item (pos, false);
-            }
+    // public override void invert_selection () {
+    //     uint pos = 0;
+    //     var item = multi_selection.get_item (pos);
+    //     while (item != null) {
+    //         if (multi_selection.is_selected (pos)) {
+    //             multi_selection.unselect_item (pos);
+    //         } else {
+    //             multi_selection.select_item (pos, false);
+    //         }
 
-            pos++;
-            item = multi_selection.get_item (pos);
-        }
-    }
+    //         pos++;
+    //         item = multi_selection.get_item (pos);
+    //     }
+    // }
 
     public override void open_selected (Files.OpenFlag flag) {
         List<Files.File> selected_files = null;

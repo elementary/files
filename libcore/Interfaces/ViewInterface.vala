@@ -113,9 +113,34 @@ public interface Files.ViewInterface : Gtk.Widget {
         }
     }
 
-    public virtual void invert_selection () {}
-    public virtual void select_all () {}
-    public virtual void unselect_all () {}
+    public void select_all () {
+        multi_selection.select_all ();
+        all_selected = true;
+    }
+
+    public void unselect_all () {
+        multi_selection.unselect_all ();
+        all_selected = false;
+    }
+
+    public void invert_selection () {
+        uint pos = 0;
+        var item = multi_selection.get_item (pos);
+        while (item != null) {
+            if (multi_selection.is_selected (pos)) {
+                multi_selection.unselect_item (pos);
+            } else {
+                multi_selection.select_item (pos, false);
+            }
+
+            pos++;
+            item = multi_selection.get_item (pos);
+        }
+    }
+
+    // public virtual void invert_selection () {}
+    // public virtual void select_all () {}
+    // public virtual void unselect_all () {}
     public virtual void file_deleted (Files.File file) {}
     public virtual void file_changed (Files.File file) {}
     public virtual void add_file (Files.File file) {}
