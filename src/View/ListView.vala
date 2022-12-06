@@ -38,7 +38,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     // public Gtk.PopoverMenu popover_menu { get; construct; }
 
     //Interface properties
-    protected unowned GLib.List<Gtk.Widget> fileitem_list  { get; set; default = null; }
+    protected unowned GLib.List<Gtk.Widget> fileitem_list { get; set; default = null; }
     public SlotInterface slot { get; set construct; }
     public ZoomLevel zoom_level { get; set; default = ZoomLevel.NORMAL; }
     public ZoomLevel minimum_zoom { get; set; default = ZoomLevel.SMALLEST; }
@@ -304,18 +304,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return (ZoomLevel)zoom;
     }
 
-    private void focus_appropriate_item () {
-        var item = get_selected_file_item ();
-        if (item != null) {
-            item.grab_focus ();
-        } else if (list_store.get_n_items () > 0) {
-            multi_selection.select_item (0, false);
-            focus_item (0);
-        } else {
-            column_view.grab_focus ();
-        }
-    }
-
     /* View Interface abstract methods */
     //Cannot move to interface because of plugins and Config.APP_NAME
     public void show_context_menu (FileItemInterface? item, double x, double y) {
@@ -418,13 +406,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    public void grab_focus () {
-        if (column_view != null) {
-            focus_appropriate_item ();
-        }
-    }
     /* DNDInterface abstract methods */
-
     //Need to ensure fileitem gets selected before drag
     public List<Files.File> get_file_list_for_drag (double x, double y, out Gdk.Paintable? paintable) {
         paintable = null;

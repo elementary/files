@@ -35,7 +35,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     // Construct properties
     public Gtk.GridView grid_view { get; construct; }
 
-    protected unowned GLib.List<Gtk.Widget> fileitem_list  { get; set; default = null; }
+    protected unowned GLib.List<Gtk.Widget> fileitem_list { get; set; default = null; }
     public SlotInterface slot { get; set construct; }
     public ZoomLevel zoom_level { get; set; default = ZoomLevel.NORMAL; }
     public ZoomLevel minimum_zoom { get; set; default = ZoomLevel.SMALLEST; }
@@ -238,18 +238,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return (ZoomLevel)zoom;
     }
 
-    private void focus_appropriate_item () {
-        var item = get_selected_file_item ();
-        if (item != null) {
-            item.grab_focus ();
-        } else if (list_store.get_n_items () > 0) {
-            multi_selection.select_item (0, false);
-            focus_item (0);
-        } else {
-            grid_view.grab_focus ();
-        }
-    }
-
     /* ViewInterface methods */
     protected unowned Gtk.Widget get_view_widget () {
         return grid_view;
@@ -348,12 +336,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         var item = get_file_item_for_file (file);
         if (item != null) {
             item.bind_file (file); // Forces image to update
-        }
-    }
-
-    public void grab_focus () {
-        if (grid_view != null) {
-            focus_appropriate_item ();
         }
     }
 

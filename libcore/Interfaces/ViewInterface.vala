@@ -52,9 +52,30 @@ public interface Files.ViewInterface : Gtk.Widget {
     protected abstract bool has_open_with { get; set; default = false;}
 
     public signal void selection_changed (); // No obvious way to avoid this signal
-    public virtual void grab_focus () {}
+
+    // Functions specific to particular view
     public abstract void set_up_zoom_level ();
     public abstract ZoomLevel get_normal_zoom_level ();
+    //Functions requiring access to src
+    public abstract void show_context_menu (Files.FileItemInterface? clicked_item, double x, double y);
+
+    public void grab_focus () {
+        if (get_view_widget () != null) {
+            var item = get_selected_file_item ();
+            if (item != null) {
+                item.grab_focus ();
+            } else if (list_store.get_n_items () > 0) {
+                multi_selection.select_item (0, false);
+                focus_item (0);
+            } else {
+                get_view_widget ().grab_focus ();
+            }
+        }
+    }
+
+    public virtual void change_path (GLib.File loc, OpenFlag flag) {}
+    public virtual void file_changed (Files.File file) {}
+    public virtual void add_file (Files.File file) {}
 
     public void zoom_in () {
         if (zoom_level < maximum_zoom) {
@@ -167,9 +188,6 @@ public interface Files.ViewInterface : Gtk.Widget {
         }
     }
 
-    public virtual void file_changed (Files.File file) {}
-    public virtual void add_file (Files.File file) {}
-
     public void clear () {
         list_store.remove_all ();
         rename_after_add = false;
@@ -194,10 +212,6 @@ public interface Files.ViewInterface : Gtk.Widget {
                 break;
         }
     }
-
-    public virtual void change_path (GLib.File loc, OpenFlag flag) {}
-
-    public abstract void show_context_menu (Files.FileItemInterface? clicked_item, double x, double y);
 
     public void show_appropriate_context_menu () { //Deal with Menu Key
         if (list_store.get_n_items () > 0) {
