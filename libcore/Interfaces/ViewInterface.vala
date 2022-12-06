@@ -71,9 +71,42 @@ public interface Files.ViewInterface : Gtk.Widget {
         zoom_level = get_normal_zoom_level ();
     }
 
-    public virtual void show_and_select_file (
+    public void show_and_select_file (
         Files.File? file, bool select, bool unselect_others, bool show = true
-    ) {}
+    ) {
+        uint pos = 0;
+        if (file != null) {
+            list_store.find_with_equal_func (
+                file,
+                (filea, fileb) => {
+                    return ((Files.File)filea).basename == ((Files.File)fileb).basename;
+                },
+                out pos
+            ); //Inefficient?
+        }
+
+        //TODO Check pos same in sorted model and list_store
+        if (select) {
+            multi_selection.select_item (pos, unselect_others);
+        } else {
+            multi_selection.unselect_item (pos);
+        }
+
+        if (show) {
+            // Move specified item to top
+            //TODO Work out how to move to middle of visible area? Need number of columns/width of fileitem?
+            //Idle until gridview layed out.
+            Idle.add (() => {
+                var adj = scrolled_window.vadjustment;
+                adj.value = adj.upper * double.min (
+                    (double)pos / (double) list_store.get_n_items (), adj.upper
+                );
+                focus_item (pos);
+                return Source.REMOVE;
+            });
+        }
+    }
+
     public virtual void select_files (List<Files.File> files_to_select) {}
     public virtual void invert_selection () {}
     public virtual void select_all () {}

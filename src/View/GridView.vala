@@ -51,8 +51,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     protected bool has_open_with { get; set; default = false;}
 
     private CompareDataFunc<Files.File>? file_compare_func;
-    private EqualFunc<Files.File>? file_equal_func;
-
     private string? uri_string = null;
 
     public GridView (Files.Slot slot) {
@@ -70,9 +68,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         set_layout_manager (new Gtk.BinLayout ());
         set_up_model ();
 
-        file_equal_func = ((filea, fileb) => {
-            return filea.basename == fileb.basename;
-        });
         file_compare_func = ((filea, fileb) => {
             return filea.compare_for_sort (
                 fileb, sort_type, prefs.sort_directories_first, sort_reversed
@@ -349,36 +344,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             Idle.add (() => {
                 show_and_select_file (file, true, true);
                 activate_action ("win.rename", null);
-                return Source.REMOVE;
-            });
-        }
-    }
-
-    public override void show_and_select_file (
-        Files.File? file, bool select, bool unselect_others, bool show = true
-    ) {
-        uint pos = 0;
-        if (file != null) {
-            list_store.find_with_equal_func (file, file_equal_func, out pos); //Inefficient?
-        }
-
-        //TODO Check pos same in sorted model and list_store
-        if (select) {
-            multi_selection.select_item (pos, unselect_others);
-        } else {
-            multi_selection.unselect_item (pos);
-        }
-
-        if (show) {
-            // Move specified item to top
-            //TODO Work out how to move to middle of visible area? Need number of columns/width of fileitem?
-            //Idle until gridview layed out.
-            Idle.add (() => {
-                var adj = scrolled_window.vadjustment;
-                adj.value = adj.upper * double.min (
-                    (double)pos / (double) list_store.get_n_items (), adj.upper
-                );
-                focus_item (pos);
                 return Source.REMOVE;
             });
         }
