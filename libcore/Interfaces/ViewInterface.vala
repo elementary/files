@@ -329,7 +329,8 @@ public interface Files.ViewInterface : Gtk.Widget {
         return null;
     }
 
-    protected Files.FileItemInterface? get_item_at (double x, double y) {
+    // Access required by DNDInterface
+    public Files.FileItemInterface? get_item_at (double x, double y) {
         var view_widget = get_view_widget ();
         var widget = view_widget.pick (x, y, Gtk.PickFlags.DEFAULT);
         if (widget is FileItemInterface) {

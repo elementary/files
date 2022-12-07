@@ -19,8 +19,45 @@
 * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
 */
 
-public interface Files.DNDInterface : Gtk.Widget {
-    public abstract List<Files.File> get_file_list_for_drag (double x, double y, out Gdk.Paintable? paintable);
+public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
+    //Need to ensure fileitem gets selected before drag
+    public List<Files.File> get_file_list_for_drag (double x, double y, out Gdk.Paintable? paintable) {
+        paintable = null;
+        var dragitem = get_item_at (x, y);
+        List<Files.File> drag_files = null;
+        if (dragitem != null) {
+            uint n_items = 0;
+            if (!dragitem.selected) {
+                drag_files.append (dragitem.file);
+                n_items = 1;
+            } else {
+                n_items = get_selected_files (out drag_files);
+            }
+
+            paintable = get_paintable_for_drag (dragitem, n_items);
+        }
+        return (owned) drag_files;
+    }
+
+    private Gdk.Paintable get_paintable_for_drag (FileItemInterface dragged_item, uint item_count) {
+        Gdk.Paintable paintable;
+        if (item_count > 1) {
+            var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
+            paintable = theme.lookup_icon (
+                "edit-copy", //TODO Provide better icon?
+                 null,
+                 16,
+                 this.scale_factor,
+                 get_default_direction (),
+                 Gtk.IconLookupFlags.FORCE_REGULAR | Gtk.IconLookupFlags.PRELOAD
+            );
+        } else {
+            paintable = dragged_item.get_paintable_for_drag ();
+        }
+
+        return paintable;
+    }
+
     public abstract Files.File get_target_file_for_drop (double x, double y);
     public abstract void leave ();
     public abstract bool can_accept_drops ();
