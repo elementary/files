@@ -403,23 +403,10 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    public override void file_changed (Files.File file) {
-        var item = get_file_item_for_file (file);
-        if (item != null) {
-            item.bind_file (file); // Forces image to update
-        }
-    }
-
-    /* DNDInterface abstract methods */
-    // public void leave () {
-    //     // Cancel auto-open and restore normal icon
-    //     if (auto_open_timeout_id > 0) {
-    //         Source.remove (auto_open_timeout_id);
-    //         auto_open_timeout_id = 0;
-    //     }
-
-    //     if (previous_target_item != null) {
-    //         previous_target_item.drop_pending = false;
+    // public override void file_changed (Files.File file) {
+    //     var item = get_file_item_for_file (file);
+    //     if (item != null) {
+    //         item.bind_file (file); // Forces image to update
     //     }
     // }
 }

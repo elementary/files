@@ -74,7 +74,6 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     public virtual void change_path (GLib.File loc, OpenFlag flag) {}
-    public virtual void file_changed (Files.File file) {}
     public virtual void add_file (Files.File file) {}
 
     public void zoom_in () {
@@ -180,11 +179,17 @@ public interface Files.ViewInterface : Gtk.Widget {
         return count;
     }
 
-    // public virtual void file_deleted (Files.File file) {}
     public void file_deleted (Files.File file) {
         uint pos;
         if (list_store.find (file, out pos)) {
             list_store.remove (pos);
+        }
+    }
+
+    public void file_changed (Files.File file) {
+        var item = get_file_item_for_file (file);
+        if (item != null) {
+            item.bind_file (file); // Forces image to update
         }
     }
 
