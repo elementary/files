@@ -32,6 +32,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     protected Gtk.FilterListModel filter_model { get; set; }
     protected Gtk.MultiSelection multi_selection { get; set; }
     protected Files.Preferences prefs { get; default = Files.Preferences.get_default (); }
+
+    //DNDInterface properties
+    protected uint auto_open_timeout_id { get; set; default = 0; }
+    protected FileItemInterface? previous_target_item { get; set; default = null; }
+
     // Construct properties
     public Gtk.GridView grid_view { get; construct; }
 
@@ -340,48 +345,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     /* DNDInterface abstract methods */
-    private uint auto_open_timeout_id = 0;
-    private FileItemInterface? previous_target_item = null;
-    public Files.File get_target_file_for_drop (double x, double y) {
-        var droptarget = get_item_at (x, y);
-        if (droptarget == null) {
-            if (auto_open_timeout_id > 0) {
-                Source.remove (auto_open_timeout_id);
-                if (previous_target_item != null) {
-                    previous_target_item.drop_pending = false;
-                    previous_target_item = null;
-                }
-                auto_open_timeout_id = 0;
-            }
-            return root_file;
-        } else {
-            var target_file = droptarget.file;
-            if (target_file.is_folder ()) {
-                if (!droptarget.drop_pending) {
-                    if (previous_target_item != null) {
-                        previous_target_item.drop_pending = false;
-                    }
-
-                    droptarget.drop_pending = true;
-                    previous_target_item = droptarget;
-                    //TODO Start time for auto open
-                    if (auto_open_timeout_id > 0) {
-                        Source.remove (auto_open_timeout_id);
-                    }
-
-                    auto_open_timeout_id = Timeout.add (1000, () => {
-                        auto_open_timeout_id = 0;
-                        change_path (droptarget.file.location, Files.OpenFlag.DEFAULT);
-                        // path_change_request (droptarget.file.location, Files.OpenFlag.DEFAULT);
-                        return Source.REMOVE;
-                    });
-                }
-            }
-
-            return target_file;
-        }
-    }
-
     public void leave () {
         // Cancel auto-open and restore normal icon
         if (auto_open_timeout_id > 0) {

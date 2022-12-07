@@ -20,6 +20,8 @@
 */
 
 public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
+    protected abstract uint auto_open_timeout_id { get; set; default = 0; }
+    protected abstract FileItemInterface? previous_target_item { get; set; default = null; }
     //Need to ensure fileitem gets selected before drag
     public List<Files.File> get_file_list_for_drag (double x, double y, out Gdk.Paintable? paintable) {
         paintable = null;
@@ -58,7 +60,48 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         return paintable;
     }
 
-    public abstract Files.File get_target_file_for_drop (double x, double y);
+    // public abstract Files.File get_target_file_for_drop (double x, double y);
+    // Accessed by DndHandler
+    public Files.File get_target_file_for_drop (double x, double y) {
+        var droptarget = get_item_at (x, y);
+        if (droptarget == null) {
+            if (auto_open_timeout_id > 0) {
+                Source.remove (auto_open_timeout_id);
+                if (previous_target_item != null) {
+                    previous_target_item.drop_pending = false;
+                    previous_target_item = null;
+                }
+                auto_open_timeout_id = 0;
+            }
+            return root_file;
+        } else {
+            var target_file = droptarget.file;
+            if (target_file.is_folder ()) {
+                if (!droptarget.drop_pending) {
+                    if (previous_target_item != null) {
+                        previous_target_item.drop_pending = false;
+                    }
+
+                    droptarget.drop_pending = true;
+                    previous_target_item = droptarget;
+                    //TODO Start time for auto open
+                    if (auto_open_timeout_id > 0) {
+                        Source.remove (auto_open_timeout_id);
+                    }
+
+                    auto_open_timeout_id = Timeout.add (1000, () => {
+                        auto_open_timeout_id = 0;
+                        change_path (droptarget.file.location, Files.OpenFlag.DEFAULT);
+                        // path_change_request (droptarget.file.location, Files.OpenFlag.DEFAULT);
+                        return Source.REMOVE;
+                    });
+                }
+            }
+
+            return target_file;
+        }
+    }
+
     public abstract void leave ();
     // Whether is accepting any drops at all
     public bool can_accept_drops () {
