@@ -449,19 +449,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    // Whether is accepting any drops at all
-    public bool can_accept_drops () {
-       // We cannot ever drop on some locations
-        if (!root_file.is_folder () || root_file.is_recent_uri_scheme ()) {
-            return false;
-        }
-        return true;
-    }
-    // Whether is accepting any drags at all
-    public bool can_start_drags () {
-        return root_file.is_readable ();
-    }
-
     public void leave () {
         // Cancel auto-open and restore normal icon
         if (auto_open_timeout_id > 0) {
