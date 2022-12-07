@@ -102,7 +102,18 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         }
     }
 
-    public abstract void leave ();
+    public void leave () {
+        // Cancel auto-open and restore normal icon
+        if (auto_open_timeout_id > 0) {
+            Source.remove (auto_open_timeout_id);
+            auto_open_timeout_id = 0;
+        }
+
+        if (previous_target_item != null) {
+            previous_target_item.drop_pending = false;
+        }
+    }
+
     // Whether is accepting any drops at all
     public bool can_accept_drops () {
        // We cannot ever drop on some locations

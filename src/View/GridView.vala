@@ -345,15 +345,15 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     /* DNDInterface abstract methods */
-    public void leave () {
-        // Cancel auto-open and restore normal icon
-        if (auto_open_timeout_id > 0) {
-            Source.remove (auto_open_timeout_id);
-            auto_open_timeout_id = 0;
-        }
+    // public void leave () {
+    //     // Cancel auto-open and restore normal icon
+    //     if (auto_open_timeout_id > 0) {
+    //         Source.remove (auto_open_timeout_id);
+    //         auto_open_timeout_id = 0;
+    //     }
 
-        if (previous_target_item != null) {
-            previous_target_item.drop_pending = false;
-        }
-    }
+    //     if (previous_target_item != null) {
+    //         previous_target_item.drop_pending = false;
+    //     }
+    // }
 }
