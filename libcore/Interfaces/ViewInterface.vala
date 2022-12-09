@@ -74,7 +74,6 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     public virtual void change_path (GLib.File loc, OpenFlag flag) {}
-    public virtual void add_file (Files.File file) {}
 
     public void zoom_in () {
         if (zoom_level < maximum_zoom) {
@@ -183,6 +182,28 @@ public interface Files.ViewInterface : Gtk.Widget {
         uint pos;
         if (list_store.find (file, out pos)) {
             list_store.remove (pos);
+        }
+    }
+
+    public int file_compare_func (Object filea, Object fileb) {
+        return ((Files.File)filea).compare_for_sort (
+            ((Files.File)fileb), sort_type, prefs.sort_directories_first, sort_reversed
+        );
+    }
+
+    public void add_file (Files.File file) {
+        //TODO Delay sorting until adding finished?
+        list_store.insert_sorted (file, file_compare_func);
+        if (select_after_add) {
+            select_after_add = false;
+            show_and_select_file (file, true, true);
+        } else if (rename_after_add) {
+            rename_after_add = false;
+            Idle.add (() => {
+                show_and_select_file (file, true, true);
+                activate_action ("win.rename", null);
+                return Source.REMOVE;
+            });
         }
     }
 

@@ -56,7 +56,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public bool select_after_add { get; set; default = false;}
     protected bool has_open_with { get; set; default = false;}
 
-    private CompareDataFunc<Files.File>? file_compare_func;
     private string? uri_string = null;
 
     public ListView (Files.Slot slot) {
@@ -73,12 +72,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     construct {
         set_layout_manager (new Gtk.BinLayout ());
         set_up_model ();
-
-        file_compare_func = ((filea, fileb) => {
-            return filea.compare_for_sort (
-                fileb, sort_type, prefs.sort_directories_first, sort_reversed
-            );
-        });
 
         //Setup columnview
         column_view = new Gtk.ColumnView (multi_selection) {
@@ -368,22 +361,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return column_view;
     }
 
-    public override void add_file (Files.File file) {
-        //TODO Delay sorting until adding finished?
-        list_store.insert_sorted (file, file_compare_func);
-        if (select_after_add) {
-            select_after_add = false;
-            show_and_select_file (file, true, true);
-        } else if (rename_after_add) {
-            rename_after_add = false;
-            Idle.add (() => {
-                show_and_select_file (file, true, true);
-                activate_action ("win.rename", null);
-                return Source.REMOVE;
-            });
-        }
-    }
-
     public override void set_up_zoom_level () {
         Files.icon_view_settings.bind (
             "zoom-level",
@@ -402,11 +379,4 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             zoom_level = maximum_zoom;
         }
     }
-
-    // public override void file_changed (Files.File file) {
-    //     var item = get_file_item_for_file (file);
-    //     if (item != null) {
-    //         item.bind_file (file); // Forces image to update
-    //     }
-    // }
 }
