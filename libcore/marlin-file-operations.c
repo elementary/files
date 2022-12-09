@@ -41,72 +41,33 @@
 
 #include "pantheon-files-core.h"
 
-typedef void (* MarlinOpCallback)        (gpointer    callback_data);
+typedef struct _SourceInfo SourceInfo;
+typedef struct _TransferInfo TransferInfo;
 
-typedef struct {
-    GTimer *time;
-    GtkWindow *parent_window;
-    int inhibit_cookie;
-    PFProgressInfo *progress;
-    GCancellable *cancellable;
-    GHashTable *skip_files;
-    GHashTable *skip_readdir_error;
-    gboolean skip_all_error;
-    gboolean skip_all_conflict;
-    gboolean merge_all;
-    gboolean replace_all;
-    gboolean keep_all_newest;
-    gboolean delete_all;
-    FilesUndoActionData *undo_redo_data;
-} CommonJob;
-
-typedef struct {
-    CommonJob common;
-    gboolean is_move;
-    GList *files;
-    GFile *destination;
-    GHashTable *debuting_files;
-} CopyMoveJob;
-
-typedef struct {
-    CommonJob common;
-    GList *files;
-    gboolean try_trash;
-    gboolean user_cancel;
-} DeleteJob;
-
-typedef struct {
-    CommonJob common;
-    GFile *dest_dir;
-    char *filename;
-    gboolean make_dir;
-    GFile *src;
-    char *src_data;
-    int length;
-    GFile *created_file;
-} CreateJob;
+typedef void (* MarlinOpCallback)      (gpointer   callback_data);
+typedef void (* CountProgressCallback) (FilesFileOperationsCommonJob *job, SourceInfo *source_info);
 
 typedef enum {
     OP_KIND_COPY,
     OP_KIND_MOVE,
-    OP_KIND_DELETE,
-    OP_KIND_TRASH
+    OP_KIND_DELETE
 } OpKind;
 
-typedef struct {
+struct _SourceInfo {
     int num_files;
     goffset num_bytes;
     int num_files_since_progress;
     OpKind op;
-} SourceInfo;
+    CountProgressCallback count_callback;
+};
 
-typedef struct {
+struct _TransferInfo {
     int num_files;
     goffset num_bytes;
     OpKind op;
     guint64 last_report_time;
     int last_reported_files_left;
-} TransferInfo;
+};
 
 #define SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE 15
 //#define NSEC_PER_SEC 1000000000
@@ -118,111 +79,12 @@ typedef struct {
 
 static void scan_sources (GList *files,
                           SourceInfo *source_info,
-                          CommonJob *job,
+                          CountProgressCallback count_callback,
+                          FilesFileOperationsCommonJob *job,
                           OpKind kind);
 
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
-
-#define op_job_new(__type, parent_window) ((__type *)(init_common (sizeof(__type), parent_window)))
-#define COMMON_JOB(obj) (&obj->common)
-
-static gpointer
-init_common (gsize job_size,
-             GtkWindow *parent_window)
-{
-    CommonJob *common;
-
-    common = g_malloc0 (job_size); /* Booleans default to false (0) */
-
-    if (parent_window) {
-        common->parent_window = parent_window;
-        g_object_add_weak_pointer (G_OBJECT (parent_window), (gpointer *) &common->parent_window);
-    }
-
-    common->progress = pf_progress_info_new ();
-    // ProgressInfo cancellable is now a property, therefore unowned - do not unref.
-    common->cancellable = pf_progress_info_get_cancellable (common->progress);
-    common->time = g_timer_new ();
-    common->inhibit_cookie = -1;
-
-    return common;
-}
-
-static void
-finalize_common (CommonJob *common)
-{
-    pf_progress_info_finish (common->progress);
-    if (common->inhibit_cookie != -1) {
-        gtk_application_uninhibit (GTK_APPLICATION (g_application_get_default ()),
-                                   common->inhibit_cookie);
-    }
-
-    common->inhibit_cookie = -1;
-    g_timer_destroy (common->time);
-
-    if (common->parent_window) {
-        g_object_remove_weak_pointer (G_OBJECT (common->parent_window), (gpointer *) &common->parent_window);
-    }
-
-    if (common->skip_files) {
-        g_hash_table_destroy (common->skip_files);
-    }
-    if (common->skip_readdir_error) {
-        g_hash_table_destroy (common->skip_readdir_error);
-    }
-
-    // Start UNDO-REDO
-    files_undo_manager_add_action (files_undo_manager_instance(), common->undo_redo_data);
-    // End UNDO-REDO
-
-    g_object_unref (common->progress);
-    g_free (common);
-}
-
-static void
-skip_file (CommonJob *common,
-           GFile *file)
-{
-    if (common->skip_files == NULL) {
-        common->skip_files =
-            g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
-    }
-
-    g_hash_table_insert (common->skip_files, g_object_ref (file), file);
-}
-
-static void
-skip_readdir_error (CommonJob *common,
-                    GFile *dir)
-{
-    if (common->skip_readdir_error == NULL) {
-        common->skip_readdir_error =
-            g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
-    }
-
-    g_hash_table_insert (common->skip_readdir_error, g_object_ref (dir), dir);
-}
-
-static gboolean
-should_skip_file (CommonJob *common,
-                  GFile *file)
-{
-    if (common->skip_files != NULL) {
-        return g_hash_table_lookup (common->skip_files, file) != NULL;
-    }
-    return FALSE;
-}
-
-static gboolean
-should_skip_readdir_error (CommonJob *common,
-                           GFile *dir)
-{
-    if (common->skip_readdir_error != NULL) {
-        return g_hash_table_lookup (common->skip_readdir_error, dir) != NULL;
-    }
-    return FALSE;
-}
 
 static gboolean
 can_delete_without_confirm (GFile *file)
@@ -236,29 +98,6 @@ can_delete_without_confirm (GFile *file)
     return FALSE;
 }
 
-static void
-inhibit_power_manager (CommonJob *job, const char *message)
-{
-    job->inhibit_cookie = gtk_application_inhibit (GTK_APPLICATION (g_application_get_default ()),
-                                                   GTK_WINDOW (job->parent_window),
-                                                   GTK_APPLICATION_INHIBIT_LOGOUT |
-                                                   GTK_APPLICATION_INHIBIT_SUSPEND,
-                                                   message);
-}
-
-static void
-abort_job (CommonJob *job)
-{
-    g_cancellable_cancel (job->cancellable);
-
-}
-
-static gboolean
-job_aborted (CommonJob *job)
-{
-    return g_cancellable_is_cancelled (job->cancellable);
-}
-
 /* Since this happens on a thread we can't use the global prefs object */
 static gboolean
 should_confirm_trash (void)
@@ -267,7 +106,7 @@ should_confirm_trash (void)
 }
 
 static gboolean
-confirm_delete_from_trash (CommonJob *job,
+confirm_delete_from_trash (FilesFileOperationsCommonJob *job,
                            GList *files)
 {
     char *prompt;
@@ -309,7 +148,7 @@ confirm_delete_from_trash (CommonJob *job,
 }
 
 static gboolean
-confirm_delete_directly (CommonJob *job,
+confirm_delete_directly (FilesFileOperationsCommonJob *job,
                          GList *files)
 {
     char *prompt;
@@ -349,7 +188,7 @@ confirm_delete_directly (CommonJob *job,
 }
 
 static void
-report_delete_progress (CommonJob *job,
+report_delete_progress (FilesFileOperationsCommonJob *job,
                         SourceInfo *source_info,
                         TransferInfo *transfer_info)
 {
@@ -412,19 +251,20 @@ report_delete_progress (CommonJob *job,
     }
 }
 
-static void delete_file (CommonJob *job, GFile *file,
+static void delete_file (FilesFileOperationsDeleteJob *del_job, GFile *file,
                          gboolean *skipped_file,
                          SourceInfo *source_info,
                          TransferInfo *transfer_info,
                          gboolean toplevel);
 
 static void
-delete_dir (CommonJob *job, GFile *dir,
+delete_dir (FilesFileOperationsDeleteJob *del_job, GFile *dir,
             gboolean *skipped_file,
             SourceInfo *source_info,
             TransferInfo *transfer_info,
             gboolean toplevel)
 {
+    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
     GFileInfo *info;
     GError *error;
     GFile *file;
@@ -436,7 +276,7 @@ delete_dir (CommonJob *job, GFile *dir,
 
     local_skipped_file = FALSE;
 
-    skip_error = should_skip_readdir_error (job, dir);
+    skip_error = marlin_file_operations_common_job_should_skip_readdir_error (job, dir);
 retry:
     error = NULL;
     enumerator = g_file_enumerate_children (dir,
@@ -447,11 +287,11 @@ retry:
     if (enumerator) {
         error = NULL;
 
-        while (!job_aborted (job) &&
+        while (!marlin_file_operations_common_job_aborted (job) &&
                (info = g_file_enumerator_next_file (enumerator, job->cancellable, skip_error?NULL:&error)) != NULL) {
             file = g_file_get_child (dir,
                                      g_file_info_get_name (info));
-            delete_file (job, file, &local_skipped_file, source_info, transfer_info, FALSE);
+            delete_file (del_job, file, &local_skipped_file, source_info, transfer_info, FALSE);
             g_object_unref (file);
             g_object_unref (info);
         }
@@ -491,7 +331,7 @@ retry:
             g_error_free (error);
 
             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                abort_job (job);
+                marlin_file_operations_common_job_abort_job (job);
             } else if (response == 1) {
                 /* Skip: Do Nothing */
                 local_skipped_file = TRUE;
@@ -532,7 +372,7 @@ retry:
         g_error_free (error);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
         } else if (response == 1) {
             /* Skip: Do Nothing  */
             local_skipped_file = TRUE;
@@ -543,7 +383,7 @@ retry:
         }
     }
 
-    if (!job_aborted (job) &&
+    if (!marlin_file_operations_common_job_aborted (job) &&
         /* Don't delete dir if there was a skipped file */
         !local_skipped_file) {
         if (!g_file_delete (dir, job->cancellable, &error)) {
@@ -571,7 +411,7 @@ retry:
                                        NULL);
 
             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                abort_job (job);
+                marlin_file_operations_common_job_abort_job (job);
             } else if (response == 1) { /* skip all */
                 job->skip_all_error = TRUE;
                 local_skipped_file = TRUE;
@@ -597,17 +437,18 @@ skip:
 }
 
 static void
-delete_file (CommonJob *job, GFile *file,
+delete_file (FilesFileOperationsDeleteJob *del_job, GFile *file,
              gboolean *skipped_file,
              SourceInfo *source_info,
              TransferInfo *transfer_info,
              gboolean toplevel)
 {
+    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
     GError *error;
     char *primary, *secondary, *details;
     int response;
 
-    if (should_skip_file (job, file)) {
+    if (marlin_file_operations_common_job_should_skip_file (job, file)) {
         *skipped_file = TRUE;
         return;
     }
@@ -622,7 +463,7 @@ delete_file (CommonJob *job, GFile *file,
 
     if (IS_IO_ERROR (error, NOT_EMPTY)) {
         g_error_free (error);
-        delete_dir (job, file,
+        delete_dir (del_job, file,
                     skipped_file,
                     source_info, transfer_info,
                     toplevel);
@@ -654,7 +495,7 @@ delete_file (CommonJob *job, GFile *file,
                                    NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
         } else if (response == 1) { /* skip all */
             job->skip_all_error = TRUE;
         } else if (response == 2) { /* skip */
@@ -670,23 +511,47 @@ skip:
 }
 
 static void
-delete_files (CommonJob *job, GList *files, int *files_skipped)
+report_delete_count_progress (FilesFileOperationsDeleteJob *job,
+                              SourceInfo *source_info)
+{
+    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
+    char *s;
+    gchar *num_bytes_format;
+
+    num_bytes_format = g_format_size (source_info->num_bytes);
+    /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
+    /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+    /// So this represents something like "Preparing to delete 100 files (200 MB)"
+    /// The order in which %'d and %s appear can be changed by using the right positional specifier.
+    s = g_strdup_printf (ngettext("Preparing to delete %'d file (%s)",
+                                  "Preparing to delete %'d files (%s)",
+                                  source_info->num_files),
+                         source_info->num_files, num_bytes_format);
+    g_free (num_bytes_format);
+    pf_progress_info_take_details (common->progress, s);
+    pf_progress_info_pulse_progress (common->progress);
+}
+
+static void
+delete_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_skipped)
 {
     GList *l;
     GFile *file;
     SourceInfo source_info;
     TransferInfo transfer_info;
     gboolean skipped_file;
+    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
 
-    if (job_aborted (job)) {
+    if (marlin_file_operations_common_job_aborted (job)) {
         return;
     }
 
     scan_sources (files,
                   &source_info,
+                  (CountProgressCallback) report_delete_count_progress,
                   job,
                   OP_KIND_DELETE);
-    if (job_aborted (job)) {
+    if (marlin_file_operations_common_job_aborted (job)) {
         return;
     }
 
@@ -696,12 +561,12 @@ delete_files (CommonJob *job, GList *files, int *files_skipped)
     report_delete_progress (job, &source_info, &transfer_info);
 
     for (l = files;
-         l != NULL && !job_aborted (job);
+         l != NULL && !marlin_file_operations_common_job_aborted (job);
          l = l->next) {
         file = l->data;
 
         skipped_file = FALSE;
-        delete_file (job, file,
+        delete_file (del_job, file,
                      &skipped_file,
                      &source_info, &transfer_info,
                      TRUE);
@@ -716,10 +581,11 @@ delete_files (CommonJob *job, GList *files, int *files_skipped)
 }
 
 static void
-report_trash_progress (CommonJob *job,
+report_trash_progress (FilesFileOperationsDeleteJob *del_job,
                        int files_trashed,
                        int total_files)
 {
+    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
     int files_left;
     char *s;
 
@@ -741,7 +607,7 @@ report_trash_progress (CommonJob *job,
 
 
 static void
-trash_files (CommonJob *job, GList *files, int *files_skipped)
+trash_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_skipped)
 {
     GList *l;
     GFile *file;
@@ -750,6 +616,7 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
     GFileInfo *info;
     GFileInfo *parent_info;
     GFileInfo *fsinfo;
+    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
     int total_files, files_trashed;
     char *primary, *secondary, *details;
     int response;
@@ -763,18 +630,18 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
     gboolean have_parent_info;
     gboolean have_filesystem_info;
 
-    if (job_aborted (job)) {
+    if (marlin_file_operations_common_job_aborted (job)) {
         return;
     }
 
     total_files = g_list_length (files);
     files_trashed = 0;
 
-    report_trash_progress (job, files_trashed, total_files);
+    report_trash_progress (del_job, files_trashed, total_files);
 
     to_delete = NULL;
     for (l = files;
-         l != NULL && !job_aborted (job);
+         l != NULL && !marlin_file_operations_common_job_aborted (job);
          l = l->next) {
         file = l->data;
 
@@ -792,7 +659,7 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
                 goto skip;
             }
 
-            if (job->delete_all) {
+            if (del_job->delete_all) {
                 to_delete = g_list_prepend (to_delete, file);
                 goto skip;
             }
@@ -879,8 +746,8 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
             }
 
             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                ((DeleteJob *) job)->user_cancel = TRUE;
-                abort_job (job);
+                del_job->user_cancel = TRUE;
+                marlin_file_operations_common_job_abort_job (job);
             } else if (response == 1) { /* skip all */
                 (*files_skipped)++;
                 job->skip_all_error = TRUE;
@@ -888,7 +755,7 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
                 (*files_skipped)++;
             } else if (response == 3) { /* delete all */
                 to_delete = g_list_prepend (to_delete, file);
-                job->delete_all = TRUE;
+                del_job->delete_all = TRUE;
             } else if (response == 4) { /* delete */
                 to_delete = g_list_prepend (to_delete, file);
             }
@@ -904,25 +771,15 @@ skip:
             // End UNDO-REDO
 
             files_trashed++;
-            report_trash_progress (job, files_trashed, total_files);
+            report_trash_progress (del_job, files_trashed, total_files);
         }
     }
 
     if (to_delete) {
         to_delete = g_list_reverse (to_delete);
-        delete_files (job, to_delete, files_skipped);
+        delete_files (del_job, to_delete, files_skipped);
         g_list_free (to_delete);
     }
-}
-
-static void
-delete_job_free (DeleteJob *job)
-{
-    g_list_free_full (job->files, g_object_unref);
-
-    finalize_common ((CommonJob *)job);
-
-    files_file_changes_consume_changes (TRUE);
 }
 
 static void
@@ -931,13 +788,13 @@ delete_job (GTask *task,
             gpointer task_data,
             GCancellable *cancellable)
 {
-    DeleteJob *job = task_data;
+    FilesFileOperationsDeleteJob *job = task_data;
     GList *to_trash_files;
     GList *to_delete_files;
     GList *l;
     GFile *file;
     gboolean confirmed;
-    CommonJob *common = COMMON_JOB(job);
+    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     gboolean must_confirm_delete_in_trash;
     gboolean must_confirm_delete;
     int files_skipped;
@@ -984,7 +841,7 @@ delete_job (GTask *task,
         }
 
         if (confirmed) {
-            delete_files (common, to_delete_files, &files_skipped);
+            delete_files (job, to_delete_files, &files_skipped);
         } else {
             job->user_cancel = TRUE;
         }
@@ -993,7 +850,7 @@ delete_job (GTask *task,
     if (to_trash_files != NULL) {
         to_trash_files = g_list_reverse (to_trash_files);
 
-        trash_files (common, to_trash_files, &files_skipped);
+        trash_files (job, to_trash_files, &files_skipped);
     }
 
     g_list_free (to_trash_files);
@@ -1018,21 +875,18 @@ marlin_file_operations_delete (GList               *files,
     g_return_if_fail (files != NULL);
 
     GTask *task;
-    DeleteJob *job;
-    CommonJob *common;
+    FilesFileOperationsDeleteJob *job;
+    FilesFileOperationsCommonJob *common;
 
     /* TODO: special case desktop icon link files ... */
 
-    job = op_job_new (DeleteJob, parent_window);
-    common = COMMON_JOB(job);
-    job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
-    job->try_trash = try_trash;
-    job->user_cancel = FALSE;
+    job = marlin_file_operations_delete_job_new (parent_window, files, try_trash);
+    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
 
     if (try_trash) {
-        inhibit_power_manager ((CommonJob *)job, _("Trashing Files"));
+        marlin_file_operations_common_job_inhibit_power_manager (common, _("Trashing Files"));
     } else {
-        inhibit_power_manager ((CommonJob *)job, _("Deleting Files"));
+        marlin_file_operations_common_job_inhibit_power_manager (common, _("Deleting Files"));
     }
 
     if (try_trash) {
@@ -1042,7 +896,7 @@ marlin_file_operations_delete (GList               *files,
     }
 
     task = g_task_new (NULL, cancellable, callback, user_data);
-    g_task_set_task_data (task, job, (GDestroyNotify) delete_job_free);
+    g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
     g_task_run_in_thread (task, delete_job);
     g_object_unref (task);
 }
@@ -1057,15 +911,14 @@ marlin_file_operations_delete_finish (GAsyncResult  *result,
 }
 
 static void
-report_count_progress (CommonJob *job,
-                       SourceInfo *source_info)
+report_copy_move_count_progress (FilesFileOperationsCopyMoveJob *job,
+                                 SourceInfo *source_info)
 {
+    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     char *s;
     gchar *num_bytes_format;
 
-    switch (source_info->op) {
-    default:
-    case OP_KIND_COPY:
+    if (!job->is_move) {
         num_bytes_format = g_format_size (source_info->num_bytes);
         /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
         /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1075,9 +928,7 @@ report_count_progress (CommonJob *job,
                                       "Preparing to copy %'d files (%s)",
                                       source_info->num_files),
                              source_info->num_files, num_bytes_format);
-        g_free (num_bytes_format);
-        break;
-    case OP_KIND_MOVE:
+    } else {
         num_bytes_format = g_format_size (source_info->num_bytes);
         /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
         /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1087,42 +938,23 @@ report_count_progress (CommonJob *job,
                                       "Preparing to move %'d files (%s)",
                                       source_info->num_files),
                              source_info->num_files, num_bytes_format);
-        g_free (num_bytes_format);
-        break;
-    case OP_KIND_DELETE:
-        num_bytes_format = g_format_size (source_info->num_bytes);
-        /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
-        /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
-        /// So this represents something like "Preparing to delete 100 files (200 MB)"
-        /// The order in which %'d and %s appear can be changed by using the right positional specifier.
-        s = g_strdup_printf (ngettext("Preparing to delete %'d file (%s)",
-                                      "Preparing to delete %'d files (%s)",
-                                      source_info->num_files),
-                             source_info->num_files, num_bytes_format);
-        g_free (num_bytes_format);
-        break;
-    case OP_KIND_TRASH:
-        s = g_strdup_printf (ngettext("Preparing to trash %'d file",
-                                      "Preparing to trash %'d files",
-                                      source_info->num_files),
-                             source_info->num_files);
-        break;
     }
 
-    pf_progress_info_take_details (job->progress, s);
-    pf_progress_info_pulse_progress (job->progress);
+    g_free (num_bytes_format);
+    pf_progress_info_take_details (common->progress, s);
+    pf_progress_info_pulse_progress (common->progress);
 }
 
 static void
 count_file (GFileInfo *info,
-            CommonJob *job,
+            FilesFileOperationsCommonJob *job,
             SourceInfo *source_info)
 {
     source_info->num_files += 1;
     source_info->num_bytes += g_file_info_get_size (info);
 
     if (source_info->num_files_since_progress++ > 100) {
-        report_count_progress (job, source_info);
+        source_info->count_callback (job, source_info);
         source_info->num_files_since_progress = 0;
     }
 }
@@ -1138,15 +970,13 @@ get_scan_primary (OpKind kind)
         return g_strdup (_("Error while moving."));
     case OP_KIND_DELETE:
         return g_strdup (_("Error while deleting."));
-    case OP_KIND_TRASH:
-        return g_strdup (_("Error while moving files to trash."));
     }
 }
 
 static void
 scan_dir (GFile *dir,
           SourceInfo *source_info,
-          CommonJob *job,
+          FilesFileOperationsCommonJob *job,
           GQueue *dirs)
 {
     GFileInfo *info;
@@ -1219,12 +1049,12 @@ retry:
             g_error_free (error);
 
             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                abort_job (job);
+                marlin_file_operations_common_job_abort_job (job);
             } else if (response == 1) {
                 *source_info = saved_info;
                 goto retry;
             } else if (response == 2) {
-                skip_readdir_error (job, dir);
+                marlin_file_operations_common_job_skip_readdir_error (job, dir);
             } else {
                 g_assert_not_reached ();
             }
@@ -1232,7 +1062,7 @@ retry:
 
     } else if (job->skip_all_error) {
         g_error_free (error);
-        skip_file (job, dir);
+        marlin_file_operations_common_job_skip_file (job, dir);
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
@@ -1269,12 +1099,12 @@ retry:
         g_error_free (error);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
         } else if (response == 1 || response == 2) {
             if (response == 1) {
                 job->skip_all_error = TRUE;
             }
-            skip_file (job, dir);
+            marlin_file_operations_common_job_skip_file (job, dir);
         } else if (response == 3) {
             goto retry;
         } else {
@@ -1286,7 +1116,7 @@ retry:
 static void
 scan_file (GFile *file,
            SourceInfo *source_info,
-           CommonJob *job)
+           FilesFileOperationsCommonJob *job)
 {
     GFileInfo *info;
     GError *error;
@@ -1321,7 +1151,7 @@ retry:
         g_object_unref (info);
     } else if (job->skip_all_error) {
         g_error_free (error);
-        skip_file (job, file);
+        marlin_file_operations_common_job_skip_file (job, file);
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
@@ -1358,12 +1188,12 @@ retry:
         g_error_free (error);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
         } else if (response == 1 || response == 2) {
             if (response == 1) {
                 job->skip_all_error = TRUE;
             }
-            skip_file (job, file);
+            marlin_file_operations_common_job_skip_file (job, file);
         } else if (response == 3) {
             goto retry;
         } else {
@@ -1371,7 +1201,7 @@ retry:
         }
     }
 
-    while (!job_aborted (job) &&
+    while (!marlin_file_operations_common_job_aborted (job) &&
            (dir = g_queue_pop_head (dirs)) != NULL) {
         scan_dir (dir, source_info, job, dirs);
         g_object_unref (dir);
@@ -1385,7 +1215,8 @@ retry:
 static void
 scan_sources (GList *files,
               SourceInfo *source_info,
-              CommonJob *job,
+              CountProgressCallback count_callback,
+              FilesFileOperationsCommonJob *job,
               OpKind kind)
 {
     GList *l;
@@ -1393,10 +1224,10 @@ scan_sources (GList *files,
 
     memset (source_info, 0, sizeof (SourceInfo));
     source_info->op = kind;
+    source_info->count_callback = count_callback;
+    source_info->count_callback (job, source_info);
 
-    report_count_progress (job, source_info);
-
-    for (l = files; l != NULL && !job_aborted (job); l = l->next) {
+    for (l = files; l != NULL && !marlin_file_operations_common_job_aborted (job); l = l->next) {
         file = l->data;
 
         scan_file (file,
@@ -1405,219 +1236,24 @@ scan_sources (GList *files,
     }
 
     /* Make sure we report the final count */
-    report_count_progress (job, source_info);
+    source_info->count_callback (job, source_info);
 }
 
 static void
-verify_destination (CommonJob *job,
-                    GFile *dest,
-                    char **dest_fs_id,
-                    goffset required_size)
-{
-    GFileInfo *info, *fsinfo;
-    GError *error;
-    guint64 free_size;
-    char *primary, *secondary, *details;
-    int response;
-    GFileType file_type;
-
-    if (dest_fs_id) {
-        *dest_fs_id = NULL;
-    }
-
-retry:
-
-    error = NULL;
-    info = g_file_query_info (dest,
-                              G_FILE_ATTRIBUTE_STANDARD_TYPE","
-                              G_FILE_ATTRIBUTE_ID_FILESYSTEM,
-                              0,
-                              job->cancellable,
-                              &error);
-
-    if (info == NULL) {
-        gchar *dest_basename;
-        if (IS_IO_ERROR (error, CANCELLED)) {
-            g_error_free (error);
-            return;
-        }
-
-        dest_basename = files_file_utils_custom_basename_from_file (dest);
-        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = g_strdup_printf (_("Error while copying to \"%s\"."), dest_basename);
-        g_free (dest_basename);
-        details = NULL;
-
-        if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            secondary = g_strdup (_("You do not have permissions to access the destination folder."));
-        } else {
-            secondary = g_strdup (_("There was an error getting information about the destination."));
-            details = error->message;
-        }
-
-        response = pf_run_error (job->parent_window,
-                                 job->time,
-                                 job->progress,
-                                 primary,
-                                 secondary,
-                                 details,
-                                 FALSE,
-                                 CANCEL, RETRY,
-                                 NULL);
-
-        g_error_free (error);
-
-        if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
-        } else if (response == 1) {
-            goto retry;
-        } else {
-            g_assert_not_reached ();
-        }
-
-        return;
-    }
-
-    file_type = g_file_info_get_file_type (info);
-
-    if (dest_fs_id) {
-        *dest_fs_id =
-            g_strdup (g_file_info_get_attribute_string (info,
-                                                        G_FILE_ATTRIBUTE_ID_FILESYSTEM));
-    }
-
-    g_object_unref (info);
-
-    if (file_type != G_FILE_TYPE_DIRECTORY) {
-        gchar *dest_name = g_file_get_parse_name (dest);
-        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = g_strdup_printf (_("Error while copying to \"%s\"."), dest_name);
-        secondary = g_strdup (_("The destination is not a folder."));
-        g_free (dest_name);
-
-        response = pf_run_error (job->parent_window,
-                                 job->time,
-                                 job->progress,
-                                 primary,
-                                 secondary,
-                                 NULL,
-                                 FALSE,
-                                 CANCEL,
-                                 NULL);
-
-        abort_job (job);
-        return;
-    }
-
-    fsinfo = g_file_query_filesystem_info (dest,
-                                           G_FILE_ATTRIBUTE_FILESYSTEM_FREE","
-                                           G_FILE_ATTRIBUTE_FILESYSTEM_READONLY,
-                                           job->cancellable,
-                                           NULL);
-    if (fsinfo == NULL) {
-        /* All sorts of things can go wrong getting the fs info (like not supported)
-         * only check these things if the fs returns them
-         */
-        return;
-    }
-
-    if (required_size > 0 &&
-        g_file_info_has_attribute (fsinfo, G_FILE_ATTRIBUTE_FILESYSTEM_FREE)) {
-        free_size = g_file_info_get_attribute_uint64 (fsinfo,
-                                                      G_FILE_ATTRIBUTE_FILESYSTEM_FREE);
-
-        if (free_size < required_size) {
-            gchar *free_size_format, *required_size_format;
-            gchar *dest_name = g_file_get_parse_name (dest);
-            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            primary = g_strdup_printf (_("Error while copying to \"%s\"."), dest_name);
-            g_free (dest_name);
-            secondary = g_strdup (_("There is not enough space on the destination. Try to remove files to make space."));
-
-            free_size_format = g_format_size (free_size);
-            required_size_format = g_format_size (required_size);
-            /// TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
-            /// So this represents something like "There is 100 MB available, but 150 MB is required".
-            details = g_strdup_printf (_("There is %s available, but %s is required."), free_size_format, required_size_format);
-            g_free (free_size_format);
-            g_free (required_size_format);
-
-            response = pf_run_warning (job->parent_window,
-                                       job->time,
-                                       job->progress,
-                                       primary,
-                                       secondary,
-                                       details,
-                                       FALSE,
-                                       CANCEL,
-                                       COPY_FORCE,
-                                       RETRY,
-                                       NULL);
-
-            if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                abort_job (job);
-            } else if (response == 2) {
-                goto retry;
-            } else if (response == 1) {
-                /* We are forced to copy - just fall through ... */
-            } else {
-                g_assert_not_reached ();
-            }
-        }
-    }
-
-    if (!job_aborted (job) &&
-        g_file_info_get_attribute_boolean (fsinfo,
-                                           G_FILE_ATTRIBUTE_FILESYSTEM_READONLY)) {
-        gchar *dest_name = g_file_get_parse_name (dest);
-        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        primary = g_strdup_printf (_("Error while copying to \"%s\"."), dest_name);
-        g_free (dest_name);
-        secondary = g_strdup (_("The destination is read-only."));
-
-        response = pf_run_error (job->parent_window,
-                                 job->time,
-                                 job->progress,
-                                 primary,
-                                 secondary,
-                                 NULL,
-                                 FALSE,
-                                 CANCEL,
-                                 NULL);
-
-        g_error_free (error);
-
-        abort_job (job);
-    }
-
-    g_object_unref (fsinfo);
-}
-
-static void
-report_copy_progress (CopyMoveJob *copy_job,
+report_copy_progress (FilesFileOperationsCopyMoveJob *copy_job,
                       SourceInfo *source_info,
                       TransferInfo *transfer_info)
 {
-    CommonJob *job;
-    gboolean is_move;
+    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (copy_job);
+    gboolean is_move = copy_job->is_move;
     int files_left;
     goffset total_size;
     double elapsed, transfer_rate;
     int remaining_time;
-    guint64 now;
+    guint64 now = g_thread_gettime ();
     gchar *s = NULL;
     gchar *srcname = NULL;
     gchar *destname = NULL;
-
-    job = (CommonJob *)copy_job;
-
-    is_move = copy_job->is_move;
-
-    now = g_thread_gettime ();
 
     if (transfer_info->last_report_time != 0 &&
         ABS ((gint64)(transfer_info->last_report_time - now)) < 100 * NSEC_PER_MSEC) {
@@ -1986,7 +1622,7 @@ is_dir (GFile *file)
     return res;
 }
 
-static void copy_move_file (CopyMoveJob *job,
+static void copy_move_file (FilesFileOperationsCopyMoveJob *job,
                             GFile *src,
                             GFile *dest_dir,
                             gboolean same_fs,
@@ -2006,7 +1642,7 @@ typedef enum {
 } CreateDestDirResult;
 
 static CreateDestDirResult
-create_dest_dir (CommonJob *job,
+create_dest_dir (FilesFileOperationsCommonJob *job,
                  GFile *src,
                  GFile **dest,
                  gboolean same_fs,
@@ -2090,7 +1726,7 @@ retry:
         g_error_free (error);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
         } else if (response == 1) {
             /* Skip: Do Nothing  */
         } else if (response == 2) {
@@ -2117,7 +1753,7 @@ retry:
  * the new destination.
  */
 static gboolean
-copy_move_directory (CopyMoveJob *copy_job,
+copy_move_directory (FilesFileOperationsCopyMoveJob *copy_job,
                      GFile *src,
                      GFile **dest,
                      gboolean same_fs,
@@ -2138,10 +1774,8 @@ copy_move_directory (CopyMoveJob *copy_job,
     int response;
     gboolean skip_error;
     gboolean local_skipped_file;
-    CommonJob *job;
+    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (copy_job);
     GFileCopyFlags flags;
-
-    job = (CommonJob *)copy_job;
 
     if (create_dest) {
         switch (create_dest_dir (job, src, dest, same_fs, parent_dest_fs_type)) {
@@ -2170,7 +1804,7 @@ copy_move_directory (CopyMoveJob *copy_job,
     local_skipped_file = FALSE;
     dest_fs_type = NULL;
 
-    skip_error = should_skip_readdir_error (job, src);
+    skip_error = marlin_file_operations_common_job_should_skip_readdir_error (job, src);
 retry:
     error = NULL;
     enumerator = g_file_enumerate_children (src,
@@ -2181,7 +1815,7 @@ retry:
     if (enumerator) {
         error = NULL;
 
-        while (!job_aborted (job) &&
+        while (!marlin_file_operations_common_job_aborted (job) &&
                (info = g_file_enumerator_next_file (enumerator, job->cancellable, skip_error?NULL:&error)) != NULL) {
             src_file = g_file_get_child (src,
                                          g_file_info_get_name (info));
@@ -2232,7 +1866,7 @@ retry:
             g_error_free (error);
 
             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                abort_job (job);
+                marlin_file_operations_common_job_abort_job (job);
             } else if (response == 1) {
                 /* Skip: Do Nothing */
                 local_skipped_file = TRUE;
@@ -2286,7 +1920,7 @@ retry:
         g_error_free (error);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
         } else if (response == 1) {
             /* Skip: Do Nothing  */
             local_skipped_file = TRUE;
@@ -2306,7 +1940,7 @@ retry:
                                 job->cancellable, NULL);
     }
 
-    if (!job_aborted (job) && copy_job->is_move &&
+    if (!marlin_file_operations_common_job_aborted (job) && copy_job->is_move &&
         /* Don't delete source if there was a skipped file */
         !local_skipped_file) {
         if (!g_file_delete (src, job->cancellable, &error)) {
@@ -2334,7 +1968,7 @@ retry:
                                        NULL);
 
             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                abort_job (job);
+                marlin_file_operations_common_job_abort_job (job);
             } else if (response == 1) { /* skip all */
                 job->skip_all_error = TRUE;
                 local_skipped_file = TRUE;
@@ -2358,7 +1992,7 @@ skip:
 }
 
 static gboolean
-remove_target_recursively (CommonJob *job,
+remove_target_recursively (FilesFileOperationsCommonJob *job,
                            GFile *src,
                            GFile *toplevel_dest,
                            GFile *file)
@@ -2382,7 +2016,7 @@ remove_target_recursively (CommonJob *job,
     if (enumerator) {
         error = NULL;
 
-        while (!job_aborted (job) &&
+        while (!marlin_file_operations_common_job_aborted (job) &&
                (info = g_file_enumerator_next_file (enumerator, job->cancellable, &error)) != NULL) {
             child = g_file_get_child (file,
                                       g_file_info_get_name (info));
@@ -2434,7 +2068,7 @@ remove_target_recursively (CommonJob *job,
                                    NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
         } else if (response == 1) { /* skip all */
             job->skip_all_error = TRUE;
         } else if (response == 2) { /* skip */
@@ -2487,7 +2121,7 @@ skip1:
                                    NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
         } else if (response == 1) { /* skip all */
             job->skip_all_error = TRUE;
         } else if (response == 2) { /* skip */
@@ -2508,7 +2142,7 @@ skip2:
 }
 
 typedef struct {
-    CopyMoveJob *job;
+    FilesFileOperationsCopyMoveJob *job;
     goffset last_size;
     SourceInfo *source_info;
     TransferInfo *transfer_info;
@@ -2644,7 +2278,7 @@ get_target_file_for_display_name (GFile *dir,
 
 /* Debuting files is non-NULL only for toplevel items */
 static void
-copy_move_file (CopyMoveJob *copy_job,
+copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
                 GFile *src,
                 GFile *dest_dir,
                 gboolean same_fs,
@@ -2664,14 +2298,12 @@ copy_move_file (CopyMoveJob *copy_job,
     int response;
     ProgressData pdata;
     gboolean would_recurse, is_merge;
-    CommonJob *job;
+    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (copy_job);
     gboolean res;
     int unique_name_nr;
     gboolean handled_invalid_filename;
 
-    job = (CommonJob *)copy_job;
-
-    if (should_skip_file (job, src)) {
+    if (marlin_file_operations_common_job_should_skip_file (job, src)) {
         *skipped_file = TRUE;
         return;
     }
@@ -2719,7 +2351,7 @@ copy_move_file (CopyMoveJob *copy_job,
                                    NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
         } else if (response == 1) { /* skip all */
             job->skip_all_error = TRUE;
         } else if (response == 2) { /* skip */
@@ -2754,7 +2386,7 @@ copy_move_file (CopyMoveJob *copy_job,
                                    NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
         } else if (response == 1) { /* skip all */
             job->skip_all_error = TRUE;
         } else if (response == 2) { /* skip */
@@ -2876,17 +2508,17 @@ retry:
             is_merge = TRUE;
         }
 
-        if ((is_merge && job->merge_all) ||
-            (!is_merge && job->replace_all)) {
+        if ((is_merge && copy_job->merge_all) ||
+            (!is_merge && copy_job->replace_all)) {
             overwrite = TRUE;
             goto retry;
         }
 
-        if (job->skip_all_conflict) {
+        if (copy_job->skip_all_conflict) {
             goto out;
         }
 
-        if (job->keep_all_newest) {
+        if (copy_job->keep_all_newest) {
             if (files_file_utils_compare_modification_dates (src, dest) < 1) {
                 goto out;
             } else {
@@ -2900,13 +2532,13 @@ retry:
         if (response == GTK_RESPONSE_CANCEL ||
             response == GTK_RESPONSE_DELETE_EVENT) {
             g_clear_pointer (&new_name, g_free);
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
             goto out;
         }
 
         if (response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
             if (apply_to_all) {
-                job->skip_all_conflict = TRUE;
+                copy_job->skip_all_conflict = TRUE;
             }
 
             g_clear_pointer (&new_name, g_free);
@@ -2914,11 +2546,11 @@ retry:
                    response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) { /* merge/replace/newest */
             if (apply_to_all) {
                 if (is_merge) {
-                    job->merge_all = TRUE;
+                    copy_job->merge_all = TRUE;
                 } else if (response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) {
-                    job->keep_all_newest = TRUE;
+                    copy_job->keep_all_newest = TRUE;
                 } else {
-                    job->replace_all = TRUE;
+                    copy_job->replace_all = TRUE;
                 }
             }
             overwrite = TRUE;
@@ -2941,7 +2573,7 @@ retry:
         } else {
             /* Failsafe rather than crash */
             g_clear_pointer (&new_name, g_free);
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
             goto out;
         }
     } else if (overwrite &&
@@ -3005,7 +2637,7 @@ retry:
                 g_error_free (error);
 
                 if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                    abort_job (job);
+                    marlin_file_operations_common_job_abort_job (job);
                 } else if (response == 1) { /* skip all */
                     job->skip_all_error = TRUE;
                 } else if (response == 2) { /* skip */
@@ -3079,7 +2711,7 @@ retry:
         g_error_free (error);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
         } else if (response == 1) { /* skip all */
             job->skip_all_error = TRUE;
         } else if (response == 2) { /* skip */
@@ -3094,12 +2726,12 @@ out:
 }
 
 static void
-copy_files (CopyMoveJob *job,
+copy_files (FilesFileOperationsCopyMoveJob *job,
             const char *dest_fs_id,
             SourceInfo *source_info,
             TransferInfo *transfer_info)
 {
-    CommonJob *common = COMMON_JOB(job);
+    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     GList *l;
     GFile *src;
     gboolean same_fs;
@@ -3131,7 +2763,7 @@ copy_files (CopyMoveJob *job,
     unique_names = (job->destination == NULL); /* Duplicating files */
     i = 0;
     for (l = job->files;
-         l != NULL && !job_aborted (common);
+         l != NULL && !marlin_file_operations_common_job_aborted (common);
          l = l->next) {
         src = l->data;
 
@@ -3165,26 +2797,13 @@ copy_files (CopyMoveJob *job,
 }
 
 static void
-copy_job_free (CopyMoveJob *job)
-{
-    g_list_free_full (job->files, g_object_unref);
-    job->files = NULL;
-    g_clear_object (&job->destination);
-    g_clear_pointer (&job->debuting_files, g_hash_table_unref);
-
-    finalize_common ((CommonJob *)job);
-
-    files_file_changes_consume_changes (TRUE);
-}
-
-static void
 copy_job (GTask *task,
           gpointer source_object,
           gpointer task_data,
           GCancellable *cancellable)
 {
-    CopyMoveJob *job = task_data;
-    CommonJob *common = COMMON_JOB(job);
+    FilesFileOperationsCopyMoveJob *job = task_data;
+    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     SourceInfo source_info;
     TransferInfo transfer_info;
     char *dest_fs_id = NULL;
@@ -3193,9 +2812,10 @@ copy_job (GTask *task,
     pf_progress_info_start (common->progress);
     scan_sources (job->files,
                   &source_info,
+                  (CountProgressCallback) report_copy_move_count_progress,
                   common,
                   OP_KIND_COPY);
-    if (job_aborted (common)) {
+    if (marlin_file_operations_common_job_aborted (common)) {
         goto aborted;
     }
 
@@ -3208,12 +2828,12 @@ copy_job (GTask *task,
         dest = g_file_get_parent (job->files->data);
     }
 
-    verify_destination (common,
-                        dest,
-                        &dest_fs_id,
-                        source_info.num_bytes);
+    marlin_file_operations_common_job_verify_destination (common,
+                                                          dest,
+                                                          &dest_fs_id,
+                                                          source_info.num_bytes);
     g_object_unref (dest);
-    if (job_aborted (common)) {
+    if (marlin_file_operations_common_job_aborted (common)) {
         goto aborted;
     }
 
@@ -3240,16 +2860,13 @@ marlin_file_operations_copy (GList               *files,
                              gpointer             user_data)
 {
     GTask *task;
-    CopyMoveJob *job;
-    CommonJob *common;
+    FilesFileOperationsCopyMoveJob *job;
+    FilesFileOperationsCommonJob *common;
 
-    job = op_job_new (CopyMoveJob, parent_window);
-    common = COMMON_JOB(job);
-    job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
-    job->destination = g_object_ref (target_dir);
-    job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
+    job = marlin_file_operations_copy_move_job_new (parent_window, files, target_dir);
+    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
 
-    inhibit_power_manager ((CommonJob *)job, _("Copying Files"));
+    marlin_file_operations_common_job_inhibit_power_manager (common, _("Copying Files"));
 
     // Start UNDO-REDO
     common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_COPY, g_list_length(files));
@@ -3260,7 +2877,7 @@ marlin_file_operations_copy (GList               *files,
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
-    g_task_set_task_data (task, job, (GDestroyNotify) copy_job_free);
+    g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
     g_task_run_in_thread (task, copy_job);
     g_object_unref (task);
 }
@@ -3275,9 +2892,9 @@ marlin_file_operations_copy_finish (GAsyncResult  *result,
 }
 
 static void
-report_move_progress (CopyMoveJob *move_job, int total, int left)
+report_move_progress (FilesFileOperationsCopyMoveJob *move_job, int total, int left)
 {
-    CommonJob *job = COMMON_JOB(move_job);
+    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (move_job);
     gchar *s, *dest_basename;
 
     dest_basename = files_file_utils_custom_basename_from_file (move_job->destination);
@@ -3330,7 +2947,7 @@ get_files_from_fallbacks (GList *fallbacks)
 }
 
 static void
-move_file_prepare (CopyMoveJob *move_job,
+move_file_prepare (FilesFileOperationsCopyMoveJob *move_job,
                    GFile *src,
                    GFile *dest_dir,
                    gboolean same_fs,
@@ -3341,7 +2958,7 @@ move_file_prepare (CopyMoveJob *move_job,
 {
     GFile *dest, *new_dest;
     GError *error;
-    CommonJob *job = COMMON_JOB(move_job);
+    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (move_job);
     gboolean overwrite = FALSE;
     char *primary, *secondary, *details;
     int response;
@@ -3376,7 +2993,7 @@ move_file_prepare (CopyMoveJob *move_job,
                                    NULL);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
         } else if (response == 1) { /* skip all */
             job->skip_all_error = TRUE;
         } else if (response == 2) { /* skip */
@@ -3453,13 +3070,13 @@ retry:
             is_merge = TRUE;
         }
 
-        if ((is_merge && job->merge_all) ||
-            (!is_merge && job->replace_all)) {
+        if ((is_merge && move_job->merge_all) ||
+            (!is_merge && move_job->replace_all)) {
             overwrite = TRUE;
             goto retry;
         }
 
-        if (job->skip_all_conflict) {
+        if (move_job->skip_all_conflict) {
             goto out;
         }
 
@@ -3467,12 +3084,12 @@ retry:
 
         if (response == GTK_RESPONSE_CANCEL ||
             response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
             g_clear_pointer (&new_name, g_free);
             goto out;
         } else if (response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
             if (apply_to_all) {
-                job->skip_all_conflict = TRUE;
+                move_job->skip_all_conflict = TRUE;
             }
             g_clear_pointer (&new_name, g_free);
         } else if (response == FILES_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE ||
@@ -3487,9 +3104,9 @@ retry:
 
             if (apply_to_all) {
                 if (is_merge) {
-                    job->merge_all = TRUE;
+                    move_job->merge_all = TRUE;
                 } else {
-                    job->replace_all = TRUE;
+                    move_job->replace_all = TRUE;
                 }
             }
 
@@ -3504,7 +3121,7 @@ retry:
         } else {
             /* Failsafe rather than crash */
             g_clear_pointer (&new_name, g_free);
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
             goto out;
         }
     } else if (IS_IO_ERROR (error, WOULD_RECURSE) ||
@@ -3546,7 +3163,7 @@ retry:
         g_error_free (error);
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (job);
+            marlin_file_operations_common_job_abort_job (job);
         } else if (response == 1) { /* skip all */
             job->skip_all_error = TRUE;
         } else if (response == 2) { /* skip */
@@ -3561,12 +3178,12 @@ out:
 }
 
 static void
-move_files_prepare (CopyMoveJob *job,
+move_files_prepare (FilesFileOperationsCopyMoveJob *job,
                     const char *dest_fs_id,
                     char **dest_fs_type,
                     GList **fallbacks)
 {
-    CommonJob *common = COMMON_JOB(job);
+    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     GList *l;
     GFile *src;
     gboolean same_fs;
@@ -3579,7 +3196,7 @@ move_files_prepare (CopyMoveJob *job,
 
     i = 0;
     for (l = job->files;
-         l != NULL && !job_aborted (common);
+         l != NULL && !marlin_file_operations_common_job_aborted (common);
          l = l->next) {
         src = l->data;
 
@@ -3603,14 +3220,14 @@ move_files_prepare (CopyMoveJob *job,
 }
 
 static void
-move_files (CopyMoveJob *job,
+move_files (FilesFileOperationsCopyMoveJob *job,
             GList *fallbacks,
             const char *dest_fs_id,
             char **dest_fs_type,
             SourceInfo *source_info,
             TransferInfo *transfer_info)
 {
-    CommonJob *common = COMMON_JOB(job);
+    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     GList *l;
     GFile *src;
     gboolean same_fs;
@@ -3622,7 +3239,7 @@ move_files (CopyMoveJob *job,
 
     i = 0;
     for (l = fallbacks;
-         l != NULL && !job_aborted (common);
+         l != NULL && !marlin_file_operations_common_job_aborted (common);
          l = l->next) {
         fallback = l->data;
         src = fallback->file;
@@ -3645,26 +3262,13 @@ move_files (CopyMoveJob *job,
 }
 
 static void
-move_job_free (CopyMoveJob *job)
-{
-    g_list_free_full (job->files, g_object_unref);
-    job->files = NULL;
-    g_clear_object (&job->destination);
-    g_clear_pointer (&job->debuting_files, g_hash_table_unref);
-
-    finalize_common ((CommonJob *)job);
-
-    files_file_changes_consume_changes (TRUE);
-}
-
-static void
 move_job (GTask *task,
           gpointer source_object,
           gpointer task_data,
           GCancellable *cancellable)
 {
-    CopyMoveJob *job = task_data;
-    CommonJob *common = COMMON_JOB(job);
+    FilesFileOperationsCopyMoveJob *job = task_data;
+    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     GList *fallbacks = NULL;
     SourceInfo source_info;
     TransferInfo transfer_info;
@@ -3673,17 +3277,17 @@ move_job (GTask *task,
     GList *fallback_files;
 
     pf_progress_info_start (common->progress);
-    verify_destination (common,
-                        job->destination,
-                        &dest_fs_id,
-                        -1);
-    if (job_aborted (common)) {
+    marlin_file_operations_common_job_verify_destination (common,
+                                                          job->destination,
+                                                          &dest_fs_id,
+                                                          -1);
+    if (marlin_file_operations_common_job_aborted (common)) {
         goto aborted;
     }
 
     /* This moves all files that we can do without copy + delete */
     move_files_prepare (job, dest_fs_id, &dest_fs_type, &fallbacks);
-    if (job_aborted (common)) {
+    if (marlin_file_operations_common_job_aborted (common)) {
         goto aborted;
     }
 
@@ -3693,20 +3297,21 @@ move_job (GTask *task,
     fallback_files = get_files_from_fallbacks (fallbacks);
     scan_sources (fallback_files,
                   &source_info,
+                  (CountProgressCallback) report_copy_move_count_progress,
                   common,
                   OP_KIND_MOVE);
 
     g_list_free (fallback_files);
 
-    if (job_aborted (common)) {
+    if (marlin_file_operations_common_job_aborted (common)) {
         goto aborted;
     }
 
-    verify_destination (common,
-                        job->destination,
-                        NULL,
-                        source_info.num_bytes);
-    if (job_aborted (common)) {
+    marlin_file_operations_common_job_verify_destination (common,
+                                                          job->destination,
+                                                          NULL,
+                                                          source_info.num_bytes);
+    if (marlin_file_operations_common_job_aborted (common)) {
         goto aborted;
     }
 
@@ -3734,17 +3339,13 @@ marlin_file_operations_move (GList               *files,
                              gpointer             user_data)
 {
     GTask *task;
-    CopyMoveJob *job;
-    CommonJob *common;
+    FilesFileOperationsCopyMoveJob *job;
+    FilesFileOperationsCommonJob *common;
 
-    job = op_job_new (CopyMoveJob, parent_window);
-    common = COMMON_JOB(job);
-    job->is_move = TRUE;
-    job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
-    job->destination = g_object_ref (target_dir);
-    job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
+    job = marlin_file_operations_copy_move_job_new_move (parent_window, files, target_dir);
+    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
 
-    inhibit_power_manager ((CommonJob *)job, _("Moving Files"));
+    marlin_file_operations_common_job_inhibit_power_manager (common, _("Moving Files"));
     // Start UNDO-REDO
     if (g_file_has_uri_scheme (g_list_first(files)->data, "trash")) {
         common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_RESTOREFROMTRASH, g_list_length(files));
@@ -3758,7 +3359,7 @@ marlin_file_operations_move (GList               *files,
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
-    g_task_set_task_data (task, job, (GDestroyNotify) move_job_free);
+    g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
     g_task_run_in_thread (task, move_job);
     g_object_unref (task);
 }
@@ -3773,12 +3374,10 @@ marlin_file_operations_move_finish (GAsyncResult  *result,
 }
 
 static void
-report_link_progress (CopyMoveJob *link_job, int total, int left)
+report_link_progress (FilesFileOperationsCopyMoveJob *link_job, int total, int left)
 {
-    CommonJob *job;
+    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (link_job);
     gchar *s;
-
-    job = (CommonJob *)link_job;
     gchar *dest_name = g_file_get_parse_name (link_job->destination);
     /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
     /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -3795,25 +3394,21 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
 }
 
 static void
-link_file (CopyMoveJob *job,
+link_file (FilesFileOperationsCopyMoveJob *job,
            GFile *src, GFile *dest_dir,
            char **dest_fs_type,
            GHashTable *debuting_files,
            int files_left)
 {
     GFile *src_dir, *dest, *new_dest;
-    int count;
+    int count = 0;
     char *path;
     gboolean not_local;
     GError *error;
-    CommonJob *common;
+    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     char *primary, *secondary, *details;
     int response;
     gboolean handled_invalid_filename;
-
-    common = (CommonJob *)job;
-
-    count = 0;
 
     src_dir = g_file_get_parent (src);
     if (g_file_equal (src_dir, dest_dir)) {
@@ -3928,7 +3523,7 @@ retry:
         }
 
         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            abort_job (common);
+            marlin_file_operations_common_job_abort_job (common);
         } else if (response == 1) { /* skip all */
             common->skip_all_error = TRUE;
         } else if (response == 2) { /* skip */
@@ -3943,26 +3538,13 @@ out:
 }
 
 static void
-link_job_free (CopyMoveJob *job)
-{
-    g_list_free_full (job->files, g_object_unref);
-    job->files = NULL;
-    g_clear_object (&job->destination);
-    g_clear_pointer (&job->debuting_files, g_hash_table_unref);
-
-    finalize_common ((CommonJob *)job);
-
-    files_file_changes_consume_changes (TRUE);
-}
-
-static void
 link_job (GTask *task,
           gpointer source_object,
           gpointer task_data,
           GCancellable *cancellable)
 {
-    CopyMoveJob *job = task_data;
-    CommonJob *common = COMMON_JOB(job);
+    FilesFileOperationsCopyMoveJob *job = task_data;
+    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     GFile *src;
     char *dest_fs_type = NULL;
     int total, left;
@@ -3970,11 +3552,11 @@ link_job (GTask *task,
     GList *l;
 
     pf_progress_info_start (common->progress);
-    verify_destination (common,
-                        job->destination,
-                        NULL,
-                        -1);
-    if (job_aborted (common)) {
+    marlin_file_operations_common_job_verify_destination (common,
+                                                          job->destination,
+                                                          NULL,
+                                                          -1);
+    if (marlin_file_operations_common_job_aborted (common)) {
         goto aborted;
     }
 
@@ -3984,7 +3566,7 @@ link_job (GTask *task,
 
     i = 0;
     for (l = job->files;
-         l != NULL && !job_aborted (common);
+         l != NULL && !marlin_file_operations_common_job_aborted (common);
          l = l->next) {
         src = l->data;
 
@@ -4012,14 +3594,11 @@ marlin_file_operations_link (GList               *files,
                              gpointer             user_data)
 {
     GTask *task;
-    CopyMoveJob *job;
-    CommonJob *common;
+    FilesFileOperationsCopyMoveJob *job;
+    FilesFileOperationsCommonJob *common;
 
-    job = op_job_new (CopyMoveJob, parent_window);
-    common = COMMON_JOB(job);
-    job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
-    job->destination = g_object_ref (target_dir);
-    job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
+    job = marlin_file_operations_copy_move_job_new (parent_window, files, target_dir);
+    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
 
     // Start UNDO-REDO
     common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATELINK, g_list_length(files));
@@ -4030,7 +3609,7 @@ marlin_file_operations_link (GList               *files,
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
-    g_task_set_task_data (task, job, (GDestroyNotify) link_job_free);
+    g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
     g_task_run_in_thread (task, link_job);
     g_object_unref (task);
 }
@@ -4052,14 +3631,11 @@ marlin_file_operations_duplicate (GList               *files,
                                   gpointer             user_data)
 {
     GTask *task;
-    CopyMoveJob *job;
-    CommonJob *common;
+    FilesFileOperationsCopyMoveJob *job;
+    FilesFileOperationsCommonJob *common;
 
-    job = op_job_new (CopyMoveJob, parent_window);
-    common = COMMON_JOB(job);
-    job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
-    job->destination = NULL;
-    job->debuting_files = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
+    job = marlin_file_operations_copy_move_job_new (parent_window, files, NULL);
+    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
 
     // Start UNDO-REDO
     common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_DUPLICATE, g_list_length(files));
@@ -4070,7 +3646,7 @@ marlin_file_operations_duplicate (GList               *files,
     // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
-    g_task_set_task_data (task, job, (GDestroyNotify) copy_job_free);
+    g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
     g_task_run_in_thread (task, copy_job);
     g_object_unref (task);
 }
@@ -4098,7 +3674,7 @@ set_permissions_job_done (gpointer user_data)
         job->done_callback (job->done_callback_data);
     }
 
-    finalize_common ((CommonJob *)job);
+    finalize_common (COMMON_JOB (job));
     return FALSE;
 }
 
@@ -4107,7 +3683,7 @@ set_permissions_file (SetPermissionsJob *job,
                       GFile *file,
                       GFileInfo *info)
 {
-    CommonJob *common;
+    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     GFileInfo *child_info;
     gboolean free_info;
     guint32 current;
@@ -4115,8 +3691,6 @@ set_permissions_file (SetPermissionsJob *job,
     guint32 mask;
     GFileEnumerator *enumerator;
     GFile *child;
-
-    common = (CommonJob *)job;
 
     pf_progress_info_pulse_progress (common->progress);
     free_info = FALSE;
@@ -4143,7 +3717,7 @@ set_permissions_file (SetPermissionsJob *job,
     }
 
 
-    if (!job_aborted (common) &&
+    if (!marlin_file_operations_common_job_aborted (common) &&
         g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_UNIX_MODE)) {
         current = g_file_info_get_attribute_uint32 (info, G_FILE_ATTRIBUTE_UNIX_MODE);
 
@@ -4158,7 +3732,7 @@ set_permissions_file (SetPermissionsJob *job,
                                      common->cancellable, NULL);
     }
 
-    if (!job_aborted (common) &&
+    if (!marlin_file_operations_common_job_aborted (common) &&
         g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY) {
         enumerator = g_file_enumerate_children (file,
                                                 G_FILE_ATTRIBUTE_STANDARD_NAME","
@@ -4168,7 +3742,7 @@ set_permissions_file (SetPermissionsJob *job,
                                                 common->cancellable,
                                                 NULL);
         if (enumerator) {
-            while (!job_aborted (common) &&
+            while (!marlin_file_operations_common_job_aborted (common) &&
                    (child_info = g_file_enumerator_next_file (enumerator, common->cancellable, NULL)) != NULL) {
                 child = g_file_get_child (file,
                                           g_file_info_get_name (child_info));
@@ -4192,9 +3766,9 @@ set_permissions_job (GIOSchedulerJob *io_job,
                      gpointer user_data)
 {
     SetPermissionsJob *job = user_data;
-    CommonJob *common;
+    FilesFileOperationsCommonJob *common;
 
-    common = COMMON_JOB(job);
+    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
 
     pf_progress_info_start (common->progress);
     pf_progress_info_set_status (common->progress, _("Setting permissions"));
@@ -4220,10 +3794,10 @@ marlin_file_set_permissions_recursive (const char *directory,
                                        gpointer  callback_data)
 {
     SetPermissionsJob *job;
-    CommonJob *common;
+    FilesFileOperationsCommonJob *common;
 
     job = op_job_new (SetPermissionsJob, NULL);
-    common = COMMON_JOB(job);
+    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     job->file = g_file_new_for_uri (directory);
     job->file_permissions = file_permissions;
     job->file_mask = file_mask;
@@ -4390,8 +3964,7 @@ marlin_file_operations_copy_move_link (GList               *files,
         g_task_return_new_error (task,
                                  G_IO_ERROR,
                                  G_IO_ERROR_FAILED,
-                                 _("Zero files to process"),
-                                 NULL);
+                                 "%s", _("Zero files to process"));
         g_clear_object (&task);
         return;
     }
@@ -4475,26 +4048,13 @@ marlin_file_operations_copy_move_link_finish (GAsyncResult  *result,
 }
 
 static void
-create_job_free (CreateJob *job)
-{
-    g_clear_object (&job->dest_dir);
-    g_clear_object (&job->src);
-    g_clear_pointer (&job->src_data, g_free);
-    g_clear_pointer (&job->filename, g_free);
-
-    finalize_common ((CommonJob *)job);
-
-    files_file_changes_consume_changes (TRUE);
-}
-
-static void
 create_job (GTask *task,
             gpointer source_object,
             gpointer task_data,
             GCancellable *cancellable)
 {
-    CreateJob *job = task_data;
-    CommonJob *common = COMMON_JOB(job);
+    FilesFileOperationsCreateJob *job = task_data;
+    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     int count;
     GFile *dest;
     char *filename, *filename2, *new_filename;
@@ -4504,7 +4064,7 @@ create_job (GTask *task,
     gboolean filename_is_utf8;
     char *primary, *secondary, *details;
     int response;
-    char *data;
+    guint8 *data;
     int length;
     GFileOutputStream *out;
     gboolean handled_invalid_filename;
@@ -4520,10 +4080,10 @@ create_job (GTask *task,
 
     max_length = files_file_utils_get_max_name_length (job->dest_dir);
 
-    verify_destination (common,
-                        job->dest_dir,
-                        NULL, -1);
-    if (job_aborted (common)) {
+    marlin_file_operations_common_job_verify_destination (common,
+                                                          job->dest_dir,
+                                                          NULL, -1);
+    if (marlin_file_operations_common_job_aborted (common)) {
         goto aborted;
     }
 
@@ -4613,7 +4173,7 @@ retry:
                     if (res) {
                         files_undo_action_data_set_create_data(common->undo_redo_data,
                                                                  g_file_get_uri(dest),
-                                                                 g_strdup(data));
+                                                                 g_memdup(data, length));
                     }
                 }
 
@@ -4738,7 +4298,7 @@ retry:
             g_error_free (error);
 
             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                abort_job (common);
+                marlin_file_operations_common_job_abort_job (common);
             } else if (response == 1) { /* skip */
                 /* do nothing */
             } else {
@@ -4764,8 +4324,8 @@ marlin_file_operations_new_folder (GtkWidget           *parent_view,
                                    gpointer             user_data)
 {
     GTask *task;
-    CreateJob *job;
-    CommonJob *common;
+    FilesFileOperationsCreateJob *job;
+    FilesFileOperationsCommonJob *common;
     GtkWindow *parent_window;
 
     parent_window = NULL;
@@ -4773,17 +4333,11 @@ marlin_file_operations_new_folder (GtkWidget           *parent_view,
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
-    job = op_job_new (CreateJob, parent_window);
-    common = COMMON_JOB(job);
-    job->dest_dir = g_object_ref (parent_dir);
-    job->make_dir = TRUE;
-
-    // Start UNDO-REDO
-    common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATEFOLDER, 1);
-    // End UNDO-REDO
+    job = marlin_file_operations_create_job_new_folder (parent_window, parent_dir);
+    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
 
     task = g_task_new (NULL, cancellable, callback, user_data);
-    g_task_set_task_data (task, job, (GDestroyNotify) create_job_free);
+    g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
     g_task_run_in_thread (task, create_job);
     g_object_unref (task);
 }
@@ -4807,29 +4361,22 @@ marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
                                                gpointer             user_data)
 {
     GTask *task;
-    CreateJob *job;
-    CommonJob *common;
+    FilesFileOperationsCreateJob *job;
+    FilesFileOperationsCommonJob *common;
     GtkWindow *parent_window = NULL;
 
     if (parent_view) {
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
-    job = op_job_new (CreateJob, parent_window);
-    common = COMMON_JOB(job);
-    job->dest_dir = g_object_ref (parent_dir);
-    job->filename = g_strdup (target_filename);
-
-    if (template) {
-        job->src = g_object_ref (template);
-    }
-
-    // Start UNDO-REDO
-    common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATEFILEFROMTEMPLATE, 1);
-    // End UNDO-REDO
+    job = marlin_file_operations_create_job_new_file_from_template (parent_window,
+                                                                    parent_dir,
+                                                                    target_filename,
+                                                                    template);
+    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
 
     task = g_task_new (NULL, cancellable, callback, user_data);
-    g_task_set_task_data (task, job, (GDestroyNotify) create_job_free);
+    g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
     g_task_run_in_thread (task, create_job);
     g_object_unref (task);
 }
@@ -4854,27 +4401,25 @@ marlin_file_operations_new_file (GtkWidget           *parent_view,
                                  gpointer             user_data)
 {
     GTask *task;
-    CreateJob *job;
-    CommonJob *common;
+    FilesFileOperationsCreateJob *job;
+    FilesFileOperationsCommonJob *common;
     GtkWindow *parent_window = NULL;
 
     if (parent_view) {
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
-    job = op_job_new (CreateJob, parent_window);
-    common = COMMON_JOB(job);
-    job->dest_dir = g_file_new_for_uri (parent_dir);
-    job->src_data = g_memdup (initial_contents, length);
-    job->length = length;
-    job->filename = g_strdup (target_filename);
-
-    // Start UNDO-REDO
-    common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATEEMPTYFILE, 1);
-    // End UNDO-REDO
+    GFile *dest_dir = g_file_new_for_uri (parent_dir);
+    job = marlin_file_operations_create_job_new_file (parent_window,
+                                                      dest_dir,
+                                                      target_filename,
+                                                      initial_contents,
+                                                      length);
+    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
+    g_object_unref (dest_dir);
 
     task = g_task_new (NULL, cancellable, callback, user_data);
-    g_task_set_task_data (task, job, (GDestroyNotify) create_job_free);
+    g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
     g_task_run_in_thread (task, create_job);
     g_object_unref (task);
 }
