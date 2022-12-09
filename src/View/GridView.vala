@@ -71,6 +71,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     construct {
         set_layout_manager (new Gtk.BinLayout ());
         set_up_model ();
+        bind_prefs ();
+        bind_sort ();
 
         //Setup view widget
         var item_factory = new Gtk.SignalListItemFactory ();
@@ -175,13 +177,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             //FIXME Does this leak memory?
             uri_string = null;
             return true;
-        });
-        notify["sort-type"].connect (() => {
-            list_store.sort (file_compare_func);
-        });
-        notify["sort-reversed"].connect (() => {
-            list_store.sort (file_compare_func);
-            //TODO Persist setting in file metadata
         });
 
         // Restore saved zoom level

@@ -80,6 +80,16 @@ public interface Files.ViewInterface : Gtk.Widget {
         });
     }
 
+    protected void bind_sort () {
+        notify["sort-type"].connect (() => {
+            list_store.sort (file_compare_func);
+        });
+        notify["sort-reversed"].connect (() => {
+            list_store.sort (file_compare_func);
+            //TODO Persist setting in file metadata
+        });
+    }
+
     public void grab_focus () {
         if (get_view_widget () != null) {
             var item = get_selected_file_item ();
