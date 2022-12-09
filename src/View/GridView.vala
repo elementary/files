@@ -83,7 +83,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             focusable = true
         };
         build_ui (grid_view);
+        bind_popover_menu ();
         set_up_gestures ();
+        set_up_drag_source ();
 
         //Signal Handlers
         multi_selection.selection_changed.connect (() => {
@@ -127,19 +129,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             fileitem_list.remove ((FileItemInterface)file_item);
         });
 
-        popover_menu.closed.connect (() => {
-            grid_view.grab_focus (); //FIXME This should happen automatically?
-            //Open with submenu must always be at pos 0
-            //This is awkward but can only amend open-with-menu by removing and re-adding.
-            if (has_open_with) {
-                item_menu.remove (0);
-                has_open_with = false;
-            }
-            // This removes any custom widgets (?)
-            popover_menu.menu_model = null;
-        });
 
-        set_up_drag_source ();
 
         // Restore saved zoom level
         if (slot.view_mode == ViewMode.ICON) {

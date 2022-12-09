@@ -80,9 +80,10 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             focusable = true,
             show_column_separators = true
         };
-
         build_ui (column_view);
+        bind_popover_menu ();
         set_up_gestures ();
+        set_up_drag_source ();
 
         var name_item_factory = new Gtk.SignalListItemFactory ();
         var size_item_factory = new Gtk.SignalListItemFactory ();
@@ -189,20 +190,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         column_view.append_column (size_column);
         column_view.append_column (type_column);
         column_view.append_column (modified_column);
-
-        popover_menu.closed.connect (() => {
-            column_view.grab_focus (); //FIXME This should happen automatically?
-            //Open with submenu must always be at pos 0
-            //This is awkward but can only amend open-with-menu by removing and re-adding.
-            if (has_open_with) {
-                item_menu.remove (0);
-                has_open_with = false;
-            }
-            // This removes any custom widgets (?)
-            popover_menu.menu_model = null;
-        });
-
-        set_up_drag_source ();
 
         // Restore saved zoom level
         if (slot.view_mode == ViewMode.ICON) {

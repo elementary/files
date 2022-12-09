@@ -96,6 +96,20 @@ public interface Files.ViewInterface : Gtk.Widget {
         });
     }
 
+    protected void bind_popover_menu () {
+        popover_menu.closed.connect (() => {
+            get_view_widget ().grab_focus (); //FIXME This should happen automatically?
+            //Open with submenu must always be at pos 0
+            //This is awkward but can only amend open-with-menu by removing and re-adding.
+            if (has_open_with) {
+                item_menu.remove (0);
+                has_open_with = false;
+            }
+            // This removes any custom widgets (?)
+            popover_menu.menu_model = null;
+        });
+    }
+
     public void grab_focus () {
         if (get_view_widget () != null) {
             var item = get_selected_file_item ();
