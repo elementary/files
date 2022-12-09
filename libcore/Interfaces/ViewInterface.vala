@@ -73,8 +73,6 @@ public interface Files.ViewInterface : Gtk.Widget {
         }
     }
 
-    public virtual void change_path (GLib.File loc, OpenFlag flag) {}
-
     public void zoom_in () {
         if (zoom_level < maximum_zoom) {
             zoom_level = zoom_level + 1;
@@ -356,6 +354,10 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     // Access required by DNDInterface
+    public void change_path (GLib.File loc, OpenFlag flag) {
+        activate_action ("win.path-change-request", "(su)", loc.get_uri (), flag);
+    }
+
     public Files.FileItemInterface? get_item_at (double x, double y) {
         var view_widget = get_view_widget ();
         var widget = view_widget.pick (x, y, Gtk.PickFlags.DEFAULT);

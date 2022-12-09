@@ -210,10 +210,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     /* Private methods */
-    protected override void change_path (GLib.File loc, OpenFlag flag) {
-        activate_action ("win.path-change-request", "(su)", loc.get_uri (), flag);
-    }
-
     private void refresh_view () {
         // Needed to load thumbnails when settings change.  Is there a better way?
         grid_view.model = null;
