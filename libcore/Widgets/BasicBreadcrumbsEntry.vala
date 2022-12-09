@@ -338,7 +338,9 @@ namespace Files.View.Chrome {
                 // Reset if window has top level focus or is iconified
                 var top_level = (Gtk.Window)(get_toplevel ());
                 if (top_level.has_toplevel_focus ||
-                     (top_level.get_window ().get_state () & Gdk.WindowState.FOCUSED) > 0) {
+                     (top_level.get_window ().get_state () & Gdk.WindowState.FOCUSED) > 0) ||
+                     (top_level.get_window ().get_state () & Gdk.WindowState.ICONIFIED) > 0) {
+                 
                     reset ();
                 }
 
