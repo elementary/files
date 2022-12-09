@@ -36,7 +36,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     //DNDInterface properties
     protected uint auto_open_timeout_id { get; set; default = 0; }
     protected FileItemInterface? previous_target_item { get; set; default = null; }
-    protected string? uri_string  { get; set; default = null;}
+    protected string? uri_string { get; set; default = null;}
 
     // Construct properties
     public Gtk.ColumnView column_view { get; construct; }
