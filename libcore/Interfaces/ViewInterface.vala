@@ -19,6 +19,10 @@
 * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
 */
 
+// This interface assumes that the View uses a Gtk dynamic view widget (GridView or ListView)
+// in order to maximise shared code.
+// If this were no longer to be the case then several methods would have to be virtualised and
+// reimplemented in the actual view which does not use a dynamic widget.
 public interface Files.ViewInterface : Gtk.Widget {
     // Properties defined in template.
     protected abstract Menu background_menu { get; set; }
@@ -35,7 +39,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     protected abstract Files.Preferences prefs { get; default = Files.Preferences.get_default (); }
     protected abstract GLib.ListStore list_store { get; set; }
     protected abstract Gtk.FilterListModel filter_model { get; set; }
-    protected abstract Gtk.MultiSelection multi_selection { get; set; }
+    public abstract Gtk.MultiSelection multi_selection { get; protected set; }
 
     protected abstract Gtk.ScrolledWindow scrolled_window { get; set; }
     protected abstract Gtk.PopoverMenu popover_menu { get; set; }
@@ -56,9 +60,11 @@ public interface Files.ViewInterface : Gtk.Widget {
     // Functions specific to particular view
     public abstract void set_up_zoom_level ();
     public abstract ZoomLevel get_normal_zoom_level ();
+    public abstract void refresh_view ();
+    // The view widget must have a "model" property that is a GtkSelectionModel
+    public abstract unowned Gtk.Widget get_view_widget ();
     //Functions requiring access to src
     public abstract void show_context_menu (Files.FileItemInterface? clicked_item, double x, double y);
-    public abstract void refresh_view ();
 
     protected void bind_prefs () {
         prefs.notify["sort-directories-first"].connect (() => {
@@ -283,8 +289,6 @@ public interface Files.ViewInterface : Gtk.Widget {
 
         show_context_menu (null, 0.0, 0.0);
     }
-
-    protected abstract unowned Gtk.Widget get_view_widget ();
 
     protected virtual void set_up_model () {
         list_store = new GLib.ListStore (typeof (Files.File));

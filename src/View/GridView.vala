@@ -30,12 +30,13 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     protected Gtk.PopoverMenu popover_menu { get; set; }
     protected GLib.ListStore list_store { get; set; }
     protected Gtk.FilterListModel filter_model { get; set; }
-    protected Gtk.MultiSelection multi_selection { get; set; }
+    public Gtk.MultiSelection multi_selection { get; protected set; }
     protected Files.Preferences prefs { get; default = Files.Preferences.get_default (); }
 
     //DNDInterface properties
     protected uint auto_open_timeout_id { get; set; default = 0; }
     protected FileItemInterface? previous_target_item { get; set; default = null; }
+    protected string? uri_string  { get; set; default = null;}
 
     // Construct properties
     public Gtk.GridView grid_view { get; construct; }
@@ -55,7 +56,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public bool select_after_add { get; set; default = false;}
     protected bool has_open_with { get; set; default = false;}
 
-    private string? uri_string = null;
+
 
     public GridView (Files.Slot slot) {
         Object (slot: slot);
@@ -138,46 +139,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             popover_menu.menu_model = null;
         });
 
-        //Set up as drag source for bookmarking
-        var drag_source = new Gtk.DragSource () {
-            propagation_phase = Gtk.PropagationPhase.CAPTURE,
-            actions = Gdk.DragAction.LINK | Gdk.DragAction.COPY | Gdk.DragAction.MOVE
-        };
-        grid_view.add_controller (drag_source);
-        drag_source.prepare.connect ((x, y) => {
-            var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
-            var item = widget.get_ancestor (typeof (GridFileItem));
-            if (item != null && (item is GridFileItem)) {
-                var fileitem = ((GridFileItem)item);
-                if (!fileitem.selected) {
-                    multi_selection.select_item (fileitem.pos, true);
-                }
-
-                var selected_files = new GLib.List<Files.File> ();
-                get_selected_files (out selected_files);
-                uri_string = FileUtils.make_string_from_file_list (selected_files);
-                // Use a simple string content to match sidebar drop target
-                var list_val = new GLib.Value (Type.STRING);
-                list_val.set_string (uri_string);
-                return new Gdk.ContentProvider.for_value (list_val);
-            }
-
-            return null;
-        });
-        drag_source.drag_begin.connect ((drag) => {
-            //TODO Set drag icon
-            return;
-        });
-        drag_source.drag_end.connect ((drag, delete_data) => {
-            //FIXME Does this leak memory?
-            uri_string = null;
-            return;
-        });
-        drag_source.drag_cancel.connect ((drag, reason) => {
-            //FIXME Does this leak memory?
-            uri_string = null;
-            return true;
-        });
+        set_up_drag_source ();
 
         // Restore saved zoom level
         if (slot.view_mode == ViewMode.ICON) {
@@ -212,7 +174,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     /* ViewInterface methods */
-    protected unowned Gtk.Widget get_view_widget () {
+    public unowned Gtk.Widget get_view_widget () {
         return grid_view;
     }
 

@@ -20,8 +20,54 @@
 */
 
 public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
+    protected abstract string? uri_string  { get; set; default = null;}
+
     protected abstract uint auto_open_timeout_id { get; set; default = 0; }
     protected abstract FileItemInterface? previous_target_item { get; set; default = null; }
+
+    protected void set_up_drag_source () {
+        //Set up as drag source for bookmarking
+        var drag_source = new Gtk.DragSource () {
+            propagation_phase = Gtk.PropagationPhase.CAPTURE,
+            actions = Gdk.DragAction.LINK | Gdk.DragAction.COPY | Gdk.DragAction.MOVE
+        };
+        get_view_widget ().add_controller (drag_source);
+        drag_source.prepare.connect ((x, y) => {
+            var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
+            var item = widget.get_ancestor (typeof (FileItemInterface));
+            if (item != null && (item is FileItemInterface)) {
+                var fileitem = ((FileItemInterface)item);
+                if (!fileitem.selected) {
+                    multi_selection.select_item (fileitem.pos, true);
+                }
+
+                var selected_files = new GLib.List<Files.File> ();
+                get_selected_files (out selected_files);
+                uri_string = FileUtils.make_string_from_file_list (selected_files);
+                // Use a simple string content to match sidebar drop target
+                var list_val = new GLib.Value (Type.STRING);
+                list_val.set_string (uri_string);
+                return new Gdk.ContentProvider.for_value (list_val);
+            }
+
+            return null;
+        });
+        drag_source.drag_begin.connect ((drag) => {
+            //TODO Set drag icon
+            return;
+        });
+        drag_source.drag_end.connect ((drag, delete_data) => {
+            //FIXME Does this leak memory?
+            uri_string = null;
+            return;
+        });
+        drag_source.drag_cancel.connect ((drag, reason) => {
+            //FIXME Does this leak memory?
+            uri_string = null;
+            return true;
+        });
+    }
+
     //Need to ensure fileitem gets selected before drag
     public List<Files.File> get_file_list_for_drag (double x, double y, out Gdk.Paintable? paintable) {
         paintable = null;
