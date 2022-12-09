@@ -58,6 +58,27 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract ZoomLevel get_normal_zoom_level ();
     //Functions requiring access to src
     public abstract void show_context_menu (Files.FileItemInterface? clicked_item, double x, double y);
+    public abstract void refresh_view ();
+
+    protected void bind_prefs () {
+        prefs.notify["sort-directories-first"].connect (() => {
+            list_store.sort (file_compare_func);
+        });
+        prefs.notify["show-hidden-files"].connect (() => {
+            // This refreshes the filter as well
+            list_store.sort (file_compare_func);
+        });
+        prefs.notify["show-remote-thumbnails"].connect (() => {
+            if (prefs.show_remote_thumbnails) {
+                refresh_view ();
+            }
+        });
+        prefs.notify["hide-local-thumbnails"].connect (() => {
+            if (!prefs.hide_local_thumbnails) {
+                refresh_view ();
+            }
+        });
+    }
 
     public void grab_focus () {
         if (get_view_widget () != null) {

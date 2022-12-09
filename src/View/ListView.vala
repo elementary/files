@@ -248,23 +248,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             list_store.sort (file_compare_func);
             //TODO Persist setting in file metadata
         });
-        prefs.notify["sort-directories-first"].connect (() => {
-            list_store.sort (file_compare_func);
-        });
-        prefs.notify["show-hidden-files"].connect (() => {
-            // This refreshes the filter as well
-            list_store.sort (file_compare_func);
-        });
-        prefs.notify["show-remote-thumbnails"].connect (() => {
-            if (prefs.show_remote_thumbnails) {
-                refresh_view ();
-            }
-        });
-        prefs.notify["hide-local-thumbnails"].connect (() => {
-            if (!prefs.hide_local_thumbnails) {
-                refresh_view ();
-            }
-        });
 
         // Restore saved zoom level
         if (slot.view_mode == ViewMode.ICON) {
@@ -277,6 +260,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     // /* Private methods */
     private void refresh_view () {
         // Needed to load thumbnails when settings change.  Is there a better way?
+        // Cannot move to interface (no access to model property)
         column_view.model = null;
         Idle.add (() => {
             column_view.model = multi_selection;
@@ -347,8 +331,8 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         plugins.hook_context_menu (popover_menu, selected_files);
 
         Idle.add (() => {
-          popover_menu.popup ();
-          return Source.REMOVE;
+            popover_menu.popup ();
+            return Source.REMOVE;
         });
     }
 
