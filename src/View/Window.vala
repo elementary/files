@@ -89,6 +89,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     private Files.HeaderBar top_menu;
     private Adw.TabView tab_view;
     private Adw.TabBar tab_bar;
+    private Gtk.PopoverMenu tab_popover;
     private SidebarInterface sidebar;
     private bool is_first_window {
         get {
@@ -206,7 +207,13 @@ public class Files.Window : Gtk.ApplicationWindow {
             autohide = false,
             expand_tabs = false
         };
-        // Implement tab context menu
+        var builder = new Gtk.Builder.from_resource ("/io/elementary/files/Window.ui");
+        var tab_menu = (Menu)(builder.get_object ("tab_model"));
+        tab_popover = new Gtk.PopoverMenu.from_model_full (tab_menu, Gtk.PopoverMenuFlags.NESTED) {
+            has_arrow = false
+        };
+        tab_popover.set_parent (tab_bar);
+
         var gesture_secondary_click = new Gtk.GestureClick () {
             button = Gdk.BUTTON_SECONDARY,
             propagation_phase = Gtk.PropagationPhase.CAPTURE // Receive before tab_bar
@@ -1226,7 +1233,7 @@ public class Files.Window : Gtk.ApplicationWindow {
                 return mode;
 
             case ViewMode.CURRENT:
-critical ("Do not use ViewMode CURRENT");
+                critical ("Do not use ViewMode CURRENT");
                 return top_menu.view_switcher.get_mode ();
             case ViewMode.PREFERRED:
                 return (ViewMode)(Files.app_settings.get_enum ("default-viewmode"));
@@ -1517,22 +1524,10 @@ critical ("Do not use ViewMode CURRENT");
     }
 
     private void show_tab_context_menu (double x, double y) {
-        var menu_builder = new PopupMenuBuilder ()
-            .add_item (_("New Tab"), "win.tab::NEW")
-            .add_item (_("Duplicate Tab"), "win.tab::DUP")
-            .add_item (_("Move Tab to New Window"), "win.tab::WINDOW")
-            .add_item (_("Close Tab"), "win.tab::CLOSE")
-            .add_separator ()
-            .add_item (_("Sort reversed"), "win.sort-reversed");
-
-
-        var popover = menu_builder.build ();
-        popover.has_arrow = false;
-        popover.set_parent (tab_bar);
-        popover.set_pointing_to ({(int)x, (int)y, 1, 1});
+        tab_popover.set_pointing_to ({(int)x, (int)y, 1, 1});
         // Need idle for menu to display properly
         Idle.add (() => {
-            popover.popup ();
+            tab_popover.popup ();
             return Source.REMOVE;
         });
     }
