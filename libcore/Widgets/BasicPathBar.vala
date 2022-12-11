@@ -147,18 +147,14 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 primary_gesture.set_state (Gtk.EventSequenceState.CLAIMED);
             });
             primary_gesture.released.connect ((n_press, x, y) => {
-                var widget = main_child.pick (x, y, Gtk.PickFlags.DEFAULT);
-                if (widget != null) {
-                    var crumb = (Crumb)(widget.get_ancestor (typeof (Crumb)));
-                    // assert (crumb is Crumb);
-                    if (crumb == null || crumb.dir_path != null) {
-                        activate_action (
-                            "win.path-change-request",
-                            "(su)",
-                            protocol + crumb.dir_path,
-                            OpenFlag.DEFAULT
-                        );
-                    }
+                var crumb = get_crumb_from_coords (x, y);
+                if (crumb != null && crumb.dir_path != null) {
+                    activate_action (
+                        "win.path-change-request",
+                        "(su)",
+                        protocol + crumb.dir_path,
+                        OpenFlag.DEFAULT
+                    );
                 }
 
                 path_bar.mode = PathBarMode.ENTRY; // Clicked on spacer or empty
@@ -206,6 +202,20 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             }
 
             return sb.str;
+        }
+
+        public Crumb? get_crumb_from_coords (double x, double y) {
+            var widget = main_child.pick (x, y, Gtk.PickFlags.DEFAULT);
+            if (widget != null) {
+                if (widget is Crumb) {
+                    return (Crumb)widget;
+                } else {
+                    var crumb = (Crumb)(widget.get_ancestor (typeof (Crumb)));
+                    return crumb;
+                }
+            }
+
+            return null;
         }
     }
 
