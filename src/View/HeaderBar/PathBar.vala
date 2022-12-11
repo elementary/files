@@ -19,7 +19,6 @@
 /* Contains basic breadcrumb and path entry entry widgets for use in FileChooser */
 
 public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
-    private ulong files_menu_dir_handler_id = 0;
     construct {
         var secondary_gesture = new Gtk.GestureClick () {
             button = Gdk.BUTTON_SECONDARY
@@ -60,12 +59,9 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
             )
         );
 
-        Directory? files_menu_dir = null;
-        // uint files_menu_dir_handler_id = 0;
         if (root != null) {
-            files_menu_dir = Directory.from_gfile (root);
-            files_menu_dir_handler_id = files_menu_dir.done_loading.connect (() => {
-                /* Append list of directories at the same level */
+            var files_menu_dir = Directory.from_gfile (root);
+            files_menu_dir.init.begin (null, (obj, res) => {
                 if (files_menu_dir.can_load) {
                     unowned List<unowned Files.File>? sorted_dirs = files_menu_dir.get_sorted_dirs ();
                     if (sorted_dirs != null) {
@@ -81,21 +77,13 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
                         }
                         menu.append_section (null, subdir_menu);
                     }
-                }
 
-                files_menu_dir.disconnect (files_menu_dir_handler_id);
-                files_menu_dir_handler_id = 0;
-                files_menu_dir = null;
-                // Do not show popup until all children have been appended.
-                show_context_menu (menu, x, y);
+                    show_context_menu (menu, x, y);
+                }
             });
         } else {
             warning ("Root directory null for %s", path);
             show_context_menu (menu, x, y);
-        }
-
-        if (files_menu_dir != null) {
-            files_menu_dir.init ();
         }
     }
 
