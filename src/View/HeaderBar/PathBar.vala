@@ -19,6 +19,7 @@
 /* Contains basic breadcrumb and path entry entry widgets for use in FileChooser */
 
 public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
+    private ulong files_menu_dir_handler_id = 0;
     construct {
         var secondary_gesture = new Gtk.GestureClick () {
             button = Gdk.BUTTON_SECONDARY
@@ -59,58 +60,52 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
             )
         );
 
-        var popover = new Gtk.PopoverMenu.from_model (menu);
+        Directory? files_menu_dir = null;
+        // uint files_menu_dir_handler_id = 0;
+        if (root != null) {
+            files_menu_dir = Directory.from_gfile (root);
+            files_menu_dir_handler_id = files_menu_dir.done_loading.connect (() => {
+                /* Append list of directories at the same level */
+                if (files_menu_dir.can_load) {
+                    unowned List<unowned Files.File>? sorted_dirs = files_menu_dir.get_sorted_dirs ();
+                    if (sorted_dirs != null) {
+                        var subdir_menu = new Menu ();
+                        foreach (unowned Files.File gof in sorted_dirs) {
+                            subdir_menu.append (
+                                gof.get_display_name (),
+                                Action.print_detailed_name (
+                                    "win.path-change-request",
+                                    new Variant ("(su)", gof.uri, Files.OpenFlag.DEFAULT)
+                                )
+                            );
+                        }
+                        menu.append_section (null, subdir_menu);
+                    }
+                }
+
+                files_menu_dir.disconnect (files_menu_dir_handler_id);
+                files_menu_dir_handler_id = 0;
+                files_menu_dir = null;
+                // Do not show popup until all children have been appended.
+                show_context_menu (menu, x, y);
+            });
+        } else {
+            warning ("Root directory null for %s", path);
+            show_context_menu (menu, x, y);
+        }
+
+        if (files_menu_dir != null) {
+            files_menu_dir.init ();
+        }
+    }
+
+    private void show_context_menu (Menu menu_model, double x, double y) {
+        var popover = new Gtk.PopoverMenu.from_model (menu_model);
         popover.set_parent (this);
         popover.set_pointing_to ({(int)x, (int)y, 1, 1});
         Idle.add (() => {
           popover.popup ();
           return Source.REMOVE;
         });
-
-        // menu.cancel.connect (() => {reset_elements_states ();});
-        // menu.deactivate.connect (() => {reset_elements_states ();});
-
-        // build_base_menu (menu, path);
-        // Directory? files_menu_dir = null;
-        // if (root != null) {
-        //     files_menu_dir = Directory.from_gfile (root);
-        //     files_menu_dir_handler_id = files_menu_dir.done_loading.connect (() => {
-        //         append_subdirectories (menu, files_menu_dir);
-        //         files_menu_dir.disconnect (files_menu_dir_handler_id);
-        //         // Do not show popup until all children have been appended.
-        //         menu.show_all ();
-        //         menu.popup_at_pointer (event);
-        //     });
-        // } else {
-        //     warning ("Root directory null for %s", path);
-        //     menu.show_all ();
-        //     menu.popup_at_pointer (event);
-        // }
-
-        // if (files_menu_dir != null) {
-        //     files_menu_dir.init ();
-        // }
     }
-
-    // private void append_subdirectories (Gtk.Menu menu, Directory dir) {
-    //     /* Append list of directories at the same level */
-    //     if (dir.can_load) {
-    //         unowned List<unowned Files.File>? sorted_dirs = dir.get_sorted_dirs ();
-
-    //         if (sorted_dirs != null) {
-    //             menu.append (new Gtk.SeparatorMenuItem ());
-    //             foreach (unowned Files.File gof in sorted_dirs) {
-    //                 var menuitem = new Gtk.MenuItem.with_label (gof.get_display_name ());
-    //                 menuitem.set_data ("location", gof.uri);
-    //                 menu.append (menuitem);
-    //                 menuitem.activate.connect ((mi) => {
-    //                     activate_path (mi.get_data ("location"));
-    //                 });
-    //             }
-    //         }
-    //     }
-    //     menu.show_all ();
-    //     /* Release the Async directory as soon as possible */
-    //     dir = null;
-    // }
 }
