@@ -25,8 +25,8 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
     /* PathBar Interface */
 
-    private BasicBreadcrumbs breadcrumbs;
-    private BasicPathEntry path_entry;
+    protected BasicBreadcrumbs breadcrumbs;
+    protected BasicPathEntry path_entry;
     public PathBarMode mode { get; set; default = PathBarMode.CRUMBS; }
     public string display_uri { get; set; default = ""; }
 
@@ -49,8 +49,8 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         var focus_controller = new Gtk.EventControllerFocus ();
         add_controller (focus_controller);
         focus_controller.notify["contains-focus"].connect (() => {
-            // Idle required to ignore temporary out when switching keyboard layout
-            Timeout.add (20,() => {
+            // Idle required to ignore temporary focus out when switching keyboard layout
+            Timeout.add (20, () => {
                 if (!focus_controller.contains_focus) {
                     mode = PathBarMode.CRUMBS;
                 }
@@ -79,8 +79,9 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
     //     search_widget.term = term;
     // }
 
-    private class BasicBreadcrumbs : Gtk.Widget {
-        private List<Crumb> crumbs;
+    protected class BasicBreadcrumbs : Gtk.Widget {
+        public List<Crumb> crumbs;
+        public Gtk.ScrolledWindow scrolled_window;
         private Crumb spacer; // Maintain minimum clickable space after crumbs
         private Gtk.Box main_child;
         private string protocol;
@@ -98,7 +99,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             var layout = new Gtk.BoxLayout (Gtk.Orientation.HORIZONTAL);
             set_layout_manager (layout);
             crumbs = new List<Crumb> ();
-            var scrolled_window = new Gtk.ScrolledWindow () {
+            scrolled_window = new Gtk.ScrolledWindow () {
                 hscrollbar_policy = Gtk.PolicyType.EXTERNAL,
                 vscrollbar_policy = Gtk.PolicyType.NEVER,
                 hexpand = true,
@@ -137,16 +138,32 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             scrolled_window.set_parent (this);
             refresh_button.set_parent (this);
 
-            var click_gesture = new Gtk.GestureClick () {
-                button = 0,
+            var primary_gesture = new Gtk.GestureClick () {
+                button = Gdk.BUTTON_PRIMARY,
                 propagation_phase = Gtk.PropagationPhase.CAPTURE
             };
-            click_gesture.pressed.connect (() => {
+            primary_gesture.pressed.connect (() => {
                 // Need to block primary press to stop window menu appearing
-                click_gesture.set_state (Gtk.EventSequenceState.CLAIMED);
+                primary_gesture.set_state (Gtk.EventSequenceState.CLAIMED);
             });
-            click_gesture.released.connect (button_release_handler);
-            scrolled_window.add_controller (click_gesture);
+            primary_gesture.released.connect ((n_press, x, y) => {
+                var widget = main_child.pick (x, y, Gtk.PickFlags.DEFAULT);
+                if (widget != null) {
+                    var crumb = (Crumb)(widget.get_ancestor (typeof (Crumb)));
+                    // assert (crumb is Crumb);
+                    if (crumb == null || crumb.dir_path != null) {
+                        activate_action (
+                            "win.path-change-request",
+                            "(su)",
+                            protocol + crumb.dir_path,
+                            OpenFlag.DEFAULT
+                        );
+                    }
+                }
+
+                path_bar.mode = PathBarMode.ENTRY; // Clicked on spacer or empty
+            });
+            scrolled_window.add_controller (primary_gesture);
 
             notify["uri"].connect (() => {
                 FileUtils.split_protocol_from_path (uri, out protocol, out path);
@@ -190,36 +207,9 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
             return sb.str;
         }
-
-        private void button_release_handler (Gtk.EventController source, int n_press, double x, double y) {
-            var button = ((Gtk.GestureSingle)source).get_current_button ();
-            switch (button) {
-                case Gdk.BUTTON_PRIMARY:
-                    var widget = main_child.pick (x, y, Gtk.PickFlags.DEFAULT);
-                    if (widget != null) {
-                        var crumb = (Crumb)(widget.get_ancestor (typeof (Crumb)));
-                        // assert (crumb is Crumb);
-                        if (crumb == null || crumb.dir_path != null) {
-                            activate_action ("win.path-change-request", "(su)", protocol + crumb.dir_path, OpenFlag.DEFAULT);
-                            break;
-                        }
-                    }
-
-                    path_bar.mode = PathBarMode.ENTRY; // Clicked on spacer or empty
-                    break;
-                case Gdk.BUTTON_SECONDARY:
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        private void draw_crumbs () {
-
-        }
     }
 
-    private class Crumb : Gtk.Widget {
+    protected class Crumb : Gtk.Widget {
         public string? dir_path { get; construct; }
         public bool show_icon { get; construct; }
         public bool show_name { get; construct; }
@@ -274,7 +264,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         }
     }
 
-    private class BasicPathEntry : Gtk.Widget {
+    protected class BasicPathEntry : Gtk.Widget {
         static construct {
             set_layout_manager_type (typeof (Gtk.BinLayout));
         }

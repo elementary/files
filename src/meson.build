@@ -28,11 +28,12 @@ pantheon_files_exec = executable (
     'View/Window.vala',
     'View/Slot.vala',
 
-    'View/Widgets/HeaderBar.vala',
     'View/Widgets/GridFileItem.vala',
     'View/Widgets/OverlayBar.vala',
     'View/Widgets/ProgressInfoWidget.vala',
-    'View/Widgets/SearchResults.vala',
+
+    'View/HeaderBar/HeaderBar.vala',
+    'View/HeaderBar/PathBar.vala',
 
     'View/Sidebar/AbstractMountableRow.vala',
     'View/Sidebar/BookmarkListBox.vala',

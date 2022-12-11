@@ -49,10 +49,10 @@ public class Files.HeaderBar : Object {
     }
 
     public Adw.HeaderBar headerbar { get; construct; }
-    public BasicPathBar path_bar { get; construct; }
+    public PathBar path_bar { get; construct; }
     public ViewSwitcher view_switcher { get; construct; }
-    private Chrome.ButtonWithMenu button_forward;
-    private Chrome.ButtonWithMenu button_back;
+    private ButtonWithMenu button_forward;
+    private ButtonWithMenu button_back;
 
     construct {
         headerbar = new Adw.HeaderBar () {
@@ -61,15 +61,15 @@ public class Files.HeaderBar : Object {
         };
         headerbar.set_centering_policy (Adw.CenteringPolicy.LOOSE);
 
-        button_back = new Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic");
+        button_back = new ButtonWithMenu.from_icon_name ("go-previous-symbolic");
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.add_css_class ("flat");
 
-        button_forward = new Chrome.ButtonWithMenu.from_icon_name ("go-next-symbolic");
+        button_forward = new ButtonWithMenu.from_icon_name ("go-next-symbolic");
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.add_css_class ("flat");
 
-        path_bar = new BasicPathBar () {
+        path_bar = new PathBar () {
             hexpand = true
         };
 
