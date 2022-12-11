@@ -45,6 +45,20 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         stack.visible_child = breadcrumbs;
         stack.set_parent (this);
 
+
+        var focus_controller = new Gtk.EventControllerFocus ();
+        add_controller (focus_controller);
+        focus_controller.notify["contains-focus"].connect (() => {
+            // Idle required to ignore temporary out when switching keyboard layout
+            Timeout.add (20,() => {
+                if (!focus_controller.contains_focus) {
+                    mode = PathBarMode.CRUMBS;
+                }
+
+                return Source.REMOVE;
+            });
+        });
+
         notify["mode"].connect (() => {
             switch (mode) {
                 case PathBarMode.CRUMBS:
