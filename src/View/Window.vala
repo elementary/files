@@ -80,7 +80,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"loading-finished", action_loading_finished},
         {"selection-changing", action_selection_changing},
         {"update-selection", action_update_selection},
-        {"properties", action_properties}
+        {"properties", action_properties, "s"}
     };
 
     public uint window_number { get; construct; }
@@ -1135,9 +1135,15 @@ public class Files.Window : Gtk.ApplicationWindow {
         current_container.update_selection (selected_files);
     }
 
-    private void action_properties () {
+    private void action_properties (GLib.SimpleAction action, GLib.Variant? param) {
         List<Files.File> selected_files = null;
-        current_view_widget.get_selected_files (out selected_files);
+        var path = param.get_string ();
+        if (path == "") {
+            current_view_widget.get_selected_files (out selected_files);
+        } else {
+            selected_files.append (Files.File.@get (GLib.File.new_for_path (path)));
+        }
+
         var properties_window = new PropertiesWindow (selected_files, current_view_widget, this);
         properties_window.response.connect ((res) => {
             properties_window.destroy ();

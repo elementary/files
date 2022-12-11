@@ -51,6 +51,13 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
                 new Variant ("(su)", path, Files.OpenFlag.NEW_WINDOW)
             )
         );
+        menu.append (
+            _("Properties"),
+            Action.print_detailed_name (
+                "win.properties",
+                new Variant ("s", path)
+            )
+        );
 
         var popover = new Gtk.PopoverMenu.from_model (menu);
         popover.set_parent (this);
