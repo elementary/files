@@ -32,6 +32,10 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
 
     private void handle_secondary_press (double x, double y) {
         var crumb = breadcrumbs.get_crumb_from_coords (x, y);
+        if (crumb == null) {
+            return;
+        }
+
         string path = crumb.dir_path;
         string parent_path = FileUtils.get_parent_path_from_path (path);
         GLib.File? root = FileUtils.get_file_for_path (parent_path);
