@@ -82,7 +82,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
     protected class BasicBreadcrumbs : Gtk.Widget {
         public List<Crumb> crumbs;
         public Gtk.ScrolledWindow scrolled_window;
-        private Crumb spacer; // Maintain minimum clickable space after crumbs
+        private Gtk.Label spacer; // Maintain minimum clickable space after crumbs
         private Gtk.Box main_child;
         private string protocol;
         private string path;
@@ -111,7 +111,11 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             });
             scrolled_window.hadjustment = hadj;
 
-            spacer = new Crumb.spacer (); //TODO Use different widget or omit?
+            spacer = new Gtk.Label ("") {
+                width_request = 48,
+                halign = Gtk.Align.START
+            }; //TODO Use different widget or omit?
+
             main_child = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
                 halign = Gtk.Align.START
             };
@@ -123,7 +127,6 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 action_name = "win.refresh",
                 hexpand = false,
                 halign = Gtk.Align.END,
-                margin_start = 24,
                 can_focus = false
             };
             var search_button = new Gtk.Button () {
@@ -157,9 +160,9 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                         protocol + crumb.dir_path,
                         OpenFlag.DEFAULT
                     );
+                } else {
+                    path_bar.mode = PathBarMode.ENTRY; // Clicked on spacer or empty
                 }
-
-                path_bar.mode = PathBarMode.ENTRY; // Clicked on spacer or empty
             });
             scrolled_window.add_controller (primary_gesture);
 
@@ -218,11 +221,9 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         public Crumb? get_crumb_from_coords (double x, double y) {
             var widget = main_child.pick (x, y, Gtk.PickFlags.DEFAULT);
             if (widget != null) {
-                if (widget is Crumb) {
+                widget = widget.get_ancestor (typeof (Crumb));
+                if (widget != null) {
                     return (Crumb)widget;
-                } else {
-                    var crumb = (Crumb)(widget.get_ancestor (typeof (Crumb)));
-                    return crumb;
                 }
             }
 
@@ -244,13 +245,6 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             Object (
                 dir_path: path,
                 show_separator: show_separator
-            );
-        }
-
-        public Crumb.spacer () {
-            Object (
-                dir_path: null,
-                show_separator: false
             );
         }
 
