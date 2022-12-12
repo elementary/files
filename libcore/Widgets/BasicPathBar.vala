@@ -24,12 +24,12 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
     }
 
     /* PathBar Interface */
-
     protected BasicBreadcrumbs breadcrumbs;
     protected BasicPathEntry path_entry;
     public PathBarMode mode { get; set; default = PathBarMode.CRUMBS; }
     public string display_uri { get; set; default = ""; }
 
+    //TODO Implement animation (use revealer transitions?)
     public bool with_animation {
         set {
             breadcrumbs.animate = value;
@@ -123,6 +123,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 action_name = "win.refresh",
                 hexpand = false,
                 halign = Gtk.Align.END,
+                margin_start = 24,
                 can_focus = false
             };
             var search_button = new Gtk.Button () {
@@ -131,6 +132,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 action_target = "",
                 hexpand = false,
                 halign = Gtk.Align.START,
+                margin_end = 24,
                 can_focus = false
             };
 
@@ -175,14 +177,23 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 //Make crumbs
                 string crumb_path = "";
                 if (parts.length == 0) {
-                    crumbs.append (new Crumb (Path.DIR_SEPARATOR_S));
+                    crumbs.append (new Crumb (protocol, false));
                 } else {
+                    var last = parts.length - 1;
+                    int index = 0;
                     foreach (unowned var part in parts) {
-                        if (part != "") {
-                            crumb_path += Path.DIR_SEPARATOR_S + part;
-                            var crumb = new Crumb (crumb_path);
-                            crumbs.append (crumb);
+                        crumb_path += part;
+                        var crumb = new Crumb (crumb_path, index != last);
+                        crumbs.append (crumb);
+                        if (crumb.hide_previous) {
+                            int j = 0;
+                            while (j < index) {
+                                crumbs.nth_data (j).hide ();
+                                j++;
+                            }
                         }
+                        index++;
+                        crumb_path += Path.DIR_SEPARATOR_S;
                     }
                 }
 
@@ -221,34 +232,32 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
     protected class Crumb : Gtk.Widget {
         public string? dir_path { get; construct; }
-        public bool show_icon { get; construct; }
-        public bool show_name { get; construct; }
+        public bool show_separator { get; construct; }
 
         private Gtk.Label name_label;
-        private Gtk.Image dir_icon;
-        private Gtk.Revealer icon_revealer;
-        private Gtk.Revealer name_revealer;
+        private Gtk.Image? dir_icon = null;
+        private Gtk.Image? separator_image = null;
 
+        public bool hide_previous = false;
 
-        public Crumb (string? path, bool show_icon = false, bool show_name = true) {
+        public Crumb (string? path, bool show_separator) {
             Object (
                 dir_path: path,
-                show_icon: show_icon,
-                show_name: show_name
+                show_separator: show_separator
             );
         }
 
         public Crumb.spacer () {
             Object (
                 dir_path: null,
-                show_icon: false,
-                show_name: false
+                show_separator: false
             );
         }
 
         ~Crumb () {
-            icon_revealer.unparent ();
-            name_revealer.unparent ();
+            while (this.get_last_child () != null) {
+                this.get_last_child ().unparent ();
+            }
         }
 
         construct {
@@ -256,21 +265,51 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             var layout = new Gtk.BoxLayout (Gtk.Orientation.HORIZONTAL);
             set_layout_manager (layout);
             name_label = new Gtk.Label (
-                dir_path != null ? Path.get_basename (dir_path) : "SPACE"
-            );
-            dir_icon = new Gtk.Image () {
-                icon_name = "image-missing-symbolic"
+                dir_path != null ? Path.get_basename (dir_path) : "") {
+                margin_start = 3
             };
-            icon_revealer = new Gtk.Revealer ();
-            icon_revealer.child = dir_icon;
-            name_revealer = new Gtk.Revealer ();
-            name_revealer.child = name_label;
 
-            icon_revealer.set_parent (this);
-            name_revealer.set_parent (this);
+            string path, display_name, protocol;
+            Icon? icon;
+            FileUtils.split_protocol_from_path (dir_path, out protocol, out path);
+            unowned var key = path != "" ? path : protocol;
+            unowned var icon_map = BreadcrumbIconMap.get_default ();
+            bool result = icon_map.get_icon_info_for_key (
+                key,
+                out icon,
+                out display_name,
+                out hide_previous
+            );
+            if (result) {
+                dir_icon = new Gtk.Image () {
+                    gicon = icon,
+                    margin_end = 6
+                };
+            }
 
-            icon_revealer.set_reveal_child (show_icon);
-            name_revealer.set_reveal_child (show_name);
+            if (display_name != "") {
+                name_label.label = display_name;
+            } else {
+                name_label.label = Path.get_basename (dir_path);
+            }
+
+            if (dir_icon != null) {
+                dir_icon.set_parent (this);
+            }
+
+            if (name_label.label != "") {
+                name_label.set_parent (this);
+            }
+
+            if (show_separator) {
+                separator_image = new Gtk.Image () {
+                    gicon = new ThemedIcon ("go-next-symbolic"),
+                    margin_start = 24
+                };
+                separator_image.set_parent (this);
+            }
+
+
         }
     }
 

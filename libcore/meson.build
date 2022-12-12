@@ -13,6 +13,7 @@ pantheon_files_core_deps = [
 pantheon_files_core_vala_files = files(
     'Bookmark.vala',
     'BookmarkList.vala',
+    'BreadcrumbIconMap.vala',
     'CallWhenReady.vala',
     'ConnectServerOperation.vala',
     'ConnectServerDialog.vala',
