@@ -1123,6 +1123,7 @@ public class Files.Window : Gtk.ApplicationWindow {
 
         update_top_menu ();
         top_menu.working = false;
+        // top_menu.mode =
     }
 
     private void action_selection_changing () {

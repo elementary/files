@@ -153,6 +153,7 @@ public class Files.HeaderBar : Object {
     }
 
     public void update_path_bar (string new_path, bool with_animation = true) {
+        path_bar.mode = PathBarMode.CRUMBS;
         path_bar.with_animation = with_animation;
         path_bar.display_uri = new_path;
         path_bar.with_animation = true;
