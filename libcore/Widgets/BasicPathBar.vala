@@ -178,25 +178,29 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                     parts = path.split (Path.DIR_SEPARATOR_S);
                     //Make crumbs
                     string crumb_path = "";
-                    if (parts.length == 0) {
-                        crumbs.append (new Crumb (protocol, false));
-                    } else {
-                        var last = parts.length - 1;
-                        int index = 0;
-                        foreach (unowned var part in parts) {
-                            crumb_path += part;
-                            var crumb = new Crumb (crumb_path, index != last);
-                            crumbs.append (crumb);
-                            if (crumb.hide_previous) {
-                                int j = 0;
-                                while (j < index) {
-                                    crumbs.nth_data (j).hide ();
-                                    j++;
-                                }
-                            }
+                    crumbs.append (new Crumb (protocol, false));
+                    var last = parts.length - 1;
+                    int index = 0;
+                    foreach (unowned var _part in parts) {
+                        var part = _part.strip ();
+                        if (part == "" || part == ".") {
                             index++;
-                            crumb_path += Path.DIR_SEPARATOR_S;
+                            continue;
                         }
+
+                        crumb_path += part;
+                        var crumb = new Crumb (crumb_path, index != last);
+                        crumbs.append (crumb);
+                        if (crumb.hide_previous) {
+                            int j = 0;
+                            while (j < index) {
+                                crumbs.nth_data (j).hide ();
+                                j++;
+                            }
+                        }
+
+                        index++;
+                        crumb_path += Path.DIR_SEPARATOR_S;
                     }
 
                     foreach (var crumb in crumbs) {
@@ -228,10 +232,10 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         }
 
         public string get_uri_from_crumbs () {
-            var sb = new StringBuilder (protocol);
+            var sb = new StringBuilder ();
             foreach (unowned var crumb in crumbs) {
+                sb.append (crumb.path_fragment);
                 sb.append (Path.DIR_SEPARATOR_S);
-                sb.append (Path.get_basename (crumb.dir_path));
             }
 
             return sb.str;
@@ -251,7 +255,8 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
     }
 
     protected class Crumb : Gtk.Widget {
-        public string? dir_path { get; construct; }
+        public string dir_path { get; construct; }
+        public string path_fragment { get; construct; }
         public bool show_separator { get; construct; }
 
         private Gtk.Label name_label;
@@ -260,7 +265,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
         public bool hide_previous = false;
 
-        public Crumb (string? path, bool show_separator) {
+        public Crumb (string path, bool show_separator) {
             Object (
                 dir_path: path,
                 show_separator: show_separator
@@ -277,14 +282,20 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             name ="crumb";
             var layout = new Gtk.BoxLayout (Gtk.Orientation.HORIZONTAL);
             set_layout_manager (layout);
-            name_label = new Gtk.Label (
-                dir_path != null ? Path.get_basename (dir_path) : "") {
+            name_label = new Gtk.Label ("") {
                 margin_start = 3
             };
 
             string path, display_name, protocol;
             Icon? icon;
             FileUtils.split_protocol_from_path (dir_path, out protocol, out path);
+            if (path != "") {
+                path_fragment = Path.get_basename (path);
+            } else if (protocol.has_prefix ("file:")) {
+                path_fragment = "";
+            } else {
+                path_fragment = protocol;
+            }
             unowned var key = path != "" ? path : protocol;
             unowned var icon_map = BreadcrumbIconMap.get_default ();
             bool result = icon_map.get_icon_info_for_key (
@@ -303,7 +314,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             if (display_name != "") {
                 name_label.label = display_name;
             } else {
-                name_label.label = Path.get_basename (dir_path);
+                name_label.label = path_fragment;
             }
 
             if (dir_icon != null) {
@@ -321,8 +332,6 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 };
                 separator_image.set_parent (this);
             }
-
-
         }
     }
 
@@ -344,6 +353,15 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
         private Gtk.Entry path_entry;
 
+        public string completion_placeholder { get; set; default = ""; }
+        public int cursor_position {
+            set {
+                path_entry.set_position (value);
+            }
+        }
+
+        public signal void completion_request ();
+
         public BasicPathEntry (PathBarInterface path_bar) {
             Object (path_bar: path_bar);
         }
@@ -355,10 +373,27 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 path_bar.display_uri = FileUtils.sanitize_path (path_entry.text);
                 path_bar.mode = PathBarMode.CRUMBS;
             });
+
+            path_entry.changed.connect (() => {
+                if (this.visible && path_entry.text.contains (Path.DIR_SEPARATOR_S)) {
+                    warning ("emit completion requiest");
+                    completion_request ();
+                }
+            });
         }
 
         public override bool grab_focus () {
             return path_entry.grab_focus ();
+        }
+
+        // Completion support (not used by BasicPathBar)
+        public void set_entry_text (string? txt) {
+            if (text != null) {
+                path_entry.text = txt;
+                path_entry.set_position (-1);
+            } else {
+                path_entry.text = "";
+            }
         }
     }
 }
