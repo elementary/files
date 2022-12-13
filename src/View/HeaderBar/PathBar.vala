@@ -72,6 +72,11 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
         completion_list = new Gee.ArrayList<string> ();
 
         path_entry.completion_request.connect (completion_needed);
+        notify["mode"].connect (() => {
+            if (mode != PathBarMode.ENTRY) {
+                completion_popover.popdown ();
+            }
+        });
 
         // Enable breadcrumb context menu
         var secondary_gesture = new Gtk.GestureClick () {
