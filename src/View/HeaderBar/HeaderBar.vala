@@ -1,5 +1,5 @@
 /*
-* Copyright 2020 elementary, Inc. (https://elementary.io)
+* Copyright 2022 elementary, Inc. (https://elementary.io)
 *           2010 mathijshenquet <mathijs.henquet@gmail.com>
 *
 * This program is free software; you can redistribute it and/or
@@ -22,8 +22,6 @@
 */
 
 public class Files.HeaderBar : Object {
-    // public signal void forward (int steps);
-    // public signal void back (int steps); /* TODO combine using negative step */
     public signal void focus_location_request (GLib.File? location);
     public signal void escape ();
     public signal void reload_request ();
@@ -88,39 +86,10 @@ public class Files.HeaderBar : Object {
             path_bar.activate_action ("win.back", "i", 1);
         });
 
-        // path_bar.reload_request.connect (() => {
-        //     reload_request ();
-        // });
-
         path_bar.focus_file_request.connect ((file) => {
             focus_location_request (file);
         });
-
-        //TODO Implement focus tracking for Gtk4 if required
-        // path_bar.focus_in_event.connect ((event) => {
-        //     locked_focus = true;
-        //     return focus_in_event (event);
-        // });
-
-        // path_bar.focus_out_event.connect ((event) => {
-        //     locked_focus = false;
-        //     return focus_out_event (event);
-        // });
-
-        // path_bar.path_change_request.connect ((path, flag) => {
-        //     path_change_request (path, flag);
-        // });
-
-        // path_bar.escape.connect (() => {escape ();});
     }
-
-    // public bool enter_search_mode (string term = "") {
-    //     return path_bar.enter_search_mode (term);
-    // }
-
-    // public bool enter_navigate_mode () {
-    //     return path_bar.enter_navigate_mode ();
-    // }
 
     public void set_back_menu (Gee.List<string> path_list) {
         /* Clear the back menu and re-add the correct entries. */
