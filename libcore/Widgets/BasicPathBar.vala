@@ -103,13 +103,10 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 hscrollbar_policy = Gtk.PolicyType.EXTERNAL,
                 vscrollbar_policy = Gtk.PolicyType.NEVER,
                 hexpand = true,
-                focusable = false
+                focusable = false,
+                propagate_natural_width = true
             };
-            var hadj = new Gtk.Adjustment (0.0, 0.0, 100.0, 1.0, 1.0 , 1.0);
-            hadj.changed.connect (() => {
-                hadj.value = main_child.get_allocated_width () - scrolled_window.get_allocated_width ();
-            });
-            scrolled_window.hadjustment = hadj;
+
 
             spacer = new Gtk.Label ("") {
                 width_request = 48,
@@ -166,45 +163,67 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             });
             scrolled_window.add_controller (primary_gesture);
 
-            notify["uri"].connect (() => {
-                FileUtils.split_protocol_from_path (uri, out protocol, out path);
-                spacer.unparent ();
-                foreach (var crumb in crumbs) {
-                    crumb.unparent ();
-                    crumb.destroy ();
-                }
-                crumbs = null;
-                //Break apart
-                string[] parts;
-                parts = path.split (Path.DIR_SEPARATOR_S);
-                //Make crumbs
-                string crumb_path = "";
-                if (parts.length == 0) {
-                    crumbs.append (new Crumb (protocol, false));
-                } else {
-                    var last = parts.length - 1;
-                    int index = 0;
-                    foreach (unowned var part in parts) {
-                        crumb_path += part;
-                        var crumb = new Crumb (crumb_path, index != last);
-                        crumbs.append (crumb);
-                        if (crumb.hide_previous) {
-                            int j = 0;
-                            while (j < index) {
-                                crumbs.nth_data (j).hide ();
-                                j++;
-                            }
-                        }
-                        index++;
-                        crumb_path += Path.DIR_SEPARATOR_S;
+            scrolled_window.realize.connect_after (() => {
+                var hadj = scrolled_window.hadjustment;
+                notify["uri"].connect (() => {
+                    FileUtils.split_protocol_from_path (uri, out protocol, out path);
+                    spacer.unparent ();
+                    foreach (var crumb in crumbs) {
+                        crumb.unparent ();
+                        crumb.destroy ();
                     }
-                }
+                    crumbs = null;
+                    //Break apart
+                    string[] parts;
+                    parts = path.split (Path.DIR_SEPARATOR_S);
+                    //Make crumbs
+                    string crumb_path = "";
+                    if (parts.length == 0) {
+                        crumbs.append (new Crumb (protocol, false));
+                    } else {
+                        var last = parts.length - 1;
+                        int index = 0;
+                        foreach (unowned var part in parts) {
+                            crumb_path += part;
+                            var crumb = new Crumb (crumb_path, index != last);
+                            crumbs.append (crumb);
+                            if (crumb.hide_previous) {
+                                int j = 0;
+                                while (j < index) {
+                                    crumbs.nth_data (j).hide ();
+                                    j++;
+                                }
+                            }
+                            index++;
+                            crumb_path += Path.DIR_SEPARATOR_S;
+                        }
+                    }
 
-                foreach (var crumb in crumbs) {
-                    main_child.append (crumb);
-                }
+                    foreach (var crumb in crumbs) {
+                        main_child.append (crumb);
+                    }
 
-                main_child.append (spacer);
+                    main_child.append (spacer);
+                    // Scroll to show the last breadcrumb
+                    hadj.changed ();
+                });
+
+                hadj.changed.connect (() => {
+                    // Show last breadcrumb when uri or window width changes
+                    // Without the idle, does not scroll to correct position sometimes
+                    Idle.add (() => {
+                        hadj.set_value (
+                            main_child.get_allocated_width () - scrolled_window.get_allocated_width ()
+                        );
+                        return Source.REMOVE;
+                    });
+                });
+
+                // Update pathbar and show last breadcrumb on initial showing of window
+                Idle.add (() => {
+                    notify_property ("uri");
+                    return Source.REMOVE;
+                });
             });
         }
 
