@@ -103,7 +103,6 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 hscrollbar_policy = Gtk.PolicyType.EXTERNAL,
                 vscrollbar_policy = Gtk.PolicyType.NEVER,
                 hexpand = true,
-                focusable = false,
                 propagate_natural_width = true
             };
 
@@ -354,6 +353,15 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         private Gtk.Entry path_entry;
 
         public string completion_placeholder { get; set; default = ""; }
+        public bool select_all {
+            set {
+                if (value) {
+                    path_entry.select_region (0, -1);
+                } else {
+                    path_entry.select_region (int.MAX, -1);
+                }
+            }
+        }
         public int cursor_position {
             set {
                 path_entry.set_position (value);
@@ -367,6 +375,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         }
 
         construct {
+            path_entry.input_purpose = Gtk.InputPurpose.URL;
             path_entry = new Gtk.Entry (); //TODO Use validated entry?
             path_entry.set_parent (this);
             path_entry.activate.connect (() => {

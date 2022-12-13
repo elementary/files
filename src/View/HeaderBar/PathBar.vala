@@ -31,11 +31,42 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
         set_text_action.activate.connect ((param) => {
             path_entry.text = param.get_string ();
         });
+        var tab_complete_action = new SimpleAction ("tab-complete", null);
+        tab_complete_action.activate.connect (() => {
+            var common_text = get_common_completion ();
+            if (common_text != "") {
+                path_entry.text = common_text;
+                Idle.add (() => {
+                    path_entry.select_all = false;
+                    path_entry.cursor_position = -1;
+                    return Source.REMOVE;
+                });
+            }
+        });
+
+        var key_controller = new Gtk.EventControllerKey () {
+            propagation_phase = Gtk.PropagationPhase.CAPTURE
+        };
+        key_controller.key_pressed.connect ((keyval, keycode, state) => {
+            if (Gdk.keyval_name (keyval) == "Tab") {
+                if (completion_popover.visible) {
+                    tab_complete_action.activate (null);
+                    return true;
+                }
+            }
+
+            return false;
+        });
+        path_entry.add_controller (key_controller);
+
         var pathbar_action_group = new SimpleActionGroup ();
         pathbar_action_group.add_action (set_text_action);
         insert_action_group ("pathbar", pathbar_action_group);
 
-        completion_popover = new Gtk.PopoverMenu.from_model (null);
+        completion_popover = new Gtk.PopoverMenu.from_model (null) {
+            autohide = false,
+            can_focus = false
+        };
         completion_popover.set_parent (this);
         completion_model = new Menu ();
         completion_list = new Gee.ArrayList<string> ();
@@ -189,6 +220,40 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
                     }
                 }
             );
+        }
+    }
+
+    private string get_common_completion () {
+        if (completion_list.size == 0) {
+            return "";
+        } else {
+            var previous_common_text = "";
+            int n_chars = int.MAX;
+            completion_list.foreach ((uri) => {
+                var basename = Path.get_basename (uri);
+                warning ("basename %s", basename);
+                if (previous_common_text == "") {
+                    previous_common_text = basename;
+                    n_chars = basename.length;
+                } else {
+                    int i = 0;
+                    while (basename[i] == previous_common_text[i] && i <= n_chars) {
+                        i++;
+                    }
+                    n_chars = i;
+                    return n_chars > 0;
+                }
+
+                return true;
+            });
+
+            if (n_chars <= previous_common_text.length) {
+                var common_dir = current_completion_dir.file.uri;
+                var common_base = previous_common_text.slice (0, n_chars);
+                return Path.build_filename (common_dir, common_base);
+            } else {
+                return "";
+            }
         }
     }
 
