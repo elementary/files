@@ -19,14 +19,30 @@
 public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
     /** Completion support **/
     private Directory? current_completion_dir = null;
-    private string completion_text = "";
-    private bool autocompleted = false;
-    private bool multiple_completions = false;
-    /* The string which contains the text we search in the file. e.g, if the
-     * user enter /home/user/a, we will search for "a". */
-    private string to_search = "";
+    private Gtk.PopoverMenu completion_popover;
+    private Menu completion_model;
+    //For sorting suggestions
+    private Gee.ArrayList<string> completion_list;
+    private string to_complete = "";
 
     construct {
+        // Enable path entry completions
+        var set_text_action = new SimpleAction ("set-text", new VariantType ("s"));
+        set_text_action.activate.connect ((param) => {
+            path_entry.text = param.get_string ();
+        });
+        var pathbar_action_group = new SimpleActionGroup ();
+        pathbar_action_group.add_action (set_text_action);
+        insert_action_group ("pathbar", pathbar_action_group);
+
+        completion_popover = new Gtk.PopoverMenu.from_model (null);
+        completion_popover.set_parent (this);
+        completion_model = new Menu ();
+        completion_list = new Gee.ArrayList<string> ();
+
+        path_entry.completion_request.connect (completion_needed);
+
+        // Enable breadcrumb context menu
         var secondary_gesture = new Gtk.GestureClick () {
             button = Gdk.BUTTON_SECONDARY
         };
@@ -35,8 +51,6 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
             secondary_gesture.set_state (Gtk.EventSequenceState.CLAIMED);
             handle_secondary_press (x, y);
         });
-
-        path_entry.completion_request.connect (completion_needed);
     }
 
 /** Context menu related functions
@@ -120,22 +134,22 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
             return;
         }
 
-        to_search = "";
+        to_complete = "";
         /* don't use get_basename (), it will return "folder" for "/folder/" */
         int last_slash = txt.last_index_of_char ('/');
         if (last_slash > -1 && last_slash < txt.length) {
-            to_search = txt.slice (last_slash + 1, txt.length);
+            to_complete = txt.slice (last_slash + 1, txt.length);
         }
-        if (to_search.length > 0) {
+        if (to_complete.length > 0) {
             do_completion (txt);
         } else {
-            set_completion_text ("");
+            completion_popover.popdown ();
         }
     }
 
     private void do_completion (string path) {
         GLib.File? file = FileUtils.get_file_for_path (FileUtils.sanitize_path (path, display_uri));
-        if (file == null || autocompleted) {
+        if (file == null) {
             return;
         }
 
@@ -147,107 +161,49 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
 
         if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
             current_completion_dir = Directory.from_gfile (file);
+            current_completion_dir.init.begin ();
+            completion_popover.popdown ();
         } else if (current_completion_dir != null && current_completion_dir.can_load) {
-            set_completion_text ("");
-        } else {
-            return;
-        }
+            completion_list.clear ();
+            /* Completion text set by on_file_loaded () */
+            current_completion_dir.init.begin (
+                on_file_loaded,
+                (obj, res) => {
+                    if (current_completion_dir.init.end (res)) {
+                        var completion_menu = new Menu ();
+                        completion_list.sort ();
+                        completion_list.foreach ((uri) => {
+                            completion_menu.append (
+                                Path.get_basename (uri),
+                                Action.print_detailed_name (
+                                    "pathbar.set-text",
+                                    new Variant ("s", uri)
+                                )
+                            );
 
-        /* Completion text set by on_file_loaded () */
-        current_completion_dir.init.begin (on_file_loaded);
-    }
+                            return true;
+                        });
 
-    protected void complete () {
-        if (completion_text.length == 0) {
-            return;
-        }
-
-        string path = path_entry.text + completion_text;
-        /* If there are multiple results, tab as far as we can, otherwise do the entire result */
-        if (!multiple_completions) {
-            completed (path);
-        } else {
-            path_entry.set_entry_text (path);
-        }
-    }
-
-    private void completed (string txt) {
-        var gfile = FileUtils.get_file_for_path (txt); /* Sanitizes path */
-        var newpath = gfile.get_path ();
-
-        /* If path changed, update breadcrumbs and continue editing */
-        if (newpath != null) {
-            /* If completed, then GOF File must exist */
-            if ((Files.File.@get (gfile)).is_directory) {
-                newpath += GLib.Path.DIR_SEPARATOR_S;
-            }
-
-            path_entry.set_entry_text (newpath);
-        }
-
-        set_completion_text ("");
-    }
-
-    private void set_completion_text (string txt) {
-        completion_text = txt;
-        if (path_entry.completion_placeholder != completion_text) {
-            path_entry.completion_placeholder = completion_text;
-            queue_draw ();
-            /* This corrects undiagnosed bug after completion required on remote filesystem */
-            path_entry.cursor_position = -1;
+                        completion_popover.menu_model = completion_menu;
+                        completion_popover.popup ();
+                    }
+                }
+            );
         }
     }
 
-    /**
-     * This function is used as a callback for files.file_loaded.
-     * We check that the file can be used
-     * in auto-completion, if yes we put it in our entry.
-     *
-     * @param file The file you want to load
-     *
-     **/
+    // Update the list of possible completions based on entry so far
+    // If non-zero completions popup suggestion popover
     private void on_file_loaded (Files.File file) {
         if (!file.is_directory) {
             return;
         }
 
         string file_display_name = file.get_display_name ();
-        if (file_display_name.length > to_search.length) {
-            if (file_display_name.ascii_ncasecmp (to_search, to_search.length) == 0) {
-                if (!autocompleted) {
-                    set_completion_text (file_display_name.slice (to_search.length, file_display_name.length));
-                    autocompleted = true;
-                } else {
-                    string file_complet = file_display_name.slice (to_search.length, file_display_name.length);
-                    string to_add = "";
-                    for (int i = 0; i < int.min (completion_text.length, file_complet.length); i++) {
-                        if (completion_text[i] == file_complet[i]) {
-                            to_add += completion_text[i].to_string ();
-                        } else {
-                            break;
-                        }
-                    }
-
-                    set_completion_text (to_add);
-                    multiple_completions = true;
-                }
-
-                string? str = null;
-                if (path_entry.text.length >= 1) {
-                    str = path_entry.text.slice (0, path_entry.text.length - to_search.length);
-                }
-
-                if (str == null) {
-                    return;
-                }
-
-                /* autocompletion is case insensitive so we have to change the first completed
-                 * parts to the match the filename (if unique match and if the user did not
-                 * deliberately enter an uppercase character).
-                 */
-                if (!multiple_completions && !(to_search.down () != to_search)) {
-                    path_entry.text = (str + file_display_name.slice (0, to_search.length));
-                }
+        if (file_display_name.length > to_complete.length) {
+            if (file_display_name.ascii_ncasecmp (to_complete, to_complete.length) == 0) {
+                //Start of filename matches search term
+                completion_list.add (file.uri);
             }
         }
     }
