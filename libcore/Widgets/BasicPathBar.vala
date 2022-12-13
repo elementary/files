@@ -335,10 +335,6 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
     }
 
     protected class BasicPathEntry : Gtk.Widget {
-        static construct {
-            set_layout_manager_type (typeof (Gtk.BinLayout));
-        }
-
         public PathBarInterface path_bar { get; construct; }
         public string text {
             get {
@@ -375,9 +371,14 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         }
 
         construct {
+            var layout = new Gtk.BoxLayout (Gtk.Orientation.HORIZONTAL);
+            set_layout_manager (layout);
+            hexpand = true;
+
             path_entry.input_purpose = Gtk.InputPurpose.URL;
-            path_entry = new Gtk.Entry (); //TODO Use validated entry?
-            path_entry.set_parent (this);
+            path_entry = new Gtk.Entry () {
+                hexpand = true
+            }; //TODO Use validated entry?
             path_entry.activate.connect (() => {
                 path_bar.display_uri = FileUtils.sanitize_path (path_entry.text);
                 path_bar.mode = PathBarMode.CRUMBS;
@@ -389,6 +390,17 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                     completion_request ();
                 }
             });
+
+            var navigate_button = new Gtk.Button.from_icon_name (
+                "go-jump-symbolic"
+            ) {
+                halign = Gtk.Align.END,
+                hexpand = false,
+                can_focus = false
+            };
+
+            path_entry.set_parent (this);
+            navigate_button.set_parent (this);
         }
 
         public override bool grab_focus () {
