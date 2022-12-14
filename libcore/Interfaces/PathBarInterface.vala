@@ -24,8 +24,13 @@ public interface Files.PathBarInterface : Gtk.Widget {
     public signal void focus_file_request (GLib.File? file);
     public signal void reload_request ();
     // public signal void escape ();
+    // Need this signal for FileChooser (cannot use action?)
+    public signal void path_change_request (string uri);
 
     public virtual void search (string term) {}
+    public virtual void navigate_to_uri (string uri) {
+        path_change_request (uri);
+    }
     // public virtual void enter_navigate_mode () {} //TODO Improve name
     public virtual void cancel () {}
     // public abstract void set_display_uri (string uri);

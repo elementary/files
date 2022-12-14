@@ -89,6 +89,13 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
         });
     }
 
+    public override void navigate_to_uri (string uri) {
+        // Use an existing action rather than the signal used for the filechooser
+        activate_action (
+            "win.path-change-request", "(su)", uri, Files.OpenFlag.DEFAULT
+        );
+    }
+
 /** Context menu related functions
 /*******************************/
     private void handle_secondary_press (double x, double y) {

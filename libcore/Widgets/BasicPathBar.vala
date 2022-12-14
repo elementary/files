@@ -386,7 +386,6 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
             path_entry.changed.connect (() => {
                 if (this.visible && path_entry.text.contains (Path.DIR_SEPARATOR_S)) {
-                    warning ("emit completion requiest");
                     completion_request ();
                 }
             });
@@ -398,6 +397,11 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 hexpand = false,
                 can_focus = false
             };
+
+            navigate_button.clicked.connect (() => {
+                //TODO Validate text as valid path?
+                path_bar.navigate_to_uri (path_entry.text);
+            });
 
             path_entry.set_parent (this);
             navigate_button.set_parent (this);
