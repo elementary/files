@@ -32,4 +32,50 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         this.try_trash = try_trash;
         this.user_cancel = false;
     }
+
+    protected bool confirm_delete_from_trash (GLib.List<GLib.File> to_delete_files) {
+        string prompt;
+
+        /* Only called if confirmation known to be required - do not second guess */
+        uint file_count = to_delete_files.length ();
+        if (file_count == 1) {
+            string basename = Files.FileUtils.custom_basename_from_file (to_delete_files.data);
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+            prompt = _("Are you sure you want to permanently delete \"%s\" from the trash?").printf (basename);
+        } else {
+            prompt = ngettext ("Are you sure you want to permanently delete the %'d selected item from the trash?",
+                               "Are you sure you want to permanently delete the %'d selected items from the trash?",
+                               file_count).printf (file_count);
+        }
+
+        return run_warning (prompt,
+                            _("If you delete an item, it will be permanently lost."),
+                            null,
+                            false,
+                            CANCEL, DELETE) == 1;
+    }
+
+    protected bool confirm_delete_directly (GLib.List<GLib.File> to_delete_files) {
+        string prompt;
+
+        /* Only called if confirmation known to be required - do not second guess */
+        uint file_count = to_delete_files.length ();
+        if (file_count == 1) {
+            string basename = Files.FileUtils.custom_basename_from_file (to_delete_files.data);
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+            prompt = _("Permanently delete “%s”?").printf (basename);
+        } else {
+            prompt = ngettext ("Are you sure you want to permanently delete the %'d selected item?",
+                               "Are you sure you want to permanently delete the %'d selected items?",
+                               file_count).printf (file_count);
+        }
+
+        return run_warning (prompt,
+                            _("Deleted items are not sent to Trash and are not recoverable."),
+                            null,
+                            false,
+                            CANCEL, DELETE) == 1;
+    }
 }
