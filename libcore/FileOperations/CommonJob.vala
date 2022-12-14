@@ -119,15 +119,12 @@ public class Files.FileOperations.CommonJob {
                 string primary = _("Error while copying to \"%s\".").printf (dest_name);
                 unowned string secondary = _("The destination is not a folder.");
 
-                PF.run_error (parent_window,
-                              time,
-                              progress,
-                              primary,
-                              secondary,
-                              null,
-                              false,
-                              CANCEL,
-                              null);
+                run_error (primary,
+                           secondary,
+                           null,
+                           false,
+                           CANCEL,
+                           null);
 
                 abort_job ();
                 return;
@@ -151,15 +148,12 @@ public class Files.FileOperations.CommonJob {
                 details = e.message;
             }
 
-            int response = PF.run_error (parent_window,
-                                         time,
-                                         progress,
-                                         primary,
-                                         secondary,
-                                         details,
-                                         false,
-                                         CANCEL, RETRY,
-                                         null);
+            int response = run_error (primary,
+                                      secondary,
+                                      details,
+                                      false,
+                                      CANCEL, RETRY,
+                                      null);
 
             if (response == 0 || response == Gtk.ResponseType.DELETE_EVENT) {
                 abort_job ();
@@ -195,17 +189,14 @@ public class Files.FileOperations.CommonJob {
                     /// So this represents something like "There is 100 MB available, but 150 MB is required".
                     var details = _("There is %s available, but %s is required.").printf (free_size_format, required_size_format);
 
-                    int response = PF.run_warning (parent_window,
-                                                   time,
-                                                   progress,
-                                                   primary,
-                                                   secondary,
-                                                   details,
-                                                   false,
-                                                   CANCEL,
-                                                   COPY_FORCE,
-                                                   RETRY,
-                                                   null);
+                    int response = run_warning (primary,
+                                                secondary,
+                                                details,
+                                                false,
+                                                CANCEL,
+                                                COPY_FORCE,
+                                                RETRY,
+                                                null);
 
                     if (response == 0 || response == Gtk.ResponseType.DELETE_EVENT) {
                         abort_job ();
@@ -226,15 +217,12 @@ public class Files.FileOperations.CommonJob {
                 var primary = _("Error while copying to \"%s\".").printf (dest_name);
                 unowned string secondary = _("The destination is read-only.");
 
-                PF.run_error (parent_window,
-                              time,
-                              progress,
-                              primary,
-                              secondary,
-                              null,
-                              false,
-                              CANCEL,
-                              null);
+                run_error (primary,
+                           secondary,
+                           null,
+                           false,
+                           CANCEL,
+                           null);
 
                 abort_job ();
             }
@@ -244,5 +232,159 @@ public class Files.FileOperations.CommonJob {
              */
             return;
         }
+    }
+
+    private int run_simple_dialog_va (Gtk.MessageType message_type,
+                                      owned string primary_text,
+                                      owned string secondary_text,
+                                      string? details_text,
+                                      bool show_all,
+                                      va_list varargs) {
+        int result = 0;
+        time.stop ();
+        progress.pause ();
+
+        unowned string image_name;
+        switch (message_type) {
+            case Gtk.MessageType.ERROR:
+                image_name = "dialog-error";
+                break;
+            case Gtk.MessageType.WARNING:
+                image_name = "dialog-warning";
+                break;
+            case Gtk.MessageType.QUESTION:
+                image_name = "dialog-question";
+                break;
+            default:
+                image_name = "dialog-information";
+                break;
+        }
+
+        var main_loop = new GLib.MainLoop ();
+        var buttons = new GLib.List<string> ();
+        for (unowned string? title = varargs.arg<string?> (); title != null ; title = varargs.arg<string?> ()) {
+            buttons.append (title);
+        }
+
+        Idle.add (() => {
+            var dialog = new Granite.MessageDialog.with_image_from_icon_name (primary_text,
+                                                                              secondary_text,
+                                                                              image_name,
+                                                                              Gtk.ButtonsType.NONE);
+            dialog.transient_for = parent_window;
+            int response_id = 0;
+            foreach (unowned string title in buttons) {
+                unowned Gtk.Widget button = dialog.add_button (title, response_id);
+                if (title == DELETE || title == DELETE_ALL || title == EMPTY_TRASH) {
+                    button.add_css_class (Granite.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                }
+
+                response_id++;
+            }
+
+            if (response_id == 0) {
+                dialog.add_button (_("Close"), 0);
+            }
+
+            //FIXME: Granite.MessageDialog.show_error_details call Gtk.Widget.show_all ()
+            // which breaks the current implementation in marlin-file-operation.c
+            // as the dialog is being created in a thread but presented in the
+            // Gtk thread. Remove the Idle.add once everything is done in the Gtk thread.
+            if (details_text != null) {
+                dialog.show_error_details (details_text);
+            }
+
+            dialog.response.connect ((response_id) => {
+                result = response_id;
+                main_loop.quit ();
+                dialog.destroy ();
+            });
+
+            dialog.show ();
+            return Source.REMOVE;
+        });
+
+        main_loop.run ();
+        progress.resume ();
+        time.continue ();
+        return result;
+    }
+
+    public int run_error (owned string primary_text,
+                          owned string secondary_text,
+                          string? details_text,
+                          bool show_all,
+                          ...) {
+        return run_simple_dialog_va (Gtk.MessageType.ERROR,
+                                     (owned) primary_text,
+                                     (owned) secondary_text,
+                                     details_text,
+                                     show_all,
+                                     va_list ());
+    }
+
+    public int run_warning (owned string primary_text,
+                            owned string secondary_text,
+                            string? details_text,
+                            bool show_all,
+                            ...) {
+        return run_simple_dialog_va (Gtk.MessageType.WARNING,
+                                     (owned) primary_text,
+                                     (owned) secondary_text,
+                                     details_text,
+                                     show_all,
+                                     va_list ());
+    }
+
+    public int run_question (owned string primary_text,
+                             owned string secondary_text,
+                             string? details_text,
+                             bool show_all,
+                             ...) {
+        return run_simple_dialog_va (Gtk.MessageType.QUESTION,
+                                     (owned) primary_text,
+                                     (owned) secondary_text,
+                                     details_text,
+                                     show_all,
+                                     va_list ());
+    }
+
+    public int run_conflict_dialog (GLib.File src,
+                                    GLib.File dest,
+                                    GLib.File dest_dir,
+                                    out string? new_name,
+                                    out bool apply_to_all) {
+        int result = 0;
+        string? _new_name = null;
+        bool _apply_to_all = false;
+
+        time.stop ();
+        progress.pause ();
+
+        var main_loop = new GLib.MainLoop (MainContext.get_thread_default ());
+
+        Idle.add (() => {
+            var dialog = new Files.FileConflictDialog (parent_window, src, dest, dest_dir);
+            dialog.response.connect ((response_id) => {
+                result = response_id;
+                _apply_to_all = dialog.apply_to_all;
+                if (response_id == Files.FileConflictDialog.ResponseType.RENAME) {
+                    _new_name = dialog.new_name;
+                }
+                main_loop.quit ();
+                dialog.destroy ();
+            });
+
+            dialog.show ();
+            return Source.REMOVE;
+        });
+
+        main_loop.run ();
+
+        new_name = _new_name;
+        apply_to_all = _apply_to_all;
+        progress.resume ();
+        time.continue ();
+        return result;
     }
 }

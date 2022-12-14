@@ -1226,6 +1226,14 @@ namespace Files.FileUtils {
         return file_size;
     }
 
+    public bool file_is_dir (GLib.File file) {
+        try {
+            var info = file.query_info (GLib.FileAttribute.STANDARD_TYPE, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+            return info.get_file_type () == GLib.FileType.DIRECTORY;
+        } catch (Error e) {
+            return false;
+        }
+    }
 }
 
 namespace Files {
