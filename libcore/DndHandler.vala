@@ -92,7 +92,7 @@ namespace Files {
                 );
                 drop_widget.add_controller (drop_target);
                 drop_target.accept.connect ((drop) => {
-                if (dnd_widget.can_accept_drops ()) {
+                if (dnd_widget.can_accept_drops (dnd_widget.root_file)) {
                         target_file = null;
                         drop_file_list = null;
                         // Obtain file list

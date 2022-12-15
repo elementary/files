@@ -229,7 +229,6 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             }
             return true;
         });
-
     }
 
     public void remove_item (SidebarItemInterface item, bool force) {

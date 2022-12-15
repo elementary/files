@@ -24,6 +24,9 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
 
     protected abstract uint auto_open_timeout_id { get; set; default = 0; }
     protected abstract FileItemInterface? previous_target_item { get; set; default = null; }
+    protected abstract string current_drop_uri { get; set; default = "";}
+    protected abstract bool drop_accepted { get; set; default = false; }
+    protected abstract unowned List<GLib.File> dropped_files { get; set; default = null; }
 
     protected void set_up_drag_source () {
         //Set up as drag source for bookmarking
@@ -67,6 +70,107 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             return true;
         });
     }
+
+    protected virtual void set_up_drop_target () {
+        //Set up as drag target. Use simple (synchronous) string target for now as most reliable
+        //Based on code for BookmarkListBox (some DRYing may be possible?)
+        //TODO Use Gdk.FileList target when Gtk4 version 4.8+ available
+        var view_widget = get_view_widget ();
+        var drop_target = new Gtk.DropTarget (
+            Type.STRING,
+            Gdk.DragAction.LINK | Gdk.DragAction.COPY
+        ) {
+            propagation_phase = Gtk.PropagationPhase.CAPTURE,
+        };
+
+        view_widget.add_controller (drop_target);
+        drop_target.accept.connect ((drop) => {
+            drop_accepted = false;
+            drop.read_value_async.begin (
+                Type.STRING,
+                Priority.DEFAULT,
+                null,
+                (obj, res) => {
+                    try {
+                        var val = drop.read_value_async.end (res);
+                        if (val != null) {
+                            // Error thrown if string does not contain valid uris as uri-list
+                            dropped_files = Files.FileUtils.files_from_uris (val.get_string ());
+                            drop_accepted = true;
+                        } else {
+                            warning ("dropped value null");
+                        }
+                    } catch (Error e) {
+                        warning ("Could not retrieve valid uri (s)");
+                    }
+                }
+            );
+
+            return true;
+        });
+        drop_target.enter.connect ((x, y) => {
+            //Just COPY for now - will need to support other actions and asking
+            return Gdk.DragAction.COPY;
+        });
+        drop_target.leave.connect (() => {
+            drop_accepted = false;
+            dropped_files = null;
+        });
+        drop_target.motion.connect ((x, y) => {
+            if (!drop_accepted) {
+                return 0;
+            }
+
+            var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
+            var item = widget.get_ancestor (typeof (FileItemInterface));
+            if (item != null && (item is FileItemInterface)) {
+                var fileitem = ((FileItemInterface)item);
+                current_drop_uri = fileitem.file.uri;
+                if (can_accept_drops (fileitem.file)) {
+                    return Gdk.DragAction.COPY;
+                }
+            } else {
+                current_drop_uri = root_file.uri;
+                warning ("over background - uri %s", current_drop_uri);
+                return Gdk.DragAction.COPY;
+            }
+
+            return 0;
+        });
+        drop_target.on_drop.connect ((val, x, y) => {
+            if (dropped_files != null) {
+                if (current_drop_uri != null) {
+                    Files.DndHandler.handle_file_drop_actions (
+                        this,
+                        x, y,
+                        Files.File.@get (GLib.File.new_for_uri (current_drop_uri)),
+                        dropped_files,
+                        Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK,
+                        Gdk.DragAction.COPY,
+                        true
+                    );
+                }
+            } else {
+                warning ("no dropped files found");
+            }
+
+            drop_accepted = false;
+            if (current_drop_uri != null) {
+                current_drop_uri = null;
+            }
+            return true;
+        });
+    }
+
+    // Whether is accepting any drops at all
+    public bool can_accept_drops (Files.File file) {
+       // We cannot ever drop on some locations
+        if (!file.is_folder () || file.is_recent_uri_scheme ()) {
+            return false;
+        }
+        return true;
+    }
+
 
     //Need to ensure fileitem gets selected before drag
     public List<Files.File> get_file_list_for_drag (double x, double y, out Gdk.Paintable? paintable) {
@@ -160,14 +264,14 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         }
     }
 
-    // Whether is accepting any drops at all
-    public bool can_accept_drops () {
-       // We cannot ever drop on some locations
-        if (!root_file.is_folder () || root_file.is_recent_uri_scheme ()) {
-            return false;
-        }
-        return true;
-    }
+    // // Whether is accepting any drops at all
+    // public bool can_accept_drops () {
+    //    // We cannot ever drop on some locations
+    //     if (!root_file.is_folder () || root_file.is_recent_uri_scheme ()) {
+    //         return false;
+    //     }
+    //     return true;
+    // }
     // Whether is accepting any drags at all
     public bool can_start_drags () {
         return root_file.is_readable ();

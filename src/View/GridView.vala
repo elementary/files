@@ -32,6 +32,9 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     protected Gtk.FilterListModel filter_model { get; set; }
     public Gtk.MultiSelection multi_selection { get; protected set; }
     protected Files.Preferences prefs { get; default = Files.Preferences.get_default (); }
+    protected string current_drop_uri { get; set; default = "";}
+    protected bool drop_accepted { get; set; default = false; }
+    protected unowned List<GLib.File> dropped_files { get; set; default = null; }
 
     //DNDInterface properties
     protected uint auto_open_timeout_id { get; set; default = 0; }
@@ -86,6 +89,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         bind_popover_menu ();
         set_up_gestures ();
         set_up_drag_source ();
+        set_up_drop_target ();
 
         //Signal Handlers
         multi_selection.selection_changed.connect (() => {
