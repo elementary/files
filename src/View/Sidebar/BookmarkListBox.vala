@@ -126,8 +126,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                             var val = drop.read_value_async.end (res);
                             if (val != null) {
                                 // Error thrown if string does not contain valid uris as uri-list
-                                dropped_files = Files.FileUtils.files_from_uris (val.get_string ());
-                                drop_accepted = true;
+                                drop_accepted = Files.FileUtils.files_from_uris (val.get_string (), out dropped_files);
                             }
                         } catch (Error e) {
                             warning ("Could not retrieve valid uri (s)");

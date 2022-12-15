@@ -123,8 +123,8 @@ namespace Files {
                 return;
             }
 
-            var file_list = FileUtils.files_from_uris (text);
-            if (file_list != null) {
+            List<GLib.File> file_list;
+            if (FileUtils.files_from_uris (text, out file_list)) {
                 try {
                     yield FileOperations.copy_move_link (file_list,
                                                          target_file,

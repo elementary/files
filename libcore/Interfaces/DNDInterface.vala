@@ -26,7 +26,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
     protected abstract FileItemInterface? previous_target_item { get; set; default = null; }
     protected abstract string current_drop_uri { get; set; default = "";}
     protected abstract bool drop_accepted { get; set; default = false; }
-    protected abstract unowned List<GLib.File> dropped_files { get; set; default = null; }
+    private static List<GLib.File> dropped_files;
 
     protected void set_up_drag_source () {
         //Set up as drag source for bookmarking
@@ -95,8 +95,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
                         var val = drop.read_value_async.end (res);
                         if (val != null) {
                             // Error thrown if string does not contain valid uris as uri-list
-                            dropped_files = Files.FileUtils.files_from_uris (val.get_string ());
-                            drop_accepted = true;
+                            drop_accepted = Files.FileUtils.files_from_uris (val.get_string (), out dropped_files);
                         } else {
                             warning ("dropped value null");
                         }
@@ -131,33 +130,29 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
                 }
             } else {
                 current_drop_uri = root_file.uri;
-                warning ("over background - uri %s", current_drop_uri);
                 return Gdk.DragAction.COPY;
             }
 
             return 0;
         });
         drop_target.on_drop.connect ((val, x, y) => {
-            if (dropped_files != null) {
-                if (current_drop_uri != null) {
-                    Files.DndHandler.handle_file_drop_actions (
-                        this,
-                        x, y,
-                        Files.File.@get (GLib.File.new_for_uri (current_drop_uri)),
-                        dropped_files,
-                        Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK,
-                        Gdk.DragAction.COPY,
-                        true
-                    );
-                }
-            } else {
-                warning ("no dropped files found");
+            if (dropped_files != null && current_drop_uri != null) {
+                Files.DndHandler.handle_file_drop_actions (
+                    this,
+                    x, y,
+                    Files.File.@get (GLib.File.new_for_uri (current_drop_uri)),
+                    dropped_files,
+                    Gdk.DragAction.COPY,
+                    Gdk.DragAction.COPY,
+                    true
+                );
             }
 
             drop_accepted = false;
             if (current_drop_uri != null) {
                 current_drop_uri = null;
             }
+
             return true;
         });
     }
@@ -168,12 +163,17 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         if (!file.is_folder () || file.is_recent_uri_scheme ()) {
             return false;
         }
+
         return true;
     }
 
 
     //Need to ensure fileitem gets selected before drag
-    public List<Files.File> get_file_list_for_drag (double x, double y, out Gdk.Paintable? paintable) {
+    public List<Files.File> get_file_list_for_drag (
+        double x,
+        double y,
+        out Gdk.Paintable? paintable
+    ) {
         paintable = null;
         var dragitem = get_item_at (x, y);
         List<Files.File> drag_files = null;
@@ -188,10 +188,14 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
 
             paintable = get_paintable_for_drag (dragitem, n_items);
         }
+
         return (owned) drag_files;
     }
 
-    private Gdk.Paintable get_paintable_for_drag (FileItemInterface dragged_item, uint item_count) {
+    private Gdk.Paintable get_paintable_for_drag (
+        FileItemInterface dragged_item,
+        uint item_count
+    ) {
         Gdk.Paintable paintable;
         if (item_count > 1) {
             var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
@@ -210,7 +214,6 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         return paintable;
     }
 
-    // public abstract Files.File get_target_file_for_drop (double x, double y);
     // Accessed by DndHandler
     public Files.File get_target_file_for_drop (double x, double y) {
         var droptarget = get_item_at (x, y);
@@ -264,15 +267,6 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         }
     }
 
-    // // Whether is accepting any drops at all
-    // public bool can_accept_drops () {
-    //    // We cannot ever drop on some locations
-    //     if (!root_file.is_folder () || root_file.is_recent_uri_scheme ()) {
-    //         return false;
-    //     }
-    //     return true;
-    // }
-    // Whether is accepting any drags at all
     public bool can_start_drags () {
         return root_file.is_readable ();
     }

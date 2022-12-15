@@ -22,14 +22,13 @@ namespace Files.FileUtils {
     const string RESERVED_CHARS = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
                                    GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
 
-    public GLib.List<GLib.File> files_from_uris (string uris) {
-        var result = new GLib.List<GLib.File> ();
+    public bool files_from_uris (string uris, out List<GLib.File> result) {
         var uri_list = GLib.Uri.list_extract_uris (uris);
         foreach (unowned string uri in uri_list) {
-            result.append (GLib.File.new_for_uri (uri));
+            result.prepend (GLib.File.new_for_uri (uri));
         }
 
-        return result;
+        return uri_list != null && uri_list.length > 0;
     }
 
     public GLib.KeyFile key_file_from_file (GLib.File file, GLib.Cancellable? cancellable = null) throws GLib.Error {
