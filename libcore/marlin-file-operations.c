@@ -799,12 +799,6 @@ marlin_file_operations_delete (GList               *files,
         marlin_file_operations_common_job_inhibit_power_manager (common, _("Deleting Files"));
     }
 
-    if (try_trash) {
-        common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
-        GFile* src_dir = g_file_get_parent (files->data);
-        files_undo_action_data_set_src_dir (common->undo_redo_data, src_dir);
-    }
-
     task = g_task_new (NULL, cancellable, callback, user_data);
     g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
     g_task_run_in_thread (task, delete_job);
@@ -1368,65 +1362,6 @@ get_unique_target_file (GFile *src,
                 count += atoi (end + 1);
             }
             new_name = g_strdup_printf ("%s.%d", basename, count);
-            files_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
-            dest = g_file_get_child (dest_dir, new_name);
-            g_free (new_name);
-        }
-
-        g_free (basename);
-    }
-
-    return dest;
-}
-
-static GFile *
-get_target_file_for_link (GFile *src,
-                          GFile *dest_dir,
-                          const char *dest_fs_type,
-                          int count)
-{
-    const char *editname;
-    char *basename, *new_name;
-    GFileInfo *info;
-    GFile *dest;
-    int max_length;
-
-    max_length = files_file_utils_get_max_name_length (dest_dir);
-
-    dest = NULL;
-    info = g_file_query_info (src,
-                              G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME,
-                              0, NULL, NULL);
-    if (info != NULL) {
-        editname = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME);
-
-        if (editname != NULL) {
-            new_name = files_file_utils_get_link_name (editname, count, max_length);
-            files_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
-            dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
-            g_free (new_name);
-        }
-
-        g_object_unref (info);
-    }
-
-    if (dest == NULL) {
-        basename = g_file_get_basename (src);
-        files_file_utils_make_file_name_valid_for_dest_fs (&basename, dest_fs_type);
-
-        if (g_utf8_validate (basename, -1, NULL)) {
-            new_name = files_file_utils_get_link_name (basename, count, max_length);
-            files_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
-            dest = g_file_get_child_for_display_name (dest_dir, new_name, NULL);
-            g_free (new_name);
-        }
-
-        if (dest == NULL) {
-            if (count == 1) {
-                new_name = g_strdup_printf ("%s.lnk", basename);
-            } else {
-                new_name = g_strdup_printf ("%s.lnk%d", basename, count);
-            }
             files_file_utils_make_file_name_valid_for_dest_fs (&new_name, dest_fs_type);
             dest = g_file_get_child (dest_dir, new_name);
             g_free (new_name);
@@ -2747,14 +2682,6 @@ marlin_file_operations_copy (GList               *files,
 
     marlin_file_operations_common_job_inhibit_power_manager (common, _("Copying Files"));
 
-    // Start UNDO-REDO
-    common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_COPY, g_list_length(files));
-    GFile* src_dir = g_file_get_parent (files->data);
-    files_undo_action_data_set_src_dir (common->undo_redo_data, src_dir);
-    g_object_ref (target_dir);
-    files_undo_action_data_set_dest_dir (common->undo_redo_data, target_dir);
-    // End UNDO-REDO
-
     task = g_task_new (NULL, cancellable, callback, user_data);
     g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
     g_task_run_in_thread (task, copy_job);
@@ -3223,17 +3150,6 @@ marlin_file_operations_move (GList               *files,
     common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
 
     marlin_file_operations_common_job_inhibit_power_manager (common, _("Moving Files"));
-    // Start UNDO-REDO
-    if (g_file_has_uri_scheme (g_list_first(files)->data, "trash")) {
-        common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_RESTOREFROMTRASH, g_list_length(files));
-    } else {
-        common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_MOVE, g_list_length(files));
-    }
-    GFile* src_dir = g_file_get_parent (files->data);
-    files_undo_action_data_set_src_dir (common->undo_redo_data, src_dir);
-    g_object_ref (target_dir);
-    files_undo_action_data_set_dest_dir (common->undo_redo_data, target_dir);
-    // End UNDO-REDO
 
     task = g_task_new (NULL, cancellable, callback, user_data);
     g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
@@ -3251,255 +3167,6 @@ marlin_file_operations_move_finish (GAsyncResult  *result,
 }
 
 static void
-report_link_progress (FilesFileOperationsCopyMoveJob *link_job, int total, int left)
-{
-    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (link_job);
-    gchar *s;
-    gchar *dest_name = g_file_get_parse_name (link_job->destination);
-    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-    s = g_strdup_printf (_("Creating links in \"%s\""), dest_name);
-    g_free (dest_name);
-
-    pf_progress_info_take_status (job->progress, s);
-    pf_progress_info_take_details (job->progress,
-                                   g_strdup_printf (ngettext ("Making link to %'d file",
-                                                              "Making links to %'d files",
-                                                              left), left));
-
-    pf_progress_info_update_progress (job->progress, left, total);
-}
-
-static void
-link_file (FilesFileOperationsCopyMoveJob *job,
-           GFile *src, GFile *dest_dir,
-           char **dest_fs_type,
-           GHashTable *debuting_files,
-           int files_left)
-{
-    GFile *src_dir, *dest, *new_dest;
-    int count = 0;
-    char *path;
-    gboolean not_local;
-    GError *error;
-    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
-    char *primary, *secondary, *details;
-    int response;
-    gboolean handled_invalid_filename;
-
-    src_dir = g_file_get_parent (src);
-    if (g_file_equal (src_dir, dest_dir)) {
-        count = 1;
-    }
-    g_object_unref (src_dir);
-
-    handled_invalid_filename = *dest_fs_type != NULL;
-
-    dest = get_target_file_for_link (src, dest_dir, *dest_fs_type, count);
-
-retry:
-    error = NULL;
-    not_local = FALSE;
-
-    path = files_file_utils_get_path_for_symlink (src);
-
-    if (path == NULL) {
-        not_local = TRUE;
-    }
-
-    if (!not_local && g_file_make_symbolic_link (dest,
-                                          path,
-                                          common->cancellable,
-                                          &error)) {
-
-        // Start UNDO-REDO
-        files_undo_action_data_add_origin_target_pair (common->undo_redo_data, src, dest);
-        // End UNDO-REDO
-
-        g_free (path);
-
-        if (debuting_files) {
-            g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
-        }
-       files_file_changes_queue_file_added (dest);
-
-        g_object_unref (dest);
-
-        return;
-    }
-    g_free (path);
-
-    if (error != NULL &&
-        IS_IO_ERROR (error, INVALID_FILENAME) &&
-        !handled_invalid_filename) {
-        handled_invalid_filename = TRUE;
-
-        g_assert (*dest_fs_type == NULL);
-        *dest_fs_type = query_fs_type (dest_dir, common->cancellable);
-
-        new_dest = get_target_file_for_link (src, dest_dir, *dest_fs_type, count);
-
-        if (!g_file_equal (dest, new_dest)) {
-            g_object_unref (dest);
-            dest = new_dest;
-            g_error_free (error);
-
-            goto retry;
-        } else {
-            g_object_unref (new_dest);
-        }
-    }
-    /* Conflict */
-    if (error != NULL && IS_IO_ERROR (error, EXISTS)) {
-        g_object_unref (dest);
-        dest = get_target_file_for_link (src, dest_dir, *dest_fs_type, count++);
-        g_error_free (error);
-        goto retry;
-    }
-
-    else if (error != NULL && IS_IO_ERROR (error, CANCELLED)) {
-        g_error_free (error);
-    }
-
-    /* Other error */
-    else {
-        gchar *src_basename;
-        if (common->skip_all_error) {
-            goto out;
-        }
-        src_basename = files_file_utils_custom_basename_from_file (src);
-        /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-        primary = g_strdup_printf (_("Error while creating link to %s."), src_basename);
-        g_free (src_basename);
-        if (not_local) {
-            secondary = g_strdup (_("Symbolic links only supported for local files"));
-            details = NULL;
-        } else if (IS_IO_ERROR (error, NOT_SUPPORTED)) {
-            secondary = g_strdup (_("The target doesn't support symbolic links."));
-            details = NULL;
-        } else {
-            gchar *dest_dir_name = g_file_get_parse_name (dest_dir);
-            /// TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-            secondary = g_strdup_printf (_("There was an error creating the symlink in %s."), dest_dir_name);
-            g_free (dest_dir_name);
-            details = error->message;
-        }
-
-        response = marlin_file_operations_common_job_run_warning (
-            common,
-            primary,
-            secondary,
-            details,
-            files_left > 1,
-            CANCEL, SKIP_ALL, SKIP,
-            NULL);
-
-        if (error) {
-            g_error_free (error);
-        }
-
-        if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            marlin_file_operations_common_job_abort_job (common);
-        } else if (response == 1) { /* skip all */
-            common->skip_all_error = TRUE;
-        } else if (response == 2) { /* skip */
-            /* do nothing */
-        } else {
-            g_assert_not_reached ();
-        }
-    }
-
-out:
-    g_object_unref (dest);
-}
-
-static void
-link_job (GTask *task,
-          gpointer source_object,
-          gpointer task_data,
-          GCancellable *cancellable)
-{
-    FilesFileOperationsCopyMoveJob *job = task_data;
-    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
-    GFile *src;
-    char *dest_fs_type = NULL;
-    int total, left;
-    int i;
-    GList *l;
-
-    pf_progress_info_start (common->progress);
-    marlin_file_operations_common_job_verify_destination (common,
-                                                          job->destination,
-                                                          NULL,
-                                                          -1);
-    if (marlin_file_operations_common_job_aborted (common)) {
-        goto aborted;
-    }
-
-    total = left = g_list_length (job->files);
-
-    report_link_progress (job, total, left);
-
-    i = 0;
-    for (l = job->files;
-         l != NULL && !marlin_file_operations_common_job_aborted (common);
-         l = l->next) {
-        src = l->data;
-
-
-        link_file (job, src, job->destination,
-                   &dest_fs_type, job->debuting_files,
-                   left);
-        report_link_progress (job, total, --left);
-        i++;
-
-    }
-
-aborted:
-    g_free (dest_fs_type);
-
-    g_task_return_boolean (task, TRUE);
-}
-
-static void
-marlin_file_operations_link (GList               *files,
-                             GFile               *target_dir,
-                             GtkWindow           *parent_window,
-                             GCancellable        *cancellable,
-                             GAsyncReadyCallback  callback,
-                             gpointer             user_data)
-{
-    GTask *task;
-    FilesFileOperationsCopyMoveJob *job;
-    FilesFileOperationsCommonJob *common;
-
-    job = marlin_file_operations_copy_move_job_new (parent_window, files, target_dir);
-    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
-
-    // Start UNDO-REDO
-    common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_CREATELINK, g_list_length(files));
-    GFile* src_dir = g_file_get_parent (files->data);
-    files_undo_action_data_set_src_dir (common->undo_redo_data, src_dir);
-    g_object_ref (target_dir);
-    files_undo_action_data_set_dest_dir (common->undo_redo_data, target_dir);
-    // End UNDO-REDO
-
-    task = g_task_new (NULL, cancellable, callback, user_data);
-    g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
-    g_task_run_in_thread (task, link_job);
-    g_object_unref (task);
-}
-
-static gboolean
-marlin_file_operations_link_finish (GAsyncResult  *result,
-                                    GError       **error)
-{
-    g_return_val_if_fail (g_task_is_valid (result, NULL), FALSE);
-
-    return g_task_propagate_boolean (G_TASK (result), error);
-}
-
-static void
 marlin_file_operations_duplicate (GList               *files,
                                   GtkWindow           *parent_window,
                                   GCancellable        *cancellable,
@@ -3508,18 +3175,8 @@ marlin_file_operations_duplicate (GList               *files,
 {
     GTask *task;
     FilesFileOperationsCopyMoveJob *job;
-    FilesFileOperationsCommonJob *common;
 
-    job = marlin_file_operations_copy_move_job_new (parent_window, files, NULL);
-    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
-
-    // Start UNDO-REDO
-    common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_DUPLICATE, g_list_length(files));
-    GFile* src_dir = g_file_get_parent (files->data);
-    files_undo_action_data_set_src_dir (common->undo_redo_data, src_dir);
-    g_object_ref (src_dir);
-    files_undo_action_data_set_dest_dir (common->undo_redo_data, src_dir);
-    // End UNDO-REDO
+    job = marlin_file_operations_copy_move_job_new_duplicate (parent_window, files);
 
     task = g_task_new (NULL, cancellable, callback, user_data);
     g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
@@ -3617,11 +3274,12 @@ copy_move_link_link_finish (GObject *source_object,
                             GAsyncResult *res,
                             gpointer user_data)
 {
+    FilesFileOperationsCopyMoveJob *job = MARLIN_FILE_OPERATIONS_COPY_MOVE_JOB (source_object);
     GTask *task = user_data;
     GError *error = NULL;
     gboolean result;
 
-    result = marlin_file_operations_link_finish (res, &error);
+    result = marlin_file_operations_copy_move_job_do_link_finish (job, res, &error);
     if (error != NULL) {
         g_task_return_error (task, g_steal_pointer (&error));
     } else {
@@ -3742,15 +3400,13 @@ marlin_file_operations_copy_move_link (GList               *files,
                                          g_steal_pointer (&task));
         }
     } else {
-        marlin_file_operations_link (files,
-                                     target_dir,
-                                     parent_window,
-                                     cancellable,
-                                     copy_move_link_link_finish,
-                                     g_steal_pointer (&task));
+        FilesFileOperationsCopyMoveJob *job;
+
+        job = marlin_file_operations_copy_move_job_new_link (parent_window, files, target_dir);
+        marlin_file_operations_copy_move_job_do_link (job, cancellable, copy_move_link_link_finish, g_steal_pointer (&task));
+        marlin_file_operations_common_job_unref (MARLIN_FILE_OPERATIONS_COMMON_JOB (job));
     }
 }
-
 
 gboolean
 marlin_file_operations_copy_move_link_finish (GAsyncResult  *result,

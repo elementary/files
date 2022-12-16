@@ -31,6 +31,11 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         this.files = files.copy_deep ((GLib.CopyFunc<GLib.File>) GLib.Object.ref);
         this.try_trash = try_trash;
         this.user_cancel = false;
+
+        if (try_trash) {
+            undo_redo_data = new UndoActionData (Files.UndoActionType.MOVETOTRASH, files.length ());
+            undo_redo_data.set_src_dir (files.data.get_parent ());
+        }
     }
 
     protected bool confirm_delete_from_trash (GLib.List<GLib.File> to_delete_files) {

@@ -101,6 +101,22 @@ public class Files.FileOperations.CommonJob {
         return false;
     }
 
+    internal static string query_fs_type (GLib.File file, GLib.Cancellable? cancellable) {
+        try {
+            var fsinfo = file.query_filesystem_info (GLib.FileAttribute.FILESYSTEM_TYPE, cancellable);
+            unowned string? ret = fsinfo.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE);
+            if (ret != null) {
+                return ret;
+            }
+        } catch (Error e) {
+        }
+
+        /* ensure that we don't attempt to query
+         * the FS type for each file in a given
+         * directory, if it can't be queried. */
+        return "";
+    }
+
     protected void verify_destination (GLib.File dest, out string? dest_fs_id, int64 required_size) {
         dest_fs_id = null;
         try {

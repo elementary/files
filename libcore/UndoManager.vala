@@ -67,7 +67,7 @@ namespace Files {
         public string original_user_name_or_id;
         public string new_user_name_or_id;
 
-        public UndoActionData (Files.UndoActionType action_type, int items_count) {
+        public UndoActionData (Files.UndoActionType action_type, uint items_count) {
             this.action_type = action_type;
             this.count = items_count;
 
@@ -78,11 +78,11 @@ namespace Files {
             is_valid = !Files.UndoManager.instance ().undo_redo_flag;
         }
 
-        public void set_src_dir (GLib.File src) {
+        public void set_src_dir (GLib.File? src) {
             this.src_dir = src;
         }
 
-        public void set_dest_dir (GLib.File dest) {
+        public void set_dest_dir (GLib.File? dest) {
             this.dest_dir = dest;
         }
 
