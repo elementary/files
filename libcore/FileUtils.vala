@@ -1056,11 +1056,11 @@ namespace Files.FileUtils {
     ///TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
     public const string CLOSING_COPY_LINK_TAG = N_(")");
 
-    public string get_duplicate_name (string name, int count_increment, int max_length, bool is_link = false)
+    public string get_duplicate_name (string name, uint count_increment, int max_length, bool is_link = false)
     requires (count_increment > 0 && name != "") {
 
         string name_base, suffix, result;
-        int count;
+        uint count;
 
         parse_previous_duplicate_name (name, is_link, out name_base, out suffix, out count);
 
@@ -1172,17 +1172,17 @@ namespace Files.FileUtils {
      * FileName (link 2)
      * etc
     */
-    public string get_link_name (string target_name, int count, int max_length = -1)
+    public string get_link_name (string target_name, uint count, int max_length = -1)
     requires (count >= 0) {
         return get_link_or_copy_name (target_name, true, count, max_length);
     }
 
-    public string get_copy_name (string base_name, string suffix, int count, int max_length = -1)
+    public string get_copy_name (string base_name, string suffix, uint count, int max_length = -1)
     requires (count >= 0) {
         return get_link_or_copy_name (base_name, false, count, max_length) + suffix;
     }
 
-    private string get_link_or_copy_name (string target_name, bool is_link, int count, int max_length) {
+    private string get_link_or_copy_name (string target_name, bool is_link, uint count, int max_length) {
         string result = "";
         var tag = is_link ? _(LINK_TAG) : _(COPY_TAG);
         switch (count) {
@@ -1198,7 +1198,7 @@ namespace Files.FileUtils {
                 break;
 
             default:
-                result = "%s %s%s %i%s".printf (
+                result = "%s %s%s %u%s".printf (
                     target_name, _(OPENING_COPY_LINK_TAG), tag, count, _(CLOSING_COPY_LINK_TAG)
                 );
 

@@ -3418,271 +3418,23 @@ marlin_file_operations_copy_move_link_finish (GAsyncResult  *result,
 }
 
 static void
-create_job (GTask *task,
-            gpointer source_object,
-            gpointer task_data,
-            GCancellable *cancellable)
+marlin_file_operations_on_created (GObject *source_object,
+                                   GAsyncResult *res,
+                                   gpointer user_data)
 {
-    FilesFileOperationsCreateJob *job = task_data;
-    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
-    int count;
-    GFile *dest;
-    char *filename, *filename2, *new_filename;
-    char *dest_fs_type;
-    GError *error;
-    gboolean res;
-    gboolean filename_is_utf8;
-    char *primary, *secondary, *details;
-    int response;
-    guint8 *data;
-    int length;
-    GFileOutputStream *out;
-    gboolean handled_invalid_filename;
-    int max_length;
+    FilesFileOperationsCreateJob *job = MARLIN_FILE_OPERATIONS_CREATE_JOB (source_object);
+    GTask *task = user_data;
+    GError *error = NULL;
+    GFile *result;
 
-    pf_progress_info_start (common->progress);
-
-    handled_invalid_filename = FALSE;
-
-    dest_fs_type = NULL;
-    filename = NULL;
-    dest = NULL;
-
-    max_length = files_file_utils_get_max_name_length (job->dest_dir);
-
-    marlin_file_operations_common_job_verify_destination (common,
-                                                          job->dest_dir,
-                                                          NULL, -1);
-    if (marlin_file_operations_common_job_aborted (common)) {
-        goto aborted;
-    }
-
-    filename = g_strdup (job->filename);
-    filename_is_utf8 = FALSE;
-    if (filename) {
-        filename_is_utf8 = g_utf8_validate (filename, -1, NULL);
-    }
-    if (filename == NULL) {
-        if (job->make_dir) {
-            /* localizers: the initial name of a new folder  */
-            filename = g_strdup (_("untitled folder"));
-            filename_is_utf8 = TRUE; /* Pass in utf8 */
-        } else {
-            if (job->src != NULL) {
-                filename = g_file_get_basename (job->src);
-            }
-            if (filename == NULL) {
-                /* localizers: the initial name of a new empty file */
-                filename = g_strdup (_("new file"));
-                filename_is_utf8 = TRUE; /* Pass in utf8 */
-            }
-        }
-    }
-
-    files_file_utils_make_file_name_valid_for_dest_fs (&filename, dest_fs_type); //FIXME No point - dest_fs_type always null?
-    if (filename_is_utf8) {
-        dest = g_file_get_child_for_display_name (job->dest_dir, filename, NULL);
-    }
-    if (dest == NULL) {
-        dest = g_file_get_child (job->dest_dir, filename);
-    }
-    count = 1;
-
-retry:
-
-    error = NULL;
-    if (job->make_dir) {
-        res = g_file_make_directory (dest,
-                                     common->cancellable,
-                                     &error);
-        // Start UNDO-REDO
-        if (res) {
-            files_undo_action_data_set_create_data(common->undo_redo_data,
-                                                     g_file_get_uri(dest),
-                                                     NULL);
-        }
-        // End UNDO-REDO
+    result = marlin_file_operations_create_job_do_create_finish (job, res, &error);
+    if (error != NULL) {
+        g_task_return_error (task, g_steal_pointer (&error));
     } else {
-        if (job->src) {
-            res = g_file_copy (job->src,
-                               dest,
-                               G_FILE_COPY_NONE,
-                               common->cancellable,
-                               NULL, NULL,
-                               &error);
-            // Start UNDO-REDO
-            if (res) {
-                files_undo_action_data_set_create_data(common->undo_redo_data,
-                                                         g_file_get_uri(dest),
-                                                         g_file_get_uri(job->src));
-            }
-            // End UNDO-REDO
-        } else {
-            data = "";
-            length = 0;
-            if (job->src_data) {
-                data = job->src_data;
-                length = job->length;
-            }
-
-            out = g_file_create (dest,
-                                 G_FILE_CREATE_NONE,
-                                 common->cancellable,
-                                 &error);
-            if (out) {
-                res = g_output_stream_write_all (G_OUTPUT_STREAM (out),
-                                                 data, length,
-                                                 NULL,
-                                                 common->cancellable,
-                                                 &error);
-                if (res) {
-                    res = g_output_stream_close (G_OUTPUT_STREAM (out),
-                                                 common->cancellable,
-                                                 &error);
-                    // Start UNDO-REDO
-                    if (res) {
-                        files_undo_action_data_set_create_data(common->undo_redo_data,
-                                                                 g_file_get_uri(dest),
-                                                                 g_memdup(data, length));
-                    }
-                }
-
-                /* This will close if the write failed and we didn't close */
-                g_object_unref (out);
-            } else {
-                res = FALSE;
-            }
-        }
+        g_task_return_pointer (task, g_steal_pointer (&result), g_object_unref);
     }
 
-    if (res) {
-        job->created_file = g_object_ref (dest);
-       files_file_changes_queue_file_added (dest);
-    } else {
-        g_assert (error != NULL);
-
-        if (IS_IO_ERROR (error, INVALID_FILENAME) &&
-            !handled_invalid_filename) {
-            handled_invalid_filename = TRUE;
-
-            g_assert (dest_fs_type == NULL);
-            dest_fs_type = query_fs_type (job->dest_dir, common->cancellable);
-
-            g_object_unref (dest);
-
-            if (count == 1) {
-                new_filename = g_strdup (filename);
-            } else if (job->make_dir) {
-                filename2 = g_strdup_printf ("%s %d", filename, count);
-
-                new_filename = NULL;
-                if (max_length > 0 && strlen (filename2) > max_length) {
-                    new_filename = files_file_utils_shorten_utf8_string (filename2, strlen (filename2) - max_length);
-                }
-
-                if (new_filename == NULL) {
-                    new_filename = g_strdup (filename2);
-                }
-
-                g_free (filename2);
-            } else {
-                /*We are not creating link*/
-                new_filename = files_file_utils_get_duplicate_name (filename, count, max_length, FALSE);
-            }
-
-            if (files_file_utils_make_file_name_valid_for_dest_fs (&new_filename, dest_fs_type)) {
-                g_object_unref (dest);
-
-                if (filename_is_utf8) {
-                    dest = g_file_get_child_for_display_name (job->dest_dir, new_filename, NULL);
-                }
-                if (dest == NULL) {
-                    dest = g_file_get_child (job->dest_dir, new_filename);
-                }
-
-                g_free (new_filename);
-                g_error_free (error);
-                goto retry;
-            }
-            g_free (new_filename);
-        } else if (IS_IO_ERROR (error, EXISTS)) {
-            g_object_unref (dest);
-            dest = NULL;
-            if (job->make_dir) {
-                filename2 = g_strdup_printf ("%s %d", filename, ++count);
-                if (max_length > 0 && strlen (filename2) > max_length) {
-                    new_filename = files_file_utils_shorten_utf8_string (filename2, strlen (filename2) - max_length);
-                    if (new_filename != NULL) {
-                        g_free (filename2);
-                        filename2 = new_filename;
-                    }
-                }
-            } else {
-                /*We are not creating link*/
-                filename2 = files_file_utils_get_duplicate_name (filename, count++, max_length, FALSE);
-            }
-            files_file_utils_make_file_name_valid_for_dest_fs (&filename2, dest_fs_type);
-            if (filename_is_utf8) {
-                dest = g_file_get_child_for_display_name (job->dest_dir, filename2, NULL);
-            }
-            if (dest == NULL) {
-                dest = g_file_get_child (job->dest_dir, filename2);
-            }
-            g_free (filename2);
-            g_error_free (error);
-            goto retry;
-        }
-
-        else if (IS_IO_ERROR (error, CANCELLED)) {
-            g_error_free (error);
-        }
-
-        /* Other error */
-        else {
-            gchar *dest_basename = files_file_utils_custom_basename_from_file (dest);
-            if (job->make_dir) {
-                /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-                primary = g_strdup_printf (_("Error while creating directory %s."), dest_basename);
-            } else {
-                /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-                primary = g_strdup_printf (_("Error while creating file %s."), dest_basename);
-            }
-            g_free (dest_basename);
-
-            gchar *dest_dir_name = g_file_get_parse_name (job->dest_dir);
-            /// TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
-            secondary = g_strdup_printf (_("There was an error creating the directory in %s."), dest_dir_name);
-            g_free (dest_dir_name);
-            details = error->message;
-
-            response = marlin_file_operations_common_job_run_warning (
-                common,
-                primary,
-                secondary,
-                details,
-                FALSE,
-                CANCEL, SKIP,
-                NULL);
-
-            g_error_free (error);
-
-            if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                marlin_file_operations_common_job_abort_job (common);
-            } else if (response == 1) { /* skip */
-                /* do nothing */
-            } else {
-                g_assert_not_reached ();
-            }
-        }
-    }
-
-aborted:
-    if (dest) {
-        g_object_unref (dest);
-    }
-    g_free (filename);
-    g_free (dest_fs_type);
-    g_task_return_pointer (task, g_steal_pointer (&job->created_file), g_object_unref);
+    g_clear_object (&task);
 }
 
 void
@@ -3701,12 +3453,10 @@ marlin_file_operations_new_folder (GtkWidget           *parent_view,
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
-    job = marlin_file_operations_create_job_new_folder (parent_window, parent_dir);
-
     task = g_task_new (NULL, cancellable, callback, user_data);
-    g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
-    g_task_run_in_thread (task, create_job);
-    g_object_unref (task);
+    job = marlin_file_operations_create_job_new_folder (parent_window, parent_dir);
+    marlin_file_operations_create_job_do_create (job, cancellable, marlin_file_operations_on_created, g_steal_pointer (&task));
+    marlin_file_operations_common_job_unref (MARLIN_FILE_OPERATIONS_COMMON_JOB (job));
 }
 
 GFile *
@@ -3735,15 +3485,13 @@ marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
+    task = g_task_new (NULL, cancellable, callback, user_data);
     job = marlin_file_operations_create_job_new_file_from_template (parent_window,
                                                                     parent_dir,
                                                                     target_filename,
                                                                     template);
-
-    task = g_task_new (NULL, cancellable, callback, user_data);
-    g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
-    g_task_run_in_thread (task, create_job);
-    g_object_unref (task);
+    marlin_file_operations_create_job_do_create (job, cancellable, marlin_file_operations_on_created, g_steal_pointer (&task));
+    marlin_file_operations_common_job_unref (MARLIN_FILE_OPERATIONS_COMMON_JOB (job));
 }
 
 GFile *
@@ -3773,6 +3521,7 @@ marlin_file_operations_new_file (GtkWidget           *parent_view,
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
+    task = g_task_new (NULL, cancellable, callback, user_data);
     GFile *dest_dir = g_file_new_for_uri (parent_dir);
     job = marlin_file_operations_create_job_new_file (parent_window,
                                                       dest_dir,
@@ -3780,11 +3529,8 @@ marlin_file_operations_new_file (GtkWidget           *parent_view,
                                                       (guint8 *)initial_contents,
                                                       length);
     g_object_unref (dest_dir);
-
-    task = g_task_new (NULL, cancellable, callback, user_data);
-    g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
-    g_task_run_in_thread (task, create_job);
-    g_object_unref (task);
+    marlin_file_operations_create_job_do_create (job, cancellable, marlin_file_operations_on_created, g_steal_pointer (&task));
+    marlin_file_operations_common_job_unref (MARLIN_FILE_OPERATIONS_COMMON_JOB (job));
 }
 
 GFile *

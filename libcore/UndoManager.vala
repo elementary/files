@@ -91,7 +91,7 @@ namespace Files {
             destinations.prepend (dest_dir.get_relative_path (target));
         }
 
-        public void set_create_data (string target_uri, string? template) {
+        public void set_create_data (string target_uri, string? template = null) {
             this.template = template;
             this.target_uri = target_uri;
         }
