@@ -26,6 +26,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
     protected abstract FileItemInterface? previous_target_item { get; set; default = null; }
     protected abstract string current_drop_uri { get; set; default = "";}
     protected abstract bool drop_accepted { get; set; default = false; }
+    protected abstract Gdk.DragAction accepted_actions { get; set; default = 0; }
     private static List<GLib.File> dropped_files;
 
     protected void set_up_drag_source () {
@@ -78,7 +79,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         var view_widget = get_view_widget ();
         var drop_target = new Gtk.DropTarget (
             Type.STRING,
-            Gdk.DragAction.LINK | Gdk.DragAction.COPY
+            Gdk.DragAction.LINK | Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.ASK
         ) {
             propagation_phase = Gtk.PropagationPhase.CAPTURE,
         };
@@ -93,7 +94,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
                 (obj, res) => {
                     try {
                         var val = drop.read_value_async.end (res);
-                        if (val != null) {
+                        if (val != null && can_accept_drops (root_file)) {
                             // Error thrown if string does not contain valid uris as uri-list
                             drop_accepted = Files.FileUtils.files_from_uris (val.get_string (), out dropped_files);
                         } else {
@@ -107,10 +108,6 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
 
             return true;
         });
-        drop_target.enter.connect ((x, y) => {
-            //Just COPY for now - will need to support other actions and asking
-            return Gdk.DragAction.COPY;
-        });
         drop_target.leave.connect (() => {
             drop_accepted = false;
             dropped_files = null;
@@ -119,32 +116,42 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             if (!drop_accepted) {
                 return 0;
             }
+            var drop = drop_target.get_current_drop ();
 
+            accepted_actions = 0;
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             var item = widget.get_ancestor (typeof (FileItemInterface));
             if (item != null && (item is FileItemInterface)) {
                 var fileitem = ((FileItemInterface)item);
                 current_drop_uri = fileitem.file.uri;
-                if (can_accept_drops (fileitem.file)) {
-                    return Gdk.DragAction.COPY;
-                }
+                accepted_actions = Files.DndHandler.file_accepts_drop (
+                    fileitem.file,
+                    dropped_files, // read-only
+                    drop
+                );
             } else {
                 current_drop_uri = root_file.uri;
-                return Gdk.DragAction.COPY;
+                accepted_actions = Files.DndHandler.file_accepts_drop (
+                    root_file,
+                    dropped_files, // read-only
+                    drop
+                );
             }
 
-            return 0;
+            return Files.DndHandler.preferred_action;
         });
         drop_target.on_drop.connect ((val, x, y) => {
-            if (dropped_files != null && current_drop_uri != null) {
+            if (dropped_files != null &&
+                current_drop_uri != null &&
+                accepted_actions > 0) {
+
                 Files.DndHandler.handle_file_drop_actions (
                     this,
                     x, y,
                     Files.File.@get (GLib.File.new_for_uri (current_drop_uri)),
                     dropped_files,
-                    Gdk.DragAction.COPY,
-                    Gdk.DragAction.COPY,
-                    true
+                    accepted_actions,
+                    Gdk.DragAction.COPY
                 );
             }
 
@@ -167,6 +174,16 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         return true;
     }
 
+    private Gdk.DragAction get_accepted_drop_actions (
+        Files.File target,
+        Gdk.Drop drop
+    ) {
+        return Files.DndHandler.file_accepts_drop (
+            target,
+            dropped_files, // read-only
+            drop
+        );
+    }
 
     //Need to ensure fileitem gets selected before drag
     public List<Files.File> get_file_list_for_drag (

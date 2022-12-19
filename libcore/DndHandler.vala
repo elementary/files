@@ -22,20 +22,8 @@
 public class Files.DndHandler : GLib.Object {
     static Gdk.DragAction? chosen = null;
     static List<GLib.File> drop_file_list = null;
-    // static Files.File? target_file = null;
-    static Gdk.DragAction preferred_action = 0;
+    public static Gdk.DragAction preferred_action = 0;
     static bool ask = false;
-
-    // public Files.DNDInterface dnd_widget { get; construct; } //Needs to have layout manager
-    // public Gtk.Widget? drag_widget { get; construct; }
-    // public Gtk.Widget? drop_widget { get; construct; }
-    // public DndHandler (Files.DNDInterface dnd_widget, Gtk.Widget? drag_widget, Gtk.Widget? drop_widget) {
-    //     Object (
-    //         dnd_widget: dnd_widget,
-    //         drag_widget: drag_widget,
-    //         drop_widget: drop_widget
-    //     );
-    // }
 
     public static Gdk.DragAction handle_file_drop_actions (
         Gtk.Widget dest_widget,
@@ -43,8 +31,7 @@ public class Files.DndHandler : GLib.Object {
         Files.File drop_target,
         GLib.List<GLib.File> dropped_files,
         Gdk.DragAction possible_actions,
-        Gdk.DragAction suggested_action,
-        bool ask
+        Gdk.DragAction suggested_action
     ) {
         bool success = false;
         Gdk.DragAction action = suggested_action;
@@ -52,7 +39,9 @@ public class Files.DndHandler : GLib.Object {
             foreach (var file in dropped_files) {
                 drop_file_list.prepend (file);
             }
-            if (ask) {
+
+            //Only ask if more than one possible action
+            if (possible_actions != suggested_action) {
                 action = drag_drop_action_ask (
                     dest_widget, x, y, possible_actions, suggested_action
                 );
@@ -173,8 +162,7 @@ public class Files.DndHandler : GLib.Object {
     public static Gdk.DragAction file_accepts_drop (
         Files.File dest,
         GLib.List<GLib.File> drop_file_list, // read-only
-        Gdk.Drop drop,
-        out Gdk.DragAction preferred_action
+        Gdk.Drop drop
     ) {
         var target_location = dest.get_target_location ();
         Gdk.DragAction actions = drop.actions;
@@ -184,6 +172,7 @@ public class Files.DndHandler : GLib.Object {
             return 0;
         }
 
+        // Cannot drop a file on itself
         if (dest.location.equal (drop_file_list.data)) {
             return 0;
         }
@@ -199,13 +188,11 @@ public class Files.DndHandler : GLib.Object {
             actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
         }
 
-        uint count = 0;
-        if (Gdk.DragAction.COPY in drop.actions) { count++; }
-        if (Gdk.DragAction.MOVE in drop.actions) { count++; }
-        if (Gdk.DragAction.LINK in drop.actions) { count++; }
+        if (Gdk.DragAction.COPY == drop.actions ||
+            Gdk.DragAction.MOVE == drop.actions ||
+            Gdk.DragAction.LINK == drop.actions) {
 
-        //If there is only one drop/drag action (e.g. control pressed) do not override it
-        if (count == 1) {
+            //If there is only one drop/drag action (e.g. control pressed) do not override it
             preferred_action = drop.actions;
         }
 

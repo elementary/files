@@ -35,6 +35,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     protected string current_drop_uri { get; set; default = "";}
     protected bool drop_accepted { get; set; default = false; }
     protected unowned List<GLib.File> dropped_files { get; set; default = null; }
+    protected Gdk.DragAction accepted_actions { get; set; default = 0; }
+    protected Gdk.DragAction suggested_action { get; set; default = 0; }
 
     //DNDInterface properties
     protected uint auto_open_timeout_id { get; set; default = 0; }

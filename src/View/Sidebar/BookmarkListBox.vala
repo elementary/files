@@ -211,8 +211,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                                 Files.File.@get (File.new_for_uri (current_drop_target.uri)),
                                 dropped_files,
                                 Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK,
-                                Gdk.DragAction.COPY,
-                                true
+                                Gdk.DragAction.COPY
                             );
                         }
                     }
