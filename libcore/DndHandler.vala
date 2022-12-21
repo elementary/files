@@ -31,20 +31,23 @@ public class Files.DndHandler : GLib.Object {
         Files.File drop_target,
         GLib.List<GLib.File> dropped_files,
         Gdk.DragAction possible_actions,
-        Gdk.DragAction suggested_action
+        Gdk.DragAction suggested_action,
+        bool ask = true
     ) {
         bool success = false;
-        Gdk.DragAction action = suggested_action;
+        Gdk.DragAction action = 0;
         if (dropped_files != null) {
             foreach (var file in dropped_files) {
                 drop_file_list.prepend (file);
             }
 
-            //Only ask if more than one possible action
-            if (possible_actions != suggested_action) {
+            //Only ask if more than one possible action and <Alt> pressed
+            if (ask && possible_actions != suggested_action) {
                 action = drag_drop_action_ask (
                     dest_widget, x, y, possible_actions, suggested_action
                 );
+            } else {
+                action = suggested_action;
             }
 
             if (action != 0) {
@@ -155,10 +158,7 @@ public class Files.DndHandler : GLib.Object {
 
         return false;
     }
-    //Drag unmodified =selected_action = COPY or MOVE drag_actions = drop_target common actions
-    //Drag with Ctrl - selected action == 0 drag actions = COPY
-    //Drag with Shift - selected action = 0 drag_actions = MOVE
-    //Drag with Alt - selected action == 0, drag actions includes ASK (Generates criticals)
+
     public static Gdk.DragAction file_accepts_drop (
         Files.File dest,
         GLib.List<GLib.File> drop_file_list, // read-only

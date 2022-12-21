@@ -108,6 +108,9 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
 
             return true;
         });
+        // drop_target.enter.connect (() => {
+        //     return 0;
+        // });
         drop_target.leave.connect (() => {
             drop_accepted = false;
             dropped_files = null;
@@ -116,8 +119,8 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             if (!drop_accepted) {
                 return 0;
             }
-            var drop = drop_target.get_current_drop ();
 
+            var drop = drop_target.get_current_drop ();
             accepted_actions = 0;
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             var item = widget.get_ancestor (typeof (FileItemInterface));
@@ -140,10 +143,24 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
 
             return Files.DndHandler.preferred_action;
         });
+
+        //Gtk already filters available actions according to keyboard modifier state
+        //Drag unmodified = selected_action = as returned by DndHandler in motion handler
+        // drag_actions = drop_target common actions
+        //Drag with Ctrl - selected action == COPY drag actions = COPY
+        //Drag with Shift - selected action = MOVE drag_actions = MOVE
+        //Drag with Shift+Ctrl - selected action == LINK, drag actions LINK
+        //Note: Gtk does not seem to implement a Gtk.DragAction.ASK modifier so we use <ALT>
         drop_target.on_drop.connect ((val, x, y) => {
             if (dropped_files != null &&
                 current_drop_uri != null &&
                 accepted_actions > 0) {
+
+                // Getting mods from the drop object does not work for some reason
+                var seat = Gdk.Display.get_default ().get_default_seat ();
+                var mods = seat.get_keyboard ().modifier_state & Gdk.MODIFIER_MASK;
+                var alt_pressed = (mods & Gdk.ModifierType.ALT_MASK) > 0;
+                var alt_only = alt_pressed && ((mods & ~Gdk.ModifierType.ALT_MASK) == 0);
 
                 Files.DndHandler.handle_file_drop_actions (
                     this,
@@ -151,7 +168,8 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
                     Files.File.@get (GLib.File.new_for_uri (current_drop_uri)),
                     dropped_files,
                     accepted_actions,
-                    Gdk.DragAction.COPY
+                    Gdk.DragAction.COPY,
+                    alt_only  //TODO Any other circumstance requiring ASK?
                 );
             }
 
@@ -172,17 +190,6 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         }
 
         return true;
-    }
-
-    private Gdk.DragAction get_accepted_drop_actions (
-        Files.File target,
-        Gdk.Drop drop
-    ) {
-        return Files.DndHandler.file_accepts_drop (
-            target,
-            dropped_files, // read-only
-            drop
-        );
     }
 
     //Need to ensure fileitem gets selected before drag
