@@ -1110,7 +1110,7 @@ public class Files.File : GLib.Object {
             is_mounted = false;
             exists = false;
             is_connected = false;
-            critical (e.message);
+            critical ("Error querying info on location %s - %s", location.get_uri (), e.message);
         }
 
         return null;

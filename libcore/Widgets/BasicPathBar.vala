@@ -153,7 +153,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                     activate_action (
                         "win.path-change-request",
                         "(su)",
-                        protocol + crumb.dir_path,
+                        crumb.dir_path,
                         OpenFlag.DEFAULT
                     );
                 } else {
