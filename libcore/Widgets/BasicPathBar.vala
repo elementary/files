@@ -209,6 +209,14 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                     main_child.append (spacer);
                     // Scroll to show the last breadcrumb
                     hadj.changed ();
+
+                    Idle.add (() => {
+                        foreach (var crumb in crumbs) {
+                            crumb.reveal (true);
+                        }
+
+                        return Source.REMOVE;
+                    });
                 });
 
                 hadj.changed.connect (() => {
@@ -271,6 +279,8 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         private Gtk.Image? dir_icon = null;
         private Gtk.Image? separator_image = null;
 
+        public Gtk.Revealer revealer { get; construct; }
+
         public bool hide_previous = false;
 
         public Crumb (string path, bool show_separator) {
@@ -288,8 +298,17 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
         construct {
             name ="crumb";
-            var layout = new Gtk.BoxLayout (Gtk.Orientation.HORIZONTAL);
+            var layout = new Gtk.BinLayout ();
             set_layout_manager (layout);
+            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            revealer = new Gtk.Revealer () {
+                transition_type = Gtk.RevealerTransitionType.SLIDE_RIGHT,
+                transition_duration = 300
+            };
+            revealer.child = box;
+            revealer.reveal_child = false;
+            revealer.set_parent (this);
+
             name_label = new Gtk.Label ("") {
                 margin_start = 3
             };
@@ -326,11 +345,11 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             }
 
             if (dir_icon != null) {
-                dir_icon.set_parent (this);
+                dir_icon.set_parent (box);
             }
 
             if (name_label.label != "") {
-                name_label.set_parent (this);
+                name_label.set_parent (box);
             }
 
             if (show_separator) {
@@ -338,7 +357,15 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                     gicon = new ThemedIcon ("go-next-symbolic"),
                     margin_start = 24
                 };
-                separator_image.set_parent (this);
+                separator_image.set_parent (box);
+            }
+        }
+
+        public void reveal (bool reveal) {
+            if (revealer.reveal_child == reveal) {
+                return;
+            } else {
+                revealer.reveal_child = reveal;
             }
         }
     }
