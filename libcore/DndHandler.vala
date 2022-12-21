@@ -60,6 +60,7 @@ public class Files.DndHandler : GLib.Object {
             critical ("Attempt to drop null file list");
         }
 
+        drop_file_list = null;
         return success ? action : 0;
     }
 
@@ -121,8 +122,8 @@ public class Files.DndHandler : GLib.Object {
         });
         ask_popover.popup ();
         loop.run ();
-        ask_popover.destroy ();
         popover_parent.insert_action_group ("dnd", null);
+        ask_popover.destroy ();
         return chosen;
     }
 
