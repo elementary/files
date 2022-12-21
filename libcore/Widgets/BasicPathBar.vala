@@ -176,8 +176,8 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                     string[] parts;
                     parts = path.split (Path.DIR_SEPARATOR_S);
                     //Make crumbs
-                    string crumb_path = "";
                     crumbs.append (new Crumb (protocol, false));
+                    var crumb_path = protocol + Path.DIR_SEPARATOR_S;
                     var last = parts.length - 1;
                     int index = 0;
                     foreach (unowned var _part in parts) {
@@ -247,6 +247,15 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 if (widget != null) {
                     return (Crumb)widget;
                 }
+            }
+
+            return null;
+        }
+
+        public string? get_dir_path_from_coords (double x, double y) {
+            var crumb = get_crumb_from_coords (x, y);
+            if (crumb != null) {
+                return crumb.dir_path;
             }
 
             return null;

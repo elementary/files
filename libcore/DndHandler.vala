@@ -209,7 +209,8 @@ public class Files.DndHandler : GLib.Object {
 
         var valid_actions = Gdk.DragAction.COPY |
                             Gdk.DragAction.MOVE |
-                            Gdk.DragAction.LINK;
+                            Gdk.DragAction.LINK |
+                            Gdk.DragAction.ASK;
 
         /* Check the first MAX_FILES_CHECKED and let
          * the operation fail for file the same as target if it is
@@ -218,7 +219,7 @@ public class Files.DndHandler : GLib.Object {
          * folders. Try to find valid and preferred actions common to all files.
          */
         uint count = 0;
-        preferred_action = valid_actions;
+        preferred_action = 0;
         foreach (var drop_file in drop_file_list) {
             if (Files.FileUtils.location_is_in_trash (drop_file) &&
                 Files.FileUtils.location_is_in_trash (target_location)) {
@@ -255,14 +256,20 @@ public class Files.DndHandler : GLib.Object {
             }
         }
 
-        if (Gdk.DragAction.LINK in preferred_action) {
-            preferred_action = Gdk.DragAction.LINK;
-        } else if (Gdk.DragAction.MOVE in preferred_action) {
-            preferred_action = Gdk.DragAction.MOVE;
-        } else {
-            preferred_action = Gdk.DragAction.COPY;
+        if (valid_actions > 0 && preferred_action == 0) {
+            preferred_action = Gdk.DragAction.ASK;
         }
 
         return valid_actions;
+    }
+
+    // Whether is accepting any drops at all
+    public static bool can_accept_drops (Files.File file) {
+       // We cannot ever drop on some locations
+        if (!file.is_folder () || file.is_recent_uri_scheme ()) {
+            return false;
+        }
+
+        return true;
     }
 }

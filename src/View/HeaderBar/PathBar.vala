@@ -21,6 +21,12 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
     private Directory? current_completion_dir = null;
     private Gtk.PopoverMenu completion_popover;
     private Menu completion_model;
+    /** Drop support **/
+    private string current_drop_uri { get; set; default = "";}
+    private bool drop_accepted { get; set; default = false; }
+    private Gdk.DragAction accepted_actions { get; set; default = 0; }
+    private static List<GLib.File> dropped_files;
+
     //For sorting suggestions
     private Gee.ArrayList<string> completion_list;
     private string to_complete = "";
@@ -87,6 +93,9 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
             secondary_gesture.set_state (Gtk.EventSequenceState.CLAIMED);
             handle_secondary_press (x, y);
         });
+
+        //Set drop target
+        set_up_drop_target ();
     }
 
     public override void navigate_to_uri (string uri) {
@@ -283,5 +292,122 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
                 completion_list.add (file.uri);
             }
         }
+    }
+
+/** Drop related functions
+/*******************************/
+    // Modified from DNDInterface (may be able to DRY?)
+    private void set_up_drop_target () {
+        //Set up as drop target. Use simple (synchronous) string target for now as most reliable
+        //Based on code for BookmarkListBox (some DRYing may be possible?)
+        //TODO Use Gdk.FileList target when Gtk4 version 4.8+ available
+        var drop_target = new Gtk.DropTarget (
+            Type.STRING,
+            Gdk.DragAction.LINK |
+            Gdk.DragAction.COPY |
+            Gdk.DragAction.MOVE |
+            Gdk.DragAction.ASK
+        ) {
+            propagation_phase = Gtk.PropagationPhase.CAPTURE,
+        };
+
+        breadcrumbs.add_controller (drop_target);
+        drop_target.accept.connect ((drop) => {
+        // warning ("ACCEPT");
+            drop_accepted = false;
+            drop.read_value_async.begin (
+                Type.STRING,
+                Priority.DEFAULT,
+                null,
+                (obj, res) => {
+                    try {
+                        var val = drop.read_value_async.end (res);
+                        if (val != null) {
+                            // Error thrown if string does not contain valid uris as uri-list
+                            drop_accepted = Files.FileUtils.files_from_uris (
+                                val.get_string (),
+                                out dropped_files
+                            );
+                        } else {
+                            warning ("dropped value null");
+                        }
+                    } catch (Error e) {
+                        warning ("Could not retrieve valid uri (s)");
+                    }
+                }
+            );
+
+            return true;
+        });
+        // drop_target.enter.connect (() => {
+        //     return 0;
+        // });
+        drop_target.leave.connect (() => {
+            drop_accepted = false;
+            dropped_files = null;
+            accepted_actions = 0;
+        });
+        drop_target.motion.connect ((x, y) => {
+            if (!drop_accepted) {
+                return 0;
+            }
+
+            var drop = drop_target.get_current_drop ();
+            var path = breadcrumbs.get_dir_path_from_coords (x, y);
+            if (path != null) {
+                path = Files.FileUtils.sanitize_path (path);
+                current_drop_uri = path;
+                var file = Files.File.@get (GLib.File.new_for_uri (path));
+                file.query_update ();
+                warning ("%s is directory %s", file.uri, file.is_directory.to_string ());
+                accepted_actions = Files.DndHandler.file_accepts_drop (
+                    file,
+                    dropped_files, // read-only
+                    drop
+                );
+
+                return Files.DndHandler.preferred_action;
+            } else {
+                accepted_actions = 0;
+                return 0;
+            }
+        });
+
+        //Gtk already filters available actions according to keyboard modifier state
+        //Drag unmodified = selected_action = as returned by DndHandler in motion handler
+        // drag_actions = drop_target common actions
+        //Drag with Ctrl - selected action == COPY drag actions = COPY
+        //Drag with Shift - selected action = MOVE drag_actions = MOVE
+        //Drag with Shift+Ctrl - selected action == LINK, drag actions LINK
+        //Note: Gtk does not seem to implement a Gtk.DragAction.ASK modifier so we use <ALT>
+        drop_target.on_drop.connect ((val, x, y) => {
+            if (dropped_files != null &&
+                current_drop_uri != null &&
+                accepted_actions > 0) {
+
+                // Getting mods from the drop object does not work for some reason
+                var seat = Gdk.Display.get_default ().get_default_seat ();
+                var mods = seat.get_keyboard ().modifier_state & Gdk.MODIFIER_MASK;
+                var alt_pressed = (mods & Gdk.ModifierType.ALT_MASK) > 0;
+                var alt_only = alt_pressed && ((mods & ~Gdk.ModifierType.ALT_MASK) == 0);
+
+                Files.DndHandler.handle_file_drop_actions (
+                    this,
+                    x, y,
+                    Files.File.@get (GLib.File.new_for_uri (current_drop_uri)),
+                    dropped_files,
+                    accepted_actions,
+                    DndHandler.preferred_action,
+                    alt_only  //TODO Any other circumstance requiring ASK?
+                );
+            }
+
+            drop_accepted = false;
+            if (current_drop_uri != null) {
+                current_drop_uri = null;
+            }
+
+            return true;
+        });
     }
 }

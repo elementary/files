@@ -1099,13 +1099,18 @@ public class Files.File : GLib.Object {
             exists = false;
             debug (e.message);
         } catch (GLib.IOError.NOT_DIRECTORY e) {
+            is_mounted = false;
+            is_connected = false;
             exists = false;
             debug (e.message);
         } catch (GLib.IOError.TIMED_OUT e) {
             is_connected = false;
-            debug (e.message);
+            warning (e.message);
         } catch (GLib.Error e) {
-            debug (e.message);
+            is_mounted = false;
+            exists = false;
+            is_connected = false;
+            critical (e.message);
         }
 
         return null;

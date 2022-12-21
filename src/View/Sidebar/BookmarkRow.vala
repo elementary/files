@@ -37,7 +37,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     private bool valid = true; //Set to false if scheduled for removal
     private Gtk.Image icon;
-    public bool can_accept_drops { get; set; default = true; }
+    public bool can_accept_drops {
+        get {
+            return Files.DndHandler.can_accept_drops (target_file);
+        }
+    }
     private Files.File target_file;
     private bool is_renaming = false;
 

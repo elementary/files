@@ -331,7 +331,6 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
             row.can_insert_before = false;
             row.can_insert_after = true;
-            ((BookmarkRow)row).can_accept_drops = false;
         }
 
         foreach (unowned Files.Bookmark bm in bookmark_list.list) {
