@@ -358,7 +358,6 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
                 current_drop_uri = path;
                 var file = Files.File.@get (GLib.File.new_for_uri (path));
                 file.query_update ();
-                warning ("%s is directory %s", file.uri, file.is_directory.to_string ());
 
                 // Getting mods from the drop object does not work for some reason
                 var seat = Gdk.Display.get_default ().get_default_seat ();
