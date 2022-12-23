@@ -26,7 +26,6 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
     protected abstract FileItemInterface? previous_target_item { get; set; default = null; }
     protected abstract string current_drop_uri { get; set; default = "";}
     protected abstract bool drop_accepted { get; set; default = false; }
-    protected abstract Gdk.DragAction accepted_actions { get; set; default = 0; }
     private static List<GLib.File> dropped_files;
 
     protected void set_up_drag_source () {
@@ -35,8 +34,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             propagation_phase = Gtk.PropagationPhase.CAPTURE,
             actions = Gdk.DragAction.LINK |
                       Gdk.DragAction.COPY |
-                      Gdk.DragAction.MOVE |
-                      Gdk.DragAction.ASK
+                      Gdk.DragAction.MOVE
         };
         get_view_widget ().add_controller (drag_source);
         drag_source.prepare.connect ((x, y) => {
@@ -85,7 +83,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             Gdk.DragAction.LINK |
             Gdk.DragAction.COPY |
             Gdk.DragAction.MOVE |
-            Gdk.DragAction.ASK
+            Gdk.DragAction.ASK  // Ignored??
         ) {
             propagation_phase = Gtk.PropagationPhase.CAPTURE,
         };
@@ -127,55 +125,54 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             }
 
             var drop = drop_target.get_current_drop ();
-            accepted_actions = 0;
+            // Getting mods from the drop object does not work for some reason
+            //Gtk already filters available actions according to keyboard modifier state
+            //Drag unmodified = selected_action = as returned by DndHandler in motion handler
+            // drag_actions = drop_target common actions
+            //Drag with Ctrl - selected action == COPY drag actions = COPY
+            //Drag with Shift - selected action = MOVE drag_actions = MOVE
+            //Drag with Shift+Ctrl - selected action == LINK, drag actions LINK
+            //Note: Gtk does not seem to implement a Gtk.DragAction.ASK modifier so we use <ALT>
+            var seat = Gdk.Display.get_default ().get_default_seat ();
+            var mods = seat.get_keyboard ().modifier_state & Gdk.MODIFIER_MASK;
+            var alt_pressed = (mods & Gdk.ModifierType.ALT_MASK) > 0;
+            var alt_only = alt_pressed && ((mods & ~Gdk.ModifierType.ALT_MASK) == 0);
+
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             var item = widget.get_ancestor (typeof (FileItemInterface));
             if (item != null && (item is FileItemInterface)) {
                 var fileitem = ((FileItemInterface)item);
                 current_drop_uri = fileitem.file.uri;
-                accepted_actions = Files.DndHandler.file_accepts_drop (
+                Files.DndHandler.valid_and_preferred_actions (
                     fileitem.file,
                     dropped_files, // read-only
-                    drop
+                    drop,
+                    alt_only
                 );
             } else {
                 current_drop_uri = root_file.uri;
-                accepted_actions = Files.DndHandler.file_accepts_drop (
+                Files.DndHandler.valid_and_preferred_actions (
                     root_file,
                     dropped_files, // read-only
-                    drop
+                    drop,
+                    alt_only
                 );
             }
 
-            return Files.DndHandler.preferred_action;
+            return Files.DndHandler.preferred_action; //Sets drag emblem
         });
 
-        //Gtk already filters available actions according to keyboard modifier state
-        //Drag unmodified = selected_action = as returned by DndHandler in motion handler
-        // drag_actions = drop_target common actions
-        //Drag with Ctrl - selected action == COPY drag actions = COPY
-        //Drag with Shift - selected action = MOVE drag_actions = MOVE
-        //Drag with Shift+Ctrl - selected action == LINK, drag actions LINK
-        //Note: Gtk does not seem to implement a Gtk.DragAction.ASK modifier so we use <ALT>
+
         drop_target.on_drop.connect ((val, x, y) => {
             if (dropped_files != null &&
                 current_drop_uri != null &&
-                accepted_actions > 0) {
-
-                // Getting mods from the drop object does not work for some reason
-                var seat = Gdk.Display.get_default ().get_default_seat ();
-                var mods = seat.get_keyboard ().modifier_state & Gdk.MODIFIER_MASK;
-                var alt_pressed = (mods & Gdk.ModifierType.ALT_MASK) > 0;
-                var alt_only = alt_pressed && ((mods & ~Gdk.ModifierType.ALT_MASK) == 0);
+                Files.DndHandler.valid_actions > 0) {
 
                 Files.DndHandler.handle_file_drop_actions (
                     this,
                     x, y,
                     Files.File.@get (GLib.File.new_for_uri (current_drop_uri)),
-                    dropped_files,
-                    accepted_actions,
-                    Files.DndHandler.preferred_action,
-                    alt_only  //TODO Any other circumstance requiring ASK?
+                    dropped_files
                 );
             }
 
@@ -265,7 +262,6 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
                     auto_open_timeout_id = Timeout.add (1000, () => {
                         auto_open_timeout_id = 0;
                         change_path (droptarget.file.location, Files.OpenFlag.DEFAULT);
-                        // path_change_request (droptarget.file.location, Files.OpenFlag.DEFAULT);
                         return Source.REMOVE;
                     });
                 }

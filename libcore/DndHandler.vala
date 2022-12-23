@@ -23,16 +23,14 @@ public class Files.DndHandler : GLib.Object {
     static Gdk.DragAction? chosen = null;
     static List<GLib.File> drop_file_list = null;
     public static Gdk.DragAction preferred_action = 0;
+    public static Gdk.DragAction valid_actions = 0;
     static bool ask = false;
 
     public static Gdk.DragAction handle_file_drop_actions (
         Gtk.Widget dest_widget,
         double x, double y,
         Files.File drop_target,
-        GLib.List<GLib.File> dropped_files,
-        Gdk.DragAction possible_actions,
-        Gdk.DragAction suggested_action,
-        bool ask = true
+        GLib.List<GLib.File> dropped_files
     ) {
         bool success = false;
         Gdk.DragAction action = 0;
@@ -42,12 +40,12 @@ public class Files.DndHandler : GLib.Object {
             }
 
             //Only ask if more than one possible action and <Alt> pressed
-            if (ask && possible_actions != suggested_action) {
+            if (ask && valid_actions != preferred_action) {
                 action = drag_drop_action_ask (
-                    dest_widget, x, y, possible_actions, suggested_action
+                    dest_widget, x, y
                 );
             } else {
-                action = suggested_action;
+                action = preferred_action;
             }
 
             if (action != 0) {
@@ -66,9 +64,7 @@ public class Files.DndHandler : GLib.Object {
 
     public static Gdk.DragAction drag_drop_action_ask (
         Gtk.Widget popover_parent, //Needs to have a layout manager
-        double x, double y,
-        Gdk.DragAction possible_actions,
-        Gdk.DragAction suggested_action
+        double x, double y
     ) {
         Gdk.DragAction chosen = 0;
         var action = new GLib.SimpleAction ("choice", GLib.VariantType.STRING);
@@ -93,13 +89,13 @@ public class Files.DndHandler : GLib.Object {
         });
 
         var ask_menu = new Menu ();
-        if (Gdk.DragAction.COPY in possible_actions) {
+        if (Gdk.DragAction.COPY in valid_actions) {
             ask_menu.append (_("Copy"), "dnd.choice::COPY");
         }
-        if (Gdk.DragAction.MOVE in possible_actions) {
+        if (Gdk.DragAction.MOVE in valid_actions) {
             ask_menu.append (_("Move"), "dnd.choice::MOVE");
         }
-        if (Gdk.DragAction.LINK in possible_actions) {
+        if (Gdk.DragAction.LINK in valid_actions) {
             ask_menu.append (_("Link"), "dnd.choice::LINK");
         }
         //Assume there will always be >=1 option
@@ -113,7 +109,7 @@ public class Files.DndHandler : GLib.Object {
         ask_popover.set_parent (popover_parent);
         var loop = new GLib.MainLoop (null, false);
         ask_popover.activate_default.connect (() => {
-            chosen = suggested_action;
+            chosen = preferred_action;
         });
         ask_popover.closed.connect (() => {
             if (loop.is_running ()) {
@@ -160,107 +156,68 @@ public class Files.DndHandler : GLib.Object {
         return false;
     }
 
-    public static Gdk.DragAction file_accepts_drop (
+    public static void valid_and_preferred_actions (
         Files.File dest,
         GLib.List<GLib.File> drop_file_list, // read-only
-        Gdk.Drop drop
+        Gdk.Drop drop,
+        bool ask
     ) {
         var target_location = dest.get_target_location ();
         Gdk.DragAction actions = drop.actions;
+
         preferred_action = 0;
+        valid_actions = 0;
 
         if (drop_file_list == null || drop_file_list.data == null) {
-            return 0;
+            return;
         }
+
+        var drop_file = drop_file_list.data; //Require all files to be dragged from same location
 
         // Cannot drop a file on itself
-        if (dest.location.equal (drop_file_list.data)) {
-            return 0;
+        if (target_location.equal (drop_file_list.data)) {
+            return;
         }
 
-        if (dest.is_folder () && dest.is_writable ()) {
-            actions = valid_actions_for_file_list (target_location, drop_file_list, out preferred_action);
-        } else if (dest.is_executable ()) {
-            //Always drop on executable and allow app to determine success
-            actions &= Gdk.DragAction.COPY;
+        valid_actions = drop.actions;
+
+        var scheme = drop_file.get_uri_scheme ();
+        var parent = drop_file.get_parent ();
+        var remote = scheme == null || !scheme.has_prefix ("file");
+        var same_location = (parent != null && parent.equal (target_location));
+        var same_system = Files.FileUtils.same_file_system (drop_file, target_location);
+
+        if (Files.FileUtils.location_is_in_trash (drop_file) &&
+            Files.FileUtils.location_is_in_trash (target_location)) {
+
+            valid_actions = 0; // No DnD within trash
+        }
+
+        if (remote) {
+            valid_actions &= ~(Gdk.DragAction.LINK); // Can only LINK local files
         }
 
         if (Files.FileUtils.location_is_in_trash (target_location)) { // cannot copy or link to trash
-            actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
+            valid_actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
         }
 
-        if (Gdk.DragAction.COPY == drop.actions ||
-            Gdk.DragAction.MOVE == drop.actions ||
-            Gdk.DragAction.LINK == drop.actions) {
-
-            //If there is only one drop/drag action (e.g. control pressed) do not override it
-            preferred_action = drop.actions;
+        if (same_location && !remote) {
+            preferred_action = Gdk.DragAction.LINK;
+        } else if (same_system && !same_location) {
+            preferred_action = Gdk.DragAction.MOVE;
+        } else {
+            preferred_action = Gdk.DragAction.COPY;
         }
 
-        return actions;
-    }
-
-    private const uint MAX_FILES_CHECKED = 100; // Max checked copied from gof_file.c version
-    private static Gdk.DragAction? valid_actions_for_file_list (
-        GLib.File target_location,
-        GLib.List<GLib.File> drop_file_list,
-        out Gdk.DragAction preferred_action
-    ) {
-
-        var valid_actions = Gdk.DragAction.COPY |
-                            Gdk.DragAction.MOVE |
-                            Gdk.DragAction.LINK |
-                            Gdk.DragAction.ASK;
-
-        /* Check the first MAX_FILES_CHECKED and let
-         * the operation fail for file the same as target if it is
-         * buried in a large selection.  We can normally assume that all source files
-         * come from the same folder, but drops from outside Files could be from multiple
-         * folders. Try to find valid and preferred actions common to all files.
-         */
-        uint count = 0;
-        preferred_action = 0;
-        foreach (var drop_file in drop_file_list) {
-            if (Files.FileUtils.location_is_in_trash (drop_file) &&
-                Files.FileUtils.location_is_in_trash (target_location)) {
-
-                valid_actions = 0; // No DnD within trash
-                break;
-            }
-
-            var scheme = drop_file.get_uri_scheme ();
-            var parent = drop_file.get_parent ();
-            var remote = scheme == null || !scheme.has_prefix ("file");
-            var same_location = (parent != null && parent.equal (target_location));
-            var same_system = Files.FileUtils.same_file_system (drop_file, target_location);
-
-            if (same_location) {
-                valid_actions &= ~(Gdk.DragAction.MOVE); // Cannot move within same location
-            }
-
-            if (remote) {
-                valid_actions &= ~(Gdk.DragAction.LINK); // Can only LINK local files
-            }
-
-            if (same_location && !remote) {
-                preferred_action &= Gdk.DragAction.LINK;
-            } else if (same_system && !same_location) {
-                preferred_action &= Gdk.DragAction.MOVE;
-            } else {
-                preferred_action &= Gdk.DragAction.COPY;
-            }
-
-            if (++count > MAX_FILES_CHECKED ||
-                valid_actions == 0) {
-                break;
-            }
-        }
-
-        if (valid_actions > 0 && preferred_action == 0) {
+        if (valid_actions > 0 && (ask || preferred_action == 0)) {
+            //FIXME Gtk4 gives an error with Gdk.DragAction.ASK as preferred action??
             preferred_action = Gdk.DragAction.ASK;
         }
 
-        return valid_actions;
+        if (drop.actions.is_unique ()) {
+            //If there is only one drop/drag action (e.g. control pressed) do not override it
+            preferred_action = drop.actions;
+        }
     }
 
     // Whether is accepting any drops at all

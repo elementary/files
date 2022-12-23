@@ -205,13 +205,15 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                         if (dragged_row != null) {
                             warning ("dragged row onto row - not supported");
                         } else {
+                            Files.DndHandler.valid_actions = Gdk.DragAction.COPY |
+                                                             Gdk.DragAction.MOVE |
+                                                             Gdk.DragAction.LINK;
+                            Files.DndHandler.preferred_action = Gdk.DragAction.COPY;
                             Files.DndHandler.handle_file_drop_actions (
                                 this,
                                 x, y,
                                 Files.File.@get (File.new_for_uri (current_drop_target.uri)),
-                                dropped_files,
-                                Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK,
-                                Gdk.DragAction.COPY
+                                dropped_files
                             );
                         }
                     }

@@ -34,9 +34,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     protected Files.Preferences prefs { get; default = Files.Preferences.get_default (); }
     protected string current_drop_uri { get; set; default = "";}
     protected bool drop_accepted { get; set; default = false; }
-    protected unowned List<GLib.File> dropped_files { get; set; default = null; }
-    protected Gdk.DragAction accepted_actions { get; set; default = 0; }
-    protected Gdk.DragAction suggested_action { get; set; default = 0; }
 
     //DNDInterface properties
     protected uint auto_open_timeout_id { get; set; default = 0; }
@@ -60,8 +57,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public bool rename_after_add { get; set; default = false;}
     public bool select_after_add { get; set; default = false;}
     protected bool has_open_with { get; set; default = false;}
-
-
 
     public GridView (Files.Slot slot) {
         Object (slot: slot);
@@ -134,8 +129,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             var file_item = (GridFileItem)list_item.child;
             fileitem_list.remove ((FileItemInterface)file_item);
         });
-
-
 
         // Restore saved zoom level
         if (slot.view_mode == ViewMode.ICON) {

@@ -296,7 +296,7 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
 
 /** Drop related functions
 /*******************************/
-    // Modified from DNDInterface (may be able to DRY?)
+    // Copied from DNDInterface with modification (may be able to DRY?)
     private void set_up_drop_target () {
         //Set up as drop target. Use simple (synchronous) string target for now as most reliable
         //Based on code for BookmarkListBox (some DRYing may be possible?)
@@ -313,7 +313,6 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
 
         breadcrumbs.add_controller (drop_target);
         drop_target.accept.connect ((drop) => {
-        // warning ("ACCEPT");
             drop_accepted = false;
             drop.read_value_async.begin (
                 Type.STRING,
@@ -360,10 +359,18 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
                 var file = Files.File.@get (GLib.File.new_for_uri (path));
                 file.query_update ();
                 warning ("%s is directory %s", file.uri, file.is_directory.to_string ());
-                accepted_actions = Files.DndHandler.file_accepts_drop (
+
+                // Getting mods from the drop object does not work for some reason
+                var seat = Gdk.Display.get_default ().get_default_seat ();
+                var mods = seat.get_keyboard ().modifier_state & Gdk.MODIFIER_MASK;
+                var alt_pressed = (mods & Gdk.ModifierType.ALT_MASK) > 0;
+                var alt_only = alt_pressed && ((mods & ~Gdk.ModifierType.ALT_MASK) == 0);
+
+                Files.DndHandler.valid_and_preferred_actions (
                     file,
                     dropped_files, // read-only
-                    drop
+                    drop,
+                    alt_only
                 );
 
                 return Files.DndHandler.preferred_action;
@@ -383,7 +390,7 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
         drop_target.on_drop.connect ((val, x, y) => {
             if (dropped_files != null &&
                 current_drop_uri != null &&
-                accepted_actions > 0) {
+                Files.DndHandler.valid_actions > 0) {
 
                 // Getting mods from the drop object does not work for some reason
                 var seat = Gdk.Display.get_default ().get_default_seat ();
@@ -395,10 +402,7 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
                     this,
                     x, y,
                     Files.File.@get (GLib.File.new_for_uri (current_drop_uri)),
-                    dropped_files,
-                    accepted_actions,
-                    DndHandler.preferred_action,
-                    alt_only  //TODO Any other circumstance requiring ASK?
+                    dropped_files
                 );
             }
 
