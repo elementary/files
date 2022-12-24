@@ -33,6 +33,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public Gtk.MultiSelection multi_selection { get; protected set; }
     protected Files.Preferences prefs { get; default = Files.Preferences.get_default (); }
     protected string current_drop_uri { get; set; default = "";}
+    protected uint current_drag_button { get; set; default = 1;}
     protected bool drop_accepted { get; set; default = false; }
     protected unowned List<GLib.File> dropped_files { get; set; default = null; }
     protected Gdk.DragAction accepted_actions { get; set; default = 0; }

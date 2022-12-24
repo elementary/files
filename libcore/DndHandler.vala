@@ -24,7 +24,6 @@ public class Files.DndHandler : GLib.Object {
     static List<GLib.File> drop_file_list = null;
     public static Gdk.DragAction preferred_action = 0;
     public static Gdk.DragAction valid_actions = 0;
-    static bool ask = false;
 
     public static Gdk.DragAction handle_file_drop_actions (
         Gtk.Widget dest_widget,
@@ -41,7 +40,7 @@ public class Files.DndHandler : GLib.Object {
             }
 
             //Only ask if more than one possible action and <Alt> pressed
-            if (ask && valid_actions != preferred_action) {
+            if (preferred_action == Gdk.DragAction.ASK) {
                 action = drag_drop_action_ask (
                     dest_widget, x, y
                 );
@@ -181,7 +180,6 @@ public class Files.DndHandler : GLib.Object {
         }
 
         valid_actions = drop.actions;
-
         var scheme = drop_file.get_uri_scheme ();
         var parent = drop_file.get_parent ();
         var remote = scheme == null || !scheme.has_prefix ("file");
@@ -196,6 +194,10 @@ public class Files.DndHandler : GLib.Object {
 
         if (remote) {
             valid_actions &= ~(Gdk.DragAction.LINK); // Can only LINK local files
+        }
+
+        if (same_location) {
+            valid_actions &= ~(Gdk.DragAction.MOVE); // Cannot MOVE to same location
         }
 
         if (Files.FileUtils.location_is_in_trash (target_location)) { // cannot copy or link to trash

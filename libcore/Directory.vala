@@ -140,7 +140,7 @@ public class Files.Directory : Object {
     }
 
     ~Directory () {
-        critical ("Directory destruct %s", file.uri);
+        debug ("Directory destruct %s", file.uri);
 
         if (is_trash) {
             disconnect_volume_monitor_signals ();
@@ -415,7 +415,6 @@ public class Files.Directory : Object {
 
 
     private async void make_ready (bool ready, FileLoadedFunc? file_loaded_func = null) {
-        critical ("make ready");
         can_load = ready;
 
         if (is_recent) {

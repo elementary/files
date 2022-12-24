@@ -25,12 +25,14 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
     protected abstract uint auto_open_timeout_id { get; set; default = 0; }
     protected abstract FileItemInterface? previous_target_item { get; set; default = null; }
     protected abstract string current_drop_uri { get; set; default = "";}
+    protected abstract uint current_drag_button { get; set; default = 1;}
     protected abstract bool drop_accepted { get; set; default = false; }
     private static List<GLib.File> dropped_files;
 
     protected void set_up_drag_source () {
         //Set up as drag source for bookmarking
         var drag_source = new Gtk.DragSource () {
+            button = 0, // Need to drag with secondary button as well
             propagation_phase = Gtk.PropagationPhase.CAPTURE,
             actions = Gdk.DragAction.LINK |
                       Gdk.DragAction.COPY |
@@ -38,6 +40,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         };
         get_view_widget ().add_controller (drag_source);
         drag_source.prepare.connect ((x, y) => {
+            current_drag_button = drag_source.get_current_button ();
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             var item = widget.get_ancestor (typeof (FileItemInterface));
             if (item != null && (item is FileItemInterface)) {
@@ -58,6 +61,8 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             return null;
         });
         drag_source.drag_begin.connect ((drag) => {
+            //FIXME Work around for Gtk4 bug(?) whereby eventcontroller modifier-state does not include buttons
+            drag.set_data<uint> ("button", current_drag_button);
             //TODO Set drag icon
             return;
         });
@@ -125,6 +130,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             }
 
             var drop = drop_target.get_current_drop ();
+            var drag = drop.drag;
             // Getting mods from the drop object does not work for some reason
             //Gtk already filters available actions according to keyboard modifier state
             //Drag unmodified = selected_action = as returned by DndHandler in motion handler
@@ -137,6 +143,8 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             var mods = seat.get_keyboard ().modifier_state & Gdk.MODIFIER_MASK;
             var alt_pressed = (mods & Gdk.ModifierType.ALT_MASK) > 0;
             var alt_only = alt_pressed && ((mods & ~Gdk.ModifierType.ALT_MASK) == 0);
+            var button_pressed = drop.drag.get_data<uint> ("button");
+            var secondary_button_pressed = (button_pressed == Gdk.BUTTON_SECONDARY);
 
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             var fileitem = (FileItemInterface)(widget.get_ancestor (typeof (FileItemInterface)));
@@ -146,7 +154,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
                     fileitem.file,
                     dropped_files, // read-only
                     drop,
-                    alt_only
+                    alt_only || secondary_button_pressed
                 );
             } else {
                 current_drop_uri = root_file.uri;
@@ -154,7 +162,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
                     root_file,
                     dropped_files, // read-only
                     drop,
-                    alt_only
+                    alt_only || secondary_button_pressed
                 );
             }
             //Handle auto open
