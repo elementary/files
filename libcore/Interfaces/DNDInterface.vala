@@ -69,11 +69,13 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         drag_source.drag_end.connect ((drag, delete_data) => {
             //FIXME Does this leak memory?
             uri_string = null;
+            current_drag_button = 1;
             return;
         });
         drag_source.drag_cancel.connect ((drag, reason) => {
             //FIXME Does this leak memory?
             uri_string = null;
+            current_drag_button = 1;
             return true;
         });
     }
