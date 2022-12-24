@@ -184,6 +184,9 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
 
                         auto_open_timeout_id = Timeout.add (1000, () => {
                             auto_open_timeout_id = 0;
+                            warning ("setting drop_pending false fir %s", fileitem.file.uri);
+                            fileitem.drop_pending = false;
+                            previous_target_item.drop_pending = false;
                             change_path (fileitem.file.location, Files.OpenFlag.DEFAULT);
                             return Source.REMOVE;
                         });

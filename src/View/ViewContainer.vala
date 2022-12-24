@@ -120,13 +120,13 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
-    // For simplicity every navigation (except internal to multislot) results in a new slot and starts here.
     public void set_location_and_mode (
         ViewMode mode,
         GLib.File? loc,
         GLib.File[]? to_select,
         OpenFlag flag
     ) requires (mode < ViewMode.INVALID) {
+
         var current_location = location;
         var change_mode = mode != multi_slot.view_mode;
         if (change_mode) { //Always the case on creation
@@ -149,16 +149,17 @@ public class Files.ViewContainer : Gtk.Box {
             multi_slot.view_mode = mode;
         }
 
-
-
         var added_location = loc ?? current_location;
         Slot added_slot;
-        if (flag != OpenFlag.APPEND || view_mode != ViewMode.MULTICOLUMN) {
+        if ((flag != OpenFlag.APPEND || change_mode)) {
             multi_slot.clear ();
+            added_slot = multi_slot.add_location (loc ?? current_location);
+        } else if (view_mode != ViewMode.MULTICOLUMN && !change_mode) {
+            added_slot = multi_slot.current_slot; //Re-use the existing slot
+            added_slot.change_path (loc ?? current_location);
+        } else {
+            added_slot = multi_slot.add_location (loc ?? current_location);
         }
-
-        // added_slot = multi_slot.set_tip_uri (loc.get_uri () ?? current_location.get_uri ());
-        added_slot = multi_slot.add_location (loc ?? current_location);
 
         overlay_statusbar.cancel ();
         overlay_statusbar.halign = Gtk.Align.END;

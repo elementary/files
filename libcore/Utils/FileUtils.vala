@@ -558,7 +558,7 @@ namespace Files.FileUtils {
 
         /** TODO Check validity of new name **/
         GLib.File? new_location = null;
-        Files.Directory? dir = Files.Directory.cache_lookup_parent (old_location);
+        unowned var dir = Files.Directory.cache_lookup_parent (old_location);
         try {
             new_location = yield old_location.set_display_name_async (new_name, GLib.Priority.DEFAULT, cancellable);
 

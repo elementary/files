@@ -33,6 +33,7 @@ public class Files.DndHandler : GLib.Object {
         GLib.List<GLib.File> dropped_files
     ) {
         bool success = false;
+        drop_target.drop_pending = false;
         Gdk.DragAction action = 0;
         if (dropped_files != null) {
             foreach (var file in dropped_files) {

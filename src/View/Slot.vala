@@ -18,8 +18,8 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     public ViewMode view_mode { get; construct; }
     public int width { get; private set; }
     public Directory? directory { get; set; }
-    public Files.File? file { get { return directory != null ? directory.file : null; }}
-    public string uri { get { return file != null ? file.uri : ""; }}
+    public unowned Files.File? file { get { return directory != null ? directory.file : null; }}
+    public unowned string uri { get { return file != null ? file.uri : ""; }}
     public Files.ViewInterface? view_widget { get; private set; }
     public int displayed_files_count {
         get {
@@ -60,7 +60,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     ~Slot () {
-        warning ("Slot %s destruct", file.basename);
+        debug ("Slot %s destruct", file.basename);
         while (get_last_child () != null) {
             get_last_child ().unparent ();
         }
@@ -216,6 +216,11 @@ public class Files.Slot : Gtk.Box, SlotInterface {
             reload_timeout_id = 0;
             return GLib.Source.REMOVE;
         });
+    }
+
+    public void change_path (GLib.File location) {
+        view_widget.clear ();
+        set_up_directory (location);
     }
 
     private void set_up_directory (GLib.File loc) {

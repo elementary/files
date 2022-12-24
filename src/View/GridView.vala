@@ -44,7 +44,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public Gtk.GridView grid_view { get; construct; }
 
     protected unowned GLib.List<Gtk.Widget> fileitem_list { get; set; default = null; }
-    public SlotInterface slot { get; set construct; }
+    public unowned SlotInterface slot { get; set construct; }
     public ZoomLevel zoom_level { get; set; default = ZoomLevel.NORMAL; }
     public ZoomLevel minimum_zoom { get; set; default = ZoomLevel.SMALLEST; }
     public ZoomLevel maximum_zoom { get; set; default = ZoomLevel.LARGEST; }

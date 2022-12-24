@@ -20,6 +20,8 @@
 ***/
 
 public class Files.Directory : Object {
+    // Only Slots hold a reference to Directory objects, plus a toggle ref which ensures it is
+    // removed from the cache when no longer in use.
     private static HashTable<GLib.File, unowned Files.Directory> directory_cache;
     private static Mutex dir_cache_lock;
 
@@ -128,7 +130,6 @@ public class Files.Directory : Object {
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("smb ftp sftp afp dav davs".contains (scheme));
 
-
         file_hash = new HashTable<GLib.File, Files.File> (GLib.File.hash, GLib.File.equal);
 
         if (is_recent) {
@@ -139,7 +140,7 @@ public class Files.Directory : Object {
     }
 
     ~Directory () {
-        debug ("Directory destruct %s", file.uri);
+        critical ("Directory destruct %s", file.uri);
 
         if (is_trash) {
             disconnect_volume_monitor_signals ();
@@ -414,7 +415,7 @@ public class Files.Directory : Object {
 
 
     private async void make_ready (bool ready, FileLoadedFunc? file_loaded_func = null) {
-        debug ("make ready");
+        critical ("make ready");
         can_load = ready;
 
         if (is_recent) {
@@ -445,7 +446,6 @@ public class Files.Directory : Object {
 
             lock (directory_cache) {
                 this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
-
                 if (!creation_key.equal (location) || directory_cache.lookup (location) == null) {
                     directory_cache.insert (location, this);
                 }
@@ -519,10 +519,9 @@ public class Files.Directory : Object {
     }
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
+        unowned Directory dir = (Directory) object;
         if (is_last) {
-            unowned Directory dir = (Directory) object;
             debug ("Directory is last toggle_ref_notify %s", dir.file.uri);
-
             if (!dir.removed_from_cache) {
                 Directory.remove_dir_from_cache (dir);
             }
@@ -1092,8 +1091,8 @@ public class Files.Directory : Object {
         }
     }
 
-    public static Directory? cache_lookup (GLib.File? file) {
-        Directory? cached_dir = null;
+    public static unowned Directory? cache_lookup (GLib.File? file) {
+        unowned Directory? cached_dir = null;
 
         if (directory_cache == null) { // Only happens once on startup.  Directory gets added on creation
             return null;
@@ -1129,7 +1128,7 @@ public class Files.Directory : Object {
         return cached_dir;
     }
 
-    public static Directory? cache_lookup_parent (GLib.File file) {
+    public static unowned Directory? cache_lookup_parent (GLib.File file) {
         GLib.File? parent = file.get_parent ();
         return parent != null ? cache_lookup (parent) : cache_lookup (file);
     }
