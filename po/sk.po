@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-14 09:55+0000\n"
-"PO-Revision-Date: 2022-03-01 00:30+0000\n"
+"PO-Revision-Date: 2022-12-26 20:25+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
 "Language: sk\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -50,28 +50,23 @@ msgid "Save"
 msgstr "Uložiť"
 
 #: filechooser-portal/Main.vala:351
-#, fuzzy, c-format
-#| msgid "Replace file \"%s\"?"
+#, c-format
 msgid "Replace “%s”?"
-msgstr "Nahradiť súbor „%s“?"
+msgstr "Nahradiť „%s“?"
 
 #: filechooser-portal/Main.vala:352
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "Nahradením sa prepíše jeho obsah."
+msgstr "Nahradením tohoto súboru sa prepíše jeho obsah"
 
 #: filechooser-portal/Main.vala:361
 #, c-format
 msgid "Replace the target of “%s”?"
-msgstr ""
+msgstr "Nahradiť cieľové umiestnenie „%s“?"
 
 #: filechooser-portal/Main.vala:364
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing the target file for this link will overwrite its current contents."
-msgstr "Nahradením sa prepíše jeho obsah."
+msgstr "Nahradením cieľového súboru pre tento odkaz sa prepíše jeho obsah."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -237,7 +232,7 @@ msgstr[2] "%i položiek"
 
 #: libcore/File.vala:1121
 msgid "----"
-msgstr ""
+msgstr "----"
 
 #: libcore/File.vala:1128
 #, c-format
@@ -1806,7 +1801,7 @@ msgstr "Skryť náhľadové obrázky"
 
 #: src/View/AbstractDirectoryView.vala:2246
 msgid "Select Folders with Single Click"
-msgstr ""
+msgstr "Označiť súbory jedným kliknutím"
 
 #: src/View/AbstractDirectoryView.vala:2343
 msgid "Name"
