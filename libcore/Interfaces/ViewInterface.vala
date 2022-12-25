@@ -90,16 +90,16 @@ public interface Files.ViewInterface : Gtk.Widget {
         get_view_widget ().add_controller (gesture_primary_click);
 
         // Implement item context menu launching
-        // var gesture_secondary_click = new Gtk.GestureClick () {
-        //     button = Gdk.BUTTON_SECONDARY,
-        //     propagation_phase = Gtk.PropagationPhase.BUBBLE
-        // };
-        // gesture_secondary_click.released.connect ((n_press, x, y) => {
-        //     var item = get_item_at (x, y);
-        //     show_context_menu (item, x, y);
-        //     gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED);
-        // });
-        // get_view_widget ().add_controller (gesture_secondary_click);
+        var gesture_secondary_click = new Gtk.GestureClick () {
+            button = Gdk.BUTTON_SECONDARY,
+            propagation_phase = Gtk.PropagationPhase.BUBBLE
+        };
+        gesture_secondary_click.released.connect ((n_press, x, y) => {
+            var item = get_item_at (x, y);
+            show_context_menu (item, x, y);
+            gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED);
+        });
+        get_view_widget ().add_controller (gesture_secondary_click);
     }
 
     protected void bind_prefs () {
