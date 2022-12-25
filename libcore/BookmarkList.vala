@@ -95,8 +95,13 @@ public class Files.BookmarkList : GLib.Object {
             save_bookmarks_file ();
         } else {
             Files.BookmarkList.bookmarks_file = file;
-            load_bookmarks_file ();
         }
+
+        // Use Idle to ensure sidebar has time to connect to "loaded" notify
+        Idle.add (() => {
+            load_bookmarks_file ();
+            return Source.REMOVE;
+        });
     }
 
     public void add_special_directories () {
@@ -281,6 +286,8 @@ public class Files.BookmarkList : GLib.Object {
                     bookmark_list_from_string ((string)contents);
                     this.call_when_ready = new Files.CallWhenReady (get_gof_file_list (), files_ready);
                     loaded = true;/* Call now to ensure sidebar is updated even if call_when_ready blocks */
+                } else {
+                    warning ("bookmark file is empty");
                 }
             }
             catch (GLib.Error error) {

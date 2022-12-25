@@ -48,16 +48,6 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         append (list_box);
 
         trash_monitor = Files.TrashMonitor.get_default ();
-        bookmark_list = Files.BookmarkList.get_instance ();
-        if (bookmark_list.loaded) {
-            refresh ();
-        }
-
-        bookmark_list.notify["loaded"].connect (() => {
-            if (bookmark_list.loaded) {
-                refresh ();
-            }
-        });
 
         list_box.row_activated.connect ((row) => {
             if (row is SidebarItemInterface) {
@@ -228,6 +218,17 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                 current_drop_target = null;
             }
             return true;
+        });
+
+        bookmark_list = Files.BookmarkList.get_instance ();
+        if (bookmark_list.loaded) {
+            refresh ();
+        }
+
+        bookmark_list.notify["loaded"].connect (() => {
+            if (bookmark_list.loaded) {
+                refresh ();
+            }
         });
     }
 
