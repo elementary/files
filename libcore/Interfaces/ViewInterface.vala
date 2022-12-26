@@ -64,7 +64,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     // The view widget must have a "model" property that is a GtkSelectionModel
     public abstract unowned Gtk.Widget get_view_widget ();
     //Functions requiring access to src
-    public abstract void show_context_menu (Files.FileItemInterface? clicked_item, double x, double y);
+    public abstract void show_context_menu (Files.FileItemInterface? clicked_item, double x, double y) ;
 
     protected virtual void build_ui (Gtk.Widget view_widget) {
         var builder = new Gtk.Builder.from_resource ("/io/elementary/files/View.ui");
@@ -96,6 +96,10 @@ public interface Files.ViewInterface : Gtk.Widget {
         };
         gesture_secondary_click.released.connect ((n_press, x, y) => {
             var item = get_item_at (x, y);
+            if (item == null) {
+                unselect_all ();
+            }
+
             show_context_menu (item, x, y);
             gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED);
         });
