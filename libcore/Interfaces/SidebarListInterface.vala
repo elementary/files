@@ -64,7 +64,7 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
 
     public virtual bool has_uri (string uri, out unowned SidebarItemInterface? row = null) {
         row = null;
-        Gtk.Widget? child = get_first_child ();
+        Gtk.Widget? child = list_box.get_first_child ();
         bool uri_found = false;
         while (child != null) {
             if (child is SidebarItemInterface) {
@@ -78,7 +78,7 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
             child = child.get_next_sibling ();
         }
 
-        return false;
+        return uri_found;
     }
 
     public virtual bool select_uri (string uri) {
