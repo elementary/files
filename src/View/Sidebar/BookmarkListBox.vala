@@ -73,6 +73,10 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             if (row != null && (row is BookmarkRow)) {
                 var bm = ((BookmarkRow)row);
                 dragged_row = bm;
+                if (!bm.can_drag ()) {
+                    return null;
+                }
+
                 var uri_val = new Value (typeof (string));
                 uri_val.set_string (bm.uri);
                 return new Gdk.ContentProvider.for_value (uri_val);
@@ -106,7 +110,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             drop_accepted = false;
             var bm = dragged_row;
             if (bm != null) {
-                drop_accepted = true;
+                drop_accepted = !bm.pinned;
             } else {
                 drop.read_value_async.begin (
                     Type.STRING,

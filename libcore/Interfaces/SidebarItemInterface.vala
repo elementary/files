@@ -76,4 +76,9 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
     public virtual void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
         list.open_item (this, flag);
     }
+    public virtual bool can_drag () {
+        string protocol, path;
+        Files.FileUtils.split_protocol_from_path (uri, out protocol, out path);
+        return !(path == "" || path == Path.DIR_SEPARATOR_S);
+    }
 }
