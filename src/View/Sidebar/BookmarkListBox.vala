@@ -40,6 +40,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
     construct {
+        bookmark_list = Files.BookmarkList.get_instance ();
         list_box = new Gtk.ListBox () {
             hexpand = true,
             selection_mode = Gtk.SelectionMode.SINGLE
@@ -220,15 +221,14 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             return true;
         });
 
-        bookmark_list = Files.BookmarkList.get_instance ();
-        if (bookmark_list.loaded) {
-            refresh ();
-        }
-
         bookmark_list.notify["loaded"].connect (() => {
             if (bookmark_list.loaded) {
                 refresh ();
             }
+        });
+
+        realize.connect_after (() => {
+            bookmark_list.load_bookmarks_file ();
         });
     }
 

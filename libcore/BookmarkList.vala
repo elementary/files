@@ -96,12 +96,6 @@ public class Files.BookmarkList : GLib.Object {
         } else {
             Files.BookmarkList.bookmarks_file = file;
         }
-
-        // Use Idle to ensure sidebar has time to connect to "loaded" notify
-        Idle.add (() => {
-            load_bookmarks_file ();
-            return Source.REMOVE;
-        });
     }
 
     public void add_special_directories () {
@@ -260,7 +254,7 @@ public class Files.BookmarkList : GLib.Object {
         start_monitoring_bookmark (bm);
     }
 
-    private void load_bookmarks_file () {
+    public void load_bookmarks_file () {
         schedule_job (JobType.LOAD);
     }
 
@@ -269,7 +263,10 @@ public class Files.BookmarkList : GLib.Object {
     }
 
     private void schedule_job (JobType job) {
-        pending_ops.push_head (job);
+        if (pending_ops.peek_head () != job) {
+            pending_ops.push_head (job);
+        }
+
         if (pending_ops.length == 1) {
             process_next_op ();
         }
@@ -433,13 +430,7 @@ public class Files.BookmarkList : GLib.Object {
 
     private void process_next_op () {
         stop_monitoring_bookmarks_file ();
-        var pending = pending_ops.pop_tail ();
-        /* if job is SAVE then subsequent pending saves and loads are redundant
-         * if job is LOAD then any pending changes requiring saving will be lost
-         * so we can clear pending jobs */
-        pending_ops.clear ();
-        /* block queue until job processed */
-        pending_ops.push_head (pending);
+        var pending = pending_ops.peek_tail ();
 
         switch (pending) {
             case JobType.LOAD:
