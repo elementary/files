@@ -25,6 +25,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     public Files.BookmarkList bookmark_list { get; construct; }
     private unowned Files.TrashMonitor trash_monitor;
     private bool drop_accepted = false;
+    private uint current_drag_button = 1;
     private unowned BookmarkRow? current_drop_target = null;
     private unowned BookmarkRow? dragged_row = null;
     private List<GLib.File> dropped_files = null;
@@ -63,11 +64,16 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
         //Set up as drag source
         var drag_source = new Gtk.DragSource () {
+            button = 0, // Need to drag with secondary button as well
             propagation_phase = Gtk.PropagationPhase.CAPTURE,
-            actions = Gdk.DragAction.LINK
+            actions = Gdk.DragAction.LINK |
+                      Gdk.DragAction.COPY |
+                      Gdk.DragAction.MOVE |
+                      Gdk.DragAction.ASK
         };
         list_box.add_controller (drag_source);
         drag_source.prepare.connect ((x, y) => {
+            current_drag_button = drag_source.get_current_button ();
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             var row = widget.get_ancestor (typeof (BookmarkRow));
             if (row != null && (row is BookmarkRow)) {
@@ -85,11 +91,13 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             return null;
         });
         drag_source.drag_begin.connect ((drag) => {
+            drag.set_data<uint> ("button", current_drag_button);
             //TODO Set drag icon
             return;
         });
         drag_source.drag_end.connect ((drag, delete_data) => {
             dragged_row = null;
+            current_drag_button = 1;
             return;
         });
         drag_source.drag_cancel.connect ((drag, reason) => {
@@ -101,7 +109,10 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         //TODO Use Gdk.FileList target when Gtk4 version 4.8+ available
         var drop_target = new Gtk.DropTarget (
             Type.STRING,
-            Gdk.DragAction.LINK | Gdk.DragAction.COPY
+            Gdk.DragAction.LINK |
+            Gdk.DragAction.COPY |
+            Gdk.DragAction.MOVE |
+            Gdk.DragAction.ASK
         ) {
             propagation_phase = Gtk.PropagationPhase.CAPTURE,
         };
@@ -151,6 +162,9 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             if (!drop_accepted) {
                 return 0;
             }
+            var drop = drop_target.get_current_drop ();
+            bool alt_only, secondary_button_pressed;
+            Files.DndHandler.get_alt_and_button_for_drop (drop, out alt_only, out secondary_button_pressed);
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             var row = widget.get_ancestor (typeof (BookmarkRow));
             if (row != null && (row is BookmarkRow)) {
@@ -172,49 +186,50 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                     bm.reveal_drop_target (false);
                 }
 
-                if (bm.can_accept_drops) {
-                    if (dragged_row != null) {
-                        return Gdk.DragAction.LINK;
-                    } else {
-                        return Gdk.DragAction.COPY;
-                    }
+                if (current_drop_target != null) {
+                    // current_drop_uri = current_drop_target.uri;
+                    Files.DndHandler.valid_and_preferred_actions (
+                        current_drop_target.target_file,
+                        dropped_files, // read-only
+                        drop,
+                        alt_only || secondary_button_pressed
+                    );
+                } else { //Dropping between bookmarks
+                    return Gdk.DragAction.LINK;
                 }
             }
 
-            return 0;
+            return Files.DndHandler.preferred_action;
         });
         drop_target.on_drop.connect ((val, x, y) => {
-            if (dropped_files != null || dragged_row != null) {
-                if (current_drop_target != null) {
-                    if (current_drop_target.drop_target_revealed ()) {
-                        if (dragged_row != null) {
-                            move_item_after (dragged_row, current_drop_target.get_index ());
-                        } else {
-                            var index = 1;
-                            //TODO Limit list length to sensible value?
-                            foreach (var file in dropped_files) {
-                                add_favorite (file.get_uri (), "", current_drop_target.get_index () + index++);
-                            }
-                        }
+            if ((dropped_files != null || dragged_row != null) && current_drop_target != null) {
+                if (current_drop_target.drop_target_revealed ()) {
+                    // Dropping between bookmarks - create new bookmark
+                    if (dragged_row != null) {
+                        move_item_after (dragged_row, current_drop_target.get_index ());
                     } else {
-                        if (dragged_row != null) {
-                            warning ("dragged row onto row - not supported");
-                        } else {
-                            Files.DndHandler.valid_actions = Gdk.DragAction.COPY |
-                                                             Gdk.DragAction.MOVE |
-                                                             Gdk.DragAction.LINK;
-                            Files.DndHandler.preferred_action = Gdk.DragAction.COPY;
-                            Files.DndHandler.handle_file_drop_actions (
-                                this,
-                                x, y,
-                                Files.File.@get (File.new_for_uri (current_drop_target.uri)),
-                                dropped_files
-                            );
+                        var index = 1;
+                        //TODO Limit list length to sensible value?
+                        foreach (var file in dropped_files) {
+                            add_favorite (file.get_uri (), "", current_drop_target.get_index () + index++);
                         }
+                    }
+                } else {
+                    //Dropping onto bookmark - perform file operation
+                    if (dragged_row != null) {
+                        warning ("dragged row onto row - not supported");
+                    } else {
+                        //Appropriate actions were setup in the `move` signal handler
+                        Files.DndHandler.handle_file_drop_actions (
+                            this,
+                            x, y,
+                            Files.File.@get (File.new_for_uri (current_drop_target.uri)),
+                            dropped_files
+                        );
                     }
                 }
             } else {
-                warning ("no dropped files found");
+                warning ("Either no dropped files or no target found");
             }
 
             drop_accepted = false;

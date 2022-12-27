@@ -133,21 +133,8 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             }
 
             var drop = drop_target.get_current_drop ();
-            var drag = drop.drag;
-            // Getting mods from the drop object does not work for some reason
-            //Gtk already filters available actions according to keyboard modifier state
-            //Drag unmodified = selected_action = as returned by DndHandler in motion handler
-            // drag_actions = drop_target common actions
-            //Drag with Ctrl - selected action == COPY drag actions = COPY
-            //Drag with Shift - selected action = MOVE drag_actions = MOVE
-            //Drag with Shift+Ctrl - selected action == LINK, drag actions LINK
-            //Note: Gtk does not seem to implement a Gtk.DragAction.ASK modifier so we use <ALT>
-            var seat = Gdk.Display.get_default ().get_default_seat ();
-            var mods = seat.get_keyboard ().modifier_state & Gdk.MODIFIER_MASK;
-            var alt_pressed = (mods & Gdk.ModifierType.ALT_MASK) > 0;
-            var alt_only = alt_pressed && ((mods & ~Gdk.ModifierType.ALT_MASK) == 0);
-            var button_pressed = drop.drag.get_data<uint> ("button");
-            var secondary_button_pressed = (button_pressed == Gdk.BUTTON_SECONDARY);
+            bool alt_only, secondary_button_pressed;
+            DndHandler.get_alt_and_button_for_drop (drop, out alt_only, out secondary_button_pressed);
 
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             var fileitem = (FileItemInterface)(widget.get_ancestor (typeof (FileItemInterface)));

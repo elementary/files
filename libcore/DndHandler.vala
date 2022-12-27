@@ -232,4 +232,27 @@ public class Files.DndHandler : GLib.Object {
 
         return true;
     }
+
+    public static void get_alt_and_button_for_drop (
+        Gdk.Drop drop,
+        out bool alt_only,
+        out bool secondary_button_pressed
+    ) {
+        var drag = drop.drag;
+        //Getting mods from the drop object does not work for some reason
+        //Gtk already filters available actions according to keyboard modifier state
+        //Drag unmodified = selected_action = as returned by DndHandler in motion handler
+        // drag_actions = drop_target common actions
+        //Drag with Ctrl - selected action == COPY drag actions = COPY
+        //Drag with Shift - selected action = MOVE drag_actions = MOVE
+        //Drag with Shift+Ctrl - selected action == LINK, drag actions LINK
+        //Note: Gtk does not seem to implement a Gtk.DragAction.ASK modifier so we use <ALT>
+        var seat = Gdk.Display.get_default ().get_default_seat ();
+        var mods = seat.get_keyboard ().modifier_state & Gdk.MODIFIER_MASK;
+        var alt_pressed = (mods & Gdk.ModifierType.ALT_MASK) > 0;
+        var button_pressed = drop.drag.get_data<uint> ("button");
+
+        alt_only = alt_pressed && ((mods & ~Gdk.ModifierType.ALT_MASK) == 0);
+        secondary_button_pressed = (button_pressed == Gdk.BUTTON_SECONDARY);
+    }
 }
