@@ -46,8 +46,6 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
     private const string DENIED_MESSAGE = _("Access Denied");
 
-    public signal void folder_deleted (Files.File file, Directory parent);
-
     public Slot (GLib.File? _location, ViewMode _mode) {
         Object (
             view_mode: _mode,
@@ -175,15 +173,6 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
         if (plugins != null) {
             plugins.update_file_info (file);
-        }
-
-        if (file.is_folder ()) {
-            /* Check whether the deleted file is the directory */
-            var file_dir = Directory.cache_lookup (file.location);
-            if (file_dir != null) {
-                Directory.purge_dir_from_cache (file_dir); //Needed?
-                this.folder_deleted (file, file_dir);
-            }
         }
 
         // handle_free_space_change (); //TODO Reimplement in Gtk4

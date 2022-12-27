@@ -64,13 +64,11 @@ public class Files.Directory : Object {
     private FileMonitor? monitor = null;
     private List<unowned Files.File>? sorted_dirs = null;
 
-    // public signal void file_loaded (Files.File file);
+    //Signals listened to by client Slots
     public signal void file_added (Files.File? file); /* null used to signal failed operation */
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
-
     public signal void done_loading ();
-    public signal void thumbs_loaded ();
     public signal void need_reload (bool original_request);
 
     private uint idle_consume_changes_id = 0;
@@ -878,6 +876,12 @@ public class Files.Directory : Object {
         }
 
         gof.remove_from_caches ();
+        if (gof.is_folder ()) {
+            (GLib.Application.get_default ()).activate_action (
+                "folder-deleted",
+                new Variant ("s", gof.uri)
+            );
+        }
     }
 
     private struct FChanges {

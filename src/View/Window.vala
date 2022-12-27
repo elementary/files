@@ -306,11 +306,12 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     public void folder_deleted (GLib.File folder) {
         uint i = 0;
-        var tab = (Adw.TabPage)(tab_view.pages.get_item (i));
-        while (tab != null) {
+        while (i < tab_view.n_pages) {
+            var tab = (Adw.TabPage)(tab_view.pages.get_item (i++));
             ((ViewContainer)(tab.child)).folder_deleted (folder);
-            tab = (Adw.TabPage)(tab_view.pages.get_item (++i));
         }
+
+        sidebar.reload (); // In case folder was bookmarked
     }
 
     private void on_page_detached () {

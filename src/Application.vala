@@ -66,6 +66,16 @@ public class Files.Application : Gtk.Application {
         /* Needed by Glib.Application */
         this.application_id = APP_ID; //Ensures an unique instance.
         this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
+
+        var folder_deleted_action = new SimpleAction ("folder-deleted", new VariantType ("s"));
+        folder_deleted_action.activate.connect ((param) => {
+            var gfile = GLib.File.new_for_uri (param.get_string ());
+            unowned List<Gtk.Window> window_list = this.get_windows ();
+            window_list.@foreach ((window) => {
+                ((Files.Window)window).folder_deleted (gfile);
+            });
+        });
+        add_action (folder_deleted_action);
     }
 
     public override void startup () {
@@ -264,7 +274,7 @@ public class Files.Application : Gtk.Application {
         base.quit ();
     }
 
-    public void folder_deleted (GLib.File file) {
+    private void folder_deleted (GLib.File file) {
         unowned List<Gtk.Window> window_list = this.get_windows ();
         window_list.@foreach ((window) => {
             ((Files.Window)window).folder_deleted (file);
