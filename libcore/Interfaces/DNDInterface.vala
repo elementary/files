@@ -125,6 +125,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         drop_target.leave.connect (() => {
             drop_accepted = false;
             dropped_files = null;
+            cancel_auto_open ();
         });
         drop_target.motion.connect ((x, y) => {
             if (!drop_accepted) {
@@ -168,40 +169,33 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
                 );
             }
             //Handle auto open
-            if (fileitem == null) {
+            if (fileitem == null || fileitem != previous_target_item) {
+                cancel_auto_open ();
+            }
+
+            if (fileitem != null &&
+                fileitem.file.is_folder () &&
+                !fileitem.drop_pending) {
+
+                if (previous_target_item != null) {
+                    previous_target_item.drop_pending = false;
+                }
+
+                fileitem.drop_pending = true;
+                previous_target_item = fileitem;
+                //TODO Start time for auto open
                 if (auto_open_timeout_id > 0) {
                     Source.remove (auto_open_timeout_id);
-                    if (previous_target_item != null) {
-                        previous_target_item.drop_pending = false;
-                        previous_target_item = null;
-                    }
+                }
 
+                auto_open_timeout_id = Timeout.add (1000, () => {
                     auto_open_timeout_id = 0;
-                }
-            } else {
-                if (fileitem.file.is_folder ()) {
-                    if (!fileitem.drop_pending) {
-                        if (previous_target_item != null) {
-                            previous_target_item.drop_pending = false;
-                        }
-
-                        fileitem.drop_pending = true;
-                        previous_target_item = fileitem;
-                        //TODO Start time for auto open
-                        if (auto_open_timeout_id > 0) {
-                            Source.remove (auto_open_timeout_id);
-                        }
-
-                        auto_open_timeout_id = Timeout.add (1000, () => {
-                            auto_open_timeout_id = 0;
-                            warning ("setting drop_pending false fir %s", fileitem.file.uri);
-                            fileitem.drop_pending = false;
-                            previous_target_item.drop_pending = false;
-                            change_path (fileitem.file.location, Files.OpenFlag.DEFAULT);
-                            return Source.REMOVE;
-                        });
-                    }
-                }
+                    warning ("setting drop_pending false fir %s", fileitem.file.uri);
+                    fileitem.drop_pending = false;
+                    previous_target_item.drop_pending = false;
+                    change_path (fileitem.file.location, Files.OpenFlag.DEFAULT);
+                    return Source.REMOVE;
+                });
             }
 
             return Files.DndHandler.preferred_action; //Sets drag emblem
@@ -227,6 +221,18 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
 
             return true;
         });
+    }
+
+    private void cancel_auto_open () {
+        if (auto_open_timeout_id > 0) {
+            Source.remove (auto_open_timeout_id);
+            if (previous_target_item != null) {
+                previous_target_item.drop_pending = false;
+                previous_target_item = null;
+            }
+
+            auto_open_timeout_id = 0;
+        }
     }
 
     //Need to ensure fileitem gets selected before drag
