@@ -42,7 +42,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             return Files.DndHandler.can_accept_drops (target_file);
         }
     }
-    public  Files.File target_file { get; construct; }
+    public Files.File target_file { get; construct; }
     private bool is_renaming = false;
 
     protected Gtk.Grid content_grid;

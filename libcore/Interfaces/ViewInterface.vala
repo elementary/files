@@ -369,17 +369,22 @@ public interface Files.ViewInterface : Gtk.Widget {
             unselect_all ();
             view_widget.grab_focus ();
         } else {
+            var item = get_item_at (x, y);
+            if (item == null) {
+                return;
+            }
+
+            var file = item.file;
+            var is_folder = file.is_folder ();
+            //FIXME Should we only activate on icon??
             var should_activate = (
-                widget is Gtk.Image &&
-                (n_press == 1 && !prefs.singleclick_select) ||
+                (n_press == 1 && is_folder && !prefs.singleclick_select) ||
                 n_press == 2 // Always activate on double click
             );
             // Activate item
-            var item = get_item_at (x, y);
             if (should_activate) {
                 unselect_all ();
-                var file = item.file;
-                if (file.is_folder ()) {
+                if (is_folder) {
                     // We know we can append to multislot
                     change_path (file.location, Files.OpenFlag.APPEND);
                 } else {
