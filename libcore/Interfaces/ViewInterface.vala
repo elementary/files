@@ -84,7 +84,7 @@ public interface Files.ViewInterface : Gtk.Widget {
         // Implement single-click navigate
         var gesture_primary_click = new Gtk.GestureClick () {
             button = Gdk.BUTTON_PRIMARY,
-            propagation_phase = Gtk.PropagationPhase.CAPTURE
+            propagation_phase = Gtk.PropagationPhase.BUBBLE //selection helper handles before
         };
         gesture_primary_click.released.connect (handle_primary_release);
         get_view_widget ().add_controller (gesture_primary_click);
