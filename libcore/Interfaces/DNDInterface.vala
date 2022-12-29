@@ -49,13 +49,19 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
                     multi_selection.select_item (fileitem.pos, true);
                 }
 
-                var selected_files = new GLib.List<Files.File> ();
-                get_selected_files (out selected_files);
-                uri_string = FileUtils.make_string_from_file_list (selected_files);
-                // Use a simple string content to match sidebar drop target
-                var list_val = new GLib.Value (Type.STRING);
-                list_val.set_string (uri_string);
-                return new Gdk.ContentProvider.for_value (list_val);
+                // Only DnD on child widget - else rubberband on blank space within item
+                // Assumes item child widgets contain no blank space for this purpose
+                if (!(widget is FileItemInterface)) {
+                    var selected_files = new GLib.List<Files.File> ();
+                    get_selected_files (out selected_files);
+                    uri_string = FileUtils.make_string_from_file_list (selected_files);
+                    // Use a simple string content to match sidebar drop target
+                    var list_val = new GLib.Value (Type.STRING);
+                    list_val.set_string (uri_string);
+                    // Claim sequence so other button release handlers not triggered
+                    drag_source.set_state (Gtk.EventSequenceState.CLAIMED);
+                    return new Gdk.ContentProvider.for_value (list_val);
+                }
             }
 
             return null;

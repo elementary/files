@@ -98,11 +98,14 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
                 lines = 1,
                 margin_start = 3,
                 margin_end = 3,
+                vexpand = true,
+                hexpand = false
             };
             emblem_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
                 halign = Gtk.Align.END,
                 valign = Gtk.Align.CENTER,
-                hexpand = true
+                hexpand = true,
+                vexpand = false
             };
         } else {
             file_icon = new Gtk.Image () {

@@ -85,6 +85,8 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
                 var uri_val = new Value (typeof (string));
                 uri_val.set_string (bm.uri);
+                // Claim sequence so other button release handlers not triggered
+                drag_source.set_state (Gtk.EventSequenceState.CLAIMED);
                 return new Gdk.ContentProvider.for_value (uri_val);
             }
 
