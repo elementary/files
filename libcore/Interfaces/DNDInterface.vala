@@ -45,13 +45,12 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             var item = widget.get_ancestor (typeof (FileItemInterface));
             if (item != null && (item is FileItemInterface)) {
                 var fileitem = ((FileItemInterface)item);
-                if (!fileitem.selected) {
-                    multi_selection.select_item (fileitem.pos, true);
-                }
-
                 // Only DnD on child widget - else rubberband on blank space within item
                 // Assumes item child widgets contain no blank space for this purpose
-                if (!(widget is FileItemInterface)) {
+                if (!(widget is FileItemInterface) || fileitem.selected)  {
+                    if (!fileitem.selected) {
+                        multi_selection.select_item (fileitem.pos, true);
+                    }
                     var selected_files = new GLib.List<Files.File> ();
                     get_selected_files (out selected_files);
                     uri_string = FileUtils.make_string_from_file_list (selected_files);
