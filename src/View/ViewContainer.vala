@@ -207,8 +207,8 @@ public class Files.ViewContainer : Gtk.Box {
                 } else if (!dir.network_available) {
                     content = new Granite.Placeholder (_("The network is unavailable")) {
                         description = _("A working network is needed to reach this folder") +
-                                    "\n\n" +
-                                    dir.last_error_message
+                                     "\n\n" +
+                                     dir.last_error_message
                     };
                 } else if (dir.permission_denied) {
                     content = new Granite.Placeholder (_("This Folder Does Not Belong to You")) {
@@ -222,7 +222,9 @@ public class Files.ViewContainer : Gtk.Box {
                     };
                 } else if (added_slot.directory.state == Directory.State.TIMED_OUT) {
                     content = new Granite.Placeholder (_("Unable to Display Folder Contents")) {
-                        description = _("The operation timed out") + "\n\n" + dir.last_error_message
+                        description = _("The operation timed out") +
+                                     "\n\n" +
+                                     dir.last_error_message
                     };
                 } else {
                     content = new Granite.Placeholder (_("Unable to Show Folder")) {
@@ -231,7 +233,10 @@ public class Files.ViewContainer : Gtk.Box {
                 }
             /* Now deal with cases where file (s) within the loaded folder has to be selected */
             } else if (selected_locations != null) {
-                added_slot.select_glib_files (selected_locations, selected_locations.first ().data);
+                added_slot.select_glib_files (
+                    selected_locations,
+                    selected_locations.first ().data
+                );
                 selected_locations = null;
             } else if (dir.selected_file != null) {
                 if (dir.selected_file.query_exists ()) {
@@ -313,7 +318,12 @@ public class Files.ViewContainer : Gtk.Box {
             selected_locations = null;
             selected_locations.append (this.location);
             // Uncertain whether we can append so start new root
-            set_location_and_mode (view_mode, GLib.File.new_for_commandline_arg (path), null, OpenFlag.DEFAULT);
+            set_location_and_mode (
+                view_mode,
+                GLib.File.new_for_commandline_arg (path),
+                null,
+                OpenFlag.DEFAULT
+            );
         }
     }
 
@@ -322,7 +332,12 @@ public class Files.ViewContainer : Gtk.Box {
         string? path = browser.go_forward (n);
         if (path != null) {
             // Uncertain whether we can append so start new root
-            set_location_and_mode (view_mode, GLib.File.new_for_commandline_arg (path), null, OpenFlag.DEFAULT);
+            set_location_and_mode (
+                view_mode,
+                GLib.File.new_for_commandline_arg (path),
+                null,
+                OpenFlag.DEFAULT
+            );
         }
     }
 
@@ -330,9 +345,8 @@ public class Files.ViewContainer : Gtk.Box {
                                 OpenFlag flag,
                                 bool no_path_change = false,
                                 bool unselect_others = false) {
-
-        /* This function navigates to another folder if necessary if
-         * select_in_current_only is not set to true.
+        /* This function navigates to another folder if necessary
+         * unless select_in_current_only is not set to true.
          */
         if (slot == null) {
             return;

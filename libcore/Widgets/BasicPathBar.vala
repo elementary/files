@@ -411,9 +411,10 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             set_layout_manager (layout);
             hexpand = true;
 
-            path_entry.input_purpose = Gtk.InputPurpose.URL;
+
             path_entry = new Gtk.Entry () {
-                hexpand = true
+                hexpand = true,
+                input_purpose = Gtk.InputPurpose.URL
             }; //TODO Use validated entry?
             path_entry.activate.connect (() => {
                 path_bar.display_uri = FileUtils.sanitize_path (path_entry.text);

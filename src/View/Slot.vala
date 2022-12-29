@@ -304,8 +304,8 @@ public class Files.Slot : Gtk.Box, SlotInterface {
             var focus_after_select = focus_location != null ? focus_location.dup () : null;
 
             view_widget.select_files (files_to_select);
-            if (focus_location != null) {
-                view_widget.show_and_select_file (Files.File.@get (focus_location), false, false, true);
+            if (focus_after_select != null) {
+                view_widget.show_and_select_file (Files.File.@get (focus_after_select), false, false, true);
             }
         }
     }
@@ -318,7 +318,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
     public void show_first_item () {
         if (view_widget != null) {
-            view_widget.show_and_select_file (null, false, false);
+            view_widget.show_and_select_file (null, false, false, true);
         }
     }
 

@@ -184,7 +184,10 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     public void show_and_select_file (
-        Files.File? file, bool select, bool unselect_others, bool show = true
+        Files.File? file,
+        bool select,
+        bool unselect_others,
+        bool show = true
     ) {
         uint pos = 0;
         if (file != null) {
@@ -200,14 +203,11 @@ public interface Files.ViewInterface : Gtk.Widget {
         //TODO Check pos same in sorted model and list_store
         if (select) {
             multi_selection.select_item (pos, unselect_others);
-        } else {
-            multi_selection.unselect_item (pos);
         }
+        // Do not use this to deselect an item
 
         if (show) {
-            // Move specified item to top
-            //TODO Work out how to move to middle of visible area? Need number of columns/width of fileitem?
-            //Idle until gridview layed out.
+            // Idle until gridview layed out.
             Idle.add (() => {
                 var adj = scrolled_window.vadjustment;
                 adj.value = adj.upper * double.min (

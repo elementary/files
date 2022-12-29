@@ -176,9 +176,14 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             }
 
             if (file != null) {
-                view.show_and_select_file (file, selection_helper.active, false, false);
+                // Synchronise view model
+                // Do not use show_and_select_file as it has other effects
+                if (selected) {
+                    view.multi_selection.select_item (pos, false);
+                } else {
+                    view.multi_selection.unselect_item (pos);
+                }
             }
-
         });
 
         var motion_controller = new Gtk.EventControllerMotion ();

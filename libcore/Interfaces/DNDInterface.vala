@@ -47,7 +47,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
                 var fileitem = ((FileItemInterface)item);
                 // Only DnD on child widget - else rubberband on blank space within item
                 // Assumes item child widgets contain no blank space for this purpose
-                if (!(widget is FileItemInterface) || fileitem.selected)  {
+                if (!(widget is FileItemInterface) || fileitem.selected) {
                     if (!fileitem.selected) {
                         multi_selection.select_item (fileitem.pos, true);
                     }
