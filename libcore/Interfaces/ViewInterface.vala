@@ -362,7 +362,12 @@ public interface Files.ViewInterface : Gtk.Widget {
         });
     }
 
-    protected virtual void handle_primary_release (int n_press, double x, double y) {
+    protected virtual void handle_primary_release (
+        Gtk.EventController controller,
+        int n_press,
+        double x,
+        double y
+    ) {
         var view_widget = get_view_widget ();
         var widget = view_widget.pick (x, y, Gtk.PickFlags.DEFAULT);
         if (widget == view_widget) { // Click on background
@@ -376,9 +381,11 @@ public interface Files.ViewInterface : Gtk.Widget {
 
             var file = item.file;
             var is_folder = file.is_folder ();
+            var mods = controller.get_current_event_state () & ~Gdk.ModifierType.BUTTON1_MASK;
             //FIXME Should we only activate on icon??
             var should_activate = (
-                (n_press == 1 && is_folder && !prefs.singleclick_select) ||
+                 // Only activate on unmodified single click or double click
+                (mods == 0 && n_press == 1 && is_folder && !prefs.singleclick_select) ||
                 n_press == 2 // Always activate on double click
             );
             // Activate item
@@ -386,6 +393,7 @@ public interface Files.ViewInterface : Gtk.Widget {
                 unselect_all ();
                 if (is_folder) {
                     // We know we can append to multislot
+                    //TODO Take mods into account e.g. open in new tab or window?
                     change_path (file.location, Files.OpenFlag.APPEND);
                 } else {
                     open_file (file, Files.OpenFlag.APP);
