@@ -87,6 +87,7 @@ public interface Files.ViewInterface : Gtk.Widget {
             propagation_phase = Gtk.PropagationPhase.BUBBLE //selection helper handles before
         };
         gesture_primary_click.released.connect (handle_primary_release);
+        gesture_primary_click.set_data<uint> ("timeout-id", 0);
         get_view_widget ().add_controller (gesture_primary_click);
 
         // Implement item context menu launching
@@ -368,6 +369,11 @@ public interface Files.ViewInterface : Gtk.Widget {
         double x,
         double y
     ) {
+        var id = controller.get_data<uint> ("timeout-id") ;
+        if (id > 0) {
+            Source.remove (id);
+            controller.set_data<uint> ("timeout-id", 0);
+        }
         var view_widget = get_view_widget ();
         var widget = view_widget.pick (x, y, Gtk.PickFlags.DEFAULT);
         if (widget == view_widget) { // Click on background
@@ -394,7 +400,32 @@ public interface Files.ViewInterface : Gtk.Widget {
                 if (is_folder) {
                     // We know we can append to multislot
                     //TODO Take mods into account e.g. open in new tab or window?
-                    var flag = n_press > 1 ? Files.OpenFlag.NEW_ROOT : Files.OpenFlag.APPEND;
+
+                    // In Column View in mixed mode, normal activation adds a new column while
+                    // double-click starts a new root. However in singleclick_select mode,
+                    // Column View always appends a new column.
+                    var flag = n_press == 1 || prefs.singleclick_select ?
+                               Files.OpenFlag.APPEND : Files.OpenFlag.NEW_ROOT;
+
+                    if (n_press == 1 &&
+                        slot.view_mode == ViewMode.MULTICOLUMN &&
+                        !prefs.singleclick_select
+                    ) {
+                        // Need to wait for possible double-click else a slot will append and
+                        // may be immediately closed.
+                        controller.set_data<uint> ("timeout-id", Timeout.add (
+                            Gtk.Settings.get_default ().gtk_double_click_time + 5,
+                             () => {
+                                controller.set_data<uint> ("timeout-id", 0);
+                                //TODO Wait for possible double click before activating
+                                change_path (file.location, flag);
+                                return Source.REMOVE;
+                            }
+                        ));
+
+                        return;
+                    }
+
                     change_path (file.location, flag);
                 } else {
                     open_file (file, Files.OpenFlag.APP);
