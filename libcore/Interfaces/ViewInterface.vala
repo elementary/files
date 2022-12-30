@@ -394,7 +394,8 @@ public interface Files.ViewInterface : Gtk.Widget {
                 if (is_folder) {
                     // We know we can append to multislot
                     //TODO Take mods into account e.g. open in new tab or window?
-                    change_path (file.location, Files.OpenFlag.APPEND);
+                    var flag = n_press > 1 ? Files.OpenFlag.NEW_ROOT : Files.OpenFlag.APPEND;
+                    change_path (file.location, flag);
                 } else {
                     open_file (file, Files.OpenFlag.APP);
                 }
