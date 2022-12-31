@@ -30,7 +30,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     protected Gtk.PopoverMenu popover_menu { get; set; }
     protected GLib.ListStore list_store { get; set; }
     protected Gtk.FilterListModel filter_model { get; set; }
-    public Gtk.MultiSelection multi_selection { get; protected set; }
+    protected Gtk.MultiSelection multi_selection { get; set; }
     protected Files.Preferences prefs { get; default = Files.Preferences.get_default (); }
     protected string current_drop_uri { get; set; default = "";}
     protected uint current_drag_button { get; set; default = 1;}

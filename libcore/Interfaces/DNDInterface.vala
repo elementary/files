@@ -49,7 +49,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
                 // Assumes item child widgets contain no blank space for this purpose
                 if (!(widget is FileItemInterface) || fileitem.selected) {
                     if (!fileitem.selected) {
-                        multi_selection.select_item (fileitem.pos, true);
+                        select_and_focus_position (fileitem.pos, true);
                     }
                     var selected_files = new GLib.List<Files.File> ();
                     get_selected_files (out selected_files);

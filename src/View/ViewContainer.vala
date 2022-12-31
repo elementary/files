@@ -138,7 +138,6 @@ public class Files.ViewContainer : Gtk.Box {
             } else {
                 var selected_files = multi_slot.get_selected_files ();
                 selected_locations = null;
-
                 if (selected_files != null) {
                     selected_files.@foreach ((file) => {
                         selected_locations.prepend (file.location);

@@ -19,8 +19,8 @@
 * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
 */
 
-// This interface assumes that the View uses a Gtk dynamic view widget (GridView or ListView)
-// in order to maximise shared code.
+// This interface assumes that the view widget is or contains a Gtk.ListBase widget
+// (GridView or ListView or ColumnView) in order to maximise shared code.
 // If this were no longer to be the case then several methods would have to be virtualised and
 // reimplemented in the actual view which does not use a dynamic widget.
 public interface Files.ViewInterface : Gtk.Widget {
@@ -39,8 +39,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     protected abstract Files.Preferences prefs { get; default = Files.Preferences.get_default (); }
     protected abstract GLib.ListStore list_store { get; set; }
     protected abstract Gtk.FilterListModel filter_model { get; set; }
-    public abstract Gtk.MultiSelection multi_selection { get; protected set; }
-
+    protected abstract Gtk.MultiSelection multi_selection { get; set; }
     protected abstract Gtk.ScrolledWindow scrolled_window { get; set; }
     protected abstract Gtk.PopoverMenu popover_menu { get; set; }
     protected abstract unowned GLib.List<Gtk.Widget> fileitem_list { get; set; default = null; }
@@ -156,16 +155,70 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     public void grab_focus () {
+warning ("view grab focus");
         if (get_view_widget () != null) {
             var item = get_selected_file_item ();
+            // Assume item already focussed if there is a selection
             if (item != null) {
                 item.grab_focus ();
-            } else if (list_store.get_n_items () > 0) {
-                multi_selection.select_item (0, false);
-                focus_item (0);
+                return;
+            }
+            if (list_store.get_n_items () > 0) {
+                var first_file = (Files.File)(list_store.get_item (0));
+                item = get_file_item_for_file (first_file);
+                select_and_focus_position (0, false, false); // Focus only
+                item.grab_focus ();
             } else {
                 get_view_widget ().grab_focus ();
             }
+        } else {
+            critical ("Attempt to focus null view");
+        }
+    }
+
+    public void unselect_item (uint pos) {
+        multi_selection.unselect_item (pos);
+    }
+
+
+    public void select_and_focus_position (
+        uint focus_pos,
+        bool change_select = false,
+        bool unselect_others = false
+    ) {
+        var widget = get_view_widget ();
+        Gtk.ListBase? list_base = null;
+        if (widget is Gtk.ListBase) {
+            list_base = (Gtk.ListBase)widget;
+        } else {
+            // Handle ColumnView which contains a ListView (private)
+            var child = widget.get_first_child ();
+            while (child != null && !(child is Gtk.ListBase)) {
+                child = child.get_next_sibling ();
+            }
+
+            if (child is Gtk.ListBase) {
+                list_base = (Gtk.ListBase)child;
+            }
+        }
+
+        var prev_select = multi_selection.is_selected (focus_pos);
+        // Use this to keep keyboard focus tracking in sync (Workaround for bug report
+        // https://gitlab.gnome.org/GNOME/gtk/-/issues/5485#note_1629646
+        // Thanks to Nautilus team for this suggestion.
+        // OK to deselect in model?
+        if (list_base != null) {
+            list_base.activate_action (
+                "list.select-item",
+                "(ubb)",
+                focus_pos,
+                !unselect_others, // Whther to only modify the current item
+                false
+            );
+        }
+
+        if (!change_select && !prev_select ) { // Focus item always selects
+            multi_selection.unselect_item (focus_pos);
         }
     }
 
@@ -203,7 +256,7 @@ public interface Files.ViewInterface : Gtk.Widget {
 
         //TODO Check pos same in sorted model and list_store
         if (select) {
-            multi_selection.select_item (pos, unselect_others);
+            select_and_focus_position (pos, select, unselect_others);
         }
         // Do not use this to deselect an item
 
@@ -214,7 +267,7 @@ public interface Files.ViewInterface : Gtk.Widget {
                 adj.value = adj.upper * double.min (
                     (double)pos / (double) list_store.get_n_items (), adj.upper
                 );
-                focus_item (pos);
+                // focus_item (pos);
                 return Source.REMOVE;
             });
         }
@@ -243,7 +296,7 @@ public interface Files.ViewInterface : Gtk.Widget {
             if (multi_selection.is_selected (pos)) {
                 multi_selection.unselect_item (pos);
             } else {
-                multi_selection.select_item (pos, false);
+                select_and_focus_position (pos, false);
             }
 
             pos++;
@@ -433,16 +486,6 @@ public interface Files.ViewInterface : Gtk.Widget {
             }
         }
         //Allow click to propagate to item selection helper and then Gtk
-    }
-
-    protected void focus_item (uint pos) {
-        foreach (var widget in fileitem_list) {
-            assert_nonnull (widget);
-            var item = (FileItemInterface)widget;
-            if (item.pos == pos) {
-                item.grab_focus ();
-            }
-        }
     }
 
     protected unowned FileItemInterface? get_selected_file_item () {

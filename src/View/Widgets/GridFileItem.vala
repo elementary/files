@@ -142,6 +142,17 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             valign = Gtk.Align.START
         };
         selection_helper.set_css_name ("selection-helper");
+        selection_helper.toggled.connect (() => {
+            // Only synchronise view when manually toggled
+            // not when changes due to binding to "selected"
+            if (file != null && selection_helper.active != selected) {
+                if (selection_helper.active) {
+                    view.select_and_focus_position (pos, true, false);
+                } else {
+                    view.unselect_item (pos);
+                }
+            }
+        });
 
         icon_overlay = new Gtk.Overlay ();
         icon_overlay.child = file_icon;
@@ -166,23 +177,13 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
 
         Thumbnailer.@get ().finished.connect (handle_thumbnailer_finished);
 
-        bind_property ("selected", selection_helper, "active", BindingFlags.BIDIRECTIONAL);
+        bind_property ("selected", selection_helper, "active", BindingFlags.DEFAULT);
         bind_property ("selected", selection_helper, "visible", BindingFlags.DEFAULT);
         notify["selected"].connect (() => {
             if (selected && !has_css_class ("selected")) {
                 add_css_class ("selected");
             } else if (!selected && has_css_class ("selected")) {
                 remove_css_class ("selected");
-            }
-
-            if (file != null) {
-                // Synchronise view model
-                // Do not use show_and_select_file as it has other effects
-                if (selected) {
-                    view.multi_selection.select_item (pos, false);
-                } else {
-                    view.multi_selection.unselect_item (pos);
-                }
             }
         });
 
