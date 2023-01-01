@@ -51,7 +51,6 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"toggle-select-all", action_toggle_select_all},
         {"toggle-sidebar", action_toggle_sidebar},
         {"invert-selection", action_invert_selection},
-        {"focus-view", action_focus_view},
 
         {"find", action_find, "s"},
         {"edit-path", action_edit_path},
@@ -73,14 +72,16 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails},
         {"singleclick-select", null, null, "false", change_state_single_click_select},
 
-        //Actions only used internally (no shortcut)
+        //Actions only used internally (no global shortcut)
         {"remove-content", action_remove_content, "i"},
         {"path-change-request", action_path_change_request, "(su)"},
         {"loading-uri", action_loading_uri, "s"},
         {"loading-finished", action_loading_finished},
         {"selection-changing", action_selection_changing},
         {"update-selection", action_update_selection},
-        {"properties", action_properties, "s"}
+        {"properties", action_properties, "s"},
+        {"focus-view", action_focus_view}
+        // {"unselect-all", action_unselect_all}
     };
 
     public uint window_number { get; construct; }
@@ -187,7 +188,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.sort-type::SIZE", {"<Alt>2"});
             marlin_app.set_accels_for_action ("win.sort-type::TYPE", {"<Alt>3"});
             marlin_app.set_accels_for_action ("win.sort-type::MODIFIED", {"<Alt>4"});
-            marlin_app.set_accels_for_action ("win.focus-view", {"Escape"});
+            // marlin_app.set_accels_for_action ("win.focus-view", {"Escape"});
         }
 
         get_action ("undo").set_enabled (false);
@@ -569,6 +570,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_rename () {
+warning ("action rename");
         if (current_view_widget == null) {
             return;
         }

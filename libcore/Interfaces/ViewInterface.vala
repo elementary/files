@@ -104,6 +104,23 @@ public interface Files.ViewInterface : Gtk.Widget {
             gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED);
         });
         get_view_widget ().add_controller (gesture_secondary_click);
+
+        var key_controller = new Gtk.EventControllerKey () {
+            propagation_phase = Gtk.PropagationPhase.BUBBLE
+        };
+        get_view_widget ().add_controller (key_controller);
+
+        var escape_trigger = Gtk.ShortcutTrigger.parse_string ("Escape");
+        key_controller.key_pressed.connect ((val, code, state) => {
+            // Only works on key press, not release
+            var res = escape_trigger.trigger (key_controller.get_current_event (), false);
+            if (res == Gdk.KeyMatch.EXACT) {
+                unselect_all ();
+                return true;
+            }
+
+            return false;
+        });
     }
 
     protected void bind_prefs () {
@@ -155,7 +172,6 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     public void grab_focus () {
-warning ("view grab focus");
         if (get_view_widget () != null) {
             var item = get_selected_file_item ();
             // Assume item already focussed if there is a selection
@@ -180,12 +196,7 @@ warning ("view grab focus");
         multi_selection.unselect_item (pos);
     }
 
-
-    public void select_and_focus_position (
-        uint focus_pos,
-        bool change_select = false,
-        bool unselect_others = false
-    ) {
+    protected Gtk.ListBase? get_list_base () {
         var widget = get_view_widget ();
         Gtk.ListBase? list_base = null;
         if (widget is Gtk.ListBase) {
@@ -202,6 +213,15 @@ warning ("view grab focus");
             }
         }
 
+        return list_base;
+    }
+
+    public void select_and_focus_position (
+        uint focus_pos,
+        bool change_select = false,
+        bool unselect_others = false
+    ) {
+        var list_base = get_list_base ();
         var prev_select = multi_selection.is_selected (focus_pos);
         // Use this to keep keyboard focus tracking in sync (Workaround for bug report
         // https://gitlab.gnome.org/GNOME/gtk/-/issues/5485#note_1629646
