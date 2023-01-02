@@ -389,7 +389,6 @@ public class Files.ViewContainer : Gtk.Box {
     }
 
     public void focus_location_if_in_current_directory (
-
         GLib.File? loc,
         OpenFlag flag = OpenFlag.DEFAULT,
         bool unselect_others = false
@@ -406,6 +405,7 @@ public class Files.ViewContainer : Gtk.Box {
     }
 
     public void reload () {
+        // Cannot be sure which slot needs reloading
         multi_slot.reload ();
     }
 
