@@ -406,9 +406,7 @@ public class Files.ViewContainer : Gtk.Box {
     }
 
     public void reload () {
-        if (slot != null) {
-            slot.reload ();
-        }
+        multi_slot.reload ();
     }
 
     public Gee.List<string> get_go_back_path_list () {
