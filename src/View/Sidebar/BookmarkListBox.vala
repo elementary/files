@@ -31,6 +31,12 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     private List<GLib.File> dropped_files = null;
     private bool dropping_uri_list = false;
 
+    public bool is_renaming {
+        get {
+            var item = list_box.get_selected_row ();
+            return (item != null && ((BookmarkRow)item).is_renaming);
+        }
+    }
 
     public Files.SidebarInterface sidebar {get; construct;}
 
@@ -44,7 +50,8 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         bookmark_list = Files.BookmarkList.get_instance ();
         list_box = new Gtk.ListBox () {
             hexpand = true,
-            selection_mode = Gtk.SelectionMode.SINGLE
+            selection_mode = Gtk.SelectionMode.SINGLE,
+            can_focus = true
         };
 
         append (list_box);
@@ -308,6 +315,22 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             list_box.select_row ((BookmarkRow)item);
         } else {
             unselect_all_items ();
+        }
+    }
+
+    public void focus_selected_item () {
+        var selected_item = list_box.get_selected_row ();
+        if (selected_item != null) {
+            selected_item.grab_focus ();
+        } else {
+            list_box.get_first_child ().grab_focus ();
+        }
+    }
+
+    public void rename_selected_item () {
+        var selected_item = list_box.get_selected_row ();
+        if (selected_item != null) {
+            ((BookmarkRow)selected_item).start_renaming ();
         }
     }
 

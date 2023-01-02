@@ -80,8 +80,8 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"selection-changing", action_selection_changing},
         {"update-selection", action_update_selection},
         {"properties", action_properties, "s"},
-        {"focus-view", action_focus_view}
-        // {"unselect-all", action_unselect_all}
+        {"focus-view", action_focus_view},
+        {"focus-sidebar", action_focus_sidebar}
     };
 
     public uint window_number { get; construct; }
@@ -91,7 +91,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     private Adw.TabView tab_view;
     private Adw.TabBar tab_bar;
     private Gtk.PopoverMenu tab_popover;
-    private SidebarInterface sidebar;
+    private Sidebar.SidebarWindow sidebar;
     private bool is_first_window {
         get {
             return (window_number == 0);
@@ -570,7 +570,11 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_rename () {
-warning ("action rename");
+        if (sidebar.get_focus_child () != null) {
+            sidebar.rename_selected_bookmark ();
+            return;
+        }
+
         if (current_view_widget == null) {
             return;
         }
@@ -745,9 +749,7 @@ warning ("action rename");
             ClipboardManager.get_instance ().paste_files.begin (
                 current_container.location,
                 current_view_widget,
-                (obj, res) => {
-                    // warning ("after paste complete");
-                }
+                (obj, res) => {}
             );
         }
     }
@@ -817,8 +819,12 @@ warning ("action rename");
     }
 
     private void action_focus_view () {
-        grab_focus ();
+        current_view_widget.grab_focus ();
         top_menu.path_bar.mode = PathBarMode.CRUMBS;
+    }
+
+    private void action_focus_sidebar () {
+        sidebar.focus_bookmarks ();
     }
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {

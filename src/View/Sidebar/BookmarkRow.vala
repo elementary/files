@@ -43,7 +43,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
     }
     public Files.File target_file { get; construct; }
-    private bool is_renaming = false;
+    public bool is_renaming { get; private set; default = false; }
 
     protected Gtk.Grid content_grid;
     protected Gtk.Box icon_label_box;
@@ -142,7 +142,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         icon = new Gtk.Image.from_gicon (gicon);
 
-        icon_label_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6); // Must be grid in order to show storage bar if required
+        // Must be grid in order to show storage bar if required
+        icon_label_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
         icon_label_box.append (icon);
         icon_label_box.append (label_stack);
 
@@ -216,11 +217,15 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             }
 
             if (!permanent) {
-                menu_builder.add_remove (Action.print_detailed_name ("bm.remove-bookmark", new Variant.uint32 (id)));
+                menu_builder.add_remove (
+                    Action.print_detailed_name ("bm.remove-bookmark", new Variant.uint32 (id))
+                );
             }
 
             if (!pinned) {
-                menu_builder.add_rename (Action.print_detailed_name ("bm.rename-bookmark", new Variant.uint32 (id)));
+                menu_builder.add_rename (
+                    Action.print_detailed_name ("bm.rename-bookmark", new Variant.uint32 (id))
+                );
             }
 
             menu_builder.add_separator ();
@@ -237,16 +242,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             menu_builder.add_empty_all_trash ("bm.empty-all-trash");
         }
     }
-
-
-    // protected void highlight (bool show) {
-    //     if (show && !get_style_context ().has_class (Gtk.STYLE_CLASS_HIGHLIGHT)) {
-    //         get_style_context ().add_class (Gtk.STYLE_CLASS_HIGHLIGHT);
-    //     } else if (!show && get_style_context ().has_class (Gtk.STYLE_CLASS_HIGHLIGHT)) {
-    //         get_style_context ().remove_class (Gtk.STYLE_CLASS_HIGHLIGHT);
-    //     }
-    // }
-
 
     public void reveal_drop_target (bool reveal) {
         drop_revealer.reveal_child = reveal;

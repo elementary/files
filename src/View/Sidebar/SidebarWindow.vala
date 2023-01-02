@@ -21,20 +21,13 @@
  */
 
 public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
-    Gtk.ScrolledWindow scrolled_window;
-    BookmarkListBox bookmark_listbox;
-    DeviceListBox device_listbox;
-    NetworkListBox network_listbox;
-
+    private Gtk.ScrolledWindow scrolled_window;
+    private BookmarkListBox bookmark_listbox;
+    private DeviceListBox device_listbox;
+    private NetworkListBox network_listbox;
     private string selected_uri = "";
     private bool loading = false;
     public bool ejecting_or_unmounting = false;
-
-    public new bool has_focus {
-        get {
-            return bookmark_listbox.has_focus;
-        }
-    }
 
     construct {
         orientation = Gtk.Orientation.VERTICAL;
@@ -83,7 +76,8 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         var connect_server_button = new Gtk.Button () {
             hexpand = true,
             visible = !Files.is_admin (),
-            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"})
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"}),
+            can_focus = false
         };
 
         var csb_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
@@ -98,7 +92,8 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
 
         var sidebar_menu_button = new Gtk.MenuButton () {
             icon_name = "view-more-symbolic",
-            menu_model = sidebar_menu
+            menu_model = sidebar_menu,
+            can_focus = false
         };
 
         var action_bar = new Gtk.ActionBar () {
@@ -186,6 +181,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         insert_action_group ("bm", bookmark_action_group);
 
         var secondary_click_controller = new Gtk.GestureClick ();
+        add_controller (secondary_click_controller);
         secondary_click_controller.set_button (Gdk.BUTTON_SECONDARY);
         secondary_click_controller.released.connect ((n_press, x, y) => {
             if (n_press == 1) {
@@ -204,7 +200,39 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
             }
         });
 
-        add_controller (secondary_click_controller);
+        // For now, only bookmark listbox can have keyboard focus and control
+        //TODO Implement keyboard handling of other list boxes.
+        var key_controller = new Gtk.EventControllerKey () {
+            propagation_phase = Gtk.PropagationPhase.BUBBLE
+        };
+        add_controller (key_controller);
+        key_controller.key_pressed.connect ((val, code, state) => {
+            switch (val) {
+                case Gdk.Key.Escape:
+                case Gdk.Key.Tab:
+                    if (state == 0) {
+                        if (bookmark_listbox.is_renaming) {
+                            // Dont want Tab to end rename
+                            // But Escape does end rename
+                            if (val == Gdk.Key.Escape) {
+                                // Entry loses focus causes end of rename
+                                focus_bookmarks ();
+                            }
+
+                            return true;
+                        }
+                        // If not renaming refocus view
+                        activate_action ("win.focus-view", null, null);
+                        return true;
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+
+            return false;
+        });
 
         //Bind properties, connect signals
         Files.app_settings.bind (
@@ -251,6 +279,14 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         return id;
     }
 
+    public void focus_bookmarks () {
+        bookmark_listbox.focus_selected_item ();
+    }
+
+    public void rename_selected_bookmark () {
+        bookmark_listbox.rename_selected_item ();
+    }
+
     public bool update_plugin_item (Files.SidebarPluginItem plugin_item, uint32 id) {
         if (id == 0) {
             return false;
@@ -284,6 +320,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
             device_listbox.select_uri (location);
             network_listbox.select_uri (location);
 
+            // activate_action ("win.focus-view", null, null);
             return Source.REMOVE;
         });
     }

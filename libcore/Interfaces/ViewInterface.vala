@@ -110,9 +110,25 @@ public interface Files.ViewInterface : Gtk.Widget {
         };
         get_view_widget ().add_controller (key_controller);
         key_controller.key_pressed.connect ((val, code, state) => {
-            if (val == Gdk.Key.Escape && state == 0) {
-                unselect_all ();
-                return true;
+            switch (val) {
+                case Gdk.Key.Escape:
+                    if (state == 0) {
+                        unselect_all ();
+                        return true;
+                    }
+
+                    break;
+                case Gdk.Key.Tab:
+
+                    if (state == 0) {
+                warning ("tab");
+                        activate_action ("win.focus-sidebar", null, null);
+                        return true;
+                    }
+
+                    break;
+                default:
+                    break;
             }
 
             return false;

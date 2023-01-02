@@ -32,6 +32,7 @@ namespace Files {
     }
 }
 
+// This interface is for use by plugins, filechooser
 public interface Files.SidebarInterface : Gtk.Widget {
         /* Plugin interface */
         public abstract uint32 add_plugin_item (Files.SidebarPluginItem item, Files.PlaceType category);
