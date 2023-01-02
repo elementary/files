@@ -378,8 +378,11 @@ public class Files.Window : Gtk.ApplicationWindow {
          * so capture its unique id instead */
         var id = content.id;
         content.notify["tab-name"].connect (() => {
-            var tab_name = content.tab_name;
-            set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
+            set_tab_label (
+                check_for_tab_with_same_name (id, content.display_uri),
+                tab,
+                content.tab_name
+            );
         });
         return content;
     }
@@ -413,46 +416,45 @@ public class Files.Window : Gtk.ApplicationWindow {
         return -1;
     }
 
-    private string check_for_tab_with_same_name (int id, string path) {
-        if (path == Files.INVALID_TAB_NAME) {
-             return path;
+    private string check_for_tab_with_same_name (int id, string new_uri) {
+        if (new_uri == Files.INVALID_TAB_NAME) {
+             return new_uri;
         }
 
-        var new_label = Path.get_basename (path);
+        var new_basename = Path.get_basename (new_uri);
+        string new_tabname = new_basename;
         for (uint i = 0; i < tab_view.n_pages; i++) {
             var tab = (Adw.TabPage)(tab_view.pages.get_item (i));
             var content = (ViewContainer)(tab.child);
             if (content.id != id) {
-                string content_path = content.tab_name;
-                string content_label = Path.get_basename (content_path);
-                if (tab.title == new_label) {
-                    if (content_path != path) {
-                        new_label = disambiguate_name (new_label, path, content_path); /*Relabel calling tab */
-                        if (content_label == tab.title) {
-                            /* Also relabel conflicting tab (but not before this function finishes) */
-                            Idle.add_full (GLib.Priority.LOW, () => {
-                                var unique_name = disambiguate_name (
-                                    content_label, content_path, path
-                                );
-                                set_tab_label (unique_name, tab, content_path);
-                                return GLib.Source.REMOVE;
-                            });
-                        }
-                    }
-                } else if (content_label == new_label &&
-                           content_path == path &&
-                           content_label != tab.title) {
+                var content_uri = content.display_uri;
+                var content_basename = Path.get_basename (content_uri);
+                if (content_basename == new_basename &&
+                    content_uri != new_uri) {
 
-                    /* Revert to short label when possible */
-                    Idle.add_full (GLib.Priority.LOW, () => {
-                        set_tab_label (content_label, tab, content_path);
-                        return GLib.Source.REMOVE;
-                    });
+                    /* Same label, different uri. Relabel new tab */
+                    new_tabname = disambiguate_name (new_basename, new_uri, content_uri);
+                    if (content_basename == tab.title) {
+                        /* Also relabel conflicting tab (but not before this function finishes) */
+                        Idle.add_full (GLib.Priority.LOW, () => {
+                            var unique_name = disambiguate_name (
+                                Path.get_basename (content_uri),
+                                content_uri,
+                                new_uri
+                            );
+                            set_tab_label (unique_name, tab, content_uri);
+                            return GLib.Source.REMOVE;
+                        });
+                    }
+
+                    // Simpler to not try an revert previously ambiguous names.
+                    // Would have to compare every tab with every other one
+                    // Moreover there is still a possible ambiguity
                 }
             }
         }
 
-        return new_label;
+        return new_tabname;
     }
 
     /* Just to append "as Administrator" when appropriate */
@@ -688,7 +690,7 @@ public class Files.Window : Gtk.ApplicationWindow {
 
         current_view_widget.rename_after_add = true;
         FileOperations.new_folder.begin (
-            this, current_container.slot.file.location, null, (obj, res) => {
+            this, current_container.location, null, (obj, res) => {
             try {
                 //For now assume file will be added to view if no error
                 FileOperations.new_folder.end (res);
@@ -706,7 +708,7 @@ public class Files.Window : Gtk.ApplicationWindow {
 
         current_view_widget.rename_after_add = true;
         FileOperations.new_file.begin (
-            this, current_container.slot.uri, null, null, 0, null, (obj, res) => {
+            this, current_container.uri, null, null, 0, null, (obj, res) => {
             try {
                 //For now assume file will be added to view if no error
                 FileOperations.new_folder.end (res);
@@ -1438,8 +1440,8 @@ public class Files.Window : Gtk.ApplicationWindow {
             return;
         }
 
-        top_menu.update_path_bar (current_container.uri);
-        sidebar.sync_uri (current_container.uri);
+        top_menu.update_path_bar (current_container.display_uri);
+        sidebar.sync_uri (current_container.display_uri);
 
         if (current_container.tab_name == null) {
             // Wait until container finished setting up and loading
@@ -1523,7 +1525,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     private GLib.File? get_file_from_uri (string uri) {
         string? current_uri = null;
         if (current_container != null && current_container.location != null) {
-            current_uri = current_container.location.get_uri ();
+            current_uri = current_container.uri;
         }
 
         string path = FileUtils.sanitize_path (uri, current_uri);

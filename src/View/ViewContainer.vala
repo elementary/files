@@ -65,9 +65,15 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
+    public string display_uri {
+        owned get {
+            return file != null ? file.location.get_parse_name () : "";
+        }
+    }
+
     public string uri {
-        get {
-            return file != null ? file.uri : "";
+        owned get {
+            return file != null ? file.location.get_uri () : "";
         }
     }
 
@@ -357,7 +363,7 @@ public class Files.ViewContainer : Gtk.Box {
         }
 
         /* Using file_a.equal (file_b) can fail to detect equivalent locations */
-        if (FileUtils.same_location (uri, loc.get_uri ())) {
+        if (FileUtils.same_location (this.uri, loc.get_uri ())) {
             if (slot.directory.is_loading ()) {
                 return;
             }
