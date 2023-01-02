@@ -1441,7 +1441,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
 
         top_menu.update_path_bar (current_container.display_uri);
-        sidebar.sync_uri (current_container.display_uri);
+        sidebar.sync_uri (current_container.uri);
 
         if (current_container.tab_name == null) {
             // Wait until container finished setting up and loading
