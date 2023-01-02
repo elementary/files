@@ -39,7 +39,6 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     private int preferred_column_width;
     private uint reload_timeout_id = 0;
     private uint path_change_timeout_id = 0;
-    private bool original_reload_request = false;
 
     private const string EMPTY_MESSAGE = _("This Folder Is Empty");
     private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
@@ -134,14 +133,16 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         dir.file_added.connect (on_directory_file_added);
         dir.file_changed.connect (on_directory_file_changed);
         dir.file_deleted.connect (on_directory_file_deleted);
-        dir.need_reload.connect (on_directory_need_reload);
+        dir.will_reload.connect (on_directory_will_reload);
+        dir.done_loading.connect (on_directory_done_loading);
     }
 
     private void disconnect_directory_handlers (Directory dir) {
         dir.file_added.disconnect (on_directory_file_added);
         dir.file_changed.disconnect (on_directory_file_changed);
         dir.file_deleted.disconnect (on_directory_file_deleted);
-        dir.need_reload.disconnect (on_directory_need_reload);
+        dir.will_reload.disconnect (on_directory_will_reload);
+        dir.done_loading.disconnect (on_directory_done_loading);
     }
 
     // * Directory signal handlers moved from DirectoryView not requiring changes
@@ -178,33 +179,15 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         // handle_free_space_change (); //TODO Reimplement in Gtk4
     }
 
-    private void on_directory_need_reload (Directory dir, bool original_request) {
+    // Only receives this when another entity will initiate the reload
+    private void on_directory_will_reload (Directory dir) {
         view_widget.clear ();
         activate_action ("win.loading-uri", "s", dir.file.uri);
-        if (original_request) {
-            original_reload_request = true;
-        }
-        /* Only need to initialise directory once - the slot that originally received the
-         * reload request does this */
-        if (original_reload_request) {
-            schedule_reload ();
-            original_reload_request = false;
-        }
     }
 
-    private void schedule_reload () {
-        /* Allow time for other slots showing this directory to prepare for reload.
-         * Also a delay is needed when a mount is added and trash reloads. */
-        if (reload_timeout_id > 0) {
-            warning ("Path change request received too rapidly");
-            return;
-        }
-
-        reload_timeout_id = Timeout.add (100, () => {
-            directory.reload ();
-            reload_timeout_id = 0;
-            return GLib.Source.REMOVE;
-        });
+    private void on_directory_done_loading () {
+        // Ensure all windows updated
+        activate_action ("win.loading-finished", null);
     }
 
     public void change_path (GLib.File location) {
@@ -263,13 +246,8 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         return true;
     }
 
-    public void reload (bool non_local_only = false) {
-        if (!non_local_only || !directory.is_local) {
-            original_reload_request = true;
-            /* Propagate reload signal to any other slot showing this directory indicating it is not
-             * the original signal */
-            directory.need_reload (false);
-        }
+    public void reload () {
+        directory.schedule_reload ();
     }
 
     public override bool set_all_selected (bool select_all) {

@@ -187,6 +187,19 @@ public class Files.MultiSlot : Gtk.Box, SlotContainerInterface {
         first_host.end_child = null;
     }
 
+    public void reload () {
+        var host = (Gtk.Paned)(viewport.child);
+        while (host != null) {
+            var slot = (Slot)(((Gtk.Paned)host).start_child);
+            slot.reload ();
+            if (host.end_child is Gtk.Paned) {
+                host = (Gtk.Paned)(host.end_child);
+            } else {
+                break;
+            }
+        }
+    }
+
     private void truncate_list_after_host (Gtk.Paned host) {
         if (host.end_child == null) {
             return;

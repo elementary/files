@@ -69,7 +69,7 @@ public class Files.Directory : Object {
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
     public signal void done_loading ();
-    public signal void need_reload (bool original_request);
+    public signal void will_reload (); // Do not call directly
 
     private uint idle_consume_changes_id = 0;
     private bool removed_from_cache;
@@ -131,9 +131,11 @@ public class Files.Directory : Object {
         file_hash = new HashTable<GLib.File, Files.File> (GLib.File.hash, GLib.File.equal);
 
         if (is_recent) {
-           Files.Preferences.get_default ().notify["remember-history"].connect (() => {
-                need_reload (true);
+            Files.Preferences.get_default ().notify["remember-history"].connect (() => {
+                schedule_reload ();
             });
+
+            schedule_reload ();
         }
     }
 
@@ -511,7 +513,7 @@ public class Files.Directory : Object {
 
     private void on_mount_changed (GLib.VolumeMonitor vm, GLib.Mount mount) {
         if (state == State.LOADED) {
-            need_reload (true);
+            schedule_reload ();
         }
     }
 
@@ -528,25 +530,40 @@ public class Files.Directory : Object {
     }
 
     public void cancel () {
-        /* This should only be called when closing the view - it will cancel initialisation of the directory */
+        /* This should only be called when closing the view -
+         * it will cancel initialisation of the directory */
         cancellable.cancel ();
         cancel_timeouts ();
     }
 
+    uint reload_timeout_id = 0;
+    public void schedule_reload () {
+        will_reload (); // Signal client slots to prepare
+        if (reload_timeout_id > 0) {
+            warning ("Reload request received too rapidly");
+            return;
+        }
 
-    public void reload () { //TODO Make async?
         debug ("Reload - state is %s", state.to_string ());
         if (state == State.TIMED_OUT && file.is_mounted) {
             debug ("Unmounting because of timeout");
             cancellable.cancel ();
             cancellable = new Cancellable ();
-            file.location.unmount_mountable_with_operation.begin (GLib.MountUnmountFlags.FORCE, null, cancellable);
+            file.location.unmount_mountable_with_operation.begin (
+                GLib.MountUnmountFlags.FORCE,
+                null,
+                cancellable
+            );
             file.mount = null;
             file.is_mounted = false;
         }
 
-        clear_directory_info ();
-        init.begin ();
+        reload_timeout_id = Timeout.add (100, () => {
+            clear_directory_info ();
+            init ();
+            reload_timeout_id = 0;
+            return GLib.Source.REMOVE;
+        });
     }
 
     /** Called in preparation for a reload **/
@@ -947,7 +964,7 @@ public class Files.Directory : Object {
             _freeze_update = value;
             if (!value && can_load) {
                 if (list_fchanges_count >= FCHANGES_MAX) {
-                    need_reload (true);
+                    schedule_reload ();
                 } else if (list_fchanges_count > 0) {
                     list_fchanges.reverse ();
                     foreach (var fchange in list_fchanges) {
@@ -1216,6 +1233,7 @@ public class Files.Directory : Object {
         cancel_timeout (ref idle_consume_changes_id);
         cancel_timeout (ref load_timeout_id);
         cancel_timeout (ref mount_timeout_id);
+        cancel_timeout (ref reload_timeout_id);
     }
 
     private bool cancel_timeout (ref uint id) {

@@ -161,7 +161,7 @@ Directory reload_populated_local_test (string test_dir_path, MainLoop loop) {
         if (loads < n_loads) {
             loads++;
             dir.cancel ();
-            dir.reload ();
+            dir.schedule_reload ();
         } else {
             assert_true (dir.displayed_files_count == n_files);
             assert_true (dir.can_load);
