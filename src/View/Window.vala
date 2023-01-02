@@ -558,7 +558,8 @@ public class Files.Window : Gtk.ApplicationWindow {
         switch (current_view_widget.get_selected_files (out selected_files)) {
             case 0:
                 // Bookmark the background folder
-                sidebar.add_favorite_uri (current_container.location.get_uri ());
+                sidebar.add_favorite_uri (current_container.uri);
+                sidebar.sync_uri (current_container.uri);
                 break;
             case 1:
                 // Bookmark the selected file/folder
