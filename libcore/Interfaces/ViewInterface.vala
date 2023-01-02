@@ -106,7 +106,7 @@ public interface Files.ViewInterface : Gtk.Widget {
         get_view_widget ().add_controller (gesture_secondary_click);
 
         var key_controller = new Gtk.EventControllerKey () {
-            propagation_phase = Gtk.PropagationPhase.BUBBLE
+            propagation_phase = Gtk.PropagationPhase.CAPTURE
         };
         get_view_widget ().add_controller (key_controller);
         key_controller.key_pressed.connect ((val, code, state) => {
@@ -119,9 +119,7 @@ public interface Files.ViewInterface : Gtk.Widget {
 
                     break;
                 case Gdk.Key.Tab:
-
                     if (state == 0) {
-                warning ("tab");
                         activate_action ("win.focus-sidebar", null, null);
                         return true;
                     }
