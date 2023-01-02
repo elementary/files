@@ -219,11 +219,11 @@ public class Files.Window : Gtk.ApplicationWindow {
             button = Gdk.BUTTON_SECONDARY,
             propagation_phase = Gtk.PropagationPhase.CAPTURE // Receive before tab_bar
         };
+        tab_bar.add_controller (gesture_secondary_click);
         gesture_secondary_click.released.connect ((n_press, x, y) => {
             show_tab_context_menu (x, y);
             gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED); // Do not propagate
         });
-        tab_bar.add_controller (gesture_secondary_click);
 
         var add_tab_button = new Gtk.Button () {
             icon_name = "list-add-symbolic",

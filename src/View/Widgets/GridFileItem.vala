@@ -188,17 +188,18 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         });
 
         var motion_controller = new Gtk.EventControllerMotion ();
+        add_controller (motion_controller);
         motion_controller.enter.connect (() => {
             selection_helper.visible = true;
         });
         motion_controller.leave.connect (() => {
             selection_helper.visible = selected;
         });
-        add_controller (motion_controller);
 
         //Handle focus events to change appearance when has focus (but not selected)
         focusable = true;
         var focus_controller = new Gtk.EventControllerFocus ();
+        add_controller (focus_controller);
         focus_controller.enter.connect (() => {
             if (!has_css_class ("focussed")) {
                 add_css_class ("focussed");
@@ -209,7 +210,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
                 remove_css_class ("focussed");
             }
         });
-        add_controller (focus_controller);
     }
 
     public void bind_file (Files.File? new_file) {

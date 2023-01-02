@@ -85,15 +85,16 @@ public interface Files.ViewInterface : Gtk.Widget {
             button = Gdk.BUTTON_PRIMARY,
             propagation_phase = Gtk.PropagationPhase.BUBBLE //selection helper handles before
         };
+        get_view_widget ().add_controller (gesture_primary_click);
         gesture_primary_click.released.connect (handle_primary_release);
         gesture_primary_click.set_data<uint> ("timeout-id", 0);
-        get_view_widget ().add_controller (gesture_primary_click);
 
         // Implement item context menu launching
         var gesture_secondary_click = new Gtk.GestureClick () {
             button = Gdk.BUTTON_SECONDARY,
             propagation_phase = Gtk.PropagationPhase.BUBBLE
         };
+        get_view_widget ().add_controller (gesture_secondary_click);
         gesture_secondary_click.released.connect ((n_press, x, y) => {
             var item = get_item_at (x, y);
             if (item == null) {
@@ -103,7 +104,6 @@ public interface Files.ViewInterface : Gtk.Widget {
             show_context_menu (item, x, y);
             gesture_secondary_click.set_state (Gtk.EventSequenceState.CLAIMED);
         });
-        get_view_widget ().add_controller (gesture_secondary_click);
 
         var key_controller = new Gtk.EventControllerKey () {
             propagation_phase = Gtk.PropagationPhase.CAPTURE

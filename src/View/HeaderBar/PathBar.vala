@@ -320,7 +320,6 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
         ) {
             propagation_phase = Gtk.PropagationPhase.CAPTURE,
         };
-
         breadcrumbs.add_controller (drop_target);
         drop_target.accept.connect ((drop) => {
             drop_accepted = false;

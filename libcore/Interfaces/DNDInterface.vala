@@ -99,7 +99,6 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         ) {
             propagation_phase = Gtk.PropagationPhase.CAPTURE,
         };
-
         view_widget.add_controller (drop_target);
         drop_target.accept.connect ((drop) => {
             drop_accepted = false;
