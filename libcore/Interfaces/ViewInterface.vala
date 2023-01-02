@@ -109,12 +109,8 @@ public interface Files.ViewInterface : Gtk.Widget {
             propagation_phase = Gtk.PropagationPhase.BUBBLE
         };
         get_view_widget ().add_controller (key_controller);
-
-        var escape_trigger = Gtk.ShortcutTrigger.parse_string ("Escape");
         key_controller.key_pressed.connect ((val, code, state) => {
-            // Only works on key press, not release
-            var res = escape_trigger.trigger (key_controller.get_current_event (), false);
-            if (res == Gdk.KeyMatch.EXACT) {
+            if (val == Gdk.Key.Escape && state == 0) {
                 unselect_all ();
                 return true;
             }

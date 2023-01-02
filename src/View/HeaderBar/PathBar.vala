@@ -50,24 +50,35 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
             }
         });
 
-        var key_controller = new Gtk.EventControllerKey () {
-            propagation_phase = Gtk.PropagationPhase.CAPTURE
-        };
-        key_controller.key_pressed.connect ((keyval, keycode, state) => {
-            if (Gdk.keyval_name (keyval) == "Tab") {
-                if (completion_popover.visible) {
-                    tab_complete_action.activate (null);
-                    return true;
-                }
-            }
-
-            return false;
-        });
-        path_entry.add_controller (key_controller);
-
         var pathbar_action_group = new SimpleActionGroup ();
         pathbar_action_group.add_action (set_text_action);
         insert_action_group ("pathbar", pathbar_action_group);
+
+        //Attempt to add local shortcuts did not work for some reason so do it the old way
+        var key_controller = new Gtk.EventControllerKey () {
+            propagation_phase = Gtk.PropagationPhase.CAPTURE
+        };
+        path_entry.add_controller (key_controller);
+        key_controller.key_pressed.connect ((keyval, keycode, state) => {
+            switch (keyval) {
+                case Gdk.Key.Tab:
+                    if (state == 0 && completion_popover.visible) {
+                        tab_complete_action.activate (null);
+                        return true;
+                    }
+
+                    break;
+                case Gdk.Key.Escape:
+                    if (state == 0) {
+                        activate_action ("win.focus-view", null, null);
+                        return true;
+                    }
+
+                    break;
+                default:
+                    return false;
+            }
+        });
 
         completion_popover = new Gtk.PopoverMenu.from_model (null) {
             autohide = false,
@@ -252,7 +263,6 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
             int n_chars = int.MAX;
             completion_list.foreach ((uri) => {
                 var basename = Path.get_basename (uri);
-                warning ("basename %s", basename);
                 if (previous_common_text == "") {
                     previous_common_text = basename;
                     n_chars = basename.length;
