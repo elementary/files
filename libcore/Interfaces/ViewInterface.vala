@@ -192,7 +192,8 @@ public interface Files.ViewInterface : Gtk.Widget {
             }
 
             //Note not all items may be visible so look at multi-selection
-            if (multi_selection.n_items > 0) {
+            //TODO Use `n_items` property when using Gtk version >= 4.8
+            if (multi_selection.get_n_items () > 0) {
                 var first_file = (Files.File)(multi_selection.get_item (0));
                 show_and_select_file (first_file, false, false, true);
                 item = get_file_item_for_file (first_file);
@@ -391,10 +392,16 @@ public interface Files.ViewInterface : Gtk.Widget {
         }
     }
 
-    public void add_files (List<Files.File> files) {
+    // Use for initial loading of files
+    public void add_files (List<unowned Files.File> files) {
         //TODO Delay sorting until adding finished?
-        var view = get_view_widget ();
-
+        set_model (null);
+        foreach (var file in files) {
+            list_store.append (file);
+        }
+        list_store.sort (file_compare_func);
+        set_model (multi_selection);
+        // Need to deal with selection after loading
     }
 
     public void file_changed (Files.File file) {

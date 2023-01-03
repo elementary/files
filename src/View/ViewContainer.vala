@@ -77,12 +77,6 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
-    // public bool locked_focus {
-    //     get {
-    //         return slot != null && slot.locked_focus;
-    //     }
-    // }
-
     public bool can_go_back {
         get {
             return browser.get_can_go_back ();

@@ -57,6 +57,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     ~Slot () {
+        TODO Cancel timeouts when destroyed.
         debug ("Slot %s destruct", file.basename);
         while (get_last_child () != null) {
             get_last_child ().unparent ();
@@ -145,10 +146,9 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         dir.done_loading.disconnect (on_directory_done_loading);
     }
 
-    // * Directory signal handlers moved from DirectoryView not requiring changes
-    // to Window
+    // Use only for single file changes, not initial loading for performance
     private void on_directory_file_added (Directory dir, Files.File? file) {
-        if (file != null) {
+        if (file != null && !dir.is_loading ()) {
             view_widget.add_file (file);
         }
 
@@ -182,12 +182,15 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     // Only receives this when another entity will initiate the reload
     private void on_directory_will_reload (Directory dir) {
         view_widget.clear ();
+        directory.file_added.disconnect (on_directory_file_added);
         activate_action ("win.loading-uri", "s", dir.file.uri);
     }
 
     private void on_directory_done_loading () {
         // Ensure all windows updated
         activate_action ("win.loading-finished", null);
+        view_widget.add_files (directory.get_files ());
+        directory.file_added.connect (on_directory_file_added);
     }
 
     public void change_path (GLib.File location) {
@@ -204,12 +207,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         connect_directory_handlers (directory);
     }
 
-    //TODO Cancel timeouts when destroyed.
-//     private void on_view_path_change_request (GLib.File loc, Files.OpenFlag flag) {
-// warning ("SLOT view path change req");
-//         cancel_timeouts ();
-//         activate_action ("win.path-change-request", "(su)", loc.get_uri (), flag);
-//     }
+
 
     public async bool initialize_directory () {
         if (directory.is_loading ()) {
@@ -217,8 +215,9 @@ public class Files.Slot : Gtk.Box, SlotInterface {
             return false;
         }
 
+        directory.file_added.disconnect (on_directory_file_added);
         //NOTE activate_action does not work in async function ??
-        yield directory.init (view_widget.add_file);
+        yield directory.init ();
         if (directory.can_load) {
             if (file.is_recent_uri_scheme ()) {
                 view_widget.sort_type = Files.SortType.MODIFIED;
