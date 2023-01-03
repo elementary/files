@@ -21,7 +21,6 @@
 
 public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
     protected abstract string? uri_string { get; set; default = null;}
-
     protected abstract uint auto_open_timeout_id { get; set; default = 0; }
     protected abstract FileItemInterface? previous_target_item { get; set; default = null; }
     protected abstract string current_drop_uri { get; set; default = "";}
@@ -45,6 +44,9 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             var item = widget.get_ancestor (typeof (FileItemInterface));
             if (item != null && (item is FileItemInterface)) {
                 var fileitem = ((FileItemInterface)item);
+                if (!fileitem.is_draggable_point (x, y)) {
+                    return null;
+                }
                 // Only DnD on child widget - else rubberband on blank space within item
                 // Assumes item child widgets contain no blank space for this purpose
                 if (!(widget is FileItemInterface) || fileitem.selected) {

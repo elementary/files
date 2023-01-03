@@ -302,6 +302,22 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         return new Gtk.WidgetPaintable (file_icon);
     }
 
+    public bool is_draggable_point (double view_x, double view_y) {
+        Graphene.Point target_point;
+        var target = view.pick (view_x, view_y, Gtk.PickFlags.DEFAULT);
+        view.compute_point (target, {(float)view_x, (float)view_y}, out target_point);
+        if (target is Gtk.Image) {
+            Graphene.Point image_origin = {(float)(file_icon.margin_start), (float)(file_icon.margin_top)};
+            Graphene.Size image_size = {(float)(file_icon.pixel_size), (float)(file_icon.pixel_size)};
+            Graphene.Rect image_rect = {image_origin, image_size};
+            return image_rect.contains_point (target_point); // Rubberband on margins, else drag
+        } else if (target is Gtk.Label) {
+            return true; // Drag on Label
+        }
+
+        return false; // Rubberband on background or helper
+    }
+
     ~GridFileItem () {
         Thumbnailer.@get ().finished.disconnect (handle_thumbnailer_finished);
         while (this.get_last_child () != null) {
