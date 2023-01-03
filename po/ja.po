@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-14 09:55+0000\n"
-"PO-Revision-Date: 2022-10-08 04:50+0000\n"
+"PO-Revision-Date: 2022-12-26 20:25+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -256,7 +256,7 @@ msgstr "最終更新日時:"
 
 #: libcore/FileConflictDialog.vala:131
 msgid "Replace with"
-msgstr "以下のファイルで置き換え"
+msgstr "置換後のファイル"
 
 #: libcore/FileConflictDialog.vala:165
 msgid "Reset"
@@ -288,7 +288,7 @@ msgstr "元のファイルがより最近に変更されていた場合コピー
 
 #: libcore/FileConflictDialog.vala:190
 msgid "Replace"
-msgstr "置き換え"
+msgstr "置換"
 
 #: libcore/FileConflictDialog.vala:299
 #, c-format
@@ -1136,11 +1136,11 @@ msgstr "すべて削除(_A)"
 
 #: libcore/StockDialogs.vala:26
 msgid "_Replace"
-msgstr "置き換え(_R)"
+msgstr "置換(_R)"
 
 #: libcore/StockDialogs.vala:27
 msgid "Replace _All"
-msgstr "すべて置き換え(_A)"
+msgstr "すべて置換(_A)"
 
 #: libcore/StockDialogs.vala:28
 msgid "_Merge"
