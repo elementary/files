@@ -325,6 +325,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     private void on_page_detached () {
         if (tab_view.n_pages == 0) {
             add_tab ();
+            set_default_location_and_mode ();
         }
 
         save_tabs ();
@@ -538,7 +539,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         GLib.File location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
         ViewMode mode = ViewMode.PREFERRED
     ) {
-        marlin_app.create_window (location, mode);
+        marlin_app.create_window (location, real_mode (mode));
     }
 
     private void undo_actions_set_insensitive () {
@@ -932,33 +933,32 @@ public class Files.Window : Gtk.ApplicationWindow {
                     GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
                     OpenFlag.DEFAULT
                 );
-                break;
 
+                break;
             case "CLOSE":
                 remove_tab (tab_view.selected_page);
-                break;
 
+                break;
             case "NEXT":
                 tab_view.select_next_page ();
-                break;
 
+                break;
             case "PREVIOUS":
                 tab_view.select_previous_page ();
-                break;
 
+                break;
             case "DUP":
                 var current_location = current_container.location;
                 var current_mode = current_container.view_mode;
                 add_tab ();
                 set_current_location_and_mode (current_mode, current_container.location, OpenFlag.DEFAULT);
-                // add_tab (current_container.location, current_container.view_mode);
-                break;
 
+                break;
             case "WINDOW": // Move tab to new window
                 var new_window = marlin_app.create_empty_window ();
                 tab_view.transfer_page (tab_view.selected_page, new_window.tab_view, 0);
+                // "page-detached" handler will take care of creating new default tab if necessary
                 break;
-
             default:
                 break;
         }

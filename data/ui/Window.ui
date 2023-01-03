@@ -13,7 +13,7 @@
         <attribute name="target">DUP</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">New Window</attribute>
+        <attribute name="label" translatable="yes">Move to New Window</attribute>
         <attribute name="action">win.tab</attribute>
         <attribute name="target">WINDOW</attribute>
       </item>
