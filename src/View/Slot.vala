@@ -57,7 +57,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     ~Slot () {
-        TODO Cancel timeouts when destroyed.
+        //TODO Cancel timeouts when destroyed.
         debug ("Slot %s destruct", file.basename);
         while (get_last_child () != null) {
             get_last_child ().unparent ();
