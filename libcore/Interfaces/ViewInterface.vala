@@ -59,7 +59,8 @@ public interface Files.ViewInterface : Gtk.Widget {
     // Functions specific to particular view
     public abstract void set_up_zoom_level ();
     public abstract ZoomLevel get_normal_zoom_level ();
-    public abstract void refresh_view ();
+    public abstract void set_model (Gtk.SelectionModel? model);
+
     // The view widget must have a "model" property that is a GtkSelectionModel
     public abstract unowned Gtk.Widget get_view_widget ();
     //Functions requiring access to src
@@ -143,12 +144,12 @@ public interface Files.ViewInterface : Gtk.Widget {
         });
         prefs.notify["show-remote-thumbnails"].connect (() => {
             if (prefs.show_remote_thumbnails) {
-                refresh_view ();
+                refresh_thumbnails ();
             }
         });
         prefs.notify["hide-local-thumbnails"].connect (() => {
             if (!prefs.hide_local_thumbnails) {
-                refresh_view ();
+                refresh_thumbnails ();
             }
         });
     }
@@ -167,7 +168,7 @@ public interface Files.ViewInterface : Gtk.Widget {
         popover_menu.closed.connect_after (() => {
             //Need Idle else actions not triggered
             Idle.add (() => {
-                get_view_widget ().grab_focus (); //FIXME This should happen automatically?
+                grab_focus (); //FIXME This should happen automatically?
                 //Open with submenu must always be at pos 0
                 //This is awkward but can only amend open-with-menu by removing and re-adding.
                 if (has_open_with) {
@@ -189,11 +190,17 @@ public interface Files.ViewInterface : Gtk.Widget {
                 item.grab_focus ();
                 return;
             }
-            if (list_store.get_n_items () > 0) {
-                var first_file = (Files.File)(list_store.get_item (0));
+
+            //Note not all items may be visible so look at multi-selection
+            if (multi_selection.n_items > 0) {
+                var first_file = (Files.File)(multi_selection.get_item (0));
+                show_and_select_file (first_file, false, false, true);
                 item = get_file_item_for_file (first_file);
-                select_and_focus_position (0, false, false); // Focus only
-                item.grab_focus ();
+                if (item != null) {
+                    item.grab_focus ();
+                } else {
+                    critical ("Grab focus: failed to get first item");
+                }
             } else {
                 get_view_widget ().grab_focus ();
             }
@@ -384,6 +391,12 @@ public interface Files.ViewInterface : Gtk.Widget {
         }
     }
 
+    public void add_files (List<Files.File> files) {
+        //TODO Delay sorting until adding finished?
+        var view = get_view_widget ();
+
+    }
+
     public void file_changed (Files.File file) {
         var item = get_file_item_for_file (file);
         if (item != null) {
@@ -395,6 +408,18 @@ public interface Files.ViewInterface : Gtk.Widget {
         list_store.remove_all ();
         rename_after_add = false;
         select_after_add = false;
+    }
+
+    /* Private methods */
+    protected void refresh_thumbnails () {
+        // Needed to load thumbnails when settings change.  Is there a better way?
+        set_model (null);
+
+        Idle.add (() => {
+            set_model (multi_selection);
+            grab_focus (); // This will show first file
+            return Source.REMOVE;
+        });
     }
 
     public void open_selected (Files.OpenFlag flag) {

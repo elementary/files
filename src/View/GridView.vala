@@ -139,15 +139,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    /* Private methods */
-    private void refresh_view () {
-        // Needed to load thumbnails when settings change.  Is there a better way?
-        // Cannot move to interface (no access to model property)
-        grid_view.model = null;
-        Idle.add (() => {
-            grid_view.model = multi_selection;
-            return Source.REMOVE;
-        });
+    public void set_model (Gtk.SelectionModel? model) {
+        grid_view.set_model (model);
     }
 
     private ZoomLevel get_normal_zoom_level () {
