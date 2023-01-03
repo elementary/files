@@ -201,13 +201,21 @@ public class Files.Window : Gtk.ApplicationWindow {
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
 
         top_menu = new Files.HeaderBar ();
+        set_titlebar (top_menu);
+
         tab_view = new Adw.TabView ();
+
         tab_bar = new Adw.TabBar () {
             view = tab_view,
             inverted = true,
             autohide = false,
             expand_tabs = false
         };
+        // Allow window dragging on blank part of tab bar
+        var tab_handle = new Gtk.WindowHandle () {
+            child = tab_bar
+        };
+
         var builder = new Gtk.Builder.from_resource ("/io/elementary/files/Window.ui");
         var tab_menu = (Menu)(builder.get_object ("tab_model"));
         tab_popover = new Gtk.PopoverMenu.from_model_full (tab_menu, Gtk.PopoverMenuFlags.NESTED) {
@@ -234,7 +242,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         tab_bar.start_action_widget = add_tab_button;
 
         var tab_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        tab_box.append (tab_bar);
+        tab_box.append (tab_handle);
         tab_box.append (tab_view);
 
         sidebar = new Sidebar.SidebarWindow ();
@@ -248,7 +256,6 @@ public class Files.Window : Gtk.ApplicationWindow {
         lside_pane.start_child = sidebar;
         lside_pane.end_child = tab_box;
 
-        set_titlebar (top_menu.headerbar);
         set_child (lside_pane);
 
         tab_view.notify["selected-page"].connect (() => {

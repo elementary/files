@@ -106,15 +106,21 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 propagate_natural_width = true
             };
 
-
             spacer = new Gtk.Label ("") {
                 width_request = 48,
                 halign = Gtk.Align.START
             }; //TODO Use different widget or omit?
 
+
             main_child = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
                 halign = Gtk.Align.START
             };
+            // Allow window dragging on breadcrumbs
+            var bread_handle = new Gtk.WindowHandle () {
+                child = scrolled_window,
+                hexpand = true
+            };
+
             main_child.append (spacer);
             scrolled_window.child = main_child;
 
@@ -136,17 +142,13 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
             };
 
             search_button.set_parent (this);
-            scrolled_window.set_parent (this);
+            bread_handle.set_parent (this);
             refresh_button.set_parent (this);
 
             var primary_gesture = new Gtk.GestureClick () {
                 button = Gdk.BUTTON_PRIMARY,
-                propagation_phase = Gtk.PropagationPhase.CAPTURE
+                propagation_phase = Gtk.PropagationPhase.BUBBLE
             };
-            primary_gesture.pressed.connect (() => {
-                // Need to block primary press to stop window menu appearing
-                primary_gesture.set_state (Gtk.EventSequenceState.CLAIMED);
-            });
             primary_gesture.released.connect ((n_press, x, y) => {
                 var crumb = get_crumb_from_coords (x, y);
                 if (crumb != null && crumb.dir_path != null) {

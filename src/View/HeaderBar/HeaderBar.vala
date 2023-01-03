@@ -21,7 +21,7 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.HeaderBar : Object {
+public class Files.HeaderBar : Gtk.Box {
     public signal void focus_location_request (GLib.File? location);
     public signal void escape ();
     public signal void reload_request ();
@@ -53,12 +53,13 @@ public class Files.HeaderBar : Object {
     private ButtonWithMenu button_back;
 
     construct {
+        orientation = Gtk.Orientation.HORIZONTAL;
         headerbar = new Adw.HeaderBar () {
             hexpand = true,
             focusable = false
         };
         headerbar.set_centering_policy (Adw.CenteringPolicy.LOOSE);
-
+        headerbar.set_parent (this);
         button_back = new ButtonWithMenu.from_icon_name ("go-previous-symbolic");
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.add_css_class ("flat");
