@@ -107,6 +107,12 @@ public class Files.ViewContainer : Gtk.Box {
         overlay.child = multi_slot;
         overlay_statusbar = new OverlayBar (overlay); // Overlays itself on overlay
         append (overlay);
+
+        var gesture_click = new Gtk.GestureClick () {
+            propagation_phase = Gtk.PropagationPhase.BUBBLE
+        };
+        add_controller (gesture_click);
+        gesture_click.released.connect (on_gesture_click_release);
     }
 
     public void folder_deleted (GLib.File deleted_file) {
@@ -310,7 +316,7 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
-    public void go_back (uint n) {
+    public void go_back (uint n = 1) {
         // No mode change
         string? path = browser.go_back (n);
         if (path != null) {
@@ -326,7 +332,7 @@ public class Files.ViewContainer : Gtk.Box {
         }
     }
 
-    public void go_forward (uint n) {
+    public void go_forward (uint n = 1) {
         // No mode change
         string? path = browser.go_forward (n);
         if (path != null) {
@@ -436,37 +442,26 @@ public class Files.ViewContainer : Gtk.Box {
         overlay_statusbar.update_selection (selected_files);
     }
 
-//TODO Use EventController
-//     private bool on_button_press_event (Gdk.EventButton event) {
-//         Gdk.ModifierType state;
-//         event.get_state (out state);
-//         uint button;
-//         event.get_button (out button);
-//         var mods = state & Gtk.accelerator_get_default_mod_mask ();
-//         bool result = false;
-//         switch (button) {
-//             /* Extra mouse button actions */
-//             case 6:
-//             case 8:
-//                 if (mods == 0) {
-//                     result = true;
-//                     go_back ();
-//                 }
-//                 break;
+    private void on_gesture_click_release (Gtk.GestureClick controller, int n_press, double x, double y) {
+        var mods = controller.get_current_event_state () & Gtk.accelerator_get_default_mod_mask ();
+        switch (controller.button) {
+            /* Extra mouse button actions */
+            case 6:
+            case 8:
+                if (mods == 0) {
+                    go_back ();
+                }
 
-//             case 7:
-//             case 9:
-//                 if (mods == 0) {
-//                     result = true;
-//                     go_forward ();
-//                 }
-//                 break;
+                break;
+            case 7:
+            case 9:
+                if (mods == 0) {
+                    go_forward ();
+                }
 
-//             default:
-//                 break;
-//         }
-
-//         return result;
-//     }
-// }
+                break;
+            default:
+                break;
+        }
+    }
 }
