@@ -28,7 +28,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     // ViewInterface properties
     protected Gtk.PopoverMenu popover_menu { get; set; }
-    protected GLib.ListStore list_store { get; set; }
+    protected GLib.ListStore root_store { get; set; }
     protected Gtk.FilterListModel filter_model { get; set; }
     protected Gtk.MultiSelection multi_selection { get; set; }
     protected Files.Preferences prefs { get; default = Files.Preferences.get_default (); }
@@ -72,27 +72,20 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     construct {
         set_layout_manager (new Gtk.BinLayout ());
-        set_up_model ();
-        bind_prefs ();
-        bind_sort ();
-
-        //Setup view widget
         var item_factory = new Gtk.SignalListItemFactory ();
-        grid_view = new Gtk.GridView (multi_selection, item_factory) {
+        grid_view = new Gtk.GridView (null, item_factory) {
             orientation = Gtk.Orientation.VERTICAL,
             enable_rubberband = true,
             focusable = true
         };
+        set_model (set_up_model ());
+        bind_prefs ();
+        bind_sort ();
         build_ui (grid_view);
         bind_popover_menu ();
         set_up_gestures ();
         set_up_drag_source ();
         set_up_drop_target ();
-
-        //Signal Handlers
-        multi_selection.selection_changed.connect (() => {
-            selection_changed ();
-        });
 
         item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
@@ -137,6 +130,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         } else {
             Files.column_view_settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.DEFAULT);
         }
+    }
+
+    protected void sort_model (CompareDataFunc<Object> compare_func) {
+        root_store.sort (compare_func);
     }
 
     public void set_model (Gtk.SelectionModel? model) {

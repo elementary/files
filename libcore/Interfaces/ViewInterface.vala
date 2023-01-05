@@ -37,7 +37,7 @@ public interface Files.ViewInterface : Gtk.Widget {
 
     /* Abstract properties */
     protected abstract Files.Preferences prefs { get; default = Files.Preferences.get_default (); }
-    protected abstract GLib.ListStore list_store { get; set; }
+    protected abstract GLib.ListStore root_store { get; set; }
     protected abstract Gtk.FilterListModel filter_model { get; set; }
     protected abstract Gtk.MultiSelection multi_selection { get; set; }
     protected abstract Gtk.ScrolledWindow scrolled_window { get; set; }
@@ -136,11 +136,11 @@ public interface Files.ViewInterface : Gtk.Widget {
 
     protected void bind_prefs () {
         prefs.notify["sort-directories-first"].connect (() => {
-            list_store.sort (file_compare_func);
+            sort_model (file_compare_func);
         });
         prefs.notify["show-hidden-files"].connect (() => {
             // This refreshes the filter as well
-            list_store.sort (file_compare_func);
+            sort_model (file_compare_func);
         });
         prefs.notify["show-remote-thumbnails"].connect (() => {
             if (prefs.show_remote_thumbnails) {
@@ -156,13 +156,15 @@ public interface Files.ViewInterface : Gtk.Widget {
 
     protected void bind_sort () {
         notify["sort-type"].connect (() => {
-            list_store.sort (file_compare_func);
+            sort_model (file_compare_func);
         });
         notify["sort-reversed"].connect (() => {
-            list_store.sort (file_compare_func);
+            sort_model (file_compare_func);
             //TODO Persist setting in file metadata
         });
     }
+
+    protected abstract void sort_model (CompareDataFunc<Object> compare_func);
 
     protected void bind_popover_menu () {
         popover_menu.closed.connect_after (() => {
@@ -194,7 +196,13 @@ public interface Files.ViewInterface : Gtk.Widget {
             //Note not all items may be visible so look at multi-selection
             //TODO Use `n_items` property when using Gtk version >= 4.8
             if (multi_selection.get_n_items () > 0) {
-                var first_file = (Files.File)(multi_selection.get_item (0));
+                var first_item = multi_selection.get_item (0);
+                Files.File first_file;
+                if (first_item is Gtk.TreeListRow) {
+                    first_file = (Files.File)(((Gtk.TreeListRow)first_item).get_item ());
+                } else {
+                    first_file = (Files.File)(first_item);
+                }
                 show_and_select_file (first_file, false, false, true);
                 item = get_file_item_for_file (first_file);
                 if (item != null) {
@@ -275,6 +283,24 @@ public interface Files.ViewInterface : Gtk.Widget {
         zoom_level = get_normal_zoom_level ();
     }
 
+    protected virtual int find_file_pos (Files.File file) {
+        //TODO Override in list view to allow for expanded rows
+        uint pos;
+        if (root_store.find_with_equal_func (
+            file,
+            (filea, fileb) => {
+warning ("find file pos");
+                return ((Files.File)filea).basename == ((Files.File)fileb).basename;
+            },
+            out pos
+        )) {
+
+            return (int)pos;
+        } else {
+            return -1;
+        }
+    }
+
     public void show_and_select_file (
         Files.File? file,
         bool select,
@@ -283,17 +309,11 @@ public interface Files.ViewInterface : Gtk.Widget {
     ) {
         uint pos = 0;
         if (file != null) {
-            list_store.find_with_equal_func (
-                file,
-                (filea, fileb) => {
-                    return ((Files.File)filea).basename == ((Files.File)fileb).basename;
-                },
-                out pos
-            ); //Inefficient?
+            pos = find_file_pos (file);
         }
 
-        //TODO Check pos same in sorted model and list_store
-        if (select) {
+        //TODO Check pos same in sorted model and root_store
+        if (pos >= 0 && select) {
             select_and_focus_position (pos, select, unselect_others);
         }
         // Do not use this to deselect an item
@@ -303,7 +323,7 @@ public interface Files.ViewInterface : Gtk.Widget {
             Idle.add (() => {
                 var adj = scrolled_window.vadjustment;
                 adj.value = adj.upper * double.min (
-                    (double)pos / (double) list_store.get_n_items (), adj.upper
+                    (double)pos / (double) root_store.get_n_items (), adj.upper
                 );
                 // focus_item (pos);
                 return Source.REMOVE;
@@ -349,12 +369,12 @@ public interface Files.ViewInterface : Gtk.Widget {
         var iter = Gtk.BitsetIter ();
         if (iter.init_first (multi_selection.get_selection (), out pos)) {
             selected_files.prepend (
-                (Files.File)(multi_selection.get_item (pos))
+                (Files.File)(((Gtk.TreeListRow)(multi_selection.get_item (pos))).get_item ())
             );
             count++;
             while (iter.next (out pos)) {
                 selected_files.prepend (
-                    (Files.File)(multi_selection.get_item (pos))
+                     (Files.File)(((Gtk.TreeListRow)(multi_selection.get_item (pos))).get_item ())
                 );
                 count++;
             }
@@ -363,10 +383,10 @@ public interface Files.ViewInterface : Gtk.Widget {
         return count;
     }
 
-    public void file_deleted (Files.File file) {
-        uint pos;
-        if (list_store.find (file, out pos)) {
-            list_store.remove (pos);
+    public virtual void file_deleted (Files.File file) {
+        int pos = find_file_pos (file);
+        if (pos >= 0) {
+            root_store.remove (pos);
         }
     }
 
@@ -378,7 +398,7 @@ public interface Files.ViewInterface : Gtk.Widget {
 
     public void add_file (Files.File file) {
         //TODO Delay sorting until adding finished?
-        list_store.insert_sorted (file, file_compare_func);
+        root_store.insert_sorted (file, file_compare_func);
         if (select_after_add) {
             select_after_add = false;
             show_and_select_file (file, true, true);
@@ -397,9 +417,9 @@ public interface Files.ViewInterface : Gtk.Widget {
         //TODO Delay sorting until adding finished?
         set_model (null);
         foreach (var file in files) {
-            list_store.append (file);
+            root_store.append (file);
         }
-        list_store.sort (file_compare_func);
+        root_store.sort (file_compare_func);
         set_model (multi_selection);
         // Need to deal with selection after loading
     }
@@ -412,7 +432,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     public void clear () {
-        list_store.remove_all ();
+        root_store.remove_all ();
         rename_after_add = false;
         select_after_add = false;
     }
@@ -449,7 +469,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     public void show_appropriate_context_menu () { //Deal with Menu Key
-        if (list_store.get_n_items () > 0) {
+        if (root_store.get_n_items () > 0) {
             List<Files.File> selected_files = null;
             var n_selected = get_selected_files (out selected_files);
             if (n_selected > 0) {
@@ -464,18 +484,46 @@ public interface Files.ViewInterface : Gtk.Widget {
         show_context_menu (null, 0.0, 0.0);
     }
 
-    protected virtual void set_up_model () {
-        list_store = new GLib.ListStore (typeof (Files.File));
-        filter_model = new Gtk.FilterListModel (list_store, null);
+    protected Gtk.SelectionModel set_up_model () {
+        return set_up_selection_model (
+            set_up_filter_model (
+                set_up_sort_model (
+                    set_up_list_model ()
+                )
+            )
+        );
+    }
+
+    protected virtual ListModel set_up_sort_model (ListModel list_model) {
+        return list_model; // Default ListStore has its own sorter.
+    }
+
+    protected virtual ListModel set_up_list_model () {
+        root_store = new GLib.ListStore (typeof (Files.File));
+        return root_store;
+    }
+
+    protected virtual ListModel set_up_filter_model (ListModel list_model) {
+        filter_model = new Gtk.FilterListModel (list_model, null);
         var custom_filter = new Gtk.CustomFilter ((obj) => {
-            var file = (Files.File)obj;
+            Files.File file;
+            if (obj is Gtk.TreeListRow) {
+                file = (Files.File)(((Gtk.TreeListRow)obj).get_item ());
+            } else {
+                file = (Files.File)obj;
+            }
             return prefs.show_hidden_files || !file.is_hidden;
         });
         filter_model.set_filter (custom_filter);
-        multi_selection = new Gtk.MultiSelection (filter_model);
+        return filter_model;
+    }
+
+    protected virtual Gtk.SelectionModel set_up_selection_model (ListModel list_model) {
+        multi_selection = new Gtk.MultiSelection (list_model);
         multi_selection.selection_changed.connect (() => {
             selection_changed ();
         });
+        return multi_selection;
     }
 
     protected virtual void handle_primary_release (
