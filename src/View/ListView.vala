@@ -99,6 +99,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         var modified_item_factory = new Gtk.SignalListItemFactory ();
 
         name_item_factory.setup.connect ((obj) => {
+// warning ("name item set up obj is %s", obj.get_type ().name ());
             var list_item = ((Gtk.ListItem)obj);
             var file_item = new GridFileItem (this);
             fileitem_list.prepend (file_item);
@@ -107,12 +108,9 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 file_item, "zoom-level",
                 BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
             );
-            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
             var expander = new Gtk.TreeExpander ();
-            expander.set_child (new Gtk.Image () {icon_name = "image-missing"});
-            box.append (expander);
-            box.append (file_item);
-            list_item.child = box;
+            expander.set_child (file_item);
+            list_item.child = expander;
             // We handle file activation ourselves in GridFileItem
             list_item.activatable = false;
             list_item.selectable = true;
@@ -149,43 +147,67 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             list_item.selectable = false;
         });
         name_item_factory.bind.connect ((obj) => {
+// warning ("name obj bind is %s", obj.get_type ().name ());
             var list_item = (Gtk.ListItem)obj;
-            var treelist_row = (Gtk.TreeListRow)(list_item.get_item ());
-            var file = (Files.File)(treelist_row.get_item ());
-            var expander = (Gtk.TreeExpander)(list_item.child.get_first_child ());
+// warning ("name item bind is %s", list_item.get_item ().get_type ().name ());
+            //TODO DRY
+            var item = list_item.get_item ();
+            while (item is Gtk.TreeListRow) {
+                item = ((Gtk.TreeListRow)item).get_item ();
+            }
+warning ("name bind treerow item is %s", item.get_type ().name ());
+            var file = (Files.File)(item);
+            var expander = (Gtk.TreeExpander)(list_item.child);
             expander.list_row = tree_model.get_row (list_item.position);
-            var file_item = (GridFileItem)(expander.get_next_sibling ());
+            var file_item = (GridFileItem)(expander.child);
             file_item.bind_file (file);
             file_item.selected = list_item.selected;
             file_item.pos = list_item.position;
         });
         size_item_factory.bind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var treelist_row = (Gtk.TreeListRow)(list_item.get_item ());
-            var file = (Files.File)treelist_row.get_item ();
+            var item = list_item.get_item ();
+            while (item is Gtk.TreeListRow) {
+                item = ((Gtk.TreeListRow)item).get_item ();
+            }
+warning ("name bind treerow item is %s", item.get_type ().name ());
+            var file = (Files.File)(item);
             var size_item = (Gtk.Label)list_item.child;
             size_item.label = file.format_size;
         });
         type_item_factory.bind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var treelist_row = (Gtk.TreeListRow)(list_item.get_item ());
-            var file = (Files.File)treelist_row.get_item ();
+            var item = list_item.get_item ();
+            while (item is Gtk.TreeListRow) {
+                item = ((Gtk.TreeListRow)item).get_item ();
+            }
+warning ("name bind treerow item is %s", item.get_type ().name ());
+            var file = (Files.File)(item);
             var type_item = (Gtk.Label)list_item.child;
             type_item.label = file.formated_type;
         });
         modified_item_factory.bind.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
-            var treelist_row = (Gtk.TreeListRow)(list_item.get_item ());
-            var file = (Files.File)treelist_row.get_item ();
+            var item = list_item.get_item ();
+            while (item is Gtk.TreeListRow) {
+                item = ((Gtk.TreeListRow)item).get_item ();
+            }
+warning ("name bind treerow item is %s", item.get_type ().name ());
+            var file = (Files.File)(item);
             var modified_item = (Gtk.Label)list_item.child;
             modified_item.label = file.formated_modified;
         });
 
-        name_item_factory.teardown.connect ((obj) => {
-            var list_item = ((Gtk.ListItem)obj);
-            var file_item = (GridFileItem)list_item.child;
-            fileitem_list.remove (file_item);
-        });
+//         name_item_factory.teardown.connect ((obj) => {
+//             var list_item = ((Gtk.ListItem)obj);
+//             var treelist_row = (Gtk.TreeListRow)(list_item.get_item ());
+//             while (item is Gtk.TreeListRow) {
+//                 item = ((Gtk.TreeListRow)item).get_item ();
+//             }
+// warning ("name bind treerow item is %s", item.get_type ().name ());
+//             var file = (Files.File)(item);
+//             fileitem_list.remove (file_item);
+//         });
 
         var name_column = new Gtk.ColumnViewColumn (_("Name"), name_item_factory) {
             expand = true,
@@ -218,7 +240,8 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     protected override ListModel set_up_list_model () {
-        root_store = new GLib.ListStore (typeof (Files.File));
+// warning ("setup list model");
+        root_store = new ListStore (typeof (Files.File));
         tree_model = new Gtk.TreeListModel (
             root_store,
             false, //Passthrough - must be false to expanders to work
@@ -228,14 +251,31 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return tree_model;
     }
 
-    private ListModel? new_model_func (Object item) {
-        if (item is Gtk.TreeListRow) {
-            return new Gtk.TreeListModel (
-                null,
+    private ListModel? new_model_func (Object obj) {
+// warning ("new model func obj is %s", obj.get_type ().name ());
+        Files.File file;
+        if (obj is Files.File) {
+            file = (Files.File)obj;
+        } else if (obj is Gtk.TreeListRow) {
+            file = (Files.File)(((Gtk.TreeListRow)obj).get_item ());
+        } else {
+            return null;
+        }
+        if (file.is_folder ()) {
+            var new_liststore = new ListStore (typeof (Files.File));
+            new_liststore.append (Files.File.@get (GLib.File.new_for_path ("dummy")));
+            var new_tree_model = new Gtk.TreeListModel (
+                new_liststore,
                 false, //Passthrough - must be false to expanders to work
                 false, //autoexpand
                 new_model_func // Function to create child model
             );
+            // var dir = Files.Directory.from_gfile (file.location);
+            // dir.done_loading.connect (() => {
+            //     add_files (dir.get_files (), new_liststore);
+            // });
+            // dir.init.begin ();
+            return new_tree_model;
         } else {
             return null;
         }
@@ -250,13 +290,14 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     protected override ListModel set_up_filter_model (ListModel list_model) {
         filter_model = new Gtk.FilterListModel (list_model, null);
         var custom_filter = new Gtk.CustomFilter ((obj) => {
-            Files.File file;
-            if (obj is Gtk.TreeListRow) {
-                file = (Files.File)(((Gtk.TreeListRow)obj).get_item ());
-            } else {
-                file = (Files.File)obj;
-            }
-            return prefs.show_hidden_files || !file.is_hidden;
+            // Files.File file;
+            // if (obj is Gtk.TreeListRow) {
+            //     file = (Files.File)(((Gtk.TreeListRow)obj).get_item ());
+            // } else {
+            //     file = (Files.File)obj;
+            // }
+            // return prefs.show_hidden_files || !file.is_hidden;
+            return true;
         });
         filter_model.set_filter (custom_filter);
         return filter_model;

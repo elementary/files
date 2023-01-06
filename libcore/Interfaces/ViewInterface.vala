@@ -185,6 +185,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     public void grab_focus () {
+warning ("grab focus");
         if (get_view_widget () != null) {
             var item = get_selected_file_item ();
             // Assume item already focussed if there is a selection
@@ -284,12 +285,13 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     protected virtual int find_file_pos (Files.File file) {
+// warning ("find file pos");
         //TODO Override in list view to allow for expanded rows
         uint pos;
         if (root_store.find_with_equal_func (
             file,
             (filea, fileb) => {
-warning ("find file pos");
+// warning ("find file pos");
                 return ((Files.File)filea).basename == ((Files.File)fileb).basename;
             },
             out pos
@@ -363,6 +365,7 @@ warning ("find file pos");
     }
 
     public uint get_selected_files (out GLib.List<Files.File>? selected_files = null) {
+warning ("get selected files");
         selected_files = null;
         uint pos = 0;
         uint count = 0;
@@ -391,6 +394,7 @@ warning ("find file pos");
     }
 
     public int file_compare_func (Object filea, Object fileb) {
+// warning ("file compare func");
         return ((Files.File)filea).compare_for_sort (
             ((Files.File)fileb), sort_type, prefs.sort_directories_first, sort_reversed
         );
@@ -413,13 +417,24 @@ warning ("find file pos");
     }
 
     // Use for initial loading of files
-    public void add_files (List<unowned Files.File> files) {
+    public void add_files (
+        List<unowned Files.File> files,
+        ListStore? store = null
+    ) requires (root_store != null) {
+
+warning ("adding files");
         //TODO Delay sorting until adding finished?
         set_model (null);
-        foreach (var file in files) {
-            root_store.append (file);
+        ListStore add_store;
+        if (store == null) {
+            add_store = root_store;
+        } else {
+            add_store = store;
         }
-        root_store.sort (file_compare_func);
+        foreach (var file in files) {
+            add_store.append (file);
+        }
+        add_store.sort (file_compare_func);
         set_model (multi_selection);
         // Need to deal with selection after loading
     }
@@ -499,13 +514,16 @@ warning ("find file pos");
     }
 
     protected virtual ListModel set_up_list_model () {
+warning ("create root store");
         root_store = new GLib.ListStore (typeof (Files.File));
         return root_store;
     }
 
     protected virtual ListModel set_up_filter_model (ListModel list_model) {
+warning ("setup filter model");
         filter_model = new Gtk.FilterListModel (list_model, null);
         var custom_filter = new Gtk.CustomFilter ((obj) => {
+warning ("custom filter");
             Files.File file;
             if (obj is Gtk.TreeListRow) {
                 file = (Files.File)(((Gtk.TreeListRow)obj).get_item ());
