@@ -164,6 +164,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     public void on_directory_file_deleted (Directory dir, Files.File file) {
+warning ("dir %s file deleted %s", dir.file.basename, file.basename);
         /* The deleted file could be the whole directory */
         file.exists = false;
         view_widget.file_deleted (file);
@@ -206,8 +207,6 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         directory = Directory.from_gfile (loc);
         connect_directory_handlers (directory);
     }
-
-
 
     public async bool initialize_directory () {
         if (directory.is_loading ()) {

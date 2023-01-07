@@ -283,10 +283,10 @@ public interface Files.ViewInterface : Gtk.Widget {
         zoom_level = get_normal_zoom_level ();
     }
 
-    protected virtual int find_file_pos (Files.File file) {
+    protected virtual int find_file_pos (Files.File file, ListStore store) {
         //TODO Override in list view to allow for expanded rows
         uint pos;
-        if (root_store.find_with_equal_func (
+        if (store.find_with_equal_func (
             file,
             (filea, fileb) => {
                 return ((Files.File)filea).basename == ((Files.File)fileb).basename;
@@ -306,9 +306,12 @@ public interface Files.ViewInterface : Gtk.Widget {
         bool unselect_others,
         bool show = true
     ) {
+
+        //Only works for root files atm
+        //TODO Make work for open subdirs
         uint pos = 0;
         if (file != null) {
-            pos = find_file_pos (file);
+            pos = find_file_pos (file, root_store);
         }
 
         //TODO Check pos same in sorted model and root_store
@@ -382,10 +385,11 @@ public interface Files.ViewInterface : Gtk.Widget {
         return count;
     }
 
-    public virtual void file_deleted (Files.File file) {
-        int pos = find_file_pos (file);
+    public virtual void file_deleted (Files.File file, ListStore? store = null) {
+        var remove_store = store == null ? root_store : store;
+        int pos = find_file_pos (file, remove_store);
         if (pos >= 0) {
-            root_store.remove (pos);
+            remove_store.remove (pos);
         }
     }
 
@@ -395,10 +399,11 @@ public interface Files.ViewInterface : Gtk.Widget {
         );
     }
 
-    public void add_file (Files.File file) {
-        //TODO Delay sorting until adding finished?
+    // Seems you cannot use interface property as default parameter value???
+    public virtual void add_file (Files.File file, ListStore? store = null) {
+        var add_store = store == null ? root_store : store;
         //TODO Which store to add file to when subdir loaded?
-        root_store.insert_sorted (file, file_compare_func);
+        add_store.insert_sorted (file, file_compare_func);
         if (select_after_add) {
             select_after_add = false;
             show_and_select_file (file, true, true);
@@ -416,16 +421,10 @@ public interface Files.ViewInterface : Gtk.Widget {
     public void add_files (
         List<unowned Files.File> files,
         ListStore? store = null
-    ) requires (root_store != null) {
-
+    ) {
         //TODO Delay sorting until adding finished?
         set_model (null);
-        ListStore add_store;
-        if (store == null) {
-            add_store = root_store;
-        } else {
-            add_store = store;
-        }
+        var add_store = store == null ? root_store : store;
         foreach (var file in files) {
             add_store.append (file);
         }

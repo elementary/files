@@ -243,7 +243,15 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             new_liststore.append (Files.File.@get (GLib.File.new_for_path ("dummy")));
             dir.done_loading.connect (() => {
                 add_files (dir.get_files (), new_liststore);
+                dir.file_added.connect ((file) => {
+                    add_file (file, new_liststore);
+                });
+                dir.file_deleted.connect ((file) => {
+                    file_deleted (file, new_liststore);
+                });
+                //TODO Disconnect signals when not needed (unload, refresh)
             });
+
             // Idle needed so that new model is processed before adding files to it
             // Otherwise crash can occur
             Idle.add (() => {
