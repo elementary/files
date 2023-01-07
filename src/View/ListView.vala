@@ -121,6 +121,18 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             list_item.activatable = false;
             list_item.selectable = true;
         });
+        name_item_factory.bind.connect ((obj) => {
+            Object child;
+            var file = get_file_and_child_from_object (obj, out child);
+            var expander = (Gtk.TreeExpander)child;
+            var list_item = (Gtk.ListItem)obj;
+            expander.list_row = tree_model.get_row (list_item.position);
+            var file_item = (GridFileItem)(expander.child);
+            file_item.bind_file (file);
+            file_item.selected = list_item.selected;
+            file_item.pos = list_item.position;
+        });
+
         //TODO Use Gtk.Inscription when v4.9 available
         size_item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
@@ -151,17 +163,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             list_item.child = modified_item;
             list_item.activatable = false;
             list_item.selectable = false;
-        });
-        name_item_factory.bind.connect ((obj) => {
-            Object child;
-            var file = get_file_and_child_from_object (obj, out child);
-            var expander = (Gtk.TreeExpander)child;
-            var list_item = (Gtk.ListItem)obj;
-            expander.list_row = tree_model.get_row (list_item.position);
-            var file_item = (GridFileItem)(expander.child);
-            file_item.bind_file (file);
-            file_item.selected = list_item.selected;
-            file_item.pos = list_item.position;
         });
         size_item_factory.bind.connect ((obj) => {
             Object child;
@@ -227,7 +228,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     private ListModel? new_model_func (Object obj) {
         Object child;
         var file = get_file_and_child_from_object (obj, out child);
-
         if (file != null && file.is_folder ()) {
             //For some reason this function gets called multiple times on same folder
             // Creating a new model every time leads to infinite loop and crash
@@ -242,6 +242,9 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             subdirectory_map.set (dir.file.uri, dir); //Keep reference to directory
             new_liststore.append (Files.File.@get (GLib.File.new_for_path ("dummy")));
             dir.done_loading.connect (() => {
+                if (dir.displayed_files_count > 0) {
+                    new_liststore.remove (0);
+                }
                 add_files (dir.get_files (), new_liststore);
                 dir.file_added.connect ((file) => {
                     add_file (file, new_liststore);
@@ -254,6 +257,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
             // Idle needed so that new model is processed before adding files to it
             // Otherwise crash can occur
+
             Idle.add (() => {
                 dir.init.begin ();
                 return Source.REMOVE;
