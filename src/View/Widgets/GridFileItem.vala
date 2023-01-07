@@ -212,6 +212,13 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         });
     }
 
+    ~GridFileItem () {
+        Thumbnailer.@get ().finished.disconnect (handle_thumbnailer_finished);
+        while (this.get_last_child () != null) {
+            this.get_last_child ().unparent ();
+        }
+    }
+
     public void bind_file (Files.File? new_file) {
         var old_file = file;
         file = new_file;
@@ -316,12 +323,5 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         }
 
         return false; // Rubberband on background or helper
-    }
-
-    ~GridFileItem () {
-        Thumbnailer.@get ().finished.disconnect (handle_thumbnailer_finished);
-        while (this.get_last_child () != null) {
-            this.get_last_child ().unparent ();
-        }
     }
 }

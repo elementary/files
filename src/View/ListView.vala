@@ -64,6 +64,9 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public bool select_after_add { get; set; default = false;}
     protected bool has_open_with { get; set; default = false;}
 
+    private Gee.HashMap<string, Files.Directory> subdirectory_map;
+    private Gee.HashMap<string, ListStore> childmodel_map;
+
     public ListView (Files.Slot slot) {
         Object (slot: slot);
     }
@@ -77,6 +80,9 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     construct {
         set_layout_manager (new Gtk.BinLayout ());
+        subdirectory_map = new Gee.HashMap<string, Files.Directory> ();
+        childmodel_map = new Gee.HashMap<string, ListStore> ();
+
         column_view = new Gtk.ColumnView (null) {
             enable_rubberband = true,
             focusable = true,
@@ -219,29 +225,32 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     private ListModel? new_model_func (Object obj) {
-        Files.File file;
-        if (obj is Files.File) {
-            file = (Files.File)obj;
-        } else if (obj is Gtk.TreeListRow) {
-            file = (Files.File)(((Gtk.TreeListRow)obj).get_item ());
-        } else {
-            return null;
-        }
-        if (file.is_folder ()) {
+        Object child;
+        var file = get_file_and_child_from_object (obj, out child);
+
+        if (file != null && file.is_folder ()) {
+            //For some reason this function gets called multiple times on same folder
+            // Creating a new model every time leads to infinite loop and crash
+            if (childmodel_map.has_key (file.uri)) {
+                // critical ("Model already created for %s", file.basename);
+                return (ListModel)(childmodel_map.get (file.uri));
+            }
+
             var new_liststore = new ListStore (typeof (Files.File));
+            childmodel_map.set (file.uri, new_liststore);
+            var dir = Files.Directory.from_gfile (file.location);
+            subdirectory_map.set (dir.file.uri, dir); //Keep reference to directory
             new_liststore.append (Files.File.@get (GLib.File.new_for_path ("dummy")));
-            var new_tree_model = new Gtk.TreeListModel (
-                new_liststore,
-                false, //Passthrough - must be false to expanders to work
-                false, //autoexpand
-                new_model_func // Function to create child model
-            );
-            // var dir = Files.Directory.from_gfile (file.location);
-            // dir.done_loading.connect (() => {
-            //     add_files (dir.get_files (), new_liststore);
-            // });
-            // dir.init.begin ();
-            return new_tree_model;
+            dir.done_loading.connect (() => {
+                add_files (dir.get_files (), new_liststore);
+            });
+            // Idle needed so that new model is processed before adding files to it
+            // Otherwise crash can occur
+            Idle.add (() => {
+                dir.init.begin ();
+                return Source.REMOVE;
+            });
+            return new_liststore;
         } else {
             return null;
         }

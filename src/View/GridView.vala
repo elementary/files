@@ -112,13 +112,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             file_item.pos = list_item.position;
         });
 
-        item_factory.unbind.connect ((obj) => {
-            var list_item = ((Gtk.ListItem)obj);
-            var file_item = (GridFileItem)list_item.child;
-            // It seems items can be unbound even while visible (???) so we do not want to
-            // unbind file til new one bound.
-        });
-
         item_factory.teardown.connect ((obj) => {
             fileitem_list.remove (obj.get_data<GridFileItem> ("file-item"));
         });

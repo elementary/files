@@ -397,6 +397,7 @@ public interface Files.ViewInterface : Gtk.Widget {
 
     public void add_file (Files.File file) {
         //TODO Delay sorting until adding finished?
+        //TODO Which store to add file to when subdir loaded?
         root_store.insert_sorted (file, file_compare_func);
         if (select_after_add) {
             select_after_add = false;
