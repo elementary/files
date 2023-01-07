@@ -99,9 +99,9 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         var modified_item_factory = new Gtk.SignalListItemFactory ();
 
         name_item_factory.setup.connect ((obj) => {
-// warning ("name item set up obj is %s", obj.get_type ().name ());
             var list_item = ((Gtk.ListItem)obj);
             var file_item = new GridFileItem (this);
+            list_item.set_data<GridFileItem> ("file-item", file_item);
             fileitem_list.prepend (file_item);
             bind_property (
                 "zoom-level",
@@ -147,17 +147,10 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             list_item.selectable = false;
         });
         name_item_factory.bind.connect ((obj) => {
-// warning ("name obj bind is %s", obj.get_type ().name ());
+            Object child;
+            var file = get_file_and_child_from_object (obj, out child);
+            var expander = (Gtk.TreeExpander)child;
             var list_item = (Gtk.ListItem)obj;
-// warning ("name item bind is %s", list_item.get_item ().get_type ().name ());
-            //TODO DRY
-            var item = list_item.get_item ();
-            while (item is Gtk.TreeListRow) {
-                item = ((Gtk.TreeListRow)item).get_item ();
-            }
-warning ("name bind treerow item is %s", item.get_type ().name ());
-            var file = (Files.File)(item);
-            var expander = (Gtk.TreeExpander)(list_item.child);
             expander.list_row = tree_model.get_row (list_item.position);
             var file_item = (GridFileItem)(expander.child);
             file_item.bind_file (file);
@@ -165,49 +158,24 @@ warning ("name bind treerow item is %s", item.get_type ().name ());
             file_item.pos = list_item.position;
         });
         size_item_factory.bind.connect ((obj) => {
-            var list_item = ((Gtk.ListItem)obj);
-            var item = list_item.get_item ();
-            while (item is Gtk.TreeListRow) {
-                item = ((Gtk.TreeListRow)item).get_item ();
-            }
-warning ("name bind treerow item is %s", item.get_type ().name ());
-            var file = (Files.File)(item);
-            var size_item = (Gtk.Label)list_item.child;
-            size_item.label = file.format_size;
+            Object child;
+            var file = get_file_and_child_from_object (obj, out child);
+            ((Gtk.Label)child).label = file.format_size;
         });
         type_item_factory.bind.connect ((obj) => {
-            var list_item = ((Gtk.ListItem)obj);
-            var item = list_item.get_item ();
-            while (item is Gtk.TreeListRow) {
-                item = ((Gtk.TreeListRow)item).get_item ();
-            }
-warning ("name bind treerow item is %s", item.get_type ().name ());
-            var file = (Files.File)(item);
-            var type_item = (Gtk.Label)list_item.child;
-            type_item.label = file.formated_type;
+            Object child;
+            var file = get_file_and_child_from_object (obj, out child);
+            ((Gtk.Label)child).label = file.formated_type;
         });
         modified_item_factory.bind.connect ((obj) => {
-            var list_item = ((Gtk.ListItem)obj);
-            var item = list_item.get_item ();
-            while (item is Gtk.TreeListRow) {
-                item = ((Gtk.TreeListRow)item).get_item ();
-            }
-warning ("name bind treerow item is %s", item.get_type ().name ());
-            var file = (Files.File)(item);
-            var modified_item = (Gtk.Label)list_item.child;
-            modified_item.label = file.formated_modified;
+            Object child;
+            var file = get_file_and_child_from_object (obj, out child);
+            ((Gtk.Label)child).label = file.formated_modified;
         });
 
-//         name_item_factory.teardown.connect ((obj) => {
-//             var list_item = ((Gtk.ListItem)obj);
-//             var treelist_row = (Gtk.TreeListRow)(list_item.get_item ());
-//             while (item is Gtk.TreeListRow) {
-//                 item = ((Gtk.TreeListRow)item).get_item ();
-//             }
-// warning ("name bind treerow item is %s", item.get_type ().name ());
-//             var file = (Files.File)(item);
-//             fileitem_list.remove (file_item);
-//         });
+        name_item_factory.teardown.connect ((obj) => {
+            fileitem_list.remove (obj.get_data<GridFileItem> ("file-item"));
+        });
 
         var name_column = new Gtk.ColumnViewColumn (_("Name"), name_item_factory) {
             expand = true,
@@ -240,7 +208,6 @@ warning ("name bind treerow item is %s", item.get_type ().name ());
     }
 
     protected override ListModel set_up_list_model () {
-// warning ("setup list model");
         root_store = new ListStore (typeof (Files.File));
         tree_model = new Gtk.TreeListModel (
             root_store,
@@ -252,7 +219,6 @@ warning ("name bind treerow item is %s", item.get_type ().name ());
     }
 
     private ListModel? new_model_func (Object obj) {
-// warning ("new model func obj is %s", obj.get_type ().name ());
         Files.File file;
         if (obj is Files.File) {
             file = (Files.File)obj;
@@ -285,22 +251,6 @@ warning ("name bind treerow item is %s", item.get_type ().name ());
         var column_sorter = column_view.get_sorter ();
         var row_sorter = new Gtk.TreeListRowSorter (column_sorter);
         return new Gtk.SortListModel (list_model, column_sorter);
-    }
-
-    protected override ListModel set_up_filter_model (ListModel list_model) {
-        filter_model = new Gtk.FilterListModel (list_model, null);
-        var custom_filter = new Gtk.CustomFilter ((obj) => {
-            // Files.File file;
-            // if (obj is Gtk.TreeListRow) {
-            //     file = (Files.File)(((Gtk.TreeListRow)obj).get_item ());
-            // } else {
-            //     file = (Files.File)obj;
-            // }
-            // return prefs.show_hidden_files || !file.is_hidden;
-            return true;
-        });
-        filter_model.set_filter (custom_filter);
-        return filter_model;
     }
 
     protected void sort_model (CompareDataFunc<Object> compare_func) {

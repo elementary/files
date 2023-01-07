@@ -185,7 +185,6 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     public void grab_focus () {
-warning ("grab focus");
         if (get_view_widget () != null) {
             var item = get_selected_file_item ();
             // Assume item already focussed if there is a selection
@@ -285,13 +284,11 @@ warning ("grab focus");
     }
 
     protected virtual int find_file_pos (Files.File file) {
-// warning ("find file pos");
         //TODO Override in list view to allow for expanded rows
         uint pos;
         if (root_store.find_with_equal_func (
             file,
             (filea, fileb) => {
-// warning ("find file pos");
                 return ((Files.File)filea).basename == ((Files.File)fileb).basename;
             },
             out pos
@@ -365,7 +362,6 @@ warning ("grab focus");
     }
 
     public uint get_selected_files (out GLib.List<Files.File>? selected_files = null) {
-warning ("get selected files");
         selected_files = null;
         uint pos = 0;
         uint count = 0;
@@ -394,7 +390,6 @@ warning ("get selected files");
     }
 
     public int file_compare_func (Object filea, Object fileb) {
-// warning ("file compare func");
         return ((Files.File)filea).compare_for_sort (
             ((Files.File)fileb), sort_type, prefs.sort_directories_first, sort_reversed
         );
@@ -422,7 +417,6 @@ warning ("get selected files");
         ListStore? store = null
     ) requires (root_store != null) {
 
-warning ("adding files");
         //TODO Delay sorting until adding finished?
         set_model (null);
         ListStore add_store;
@@ -514,22 +508,15 @@ warning ("adding files");
     }
 
     protected virtual ListModel set_up_list_model () {
-warning ("create root store");
         root_store = new GLib.ListStore (typeof (Files.File));
         return root_store;
     }
 
-    protected virtual ListModel set_up_filter_model (ListModel list_model) {
-warning ("setup filter model");
+    protected ListModel set_up_filter_model (ListModel list_model) {
         filter_model = new Gtk.FilterListModel (list_model, null);
         var custom_filter = new Gtk.CustomFilter ((obj) => {
-warning ("custom filter");
-            Files.File file;
-            if (obj is Gtk.TreeListRow) {
-                file = (Files.File)(((Gtk.TreeListRow)obj).get_item ());
-            } else {
-                file = (Files.File)obj;
-            }
+            Object child;
+            var file = get_file_and_child_from_object (obj, out child);
             return prefs.show_hidden_files || !file.is_hidden;
         });
         filter_model.set_filter (custom_filter);
@@ -542,6 +529,23 @@ warning ("custom filter");
             selection_changed ();
         });
         return multi_selection;
+    }
+
+    protected Files.File? get_file_and_child_from_object (Object obj, out Object? child) {
+    // Depending on caller, obj can be a ListItem, TreeListRow or Files.File
+        Object item;
+        if (obj is Gtk.ListItem) {
+            item = ((Gtk.ListItem)obj).get_item ();
+            child = ((Gtk.ListItem)obj).child;
+        } else {
+            item = obj;
+            child = null;
+        }
+
+        while (item is Gtk.TreeListRow) {
+            item = ((Gtk.TreeListRow)item).get_item ();
+        }
+        return (Files.File?)(item);
     }
 
     protected virtual void handle_primary_release (

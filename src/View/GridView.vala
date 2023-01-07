@@ -90,6 +90,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = new GridFileItem (this);
+            list_item.set_data<GridFileItem> ("file-item", file_item);
             fileitem_list.prepend ((FileItemInterface)file_item);
             bind_property (
                 "zoom-level",
@@ -119,9 +120,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         });
 
         item_factory.teardown.connect ((obj) => {
-            var list_item = ((Gtk.ListItem)obj);
-            var file_item = (GridFileItem)list_item.child;
-            fileitem_list.remove ((FileItemInterface)file_item);
+            fileitem_list.remove (obj.get_data<GridFileItem> ("file-item"));
         });
 
         // Restore saved zoom level
