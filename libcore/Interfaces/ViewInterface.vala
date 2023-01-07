@@ -440,10 +440,14 @@ public interface Files.ViewInterface : Gtk.Widget {
         }
     }
 
-    public void clear () {
+    protected void clear_root () {
         root_store.remove_all ();
         rename_after_add = false;
         select_after_add = false;
+    }
+
+    public virtual void clear () {
+        clear_root ();
     }
 
     /* Private methods */

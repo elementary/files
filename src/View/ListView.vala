@@ -65,7 +65,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     protected bool has_open_with { get; set; default = false;}
 
     private Gee.HashMap<string, Files.Directory> subdirectory_map;
-    private Gee.HashMap<string, ListStore> childmodel_map;
+    private Gee.HashMap<string, unowned ListStore> childmodel_map;
 
     public ListView (Files.Slot slot) {
         Object (slot: slot);
@@ -81,7 +81,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     construct {
         set_layout_manager (new Gtk.BinLayout ());
         subdirectory_map = new Gee.HashMap<string, Files.Directory> ();
-        childmodel_map = new Gee.HashMap<string, ListStore> ();
+        childmodel_map = new Gee.HashMap<string, unowned ListStore> ();
 
         column_view = new Gtk.ColumnView (null) {
             enable_rubberband = true,
@@ -277,6 +277,15 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     public void set_model (Gtk.SelectionModel? model) {
         column_view.set_model (model);
+    }
+
+    public override void clear () {
+        clear_root ();
+        foreach (var store in childmodel_map.values) {
+            store.remove_all (); //Is this necessary to avoid memory leak??
+        }
+        childmodel_map.clear ();
+        subdirectory_map.clear ();
     }
 
     private ZoomLevel get_normal_zoom_level () {
