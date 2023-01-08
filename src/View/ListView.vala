@@ -126,7 +126,9 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             var file = get_file_and_child_from_object (obj, out child);
             var expander = (Gtk.TreeExpander)child;
             var list_item = (Gtk.ListItem)obj;
-            expander.list_row = tree_model.get_row (list_item.position);
+            var row = tree_model.get_row (list_item.position);
+            expander.list_row = row;
+            row.notify["expanded"].connect (on_row_expanded);
             var file_item = (GridFileItem)(expander.child);
             file_item.bind_file (file);
             file_item.selected = list_item.selected;
@@ -214,6 +216,22 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
+    private void on_row_expanded (Object obj, ParamSpec param) {
+        Object child;
+        var file = get_file_and_child_from_object (obj, out child);
+        if (file == null) {
+            return;
+        }
+
+        if (subdirectory_map.has_key (file.uri)) {
+            var subdir = subdirectory_map.get (file.uri);
+            if (!subdir.is_loaded () && !subdir.is_loading ()) {
+                warning ("loading subdir %s", file.basename);
+                subdir.init.begin ();
+            }
+        }
+    }
+
     protected override ListModel set_up_list_model () {
         root_store = new ListStore (typeof (Files.File));
         tree_model = new Gtk.TreeListModel (
@@ -255,13 +273,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 //TODO Disconnect signals when not needed (unload, refresh)
             });
 
-            // Idle needed so that new model is processed before adding files to it
-            // Otherwise crash can occur
-
-            Idle.add (() => {
-                dir.init.begin ();
-                return Source.REMOVE;
-            });
             return new_liststore;
         } else {
             return null;
