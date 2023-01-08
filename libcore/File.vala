@@ -18,6 +18,11 @@
 
 public class Files.File : GLib.Object {
     private static GLib.HashTable<GLib.File, Files.File> file_cache;
+    private static GLib.File dummy_location;
+
+    static construct {
+        dummy_location = GLib.File.new_for_path ("");
+    }
 
     public enum IconFlags {
         NONE,
@@ -43,6 +48,7 @@ public class Files.File : GLib.Object {
     public signal void destroy ();
 
     public bool is_gone;
+    public bool is_dummy { get; set construct; }
     public GLib.File location { get; construct; }
     public GLib.File target_location = null;
     public Files.File target_gof = null;
@@ -93,9 +99,22 @@ public class Files.File : GLib.Object {
 
     public signal void icon_changed ();
 
-    public static new Files.File? @get (GLib.File? location) {
+    public static Files.File get_dummy () {
+        return Files.File.@get (null);
+    }
+
+    public static new Files.File @get (GLib.File? location) {
         if (location == null) {
-            return null;
+            var file = Files.File.cache_lookup (dummy_location);
+            if (file == null) {
+                file = new Files.File (dummy_location, null) {
+                    is_dummy = true
+                };
+
+                file_cache.insert (dummy_location, file);
+            }
+
+            return file;
         }
 
         var parent = location.get_parent ();

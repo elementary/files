@@ -143,7 +143,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         };
         selection_helper.set_css_name ("selection-helper");
         selection_helper.toggled.connect (() => {
-            // Only synchronise view when manually toggled
+            // Only synchronise view focus when manually toggled
             // not when changes due to binding to "selected"
             if (file != null && selection_helper.active != selected) {
                 if (selection_helper.active) {
@@ -178,8 +178,19 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         Thumbnailer.@get ().finished.connect (handle_thumbnailer_finished);
 
         bind_property ("selected", selection_helper, "active", BindingFlags.DEFAULT);
-        bind_property ("selected", selection_helper, "visible", BindingFlags.DEFAULT);
+        bind_property ("selected", selection_helper, "visible", BindingFlags.DEFAULT,
+            (binding, src_val, ref tgt_val) => {
+                tgt_val.set_boolean ((bool)src_val && !file.is_dummy);
+            },
+            null
+        );
         notify["selected"].connect (() => {
+warning ("notify selected");
+            if (file.is_dummy) {
+                remove_css_class ("selected");
+                return;
+            }
+
             if (selected && !has_css_class ("selected")) {
                 add_css_class ("selected");
             } else if (!selected && has_css_class ("selected")) {
@@ -190,10 +201,10 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         var motion_controller = new Gtk.EventControllerMotion ();
         add_controller (motion_controller);
         motion_controller.enter.connect (() => {
-            selection_helper.visible = true;
+            selection_helper.visible = !file.is_dummy;
         });
         motion_controller.leave.connect (() => {
-            selection_helper.visible = selected;
+            selection_helper.visible = !file.is_dummy && selected;
         });
 
         //Handle focus events to change appearance when has focus (but not selected)
@@ -222,6 +233,15 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     public void bind_file (Files.File? new_file) {
         var old_file = file;
         file = new_file;
+        file.pix_size = file_icon.pixel_size;
+        can_focus = !file.is_dummy;
+
+        if (new_file.is_dummy) {
+            label.label = _("(Empty folder)");
+            file_icon.paintable = null;
+            return;
+        }
+
         file.pix_size = file_icon.pixel_size;
         //Assume that item will not be bound without being unbound first
         if (file == null) {
@@ -264,6 +284,9 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     }
 
     private void update_pix () requires (file != null) {
+        if (file.is_dummy) {
+            return;
+        }
         file.update_gicon_and_paintable ();
         if (file.paintable != null) {
             file_icon.set_from_paintable (file.paintable);
@@ -310,6 +333,10 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     }
 
     public bool is_draggable_point (double view_x, double view_y) {
+        if (file.is_dummy) {
+            return false;
+        }
+
         Graphene.Point target_point;
         var target = view.pick (view_x, view_y, Gtk.PickFlags.DEFAULT);
         view.compute_point (target, {(float)view_x, (float)view_y}, out target_point);

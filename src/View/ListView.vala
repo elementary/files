@@ -126,6 +126,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             var file = get_file_and_child_from_object (obj, out child);
             var expander = (Gtk.TreeExpander)child;
             var list_item = (Gtk.ListItem)obj;
+            list_item.selectable = !file.is_dummy;
             var row = tree_model.get_row (list_item.position);
             expander.list_row = row;
             row.notify["expanded"].connect (on_row_expanded);
@@ -258,7 +259,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             childmodel_map.set (file.uri, new_liststore);
             var dir = Files.Directory.from_gfile (file.location);
             subdirectory_map.set (dir.file.uri, dir); //Keep reference to directory
-            new_liststore.append (Files.File.@get (GLib.File.new_for_path ("dummy")));
+            new_liststore.append (Files.File.get_dummy ());
             dir.done_loading.connect (() => {
                 if (dir.displayed_files_count > 0) {
                     new_liststore.remove (0);
@@ -319,6 +320,9 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     /* View Interface abstract methods */
     //Cannot move to interface because of plugins and Config.APP_NAME
     public void show_context_menu (FileItemInterface? item, double x, double y) {
+        if (((GridFileItem)item).file.is_dummy) {
+            return;
+        }
         // If no selected item show background context menu
         double menu_x, menu_y;
         MenuModel menu;
