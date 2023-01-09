@@ -17,8 +17,8 @@
 
 ***/
 
-namespace Files {
-    public class OverlayBar : Granite.OverlayBar {
+
+    public class Files.OverlayBar : Granite.OverlayBar {
         const int IMAGE_LOADER_BUFFER_SIZE = 8192;
         const int STATUS_UPDATE_DELAY = 200;
         Cancellable? cancellable = null;
@@ -136,16 +136,17 @@ namespace Files {
                     /* If we have an image, see if we can get its resolution. */
                     string? type = goffile.get_ftype ();
 
-                    if (goffile.format_size == "" ) { /* No need to keep recalculating the formatted size. */
+                    /* No need to keep recalculating the formatted size. */
+                    if (goffile.format_size == "" ) {
                         goffile.format_size = format_size (FileUtils.file_real_size (goffile));
                     }
                     str = "%s - %s (%s)".printf (goffile.info.get_name (),
                                                  goffile.formated_type,
                                                  goffile.format_size);
-
-                    if (type != null && type.substring (0, 6) == "image/" &&     /* File is an image and */
-                        (goffile.width > 0 ||                                    /* resolution has already been determined or */
-                        !((type in Files.SKIP_IMAGES) || goffile.width < 0))) {  /* resolution can be determined. */
+                    /* Check whether need to load resolution */
+                    if (type != null && type.substring (0, 6) == "image/" &&
+                        (goffile.width > 0 ||
+                        !((type in Files.SKIP_IMAGES) || goffile.width < 0))) {
 
                         load_resolution.begin (goffile);
                     }
@@ -235,15 +236,19 @@ namespace Files {
                     label += ")";
                 } else {
                     if (deep_counter.total_size > 0) {
-                        /// TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
+        /// TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
                         label += _("%s approx.").printf (format_size (deep_counter.total_size));
                     } else {
-                        /// TRANSLATORS: 'size' refers to disk space
+        /// TRANSLATORS: 'size' refers to disk space
                         label += _("unknown size");
                     }
                     label += ") ";
-                    /// TRANSLATORS: %u will be substituted by the number of unreadable files
-                    str = ngettext ("%u file not readable", "%u files not readable", deep_counter.file_not_read);
+         /// TRANSLATORS: %u will be substituted by the number of unreadable files
+                    str = ngettext (
+                        "%u file not readable",
+                        "%u files not readable",
+                        deep_counter.file_not_read
+                    );
                     label += str.printf (deep_counter.file_not_read);
                 }
             }
@@ -307,11 +312,19 @@ namespace Files {
             image_size_loaded = true;
             goffile.width = width;
             goffile.height = height;
-            label = "%s (%s — %i × %i)".printf (goffile.formated_type, goffile.format_size, width, height);
+            label = "%s (%s — %i × %i)".printf (
+                goffile.formated_type,
+                goffile.format_size,
+                width,
+                height
+            );
         }
 
-        private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream,
-                                              Cancellable cancellable) {
+        private async void read_image_stream (
+            Gdk.PixbufLoader loader,
+            FileInputStream stream,
+            Cancellable cancellable
+        ) {
             ssize_t read = 1;
             uint count = 0;
             while (!image_size_loaded && read > 0 && !cancellable.is_cancelled ()) {
@@ -319,11 +332,16 @@ namespace Files {
                     read = yield stream.read_async (buffer, 0, cancellable);
                     count++;
                     if (count > 100) {
-                        goffile.width = -1; /* Flag that resolution is not determinable so do not try again. */
+                        /* Flag that resolution is not determinable so do not try again. */
+                        goffile.width = -1;
                         goffile.height = -1;
                         /* Note that Gdk.PixbufLoader seems to leak memory with some file types.
-                         * Any file type that causes this error should be added to the Files.SKIP_IMAGES array. */
-                        critical ("Could not determine resolution of file type %s", goffile.get_ftype ());
+                         * Any file type that causes this error should be added to the
+                           Files.SKIP_IMAGES array. */
+                        critical (
+                            "Could not determine resolution of file type %s",
+                            goffile.get_ftype ()
+                        );
                         break;
                     }
 
@@ -343,4 +361,3 @@ namespace Files {
             }
         }
     }
-}
