@@ -54,6 +54,7 @@ namespace Files {
         }
 
         public void selection_changing () {
+warning ("OB selection changed");
             cancel ();
             visible = false;
         }
@@ -104,7 +105,7 @@ namespace Files {
                     if (gof != null && gof is Files.File) {
                         if (gof.is_folder ()) {
                             folders_count++;
-                        } else {
+                        } else if (!gof.is_dummy) {
                             files_count++;
                             files_size += FileUtils.file_real_size (gof);
                         }
@@ -128,6 +129,10 @@ namespace Files {
             string str = "";
             label = "";
             if (goffile != null) { /* A single file is selected. */
+                if (goffile.is_dummy) {
+                    return "";
+                }
+
                 if (goffile.is_network_uri_scheme () || goffile.is_root_network_folder ()) {
                     str = goffile.get_display_target_uri ();
                 } else if (!goffile.is_folder ()) {
@@ -248,10 +253,11 @@ namespace Files {
         }
 
         private void scan_list (GLib.List<Files.File> files) {
+warning ("OB scan list");
             foreach (Files.File gof in files) {
                 if (gof.is_folder ()) {
                     folders_count++;
-                } else {
+                } else if (!gof.is_dummy) {
                     files_count++;
                     files_size += FileUtils.file_real_size (gof);
                 }
