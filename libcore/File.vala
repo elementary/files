@@ -99,22 +99,18 @@ public class Files.File : GLib.Object {
 
     public signal void icon_changed ();
 
-    public static Files.File get_dummy () {
-        return Files.File.@get (null);
+    public static Files.File get_dummy (Files.File parent) {
+        var file = new Files.File (dummy_location, null) {
+            is_dummy = true
+        };
+
+        file.set_data<Files.File> ("parent", parent);
+        return file;
     }
 
-    public static new Files.File @get (GLib.File? location) {
+    public static new Files.File? @get (GLib.File? location) {
         if (location == null) {
-            var file = Files.File.cache_lookup (dummy_location);
-            if (file == null) {
-                file = new Files.File (dummy_location, null) {
-                    is_dummy = true
-                };
-
-                file_cache.insert (dummy_location, file);
-            }
-
-            return file;
+            return null;
         }
 
         var parent = location.get_parent ();

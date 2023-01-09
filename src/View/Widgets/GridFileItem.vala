@@ -41,6 +41,8 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     private Gtk.Overlay icon_overlay;
 
     public Files.File? file { get; set; default = null; }
+    public bool is_dummy { get; set; default = false; }
+
     public ViewInterface view { get; construct; }
     public uint pos { get; set; default = 0; }
 
@@ -180,13 +182,12 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         bind_property ("selected", selection_helper, "active", BindingFlags.DEFAULT);
         bind_property ("selected", selection_helper, "visible", BindingFlags.DEFAULT,
             (binding, src_val, ref tgt_val) => {
-                tgt_val.set_boolean ((bool)src_val && !file.is_dummy);
+                tgt_val.set_boolean ((bool)src_val && !is_dummy);
             },
             null
         );
         notify["selected"].connect (() => {
-warning ("notify selected");
-            if (file.is_dummy) {
+            if (is_dummy) {
                 remove_css_class ("selected");
                 return;
             }
@@ -201,10 +202,10 @@ warning ("notify selected");
         var motion_controller = new Gtk.EventControllerMotion ();
         add_controller (motion_controller);
         motion_controller.enter.connect (() => {
-            selection_helper.visible = !file.is_dummy;
+            selection_helper.visible = !is_dummy;
         });
         motion_controller.leave.connect (() => {
-            selection_helper.visible = !file.is_dummy && selected;
+            selection_helper.visible = !is_dummy && selected;
         });
 
         //Handle focus events to change appearance when has focus (but not selected)
@@ -233,12 +234,15 @@ warning ("notify selected");
     public void bind_file (Files.File? new_file) {
         var old_file = file;
         file = new_file;
+        is_dummy = file.is_dummy;
         file.pix_size = file_icon.pixel_size;
-        can_focus = !file.is_dummy;
+        can_focus = !is_dummy;
 
-        if (new_file.is_dummy) {
+        if (is_dummy) {
             label.label = _("(Empty folder)");
             file_icon.paintable = null;
+            //Masqerade as parent folder item
+            file = new_file.get_data<Files.File> ("parent");
             return;
         }
 
@@ -284,9 +288,10 @@ warning ("notify selected");
     }
 
     private void update_pix () requires (file != null) {
-        if (file.is_dummy) {
+        if (is_dummy) {
             return;
         }
+
         file.update_gicon_and_paintable ();
         if (file.paintable != null) {
             file_icon.set_from_paintable (file.paintable);
@@ -333,7 +338,7 @@ warning ("notify selected");
     }
 
     public bool is_draggable_point (double view_x, double view_y) {
-        if (file.is_dummy) {
+        if (is_dummy) {
             return false;
         }
 

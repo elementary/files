@@ -364,21 +364,29 @@ public interface Files.ViewInterface : Gtk.Widget {
         }
     }
 
+    protected virtual Files.File? get_file_from_selection_pos (uint pos) {
+        return (Files.File)(multi_selection.get_item (pos));
+    }
+
     public uint get_selected_files (out GLib.List<Files.File>? selected_files = null) {
         selected_files = null;
         uint pos = 0;
         uint count = 0;
         var iter = Gtk.BitsetIter ();
         if (iter.init_first (multi_selection.get_selection (), out pos)) {
-            selected_files.prepend (
-                (Files.File)(((Gtk.TreeListRow)(multi_selection.get_item (pos))).get_item ())
-            );
-            count++;
-            while (iter.next (out pos)) {
-                selected_files.prepend (
-                     (Files.File)(((Gtk.TreeListRow)(multi_selection.get_item (pos))).get_item ())
-                );
+            var file = get_file_from_selection_pos (pos);
+            // var file = (Files.File)(((Gtk.TreeListRow)(multi_selection.get_item (pos))).get_item ());
+            if (!file.is_dummy) {
+                selected_files.prepend (file);
                 count++;
+            }
+
+            while (iter.next (out pos)) {
+                file = get_file_from_selection_pos (pos);
+                if (!file.is_dummy) {
+                    selected_files.prepend (file);
+                    count++;
+                }
             }
         }
 
@@ -529,7 +537,8 @@ public interface Files.ViewInterface : Gtk.Widget {
 
     protected virtual Gtk.SelectionModel set_up_selection_model (ListModel list_model) {
         multi_selection = new Gtk.MultiSelection (list_model);
-        multi_selection.selection_changed.connect (() => {
+        multi_selection.selection_changed.connect ((pos, n_items) => {
+            warning ("pos %u, n_items %u", pos, n_items);
             selection_changed ();
         });
         return multi_selection;

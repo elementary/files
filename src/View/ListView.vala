@@ -119,7 +119,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             list_item.child = expander;
             // We handle file activation ourselves in GridFileItem
             list_item.activatable = false;
-            list_item.selectable = true;
+            list_item.selectable = false;
         });
         name_item_factory.bind.connect ((obj) => {
             Object child;
@@ -132,7 +132,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             row.notify["expanded"].connect (on_row_expanded);
             var file_item = (GridFileItem)(expander.child);
             file_item.bind_file (file);
-            file_item.selected = list_item.selected;
+            file_item.selected = !file.is_dummy && list_item.selected;
             file_item.pos = list_item.position;
         });
 
@@ -227,7 +227,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         if (subdirectory_map.has_key (file.uri)) {
             var subdir = subdirectory_map.get (file.uri);
             if (!subdir.is_loaded () && !subdir.is_loading ()) {
-                warning ("loading subdir %s", file.basename);
                 subdir.init.begin ();
             }
         }
@@ -259,7 +258,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             childmodel_map.set (file.uri, new_liststore);
             var dir = Files.Directory.from_gfile (file.location);
             subdirectory_map.set (dir.file.uri, dir); //Keep reference to directory
-            new_liststore.append (Files.File.get_dummy ());
+            new_liststore.append (Files.File.get_dummy (file));
             dir.done_loading.connect (() => {
                 if (dir.displayed_files_count > 0) {
                     new_liststore.remove (0);
@@ -291,6 +290,10 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         root_store.sort (compare_func);
     }
 
+    protected override Files.File? get_file_from_selection_pos (uint pos) {
+        return (Files.File)(((Gtk.TreeListRow)(multi_selection.get_item (pos))).get_item ());
+    }
+
     public void set_model (Gtk.SelectionModel? model) {
         column_view.set_model (model);
     }
@@ -320,9 +323,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     /* View Interface abstract methods */
     //Cannot move to interface because of plugins and Config.APP_NAME
     public void show_context_menu (FileItemInterface? item, double x, double y) {
-        if (((GridFileItem)item).file.is_dummy) {
-            return;
-        }
         // If no selected item show background context menu
         double menu_x, menu_y;
         MenuModel menu;
@@ -337,11 +337,14 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             item.compute_point (column_view, {(float)x, (float)y}, out point_gridview);
 
             if (!item.selected) {
-                multi_selection.select_item (item.pos, true);
+                if (!item.is_dummy) {
+                    multi_selection.select_item (item.pos, true);
+                } else {
+                    multi_selection.select_item (item.pos - 1, true);
+                }
             }
 
-            get_selected_files (out selected_files);
-
+            var n_items = get_selected_files (out selected_files);
             var open_with_menu = new Menu ();
             var open_with_apps = MimeActions.get_applications_for_files (
                 selected_files, Config.APP_NAME, true, true
