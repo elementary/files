@@ -1,6 +1,6 @@
 /***
     Copyright (c) 2012 ammonkey <am.monkeyd@gmail.com>
-                  2015-2018 elementary LLC <https://elementary.io>
+                  2015-2023 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

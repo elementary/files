@@ -53,7 +53,9 @@ public class Files.Slot : Gtk.Box, SlotInterface {
             hexpand: _mode != ViewMode.MULTICOLUMN
         );
 
-        set_up_directory (_location ?? GLib.File.new_for_commandline_arg (Environment.get_home_dir ()));
+        set_up_directory (_location ??
+            GLib.File.new_for_commandline_arg (Environment.get_home_dir ())
+        );
     }
 
     ~Slot () {
@@ -100,7 +102,9 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
         overlay.child = view_widget;
         if (view_mode == ViewMode.MULTICOLUMN) {
-            preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
+            preferred_column_width = Files.column_view_settings.get_int (
+                "preferred-column-width"
+            );
             width = preferred_column_width;
             view_widget.width_request = preferred_column_width;
         }
@@ -164,7 +168,6 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     public void on_directory_file_deleted (Directory dir, Files.File file) {
-warning ("dir %s file deleted %s", dir.file.basename, file.basename);
         /* The deleted file could be the whole directory */
         file.exists = false;
         view_widget.file_deleted (file);
@@ -210,7 +213,9 @@ warning ("dir %s file deleted %s", dir.file.basename, file.basename);
 
     public async bool initialize_directory () {
         if (directory.is_loading ()) {
-            warning ("Slot.initialize_directory () called when directory already loading - ignoring");
+            warning (
+                "Slot.initialize_directory () called when directory already loading - ignoring"
+            );
             return false;
         }
 
@@ -233,7 +238,8 @@ warning ("dir %s file deleted %s", dir.file.basename, file.basename);
             empty_label.label = get_empty_message ();
             if (empty_label.parent == null) {
                 overlay.add_overlay (empty_label);
-                overlay.set_measure_overlay (empty_label, true); //Expand column to accomodate label
+                //Expand column to accomodate label
+                overlay.set_measure_overlay (empty_label, true);
             }
         } else {
             if (empty_label.parent == overlay) {
@@ -281,7 +287,9 @@ warning ("dir %s file deleted %s", dir.file.basename, file.basename);
 
             view_widget.select_files (files_to_select);
             if (focus_after_select != null) {
-                view_widget.show_and_select_file (Files.File.@get (focus_after_select), false, false, true);
+                view_widget.show_and_select_file (
+                    Files.File.@get (focus_after_select), false, false, true
+                );
             }
         }
     }
