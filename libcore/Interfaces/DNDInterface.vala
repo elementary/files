@@ -68,7 +68,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             return null;
         });
         drag_source.drag_begin.connect ((drag) => {
-            //FIXME Work around for Gtk4 bug(?) whereby eventcontroller modifier-state does not include buttons
+            // Eventcontroller modifier-state does not include buttons so record here
             drag.set_data<uint> ("button", current_drag_button);
             //TODO Set drag icon
             return;
@@ -113,7 +113,10 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
                         var val = drop.read_value_async.end (res);
                         if (val != null && DndHandler.can_accept_drops (root_file)) {
                             // Error thrown if string does not contain valid uris as uri-list
-                            drop_accepted = Files.FileUtils.files_from_uris (val.get_string (), out dropped_files);
+                            drop_accepted = Files.FileUtils.files_from_uris (
+                                val.get_string (),
+                                out dropped_files
+                            );
                         } else {
                             warning ("dropped value null");
                         }
@@ -140,7 +143,9 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
 
             var drop = drop_target.get_current_drop ();
             bool alt_only, secondary_button_pressed;
-            DndHandler.get_alt_and_button_for_drop (drop, out alt_only, out secondary_button_pressed);
+            DndHandler.get_alt_and_button_for_drop (
+                drop, out alt_only, out secondary_button_pressed
+            );
 
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             var fileitem = (FileItemInterface)(widget.get_ancestor (typeof (FileItemInterface)));
