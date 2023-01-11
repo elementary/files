@@ -82,7 +82,12 @@ public class Files.File : GLib.Object {
     public bool is_hidden = false;
     public bool is_directory = false;
     public bool is_desktop = false;
-    public bool is_expanded = false;
+    public bool is_expanded {
+        get {
+            return expanded_count > 0;
+        }
+    }
+    private uint expanded_count = 0;
     public bool drop_pending { get; set; default = false; }
     [CCode (cname = "can_unmount")]
     public bool _can_unmount;
@@ -216,9 +221,36 @@ public class Files.File : GLib.Object {
         is_gone = true;
     }
 
+    // This solution means that the file will show as expanded if *any* view expands it
+    // This is inevitable while File determines the icon
     public void set_expanded (bool expanded) {
         GLib.return_if_fail (is_directory);
-        is_expanded = expanded;
+        if (expanded) {
+            expanded_count++;
+            if (expanded_count == 1) {
+
+            }
+        } else {
+            expanded_count--;
+            assert (expanded_count >= 0);
+            if (expanded_count == 0) {
+                update_gicon_and_paintable ();
+            }
+        }
+
+        if (expanded && expanded_count == 1 || !expanded && expanded_count == 0) {
+            if (((ThemedIcon)gicon).names[0].has_prefix ("folder")) {
+                if (drop_pending) {
+                    gicon = new ThemedIcon.with_default_fallbacks ("folder-drag-accept");
+                } else if (is_expanded) {
+                    gicon = new ThemedIcon.with_default_fallbacks ("folder-open");
+                } else {
+                    gicon = new ThemedIcon ("folder");
+                }
+
+                icon_changed ();
+            }
+        }
     }
 
     public bool is_folder () {

@@ -223,14 +223,20 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         if (file == null) {
             return;
         }
-        if (subdirectory_map.has_key (file.uri)) {
-            var subdir = subdirectory_map.get (file.uri);
-            var model = childmodel_map.get (file.uri);
-            if (!model.get_data<bool> ("loaded")) {
-                subdir.init.begin (null, () => {
-                    model.set_data<bool> ("loaded", true);
-                });
+        var row = (Gtk.TreeListRow)obj;
+        if (row.expanded) {
+            file.set_expanded (true);
+            if (subdirectory_map.has_key (file.uri)) {
+                var subdir = subdirectory_map.get (file.uri);
+                var model = childmodel_map.get (file.uri);
+                if (!model.get_data<bool> ("loaded")) {
+                    subdir.init.begin (null, () => {
+                        model.set_data<bool> ("loaded", true);
+                    });
+                }
             }
+        } else {
+            file.set_expanded (false);
         }
     }
 
@@ -306,6 +312,9 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             store.remove_all (); //Is this necessary to avoid memory leak??
         }
         childmodel_map.clear ();
+        foreach (var dir in subdirectory_map.values) {
+            dir.file.set_expanded (false);
+        }
         subdirectory_map.clear ();
     }
 

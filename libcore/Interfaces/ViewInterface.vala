@@ -449,6 +449,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     protected void clear_root () {
+        root_file.set_expanded (false);
         root_store.remove_all ();
         rename_after_add = false;
         select_after_add = false;
@@ -544,21 +545,21 @@ public interface Files.ViewInterface : Gtk.Widget {
         return multi_selection;
     }
 
-    protected Files.File? get_file_and_child_from_object (Object obj, out Object? child) {
+    protected Files.File? get_file_and_child_from_object (Object obj, out Object? display_object) {
     // Depending on caller, obj can be a ListItem, TreeListRow or Files.File
-        Object item;
+        Object model_item;
         if (obj is Gtk.ListItem) {
-            item = ((Gtk.ListItem)obj).get_item ();
-            child = ((Gtk.ListItem)obj).child;
+            model_item = ((Gtk.ListItem)obj).get_item ();
+            display_object = ((Gtk.ListItem)obj).child;
         } else {
-            item = obj;
-            child = null;
+            model_item = obj;
+            display_object = null;
         }
 
-        while (item is Gtk.TreeListRow) {
-            item = ((Gtk.TreeListRow)item).get_item ();
+        while (model_item is Gtk.TreeListRow) {
+            model_item = ((Gtk.TreeListRow)model_item).get_item ();
         }
-        return (Files.File?)(item);
+        return (Files.File?)(model_item);
     }
 
     protected virtual void handle_primary_release (

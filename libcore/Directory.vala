@@ -145,8 +145,6 @@ public class Files.Directory : Object {
         if (is_trash) {
             disconnect_volume_monitor_signals ();
         }
-
-        file.set_expanded (false); // Ensure any remaining folder icons are not displayed as expanded
     }
 
     /** Views call the following function with null parameter - file_added and done_loading
@@ -739,10 +737,7 @@ public class Files.Directory : Object {
         if (file_loaded_func == null) {
             done_loading ();
         }
-
-        if (file.is_directory) { /* Fails for non-existent directories */
-            file.set_expanded (true);
-        }
+        //It is up to each view to update file expanded count as needed;
     }
 
     public void block_monitor () {
@@ -1154,10 +1149,6 @@ public class Files.Directory : Object {
     }
 
     public static bool remove_dir_from_cache (Directory dir) {
-        if (dir.file.is_directory) {
-            dir.file.is_expanded = false;
-        }
-
         lock (directory_cache) {
             if (directory_cache.remove (dir.creation_key)) {
                 directory_cache.remove (dir.location);
