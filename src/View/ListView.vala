@@ -223,11 +223,13 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         if (file == null) {
             return;
         }
-
         if (subdirectory_map.has_key (file.uri)) {
             var subdir = subdirectory_map.get (file.uri);
-            if (!subdir.is_loaded () && !subdir.is_loading ()) {
-                subdir.init.begin ();
+            var model = childmodel_map.get (file.uri);
+            if (!model.get_data<bool> ("loaded")) {
+                subdir.init.begin (null, () => {
+                    model.set_data<bool> ("loaded", true);
+                });
             }
         }
     }
@@ -250,11 +252,11 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             //For some reason this function gets called multiple times on same folder
             // Creating a new model every time leads to infinite loop and crash
             if (childmodel_map.has_key (file.uri)) {
-                // critical ("Model already created for %s", file.basename);
                 return (ListModel)(childmodel_map.get (file.uri));
             }
 
             var new_liststore = new ListStore (typeof (Files.File));
+            new_liststore.set_data<bool> ("loaded", false);
             childmodel_map.set (file.uri, new_liststore);
             var dir = Files.Directory.from_gfile (file.location);
             subdirectory_map.set (dir.file.uri, dir); //Keep reference to directory

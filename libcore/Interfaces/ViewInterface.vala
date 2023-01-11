@@ -585,11 +585,12 @@ public interface Files.ViewInterface : Gtk.Widget {
 
             var file = item.file;
             var is_folder = file.is_folder ();
-            var mods = controller.get_current_event_state () & ~Gdk.ModifierType.BUTTON1_MASK;
-            //FIXME Should we only activate on icon??
+            var key_mods = controller.get_current_event_state () &
+                           ~Gdk.ModifierType.BUTTON1_MASK & Gdk.MODIFIER_MASK;
+            //FIXME Should we only activate on icon or on label as well (like Nautilus)??
             var should_activate = (
                  // Only activate on unmodified single click or double click
-                (mods == 0 && n_press == 1 && is_folder && !prefs.singleclick_select) ||
+                (key_mods == 0 && n_press == 1 && is_folder && !prefs.singleclick_select) ||
                 n_press == 2 // Always activate on double click
             );
             // Activate item

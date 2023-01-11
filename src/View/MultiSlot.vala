@@ -113,8 +113,14 @@ public class Files.MultiSlot : Gtk.Box, SlotContainerInterface {
     public Slot add_location (GLib.File loc) {
         // Always create new Slot rather than navigate for simplicity.
         //TODO Check for performance/memory leak
-        var guest = new Slot (loc, view_mode);
         Gtk.Paned host;
+        Slot guest;
+        if (first_host.start_child != null) {
+            guest = (Slot)(first_host.start_child);
+        } else {
+            guest = new Files.Slot (loc, view_mode);
+        }
+
         if (view_mode == ViewMode.MULTICOLUMN) {
             host = get_host_for_loc (guest.file.location);
         } else {
@@ -176,10 +182,10 @@ public class Files.MultiSlot : Gtk.Box, SlotContainerInterface {
 
     public void clear () {
         truncate_list_after_host (first_host);
-        var first_slot = first_host.start_child;
+        var first_slot = (Slot)(first_host.start_child);
+        //Instead of destroying slot, just clear it - it can be re-used.
         if (first_slot != null) {
-            first_slot.unparent ();
-            first_slot.destroy ();
+            first_slot.view_widget.clear ();
         }
 
         current_slot = null;

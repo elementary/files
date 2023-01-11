@@ -435,7 +435,8 @@ public class Files.File : GLib.Object {
                     thumbstate = Files.File.ThumbState.LOADED;
                     return true;
                 } else {
-                    critical ("READY but could not get paintable from cache");
+                    //FIXME Stop spam warning because of no fallback
+                    debug ("READY but could not get paintable from cache");
                     thumbstate = Files.File.ThumbState.NONE;
                 }
             } else {

@@ -129,7 +129,6 @@ public class Files.DndHandler : GLib.Object {
         GLib.List<GLib.File> drop_file_list,
         Gdk.DragAction action
         ) requires (drop_target != null && drop_file_list != null) {
-
         if (drop_target.is_folder ()) {
             Files.FileOperations.copy_move_link.begin (
                 drop_file_list,

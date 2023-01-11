@@ -156,7 +156,7 @@ public class Files.ViewContainer : Gtk.Box {
 
         var added_location = loc ?? current_location;
         Slot added_slot;
-        if ((flag != OpenFlag.APPEND || change_mode)) {
+        if (flag != OpenFlag.APPEND || change_mode) {
             multi_slot.clear ();
             added_slot = multi_slot.add_location (loc ?? current_location);
         } else if (view_mode != ViewMode.MULTICOLUMN && !change_mode) {
