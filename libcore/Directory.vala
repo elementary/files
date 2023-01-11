@@ -1136,7 +1136,10 @@ public class Files.Directory : Object {
                     cached_dir.file.query_update (); /* This is synchronous and causes blocking */
                 }
             } else {
-                critical ("Invalid directory found in cache key %s, removing", file.get_basename ());
+                warning ("Invalid directory found in cache key %s, removing", file.get_basename ());
+                if (cached_dir.file == null) {
+                    warning ("cached dir file is null");
+                }
                 cached_dir = null;
                 lock (directory_cache) {
                     directory_cache.remove (file);
