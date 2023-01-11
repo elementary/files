@@ -70,7 +70,8 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     ~ListView () {
-        warning ("GridView destruct");
+        clear ();
+        debug ("GridView destruct");
         while (this.get_last_child () != null) {
             this.get_last_child ().unparent ();
         }
@@ -291,10 +292,8 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     public override void clear () {
         clear_root ();
-        foreach (var dir in subdirectory_map.values) {
-            dir.clear ();
-        }
         subdirectory_map.clear ();
+        //TODO Fix any memory leak
     }
 
     private ZoomLevel get_normal_zoom_level () {
@@ -394,18 +393,24 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     private class Subdirectory : Object {
         public Directory directory { get; construct; }
-        public ListView list_view { get; construct; }
+        public unowned ListView list_view { get; construct; }
         public ListStore model { get; construct; }
         public bool loaded { get; private set; default = false; }
+        public string uri { get; construct; }
 
         public Subdirectory (Directory dir, ListStore model, ListView view) {
             Object (
                 directory: dir,
+                uri: dir.file.uri,
                 model: model,
                 list_view: view
             );
 
             directory.done_loading.connect (on_done_loading);
+        }
+
+        ~Subdirectory () {
+            debug ("Subdirectory destruct %s", uri);
         }
 
         private void on_done_loading () {
@@ -446,7 +451,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             directory.file_deleted.disconnect (on_file_deleted);
             directory.file.set_expanded (false);
             model.remove_all ();
-
         }
     }
 }

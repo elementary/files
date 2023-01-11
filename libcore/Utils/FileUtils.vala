@@ -596,7 +596,10 @@ namespace Files.FileUtils {
         return new_location;
     }
 
-    public string get_formatted_time_attribute_from_info (GLib.FileInfo info, string attr) {
+    public string get_formatted_time_attribute_from_info (
+        GLib.FileInfo info, string attr) //requires (info != null)
+    {
+
         DateTime? dt = null;
 
         switch (attr) {

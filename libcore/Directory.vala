@@ -444,6 +444,7 @@ public class Files.Directory : Object {
             lock (directory_cache) {
                 this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
                 if (!creation_key.equal (location) || directory_cache.lookup (location) == null) {
+                    debug ("inserting dir for %s", location.get_basename ());
                     directory_cache.insert (location, this);
                 }
             }
@@ -1081,6 +1082,11 @@ public class Files.Directory : Object {
         if (dir == null) {
             dir = new Directory (afile);
             lock (directory_cache) {
+                if (directory_cache.contains (dir.creation_key)) {
+                    warning ("Duplicate key %s ", dir.creation_key.get_basename ());
+                    return directory_cache.get (dir.creation_key);
+                }
+                debug ("inserting dir for %s", dir.creation_key.get_basename ());
                 directory_cache.insert (dir.creation_key, dir);
             }
         }
@@ -1130,7 +1136,7 @@ public class Files.Directory : Object {
                     cached_dir.file.query_update (); /* This is synchronous and causes blocking */
                 }
             } else {
-                critical ("Invalid directory found in cache");
+                critical ("Invalid directory found in cache key %s, removing", file.get_basename ());
                 cached_dir = null;
                 lock (directory_cache) {
                     directory_cache.remove (file);
@@ -1149,9 +1155,11 @@ public class Files.Directory : Object {
     }
 
     public static bool remove_dir_from_cache (Directory dir) {
+        debug ("remove dir from cache %s", dir.file.basename );
         lock (directory_cache) {
             if (directory_cache.remove (dir.creation_key)) {
                 directory_cache.remove (dir.location);
+                debug ("removed keys %s and %s", dir.creation_key.get_basename (), dir.location.get_basename ());
                 dir.removed_from_cache = true;
                 return true;
             }

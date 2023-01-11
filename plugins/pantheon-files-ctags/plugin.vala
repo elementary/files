@@ -178,6 +178,10 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 return;
             }
 
+            if (file.info == null || file.is_dummy) {
+                return;
+            }
+
             var rc = yield daemon.get_uri_infos (file.uri);
 
             VariantIter iter = rc.iterator ();
