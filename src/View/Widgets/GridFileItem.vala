@@ -1,4 +1,4 @@
-/* Copyright (c) 2022 elementary LLC (https://elementary.io)
+/* Copyright (c) 2023 elementary LLC (https://elementary.io)
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -41,6 +41,8 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     private Gtk.Overlay icon_overlay;
 
     public Files.File? file { get; set; default = null; }
+    public bool is_dummy { get; set; default = false; }
+
     public ViewInterface view { get; construct; }
     public uint pos { get; set; default = 0; }
 
@@ -143,7 +145,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         };
         selection_helper.set_css_name ("selection-helper");
         selection_helper.toggled.connect (() => {
-            // Only synchronise view when manually toggled
+            // Only synchronise view focus when manually toggled
             // not when changes due to binding to "selected"
             if (file != null && selection_helper.active != selected) {
                 if (selection_helper.active) {
@@ -178,8 +180,18 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         Thumbnailer.@get ().finished.connect (handle_thumbnailer_finished);
 
         bind_property ("selected", selection_helper, "active", BindingFlags.DEFAULT);
-        bind_property ("selected", selection_helper, "visible", BindingFlags.DEFAULT);
+        bind_property ("selected", selection_helper, "visible", BindingFlags.DEFAULT,
+            (binding, src_val, ref tgt_val) => {
+                tgt_val.set_boolean ((bool)src_val && !is_dummy);
+            },
+            null
+        );
         notify["selected"].connect (() => {
+            if (is_dummy) {
+                remove_css_class ("selected");
+                return;
+            }
+
             if (selected && !has_css_class ("selected")) {
                 add_css_class ("selected");
             } else if (!selected && has_css_class ("selected")) {
@@ -190,10 +202,10 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         var motion_controller = new Gtk.EventControllerMotion ();
         add_controller (motion_controller);
         motion_controller.enter.connect (() => {
-            selection_helper.visible = true;
+            selection_helper.visible = !is_dummy;
         });
         motion_controller.leave.connect (() => {
-            selection_helper.visible = selected;
+            selection_helper.visible = !is_dummy && selected;
         });
 
         //Handle focus events to change appearance when has focus (but not selected)
@@ -212,9 +224,28 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         });
     }
 
+    ~GridFileItem () {
+        Thumbnailer.@get ().finished.disconnect (handle_thumbnailer_finished);
+        while (this.get_last_child () != null) {
+            this.get_last_child ().unparent ();
+        }
+    }
+
     public void bind_file (Files.File? new_file) {
         var old_file = file;
         file = new_file;
+        is_dummy = file.is_dummy;
+        file.pix_size = file_icon.pixel_size;
+        can_focus = !is_dummy;
+
+        if (is_dummy) {
+            label.label = _("(Empty folder)");
+            file_icon.paintable = null;
+            //Masqerade as parent folder item
+            file = new_file.get_data<Files.File> ("parent");
+            return;
+        }
+
         file.pix_size = file_icon.pixel_size;
         //Assume that item will not be bound without being unbound first
         if (file == null) {
@@ -257,6 +288,10 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     }
 
     private void update_pix () requires (file != null) {
+        if (is_dummy) {
+            return;
+        }
+
         file.update_gicon_and_paintable ();
         if (file.paintable != null) {
             file_icon.set_from_paintable (file.paintable);
@@ -303,6 +338,10 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
     }
 
     public bool is_draggable_point (double view_x, double view_y) {
+        if (is_dummy) {
+            return false;
+        }
+
         Graphene.Point target_point;
         var target = view.pick (view_x, view_y, Gtk.PickFlags.DEFAULT);
         view.compute_point (target, {(float)view_x, (float)view_y}, out target_point);
@@ -316,12 +355,5 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         }
 
         return false; // Rubberband on background or helper
-    }
-
-    ~GridFileItem () {
-        Thumbnailer.@get ().finished.disconnect (handle_thumbnailer_finished);
-        while (this.get_last_child () != null) {
-            this.get_last_child ().unparent ();
-        }
     }
 }

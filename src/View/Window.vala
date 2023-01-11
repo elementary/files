@@ -1486,8 +1486,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
     }
 
-    // Called when have URI and OpenFlag but not mode
-    public void uri_path_change_request (string p, OpenFlag flag) {
+    private void uri_path_change_request (string p, OpenFlag flag) {
         /* Make a sanitized file from the uri */
         if (p == "") {
             return;
@@ -1514,7 +1513,6 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
     }
 
-    //Called when have mode, location file and OpenFlag
     private void set_current_location_and_mode (ViewMode mode, GLib.File loc, OpenFlag flag) {
         update_top_menu (loc.get_uri ());
         current_container.set_location_and_mode (real_mode (mode), loc, null, flag);

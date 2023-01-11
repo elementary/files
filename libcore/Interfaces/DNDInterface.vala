@@ -68,7 +68,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             return null;
         });
         drag_source.drag_begin.connect ((drag) => {
-            //FIXME Work around for Gtk4 bug(?) whereby eventcontroller modifier-state does not include buttons
+            // Eventcontroller modifier-state does not include buttons so record here
             drag.set_data<uint> ("button", current_drag_button);
             //TODO Set drag icon
             return;
@@ -113,7 +113,10 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
                         var val = drop.read_value_async.end (res);
                         if (val != null && DndHandler.can_accept_drops (root_file)) {
                             // Error thrown if string does not contain valid uris as uri-list
-                            drop_accepted = Files.FileUtils.files_from_uris (val.get_string (), out dropped_files);
+                            drop_accepted = Files.FileUtils.files_from_uris (
+                                val.get_string (),
+                                out dropped_files
+                            );
                         } else {
                             warning ("dropped value null");
                         }
@@ -140,7 +143,9 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
 
             var drop = drop_target.get_current_drop ();
             bool alt_only, secondary_button_pressed;
-            DndHandler.get_alt_and_button_for_drop (drop, out alt_only, out secondary_button_pressed);
+            DndHandler.get_alt_and_button_for_drop (
+                drop, out alt_only, out secondary_button_pressed
+            );
 
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
             var fileitem = (FileItemInterface)(widget.get_ancestor (typeof (FileItemInterface)));
@@ -183,7 +188,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
 
                 auto_open_timeout_id = Timeout.add (1000, () => {
                     auto_open_timeout_id = 0;
-                    warning ("setting drop_pending false fir %s", fileitem.file.uri);
+                    debug ("setting drop_pending false fir %s", fileitem.file.uri);
                     fileitem.drop_pending = false;
                     previous_target_item.drop_pending = false;
                     change_path (fileitem.file.location, Files.OpenFlag.DEFAULT);
@@ -195,6 +200,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         });
 
         drop_target.on_drop.connect ((val, x, y) => {
+            cancel_auto_open ();
             if (dropped_files != null &&
                 current_drop_uri != null &&
                 Files.DndHandler.valid_actions > 0) {

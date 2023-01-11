@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2022 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2023 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -28,10 +28,10 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     //ViewInterface properties
     protected Gtk.PopoverMenu popover_menu { get; set; }
-    protected GLib.ListStore list_store { get; set; }
+    protected GLib.ListStore root_store { get; set; } // Root model of tree
+    private Gtk.TreeListModel tree_model;
     protected Gtk.FilterListModel filter_model { get; set; }
     protected Gtk.MultiSelection multi_selection { get; set; }
-    // private Gtk.MultiSelection multi_selection;
     protected Files.Preferences prefs { get; default = Files.Preferences.get_default (); }
     protected string current_drop_uri { get; set; default = "";}
     protected uint current_drag_button { get; set; default = 1;}
@@ -47,7 +47,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     // Construct properties
     public Gtk.ColumnView column_view { get; construct; }
-    // public Gtk.PopoverMenu popover_menu { get; construct; }
 
     //Interface properties
     protected unowned GLib.List<Gtk.Widget> fileitem_list { get; set; default = null; }
@@ -64,12 +63,15 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public bool select_after_add { get; set; default = false;}
     protected bool has_open_with { get; set; default = false;}
 
+    private Gee.HashMap<string, Subdirectory> subdirectory_map;
+
     public ListView (Files.Slot slot) {
         Object (slot: slot);
     }
 
     ~ListView () {
-        warning ("GridView destruct");
+        clear ();
+        debug ("GridView destruct");
         while (this.get_last_child () != null) {
             this.get_last_child ().unparent ();
         }
@@ -77,16 +79,18 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     construct {
         set_layout_manager (new Gtk.BinLayout ());
-        set_up_model ();
-        bind_prefs ();
-        bind_sort ();
+        subdirectory_map = new Gee.HashMap<string, Subdirectory> ();
 
-        //Setup columnview
-        column_view = new Gtk.ColumnView (multi_selection) {
+        column_view = new Gtk.ColumnView (null) {
             enable_rubberband = true,
             focusable = true,
             show_column_separators = true
         };
+
+        set_model (set_up_model ());
+
+        bind_prefs ();
+        bind_sort ();
         build_ui (column_view);
         bind_popover_menu ();
         set_up_gestures ();
@@ -101,17 +105,35 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         name_item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = new GridFileItem (this);
+            list_item.set_data<GridFileItem> ("file-item", file_item);
             fileitem_list.prepend (file_item);
             bind_property (
                 "zoom-level",
                 file_item, "zoom-level",
                 BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
             );
-            list_item.child = file_item;
+            var expander = new Gtk.TreeExpander ();
+            expander.set_child (file_item);
+            list_item.child = expander;
             // We handle file activation ourselves in GridFileItem
             list_item.activatable = false;
-            list_item.selectable = true;
+            list_item.selectable = false;
         });
+        name_item_factory.bind.connect ((obj) => {
+            Object child;
+            var file = get_file_and_child_from_object (obj, out child);
+            var expander = (Gtk.TreeExpander)child;
+            var list_item = (Gtk.ListItem)obj;
+            list_item.selectable = !file.is_dummy;
+            var row = tree_model.get_row (list_item.position);
+            expander.list_row = row;
+            row.notify["expanded"].connect (on_row_expanded);
+            var file_item = (GridFileItem)(expander.child);
+            file_item.bind_file (file);
+            file_item.selected = !file.is_dummy && list_item.selected;
+            file_item.pos = list_item.position;
+        });
+
         //TODO Use Gtk.Inscription when v4.9 available
         size_item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
@@ -143,38 +165,24 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             list_item.activatable = false;
             list_item.selectable = false;
         });
-
-        name_item_factory.bind.connect ((obj) => {
-            var list_item = ((Gtk.ListItem)obj);
-            var file = (Files.File)list_item.get_item ();
-            var file_item = (GridFileItem)list_item.child;
-            file_item.bind_file (file);
-            file_item.selected = list_item.selected;
-            file_item.pos = list_item.position;
-        });
         size_item_factory.bind.connect ((obj) => {
-            var list_item = ((Gtk.ListItem)obj);
-            var file = (Files.File)list_item.get_item ();
-            var size_item = (Gtk.Label)list_item.child;
-            size_item.label = file.format_size;
+            Object child;
+            var file = get_file_and_child_from_object (obj, out child);
+            ((Gtk.Label)child).label = file.format_size;
         });
         type_item_factory.bind.connect ((obj) => {
-            var list_item = ((Gtk.ListItem)obj);
-            var file = (Files.File)list_item.get_item ();
-            var type_item = (Gtk.Label)list_item.child;
-            type_item.label = file.formated_type;
+            Object child;
+            var file = get_file_and_child_from_object (obj, out child);
+            ((Gtk.Label)child).label = file.formated_type;
         });
         modified_item_factory.bind.connect ((obj) => {
-            var list_item = ((Gtk.ListItem)obj);
-            var file = (Files.File)list_item.get_item ();
-            var modified_item = (Gtk.Label)list_item.child;
-            modified_item.label = file.formated_modified;
+            Object child;
+            var file = get_file_and_child_from_object (obj, out child);
+            ((Gtk.Label)child).label = file.formated_modified;
         });
 
         name_item_factory.teardown.connect ((obj) => {
-            var list_item = ((Gtk.ListItem)obj);
-            var file_item = (GridFileItem)list_item.child;
-            fileitem_list.remove (file_item);
+            fileitem_list.remove (obj.get_data<GridFileItem> ("file-item"));
         });
 
         var name_column = new Gtk.ColumnViewColumn (_("Name"), name_item_factory) {
@@ -207,8 +215,84 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
+    private void on_row_expanded (Object obj, ParamSpec param) {
+        Object child;
+        var file = get_file_and_child_from_object (obj, out child);
+        if (file == null) {
+            return;
+        }
+        var row = (Gtk.TreeListRow)obj;
+        if (row.expanded) {
+            if (subdirectory_map.has_key (file.uri)) {
+                var subdir = subdirectory_map.get (file.uri);
+                subdir.expand ();
+            }
+        } else {
+            // Need to unexpand  this and all child folders (like Nautilus)
+            foreach (var key in subdirectory_map.keys) {
+                if (key.has_prefix (file.uri)) {
+                    subdirectory_map.get (key).collapse ();
+                }
+            }
+
+
+        }
+    }
+
+    protected override ListModel set_up_list_model () {
+        root_store = new ListStore (typeof (Files.File));
+        tree_model = new Gtk.TreeListModel (
+            root_store,
+            false, //Passthrough - must be false to expanders to work
+            false, //autoexpand
+            new_model_func // Function to create child model
+        );
+        return tree_model;
+    }
+
+    private ListModel? new_model_func (Object obj) {
+        Object child;
+        var file = get_file_and_child_from_object (obj, out child);
+        if (file != null && file.is_folder ()) {
+            //For some reason this function gets called multiple times on same folder
+            // Creating a new model every time leads to infinite loop and crash
+            if (subdirectory_map.has_key (file.uri)) {
+                return (ListModel)(subdirectory_map.get (file.uri).model);
+            }
+
+            var new_liststore = new ListStore (typeof (Files.File));
+            var dir = Files.Directory.from_gfile (file.location);
+            var subdir = new Subdirectory (dir, new_liststore, this);
+            subdirectory_map.set (file.uri, subdir); //Keep reference to directory
+            return new_liststore;
+        } else {
+            return null;
+        }
+    }
+
+    protected override ListModel set_up_sort_model (ListModel list_model) {
+        var column_sorter = column_view.get_sorter ();
+        var row_sorter = new Gtk.TreeListRowSorter (column_sorter);
+        return new Gtk.SortListModel (list_model, column_sorter);
+    }
+
+    protected void sort_model (CompareDataFunc<Object> compare_func) {
+        //TODO Sort all rows
+        root_store.sort (compare_func);
+    }
+
+    protected override Files.File? get_file_from_selection_pos (uint pos) {
+        return (Files.File)(((Gtk.TreeListRow)(multi_selection.get_item (pos))).get_item ());
+    }
+
     public void set_model (Gtk.SelectionModel? model) {
         column_view.set_model (model);
+    }
+
+    public override void clear () {
+        clear_root ();
+        subdirectory_map.clear ();
+        //TODO Fix any memory leak
     }
 
     private ZoomLevel get_normal_zoom_level () {
@@ -241,11 +325,14 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             item.compute_point (column_view, {(float)x, (float)y}, out point_gridview);
 
             if (!item.selected) {
-                multi_selection.select_item (item.pos, true);
+                if (!item.is_dummy) {
+                    multi_selection.select_item (item.pos, true);
+                } else {
+                    multi_selection.select_item (item.pos - 1, true);
+                }
             }
 
-            get_selected_files (out selected_files);
-
+            var n_items = get_selected_files (out selected_files);
             var open_with_menu = new Menu ();
             var open_with_apps = MimeActions.get_applications_for_files (
                 selected_files, Config.APP_NAME, true, true
@@ -284,7 +371,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return column_view;
     }
 
-    public override void set_up_zoom_level () {
+    public void set_up_zoom_level () {
         Files.icon_view_settings.bind (
             "zoom-level",
             this, "zoom-level",
@@ -300,6 +387,89 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
         if (zoom_level > maximum_zoom) {
             zoom_level = maximum_zoom;
+        }
+    }
+
+    private class Subdirectory : Object {
+        public Directory directory { get; construct; }
+        public unowned ListView list_view { get; construct; }
+        public ListStore model { get; construct; }
+        public bool loaded { get; private set; default = false; }
+        public string uri { get; construct; }
+        private Files.File dummy;
+        private bool is_empty = true;
+
+        public Subdirectory (Directory dir, ListStore model, ListView view) {
+            Object (
+                directory: dir,
+                uri: dir.file.uri,
+                model: model,
+                list_view: view
+            );
+
+            dummy = Files.File.get_dummy (dir.file);
+            model.append (dummy);
+            directory.done_loading.connect (on_done_loading);
+        }
+
+        ~Subdirectory () {
+            debug ("Subdirectory destruct %s", uri);
+        }
+
+        private void on_done_loading () {
+            if (directory.displayed_files_count > 0) {
+                model.remove (0);
+                is_empty = false;
+            }
+            list_view.add_files (directory.get_files (), model);
+
+            directory.file_added.connect (on_file_added);
+            directory.file_deleted.connect (on_file_deleted);
+        }
+
+        private void on_file_added (Directory dir, Files.File? file) {
+            if (is_empty) {
+                mark_empty (false);
+            }
+
+            list_view.add_file (file, model);
+        }
+
+        private void on_file_deleted (Directory dir, Files.File? file) {
+            list_view.file_deleted (file, model);
+            if (model.get_n_items () == 0) {
+                mark_empty (true);
+            }
+        }
+
+        private void mark_empty (bool mark_empty) {
+            if (mark_empty) {
+                model.append (dummy);
+                is_empty = true;
+            } else {
+                model.remove (0);
+                is_empty = false;
+            }
+        }
+        public void expand () {
+            directory.file.set_expanded (true);
+            if (!loaded) {
+                directory.init.begin (null, () => {
+                    loaded = true;
+                });
+            }
+        }
+
+        public void collapse () {
+            directory.file.set_expanded (false);
+        }
+
+        public void clear () {
+            directory.done_loading.disconnect (on_done_loading);
+            directory.file_added.disconnect (on_file_added);
+            directory.file_deleted.disconnect (on_file_deleted);
+            directory.file.set_expanded (false);
+            model.remove_all ();
         }
     }
 }

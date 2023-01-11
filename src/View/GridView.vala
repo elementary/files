@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2022 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2023 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -28,7 +28,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     // ViewInterface properties
     protected Gtk.PopoverMenu popover_menu { get; set; }
-    protected GLib.ListStore list_store { get; set; }
+    protected GLib.ListStore root_store { get; set; }
     protected Gtk.FilterListModel filter_model { get; set; }
     protected Gtk.MultiSelection multi_selection { get; set; }
     protected Files.Preferences prefs { get; default = Files.Preferences.get_default (); }
@@ -72,31 +72,25 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     construct {
         set_layout_manager (new Gtk.BinLayout ());
-        set_up_model ();
-        bind_prefs ();
-        bind_sort ();
-
-        //Setup view widget
         var item_factory = new Gtk.SignalListItemFactory ();
-        grid_view = new Gtk.GridView (multi_selection, item_factory) {
+        grid_view = new Gtk.GridView (null, item_factory) {
             orientation = Gtk.Orientation.VERTICAL,
             enable_rubberband = true,
             focusable = true
         };
+        set_model (set_up_model ());
+        bind_prefs ();
+        bind_sort ();
         build_ui (grid_view);
         bind_popover_menu ();
         set_up_gestures ();
         set_up_drag_source ();
         set_up_drop_target ();
 
-        //Signal Handlers
-        multi_selection.selection_changed.connect (() => {
-            selection_changed ();
-        });
-
         item_factory.setup.connect ((obj) => {
             var list_item = ((Gtk.ListItem)obj);
             var file_item = new GridFileItem (this);
+            list_item.set_data<GridFileItem> ("file-item", file_item);
             fileitem_list.prepend ((FileItemInterface)file_item);
             bind_property (
                 "zoom-level",
@@ -118,17 +112,8 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             file_item.pos = list_item.position;
         });
 
-        item_factory.unbind.connect ((obj) => {
-            var list_item = ((Gtk.ListItem)obj);
-            var file_item = (GridFileItem)list_item.child;
-            // It seems items can be unbound even while visible (???) so we do not want to
-            // unbind file til new one bound.
-        });
-
         item_factory.teardown.connect ((obj) => {
-            var list_item = ((Gtk.ListItem)obj);
-            var file_item = (GridFileItem)list_item.child;
-            fileitem_list.remove ((FileItemInterface)file_item);
+            fileitem_list.remove (obj.get_data<GridFileItem> ("file-item"));
         });
 
         // Restore saved zoom level
@@ -137,6 +122,10 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         } else {
             Files.column_view_settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.DEFAULT);
         }
+    }
+
+    protected void sort_model (CompareDataFunc<Object> compare_func) {
+        root_store.sort (compare_func);
     }
 
     public void set_model (Gtk.SelectionModel? model) {
