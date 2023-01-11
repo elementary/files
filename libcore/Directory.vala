@@ -39,10 +39,10 @@ public class Files.Directory : Object {
     private const int QUERY_INFO_TIMEOUT_SEC = 20;
     private const int MOUNT_TIMEOUT_SEC = 60;
 
-    public GLib.File creation_key {get; construct;}
-    public GLib.File location {get; private set;}
-    public GLib.File? selected_file {get; private set;}
-    public Files.File file {get; private set;}
+    public GLib.File creation_key { get; construct; }
+    public GLib.File location { get; private set; }
+    public GLib.File? selected_file { get; private set; }
+    public Files.File file { get; private set construct; }
     public int icon_size = 32;
 
     public enum State {
@@ -111,6 +111,7 @@ public class Files.Directory : Object {
             creation_key: _file
         );
 
+        assert (creation_key != null);
         location = _file;
         file = Files.File.get (location);
         selected_file = null;
@@ -199,7 +200,7 @@ public class Files.Directory : Object {
                     location = parent;
                     success = yield get_file_info ();
                 } else {
-                    debug ("Parent is null for file %s", file.uri);
+                    warning ("Parent is null for file %s", file.uri);
                     success = false;
                 }
             }
@@ -1081,14 +1082,8 @@ public class Files.Directory : Object {
         /* Both local and non-local files can be cached */
         if (dir == null) {
             dir = new Directory (afile);
-            lock (directory_cache) {
-                if (directory_cache.contains (dir.creation_key)) {
-                    warning ("Duplicate key %s ", dir.creation_key.get_basename ());
-                    return directory_cache.get (dir.creation_key);
-                }
-                debug ("inserting dir for %s", dir.creation_key.get_basename ());
-                directory_cache.insert (dir.creation_key, dir);
-            }
+            // Directory gets added to cache once it is initialized?
+            //FIXME Should we add here?
         }
 
 
@@ -1139,6 +1134,7 @@ public class Files.Directory : Object {
                 warning ("Invalid directory found in cache key %s, removing", file.get_basename ());
                 if (cached_dir.file == null) {
                     warning ("cached dir file is null");
+                    warning ("creation key %s", cached_dir.creation_key.get_basename ());
                 }
                 cached_dir = null;
                 lock (directory_cache) {
@@ -1158,7 +1154,8 @@ public class Files.Directory : Object {
     }
 
     public static bool remove_dir_from_cache (Directory dir) {
-        debug ("remove dir from cache %s", dir.file.basename );
+        assert_nonnull (dir);
+        debug ("remove dir from cache %s", dir.creation_key.get_basename () );
         lock (directory_cache) {
             if (directory_cache.remove (dir.creation_key)) {
                 directory_cache.remove (dir.location);

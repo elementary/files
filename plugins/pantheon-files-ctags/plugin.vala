@@ -172,13 +172,10 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     }
 
     private async void rreal_update_file_info (Files.File file) {
+        assert_nonnull (file);
         try {
             if (!file.exists) {
                 yield daemon.delete_entry (file.uri);
-                return;
-            }
-
-            if (file.info == null || file.is_dummy) {
                 return;
             }
 
@@ -200,6 +197,11 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 /* check modified time field only on user dirs. We don't want to query again and
                  * again system directories */
                 /* Is this necessary ? */
+                if (file.info == null || file.is_dummy) {
+                    debug ("ctag null file info or dummy");
+                    return;
+                }
+
                 if (file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified &&
                     f_is_user_dir (file.directory)) {
 

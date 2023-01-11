@@ -199,6 +199,12 @@ public class Files.File : GLib.Object {
         );
     }
 
+    ~File () {
+        if (uri != "") {
+            warning ("File destruct %s", uri);
+        }
+    }
+
     construct {
         changed.connect (() => {
             if (directory != null) {
