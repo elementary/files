@@ -201,7 +201,7 @@ public class Files.File : GLib.Object {
 
     ~File () {
         if (uri != "") {
-            warning ("File destruct %s", uri);
+            debug ("File destruct %s", uri);
         }
     }
 
