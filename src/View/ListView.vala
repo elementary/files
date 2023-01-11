@@ -47,7 +47,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     // Construct properties
     public Gtk.ColumnView column_view { get; construct; }
-    // public Gtk.PopoverMenu popover_menu { get; construct; }
 
     //Interface properties
     protected unowned GLib.List<Gtk.Widget> fileitem_list { get; set; default = null; }
@@ -64,8 +63,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public bool select_after_add { get; set; default = false;}
     protected bool has_open_with { get; set; default = false;}
 
-    private Gee.HashMap<string, Files.Directory> subdirectory_map;
-    private Gee.HashMap<string, unowned ListStore> childmodel_map;
+    private Gee.HashMap<string, Subdirectory> subdirectory_map;
 
     public ListView (Files.Slot slot) {
         Object (slot: slot);
@@ -80,8 +78,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     construct {
         set_layout_manager (new Gtk.BinLayout ());
-        subdirectory_map = new Gee.HashMap<string, Files.Directory> ();
-        childmodel_map = new Gee.HashMap<string, unowned ListStore> ();
+        subdirectory_map = new Gee.HashMap<string, Subdirectory> ();
 
         column_view = new Gtk.ColumnView (null) {
             enable_rubberband = true,
@@ -225,18 +222,19 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
         var row = (Gtk.TreeListRow)obj;
         if (row.expanded) {
-            file.set_expanded (true);
             if (subdirectory_map.has_key (file.uri)) {
                 var subdir = subdirectory_map.get (file.uri);
-                var model = childmodel_map.get (file.uri);
-                if (!model.get_data<bool> ("loaded")) {
-                    subdir.init.begin (null, () => {
-                        model.set_data<bool> ("loaded", true);
-                    });
-                }
+                subdir.expand ();
             }
         } else {
-            file.set_expanded (false);
+            // Need to unexpand  this and all child folders (like Nautilus)
+            foreach (var key in subdirectory_map.keys) {
+                if (key.has_prefix (file.uri)) {
+                    subdirectory_map.get (key).collapse ();
+                }
+            }
+
+
         }
     }
 
@@ -257,30 +255,15 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         if (file != null && file.is_folder ()) {
             //For some reason this function gets called multiple times on same folder
             // Creating a new model every time leads to infinite loop and crash
-            if (childmodel_map.has_key (file.uri)) {
-                return (ListModel)(childmodel_map.get (file.uri));
+            if (subdirectory_map.has_key (file.uri)) {
+                return (ListModel)(subdirectory_map.get (file.uri).model);
             }
 
             var new_liststore = new ListStore (typeof (Files.File));
-            new_liststore.set_data<bool> ("loaded", false);
-            childmodel_map.set (file.uri, new_liststore);
             var dir = Files.Directory.from_gfile (file.location);
-            subdirectory_map.set (dir.file.uri, dir); //Keep reference to directory
+            var subdir = new Subdirectory (dir, new_liststore, this);
+            subdirectory_map.set (file.uri, subdir); //Keep reference to directory
             new_liststore.append (Files.File.get_dummy (file));
-            dir.done_loading.connect (() => {
-                if (dir.displayed_files_count > 0) {
-                    new_liststore.remove (0);
-                }
-                add_files (dir.get_files (), new_liststore);
-                dir.file_added.connect ((file) => {
-                    add_file (file, new_liststore);
-                });
-                dir.file_deleted.connect ((file) => {
-                    file_deleted (file, new_liststore);
-                });
-                //TODO Disconnect signals when not needed (unload, refresh)
-            });
-
             return new_liststore;
         } else {
             return null;
@@ -308,12 +291,8 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     public override void clear () {
         clear_root ();
-        foreach (var store in childmodel_map.values) {
-            store.remove_all (); //Is this necessary to avoid memory leak??
-        }
-        childmodel_map.clear ();
         foreach (var dir in subdirectory_map.values) {
-            dir.file.set_expanded (false);
+            dir.clear ();
         }
         subdirectory_map.clear ();
     }
@@ -410,6 +389,64 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
         if (zoom_level > maximum_zoom) {
             zoom_level = maximum_zoom;
+        }
+    }
+
+    private class Subdirectory : Object {
+        public Directory directory { get; construct; }
+        public ListView list_view { get; construct; }
+        public ListStore model { get; construct; }
+        public bool loaded { get; private set; default = false; }
+
+        public Subdirectory (Directory dir, ListStore model, ListView view) {
+            Object (
+                directory: dir,
+                model: model,
+                list_view: view
+            );
+
+            directory.done_loading.connect (on_done_loading);
+        }
+
+        private void on_done_loading () {
+            if (directory.displayed_files_count > 0) {
+                warning ("done loading remove 0 %s", directory.file.uri);
+                model.remove (0);
+            }
+            list_view.add_files (directory.get_files (), model);
+
+            directory.file_added.connect (on_file_added);
+            directory.file_deleted.connect (on_file_deleted);
+        }
+
+        private void on_file_added (Directory dir, Files.File? file) {
+            list_view.add_file (file, model);
+        }
+
+        private void on_file_deleted (Directory dir, Files.File? file) {
+            list_view.file_deleted (file, model);
+        }
+
+        public void expand () {
+            directory.file.set_expanded (true);
+            if (!loaded) {
+                directory.init.begin (null, () => {
+                    loaded = true;
+                });
+            }
+        }
+
+        public void collapse () {
+            directory.file.set_expanded (false);
+        }
+
+        public void clear () {
+            directory.done_loading.disconnect (on_done_loading);
+            directory.file_added.disconnect (on_file_added);
+            directory.file_deleted.disconnect (on_file_deleted);
+            directory.file.set_expanded (false);
+            model.remove_all ();
+
         }
     }
 }

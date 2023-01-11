@@ -87,7 +87,7 @@ public class Files.File : GLib.Object {
             return expanded_count > 0;
         }
     }
-    private uint expanded_count = 0;
+    private int expanded_count = 0;
     public bool drop_pending { get; set; default = false; }
     [CCode (cname = "can_unmount")]
     public bool _can_unmount;
@@ -230,12 +230,13 @@ public class Files.File : GLib.Object {
             if (expanded_count == 1) {
 
             }
-        } else {
+        } else if (expanded_count > 0) {
             expanded_count--;
-            assert (expanded_count >= 0);
             if (expanded_count == 0) {
                 update_gicon_and_paintable ();
             }
+        } else {
+            return;
         }
 
         if (expanded && expanded_count == 1 || !expanded && expanded_count == 0) {
@@ -251,6 +252,7 @@ public class Files.File : GLib.Object {
                 icon_changed ();
             }
         }
+        warning ("expanded_count = %u", expanded_count);
     }
 
     public bool is_folder () {

@@ -539,7 +539,6 @@ public interface Files.ViewInterface : Gtk.Widget {
     protected virtual Gtk.SelectionModel set_up_selection_model (ListModel list_model) {
         multi_selection = new Gtk.MultiSelection (list_model);
         multi_selection.selection_changed.connect ((pos, n_items) => {
-            warning ("pos %u, n_items %u", pos, n_items);
             selection_changed ();
         });
         return multi_selection;
