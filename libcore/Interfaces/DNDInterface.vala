@@ -200,6 +200,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
         });
 
         drop_target.on_drop.connect ((val, x, y) => {
+            cancel_auto_open ();
             if (dropped_files != null &&
                 current_drop_uri != null &&
                 Files.DndHandler.valid_actions > 0) {
