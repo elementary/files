@@ -258,7 +258,6 @@ public class Files.File : GLib.Object {
                 icon_changed ();
             }
         }
-        warning ("expanded_count = %u", expanded_count);
     }
 
     public bool is_folder () {

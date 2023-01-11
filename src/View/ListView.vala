@@ -264,7 +264,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             var dir = Files.Directory.from_gfile (file.location);
             var subdir = new Subdirectory (dir, new_liststore, this);
             subdirectory_map.set (file.uri, subdir); //Keep reference to directory
-            new_liststore.append (Files.File.get_dummy (file));
             return new_liststore;
         } else {
             return null;
@@ -397,6 +396,8 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         public ListStore model { get; construct; }
         public bool loaded { get; private set; default = false; }
         public string uri { get; construct; }
+        private Files.File dummy;
+        private bool is_empty = true;
 
         public Subdirectory (Directory dir, ListStore model, ListView view) {
             Object (
@@ -406,6 +407,8 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 list_view: view
             );
 
+            dummy = Files.File.get_dummy (dir.file);
+            model.append (dummy);
             directory.done_loading.connect (on_done_loading);
         }
 
@@ -415,8 +418,8 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
         private void on_done_loading () {
             if (directory.displayed_files_count > 0) {
-                warning ("done loading remove 0 %s", directory.file.uri);
                 model.remove (0);
+                is_empty = false;
             }
             list_view.add_files (directory.get_files (), model);
 
@@ -425,13 +428,29 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
 
         private void on_file_added (Directory dir, Files.File? file) {
+            if (is_empty) {
+                mark_empty (false);
+            }
+
             list_view.add_file (file, model);
         }
 
         private void on_file_deleted (Directory dir, Files.File? file) {
             list_view.file_deleted (file, model);
+            if (model.get_n_items () == 0) {
+                mark_empty (true);
+            }
         }
 
+        private void mark_empty (bool mark_empty) {
+            if (mark_empty) {
+                model.append (dummy);
+                is_empty = true;
+            } else {
+                model.remove (0);
+                is_empty = false;
+            }
+        }
         public void expand () {
             directory.file.set_expanded (true);
             if (!loaded) {
