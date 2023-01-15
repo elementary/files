@@ -132,6 +132,30 @@ public interface Files.ViewInterface : Gtk.Widget {
 
             return false;
         });
+
+        var scroll_controller = new Gtk.EventControllerScroll (
+            Gtk.EventControllerScrollFlags.VERTICAL |
+            Gtk.EventControllerScrollFlags.DISCRETE) {
+            propagation_phase = Gtk.PropagationPhase.CAPTURE
+        };
+
+        // Have to add above scroll window else events captured.
+        this.add_controller (scroll_controller);
+        scroll_controller.scroll.connect ((x, y) => {
+            var key_mods = scroll_controller.get_current_event_state () & Gdk.MODIFIER_MASK;
+            if (key_mods == Gdk.ModifierType.CONTROL_MASK) {
+                // Zoom and handle
+                if (y < 0) {
+                    zoom_in ();
+                } else {
+                    zoom_out ();
+                }
+
+                return true;
+            }
+            // Pass to scrolled window
+            return false;
+        });
     }
 
     protected void bind_prefs () {
