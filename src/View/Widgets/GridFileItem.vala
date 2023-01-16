@@ -88,6 +88,8 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             fileitem_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         );
         if (is_multicolumn) {
+            hexpand = true;
+            vexpand = true;
             file_icon = new Gtk.Image () {
                 margin_end = 8,
                 margin_start = 8,
