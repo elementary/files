@@ -30,7 +30,6 @@ namespace Files {
 public class Files.MimeActions {
 
     public static AppInfo? get_default_application_for_file (Files.File file) {
-
         AppInfo app = file.get_default_handler ();
 
         if (app == null) {

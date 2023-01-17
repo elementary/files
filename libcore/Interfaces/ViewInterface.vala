@@ -52,7 +52,6 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract bool is_renaming { get; set; }
     public abstract bool rename_after_add { get; set; }
     public abstract bool select_after_add { get; set; }
-    protected abstract bool has_open_with { get; set; default = false;}
 
     public signal void selection_changed (); // No obvious way to avoid this signal
 
@@ -195,13 +194,6 @@ public interface Files.ViewInterface : Gtk.Widget {
             //Need Idle else actions not triggered
             Idle.add (() => {
                 grab_focus (); //FIXME This should happen automatically?
-                //Open with submenu must always be at pos 0
-                //This is awkward but can only amend open-with-menu by removing and re-adding.
-                if (has_open_with) {
-                    item_menu.remove (0);
-                    has_open_with = false;
-                }
-                // This removes any custom widgets (?)
                 popover_menu.menu_model = null;
                 return Source.REMOVE;
             });

@@ -57,7 +57,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     // Simpler than using signals and delegates to call actions after file has been added
     public bool rename_after_add { get; set; default = false;}
     public bool select_after_add { get; set; default = false;}
-    protected bool has_open_with { get; set; default = false;}
 
     public GridView (Files.Slot slot) {
         Object (slot: slot);
@@ -150,17 +149,19 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         return grid_view;
     }
 
-    //Cannot move to interface because of plugins and Config.APP_NAME
+    //Cannot move to interface because of plugins and Config.APP_NAME#
+    //TODO DRY where possible
     public void show_context_menu (FileItemInterface? item, double x, double y) {
+        // Base context menus are constructed by template
         // If no selected item show background context menu
         double menu_x, menu_y;
-        MenuModel menu;
+        var menu = new Menu ();
         List<Files.File> selected_files = null;
 
         if (item == null) {
             menu_x = x;
             menu_y = y;
-            menu = background_menu;
+            menu.append_section (null, background_menu);
         } else {
             Graphene.Point point_item, point_gridview;
             item.compute_point (grid_view, {(float)x, (float)y}, out point_gridview);
@@ -184,14 +185,22 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 );
             }
 
-            assert (!has_open_with); //Must not add twice
-            // Base item menu is constructed by template
-            item_menu.prepend_submenu (_("Open With"), open_with_menu);
-            has_open_with = true;
+            menu.prepend_submenu (_("Open With"), open_with_menu);
+
+            var default_app = MimeActions.get_default_application_for_files (selected_files);
+            if (default_app != null) {
+                menu.prepend (
+                    ///TRANSLATORS "%s" is a placeholder for the name of an application
+                    _("Open in %s").printf (default_app.get_name ()),
+                    Action.print_detailed_name (
+                        "win.open-with", new Variant.string (default_app.get_commandline ())
+                    )
+                );
+            }
 
             menu_x = (double)point_gridview.x;
             menu_y = (double)point_gridview.y;
-            menu = item_menu;
+            menu.append_section (null, item_menu);
         }
 
         popover_menu.menu_model = menu;

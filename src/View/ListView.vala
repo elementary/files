@@ -61,7 +61,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     // Simpler than using signals and delegates to call actions after file has been added
     public bool rename_after_add { get; set; default = false;}
     public bool select_after_add { get; set; default = false;}
-    protected bool has_open_with { get; set; default = false;}
 
     private Gee.HashMap<string, Subdirectory> subdirectory_map;
 
@@ -313,13 +312,13 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     public void show_context_menu (FileItemInterface? item, double x, double y) {
         // If no selected item show background context menu
         double menu_x, menu_y;
-        MenuModel menu;
+        var menu = new Menu ();
         List<Files.File> selected_files = null;
 
         if (item == null) {
             menu_x = x;
             menu_y = y;
-            menu = background_menu;
+            menu.append_section (null, background_menu);
         } else {
             Graphene.Point point_item, point_gridview;
             item.compute_point (column_view, {(float)x, (float)y}, out point_gridview);
@@ -337,6 +336,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             var open_with_apps = MimeActions.get_applications_for_files (
                 selected_files, Config.APP_NAME, true, true
             );
+
             foreach (var appinfo in open_with_apps) {
                 open_with_menu.append (
                     appinfo.get_name (),
@@ -346,14 +346,24 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 );
             }
 
-            assert (!has_open_with); //Must not add twice
             // Base item menu is constructed by template
-            item_menu.prepend_submenu (_("Open With"), open_with_menu);
-            has_open_with = true;
+            menu.prepend_submenu (_("Open With"), open_with_menu);
+
+            var default_app = MimeActions.get_default_application_for_files (selected_files);
+            if (default_app != null) {
+warning ("got default app");
+                menu.prepend (
+                    ///TRANSLATORS "%s" is a placeholder for the name of an application
+                    _("Open in %s").printf (default_app.get_name ()),
+                    Action.print_detailed_name (
+                        "win.open-with", new Variant.string (default_app.get_commandline ())
+                    )
+                );
+            }
 
             menu_x = (double)point_gridview.x;
             menu_y = (double)point_gridview.y;
-            menu = item_menu;
+            menu.append_section (null, item_menu);
         }
 
         popover_menu.menu_model = menu;
