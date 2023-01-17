@@ -100,7 +100,6 @@ public class Files.MimeActions {
 
         if (uri_scheme != null) {
             var uri_handler = AppInfo.get_default_for_uri_scheme (uri_scheme);
-
             if (uri_handler != null) {
                 result.prepend (uri_handler);
             }

@@ -43,6 +43,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     protected abstract Gtk.ScrolledWindow scrolled_window { get; set; }
     protected abstract Gtk.PopoverMenu popover_menu { get; set; }
     protected abstract unowned GLib.List<Gtk.Widget> fileitem_list { get; set; default = null; }
+
     public abstract ZoomLevel zoom_level { get; set; }
     public abstract ZoomLevel minimum_zoom { get; set; }
     public abstract ZoomLevel maximum_zoom { get; set; }
@@ -520,6 +521,65 @@ public interface Files.ViewInterface : Gtk.Widget {
         }
 
         show_context_menu (null, 0.0, 0.0);
+    }
+
+    protected List<Files.File> build_popover_menu (
+        // Base context menus are constructed by template
+        FileItemInterface? item, double x, double y, string app_name) {
+        double menu_x, menu_y;
+        var menu = new Menu ();
+        List<Files.File> selected_files = null;
+
+        // If no selected item show background context menu
+        if (item == null) {
+            menu_x = x;
+            menu_y = y;
+            menu.append_section (null, background_menu);
+        } else {
+            Graphene.Point point_gridview;
+            item.compute_point (get_view_widget (), {(float)x, (float)y}, out point_gridview);
+
+            if (!item.selected) {
+                multi_selection.select_item (item.pos, true);
+            }
+
+            get_selected_files (out selected_files);
+
+            var open_with_menu = new Menu ();
+            var open_with_apps = MimeActions.get_applications_for_files (
+                selected_files, app_name, true, true
+            );
+            foreach (var appinfo in open_with_apps) {
+                open_with_menu.append (
+                    appinfo.get_name (),
+                    Action.print_detailed_name (
+                        "win.open-with", new Variant.string (appinfo.get_commandline ())
+                    )
+                );
+            }
+
+            menu.prepend_submenu (_("Open With"), open_with_menu);
+
+            var default_app = MimeActions.get_default_application_for_files (selected_files);
+            if (default_app != null) {
+                menu.prepend (
+                    ///TRANSLATORS "%s" is a placeholder for the name of an application
+                    _("Open in %s").printf (default_app.get_name ()),
+                    Action.print_detailed_name (
+                        "win.open-with", new Variant.string (default_app.get_commandline ())
+                    )
+                );
+            }
+
+            menu_x = (double)point_gridview.x;
+            menu_y = (double)point_gridview.y;
+            menu.append_section (null, item_menu);
+        }
+
+        popover_menu.menu_model = menu;
+        popover_menu.set_pointing_to ({(int)x, (int)y, 1, 1});
+
+        return (owned)selected_files;
     }
 
     protected Gtk.SelectionModel set_up_model () {
