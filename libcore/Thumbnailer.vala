@@ -381,7 +381,9 @@ namespace Files {
             var goffile = Files.File.get_by_uri (uri);
             if (goffile != null) {
                 goffile.thumbstate = state;
-                goffile.update_thumbnail_path ();
+                goffile.update_gicon_and_paintable ();
+                // Signal fileitem widgets to update
+                goffile.icon_changed ();
             }
         }
     }

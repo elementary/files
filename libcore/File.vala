@@ -105,7 +105,7 @@ public class Files.File : GLib.Object {
     public bool is_connected = true;
     public string? utf8_collation_key = null;
 
-    public signal void icon_changed ();
+    public signal void icon_changed (); // Emitted after gicon and/or paintable changed
 
     public static Files.File get_dummy (Files.File parent) {
         var file = new Files.File (dummy_location, null) {
@@ -474,28 +474,28 @@ public class Files.File : GLib.Object {
                     thumbstate = Files.File.ThumbState.LOADED;
                     return true;
                 } else {
-                    //FIXME Stop spam warning because of no fallback
+                    // Occurs for some types where the thumbnailer returns "READY"
+                    // but no thumbnail was in fact created (e.g. .docx)
                     debug ("READY but could not get paintable from cache");
                     thumbstate = Files.File.ThumbState.NONE;
+                    thumb_path = null;
+                    update_icon (); // Revert to fallback icon
                 }
             } else {
-                critical ("READY but no thumbnail path");
+                debug ("READY but no thumbnail path");
             }
-        }
-
-        if (thumbstate == ThumbState.LOADING) {
+        } else if (thumbstate == ThumbState.LOADING) {
             gicon = new ThemedIcon ("image-loading");
             paintable = null;
             return true;
-        } else if (thumbstate == ThumbState.UNKNOWN) {
-            gicon = new ThemedIcon ("image-missing");
         }
 
         if (custom_icon_name != null) {
             if (GLib.Path.is_absolute (custom_icon_name)) {
                 paintable = Files.IconInfo.lookup_paintable_from_path (custom_icon_name);
                 if (paintable == null) {
-                    gicon = new ThemedIcon ("image-missing");
+                    custom_icon_name = null;
+                    update_icon (); // Revert to fallback
                 }
             } else {
                 gicon = new ThemedIcon (custom_icon_name);
@@ -547,10 +547,6 @@ public class Files.File : GLib.Object {
                     info.get_attribute_string ("metadata::marlin-sort-reversed")
                 );
             }
-        }
-
-        if (info.has_attribute (GLib.FileAttribute.STANDARD_ICON)) {
-            gicon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
         }
 
         /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
@@ -649,51 +645,7 @@ public class Files.File : GLib.Object {
             formated_modified = _("Inaccessible");
         }
 
-        /* icon */
-        if (is_directory) {
-            try {
-                var path = Filename.from_uri (uri);
-                if (path == Environment.get_home_dir ()) {
-                    gicon = new ThemedIcon ("user-home");
-                } else if (path == Environment.get_user_special_dir (UserDirectory.DESKTOP)) {
-                    gicon = new ThemedIcon ("user-desktop");
-                } else if (path == Environment.get_user_special_dir (UserDirectory.DOCUMENTS)) {
-                    gicon = new ThemedIcon ("folder-documents");
-                } else if (path == Environment.get_user_special_dir (UserDirectory.DOWNLOAD)) {
-                    gicon = new ThemedIcon ("folder-download");
-                } else if (path == Environment.get_user_special_dir (UserDirectory.MUSIC)) {
-                    gicon = new ThemedIcon ("folder-music");
-                } else if (path == Environment.get_user_special_dir (UserDirectory.PICTURES)) {
-                    gicon = new ThemedIcon ("folder-pictures");
-                } else if (path == Environment.get_user_special_dir (UserDirectory.PUBLIC_SHARE)) {
-                    gicon = new ThemedIcon ("folder-publicshare");
-                } else if (path == Environment.get_user_special_dir (UserDirectory.TEMPLATES)) {
-                    gicon = new ThemedIcon ("folder-templates");
-                } else if (path == Environment.get_user_special_dir (UserDirectory.VIDEOS)) {
-                    gicon = new ThemedIcon ("folder-videos");
-                } else if (!location.is_native () && is_remote_uri_scheme ()) {
-                    gicon = new ThemedIcon ("folder-remote");
-                } else {
-                    gicon = new ThemedIcon ("folder");
-                }
-            } catch (Error e) {
-                debug (e.message);
-                gicon = new ThemedIcon ("folder");
-            }
-        } else if (info.get_file_type () == GLib.FileType.MOUNTABLE) {
-            gicon = new ThemedIcon.with_default_fallbacks ("folder-remote");
-        } else {
-            unowned string? ftype = get_ftype ();
-            if (ftype != null && gicon == null) {
-                gicon = GLib.ContentType.get_icon (ftype);
-                // warning ("icon from content is %s", gicon.to_string ());
-                if (ftype == "inode/symlink") {
-                    custom_display_name = _("Broken link");
-                    gicon = new ThemedIcon ("computer-fail");
-                    //TODO Need better icon for a broken link
-                }
-            }
-        }
+        update_icon ();
 
         utf8_collation_key = get_display_name ().collate_key_for_filename ();
         /* mark the thumb flags as state none, we'll load the thumbs once the directory
@@ -760,6 +712,57 @@ public class Files.File : GLib.Object {
                 add_emblem ("emblem-readonly");
             } else {
                 add_emblem ("emblem-unreadable");
+            }
+        }
+    }
+
+    private void update_icon () {
+        if (info.has_attribute (GLib.FileAttribute.STANDARD_ICON)) {
+            gicon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
+        }
+
+        if (is_directory) {
+            try {
+                var path = Filename.from_uri (uri);
+                if (path == Environment.get_home_dir ()) {
+                    gicon = new ThemedIcon ("user-home");
+                } else if (path == Environment.get_user_special_dir (UserDirectory.DESKTOP)) {
+                    gicon = new ThemedIcon ("user-desktop");
+                } else if (path == Environment.get_user_special_dir (UserDirectory.DOCUMENTS)) {
+                    gicon = new ThemedIcon ("folder-documents");
+                } else if (path == Environment.get_user_special_dir (UserDirectory.DOWNLOAD)) {
+                    gicon = new ThemedIcon ("folder-download");
+                } else if (path == Environment.get_user_special_dir (UserDirectory.MUSIC)) {
+                    gicon = new ThemedIcon ("folder-music");
+                } else if (path == Environment.get_user_special_dir (UserDirectory.PICTURES)) {
+                    gicon = new ThemedIcon ("folder-pictures");
+                } else if (path == Environment.get_user_special_dir (UserDirectory.PUBLIC_SHARE)) {
+                    gicon = new ThemedIcon ("folder-publicshare");
+                } else if (path == Environment.get_user_special_dir (UserDirectory.TEMPLATES)) {
+                    gicon = new ThemedIcon ("folder-templates");
+                } else if (path == Environment.get_user_special_dir (UserDirectory.VIDEOS)) {
+                    gicon = new ThemedIcon ("folder-videos");
+                } else if (!location.is_native () && is_remote_uri_scheme ()) {
+                    gicon = new ThemedIcon ("folder-remote");
+                } else {
+                    gicon = new ThemedIcon ("folder");
+                }
+            } catch (Error e) {
+                debug (e.message);
+                gicon = new ThemedIcon ("folder");
+            }
+        } else if (info.get_file_type () == GLib.FileType.MOUNTABLE) {
+            gicon = new ThemedIcon.with_default_fallbacks ("folder-remote");
+        } else {
+            unowned string? ftype = get_ftype ();
+            if (ftype != null && gicon == null) {
+                gicon = GLib.ContentType.get_icon (ftype);
+                // warning ("icon from content is %s", gicon.to_string ());
+                if (ftype == "inode/symlink") {
+                    custom_display_name = _("Broken link");
+                    gicon = new ThemedIcon ("computer-fail");
+                    //TODO Need better icon for a broken link
+                }
             }
         }
     }

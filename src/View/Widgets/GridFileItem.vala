@@ -294,7 +294,6 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             return;
         }
 
-        file.update_gicon_and_paintable ();
         if (file.paintable != null) {
             file_icon.set_from_paintable (file.paintable);
         } else if (file.gicon != null) {
