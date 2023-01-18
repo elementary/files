@@ -17,7 +17,6 @@ pantheon_files_exec = executable (
     'Services/ProgressUIHandler.vala',
     'Services/ZeitgeistManager.vala',
     'Services/Browser.vala',
-    'Utils/KeyUtils.vala',
 
     'View/DirectoryNotFound.vala',
     'View/GridView.vala',
