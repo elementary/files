@@ -554,11 +554,10 @@ public interface Files.ViewInterface : Gtk.Widget {
                 );
             }
 
-            ///TRANSLATORS Label for submenu containing a list of applications
-            menu.prepend_submenu (_("Open With"), open_with_menu);
-
             var default_app = MimeActions.get_default_application_for_files (selected_files);
             if (default_app != null) {
+                ///TRANSLATORS Label for submenu containing a list of applications
+                menu.prepend_submenu (_("Open With"), open_with_menu);
                 menu.prepend (
                     ///TRANSLATORS "%s" is a placeholder for the name of an application
                     _("Open with %s").printf (default_app.get_name ()),
