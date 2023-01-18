@@ -24,10 +24,6 @@
 // If this were no longer to be the case then several methods would have to be virtualised and
 // reimplemented in the actual view which does not use a dynamic widget.
 public interface Files.ViewInterface : Gtk.Widget {
-    // Properties defined in template.
-    protected abstract Menu background_menu { get; set; }
-    protected abstract Menu item_menu { get; set; }
-
     public abstract SlotInterface slot { get; set construct; }
     public virtual Files.File? root_file {
         get {
@@ -68,9 +64,6 @@ public interface Files.ViewInterface : Gtk.Widget {
 
     protected virtual void build_ui (Gtk.Widget view_widget) {
         var builder = new Gtk.Builder.from_resource ("/io/elementary/files/View.ui");
-        item_menu = (Menu)(builder.get_object ("item_model"));
-        background_menu = (Menu)(builder.get_object ("background_model"));
-        item_menu.set_data<List<AppInfo>> ("open-with-apps", new List<AppInfo> ());
         scrolled_window = (Gtk.ScrolledWindow)(builder.get_object ("scrolled-window"));
         scrolled_window.child = view_widget;
         scrolled_window.set_parent (this);
@@ -189,17 +182,6 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     protected abstract void sort_model (CompareDataFunc<Object> compare_func);
-
-    protected void bind_popover_menu () {
-        popover_menu.closed.connect_after (() => {
-            //Need Idle else actions not triggered
-            Idle.add (() => {
-                grab_focus (); //FIXME This should happen automatically?
-                popover_menu.menu_model = null;
-                return Source.REMOVE;
-            });
-        });
-    }
 
     public void grab_focus () {
         if (get_view_widget () != null) {
@@ -523,19 +505,33 @@ public interface Files.ViewInterface : Gtk.Widget {
         show_context_menu (null, 0.0, 0.0);
     }
 
+    protected void bind_popover_menu () {
+        popover_menu.closed.connect_after (() => {
+            //Need Idle else actions in menu are not triggered
+            Idle.add (() => {
+                grab_focus ();
+                // Destroys old menu as this is the only reference
+                popover_menu.menu_model = null;
+                return Source.REMOVE;
+            });
+        });
+    }
+
     protected List<Files.File> build_popover_menu (
-        // Base context menus are constructed by template
         FileItemInterface? item, double x, double y, string app_name) {
         double menu_x, menu_y;
-        var menu = new Menu ();
+        Menu menu;
         List<Files.File> selected_files = null;
-
+        // Base context menus (fixed actions) are constructed by .ui template
+        // Create new on the fly to avoid having to remove variable items
+        var builder = new Gtk.Builder.from_resource ("/io/elementary/files/View.ui");
         // If no selected item show background context menu
         if (item == null) {
             menu_x = x;
             menu_y = y;
-            menu.append_section (null, background_menu);
+            menu = (Menu)(builder.get_object ("background_model"));
         } else {
+            menu = (Menu)(builder.get_object ("item_model"));
             Graphene.Point point_gridview;
             item.compute_point (get_view_widget (), {(float)x, (float)y}, out point_gridview);
 
@@ -558,13 +554,14 @@ public interface Files.ViewInterface : Gtk.Widget {
                 );
             }
 
+            ///TRANSLATORS Label for submenu containing a list of applications
             menu.prepend_submenu (_("Open With"), open_with_menu);
 
             var default_app = MimeActions.get_default_application_for_files (selected_files);
             if (default_app != null) {
                 menu.prepend (
                     ///TRANSLATORS "%s" is a placeholder for the name of an application
-                    _("Open in %s").printf (default_app.get_name ()),
+                    _("Open with %s").printf (default_app.get_name ()),
                     Action.print_detailed_name (
                         "win.open-with", new Variant.string (default_app.get_commandline ())
                     )
@@ -573,7 +570,6 @@ public interface Files.ViewInterface : Gtk.Widget {
 
             menu_x = (double)point_gridview.x;
             menu_y = (double)point_gridview.y;
-            menu.append_section (null, item_menu);
         }
 
         popover_menu.menu_model = menu;

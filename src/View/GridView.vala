@@ -21,9 +21,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         set_layout_manager_type (typeof (Gtk.BinLayout));
     }
 
-    // Properties defined in View.ui template
-    protected Menu background_menu { get; set; }
-    protected Menu item_menu { get; set; }
     protected Gtk.ScrolledWindow scrolled_window { get; set; }
 
     // ViewInterface properties
