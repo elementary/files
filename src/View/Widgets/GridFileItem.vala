@@ -294,7 +294,12 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
             return;
         }
 
-        if (file.paintable != null) {
+        // If file is local and not hiding local, or file is remote and showing remote,
+        // display a thumbnail have one.
+        if (file.paintable != null &&
+            ((!prefs.hide_local_thumbnails && view.slot.directory.is_local) ||
+            (prefs.show_remote_thumbnails && !view.slot.directory.is_local))) {
+
             file_icon.set_from_paintable (file.paintable);
         } else if (file.gicon != null) {
             file_icon.set_from_gicon (file.gicon);

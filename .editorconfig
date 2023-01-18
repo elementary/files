@@ -11,6 +11,6 @@ insert_final_newline = true
 max_line_length = 80
 tab_width = 4
 
-[{*.xml,*.xml.in,*.yml}]
+[{*.xml,*.ui,*.xml.in,*.yml}]
 tab_width = 2
 

@@ -160,12 +160,12 @@ public interface Files.ViewInterface : Gtk.Widget {
             sort_model (file_compare_func);
         });
         prefs.notify["show-remote-thumbnails"].connect (() => {
-            if (prefs.show_remote_thumbnails) {
+            if (!slot.directory.is_local) {
                 refresh_thumbnails ();
             }
         });
         prefs.notify["hide-local-thumbnails"].connect (() => {
-            if (!prefs.hide_local_thumbnails) {
+            if (slot.directory.is_local) {
                 refresh_thumbnails ();
             }
         });
@@ -509,7 +509,6 @@ public interface Files.ViewInterface : Gtk.Widget {
         popover_menu.closed.connect_after (() => {
             //Need Idle else actions in menu are not triggered
             Idle.add (() => {
-                grab_focus ();
                 // Destroys old menu as this is the only reference
                 popover_menu.menu_model = null;
                 return Source.REMOVE;
