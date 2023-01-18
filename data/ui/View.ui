@@ -106,54 +106,53 @@
       </item>
     </section>
     <section>
+      <item>
+        <attribute name="label" translatable="yes">Sort Reversed</attribute>
+        <attribute name="action">win.sort-reversed</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Sort Directories First</attribute>
+        <attribute name="action">win.sort-directories-first</attribute>
+      </item>
+      <submenu>
+        <attribute name="label" translatable="yes">Sort By</attribute>
+          <item>
+            <attribute name="label" translatable="yes">Name</attribute>
+            <attribute name="action">win.sort-type</attribute>
+            <attribute name="target">FILENAME</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">Size</attribute>
+            <attribute name="action">win.sort-type</attribute>
+            <attribute name="target">SIZE</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">Type</attribute>
+            <attribute name="action">win.sort-type</attribute>
+            <attribute name="target">TYPE</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">Modified</attribute>
+            <attribute name="action">win.sort-type</attribute>
+            <attribute name="target">MODIFIED</attribute>
+          </item>
+      </submenu>
+    </section>
+    <section>
       <submenu>
         <attribute name="label" translatable="yes">Preferences</attribute>
         <item>
-          <attribute name="label" translatable="yes">Sort Reversed</attribute>
-          <attribute name="action">win.sort-reversed</attribute>
+          <attribute name="label" translatable="yes">Select Folders with Single Click</attribute>
+          <attribute name="action">win.singleclick-select</attribute>
         </item>
         <item>
-          <attribute name="label" translatable="yes">Sort Directories First</attribute>
-          <attribute name="action">win.sort-directories-first</attribute>
+          <attribute name="label" translatable="yes">Hide Local Thumbnails</attribute>
+          <attribute name="action">win.hide-local-thumbnails</attribute>
         </item>
-        <submenu>
-          <attribute name="label" translatable="yes">Sort By</attribute>
-          <!--<section>-->
-            <item>
-              <attribute name="label" translatable="yes">Name</attribute>
-              <attribute name="action">win.sort-type</attribute>
-              <attribute name="target">FILENAME</attribute>
-            </item>
-            <item>
-              <attribute name="label" translatable="yes">Size</attribute>
-              <attribute name="action">win.sort-type</attribute>
-              <attribute name="target">SIZE</attribute>
-            </item>
-            <item>
-              <attribute name="label" translatable="yes">Type</attribute>
-              <attribute name="action">win.sort-type</attribute>
-              <attribute name="target">TYPE</attribute>
-            </item>
-            <item>
-              <attribute name="label" translatable="yes">Modified</attribute>
-              <attribute name="action">win.sort-type</attribute>
-              <attribute name="target">MODIFIED</attribute>
-            </item>
-        </submenu>
-        <section>
-          <item>
-            <attribute name="label" translatable="yes">Select Folders with Single Click</attribute>
-            <attribute name="action">win.singleclick-select</attribute>
-          </item>
-          <item>
-            <attribute name="label" translatable="yes">Hide Local Thumbnails</attribute>
-            <attribute name="action">win.hide-local-thumbnails</attribute>
-          </item>
-          <item>
-            <attribute name="label" translatable="yes">Show Remote Thumbnails</attribute>
-            <attribute name="action">win.show-remote-thumbnails</attribute>
-          </item>
-        </section>
+        <item>
+          <attribute name="label" translatable="yes">Show Remote Thumbnails</attribute>
+          <attribute name="action">win.show-remote-thumbnails</attribute>
+        </item>
       </submenu>
     </section>
   </menu>
