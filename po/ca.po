@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-26 16:31+0000\n"
-"PO-Revision-Date: 2022-10-03 21:44+0000\n"
+"PO-Revision-Date: 2023-01-28 20:25+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -1779,7 +1779,7 @@ msgstr "Amaga les miniatures"
 
 #: src/View/AbstractDirectoryView.vala:2249
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "Clic doble per navegar"
 
 #: src/View/AbstractDirectoryView.vala:2347
 msgid "Name"
