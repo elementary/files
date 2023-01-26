@@ -2173,7 +2173,10 @@ namespace Files {
                         // Do not display 'Paste' menuitem if there is a selected folder ('Paste into' enabled)
                         if (common_actions.get_action_enabled ("paste-into") &&
                             clipboard != null && clipboard.can_paste) {
-                            var paste_into_menuitem = new Gtk.MenuItem ();
+                            var paste_into_menuitem = new Gtk.MenuItem () {
+                                action_name = "common.paste-into"
+                            };
+
                             if (clipboard.files_linked) {
                                 paste_into_menuitem.add (new Granite.AccelLabel (
                                     _("Paste Link into Folder"),

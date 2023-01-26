@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-14 16:32+0000\n"
-"PO-Revision-Date: 2022-11-01 23:47+0000\n"
+"POT-Creation-Date: 2022-12-14 09:55+0000\n"
+"PO-Revision-Date: 2023-01-15 08:25+0000\n"
 "Last-Translator: lenemter <lenemter@gmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/"
-">\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -979,7 +979,7 @@ msgstr "Исправления сборки"
 
 #: data/io.elementary.files.appdata.xml.in.in:490
 msgid "Plugin build fixes"
-msgstr "Исправления сборки плагинов"
+msgstr "Исправления сборки расширений"
 
 #: data/io.elementary.files.appdata.xml.in.in:498
 msgid "Fix Ctrl+Tab behavior"
@@ -1016,7 +1016,8 @@ msgstr "Больше нельзя активировать несколько ф
 
 #: data/io.elementary.files.appdata.xml.in.in:512
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
-msgstr "Улучшена работа переключения между элементами"
+msgstr ""
+"Используйте «Tab» для переключения фокуса клавиатуры «Вид» и «Боковая панель»"
 
 #: data/io.elementary.files.appdata.xml.in.in:513
 msgid "Delete color tag database entries for trashed files"
