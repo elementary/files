@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-14 09:55+0000\n"
+"POT-Creation-Date: 2023-01-26 16:31+0000\n"
 "PO-Revision-Date: 2021-08-16 13:30+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/files/pa/"
@@ -1758,104 +1758,104 @@ msgstr "ਨਾਂ ਬਦਲੋ…"
 msgid "Copy as Link"
 msgstr "ਬਤੌਰ ਲਿੰਕ ਨਕਲ ਕਰੋ"
 
-#: src/View/AbstractDirectoryView.vala:2179
-#: src/View/AbstractDirectoryView.vala:2278
+#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2282
 msgid "Paste Link into Folder"
 msgstr "ਲਿੰਕ ਨੂੰ ਫ਼ੋਲਡਰ 'ਚ ਪੇਸਟ ਕਰੋ"
 
-#: src/View/AbstractDirectoryView.vala:2184
-#: src/View/AbstractDirectoryView.vala:2252
+#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2256
 msgid "Paste into Folder"
 msgstr "ਫ਼ੋਲਡਰ 'ਚ ਪੇਸਟ ਕਰੋ"
 
-#: src/View/AbstractDirectoryView.vala:2194
-#: src/View/AbstractDirectoryView.vala:2283
+#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2287
 msgid "Paste"
 msgstr "ਪੇਸਟ ਕਰੋ"
 
-#: src/View/AbstractDirectoryView.vala:2235
+#: src/View/AbstractDirectoryView.vala:2238
 msgid "Show Hidden Files"
 msgstr "ਲੁਕੀਆਂ ਫ਼ਾਇਲਾਂ ਵਿਖਾਓ"
 
-#: src/View/AbstractDirectoryView.vala:2240
+#: src/View/AbstractDirectoryView.vala:2243
 msgid "Show Remote Thumbnails"
 msgstr "ਰਿਮੋਟ ਥਮਨੇਲ ਵਿਖਾਓ"
 
-#: src/View/AbstractDirectoryView.vala:2243
+#: src/View/AbstractDirectoryView.vala:2246
 msgid "Hide Thumbnails"
 msgstr "ਥਮਨੇਲ ਲੁਕਾਓ"
 
-#: src/View/AbstractDirectoryView.vala:2246
-msgid "Select Folders with Single Click"
+#: src/View/AbstractDirectoryView.vala:2249
+msgid "Double-click to Navigate"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2343
+#: src/View/AbstractDirectoryView.vala:2347
 msgid "Name"
 msgstr "ਨਾਂ"
 
-#: src/View/AbstractDirectoryView.vala:2348 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2352 src/View/ListView.vala:27
 msgid "Size"
 msgstr "ਸਾਈਜ਼"
 
-#: src/View/AbstractDirectoryView.vala:2353 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2357 src/View/ListView.vala:28
 msgid "Type"
 msgstr "ਕਿਸਮ"
 
-#: src/View/AbstractDirectoryView.vala:2358
+#: src/View/AbstractDirectoryView.vala:2362
 msgid "Date"
 msgstr "ਮਿਤੀ"
 
-#: src/View/AbstractDirectoryView.vala:2363
+#: src/View/AbstractDirectoryView.vala:2367
 msgid "Reversed Order"
 msgstr "ਉਲਟਾਈ ਤਰਤੀਬ"
 
-#: src/View/AbstractDirectoryView.vala:2366
+#: src/View/AbstractDirectoryView.vala:2370
 msgid "Folders Before Files"
 msgstr "ਫ਼ਾਇਲਾਂ ਤੋਂ ਪਹਿਲਾਂ ਫ਼ੋਲਡਰ"
 
-#: src/View/AbstractDirectoryView.vala:2378
+#: src/View/AbstractDirectoryView.vala:2382
 msgid "Sort by"
 msgstr "ਤਰਤੀਬ ਮੁਤਾਬਕ"
 
-#: src/View/AbstractDirectoryView.vala:2386
+#: src/View/AbstractDirectoryView.vala:2390
 msgid "Folder"
 msgstr "ਫ਼ੋਲਡਰ"
 
-#: src/View/AbstractDirectoryView.vala:2392
+#: src/View/AbstractDirectoryView.vala:2396
 msgid "Empty File"
 msgstr "ਖ਼ਾਲੀ ਫ਼ਾਇਲ"
 
-#: src/View/AbstractDirectoryView.vala:2443
+#: src/View/AbstractDirectoryView.vala:2447
 msgid "New"
 msgstr "ਨਵਾਂ/ਨਵੀਂ"
 
-#: src/View/AbstractDirectoryView.vala:2686
+#: src/View/AbstractDirectoryView.vala:2690
 #, c-format
 msgid "Untitled %s"
 msgstr "ਬੇਨਾਮ %s"
 
-#: src/View/AbstractDirectoryView.vala:3004
-#: src/View/AbstractDirectoryView.vala:3197
+#: src/View/AbstractDirectoryView.vala:3008
+#: src/View/AbstractDirectoryView.vala:3201
 msgid "Cannot remove files from here"
 msgstr "ਫ਼ਾਇਲਾਂ ਨੂੰ ਇੱਥੋਂ ਹਟਾਇਆ ਨਹੀਂ ਜਾ ਸਕਦਾ"
 
-#: src/View/AbstractDirectoryView.vala:3005
-#: src/View/AbstractDirectoryView.vala:3170
-#: src/View/AbstractDirectoryView.vala:3181
-#: src/View/AbstractDirectoryView.vala:3198
+#: src/View/AbstractDirectoryView.vala:3009
+#: src/View/AbstractDirectoryView.vala:3174
+#: src/View/AbstractDirectoryView.vala:3185
+#: src/View/AbstractDirectoryView.vala:3202
 msgid "You do not have permission to change this location"
 msgstr "ਤੁਹਾਡੇ ਕੋਲ਼ ਇਹ ਟਿਕਾਣਾ ਬਦਲਣ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ"
 
-#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3142
 msgid "Cannot copy files that are in the trash"
 msgstr "ਰੱਦੀ ਟੋਕਰੀ ਵਿਚਲੀਆਂ ਫ਼ਾਇਲਾਂ ਨਕਲ ਨਹੀਂ ਕਰ ਸਕਦੇ"
 
-#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3143
 msgid "Cutting the selection instead"
 msgstr "ਇਸਦੀ ਬਜਾਇ ਚੋਣ ਨੂੰ ਕੱਟਿਆ ਜਾ ਰਿਹੈ"
 
-#: src/View/AbstractDirectoryView.vala:3169
-#: src/View/AbstractDirectoryView.vala:3180
+#: src/View/AbstractDirectoryView.vala:3173
+#: src/View/AbstractDirectoryView.vala:3184
 msgid "Cannot paste files here"
 msgstr "ਫ਼ਾਇਲਾਂ ਨੂੰ ਇੱਥੇ ਪੇਸਟ ਨਹੀਂ ਕਰ ਸਕਦੇ"
 

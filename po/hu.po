@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-14 09:55+0000\n"
+"POT-Creation-Date: 2023-01-26 16:31+0000\n"
 "PO-Revision-Date: 2022-11-08 00:58+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
@@ -1727,104 +1727,104 @@ msgstr "Átnevezés…"
 msgid "Copy as Link"
 msgstr "Másolás hivatkozásként"
 
-#: src/View/AbstractDirectoryView.vala:2179
-#: src/View/AbstractDirectoryView.vala:2278
+#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2282
 msgid "Paste Link into Folder"
 msgstr "Hivatkozás beillesztése mappába"
 
-#: src/View/AbstractDirectoryView.vala:2184
-#: src/View/AbstractDirectoryView.vala:2252
+#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2256
 msgid "Paste into Folder"
 msgstr "Beillesztés mappába"
 
-#: src/View/AbstractDirectoryView.vala:2194
-#: src/View/AbstractDirectoryView.vala:2283
+#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2287
 msgid "Paste"
 msgstr "Beillesztés"
 
-#: src/View/AbstractDirectoryView.vala:2235
+#: src/View/AbstractDirectoryView.vala:2238
 msgid "Show Hidden Files"
 msgstr "Rejtett fájlok megjelenítése"
 
-#: src/View/AbstractDirectoryView.vala:2240
+#: src/View/AbstractDirectoryView.vala:2243
 msgid "Show Remote Thumbnails"
 msgstr "Távoli miniatűrök megjelenítése"
 
-#: src/View/AbstractDirectoryView.vala:2243
+#: src/View/AbstractDirectoryView.vala:2246
 msgid "Hide Thumbnails"
 msgstr "Miniatűrök elrejtése"
 
-#: src/View/AbstractDirectoryView.vala:2246
-msgid "Select Folders with Single Click"
-msgstr "Mappák kijelölése egy kattintással"
+#: src/View/AbstractDirectoryView.vala:2249
+msgid "Double-click to Navigate"
+msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2343
+#: src/View/AbstractDirectoryView.vala:2347
 msgid "Name"
 msgstr "Név"
 
-#: src/View/AbstractDirectoryView.vala:2348 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2352 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Méret"
 
-#: src/View/AbstractDirectoryView.vala:2353 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2357 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Típus"
 
-#: src/View/AbstractDirectoryView.vala:2358
+#: src/View/AbstractDirectoryView.vala:2362
 msgid "Date"
 msgstr "Dátum"
 
-#: src/View/AbstractDirectoryView.vala:2363
+#: src/View/AbstractDirectoryView.vala:2367
 msgid "Reversed Order"
 msgstr "Fordított sorrend"
 
-#: src/View/AbstractDirectoryView.vala:2366
+#: src/View/AbstractDirectoryView.vala:2370
 msgid "Folders Before Files"
 msgstr "Mappák a fájlok előtt"
 
-#: src/View/AbstractDirectoryView.vala:2378
+#: src/View/AbstractDirectoryView.vala:2382
 msgid "Sort by"
 msgstr "Rendezés"
 
-#: src/View/AbstractDirectoryView.vala:2386
+#: src/View/AbstractDirectoryView.vala:2390
 msgid "Folder"
 msgstr "Mappa"
 
-#: src/View/AbstractDirectoryView.vala:2392
+#: src/View/AbstractDirectoryView.vala:2396
 msgid "Empty File"
 msgstr "Üres fájl"
 
-#: src/View/AbstractDirectoryView.vala:2443
+#: src/View/AbstractDirectoryView.vala:2447
 msgid "New"
 msgstr "Új"
 
-#: src/View/AbstractDirectoryView.vala:2686
+#: src/View/AbstractDirectoryView.vala:2690
 #, c-format
 msgid "Untitled %s"
 msgstr "Névtelen %s"
 
-#: src/View/AbstractDirectoryView.vala:3004
-#: src/View/AbstractDirectoryView.vala:3197
+#: src/View/AbstractDirectoryView.vala:3008
+#: src/View/AbstractDirectoryView.vala:3201
 msgid "Cannot remove files from here"
 msgstr "A fájlok nem távolíthatók el innen"
 
-#: src/View/AbstractDirectoryView.vala:3005
-#: src/View/AbstractDirectoryView.vala:3170
-#: src/View/AbstractDirectoryView.vala:3181
-#: src/View/AbstractDirectoryView.vala:3198
+#: src/View/AbstractDirectoryView.vala:3009
+#: src/View/AbstractDirectoryView.vala:3174
+#: src/View/AbstractDirectoryView.vala:3185
+#: src/View/AbstractDirectoryView.vala:3202
 msgid "You do not have permission to change this location"
 msgstr "Nincs engedélye az elérési út megváltoztatására"
 
-#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3142
 msgid "Cannot copy files that are in the trash"
 msgstr "A kukában levő fájlok nem másolhatóak"
 
-#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3143
 msgid "Cutting the selection instead"
 msgstr "A kijelöltek kivágása inkább"
 
-#: src/View/AbstractDirectoryView.vala:3169
-#: src/View/AbstractDirectoryView.vala:3180
+#: src/View/AbstractDirectoryView.vala:3173
+#: src/View/AbstractDirectoryView.vala:3184
 msgid "Cannot paste files here"
 msgstr "Fájlok beillesztése itt nem lehetséges"
 
@@ -2182,6 +2182,9 @@ msgstr "Ezen mappa alatt"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Mostanában használt"
+
+#~ msgid "Select Folders with Single Click"
+#~ msgstr "Mappák kijelölése egy kattintással"
 
 #~ msgid "Setting permissions"
 #~ msgstr "Jogosultságok beállítása"

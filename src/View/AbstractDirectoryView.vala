@@ -2246,8 +2246,9 @@ namespace Files {
                 var hide_local_thumbnails_menuitem = new Gtk.CheckMenuItem.with_label (_("Hide Thumbnails"));
                 hide_local_thumbnails_menuitem.action_name = "background.hide-local-thumbnails";
 
-                var singleclick_select_menuitem = new Gtk.CheckMenuItem.with_label (_("Select Folders with Single Click"));
-                singleclick_select_menuitem.action_name = "win.singleclick-select";
+                var singleclick_select_menuitem = new Gtk.CheckMenuItem.with_label (_("Double-click to Navigate")) {
+                    action_name = "win.singleclick-select"
+                };
 
                 if (in_trash) {
                     if (clipboard != null && clipboard.has_cutted_file (null)) {
