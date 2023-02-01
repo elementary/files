@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-26 16:31+0000\n"
-"PO-Revision-Date: 2022-11-09 14:29+0000\n"
+"PO-Revision-Date: 2023-02-02 09:25+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -1794,7 +1794,7 @@ msgstr "Masquer les miniatures"
 
 #: src/View/AbstractDirectoryView.vala:2249
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "Effectuez un double-clic pour naviguer"
 
 #: src/View/AbstractDirectoryView.vala:2347
 msgid "Name"
