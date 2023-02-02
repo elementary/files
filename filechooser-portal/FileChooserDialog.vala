@@ -355,6 +355,14 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             stack.notify["visible-child"].connect (() => {
                 revealer.reveal_child = stack.visible_child_name == "search";
             });
+
+            if (action == Gtk.FileChooserAction.SAVE) {
+                Idle.add (() => {
+                    entry.set_placeholder_text (_("Enter new filename"));
+                    entry.grab_focus ();
+                    return Source.REMOVE;
+                });
+            }
         });
 
         /* move the filename entry from the chooser to the action_box */
