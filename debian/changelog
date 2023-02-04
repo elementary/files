@@ -1,3 +1,9 @@
+pantheon-files (6.2.2) focal; urgency=medium
+
+  * New upstream release
+
+ -- Danielle Foré <danielle@elementary.io>  Fri, 03 Feb 2023 10:32:51 -0800
+
 pantheon-files (6.2.1) focal; urgency=medium
 
   * Release 6.2.1 (#2101)
