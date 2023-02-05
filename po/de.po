@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-26 16:31+0000\n"
-"PO-Revision-Date: 2022-10-10 08:25+0000\n"
+"PO-Revision-Date: 2023-02-06 17:25+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Launchpad-Export-Date: 2017-06-14 06:05+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -55,8 +55,7 @@ msgstr "»%s« ersetzen?"
 
 #: filechooser-portal/Main.vala:352
 msgid "Replacing this file will overwrite its current contents"
-msgstr ""
-"Falls Sie diese Datei ersetzen, wird ihr aktueller Inhalt überschrieben."
+msgstr "Falls Sie diese Datei ersetzen, wird ihr aktueller Inhalt überschrieben"
 
 #: filechooser-portal/Main.vala:361
 #, c-format
@@ -1803,7 +1802,7 @@ msgstr "Vorschaubilder ausblenden"
 
 #: src/View/AbstractDirectoryView.vala:2249
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "Mit Doppelklick anzeigen"
 
 #: src/View/AbstractDirectoryView.vala:2347
 msgid "Name"
