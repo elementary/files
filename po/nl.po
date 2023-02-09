@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-26 16:31+0000\n"
 "PO-Revision-Date: 2023-02-09 16:17+0000\n"
-"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
+"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -1226,7 +1226,7 @@ msgstr "De bestemming is geen folder."
 
 #: libcore/FileOperations/CommonJob.vala:144
 msgid "You do not have permissions to access the destination folder."
-msgstr "U heeft geen rechten om toegang te nemen tot de doelfolder."
+msgstr "U heeft geen rechten om toegang te nemen tot deze folder."
 
 #: libcore/FileOperations/CommonJob.vala:146
 msgid "There was an error getting information about the destination."
@@ -1284,7 +1284,7 @@ msgstr ""
 
 #: libcore/FileOperations/EmptyTrashJob.vala:111
 msgid "Emptying Trash"
-msgstr "Bezig met prullenbak legen"
+msgstr "Prullenbak legen"
 
 #: libcore/FileOperations/MountUtils.vala:31
 #, c-format
@@ -1798,7 +1798,7 @@ msgstr "Verberg miniatuurweergaven"
 
 #: src/View/AbstractDirectoryView.vala:2249
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "Dubbelklik om te navigeren"
 
 #: src/View/AbstractDirectoryView.vala:2347
 msgid "Name"
