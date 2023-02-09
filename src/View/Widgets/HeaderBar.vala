@@ -122,12 +122,11 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
 
         var undo_redo_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
             homogeneous = true,
-            hexpand = true,
-            margin_top = 12,
             margin_end = 12,
-            margin_bottom = 6,
+            margin_bottom = 12,
             margin_start = 12
         };
+        undo_redo_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
 
         var undo_button = new Gtk.Button.from_icon_name ("edit-undo-symbolic", Gtk.IconSize.MENU) {
             action_name = "win.undo"
@@ -148,18 +147,17 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         undo_redo_box.add (undo_button);
         undo_redo_box.add (redo_button);
 
-        //Global Options
-        var options_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6) {
-            margin_end = 12,
-            margin_start = 12,
-            margin_bottom = 12,
-            homogeneous = true
-        };
         // Double-click option
         var double_click_button = new Granite.SwitchModelButton (_("Double-click to Navigate")) {
             description = _("Double-click on a folder opens it, single-click selects it"),
             action_name = "win.singleclick-select"
         };
+
+        //Sort folders before files
+        var foldes_before_files = new Granite.SwitchModelButton (_("Sort Folders before Files")) {
+            action_name = "win.folders-before-files"
+        };
+
         // Show hidden files
         var show_hidden_button = new Granite.SwitchModelButton (_("Show Hidden Files")) {
             action_name = "win.show-hidden"
@@ -172,26 +170,20 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         var hide_local_thumbnails = new Granite.SwitchModelButton (_("Hide Local Thumbnails")) {
             action_name = "win.hide-local-thumbnails"
         };
-        //Sort folders before files
-        var foldes_before_files = new Granite.SwitchModelButton (_("Sort Folders before Files")) {
-            action_name = "win.folders-before-files"
-        };
-
-        options_box.add (double_click_button);
-        options_box.add (show_hidden_button);
-        options_box.add (show_remote_thumbnails);
-        options_box.add (hide_local_thumbnails);
-        options_box.add (foldes_before_files);
 
         // Popover menu
         var menu_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
-            margin_bottom = 3
+            margin_bottom = 6
         };
         menu_box.add (icon_size_box);
-        menu_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
         menu_box.add (undo_redo_box);
-        menu_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-        menu_box.add (options_box);
+        menu_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL) { margin_bottom = 3 });
+        menu_box.add (double_click_button);
+        menu_box.add (foldes_before_files);
+        menu_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
+        menu_box.add (show_hidden_button);
+        menu_box.add (show_remote_thumbnails);
+        menu_box.add (hide_local_thumbnails);
         menu_box.show_all ();
 
         var menu = new Gtk.Popover (null);
