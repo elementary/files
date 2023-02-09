@@ -121,6 +121,16 @@
       <default>[(0,'','')]</default>
       <description>Array of tab info:  View mode, root uri, tip uri (for Miller view)</description>
     </key>
+    <key name="prefer-dark-style" type="b">
+      <default>false</default>
+      <summary>Request dark Gtk stylesheet variant</summary>
+      <description>Switches between dark and light style</description>
+    </key>
+    <key name="follow-system-style" type="b">
+      <default>true</default>
+      <summary>Follow the FreeDesktop.org dark style preference</summary>
+      <description>Use the Dark style if the system prefers a dark style, or elementary Light otherwise. Overrides control of prefer-dark-style.</description>
+    </key>
   </schema>
 
   <schema path="/io/elementary/files/icon-view/" id="io.elementary.files.icon-view">
