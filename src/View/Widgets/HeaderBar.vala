@@ -59,6 +59,7 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
     }
 
     construct {
+        var app_instance = (Gtk.Application)(GLib.Application.get_default ());
         button_back = new View.Chrome.ButtonWithMenu.from_icon_name (
             "go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR
         );
@@ -77,11 +78,134 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
 
         location_bar = new LocationBar ();
 
+        // AppMenu
+        var zoom_out_button = new Gtk.Button.from_icon_name ("zoom-out-symbolic", Gtk.IconSize.MENU) {
+            action_name = "win.zoom",
+            action_target = "ZOOM_OUT"
+        };
+        zoom_out_button.tooltip_markup = Granite.markup_accel_tooltip (
+            app_instance.get_accels_for_action (zoom_out_button.action_name),
+            _("Zoom Out")
+        );
+
+        var zoom_default_button = new Gtk.Button.with_label ("100%") {
+            action_name = "win.zoom",
+            action_target = "ZOOM_NORMAL"
+        };
+        zoom_default_button.tooltip_markup = Granite.markup_accel_tooltip (
+            app_instance.get_accels_for_action (zoom_default_button.action_name),
+            _("Zoom 1:1")
+        );
+
+        var zoom_in_button = new Gtk.Button.from_icon_name ("zoom-in-symbolic", Gtk.IconSize.MENU) {
+            action_name = "win.zoom",
+            action_target = "ZOOM_IN"
+        };
+        zoom_in_button.tooltip_markup = Granite.markup_accel_tooltip (
+            app_instance.get_accels_for_action (zoom_in_button.action_name),
+            _("Zoom In")
+        );
+
+        var icon_size_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
+            homogeneous = true,
+            hexpand = true,
+            margin_top = 12,
+            margin_end = 12,
+            margin_bottom = 6,
+            margin_start = 12
+        };
+        icon_size_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
+        icon_size_box.add (zoom_out_button);
+        icon_size_box.add (zoom_default_button);
+        icon_size_box.add (zoom_in_button);
+
+        var find_button = new Gtk.ToggleButton () {
+            action_name = "win.find",
+            action_target = "",
+            image = new Gtk.Image.from_icon_name ("edit-find-symbolic", Gtk.IconSize.MENU)
+        };
+        find_button.tooltip_markup = Granite.markup_accel_tooltip (
+            app_instance.get_accels_for_action (find_button.action_name),
+            _("Find")
+        );
+
+        var find_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
+            hexpand = true,
+            homogeneous = true,
+            margin_end = 12,
+            margin_bottom = 12,
+            margin_start = 12
+        };
+        find_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
+        find_box.add (find_button);
+        // Intentionally never attached so we can have a non-selected state
+        var follow_system_switchmodelbutton = new Granite.SwitchModelButton (_("Follow System Style"));
+
+        var color_button_light = new Gtk.RadioButton (null) {
+            halign = Gtk.Align.CENTER,
+            tooltip_text = _("Solarized Light")
+        };
+        style_color_button (color_button_light, "light");
+
+        var color_button_dark = new Gtk.RadioButton.from_widget (color_button_light) {
+            halign = Gtk.Align.CENTER,
+            tooltip_text = _("Dark")
+        };
+        style_color_button (color_button_dark, "dark");
+
+        var color_grid = new Gtk.Grid () {
+            column_homogeneous = true,
+            margin_bottom = 6,
+            margin_top = 6
+        };
+
+        color_grid.add (color_button_light);
+        color_grid.add (color_button_dark);
+
+        var color_revealer = new Gtk.Revealer ();
+        color_revealer.add (color_grid);
+
+        var follow_system_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        follow_system_box.add (follow_system_switchmodelbutton);
+        follow_system_box.add (color_revealer);
+
+        var menu_separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
+            margin_bottom = 3,
+            margin_top = 3
+        };
+
+        var menu_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
+            margin_bottom = 3
+        };
+        menu_box.add (icon_size_box);
+        menu_box.add (find_box);
+        menu_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
+        menu_box.add (follow_system_box);
+        menu_box.show_all ();
+
+        var menu = new Gtk.Popover (null);
+        menu.add (menu_box);
+
+        var app_menu = new Gtk.MenuButton () {
+            image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR),
+            popover = menu,
+            tooltip_text = _("Menu")
+        };
+
+
         pack_start (button_back);
         pack_start (button_forward);
         pack_start (view_switcher);
         pack_start (location_bar);
+        pack_end (app_menu);
         show_all ();
+
+        follow_system_switchmodelbutton.bind_property (
+            "active",
+            color_revealer,
+            "reveal-child",
+            GLib.BindingFlags.SYNC_CREATE | BindingFlags.INVERT_BOOLEAN
+        );
 
         button_forward.slow_press.connect (() => {
             forward (1);
@@ -115,6 +239,43 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
 
         location_bar.escape.connect (() => {escape ();});
     }
+
+        private void style_color_button (Gtk.Widget color_button, string theme) {
+        string background, foreground;
+        switch (theme) {
+            case "light":
+                background = "#FFFFFF";
+                foreground = "#000000";
+                break;
+            case "dark":
+                background = "#000000";
+                foreground = "#FFFFFF";
+                break;
+            default:
+                assert_not_reached ();
+
+        }
+
+            var style_css = """
+                .color-button radio {
+                    background-color: %s;
+                    color: %s;
+                    padding: 10px;
+                    -gtk-icon-shadow: none;
+                }
+            """.printf (background, foreground);
+
+            var css_provider = new Gtk.CssProvider ();
+            try {
+                css_provider.load_from_data (style_css);
+            } catch (Error e) {
+                critical ("Unable to style color button: %s", e.message);
+            }
+
+            unowned var style_context = color_button.get_style_context ();
+            style_context.add_class (Granite.STYLE_CLASS_COLOR_BUTTON);
+            style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        }
 
     public bool enter_search_mode (string term = "") {
         return location_bar.enter_search_mode (term);
