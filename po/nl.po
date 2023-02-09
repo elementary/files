@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-26 16:31+0000\n"
-"PO-Revision-Date: 2023-02-09 16:17+0000\n"
-"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
+"PO-Revision-Date: 2023-02-09 16:18+0000\n"
+"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -1354,7 +1354,7 @@ msgstr ""
 #: libcore/Widgets/BasicBreadcrumbsEntry.vala:178
 #, c-format
 msgid "Navigate to %s"
-msgstr "Ga naar %s"
+msgstr "Navigeer naar %s"
 
 #: libcore/Widgets/BasicBreadcrumbsEntry.vala:304
 #, c-format
@@ -1371,7 +1371,7 @@ msgstr "Geef een pad op"
 
 #: libcore/Widgets/ViewSwitcher.vala:39
 msgid "View as Grid"
-msgstr "Als rooster weergeven"
+msgstr "Rooster-weergave"
 
 #: libcore/Widgets/ViewSwitcher.vala:49
 msgid "View as List"
