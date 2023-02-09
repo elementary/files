@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-26 16:31+0000\n"
 "PO-Revision-Date: 2023-02-10 17:25+0000\n"
-"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
+"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -1434,7 +1434,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Bestandssysteem doorbladeren met het bestandsbeheer"
+"Bestandssysteem doorbladeren met de bestandsbeheerder"
 
 #: src/Application.vala:196
 msgid "--quit cannot be used with URIs."
@@ -1468,7 +1468,7 @@ msgstr "%s voltooid"
 
 #: src/ProgressUIHandler.vala:184
 msgid "All file operations have ended"
-msgstr "Alle bestandsoperaties zijn klaar"
+msgstr "Alle bestandsbewerkingen zijn klaar"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -1863,7 +1863,7 @@ msgstr "Bestanden in de prullenbak kunnen niet gekopieerd worden"
 
 #: src/View/AbstractDirectoryView.vala:3143
 msgid "Cutting the selection instead"
-msgstr "De geselecteerde objecten worden in plaats daarvan geknipt"
+msgstr "De selectie wordt in plaats daarvan geknipt"
 
 #: src/View/AbstractDirectoryView.vala:3173
 #: src/View/AbstractDirectoryView.vala:3184
@@ -2029,7 +2029,7 @@ msgstr "%s beschikbaar"
 #: src/View/Sidebar/AbstractMountableRow.vala:308
 #, c-format
 msgid "%s used of %s"
-msgstr "%s van de %s"
+msgstr "%s gebruikt van de %s"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
@@ -2049,7 +2049,7 @@ msgstr "Bekijk de persoonlijke folder"
 
 #: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
-msgstr "Bekijk de lijst van recentelijke gebruikte bestanden"
+msgstr "Bekijk de lijst van recent gebruikte bestanden"
 
 #: src/View/Sidebar/BookmarkListBox.vala:171
 msgid "Open the Trash"
@@ -2140,7 +2140,7 @@ msgstr "Herlaad deze folder"
 
 #: src/View/Widgets/LocationBar.vala:209
 msgid "Searching…"
-msgstr "Aan het zoeken…"
+msgstr "Zoeken…"
 
 #: src/View/Widgets/OverlayBar.vala:162
 #, c-format
@@ -2183,7 +2183,7 @@ msgstr[1] "%u bestanden, "
 #: src/View/Widgets/OverlayBar.vala:242
 #, c-format
 msgid "%s approx."
-msgstr "%s ong."
+msgstr "Ongeveer %s"
 
 #. TRANSLATORS: 'size' refers to disk space
 #: src/View/Widgets/OverlayBar.vala:245
