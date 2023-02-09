@@ -120,32 +120,6 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         icon_size_box.add (zoom_default_button);
         icon_size_box.add (zoom_in_button);
 
-        // Searchcontrol
-        var find_button = new Gtk.ToggleButton () {
-            action_name = "win.find",
-            action_target = "",
-            image = new Gtk.Image.from_icon_name ("edit-find-symbolic", Gtk.IconSize.MENU)
-        };
-        find_button.tooltip_markup = Granite.markup_accel_tooltip (
-            app_instance.get_accels_for_action ("win.find::"),
-            _("Find")
-        );
-
-        var find_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
-            hexpand = true,
-            homogeneous = true,
-            margin_end = 12,
-            margin_bottom = 12,
-            margin_start = 12
-        };
-        find_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
-        find_box.add (find_button);
-        // Intentionally never attached so we can have a non-selected state
-        // var menu_separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
-        //     margin_bottom = 3,
-        //     margin_top = 3
-        // };
-
         var options_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6) {
             margin_end = 12,
             margin_start = 12,
@@ -184,7 +158,6 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
             margin_bottom = 3
         };
         menu_box.add (icon_size_box);
-        menu_box.add (find_box);
         menu_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
         menu_box.add (options_box);
         menu_box.show_all ();
