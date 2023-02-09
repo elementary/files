@@ -146,6 +146,39 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         //     margin_top = 3
         // };
 
+        var options_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6) {
+            margin_end = 12,
+            margin_start = 12,
+            margin_bottom = 12,
+            homogeneous = true
+        };
+        // Double-click option
+        var double_click_button = new Granite.SwitchModelButton (_("Double-click to Navigate")) {
+            description = _("Double-click on a folder opens it, single-click selects it"),
+            action_name = "win.singleclick-select"
+        };
+        // Show hidden files
+        var show_hidden_button = new Granite.SwitchModelButton (_("Show Hidden Files")) {
+            action_name = "win.show-hidden"
+        };
+        // Show remote thumbnails
+        var show_remote_thumbnails = new Granite.SwitchModelButton (_("Show Remote Thumbnails")) {
+            action_name = "win.show-remote-thumbnails"
+        };
+        //Hide local thumbnails
+        var hide_local_thumbnails = new Granite.SwitchModelButton (_("Hide Local Thumbnails")) {
+            action_name = "win.hide-local-thumbnails"
+        };
+        //Sort folders before files
+        var foldes_before_files = new Granite.SwitchModelButton (_("Sort Folders before Files")) {
+            action_name = "win.folders-before-files"
+        };
+
+        options_box.add (double_click_button);
+        options_box.add (show_hidden_button);
+        options_box.add (show_remote_thumbnails);
+        options_box.add (hide_local_thumbnails);
+        options_box.add (foldes_before_files);
         // Popover menu
         var menu_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             margin_bottom = 3
@@ -153,6 +186,7 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         menu_box.add (icon_size_box);
         menu_box.add (find_box);
         menu_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
+        menu_box.add (options_box);
         menu_box.show_all ();
 
         var menu = new Gtk.Popover (null);
