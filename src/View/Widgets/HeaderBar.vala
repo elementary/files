@@ -158,18 +158,26 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
             action_name = "win.folders-before-files"
         };
 
-        // Show hidden files
-        var show_hidden_button = new Granite.SwitchModelButton (_("Show Hidden Files")) {
+        var show_header = new Granite.HeaderLabel (_("Show in View"));
+
+        var show_hidden_button = new Gtk.CheckButton () {
             action_name = "win.show-hidden"
         };
-        // Show remote thumbnails
-        var show_remote_thumbnails = new Granite.SwitchModelButton (_("Show Remote Thumbnails")) {
-            action_name = "win.show-remote-thumbnails"
-        };
-        //Hide local thumbnails
-        var hide_local_thumbnails = new Granite.SwitchModelButton (_("Hide Local Thumbnails")) {
+        show_hidden_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
+        show_hidden_button.add (new Granite.AccelLabel (
+            _("Hidden Files"),
+            "<Ctrl>h"
+        ));
+
+        var hide_local_thumbnails = new Gtk.CheckButton.with_label (_("Local Thumbnails")) {
             action_name = "win.hide-local-thumbnails"
         };
+        hide_local_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
+
+        var show_remote_thumbnails = new Gtk.CheckButton.with_label (_("Remote Thumbnails")) {
+            action_name = "win.show-remote-thumbnails"
+        };
+        show_remote_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
         // Popover menu
         var menu_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
@@ -181,9 +189,10 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         menu_box.add (double_click_button);
         menu_box.add (foldes_before_files);
         menu_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
+        menu_box.add (show_header);
         menu_box.add (show_hidden_button);
-        menu_box.add (show_remote_thumbnails);
         menu_box.add (hide_local_thumbnails);
+        menu_box.add (show_remote_thumbnails);
         menu_box.show_all ();
 
         var menu = new Gtk.Popover (null);
