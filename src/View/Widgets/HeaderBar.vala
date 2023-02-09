@@ -120,6 +120,35 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         icon_size_box.add (zoom_default_button);
         icon_size_box.add (zoom_in_button);
 
+        var undo_redo_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
+            homogeneous = true,
+            hexpand = true,
+            margin_top = 12,
+            margin_end = 12,
+            margin_bottom = 6,
+            margin_start = 12
+        };
+
+        var undo_button = new Gtk.Button.from_icon_name ("edit-undo-symbolic", Gtk.IconSize.MENU) {
+            action_name = "win.undo"
+        };
+        undo_button.tooltip_markup = Granite.markup_accel_tooltip (
+            app_instance.get_accels_for_action ("win.undo"),
+            _("Undo Last File Operation")
+        );
+
+        var redo_button = new Gtk.Button.from_icon_name ("edit-redo-symbolic", Gtk.IconSize.MENU) {
+            action_name = "win.redo"
+        };
+        redo_button.tooltip_markup = Granite.markup_accel_tooltip (
+            app_instance.get_accels_for_action ("win.redo"),
+            _("Redo Last Undone File Operation")
+        );
+
+        undo_redo_box.add (undo_button);
+        undo_redo_box.add (redo_button);
+
+        //Global Options
         var options_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6) {
             margin_end = 12,
             margin_start = 12,
@@ -153,11 +182,14 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         options_box.add (show_remote_thumbnails);
         options_box.add (hide_local_thumbnails);
         options_box.add (foldes_before_files);
+
         // Popover menu
         var menu_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             margin_bottom = 3
         };
         menu_box.add (icon_size_box);
+        menu_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
+        menu_box.add (undo_redo_box);
         menu_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
         menu_box.add (options_box);
         menu_box.show_all ();
