@@ -78,13 +78,14 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
 
         location_bar = new LocationBar ();
 
-        // AppMenu
+        /**  AppMenu **/
+        // Zoom controls
         var zoom_out_button = new Gtk.Button.from_icon_name ("zoom-out-symbolic", Gtk.IconSize.MENU) {
             action_name = "win.zoom",
             action_target = "ZOOM_OUT"
         };
         zoom_out_button.tooltip_markup = Granite.markup_accel_tooltip (
-            app_instance.get_accels_for_action (zoom_out_button.action_name),
+            app_instance.get_accels_for_action ("win.zoom::ZOOM_OUT"),
             _("Zoom Out")
         );
 
@@ -93,7 +94,7 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
             action_target = "ZOOM_NORMAL"
         };
         zoom_default_button.tooltip_markup = Granite.markup_accel_tooltip (
-            app_instance.get_accels_for_action (zoom_default_button.action_name),
+            app_instance.get_accels_for_action ("win.zoom::ZOOM_NORMAL"),
             _("Zoom 1:1")
         );
 
@@ -102,7 +103,7 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
             action_target = "ZOOM_IN"
         };
         zoom_in_button.tooltip_markup = Granite.markup_accel_tooltip (
-            app_instance.get_accels_for_action (zoom_in_button.action_name),
+            app_instance.get_accels_for_action ("win.zoom::ZOOM_IN"),
             _("Zoom In")
         );
 
@@ -119,13 +120,14 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         icon_size_box.add (zoom_default_button);
         icon_size_box.add (zoom_in_button);
 
+        // Searchcontrol
         var find_button = new Gtk.ToggleButton () {
             action_name = "win.find",
             action_target = "",
             image = new Gtk.Image.from_icon_name ("edit-find-symbolic", Gtk.IconSize.MENU)
         };
         find_button.tooltip_markup = Granite.markup_accel_tooltip (
-            app_instance.get_accels_for_action (find_button.action_name),
+            app_instance.get_accels_for_action ("win.find::"),
             _("Find")
         );
 
@@ -139,11 +141,12 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         find_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
         find_box.add (find_button);
         // Intentionally never attached so we can have a non-selected state
-        var menu_separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
-            margin_bottom = 3,
-            margin_top = 3
-        };
+        // var menu_separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
+        //     margin_bottom = 3,
+        //     margin_top = 3
+        // };
 
+        // Popover menu
         var menu_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             margin_bottom = 3
         };
@@ -155,6 +158,7 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         var menu = new Gtk.Popover (null);
         menu.add (menu_box);
 
+        // AppMenu button
         var app_menu = new Gtk.MenuButton () {
             image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR),
             popover = menu,
