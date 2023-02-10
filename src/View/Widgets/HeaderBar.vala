@@ -169,10 +169,10 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
             "<Ctrl>h"
         ));
 
-        var hide_local_thumbnails = new Gtk.CheckButton.with_label (_("Local Thumbnails")) {
-            action_name = "win.hide-local-thumbnails"
+        var show_local_thumbnails = new Gtk.CheckButton.with_label (_("Local Thumbnails")) {
+            action_name = "win.show-local-thumbnails"
         };
-        hide_local_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
+        show_local_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
         var show_remote_thumbnails = new Gtk.CheckButton.with_label (_("Remote Thumbnails")) {
             action_name = "win.show-remote-thumbnails"
@@ -191,7 +191,7 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         menu_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
         menu_box.add (show_header);
         menu_box.add (show_hidden_button);
-        menu_box.add (hide_local_thumbnails);
+        menu_box.add (show_local_thumbnails);
         menu_box.add (show_remote_thumbnails);
         menu_box.show_all ();
 

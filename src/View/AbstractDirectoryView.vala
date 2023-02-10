@@ -78,7 +78,7 @@ namespace Files {
             {"folders-first", on_background_action_folders_first_changed, null, "true"},
             {"show-hidden", null, null, "false", change_state_show_hidden},
             {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-            {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
+            {"show-local-thumbnails", null, null, "true", change_state_show_local_thumbnails}
         };
 
         const GLib.ActionEntry [] COMMON_ENTRIES = {
@@ -260,7 +260,7 @@ namespace Files {
         protected bool is_loading;
         protected bool helpers_shown;
         protected bool show_remote_thumbnails {get; set; default = true;}
-        protected bool hide_local_thumbnails {get; set; default = false;}
+        protected bool show_local_thumbnails {get; set; default = false;}
 
         private bool all_selected = false;
 
@@ -302,8 +302,8 @@ namespace Files {
 
             Files.app_settings.bind ("show-remote-thumbnails",
                                                              this, "show_remote_thumbnails", SettingsBindFlags.GET);
-            Files.app_settings.bind ("hide-local-thumbnails",
-                                                             this, "hide_local_thumbnails", SettingsBindFlags.GET);
+            Files.app_settings.bind ("show-local-thumbnails",
+                                                             this, "show_local_thumbnails", SettingsBindFlags.GET);
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
@@ -378,7 +378,7 @@ namespace Files {
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
-            prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
+            prefs.notify["show-local-thumbnails"].connect (on_show_local_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
             prefs.bind_property (
                 "singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
@@ -409,8 +409,8 @@ namespace Files {
             action_set_state (background_actions, "show-remote-thumbnails",
                               Files.app_settings.get_boolean ("show-remote-thumbnails"));
 
-            action_set_state (background_actions, "hide-local-thumbnails",
-                              Files.app_settings.get_boolean ("hide-local-thumbnails"));
+            action_set_state (background_actions, "show-local-thumbnails",
+                              Files.app_settings.get_boolean ("show-local-thumbnails"));
         }
 
         public void zoom_in () {
@@ -1184,8 +1184,8 @@ namespace Files {
             window.change_state_show_remote_thumbnails (action);
         }
 
-        private void change_state_hide_local_thumbnails (GLib.SimpleAction action) {
-            window.change_state_hide_local_thumbnails (action);
+        private void change_state_show_local_thumbnails (GLib.SimpleAction action) {
+            window.change_state_show_local_thumbnails (action);
         }
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1342,7 +1342,7 @@ namespace Files {
                 model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
-                if ((!slot.directory.is_network && !hide_local_thumbnails) ||
+                if ((!slot.directory.is_network && !show_local_thumbnails) ||
                     (show_remote_thumbnails && slot.directory.can_open_files)) {
 
                     thumbnailer.queue_file (file, null, large_thumbnails);
@@ -1453,9 +1453,9 @@ namespace Files {
             slot.reload ();
         }
 
-        private void on_hide_local_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            hide_local_thumbnails = ((Files.Preferences) prefs).hide_local_thumbnails;
-            action_set_state (background_actions, "hide-local-thumbnails", hide_local_thumbnails);
+        private void on_show_local_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
+            show_local_thumbnails = ((Files.Preferences) prefs).show_local_thumbnails;
+            action_set_state (background_actions, "show-local-thumbnails", show_local_thumbnails);
             slot.reload ();
         }
 
@@ -2233,23 +2233,6 @@ namespace Files {
                     menu.add (properties_menuitem);
                 }
             } else { // Add background folder actions
-                var show_hidden_menuitem = new Gtk.CheckMenuItem ();
-                show_hidden_menuitem.add (new Granite.AccelLabel (
-                    _("Show Hidden Files"),
-                    "<Ctrl>h"
-                ));
-                show_hidden_menuitem.action_name = "background.show-hidden";
-
-                var show_remote_thumbnails_menuitem = new Gtk.CheckMenuItem.with_label (_("Show Remote Thumbnails"));
-                show_remote_thumbnails_menuitem.action_name = "background.show-remote-thumbnails";
-
-                var hide_local_thumbnails_menuitem = new Gtk.CheckMenuItem.with_label (_("Hide Thumbnails"));
-                hide_local_thumbnails_menuitem.action_name = "background.hide-local-thumbnails";
-
-                var singleclick_select_menuitem = new Gtk.CheckMenuItem.with_label (_("Double-click to Navigate")) {
-                    action_name = "win.singleclick-select"
-                };
-
                 if (in_trash) {
                     if (clipboard != null && clipboard.has_cutted_file (null)) {
                         paste_menuitem.add (new Granite.AccelLabel (
@@ -2269,9 +2252,6 @@ namespace Files {
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (new SortSubMenuItem ());
                     menu.add (new Gtk.SeparatorMenuItem ());
-                    menu.add (singleclick_select_menuitem);
-                    menu.add (show_hidden_menuitem);
-                    menu.add (hide_local_thumbnails_menuitem);
                 } else {
                     if (!in_network_root) {
                         menu.add (new Gtk.SeparatorMenuItem ());
@@ -2307,16 +2287,6 @@ namespace Files {
                         window.can_bookmark_uri (slot.directory.file.uri)) {
 
                         menu.add (bookmark_menuitem);
-                    }
-
-                    menu.add (new Gtk.SeparatorMenuItem ());
-                    menu.add (singleclick_select_menuitem);
-                    menu.add (show_hidden_menuitem);
-
-                    if (!slot.directory.is_network) {
-                        menu.add (hide_local_thumbnails_menuitem);
-                    } else if (slot.directory.can_open_files) {
-                        menu.add (show_remote_thumbnails_menuitem);
                     }
 
                     if (!in_network_root) {
@@ -2784,7 +2754,7 @@ namespace Files {
                         if (file != null && !file.is_gone) {
                             // Only update thumbnail if it is going to be shown
                             if ((slot.directory.is_network && show_remote_thumbnails) ||
-                                (!slot.directory.is_network && !hide_local_thumbnails)) {
+                                (!slot.directory.is_network && show_local_thumbnails)) {
 
                                 file.query_thumbnail_update (); // Ensure thumbstate up to date
                                 /* Ask thumbnailer only if ThumbState UNKNOWN */
