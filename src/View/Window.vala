@@ -41,7 +41,7 @@ namespace Files.View {
             {"show-hidden", null, null, "false", change_state_show_hidden},
             {"singleclick-select", null, null, "false", change_state_single_click_select},
             {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-            {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails},
+            {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
             {"folders-before-files", null, null, "true", change_state_folders_before_files}
         };
 
@@ -923,10 +923,10 @@ namespace Files.View {
             Files.app_settings.set_boolean ("show-remote-thumbnails", state);
         }
 
-        public void change_state_hide_local_thumbnails (GLib.SimpleAction action) {
+        public void change_state_show_local_thumbnails (GLib.SimpleAction action) {
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
-            Files.app_settings.set_boolean ("hide-local-thumbnails", state);
+            Files.app_settings.set_boolean ("show-local-thumbnails", state);
         }
 
         public void change_state_folders_before_files (GLib.SimpleAction action) {

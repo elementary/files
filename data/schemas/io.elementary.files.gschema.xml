@@ -34,10 +34,10 @@
       <summary>Thumbnail remote files</summary>
       <description>Show thumbnails for files on remote filesystems</description>
     </key>
-    <key type="b" name="hide-local-thumbnails">
-      <default>false</default>
-      <summary>Do not thumbnail local files</summary>
-      <description>Do not thumbnail files on the local filesystem</description>
+    <key type="b" name="show-local-thumbnails">
+      <default>true</default>
+      <summary>Thumbnail local files</summary>
+      <description>Show thumbnail files on the local filesystem</description>
     </key>
     <key type="b" name="show-sidebar">
       <default>true</default>
