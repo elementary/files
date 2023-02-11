@@ -53,6 +53,9 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
     private LocationBar? location_bar;
     private Chrome.ButtonWithMenu button_forward;
     private Chrome.ButtonWithMenu button_back;
+    private Gtk.Button zoom_default_button;
+    private Gtk.Button zoom_in_button;
+    private Gtk.Button zoom_out_button;
 
     public HeaderBar (ViewSwitcher switcher) {
         Object (view_switcher: switcher);
@@ -80,7 +83,7 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
 
         /**  AppMenu **/
         // Zoom controls
-        var zoom_out_button = new Gtk.Button.from_icon_name ("zoom-out-symbolic", Gtk.IconSize.MENU) {
+        zoom_out_button = new Gtk.Button.from_icon_name ("zoom-out-symbolic", Gtk.IconSize.MENU) {
             action_name = "win.zoom",
             action_target = "ZOOM_OUT"
         };
@@ -89,7 +92,7 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
             _("Zoom Out")
         );
 
-        var zoom_default_button = new Gtk.Button.with_label ("100%") {
+        zoom_default_button = new Gtk.Button.with_label ("100%") {
             action_name = "win.zoom",
             action_target = "ZOOM_NORMAL"
         };
@@ -98,7 +101,7 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
             _("Zoom 1:1")
         );
 
-        var zoom_in_button = new Gtk.Button.from_icon_name ("zoom-in-symbolic", Gtk.IconSize.MENU) {
+        zoom_in_button = new Gtk.Button.from_icon_name ("zoom-in-symbolic", Gtk.IconSize.MENU) {
             action_name = "win.zoom",
             action_target = "ZOOM_IN"
         };
@@ -212,6 +215,26 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         pack_end (app_menu);
         show_all ();
 
+        // Connect to all view settings rather than try to connect and disconnect
+        // continuously to current view mode setting.
+        Files.icon_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
+        Files.list_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
+        Files.column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
+
+        view_switcher.action.activate.connect ((id) => {
+            switch ((ViewMode)(id.get_uint32 ())) {
+                case ViewMode.ICON:
+                    on_zoom_setting_changed (Files.icon_view_settings, "zoom-level");
+                    break;
+                case ViewMode.LIST:
+                    on_zoom_setting_changed (Files.list_view_settings, "zoom-level");
+                    break;
+                case ViewMode.MILLER_COLUMNS:
+                    on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
+                    break;
+            }
+        });
+
         button_forward.slow_press.connect (() => {
             forward (1);
         });
@@ -243,6 +266,24 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         });
 
         location_bar.escape.connect (() => {escape ();});
+    }
+
+    private void on_zoom_setting_changed (Settings settings, string key) {
+        if (settings == null) {
+            critical ("Zoom string from settinggs: Null settings");
+            zoom_default_button.label = "";
+            return;
+        }
+
+        var default_zoom = (Files.ZoomLevel)(settings.get_enum ("default-zoom-level"));
+        var zoom_level = (Files.ZoomLevel)(settings.get_enum ("zoom-level"));
+        zoom_default_button.label =  ("%.0f%%").printf ((double)(zoom_level.to_icon_size ()) / (double)(default_zoom.to_icon_size ()) * 100);
+
+        var max_zoom = settings.get_enum ("maximum-zoom-level");
+        var min_zoom = settings.get_enum ("minimum-zoom-level");
+
+        zoom_in_button.sensitive = zoom_level < max_zoom;
+        zoom_out_button.sensitive = zoom_level > min_zoom;
     }
 
     public bool enter_search_mode (string term = "") {
