@@ -277,7 +277,7 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
 
         var default_zoom = (Files.ZoomLevel)(settings.get_enum ("default-zoom-level"));
         var zoom_level = (Files.ZoomLevel)(settings.get_enum ("zoom-level"));
-        zoom_default_button.label =  ("%.0f%%").printf ((double)(zoom_level.to_icon_size ()) / (double)(default_zoom.to_icon_size ()) * 100);
+        zoom_default_button.label = ("%.0f%%").printf ((double)(zoom_level.to_icon_size ()) / (double)(default_zoom.to_icon_size ()) * 100);
 
         var max_zoom = settings.get_enum ("maximum-zoom-level");
         var min_zoom = settings.get_enum ("minimum-zoom-level");
