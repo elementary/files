@@ -1342,7 +1342,7 @@ namespace Files {
                 model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
-                if ((!slot.directory.is_network && !show_local_thumbnails) ||
+                if ((!slot.directory.is_network && show_local_thumbnails) ||
                     (show_remote_thumbnails && slot.directory.can_open_files)) {
 
                     thumbnailer.queue_file (file, null, large_thumbnails);
