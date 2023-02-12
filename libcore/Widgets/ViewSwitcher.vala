@@ -88,6 +88,7 @@ namespace Files.View.Chrome {
             this.@foreach ((child) => {
                 if (child.get_data<uint32> ("id") == mode) {
                     ((Gtk.RadioButton)child).active = true;
+                    action.activate (child.get_data<uint32> ("id"));
                 }
             });
         }

@@ -27,7 +27,21 @@
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1" />
+
   <releases>
+    <release version="6.3.0" date="2023-02-12" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Move global settings from the context menu to an app menu in the headerbar</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+
     <release version="6.2.2" date="2023-02-03" urgency="medium">
       <description>
         <p>Minor updates:</p>
@@ -42,6 +56,7 @@
         <issue url="https://github.com/elementary/files/issues/2105">Sidebar icons sometimes change</issue>
       </issues>
     </release>
+
     <release version="6.2.1" date="2022-11-15" urgency="medium">
       <description>
         <p>Minor updates:</p>
