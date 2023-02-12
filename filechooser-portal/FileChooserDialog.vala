@@ -269,7 +269,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             next_button_clicked = false;
 
             location_bar.set_display_path (current_path);
-            tree_view.grab_focus ();
         });
 
         chooser.file_activated.connect (() => {
@@ -357,11 +356,10 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             });
 
             if (action == Gtk.FileChooserAction.SAVE) {
-                Idle.add (() => {
-                    entry.set_placeholder_text (_("Enter new filename"));
-                    entry.grab_focus ();
-                    return Source.REMOVE;
-                });
+                entry.set_placeholder_text (_("Enter new filename"));
+                entry.grab_focus ();
+            } else {
+                tree_view.grab_focus ();
             }
         });
 
