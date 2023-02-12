@@ -14,7 +14,42 @@ namespace Files {
         SETPERMISSIONS,
         RECURSIVESETPERMISSIONS,
         CHANGEOWNER,
-        CHANGEGROUP
+        CHANGEGROUP;
+
+        public string to_string () {
+            switch (this) {
+                case COPY:
+                    return _("Copy");
+                case DUPLICATE:
+                    return _("Duplicate");
+                case MOVE:
+                    return _("Move");
+                case RENAME:
+                    return _("Rename");
+                case CREATEEMPTYFILE:
+                    return _("Create Empty File");
+                case CREATEFILEFROMTEMPLATE:
+                    return _("Create File from Template");
+                case CREATEFOLDER:
+                    return _("Create Folder");
+                case MOVETOTRASH:
+                    return _("Move to Trash");
+                case CREATELINK:
+                    return _("Create Link");
+                case RESTOREFROMTRASH:
+                    return _("Restore from Trash");
+                case SETPERMISSIONS:
+                    return _("Set Permissions");
+                case RECURSIVESETPERMISSIONS:
+                    return _("Set Permissions Recursively");
+                case CHANGEOWNER:
+                    return _("Change Owner");
+                case CHANGEGROUP:
+                    return _("Change Group");
+                default:
+                    assert_not_reached ();
+            }
+        }
     }
 
     public class UndoActionData {
@@ -595,6 +630,23 @@ namespace Files {
                 return null;
             } else {
                 return action;
+            }
+        }
+
+        public string get_next_undo_description () {
+            var action = get_next_undo_action ();
+            if (action != null) {
+                return action.action_type.to_string ();
+            } else {
+                return "";
+            }
+        }
+        public string get_next_redo_description () {
+            var action = get_next_redo_action ();
+            if (action != null) {
+                return action.action_type.to_string ();
+            } else {
+                return "";
             }
         }
 
