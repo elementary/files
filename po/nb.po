@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-12 16:55+0000\n"
-"PO-Revision-Date: 2022-09-30 22:17+0000\n"
+"PO-Revision-Date: 2023-02-14 14:25+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "files/nb/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -2098,15 +2098,15 @@ msgstr "Neste"
 
 #: src/View/Widgets/HeaderBar.vala:92
 msgid "Zoom Out"
-msgstr ""
+msgstr "Forminsk"
 
 #: src/View/Widgets/HeaderBar.vala:101
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "Førstørr 1:1"
 
 #: src/View/Widgets/HeaderBar.vala:110
 msgid "Zoom In"
-msgstr ""
+msgstr "Forstørr"
 
 #: src/View/Widgets/HeaderBar.vala:139
 #, fuzzy
@@ -2121,12 +2121,13 @@ msgid "Redo Last Undone File Operation"
 msgstr "Filoperasjoner"
 
 #: src/View/Widgets/HeaderBar.vala:154
+#, fuzzy
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "Dobbeltklikk for å navigere"
 
 #: src/View/Widgets/HeaderBar.vala:155
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "Dobbeltklikking av mappe åpner den, enkeltklikk velger den"
 
 #: src/View/Widgets/HeaderBar.vala:160
 #, fuzzy
@@ -2160,7 +2161,7 @@ msgstr "Vis miniatyrbilder fra andre steder"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
-msgstr ""
+msgstr "Meny"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
