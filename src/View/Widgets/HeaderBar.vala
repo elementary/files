@@ -275,23 +275,20 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
     private void set_undo_redo_tooltips () {
         var undo_action_s = undo_manager.get_next_undo_description ();
         var redo_action_s = undo_manager.get_next_redo_description ();
-        if (undo_action_s != "") {
-            undo_button.tooltip_markup = Granite.markup_accel_tooltip (
-                undo_accels,
-                _("Undo %s").printf (undo_action_s)
-            );
-        } else {
-            undo_button.tooltip_text = _("No operation to undo");
-        }
 
-        if (redo_action_s != "") {
-            redo_button.tooltip_markup = Granite.markup_accel_tooltip (
-                redo_accels,
-                _("Redo %s").printf (redo_action_s)
-            );
-        } else {
-            redo_button.tooltip_text = _("No operation to redo");
-        }
+        undo_button.tooltip_markup = Granite.markup_accel_tooltip (
+            undo_accels,
+            undo_action_s != "" ?
+            _("Undo %s").printf (undo_action_s) :
+            _("No operation to undo")
+        );
+
+        redo_button.tooltip_markup = Granite.markup_accel_tooltip (
+            redo_accels,
+            redo_action_s != "" ?
+            _("Redo %s").printf (redo_action_s) :
+            _("No operation to redo")
+        );
     }
 
     private void on_zoom_setting_changed (Settings settings, string key) {
