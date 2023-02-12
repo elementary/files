@@ -279,6 +279,7 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         undo_button.tooltip_markup = Granite.markup_accel_tooltip (
             undo_accels,
             undo_action_s != "" ?
+            ///TRANSLATORS %s is a placeholder for a file operation type such as "Move"
             _("Undo %s").printf (undo_action_s) :
             _("No operation to undo")
         );
@@ -286,6 +287,7 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         redo_button.tooltip_markup = Granite.markup_accel_tooltip (
             redo_accels,
             redo_action_s != "" ?
+            ///TRANSLATORS %s is a placeholder for a file operation type such as "Move"
             _("Redo %s").printf (redo_action_s) :
             _("No operation to redo")
         );
