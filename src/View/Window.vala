@@ -217,6 +217,7 @@ namespace Files.View {
             /** Apply preferences */
             var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
             get_action ("show-hidden").set_state (prefs.show_hidden_files);
+            get_action ("show-local-thumbnails").set_state (prefs.show_local_thumbnails);
             get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
             get_action ("singleclick-select").set_state (prefs.singleclick_select);
             get_action ("folders-before-files").set_state (prefs.sort_directories_first);
