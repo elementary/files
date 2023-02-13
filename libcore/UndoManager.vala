@@ -633,12 +633,12 @@ namespace Files {
             }
         }
 
-        public string get_next_undo_description () {
-            var action = get_next_undo_action ();
+        public unowned string? get_next_undo_description () {
+            unowned var action = get_next_undo_action ();
             if (action != null) {
-                return action.action_type.to_string ();
+                return action.action_type.to_action_string ();
             } else {
-                return "";
+                return null;
             }
         }
         public string get_next_redo_description () {
