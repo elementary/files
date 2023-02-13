@@ -273,8 +273,8 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
     }
 
     private void set_undo_redo_tooltips () {
-        var undo_action_s = undo_manager.get_next_undo_description ();
-        var redo_action_s = undo_manager.get_next_redo_description ();
+        unowned var undo_action_s = undo_manager.get_next_undo_description ();
+        unowned var redo_action_s = undo_manager.get_next_redo_description ();
 
         undo_button.tooltip_markup = Granite.markup_accel_tooltip (
             undo_accels,
