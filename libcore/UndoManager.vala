@@ -16,7 +16,7 @@ namespace Files {
         CHANGEOWNER,
         CHANGEGROUP;
 
-        public string to_string () {
+        public unowned string to_action_string () {
             switch (this) {
                 case COPY:
                     return _("Copy");
