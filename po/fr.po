@@ -2153,7 +2153,7 @@ msgstr "Afficher dans la page"
 
 #: src/View/Widgets/HeaderBar.vala:171
 msgid "Hidden Files"
-msgstr "Fichiers cachés"
+msgstr "Les fichiers cachés"
 
 #: src/View/Widgets/HeaderBar.vala:175
 msgid "Local Thumbnails"
