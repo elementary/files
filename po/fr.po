@@ -2130,10 +2130,8 @@ msgid "Undo Last File Operation"
 msgstr "Annuler la dernière opération de fichier"
 
 #: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
 msgid "Redo Last Undone File Operation"
-msgstr "Opérations sur les fichiers"
+msgstr "Refaire la dernière opération de fichier"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
