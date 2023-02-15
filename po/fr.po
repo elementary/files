@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-12 16:55+0000\n"
-"PO-Revision-Date: 2023-02-15 08:41+0000\n"
+"PO-Revision-Date: 2023-02-16 21:22+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -2161,7 +2161,7 @@ msgstr "Miniatures locales"
 
 #: src/View/Widgets/HeaderBar.vala:180
 msgid "Remote Thumbnails"
-msgstr "Les miniatures distantes"
+msgstr "Miniatures distantes"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
