@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-12 16:55+0000\n"
 "PO-Revision-Date: 2023-02-15 08:39+0000\n"
-"Last-Translator: Matthew RONCHETTO <heyy+elementary@maatt.eu>\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -2131,7 +2131,7 @@ msgstr "Annuler la dernière opération sur le fichier"
 
 #: src/View/Widgets/HeaderBar.vala:147
 msgid "Redo Last Undone File Operation"
-msgstr "Refaire la dernière opération de fichier"
+msgstr "Rétablir la dernière opération sur le fichier"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
