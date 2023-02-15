@@ -425,7 +425,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
     public void set_current_name (string text) {
         chooser.set_current_name (text);
-        entry.grab_focus ();
     }
 
     public string get_uri () {
