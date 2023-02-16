@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-12 16:55+0000\n"
-"PO-Revision-Date: 2023-01-28 20:25+0000\n"
+"PO-Revision-Date: 2023-02-14 14:25+0000\n"
 "Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/files/en_GB/>\n"
@@ -2094,27 +2094,23 @@ msgstr "Next"
 
 #: src/View/Widgets/HeaderBar.vala:92
 msgid "Zoom Out"
-msgstr ""
+msgstr "Zoom Out"
 
 #: src/View/Widgets/HeaderBar.vala:101
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "Zoom 1:1"
 
 #: src/View/Widgets/HeaderBar.vala:110
 msgid "Zoom In"
-msgstr ""
+msgstr "Zoom In"
 
 #: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
 msgid "Undo Last File Operation"
-msgstr "File Operations"
+msgstr "Undo Last File Operation"
 
 #: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
 msgid "Redo Last Undone File Operation"
-msgstr "File Operations"
+msgstr "Redo Last Undone File Operation"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2122,41 +2118,31 @@ msgstr "Double-click to Navigate"
 
 #: src/View/Widgets/HeaderBar.vala:155
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "Double-click on a folder opens it, single-click selects it"
 
 #: src/View/Widgets/HeaderBar.vala:160
-#, fuzzy
-#| msgid "Folders Before Files"
 msgid "Sort Folders before Files"
-msgstr "Folders Before Files"
+msgstr "Sort Folders before Files"
 
 #: src/View/Widgets/HeaderBar.vala:164
-#, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Show in View"
-msgstr "Show Hidden Files"
+msgstr "Show in View"
 
 #: src/View/Widgets/HeaderBar.vala:171
-#, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Hidden Files"
-msgstr "Show Hidden Files"
+msgstr "Hidden Files"
 
 #: src/View/Widgets/HeaderBar.vala:175
-#, fuzzy
-#| msgid "Hide Thumbnails"
 msgid "Local Thumbnails"
-msgstr "Hide Thumbnails"
+msgstr "Local Thumbnails"
 
 #: src/View/Widgets/HeaderBar.vala:180
-#, fuzzy
-#| msgid "Show Remote Thumbnails"
 msgid "Remote Thumbnails"
-msgstr "Show Remote Thumbnails"
+msgstr "Remote Thumbnails"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"

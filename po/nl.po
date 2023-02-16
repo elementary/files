@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-12 16:55+0000\n"
-"PO-Revision-Date: 2023-02-10 17:25+0000\n"
-"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
+"PO-Revision-Date: 2023-02-14 14:25+0000\n"
+"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -2120,27 +2120,23 @@ msgstr "Volgende"
 
 #: src/View/Widgets/HeaderBar.vala:92
 msgid "Zoom Out"
-msgstr ""
+msgstr "Uitzoomen"
 
 #: src/View/Widgets/HeaderBar.vala:101
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "Zoom 1:1"
 
 #: src/View/Widgets/HeaderBar.vala:110
 msgid "Zoom In"
-msgstr ""
+msgstr "Inzoomen"
 
 #: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
 msgid "Undo Last File Operation"
-msgstr "Bestandsbewerkingen"
+msgstr "Laatste bestandsbewerkingen ongedaan maken"
 
 #: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
 msgid "Redo Last Undone File Operation"
-msgstr "Bestandsbewerkingen"
+msgstr "Laatste ongedaan gemaakte bestandsbewerking opnieuw uitvoeren"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2148,41 +2144,31 @@ msgstr "Dubbelklik om te navigeren"
 
 #: src/View/Widgets/HeaderBar.vala:155
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "Dubbelklik op een folder opent het, enkelklik selecteert het"
 
 #: src/View/Widgets/HeaderBar.vala:160
-#, fuzzy
-#| msgid "Folders Before Files"
 msgid "Sort Folders before Files"
-msgstr "Folders voor bestanden"
+msgstr "Folder sorteren voor bestanden"
 
 #: src/View/Widgets/HeaderBar.vala:164
-#, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Show in View"
-msgstr "Laat verborgen bestanden zien"
+msgstr "Toon in overzicht"
 
 #: src/View/Widgets/HeaderBar.vala:171
-#, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Hidden Files"
-msgstr "Laat verborgen bestanden zien"
+msgstr "Verborgen bestanden"
 
 #: src/View/Widgets/HeaderBar.vala:175
-#, fuzzy
-#| msgid "Hide Thumbnails"
 msgid "Local Thumbnails"
-msgstr "Verberg miniatuurweergaven"
+msgstr "Lokale miniaturen"
 
 #: src/View/Widgets/HeaderBar.vala:180
-#, fuzzy
-#| msgid "Show Remote Thumbnails"
 msgid "Remote Thumbnails"
-msgstr "Laat externe thumbnails zien"
+msgstr "Externe miniaturen"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"

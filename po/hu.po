@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-12 16:55+0000\n"
-"PO-Revision-Date: 2023-02-02 09:25+0000\n"
+"PO-Revision-Date: 2023-02-14 14:25+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -2077,27 +2077,23 @@ msgstr "Következő"
 
 #: src/View/Widgets/HeaderBar.vala:92
 msgid "Zoom Out"
-msgstr ""
+msgstr "Kicsinyítés"
 
 #: src/View/Widgets/HeaderBar.vala:101
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "1:1 nagyítás"
 
 #: src/View/Widgets/HeaderBar.vala:110
 msgid "Zoom In"
-msgstr ""
+msgstr "Nagyítás"
 
 #: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
 msgid "Undo Last File Operation"
-msgstr "Fájlműveletek"
+msgstr "A legutóbbi fájlművelet visszavonása"
 
 #: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
 msgid "Redo Last Undone File Operation"
-msgstr "Fájlműveletek"
+msgstr "A legutóbbi visszavont fájlművelet újbóli elvégzése"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2105,41 +2101,31 @@ msgstr "Duplakattintásos navigáció"
 
 #: src/View/Widgets/HeaderBar.vala:155
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "Dupla kattintás a mappára megnyitja azt, egy kattintás kiválasztja"
 
 #: src/View/Widgets/HeaderBar.vala:160
-#, fuzzy
-#| msgid "Folders Before Files"
 msgid "Sort Folders before Files"
-msgstr "Mappák a fájlok előtt"
+msgstr "Mappák rendezése a fájlok elé"
 
 #: src/View/Widgets/HeaderBar.vala:164
-#, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Show in View"
-msgstr "Rejtett fájlok megjelenítése"
+msgstr "Megjelenítés a nézetben"
 
 #: src/View/Widgets/HeaderBar.vala:171
-#, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Hidden Files"
-msgstr "Rejtett fájlok megjelenítése"
+msgstr "Rejtett fájlok"
 
 #: src/View/Widgets/HeaderBar.vala:175
-#, fuzzy
-#| msgid "Hide Thumbnails"
 msgid "Local Thumbnails"
-msgstr "Miniatűrök elrejtése"
+msgstr "Helyi előnézetek"
 
 #: src/View/Widgets/HeaderBar.vala:180
-#, fuzzy
-#| msgid "Show Remote Thumbnails"
 msgid "Remote Thumbnails"
-msgstr "Távoli miniatűrök megjelenítése"
+msgstr "Távoli előnézetek"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
-msgstr ""
+msgstr "Menü"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"

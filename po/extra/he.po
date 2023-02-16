@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-12 16:55+0000\n"
-"PO-Revision-Date: 2022-11-03 00:03+0000\n"
+"PO-Revision-Date: 2023-02-14 14:25+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
@@ -70,7 +70,7 @@ msgstr "שיפורים:"
 #: data/io.elementary.files.appdata.xml.in.in:36
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
-msgstr ""
+msgstr "ההגדרות הגלובליות הועברו מתפריט ההקשר לתפריט יישומים בסרגל העליון"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 #: data/io.elementary.files.appdata.xml.in.in:47
