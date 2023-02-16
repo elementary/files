@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2023-02-14 14:25+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
@@ -1209,11 +1209,186 @@ msgstr "Всеодно _копіювати"
 msgid "Empty _Trash"
 msgstr "Спорожнити _смітник"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Копіювати"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Undo Duplicate"
+msgstr "Дублювати вкладку"
+
+#: libcore/UndoManager.vala:26
+#, fuzzy
+#| msgid "Undo Close Tab"
+msgid "Undo Move"
+msgstr "Повернути закриту вкладку"
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Перейменувати"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Відмінити створення порожнього файлу"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Відмінити створення файлу з шаблону"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Відмінити створення %d каталогу"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Перемістити до смітника"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_Відмінити створення посилання на %d елемент"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Відновити зі смітника"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Налаштування дозволів"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Відмінити зміну прав на %d елемент"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Відмінити зміну власника %d елемента"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Відмінити зміну групи %d елемента"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Копіювати"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Redo Duplicate"
+msgstr "Дублювати вкладку"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Перейменувати"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "_Повернути створення порожнього файлу"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "_Повернути створення файлу зі шаблону"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "Не вдалося створити теку"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Перемістити до смітника"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "_Повернути створення посилання на %d елемент"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Відновити зі смітника"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Налаштування дозволів"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Повернути зміну прав на %d елемент"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Повернути зміну власника %d елемента"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Повернути зміну групи %d елемента"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Початкове розташування неможливо визначити"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Відкрити теку зі сміттям і відновити власноруч"
 
@@ -2114,33 +2289,25 @@ msgstr "Відкрити у новій вкладці"
 msgid "Open in Other Application…"
 msgstr "Відкрити в іншому застосунку…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Попередній"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Наступний"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr "Зменшити"
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr "Масштаб 1:1"
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr "Збільшити"
-
-#: src/View/Widgets/HeaderBar.vala:139
-msgid "Undo Last File Operation"
-msgstr "Скасувати останню дію з файлом"
-
-#: src/View/Widgets/HeaderBar.vala:147
-msgid "Redo Last Undone File Operation"
-msgstr "Повторити останню скасовану дію з файлом"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2173,6 +2340,20 @@ msgstr "Віддалені ескізи"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr "Меню"
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "Час операції вичерпано."
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "Час операції вичерпано."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2270,11 +2451,14 @@ msgstr "Під цією текою"
 msgid "Recently Used"
 msgstr "Нещодавні"
 
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Скасувати останню дію з файлом"
+
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Повторити останню скасовану дію з файлом"
+
 #~ msgid "Select Folders with Single Click"
 #~ msgstr "Вибір тек одинарним клацанням миші"
-
-#~ msgid "Setting permissions"
-#~ msgstr "Налаштування дозволів"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2503,18 +2687,6 @@ msgstr "Нещодавні"
 #~ msgstr[1] "_Відмінити перейменування %d елементів"
 #~ msgstr[2] "_Відмінити перейменування %d елементів"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Відмінити створення порожнього файлу"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Відмінити створення файлу з шаблону"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Відмінити створення %d каталогу"
-#~ msgstr[1] "_Відмінити створення %d каталогів"
-#~ msgstr[2] "_Відмінити створення %d каталогів"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Відмінити переміщення у смітник %d елемента"
@@ -2527,12 +2699,6 @@ msgstr "Нещодавні"
 #~ msgstr[1] "_Відмінити відновлення %d елементів переміщених у смітник"
 #~ msgstr[2] "_Відмінити відновлення %d елементів переміщених у смітник"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Відмінити створення посилання на %d елемент"
-#~ msgstr[1] "_Відмінити створення посилання на %d елементів"
-#~ msgstr[2] "_Відмінити створення посилання на %d елементів"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_Відмінити видалення %d елемента"
@@ -2544,24 +2710,6 @@ msgstr "Нещодавні"
 #~ msgstr[0] "Відмінити рекурсивну зміну повноважень елементу %d"
 #~ msgstr[1] "Відмінити рекурсивну зміну повноважень елементів %d"
 #~ msgstr[2] "Відмінити рекурсивну зміну повноважень елементів %d"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Відмінити зміну прав на %d елемент"
-#~ msgstr[1] "Відмінити зміну прав на %d елементів"
-#~ msgstr[2] "Відмінити зміну прав на %d елементів"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Відмінити зміну групи %d елемента"
-#~ msgstr[1] "Відмінити зміну групи %d елементів"
-#~ msgstr[2] "Відмінити зміну групи %d елементів"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Відмінити зміну власника %d елемента"
-#~ msgstr[1] "Відмінити зміну власника %d елементів"
-#~ msgstr[2] "Відмінити зміну власника %d елементів"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2587,12 +2735,6 @@ msgstr "Нещодавні"
 #~ msgstr[1] "_Повернути перейменування %d елементів"
 #~ msgstr[2] "_Повернути перейменування %d елементів"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Повернути створення порожнього файлу"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Повернути створення файлу зі шаблону"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Повернути створення %d каталога"
@@ -2611,12 +2753,6 @@ msgstr "Нещодавні"
 #~ msgstr[1] "_Повернути відновлення зі смітник %d елемента"
 #~ msgstr[2] "_Повернути відновлення зі смітник %d елемента"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Повернути створення посилання на %d елемент"
-#~ msgstr[1] "_Повернути створення посилання на %d елементів"
-#~ msgstr[2] "_Повернути створення посилання на %d елементів"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Повернути видалення %d елемента"
@@ -2628,24 +2764,6 @@ msgstr "Нещодавні"
 #~ msgstr[0] "Відновити рекурсивну зміну повноважень елементу %d"
 #~ msgstr[1] "Відновити рекурсивну зміну повноважень елементів %d"
 #~ msgstr[2] "Відновити рекурсивну зміну повноважень елементів %d"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Повернути зміну прав на %d елемент"
-#~ msgstr[1] "Повернути зміну прав на %d елементів"
-#~ msgstr[2] "Повернути зміну прав на %d елементів"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Повернути зміну групи %d елемента"
-#~ msgstr[1] "Повернути зміну групи %d елементів"
-#~ msgstr[2] "Повернути зміну групи %d елементів"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Повернути зміну власника %d елемента"
-#~ msgstr[1] "Повернути зміну власника %d елементів"
-#~ msgstr[2] "Повернути зміну власника %d елементів"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

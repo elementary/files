@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2023-02-14 14:25+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
@@ -1180,11 +1180,186 @@ msgstr "Másolás mi_ndenképp"
 msgid "Empty _Trash"
 msgstr "_Kuka ürítése"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Másolás"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Undo Duplicate"
+msgstr "Lap megkettőzése"
+
+#: libcore/UndoManager.vala:26
+#, fuzzy
+#| msgid "Undo Close Tab"
+msgid "Undo Move"
+msgstr "Lap bezárásának visszavonása"
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Átnevezés"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "Ü_res fájl létrehozásának visszavonása"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "Ü_res sablonfájl létrehozásának visszavonása"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "%d ü_res mappa létrehozásának visszavonása"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Áthelyezés a kukába"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "%d elemre mutató _link létrehozásának visszavonása"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Visszaállítás a kukából"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Jogosultságok beállítása"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "%d elem jogosultságmódosításának visszavonása"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "%d elem tulajdonosmódosításának visszavonása"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "%d elem csoportmódosításának visszavonása"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Másolás"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Redo Duplicate"
+msgstr "Lap megkettőzése"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Átnevezés"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "Ü_res fájl létrehozása mégis"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "Ü_res sablonfájl létrehozása mégis"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "Mappa létrehozása sikertelen"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Áthelyezés a kukába"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "%d elemre mutató _link létrehozása újra"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Visszaállítás a kukából"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Jogosultságok beállítása"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "%d elem jogosultságmódosítása újra"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "%d elem tulajdonosmódosítása újra"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "%d elem csoportmódosítása újra"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Az eredeti hely ismeretlen"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Kézi helyreállítás a Kuka megnyitásával"
 
@@ -2067,33 +2242,25 @@ msgstr "Megnyitás új lapon"
 msgid "Open in Other Application…"
 msgstr "Megnyitás másik alkalmazással…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Előző"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Következő"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr "Kicsinyítés"
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr "1:1 nagyítás"
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr "Nagyítás"
-
-#: src/View/Widgets/HeaderBar.vala:139
-msgid "Undo Last File Operation"
-msgstr "A legutóbbi fájlművelet visszavonása"
-
-#: src/View/Widgets/HeaderBar.vala:147
-msgid "Redo Last Undone File Operation"
-msgstr "A legutóbbi visszavont fájlművelet újbóli elvégzése"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2126,6 +2293,20 @@ msgstr "Távoli előnézetek"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr "Menü"
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "A művelet időtúllépés miatt megszakadt."
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "A művelet időtúllépés miatt megszakadt."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2219,11 +2400,14 @@ msgstr "Ezen mappa alatt"
 msgid "Recently Used"
 msgstr "Mostanában használt"
 
+#~ msgid "Undo Last File Operation"
+#~ msgstr "A legutóbbi fájlművelet visszavonása"
+
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "A legutóbbi visszavont fájlművelet újbóli elvégzése"
+
 #~ msgid "Select Folders with Single Click"
 #~ msgstr "Mappák kijelölése egy kattintással"
-
-#~ msgid "Setting permissions"
-#~ msgstr "Jogosultságok beállítása"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2457,17 +2641,6 @@ msgstr "Mostanában használt"
 #~ msgstr[0] "%d elem át_nevezésének visszavonása"
 #~ msgstr[1] "%d elem át_nevezésének visszavonása"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "Ü_res fájl létrehozásának visszavonása"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "Ü_res sablonfájl létrehozásának visszavonása"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "%d ü_res mappa létrehozásának visszavonása"
-#~ msgstr[1] "%d ü_res mappa létrehozásának visszavonása"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "%d elem kukába át_helyezésének visszavonása"
@@ -2478,11 +2651,6 @@ msgstr "Mostanában használt"
 #~ msgstr[0] "%d elem kukából való _helyreállításának visszavonása"
 #~ msgstr[1] "%d elem kukából való _helyreállításának visszavonása"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "%d elemre mutató _link létrehozásának visszavonása"
-#~ msgstr[1] "%d elemre mutató _link létrehozásának visszavonása"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "%d elem _törlésének visszavonása"
@@ -2492,21 +2660,6 @@ msgstr "Mostanában használt"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "%d elem rekurzív jogosultságmódosításának visszavonása"
 #~ msgstr[1] "%d elem rekurzív jogosultságmódosításának visszavonása"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "%d elem jogosultságmódosításának visszavonása"
-#~ msgstr[1] "%d elem jogosultságmódosításának visszavonása"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "%d elem csoportmódosításának visszavonása"
-#~ msgstr[1] "%d elem csoportmódosításának visszavonása"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "%d elem tulajdonosmódosításának visszavonása"
-#~ msgstr[1] "%d elem tulajdonosmódosításának visszavonása"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2528,12 +2681,6 @@ msgstr "Mostanában használt"
 #~ msgstr[0] "%d elem át_nevezése újra"
 #~ msgstr[1] "%d elem át_nevezése újra"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "Ü_res fájl létrehozása mégis"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "Ü_res sablonfájl létrehozása mégis"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "%d _mappa létrehozása újra"
@@ -2549,11 +2696,6 @@ msgstr "Mostanában használt"
 #~ msgstr[0] "%d elem kukából való _helyreállítása újra"
 #~ msgstr[1] "%d elem kukából való _helyreállítása újra"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "%d elemre mutató _link létrehozása újra"
-#~ msgstr[1] "%d elemre mutató _link létrehozása újra"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "%d elem _törlése újra"
@@ -2563,21 +2705,6 @@ msgstr "Mostanában használt"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "%d elem rekurzív jogosultságmódosítása újra"
 #~ msgstr[1] "%d elem rekurzív jogosultságmódosítása újra"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "%d elem jogosultságmódosítása újra"
-#~ msgstr[1] "%d elem jogosultságmódosítása újra"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "%d elem csoportmódosítása újra"
-#~ msgstr[1] "%d elem csoportmódosítása újra"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "%d elem tulajdonosmódosítása újra"
-#~ msgstr[1] "%d elem tulajdonosmódosítása újra"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

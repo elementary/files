@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2017-12-30 00:08+0000\n"
 "Last-Translator: Hải Hồ <hochihai1997@gmail.com>\n"
 "Language-Team: Vietnamese <https://weblate.elementary.io/projects/files/"
@@ -1190,11 +1190,147 @@ msgstr "Sao chép _Mọi cách"
 msgid "Empty _Trash"
 msgstr "Làm sạch thùng rác"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+msgid "Undo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "Đang xóa tập tin"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Đổi tên"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+msgid "Undo Create Empty File"
+msgstr "Tạo một tập tin trống '%s'"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+msgid "Undo Create File from Template"
+msgstr "Tạo một thư mục mới '%s'"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "Open Parent Folder"
+msgid "Undo Create Folder"
+msgstr "Mở thư mục cha"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Di chuyển vào Thùng rác"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+msgid "Undo Create Link"
+msgstr "Xóa liên kết đến %d mục"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+msgid "Undo Restore from Trash"
+msgstr "Phục hồi %d mục từ thùng rác"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+msgid "Undo Set Permissions"
+msgstr "Các quyền"
+
+#: libcore/UndoManager.vala:44
+msgid "Undo Set Permissions Recursively"
+msgstr ""
+
+#: libcore/UndoManager.vala:46
+msgid "Undo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:48
+msgid "Undo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:57
+msgid "Redo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "Đang xóa tập tin"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Đổi tên"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+msgid "Redo Create Empty File"
+msgstr "Tạo một tập tin trống '%s'"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+msgid "Redo Create File from Template"
+msgstr "Tạo một thư mục mới '%s'"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr "Không thể mở tập tin"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Di chuyển vào Thùng rác"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+msgid "Redo Create Link"
+msgstr "Xóa liên kết đến %d mục"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+msgid "Redo Restore from Trash"
+msgstr "Phục hồi %d mục từ thùng rác"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+msgid "Redo Set Permissions"
+msgstr "Các quyền"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+msgid "Redo Set Permissions Recursively"
+msgstr "Phục hồi quyền hạn gốc của '%s'"
+
+#: libcore/UndoManager.vala:81
+msgid "Redo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:83
+msgid "Redo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr ""
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Mở thư mục thùng rác và khôi phục bằng tay"
 
@@ -2098,37 +2234,25 @@ msgstr "Mở trong Tab mới"
 msgid "Open in Other Application…"
 msgstr "Mở trong ứng dụng khác…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Trước đó"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Kế tiếp"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Thao tác tập tin"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Thao tác tập tin"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2164,6 +2288,16 @@ msgstr ""
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+msgid "No operation to undo"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+msgid "No operation to redo"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
@@ -2257,8 +2391,14 @@ msgid "Recently Used"
 msgstr "Gần đây"
 
 #, fuzzy
-#~ msgid "Setting permissions"
-#~ msgstr "Các quyền"
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Thao tác tập tin"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Thao tác tập tin"
 
 #, fuzzy
 #~ msgid "Paste Link"
@@ -2394,10 +2534,6 @@ msgstr "Gần đây"
 #~ msgid "Move '%s' to '%s'"
 #~ msgstr "Di chuyển '%s' trở lại '%s'"
 
-#, fuzzy
-#~ msgid "Create new file '%s' from template "
-#~ msgstr "Tạo một thư mục mới '%s'"
-
 #~ msgid "Create an empty file '%s'"
 #~ msgstr "Tạo một tập tin trống '%s'"
 
@@ -2440,18 +2576,9 @@ msgstr "Gần đây"
 #~ msgstr[0] "Xóa %d mục trùng lặp"
 
 #, fuzzy
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "Tạo một tập tin trống '%s'"
-
-#, fuzzy
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "Không thể di chuyển tập tin vào thùng rác hoặc xóa nó"
-
-#, fuzzy
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "Xóa liên kết đến %d mục"
 
 #, fuzzy
 #~ msgid "_Undo delete of %d item"
@@ -2464,18 +2591,9 @@ msgstr "Gần đây"
 #~ msgstr[0] "Xóa %d mục trùng lặp"
 
 #, fuzzy
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "Tạo một tập tin trống '%s'"
-
-#, fuzzy
 #~ msgid "_Redo move to trash of %d item"
 #~ msgid_plural "_Redo move to trash of %d items"
 #~ msgstr[0] "Không thể di chuyển tập tin vào thùng rác hoặc xóa nó"
-
-#, fuzzy
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "Xóa liên kết đến %d mục"
 
 #, fuzzy
 #~ msgid "_Redo delete of %d item"
@@ -2485,11 +2603,6 @@ msgstr "Gần đây"
 #, fuzzy
 #~ msgid "Redo recursive change permissions of %d item"
 #~ msgid_plural "Redo recursive change permissions of %d items"
-#~ msgstr[0] "Phục hồi quyền hạn gốc của '%s'"
-
-#, fuzzy
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
 #~ msgstr[0] "Phục hồi quyền hạn gốc của '%s'"
 
 #, fuzzy

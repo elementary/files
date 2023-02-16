@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -1237,11 +1237,184 @@ msgstr "Copiază_oricum"
 msgid "Empty _Trash"
 msgstr "Goliți _Trash"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Copie"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "Duplicarea \"%B\""
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Redenumește"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Anulați crearea unui fișier gol"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Anulați crearea unui fișier din șablon"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Anulați crearea directorului %d 1"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Aruncă la gunoi"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_Anulați crearea linkului de %d 1 element"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Restaurați din Coșul de gunoi"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Setați permisiunile"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Respingerea permisiunilor de modificare a %d 1 element"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Renunțați la modificarea %d 1 element"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Anulați grupul de modificări din %d 1 articol"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Copie"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "Duplicarea \"%B\""
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Redenumește"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "_ Crearea unui fișier gol"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "_Recrearea unui fișier din șablon"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr ""
+"Nu a reușit să se creeze folderul ↵\n"
+"↵\n"
+"%s"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Aruncă la gunoi"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "_Redo crea link-ul la %d 1 element"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Restaurați din Coșul de gunoi"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Setați permisiunile"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Permiteți modificarea permisiunilor de modificare a %d 1 element"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Redenumește schimbarea proprietarului %d 1 element"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Redenumiți și schimbați grupul de %d 1 element"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Locația originală nu a putut fi determinată"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Deschideți coșul de gunoi și restaurați carpeta manual"
 
@@ -2170,37 +2343,25 @@ msgstr "Deschideți într-o filă nouă"
 msgid "Open in Other Application…"
 msgstr "Deschideți cu altă aplicație …"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Anterior"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Înainte"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Operații de fișiere"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Operații de fișiere"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2242,6 +2403,20 @@ msgstr "Afișați miniaturile de la distanță"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "Operația a expirat."
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "Operația a expirat."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2341,8 +2516,15 @@ msgstr "Sub acest dosar"
 msgid "Recently Used"
 msgstr "Folosit recent"
 
-#~ msgid "Setting permissions"
-#~ msgstr "Setați permisiunile"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Operații de fișiere"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Operații de fișiere"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2576,17 +2758,6 @@ msgstr "Folosit recent"
 #~ msgstr[0] "_Renunțați la redenumirea %d 1 articol"
 #~ msgstr[1] "_Renunțați la redenumirea %d 2 articole"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Anulați crearea unui fișier gol"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Anulați crearea unui fișier din șablon"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Anulați crearea directorului %d 1"
-#~ msgstr[1] "_Anulați crearea directorului %d 2"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Anulați mutarea în coșul de gunoi a  %d 1 element"
@@ -2596,11 +2767,6 @@ msgstr "Folosit recent"
 #~ msgid_plural "_Undo restore from trash of %d items"
 #~ msgstr[0] "_Renunțați la restabilirea din coșul de gunoi a %d 1 articol"
 #~ msgstr[1] "_Renunțați la restabilirea din coșul de gunoi a %d 2 articole"
-
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Anulați crearea linkului de %d 1 element"
-#~ msgstr[1] "_Anulați crearea linkului de %d 2 elemente"
 
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
@@ -2613,21 +2779,6 @@ msgstr "Folosit recent"
 #~ "Renunțați la permisiunile de modificare recursivă din articolul %d 1"
 #~ msgstr[1] ""
 #~ "Renunțați la permisiunile de modificare recursivă din articolul %d 2"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Respingerea permisiunilor de modificare a %d 1 element"
-#~ msgstr[1] "Respingerea permisiunilor de modificare a %d 2 elemente"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Anulați grupul de modificări din %d 1 articol"
-#~ msgstr[1] "Anulați grupul de modificări din %d 2 articole"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Renunțați la modificarea %d 1 element"
-#~ msgstr[1] "Renunțați la modificarea %d 2 elemente"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2649,12 +2800,6 @@ msgstr "Folosit recent"
 #~ msgstr[0] "_Redenumiți %d 1 element"
 #~ msgstr[1] "_Redenumiți %d 2 elemente"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_ Crearea unui fișier gol"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Recrearea unui fișier din șablon"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Crearea de %d 1 dosar"
@@ -2670,11 +2815,6 @@ msgstr "Folosit recent"
 #~ msgstr[0] "_Mutați restaurați din coșul de gunoi de %d 1 element"
 #~ msgstr[1] "_Mutați restaurați din coșul de gunoi de %d 2 elemente"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Redo crea link-ul la %d 1 element"
-#~ msgstr[1] "_Redo crea link-ul la %d 2 elemente"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Redo șterge %d 1 element"
@@ -2684,22 +2824,6 @@ msgstr "Folosit recent"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "Refaceți permisiunile de modificare recursivă a %d 1 element"
 #~ msgstr[1] "Refaceți permisiunile de modificare recursivă a %d 2 elemente"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Permiteți modificarea permisiunilor de modificare a %d 1 element"
-#~ msgstr[1] ""
-#~ "Permiteți modificarea permisiunilor de modificare a %d 2 elemente"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Redenumiți și schimbați grupul de %d 1 element"
-#~ msgstr[1] "Redenumiți și schimbați grupul de %d 2 elemente"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Redenumește schimbarea proprietarului %d 1 element"
-#~ msgstr[1] "Redenumește schimbarea proprietarului %d 2 elemente"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

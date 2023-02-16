@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2015-12-21 13:46+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Georgian <ka@li.org>\n"
@@ -1171,11 +1171,150 @@ msgstr ""
 msgid "Empty _Trash"
 msgstr "_ნაგვის დაცარიელება"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "კოპირება"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "'%s'-ის დუბლირება '%s'-ში"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+msgid "Undo Rename"
+msgstr ""
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+msgid "Undo Create Empty File"
+msgstr "ცარიელი ფაილის შექმნა სახელით '%s'"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+msgid "Undo Create File from Template"
+msgstr "'%s' ახალი ფაილის შექმნა შაბლონიდან "
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "Open Parent Folder"
+msgid "Undo Create Folder"
+msgstr "მშობელი საქაღალდის გახსნა"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "ნაგავში გადატანა"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+msgid "Undo Create Link"
+msgstr "%d ელემენტის ბმულის შექმნა"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "ნაგვიდან აღდგენა"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+msgid "Undo Set Permissions"
+msgstr "'%s'-ის უფლებების დაყენება"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+msgid "Undo Set Permissions Recursively"
+msgstr "'%s'-ის უფლებების დაყენება"
+
+#: libcore/UndoManager.vala:46
+msgid "Undo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:48
+msgid "Undo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "კოპირება"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "'%s'-ის დუბლირება '%s'-ში"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+msgid "Redo Rename"
+msgstr ""
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+msgid "Redo Create Empty File"
+msgstr "ცარიელი ფაილის შექმნა სახელით '%s'"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+msgid "Redo Create File from Template"
+msgstr "'%s' ახალი ფაილის შექმნა შაბლონიდან "
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr "'%s'-ზე გადარქმევა ვერ მოხერხდა"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "ნაგავში გადატანა"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+msgid "Redo Create Link"
+msgstr "%d ელემენტის ბმულის შექმნა"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "ნაგვიდან აღდგენა"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+msgid "Redo Set Permissions"
+msgstr "'%s'-ის უფლებების დაყენება"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+msgid "Redo Set Permissions Recursively"
+msgstr "'%s'-ის უფლებების დაყენება"
+
+#: libcore/UndoManager.vala:81
+msgid "Redo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:83
+msgid "Redo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "საწყისი მდებაროების დადგენა ვერ მოხერხდა"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "ნაგვის საქაღალდის გახსნა და ფაილის ხელით აღდგენა"
 
@@ -2071,37 +2210,25 @@ msgstr "ახალ ჩანართში გახსნა"
 msgid "Open in Other Application…"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "ფაილური ოპერაციები"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "ფაილური ოპერაციები"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2139,6 +2266,16 @@ msgstr "დამატებითი _დეტალების ჩვენ
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+msgid "No operation to undo"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+msgid "No operation to redo"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
@@ -2232,8 +2369,14 @@ msgid "Recently Used"
 msgstr "ბოლო"
 
 #, fuzzy
-#~ msgid "Setting permissions"
-#~ msgstr "'%s'-ის უფლებების დაყენება"
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "ფაილური ოპერაციები"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "ფაილური ოპერაციები"
 
 #, fuzzy
 #~ msgid "Paste Link"
@@ -2403,22 +2546,9 @@ msgstr "ბოლო"
 #~ msgstr[0] "%d ელემენტის დუბლი '%s'-ში"
 
 #, fuzzy
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "ცარიელი ფაილის შექმნა სახელით '%s'"
-
-#, fuzzy
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "'%s' ახალი ფაილის შექმნა შაბლონიდან "
-
-#, fuzzy
 #~ msgid "_Undo restore from trash of %d item"
 #~ msgid_plural "_Undo restore from trash of %d items"
 #~ msgstr[0] "ნაგვიდან აღდგენა"
-
-#, fuzzy
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "%d ელემენტის ბმულის შექმნა"
 
 #, fuzzy
 #~ msgid "_Undo delete of %d item"
@@ -2426,32 +2556,14 @@ msgstr "ბოლო"
 #~ msgstr[0] "%d ელემენტის ბმულების წაშლა"
 
 #, fuzzy
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "'%s'-ის უფლებების დაყენება"
-
-#, fuzzy
 #~ msgid "_Redo duplicate of %d item"
 #~ msgid_plural "_Redo duplicate of %d items"
 #~ msgstr[0] "%d დუბლირებული ელემენტის წაშლა"
 
 #, fuzzy
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "ცარიელი ფაილის შექმნა სახელით '%s'"
-
-#, fuzzy
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "'%s' ახალი ფაილის შექმნა შაბლონიდან "
-
-#, fuzzy
 #~ msgid "_Redo restore from trash of %d item"
 #~ msgid_plural "_Redo restore from trash of %d items"
 #~ msgstr[0] "ნაგვიდან აღდგენა"
-
-#, fuzzy
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "%d ელემენტის ბმულის შექმნა"
 
 #, fuzzy
 #~ msgid "_Redo delete of %d item"
@@ -2462,11 +2574,6 @@ msgstr "ბოლო"
 #~ msgid "Redo recursive change permissions of %d item"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "'%s'-ის საწყისი უფლებების აღდგენა"
-
-#, fuzzy
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "'%s'-ის უფლებების დაყენება"
 
 #~ msgid "Show more _details"
 #~ msgstr "დამატებითი _დეტალების ჩვენება"

@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2023-02-14 14:25+0000\n"
 "Last-Translator: lenemter <lenemter@gmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
-"\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
+">\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1197,11 +1197,186 @@ msgstr "_Всё равно копировать"
 msgid "Empty _Trash"
 msgstr "О_чистить корзину"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Копировать"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Undo Duplicate"
+msgstr "Дублировать вкладку"
+
+#: libcore/UndoManager.vala:26
+#, fuzzy
+#| msgid "Undo Close Tab"
+msgid "Undo Move"
+msgstr "Вернуть закрытую вкладку"
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Переименовать"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Отменить создание пустого файла"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Отменить создание файла из шаблона"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Отменить создание %d папки"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Переместить в корзину"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_Отменить создание ссылки на %d объект"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Восстановить из корзины"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Установка прав доступа"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Отменить изменение прав доступа к %d объекту"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Отменить изменение владельца для %d объекта"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Отменить изменение группы для %d объекта"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Копировать"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Redo Duplicate"
+msgstr "Дублировать вкладку"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Переименовать"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "_Повторить создание пустого файла"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "_Повторить создание файла из шаблона"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "Не удалось создать папку"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Переместить в корзину"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "_Повторить создание ссылок на %d объект"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Восстановить из корзины"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Установка прав доступа"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Повторить изменение прав доступа к %d объекту"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Повторить изменение владельца %d объекта"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Повторить изменение группы для %d объекта"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Невозможно определить исходное расположение"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Открыть корзину и восстановить вручную"
 
@@ -2106,33 +2281,25 @@ msgstr "Открыть в новой вкладке"
 msgid "Open in Other Application…"
 msgstr "Открыть в другом приложении…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Назад"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Далее"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr "Отдалить"
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr "Сбросить масштаб"
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr "Приблизить"
-
-#: src/View/Widgets/HeaderBar.vala:139
-msgid "Undo Last File Operation"
-msgstr "Отменить последнюю операцию с файлами"
-
-#: src/View/Widgets/HeaderBar.vala:147
-msgid "Redo Last Undone File Operation"
-msgstr "Повторить последнюю операцию с файлами"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2165,6 +2332,20 @@ msgstr "Удалённые миниатюры"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr "Меню"
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "Время операции вышло."
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "Время операции вышло."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2262,11 +2443,14 @@ msgstr "Ниже этой папки"
 msgid "Recently Used"
 msgstr "Недавно использованные"
 
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Отменить последнюю операцию с файлами"
+
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Повторить последнюю операцию с файлами"
+
 #~ msgid "Select Folders with Single Click"
 #~ msgstr "Выбирать папки одним щелчком"
-
-#~ msgid "Setting permissions"
-#~ msgstr "Установка прав доступа"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2503,18 +2687,6 @@ msgstr "Недавно использованные"
 #~ msgstr[1] "_Отменить переименование %d объектов"
 #~ msgstr[2] "_Отменить переименование %d объектов"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Отменить создание пустого файла"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Отменить создание файла из шаблона"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Отменить создание %d папки"
-#~ msgstr[1] "_Отменить создание %d папок"
-#~ msgstr[2] "_Отменить создание %d папок"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Отменить перемещение %d объекта в корзину"
@@ -2527,12 +2699,6 @@ msgstr "Недавно использованные"
 #~ msgstr[1] "_Отменить восстановление %d объектов из корзины"
 #~ msgstr[2] "_Отменить восстановление %d объектов из корзины"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Отменить создание ссылки на %d объект"
-#~ msgstr[1] "_Отменить создание ссылки на %d объекта"
-#~ msgstr[2] "_Отменить создание ссылок на %d объектов"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_Отменить удаление %d объекта"
@@ -2544,24 +2710,6 @@ msgstr "Недавно использованные"
 #~ msgstr[0] "Отменить рекурсивное изменение прав доступа к %d объекту"
 #~ msgstr[1] "Отменить рекурсивное изменение прав доступа к %d объектам"
 #~ msgstr[2] "Отменить рекурсивное изменение прав доступа к %d объектам"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Отменить изменение прав доступа к %d объекту"
-#~ msgstr[1] "Отменить изменение прав доступа к %d объектам"
-#~ msgstr[2] "Отменить изменение прав доступа к %d объектам"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Отменить изменение группы для %d объекта"
-#~ msgstr[1] "Отменить изменение группы для %d объектов"
-#~ msgstr[2] "Отменить изменение группы для %d объектов"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Отменить изменение владельца для %d объекта"
-#~ msgstr[1] "Отменить изменение владельца для %d объектов"
-#~ msgstr[2] "Отменить изменение владельца для %d объектов"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2587,12 +2735,6 @@ msgstr "Недавно использованные"
 #~ msgstr[1] "_Повторить переименование %d объектов"
 #~ msgstr[2] "_Повторить переименование %d объектов"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Повторить создание пустого файла"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Повторить создание файла из шаблона"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Повторить создание %d папки"
@@ -2611,12 +2753,6 @@ msgstr "Недавно использованные"
 #~ msgstr[1] "_Повторить восстановление %d объектов из корзины"
 #~ msgstr[2] "_Повторить восстановление %d объектов из корзины"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Повторить создание ссылок на %d объект"
-#~ msgstr[1] "_Повторить создание ссылок на %d объекта"
-#~ msgstr[2] "_Повторить создание ссылок на %d объектов"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Повторить удаление %d объекта"
@@ -2628,24 +2764,6 @@ msgstr "Недавно использованные"
 #~ msgstr[0] "Повторить рекурсивное изменение прав доступа к %d объекту"
 #~ msgstr[1] "Повторить рекурсивное изменение прав доступа к %d объектам"
 #~ msgstr[2] "Повторить рекурсивное изменение прав доступа к %d объектам"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Повторить изменение прав доступа к %d объекту"
-#~ msgstr[1] "Повторить изменение прав доступа к %d объектам"
-#~ msgstr[2] "Повторить изменение прав доступа к %d объектам"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Повторить изменение группы для %d объекта"
-#~ msgstr[1] "Повторить изменение группы для %d объектов"
-#~ msgstr[2] "Повторить изменение группы для %d объектов"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Повторить изменение владельца %d объекта"
-#~ msgstr[1] "Повторить изменение владельца %d объектов"
-#~ msgstr[2] "Повторить изменение владельца %d объектов"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

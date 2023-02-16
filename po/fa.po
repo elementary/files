@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -1189,11 +1189,176 @@ msgstr "در هر _صورت رونویسی شود"
 msgid "Empty _Trash"
 msgstr "خالی کردن _زباله‌دان"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+msgid "Undo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "در حال تکثیر «%B»"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Re_name"
+msgid "Undo Rename"
+msgstr "ت_غییر نام"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_واگشت ساخت یک پرونده جدید"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_واگشت ساخت یک پرونده از روی قالب"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_واگشت ساخت %d پوشه"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+msgid "Undo Move to Trash"
+msgstr "انداختن «%s» به زباله‌دان"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_واگشت ساخت پیوند به %d مورد"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+msgid "Undo Restore from Trash"
+msgstr "بازیافت «%s» از زباله‌دان"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "تعیین مجوزها"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "بازگرداندن تغییرات مجوزهای %d مورد"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "واگذاری دوباره %d مورد به مالک پیشین"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "واگشت تغییر گروه %d مورد"
+
+#: libcore/UndoManager.vala:57
+msgid "Redo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "در حال تکثیر «%B»"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Re_name"
+msgid "Redo Rename"
+msgstr "ت_غییر نام"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "ساخت _دوباره یک پرونده خالی"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "ساخت _دوباره یک پرونده از روی قالب"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr ""
+"ایجاد پوشه با شکست روبرو شد\n"
+"\n"
+"%s"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+msgid "Redo Move to Trash"
+msgstr "انداختن «%s» به زباله‌دان"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "ساخت _دوباره پیوند به %d مورد"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+msgid "Redo Restore from Trash"
+msgstr "بازیافت «%s» از زباله‌دان"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "تعیین مجوزها"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "تغییر دوباره مجوزهای %d مورد"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "تغییر دوباره مالک %d مورد"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "تغییر دوباره گروه %d مورد"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr ""
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr ""
 
@@ -2103,37 +2268,25 @@ msgstr "باز کردن در زبانه جدید"
 msgid "Open in Other Application…"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "عملیات‌های پرونده"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "عملیات‌های پرونده"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2169,6 +2322,16 @@ msgstr "نمایش جزئیات _بیشتر"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+msgid "No operation to undo"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+msgid "No operation to redo"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
@@ -2259,8 +2422,15 @@ msgstr ""
 msgid "Recently Used"
 msgstr ""
 
-#~ msgid "Setting permissions"
-#~ msgstr "تعیین مجوزها"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "عملیات‌های پرونده"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "عملیات‌های پرونده"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2460,16 +2630,6 @@ msgstr ""
 #~ msgid_plural "_Undo rename of %d items"
 #~ msgstr[0] "_بازگرداندن نام پیشین %d مورد"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_واگشت ساخت یک پرونده جدید"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_واگشت ساخت یک پرونده از روی قالب"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_واگشت ساخت %d پوشه"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_واگشت انداختن %d مورد به زباله‌دان"
@@ -2478,10 +2638,6 @@ msgstr ""
 #~ msgid_plural "_Undo restore from trash of %d items"
 #~ msgstr[0] "_واگشت بازیافت %d مورد از زباله‌دان"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_واگشت ساخت پیوند به %d مورد"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_بازگرداندن %d مورد حذف شده"
@@ -2489,18 +2645,6 @@ msgstr ""
 #~ msgid "Undo recursive change permissions of %d item"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "بازگرداندن تغییرات بازگشتی مجوزهای %d مورد"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "بازگرداندن تغییرات مجوزهای %d مورد"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "واگشت تغییر گروه %d مورد"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "واگذاری دوباره %d مورد به مالک پیشین"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2518,12 +2662,6 @@ msgstr ""
 #~ msgid_plural "_Redo rename of %d items"
 #~ msgstr[0] "تغییر _دوباره نام %d مورد"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "ساخت _دوباره یک پرونده خالی"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "ساخت _دوباره یک پرونده از روی قالب"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "ساخت _دوباره %d پوشه"
@@ -2536,10 +2674,6 @@ msgstr ""
 #~ msgid_plural "_Redo restore from trash of %d items"
 #~ msgstr[0] "بازیافت _دوباره %d مورد از زباله‌دان"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "ساخت _دوباره پیوند به %d مورد"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "حذف _دوباره %d مورد"
@@ -2547,18 +2681,6 @@ msgstr ""
 #~ msgid "Redo recursive change permissions of %d item"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "تغییر بازگشتی دوباره مجوزهای %d مورد"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "تغییر دوباره مجوزهای %d مورد"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "تغییر دوباره گروه %d مورد"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "تغییر دوباره مالک %d مورد"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

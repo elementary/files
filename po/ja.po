@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2023-02-16 21:22+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
-"\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
+">\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1158,11 +1158,186 @@ msgstr "強制的にコピー(_A)"
 msgid "Empty _Trash"
 msgstr "ゴミ箱を空にする(_T)"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "コピー"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Undo Duplicate"
+msgstr "タブを複製"
+
+#: libcore/UndoManager.vala:26
+#, fuzzy
+#| msgid "Undo Close Tab"
+msgid "Undo Move"
+msgstr "閉じたタブを再度開く"
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "名前を変更"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "空のファイルの作成を元に戻す(_U)"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "テンプレートからのファイルの作成を元に戻す(_U)"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "%d 個のフォルダーの作成を元に戻す(_U)"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "ゴミ箱に移動"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "%d 個へのリンクの作成を元に戻す(_U)"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "ゴミ箱から復元"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "権限を設定しています"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "%d 個の項目の権限の変更を元に戻す"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "%d 個の項目の所有者変更を元に戻す"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "%d 個の項目のグループ変更を元に戻す"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "コピー"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Redo Duplicate"
+msgstr "タブを複製"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "名前を変更"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "空のファイルの作成をやり直す(_R)"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "テンプレートからのファイル作成をやり直す(_R)"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "フォルダーを作成できませんでした"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "ゴミ箱に移動"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "%d 個の項目へのリンク作成をやり直す(_R)"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "ゴミ箱から復元"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "権限を設定しています"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "%d 個の項目の権限の変更をやり直す"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "%d 個の項目の所有者変更をやり直す"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "%d 個の項目のグループ変更をやり直す"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "元の場所が判別できませんでした"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "ゴミ箱フォルダーを開いて、手動で復元してください"
 
@@ -2038,33 +2213,25 @@ msgstr "新しいタブで開く"
 msgid "Open in Other Application…"
 msgstr "ほかのアプリケーションで開く…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "前へ戻る"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "次へ進む"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr "縮小"
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr "100 % 表示"
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr "拡大"
-
-#: src/View/Widgets/HeaderBar.vala:139
-msgid "Undo Last File Operation"
-msgstr "最後のファイル操作を元に戻す"
-
-#: src/View/Widgets/HeaderBar.vala:147
-msgid "Redo Last Undone File Operation"
-msgstr "最後のファイル操作をやり直す"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2097,6 +2264,20 @@ msgstr "リモートファイルのサムネイル"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr "メニュー"
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "処理がタイムアウトしました。"
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "処理がタイムアウトしました。"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2186,11 +2367,14 @@ msgstr "このフォルダー以下"
 msgid "Recently Used"
 msgstr "最近使用した項目"
 
+#~ msgid "Undo Last File Operation"
+#~ msgstr "最後のファイル操作を元に戻す"
+
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "最後のファイル操作をやり直す"
+
 #~ msgid "Select Folders with Single Click"
 #~ msgstr "シングルクリックでフォルダーを選択"
-
-#~ msgid "Setting permissions"
-#~ msgstr "権限を設定しています"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2418,16 +2602,6 @@ msgstr "最近使用した項目"
 #~ msgid_plural "_Undo rename of %d items"
 #~ msgstr[0] "%d 個の項目の名前の変更を元に戻す(_U)"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "空のファイルの作成を元に戻す(_U)"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "テンプレートからのファイルの作成を元に戻す(_U)"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "%d 個のフォルダーの作成を元に戻す(_U)"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "%d 個の項目のゴミ箱への移動を元に戻す(_U)"
@@ -2436,10 +2610,6 @@ msgstr "最近使用した項目"
 #~ msgid_plural "_Undo restore from trash of %d items"
 #~ msgstr[0] "%d 個の項目のゴミ箱からの復元を元に戻す(_U)"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "%d 個へのリンクの作成を元に戻す(_U)"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "%d 個の項目の削除を元に戻す(_U)"
@@ -2447,18 +2617,6 @@ msgstr "最近使用した項目"
 #~ msgid "Undo recursive change permissions of %d item"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "%d 個の項目の再帰的な権限の変更を元に戻す"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "%d 個の項目の権限の変更を元に戻す"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "%d 個の項目のグループ変更を元に戻す"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "%d 個の項目の所有者変更を元に戻す"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2476,12 +2634,6 @@ msgstr "最近使用した項目"
 #~ msgid_plural "_Redo rename of %d items"
 #~ msgstr[0] "%d 個の項目の名前の変更をやり直す(_R)"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "空のファイルの作成をやり直す(_R)"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "テンプレートからのファイル作成をやり直す(_R)"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "%d 個のフォルダーの作成をやり直す(_R)"
@@ -2494,10 +2646,6 @@ msgstr "最近使用した項目"
 #~ msgid_plural "_Redo restore from trash of %d items"
 #~ msgstr[0] "%d 個の項目のゴミ箱からの復元をやり直す(_R)"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "%d 個の項目へのリンク作成をやり直す(_R)"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "%d 個の項目の削除をやり直す(_R)"
@@ -2505,18 +2653,6 @@ msgstr "最近使用した項目"
 #~ msgid "Redo recursive change permissions of %d item"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "%d 個の項目の再帰的な権限の変更をやり直す"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "%d 個の項目の権限の変更をやり直す"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "%d 個の項目のグループ変更をやり直す"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "%d 個の項目の所有者変更をやり直す"
 
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"
 #~ msgstr "\"%s\" を完全に削除してもよろしいですか？"

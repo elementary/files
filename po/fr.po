@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2023-02-16 21:22+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
@@ -1201,11 +1201,186 @@ msgstr "Copier _quand même"
 msgid "Empty _Trash"
 msgstr "_Vider la corbeille"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Copier"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Undo Duplicate"
+msgstr "Dupliquer l'onglet"
+
+#: libcore/UndoManager.vala:26
+#, fuzzy
+#| msgid "Undo Close Tab"
+msgid "Undo Move"
+msgstr "Annuler la fermeture de l'onglet"
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Renommer"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Annuler la création d'un fichier vide"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Annuler la création d'un fichier créé à partir d'un modèle"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Annuler la création de %d dossier"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Déplacer dans la corbeille"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_Annuler la création du lien vers %d élément"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Restaurer"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Définition des permissions"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Annuler le changement des permissions de %d fichier"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Annuler le changement de propriétaire de %d fichier"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Annuler le changement de groupe de %d fichier"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Copier"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Redo Duplicate"
+msgstr "Dupliquer l'onglet"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Renommer"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "_Rétablir la création d'un fichier vide"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "_Rétablir la création d'un fichier à partir d'un modèle"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "Impossible de créer le dossier"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Déplacer dans la corbeille"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "_Rétablir la création de raccourci vers %d élément"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Restaurer"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Définition des permissions"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Rétablir le changement des permissions de %d fichier"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Rétablir le changement de propriétaire de %d fichier"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Rétablir le changement de groupe de %d fichier"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Emplacement d'origine n'a pu être déterminée"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Ouvrir le dossier corbeille et restaurer manuellement"
 
@@ -2105,33 +2280,25 @@ msgstr "Ouvrir dans un nouvel onglet"
 msgid "Open in Other Application…"
 msgstr "Ouvrir dans une autre application…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Précédent"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Suivant"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr "Zoom arrière"
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr "Zoom 1:1"
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr "Zoom avant"
-
-#: src/View/Widgets/HeaderBar.vala:139
-msgid "Undo Last File Operation"
-msgstr "Annuler la dernière opération sur le fichier"
-
-#: src/View/Widgets/HeaderBar.vala:147
-msgid "Redo Last Undone File Operation"
-msgstr "Rétablir la dernière opération sur le fichier"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2166,6 +2333,20 @@ msgstr "Miniatures distantes"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr "Menu"
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "Le temps d'attente de l'opération a expiré."
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "Le temps d'attente de l'opération a expiré."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2259,11 +2440,14 @@ msgstr "À l'intérieur de ce dossier"
 msgid "Recently Used"
 msgstr "Utilisé récemment"
 
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Annuler la dernière opération sur le fichier"
+
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Rétablir la dernière opération sur le fichier"
+
 #~ msgid "Select Folders with Single Click"
 #~ msgstr "Sélectionnez les dossiers avec un simple clic"
-
-#~ msgid "Setting permissions"
-#~ msgstr "Définition des permissions"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2496,17 +2680,6 @@ msgstr "Utilisé récemment"
 #~ msgstr[0] "_Annuler le renommage de %d élément"
 #~ msgstr[1] "_Annuler le renommage de %d éléments"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Annuler la création d'un fichier vide"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Annuler la création d'un fichier créé à partir d'un modèle"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Annuler la création de %d dossier"
-#~ msgstr[1] "_Annuler la création de %d dossiers"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Annuler le déplacement vers la corbeille de %d élément"
@@ -2517,11 +2690,6 @@ msgstr "Utilisé récemment"
 #~ msgstr[0] "_Annuler la restauration de la corbeille de %d élément"
 #~ msgstr[1] "_Annuler la restauration de la corbeille de %d éléments"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Annuler la création du lien vers %d élément"
-#~ msgstr[1] "_Annuler la création du lien vers %d éléments"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_Annuler la suppression de %d élément"
@@ -2531,21 +2699,6 @@ msgstr "Utilisé récemment"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "Annuler le changement récursif des permissions de %d fichier"
 #~ msgstr[1] "Annuler le changement récursif des permissions de %d fichiers"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Annuler le changement des permissions de %d fichier"
-#~ msgstr[1] "Annuler le changement des permissions de %d fichiers"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Annuler le changement de groupe de %d fichier"
-#~ msgstr[1] "Annuler le changement de groupe de %d fichiers"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Annuler le changement de propriétaire de %d fichier"
-#~ msgstr[1] "Annuler le changement de propriétaire de %d fichiers"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2567,12 +2720,6 @@ msgstr "Utilisé récemment"
 #~ msgstr[0] "_Rétablir le renommage de %d élément"
 #~ msgstr[1] "_Rétablir le renommage de %d éléments"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Rétablir la création d'un fichier vide"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Rétablir la création d'un fichier à partir d'un modèle"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Rétablir la création de %d dossier"
@@ -2588,11 +2735,6 @@ msgstr "Utilisé récemment"
 #~ msgstr[0] "_Rétablir la restauration depuis la corbeille de %d l'élément"
 #~ msgstr[1] "_Rétablir la restauration depuis la corbeille de %d éléments"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Rétablir la création de raccourci vers %d élément"
-#~ msgstr[1] "_Rétablir la création de raccourci vers %d éléments"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Rétablir la suppression de %d élément"
@@ -2602,21 +2744,6 @@ msgstr "Utilisé récemment"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "Rétablir le changement récursif des permissions de %d fichier"
 #~ msgstr[1] "Rétablir le changement récursif des permissions de %d fichiers"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Rétablir le changement des permissions de %d fichier"
-#~ msgstr[1] "Rétablir le changement des permissions de %d fichiers"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Rétablir le changement de groupe de %d fichier"
-#~ msgstr[1] "Rétablir le changement de groupe de %d fichiers"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Rétablir le changement de propriétaire de %d fichier"
-#~ msgstr[1] "Rétablir le changement de propriétaire de %d fichiers"
 
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"
 #~ msgstr "Souhaitez-vous vraiment supprimer définitivement « %s » ?"

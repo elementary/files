@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
@@ -1212,11 +1212,162 @@ msgstr "ለማንኛውም _ኮፒ ማድረጊያ"
 msgid "Empty _Trash"
 msgstr "ቆሻሻውን _ባዶ ማድረጊያ"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+msgid "Undo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "በማባዛት ላይ \"%B\""
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Re_name"
+msgid "Undo Rename"
+msgstr "እንደገና _መሰየሚያ"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_መተው ባዶ ፋይል መፍጠሩን"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_መተው ፋይል ከ ቴምፕሌት መፍጠሩን"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_መተው ፎልደር %d መፍጠሩን"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+msgid "Undo Move to Trash"
+msgstr "ማንቀሳቀሻ '%s' ወደ ቆሻሻ ማጠራቀሚያ"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_መተው አገናኝ መፍጠሩን ለ %d እቃው"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+msgid "Undo Restore from Trash"
+msgstr "እንደ ነበር መመለሻ '%s' ከቆሻሻ ማጠራቀሚያ ውስጥ"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "ፍቃዶች በማሰናዳት ላይ"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+msgid "Undo Change Owner"
+msgstr "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+msgid "Undo Change Group"
+msgstr "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+
+#: libcore/UndoManager.vala:57
+msgid "Redo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "በማባዛት ላይ \"%B\""
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Re_name"
+msgid "Redo Rename"
+msgstr "እንደገና _መሰየሚያ"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+msgid "Redo Create Empty File"
+msgstr "_መተው ባዶ ፋይል መፍጠሩን"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+msgid "Redo Create File from Template"
+msgstr "_መተው ፋይል ከ ቴምፕሌት መፍጠሩን"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr ""
+"ፎልደር መፍጠር አልተቻለም\n"
+"\n"
+"%s"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+msgid "Redo Move to Trash"
+msgstr "ማንቀሳቀሻ '%s' ወደ ቆሻሻ ማጠራቀሚያ"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+msgid "Redo Create Link"
+msgstr "_መተው አገናኝ መፍጠሩን ለ %d እቃው"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+msgid "Redo Restore from Trash"
+msgstr "እንደ ነበር መመለሻ '%s' ከቆሻሻ ማጠራቀሚያ ውስጥ"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "ፍቃዶች በማሰናዳት ላይ"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+msgid "Redo Set Permissions Recursively"
+msgstr "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+msgid "Redo Change Owner"
+msgstr "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+msgid "Redo Change Group"
+msgstr "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr ""
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr ""
 
@@ -2126,37 +2277,25 @@ msgstr "በ አዲስ ንዑስ መስኮት መክፈቻ"
 msgid "Open in Other Application…"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "የፋይል ተግባሮች"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "የፋይል ተግባሮች"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2192,6 +2331,16 @@ msgstr "ተጨማሪ _ዝርዝር ማሳያ"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+msgid "No operation to undo"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+msgid "No operation to redo"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
@@ -2287,8 +2436,15 @@ msgstr ""
 msgid "Recently Used"
 msgstr ""
 
-#~ msgid "Setting permissions"
-#~ msgstr "ፍቃዶች በማሰናዳት ላይ"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "የፋይል ተግባሮች"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "የፋይል ተግባሮች"
 
 #, fuzzy
 #~ msgid "Preparing to trash %'d file"
@@ -2489,17 +2645,6 @@ msgstr ""
 #~ msgstr[0] "_መተው እንደገና መሰየም %d እቃውን"
 #~ msgstr[1] "_መተው እንደገና መሰየም %d እቃዎቹን"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_መተው ባዶ ፋይል መፍጠሩን"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_መተው ፋይል ከ ቴምፕሌት መፍጠሩን"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_መተው ፎልደር %d መፍጠሩን"
-#~ msgstr[1] "_መተው ፎልደሮች %d መፍጠሩን"
-
 #, fuzzy
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
@@ -2512,11 +2657,6 @@ msgstr ""
 #~ msgstr[0] "_መተው አገናኝ መፍጠሩን ለ %d እቃው"
 #~ msgstr[1] "_መተው አገናኝ መፍጠሩን ለ %d እቃዎቹ"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_መተው አገናኝ መፍጠሩን ለ %d እቃው"
-#~ msgstr[1] "_መተው አገናኝ መፍጠሩን ለ %d እቃዎቹ"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_መተው ማጥፋት %d እቃውን"
@@ -2525,23 +2665,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Undo recursive change permissions of %d item"
 #~ msgid_plural "Undo recursive change permissions of %d items"
-#~ msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
-#~ msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
-#~ msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
-
-#, fuzzy
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
-#~ msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
-
-#, fuzzy
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
 #~ msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
 #~ msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
 
@@ -2570,14 +2693,6 @@ msgstr ""
 #~ msgstr[1] "_መተው እንደገና መሰየም %d እቃዎቹን"
 
 #, fuzzy
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_መተው ባዶ ፋይል መፍጠሩን"
-
-#, fuzzy
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_መተው ፋይል ከ ቴምፕሌት መፍጠሩን"
-
-#, fuzzy
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_መተው ፎልደር %d መፍጠሩን"
@@ -2596,12 +2711,6 @@ msgstr ""
 #~ msgstr[1] "_መተው አገናኝ መፍጠሩን ለ %d እቃዎቹ"
 
 #, fuzzy
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_መተው አገናኝ መፍጠሩን ለ %d እቃው"
-#~ msgstr[1] "_መተው አገናኝ መፍጠሩን ለ %d እቃዎቹ"
-
-#, fuzzy
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_መተው ማጥፋት %d እቃውን"
@@ -2610,24 +2719,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Redo recursive change permissions of %d item"
 #~ msgid_plural "Redo recursive change permissions of %d items"
-#~ msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
-#~ msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
-
-#, fuzzy
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
-#~ msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
-
-#, fuzzy
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
-#~ msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
-
-#, fuzzy
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
 #~ msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
 #~ msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
 

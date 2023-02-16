@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2021-02-28 00:55+0000\n"
 "Last-Translator: david <dcardelleg@gmail.com>\n"
 "Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/"
@@ -1222,11 +1222,184 @@ msgstr "Copiar _igualmente"
 msgid "Empty _Trash"
 msgstr "Baleirar o _lixo"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Copiar"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Undo Duplicate"
+msgstr "Duplicando «%s»"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Renomear"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Desfacer a creación dun ficheiro baleiro"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Desfacer a creación dun ficheiro desde un modelo"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Desfacer a creación de %d cartafol"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Mover ao lixo"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_Desfacer a creación da ligazón de %d elemento"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Restaurar desde o lixo"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Definir permisos"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "_Desfacer o cambio de permisos de %d elemento"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Desfacer o cambio de propietario do elemento %d"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "_Desfacer o cambio de grupo de %d elemento"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Copiar"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Redo Duplicate"
+msgstr "Duplicando «%s»"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Renomear"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "_Refacer a creación dun ficheiro baleiro"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "_Refacer a creación dun ficheiro desde un modelo"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "Non foi posíbel crear o cartafol"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Mover ao lixo"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "_Refacer a creación dunha ligazón a %d elemento"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Restaurar desde o lixo"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Definir permisos"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "_Refacer o cambio de permisos de %d elemento"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "_Refacer o cambio de propietario de %d elemento"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "_Refacer o cambio de grupo de %d elemento"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "A localización orixinal non poido ser determinada"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Abrir cartafol do lixo e restaurar manualmente"
 
@@ -2131,37 +2304,25 @@ msgstr "Abrir nunha nova lapela"
 msgid "Open in Other Application…"
 msgstr "Abrir con outra aplicación…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Anterior"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Seguinte"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Operacións de ficheiro"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Operacións de ficheiro"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2204,6 +2365,20 @@ msgstr "Amosar miniaturas remotas"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "Esgotouse o tempo para a operación."
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "Esgotouse o tempo para a operación."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2299,8 +2474,15 @@ msgstr "Dentro deste cartafol"
 msgid "Recently Used"
 msgstr "Usados recentemente"
 
-#~ msgid "Setting permissions"
-#~ msgstr "Definir permisos"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Operacións de ficheiro"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Operacións de ficheiro"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2528,17 +2710,6 @@ msgstr "Usados recentemente"
 #~ msgstr[0] "_Desfacer o remomeado de %d elemento"
 #~ msgstr[1] "_Desfacer o remomeado de %d elementos"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Desfacer a creación dun ficheiro baleiro"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Desfacer a creación dun ficheiro desde un modelo"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Desfacer a creación de %d cartafol"
-#~ msgstr[1] "_Desfacer a creación de %d cartafoles"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Desfacer o mover ao lixo de %d elemento"
@@ -2549,11 +2720,6 @@ msgstr "Usados recentemente"
 #~ msgstr[0] "_Desfacer a recuperación do lixo de %d elemento"
 #~ msgstr[1] "_Desfacer a recuperación do lixo de %d elementos"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Desfacer a creación da ligazón de %d elemento"
-#~ msgstr[1] "_Desfacer a creación de ligazón de %d elementos"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_Desfacer a eliminación de %d elemento"
@@ -2563,21 +2729,6 @@ msgstr "Usados recentemente"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "_Desfacer recursivamente o cambio de permisos de %d elemento"
 #~ msgstr[1] "_Desfacer recursivamente o cambio de permisos de %d elementos"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "_Desfacer o cambio de permisos de %d elemento"
-#~ msgstr[1] "_Desfacer o cambio de permisos de %d elementos"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "_Desfacer o cambio de grupo de %d elemento"
-#~ msgstr[1] "_Desfacer o cambio de grupo de %d elementos"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Desfacer o cambio de propietario do elemento %d"
-#~ msgstr[1] "Desfacer o cambio de propietario dos elementos %d"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2599,12 +2750,6 @@ msgstr "Usados recentemente"
 #~ msgstr[0] "_Refacer o renomeado de %d elemento"
 #~ msgstr[1] "_Refacer o renomeado de %d elementos"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Refacer a creación dun ficheiro baleiro"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Refacer a creación dun ficheiro desde un modelo"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Refacer a creación de %d cartafol"
@@ -2620,11 +2765,6 @@ msgstr "Usados recentemente"
 #~ msgstr[0] "_Refacer a recuperación desde o lixo de %d elemento"
 #~ msgstr[1] "_Refacer a recuperación desde o lixo de %d elementos"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Refacer a creación dunha ligazón a %d elemento"
-#~ msgstr[1] "_Refacer a creación de ligazóns a %d elementos"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Refacer a eliminación de %d elemento"
@@ -2634,21 +2774,6 @@ msgstr "Usados recentemente"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "_Refacer o cambio recursivo de permisos de %d elemento"
 #~ msgstr[1] "_Refacer o cambio recursivo de permisos de %d elementos"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "_Refacer o cambio de permisos de %d elemento"
-#~ msgstr[1] "_Refacer o cambio de permisos de %d elementos"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "_Refacer o cambio de grupo de %d elemento"
-#~ msgstr[1] "_Refacer o cambio de grupo de %d elementos"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "_Refacer o cambio de propietario de %d elemento"
-#~ msgstr[1] "_Refacer o cambio de propietario de %d elementos"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2022-12-26 20:25+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
@@ -1211,11 +1211,186 @@ msgstr "Napriek tomu _skopírovať"
 msgid "Empty _Trash"
 msgstr "Vyprázdniť _kôš"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Kopírovať"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Undo Duplicate"
+msgstr "Duplikovať kartu"
+
+#: libcore/UndoManager.vala:26
+#, fuzzy
+#| msgid "Undo Close Tab"
+msgid "Undo Move"
+msgstr "Vrátiť späť zatvorenie karty"
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Premenovať"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Vrátiť vytvorenie prázdneho súboru"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Vrátiť vytvorenie súboru zo šablóny"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "Vrátiť naspäť vytvorenie %d priečinka"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Presunúť do koša"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "Vrátiť naspäť vytvorenie odkazu na %d položku"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Obnoviť z koša"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Nastavujú sa oprávnenia"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Vrátiť naspäť zmenu oprávnení %d položky"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Vrátiť naspäť zmenu vlastníka %d položky"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Vrátiť naspäť zmenu skupiny %d položky"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Kopírovať"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Redo Duplicate"
+msgstr "Duplikovať kartu"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Premenovať"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "_Obnoviť vytvorenie prázdneho súboru"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "_Obnoviť vytvorenie súboru na základe šablóny"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "Vytvorenie priečinka sa nepodarilo"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Presunúť do koša"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "_Obnoviť tvorbu odkazu k %d položke"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Obnoviť z koša"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Nastavujú sa oprávnenia"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Obnoviť zmenu povolení %d položky"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Obnoviť zmenu vlastníka %d položky"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Obnoviť zmenu skupiny %d položky"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Nepodarilo sa určiť pôvodné umiestnenie"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Otvoriť kôš a obnoviť ručne"
 
@@ -2112,37 +2287,25 @@ msgstr "Otvoriť na novej karte"
 msgid "Open in Other Application…"
 msgstr "Otvoriť v inej aplikácii…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Predchádzajúce"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Nasledujúce"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Činnosti so súbormi"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Činnosti so súbormi"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2185,6 +2348,20 @@ msgstr "Zobraziť vzdialené náhľadové obrázky"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "Časovač dokončenia akcie vypršal."
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "Časovač dokončenia akcie vypršal."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2282,11 +2459,18 @@ msgstr "Pod týmto priečinkom"
 msgid "Recently Used"
 msgstr "Nedávno použité"
 
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Činnosti so súbormi"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Činnosti so súbormi"
+
 #~ msgid "Select Folders with Single Click"
 #~ msgstr "Označiť súbory jedným kliknutím"
-
-#~ msgid "Setting permissions"
-#~ msgstr "Nastavujú sa oprávnenia"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2518,18 +2702,6 @@ msgstr "Nedávno použité"
 #~ msgstr[1] "_Vrátiť premenované %d položky"
 #~ msgstr[2] "_Vrátiť premenovaných %d položiek"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Vrátiť vytvorenie prázdneho súboru"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Vrátiť vytvorenie súboru zo šablóny"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "Vrátiť naspäť vytvorenie %d priečinka"
-#~ msgstr[1] "Vrátiť naspäť vytvorenie %d priečinkov"
-#~ msgstr[2] "Vrátiť naspäť vytvorenie %d priečinkov"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "Vrátiť naspäť presunutie %d položky do koša"
@@ -2542,12 +2714,6 @@ msgstr "Nedávno použité"
 #~ msgstr[1] "Vrátiť naspäť obnovenie %d položiek z koša"
 #~ msgstr[2] "Vrátiť naspäť obnovenie %d položiek z koša"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "Vrátiť naspäť vytvorenie odkazu na %d položku"
-#~ msgstr[1] "Vrátiť naspäť vytvorenie odkazu na %d položiek"
-#~ msgstr[2] "Vrátiť naspäť vytvorenie odkazu na %d položiek"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "Vrátiť naspäť odstránenie %d položky"
@@ -2559,24 +2725,6 @@ msgstr "Nedávno použité"
 #~ msgstr[0] "Vrátiť naspäť rekurzívnu zmenu oprávnení položky %d"
 #~ msgstr[1] "Vrátiť naspäť rekurzívnu zmenu oprávnení položiek %d"
 #~ msgstr[2] "Vrátiť naspäť rekurzívnu zmenu oprávnení položky %d"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Vrátiť naspäť zmenu oprávnení %d položky"
-#~ msgstr[1] "Vrátiť naspäť zmenu oprávnení %d položiek"
-#~ msgstr[2] "Vrátiť naspäť zmenu oprávnení %d položiek"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Vrátiť naspäť zmenu skupiny %d položky"
-#~ msgstr[1] "Vrátiť naspäť zmenu skupiny %d položiek"
-#~ msgstr[2] "Vrátiť naspäť zmenu skupiny %d položiek"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Vrátiť naspäť zmenu vlastníka %d položky"
-#~ msgstr[1] "Vrátiť naspäť zmenu vlastníka %d položiek"
-#~ msgstr[2] "Vrátiť naspäť zmenu vlastníka %d položiek"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2602,12 +2750,6 @@ msgstr "Nedávno použité"
 #~ msgstr[1] "_Obnoviť premenovanie %d položiek"
 #~ msgstr[2] "_Obnoviť premenovanie %d položiek"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Obnoviť vytvorenie prázdneho súboru"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Obnoviť vytvorenie súboru na základe šablóny"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Obnoviť vytvorenie %d priečinku"
@@ -2626,12 +2768,6 @@ msgstr "Nedávno použité"
 #~ msgstr[1] "_Obnoviť obnovovanie %d položiek z koša"
 #~ msgstr[2] "_Obnoviť obnovovanie %d položiek z koša"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Obnoviť tvorbu odkazu k %d položke"
-#~ msgstr[1] "_Obnoviť tvorbu odkazov k %d položkám"
-#~ msgstr[2] "_Obnoviť tvorbu odkazov k %d položkám"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Obnoviť odstraňovanie %d položky"
@@ -2643,24 +2779,6 @@ msgstr "Nedávno použité"
 #~ msgstr[0] "Obnoviť spätnú zmenu povolení %d položky"
 #~ msgstr[1] "Obnoviť spätnú zmenu povolení %d položiek"
 #~ msgstr[2] "Obnoviť spätnú zmenu povolení %d položiek"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Obnoviť zmenu povolení %d položky"
-#~ msgstr[1] "Obnoviť zmenu povolení %d položiek"
-#~ msgstr[2] "Obnoviť zmenu povolení %d položiek"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Obnoviť zmenu skupiny %d položky"
-#~ msgstr[1] "Obnoviť zmenu skupiny %d položiek"
-#~ msgstr[2] "Obnoviť zmenu skupiny %d položiek"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Obnoviť zmenu vlastníka %d položky"
-#~ msgstr[1] "Obnoviť zmenu vlastníka %d položiek"
-#~ msgstr[2] "Obnoviť zmenu vlastníka %d položiek"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

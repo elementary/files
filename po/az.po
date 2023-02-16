@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2015-12-18 20:00+0000\n"
 "Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1152,11 +1152,123 @@ msgstr ""
 msgid "Empty _Trash"
 msgstr ""
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+msgid "Undo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:24
+msgid "Undo Duplicate"
+msgstr ""
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+msgid "Undo Rename"
+msgstr ""
+
+#: libcore/UndoManager.vala:30
+msgid "Undo Create Empty File"
+msgstr ""
+
+#: libcore/UndoManager.vala:32
+msgid "Undo Create File from Template"
+msgstr ""
+
+#: libcore/UndoManager.vala:34
+msgid "Undo Create Folder"
+msgstr ""
+
+#: libcore/UndoManager.vala:36
+msgid "Undo Move to Trash"
+msgstr ""
+
+#: libcore/UndoManager.vala:38
+msgid "Undo Create Link"
+msgstr ""
+
+#: libcore/UndoManager.vala:40
+msgid "Undo Restore from Trash"
+msgstr ""
+
+#: libcore/UndoManager.vala:42
+msgid "Undo Set Permissions"
+msgstr ""
+
+#: libcore/UndoManager.vala:44
+msgid "Undo Set Permissions Recursively"
+msgstr ""
+
+#: libcore/UndoManager.vala:46
+msgid "Undo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:48
+msgid "Undo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:57
+msgid "Redo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:59
+msgid "Redo Duplicate"
+msgstr ""
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+msgid "Redo Rename"
+msgstr ""
+
+#: libcore/UndoManager.vala:65
+msgid "Redo Create Empty File"
+msgstr ""
+
+#: libcore/UndoManager.vala:67
+msgid "Redo Create File from Template"
+msgstr ""
+
+#: libcore/UndoManager.vala:69
+msgid "Redo Create Folder"
+msgstr ""
+
+#: libcore/UndoManager.vala:71
+msgid "Redo Move to Trash"
+msgstr ""
+
+#: libcore/UndoManager.vala:73
+msgid "Redo Create Link"
+msgstr ""
+
+#: libcore/UndoManager.vala:75
+msgid "Redo Restore from Trash"
+msgstr ""
+
+#: libcore/UndoManager.vala:77
+msgid "Redo Set Permissions"
+msgstr ""
+
+#: libcore/UndoManager.vala:79
+msgid "Redo Set Permissions Recursively"
+msgstr ""
+
+#: libcore/UndoManager.vala:81
+msgid "Redo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:83
+msgid "Redo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr ""
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr ""
 
@@ -2028,32 +2140,24 @@ msgstr ""
 msgid "Open in Other Application…"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-msgid "Undo Last File Operation"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:147
-msgid "Redo Last Undone File Operation"
 msgstr ""
 
 #: src/View/Widgets/HeaderBar.vala:154
@@ -2086,6 +2190,16 @@ msgstr ""
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+msgid "No operation to undo"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+msgid "No operation to redo"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196

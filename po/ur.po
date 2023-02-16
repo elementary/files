@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2016-10-16 09:51+0000\n"
 "Last-Translator: Waqar Ahmed <waqar.17a@gmail.com>\n"
 "Language-Team: Urdu <ur@li.org>\n"
@@ -1227,11 +1227,156 @@ msgstr "_ہر صورت کاپی کریں"
 msgid "Empty _Trash"
 msgstr "_ردی خالی کریں"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "کاپی کریں"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "‏\"%B\" کی نقل بنائی جارہی ہے"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "نام بدلیں"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+msgid "Undo Create Empty File"
+msgstr "خالی فائل ‏'%s'  بنائیں"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+msgid "Undo Create File from Template"
+msgstr "سانچہ سے نئی فائل '%s' بنائیں "
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "Open Parent Folder"
+msgid "Undo Create Folder"
+msgstr "آبائی فولڈر کھولیں"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "ردی میں منتقل کریں"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+msgid "Undo Create Link"
+msgstr "%d عناصر تک ربط بنائیں"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "ردی سے بحالی کریں"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "اجازتیں مرتب کی جارہی ہیں"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+msgid "Undo Set Permissions Recursively"
+msgstr "'%s' کی اجازتیں مقرر کریں"
+
+#: libcore/UndoManager.vala:46
+msgid "Undo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:48
+msgid "Undo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "کاپی کریں"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "‏\"%B\" کی نقل بنائی جارہی ہے"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "نام بدلیں"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+msgid "Redo Create Empty File"
+msgstr "خالی فائل ‏'%s'  بنائیں"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+msgid "Redo Create File from Template"
+msgstr "سانچہ سے نئی فائل '%s' بنائیں "
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr "فولڈر '%s' بنانے میں ناکامی"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "ردی میں منتقل کریں"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+msgid "Redo Create Link"
+msgstr "%d عناصر تک ربط بنائیں"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "ردی سے بحالی کریں"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "اجازتیں مرتب کی جارہی ہیں"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+msgid "Redo Set Permissions Recursively"
+msgstr "'%s' کی اجازتیں مقرر کریں"
+
+#: libcore/UndoManager.vala:81
+msgid "Redo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:83
+msgid "Redo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "اصل مقام کا تعین نہیں کیا جا سکتا"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "ردی کی ٹوکری کھولیں اور بذاتِ خود بحال کریں"
 
@@ -2143,37 +2288,25 @@ msgstr "نئے ٹیب میں کھولیں"
 msgid "Open in Other Application…"
 msgstr "کسی اور اطلاقیے سے کھولیں..."
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "سابقہ"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "اگلا"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "فائل آپریشنز"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "فائل آپریشنز"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2212,6 +2345,16 @@ msgstr "ریموٹ تھمب نیل دکھائیں"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+msgid "No operation to undo"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+msgid "No operation to redo"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
@@ -2313,8 +2456,15 @@ msgstr "اس فولڈر مِں"
 msgid "Recently Used"
 msgstr "حالیہ"
 
-#~ msgid "Setting permissions"
-#~ msgstr "اجازتیں مرتب کی جارہی ہیں"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "فائل آپریشنز"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "فائل آپریشنز"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2530,14 +2680,6 @@ msgstr "حالیہ"
 #~ msgstr[1] "%d نقل کردہ عناصر کو حذف کر دیں"
 
 #, fuzzy
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "خالی فائل ‏'%s'  بنائیں"
-
-#, fuzzy
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "سانچہ سے نئی فائل '%s' بنائیں "
-
-#, fuzzy
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "فائل کو نہ تو ہلایا جا سکتا ہے، نا ردی میں منتقل اور نہ ہی حذف"
@@ -2550,36 +2692,16 @@ msgstr "حالیہ"
 #~ msgstr[1] "ردی سے بحالی کریں"
 
 #, fuzzy
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "%d عناصر تک ربط بنائیں"
-#~ msgstr[1] "%d عناصر تک ربط بنائیں"
-
-#, fuzzy
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "'%d' عناصر تک بنے ربط حذف کریں"
 #~ msgstr[1] "'%d' عناصر تک بنے ربط حذف کریں"
 
 #, fuzzy
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "'%s' کی اجازتیں مقرر کریں"
-#~ msgstr[1] "'%s' کی اجازتیں مقرر کریں"
-
-#, fuzzy
 #~ msgid "_Redo duplicate of %d item"
 #~ msgid_plural "_Redo duplicate of %d items"
 #~ msgstr[0] "%d نقل کردہ عناصر کو حذف کر دیں"
 #~ msgstr[1] "%d نقل کردہ عناصر کو حذف کر دیں"
-
-#, fuzzy
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "خالی فائل ‏'%s'  بنائیں"
-
-#, fuzzy
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "سانچہ سے نئی فائل '%s' بنائیں "
 
 #, fuzzy
 #~ msgid "_Redo creation of %d folder"
@@ -2600,12 +2722,6 @@ msgstr "حالیہ"
 #~ msgstr[1] "ردی سے بحالی کریں"
 
 #, fuzzy
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "%d عناصر تک ربط بنائیں"
-#~ msgstr[1] "%d عناصر تک ربط بنائیں"
-
-#, fuzzy
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "'%d' عناصر تک بنے ربط حذف کریں"
@@ -2616,12 +2732,6 @@ msgstr "حالیہ"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "‏'%s' کی اصل اجازتیں بحال کریں"
 #~ msgstr[1] "‏'%s' کی اصل اجازتیں بحال کریں"
-
-#, fuzzy
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "'%s' کی اجازتیں مقرر کریں"
-#~ msgstr[1] "'%s' کی اجازتیں مقرر کریں"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

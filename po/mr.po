@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2021-06-19 20:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -1194,11 +1194,186 @@ msgstr "(_A)तरीही कॉपी करा"
 msgid "Empty _Trash"
 msgstr "(_T) कचरापेटी रिकामी करा"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "कॉपी"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Undo Duplicate"
+msgstr "\"%s\" डुप्लिकेट करीत आहे"
+
+#: libcore/UndoManager.vala:26
+#, fuzzy
+#| msgid "Undo Close Tab"
+msgid "Undo Move"
+msgstr "टॅब पूर्ववत करा"
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "पुनर्नामित करा"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_(U) रिक्त फाइल तयार करणे पूर्ववत करा"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_(U) टेम्पलेटमधून फाइल तयार करणे पूर्ववत करा"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_(U) %d फोल्डर तयार करणे पूर्ववत करा"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "फाइल्स कचर्यामध्ये टाका"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "%d आयटमवर तयार केलेला दुवा पूर्ववत करा"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "कचरापेटी मधून पुनर्संचयित करा"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "परवानगी सेटिंग"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "%d आयटमच्या बदलेल्या परवानग्या पूर्ववत करा"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "%d आयटमचा मालक बदल पूर्ववत करा"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "%d आयटमचा समूह बदलणे पूर्ववत करा"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "कॉपी"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Redo Duplicate"
+msgstr "\"%s\" डुप्लिकेट करीत आहे"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "पुनर्नामित करा"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "_(R)रिक्त फाइल तयार करणे पुन्हा करा"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "_(R)टेम्पलेटमधून फाइल तयार करणे पुन्हा करा"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "फोल्डर तयार करण्यात अयशस्वी"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "फाइल्स कचर्यामध्ये टाका"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "(_R) %d आयटमचा दुवा पुन्हा तयार करा"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "कचरापेटी मधून पुनर्संचयित करा"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "परवानगी सेटिंग"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "%d आयटमचा परवानगी बदल पुन्हा करा"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "%d आयटमचा मालक बदल पुन्हा करा"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "%d आयटमचा  गट बदल पुन्हा करा"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "मूळ स्थान निर्धारित केले जाऊ शकत नाही"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "कचरा फोल्डर उघडा आणि व्यक्तिचलितरित्या पुनर्संचयित करा"
 
@@ -2094,37 +2269,25 @@ msgstr "नवीन टॅबमध्ये उघडा"
 msgid "Open in Other Application…"
 msgstr "अन्य अप्लिकेशनमध्ये उघडा…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "मागील"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "पुढील"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "फाइल ऑपरेशन्स"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "फाइल ऑपरेशन्स"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2167,6 +2330,20 @@ msgstr "रिमोट थंबनेल्स दाखवा"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "ऑपरेशन कालबाह्य झाले आहे."
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "ऑपरेशन कालबाह्य झाले आहे."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2260,8 +2437,15 @@ msgstr "या फोल्डर खाली"
 msgid "Recently Used"
 msgstr "अलीकडे वापरलेले"
 
-#~ msgid "Setting permissions"
-#~ msgstr "परवानगी सेटिंग"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "फाइल ऑपरेशन्स"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "फाइल ऑपरेशन्स"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2488,17 +2672,6 @@ msgstr "अलीकडे वापरलेले"
 #~ msgstr[0] "_(U) %d आयटम पुनर्नामित करणे पूर्ववत करा"
 #~ msgstr[1] "_(U) %d आयटम्स पुनर्नामित करणे पूर्ववत करा"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_(U) रिक्त फाइल तयार करणे पूर्ववत करा"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_(U) टेम्पलेटमधून फाइल तयार करणे पूर्ववत करा"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_(U) %d फोल्डर तयार करणे पूर्ववत करा"
-#~ msgstr[1] "_(U) %d फोल्डर्स तयार करणे पूर्ववत करा"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "कचऱ्यामध्ये हलविलेले %d आयटम पूर्ववत करा"
@@ -2509,11 +2682,6 @@ msgstr "अलीकडे वापरलेले"
 #~ msgstr[0] "_(U)%d आयटम कचर्यामधून पुनर्संचयित करणे पूर्ववत करा"
 #~ msgstr[1] "_(U) %d आयटम्स कचर्यामधून पुनर्संचयित करणे पूर्ववत करा"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "%d आयटमवर तयार केलेला दुवा पूर्ववत करा"
-#~ msgstr[1] "%d आयटमवर तयार केलेले दुवे पूर्ववत करा"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_(U) %d आयटम हटवणे पूर्ववत करा"
@@ -2523,21 +2691,6 @@ msgstr "अलीकडे वापरलेले"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "%d आयटमच्या रिकर्सिव्ह बदल परवानग्या पूर्ववत करा"
 #~ msgstr[1] "%d आयटम्सच्या रिकर्सिव्ह बदल परवानग्या पूर्ववत करा"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "%d आयटमच्या बदलेल्या परवानग्या पूर्ववत करा"
-#~ msgstr[1] "%d आयटम्सच्या बदलेल्या परवानग्या पूर्ववत करा"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "%d आयटमचा समूह बदलणे पूर्ववत करा"
-#~ msgstr[1] "%d आयटम्सचा समूह बदलणे पूर्ववत करा"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "%d आयटमचा मालक बदल पूर्ववत करा"
-#~ msgstr[1] "%d आयटम्सचा मालक बदल पूर्ववत करा"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2559,12 +2712,6 @@ msgstr "अलीकडे वापरलेले"
 #~ msgstr[0] "_(R) %d आयटम पुन्हा पुनर्नामित करा"
 #~ msgstr[1] "_(R) %d आयटम्स पुन्हा पुनर्नामित करा"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_(R)रिक्त फाइल तयार करणे पुन्हा करा"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_(R)टेम्पलेटमधून फाइल तयार करणे पुन्हा करा"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "%d फोल्डरची निर्मिती पुन्हा करा"
@@ -2580,11 +2727,6 @@ msgstr "अलीकडे वापरलेले"
 #~ msgstr[0] "(_R)%d  आयटम कचर्यामधून पुन्हा पुनर्संचयित करा"
 #~ msgstr[1] "(_R)%d आयटम्स कचर्यामधून पुन्हा पुनर्संचयित करा"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "(_R) %d आयटमचा दुवा पुन्हा तयार करा"
-#~ msgstr[1] "(_R) %d आयटम्सचा दुवा पुन्हा तयार करा"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "(_R) %d आयटम हटवणे  पुन्हा करा"
@@ -2594,21 +2736,6 @@ msgstr "अलीकडे वापरलेले"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "%d आयटमची पुनरावृत्ती बदलण्याची परवानगी पुन्हा द्या"
 #~ msgstr[1] "%d आयटम्सची पुनरावृत्ती बदलण्याची परवानगी पुन्हा द्या"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "%d आयटमचा परवानगी बदल पुन्हा करा"
-#~ msgstr[1] "%d आयटम्सचा परवानगी बदल पुन्हा करा"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "%d आयटमचा  गट बदल पुन्हा करा"
-#~ msgstr[1] "%d आयटम्सचा गट बदल पुन्हा करा"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "%d आयटमचा मालक बदल पुन्हा करा"
-#~ msgstr[1] "%d आयटम्सचा मालक बदल पुन्हा करा"
 
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"
 #~ msgstr "आपल्याला खात्री आहे की आपण  \"%s\"कायमचे हटवू इच्छिता?"

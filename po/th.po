@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2017-01-18 07:57+0000\n"
 "Last-Translator: Panan <panan25444@gmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -1185,11 +1185,149 @@ msgstr "ยืนยันคัดลอก (_A)"
 msgid "Empty _Trash"
 msgstr "เ_ทขยะ"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+msgid "Undo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "กำลังลบแฟ้ม"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Re_name"
+msgid "Undo Rename"
+msgstr "เปลี่ยนชื่อ (_N)"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+msgid "Undo Create Empty File"
+msgstr "สร้างโฟลเดอร์ \"%s\""
+
+#: libcore/UndoManager.vala:32
+msgid "Undo Create File from Template"
+msgstr ""
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+msgid "Undo Create Folder"
+msgstr "_ยกเลิกคัดลอก %d รายการ"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+msgid "Undo Move to Trash"
+msgstr "กำลังย้ายแฟ้มไปถังขยะ"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+msgid "Undo Create Link"
+msgstr "_ยกเลิกคัดลอก %d รายการ"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+msgid "Undo Restore from Trash"
+msgstr "_ยกเลิกคัดลอก %d รายการ"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+msgid "Undo Set Permissions"
+msgstr "_ยกเลิกคัดลอก %d รายการ"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+msgid "Undo Set Permissions Recursively"
+msgstr "_ยกเลิกคัดลอก %d รายการ"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+msgid "Undo Change Owner"
+msgstr "_ยกเลิกคัดลอก %d รายการ"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+msgid "Undo Change Group"
+msgstr "_ยกเลิกคัดลอก %d รายการ"
+
+#: libcore/UndoManager.vala:57
+msgid "Redo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "กำลังลบแฟ้ม"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Re_name"
+msgid "Redo Rename"
+msgstr "เปลี่ยนชื่อ (_N)"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+msgid "Redo Create Empty File"
+msgstr "สร้างโฟลเดอร์ \"%s\""
+
+#: libcore/UndoManager.vala:67
+msgid "Redo Create File from Template"
+msgstr ""
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr ""
+"ไม่สามารถสร้างโฟลเดอร์ได้\n"
+"%s"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+msgid "Redo Move to Trash"
+msgstr "กำลังย้ายแฟ้มไปถังขยะ"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+msgid "Redo Create Link"
+msgstr "_คัดลอก %d รายการอีกครั้ง"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+msgid "Redo Restore from Trash"
+msgstr "_คัดลอก %d รายการอีกครั้ง"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+msgid "Redo Set Permissions"
+msgstr "_คัดลอก %d รายการอีกครั้ง"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+msgid "Redo Set Permissions Recursively"
+msgstr "_คัดลอก %d รายการอีกครั้ง"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+msgid "Redo Change Owner"
+msgstr "_คัดลอก %d รายการอีกครั้ง"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+msgid "Redo Change Group"
+msgstr "_คัดลอก %d รายการอีกครั้ง"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr ""
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr ""
 
@@ -2092,32 +2230,24 @@ msgstr ""
 msgid "Open in Other Application…"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-msgid "Undo Last File Operation"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:147
-msgid "Redo Last Undone File Operation"
 msgstr ""
 
 #: src/View/Widgets/HeaderBar.vala:154
@@ -2153,6 +2283,16 @@ msgstr "แสดง_รายละเอียดเพิ่มเติม"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+msgid "No operation to undo"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+msgid "No operation to redo"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
@@ -2373,10 +2513,6 @@ msgstr "ล่าสุด"
 #~ msgstr "คัดลอก '%s' ไปที่ '%s'"
 
 #, fuzzy
-#~ msgid "Create an empty file '%s'"
-#~ msgstr "สร้างโฟลเดอร์ \"%s\""
-
-#, fuzzy
 #~ msgid "Create a new folder '%s'"
 #~ msgstr "สร้างโฟลเดอร์ \"%s\""
 
@@ -2424,43 +2560,13 @@ msgstr "ล่าสุด"
 #~ msgstr[0] "_ยกเลิกคัดลอก %d รายการ"
 
 #, fuzzy
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_ยกเลิกคัดลอก %d รายการ"
-
-#, fuzzy
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_ยกเลิกคัดลอก %d รายการ"
 
 #, fuzzy
-#~ msgid "_Undo restore from trash of %d item"
-#~ msgid_plural "_Undo restore from trash of %d items"
-#~ msgstr[0] "_ยกเลิกคัดลอก %d รายการ"
-
-#, fuzzy
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_ยกเลิกคัดลอก %d รายการ"
-
-#, fuzzy
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
-#~ msgstr[0] "_ยกเลิกคัดลอก %d รายการ"
-
-#, fuzzy
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "_ยกเลิกคัดลอก %d รายการ"
-
-#, fuzzy
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "_ยกเลิกคัดลอก %d รายการ"
-
-#, fuzzy
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
 #~ msgstr[0] "_ยกเลิกคัดลอก %d รายการ"
 
 #~ msgid "_Redo copy of %d item"
@@ -2493,33 +2599,8 @@ msgstr "ล่าสุด"
 #~ msgstr[0] "_คัดลอก %d รายการอีกครั้ง"
 
 #, fuzzy
-#~ msgid "_Redo restore from trash of %d item"
-#~ msgid_plural "_Redo restore from trash of %d items"
-#~ msgstr[0] "_คัดลอก %d รายการอีกครั้ง"
-
-#, fuzzy
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_คัดลอก %d รายการอีกครั้ง"
-
-#, fuzzy
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
-#~ msgstr[0] "_คัดลอก %d รายการอีกครั้ง"
-
-#, fuzzy
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "_คัดลอก %d รายการอีกครั้ง"
-
-#, fuzzy
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "_คัดลอก %d รายการอีกครั้ง"
-
-#, fuzzy
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
 #~ msgstr[0] "_คัดลอก %d รายการอีกครั้ง"
 
 #, fuzzy

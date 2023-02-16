@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
@@ -1269,11 +1269,184 @@ msgstr "_Vis tiek kopijuoti"
 msgid "Empty _Trash"
 msgstr "Iš_valyti šiukšlinę"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Kopijuoti"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Undo Duplicate"
+msgstr "Kuriama „%s“ kopija"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Pervadinti"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Atšaukti tuščio failo sukūrimą"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "A_tšaukti failo iš šablono kūrimą"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Atšaukti %d aplanko sukūrimą"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Perkelti į šiukšliadėžę"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "A_tšaukti nuorodos sukūrimą į %d elementą"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Atkurti iš šiukšlinės"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Nustatomi leidimai"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Atšaukti %d elemento leidimų pakeitimą"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Atšaukti %d elemento savininko pakeitimą"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Atšaukti %d elemento grupės pakeitimą"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Kopijuoti"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Redo Duplicate"
+msgstr "Kuriama „%s“ kopija"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Pervadinti"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "_Grąžinti tuščio failo sukūrimą"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "_Grąžinti failo iš šablono sukūrimą"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "Nepavyko sukurti aplanko"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Perkelti į šiukšliadėžę"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "_Grąžinti nuorodos sukūrimą į %d elementą"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Atkurti iš šiukšlinės"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Nustatomi leidimai"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Grąžinti %d elemento leidimų pakeitimą"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Grąžinti %d elemento savininko pakeitimą"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Grąžinti %d elemento grupės pakeitimą"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Nepavyko nustatyti pradinę vietą"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Atverti šiukšlinės aplanką ir atkurti rankiniu būdu"
 
@@ -2195,37 +2368,25 @@ msgstr "Atverti naujoje kortelėje"
 msgid "Open in Other Application…"
 msgstr "Atverti naudojant kitą programą…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Ankstesnis"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Kitas"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Failų operacijos"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Failų operacijos"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2268,6 +2429,20 @@ msgstr "Rodyti nuotolines miniatiūras"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "Pasibaigė operacijai skirtas laikas."
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "Pasibaigė operacijai skirtas laikas."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2375,8 +2550,15 @@ msgstr "Žemiau šio aplanko"
 msgid "Recently Used"
 msgstr "Paskiausiai naudoti"
 
-#~ msgid "Setting permissions"
-#~ msgstr "Nustatomi leidimai"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Failų operacijos"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Failų operacijos"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2612,18 +2794,6 @@ msgstr "Paskiausiai naudoti"
 #~ msgstr[1] "A_tšaukti %d elementų pervadinimą"
 #~ msgstr[2] "A_tšaukti %d elementų pervadinimą"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Atšaukti tuščio failo sukūrimą"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "A_tšaukti failo iš šablono kūrimą"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Atšaukti %d aplanko sukūrimą"
-#~ msgstr[1] "_Atšaukti %d aplankų sukūrimą"
-#~ msgstr[2] "_Atšaukti %d aplankų sukūrimą"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "A_tšaukti %d elemento perkėlimą į šiukšlinę"
@@ -2636,12 +2806,6 @@ msgstr "Paskiausiai naudoti"
 #~ msgstr[1] "A_tšaukti %d elementų atkūrimą iš šiukšlinės"
 #~ msgstr[2] "A_tšaukti %d elementų atkūrimą iš šiukšlinės"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "A_tšaukti nuorodos sukūrimą į %d elementą"
-#~ msgstr[1] "A_tšaukti nuorodos sukūrimą į %d elementus"
-#~ msgstr[2] "A_tšaukti nuorodos sukūrimą į %d elementų"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "A_tšaukti %d elemento ištrynimą"
@@ -2653,24 +2817,6 @@ msgstr "Paskiausiai naudoti"
 #~ msgstr[0] "Atšaukti rekursinį %d elemento leidimų pakeitimą"
 #~ msgstr[1] "Atšaukti rekursinį %d elementų leidimų pakeitimą"
 #~ msgstr[2] "Atšaukti rekursinį %d elementų leidimų pakeitimą"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Atšaukti %d elemento leidimų pakeitimą"
-#~ msgstr[1] "Atšaukti %d elementų leidimų pakeitimą"
-#~ msgstr[2] "Atšaukti %d elementų leidimų pakeitimą"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Atšaukti %d elemento grupės pakeitimą"
-#~ msgstr[1] "Atšaukti %d elementų grupės pakeitimą"
-#~ msgstr[2] "Atšaukti %d elementų grupės pakeitimą"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Atšaukti %d elemento savininko pakeitimą"
-#~ msgstr[1] "Atšaukti %d elementų savininko pakeitimą"
-#~ msgstr[2] "Atšaukti %d elementų savininko pakeitimą"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2696,12 +2842,6 @@ msgstr "Paskiausiai naudoti"
 #~ msgstr[1] "_Grąžinti %d elementų pervadinimą"
 #~ msgstr[2] "_Grąžinti %d elementų pervadinimą"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Grąžinti tuščio failo sukūrimą"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Grąžinti failo iš šablono sukūrimą"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Grąžinti %d aplanko sukūrimą"
@@ -2720,12 +2860,6 @@ msgstr "Paskiausiai naudoti"
 #~ msgstr[1] "_Grąžinti %d elementų atkūrimą iš šiukšlinės"
 #~ msgstr[2] "_Grąžinti %d elementų atkūrimą iš šiukšlinės"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Grąžinti nuorodos sukūrimą į %d elementą"
-#~ msgstr[1] "_Grąžinti nuorodos sukūrimą į %d elementus"
-#~ msgstr[2] "_Grąžinti nuorodos sukūrimą į %d elementų"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Grąžinti %d elemento ištrynimą"
@@ -2737,24 +2871,6 @@ msgstr "Paskiausiai naudoti"
 #~ msgstr[0] "Grąžinti rekursinį %d elemento leidimų pakeitimą"
 #~ msgstr[1] "Grąžinti rekursinį %d elementų leidimų pakeitimą"
 #~ msgstr[2] "Grąžinti rekursinį %d elementų leidimų pakeitimą"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Grąžinti %d elemento leidimų pakeitimą"
-#~ msgstr[1] "Grąžinti %d elementų leidimų pakeitimą"
-#~ msgstr[2] "Grąžinti %d elementų leidimų pakeitimą"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Grąžinti %d elemento grupės pakeitimą"
-#~ msgstr[1] "Grąžinti %d elementų grupės pakeitimą"
-#~ msgstr[2] "Grąžinti %d elementų grupės pakeitimą"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Grąžinti %d elemento savininko pakeitimą"
-#~ msgstr[1] "Grąžinti %d elementų savininko pakeitimą"
-#~ msgstr[2] "Grąžinti %d elementų savininko pakeitimą"
 
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"
 #~ msgstr "Ar tikrai norite negrįžtamai ištrinti „%s“?"

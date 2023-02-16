@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2023-02-14 14:25+0000\n"
 "Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
@@ -1202,11 +1202,186 @@ msgstr "_Toch Kopiëren"
 msgid "Empty _Trash"
 msgstr "Leeg _Prullenbak"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Kopiëren"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Undo Duplicate"
+msgstr "Tab Dupliceren"
+
+#: libcore/UndoManager.vala:26
+#, fuzzy
+#| msgid "Undo Close Tab"
+msgid "Undo Move"
+msgstr "Tab Sluiten Ongedaan Maken"
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Hernoemen"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "Aanmaken van leeg bestand _ongedaan maken"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Aanmaken van bestand met sjabloon ongedaan maken"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "Aanmaken van %d map _ongedaan maken"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Verplaats naar prullenbak"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "Aanmaken van verwijzing naar %d onderdeel _ongedaan maken"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Herstel uit prullenbak"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Toegangsrechten instellen"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Wijzigen rechten van %d onderdeel _ongedaan maken"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Wijzigen eigenaar van %d onderdeel _ongedaan maken"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Wijzigen groep van %d onderdeel _ongedaan maken"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Kopiëren"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Redo Duplicate"
+msgstr "Tab Dupliceren"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Hernoemen"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "Aanmaken leeg bestand op_nieuw uitvoeren"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "Aanmaken bestand vanaf sjabloon op_nieuw uitvoeren"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "Kon de folder niet aanmaken"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Verplaats naar prullenbak"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "Aanmaken verwijzing naar %d onderdeel op_nieuw uitvoeren"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Herstel uit prullenbak"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Toegangsrechten instellen"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Wijzigen rechten van %d onderdeel op_nieuw uitvoeren"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Wijzigen eigenaar van %d onderdeel op_nieuw uitvoeren"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Wijzigen groep van %d onderdeel op_nieuw uitvoeren"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Oorspronkelijke locatie kon niet worden bepaald"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Open de prullenbak en herstel handmatig"
 
@@ -2110,33 +2285,25 @@ msgstr "Openen in nieuw tabblad"
 msgid "Open in Other Application…"
 msgstr "Openen in een andere applicatie…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Vorige"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Volgende"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr "Uitzoomen"
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr "Zoom 1:1"
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr "Inzoomen"
-
-#: src/View/Widgets/HeaderBar.vala:139
-msgid "Undo Last File Operation"
-msgstr "Laatste bestandsbewerkingen ongedaan maken"
-
-#: src/View/Widgets/HeaderBar.vala:147
-msgid "Redo Last Undone File Operation"
-msgstr "Laatste ongedaan gemaakte bestandsbewerking opnieuw uitvoeren"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2169,6 +2336,20 @@ msgstr "Externe miniaturen"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr "Menu"
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "De bewerking duurde te lang."
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "De bewerking duurde te lang."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2262,11 +2443,14 @@ msgstr "Onder deze folder"
 msgid "Recently Used"
 msgstr "Recent gebruikt"
 
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Laatste bestandsbewerkingen ongedaan maken"
+
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Laatste ongedaan gemaakte bestandsbewerking opnieuw uitvoeren"
+
 #~ msgid "Select Folders with Single Click"
 #~ msgstr "Folders selecteren met een enkele klik"
-
-#~ msgid "Setting permissions"
-#~ msgstr "Toegangsrechten instellen"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2498,17 +2682,6 @@ msgstr "Recent gebruikt"
 #~ msgstr[0] "Hernoemen van %d onderdeel _ongedaan maken"
 #~ msgstr[1] "Hernoemen van %d onderdelen _ongedaan maken"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "Aanmaken van leeg bestand _ongedaan maken"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Aanmaken van bestand met sjabloon ongedaan maken"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "Aanmaken van %d map _ongedaan maken"
-#~ msgstr[1] "Aanmaken van %d mappen _ongedaan maken"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "Verplaaten van %d onderdeel naar prullenbak _ongedaan maken"
@@ -2519,11 +2692,6 @@ msgstr "Recent gebruikt"
 #~ msgstr[0] "Uit prullenbak terugzetten van %d onderdeel _ongedaan maken"
 #~ msgstr[1] "Uit prullenbak terugzetten van %d onderdelen _ongedaan maken"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "Aanmaken van verwijzing naar %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Aanmaken van verwijzing naar %d onderdelen _ongedaan maken"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "Verwijderen van %d onderdeel _ongedaan maken"
@@ -2533,21 +2701,6 @@ msgstr "Recent gebruikt"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "Recursief wijzigen rechten van %d onderdeel _ongedaan maken"
 #~ msgstr[1] "Recursief wijzigen rechten van %d onderdelen _ongedaan maken"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Wijzigen rechten van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Wijzigen rechten van %d onderdelen _ongedaan maken"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Wijzigen groep van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Wijzigen groep van %d onderdelen _ongedaan maken"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Wijzigen eigenaar van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Wijzigen eigenaar van %d onderdelen _ongedaan maken"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2569,12 +2722,6 @@ msgstr "Recent gebruikt"
 #~ msgstr[0] "Hernoemen van %d onderdeel op_nieuw uitvoeren"
 #~ msgstr[1] "Hernoemen van %d onderdelen op_nieuw uitvoeren"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "Aanmaken leeg bestand op_nieuw uitvoeren"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "Aanmaken bestand vanaf sjabloon op_nieuw uitvoeren"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "Aanmaken van %d map op_nieuw uitvoeren"
@@ -2592,11 +2739,6 @@ msgstr "Recent gebruikt"
 #~ msgstr[1] ""
 #~ "Terugzetten van %d onderdelen uit de prullenbak op_nieuw uitvoeren"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "Aanmaken verwijzing naar %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Aanmaken verwijzing naar %d onderdelen op_nieuw uitvoeren"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "Verwijderen van % item op_nieuw uitvoeren"
@@ -2606,21 +2748,6 @@ msgstr "Recent gebruikt"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "Recursief wijzigen rechten van %d onderdeel op_nieuw uitvoeren"
 #~ msgstr[1] "Recursief wijzigen rechten van %d onderdelen op_nieuw uitvoeren"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Wijzigen rechten van %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Wijzigen rechten van %d onderdelen op_nieuw uitvoeren"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Wijzigen groep van %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Wijzigen groep van %d onderdelen op_nieuw uitvoeren"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Wijzigen eigenaar van %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Wijzigen eigenaar van %d onderdelen op_nieuw uitvoeren"
 
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"
 #~ msgstr "Bent u zeker dat u het bestand \"%s\" definitief wilt verwijderen?"

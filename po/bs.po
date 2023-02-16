@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2022-09-19 03:03+0000\n"
 "Last-Translator: Issa1553 <fairfull.playing@gmail.com>\n"
 "Language-Team: Bosnian <https://l10n.elementary.io/projects/files/files/bs/"
@@ -1252,11 +1252,184 @@ msgstr "_Svejedno kopiraj"
 msgid "Empty _Trash"
 msgstr "Isprazni _otpad"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Kopiraj"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "Udvostručavanje \"%B\""
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Preimenuj"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Poništi kreiranje prazne datoteke"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Poništi kreiranje datoteke iz predloška"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Poništi kreiranje %d fascikle"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Premjesti u smeće"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_Poništi kreiranje linka za %d stavku"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Obnovi iz Otpada"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Podešavanje dozvola"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Poništi promjenu dozvola za %d stavku"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Poništi promjenu vlasnika za %d stavku"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Poništi promjenu grupe za %d stavku"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Kopiraj"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "Udvostručavanje \"%B\""
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Preimenuj"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "Po_novi kreiranje prazne datoteke"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "Po_novi kreiranje datoteke iz obrasca"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr ""
+"Neuspješno kreiranje fascikle\n"
+"\n"
+"%s"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Premjesti u smeće"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "_Ponovi kreiranje linka za %d stavku"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Obnovi iz Otpada"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Podešavanje dozvola"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Ponovi promjenu dozvola za %d stavku"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Ponovi promjenu vlasnika za %d stavku"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Ponovi promjenu grupe za %d stavku"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Izvornu lokaciju nije bilo moguće odrediti"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Otvori fasciklu otpada i ručno obnovi"
 
@@ -2182,37 +2355,25 @@ msgstr "Otvori u novom tabu"
 msgid "Open in Other Application…"
 msgstr "Otvori u drugoj aplikaciji…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Prethodno"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Sljedeće"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Operacije sa datotekama"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Operacije sa datotekama"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2254,6 +2415,20 @@ msgstr "Prikaži udaljene minijature"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "Isteklo je vrijeme za operaciju."
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "Isteklo je vrijeme za operaciju."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2357,8 +2532,15 @@ msgstr "Ispod ove fascikle"
 msgid "Recently Used"
 msgstr "Nedavno korišteno"
 
-#~ msgid "Setting permissions"
-#~ msgstr "Podešavanje dozvola"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Operacije sa datotekama"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Operacije sa datotekama"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2593,18 +2775,6 @@ msgstr "Nedavno korišteno"
 #~ msgstr[1] "_Poništi preimenovanje %d stavke"
 #~ msgstr[2] "_Poništi preimenovanje %d stavki"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Poništi kreiranje prazne datoteke"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Poništi kreiranje datoteke iz predloška"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Poništi kreiranje %d fascikle"
-#~ msgstr[1] "_Poništi kreiranje %d fascikle"
-#~ msgstr[2] "_Poništi kreiranje %d fascikli"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Poništi premještanje %d stavke u otpad"
@@ -2617,12 +2787,6 @@ msgstr "Nedavno korišteno"
 #~ msgstr[1] "_Poništi obnovu %d stavke iz otpada"
 #~ msgstr[2] "_Poništi obnovu %d stavki iz otpada"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Poništi kreiranje linka za %d stavku"
-#~ msgstr[1] "_Poništi kreiranje linka za %d stavke"
-#~ msgstr[2] "_Poništi kreiranje linka za %d stavki"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_Poništi brisanje %d stavke"
@@ -2634,24 +2798,6 @@ msgstr "Nedavno korišteno"
 #~ msgstr[0] "Poništi rekurzivnu promjenu dozvola za %d stavku"
 #~ msgstr[1] "Poništi rekurzivnu promjenu dozvola za %d stavke"
 #~ msgstr[2] "Poništi rekurzivnu promjenu dozvola za %d stavki"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Poništi promjenu dozvola za %d stavku"
-#~ msgstr[1] "Poništi promjenu dozvola za %d stavke"
-#~ msgstr[2] "Poništi promjenu dozvola za %d stavki"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Poništi promjenu grupe za %d stavku"
-#~ msgstr[1] "Poništi promjenu grupe za %d stavke"
-#~ msgstr[2] "Poništi promjenu grupe za %d stavki"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Poništi promjenu vlasnika za %d stavku"
-#~ msgstr[1] "Poništi promjenu vlasnika za %d stavke"
-#~ msgstr[2] "Poništi promjenu vlasnika za %d stavki"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2677,12 +2823,6 @@ msgstr "Nedavno korišteno"
 #~ msgstr[1] "_Ponovi preimenovanje %d stavke"
 #~ msgstr[2] "_Ponovi preimenovanje %d stavki"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "Po_novi kreiranje prazne datoteke"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "Po_novi kreiranje datoteke iz obrasca"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Ponovi kreiranje %d fascikle"
@@ -2701,12 +2841,6 @@ msgstr "Nedavno korišteno"
 #~ msgstr[1] "_Ponovi obnovu %d stavke iz otpada"
 #~ msgstr[2] "_Ponovi obnovu %d stavki iz otpada"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Ponovi kreiranje linka za %d stavku"
-#~ msgstr[1] "_Ponovi kreiranje linka za %d stavke"
-#~ msgstr[2] "_Ponovi kreiranje linka za %d stavki"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Ponovi brisanje %d stavke"
@@ -2718,24 +2852,6 @@ msgstr "Nedavno korišteno"
 #~ msgstr[0] "Ponovi rekurzivnu promjenu dozvola za %d stavku"
 #~ msgstr[1] "Ponovi rekurzivnu promjenu dozvola za %d stavke"
 #~ msgstr[2] "Ponovi rekurzivnu promjenu dozvola za %d stavki"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Ponovi promjenu dozvola za %d stavku"
-#~ msgstr[1] "Ponovi promjenu dozvola za %d stavke"
-#~ msgstr[2] "Ponovi promjenu dozvola za %d stavki"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Ponovi promjenu grupe za %d stavku"
-#~ msgstr[1] "Ponovi promjenu grupe za %d stavke"
-#~ msgstr[2] "Ponovi promjenu grupe za %d stavki"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Ponovi promjenu vlasnika za %d stavku"
-#~ msgstr[1] "Ponovi promjenu vlasnika za %d stavke"
-#~ msgstr[2] "Ponovi promjenu vlasnika za %d stavki"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

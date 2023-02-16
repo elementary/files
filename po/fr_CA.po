@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2016-08-25 14:39+0000\n"
 "Last-Translator: Nate <natejms@outlook.com>\n"
 "Language-Team: French (Canada) <fr_CA@li.org>\n"
@@ -1177,11 +1177,136 @@ msgstr ""
 msgid "Empty _Trash"
 msgstr ""
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+msgid "Undo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "Dupliquer « %s » dans « %s »"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+msgid "Undo Rename"
+msgstr ""
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+msgid "Undo Create Empty File"
+msgstr "Créer un fichier vide « %s »"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+msgid "Undo Create File from Template"
+msgstr "Créer un nouveau fichier « %s » à partir d'un modèle "
+
+#: libcore/UndoManager.vala:34
+msgid "Undo Create Folder"
+msgstr ""
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+msgid "Undo Move to Trash"
+msgstr "Redéplacer « %s » vers la corbeille"
+
+#: libcore/UndoManager.vala:38
+msgid "Undo Create Link"
+msgstr ""
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+msgid "Undo Restore from Trash"
+msgstr "Restaurer « %s » vers « %s »"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+msgid "Undo Set Permissions"
+msgstr "Restaurer les permissions originales de « %s »"
+
+#: libcore/UndoManager.vala:44
+msgid "Undo Set Permissions Recursively"
+msgstr ""
+
+#: libcore/UndoManager.vala:46
+msgid "Undo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:48
+msgid "Undo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:57
+msgid "Redo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "Dupliquer « %s » dans « %s »"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+msgid "Redo Rename"
+msgstr ""
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+msgid "Redo Create Empty File"
+msgstr "Créer un fichier vide « %s »"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+msgid "Redo Create File from Template"
+msgstr "Créer un nouveau fichier « %s » à partir d'un modèle "
+
+#: libcore/UndoManager.vala:69
+msgid "Redo Create Folder"
+msgstr ""
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+msgid "Redo Move to Trash"
+msgstr "Redéplacer « %s » vers la corbeille"
+
+#: libcore/UndoManager.vala:73
+msgid "Redo Create Link"
+msgstr ""
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+msgid "Redo Restore from Trash"
+msgstr "Restaurer « %s » vers « %s »"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+msgid "Redo Set Permissions"
+msgstr "Restaurer les permissions originales de « %s »"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+msgid "Redo Set Permissions Recursively"
+msgstr "Restaurer les permissions originales de « %s »"
+
+#: libcore/UndoManager.vala:81
+msgid "Redo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:83
+msgid "Redo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr ""
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr ""
 
@@ -2058,32 +2183,24 @@ msgstr ""
 msgid "Open in Other Application…"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-msgid "Undo Last File Operation"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:147
-msgid "Redo Last Undone File Operation"
 msgstr ""
 
 #: src/View/Widgets/HeaderBar.vala:154
@@ -2118,6 +2235,16 @@ msgstr "Montrer plus de _détails"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+msgid "No operation to undo"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+msgid "No operation to redo"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
@@ -2316,10 +2443,6 @@ msgstr ""
 #~ msgstr "Redéplacer « %s » vers la corbeille"
 
 #, fuzzy
-#~ msgid "Restore '%s' from trash"
-#~ msgstr "Restaurer « %s » vers « %s »"
-
-#, fuzzy
 #~ msgid "Create links to %d items"
 #~ msgstr "Supprimer le lien vers « %s »"
 
@@ -2333,10 +2456,6 @@ msgstr ""
 #~ "Restaurer les permissions originales des éléments inclus dans « %s »"
 
 #, fuzzy
-#~ msgid "Set permissions of '%s'"
-#~ msgstr "Restaurer les permissions originales de « %s »"
-
-#, fuzzy
 #~ msgid "Set group of '%s' to '%s'"
 #~ msgstr "Restaurer le groupe de « %s » à « %s »"
 
@@ -2345,30 +2464,8 @@ msgstr ""
 #~ msgstr "Restaurer le propriétaire de « %s » à « %s »"
 
 #, fuzzy
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "Créer un fichier vide « %s »"
-
-#, fuzzy
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "Créer un nouveau fichier « %s » à partir d'un modèle "
-
-#, fuzzy
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "Créer un fichier vide « %s »"
-
-#, fuzzy
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "Créer un nouveau fichier « %s » à partir d'un modèle "
-
-#, fuzzy
 #~ msgid "Redo recursive change permissions of %d item"
 #~ msgid_plural "Redo recursive change permissions of %d items"
-#~ msgstr[0] "Restaurer les permissions originales de « %s »"
-#~ msgstr[1] "Restaurer les permissions originales de « %s »"
-
-#, fuzzy
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
 #~ msgstr[0] "Restaurer les permissions originales de « %s »"
 #~ msgstr[1] "Restaurer les permissions originales de « %s »"
 

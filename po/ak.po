@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-16 21:22+0000\n"
 "PO-Revision-Date: 2016-12-10 08:44+0000\n"
 "Last-Translator: aberba <karabutaworld@gmail.com>\n"
 "Language-Team: Akan <ak@li.org>\n"
@@ -1202,11 +1202,155 @@ msgstr "Fa bi saa _ara"
 msgid "Empty _Trash"
 msgstr ""
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+msgid "Undo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "Yɛ '%s' mmeinu wɔ '%s'"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Sesã ne din"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Sesã file foforɔ a woreyɛ no"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Sesã file foforɔ a wode template reyɛ no"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Sesã folder dodoɔ %d a woreyɛ no"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Fa kɔ trash no mu"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+msgid "Undo Create Link"
+msgstr "Yɛ link ma nneɛma %d"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+msgid "Undo Restore from Trash"
+msgstr "San yi '%s' firi trash no mu bra"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+msgid "Undo Set Permissions"
+msgstr "Hyehyɛ '%s' ho hokwan"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+msgid "Undo Set Permissions Recursively"
+msgstr "_Sesã nneɛma dodoɔ %d a w'fa bi no"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+msgid "Undo Change Owner"
+msgstr "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+msgid "Undo Change Group"
+msgstr "_Sesã nneɛma dodoɔ %d a w'fa bi no"
+
+#: libcore/UndoManager.vala:57
+msgid "Redo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "Yɛ '%s' mmeinu wɔ '%s'"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Sesã ne din"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+msgid "Redo Create Empty File"
+msgstr "_Sesã file foforɔ a woreyɛ no"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+msgid "Redo Create File from Template"
+msgstr "_Sesã file foforɔ a wode template reyɛ no"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr "Antumi anyi ankyerɛ"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Fa kɔ trash no mu"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+msgid "Redo Create Link"
+msgstr "Yɛ link ma nneɛma %d"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+msgid "Redo Restore from Trash"
+msgstr "San yi '%s' firi trash no mu bra"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+msgid "Redo Set Permissions"
+msgstr "Hyehyɛ '%s' ho hokwan"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+msgid "Redo Set Permissions Recursively"
+msgstr "Hyehyɛ '%s' ho hokwan"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+msgid "Redo Change Owner"
+msgstr "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+msgid "Redo Change Group"
+msgstr "_Sesã nneɛma dodoɔ %d a w'fa bi no"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Ɛntumi nhu baabi a ɛwo ankasa"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Bue trash no and wánkasa twe bra bio"
 
@@ -2110,32 +2254,24 @@ msgstr "Bue wɔ Tab Foforɔ Mu"
 msgid "Open in Other Application…"
 msgstr "Fa dwumadie foforɔ bue …"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Nea ɛdi akyire"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Nea edi hɔ"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-msgid "Undo Last File Operation"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:147
-msgid "Redo Last Undone File Operation"
 msgstr ""
 
 #: src/View/Widgets/HeaderBar.vala:154
@@ -2172,6 +2308,16 @@ msgstr "Hwɛ eho _details"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:284
+msgid "No operation to undo"
+msgstr ""
+
+#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+#: src/View/Widgets/HeaderBar.vala:292
+msgid "No operation to redo"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
@@ -2268,10 +2414,6 @@ msgstr "San bue folder wei"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Seisei ara"
-
-#, fuzzy
-#~ msgid "Setting permissions"
-#~ msgstr "Hyehyɛ '%s' ho hokwan"
 
 #, fuzzy
 #~ msgid "Error while moving files to trash."
@@ -2441,17 +2583,6 @@ msgstr "Seisei ara"
 #~ msgstr[0] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
 #~ msgstr[1] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Sesã file foforɔ a woreyɛ no"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Sesã file foforɔ a wode template reyɛ no"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Sesã folder dodoɔ %d a woreyɛ no"
-#~ msgstr[1] "_Sesã folder dodoɔ %d a woreyɛ no"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Sesã folder dodoɔ %d a worefa akɔ trash no mu no"
@@ -2461,12 +2592,6 @@ msgstr "Seisei ara"
 #~ msgid_plural "_Undo restore from trash of %d items"
 #~ msgstr[0] "_Sesã files dodoɔ %d a worefa afi trash no mu aba no"
 #~ msgstr[1] "_Sesã files dodoɔ %d a worefa afi trash no mu aba no"
-
-#, fuzzy
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "Yɛ link ma nneɛma %d"
-#~ msgstr[1] "Yɛ link ma nneɛma %d"
 
 #, fuzzy
 #~ msgid "_Undo delete of %d item"
@@ -2479,24 +2604,6 @@ msgstr "Seisei ara"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "_Sesã files dodoɔ %d a worefa afi trash no mu aba no"
 #~ msgstr[1] "_Sesã files dodoɔ %d a worefa afi trash no mu aba no"
-
-#, fuzzy
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "_Sesã nneɛma dodoɔ %d a w'fa bi no"
-#~ msgstr[1] "_Sesã nneɛma dodoɔ %d a w'fa bi no"
-
-#, fuzzy
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "_Sesã nneɛma dodoɔ %d a w'fa bi no"
-#~ msgstr[1] "_Sesã nneɛma dodoɔ %d a w'fa bi no"
-
-#, fuzzy
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
-#~ msgstr[1] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
 
 #, fuzzy
 #~ msgid "_Redo copy of %d item"
@@ -2523,14 +2630,6 @@ msgstr "Seisei ara"
 #~ msgstr[1] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
 
 #, fuzzy
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Sesã file foforɔ a woreyɛ no"
-
-#, fuzzy
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Sesã file foforɔ a wode template reyɛ no"
-
-#, fuzzy
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Sesã folder dodoɔ %d a woreyɛ no"
@@ -2549,34 +2648,10 @@ msgstr "Seisei ara"
 #~ msgstr[1] "_Sesã files dodoɔ %d a worefa afi trash no mu aba no"
 
 #, fuzzy
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "Yɛ link ma nneɛma %d"
-#~ msgstr[1] "Yɛ link ma nneɛma %d"
-
-#, fuzzy
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Sesã nneɛma dodoɔ %d ɛyɛ adekorɔ no"
 #~ msgstr[1] "_Sesã nneɛma dodoɔ %d ɛyɛ adekorɔ no"
-
-#, fuzzy
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Hyehyɛ '%s' ho hokwan"
-#~ msgstr[1] "Hyehyɛ '%s' ho hokwan"
-
-#, fuzzy
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "_Sesã nneɛma dodoɔ %d a w'fa bi no"
-#~ msgstr[1] "_Sesã nneɛma dodoɔ %d a w'fa bi no"
-
-#, fuzzy
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
-#~ msgstr[1] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"
