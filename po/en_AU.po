@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 16:31+0000\n"
+"POT-Creation-Date: 2023-02-12 16:55+0000\n"
 "PO-Revision-Date: 2022-04-20 10:20+0000\n"
 "Last-Translator: Joel Jose <joel750jose@gmail.com>\n"
 "Language-Team: English (Australia) <https://l10n.elementary.io/projects/"
@@ -1730,7 +1730,7 @@ msgid "Invalid file name provided"
 msgstr "Invalid file name provided"
 
 #: src/View/AbstractDirectoryView.vala:1898
-#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:182
+#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "New Tab"
 
@@ -1809,105 +1809,88 @@ msgid "Copy as Link"
 msgstr "Paste"
 
 #: src/View/AbstractDirectoryView.vala:2182
-#: src/View/AbstractDirectoryView.vala:2282
+#: src/View/AbstractDirectoryView.vala:2262
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "Paste into Folder"
 
 #: src/View/AbstractDirectoryView.vala:2187
-#: src/View/AbstractDirectoryView.vala:2256
+#: src/View/AbstractDirectoryView.vala:2239
 msgid "Paste into Folder"
 msgstr "Paste into Folder"
 
 #: src/View/AbstractDirectoryView.vala:2197
-#: src/View/AbstractDirectoryView.vala:2287
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "Paste"
 msgstr "Paste"
 
-#: src/View/AbstractDirectoryView.vala:2238
-msgid "Show Hidden Files"
-msgstr "Show Hidden Files"
-
-#: src/View/AbstractDirectoryView.vala:2243
-msgid "Show Remote Thumbnails"
-msgstr "Show Remote Thumbnails"
-
-#: src/View/AbstractDirectoryView.vala:2246
-#, fuzzy
-msgid "Hide Thumbnails"
-msgstr "Show Remote Thumbnails"
-
-#: src/View/AbstractDirectoryView.vala:2249
-msgid "Double-click to Navigate"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2347
+#: src/View/AbstractDirectoryView.vala:2317
 msgid "Name"
 msgstr "Name"
 
-#: src/View/AbstractDirectoryView.vala:2352 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2322 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Size"
 
-#: src/View/AbstractDirectoryView.vala:2357 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2327 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Type"
 
-#: src/View/AbstractDirectoryView.vala:2362
+#: src/View/AbstractDirectoryView.vala:2332
 msgid "Date"
 msgstr "Date"
 
-#: src/View/AbstractDirectoryView.vala:2367
+#: src/View/AbstractDirectoryView.vala:2337
 msgid "Reversed Order"
 msgstr "Reverse Order"
 
-#: src/View/AbstractDirectoryView.vala:2370
+#: src/View/AbstractDirectoryView.vala:2340
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2382
+#: src/View/AbstractDirectoryView.vala:2352
 msgid "Sort by"
 msgstr "Sort by"
 
-#: src/View/AbstractDirectoryView.vala:2390
+#: src/View/AbstractDirectoryView.vala:2360
 msgid "Folder"
 msgstr "Folder"
 
-#: src/View/AbstractDirectoryView.vala:2396
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Empty File"
 msgstr "Empty File"
 
-#: src/View/AbstractDirectoryView.vala:2447
+#: src/View/AbstractDirectoryView.vala:2417
 msgid "New"
 msgstr "New"
 
-#: src/View/AbstractDirectoryView.vala:2690
+#: src/View/AbstractDirectoryView.vala:2660
 #, c-format
 msgid "Untitled %s"
 msgstr "Untitled %s"
 
-#: src/View/AbstractDirectoryView.vala:3008
-#: src/View/AbstractDirectoryView.vala:3201
+#: src/View/AbstractDirectoryView.vala:2978
+#: src/View/AbstractDirectoryView.vala:3171
 msgid "Cannot remove files from here"
 msgstr "Cannot remove files from here"
 
-#: src/View/AbstractDirectoryView.vala:3009
-#: src/View/AbstractDirectoryView.vala:3174
-#: src/View/AbstractDirectoryView.vala:3185
-#: src/View/AbstractDirectoryView.vala:3202
+#: src/View/AbstractDirectoryView.vala:2979
+#: src/View/AbstractDirectoryView.vala:3144
+#: src/View/AbstractDirectoryView.vala:3155
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "You do not have permission to change this location"
 msgstr "You do not have permission to change this location"
 
-#: src/View/AbstractDirectoryView.vala:3142
+#: src/View/AbstractDirectoryView.vala:3112
 msgid "Cannot copy files that are in the trash"
 msgstr "Cannot copy files that are in the Rubbish Bin"
 
-#: src/View/AbstractDirectoryView.vala:3143
+#: src/View/AbstractDirectoryView.vala:3113
 msgid "Cutting the selection instead"
 msgstr "Cutting the selection instead"
 
-#: src/View/AbstractDirectoryView.vala:3173
-#: src/View/AbstractDirectoryView.vala:3184
+#: src/View/AbstractDirectoryView.vala:3143
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cannot paste files here"
 msgstr "Cannot paste files here"
 
@@ -2033,26 +2016,26 @@ msgstr "File not Found"
 msgid "The file selected no longer exists."
 msgstr "The selected file no longer exists."
 
-#: src/View/Window.vala:183
+#: src/View/Window.vala:184
 msgid "Undo Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:494
+#: src/View/Window.vala:497
 #, fuzzy
 #| msgid "Close"
 msgid "Close Tab"
 msgstr "Close"
 
-#: src/View/Window.vala:495
+#: src/View/Window.vala:498
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Duplicating \"%B\""
 
-#: src/View/Window.vala:496 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
 msgstr "Open in New Window"
 
-#: src/View/Window.vala:609 src/View/Window.vala:619
+#: src/View/Window.vala:612 src/View/Window.vala:622
 msgid "(as Administrator)"
 msgstr "(as Administrator)"
 
@@ -2183,13 +2166,76 @@ msgstr "Open in New Tab"
 msgid "Open in Other Application…"
 msgstr "Open in Other Application…"
 
-#: src/View/Widgets/HeaderBar.vala:66
+#: src/View/Widgets/HeaderBar.vala:70
 msgid "Previous"
 msgstr "Previous"
 
-#: src/View/Widgets/HeaderBar.vala:73
+#: src/View/Widgets/HeaderBar.vala:77
 msgid "Next"
 msgstr "Next"
+
+#: src/View/Widgets/HeaderBar.vala:92
+msgid "Zoom Out"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:101
+msgid "Zoom 1:1"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:110
+msgid "Zoom In"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:139
+#, fuzzy
+#| msgid "File Operations"
+msgid "Undo Last File Operation"
+msgstr "File Operations"
+
+#: src/View/Widgets/HeaderBar.vala:147
+#, fuzzy
+#| msgid "File Operations"
+msgid "Redo Last Undone File Operation"
+msgstr "File Operations"
+
+#: src/View/Widgets/HeaderBar.vala:154
+msgid "Double-click to Navigate"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:155
+msgid "Double-click on a folder opens it, single-click selects it"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:160
+msgid "Sort Folders before Files"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:164
+#, fuzzy
+#| msgid "Show Hidden Files"
+msgid "Show in View"
+msgstr "Show Hidden Files"
+
+#: src/View/Widgets/HeaderBar.vala:171
+#, fuzzy
+#| msgid "Show Hidden Files"
+msgid "Hidden Files"
+msgstr "Show Hidden Files"
+
+#: src/View/Widgets/HeaderBar.vala:175
+#, fuzzy
+msgid "Local Thumbnails"
+msgstr "Show Remote Thumbnails"
+
+#: src/View/Widgets/HeaderBar.vala:180
+#, fuzzy
+#| msgid "Show Remote Thumbnails"
+msgid "Remote Thumbnails"
+msgstr "Show Remote Thumbnails"
+
+#: src/View/Widgets/HeaderBar.vala:208
+msgid "Menu"
+msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
