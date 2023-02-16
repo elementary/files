@@ -56,6 +56,11 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
     private Gtk.Button zoom_default_button;
     private Gtk.Button zoom_in_button;
     private Gtk.Button zoom_out_button;
+    private Gtk.Button undo_button;
+    private Gtk.Button redo_button;
+    private string[] undo_accels;
+    private string[] redo_accels;
+    private unowned UndoManager undo_manager;
 
     public HeaderBar (ViewSwitcher switcher) {
         Object (view_switcher: switcher);
@@ -131,24 +136,19 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         };
         undo_redo_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
 
-        var undo_button = new Gtk.Button.from_icon_name ("edit-undo-symbolic", Gtk.IconSize.MENU) {
+        undo_button = new Gtk.Button.from_icon_name ("edit-undo-symbolic", Gtk.IconSize.MENU) {
             action_name = "win.undo"
         };
-        undo_button.tooltip_markup = Granite.markup_accel_tooltip (
-            app_instance.get_accels_for_action ("win.undo"),
-            _("Undo Last File Operation")
-        );
 
-        var redo_button = new Gtk.Button.from_icon_name ("edit-redo-symbolic", Gtk.IconSize.MENU) {
+        redo_button = new Gtk.Button.from_icon_name ("edit-redo-symbolic", Gtk.IconSize.MENU) {
             action_name = "win.redo"
         };
-        redo_button.tooltip_markup = Granite.markup_accel_tooltip (
-            app_instance.get_accels_for_action ("win.redo"),
-            _("Redo Last Undone File Operation")
-        );
 
         undo_redo_box.add (undo_button);
         undo_redo_box.add (redo_button);
+
+        undo_accels = app_instance.get_accels_for_action ("win.undo");
+        redo_accels = app_instance.get_accels_for_action ("win.redo");
 
         // Double-click option
         var double_click_button = new Granite.SwitchModelButton (_("Double-click to Navigate")) {
@@ -266,6 +266,31 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         });
 
         location_bar.escape.connect (() => {escape ();});
+
+        undo_manager = UndoManager.instance ();
+        undo_manager.request_menu_update.connect (set_undo_redo_tooltips);
+        set_undo_redo_tooltips ();
+    }
+
+    private void set_undo_redo_tooltips () {
+        unowned var undo_action_s = undo_manager.get_next_undo_description ();
+        unowned var redo_action_s = undo_manager.get_next_redo_description ();
+
+        undo_button.tooltip_markup = Granite.markup_accel_tooltip (
+            undo_accels,
+            undo_action_s != null ?
+            ///TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+            undo_action_s :
+            _("No operation to undo")
+        );
+
+        redo_button.tooltip_markup = Granite.markup_accel_tooltip (
+            redo_accels,
+            redo_action_s != "" ?
+            ///TRANSLATORS %s is a placeholder for a file operation type such as "Move"
+            redo_action_s :
+            _("No operation to redo")
+        );
     }
 
     private void on_zoom_setting_changed (Settings settings, string key) {
