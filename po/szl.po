@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 21:22+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: Grzegorz Kulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/files/files/szl/"
@@ -2380,15 +2380,13 @@ msgstr "Pokoż miniaturki we zdalnym zasobie"
 msgid "Menu"
 msgstr ""
 
-#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
-#: src/View/Widgets/HeaderBar.vala:284
+#: src/View/Widgets/HeaderBar.vala:283
 #, fuzzy
 #| msgid "The operation timed out."
 msgid "No operation to undo"
 msgstr "Limit czasu ôperacyje bōł przekroczōny."
 
-#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
-#: src/View/Widgets/HeaderBar.vala:292
+#: src/View/Widgets/HeaderBar.vala:290
 #, fuzzy
 #| msgid "The operation timed out."
 msgid "No operation to redo"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 21:22+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2023-02-16 21:22+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
@@ -2319,15 +2319,13 @@ msgstr "Miniatures remotes"
 msgid "Menu"
 msgstr "Menú"
 
-#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
-#: src/View/Widgets/HeaderBar.vala:284
+#: src/View/Widgets/HeaderBar.vala:283
 #, fuzzy
 #| msgid "The operation timed out."
 msgid "No operation to undo"
 msgstr "S'ha esgotat el temps d'espera de l'operació."
 
-#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
-#: src/View/Widgets/HeaderBar.vala:292
+#: src/View/Widgets/HeaderBar.vala:290
 #, fuzzy
 #| msgid "The operation timed out."
 msgid "No operation to redo"

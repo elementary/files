@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 21:22+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -2404,15 +2404,13 @@ msgstr "Afișați miniaturile de la distanță"
 msgid "Menu"
 msgstr ""
 
-#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
-#: src/View/Widgets/HeaderBar.vala:284
+#: src/View/Widgets/HeaderBar.vala:283
 #, fuzzy
 #| msgid "The operation timed out."
 msgid "No operation to undo"
 msgstr "Operația a expirat."
 
-#. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
-#: src/View/Widgets/HeaderBar.vala:292
+#: src/View/Widgets/HeaderBar.vala:290
 #, fuzzy
 #| msgid "The operation timed out."
 msgid "No operation to redo"
