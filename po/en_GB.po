@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-16 21:22+0000\n"
-"PO-Revision-Date: 2023-02-14 14:25+0000\n"
-"Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
+"PO-Revision-Date: 2023-02-17 09:25+0000\n"
+"Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/files/en_GB/>\n"
 "Language: en_GB\n"
@@ -628,7 +628,7 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:622
 msgid "Cannot move file to trash. Try to delete it?"
-msgstr "Cannot move file to trash. Try to delete it?"
+msgstr "Cannot move file to Rubbish Bin. Try to delete it?"
 
 #: libcore/marlin-file-operations.c:623
 msgid ""
@@ -1193,179 +1193,116 @@ msgid "Empty _Trash"
 msgstr "Empty _Rubbish Bin"
 
 #: libcore/UndoManager.vala:22
-#, fuzzy
-#| msgid "Copy"
 msgid "Undo Copy"
-msgstr "Copy"
+msgstr "Undo Copy"
 
 #: libcore/UndoManager.vala:24
-#, fuzzy
-#| msgid "Duplicate Tab"
 msgid "Undo Duplicate"
-msgstr "Duplicate Tab"
+msgstr "Undo Duplicate"
 
 #: libcore/UndoManager.vala:26
-#, fuzzy
-#| msgid "Undo Close Tab"
 msgid "Undo Move"
-msgstr "Undo Close Tab"
+msgstr "Undo Move"
 
 #: libcore/UndoManager.vala:28
-#, fuzzy
-#| msgid "Rename"
 msgid "Undo Rename"
-msgstr "Rename"
+msgstr "Undo Rename"
 
 #: libcore/UndoManager.vala:30
-#, fuzzy
-#| msgid "_Undo creation of an empty file"
 msgid "Undo Create Empty File"
-msgstr "_Undo creation of an empty file"
+msgstr "Undo Create Empty File"
 
 #: libcore/UndoManager.vala:32
-#, fuzzy
-#| msgid "_Undo creation of a file from template"
 msgid "Undo Create File from Template"
-msgstr "_Undo creation of a file from template"
+msgstr "Undo Create File from Template"
 
 #: libcore/UndoManager.vala:34
-#, fuzzy
-#| msgid "_Undo creation of %d folder"
-#| msgid_plural "_Undo creation of %d folders"
 msgid "Undo Create Folder"
-msgstr "_Undo creation of %d folder"
+msgstr "Undo Create Folder"
 
 #: libcore/UndoManager.vala:36
-#, fuzzy
-#| msgid "Move to Trash"
 msgid "Undo Move to Trash"
-msgstr "Move to the Rubbish Bin"
+msgstr "Undo Move to Rubbish Bin"
 
 #: libcore/UndoManager.vala:38
-#, fuzzy
-#| msgid "_Undo create link to %d item"
-#| msgid_plural "_Undo create link to %d items"
 msgid "Undo Create Link"
-msgstr "_Undo create link to %d item"
+msgstr "Undo Create Link"
 
 #: libcore/UndoManager.vala:40
-#, fuzzy
-#| msgid "Restore from Trash"
 msgid "Undo Restore from Trash"
-msgstr "Restore from Rubbish Bin"
+msgstr "Undo Restore from Rubbish Bin"
 
 #: libcore/UndoManager.vala:42
-#, fuzzy
-#| msgid "Setting permissions"
 msgid "Undo Set Permissions"
-msgstr "Setting permissions"
+msgstr "Undo Set Permissions"
 
 #: libcore/UndoManager.vala:44
-#, fuzzy
-#| msgid "Undo change permissions of %d item"
-#| msgid_plural "Undo change permissions of %d items"
 msgid "Undo Set Permissions Recursively"
-msgstr "Undo change permissions of %d item"
+msgstr "Undo Set Permissions Recursively"
 
 #: libcore/UndoManager.vala:46
-#, fuzzy
-#| msgid "Undo change owner of %d item"
-#| msgid_plural "Undo change owner of %d items"
 msgid "Undo Change Owner"
-msgstr "Undo change owner of %d item"
+msgstr "Undo Change Owner"
 
 #: libcore/UndoManager.vala:48
-#, fuzzy
-#| msgid "Undo change group of %d item"
-#| msgid_plural "Undo change group of %d items"
 msgid "Undo Change Group"
-msgstr "Undo change group of %d item"
+msgstr "Undo Change Group"
 
 #: libcore/UndoManager.vala:57
-#, fuzzy
-#| msgid "Copy"
 msgid "Redo Copy"
-msgstr "Copy"
+msgstr "Redo Copy"
 
 #: libcore/UndoManager.vala:59
-#, fuzzy
-#| msgid "Duplicate Tab"
 msgid "Redo Duplicate"
-msgstr "Duplicate Tab"
+msgstr "Redo Duplicate"
 
 #: libcore/UndoManager.vala:61
 msgid "Redo Move"
-msgstr ""
+msgstr "Redo Move"
 
 #: libcore/UndoManager.vala:63
-#, fuzzy
-#| msgid "Rename"
 msgid "Redo Rename"
-msgstr "Rename"
+msgstr "Redo Rename"
 
 #: libcore/UndoManager.vala:65
-#, fuzzy
-#| msgid "_Redo creation of an empty file"
 msgid "Redo Create Empty File"
-msgstr "_Redo creation of an empty file"
+msgstr "Redo Create Empty File"
 
 #: libcore/UndoManager.vala:67
-#, fuzzy
-#| msgid "_Redo creation of a file from template"
 msgid "Redo Create File from Template"
-msgstr "_Redo creation of a file from template"
+msgstr "Redo Create File from Template"
 
 #: libcore/UndoManager.vala:69
-#, fuzzy
-#| msgid "Failed to create the folder"
 msgid "Redo Create Folder"
-msgstr "Failed to create the folder"
+msgstr "Redo Create Folder"
 
 #: libcore/UndoManager.vala:71
-#, fuzzy
-#| msgid "Move to Trash"
 msgid "Redo Move to Trash"
-msgstr "Move to the Rubbish Bin"
+msgstr "Redo Move to Rubbish Bin"
 
 #: libcore/UndoManager.vala:73
-#, fuzzy
-#| msgid "_Redo create link to %d item"
-#| msgid_plural "_Redo create link to %d items"
 msgid "Redo Create Link"
-msgstr "_Redo create link to %d item"
+msgstr "Redo Create Link"
 
 #: libcore/UndoManager.vala:75
-#, fuzzy
-#| msgid "Restore from Trash"
 msgid "Redo Restore from Trash"
-msgstr "Restore from Rubbish Bin"
+msgstr "Redo Restore from Rubbish Bin"
 
 #: libcore/UndoManager.vala:77
-#, fuzzy
-#| msgid "Setting permissions"
 msgid "Redo Set Permissions"
-msgstr "Setting permissions"
+msgstr "Redo Set Permissions"
 
 #: libcore/UndoManager.vala:79
-#, fuzzy
-#| msgid "Redo change permissions of %d item"
-#| msgid_plural "Redo change permissions of %d items"
 msgid "Redo Set Permissions Recursively"
-msgstr "Redo change permissions of %d item"
+msgstr "Redo Set Permissions Recursively"
 
 #: libcore/UndoManager.vala:81
-#, fuzzy
-#| msgid "Redo change owner of %d item"
-#| msgid_plural "Redo change owner of %d items"
 msgid "Redo Change Owner"
-msgstr "Redo change owner of %d item"
+msgstr "Redo Change Owner"
 
 #: libcore/UndoManager.vala:83
-#, fuzzy
-#| msgid "Redo change group of %d item"
-#| msgid_plural "Redo change group of %d items"
 msgid "Redo Change Group"
-msgstr "Redo change group of %d item"
+msgstr "Redo Change Group"
 
 #: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
@@ -2313,17 +2250,13 @@ msgstr "Menu"
 
 #. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
 #: src/View/Widgets/HeaderBar.vala:284
-#, fuzzy
-#| msgid "The operation timed out."
 msgid "No operation to undo"
-msgstr "The operation timed out."
+msgstr "No operation to undo"
 
 #. TRANSLATORS %s is a placeholder for a file operation type such as "Move"
 #: src/View/Widgets/HeaderBar.vala:292
-#, fuzzy
-#| msgid "The operation timed out."
 msgid "No operation to redo"
-msgstr "The operation timed out."
+msgstr "No operation to redo"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
