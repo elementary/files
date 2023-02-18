@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-17 09:25+0000\n"
-"PO-Revision-Date: 2023-02-16 21:22+0000\n"
+"PO-Revision-Date: 2023-02-19 12:25+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -1216,179 +1216,116 @@ msgid "Empty _Trash"
 msgstr "Opróżnij _kosz"
 
 #: libcore/UndoManager.vala:22
-#, fuzzy
-#| msgid "Copy"
 msgid "Undo Copy"
-msgstr "Kopiuj"
+msgstr "Cofnij kopiowanie"
 
 #: libcore/UndoManager.vala:24
-#, fuzzy
-#| msgid "Duplicate Tab"
 msgid "Undo Duplicate"
-msgstr "Zduplikuj kartę"
+msgstr "Cofnij zduplikowanie"
 
 #: libcore/UndoManager.vala:26
-#, fuzzy
-#| msgid "Undo Close Tab"
 msgid "Undo Move"
-msgstr "Cofnij zamknięcie karty"
+msgstr "Cofnij przeniesienie"
 
 #: libcore/UndoManager.vala:28
-#, fuzzy
-#| msgid "Rename"
 msgid "Undo Rename"
-msgstr "Zmień nazwę"
+msgstr "Cofnij zmianę nazwy"
 
 #: libcore/UndoManager.vala:30
-#, fuzzy
-#| msgid "_Undo creation of an empty file"
 msgid "Undo Create Empty File"
-msgstr "_Cofnij utworzenie pustego pliku"
+msgstr "Cofnij utworzenie pustego pliku"
 
 #: libcore/UndoManager.vala:32
-#, fuzzy
-#| msgid "_Undo creation of a file from template"
 msgid "Undo Create File from Template"
-msgstr "_Cofnij utworzenie pliku z szablonu"
+msgstr "Cofnij utworzenie pliku z szablonu"
 
 #: libcore/UndoManager.vala:34
-#, fuzzy
-#| msgid "_Undo creation of %d folder"
-#| msgid_plural "_Undo creation of %d folders"
 msgid "Undo Create Folder"
-msgstr "_Cofnij utworzenie katalogu"
+msgstr "Cofnij utworzenie katalogu"
 
 #: libcore/UndoManager.vala:36
-#, fuzzy
-#| msgid "Move to Trash"
 msgid "Undo Move to Trash"
-msgstr "Przenieś do kosza"
+msgstr "Cofnij przeniesienie do kosza"
 
 #: libcore/UndoManager.vala:38
-#, fuzzy
-#| msgid "_Undo create link to %d item"
-#| msgid_plural "_Undo create link to %d items"
 msgid "Undo Create Link"
-msgstr "_Cofnij utworzenie aktywatora dla %d elementu"
+msgstr "Cofnij utworzenie linku"
 
 #: libcore/UndoManager.vala:40
-#, fuzzy
-#| msgid "Restore from Trash"
 msgid "Undo Restore from Trash"
-msgstr "Przywróć z kosza"
+msgstr "Cofnij przywrócenie z kosza"
 
 #: libcore/UndoManager.vala:42
-#, fuzzy
-#| msgid "Setting permissions"
 msgid "Undo Set Permissions"
-msgstr "Nadawanie uprawnień"
+msgstr "Cofnij nadanie uprawnień"
 
 #: libcore/UndoManager.vala:44
-#, fuzzy
-#| msgid "Undo change permissions of %d item"
-#| msgid_plural "Undo change permissions of %d items"
 msgid "Undo Set Permissions Recursively"
-msgstr "Cofnij zmianę uprawnień %d elementu"
+msgstr "Cofnij rekurencyjną zmianę uprawnień"
 
 #: libcore/UndoManager.vala:46
-#, fuzzy
-#| msgid "Undo change owner of %d item"
-#| msgid_plural "Undo change owner of %d items"
 msgid "Undo Change Owner"
-msgstr "Confij zmianę właściciela %d elementu"
+msgstr "Cofnij zmianę właściciela"
 
 #: libcore/UndoManager.vala:48
-#, fuzzy
-#| msgid "Undo change group of %d item"
-#| msgid_plural "Undo change group of %d items"
 msgid "Undo Change Group"
-msgstr "Cofnij zmianę grupy %d elementu"
+msgstr "Cofnij zmianę grupy"
 
 #: libcore/UndoManager.vala:57
-#, fuzzy
-#| msgid "Copy"
 msgid "Redo Copy"
-msgstr "Kopiuj"
+msgstr "Ponów kopiowanie"
 
 #: libcore/UndoManager.vala:59
-#, fuzzy
-#| msgid "Duplicate Tab"
 msgid "Redo Duplicate"
-msgstr "Zduplikuj kartę"
+msgstr "Ponów duplikację"
 
 #: libcore/UndoManager.vala:61
 msgid "Redo Move"
-msgstr ""
+msgstr "Ponów przeniesienie"
 
 #: libcore/UndoManager.vala:63
-#, fuzzy
-#| msgid "Rename"
 msgid "Redo Rename"
-msgstr "Zmień nazwę"
+msgstr "Ponów zmianę nazwy"
 
 #: libcore/UndoManager.vala:65
-#, fuzzy
-#| msgid "_Redo creation of an empty file"
 msgid "Redo Create Empty File"
-msgstr "_Ponów utworzenie pustego pliku"
+msgstr "Ponów utworzenie pustego pliku"
 
 #: libcore/UndoManager.vala:67
-#, fuzzy
-#| msgid "_Redo creation of a file from template"
 msgid "Redo Create File from Template"
-msgstr "_Ponów utworzenie pliku z szablonu"
+msgstr "Ponów utworzenie pliku z szablonu"
 
 #: libcore/UndoManager.vala:69
-#, fuzzy
-#| msgid "Failed to create the folder"
 msgid "Redo Create Folder"
-msgstr "Nie udało się utworzyć katalogu"
+msgstr "Ponów tworzenie katalogu"
 
 #: libcore/UndoManager.vala:71
-#, fuzzy
-#| msgid "Move to Trash"
 msgid "Redo Move to Trash"
-msgstr "Przenieś do kosza"
+msgstr "Ponów przeniesienie do kosza"
 
 #: libcore/UndoManager.vala:73
-#, fuzzy
-#| msgid "_Redo create link to %d item"
-#| msgid_plural "_Redo create link to %d items"
 msgid "Redo Create Link"
-msgstr "_Ponów utworzenie dowiązania do elementu"
+msgstr "Ponów utworzenie linku"
 
 #: libcore/UndoManager.vala:75
-#, fuzzy
-#| msgid "Restore from Trash"
 msgid "Redo Restore from Trash"
-msgstr "Przywróć z kosza"
+msgstr "Ponów przywrócenie z kosza"
 
 #: libcore/UndoManager.vala:77
-#, fuzzy
-#| msgid "Setting permissions"
 msgid "Redo Set Permissions"
-msgstr "Nadawanie uprawnień"
+msgstr "Ponów nadanie uprawnień"
 
 #: libcore/UndoManager.vala:79
-#, fuzzy
-#| msgid "Redo change permissions of %d item"
-#| msgid_plural "Redo change permissions of %d items"
 msgid "Redo Set Permissions Recursively"
-msgstr "Powtórz zmianę uprawnień do elementu"
+msgstr "Ponów rekurencyjną zmianę uprawnień"
 
 #: libcore/UndoManager.vala:81
-#, fuzzy
-#| msgid "Redo change owner of %d item"
-#| msgid_plural "Redo change owner of %d items"
 msgid "Redo Change Owner"
-msgstr "Ponów zmianę właściciela elementu"
+msgstr "Ponów zmianę właściciela"
 
 #: libcore/UndoManager.vala:83
-#, fuzzy
-#| msgid "Redo change group of %d item"
-#| msgid_plural "Redo change group of %d items"
 msgid "Redo Change Group"
-msgstr "Ponów zmianę grupy elementu"
+msgstr "Ponów zmianę grupy"
 
 #: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
@@ -2345,16 +2282,12 @@ msgid "Menu"
 msgstr "Menu"
 
 #: src/View/Widgets/HeaderBar.vala:283
-#, fuzzy
-#| msgid "The operation timed out."
 msgid "No operation to undo"
-msgstr "Przekroczono limit czasu operacji."
+msgstr "Brak operacji do cofnięcia"
 
 #: src/View/Widgets/HeaderBar.vala:290
-#, fuzzy
-#| msgid "The operation timed out."
 msgid "No operation to redo"
-msgstr "Przekroczono limit czasu operacji."
+msgstr "Brak operacji do ponowienia"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
