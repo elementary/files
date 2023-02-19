@@ -1100,11 +1100,12 @@ public class Files.File : GLib.Object {
         }
     }
 
+// <<<<<<< HEAD
     private string format_item_count () {
         ensure_item_count (true); // Re-count file items
 
         if (count < 0) {
-            return (_("Inaccessible"));
+            return (_("----"));
         } else if (count == 0) {
             return _("Empty");
         } else {
@@ -1114,7 +1115,13 @@ public class Files.File : GLib.Object {
     }
 
     private void ensure_item_count (bool recount) {
-        if (recount || count < 0) {
+        if (count >= 0 && !recount) {
+            return;
+        }
+
+        if (location.has_uri_scheme ("file") ||
+            (is_mounted && location.is_native ())) {
+
             try {
                 var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
                 count = 0;
@@ -1123,9 +1130,10 @@ public class Files.File : GLib.Object {
                 }
             } catch (Error e) {
                 count = -1;
-                return;
             }
         }
+
+
     }
 
     private void update_formated_type () {
@@ -1141,7 +1149,7 @@ public class Files.File : GLib.Object {
         }
     }
 
-    private GLib.Icon? get_icon_user_special_dirs (string path) {
+    public GLib.Icon? get_icon_user_special_dirs (string path) {
         if (path == GLib.Environment.get_home_dir ()) {
             return new GLib.ThemedIcon ("user-home");
         } else if (path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.DESKTOP)) {

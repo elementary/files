@@ -17,18 +17,97 @@
   </provides>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/elementary/files/master/data/screenshot-grid.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.2.1/data/screenshot-grid.png</image>
     </screenshot>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/elementary/files/master/data/screenshot-list.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.2.1/data/screenshot-list.png</image>
     </screenshot>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/elementary/files/master/data/screenshot-column.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.2.1/data/screenshot-column.png</image>
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1" />
+
   <releases>
-    <release version="6.1.3" date="2022-01-24" urgency="medium">
+    <release version="6.3.0" date="2023-02-12" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Move global settings from the context menu to an app menu in the headerbar</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/593">Zooming is hidden</issue>
+        <issue url="https://github.com/elementary/files/issues/1163">Invert logic of Show/Hide Thumbnails</issue>
+      </issues>
+    </release>
+
+    <release version="6.2.2" date="2023-02-03" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/pull/2122">Avoid crashes when disconnecting the provider</issue>
+        <issue url="https://github.com/elementary/files/issues/2115">Paste into folder menu item doesn't work</issue>
+        <issue url="https://github.com/elementary/files/pull/2107">Improve double-click setting label</issue>
+        <issue url="https://github.com/elementary/files/issues/2105">Sidebar icons sometimes change</issue>
+      </issues>
+    </release>
+
+    <release version="6.2.1" date="2022-11-15" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/2098">New empty file closes the app</issue>
+      </issues>
+    </release>
+    <release version="6.2.0" date="2022-11-04" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Provide option to select folders with single click and activate with double click</li>
+          <li>Only show the properties overlay when files are selected, not when hovered</li>
+        </ul>
+        <p>Fixes:</p>
+        <ul>
+          <li>Fix unexpected file activation after navigation with double-click</li>
+          <li>Fix dimmed window after use of filechooser portal</li>
+          <li>Fix possible crash when rapidly changing view modes</li>
+          <li>Fix startup when restored remote location is no longer connected</li>
+          <li>Ensure infobar shows in connection server dialog when connection attempt fails</li>
+          <li>Ensure correct icon for bookmark to a file that is not a folder</li>
+          <li>Fix possible crash when removing a bookmark</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="6.1.4" date="2022-06-17" urgency="medium">
+      <description>
+        <p>Fixes:</p>
+        <ul>
+          <li>A regression in zooming out using Ctrl + ScrollDown is fixed</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="6.1.3" date="2022-06-17" urgency="medium">
       <description>
         <p>Fixes:</p>
         <ul>
@@ -38,6 +117,12 @@
           <li>The appearance of the cursor now matches the action</li>
           <li>The Trash sidebar item can no longer be removed</li>
           <li>Network sidebar plugins such as NextCloud are now added correctly</li>
+          <li>Duplication of subfolders in ListView under some circumstances is fixed</li>
+          <li>Bookmarks are now highlighted when a file they can accept is dragged onto them</li>
+          <li>Folders not being restored properly under some circumstances is fixed</li>
+          <li>Show confirmation dialog in file chooser before overwriting an existing file</li>
+          <li>Ctrl + V now always pastes into background folder</li>
+          <li>Shift + Ctrl + V now pastes into selected folder if there is one</li>
         </ul>
         <p>Minor updates:</p>
         <ul>
