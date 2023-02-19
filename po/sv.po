@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2018-10-22 00:03+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/files/"
@@ -1234,11 +1234,184 @@ msgstr "Kopiera _ändå"
 msgid "Empty _Trash"
 msgstr "Töm _papperskorgen"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Kopiera"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "Duplicerar \"%B\""
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Byt namn"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Ångra skapandet av en tom fil"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Ångra skapandet av en fil från mall"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Ångra skapandet av %d mapp"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Flytta till papperskorgen"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_Ångra länkandet till %d objekt"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Återställ från papperskorgen"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Ställer in rättigheter"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Ångra ändring av rättigheter för %d objekt"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Ångra ändring av ägare för %d objekt"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Ångra ändring av grupp för %d objekt"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Kopiera"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "Duplicerar \"%B\""
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Byt namn"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "_Gör om skapandet av en tom fil"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "_Gör om skapandet av en fil från mall"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr ""
+"Misslyckades med att skapa mappen\n"
+"\n"
+"%s"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Flytta till papperskorgen"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "_Gör om länkning till %d objekt"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Återställ från papperskorgen"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Ställer in rättigheter"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Gör om ändring av rättigheter för %d objekt"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Gör om ändring av ägare för %d objekt"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Gör om ändring av grupp för %d objekt"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Kunde inte fastställa ursprunglig plats"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Öppna papperskorgen och återställ manuellt"
 
@@ -2153,37 +2326,25 @@ msgstr "Öppna i ny flik"
 msgid "Open in Other Application…"
 msgstr "Öppna med annat program…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Föregående"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Nästa"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Filåtgärder"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Filåtgärder"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2225,6 +2386,18 @@ msgstr "Visa externa miniatyrbilder"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:283
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "Åtgärden tog för lång tid."
+
+#: src/View/Widgets/HeaderBar.vala:290
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "Åtgärden tog för lång tid."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2324,8 +2497,15 @@ msgstr "Under denna mapp"
 msgid "Recently Used"
 msgstr "Senaste använda"
 
-#~ msgid "Setting permissions"
-#~ msgstr "Ställer in rättigheter"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Filåtgärder"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Filåtgärder"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2555,17 +2735,6 @@ msgstr "Senaste använda"
 #~ msgstr[0] "_Ångra namnbyte på %d objekt"
 #~ msgstr[1] "_Ångra namnbyten på %d objekt"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Ångra skapandet av en tom fil"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Ångra skapandet av en fil från mall"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Ångra skapandet av %d mapp"
-#~ msgstr[1] "_Ångra skapandet av %d mappar"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Ångra flytten av %d objekt till papperskorgen"
@@ -2576,11 +2745,6 @@ msgstr "Senaste använda"
 #~ msgstr[0] "_Ångra återskapandet av %d objekt från papperskorgen"
 #~ msgstr[1] "_Ångra återskapandet av %d objekt från papperskorgen"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Ångra länkandet till %d objekt"
-#~ msgstr[1] "_Ångra länkandet till %d objekt"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_Ångra radering av %d objekt"
@@ -2590,21 +2754,6 @@ msgstr "Senaste använda"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "Ångra rekursiv ändring av rättigheter för %d objekt"
 #~ msgstr[1] "Ångra rekursiv ändring av rättigheter för %d objekt"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Ångra ändring av rättigheter för %d objekt"
-#~ msgstr[1] "Ångra ändring av rättigheter för %d objekt"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Ångra ändring av grupp för %d objekt"
-#~ msgstr[1] "Ångra ändring av grupp för %d objekt"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Ångra ändring av ägare för %d objekt"
-#~ msgstr[1] "Ångra ändring av ägare för %d objekt"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2626,12 +2775,6 @@ msgstr "Senaste använda"
 #~ msgstr[0] "_Gör om namnbyte på %d objekt"
 #~ msgstr[1] "_Gör om namnbyte på %d objekt"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Gör om skapandet av en tom fil"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Gör om skapandet av en fil från mall"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Gör om skapandet av %d mapp"
@@ -2647,11 +2790,6 @@ msgstr "Senaste använda"
 #~ msgstr[0] "_Gör om återställning av %d objekt från papperskorgen"
 #~ msgstr[1] "_Gör om återställning av %d objekt från papperskorgen"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Gör om länkning till %d objekt"
-#~ msgstr[1] "_Gör om länkning till %d objekt"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Gör om radering av %d objekt"
@@ -2661,21 +2799,6 @@ msgstr "Senaste använda"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "Gör om rekursiv ändring av rättigheter för %d objekt"
 #~ msgstr[1] "Gör om rekursiv ändring av rättigheter för %d objekt"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Gör om ändring av rättigheter för %d objekt"
-#~ msgstr[1] "Gör om ändring av rättigheter för %d objekt"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Gör om ändring av grupp för %d objekt"
-#~ msgstr[1] "Gör om ändring av grupp för %d objekt"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Gör om ändring av ägare för %d objekt"
-#~ msgstr[1] "Gör om ändring av ägare för %d objekt"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

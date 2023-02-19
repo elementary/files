@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2023-02-14 14:25+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
@@ -1191,11 +1191,186 @@ msgstr "Kopiér _likevel"
 msgid "Empty _Trash"
 msgstr "Tøm _papirkurven"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Kopier"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Undo Duplicate"
+msgstr "Dupliserer fane"
+
+#: libcore/UndoManager.vala:26
+#, fuzzy
+#| msgid "Undo Close Tab"
+msgid "Undo Move"
+msgstr "Angre lukking av fane"
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Gi nytt navn"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Angre oppretting av tom fil"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Angre oppretting av fil fra mal"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Angre oppretting av %d mappe"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Flytt til papirkurv"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_Angre oppretting av lenke til %d element"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Gjenopprett fra papirkurv"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Setter rettigheter"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Angre endring av rettigheter på %d element"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Angre endring av eier av %d element"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Angre endring av gruppe på %d element"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Kopier"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Redo Duplicate"
+msgstr "Dupliserer fane"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Gi nytt navn"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "_Gjenta oppretting av tom fil"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "_Gjenta oppretting av fil fra mal"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "Klarte ikke å opprette mappen"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Flytt til papirkurv"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "_Gjenta oppretting av lenke til %d element"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Gjenopprett fra papirkurv"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Setter rettigheter"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Gjenta rettighetsendring av %d element"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Gjenta eierendring av %d element"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Gjenta gruppeendring av %d element"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Opprinnelig plassering kunne ikke bestemmes"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Åpne søppelbøtten og hent tilbake manuelt"
 
@@ -2088,37 +2263,25 @@ msgstr "Åpne i ny fane"
 msgid "Open in Other Application…"
 msgstr "Åpne i et annet program…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Forrige"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Neste"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr "Forminsk"
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr "Førstørr 1:1"
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr "Forstørr"
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Filoperasjoner"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Filoperasjoner"
 
 #: src/View/Widgets/HeaderBar.vala:154
 #, fuzzy
@@ -2162,6 +2325,18 @@ msgstr "Vis miniatyrbilder fra andre steder"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr "Meny"
+
+#: src/View/Widgets/HeaderBar.vala:283
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "Tidsavbrudd for operasjon."
+
+#: src/View/Widgets/HeaderBar.vala:290
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "Tidsavbrudd for operasjon."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2256,11 +2431,18 @@ msgid "Recently Used"
 msgstr "Nylig brukt"
 
 #, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Filoperasjoner"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Filoperasjoner"
+
+#, fuzzy
 #~ msgid "Select Folders with Single Click"
 #~ msgstr "Velg mapper med ett klikk"
-
-#~ msgid "Setting permissions"
-#~ msgstr "Setter rettigheter"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2487,17 +2669,6 @@ msgstr "Nylig brukt"
 #~ msgstr[0] "_Angre navneendring av %d element"
 #~ msgstr[1] "_Angre navneendring av %d elementer"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Angre oppretting av tom fil"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Angre oppretting av fil fra mal"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Angre oppretting av %d mappe"
-#~ msgstr[1] "_Angre oppretting av %d mapper"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Angre flytting til papirkurv av %d element"
@@ -2508,11 +2679,6 @@ msgstr "Nylig brukt"
 #~ msgstr[0] "_Angre gjenoppretting fra papirkurv av %d element"
 #~ msgstr[1] "_Angre gjenoppretting fra papirkurv av %d elementer"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Angre oppretting av lenke til %d element"
-#~ msgstr[1] "_Angre oppretting av lenke til %d elementer"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_Angre sletting av %d element"
@@ -2522,21 +2688,6 @@ msgstr "Nylig brukt"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "Angre rekursiv endring av rettigheter på %d element"
 #~ msgstr[1] "Angre rekursiv endring av rettigheter på %d elementer"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Angre endring av rettigheter på %d element"
-#~ msgstr[1] "Angre endring av rettigheter på %d elementer"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Angre endring av gruppe på %d element"
-#~ msgstr[1] "Angre endring av gruppe på %d elementer"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Angre endring av eier av %d element"
-#~ msgstr[1] "Angre endring av eier av %d elementer"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2558,12 +2709,6 @@ msgstr "Nylig brukt"
 #~ msgstr[0] "_Gjenta navneendring av %d element"
 #~ msgstr[1] "_Gjenta navneendring av %d elementer"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Gjenta oppretting av tom fil"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Gjenta oppretting av fil fra mal"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Gjenta oppretting av %d mappe"
@@ -2579,11 +2724,6 @@ msgstr "Nylig brukt"
 #~ msgstr[0] "_Gjenta gjenopprett fra papirkurv av %d element"
 #~ msgstr[1] "_Gjenta gjenopprett fra papirkurv av %d elementer"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Gjenta oppretting av lenke til %d element"
-#~ msgstr[1] "_Gjenta oppretting av lenke til %d elementer"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Gjenta sletting av %d element"
@@ -2593,21 +2733,6 @@ msgstr "Nylig brukt"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "_Gjenta rekursiv rettighetsendring av %d element"
 #~ msgstr[1] "_Gjenta rekursiv rettighetsendring av %d elementer"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Gjenta rettighetsendring av %d element"
-#~ msgstr[1] "Gjenta rettighetsendring av %d elementer"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Gjenta gruppeendring av %d element"
-#~ msgstr[1] "Gjenta gruppeendring av %d elementer"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Gjenta eierendring av %d element"
-#~ msgstr[1] "Gjenta eierendring av %d elementer"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

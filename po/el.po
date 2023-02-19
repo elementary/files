@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2017-02-14 10:17+0000\n"
 "Last-Translator: Cody Garver <cody@elementaryos.org>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -1250,11 +1250,184 @@ msgstr "Αντιγραφή _Παρ' αυτά"
 msgid "Empty _Trash"
 msgstr "Άδειασμα _Απορριμμάτων"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Αντιγραφή"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "Δημιουργείται αντίγραφο του \"%B\""
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Μετονομασία"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Αναίρεση δημιουργίας κενού αρχείου"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Αναίρεση δημιουργίας αρχείου από τα πρότυπα"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Αναίρεση δημιουργίας %d φακέλου"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Μετακίνηση στον κάδο"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_Αναίρεση δημιουργίας συνδέσμου του %d στοιχείου"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Επαναφορά από τον κάδο"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Ορισμός δικαιωμάτων"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Αναίρεση αλλαγής δικαιωμάτων του %d στοιχείου"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Αναίρεση αλλαγής ιδιοκτήτη του %d αντικειμένου"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Αναίρεση αλλαγής ομάδας του %d αντικειμένου"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Αντιγραφή"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "Δημιουργείται αντίγραφο του \"%B\""
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Μετονομασία"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "Επανάληψη δημιουργίας ενός κενού αρχείου"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "Επανάληψη δημιουργίας ενός αρχείου από πρότυπο"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr ""
+"Αποτυχία δημιουργίας του φακέλου\n"
+"\n"
+"%s"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Μετακίνηση στον κάδο"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "Επανάληψη δημιουργίας συνδέσμου %d αντικειμένου"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Επαναφορά από τον κάδο"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Ορισμός δικαιωμάτων"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Επανάληψη αλλαγής δικαιωμάτων του %d αντικειμένου"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Επανάληψη αλλαγής ιδιοκτήτη του %d αντικειμένου"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Επανάληψη αλλαγής ομάδας του %d αντικειμένου"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Η αρχική τοποθεσία δεν μπορεί να καθορισθεί"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr ""
 
@@ -2186,37 +2359,25 @@ msgstr "Άνοιγμα σε νέα καρτέλα"
 msgid "Open in Other Application…"
 msgstr "Άνοιγμα σε άλλη εφαρμογή..."
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Προηγούμενο"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Επόμενο"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Λειτουργίες αρχείων"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Λειτουργίες αρχείων"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2254,6 +2415,14 @@ msgstr "Εμφάνιση περισσότερων _λεπτομερειών"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:283
+msgid "No operation to undo"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:290
+msgid "No operation to redo"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
@@ -2355,8 +2524,15 @@ msgstr "Σε αυτό το φάκελο"
 msgid "Recently Used"
 msgstr "Πρόσφατα"
 
-#~ msgid "Setting permissions"
-#~ msgstr "Ορισμός δικαιωμάτων"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Λειτουργίες αρχείων"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Λειτουργίες αρχείων"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2585,17 +2761,6 @@ msgstr "Πρόσφατα"
 #~ msgstr[0] "_Αναίρεση μετονομασίας %d στοιχείου"
 #~ msgstr[1] "_Αναίρεση μετονομασίας %d στοιχείων"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Αναίρεση δημιουργίας κενού αρχείου"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Αναίρεση δημιουργίας αρχείου από τα πρότυπα"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Αναίρεση δημιουργίας %d φακέλου"
-#~ msgstr[1] "_Αναίρεση δημιουργίας %d φακέλων"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Αναίρεση μετακίνισης %d στοιχείου στα απορρίμματα"
@@ -2606,11 +2771,6 @@ msgstr "Πρόσφατα"
 #~ msgstr[0] "_Αναίρεση επαναφοράς %d στοιχείου από τα απορρίμματα"
 #~ msgstr[1] "_Αναίρεση επαναφοράς %d στοιχείων από τα απορρίμματα"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Αναίρεση δημιουργίας συνδέσμου του %d στοιχείου"
-#~ msgstr[1] "_Αναίρεση δημιουργίας συνδέσμου των %d στοιχείων"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_Αναίρεση διαγραφής του %d στοιχείου"
@@ -2620,21 +2780,6 @@ msgstr "Πρόσφατα"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "Αναίρεση αναδρομικής αλλαγής στα δικαιώματα του %d αντικειμένου"
 #~ msgstr[1] "Αναίρεση αναδρομικής αλλαγής στα δικαιώματα των %d αντικειμένων"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Αναίρεση αλλαγής δικαιωμάτων του %d στοιχείου"
-#~ msgstr[1] "Αναίρεση αλλαγής δικαιωμάτων των %d στοιχείων"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Αναίρεση αλλαγής ομάδας του %d αντικειμένου"
-#~ msgstr[1] "Αναίρεση αλλαγής ομάδας των %d αντικειμένων"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Αναίρεση αλλαγής ιδιοκτήτη του %d αντικειμένου"
-#~ msgstr[1] "Αναίρεση αλλαγής ιδιοκτήτη των %d αντικειμένων"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2656,12 +2801,6 @@ msgstr "Πρόσφατα"
 #~ msgstr[0] "Επανάληψη μετονομασίας %d αντικειμένου"
 #~ msgstr[1] "Επανάληψη μετονομασίας %d αντικειμένων"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "Επανάληψη δημιουργίας ενός κενού αρχείου"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "Επανάληψη δημιουργίας ενός αρχείου από πρότυπο"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "Επανάληψη δημιουργίας %d φακέλου"
@@ -2677,11 +2816,6 @@ msgstr "Πρόσφατα"
 #~ msgstr[0] "Επανάληψη επαναφοράς από τον κάδο %d αντικειμένου"
 #~ msgstr[1] "Επανάληψη επαναφοράς από τον κάδο %d αντικειμένων"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "Επανάληψη δημιουργίας συνδέσμου %d αντικειμένου"
-#~ msgstr[1] "Επανάληψη δημιουργίας συνδέσμου %d αντικειμένων"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "Επανάληψη διαγραφής %d αντικειμένου"
@@ -2691,21 +2825,6 @@ msgstr "Πρόσφατα"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "Επανάληψη διαδοχικής αλλαγής των δικαιωμάτων του %d αντικειμένου"
 #~ msgstr[1] "Επανάληψη διαδοχικής αλλαγής των δικαιωμάτων των %d αντικειμένων"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Επανάληψη αλλαγής δικαιωμάτων του %d αντικειμένου"
-#~ msgstr[1] "Επανάληψη αλλαγής δικαιωμάτων των %d αντικειμένων"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Επανάληψη αλλαγής ομάδας του %d αντικειμένου"
-#~ msgstr[1] "Επανάληψη αλλαγής ομάδας των %d αντικειμένων"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Επανάληψη αλλαγής ιδιοκτήτη του %d αντικειμένου"
-#~ msgstr[1] "Επανάληψη αλλαγής ιδιοκτήτη των %d αντικειμένων"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

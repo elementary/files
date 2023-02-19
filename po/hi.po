@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2018-05-12 00:02+0000\n"
 "Last-Translator: Anand Kumar <anand@anandkumar.net>\n"
 "Language-Team: Hindi <https://weblate.elementary.io/projects/files/files/hi/"
@@ -1166,11 +1166,132 @@ msgstr ""
 msgid "Empty _Trash"
 msgstr ""
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+msgid "Undo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "'%s' को दुहराए '%s' में"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+msgid "Undo Rename"
+msgstr ""
+
+#: libcore/UndoManager.vala:30
+msgid "Undo Create Empty File"
+msgstr ""
+
+#: libcore/UndoManager.vala:32
+msgid "Undo Create File from Template"
+msgstr ""
+
+#: libcore/UndoManager.vala:34
+msgid "Undo Create Folder"
+msgstr ""
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+msgid "Undo Move to Trash"
+msgstr "'%s' को वापस रद्दी में भेजें"
+
+#: libcore/UndoManager.vala:38
+msgid "Undo Create Link"
+msgstr ""
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+msgid "Undo Restore from Trash"
+msgstr "'%s' को '%s' में पुनर्स्थापित करें"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+msgid "Undo Set Permissions"
+msgstr "'%s' का मूल अनुमतियाँ पुनर्स्थापित करें"
+
+#: libcore/UndoManager.vala:44
+msgid "Undo Set Permissions Recursively"
+msgstr ""
+
+#: libcore/UndoManager.vala:46
+msgid "Undo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:48
+msgid "Undo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:57
+msgid "Redo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "'%s' को दुहराए '%s' में"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+msgid "Redo Rename"
+msgstr ""
+
+#: libcore/UndoManager.vala:65
+msgid "Redo Create Empty File"
+msgstr ""
+
+#: libcore/UndoManager.vala:67
+msgid "Redo Create File from Template"
+msgstr ""
+
+#: libcore/UndoManager.vala:69
+msgid "Redo Create Folder"
+msgstr ""
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+msgid "Redo Move to Trash"
+msgstr "'%s' को वापस रद्दी में भेजें"
+
+#: libcore/UndoManager.vala:73
+msgid "Redo Create Link"
+msgstr ""
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+msgid "Redo Restore from Trash"
+msgstr "'%s' को '%s' में पुनर्स्थापित करें"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+msgid "Redo Set Permissions"
+msgstr "'%s' का मूल अनुमतियाँ पुनर्स्थापित करें"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+msgid "Redo Set Permissions Recursively"
+msgstr "'%s' का मूल अनुमतियाँ पुनर्स्थापित करें"
+
+#: libcore/UndoManager.vala:81
+msgid "Redo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:83
+msgid "Redo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr ""
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr ""
 
@@ -2050,32 +2171,24 @@ msgstr ""
 msgid "Open in Other Application…"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-msgid "Undo Last File Operation"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:147
-msgid "Redo Last Undone File Operation"
 msgstr ""
 
 #: src/View/Widgets/HeaderBar.vala:154
@@ -2108,6 +2221,14 @@ msgstr ""
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:283
+msgid "No operation to undo"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:290
+msgid "No operation to redo"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
@@ -2302,10 +2423,6 @@ msgstr ""
 #~ msgstr "'%s' को वापस रद्दी में भेजें"
 
 #, fuzzy
-#~ msgid "Restore '%s' from trash"
-#~ msgstr "'%s' को '%s' में पुनर्स्थापित करें"
-
-#, fuzzy
 #~ msgid "Create links to %d items"
 #~ msgstr "लिंक मिटायें '%s' के"
 
@@ -2318,10 +2435,6 @@ msgstr ""
 #~ msgstr "संलग्न मदों के मूल अनुमतियाँ पुनर्स्थापित करें '%s' में"
 
 #, fuzzy
-#~ msgid "Set permissions of '%s'"
-#~ msgstr "'%s' का मूल अनुमतियाँ पुनर्स्थापित करें"
-
-#, fuzzy
 #~ msgid "Set group of '%s' to '%s'"
 #~ msgstr "'%s' में '%s' समूह को पुनर्स्थापित करें"
 
@@ -2332,12 +2445,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Redo recursive change permissions of %d item"
 #~ msgid_plural "Redo recursive change permissions of %d items"
-#~ msgstr[0] "'%s' का मूल अनुमतियाँ पुनर्स्थापित करें"
-#~ msgstr[1] "'%s' का मूल अनुमतियाँ पुनर्स्थापित करें"
-
-#, fuzzy
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
 #~ msgstr[0] "'%s' का मूल अनुमतियाँ पुनर्स्थापित करें"
 #~ msgstr[1] "'%s' का मूल अनुमतियाँ पुनर्स्थापित करें"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2017-08-22 19:27+0000\n"
 "Last-Translator: anjelo del carmen <anjelo2009@live.com>\n"
 "Language-Team: Tagalog <https://weblate.elementary.io/projects/files/files/"
@@ -1225,11 +1225,151 @@ msgstr "Kopy_ahin Parin"
 msgid "Empty _Trash"
 msgstr "Alisin ang laman ng Basura"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Kopyahin"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "Dinodoble ang \"%B\""
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Palitan ng pangalan"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+msgid "Undo Create Empty File"
+msgstr "Bumuo ng isang file na walang laman sa '%s'"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+msgid "Undo Create File from Template"
+msgstr "Bumuo ng bagong polder na '%s'"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+msgid "Undo Create Folder"
+msgstr "Idikit sa Polder"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+msgid "Undo Move to Trash"
+msgstr "Ilipat ang '%s' papuntang basura"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+msgid "Undo Create Link"
+msgstr "Bumuo ng mga link patungo sa %d mga item."
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+msgid "Undo Restore from Trash"
+msgstr "Ibalik mula sa basura ang '%s'"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Nilalapat ang mga permiso."
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+msgid "Undo Set Permissions Recursively"
+msgstr "I-set ang mga permiso ng '%s'"
+
+#: libcore/UndoManager.vala:46
+msgid "Undo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:48
+msgid "Undo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Kopyahin"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "Dinodoble ang \"%B\""
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Palitan ng pangalan"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+msgid "Redo Create Empty File"
+msgstr "Bumuo ng isang file na walang laman sa '%s'"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+msgid "Redo Create File from Template"
+msgstr "Bumuo ng bagong polder na '%s'"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr "Hindi maiparse ang desktop file na:  %s"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+msgid "Redo Move to Trash"
+msgstr "Ilipat ang '%s' papuntang basura"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+msgid "Redo Create Link"
+msgstr "Bumuo ng mga link patungo sa %d mga item."
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+msgid "Redo Restore from Trash"
+msgstr "Ibalik mula sa basura ang '%s'"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Nilalapat ang mga permiso."
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+msgid "Redo Set Permissions Recursively"
+msgstr "I-set ang mga permiso ng '%s'"
+
+#: libcore/UndoManager.vala:81
+msgid "Redo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:83
+msgid "Redo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Hindi matukoy ang orihinal na lokasyon"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Buksan ang folder ng basura at manu-mano itong ibalik"
 
@@ -2141,37 +2281,25 @@ msgstr "Buksan sa Bagong Tab"
 msgid "Open in Other Application…"
 msgstr "Buksan gamit ang Ibang Aplikasyon"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Nakaraan"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Susunod"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Mga Operasyon sa File"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Mga Operasyon sa File"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2209,6 +2337,14 @@ msgstr "Ipakita ang mas marami pang _detalye"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:283
+msgid "No operation to undo"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:290
+msgid "No operation to redo"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
@@ -2301,8 +2437,15 @@ msgstr "Sa Polder na Ito"
 msgid "Recently Used"
 msgstr "Kamakailan"
 
-#~ msgid "Setting permissions"
-#~ msgstr "Nilalapat ang mga permiso."
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Mga Operasyon sa File"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Mga Operasyon sa File"
 
 #, fuzzy
 #~ msgid "Preparing to trash %'d file"
@@ -2442,10 +2585,6 @@ msgstr "Kamakailan"
 #~ msgid "Move '%s' to '%s'"
 #~ msgstr "Ilipat ang '%s' sa '%s'"
 
-#, fuzzy
-#~ msgid "Create new file '%s' from template "
-#~ msgstr "Bumuo ng bagong polder na '%s'"
-
 #~ msgid "Create an empty file '%s'"
 #~ msgstr "Bumuo ng isang file na walang laman sa '%s'"
 
@@ -2488,18 +2627,9 @@ msgstr "Kamakailan"
 #~ msgstr[0] "Burahin ang %d na mga nadobleng aytem"
 
 #, fuzzy
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "Bumuo ng isang file na walang laman sa '%s'"
-
-#, fuzzy
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "Hindi mailipat sa basura o hindi mabura ang file."
-
-#, fuzzy
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "Bumuo ng mga link patungo sa %d mga item."
 
 #, fuzzy
 #~ msgid "_Undo delete of %d item"
@@ -2507,18 +2637,9 @@ msgstr "Kamakailan"
 #~ msgstr[0] "Binubura ang mga link sa %d na mga aytem"
 
 #, fuzzy
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "I-set ang mga permiso ng '%s'"
-
-#, fuzzy
 #~ msgid "_Redo duplicate of %d item"
 #~ msgid_plural "_Redo duplicate of %d items"
 #~ msgstr[0] "Burahin ang %d na mga nadobleng aytem"
-
-#, fuzzy
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "Bumuo ng isang file na walang laman sa '%s'"
 
 #, fuzzy
 #~ msgid "_Redo creation of %d folder"
@@ -2536,11 +2657,6 @@ msgstr "Kamakailan"
 #~ msgstr[0] "Ibalik mula sa basura ang '%s'"
 
 #, fuzzy
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "Bumuo ng mga link patungo sa %d mga item."
-
-#, fuzzy
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "Binubura ang mga link sa %d na mga aytem"
@@ -2549,11 +2665,6 @@ msgstr "Kamakailan"
 #~ msgid "Redo recursive change permissions of %d item"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "Ibalik ang orihinal na mga permiso ng '%s'"
-
-#, fuzzy
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "I-set ang mga permiso ng '%s'"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

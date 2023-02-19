@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2016-06-30 19:07+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Macedonian <mk@li.org>\n"
@@ -1184,11 +1184,151 @@ msgstr ""
 msgid "Empty _Trash"
 msgstr "Испразни _корпа"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+msgid "Undo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "Дуплицирај '%s' во '%s'"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+msgid "Undo Rename"
+msgstr ""
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Врати создавање на празен фајл."
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Врати создавање на фајл од шаблон."
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Врати создавање на %d фолдер."
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+msgid "Undo Move to Trash"
+msgstr "Премести '%s' во канта за отпадоци"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_Врати создавање на врска до %d работа."
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+msgid "Undo Restore from Trash"
+msgstr "Врати '%s' од ѓубрето."
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+msgid "Undo Set Permissions"
+msgstr "Постави овластувања на '%s'"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+msgid "Undo Set Permissions Recursively"
+msgstr "_Врати создавање на врска до %d работа."
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+msgid "Undo Change Owner"
+msgstr "_Врати преименување на %d работа."
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+msgid "Undo Change Group"
+msgstr "_Врати копија на %d работа."
+
+#: libcore/UndoManager.vala:57
+msgid "Redo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "Дуплицирај '%s' во '%s'"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+msgid "Redo Rename"
+msgstr ""
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+msgid "Redo Create Empty File"
+msgstr "_Врати создавање на празен фајл."
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+msgid "Redo Create File from Template"
+msgstr "_Врати создавање на фајл од шаблон."
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr "_Врати создавање на %d фолдер."
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+msgid "Redo Move to Trash"
+msgstr "Премести '%s' во канта за отпадоци"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+msgid "Redo Create Link"
+msgstr "_Врати создавање на врска до %d работа."
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+msgid "Redo Restore from Trash"
+msgstr "Врати '%s' од ѓубрето."
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+msgid "Redo Set Permissions"
+msgstr "Постави овластувања на '%s'"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+msgid "Redo Set Permissions Recursively"
+msgstr "_Повторно копирај %d работа"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+msgid "Redo Change Owner"
+msgstr "_Повторно промени име на %d работа."
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+msgid "Redo Change Group"
+msgstr "_Повторно копирај %d работа"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr ""
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr ""
 
@@ -2083,37 +2223,25 @@ msgstr "Отвори во ново јазиче"
 msgid "Open in Other Application…"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Операции со фајлови"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Операции со фајлови"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2147,6 +2275,14 @@ msgstr "Покажи повеќе _детали"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:283
+msgid "No operation to undo"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:290
+msgid "No operation to redo"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
@@ -2242,8 +2378,14 @@ msgid "Recently Used"
 msgstr ""
 
 #, fuzzy
-#~ msgid "Setting permissions"
-#~ msgstr "Постави овластувања на '%s'"
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Операции со фајлови"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Операции со фајлови"
 
 #~ msgid "_Eject"
 #~ msgstr "_Исфрли"
@@ -2430,17 +2572,6 @@ msgstr ""
 #~ msgstr[0] "_Врати преименување на %d работа."
 #~ msgstr[1] "_Врати преименувања на %d работи."
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Врати создавање на празен фајл."
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Врати создавање на фајл од шаблон."
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Врати создавање на %d фолдер."
-#~ msgstr[1] "_Врати создавање на %d фолдери."
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Врати местење на %d работа од ѓубре."
@@ -2450,11 +2581,6 @@ msgstr ""
 #~ msgid_plural "_Undo restore from trash of %d items"
 #~ msgstr[0] "_Врати вадење од ѓубре на %d работа"
 #~ msgstr[1] "Врати вадење од ѓубре на %d работи."
-
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Врати создавање на врска до %d работа."
-#~ msgstr[1] "_Врати создавање на врска до %d работи."
 
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
@@ -2466,24 +2592,6 @@ msgstr ""
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "_Врати создавање на врска до %d работа."
 #~ msgstr[1] "_Врати создавање на врска до %d работи."
-
-#, fuzzy
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "_Врати создавање на врска до %d работа."
-#~ msgstr[1] "_Врати создавање на врска до %d работи."
-
-#, fuzzy
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "_Врати копија на %d работа."
-#~ msgstr[1] "_Врати копии на %d работи."
-
-#, fuzzy
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "_Врати преименување на %d работа."
-#~ msgstr[1] "_Врати преименувања на %d работи."
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2506,14 +2614,6 @@ msgstr ""
 #~ msgstr[1] "_Повторно промени има на %d работи."
 
 #, fuzzy
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Врати создавање на празен фајл."
-
-#, fuzzy
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Врати создавање на фајл од шаблон."
-
-#, fuzzy
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Врати создавање на %d фолдер."
@@ -2532,12 +2632,6 @@ msgstr ""
 #~ msgstr[1] "Врати вадење од ѓубре на %d работи."
 
 #, fuzzy
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Врати создавање на врска до %d работа."
-#~ msgstr[1] "_Врати создавање на врска до %d работи."
-
-#, fuzzy
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Врати бришење на %d работа."
@@ -2548,24 +2642,6 @@ msgstr ""
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "Врати ги оригиналните овластувања на  '%s'"
 #~ msgstr[1] "Врати ги оригиналните овластувања на  '%s'"
-
-#, fuzzy
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "_Повторно копирај %d работа"
-#~ msgstr[1] "_Повторно копирај %d работи."
-
-#, fuzzy
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "_Повторно копирај %d работа"
-#~ msgstr[1] "_Повторно копирај %d работи."
-
-#, fuzzy
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "_Повторно промени име на %d работа."
-#~ msgstr[1] "_Повторно промени има на %d работи."
 
 #, fuzzy
 #~ msgid "Unable to unmount %V"

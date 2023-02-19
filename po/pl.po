@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
-"PO-Revision-Date: 2023-01-28 20:25+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"PO-Revision-Date: 2023-02-19 12:25+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -1215,11 +1215,123 @@ msgstr "Skopiuj po_mimo tego"
 msgid "Empty _Trash"
 msgstr "Opróżnij _kosz"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+msgid "Undo Copy"
+msgstr "Cofnij kopiowanie"
+
+#: libcore/UndoManager.vala:24
+msgid "Undo Duplicate"
+msgstr "Cofnij zduplikowanie"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr "Cofnij przeniesienie"
+
+#: libcore/UndoManager.vala:28
+msgid "Undo Rename"
+msgstr "Cofnij zmianę nazwy"
+
+#: libcore/UndoManager.vala:30
+msgid "Undo Create Empty File"
+msgstr "Cofnij utworzenie pustego pliku"
+
+#: libcore/UndoManager.vala:32
+msgid "Undo Create File from Template"
+msgstr "Cofnij utworzenie pliku z szablonu"
+
+#: libcore/UndoManager.vala:34
+msgid "Undo Create Folder"
+msgstr "Cofnij utworzenie katalogu"
+
+#: libcore/UndoManager.vala:36
+msgid "Undo Move to Trash"
+msgstr "Cofnij przeniesienie do kosza"
+
+#: libcore/UndoManager.vala:38
+msgid "Undo Create Link"
+msgstr "Cofnij utworzenie linku"
+
+#: libcore/UndoManager.vala:40
+msgid "Undo Restore from Trash"
+msgstr "Cofnij przywrócenie z kosza"
+
+#: libcore/UndoManager.vala:42
+msgid "Undo Set Permissions"
+msgstr "Cofnij nadanie uprawnień"
+
+#: libcore/UndoManager.vala:44
+msgid "Undo Set Permissions Recursively"
+msgstr "Cofnij rekurencyjną zmianę uprawnień"
+
+#: libcore/UndoManager.vala:46
+msgid "Undo Change Owner"
+msgstr "Cofnij zmianę właściciela"
+
+#: libcore/UndoManager.vala:48
+msgid "Undo Change Group"
+msgstr "Cofnij zmianę grupy"
+
+#: libcore/UndoManager.vala:57
+msgid "Redo Copy"
+msgstr "Ponów kopiowanie"
+
+#: libcore/UndoManager.vala:59
+msgid "Redo Duplicate"
+msgstr "Ponów duplikację"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr "Ponów przeniesienie"
+
+#: libcore/UndoManager.vala:63
+msgid "Redo Rename"
+msgstr "Ponów zmianę nazwy"
+
+#: libcore/UndoManager.vala:65
+msgid "Redo Create Empty File"
+msgstr "Ponów utworzenie pustego pliku"
+
+#: libcore/UndoManager.vala:67
+msgid "Redo Create File from Template"
+msgstr "Ponów utworzenie pliku z szablonu"
+
+#: libcore/UndoManager.vala:69
+msgid "Redo Create Folder"
+msgstr "Ponów tworzenie katalogu"
+
+#: libcore/UndoManager.vala:71
+msgid "Redo Move to Trash"
+msgstr "Ponów przeniesienie do kosza"
+
+#: libcore/UndoManager.vala:73
+msgid "Redo Create Link"
+msgstr "Ponów utworzenie linku"
+
+#: libcore/UndoManager.vala:75
+msgid "Redo Restore from Trash"
+msgstr "Ponów przywrócenie z kosza"
+
+#: libcore/UndoManager.vala:77
+msgid "Redo Set Permissions"
+msgstr "Ponów nadanie uprawnień"
+
+#: libcore/UndoManager.vala:79
+msgid "Redo Set Permissions Recursively"
+msgstr "Ponów rekurencyjną zmianę uprawnień"
+
+#: libcore/UndoManager.vala:81
+msgid "Redo Change Owner"
+msgstr "Ponów zmianę właściciela"
+
+#: libcore/UndoManager.vala:83
+msgid "Redo Change Group"
+msgstr "Ponów zmianę grupy"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Nie można określić pierwotnego położenia"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Otwórz katalog kosza i przywróć ręcznie"
 
@@ -2117,37 +2229,25 @@ msgstr "Otwórz w nowej karcie"
 msgid "Open in Other Application…"
 msgstr "Otwórz w innym programie…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Poprzedni"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Następny"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
-msgstr ""
+msgstr "Oddal"
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "Przybliżenie 1:1"
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Działania na plikach"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Działania na plikach"
+msgstr "Przybliż"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2155,41 +2255,39 @@ msgstr "Nawigacja przy użyciu podwójnego kliknięcia"
 
 #: src/View/Widgets/HeaderBar.vala:155
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "Podwójne kliknięcie katalogu otwiera go, pojedyncze zaznacza"
 
 #: src/View/Widgets/HeaderBar.vala:160
-#, fuzzy
-#| msgid "Folders Before Files"
 msgid "Sort Folders before Files"
-msgstr "Katalogi przed plikami"
+msgstr "Sortuj katalogi przed plikami"
 
 #: src/View/Widgets/HeaderBar.vala:164
-#, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Show in View"
-msgstr "Pokaż ukryte pliki"
+msgstr "Pokaż w widoku"
 
 #: src/View/Widgets/HeaderBar.vala:171
-#, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Hidden Files"
-msgstr "Pokaż ukryte pliki"
+msgstr "Ukryte pliki"
 
 #: src/View/Widgets/HeaderBar.vala:175
-#, fuzzy
-#| msgid "Hide Thumbnails"
 msgid "Local Thumbnails"
-msgstr "Ukryj ikony"
+msgstr "Lokalne ikony"
 
 #: src/View/Widgets/HeaderBar.vala:180
-#, fuzzy
-#| msgid "Show Remote Thumbnails"
 msgid "Remote Thumbnails"
-msgstr "Pokaż miniaturki w zasobie zdalnym"
+msgstr "Zdalne ikony"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
+
+#: src/View/Widgets/HeaderBar.vala:283
+msgid "No operation to undo"
+msgstr "Brak operacji do cofnięcia"
+
+#: src/View/Widgets/HeaderBar.vala:290
+msgid "No operation to redo"
+msgstr "Brak operacji do ponowienia"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2287,11 +2385,14 @@ msgstr "Poniżej tego katalogu"
 msgid "Recently Used"
 msgstr "Ostatnio używane"
 
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Cofnij ostatnie działanie na plikach"
+
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Powtórz ostatnio cofnięte działanie na plikach"
+
 #~ msgid "Select Folders with Single Click"
 #~ msgstr "Wybieraj foldery jednym kliknięciem"
-
-#~ msgid "Setting permissions"
-#~ msgstr "Nadawanie uprawnień"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2526,18 +2627,6 @@ msgstr "Ostatnio używane"
 #~ msgstr[1] "_Cofnij zmianę nazwy %d elementów"
 #~ msgstr[2] "_Cofnij zmianę nazwy %d elementów"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Cofnij utworzenie pustego pliku"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Cofnij utworzenie pliku z szablonu"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Cofnij utworzenie katalogu"
-#~ msgstr[1] "_Cofnij utworzenie %d katalogów"
-#~ msgstr[2] "_Cofnij utworzenie %d katalogów"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Cofnij przeniesienie do kosza elementu"
@@ -2549,12 +2638,6 @@ msgstr "Ostatnio używane"
 #~ msgstr[0] "_Cofnij przywrócenie elementu z kosza"
 #~ msgstr[1] "_Cofnij przywrócenie z kosza %d elementów"
 #~ msgstr[2] "_Cofnij przywrócenie z kosza %d elementów"
-
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Cofnij utworzenie aktywatora dla %d elementu"
-#~ msgstr[1] "_Cofnij utworzenie aktywatora dla %d elementów"
-#~ msgstr[2] "_Cofnij utworzenie aktywatora dla %d elementów"
 
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
@@ -2569,24 +2652,6 @@ msgstr "Ostatnio używane"
 #~ "Cofnij zmianę uprawnień dla %d elementów i elementów w nich zawartych"
 #~ msgstr[2] ""
 #~ "Cofnij zmianę uprawnień dla %d elementów i elementów w nich zawartych"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Cofnij zmianę uprawnień %d elementu"
-#~ msgstr[1] "Cofnij zmianę uprawnień %d elementów"
-#~ msgstr[2] "Confij zmianę uprawnień %d elementów"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Cofnij zmianę grupy %d elementu"
-#~ msgstr[1] "Cofnij zmianę grupy %d elementów"
-#~ msgstr[2] "Cofnij zmianę grupy %d elementów"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Confij zmianę właściciela %d elementu"
-#~ msgstr[1] "Confij zmianę właściciela %d elementów"
-#~ msgstr[2] "Confij zmianę właściciela %d elementów"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2612,12 +2677,6 @@ msgstr "Ostatnio używane"
 #~ msgstr[1] "_Ponów zmianę nazwy %d elementów"
 #~ msgstr[2] "_Ponów zmianę nazwy %d elementów"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Ponów utworzenie pustego pliku"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Ponów utworzenie pliku z szablonu"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Powtórz utworzenie katalogu"
@@ -2636,12 +2695,6 @@ msgstr "Ostatnio używane"
 #~ msgstr[1] "_Powtórz przywrócenie z kosza %d elementów"
 #~ msgstr[2] "_Powtórz przywrócenie z kosza %d elementów"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Ponów utworzenie dowiązania do elementu"
-#~ msgstr[1] "_Ponów utworzenie dowiązań do %d elementów"
-#~ msgstr[2] "_Ponów utworzenie dowiązań do %d elementów"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Ponów usunięcie elementu"
@@ -2653,24 +2706,6 @@ msgstr "Ostatnio używane"
 #~ msgstr[0] "Ponów zmianę uprawnień elementu i elementów w nim zawartych"
 #~ msgstr[1] "Ponów zmianę uprawnień %d elementów i elementów w nich zawartych"
 #~ msgstr[2] "Ponów zmianę uprawnień %d elementów i elementów w nich zawartych"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Powtórz zmianę uprawnień do elementu"
-#~ msgstr[1] "_Ponów zmianę uprawnień %d elementów"
-#~ msgstr[2] "_Ponów zmianę uprawnień %d elementów"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Ponów zmianę grupy elementu"
-#~ msgstr[1] "Ponów zmianę grupy %d elementów"
-#~ msgstr[2] "Ponów zmianę grupy %d elementów"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Ponów zmianę właściciela elementu"
-#~ msgstr[1] "Ponów zmianę właściciela %d elementów"
-#~ msgstr[2] "Ponów zmianę właściciela %d elementów"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

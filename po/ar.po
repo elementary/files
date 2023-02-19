@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2022-11-09 14:29+0000\n"
 "Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -1294,11 +1294,184 @@ msgstr "انسخ _على أي حال"
 msgid "Empty _Trash"
 msgstr "أفرغ ال_مهملات"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "نسخ"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Undo Duplicate"
+msgstr "يُنسخ \"%s\" مرة أخرى"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "إعادة تسمية"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_ألغي إنشاء ملف خالي"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_ألغي إنشاء ملف قالب"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_ألغي إنشاء %d ملف"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "انقل إلى المُهملات"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_التراجع عن إنشاء رابط %d للعنصر"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "استعد من المُهملات"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "إعداد الصلاحيات"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "التراجع عن تغير قونين الدخول  %d العنصر"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "التراجع عن تغير المالك  %d العنصر"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العنصر"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "نسخ"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Redo Duplicate"
+msgstr "يُنسخ \"%s\" مرة أخرى"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "إعادة تسمية"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "_أعد إنشاء ملف غارغ"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "_أعد إنشاء ملف قالب"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "فشل في إنشاء المجلد"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "انقل إلى المُهملات"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "_أعد إنشاء رابط للعنصر %d"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "استعد من المُهملات"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "إعداد الصلاحيات"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "أعد تغير قوانين الدخول للعنصر %d"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "أعد تغير المالك للعنصر %d"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "أعد تغير قوانين الدخول للمجموعة للعنصر %d"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "الموقع الاصلي لم يتم تحديده"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "فتح مجلد المهملات وقم بالإستعادة يدويا"
 
@@ -2226,37 +2399,25 @@ msgstr "فتح في علامة تبويب جديدة"
 msgid "Open in Other Application…"
 msgstr "فتح في تطبيق آخر…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "السابق"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "التالي"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "عمليات الملف"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "عمليات الملف"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2299,6 +2460,18 @@ msgstr "اظهر تفاصيل عن بعد أكثر"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:283
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "زاد وقت العملية عن المدة المسموح بها."
+
+#: src/View/Widgets/HeaderBar.vala:290
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "زاد وقت العملية عن المدة المسموح بها."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2414,8 +2587,15 @@ msgstr "تحت هذا المجلد"
 msgid "Recently Used"
 msgstr "تم استخدامه مؤخرا"
 
-#~ msgid "Setting permissions"
-#~ msgstr "إعداد الصلاحيات"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "عمليات الملف"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "عمليات الملف"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2663,21 +2843,6 @@ msgstr "تم استخدامه مؤخرا"
 #~ msgstr[4] "_ألغي إعادة التسمية %d العناصر"
 #~ msgstr[5] "_ألغي إعادة التسمية %d العناصر"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_ألغي إنشاء ملف خالي"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_ألغي إنشاء ملف قالب"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_ألغي إنشاء %d ملف"
-#~ msgstr[1] "_ألغي إنشاء %d ملفات"
-#~ msgstr[2] "_ألغي إنشاء %d ملفات"
-#~ msgstr[3] "_ألغي إنشاء %d ملفات"
-#~ msgstr[4] "_ألغي إنشاء %d ملفات"
-#~ msgstr[5] "_ألغي إنشاء %d ملفات"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_ألغي نقل العنصر %d إلى سلة المهملات"
@@ -2696,15 +2861,6 @@ msgstr "تم استخدامه مؤخرا"
 #~ msgstr[4] "_ألغي إعادة العناصر %d من سلة المهملات"
 #~ msgstr[5] "_ألغي إعادة العناصر %d من سلة المهملات"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_التراجع عن إنشاء رابط %d للعنصر"
-#~ msgstr[1] "_التراجع عن إنشاء رابط %d للعناصر"
-#~ msgstr[2] "_التراجع عن إنشاء رابط %d للعناصر"
-#~ msgstr[3] "_التراجع عن إنشاء رابط %d للعناصر"
-#~ msgstr[4] "_التراجع عن إنشاء رابط %d للعناصر"
-#~ msgstr[5] "_التراجع عن إنشاء رابط %d للعناصر"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_التراجع عن حذف %d العنصر"
@@ -2722,33 +2878,6 @@ msgstr "تم استخدامه مؤخرا"
 #~ msgstr[3] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
 #~ msgstr[4] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
 #~ msgstr[5] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "التراجع عن تغير قونين الدخول  %d العنصر"
-#~ msgstr[1] "التراجع عن تغير قونين الدخول  %d العناصر"
-#~ msgstr[2] "التراجع عن تغير قونين الدخول  %d العناصر"
-#~ msgstr[3] "التراجع عن تغير قونين الدخول  %d العناصر"
-#~ msgstr[4] "التراجع عن تغير قونين الدخول  %d العناصر"
-#~ msgstr[5] "التراجع عن تغير قونين الدخول  %d العناصر"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العنصر"
-#~ msgstr[1] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
-#~ msgstr[2] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
-#~ msgstr[3] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
-#~ msgstr[4] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
-#~ msgstr[5] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "التراجع عن تغير المالك  %d العنصر"
-#~ msgstr[1] "التراجع عن تغير المالك  %d العناصر"
-#~ msgstr[2] "التراجع عن تغير المالك  %d العناصر"
-#~ msgstr[3] "التراجع عن تغير المالك  %d العناصر"
-#~ msgstr[4] "التراجع عن تغير المالك  %d العناصر"
-#~ msgstr[5] "التراجع عن تغير المالك  %d العناصر"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2786,12 +2915,6 @@ msgstr "تم استخدامه مؤخرا"
 #~ msgstr[4] "_أعد تسمية %d العناصر"
 #~ msgstr[5] "_أعد تسمية %d العناصر"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_أعد إنشاء ملف غارغ"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_أعد إنشاء ملف قالب"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_أعد إنشاء %d حافظة"
@@ -2819,15 +2942,6 @@ msgstr "تم استخدامه مؤخرا"
 #~ msgstr[4] "_أعد جلب %d عناصر من سلة المهملات"
 #~ msgstr[5] "_أعد جلب %d عناصر من سلة المهملات"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_أعد إنشاء رابط للعنصر %d"
-#~ msgstr[1] "_أعد إنشاء رابط للعناصر %d"
-#~ msgstr[2] "_أعد إنشاء رابط للعناصر %d"
-#~ msgstr[3] "_أعد إنشاء رابط للعناصر %d"
-#~ msgstr[4] "_أعد إنشاء رابط للعناصر %d"
-#~ msgstr[5] "_أعد إنشاء رابط للعناصر %d"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_أعد حذف للعنصر %d"
@@ -2845,33 +2959,6 @@ msgstr "تم استخدامه مؤخرا"
 #~ msgstr[3] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
 #~ msgstr[4] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
 #~ msgstr[5] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "أعد تغير قوانين الدخول للعنصر %d"
-#~ msgstr[1] "أعد تغير قوانين الدخول للعناصر %d"
-#~ msgstr[2] "أعد تغير قوانين الدخول للعناصر %d"
-#~ msgstr[3] "أعد تغير قوانين الدخول للعناصر %d"
-#~ msgstr[4] "أعد تغير قوانين الدخول للعناصر %d"
-#~ msgstr[5] "أعد تغير قوانين الدخول للعناصر %d"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "أعد تغير قوانين الدخول للمجموعة للعنصر %d"
-#~ msgstr[1] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
-#~ msgstr[2] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
-#~ msgstr[3] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
-#~ msgstr[4] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
-#~ msgstr[5] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "أعد تغير المالك للعنصر %d"
-#~ msgstr[1] "أعد تغير المالك للعناصر %d"
-#~ msgstr[2] "أعد تغير المالك للعناصر %d"
-#~ msgstr[3] "أعد تغير المالك للعناصر %d"
-#~ msgstr[4] "أعد تغير المالك للعناصر %d"
-#~ msgstr[5] "أعد تغير المالك للعناصر %d"
 
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"
 #~ msgstr "أمتأكد من أنك تريد حذف \"%s\" نهائيا؟"

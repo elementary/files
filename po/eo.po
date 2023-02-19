@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2020-03-17 15:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
@@ -1217,11 +1217,184 @@ msgstr "Kopii t_amen"
 msgid "Empty _Trash"
 msgstr "Malplenigi _Rubujon"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Kopii"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Undo Duplicate"
+msgstr "Duobliganta „%s“"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Renomi"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Malfari kreadon de malplena dosiero"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Malfari kreadon de dosiero el ŝablono"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Malfari kreadon de %d dosierujo"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Movi rubujen"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "Malfari kreadon de ligo al %d elemento"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Restaŭri el rubujo"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Agordaj permesoj"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Malfari permesan ŝanĝon de %d elemento"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Malfari posedantan ŝanĝon de %d elemento"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Malfari grupan ŝanĝon de %d elemento"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Kopii"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Redo Duplicate"
+msgstr "Duobliganta „%s“"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Renomi"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "_Refari kreadon de malplena dosiero"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "_Refari kreadon de dosiero el ŝablono"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "Neeblis krei la dosierujon"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Movi rubujen"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "_Refari kreadon de ligo de %d elemento"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Restaŭri el rubujo"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Agordaj permesoj"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Refari permesan ŝanĝon de %d elemento"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Refari posedantan ŝanĝon de %d elemento"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Refari grupan ŝanĝon de %d elemento"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Neeblis difini la devenan indikon"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Malfermi la rubujon kaj restaŭri mane"
 
@@ -2135,37 +2308,25 @@ msgstr "Malfermi en nova langeto"
 msgid "Open in Other Application…"
 msgstr "Malfermi en alia aplikaĵo…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Antaŭa"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Sekvanta"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Dosieraj operacioj"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Dosieraj operacioj"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2208,6 +2369,18 @@ msgstr "Montri forajn miniaturojn"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:283
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "La operacio eltempiĝis."
+
+#: src/View/Widgets/HeaderBar.vala:290
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "La operacio eltempiĝis."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2307,8 +2480,15 @@ msgstr "Sub ĉi dosierujo"
 msgid "Recently Used"
 msgstr "Freŝdate uzitaj"
 
-#~ msgid "Setting permissions"
-#~ msgstr "Agordaj permesoj"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Dosieraj operacioj"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Dosieraj operacioj"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2536,17 +2716,6 @@ msgstr "Freŝdate uzitaj"
 #~ msgstr[0] "_Malfari renomadon de %d elemento"
 #~ msgstr[1] "_Malfari renomadon de %d elementoj"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Malfari kreadon de malplena dosiero"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Malfari kreadon de dosiero el ŝablono"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Malfari kreadon de %d dosierujo"
-#~ msgstr[1] "_Malfari kreadon de %d dosierujoj"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Malfari rubujigon de %d elemento"
@@ -2557,11 +2726,6 @@ msgstr "Freŝdate uzitaj"
 #~ msgstr[0] "_Malfari elrubujan restaŭron de %d elemento"
 #~ msgstr[1] "_Malfari elrubujan restaŭron de %d elementoj"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "Malfari kreadon de ligo al %d elemento"
-#~ msgstr[1] "Malfari kreadon de ligo al %d elementoj"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_Malfari forigon de %d elemento"
@@ -2571,21 +2735,6 @@ msgstr "Freŝdate uzitaj"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "Malfari rikuran permesan ŝanĝon de %d elemento"
 #~ msgstr[1] "Malfari rikuran permesan ŝanĝon de %d elementoj"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Malfari permesan ŝanĝon de %d elemento"
-#~ msgstr[1] "Malfari permesan ŝanĝon de %d elementoj"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Malfari grupan ŝanĝon de %d elemento"
-#~ msgstr[1] "Malfari grupan ŝanĝon de %d elementoj"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Malfari posedantan ŝanĝon de %d elemento"
-#~ msgstr[1] "Malfari posedantan ŝanĝon de %d elementoj"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2607,12 +2756,6 @@ msgstr "Freŝdate uzitaj"
 #~ msgstr[0] "_Refari renomigon de %d elemento"
 #~ msgstr[1] "_Refari renomigon de %d elementoj"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Refari kreadon de malplena dosiero"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Refari kreadon de dosiero el ŝablono"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Refari kreadon de %d dosierujo"
@@ -2628,11 +2771,6 @@ msgstr "Freŝdate uzitaj"
 #~ msgstr[0] "_Refari elrubujan restaŭron de %d elemento"
 #~ msgstr[1] "_Refari elrubujan restaŭron de %d elementoj"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Refari kreadon de ligo de %d elemento"
-#~ msgstr[1] "_Refari kreadon de ligo de %d elementoj"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Refari forigon de %d elemento"
@@ -2642,21 +2780,6 @@ msgstr "Freŝdate uzitaj"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "Refari rikuran permesan ŝanĝon de %d elemento"
 #~ msgstr[1] "Refari rikuran permesan ŝanĝon de %d elementoj"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Refari permesan ŝanĝon de %d elemento"
-#~ msgstr[1] "Refari permesan ŝanĝon de %d elementoj"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Refari grupan ŝanĝon de %d elemento"
-#~ msgstr[1] "Refari grupan ŝanĝon de %d elementoj"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Refari posedantan ŝanĝon de %d elemento"
-#~ msgstr[1] "Refari posedantan ŝanĝon de %d elementoj"
 
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"
 #~ msgstr "Ĉu vi certas, ke vi volas definitive forigi „%s“?"

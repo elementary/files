@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2021-08-16 13:30+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/files/pa/"
@@ -1203,11 +1203,163 @@ msgstr "ਫਿਰ ਵੀ ਨਕਲ ਕਰ ਦਿਓ"
 msgid "Empty _Trash"
 msgstr "ਕੂੜਾਦਾਨ ਖ਼ਾਲੀ ਕਰੋ"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "ਨਕਲ ਕਰੋ"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Undo Duplicate"
+msgstr "\"%s\" ਨੂੰ ਡੁਪਲੀਕੇਟ ਕਰ ਰਿਹੈ"
+
+#: libcore/UndoManager.vala:26
+#, fuzzy
+#| msgid "Undo Close Tab"
+msgid "Undo Move"
+msgstr "ਬੰਦ ਕੀਤੀ ਟੈਬ ਦੁਬਾਰਾ ਖੋਲ੍ਹੋ"
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "ਨਾਂ ਬਦਲੋ"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "Empty File"
+msgid "Undo Create Empty File"
+msgstr "ਖ਼ਾਲੀ ਫ਼ਾਇਲ"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "Cannot remove files from here"
+msgid "Undo Create File from Template"
+msgstr "ਫ਼ਾਇਲਾਂ ਨੂੰ ਇੱਥੋਂ ਹਟਾਇਆ ਨਹੀਂ ਜਾ ਸਕਦਾ"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "Open Parent Folder"
+msgid "Undo Create Folder"
+msgstr "ਵਾਲਿਦ ਫ਼ੋਲਡਰ ਖੋਲ੍ਹੋ"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "ਰੱਦੀ ਟੋਕਰੀ 'ਚ ਸੁੱਟੋ"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "Paste Link"
+msgid "Undo Create Link"
+msgstr "ਲਿੰਕ ਪੇਸਟ ਕਰੋ"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "ਰੱਦੀ ਟੋਕਰੀ ਤੋਂ ਵਾਪਸ ਲਿਆਓ"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "ਸੈਟਿੰਗ ਇਜਾਜ਼ਤਾਂ"
+
+#: libcore/UndoManager.vala:44
+msgid "Undo Set Permissions Recursively"
+msgstr ""
+
+#: libcore/UndoManager.vala:46
+msgid "Undo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:48
+msgid "Undo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "ਨਕਲ ਕਰੋ"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Redo Duplicate"
+msgstr "\"%s\" ਨੂੰ ਡੁਪਲੀਕੇਟ ਕਰ ਰਿਹੈ"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "ਨਾਂ ਬਦਲੋ"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "Empty File"
+msgid "Redo Create Empty File"
+msgstr "ਖ਼ਾਲੀ ਫ਼ਾਇਲ"
+
+#: libcore/UndoManager.vala:67
+msgid "Redo Create File from Template"
+msgstr ""
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "ਫ਼ੋਲਡਰ ਬਣਾਉਣਾ ਨਾਕਾਮ ਰਿਹਾ"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "ਰੱਦੀ ਟੋਕਰੀ 'ਚ ਸੁੱਟੋ"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "Paste Link"
+msgid "Redo Create Link"
+msgstr "ਲਿੰਕ ਪੇਸਟ ਕਰੋ"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "ਰੱਦੀ ਟੋਕਰੀ ਤੋਂ ਵਾਪਸ ਲਿਆਓ"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "ਸੈਟਿੰਗ ਇਜਾਜ਼ਤਾਂ"
+
+#: libcore/UndoManager.vala:79
+msgid "Redo Set Permissions Recursively"
+msgstr ""
+
+#: libcore/UndoManager.vala:81
+msgid "Redo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:83
+msgid "Redo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "ਅਸਲੀ ਟਿਕਾਣੇ ਦਾ ਪਤਾ ਨਹੀਂ ਲੱਗ ਸਕਿਆ"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "ਕੂੜਾਦਾਨ ਖੋਲ੍ਹੋ ਅਤੇ ਹੱਥੀਂ ਰੀਸਟੋਰ ਕਰੋ"
 
@@ -2103,37 +2255,25 @@ msgstr "ਨਵੀਂ ਟੈਬ 'ਚ ਖੋਲ੍ਹੋ"
 msgid "Open in Other Application…"
 msgstr "ਕਿਸੇ ਹੋਰ ਐਪ 'ਚ ਖੋਲ੍ਹੋ…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "ਪਿਛਲਾ/ਪਿਛਲੀ"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "ਅਗਲਾ/ਅਗਲੀ"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "ਫ਼ਾਇਲ ਕਾਰਵਾਈਆਂ"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "ਫ਼ਾਇਲ ਕਾਰਵਾਈਆਂ"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2176,6 +2316,18 @@ msgstr "ਰਿਮੋਟ ਥਮਨੇਲ ਵਿਖਾਓ"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:283
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "ਕਾਰਵਾਈ ਦਾ ਸਮਾਂ ਮੁੱਕ ਗਿਐ।"
+
+#: src/View/Widgets/HeaderBar.vala:290
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "ਕਾਰਵਾਈ ਦਾ ਸਮਾਂ ਮੁੱਕ ਗਿਐ।"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2269,8 +2421,15 @@ msgstr "ਇਸ ਫ਼ੋਲਡਰ ਦੇ ਹੇਠਾਂ"
 msgid "Recently Used"
 msgstr "ਹਾਲੀਆ ਵਰਤੇ ਗਏ"
 
-#~ msgid "Setting permissions"
-#~ msgstr "ਸੈਟਿੰਗ ਇਜਾਜ਼ਤਾਂ"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "ਫ਼ਾਇਲ ਕਾਰਵਾਈਆਂ"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "ਫ਼ਾਇਲ ਕਾਰਵਾਈਆਂ"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2279,9 +2438,6 @@ msgstr "ਹਾਲੀਆ ਵਰਤੇ ਗਏ"
 
 #~ msgid "Error while moving files to trash."
 #~ msgstr "ਫ਼ਾਇਲਾਂ ਨੂੰ ਕੂੜੇਦਾਨ ਵਿੱਚ ਸੁੱਟਣ ਵੇਲ਼ੇ ਖ਼ਰਾਬੀ ਰਹੀ।"
-
-#~ msgid "Paste Link"
-#~ msgstr "ਲਿੰਕ ਪੇਸਟ ਕਰੋ"
 
 #, fuzzy
 #~ msgid "Connect to a network server"

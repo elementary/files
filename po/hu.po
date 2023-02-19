@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
-"PO-Revision-Date: 2023-02-14 14:25+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"PO-Revision-Date: 2023-02-17 09:25+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -67,7 +67,7 @@ msgstr "Cseréli a(z) \"%s\" célját?"
 #: filechooser-portal/Main.vala:364
 msgid ""
 "Replacing the target file for this link will overwrite its current contents."
-msgstr "A link célfáljának cseréjével annak tartalma felülíródik."
+msgstr "A hivatkozás célfáljának cseréjével annak tartalma felülíródik."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -954,34 +954,35 @@ msgstr "Fájlok áthelyezése"
 #: libcore/marlin-file-operations.c:3261
 #, c-format
 msgid "Creating links in \"%s\""
-msgstr "Linkek létrehozása itt: „%s”"
+msgstr "Hivatkozások létrehozása itt: „%s”"
 
 #: libcore/marlin-file-operations.c:3266
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] "Link létrehozása %'d fájlra"
-msgstr[1] "Linkek létrehozása %'d fájlokra"
+msgstr[0] "Hivatkozások létrehozása %'d fájlra"
+msgstr[1] "Hivatkozások létrehozása %'d fájlra"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3372
 #, c-format
 msgid "Error while creating link to %s."
-msgstr "Hiba a link létrehozásakor a következőre: \"%s\"."
+msgstr "Hiba a hivatkozás létrehozásakor a következőre: \"%s\"."
 
 #: libcore/marlin-file-operations.c:3375
 msgid "Symbolic links only supported for local files"
-msgstr "A szimbolikus linkek csak helyi fájlokhoz támogatottak"
+msgstr "A szimbolikus hivatkozások csak helyi fájlokhoz támogatottak"
 
 #: libcore/marlin-file-operations.c:3378
 msgid "The target doesn't support symbolic links."
-msgstr "A cél nem támogatja a szimbolikus linkeket."
+msgstr "A cél nem támogatja a szimbolikus hivatkozásokat."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3383
 #, c-format
 msgid "There was an error creating the symlink in %s."
-msgstr "Hiba történt a szimbolikus link létrehozásakor a következőben: %s."
+msgstr ""
+"Hiba történt a szimbolikus hivatkozás létrehozásakor a következőben: %s."
 
 #: libcore/marlin-file-operations.c:3681
 msgid "Zero files to process"
@@ -1180,11 +1181,123 @@ msgstr "Másolás mi_ndenképp"
 msgid "Empty _Trash"
 msgstr "_Kuka ürítése"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+msgid "Undo Copy"
+msgstr "Másolás visszavonása"
+
+#: libcore/UndoManager.vala:24
+msgid "Undo Duplicate"
+msgstr "Megkettőzés visszavonása"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr "Mozgatás visszavonása"
+
+#: libcore/UndoManager.vala:28
+msgid "Undo Rename"
+msgstr "Átnevezés visszavonása"
+
+#: libcore/UndoManager.vala:30
+msgid "Undo Create Empty File"
+msgstr "Üres fájl létrehozásának visszavonása"
+
+#: libcore/UndoManager.vala:32
+msgid "Undo Create File from Template"
+msgstr "Fájl sablonból való létrehozásának visszavonása"
+
+#: libcore/UndoManager.vala:34
+msgid "Undo Create Folder"
+msgstr "Mappa létrehozásának visszavonása"
+
+#: libcore/UndoManager.vala:36
+msgid "Undo Move to Trash"
+msgstr "Kukába helyezés visszavonása"
+
+#: libcore/UndoManager.vala:38
+msgid "Undo Create Link"
+msgstr "Hivatkozás létrehozásának visszavonása"
+
+#: libcore/UndoManager.vala:40
+msgid "Undo Restore from Trash"
+msgstr "Kukából való visszaállítás visszavonása"
+
+#: libcore/UndoManager.vala:42
+msgid "Undo Set Permissions"
+msgstr "Jogosultságmódosítások visszavonása"
+
+#: libcore/UndoManager.vala:44
+msgid "Undo Set Permissions Recursively"
+msgstr "Rekurzív jogosultságmódosítások visszavonása"
+
+#: libcore/UndoManager.vala:46
+msgid "Undo Change Owner"
+msgstr "Tulajdonosmódosítás visszavonása"
+
+#: libcore/UndoManager.vala:48
+msgid "Undo Change Group"
+msgstr "Csoportmódosítás visszavonása"
+
+#: libcore/UndoManager.vala:57
+msgid "Redo Copy"
+msgstr "Másolás újra"
+
+#: libcore/UndoManager.vala:59
+msgid "Redo Duplicate"
+msgstr "Megkettőzés újra"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr "Mozgatás újra"
+
+#: libcore/UndoManager.vala:63
+msgid "Redo Rename"
+msgstr "Átnevezés újra"
+
+#: libcore/UndoManager.vala:65
+msgid "Redo Create Empty File"
+msgstr "Üres fájl létrehozása újra"
+
+#: libcore/UndoManager.vala:67
+msgid "Redo Create File from Template"
+msgstr "Fájl sablonból való létrehozása újra"
+
+#: libcore/UndoManager.vala:69
+msgid "Redo Create Folder"
+msgstr "Mappa létrehozása újra"
+
+#: libcore/UndoManager.vala:71
+msgid "Redo Move to Trash"
+msgstr "Áthelyezés a kukába újra"
+
+#: libcore/UndoManager.vala:73
+msgid "Redo Create Link"
+msgstr "Hivatkozás létrehozása újra"
+
+#: libcore/UndoManager.vala:75
+msgid "Redo Restore from Trash"
+msgstr "Visszaállítás a kukából újra"
+
+#: libcore/UndoManager.vala:77
+msgid "Redo Set Permissions"
+msgstr "Jogosultságmódosítás újra"
+
+#: libcore/UndoManager.vala:79
+msgid "Redo Set Permissions Recursively"
+msgstr "Rekurzív jogosultságmódosítás újra"
+
+#: libcore/UndoManager.vala:81
+msgid "Redo Change Owner"
+msgstr "Tulajdonosmódosítás újra"
+
+#: libcore/UndoManager.vala:83
+msgid "Redo Change Group"
+msgstr "Csoportmódosítás újra"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Az eredeti hely ismeretlen"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Kézi helyreállítás a Kuka megnyitásával"
 
@@ -2067,33 +2180,25 @@ msgstr "Megnyitás új lapon"
 msgid "Open in Other Application…"
 msgstr "Megnyitás másik alkalmazással…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Előző"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Következő"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr "Kicsinyítés"
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr "1:1 nagyítás"
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr "Nagyítás"
-
-#: src/View/Widgets/HeaderBar.vala:139
-msgid "Undo Last File Operation"
-msgstr "A legutóbbi fájlművelet visszavonása"
-
-#: src/View/Widgets/HeaderBar.vala:147
-msgid "Redo Last Undone File Operation"
-msgstr "A legutóbbi visszavont fájlművelet újbóli elvégzése"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2126,6 +2231,14 @@ msgstr "Távoli előnézetek"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr "Menü"
+
+#: src/View/Widgets/HeaderBar.vala:283
+msgid "No operation to undo"
+msgstr "Nincs visszavonható művelet"
+
+#: src/View/Widgets/HeaderBar.vala:290
+msgid "No operation to redo"
+msgstr "Nincs újra végrehajtható művelet"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2219,11 +2332,14 @@ msgstr "Ezen mappa alatt"
 msgid "Recently Used"
 msgstr "Mostanában használt"
 
+#~ msgid "Undo Last File Operation"
+#~ msgstr "A legutóbbi fájlművelet visszavonása"
+
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "A legutóbbi visszavont fájlművelet újbóli elvégzése"
+
 #~ msgid "Select Folders with Single Click"
 #~ msgstr "Mappák kijelölése egy kattintással"
-
-#~ msgid "Setting permissions"
-#~ msgstr "Jogosultságok beállítása"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2457,17 +2573,6 @@ msgstr "Mostanában használt"
 #~ msgstr[0] "%d elem át_nevezésének visszavonása"
 #~ msgstr[1] "%d elem át_nevezésének visszavonása"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "Ü_res fájl létrehozásának visszavonása"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "Ü_res sablonfájl létrehozásának visszavonása"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "%d ü_res mappa létrehozásának visszavonása"
-#~ msgstr[1] "%d ü_res mappa létrehozásának visszavonása"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "%d elem kukába át_helyezésének visszavonása"
@@ -2478,11 +2583,6 @@ msgstr "Mostanában használt"
 #~ msgstr[0] "%d elem kukából való _helyreállításának visszavonása"
 #~ msgstr[1] "%d elem kukából való _helyreállításának visszavonása"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "%d elemre mutató _link létrehozásának visszavonása"
-#~ msgstr[1] "%d elemre mutató _link létrehozásának visszavonása"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "%d elem _törlésének visszavonása"
@@ -2492,21 +2592,6 @@ msgstr "Mostanában használt"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "%d elem rekurzív jogosultságmódosításának visszavonása"
 #~ msgstr[1] "%d elem rekurzív jogosultságmódosításának visszavonása"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "%d elem jogosultságmódosításának visszavonása"
-#~ msgstr[1] "%d elem jogosultságmódosításának visszavonása"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "%d elem csoportmódosításának visszavonása"
-#~ msgstr[1] "%d elem csoportmódosításának visszavonása"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "%d elem tulajdonosmódosításának visszavonása"
-#~ msgstr[1] "%d elem tulajdonosmódosításának visszavonása"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2528,12 +2613,6 @@ msgstr "Mostanában használt"
 #~ msgstr[0] "%d elem át_nevezése újra"
 #~ msgstr[1] "%d elem át_nevezése újra"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "Ü_res fájl létrehozása mégis"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "Ü_res sablonfájl létrehozása mégis"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "%d _mappa létrehozása újra"
@@ -2549,11 +2628,6 @@ msgstr "Mostanában használt"
 #~ msgstr[0] "%d elem kukából való _helyreállítása újra"
 #~ msgstr[1] "%d elem kukából való _helyreállítása újra"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "%d elemre mutató _link létrehozása újra"
-#~ msgstr[1] "%d elemre mutató _link létrehozása újra"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "%d elem _törlése újra"
@@ -2563,21 +2637,6 @@ msgstr "Mostanában használt"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "%d elem rekurzív jogosultságmódosítása újra"
 #~ msgstr[1] "%d elem rekurzív jogosultságmódosítása újra"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "%d elem jogosultságmódosítása újra"
-#~ msgstr[1] "%d elem jogosultságmódosítása újra"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "%d elem csoportmódosítása újra"
-#~ msgstr[1] "%d elem csoportmódosítása újra"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "%d elem tulajdonosmódosítása újra"
-#~ msgstr[1] "%d elem tulajdonosmódosítása újra"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
-"PO-Revision-Date: 2023-01-28 20:25+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"PO-Revision-Date: 2023-02-19 12:25+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1193,11 +1193,123 @@ msgstr "Copia _igualment"
 msgid "Empty _Trash"
 msgstr "Buida la _paperera"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+msgid "Undo Copy"
+msgstr "Desfés la còpia"
+
+#: libcore/UndoManager.vala:24
+msgid "Undo Duplicate"
+msgstr "Desfés la duplicació"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr "Desfés el moviment"
+
+#: libcore/UndoManager.vala:28
+msgid "Undo Rename"
+msgstr "Desfés el canvi de nom"
+
+#: libcore/UndoManager.vala:30
+msgid "Undo Create Empty File"
+msgstr "Desfés la creació d'un fitxer buit"
+
+#: libcore/UndoManager.vala:32
+msgid "Undo Create File from Template"
+msgstr "Desfés la creació d'un fitxer a partir d'una plantilla"
+
+#: libcore/UndoManager.vala:34
+msgid "Undo Create Folder"
+msgstr "Desfés la creació de la carpeta"
+
+#: libcore/UndoManager.vala:36
+msgid "Undo Move to Trash"
+msgstr "Desfés moure-ho a la paperera"
+
+#: libcore/UndoManager.vala:38
+msgid "Undo Create Link"
+msgstr "Desfés la creació de l'enllaç"
+
+#: libcore/UndoManager.vala:40
+msgid "Undo Restore from Trash"
+msgstr "Desfés la restauració des de la paperera"
+
+#: libcore/UndoManager.vala:42
+msgid "Undo Set Permissions"
+msgstr "Desfés l'establiment dels permisos"
+
+#: libcore/UndoManager.vala:44
+msgid "Undo Set Permissions Recursively"
+msgstr "Desfés l'establiment de permisos recursivament"
+
+#: libcore/UndoManager.vala:46
+msgid "Undo Change Owner"
+msgstr "Desfés el canvi de propietari"
+
+#: libcore/UndoManager.vala:48
+msgid "Undo Change Group"
+msgstr "Desfés el canvi de grup"
+
+#: libcore/UndoManager.vala:57
+msgid "Redo Copy"
+msgstr "Refés la còpia"
+
+#: libcore/UndoManager.vala:59
+msgid "Redo Duplicate"
+msgstr "Refés la duplicació"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr "Refés el moviment"
+
+#: libcore/UndoManager.vala:63
+msgid "Redo Rename"
+msgstr "Refés el canvi de nom"
+
+#: libcore/UndoManager.vala:65
+msgid "Redo Create Empty File"
+msgstr "Refés la creació d'un fitxer buit"
+
+#: libcore/UndoManager.vala:67
+msgid "Redo Create File from Template"
+msgstr "Refés la creació d'un fitxer a partir d'una plantilla"
+
+#: libcore/UndoManager.vala:69
+msgid "Redo Create Folder"
+msgstr "Refés la creació d'una carpeta"
+
+#: libcore/UndoManager.vala:71
+msgid "Redo Move to Trash"
+msgstr "Refés el moviment a la paperera"
+
+#: libcore/UndoManager.vala:73
+msgid "Redo Create Link"
+msgstr "Refés la creació d'un enllaç"
+
+#: libcore/UndoManager.vala:75
+msgid "Redo Restore from Trash"
+msgstr "Refés la restauració des de la paperera"
+
+#: libcore/UndoManager.vala:77
+msgid "Redo Set Permissions"
+msgstr "Refés l'establiment de permisos"
+
+#: libcore/UndoManager.vala:79
+msgid "Redo Set Permissions Recursively"
+msgstr "Refés l'establiment de permisos recursivament"
+
+#: libcore/UndoManager.vala:81
+msgid "Redo Change Owner"
+msgstr "Refés el canvi de propietari"
+
+#: libcore/UndoManager.vala:83
+msgid "Redo Change Group"
+msgstr "Refés el canvi de grup"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "La ubicació original no s'ha pogut determinar"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Obre la carpeta de la paperera i fes-ne la restauració maunalment"
 
@@ -2091,37 +2203,25 @@ msgstr "Obre en una pestanya nova"
 msgid "Open in Other Application…"
 msgstr "Obre en una altra aplicació…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Anterior"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Següent"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
-msgstr ""
+msgstr "Allunya"
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "Zoom 1:1"
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Operacions sobre fitxers"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Operacions sobre fitxers"
+msgstr "Apropa"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2130,40 +2230,39 @@ msgstr "Clic doble per navegar"
 #: src/View/Widgets/HeaderBar.vala:155
 msgid "Double-click on a folder opens it, single-click selects it"
 msgstr ""
+"Feu doble clic en una carpeta per obrir-la, amb un sol clic se selecciona"
 
 #: src/View/Widgets/HeaderBar.vala:160
-#, fuzzy
-#| msgid "Folders Before Files"
 msgid "Sort Folders before Files"
-msgstr "Les carpetes davant dels fitxers"
+msgstr "Ordena les carpetes abans que els fitxers"
 
 #: src/View/Widgets/HeaderBar.vala:164
-#, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Show in View"
-msgstr "Mostra els fitxers ocults"
+msgstr "Mostra a la vista"
 
 #: src/View/Widgets/HeaderBar.vala:171
-#, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Hidden Files"
-msgstr "Mostra els fitxers ocults"
+msgstr "Fitxers ocults"
 
 #: src/View/Widgets/HeaderBar.vala:175
-#, fuzzy
-#| msgid "Hide Thumbnails"
 msgid "Local Thumbnails"
-msgstr "Amaga les miniatures"
+msgstr "Miniatures locals"
 
 #: src/View/Widgets/HeaderBar.vala:180
-#, fuzzy
-#| msgid "Show Remote Thumbnails"
 msgid "Remote Thumbnails"
-msgstr "Mostra les miniatures remotes"
+msgstr "Miniatures remotes"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
-msgstr ""
+msgstr "Menú"
+
+#: src/View/Widgets/HeaderBar.vala:283
+msgid "No operation to undo"
+msgstr "No hi ha cap operació per desfer."
+
+#: src/View/Widgets/HeaderBar.vala:290
+msgid "No operation to redo"
+msgstr "No hi ha cap operació per refer."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2257,11 +2356,14 @@ msgstr "Per sota d'aquesta carpeta"
 msgid "Recently Used"
 msgstr "D'ús recent"
 
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Desfés l'última operació de fitxers"
+
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Refés l'última operació de fitxers desfeta"
+
 #~ msgid "Select Folders with Single Click"
 #~ msgstr "Seleccioneu carpetes amb un sol clic"
-
-#~ msgid "Setting permissions"
-#~ msgstr "S'estableixen els permisos"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2491,17 +2593,6 @@ msgstr "D'ús recent"
 #~ msgstr[0] "_Desfés el canvi de nom d'%d element"
 #~ msgstr[1] "_Desfés el canvi de nom de %d elements"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Desfés la creació d'un fitxer nou"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Desfés la creació d'un fitxer a partir d'una plantilla"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Desfés la creació d'%d carpeta"
-#~ msgstr[1] "_Desfés la creació de %d carpetes"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Desfés l'enviament d'%d element a la paperera"
@@ -2512,11 +2603,6 @@ msgstr "D'ús recent"
 #~ msgstr[0] "_Desfés la restauració d'%d element"
 #~ msgstr[1] "_Desfés la restauració de %d elements"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Desfés la creació d'un enllaç a %d element"
-#~ msgstr[1] "_Desfés la creació d'enllaços a %d elements"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_Desfés la supressió d'%d element"
@@ -2526,21 +2612,6 @@ msgstr "D'ús recent"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "Desfés el canvi de permisos recursiu d'%d element"
 #~ msgstr[1] "Desfés el canvi de permisos recursiu de %d elements"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Desfés el canvi de permisos d'%d element"
-#~ msgstr[1] "Desfés el canvi de permisos de %d elements"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Desfés el canvi de grup d'%d element"
-#~ msgstr[1] "Desfés el canvi de grup de %d elements"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Desfés el canvi de propietari d'%d element"
-#~ msgstr[1] "Desfés el canvi de propietari de %d elements"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2562,12 +2633,6 @@ msgstr "D'ús recent"
 #~ msgstr[0] "_Refés el canvi de nom d'%d element"
 #~ msgstr[1] "_Refés el canvi de nom de %d elements"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Refés la creació d'un fitxer nou"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Refés la creació d'un fitxer a partir d'una plantilla"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Refés la creació d'%d carpeta"
@@ -2583,11 +2648,6 @@ msgstr "D'ús recent"
 #~ msgstr[0] "_Refés la restauració d'%d element"
 #~ msgstr[1] "_Refés la restauració de %d elements"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Refés la creació d'un enllaç a %d element"
-#~ msgstr[1] "_Refés la creació d'enllaços a %d elements"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Refés la supressió d'%d element"
@@ -2597,21 +2657,6 @@ msgstr "D'ús recent"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "Refés el canvi de permisos recursiu d'%d element"
 #~ msgstr[1] "Refés el canvi de permisos recursiu de %d elements"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Refés el canvi de permisos d'%d element"
-#~ msgstr[1] "Refés el canvi de permisos de %d elements"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Refés el canvi de grup d'%d element"
-#~ msgstr[1] "Refés el canvi de grup de %d elements"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Refés el canvi de propietari d'%d element"
-#~ msgstr[1] "Refés el canvi de propietari de %d elements"
 
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"
 #~ msgstr "Segur que voleu suprimir «%s» permanentment?"

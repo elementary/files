@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-12 16:55+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: Grzegorz Kulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/files/files/szl/"
@@ -1244,11 +1244,161 @@ msgstr "S_kopiuj i tak"
 msgid "Empty _Trash"
 msgstr "Opróżnij _hasiok"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Skopiuj"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Undo Duplicate"
+msgstr "Tuplowanie „%s”"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Przemianuj"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "Empty File"
+msgid "Undo Create Empty File"
+msgstr "Prōzny zbiōr"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "Cannot remove files from here"
+msgid "Undo Create File from Template"
+msgstr "Niy idzie skasować stōnd zbiorōw"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "Open Parent Folder"
+msgid "Undo Create Folder"
+msgstr "Ôtwōrz katalog nadrzyndny"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Przeniyś do hasioka"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "Paste Link"
+msgid "Undo Create Link"
+msgstr "Wraź link"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Prziwrōć z hasioka"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Sztelowanie uprawniyń"
+
+#: libcore/UndoManager.vala:44
+msgid "Undo Set Permissions Recursively"
+msgstr ""
+
+#: libcore/UndoManager.vala:46
+msgid "Undo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:48
+msgid "Undo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Skopiuj"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Redo Duplicate"
+msgstr "Tuplowanie „%s”"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Przemianuj"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "Empty File"
+msgid "Redo Create Empty File"
+msgstr "Prōzny zbiōr"
+
+#: libcore/UndoManager.vala:67
+msgid "Redo Create File from Template"
+msgstr ""
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "Niy szło stworzić katalogu"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Przeniyś do hasioka"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "Paste Link"
+msgid "Redo Create Link"
+msgstr "Wraź link"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Prziwrōć z hasioka"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Sztelowanie uprawniyń"
+
+#: libcore/UndoManager.vala:79
+msgid "Redo Set Permissions Recursively"
+msgstr ""
+
+#: libcore/UndoManager.vala:81
+msgid "Redo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:83
+msgid "Redo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Niy idzie ôkryślić ôryginalnego położynio"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Ôtwōrz katalog hasioka i prziwrōć ryncznie"
 
@@ -2168,37 +2318,25 @@ msgstr "Ôtwōrz w nowyj karcie"
 msgid "Open in Other Application…"
 msgstr "Ôtwōrz w inkszym programie…"
 
-#: src/View/Widgets/HeaderBar.vala:70
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Piyrwyjszy"
 
-#: src/View/Widgets/HeaderBar.vala:77
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Dalszy"
 
-#: src/View/Widgets/HeaderBar.vala:92
+#: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:101
+#: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:110
+#: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
 msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:139
-#, fuzzy
-#| msgid "File Operations"
-msgid "Undo Last File Operation"
-msgstr "Ôperacyje na zbiorach"
-
-#: src/View/Widgets/HeaderBar.vala:147
-#, fuzzy
-#| msgid "File Operations"
-msgid "Redo Last Undone File Operation"
-msgstr "Ôperacyje na zbiorach"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
@@ -2241,6 +2379,18 @@ msgstr "Pokoż miniaturki we zdalnym zasobie"
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
 msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:283
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "Limit czasu ôperacyje bōł przekroczōny."
+
+#: src/View/Widgets/HeaderBar.vala:290
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "Limit czasu ôperacyje bōł przekroczōny."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2344,8 +2494,15 @@ msgstr "Pod tym katalogym"
 msgid "Recently Used"
 msgstr "Ôstatnio używane"
 
-#~ msgid "Setting permissions"
-#~ msgstr "Sztelowanie uprawniyń"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Ôperacyje na zbiorach"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Ôperacyje na zbiorach"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2355,9 +2512,6 @@ msgstr "Ôstatnio używane"
 
 #~ msgid "Error while moving files to trash."
 #~ msgstr "Błōnd w czasie przenoszynio zbiorōw do hasioka."
-
-#~ msgid "Paste Link"
-#~ msgstr "Wraź link"
 
 #~ msgid "_Eject"
 #~ msgstr "Wy_suń"
