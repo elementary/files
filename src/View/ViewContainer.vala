@@ -24,7 +24,7 @@
 ***/
 
 namespace Files.View {
-    public class ViewContainer : Gtk.Bin {
+    public class ViewContainer : Gtk.Box {
         private static int container_id;
 
         protected static int get_next_container_id () {
@@ -257,7 +257,9 @@ namespace Files.View {
                 this.view = new Slot (loc, this, mode);
             }
 
-            overlay_statusbar = new View.OverlayBar (view.overlay);
+            overlay_statusbar = new View.OverlayBar (view.overlay) {
+                no_show_all = true
+            };
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
@@ -273,9 +275,12 @@ namespace Files.View {
         **/
         public void change_view_mode (ViewMode mode, GLib.File? loc = null) {
             var aslot = get_current_slot ();
-            assert (aslot != null);
+            if (aslot == null) {
+                return;
+            }
 
             if (mode != view_mode) {
+                aslot.close ();
                 view_mode = mode;
                 loading (false);
                 store_selection ();
@@ -295,7 +300,6 @@ namespace Files.View {
             aslot.new_container_request.connect (on_slot_new_container_request);
             aslot.selection_changed.connect (on_slot_selection_changed);
             aslot.directory_loaded.connect (on_slot_directory_loaded);
-            aslot.item_hovered.connect (on_slot_item_hovered);
         }
 
         private void disconnect_slot_signals (Files.AbstractSlot aslot) {
@@ -304,7 +308,6 @@ namespace Files.View {
             aslot.new_container_request.disconnect (on_slot_new_container_request);
             aslot.selection_changed.disconnect (on_slot_selection_changed);
             aslot.directory_loaded.disconnect (on_slot_directory_loaded);
-            aslot.item_hovered.disconnect (on_slot_item_hovered);
         }
 
         private void on_slot_active (Files.AbstractSlot aslot, bool scroll, bool animate) {
@@ -440,7 +443,6 @@ namespace Files.View {
             }
 
             loading (false); /* Will cause topmenu to update */
-            overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
         }
 
         private void store_selection () {
@@ -570,10 +572,6 @@ namespace Files.View {
             } else {
                 content.grab_focus ();
             }
-        }
-
-        private void on_slot_item_hovered (Files.File? file) {
-            overlay_statusbar.update_hovered (file);
         }
 
         private void on_slot_selection_changed (GLib.List<unowned Files.File> files) {

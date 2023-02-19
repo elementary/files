@@ -59,6 +59,8 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         }
     }
 
+    public bool show_hidden_files { get; set; default = false; }
+
     private enum PrivColumnID {
         DUMMY = ColumnID.NUM_COLUMNS
     }
@@ -241,7 +243,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         set_sort_column_id (sort_column_id, order);
     }
 
-    public bool load_subdirectory (Gtk.TreePath path, out Files.Directory? dir) {
+    public bool get_subdirectory (Gtk.TreePath path, out Files.Directory? dir) {
         dir = null;
         Files.File? file = null;
         Gtk.TreeIter? iter;
@@ -254,14 +256,61 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
         return dir != null;
     }
-    public bool unload_subdirectory (Gtk.TreeIter iter) {
-        warning ("unload_subdirectory");
+
+    public void load_subdirectory (Directory dir) {
+        Gtk.TreeIter? parent_iter = null, child_iter = null;
+        bool change_dummy = true; // Default to unloaded
+        if (get_first_iter_for_file (dir.file, out parent_iter)) {
+            var files = dir.get_files ();
+            if (iter_nth_child (out child_iter, parent_iter, 0)) { // Must always be at least one child
+                get (child_iter, PrivColumnID.DUMMY, out change_dummy);
+            } else {
+                critical ("folder item with no child"); // The parent file must be a folder and have at lease a dummy entry
+            }
+
+            // May not be unloaded yet.
+            // If not, assumed not changed in the short time hidden and use existing children
+            if (!change_dummy) {
+                return;
+            }
+
+            foreach (var file in files) {
+                if (!show_hidden_files && file.is_hidden) {
+                    continue;
+                }
+
+                if (change_dummy) {
+                    // Instead of inserting a new row, change the dummy one
+                    @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                    change_dummy = false;
+                } else {
+                    insert (out child_iter, parent_iter, -1);
+                    @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                }
+
+                if (file.is_folder ()) {
+                    // Append a dummy child so expander will show even when folder is empty.
+                    insert_with_values (out child_iter, child_iter, -1, PrivColumnID.DUMMY, true);
+                }
+            }
+        }
+    }
+
+    public bool unload_subdirectory (Gtk.TreeIter parent_iter) {
         Files.File? file = null;
-        get (iter, ColumnID.FILE_COLUMN, out file);
+        get (parent_iter, ColumnID.FILE_COLUMN, out file);
         if (file != null) {
             var dir = Files.Directory.from_file (file);
             dir.cancel ();
+            Gtk.TreeIter? child_iter = null;
+            // Remove all child nodes so they are refreshed if subdirectory reloaded
+            // Faster than checking for duplicates
+            if (iter_children (out child_iter, parent_iter)) {
+                while (remove (ref child_iter)) {};
+            }
 
+            // Insert dummy;
+            insert_with_values (out child_iter, parent_iter, -1, PrivColumnID.DUMMY, true);
             subdirectory_unloaded (dir);
             return true;
         }

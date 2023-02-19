@@ -91,6 +91,8 @@ namespace Files.View {
 
         ~Slot () {
             debug ("Slot %i destruct", slot_number);
+            // Ensure dir view does not redraw with invalid slot, causing a crash
+            dir_view.destroy ();
         }
 
         private void connect_slot_signals () {
@@ -115,23 +117,17 @@ namespace Files.View {
         private void connect_dir_view_signals () {
             dir_view.path_change_request.connect (on_dir_view_path_change_request);
             dir_view.size_allocate.connect (on_dir_view_size_allocate);
-            dir_view.item_hovered.connect (on_dir_view_item_hovered);
             dir_view.selection_changed.connect (on_dir_view_selection_changed);
         }
 
         private void disconnect_dir_view_signals () {
             dir_view.path_change_request.disconnect (on_dir_view_path_change_request);
             dir_view.size_allocate.disconnect (on_dir_view_size_allocate);
-            dir_view.item_hovered.disconnect (on_dir_view_item_hovered);
             dir_view.selection_changed.disconnect (on_dir_view_selection_changed);
         }
 
         private void on_dir_view_size_allocate (Gtk.Allocation alloc) {
             width = alloc.width;
-        }
-
-        private void on_dir_view_item_hovered (Files.File? file) {
-            item_hovered (file);
         }
 
         private void on_dir_view_selection_changed (GLib.List<Files.File> files) {
