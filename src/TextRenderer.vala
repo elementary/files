@@ -20,8 +20,8 @@ namespace Files {
     public class TextRenderer: Gtk.CellRendererText {
 
         const int MAX_LINES = 5;
-        private int border_radius;
-        private int double_border_radius;
+        private int border_radius { get; private set; }
+        public int double_border_radius { get; private set; }
         private Gtk.CssProvider text_css;
         private Gdk.RGBA previous_background_rgba;
         private Gdk.RGBA previous_contrasting_rgba;
