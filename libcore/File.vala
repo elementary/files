@@ -1100,7 +1100,6 @@ public class Files.File : GLib.Object {
         }
     }
 
-// <<<<<<< HEAD
     private string format_item_count () {
         ensure_item_count (true); // Re-count file items
 
