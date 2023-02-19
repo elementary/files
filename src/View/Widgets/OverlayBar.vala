@@ -32,7 +32,6 @@ namespace Files.View {
         private GLib.FileInputStream? stream;
         private Gdk.PixbufLoader loader;
         private uint update_timeout_id = 0;
-        private uint hover_timeout_id = 0;
         private DeepCount? deep_counter = null;
         private uint deep_count_timeout_id = 0;
 
@@ -44,6 +43,7 @@ namespace Files.View {
             buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
             label = "";
             hide.connect (cancel);
+            show_all ();
         }
 
         ~OverlayBar () {
@@ -71,52 +71,11 @@ namespace Files.View {
             selected_files = null;
         }
 
-        public void update_hovered (Files.File? file) {
-            hover_cancel (); /* This will stop and hide spinner, and reset the hover timeout. */
-
-            if (file == null) {
-                real_update (null); //Resets various variables and hides the overlay straightaway
-                return;
-            }
-
-            if (goffile != null && file.location.equal (goffile.location)) {
-                return;
-            }
-
-            hover_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
-                deep_count_cancel ();
-                cancel_cancellable ();
-
-                if (file != null) {
-                    bool matched = false;
-                    if (selected_files != null) {
-                        selected_files.@foreach ((f) => {
-                            if (f == file) {
-                                matched = true;
-                            }
-                        });
-                    }
-
-                    if (matched) {
-                        real_update (selected_files);
-                    } else {
-                        GLib.List<unowned Files.File> list = null;
-                        list.prepend (file);
-                        real_update (list);
-                    }
-                }
-
-                hover_timeout_id = 0;
-                return GLib.Source.REMOVE;
-            });
-        }
-
         /**
          * Function to be called when view is going to be destroyed or going to show another folder
          * and on a selection change.
          */
         public void cancel () {
-            hover_cancel ();
             deep_count_cancel ();
 
             if (update_timeout_id > 0) {
@@ -128,16 +87,7 @@ namespace Files.View {
             active = false;
         }
 
-        private void hover_cancel () {
-            /* Do not cancel updating of selected files when hovered file changes. */
-            if (hover_timeout_id > 0) {
-                GLib.Source.remove (hover_timeout_id);
-                hover_timeout_id = 0;
-            }
-        }
-
         private void deep_count_cancel () {
-            /* Do not cancel updating of selected files when hovered file changes. */
             if (deep_count_timeout_id > 0) {
                 GLib.Source.remove (deep_count_timeout_id);
                 deep_count_timeout_id = 0;
@@ -167,10 +117,8 @@ namespace Files.View {
                     } else {
                         scan_list (files);
                     }
-                    /* There is a race between load_resolution and file_real_size for setting status.
-                     * On first hover, file_real_size wins. On second hover load_resolution
-                     * wins because we remembered the resolution. So only set status with string returned by
-                     * update status if it has not already been set by load resolution. */
+                    // Only set status with string returned by update status if it has not already
+                    // been set by load resolution.
                     var s = update_status ();
                     if (label == "") {
                         label = s;
@@ -184,7 +132,7 @@ namespace Files.View {
         private string update_status () {
             string str = "";
             label = "";
-            if (goffile != null) { /* A single file is hovered or selected. */
+            if (goffile != null) { /* A single file is selected. */
                 if (goffile.is_network_uri_scheme () || goffile.is_root_network_folder ()) {
                     str = goffile.get_display_target_uri ();
                 } else if (!goffile.is_folder ()) {
@@ -208,7 +156,7 @@ namespace Files.View {
                     str = "%s - %s".printf (goffile.info.get_name (), goffile.formated_type);
                     schedule_deep_count ();
                 }
-            } else { /* Hovering over multiple selection. */
+            } else { /* Multiple selection. */
                 var fsize = format_size (files_size);
                 if (folders_count > 1) {
                     str = _("%u folders").printf (folders_count);
@@ -239,7 +187,7 @@ namespace Files.View {
 
         private void schedule_deep_count () {
             cancel ();
-            /* Show the spinner immediately to indicate that something will happen if the hover lasts long enough. */
+            /* Show the spinner immediately */
             active = true;
             deep_count_cancel ();
 
@@ -256,6 +204,7 @@ namespace Files.View {
                         deep_counter = null;
                         cancellable = null;
                     }
+
                     active = false;
                 });
 
