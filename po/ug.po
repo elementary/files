@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 16:31+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2016-12-12 07:21+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -1212,11 +1212,184 @@ msgstr "كۆچۈرۈۋىرىش(_A)"
 msgid "Empty _Trash"
 msgstr "ئەخلەت چېلىكىنى تازىلاش(_T)"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "كۆپەيتىش"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "\"%B\" نى جايىدا كۆچۈرۈۋاتىدۇ"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "ئىسمىنى ئۆزگەرتىش"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "قۇرۇق ھۆججەت قۇرۇشنى ئەمەلدىن قالدۇرۇش"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "قىلىپقا ئاساسەن ھۆججەت قۇرۇشنى ئەمەلدىن قالدۇرۇش"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "%d مۇندەرىجە قۇرۇشنى ئەمەلدىن قالدۇرۇش"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "ئەخلەت چېلىكىگە تاشلاش"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "%d تۈرگە ئۇلانما قۇرۇشنى ئەمەلدىن قالدۇرۇش"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "ئەخلەت چېلىكىدىن ئەسلىگە قايتۇرۇش"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "سالاھىيەت تەڭشىكى"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "%d تۈرنىڭ سالاھىيىتىنى ئۆزگەرتىشنى ئەمەلدىن قالدۇرۇش"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "%d تۈرنىڭ ئىگىسىنى ئۆزگەرتىشنى ئەمەلدىن قالدرۇرۇش"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "%d تۈرنىڭ گۇرۇپپىسىنى ئۆزگەرتىشنى ئەمەلدىن قالدۇرۇش"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "كۆپەيتىش"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "\"%B\" نى جايىدا كۆچۈرۈۋاتىدۇ"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "ئىسمىنى ئۆزگەرتىش"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "قايتا قۇرۇق ھۆججەت قۇرۇش"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "قىلىپقا ئاساسەن قايتا ھۆججەت قۇرۇش"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr ""
+"مۇندەرىجە قۇرۇش مەغلۇپ بولدى\n"
+"\n"
+"%s"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "ئەخلەت چېلىكىگە تاشلاش"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "%d تۈرنىڭ ئۇلانمىسىنى قايتا قۇرۇش"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "ئەخلەت چېلىكىدىن ئەسلىگە قايتۇرۇش"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "سالاھىيەت تەڭشىكى"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "%d تۈرنىڭ سالاھىيىتىنى قايتىدىن ئۆزگەرتىش"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "%d تۈرنىڭ ئىگىسىنى قايتىدىن ئۆزگەرتىش"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "%d تۈرنىڭ گۇرۇپپىسىنى قايتىدىن ئۆزگەرتىش"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "ئەسلى ئورنىنى جەزىملەشتۈرگىلى بولمىدى"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "ئەخلەت چېلىكىنى ئىچىڭ ۋە ئەسلىگە قايتۇرۇڭ"
 
@@ -1699,7 +1872,7 @@ msgid "Invalid file name provided"
 msgstr "تەمىنلەنگەن ھۆججەت ئىسمى ئىناۋەتسىز"
 
 #: src/View/AbstractDirectoryView.vala:1898
-#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:182
+#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "يىڭى بەتكۈچ قۇرۇش"
 
@@ -1778,105 +1951,88 @@ msgid "Copy as Link"
 msgstr "چاپلاش"
 
 #: src/View/AbstractDirectoryView.vala:2182
-#: src/View/AbstractDirectoryView.vala:2282
+#: src/View/AbstractDirectoryView.vala:2262
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "مۇندەرىجىگە چاپلاش"
 
 #: src/View/AbstractDirectoryView.vala:2187
-#: src/View/AbstractDirectoryView.vala:2256
+#: src/View/AbstractDirectoryView.vala:2239
 msgid "Paste into Folder"
 msgstr "مۇندەرىجىگە چاپلاش"
 
 #: src/View/AbstractDirectoryView.vala:2197
-#: src/View/AbstractDirectoryView.vala:2287
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "Paste"
 msgstr "چاپلاش"
 
-#: src/View/AbstractDirectoryView.vala:2238
-msgid "Show Hidden Files"
-msgstr "يوشۇرۇن ھۆججەتلەرنى كۆرسىتىش"
-
-#: src/View/AbstractDirectoryView.vala:2243
-msgid "Show Remote Thumbnails"
-msgstr "يىراقتىكى كومپىيۇتىردىكى مىكرو سۈرەتلەرنى كۆرسىتىش"
-
-#: src/View/AbstractDirectoryView.vala:2246
-#, fuzzy
-msgid "Hide Thumbnails"
-msgstr "يىراقتىكى كومپىيۇتىردىكى مىكرو سۈرەتلەرنى كۆرسىتىش"
-
-#: src/View/AbstractDirectoryView.vala:2249
-msgid "Double-click to Navigate"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2347
+#: src/View/AbstractDirectoryView.vala:2317
 msgid "Name"
 msgstr "ئىسىم"
 
-#: src/View/AbstractDirectoryView.vala:2352 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2322 src/View/ListView.vala:27
 msgid "Size"
 msgstr "چوڭلۇقى"
 
-#: src/View/AbstractDirectoryView.vala:2357 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2327 src/View/ListView.vala:28
 msgid "Type"
 msgstr "تىپى"
 
-#: src/View/AbstractDirectoryView.vala:2362
+#: src/View/AbstractDirectoryView.vala:2332
 msgid "Date"
 msgstr "چىسلا"
 
-#: src/View/AbstractDirectoryView.vala:2367
+#: src/View/AbstractDirectoryView.vala:2337
 msgid "Reversed Order"
 msgstr "تەتۈر تەرتىپ بويىچە تىزىش"
 
-#: src/View/AbstractDirectoryView.vala:2370
+#: src/View/AbstractDirectoryView.vala:2340
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2382
+#: src/View/AbstractDirectoryView.vala:2352
 msgid "Sort by"
 msgstr "رەتكە تىزىش ئاساسى"
 
-#: src/View/AbstractDirectoryView.vala:2390
+#: src/View/AbstractDirectoryView.vala:2360
 msgid "Folder"
 msgstr "مۇندەرىجە"
 
-#: src/View/AbstractDirectoryView.vala:2396
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Empty File"
 msgstr "قۇرۇق ھۆججەت"
 
-#: src/View/AbstractDirectoryView.vala:2447
+#: src/View/AbstractDirectoryView.vala:2417
 msgid "New"
 msgstr "يىڭىدىن قۇرۇش"
 
-#: src/View/AbstractDirectoryView.vala:2690
+#: src/View/AbstractDirectoryView.vala:2660
 #, c-format
 msgid "Untitled %s"
 msgstr "ئىسىمسىز %s"
 
-#: src/View/AbstractDirectoryView.vala:3008
-#: src/View/AbstractDirectoryView.vala:3201
+#: src/View/AbstractDirectoryView.vala:2978
+#: src/View/AbstractDirectoryView.vala:3171
 msgid "Cannot remove files from here"
 msgstr "بۇ يەردىن ھۆججەتلەرنى يۆتكىگىلى بولمىدى"
 
-#: src/View/AbstractDirectoryView.vala:3009
-#: src/View/AbstractDirectoryView.vala:3174
-#: src/View/AbstractDirectoryView.vala:3185
-#: src/View/AbstractDirectoryView.vala:3202
+#: src/View/AbstractDirectoryView.vala:2979
+#: src/View/AbstractDirectoryView.vala:3144
+#: src/View/AbstractDirectoryView.vala:3155
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "You do not have permission to change this location"
 msgstr "سىزنىڭ بۇ ئورۇننى ئۆزگەرتىش سالاھىيىتىڭىز يوق"
 
-#: src/View/AbstractDirectoryView.vala:3142
+#: src/View/AbstractDirectoryView.vala:3112
 msgid "Cannot copy files that are in the trash"
 msgstr "ئەخلەت چېلىكىدىكى ھۆججەتلەرنى كۆپەيتكىلى بولمايدۇ"
 
-#: src/View/AbstractDirectoryView.vala:3143
+#: src/View/AbstractDirectoryView.vala:3113
 msgid "Cutting the selection instead"
 msgstr "تاللانغان مەزمۇننى كىسىش"
 
-#: src/View/AbstractDirectoryView.vala:3173
-#: src/View/AbstractDirectoryView.vala:3184
+#: src/View/AbstractDirectoryView.vala:3143
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cannot paste files here"
 msgstr "ھۆججەتلەرنى بۇ يەرگە چاپلىغىلى بولمىدى"
 
@@ -2002,26 +2158,26 @@ msgstr "ھۆججەت تىپىلمىدى"
 msgid "The file selected no longer exists."
 msgstr "تاللانغان ھۆججەت مەۋجۇت ئەمەس."
 
-#: src/View/Window.vala:183
+#: src/View/Window.vala:184
 msgid "Undo Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:494
+#: src/View/Window.vala:497
 #, fuzzy
 #| msgid "Close"
 msgid "Close Tab"
 msgstr "تاقاش"
 
-#: src/View/Window.vala:495
+#: src/View/Window.vala:498
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "\"%B\" نى جايىدا كۆچۈرۈۋاتىدۇ"
 
-#: src/View/Window.vala:496 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
 msgstr "يېڭى كۆزنەكتە ئىچىش"
 
-#: src/View/Window.vala:609 src/View/Window.vala:619
+#: src/View/Window.vala:612 src/View/Window.vala:622
 msgid "(as Administrator)"
 msgstr "(باشقۇرغۇچى سالاھىيىتىدە)"
 
@@ -2153,13 +2309,72 @@ msgstr "يېڭى بەتكۈچتە ئىچىش"
 msgid "Open in Other Application…"
 msgstr "باشقا ئەپتە ئىچىش...."
 
-#: src/View/Widgets/HeaderBar.vala:66
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "ئالدىنقىسى"
 
-#: src/View/Widgets/HeaderBar.vala:73
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "كىيىنكىسى"
+
+#: src/View/Widgets/HeaderBar.vala:97
+msgid "Zoom Out"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:106
+msgid "Zoom 1:1"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:115
+msgid "Zoom In"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:154
+msgid "Double-click to Navigate"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:155
+msgid "Double-click on a folder opens it, single-click selects it"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:160
+msgid "Sort Folders before Files"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:164
+#, fuzzy
+#| msgid "Show Hidden Files"
+msgid "Show in View"
+msgstr "يوشۇرۇن ھۆججەتلەرنى كۆرسىتىش"
+
+#: src/View/Widgets/HeaderBar.vala:171
+#, fuzzy
+#| msgid "Show Hidden Files"
+msgid "Hidden Files"
+msgstr "يوشۇرۇن ھۆججەتلەرنى كۆرسىتىش"
+
+#: src/View/Widgets/HeaderBar.vala:175
+#, fuzzy
+msgid "Local Thumbnails"
+msgstr "يىراقتىكى كومپىيۇتىردىكى مىكرو سۈرەتلەرنى كۆرسىتىش"
+
+#: src/View/Widgets/HeaderBar.vala:180
+#, fuzzy
+#| msgid "Show Remote Thumbnails"
+msgid "Remote Thumbnails"
+msgstr "يىراقتىكى كومپىيۇتىردىكى مىكرو سۈرەتلەرنى كۆرسىتىش"
+
+#: src/View/Widgets/HeaderBar.vala:208
+msgid "Menu"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:283
+msgid "No operation to undo"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:290
+msgid "No operation to redo"
+msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2255,8 +2470,15 @@ msgstr "بۇ مۇندەرىجىدە"
 msgid "Recently Used"
 msgstr "يىقىندىكىسى"
 
-#~ msgid "Setting permissions"
-#~ msgstr "سالاھىيەت تەڭشىكى"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "ھۆججەت مەشغۇلاتلىرى"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "ھۆججەت مەشغۇلاتلىرى"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2479,16 +2701,6 @@ msgstr "يىقىندىكىسى"
 #~ msgid_plural "_Undo rename of %d items"
 #~ msgstr[0] "%d نىڭ ئىسمىنى ئۆزگەرتىشنى ئەمەلدىن قالدۇرۇش"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "قۇرۇق ھۆججەت قۇرۇشنى ئەمەلدىن قالدۇرۇش"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "قىلىپقا ئاساسەن ھۆججەت قۇرۇشنى ئەمەلدىن قالدۇرۇش"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "%d مۇندەرىجە قۇرۇشنى ئەمەلدىن قالدۇرۇش"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "%d نى ئەخلەت چېلىكىگە تاشلاشنى ئەمەلدىن قالدۇرۇش"
@@ -2497,10 +2709,6 @@ msgstr "يىقىندىكىسى"
 #~ msgid_plural "_Undo restore from trash of %d items"
 #~ msgstr[0] "ئەخلەت چېلىكىدىن %d تۈرنى ئەسلىگە كەلتۈرۈشنى ئەمەلدىن قالدۇرۇش"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "%d تۈرگە ئۇلانما قۇرۇشنى ئەمەلدىن قالدۇرۇش"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "%d تۈرنى ئۆچۈرۈشنى ئەمەلدىن قالدۇرۇش"
@@ -2508,18 +2716,6 @@ msgstr "يىقىندىكىسى"
 #~ msgid "Undo recursive change permissions of %d item"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "%d تۈرنىڭ تەۋەلىك سالاھىيىتىنى ئۆزگەرتىشنى ئەمەلدىن قالدۇرۇش"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "%d تۈرنىڭ سالاھىيىتىنى ئۆزگەرتىشنى ئەمەلدىن قالدۇرۇش"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "%d تۈرنىڭ گۇرۇپپىسىنى ئۆزگەرتىشنى ئەمەلدىن قالدۇرۇش"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "%d تۈرنىڭ ئىگىسىنى ئۆزگەرتىشنى ئەمەلدىن قالدرۇرۇش"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2537,12 +2733,6 @@ msgstr "يىقىندىكىسى"
 #~ msgid_plural "_Redo rename of %d items"
 #~ msgstr[0] "%d تۈرنىڭ ئىسمىنى قايتا ئۆزگەرتىش"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "قايتا قۇرۇق ھۆججەت قۇرۇش"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "قىلىپقا ئاساسەن قايتا ھۆججەت قۇرۇش"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "قايتا %d مۇندەرىجە قۇرۇش"
@@ -2555,10 +2745,6 @@ msgstr "يىقىندىكىسى"
 #~ msgid_plural "_Redo restore from trash of %d items"
 #~ msgstr[0] "%d تۈرنى ئەخلەت چېلىكىدىن قايتا قايتۇرۇپ ئەكىلىش"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "%d تۈرنىڭ ئۇلانمىسىنى قايتا قۇرۇش"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "%d تۈرنى قايتا ئۆچۈرۈش"
@@ -2566,18 +2752,6 @@ msgstr "يىقىندىكىسى"
 #~ msgid "Redo recursive change permissions of %d item"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "%d تۈرنىڭ سالاھىيىتىنى قايتىلانما ھالدا قايتىدىن ئۆزگەرتىش"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "%d تۈرنىڭ سالاھىيىتىنى قايتىدىن ئۆزگەرتىش"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "%d تۈرنىڭ گۇرۇپپىسىنى قايتىدىن ئۆزگەرتىش"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "%d تۈرنىڭ ئىگىسىنى قايتىدىن ئۆزگەرتىش"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

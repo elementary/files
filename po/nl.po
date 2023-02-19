@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 16:31+0000\n"
-"PO-Revision-Date: 2022-10-15 15:57+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"PO-Revision-Date: 2023-02-14 14:25+0000\n"
 "Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -1053,7 +1053,7 @@ msgstr "Open in Nieuw _Venster"
 
 #: libcore/PopupMenuBuilder.vala:62
 msgid "Remove"
-msgstr "Verwijder"
+msgstr "Verwijderen"
 
 #: libcore/PopupMenuBuilder.vala:66
 msgid "Rename"
@@ -1143,7 +1143,7 @@ msgstr "Prullenbak"
 
 #: libcore/Resources.vala:70
 msgid "Recent"
-msgstr "Recente"
+msgstr "Recent"
 
 #: libcore/Resources.vala:71
 msgid "MTP"
@@ -1202,11 +1202,186 @@ msgstr "_Toch Kopiëren"
 msgid "Empty _Trash"
 msgstr "Leeg _Prullenbak"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Kopiëren"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Undo Duplicate"
+msgstr "Tab Dupliceren"
+
+#: libcore/UndoManager.vala:26
+#, fuzzy
+#| msgid "Undo Close Tab"
+msgid "Undo Move"
+msgstr "Tab Sluiten Ongedaan Maken"
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Hernoemen"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "Aanmaken van leeg bestand _ongedaan maken"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Aanmaken van bestand met sjabloon ongedaan maken"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "Aanmaken van %d map _ongedaan maken"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Verplaats naar prullenbak"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "Aanmaken van verwijzing naar %d onderdeel _ongedaan maken"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Herstel uit prullenbak"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Toegangsrechten instellen"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Wijzigen rechten van %d onderdeel _ongedaan maken"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Wijzigen eigenaar van %d onderdeel _ongedaan maken"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Wijzigen groep van %d onderdeel _ongedaan maken"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Kopiëren"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Redo Duplicate"
+msgstr "Tab Dupliceren"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Hernoemen"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "Aanmaken leeg bestand op_nieuw uitvoeren"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "Aanmaken bestand vanaf sjabloon op_nieuw uitvoeren"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "Kon de folder niet aanmaken"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Verplaats naar prullenbak"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "Aanmaken verwijzing naar %d onderdeel op_nieuw uitvoeren"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Herstel uit prullenbak"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Toegangsrechten instellen"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Wijzigen rechten van %d onderdeel op_nieuw uitvoeren"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Wijzigen eigenaar van %d onderdeel op_nieuw uitvoeren"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Wijzigen groep van %d onderdeel op_nieuw uitvoeren"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Oorspronkelijke locatie kon niet worden bepaald"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Open de prullenbak en herstel handmatig"
 
@@ -1226,7 +1401,7 @@ msgstr "De bestemming is geen folder."
 
 #: libcore/FileOperations/CommonJob.vala:144
 msgid "You do not have permissions to access the destination folder."
-msgstr "U heeft geen rechten om toegang te nemen tot de doelfolder."
+msgstr "U heeft geen rechten om toegang te nemen tot deze folder."
 
 #: libcore/FileOperations/CommonJob.vala:146
 msgid "There was an error getting information about the destination."
@@ -1267,23 +1442,24 @@ msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
-"Alle items in all prullenbak mappen, inclusief die op alle gekoppelde "
-"externe schijven, worden permanent verwijderd."
+"Alle items in alle prullenbakken, inclusief die op alle gekoppelde externe "
+"schijven, worden permanent verwijderd."
 
 #: libcore/FileOperations/EmptyTrashJob.vala:44
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
-"Alle items permanent uit de prullenbak op deze gekoppelde schijf verwijderen?"
+"Alle items permanent uit de prullenbak van deze gekoppelde schijf "
+"verwijderen?"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:45
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
-"Alle items in de prullenbak op deze gekoppelde schijf, worden permanent "
+"Alle items in de prullenbak van deze gekoppelde schijf, worden permanent "
 "verwijderd."
 
 #: libcore/FileOperations/EmptyTrashJob.vala:111
 msgid "Emptying Trash"
-msgstr "Bezig met prullenbak legen"
+msgstr "Prullenbak legen"
 
 #: libcore/FileOperations/MountUtils.vala:31
 #, c-format
@@ -1298,7 +1474,7 @@ msgstr "Kan '%s' niet uitwerpen"
 #: libcore/FileOperations/MountUtils.vala:104
 #, c-format
 msgid "Unable to mount '%s'"
-msgstr "Kon '%s' niet koppelen"
+msgstr "Kon '%s' niet aankoppelen"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1317,10 +1493,10 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"Weet u zeker dat u het geselecteerde item blijvend wilt verwijderen uit de "
+"Weet u zeker dat u het geselecteerde item permanent wilt verwijderen uit de "
 "prullenbak?"
 msgstr[1] ""
-"Weet u zeker dat u de %'d geselecteerde items blijvend wilt verwijderen uit "
+"Weet u zeker dat u de %'d geselecteerde items permanent wilt verwijderen uit "
 "de prullenbak?"
 
 #: libcore/FileOperations/DeleteJob.vala:53
@@ -1353,7 +1529,7 @@ msgstr ""
 #: libcore/Widgets/BasicBreadcrumbsEntry.vala:178
 #, c-format
 msgid "Navigate to %s"
-msgstr "Ga naar %s"
+msgstr "Navigeer naar %s"
 
 #: libcore/Widgets/BasicBreadcrumbsEntry.vala:304
 #, c-format
@@ -1370,7 +1546,7 @@ msgstr "Geef een pad op"
 
 #: libcore/Widgets/ViewSwitcher.vala:39
 msgid "View as Grid"
-msgstr "Als rooster weergeven"
+msgstr "Raster-weergave"
 
 #: libcore/Widgets/ViewSwitcher.vala:49
 msgid "View as List"
@@ -1433,7 +1609,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Bestandssysteem doorbladeren met het bestandsbeheer"
+"Bestandssysteem doorbladeren met de bestandsbeheerder"
 
 #: src/Application.vala:196
 msgid "--quit cannot be used with URIs."
@@ -1467,7 +1643,7 @@ msgstr "%s voltooid"
 
 #: src/ProgressUIHandler.vala:184
 msgid "All file operations have ended"
-msgstr "Alle bestandsoperaties zijn klaar"
+msgstr "Alle bestandsbewerkingen zijn klaar"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -1697,7 +1873,7 @@ msgid "Invalid file name provided"
 msgstr "Ongeldige bestandsnaam opgegeven"
 
 #: src/View/AbstractDirectoryView.vala:1898
-#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:182
+#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "Nieuwe tab"
 
@@ -1769,103 +1945,87 @@ msgid "Copy as Link"
 msgstr "Kopieer als link"
 
 #: src/View/AbstractDirectoryView.vala:2182
-#: src/View/AbstractDirectoryView.vala:2282
+#: src/View/AbstractDirectoryView.vala:2262
 msgid "Paste Link into Folder"
 msgstr "Link plakken in folder"
 
 #: src/View/AbstractDirectoryView.vala:2187
-#: src/View/AbstractDirectoryView.vala:2256
+#: src/View/AbstractDirectoryView.vala:2239
 msgid "Paste into Folder"
 msgstr "Plakken in folder"
 
 #: src/View/AbstractDirectoryView.vala:2197
-#: src/View/AbstractDirectoryView.vala:2287
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "Paste"
 msgstr "Plakken"
 
-#: src/View/AbstractDirectoryView.vala:2238
-msgid "Show Hidden Files"
-msgstr "Laat verborgen bestanden zien"
-
-#: src/View/AbstractDirectoryView.vala:2243
-msgid "Show Remote Thumbnails"
-msgstr "Laat externe thumbnails zien"
-
-#: src/View/AbstractDirectoryView.vala:2246
-msgid "Hide Thumbnails"
-msgstr "Verberg miniatuurweergaven"
-
-#: src/View/AbstractDirectoryView.vala:2249
-msgid "Double-click to Navigate"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2347
+#: src/View/AbstractDirectoryView.vala:2317
 msgid "Name"
 msgstr "Naam"
 
-#: src/View/AbstractDirectoryView.vala:2352 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2322 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Grootte"
 
-#: src/View/AbstractDirectoryView.vala:2357 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2327 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Type"
 
-#: src/View/AbstractDirectoryView.vala:2362
+#: src/View/AbstractDirectoryView.vala:2332
 msgid "Date"
 msgstr "Datum"
 
-#: src/View/AbstractDirectoryView.vala:2367
+#: src/View/AbstractDirectoryView.vala:2337
 msgid "Reversed Order"
 msgstr "Omgekeerde volgorde"
 
-#: src/View/AbstractDirectoryView.vala:2370
+#: src/View/AbstractDirectoryView.vala:2340
 msgid "Folders Before Files"
 msgstr "Folders voor bestanden"
 
-#: src/View/AbstractDirectoryView.vala:2382
+#: src/View/AbstractDirectoryView.vala:2352
 msgid "Sort by"
 msgstr "Sorteer op"
 
-#: src/View/AbstractDirectoryView.vala:2390
+#: src/View/AbstractDirectoryView.vala:2360
 msgid "Folder"
 msgstr "Folder"
 
-#: src/View/AbstractDirectoryView.vala:2396
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Empty File"
 msgstr "Leeg bestand"
 
-#: src/View/AbstractDirectoryView.vala:2447
+#: src/View/AbstractDirectoryView.vala:2417
 msgid "New"
 msgstr "Nieuw"
 
-#: src/View/AbstractDirectoryView.vala:2690
+#: src/View/AbstractDirectoryView.vala:2660
 #, c-format
 msgid "Untitled %s"
 msgstr "%s zonder naam"
 
-#: src/View/AbstractDirectoryView.vala:3008
-#: src/View/AbstractDirectoryView.vala:3201
+#: src/View/AbstractDirectoryView.vala:2978
+#: src/View/AbstractDirectoryView.vala:3171
 msgid "Cannot remove files from here"
 msgstr "Kan de bestanden hier niet verwijderen"
 
-#: src/View/AbstractDirectoryView.vala:3009
-#: src/View/AbstractDirectoryView.vala:3174
-#: src/View/AbstractDirectoryView.vala:3185
-#: src/View/AbstractDirectoryView.vala:3202
+#: src/View/AbstractDirectoryView.vala:2979
+#: src/View/AbstractDirectoryView.vala:3144
+#: src/View/AbstractDirectoryView.vala:3155
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "You do not have permission to change this location"
 msgstr "U heeft geen toestemming om hier wijzigingen aan te brengen"
 
-#: src/View/AbstractDirectoryView.vala:3142
+#: src/View/AbstractDirectoryView.vala:3112
 msgid "Cannot copy files that are in the trash"
 msgstr "Bestanden in de prullenbak kunnen niet gekopieerd worden"
 
-#: src/View/AbstractDirectoryView.vala:3143
+#: src/View/AbstractDirectoryView.vala:3113
 msgid "Cutting the selection instead"
-msgstr "De geselecteerde objecten worden in plaats daarvan geknipt"
+msgstr "De selectie wordt in plaats daarvan geknipt"
 
-#: src/View/AbstractDirectoryView.vala:3173
-#: src/View/AbstractDirectoryView.vala:3184
+#: src/View/AbstractDirectoryView.vala:3143
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cannot paste files here"
 msgstr "Kan bestanden hier niet plakken"
 
@@ -1988,23 +2148,23 @@ msgstr "Bestand niet gevonden"
 msgid "The file selected no longer exists."
 msgstr "Het gekozen bestand bestaat niet meer."
 
-#: src/View/Window.vala:183
+#: src/View/Window.vala:184
 msgid "Undo Close Tab"
 msgstr "Tab Sluiten Ongedaan Maken"
 
-#: src/View/Window.vala:494
+#: src/View/Window.vala:497
 msgid "Close Tab"
 msgstr "Tab Sluiten"
 
-#: src/View/Window.vala:495
+#: src/View/Window.vala:498
 msgid "Duplicate Tab"
 msgstr "Tab Dupliceren"
 
-#: src/View/Window.vala:496 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
 msgstr "Openen in nieuw venster"
 
-#: src/View/Window.vala:609 src/View/Window.vala:619
+#: src/View/Window.vala:612 src/View/Window.vala:622
 msgid "(as Administrator)"
 msgstr "(als Beheerder)"
 
@@ -2028,7 +2188,7 @@ msgstr "%s beschikbaar"
 #: src/View/Sidebar/AbstractMountableRow.vala:308
 #, c-format
 msgid "%s used of %s"
-msgstr "%s van de %s"
+msgstr "%s gebruikt van de %s"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:338
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
@@ -2048,7 +2208,7 @@ msgstr "Bekijk de persoonlijke folder"
 
 #: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
-msgstr "Bekijk de lijst van recentelijke gebruikte bestanden"
+msgstr "Bekijk de lijst van recent gebruikte bestanden"
 
 #: src/View/Sidebar/BookmarkListBox.vala:171
 msgid "Open the Trash"
@@ -2080,7 +2240,7 @@ msgstr "Volledig netwerk"
 
 #: src/View/Sidebar/NetworkListBox.vala:131
 msgid "Browse the contents of the network"
-msgstr "Door de inhoud van het netwerk bladeren"
+msgstr "Door netwerkinhoud bladeren"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: src/View/Widgets/SearchResults.vala:289
@@ -2125,13 +2285,69 @@ msgstr "Openen in nieuw tabblad"
 msgid "Open in Other Application…"
 msgstr "Openen in een andere applicatie…"
 
-#: src/View/Widgets/HeaderBar.vala:66
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Vorige"
 
-#: src/View/Widgets/HeaderBar.vala:73
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Volgende"
+
+#: src/View/Widgets/HeaderBar.vala:97
+msgid "Zoom Out"
+msgstr "Uitzoomen"
+
+#: src/View/Widgets/HeaderBar.vala:106
+msgid "Zoom 1:1"
+msgstr "Zoom 1:1"
+
+#: src/View/Widgets/HeaderBar.vala:115
+msgid "Zoom In"
+msgstr "Inzoomen"
+
+#: src/View/Widgets/HeaderBar.vala:154
+msgid "Double-click to Navigate"
+msgstr "Dubbelklik om te navigeren"
+
+#: src/View/Widgets/HeaderBar.vala:155
+msgid "Double-click on a folder opens it, single-click selects it"
+msgstr "Dubbelklik op een folder opent het, enkelklik selecteert het"
+
+#: src/View/Widgets/HeaderBar.vala:160
+msgid "Sort Folders before Files"
+msgstr "Folder sorteren voor bestanden"
+
+#: src/View/Widgets/HeaderBar.vala:164
+msgid "Show in View"
+msgstr "Toon in overzicht"
+
+#: src/View/Widgets/HeaderBar.vala:171
+msgid "Hidden Files"
+msgstr "Verborgen bestanden"
+
+#: src/View/Widgets/HeaderBar.vala:175
+msgid "Local Thumbnails"
+msgstr "Lokale miniaturen"
+
+#: src/View/Widgets/HeaderBar.vala:180
+msgid "Remote Thumbnails"
+msgstr "Externe miniaturen"
+
+#: src/View/Widgets/HeaderBar.vala:208
+msgid "Menu"
+msgstr "Menu"
+
+#: src/View/Widgets/HeaderBar.vala:283
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "De bewerking duurde te lang."
+
+#: src/View/Widgets/HeaderBar.vala:290
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "De bewerking duurde te lang."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2139,7 +2355,7 @@ msgstr "Herlaad deze folder"
 
 #: src/View/Widgets/LocationBar.vala:209
 msgid "Searching…"
-msgstr "Aan het zoeken…"
+msgstr "Zoeken…"
 
 #: src/View/Widgets/OverlayBar.vala:162
 #, c-format
@@ -2182,7 +2398,7 @@ msgstr[1] "%u bestanden, "
 #: src/View/Widgets/OverlayBar.vala:242
 #, c-format
 msgid "%s approx."
-msgstr "%s ong."
+msgstr "Ongeveer %s"
 
 #. TRANSLATORS: 'size' refers to disk space
 #: src/View/Widgets/OverlayBar.vala:245
@@ -2225,11 +2441,14 @@ msgstr "Onder deze folder"
 msgid "Recently Used"
 msgstr "Recent gebruikt"
 
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Laatste bestandsbewerkingen ongedaan maken"
+
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Laatste ongedaan gemaakte bestandsbewerking opnieuw uitvoeren"
+
 #~ msgid "Select Folders with Single Click"
 #~ msgstr "Folders selecteren met een enkele klik"
-
-#~ msgid "Setting permissions"
-#~ msgstr "Toegangsrechten instellen"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2461,17 +2680,6 @@ msgstr "Recent gebruikt"
 #~ msgstr[0] "Hernoemen van %d onderdeel _ongedaan maken"
 #~ msgstr[1] "Hernoemen van %d onderdelen _ongedaan maken"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "Aanmaken van leeg bestand _ongedaan maken"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Aanmaken van bestand met sjabloon ongedaan maken"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "Aanmaken van %d map _ongedaan maken"
-#~ msgstr[1] "Aanmaken van %d mappen _ongedaan maken"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "Verplaaten van %d onderdeel naar prullenbak _ongedaan maken"
@@ -2482,11 +2690,6 @@ msgstr "Recent gebruikt"
 #~ msgstr[0] "Uit prullenbak terugzetten van %d onderdeel _ongedaan maken"
 #~ msgstr[1] "Uit prullenbak terugzetten van %d onderdelen _ongedaan maken"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "Aanmaken van verwijzing naar %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Aanmaken van verwijzing naar %d onderdelen _ongedaan maken"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "Verwijderen van %d onderdeel _ongedaan maken"
@@ -2496,21 +2699,6 @@ msgstr "Recent gebruikt"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "Recursief wijzigen rechten van %d onderdeel _ongedaan maken"
 #~ msgstr[1] "Recursief wijzigen rechten van %d onderdelen _ongedaan maken"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Wijzigen rechten van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Wijzigen rechten van %d onderdelen _ongedaan maken"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Wijzigen groep van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Wijzigen groep van %d onderdelen _ongedaan maken"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Wijzigen eigenaar van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Wijzigen eigenaar van %d onderdelen _ongedaan maken"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2532,12 +2720,6 @@ msgstr "Recent gebruikt"
 #~ msgstr[0] "Hernoemen van %d onderdeel op_nieuw uitvoeren"
 #~ msgstr[1] "Hernoemen van %d onderdelen op_nieuw uitvoeren"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "Aanmaken leeg bestand op_nieuw uitvoeren"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "Aanmaken bestand vanaf sjabloon op_nieuw uitvoeren"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "Aanmaken van %d map op_nieuw uitvoeren"
@@ -2555,11 +2737,6 @@ msgstr "Recent gebruikt"
 #~ msgstr[1] ""
 #~ "Terugzetten van %d onderdelen uit de prullenbak op_nieuw uitvoeren"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "Aanmaken verwijzing naar %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Aanmaken verwijzing naar %d onderdelen op_nieuw uitvoeren"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "Verwijderen van % item op_nieuw uitvoeren"
@@ -2569,21 +2746,6 @@ msgstr "Recent gebruikt"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "Recursief wijzigen rechten van %d onderdeel op_nieuw uitvoeren"
 #~ msgstr[1] "Recursief wijzigen rechten van %d onderdelen op_nieuw uitvoeren"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Wijzigen rechten van %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Wijzigen rechten van %d onderdelen op_nieuw uitvoeren"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Wijzigen groep van %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Wijzigen groep van %d onderdelen op_nieuw uitvoeren"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Wijzigen eigenaar van %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Wijzigen eigenaar van %d onderdelen op_nieuw uitvoeren"
 
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"
 #~ msgstr "Bent u zeker dat u het bestand \"%s\" definitief wilt verwijderen?"
