@@ -221,9 +221,14 @@ public class Files.Directory : Object {
             file.update ();
         }
 
-        debug ("success %s; enclosing mount %s", success.to_string (),
-                                                 file.mount != null ? file.mount.get_name () : "null");
+        debug (
+            "is connected %s, success %s; enclosing mount %s",
+            file.is_connected.to_string (),
+            success.to_string (),
+            file.mount != null ? file.mount.get_name () : "null"
+        );
 
+        /* Only place that should call make_ready function */
         yield make_ready (is_no_info || success, file_loaded_func, done_loading_func); /* Only place that should call this function */
     }
 
