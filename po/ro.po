@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 16:31+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
 "PO-Revision-Date: 2017-01-24 11:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -1260,11 +1260,183 @@ msgstr "Copiază oricum"
 msgid "Empty _Trash"
 msgstr "Golește coșul de gunoi"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Copiază"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "Se duplică „%B”"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Redenumește"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Anulează crearea unui fișier gol"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Anulează crearea unui fișier din șablon"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Anulează crearea dosarului"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Mută în coşul de gunoi"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_Anulează crearea unei legături către element"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Restaurează din coş"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Se definesc permisiunile"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "_Anulează schimbarea drepturilor elementului"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "_Anulează schimbarea de proprietar a elementului"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "_Anulează  schimbarea grupului elementului"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Copiază"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "Se duplică „%B”"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Redenumește"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "_Refă fișierul gol"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "_Refă fișierul dintr-un șablon"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr ""
+"Nu s-a putut creea dosarul\n"
+"%s"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Mută în coşul de gunoi"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "Reîncearcă crearea legăturii a %d element"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Restaurează din coş"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Se definesc permisiunile"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Reîncearcă schimbarea permisiunilor a %d element"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Reîncearcă schimbarea proprietarului a %d element"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Reîncearcă schimbarea grupului a %d element"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Locaţia originală nu a putut fi determinată"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Deschide coş de gunoi si restaurează manual"
 
@@ -1765,7 +1937,7 @@ msgid "Invalid file name provided"
 msgstr "Numele de fișier furnizat nu este valid"
 
 #: src/View/AbstractDirectoryView.vala:1898
-#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:182
+#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "Filă nouă"
 
@@ -1844,105 +2016,88 @@ msgid "Copy as Link"
 msgstr "Lipeşte"
 
 #: src/View/AbstractDirectoryView.vala:2182
-#: src/View/AbstractDirectoryView.vala:2282
+#: src/View/AbstractDirectoryView.vala:2262
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "Lipește în dosar"
 
 #: src/View/AbstractDirectoryView.vala:2187
-#: src/View/AbstractDirectoryView.vala:2256
+#: src/View/AbstractDirectoryView.vala:2239
 msgid "Paste into Folder"
 msgstr "Lipește în dosar"
 
 #: src/View/AbstractDirectoryView.vala:2197
-#: src/View/AbstractDirectoryView.vala:2287
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "Paste"
 msgstr "Lipeşte"
 
-#: src/View/AbstractDirectoryView.vala:2238
-msgid "Show Hidden Files"
-msgstr "Arată fișiere ascunse"
-
-#: src/View/AbstractDirectoryView.vala:2243
-msgid "Show Remote Thumbnails"
-msgstr "Arată miniaturile la distanţă"
-
-#: src/View/AbstractDirectoryView.vala:2246
-#, fuzzy
-msgid "Hide Thumbnails"
-msgstr "Arată miniaturile la distanţă"
-
-#: src/View/AbstractDirectoryView.vala:2249
-msgid "Double-click to Navigate"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2347
+#: src/View/AbstractDirectoryView.vala:2317
 msgid "Name"
 msgstr "Nume"
 
-#: src/View/AbstractDirectoryView.vala:2352 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2322 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Dimensiune"
 
-#: src/View/AbstractDirectoryView.vala:2357 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2327 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Tip"
 
-#: src/View/AbstractDirectoryView.vala:2362
+#: src/View/AbstractDirectoryView.vala:2332
 msgid "Date"
 msgstr "Data"
 
-#: src/View/AbstractDirectoryView.vala:2367
+#: src/View/AbstractDirectoryView.vala:2337
 msgid "Reversed Order"
 msgstr "Ordine inversă"
 
-#: src/View/AbstractDirectoryView.vala:2370
+#: src/View/AbstractDirectoryView.vala:2340
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2382
+#: src/View/AbstractDirectoryView.vala:2352
 msgid "Sort by"
 msgstr "Filtrează după"
 
-#: src/View/AbstractDirectoryView.vala:2390
+#: src/View/AbstractDirectoryView.vala:2360
 msgid "Folder"
 msgstr "Dosar"
 
-#: src/View/AbstractDirectoryView.vala:2396
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Empty File"
 msgstr "Fişier gol"
 
-#: src/View/AbstractDirectoryView.vala:2447
+#: src/View/AbstractDirectoryView.vala:2417
 msgid "New"
 msgstr "Nou"
 
-#: src/View/AbstractDirectoryView.vala:2690
+#: src/View/AbstractDirectoryView.vala:2660
 #, c-format
 msgid "Untitled %s"
 msgstr "%s fără nume"
 
-#: src/View/AbstractDirectoryView.vala:3008
-#: src/View/AbstractDirectoryView.vala:3201
+#: src/View/AbstractDirectoryView.vala:2978
+#: src/View/AbstractDirectoryView.vala:3171
 msgid "Cannot remove files from here"
 msgstr "Nu se pot elimina fișiere de aici"
 
-#: src/View/AbstractDirectoryView.vala:3009
-#: src/View/AbstractDirectoryView.vala:3174
-#: src/View/AbstractDirectoryView.vala:3185
-#: src/View/AbstractDirectoryView.vala:3202
+#: src/View/AbstractDirectoryView.vala:2979
+#: src/View/AbstractDirectoryView.vala:3144
+#: src/View/AbstractDirectoryView.vala:3155
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "You do not have permission to change this location"
 msgstr "Nu ai permisiunea de a schimba această locaţie"
 
-#: src/View/AbstractDirectoryView.vala:3142
+#: src/View/AbstractDirectoryView.vala:3112
 msgid "Cannot copy files that are in the trash"
 msgstr "Nu se pot copia fişiere din coş"
 
-#: src/View/AbstractDirectoryView.vala:3143
+#: src/View/AbstractDirectoryView.vala:3113
 msgid "Cutting the selection instead"
 msgstr "În schimb se poate tăia selecţia"
 
-#: src/View/AbstractDirectoryView.vala:3173
-#: src/View/AbstractDirectoryView.vala:3184
+#: src/View/AbstractDirectoryView.vala:3143
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cannot paste files here"
 msgstr "Nu se pot lipi fișiere aici"
 
@@ -2067,26 +2222,26 @@ msgstr "Fișierul nu a fost găsit"
 msgid "The file selected no longer exists."
 msgstr "Fișierul selectat nu mai există."
 
-#: src/View/Window.vala:183
+#: src/View/Window.vala:184
 msgid "Undo Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:494
+#: src/View/Window.vala:497
 #, fuzzy
 #| msgid "Close"
 msgid "Close Tab"
 msgstr "Închide"
 
-#: src/View/Window.vala:495
+#: src/View/Window.vala:498
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Se duplică „%B”"
 
-#: src/View/Window.vala:496 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
 msgstr "Deschide în fereastră nouă"
 
-#: src/View/Window.vala:609 src/View/Window.vala:619
+#: src/View/Window.vala:612 src/View/Window.vala:622
 msgid "(as Administrator)"
 msgstr "(ca Administrator)"
 
@@ -2217,13 +2372,72 @@ msgstr "Deschide într-o filă nouă"
 msgid "Open in Other Application…"
 msgstr "Deschide în altă aplicație..."
 
-#: src/View/Widgets/HeaderBar.vala:66
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Anterior"
 
-#: src/View/Widgets/HeaderBar.vala:73
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Următor"
+
+#: src/View/Widgets/HeaderBar.vala:97
+msgid "Zoom Out"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:106
+msgid "Zoom 1:1"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:115
+msgid "Zoom In"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:154
+msgid "Double-click to Navigate"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:155
+msgid "Double-click on a folder opens it, single-click selects it"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:160
+msgid "Sort Folders before Files"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:164
+#, fuzzy
+#| msgid "Show Hidden Files"
+msgid "Show in View"
+msgstr "Arată fișiere ascunse"
+
+#: src/View/Widgets/HeaderBar.vala:171
+#, fuzzy
+#| msgid "Show Hidden Files"
+msgid "Hidden Files"
+msgstr "Arată fișiere ascunse"
+
+#: src/View/Widgets/HeaderBar.vala:175
+#, fuzzy
+msgid "Local Thumbnails"
+msgstr "Arată miniaturile la distanţă"
+
+#: src/View/Widgets/HeaderBar.vala:180
+#, fuzzy
+#| msgid "Show Remote Thumbnails"
+msgid "Remote Thumbnails"
+msgstr "Arată miniaturile la distanţă"
+
+#: src/View/Widgets/HeaderBar.vala:208
+msgid "Menu"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:283
+msgid "No operation to undo"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:290
+msgid "No operation to redo"
+msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2328,8 +2542,15 @@ msgstr "În acest dosar"
 msgid "Recently Used"
 msgstr "Recent"
 
-#~ msgid "Setting permissions"
-#~ msgstr "Se definesc permisiunile"
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Operații cu fișiere"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Operații cu fișiere"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2562,18 +2783,6 @@ msgstr "Recent"
 #~ msgstr[1] "_Anulează redenumirea a %d elemente"
 #~ msgstr[2] "_Anulează redenumirea a %d elemente"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Anulează crearea unui fișier gol"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Anulează crearea unui fișier din șablon"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Anulează crearea dosarului"
-#~ msgstr[1] "_Anulează crearea a %d dosare"
-#~ msgstr[2] "_Anulează crearea a %d dosare"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Anulează mutarea elementului la gunoi"
@@ -2586,12 +2795,6 @@ msgstr "Recent"
 #~ msgstr[1] "_Anulează restaurarea din coşul de gunoi a  %d elemente"
 #~ msgstr[2] "_Anulează restaurarea din coşul de gunoi a  %d elemente"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Anulează crearea unei legături către element"
-#~ msgstr[1] "_Anulează crearea unei legături către %d elemente"
-#~ msgstr[2] "_Anulează crearea unei legături către %d elemente"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_Anulează ștergerea elementului"
@@ -2603,24 +2806,6 @@ msgstr "Recent"
 #~ msgstr[0] "_Anulează schimbarea recursivă a drepturilor elementului"
 #~ msgstr[1] "_Anulează schimbarea recursivă a drepturilor a %d elemente"
 #~ msgstr[2] "_Anulează schimbarea recursivă a drepturilor a %d elemente"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "_Anulează schimbarea drepturilor elementului"
-#~ msgstr[1] "_Anulează schimbarea drepturilor a %d elemente"
-#~ msgstr[2] "_Anulează schimbarea drepturilor a %d elemente"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "_Anulează  schimbarea grupului elementului"
-#~ msgstr[1] "_Anulează  schimbarea grupului a %d elemente"
-#~ msgstr[2] "_Anulează  schimbarea grupului a %d elemente"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "_Anulează schimbarea de proprietar a elementului"
-#~ msgstr[1] "_Anulează schimbarea de proprietar a  %d elemente"
-#~ msgstr[2] "_Anulează schimbarea de proprietar a  %d elemente"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2646,12 +2831,6 @@ msgstr "Recent"
 #~ msgstr[1] "_Anulază redenumirea a %d elemente"
 #~ msgstr[2] "_Anulază redenumirea a %d elemente"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Refă fișierul gol"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Refă fișierul dintr-un șablon"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Refă dosarul"
@@ -2670,12 +2849,6 @@ msgstr "Recent"
 #~ msgstr[1] "Reîncearcă restaurarea din coş a %d elemente"
 #~ msgstr[2] "Reîncearcă restaurarea din coş a %d elemente"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "Reîncearcă crearea legăturii a %d element"
-#~ msgstr[1] "Reîncearcă crearea legăturii a %d elemente"
-#~ msgstr[2] "Reîncearcă crearea legăturii a %d elemente"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "Reîncearcă ștergerea a %d element"
@@ -2687,24 +2860,6 @@ msgstr "Recent"
 #~ msgstr[0] "Reîncearcă schimbarea permisiunilor recursive a %d element"
 #~ msgstr[1] "Reîncearcă schimbarea permisiunilor recursive a %d elemente"
 #~ msgstr[2] "Reîncearcă schimbarea permisiunilor recursive a %d elemente"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Reîncearcă schimbarea permisiunilor a %d element"
-#~ msgstr[1] "Reîncearcă schimbarea permisiunilor a %d elemente"
-#~ msgstr[2] "Reîncearcă schimbarea permisiunilor a %d elemente"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Reîncearcă schimbarea grupului a %d element"
-#~ msgstr[1] "Reîncearcă schimbarea grupului a %d elemente"
-#~ msgstr[2] "Reîncearcă schimbarea grupului a %d elemente"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Reîncearcă schimbarea proprietarului a %d element"
-#~ msgstr[1] "Reîncearcă schimbarea proprietarului a %d elemente"
-#~ msgstr[2] "Reîncearcă schimbarea proprietarului a %d elemente"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"
