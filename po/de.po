@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-14 09:55+0000\n"
-"PO-Revision-Date: 2022-10-10 08:25+0000\n"
+"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"PO-Revision-Date: 2023-02-15 08:39+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Launchpad-Export-Date: 2017-06-14 06:05+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -56,7 +56,7 @@ msgstr "»%s« ersetzen?"
 #: filechooser-portal/Main.vala:352
 msgid "Replacing this file will overwrite its current contents"
 msgstr ""
-"Falls Sie diese Datei ersetzen, wird ihr aktueller Inhalt überschrieben."
+"Falls Sie diese Datei ersetzen, wird ihr aktueller Inhalt überschrieben"
 
 #: filechooser-portal/Main.vala:361
 #, c-format
@@ -1210,11 +1210,186 @@ msgstr "_Trotzdem kopieren"
 msgid "Empty _Trash"
 msgstr "_Papierkorb leeren"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Kopieren"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Undo Duplicate"
+msgstr "Tab duplizieren"
+
+#: libcore/UndoManager.vala:26
+#, fuzzy
+#| msgid "Undo Close Tab"
+msgid "Undo Move"
+msgstr "Rückgängig: Tab schließen"
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Umbenennen"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "Erstellen einer leeren Datei  _rückgängig machen"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "Erstellen einer leeren Datei aus Vorlage  _rückgängig machen"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "Erstellen von %d Ordner _rückgängig machen"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "In den Papierkorb verschieben"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "Erstellen einer Verknüpfung für %d Objekt _rückgängig machen"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Aus dem Papierkorb wiederherstellen"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Zugriffsrechte werden festgelegt"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Änderung der Zugriffsrechte von %d Objekt rückgängig machen"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Veränderung der Besitzer von %d Objekt rückgängig machen"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Veränderung der Gruppe von %d Objekt rückgängig machen"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Kopieren"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicate Tab"
+msgid "Redo Duplicate"
+msgstr "Tab duplizieren"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Umbenennen"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "Erstellen einer leeren Datei wiede_rholen"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "Erstellen einer Datei aus Vorlage wiede_rholen"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "Das Anlegen des Ordners ist fehlgeschlagen"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "In den Papierkorb verschieben"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "Erstellen von Verknüpfung für %d Objekt wiederholen"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Aus dem Papierkorb wiederherstellen"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Zugriffsrechte werden festgelegt"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Änderung der Zugriffsrechte von %d Objekt wiederholen"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "Veränderung des Besitzers von %d Objekt wiede_rholen"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "Veränderung der Gruppe von %d Objekt wiede_rholen"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Ursprünglicher Speicherort konnte nicht bestimmt werden"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Papierkorb öffnen, um manuell wiederherzustellen"
 
@@ -1703,7 +1878,7 @@ msgid "Invalid file name provided"
 msgstr "Ungültiger Name angegeben"
 
 #: src/View/AbstractDirectoryView.vala:1898
-#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:182
+#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "Neuer Tab"
 
@@ -1774,106 +1949,90 @@ msgstr "Umbenennen …"
 msgid "Copy as Link"
 msgstr "Als Verknüpfung kopieren"
 
-#: src/View/AbstractDirectoryView.vala:2179
-#: src/View/AbstractDirectoryView.vala:2278
+#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2262
 msgid "Paste Link into Folder"
 msgstr "Verknüpfung in Ordner einfügen"
 
-#: src/View/AbstractDirectoryView.vala:2184
-#: src/View/AbstractDirectoryView.vala:2252
+#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2239
 msgid "Paste into Folder"
 msgstr "In Ordner einfügen"
 
-#: src/View/AbstractDirectoryView.vala:2194
-#: src/View/AbstractDirectoryView.vala:2283
+#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "Paste"
 msgstr "Einfügen"
 
-#: src/View/AbstractDirectoryView.vala:2235
-msgid "Show Hidden Files"
-msgstr "Ausgeblendete Elemente anzeigen"
-
-#: src/View/AbstractDirectoryView.vala:2240
-msgid "Show Remote Thumbnails"
-msgstr "Vorschaubilder von entfernten Dateien anzeigen"
-
-#: src/View/AbstractDirectoryView.vala:2243
-msgid "Hide Thumbnails"
-msgstr "Vorschaubilder ausblenden"
-
-#: src/View/AbstractDirectoryView.vala:2246
-msgid "Select Folders with Single Click"
-msgstr "Ordner mit Einzelklick wählen"
-
-#: src/View/AbstractDirectoryView.vala:2343
+#: src/View/AbstractDirectoryView.vala:2317
 msgid "Name"
 msgstr "Name"
 
-#: src/View/AbstractDirectoryView.vala:2348 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2322 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Größe"
 
-#: src/View/AbstractDirectoryView.vala:2353 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2327 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Typ"
 
-#: src/View/AbstractDirectoryView.vala:2358
+#: src/View/AbstractDirectoryView.vala:2332
 msgid "Date"
 msgstr "Datum"
 
-#: src/View/AbstractDirectoryView.vala:2363
+#: src/View/AbstractDirectoryView.vala:2337
 msgid "Reversed Order"
 msgstr "Umgekehrte Reihenfolge"
 
-#: src/View/AbstractDirectoryView.vala:2366
+#: src/View/AbstractDirectoryView.vala:2340
 msgid "Folders Before Files"
 msgstr "Ordner vor Dateien"
 
-#: src/View/AbstractDirectoryView.vala:2378
+#: src/View/AbstractDirectoryView.vala:2352
 msgid "Sort by"
 msgstr "Sortieren nach"
 
-#: src/View/AbstractDirectoryView.vala:2386
+#: src/View/AbstractDirectoryView.vala:2360
 msgid "Folder"
 msgstr "Ordner"
 
-#: src/View/AbstractDirectoryView.vala:2392
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Empty File"
 msgstr "Leere Datei"
 
-#: src/View/AbstractDirectoryView.vala:2443
+#: src/View/AbstractDirectoryView.vala:2417
 msgid "New"
 msgstr "Neu"
 
-#: src/View/AbstractDirectoryView.vala:2686
+#: src/View/AbstractDirectoryView.vala:2660
 #, c-format
 msgid "Untitled %s"
 msgstr "Ohne Namen %s"
 
-#: src/View/AbstractDirectoryView.vala:3004
-#: src/View/AbstractDirectoryView.vala:3197
+#: src/View/AbstractDirectoryView.vala:2978
+#: src/View/AbstractDirectoryView.vala:3171
 msgid "Cannot remove files from here"
 msgstr "Dateien können von diesem Ort nicht entfernt werden"
 
-#: src/View/AbstractDirectoryView.vala:3005
-#: src/View/AbstractDirectoryView.vala:3170
-#: src/View/AbstractDirectoryView.vala:3181
-#: src/View/AbstractDirectoryView.vala:3198
+#: src/View/AbstractDirectoryView.vala:2979
+#: src/View/AbstractDirectoryView.vala:3144
+#: src/View/AbstractDirectoryView.vala:3155
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "You do not have permission to change this location"
 msgstr ""
 "Sie haben nicht die notwendigen Zugriffsrechte, an diesem Ort Änderungen "
 "vorzunehmen."
 
-#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3112
 msgid "Cannot copy files that are in the trash"
 msgstr "Dateien im Papierkorb können nicht kopiert werden"
 
-#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3113
 msgid "Cutting the selection instead"
 msgstr "Die ausgewählten Objekte wurden stattdessen ausgeschnitten"
 
-#: src/View/AbstractDirectoryView.vala:3169
-#: src/View/AbstractDirectoryView.vala:3180
+#: src/View/AbstractDirectoryView.vala:3143
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cannot paste files here"
 msgstr "An diesem Ort können keine Dateien eingefügt werden"
 
@@ -1999,23 +2158,23 @@ msgstr "Datei nicht gefuden"
 msgid "The file selected no longer exists."
 msgstr "Die ausgewählte Datei existiert nicht mehr."
 
-#: src/View/Window.vala:183
+#: src/View/Window.vala:184
 msgid "Undo Close Tab"
 msgstr "Rückgängig: Tab schließen"
 
-#: src/View/Window.vala:494
+#: src/View/Window.vala:497
 msgid "Close Tab"
 msgstr "Tab schließen"
 
-#: src/View/Window.vala:495
+#: src/View/Window.vala:498
 msgid "Duplicate Tab"
 msgstr "Tab duplizieren"
 
-#: src/View/Window.vala:496 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
 msgstr "In neuem Fenster öffnen"
 
-#: src/View/Window.vala:609 src/View/Window.vala:619
+#: src/View/Window.vala:612 src/View/Window.vala:622
 msgid "(as Administrator)"
 msgstr "(als Systemverwalter)"
 
@@ -2136,13 +2295,69 @@ msgstr "In neuem Tab öffnen"
 msgid "Open in Other Application…"
 msgstr "In einer anderen Anwendung öffnen …"
 
-#: src/View/Widgets/HeaderBar.vala:66
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Zurück"
 
-#: src/View/Widgets/HeaderBar.vala:73
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Vor"
+
+#: src/View/Widgets/HeaderBar.vala:97
+msgid "Zoom Out"
+msgstr "Auszoomen"
+
+#: src/View/Widgets/HeaderBar.vala:106
+msgid "Zoom 1:1"
+msgstr "Zoom 1:1"
+
+#: src/View/Widgets/HeaderBar.vala:115
+msgid "Zoom In"
+msgstr "Einzoomen"
+
+#: src/View/Widgets/HeaderBar.vala:154
+msgid "Double-click to Navigate"
+msgstr "Mit Doppelklick anzeigen"
+
+#: src/View/Widgets/HeaderBar.vala:155
+msgid "Double-click on a folder opens it, single-click selects it"
+msgstr "Ein Doppelklick öffnet einen Ordner, ein einzelner wählt ihn aus"
+
+#: src/View/Widgets/HeaderBar.vala:160
+msgid "Sort Folders before Files"
+msgstr "Ordner vor Dateien anzeigen"
+
+#: src/View/Widgets/HeaderBar.vala:164
+msgid "Show in View"
+msgstr "In Ansicht anzeigen"
+
+#: src/View/Widgets/HeaderBar.vala:171
+msgid "Hidden Files"
+msgstr "Ausgeblendete Dateien"
+
+#: src/View/Widgets/HeaderBar.vala:175
+msgid "Local Thumbnails"
+msgstr "Lokale Vorschaubilder"
+
+#: src/View/Widgets/HeaderBar.vala:180
+msgid "Remote Thumbnails"
+msgstr "Entfernte Vorschaubilder"
+
+#: src/View/Widgets/HeaderBar.vala:208
+msgid "Menu"
+msgstr "Menü"
+
+#: src/View/Widgets/HeaderBar.vala:283
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "Zeitüberschreitung."
+
+#: src/View/Widgets/HeaderBar.vala:290
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "Zeitüberschreitung."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2236,8 +2451,14 @@ msgstr "Unterhalb dieses Ordners"
 msgid "Recently Used"
 msgstr "Zuletzt verwendet"
 
-#~ msgid "Setting permissions"
-#~ msgstr "Zugriffsrechte werden festgelegt"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Letzte Dateioperation rückgängig machen"
+
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Letzte rückgängig gemachte Dateioperation erneut vornehmen"
+
+#~ msgid "Select Folders with Single Click"
+#~ msgstr "Ordner mit Einzelklick wählen"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2462,17 +2683,6 @@ msgstr "Zuletzt verwendet"
 #~ msgstr[0] "Umbenennen von %d Objekt _rückgängig machen"
 #~ msgstr[1] "Umbenennen von %d Objekten _rückgängig machen"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "Erstellen einer leeren Datei  _rückgängig machen"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "Erstellen einer leeren Datei aus Vorlage  _rückgängig machen"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "Erstellen von %d Ordner _rückgängig machen"
-#~ msgstr[1] "Erstellen von %d Ordnern _rückgängig machen"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "Verschieben in den Papierkorb von %d Objekt _rückgängig machen"
@@ -2483,11 +2693,6 @@ msgstr "Zuletzt verwendet"
 #~ msgstr[0] "Wiederherstellen vom Papierkorb für %d Objekt _rückgängig machen"
 #~ msgstr[1] ""
 #~ "Wiederherstellen vom Papierkorb für %d Objekten _rückgängig machen"
-
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "Erstellen einer Verknüpfung für %d Objekt _rückgängig machen"
-#~ msgstr[1] "Erstellen einer Verknüpfung für %d Objekte _rückgängig machen"
 
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
@@ -2500,21 +2705,6 @@ msgstr "Zuletzt verwendet"
 #~ "Rekursive Änderung der Zugriffsrechte für %d Objekt rückgängig machen"
 #~ msgstr[1] ""
 #~ "Rekursive Änderung der Zugriffsrechte für %d Objekte rückgängig machen"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Änderung der Zugriffsrechte von %d Objekt rückgängig machen"
-#~ msgstr[1] "Änderung der Zugriffsrechte von %d Objekten rückgängig machen"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Veränderung der Gruppe von %d Objekt rückgängig machen"
-#~ msgstr[1] "Veränderung der Gruppe von %d Objekten rückgängig machen"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Veränderung der Besitzer von %d Objekt rückgängig machen"
-#~ msgstr[1] "Veränderung der Besitzer von %d Objekten rückgängig machen"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2536,12 +2726,6 @@ msgstr "Zuletzt verwendet"
 #~ msgstr[0] "Umbenennen von %d Objekt wiede_rholen"
 #~ msgstr[1] "Umbenennen von %d Objekten wiede_rholen"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "Erstellen einer leeren Datei wiede_rholen"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "Erstellen einer Datei aus Vorlage wiede_rholen"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "Erstellen von %d Ordner wiede_rholen"
@@ -2557,11 +2741,6 @@ msgstr "Zuletzt verwendet"
 #~ msgstr[0] "Wiederherstellen aus dem Papierkorb von %d Objekt wiede_rholen"
 #~ msgstr[1] "Wiederherstellen aus dem Papierkorb von %d Objekten wiede_rholen"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "Erstellen von Verknüpfung für %d Objekt wiederholen"
-#~ msgstr[1] "Erstellen von Verknüpfungen für %d Objekte wiederholen"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "Löschen von %d Objekt wiederholen"
@@ -2571,21 +2750,6 @@ msgstr "Zuletzt verwendet"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "Rekursive Änderung der Zugriffsrechte für %d Objekt wiederholen"
 #~ msgstr[1] "Rekursive Änderung der Zugriffsrechte für %d Objekte wiederholen"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Änderung der Zugriffsrechte von %d Objekt wiederholen"
-#~ msgstr[1] "Änderung der Zugriffsrechte von %d Objekten wiederholen"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Veränderung der Gruppe von %d Objekt wiede_rholen"
-#~ msgstr[1] "Veränderung der Gruppe von %d Objekten wiede_rholen"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Veränderung des Besitzers von %d Objekt wiede_rholen"
-#~ msgstr[1] "Veränderung des Besitzers von %d Objekten wiede_rholen"
 
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"
 #~ msgstr "Sind Sie sicher, dass Sie \"%s\" dauerhaft löschen wollen?"

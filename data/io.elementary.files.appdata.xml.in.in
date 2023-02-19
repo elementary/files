@@ -27,7 +27,40 @@
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1" />
+
   <releases>
+    <release version="6.3.0" date="2023-02-12" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Move global settings from the context menu to an app menu in the headerbar</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/593">Zooming is hidden</issue>
+        <issue url="https://github.com/elementary/files/issues/1163">Invert logic of Show/Hide Thumbnails</issue>
+      </issues>
+    </release>
+
+    <release version="6.2.2" date="2023-02-03" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/pull/2122">Avoid crashes when disconnecting the provider</issue>
+        <issue url="https://github.com/elementary/files/issues/2115">Paste into folder menu item doesn't work</issue>
+        <issue url="https://github.com/elementary/files/pull/2107">Improve double-click setting label</issue>
+        <issue url="https://github.com/elementary/files/issues/2105">Sidebar icons sometimes change</issue>
+      </issues>
+    </release>
+
     <release version="6.2.1" date="2022-11-15" urgency="medium">
       <description>
         <p>Minor updates:</p>

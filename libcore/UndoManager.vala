@@ -14,7 +14,77 @@ namespace Files {
         SETPERMISSIONS,
         RECURSIVESETPERMISSIONS,
         CHANGEOWNER,
-        CHANGEGROUP
+        CHANGEGROUP;
+
+        public unowned string to_undo_string () {
+            switch (this) {
+                case COPY:
+                    return _("Undo Copy");
+                case DUPLICATE:
+                    return _("Undo Duplicate");
+                case MOVE:
+                    return _("Undo Move");
+                case RENAME:
+                    return _("Undo Rename");
+                case CREATEEMPTYFILE:
+                    return _("Undo Create Empty File");
+                case CREATEFILEFROMTEMPLATE:
+                    return _("Undo Create File from Template");
+                case CREATEFOLDER:
+                    return _("Undo Create Folder");
+                case MOVETOTRASH:
+                    return _("Undo Move to Trash");
+                case CREATELINK:
+                    return _("Undo Create Link");
+                case RESTOREFROMTRASH:
+                    return _("Undo Restore from Trash");
+                case SETPERMISSIONS:
+                    return _("Undo Set Permissions");
+                case RECURSIVESETPERMISSIONS:
+                    return _("Undo Set Permissions Recursively");
+                case CHANGEOWNER:
+                    return _("Undo Change Owner");
+                case CHANGEGROUP:
+                    return _("Undo Change Group");
+                default:
+                    assert_not_reached ();
+            }
+        }
+
+        public unowned string to_redo_string () {
+            switch (this) {
+                case COPY:
+                    return _("Redo Copy");
+                case DUPLICATE:
+                    return _("Redo Duplicate");
+                case MOVE:
+                    return _("Redo Move");
+                case RENAME:
+                    return _("Redo Rename");
+                case CREATEEMPTYFILE:
+                    return _("Redo Create Empty File");
+                case CREATEFILEFROMTEMPLATE:
+                    return _("Redo Create File from Template");
+                case CREATEFOLDER:
+                    return _("Redo Create Folder");
+                case MOVETOTRASH:
+                    return _("Redo Move to Trash");
+                case CREATELINK:
+                    return _("Redo Create Link");
+                case RESTOREFROMTRASH:
+                    return _("Redo Restore from Trash");
+                case SETPERMISSIONS:
+                    return _("Redo Set Permissions");
+                case RECURSIVESETPERMISSIONS:
+                    return _("Redo Set Permissions Recursively");
+                case CHANGEOWNER:
+                    return _("Redo Change Owner");
+                case CHANGEGROUP:
+                    return _("Redo Change Group");
+                default:
+                    assert_not_reached ();
+            }
+        }
     }
 
     public class UndoActionData {
@@ -595,6 +665,24 @@ namespace Files {
                 return null;
             } else {
                 return action;
+            }
+        }
+
+        public unowned string? get_next_undo_description () {
+            unowned var action = get_next_undo_action ();
+            if (action != null) {
+                return action.action_type.to_undo_string ();
+            } else {
+                return null;
+            }
+        }
+
+        public unowned string get_next_redo_description () {
+            var action = get_next_redo_action ();
+            if (action != null) {
+                return action.action_type.to_redo_string ();
+            } else {
+                return null;
             }
         }
 
