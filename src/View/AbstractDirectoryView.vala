@@ -78,12 +78,13 @@ namespace Files {
             {"folders-first", on_background_action_folders_first_changed, null, "true"},
             {"show-hidden", null, null, "false", change_state_show_hidden},
             {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-            {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
+            {"show-local-thumbnails", null, null, "true", change_state_show_local_thumbnails}
         };
 
         const GLib.ActionEntry [] COMMON_ENTRIES = {
             {"copy", on_common_action_copy},
-            {"paste-into", on_common_action_paste_into},
+            {"paste-into", on_common_action_paste_into}, // Paste into selected folder
+            {"paste", on_common_action_paste}, // Paste into background folder
             {"open-in", on_common_action_open_in, "s"},
             {"bookmark", on_common_action_bookmark},
             {"properties", on_common_action_properties},
@@ -192,6 +193,7 @@ namespace Files {
         protected bool should_activate = false;
         protected bool should_scroll = true;
         protected bool should_deselect = false;
+        public bool singleclick_select { get; set; }
         protected bool should_select = false;
         protected Gtk.TreePath? click_path = null;
         protected uint click_zone = ClickZone.ICON;
@@ -226,6 +228,7 @@ namespace Files {
                         action_set_enabled (selection_actions, "cut", false);
                         action_set_enabled (common_actions, "copy", false);
                         action_set_enabled (common_actions, "paste-into", false);
+                        action_set_enabled (common_actions, "paste", false);
 
                         /* Fix problems when navigating away from directory with large number
                          * of selected files (e.g. OverlayBar critical errors)
@@ -239,7 +242,6 @@ namespace Files {
                         connect_tree_signals ();
 
                         update_menu_actions ();
-
                     }
                 }
             }
@@ -258,7 +260,7 @@ namespace Files {
         protected bool is_loading;
         protected bool helpers_shown;
         protected bool show_remote_thumbnails {get; set; default = true;}
-        protected bool hide_local_thumbnails {get; set; default = false;}
+        protected bool show_local_thumbnails {get; set; default = false;}
 
         private bool all_selected = false;
 
@@ -273,7 +275,6 @@ namespace Files {
         protected unowned Gtk.RecentManager recent;
 
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
-        public signal void item_hovered (Files.File? file);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
         protected AbstractDirectoryView (View.Slot _slot) {
@@ -301,8 +302,8 @@ namespace Files {
 
             Files.app_settings.bind ("show-remote-thumbnails",
                                                              this, "show_remote_thumbnails", SettingsBindFlags.GET);
-            Files.app_settings.bind ("hide-local-thumbnails",
-                                                             this, "hide_local_thumbnails", SettingsBindFlags.GET);
+            Files.app_settings.bind ("show-local-thumbnails",
+                                                             this, "show_local_thumbnails", SettingsBindFlags.GET);
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
@@ -377,8 +378,11 @@ namespace Files {
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
-            prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
+            prefs.notify["show-local-thumbnails"].connect (on_show_local_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
+            prefs.bind_property (
+                "singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+            );
 
             model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
@@ -405,8 +409,8 @@ namespace Files {
             action_set_state (background_actions, "show-remote-thumbnails",
                               Files.app_settings.get_boolean ("show-remote-thumbnails"));
 
-            action_set_state (background_actions, "hide-local-thumbnails",
-                              Files.app_settings.get_boolean ("hide-local-thumbnails"));
+            action_set_state (background_actions, "show-local-thumbnails",
+                              Files.app_settings.get_boolean ("show-local-thumbnails"));
         }
 
         public void zoom_in () {
@@ -682,6 +686,8 @@ namespace Files {
             block_model ();
             model.clear ();
             all_selected = false;
+            /* Prevent unexpected file activation after navigation with double-click in mixed mode */
+            on_directory = false;
             unblock_model ();
         }
 
@@ -740,36 +746,35 @@ namespace Files {
 
             Gdk.ModifierType state;
             event.get_state (out state);
-            Gdk.ScrollDirection direction;
-            event.get_scroll_direction (out direction);
+
             if ((state & Gdk.ModifierType.CONTROL_MASK) > 0) {
-                switch (direction) {
-                    case Gdk.ScrollDirection.UP:
+                Gdk.ScrollDirection direction;
+                double delta_x, delta_y;
+                if (event.get_scroll_direction (out direction)) { // Only true for discrete scrolling
+                    if (direction == Gdk.ScrollDirection.UP) {
                         zoom_in ();
                         return true;
 
-                    case Gdk.ScrollDirection.DOWN:
+                    } else if (direction == Gdk.ScrollDirection.DOWN) {
                         zoom_out ();
                         return true;
+                    }
 
-                    case Gdk.ScrollDirection.SMOOTH:
-                        double delta_x, delta_y;
-                        event.get_scroll_deltas (out delta_x, out delta_y);
-                        /* try to emulate a normal scrolling event by summing deltas.
-                         * step size of 0.5 chosen to match sensitivity */
-                        total_delta_y += delta_y;
+                    return false;
+                } else if (event.get_scroll_deltas (out delta_x, out delta_y)) {
+                    /* try to emulate a normal scrolling event by summing deltas.
+                     * step size of 0.5 chosen to match sensitivity */
+                    total_delta_y += delta_y;
 
-                        if (total_delta_y >= 0.5) {
-                            total_delta_y = 0;
-                            zoom_out ();
-                        } else if (total_delta_y <= -0.5) {
-                            total_delta_y = 0;
-                            zoom_in ();
-                        }
-                        return true;
+                    if (total_delta_y >= 0.5) {
+                        total_delta_y = 0;
+                        zoom_out ();
+                    } else if (total_delta_y <= -0.5) {
+                        total_delta_y = 0;
+                        zoom_in ();
+                    }
 
-                    default:
-                        break;
+                    return true;
                 }
             }
 
@@ -1179,8 +1184,8 @@ namespace Files {
             window.change_state_show_remote_thumbnails (action);
         }
 
-        private void change_state_hide_local_thumbnails (GLib.SimpleAction action) {
-            window.change_state_hide_local_thumbnails (action);
+        private void change_state_show_local_thumbnails (GLib.SimpleAction action) {
+            window.change_state_show_local_thumbnails (action);
         }
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1270,6 +1275,19 @@ namespace Files {
             clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
         }
 
+        private void on_common_action_paste (GLib.SimpleAction action, GLib.Variant? param) {
+            if (clipboard.can_paste && !(clipboard.files_linked && in_trash)) {
+                var target = slot.location;
+                clipboard.paste_files.begin (target, this as Gtk.Widget, (obj, res) => {
+                    clipboard.paste_files.end (res);
+                    if (target.has_uri_scheme ("trash")) {
+                        /* Pasting files into trash is equivalent to trash or delete action */
+                        after_trash_or_delete ();
+                    }
+                });
+            }
+        }
+
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
             var file = get_files_for_action ().nth_data (0);
 
@@ -1324,7 +1342,7 @@ namespace Files {
                 model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
-                if ((!slot.directory.is_network && !hide_local_thumbnails) ||
+                if ((!slot.directory.is_network && show_local_thumbnails) ||
                     (show_remote_thumbnails && slot.directory.can_open_files)) {
 
                     thumbnailer.queue_file (file, null, large_thumbnails);
@@ -1435,9 +1453,9 @@ namespace Files {
             slot.reload ();
         }
 
-        private void on_hide_local_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            hide_local_thumbnails = ((Files.Preferences) prefs).hide_local_thumbnails;
-            action_set_state (background_actions, "hide-local-thumbnails", hide_local_thumbnails);
+        private void on_show_local_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
+            show_local_thumbnails = ((Files.Preferences) prefs).show_local_thumbnails;
+            action_set_state (background_actions, "show-local-thumbnails", show_local_thumbnails);
             slot.reload ();
         }
 
@@ -2001,8 +2019,8 @@ namespace Files {
                 menu.add (open_submenu_item);
             }
 
-            var paste_menuitem = new Gtk.MenuItem.with_label (_("Paste"));
-            paste_menuitem.action_name = "common.paste-into";
+            var paste_menuitem = new Gtk.MenuItem ();
+            paste_menuitem.action_name = "common.paste";
 
             var bookmark_menuitem = new Gtk.MenuItem ();
             bookmark_menuitem.add (new Granite.AccelLabel (
@@ -2128,9 +2146,7 @@ namespace Files {
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (properties_menuitem);
                 } else {
-                    if (slot.directory.file.is_smb_server () && clipboard != null && clipboard.can_paste) {
-                        menu.add (paste_menuitem);
-                    } else if (valid_selection_for_edit ()) {
+                    if (valid_selection_for_edit ()) {
                         var rename_menuitem = new Gtk.MenuItem ();
                         rename_menuitem.add (new Granite.AccelLabel (
                             _("Rename…"),
@@ -2154,14 +2170,33 @@ namespace Files {
                         menu.add (copy_link_menuitem);
 
                         // Do not display the 'Paste into' menuitem if nothing to paste
+                        // Do not display 'Paste' menuitem if there is a selected folder ('Paste into' enabled)
                         if (common_actions.get_action_enabled ("paste-into") &&
                             clipboard != null && clipboard.can_paste) {
+                            var paste_into_menuitem = new Gtk.MenuItem () {
+                                action_name = "common.paste-into"
+                            };
+
                             if (clipboard.files_linked) {
-                                paste_menuitem.label = _("Paste Link into Folder");
+                                paste_into_menuitem.add (new Granite.AccelLabel (
+                                    _("Paste Link into Folder"),
+                                    "<Shift><Ctrl>v"
+                                ));
                             } else {
-                                paste_menuitem.label = _("Paste into Folder");
+                                paste_into_menuitem.add (new Granite.AccelLabel (
+                                    _("Paste into Folder"),
+                                    "<Shift><Ctrl>v"
+                                ));
                             }
 
+                            menu.add (paste_into_menuitem);
+                        } else if (common_actions.get_action_enabled ("paste") &&
+                            clipboard != null && clipboard.can_paste) {
+
+                            paste_menuitem.add (new Granite.AccelLabel (
+                                _("Paste"),
+                                "<Ctrl>v"
+                            ));
                             menu.add (paste_menuitem);
                         }
 
@@ -2198,21 +2233,12 @@ namespace Files {
                     menu.add (properties_menuitem);
                 }
             } else { // Add background folder actions
-                var show_hidden_menuitem = new Gtk.CheckMenuItem ();
-                show_hidden_menuitem.add (new Granite.AccelLabel (
-                    _("Show Hidden Files"),
-                    "<Ctrl>h"
-                ));
-                show_hidden_menuitem.action_name = "background.show-hidden";
-
-                var show_remote_thumbnails_menuitem = new Gtk.CheckMenuItem.with_label (_("Show Remote Thumbnails"));
-                show_remote_thumbnails_menuitem.action_name = "background.show-remote-thumbnails";
-
-                var hide_local_thumbnails_menuitem = new Gtk.CheckMenuItem.with_label (_("Hide Thumbnails"));
-                hide_local_thumbnails_menuitem.action_name = "background.hide-local-thumbnails";
-
                 if (in_trash) {
                     if (clipboard != null && clipboard.has_cutted_file (null)) {
+                        paste_menuitem.add (new Granite.AccelLabel (
+                            _("Paste into Folder"),
+                            "<Ctrl>v"
+                        ));
                         menu.add (paste_menuitem);
                         if (select_all_menuitem != null) {
                             menu.add (select_all_menuitem);
@@ -2226,15 +2252,21 @@ namespace Files {
                     menu.add (new Gtk.SeparatorMenuItem ());
                     menu.add (new SortSubMenuItem ());
                     menu.add (new Gtk.SeparatorMenuItem ());
-                    menu.add (show_hidden_menuitem);
-                    menu.add (hide_local_thumbnails_menuitem);
                 } else {
                     if (!in_network_root) {
                         menu.add (new Gtk.SeparatorMenuItem ());
                         /* If something is pastable in the clipboard, show the option even if it is not enabled */
                         if (clipboard != null && clipboard.can_paste) {
                             if (clipboard.files_linked) {
-                                paste_menuitem.label = _("Paste Link");
+                                paste_menuitem.add (new Granite.AccelLabel (
+                                    _("Paste Link into Folder"),
+                                    "<Ctrl>v"
+                                ));
+                            } else {
+                                paste_menuitem.add (new Granite.AccelLabel (
+                                    _("Paste"),
+                                    "<Ctrl>v"
+                                ));
                             }
                         }
 
@@ -2255,15 +2287,6 @@ namespace Files {
                         window.can_bookmark_uri (slot.directory.file.uri)) {
 
                         menu.add (bookmark_menuitem);
-                    }
-
-                    menu.add (new Gtk.SeparatorMenuItem ());
-                    menu.add (show_hidden_menuitem);
-
-                    if (!slot.directory.is_network) {
-                        menu.add (hide_local_thumbnails_menuitem);
-                    } else if (slot.directory.can_open_files) {
-                        menu.add (show_remote_thumbnails_menuitem);
                     }
 
                     if (!in_network_root) {
@@ -2460,6 +2483,7 @@ namespace Files {
             can_open = can_open_file (file);
             can_show_properties = !(in_recent && more_than_one_selected);
 
+            action_set_enabled (common_actions, "paste", !in_recent && is_writable);
             action_set_enabled (common_actions, "paste-into", !renaming & can_paste_into);
             action_set_enabled (common_actions, "open-in", !renaming & only_folders);
             action_set_enabled (selection_actions, "rename", !renaming & is_selected && !more_than_one_selected && can_rename);
@@ -2730,7 +2754,7 @@ namespace Files {
                         if (file != null && !file.is_gone) {
                             // Only update thumbnail if it is going to be shown
                             if ((slot.directory.is_network && show_remote_thumbnails) ||
-                                (!slot.directory.is_network && !hide_local_thumbnails)) {
+                                (!slot.directory.is_network && show_local_thumbnails)) {
 
                                 file.query_thumbnail_update (); // Ensure thumbstate up to date
                                 /* Ask thumbnailer only if ThumbState UNKNOWN */
@@ -3103,24 +3127,37 @@ namespace Files {
                 case Gdk.Key.v:
                 case Gdk.Key.V:
                     if (only_control_pressed) {
-                        update_selected_files_and_menu ();
-                        if (!in_recent && is_writable) {
-                            if (selected_files.first () != null && selected_files.first ().next != null) {
-                                //Ignore if multiple files selected
-                                Gdk.beep ();
-                                warning ("Cannot paste into a multiple selection");
+                        if (shift_pressed) {  // Paste into selected folder if there is one
+                            update_selected_files_and_menu ();
+                            if (!in_recent && is_writable) {
+                                if (selected_files.first () != null && selected_files.first ().next != null) {
+                                    //Ignore if multiple files selected
+                                    Gdk.beep ();
+                                    warning ("Cannot paste into a multiple selection");
+                                } else {
+                                    //None or one file selected. Paste into selected file else base directory
+                                    action_set_enabled (common_actions, "paste-into", true);
+                                    common_actions.activate_action ("paste-into", null);
+                                }
                             } else {
-                                //None or one file selected. Paste into selected file else base directory
-                                action_set_enabled (common_actions, "paste-into", true);
-                                common_actions.activate_action ("paste-into", null);
+                                PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
+                                                                _("You do not have permission to change this location"),
+                                                                window as Gtk.Window);
                             }
-                        } else {
-                            PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
-                                                            _("You do not have permission to change this location"),
-                                                            window as Gtk.Window);
-                        }
 
-                        res = true;
+                            res = true;
+                        } else { // Paste into background folder
+                            if (!in_recent && is_writable) {
+                                action_set_enabled (common_actions, "paste", true);
+                                common_actions.activate_action ("paste", null);
+                            } else {
+                                PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
+                                                                _("You do not have permission to change this location"),
+                                                                window as Gtk.Window);
+                            }
+
+                            res = true;
+                        }
                     }
 
                     break;
@@ -3186,7 +3223,6 @@ namespace Files {
                         on_directory = target_file.is_directory;
                     }
 
-                    item_hovered (target_file);
                     hover_path = path;
                 }
             }
@@ -3198,7 +3234,7 @@ namespace Files {
                 switch (click_zone) {
                     case ClickZone.ICON:
                     case ClickZone.NAME:
-                        if (on_directory && one_or_less) {
+                        if (on_directory && one_or_less && !singleclick_select) {
                             win.set_cursor (activatable_cursor);
                         }
 
@@ -3215,7 +3251,6 @@ namespace Files {
         }
 
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
-            item_hovered (null); /* Ensure overlay statusbar disappears */
             hover_path = null;
             return false;
         }
@@ -3450,7 +3485,6 @@ namespace Files {
              * dragging on blank areas
              */
             block_drag_and_drop ();
-
             /* Handle un-modified clicks or control-clicks here else pass on. */
             if (!will_handle_button_press (no_mods, only_control_pressed, only_shift_pressed)) {
                 return false;
@@ -3486,7 +3520,7 @@ namespace Files {
                             /* Determine whether should activate on key release (unless pointer moved)*/
                             /* Only activate single files with unmodified button when not on blank unless double-clicked */
                             if (no_mods && one_or_less) {
-                                should_activate = (on_directory && !on_blank) || double_click_event;
+                                should_activate = (on_directory && !on_blank && !singleclick_select) || double_click_event;
                             }
 
                             /* We need to decide whether to rubberband or drag&drop.
@@ -3772,7 +3806,6 @@ namespace Files {
         }
 
         protected virtual bool expand_collapse (Gtk.TreePath? path) {
-            item_hovered (null);
             return true;
         }
 
@@ -3793,11 +3826,11 @@ namespace Files {
             cancel_timeout (ref drag_scroll_timer_id);
             cancel_timeout (ref add_remove_file_timeout_id);
             cancel_timeout (ref set_cursor_timeout_id);
+            cancel_timeout (ref draw_timeout_id);
             /* List View will take care of unloading subdirectories */
         }
 
         private void cancel_hover () {
-            item_hovered (null);
             hover_path = null;
         }
 

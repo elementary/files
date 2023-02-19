@@ -20,10 +20,10 @@
 public class Files.Plugins.Cloud.Plugin : Files.Plugins.Base {
     Files.SidebarInterface? sidebar;
     CloudProviders.Collector collector;
-    Gee.ArrayList<CloudProviders.Provider> providers_connected;
+    GLib.GenericArray<CloudProviders.Provider> providers_connected;
 
     public Plugin () {
-        providers_connected = new Gee.ArrayList<CloudProviders.Provider> ();
+        providers_connected = new GLib.GenericArray<CloudProviders.Provider> ();
         collector = CloudProviders.Collector.dup_singleton ();
         collector.providers_changed.connect (on_providers_changes);
     }
@@ -54,20 +54,23 @@ public class Files.Plugins.Cloud.Plugin : Files.Plugins.Base {
 
     void on_providers_changes () {
         //  Listen to new accounts
-        unowned GLib.List<CloudProviders.Provider> providers = collector.get_providers ();
-        foreach (var provider in providers) {
-            //  Avoid listening to same provider again
-            if (!(provider in providers_connected)) {
-                providers_connected.add (provider);
-                provider.accounts_changed.connect (on_accounts_changed);
+        lock (providers_connected) {
+            unowned GLib.List<CloudProviders.Provider> providers = collector.get_providers ();
+            foreach (unowned var provider in providers) {
+                //  Avoid listening to same provider again
+                if (!providers_connected.find (provider)) {
+                    providers_connected.add (provider);
+                    provider.accounts_changed.connect (on_accounts_changed);
+                }
             }
-        }
 
-        /* Remove any lost providers */
-        foreach (var provider in providers_connected) {
-            if (providers.find (provider) == null) {
-                provider.accounts_changed.disconnect (on_accounts_changed);
-                providers_connected.remove (provider);
+            /* Remove any lost providers */
+            for (uint i = providers_connected.length; i > 0; i--) {
+                unowned var provider = providers_connected[i - 1];
+                if (providers.find (provider) == null) {
+                    provider.accounts_changed.disconnect (on_accounts_changed);
+                    providers_connected.remove_index_fast (i - 1);
+                }
             }
         }
 
@@ -101,7 +104,7 @@ public class Files.Plugins.Cloud.Plugin : Files.Plugins.Base {
     }
 
     /**
-     * Generate a SidebarPluginItem from provider and account informations
+     * Generate a SidebarPluginItem from provider and account information
      */
     static Files.SidebarPluginItem adapt_plugin_item (CloudProviders.Provider provider,
                                                         CloudProviders.Account account) {

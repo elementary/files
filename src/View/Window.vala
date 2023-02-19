@@ -39,8 +39,10 @@ namespace Files.View {
             {"info", action_info, "s"},
             {"view-mode", action_view_mode, "u", "0" },
             {"show-hidden", null, null, "false", change_state_show_hidden},
+            {"singleclick-select", null, null, "false", change_state_single_click_select},
             {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-            {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
+            {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
+            {"folders-before-files", null, null, "true", change_state_folders_before_files}
         };
 
         public uint window_number { get; construct; }
@@ -213,9 +215,12 @@ namespace Files.View {
             add (grid);
 
             /** Apply preferences */
-            var prefs = Files.app_settings;
-            get_action ("show-hidden").set_state (prefs.get_boolean ("show-hiddenfiles"));
-            get_action ("show-remote-thumbnails").set_state (prefs.get_boolean ("show-remote-thumbnails"));
+            var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
+            get_action ("show-hidden").set_state (prefs.show_hidden_files);
+            get_action ("show-local-thumbnails").set_state (prefs.show_local_thumbnails);
+            get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
+            get_action ("singleclick-select").set_state (prefs.singleclick_select);
+            get_action ("folders-before-files").set_state (prefs.sort_directories_first);
         }
 
         private void connect_signals () {
@@ -907,16 +912,28 @@ namespace Files.View {
             Files.app_settings.set_boolean ("show-hiddenfiles", state);
         }
 
+        public void change_state_single_click_select (GLib.SimpleAction action) {
+            bool state = !action.state.get_boolean ();
+            action.set_state (new GLib.Variant.boolean (state));
+            Files.Preferences.get_default ().singleclick_select = state;
+        }
+
         public void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
             Files.app_settings.set_boolean ("show-remote-thumbnails", state);
         }
 
-        public void change_state_hide_local_thumbnails (GLib.SimpleAction action) {
+        public void change_state_show_local_thumbnails (GLib.SimpleAction action) {
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
-            Files.app_settings.set_boolean ("hide-local-thumbnails", state);
+            Files.app_settings.set_boolean ("show-local-thumbnails", state);
+        }
+
+        public void change_state_folders_before_files (GLib.SimpleAction action) {
+            bool state = !action.state.get_boolean ();
+            action.set_state (new GLib.Variant.boolean (state));
+            Files.Preferences.get_default ().sort_directories_first = state;
         }
 
         private void connect_to_server () {
