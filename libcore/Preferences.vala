@@ -27,7 +27,8 @@ namespace Files {
 
         public bool show_hidden_files {get; set; default = false;}
         public bool show_remote_thumbnails {set; get; default = true;}
-        public bool hide_local_thumbnails {set; get; default = false;}
+        public bool show_local_thumbnails {set; get; default = true;}
+        public bool singleclick_select {set; get; default = false;}
         public bool confirm_trash {set; get; default = true;}
         public bool force_icon_size {set; get; default = true;}
         public bool sort_directories_first { get; set; default = true; }
