@@ -146,7 +146,9 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
                         uuid = uri;
                     }
 
-                    list.open_item (this, flag);
+                    if (open) {
+                        list.open_item (this, flag);
+                    }
                 }
 
                 working = false;
