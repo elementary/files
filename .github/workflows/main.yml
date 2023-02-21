@@ -16,7 +16,7 @@ jobs:
       image: elementary/docker:unstable
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v1
     - name: Install Dependencies
       run: |
         apt update
@@ -47,6 +47,6 @@ jobs:
       image: valalang/lint
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v1
     - name: Lint
       run: io.elementary.vala-lint -d .
