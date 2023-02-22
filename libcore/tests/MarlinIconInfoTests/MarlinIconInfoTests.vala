@@ -29,7 +29,9 @@ void goffile_icon_update_test () {
     Files.File file = Files.File.get_by_uri (test_file_path);
     assert (file != null);
     stderr.printf ("\n\rquery update file %s\n\r", file.uri);
-    file.query_update ();
+    assert (file.location.query_exists (null));
+    assert (file.ensure_query_info ());
+    assert (file.icon != null);
     assert (file.pix == null);
     file.update_icon (128, 1);
     assert (file.pix != null);
