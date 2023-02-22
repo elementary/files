@@ -50,23 +50,23 @@ public class Files.FileChooserPortal : Object {
      * to the dialog with "choices" and a label to the select button set with
      * "accept_label".
      *
-     * @param handle 
+     * @param handle
      *    Object path where the request should be exported
-     * @param app_id 
+     * @param app_id
      *    Application originating the call (not used)
-     * @param parent_window 
+     * @param parent_window
      *    Transient parent handle, in format "type:handle". if type is "x11",
      *    handle should be a XID in hexadecimal format, if type is "wayland",
      *    handle should be a xdg_foreign handle. Other types aren't supported.
-     * @param title 
+     * @param title
      *    title for the file chooser dialog
-     * @param options 
+     * @param options
      *    Dictionary of extra options. valid keys are: "accept_label",
      *    "choices", "current_filter", "directory", "filters", "multiple"
      *    and "modal".
-     * @param response 
+     * @param response
      *    User response, 0 on success, 1 if cancelled, 2 on fail.
-     * @param results 
+     * @param results
      *    Dictionary with the user choices, possible keys are: "uris",
      *    "choices", "writable" and "current_filter".
      */
@@ -183,23 +183,23 @@ public class Files.FileChooserPortal : Object {
      * can be added to the dialog with "choices" and a label to the select
      * button set with "accept_label".
      *
-     * @param handle 
+     * @param handle
      *     Object path where the request should be exported
-     * @param app_id 
+     * @param app_id
      *     Application originating the call (not used)
-     * @param parent_window 
+     * @param parent_window
      *     Transient parent handle, in format "type:handle". if type is "x11",
      *     handle should be a XID in hexadecimal format, if type is "wayland",
      *     handle should be a xdg_foreign handle. Other types aren't supported.
-     * @param title 
+     * @param title
      *     title for the file chooser dialog
-     * @param options 
+     * @param options
      *     Dictionary of extra options. valid keys are: "accept_label",
      *     "choices", "current_file", "current_filter", "current_folder",
      *     "current_name", "filters" and "modal".
-     * @param response 
+     * @param response
      *     User response, 0 on success, 1 if cancelled, 2 on fail.
-     * @param results 
+     * @param results
      *     Dictionary with the user choices, possible keys are: "uris",
      *     "choices", and "current_filter".
      */
@@ -337,22 +337,22 @@ public class Files.FileChooserPortal : Object {
      * Application specific options can be added to the dialog with "choices"
      * and a label to the select button set with "accept_label".
      *
-     * @param handle 
+     * @param handle
      *     Object path where the request should be exported
-     * @param app_id 
+     * @param app_id
      *     Application originating the call (not used)
-     * @param parent_window 
+     * @param parent_window
      *     Transient parent handle, in format "type:handle". if type is "x11",
      *     handle should be a XID in hexadecimal format. if type is "wayland",
      *     handle should be a xdg_foreign handle. Other types aren't supported.
-     * @param title 
+     * @param title
      *     title for the file chooser dialog
-     * @param options 
+     * @param options
      *     Dictionary of extra options. valid keys are: "accept_label",
      *     "choices", "current_folder", "files" and "modal".
-     * @param response 
+     * @param response
      *     User response, 0 on success, 1 if cancelled, 2 on fail.
-     * @param results 
+     * @param results
      *     Dictionary with the user choices, possible keys are: "uris" and
      *     "choices".
      */
@@ -442,8 +442,6 @@ public class Files.FileChooserPortal : Object {
 
     private Gtk.Dialog create_overwrite_dialog (Gtk.Window parent, GLib.File file) {
         string primary, secondary;
-        var display_name = file.get_basename ();
-
         if (file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.SYMBOLIC_LINK) {
             try {
                 var info = file.query_info (FileAttribute.STANDARD_SYMLINK_TARGET, FileQueryInfoFlags.NONE);
