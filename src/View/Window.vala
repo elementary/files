@@ -610,8 +610,8 @@ namespace Files.View {
                     }
 
                     if (basename2 == basename && path2 != path) {
-                        set_tab_label (FileUtils.disambiguate_path (path2, path), tab2, content2.tab_name);
-                        set_tab_label (FileUtils.disambiguate_path (path, path2), tab, content.tab_name);
+                        set_tab_label (FileUtils.disambiguate_uri (path2, path), tab2, content2.tab_name);
+                        set_tab_label (FileUtils.disambiguate_uri (path, path2), tab, content.tab_name);
                     }
                 }
             }
