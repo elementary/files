@@ -82,13 +82,28 @@ namespace Files {
                 // Get minimal info to determine icon
                 var ftype = gof_file.location.query_file_type (FileQueryInfoFlags.NONE);
                 if (ftype == FileType.DIRECTORY) {
-                    return new ThemedIcon.with_default_fallbacks ("folder");
+                    try {
+                        var path = GLib.Filename.from_uri (uri);
+                        var icon = gof_file.get_icon_user_special_dirs (path);
+                        if (icon != null) {
+                            return icon;
+                        } else {
+                            return new ThemedIcon.with_default_fallbacks ("folder");
+                        }
+                    } catch (Error e) {
+                        debug (e.message);
+                        return new ThemedIcon.with_default_fallbacks ("folder");
+                    }
                 } else if (ftype == FileType.MOUNTABLE) {
                     return new GLib.ThemedIcon.with_default_fallbacks ("folder-remote");
                 } else {
                     try {
-                        var info = gof_file.location.query_info (FileAttribute.STANDARD_CONTENT_TYPE, FileQueryInfoFlags.NONE);
-                        return ContentType.get_icon (info.get_attribute_string (FileAttribute.STANDARD_CONTENT_TYPE));
+                        var info = gof_file.location.query_info (
+                            FileAttribute.STANDARD_CONTENT_TYPE, FileQueryInfoFlags.NONE
+                        );
+                        return ContentType.get_icon (
+                            info.get_attribute_string (FileAttribute.STANDARD_CONTENT_TYPE)
+                        );
                     } catch (Error e) {
                         debug ("Unable to get icon for %s", gof_file.uri);
                     }

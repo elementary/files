@@ -34,10 +34,10 @@
       <summary>Thumbnail remote files</summary>
       <description>Show thumbnails for files on remote filesystems</description>
     </key>
-    <key type="b" name="hide-local-thumbnails">
-      <default>false</default>
-      <summary>Do not thumbnail local files</summary>
-      <description>Do not thumbnail files on the local filesystem</description>
+    <key type="b" name="show-local-thumbnails">
+      <default>true</default>
+      <summary>Thumbnail local files</summary>
+      <description>Show thumbnail files on the local filesystem</description>
     </key>
     <key type="b" name="show-sidebar">
       <default>true</default>
@@ -157,6 +157,11 @@
       <summary>icon zoom level</summary>
       <description>Zoom level used by the List View.</description>
     </key>
+    <key name="minimum-zoom-level" enum="io.elementary.files.ZoomLevel">
+      <default>'smallest'</default>
+      <summary>Minimum icon zoom level</summary>
+      <description>The minimum zoom level used by the List View.</description>
+    </key>
     <key name="maximum-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'large'</default>
       <summary>Maximum icon zoom level</summary>
@@ -168,12 +173,17 @@
     <key name="default-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'small'</default>
       <summary>icon default zoom level</summary>
-      <description>Default Zoom level used by the  Miller Column View.</description>
+      <description>Default Zoom level used by the Miller Column View.</description>
     </key>
     <key name="zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'small'</default>
       <summary>icon zoom level</summary>
-      <description>Zoom level used by the  Miller Column View.</description>
+      <description>Zoom level used by the Miller Column View.</description>
+    </key>
+    <key name="minimum-zoom-level" enum="io.elementary.files.ZoomLevel">
+      <default>'smallest'</default>
+      <summary>Minimum icon zoom level</summary>
+      <description>The minimum zoom level used by the Miller Column.</description>
     </key>
     <key name="maximum-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'normal'</default>

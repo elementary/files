@@ -217,21 +217,17 @@ namespace Files {
 
             double x, y;
             event.get_coords (out x, out y);
-
-            /* Determine whether there whitespace at this point.  Note: this function returns false when the
-             * position is on the edge of the cell, even though this appears to be blank. We
-             * deal with this below. */
-            var is_blank = tree.is_blank_at_pos ((int)x, (int)y, null, null, null, null);
-
             tree.get_path_at_pos ((int)x, (int)y, out p, out c, out cx, out cy);
             path = p;
             depth = p != null ? p.get_depth () : 0;
-
-            /* Determine whether on edge of cell and designate as blank */
+            /* Get rect for whole column; no simple way to get individual renderer sizes? */
             Gdk.Rectangle rect;
             tree.get_cell_area (p, c, out rect);
             int height = rect.height;
-
+             /* Note: is_blank_at_pos () returns "true" on the whitespace below and
+             * above text pixels, which we do not want. We deal with this later.*/
+            var is_blank = tree.is_blank_at_pos ((int)x, (int)y, null, null, null, null);
+            // Ensure blank area continues across row division
             is_blank = is_blank || cy < 5 || cy > height - 5;
 
             /* Do not allow rubberbanding to start except on a row in tree view */
@@ -244,11 +240,18 @@ namespace Files {
                     zone = ClickZone.INVALID;
                 } else {
                     var rtl = (get_direction () == Gtk.TextDirection.RTL);
-                    if (rtl ? (x > rect.x + rect.width - icon_size) : (x < rect.x + icon_size)) {
-                        /* cannot be on name */
+                    // Calculate position of the edge between icon to text renderers
+                    int icon_text_edge;
+                    if (rtl) {
+                        icon_text_edge = tree.get_allocated_width () - rect.x - icon_size - 16;
+                    } else {
+                        icon_text_edge = icon_size + 16;
+                    }
+                    // Calculate whether pointer over icon renderer or text renderer
+                    if (rtl ? cx > icon_text_edge : cx < icon_text_edge) {
+                        // On icon renderer (or expander)
                         bool on_helper = false;
                         bool on_icon = is_on_icon ((int)x, (int)y, ref on_helper);
-
                         if (on_helper) {
                             zone = ClickZone.HELPER;
                         } else if (on_icon) {
@@ -256,8 +259,29 @@ namespace Files {
                         } else {
                             zone = ClickZone.EXPANDER;
                         }
-                    } else if (!is_blank) {
-                        zone = ClickZone.NAME;
+                    } else {
+                        // On name renderer
+                        // Cannot rely on current state of name_renderer so have to layout the
+                        // text again to get pixel width
+                        Gtk.TreeIter iter;
+                        model.get_iter (out iter, path);
+                        string? text = null;
+                        model.@get (iter, ListModel.ColumnID.FILENAME, out text);
+                        name_renderer.set_up_layout (text, name_renderer.width);
+                        // Calculate where click will activate
+                        var active_width = name_renderer.text_width + name_renderer.double_border_radius;
+                        bool is_on_active;
+                        if (rtl) {
+                            is_on_active = cx >= icon_text_edge - active_width - 8;
+                        } else {
+                            is_on_active = cx <= icon_text_edge + active_width + 8;
+                        }
+
+                        if (is_on_active) {
+                            zone = ClickZone.NAME;
+                        } else if (!is_blank) {
+                            zone = ClickZone.BLANK_PATH;
+                        }
                     }
                 }
             } else if (c != name_column) {
@@ -269,7 +293,6 @@ namespace Files {
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
-            /* slot && directory should not be null but see lp:1595438  & https://github.com/elementary/files/issues/1699 */
             if (tree == null || path == null || slot == null || slot.directory == null ||
                 slot.directory.permission_denied || slot.directory.is_empty ()) {
 
