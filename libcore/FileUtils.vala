@@ -1246,6 +1246,31 @@ namespace Files.FileUtils {
             return false;
         }
     }
+
+    /** Return enough of @path to distinguish it from @conflict_path **/
+    public string disambiguate_path (string path, string conflict_path) {
+        var prefix = "";
+        var conflict_prefix = "";
+        var temp_path = path;
+        var temp_conflict_path = conflict_path;
+        var basename = Path.get_basename (path);
+
+        if (basename != Path.get_basename (conflict_path)) {
+            return basename;
+        }
+
+        /* Add parent directories until path and conflict path differ */
+        while (prefix == conflict_prefix) {
+            var parent_temp_path = FileUtils.get_parent_path_from_path (temp_path);
+            var parent_temp_confict_path = FileUtils.get_parent_path_from_path (temp_conflict_path);
+            prefix = Path.get_basename (parent_temp_path) + Path.DIR_SEPARATOR_S + prefix;
+            conflict_prefix = Path.get_basename (parent_temp_confict_path) + Path.DIR_SEPARATOR_S + conflict_prefix;
+            temp_path = parent_temp_path;
+            temp_conflict_path = parent_temp_confict_path;
+        }
+
+        return (prefix + basename).replace ("//", "/");
+    }
 }
 
 namespace Files {
