@@ -43,6 +43,8 @@
       <issues>
         <issue url="https://github.com/elementary/files/issues/593">Zooming is hidden</issue>
         <issue url="https://github.com/elementary/files/issues/1163">Invert logic of Show/Hide Thumbnails</issue>
+        <issue url="https://github.com/elementary/files/issues/1781">Some devices not accessible by MTP or PTP</issue>
+        <issue url="https://github.com/elementary/files/issues/1997">Path completion should be case sensitive</issue>
       </issues>
     </release>
 
