@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"POT-Creation-Date: 2023-02-23 17:08+0000\n"
 "PO-Revision-Date: 2023-02-14 14:25+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
@@ -38,38 +38,42 @@ msgstr "Åpne filer skrivebeskyttet"
 msgid "Open File as Read Only"
 msgstr "Åpne fil skrivebeskyttet"
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr "Velg"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "Åpne"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr "Lagre"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "Erstatte den vil skrive over innholdet."
+
+#: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
 msgstr "Erstatt «%s»?"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Erstatting av denne filen vil overskrive innholdet."
-
-#: filechooser-portal/Main.vala:361
-#, fuzzy, c-format
-msgid "Replace the target of “%s”?"
-msgstr "Erstatt målet til «%s»?"
-
-#: filechooser-portal/Main.vala:364
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
-msgstr ""
-"Erstatting av målfilen for denne lenken vil overskrive det nåværende "
-"innholdet."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -180,7 +184,7 @@ msgstr "Kobler til…"
 msgid "Please verify your user details."
 msgstr "Kontroller brukerdata."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "Tjeneren svarte ikke i tide"
 
@@ -1870,7 +1874,7 @@ msgid "Open in"
 msgstr "Åpne i"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Åpne med"
 
@@ -2138,7 +2142,7 @@ msgstr "Lukk fane"
 msgid "Duplicate Tab"
 msgstr "Dupliserer fane"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Åpne i et nytt vindu"
 
@@ -2250,16 +2254,16 @@ msgstr "Koble til tjener …"
 msgid "Bind mount"
 msgstr "Bind montering"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Søk eller skriv inn sti"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Åpne i ny fane"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "Åpne i et annet program…"
 
@@ -2429,6 +2433,17 @@ msgstr "Under denne mappen"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Nylig brukt"
+
+#, fuzzy, c-format
+#~ msgid "Replace the target of “%s”?"
+#~ msgstr "Erstatt målet til «%s»?"
+
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr ""
+#~ "Erstatting av målfilen for denne lenken vil overskrive det nåværende "
+#~ "innholdet."
 
 #, fuzzy
 #~| msgid "File Operations"

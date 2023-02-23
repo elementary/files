@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"POT-Creation-Date: 2023-02-23 17:08+0000\n"
 "PO-Revision-Date: 2023-02-19 12:25+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
@@ -38,37 +38,42 @@ msgstr "Відкрити файли лише для читання"
 msgid "Open File as Read Only"
 msgstr "Відкрити файл лише для читання"
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr "Вибрати"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "Відкрити"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr "Зберегти"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "Під час заміни вміст буде перезаписано."
+
+#: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
 msgstr "Замінити «%s»?"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Заміна цього файлу перезапише його поточний вміст"
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr "Замінити цільовий «%s»?"
-
-#: filechooser-portal/Main.vala:364
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
-msgstr ""
-"Заміна цільового файлу для цього посилання перезапише його поточний вміст."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -179,7 +184,7 @@ msgstr "З'єднання…"
 msgid "Please verify your user details."
 msgstr "Перевірте особисті дані користувача."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "Сервер не відповідає надто довго"
 
@@ -1833,7 +1838,7 @@ msgid "Open in"
 msgstr "Відкрити у"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Відкрити за допомогою"
 
@@ -2101,7 +2106,7 @@ msgstr "Закрити вкладку"
 msgid "Duplicate Tab"
 msgstr "Дублювати вкладку"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Відкрити у новому вікні"
 
@@ -2213,16 +2218,16 @@ msgstr "З'єднатися з сервером…"
 msgid "Bind mount"
 msgstr "Повʼязати монтування"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Шукати або ввести шлях"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Відкрити у новій вкладці"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "Відкрити в іншому застосунку…"
 
@@ -2381,6 +2386,16 @@ msgstr "Під цією текою"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Нещодавні"
+
+#, c-format
+#~ msgid "Replace the target of “%s”?"
+#~ msgstr "Замінити цільовий «%s»?"
+
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr ""
+#~ "Заміна цільового файлу для цього посилання перезапише його поточний вміст."
 
 #~ msgid "Undo Last File Operation"
 #~ msgstr "Скасувати останню дію з файлом"
