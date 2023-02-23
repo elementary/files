@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"POT-Creation-Date: 2023-02-23 17:08+0000\n"
 "PO-Revision-Date: 2016-10-16 09:51+0000\n"
 "Last-Translator: Waqar Ahmed <waqar.17a@gmail.com>\n"
 "Language-Team: Urdu <ur@li.org>\n"
@@ -36,42 +36,46 @@ msgstr ""
 msgid "Open File as Read Only"
 msgstr ""
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/Main.vala:107
 #, fuzzy
 #| msgid " selected"
 msgid "Select"
 msgstr " منتخب کردہ"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "کهولیں"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr ""
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "اسے بدلنے سے اس کے مواد کو overwrite  کر دیا جائے گا۔"
+
+#: filechooser-portal/Main.vala:456
 #, fuzzy, c-format
 #| msgid "Replace file \"%s\"?"
 msgid "Replace “%s”?"
 msgstr "فائل \"%s\" تبدیل کردی جائے؟"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 #, fuzzy
 #| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "اسے بدلنے سے اس کے مواد کو overwrite  کر دیا جائے گا۔"
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr ""
-
-#: filechooser-portal/Main.vala:364
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
 msgstr "اسے بدلنے سے اس کے مواد کو overwrite  کر دیا جائے گا۔"
 
 #: libcore/ConnectServerDialog.vala:46
@@ -194,7 +198,7 @@ msgstr "جڑ رہا ہے۔۔۔"
 msgid "Please verify your user details."
 msgstr "صارف کی تفصیلات کی تصدیق کریں۔"
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr ""
 
@@ -1875,7 +1879,7 @@ msgid "Open in"
 msgstr "کھولیں بذریعہ"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "کھولیں بذریعہ"
 
@@ -2155,7 +2159,7 @@ msgstr "بند کریں"
 msgid "Duplicate Tab"
 msgstr "‏\"%B\" کی نقل بنائی جارہی ہے"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "نئی ونڈو میں کھولیں"
 
@@ -2275,16 +2279,16 @@ msgstr "سرور سے جڑیں..."
 msgid "Bind mount"
 msgstr "_ان ماؤنٹ کریں"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "نئے ٹیب میں کھولیں"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "کسی اور اطلاقیے سے کھولیں..."
 
@@ -2453,6 +2457,13 @@ msgstr "اس فولڈر مِں"
 #, fuzzy
 msgid "Recently Used"
 msgstr "حالیہ"
+
+#, fuzzy
+#~| msgid "Replacing it will overwrite its content."
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr "اسے بدلنے سے اس کے مواد کو overwrite  کر دیا جائے گا۔"
 
 #, fuzzy
 #~| msgid "File Operations"

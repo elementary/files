@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"POT-Creation-Date: 2023-02-23 17:08+0000\n"
 "PO-Revision-Date: 2021-06-19 20:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -32,42 +32,46 @@ msgstr ""
 msgid "Open File as Read Only"
 msgstr ""
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/Main.vala:107
 #, fuzzy
 #| msgid " selected"
 msgid "Select"
 msgstr " निवडले"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "उघडा"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr ""
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "त्यास पुनर्स्थित केल्याने त्याची सामग्री अधिलिखित होईल."
+
+#: filechooser-portal/Main.vala:456
 #, fuzzy, c-format
 #| msgid "Replace file \"%s\"?"
 msgid "Replace “%s”?"
 msgstr "\"%s\" फाइल पुनर्स्थित करायची?"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 #, fuzzy
 #| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "त्यास पुनर्स्थित केल्याने त्याची सामग्री अधिलिखित होईल."
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr ""
-
-#: filechooser-portal/Main.vala:364
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
 msgstr "त्यास पुनर्स्थित केल्याने त्याची सामग्री अधिलिखित होईल."
 
 #: libcore/ConnectServerDialog.vala:46
@@ -179,7 +183,7 @@ msgstr "जोडत आहे…"
 msgid "Please verify your user details."
 msgstr "कृपया तुमचा वापरकर्ता तपशील पुन्हा तपासा."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "सर्व्हरने वेळ मर्यादेत प्रतिसाद दिला नाही"
 
@@ -1869,7 +1873,7 @@ msgid "Open in"
 msgstr "मध्ये उघडा"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "उघडण्यासाठी वापरा"
 
@@ -2141,7 +2145,7 @@ msgstr "टॅब बंद करा"
 msgid "Duplicate Tab"
 msgstr "\"%s\" डुप्लिकेट करीत आहे"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "नवीन विंडोमध्ये उघडा"
 
@@ -2256,16 +2260,16 @@ msgstr "सर्वरला कनेक्ट करा…"
 msgid "Bind mount"
 msgstr "(_U)अनमाउंट करा"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "पाथ शोधा अथवा टाईप करा"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "नवीन टॅबमध्ये उघडा"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "अन्य अप्लिकेशनमध्ये उघडा…"
 
@@ -2434,6 +2438,13 @@ msgstr "या फोल्डर खाली"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "अलीकडे वापरलेले"
+
+#, fuzzy
+#~| msgid "Replacing it will overwrite its content."
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr "त्यास पुनर्स्थित केल्याने त्याची सामग्री अधिलिखित होईल."
 
 #, fuzzy
 #~| msgid "File Operations"

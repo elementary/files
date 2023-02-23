@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"POT-Creation-Date: 2023-02-23 17:08+0000\n"
 "PO-Revision-Date: 2022-12-26 20:25+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
@@ -37,36 +37,42 @@ msgstr "Otvoriť súbory iba na čítanie"
 msgid "Open File as Read Only"
 msgstr "Otvoriť súbor iba na čítanie"
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr "Vybrať"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "Otvoriť"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr "Uložiť"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "Nahradením sa prepíše jeho obsah."
+
+#: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
 msgstr "Nahradiť „%s“?"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Nahradením tohoto súboru sa prepíše jeho obsah"
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr "Nahradiť cieľové umiestnenie „%s“?"
-
-#: filechooser-portal/Main.vala:364
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
-msgstr "Nahradením cieľového súboru pre tento odkaz sa prepíše jeho obsah."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -177,7 +183,7 @@ msgstr "Pripája sa…"
 msgid "Please verify your user details."
 msgstr "Skontrolujte prosím svoje používateľské údaje."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "Server neodpovedal v časovom limite"
 
@@ -1894,7 +1900,7 @@ msgid "Open in"
 msgstr "Otvoriť v"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Otvoriť pomocou"
 
@@ -2162,7 +2168,7 @@ msgstr "Zatvoriť kartu"
 msgid "Duplicate Tab"
 msgstr "Duplikovať kartu"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Otvoriť v novom okne"
 
@@ -2274,16 +2280,16 @@ msgstr "Pripojiť server…"
 msgid "Bind mount"
 msgstr "Bind pripojenie"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Hľadať alebo zadať popis umiestnenia"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Otvoriť na novej karte"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "Otvoriť v inej aplikácii…"
 
@@ -2456,6 +2462,15 @@ msgstr "Pod týmto priečinkom"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Nedávno použité"
+
+#, c-format
+#~ msgid "Replace the target of “%s”?"
+#~ msgstr "Nahradiť cieľové umiestnenie „%s“?"
+
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr "Nahradením cieľového súboru pre tento odkaz sa prepíše jeho obsah."
 
 #, fuzzy
 #~| msgid "File Operations"
