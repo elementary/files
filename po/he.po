@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-23 17:08+0000\n"
-"PO-Revision-Date: 2023-02-17 09:25+0000\n"
+"PO-Revision-Date: 2023-02-23 20:51+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -51,18 +51,16 @@ msgstr "שמירה"
 #: filechooser-portal/Main.vala:448
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr ""
+msgstr "קובץ זה הוא קישור אל „%s”"
 
 #: filechooser-portal/Main.vala:451
 msgid "This file is a link."
-msgstr ""
+msgstr "קובץ זה הוא קישור."
 
 #: filechooser-portal/Main.vala:454
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr "ההחלפה תשכתב את התוכן."
+msgstr "החלפת קישור תדרוס את תוכני היעד. הקישור יישאר"
 
 #: filechooser-portal/Main.vala:456
 #, c-format
