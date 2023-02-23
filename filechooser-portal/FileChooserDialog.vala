@@ -290,6 +290,12 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         });
 
         chooser.set_current_folder_uri (settings.get_string ("last-folder-uri"));
+
+        if (action == Gtk.FileChooserAction.SAVE) {
+            entry.grab_focus ();
+        } else {
+            tree_view.grab_focus ();
+        }
     }
 
     private static T find_child_by_name<T> (Gtk.Widget root, string path) requires (root is Gtk.Container) {
@@ -354,13 +360,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             stack.notify["visible-child"].connect (() => {
                 revealer.reveal_child = stack.visible_child_name == "search";
             });
-
-            if (action == Gtk.FileChooserAction.SAVE) {
-                entry.set_placeholder_text (_("Enter new filename"));
-                entry.grab_focus ();
-            } else {
-                tree_view.grab_focus ();
-            }
         });
 
         /* move the filename entry from the chooser to the action_box */
