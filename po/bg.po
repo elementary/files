@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-23 17:08+0000\n"
+"POT-Creation-Date: 2023-02-23 20:51+0000\n"
 "PO-Revision-Date: 2017-04-09 19:04+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Bulgarian\n"
@@ -38,6 +38,12 @@ msgstr ""
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open File as Read Only"
 msgstr ""
+
+#: filechooser-portal/FileChooserDialog.vala:376
+#, fuzzy
+#| msgid "new file"
+msgid "Enter new filename"
+msgstr "нов файл"
 
 #: filechooser-portal/Main.vala:107
 #, fuzzy
@@ -392,82 +398,82 @@ msgstr "В \"%s\" вече съществува друг файл със същ�
 msgid "Merge"
 msgstr "Сливане"
 
-#: libcore/FileUtils.vala:89
+#: libcore/FileUtils.vala:83
 #, fuzzy, c-format
 #| msgid "Could not determine original location of \"%s\" "
 msgid "Could not determine original location of \"%s\""
 msgstr "Първоначалното местоположение на „%s“ не може да бъде определено. "
 
-#: libcore/FileUtils.vala:90
+#: libcore/FileUtils.vala:84
 msgid "The item cannot be restored from trash"
 msgstr "Обектът може да бъде изваден от кошчето."
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:178
 #, fuzzy, c-format
 #| msgid "The file selected no longer exists."
 msgid "The original folder %s no longer exists"
 msgstr "Избраният файл вече не съществува."
 
-#: libcore/FileUtils.vala:185
+#: libcore/FileUtils.vala:179
 msgid "Would you like to recreate it?"
 msgstr ""
 
-#: libcore/FileUtils.vala:190
+#: libcore/FileUtils.vala:184
 msgid "Ignore"
 msgstr "Игнориране"
 
-#: libcore/FileUtils.vala:191
+#: libcore/FileUtils.vala:185
 msgid "No files that were in this folder will be restored"
 msgstr ""
 
-#: libcore/FileUtils.vala:192
+#: libcore/FileUtils.vala:186
 #, fuzzy
 #| msgid "Create"
 msgid "Recreate"
 msgstr "Създаване"
 
-#: libcore/FileUtils.vala:194
+#: libcore/FileUtils.vala:188
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
 
-#: libcore/FileUtils.vala:207
+#: libcore/FileUtils.vala:201
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
 
-#: libcore/FileUtils.vala:579
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Не може да бъде преименувано на '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:670
+#: libcore/FileUtils.vala:658
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Днес в %-I:%M %p"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:678
+#: libcore/FileUtils.vala:666
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Вчера в %-I:%M %p"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:686
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:1028
+#: libcore/FileUtils.vala:1016
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d секунда"
 msgstr[1] "%'d секунди"
 
-#: libcore/FileUtils.vala:1032 libcore/FileUtils.vala:1040
+#: libcore/FileUtils.vala:1020 libcore/FileUtils.vala:1028
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -476,19 +482,19 @@ msgstr[1] "%'d минути"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:1039 src/Dialogs/PropertiesWindow.vala:1242
+#: libcore/FileUtils.vala:1027 src/Dialogs/PropertiesWindow.vala:1242
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:1039
+#: libcore/FileUtils.vala:1027
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d час"
 msgstr[1] "%'d часа"
 
-#: libcore/FileUtils.vala:1043
+#: libcore/FileUtils.vala:1031
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -496,26 +502,26 @@ msgstr[0] "приблизително %'d час"
 msgstr[1] "приблизително %'d часа"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1051
+#: libcore/FileUtils.vala:1039
 #, fuzzy
 #| msgid " (copy)"
 msgid "copy"
 msgstr " (копие)"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1053
+#: libcore/FileUtils.vala:1041
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1055
+#: libcore/FileUtils.vala:1043
 #, fuzzy
 #| msgid " ("
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1057
+#: libcore/FileUtils.vala:1045
 msgid ")"
 msgstr ""
 
@@ -2067,7 +2073,7 @@ msgstr ""
 msgid "Cannot paste files here"
 msgstr "Не можете да поставяте файлове тук."
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:391
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
 msgid "This Folder Does Not Exist"
 msgstr "Папката не съществува"
 
@@ -2133,59 +2139,59 @@ msgstr "Няма текущи файлове.."
 msgid "Access Denied"
 msgstr "Достъпът е отказан"
 
-#: src/View/ViewContainer.vala:370 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:368 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "Домашна папка"
 
-#: src/View/ViewContainer.vala:392
+#: src/View/ViewContainer.vala:389
 msgid "You cannot create a folder here."
 msgstr "Не можете да създадете папка тук."
 
-#: src/View/ViewContainer.vala:395
+#: src/View/ViewContainer.vala:392
 msgid "The network is unavailable"
 msgstr "Мрежата е недостъпна"
 
-#: src/View/ViewContainer.vala:396
+#: src/View/ViewContainer.vala:393
 msgid "A working network is needed to reach this folder"
 msgstr "Нужна е работеща мрежа за да достигнете до тази папка.."
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Belong to You"
 msgstr "Тази папка не принадлежи на вас."
 
-#: src/View/ViewContainer.vala:400
+#: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr "Нямате разрешение да видите тази папка."
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
 msgstr "Не може да се прикачи Папката."
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:400
 msgid "Could not connect to the server for this folder."
 msgstr "Не може да се свържете със сървърът на тази папка."
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:403
 msgid "Unable to Display Folder Contents"
 msgstr "Не може да се покаже съдържанието на папката"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:404
 msgid "The operation timed out."
 msgstr "Времето за изчакване на операцията изтече."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Show Folder"
 msgstr "Не може да се покаже папката."
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:407
 msgid "The server for this folder could not be located."
 msgstr "Сървърът за тази папка не може да бъде намерен."
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:418
 msgid "File not Found"
 msgstr "Файлът не е намерен"
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:419
 msgid "The file selected no longer exists."
 msgstr "Избраният файл вече не съществува."
 
