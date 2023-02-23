@@ -29,6 +29,7 @@ public class Files.Directory : Object {
     }
 
     public delegate void FileLoadedFunc (Files.File file);
+    public delegate void DoneLoadingFunc ();
 
     private uint load_timeout_id = 0;
     private uint mount_timeout_id = 0;
@@ -166,7 +167,7 @@ public class Files.Directory : Object {
       * to perform filename completion.- Emitting a done_loaded signal in that case would cause
       * the premature ending of text entry.
      **/
-    public void init (FileLoadedFunc? file_loaded_func = null) {
+    public void init (FileLoadedFunc? file_loaded_func = null, DoneLoadingFunc? done_loading_func = null) {
         if (state == State.LOADING) {
             debug ("Directory Init re-entered - already loading");
             return; /* Do not re-enter */
@@ -180,11 +181,11 @@ public class Files.Directory : Object {
 
         /* If we already have a loaded file cache just list them */
         if (previous_state == State.LOADED) {
-            list_cached_files (file_loaded_func);
+            list_cached_files (file_loaded_func, done_loading_func);
         /* else fully initialise the directory */
         } else {
             state = State.LOADING;
-            prepare_directory.begin (file_loaded_func);
+            prepare_directory.begin (file_loaded_func, done_loading_func);
         }
         /* done_loaded signal is emitted when ready */
     }
@@ -192,7 +193,7 @@ public class Files.Directory : Object {
     /* This is also called when reloading the directory so that another attempt to connect to
      * the network is made
      */
-    private async void prepare_directory (FileLoadedFunc? file_loaded_func) {
+    private async void prepare_directory (FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
         debug ("Preparing directory for loading");
         /* Force info to be refreshed - the Files.File may have been created already by another part of the program
          * that did not ensure the correct info Aync purposes, and retrieved from cache (bug 1511307).
@@ -228,7 +229,7 @@ public class Files.Directory : Object {
         );
 
         /* Only place that should call make_ready function */
-        yield make_ready (file.is_connected && (is_no_info || success), file_loaded_func);
+        yield make_ready (is_no_info || success, file_loaded_func, done_loading_func); /* Only place that should call this function */
     }
 
     /*** Returns false if should be able to get info but were unable to ***/
@@ -423,7 +424,7 @@ public class Files.Directory : Object {
     }
 
 
-    private async void make_ready (bool ready, FileLoadedFunc? file_loaded_func = null) {
+    private async void make_ready (bool ready, FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
         debug ("make ready");
         can_load = ready;
 
@@ -441,7 +442,7 @@ public class Files.Directory : Object {
                                                                            file.exists.to_string ());
             directory_cache.remove (creation_key);
             is_ready = false;
-            after_loading (file_loaded_func);
+            after_loading (done_loading_func);
             return;
         }
 
@@ -494,7 +495,7 @@ public class Files.Directory : Object {
             connect_volume_monitor_signals ();
         }
 
-        yield list_directory_async (file_loaded_func);
+        yield list_directory_async (file_loaded_func, done_loading_func);
     }
 
     private void set_confirm_trash () {
@@ -590,7 +591,7 @@ public class Files.Directory : Object {
         }
     }
 
-    private void list_cached_files (FileLoadedFunc? file_loaded_func = null) {
+    private void list_cached_files (FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
         debug ("list cached files");
         if (state != State.LOADED) {
             critical ("list cached files called in %s state - not expected to happen", state.to_string ());
@@ -609,10 +610,10 @@ public class Files.Directory : Object {
         state = State.LOADED;
         loaded_from_cache = true;
 
-        after_loading (file_loaded_func);
+        after_loading (done_loading_func);
     }
 
-    private async void list_directory_async (FileLoadedFunc? file_loaded_func) {
+    private async void list_directory_async (FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
         debug ("list directory async");
         /* Should only be called after creation and if reloaded */
         if (!is_ready || file_hash.size () > 0) {
@@ -709,7 +710,7 @@ public class Files.Directory : Object {
         } finally {
             cancel_timeout (ref load_timeout_id);
             loaded_from_cache = false;
-            after_loading (file_loaded_func);
+            after_loading (done_loading_func);
         }
     }
 
@@ -725,7 +726,7 @@ public class Files.Directory : Object {
         }
     }
 
-    private void after_loading (FileLoadedFunc? file_loaded_func) {
+    private void after_loading (DoneLoadingFunc? done_loading_func) {
         /* If loading failed reset */
         debug ("after loading state is %s", state.to_string ());
         if (state == State.LOADING || state == State.TIMED_OUT) {
@@ -737,8 +738,10 @@ public class Files.Directory : Object {
             clear_directory_info ();
         }
 
-        if (file_loaded_func == null) {
+        if (done_loading_func == null) {
             done_loading ();
+        } else {
+            done_loading_func ();
         }
 
         if (file.is_directory) { /* Fails for non-existent directories */
@@ -769,9 +772,9 @@ public class Files.Directory : Object {
             return;
         }
         if (state != State.LOADED) {
-            list_directory_async.begin (null);
+            list_directory_async.begin (null, null);
         } else {
-            list_cached_files ();
+            list_cached_files (null, null);
         }
     }
 
