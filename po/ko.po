@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"POT-Creation-Date: 2023-02-23 17:08+0000\n"
 "PO-Revision-Date: 2022-08-07 19:15+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://l10n.elementary.io/projects/files/files/ko/>\n"
@@ -36,36 +36,42 @@ msgstr "읽기 전용으로 파일 열기"
 msgid "Open File as Read Only"
 msgstr "읽기 전용으로 파일 열기"
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr "선택"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "열기"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr "저장"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "바꾸시면 내용을 덮어쓰게 됩니다."
+
+#: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
 msgstr "\"%s\" 파일을 바꾸시겠습니까?"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "이 파일을 바꾸면 현재 내용을 덮어씁니다"
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr "\"%s\"의 대상을 바꾸시겠습니까?"
-
-#: filechooser-portal/Main.vala:364
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
-msgstr "이 링크의 대상 파일을 바꾸면 현재 내용을 덮어씁니다."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -176,7 +182,7 @@ msgstr "연결하고 있습니다…"
 msgid "Please verify your user details."
 msgstr "사용자 상세 정보를 확인하십시오."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "서버가 제한 시간 안에 응답하지 않았습니다"
 
@@ -1810,7 +1816,7 @@ msgid "Open in"
 msgstr "열기"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "다른 프로그램으로 열기"
 
@@ -2078,7 +2084,7 @@ msgstr "탭 닫기"
 msgid "Duplicate Tab"
 msgstr "탭 복제"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "새 창에서 열기"
 
@@ -2189,16 +2195,16 @@ msgstr "서버 연결…"
 msgid "Bind mount"
 msgstr "바인드 마운트"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "검색 또는 경로 입력"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "새 탭에서 열기"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "다른 프로그램으로 열기…"
 
@@ -2363,6 +2369,15 @@ msgstr "이 폴더에 있음"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "최근 사용 기록"
+
+#, c-format
+#~ msgid "Replace the target of “%s”?"
+#~ msgstr "\"%s\"의 대상을 바꾸시겠습니까?"
+
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr "이 링크의 대상 파일을 바꾸면 현재 내용을 덮어씁니다."
 
 #, fuzzy
 #~| msgid "File Operations"

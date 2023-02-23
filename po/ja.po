@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"POT-Creation-Date: 2023-02-23 17:08+0000\n"
 "PO-Revision-Date: 2023-02-19 12:25+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
-"\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
+">\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,36 +37,42 @@ msgstr "ファイルを読み取り専用で開く"
 msgid "Open File as Read Only"
 msgstr "ファイルを読み取り専用で開く"
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr "選択"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "開く"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr "保存"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "置き換えることで内容が上書きされます。"
+
+#: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
 msgstr "“%s” を置き換えますか？"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "このファイルを置き換えると、現在の内容が上書きされます"
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr "“%s” のリンク先を置き換えますか？"
-
-#: filechooser-portal/Main.vala:364
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
-msgstr "このリンク先のファイルを置き換えると、現在の内容が上書きされます。"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -177,7 +183,7 @@ msgstr "接続しています…"
 msgid "Please verify your user details."
 msgstr "ユーザー情報が正しいか確認してください。"
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "サーバーは制限時間内に応答しませんでした"
 
@@ -1757,7 +1763,7 @@ msgid "Open in"
 msgstr "指定した方法で開く"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "このアプリケーションで開く"
 
@@ -2025,7 +2031,7 @@ msgstr "タブを閉じる"
 msgid "Duplicate Tab"
 msgstr "タブを複製"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "新しいウィンドウで開く"
 
@@ -2137,16 +2143,16 @@ msgstr "サーバーを接続…"
 msgid "Bind mount"
 msgstr "バインドマウント"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "検索するかパスを入力してください"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "新しいタブで開く"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "ほかのアプリケーションで開く…"
 
@@ -2297,6 +2303,15 @@ msgstr "このフォルダー以下"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "最近使用した項目"
+
+#, c-format
+#~ msgid "Replace the target of “%s”?"
+#~ msgstr "“%s” のリンク先を置き換えますか？"
+
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr "このリンク先のファイルを置き換えると、現在の内容が上書きされます。"
 
 #~ msgid "Undo Last File Operation"
 #~ msgstr "最後のファイル操作を元に戻す"
