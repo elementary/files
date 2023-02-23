@@ -373,6 +373,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
             // bind the accept_button sensitivity with the entry text
             entry = find_child_by_name (grid, "<GtkFileChooserEntry>");
+            entry.set_placeholder_text (_("Enter new filename"));
             entry.bind_property ("text-length", accept_button, "sensitive", BindingFlags.SYNC_CREATE);
             entry.activate.connect (() => {
                 if (accept_button.sensitive) {
