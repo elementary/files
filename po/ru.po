@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"POT-Creation-Date: 2023-02-23 17:08+0000\n"
 "PO-Revision-Date: 2023-02-17 09:25+0000\n"
 "Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
@@ -38,37 +38,42 @@ msgstr "Открыть файлы только для чтения"
 msgid "Open File as Read Only"
 msgstr "Открыть файл только для чтения"
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr "Выбрать"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "Открыть"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr "Сохранить"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "При замене файла его содержимое будет перезаписано."
+
+#: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
 msgstr "Заменить «%s»?"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "При замене файла его содержимое будет перезаписано"
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr "Заменить цель «%s»?"
-
-#: filechooser-portal/Main.vala:364
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
-msgstr ""
-"Замена целевого файла для этой ссылки перезапишет его текущее содержимое."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -179,7 +184,7 @@ msgstr "Подключение…"
 msgid "Please verify your user details."
 msgstr "Проверьте данные пользователя."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "Сервер не ответил в течение срока"
 
@@ -1824,7 +1829,7 @@ msgid "Open in"
 msgstr "Открыть в"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Открыть с помощью"
 
@@ -2093,7 +2098,7 @@ msgstr "Закрыть вкладку"
 msgid "Duplicate Tab"
 msgstr "Дублировать вкладку"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Открыть в новом окне"
 
@@ -2205,16 +2210,16 @@ msgstr "Подключить сервер…"
 msgid "Bind mount"
 msgstr "Привязать подключение"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Введите путь или поисковый запрос"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Открыть в новой вкладке"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "Открыть в другом приложении…"
 
@@ -2373,6 +2378,16 @@ msgstr "Ниже этой папки"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Недавно использованные"
+
+#, c-format
+#~ msgid "Replace the target of “%s”?"
+#~ msgstr "Заменить цель «%s»?"
+
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr ""
+#~ "Замена целевого файла для этой ссылки перезапишет его текущее содержимое."
 
 #~ msgid "Undo Last File Operation"
 #~ msgstr "Отменить последнюю операцию с файлами"
