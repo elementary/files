@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"POT-Creation-Date: 2023-02-23 17:08+0000\n"
 "PO-Revision-Date: 2023-02-15 08:39+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
@@ -36,39 +36,43 @@ msgstr "Dateien schreibgeschützt öffnen"
 msgid "Open File as Read Only"
 msgstr "Datei schreibgeschützt öffnen"
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr "Auswählen"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "Öffnen"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr "Speichern"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "Falls Sie sie ersetzen, wird ihr Inhalt überschrieben."
+
+#: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
 msgstr "»%s« ersetzen?"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr ""
 "Falls Sie diese Datei ersetzen, wird ihr aktueller Inhalt überschrieben"
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr "Ziel von »%s« ersetzen?"
-
-#: filechooser-portal/Main.vala:364
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
-msgstr ""
-"Falls Sie die Zieldatei für diese Verknüpfung ersetzen, wird ihr "
-"aktuellerInhalt überschrieben."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -179,7 +183,7 @@ msgstr "Verbinden …"
 msgid "Please verify your user details."
 msgstr "Bitte überprüfen Sie Ihre Angaben."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "Der Server hat nicht innerhalb des Zeitlimits geantwortet"
 
@@ -1896,7 +1900,7 @@ msgid "Open in"
 msgstr "Öffnen in"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Öffnen mit"
 
@@ -2170,7 +2174,7 @@ msgstr "Tab schließen"
 msgid "Duplicate Tab"
 msgstr "Tab duplizieren"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "In neuem Fenster öffnen"
 
@@ -2282,16 +2286,16 @@ msgstr "Mit Server verbinden …"
 msgid "Bind mount"
 msgstr "Mit »bind« einhängen"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Suche oder Pfad eingeben"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "In neuem Tab öffnen"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "In einer anderen Anwendung öffnen …"
 
@@ -2450,6 +2454,17 @@ msgstr "Unterhalb dieses Ordners"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Zuletzt verwendet"
+
+#, c-format
+#~ msgid "Replace the target of “%s”?"
+#~ msgstr "Ziel von »%s« ersetzen?"
+
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr ""
+#~ "Falls Sie die Zieldatei für diese Verknüpfung ersetzen, wird ihr "
+#~ "aktuellerInhalt überschrieben."
 
 #~ msgid "Undo Last File Operation"
 #~ msgstr "Letzte Dateioperation rückgängig machen"
