@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"POT-Creation-Date: 2023-02-23 17:08+0000\n"
 "PO-Revision-Date: 2022-10-20 13:57+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
@@ -38,38 +38,42 @@ msgstr "Abrir ficheiros como Apenas-Leitura"
 msgid "Open File as Read Only"
 msgstr "Abrir ficheiro com Apenas-Leitura"
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr "Selecionar"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "Abrir"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr "Guardar"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "Se o substituir, sobrepõe o seu conteúdo."
+
+#: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
 msgstr "Substituir \"%s\"?"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "A substituição deste ficheiro irá substituir o seu conteúdo atual"
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr "Substituir o alvo de \"%s\"?"
-
-#: filechooser-portal/Main.vala:364
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
-msgstr ""
-"A substituição do ficheiro de destino para esta ligação irá substituir o seu "
-"conteúdo atual."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -180,7 +184,7 @@ msgstr "A ligar…"
 msgid "Please verify your user details."
 msgstr "Por favor, verifique os seus detalhes."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "O servidor não respondeu no tempo esperado"
 
@@ -1875,7 +1879,7 @@ msgid "Open in"
 msgstr "Abrir em"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Abrir com"
 
@@ -2144,7 +2148,7 @@ msgstr "Fechar separador"
 msgid "Duplicate Tab"
 msgstr "Duplicar separador"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Abrir numa nova janela"
 
@@ -2256,16 +2260,16 @@ msgstr "Ligar Servidor…"
 msgid "Bind mount"
 msgstr "Ligar montagem"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Pesquisar ou escrever caminho"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Abrir num novo separador"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "Abrir com outra aplicação…"
 
@@ -2434,6 +2438,17 @@ msgstr "Abaixo desta pasta"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Utilizados Recentemente"
+
+#, c-format
+#~ msgid "Replace the target of “%s”?"
+#~ msgstr "Substituir o alvo de \"%s\"?"
+
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr ""
+#~ "A substituição do ficheiro de destino para esta ligação irá substituir o "
+#~ "seu conteúdo atual."
 
 #, fuzzy
 #~| msgid "File Operations"

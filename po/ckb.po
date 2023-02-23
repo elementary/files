@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"POT-Creation-Date: 2023-02-23 17:08+0000\n"
 "PO-Revision-Date: 2022-09-21 10:08+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
@@ -32,38 +32,42 @@ msgstr "کردنەوەی پەڕگەکان بەشێوەی تەنها بینین"
 msgid "Open File as Read Only"
 msgstr "کردنەوەی پەڕگە بە شێوەی تەنها بینین"
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr "دیاریکردن"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "کردنەوە"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr "پاشەکەوتکردن"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "ئاڵوگۆڕکردن ئۆڤەرڕایتی ناوەڕۆکەکەی دەکات."
+
+#: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
 msgstr "ئاڵوگۆڕ بە \"%s\"؟"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "ئاڵوگۆڕکردن گۆڕانکاری بەسەر ناوەڕۆکەکەیدا دەهێنێت"
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr "ئاڵوگۆکردنی ئامانجەکەی \"%s\"؟"
-
-#: filechooser-portal/Main.vala:364
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
-msgstr ""
-"ئاڵوگۆڕکردنی پەڕگەی ئامانج بۆ ئەم بەستەرە گۆڕانکاری بەسەر ناوەڕۆکەکەیدا "
-"دەهێنێت."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -174,7 +178,7 @@ msgstr "پەیوەستبوون…"
 msgid "Please verify your user details."
 msgstr "تکایە زانیارییەکانی بەکارهێنەرت دڵنیا بکەوە."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "ڕاژە لە کاتی سنوورداردا وەڵامی نەدایەوە"
 
@@ -1816,7 +1820,7 @@ msgid "Open in"
 msgstr "کردنەوە لە"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "کردنەوە بە"
 
@@ -2084,7 +2088,7 @@ msgstr "داخستنی تاب"
 msgid "Duplicate Tab"
 msgstr "بەدووکردنی تاب"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "کردنەوەی لە پەنجەرەی تازەدا"
 
@@ -2196,16 +2200,16 @@ msgstr "پەیوەستکردنی ڕاژە…"
 msgid "Bind mount"
 msgstr "بایند ماونت"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "لێرە بگەڕێ یان شوێنێک بنووسە"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "کردنەوە لە تابێکی نوێدا"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "کردنەوە لە ئەپڵیکەیشنەکانی تر…"
 
@@ -2374,6 +2378,17 @@ msgstr "لەخوار ئەم بوخچەیەوە"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "بەکارهاتووی ئەم دواییە"
+
+#, c-format
+#~ msgid "Replace the target of “%s”?"
+#~ msgstr "ئاڵوگۆکردنی ئامانجەکەی \"%s\"؟"
+
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr ""
+#~ "ئاڵوگۆڕکردنی پەڕگەی ئامانج بۆ ئەم بەستەرە گۆڕانکاری بەسەر ناوەڕۆکەکەیدا "
+#~ "دەهێنێت."
 
 #, fuzzy
 #~| msgid "File Operations"
