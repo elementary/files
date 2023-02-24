@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-23 20:51+0000\n"
-"PO-Revision-Date: 2023-02-23 20:51+0000\n"
+"PO-Revision-Date: 2023-02-24 10:30+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -37,10 +37,8 @@ msgid "Open File as Read Only"
 msgstr "פתיחת קובץ לקריאה בלבד"
 
 #: filechooser-portal/FileChooserDialog.vala:376
-#, fuzzy
-#| msgid "new file"
 msgid "Enter new filename"
-msgstr "קובץ חדש"
+msgstr "נא למלא שם חדש לקובץ"
 
 #: filechooser-portal/Main.vala:107
 msgid "Select"
