@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-23 20:51+0000\n"
-"PO-Revision-Date: 2023-02-19 12:25+0000\n"
+"PO-Revision-Date: 2023-02-25 18:18+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,10 +38,8 @@ msgid "Open File as Read Only"
 msgstr "ファイルを読み取り専用で開く"
 
 #: filechooser-portal/FileChooserDialog.vala:376
-#, fuzzy
-#| msgid "new file"
 msgid "Enter new filename"
-msgstr "新しいファイル"
+msgstr "新しいファイル名を入力"
 
 #: filechooser-portal/Main.vala:107
 msgid "Select"
@@ -58,18 +56,17 @@ msgstr "保存"
 #: filechooser-portal/Main.vala:448
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr ""
+msgstr "このファイルは “%s” へのリンクです"
 
 #: filechooser-portal/Main.vala:451
 msgid "This file is a link."
-msgstr ""
+msgstr "このファイルはリンクです。"
 
 #: filechooser-portal/Main.vala:454
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr "置き換えることで内容が上書きされます。"
+msgstr "リンクを置き換えることで、リンク先の内容が上書きされます。リンク自体は変更さ"
+"れません"
 
 #: filechooser-portal/Main.vala:456
 #, c-format
