@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-23 20:51+0000\n"
-"PO-Revision-Date: 2023-02-23 20:51+0000\n"
+"PO-Revision-Date: 2023-02-24 10:30+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -39,10 +39,8 @@ msgid "Open File as Read Only"
 msgstr "Відкрити файл лише для читання"
 
 #: filechooser-portal/FileChooserDialog.vala:376
-#, fuzzy
-#| msgid "new file"
 msgid "Enter new filename"
-msgstr "новий файл"
+msgstr "Введіть назву нового файлу"
 
 #: filechooser-portal/Main.vala:107
 msgid "Select"
