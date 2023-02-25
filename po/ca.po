@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
-"PO-Revision-Date: 2023-02-19 12:25+0000\n"
+"POT-Creation-Date: 2023-02-25 18:18+0000\n"
+"PO-Revision-Date: 2023-02-24 10:30+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
-"\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
+">\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,38 +37,46 @@ msgstr "Obre fitxers només en mode de lectura"
 msgid "Open File as Read Only"
 msgstr "Obre el fitxer només en mode de lectura"
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/FileChooserDialog.vala:376
+msgid "Enter new filename"
+msgstr "Nom nou del fitxer"
+
+#: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr "Selecciona"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "Obre"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr "Desa"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr "Aquest fitxer és un enllaç amb %s"
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr "Aquest fitxer és un enllaç."
+
+#: filechooser-portal/Main.vala:454
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr ""
+"La substitució d'un enllaç sobreescriurà el contingut de la destinació. "
+"L'enllaç es mantindrà."
+
+#: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
 msgstr "Voleu reemplaçar «%s»?"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "En reemplaçar-lo se'n sobreescriurà el contingut."
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr "Voleu reemplaçar la destinació de «%s»?"
-
-#: filechooser-portal/Main.vala:364
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
-msgstr ""
-"En reemplaçar el fitxer de destinació de l'enllaç se'n sobreescriurà el "
-"contingut."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -179,7 +187,7 @@ msgstr "Connectant…"
 msgid "Please verify your user details."
 msgstr "Verifiqueu els detalls d'usuari."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "El servidor no ha respost dins del límit de temps."
 
@@ -363,37 +371,37 @@ msgstr "Ja existeix un altre fitxer amb el mateix nom a «%s»."
 msgid "Merge"
 msgstr "Combina"
 
-#: libcore/FileUtils.vala:89
+#: libcore/FileUtils.vala:83
 #, c-format
 msgid "Could not determine original location of \"%s\""
 msgstr "No s'ha pogut determinar la ubicació original de «%s»."
 
-#: libcore/FileUtils.vala:90
+#: libcore/FileUtils.vala:84
 msgid "The item cannot be restored from trash"
 msgstr "No es pot restaurar l'element des de la paperera"
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:178
 #, c-format
 msgid "The original folder %s no longer exists"
 msgstr "La carpeta original %s ja no existeix."
 
-#: libcore/FileUtils.vala:185
+#: libcore/FileUtils.vala:179
 msgid "Would you like to recreate it?"
 msgstr "Voleu recrear-la?"
 
-#: libcore/FileUtils.vala:190
+#: libcore/FileUtils.vala:184
 msgid "Ignore"
 msgstr "Ignora"
 
-#: libcore/FileUtils.vala:191
+#: libcore/FileUtils.vala:185
 msgid "No files that were in this folder will be restored"
 msgstr "Els fitxers que hi havia en aquesta carpeta no es restauraran."
 
-#: libcore/FileUtils.vala:192
+#: libcore/FileUtils.vala:186
 msgid "Recreate"
 msgstr "Recrea-la"
 
-#: libcore/FileUtils.vala:194
+#: libcore/FileUtils.vala:188
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
@@ -401,44 +409,44 @@ msgstr ""
 "Es recrearà la carpeta i s'hi restauraran els fitxers seleccionats que hi "
 "havia originalment."
 
-#: libcore/FileUtils.vala:207
+#: libcore/FileUtils.vala:201
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
 "No s'ha pogut recrear la carpeta %s. S'ignoraran tots els fitxes de la "
 "carpeta."
 
-#: libcore/FileUtils.vala:579
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "No s'ha pogut canviar el nom a \"%s\""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:670
+#: libcore/FileUtils.vala:658
 #, c-format
 msgid "Today at %s"
 msgstr "Avui a les %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:678
+#: libcore/FileUtils.vala:666
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Ahir a les %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:686
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A a les %s"
 
-#: libcore/FileUtils.vala:1028
+#: libcore/FileUtils.vala:1016
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d segon"
 msgstr[1] "%'d segons"
 
-#: libcore/FileUtils.vala:1032 libcore/FileUtils.vala:1040
+#: libcore/FileUtils.vala:1020 libcore/FileUtils.vala:1028
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -447,19 +455,19 @@ msgstr[1] "%'d minuts"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:1039 src/Dialogs/PropertiesWindow.vala:1242
+#: libcore/FileUtils.vala:1027 src/Dialogs/PropertiesWindow.vala:1242
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:1039
+#: libcore/FileUtils.vala:1027
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d hora"
 msgstr[1] "%'d hores"
 
-#: libcore/FileUtils.vala:1043
+#: libcore/FileUtils.vala:1031
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -467,22 +475,22 @@ msgstr[0] "aproximadament %'d hora"
 msgstr[1] "aproximadament %'d hores"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1051
+#: libcore/FileUtils.vala:1039
 msgid "copy"
 msgstr "còpia"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1053
+#: libcore/FileUtils.vala:1041
 msgid "link"
 msgstr "enllaç"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1055
+#: libcore/FileUtils.vala:1043
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1057
+#: libcore/FileUtils.vala:1045
 msgid ")"
 msgstr ")"
 
@@ -1809,7 +1817,7 @@ msgid "Open in"
 msgstr "Obre amb"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Obre amb"
 
@@ -1947,7 +1955,7 @@ msgstr "En canvi, es retalla la selecció"
 msgid "Cannot paste files here"
 msgstr "Aquí no es poden enganxar fitxers"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:391
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
 msgid "This Folder Does Not Exist"
 msgstr "Aquesta carpeta no existeix"
 
@@ -2010,59 +2018,59 @@ msgstr "No hi ha fitxers recents"
 msgid "Access Denied"
 msgstr "Accés denegat"
 
-#: src/View/ViewContainer.vala:370 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:368 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "Carpeta de l'usuari"
 
-#: src/View/ViewContainer.vala:392
+#: src/View/ViewContainer.vala:389
 msgid "You cannot create a folder here."
 msgstr "Aquí no podeu crear una carpeta."
 
-#: src/View/ViewContainer.vala:395
+#: src/View/ViewContainer.vala:392
 msgid "The network is unavailable"
 msgstr "La xarxa no està disponible"
 
-#: src/View/ViewContainer.vala:396
+#: src/View/ViewContainer.vala:393
 msgid "A working network is needed to reach this folder"
 msgstr "Cal una xarxa que funcioni per arribar a aquesta carpeta"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Belong to You"
 msgstr "Aquesta carpeta no us pertany"
 
-#: src/View/ViewContainer.vala:400
+#: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr "No teniu permís per veure aquesta carpeta."
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
 msgstr "No es pot muntar la carpeta"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:400
 msgid "Could not connect to the server for this folder."
 msgstr "No s'ha pogut connectar amb el servidor per a aquesta carpeta."
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:403
 msgid "Unable to Display Folder Contents"
 msgstr "No es poden mostrar els continguts de la carpeta."
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:404
 msgid "The operation timed out."
 msgstr "S'ha esgotat el temps d'espera de l'operació."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Show Folder"
 msgstr "No es pot mostrar la carpeta"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:407
 msgid "The server for this folder could not be located."
 msgstr "No s’ha trobat el servidor que allotja aquesta carpeta."
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:418
 msgid "File not Found"
 msgstr "No s'ha trobat el fitxer"
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:419
 msgid "The file selected no longer exists."
 msgstr "El fitxer seleccionat ja no existeix."
 
@@ -2078,7 +2086,7 @@ msgstr "Tanca la pestanya"
 msgid "Duplicate Tab"
 msgstr "Pestanya duplicada"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Obre en una finestra nova"
 
@@ -2190,16 +2198,16 @@ msgstr "Connecta't a un servidor…"
 msgid "Bind mount"
 msgstr "Vinculació del muntatge"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Cerqueu o escriviu-ne el camí"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Obre en una pestanya nova"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "Obre en una altra aplicació…"
 
@@ -2355,6 +2363,17 @@ msgstr "Per sota d'aquesta carpeta"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "D'ús recent"
+
+#, c-format
+#~ msgid "Replace the target of “%s”?"
+#~ msgstr "Voleu reemplaçar la destinació de «%s»?"
+
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr ""
+#~ "En reemplaçar el fitxer de destinació de l'enllaç se'n sobreescriurà el "
+#~ "contingut."
 
 #~ msgid "Undo Last File Operation"
 #~ msgstr "Desfés l'última operació de fitxers"
