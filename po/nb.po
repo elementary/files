@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-23 20:51+0000\n"
-"PO-Revision-Date: 2023-02-14 14:25+0000\n"
+"PO-Revision-Date: 2023-02-25 18:18+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "files/nb/>\n"
@@ -59,11 +59,11 @@ msgstr "Lagre"
 #: filechooser-portal/Main.vala:448
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr ""
+msgstr "Denne filen er en lenke til «%s»"
 
 #: filechooser-portal/Main.vala:451
 msgid "This file is a link."
-msgstr ""
+msgstr "Denne filen er en lenke."
 
 #: filechooser-portal/Main.vala:454
 #, fuzzy
@@ -1304,7 +1304,7 @@ msgstr "Dupliserer fane"
 
 #: libcore/UndoManager.vala:61
 msgid "Redo Move"
-msgstr ""
+msgstr "Gjenta flytting"
 
 #: libcore/UndoManager.vala:63
 #, fuzzy
