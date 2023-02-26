@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-25 18:18+0000\n"
-"PO-Revision-Date: 2023-02-19 12:25+0000\n"
+"PO-Revision-Date: 2023-02-27 21:25+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -38,10 +38,8 @@ msgid "Open File as Read Only"
 msgstr "Otwórz plik w trybie tylko do odczytu"
 
 #: filechooser-portal/FileChooserDialog.vala:376
-#, fuzzy
-#| msgid "new file"
 msgid "Enter new filename"
-msgstr "Nowy plik"
+msgstr "Wprowadź nową nazwę pliku"
 
 #: filechooser-portal/Main.vala:107
 msgid "Select"
@@ -58,18 +56,18 @@ msgstr "Zapisz"
 #: filechooser-portal/Main.vala:448
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr ""
+msgstr "Ten plik jest linkiem do „%s”"
 
 #: filechooser-portal/Main.vala:451
 msgid "This file is a link."
-msgstr ""
+msgstr "Ten plik jest linkiem."
 
 #: filechooser-portal/Main.vala:454
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr "Zastąpienie go spowoduje nadpisanie jego zawartości."
+msgstr ""
+"Zastąpienie linku spowoduje nadpisanie wartości wskazywanego pliku. Link "
+"pozostanie"
 
 #: filechooser-portal/Main.vala:456
 #, c-format
