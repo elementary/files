@@ -26,12 +26,13 @@ namespace Files.View.Chrome {
 
         /** Completion support **/
         Directory? current_completion_dir = null;
-        string completion_text = "";
-        bool autocompleted = false;
+
+        bool match_found = false;
         bool multiple_completions = false;
-        /* The string which contains the text we search in the file. e.g, if the
-         * user enter /home/user/a, we will search for "a". */
-        string to_search = "";
+        string to_complete = ""; // Beginning of filename to be completed
+        string completion_text = ""; // Candidate completion (placeholder)
+        string matching_filename = "";
+        string common_chars = "";
 
         public bool search_mode = false; // Used to suppress activate events while searching
 
@@ -75,8 +76,6 @@ namespace Files.View.Chrome {
     /** Overridden Navigatable interface functions **/
     /************************************************/
         public override bool on_key_press_event (Gdk.EventKey event) {
-            autocompleted = false;
-            multiple_completions = false;
             uint keyval;
             event.get_keyval (out keyval);
             switch (keyval) {
@@ -134,13 +133,13 @@ namespace Files.View.Chrome {
                 return;
             }
 
-            to_search = "";
+            to_complete = "";
             /* don't use get_basename (), it will return "folder" for "/folder/" */
             int last_slash = txt.last_index_of_char ('/');
             if (last_slash > -1 && last_slash < txt.length) {
-                to_search = txt.slice (last_slash + 1, text.length);
+                to_complete = txt.slice (last_slash + 1, text.length);
             }
-            if (to_search.length > 0) {
+            if (to_complete.length > 0) {
                 do_completion (txt);
             } else {
                 clear_completion ();
@@ -148,8 +147,12 @@ namespace Files.View.Chrome {
         }
 
         private void do_completion (string path) {
+            if (path == current_dir_path) {
+                return; // Nothing typed yet
+            }
+
             GLib.File? file = FileUtils.get_file_for_path (FileUtils.sanitize_path (path, current_dir_path));
-            if (file == null || autocompleted) {
+            if (file == null) {
                 return;
             }
 
@@ -161,11 +164,14 @@ namespace Files.View.Chrome {
 
             if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
                 current_completion_dir = Directory.from_gfile (file);
-                current_completion_dir.init (on_file_loaded);
-            } else if (current_completion_dir != null && current_completion_dir.can_load) {
+            }
+
+            if (current_completion_dir.can_load) {
                 clear_completion ();
-                /* Completion text set by on_file_loaded () */
-                current_completion_dir.init (on_file_loaded);
+                matching_filename = "";
+                multiple_completions = false;
+                match_found = false;
+                current_completion_dir.init (on_file_loaded, on_done_loading);
             }
         }
 
@@ -228,43 +234,49 @@ namespace Files.View.Chrome {
             }
 
             string file_display_name = file.get_display_name ();
-            if (file_display_name.length > to_search.length) {
-                if (file_display_name.ascii_ncasecmp (to_search, to_search.length) == 0) {
-                    if (!autocompleted) {
-                        set_completion_text (file_display_name.slice (to_search.length, file_display_name.length));
-                        autocompleted = true;
+            if (file_display_name.length > to_complete.length) {
+                if (file_display_name.up ().has_prefix (to_complete.up ())) {
+                    matching_filename = file_display_name;
+                    if (!match_found) {
+                        match_found = true;
+                        common_chars = matching_filename.slice (
+                            to_complete.length, matching_filename.length
+                        );
                     } else {
-                        string file_complet = file_display_name.slice (to_search.length, file_display_name.length);
-                        string to_add = "";
-                        for (int i = 0; i < int.min (completion_text.length, file_complet.length); i++) {
-                            if (completion_text[i] == file_complet[i]) {
-                                to_add += completion_text[i].to_string ();
+                        multiple_completions = true;
+                        unichar c1 = {}, c2 = {};
+                        int index1 = 0, index2 = common_chars.length - 1;
+                        while (common_chars.get_next_char (ref index1, out c1) &&
+                               matching_filename.get_next_char (ref index2, out c2)) {
+
+                            if (c1 == c2) {
+                                common_chars += c1.to_string ();
                             } else {
                                 break;
                             }
                         }
 
-                        set_completion_text (to_add);
-                        multiple_completions = true;
-                    }
 
-                    string? str = null;
-                    if (text.length >= 1) {
-                        str = text.slice (0, text.length - to_search.length);
-                    }
-
-                    if (str == null) {
-                        return;
-                    }
-
-                    /* autocompletion is case insensitive so we have to change the first completed
-                     * parts to the match the filename (if unique match and if the user did not
-                     * deliberately enter an uppercase character).
-                     */
-                    if (!multiple_completions && !(to_search.down () != to_search)) {
-                        set_text (str + file_display_name.slice (0, to_search.length));
                     }
                 }
+            }
+        }
+
+        private void on_done_loading () {
+            if (multiple_completions) {
+                // We do not change the typed characters if there are multiple matches
+                set_completion_text (common_chars);
+            } else if (match_found) {
+                string str = Path.DIR_SEPARATOR_S;
+                if (text.length >= 1) {
+                    str = text.slice (0, text.length - to_complete.length);
+                }
+
+                // Change the typed characters to the match the filename when only one match.
+                set_text (str + matching_filename.slice (0, to_complete.length));
+                set_completion_text (
+                    matching_filename.slice (to_complete.length, matching_filename.length)
+                );
             }
         }
 
