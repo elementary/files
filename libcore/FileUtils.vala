@@ -1290,10 +1290,14 @@ namespace Files.FileUtils {
 
             if (temp_basename != Path.DIR_SEPARATOR_S) {
                 prefix = temp_basename + Path.DIR_SEPARATOR_S + prefix;
+            } else {
+                prefix = temp_basename + prefix;
             }
 
             if (temp_conflict_basename != Path.DIR_SEPARATOR_S) {
                 conflict_prefix = temp_conflict_basename + Path.DIR_SEPARATOR_S + conflict_prefix;
+            } else {
+                conflict_prefix = temp_conflict_basename + conflict_prefix;
             }
 
             count++;

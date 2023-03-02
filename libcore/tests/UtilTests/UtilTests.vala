@@ -360,7 +360,7 @@ void add_file_utils_tests () {
             "/A/B/folder",
             "X/A/B/folder"
         );
-        assert (result == "A/B/folder");
+        assert (result == "/A/B/folder");
 
         result = Files.FileUtils.disambiguate_uri (
             "X/A/B/folder",
