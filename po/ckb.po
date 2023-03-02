@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 18:18+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2022-09-21 10:08+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
@@ -2201,6 +2201,12 @@ msgstr "شوێن و ئامێرە بەردەستەکان بەهۆی تۆڕێکە�
 #: src/View/Sidebar/SidebarWindow.vala:84
 msgid "Connect Server…"
 msgstr "پەیوەستکردنی ڕاژە…"
+
+#: src/View/Sidebar/VolumeRow.vala:166
+#, fuzzy
+#| msgid "_Mount"
+msgid "Mount"
+msgstr "_ماونت"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"

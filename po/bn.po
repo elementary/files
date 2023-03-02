@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 18:18+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2017-11-17 05:55+0000\n"
 "Last-Translator: Subhadeep Jasu <subhajasu@gmail.com>\n"
 "Language-Team: Bengali <https://weblate.elementary.io/projects/files/files/"
@@ -2144,6 +2144,10 @@ msgstr ""
 #, fuzzy
 msgid "Connect Server…"
 msgstr "সার্ভারের সাথে সংযোগ করুন"
+
+#: src/View/Sidebar/VolumeRow.vala:166
+msgid "Mount"
+msgstr ""
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"

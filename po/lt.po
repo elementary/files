@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 18:18+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
@@ -2358,6 +2358,12 @@ msgstr ""
 #| msgid "Connect to Server…"
 msgid "Connect Server…"
 msgstr "Jungtis prie serverio…"
+
+#: src/View/Sidebar/VolumeRow.vala:166
+#, fuzzy
+#| msgid "_Mount"
+msgid "Mount"
+msgstr "Pri_jungti"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 18:18+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2021-06-05 20:46+0000\n"
 "Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
 "Language-Team: Danish <https://l10n.elementary.io/projects/files/files/da/>\n"
@@ -2277,6 +2277,12 @@ msgstr "Enheder og steder som er tilgængelige via et netværk"
 #: src/View/Sidebar/SidebarWindow.vala:84
 msgid "Connect Server…"
 msgstr "Forbind Server…"
+
+#: src/View/Sidebar/VolumeRow.vala:166
+#, fuzzy
+#| msgid "_Mount"
+msgid "Mount"
+msgstr "_Montér"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.elementary.files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 18:18+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2133,6 +2133,10 @@ msgstr ""
 
 #: src/View/Sidebar/SidebarWindow.vala:84
 msgid "Connect Server…"
+msgstr ""
+
+#: src/View/Sidebar/VolumeRow.vala:166
+msgid "Mount"
 msgstr ""
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
