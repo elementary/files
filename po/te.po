@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 18:18+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2016-06-30 19:09+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Telugu <te@li.org>\n"
@@ -2172,6 +2172,12 @@ msgstr ""
 #, fuzzy
 msgid "Connect Server…"
 msgstr "సేవకానికి అనుసంధానించు"
+
+#: src/View/Sidebar/VolumeRow.vala:166
+#, fuzzy
+#| msgid "_Mount"
+msgid "Mount"
+msgstr "మౌంటుచేయి (_M)"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy
