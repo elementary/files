@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"POT-Creation-Date: 2023-02-25 18:18+0000\n"
 "PO-Revision-Date: 2022-09-21 10:08+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
@@ -32,38 +32,48 @@ msgstr "کردنەوەی پەڕگەکان بەشێوەی تەنها بینین"
 msgid "Open File as Read Only"
 msgstr "کردنەوەی پەڕگە بە شێوەی تەنها بینین"
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/FileChooserDialog.vala:376
+#, fuzzy
+#| msgid "new file"
+msgid "Enter new filename"
+msgstr "پەڕگەی تازە"
+
+#: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr "دیاریکردن"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "کردنەوە"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr "پاشەکەوتکردن"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "ئاڵوگۆڕکردن ئۆڤەرڕایتی ناوەڕۆکەکەی دەکات."
+
+#: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
 msgstr "ئاڵوگۆڕ بە \"%s\"؟"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "ئاڵوگۆڕکردن گۆڕانکاری بەسەر ناوەڕۆکەکەیدا دەهێنێت"
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr "ئاڵوگۆکردنی ئامانجەکەی \"%s\"؟"
-
-#: filechooser-portal/Main.vala:364
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
-msgstr ""
-"ئاڵوگۆڕکردنی پەڕگەی ئامانج بۆ ئەم بەستەرە گۆڕانکاری بەسەر ناوەڕۆکەکەیدا "
-"دەهێنێت."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -174,7 +184,7 @@ msgstr "پەیوەستبوون…"
 msgid "Please verify your user details."
 msgstr "تکایە زانیارییەکانی بەکارهێنەرت دڵنیا بکەوە."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "ڕاژە لە کاتی سنوورداردا وەڵامی نەدایەوە"
 
@@ -358,37 +368,37 @@ msgstr "پەڕگەیەکی تر بە هەمان ناو لە \"%s\" هەیە."
 msgid "Merge"
 msgstr "یەکخستن"
 
-#: libcore/FileUtils.vala:89
+#: libcore/FileUtils.vala:83
 #, c-format
 msgid "Could not determine original location of \"%s\""
 msgstr "نەتوانرا شوێنی ڕەسەنی \"%s\" دیاریبکرێت"
 
-#: libcore/FileUtils.vala:90
+#: libcore/FileUtils.vala:84
 msgid "The item cannot be restored from trash"
 msgstr "دانەکە لە تەنەکە خۆڵەکەوە ناگەڕێندرێتەوە"
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:178
 #, c-format
 msgid "The original folder %s no longer exists"
 msgstr "چیتر بوخچە ڕەسەنەکە %s بوونی نییە"
 
-#: libcore/FileUtils.vala:185
+#: libcore/FileUtils.vala:179
 msgid "Would you like to recreate it?"
 msgstr "حەز دەکەیت دروستی بکەیتەوە؟"
 
-#: libcore/FileUtils.vala:190
+#: libcore/FileUtils.vala:184
 msgid "Ignore"
 msgstr "چەپاندن"
 
-#: libcore/FileUtils.vala:191
+#: libcore/FileUtils.vala:185
 msgid "No files that were in this folder will be restored"
 msgstr "هیچ پەڕگەیەک کە لەم بوخچەیەدا بووە، ناگەڕێندرێتەوە"
 
-#: libcore/FileUtils.vala:192
+#: libcore/FileUtils.vala:186
 msgid "Recreate"
 msgstr "دروستکردنەوە"
 
-#: libcore/FileUtils.vala:194
+#: libcore/FileUtils.vala:188
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
@@ -396,43 +406,43 @@ msgstr ""
 "بوخچەکە دروست دەکرێتەوە و پەڕگە دیاریکراوەکان کە لە بنچینەدا لەوێ بوون "
 "دەگەڕێندرێنەوە ناوی"
 
-#: libcore/FileUtils.vala:207
+#: libcore/FileUtils.vala:201
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
 "نەتوانرا بوخچە %s دروستبکرێتەوە. هەموو پەڕگەکان لەم بوخچەیەدا دەچەپێندرێن"
 
-#: libcore/FileUtils.vala:579
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "نەتوانرا ناوی بگۆڕدرێت بۆ '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:670
+#: libcore/FileUtils.vala:658
 #, c-format
 msgid "Today at %s"
 msgstr "ئەمڕۆ لە %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:678
+#: libcore/FileUtils.vala:666
 #, c-format
 msgid "Yesterday at %s"
 msgstr "دوێنێ لە %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:686
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr "%% لە %s"
 
-#: libcore/FileUtils.vala:1028
+#: libcore/FileUtils.vala:1016
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d چرکە"
 msgstr[1] "%'d چرکە"
 
-#: libcore/FileUtils.vala:1032 libcore/FileUtils.vala:1040
+#: libcore/FileUtils.vala:1020 libcore/FileUtils.vala:1028
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -441,19 +451,19 @@ msgstr[1] "%'d خولەک"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:1039 src/Dialogs/PropertiesWindow.vala:1242
+#: libcore/FileUtils.vala:1027 src/Dialogs/PropertiesWindow.vala:1242
 #, c-format
 msgid "%s, %s"
 msgstr "%s، %s"
 
-#: libcore/FileUtils.vala:1039
+#: libcore/FileUtils.vala:1027
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d کاتژمێر"
 msgstr[1] "%'d کاتژمێر"
 
-#: libcore/FileUtils.vala:1043
+#: libcore/FileUtils.vala:1031
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -461,22 +471,22 @@ msgstr[0] "بە نزیکەیی %'d کاتژمێر"
 msgstr[1] "بە نزیکەیی %'d کاتژمێر"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1051
+#: libcore/FileUtils.vala:1039
 msgid "copy"
 msgstr "لەبەرگرتنەوە"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1053
+#: libcore/FileUtils.vala:1041
 msgid "link"
 msgstr "لینک"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1055
+#: libcore/FileUtils.vala:1043
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1057
+#: libcore/FileUtils.vala:1045
 msgid ")"
 msgstr ")"
 
@@ -1816,7 +1826,7 @@ msgid "Open in"
 msgstr "کردنەوە لە"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "کردنەوە بە"
 
@@ -1954,7 +1964,7 @@ msgstr "بڕینی دیاریکراوەکان لەجیاتی"
 msgid "Cannot paste files here"
 msgstr "ناتوانیت پەڕگەکان لێرە پەیست بکەیت"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:391
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
 msgid "This Folder Does Not Exist"
 msgstr "ئەم بوخچەیە بوونی نییە"
 
@@ -2016,59 +2026,59 @@ msgstr "هیچ پەڕگەیەکی ئەم دواییە نییە"
 msgid "Access Denied"
 msgstr "دەستگەیشتنت نییە"
 
-#: src/View/ViewContainer.vala:370 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:368 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "ماڵ"
 
-#: src/View/ViewContainer.vala:392
+#: src/View/ViewContainer.vala:389
 msgid "You cannot create a folder here."
 msgstr "ناتوانیت لێرە بوخچە دروست بکەیت."
 
-#: src/View/ViewContainer.vala:395
+#: src/View/ViewContainer.vala:392
 msgid "The network is unavailable"
 msgstr "تۆڕ بەردەست نییە"
 
-#: src/View/ViewContainer.vala:396
+#: src/View/ViewContainer.vala:393
 msgid "A working network is needed to reach this folder"
 msgstr "تۆڕێکی کارکردوو پێویستە بۆ گەیشتن بەم بوخچەیە"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Belong to You"
 msgstr "ئەم بوخچەیە هی تۆ نییە"
 
-#: src/View/ViewContainer.vala:400
+#: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr "مۆڵەتی بینینی ئەم بوخچەیەت نییە."
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
 msgstr "نەتوانرا ماونتی بوخچە بکرێت"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:400
 msgid "Could not connect to the server for this folder."
 msgstr "نەتوارا بە ڕاژەوە پەیوەست بکرێت بۆ ئەم بوخچەیە."
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:403
 msgid "Unable to Display Folder Contents"
 msgstr "نەتوانرا ناوەڕۆکی بوخچە پشان بدرێت"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:404
 msgid "The operation timed out."
 msgstr "کارەکە تایم ئاوت بوو."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Show Folder"
 msgstr "نەتوانرا بوخچە پشان بدرێت"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:407
 msgid "The server for this folder could not be located."
 msgstr "شوێنی ڕاژە بۆ ئەم بوخچەیە نادۆزرێتەوە."
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:418
 msgid "File not Found"
 msgstr "پەڕگە نەدۆزرایەوە"
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:419
 msgid "The file selected no longer exists."
 msgstr "پەڕگەی دیاریکراو چیتر بوونی نییە."
 
@@ -2084,7 +2094,7 @@ msgstr "داخستنی تاب"
 msgid "Duplicate Tab"
 msgstr "بەدووکردنی تاب"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "کردنەوەی لە پەنجەرەی تازەدا"
 
@@ -2196,16 +2206,16 @@ msgstr "پەیوەستکردنی ڕاژە…"
 msgid "Bind mount"
 msgstr "بایند ماونت"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "لێرە بگەڕێ یان شوێنێک بنووسە"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "کردنەوە لە تابێکی نوێدا"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "کردنەوە لە ئەپڵیکەیشنەکانی تر…"
 
@@ -2374,6 +2384,17 @@ msgstr "لەخوار ئەم بوخچەیەوە"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "بەکارهاتووی ئەم دواییە"
+
+#, c-format
+#~ msgid "Replace the target of “%s”?"
+#~ msgstr "ئاڵوگۆکردنی ئامانجەکەی \"%s\"؟"
+
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr ""
+#~ "ئاڵوگۆڕکردنی پەڕگەی ئامانج بۆ ئەم بەستەرە گۆڕانکاری بەسەر ناوەڕۆکەکەیدا "
+#~ "دەهێنێت."
 
 #, fuzzy
 #~| msgid "File Operations"

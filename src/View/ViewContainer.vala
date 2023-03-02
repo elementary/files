@@ -344,7 +344,6 @@ namespace Files.View {
         }
 
        private void update_tab_name () {
-            string? slot_path = Uri.unescape_string (this.uri);
             string tab_name = Files.INVALID_TAB_NAME;
 
             if (slot_path != null) {
@@ -355,7 +354,7 @@ namespace Files.View {
                 } else if (protocol == "" && path == Environment.get_home_dir ()) {
                     tab_name = _("Home");
                 } else {
-                    tab_name = path;
+                    tab_name = Uri.unescape_string (path);
                 }
             }
 
