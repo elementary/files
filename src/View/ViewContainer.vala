@@ -344,18 +344,16 @@ namespace Files.View {
         }
 
        private void update_tab_name () {
-            string tab_name = Files.INVALID_TAB_NAME;
+            var tab_name = Files.INVALID_TAB_NAME;
 
-            if (slot_path != null) {
-                string protocol, path;
-                FileUtils.split_protocol_from_path (slot_path, out protocol, out path);
-                if (path == "" || path == Path.DIR_SEPARATOR_S) {
-                    tab_name = Files.protocol_to_name (protocol);
-                } else if (protocol == "" && path == Environment.get_home_dir ()) {
-                    tab_name = _("Home");
-                } else {
-                    tab_name = Uri.unescape_string (path);
-                }
+            string protocol, path;
+            FileUtils.split_protocol_from_path (this.uri, out protocol, out path);
+            if (path == "" || path == Path.DIR_SEPARATOR_S) {
+                tab_name = Files.protocol_to_name (protocol);
+            } else if (protocol == "" && path == Environment.get_home_dir ()) {
+                tab_name = _("Home");
+            } else {
+                tab_name = Uri.unescape_string (path);
             }
 
             this.tab_name = tab_name;
