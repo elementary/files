@@ -131,7 +131,6 @@ public class Files.Directory : Object {
             }
         }
 
-        /* Note: cache_lookup creates directory_cache if necessary */
         var dir = cache_lookup (creation_key);
         /* Both local and non-local files can be cached */
         if (dir == null) {
@@ -196,8 +195,7 @@ public class Files.Directory : Object {
     }
 
     ~Directory () {
-        warning ("Directory destruct %s", file.uri);
-
+        debug ("Directory destruct %s", file.uri);
         if (is_trash) {
             disconnect_volume_monitor_signals ();
         }
@@ -1128,17 +1126,18 @@ public class Files.Directory : Object {
         }
     }
 
+    /* Files.Directory.directory_cache related functions */
     public static Directory? cache_lookup (GLib.File file) {
-        if (directory_cache == null) { // Only happens once on startup.  Directory gets added on creation
+        // Cache may be null on startup. Static construct only runs when first
+        // Directory is constructed
+        if (directory_cache == null) {
             return null;
         }
 
         var cached_dir = directory_cache.lookup (file);
         if (cached_dir != null) {
             if (cached_dir is Directory && cached_dir.file != null) {
-                debug ("found cached dir %s", cached_dir.file.uri);
                 if (cached_dir.file.info == null && cached_dir.can_load) {
-                    debug ("updating cached file info");
                     cached_dir.file.query_update (); /* This is synchronous and causes blocking */
                 }
             } else {
@@ -1166,9 +1165,15 @@ public class Files.Directory : Object {
             dir.file.changed ();
         }
 
+        // In case dir was never initialised remove both creation_key and
+        // location.
         lock (directory_cache) {
-            if (directory_cache.remove (dir.creation_key)) {
+            if ((directory_cache.lookup (dir.location) != null) ||
+                (directory_cache.lookup (dir.creation_key) != null)) {
+
                 directory_cache.remove (dir.location);
+                directory_cache.remove (dir.creation_key);
+
                 dir.removed_from_cache = true;
                 return true;
             }
@@ -1191,6 +1196,11 @@ public class Files.Directory : Object {
         }
 
         return removed;
+    }
+
+    // For testing only
+    public static void empty_dir_cache () {
+        Files.Directory.directory_cache.remove_all ();
     }
 
     public bool has_parent () {
