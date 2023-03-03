@@ -579,9 +579,8 @@ public class Files.Directory : Object {
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
         if (is_last) {
-            var dir = (Directory) object;
+            var dir = (Directory) object; // Adds a reference temporarily
             // Replace the toggle ref with a normal ref before removing from cache
-            dir.ref ();
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
             if (!dir.removed_from_cache) {
                 Directory.remove_dir_from_cache (dir);
