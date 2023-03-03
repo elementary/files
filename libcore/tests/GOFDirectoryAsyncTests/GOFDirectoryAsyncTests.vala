@@ -96,7 +96,7 @@ Directory load_populated_local_test (string test_dir_path, MainLoop loop) {
 
     var dir = setup_temp_async (test_dir_path, n_files);
 
-    assert (dir.ref_count == 1); //Extra ref from pending cache;
+    assert (dir.ref_count == 2); //Extra ref from pending cache;
 
     dir.file_loaded.connect (() => {
         file_loaded_signal_count++;
