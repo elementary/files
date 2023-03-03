@@ -157,7 +157,9 @@ public class Files.Directory : Object {
             disconnect_volume_monitor_signals ();
         }
 
-        file.set_expanded (false); // Ensure any remaining folder icons are not displayed as expanded
+        if (file != null && file.is_directory) {
+            file.set_expanded (false); // Ensure any remaining folder icons are not displayed as expanded
+        }
     }
 
     /** Views call the following function with null parameter - file_loaded and done_loading
