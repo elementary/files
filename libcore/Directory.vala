@@ -497,8 +497,8 @@ public class Files.Directory : Object {
             // Do not add toggle until cached
             lock (directory_cache) {
                 // Creation key will normally be the final location but check anyway.
-                if (creation_key != location) {
-                    warning ("creation key differs from final location");
+                if (!(creation_key.equal (location))) {
+                    warning ("creation key %s differs from final location %s", creation_key.get_uri (), location.get_uri ());
                     directory_cache.remove (creation_key);
                 }
 
