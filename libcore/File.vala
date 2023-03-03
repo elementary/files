@@ -157,7 +157,7 @@ public class Files.File : GLib.Object {
         return null;
     }
 
-    public File (GLib.File location, GLib.File? dir = null) {
+    public File (GLib.File location, GLib.File dir) {
         Object (
             location: location,
             uri: location.get_uri (),
