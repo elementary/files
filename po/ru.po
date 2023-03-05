@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-02 12:23+0000\n"
-"PO-Revision-Date: 2023-02-24 10:30+0000\n"
-"Last-Translator: lenemter <lenemter@gmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
-">\n"
+"PO-Revision-Date: 2023-03-04 13:25+0000\n"
+"Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2210,10 +2210,8 @@ msgid "Connect Server…"
 msgstr "Подключить сервер…"
 
 #: src/View/Sidebar/VolumeRow.vala:166
-#, fuzzy
-#| msgid "_Mount"
 msgid "Mount"
-msgstr "_Подключить"
+msgstr "Подключить"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
