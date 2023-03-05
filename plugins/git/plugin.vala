@@ -84,7 +84,6 @@ public class Files.Plugins.Git : Files.Plugins.Base {
     }
 
     public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
-
         if (!view.directory.is_local) {
             debug ("Git plugin ignoring non-local folder");
             return;
@@ -140,6 +139,7 @@ public class Files.Plugins.Git : Files.Plugins.Base {
                     repo_info = new Files.GitRepoInfo (git_repo);
                     repo_map.insert (repo_uri, repo_info);
                 } else {
+                    repo_info.get_status_list ();
                 }
 
                 if (!child_map.contains (dir_uri)) {
