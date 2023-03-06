@@ -896,24 +896,20 @@ public class Files.File : GLib.Object {
             var path = location.get_path ();
             var parent_path = FileUtils.get_parent_path_from_path (path);
             context.setenv ("PWD", Shell.quote (parent_path));
-
              // Try to launch in elementary terminal (if installed)
             var elementary_terminal_apps = DesktopAppInfo.search ("io.elementary.terminal");
-            if (elementary_terminal_apps.length > 0) {
+            // Terminal cannot handle executables with spaces but spaces in the working
+            // directory are handled.
+            if (elementary_terminal_apps.length > 0 &&
+               !location.get_basename ().contains (" ")) {
+
                 try {
-                    /* Because io.elementary.terminal does not deal with spaces in the command
-                     * and removes escaping we have to double escape spaces */
-                    // var command = "io.elementary.terminal -wn %s -x %s".printf (
-                    //     parent_path.replace ("file://", "").replace (" ", "\\\\ "),
-                    //     path.replace (" ", "\\\\ ")
-                    // );
-                    var command = "io.elementary.terminal -wn %s -x %s".printf (
+                    var command = "io.elementary.terminal -wn %s -e %s".printf (
                         Shell.quote (parent_path.replace ("file://", "")),
                         Shell.quote ("./" + location.get_basename ())
                     );
 
-                    warning ("Terminal command is %s", command);
-
+                    debug ("Terminal command is %s", command);
                     app_info = GLib.AppInfo.create_from_commandline (
                         command, this.basename, GLib.AppInfoCreateFlags.NONE
                     );
@@ -925,6 +921,7 @@ public class Files.File : GLib.Object {
                     throw prefixed_error;
                 }
             } else { // Fallback to launch without terminal
+                warning ("Could not launch command in terminal as it contains spaces - trying to launch without terminal");
                 try {
                     app_info = GLib.AppInfo.create_from_commandline (
                        Shell.quote (path), null, GLib.AppInfoCreateFlags.NONE
