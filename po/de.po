@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
-"PO-Revision-Date: 2023-02-15 08:39+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
+"PO-Revision-Date: 2023-02-27 21:25+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -36,39 +36,47 @@ msgstr "Dateien schreibgeschützt öffnen"
 msgid "Open File as Read Only"
 msgstr "Datei schreibgeschützt öffnen"
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/FileChooserDialog.vala:376
+msgid "Enter new filename"
+msgstr "Neuen Dateinamen eingeben"
+
+#: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr "Auswählen"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "Öffnen"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr "Speichern"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr "Diese Datei ist eine Verknüpfung mit »%s«"
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr "Diese Datei ist eine Verknüpfung."
+
+#: filechooser-portal/Main.vala:454
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr ""
+"Beim Ersetzen einer Verknüpfung wird der Inhalt des Verknüpfungsziel "
+"überschrieben. Die Verknüpfung bleibt erhalten"
+
+#: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
 msgstr "»%s« ersetzen?"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr ""
 "Falls Sie diese Datei ersetzen, wird ihr aktueller Inhalt überschrieben"
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr "Ziel von »%s« ersetzen?"
-
-#: filechooser-portal/Main.vala:364
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
-msgstr ""
-"Falls Sie die Zieldatei für diese Verknüpfung ersetzen, wird ihr "
-"aktuellerInhalt überschrieben."
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -179,7 +187,7 @@ msgstr "Verbinden …"
 msgid "Please verify your user details."
 msgstr "Bitte überprüfen Sie Ihre Angaben."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "Der Server hat nicht innerhalb des Zeitlimits geantwortet"
 
@@ -363,39 +371,39 @@ msgstr "Eine Datei gleichen Namens existiert bereits in »%s«."
 msgid "Merge"
 msgstr "Zusammenführen"
 
-#: libcore/FileUtils.vala:89
+#: libcore/FileUtils.vala:83
 #, c-format
 msgid "Could not determine original location of \"%s\""
 msgstr "Ursprünglicher Ort von »%s« konnte nicht ermittelt werden"
 
-#: libcore/FileUtils.vala:90
+#: libcore/FileUtils.vala:84
 msgid "The item cannot be restored from trash"
 msgstr "Das Objekt kann aus dem Papierkorb nicht wiederhergestellt werden"
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:178
 #, c-format
 msgid "The original folder %s no longer exists"
 msgstr "Der ursprüngliche Ordner %s existiert nicht mehr"
 
-#: libcore/FileUtils.vala:185
+#: libcore/FileUtils.vala:179
 msgid "Would you like to recreate it?"
 msgstr "Soll er erneut angelegt werden?"
 
-#: libcore/FileUtils.vala:190
+#: libcore/FileUtils.vala:184
 msgid "Ignore"
 msgstr "Ignorieren"
 
-#: libcore/FileUtils.vala:191
+#: libcore/FileUtils.vala:185
 msgid "No files that were in this folder will be restored"
 msgstr ""
 "Dateien, die in diesem Ordner enthalten waren, werden nicht wieder "
 "hergestellt"
 
-#: libcore/FileUtils.vala:192
+#: libcore/FileUtils.vala:186
 msgid "Recreate"
 msgstr "Erneut anlegen"
 
-#: libcore/FileUtils.vala:194
+#: libcore/FileUtils.vala:188
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
@@ -403,44 +411,44 @@ msgstr ""
 "Der Ordner wird erneut angelegt und gewählte Dateien, die ursprünglich darin "
 "enthalten waren, werden darin wieder hergestellt"
 
-#: libcore/FileUtils.vala:207
+#: libcore/FileUtils.vala:201
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
 "Ordner %s konnte nicht erneut angelegt werden. Alle Dateien in diesem Ordner "
 "werden ignoriert"
 
-#: libcore/FileUtils.vala:579
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Zu »%s« umzubenennen ist fehlgeschlagen"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:670
+#: libcore/FileUtils.vala:658
 #, c-format
 msgid "Today at %s"
 msgstr "Heute um %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:678
+#: libcore/FileUtils.vala:666
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Gestern um %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:686
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A um %s"
 
-#: libcore/FileUtils.vala:1028
+#: libcore/FileUtils.vala:1016
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d Sekunde"
 msgstr[1] "%'d Sekunden"
 
-#: libcore/FileUtils.vala:1032 libcore/FileUtils.vala:1040
+#: libcore/FileUtils.vala:1020 libcore/FileUtils.vala:1028
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -449,19 +457,19 @@ msgstr[1] "%'d Minuten"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:1039 src/Dialogs/PropertiesWindow.vala:1242
+#: libcore/FileUtils.vala:1027 src/Dialogs/PropertiesWindow.vala:1242
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:1039
+#: libcore/FileUtils.vala:1027
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d Stunde"
 msgstr[1] "%'d Stunden"
 
-#: libcore/FileUtils.vala:1043
+#: libcore/FileUtils.vala:1031
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -469,22 +477,22 @@ msgstr[0] "ungefähr %'d Stunde"
 msgstr[1] "ungefähr %'d Stunden"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1051
+#: libcore/FileUtils.vala:1039
 msgid "copy"
 msgstr "Kopie"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1053
+#: libcore/FileUtils.vala:1041
 msgid "link"
 msgstr "Verknüpfung"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1055
+#: libcore/FileUtils.vala:1043
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1057
+#: libcore/FileUtils.vala:1045
 msgid ")"
 msgstr ")"
 
@@ -1211,179 +1219,116 @@ msgid "Empty _Trash"
 msgstr "_Papierkorb leeren"
 
 #: libcore/UndoManager.vala:22
-#, fuzzy
-#| msgid "Copy"
 msgid "Undo Copy"
-msgstr "Kopieren"
+msgstr "Kopieren rückgängig machen"
 
 #: libcore/UndoManager.vala:24
-#, fuzzy
-#| msgid "Duplicate Tab"
 msgid "Undo Duplicate"
-msgstr "Tab duplizieren"
+msgstr "Duplizieren rückgängig machen"
 
 #: libcore/UndoManager.vala:26
-#, fuzzy
-#| msgid "Undo Close Tab"
 msgid "Undo Move"
-msgstr "Rückgängig: Tab schließen"
+msgstr "Verschieben rückgängig machen"
 
 #: libcore/UndoManager.vala:28
-#, fuzzy
-#| msgid "Rename"
 msgid "Undo Rename"
-msgstr "Umbenennen"
+msgstr "Umbenennung rückgängig machen"
 
 #: libcore/UndoManager.vala:30
-#, fuzzy
-#| msgid "_Undo creation of an empty file"
 msgid "Undo Create Empty File"
-msgstr "Erstellen einer leeren Datei  _rückgängig machen"
+msgstr "Erstellen einer leeren Dateirückgängig machen"
 
 #: libcore/UndoManager.vala:32
-#, fuzzy
-#| msgid "_Undo creation of a file from template"
 msgid "Undo Create File from Template"
-msgstr "Erstellen einer leeren Datei aus Vorlage  _rückgängig machen"
+msgstr "Erstellen einer leeren Datei aus Vorlage rückgängig machen"
 
 #: libcore/UndoManager.vala:34
-#, fuzzy
-#| msgid "_Undo creation of %d folder"
-#| msgid_plural "_Undo creation of %d folders"
 msgid "Undo Create Folder"
-msgstr "Erstellen von %d Ordner _rückgängig machen"
+msgstr "Erstellen von Ordner rückgängig machen"
 
 #: libcore/UndoManager.vala:36
-#, fuzzy
-#| msgid "Move to Trash"
 msgid "Undo Move to Trash"
-msgstr "In den Papierkorb verschieben"
+msgstr "Verschieben In den Papierkorb rückgängig machen"
 
 #: libcore/UndoManager.vala:38
-#, fuzzy
-#| msgid "_Undo create link to %d item"
-#| msgid_plural "_Undo create link to %d items"
 msgid "Undo Create Link"
-msgstr "Erstellen einer Verknüpfung für %d Objekt _rückgängig machen"
+msgstr "Erstellen einer Verknüpfung rückgängig machen"
 
 #: libcore/UndoManager.vala:40
-#, fuzzy
-#| msgid "Restore from Trash"
 msgid "Undo Restore from Trash"
-msgstr "Aus dem Papierkorb wiederherstellen"
+msgstr "Wiederherstellen aus dem Papierkorb rückgängig machen"
 
 #: libcore/UndoManager.vala:42
-#, fuzzy
-#| msgid "Setting permissions"
 msgid "Undo Set Permissions"
-msgstr "Zugriffsrechte werden festgelegt"
+msgstr "Setzen von Zugriffsrechten rückgängig machen"
 
 #: libcore/UndoManager.vala:44
-#, fuzzy
-#| msgid "Undo change permissions of %d item"
-#| msgid_plural "Undo change permissions of %d items"
 msgid "Undo Set Permissions Recursively"
-msgstr "Änderung der Zugriffsrechte von %d Objekt rückgängig machen"
+msgstr "Rekursives Ändern der Zugriffsrechten rückgängig machen"
 
 #: libcore/UndoManager.vala:46
-#, fuzzy
-#| msgid "Undo change owner of %d item"
-#| msgid_plural "Undo change owner of %d items"
 msgid "Undo Change Owner"
-msgstr "Veränderung der Besitzer von %d Objekt rückgängig machen"
+msgstr "Ändern des Eigentümers rückgängig machen"
 
 #: libcore/UndoManager.vala:48
-#, fuzzy
-#| msgid "Undo change group of %d item"
-#| msgid_plural "Undo change group of %d items"
 msgid "Undo Change Group"
-msgstr "Veränderung der Gruppe von %d Objekt rückgängig machen"
+msgstr "Ändern der Gruppe rückgängig machen"
 
 #: libcore/UndoManager.vala:57
-#, fuzzy
-#| msgid "Copy"
 msgid "Redo Copy"
-msgstr "Kopieren"
+msgstr "Kopieren erneut vornehmen"
 
 #: libcore/UndoManager.vala:59
-#, fuzzy
-#| msgid "Duplicate Tab"
 msgid "Redo Duplicate"
-msgstr "Tab duplizieren"
+msgstr "Duplizieren erneut vornehmen"
 
 #: libcore/UndoManager.vala:61
 msgid "Redo Move"
-msgstr ""
+msgstr "Verschieben erneut vornehmen"
 
 #: libcore/UndoManager.vala:63
-#, fuzzy
-#| msgid "Rename"
 msgid "Redo Rename"
-msgstr "Umbenennen"
+msgstr "Umbenennen erneut vornehmen"
 
 #: libcore/UndoManager.vala:65
-#, fuzzy
-#| msgid "_Redo creation of an empty file"
 msgid "Redo Create Empty File"
-msgstr "Erstellen einer leeren Datei wiede_rholen"
+msgstr "Erstellen einer leeren Datei erneut vornehmen"
 
 #: libcore/UndoManager.vala:67
-#, fuzzy
-#| msgid "_Redo creation of a file from template"
 msgid "Redo Create File from Template"
-msgstr "Erstellen einer Datei aus Vorlage wiede_rholen"
+msgstr "Erstellen einer Datei aus Vorlage erneut vornehmen"
 
 #: libcore/UndoManager.vala:69
-#, fuzzy
-#| msgid "Failed to create the folder"
 msgid "Redo Create Folder"
-msgstr "Das Anlegen des Ordners ist fehlgeschlagen"
+msgstr "Erstellen eines Ordners erneut vornehmen"
 
 #: libcore/UndoManager.vala:71
-#, fuzzy
-#| msgid "Move to Trash"
 msgid "Redo Move to Trash"
-msgstr "In den Papierkorb verschieben"
+msgstr "Verschieben in den Papierkorb erneut vornehmen"
 
 #: libcore/UndoManager.vala:73
-#, fuzzy
-#| msgid "_Redo create link to %d item"
-#| msgid_plural "_Redo create link to %d items"
 msgid "Redo Create Link"
-msgstr "Erstellen von Verknüpfung für %d Objekt wiederholen"
+msgstr "Erstellen von Verknüpfung erneut vornehmen"
 
 #: libcore/UndoManager.vala:75
-#, fuzzy
-#| msgid "Restore from Trash"
 msgid "Redo Restore from Trash"
-msgstr "Aus dem Papierkorb wiederherstellen"
+msgstr "Wiederherstellen aus dem Papierkorb erneut vornehmen"
 
 #: libcore/UndoManager.vala:77
-#, fuzzy
-#| msgid "Setting permissions"
 msgid "Redo Set Permissions"
-msgstr "Zugriffsrechte werden festgelegt"
+msgstr "Setzen der Zugriffsrechte erneut vornehmen"
 
 #: libcore/UndoManager.vala:79
-#, fuzzy
-#| msgid "Redo change permissions of %d item"
-#| msgid_plural "Redo change permissions of %d items"
 msgid "Redo Set Permissions Recursively"
-msgstr "Änderung der Zugriffsrechte von %d Objekt wiederholen"
+msgstr "Rekursive Änderung der Zugriffsrechte erneut vornehmen"
 
 #: libcore/UndoManager.vala:81
-#, fuzzy
-#| msgid "Redo change owner of %d item"
-#| msgid_plural "Redo change owner of %d items"
 msgid "Redo Change Owner"
-msgstr "Veränderung des Besitzers von %d Objekt wiede_rholen"
+msgstr "Ändern des Eigentümers erneut vornehmen"
 
 #: libcore/UndoManager.vala:83
-#, fuzzy
-#| msgid "Redo change group of %d item"
-#| msgid_plural "Redo change group of %d items"
 msgid "Redo Change Group"
-msgstr "Veränderung der Gruppe von %d Objekt wiede_rholen"
+msgstr "Änderung der Gruppe erneut vornehmen"
 
 #: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
@@ -1767,7 +1712,7 @@ msgstr "Öffnen mit:"
 
 #: src/Dialogs/PropertiesWindow.vala:938 src/Dialogs/PropertiesWindow.vala:945
 msgid "Owner:"
-msgstr "Besitzer:"
+msgstr "Eigentümer:"
 
 #: src/Dialogs/PropertiesWindow.vala:939 src/Dialogs/PropertiesWindow.vala:948
 msgid "Group:"
@@ -1896,7 +1841,7 @@ msgid "Open in"
 msgstr "Öffnen in"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Öffnen mit"
 
@@ -2036,7 +1981,7 @@ msgstr "Die ausgewählten Objekte wurden stattdessen ausgeschnitten"
 msgid "Cannot paste files here"
 msgstr "An diesem Ort können keine Dateien eingefügt werden"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:391
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
 msgid "This Folder Does Not Exist"
 msgstr "Dieser Ordner ist nicht vorhanden"
 
@@ -2098,63 +2043,63 @@ msgstr "Es gibt keine zuletzt verwendeten Dateien"
 msgid "Access Denied"
 msgstr "Zugriff verweigert"
 
-#: src/View/ViewContainer.vala:370 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:368 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "Persönlicher Ordner"
 
-#: src/View/ViewContainer.vala:392
+#: src/View/ViewContainer.vala:389
 msgid "You cannot create a folder here."
 msgstr "Sie können hier kein Ordner erstellen."
 
-#: src/View/ViewContainer.vala:395
+#: src/View/ViewContainer.vala:392
 msgid "The network is unavailable"
 msgstr "Netzwerk nicht verfügbar"
 
-#: src/View/ViewContainer.vala:396
+#: src/View/ViewContainer.vala:393
 msgid "A working network is needed to reach this folder"
 msgstr ""
 "Um auf diesen Ordner zugreifen zu können, wird funktionierendes Netzwerk "
 "benötigt,"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Belong to You"
 msgstr "Dieser Ordner gehört nicht Ihnen"
 
-#: src/View/ViewContainer.vala:400
+#: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr ""
 "Sie haben nicht die notwendigen Zugriffsrechte, diesen Ordner zu betrachten."
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
 msgstr "Der Ordner kann nicht eingehängt werden"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:400
 msgid "Could not connect to the server for this folder."
 msgstr ""
 "Verbindung zum Server für diesen Ordner konnte nicht hergestellt werden."
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:403
 msgid "Unable to Display Folder Contents"
 msgstr "Ordnerinhalt kann nicht angezeigt werden"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:404
 msgid "The operation timed out."
 msgstr "Zeitüberschreitung."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Show Folder"
 msgstr "Dieser Ordner kann nicht angezeigt werden"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:407
 msgid "The server for this folder could not be located."
 msgstr "Der Server für diesen Ordner konnte nicht gefunden werden."
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:418
 msgid "File not Found"
 msgstr "Datei nicht gefuden"
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:419
 msgid "The file selected no longer exists."
 msgstr "Die ausgewählte Datei existiert nicht mehr."
 
@@ -2170,7 +2115,7 @@ msgstr "Tab schließen"
 msgid "Duplicate Tab"
 msgstr "Tab duplizieren"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "In neuem Fenster öffnen"
 
@@ -2278,20 +2223,26 @@ msgstr "Über ein Netzwerk verfügbare Geräte und Orte"
 msgid "Connect Server…"
 msgstr "Mit Server verbinden …"
 
+#: src/View/Sidebar/VolumeRow.vala:166
+#, fuzzy
+#| msgid "_Mount"
+msgid "Mount"
+msgstr "_Einhängen"
+
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
 msgstr "Mit »bind« einhängen"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Suche oder Pfad eingeben"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "In neuem Tab öffnen"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "In einer anderen Anwendung öffnen …"
 
@@ -2348,16 +2299,12 @@ msgid "Menu"
 msgstr "Menü"
 
 #: src/View/Widgets/HeaderBar.vala:283
-#, fuzzy
-#| msgid "The operation timed out."
 msgid "No operation to undo"
-msgstr "Zeitüberschreitung."
+msgstr "Kein Vorgang kann rückgängig gemacht werden"
 
 #: src/View/Widgets/HeaderBar.vala:290
-#, fuzzy
-#| msgid "The operation timed out."
 msgid "No operation to redo"
-msgstr "Zeitüberschreitung."
+msgstr "Kein Vorgang kann erneut vorgenommen werden"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2450,6 +2397,17 @@ msgstr "Unterhalb dieses Ordners"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Zuletzt verwendet"
+
+#, c-format
+#~ msgid "Replace the target of “%s”?"
+#~ msgstr "Ziel von »%s« ersetzen?"
+
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr ""
+#~ "Falls Sie die Zieldatei für diese Verknüpfung ersetzen, wird ihr "
+#~ "aktuellerInhalt überschrieben."
 
 #~ msgid "Undo Last File Operation"
 #~ msgstr "Letzte Dateioperation rückgängig machen"

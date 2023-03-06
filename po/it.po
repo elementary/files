@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2021-01-26 01:51+0000\n"
 "Last-Translator: ohcpp <cioppa10@gmail.com>\n"
 "Language-Team: Italian <https://l10n.elementary.io/projects/files/files/it/"
@@ -37,42 +37,52 @@ msgstr ""
 msgid "Open File as Read Only"
 msgstr ""
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/FileChooserDialog.vala:376
+#, fuzzy
+#| msgid "new file"
+msgid "Enter new filename"
+msgstr "nuovo file"
+
+#: filechooser-portal/Main.vala:107
 #, fuzzy
 #| msgid " selected"
 msgid "Select"
 msgstr " selezionati"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "Apri"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr ""
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "Sostituendolo il suo contenuto verrà sovrascritto."
+
+#: filechooser-portal/Main.vala:456
 #, fuzzy, c-format
 #| msgid "Replace file \"%s\"?"
 msgid "Replace “%s”?"
 msgstr "Sostituire il file \"%s\"?"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 #, fuzzy
 #| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "Sostituendolo il suo contenuto verrà sovrascritto."
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr ""
-
-#: filechooser-portal/Main.vala:364
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
 msgstr "Sostituendolo il suo contenuto verrà sovrascritto."
 
 #: libcore/ConnectServerDialog.vala:46
@@ -188,7 +198,7 @@ msgstr "Collegamento in corso…"
 msgid "Please verify your user details."
 msgstr "Verifica i tuoi dettagli utente."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "Il server non ha risposto entro il limite di tempo"
 
@@ -381,82 +391,82 @@ msgstr "In \"%s\" è già presente un altro file con lo stesso nome."
 msgid "Merge"
 msgstr "Unisci"
 
-#: libcore/FileUtils.vala:89
+#: libcore/FileUtils.vala:83
 #, fuzzy, c-format
 #| msgid "Could not determine original location of \"%s\" "
 msgid "Could not determine original location of \"%s\""
 msgstr "Non è possibile determinare la posizione originale di \"%s\" "
 
-#: libcore/FileUtils.vala:90
+#: libcore/FileUtils.vala:84
 msgid "The item cannot be restored from trash"
 msgstr "Non è possibile ripristinare l'elemento dal cestino"
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:178
 #, fuzzy, c-format
 #| msgid "The file selected no longer exists."
 msgid "The original folder %s no longer exists"
 msgstr "Il file selezionato non esiste più."
 
-#: libcore/FileUtils.vala:185
+#: libcore/FileUtils.vala:179
 msgid "Would you like to recreate it?"
 msgstr ""
 
-#: libcore/FileUtils.vala:190
+#: libcore/FileUtils.vala:184
 msgid "Ignore"
 msgstr "Ignora"
 
-#: libcore/FileUtils.vala:191
+#: libcore/FileUtils.vala:185
 msgid "No files that were in this folder will be restored"
 msgstr ""
 
-#: libcore/FileUtils.vala:192
+#: libcore/FileUtils.vala:186
 #, fuzzy
 #| msgid "Create"
 msgid "Recreate"
 msgstr "Crea"
 
-#: libcore/FileUtils.vala:194
+#: libcore/FileUtils.vala:188
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
 
-#: libcore/FileUtils.vala:207
+#: libcore/FileUtils.vala:201
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
 
-#: libcore/FileUtils.vala:579
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Impossibile rinominare in '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:670
+#: libcore/FileUtils.vala:658
 #, c-format
 msgid "Today at %s"
 msgstr "Oggi alle %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:678
+#: libcore/FileUtils.vala:666
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Ieri alle %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:686
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr "Il %%A alle %s"
 
-#: libcore/FileUtils.vala:1028
+#: libcore/FileUtils.vala:1016
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d secondo"
 msgstr[1] "%'d secondi"
 
-#: libcore/FileUtils.vala:1032 libcore/FileUtils.vala:1040
+#: libcore/FileUtils.vala:1020 libcore/FileUtils.vala:1028
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -465,19 +475,19 @@ msgstr[1] "%'d minuti"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:1039 src/Dialogs/PropertiesWindow.vala:1242
+#: libcore/FileUtils.vala:1027 src/Dialogs/PropertiesWindow.vala:1242
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:1039
+#: libcore/FileUtils.vala:1027
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d ora"
 msgstr[1] "%'d ore"
 
-#: libcore/FileUtils.vala:1043
+#: libcore/FileUtils.vala:1031
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -485,26 +495,26 @@ msgstr[0] "circa %'d ora"
 msgstr[1] "circa %'d ore"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1051
+#: libcore/FileUtils.vala:1039
 #, fuzzy
 #| msgid " (copy)"
 msgid "copy"
 msgstr " (copia)"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1053
+#: libcore/FileUtils.vala:1041
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1055
+#: libcore/FileUtils.vala:1043
 #, fuzzy
 #| msgid " ("
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1057
+#: libcore/FileUtils.vala:1045
 msgid ")"
 msgstr ")"
 
@@ -1910,7 +1920,7 @@ msgid "Open in"
 msgstr "Apri con"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Apri con"
 
@@ -2052,7 +2062,7 @@ msgstr "Tagliare la selezione al suo posto"
 msgid "Cannot paste files here"
 msgstr "Non è possibile incollare i file qui"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:391
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
 msgid "This Folder Does Not Exist"
 msgstr "Questa cartella non esiste"
 
@@ -2114,59 +2124,59 @@ msgstr "Non ci sono file recenti"
 msgid "Access Denied"
 msgstr "Accesso negato"
 
-#: src/View/ViewContainer.vala:370 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:368 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "Inizio"
 
-#: src/View/ViewContainer.vala:392
+#: src/View/ViewContainer.vala:389
 msgid "You cannot create a folder here."
 msgstr "Non puoi creare una cartella qui."
 
-#: src/View/ViewContainer.vala:395
+#: src/View/ViewContainer.vala:392
 msgid "The network is unavailable"
 msgstr "La rete non è disponibile"
 
-#: src/View/ViewContainer.vala:396
+#: src/View/ViewContainer.vala:393
 msgid "A working network is needed to reach this folder"
 msgstr "È necessaria una rete funzionante per raggiungere questa cartella"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Belong to You"
 msgstr "Questa cartella non ti appartiene"
 
-#: src/View/ViewContainer.vala:400
+#: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr "Non disponi dei permessi per sfogliare questa cartella."
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
 msgstr "Impossibile montare la cartella"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:400
 msgid "Could not connect to the server for this folder."
 msgstr "Impossibile connettersi al server per questa cartella."
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:403
 msgid "Unable to Display Folder Contents"
 msgstr "Impossibile visualizzare il contenuto della cartella"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:404
 msgid "The operation timed out."
 msgstr "L'operazione è scaduta."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Show Folder"
 msgstr "Impossibile mostrare la cartella"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:407
 msgid "The server for this folder could not be located."
 msgstr "Non è stato possibile individuare il server per questa cartella."
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:418
 msgid "File not Found"
 msgstr "File non trovato"
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:419
 msgid "The file selected no longer exists."
 msgstr "Il file selezionato non esiste più."
 
@@ -2186,7 +2196,7 @@ msgstr "Chiudi"
 msgid "Duplicate Tab"
 msgstr "Duplicazione di \"%s\""
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Apri in una nuova finestra"
 
@@ -2301,22 +2311,28 @@ msgstr "Dispositivi e luoghi disponibili tramite una rete"
 msgid "Connect Server…"
 msgstr "Connetti al server…"
 
+#: src/View/Sidebar/VolumeRow.vala:166
+#, fuzzy
+#| msgid "_Mount"
+msgid "Mount"
+msgstr "_Monta"
+
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy
 #| msgid "_Unmount"
 msgid "Bind mount"
 msgstr "_Smonta"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Ricerca o inserisci il percorso"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Apri in una nuova scheda"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "Apri in un'altra applicazione…"
 
@@ -2489,6 +2505,13 @@ msgstr "In questa cartella"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Utilizzati di recente"
+
+#, fuzzy
+#~| msgid "Replacing it will overwrite its content."
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr "Sostituendolo il suo contenuto verrà sovrascritto."
 
 #, fuzzy
 #~| msgid "File Operations"

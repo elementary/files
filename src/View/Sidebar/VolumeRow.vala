@@ -95,23 +95,7 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
             return;
         }
 
-        working = true;
-        Files.FileOperations.mount_volume_full.begin (volume, null, (obj, res) => {
-                Files.FileOperations.mount_volume_full.end (res);
-                var mount = volume.get_mount ();
-                if (mount != null) {
-                    uri = mount.get_default_location ().get_uri ();
-                    if (volume.get_uuid () == null) {
-                        uuid = uri;
-                    }
-
-                    list.open_item (this, flag);
-                }
-
-                working = false;
-                add_mountable_tooltip.begin ();
-            }
-        );
+        mount_volume (true, flag);
     }
 
     private void on_volume_removed (Volume removed_volume) {
@@ -148,9 +132,42 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         add_extra_menu_items_for_drive (volume.get_drive (), menu_builder);
     }
 
+    private void mount_volume (bool open = false, Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
+        working = true;
+        Files.FileOperations.mount_volume_full.begin (
+            volume,
+            null,
+            (obj, res) => {
+                Files.FileOperations.mount_volume_full.end (res);
+                var mount = volume.get_mount ();
+                if (mount != null) {
+                    uri = mount.get_default_location ().get_uri ();
+                    if (volume.get_uuid () == null) {
+                        uuid = uri;
+                    }
+
+                    if (open) {
+                        list.open_item (this, flag);
+                    }
+                }
+
+                working = false;
+                add_mountable_tooltip.begin ();
+            }
+        );
+    }
+
     protected void add_extra_menu_items_for_drive (Drive? drive, PopupMenuBuilder menu_builder) {
         if (drive == null) {
             return;
+        }
+
+        if (!is_mounted) {
+            var mount_item = new Gtk.MenuItem.with_mnemonic (_("Mount"));
+            mount_item.activate.connect (() => {
+                mount_volume ();
+            });
+            menu_builder.add_item (mount_item);
         }
 
         var sort_key = drive.get_sort_key ();
