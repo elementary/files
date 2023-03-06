@@ -37,7 +37,7 @@ endif
 #
 # Project dependencies
 #
-min_glib_version = '2.40'
+min_glib_version = '2.64.6'
 
 glib_dep = dependency('glib-2.0', version: '>='+min_glib_version)
 gobject_dep = dependency('gobject-2.0', version: '>='+min_glib_version)
