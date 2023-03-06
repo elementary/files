@@ -20,11 +20,11 @@
 ***/
 
 public class Files.Directory : Object {
-    private static HashTable<GLib.File, unowned Files.Directory> directory_cache;
+    private static HashTable<unowned GLib.File, Files.Directory?> directory_cache;
     private static Mutex dir_cache_lock;
 
     static construct {
-        directory_cache = new HashTable<GLib.File, unowned Files.Directory> (GLib.File.hash, GLib.File.equal);
+        directory_cache = new HashTable<unowned GLib.File, Files.Directory?> (GLib.File.hash, GLib.File.equal);
         dir_cache_lock = GLib.Mutex ();
     }
 
@@ -110,6 +110,50 @@ public class Files.Directory : Object {
 
     public bool loaded_from_cache {get; private set; default = false;}
 
+    // New Directories can only be created via these two static methods
+    public static Directory from_gfile (GLib.File file) {
+        /* Ensure uri is correctly escaped and has scheme */
+        var escaped_uri = FileUtils.escape_uri (file.get_uri ());
+        var scheme = Uri.parse_scheme (escaped_uri);
+        if (scheme == null) {
+            scheme = Files.ROOT_FS_URI;
+            escaped_uri = scheme + escaped_uri;
+        }
+
+        var gfile = GLib.File.new_for_uri (escaped_uri);
+        var creation_key = gfile;
+        /* Avoid adding a new Directory that will be a duplicate of an existing one, when called
+         * with non-folder location. */
+        if (gfile.query_exists () && gfile.is_native () && gfile.has_parent (null)) {
+            var ftype = gfile.query_file_type (0, null);
+            if (ftype != FileType.DIRECTORY) {
+                creation_key = gfile.get_parent ();
+            }
+        }
+
+        var dir = cache_lookup (creation_key);
+        /* Both local and non-local files can be cached */
+        if (dir == null) {
+            dir = new Directory (creation_key);
+            // Cache immediately to avoid possible creation of duplicates
+            lock (directory_cache) {
+                directory_cache.insert (creation_key, dir);
+            }
+        }
+
+        /* If the original file was not a folder, ensure that it will be
+         * selected in the loaded view*/
+        if (!creation_key.equal (gfile)) {
+            dir.selected_file = file;
+        }
+
+        return dir;
+    }
+
+    public static Directory from_file (Files.File gof) {
+        return from_gfile (gof.get_target_location ());
+    }
+
     private Directory (GLib.File _file) {
         Object (
             creation_key: _file
@@ -152,12 +196,13 @@ public class Files.Directory : Object {
 
     ~Directory () {
         debug ("Directory destruct %s", file.uri);
-
         if (is_trash) {
             disconnect_volume_monitor_signals ();
         }
 
-        file.set_expanded (false); // Ensure any remaining folder icons are not displayed as expanded
+        if (file != null && file.is_directory) {
+            file.set_expanded (false); // Ensure any remaining folder icons are not displayed as expanded
+        }
     }
 
     /** Views call the following function with null parameter - file_loaded and done_loading
@@ -447,18 +492,21 @@ public class Files.Directory : Object {
         }
 
         if (!is_ready) {
-            /* This must only be run once for each Directory */
             is_ready = true;
 
-            /* Do not cache directory until it prepared and loadable to avoid an incorrect key being used in some
-             * in some cases. dir_cache will always have been created via call to public static
-             * functions from_file () or from_gfile (). Do not add toggle until cached. */
-
+            // Do not add toggle until cached
             lock (directory_cache) {
-                this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
+                // Creation key will normally be the final location but check anyway.
+                if (!(creation_key.equal (location))) {
+                    warning ("creation key %s differs from final location %s", creation_key.get_uri (), location.get_uri ());
+                    directory_cache.remove (creation_key);
+                }
 
-                if (!creation_key.equal (location) || directory_cache.lookup (location) == null) {
+                if (directory_cache.lookup (location) == null) {
                     directory_cache.insert (location, this);
+                    // Replace the cache reference with a toggle ref
+                    this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
+                    this.unref ();
                 }
             }
         }
@@ -531,14 +579,12 @@ public class Files.Directory : Object {
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
         if (is_last) {
-            unowned Directory dir = (Directory) object;
-            debug ("Directory is last toggle_ref_notify %s", dir.file.uri);
-
+            var dir = (Directory) object; // Adds a reference temporarily
+            // Replace the toggle ref with a normal ref before removing from cache
+            dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
             if (!dir.removed_from_cache) {
                 Directory.remove_dir_from_cache (dir);
             }
-
-            dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
         }
     }
 
@@ -1089,50 +1135,6 @@ public class Files.Directory : Object {
         notify_files_added_internally (list_to);
     }
 
-    public static Directory from_gfile (GLib.File file) {
-        /* Ensure uri is correctly escaped and has scheme */
-        var escaped_uri = FileUtils.escape_uri (file.get_uri ());
-        var scheme = Uri.parse_scheme (escaped_uri);
-        if (scheme == null) {
-            scheme = Files.ROOT_FS_URI;
-            escaped_uri = scheme + escaped_uri;
-        }
-
-        var gfile = GLib.File.new_for_uri (escaped_uri);
-        var afile = gfile;
-        /* Avoid adding a new Directory that will be a duplicate of an existing one, when called
-         * with non-folder location. */
-        if (gfile.query_exists () && gfile.is_native () && gfile.has_parent (null)) {
-            var ftype = gfile.query_file_type (0, null);
-            if (ftype != FileType.DIRECTORY) {
-                afile = gfile.get_parent ();
-            }
-        }
-
-        /* Note: cache_lookup creates directory_cache if necessary */
-        Directory? dir = cache_lookup (afile);
-        /* Both local and non-local files can be cached */
-        if (dir == null) {
-            dir = new Directory (afile);
-            lock (directory_cache) {
-                directory_cache.insert (dir.creation_key, dir);
-            }
-        }
-
-
-        /* If the original file was not a folder, ensure that it will be
-         * selected in the loaded view*/
-        if (!afile.equal (gfile)) {
-            dir.selected_file = file;
-        }
-
-        return dir;
-    }
-
-    public static Directory from_file (Files.File gof) {
-        return from_gfile (gof.get_target_location ());
-    }
-
     private static void remove_file_from_cache (Files.File gof) {
         Directory? dir = cache_lookup (gof.directory);
         if (dir != null) {
@@ -1140,27 +1142,18 @@ public class Files.Directory : Object {
         }
     }
 
-    public static Directory? cache_lookup (GLib.File? file) {
-        Directory? cached_dir = null;
-
-        if (directory_cache == null) { // Only happens once on startup.  Directory gets added on creation
+    /* Files.Directory.directory_cache related functions */
+    public static Directory? cache_lookup (GLib.File file) {
+        // Cache may be null on startup. Static construct only runs when first
+        // Directory is constructed
+        if (directory_cache == null) {
             return null;
         }
 
-        if (file == null) {
-            critical ("Null file received in Directory cache_lookup");
-            return null;
-        }
-
-        lock (directory_cache) {
-            cached_dir = directory_cache.lookup (file);
-        }
-
+        var cached_dir = directory_cache.lookup (file);
         if (cached_dir != null) {
             if (cached_dir is Directory && cached_dir.file != null) {
-                debug ("found cached dir %s", cached_dir.file.uri);
                 if (cached_dir.file.info == null && cached_dir.can_load) {
-                    debug ("updating cached file info");
                     cached_dir.file.query_update (); /* This is synchronous and causes blocking */
                 }
             } else {
@@ -1188,9 +1181,15 @@ public class Files.Directory : Object {
             dir.file.changed ();
         }
 
+        // In case dir was never initialised remove both creation_key and
+        // location.
         lock (directory_cache) {
-            if (directory_cache.remove (dir.creation_key)) {
+            if ((directory_cache.lookup (dir.location) != null) ||
+                (directory_cache.lookup (dir.creation_key) != null)) {
+
                 directory_cache.remove (dir.location);
+                directory_cache.remove (dir.creation_key);
+
                 dir.removed_from_cache = true;
                 return true;
             }
@@ -1213,6 +1212,11 @@ public class Files.Directory : Object {
         }
 
         return removed;
+    }
+
+    // For testing only
+    public static void empty_dir_cache () {
+        Files.Directory.directory_cache.remove_all ();
     }
 
     public bool has_parent () {
