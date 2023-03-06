@@ -878,12 +878,15 @@ public class Files.File : GLib.Object {
             return false;
         }
 
+        debug ("execute %s", uri);
         GLib.AppInfo app_info = null;
         unowned GLib.List<GLib.File>? launch_with_files = files;
         var context = Gdk.Display.get_default ().get_app_launch_context ();
         context.set_timestamp (Gdk.CURRENT_TIME);
 
         if (is_desktop_file ()) { // Desktop files never executed in practice?
+            debug ("Is desktop");
+
             try {
                 var key_file = FileUtils.key_file_from_file (location, null);
                 app_info = new GLib.DesktopAppInfo.from_keyfile (key_file);
@@ -902,11 +905,17 @@ public class Files.File : GLib.Object {
             // directory are handled.
             if (elementary_terminal_apps.length > 0 &&
                !location.get_basename ().contains (" ")) {
+                debug ("Try launch in terminal");
+                string args = "";
+                foreach (var file in files) {
+                    args = args + " " + file.get_path ();
+                }
 
                 try {
-                    var command = "io.elementary.terminal -wn %s -e %s".printf (
+                    var command = "io.elementary.terminal -wn %s -x %s %s".printf (
                         Shell.quote (parent_path.replace ("file://", "")),
-                        Shell.quote ("./" + location.get_basename ())
+                        Shell.quote ("./" + location.get_basename ()),
+                        args
                     );
 
                     debug ("Terminal command is %s", command);
@@ -916,21 +925,22 @@ public class Files.File : GLib.Object {
 
                     launch_with_files = null;
                 } catch (GLib.Error e) {
-                    GLib.Error prefixed_error;
-                    GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to create command from file: "));
-                    throw prefixed_error;
+                    // If creating terminal command fails try fallback
+                    app_info = null;
                 }
-            } else { // Fallback to launch without terminal
-                warning ("Could not launch command in terminal - trying to launch without terminal");
-                try {
-                    app_info = GLib.AppInfo.create_from_commandline (
-                       Shell.quote (path), null, GLib.AppInfoCreateFlags.NONE
-                   );
-                } catch (Error e) {
-                    GLib.Error prefixed_error;
-                    GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to create command from file: "));
-                    throw prefixed_error;
-                }
+            }
+        }
+
+        if (app_info == null) {
+            debug ("app info null - try launch without terminal");
+            try {
+                app_info = GLib.AppInfo.create_from_commandline (
+                   Shell.quote (location.get_path ()), null, GLib.AppInfoCreateFlags.NONE
+               );
+            } catch (Error e) {
+                GLib.Error prefixed_error;
+                GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to create command from file: "));
+                throw prefixed_error;
             }
         }
 
