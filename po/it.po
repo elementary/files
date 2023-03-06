@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 18:18+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2021-01-26 01:51+0000\n"
 "Last-Translator: ohcpp <cioppa10@gmail.com>\n"
 "Language-Team: Italian <https://l10n.elementary.io/projects/files/files/it/"
@@ -2310,6 +2310,12 @@ msgstr "Dispositivi e luoghi disponibili tramite una rete"
 #| msgid "Connect to Server…"
 msgid "Connect Server…"
 msgstr "Connetti al server…"
+
+#: src/View/Sidebar/VolumeRow.vala:166
+#, fuzzy
+#| msgid "_Mount"
+msgid "Mount"
+msgstr "_Monta"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy

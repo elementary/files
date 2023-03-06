@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 18:18+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2022-09-19 03:03+0000\n"
 "Last-Translator: Issa1553 <fairfull.playing@gmail.com>\n"
 "Language-Team: Bosnian <https://l10n.elementary.io/projects/files/files/bs/"
@@ -2345,6 +2345,12 @@ msgstr ""
 #| msgid "Connect to Server…"
 msgid "Connect Server…"
 msgstr "Spoji se na server..."
+
+#: src/View/Sidebar/VolumeRow.vala:166
+#, fuzzy
+#| msgid "_Mount"
+msgid "Mount"
+msgstr "_Montiraj"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy

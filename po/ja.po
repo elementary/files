@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 18:18+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2023-02-25 18:18+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
@@ -2142,6 +2142,12 @@ msgstr "ネットワーク経由で利用可能なデバイスと場所"
 #: src/View/Sidebar/SidebarWindow.vala:84
 msgid "Connect Server…"
 msgstr "サーバーを接続…"
+
+#: src/View/Sidebar/VolumeRow.vala:166
+#, fuzzy
+#| msgid "_Mount"
+msgid "Mount"
+msgstr "マウント(_M)"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
