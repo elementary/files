@@ -872,12 +872,14 @@ public class Files.File : GLib.Object {
         }
     }
 
+    // We return translatable error messages as they are shown in a dialog
     public bool execute (GLib.List<GLib.File>? files) throws GLib.Error {
         if (!location.is_native ()) {
             return false;
         }
 
         GLib.AppInfo app_info = null;
+        unowned GLib.List<GLib.File>? launch_with_files = files;
         var context = Gdk.Display.get_default ().get_app_launch_context ();
         context.set_timestamp (Gdk.CURRENT_TIME);
 
@@ -885,41 +887,64 @@ public class Files.File : GLib.Object {
             try {
                 var key_file = FileUtils.key_file_from_file (location, null);
                 app_info = new GLib.DesktopAppInfo.from_keyfile (key_file);
-                if (app_info == null) {
-                    throw new GLib.FileError.INVAL (_("Failed to parse the desktop file"));
-                }
             } catch (GLib.Error e) {
                 GLib.Error prefixed_error;
                 GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to parse the desktop file: "));
                 throw prefixed_error;
             }
+        } else {
+            var path = location.get_path ();
+            var parent_path = FileUtils.get_parent_path_from_path (path);
+            context.setenv ("PWD", Shell.quote (parent_path));
 
-            try {
-                app_info.launch (files, context);
-            } catch (GLib.Error e) {
-                GLib.Error prefixed_error;
-                GLib.Error.propagate_prefixed (out prefixed_error, e, _("Unable to Launch Desktop File: "));
-                throw prefixed_error;
+             // Try to launch in elementary terminal (if installed)
+            var elementary_terminal_apps = DesktopAppInfo.search ("io.elementary.terminal");
+            if (elementary_terminal_apps.length > 0) {
+                try {
+                    /* Because io.elementary.terminal does not deal with spaces in the command
+                     * and removes escaping we have to double escape spaces */
+                    // var command = "io.elementary.terminal -wn %s -x %s".printf (
+                    //     parent_path.replace ("file://", "").replace (" ", "\\\\ "),
+                    //     path.replace (" ", "\\\\ ")
+                    // );
+                    var command = "io.elementary.terminal -wn %s -x %s".printf (
+                        Shell.quote (parent_path.replace ("file://", "")),
+                        Shell.quote ("./" + location.get_basename ())
+                    );
+
+                    warning ("Terminal command is %s", command);
+
+                    app_info = GLib.AppInfo.create_from_commandline (
+                        command, this.basename, GLib.AppInfoCreateFlags.NONE
+                    );
+
+                    launch_with_files = null;
+                } catch (GLib.Error e) {
+                    GLib.Error prefixed_error;
+                    GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to create command from file: "));
+                    throw prefixed_error;
+                }
+            } else { // Fallback to launch without terminal
+                try {
+                    app_info = GLib.AppInfo.create_from_commandline (
+                       Shell.quote (path), null, GLib.AppInfoCreateFlags.NONE
+                   );
+                } catch (Error e) {
+                    GLib.Error prefixed_error;
+                    GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to create command from file: "));
+                    throw prefixed_error;
+                }
             }
-        } else { // Always launch scripts etc in terminal so can see any output
+        }
+
+        if (app_info == null) {
+            throw new GLib.FileError.INVAL (_("Failed to create appinfo"));
+        } else {
             try {
-                var path = location.get_path ();
-                /* While io.elementary.terminal does not deal with spaces in the command (and removes escaping)
-                 * we have to double escape them */
-                var command = "io.elementary.terminal --working-directory=%s --commandline=%s".printf (
-                    FileUtils.get_parent_path_from_path (path).replace ("file://", "").replace (" ", "\\\\ "),
-                    path.replace (" ", "\\\\ ")
-                );
-
-                app_info = GLib.AppInfo.create_from_commandline (
-                    command, this.basename, GLib.AppInfoCreateFlags.NONE
-                );
-
-                context.setenv ("PWD", Shell.quote (FileUtils.get_parent_path_from_path (path)));
-                app_info.launch (null, context);
+                app_info.launch (launch_with_files, context);
             } catch (GLib.Error e) {
                 GLib.Error prefixed_error;
-                GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to create command from file: "));
+                GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to launch appinfo"));
                 throw prefixed_error;
             }
         }
