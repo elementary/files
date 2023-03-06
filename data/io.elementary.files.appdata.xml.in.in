@@ -2,6 +2,8 @@
 <!-- Copyright 2016–2021 elementary, Inc. <contact@elementary.io> -->
 <component type="desktop">
   <id>io.elementary.files</id>
+  <launchable type="desktop-id">io.elementary.files.desktop</launchable>
+  <translation type="gettext">io.elementary.files</translation>
   <metadata_license>CC0-1.0</metadata_license>
   <project_group>elementary</project_group>
   <project_license>GPL-3.0+</project_license>
@@ -17,17 +19,53 @@
   </provides>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/elementary/files/6.2.1/data/screenshot-grid.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.3.0/data/screenshot-grid.png</image>
     </screenshot>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/elementary/files/6.2.1/data/screenshot-list.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.3.0/data/screenshot-list.png</image>
     </screenshot>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/elementary/files/6.2.1/data/screenshot-column.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.3.0/data/screenshot-column.png</image>
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1" />
+
   <releases>
+    <release version="6.3.0" date="2023-02-27" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Move global settings from the context menu to an app menu in the headerbar</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/593">Zooming is hidden</issue>
+        <issue url="https://github.com/elementary/files/issues/1163">Invert logic of Show/Hide Thumbnails</issue>
+        <issue url="https://github.com/elementary/files/issues/1781">Some devices not accessible by MTP or PTP</issue>
+        <issue url="https://github.com/elementary/files/issues/1997">Path completion should be case sensitive</issue>
+        <issue url="https://github.com/elementary/files/issues/2047">Filechooser default typing action is search instead of rename</issue>
+      </issues>
+    </release>
+
+    <release version="6.2.2" date="2023-02-03" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/pull/2122">Avoid crashes when disconnecting the provider</issue>
+        <issue url="https://github.com/elementary/files/issues/2115">Paste into folder menu item doesn't work</issue>
+        <issue url="https://github.com/elementary/files/pull/2107">Improve double-click setting label</issue>
+        <issue url="https://github.com/elementary/files/issues/2105">Sidebar icons sometimes change</issue>
+      </issues>
+    </release>
+
     <release version="6.2.1" date="2022-11-15" urgency="medium">
       <description>
         <p>Minor updates:</p>
@@ -258,376 +296,35 @@
         </ul>
       </description>
     </release>
-    <release version="4.5.0" date="2020-08-11" urgency="medium">
-      <description>
-        <p>Improvements:</p>
-        <ul>
-          <li>Bookmark menu option for network mounts in sidebar</li>
-          <li>Show folder item count in List View</li>
-          <li>Now shows thumbnails on locally mounted MTP and PTP devices as well as on network locations by default</li>
-          <li>Properties window: Allow the filename to be copied when it cannot be edited</li>
-          <li>Improved tooltip formatting for devices in the sidebar</li>
-        </ul>
-        <p>Fixes:</p>
-        <ul>
-          <li>Fix crash when pressing Enter and another key at the same time</li>
-          <li>Fix pathbar handling of "~" and ".." in path</li>
-          <li>Filechooser pathbar no longer crashes when invoked from a Flatpak</li>
-          <li>Do not show git status for repositories on FUSE filesystems to prevent possible blocking</li>
-        </ul>
-        <p>Other updates:</p>
-        <ul>
-          <li>"Personal" is now "Bookmarks"</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.4.4" date="2020-06-30" urgency="medium">
-    <description>
-      <p>Improvements:</p>
-      <ul>
-        <li>Add warning and error colored disk usage bars when disk becomes too full</li>
-        <li>Prevent window resizing when filename column width exceeds available space</li>
-      </ul>
-      <p>Fixes:</p>
-      <ul>
-        <li>Fix handling of filenames containing the # character</li>
-        <li>Fix regressions regarding pathbar context menus and clicking</li>
-      </ul>
-      <p>Other updates:</p>
-      <ul>
-        <li>Updated translations</li>
-      </ul>
-      </description>
-    </release>
-    <release version="4.4.3" date="2020-06-01" urgency="medium">
-      <description>
-        <ul>
-          <li>Paste images into other apps instead of file paths where possible</li>
-          <li>Paste into a selected folder when using Ctrl + V</li>
-          <li>Show file info overlay in List View as well</li>
-          <li>Traverse search results with Tab key</li>
-          <li>Show an error message when attempting to open trashed files</li>
-        </ul>
-        <p>Fixes:</p>
-        <ul>
-          <li>Fix uneditable area in pathbar which is showing home folder placeholder</li>
-          <li>Fix an issue that prevented file modification times from showing</li>
-          <li>Fix size of restored tiled window</li>
-          <li>Fix color tags disappearing when thumbnails hidden</li>
-        </ul>
-        <p>Other updates:</p>
-        <ul>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.4.2" date="2020-04-03" urgency="medium">
-      <description>
-        <p>Minor updates:</p>
-        <ul>
-          <li>Fix crash when a device icon is coming from a file</li>
-          <li>Fix device icon sometimes missing</li>
-          <li>Fix occasional view freeze after renaming</li>
-          <li>Improve renaming logic when dealing with leading/trailing whitespace</li>
-          <li>Fix breadcrumbs sometimes incorrect at startup</li>
-          <li>Do not show file:// prefix in navigation buttons menus</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.4.1" date="2020-02-29" urgency="medium">
-      <description>
-        <p>Minor updates:</p>
-        <ul>
-          <li>Fix "New Folder" keyboard shortcut label in menu</li>
-          <li>Fix navigation with back/forward button context menu</li>
-          <li>Fix path bar sometimes showing wrong path when closing a tab</li>
-          <li>Ensure keyboard shortcuts work immediately after creating or renaming a file</li>
-          <li>Do not include "file://" in pathbar text or when pasting path as text</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.4.0" date="2020-02-11" urgency="medium">
-      <description>
-        <ul>
-          <li>Show keyboard shortcuts in menu items</li>
-          <li>Fix an issue with breadcrumbs in the file chooser</li>
-          <li>Show a warning when ejecting a volume that's still in use</li>
-          <li>Fix cursor update after horizontal scroll in Column View</li>
-          <li>Fix folder-open icon persisting after closing Column View</li>
-          <li>Use destructive action styling for some trash dialog buttons</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.3.0" date="2020-01-07" urgency="medium">
-      <description>
-        <p>New features:</p>
-        <ul>
-          <li>Initial git plugin support</li>
-          <li>Follow global history setting when restoring and saving tabs</li>
-        </ul>
-        <p>Other updates:</p>
-        <ul>
-          <li>Ensure tabs showing same folder remain synchronized</li>
-          <li>Fix drag with secondary button on empty space</li>
-          <li>Show custom media type icons for installed apps</li>
-          <li>Fix appearance of inactive diskspace indicator</li>
-          <li>Improve pathbar animation</li>
-          <li>Update documentation</li>
-          <li>Update translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.2.0" date="2019-09-09" urgency="medium">
-      <description>
-        <ul>
-          <li>Initial cloudproviders plugin support</li>
-          <li>Fix selecting pasted files</li>
-          <li>Fix color label visibility while using dark theme</li>
-          <li>Fix selecting files using Shift key</li>
-          <li>Draw checkerboard background for image items</li>
-          <li>Improved styling for disk space bars</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.1.9" date="2019-07-26" urgency="medium">
-      <description>
-        <ul>
-          <li>Show more search results</li>
-          <li>Ensure valid tab name generation</li>
-          <li>Properly sort folders by date and size</li>
-          <li>Launching Files from Terminal now opens new tab instead of new window</li>
-          <li>Improve MTP support</li>
-          <li>Various tagging feature refinements</li>
-          <li>Keyboard navigation improvements</li>
-          <li>Symlink copy and paste fixes</li>
-          <li>Avoid crash when Templates folder is null</li>
-          <li>Reduce memory footprint of FileChooserDialog</li>
-          <li>Avoid crash when selecting image file in some situations</li>
-          <li>Fix unclosable progress window while copying network files to removable storage</li>
-          <li>Fix drag and drop after double clicking a blank area</li>
-          <li>Avoid crash while scrolling over view switcher</li>
-          <li>Avoid possible crash in some copy and paste situations</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.1.8" date="2019-05-02" urgency="medium">
-      <description>
-        <ul>
-          <li>Keyboard navigation fix for cherry picking select files in Grid view</li>
-          <li>Don't hardcode search placeholder text style, fixes dark theme issue</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.1.7" date="2019-04-08" urgency="medium">
-      <description>
-        <ul>
-          <li>Minor spacing adjustments to location bar</li>
-          <li>Fix F2 renaming behavior</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.1.6" date="2019-03-26" urgency="medium">
-      <description>
-        <ul>
-          <li>Minor spacing adjustments to location breadcrumbs</li>
-          <li>Consistently remember color tags</li>
-          <li>Reload thumbnails when changing zoom level to avoid showing placeholder unnecessarily</li>
-          <li>Fix running scripts with spaces in filename</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.1.5" date="2019-02-13" urgency="medium">
-      <description>
-        <ul>
-          <li>Fix high CPU regression in version 4.1.4</li>
-          <li>File sorting fixes</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.1.4" date="2019-01-31" urgency="medium">
-      <description>
-        <ul>
-          <li>Meson: fix soversion names</li>
-          <li>Remove CMake build system</li>
-          <li>Fix missing File System properties menu</li>
-          <li>Drop intltool dependency</li>
-          <li>Fix default file type handler logic</li>
-          <li>Fix initial search window size too small</li>
-          <li>Add option to disable local file thumbnails</li>
-          <li>Fix crash when opening multiple video files</li>
-          <li>Fix some timing issues around adding and removing files</li>
-          <li>Meson: fix missing library headers</li>
-          <li>Fix color tag display</li>
-          <li>Show reserved space in Properties window</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.1.3" date="2019-01-09" urgency="medium">
-      <description>
-        <ul>
-          <li>Add border radius to text background</li>
-          <li>Fix file mimetype association regression</li>
-          <li>New pathbar tooltips</li>
-          <li>Build fixes</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.1.2" date="2019-01-02" urgency="medium">
-      <description>
-        <ul>
-          <li>Plugin build fixes</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.1.1" date="2018-12-28" urgency="medium">
-      <description>
-        <ul>
-          <li>Fix Ctrl+Tab behavior</li>
-          <li>Fix building without Unity library</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.1.0" date="2018-12-27" urgency="medium">
-      <description>
-        <ul>
-          <li>Hide breadcrumbs and show placeholder and search icon in home folder</li>
-          <li>Style error dialogs</li>
-          <li>Right click fixes</li>
-          <li>Reload recent view when privacy setting changes</li>
-          <li>`Connect Server` fixes</li>
-          <li>Do not activate multiple files with single click</li>
-          <li>Use `Tab` to toggle View and Sidebar keyboard focus</li>
-          <li>Delete color tag database entries for trashed files</li>
-          <li>Throttle tab closing</li>
-          <li>`Ctrl` key fixes</li>
-          <li>Drag and drop fixes</li>
-          <li>Show icons in `Open with` menus</li>
-          <li>Tooltip fixes</li>
-          <li>Memory leak fixes</li>
-          <li>Crash fixes</li>
-          <li>Trash: respect sound setting</li>
-          <li>Localization fixes</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="4.0" date="2018-10-16" urgency="medium">
-      <description>
-        <ul>
-          <li>Over 100 major and minor bug fixes and improvements</li>
-        </ul>
-      </description>
-    </release>
-    <release version="0.3.5" date="2017-06-03" urgency="medium">
-      <description>
-        <ul>
-          <li>Honor 12/24hr system setting</li>
-          <li>Distinguish between tabs with the same name</li>
-          <li>Support launching from other applications with a target file selected</li>
-          <li>New translations</li>
-          <li>Minor bug fixes</li>
-        </ul>
-      </description>
-    </release>
-    <release version="0.3.3" date="2017-04-10" urgency="medium">
-      <description>
-        <ul>
-          <li>Improved networking support</li>
-          <li>Correct window geometry when snapping to left or right</li>
-          <li>Pressing Ctrl no longer cancels renaming while the "Reveal Pointer" setting is active</li>
-          <li>Switching input language cancels actions</li>
-          <li>Various crash fixes</li>
-          <li>New translations</li>
-          <li>Minor bug fixes</li>
-        </ul>
-      </description>
-    </release>
-    <release version="0.3.2" date="2017-02-25" urgency="medium">
-      <description>
-        <ul>
-          <li>Web browsers like Firefox now remember the most recently used downloads directory</li>
-          <li>Remember preferred zoom level</li>
-          <li>Improved input method support</li>
-          <li>910x640 minimum window size</li>
-          <li>Security fixes</li>
-          <li>Various crash fixes</li>
-          <li>New translations</li>
-          <li>Minor bug fixes</li>
-        </ul>
-      </description>
-    </release>
-    <release version="0.3.1.1" date="2017-01-25" urgency="medium">
-      <description>
-        <ul>
-          <li>Enable drag and drop tabs between windows</li>
-          <li>Various crash fixes</li>
-          <li>New translations</li>
-          <li>Minor bug fixes</li>
-        </ul>
-      </description>
-    </release>
-    <release version="0.3.1" date="2017-01-16" urgency="medium">
-      <description>
-        <ul>
-          <li>Merge search functionality into Ctrl+F</li>
-          <li>Improved translation support</li>
-          <li>Various crash fixes</li>
-          <li>New translations</li>
-          <li>Minor bug fixes</li>
-        </ul>
-      </description>
-    </release>
-    <release version="0.3.0.5" date="2016-12-16" urgency="medium">
-      <description>
-        <ul>
-          <li>Minor bug fixes</li>
-        </ul>
-      </description>
-    </release>
-    <release version="0.3.0.4" date="2016-11-19" urgency="medium">
-      <description>
-        <ul>
-          <li>Minor bug fixes</li>
-        </ul>
-      </description>
-    </release>
-    <release version="0.3.0.3.1" date="2016-10-10" urgency="medium">
-      <description>
-        <ul>
-          <li>Fix appdata release dates</li>
-        </ul>
-      </description>
-    </release>
-    <release version="0.3.0.3" date="2016-10-10" urgency="medium">
-      <description>
-        <ul>
-          <li>Improve file opening over Samba shares</li>
-          <li>Fix a crash when restoring items from the Trash</li>
-          <li>Improve cut/copy/paste sensitivity in context menu</li>
-          <li>Translation updates</li>
-        </ul>
-      </description>
-    </release>
-    <release version="0.3.0.2" date="2016-09-01" urgency="medium">
-      <description>
-        <ul>
-          <li>Minor bug fixes</li>
-        </ul>
-      </description>
-    </release>
+    <release version="4.5.0" date="2020-08-11"/>
+    <release version="4.4.4" date="2020-06-30"/>
+    <release version="4.4.3" date="2020-06-01"/>
+    <release version="4.4.2" date="2020-04-03"/>
+    <release version="4.4.1" date="2020-02-29"/>
+    <release version="4.4.0" date="2020-02-11"/>
+    <release version="4.3.0" date="2020-01-07"/>
+    <release version="4.2.0" date="2019-09-09"/>
+    <release version="4.1.9" date="2019-07-26"/>
+    <release version="4.1.8" date="2019-05-02"/>
+    <release version="4.1.7" date="2019-04-08"/>
+    <release version="4.1.6" date="2019-03-26"/>
+    <release version="4.1.5" date="2019-02-13"/>
+    <release version="4.1.4" date="2019-01-31"/>
+    <release version="4.1.3" date="2019-01-09"/>
+    <release version="4.1.2" date="2019-01-02"/>
+    <release version="4.1.1" date="2018-12-28"/>
+    <release version="4.1.0" date="2018-12-27"/>
+    <release version="4.0" date="2018-10-16"/>
+    <release version="0.3.5" date="2017-06-03"/>
+    <release version="0.3.3" date="2017-04-10"/>
+    <release version="0.3.2" date="2017-02-25"/>
+    <release version="0.3.1.1" date="2017-01-25"/>
+    <release version="0.3.1" date="2017-01-16"/>
+    <release version="0.3.0.5" date="2016-12-16"/>
+    <release version="0.3.0.4" date="2016-11-19"/>
+    <release version="0.3.0.3.1" date="2016-10-10"/>
+    <release version="0.3.0.3" date="2016-10-10"/>
+    <release version="0.3.0.2" date="2016-09-01"/>
   </releases>
   <developer_name>elementary, Inc.</developer_name>
   <url type="homepage">https://elementary.io/</url>

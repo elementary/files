@@ -269,7 +269,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             next_button_clicked = false;
 
             location_bar.set_display_path (current_path);
-            tree_view.grab_focus ();
         });
 
         chooser.file_activated.connect (() => {
@@ -291,6 +290,12 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         });
 
         chooser.set_current_folder_uri (settings.get_string ("last-folder-uri"));
+
+        if (action == Gtk.FileChooserAction.SAVE) {
+            entry.grab_focus ();
+        } else {
+            tree_view.grab_focus ();
+        }
     }
 
     private static T find_child_by_name<T> (Gtk.Widget root, string path) requires (root is Gtk.Container) {
@@ -368,6 +373,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
             // bind the accept_button sensitivity with the entry text
             entry = find_child_by_name (grid, "<GtkFileChooserEntry>");
+            entry.set_placeholder_text (_("Enter new filename"));
             entry.bind_property ("text-length", accept_button, "sensitive", BindingFlags.SYNC_CREATE);
             entry.activate.connect (() => {
                 if (accept_button.sensitive) {
@@ -419,7 +425,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
     public void set_current_name (string text) {
         chooser.set_current_name (text);
-        entry.grab_focus ();
     }
 
     public string get_uri () {

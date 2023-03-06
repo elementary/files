@@ -20,15 +20,16 @@
 ***/
 
 public class Files.Directory : Object {
-    private static HashTable<GLib.File, unowned Files.Directory> directory_cache;
+    private static HashTable<unowned GLib.File, Files.Directory?> directory_cache;
     private static Mutex dir_cache_lock;
 
     static construct {
-        directory_cache = new HashTable<GLib.File, unowned Files.Directory> (GLib.File.hash, GLib.File.equal);
+        directory_cache = new HashTable<unowned GLib.File, Files.Directory?> (GLib.File.hash, GLib.File.equal);
         dir_cache_lock = GLib.Mutex ();
     }
 
     public delegate void FileLoadedFunc (Files.File file);
+    public delegate void DoneLoadingFunc ();
 
     private uint load_timeout_id = 0;
     private uint mount_timeout_id = 0;
@@ -109,6 +110,50 @@ public class Files.Directory : Object {
 
     public bool loaded_from_cache {get; private set; default = false;}
 
+    // New Directories can only be created via these two static methods
+    public static Directory from_gfile (GLib.File file) {
+        /* Ensure uri is correctly escaped and has scheme */
+        var escaped_uri = FileUtils.escape_uri (file.get_uri ());
+        var scheme = Uri.parse_scheme (escaped_uri);
+        if (scheme == null) {
+            scheme = Files.ROOT_FS_URI;
+            escaped_uri = scheme + escaped_uri;
+        }
+
+        var gfile = GLib.File.new_for_uri (escaped_uri);
+        var creation_key = gfile;
+        /* Avoid adding a new Directory that will be a duplicate of an existing one, when called
+         * with non-folder location. */
+        if (gfile.query_exists () && gfile.is_native () && gfile.has_parent (null)) {
+            var ftype = gfile.query_file_type (0, null);
+            if (ftype != FileType.DIRECTORY) {
+                creation_key = gfile.get_parent ();
+            }
+        }
+
+        var dir = cache_lookup (creation_key);
+        /* Both local and non-local files can be cached */
+        if (dir == null) {
+            dir = new Directory (creation_key);
+            // Cache immediately to avoid possible creation of duplicates
+            lock (directory_cache) {
+                directory_cache.insert (creation_key, dir);
+            }
+        }
+
+        /* If the original file was not a folder, ensure that it will be
+         * selected in the loaded view*/
+        if (!creation_key.equal (gfile)) {
+            dir.selected_file = file;
+        }
+
+        return dir;
+    }
+
+    public static Directory from_file (Files.File gof) {
+        return from_gfile (gof.get_target_location ());
+    }
+
     private Directory (GLib.File _file) {
         Object (
             creation_key: _file
@@ -151,12 +196,13 @@ public class Files.Directory : Object {
 
     ~Directory () {
         debug ("Directory destruct %s", file.uri);
-
         if (is_trash) {
             disconnect_volume_monitor_signals ();
         }
 
-        file.set_expanded (false); // Ensure any remaining folder icons are not displayed as expanded
+        if (file != null && file.is_directory) {
+            file.set_expanded (false); // Ensure any remaining folder icons are not displayed as expanded
+        }
     }
 
     /** Views call the following function with null parameter - file_loaded and done_loading
@@ -166,7 +212,7 @@ public class Files.Directory : Object {
       * to perform filename completion.- Emitting a done_loaded signal in that case would cause
       * the premature ending of text entry.
      **/
-    public void init (FileLoadedFunc? file_loaded_func = null) {
+    public void init (FileLoadedFunc? file_loaded_func = null, DoneLoadingFunc? done_loading_func = null) {
         if (state == State.LOADING) {
             debug ("Directory Init re-entered - already loading");
             return; /* Do not re-enter */
@@ -180,11 +226,11 @@ public class Files.Directory : Object {
 
         /* If we already have a loaded file cache just list them */
         if (previous_state == State.LOADED) {
-            list_cached_files (file_loaded_func);
+            list_cached_files (file_loaded_func, done_loading_func);
         /* else fully initialise the directory */
         } else {
             state = State.LOADING;
-            prepare_directory.begin (file_loaded_func);
+            prepare_directory.begin (file_loaded_func, done_loading_func);
         }
         /* done_loaded signal is emitted when ready */
     }
@@ -192,7 +238,7 @@ public class Files.Directory : Object {
     /* This is also called when reloading the directory so that another attempt to connect to
      * the network is made
      */
-    private async void prepare_directory (FileLoadedFunc? file_loaded_func) {
+    private async void prepare_directory (FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
         debug ("Preparing directory for loading");
         /* Force info to be refreshed - the Files.File may have been created already by another part of the program
          * that did not ensure the correct info Aync purposes, and retrieved from cache (bug 1511307).
@@ -228,7 +274,7 @@ public class Files.Directory : Object {
         );
 
         /* Only place that should call make_ready function */
-        yield make_ready (file.is_connected && (is_no_info || success), file_loaded_func);
+        yield make_ready (is_no_info || success, file_loaded_func, done_loading_func); /* Only place that should call this function */
     }
 
     /*** Returns false if should be able to get info but were unable to ***/
@@ -423,7 +469,7 @@ public class Files.Directory : Object {
     }
 
 
-    private async void make_ready (bool ready, FileLoadedFunc? file_loaded_func = null) {
+    private async void make_ready (bool ready, FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
         debug ("make ready");
         can_load = ready;
 
@@ -441,23 +487,26 @@ public class Files.Directory : Object {
                                                                            file.exists.to_string ());
             directory_cache.remove (creation_key);
             is_ready = false;
-            after_loading (file_loaded_func);
+            after_loading (done_loading_func);
             return;
         }
 
         if (!is_ready) {
-            /* This must only be run once for each Directory */
             is_ready = true;
 
-            /* Do not cache directory until it prepared and loadable to avoid an incorrect key being used in some
-             * in some cases. dir_cache will always have been created via call to public static
-             * functions from_file () or from_gfile (). Do not add toggle until cached. */
-
+            // Do not add toggle until cached
             lock (directory_cache) {
-                this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
+                // Creation key will normally be the final location but check anyway.
+                if (!(creation_key.equal (location))) {
+                    warning ("creation key %s differs from final location %s", creation_key.get_uri (), location.get_uri ());
+                    directory_cache.remove (creation_key);
+                }
 
-                if (!creation_key.equal (location) || directory_cache.lookup (location) == null) {
+                if (directory_cache.lookup (location) == null) {
                     directory_cache.insert (location, this);
+                    // Replace the cache reference with a toggle ref
+                    this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
+                    this.unref ();
                 }
             }
         }
@@ -494,7 +543,7 @@ public class Files.Directory : Object {
             connect_volume_monitor_signals ();
         }
 
-        yield list_directory_async (file_loaded_func);
+        yield list_directory_async (file_loaded_func, done_loading_func);
     }
 
     private void set_confirm_trash () {
@@ -530,14 +579,12 @@ public class Files.Directory : Object {
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
         if (is_last) {
-            unowned Directory dir = (Directory) object;
-            debug ("Directory is last toggle_ref_notify %s", dir.file.uri);
-
+            var dir = (Directory) object; // Adds a reference temporarily
+            // Replace the toggle ref with a normal ref before removing from cache
+            dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
             if (!dir.removed_from_cache) {
                 Directory.remove_dir_from_cache (dir);
             }
-
-            dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
         }
     }
 
@@ -590,7 +637,7 @@ public class Files.Directory : Object {
         }
     }
 
-    private void list_cached_files (FileLoadedFunc? file_loaded_func = null) {
+    private void list_cached_files (FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
         debug ("list cached files");
         if (state != State.LOADED) {
             critical ("list cached files called in %s state - not expected to happen", state.to_string ());
@@ -609,10 +656,10 @@ public class Files.Directory : Object {
         state = State.LOADED;
         loaded_from_cache = true;
 
-        after_loading (file_loaded_func);
+        after_loading (done_loading_func);
     }
 
-    private async void list_directory_async (FileLoadedFunc? file_loaded_func) {
+    private async void list_directory_async (FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
         debug ("list directory async");
         /* Should only be called after creation and if reloaded */
         if (!is_ready || file_hash.size () > 0) {
@@ -709,7 +756,7 @@ public class Files.Directory : Object {
         } finally {
             cancel_timeout (ref load_timeout_id);
             loaded_from_cache = false;
-            after_loading (file_loaded_func);
+            after_loading (done_loading_func);
         }
     }
 
@@ -725,7 +772,7 @@ public class Files.Directory : Object {
         }
     }
 
-    private void after_loading (FileLoadedFunc? file_loaded_func) {
+    private void after_loading (DoneLoadingFunc? done_loading_func) {
         /* If loading failed reset */
         debug ("after loading state is %s", state.to_string ());
         if (state == State.LOADING || state == State.TIMED_OUT) {
@@ -737,8 +784,10 @@ public class Files.Directory : Object {
             clear_directory_info ();
         }
 
-        if (file_loaded_func == null) {
+        if (done_loading_func == null) {
             done_loading ();
+        } else {
+            done_loading_func ();
         }
 
         if (file.is_directory) { /* Fails for non-existent directories */
@@ -769,9 +818,9 @@ public class Files.Directory : Object {
             return;
         }
         if (state != State.LOADED) {
-            list_directory_async.begin (null);
+            list_directory_async.begin (null, null);
         } else {
-            list_cached_files ();
+            list_cached_files (null, null);
         }
     }
 
@@ -1069,50 +1118,6 @@ public class Files.Directory : Object {
         notify_files_added (list_to);
     }
 
-    public static Directory from_gfile (GLib.File file) {
-        /* Ensure uri is correctly escaped and has scheme */
-        var escaped_uri = FileUtils.escape_uri (file.get_uri ());
-        var scheme = Uri.parse_scheme (escaped_uri);
-        if (scheme == null) {
-            scheme = Files.ROOT_FS_URI;
-            escaped_uri = scheme + escaped_uri;
-        }
-
-        var gfile = GLib.File.new_for_uri (escaped_uri);
-        var afile = gfile;
-        /* Avoid adding a new Directory that will be a duplicate of an existing one, when called
-         * with non-folder location. */
-        if (gfile.query_exists () && gfile.is_native () && gfile.has_parent (null)) {
-            var ftype = gfile.query_file_type (0, null);
-            if (ftype != FileType.DIRECTORY) {
-                afile = gfile.get_parent ();
-            }
-        }
-
-        /* Note: cache_lookup creates directory_cache if necessary */
-        Directory? dir = cache_lookup (afile);
-        /* Both local and non-local files can be cached */
-        if (dir == null) {
-            dir = new Directory (afile);
-            lock (directory_cache) {
-                directory_cache.insert (dir.creation_key, dir);
-            }
-        }
-
-
-        /* If the original file was not a folder, ensure that it will be
-         * selected in the loaded view*/
-        if (!afile.equal (gfile)) {
-            dir.selected_file = file;
-        }
-
-        return dir;
-    }
-
-    public static Directory from_file (Files.File gof) {
-        return from_gfile (gof.get_target_location ());
-    }
-
     private static void remove_file_from_cache (Files.File gof) {
         Directory? dir = cache_lookup (gof.directory);
         if (dir != null) {
@@ -1120,27 +1125,18 @@ public class Files.Directory : Object {
         }
     }
 
-    public static Directory? cache_lookup (GLib.File? file) {
-        Directory? cached_dir = null;
-
-        if (directory_cache == null) { // Only happens once on startup.  Directory gets added on creation
+    /* Files.Directory.directory_cache related functions */
+    public static Directory? cache_lookup (GLib.File file) {
+        // Cache may be null on startup. Static construct only runs when first
+        // Directory is constructed
+        if (directory_cache == null) {
             return null;
         }
 
-        if (file == null) {
-            critical ("Null file received in Directory cache_lookup");
-            return null;
-        }
-
-        lock (directory_cache) {
-            cached_dir = directory_cache.lookup (file);
-        }
-
+        var cached_dir = directory_cache.lookup (file);
         if (cached_dir != null) {
             if (cached_dir is Directory && cached_dir.file != null) {
-                debug ("found cached dir %s", cached_dir.file.uri);
                 if (cached_dir.file.info == null && cached_dir.can_load) {
-                    debug ("updating cached file info");
                     cached_dir.file.query_update (); /* This is synchronous and causes blocking */
                 }
             } else {
@@ -1168,9 +1164,15 @@ public class Files.Directory : Object {
             dir.file.changed ();
         }
 
+        // In case dir was never initialised remove both creation_key and
+        // location.
         lock (directory_cache) {
-            if (directory_cache.remove (dir.creation_key)) {
+            if ((directory_cache.lookup (dir.location) != null) ||
+                (directory_cache.lookup (dir.creation_key) != null)) {
+
                 directory_cache.remove (dir.location);
+                directory_cache.remove (dir.creation_key);
+
                 dir.removed_from_cache = true;
                 return true;
             }
@@ -1193,6 +1195,11 @@ public class Files.Directory : Object {
         }
 
         return removed;
+    }
+
+    // For testing only
+    public static void empty_dir_cache () {
+        Files.Directory.directory_cache.remove_all ();
     }
 
     public bool has_parent () {
