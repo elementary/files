@@ -921,7 +921,7 @@ public class Files.File : GLib.Object {
                     throw prefixed_error;
                 }
             } else { // Fallback to launch without terminal
-                warning ("Could not launch command in terminal as it contains spaces - trying to launch without terminal");
+                warning ("Could not launch command in terminal - trying to launch without terminal");
                 try {
                     app_info = GLib.AppInfo.create_from_commandline (
                        Shell.quote (path), null, GLib.AppInfoCreateFlags.NONE
