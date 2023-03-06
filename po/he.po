@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 18:18+0000\n"
-"PO-Revision-Date: 2023-02-24 10:30+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
+"PO-Revision-Date: 2023-03-04 13:25+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -2154,6 +2154,10 @@ msgstr "התקנים ומיקומים שזמינים דרך הרשת"
 #: src/View/Sidebar/SidebarWindow.vala:84
 msgid "Connect Server…"
 msgstr "התחברות לשרת…"
+
+#: src/View/Sidebar/VolumeRow.vala:166
+msgid "Mount"
+msgstr "עיגון"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"

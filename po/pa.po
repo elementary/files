@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 18:18+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2021-08-16 13:30+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/files/pa/"
@@ -2245,6 +2245,12 @@ msgstr "ਨੈੱਟਵਰਕ ਜ਼ਰੀਏ ਉਪਲਬਧ ਟਿਕਾਣੇ
 #: src/View/Sidebar/SidebarWindow.vala:84
 msgid "Connect Server…"
 msgstr "ਸਰਵਰ ਨਾਲ਼ ਜੁੜੋੋ…"
+
+#: src/View/Sidebar/VolumeRow.vala:166
+#, fuzzy
+#| msgid "_Mount"
+msgid "Mount"
+msgstr "ਬੀੜੋ"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy
