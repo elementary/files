@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 09:25+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2021-09-29 22:21+0000\n"
 "Last-Translator: Alvaro <alvaroaraoz_92@hotmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
-#: data/io.elementary.files.appdata.xml.in.in:8
+#: data/io.elementary.files.appdata.xml.in.in:10
 msgid "Files"
 msgstr "Archivos"
 
@@ -45,11 +45,11 @@ msgstr "Ventana nueva"
 msgid "New Window As Administrator"
 msgstr "Ventana administrativa nueva"
 
-#: data/io.elementary.files.appdata.xml.in.in:9
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid "Browse and manage files and folders"
 msgstr "Examine y gestione archivos y carpetas"
 
-#: data/io.elementary.files.appdata.xml.in.in:11
+#: data/io.elementary.files.appdata.xml.in.in:13
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -63,423 +63,396 @@ msgstr ""
 "como remotos, por medio de FTP, SFTP, AFP, WebDAV o recursos compartidos de "
 "Windows."
 
-#: data/io.elementary.files.appdata.xml.in.in:34
-#: data/io.elementary.files.appdata.xml.in.in:77
-#: data/io.elementary.files.appdata.xml.in.in:135
-#: data/io.elementary.files.appdata.xml.in.in:153
-#: data/io.elementary.files.appdata.xml.in.in:178
-#: data/io.elementary.files.appdata.xml.in.in:255
-#: data/io.elementary.files.appdata.xml.in.in:272
-#: data/io.elementary.files.appdata.xml.in.in:296
-#: data/io.elementary.files.appdata.xml.in.in:320
+#: data/io.elementary.files.appdata.xml.in.in:36
+#: data/io.elementary.files.appdata.xml.in.in:82
+#: data/io.elementary.files.appdata.xml.in.in:140
+#: data/io.elementary.files.appdata.xml.in.in:158
+#: data/io.elementary.files.appdata.xml.in.in:183
+#: data/io.elementary.files.appdata.xml.in.in:260
+#: data/io.elementary.files.appdata.xml.in.in:277
 msgid "Improvements:"
 msgstr "Mejoras:"
 
-#: data/io.elementary.files.appdata.xml.in.in:36
+#: data/io.elementary.files.appdata.xml.in.in:38
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:38
-#: data/io.elementary.files.appdata.xml.in.in:51
-#: data/io.elementary.files.appdata.xml.in.in:66
-#: data/io.elementary.files.appdata.xml.in.in:92
-#: data/io.elementary.files.appdata.xml.in.in:104
-#: data/io.elementary.files.appdata.xml.in.in:127
-#: data/io.elementary.files.appdata.xml.in.in:145
-#: data/io.elementary.files.appdata.xml.in.in:170
-#: data/io.elementary.files.appdata.xml.in.in:196
-#: data/io.elementary.files.appdata.xml.in.in:360
-#: data/io.elementary.files.appdata.xml.in.in:374
+#: data/io.elementary.files.appdata.xml.in.in:40
+#: data/io.elementary.files.appdata.xml.in.in:56
+#: data/io.elementary.files.appdata.xml.in.in:71
+#: data/io.elementary.files.appdata.xml.in.in:97
+#: data/io.elementary.files.appdata.xml.in.in:109
+#: data/io.elementary.files.appdata.xml.in.in:132
+#: data/io.elementary.files.appdata.xml.in.in:150
+#: data/io.elementary.files.appdata.xml.in.in:175
+#: data/io.elementary.files.appdata.xml.in.in:201
 msgid "Minor updates:"
 msgstr "Actualizaciones menores:"
 
-#: data/io.elementary.files.appdata.xml.in.in:40
-#: data/io.elementary.files.appdata.xml.in.in:53
-#: data/io.elementary.files.appdata.xml.in.in:68
-#: data/io.elementary.files.appdata.xml.in.in:94
-#: data/io.elementary.files.appdata.xml.in.in:106
-#: data/io.elementary.files.appdata.xml.in.in:129
-#: data/io.elementary.files.appdata.xml.in.in:147
-#: data/io.elementary.files.appdata.xml.in.in:172
-#: data/io.elementary.files.appdata.xml.in.in:198
-#: data/io.elementary.files.appdata.xml.in.in:213
-#: data/io.elementary.files.appdata.xml.in.in:229
-#: data/io.elementary.files.appdata.xml.in.in:244
-#: data/io.elementary.files.appdata.xml.in.in:261
-#: data/io.elementary.files.appdata.xml.in.in:290
-#: data/io.elementary.files.appdata.xml.in.in:314
-#: data/io.elementary.files.appdata.xml.in.in:332
-#: data/io.elementary.files.appdata.xml.in.in:354
-#: data/io.elementary.files.appdata.xml.in.in:368
-#: data/io.elementary.files.appdata.xml.in.in:381
-#: data/io.elementary.files.appdata.xml.in.in:394
-#: data/io.elementary.files.appdata.xml.in.in:426
-#: data/io.elementary.files.appdata.xml.in.in:448
-#: data/io.elementary.files.appdata.xml.in.in:457
-#: data/io.elementary.files.appdata.xml.in.in:466
-#: data/io.elementary.files.appdata.xml.in.in:477
-#: data/io.elementary.files.appdata.xml.in.in:486
-#: data/io.elementary.files.appdata.xml.in.in:505
-#: data/io.elementary.files.appdata.xml.in.in:516
-#: data/io.elementary.files.appdata.xml.in.in:524
-#: data/io.elementary.files.appdata.xml.in.in:556
+#: data/io.elementary.files.appdata.xml.in.in:42
+#: data/io.elementary.files.appdata.xml.in.in:58
+#: data/io.elementary.files.appdata.xml.in.in:73
+#: data/io.elementary.files.appdata.xml.in.in:99
+#: data/io.elementary.files.appdata.xml.in.in:111
+#: data/io.elementary.files.appdata.xml.in.in:134
+#: data/io.elementary.files.appdata.xml.in.in:152
+#: data/io.elementary.files.appdata.xml.in.in:177
+#: data/io.elementary.files.appdata.xml.in.in:203
+#: data/io.elementary.files.appdata.xml.in.in:218
+#: data/io.elementary.files.appdata.xml.in.in:234
+#: data/io.elementary.files.appdata.xml.in.in:249
+#: data/io.elementary.files.appdata.xml.in.in:266
+#: data/io.elementary.files.appdata.xml.in.in:295
 msgid "Updated translations"
 msgstr "Traducciones actualizadas"
 
-#: data/io.elementary.files.appdata.xml.in.in:79
+#: data/io.elementary.files.appdata.xml.in.in:84
 msgid ""
 "Provide option to select folders with single click and activate with double "
 "click"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:80
+#: data/io.elementary.files.appdata.xml.in.in:85
 msgid ""
 "Only show the properties overlay when files are selected, not when hovered"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:82
-#: data/io.elementary.files.appdata.xml.in.in:100
-#: data/io.elementary.files.appdata.xml.in.in:112
-#: data/io.elementary.files.appdata.xml.in.in:139
-#: data/io.elementary.files.appdata.xml.in.in:159
-#: data/io.elementary.files.appdata.xml.in.in:187
-#: data/io.elementary.files.appdata.xml.in.in:204
-#: data/io.elementary.files.appdata.xml.in.in:219
-#: data/io.elementary.files.appdata.xml.in.in:235
-#: data/io.elementary.files.appdata.xml.in.in:250
-#: data/io.elementary.files.appdata.xml.in.in:267
-#: data/io.elementary.files.appdata.xml.in.in:304
-#: data/io.elementary.files.appdata.xml.in.in:325
-#: data/io.elementary.files.appdata.xml.in.in:345
+#: data/io.elementary.files.appdata.xml.in.in:87
+#: data/io.elementary.files.appdata.xml.in.in:105
+#: data/io.elementary.files.appdata.xml.in.in:117
+#: data/io.elementary.files.appdata.xml.in.in:144
+#: data/io.elementary.files.appdata.xml.in.in:164
+#: data/io.elementary.files.appdata.xml.in.in:192
+#: data/io.elementary.files.appdata.xml.in.in:209
+#: data/io.elementary.files.appdata.xml.in.in:224
+#: data/io.elementary.files.appdata.xml.in.in:240
+#: data/io.elementary.files.appdata.xml.in.in:255
+#: data/io.elementary.files.appdata.xml.in.in:272
 msgid "Fixes:"
 msgstr "Correcciones:"
 
-#: data/io.elementary.files.appdata.xml.in.in:84
+#: data/io.elementary.files.appdata.xml.in.in:89
 msgid "Fix unexpected file activation after navigation with double-click"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:85
+#: data/io.elementary.files.appdata.xml.in.in:90
 msgid "Fix dimmed window after use of filechooser portal"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:86
+#: data/io.elementary.files.appdata.xml.in.in:91
 msgid "Fix possible crash when rapidly changing view modes"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:87
+#: data/io.elementary.files.appdata.xml.in.in:92
 msgid "Fix startup when restored remote location is no longer connected"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:88
+#: data/io.elementary.files.appdata.xml.in.in:93
 msgid ""
 "Ensure infobar shows in connection server dialog when connection attempt "
 "fails"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:89
+#: data/io.elementary.files.appdata.xml.in.in:94
 msgid "Ensure correct icon for bookmark to a file that is not a folder"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:95
 #, fuzzy
 #| msgid "Fix a crash when restoring items from the Trash"
 msgid "Fix possible crash when removing a bookmark"
 msgstr "Reparar un fallo mientras se restauraban objetos de la papelera"
 
-#: data/io.elementary.files.appdata.xml.in.in:102
+#: data/io.elementary.files.appdata.xml.in.in:107
 msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:114
+#: data/io.elementary.files.appdata.xml.in.in:119
 msgid "Renaming with the same name no longer shows an error dialog"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:115
+#: data/io.elementary.files.appdata.xml.in.in:120
 msgid "Ctrl + A when renaming now selects all the text in the entry"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:116
+#: data/io.elementary.files.appdata.xml.in.in:121
 msgid "Selecting multiple items with Shift + Arrow keys now works properly"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:117
+#: data/io.elementary.files.appdata.xml.in.in:122
 msgid "The appearance of the cursor now matches the action"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:118
+#: data/io.elementary.files.appdata.xml.in.in:123
 msgid "The Trash sidebar item can no longer be removed"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:119
+#: data/io.elementary.files.appdata.xml.in.in:124
 msgid "Network sidebar plugins such as NextCloud are now added correctly"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:120
+#: data/io.elementary.files.appdata.xml.in.in:125
 msgid "Duplication of subfolders in ListView under some circumstances is fixed"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:121
+#: data/io.elementary.files.appdata.xml.in.in:126
 msgid ""
 "Bookmarks are now highlighted when a file they can accept is dragged onto "
 "them"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:122
+#: data/io.elementary.files.appdata.xml.in.in:127
 msgid "Folders not being restored properly under some circumstances is fixed"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:123
+#: data/io.elementary.files.appdata.xml.in.in:128
 msgid ""
 "Show confirmation dialog in file chooser before overwriting an existing file"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:124
+#: data/io.elementary.files.appdata.xml.in.in:129
 msgid "Ctrl + V now always pastes into background folder"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:125
+#: data/io.elementary.files.appdata.xml.in.in:130
 msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:137
+#: data/io.elementary.files.appdata.xml.in.in:142
 #, fuzzy
 #| msgid "Show keyboard shortcuts in menu items"
 msgid "Show New Tab and New Window shortcuts in context menus"
 msgstr "Se muestran los atajos de teclado en los elementos del menú"
 
-#: data/io.elementary.files.appdata.xml.in.in:141
+#: data/io.elementary.files.appdata.xml.in.in:146
 msgid "Double click selects instead of exiting while renaming in list view"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:142
+#: data/io.elementary.files.appdata.xml.in.in:147
 msgid "Show public share icon in breadcrumbs"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:143
+#: data/io.elementary.files.appdata.xml.in.in:148
 msgid "Prevent a crash when dragging to re-arrange bookmarks"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:155
+#: data/io.elementary.files.appdata.xml.in.in:160
 msgid "Close FileChooser with Esc key"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:156
+#: data/io.elementary.files.appdata.xml.in.in:161
 msgid "Use new emblems for git status"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:157
+#: data/io.elementary.files.appdata.xml.in.in:162
 msgid "Show selection actions in secondary click menu"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:161
+#: data/io.elementary.files.appdata.xml.in.in:166
 #, fuzzy
 #| msgid "Show reserved space in Properties window"
 msgid "Always show Permissions page in Properties dialog"
 msgstr "Mostrar espacio reservado en la ventana Propiedades"
 
-#: data/io.elementary.files.appdata.xml.in.in:162
+#: data/io.elementary.files.appdata.xml.in.in:167
 msgid ""
 "In Permissions page, show user and group numeric IDs when names not available"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:163
+#: data/io.elementary.files.appdata.xml.in.in:168
 msgid "In Permissions page, show message when no information available"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:165
-#: data/io.elementary.files.appdata.xml.in.in:210
-#: data/io.elementary.files.appdata.xml.in.in:227
-#: data/io.elementary.files.appdata.xml.in.in:242
-#: data/io.elementary.files.appdata.xml.in.in:259
-#: data/io.elementary.files.appdata.xml.in.in:287
-#: data/io.elementary.files.appdata.xml.in.in:311
-#: data/io.elementary.files.appdata.xml.in.in:330
-#: data/io.elementary.files.appdata.xml.in.in:352
-#: data/io.elementary.files.appdata.xml.in.in:405
+#: data/io.elementary.files.appdata.xml.in.in:170
+#: data/io.elementary.files.appdata.xml.in.in:215
+#: data/io.elementary.files.appdata.xml.in.in:232
+#: data/io.elementary.files.appdata.xml.in.in:247
+#: data/io.elementary.files.appdata.xml.in.in:264
+#: data/io.elementary.files.appdata.xml.in.in:292
 msgid "Other updates:"
 msgstr "Otras actualizaciones:"
 
-#: data/io.elementary.files.appdata.xml.in.in:167
+#: data/io.elementary.files.appdata.xml.in.in:172
 msgid "Only allow one FileChooser per parent window"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:168
+#: data/io.elementary.files.appdata.xml.in.in:173
 msgid ""
 "Navigate to folder when pressing enter in FileChooser instead of selecting"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:180
+#: data/io.elementary.files.appdata.xml.in.in:185
 msgid ""
 "Use \"Send Mail\" portal instead of contract, improving compatibility with "
 "alternate email apps"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:181
+#: data/io.elementary.files.appdata.xml.in.in:186
 msgid "Add file filters and New Folder options to file chooser portal"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:182
+#: data/io.elementary.files.appdata.xml.in.in:187
 msgid ""
 "Allow blank passwords for remote connections, e.g. for SSH via a private key"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:183
+#: data/io.elementary.files.appdata.xml.in.in:188
 msgid "Make ejecting devices safer"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:184
+#: data/io.elementary.files.appdata.xml.in.in:189
 msgid "Add option to stop drive if possible"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:185
+#: data/io.elementary.files.appdata.xml.in.in:190
 msgid "Show unformatted drives and drives without media"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:189
+#: data/io.elementary.files.appdata.xml.in.in:194
 msgid ""
 "Fix pasting of selected pathbar text into another window using middle-click"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:190
+#: data/io.elementary.files.appdata.xml.in.in:195
 #, fuzzy
 #| msgid "Fix selecting pasted files"
 msgid "Fix selecting multiple groups of files"
 msgstr "Corrección relativa a la selección de archivos pegados"
 
-#: data/io.elementary.files.appdata.xml.in.in:191
+#: data/io.elementary.files.appdata.xml.in.in:196
 msgid "Allow dropping bookmark directly below the Recent bookmark"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:192
+#: data/io.elementary.files.appdata.xml.in.in:197
 msgid "Do not show unusable drop target below the Trash bookmark"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:193
+#: data/io.elementary.files.appdata.xml.in.in:198
 msgid "Fix sidebar showing both drive and volume for same device"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:194
+#: data/io.elementary.files.appdata.xml.in.in:199
 msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:206
+#: data/io.elementary.files.appdata.xml.in.in:211
 msgid "Show translated bookmark names when changing languages"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:207
+#: data/io.elementary.files.appdata.xml.in.in:212
 msgid "Stop some audio file icons disappearing when scrolling or changing view"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:208
+#: data/io.elementary.files.appdata.xml.in.in:213
 msgid ""
 "Stop brief appearance of status overlay when changing root folder in Column "
 "View"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:212
+#: data/io.elementary.files.appdata.xml.in.in:217
 msgid "Remove message about reporting issues when running from Terminal"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:221
+#: data/io.elementary.files.appdata.xml.in.in:226
 msgid "Open bookmarks in a new tab with Ctrl + Click"
 msgstr "Abrir marcadores en una nueva pestaña con Ctrl + Clic"
 
-#: data/io.elementary.files.appdata.xml.in.in:222
+#: data/io.elementary.files.appdata.xml.in.in:227
 msgid "Fix dropping uris onto storage devices and network locations in sidebar"
 msgstr ""
 "Se corrigió la caída de uris en dispositivos de almacenamiento y ubicaciones "
 "de red en la barra lateral"
 
-#: data/io.elementary.files.appdata.xml.in.in:223
+#: data/io.elementary.files.appdata.xml.in.in:228
 msgid "Fix restoring tabs after a system restart"
 msgstr ""
 "Se corrigió la restauración de pestañas después de reiniciar el sistema"
 
-#: data/io.elementary.files.appdata.xml.in.in:224
+#: data/io.elementary.files.appdata.xml.in.in:229
 msgid ""
 "Don't unselect when secondary clicking blank space around a file or folder"
 msgstr ""
 "No anule la selección cuando haga clic secundario en un espacio en blanco "
 "alrededor de un archivo o carpeta"
 
-#: data/io.elementary.files.appdata.xml.in.in:225
+#: data/io.elementary.files.appdata.xml.in.in:230
 msgid ""
 "Show the folder context menu when secondary clicking outside of a selection"
 msgstr ""
 "Mostrar el menú contextual de la carpeta al hacer clic secundario fuera de "
 "una selección"
 
-#: data/io.elementary.files.appdata.xml.in.in:237
+#: data/io.elementary.files.appdata.xml.in.in:242
 msgid "Fix small context menus on breadcrumbs"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:238
+#: data/io.elementary.files.appdata.xml.in.in:243
 msgid "Fix bookmarking a single selected item with Ctrl + D"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:239
+#: data/io.elementary.files.appdata.xml.in.in:244
 msgid "Fix renaming bookmarks in the sidebar"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:240
+#: data/io.elementary.files.appdata.xml.in.in:245
 #, fuzzy
 #| msgid "Fix color tags disappearing when thumbnails hidden"
 msgid "Fix an issue with showing color tags when thumbnails are hidden"
 msgstr ""
 "Las etiquetas de color ya no desaparecen cuando las miniaturas están ocultas"
 
-#: data/io.elementary.files.appdata.xml.in.in:252
+#: data/io.elementary.files.appdata.xml.in.in:257
 #, fuzzy
 #| msgid "Fix crash when opening multiple video files"
 msgid "Fix freeze when comparing copied files"
 msgstr "Se arregló un cierre inesperado al abrir varios archivos de vídeo"
 
-#: data/io.elementary.files.appdata.xml.in.in:253
+#: data/io.elementary.files.appdata.xml.in.in:258
 msgid "Fix truncation of final column in Column View under some circumstances"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:257
+#: data/io.elementary.files.appdata.xml.in.in:262
 #, fuzzy
 #| msgid "Show keyboard shortcuts in menu items"
 msgid "Show more keyboard accelerators in menus"
 msgstr "Se muestran los atajos de teclado en los elementos del menú"
 
-#: data/io.elementary.files.appdata.xml.in.in:269
+#: data/io.elementary.files.appdata.xml.in.in:274
 msgid "Fix connecting to AFP servers so that passwords are remembered"
 msgstr ""
 "Se corrigió la conexión a servidores AFP para que se recuerden las "
 "contraseñas"
 
-#: data/io.elementary.files.appdata.xml.in.in:270
+#: data/io.elementary.files.appdata.xml.in.in:275
 msgid "Fix MTP mounts"
 msgstr "Arreglar soportes MTP"
 
-#: data/io.elementary.files.appdata.xml.in.in:274
+#: data/io.elementary.files.appdata.xml.in.in:279
 msgid "Launch files with double click instead of single click"
 msgstr "Abrir archivos con doble clic en lugar de un solo clic"
 
-#: data/io.elementary.files.appdata.xml.in.in:275
+#: data/io.elementary.files.appdata.xml.in.in:280
 msgid "Provide a File Chooser portal for Flatpak apps"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:276
+#: data/io.elementary.files.appdata.xml.in.in:281
 msgid "Brand new animated Sidebar"
 msgstr "Nueva barra lateral animada"
 
-#: data/io.elementary.files.appdata.xml.in.in:277
+#: data/io.elementary.files.appdata.xml.in.in:282
 msgid "Dark style support"
 msgstr "Modo oscuro soportado"
 
-#: data/io.elementary.files.appdata.xml.in.in:278
+#: data/io.elementary.files.appdata.xml.in.in:283
 msgid "Mint and Bubblegum color tags"
 msgstr "Etiquetas de color menta y chicle"
 
-#: data/io.elementary.files.appdata.xml.in.in:279
+#: data/io.elementary.files.appdata.xml.in.in:284
 msgid "Do not restore locations that have become inaccessible"
 msgstr "No se restauran ubicaciones que se hayan vuelto inaccesibles"
 
-#: data/io.elementary.files.appdata.xml.in.in:280
+#: data/io.elementary.files.appdata.xml.in.in:285
 #, fuzzy
 #| msgid ""
 #| "Clicking between thumbnail and text now activates/selects in Icon view"
@@ -488,743 +461,37 @@ msgstr ""
 "En la vista de iconos, al pulsar entre la miniatura y el texto ahora se "
 "activa o se selecciona"
 
-#: data/io.elementary.files.appdata.xml.in.in:281
+#: data/io.elementary.files.appdata.xml.in.in:286
 msgid "AFC protocol support"
 msgstr "Protocolo AFC soportado"
 
-#: data/io.elementary.files.appdata.xml.in.in:282
+#: data/io.elementary.files.appdata.xml.in.in:287
 msgid "Add a smaller minimum icon size in list view"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:283
+#: data/io.elementary.files.appdata.xml.in.in:288
 #, fuzzy
 #| msgid "Show folder item count in List View"
 msgid "Show emblems inline in list views"
 msgstr "Ahora se muestra el recuento de elementos en la vista de lista"
 
-#: data/io.elementary.files.appdata.xml.in.in:284
+#: data/io.elementary.files.appdata.xml.in.in:289
 #, fuzzy
 #| msgid "Keyboard navigation improvements"
 msgid "Performance improvements"
 msgstr "Mejoras en la navegación mediante el teclado"
 
-#: data/io.elementary.files.appdata.xml.in.in:285
+#: data/io.elementary.files.appdata.xml.in.in:290
 #, fuzzy
 #| msgid "Improvements:"
 msgid "Stability improvements"
 msgstr "Mejoras:"
 
-#: data/io.elementary.files.appdata.xml.in.in:289
+#: data/io.elementary.files.appdata.xml.in.in:294
 msgid "Rename \"Devices\" to \"Storage\""
 msgstr "Cambiar el nombre de \"Dispositivos\" a \"Almacenamiento\""
 
-#: data/io.elementary.files.appdata.xml.in.in:298
-msgid "Bookmark menu option for network mounts in sidebar"
-msgstr ""
-"Opción en el menú de marcadores para los montajes de red en la barra lateral"
-
-#: data/io.elementary.files.appdata.xml.in.in:299
-msgid "Show folder item count in List View"
-msgstr "Ahora se muestra el recuento de elementos en la vista de lista"
-
-#: data/io.elementary.files.appdata.xml.in.in:300
-msgid ""
-"Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
-"network locations by default"
-msgstr ""
-"Ahora se muestran miniaturas en dispositivos MTP y PTP montados localmente y "
-"en ubicaciones de red de manera predeterminada"
-
-#: data/io.elementary.files.appdata.xml.in.in:301
-msgid ""
-"Properties window: Allow the filename to be copied when it cannot be edited"
-msgstr ""
-"Ventana de propiedades: permite copiar el nombre del archivo cuando no se "
-"puede editar"
-
-#: data/io.elementary.files.appdata.xml.in.in:302
-msgid "Improved tooltip formatting for devices in the sidebar"
-msgstr ""
-"Se mejoró el formato de las descripciones emergentes de los dispositivos en "
-"la barra lateral"
-
-#: data/io.elementary.files.appdata.xml.in.in:306
-msgid "Fix crash when pressing Enter and another key at the same time"
-msgstr "Se arregló un cierre inesperado al oprimir Intro y otra tecla a la vez"
-
-#: data/io.elementary.files.appdata.xml.in.in:307
-msgid "Fix pathbar handling of \"~\" and \"..\" in path"
-msgstr ""
-"Se corrigió el acceso de la barra de direcciones de «~» y «..» en las rutas"
-
-#: data/io.elementary.files.appdata.xml.in.in:308
-msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
-msgstr ""
-"La barra de direcciones del selector de archivos ya no se bloquea cuando se "
-"invoca desde Flatpak"
-
-#: data/io.elementary.files.appdata.xml.in.in:309
-msgid ""
-"Do not show git status for repositories on FUSE filesystems to prevent "
-"possible blocking"
-msgstr ""
-"No se muestra el estado de Git en repositorios en sistemas de archivos FUSE "
-"para evitar posibles bloqueos"
-
-#: data/io.elementary.files.appdata.xml.in.in:313
-msgid "\"Personal\" is now \"Bookmarks\""
-msgstr "«Personal» es ahora «Marcadores»"
-
-#: data/io.elementary.files.appdata.xml.in.in:322
-msgid ""
-"Add warning and error colored disk usage bars when disk becomes too full"
-msgstr ""
-"Se añadieron colores de alerta y error a las barras de uso de disco cuando "
-"estos están a punto de llenarse"
-
-#: data/io.elementary.files.appdata.xml.in.in:323
-msgid ""
-"Prevent window resizing when filename column width exceeds available space"
-msgstr ""
-"Se evita el redimensionamiento de la ventana cuando la anchura de la columna "
-"de nombre de archivo excede el espacio disponible"
-
-#: data/io.elementary.files.appdata.xml.in.in:327
-msgid "Fix handling of filenames containing the # character"
-msgstr ""
-"Se reparó el manejo de nombres de archivo que contienen el carácter «#»"
-
-#: data/io.elementary.files.appdata.xml.in.in:328
-msgid "Fix regressions regarding pathbar context menus and clicking"
-msgstr ""
-"Se corrigieron regresiones en los menús contextuales de la barra de ruta y "
-"la pulsación sobre esta"
-
-#: data/io.elementary.files.appdata.xml.in.in:339
-msgid "Paste images into other apps instead of file paths where possible"
-msgstr ""
-"En las aplicaciones donde es posible, se pegan la imágenes directamente en "
-"vez de las rutas de archivo"
-
-#: data/io.elementary.files.appdata.xml.in.in:340
-msgid "Paste into a selected folder when using Ctrl + V"
-msgstr ""
-"Puede utilizar Ctrl + V para pegar en una carpeta que esté seleccionada"
-
-#: data/io.elementary.files.appdata.xml.in.in:341
-msgid "Show file info overlay in List View as well"
-msgstr "Ahora se muestra la información sobre archivos en la vista de lista"
-
-#: data/io.elementary.files.appdata.xml.in.in:342
-msgid "Traverse search results with Tab key"
-msgstr "Puede recorrer los resultados de la búsqueda con la tecla Tab"
-
-#: data/io.elementary.files.appdata.xml.in.in:343
-msgid "Show an error message when attempting to open trashed files"
-msgstr ""
-"Se muestra un mensaje de error al intentar abrir archivos de la papelera"
-
-#: data/io.elementary.files.appdata.xml.in.in:347
-msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
-msgstr ""
-"Se reparó la zona no editable de la barra de ruta que muestra el marcador "
-"sustitutorio de la carpeta personal"
-
-#: data/io.elementary.files.appdata.xml.in.in:348
-msgid "Fix an issue that prevented file modification times from showing"
-msgstr ""
-"Se corrigió un problema que impedía que se mostraran las horas de "
-"modificación de los archivos"
-
-#: data/io.elementary.files.appdata.xml.in.in:349
-msgid "Fix size of restored tiled window"
-msgstr "Se corrigió el tamaño de la ventana en mosaico tras restaurarse"
-
-#: data/io.elementary.files.appdata.xml.in.in:350
-msgid "Fix color tags disappearing when thumbnails hidden"
-msgstr ""
-"Las etiquetas de color ya no desaparecen cuando las miniaturas están ocultas"
-
-#: data/io.elementary.files.appdata.xml.in.in:362
-msgid "Fix crash when a device icon is coming from a file"
-msgstr ""
-"Corrección del cierre inesperado producido cuando un icono de dispositivo "
-"proviene de un archivo"
-
-#: data/io.elementary.files.appdata.xml.in.in:363
-msgid "Fix device icon sometimes missing"
-msgstr ""
-"Se corrige una situación que causaba en ocasiones que faltasen los iconos de "
-"dispositivos"
-
-#: data/io.elementary.files.appdata.xml.in.in:364
-msgid "Fix occasional view freeze after renaming"
-msgstr ""
-"Se corrigió un congelamiento ocasional producido después de cambiar nombre "
-"de archivos"
-
-#: data/io.elementary.files.appdata.xml.in.in:365
-msgid "Improve renaming logic when dealing with leading/trailing whitespace"
-msgstr ""
-"Se mejoró la lógica de cambio de nombre al tratar archivos con espacios al "
-"inicio o al final"
-
-#: data/io.elementary.files.appdata.xml.in.in:366
-msgid "Fix breadcrumbs sometimes incorrect at startup"
-msgstr "Se solucionó un problema al iniciar que provocaba rutas incorrectas"
-
-#: data/io.elementary.files.appdata.xml.in.in:367
-msgid "Do not show file:// prefix in navigation buttons menus"
-msgstr ""
-"Ya no se muestra el prefijo «file://» en los menús de los botones de "
-"navegación"
-
-#: data/io.elementary.files.appdata.xml.in.in:376
-msgid "Fix \"New Folder\" keyboard shortcut label in menu"
-msgstr "Corrección de la etiqueta del atajo de «Carpeta nueva» en el menú"
-
-#: data/io.elementary.files.appdata.xml.in.in:377
-msgid "Fix navigation with back/forward button context menu"
-msgstr ""
-"Se reparó la navegación con el menú contextual de los botones Atrás y "
-"Adelante"
-
-#: data/io.elementary.files.appdata.xml.in.in:378
-msgid "Fix path bar sometimes showing wrong path when closing a tab"
-msgstr ""
-"A veces, la barra de ruta mostraba la ruta incorrecta tras cerrar una pestaña"
-
-#: data/io.elementary.files.appdata.xml.in.in:379
-msgid ""
-"Ensure keyboard shortcuts work immediately after creating or renaming a file"
-msgstr ""
-"El programa se cerciora de que los atajos de teclado funcionen adecuadamente "
-"luego de crear un archivo o cambiarle el nombre"
-
-#: data/io.elementary.files.appdata.xml.in.in:380
-msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
-msgstr ""
-"Se excluye «file://» del texto de la barra de ruta y al pegar la ruta como "
-"texto"
-
-#: data/io.elementary.files.appdata.xml.in.in:388
-msgid "Show keyboard shortcuts in menu items"
-msgstr "Se muestran los atajos de teclado en los elementos del menú"
-
-#: data/io.elementary.files.appdata.xml.in.in:389
-msgid "Fix an issue with breadcrumbs in the file chooser"
-msgstr ""
-"Se solucionó un problema con la ruta de exploración en el selector de "
-"archivos"
-
-#: data/io.elementary.files.appdata.xml.in.in:390
-msgid "Show a warning when ejecting a volume that's still in use"
-msgstr ""
-"Se muestra una advertencia al expulsar un volumen que todavía está en uso"
-
-#: data/io.elementary.files.appdata.xml.in.in:391
-msgid "Fix cursor update after horizontal scroll in Column View"
-msgstr ""
-"Se corrigió la actualización del cursor tras desplazarse horizontalmente en "
-"la vista por columnas"
-
-#: data/io.elementary.files.appdata.xml.in.in:392
-msgid "Fix folder-open icon persisting after closing Column View"
-msgstr ""
-"Se solucionó la persistencia del icono de apertura de carpeta después de "
-"cerrar la vista por columnas"
-
-#: data/io.elementary.files.appdata.xml.in.in:393
-msgid "Use destructive action styling for some trash dialog buttons"
-msgstr ""
-"Algunos botones en cuadros de diálogo para enviar a la papelera utilizan el "
-"estilo de acción destructiva"
-
-#: data/io.elementary.files.appdata.xml.in.in:400
-msgid "New features:"
-msgstr "Funcionalidades nuevas:"
-
-#: data/io.elementary.files.appdata.xml.in.in:402
-msgid "Initial git plugin support"
-msgstr "Compatibilidad inicial del complemento de git"
-
-#: data/io.elementary.files.appdata.xml.in.in:403
-msgid "Follow global history setting when restoring and saving tabs"
-msgstr ""
-"Se sigue la configuración global del historial al restaurar y guardar "
-"pestañas"
-
-#: data/io.elementary.files.appdata.xml.in.in:407
-msgid "Ensure tabs showing same folder remain synchronized"
-msgstr ""
-"Se garantiza que las pestañas que muestran la misma carpeta permanecen en "
-"sincronía"
-
-#: data/io.elementary.files.appdata.xml.in.in:408
-msgid "Fix drag with secondary button on empty space"
-msgstr ""
-"Ahora arrastrar sobre un espacio vacío con el botón secundario del ratón "
-"funciona como es esperable"
-
-#: data/io.elementary.files.appdata.xml.in.in:409
-msgid "Show custom media type icons for installed apps"
-msgstr ""
-"Se muestran iconos de tipo de medio personalizados para aplicaciones "
-"instaladas"
-
-#: data/io.elementary.files.appdata.xml.in.in:410
-msgid "Fix appearance of inactive diskspace indicator"
-msgstr "Se reparó la apariencia inactiva del indicador de espacio en disco"
-
-#: data/io.elementary.files.appdata.xml.in.in:411
-msgid "Improve pathbar animation"
-msgstr "Mejora de la animación de la barra de ruta"
-
-#: data/io.elementary.files.appdata.xml.in.in:412
-msgid "Update documentation"
-msgstr "Documentación actualizada"
-
-#: data/io.elementary.files.appdata.xml.in.in:413
-msgid "Update translations"
-msgstr "Traducciones actualizadas"
-
-#: data/io.elementary.files.appdata.xml.in.in:420
-msgid "Initial cloudproviders plugin support"
-msgstr ""
-"Compatibilidad inicial con complementos de proveedores de almacenamiento en "
-"la nube"
-
-#: data/io.elementary.files.appdata.xml.in.in:421
-msgid "Fix selecting pasted files"
-msgstr "Corrección relativa a la selección de archivos pegados"
-
-#: data/io.elementary.files.appdata.xml.in.in:422
-msgid "Fix color label visibility while using dark theme"
-msgstr ""
-"Se mejoró la visibilidad de las etiquetas de colores al utilizar el tema "
-"oscuro"
-
-#: data/io.elementary.files.appdata.xml.in.in:423
-msgid "Fix selecting files using Shift key"
-msgstr ""
-"Se corrigió un problema de selección de archivos mediante la tecla Mayús"
-
-#: data/io.elementary.files.appdata.xml.in.in:424
-msgid "Draw checkerboard background for image items"
-msgstr "Se muestra un fondo de escaques detrás de las imágenes"
-
-#: data/io.elementary.files.appdata.xml.in.in:425
-msgid "Improved styling for disk space bars"
-msgstr "Se hicieron mejoras de estilo para las barras de espacio en disco"
-
-#: data/io.elementary.files.appdata.xml.in.in:433
-msgid "Show more search results"
-msgstr "Se muestran más resultados de búsqueda"
-
-#: data/io.elementary.files.appdata.xml.in.in:434
-msgid "Ensure valid tab name generation"
-msgstr "El programa se cerciora de generar nombres de pestañas válidos"
-
-#: data/io.elementary.files.appdata.xml.in.in:435
-msgid "Properly sort folders by date and size"
-msgstr "Las carpetas ahora se ordenan por fecha y tamaño correctamente"
-
-#: data/io.elementary.files.appdata.xml.in.in:436
-msgid "Launching Files from Terminal now opens new tab instead of new window"
-msgstr ""
-"La apertura de archivos desde un terminal ahora abre pestañas nuevas en "
-"lugar de ventanas nuevas"
-
-#: data/io.elementary.files.appdata.xml.in.in:437
-msgid "Improve MTP support"
-msgstr "Compatibilidad con MTP mejorada"
-
-#: data/io.elementary.files.appdata.xml.in.in:438
-msgid "Various tagging feature refinements"
-msgstr "Diversos refinamientos relativos a la función de etiquetaje"
-
-#: data/io.elementary.files.appdata.xml.in.in:439
-msgid "Keyboard navigation improvements"
-msgstr "Mejoras en la navegación mediante el teclado"
-
-#: data/io.elementary.files.appdata.xml.in.in:440
-msgid "Symlink copy and paste fixes"
-msgstr "Reparaciones en la copia y el pegado de enlaces simbólicos"
-
-#: data/io.elementary.files.appdata.xml.in.in:441
-msgid "Avoid crash when Templates folder is null"
-msgstr "Se evita un cierre inesperado cuando la carpeta Plantillas está vacía"
-
-#: data/io.elementary.files.appdata.xml.in.in:442
-msgid "Reduce memory footprint of FileChooserDialog"
-msgstr "Se redujo el uso de memoria de FileChooserDialog"
-
-#: data/io.elementary.files.appdata.xml.in.in:443
-msgid "Avoid crash when selecting image file in some situations"
-msgstr ""
-"Se evita un cierre inesperado provocado al seleccionar un archivo de imagen "
-"en determinadas situaciones"
-
-#: data/io.elementary.files.appdata.xml.in.in:444
-msgid ""
-"Fix unclosable progress window while copying network files to removable "
-"storage"
-msgstr ""
-"Al copiar archivos de red en soportes extraíbles, no se podía cerrar la "
-"ventana de progreso"
-
-#: data/io.elementary.files.appdata.xml.in.in:445
-msgid "Fix drag and drop after double clicking a blank area"
-msgstr ""
-"Se corrigió la función de arrastrar y colocar después de pulsar en una zona "
-"vacía"
-
-#: data/io.elementary.files.appdata.xml.in.in:446
-msgid "Avoid crash while scrolling over view switcher"
-msgstr ""
-"Se evita un cierre inesperado después de desplazarse sobre el conmutador de "
-"vistas"
-
-#: data/io.elementary.files.appdata.xml.in.in:447
-msgid "Avoid possible crash in some copy and paste situations"
-msgstr ""
-"Se evita un posible cierre inesperado que acaece en algunas situaciones "
-"luego de copiar y pegar"
-
-#: data/io.elementary.files.appdata.xml.in.in:455
-#, fuzzy
-#| msgid "Keyboard navigation fix for cherry picking select files in icon view"
-msgid "Keyboard navigation fix for cherry picking select files in Grid view"
-msgstr ""
-"Corrección de navegación del teclado para seleccionar archivos seleccionados "
-"en la vista de iconos"
-
-#: data/io.elementary.files.appdata.xml.in.in:456
-msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
-msgstr ""
-"Ya no se especifica en el código el estilo de texto indicador; esto evita "
-"problemas en el estilo oscuro"
-
-#: data/io.elementary.files.appdata.xml.in.in:464
-msgid "Minor spacing adjustments to location bar"
-msgstr "Pequeños ajustes de espacio en la barra de ubicación"
-
-#: data/io.elementary.files.appdata.xml.in.in:465
-msgid "Fix F2 renaming behavior"
-msgstr "Corrección del comportamiento de cambiar nombre con F2"
-
-#: data/io.elementary.files.appdata.xml.in.in:473
-msgid "Minor spacing adjustments to location breadcrumbs"
-msgstr "Pequeños ajustes en el espacio de la ruta de navegación"
-
-#: data/io.elementary.files.appdata.xml.in.in:474
-msgid "Consistently remember color tags"
-msgstr "Se recuerdan de manera uniforme las etiquetas de color"
-
-#: data/io.elementary.files.appdata.xml.in.in:475
-msgid ""
-"Reload thumbnails when changing zoom level to avoid showing placeholder "
-"unnecessarily"
-msgstr ""
-"Se recargan las miniaturas al cambiar la escala para evitar mostrar iconos "
-"temporales innecesariamente"
-
-#: data/io.elementary.files.appdata.xml.in.in:476
-msgid "Fix running scripts with spaces in filename"
-msgstr ""
-"Se arregló la ejecución de secuencias de órdenes con espacios en el nombre "
-"de archivo"
-
-#: data/io.elementary.files.appdata.xml.in.in:484
-msgid "Fix high CPU regression in version 4.1.4"
-msgstr ""
-"Se arregló una regresión que provocaba índices altos de uso de CPU en la "
-"versión 4.1.4"
-
-#: data/io.elementary.files.appdata.xml.in.in:485
-msgid "File sorting fixes"
-msgstr "Reparaciones de la ordenación de archivos"
-
-#: data/io.elementary.files.appdata.xml.in.in:493
-msgid "Meson: fix soversion names"
-msgstr "Meson: corrección de los nombres de las versiones"
-
-#: data/io.elementary.files.appdata.xml.in.in:494
-msgid "Remove CMake build system"
-msgstr "Se eliminó el sistema de compilación CMake"
-
-#: data/io.elementary.files.appdata.xml.in.in:495
-msgid "Fix missing File System properties menu"
-msgstr "Corrección del menú de propiedades del sistema de archivos que falta"
-
-#: data/io.elementary.files.appdata.xml.in.in:496
-msgid "Drop intltool dependency"
-msgstr "Se eliminó la dependencia intltool"
-
-#: data/io.elementary.files.appdata.xml.in.in:497
-msgid "Fix default file type handler logic"
-msgstr ""
-"Se arregló la lógica del manipulador de tipos de archivo predeterminados"
-
-#: data/io.elementary.files.appdata.xml.in.in:498
-msgid "Fix initial search window size too small"
-msgstr ""
-"Corrección del tamaño de la ventana de búsqueda inicial demasiado pequeño"
-
-#: data/io.elementary.files.appdata.xml.in.in:499
-msgid "Add option to disable local file thumbnails"
-msgstr ""
-"Se añadió una opción para desactivar las miniaturas de los archivos locales"
-
-#: data/io.elementary.files.appdata.xml.in.in:500
-msgid "Fix crash when opening multiple video files"
-msgstr "Se arregló un cierre inesperado al abrir varios archivos de vídeo"
-
-#: data/io.elementary.files.appdata.xml.in.in:501
-msgid "Fix some timing issues around adding and removing files"
-msgstr ""
-"Corrección de algunos problemas de sincronización al añadir y eliminar "
-"archivos"
-
-#: data/io.elementary.files.appdata.xml.in.in:502
-msgid "Meson: fix missing library headers"
-msgstr "Meson: correcciones de las cabeceras de biblioteca faltantes"
-
-#: data/io.elementary.files.appdata.xml.in.in:503
-msgid "Fix color tag display"
-msgstr "Se muestran adecuadamente las etiquetas de color"
-
-#: data/io.elementary.files.appdata.xml.in.in:504
-msgid "Show reserved space in Properties window"
-msgstr "Mostrar espacio reservado en la ventana Propiedades"
-
-#: data/io.elementary.files.appdata.xml.in.in:512
-msgid "Add border radius to text background"
-msgstr "Agregar radio de borde al fondo del texto"
-
-#: data/io.elementary.files.appdata.xml.in.in:513
-msgid "Fix file mimetype association regression"
-msgstr "Corregir la regresión de asociación de tipos de archivo"
-
-#: data/io.elementary.files.appdata.xml.in.in:514
-msgid "New pathbar tooltips"
-msgstr "Nuevas descripciones emergentes en la barra de rutas"
-
-#: data/io.elementary.files.appdata.xml.in.in:515
-msgid "Build fixes"
-msgstr "Corrección de compilación"
-
-#: data/io.elementary.files.appdata.xml.in.in:523
-msgid "Plugin build fixes"
-msgstr "Corrección de la compilación de complementos"
-
-#: data/io.elementary.files.appdata.xml.in.in:531
-msgid "Fix Ctrl+Tab behavior"
-msgstr "Corrección del comportamiento de Ctrl+Tab"
-
-#: data/io.elementary.files.appdata.xml.in.in:532
-msgid "Fix building without Unity library"
-msgstr "Se corrigió la compilación sin la biblioteca de Unity"
-
-#: data/io.elementary.files.appdata.xml.in.in:539
-msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
-msgstr ""
-"Ocultar la barra de ruta, mostrar texto y un icono de búsqueda en la carpeta "
-"personal"
-
-#: data/io.elementary.files.appdata.xml.in.in:540
-msgid "Style error dialogs"
-msgstr "Se dio estilo a los diálogos de error"
-
-#: data/io.elementary.files.appdata.xml.in.in:541
-msgid "Right click fixes"
-msgstr "Correcciones al pulsar con el botón secundario del ratón"
-
-#: data/io.elementary.files.appdata.xml.in.in:542
-msgid "Reload recent view when privacy setting changes"
-msgstr ""
-"Volver a cargar la vista reciente cuando cambie la configuración de "
-"privacidad"
-
-#: data/io.elementary.files.appdata.xml.in.in:543
-msgid "`Connect Server` fixes"
-msgstr "Correcciones de `Conectar con un servidor de red`"
-
-#: data/io.elementary.files.appdata.xml.in.in:544
-msgid "Do not activate multiple files with single click"
-msgstr "No activar varios archivos con un solo clic"
-
-#: data/io.elementary.files.appdata.xml.in.in:545
-msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
-msgstr ""
-"Usar «Tab» para cambiar entre la selección de teclado en la vista o en la "
-"barra lateral"
-
-#: data/io.elementary.files.appdata.xml.in.in:546
-msgid "Delete color tag database entries for trashed files"
-msgstr ""
-"Eliminar las entradas de la base de datos de etiquetas de color para los "
-"archivos eliminados"
-
-#: data/io.elementary.files.appdata.xml.in.in:547
-msgid "Throttle tab closing"
-msgstr "Aceleración del cierre de pestañas"
-
-#: data/io.elementary.files.appdata.xml.in.in:548
-msgid "`Ctrl` key fixes"
-msgstr "Correcciones de las teclas `Ctrl`"
-
-#: data/io.elementary.files.appdata.xml.in.in:549
-msgid "Drag and drop fixes"
-msgstr "Correcciones de arrastrar y soltar"
-
-#: data/io.elementary.files.appdata.xml.in.in:550
-msgid "Show icons in `Open with` menus"
-msgstr "Mostrar iconos en los menús de «Abrir con»"
-
-#: data/io.elementary.files.appdata.xml.in.in:551
-msgid "Tooltip fixes"
-msgstr "Correcciones en las descripciones emergentes"
-
-#: data/io.elementary.files.appdata.xml.in.in:552
-msgid "Memory leak fixes"
-msgstr "Correcciones de pérdida de memoria"
-
-#: data/io.elementary.files.appdata.xml.in.in:553
-msgid "Crash fixes"
-msgstr "Corrección de errores"
-
-#: data/io.elementary.files.appdata.xml.in.in:554
-msgid "Trash: respect sound setting"
-msgstr "Papelera: se respeta la configuración de sonido"
-
-#: data/io.elementary.files.appdata.xml.in.in:555
-msgid "Localization fixes"
-msgstr "Correcciones de regionalización"
-
-#: data/io.elementary.files.appdata.xml.in.in:563
-msgid "Over 100 major and minor bug fixes and improvements"
-msgstr "Más de 100 correcciones y mejoras de errores mayores y menores"
-
-#: data/io.elementary.files.appdata.xml.in.in:570
-msgid "Honor 12/24hr system setting"
-msgstr ""
-"Se respeta la configuración de formato horario (12 o 24 horas) del sistema"
-
-#: data/io.elementary.files.appdata.xml.in.in:571
-msgid "Distinguish between tabs with the same name"
-msgstr "Distinguir entre pestañas con el mismo nombre"
-
-#: data/io.elementary.files.appdata.xml.in.in:572
-msgid "Support launching from other applications with a target file selected"
-msgstr ""
-"Se permite el lanzamiento desde otras aplicaciones con un archivo de destino "
-"seleccionado"
-
-#: data/io.elementary.files.appdata.xml.in.in:573
-#: data/io.elementary.files.appdata.xml.in.in:586
-#: data/io.elementary.files.appdata.xml.in.in:600
-#: data/io.elementary.files.appdata.xml.in.in:610
-#: data/io.elementary.files.appdata.xml.in.in:621
-msgid "New translations"
-msgstr "Traducciones nuevas"
-
-#: data/io.elementary.files.appdata.xml.in.in:574
-#: data/io.elementary.files.appdata.xml.in.in:587
-#: data/io.elementary.files.appdata.xml.in.in:601
-#: data/io.elementary.files.appdata.xml.in.in:611
-#: data/io.elementary.files.appdata.xml.in.in:622
-#: data/io.elementary.files.appdata.xml.in.in:629
-#: data/io.elementary.files.appdata.xml.in.in:636
-#: data/io.elementary.files.appdata.xml.in.in:660
-msgid "Minor bug fixes"
-msgstr "Reparar errores menores"
-
-#: data/io.elementary.files.appdata.xml.in.in:581
-msgid "Improved networking support"
-msgstr "Compatibilidad con redes mejorada"
-
-#: data/io.elementary.files.appdata.xml.in.in:582
-msgid "Correct window geometry when snapping to left or right"
-msgstr ""
-"Corregir la geometría de la ventana al anclar a la izquierda o a la derecha"
-
-#: data/io.elementary.files.appdata.xml.in.in:583
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
-msgstr ""
-"Oprimir Ctrl ya no cancela el cambio de nombre cuando la opción «Revelar "
-"puntero» está activa"
-
-#: data/io.elementary.files.appdata.xml.in.in:584
-msgid "Switching input language cancels actions"
-msgstr "Cambiar el idioma de entrada cancela acciones"
-
-#: data/io.elementary.files.appdata.xml.in.in:585
-#: data/io.elementary.files.appdata.xml.in.in:599
-#: data/io.elementary.files.appdata.xml.in.in:609
-#: data/io.elementary.files.appdata.xml.in.in:620
-msgid "Various crash fixes"
-msgstr "Arreglados varios cierres inesperados"
-
-#: data/io.elementary.files.appdata.xml.in.in:594
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr ""
-"Los navegadores web como Firefox ahora recuerdan el directorio de descargas "
-"usado más recientemente"
-
-#: data/io.elementary.files.appdata.xml.in.in:595
-msgid "Remember preferred zoom level"
-msgstr "Se recuerda el nivel de escala preferido"
-
-#: data/io.elementary.files.appdata.xml.in.in:596
-msgid "Improved input method support"
-msgstr "Mejor compatibilidad con métodos de entrada"
-
-#: data/io.elementary.files.appdata.xml.in.in:597
-msgid "910x640 minimum window size"
-msgstr "Tamaño mínimo de ventana de 910 × 640"
-
-#: data/io.elementary.files.appdata.xml.in.in:598
-msgid "Security fixes"
-msgstr "Correcciones de seguridad"
-
-#: data/io.elementary.files.appdata.xml.in.in:608
-msgid "Enable drag and drop tabs between windows"
-msgstr "Se permite arrastrar y colocar pestañas entre ventanas"
-
-#: data/io.elementary.files.appdata.xml.in.in:618
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Se combinó la función de búsqueda con Ctrl+F"
-
-#: data/io.elementary.files.appdata.xml.in.in:619
-msgid "Improved translation support"
-msgstr "Mejoras de traducciones"
-
-#: data/io.elementary.files.appdata.xml.in.in:643
-msgid "Fix appdata release dates"
-msgstr "Se corrigieron las fechas de publicación de AppData"
-
-#: data/io.elementary.files.appdata.xml.in.in:650
-msgid "Improve file opening over Samba shares"
-msgstr "Mejora la apertura de archivos sobre acciones de Samba"
-
-#: data/io.elementary.files.appdata.xml.in.in:651
-msgid "Fix a crash when restoring items from the Trash"
-msgstr "Reparar un fallo mientras se restauraban objetos de la papelera"
-
-#: data/io.elementary.files.appdata.xml.in.in:652
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "Mejorar la sensibilidad del menú contextual cortar/copiar/pegar"
-
-#: data/io.elementary.files.appdata.xml.in.in:653
-msgid "Translation updates"
-msgstr "Actualización de traducciones"
-
-#: data/io.elementary.files.appdata.xml.in.in:665
+#: data/io.elementary.files.appdata.xml.in.in:329
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
@@ -1235,6 +502,573 @@ msgstr "Ejecutar Archivos como administrador"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Es necesario autenticarse para lanzar Archivos como administrador"
+
+#~ msgid "Bookmark menu option for network mounts in sidebar"
+#~ msgstr ""
+#~ "Opción en el menú de marcadores para los montajes de red en la barra "
+#~ "lateral"
+
+#~ msgid "Show folder item count in List View"
+#~ msgstr "Ahora se muestra el recuento de elementos en la vista de lista"
+
+#~ msgid ""
+#~ "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
+#~ "network locations by default"
+#~ msgstr ""
+#~ "Ahora se muestran miniaturas en dispositivos MTP y PTP montados "
+#~ "localmente y en ubicaciones de red de manera predeterminada"
+
+#~ msgid ""
+#~ "Properties window: Allow the filename to be copied when it cannot be "
+#~ "edited"
+#~ msgstr ""
+#~ "Ventana de propiedades: permite copiar el nombre del archivo cuando no se "
+#~ "puede editar"
+
+#~ msgid "Improved tooltip formatting for devices in the sidebar"
+#~ msgstr ""
+#~ "Se mejoró el formato de las descripciones emergentes de los dispositivos "
+#~ "en la barra lateral"
+
+#~ msgid "Fix crash when pressing Enter and another key at the same time"
+#~ msgstr ""
+#~ "Se arregló un cierre inesperado al oprimir Intro y otra tecla a la vez"
+
+#~ msgid "Fix pathbar handling of \"~\" and \"..\" in path"
+#~ msgstr ""
+#~ "Se corrigió el acceso de la barra de direcciones de «~» y «..» en las "
+#~ "rutas"
+
+#~ msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
+#~ msgstr ""
+#~ "La barra de direcciones del selector de archivos ya no se bloquea cuando "
+#~ "se invoca desde Flatpak"
+
+#~ msgid ""
+#~ "Do not show git status for repositories on FUSE filesystems to prevent "
+#~ "possible blocking"
+#~ msgstr ""
+#~ "No se muestra el estado de Git en repositorios en sistemas de archivos "
+#~ "FUSE para evitar posibles bloqueos"
+
+#~ msgid "\"Personal\" is now \"Bookmarks\""
+#~ msgstr "«Personal» es ahora «Marcadores»"
+
+#~ msgid ""
+#~ "Add warning and error colored disk usage bars when disk becomes too full"
+#~ msgstr ""
+#~ "Se añadieron colores de alerta y error a las barras de uso de disco "
+#~ "cuando estos están a punto de llenarse"
+
+#~ msgid ""
+#~ "Prevent window resizing when filename column width exceeds available space"
+#~ msgstr ""
+#~ "Se evita el redimensionamiento de la ventana cuando la anchura de la "
+#~ "columna de nombre de archivo excede el espacio disponible"
+
+#~ msgid "Fix handling of filenames containing the # character"
+#~ msgstr ""
+#~ "Se reparó el manejo de nombres de archivo que contienen el carácter «#»"
+
+#~ msgid "Fix regressions regarding pathbar context menus and clicking"
+#~ msgstr ""
+#~ "Se corrigieron regresiones en los menús contextuales de la barra de ruta "
+#~ "y la pulsación sobre esta"
+
+#~ msgid "Paste images into other apps instead of file paths where possible"
+#~ msgstr ""
+#~ "En las aplicaciones donde es posible, se pegan la imágenes directamente "
+#~ "en vez de las rutas de archivo"
+
+#~ msgid "Paste into a selected folder when using Ctrl + V"
+#~ msgstr ""
+#~ "Puede utilizar Ctrl + V para pegar en una carpeta que esté seleccionada"
+
+#~ msgid "Show file info overlay in List View as well"
+#~ msgstr "Ahora se muestra la información sobre archivos en la vista de lista"
+
+#~ msgid "Traverse search results with Tab key"
+#~ msgstr "Puede recorrer los resultados de la búsqueda con la tecla Tab"
+
+#~ msgid "Show an error message when attempting to open trashed files"
+#~ msgstr ""
+#~ "Se muestra un mensaje de error al intentar abrir archivos de la papelera"
+
+#~ msgid ""
+#~ "Fix uneditable area in pathbar which is showing home folder placeholder"
+#~ msgstr ""
+#~ "Se reparó la zona no editable de la barra de ruta que muestra el marcador "
+#~ "sustitutorio de la carpeta personal"
+
+#~ msgid "Fix an issue that prevented file modification times from showing"
+#~ msgstr ""
+#~ "Se corrigió un problema que impedía que se mostraran las horas de "
+#~ "modificación de los archivos"
+
+#~ msgid "Fix size of restored tiled window"
+#~ msgstr "Se corrigió el tamaño de la ventana en mosaico tras restaurarse"
+
+#~ msgid "Fix color tags disappearing when thumbnails hidden"
+#~ msgstr ""
+#~ "Las etiquetas de color ya no desaparecen cuando las miniaturas están "
+#~ "ocultas"
+
+#~ msgid "Fix crash when a device icon is coming from a file"
+#~ msgstr ""
+#~ "Corrección del cierre inesperado producido cuando un icono de dispositivo "
+#~ "proviene de un archivo"
+
+#~ msgid "Fix device icon sometimes missing"
+#~ msgstr ""
+#~ "Se corrige una situación que causaba en ocasiones que faltasen los iconos "
+#~ "de dispositivos"
+
+#~ msgid "Fix occasional view freeze after renaming"
+#~ msgstr ""
+#~ "Se corrigió un congelamiento ocasional producido después de cambiar "
+#~ "nombre de archivos"
+
+#~ msgid "Improve renaming logic when dealing with leading/trailing whitespace"
+#~ msgstr ""
+#~ "Se mejoró la lógica de cambio de nombre al tratar archivos con espacios "
+#~ "al inicio o al final"
+
+#~ msgid "Fix breadcrumbs sometimes incorrect at startup"
+#~ msgstr "Se solucionó un problema al iniciar que provocaba rutas incorrectas"
+
+#~ msgid "Do not show file:// prefix in navigation buttons menus"
+#~ msgstr ""
+#~ "Ya no se muestra el prefijo «file://» en los menús de los botones de "
+#~ "navegación"
+
+#~ msgid "Fix \"New Folder\" keyboard shortcut label in menu"
+#~ msgstr "Corrección de la etiqueta del atajo de «Carpeta nueva» en el menú"
+
+#~ msgid "Fix navigation with back/forward button context menu"
+#~ msgstr ""
+#~ "Se reparó la navegación con el menú contextual de los botones Atrás y "
+#~ "Adelante"
+
+#~ msgid "Fix path bar sometimes showing wrong path when closing a tab"
+#~ msgstr ""
+#~ "A veces, la barra de ruta mostraba la ruta incorrecta tras cerrar una "
+#~ "pestaña"
+
+#~ msgid ""
+#~ "Ensure keyboard shortcuts work immediately after creating or renaming a "
+#~ "file"
+#~ msgstr ""
+#~ "El programa se cerciora de que los atajos de teclado funcionen "
+#~ "adecuadamente luego de crear un archivo o cambiarle el nombre"
+
+#~ msgid ""
+#~ "Do not include \"file://\" in pathbar text or when pasting path as text"
+#~ msgstr ""
+#~ "Se excluye «file://» del texto de la barra de ruta y al pegar la ruta "
+#~ "como texto"
+
+#~ msgid "Show keyboard shortcuts in menu items"
+#~ msgstr "Se muestran los atajos de teclado en los elementos del menú"
+
+#~ msgid "Fix an issue with breadcrumbs in the file chooser"
+#~ msgstr ""
+#~ "Se solucionó un problema con la ruta de exploración en el selector de "
+#~ "archivos"
+
+#~ msgid "Show a warning when ejecting a volume that's still in use"
+#~ msgstr ""
+#~ "Se muestra una advertencia al expulsar un volumen que todavía está en uso"
+
+#~ msgid "Fix cursor update after horizontal scroll in Column View"
+#~ msgstr ""
+#~ "Se corrigió la actualización del cursor tras desplazarse horizontalmente "
+#~ "en la vista por columnas"
+
+#~ msgid "Fix folder-open icon persisting after closing Column View"
+#~ msgstr ""
+#~ "Se solucionó la persistencia del icono de apertura de carpeta después de "
+#~ "cerrar la vista por columnas"
+
+#~ msgid "Use destructive action styling for some trash dialog buttons"
+#~ msgstr ""
+#~ "Algunos botones en cuadros de diálogo para enviar a la papelera utilizan "
+#~ "el estilo de acción destructiva"
+
+#~ msgid "New features:"
+#~ msgstr "Funcionalidades nuevas:"
+
+#~ msgid "Initial git plugin support"
+#~ msgstr "Compatibilidad inicial del complemento de git"
+
+#~ msgid "Follow global history setting when restoring and saving tabs"
+#~ msgstr ""
+#~ "Se sigue la configuración global del historial al restaurar y guardar "
+#~ "pestañas"
+
+#~ msgid "Ensure tabs showing same folder remain synchronized"
+#~ msgstr ""
+#~ "Se garantiza que las pestañas que muestran la misma carpeta permanecen en "
+#~ "sincronía"
+
+#~ msgid "Fix drag with secondary button on empty space"
+#~ msgstr ""
+#~ "Ahora arrastrar sobre un espacio vacío con el botón secundario del ratón "
+#~ "funciona como es esperable"
+
+#~ msgid "Show custom media type icons for installed apps"
+#~ msgstr ""
+#~ "Se muestran iconos de tipo de medio personalizados para aplicaciones "
+#~ "instaladas"
+
+#~ msgid "Fix appearance of inactive diskspace indicator"
+#~ msgstr "Se reparó la apariencia inactiva del indicador de espacio en disco"
+
+#~ msgid "Improve pathbar animation"
+#~ msgstr "Mejora de la animación de la barra de ruta"
+
+#~ msgid "Update documentation"
+#~ msgstr "Documentación actualizada"
+
+#~ msgid "Update translations"
+#~ msgstr "Traducciones actualizadas"
+
+#~ msgid "Initial cloudproviders plugin support"
+#~ msgstr ""
+#~ "Compatibilidad inicial con complementos de proveedores de almacenamiento "
+#~ "en la nube"
+
+#~ msgid "Fix selecting pasted files"
+#~ msgstr "Corrección relativa a la selección de archivos pegados"
+
+#~ msgid "Fix color label visibility while using dark theme"
+#~ msgstr ""
+#~ "Se mejoró la visibilidad de las etiquetas de colores al utilizar el tema "
+#~ "oscuro"
+
+#~ msgid "Fix selecting files using Shift key"
+#~ msgstr ""
+#~ "Se corrigió un problema de selección de archivos mediante la tecla Mayús"
+
+#~ msgid "Draw checkerboard background for image items"
+#~ msgstr "Se muestra un fondo de escaques detrás de las imágenes"
+
+#~ msgid "Improved styling for disk space bars"
+#~ msgstr "Se hicieron mejoras de estilo para las barras de espacio en disco"
+
+#~ msgid "Show more search results"
+#~ msgstr "Se muestran más resultados de búsqueda"
+
+#~ msgid "Ensure valid tab name generation"
+#~ msgstr "El programa se cerciora de generar nombres de pestañas válidos"
+
+#~ msgid "Properly sort folders by date and size"
+#~ msgstr "Las carpetas ahora se ordenan por fecha y tamaño correctamente"
+
+#~ msgid ""
+#~ "Launching Files from Terminal now opens new tab instead of new window"
+#~ msgstr ""
+#~ "La apertura de archivos desde un terminal ahora abre pestañas nuevas en "
+#~ "lugar de ventanas nuevas"
+
+#~ msgid "Improve MTP support"
+#~ msgstr "Compatibilidad con MTP mejorada"
+
+#~ msgid "Various tagging feature refinements"
+#~ msgstr "Diversos refinamientos relativos a la función de etiquetaje"
+
+#~ msgid "Keyboard navigation improvements"
+#~ msgstr "Mejoras en la navegación mediante el teclado"
+
+#~ msgid "Symlink copy and paste fixes"
+#~ msgstr "Reparaciones en la copia y el pegado de enlaces simbólicos"
+
+#~ msgid "Avoid crash when Templates folder is null"
+#~ msgstr ""
+#~ "Se evita un cierre inesperado cuando la carpeta Plantillas está vacía"
+
+#~ msgid "Reduce memory footprint of FileChooserDialog"
+#~ msgstr "Se redujo el uso de memoria de FileChooserDialog"
+
+#~ msgid "Avoid crash when selecting image file in some situations"
+#~ msgstr ""
+#~ "Se evita un cierre inesperado provocado al seleccionar un archivo de "
+#~ "imagen en determinadas situaciones"
+
+#~ msgid ""
+#~ "Fix unclosable progress window while copying network files to removable "
+#~ "storage"
+#~ msgstr ""
+#~ "Al copiar archivos de red en soportes extraíbles, no se podía cerrar la "
+#~ "ventana de progreso"
+
+#~ msgid "Fix drag and drop after double clicking a blank area"
+#~ msgstr ""
+#~ "Se corrigió la función de arrastrar y colocar después de pulsar en una "
+#~ "zona vacía"
+
+#~ msgid "Avoid crash while scrolling over view switcher"
+#~ msgstr ""
+#~ "Se evita un cierre inesperado después de desplazarse sobre el conmutador "
+#~ "de vistas"
+
+#~ msgid "Avoid possible crash in some copy and paste situations"
+#~ msgstr ""
+#~ "Se evita un posible cierre inesperado que acaece en algunas situaciones "
+#~ "luego de copiar y pegar"
+
+#, fuzzy
+#~| msgid ""
+#~| "Keyboard navigation fix for cherry picking select files in icon view"
+#~ msgid "Keyboard navigation fix for cherry picking select files in Grid view"
+#~ msgstr ""
+#~ "Corrección de navegación del teclado para seleccionar archivos "
+#~ "seleccionados en la vista de iconos"
+
+#~ msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
+#~ msgstr ""
+#~ "Ya no se especifica en el código el estilo de texto indicador; esto evita "
+#~ "problemas en el estilo oscuro"
+
+#~ msgid "Minor spacing adjustments to location bar"
+#~ msgstr "Pequeños ajustes de espacio en la barra de ubicación"
+
+#~ msgid "Fix F2 renaming behavior"
+#~ msgstr "Corrección del comportamiento de cambiar nombre con F2"
+
+#~ msgid "Minor spacing adjustments to location breadcrumbs"
+#~ msgstr "Pequeños ajustes en el espacio de la ruta de navegación"
+
+#~ msgid "Consistently remember color tags"
+#~ msgstr "Se recuerdan de manera uniforme las etiquetas de color"
+
+#~ msgid ""
+#~ "Reload thumbnails when changing zoom level to avoid showing placeholder "
+#~ "unnecessarily"
+#~ msgstr ""
+#~ "Se recargan las miniaturas al cambiar la escala para evitar mostrar "
+#~ "iconos temporales innecesariamente"
+
+#~ msgid "Fix running scripts with spaces in filename"
+#~ msgstr ""
+#~ "Se arregló la ejecución de secuencias de órdenes con espacios en el "
+#~ "nombre de archivo"
+
+#~ msgid "Fix high CPU regression in version 4.1.4"
+#~ msgstr ""
+#~ "Se arregló una regresión que provocaba índices altos de uso de CPU en la "
+#~ "versión 4.1.4"
+
+#~ msgid "File sorting fixes"
+#~ msgstr "Reparaciones de la ordenación de archivos"
+
+#~ msgid "Meson: fix soversion names"
+#~ msgstr "Meson: corrección de los nombres de las versiones"
+
+#~ msgid "Remove CMake build system"
+#~ msgstr "Se eliminó el sistema de compilación CMake"
+
+#~ msgid "Fix missing File System properties menu"
+#~ msgstr ""
+#~ "Corrección del menú de propiedades del sistema de archivos que falta"
+
+#~ msgid "Drop intltool dependency"
+#~ msgstr "Se eliminó la dependencia intltool"
+
+#~ msgid "Fix default file type handler logic"
+#~ msgstr ""
+#~ "Se arregló la lógica del manipulador de tipos de archivo predeterminados"
+
+#~ msgid "Fix initial search window size too small"
+#~ msgstr ""
+#~ "Corrección del tamaño de la ventana de búsqueda inicial demasiado pequeño"
+
+#~ msgid "Add option to disable local file thumbnails"
+#~ msgstr ""
+#~ "Se añadió una opción para desactivar las miniaturas de los archivos "
+#~ "locales"
+
+#~ msgid "Fix crash when opening multiple video files"
+#~ msgstr "Se arregló un cierre inesperado al abrir varios archivos de vídeo"
+
+#~ msgid "Fix some timing issues around adding and removing files"
+#~ msgstr ""
+#~ "Corrección de algunos problemas de sincronización al añadir y eliminar "
+#~ "archivos"
+
+#~ msgid "Meson: fix missing library headers"
+#~ msgstr "Meson: correcciones de las cabeceras de biblioteca faltantes"
+
+#~ msgid "Fix color tag display"
+#~ msgstr "Se muestran adecuadamente las etiquetas de color"
+
+#~ msgid "Show reserved space in Properties window"
+#~ msgstr "Mostrar espacio reservado en la ventana Propiedades"
+
+#~ msgid "Add border radius to text background"
+#~ msgstr "Agregar radio de borde al fondo del texto"
+
+#~ msgid "Fix file mimetype association regression"
+#~ msgstr "Corregir la regresión de asociación de tipos de archivo"
+
+#~ msgid "New pathbar tooltips"
+#~ msgstr "Nuevas descripciones emergentes en la barra de rutas"
+
+#~ msgid "Build fixes"
+#~ msgstr "Corrección de compilación"
+
+#~ msgid "Plugin build fixes"
+#~ msgstr "Corrección de la compilación de complementos"
+
+#~ msgid "Fix Ctrl+Tab behavior"
+#~ msgstr "Corrección del comportamiento de Ctrl+Tab"
+
+#~ msgid "Fix building without Unity library"
+#~ msgstr "Se corrigió la compilación sin la biblioteca de Unity"
+
+#~ msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
+#~ msgstr ""
+#~ "Ocultar la barra de ruta, mostrar texto y un icono de búsqueda en la "
+#~ "carpeta personal"
+
+#~ msgid "Style error dialogs"
+#~ msgstr "Se dio estilo a los diálogos de error"
+
+#~ msgid "Right click fixes"
+#~ msgstr "Correcciones al pulsar con el botón secundario del ratón"
+
+#~ msgid "Reload recent view when privacy setting changes"
+#~ msgstr ""
+#~ "Volver a cargar la vista reciente cuando cambie la configuración de "
+#~ "privacidad"
+
+#~ msgid "`Connect Server` fixes"
+#~ msgstr "Correcciones de `Conectar con un servidor de red`"
+
+#~ msgid "Do not activate multiple files with single click"
+#~ msgstr "No activar varios archivos con un solo clic"
+
+#~ msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
+#~ msgstr ""
+#~ "Usar «Tab» para cambiar entre la selección de teclado en la vista o en la "
+#~ "barra lateral"
+
+#~ msgid "Delete color tag database entries for trashed files"
+#~ msgstr ""
+#~ "Eliminar las entradas de la base de datos de etiquetas de color para los "
+#~ "archivos eliminados"
+
+#~ msgid "Throttle tab closing"
+#~ msgstr "Aceleración del cierre de pestañas"
+
+#~ msgid "`Ctrl` key fixes"
+#~ msgstr "Correcciones de las teclas `Ctrl`"
+
+#~ msgid "Drag and drop fixes"
+#~ msgstr "Correcciones de arrastrar y soltar"
+
+#~ msgid "Show icons in `Open with` menus"
+#~ msgstr "Mostrar iconos en los menús de «Abrir con»"
+
+#~ msgid "Tooltip fixes"
+#~ msgstr "Correcciones en las descripciones emergentes"
+
+#~ msgid "Memory leak fixes"
+#~ msgstr "Correcciones de pérdida de memoria"
+
+#~ msgid "Crash fixes"
+#~ msgstr "Corrección de errores"
+
+#~ msgid "Trash: respect sound setting"
+#~ msgstr "Papelera: se respeta la configuración de sonido"
+
+#~ msgid "Localization fixes"
+#~ msgstr "Correcciones de regionalización"
+
+#~ msgid "Over 100 major and minor bug fixes and improvements"
+#~ msgstr "Más de 100 correcciones y mejoras de errores mayores y menores"
+
+#~ msgid "Honor 12/24hr system setting"
+#~ msgstr ""
+#~ "Se respeta la configuración de formato horario (12 o 24 horas) del sistema"
+
+#~ msgid "Distinguish between tabs with the same name"
+#~ msgstr "Distinguir entre pestañas con el mismo nombre"
+
+#~ msgid ""
+#~ "Support launching from other applications with a target file selected"
+#~ msgstr ""
+#~ "Se permite el lanzamiento desde otras aplicaciones con un archivo de "
+#~ "destino seleccionado"
+
+#~ msgid "New translations"
+#~ msgstr "Traducciones nuevas"
+
+#~ msgid "Minor bug fixes"
+#~ msgstr "Reparar errores menores"
+
+#~ msgid "Improved networking support"
+#~ msgstr "Compatibilidad con redes mejorada"
+
+#~ msgid "Correct window geometry when snapping to left or right"
+#~ msgstr ""
+#~ "Corregir la geometría de la ventana al anclar a la izquierda o a la "
+#~ "derecha"
+
+#~ msgid ""
+#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+#~ "setting is active"
+#~ msgstr ""
+#~ "Oprimir Ctrl ya no cancela el cambio de nombre cuando la opción «Revelar "
+#~ "puntero» está activa"
+
+#~ msgid "Switching input language cancels actions"
+#~ msgstr "Cambiar el idioma de entrada cancela acciones"
+
+#~ msgid "Various crash fixes"
+#~ msgstr "Arreglados varios cierres inesperados"
+
+#~ msgid ""
+#~ "Web browsers like Firefox now remember the most recently used downloads "
+#~ "directory"
+#~ msgstr ""
+#~ "Los navegadores web como Firefox ahora recuerdan el directorio de "
+#~ "descargas usado más recientemente"
+
+#~ msgid "Remember preferred zoom level"
+#~ msgstr "Se recuerda el nivel de escala preferido"
+
+#~ msgid "Improved input method support"
+#~ msgstr "Mejor compatibilidad con métodos de entrada"
+
+#~ msgid "910x640 minimum window size"
+#~ msgstr "Tamaño mínimo de ventana de 910 × 640"
+
+#~ msgid "Security fixes"
+#~ msgstr "Correcciones de seguridad"
+
+#~ msgid "Enable drag and drop tabs between windows"
+#~ msgstr "Se permite arrastrar y colocar pestañas entre ventanas"
+
+#~ msgid "Merge search functionality into Ctrl+F"
+#~ msgstr "Se combinó la función de búsqueda con Ctrl+F"
+
+#~ msgid "Improved translation support"
+#~ msgstr "Mejoras de traducciones"
+
+#~ msgid "Fix appdata release dates"
+#~ msgstr "Se corrigieron las fechas de publicación de AppData"
+
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "Mejora la apertura de archivos sobre acciones de Samba"
+
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr "Reparar un fallo mientras se restauraban objetos de la papelera"
+
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr "Mejorar la sensibilidad del menú contextual cortar/copiar/pegar"
+
+#~ msgid "Translation updates"
+#~ msgstr "Actualización de traducciones"
 
 #~ msgid "system-file-manager"
 #~ msgstr "system-file-manager"
