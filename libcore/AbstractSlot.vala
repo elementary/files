@@ -66,7 +66,6 @@ namespace Files {
         public signal void new_container_request (GLib.File loc, Files.OpenFlag flag);
         public signal void selection_changed (GLib.List<Files.File> files);
         public signal void directory_loaded (Files.Directory dir);
-        public signal void item_hovered (Files.File? file);
 
         public void add_extra_widget (Gtk.Widget widget) {
             extra_location_widgets.pack_start (widget);
@@ -83,7 +82,11 @@ namespace Files {
         }
 
         construct {
-            content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
+                vexpand = true,
+                hexpand = true
+            };
+
             extra_location_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             content_box.pack_start (extra_location_widgets, false, false, 0);
 

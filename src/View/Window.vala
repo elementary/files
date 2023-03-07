@@ -39,8 +39,10 @@ namespace Files.View {
             {"info", action_info, "s"},
             {"view-mode", action_view_mode, "u", "0" },
             {"show-hidden", null, null, "false", change_state_show_hidden},
+            {"singleclick-select", null, null, "false", change_state_single_click_select},
             {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-            {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
+            {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
+            {"folders-before-files", null, null, "true", change_state_folders_before_files}
         };
 
         public uint window_number { get; construct; }
@@ -213,9 +215,12 @@ namespace Files.View {
             add (grid);
 
             /** Apply preferences */
-            var prefs = Files.app_settings;
-            get_action ("show-hidden").set_state (prefs.get_boolean ("show-hiddenfiles"));
-            get_action ("show-remote-thumbnails").set_state (prefs.get_boolean ("show-remote-thumbnails"));
+            var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
+            get_action ("show-hidden").set_state (prefs.show_hidden_files);
+            get_action ("show-local-thumbnails").set_state (prefs.show_local_thumbnails);
+            get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
+            get_action ("singleclick-select").set_state (prefs.singleclick_select);
+            get_action ("folders-before-files").set_state (prefs.sort_directories_first);
         }
 
         private void connect_signals () {
@@ -390,14 +395,6 @@ namespace Files.View {
             save_tabs ();
         }
 
-        public Files.AbstractSlot? get_active_slot () {
-            if (current_tab != null) {
-                return current_tab.get_current_slot ();
-            } else {
-                return null;
-            }
-        }
-
         public new void set_title (string title) {
             this.title = title;
         }
@@ -506,11 +503,9 @@ namespace Files.View {
 
             change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
-            /* Capturing ViewContainer object reference in closure prevents its proper destruction
-             * so capture its unique id instead */
-            var id = content.id;
+
             content.tab_name_changed.connect ((tab_name) => {
-                set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
+                check_for_tabs_with_same_name (); // Also sets tab_label.
             });
 
             content.loading.connect ((is_loading) => {
@@ -569,47 +564,64 @@ namespace Files.View {
             return -1;
         }
 
-        private string check_for_tab_with_same_name (int id, string path) {
-            if (path == Files.INVALID_TAB_NAME) {
-                 return path;
-            }
-
-            var new_label = Path.get_basename (path);
-            foreach (Granite.Widgets.Tab tab in tabs.tabs) {
+        /** Compare every tab label with every other and resolve ambiguities **/
+        private void check_for_tabs_with_same_name () {
+            // Take list copy so foreach clauses can be nested safely
+            var copy_tabs = tabs.tabs.copy ();
+            foreach (unowned var tab in tabs.tabs) {
                 var content = (ViewContainer)(tab.page);
-                if (content.id != id) {
-                    string content_path = content.tab_name;
-                    string content_label = Path.get_basename (content_path);
-                    if (tab.label == new_label) {
-                        if (content_path != path) {
-                            new_label = disambiguate_name (new_label, path, content_path); /*Relabel calling tab */
-                            if (content_label == tab.label) {
-                                /* Also relabel conflicting tab (but not before this function finishes) */
-                                Idle.add_full (GLib.Priority.LOW, () => {
-                                    var unique_name = disambiguate_name (content_label, content_path, path);
-                                    set_tab_label (unique_name, tab, content_path);
-                                    return GLib.Source.REMOVE;
-                                });
-                            }
-                        }
-                    } else if (content_label == new_label &&
-                               content_path == path &&
-                               content_label != tab.label) {
+                if (content.tab_name == Files.INVALID_TAB_NAME) {
+                    set_tab_label (content.tab_name, tab, content.tab_name);
+                    continue;
+                }
 
-                        /* Revert to short label when possible */
-                        Idle.add_full (GLib.Priority.LOW, () => {
-                            set_tab_label (content_label, tab, content_path);
-                            return GLib.Source.REMOVE;
-                        });
+                var path = content.location.get_path ();
+                if (path == null) { // e.g. for uris like network://
+                    set_tab_label (content.tab_name, tab, content.tab_name);
+                    continue;
+                }
+                var basename = Path.get_basename (path);
+
+                // Ignore content not named from the path
+                if (!content.tab_name.has_suffix (basename)) {
+                    set_tab_label (content.tab_name, tab, content.tab_name);
+                    continue;
+                }
+
+                // Tab label defaults to the basename.
+                set_tab_label (basename, tab, content.tab_name);
+
+                // Compare with every other tab for same label
+                foreach (unowned var tab2 in copy_tabs) {
+                    var content2 = (ViewContainer)(tab2.page);
+                    if (content2 == content || content2.tab_name == Files.INVALID_TAB_NAME) {
+                        continue;
+                    }
+
+                    var path2 = content2.location.get_path ();
+                    if (path2 == null) { // e.g. for uris like network://
+                        continue;
+                    }
+                    var basename2 = Path.get_basename (path2);
+
+                    // Ignore content not named from the path
+                    if (!content2.tab_name.has_suffix (basename2)) {
+                        continue;
+                    }
+
+                    if (basename2 == basename && path2 != path) {
+                        set_tab_label (FileUtils.disambiguate_uri (path2, path), tab2, content2.tab_name);
+                        set_tab_label (FileUtils.disambiguate_uri (path, path2), tab, content.tab_name);
                     }
                 }
             }
 
-            return new_label;
+            return;
         }
 
         /* Just to append "as Administrator" when appropriate */
         private void set_tab_label (string label, Granite.Widgets.Tab tab, string? tooltip = null) {
+
             string lab = label;
             if (Files.is_admin ()) {
                 lab += (" " + _("(as Administrator)"));
@@ -629,25 +641,6 @@ namespace Files.View {
             }
         }
 
-        private string disambiguate_name (string name, string path, string conflict_path) {
-            string prefix = "";
-            string prefix_conflict = "";
-            string path_temp = path;
-            string conflict_path_temp = conflict_path;
-
-            /* Add parent directories until path and conflict path differ */
-            while (prefix == prefix_conflict) {
-                var parent_path= FileUtils.get_parent_path_from_path (path_temp);
-                var parent_conflict_path = FileUtils.get_parent_path_from_path (conflict_path_temp);
-                prefix = Path.get_basename (parent_path) + Path.DIR_SEPARATOR_S + prefix;
-                prefix_conflict = Path.get_basename (parent_conflict_path) + Path.DIR_SEPARATOR_S + prefix_conflict;
-                path_temp= parent_path;
-                conflict_path_temp = parent_conflict_path;
-            }
-
-            return prefix + name;
-        }
-
         public void bookmark_uri (string uri, string custom_name = "") {
             sidebar.add_favorite_uri (uri, custom_name);
         }
@@ -655,7 +648,6 @@ namespace Files.View {
         public bool can_bookmark_uri (string uri) {
             return !sidebar.has_favorite_uri (uri);
         }
-
 
         public void remove_content (ViewContainer view_container) {
             remove_tab (tabs.get_tab_by_widget ((Gtk.Widget)view_container));
@@ -750,6 +742,10 @@ namespace Files.View {
         }
 
         private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
+            if (current_tab == null) { // can occur during startup
+                return;
+            }
+
             ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
             current_tab.change_view_mode (mode);
             /* ViewContainer takes care of changing appearance */
@@ -911,16 +907,28 @@ namespace Files.View {
             Files.app_settings.set_boolean ("show-hiddenfiles", state);
         }
 
+        public void change_state_single_click_select (GLib.SimpleAction action) {
+            bool state = !action.state.get_boolean ();
+            action.set_state (new GLib.Variant.boolean (state));
+            Files.Preferences.get_default ().singleclick_select = state;
+        }
+
         public void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
             Files.app_settings.set_boolean ("show-remote-thumbnails", state);
         }
 
-        public void change_state_hide_local_thumbnails (GLib.SimpleAction action) {
+        public void change_state_show_local_thumbnails (GLib.SimpleAction action) {
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
-            Files.app_settings.set_boolean ("hide-local-thumbnails", state);
+            Files.app_settings.set_boolean ("show-local-thumbnails", state);
+        }
+
+        public void change_state_folders_before_files (GLib.SimpleAction action) {
+            bool state = !action.state.get_boolean ();
+            action.set_state (new GLib.Variant.boolean (state));
+            Files.Preferences.get_default ().sort_directories_first = state;
         }
 
         private void connect_to_server () {

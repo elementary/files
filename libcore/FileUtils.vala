@@ -68,12 +68,6 @@ namespace Files.FileUtils {
             parent_path = path;
         }
 
-        if ((parent_path.has_prefix (Files.MTP_URI) || parent_path.has_prefix (Files.PTP_URI)) &&
-            !valid_mtp_uri (parent_path)) {
-
-            parent_path = path;
-        }
-
         if (parent_path == Files.SMB_URI) {
             parent_path = parent_path + Path.DIR_SEPARATOR_S;
         }
@@ -271,7 +265,15 @@ namespace Files.FileUtils {
             rc = rc.replace ("'", "");
         }
 
-        return Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
+        var scheme = Uri.parse_scheme (uri);
+        var escaped_uri = Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
+        if (scheme == "mtp" || scheme == "gphoto2") {
+            // We want to escape colons except in protocol as some servers have a colon in name
+            escaped_uri = escaped_uri.replace (":", "%3A");
+            escaped_uri = escaped_uri.replace ("%3A//", "://");
+        }
+
+        return escaped_uri;
     }
 
     /** Produce a valid unescaped path.  A current path can be provided and is used to get the scheme and
@@ -438,11 +440,12 @@ namespace Files.FileUtils {
             if (explode_protocol[0] == "mtp" || explode_protocol[0] == "gphoto2" ) {
                 string[] explode_path = explode_protocol[1].split ("]", 2);
                 if (explode_path[0] != null && explode_path[0].has_prefix ("[")) {
+                    // Old form of address
                     protocol = (explode_protocol[0] + "://" + explode_path[0] + "]").replace ("///", "//");
                     /* If path is being manually edited there may not be "]" so explode_path[1] may be null*/
                     new_path = explode_path [1] ?? "";
                 } else {
-                    debug ("Invalid mtp or ptp path %s", path);
+                    // New form of address
                     protocol = explode_protocol[0] + "://";
                     new_path = explode_protocol[1] ?? "";
                 }
@@ -463,21 +466,6 @@ namespace Files.FileUtils {
         if (new_path.has_suffix (Path.DIR_SEPARATOR_S) && path != Path.DIR_SEPARATOR_S) {
             new_path = new_path.slice (0, new_path.length - 1);
         }
-    }
-
-    private bool valid_mtp_uri (string uri) {
-        if (!uri.contains (Files.MTP_URI) && !uri.contains (Files.PTP_URI)) {
-            return false;
-        }
-
-        string[] explode_protocol = uri.split ("://", 2);
-        if (explode_protocol.length != 2 ||
-            !explode_protocol[1].has_prefix ("[") ||
-            !explode_protocol[1].contains ("]")) {
-            return false;
-        }
-
-        return true;
     }
 
     public string get_smb_share_from_uri (string uri) {
@@ -548,13 +536,14 @@ namespace Files.FileUtils {
                                                    string new_name,
                                                    GLib.Cancellable? cancellable = null) throws GLib.Error {
 
+        string? original_name = old_location.get_basename ();
+        if (original_name == new_name) {
+            return null;
+        }
+
         /** TODO Check validity of new name **/
-
-
         GLib.File? new_location = null;
         Files.Directory? dir = Files.Directory.cache_lookup_parent (old_location);
-        string? original_name = old_location.get_basename ();
-
         try {
             new_location = yield old_location.set_display_name_async (new_name, GLib.Priority.DEFAULT, cancellable);
 
@@ -567,7 +556,7 @@ namespace Files.FileUtils {
                 var removed_files = new GLib.List<GLib.File> ();
                 removed_files.append (old_location);
                 Files.Directory.notify_files_removed (removed_files);
-                Files.Directory.notify_files_added (added_files);
+                Files.Directory.notify_files_added_internally (added_files);
             } else {
                 warning ("Renamed file has no Files.Directory.Async");
             }
@@ -581,7 +570,7 @@ namespace Files.FileUtils {
 
             if (dir != null) {
                 /* We emit this signal anyway so callers can know rename failed and disconnect */
-                dir.file_added (null);
+                dir.file_added (null, true);
             }
 
             throw e;
@@ -1235,6 +1224,91 @@ namespace Files.FileUtils {
 
     public bool protocol_is_supported (string protocol) {
         return protocol in GLib.Vfs.get_default ().get_supported_uri_schemes ();
+    }
+
+    public bool file_is_dir (GLib.File file) {
+        try {
+            var info = file.query_info (GLib.FileAttribute.STANDARD_TYPE, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+            return info.get_file_type () == GLib.FileType.DIRECTORY;
+        } catch (Error e) {
+            return false;
+        }
+    }
+
+    // Return enough of @path to distinguish it from @conflict_path
+    // Currently, differences in some parts of uri are ignored, only scheme and path are used.
+    public string disambiguate_uri (string uri, string conflict_uri) {
+        string? uri_scheme, uri_userinfo, uri_host, uri_path, uri_query, uri_fragment;
+        string? conflict_scheme, conflict_userinfo, conflict_host, conflict_path, conflict_query, conflict_fragment;
+        int uri_port, conflict_port;
+        try {
+            Uri.split (uri, UriFlags.NONE, out uri_scheme, out uri_userinfo, out uri_host, out uri_port, out uri_path, out uri_query, out uri_fragment);
+            Uri.split (conflict_uri, UriFlags.NONE, out conflict_scheme, out conflict_userinfo, out conflict_host, out conflict_port, out conflict_path, out conflict_query, out conflict_fragment);
+        } catch {
+            return Path.get_basename (uri);
+        }
+
+        var prefix = "";
+        var conflict_prefix = "";
+        var temp_path = uri_path;
+        var temp_conflict_path = conflict_path;
+        string temp_basename = "", temp_conflict_basename = "";
+        var basename = Path.get_basename (temp_path);
+
+        if (basename == "") {
+            return (uri_scheme ?? "file") + "://";
+        }
+
+        // This function should be called with an actually conflicting path but
+        // we deal with some unexpected values in case.
+        if (basename != Path.get_basename (conflict_path)) {
+            return basename;
+        }
+
+        // Deal with same path possibly with different schemes
+        if (temp_path == temp_conflict_path) {
+            if ((uri_scheme ?? "file") == (conflict_scheme ?? "file")) {
+                return basename;
+            } else {
+                return uri;
+            }
+        }
+
+        // Add parent directories until path and conflict path differ
+        // Protect from possible infinite loops
+        uint count = 0;
+        while (prefix == conflict_prefix &&
+               temp_basename != Path.DIR_SEPARATOR_S &&
+               count < 10
+        ) {
+            var parent_temp_path = FileUtils.get_parent_path_from_path (temp_path, false);
+            var parent_temp_confict_path = FileUtils.get_parent_path_from_path (temp_conflict_path, false);
+            temp_path = parent_temp_path;
+            temp_conflict_path = parent_temp_confict_path;
+            temp_basename = Path.get_basename (parent_temp_path);
+            temp_conflict_basename = Path.get_basename (parent_temp_confict_path);
+
+            if (temp_basename != Path.DIR_SEPARATOR_S) {
+                prefix = temp_basename + Path.DIR_SEPARATOR_S + prefix;
+            } else {
+                prefix = temp_basename + prefix;
+            }
+
+            if (temp_conflict_basename != Path.DIR_SEPARATOR_S) {
+                conflict_prefix = temp_conflict_basename + Path.DIR_SEPARATOR_S + conflict_prefix;
+            } else {
+                conflict_prefix = temp_conflict_basename + conflict_prefix;
+            }
+
+            count++;
+        }
+
+        if (count > 5) {
+            warning ("disambiguate_oath: too many loops");
+            return basename;
+        }
+
+        return (prefix + basename);
     }
 }
 

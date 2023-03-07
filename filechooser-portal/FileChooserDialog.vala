@@ -11,11 +11,8 @@ public interface Xdp.Request : Object {
 public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
     public signal void response (Gtk.ResponseType response);
 
-    public uint register_id { get; set; default = 0; }
     public string parent_window { get; construct; }
-
     public Gtk.FileChooserAction action { get; construct; }
-
     public bool read_only { get; set; default = false; }
 
     public string accept_label {
@@ -67,6 +64,11 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
     private string? current_path = null;
     private bool previous_button_clicked = false;
     private bool next_button_clicked = false;
+
+    private uint register_id = 0;
+    private DBusConnection? dbus_connection = null;
+
+    private Settings settings;
 
     public FileChooserDialog (Gtk.FileChooserAction action, string parent_window, string title) {
         Object (
@@ -163,9 +165,8 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
         setup_chooser ();
 
-        var settings = new Settings ("io.elementary.files.file-chooser");
+        settings = new Settings ("io.elementary.files.file-chooser");
         int width, height;
-
         settings.get ("window-size", "(ii)", out width, out height);
 
         type_hint = Gdk.WindowTypeHint.DIALOG;
@@ -268,7 +269,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             next_button_clicked = false;
 
             location_bar.set_display_path (current_path);
-            tree_view.grab_focus ();
         });
 
         chooser.file_activated.connect (() => {
@@ -280,18 +280,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         cancel_button.clicked.connect (() => response (Gtk.ResponseType.CANCEL));
         accept_button.clicked.connect (() => response (Gtk.ResponseType.OK));
 
-        // save the dialog size and close after selection
-        response.connect_after (() => {
-            int w, h;
-
-            get_size (out w, out h);
-
-            settings.set_string ("last-folder-uri", chooser.get_current_folder_uri ());
-            settings.set ("window-size", "(ii)", w, h);
-
-            destroy ();
-        });
-
         var granite_settings = Granite.Settings.get_default ();
         var gtk_settings = Gtk.Settings.get_default ();
 
@@ -302,6 +290,12 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         });
 
         chooser.set_current_folder_uri (settings.get_string ("last-folder-uri"));
+
+        if (action == Gtk.FileChooserAction.SAVE) {
+            entry.grab_focus ();
+        } else {
+            tree_view.grab_focus ();
+        }
     }
 
     private static T find_child_by_name<T> (Gtk.Widget root, string path) requires (root is Gtk.Container) {
@@ -379,6 +373,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
             // bind the accept_button sensitivity with the entry text
             entry = find_child_by_name (grid, "<GtkFileChooserEntry>");
+            entry.set_placeholder_text (_("Enter new filename"));
             entry.bind_property ("text-length", accept_button, "sensitive", BindingFlags.SYNC_CREATE);
             entry.activate.connect (() => {
                 if (accept_button.sensitive) {
@@ -402,7 +397,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         chooser.remove (find_child_by_name (chooser, "extra_and_filters"));
     }
 
-    protected override bool key_release_event (Gdk.EventKey event) {
+    protected override bool key_press_event (Gdk.EventKey event) { // Match conflict dialog
         uint keyval;
         event.get_keyval (out keyval);
         if (keyval == Gdk.Key.Escape) {
@@ -410,7 +405,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             return Gdk.EVENT_STOP;
         }
 
-        return Gdk.EVENT_PROPAGATE;
+        return base.key_press_event (event);
     }
 
     protected override void show () {
@@ -430,7 +425,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
     public void set_current_name (string text) {
         chooser.set_current_name (text);
-        entry.grab_focus ();
     }
 
     public string get_uri () {
@@ -449,6 +443,10 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         });
 
         return uris;
+    }
+
+    public GLib.File get_file () {
+        return chooser.get_file ();
     }
 
     public void add_choice (FileChooserChoice choice) {
@@ -477,5 +475,30 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
     public new void close () throws DBusError, IOError {
         response (Gtk.ResponseType.DELETE_EVENT);
+    }
+
+    public bool register_object (DBusConnection connection, ObjectPath handle) {
+        dbus_connection = connection;
+        try {
+            register_id = connection.register_object<Xdp.Request> (handle, this);
+        } catch (Error e) {
+            critical (e.message);
+            return false;
+        }
+
+        return true;
+    }
+
+    public override void dispose () {
+        int w, h;
+        get_size (out w, out h);
+        settings.set_string ("last-folder-uri", chooser.get_current_folder_uri ());
+        settings.set ("window-size", "(ii)", w, h);
+
+        if (register_id != 0 && dbus_connection != null) {
+            dbus_connection.unregister_object (register_id);
+        }
+
+        base.dispose ();
     }
 }

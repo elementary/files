@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-24 20:43+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2021-05-22 18:59+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/"
@@ -14,7 +14,7 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 
 #: data/io.elementary.files.desktop.in.in:3
-#: data/io.elementary.files.appdata.xml.in.in:8
+#: data/io.elementary.files.appdata.xml.in.in:10
 msgid "Files"
 msgstr "फायली"
 
@@ -30,11 +30,6 @@ msgstr "फोल्डर; व्यवस्थापक; एक्सप्�
 msgid "File Manager"
 msgstr "फाइल व्यवस्थापक"
 
-#. TRANSLATORS This string is an icon name and should not be translated.
-#: data/io.elementary.files.desktop.in.in:9
-msgid "system-file-manager"
-msgstr "system-file-manager"
-
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
 msgstr "नवीन विंडो"
@@ -43,11 +38,11 @@ msgstr "नवीन विंडो"
 msgid "New Window As Administrator"
 msgstr "प्रशासक म्हणून नवीन विंडो"
 
-#: data/io.elementary.files.appdata.xml.in.in:9
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid "Browse and manage files and folders"
 msgstr "फायली आणि फोल्डर ब्राउझ आणि व्यवस्थापित करा"
 
-#: data/io.elementary.files.appdata.xml.in.in:11
+#: data/io.elementary.files.appdata.xml.in.in:13
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -59,945 +54,425 @@ msgstr ""
 "नेहमी शोधू शकता. आपल्या सर्व फाइल्स ऍक्सेस करा, स्थानिकरित्या, बाह्य डिव्हाइसवर किंवा "
 "दूरस्थपणे FTP, SFTP, AFP, Webdav किंवा Windows सामायिकरण वापरून."
 
-#: data/io.elementary.files.appdata.xml.in.in:33
-#: data/io.elementary.files.appdata.xml.in.in:51
-#: data/io.elementary.files.appdata.xml.in.in:76
-#: data/io.elementary.files.appdata.xml.in.in:153
-#: data/io.elementary.files.appdata.xml.in.in:170
-#: data/io.elementary.files.appdata.xml.in.in:194
-#: data/io.elementary.files.appdata.xml.in.in:218
+#: data/io.elementary.files.appdata.xml.in.in:36
+#: data/io.elementary.files.appdata.xml.in.in:82
+#: data/io.elementary.files.appdata.xml.in.in:140
+#: data/io.elementary.files.appdata.xml.in.in:158
+#: data/io.elementary.files.appdata.xml.in.in:183
+#: data/io.elementary.files.appdata.xml.in.in:260
+#: data/io.elementary.files.appdata.xml.in.in:277
 msgid "Improvements:"
 msgstr "सुधारणा:"
 
-#: data/io.elementary.files.appdata.xml.in.in:35
+#: data/io.elementary.files.appdata.xml.in.in:38
+msgid ""
+"Move global settings from the context menu to an app menu in the headerbar"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:40
+#: data/io.elementary.files.appdata.xml.in.in:56
+#: data/io.elementary.files.appdata.xml.in.in:71
+#: data/io.elementary.files.appdata.xml.in.in:97
+#: data/io.elementary.files.appdata.xml.in.in:109
+#: data/io.elementary.files.appdata.xml.in.in:132
+#: data/io.elementary.files.appdata.xml.in.in:150
+#: data/io.elementary.files.appdata.xml.in.in:175
+#: data/io.elementary.files.appdata.xml.in.in:201
+msgid "Minor updates:"
+msgstr "किरकोळ अपडेट्स:"
+
+#: data/io.elementary.files.appdata.xml.in.in:42
+#: data/io.elementary.files.appdata.xml.in.in:58
+#: data/io.elementary.files.appdata.xml.in.in:73
+#: data/io.elementary.files.appdata.xml.in.in:99
+#: data/io.elementary.files.appdata.xml.in.in:111
+#: data/io.elementary.files.appdata.xml.in.in:134
+#: data/io.elementary.files.appdata.xml.in.in:152
+#: data/io.elementary.files.appdata.xml.in.in:177
+#: data/io.elementary.files.appdata.xml.in.in:203
+#: data/io.elementary.files.appdata.xml.in.in:218
+#: data/io.elementary.files.appdata.xml.in.in:234
+#: data/io.elementary.files.appdata.xml.in.in:249
+#: data/io.elementary.files.appdata.xml.in.in:266
+#: data/io.elementary.files.appdata.xml.in.in:295
+msgid "Updated translations"
+msgstr "अद्ययावत भाषांतर"
+
+#: data/io.elementary.files.appdata.xml.in.in:84
+msgid ""
+"Provide option to select folders with single click and activate with double "
+"click"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:85
+msgid ""
+"Only show the properties overlay when files are selected, not when hovered"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:87
+#: data/io.elementary.files.appdata.xml.in.in:105
+#: data/io.elementary.files.appdata.xml.in.in:117
+#: data/io.elementary.files.appdata.xml.in.in:144
+#: data/io.elementary.files.appdata.xml.in.in:164
+#: data/io.elementary.files.appdata.xml.in.in:192
+#: data/io.elementary.files.appdata.xml.in.in:209
+#: data/io.elementary.files.appdata.xml.in.in:224
+#: data/io.elementary.files.appdata.xml.in.in:240
+#: data/io.elementary.files.appdata.xml.in.in:255
+#: data/io.elementary.files.appdata.xml.in.in:272
+msgid "Fixes:"
+msgstr "निराकारणे:"
+
+#: data/io.elementary.files.appdata.xml.in.in:89
+msgid "Fix unexpected file activation after navigation with double-click"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:90
+msgid "Fix dimmed window after use of filechooser portal"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:91
+msgid "Fix possible crash when rapidly changing view modes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:92
+msgid "Fix startup when restored remote location is no longer connected"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:93
+msgid ""
+"Ensure infobar shows in connection server dialog when connection attempt "
+"fails"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:94
+msgid "Ensure correct icon for bookmark to a file that is not a folder"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:95
+#, fuzzy
+#| msgid "Fix a crash when restoring items from the Trash"
+msgid "Fix possible crash when removing a bookmark"
+msgstr "कचर्‍यामधून आयटम पुनर्संचयित करताना क्रॅशचे निराकरण करा"
+
+#: data/io.elementary.files.appdata.xml.in.in:107
+msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:119
+msgid "Renaming with the same name no longer shows an error dialog"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:120
+msgid "Ctrl + A when renaming now selects all the text in the entry"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:121
+msgid "Selecting multiple items with Shift + Arrow keys now works properly"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:122
+msgid "The appearance of the cursor now matches the action"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:123
+msgid "The Trash sidebar item can no longer be removed"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:124
+msgid "Network sidebar plugins such as NextCloud are now added correctly"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:125
+msgid "Duplication of subfolders in ListView under some circumstances is fixed"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:126
+msgid ""
+"Bookmarks are now highlighted when a file they can accept is dragged onto "
+"them"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:127
+msgid "Folders not being restored properly under some circumstances is fixed"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:128
+msgid ""
+"Show confirmation dialog in file chooser before overwriting an existing file"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:129
+msgid "Ctrl + V now always pastes into background folder"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:130
+msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:142
 #, fuzzy
 #| msgid "Show keyboard shortcuts in menu items"
 msgid "Show New Tab and New Window shortcuts in context menus"
 msgstr "मेनू आयटममध्ये कीबोर्ड शॉर्टकट दाखवा"
 
-#: data/io.elementary.files.appdata.xml.in.in:37
-#: data/io.elementary.files.appdata.xml.in.in:57
-#: data/io.elementary.files.appdata.xml.in.in:85
-#: data/io.elementary.files.appdata.xml.in.in:102
-#: data/io.elementary.files.appdata.xml.in.in:117
-#: data/io.elementary.files.appdata.xml.in.in:133
-#: data/io.elementary.files.appdata.xml.in.in:148
-#: data/io.elementary.files.appdata.xml.in.in:165
-#: data/io.elementary.files.appdata.xml.in.in:202
-#: data/io.elementary.files.appdata.xml.in.in:223
-#: data/io.elementary.files.appdata.xml.in.in:243
-msgid "Fixes:"
-msgstr "निराकारणे:"
-
-#: data/io.elementary.files.appdata.xml.in.in:39
+#: data/io.elementary.files.appdata.xml.in.in:146
 msgid "Double click selects instead of exiting while renaming in list view"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:40
+#: data/io.elementary.files.appdata.xml.in.in:147
 msgid "Show public share icon in breadcrumbs"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:41
+#: data/io.elementary.files.appdata.xml.in.in:148
 msgid "Prevent a crash when dragging to re-arrange bookmarks"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:43
-#: data/io.elementary.files.appdata.xml.in.in:68
-#: data/io.elementary.files.appdata.xml.in.in:94
-#: data/io.elementary.files.appdata.xml.in.in:258
-#: data/io.elementary.files.appdata.xml.in.in:272
-msgid "Minor updates:"
-msgstr "किरकोळ अपडेट्स:"
-
-#: data/io.elementary.files.appdata.xml.in.in:45
-#: data/io.elementary.files.appdata.xml.in.in:70
-#: data/io.elementary.files.appdata.xml.in.in:96
-#: data/io.elementary.files.appdata.xml.in.in:111
-#: data/io.elementary.files.appdata.xml.in.in:127
-#: data/io.elementary.files.appdata.xml.in.in:142
-#: data/io.elementary.files.appdata.xml.in.in:159
-#: data/io.elementary.files.appdata.xml.in.in:188
-#: data/io.elementary.files.appdata.xml.in.in:212
-#: data/io.elementary.files.appdata.xml.in.in:230
-#: data/io.elementary.files.appdata.xml.in.in:252
-#: data/io.elementary.files.appdata.xml.in.in:266
-#: data/io.elementary.files.appdata.xml.in.in:279
-#: data/io.elementary.files.appdata.xml.in.in:292
-#: data/io.elementary.files.appdata.xml.in.in:324
-#: data/io.elementary.files.appdata.xml.in.in:346
-#: data/io.elementary.files.appdata.xml.in.in:355
-#: data/io.elementary.files.appdata.xml.in.in:364
-#: data/io.elementary.files.appdata.xml.in.in:375
-#: data/io.elementary.files.appdata.xml.in.in:384
-#: data/io.elementary.files.appdata.xml.in.in:403
-#: data/io.elementary.files.appdata.xml.in.in:414
-#: data/io.elementary.files.appdata.xml.in.in:422
-#: data/io.elementary.files.appdata.xml.in.in:454
-msgid "Updated translations"
-msgstr "अद्ययावत भाषांतर"
-
-#: data/io.elementary.files.appdata.xml.in.in:53
+#: data/io.elementary.files.appdata.xml.in.in:160
 msgid "Close FileChooser with Esc key"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:54
+#: data/io.elementary.files.appdata.xml.in.in:161
 msgid "Use new emblems for git status"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:55
+#: data/io.elementary.files.appdata.xml.in.in:162
 msgid "Show selection actions in secondary click menu"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:59
+#: data/io.elementary.files.appdata.xml.in.in:166
 #, fuzzy
 #| msgid "Show reserved space in Properties window"
 msgid "Always show Permissions page in Properties dialog"
 msgstr "प्रॉपर्टी विंडोमध्ये आरक्षित जागा दाखवा"
 
-#: data/io.elementary.files.appdata.xml.in.in:60
+#: data/io.elementary.files.appdata.xml.in.in:167
 msgid ""
 "In Permissions page, show user and group numeric IDs when names not available"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:61
+#: data/io.elementary.files.appdata.xml.in.in:168
 msgid "In Permissions page, show message when no information available"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:63
-#: data/io.elementary.files.appdata.xml.in.in:108
-#: data/io.elementary.files.appdata.xml.in.in:125
-#: data/io.elementary.files.appdata.xml.in.in:140
-#: data/io.elementary.files.appdata.xml.in.in:157
-#: data/io.elementary.files.appdata.xml.in.in:185
-#: data/io.elementary.files.appdata.xml.in.in:209
-#: data/io.elementary.files.appdata.xml.in.in:228
-#: data/io.elementary.files.appdata.xml.in.in:250
-#: data/io.elementary.files.appdata.xml.in.in:303
+#: data/io.elementary.files.appdata.xml.in.in:170
+#: data/io.elementary.files.appdata.xml.in.in:215
+#: data/io.elementary.files.appdata.xml.in.in:232
+#: data/io.elementary.files.appdata.xml.in.in:247
+#: data/io.elementary.files.appdata.xml.in.in:264
+#: data/io.elementary.files.appdata.xml.in.in:292
 msgid "Other updates:"
 msgstr "अन्य अपडेट्स:"
 
-#: data/io.elementary.files.appdata.xml.in.in:65
+#: data/io.elementary.files.appdata.xml.in.in:172
 msgid "Only allow one FileChooser per parent window"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:66
+#: data/io.elementary.files.appdata.xml.in.in:173
 msgid ""
 "Navigate to folder when pressing enter in FileChooser instead of selecting"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:78
+#: data/io.elementary.files.appdata.xml.in.in:185
 msgid ""
 "Use \"Send Mail\" portal instead of contract, improving compatibility with "
 "alternate email apps"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:79
+#: data/io.elementary.files.appdata.xml.in.in:186
 msgid "Add file filters and New Folder options to file chooser portal"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:80
+#: data/io.elementary.files.appdata.xml.in.in:187
 msgid ""
 "Allow blank passwords for remote connections, e.g. for SSH via a private key"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:81
+#: data/io.elementary.files.appdata.xml.in.in:188
 msgid "Make ejecting devices safer"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:82
+#: data/io.elementary.files.appdata.xml.in.in:189
 msgid "Add option to stop drive if possible"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:83
+#: data/io.elementary.files.appdata.xml.in.in:190
 msgid "Show unformatted drives and drives without media"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:87
+#: data/io.elementary.files.appdata.xml.in.in:194
 msgid ""
 "Fix pasting of selected pathbar text into another window using middle-click"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:88
+#: data/io.elementary.files.appdata.xml.in.in:195
 #, fuzzy
 #| msgid "Fix selecting pasted files"
 msgid "Fix selecting multiple groups of files"
 msgstr "पेस्ट केलेल्या फायली निवडण्याशी संबंधित समस्यांचे निराकरण करा"
 
-#: data/io.elementary.files.appdata.xml.in.in:89
+#: data/io.elementary.files.appdata.xml.in.in:196
 msgid "Allow dropping bookmark directly below the Recent bookmark"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:197
 msgid "Do not show unusable drop target below the Trash bookmark"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:198
 msgid "Fix sidebar showing both drive and volume for same device"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:92
+#: data/io.elementary.files.appdata.xml.in.in:199
 msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:104
+#: data/io.elementary.files.appdata.xml.in.in:211
 msgid "Show translated bookmark names when changing languages"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:105
+#: data/io.elementary.files.appdata.xml.in.in:212
 msgid "Stop some audio file icons disappearing when scrolling or changing view"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:106
+#: data/io.elementary.files.appdata.xml.in.in:213
 msgid ""
 "Stop brief appearance of status overlay when changing root folder in Column "
 "View"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:110
+#: data/io.elementary.files.appdata.xml.in.in:217
 msgid "Remove message about reporting issues when running from Terminal"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:119
+#: data/io.elementary.files.appdata.xml.in.in:226
 msgid "Open bookmarks in a new tab with Ctrl + Click"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:120
+#: data/io.elementary.files.appdata.xml.in.in:227
 msgid "Fix dropping uris onto storage devices and network locations in sidebar"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:121
+#: data/io.elementary.files.appdata.xml.in.in:228
 msgid "Fix restoring tabs after a system restart"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:122
+#: data/io.elementary.files.appdata.xml.in.in:229
 msgid ""
 "Don't unselect when secondary clicking blank space around a file or folder"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:123
+#: data/io.elementary.files.appdata.xml.in.in:230
 msgid ""
 "Show the folder context menu when secondary clicking outside of a selection"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:135
+#: data/io.elementary.files.appdata.xml.in.in:242
 msgid "Fix small context menus on breadcrumbs"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:136
+#: data/io.elementary.files.appdata.xml.in.in:243
 msgid "Fix bookmarking a single selected item with Ctrl + D"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:137
+#: data/io.elementary.files.appdata.xml.in.in:244
 msgid "Fix renaming bookmarks in the sidebar"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:138
+#: data/io.elementary.files.appdata.xml.in.in:245
 #, fuzzy
 #| msgid "Fix color tags disappearing when thumbnails hidden"
 msgid "Fix an issue with showing color tags when thumbnails are hidden"
 msgstr "लघुप्रतिमा लपवताना रंग टॅग अदृश्य करा"
 
-#: data/io.elementary.files.appdata.xml.in.in:150
+#: data/io.elementary.files.appdata.xml.in.in:257
 #, fuzzy
 #| msgid "Fix crash when opening multiple video files"
 msgid "Fix freeze when comparing copied files"
 msgstr "एकाधिक व्हिडिओ फायली उघडताना क्रॅशचे निराकरण करा"
 
-#: data/io.elementary.files.appdata.xml.in.in:151
+#: data/io.elementary.files.appdata.xml.in.in:258
 msgid "Fix truncation of final column in Column View under some circumstances"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:155
+#: data/io.elementary.files.appdata.xml.in.in:262
 #, fuzzy
 #| msgid "Show keyboard shortcuts in menu items"
 msgid "Show more keyboard accelerators in menus"
 msgstr "मेनू आयटममध्ये कीबोर्ड शॉर्टकट दाखवा"
 
-#: data/io.elementary.files.appdata.xml.in.in:167
+#: data/io.elementary.files.appdata.xml.in.in:274
 msgid "Fix connecting to AFP servers so that passwords are remembered"
 msgstr ""
 "एएफपी सर्व्हरशी कनेक्ट होण्याशी संबंधित समस्यांचे निराकरण करा जेणेकरून संकेतशब्द लक्षात ठेवले "
 "जातील"
 
-#: data/io.elementary.files.appdata.xml.in.in:168
+#: data/io.elementary.files.appdata.xml.in.in:275
 msgid "Fix MTP mounts"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:172
+#: data/io.elementary.files.appdata.xml.in.in:279
 msgid "Launch files with double click instead of single click"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:173
+#: data/io.elementary.files.appdata.xml.in.in:280
 msgid "Provide a File Chooser portal for Flatpak apps"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:174
+#: data/io.elementary.files.appdata.xml.in.in:281
 msgid "Brand new animated Sidebar"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:175
+#: data/io.elementary.files.appdata.xml.in.in:282
 msgid "Dark style support"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:176
+#: data/io.elementary.files.appdata.xml.in.in:283
 msgid "Mint and Bubblegum color tags"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:177
+#: data/io.elementary.files.appdata.xml.in.in:284
 msgid "Do not restore locations that have become inaccessible"
 msgstr "प्रवेश करण्यायोग्य स्थाने पुनर्संचयित करू नका"
 
-#: data/io.elementary.files.appdata.xml.in.in:178
+#: data/io.elementary.files.appdata.xml.in.in:285
 #, fuzzy
 #| msgid ""
 #| "Clicking between thumbnail and text now activates/selects in Icon view"
 msgid "Clicking between thumbnail and text now activates/selects in Grid view"
 msgstr "लघुप्रतिमा आणि मजकूर दरम्यान क्लिक करणे आता चिन्ह दृश्यात सक्रिय होते/निवडते"
 
-#: data/io.elementary.files.appdata.xml.in.in:179
+#: data/io.elementary.files.appdata.xml.in.in:286
 msgid "AFC protocol support"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:180
+#: data/io.elementary.files.appdata.xml.in.in:287
 msgid "Add a smaller minimum icon size in list view"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:181
+#: data/io.elementary.files.appdata.xml.in.in:288
 #, fuzzy
 #| msgid "Show folder item count in List View"
 msgid "Show emblems inline in list views"
 msgstr "सूची दृश्यात फोल्डर आयटमची संख्या दर्शवा"
 
-#: data/io.elementary.files.appdata.xml.in.in:182
+#: data/io.elementary.files.appdata.xml.in.in:289
 #, fuzzy
 #| msgid "Keyboard navigation improvements"
 msgid "Performance improvements"
 msgstr "कीबोर्ड नेव्हिगेशन सुधारणा"
 
-#: data/io.elementary.files.appdata.xml.in.in:183
+#: data/io.elementary.files.appdata.xml.in.in:290
 #, fuzzy
 #| msgid "Improvements:"
 msgid "Stability improvements"
 msgstr "सुधारणा:"
 
-#: data/io.elementary.files.appdata.xml.in.in:187
+#: data/io.elementary.files.appdata.xml.in.in:294
 msgid "Rename \"Devices\" to \"Storage\""
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:196
-msgid "Bookmark menu option for network mounts in sidebar"
-msgstr "साइडबारमधील नेटवर्क आरोहितांसाठी बुकमार्क मेनू पर्याय"
-
-#: data/io.elementary.files.appdata.xml.in.in:197
-msgid "Show folder item count in List View"
-msgstr "सूची दृश्यात फोल्डर आयटमची संख्या दर्शवा"
-
-#: data/io.elementary.files.appdata.xml.in.in:198
-msgid ""
-"Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
-"network locations by default"
-msgstr ""
-"आता डीफॉल्टनुसार स्थानिकपणे आरोहित एमटीपी आणि पीटीपी डिव्हाइस तसेच नेटवर्क स्थानांवर "
-"लघुप्रतिमा दर्शविते"
-
-#: data/io.elementary.files.appdata.xml.in.in:199
-msgid ""
-"Properties window: Allow the filename to be copied when it cannot be edited"
-msgstr ""
-"प्रॉपर्टीस विंडो: जेव्हा फाइल संपादित केली जाऊ शकत नाही तेव्हा त्या फाईलचे नाव कॉपी "
-"करण्याची परवानगी द्या"
-
-#: data/io.elementary.files.appdata.xml.in.in:200
-msgid "Improved tooltip formatting for devices in the sidebar"
-msgstr "साइडबारमधील उपकरणांसाठी सुधारित टूलटिप स्वरूपन"
-
-#: data/io.elementary.files.appdata.xml.in.in:204
-msgid "Fix crash when pressing Enter and another key at the same time"
-msgstr "एंटर आणि त्याच वेळी दुसरी की दाबताना क्रॅश निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:205
-msgid "Fix pathbar handling of \"~\" and \"..\" in path"
-msgstr "पथात \"\"~\" आणि \"..\" चे पथबार हाताळणीचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:206
-msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
-msgstr "फ्लॅटपाकवरून आवाहन केल्यावर फाईलचूझर पथबार यापुढे क्रॅश होणार नाही"
-
-#: data/io.elementary.files.appdata.xml.in.in:207
-msgid ""
-"Do not show git status for repositories on FUSE filesystems to prevent "
-"possible blocking"
-msgstr ""
-"संभाव्य अवरोधित करणे टाळण्यासाठी FUSE फाइलप्रणालीवरील रेपॉजिटरींसाठी गिट स्थिती दर्शवू "
-"नका"
-
-#: data/io.elementary.files.appdata.xml.in.in:211
-msgid "\"Personal\" is now \"Bookmarks\""
-msgstr "\"पर्सनल\" आता \"बुकमार्क\" आहे"
-
-#: data/io.elementary.files.appdata.xml.in.in:220
-msgid ""
-"Add warning and error colored disk usage bars when disk becomes too full"
-msgstr "डिस्क खूप भरली की चेतावणी आणि त्रुटीयुक्त रंगाच्या डिस्क वापर बार जोडा"
-
-#: data/io.elementary.files.appdata.xml.in.in:221
-msgid ""
-"Prevent window resizing when filename column width exceeds available space"
-msgstr ""
-"जेव्हा फाइलनाव स्तंभ रूंदी उपलब्ध जागा ओलांडते तेव्हा विंडोचा आकार बदलण्यास प्रतिबंधित करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:225
-msgid "Fix handling of filenames containing the # character"
-msgstr "# वर्ण असलेल्या फाईलनावे हाताळण्याचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:226
-msgid "Fix regressions regarding pathbar context menus and clicking"
-msgstr "पथबार संदर्भ मेनू आणि क्लिकच्या संदर्भात निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:237
-msgid "Paste images into other apps instead of file paths where possible"
-msgstr "शक्य तेथे फाइल पथऐवजी इतर अॅप्समध्ये प्रतिमा पेस्ट करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:238
-msgid "Paste into a selected folder when using Ctrl + V"
-msgstr "Ctrl + V वापरताना निवडलेल्या फोल्डरमध्ये पेस्ट करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:239
-msgid "Show file info overlay in List View as well"
-msgstr "फाईल माहिती आच्छादन सूची दृश्यामध्येही दाखवा"
-
-#: data/io.elementary.files.appdata.xml.in.in:240
-msgid "Traverse search results with Tab key"
-msgstr "टॅब की सह आक्रमक शोध परिणाम"
-
-#: data/io.elementary.files.appdata.xml.in.in:241
-msgid "Show an error message when attempting to open trashed files"
-msgstr "कचर्‍यातील फायली उघडण्याचा प्रयत्न करताना त्रुटी संदेश दाखवा"
-
-#: data/io.elementary.files.appdata.xml.in.in:245
-msgid "Fix uneditable area in pathbar which is showing home folder placeholder"
-msgstr ""
-"मुख्यपृष्ठ प्लेसहोल्डर दर्शवित असलेल्या पथबारमधील अवांछनीय क्षेत्राशी संबंधित समस्यांचे निराकरण "
-"करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:246
-msgid "Fix an issue that prevented file modification times from showing"
-msgstr "फाइल दुरुस्तीच्या वेळा दर्शविण्यापासून प्रतिबंधित करणार्‍या समस्येचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:247
-msgid "Fix size of restored tiled window"
-msgstr "पुनर्संचयित टाइल केलेल्या विंडोचे आकार निश्चित करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:248
-msgid "Fix color tags disappearing when thumbnails hidden"
-msgstr "लघुप्रतिमा लपवताना रंग टॅग अदृश्य करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:260
-msgid "Fix crash when a device icon is coming from a file"
-msgstr "फायलीवरून डिव्हाइस आयकॉन येत असताना येणाऱ्या क्रॅशचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:261
-msgid "Fix device icon sometimes missing"
-msgstr "कधीकधी गहाळ झालेल्या डिव्हाइस चिन्हाशी संबंधित समस्यांचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:262
-msgid "Fix occasional view freeze after renaming"
-msgstr "नाव बदलल्यानंतर अधूनमधून येणाऱ्या दृश्य फ्रीझशी संबंधित समस्यांचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:263
-msgid "Improve renaming logic when dealing with leading/trailing whitespace"
-msgstr ""
-"अग्रगण्य / अनुगामी व्हाईटस्पेसवर काम करताना पुनर्नामित करण्याचे तर्कशास्त्र(लॉजिक) सुधारित "
-"करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:264
-msgid "Fix breadcrumbs sometimes incorrect at startup"
-msgstr "स्टार्टअपवेळी काही वेळा चुकीच्या असणाऱ्या ब्रेडक्रॅम्सचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:265
-msgid "Do not show file:// prefix in navigation buttons menus"
-msgstr "नेव्हिगेशन बटणांच्या मेनूमध्ये file:// उपसर्ग दाखवू नका"
-
-#: data/io.elementary.files.appdata.xml.in.in:274
-msgid "Fix \"New Folder\" keyboard shortcut label in menu"
-msgstr "मेनूमधील \"नवीन फोल्डर\" कीबोर्ड शॉर्टकट लेबलशी संबंधित समस्यांचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:275
-msgid "Fix navigation with back/forward button context menu"
-msgstr "बॅक / फॉरवर्ड बटण संदर्भ मेनूसह नेव्हिगेशन निश्चित करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:276
-msgid "Fix path bar sometimes showing wrong path when closing a tab"
-msgstr "टॅब बंद करताना कधीकधी चुकीचा मार्ग दर्शविणारी पथ बार निश्चित करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:277
-msgid ""
-"Ensure keyboard shortcuts work immediately after creating or renaming a file"
-msgstr ""
-"फाइल तयार करणे किंवा नाव बदलल्यानंतर ताबडतोब कीबोर्ड शॉर्टकट कार्य करत असल्याची "
-"खात्री करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:278
-msgid "Do not include \"file://\" in pathbar text or when pasting path as text"
-msgstr "पथबार मजकूरामध्ये किंवा मजकूर म्हणून पथ पेस्ट करताना \"file://\" समाविष्ट करू नका"
-
-#: data/io.elementary.files.appdata.xml.in.in:286
-msgid "Show keyboard shortcuts in menu items"
-msgstr "मेनू आयटममध्ये कीबोर्ड शॉर्टकट दाखवा"
-
-#: data/io.elementary.files.appdata.xml.in.in:287
-msgid "Fix an issue with breadcrumbs in the file chooser"
-msgstr "फाइल निवडकर्त्यामध्ये ब्रेडक्रॅम्बशी संबंधित समस्येचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:288
-msgid "Show a warning when ejecting a volume that's still in use"
-msgstr "अद्याप वापरात असलेला व्हॉल्यूम बाहेर काढताना चेतावणी दर्शवा"
-
-#: data/io.elementary.files.appdata.xml.in.in:289
-msgid "Fix cursor update after horizontal scroll in Column View"
-msgstr "स्तंभ दृश्यात आडव्या स्क्रोल नंतर कर्सर अद्यतन संबंधित समस्येचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:290
-msgid "Fix folder-open icon persisting after closing Column View"
-msgstr "कॉलम व्यू बंद केल्यावर कायम असलेल्या फोल्डर-ओपन आयकॉनशी संबंधित निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:291
-msgid "Use destructive action styling for some trash dialog buttons"
-msgstr "काही कचर्‍याच्या संवाद बटणासाठी विनाशकारी कृती शैली वापरा"
-
-#: data/io.elementary.files.appdata.xml.in.in:298
-msgid "New features:"
-msgstr "नवीन वैशिष्ट्ये:"
-
-#: data/io.elementary.files.appdata.xml.in.in:300
-msgid "Initial git plugin support"
-msgstr "आरंभिक गिट प्लगइन समर्थन"
-
-#: data/io.elementary.files.appdata.xml.in.in:301
-msgid "Follow global history setting when restoring and saving tabs"
-msgstr "टॅब पुनर्संचयित आणि जतन करताना जागतिक इतिहास सेटिंगचे अनुसरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:305
-msgid "Ensure tabs showing same folder remain synchronized"
-msgstr "समान फोल्डर्स दर्शवित असलेले टॅब समक्रमित राहण्याची खात्री करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:306
-msgid "Fix drag with secondary button on empty space"
-msgstr "रिक्त जागेवर दुय्यम बटणासह ड्रॅगशी संबंधित समस्यांचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:307
-msgid "Show custom media type icons for installed apps"
-msgstr "स्थापित केलेल्या अ‍ॅप्ससाठी सानुकूल मीडिया प्रकारची चिन्हे दर्शवा"
-
-#: data/io.elementary.files.appdata.xml.in.in:308
-msgid "Fix appearance of inactive diskspace indicator"
-msgstr "निष्क्रिय डिस्कस्पेस निर्देशकाचे स्वरूप निश्चित करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:309
-msgid "Improve pathbar animation"
-msgstr "पथबार अ‍ॅनिमेशन सुधारित करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:310
-msgid "Update documentation"
-msgstr "दस्तऐवज अद्यतनित करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:311
-msgid "Update translations"
-msgstr "भाषांतर अद्यतनित करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:318
-msgid "Initial cloudproviders plugin support"
-msgstr "आरंभिक क्लाउडप्रोव्हिडर्स प्लगइन समर्थन"
-
-#: data/io.elementary.files.appdata.xml.in.in:319
-msgid "Fix selecting pasted files"
-msgstr "पेस्ट केलेल्या फायली निवडण्याशी संबंधित समस्यांचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:320
-msgid "Fix color label visibility while using dark theme"
-msgstr "गडद थीम वापरताना रंग लेबल दृश्यात्मकतेशी संबंधित समस्यांचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:321
-msgid "Fix selecting files using Shift key"
-msgstr "शिफ्ट की वापरून फायली निवडण्याशी संबंधित अडचणींचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:322
-msgid "Draw checkerboard background for image items"
-msgstr "प्रतिमा आयटमसाठी चेकरबोर्ड पार्श्वभूमी काढा"
-
-#: data/io.elementary.files.appdata.xml.in.in:323
-msgid "Improved styling for disk space bars"
-msgstr "डिस्क स्पेस बारसाठी सुधारित स्टाईलिंग"
-
-#: data/io.elementary.files.appdata.xml.in.in:331
-msgid "Show more search results"
-msgstr "अधिक शोध परिणाम दाखवा"
-
-#: data/io.elementary.files.appdata.xml.in.in:332
-msgid "Ensure valid tab name generation"
-msgstr "वैध टॅब नाव निर्मितीची खात्री करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:333
-msgid "Properly sort folders by date and size"
-msgstr "तारीख आणि आकारानुसार फोल्डर्स व्यवस्थित क्रमवारी लावा"
-
-#: data/io.elementary.files.appdata.xml.in.in:334
-msgid "Launching Files from Terminal now opens new tab instead of new window"
-msgstr "टर्मिनल वरून फाइल्स लॉन्च करताना आता नवीन विंडो ऐवजी नवीन टॅब उघडेल"
-
-#: data/io.elementary.files.appdata.xml.in.in:335
-msgid "Improve MTP support"
-msgstr "एमटीपी समर्थन सुधारित करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:336
-msgid "Various tagging feature refinements"
-msgstr "विविध टॅगिंग वैशिष्ट्य परिष्कृत"
-
-#: data/io.elementary.files.appdata.xml.in.in:337
-msgid "Keyboard navigation improvements"
-msgstr "कीबोर्ड नेव्हिगेशन सुधारणा"
-
-#: data/io.elementary.files.appdata.xml.in.in:338
-msgid "Symlink copy and paste fixes"
-msgstr "सिमलिंक कॉपी आणि पेस्ट निराकरणे"
-
-#: data/io.elementary.files.appdata.xml.in.in:339
-msgid "Avoid crash when Templates folder is null"
-msgstr "टेम्पलेट्स फोल्डर रिक्त असताना क्रॅश टाळा"
-
-#: data/io.elementary.files.appdata.xml.in.in:340
-msgid "Reduce memory footprint of FileChooserDialog"
-msgstr "फाईलच्यूसरडायलॉगचा मेमरी फूटप्रिंट कमी करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:341
-msgid "Avoid crash when selecting image file in some situations"
-msgstr "काही घटनांमध्ये प्रतिमा फाईल निवडताना क्रॅश टाळा"
-
-#: data/io.elementary.files.appdata.xml.in.in:342
-msgid ""
-"Fix unclosable progress window while copying network files to removable "
-"storage"
-msgstr ""
-"काढण्यायोग्य स्टोरेजवर नेटवर्क फाइल्सची कॉपी करताना बंद ना करतयेणाऱ्या प्रगती विंडोशी "
-"संबंधित समस्यांचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:343
-msgid "Fix drag and drop after double clicking a blank area"
-msgstr "रिक्त क्षेत्रावर डबल क्लिक केल्यानंतर ड्रॅग आणि ड्रॉपशी संबंधित समस्यांचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:344
-msgid "Avoid crash while scrolling over view switcher"
-msgstr "व्ह्यू स्विचरवर स्क्रोल करत असताना क्रॅश टाळा"
-
-#: data/io.elementary.files.appdata.xml.in.in:345
-msgid "Avoid possible crash in some copy and paste situations"
-msgstr "काही कॉपी आणि पेस्टच्या घटनांमध्ये संभाव्य क्रॅश टाळा"
-
-#: data/io.elementary.files.appdata.xml.in.in:353
-#, fuzzy
-#| msgid "Keyboard navigation fix for cherry picking select files in icon view"
-msgid "Keyboard navigation fix for cherry picking select files in Grid view"
-msgstr "आयकॉन व्ह्यूमध्ये चेरी पिकिंगसाठी फायली निवडण्यासाठी कीबोर्ड नेव्हिगेशन फिक्स"
-
-#: data/io.elementary.files.appdata.xml.in.in:354
-msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
-msgstr "शोध प्लेसहोल्डर मजकूर शैली हार्डकोड करू नका, हे गडद थीम समस्येचे निराकरण करते"
-
-#: data/io.elementary.files.appdata.xml.in.in:362
-msgid "Minor spacing adjustments to location bar"
-msgstr "स्थान बारमध्ये किरकोळ अंतर समायोजन"
-
-#: data/io.elementary.files.appdata.xml.in.in:363
-msgid "Fix F2 renaming behavior"
-msgstr "F2 चे नाव बदलण्याचे वर्तन निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:371
-msgid "Minor spacing adjustments to location breadcrumbs"
-msgstr "स्थान ब्रेडक्रॅमसाठी लहान अंतर समायोजन"
-
-#: data/io.elementary.files.appdata.xml.in.in:372
-msgid "Consistently remember color tags"
-msgstr "सातत्याने रंग टॅग लक्षात ठेवा"
-
-#: data/io.elementary.files.appdata.xml.in.in:373
-msgid ""
-"Reload thumbnails when changing zoom level to avoid showing placeholder "
-"unnecessarily"
-msgstr ""
-"प्लेसहोल्डर अनावश्यकपणे दर्शविणे टाळण्यासाठी झूम पातळी बदलताना लघुप्रतिमा रीलोड करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:374
-msgid "Fix running scripts with spaces in filename"
-msgstr "फाईलनावमधील रिक्त स्थानांसह स्क्रिप्ट चालू करणे निश्चित करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:382
-msgid "Fix high CPU regression in version 4.1.4"
-msgstr "आवृत्ती 4.1.4 मध्ये उच्च सीपीयू रीग्रेशनचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:383
-msgid "File sorting fixes"
-msgstr "फाइल वर्गीकरण निराकरणे"
-
-#: data/io.elementary.files.appdata.xml.in.in:391
-msgid "Meson: fix soversion names"
-msgstr "मेसन: सोव्हर्शन नावांचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:392
-msgid "Remove CMake build system"
-msgstr "सीमेक बिल्ड सिस्टम काढा"
-
-#: data/io.elementary.files.appdata.xml.in.in:393
-msgid "Fix missing File System properties menu"
-msgstr "गहाळ फाइल सिस्टम गुणधर्म मेनूचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:394
-msgid "Drop intltool dependency"
-msgstr "intltool अवलंबन ड्रॉप करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:395
-msgid "Fix default file type handler logic"
-msgstr "डीफॉल्ट फाइल प्रकार हँडलर लॉजिकचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:396
-msgid "Fix initial search window size too small"
-msgstr "प्रारंभिक शोध विंडो आकार खूपच लहान करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:397
-msgid "Add option to disable local file thumbnails"
-msgstr "स्थानिक फाइल लघुप्रतिमा अक्षम करण्यासाठी पर्याय जोडा"
-
-#: data/io.elementary.files.appdata.xml.in.in:398
-msgid "Fix crash when opening multiple video files"
-msgstr "एकाधिक व्हिडिओ फायली उघडताना क्रॅशचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:399
-msgid "Fix some timing issues around adding and removing files"
-msgstr "फायली जोडणे आणि काढणे यासारख्या वेळेच्या काही समस्यांचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:400
-msgid "Meson: fix missing library headers"
-msgstr "मेसन: लायब्ररीच्या गहाळ झालेल्या शीर्षलेखाचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:401
-msgid "Fix color tag display"
-msgstr "रंग टॅग प्रदर्शन निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:402
-msgid "Show reserved space in Properties window"
-msgstr "प्रॉपर्टी विंडोमध्ये आरक्षित जागा दाखवा"
-
-#: data/io.elementary.files.appdata.xml.in.in:410
-msgid "Add border radius to text background"
-msgstr "मजकूर पार्श्वभूमीवर सीमा त्रिज्या जोडा"
-
-#: data/io.elementary.files.appdata.xml.in.in:411
-msgid "Fix file mimetype association regression"
-msgstr "फाईल माइमटाइप असोसिएशन रीग्रेशनचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:412
-msgid "New pathbar tooltips"
-msgstr "नवीन पथबार टूलटिप्स"
-
-#: data/io.elementary.files.appdata.xml.in.in:413
-msgid "Build fixes"
-msgstr "निराकरणे बिल्ड करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:421
-msgid "Plugin build fixes"
-msgstr "प्लगइन बिल्ड निराकरणे"
-
-#: data/io.elementary.files.appdata.xml.in.in:429
-msgid "Fix Ctrl+Tab behavior"
-msgstr "Ctrl + Tab वर्तन निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:430
-msgid "Fix building without Unity library"
-msgstr "युनिटी लायब्ररीशिवाय बिल्डींग निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:437
-msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
-msgstr "मुख्यपृष्ठ फोल्डरमध्ये ब्रेडक्रंब लपवा आणि प्लेसहोल्डर आणि शोध चिन्ह दर्शवा"
-
-#: data/io.elementary.files.appdata.xml.in.in:438
-msgid "Style error dialogs"
-msgstr "शैली त्रुटी संवाद"
-
-#: data/io.elementary.files.appdata.xml.in.in:439
-msgid "Right click fixes"
-msgstr "राईट क्लिक फिक्स"
-
-#: data/io.elementary.files.appdata.xml.in.in:440
-msgid "Reload recent view when privacy setting changes"
-msgstr "गोपनीयता सेटिंग बदलल्यास अलीकडील दृश्य रीलोड करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:441
-msgid "`Connect Server` fixes"
-msgstr "`सर्व्हर कनेक्ट` निराकरण"
-
-#: data/io.elementary.files.appdata.xml.in.in:442
-msgid "Do not activate multiple files with single click"
-msgstr "एका क्लिकवर एकाधिक फायली सक्रिय करू नका"
-
-#: data/io.elementary.files.appdata.xml.in.in:443
-msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
-msgstr "दृश्य आणि साइडबार कीबोर्ड फोकस टॉगल करण्यासाठी `टॅब` वापरा"
-
-#: data/io.elementary.files.appdata.xml.in.in:444
-msgid "Delete color tag database entries for trashed files"
-msgstr "कचर्‍यात टाकलेल्या फायलींसाठी रंग टॅग डेटाबेस प्रविष्ट्या हटवा"
-
-#: data/io.elementary.files.appdata.xml.in.in:445
-msgid "Throttle tab closing"
-msgstr "थ्रोटल टॅब बंद"
-
-#: data/io.elementary.files.appdata.xml.in.in:446
-msgid "`Ctrl` key fixes"
-msgstr "`Ctrl` की निराकरणे"
-
-#: data/io.elementary.files.appdata.xml.in.in:447
-msgid "Drag and drop fixes"
-msgstr "ड्रॅग आणि ड्रॉप फिक्स"
-
-#: data/io.elementary.files.appdata.xml.in.in:448
-msgid "Show icons in `Open with` menus"
-msgstr "मेनूमध्ये `उघडा` मध्ये आयकॉन दाखवा"
-
-#: data/io.elementary.files.appdata.xml.in.in:449
-msgid "Tooltip fixes"
-msgstr "टूलटिप निराकरणे"
-
-#: data/io.elementary.files.appdata.xml.in.in:450
-msgid "Memory leak fixes"
-msgstr "मेमरी लीक निराकरणे"
-
-#: data/io.elementary.files.appdata.xml.in.in:451
-msgid "Crash fixes"
-msgstr "क्रॅश निराकरणे"
-
-#: data/io.elementary.files.appdata.xml.in.in:452
-msgid "Trash: respect sound setting"
-msgstr "कचरा: आवाज सेटिंगचा आदर करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:453
-msgid "Localization fixes"
-msgstr "स्थानिकीकरण निराकरणे"
-
-#: data/io.elementary.files.appdata.xml.in.in:461
-msgid "Over 100 major and minor bug fixes and improvements"
-msgstr "100 पेक्षा जास्त प्रमुख आणि किरकोळ दोष निराकरणे आणि सुधारणा"
-
-#: data/io.elementary.files.appdata.xml.in.in:468
-msgid "Honor 12/24hr system setting"
-msgstr "12/24 तास सिस्टम सेटिंग सन्मानित करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:469
-msgid "Distinguish between tabs with the same name"
-msgstr "समान नावाच्या टॅबमध्ये फरक ठरवा"
-
-#: data/io.elementary.files.appdata.xml.in.in:470
-msgid "Support launching from other applications with a target file selected"
-msgstr "निवडलेल्या लक्ष्य फाईलला अन्य अनुप्रयोगांकडून उघडण्याचे समर्थन करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:471
-#: data/io.elementary.files.appdata.xml.in.in:484
-#: data/io.elementary.files.appdata.xml.in.in:498
-#: data/io.elementary.files.appdata.xml.in.in:508
-#: data/io.elementary.files.appdata.xml.in.in:519
-msgid "New translations"
-msgstr "नवीन भाषांतरे"
-
-#: data/io.elementary.files.appdata.xml.in.in:472
-#: data/io.elementary.files.appdata.xml.in.in:485
-#: data/io.elementary.files.appdata.xml.in.in:499
-#: data/io.elementary.files.appdata.xml.in.in:509
-#: data/io.elementary.files.appdata.xml.in.in:520
-#: data/io.elementary.files.appdata.xml.in.in:527
-#: data/io.elementary.files.appdata.xml.in.in:534
-#: data/io.elementary.files.appdata.xml.in.in:558
-msgid "Minor bug fixes"
-msgstr "किरकोळ दोष निराकरणे"
-
-#: data/io.elementary.files.appdata.xml.in.in:479
-msgid "Improved networking support"
-msgstr "सुधारित नेटवर्किंग समर्थन"
-
-#: data/io.elementary.files.appdata.xml.in.in:480
-msgid "Correct window geometry when snapping to left or right"
-msgstr "डावीकडे किंवा उजवीकडे स्नॅप करताना विंडो भूमिती दुरुस्त करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:481
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
-msgstr "\"रिव्हिल पॉइंटर\" सेटिंग सक्रिय असताना Ctrl दाबणे यापुढे नामकरण रद्द करत नाही"
-
-#: data/io.elementary.files.appdata.xml.in.in:482
-msgid "Switching input language cancels actions"
-msgstr "इनपुट भाषा स्विच करणे क्रियांना रद्द करते"
-
-#: data/io.elementary.files.appdata.xml.in.in:483
-#: data/io.elementary.files.appdata.xml.in.in:497
-#: data/io.elementary.files.appdata.xml.in.in:507
-#: data/io.elementary.files.appdata.xml.in.in:518
-msgid "Various crash fixes"
-msgstr "विविध क्रॅश फिक्स"
-
-#: data/io.elementary.files.appdata.xml.in.in:492
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr ""
-"फायरफॉक्स सारखे वेब ब्राउझर आता सर्वात वापरली जाणारी डाउनलोड निर्देशिका लक्षात ठेवतात"
-
-#: data/io.elementary.files.appdata.xml.in.in:493
-msgid "Remember preferred zoom level"
-msgstr "प्राधान्यीकृत झूम स्तर लक्षात ठेवा"
-
-#: data/io.elementary.files.appdata.xml.in.in:494
-msgid "Improved input method support"
-msgstr "सुधारित इनपुट पद्धत समर्थन"
-
-#: data/io.elementary.files.appdata.xml.in.in:495
-msgid "910x640 minimum window size"
-msgstr "910x640 किमान विंडो आकार"
-
-#: data/io.elementary.files.appdata.xml.in.in:496
-msgid "Security fixes"
-msgstr "सुरक्षा निर्धारण"
-
-#: data/io.elementary.files.appdata.xml.in.in:506
-msgid "Enable drag and drop tabs between windows"
-msgstr "विंडो दरम्यान ड्रॅग आणि ड्रॉप टॅब सक्षम करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:516
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Ctrl + F मध्ये शोध कार्यक्षमता विलीन करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:517
-msgid "Improved translation support"
-msgstr "सुधारित भाषांतर समर्थन"
-
-#: data/io.elementary.files.appdata.xml.in.in:541
-msgid "Fix appdata release dates"
-msgstr "अ‍ॅप डाटा रीलीझ तारखा निश्चित करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:548
-msgid "Improve file opening over Samba shares"
-msgstr "साम्बा शेअर्सवर फाईल ओपनिंग सुधारित करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:549
-msgid "Fix a crash when restoring items from the Trash"
-msgstr "कचर्‍यामधून आयटम पुनर्संचयित करताना क्रॅशचे निराकरण करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:550
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "संदर्भ मेनूमध्ये कट / कॉपी / पेस्ट संवेदनशीलता सुधारित करा"
-
-#: data/io.elementary.files.appdata.xml.in.in:551
-msgid "Translation updates"
-msgstr "भाषांतर अद्यतने"
-
-#: data/io.elementary.files.appdata.xml.in.in:563
+#: data/io.elementary.files.appdata.xml.in.in:329
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
@@ -1008,6 +483,479 @@ msgstr "प्रशासक म्हणून पँथियन फायल
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "प्रशासक म्हणून फायली चालविण्यासाठी प्रमाणीकरण आवश्यक आहे"
+
+#~ msgid "Bookmark menu option for network mounts in sidebar"
+#~ msgstr "साइडबारमधील नेटवर्क आरोहितांसाठी बुकमार्क मेनू पर्याय"
+
+#~ msgid "Show folder item count in List View"
+#~ msgstr "सूची दृश्यात फोल्डर आयटमची संख्या दर्शवा"
+
+#~ msgid ""
+#~ "Now shows thumbnails on locally mounted MTP and PTP devices as well as on "
+#~ "network locations by default"
+#~ msgstr ""
+#~ "आता डीफॉल्टनुसार स्थानिकपणे आरोहित एमटीपी आणि पीटीपी डिव्हाइस तसेच नेटवर्क "
+#~ "स्थानांवर लघुप्रतिमा दर्शविते"
+
+#~ msgid ""
+#~ "Properties window: Allow the filename to be copied when it cannot be "
+#~ "edited"
+#~ msgstr ""
+#~ "प्रॉपर्टीस विंडो: जेव्हा फाइल संपादित केली जाऊ शकत नाही तेव्हा त्या फाईलचे नाव कॉपी "
+#~ "करण्याची परवानगी द्या"
+
+#~ msgid "Improved tooltip formatting for devices in the sidebar"
+#~ msgstr "साइडबारमधील उपकरणांसाठी सुधारित टूलटिप स्वरूपन"
+
+#~ msgid "Fix crash when pressing Enter and another key at the same time"
+#~ msgstr "एंटर आणि त्याच वेळी दुसरी की दाबताना क्रॅश निराकरण करा"
+
+#~ msgid "Fix pathbar handling of \"~\" and \"..\" in path"
+#~ msgstr "पथात \"\"~\" आणि \"..\" चे पथबार हाताळणीचे निराकरण करा"
+
+#~ msgid "Filechooser pathbar no longer crashes when invoked from a Flatpak"
+#~ msgstr "फ्लॅटपाकवरून आवाहन केल्यावर फाईलचूझर पथबार यापुढे क्रॅश होणार नाही"
+
+#~ msgid ""
+#~ "Do not show git status for repositories on FUSE filesystems to prevent "
+#~ "possible blocking"
+#~ msgstr ""
+#~ "संभाव्य अवरोधित करणे टाळण्यासाठी FUSE फाइलप्रणालीवरील रेपॉजिटरींसाठी गिट स्थिती "
+#~ "दर्शवू नका"
+
+#~ msgid "\"Personal\" is now \"Bookmarks\""
+#~ msgstr "\"पर्सनल\" आता \"बुकमार्क\" आहे"
+
+#~ msgid ""
+#~ "Add warning and error colored disk usage bars when disk becomes too full"
+#~ msgstr "डिस्क खूप भरली की चेतावणी आणि त्रुटीयुक्त रंगाच्या डिस्क वापर बार जोडा"
+
+#~ msgid ""
+#~ "Prevent window resizing when filename column width exceeds available space"
+#~ msgstr ""
+#~ "जेव्हा फाइलनाव स्तंभ रूंदी उपलब्ध जागा ओलांडते तेव्हा विंडोचा आकार बदलण्यास प्रतिबंधित "
+#~ "करा"
+
+#~ msgid "Fix handling of filenames containing the # character"
+#~ msgstr "# वर्ण असलेल्या फाईलनावे हाताळण्याचे निराकरण करा"
+
+#~ msgid "Fix regressions regarding pathbar context menus and clicking"
+#~ msgstr "पथबार संदर्भ मेनू आणि क्लिकच्या संदर्भात निराकरण करा"
+
+#~ msgid "Paste images into other apps instead of file paths where possible"
+#~ msgstr "शक्य तेथे फाइल पथऐवजी इतर अॅप्समध्ये प्रतिमा पेस्ट करा"
+
+#~ msgid "Paste into a selected folder when using Ctrl + V"
+#~ msgstr "Ctrl + V वापरताना निवडलेल्या फोल्डरमध्ये पेस्ट करा"
+
+#~ msgid "Show file info overlay in List View as well"
+#~ msgstr "फाईल माहिती आच्छादन सूची दृश्यामध्येही दाखवा"
+
+#~ msgid "Traverse search results with Tab key"
+#~ msgstr "टॅब की सह आक्रमक शोध परिणाम"
+
+#~ msgid "Show an error message when attempting to open trashed files"
+#~ msgstr "कचर्‍यातील फायली उघडण्याचा प्रयत्न करताना त्रुटी संदेश दाखवा"
+
+#~ msgid ""
+#~ "Fix uneditable area in pathbar which is showing home folder placeholder"
+#~ msgstr ""
+#~ "मुख्यपृष्ठ प्लेसहोल्डर दर्शवित असलेल्या पथबारमधील अवांछनीय क्षेत्राशी संबंधित समस्यांचे "
+#~ "निराकरण करा"
+
+#~ msgid "Fix an issue that prevented file modification times from showing"
+#~ msgstr "फाइल दुरुस्तीच्या वेळा दर्शविण्यापासून प्रतिबंधित करणार्‍या समस्येचे निराकरण करा"
+
+#~ msgid "Fix size of restored tiled window"
+#~ msgstr "पुनर्संचयित टाइल केलेल्या विंडोचे आकार निश्चित करा"
+
+#~ msgid "Fix color tags disappearing when thumbnails hidden"
+#~ msgstr "लघुप्रतिमा लपवताना रंग टॅग अदृश्य करा"
+
+#~ msgid "Fix crash when a device icon is coming from a file"
+#~ msgstr "फायलीवरून डिव्हाइस आयकॉन येत असताना येणाऱ्या क्रॅशचे निराकरण करा"
+
+#~ msgid "Fix device icon sometimes missing"
+#~ msgstr "कधीकधी गहाळ झालेल्या डिव्हाइस चिन्हाशी संबंधित समस्यांचे निराकरण करा"
+
+#~ msgid "Fix occasional view freeze after renaming"
+#~ msgstr "नाव बदलल्यानंतर अधूनमधून येणाऱ्या दृश्य फ्रीझशी संबंधित समस्यांचे निराकरण करा"
+
+#~ msgid "Improve renaming logic when dealing with leading/trailing whitespace"
+#~ msgstr ""
+#~ "अग्रगण्य / अनुगामी व्हाईटस्पेसवर काम करताना पुनर्नामित करण्याचे तर्कशास्त्र(लॉजिक) "
+#~ "सुधारित करा"
+
+#~ msgid "Fix breadcrumbs sometimes incorrect at startup"
+#~ msgstr "स्टार्टअपवेळी काही वेळा चुकीच्या असणाऱ्या ब्रेडक्रॅम्सचे निराकरण करा"
+
+#~ msgid "Do not show file:// prefix in navigation buttons menus"
+#~ msgstr "नेव्हिगेशन बटणांच्या मेनूमध्ये file:// उपसर्ग दाखवू नका"
+
+#~ msgid "Fix \"New Folder\" keyboard shortcut label in menu"
+#~ msgstr "मेनूमधील \"नवीन फोल्डर\" कीबोर्ड शॉर्टकट लेबलशी संबंधित समस्यांचे निराकरण करा"
+
+#~ msgid "Fix navigation with back/forward button context menu"
+#~ msgstr "बॅक / फॉरवर्ड बटण संदर्भ मेनूसह नेव्हिगेशन निश्चित करा"
+
+#~ msgid "Fix path bar sometimes showing wrong path when closing a tab"
+#~ msgstr "टॅब बंद करताना कधीकधी चुकीचा मार्ग दर्शविणारी पथ बार निश्चित करा"
+
+#~ msgid ""
+#~ "Ensure keyboard shortcuts work immediately after creating or renaming a "
+#~ "file"
+#~ msgstr ""
+#~ "फाइल तयार करणे किंवा नाव बदलल्यानंतर ताबडतोब कीबोर्ड शॉर्टकट कार्य करत असल्याची "
+#~ "खात्री करा"
+
+#~ msgid ""
+#~ "Do not include \"file://\" in pathbar text or when pasting path as text"
+#~ msgstr ""
+#~ "पथबार मजकूरामध्ये किंवा मजकूर म्हणून पथ पेस्ट करताना \"file://\" समाविष्ट करू नका"
+
+#~ msgid "Show keyboard shortcuts in menu items"
+#~ msgstr "मेनू आयटममध्ये कीबोर्ड शॉर्टकट दाखवा"
+
+#~ msgid "Fix an issue with breadcrumbs in the file chooser"
+#~ msgstr "फाइल निवडकर्त्यामध्ये ब्रेडक्रॅम्बशी संबंधित समस्येचे निराकरण करा"
+
+#~ msgid "Show a warning when ejecting a volume that's still in use"
+#~ msgstr "अद्याप वापरात असलेला व्हॉल्यूम बाहेर काढताना चेतावणी दर्शवा"
+
+#~ msgid "Fix cursor update after horizontal scroll in Column View"
+#~ msgstr "स्तंभ दृश्यात आडव्या स्क्रोल नंतर कर्सर अद्यतन संबंधित समस्येचे निराकरण करा"
+
+#~ msgid "Fix folder-open icon persisting after closing Column View"
+#~ msgstr "कॉलम व्यू बंद केल्यावर कायम असलेल्या फोल्डर-ओपन आयकॉनशी संबंधित निराकरण करा"
+
+#~ msgid "Use destructive action styling for some trash dialog buttons"
+#~ msgstr "काही कचर्‍याच्या संवाद बटणासाठी विनाशकारी कृती शैली वापरा"
+
+#~ msgid "New features:"
+#~ msgstr "नवीन वैशिष्ट्ये:"
+
+#~ msgid "Initial git plugin support"
+#~ msgstr "आरंभिक गिट प्लगइन समर्थन"
+
+#~ msgid "Follow global history setting when restoring and saving tabs"
+#~ msgstr "टॅब पुनर्संचयित आणि जतन करताना जागतिक इतिहास सेटिंगचे अनुसरण करा"
+
+#~ msgid "Ensure tabs showing same folder remain synchronized"
+#~ msgstr "समान फोल्डर्स दर्शवित असलेले टॅब समक्रमित राहण्याची खात्री करा"
+
+#~ msgid "Fix drag with secondary button on empty space"
+#~ msgstr "रिक्त जागेवर दुय्यम बटणासह ड्रॅगशी संबंधित समस्यांचे निराकरण करा"
+
+#~ msgid "Show custom media type icons for installed apps"
+#~ msgstr "स्थापित केलेल्या अ‍ॅप्ससाठी सानुकूल मीडिया प्रकारची चिन्हे दर्शवा"
+
+#~ msgid "Fix appearance of inactive diskspace indicator"
+#~ msgstr "निष्क्रिय डिस्कस्पेस निर्देशकाचे स्वरूप निश्चित करा"
+
+#~ msgid "Improve pathbar animation"
+#~ msgstr "पथबार अ‍ॅनिमेशन सुधारित करा"
+
+#~ msgid "Update documentation"
+#~ msgstr "दस्तऐवज अद्यतनित करा"
+
+#~ msgid "Update translations"
+#~ msgstr "भाषांतर अद्यतनित करा"
+
+#~ msgid "Initial cloudproviders plugin support"
+#~ msgstr "आरंभिक क्लाउडप्रोव्हिडर्स प्लगइन समर्थन"
+
+#~ msgid "Fix selecting pasted files"
+#~ msgstr "पेस्ट केलेल्या फायली निवडण्याशी संबंधित समस्यांचे निराकरण करा"
+
+#~ msgid "Fix color label visibility while using dark theme"
+#~ msgstr "गडद थीम वापरताना रंग लेबल दृश्यात्मकतेशी संबंधित समस्यांचे निराकरण करा"
+
+#~ msgid "Fix selecting files using Shift key"
+#~ msgstr "शिफ्ट की वापरून फायली निवडण्याशी संबंधित अडचणींचे निराकरण करा"
+
+#~ msgid "Draw checkerboard background for image items"
+#~ msgstr "प्रतिमा आयटमसाठी चेकरबोर्ड पार्श्वभूमी काढा"
+
+#~ msgid "Improved styling for disk space bars"
+#~ msgstr "डिस्क स्पेस बारसाठी सुधारित स्टाईलिंग"
+
+#~ msgid "Show more search results"
+#~ msgstr "अधिक शोध परिणाम दाखवा"
+
+#~ msgid "Ensure valid tab name generation"
+#~ msgstr "वैध टॅब नाव निर्मितीची खात्री करा"
+
+#~ msgid "Properly sort folders by date and size"
+#~ msgstr "तारीख आणि आकारानुसार फोल्डर्स व्यवस्थित क्रमवारी लावा"
+
+#~ msgid ""
+#~ "Launching Files from Terminal now opens new tab instead of new window"
+#~ msgstr "टर्मिनल वरून फाइल्स लॉन्च करताना आता नवीन विंडो ऐवजी नवीन टॅब उघडेल"
+
+#~ msgid "Improve MTP support"
+#~ msgstr "एमटीपी समर्थन सुधारित करा"
+
+#~ msgid "Various tagging feature refinements"
+#~ msgstr "विविध टॅगिंग वैशिष्ट्य परिष्कृत"
+
+#~ msgid "Keyboard navigation improvements"
+#~ msgstr "कीबोर्ड नेव्हिगेशन सुधारणा"
+
+#~ msgid "Symlink copy and paste fixes"
+#~ msgstr "सिमलिंक कॉपी आणि पेस्ट निराकरणे"
+
+#~ msgid "Avoid crash when Templates folder is null"
+#~ msgstr "टेम्पलेट्स फोल्डर रिक्त असताना क्रॅश टाळा"
+
+#~ msgid "Reduce memory footprint of FileChooserDialog"
+#~ msgstr "फाईलच्यूसरडायलॉगचा मेमरी फूटप्रिंट कमी करा"
+
+#~ msgid "Avoid crash when selecting image file in some situations"
+#~ msgstr "काही घटनांमध्ये प्रतिमा फाईल निवडताना क्रॅश टाळा"
+
+#~ msgid ""
+#~ "Fix unclosable progress window while copying network files to removable "
+#~ "storage"
+#~ msgstr ""
+#~ "काढण्यायोग्य स्टोरेजवर नेटवर्क फाइल्सची कॉपी करताना बंद ना करतयेणाऱ्या प्रगती विंडोशी "
+#~ "संबंधित समस्यांचे निराकरण करा"
+
+#~ msgid "Fix drag and drop after double clicking a blank area"
+#~ msgstr ""
+#~ "रिक्त क्षेत्रावर डबल क्लिक केल्यानंतर ड्रॅग आणि ड्रॉपशी संबंधित समस्यांचे निराकरण करा"
+
+#~ msgid "Avoid crash while scrolling over view switcher"
+#~ msgstr "व्ह्यू स्विचरवर स्क्रोल करत असताना क्रॅश टाळा"
+
+#~ msgid "Avoid possible crash in some copy and paste situations"
+#~ msgstr "काही कॉपी आणि पेस्टच्या घटनांमध्ये संभाव्य क्रॅश टाळा"
+
+#, fuzzy
+#~| msgid ""
+#~| "Keyboard navigation fix for cherry picking select files in icon view"
+#~ msgid "Keyboard navigation fix for cherry picking select files in Grid view"
+#~ msgstr "आयकॉन व्ह्यूमध्ये चेरी पिकिंगसाठी फायली निवडण्यासाठी कीबोर्ड नेव्हिगेशन फिक्स"
+
+#~ msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
+#~ msgstr "शोध प्लेसहोल्डर मजकूर शैली हार्डकोड करू नका, हे गडद थीम समस्येचे निराकरण करते"
+
+#~ msgid "Minor spacing adjustments to location bar"
+#~ msgstr "स्थान बारमध्ये किरकोळ अंतर समायोजन"
+
+#~ msgid "Fix F2 renaming behavior"
+#~ msgstr "F2 चे नाव बदलण्याचे वर्तन निराकरण करा"
+
+#~ msgid "Minor spacing adjustments to location breadcrumbs"
+#~ msgstr "स्थान ब्रेडक्रॅमसाठी लहान अंतर समायोजन"
+
+#~ msgid "Consistently remember color tags"
+#~ msgstr "सातत्याने रंग टॅग लक्षात ठेवा"
+
+#~ msgid ""
+#~ "Reload thumbnails when changing zoom level to avoid showing placeholder "
+#~ "unnecessarily"
+#~ msgstr ""
+#~ "प्लेसहोल्डर अनावश्यकपणे दर्शविणे टाळण्यासाठी झूम पातळी बदलताना लघुप्रतिमा रीलोड करा"
+
+#~ msgid "Fix running scripts with spaces in filename"
+#~ msgstr "फाईलनावमधील रिक्त स्थानांसह स्क्रिप्ट चालू करणे निश्चित करा"
+
+#~ msgid "Fix high CPU regression in version 4.1.4"
+#~ msgstr "आवृत्ती 4.1.4 मध्ये उच्च सीपीयू रीग्रेशनचे निराकरण करा"
+
+#~ msgid "File sorting fixes"
+#~ msgstr "फाइल वर्गीकरण निराकरणे"
+
+#~ msgid "Meson: fix soversion names"
+#~ msgstr "मेसन: सोव्हर्शन नावांचे निराकरण करा"
+
+#~ msgid "Remove CMake build system"
+#~ msgstr "सीमेक बिल्ड सिस्टम काढा"
+
+#~ msgid "Fix missing File System properties menu"
+#~ msgstr "गहाळ फाइल सिस्टम गुणधर्म मेनूचे निराकरण करा"
+
+#~ msgid "Drop intltool dependency"
+#~ msgstr "intltool अवलंबन ड्रॉप करा"
+
+#~ msgid "Fix default file type handler logic"
+#~ msgstr "डीफॉल्ट फाइल प्रकार हँडलर लॉजिकचे निराकरण करा"
+
+#~ msgid "Fix initial search window size too small"
+#~ msgstr "प्रारंभिक शोध विंडो आकार खूपच लहान करा"
+
+#~ msgid "Add option to disable local file thumbnails"
+#~ msgstr "स्थानिक फाइल लघुप्रतिमा अक्षम करण्यासाठी पर्याय जोडा"
+
+#~ msgid "Fix crash when opening multiple video files"
+#~ msgstr "एकाधिक व्हिडिओ फायली उघडताना क्रॅशचे निराकरण करा"
+
+#~ msgid "Fix some timing issues around adding and removing files"
+#~ msgstr "फायली जोडणे आणि काढणे यासारख्या वेळेच्या काही समस्यांचे निराकरण करा"
+
+#~ msgid "Meson: fix missing library headers"
+#~ msgstr "मेसन: लायब्ररीच्या गहाळ झालेल्या शीर्षलेखाचे निराकरण करा"
+
+#~ msgid "Fix color tag display"
+#~ msgstr "रंग टॅग प्रदर्शन निराकरण करा"
+
+#~ msgid "Show reserved space in Properties window"
+#~ msgstr "प्रॉपर्टी विंडोमध्ये आरक्षित जागा दाखवा"
+
+#~ msgid "Add border radius to text background"
+#~ msgstr "मजकूर पार्श्वभूमीवर सीमा त्रिज्या जोडा"
+
+#~ msgid "Fix file mimetype association regression"
+#~ msgstr "फाईल माइमटाइप असोसिएशन रीग्रेशनचे निराकरण करा"
+
+#~ msgid "New pathbar tooltips"
+#~ msgstr "नवीन पथबार टूलटिप्स"
+
+#~ msgid "Build fixes"
+#~ msgstr "निराकरणे बिल्ड करा"
+
+#~ msgid "Plugin build fixes"
+#~ msgstr "प्लगइन बिल्ड निराकरणे"
+
+#~ msgid "Fix Ctrl+Tab behavior"
+#~ msgstr "Ctrl + Tab वर्तन निराकरण करा"
+
+#~ msgid "Fix building without Unity library"
+#~ msgstr "युनिटी लायब्ररीशिवाय बिल्डींग निराकरण करा"
+
+#~ msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
+#~ msgstr "मुख्यपृष्ठ फोल्डरमध्ये ब्रेडक्रंब लपवा आणि प्लेसहोल्डर आणि शोध चिन्ह दर्शवा"
+
+#~ msgid "Style error dialogs"
+#~ msgstr "शैली त्रुटी संवाद"
+
+#~ msgid "Right click fixes"
+#~ msgstr "राईट क्लिक फिक्स"
+
+#~ msgid "Reload recent view when privacy setting changes"
+#~ msgstr "गोपनीयता सेटिंग बदलल्यास अलीकडील दृश्य रीलोड करा"
+
+#~ msgid "`Connect Server` fixes"
+#~ msgstr "`सर्व्हर कनेक्ट` निराकरण"
+
+#~ msgid "Do not activate multiple files with single click"
+#~ msgstr "एका क्लिकवर एकाधिक फायली सक्रिय करू नका"
+
+#~ msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
+#~ msgstr "दृश्य आणि साइडबार कीबोर्ड फोकस टॉगल करण्यासाठी `टॅब` वापरा"
+
+#~ msgid "Delete color tag database entries for trashed files"
+#~ msgstr "कचर्‍यात टाकलेल्या फायलींसाठी रंग टॅग डेटाबेस प्रविष्ट्या हटवा"
+
+#~ msgid "Throttle tab closing"
+#~ msgstr "थ्रोटल टॅब बंद"
+
+#~ msgid "`Ctrl` key fixes"
+#~ msgstr "`Ctrl` की निराकरणे"
+
+#~ msgid "Drag and drop fixes"
+#~ msgstr "ड्रॅग आणि ड्रॉप फिक्स"
+
+#~ msgid "Show icons in `Open with` menus"
+#~ msgstr "मेनूमध्ये `उघडा` मध्ये आयकॉन दाखवा"
+
+#~ msgid "Tooltip fixes"
+#~ msgstr "टूलटिप निराकरणे"
+
+#~ msgid "Memory leak fixes"
+#~ msgstr "मेमरी लीक निराकरणे"
+
+#~ msgid "Crash fixes"
+#~ msgstr "क्रॅश निराकरणे"
+
+#~ msgid "Trash: respect sound setting"
+#~ msgstr "कचरा: आवाज सेटिंगचा आदर करा"
+
+#~ msgid "Localization fixes"
+#~ msgstr "स्थानिकीकरण निराकरणे"
+
+#~ msgid "Over 100 major and minor bug fixes and improvements"
+#~ msgstr "100 पेक्षा जास्त प्रमुख आणि किरकोळ दोष निराकरणे आणि सुधारणा"
+
+#~ msgid "Honor 12/24hr system setting"
+#~ msgstr "12/24 तास सिस्टम सेटिंग सन्मानित करा"
+
+#~ msgid "Distinguish between tabs with the same name"
+#~ msgstr "समान नावाच्या टॅबमध्ये फरक ठरवा"
+
+#~ msgid ""
+#~ "Support launching from other applications with a target file selected"
+#~ msgstr "निवडलेल्या लक्ष्य फाईलला अन्य अनुप्रयोगांकडून उघडण्याचे समर्थन करा"
+
+#~ msgid "New translations"
+#~ msgstr "नवीन भाषांतरे"
+
+#~ msgid "Minor bug fixes"
+#~ msgstr "किरकोळ दोष निराकरणे"
+
+#~ msgid "Improved networking support"
+#~ msgstr "सुधारित नेटवर्किंग समर्थन"
+
+#~ msgid "Correct window geometry when snapping to left or right"
+#~ msgstr "डावीकडे किंवा उजवीकडे स्नॅप करताना विंडो भूमिती दुरुस्त करा"
+
+#~ msgid ""
+#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+#~ "setting is active"
+#~ msgstr ""
+#~ "\"रिव्हिल पॉइंटर\" सेटिंग सक्रिय असताना Ctrl दाबणे यापुढे नामकरण रद्द करत नाही"
+
+#~ msgid "Switching input language cancels actions"
+#~ msgstr "इनपुट भाषा स्विच करणे क्रियांना रद्द करते"
+
+#~ msgid "Various crash fixes"
+#~ msgstr "विविध क्रॅश फिक्स"
+
+#~ msgid ""
+#~ "Web browsers like Firefox now remember the most recently used downloads "
+#~ "directory"
+#~ msgstr ""
+#~ "फायरफॉक्स सारखे वेब ब्राउझर आता सर्वात वापरली जाणारी डाउनलोड निर्देशिका लक्षात "
+#~ "ठेवतात"
+
+#~ msgid "Remember preferred zoom level"
+#~ msgstr "प्राधान्यीकृत झूम स्तर लक्षात ठेवा"
+
+#~ msgid "Improved input method support"
+#~ msgstr "सुधारित इनपुट पद्धत समर्थन"
+
+#~ msgid "910x640 minimum window size"
+#~ msgstr "910x640 किमान विंडो आकार"
+
+#~ msgid "Security fixes"
+#~ msgstr "सुरक्षा निर्धारण"
+
+#~ msgid "Enable drag and drop tabs between windows"
+#~ msgstr "विंडो दरम्यान ड्रॅग आणि ड्रॉप टॅब सक्षम करा"
+
+#~ msgid "Merge search functionality into Ctrl+F"
+#~ msgstr "Ctrl + F मध्ये शोध कार्यक्षमता विलीन करा"
+
+#~ msgid "Improved translation support"
+#~ msgstr "सुधारित भाषांतर समर्थन"
+
+#~ msgid "Fix appdata release dates"
+#~ msgstr "अ‍ॅप डाटा रीलीझ तारखा निश्चित करा"
+
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "साम्बा शेअर्सवर फाईल ओपनिंग सुधारित करा"
+
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr "कचर्‍यामधून आयटम पुनर्संचयित करताना क्रॅशचे निराकरण करा"
+
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr "संदर्भ मेनूमध्ये कट / कॉपी / पेस्ट संवेदनशीलता सुधारित करा"
+
+#~ msgid "Translation updates"
+#~ msgstr "भाषांतर अद्यतने"
+
+#~ msgid "system-file-manager"
+#~ msgstr "system-file-manager"
 
 #, fuzzy
 #~| msgid "Fix missing File System properties menu"

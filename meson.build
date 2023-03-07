@@ -1,7 +1,7 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '6.1.2',
+    version: '6.3.0',
     meson_version: '>= 0.50.0'
 )
 
@@ -37,7 +37,7 @@ endif
 #
 # Project dependencies
 #
-min_glib_version = '2.40'
+min_glib_version = '2.64.6'
 
 glib_dep = dependency('glib-2.0', version: '>='+min_glib_version)
 gobject_dep = dependency('gobject-2.0', version: '>='+min_glib_version)

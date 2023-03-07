@@ -1,5 +1,5 @@
 /*-
- * Copyright 2020-2021 elementary LLC <https://elementary.io>
+ * Copyright 2020-2023 elementary, Inc. (https://elementary.io)
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -38,6 +38,38 @@ public class Files.FileChooserPortal : Object {
         dialogs = new HashTable<string, FileChooserDialog> (str_hash, str_equal);
     }
 
+    /**
+     * Requests the user for a URI.
+     *
+     * The URI should point to a file, if "multiple" is true, more than one URI
+     * can be chosen by the user. If "directory" is true, the URI should point
+     * to a folder instead.
+     *
+     * A filter can be specified with "current_filter", or "filters", if more
+     * than one filter could be used. Application specific options can be added
+     * to the dialog with "choices" and a label to the select button set with
+     * "accept_label".
+     *
+     * @param handle
+     *    Object path where the request should be exported
+     * @param app_id
+     *    Application originating the call (not used)
+     * @param parent_window
+     *    Transient parent handle, in format "type:handle". if type is "x11",
+     *    handle should be a XID in hexadecimal format, if type is "wayland",
+     *    handle should be a xdg_foreign handle. Other types aren't supported.
+     * @param title
+     *    title for the file chooser dialog
+     * @param options
+     *    Dictionary of extra options. valid keys are: "accept_label",
+     *    "choices", "current_filter", "directory", "filters", "multiple"
+     *    and "modal".
+     * @param response
+     *    User response, 0 on success, 1 if cancelled, 2 on fail.
+     * @param results
+     *    Dictionary with the user choices, possible keys are: "uris",
+     *    "choices", "writable" and "current_filter".
+     */
     public async void open_file (
         ObjectPath handle,
         string app_id,
@@ -99,20 +131,10 @@ public class Files.FileChooserPortal : Object {
             }
         }
 
-        try {
-            dialog.register_id = connection.register_object<Xdp.Request> (handle, dialog);
-        } catch (Error e) {
-            critical (e.message);
-        }
+        dialog.register_object (connection, handle);
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
-
-        dialog.destroy.connect (() => {
-            if (dialog.register_id != 0) {
-                connection.unregister_object (dialog.register_id);
-            }
-        });
 
         dialog.response.connect ((id) => {
             switch (id) {
@@ -143,10 +165,44 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
+        dialog.destroy ();
+
         response = _response;
         results = _results;
     }
 
+    /**
+     * Requests the user for a URI, with intent to write to it.
+     *
+     * The URI should point to a file, if the URI is already existent,
+     * permission is asked for it usage. "current_folder", "current_name" and
+     * "current_file" can be used to pre-select a file.
+     *
+     * A filter can be specified with "current_filter" option, or "filters",
+     * if more than one filter could be used. Application specific options
+     * can be added to the dialog with "choices" and a label to the select
+     * button set with "accept_label".
+     *
+     * @param handle
+     *     Object path where the request should be exported
+     * @param app_id
+     *     Application originating the call (not used)
+     * @param parent_window
+     *     Transient parent handle, in format "type:handle". if type is "x11",
+     *     handle should be a XID in hexadecimal format, if type is "wayland",
+     *     handle should be a xdg_foreign handle. Other types aren't supported.
+     * @param title
+     *     title for the file chooser dialog
+     * @param options
+     *     Dictionary of extra options. valid keys are: "accept_label",
+     *     "choices", "current_file", "current_filter", "current_folder",
+     *     "current_name", "filters" and "modal".
+     * @param response
+     *     User response, 0 on success, 1 if cancelled, 2 on fail.
+     * @param results
+     *     Dictionary with the user choices, possible keys are: "uris",
+     *     "choices", and "current_filter".
+     */
     public async void save_file (
         ObjectPath handle,
         string app_id,
@@ -178,11 +234,15 @@ public class Files.FileChooserPortal : Object {
             dialog.set_current_folder (FileUtils.sanitize_path (options["current_folder"].get_bytestring ()));
         }
 
+        var supplied_uri = "";
         if ("current_file" in options) {
-            dialog.set_uri (FileUtils.sanitize_path (
-                options["current_file"].get_bytestring (),
-                Environment.get_home_dir ()
-            ));
+            supplied_uri = FileUtils.sanitize_path (
+                options["current_file"].get_bytestring (), Environment.get_home_dir ()
+            );
+
+            if (supplied_uri != "") {
+                dialog.set_uri (supplied_uri);
+            }
         }
 
         if ("filters" in options) {
@@ -209,20 +269,10 @@ public class Files.FileChooserPortal : Object {
             }
         }
 
-        try {
-            dialog.register_id = connection.register_object<Xdp.Request> (handle, dialog);
-        } catch (Error e) {
-            critical (e.message);
-        }
+        dialog.register_object (connection, handle); // Dialog will unregister itself when disposed
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
-
-        dialog.destroy.connect (() => {
-            if (dialog.register_id != 0) {
-                connection.unregister_object (dialog.register_id);
-            }
-        });
 
         dialog.response.connect ((id) => {
             switch (id) {
@@ -233,8 +283,27 @@ public class Files.FileChooserPortal : Object {
                         _results["current_filter"] = dialog.filter.to_gvariant ();
                     }
 
-                    _response = 0;
-                    break;
+                   _response = 0;
+
+                    var chosen_file = dialog.get_file ();
+                    if (!chosen_file.query_exists () || chosen_file.get_uri () == supplied_uri) {
+                        break; // No need to check full uri supplied by calling app
+                    }
+
+                    var overwrite_dialog = create_overwrite_dialog (dialog, chosen_file);
+                    overwrite_dialog.response.connect ((response) => {
+                        overwrite_dialog.destroy ();
+                        if (response == Gtk.ResponseType.YES) {
+                            save_file.callback ();
+                        } else {
+                            _results.remove_all ();
+                            _response = 2;
+                        }
+
+
+                    });
+                    overwrite_dialog.present ();
+                    return; // Continue showing dialog until check completes
                 case Gtk.ResponseType.CANCEL:
                     _response = 1;
                     break;
@@ -252,10 +321,41 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
+        dialog.destroy ();
+
         response = _response;
         results = _results;
     }
 
+    /**
+     * Requests the user for a URI, with the intent to write files inside it.
+     *
+     * Filenames are specified via the "files" option, a folder can be
+     * pre-selected with "current_folder". If a file with the same name as one
+     * in the "files" list exists, it's replaced.
+     *
+     * Application specific options can be added to the dialog with "choices"
+     * and a label to the select button set with "accept_label".
+     *
+     * @param handle
+     *     Object path where the request should be exported
+     * @param app_id
+     *     Application originating the call (not used)
+     * @param parent_window
+     *     Transient parent handle, in format "type:handle". if type is "x11",
+     *     handle should be a XID in hexadecimal format. if type is "wayland",
+     *     handle should be a xdg_foreign handle. Other types aren't supported.
+     * @param title
+     *     title for the file chooser dialog
+     * @param options
+     *     Dictionary of extra options. valid keys are: "accept_label",
+     *     "choices", "current_folder", "files" and "modal".
+     * @param response
+     *     User response, 0 on success, 1 if cancelled, 2 on fail.
+     * @param results
+     *     Dictionary with the user choices, possible keys are: "uris" and
+     *     "choices".
+     */
     public async void save_files (
         ObjectPath handle,
         string app_id,
@@ -293,20 +393,11 @@ public class Files.FileChooserPortal : Object {
             }
         }
 
-        try {
-            dialog.register_id = connection.register_object<Xdp.Request> (handle, dialog);
-        } catch (Error e) {
-            critical (e.message);
-        }
+        //TODO Handle failed registration?
+        dialog.register_object (connection, handle); // Dialog will unregister itself when disposed
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
-
-        dialog.destroy.connect (() => {
-            if (dialog.register_id != 0) {
-                connection.unregister_object (dialog.register_id);
-            }
-        });
 
         dialog.response.connect ((id) => {
             switch (id) {
@@ -343,8 +434,43 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
+        dialog.destroy ();
+
         response = _response;
         results = _results;
+    }
+
+    private Gtk.Dialog create_overwrite_dialog (Gtk.Window parent, GLib.File file) {
+        string primary, secondary;
+        if (file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.SYMBOLIC_LINK) {
+            try {
+                var info = file.query_info (FileAttribute.STANDARD_SYMLINK_TARGET, FileQueryInfoFlags.NONE);
+                primary = _("This file is a link to “%s”").printf (info.get_symlink_target ());
+            } catch (Error e) {
+                warning ("Could not get info for %s", file.get_uri ());
+                primary = _("This file is a link.");
+            }
+
+            secondary = _("Replacing a link will overwrite the target's contents. The link will remain");
+        } else {
+            primary = _("Replace “%s”?").printf (file.get_basename ());
+            secondary = _("Replacing this file will overwrite its current contents");
+        }
+
+        var replace_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                primary,
+                secondary,
+                "dialog-warning",
+                Gtk.ButtonsType.CANCEL
+            ) {
+                modal = true,
+                transient_for = parent
+            };
+
+        var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
+        replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+
+        return replace_dialog;
     }
 
     private static void on_bus_acquired (DBusConnection connection, string name) {

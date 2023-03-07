@@ -154,9 +154,18 @@ namespace Files.View {
             });
         }
 
+        private uint total_width_timeout_id = 0;
         private void update_total_width () {
-            calculate_total_width ();
-            this.colpane.set_size_request (total_width, -1);
+            if (total_width_timeout_id > 0) {
+                return;
+            }
+
+            total_width_timeout_id = Timeout.add (200, () => {
+                total_width_timeout_id = 0;
+                calculate_total_width ();
+                this.colpane.set_size_request (total_width, -1);
+                return Source.REMOVE;
+            });
         }
 
 /*********************/
@@ -241,6 +250,7 @@ namespace Files.View {
         }
 
         private void connect_slot_signals (Slot slot) {
+            slot.selection_changed.connect (on_slot_selection_changed);
             slot.frozen_changed.connect (on_slot_frozen_changed);
             slot.active.connect (on_slot_active);
             slot.miller_slot_request.connect (on_miller_slot_request);
@@ -250,10 +260,11 @@ namespace Files.View {
             slot.colpane.key_press_event.connect (on_key_pressed);
             slot.path_changed.connect (on_slot_path_changed);
             slot.directory_loaded.connect (on_slot_directory_loaded);
-            slot.item_hovered.connect (on_slot_item_hovered);
+            slot.hpane.notify["position"].connect (update_total_width);
         }
 
         private void disconnect_slot_signals (Slot slot) {
+            slot.selection_changed.disconnect (on_slot_selection_changed);
             slot.frozen_changed.disconnect (on_slot_frozen_changed);
             slot.active.disconnect (on_slot_active);
             slot.miller_slot_request.disconnect (on_miller_slot_request);
@@ -263,8 +274,6 @@ namespace Files.View {
             slot.colpane.key_press_event.disconnect (on_key_pressed);
             slot.path_changed.disconnect (on_slot_path_changed);
             slot.directory_loaded.disconnect (on_slot_directory_loaded);
-            slot.item_hovered.disconnect (on_slot_item_hovered);
-
         }
 
         private void on_miller_slot_request (View.Slot slot, GLib.File loc, bool make_root) {
@@ -323,10 +332,6 @@ namespace Files.View {
             }
             /* Always emit this signal so that UI updates (e.g. pathbar) */
             active ();
-        }
-
-        private void on_slot_item_hovered (Files.File? file) {
-            item_hovered (file);
         }
 
         private void show_hidden_files_changed (bool show_hidden) {
@@ -427,6 +432,10 @@ namespace Files.View {
             }
 
             return false;
+        }
+
+        private void on_slot_selection_changed (GLib.List<Files.File> files) {
+            selection_changed (files);
         }
 
         private void on_slot_frozen_changed (Slot slot, bool frozen) {
@@ -561,6 +570,9 @@ namespace Files.View {
 
             if (scroll_to_slot_timeout_id > 0) {
                 GLib.Source.remove (scroll_to_slot_timeout_id);
+            }
+            if (total_width_timeout_id > 0) {
+                GLib.Source.remove (total_width_timeout_id);
             }
 
             truncate_list_after_slot (slot_list.first ().data);

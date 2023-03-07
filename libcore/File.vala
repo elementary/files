@@ -42,10 +42,13 @@ public class Files.File : GLib.Object {
     public signal void destroy ();
 
     public bool is_gone;
+    // The location is guaranteed non-null, but the parent directory may be null
     public GLib.File location { get; construct; }
+    public GLib.File? directory { get; construct; } /* parent directory location */
+
     public GLib.File target_location = null;
     public Files.File target_gof = null;
-    public GLib.File directory { get; construct; } /* parent directory location */
+
     public GLib.Icon? icon = null;
     public GLib.List<string>? emblems_list = null;
     public uint n_emblems = 0;
@@ -157,7 +160,7 @@ public class Files.File : GLib.Object {
         return null;
     }
 
-    public File (GLib.File location, GLib.File? dir = null) {
+    public File (GLib.File location, GLib.File? dir) {
         Object (
             location: location,
             uri: location.get_uri (),
@@ -1100,21 +1103,25 @@ public class Files.File : GLib.Object {
     }
 
     private string item_count () {
-        try {
-            var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
-            var count = 0;
-            while (f_enum.next_file () != null) {
-                count++;
-            }
+        if (is_mounted && location.is_native ()) {
+            try {
+                var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
+                var count = 0;
+                while (f_enum.next_file () != null) {
+                    count++;
+                }
 
-            if (count == 0) {
-                return _("Empty");
-            } else {
-                return ngettext ("%i item", "%i items", count).printf (count);
+                if (count == 0) {
+                    return _("Empty");
+                } else {
+                    return ngettext ("%i item", "%i items", count).printf (count);
+                }
+            } catch (Error e) {
+                return _("Inaccessible");
             }
-        } catch (Error e) {
-            return _("Inaccessible");
         }
+
+        return _("----");
     }
 
     private void update_formated_type () {
@@ -1130,7 +1137,7 @@ public class Files.File : GLib.Object {
         }
     }
 
-    private GLib.Icon? get_icon_user_special_dirs (string path) {
+    public GLib.Icon? get_icon_user_special_dirs (string path) {
         if (path == GLib.Environment.get_home_dir ()) {
             return new GLib.ThemedIcon ("user-home");
         } else if (path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.DESKTOP)) {
