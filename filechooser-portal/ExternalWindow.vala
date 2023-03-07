@@ -78,7 +78,7 @@ public class ExternalWindowX11 : ExternalWindow, GLib.Object {
 
         Gdk.set_allowed_backends ("x11");
         x11_display = Gdk.Display.open (null);
-        Gdk.set_allowed_backends (null);
+        Gdk.set_allowed_backends ("*");
 
         if (x11_display == null) {
             warning ("Failed to open X11 display");
@@ -113,7 +113,7 @@ public class ExternalWindowWayland : ExternalWindow, GLib.Object {
 
         Gdk.set_allowed_backends ("wayland");
         wayland_display = Gdk.Display.open (null);
-        Gdk.set_allowed_backends (null);
+        Gdk.set_allowed_backends ("*");
 
         if (wayland_display == null) {
             warning ("Failed to open Wayland display");
