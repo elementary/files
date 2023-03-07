@@ -19,7 +19,7 @@
 namespace Files.FileChanges {
     const int CONSUME_CHANGES_MAX_CHUNK = 20;
 
-    private enum Kind {
+    public enum Kind {
         INITIAL,
         ADDED,
         CHANGED,
@@ -28,10 +28,11 @@ namespace Files.FileChanges {
     }
 
     [Compact]
-    class Change {
+    public class Change {
         public Kind kind;
         public GLib.File from;
         public GLib.File to;
+        public bool is_internal;
     }
 
     private static GLib.Queue<Change> queue;
@@ -55,10 +56,11 @@ namespace Files.FileChanges {
         queue_mutex.unlock ();
     }
 
-    public static void queue_file_added (GLib.File location) {
+    public static void queue_file_added (GLib.File location, bool internal_origin = true) {
         var new_item = new Change () {
             kind = Kind.ADDED,
-            from = location
+            from = location,
+            is_internal = internal_origin
         };
 
         queue_add_common ((owned) new_item);
@@ -67,7 +69,8 @@ namespace Files.FileChanges {
     public static void queue_file_changed (GLib.File location) {
         var new_item = new Change () {
             kind = Kind.CHANGED,
-            from = location
+            from = location,
+            is_internal = true
         };
 
         queue_add_common ((owned) new_item);
@@ -76,7 +79,8 @@ namespace Files.FileChanges {
     public static void queue_file_removed (GLib.File location) {
         var new_item = new Change () {
             kind = Kind.REMOVED,
-            from = location
+            from = location,
+            is_internal = true
         };
 
         queue_add_common ((owned) new_item);
@@ -86,7 +90,8 @@ namespace Files.FileChanges {
         var new_item = new Change () {
             kind = Kind.MOVED,
             from = from,
-            to = to
+            to = to,
+            is_internal = true
         };
 
         queue_add_common ((owned) new_item);
@@ -96,10 +101,10 @@ namespace Files.FileChanges {
         unowned GLib.Queue<Change> queue = get_queue ();
         uint chunk_count;
         bool flush_needed;
-        GLib.List<GLib.File>? additions = null;
         GLib.List<GLib.File>? changes = null;
         GLib.List<GLib.File>? deletions = null;
         GLib.List<GLib.Array<GLib.File>>? moves = null;
+        GLib.List<Change>? additions = null;
 
         /* Consume changes from the queue, stuffing them into one of three lists,
          * keep doing it while the changes are of the same kind, then send them off.
@@ -153,7 +158,7 @@ namespace Files.FileChanges {
 
                 if (additions != null) {
                     additions.reverse ();
-                    Files.Directory.notify_files_added (additions);
+                    Files.Directory.notify_changes_added (additions);
                     additions = null;
                 }
 
@@ -173,10 +178,10 @@ namespace Files.FileChanges {
             switch (change.kind) {
                 case Files.FileChanges.Kind.ADDED:
                     if (additions == null) {
-                        additions = new GLib.List<GLib.File> ();
+                        additions = new GLib.List<Change> ();
                     }
 
-                    additions.prepend (change.from);
+                    additions.prepend ((owned)change);
                     break;
 
                 case Files.FileChanges.Kind.CHANGED:
