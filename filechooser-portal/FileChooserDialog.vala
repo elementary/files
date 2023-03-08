@@ -295,8 +295,7 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
         //     previous_button_clicked = false;
         //     next_button_clicked = false;
 
-        //     location_bar.set_display_path (current_folder.get_uri ());
-        //     tree_view.grab_focus ();
+        //     location_bar.set_display_path (current_path);
         // });
 
         //TODO Replace missing signal
@@ -323,6 +322,12 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
             chooser.set_current_folder (file);
         } catch (Error e) {
             warning ("Could not set current folder. %s", e.message);
+        }
+
+        if (action == Gtk.FileChooserAction.SAVE) {
+            entry.grab_focus ();
+        } else {
+            tree_view.grab_focus ();
         }
     }
 
@@ -410,6 +415,7 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
 
             // bind the accept_button sensitivity with the entry text
             entry = (Gtk.Entry?)find_child_by_name (grid, "<GtkFileChooserEntry>");
+            entry.set_placeholder_text (_("Enter new filename"));
             entry.bind_property ("text-length", accept_button, "sensitive", BindingFlags.SYNC_CREATE);
             entry.activate.connect (() => {
                 if (accept_button.sensitive) {
@@ -464,7 +470,6 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
 
     public void set_current_name (string text) {
         chooser.set_current_name (text);
-        entry.grab_focus ();
     }
 
     public string get_uri () {

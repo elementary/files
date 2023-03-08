@@ -36,6 +36,15 @@ void add_gof_directory_async_tests () {
     Test.add_func ("/FilesDirectory/reload_populated_local", () => {
         run_load_folder_test (reload_populated_local_test);
     });
+    Test.add_func ("/FilesDirectory/dir_cache_lookup", () => {
+        run_load_folder_test (dir_cache_lookup_test);
+    });
+    Test.add_func ("/FilesDirectory/dir_cache_lookup2", () => {
+        run_load_folder_test (dir_cache_lookup2_test);
+    });
+    Test.add_func ("/FilesDirectory/empty_cache", () => {
+        empty_cache_test ();
+    });
 }
 
 delegate Directory LoadFolderTest (string path, MainLoop loop);
@@ -96,7 +105,7 @@ Directory load_populated_local_test (string test_dir_path, MainLoop loop) {
 
     var dir = setup_temp_async (test_dir_path, n_files);
 
-    assert_true (dir.ref_count == 1); //Extra ref from pending cache;
+    assert (dir.ref_count == 2); //Extra ref from pending cache;
 
     dir.file_added.connect (() => {
         file_loaded_signal_count++;
@@ -176,6 +185,54 @@ Directory reload_populated_local_test (string test_dir_path, MainLoop loop) {
 
             loop.quit ();
         }
+    });
+
+    return dir;
+}
+
+void empty_cache_test () {
+    Files.Directory.empty_dir_cache ();
+    assert (Files.Directory.cache_lookup (GLib.File.new_for_path (Path.DIR_SEPARATOR_S)) == null);
+}
+
+Directory dir_cache_lookup_test (string test_dir_path, MainLoop loop) {
+    // Test cache operations after creating from directory
+    var dir = setup_temp_async (test_dir_path, 50);
+    assert (Files.Directory.cache_lookup (dir.creation_key) != null);
+
+    dir.done_loading.connect (() => {
+        assert (dir.creation_key == dir.location);
+        assert (Files.Directory.cache_lookup (dir.location) != null);
+        Files.Directory.remove_dir_from_cache (dir);
+        assert (Files.Directory.cache_lookup (dir.location) == null);
+        loop.quit ();
+    });
+
+    return dir;
+}
+
+Directory dir_cache_lookup2_test (string test_dir_path, MainLoop loop) {
+    // Test cache operations after creating from regular file, not directory
+    Posix.system ("mkdir " + test_dir_path);
+    /* create empty files */
+    var pth = test_dir_path + Path.DIR_SEPARATOR_S + "test_file";
+    Posix.system ("touch " + pth);
+    GLib.File gfile = GLib.File.new_for_commandline_arg (pth);
+    assert (gfile.query_exists (null));
+
+    Directory dir = Directory.from_gfile (gfile);
+    assert (dir != null);
+    assert (Files.Directory.cache_lookup (dir.creation_key) != null);
+
+    dir.done_loading.connect (() => {
+        // We currently use the parent of regular files as creation key and
+        // this is expected to be the same as the location (to be tested)
+        // Previously the creation key could differ from the location.
+        assert (dir.creation_key == dir.location);
+        assert (Files.Directory.cache_lookup (dir.location) != null);
+        Files.Directory.remove_dir_from_cache (dir);
+        assert (Files.Directory.cache_lookup (dir.location) == null);
+        loop.quit ();
     });
 
     return dir;

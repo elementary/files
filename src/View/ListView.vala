@@ -377,7 +377,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             directory.file_deleted.connect (on_file_deleted);
         }
 
-        private void on_file_added (Directory dir, Files.File? file) {
+        private void on_file_added (Directory dir, Files.File? file, bool is_internal) {
             if (is_empty) {
                 mark_empty (false);
             }

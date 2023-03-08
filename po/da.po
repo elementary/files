@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-14 09:55+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2021-06-05 20:46+0000\n"
 "Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
 "Language-Team: Danish <https://l10n.elementary.io/projects/files/files/da/>\n"
@@ -36,42 +36,52 @@ msgstr ""
 msgid "Open File as Read Only"
 msgstr ""
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/FileChooserDialog.vala:376
+#, fuzzy
+#| msgid "new file"
+msgid "Enter new filename"
+msgstr "ny fil"
+
+#: filechooser-portal/Main.vala:107
 #, fuzzy
 #| msgid " selected"
 msgid "Select"
 msgstr " valgt"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "Åbn"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr ""
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "Ved erstatning vil dens indhold blive overskrevet."
+
+#: filechooser-portal/Main.vala:456
 #, fuzzy, c-format
 #| msgid "Replace file \"%s\"?"
 msgid "Replace “%s”?"
 msgstr "Erstat filen \"%s\"?"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 #, fuzzy
 #| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "Ved erstatning vil dens indhold blive overskrevet."
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr ""
-
-#: filechooser-portal/Main.vala:364
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
 msgstr "Ved erstatning vil dens indhold blive overskrevet."
 
 #: libcore/ConnectServerDialog.vala:46
@@ -183,7 +193,7 @@ msgstr "Opretter forbindelse…"
 msgid "Please verify your user details."
 msgstr "Kontrollér venligst dine brugerdetajler."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "Serveren svarede ikke indenfor tidsgrænsen"
 
@@ -375,38 +385,38 @@ msgstr "En anden fil med det samme navn findes allerede i \"%s\"."
 msgid "Merge"
 msgstr "Flet"
 
-#: libcore/FileUtils.vala:89
+#: libcore/FileUtils.vala:83
 #, fuzzy, c-format
 #| msgid "Could not determine original location of \"%s\" "
 msgid "Could not determine original location of \"%s\""
 msgstr "Kunne ikke bestemme den originale placering af \"%s\" "
 
-#: libcore/FileUtils.vala:90
+#: libcore/FileUtils.vala:84
 msgid "The item cannot be restored from trash"
 msgstr "Elementet kan ikke genskabes fra papirkurven"
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:178
 #, c-format
 msgid "The original folder %s no longer exists"
 msgstr "Den originale folder %s eksisterer ikke længere"
 
-#: libcore/FileUtils.vala:185
+#: libcore/FileUtils.vala:179
 msgid "Would you like to recreate it?"
 msgstr "Vil du genskabe det?"
 
-#: libcore/FileUtils.vala:190
+#: libcore/FileUtils.vala:184
 msgid "Ignore"
 msgstr "Ignorér"
 
-#: libcore/FileUtils.vala:191
+#: libcore/FileUtils.vala:185
 msgid "No files that were in this folder will be restored"
 msgstr "Ingen filer der var i denne folder vil blive genskabt"
 
-#: libcore/FileUtils.vala:192
+#: libcore/FileUtils.vala:186
 msgid "Recreate"
 msgstr "Genskab"
 
-#: libcore/FileUtils.vala:194
+#: libcore/FileUtils.vala:188
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
@@ -414,42 +424,42 @@ msgstr ""
 "Folderen vil blive genskabt, og de valgte filer der var der originalt vil "
 "blive genskabt i den"
 
-#: libcore/FileUtils.vala:207
+#: libcore/FileUtils.vala:201
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr "Kan ikke genskabe folderen %s. Ignorerer alle filer i denne folder"
 
-#: libcore/FileUtils.vala:579
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Kunne ikke omdøbe til \"%s\""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:670
+#: libcore/FileUtils.vala:658
 #, c-format
 msgid "Today at %s"
 msgstr "I dag kl. %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:678
+#: libcore/FileUtils.vala:666
 #, c-format
 msgid "Yesterday at %s"
 msgstr "I går kl. %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:686
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A kl. %s"
 
-#: libcore/FileUtils.vala:1028
+#: libcore/FileUtils.vala:1016
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d sekund"
 msgstr[1] "%'d sekunder"
 
-#: libcore/FileUtils.vala:1032 libcore/FileUtils.vala:1040
+#: libcore/FileUtils.vala:1020 libcore/FileUtils.vala:1028
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -458,19 +468,19 @@ msgstr[1] "%'d minutter"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:1039 src/Dialogs/PropertiesWindow.vala:1242
+#: libcore/FileUtils.vala:1027 src/Dialogs/PropertiesWindow.vala:1242
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:1039
+#: libcore/FileUtils.vala:1027
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d time"
 msgstr[1] "%'d timer"
 
-#: libcore/FileUtils.vala:1043
+#: libcore/FileUtils.vala:1031
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -478,22 +488,22 @@ msgstr[0] "ca. %'d time"
 msgstr[1] "ca. %'d timer"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1051
+#: libcore/FileUtils.vala:1039
 msgid "copy"
 msgstr "(kopi)"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1053
+#: libcore/FileUtils.vala:1041
 msgid "link"
 msgstr "link"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1055
+#: libcore/FileUtils.vala:1043
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1057
+#: libcore/FileUtils.vala:1045
 msgid ")"
 msgstr ")"
 
@@ -1208,11 +1218,184 @@ msgstr "Kopiér _alligevel"
 msgid "Empty _Trash"
 msgstr "_Tøm papirkurven"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "Kopiér"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Undo Duplicate"
+msgstr "Duplikerer \"%s\""
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Omdøb"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Fortryd oprettelse af tom fil"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Fotryd oprettelse af fil fra skabelon"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Fortryd oprettelse af %d mappe"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Flyt til papirkurven"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "_Undo create link to %d item"
+#| msgid_plural "_Undo create link to %d items"
+msgid "Undo Create Link"
+msgstr "_Fortryd oprettelse af henvisning til %d element"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "Gendan fra papirkurven"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "Ændrer tilladelser"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+#| msgid "Undo change permissions of %d item"
+#| msgid_plural "Undo change permissions of %d items"
+msgid "Undo Set Permissions Recursively"
+msgstr "Fortryd ændring af tilladelser på %d element"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+#| msgid "Undo change owner of %d item"
+#| msgid_plural "Undo change owner of %d items"
+msgid "Undo Change Owner"
+msgstr "Fortryd ændring af ejer for %d element"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+#| msgid "Undo change group of %d item"
+#| msgid_plural "Undo change group of %d items"
+msgid "Undo Change Group"
+msgstr "Fortryd ændring af gruppe for %d element"
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "Kopiér"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Redo Duplicate"
+msgstr "Duplikerer \"%s\""
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Omdøb"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "_Redo creation of an empty file"
+msgid "Redo Create Empty File"
+msgstr "_Gentag oprettelse af tom fil"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+#| msgid "_Redo creation of a file from template"
+msgid "Redo Create File from Template"
+msgstr "_Gentag oprettelse af fil fra skabelon"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "Oprettelsen af mappen fejlede"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Flyt til papirkurven"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "_Redo create link to %d item"
+#| msgid_plural "_Redo create link to %d items"
+msgid "Redo Create Link"
+msgstr "_Gentag oprettelse af henvisning til %d element"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "Gendan fra papirkurven"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "Ændrer tilladelser"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+#| msgid "Redo change permissions of %d item"
+#| msgid_plural "Redo change permissions of %d items"
+msgid "Redo Set Permissions Recursively"
+msgstr "Gentag ændring af tilladelserne på %d element"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+#| msgid "Redo change owner of %d item"
+#| msgid_plural "Redo change owner of %d items"
+msgid "Redo Change Owner"
+msgstr "_Gentag ændring af ejer for %d element"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+#| msgid "Redo change group of %d item"
+#| msgid_plural "Redo change group of %d items"
+msgid "Redo Change Group"
+msgstr "_Gentag ændring af gruppe for %d element"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Kunne ikke fastslå original placering"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Åbn papirkurven og gendan manuelt"
 
@@ -1694,7 +1877,7 @@ msgid "Invalid file name provided"
 msgstr "Ugyldigt filnavn angivet"
 
 #: src/View/AbstractDirectoryView.vala:1898
-#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:182
+#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "Nyt faneblad"
 
@@ -1712,7 +1895,7 @@ msgid "Open in"
 msgstr "Åbn i"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Åbn med"
 
@@ -1767,108 +1950,92 @@ msgstr "Omdøb…"
 msgid "Copy as Link"
 msgstr "Kopier som Link"
 
-#: src/View/AbstractDirectoryView.vala:2179
-#: src/View/AbstractDirectoryView.vala:2278
+#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2262
 msgid "Paste Link into Folder"
 msgstr "Indsæt Link i Mappen"
 
-#: src/View/AbstractDirectoryView.vala:2184
-#: src/View/AbstractDirectoryView.vala:2252
+#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2239
 msgid "Paste into Folder"
 msgstr "Indsæt i mappen"
 
-#: src/View/AbstractDirectoryView.vala:2194
-#: src/View/AbstractDirectoryView.vala:2283
+#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "Paste"
 msgstr "Indsæt"
 
-#: src/View/AbstractDirectoryView.vala:2235
-msgid "Show Hidden Files"
-msgstr "Vis skjulte filer"
-
-#: src/View/AbstractDirectoryView.vala:2240
-msgid "Show Remote Thumbnails"
-msgstr "Vis Fjern Miniaturer"
-
-#: src/View/AbstractDirectoryView.vala:2243
-msgid "Hide Thumbnails"
-msgstr "Skjul Miniaturer"
-
-#: src/View/AbstractDirectoryView.vala:2246
-msgid "Select Folders with Single Click"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2343
+#: src/View/AbstractDirectoryView.vala:2317
 msgid "Name"
 msgstr "Navn"
 
-#: src/View/AbstractDirectoryView.vala:2348 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2322 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Størrelse"
 
-#: src/View/AbstractDirectoryView.vala:2353 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2327 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Type"
 
-#: src/View/AbstractDirectoryView.vala:2358
+#: src/View/AbstractDirectoryView.vala:2332
 msgid "Date"
 msgstr "Dato"
 
-#: src/View/AbstractDirectoryView.vala:2363
+#: src/View/AbstractDirectoryView.vala:2337
 msgid "Reversed Order"
 msgstr "Omvendt rækkefølge"
 
-#: src/View/AbstractDirectoryView.vala:2366
+#: src/View/AbstractDirectoryView.vala:2340
 msgid "Folders Before Files"
 msgstr "Mapper før Filer"
 
-#: src/View/AbstractDirectoryView.vala:2378
+#: src/View/AbstractDirectoryView.vala:2352
 msgid "Sort by"
 msgstr "Sorter efter"
 
-#: src/View/AbstractDirectoryView.vala:2386
+#: src/View/AbstractDirectoryView.vala:2360
 msgid "Folder"
 msgstr "Mappe"
 
-#: src/View/AbstractDirectoryView.vala:2392
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Empty File"
 msgstr "Tom fil"
 
-#: src/View/AbstractDirectoryView.vala:2443
+#: src/View/AbstractDirectoryView.vala:2417
 msgid "New"
 msgstr "Ny"
 
-#: src/View/AbstractDirectoryView.vala:2686
+#: src/View/AbstractDirectoryView.vala:2660
 #, c-format
 msgid "Untitled %s"
 msgstr "Unavngivet %s"
 
-#: src/View/AbstractDirectoryView.vala:3004
-#: src/View/AbstractDirectoryView.vala:3197
+#: src/View/AbstractDirectoryView.vala:2978
+#: src/View/AbstractDirectoryView.vala:3171
 msgid "Cannot remove files from here"
 msgstr "Kan ikke fjerne filer herfra"
 
-#: src/View/AbstractDirectoryView.vala:3005
-#: src/View/AbstractDirectoryView.vala:3170
-#: src/View/AbstractDirectoryView.vala:3181
-#: src/View/AbstractDirectoryView.vala:3198
+#: src/View/AbstractDirectoryView.vala:2979
+#: src/View/AbstractDirectoryView.vala:3144
+#: src/View/AbstractDirectoryView.vala:3155
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "You do not have permission to change this location"
 msgstr "Du har ikke rettigheder til at ændre denne placering"
 
-#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3112
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan ikke kopiere filer der er i papirkurven"
 
-#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3113
 msgid "Cutting the selection instead"
 msgstr "Klipper det markerede i stedet"
 
-#: src/View/AbstractDirectoryView.vala:3169
-#: src/View/AbstractDirectoryView.vala:3180
+#: src/View/AbstractDirectoryView.vala:3143
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cannot paste files here"
 msgstr "Kan ikke indsætte filer her"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:391
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
 msgid "This Folder Does Not Exist"
 msgstr "Denne mappe eksisterer ikke"
 
@@ -1930,83 +2097,83 @@ msgstr "Der er ikke nogen seneste filer"
 msgid "Access Denied"
 msgstr "Adgang nægtet"
 
-#: src/View/ViewContainer.vala:370 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:368 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "Hjem"
 
-#: src/View/ViewContainer.vala:392
+#: src/View/ViewContainer.vala:389
 msgid "You cannot create a folder here."
 msgstr "Du kan ikke oprette en mappe her."
 
-#: src/View/ViewContainer.vala:395
+#: src/View/ViewContainer.vala:392
 msgid "The network is unavailable"
 msgstr "Netværket er utilgængeligt"
 
-#: src/View/ViewContainer.vala:396
+#: src/View/ViewContainer.vala:393
 msgid "A working network is needed to reach this folder"
 msgstr "Der kræves et fungerende netværk for at kunne nå denne mappe"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Belong to You"
 msgstr "Denne mappe tilhører ikke dig"
 
-#: src/View/ViewContainer.vala:400
+#: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr "Du har ikke tilladelse til at se denne mappe."
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
 msgstr "Kan ikke montere mappe"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:400
 msgid "Could not connect to the server for this folder."
 msgstr "Kunne ikke oprette forbindelse til serveren for denne mappe."
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:403
 msgid "Unable to Display Folder Contents"
 msgstr "Kan ikke vise mappeindhold"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:404
 msgid "The operation timed out."
 msgstr "Handlingen fik timeout."
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Show Folder"
 msgstr "Kan ikke vise mappe"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:407
 msgid "The server for this folder could not be located."
 msgstr "Kan ikke finde serveren for denne mappe."
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:418
 msgid "File not Found"
 msgstr "Filen blev ikke fundet"
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:419
 msgid "The file selected no longer exists."
 msgstr "Den valgte fil eksisterer ikke længere."
 
-#: src/View/Window.vala:183
+#: src/View/Window.vala:184
 msgid "Undo Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:494
+#: src/View/Window.vala:497
 #, fuzzy
 #| msgid "Close"
 msgid "Close Tab"
 msgstr "Luk"
 
-#: src/View/Window.vala:495
+#: src/View/Window.vala:498
 #, fuzzy
 #| msgid "Duplicating \"%s\""
 msgid "Duplicate Tab"
 msgstr "Duplikerer \"%s\""
 
-#: src/View/Window.vala:496 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Åbn i nyt vindue"
 
-#: src/View/Window.vala:609 src/View/Window.vala:619
+#: src/View/Window.vala:612 src/View/Window.vala:622
 msgid "(as Administrator)"
 msgstr "(som Administrator)"
 
@@ -2111,32 +2278,104 @@ msgstr "Enheder og steder som er tilgængelige via et netværk"
 msgid "Connect Server…"
 msgstr "Forbind Server…"
 
+#: src/View/Sidebar/VolumeRow.vala:166
+#, fuzzy
+#| msgid "_Mount"
+msgid "Mount"
+msgstr "_Montér"
+
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy
 #| msgid "_Unmount"
 msgid "Bind mount"
 msgstr "_Afmontér"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "Søg eller Skriv Sti"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Åbn i nyt faneblad"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "Åbn i en Anden Applikation…"
 
-#: src/View/Widgets/HeaderBar.vala:66
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Forrige"
 
-#: src/View/Widgets/HeaderBar.vala:73
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Næste"
+
+#: src/View/Widgets/HeaderBar.vala:97
+msgid "Zoom Out"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:106
+msgid "Zoom 1:1"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:115
+msgid "Zoom In"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:154
+msgid "Double-click to Navigate"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:155
+msgid "Double-click on a folder opens it, single-click selects it"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:160
+#, fuzzy
+#| msgid "Folders Before Files"
+msgid "Sort Folders before Files"
+msgstr "Mapper før Filer"
+
+#: src/View/Widgets/HeaderBar.vala:164
+#, fuzzy
+#| msgid "Show Hidden Files"
+msgid "Show in View"
+msgstr "Vis skjulte filer"
+
+#: src/View/Widgets/HeaderBar.vala:171
+#, fuzzy
+#| msgid "Show Hidden Files"
+msgid "Hidden Files"
+msgstr "Vis skjulte filer"
+
+#: src/View/Widgets/HeaderBar.vala:175
+#, fuzzy
+#| msgid "Hide Thumbnails"
+msgid "Local Thumbnails"
+msgstr "Skjul Miniaturer"
+
+#: src/View/Widgets/HeaderBar.vala:180
+#, fuzzy
+#| msgid "Show Remote Thumbnails"
+msgid "Remote Thumbnails"
+msgstr "Vis Fjern Miniaturer"
+
+#: src/View/Widgets/HeaderBar.vala:208
+msgid "Menu"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:283
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "Handlingen fik timeout."
+
+#: src/View/Widgets/HeaderBar.vala:290
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "Handlingen fik timeout."
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2230,8 +2469,22 @@ msgstr "Under denne mappe"
 msgid "Recently Used"
 msgstr "Senest anvendte"
 
-#~ msgid "Setting permissions"
-#~ msgstr "Ændrer tilladelser"
+#, fuzzy
+#~| msgid "Replacing it will overwrite its content."
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr "Ved erstatning vil dens indhold blive overskrevet."
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "Filhandlinger"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "Filhandlinger"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2460,17 +2713,6 @@ msgstr "Senest anvendte"
 #~ msgstr[0] "_Fortryd omdøbning af %d element"
 #~ msgstr[1] "_Fortryd omdøbning af %d elementer"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Fortryd oprettelse af tom fil"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Fotryd oprettelse af fil fra skabelon"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Fortryd oprettelse af %d mappe"
-#~ msgstr[1] "_Fortryd oprettelse af %d mapper"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Fortryd flytning af %d element til papirkurven"
@@ -2481,11 +2723,6 @@ msgstr "Senest anvendte"
 #~ msgstr[0] "_Fortryd gendannelse af %d element fra papirkurven"
 #~ msgstr[1] "_Fortryd gendannelse af %d elementer fra papirkurven"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Fortryd oprettelse af henvisning til %d element"
-#~ msgstr[1] "_Fortryd oprettelse af henvisninger til %d elementer"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "_Fortryd sletning af %d element"
@@ -2495,21 +2732,6 @@ msgstr "Senest anvendte"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "Fortryd rekursiv tilladelsesændring for %d element"
 #~ msgstr[1] "Fortryd rekursiv rettighedsændring for %d elementer"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Fortryd ændring af tilladelser på %d element"
-#~ msgstr[1] "Fortryd ændring af tilladelser på %d elementer"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Fortryd ændring af gruppe for %d element"
-#~ msgstr[1] "Fortryd ændring af gruppe for %d elementer"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Fortryd ændring af ejer for %d element"
-#~ msgstr[1] "Fortryd ændring af ejer for %d elementer"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2531,12 +2753,6 @@ msgstr "Senest anvendte"
 #~ msgstr[0] "_Gentag omdøbning af %d element"
 #~ msgstr[1] "_Gentag omdøbning af %d elementer"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Gentag oprettelse af tom fil"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Gentag oprettelse af fil fra skabelon"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Gentag oprettelse af %d mappe"
@@ -2552,11 +2768,6 @@ msgstr "Senest anvendte"
 #~ msgstr[0] "_Gentag gendannelse af %d element fra papirkurv"
 #~ msgstr[1] "_Gentag gendannelse af %d elementer fra papirkurv"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Gentag oprettelse af henvisning til %d element"
-#~ msgstr[1] "_Gentag oprettelse af henvisninger til %d elementer"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Gentag sletning af %d element"
@@ -2566,21 +2777,6 @@ msgstr "Senest anvendte"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "Gentag rekursiv ændring af tilladelserne på %d element"
 #~ msgstr[1] "Gentag rekursiv ændring af tilladelserne på %d elementer"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Gentag ændring af tilladelserne på %d element"
-#~ msgstr[1] "Gentag ændring af tilladelserne på %d elementer"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "_Gentag ændring af gruppe for %d element"
-#~ msgstr[1] "_Gentag ændring af gruppe for %d elementer"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "_Gentag ændring af ejer for %d element"
-#~ msgstr[1] "_Gentag ændring af ejer for %d elementer"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"

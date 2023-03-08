@@ -64,6 +64,16 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
                 }
             }
         });
+        var mount_action = new SimpleAction ("mount", new VariantType ("u"));
+        mount_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                if (row is AbstractMountableRow) {
+                    //TODO Do we need a different behaviour (i.e. mount without activate?)
+                    ((AbstractMountableRow)row).activated ();
+                }
+            }
+        });
         var unmount_action = new SimpleAction ("unmount", new VariantType ("u"));
         unmount_action.activate.connect ((param) => {
             var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());

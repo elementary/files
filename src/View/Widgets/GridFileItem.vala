@@ -268,7 +268,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         if (file.paintable == null) {
             if (file.thumbstate == Files.File.ThumbState.UNKNOWN &&
                 (prefs.show_remote_thumbnails || !file.is_remote_uri_scheme ()) &&
-                !prefs.hide_local_thumbnails) { // Also hide remote if local hidden?
+                prefs.show_local_thumbnails) { // Also hide remote if local hidden?
                     Thumbnailer.@get ().queue_file (
                         file, out thumbnail_request, file_icon.pixel_size > 128
                     );
@@ -297,7 +297,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         // If file is local and not hiding local, or file is remote and showing remote,
         // display a thumbnail have one.
         if (file.paintable != null &&
-            ((!prefs.hide_local_thumbnails && view.slot.directory.is_local) ||
+            ((prefs.show_local_thumbnails && view.slot.directory.is_local) ||
             (prefs.show_remote_thumbnails && !view.slot.directory.is_local))) {
 
             file_icon.set_from_paintable (file.paintable);

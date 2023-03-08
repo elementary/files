@@ -151,8 +151,9 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     // Use only for single file changes, not initial loading for performance
-    private void on_directory_file_added (Directory dir, Files.File? file) {
+    private void on_directory_file_added (Directory dir, Files.File? file, bool is_internal) {
         if (file != null && !dir.is_loading ()) {
+            view_widget.select_after_add = is_internal;
             view_widget.add_file (file);
         }
 

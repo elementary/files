@@ -288,8 +288,8 @@ public class Files.Application : Gtk.Application {
         Files.app_settings.bind ("singleclick-select", prefs, "singleclick-select", GLib.SettingsBindFlags.DEFAULT);
         Files.app_settings.bind ("show-remote-thumbnails",
                                    prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-        Files.app_settings.bind ("hide-local-thumbnails",
-                                   prefs, "hide-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
+        Files.app_settings.bind ("show-local-thumbnails",
+                                   prefs, "show-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
 
         Files.app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
 

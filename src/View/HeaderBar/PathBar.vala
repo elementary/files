@@ -153,7 +153,7 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
 
         if (root != null) {
             var files_menu_dir = Directory.from_gfile (root);
-            files_menu_dir.init.begin (null, (obj, res) => {
+            files_menu_dir.init.begin (null, null, (obj, res) => {
                 if (files_menu_dir.can_load) {
                     unowned List<unowned Files.File>? sorted_dirs = files_menu_dir.get_sorted_dirs ();
                     if (sorted_dirs != null) {
@@ -231,6 +231,7 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
             /* Completion text set by on_file_loaded () */
             current_completion_dir.init.begin (
                 on_file_loaded,
+                null,
                 (obj, res) => {
                     if (current_completion_dir.init.end (res)) {
                         var completion_menu = new Menu ();

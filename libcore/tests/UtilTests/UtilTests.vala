@@ -347,6 +347,64 @@ void add_file_utils_tests () {
         assert_false (result.contains (Files.FileUtils.COPY_TAG));
         assert_true (result.contains ("2"));
     });
+
+    Test.add_func ("/FileUtils/disambiguate_path/conflicting", () => {
+        var result = Files.FileUtils.disambiguate_uri (
+            "/A/B/folder",
+            "/A/C/folder"
+        );
+        assert (result == "B/folder");
+    });
+
+    Test.add_func ("/FileUtils/disambiguate_path/different_length", () => {
+        var result = Files.FileUtils.disambiguate_uri (
+            "/A/B/folder",
+            "X/A/B/folder"
+        );
+        assert (result == "/A/B/folder");
+
+        result = Files.FileUtils.disambiguate_uri (
+            "X/A/B/folder",
+            "/A/B/folder"
+        );
+        assert (result == "X/A/B/folder");
+    });
+
+    Test.add_func ("/FileUtils/disambiguate_path/not_conflicting", () => {
+        var result = Files.FileUtils.disambiguate_uri (
+            "/A/B/folder",
+            "/A/B/folder2"
+        );
+        assert (result == "folder");
+    });
+
+    Test.add_func ("/FileUtils/disambiguate_path/equivalent", () => {
+        var result = Files.FileUtils.disambiguate_uri (
+            "/A/B/folder",
+            "file:///A/B/folder"
+        );
+        assert (result == "folder");
+
+        result = Files.FileUtils.disambiguate_uri (
+            "file:///A/B/folder",
+             "/A/B/folder"
+        );
+        assert (result == "folder");
+    });
+
+    Test.add_func ("/FileUtils/disambiguate_path/different_scheme", () => {
+        var result = Files.FileUtils.disambiguate_uri (
+            "/A/B/folder",
+            "smb:///A/B/folder"
+        );
+        assert (result == "/A/B/folder");
+
+        result = Files.FileUtils.disambiguate_uri (
+            "smb:///A/B/folder",
+            "/A/B/folder"
+        );
+        assert (result == "smb:///A/B/folder");
+    });
 }
 
 int main (string[] args) {

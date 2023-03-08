@@ -52,10 +52,12 @@ public class Files.File : GLib.Object {
 
     public bool is_gone;
     public bool is_dummy { get; set construct; }
+    // The location is guaranteed non-null, but the parent directory may be null
     public GLib.File location { get; construct; }
+    public GLib.File? directory { get; construct; } /* parent directory location */
+
     public GLib.File target_location = null;
     public Files.File target_gof = null;
-    public GLib.File directory { get; construct; } /* parent directory location */
     public GLib.Icon? gicon { get; set; default = null; }
     public GLib.List<string>? emblems_list = null;
     public uint n_emblems = 0;
@@ -123,7 +125,7 @@ public class Files.File : GLib.Object {
 
         var parent = location.get_parent ();
         if (parent != null) {
-            unowned var dir = Files.Directory.cache_lookup (parent);
+            var dir = Files.Directory.cache_lookup (parent);
             if (dir != null) {
                 var file = dir.file_hash_lookup_location (location);
                 if (file != null) {
@@ -190,7 +192,7 @@ public class Files.File : GLib.Object {
         return null;
     }
 
-    public File (GLib.File location, GLib.File? dir = null) {
+    public File (GLib.File location, GLib.File? dir) {
         Object (
             location: location,
             uri: location.get_uri (),
@@ -208,7 +210,7 @@ public class Files.File : GLib.Object {
     construct {
         changed.connect (() => {
             if (directory != null) {
-                unowned var dir = Files.Directory.cache_lookup (directory);
+                var dir = Files.Directory.cache_lookup (directory);
                 if (dir != null && (!is_hidden ||
                     Files.Preferences.get_default ().show_hidden_files)
                 ) {

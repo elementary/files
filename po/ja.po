@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-14 09:55+0000\n"
-"PO-Revision-Date: 2022-12-26 20:25+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
+"PO-Revision-Date: 2023-03-07 13:25+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
 "\n"
@@ -37,36 +37,46 @@ msgstr "ファイルを読み取り専用で開く"
 msgid "Open File as Read Only"
 msgstr "ファイルを読み取り専用で開く"
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/FileChooserDialog.vala:376
+msgid "Enter new filename"
+msgstr "新しいファイル名を入力"
+
+#: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr "選択"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "開く"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr "保存"
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr "このファイルは “%s” へのリンクです"
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr "このファイルはリンクです。"
+
+#: filechooser-portal/Main.vala:454
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr ""
+"リンクを置き換えることで、リンク先の内容が上書きされます。リンク自体は変更さ"
+"れません"
+
+#: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
 msgstr "“%s” を置き換えますか？"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "このファイルを置き換えると、現在の内容が上書きされます"
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr "“%s” のリンク先を置き換えますか？"
-
-#: filechooser-portal/Main.vala:364
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
-msgstr "このリンク先のファイルを置き換えると、現在の内容が上書きされます。"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -177,7 +187,7 @@ msgstr "接続しています…"
 msgid "Please verify your user details."
 msgstr "ユーザー情報が正しいか確認してください。"
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "サーバーは制限時間内に応答しませんでした"
 
@@ -360,37 +370,37 @@ msgstr "\"%s\" 内に同じ名前のファイルがすでに存在していま�
 msgid "Merge"
 msgstr "統合"
 
-#: libcore/FileUtils.vala:89
+#: libcore/FileUtils.vala:83
 #, c-format
 msgid "Could not determine original location of \"%s\""
 msgstr "\"%s\" があった元の場所を特定できませんでした"
 
-#: libcore/FileUtils.vala:90
+#: libcore/FileUtils.vala:84
 msgid "The item cannot be restored from trash"
 msgstr "ゴミ箱から項目を復元できません"
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:178
 #, c-format
 msgid "The original folder %s no longer exists"
 msgstr "元のフォルダー %s はすでに存在しません"
 
-#: libcore/FileUtils.vala:185
+#: libcore/FileUtils.vala:179
 msgid "Would you like to recreate it?"
 msgstr "再作成しますか？"
 
-#: libcore/FileUtils.vala:190
+#: libcore/FileUtils.vala:184
 msgid "Ignore"
 msgstr "無視する"
 
-#: libcore/FileUtils.vala:191
+#: libcore/FileUtils.vala:185
 msgid "No files that were in this folder will be restored"
 msgstr "このフォルダー内にあったファイルは復元されません"
 
-#: libcore/FileUtils.vala:192
+#: libcore/FileUtils.vala:186
 msgid "Recreate"
 msgstr "再作成"
 
-#: libcore/FileUtils.vala:194
+#: libcore/FileUtils.vala:188
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
@@ -398,43 +408,43 @@ msgstr ""
 "フォルダーは再作成され、選択中のファイルは元々あったそのフォルダー内に復元さ"
 "れます"
 
-#: libcore/FileUtils.vala:207
+#: libcore/FileUtils.vala:201
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
 "フォルダー %s を再作成できませんでした。このフォルダー内のすべてのファイルを"
 "無視します"
 
-#: libcore/FileUtils.vala:579
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "'%s' へ名前を変更できません"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:670
+#: libcore/FileUtils.vala:658
 #, c-format
 msgid "Today at %s"
 msgstr "今日の%s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:678
+#: libcore/FileUtils.vala:666
 #, c-format
 msgid "Yesterday at %s"
 msgstr "昨日の%s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:686
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr "%%Aの%s"
 
-#: libcore/FileUtils.vala:1028
+#: libcore/FileUtils.vala:1016
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d秒"
 
-#: libcore/FileUtils.vala:1032 libcore/FileUtils.vala:1040
+#: libcore/FileUtils.vala:1020 libcore/FileUtils.vala:1028
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -442,40 +452,40 @@ msgstr[0] "%'d分"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:1039 src/Dialogs/PropertiesWindow.vala:1242
+#: libcore/FileUtils.vala:1027 src/Dialogs/PropertiesWindow.vala:1242
 #, c-format
 msgid "%s, %s"
 msgstr "%s、%s"
 
-#: libcore/FileUtils.vala:1039
+#: libcore/FileUtils.vala:1027
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d時間"
 
-#: libcore/FileUtils.vala:1043
+#: libcore/FileUtils.vala:1031
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "約%'d時間"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1051
+#: libcore/FileUtils.vala:1039
 msgid "copy"
 msgstr "コピー"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1053
+#: libcore/FileUtils.vala:1041
 msgid "link"
 msgstr "リンク"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1055
+#: libcore/FileUtils.vala:1043
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1057
+#: libcore/FileUtils.vala:1045
 msgid ")"
 msgstr ")"
 
@@ -1158,11 +1168,123 @@ msgstr "強制的にコピー(_A)"
 msgid "Empty _Trash"
 msgstr "ゴミ箱を空にする(_T)"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+msgid "Undo Copy"
+msgstr "“コピー”を元に戻す"
+
+#: libcore/UndoManager.vala:24
+msgid "Undo Duplicate"
+msgstr "“複製”を元に戻す"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr "“移動”を元に戻す"
+
+#: libcore/UndoManager.vala:28
+msgid "Undo Rename"
+msgstr "“名前を変更”を元に戻す"
+
+#: libcore/UndoManager.vala:30
+msgid "Undo Create Empty File"
+msgstr "“空ファイルを作成”を元に戻す"
+
+#: libcore/UndoManager.vala:32
+msgid "Undo Create File from Template"
+msgstr "“テンプレートからファイルを作成”を元に戻す"
+
+#: libcore/UndoManager.vala:34
+msgid "Undo Create Folder"
+msgstr "“フォルダーを作成”を元に戻す"
+
+#: libcore/UndoManager.vala:36
+msgid "Undo Move to Trash"
+msgstr "“ゴミ箱に移動”を元に戻す"
+
+#: libcore/UndoManager.vala:38
+msgid "Undo Create Link"
+msgstr "“リンクを作成”を元に戻す"
+
+#: libcore/UndoManager.vala:40
+msgid "Undo Restore from Trash"
+msgstr "“ゴミ箱から復元”を元に戻す"
+
+#: libcore/UndoManager.vala:42
+msgid "Undo Set Permissions"
+msgstr "“権限を設定”を元に戻す"
+
+#: libcore/UndoManager.vala:44
+msgid "Undo Set Permissions Recursively"
+msgstr "“再帰的に権限を設定”を元に戻す"
+
+#: libcore/UndoManager.vala:46
+msgid "Undo Change Owner"
+msgstr "“所有者を変更”を元に戻す"
+
+#: libcore/UndoManager.vala:48
+msgid "Undo Change Group"
+msgstr "“グループを変更”を元に戻す"
+
+#: libcore/UndoManager.vala:57
+msgid "Redo Copy"
+msgstr "“コピー”をやり直す"
+
+#: libcore/UndoManager.vala:59
+msgid "Redo Duplicate"
+msgstr "“タブを複製”をやり直す"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr "“移動”をやり直す"
+
+#: libcore/UndoManager.vala:63
+msgid "Redo Rename"
+msgstr "“名前を変更”をやり直す"
+
+#: libcore/UndoManager.vala:65
+msgid "Redo Create Empty File"
+msgstr "“空ファイルを作成”をやり直す"
+
+#: libcore/UndoManager.vala:67
+msgid "Redo Create File from Template"
+msgstr "“テンプレートからファイルを作成”をやり直す"
+
+#: libcore/UndoManager.vala:69
+msgid "Redo Create Folder"
+msgstr "“フォルダーを作成”をやり直す"
+
+#: libcore/UndoManager.vala:71
+msgid "Redo Move to Trash"
+msgstr "“ゴミ箱に移動”をやり直す"
+
+#: libcore/UndoManager.vala:73
+msgid "Redo Create Link"
+msgstr "“リンクを作成”をやり直す"
+
+#: libcore/UndoManager.vala:75
+msgid "Redo Restore from Trash"
+msgstr "“ゴミ箱から復元”をやり直す"
+
+#: libcore/UndoManager.vala:77
+msgid "Redo Set Permissions"
+msgstr "“権限を設定”をやり直す"
+
+#: libcore/UndoManager.vala:79
+msgid "Redo Set Permissions Recursively"
+msgstr "“再帰的に権限を設定”をやり直す"
+
+#: libcore/UndoManager.vala:81
+msgid "Redo Change Owner"
+msgstr "“所有者を変更”をやり直す"
+
+#: libcore/UndoManager.vala:83
+msgid "Redo Change Group"
+msgstr "“グループを変更”をやり直す"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "元の場所が判別できませんでした"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "ゴミ箱フォルダーを開いて、手動で復元してください"
 
@@ -1627,7 +1749,7 @@ msgid "Invalid file name provided"
 msgstr "不適切なファイル名が入力されました"
 
 #: src/View/AbstractDirectoryView.vala:1898
-#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:182
+#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "新しいタブ"
 
@@ -1645,7 +1767,7 @@ msgid "Open in"
 msgstr "指定した方法で開く"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "このアプリケーションで開く"
 
@@ -1698,108 +1820,92 @@ msgstr "名前を変更…"
 msgid "Copy as Link"
 msgstr "リンクとしてコピー"
 
-#: src/View/AbstractDirectoryView.vala:2179
-#: src/View/AbstractDirectoryView.vala:2278
+#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2262
 msgid "Paste Link into Folder"
 msgstr "フォルダーの中にリンクを貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2184
-#: src/View/AbstractDirectoryView.vala:2252
+#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2239
 msgid "Paste into Folder"
 msgstr "フォルダーの中に貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2194
-#: src/View/AbstractDirectoryView.vala:2283
+#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "Paste"
 msgstr "貼り付け"
 
-#: src/View/AbstractDirectoryView.vala:2235
-msgid "Show Hidden Files"
-msgstr "隠しファイルを表示"
-
-#: src/View/AbstractDirectoryView.vala:2240
-msgid "Show Remote Thumbnails"
-msgstr "リモートのサムネイルを表示"
-
-#: src/View/AbstractDirectoryView.vala:2243
-msgid "Hide Thumbnails"
-msgstr "サムネイルを非表示"
-
-#: src/View/AbstractDirectoryView.vala:2246
-msgid "Select Folders with Single Click"
-msgstr "シングルクリックでフォルダーを選択"
-
-#: src/View/AbstractDirectoryView.vala:2343
+#: src/View/AbstractDirectoryView.vala:2317
 msgid "Name"
 msgstr "ファイル名"
 
-#: src/View/AbstractDirectoryView.vala:2348 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2322 src/View/ListView.vala:27
 msgid "Size"
 msgstr "サイズ"
 
-#: src/View/AbstractDirectoryView.vala:2353 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2327 src/View/ListView.vala:28
 msgid "Type"
 msgstr "形式"
 
-#: src/View/AbstractDirectoryView.vala:2358
+#: src/View/AbstractDirectoryView.vala:2332
 msgid "Date"
 msgstr "日付"
 
-#: src/View/AbstractDirectoryView.vala:2363
+#: src/View/AbstractDirectoryView.vala:2337
 msgid "Reversed Order"
 msgstr "逆順"
 
-#: src/View/AbstractDirectoryView.vala:2366
+#: src/View/AbstractDirectoryView.vala:2340
 msgid "Folders Before Files"
 msgstr "ファイルの前にフォルダーを表示"
 
-#: src/View/AbstractDirectoryView.vala:2378
+#: src/View/AbstractDirectoryView.vala:2352
 msgid "Sort by"
 msgstr "並べ替え"
 
-#: src/View/AbstractDirectoryView.vala:2386
+#: src/View/AbstractDirectoryView.vala:2360
 msgid "Folder"
 msgstr "フォルダー"
 
-#: src/View/AbstractDirectoryView.vala:2392
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Empty File"
-msgstr "空のファイル"
+msgstr "空ファイル"
 
-#: src/View/AbstractDirectoryView.vala:2443
+#: src/View/AbstractDirectoryView.vala:2417
 msgid "New"
 msgstr "新規作成"
 
-#: src/View/AbstractDirectoryView.vala:2686
+#: src/View/AbstractDirectoryView.vala:2660
 #, c-format
 msgid "Untitled %s"
 msgstr "名称未設定 %s"
 
-#: src/View/AbstractDirectoryView.vala:3004
-#: src/View/AbstractDirectoryView.vala:3197
+#: src/View/AbstractDirectoryView.vala:2978
+#: src/View/AbstractDirectoryView.vala:3171
 msgid "Cannot remove files from here"
 msgstr "ここからファイルを移動できません"
 
-#: src/View/AbstractDirectoryView.vala:3005
-#: src/View/AbstractDirectoryView.vala:3170
-#: src/View/AbstractDirectoryView.vala:3181
-#: src/View/AbstractDirectoryView.vala:3198
+#: src/View/AbstractDirectoryView.vala:2979
+#: src/View/AbstractDirectoryView.vala:3144
+#: src/View/AbstractDirectoryView.vala:3155
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "You do not have permission to change this location"
 msgstr "この場所を変更する権限がありません"
 
-#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3112
 msgid "Cannot copy files that are in the trash"
 msgstr "ゴミ箱内のファイルをコピーできません"
 
-#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3113
 msgid "Cutting the selection instead"
 msgstr "代わりに選択項目を切り取る"
 
-#: src/View/AbstractDirectoryView.vala:3169
-#: src/View/AbstractDirectoryView.vala:3180
+#: src/View/AbstractDirectoryView.vala:3143
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cannot paste files here"
 msgstr "ここにファイルを貼り付けできません"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:391
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
 msgid "This Folder Does Not Exist"
 msgstr "このフォルダーは存在しません"
 
@@ -1861,79 +1967,79 @@ msgstr "最近使用したファイルはありません"
 msgid "Access Denied"
 msgstr "アクセスが拒否されました"
 
-#: src/View/ViewContainer.vala:370 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:368 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "ホーム"
 
-#: src/View/ViewContainer.vala:392
+#: src/View/ViewContainer.vala:389
 msgid "You cannot create a folder here."
 msgstr "ここにフォルダーを作成できません。"
 
-#: src/View/ViewContainer.vala:395
+#: src/View/ViewContainer.vala:392
 msgid "The network is unavailable"
 msgstr "ネットワークが利用できません"
 
-#: src/View/ViewContainer.vala:396
+#: src/View/ViewContainer.vala:393
 msgid "A working network is needed to reach this folder"
 msgstr "このフォルダーに到達するためにはネットワークが必要です"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Belong to You"
 msgstr "このフォルダーはあなたのものではありません"
 
-#: src/View/ViewContainer.vala:400
+#: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr "このフォルダーを読み込む権限がありません。"
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
 msgstr "フォルダーのマウントができません"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:400
 msgid "Could not connect to the server for this folder."
 msgstr "このフォルダーのサーバーに接続できませんでした。"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:403
 msgid "Unable to Display Folder Contents"
 msgstr "フォルダーの内容を表示できません"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:404
 msgid "The operation timed out."
 msgstr "処理がタイムアウトしました。"
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Show Folder"
 msgstr "フォルダーを表示できません"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:407
 msgid "The server for this folder could not be located."
 msgstr "このフォルダーのサーバーが見つかりませんでした。"
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:418
 msgid "File not Found"
 msgstr "ファイルが見つかりませんでした"
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:419
 msgid "The file selected no longer exists."
 msgstr "選択されたファイルは存在しません。"
 
-#: src/View/Window.vala:183
+#: src/View/Window.vala:184
 msgid "Undo Close Tab"
 msgstr "閉じたタブを再度開く"
 
-#: src/View/Window.vala:494
+#: src/View/Window.vala:497
 msgid "Close Tab"
 msgstr "タブを閉じる"
 
-#: src/View/Window.vala:495
+#: src/View/Window.vala:498
 msgid "Duplicate Tab"
 msgstr "タブを複製"
 
-#: src/View/Window.vala:496 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "新しいウィンドウで開く"
 
-#: src/View/Window.vala:609 src/View/Window.vala:619
+#: src/View/Window.vala:612 src/View/Window.vala:622
 msgid "(as Administrator)"
 msgstr "(管理者)"
 
@@ -2037,30 +2143,86 @@ msgstr "ネットワーク経由で利用可能なデバイスと場所"
 msgid "Connect Server…"
 msgstr "サーバーを接続…"
 
+#: src/View/Sidebar/VolumeRow.vala:166
+msgid "Mount"
+msgstr "マウント"
+
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
 msgstr "バインドマウント"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "検索するかパスを入力してください"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "新しいタブで開く"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "ほかのアプリケーションで開く…"
 
-#: src/View/Widgets/HeaderBar.vala:66
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "前へ戻る"
 
-#: src/View/Widgets/HeaderBar.vala:73
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "次へ進む"
+
+#: src/View/Widgets/HeaderBar.vala:97
+msgid "Zoom Out"
+msgstr "縮小"
+
+#: src/View/Widgets/HeaderBar.vala:106
+msgid "Zoom 1:1"
+msgstr "100 % 表示"
+
+#: src/View/Widgets/HeaderBar.vala:115
+msgid "Zoom In"
+msgstr "拡大"
+
+#: src/View/Widgets/HeaderBar.vala:154
+msgid "Double-click to Navigate"
+msgstr "ダブルクリックで開く"
+
+#: src/View/Widgets/HeaderBar.vala:155
+msgid "Double-click on a folder opens it, single-click selects it"
+msgstr "フォルダーアイコンをダブルクリックで開き、シングルクリックで選択します"
+
+#: src/View/Widgets/HeaderBar.vala:160
+msgid "Sort Folders before Files"
+msgstr "ファイルの前にフォルダーを表示"
+
+#: src/View/Widgets/HeaderBar.vala:164
+msgid "Show in View"
+msgstr "ビューに表示する項目"
+
+#: src/View/Widgets/HeaderBar.vala:171
+msgid "Hidden Files"
+msgstr "隠しファイル"
+
+#: src/View/Widgets/HeaderBar.vala:175
+msgid "Local Thumbnails"
+msgstr "ローカルファイルのサムネイル"
+
+#: src/View/Widgets/HeaderBar.vala:180
+msgid "Remote Thumbnails"
+msgstr "リモートファイルのサムネイル"
+
+#: src/View/Widgets/HeaderBar.vala:208
+msgid "Menu"
+msgstr "メニュー"
+
+#: src/View/Widgets/HeaderBar.vala:283
+msgid "No operation to undo"
+msgstr "元に戻せる操作がありません"
+
+#: src/View/Widgets/HeaderBar.vala:290
+msgid "No operation to redo"
+msgstr "やり直せる操作がありません"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2150,8 +2312,23 @@ msgstr "このフォルダー以下"
 msgid "Recently Used"
 msgstr "最近使用した項目"
 
-#~ msgid "Setting permissions"
-#~ msgstr "権限を設定しています"
+#, c-format
+#~ msgid "Replace the target of “%s”?"
+#~ msgstr "“%s” のリンク先を置き換えますか？"
+
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr "このリンク先のファイルを置き換えると、現在の内容が上書きされます。"
+
+#~ msgid "Undo Last File Operation"
+#~ msgstr "最後のファイル操作を元に戻す"
+
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "最後のファイル操作をやり直す"
+
+#~ msgid "Select Folders with Single Click"
+#~ msgstr "シングルクリックでフォルダーを選択"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2379,16 +2556,6 @@ msgstr "最近使用した項目"
 #~ msgid_plural "_Undo rename of %d items"
 #~ msgstr[0] "%d 個の項目の名前の変更を元に戻す(_U)"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "空のファイルの作成を元に戻す(_U)"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "テンプレートからのファイルの作成を元に戻す(_U)"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "%d 個のフォルダーの作成を元に戻す(_U)"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "%d 個の項目のゴミ箱への移動を元に戻す(_U)"
@@ -2397,10 +2564,6 @@ msgstr "最近使用した項目"
 #~ msgid_plural "_Undo restore from trash of %d items"
 #~ msgstr[0] "%d 個の項目のゴミ箱からの復元を元に戻す(_U)"
 
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "%d 個へのリンクの作成を元に戻す(_U)"
-
 #~ msgid "_Undo delete of %d item"
 #~ msgid_plural "_Undo delete of %d items"
 #~ msgstr[0] "%d 個の項目の削除を元に戻す(_U)"
@@ -2408,18 +2571,6 @@ msgstr "最近使用した項目"
 #~ msgid "Undo recursive change permissions of %d item"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "%d 個の項目の再帰的な権限の変更を元に戻す"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "%d 個の項目の権限の変更を元に戻す"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "%d 個の項目のグループ変更を元に戻す"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "%d 個の項目の所有者変更を元に戻す"
 
 #~ msgid "_Redo copy of %d item"
 #~ msgid_plural "_Redo copy of %d items"
@@ -2437,12 +2588,6 @@ msgstr "最近使用した項目"
 #~ msgid_plural "_Redo rename of %d items"
 #~ msgstr[0] "%d 個の項目の名前の変更をやり直す(_R)"
 
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "空のファイルの作成をやり直す(_R)"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "テンプレートからのファイル作成をやり直す(_R)"
-
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "%d 個のフォルダーの作成をやり直す(_R)"
@@ -2455,10 +2600,6 @@ msgstr "最近使用した項目"
 #~ msgid_plural "_Redo restore from trash of %d items"
 #~ msgstr[0] "%d 個の項目のゴミ箱からの復元をやり直す(_R)"
 
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "%d 個の項目へのリンク作成をやり直す(_R)"
-
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "%d 個の項目の削除をやり直す(_R)"
@@ -2466,18 +2607,6 @@ msgstr "最近使用した項目"
 #~ msgid "Redo recursive change permissions of %d item"
 #~ msgid_plural "Redo recursive change permissions of %d items"
 #~ msgstr[0] "%d 個の項目の再帰的な権限の変更をやり直す"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "%d 個の項目の権限の変更をやり直す"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "%d 個の項目のグループ変更をやり直す"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "%d 個の項目の所有者変更をやり直す"
 
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"
 #~ msgstr "\"%s\" を完全に削除してもよろしいですか？"

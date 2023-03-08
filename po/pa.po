@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-14 09:55+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2021-08-16 13:30+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/files/pa/"
@@ -37,42 +37,52 @@ msgstr ""
 msgid "Open File as Read Only"
 msgstr ""
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/FileChooserDialog.vala:376
+#, fuzzy
+#| msgid "new file"
+msgid "Enter new filename"
+msgstr "ਨਵੀਂ ਫ਼ਾਇਲ"
+
+#: filechooser-portal/Main.vala:107
 #, fuzzy
 #| msgid " selected"
 msgid "Select"
 msgstr " ਚੁਨਿੰਦਾ"
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "ਖੋਲ੍ਹੋ"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr ""
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "ਵਟਾਉਣ ਨਾਲ਼ ਇਸਦੀ ਸਮੱਗਰੀ ਵੀ ਬਦਲ ਜਾਵੇਗੀ।"
+
+#: filechooser-portal/Main.vala:456
 #, fuzzy, c-format
 #| msgid "Replace file \"%s\"?"
 msgid "Replace “%s”?"
 msgstr "\"%s\" ਫ਼ਾਇਲ ਨੂੰ ਵਟਾਉਣਾ ਹੈ?"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 #, fuzzy
 #| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "ਵਟਾਉਣ ਨਾਲ਼ ਇਸਦੀ ਸਮੱਗਰੀ ਵੀ ਬਦਲ ਜਾਵੇਗੀ।"
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr ""
-
-#: filechooser-portal/Main.vala:364
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
 msgstr "ਵਟਾਉਣ ਨਾਲ਼ ਇਸਦੀ ਸਮੱਗਰੀ ਵੀ ਬਦਲ ਜਾਵੇਗੀ।"
 
 #: libcore/ConnectServerDialog.vala:46
@@ -184,7 +194,7 @@ msgstr "ਜੁਡ਼ ਰਿਹੈ…"
 msgid "Please verify your user details."
 msgstr "ਮਿਹਰਬਾਨੀ ਕਰਕੇ ਵਰਤੋਂਕਾਰ ਵੇਰਵਾ ਤਸਦੀਕ ਕਰੋ।"
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr "ਸਰਵਰ ਨੇ ਸਮਾਂ-ਹੱਦ ਅੰਦਰ ਜਵਾਬ ਨਹੀਂ ਦਿੱਤਾ"
 
@@ -379,80 +389,80 @@ msgstr "\"%s\" ਵਿੱਚ ਪਹਿਲਾਂ ਹੀ ਇਸ ਨਾਂ ਦੀ �
 msgid "Merge"
 msgstr "ਰਲ਼ਾਓ"
 
-#: libcore/FileUtils.vala:89
+#: libcore/FileUtils.vala:83
 #, fuzzy, c-format
 #| msgid "Could not determine original location of \"%s\" "
 msgid "Could not determine original location of \"%s\""
 msgstr "\"%s\" ਦਾ ਅਸਲੀ ਟਿਕਾਣਾ ਪਤਾ ਨਹੀਂ ਲੱਗ ਸਕਿਆ "
 
-#: libcore/FileUtils.vala:90
+#: libcore/FileUtils.vala:84
 msgid "The item cannot be restored from trash"
 msgstr "ਇਹ ਨਗ ਕੂੜੇਦਾਨ 'ਚੋਂ ਰੀਸਟੋਰ ਨਹੀਂ ਹੋ ਸਕਦਾ"
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:178
 #, c-format
 msgid "The original folder %s no longer exists"
 msgstr "ਅਸਲੀ ਫ਼ੋਲਡਰ %s ਹੁਣ ਮੌਜੂਦ ਨਹੀਂ ਹੈ"
 
-#: libcore/FileUtils.vala:185
+#: libcore/FileUtils.vala:179
 msgid "Would you like to recreate it?"
 msgstr "ਕੀ ਤੁਸੀਂ ਇਸਨੂੰ ਦੁਬਾਰਾ ਬਣਾਉਣਾ ਚਾਹੋਗੇ?"
 
-#: libcore/FileUtils.vala:190
+#: libcore/FileUtils.vala:184
 msgid "Ignore"
 msgstr "ਨਜ਼ਰਅੰਦਾਜ਼ ਕਰੋ"
 
-#: libcore/FileUtils.vala:191
+#: libcore/FileUtils.vala:185
 msgid "No files that were in this folder will be restored"
 msgstr "ਇਸ ਫ਼ੋਲਡਰ ਦੀਆਂ ਕੋਈ ਵੀ ਫ਼ਾਇਲਾਂ ਰੀਸਟੋਰ ਨਹੀਂ ਕੀਤੀਆਂ ਜਾਣਗੀਆਂ"
 
-#: libcore/FileUtils.vala:192
+#: libcore/FileUtils.vala:186
 msgid "Recreate"
 msgstr "ਦੁਬਾਰਾ ਬਣਾਓ"
 
-#: libcore/FileUtils.vala:194
+#: libcore/FileUtils.vala:188
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
 "ਫ਼ੋਲਡਰ ਦੁਬਾਰਾ ਬਣਾਇਆ ਜਾਵੇਗਾ ਅਤੇ ਚੁਣੀਆਂ ਫ਼ਾਇਲਾਂ, ਜਿਹੜੀਆਂ ਅਸਲ 'ਚ ਉੱਥੇ ਸਨ, ਰੀਸਟੋਰ ਕੀਤੀਆਂ ਜਾਣਗੀਆਂ"
 
-#: libcore/FileUtils.vala:207
+#: libcore/FileUtils.vala:201
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr "%s ਫ਼ੋਲਡਰ ਬਣਾਇਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਇਸਦੀਆਂ ਸਾਰੀਆਂ ਫ਼ਾਇਲਾਂ ਵੀ ਨਜ਼ਰਅੰਦਾਜ਼ ਕੀਤੀਆਂ ਜਾਣਗੀਆਂ"
 
-#: libcore/FileUtils.vala:579
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "ਨਾਂ ਬਦਲ ਕੇ '%s' ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:670
+#: libcore/FileUtils.vala:658
 #, c-format
 msgid "Today at %s"
 msgstr "ਅੱਜ %s 'ਤੇ (ਵਜੇ)"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:678
+#: libcore/FileUtils.vala:666
 #, c-format
 msgid "Yesterday at %s"
 msgstr "ਕੱਲ੍ਹ %s 'ਤੇ (ਵਜੇ)"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:686
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A ਨੂੰ %s 'ਤੇ (ਵਜੇ)"
 
-#: libcore/FileUtils.vala:1028
+#: libcore/FileUtils.vala:1016
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d ਸਕਿੰਟ"
 msgstr[1] "%'d ਸਕਿੰਟ"
 
-#: libcore/FileUtils.vala:1032 libcore/FileUtils.vala:1040
+#: libcore/FileUtils.vala:1020 libcore/FileUtils.vala:1028
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -461,19 +471,19 @@ msgstr[1] "%'d ਮਿੰਟ"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:1039 src/Dialogs/PropertiesWindow.vala:1242
+#: libcore/FileUtils.vala:1027 src/Dialogs/PropertiesWindow.vala:1242
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:1039
+#: libcore/FileUtils.vala:1027
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d ਘੰਟਾ"
 msgstr[1] "%'d ਘੰਟੇ"
 
-#: libcore/FileUtils.vala:1043
+#: libcore/FileUtils.vala:1031
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -481,22 +491,22 @@ msgstr[0] "ਕਰੀਬ %'d ਘੰਟਾ"
 msgstr[1] "ਕਰੀਬ %'d ਘੰਟੇ"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1051
+#: libcore/FileUtils.vala:1039
 msgid "copy"
 msgstr "ਨਕਲ"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1053
+#: libcore/FileUtils.vala:1041
 msgid "link"
 msgstr "ਲਿੰਕ"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1055
+#: libcore/FileUtils.vala:1043
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1057
+#: libcore/FileUtils.vala:1045
 msgid ")"
 msgstr ")"
 
@@ -1203,11 +1213,163 @@ msgstr "ਫਿਰ ਵੀ ਨਕਲ ਕਰ ਦਿਓ"
 msgid "Empty _Trash"
 msgstr "ਕੂੜਾਦਾਨ ਖ਼ਾਲੀ ਕਰੋ"
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+#, fuzzy
+#| msgid "Copy"
+msgid "Undo Copy"
+msgstr "ਨਕਲ ਕਰੋ"
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Undo Duplicate"
+msgstr "\"%s\" ਨੂੰ ਡੁਪਲੀਕੇਟ ਕਰ ਰਿਹੈ"
+
+#: libcore/UndoManager.vala:26
+#, fuzzy
+#| msgid "Undo Close Tab"
+msgid "Undo Move"
+msgstr "ਬੰਦ ਕੀਤੀ ਟੈਬ ਦੁਬਾਰਾ ਖੋਲ੍ਹੋ"
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "ਨਾਂ ਬਦਲੋ"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "Empty File"
+msgid "Undo Create Empty File"
+msgstr "ਖ਼ਾਲੀ ਫ਼ਾਇਲ"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "Cannot remove files from here"
+msgid "Undo Create File from Template"
+msgstr "ਫ਼ਾਇਲਾਂ ਨੂੰ ਇੱਥੋਂ ਹਟਾਇਆ ਨਹੀਂ ਜਾ ਸਕਦਾ"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "Open Parent Folder"
+msgid "Undo Create Folder"
+msgstr "ਵਾਲਿਦ ਫ਼ੋਲਡਰ ਖੋਲ੍ਹੋ"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "ਰੱਦੀ ਟੋਕਰੀ 'ਚ ਸੁੱਟੋ"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+#| msgid "Paste Link"
+msgid "Undo Create Link"
+msgstr "ਲਿੰਕ ਪੇਸਟ ਕਰੋ"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Undo Restore from Trash"
+msgstr "ਰੱਦੀ ਟੋਕਰੀ ਤੋਂ ਵਾਪਸ ਲਿਆਓ"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Undo Set Permissions"
+msgstr "ਸੈਟਿੰਗ ਇਜਾਜ਼ਤਾਂ"
+
+#: libcore/UndoManager.vala:44
+msgid "Undo Set Permissions Recursively"
+msgstr ""
+
+#: libcore/UndoManager.vala:46
+msgid "Undo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:48
+msgid "Undo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:57
+#, fuzzy
+#| msgid "Copy"
+msgid "Redo Copy"
+msgstr "ਨਕਲ ਕਰੋ"
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+#| msgid "Duplicating \"%s\""
+msgid "Redo Duplicate"
+msgstr "\"%s\" ਨੂੰ ਡੁਪਲੀਕੇਟ ਕਰ ਰਿਹੈ"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "ਨਾਂ ਬਦਲੋ"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+#| msgid "Empty File"
+msgid "Redo Create Empty File"
+msgstr "ਖ਼ਾਲੀ ਫ਼ਾਇਲ"
+
+#: libcore/UndoManager.vala:67
+msgid "Redo Create File from Template"
+msgstr ""
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+#| msgid "Failed to create the folder"
+msgid "Redo Create Folder"
+msgstr "ਫ਼ੋਲਡਰ ਬਣਾਉਣਾ ਨਾਕਾਮ ਰਿਹਾ"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "ਰੱਦੀ ਟੋਕਰੀ 'ਚ ਸੁੱਟੋ"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+#| msgid "Paste Link"
+msgid "Redo Create Link"
+msgstr "ਲਿੰਕ ਪੇਸਟ ਕਰੋ"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+#| msgid "Restore from Trash"
+msgid "Redo Restore from Trash"
+msgstr "ਰੱਦੀ ਟੋਕਰੀ ਤੋਂ ਵਾਪਸ ਲਿਆਓ"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+#| msgid "Setting permissions"
+msgid "Redo Set Permissions"
+msgstr "ਸੈਟਿੰਗ ਇਜਾਜ਼ਤਾਂ"
+
+#: libcore/UndoManager.vala:79
+msgid "Redo Set Permissions Recursively"
+msgstr ""
+
+#: libcore/UndoManager.vala:81
+msgid "Redo Change Owner"
+msgstr ""
+
+#: libcore/UndoManager.vala:83
+msgid "Redo Change Group"
+msgstr ""
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "ਅਸਲੀ ਟਿਕਾਣੇ ਦਾ ਪਤਾ ਨਹੀਂ ਲੱਗ ਸਕਿਆ"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "ਕੂੜਾਦਾਨ ਖੋਲ੍ਹੋ ਅਤੇ ਹੱਥੀਂ ਰੀਸਟੋਰ ਕਰੋ"
 
@@ -1685,7 +1847,7 @@ msgid "Invalid file name provided"
 msgstr "ਦਿੱਤਾ ਗਿਆ ਫ਼ਾਇਲ ਦਾ ਨਾਂ ਜਾਇਜ਼ ਨਹੀਂ ਹੈ"
 
 #: src/View/AbstractDirectoryView.vala:1898
-#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:182
+#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "ਨਵੀਂ ਟੈਬ"
 
@@ -1703,7 +1865,7 @@ msgid "Open in"
 msgstr "ਇਸ ਵਿੱਚ ਖੋਲ੍ਹੋ"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "ਇਸ ਨਾਲ਼ ਖੋਲ੍ਹੋ"
 
@@ -1758,108 +1920,92 @@ msgstr "ਨਾਂ ਬਦਲੋ…"
 msgid "Copy as Link"
 msgstr "ਬਤੌਰ ਲਿੰਕ ਨਕਲ ਕਰੋ"
 
-#: src/View/AbstractDirectoryView.vala:2179
-#: src/View/AbstractDirectoryView.vala:2278
+#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2262
 msgid "Paste Link into Folder"
 msgstr "ਲਿੰਕ ਨੂੰ ਫ਼ੋਲਡਰ 'ਚ ਪੇਸਟ ਕਰੋ"
 
-#: src/View/AbstractDirectoryView.vala:2184
-#: src/View/AbstractDirectoryView.vala:2252
+#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2239
 msgid "Paste into Folder"
 msgstr "ਫ਼ੋਲਡਰ 'ਚ ਪੇਸਟ ਕਰੋ"
 
-#: src/View/AbstractDirectoryView.vala:2194
-#: src/View/AbstractDirectoryView.vala:2283
+#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "Paste"
 msgstr "ਪੇਸਟ ਕਰੋ"
 
-#: src/View/AbstractDirectoryView.vala:2235
-msgid "Show Hidden Files"
-msgstr "ਲੁਕੀਆਂ ਫ਼ਾਇਲਾਂ ਵਿਖਾਓ"
-
-#: src/View/AbstractDirectoryView.vala:2240
-msgid "Show Remote Thumbnails"
-msgstr "ਰਿਮੋਟ ਥਮਨੇਲ ਵਿਖਾਓ"
-
-#: src/View/AbstractDirectoryView.vala:2243
-msgid "Hide Thumbnails"
-msgstr "ਥਮਨੇਲ ਲੁਕਾਓ"
-
-#: src/View/AbstractDirectoryView.vala:2246
-msgid "Select Folders with Single Click"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2343
+#: src/View/AbstractDirectoryView.vala:2317
 msgid "Name"
 msgstr "ਨਾਂ"
 
-#: src/View/AbstractDirectoryView.vala:2348 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2322 src/View/ListView.vala:27
 msgid "Size"
 msgstr "ਸਾਈਜ਼"
 
-#: src/View/AbstractDirectoryView.vala:2353 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2327 src/View/ListView.vala:28
 msgid "Type"
 msgstr "ਕਿਸਮ"
 
-#: src/View/AbstractDirectoryView.vala:2358
+#: src/View/AbstractDirectoryView.vala:2332
 msgid "Date"
 msgstr "ਮਿਤੀ"
 
-#: src/View/AbstractDirectoryView.vala:2363
+#: src/View/AbstractDirectoryView.vala:2337
 msgid "Reversed Order"
 msgstr "ਉਲਟਾਈ ਤਰਤੀਬ"
 
-#: src/View/AbstractDirectoryView.vala:2366
+#: src/View/AbstractDirectoryView.vala:2340
 msgid "Folders Before Files"
 msgstr "ਫ਼ਾਇਲਾਂ ਤੋਂ ਪਹਿਲਾਂ ਫ਼ੋਲਡਰ"
 
-#: src/View/AbstractDirectoryView.vala:2378
+#: src/View/AbstractDirectoryView.vala:2352
 msgid "Sort by"
 msgstr "ਤਰਤੀਬ ਮੁਤਾਬਕ"
 
-#: src/View/AbstractDirectoryView.vala:2386
+#: src/View/AbstractDirectoryView.vala:2360
 msgid "Folder"
 msgstr "ਫ਼ੋਲਡਰ"
 
-#: src/View/AbstractDirectoryView.vala:2392
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Empty File"
 msgstr "ਖ਼ਾਲੀ ਫ਼ਾਇਲ"
 
-#: src/View/AbstractDirectoryView.vala:2443
+#: src/View/AbstractDirectoryView.vala:2417
 msgid "New"
 msgstr "ਨਵਾਂ/ਨਵੀਂ"
 
-#: src/View/AbstractDirectoryView.vala:2686
+#: src/View/AbstractDirectoryView.vala:2660
 #, c-format
 msgid "Untitled %s"
 msgstr "ਬੇਨਾਮ %s"
 
-#: src/View/AbstractDirectoryView.vala:3004
-#: src/View/AbstractDirectoryView.vala:3197
+#: src/View/AbstractDirectoryView.vala:2978
+#: src/View/AbstractDirectoryView.vala:3171
 msgid "Cannot remove files from here"
 msgstr "ਫ਼ਾਇਲਾਂ ਨੂੰ ਇੱਥੋਂ ਹਟਾਇਆ ਨਹੀਂ ਜਾ ਸਕਦਾ"
 
-#: src/View/AbstractDirectoryView.vala:3005
-#: src/View/AbstractDirectoryView.vala:3170
-#: src/View/AbstractDirectoryView.vala:3181
-#: src/View/AbstractDirectoryView.vala:3198
+#: src/View/AbstractDirectoryView.vala:2979
+#: src/View/AbstractDirectoryView.vala:3144
+#: src/View/AbstractDirectoryView.vala:3155
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "You do not have permission to change this location"
 msgstr "ਤੁਹਾਡੇ ਕੋਲ਼ ਇਹ ਟਿਕਾਣਾ ਬਦਲਣ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ"
 
-#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3112
 msgid "Cannot copy files that are in the trash"
 msgstr "ਰੱਦੀ ਟੋਕਰੀ ਵਿਚਲੀਆਂ ਫ਼ਾਇਲਾਂ ਨਕਲ ਨਹੀਂ ਕਰ ਸਕਦੇ"
 
-#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3113
 msgid "Cutting the selection instead"
 msgstr "ਇਸਦੀ ਬਜਾਇ ਚੋਣ ਨੂੰ ਕੱਟਿਆ ਜਾ ਰਿਹੈ"
 
-#: src/View/AbstractDirectoryView.vala:3169
-#: src/View/AbstractDirectoryView.vala:3180
+#: src/View/AbstractDirectoryView.vala:3143
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cannot paste files here"
 msgstr "ਫ਼ਾਇਲਾਂ ਨੂੰ ਇੱਥੇ ਪੇਸਟ ਨਹੀਂ ਕਰ ਸਕਦੇ"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:391
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
 msgid "This Folder Does Not Exist"
 msgstr "ਇਹ ਫ਼ੋਲਡਰ ਮੌਜੂਦ ਨਹੀਂ ਹੈ"
 
@@ -1921,81 +2067,81 @@ msgstr "ਕੋਈ ਹਾਲੀਆ ਫ਼ਾਇਲਾਂ ਨਹੀਂ ਹਨ"
 msgid "Access Denied"
 msgstr "ਪਹੁੰਚ ਠੁਕਰਾਈ ਗਈ"
 
-#: src/View/ViewContainer.vala:370 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:368 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "ਮੁੱਖ/ਘਰ"
 
-#: src/View/ViewContainer.vala:392
+#: src/View/ViewContainer.vala:389
 msgid "You cannot create a folder here."
 msgstr "ਤੁਸੀਂ ਇੱਥੇ ਫ਼ੋਲਡਰ ਨਹੀਂ ਬਣਾ ਸਕਦੇ।"
 
-#: src/View/ViewContainer.vala:395
+#: src/View/ViewContainer.vala:392
 msgid "The network is unavailable"
 msgstr "ਨੈਟਵਰਕ ਉਪਲਬਧ ਨਹੀਂ ਹੈ"
 
-#: src/View/ViewContainer.vala:396
+#: src/View/ViewContainer.vala:393
 msgid "A working network is needed to reach this folder"
 msgstr "ਇਸ ਫ਼ੋਲਡਰ ਤੱਕ ਪਹੁੰਚਣ ਲਈ ਇੱਕ ਚਾਲੂ ਨੈਟਵਰਕ ਚਾਹੀਦੈ"
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Belong to You"
 msgstr "ਇਹ ਫ਼ੋਲਡਰ ਤੁਹਾਡਾ ਨਹੀਂ ਹੈ"
 
-#: src/View/ViewContainer.vala:400
+#: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr "ਤੁਹਾਡੇ ਕੋਲ਼ ਇਸ ਫ਼ੋਲਡਰ ਨੂੰ ਵੇਖਣ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ।"
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
 msgstr "ਫ਼ੋਲਡਰ ਨੂੰ ਬੀੜਨਾ ਨਾਕਾਮ ਰਿਹਾ"
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:400
 msgid "Could not connect to the server for this folder."
 msgstr "ਇਸ ਫ਼ੋਲਡਰ ਲਈ ਨੈਟਵਰਕ ਨਾਲ਼ ਨਹੀਂ ਜੁੜ ਸਕਿਆ।"
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:403
 msgid "Unable to Display Folder Contents"
 msgstr "ਫ਼ੋਲਡਰ ਦੀ ਸਮੱਗਰੀ ਨਹੀਂ ਵਿਖਾ ਸਕਿਆ"
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:404
 msgid "The operation timed out."
 msgstr "ਕਾਰਵਾਈ ਦਾ ਸਮਾਂ ਮੁੱਕ ਗਿਐ।"
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Show Folder"
 msgstr "ਫ਼ੋਲਡਰ ਵਿਖਾ ਨਹੀਂ ਸਕਦੇ"
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:407
 msgid "The server for this folder could not be located."
 msgstr "ਇਸ ਫ਼ੋਲਡਰ ਦੇ ਸਰਵਰ ਦਾ ਟਿਕਾਣਾ ਨਹੀਂ ਮਿਲਿਆ।"
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:418
 msgid "File not Found"
 msgstr "ਫ਼ਾਇਲ ਨਹੀਂ ਮਿਲੀ"
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:419
 msgid "The file selected no longer exists."
 msgstr "ਚੁਣੀ ਹੋਈ ਫ਼ਾਇਲ ਮੌਜੂਦ ਨਹੀਂ ਰਹੀ।"
 
-#: src/View/Window.vala:183
+#: src/View/Window.vala:184
 msgid "Undo Close Tab"
 msgstr "ਬੰਦ ਕੀਤੀ ਟੈਬ ਦੁਬਾਰਾ ਖੋਲ੍ਹੋ"
 
-#: src/View/Window.vala:494
+#: src/View/Window.vala:497
 msgid "Close Tab"
 msgstr "ਟੈਬ ਬੰਦ ਕਰੋ"
 
-#: src/View/Window.vala:495
+#: src/View/Window.vala:498
 #, fuzzy
 #| msgid "Duplicating \"%s\""
 msgid "Duplicate Tab"
 msgstr "\"%s\" ਨੂੰ ਡੁਪਲੀਕੇਟ ਕਰ ਰਿਹੈ"
 
-#: src/View/Window.vala:496 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "ਨਵੀਂ ਵਿੰਡੋ 'ਚ ਖੋਲ੍ਹੋ"
 
-#: src/View/Window.vala:609 src/View/Window.vala:619
+#: src/View/Window.vala:612 src/View/Window.vala:622
 msgid "(as Administrator)"
 msgstr "(ਬਤੌਰ ਐਡਮਿਨ)"
 
@@ -2100,32 +2246,104 @@ msgstr "ਨੈੱਟਵਰਕ ਜ਼ਰੀਏ ਉਪਲਬਧ ਟਿਕਾਣੇ
 msgid "Connect Server…"
 msgstr "ਸਰਵਰ ਨਾਲ਼ ਜੁੜੋੋ…"
 
+#: src/View/Sidebar/VolumeRow.vala:166
+#, fuzzy
+#| msgid "_Mount"
+msgid "Mount"
+msgstr "ਬੀੜੋ"
+
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy
 #| msgid "_Unmount"
 msgid "Bind mount"
 msgstr "ਲਾਹੋ"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr "ਪਤਾ ਲੱਭੋ ਜਾਂ ਟਾਈਪ ਕਰੋ"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "ਨਵੀਂ ਟੈਬ 'ਚ ਖੋਲ੍ਹੋ"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "ਕਿਸੇ ਹੋਰ ਐਪ 'ਚ ਖੋਲ੍ਹੋ…"
 
-#: src/View/Widgets/HeaderBar.vala:66
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "ਪਿਛਲਾ/ਪਿਛਲੀ"
 
-#: src/View/Widgets/HeaderBar.vala:73
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "ਅਗਲਾ/ਅਗਲੀ"
+
+#: src/View/Widgets/HeaderBar.vala:97
+msgid "Zoom Out"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:106
+msgid "Zoom 1:1"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:115
+msgid "Zoom In"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:154
+msgid "Double-click to Navigate"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:155
+msgid "Double-click on a folder opens it, single-click selects it"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:160
+#, fuzzy
+#| msgid "Folders Before Files"
+msgid "Sort Folders before Files"
+msgstr "ਫ਼ਾਇਲਾਂ ਤੋਂ ਪਹਿਲਾਂ ਫ਼ੋਲਡਰ"
+
+#: src/View/Widgets/HeaderBar.vala:164
+#, fuzzy
+#| msgid "Show Hidden Files"
+msgid "Show in View"
+msgstr "ਲੁਕੀਆਂ ਫ਼ਾਇਲਾਂ ਵਿਖਾਓ"
+
+#: src/View/Widgets/HeaderBar.vala:171
+#, fuzzy
+#| msgid "Show Hidden Files"
+msgid "Hidden Files"
+msgstr "ਲੁਕੀਆਂ ਫ਼ਾਇਲਾਂ ਵਿਖਾਓ"
+
+#: src/View/Widgets/HeaderBar.vala:175
+#, fuzzy
+#| msgid "Hide Thumbnails"
+msgid "Local Thumbnails"
+msgstr "ਥਮਨੇਲ ਲੁਕਾਓ"
+
+#: src/View/Widgets/HeaderBar.vala:180
+#, fuzzy
+#| msgid "Show Remote Thumbnails"
+msgid "Remote Thumbnails"
+msgstr "ਰਿਮੋਟ ਥਮਨੇਲ ਵਿਖਾਓ"
+
+#: src/View/Widgets/HeaderBar.vala:208
+msgid "Menu"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:283
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to undo"
+msgstr "ਕਾਰਵਾਈ ਦਾ ਸਮਾਂ ਮੁੱਕ ਗਿਐ।"
+
+#: src/View/Widgets/HeaderBar.vala:290
+#, fuzzy
+#| msgid "The operation timed out."
+msgid "No operation to redo"
+msgstr "ਕਾਰਵਾਈ ਦਾ ਸਮਾਂ ਮੁੱਕ ਗਿਐ।"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2219,8 +2437,22 @@ msgstr "ਇਸ ਫ਼ੋਲਡਰ ਦੇ ਹੇਠਾਂ"
 msgid "Recently Used"
 msgstr "ਹਾਲੀਆ ਵਰਤੇ ਗਏ"
 
-#~ msgid "Setting permissions"
-#~ msgstr "ਸੈਟਿੰਗ ਇਜਾਜ਼ਤਾਂ"
+#, fuzzy
+#~| msgid "Replacing it will overwrite its content."
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr "ਵਟਾਉਣ ਨਾਲ਼ ਇਸਦੀ ਸਮੱਗਰੀ ਵੀ ਬਦਲ ਜਾਵੇਗੀ।"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Undo Last File Operation"
+#~ msgstr "ਫ਼ਾਇਲ ਕਾਰਵਾਈਆਂ"
+
+#, fuzzy
+#~| msgid "File Operations"
+#~ msgid "Redo Last Undone File Operation"
+#~ msgstr "ਫ਼ਾਇਲ ਕਾਰਵਾਈਆਂ"
 
 #~ msgid "Preparing to trash %'d file"
 #~ msgid_plural "Preparing to trash %'d files"
@@ -2229,9 +2461,6 @@ msgstr "ਹਾਲੀਆ ਵਰਤੇ ਗਏ"
 
 #~ msgid "Error while moving files to trash."
 #~ msgstr "ਫ਼ਾਇਲਾਂ ਨੂੰ ਕੂੜੇਦਾਨ ਵਿੱਚ ਸੁੱਟਣ ਵੇਲ਼ੇ ਖ਼ਰਾਬੀ ਰਹੀ।"
-
-#~ msgid "Paste Link"
-#~ msgstr "ਲਿੰਕ ਪੇਸਟ ਕਰੋ"
 
 #, fuzzy
 #~ msgid "Connect to a network server"

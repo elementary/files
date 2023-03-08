@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-14 09:55+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2016-12-10 08:44+0000\n"
 "Last-Translator: aberba <karabutaworld@gmail.com>\n"
 "Language-Team: Akan <ak@li.org>\n"
@@ -38,40 +38,50 @@ msgstr ""
 msgid "Open File as Read Only"
 msgstr ""
 
-#: filechooser-portal/Main.vala:75
+#: filechooser-portal/FileChooserDialog.vala:376
+#, fuzzy
+#| msgid "new file"
+msgid "Enter new filename"
+msgstr "file foforɔ"
+
+#: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr ""
 
-#: filechooser-portal/Main.vala:75 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
 msgstr "Bue"
 
-#: filechooser-portal/Main.vala:158 filechooser-portal/Main.vala:282
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
 msgstr ""
 
-#: filechooser-portal/Main.vala:351
+#: filechooser-portal/Main.vala:448
+#, c-format
+msgid "This file is a link to “%s”"
+msgstr ""
+
+#: filechooser-portal/Main.vala:451
+msgid "This file is a link."
+msgstr ""
+
+#: filechooser-portal/Main.vala:454
+#, fuzzy
+#| msgid "Replacing it will overwrite its content."
+msgid ""
+"Replacing a link will overwrite the target's contents. The link will remain"
+msgstr "Sɛ wode si ananmu a, nneɛma a ɛwɔ mu dedaw no nyinaa befi hɔ."
+
+#: filechooser-portal/Main.vala:456
 #, fuzzy, c-format
 #| msgid "Replace file \"%s\"?"
 msgid "Replace “%s”?"
 msgstr "Wopɛ sɛ esi file \"%s\" ananmu?"
 
-#: filechooser-portal/Main.vala:352
+#: filechooser-portal/Main.vala:457
 #, fuzzy
 #| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
-msgstr "Sɛ wode si ananmu a, nneɛma a ɛwɔ mu dedaw no nyinaa befi hɔ."
-
-#: filechooser-portal/Main.vala:361
-#, c-format
-msgid "Replace the target of “%s”?"
-msgstr ""
-
-#: filechooser-portal/Main.vala:364
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
-msgid ""
-"Replacing the target file for this link will overwrite its current contents."
 msgstr "Sɛ wode si ananmu a, nneɛma a ɛwɔ mu dedaw no nyinaa befi hɔ."
 
 #: libcore/ConnectServerDialog.vala:46
@@ -193,7 +203,7 @@ msgstr "Connecting..."
 msgid "Please verify your user details."
 msgstr "Hwɛ sɛ wo ho nsɛm no yɛ saa pɛpɛɛpɛ."
 
-#: libcore/Directory.vala:689
+#: libcore/Directory.vala:690
 msgid "Server did not respond within time limit"
 msgstr ""
 
@@ -380,79 +390,79 @@ msgstr "File foforɔ bi a ɛwɔ \"%s\" wɔ saa din korɔ no ara enti sesa no."
 msgid "Merge"
 msgstr "Ka Bom"
 
-#: libcore/FileUtils.vala:89
+#: libcore/FileUtils.vala:83
 #, fuzzy, c-format
 #| msgid "Could not determine original location of \"%s\" "
 msgid "Could not determine original location of \"%s\""
 msgstr "Ɛntumi nhu baabi a na \"%s\"  wɔ dedaw "
 
-#: libcore/FileUtils.vala:90
+#: libcore/FileUtils.vala:84
 msgid "The item cannot be restored from trash"
 msgstr "Wo nsa ntumi nka wo nneɛma no bio"
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:178
 #, c-format
 msgid "The original folder %s no longer exists"
 msgstr ""
 
-#: libcore/FileUtils.vala:185
+#: libcore/FileUtils.vala:179
 msgid "Would you like to recreate it?"
 msgstr ""
 
-#: libcore/FileUtils.vala:190
+#: libcore/FileUtils.vala:184
 msgid "Ignore"
 msgstr ""
 
-#: libcore/FileUtils.vala:191
+#: libcore/FileUtils.vala:185
 msgid "No files that were in this folder will be restored"
 msgstr ""
 
-#: libcore/FileUtils.vala:192
+#: libcore/FileUtils.vala:186
 msgid "Recreate"
 msgstr ""
 
-#: libcore/FileUtils.vala:194
+#: libcore/FileUtils.vala:188
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
 
-#: libcore/FileUtils.vala:207
+#: libcore/FileUtils.vala:201
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
 
-#: libcore/FileUtils.vala:579
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr ""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:670
+#: libcore/FileUtils.vala:658
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Nnɛ mmerɛ %-I:%M %p"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:678
+#: libcore/FileUtils.vala:666
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Ɛnnora mmerɛ %-I:%M %p"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:686
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:1028
+#: libcore/FileUtils.vala:1016
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/FileUtils.vala:1032 libcore/FileUtils.vala:1040
+#: libcore/FileUtils.vala:1020 libcore/FileUtils.vala:1028
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -461,19 +471,19 @@ msgstr[1] ""
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:1039 src/Dialogs/PropertiesWindow.vala:1242
+#: libcore/FileUtils.vala:1027 src/Dialogs/PropertiesWindow.vala:1242
 #, c-format
 msgid "%s, %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:1039
+#: libcore/FileUtils.vala:1027
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/FileUtils.vala:1043
+#: libcore/FileUtils.vala:1031
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -481,26 +491,26 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1051
+#: libcore/FileUtils.vala:1039
 #, fuzzy
 #| msgid " (copy)"
 msgid "copy"
 msgstr " (copy)"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1053
+#: libcore/FileUtils.vala:1041
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1055
+#: libcore/FileUtils.vala:1043
 #, fuzzy
 #| msgid " ("
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1057
+#: libcore/FileUtils.vala:1045
 msgid ")"
 msgstr ""
 
@@ -1202,11 +1212,155 @@ msgstr "Fa bi saa _ara"
 msgid "Empty _Trash"
 msgstr ""
 
-#: libcore/UndoManager.vala:310
+#: libcore/UndoManager.vala:22
+msgid "Undo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:24
+#, fuzzy
+msgid "Undo Duplicate"
+msgstr "Yɛ '%s' mmeinu wɔ '%s'"
+
+#: libcore/UndoManager.vala:26
+msgid "Undo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:28
+#, fuzzy
+#| msgid "Rename"
+msgid "Undo Rename"
+msgstr "Sesã ne din"
+
+#: libcore/UndoManager.vala:30
+#, fuzzy
+#| msgid "_Undo creation of an empty file"
+msgid "Undo Create Empty File"
+msgstr "_Sesã file foforɔ a woreyɛ no"
+
+#: libcore/UndoManager.vala:32
+#, fuzzy
+#| msgid "_Undo creation of a file from template"
+msgid "Undo Create File from Template"
+msgstr "_Sesã file foforɔ a wode template reyɛ no"
+
+#: libcore/UndoManager.vala:34
+#, fuzzy
+#| msgid "_Undo creation of %d folder"
+#| msgid_plural "_Undo creation of %d folders"
+msgid "Undo Create Folder"
+msgstr "_Sesã folder dodoɔ %d a woreyɛ no"
+
+#: libcore/UndoManager.vala:36
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Undo Move to Trash"
+msgstr "Fa kɔ trash no mu"
+
+#: libcore/UndoManager.vala:38
+#, fuzzy
+msgid "Undo Create Link"
+msgstr "Yɛ link ma nneɛma %d"
+
+#: libcore/UndoManager.vala:40
+#, fuzzy
+msgid "Undo Restore from Trash"
+msgstr "San yi '%s' firi trash no mu bra"
+
+#: libcore/UndoManager.vala:42
+#, fuzzy
+msgid "Undo Set Permissions"
+msgstr "Hyehyɛ '%s' ho hokwan"
+
+#: libcore/UndoManager.vala:44
+#, fuzzy
+msgid "Undo Set Permissions Recursively"
+msgstr "_Sesã nneɛma dodoɔ %d a w'fa bi no"
+
+#: libcore/UndoManager.vala:46
+#, fuzzy
+msgid "Undo Change Owner"
+msgstr "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
+
+#: libcore/UndoManager.vala:48
+#, fuzzy
+msgid "Undo Change Group"
+msgstr "_Sesã nneɛma dodoɔ %d a w'fa bi no"
+
+#: libcore/UndoManager.vala:57
+msgid "Redo Copy"
+msgstr ""
+
+#: libcore/UndoManager.vala:59
+#, fuzzy
+msgid "Redo Duplicate"
+msgstr "Yɛ '%s' mmeinu wɔ '%s'"
+
+#: libcore/UndoManager.vala:61
+msgid "Redo Move"
+msgstr ""
+
+#: libcore/UndoManager.vala:63
+#, fuzzy
+#| msgid "Rename"
+msgid "Redo Rename"
+msgstr "Sesã ne din"
+
+#: libcore/UndoManager.vala:65
+#, fuzzy
+msgid "Redo Create Empty File"
+msgstr "_Sesã file foforɔ a woreyɛ no"
+
+#: libcore/UndoManager.vala:67
+#, fuzzy
+msgid "Redo Create File from Template"
+msgstr "_Sesã file foforɔ a wode template reyɛ no"
+
+#: libcore/UndoManager.vala:69
+#, fuzzy
+msgid "Redo Create Folder"
+msgstr "Antumi anyi ankyerɛ"
+
+#: libcore/UndoManager.vala:71
+#, fuzzy
+#| msgid "Move to Trash"
+msgid "Redo Move to Trash"
+msgstr "Fa kɔ trash no mu"
+
+#: libcore/UndoManager.vala:73
+#, fuzzy
+msgid "Redo Create Link"
+msgstr "Yɛ link ma nneɛma %d"
+
+#: libcore/UndoManager.vala:75
+#, fuzzy
+msgid "Redo Restore from Trash"
+msgstr "San yi '%s' firi trash no mu bra"
+
+#: libcore/UndoManager.vala:77
+#, fuzzy
+msgid "Redo Set Permissions"
+msgstr "Hyehyɛ '%s' ho hokwan"
+
+#: libcore/UndoManager.vala:79
+#, fuzzy
+msgid "Redo Set Permissions Recursively"
+msgstr "Hyehyɛ '%s' ho hokwan"
+
+#: libcore/UndoManager.vala:81
+#, fuzzy
+msgid "Redo Change Owner"
+msgstr "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
+
+#: libcore/UndoManager.vala:83
+#, fuzzy
+msgid "Redo Change Group"
+msgstr "_Sesã nneɛma dodoɔ %d a w'fa bi no"
+
+#: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
 msgstr "Ɛntumi nhu baabi a ɛwo ankasa"
 
-#: libcore/UndoManager.vala:311
+#: libcore/UndoManager.vala:381
 msgid "Open trash folder and restore manually"
 msgstr "Bue trash no and wánkasa twe bra bio"
 
@@ -1681,7 +1835,7 @@ msgid "Invalid file name provided"
 msgstr "Ɛdin no nnyɛ nea ɛbɛtumi de ayɛ"
 
 #: src/View/AbstractDirectoryView.vala:1898
-#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:182
+#: src/View/AbstractDirectoryView.vala:1904 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "Tab Foforɔ"
 
@@ -1699,7 +1853,7 @@ msgid "Open in"
 msgstr "Bue wɔ"
 
 #: src/View/AbstractDirectoryView.vala:2016
-#: src/View/Widgets/BreadcrumbsEntry.vala:481
+#: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Fa dwumadie wei bue"
 
@@ -1757,112 +1911,93 @@ msgstr "Sesã ne din"
 msgid "Copy as Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2179
-#: src/View/AbstractDirectoryView.vala:2278
+#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2262
 msgid "Paste Link into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2184
-#: src/View/AbstractDirectoryView.vala:2252
+#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2239
 msgid "Paste into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2194
-#: src/View/AbstractDirectoryView.vala:2283
+#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2235
-#, fuzzy
-msgid "Show Hidden Files"
-msgstr "έfa Files No"
-
-#: src/View/AbstractDirectoryView.vala:2240
-#, fuzzy
-msgid "Show Remote Thumbnails"
-msgstr "Hwɛ eho _details"
-
-#: src/View/AbstractDirectoryView.vala:2243
-#, fuzzy
-msgid "Hide Thumbnails"
-msgstr "Hwɛ eho _details"
-
-#: src/View/AbstractDirectoryView.vala:2246
-msgid "Select Folders with Single Click"
-msgstr ""
-
-#: src/View/AbstractDirectoryView.vala:2343
+#: src/View/AbstractDirectoryView.vala:2317
 msgid "Name"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2348 src/View/ListView.vala:27
+#: src/View/AbstractDirectoryView.vala:2322 src/View/ListView.vala:27
 msgid "Size"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2353 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2327 src/View/ListView.vala:28
 msgid "Type"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2358
+#: src/View/AbstractDirectoryView.vala:2332
 msgid "Date"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2363
+#: src/View/AbstractDirectoryView.vala:2337
 msgid "Reversed Order"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2366
+#: src/View/AbstractDirectoryView.vala:2340
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2378
+#: src/View/AbstractDirectoryView.vala:2352
 msgid "Sort by"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2386
+#: src/View/AbstractDirectoryView.vala:2360
 #, fuzzy
 msgid "Folder"
 msgstr "_Folder:"
 
-#: src/View/AbstractDirectoryView.vala:2392
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Empty File"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2443
+#: src/View/AbstractDirectoryView.vala:2417
 msgid "New"
 msgstr "Foforɔ"
 
-#: src/View/AbstractDirectoryView.vala:2686
+#: src/View/AbstractDirectoryView.vala:2660
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3004
-#: src/View/AbstractDirectoryView.vala:3197
+#: src/View/AbstractDirectoryView.vala:2978
+#: src/View/AbstractDirectoryView.vala:3171
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3005
-#: src/View/AbstractDirectoryView.vala:3170
-#: src/View/AbstractDirectoryView.vala:3181
-#: src/View/AbstractDirectoryView.vala:3198
+#: src/View/AbstractDirectoryView.vala:2979
+#: src/View/AbstractDirectoryView.vala:3144
+#: src/View/AbstractDirectoryView.vala:3155
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3112
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3113
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3169
-#: src/View/AbstractDirectoryView.vala:3180
+#: src/View/AbstractDirectoryView.vala:3143
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cannot paste files here"
 msgstr ""
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:391
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:388
 msgid "This Folder Does Not Exist"
 msgstr ""
 
@@ -1928,82 +2063,82 @@ msgstr "Files Biara Nni Hɔ a Wobuei Sesei Ara"
 msgid "Access Denied"
 msgstr ""
 
-#: src/View/ViewContainer.vala:370 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:368 src/View/Sidebar/BookmarkListBox.vala:121
 msgid "Home"
 msgstr "Ahyɛase"
 
-#: src/View/ViewContainer.vala:392
+#: src/View/ViewContainer.vala:389
 msgid "You cannot create a folder here."
 msgstr ""
 
-#: src/View/ViewContainer.vala:395
+#: src/View/ViewContainer.vala:392
 msgid "The network is unavailable"
 msgstr ""
 
-#: src/View/ViewContainer.vala:396
+#: src/View/ViewContainer.vala:393
 msgid "A working network is needed to reach this folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:399
+#: src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Belong to You"
 msgstr ""
 
-#: src/View/ViewContainer.vala:400
+#: src/View/ViewContainer.vala:397
 msgid "You don't have permission to view this folder."
 msgstr ""
 
-#: src/View/ViewContainer.vala:402
+#: src/View/ViewContainer.vala:399
 msgid "Unable to Mount Folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:403
+#: src/View/ViewContainer.vala:400
 msgid "Could not connect to the server for this folder."
 msgstr ""
 
-#: src/View/ViewContainer.vala:406
+#: src/View/ViewContainer.vala:403
 msgid "Unable to Display Folder Contents"
 msgstr ""
 
-#: src/View/ViewContainer.vala:407
+#: src/View/ViewContainer.vala:404
 msgid "The operation timed out."
 msgstr ""
 
-#: src/View/ViewContainer.vala:409
+#: src/View/ViewContainer.vala:406
 msgid "Unable to Show Folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:410
+#: src/View/ViewContainer.vala:407
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: src/View/ViewContainer.vala:421
+#: src/View/ViewContainer.vala:418
 msgid "File not Found"
 msgstr "Anhu File No"
 
-#: src/View/ViewContainer.vala:422
+#: src/View/ViewContainer.vala:419
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Window.vala:183
+#: src/View/Window.vala:184
 msgid "Undo Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:494
+#: src/View/Window.vala:497
 #, fuzzy
 #| msgid "Close"
 msgid "Close Tab"
 msgstr "Yi fi hɔ"
 
-#: src/View/Window.vala:495
+#: src/View/Window.vala:498
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Yɛ '%s' mmeinu wɔ '%s'"
 
-#: src/View/Window.vala:496 src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Bue wɔ Window Foforɔ Mu"
 
-#: src/View/Window.vala:609 src/View/Window.vala:619
+#: src/View/Window.vala:612 src/View/Window.vala:622
 msgid "(as Administrator)"
 msgstr ""
 
@@ -2110,32 +2245,94 @@ msgstr ""
 msgid "Connect Server…"
 msgstr "Connecte server"
 
+#: src/View/Sidebar/VolumeRow.vala:166
+#, fuzzy
+#| msgid "_Mount"
+msgid "Mount"
+msgstr "_Fa hyɛ mu"
+
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy
 #| msgid "_Unmount"
 msgid "Bind mount"
 msgstr "_Yi fi mu"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:125
+#: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:200
 msgid "Search or Type Path"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:450
 msgid "Open in New Tab"
 msgstr "Bue wɔ Tab Foforɔ Mu"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:488
+#: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
 msgstr "Fa dwumadie foforɔ bue …"
 
-#: src/View/Widgets/HeaderBar.vala:66
+#: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
 msgstr "Nea ɛdi akyire"
 
-#: src/View/Widgets/HeaderBar.vala:73
+#: src/View/Widgets/HeaderBar.vala:82
 msgid "Next"
 msgstr "Nea edi hɔ"
+
+#: src/View/Widgets/HeaderBar.vala:97
+msgid "Zoom Out"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:106
+msgid "Zoom 1:1"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:115
+msgid "Zoom In"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:154
+msgid "Double-click to Navigate"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:155
+msgid "Double-click on a folder opens it, single-click selects it"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:160
+msgid "Sort Folders before Files"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:164
+#, fuzzy
+msgid "Show in View"
+msgstr "έfa Files No"
+
+#: src/View/Widgets/HeaderBar.vala:171
+#, fuzzy
+msgid "Hidden Files"
+msgstr "έfa Files No"
+
+#: src/View/Widgets/HeaderBar.vala:175
+#, fuzzy
+msgid "Local Thumbnails"
+msgstr "Hwɛ eho _details"
+
+#: src/View/Widgets/HeaderBar.vala:180
+#, fuzzy
+msgid "Remote Thumbnails"
+msgstr "Hwɛ eho _details"
+
+#: src/View/Widgets/HeaderBar.vala:208
+msgid "Menu"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:283
+msgid "No operation to undo"
+msgstr ""
+
+#: src/View/Widgets/HeaderBar.vala:290
+msgid "No operation to redo"
+msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2233,8 +2430,11 @@ msgid "Recently Used"
 msgstr "Seisei ara"
 
 #, fuzzy
-#~ msgid "Setting permissions"
-#~ msgstr "Hyehyɛ '%s' ho hokwan"
+#~| msgid "Replacing it will overwrite its content."
+#~ msgid ""
+#~ "Replacing the target file for this link will overwrite its current "
+#~ "contents."
+#~ msgstr "Sɛ wode si ananmu a, nneɛma a ɛwɔ mu dedaw no nyinaa befi hɔ."
 
 #, fuzzy
 #~ msgid "Error while moving files to trash."
@@ -2404,17 +2604,6 @@ msgstr "Seisei ara"
 #~ msgstr[0] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
 #~ msgstr[1] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
 
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Sesã file foforɔ a woreyɛ no"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Sesã file foforɔ a wode template reyɛ no"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Sesã folder dodoɔ %d a woreyɛ no"
-#~ msgstr[1] "_Sesã folder dodoɔ %d a woreyɛ no"
-
 #~ msgid "_Undo move to trash of %d item"
 #~ msgid_plural "_Undo move to trash of %d items"
 #~ msgstr[0] "_Sesã folder dodoɔ %d a worefa akɔ trash no mu no"
@@ -2424,12 +2613,6 @@ msgstr "Seisei ara"
 #~ msgid_plural "_Undo restore from trash of %d items"
 #~ msgstr[0] "_Sesã files dodoɔ %d a worefa afi trash no mu aba no"
 #~ msgstr[1] "_Sesã files dodoɔ %d a worefa afi trash no mu aba no"
-
-#, fuzzy
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "Yɛ link ma nneɛma %d"
-#~ msgstr[1] "Yɛ link ma nneɛma %d"
 
 #, fuzzy
 #~ msgid "_Undo delete of %d item"
@@ -2442,24 +2625,6 @@ msgstr "Seisei ara"
 #~ msgid_plural "Undo recursive change permissions of %d items"
 #~ msgstr[0] "_Sesã files dodoɔ %d a worefa afi trash no mu aba no"
 #~ msgstr[1] "_Sesã files dodoɔ %d a worefa afi trash no mu aba no"
-
-#, fuzzy
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "_Sesã nneɛma dodoɔ %d a w'fa bi no"
-#~ msgstr[1] "_Sesã nneɛma dodoɔ %d a w'fa bi no"
-
-#, fuzzy
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "_Sesã nneɛma dodoɔ %d a w'fa bi no"
-#~ msgstr[1] "_Sesã nneɛma dodoɔ %d a w'fa bi no"
-
-#, fuzzy
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
-#~ msgstr[1] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
 
 #, fuzzy
 #~ msgid "_Redo copy of %d item"
@@ -2486,14 +2651,6 @@ msgstr "Seisei ara"
 #~ msgstr[1] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
 
 #, fuzzy
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Sesã file foforɔ a woreyɛ no"
-
-#, fuzzy
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Sesã file foforɔ a wode template reyɛ no"
-
-#, fuzzy
 #~ msgid "_Redo creation of %d folder"
 #~ msgid_plural "_Redo creation of %d folders"
 #~ msgstr[0] "_Sesã folder dodoɔ %d a woreyɛ no"
@@ -2512,34 +2669,10 @@ msgstr "Seisei ara"
 #~ msgstr[1] "_Sesã files dodoɔ %d a worefa afi trash no mu aba no"
 
 #, fuzzy
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "Yɛ link ma nneɛma %d"
-#~ msgstr[1] "Yɛ link ma nneɛma %d"
-
-#, fuzzy
 #~ msgid "_Redo delete of %d item"
 #~ msgid_plural "_Redo delete of %d items"
 #~ msgstr[0] "_Sesã nneɛma dodoɔ %d ɛyɛ adekorɔ no"
 #~ msgstr[1] "_Sesã nneɛma dodoɔ %d ɛyɛ adekorɔ no"
-
-#, fuzzy
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Hyehyɛ '%s' ho hokwan"
-#~ msgstr[1] "Hyehyɛ '%s' ho hokwan"
-
-#, fuzzy
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "_Sesã nneɛma dodoɔ %d a w'fa bi no"
-#~ msgstr[1] "_Sesã nneɛma dodoɔ %d a w'fa bi no"
-
-#, fuzzy
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
-#~ msgstr[1] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
 
 #, fuzzy
 #~ msgid "Are you sure you want to permanently delete \"%s\"?"
