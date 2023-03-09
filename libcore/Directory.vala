@@ -64,6 +64,7 @@ public class Files.Directory : Object {
     private List<unowned Files.File>? sorted_dirs = null;
 
     //Signals listened to by client Slots
+    public signal void file_added (Files.File file,bool is_internal);
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
     public signal void done_loading ();
