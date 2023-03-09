@@ -1046,7 +1046,9 @@ public class Files.Directory : Object {
             unowned var loc = change.from;
             Directory? dir = cache_lookup_parent (loc);
 
-            if (dir != null) {
+            if (dir != null &&
+                dir.file_hash_lookup_location (loc) == null) {
+
                 Files.File gof = dir.file_cache_find_or_insert (loc, true);
                 dir.notify_file_added (gof, change.is_internal);
             }
