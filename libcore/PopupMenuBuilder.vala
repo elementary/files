@@ -81,9 +81,9 @@ public class PopupMenuBuilder : Object {
     public PopupMenuBuilder add_cut (string? detailed_action_name) {
         return add_item (_("Cut"), detailed_action_name);
     }
-    public PopupMenuBuilder add_paste (string? detailed_action_name) {
-        return add_item (_("Paste"), detailed_action_name);
-    }
+    // public PopupMenuBuilder add_paste (string? detailed_action_name) {
+    //     return add_item (_("Paste"), detailed_action_name);
+    // }
     public PopupMenuBuilder add_copy_link (string? detailed_action_name) {
         return add_item (_("Copy Link"), detailed_action_name);
     }

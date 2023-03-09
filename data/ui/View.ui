@@ -30,7 +30,7 @@
       </item>
       <item>
         <attribute name="label" translatable="yes">Paste</attribute>
-        <attribute name="action">win.cut</attribute>
+        <attribute name="action">win.paste</attribute>
       </item>
     </section>
     <section>
