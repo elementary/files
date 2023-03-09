@@ -20,13 +20,7 @@
 ***/
 
 public class Files.Directory : Object {
-// <<<<<<< HEAD
-//     // Only Slots hold a reference to Directory objects, plus a toggle ref which ensures it is
-//     // removed from the cache when no longer in use.
-//     private static HashTable<GLib.File, unowned Files.Directory> directory_cache;
-// =======
     private static HashTable<unowned GLib.File, Files.Directory?> directory_cache;
-// >>>>>>> master
     private static Mutex dir_cache_lock;
 
     static construct {
@@ -69,13 +63,7 @@ public class Files.Directory : Object {
     private FileMonitor? monitor = null;
     private List<unowned Files.File>? sorted_dirs = null;
 
-// <<<<<<< HEAD
     //Signals listened to by client Slots
-//     public signal void file_added (Files.File? file); /* null used to signal failed operation */
-// =======
-    // public signal void file_loaded (Files.File file);
-    public signal void file_added (Files.File? file, bool is_internal); /* null used to signal failed operation */
-// >>>>>>> master
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
     public signal void done_loading ();
@@ -204,11 +192,7 @@ public class Files.Directory : Object {
       * to perform filename completion.- Emitting a done_loaded signal in that case would cause
       * the premature ending of text entry.
      **/
-// <<<<<<< HEAD
-    // public async bool init (FileLoadedFunc? file_loaded_func = null) {
-// =======
     public async bool init (FileLoadedFunc? file_loaded_func = null, DoneLoadingFunc? done_loading_func = null) {
-// >>>>>>> master
         if (state == State.LOADING) {
             debug ("Directory Init re-entered - already loading");
             return false; /* Do not re-enter */
@@ -227,11 +211,7 @@ public class Files.Directory : Object {
         /* else fully initialise the directory */
         } else {
             state = State.LOADING;
-// <<<<<<< HEAD
             yield prepare_directory (file_loaded_func, done_loading_func);
-// =======
-//             prepare_directory.begin (file_loaded_func, done_loading_func);
-// >>>>>>> master
         }
         /* done_loaded signal is emitted when ready */
         return true;
@@ -470,13 +450,8 @@ public class Files.Directory : Object {
         return success;
     }
 
-
-// <<<<<<< HEAD
-//     private async void make_ready (bool ready, FileLoadedFunc? file_loaded_func = null) {
-// =======
     private async void make_ready (bool ready, FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
         debug ("make ready");
-// >>>>>>> master
         can_load = ready;
 
         if (is_recent) {
@@ -502,11 +477,6 @@ public class Files.Directory : Object {
 
             // Do not add toggle until cached
             lock (directory_cache) {
-// <<<<<<< HEAD
-//                 this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
-//                 if (!creation_key.equal (location) || directory_cache.lookup (location) == null) {
-//                     debug ("inserting dir for %s", location.get_basename ());
-// =======
                 // Creation key will normally be the final location but check anyway.
                 if (!(creation_key.equal (location))) {
                     warning ("creation key %s differs from final location %s", creation_key.get_uri (), location.get_uri ());
@@ -514,7 +484,6 @@ public class Files.Directory : Object {
                 }
 
                 if (directory_cache.lookup (location) == null) {
-// >>>>>>> master
                     directory_cache.insert (location, this);
                     // Replace the cache reference with a toggle ref
                     this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
@@ -592,13 +561,9 @@ public class Files.Directory : Object {
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
         // unowned Directory dir = (Directory) object;
         if (is_last) {
-// <<<<<<< HEAD
-//             debug ("Directory is last toggle_ref_notify %s", dir.file.uri);
-// =======
             var dir = (Directory) object; // Adds a reference temporarily
             // Replace the toggle ref with a normal ref before removing from cache
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
-// >>>>>>> master
             if (!dir.removed_from_cache) {
                 Directory.remove_dir_from_cache (dir);
             }
@@ -839,20 +804,6 @@ public class Files.Directory : Object {
         return file_hash.get_values ();
     }
 
-// <<<<<<< HEAD
-// =======
-//     public void load_hiddens () {
-//         if (!can_load) {
-//             return;
-//         }
-//         if (state != State.LOADED) {
-//             list_directory_async.begin (null, null);
-//         } else {
-//             list_cached_files (null, null);
-//         }
-//     }
-
-// >>>>>>> master
     public void update_files () {
         foreach (unowned Files.File gof in file_hash.get_values ()) {
             if (gof != null && gof.info != null) {
@@ -945,14 +896,7 @@ public class Files.Directory : Object {
         }
 
         gof.update ();
-// <<<<<<< HEAD
-//         file_added (gof);
-// =======
-
-        // if ((!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
-            file_added (gof, is_internal);
-        // }
-// >>>>>>> master
+        file_added (gof, is_internal);
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* add to sorted_dirs */
@@ -1171,15 +1115,11 @@ public class Files.Directory : Object {
         }
 
         notify_files_removed (list_from);
-// <<<<<<< HEAD
         notify_files_added_internally (list_to);
     }
 
     public static Directory from_file (Files.File gof) {
         return from_gfile (gof.get_target_location ());
-// =======
-//         notify_files_added_internally (list_to);
-// >>>>>>> master
     }
 
     private static void remove_file_from_cache (Files.File gof) {
@@ -1189,18 +1129,11 @@ public class Files.Directory : Object {
         }
     }
 
-// <<<<<<< HEAD
-//     public static unowned Directory? cache_lookup (GLib.File? file) {
-//         unowned Directory? cached_dir = null;
-
-//         if (directory_cache == null) { // Only happens once on startup.  Directory gets added on creation
-// =======
     /* Files.Directory.directory_cache related functions */
     public static Directory? cache_lookup (GLib.File file) {
         // Cache may be null on startup. Static construct only runs when first
         // Directory is constructed
         if (directory_cache == null) {
-// >>>>>>> master
             return null;
         }
 
@@ -1234,28 +1167,14 @@ public class Files.Directory : Object {
     }
 
     public static bool remove_dir_from_cache (Directory dir) {
-// <<<<<<< HEAD
         assert_nonnull (dir);
         debug ("remove dir from cache %s", dir.creation_key.get_basename () );
-// =======
-        // if (dir.file.is_directory) {
-        //     dir.file.is_expanded = false;
-        //     dir.file.changed ();
-        // }
-// >>>>>>> master
-        // In case dir was never initialised remove both creation_key and
-        // location.
         lock (directory_cache) {
             if ((directory_cache.lookup (dir.location) != null) ||
                 (directory_cache.lookup (dir.creation_key) != null)) {
 
                 directory_cache.remove (dir.location);
-// <<<<<<< HEAD
-//                 debug ("removed keys %s and %s", dir.creation_key.get_basename (), dir.location.get_basename ());
-// =======
                 directory_cache.remove (dir.creation_key);
-
-// >>>>>>> master
                 dir.removed_from_cache = true;
                 return true;
             }
