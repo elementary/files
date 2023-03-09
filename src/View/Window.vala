@@ -2347,7 +2347,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         action.set_state (new GLib.Variant.boolean (state));
         Files.Preferences.get_default ().sort_directories_first = state;
     }
-        
+
     public void change_state_show_hidden (GLib.SimpleAction action) {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
