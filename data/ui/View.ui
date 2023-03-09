@@ -67,7 +67,7 @@
     </section>
   </menu>
 
-<!--Context menu shown when clicking on GridView background-->
+<!--Context menu shown when clicking on View background-->
   <menu id="background_model">
     <submenu>
         <attribute name="label" translatable="yes">Open In</attribute>
@@ -95,6 +95,16 @@
           </item>
         </section>
     </submenu>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Copy</attribute>
+        <attribute name="action">win.copy</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Paste</attribute>
+        <attribute name="action">win.paste</attribute>
+      </item>
+    </section>
     <section>
       <item>
         <attribute name="label" translatable="yes">Toggle Select All</attribute>
