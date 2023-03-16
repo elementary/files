@@ -1,7 +1,7 @@
 name: Gettext updates
 on:
   push:
-    branches: master
+    branches: [master]
 jobs:
   gettext_template:
     runs-on: ubuntu-22.04
