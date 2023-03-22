@@ -78,7 +78,7 @@ public class Files.File : GLib.Object {
     public int pix_scale = 1;
     public int width = 0;
     public int height = 0;
-    public Files.SortType sort_type = Files.SortType.FILENAME;
+    public Files.SortType sort_type { get; private set; default = Files.SortType.FILENAME; }
     public bool sort_reversed = false;
     public GLib.FileType file_type;
     public bool is_hidden = false;
@@ -260,6 +260,44 @@ public class Files.File : GLib.Object {
                 icon_changed ();
             }
         }
+    }
+
+    public void set_sort (Files.SortType new_sort_type, bool is_admin) {
+        sort_type = new_sort_type;
+        update_sort_info (is_admin);
+    }
+
+    public void set_reversed (bool new_reversed, bool is_admin) {
+        sort_reversed = new_reversed;
+        update_sort_info (is_admin);
+    }
+
+    private void update_sort_info (bool is_admin) {
+        if (is_folder () && info != null) {
+            var set_info = new GLib.FileInfo ();
+            set_info.set_attribute_string ("metadata::marlin-sort-reversed", sort_reversed.to_string ());
+            set_info.set_attribute_string ("metadata::marlin-sort-column-id", sort_type.to_string ());
+            if (!is_admin) {
+                set_attributes (set_info);
+            }
+        }
+    }
+
+    private void set_attributes (FileInfo set_info) {
+        location.set_attributes_async.begin (
+            set_info,
+            GLib.FileQueryInfoFlags.NONE,
+            GLib.Priority.DEFAULT,
+            null,
+            (obj, res) => {
+                try {
+                    GLib.FileInfo inf;
+                    location.set_attributes_async.end (res, out inf);
+                } catch (GLib.Error e) {
+                    warning ("Could not set file attributes: %s", e.message);
+                }
+            }
+        );
     }
 
     public bool is_folder () {
@@ -539,7 +577,7 @@ public class Files.File : GLib.Object {
         /* metadata */
         if (is_directory) {
             if (info.has_attribute ("metadata::marlin-sort-column-id")) {
-                sort_type= Files.SortType.from_string (
+                sort_type = Files.SortType.from_string (
                     info.get_attribute_string ("metadata::marlin-sort-column-id")
                 );
             }

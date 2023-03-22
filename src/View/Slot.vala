@@ -261,6 +261,16 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         return true;
     }
 
+    public void set_sort (Files.SortType sort_type) {
+        view_widget.sort_type = sort_type;
+        directory.file.set_sort (sort_type, Files.is_admin ()); // Sets metadata
+    }
+
+    public void set_reversed (bool reversed) {
+        view_widget.sort_reversed = reversed;
+        directory.file.set_reversed (reversed, Files.is_admin ()); // Sets metadata
+    }
+
     public void reload () {
         directory.schedule_reload ();
     }

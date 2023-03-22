@@ -104,13 +104,14 @@ public class Files.Window : Gtk.ApplicationWindow {
                 (ViewContainer)(tab_view.selected_page.child) : null;
         }
     }
+    private Files.Slot? current_slot {
+        get {
+            return current_container != null ? ((Files.Slot)(current_container.slot)) : null;
+        }
+    }
     private ViewInterface? current_view_widget {
         get {
-            if (current_container == null || current_container.slot == null) {
-                return null;
-            }
-
-            return ((Files.Slot)(current_container.slot)).view_widget;
+            return current_slot != null ? current_slot.view_widget : null;
         }
     }
     private bool tabs_restored = false;
@@ -1035,25 +1036,25 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_sort_type (GLib.SimpleAction action, GLib.Variant? param) {
-        if (current_view_widget == null) {
+        if (current_slot == null) {
             return;
         }
 
         switch (param.get_string ()) {
             case "FILENAME":
-                current_view_widget.sort_type = Files.SortType.FILENAME;
+                current_slot.set_sort (Files.SortType.FILENAME);
                 action.set_state ("FILENAME");
                 break;
             case "SIZE":
-                current_view_widget.sort_type = Files.SortType.SIZE;
+                current_slot.set_sort (Files.SortType.SIZE);
                 action.set_state ("SIZE");
                 break;
             case "TYPE":
-                current_view_widget.sort_type = Files.SortType.TYPE;
+                current_slot.set_sort (Files.SortType.TYPE);
                 action.set_state ("TYPE");
                 break;
             case "MODIFIED":
-                current_view_widget.sort_type = Files.SortType.MODIFIED;
+                current_slot.set_sort (Files.SortType.MODIFIED);
                 action.set_state ("MODIFIED");
                 break;
 
@@ -1207,8 +1208,8 @@ public class Files.Window : Gtk.ApplicationWindow {
     public void change_state_sort_reversed (GLib.SimpleAction action) {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
-        if (current_view_widget != null) {
-            current_view_widget.sort_reversed = state; // This will persist setting in metadata
+        if (current_slot != null) {
+            current_slot.set_reversed (state); // This will persist setting in metadata
         }
     }
 
