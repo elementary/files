@@ -203,9 +203,9 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
     private void on_directory_done_loading () {
         // Ensure all windows updated
-        activate_action ("win.loading-finished", null);
         view_widget.add_files (directory.get_files ());
         directory.file_added.connect (on_directory_file_added);
+        activate_action ("win.loading-finished", null);
     }
 
     public void change_path (GLib.File location) {

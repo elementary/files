@@ -72,12 +72,17 @@ namespace Files {
         public static SortType from_string (string sort_name) {
             switch (sort_name) {
                 case "name":
+                case "NAME":
+                case "FILENAME":
                     return SortType.FILENAME;
                 case "size":
+                case "SIZE":
                     return SortType.SIZE;
                 case "type":
+                case "TYPE":
                     return SortType.TYPE;
                 case "modified":
+                case "MODIFIED":
                     return SortType.MODIFIED;
                 default:
                     return SortType.FILENAME;
@@ -87,13 +92,13 @@ namespace Files {
         public unowned string to_string () {
             switch (this) {
                 case SortType.FILENAME:
-                    return "name";
+                    return "FILENAME";
                 case SortType.SIZE:
-                    return "size";
+                    return "SIZE";
                 case SortType.TYPE:
-                    return "type";
+                    return "TYPE";
                 case SortType.MODIFIED:
-                    return "modified";
+                    return "MODIFIED";
                 default:
                     critical ("COLUMN id %u unsupported", this);
                     return "";

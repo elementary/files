@@ -1040,27 +1040,9 @@ public class Files.Window : Gtk.ApplicationWindow {
             return;
         }
 
-        switch (param.get_string ()) {
-            case "FILENAME":
-                current_slot.set_sort (Files.SortType.FILENAME);
-                action.set_state ("FILENAME");
-                break;
-            case "SIZE":
-                current_slot.set_sort (Files.SortType.SIZE);
-                action.set_state ("SIZE");
-                break;
-            case "TYPE":
-                current_slot.set_sort (Files.SortType.TYPE);
-                action.set_state ("TYPE");
-                break;
-            case "MODIFIED":
-                current_slot.set_sort (Files.SortType.MODIFIED);
-                action.set_state ("MODIFIED");
-                break;
-
-            default:
-                break;
-        }
+        var sort_type = Files.SortType.from_string (param.get_string ());
+        current_slot.set_sort (sort_type);
+        action.set_state (sort_type.to_string ());
     }
 
     private void action_toggle_sidebar () {
@@ -1144,7 +1126,11 @@ public class Files.Window : Gtk.ApplicationWindow {
 
         update_top_menu ();
         top_menu.working = false;
-        // top_menu.mode =
+
+        if (current_view_widget != null) {
+            ((SimpleAction)(lookup_action ("sort-type"))).set_state (current_view_widget.sort_type.to_string ());
+            ((SimpleAction)(lookup_action ("sort-reversed"))).set_state (current_view_widget.sort_reversed);
+        }
     }
 
     private void action_selection_changing () {
