@@ -65,6 +65,7 @@ public class Files.Directory : Object {
 
     //Signals listened to by client Slots
     public signal void file_added (Files.File file,bool is_internal);
+    public signal void duplicate_added (Files.File file);
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
     public signal void done_loading ();
@@ -1045,12 +1046,19 @@ public class Files.Directory : Object {
         foreach (unowned var change in changes) {
             unowned var loc = change.from;
             Directory? dir = cache_lookup_parent (loc);
-
-            if (dir != null &&
-                dir.file_hash_lookup_location (loc) == null) {
-
-                Files.File gof = dir.file_cache_find_or_insert (loc, true);
-                dir.notify_file_added (gof, change.is_internal);
+            if (dir != null) {
+                var gof = dir.file_hash_lookup_location (loc);
+                if (gof == null) {
+                    gof = new Files.File (loc, dir.location);
+                    dir.file_hash.insert (loc, gof);
+                    dir.notify_file_added (gof, change.is_internal);
+                } else if (change.is_internal) {
+                    dir.duplicate_added (gof);
+                } else {
+                    debug ("change is external (monitor) - do not select");
+                }
+            } else {
+                debug ("added file no parent");
             }
         }
     }
@@ -1059,12 +1067,19 @@ public class Files.Directory : Object {
     public static void notify_files_added_internally (List<GLib.File> files) {
         foreach (unowned var loc in files) {
             Directory? dir = cache_lookup_parent (loc);
-
-            if (dir != null &&
-                dir.file_hash_lookup_location (loc) == null) { // Avoid duplicate signals
-
-                Files.File gof = dir.file_cache_find_or_insert (loc, true);
-                dir.notify_file_added (gof, true);
+            if (dir != null) {
+                var gof = dir.file_hash_lookup_location (loc);
+                if (gof == null) {
+                    warning ("create and add");
+                    gof = new Files.File (loc, dir.location);
+                    dir.file_hash.insert (loc, gof);
+                    dir.notify_file_added (gof, true);
+                } else {
+                    debug ("duplicate added");
+                    dir.duplicate_added (gof);
+                }
+            } else {
+                warning ("no parent");
             }
         }
     }

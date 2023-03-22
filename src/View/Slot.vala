@@ -136,6 +136,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     // Signal could be from subdirectory as well as slot directory
     private void connect_directory_handlers (Directory dir) {
         dir.file_added.connect (on_directory_file_added);
+        dir.duplicate_added.connect (on_directory_duplicate_added);
         dir.file_changed.connect (on_directory_file_changed);
         dir.file_deleted.connect (on_directory_file_deleted);
         dir.will_reload.connect (on_directory_will_reload);
@@ -144,6 +145,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
     private void disconnect_directory_handlers (Directory dir) {
         dir.file_added.disconnect (on_directory_file_added);
+        dir.duplicate_added.disconnect (on_directory_duplicate_added);
         dir.file_changed.disconnect (on_directory_file_changed);
         dir.file_deleted.disconnect (on_directory_file_deleted);
         dir.will_reload.disconnect (on_directory_will_reload);
@@ -158,6 +160,14 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         }
 
         //TODO Determine whether dir is loading or freespace update required.
+    }
+
+    // Could get duplicate file additions if monitor change event processed before internal change
+    // The file must be selected but not added
+    private void on_directory_duplicate_added (Directory dir, Files.File? file) {
+        if (file != null && !dir.is_loading ()) {
+            view_widget.show_and_select_file (file, true, false, false);
+        }
     }
 
     private void on_directory_file_changed (Directory dir, Files.File file) {

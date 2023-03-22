@@ -410,7 +410,9 @@ public interface Files.ViewInterface : Gtk.Widget {
     public virtual void add_file (Files.File file, ListStore? store = null) {
         var add_store = store == null ? root_store : store;
         //TODO Which store to add file to when subdir loaded?
+        // Must avoid adding duplicates - Files.Directory checks before emitting file added signal
         add_store.insert_sorted (file, file_compare_func);
+
         if (select_after_add) {
             select_after_add = false;
             show_and_select_file (file, true, true);
