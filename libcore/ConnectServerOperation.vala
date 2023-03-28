@@ -24,7 +24,6 @@ public class Files.ConnectServer.Operation : Gtk.MountOperation {
 
     public Operation (PF.ConnectServerDialog connect_server) {
         this.dialog = connect_server;
-        this.set_parent ((Gtk.Window)(connect_server.get_root ()));
 
         /* Turn the parent's modal functionality off because the mount operation needs to take over */
         this.dialog.modal = false;

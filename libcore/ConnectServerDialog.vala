@@ -19,7 +19,7 @@
 * Authored by: Corentin Noël <corentin@elementary.io>
 */
 
-public class PF.ConnectServerDialog : Gtk.Widget {
+public class PF.ConnectServerDialog : Object {
 // Gtk.Dialog is final type and cannot be subclassed.
 // public class PF.ConnectServerDialog : Granite.Dialog {
 
@@ -133,7 +133,6 @@ public class PF.ConnectServerDialog : Gtk.Widget {
 
     construct {
         _dialog = new Granite.Dialog ();
-        _dialog.set_parent (this);
 
         info_label = new Gtk.Label (null);
 
@@ -345,6 +344,14 @@ public class PF.ConnectServerDialog : Gtk.Widget {
             remember_revealer.set_reveal_child (password_entry.text.length > 0);
             set_button_sensitivity ();
         });
+    }
+
+    public void show () {
+        _dialog.present ();
+    }
+
+    public void close () {
+        _dialog.destroy ();
     }
 
     private void set_button_sensitivity () {

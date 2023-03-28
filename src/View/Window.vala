@@ -51,6 +51,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         {"toggle-select-all", action_toggle_select_all},
         {"toggle-sidebar", action_toggle_sidebar},
         {"invert-selection", action_invert_selection},
+        {"connect-server", action_connect_server},
 
         {"find", action_find, "s"},
         {"edit-path", action_edit_path},
@@ -298,7 +299,6 @@ public class Files.Window : Gtk.ApplicationWindow {
             sidebar.sync_uri (current_container.uri);
         });
         sidebar.path_change_request.connect (uri_path_change_request);
-        sidebar.connect_server_request.connect (connect_to_server);
 
         undo_manager.request_menu_update.connect (update_undo_actions);
 
@@ -880,10 +880,6 @@ public class Files.Window : Gtk.ApplicationWindow {
                 uri_path_change_request (Files.NETWORK_URI, OpenFlag.DEFAULT);
                 break;
 
-            case "SERVER":
-                connect_to_server ();
-                break;
-
             case "UP":
                 current_container.go_up ();
                 break;
@@ -1159,6 +1155,21 @@ public class Files.Window : Gtk.ApplicationWindow {
         properties_window.present ();
     }
 
+    private void action_connect_server () {
+        var dialog = new PF.ConnectServerDialog ((Gtk.Window) this);
+        string server_uri = "";
+
+        dialog.response.connect ((response_id) => {
+            server_uri = dialog.server_uri;
+            dialog.close ();
+            if (response_id == Gtk.ResponseType.OK && server_uri != "") {
+                uri_path_change_request (server_uri, OpenFlag.DEFAULT);
+            }
+        });
+
+        dialog.show ();
+    }
+
     private void before_undo_redo () {
         doing_undo_redo = true;
         update_undo_actions ();
@@ -1215,21 +1226,6 @@ public class Files.Window : Gtk.ApplicationWindow {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
         Files.app_settings.set_boolean ("singleclick-select", state);
-    }
-
-    private void connect_to_server () {
-        var dialog = new PF.ConnectServerDialog ((Gtk.Window) this);
-        string server_uri = "";
-
-        dialog.response.connect ((response_id) => {
-            server_uri = dialog.server_uri;
-            dialog.destroy ();
-            if (response_id == Gtk.ResponseType.OK && server_uri != "") {
-                uri_path_change_request (server_uri, OpenFlag.DEFAULT);
-            }
-        });
-
-        dialog.show ();
     }
 
     void show_app_help () {

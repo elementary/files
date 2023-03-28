@@ -77,7 +77,8 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
             hexpand = true,
             visible = !Files.is_admin (),
             tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"}),
-            can_focus = false
+            can_focus = false,
+            action_name = "win.connect-server"
         };
 
         var csb_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
@@ -248,10 +249,6 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         bookmark_expander.bind_property ("active", bookmark_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
         device_expander.bind_property ("active", device_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
         network_expander.bind_property ("active", network_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
-
-        connect_server_button.clicked.connect (() => {
-            connect_server_request ();
-        });
 
         plugins.sidebar_loaded (this);
     }
