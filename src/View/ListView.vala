@@ -359,22 +359,10 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
             dummy = Files.File.get_dummy (dir.file);
             model.append (dummy);
-            directory.done_loading.connect (on_done_loading);
         }
 
         ~Subdirectory () {
             debug ("Subdirectory destruct %s", uri);
-        }
-
-        private void on_done_loading () {
-            if (directory.displayed_files_count > 0) {
-                model.remove (0);
-                is_empty = false;
-            }
-            list_view.add_files (directory.get_files (), model);
-
-            directory.file_added.connect (on_file_added);
-            directory.file_deleted.connect (on_file_deleted);
         }
 
         private void on_file_added (Directory dir, Files.File? file, bool is_internal) {
@@ -406,6 +394,15 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             if (!loaded) {
                 directory.init.begin (null, () => {
                     loaded = true;
+                    if (directory.displayed_files_count > 0) {
+                        model.remove (0);
+                        is_empty = false;
+                    }
+
+                    list_view.add_files (directory.get_files (), model);
+
+                    directory.file_added.connect (on_file_added);
+                    directory.file_deleted.connect (on_file_deleted);
                 });
             }
         }
@@ -415,10 +412,10 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
 
         public void clear () {
-            directory.done_loading.disconnect (on_done_loading);
             directory.file_added.disconnect (on_file_added);
             directory.file_deleted.disconnect (on_file_deleted);
             directory.file.set_expanded (false);
+            loaded = false;
             model.remove_all ();
         }
     }
