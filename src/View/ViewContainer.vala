@@ -174,7 +174,7 @@ public class Files.ViewContainer : Gtk.Box {
             content = null;
         }
 
-        string? slot_path = Uri.unescape_string (this.uri);
+        string? slot_path = Uri.unescape_string (added_location.get_uri ());
         string tab_name = Files.INVALID_TAB_NAME;
 
         if (slot_path != null) {
@@ -192,7 +192,7 @@ public class Files.ViewContainer : Gtk.Box {
         this.tab_name = tab_name;
         can_show_folder = false;
         activate_action ("selection-changing", null);
-        activate_action ("win.loading-uri", "s", location.get_uri ());
+        activate_action ("win.loading-uri", "s", added_location.get_uri ());
         added_slot.initialize_directory.begin ((obj, res) => {
             added_slot.initialize_directory.end (res);
             var dir = added_slot.directory;

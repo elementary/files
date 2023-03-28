@@ -81,6 +81,7 @@ public class Files.MultiSlot : Gtk.Box, SlotContainerInterface {
             shrink_end_child = false,
             resize_end_child = true
         };
+
         viewport.child = first_host;
         scrolled_window.set_child (viewport);
         scrolled_window.set_parent (this);
@@ -113,26 +114,31 @@ public class Files.MultiSlot : Gtk.Box, SlotContainerInterface {
     public Slot add_location (GLib.File loc) {
         // Always create new Slot rather than navigate for simplicity.
         //TODO Check for performance/memory leak
-        Gtk.Paned host;
+
         Slot guest;
-        if (first_host.start_child != null) {
-            guest = (Slot)(first_host.start_child);
-        } else {
-            guest = new Files.Slot (loc, view_mode);
+        if (first_host.start_child == null) {
+            // Multislot has been cleared before calling
+            if (current_slot == null || current_slot.view_mode != this.view_mode) {
+                guest = new Files.Slot (loc, view_mode);
+                current_slot = guest;
+            } else {
+                // Reuse current slot if available
+                current_slot.change_path (loc);
+                guest = current_slot;
+            }
+
+            first_host.start_child = guest;
+            first_host.end_child = null;
+            return guest;
         }
 
-        if (view_mode == ViewMode.MULTICOLUMN) {
-            host = get_host_for_loc (guest.file.location);
-        } else {
-            host = first_host;
-        }
+        // Make new slot and insert at appropriate point.
+        var host = get_host_for_loc (loc);
+        guest = new Files.Slot (loc, view_mode);
 
-        Gtk.Widget? end_widget = null;
-        if (view_mode == ViewMode.MULTICOLUMN) {
-            end_widget = new Gtk.Label ("") {
-                hexpand = false
-            };
-        }
+        var end_widget = new Gtk.Label ("") {
+            hexpand = false
+        };
 
         if (host.start_child != null) {
             truncate_list_after_host (host);
@@ -188,7 +194,7 @@ public class Files.MultiSlot : Gtk.Box, SlotContainerInterface {
             first_slot.view_widget.clear ();
         }
 
-        current_slot = null;
+        current_slot = first_slot;
         first_host.start_child = null;
         first_host.end_child = null;
     }
