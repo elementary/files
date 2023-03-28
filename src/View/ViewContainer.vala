@@ -25,17 +25,6 @@
 
 namespace Files.View {
     public class ViewContainer : Gtk.Box {
-        private static int container_id;
-
-        protected static int get_next_container_id () {
-            return ++container_id;
-        }
-
-        static construct {
-            container_id = -1;
-        }
-
-        public int id {get; construct;}
         public Gtk.Widget? content_item;
         public bool can_show_folder { get; private set; default = false; }
         private View.Window? _window = null;
@@ -113,11 +102,6 @@ namespace Files.View {
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
         public signal void active ();
-        /* path-changed signal no longer used */
-
-        construct {
-            id = ViewContainer.get_next_container_id ();
-        }
 
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (View.Window win) {
@@ -189,6 +173,8 @@ namespace Files.View {
             }
         }
 
+        // Either the path or a special name or fallback if invalid
+        // Window will use as little as possible to distinguish tabs
         private string label = "";
         public string tab_name {
             private set {
@@ -358,16 +344,16 @@ namespace Files.View {
         }
 
        private void update_tab_name () {
-            string tab_name = Files.INVALID_TAB_NAME;
+            var tab_name = Files.INVALID_TAB_NAME;
 
             string protocol, path;
-            FileUtils.split_protocol_from_path (this.uri, out protocol, out path); //path is escaped
+            FileUtils.split_protocol_from_path (this.uri, out protocol, out path);
             if (path == "" || path == Path.DIR_SEPARATOR_S) {
                 tab_name = Files.protocol_to_name (protocol);
             } else if (protocol == "" && path == Environment.get_home_dir ()) {
                 tab_name = _("Home");
             } else {
-                tab_name = Path.get_basename (Uri.unescape_string (path));
+                tab_name = Uri.unescape_string (path);
             }
 
             this.tab_name = tab_name;

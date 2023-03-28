@@ -1,12 +1,12 @@
 name: Gettext updates
 on:
   push:
-    branches: master
+    branches: [master]
 jobs:
   gettext_template:
     runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
     - uses: elementary/actions/gettext-template@horus
       env:
         GIT_USER_TOKEN: "${{ secrets.GIT_USER_TOKEN }}"

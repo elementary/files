@@ -285,7 +285,7 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
 
         redo_button.tooltip_markup = Granite.markup_accel_tooltip (
             redo_accels,
-            redo_action_s != "" ?
+            redo_action_s != null ?
             redo_action_s :
             _("No operation to redo")
         );

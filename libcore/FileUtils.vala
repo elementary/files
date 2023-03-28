@@ -21,7 +21,6 @@ namespace Files.FileUtils {
      **/
     const string RESERVED_CHARS = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
                                    GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
-
     public GLib.List<GLib.File> files_from_uris (string uris) {
         var result = new GLib.List<GLib.File> ();
         var uri_list = GLib.Uri.list_extract_uris (uris);
@@ -556,7 +555,7 @@ namespace Files.FileUtils {
                 var removed_files = new GLib.List<GLib.File> ();
                 removed_files.append (old_location);
                 Files.Directory.notify_files_removed (removed_files);
-                Files.Directory.notify_files_added (added_files);
+                Files.Directory.notify_files_added_internally (added_files);
             } else {
                 warning ("Renamed file has no Files.Directory.Async");
             }
@@ -570,7 +569,7 @@ namespace Files.FileUtils {
 
             if (dir != null) {
                 /* We emit this signal anyway so callers can know rename failed and disconnect */
-                dir.file_added (null);
+                dir.file_added (null, true);
             }
 
             throw e;
@@ -1051,7 +1050,6 @@ namespace Files.FileUtils {
         int count;
 
         parse_previous_duplicate_name (name, is_link, out name_base, out suffix, out count);
-
         if (is_link) {
             result = get_link_name (name_base, count + count_increment, max_length);
         } else {
@@ -1064,11 +1062,11 @@ namespace Files.FileUtils {
     private void parse_previous_duplicate_name (
         string name, bool is_link, out string name_base, out string suffix, out int count
     ) {
-        name_base = "";
+        name_base = name;
         suffix = "";
         count = 0;
 
-        string name_without_suffix = name;
+        var name_without_suffix = name;
         var last_index = name.length - 1;
         var index_of_suffix = name.length;
 
@@ -1083,9 +1081,10 @@ namespace Files.FileUtils {
         var max_extension_length = 4;
         if (index_of_suffix >= last_index - max_extension_length &&
             index_of_suffix < last_index) {
-
             suffix = name.slice (index_of_suffix, name.length);
             name_without_suffix = name.slice (0, index_of_suffix);
+        } else {
+            index_of_suffix = name.length;
         }
 
         int index_of_opening = name_without_suffix.last_index_of (_(OPENING_COPY_LINK_TAG));
@@ -1233,6 +1232,82 @@ namespace Files.FileUtils {
         } catch (Error e) {
             return false;
         }
+    }
+
+    // Return enough of @path to distinguish it from @conflict_path
+    // Currently, differences in some parts of uri are ignored, only scheme and path are used.
+    public string disambiguate_uri (string uri, string conflict_uri) {
+        string? uri_scheme, uri_userinfo, uri_host, uri_path, uri_query, uri_fragment;
+        string? conflict_scheme, conflict_userinfo, conflict_host, conflict_path, conflict_query, conflict_fragment;
+        int uri_port, conflict_port;
+        try {
+            Uri.split (uri, UriFlags.NONE, out uri_scheme, out uri_userinfo, out uri_host, out uri_port, out uri_path, out uri_query, out uri_fragment);
+            Uri.split (conflict_uri, UriFlags.NONE, out conflict_scheme, out conflict_userinfo, out conflict_host, out conflict_port, out conflict_path, out conflict_query, out conflict_fragment);
+        } catch {
+            return Path.get_basename (uri);
+        }
+
+        var prefix = "";
+        var conflict_prefix = "";
+        var temp_path = uri_path;
+        var temp_conflict_path = conflict_path;
+        string temp_basename = "", temp_conflict_basename = "";
+        var basename = Path.get_basename (temp_path);
+
+        if (basename == "") {
+            return (uri_scheme ?? "file") + "://";
+        }
+
+        // This function should be called with an actually conflicting path but
+        // we deal with some unexpected values in case.
+        if (basename != Path.get_basename (conflict_path)) {
+            return basename;
+        }
+
+        // Deal with same path possibly with different schemes
+        if (temp_path == temp_conflict_path) {
+            if ((uri_scheme ?? "file") == (conflict_scheme ?? "file")) {
+                return basename;
+            } else {
+                return uri;
+            }
+        }
+
+        // Add parent directories until path and conflict path differ
+        // Protect from possible infinite loops
+        uint count = 0;
+        while (prefix == conflict_prefix &&
+               temp_basename != Path.DIR_SEPARATOR_S &&
+               count < 10
+        ) {
+            var parent_temp_path = FileUtils.get_parent_path_from_path (temp_path, false);
+            var parent_temp_confict_path = FileUtils.get_parent_path_from_path (temp_conflict_path, false);
+            temp_path = parent_temp_path;
+            temp_conflict_path = parent_temp_confict_path;
+            temp_basename = Path.get_basename (parent_temp_path);
+            temp_conflict_basename = Path.get_basename (parent_temp_confict_path);
+
+            if (temp_basename != Path.DIR_SEPARATOR_S) {
+                prefix = temp_basename + Path.DIR_SEPARATOR_S + prefix;
+            } else {
+                prefix = temp_basename + prefix;
+            }
+
+            if (temp_conflict_basename != Path.DIR_SEPARATOR_S) {
+                conflict_prefix = temp_conflict_basename + Path.DIR_SEPARATOR_S + conflict_prefix;
+            } else {
+                conflict_prefix = temp_conflict_basename + conflict_prefix;
+            }
+
+            count++;
+        }
+
+        if (count > 5) {
+            warning ("disambiguate_oath: too many loops");
+            return basename;
+        }
+
+        return (prefix + basename);
     }
 }
 
