@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 18:18+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2015-12-21 13:44+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
@@ -2195,6 +2195,10 @@ msgstr ""
 #, fuzzy
 msgid "Connect Server…"
 msgstr "Sambind við ambætara"
+
+#: src/View/Sidebar/VolumeRow.vala:166
+msgid "Mount"
+msgstr ""
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"

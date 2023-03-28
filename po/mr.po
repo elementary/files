@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 18:18+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
 "PO-Revision-Date: 2021-06-19 20:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -2259,6 +2259,12 @@ msgstr "नेटवर्कद्वारे उपलब्ध साधन�
 #: src/View/Sidebar/SidebarWindow.vala:84
 msgid "Connect Server…"
 msgstr "सर्वरला कनेक्ट करा…"
+
+#: src/View/Sidebar/VolumeRow.vala:166
+#, fuzzy
+#| msgid "_Mount"
+msgid "Mount"
+msgstr "(_M)माउंट करा"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy

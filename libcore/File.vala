@@ -42,10 +42,13 @@ public class Files.File : GLib.Object {
     public signal void destroy ();
 
     public bool is_gone;
+    // The location is guaranteed non-null, but the parent directory may be null
     public GLib.File location { get; construct; }
+    public GLib.File? directory { get; construct; } /* parent directory location */
+
     public GLib.File target_location = null;
     public Files.File target_gof = null;
-    public GLib.File directory { get; construct; } /* parent directory location */
+
     public GLib.Icon? icon = null;
     public GLib.List<string>? emblems_list = null;
     public uint n_emblems = 0;
@@ -158,7 +161,7 @@ public class Files.File : GLib.Object {
         return null;
     }
 
-    public File (GLib.File location, GLib.File? dir = null) {
+    public File (GLib.File location, GLib.File? dir) {
         Object (
             location: location,
             uri: location.get_uri (),

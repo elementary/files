@@ -1,18 +1,26 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 18:18+0000\n"
+"POT-Creation-Date: 2023-03-02 12:23+0000\n"
+"PO-Revision-Date: 2023-03-12 11:25+0000\n"
+"Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <https://l10n.elementary.io/projects/files/extra/ka/>"
+"\n"
+"Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:10
 msgid "Files"
-msgstr ""
+msgstr "Files"
 
 #: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
-msgstr ""
+msgstr "ფაილის არჩევა"
 
 #: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
@@ -20,15 +28,15 @@ msgstr ""
 
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
-msgstr ""
+msgstr "ფაილების მმართველი"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
-msgstr ""
+msgstr "ახალი ფანჯარა"
 
 #: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"
-msgstr ""
+msgstr "ახალი ფანჯარა ადმინისტრატორის სახელით"
 
 #: data/io.elementary.files.appdata.xml.in.in:11
 msgid "Browse and manage files and folders"
@@ -50,7 +58,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:260
 #: data/io.elementary.files.appdata.xml.in.in:277
 msgid "Improvements:"
-msgstr ""
+msgstr "გაუმჯობესებები:"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 msgid ""
@@ -67,7 +75,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:175
 #: data/io.elementary.files.appdata.xml.in.in:201
 msgid "Minor updates:"
-msgstr ""
+msgstr "უმნიშვნელო განახლებები:"
 
 #: data/io.elementary.files.appdata.xml.in.in:42
 #: data/io.elementary.files.appdata.xml.in.in:58
@@ -84,7 +92,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:266
 #: data/io.elementary.files.appdata.xml.in.in:295
 msgid "Updated translations"
-msgstr ""
+msgstr "განახლებული თარგმანები"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid ""
@@ -109,7 +117,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:255
 #: data/io.elementary.files.appdata.xml.in.in:272
 msgid "Fixes:"
-msgstr ""
+msgstr "შეცდომების გასწორებები:"
 
 #: data/io.elementary.files.appdata.xml.in.in:89
 msgid "Fix unexpected file activation after navigation with double-click"
@@ -244,7 +252,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:264
 #: data/io.elementary.files.appdata.xml.in.in:292
 msgid "Other updates:"
-msgstr ""
+msgstr "სხვა განახლებები:"
 
 #: data/io.elementary.files.appdata.xml.in.in:172
 msgid "Only allow one FileChooser per parent window"
@@ -397,7 +405,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:282
 msgid "Dark style support"
-msgstr ""
+msgstr "ბნელი სტილის მხარდაჭერა"
 
 #: data/io.elementary.files.appdata.xml.in.in:283
 msgid "Mint and Bubblegum color tags"
@@ -425,7 +433,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:289
 msgid "Performance improvements"
-msgstr ""
+msgstr "წარმადობის გაუმჯობესებები"
 
 #: data/io.elementary.files.appdata.xml.in.in:290
 msgid "Stability improvements"
@@ -437,7 +445,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:329
 msgid "elementary, Inc."
-msgstr ""
+msgstr "elementary, Inc."
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"

@@ -1321,9 +1321,9 @@ namespace Files {
             }
         }
 
-        private void on_directory_file_added (Directory dir, Files.File? file) {
+        private void on_directory_file_added (Directory dir, Files.File? file, bool is_internal) {
             if (file != null) {
-                add_file (file, dir, true); /* Always select files added to view after initial load */
+                add_file (file, dir, is_internal); /* Only select files added to view by this app */
                 handle_free_space_change ();
             } else {
                 critical ("Null file added");
@@ -3646,7 +3646,6 @@ namespace Files {
             uint button;
             event.get_coords (out x, out y);
             event.get_button (out button);
-            update_selected_files_and_menu ();
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (get_child (), (int)drag_x, (int)drag_y, (int)x, (int)y)) {
                 if (should_activate) {
@@ -3658,22 +3657,19 @@ namespace Files {
                     });
                 } else if (should_deselect && click_path != null) {
                     unselect_path (click_path);
-                    /* Only need to update selected files if changed by this handler */
-                    Idle.add (() => {
-                        update_selected_files_and_menu ();
-                        return GLib.Source.REMOVE;
-                    });
                 } else if (should_select && click_path != null) {
                     select_path (click_path);
-                    /* Only need to update selected files if changed by this handler */
-                    Idle.add (() => {
-                        update_selected_files_and_menu ();
-                        return GLib.Source.REMOVE;
-                    });
                 } else if (button == Gdk.BUTTON_SECONDARY) {
                     show_context_menu (event);
                 }
             }
+
+            // Selection may have been changed *but not signalled* by rubberbanding
+            // in Gtk.TreeView (IconView does signal during rubberbanding)
+            Idle.add (() => {
+                update_selected_files_and_menu ();
+                return GLib.Source.REMOVE;
+            });
 
             should_activate = false;
             should_deselect = false;
