@@ -123,7 +123,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     protected void bind_sort () {
         notify["sort-type"].connect (sort_model);
         notify["sort-reversed"].connect (sort_model);
-
         //TODO Persist setting in file metadata
     }
 

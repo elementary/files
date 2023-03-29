@@ -43,8 +43,8 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract ZoomLevel zoom_level { get; set; }
     public abstract ZoomLevel minimum_zoom { get; set; }
     public abstract ZoomLevel maximum_zoom { get; set; }
-    public abstract Files.SortType sort_type { get; set; }
-    public abstract bool sort_reversed { get; set; }
+    public abstract Files.SortType sort_type { get; set; default = Files.SortType.FILENAME; }
+    public abstract bool sort_reversed { get; set; default = false; }
     public abstract bool all_selected { get; set; }
     public abstract bool is_renaming { get; set; }
     public abstract bool rename_after_add { get; set; }

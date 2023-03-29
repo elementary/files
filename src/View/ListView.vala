@@ -44,6 +44,10 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     // Construct properties
     public Gtk.ColumnView column_view { get; construct; }
+    private Gtk.ColumnViewColumn name_column;
+    private Gtk.ColumnViewColumn size_column;
+    private Gtk.ColumnViewColumn type_column;
+    private Gtk.ColumnViewColumn modified_column;
 
     //Interface properties
     protected unowned GLib.List<Gtk.Widget> fileitem_list { get; set; default = null; }
@@ -86,7 +90,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         set_model (set_up_model ());
 
         bind_prefs ();
-        // bind_sort ();
         build_ui (column_view);
         bind_popover_menu ();
         set_up_gestures ();
@@ -181,7 +184,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             fileitem_list.remove (obj.get_data<GridFileItem> ("file-item"));
         });
 
-        var name_column = new Gtk.ColumnViewColumn (_("Name"), name_item_factory) {
+        name_column = new Gtk.ColumnViewColumn (_("Name"), name_item_factory) {
             expand = true,
             resizable = true,
         };
@@ -192,7 +195,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         });
         name_column.set_sorter (name_sorter);
 
-        var size_column = new Gtk.ColumnViewColumn (_("Size"), size_item_factory) {
+        size_column = new Gtk.ColumnViewColumn (_("Size"), size_item_factory) {
             expand = false,
             resizable = false
         };
@@ -202,7 +205,8 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             );
         });
         size_column.set_sorter (size_sorter);
-        var type_column = new Gtk.ColumnViewColumn (_("Type"), type_item_factory) {
+
+        type_column = new Gtk.ColumnViewColumn (_("Type"), type_item_factory) {
             expand = false,
             resizable = true
         };
@@ -212,7 +216,8 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             );
         });
         type_column.set_sorter (type_sorter);
-        var modified_column = new Gtk.ColumnViewColumn (_("Modified"), modified_item_factory) {
+
+        modified_column = new Gtk.ColumnViewColumn (_("Modified"), modified_item_factory) {
             expand = true,
             resizable = true
         };
@@ -233,6 +238,31 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
             Files.icon_view_settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.DEFAULT);
         } else {
             Files.column_view_settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.DEFAULT);
+        }
+
+        //TODO Restore saved sort order when directory loads.
+        // Default to Name Ascending.
+        column_view.sort_by_column (name_column, Gtk.SortType.ASCENDING);
+
+        notify["sort-type"].connect (set_sort);
+        notify["sort-reversed"].connect (set_sort);
+    }
+
+    private void set_sort () {
+        var direction = sort_reversed ? Gtk.SortType.DESCENDING : Gtk.SortType.ASCENDING;
+        switch (sort_type) {
+            case Files.SortType.FILENAME:
+                column_view.sort_by_column (name_column, direction);
+                break;
+            case Files.SortType.SIZE:
+                column_view.sort_by_column (size_column, direction);
+                break;
+            case Files.SortType.TYPE:
+                column_view.sort_by_column (type_column, direction);
+                break;
+            case Files.SortType.MODIFIED:
+                column_view.sort_by_column (modified_column, direction);
+                break;
         }
     }
 
@@ -255,8 +285,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                     subdirectory_map.get (key).collapse ();
                 }
             }
-
-
         }
     }
 
@@ -264,7 +292,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         root_store = new ListStore (typeof (Files.File));
         tree_model = new Gtk.TreeListModel (
             root_store,
-            false, //Passthrough - must be false to expanders to work
+            false, //Passthrough - must be false for expanders to work
             false, //autoexpand
             new_model_func // Function to create child model
         );
@@ -294,9 +322,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     protected override ListModel set_up_sort_model (ListModel list_model) {
         var column_sorter = column_view.get_sorter ();
         var row_sorter = new Gtk.TreeListRowSorter (column_sorter);
-        row_sorter.changed.connect (() => {
-            warning ("row sorter changed");
-        });
         return new Gtk.SortListModel (list_model, row_sorter);
     }
 
