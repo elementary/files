@@ -249,6 +249,8 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     private void set_sort () {
+        // Need to set sort column to null in order to remove arrow (Gtk bug?)
+        column_view.sort_by_column (null, Gtk.SortType.ASCENDING);
         var direction = sort_reversed ? Gtk.SortType.DESCENDING : Gtk.SortType.ASCENDING;
         switch (sort_type) {
             case Files.SortType.FILENAME:

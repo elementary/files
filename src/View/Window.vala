@@ -1207,6 +1207,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     public void change_state_sort_reversed (GLib.SimpleAction action) {
+warning ("change state sort reversed");
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
         if (current_slot != null) {
