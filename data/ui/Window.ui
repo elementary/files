@@ -24,20 +24,41 @@
       </item>
       <!--Rest of menu copied from View.ui-->
     </section>
+    <submenu>
+        <attribute name="label" translatable="yes">Open In</attribute>
+          <item>
+            <attribute name="label" translatable="yes">New Tab</attribute>
+            <attribute name="action">win.tab</attribute>
+            <attribute name="target">DUP</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">New Window</attribute>
+            <attribute name="action">win.tab</attribute>
+            <attribute name="target">WINDOW</attribute>
+          </item>
+    </submenu>
+    <submenu>
+        <attribute name="label" translatable="yes">Create New</attribute>
+        <section>
+          <item>
+            <attribute name="label" translatable="yes">Folder</attribute>
+            <attribute name="action">win.new-folder</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">File</attribute>
+            <attribute name="action">win.new-file</attribute>
+          </item>
+        </section>
+    </submenu>
     <section>
-      <submenu>
-          <attribute name="label" translatable="yes">Create New</attribute>
-          <section>
-            <item>
-              <attribute name="label" translatable="yes">Folder</attribute>
-              <attribute name="action">win.new-folder</attribute>
-            </item>
-            <item>
-              <attribute name="label" translatable="yes">File</attribute>
-              <attribute name="action">win.new-file</attribute>
-            </item>
-          </section>
-      </submenu>
+      <item>
+        <attribute name="label" translatable="yes">Copy</attribute>
+        <attribute name="action">win.copy</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Paste</attribute>
+        <attribute name="action">win.paste</attribute>
+      </item>
     </section>
     <section>
       <item>
@@ -60,7 +81,6 @@
       </item>
       <submenu>
         <attribute name="label" translatable="yes">Sort By</attribute>
-        <section>
           <item>
             <attribute name="label" translatable="yes">Name</attribute>
             <attribute name="action">win.sort-type</attribute>
@@ -81,14 +101,24 @@
             <attribute name="action">win.sort-type</attribute>
             <attribute name="target">MODIFIED</attribute>
           </item>
-        </section>
       </submenu>
     </section>
     <section>
-      <item>
-        <attribute name="label" translatable="yes">Select Folders with Single Click</attribute>
-        <attribute name="action">win.singleclick-select</attribute>
-      </item>
+      <submenu>
+        <attribute name="label" translatable="yes">Preferences</attribute>
+        <item>
+          <attribute name="label" translatable="yes">Select Folders with Single Click</attribute>
+          <attribute name="action">win.singleclick-select</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Hide Local Thumbnails</attribute>
+          <attribute name="action">win.hide-local-thumbnails</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Show Remote Thumbnails</attribute>
+          <attribute name="action">win.show-remote-thumbnails</attribute>
+        </item>
+      </submenu>
     </section>
     <section>
       <item>
