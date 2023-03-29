@@ -120,8 +120,22 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    protected void sort_model (CompareDataFunc<Object> compare_func) {
-        root_store.sort (compare_func);
+    protected void bind_sort () {
+        notify["sort-type"].connect (sort_model);
+        notify["sort-reversed"].connect (sort_model);
+
+        //TODO Persist setting in file metadata
+    }
+
+    protected override void sort_model () {
+        root_store.sort ((a , b) => {
+            return ((Files.File)a).compare_for_sort (
+                (Files.File)b,
+                sort_type,
+                prefs.sort_directories_first,
+                sort_reversed
+            );
+        });
     }
 
     public void set_model (Gtk.SelectionModel? model) {

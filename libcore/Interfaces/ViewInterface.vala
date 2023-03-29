@@ -152,13 +152,8 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     protected void bind_prefs () {
-        prefs.notify["sort-directories-first"].connect (() => {
-            sort_model (file_compare_func);
-        });
-        prefs.notify["show-hidden-files"].connect (() => {
-            // This refreshes the filter as well
-            sort_model (file_compare_func);
-        });
+        prefs.notify["sort-directories-first"].connect (sort_model);
+        prefs.notify["show-hidden-files"].connect (sort_model);
         prefs.notify["show-remote-thumbnails"].connect (() => {
             if (!slot.directory.is_local) {
                 refresh_thumbnails ();
@@ -171,17 +166,6 @@ public interface Files.ViewInterface : Gtk.Widget {
         });
     }
 
-    protected void bind_sort () {
-        notify["sort-type"].connect (() => {
-            sort_model (file_compare_func);
-        });
-        notify["sort-reversed"].connect (() => {
-            sort_model (file_compare_func);
-            //TODO Persist setting in file metadata
-        });
-    }
-
-    protected abstract void sort_model (CompareDataFunc<Object> compare_func);
 
     public void grab_focus () {
         if (get_view_widget () != null) {
@@ -411,7 +395,9 @@ public interface Files.ViewInterface : Gtk.Widget {
         var add_store = store == null ? root_store : store;
         //TODO Which store to add file to when subdir loaded?
         // Must avoid adding duplicates - Files.Directory checks before emitting file added signal
-        add_store.insert_sorted (file, file_compare_func);
+        // add_store.insert_sorted (file, file_compare_func);
+        add_store.append (file);
+        sort_model ();
 
         if (select_after_add) {
             select_after_add = false;
@@ -437,7 +423,8 @@ public interface Files.ViewInterface : Gtk.Widget {
         foreach (var file in files) {
             add_store.append (file);
         }
-        add_store.sort (file_compare_func);
+        // add_store.sort (file_compare_func);
+        sort_model ();
         set_model (multi_selection);
         // Need to deal with selection after loading
     }
@@ -589,8 +576,10 @@ public interface Files.ViewInterface : Gtk.Widget {
     }
 
     protected virtual ListModel set_up_sort_model (ListModel list_model) {
-        return list_model; // Default ListStore has its own sorter.
+        return root_store;
     }
+
+    protected virtual void sort_model () {}
 
     protected virtual ListModel set_up_list_model () {
         root_store = new GLib.ListStore (typeof (Files.File));
