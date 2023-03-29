@@ -1148,6 +1148,10 @@ public class Files.Window : Gtk.ApplicationWindow {
             selected_files.append (Files.File.@get (GLib.File.new_for_path (path)));
         }
 
+        if (selected_files == null) {
+            selected_files.append (current_slot.file);
+        }
+
         var properties_window = new PropertiesWindow (selected_files, current_view_widget, this);
         properties_window.response.connect ((res) => {
             properties_window.destroy ();

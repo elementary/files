@@ -165,6 +165,13 @@
         </item>
       </submenu>
     </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Properties</attribute>
+        <attribute name="action">win.properties</attribute>
+        <attribute name="target"></attribute>
+      </item>
+    </section>
   </menu>
 
   <object class="GtkScrolledWindow" id="scrolled-window">
