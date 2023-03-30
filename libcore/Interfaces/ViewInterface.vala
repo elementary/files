@@ -395,7 +395,6 @@ public interface Files.ViewInterface : Gtk.Widget {
         var add_store = store == null ? root_store : store;
         //TODO Which store to add file to when subdir loaded?
         // Must avoid adding duplicates - Files.Directory checks before emitting file added signal
-        // add_store.insert_sorted (file, file_compare_func);
         add_store.append (file);
         sort_model ();
 
@@ -588,11 +587,7 @@ public interface Files.ViewInterface : Gtk.Widget {
 
     protected ListModel set_up_filter_model (ListModel list_model) {
         filter_model = new Gtk.FilterListModel (list_model, null);
-        var custom_filter = new Gtk.CustomFilter ((obj) => {
-            Object child;
-            var file = get_file_and_child_from_object (obj, out child);
-            return prefs.show_hidden_files || !file.is_hidden;
-        });
+        var custom_filter = get_custom_filter ();
         filter_model.set_filter (custom_filter);
         return filter_model;
     }
@@ -605,22 +600,8 @@ public interface Files.ViewInterface : Gtk.Widget {
         return multi_selection;
     }
 
-    protected Files.File? get_file_and_child_from_object (Object obj, out Object? display_object) {
-    // Depending on caller, obj can be a ListItem, TreeListRow or Files.File
-        Object model_item;
-        if (obj is Gtk.ListItem) {
-            model_item = ((Gtk.ListItem)obj).get_item ();
-            display_object = ((Gtk.ListItem)obj).child;
-        } else {
-            model_item = obj;
-            display_object = null;
-        }
-
-        while (model_item is Gtk.TreeListRow) {
-            model_item = ((Gtk.TreeListRow)model_item).get_item ();
-        }
-        return (Files.File?)(model_item);
-    }
+    protected abstract Files.File get_file_and_child (Object obj, out Object child);
+    protected abstract Gtk.CustomFilter get_custom_filter ();
 
     protected virtual void handle_primary_release (
         Gtk.EventController controller,

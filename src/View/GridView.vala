@@ -100,9 +100,11 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         });
 
         item_factory.bind.connect ((obj) => {
+            Object child;
             var list_item = ((Gtk.ListItem)obj);
-            var file = (Files.File)list_item.get_item ();
-            var file_item = (GridFileItem)list_item.child;
+            var file = get_file_and_child (obj, out child);
+            var file_item = (GridFileItem)child;
+
             file_item.bind_file (file);
             file_item.selected = list_item.selected;
             file_item.pos = list_item.position;
@@ -118,6 +120,25 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         } else {
             Files.column_view_settings.bind ("zoom-level", this, "zoom-level", SettingsBindFlags.DEFAULT);
         }
+    }
+
+    protected Files.File get_file_and_child (
+        Object obj,
+        out Object child
+    ) {
+warning ("GRID get file and child from %s", obj.get_type ().name ());
+        var list_item = (Gtk.ListItem)obj;
+        child = list_item.child;
+        var fileobj = list_item.get_item ();
+        return (Files.File)fileobj;
+    }
+
+    protected Gtk.CustomFilter get_custom_filter () {
+        return new Gtk.CustomFilter ((obj) => {
+            assert (obj is Files.File);
+            var file = (Files.File)obj;
+            return prefs.show_hidden_files || !file.is_hidden;
+        });
     }
 
     protected void bind_sort () {
