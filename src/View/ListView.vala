@@ -333,10 +333,32 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
+    private Gtk.CustomSorter dir_sorter;
     protected override ListModel set_up_sort_model (ListModel list_model) {
+        var multi_sorter = new Gtk.MultiSorter ();
         var column_sorter = column_view.get_sorter ();
         var row_sorter = new Gtk.TreeListRowSorter (column_sorter);
-        return new Gtk.SortListModel (list_model, row_sorter);
+        dir_sorter = new Gtk.CustomSorter ((a, b) => {
+            if(!prefs.sort_directories_first) {
+                return 0;
+            }
+
+            Object child;
+            var filea = (Files.File)(((Gtk.TreeListRow)a).get_item ());
+            var fileb = (Files.File)(((Gtk.TreeListRow)b).get_item ());
+            var a_is_dir = filea.is_folder ();
+            var b_is_dir = fileb.is_folder ();
+
+            if (a_is_dir == b_is_dir) {
+                return 0;
+            } else {
+                return a_is_dir ? -1 : 1;
+            }
+        });
+
+        multi_sorter.append (dir_sorter);
+        multi_sorter.append (row_sorter);
+        return new Gtk.SortListModel (list_model, multi_sorter);
     }
 
     protected override Files.File? get_file_from_selection_pos (uint pos) {

@@ -126,7 +126,6 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         Object obj,
         out Object child
     ) {
-warning ("GRID get file and child from %s", obj.get_type ().name ());
         var list_item = (Gtk.ListItem)obj;
         child = list_item.child;
         var fileobj = list_item.get_item ();
