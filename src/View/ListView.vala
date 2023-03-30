@@ -339,7 +339,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         var column_sorter = column_view.get_sorter ();
         var row_sorter = new Gtk.TreeListRowSorter (column_sorter);
         dir_sorter = new Gtk.CustomSorter ((a, b) => {
-            if(!prefs.sort_directories_first) {
+            if (!prefs.sort_directories_first) {
                 return 0;
             }
 
