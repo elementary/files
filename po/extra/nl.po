@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-02 12:23+0000\n"
-"PO-Revision-Date: 2023-03-31 09:59+0000\n"
+"PO-Revision-Date: 2023-04-01 19:59+0000\n"
 "Last-Translator: DutchVipperloid <svenroelof@e.email>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
@@ -224,10 +224,9 @@ msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:142
-#, fuzzy
-#| msgid "Show keyboard shortcuts in menu items"
 msgid "Show New Tab and New Window shortcuts in context menus"
-msgstr "Toon toetsenbord sneltoetsen in menu items"
+msgstr ""
+"Toon nieuw nieuw tabblad en nieuwe venster snelkoppelingen in contextmenu's"
 
 #: data/io.elementary.files.appdata.xml.in.in:146
 msgid "Double click selects instead of exiting while renaming in list view"
@@ -330,10 +329,8 @@ msgid ""
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:195
-#, fuzzy
-#| msgid "Fix selecting pasted files"
 msgid "Fix selecting multiple groups of files"
-msgstr "Een probleem opgelost met het selecteren van geplakte bestanden"
+msgstr "Een probleem opgelost met het selecteren van meerdere groepen bestanden"
 
 #: data/io.elementary.files.appdata.xml.in.in:196
 msgid "Allow dropping bookmark directly below the Recent bookmark"
