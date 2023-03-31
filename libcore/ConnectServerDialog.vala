@@ -390,7 +390,6 @@ public class PF.ConnectServerDialog : Object {
         connect_button.visible = true;
         continue_button.visible = false;
         connect_button.sensitive = valid_entries ();
-        // connect_button.grab_default ();
     }
 
     private void verify_details () {
@@ -403,7 +402,6 @@ public class PF.ConnectServerDialog : Object {
 
         continue_button.visible = true;
         continue_button.sensitive = false; /* something has to change */
-        // continue_button.grab_default ();
 
         show_info ();
         loop.run ();

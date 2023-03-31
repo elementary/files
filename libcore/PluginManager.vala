@@ -178,37 +178,10 @@ public class Files.PluginManager : Object {
     }
 
     public void hook_context_menu (Gtk.PopoverMenu menu, List<Files.File> files) {
-        // drop_menu_references (menu);
-
-        // if (menu is Gtk.Menu) {
-        //     drop_plugin_menuitems ();
-        // }
-
         foreach (var plugin in plugin_hash.values) {
             plugin.context_menu (menu, files);
         }
     }
-
-    // private void drop_plugin_menuitems () {
-    //     foreach (var menu_item in menuitem_references) {
-    //         menu_item.unparent ();
-    //     }
-
-    //     menuitem_references.clear ();
-    // }
-
-    // [Version (deprecated = true, deprecated_since = "0.2", replacement = "Files.PluginManager.drop_plugin_menuitems")]
-    // private void drop_menu_references (Gtk.Widget menu) {
-    //     if (menus == null) {
-    //         return;
-    //     }
-
-    //     foreach (var item in menus) {
-    //         item.destroy ();
-    //     }
-
-    //     menus = null;
-    // }
 
     public void directory_loaded (Files.SlotContainerInterface multi_slot, Files.File directory) {
         foreach (var plugin in plugin_hash.values) {

@@ -25,11 +25,7 @@
 ***/
 
 /**
- * WARNING: The source code in this file may do harm to animals. Dead kittens
- * are to be expected.
- *
- *
- * MarlinThumbnailer is a class for requesting thumbnails from org.xfce.tumbler.*
+ * Files.Thumbnailer is a class for requesting thumbnails from org.xfce.tumbler.*
  * D-Bus services. This header contains an in-depth description of its design to make
  * it easier to understand why things are the way they are.
  *

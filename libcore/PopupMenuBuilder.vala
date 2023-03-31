@@ -81,9 +81,6 @@ public class PopupMenuBuilder : Object {
     public PopupMenuBuilder add_cut (string? detailed_action_name) {
         return add_item (_("Cut"), detailed_action_name);
     }
-    // public PopupMenuBuilder add_paste (string? detailed_action_name) {
-    //     return add_item (_("Paste"), detailed_action_name);
-    // }
     public PopupMenuBuilder add_copy_link (string? detailed_action_name) {
         return add_item (_("Copy Link"), detailed_action_name);
     }
@@ -119,14 +116,6 @@ public class PopupMenuBuilder : Object {
         section_menus += new Menu ();
         return this;
     }
-
-    // public PopupMenuBuilder add_custom (Variant id) {
-    //     // Insert a custom item with specified id
-    //     var item = new MenuItem (null, null);
-    //     item.set_attribute_value ("custom", id);
-    //     section_menus[section_index].append_item (item);
-    //     return this;
-    // }
 
     public PopupMenuBuilder add_item (string name, string? detailed_action_name) {
         var item = new MenuItem (name, detailed_action_name);
