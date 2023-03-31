@@ -31,7 +31,6 @@ public class Files.MultiSlot : Gtk.Box, SlotContainerInterface {
     /* Need private copy of initial location as MultiSlot
      * does not have its own Asyncdirectory object */
 
-    // private uint scroll_to_slot_timeout_id = 0;
     private Gtk.ScrolledWindow scrolled_window;
     private Gtk.Viewport viewport;
     private Gtk.Paned first_host;

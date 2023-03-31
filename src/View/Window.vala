@@ -1293,23 +1293,13 @@ warning ("change state sort reversed");
         sidebar_width = int.max (sidebar_width, min_width);
         Files.app_settings.set_int ("sidebar-width", sidebar_width);
 
-        int width, height, x, y;
-
-        // Includes shadow for normal windows (but not maximized or tiled)
-        // get_size (out width, out height);
-        // get_position (out x, out y);
         var toplevel_state = ((Gdk.Toplevel)get_surface ()).get_state ();
-        // If window is tiled, is it on left (start = true) or right (start = false)?
-        // var rect = get_display ().get_monitor_at_point (x, y).get_geometry ();
-        // var start = x + width < rect.width;
-
         Files.app_settings.set_enum (
             "window-state",
              Files.WindowState.from_gdk_toplevel_state (toplevel_state)
         );
 
         Files.app_settings.set ("window-size", "(ii)", get_width (), get_height ());
-        // Files.app_settings.set ("window-position", "(ii)", x, y);
     }
 
     private void save_tabs () {
