@@ -70,11 +70,11 @@ public class Files.HeaderBar : Gtk.Box {
         };
         headerbar.set_centering_policy (Adw.CenteringPolicy.LOOSE);
         headerbar.set_parent (this);
-        button_back = new ButtonWithMenu.from_icon_name ("go-previous-symbolic");
+        button_back = new ButtonWithMenu ("go-previous-symbolic");
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.add_css_class ("flat");
 
-        button_forward = new ButtonWithMenu.from_icon_name ("go-next-symbolic");
+        button_forward = new ButtonWithMenu ("go-next-symbolic");
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.add_css_class ("flat");
 
@@ -155,7 +155,7 @@ public class Files.HeaderBar : Gtk.Box {
         };
 
         //Sort folders before files
-        var foldes_before_files = new Granite.SwitchModelButton (_("Sort Folders before Files")) {
+        var folders_before_files = new Granite.SwitchModelButton (_("Sort Folders before Files")) {
             action_name = "win.folders-before-files"
         };
 
@@ -187,7 +187,7 @@ public class Files.HeaderBar : Gtk.Box {
         menu_box.append (undo_redo_box);
         menu_box.append (new Gtk.Separator (Gtk.Orientation.HORIZONTAL) { margin_bottom = 3 });
         menu_box.append (double_click_button);
-        menu_box.append (foldes_before_files);
+        menu_box.append (folders_before_files);
         menu_box.append (new Gtk.Separator (Gtk.Orientation.HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
         menu_box.append (show_header);
         menu_box.append (show_hidden_button);
@@ -212,11 +212,11 @@ public class Files.HeaderBar : Gtk.Box {
         headerbar.pack_end (view_switcher);
         headerbar.set_title_widget (path_bar);
 
-        button_forward.toggled.connect (() => {
+        button_forward.activated.connect (() => {
             path_bar.activate_action ("win.forward", "i", 1);
         });
 
-        button_back.toggled.connect (() => {
+        button_back.activated.connect (() => {
             path_bar.activate_action ("win.back", "i", 1);
         });
 
