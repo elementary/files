@@ -71,12 +71,9 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
         //Set up as drag source
         var drag_source = new Gtk.DragSource () {
-            button = 0, // Need to drag with secondary button as well
+            button = Gdk.BUTTON_PRIMARY,
             propagation_phase = Gtk.PropagationPhase.CAPTURE,
-            actions = Gdk.DragAction.LINK |
-                      Gdk.DragAction.COPY |
-                      Gdk.DragAction.MOVE |
-                      Gdk.DragAction.ASK
+            actions = Gdk.DragAction.LINK
         };
         list_box.add_controller (drag_source);
         drag_source.prepare.connect ((x, y) => {
@@ -95,18 +92,19 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                 // Claim sequence so other button release handlers not triggered
                 drag_source.set_state (Gtk.EventSequenceState.CLAIMED);
                 return new Gdk.ContentProvider.for_value (uri_val);
+            } else {
+                critical ("Dragging something not bookmark!!!");
+                assert_not_reached ();
             }
-
-            return null;
-        });
-        drag_source.drag_begin.connect ((drag) => {
-            drag.set_data<uint> ("button", current_drag_button);
-            //TODO Set drag icon
-            return;
         });
         drag_source.drag_end.connect ((drag, delete_data) => {
             dragged_row = null;
-            current_drag_button = 1;
+            if (current_drop_target != null) {
+                current_drop_target.reveal_drop_target (false);
+                current_drop_target = null;
+            }
+
+            current_drag_button = Gdk.BUTTON_PRIMARY;
             return;
         });
         drag_source.drag_cancel.connect ((drag, reason) => {
@@ -114,8 +112,10 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             return true;
         });
 
-        //Set up as drag target. Use simple (synchronous) string target for now as most reliable
-        //TODO Use Gdk.FileList target when Gtk4 version 4.8+ available
+        // Set up as drag target.
+        // Use simple (synchronous) string target for now as most reliable
+        // TODO Use Gdk.FileList target when Gtk4 version 4.8+ available
+        // Accepts both bookmarks and fileitems as drag sources
         var drop_target = new Gtk.DropTarget (
             Type.STRING,
             Gdk.DragAction.LINK |
@@ -140,8 +140,10 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                         try {
                             var val = drop.read_value_async.end (res);
                             if (val != null) {
-                                // Error thrown if string does not contain valid uris as uri-list
-                                drop_accepted = Files.FileUtils.files_from_uris (val.get_string (), out dropped_files);
+                                drop_accepted = Files.FileUtils.files_from_uris (
+                                    val.get_string (),
+                                    out dropped_files
+                                );
                             }
                         } catch (Error e) {
                             warning ("Could not retrieve valid uri (s)");
@@ -171,81 +173,100 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             if (!drop_accepted) {
                 return 0;
             }
-            var drop = drop_target.get_current_drop ();
-            bool alt_only, secondary_button_pressed;
-            Files.DndHandler.get_alt_and_button_for_drop (drop, out alt_only, out secondary_button_pressed);
+
             var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
-            var row = widget.get_ancestor (typeof (BookmarkRow));
-            if (row != null && (row is BookmarkRow)) {
-                var bm = ((BookmarkRow)row);
-                if (current_drop_target == null || current_drop_target != bm) {
-                    if (current_drop_target != null) {
-                        current_drop_target.reveal_drop_target (false);
-                    }
-
-                    current_drop_target = bm;
-                }
-
-                Graphene.Point bm_point;
-                list_box.compute_point (bm, {(float)x, (float)y}, out bm_point);
-                //TODO Avoid hard coded threshold values
-                if (bm_point.y > 16) {
-                    bm.reveal_drop_target (true);
-                } else {
-                    bm.reveal_drop_target (false);
-                }
-
-                if (current_drop_target != null) {
-                    // current_drop_uri = current_drop_target.uri;
-                    Files.DndHandler.valid_and_preferred_actions (
-                        current_drop_target.target_file,
-                        dropped_files, // read-only
-                        drop,
-                        alt_only || secondary_button_pressed
-                    );
-                } else { //Dropping between bookmarks
-                    return Gdk.DragAction.LINK;
-                }
+            var target_row = widget.get_ancestor (typeof (BookmarkRow));
+            if (target_row == null || !(target_row is BookmarkRow)) {
+                return 0;
             }
 
-            return Files.DndHandler.preferred_action;
+            var drop = drop_target.get_current_drop ();
+            bool alt_only, secondary_button_pressed;
+            Files.DndHandler.get_alt_and_button_for_drop (
+                drop,
+                out alt_only,
+                out secondary_button_pressed
+            );
+
+            var target_bm = ((BookmarkRow)target_row);
+            if (current_drop_target != null && current_drop_target != target_bm) {
+                current_drop_target.reveal_drop_target (false);
+            }
+
+            current_drop_target = target_bm;
+
+            // Compute whether to show drop between target
+            Graphene.Point bm_point;
+            list_box.compute_point (
+                target_bm,
+                {(float)x,
+                (float)y},
+                out bm_point
+            );
+            //TODO Avoid hard coded threshold values
+            if (bm_point.y > 16) {
+                target_bm.reveal_drop_target (true);
+            } else {
+                target_bm.reveal_drop_target (false);
+            }
+
+            if (current_drop_target.drop_target_revealed ()) {
+                return Gdk.DragAction.LINK;
+            } else {
+                Files.DndHandler.valid_and_preferred_actions (
+                    current_drop_target.target_file,
+                    dropped_files, // read-only
+                    drop,
+                    alt_only || secondary_button_pressed
+                );
+
+                return Files.DndHandler.preferred_action;
+            }
         });
+
         drop_target.on_drop.connect ((val, x, y) => {
-            if ((dropped_files != null || dragged_row != null) && current_drop_target != null) {
-                if (current_drop_target.drop_target_revealed ()) {
-                    // Dropping between bookmarks - create new bookmark
-                    if (dragged_row != null) {
-                        move_item_after (dragged_row, current_drop_target.get_index ());
-                    } else {
-                        var index = 1;
-                        //TODO Limit list length to sensible value?
-                        foreach (var file in dropped_files) {
-                            add_favorite (file.get_uri (), "", current_drop_target.get_index () + index++);
-                        }
-                    }
+            drop_accepted = false;
+            if (current_drop_target == null) {
+                return true;
+            }
+
+            if (dropped_files == null && dragged_row == null) {
+                return true;
+            }
+
+            if (current_drop_target.drop_target_revealed ()) {
+                // Dropping between bookmarks - create new bookmark
+                if (dragged_row != null) {
+                    move_item_after (
+                        dragged_row,
+                        current_drop_target.get_index ()
+                    );
                 } else {
-                    //Dropping onto bookmark - perform file operation
-                    if (dragged_row != null) {
-                        warning ("dragged row onto row - not supported");
-                    } else {
-                        //Appropriate actions were setup in the `move` signal handler
-                        Files.DndHandler.handle_file_drop_actions (
-                            this,
-                            x, y,
-                            Files.File.@get (File.new_for_uri (current_drop_target.uri)),
-                            dropped_files
+                    var index = 1;
+                    //TODO Limit list length to sensible value?
+                    foreach (var file in dropped_files) {
+                        add_favorite (
+                            file.get_uri (),
+                            "",
+                            current_drop_target.get_index () + index++
                         );
                     }
                 }
             } else {
-                warning ("Either no dropped files or no target found");
+                //Dropping onto bookmark - perform file operation
+                if (dragged_row != null) {
+                    warning ("dragged row onto row - not supported");
+                } else {
+                    //Appropriate actions were setup in the `move` signal handler
+                    Files.DndHandler.handle_file_drop_actions (
+                        this,
+                        x, y,
+                        Files.File.@get (File.new_for_uri (current_drop_target.uri)),
+                        dropped_files
+                    );
+                }
             }
 
-            drop_accepted = false;
-            if (current_drop_target != null) {
-                current_drop_target.reveal_drop_target (false);
-                current_drop_target = null;
-            }
             return true;
         });
 

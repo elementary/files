@@ -19,6 +19,7 @@
 * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
 */
 
+// Handles drag and drop got view file items
 public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
     protected abstract string? uri_string { get; set; default = null;}
     protected abstract uint auto_open_timeout_id { get; set; default = 0; }
