@@ -7,11 +7,11 @@
 public class Files.Window : Gtk.ApplicationWindow {
     private static Files.Preferences prefs;
     private static UndoManager undo_manager;
-    private static Files.Application marlin_app;
+    private static Files.Application files_app;
     static construct {
         prefs = Files.Preferences.get_default ();
         undo_manager = UndoManager.instance ();
-        marlin_app = (Files.Application)(GLib.Application.get_default ());
+        files_app = (Files.Application)(GLib.Application.get_default ());
     }
 
     const GLib.ActionEntry [] WIN_ENTRIES = {
@@ -110,71 +110,71 @@ public class Files.Window : Gtk.ApplicationWindow {
         title = _(APP_TITLE);
         height_request = 300;
         width_request = 500;
-        window_number = marlin_app.window_count;
+        window_number = files_app.window_count;
 
         add_action_entries (WIN_ENTRIES, this);
         // Setting accels on `application` does not work in construct clause
         // Must set before building window so ViewSwitcher can lookup the accels for tooltips
         if (is_first_window) {
-            marlin_app.set_accels_for_action ("win.quit", {"<Ctrl>Q"});
-            marlin_app.set_accels_for_action ("win.new-window", {"<Ctrl>N"});
-            marlin_app.set_accels_for_action ("win.new-folder", {"<Shift><Ctrl>N"});
-            marlin_app.set_accels_for_action ("win.new-file", {"<Ctrl><Alt>N"});
-            marlin_app.set_accels_for_action ("win.copy", {"<Ctrl>C"});
-            marlin_app.set_accels_for_action ("win.link", {"<Ctrl><Shift>C"});
-            marlin_app.set_accels_for_action ("win.cut", {"<Ctrl>X"});
-            marlin_app.set_accels_for_action ("win.paste", {"<Ctrl>V"});
-            marlin_app.set_accels_for_action ("win.trash", {"Delete"});
-            marlin_app.set_accels_for_action ("win.delete", {"<Shift>Delete"});
-            marlin_app.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
-            marlin_app.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
-            marlin_app.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
-            marlin_app.set_accels_for_action ("win.rename", {"F2"});
-            marlin_app.set_accels_for_action ("win.find::", {"<Ctrl>F"});
-            marlin_app.set_accels_for_action ("win.edit-path", {"<Ctrl>L"});
-            marlin_app.set_accels_for_action ("win.sort-directories-first", {"<Alt>minus"});
-            marlin_app.set_accels_for_action ("win.toggle-select-all", {"<Ctrl>A"});
-            marlin_app.set_accels_for_action ("win.toggle-sidebar", {"<Ctrl>backslash"});
-            marlin_app.set_accels_for_action ("win.invert-selection", {"<Shift><Ctrl>A"});
-            marlin_app.set_accels_for_action ("win.context-menu", {"Menu", "MenuKB"});
-            marlin_app.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
-            marlin_app.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
-            marlin_app.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
-            marlin_app.set_accels_for_action ("win.tab::PREVIOUS", {"<Ctrl>Page_Up", "<Shift><Ctrl>Tab"});
-            marlin_app.set_accels_for_action ("win.tab::DUP", {"<Ctrl><Alt>T"});
-            marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Super>N"});
-            marlin_app.set_accels_for_action (
+            files_app.set_accels_for_action ("win.quit", {"<Ctrl>Q"});
+            files_app.set_accels_for_action ("win.new-window", {"<Ctrl>N"});
+            files_app.set_accels_for_action ("win.new-folder", {"<Shift><Ctrl>N"});
+            files_app.set_accels_for_action ("win.new-file", {"<Ctrl><Alt>N"});
+            files_app.set_accels_for_action ("win.copy", {"<Ctrl>C"});
+            files_app.set_accels_for_action ("win.link", {"<Ctrl><Shift>C"});
+            files_app.set_accels_for_action ("win.cut", {"<Ctrl>X"});
+            files_app.set_accels_for_action ("win.paste", {"<Ctrl>V"});
+            files_app.set_accels_for_action ("win.trash", {"Delete"});
+            files_app.set_accels_for_action ("win.delete", {"<Shift>Delete"});
+            files_app.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
+            files_app.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
+            files_app.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
+            files_app.set_accels_for_action ("win.rename", {"F2"});
+            files_app.set_accels_for_action ("win.find::", {"<Ctrl>F"});
+            files_app.set_accels_for_action ("win.edit-path", {"<Ctrl>L"});
+            files_app.set_accels_for_action ("win.sort-directories-first", {"<Alt>minus"});
+            files_app.set_accels_for_action ("win.toggle-select-all", {"<Ctrl>A"});
+            files_app.set_accels_for_action ("win.toggle-sidebar", {"<Ctrl>backslash"});
+            files_app.set_accels_for_action ("win.invert-selection", {"<Shift><Ctrl>A"});
+            files_app.set_accels_for_action ("win.context-menu", {"Menu", "MenuKB"});
+            files_app.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
+            files_app.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
+            files_app.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
+            files_app.set_accels_for_action ("win.tab::PREVIOUS", {"<Ctrl>Page_Up", "<Shift><Ctrl>Tab"});
+            files_app.set_accels_for_action ("win.tab::DUP", {"<Ctrl><Alt>T"});
+            files_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Super>N"});
+            files_app.set_accels_for_action (
                 GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (0)), {"<Ctrl>1"}
             );
-            marlin_app.set_accels_for_action (
+            files_app.set_accels_for_action (
                 GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (1)), {"<Ctrl>2"}
             );
-            marlin_app.set_accels_for_action (
+            files_app.set_accels_for_action (
                 GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (2)), {"<Ctrl>3"}
             );
-            marlin_app.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
-            marlin_app.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
-            marlin_app.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
-            marlin_app.set_accels_for_action ("win.show-hidden", {"<Ctrl>H"});
-            marlin_app.set_accels_for_action ("win.sort-reversed", {"<Alt>0"});
-            marlin_app.set_accels_for_action ("win.show-remote-thumbnails", {"<Ctrl>bracketleft"});
-            marlin_app.set_accels_for_action ("win.show-local-thumbnails", {"<Ctrl>bracketright"});
-            marlin_app.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
-            marlin_app.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
-            marlin_app.set_accels_for_action ("win.go-to::RECENT", {"<Alt>R"});
-            marlin_app.set_accels_for_action ("win.go-to::TRASH", {"<Alt>T"});
-            marlin_app.set_accels_for_action ("win.go-to::ROOT", {"<Alt>slash"});
-            marlin_app.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
-            marlin_app.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});
-            marlin_app.set_accels_for_action ("win.go-to::UP", {"<Alt>Up"});
-            marlin_app.set_accels_for_action ("win.go-to::FORWARD", {"<Alt>Right", "XF86Forward"});
-            marlin_app.set_accels_for_action ("win.go-to::BACK", {"<Alt>Left", "XF86Back"});
-            marlin_app.set_accels_for_action ("win.info::HELP", {"F1"});
-            marlin_app.set_accels_for_action ("win.sort-type::FILENAME", {"<Alt>1"});
-            marlin_app.set_accels_for_action ("win.sort-type::SIZE", {"<Alt>2"});
-            marlin_app.set_accels_for_action ("win.sort-type::TYPE", {"<Alt>3"});
-            marlin_app.set_accels_for_action ("win.sort-type::MODIFIED", {"<Alt>4"});
-            // marlin_app.set_accels_for_action ("win.focus-view", {"Escape"});
+            files_app.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
+            files_app.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
+            files_app.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
+            files_app.set_accels_for_action ("win.show-hidden", {"<Ctrl>H"});
+            files_app.set_accels_for_action ("win.sort-reversed", {"<Alt>0"});
+            files_app.set_accels_for_action ("win.show-remote-thumbnails", {"<Ctrl>bracketleft"});
+            files_app.set_accels_for_action ("win.show-local-thumbnails", {"<Ctrl>bracketright"});
+            files_app.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
+            files_app.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
+            files_app.set_accels_for_action ("win.go-to::RECENT", {"<Alt>R"});
+            files_app.set_accels_for_action ("win.go-to::TRASH", {"<Alt>T"});
+            files_app.set_accels_for_action ("win.go-to::ROOT", {"<Alt>slash"});
+            files_app.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
+            files_app.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});
+            files_app.set_accels_for_action ("win.go-to::UP", {"<Alt>Up"});
+            files_app.set_accels_for_action ("win.go-to::FORWARD", {"<Alt>Right", "XF86Forward"});
+            files_app.set_accels_for_action ("win.go-to::BACK", {"<Alt>Left", "XF86Back"});
+            files_app.set_accels_for_action ("win.info::HELP", {"F1"});
+            files_app.set_accels_for_action ("win.sort-type::FILENAME", {"<Alt>1"});
+            files_app.set_accels_for_action ("win.sort-type::SIZE", {"<Alt>2"});
+            files_app.set_accels_for_action ("win.sort-type::TYPE", {"<Alt>3"});
+            files_app.set_accels_for_action ("win.sort-type::MODIFIED", {"<Alt>4"});
+            // files_app.set_accels_for_action ("win.focus-view", {"Escape"});
         }
 
         get_action ("undo").set_enabled (false);
@@ -268,7 +268,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         //     add_tab_by_uri (restore_data);
         // });
         tab_view.create_window.connect (() => {
-            return marlin_app.create_empty_window ().tab_view;
+            return files_app.create_empty_window ().tab_view;
         });
         tab_view.page_attached.connect ((tab, pos) => {
         });
@@ -524,7 +524,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         GLib.File location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
         ViewMode mode = ViewMode.PREFERRED
     ) {
-        marlin_app.create_window (location, real_mode (mode));
+        files_app.create_window (location, real_mode (mode));
     }
 
     private void undo_actions_set_insensitive () {
@@ -941,7 +941,7 @@ public class Files.Window : Gtk.ApplicationWindow {
 
                 break;
             case "WINDOW": // Move tab to new window
-                var new_window = marlin_app.create_empty_window ();
+                var new_window = files_app.create_empty_window ();
                 tab_view.transfer_page (tab_view.selected_page, new_window.tab_view, 0);
                 // "page-detached" handler will take care of creating new default tab if necessary
                 break;
