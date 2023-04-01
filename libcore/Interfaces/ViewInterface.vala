@@ -170,33 +170,9 @@ public interface Files.ViewInterface : Gtk.Widget {
 
     public void grab_focus () {
         if (get_view_widget () != null) {
-            var item = get_selected_file_item ();
-            // Assume item already focussed if there is a selection
-            if (item != null) {
-                item.grab_focus ();
-                return;
-            }
-
-            //Note not all items may be visible so look at multi-selection
-            //TODO Use `n_items` property when using Gtk version >= 4.8
-            if (multi_selection.get_n_items () > 0) {
-                var first_item = multi_selection.get_item (0);
-                Files.File first_file;
-                if (first_item is Gtk.TreeListRow) {
-                    first_file = (Files.File)(((Gtk.TreeListRow)first_item).get_item ());
-                } else {
-                    first_file = (Files.File)(first_item);
-                }
-                show_and_select_file (first_file, false, false, true);
-                item = get_file_item_for_file (first_file);
-                if (item != null) {
-                    item.grab_focus ();
-                } else {
-                    critical ("Grab focus: failed to get first item");
-                }
-            } else {
-                get_view_widget ().grab_focus ();
-            }
+            get_view_widget ().grab_focus ();
+            //TODO Deal with focusing selected items? Currently causes allocation
+            // errors in ListView if done here
         } else {
             critical ("Attempt to focus null view");
         }
