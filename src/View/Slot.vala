@@ -11,7 +11,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     public Directory? directory { get; set; }
     public unowned Files.File? file { get { return directory != null ? directory.file : null; }}
     public unowned string uri { get { return file != null ? file.uri : ""; }}
-    public Files.ViewInterface? view_widget { get; private set; }
+    public Files.ViewInterface? view_interface { get; private set; }
     public int displayed_files_count {
         get {
             if (directory != null && directory.state == Directory.State.LOADED) {
@@ -74,33 +74,32 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         empty_label.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
         switch (view_mode) {
             case ViewMode.ICON:
-                view_widget = new Files.GridView (this);
+                view_interface = new Files.GridView (this);
                 break;
             case ViewMode.LIST:
-                view_widget = new Files.ListView (this);
-                // view_widget = new Files.GridView (this);
+                view_interface = new Files.ListView (this);
                 break;
             case ViewMode.MULTICOLUMN:
                 var gv = new Files.GridView (this);
                 gv.grid_view.max_columns = 1;
-                view_widget = gv;
+                view_interface = gv;
                 break;
 
             default:
-                view_widget = new Files.GridView (this);
+                view_interface = new Files.GridView (this);
                 break;
         }
 
-        overlay.child = view_widget;
+        overlay.child = view_interface;
         if (view_mode == ViewMode.MULTICOLUMN) {
             preferred_column_width = Files.column_view_settings.get_int (
                 "preferred-column-width"
             );
             width = preferred_column_width;
-            view_widget.width_request = preferred_column_width;
+            view_interface.width_request = preferred_column_width;
         }
 
-        view_widget.selection_changed.connect (on_view_widget_selection_changed);
+        view_interface.selection_changed.connect (on_view_interface_selection_changed);
 
         append (extra_location_widgets);
         append (overlay);
@@ -109,7 +108,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
     uint selection_changed_timeout_id = 0;
     List<Files.File> selected_files = null; // Maintain a reference for overlaybar
-    private void on_view_widget_selection_changed () {
+    private void on_view_interface_selection_changed () {
         activate_action ("win.selection-changing", null);
 
         if (selection_changed_timeout_id > 0) {
@@ -146,8 +145,8 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     // Use only for single file changes, not initial loading for performance
     private void on_directory_file_added (Directory dir, Files.File? file, bool is_internal) {
         if (file != null && !dir.is_loading ()) {
-            view_widget.select_after_add = is_internal;
-            view_widget.add_file (file);
+            view_interface.select_after_add = is_internal;
+            view_interface.add_file (file);
         }
 
         //TODO Determine whether dir is loading or freespace update required.
@@ -157,7 +156,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     // The file must be selected but not added
     private void on_directory_duplicate_added (Directory dir, Files.File? file) {
         if (file != null && !dir.is_loading ()) {
-            view_widget.show_and_select_file (file, true, false, false);
+            view_interface.show_and_select_file (file, true, false, false);
         }
     }
 
@@ -165,14 +164,14 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         if (file.location.equal (dir.file.location)) {
             /* The slot directory has changed - it can only be the properties */
         } else {
-            view_widget.file_changed (file);
+            view_interface.file_changed (file);
         }
     }
 
     public void on_directory_file_deleted (Directory dir, Files.File file) {
         /* The deleted file could be the whole directory */
         file.exists = false;
-        view_widget.file_deleted (file);
+        view_interface.file_deleted (file);
 
         if (file.get_thumbnail_path () != null) {
             FileUtils.remove_thumbnail_paths_for_uri (file.uri);
@@ -187,20 +186,20 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
     // Only receives this when another entity will initiate the reload
     private void on_directory_will_reload (Directory dir) {
-        view_widget.clear ();
+        view_interface.clear ();
         directory.file_added.disconnect (on_directory_file_added);
         activate_action ("win.loading-uri", "s", dir.file.uri);
     }
 
     private void on_directory_done_loading () {
         // Ensure all windows updated
-        view_widget.add_files (directory.get_files ());
+        view_interface.add_files (directory.get_files ());
         directory.file_added.connect (on_directory_file_added);
         activate_action ("win.loading-finished", null);
     }
 
     public void change_path (GLib.File location) {
-        view_widget.clear ();
+        view_interface.clear ();
         set_up_directory (location);
     }
 
@@ -227,11 +226,11 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         yield directory.init ();
         if (directory.can_load) {
             if (file.is_recent_uri_scheme ()) {
-                view_widget.sort_type = Files.SortType.MODIFIED;
-                view_widget.sort_reversed = false;
+                view_interface.sort_type = Files.SortType.MODIFIED;
+                view_interface.sort_reversed = false;
             } else if (this.directory.file.info != null) {
-                view_widget.sort_type = this.directory.file.sort_type;
-                view_widget.sort_reversed = this.directory.file.sort_reversed;
+                view_interface.sort_type = this.directory.file.sort_type;
+                view_interface.sort_reversed = this.directory.file.sort_reversed;
             }
         } else {
             return false;
@@ -254,12 +253,12 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     public void set_sort (Files.SortType sort_type) {
-        view_widget.sort_type = sort_type;
+        view_interface.sort_type = sort_type;
         directory.file.set_sort (sort_type, Files.is_admin ()); // Sets metadata
     }
 
     public void set_reversed (bool reversed) {
-        view_widget.sort_reversed = reversed;
+        view_interface.sort_reversed = reversed;
         directory.file.set_reversed (reversed, Files.is_admin ()); // Sets metadata
     }
 
@@ -268,11 +267,11 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     public override bool set_all_selected (bool select_all) {
-        if (view_widget != null) {
+        if (view_interface != null) {
             if (select_all) {
-                view_widget.select_all ();
+                view_interface.select_all ();
             } else {
-                view_widget.unselect_all ();
+                view_interface.unselect_all ();
             }
             return true;
         } else {
@@ -282,15 +281,15 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
     public List<Files.File> get_selected_files () {
         List<Files.File> selected_files = null;
-        if (view_widget != null) {
-            view_widget.get_selected_files (out selected_files);
+        if (view_interface != null) {
+            view_interface.get_selected_files (out selected_files);
         }
 
         return (owned)selected_files;
     }
 
     public void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location) {
-        if (view_widget != null) {
+        if (view_interface != null) {
             var files_to_select = new List<Files.File> ();
             locations.@foreach ((loc) => {
                 files_to_select.prepend (Files.File.@get (loc));
@@ -298,9 +297,9 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
             var focus_after_select = focus_location != null ? focus_location.dup () : null;
 
-            view_widget.select_files (files_to_select);
+            view_interface.select_files (files_to_select);
             if (focus_after_select != null) {
-                view_widget.show_and_select_file (
+                view_interface.show_and_select_file (
                     Files.File.@get (focus_after_select), false, false, true
                 );
             }
@@ -308,14 +307,14 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     public void select_gof_file (Files.File gof) {
-        if (view_widget != null) {
-            view_widget.show_and_select_file (gof, true, false, false);
+        if (view_interface != null) {
+            view_interface.show_and_select_file (gof, true, false, false);
         }
     }
 
     public void show_first_item () {
-        if (view_widget != null) {
-            view_widget.show_and_select_file (null, false, false, true);
+        if (view_interface != null) {
+            view_interface.show_and_select_file (null, false, false, true);
         }
     }
 
@@ -324,21 +323,21 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     public new void grab_focus () {
-        if (view_widget != null) {
-            view_widget.grab_focus ();
+        if (view_interface != null) {
+            view_interface.grab_focus ();
         }
     }
 
     public void zoom_in () {
-        view_widget.zoom_in ();
+        view_interface.zoom_in ();
     }
 
     public void zoom_out () {
-        view_widget.zoom_out ();
+        view_interface.zoom_out ();
     }
 
     public void zoom_normal () {
-        view_widget.zoom_normal ();
+        view_interface.zoom_normal ();
     }
 
     public void close () {
@@ -349,9 +348,9 @@ public class Files.Slot : Gtk.Box, SlotInterface {
             disconnect_directory_handlers (directory);
         }
 
-        view_widget.unparent ();
-        view_widget.destroy ();
-        view_widget = null;
+        view_interface.unparent ();
+        view_interface.destroy ();
+        view_interface = null;
     }
 
     public void refresh_files () {

@@ -93,9 +93,9 @@ public class Files.Window : Gtk.ApplicationWindow {
             return current_container != null ? ((Files.Slot)(current_container.slot)) : null;
         }
     }
-    private ViewInterface? current_view_widget {
+    private ViewInterface? current_view_interface {
         get {
-            return current_slot != null ? current_slot.view_widget : null;
+            return current_slot != null ? current_slot.view_interface : null;
         }
     }
     private bool tabs_restored = false;
@@ -545,12 +545,12 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     private void action_bookmark () {
         /* Note: Duplicate bookmarks will not be created by BookmarkList */
-        if (current_view_widget == null) {
+        if (current_view_interface == null) {
             return;
         }
 
         List<Files.File> selected_files = null;
-        switch (current_view_widget.get_selected_files (out selected_files)) {
+        switch (current_view_interface.get_selected_files (out selected_files)) {
             case 0:
                 // Bookmark the background folder
                 sidebar.add_favorite_uri (current_container.uri);
@@ -571,14 +571,14 @@ public class Files.Window : Gtk.ApplicationWindow {
             return;
         }
 
-        if (current_view_widget == null) {
+        if (current_view_interface == null) {
             return;
         }
 
         List<Files.File> selected_files = null;
-        if (current_view_widget.get_selected_files (out selected_files) == 1) {
+        if (current_view_interface.get_selected_files (out selected_files) == 1) {
             var file = selected_files.data;
-            current_view_widget.is_renaming = true; //Needed??
+            current_view_interface.is_renaming = true; //Needed??
 
             var layout = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
             var header = new Granite.HeaderLabel (_("Enter the new name")) {
@@ -624,7 +624,7 @@ public class Files.Window : Gtk.ApplicationWindow {
 
             rename_dialog.response.connect ((response_id) => {
                 if (response_id == Gtk.ResponseType.ACCEPT) {
-                    current_view_widget.select_after_add = true;
+                    current_view_interface.select_after_add = true;
                     FileUtils.set_file_display_name.begin (
                         file.location,
                         name_entry.text,
@@ -634,14 +634,14 @@ public class Files.Window : Gtk.ApplicationWindow {
                                 //For now assume new file will be added to view if no error
                                 FileUtils.set_file_display_name.end (res);
                             } catch (Error e) {
-                                current_view_widget.select_after_add = false;
+                                current_view_interface.select_after_add = false;
                             }
                         }
                     );
                 }
 
                 rename_dialog.destroy ();
-                current_view_widget.is_renaming = false;
+                current_view_interface.is_renaming = false;
             });
             rename_dialog.present ();
         }
@@ -677,74 +677,74 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_new_folder () {
-        if (current_view_widget == null) {
+        if (current_view_interface == null) {
             return;
         }
 
-        current_view_widget.rename_after_add = true;
+        current_view_interface.rename_after_add = true;
         FileOperations.new_folder.begin (
             this, current_container.location, null, (obj, res) => {
             try {
                 //For now assume file will be added to view if no error
                 FileOperations.new_folder.end (res);
             } catch (Error e) {
-                current_view_widget.rename_after_add = false;
+                current_view_interface.rename_after_add = false;
                 critical (e.message);
             }
         });
     }
 
     private void action_new_file () {
-        if (current_view_widget == null) {
+        if (current_view_interface == null) {
             return;
         }
 
-        current_view_widget.rename_after_add = true;
+        current_view_interface.rename_after_add = true;
         FileOperations.new_file.begin (
             this, current_container.uri, null, null, 0, null, (obj, res) => {
             try {
                 //For now assume file will be added to view if no error
                 FileOperations.new_folder.end (res);
             } catch (Error e) {
-                current_view_widget.rename_after_add = false;
+                current_view_interface.rename_after_add = false;
                 critical (e.message);
             }
         });
     }
 
     private void action_copy_to_clipboard () {
-        if (current_view_widget != null) {
+        if (current_view_interface != null) {
             List<Files.File> selected_files = null;
-            if (current_view_widget.get_selected_files (out selected_files) > 0) {
+            if (current_view_interface.get_selected_files (out selected_files) > 0) {
                 ClipboardManager.get_instance ().copy_files (selected_files);
             }
         }
     }
 
     private void action_link_to_clipboard () {
-        if (current_view_widget != null) {
+        if (current_view_interface != null) {
             List<Files.File> selected_files = null;
-            if (current_view_widget.get_selected_files (out selected_files) > 0) {
+            if (current_view_interface.get_selected_files (out selected_files) > 0) {
                 ClipboardManager.get_instance ().copy_link_files (selected_files);
             }
         }
     }
 
     private void action_cut_to_clipboard () {
-        if (current_view_widget != null) {
+        if (current_view_interface != null) {
             List<Files.File> selected_files = null;
-            if (current_view_widget.get_selected_files (out selected_files) > 0) {
+            if (current_view_interface.get_selected_files (out selected_files) > 0) {
                 ClipboardManager.get_instance ().cut_files (selected_files);
-                current_view_widget.refresh_visible_items ();
+                current_view_interface.refresh_visible_items ();
             }
         }
     }
 
     private void action_paste_from_clipboard () {
-        if (current_view_widget != null) {
+        if (current_view_interface != null) {
             ClipboardManager.get_instance ().paste_files.begin (
-                current_view_widget.get_paste_target_location (),
-                current_view_widget,
+                current_view_interface.get_paste_target_location (),
+                current_view_interface,
                 (obj, res) => {}
             );
         }
@@ -766,7 +766,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             file.is_writable ()) {
 
                 List<Files.File> selected_files = null;
-                if (current_view_widget.get_selected_files (out selected_files) > 0) {
+                if (current_view_interface.get_selected_files (out selected_files) > 0) {
 
                 GLib.List<GLib.File> locations = null;
                 if (file.is_recent_uri_scheme ()) {
@@ -815,7 +815,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_focus_view () {
-        current_view_widget.grab_focus ();
+        current_view_interface.grab_focus ();
         top_menu.path_bar.mode = PathBarMode.CRUMBS;
     }
 
@@ -951,35 +951,35 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_open_selected (GLib.SimpleAction action, GLib.Variant? param) {
-        if (current_view_widget == null) {
+        if (current_view_interface == null) {
             return;
         }
 
         switch (param.get_string ()) {
             case "DEFAULT":
-                current_view_widget.open_selected (Files.OpenFlag.DEFAULT);
+                current_view_interface.open_selected (Files.OpenFlag.DEFAULT);
                 break;
 
             case "NEW_ROOT":
-                current_view_widget.open_selected (Files.OpenFlag.NEW_ROOT);
+                current_view_interface.open_selected (Files.OpenFlag.NEW_ROOT);
                 break;
 
             case "NEW_TAB":
-                current_view_widget.open_selected (Files.OpenFlag.NEW_TAB);
+                current_view_interface.open_selected (Files.OpenFlag.NEW_TAB);
                 break;
 
             case "NEW_WINDOW":
-                current_view_widget.open_selected (Files.OpenFlag.NEW_WINDOW);
+                current_view_interface.open_selected (Files.OpenFlag.NEW_WINDOW);
                 break;
 
             case "APP":
-                current_view_widget.open_selected (Files.OpenFlag.APP);
+                current_view_interface.open_selected (Files.OpenFlag.APP);
                 break;
         }
     }
 
     private void action_open_with (GLib.SimpleAction action, GLib.Variant? param) {
-        if (current_view_widget == null) {
+        if (current_view_interface == null) {
             return;
         }
 
@@ -987,7 +987,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         try {
             var appinfo = AppInfo.create_from_commandline (commandline, null, AppInfoCreateFlags.NONE);
             List<Files.File> selected_files;
-            current_view_widget.get_selected_files (out selected_files);
+            current_view_interface.get_selected_files (out selected_files);
             List<string> uris = null;
             foreach (var file in selected_files) {
                 uris.append (file.uri);
@@ -1034,24 +1034,24 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_toggle_select_all () {
-        if (current_view_widget != null) {
-            if (current_view_widget.all_selected) {
-                current_view_widget.unselect_all ();
+        if (current_view_interface != null) {
+            if (current_view_interface.all_selected) {
+                current_view_interface.unselect_all ();
             } else {
-                current_view_widget.select_all ();
+                current_view_interface.select_all ();
             }
         }
     }
 
     private void action_invert_selection () {
-        if (current_view_widget != null) {
-            current_view_widget.invert_selection ();
+        if (current_view_interface != null) {
+            current_view_interface.invert_selection ();
         }
     }
 
     private void action_context_menu () {
-        if (current_view_widget != null) {
-            current_view_widget.show_appropriate_context_menu ();
+        if (current_view_interface != null) {
+            current_view_interface.show_appropriate_context_menu ();
         }
     }
 
@@ -1111,9 +1111,9 @@ public class Files.Window : Gtk.ApplicationWindow {
         update_top_menu ();
         top_menu.working = false;
 
-        if (current_view_widget != null) {
-            ((SimpleAction)(lookup_action ("sort-type"))).set_state (current_view_widget.sort_type.to_string ());
-            ((SimpleAction)(lookup_action ("sort-reversed"))).set_state (current_view_widget.sort_reversed);
+        if (current_view_interface != null) {
+            ((SimpleAction)(lookup_action ("sort-type"))).set_state (current_view_interface.sort_type.to_string ());
+            ((SimpleAction)(lookup_action ("sort-reversed"))).set_state (current_view_interface.sort_reversed);
         }
     }
 
@@ -1123,7 +1123,7 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     private void action_update_selection () {
         List<Files.File> selected_files = null;
-        current_view_widget.get_selected_files (out selected_files);
+        current_view_interface.get_selected_files (out selected_files);
         current_container.update_selection (selected_files);
     }
 
@@ -1131,7 +1131,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         List<Files.File> selected_files = null;
         var path = param.get_string ();
         if (path == "") {
-            current_view_widget.get_selected_files (out selected_files);
+            current_view_interface.get_selected_files (out selected_files);
         } else {
             selected_files.append (Files.File.@get (GLib.File.new_for_path (path)));
         }
@@ -1140,7 +1140,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             selected_files.append (current_slot.file);
         }
 
-        var properties_window = new PropertiesWindow (selected_files, current_view_widget, this);
+        var properties_window = new PropertiesWindow (selected_files, current_view_interface, this);
         properties_window.response.connect ((res) => {
             properties_window.destroy ();
         });

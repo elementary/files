@@ -179,7 +179,7 @@ public class Files.MultiSlot : Gtk.Box, SlotContainerInterface {
         var first_slot = (Slot)(first_host.start_child);
         //Instead of destroying slot, just clear it - it can be re-used.
         if (first_slot != null) {
-            first_slot.view_widget.clear ();
+            first_slot.view_interface.clear ();
         }
 
         current_slot = first_slot;
