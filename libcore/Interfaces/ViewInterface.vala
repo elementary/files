@@ -49,6 +49,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract bool is_renaming { get; set; }
     public abstract bool rename_after_add { get; set; }
     public abstract bool select_after_add { get; set; }
+    public abstract bool allow_auto_open { get; set; }
 
     public signal void selection_changed (); // No obvious way to avoid this signal
 

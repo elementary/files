@@ -51,6 +51,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     // Simpler than using signals and delegates to call actions after file has been added
     public bool rename_after_add { get; set; default = false;}
     public bool select_after_add { get; set; default = false;}
+    public bool allow_auto_open { get; set; }
 
     private Gee.HashMap<string, Subdirectory> subdirectory_map;
 
@@ -67,6 +68,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     construct {
+        allow_auto_open = false;
         set_layout_manager (new Gtk.BinLayout ());
         subdirectory_map = new Gee.HashMap<string, Subdirectory> ();
 

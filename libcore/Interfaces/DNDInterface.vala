@@ -159,7 +159,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             }
 
             if (fileitem != null &&
-                !fileitem.is_dummy &&
+                allow_auto_open &&
                 fileitem.file.is_folder () &&
                 !fileitem.drop_pending) {
 

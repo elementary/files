@@ -43,6 +43,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     // Simpler than using signals and delegates to call actions after file has been added
     public bool rename_after_add { get; set; default = false;}
     public bool select_after_add { get; set; default = false;}
+    public bool allow_auto_open { get; set; }
 
     public GridView (Files.Slot slot) {
         Object (slot: slot);
@@ -56,6 +57,7 @@ public class Files.GridView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
     }
 
     construct {
+        allow_auto_open = true;
         set_layout_manager (new Gtk.BinLayout ());
         var item_factory = new Gtk.SignalListItemFactory ();
         grid_view = new Gtk.GridView (null, item_factory) {
