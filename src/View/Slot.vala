@@ -215,7 +215,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         connect_directory_handlers (directory);
     }
 
-    public async bool initialize_directory () {
+    public async bool initialize_directory (List<Files.File> selected_locations = null) {
         if (directory.is_loading ()) {
             // Can occur restoring duplicate tabs
             warning (
@@ -227,16 +227,16 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         directory.file_added.disconnect (on_directory_file_added);
         //NOTE activate_action does not work in async function ??
         yield directory.init ();
-        if (directory.can_load) {
-            if (file.is_recent_uri_scheme ()) {
-                view_interface.sort_type = Files.SortType.MODIFIED;
-                view_interface.sort_reversed = false;
-            } else if (this.directory.file.info != null) {
-                view_interface.sort_type = this.directory.file.sort_type;
-                view_interface.sort_reversed = this.directory.file.sort_reversed;
-            }
-        } else {
+
+        if (!directory.can_load) {
             return false;
+        }
+        if (file.is_recent_uri_scheme ()) {
+            view_interface.sort_type = Files.SortType.MODIFIED;
+            view_interface.sort_reversed = false;
+        } else if (this.directory.file.info != null) {
+            view_interface.sort_type = this.directory.file.sort_type;
+            view_interface.sort_reversed = this.directory.file.sort_reversed;
         }
 
         if (directory.is_empty ()) { /* No files in the file cache */
@@ -249,6 +249,20 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         } else {
             if (empty_label.parent == overlay) {
                 overlay.remove_overlay (empty_label);
+            }
+
+            if (selected_locations != null) {
+                view_interface.select_files (selected_locations);
+            } else if (directory.selected_file != null) {
+                if (directory.selected_file.query_exists ()) {
+                    view_interface.show_and_select_file (
+                        Files.File.@get (directory.selected_file),
+                        true,
+                        true
+                    );
+                }
+            } else {
+                view_interface.set_vadj_val (0.0); /* Does not select */
             }
         }
 
