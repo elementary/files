@@ -215,6 +215,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
 
     public async bool initialize_directory () {
         if (directory.is_loading ()) {
+            // Can occur restoring duplicate tabs
             warning (
                 "Slot.initialize_directory () called when directory already loading - ignoring"
             );

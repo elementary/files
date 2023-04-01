@@ -932,7 +932,12 @@ public class Files.Window : Gtk.ApplicationWindow {
                 var current_location = current_container.location;
                 var current_mode = current_container.view_mode;
                 add_tab ();
-                set_current_location_and_mode (current_mode, current_container.location, OpenFlag.DEFAULT);
+                set_current_location_and_mode (
+                    current_mode,
+                    current_location,
+                    OpenFlag.DEFAULT
+                );
+
 
                 break;
             case "WINDOW": // Move tab to new window
