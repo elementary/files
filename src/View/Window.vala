@@ -276,7 +276,6 @@ public class Files.Window : Gtk.ApplicationWindow {
 
         sidebar.request_focus.connect (() => {
             return true;
-            // return !current_container.locked_focus && !header_bar.locked_focus;
         });
         sidebar.sync_needed.connect (() => {
             sidebar.sync_uri (current_container.uri);
@@ -326,11 +325,6 @@ public class Files.Window : Gtk.ApplicationWindow {
 
         if (restoring_tabs > 0) { //Return if some restored tabs still loading
             return;
-        }
-
-        if (old_tab != null) {
-            // old_tab.set_active_state (false);
-            // old_tab.is_frozen = false;
         }
 
         update_header_bar ();
@@ -1258,9 +1252,6 @@ warning ("change state sort reversed");
     public void quit () {
         save_geometries ();
         save_tabs ();
-
-        // header_bar.destroy (); /* stop unwanted signals if quit while pathbar in focus */
-
         tab_view.page_detached.disconnect (on_page_detached); /* Avoid infinite loop */
 
         for (uint i = 0; i < tab_view.n_pages; i++) {
