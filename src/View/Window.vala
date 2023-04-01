@@ -72,7 +72,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     public uint window_number { get; construct; }
 
     private Gtk.Paned lside_pane;
-    private Files.HeaderBar top_menu;
+    private Files.HeaderBar header_bar;
     private Adw.TabView tab_view;
     private Adw.TabBar tab_bar;
     private Gtk.PopoverMenu tab_popover;
@@ -186,8 +186,8 @@ public class Files.Window : Gtk.ApplicationWindow {
         get_action ("sort-directories-first").set_state (prefs.sort_directories_first);
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
 
-        top_menu = new Files.HeaderBar ();
-        set_titlebar (top_menu);
+        header_bar = new Files.HeaderBar ();
+        set_titlebar (header_bar);
 
         tab_view = new Adw.TabView ();
 
@@ -245,7 +245,7 @@ public class Files.Window : Gtk.ApplicationWindow {
         set_child (lside_pane);
 
         tab_view.notify["selected-page"].connect (() => {
-            update_top_menu ();
+            update_header_bar ();
             //NOTE Current container is ill-defined at this point
         });
         tab_view.indicator_activated.connect (() => {});
@@ -276,7 +276,7 @@ public class Files.Window : Gtk.ApplicationWindow {
 
         sidebar.request_focus.connect (() => {
             return true;
-            // return !current_container.locked_focus && !top_menu.locked_focus;
+            // return !current_container.locked_focus && !header_bar.locked_focus;
         });
         sidebar.sync_needed.connect (() => {
             sidebar.sync_uri (current_container.uri);
@@ -333,7 +333,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             // old_tab.is_frozen = false;
         }
 
-        update_top_menu ();
+        update_header_bar ();
         save_active_tab_position ();
     }
 
@@ -540,7 +540,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     }
 
     private void action_edit_path () {
-        top_menu.path_bar.mode = PathBarMode.ENTRY;
+        header_bar.path_bar.mode = PathBarMode.ENTRY;
     }
 
     private void action_bookmark () {
@@ -655,9 +655,9 @@ public class Files.Window : Gtk.ApplicationWindow {
         }
 
         if (param != null) {
-            top_menu.path_bar.search (param.get_string ());
+            header_bar.path_bar.search (param.get_string ());
         } else {
-            top_menu.path_bar.search ("");
+            header_bar.path_bar.search ("");
         }
     }
 
@@ -816,7 +816,7 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     private void action_focus_view () {
         current_view_interface.grab_focus ();
-        top_menu.path_bar.mode = PathBarMode.CRUMBS;
+        header_bar.path_bar.mode = PathBarMode.CRUMBS;
     }
 
     private void action_focus_sidebar () {
@@ -1099,8 +1099,8 @@ public class Files.Window : Gtk.ApplicationWindow {
 
     private void action_loading_uri (GLib.SimpleAction action, GLib.Variant? param) {
         var uri = param.get_string ();
-        update_top_menu (uri);
-        top_menu.working = true;
+        update_header_bar (uri);
+        header_bar.working = true;
     }
 
     private void action_loading_finished () {
@@ -1108,8 +1108,8 @@ public class Files.Window : Gtk.ApplicationWindow {
             restoring_tabs--;
         }
 
-        update_top_menu ();
-        top_menu.working = false;
+        update_header_bar ();
+        header_bar.working = false;
 
         if (current_view_interface != null) {
             ((SimpleAction)(lookup_action ("sort-type"))).set_state (current_view_interface.sort_type.to_string ());
@@ -1244,7 +1244,7 @@ warning ("change state sort reversed");
 
             case ViewMode.CURRENT:
                 critical ("Do not use ViewMode CURRENT");
-                return top_menu.view_switcher.get_mode ();
+                return header_bar.view_switcher.get_mode ();
             case ViewMode.PREFERRED:
                 return (ViewMode)(Files.app_settings.get_enum ("default-viewmode"));
 
@@ -1259,7 +1259,7 @@ warning ("change state sort reversed");
         save_geometries ();
         save_tabs ();
 
-        // top_menu.destroy (); /* stop unwanted signals if quit while pathbar in focus */
+        // header_bar.destroy (); /* stop unwanted signals if quit while pathbar in focus */
 
         tab_view.page_detached.disconnect (on_page_detached); /* Avoid infinite loop */
 
@@ -1406,22 +1406,22 @@ warning ("change state sort reversed");
         }
 
         /* Render the final path in the location bar without animation */
-        top_menu.update_path_bar (path, false);
+        header_bar.update_path_bar (path, false);
         return restoring_tabs;
     }
 
-    private void update_top_menu (string? uri = null) {
+    private void update_header_bar (string? uri = null) {
         if (restoring_tabs > 0 || (current_container == null && uri == null)) {
             return;
         }
 
         if (current_container == null) {
-            top_menu.update_path_bar (uri);
+            header_bar.update_path_bar (uri);
             sidebar.sync_uri (uri);
             return;
         }
 
-        top_menu.update_path_bar (current_container.display_uri);
+        header_bar.update_path_bar (current_container.display_uri);
         sidebar.sync_uri (current_container.uri);
 
         if (current_container.tab_name == null) {
@@ -1431,15 +1431,15 @@ warning ("change state sort reversed");
 
         set_title (current_container.tab_name); /* Not actually visible on elementaryos */
         /* Update browser buttons */
-        top_menu.set_back_menu (current_container.get_go_back_path_list ());
-        top_menu.set_forward_menu (current_container.get_go_forward_path_list ());
-        top_menu.can_go_back = current_container.can_go_back;
-        top_menu.can_go_forward = (current_container.can_show_folder &&
+        header_bar.set_back_menu (current_container.get_go_back_path_list ());
+        header_bar.set_forward_menu (current_container.get_go_forward_path_list ());
+        header_bar.can_go_back = current_container.can_go_back;
+        header_bar.can_go_forward = (current_container.can_show_folder &&
                                    current_container.can_go_forward);
 
         /* Update viewmode switch, action state and settings */
         var mode = current_container.view_mode;
-        top_menu.view_switcher.set_mode (mode);
+        header_bar.view_switcher.set_mode (mode);
         get_action ("view-mode").change_state (new Variant.uint32 (mode));
         Files.app_settings.set_enum ("default-viewmode", mode);
     }
@@ -1488,7 +1488,7 @@ warning ("change state sort reversed");
     }
 
     private void set_current_location_and_mode (ViewMode mode, GLib.File loc, OpenFlag flag) {
-        update_top_menu (loc.get_uri ());
+        update_header_bar (loc.get_uri ());
         current_container.set_location_and_mode (real_mode (mode), loc, null, flag);
     }
 
