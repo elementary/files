@@ -121,6 +121,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 if (expander.list_row.expanded) {
                     if (subdirectory_map.has_key (file.uri)) {
                         var subdir = subdirectory_map.get (file.uri);
+warning ("expand subdir");
                         subdir.expand ();
                     }
                 } else {
@@ -421,7 +422,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
 
     private class Subdirectory : Object {
         public Directory directory { get; construct; }
-        public unowned ListView list_view { get; construct; }
+        public unowned ViewInterface view_interface { get; construct; }
         public ListStore model { get; construct; }
         public bool loaded { get; private set; default = false; }
         public string uri { get; construct; }
@@ -433,7 +434,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 directory: dir,
                 uri: dir.file.uri,
                 model: model,
-                list_view: view
+                view_interface: view
             );
 
             dummy = Files.File.get_dummy (dir.file);
@@ -449,11 +450,11 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 mark_empty (false);
             }
 
-            list_view.add_file (file, model);
+            view_interface.add_file (file, model);
         }
 
         private void on_file_deleted (Directory dir, Files.File? file) {
-            list_view.file_deleted (file, model);
+            view_interface.file_deleted (file, model);
             if (model.get_n_items () == 0) {
                 mark_empty (true);
             }
@@ -471,6 +472,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         public void expand () {
             directory.file.set_expanded (true);
             if (!loaded) {
+warning ("loading subdir");
                 directory.init.begin (null, () => {
                     loaded = true;
                     if (directory.displayed_files_count > 0) {
@@ -478,7 +480,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                         is_empty = false;
                     }
 
-                    list_view.add_files (directory.get_files (), model);
+                    view_interface.add_files (directory.get_files (), model);
 
                     directory.file_added.connect (on_file_added);
                     directory.file_deleted.connect (on_file_deleted);

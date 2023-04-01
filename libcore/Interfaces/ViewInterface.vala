@@ -390,20 +390,17 @@ public interface Files.ViewInterface : Gtk.Widget {
         }
     }
 
-    // Use for initial loading of files
+    // Use for initial loading of files and for loading subdirectories
     public void add_files (
         List<unowned Files.File> files,
         ListStore? store = null
     ) {
-        //TODO Delay sorting until adding finished?
-        set_model (null);
         var add_store = store == null ? root_store : store;
         foreach (var file in files) {
             add_store.append (file);
         }
-        // add_store.sort (file_compare_func);
+        //TODO Sort now or later or not needed?
         sort_model ();
-        set_model (multi_selection);
         // Need to deal with selection after loading
     }
 
