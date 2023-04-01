@@ -332,9 +332,14 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 return 0;
             }
 
-            Object child;
-            var filea = (Files.File)(((Gtk.TreeListRow)a).get_item ());
-            var fileb = (Files.File)(((Gtk.TreeListRow)b).get_item ());
+            var rowa = (Gtk.TreeListRow)a;
+            var rowb = (Gtk.TreeListRow)b;
+            if (rowa.depth != rowb.depth) {
+                return 0;
+            }
+
+            var filea = (Files.File)(rowa.get_item ());
+            var fileb = (Files.File)(rowb.get_item ());
             var a_is_dir = filea.is_folder ();
             var b_is_dir = fileb.is_folder ();
 
