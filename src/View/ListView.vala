@@ -322,12 +322,11 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
         }
     }
 
-    private Gtk.CustomSorter dir_sorter;
     protected override ListModel set_up_sort_model (ListModel list_model) {
         var multi_sorter = new Gtk.MultiSorter ();
         var column_sorter = column_view.get_sorter ();
         var row_sorter = new Gtk.TreeListRowSorter (column_sorter);
-        dir_sorter = new Gtk.CustomSorter ((a, b) => {
+        var dir_sorter = new Gtk.CustomSorter ((a, b) => {
             if (!prefs.sort_directories_first) {
                 return 0;
             }
