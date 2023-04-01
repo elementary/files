@@ -159,6 +159,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
             }
 
             if (fileitem != null &&
+                !fileitem.is_dummy &&
                 fileitem.file.is_folder () &&
                 !fileitem.drop_pending) {
 
@@ -173,7 +174,7 @@ public interface Files.DNDInterface : Gtk.Widget, Files.ViewInterface {
                     Source.remove (auto_open_timeout_id);
                 }
 
-                auto_open_timeout_id = Timeout.add (1000, () => {
+                auto_open_timeout_id = Timeout.add (2000, () => {
                     auto_open_timeout_id = 0;
                     debug ("setting drop_pending false fir %s", fileitem.file.uri);
                     fileitem.drop_pending = false;
