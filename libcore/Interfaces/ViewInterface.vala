@@ -779,4 +779,12 @@ public interface Files.ViewInterface : Gtk.Widget {
                 break;
         }
     }
+
+    public double get_vadj_val () {
+        return scrolled_window.vadjustment.value;
+    }
+
+    public void set_vadj_val (double pos) {
+        scrolled_window.vadjustment.value = pos;
+    }
 }

@@ -121,7 +121,6 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                 if (expander.list_row.expanded) {
                     if (subdirectory_map.has_key (file.uri)) {
                         var subdir = subdirectory_map.get (file.uri);
-warning ("expand subdir");
                         subdir.expand ();
                     }
                 } else {
@@ -472,7 +471,6 @@ warning ("expand subdir");
         public void expand () {
             directory.file.set_expanded (true);
             if (!loaded) {
-warning ("loading subdir");
                 directory.init.begin (null, () => {
                     loaded = true;
                     if (directory.displayed_files_count > 0) {
@@ -480,8 +478,11 @@ warning ("loading subdir");
                         is_empty = false;
                     }
 
+                    var pos = view_interface.get_vadj_val ();
                     view_interface.add_files (directory.get_files (), model);
-
+                    //HACK to stop expanded row moving
+                    //TODO Find a better solution
+                    view_interface.set_vadj_val (pos);
                     directory.file_added.connect (on_file_added);
                     directory.file_deleted.connect (on_file_deleted);
                 });
