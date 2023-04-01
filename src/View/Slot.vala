@@ -188,6 +188,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     private void on_directory_will_reload (Directory dir) {
         view_interface.clear ();
         directory.file_added.disconnect (on_directory_file_added);
+        dir.done_loading.connect (on_directory_done_loading);
         activate_action ("win.loading-uri", "s", dir.file.uri);
     }
 
@@ -195,6 +196,8 @@ public class Files.Slot : Gtk.Box, SlotInterface {
         // Ensure all windows updated
         view_interface.add_files (directory.get_files ());
         directory.file_added.connect (on_directory_file_added);
+        // Directory is only loaded once (unless reloaded);
+        directory.done_loading.disconnect (on_directory_done_loading);
         activate_action ("win.loading-finished", null);
     }
 
@@ -263,6 +266,7 @@ public class Files.Slot : Gtk.Box, SlotInterface {
     }
 
     public void reload () {
+        directory.done_loading.connect (on_directory_done_loading);
         directory.schedule_reload ();
     }
 
