@@ -351,22 +351,24 @@ public interface Files.ViewInterface : Gtk.Widget {
         return (Files.File)(multi_selection.get_item (pos));
     }
 
-    public uint get_selected_files (out GLib.List<Files.File>? selected_files = null) {
+    public uint get_selected_files (
+        out GLib.List<Files.File>? selected_files,
+        bool ignore_dummy = true) {
+
         selected_files = null;
         uint pos = 0;
         uint count = 0;
         var iter = Gtk.BitsetIter ();
         if (iter.init_first (multi_selection.get_selection (), out pos)) {
             var file = get_file_from_selection_pos (pos);
-            // var file = (Files.File)(((Gtk.TreeListRow)(multi_selection.get_item (pos))).get_item ());
-            if (!file.is_dummy) {
+            if (!(file.is_dummy && ignore_dummy)) {
                 selected_files.prepend (file);
                 count++;
             }
 
             while (iter.next (out pos)) {
                 file = get_file_from_selection_pos (pos);
-                if (!file.is_dummy) {
+                if (!(file.is_dummy && ignore_dummy)) {
                     selected_files.prepend (file);
                     count++;
                 }
@@ -686,6 +688,22 @@ public interface Files.ViewInterface : Gtk.Widget {
         return null;
     }
 
+    public GLib.File get_paste_target_location () {
+        GLib.List<Files.File>? selected_files = null;
+        var n_selected = get_selected_files (out selected_files, false);
+        if (n_selected == 0) {
+            return root_file.location;
+        } else if (n_selected == 1) {
+            var file = selected_files.data;
+            if (file.is_dummy) {
+                file = file.get_data<Files.File> ("parent");
+            }
+
+            return file.location;
+        } else {
+            return null;
+        }
+    }
     // Access required by DNDInterface
     public void change_path (GLib.File loc, OpenFlag flag) {
         activate_action ("win.path-change-request", "(su)", loc.get_uri (), flag);

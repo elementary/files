@@ -743,7 +743,7 @@ public class Files.Window : Gtk.ApplicationWindow {
     private void action_paste_from_clipboard () {
         if (current_view_widget != null) {
             ClipboardManager.get_instance ().paste_files.begin (
-                current_container.location,
+                current_view_widget.get_paste_target_location (),
                 current_view_widget,
                 (obj, res) => {}
             );

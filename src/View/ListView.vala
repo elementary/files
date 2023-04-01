@@ -130,7 +130,7 @@ public class Files.ListView : Gtk.Widget, Files.ViewInterface, Files.DNDInterfac
                     }
                 }
             });
-            list_item.selectable = !file.is_dummy;
+            list_item.selectable = true;
 
             var file_item = (GridFileItem)(expander.child);
             file_item.bind_file (file);
