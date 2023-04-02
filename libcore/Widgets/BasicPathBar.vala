@@ -23,7 +23,9 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
         set_layout_manager_type (typeof (Gtk.BinLayout));
     }
 
+    protected Gtk.Box content;
     /* PathBar Interface */
+    protected Gtk.Stack stack;
     protected BasicBreadcrumbs breadcrumbs;
     protected BasicPathEntry path_entry;
     public PathBarMode mode { get; set; default = PathBarMode.CRUMBS; }
@@ -37,13 +39,17 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
     }
 
     construct {
+        // Subclass adds more widgets
+        content = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        content.set_parent (this);
+
         breadcrumbs = new BasicBreadcrumbs (this);
         path_entry = new BasicPathEntry (this);
         var stack = new Gtk.Stack ();
         stack.add_child (breadcrumbs);
         stack.add_child (path_entry);
         stack.visible_child = breadcrumbs;
-        stack.set_parent (this);
+        content.append (stack);
 
         var focus_controller = new Gtk.EventControllerFocus ();
         add_controller (focus_controller);
@@ -131,17 +137,17 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 halign = Gtk.Align.END,
                 can_focus = false
             };
-            var search_button = new Gtk.Button () {
-                icon_name = "edit-find-symbolic",
-                action_name = "win.find",
-                action_target = "",
-                hexpand = false,
-                halign = Gtk.Align.START,
-                margin_end = 24,
-                can_focus = false
-            };
+            // var search_button = new Gtk.Button () {
+            //     icon_name = "edit-find-symbolic",
+            //     action_name = "win.find",
+            //     action_target = "",
+            //     hexpand = false,
+            //     halign = Gtk.Align.START,
+            //     margin_end = 24,
+            //     can_focus = false
+            // };
 
-            search_button.set_parent (this);
+            // search_button.set_parent (this);
             bread_handle.set_parent (this);
             refresh_button.set_parent (this);
 

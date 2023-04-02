@@ -20,6 +20,10 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
     private Gee.ArrayList<string> completion_list;
     private string to_complete = "";
 
+    //Dearching
+    private Gtk.SearchEntry search_entry;
+    private Files.SearchResults search_window;
+
     construct {
         // Enable path entry completions
         var set_text_action = new SimpleAction ("set-text", new VariantType ("s"));
@@ -96,6 +100,23 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
 
         //Set drop target
         set_up_drop_target ();
+
+        search_entry = new Gtk.SearchEntry ();
+        search_window = new Files.SearchResults ();
+
+        stack.add_child (search_entry);
+
+       var search_button = new Gtk.Button () {
+           icon_name = "edit-find-symbolic",
+           action_name = "win.find",
+           action_target = "",
+           hexpand = false,
+           halign = Gtk.Align.START,
+           margin_end = 24,
+           can_focus = false
+       };
+
+        content.prepend (search_button);
     }
 
     public override void navigate_to_uri (string uri) {

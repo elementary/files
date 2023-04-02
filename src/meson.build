@@ -30,6 +30,7 @@ pantheon_files_exec = executable (
     'View/Widgets/GridFileItem.vala',
     'View/Widgets/OverlayBar.vala',
     'View/Widgets/ProgressInfoWidget.vala',
+    'View/Widgets/SearchResults.vala',
 
     'View/HeaderBar/HeaderBar.vala',
     'View/HeaderBar/PathBar.vala',
