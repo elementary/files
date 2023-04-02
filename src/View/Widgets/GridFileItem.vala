@@ -25,7 +25,7 @@ public class Files.GridFileItem : Gtk.Widget, Files.FileItemInterface {
         set_layout_manager_type (typeof (Gtk.BoxLayout));
         set_css_name ("fileitem");
         fileitem_provider = new Gtk.CssProvider ();
-        fileitem_provider.load_from_resource ("/io/elementary/files/GridViewFileItem.css");
+        fileitem_provider.load_from_resource ("/io/elementary/files4/GridViewFileItem.css");
         prefs = Files.Preferences.get_default ();
 
     }

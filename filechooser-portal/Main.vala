@@ -514,7 +514,7 @@ public class Files.FileChooserPortal : Object {
                 "org.freedesktop.impl.portal.desktop.elementary.files",
                 BusNameOwnerFlags.ALLOW_REPLACEMENT | (opt_replace ? BusNameOwnerFlags.REPLACE : 0),
                 on_bus_acquired,
-                () => debug ("org.freedesktop.impl.portal.desktop.elementary.files acquired"),
+                () => debug ("org.freedesktop.impl.portal.desktop.elementary.files4 acquired"),
                 () => loop.quit ()
             );
             loop.run ();

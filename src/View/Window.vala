@@ -202,7 +202,7 @@ public class Files.Window : Gtk.ApplicationWindow {
             child = tab_bar
         };
 
-        var builder = new Gtk.Builder.from_resource ("/io/elementary/files/Window.ui");
+        var builder = new Gtk.Builder.from_resource ("/io/elementary/files4/Window.ui");
         var tab_menu = (Menu)(builder.get_object ("tab_model"));
         tab_popover = new Gtk.PopoverMenu.from_model_full (tab_menu, Gtk.PopoverMenuFlags.NESTED) {
             has_arrow = false

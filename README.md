@@ -34,9 +34,9 @@ cd build
 ninja
 ```
 
-To install, use `ninja install`, then execute with `io.elementary.files`
+To install, use `ninja install`, then execute with `io.elementary.files4`
 
 ```bash
 sudo ninja install
-io.elementary.files
+io.elementary.files4
 ```

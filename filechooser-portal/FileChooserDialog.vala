@@ -172,7 +172,7 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
 
         setup_chooser ();
 
-        settings = new Settings ("io.elementary.files.file-chooser");
+        settings = new Settings ("io.elementary.files4.file-chooser");
         int width, height;
         settings.get ("window-size", "(ii)", out width, out height);
 

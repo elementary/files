@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2016–2021 elementary, Inc. <contact@elementary.io> -->
 <component type="desktop">
-  <id>io.elementary.files</id>
-  <launchable type="desktop-id">io.elementary.files.desktop</launchable>
-  <translation type="gettext">io.elementary.files</translation>
+  <id>io.elementary.files4</id>
+  <launchable type="desktop-id">io.elementary.files4.desktop</launchable>
+  <translation type="gettext">io.elementary.files4</translation>
   <metadata_license>CC0-1.0</metadata_license>
   <project_group>elementary</project_group>
   <project_license>GPL-3.0+</project_license>

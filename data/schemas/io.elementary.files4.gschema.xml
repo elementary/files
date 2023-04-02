@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <enum id="viewmode">
+  <enum id="io.elementary.files4.viewmode">
     <value value="0" nick="icon"/>
     <value value="1" nick="list"/>
     <value value="2" nick="multicolumn"/>
   </enum>
-  <enum id="io.elementary.files.ZoomLevel">
+  <enum id="io.elementary.files4.ZoomLevel">
     <value value="0" nick="smallest"/>
     <value value="1" nick="smaller"/>
     <value value="2" nick="small"/>
@@ -16,12 +16,12 @@
     <value value="7" nick="huger"/>
     <value value="8" nick="largest"/>
   </enum>
-  <enum id="dateformatmode">
+  <enum id="io.elementary.files4.dateformatmode">
     <value value="0" nick="iso"/>
     <value value="1" nick="locale"/>
     <value value="2" nick="informal"/>
   </enum>
-  <enum id="windowstate">
+  <enum id="io.elementary.files4.windowstate">
     <value value="0" nick="normal"/>
     <value value="1" nick="tiled-start"/>
     <value value="2" nick="tiled-end"/>
@@ -30,7 +30,7 @@
     <value value="5" nick="tiled-right"/>
   </enum>
 
-  <schema path="/io/elementary/files/preferences/" id="io.elementary.files.preferences">
+  <schema path="/io/elementary/files4/preferences/" id="io.elementary.files4.preferences">
     <key type="b" name="show-remote-thumbnails">
       <default>true</default>
       <summary>Thumbnail remote files</summary>
@@ -61,7 +61,7 @@
       <summary>Date Format</summary>
       <description>The format of file dates. Possible values are "locale", "iso", and "informal".</description>
     </key>
-    <key name="default-viewmode" enum="viewmode">
+    <key name="default-viewmode" enum="io.elementary.files4.viewmode">
       <default>'icon'</default>
       <summary>Default viewmode when browsing</summary>
       <description>
@@ -125,69 +125,69 @@
     </key>
   </schema>
 
-  <schema path="/io/elementary/files/icon-view/" id="io.elementary.files.icon-view">
-    <key name="default-zoom-level" enum="io.elementary.files.ZoomLevel">
+  <schema path="/io/elementary/files4/icon-view/" id="io.elementary.files4.icon-view">
+    <key name="default-zoom-level" enum="io.elementary.files4.ZoomLevel">
       <default>'large'</default>
       <summary>Icon default zoom level</summary>
       <description>Default Zoom level used by the icon view.</description>
     </key>
-    <key name="zoom-level" enum="io.elementary.files.ZoomLevel">
+    <key name="zoom-level" enum="io.elementary.files4.ZoomLevel">
       <default>'large'</default>
       <summary>Icon zoom level</summary>
       <description>Zoom level used by the Icon View.</description>
     </key>
-    <key name="minimum-zoom-level" enum="io.elementary.files.ZoomLevel">
+    <key name="minimum-zoom-level" enum="io.elementary.files4.ZoomLevel">
       <default>'normal'</default>
       <summary>Minimum icon zoom level</summary>
       <description>The minimum zoom level used by the Icon View.</description>
     </key>
-    <key name="maximum-zoom-level" enum="io.elementary.files.ZoomLevel">
+    <key name="maximum-zoom-level" enum="io.elementary.files4.ZoomLevel">
       <default>'largest'</default>
       <summary>Maximum icon zoom level</summary>
       <description>The maximum zoom level used by the Icon View.</description>
     </key>
   </schema>
 
-  <schema path="/io/elementary/files/list-view/" id="io.elementary.files.list-view">
-    <key name="default-zoom-level" enum="io.elementary.files.ZoomLevel">
+  <schema path="/io/elementary/files4/list-view/" id="io.elementary.files4.list-view">
+    <key name="default-zoom-level" enum="io.elementary.files4.ZoomLevel">
       <default>'small'</default>
       <summary>icon default zoom level</summary>
       <description>Default Zoom level used by the List View.</description>
     </key>
-    <key name="zoom-level" enum="io.elementary.files.ZoomLevel">
+    <key name="zoom-level" enum="io.elementary.files4.ZoomLevel">
       <default>'small'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used by the List View.</description>
     </key>
-    <key name="minimum-zoom-level" enum="io.elementary.files.ZoomLevel">
+    <key name="minimum-zoom-level" enum="io.elementary.files4.ZoomLevel">
       <default>'smallest'</default>
       <summary>Minimum icon zoom level</summary>
       <description>The minimum zoom level used by the List View.</description>
     </key>
-    <key name="maximum-zoom-level" enum="io.elementary.files.ZoomLevel">
+    <key name="maximum-zoom-level" enum="io.elementary.files4.ZoomLevel">
       <default>'large'</default>
       <summary>Maximum icon zoom level</summary>
       <description>The maximum zoom level used by the List View.</description>
     </key>
   </schema>
 
-  <schema path="/io/elementary/files/column-view/" id="io.elementary.files.column-view">
-    <key name="default-zoom-level" enum="io.elementary.files.ZoomLevel">
+  <schema path="/io/elementary/files4/column-view/" id="io.elementary.files4.column-view">
+    <key name="default-zoom-level" enum="io.elementary.files4.ZoomLevel">
       <default>'small'</default>
       <summary>icon default zoom level</summary>
       <description>Default Zoom level used by the  MultiColumn View.</description>
     </key>
-    <key name="zoom-level" enum="io.elementary.files.ZoomLevel">
+    <key name="zoom-level" enum="io.elementary.files4.ZoomLevel">
       <default>'small'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used by the  MultiColumn View.</description>
     </key>
-    <key name="minimum-zoom-level" enum="io.elementary.files.ZoomLevel">
+    <key name="minimum-zoom-level" enum="io.elementary.files4.ZoomLevel">
       <default>'smallest'</default>
       <summary>Minimum icon zoom level</summary>
       <description>The minimum zoom level used by the Miller Column.</description>
     </key>
-    <key name="maximum-zoom-level" enum="io.elementary.files.ZoomLevel">
+    <key name="maximum-zoom-level" enum="io.elementary.files4.ZoomLevel">
       <default>'normal'</default>
       <summary>Maximum icon zoom level</summary>
       <description>The maximum zoom level used by the MultiColumn View.</description>
@@ -199,7 +199,7 @@
     </key>
   </schema>
 
-  <schema path="/io/elementary/files/file-chooser/" id="io.elementary.files.file-chooser">
+  <schema path="/io/elementary/files4/file-chooser/" id="io.elementary.files4.file-chooser">
     <key type="s" name="last-folder-uri">
       <default>''</default>
       <summary>Last folder uri</summary>

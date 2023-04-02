@@ -6,7 +6,7 @@
   <vendor>elementary</vendor>
   <vendor_url>https://github.com/elementary/files</vendor_url>
   <icon_name>system-file-manager</icon_name>
-  <action id="org.freedesktop.policykit.pkexec.io.elementary.files">
+  <action id="org.freedesktop.policykit.pkexec.io.elementary.files4">
    <description>Run Pantheon Files as Administrator</description>
    <message>Authentication is required to run Files as Administrator</message>
    <defaults>

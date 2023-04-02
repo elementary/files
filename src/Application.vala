@@ -53,9 +53,9 @@ public class Files.Application : Gtk.Application {
     static construct {
         /* GSettings parameters */
         app_settings = new Settings ("io.elementary.files.preferences");
-        icon_view_settings = new Settings ("io.elementary.files.icon-view");
-        list_view_settings = new Settings ("io.elementary.files.list-view");
-        column_view_settings = new Settings ("io.elementary.files.column-view");
+        icon_view_settings = new Settings ("io.elementary.files4.icon-view");
+        list_view_settings = new Settings ("io.elementary.files4.list-view");
+        column_view_settings = new Settings ("io.elementary.files4.column-view");
     }
 
     construct {
@@ -201,7 +201,7 @@ public class Files.Application : Gtk.Application {
         }
 
         if (version) {
-            cmd.print ("io.elementary.files %s\n", Config.VERSION);
+            cmd.print ("io.elementary.files4 %s\n", Config.VERSION);
             return Posix.EXIT_SUCCESS;
         }
 

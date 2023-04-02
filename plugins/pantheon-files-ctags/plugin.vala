@@ -15,7 +15,7 @@
     with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-[DBus (name = "io.elementary.files.db")]
+[DBus (name = "io.elementary.files4.db")]
 interface MarlinDaemon : Object {
     public abstract async Variant get_uri_infos (string raw_uri) throws GLib.DBusError, GLib.IOError;
     public abstract async bool record_uris (Variant[] entries) throws GLib.DBusError, GLib.IOError;
@@ -38,8 +38,8 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         cancellable = new Cancellable ();
 
         try {
-            daemon = Bus.get_proxy_sync (BusType.SESSION, "io.elementary.files.db",
-                                         "/io/elementary/files/db");
+            daemon = Bus.get_proxy_sync (BusType.SESSION, "io.elementary.files4.db",
+                                         "/io/elementary/files4/db");
         } catch (IOError e) {
             stderr.printf ("%s\n", e.message);
         }
@@ -333,7 +333,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
         static construct {
             css_provider = new Gtk.CssProvider ();
-            css_provider.load_from_resource ("io/elementary/files/ColorButton.css");
+            css_provider.load_from_resource ("io/elementary/files4/ColorButton.css");
         }
 
         public ColorButton (string color_name) {

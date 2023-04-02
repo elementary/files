@@ -21,7 +21,7 @@
 
     void on_bus_aquired (DBusConnection conn, string n) {
         try {
-            string name = "/io/elementary/files/db";
+            string name = "/io/elementary/files4/db";
             var object = new MarlinTags ();
             conn.register_object (name, object);
             debug ("MarlinTags object registered with dbus connection name %s", name);
@@ -50,7 +50,7 @@
     }
 
     void main () {
-        Bus.own_name (BusType.SESSION, "io.elementary.files.db", BusNameOwnerFlags.NONE,
+        Bus.own_name (BusType.SESSION, "io.elementary.files4.db", BusNameOwnerFlags.NONE,
                       on_bus_aquired,
                       () => {},
                       on_name_lost);

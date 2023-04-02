@@ -132,6 +132,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         icon_label_box.append (icon);
         icon_label_box.append (label_stack);
 
+        // Use Gtk.Grid as subclasses add other columns
         content_grid = new Gtk.Grid ();
         content_grid.attach (icon_label_box, 0, 0);
 
@@ -146,7 +147,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         });
 
         var drop_revealer_child = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
-            margin_top = 12,
+            margin_top = 0,
             margin_bottom = 0
         };
 

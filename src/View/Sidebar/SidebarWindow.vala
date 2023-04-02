@@ -349,7 +349,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
 
         static construct {
             expander_provider = new Gtk.CssProvider ();
-            expander_provider.load_from_resource ("/io/elementary/files/SidebarExpander.css");
+            expander_provider.load_from_resource ("/io/elementary/files4/SidebarExpander.css");
         }
 
         construct {

@@ -1,7 +1,7 @@
 libexec_dir = join_paths(get_option('prefix'), get_option ('libexecdir'))
 
 executable(
-    'io.elementary.files.xdg-desktop-portal',
+    'io.elementary.files4.xdg-desktop-portal',
     'ExternalWindow.vala',
     'FileChooserChoice.vala',
     'FileChooserDialog.vala',
@@ -44,7 +44,7 @@ install_data(
 )
 
 configure_file(
-    input: 'org.freedesktop.impl.portal.desktop.elementary.files.service.in',
+    input: 'org.freedesktop.impl.portal.desktop.elementary.files4.service.in',
     output: '@BASENAME@',
     configuration: conf_data,
     install: true,
@@ -64,6 +64,6 @@ if (flatpak_builder.found())
             '--force-clean'
         ],
         capture: true,
-        output: 'io.elementary.Files.PortalTester'
+        output: 'io.elementary.Files4.PortalTester'
     )
 endif

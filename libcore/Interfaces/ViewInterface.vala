@@ -64,7 +64,7 @@ public interface Files.ViewInterface : Gtk.Widget {
     public abstract void show_context_menu (Files.FileItemInterface? clicked_item, double x, double y) ;
 
     protected virtual void build_ui (Gtk.Widget view_widget) {
-        var builder = new Gtk.Builder.from_resource ("/io/elementary/files/View.ui");
+        var builder = new Gtk.Builder.from_resource ("/io/elementary/files4/View.ui");
         scrolled_window = (Gtk.ScrolledWindow)(builder.get_object ("scrolled-window"));
         scrolled_window.child = view_widget;
         scrolled_window.set_parent (this);
@@ -487,7 +487,7 @@ public interface Files.ViewInterface : Gtk.Widget {
         List<Files.File> selected_files = null;
         // Base context menus (fixed actions) are constructed by .ui template
         // Create new on the fly to avoid having to remove variable items
-        var builder = new Gtk.Builder.from_resource ("/io/elementary/files/View.ui");
+        var builder = new Gtk.Builder.from_resource ("/io/elementary/files4/View.ui");
         // If no selected item show background context menu
         if (item == null) {
             menu_x = x;
