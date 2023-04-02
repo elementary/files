@@ -45,7 +45,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
 
         breadcrumbs = new BasicBreadcrumbs (this);
         path_entry = new BasicPathEntry (this);
-        var stack = new Gtk.Stack ();
+        stack = new Gtk.Stack ();
         stack.add_child (breadcrumbs);
         stack.add_child (path_entry);
         stack.visible_child = breadcrumbs;

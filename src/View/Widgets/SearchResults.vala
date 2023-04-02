@@ -16,7 +16,7 @@
     Authors :
 ***/
 
-public class Files.SearchResults : Gtk.Popover, Searchable {
+public class Files.SearchResults : Gtk.Popover {
     private const string ELLIPSIS_NAME = "ELLIPSIS";
     /* The order of these categories governs the order in which matches appear in the search view.
      * The category represents a first level sort.  Within a category the matches sort alphabetically on name */
@@ -100,7 +100,7 @@ public class Files.SearchResults : Gtk.Popover, Searchable {
 
     public bool working { get; private set; default = false; }
 
-    private new Gtk.Widget parent;
+    // private new Gtk.Widget parent;
     protected int n_results { get; private set; default = 0; }
 
     GLib.File current_root;
@@ -127,8 +127,8 @@ public class Files.SearchResults : Gtk.Popover, Searchable {
     bool local_search_finished = false;
     bool global_search_finished = false;
 
-    bool is_grabbing = false;
-    Gdk.Device? device = null;
+    // bool is_grabbing = false;
+    // Gdk.Device? device = null;
 
     Gtk.TreeIter? local_results = null;
     Gtk.TreeIter? deep_results = null;
@@ -141,6 +141,13 @@ public class Files.SearchResults : Gtk.Popover, Searchable {
     Gtk.TreeStore list;
     Gtk.TreeModelFilter filter;
     Gtk.ScrolledWindow scroll;
+
+    public signal void file_selected (GLib.File file);
+    public signal void file_activated (GLib.File file);
+    public signal void cursor_changed (GLib.File? file);
+    public signal void first_match_found (GLib.File? file);
+    public signal void exit (bool exit_navigate = true);
+
 
     // public SearchResults () {
     //     Object (resizable: false);
@@ -704,14 +711,14 @@ public class Files.SearchResults : Gtk.Popover, Searchable {
         view.set_cursor (path, null, false);
     }
 
-    void popup () {
-        if (get_mapped ()) {
-            return;
-        }
+    // void popup () {
+    //     if (get_mapped ()) {
+    //         return;
+    //     }
 
         // set_screen (parent.get_screen ());
         // show_all ();
-        view.grab_focus ();
+        // view.grab_focus ();
 
         // /* Ensure device grab and ungrab are paired */
         // if (!is_grabbing && device != null) {
@@ -722,12 +729,12 @@ public class Files.SearchResults : Gtk.Popover, Searchable {
         //     is_grabbing = true;
         // }
         /* Paired with disconnect function in popdown () */
-        connect_view_cursor_changed_signal ();
-    }
+    //     connect_view_cursor_changed_signal ();
+    // }
 
-    void popdown () {
-        /* Paired with connect function in popup () */
-        disconnect_view_cursor_changed_signal ();
+    // void popdown () {
+    //     /* Paired with connect function in popup () */
+    //     disconnect_view_cursor_changed_signal ();
         // if (is_grabbing) {
         //     if (device == null) {
         //         /* 'device' can become null during searching for reasons as yet unidentified. This ensures
@@ -742,8 +749,8 @@ public class Files.SearchResults : Gtk.Popover, Searchable {
         //     is_grabbing = false;
         // }
 
-        hide ();
-    }
+    //     hide ();
+    // }
 
     void add_results (Gee.List<Match> new_results, Gtk.TreeIter parent) {
         if (current_operation.is_cancelled ()) {
@@ -889,10 +896,10 @@ public class Files.SearchResults : Gtk.Popover, Searchable {
     protected void clear () {
         /* Disconnect the cursor-changed signal so that it does not get emitted when entries removed
          * causing incorrect files to get selected in icon view */
-        bool was_popped_up = has_popped_up ();
-        if (was_popped_up) {
-            disconnect_view_cursor_changed_signal ();
-        }
+        // bool was_popped_up = has_popped_up ();
+        // if (was_popped_up) {
+        //     disconnect_view_cursor_changed_signal ();
+        // }
 
         Gtk.TreeIter parent, iter;
         for (var valid = list.get_iter_first (out parent);
@@ -907,10 +914,10 @@ public class Files.SearchResults : Gtk.Popover, Searchable {
         }
 
         resize_popup ();
-        if (was_popped_up && has_popped_up ()) {
-            /* Reconnect signal only if remained popped up */
-            connect_view_cursor_changed_signal ();
-        }
+        // if (was_popped_up && has_popped_up ()) {
+        //     /* Reconnect signal only if remained popped up */
+        //     connect_view_cursor_changed_signal ();
+        // }
     }
 
     bool send_search_finished () {
@@ -1144,9 +1151,9 @@ public class Files.SearchResults : Gtk.Popover, Searchable {
         return n.contains (term);
     }
 
-    public bool has_popped_up () {
-        return is_grabbing;
-    }
+    // public bool has_popped_up () {
+    //     return is_grabbing;
+    // }
 
     private void connect_view_cursor_changed_signal () {
         view.cursor_changed.connect (on_cursor_changed);

@@ -22,7 +22,7 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
 
     //Dearching
     private Gtk.SearchEntry search_entry;
-    private Files.SearchResults search_window;
+    private Files.SearchResults search_popover;
 
     construct {
         // Enable path entry completions
@@ -102,7 +102,14 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
         set_up_drop_target ();
 
         search_entry = new Gtk.SearchEntry ();
-        search_window = new Files.SearchResults ();
+        search_popover = new Files.SearchResults () {
+            has_arrow = false,
+        };
+
+        search_popover.set_parent (search_entry);
+        search_entry.search_changed.connect (() => {
+            search_popover.popup ();
+        });
 
         stack.add_child (search_entry);
 
@@ -115,6 +122,10 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
            margin_end = 24,
            can_focus = false
        };
+
+        search_button.clicked.connect (() => {
+           stack.visible_child = search_entry ;
+        });
 
         content.prepend (search_button);
     }
