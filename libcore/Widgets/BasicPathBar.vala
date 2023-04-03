@@ -75,6 +75,9 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                     stack.visible_child = path_entry;
                     path_entry.grab_focus ();
                     break;
+                case PathBarMode.SEARCH:
+                    // Not handled here
+                    break;
             }
         });
         bind_property ("display-uri", breadcrumbs, "uri", BindingFlags.DEFAULT);
@@ -137,17 +140,7 @@ public class Files.BasicPathBar : Gtk.Widget, PathBarInterface {
                 halign = Gtk.Align.END,
                 can_focus = false
             };
-            // var search_button = new Gtk.Button () {
-            //     icon_name = "edit-find-symbolic",
-            //     action_name = "win.find",
-            //     action_target = "",
-            //     hexpand = false,
-            //     halign = Gtk.Align.START,
-            //     margin_end = 24,
-            //     can_focus = false
-            // };
 
-            // search_button.set_parent (this);
             bread_handle.set_parent (this);
             refresh_button.set_parent (this);
 

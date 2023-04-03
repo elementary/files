@@ -22,7 +22,8 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
 
     //Dearching
     private Gtk.SearchEntry search_entry;
-    private Files.SearchResults search_popover;
+    private Gtk.Popover search_popover;
+    private Files.SearchResults search_results;
 
     construct {
         // Enable path entry completions
@@ -102,29 +103,56 @@ public class Files.PathBar : Files.BasicPathBar, PathBarInterface {
         set_up_drop_target ();
 
         search_entry = new Gtk.SearchEntry ();
-        search_popover = new Files.SearchResults () {
+        search_popover = new Gtk.Popover () {
             has_arrow = false,
+            autohide = false, // Not modal
+            width_request = 500 // For now. Simpler than dynamic resizing.
         };
 
-        search_popover.set_parent (search_entry);
-        search_entry.search_changed.connect (() => {
-            search_popover.popup ();
+        search_results = new Files.SearchResults ();
+        search_popover.child = search_results.content;
+
+        var search_size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
+        search_size_group.add_widget (search_entry);
+        search_size_group.add_widget (search_results.content);
+
+        search_entry.search_changed.connect ((se) => {
+            if (!search_popover.visible && search_entry.text != "") {
+                search_popover.popup ();
+            } else if (search_popover.visible && search_entry.text == "") {
+                search_popover.popdown ();
+            }
+
+            search_results.search (se.text);
         });
 
+        search_entry.stop_search.connect (() => {
+            warning ("search stopped");
+            search_results.cancel ();
+            search_popover.popdown ();
+        });
         stack.add_child (search_entry);
 
-       var search_button = new Gtk.Button () {
-           icon_name = "edit-find-symbolic",
-           action_name = "win.find",
-           action_target = "",
-           hexpand = false,
-           halign = Gtk.Align.START,
-           margin_end = 24,
-           can_focus = false
+        var search_button = new Gtk.Button () {
+            icon_name = "edit-find-symbolic",
+            action_name = "win.find",
+            action_target = "",
+            hexpand = false,
+            halign = Gtk.Align.START,
+            margin_end = 24,
+            can_focus = false
        };
 
+        search_popover.set_parent (search_entry);
+
         search_button.clicked.connect (() => {
-           stack.visible_child = search_entry ;
+            var cw = search_entry.get_size (Gtk.Orientation.HORIZONTAL);
+            mode = PathBarMode.SEARCH;
+            stack.visible_child = search_entry;
+            search_entry.grab_focus ();
+            search_results.root_search_folder = GLib.File.new_for_uri (
+                Files.FileUtils.sanitize_path (display_uri)
+            );
         });
 
         content.prepend (search_button);
