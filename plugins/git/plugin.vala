@@ -44,7 +44,10 @@
                 repo.file_status_foreach (status_options,
                                           (path, status_flags) => {
 
-                    status_map.insert (path, status_flags);
+                    if (!(Ggit.StatusFlags.IGNORED in status_flags)) {
+                        status_map.insert (path, status_flags);
+                    }
+
                     return 0;
                 });
             } catch (Error e) {
@@ -84,7 +87,6 @@ public class Files.Plugins.Git : Files.Plugins.Base {
     }
 
     public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
-
         if (!view.directory.is_local) {
             debug ("Git plugin ignoring non-local folder");
             return;
@@ -100,7 +102,7 @@ public class Files.Plugins.Git : Files.Plugins.Base {
 
             unowned string fs_type = info.get_attribute_string (FileAttribute.FILESYSTEM_TYPE);
             if (EXCLUDED_FS_TYPES.contains (fs_type)) {
-                warning ("GIT PLUGIN: excluded filesystem type %s", fs_type);
+                debug ("GIT PLUGIN: excluded filesystem type %s", fs_type);
                 return;
             }
         } catch (GLib.Error error) {
@@ -118,7 +120,7 @@ public class Files.Plugins.Git : Files.Plugins.Base {
 
         unowned string fs_type = info.get_attribute_string (FileAttribute.FILESYSTEM_TYPE);
         if (EXCLUDED_FS_TYPES.contains (fs_type)) {
-            warning ("GIT PLUGIN: excluded filesystem type %s", fs_type);
+            debug ("GIT PLUGIN: excluded filesystem type %s", fs_type);
             return;
         }
 
@@ -140,6 +142,7 @@ public class Files.Plugins.Git : Files.Plugins.Base {
                     repo_info = new Files.GitRepoInfo (git_repo);
                     repo_map.insert (repo_uri, repo_info);
                 } else {
+                    repo_info.get_status_list ();
                 }
 
                 if (!child_map.contains (dir_uri)) {
@@ -161,7 +164,8 @@ public class Files.Plugins.Git : Files.Plugins.Base {
     }
 
     public override void update_file_info (Files.File gof) {
-        /* Ignore e.g. .git and .githib folders, but include e.g. .travis.yml file */
+        /* Ignore e.g. .git and .github folders, but include e.g. .travis.yml file */
+        //TODO Rely on .gitignore to exclude unwanted tracking
         if (gof.is_hidden && gof.is_directory) {
             return;
         }
@@ -192,11 +196,12 @@ public class Files.Plugins.Git : Files.Plugins.Base {
                             break;
 
                         default:
+                            warning ("unhandled status %s", git_status.to_string ());
                             break;
                     }
                 }
             } else {
-                critical ("Relative path is null");
+                critical ("Git plugin update_file_info: Relative path is null");
             }
         }
     }
