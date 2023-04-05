@@ -1,29 +1,16 @@
-/* DeviceListBox.vala
- *
- * Copyright 2020 elementary, Inc (https://elementary.io)
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- * Authors : Jeremy Wootten <jeremy@elementaryos.org>
- */
+/*
+ * Copyright 2021-23 elementary, Inc. <https://elementary.io>
+ * SPDX-License-Identifier: GPL-3.0-or-later
 
-public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
+ * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
+*/
+
+public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
+    public Gtk.ListBox list_box { get; construct; }
+    public Files.SidebarInterface sidebar { get; construct; }
     private VolumeMonitor volume_monitor;
 
-    public Files.SidebarInterface sidebar { get; construct; }
+    public signal void refresh_freespace ();
 
     public DeviceListBox (Files.SidebarInterface sidebar) {
         Object (
@@ -32,24 +19,83 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     construct {
-        hexpand = true;
+        list_box = new Gtk.ListBox () {
+            hexpand = true,
+            selection_mode = Gtk.SelectionMode.SINGLE
+        };
+
+        append (list_box);
+
+        var safely_remove_action = new SimpleAction ("safely-remove", new VariantType ("u"));
+        safely_remove_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                ((AbstractMountableRow)row).safely_remove_drive.begin ();
+            }
+        });
+        var eject_action = new SimpleAction ("eject", new VariantType ("u"));
+        eject_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                ((AbstractMountableRow)row).eject_drive.begin ();
+            }
+        });
+        var properties_action = new SimpleAction ("properties", new VariantType ("u"));
+        properties_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                if (row is AbstractMountableRow) {
+                    ((AbstractMountableRow)row).show_mount_info ();
+                }
+            }
+        });
+        var mount_action = new SimpleAction ("mount", new VariantType ("u"));
+        mount_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                if (row is AbstractMountableRow) {
+                    //TODO Do we need a different behaviour (i.e. mount without activate?)
+                    ((AbstractMountableRow)row).activated ();
+                }
+            }
+        });
+        var unmount_action = new SimpleAction ("unmount", new VariantType ("u"));
+        unmount_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                if (row is AbstractMountableRow) {
+                    ((AbstractMountableRow)row).unmount_mount.begin ((obj, res) => {
+                        //TODO Deal with failure
+                    });
+                }
+            }
+        });
+        var device_action_group = new SimpleActionGroup ();
+        device_action_group.add_action (safely_remove_action);
+        device_action_group.add_action (eject_action);
+        device_action_group.add_action (properties_action);
+        device_action_group.add_action (unmount_action);
+        insert_action_group ("device", device_action_group);
+
         volume_monitor = VolumeMonitor.@get ();
         volume_monitor.drive_connected.connect (bookmark_drive);
         volume_monitor.mount_added.connect (bookmark_mount_without_volume);
         volume_monitor.volume_added.connect (bookmark_volume);
 
-        row_activated.connect ((row) => {
+        list_box.row_activated.connect ((row) => {
             if (row is SidebarItemInterface) {
                 ((SidebarItemInterface) row).activated ();
             }
         });
-        row_selected.connect ((row) => {
+        list_box.row_selected.connect ((row) => {
             if (row is SidebarItemInterface) {
                 select_item ((SidebarItemInterface) row);
             }
         });
 
-        set_sort_func (device_sort_func);
+        list_box.set_sort_func (device_sort_func);
+
+        refresh ();
     }
 
     private int device_sort_func (Gtk.ListBoxRow? row1, Gtk.ListBoxRow? row2) {
@@ -105,14 +151,16 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                 );
             }
 
-            add (new_bm);
+            list_box.append (new_bm);
 
-            show_all ();
             bm = new_bm;
             bm.update_free_space ();
         }
 
         assert (bm != null);
+        refresh_freespace.connect (() => {
+            bm.update_free_space ();
+        });
         return bm; // Should not be null (either an existing bookmark or a new one)
     }
 
@@ -132,7 +180,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     public void refresh () {
-        clear ();
+        clear_list ();
 
         var root_uri = _(Files.ROOT_FS_URI);
         if (root_uri != "") {
@@ -167,11 +215,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     public override void refresh_info () {
-        get_children ().@foreach ((item) => {
-            if (item is AbstractMountableRow) {
-                ((AbstractMountableRow)item).update_free_space ();
-            }
-        });
+        refresh_freespace ();
     }
 
     private void bookmark_drive (Drive drive) {
@@ -227,20 +271,21 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
 
     private bool has_uuid (string? uuid, string? fallback, out AbstractMountableRow? row) {
         var searched_uuid = uuid != null ? uuid : fallback;
-
+        row = null;
         if (searched_uuid != null) {
-            foreach (unowned var child in get_children ()) {
-                row = null;
+            var child = list_box.get_first_child ();
+            while (child != null) {
                 if (child is AbstractMountableRow) {
-                    row = (AbstractMountableRow)child;
-                    if (row.uuid == searched_uuid) {
+                    if (((AbstractMountableRow)child).uuid == searched_uuid) {
+                        row = ((AbstractMountableRow)child);
                         return true;
                     }
                 }
+
+                child = child.get_next_sibling ();
             }
         }
 
-        row = null;
         return false;
     }
 
@@ -250,18 +295,20 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     public void unselect_all_items () {
-        foreach (unowned var child in get_children ()) {
-            if (child is AbstractMountableRow) {
-                unselect_row ((AbstractMountableRow)child);
-            }
-        }
+        list_box.unselect_all ();
     }
 
     public void select_item (SidebarItemInterface? item) {
         if (item != null && item is AbstractMountableRow) {
-            select_row ((AbstractMountableRow)item);
+            list_box.select_row ((AbstractMountableRow)item);
         } else {
             unselect_all_items ();
         }
     }
+
+    public void remove_item (SidebarItemInterface item, bool force) {
+        list_box.remove (item);
+        item.destroy_item ();
+    }
+
 }

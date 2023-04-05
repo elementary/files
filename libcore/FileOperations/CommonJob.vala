@@ -44,6 +44,7 @@ public class Files.FileOperations.CommonJob {
     }
 
     protected void inhibit_power_manager (string message) {
+
         weak Gtk.Application app = (Gtk.Application) GLib.Application.get_default ();
         inhibit_cookie = app.inhibit (
             parent_window,
@@ -275,7 +276,7 @@ public class Files.FileOperations.CommonJob {
             foreach (unowned string title in buttons) {
                 unowned Gtk.Widget button = dialog.add_button (title, response_id);
                 if (title == DELETE || title == DELETE_ALL || title == EMPTY_TRASH) {
-                    button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                    button.add_css_class (Granite.STYLE_CLASS_DESTRUCTIVE_ACTION);
                 }
 
                 response_id++;

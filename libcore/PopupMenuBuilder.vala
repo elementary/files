@@ -18,81 +18,80 @@
 ***/
 
 public class PopupMenuBuilder : Object {
-    public delegate void MenuitemCallback (Gtk.MenuItem menu_item);
-    Gtk.MenuItem[] menu_items = {};
-    public uint n_items { get { return menu_items.length; }}
+    public delegate void MenuitemCallback (MenuItem menu_item);
+    Menu[] section_menus;
+    private int section_index;
+    private int item_index;
+    construct {
+        section_menus = new Menu[1];
+        section_menus[0] = new Menu ();
+        section_index = 0;
+        item_index = 0;
+    }
 
-    public Gtk.Menu build () {
-        var popupmenu = new Gtk.Menu ();
-        foreach (var menu_item in menu_items) {
-            popupmenu.append (menu_item);
+    public Gtk.PopoverMenu build () {
+        var menu = section_menus[0];
+        for (int i = 1; i <= section_index; i++) {
+            menu.append_section (null, section_menus[i]);
         }
 
-        return popupmenu;
+        return new Gtk.PopoverMenu.from_model (menu) {
+            has_arrow = false,
+            can_focus = false //Else focus does not return when closed?
+        };
     }
 
-    public Gtk.Menu build_from_model (MenuModel model,
-                                      string? action_group_namespace = null,
-                                      ActionGroup? action_group = null) {
 
-        var menu = new Gtk.Menu.from_model (model);
-        menu.insert_action_group (action_group_namespace, action_group);
-
-        for (int i = 0; i < menu_items.length; i++) {
-            menu.append (menu_items[i]);
-            menu.reorder_child (menu_items[i], i);
-        }
-
-        return menu;
+    public PopupMenuBuilder add_open (string? detailed_action_name) {
+        return add_item (_("Open"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_open_tab (string? detailed_action_name) {
+        return add_item (_("New Tab"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_open_window (string? detailed_action_name) {
+        return add_item (_("New Window"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_remove (string? detailed_action_name) {
+        return add_item (_("Remove"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_rename (string? detailed_action_name) {
+        return add_item (_("Rename"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_mount (string? detailed_action_name) {
+        return add_item (_("Mount"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_unmount (string? detailed_action_name) {
+        return add_item (_("Unmount"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_properties (string? detailed_action_name) {
+        return add_item (_("Properties"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_eject_drive (string? detailed_action_name) {
+        return add_item (_("Eject Media"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_safely_remove (string? detailed_action_name) {
+        return add_item (_("Safely Remove"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_bookmark (string? detailed_action_name) {
+        return add_item (_("Add to Bookmarks"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_copy (string? detailed_action_name) {
+        return add_item (_("Copy"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_cut (string? detailed_action_name) {
+        return add_item (_("Cut"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_copy_link (string? detailed_action_name) {
+        return add_item (_("Copy Link"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_trash (string? detailed_action_name) {
+        return add_item (_("Move to trash"), detailed_action_name);
+    }
+    public PopupMenuBuilder add_delete (string? detailed_action_name) {
+        return add_item (_("Delete permanently"), detailed_action_name);
     }
 
-    public PopupMenuBuilder add_open (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open")), cb);
-    }
-
-    public PopupMenuBuilder add_open_tab (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open in New _Tab")), cb);
-    }
-
-    public PopupMenuBuilder add_open_window (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open in New _Window")), cb);
-    }
-
-    public PopupMenuBuilder add_remove (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_label (_("Remove")), cb);
-    }
-
-    public PopupMenuBuilder add_rename (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_label (_("Rename")), cb);
-    }
-
-    public PopupMenuBuilder add_mount (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("_Mount")), cb);
-    }
-
-    public PopupMenuBuilder add_unmount (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("_Unmount")), cb);
-    }
-
-    public PopupMenuBuilder add_drive_property (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Properties")), cb);
-    }
-
-    public PopupMenuBuilder add_eject_drive (MenuitemCallback cb) {
-        // Do we need different text for USB sticks and optical drives?
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Eject Media")), cb);
-    }
-
-    public PopupMenuBuilder add_safely_remove (MenuitemCallback cb) {
-        // Do we need different text for USB sticks and optical drives?
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Safely Remove")), cb);
-    }
-
-    public PopupMenuBuilder add_bookmark (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Add to Bookmarks")), cb);
-    }
-
-    public PopupMenuBuilder add_empty_all_trash (MenuitemCallback cb) {
+    public PopupMenuBuilder add_empty_all_trash (string? detailed_action_name) {
         var volume_monitor = VolumeMonitor.@get ();
         int mounts_with_trash = 0;
         foreach (Mount mount in volume_monitor.get_mounts ()) {
@@ -101,37 +100,26 @@ public class PopupMenuBuilder : Object {
             }
         }
 
-        var text = mounts_with_trash > 0 ? _("Permanently Delete All Trash") : _("Permanently Delete Trash");
-        var menu_item = new Gtk.MenuItem.with_mnemonic (text);
+        var text = mounts_with_trash > 0 ?
+        _("Permanently Delete All Trash") : _("Permanently Delete Trash");
 
-        if (Files.TrashMonitor.get_default ().is_empty) {
-            menu_item.sensitive = false;
-        } else {
-            menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-        }
-
-        return add_item (menu_item, cb);
+        return add_item (text, detailed_action_name);
     }
 
-    public PopupMenuBuilder add_empty_mount_trash (MenuitemCallback cb) {
-        var menu_item = new Gtk.MenuItem.with_mnemonic (_("Permanently Delete Trash on this Mount"));
-        menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-        return add_item (menu_item, cb);
+    public PopupMenuBuilder add_empty_mount_trash (string? detailed_action_name) {
+        return add_item (_("Permanently Delete Trash on this Mount"), detailed_action_name);
     }
 
     public PopupMenuBuilder add_separator () {
-        return add_item (new Gtk.SeparatorMenuItem ());
+        // Start a new section menu
+        section_index++;
+        section_menus += new Menu ();
+        return this;
     }
 
-    public PopupMenuBuilder add_item (Gtk.MenuItem menu_item, MenuitemCallback? cb = null) {
-        if (cb != null) {
-            menu_item.activate.connect ((menu_item) => {
-                cb (menu_item);
-            });
-        }
-
-        menu_item.show ();
-        menu_items += menu_item;
+    public PopupMenuBuilder add_item (string name, string? detailed_action_name) {
+        var item = new MenuItem (name, detailed_action_name);
+        section_menus[section_index].append_item (item);
         return this;
     }
 }

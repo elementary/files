@@ -1,27 +1,14 @@
-/* NetworkListBox.vala
- *
- * Copyright 2020 elementary LLC. <https://elementary.io>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- * Authors : Jeremy Wootten <jeremy@elementaryos.org>
- */
+/*
+ * Copyright 20221-23 elementary, Inc. <https://elementary.io>
+ * SPDX-License-Identifier: GPL-3.0-or-later
 
-public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
+ * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
+*/
+
+public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
+    public Gtk.ListBox list_box { get; construct; }
     public Files.SidebarInterface sidebar { get; construct; }
+
     public NetworkListBox (Files.SidebarInterface sidebar) {
         Object (
             sidebar: sidebar
@@ -29,20 +16,29 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     }
 
     construct {
+        list_box = new Gtk.ListBox () {
+            hexpand = true,
+            selection_mode = Gtk.SelectionMode.SINGLE
+        };
+
+        append (list_box);
+
         var volume_monitor = VolumeMonitor.@get ();
         volume_monitor.mount_added.connect (bookmark_mount_if_not_shadowed);
-        row_activated.connect ((row) => {
+        list_box.row_activated.connect ((row) => {
             if (row is SidebarItemInterface) {
                 ((SidebarItemInterface) row).activated ();
             }
         });
-        row_selected.connect ((row) => {
+        list_box.row_selected.connect ((row) => {
             if (row is SidebarItemInterface) {
                 select_item ((SidebarItemInterface) row);
             }
         });
 
-        set_sort_func (network_sort_func);
+        list_box.set_sort_func (network_sort_func);
+
+        refresh ();
     }
 
     private int network_sort_func (Gtk.ListBoxRow? row1, Gtk.ListBoxRow? row2) {
@@ -67,7 +63,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
                 mount
             );
 
-            add (row);
+            list_box.append (row);
         }
 
         return row;
@@ -111,7 +107,7 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     }
 
     public void refresh () {
-        clear ();
+        clear_list ();
 
         if (Files.is_admin ()) { //Network operations fail for administrators
             return;
@@ -137,14 +133,19 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     }
 
     public void unselect_all_items () {
-        unselect_all ();
+        list_box.unselect_all ();
     }
 
     public void select_item (SidebarItemInterface? item) {
         if (item != null && item is NetworkRow) {
-            select_row ((NetworkRow)item);
+            list_box.select_row ((NetworkRow)item);
         } else {
             unselect_all_items ();
         }
+    }
+
+    public void remove_item (SidebarItemInterface item, bool force) {
+        list_box.remove (item);
+        item.destroy_item ();
     }
 }

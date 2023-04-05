@@ -50,7 +50,7 @@ namespace PF.Dialogs {
 
     private Granite.MessageDialog display_dialog (Granite.MessageDialog dialog, Gtk.Window? parent) {
         if (parent != null && parent is Gtk.Window) {
-            dialog.set_transient_for (parent);
+            dialog.set_transient_for ((Gtk.Window)parent);
         }
 
         dialog.response.connect_after (() => {

@@ -51,14 +51,11 @@ plugins/pantheon-files-trash/plugin.vala
 plugins/send-by-email/plugin.vala
 
 src/Application.vala
-src/DeepCount.vala
-src/DesktopLauncher.vala
+src/services/DeepCount.vala
 src/main.vala
-src/ProgressUIHandler.vala
-src/TextRenderer.vala
-src/ClipboardManager.vala
-src/IconRenderer.vala
-src/ZeitgeistManager.vala
+src/Services/ProgressUIHandler.vala
+src/Services/ClipboardManager.vala
+src/Services/ZeitgeistManager.vala
 
 src/Dialogs/AbstractPropertiesDialog.vala
 src/Dialogs/ChooseAppDialog.vala

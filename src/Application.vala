@@ -2,7 +2,7 @@
     Copyright (c) 1999, 2000 Red Hat, Inc.
     Copyright (c) 2000, 2001 Eazel, Inc.
     Copyright (c) 2013 Julián Unrrein <junrrein@gmail.com>
-    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2022 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -26,13 +26,16 @@ namespace Files {
     public Settings icon_view_settings;
     public Settings list_view_settings;
     public Settings column_view_settings;
+
+    static bool is_admin () {
+        return Posix.getuid () == 0;
+    }
 }
 
 public class Files.Application : Gtk.Application {
 
     private VolumeMonitor volume_monitor;
     private Progress.UIHandler progress_handler;
-    private ClipboardManager clipboard;
     private Gtk.RecentManager recent;
 
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
@@ -50,9 +53,9 @@ public class Files.Application : Gtk.Application {
     static construct {
         /* GSettings parameters */
         app_settings = new Settings ("io.elementary.files.preferences");
-        icon_view_settings = new Settings ("io.elementary.files.icon-view");
-        list_view_settings = new Settings ("io.elementary.files.list-view");
-        column_view_settings = new Settings ("io.elementary.files.column-view");
+        icon_view_settings = new Settings ("io.elementary.files4.icon-view");
+        list_view_settings = new Settings ("io.elementary.files4.list-view");
+        column_view_settings = new Settings ("io.elementary.files4.column-view");
     }
 
     construct {
@@ -63,6 +66,16 @@ public class Files.Application : Gtk.Application {
         /* Needed by Glib.Application */
         this.application_id = APP_ID; //Ensures an unique instance.
         this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
+
+        var folder_deleted_action = new SimpleAction ("folder-deleted", new VariantType ("s"));
+        folder_deleted_action.activate.connect ((param) => {
+            var gfile = GLib.File.new_for_uri (param.get_string ());
+            unowned List<Gtk.Window> window_list = this.get_windows ();
+            window_list.@foreach ((window) => {
+                ((Files.Window)window).folder_deleted (gfile);
+            });
+        });
+        add_action (folder_deleted_action);
     }
 
     public override void startup () {
@@ -70,23 +83,28 @@ public class Files.Application : Gtk.Application {
 
         init_schemas ();
 
-        Gtk.IconTheme.get_default ().changed.connect (() => {
+        Gtk.IconTheme.get_for_display (Gdk.Display.get_default ()).changed.connect (() => {
             Files.IconInfo.clear_caches ();
         });
 
         progress_handler = new Progress.UIHandler ();
 
-        this.clipboard = ClipboardManager.get_for_display ();
         this.recent = new Gtk.RecentManager ();
 
-        /* Global static variable "plugins" declared in PluginManager.vala */
+        // Deactivate plugins while porting main to Gtk4
+        // /* Global static variable "plugins" declared in PluginManager.vala */
         plugins = new PluginManager (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
 
         /**TODO** move the volume manager here? */
         /**TODO** gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
 
         this.volume_monitor = VolumeMonitor.get ();
-        this.volume_monitor.mount_removed.connect (mount_removed_callback);
+        this.volume_monitor.mount_removed.connect ((mount) => {
+            /* Notify each window */
+            foreach (var window in this.get_windows ()) {
+                ((Files.Window)window).mount_removed (mount);
+            }
+        });
 
 #if HAVE_UNITY
         QuicklistHandler.get_singleton ();
@@ -105,12 +123,8 @@ public class Files.Application : Gtk.Application {
 
         granite_settings.notify["prefers-color-scheme"].connect (() => {
             gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
-            Files.EmblemRenderer.clear_cache ();
+            // Files.EmblemRenderer.clear_cache ();
         });
-    }
-
-    public unowned ClipboardManager get_clipboard_manager () {
-        return this.clipboard;
     }
 
     public unowned Gtk.RecentManager get_recent_manager () {
@@ -167,7 +181,7 @@ public class Files.Application : Gtk.Application {
 
         var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));
         context.add_main_entries (options, null);
-        context.add_group (Gtk.get_option_group (true));
+        // context.add_group (Gtk.get_option_group (true));
 
         string[] args = cmd.get_arguments ();
         /* We need to store arguments in an unowned variable for context.parse */
@@ -187,7 +201,7 @@ public class Files.Application : Gtk.Application {
         }
 
         if (version) {
-            cmd.print ("io.elementary.files %s\n", Config.VERSION);
+            cmd.print ("io.elementary.files4 %s\n", Config.VERSION);
             return Posix.EXIT_SUCCESS;
         }
 
@@ -223,7 +237,7 @@ public class Files.Application : Gtk.Application {
                 /* Open window with tabs at each requested location. */
                 create_window_with_tabs (files);
             } else {
-                var win = (View.Window)(get_active_window ());
+                var win = (Files.Window)(get_active_window ());
                 win.open_tabs (files, ViewMode.PREFERRED, true); /* Ignore if duplicate tab in existing window */
             }
         } else if (create_new_window || window_count == 0) {
@@ -254,35 +268,24 @@ public class Files.Application : Gtk.Application {
         quitting = true;
         unowned List<Gtk.Window> window_list = this.get_windows ();
         window_list.@foreach ((window) => {
-            ((View.Window)window).quit ();
+            ((Files.Window)window).quit ();
         });
 
         base.quit ();
     }
 
-    public void folder_deleted (GLib.File file) {
+    private void folder_deleted (GLib.File file) {
         unowned List<Gtk.Window> window_list = this.get_windows ();
         window_list.@foreach ((window) => {
-            ((View.Window)window).folder_deleted (file);
+            ((Files.Window)window).folder_deleted (file);
         });
-    }
-
-    private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
-        /* Notify each window */
-        foreach (var window in this.get_windows ()) {
-            ((View.Window)window).mount_removed (mount);
-        }
     }
 
     private void init_schemas () {
         /* Bind settings with GOFPreferences */
         var prefs = Files.Preferences.get_default ();
-        if (app_settings.settings_schema.has_key ("singleclick-select")) {
-            app_settings.bind ("singleclick-select", prefs, "singleclick-select", GLib.SettingsBindFlags.DEFAULT);
-        }
-
         Files.app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
-
+        Files.app_settings.bind ("singleclick-select", prefs, "singleclick-select", GLib.SettingsBindFlags.DEFAULT);
         Files.app_settings.bind ("show-remote-thumbnails",
                                    prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
         Files.app_settings.bind ("show-local-thumbnails",
@@ -298,21 +301,25 @@ public class Files.Application : Gtk.Application {
                                         prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 
-    public View.Window? create_window (GLib.File? location = null,
+    public Files.Window? create_window (GLib.File? location = null,
                                        ViewMode viewmode = ViewMode.PREFERRED) {
 
         return create_window_with_tabs ({location}, viewmode);
     }
 
+    public Files.Window? create_empty_window () { // Used when moving a tab into a new window
+        return create_window_with_tabs ({});
+    }
+
     /* All window creation should be done via this function */
-    private View.Window? create_window_with_tabs (GLib.File[] locations = {},
+    private Files.Window? create_window_with_tabs (GLib.File[]? locations = null,
                                                   ViewMode viewmode = ViewMode.PREFERRED) {
 
         if (this.get_windows ().length () >= MAX_WINDOWS) { //Can be assumed to be limited in length
             return null;
         }
 
-        var win = new View.Window (this);
+        var win = new Files.Window ();
         add_window (win as Gtk.Window);
         plugins.interface_loaded (win as Gtk.Widget);
         win.open_tabs (locations, viewmode);

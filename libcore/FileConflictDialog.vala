@@ -60,8 +60,7 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         Object (
             title: _("File conflict"),
             transient_for: parent,
-            resizable: false,
-            skip_taskbar_hint: true
+            resizable: false
         );
 
         source = Files.File.@get (_source);
@@ -69,8 +68,11 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         destination.query_update ();
         var thumbnailer = Files.Thumbnailer.get ();
         thumbnailer.finished.connect (() => {
-            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   Files.File.IconFlags.USE_THUMBNAILS);
+            if (destination.gicon != null) {
+                destination_image.gicon = destination.gicon;
+            } else {
+                destination_image.paintable = destination.paintable;
+            }
         });
 
         thumbnailer.queue_file (destination, null, false);
@@ -164,18 +166,16 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
 
         var reset_button = new Gtk.Button.with_label (_("Reset"));
 
-        var expander_grid = new Gtk.Grid () {
+        var expander_grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
             margin_top = 6,
-            margin_bottom = 6,
-            column_spacing = 6,
-            orientation = Gtk.Orientation.HORIZONTAL
+            margin_bottom = 6
         };
 
-        expander_grid.add (rename_entry);
-        expander_grid.add (reset_button);
+        expander_grid.append (rename_entry);
+        expander_grid.append (reset_button);
 
         var expander = new Gtk.Expander.with_mnemonic (_("_Select a new name for the destination"));
-        expander.add (expander_grid);
+        expander.child = expander_grid;
 
         apply_all_checkbutton = new Gtk.CheckButton.with_label (_("Apply this action to all files"));
 
@@ -188,7 +188,8 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
 
         replace_button = (Gtk.Button) add_button (_("Replace"), ResponseType.REPLACE);
-        replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+        //TODO Use correct css class
+        replace_button.add_css_class ("destructive-action");
 
         var comparison_grid = new Gtk.Grid () {
             column_spacing = 6,
@@ -220,9 +221,8 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         grid.attach (comparison_grid, 0, 0);
         grid.attach (expander, 0, 1);
         grid.attach (apply_all_checkbutton, 0, 2);
-        grid.show_all ();
 
-        custom_bin.add (grid);
+        custom_bin.append (grid);
 
         source_type_label.bind_property ("visible", source_type_title_label, "visible");
         destination_type_label.bind_property ("visible", destination_type_title_label, "visible");
@@ -324,21 +324,23 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         }
 
         secondary_label.label = "%s %s".printf (message, message_extra);
-        source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), Files.File.IconFlags.USE_THUMBNAILS);
+        if (source.gicon != null) {
+            source_image.gicon = source.gicon;
+        } else {
+            source_image.paintable = source.paintable;
+        }
         source_size_label.label = source.format_size;
         source_time_label.label = source.formated_modified;
         if (should_show_type && src_ftype != null) {
             source_type_label.label = src_ftype;
         } else {
             source_type_label.visible = false;
-            source_type_label.no_show_all = true;
         }
 
         if (should_show_type && dest_ftype != null) {
             destination_type_label.label = dest_ftype;
         } else {
             destination_type_label.visible = false;
-            destination_type_label.no_show_all = true;
         }
 
         /* Populate the entry */
@@ -348,13 +350,6 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
             replace_button.label = _("Merge");
         }
 
-        source.changed.connect (() => {
-            source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), Files.File.IconFlags.USE_THUMBNAILS);
-        });
-
-        destination.changed.connect (() => {
-            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   Files.File.IconFlags.USE_THUMBNAILS);
-        });
+        //Source and directory icons assumed not to change during operation
     }
 }

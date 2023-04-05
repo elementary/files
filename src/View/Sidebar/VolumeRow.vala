@@ -1,24 +1,9 @@
-/* DeviceRow.vala
- *
- * Copyright 2021 elementary LLC. <https://elementary.io>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- * Authors : Jeremy Wootten <jeremy@elementaryos.org>
- */
+/*
+ * Copyright 2021-23 elementary, Inc. <https://elementary.io>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+
+ * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
+*/
 
 /* Most of the storage rows will be volumes associated with a drive.  However some devices (e.g. MP3 players may appear as a volume without a drive */
 public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterface {
@@ -105,7 +90,7 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
 
         if (volume == removed_volume) {
             valid = false;
-            list.remove_item_by_id (id);
+            list.remove_item (this, true);
         }
     }
 
@@ -163,26 +148,27 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         }
 
         if (!is_mounted) {
-            var mount_item = new Gtk.MenuItem.with_mnemonic (_("Mount"));
-            mount_item.activate.connect (() => {
-                mount_volume ();
-            });
-            menu_builder.add_item (mount_item);
+            // var mount_item = new Gtk.MenuItem.with_mnemonic (_("Mount"));
+            // mount_item.activate.connect (() => {
+            //     mount_volume ();
+            // });
+            // menu_builder.add_item (mount_item);
+            menu_builder.add_mount (
+                Action.print_detailed_name ("device.mount", new Variant.uint32 (id))
+            );
         }
 
         var sort_key = drive.get_sort_key ();
         if (sort_key != null && sort_key.contains ("hotplug")) {
             menu_builder
                 .add_separator ()
-                .add_safely_remove (() => {
-                    safely_remove_drive.begin (volume.get_drive ());
-                });
+                .add_safely_remove (Action.print_detailed_name ("device.safely-remove", new Variant.uint32 (id))
+            );
         } else if (mount == null && drive.can_eject ()) {
             menu_builder
                 .add_separator ()
-                .add_eject_drive (() => {
-                    eject_drive.begin (volume.get_drive ());
-                });
+                .add_eject_drive (Action.print_detailed_name ("device.eject", new Variant.uint32 (id))
+            );
         }
     }
 
@@ -195,13 +181,17 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
     }
 
     private void open_volume_property_window () {
-        new Files.View.VolumePropertiesWindow (
-            volume.get_mount (),
+        var properties_window = new Files.VolumePropertiesWindow (
+            mount,
             Files.get_active_window ()
         );
+        properties_window.response.connect ((res) => {
+            properties_window.destroy ();
+        });
+        properties_window.present ();
     }
 
-    protected override void show_mount_info () requires (!working) {
+    public override void show_mount_info () requires (!working) {
         if (!is_mounted) {
             /* Mount the device if possible, defer showing the dialog after
              * we're done */

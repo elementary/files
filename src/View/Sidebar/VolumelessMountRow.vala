@@ -1,24 +1,9 @@
-/* DeviceRow.vala
- *
- * Copyright 2021 elementary LLC. <https://elementary.io>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- * Authors : Jeremy Wootten <jeremy@elementaryos.org>
- */
+/*
+ * Copyright 2021-23 elementary, Inc. <https://elementary.io>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+
+ * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
+*/
 
 // Represents a mount not associated with a volume or drive - usually a bind mount
 // Also used for builtin row "FileSystem" which has null mount
@@ -66,16 +51,20 @@ public class Sidebar.VolumelessMountRow : Sidebar.AbstractMountableRow, SidebarI
 
         if (mount == removed_mount) {
             valid = false;
-            list.remove_item_by_id (id);
+            list.remove_item (this, true);
         }
     }
 
-    protected override void show_mount_info () {
+    public override void show_mount_info () {
         if ((mount != null) || uri == Files.ROOT_FS_URI) {
-            new Files.View.VolumePropertiesWindow (
+            var properties_window = new Files.VolumePropertiesWindow (
                 mount,
                 Files.get_active_window ()
             );
+            properties_window.response.connect ((res) => {
+                properties_window.destroy ();
+            });
+            properties_window.present ();
         }
     }
 

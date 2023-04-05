@@ -1,24 +1,9 @@
-/* DeviceRow.vala
- *
- * Copyright 2021 elementary LLC. <https://elementary.io>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- * Authors : Jeremy Wootten <jeremy@elementaryos.org>
- */
+/*
+ * Copyright 2021-23 elementary, Inc. <https://elementary.io>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+
+ * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
+*/
 
 // For a Drive that has no volumes (otherwise display volumes as VolumeRows)
 // This covers:
@@ -53,7 +38,6 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
     }
 
     construct {
-        no_show_all = true;
         visible = false;
         set_visibility ();
         sort_key = drive.get_sort_key ();
@@ -79,7 +63,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
 
         if (drive == removed_drive) {
             valid = false;
-            list.remove_item_by_id (id);
+            list.remove_item (this, true);
         }
     }
 
@@ -119,19 +103,20 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
         set_tooltip_markup (custom_name);
     }
 
-    protected override void popup_context_menu (Gdk.EventButton event) {
-        // At present, this type of row only shows when there is no media or unformatted so there are no
-        // usable actions.  In future, actions like "Format" might be added.
+    public override Gtk.PopoverMenu? get_context_menu () {
+        // At present, this type of row only shows when there is no media or unformatted
+        // In future, actions like "Format" might be added.
         var sort_key = drive.get_sort_key ();
         if (sort_key != null && sort_key.contains ("hotplug")) {
-             var menu_builder = new PopupMenuBuilder ()
-            .add_safely_remove (() => {
-                safely_remove_drive.begin (drive);
-            });
+             var menu_builder = new PopupMenuBuilder ();
+            menu_builder.add_safely_remove (
+                Action.print_detailed_name ("device.safely-remove", new Variant.uint32 (id))
+            );
 
-            menu_builder
-            .build ()
-            .popup_at_pointer (event);
+            var popover = menu_builder.build ();
+            return popover;
         }
+
+        return null;
     }
 }

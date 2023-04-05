@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/io/elementary/files/">
+  <gresource prefix="/io/elementary/files4/">
     <file alias="ColorButton.css" compressed="true">styles/ColorButton.css</file>
-    <file alias="DiskRenderer.css" compressed="true">styles/DiskRenderer.css</file>
     <file alias="SidebarExpander.css" compressed="true">styles/SidebarExpander.css</file>
+    <file alias="GridViewFileItem.css" compressed="true">styles/GridViewFileItem.css</file>
+    <file alias="View.ui" compressed="true">ui/View.ui</file>
+    <file alias="Window.ui" compressed="true">ui/Window.ui</file>
   </gresource>
 </gresources>

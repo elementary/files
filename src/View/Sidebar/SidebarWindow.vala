@@ -1,43 +1,21 @@
-/* SidebarWindow.vala
- *
- * Copyright 2020–2021 elementary, Inc. <https://elementary.io>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- * Authors : Jeremy Wootten <jeremy@elementaryos.org>
- */
+/*
+ * Copyright 2021-23 elementary, Inc. <https://elementary.io>
+ * SPDX-License-Identifier: GPL-3.0-or-later
 
-public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
-    Gtk.ScrolledWindow scrolled_window;
-    Gtk.Grid bookmarklists_grid;
-    SidebarListInterface bookmark_listbox;
-    SidebarListInterface device_listbox;
-    SidebarListInterface network_listbox;
+ * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
+*/
 
+public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
+    private Gtk.ScrolledWindow scrolled_window;
+    private BookmarkListBox bookmark_listbox;
+    private DeviceListBox device_listbox;
+    private NetworkListBox network_listbox;
     private string selected_uri = "";
     private bool loading = false;
     public bool ejecting_or_unmounting = false;
 
-    public new bool has_focus {
-        get {
-            return bookmark_listbox.has_focus;
-        }
-    }
-
     construct {
+        orientation = Gtk.Orientation.VERTICAL;
         bookmark_listbox = new BookmarkListBox (this);
         device_listbox = new DeviceListBox (this);
         network_listbox = new NetworkListBox (this);
@@ -47,7 +25,7 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
         };
 
         var bookmark_revealer = new Gtk.Revealer ();
-        bookmark_revealer.add (bookmark_listbox);
+        bookmark_revealer.set_child (bookmark_listbox);
 
         /// TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
         var device_expander = new SidebarExpander (_("Storage")) {
@@ -55,62 +33,194 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
         };
 
         var device_revealer = new Gtk.Revealer ();
-        device_revealer.add (device_listbox);
+        device_revealer.set_child (device_listbox);
 
         var network_expander = new SidebarExpander (_("Network")) {
             tooltip_text = _("Devices and places available via a network"),
-            no_show_all = Files.is_admin ()
+            visible = !Files.is_admin ()
         };
 
         var network_revealer = new Gtk.Revealer ();
-        network_revealer.add (network_listbox);
+        network_revealer.set_child (network_listbox);
 
-        bookmarklists_grid = new Gtk.Grid () {
-            orientation = Gtk.Orientation.VERTICAL,
+        var bookmarklists_grid = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             vexpand = true
         };
-        bookmarklists_grid.add (bookmark_expander);
-        bookmarklists_grid.add (bookmark_revealer);
-        bookmarklists_grid.add (device_expander);
-        bookmarklists_grid.add (device_revealer);
-        bookmarklists_grid.add (network_expander);
-        bookmarklists_grid.add (network_revealer);
+        bookmarklists_grid.append (bookmark_expander);
+        bookmarklists_grid.append (bookmark_revealer);
+        bookmarklists_grid.append (device_expander);
+        bookmarklists_grid.append (device_revealer);
+        bookmarklists_grid.append (network_expander);
+        bookmarklists_grid.append (network_revealer);
 
-        scrolled_window = new Gtk.ScrolledWindow (null, null) {
+        scrolled_window = new Gtk.ScrolledWindow () {
             hscrollbar_policy = Gtk.PolicyType.NEVER
         };
-        scrolled_window.add (bookmarklists_grid);
+        scrolled_window.set_child (bookmarklists_grid);
 
-        var connect_server_button = new Gtk.Button.with_label (_("Connect Server…")) {
-            always_show_image = true,
+        var connect_server_button = new Gtk.Button () {
             hexpand = true,
-            image = new Gtk.Image.from_icon_name ("network-server-symbolic", Gtk.IconSize.MENU),
-            no_show_all = Files.is_admin (),
-            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"})
+            visible = !Files.is_admin (),
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"}),
+            can_focus = false,
+            action_name = "win.connect-server"
         };
 
-        connect_server_button.get_child ().halign = Gtk.Align.START;
+        var csb_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+        csb_box.append (new Gtk.Image.from_icon_name ("network-server-symbolic"));
+        csb_box.append (new Gtk.Label (_("Connect Server…")));
+        connect_server_button.set_child (csb_box);
+
+        var sidebar_menu = new Menu ();
+        sidebar_menu.append (_("Collapse all"), "sb.collapse-all");
+        sidebar_menu.append (_("Refresh"), "sb.refresh");
+        sidebar_menu.append (_("Restore Special Directories"), "sb.restore");
+
+        var sidebar_menu_button = new Gtk.MenuButton () {
+            icon_name = "view-more-symbolic",
+            menu_model = sidebar_menu,
+            can_focus = false
+        };
 
         var action_bar = new Gtk.ActionBar () {
-            //For now hide action bar when admin. This might need revisiting if other actions are added
-            no_show_all = Files.is_admin ()
+            hexpand = true,
         };
 
-        action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        action_bar.add (connect_server_button);
+        action_bar.add_css_class ("flat");
+        action_bar.pack_start (connect_server_button);
+        action_bar.pack_end (sidebar_menu_button);
 
         orientation = Gtk.Orientation.VERTICAL;
         width_request = Files.app_settings.get_int ("minimum-sidebar-width");
-        get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
-        add (scrolled_window);
-        add (action_bar);
+        add_css_class ("sidebar");
+        append (scrolled_window);
+        append (action_bar);
 
-        plugins.sidebar_loaded (this);
+        //Create sidebar action group
+        var collapse_all_action = new SimpleAction ("collapse-all", null);
+        collapse_all_action.activate.connect (() => {
+            bookmark_expander.set_active (false);
+            device_expander.set_active (false);
+            network_expander.set_active (false);
+        });
+        var refresh_action = new SimpleAction ("refresh", null);
+        refresh_action.activate.connect (() => {
+            reload ();
+        });
+        var restore_action = new SimpleAction ("restore", null);
+        restore_action.activate.connect (() => {
+            bookmark_listbox.bookmark_list.add_special_directories (); // Ignores duplicates
+            activate_action ("sb.refresh", null);
+        });
+        var sidebar_action_group = new SimpleActionGroup ();
+        sidebar_action_group.add_action (collapse_all_action);
+        sidebar_action_group.add_action (refresh_action);
+        sidebar_action_group.add_action (restore_action);
+        this.insert_action_group ("sb", sidebar_action_group);
 
-        reload ();
+        //Create common bookmark action group (insert here so available to all listboxes)
+        var open_bookmark_action = new SimpleAction ("open-bookmark", new VariantType ("u"));
+        open_bookmark_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                row.list.open_item (row, Files.OpenFlag.DEFAULT);
+            }
+        });
+        var open_tab_action = new SimpleAction ("open-tab", new VariantType ("u"));
+        open_tab_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                row.list.open_item (row, Files.OpenFlag.NEW_TAB);
+            }
+        });
+        var open_window_action = new SimpleAction ("open-window", new VariantType ("u"));
+        open_window_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            if (row != null) {
+                row.list.open_item (row, Files.OpenFlag.NEW_WINDOW);
+            }
+        });
+        var remove_bookmark_action = new SimpleAction ("remove-bookmark", new VariantType ("u"));
+        remove_bookmark_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            row.list.remove_item (row, false);
+        });
+        var rename_bookmark_action = new SimpleAction ("rename-bookmark", new VariantType ("u"));
+        rename_bookmark_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item_by_id (param.get_uint32 ());
+            row.start_renaming ();
+        });
+        var empty_all_trash_action = new SimpleAction ("empty-all-trash", null);
+        empty_all_trash_action.activate.connect (() => {
+            var job = new Files.FileOperations.EmptyTrashJob (
+                (Gtk.Window)get_ancestor (typeof (Gtk.Window))
+            );
+            job.empty_trash.begin ();
+        });
+        var bookmark_action_group = new SimpleActionGroup ();
+        bookmark_action_group.add_action (open_bookmark_action);
+        bookmark_action_group.add_action (open_tab_action);
+        bookmark_action_group.add_action (open_window_action);
+        bookmark_action_group.add_action (remove_bookmark_action);
+        bookmark_action_group.add_action (rename_bookmark_action);
+        bookmark_action_group.add_action (empty_all_trash_action);
+        insert_action_group ("bm", bookmark_action_group);
 
-        show_all ();
+        var secondary_click_controller = new Gtk.GestureClick ();
+        add_controller (secondary_click_controller);
+        secondary_click_controller.set_button (Gdk.BUTTON_SECONDARY);
+        secondary_click_controller.released.connect ((n_press, x, y) => {
+            if (n_press == 1) {
+                var widget = pick (x, y, Gtk.PickFlags.DEFAULT);
+                if (widget != null) {
+                    var row = widget.get_ancestor (typeof (BookmarkRow));
+                    if (row != null && row is BookmarkRow) {
+                        var popover = ((BookmarkRow)row).get_context_menu ();
+                        if (popover != null) {
+                            popover.set_parent (this);
+                            popover.pointing_to = { (int)x, (int)y, 1, 1 };
+                            popover.popup ();
+                        }
+                    }
+                }
+            }
+        });
 
+        // For now, only bookmark listbox can have keyboard focus and control
+        //TODO Implement keyboard handling of other list boxes.
+        var key_controller = new Gtk.EventControllerKey () {
+            propagation_phase = Gtk.PropagationPhase.BUBBLE
+        };
+        add_controller (key_controller);
+        key_controller.key_pressed.connect ((val, code, state) => {
+            switch (val) {
+                case Gdk.Key.Escape:
+                case Gdk.Key.Tab:
+                    if (state == 0) {
+                        if (bookmark_listbox.is_renaming) {
+                            // Dont want Tab to end rename
+                            // But Escape does end rename
+                            if (val == Gdk.Key.Escape) {
+                                // Entry loses focus causes end of rename
+                                focus_bookmarks ();
+                            }
+
+                            return true;
+                        }
+                        // If not renaming refocus view
+                        activate_action ("win.focus-view", null, null);
+                        return true;
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+
+            return false;
+        });
+
+        //Bind properties, connect signals
         Files.app_settings.bind (
             "sidebar-cat-personal-expander", bookmark_expander, "active", SettingsBindFlags.DEFAULT
         );
@@ -125,32 +235,7 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
         device_expander.bind_property ("active", device_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
         network_expander.bind_property ("active", network_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
 
-        connect_server_button.clicked.connect (() => {
-            connect_server_request ();
-        });
-    }
-
-    private void refresh (bool bookmarks = true, bool devices = true, bool network = true) {
-        //Do not refresh if already refreshing or if will be reloaded anyway
-        if (loading || reload_timeout_id > 0) {
-            return;
-        }
-
-        loading = true;
-
-        if (bookmarks) {
-            bookmark_listbox.refresh ();
-        }
-
-        if (devices) {
-            device_listbox.refresh ();
-        }
-
-        if (network) {
-            network_listbox.refresh ();
-        }
-
-        loading = false;
+        plugins.sidebar_loaded (this);
     }
 
     /* SidebarInterface */
@@ -176,26 +261,27 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
         return id;
     }
 
-    public bool update_plugin_item (Files.SidebarPluginItem item, uint32 item_id) {
-        if (item_id == 0) {
-            return false;
-        }
-
-        SidebarItemInterface? row = SidebarItemInterface.get_item (item_id);
-        if (row == null) {
-            return false;
-        }
-
-        row.update_plugin_data (item);
-
-        return true;
+    public void focus_bookmarks () {
+        bookmark_listbox.focus_selected_item ();
     }
 
-    public bool remove_item_by_id (uint32 item_id) {
-        // We do not know which listbox the row is in so try remove from each in turn
-        return bookmark_listbox.remove_item_by_id (item_id) ||
-               device_listbox.remove_item_by_id (item_id) ||
-               network_listbox.remove_item_by_id (item_id);
+    public void rename_selected_bookmark () {
+        bookmark_listbox.rename_selected_item ();
+    }
+
+    public bool update_plugin_item (Files.SidebarPluginItem plugin_item, uint32 id) {
+        if (id == 0) {
+            return false;
+        }
+
+        SidebarItemInterface? item = SidebarItemInterface.get_item_by_id (id);
+        if (item == null) {
+            return false;
+        }
+
+        item.update_plugin_data (plugin_item);
+
+        return true;
     }
 
     uint sync_timeout_id = 0;
@@ -216,22 +302,25 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
             device_listbox.select_uri (location);
             network_listbox.select_uri (location);
 
+            // activate_action ("win.focus-view", null, null);
             return Source.REMOVE;
         });
     }
 
     /* Throttle rate of destroying and re-adding listbox rows */
-    uint reload_timeout_id = 0;
+    // uint reload_timeout_id = 0;
     public void reload () {
-        if (reload_timeout_id > 0) {
+        if (loading) {
             return;
         }
 
-        reload_timeout_id = Timeout.add (300, () => {
-            reload_timeout_id = 0;
-            refresh ();
-
-            plugins.update_sidebar (this);
+        loading = true;
+        Timeout.add (100, () => {
+            bookmark_listbox.refresh ();
+            device_listbox.refresh ();
+            network_listbox.refresh ();
+            loading = false;
+            // plugins.update_sidebar (this);
             sync_uri (selected_uri);
             return false;
         });
@@ -260,7 +349,7 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
 
         static construct {
             expander_provider = new Gtk.CssProvider ();
-            expander_provider.load_from_resource ("/io/elementary/files/SidebarExpander.css");
+            expander_provider.load_from_resource ("/io/elementary/files4/SidebarExpander.css");
         }
 
         construct {
@@ -272,19 +361,19 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
             var arrow = new Gtk.Spinner ();
 
             unowned Gtk.StyleContext arrow_style_context = arrow.get_style_context ();
-            arrow_style_context.add_class (Gtk.STYLE_CLASS_ARROW);
-            arrow_style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            arrow.add_css_class ("arrow");
+            arrow.get_style_context ().add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-            var grid = new Gtk.Grid ();
-            grid.add (title);
-            grid.add (arrow);
+            var grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            grid.append (title);
+            grid.append (arrow);
 
-            add (grid);
+            set_child (grid);
 
-            unowned Gtk.StyleContext style_context = get_style_context ();
-            style_context.add_class (Granite.STYLE_CLASS_H4_LABEL);
-            style_context.add_class (Gtk.STYLE_CLASS_EXPANDER);
-            style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            // unowned Gtk.StyleContext style_context = get_style_context ();
+            add_css_class (Granite.STYLE_CLASS_H4_LABEL);
+            add_css_class ("expander");
+            get_style_context ().add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         }
     }
 }

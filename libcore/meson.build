@@ -11,22 +11,20 @@ pantheon_files_core_deps = [
 ]
 
 pantheon_files_core_vala_files = files(
-    'AbstractSlot.vala',
     'Bookmark.vala',
     'BookmarkList.vala',
+    'BreadcrumbIconMap.vala',
     'CallWhenReady.vala',
     'ConnectServerOperation.vala',
     'ConnectServerDialog.vala',
+    'DeepCount.vala',
     'Directory.vala',
     'DndHandler.vala',
     'Enums.vala',
     'File.vala',
     'FileChanges.vala',
     'FileConflictDialog.vala',
-    'FileUtils.vala',
     'IconInfo.vala',
-    'ListModel.vala',
-    'PixbufUtils.vala',
     'Preferences.vala',
     'PluginManager.vala',
     'Plugin.vala',
@@ -41,23 +39,36 @@ pantheon_files_core_vala_files = files(
     'TrashMonitor.vala',
     'UserUtils.vala',
     'UndoManager.vala',
+
+    'Dialogs/AbstractPropertiesDialog.vala',
+    'Dialogs/ChooseAppDialog.vala',
+    'Dialogs/PropertiesWindow.vala',
+    'Dialogs/VolumePropertiesWindow.vala',
+
     'FileOperations/CommonJob.vala',
     'FileOperations/CopyMoveJob.vala',
     'FileOperations/CreateJob.vala',
     'FileOperations/DeleteJob.vala',
     'FileOperations/EmptyTrashJob.vala',
     'FileOperations/MountUtils.vala',
+
     'Interfaces/SidebarInterface.vala',
-    'Interfaces/LocatableInterface.vala',
-    'Interfaces/NavigatableInterface.vala',
+    'Interfaces/PathBarInterface.vala',
     'Interfaces/SearchableInterface.vala',
     'Interfaces/SidebarListInterface.vala',
     'Interfaces/SidebarItemInterface.vala',
-    'Widgets/BasicBreadcrumbsEntry.vala',
-    'Widgets/BasicLocationBar.vala',
-    'Widgets/BreadcrumbElement.vala',
-    'Widgets/BreadcrumbIconList.vala',
+    'Interfaces/SlotInterface.vala',
+    'Interfaces/SlotContainerInterface.vala',
+    'Interfaces/FileItemInterface.vala',
+    'Interfaces/ViewInterface.vala',
+    'Interfaces/DNDInterface.vala',
+
+    'Utils/FileUtils.vala',
+    'Utils/MimeActions.vala',
+
+    'Widgets/BasicPathBar.vala',
     'Widgets/ButtonWithMenu.vala',
+    'Widgets/PermissionButton.vala',
     'Widgets/ViewSwitcher.vala'
 )
 
@@ -102,7 +113,7 @@ pantheon_files_core_pkgconfig = pkg.generate(
     subdirs: pantheon_files_core_name,
     filebase: pantheon_files_core_name,
     name: 'elementary Files Core Library',
-    description: 'Core library used by io.elementary.files and by io.elementary.file-chooser',
+    description: 'Core library used by io.elementary.files4 and by io.elementary.file-chooser',
     version: meson.project_version(),
 )
 

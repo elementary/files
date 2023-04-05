@@ -20,68 +20,73 @@
 
 void add_icon_info_tests () {
     Test.add_func ("/MarlinIconInfo/goffile_icon_update", goffile_icon_update_test);
-    Test.add_func ("/MarlinIconInfo/themed_cache_and_ref", themed_cache_and_ref_test);
+    // Test.add_func ("/MarlinIconInfo/themed_cache_and_ref", themed_cache_and_ref_test);
     Test.add_func ("/MarlinIconInfo/loadable_cache_and_ref", loadable_cache_and_ref_test);
 }
 
 void goffile_icon_update_test () {
     string test_file_path = Path.build_filename (Config.TESTDATA_DIR, "images", "testimage.png");
     Files.File file = Files.File.get_by_uri (test_file_path);
-    assert (file != null);
+    assert_true (file != null);
     stderr.printf ("\n\rquery update file %s\n\r", file.uri);
     file.query_update ();
-    assert (file.pix == null);
-    file.update_icon (128, 1);
-    assert (file.pix != null);
-    assert (file.pix_size == 128);
-    file.update_icon (32, 1);
-    assert (file.pix_size == 32);
+    assert_true (file.paintable == null);
+    assert_true (file.thumbstate == Files.File.ThumbState.UNKNOWN);
+    file.update_gicon_and_paintable ();
+    assert_true (file.paintable == null); //No paintable because testimage will not have been thumbnailed yet
+    assert_true (file.thumbstate == Files.File.ThumbState.UNKNOWN);
+    assert_true (file.gicon != null); //A placeholder icon should be present
+    //Cannot test thumbnailer in CI Environment so fake it
+    file.thumbstate = Files.File.ThumbState.LOADING;
+    file.update_gicon_and_paintable ();
+    assert_true (file.gicon.to_string ().contains ("image-loading"));
 }
 
-void themed_cache_and_ref_test () {
-    Files.IconInfo.clear_caches ();
-    uint reap_time_msec = 20; //Must be higher than 10.
-    Files.IconInfo.set_reap_time (reap_time_msec);
+//TODO Do we need to cache themed icons as well?
+// void themed_cache_and_ref_test () {
+//     Files.IconInfo.clear_caches ();
+//     uint reap_time_msec = 20; //Must be higher than 10.
+//     Files.IconInfo.set_reap_time (reap_time_msec);
 
-    string test_file_path = Path.build_filename (Config.TESTDATA_DIR, "images", "testimage.png");
-    Files.File file = Files.File.get_by_uri (test_file_path);
-    assert (file != null);
-    file.query_update ();
-    /* file.pix might exist if tests run while Files instance also recently runn and displayed test image */
-    file.pix = null;
-    file.update_icon (128, 1);
-    assert (file.pix.ref_count == 2); //Ref'd by file and cache.
+//     string test_file_path = Path.build_filename (Config.TESTDATA_DIR, "images", "testimage.png");
+//     Files.File file = Files.File.get_by_uri (test_file_path);
+//     assert (file != null);
+//     file.query_update ();
+//     /* file.pix might exist if tests run while Files instance also recently runn and displayed test image */
+//     file.pix = null;
+//     file.update_icon (128, 1);
+//     assert (file.pix.ref_count == 2); //Ref'd by file and cache.
 
-    /* We have not flagged THUMBNAIL_READY so a themed icon will be created */
-    assert (Files.IconInfo.themed_icon_cache_info () == 1);
-    assert (Files.IconInfo.loadable_icon_cache_info () == 0);
+//     /* We have not flagged THUMBNAIL_READY so a themed icon will be created */
+//     assert (Files.IconInfo.themed_icon_cache_info () == 1);
+//     assert (Files.IconInfo.loadable_icon_cache_info () == 0);
 
-    file.update_icon (32, 1);
+//     file.update_icon (32, 1);
 
-    /* A new cache entry is made for different size */
-    assert (Files.IconInfo.themed_icon_cache_info () == 2);
+//     /* A new cache entry is made for different size */
+//     assert (Files.IconInfo.themed_icon_cache_info () == 2);
 
-    /* IconInfo should remain in case for 6 * reap_time_msec */
-    var loop = new MainLoop ();
-    Timeout.add (reap_time_msec * 2, () => {
-        /* Icons should NOT be reaped yet */
-        assert (Files.IconInfo.themed_icon_cache_info () == 1);
-        loop.quit ();
-        return GLib.Source.REMOVE;
-    });
-    loop.run ();
+//     /* IconInfo should remain in case for 6 * reap_time_msec */
+//     var loop = new MainLoop ();
+//     Timeout.add (reap_time_msec * 2, () => {
+//         /* Icons should NOT be reaped yet */
+//         assert (Files.IconInfo.themed_icon_cache_info () == 1);
+//         loop.quit ();
+//         return GLib.Source.REMOVE;
+//     });
+//     loop.run ();
 
-     file.pix = null;
+//      file.pix = null;
 
-    loop = new MainLoop ();
-    Timeout.add (reap_time_msec * 12, () => {
-        /* Icon should be reaped by now */
-        assert (Files.IconInfo.themed_icon_cache_info () == 0);
-        loop.quit ();
-        return GLib.Source.REMOVE;
-    });
-    loop.run ();
-}
+//     loop = new MainLoop ();
+//     Timeout.add (reap_time_msec * 12, () => {
+//         /* Icon should be reaped by now */
+//         assert (Files.IconInfo.themed_icon_cache_info () == 0);
+//         loop.quit ();
+//         return GLib.Source.REMOVE;
+//     });
+//     loop.run ();
+// }
 
 void loadable_cache_and_ref_test () {
     Files.IconInfo.clear_caches ();
@@ -91,39 +96,40 @@ void loadable_cache_and_ref_test () {
     string test_file_path = Path.build_filename (Config.TESTDATA_DIR, "images", "testimage.jpg");
     Files.File file = Files.File.get_by_uri (test_file_path);
     /* file.pix might exist if tests run while Files instance was recently run and displayed test image */
-    file.pix = null;
+    file.paintable = null;
     file.query_update ();
     file.thumbstate = Files.File.ThumbState.READY;
     /* We need to provide our own thumbnail and path for CI */
     file.thumbnail_path = Path.build_filename (Config.TESTDATA_DIR, "images", "testimage.jpg.thumb.png");
-    file.update_icon (128, 1);
-    assert (file.pix.ref_count == 2); //Ref'd by file and cache.
+    file.update_gicon_and_paintable ();
+    assert_true (file.paintable.ref_count == 2); //Ref'd by file and cache.
 
     /* We have flagged THUMBNAIL_READY so a loadable icon will be created */
-    assert (Files.IconInfo.themed_icon_cache_info () == 0);
-    assert (Files.IconInfo.loadable_icon_cache_info () == 1);
+    // assert_true (Files.IconInfo.themed_icon_cache_info () == 0);
+    assert_true (Files.IconInfo.loadable_icon_cache_info () == 1);
 
-    file.update_icon (32, 1);
+    //TODO Reimplement loading large thumbnails when required
+    // file.update_gicon_and_paintable ();
 
-    /* A new cache entry is made for different size */
-    assert (Files.IconInfo.loadable_icon_cache_info () == 2);
+    // /* A new cache entry is made for different size */
+    // assert_true (Files.IconInfo.loadable_icon_cache_info () == 2);
 
     /* IconInfo should remain in case for 6 * reap_time_msec */
     var loop = new MainLoop ();
     Timeout.add (reap_time_msec * 2, () => {
         /* Icons should NOT be reaped yet */
-        assert (Files.IconInfo.loadable_icon_cache_info () == 1);
+        assert_true (Files.IconInfo.loadable_icon_cache_info () == 1);
         loop.quit ();
         return GLib.Source.REMOVE;
     });
     loop.run ();
 
-     file.pix = null;
+     file.paintable = null;
 
     loop = new MainLoop ();
     Timeout.add (reap_time_msec * 12, () => {
         /* Icon should be reaped by now */
-        assert (Files.IconInfo.loadable_icon_cache_info () == 0);
+        assert_true (Files.IconInfo.loadable_icon_cache_info () == 0);
         loop.quit ();
         return GLib.Source.REMOVE;
     });

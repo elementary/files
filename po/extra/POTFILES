@@ -1,3 +1,4 @@
 data/io.elementary.files.desktop.in.in
 data/io.elementary.files.appdata.xml.in.in
 data/io.elementary.files.policy.in.in
+po/extra/DesktopLauncher.vala

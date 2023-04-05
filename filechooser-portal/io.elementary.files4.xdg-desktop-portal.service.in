@@ -1,0 +1,7 @@
+[Unit]
+Description=Portal service (Pantheon Files)
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.impl.portal.desktop.elementary.files4
+ExecStart=@libexecdir@/io.elementary.files4.xdg-desktop-portal

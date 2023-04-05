@@ -33,7 +33,7 @@ valac --pkg sqlite3 --pkg gio-2.0 -o sqlitesample marlin_tagging.vala && ./sqlit
 
 */
 
-[DBus (name = "io.elementary.files.db")]
+[DBus (name = "io.elementary.files4.db")]
 public class MarlinTags : Object {
     private const string CMD = "INSERT OR REPLACE INTO tags (uri, content_type, color, modified_time, dir) " +
                                "VALUES ('%s', '%s', %s, %s, '%s');\n";

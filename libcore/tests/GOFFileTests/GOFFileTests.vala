@@ -36,30 +36,30 @@ void existing_local_folder_test () {
     /* Check that "get_by_uri copes correctly with missing scheme in uri" */
     Files.File? file = Files.File.get_by_uri (path);
 
-    assert (file != null);
-    assert (file.location != null);
+    assert_true (file != null);
+    assert_true (file.location != null);
     /* File is assumed to exist, to be mounted and be accessible when created */
-    assert (file.exists);
-    assert (file.is_connected);
-    assert (file.is_mounted);
+    assert_true (file.exists);
+    assert_true (file.is_connected);
+    assert_true (file.is_mounted);
 
     file.query_update ();
-    assert (file.exists);
-    assert (file.is_connected);
+    assert_true (file.exists);
+    assert_true (file.is_connected);
     /* file.is_mounted only true of the file is associated with a mount */
-    assert (!file.is_mounted);
-    assert (file.basename == basename);
-    assert (file.is_directory);
-    assert (!file.is_hidden);
-    assert (file.get_ftype () == "inode/directory");
-    assert (!file.is_symlink ());
-    assert (file.location.get_uri () == uri);
-    assert (file.uri == uri);
+    assert_false (file.is_mounted);
+    assert_true (file.basename == basename);
+    assert_true (file.is_directory);
+    assert_false (file.is_hidden);
+    assert_true (file.get_ftype () == "inode/directory");
+    assert_false (file.is_symlink ());
+    assert_true (file.location.get_uri () == uri);
+    assert_true (file.uri == uri);
 
-    assert (file.info != null);
+    assert_true (file.info != null);
     FileInfo info = file.info;
-    assert (info.get_name () == basename);
-    assert (info.get_display_name () == basename);
+    assert_true (info.get_name () == basename);
+    assert_true (info.get_display_name () == basename);
 }
 
 void gof_file_cache_test () {
@@ -69,41 +69,41 @@ void gof_file_cache_test () {
     string uri = "file://" + path;
 
     Files.File? file = Files.File.get_by_commandline_arg (path);
-    assert (file.ref_count == 2);
+    assert_true (file.ref_count == 2);
 
     Files.File? file2 = Files.File.get_by_uri (uri);
-    assert (file == file2);
-    assert (file.ref_count == 3);
-    assert (file2.ref_count == 3);
+    assert_true (file == file2);
+    assert_true (file.ref_count == 3);
+    assert_true (file2.ref_count == 3);
 
     file.remove_from_caches ();
-    assert (file.ref_count == 2);
-    assert (file2.ref_count == 2);
+    assert_true (file.ref_count == 2);
+    assert_true (file2.ref_count == 2);
 
     file2.remove_from_caches ();
-    assert (file.ref_count == 2);
-    assert (file2.ref_count == 2);
+    assert_true (file.ref_count == 2);
+    assert_true (file2.ref_count == 2);
 
     Files.File? file3 = Files.File.get_by_uri (uri);
-    assert (file != file3);
-    assert (file.ref_count == 2);
-    assert (file3.ref_count == 2);
+    assert_true (file != file3);
+    assert_true (file.ref_count == 2);
+    assert_true (file3.ref_count == 2);
 
     file3.remove_from_caches ();
-    assert (file3.ref_count == 1);
+    assert_true (file3.ref_count == 1);
 }
 
 void new_non_existent_local_test () {
     string basename = get_real_time ().to_string ();
     string path = Path.build_filename ("/", "tmp", "marlin-test", basename);
     Files.File? file = Files.File.get_by_commandline_arg (path);
-    assert (file != null);
-    assert (file.location != null);
-    assert (file.exists);
+    assert_true (file != null);
+    assert_true (file.location != null);
+    assert_true (file.exists);
 
     file.query_update ();
-    assert (file.info == null);
-    assert (!file.exists); /* is_mounted and is_connected undefined if !exists */
+    assert_true (file.info == null);
+    assert_false (file.exists); /* is_mounted and is_connected undefined if !exists */
 }
 
 void new_hidden_local_test () {
@@ -115,22 +115,22 @@ void new_hidden_local_test () {
     Posix.system ("touch " + path);
 
     Files.File? file = Files.File.get_by_commandline_arg (path);
-    assert (file != null);
-    assert (file.location != null);
+    assert_true (file != null);
+    assert_true (file.location != null);
     /* File is assumed to exist and be accessible when created */
-    assert (file.exists == true);
-    assert (file.is_connected == true);
-    assert (file.is_mounted);
+    assert_true (file.exists == true);
+    assert_true (file.is_connected == true);
+    assert_true (file.is_mounted);
 
     file.query_update ();
-    assert (file.info != null);
-    assert (file.exists);
-    assert (file.is_connected);
-    assert (!file.is_mounted);
+    assert_true (file.info != null);
+    assert_true (file.exists);
+    assert_true (file.is_connected);
+    assert_false (file.is_mounted);
 
-    assert (!file.is_directory);
-    assert (file.is_hidden);
-    assert (file.size == 0);
+    assert_false (file.is_directory);
+    assert_true (file.is_hidden);
+    assert_true (file.size == 0);
 
     Posix.system ("rm -rf " + parent_path);
 }
@@ -147,16 +147,16 @@ void new_symlink_local_test () {
     Posix.system ("ln -s " + path + " " + link_path);
 
     Files.File? file = Files.File.get_by_commandline_arg (link_path);
-    assert (file != null);
-    assert (file.location != null);
-    assert (file.exists);
+    assert_true (file != null);
+    assert_true (file.location != null);
+    assert_true (file.exists);
 
     file.query_update ();
-    assert (file.info != null);
-    assert (file.get_symlink_target () == path);
-    assert (file.is_symlink ());
-    assert (!file.is_directory);
-    assert (!file.is_hidden);
+    assert_true (file.info != null);
+    assert_true (file.get_symlink_target () == path);
+    assert_true (file.is_symlink ());
+    assert_false (file.is_directory);
+    assert_false (file.is_hidden);
 
     Posix.system ("rm -rf " + parent_path);
 }

@@ -17,7 +17,7 @@
 ***/
 
 namespace Files {
-    public const string APP_ID = "io.elementary.files";
+    public const string APP_ID = "io.elementary.files4";
     public const string APP_DESKTOP = APP_ID + ".desktop";
     public const string APP_TITLE = N_("Files");
     public const string HELP_URL = "https://elementaryos.stackexchange.com/questions/tagged/pantheon-files";
@@ -52,7 +52,6 @@ namespace Files {
     public const string ICON_RECENT = "document-open-recent";
     public const string ICON_RECENT_SYMBOLIC = "document-open-recent-symbolic";
     public const string ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC = "edit-find-symbolic";
-    public const string ICON_PATHBAR_SECONDARY_NAVIGATE_SYMBOLIC = "go-jump-symbolic";
     public const string ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC = "view-refresh-symbolic";
     public const string ICON_PATHBAR_SECONDARY_WORKING_SYMBOLIC = "process-working-symbolic";
 
@@ -79,6 +78,10 @@ namespace Files {
     public const int16 DEFAULT_POPUP_MENU_DISPLACEMENT = 2;
 
     public const string[] SKIP_IMAGES = {"image/svg+xml", "image/tiff", "image/jp2"};
+
+    public const double DISK_OFFSET_LOW = 0.6;
+    public const double DISK_OFFSET_HIGH = 0.9;
+    public const double DISK_OFFSET_FULL = 1.0;
 
     public string protocol_to_name (string protocol) {
         /* Deal with protocol with or without : or / characters at the end */

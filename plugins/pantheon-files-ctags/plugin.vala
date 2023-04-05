@@ -15,7 +15,7 @@
     with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-[DBus (name = "io.elementary.files.db")]
+[DBus (name = "io.elementary.files4.db")]
 interface MarlinDaemon : Object {
     public abstract async Variant get_uri_infos (string raw_uri) throws GLib.DBusError, GLib.IOError;
     public abstract async bool record_uris (Variant[] entries) throws GLib.DBusError, GLib.IOError;
@@ -26,23 +26,20 @@ interface MarlinDaemon : Object {
 public class Files.Plugins.CTags : Files.Plugins.Base {
     /* May be used by more than one directory simultaneously so do not make assumptions */
     private MarlinDaemon daemon;
-    private bool ignore_dir;
-
     private Queue<Files.File> unknowns;
     private Queue<Files.File> knowns;
     private uint idle_consume_unknowns = 0;
     private uint t_consume_knowns = 0;
     private Cancellable cancellable;
     private GLib.List<Files.File> current_selected_files;
-
     public CTags () {
         unknowns = new Queue<Files.File> ();
         knowns = new Queue<Files.File> ();
         cancellable = new Cancellable ();
 
         try {
-            daemon = Bus.get_proxy_sync (BusType.SESSION, "io.elementary.files.db",
-                                         "/io/elementary/files/db");
+            daemon = Bus.get_proxy_sync (BusType.SESSION, "io.elementary.files4.db",
+                                         "/io/elementary/files4/db");
         } catch (IOError e) {
             stderr.printf ("%s\n", e.message);
         }
@@ -54,12 +51,14 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         "file:///media"
     };
 
-    private const string IGNORE_SCHEMES [5] = {
+    private const string[] IGNORE_SCHEMES = {
         "ftp",
         "sftp",
         "afp",
         "dav",
-        "davs"
+        "davs",
+        "recent",
+        "network"
     };
 
     private bool f_is_user_dir (GLib.File dir) {
@@ -93,10 +92,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         return false;
     }
 
-    public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
-        /* It is possible more than one directory will call this simultaneously so do not cancel */
-    }
-
     private void add_entry (Files.File gof, GenericArray<Variant> entries) {
         var entry = new Variant.strv (
                         { gof.uri,
@@ -128,7 +123,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
     private async void consume_unknowns_queue () {
         Files.File gof = null;
-        /* Length of unknowns queue limited to visible files by AbstractDirectoryView.
+        /* Length of unknowns queue limited to visible files by DirectoryView.
          * Avoid querying whole directory in case very large. */
         while ((gof = unknowns.pop_head ()) != null) {
             try {
@@ -177,6 +172,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     }
 
     private async void rreal_update_file_info (Files.File file) {
+        assert_nonnull (file);
         try {
             if (!file.exists) {
                 yield daemon.delete_entry (file.uri);
@@ -195,12 +191,17 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 var color = int.parse (row_iter.next_value ().get_string ());
                 if (file.color != color) {
                     file.color = color;
-                    file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
+                    /* Just need to trigger redraw */
+                    file.icon_changed ();
                 }
                 /* check modified time field only on user dirs. We don't want to query again and
                  * again system directories */
-
                 /* Is this necessary ? */
+                if (file.info == null || file.is_dummy) {
+                    debug ("ctag null file info or dummy");
+                    return;
+                }
+
                 if (file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified &&
                     f_is_user_dir (file.directory)) {
 
@@ -257,31 +258,35 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         }
     }
 
-    public override void context_menu (Gtk.Widget widget, GLib.List<Files.File> selected_files) {
-        if (selected_files == null || ignore_dir) {
+    public override void context_menu (
+        Gtk.PopoverMenu popover_menu, GLib.List<Files.File> selected_files
+    ) {
+        if (selected_files == null) {
             return;
         }
 
-        var menu = widget as Gtk.Menu;
+        var first_file = (Files.File)(selected_files.first ().data);
+        if (f_ignore_dir (first_file.location)) {
+            return;
+        }
+
         var color_menu_item = new ColorWidget ();
         current_selected_files = selected_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
 
-        /* Check the colors currently set */
+        /* Check whether the colors currently set are the same*/
+        /* We cannot check multiple buttons in a group so set all inconsistent if more than
+         * one color tag selected */
         foreach (Files.File gof in current_selected_files) {
             color_menu_item.check_color (gof.color);
         }
 
         color_menu_item.color_changed.connect ((ncolor) => {
             set_color.begin (current_selected_files, ncolor);
+            popover_menu.popdown ();
         });
 
-        add_menuitem (menu, new Gtk.SeparatorMenuItem ());
-        add_menuitem (menu, color_menu_item);
-    }
-
-    private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
-        menu.append (menu_item);
-        menu_item.show ();
+        //A placeholder item was added by the ui template
+        popover_menu.add_child (color_menu_item, "color-tags");
     }
 
     private async void set_color (GLib.List<Files.File> files, int n) throws IOError {
@@ -300,6 +305,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
             if (target_file.color != n) {
                 target_file.color = n;
+                target_file.icon_changed ();
                 add_entry (target_file, entries);
             }
         }
@@ -312,7 +318,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 foreach (unowned Files.File file in files) {
                     if (file.location.has_uri_scheme ("recent")) {
                         update_file_info (file);
-                        file.icon_changed (); /* Just need to trigger redraw */
+                        // file.icon_changed (); /* Just need to trigger redraw */
                     }
                 }
             } catch (Error err) {
@@ -327,7 +333,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
         static construct {
             css_provider = new Gtk.CssProvider ();
-            css_provider.load_from_resource ("io/elementary/files/ColorButton.css");
+            css_provider.load_from_resource ("io/elementary/files4/ColorButton.css");
         }
 
         public ColorButton (string color_name) {
@@ -342,110 +348,59 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         }
     }
 
-    private class ColorWidget : Gtk.MenuItem {
+    private class ColorWidget : Gtk.Box {
         public signal void color_changed (int ncolor);
         private Gee.ArrayList<ColorButton> color_buttons;
         private const int COLORBOX_SPACING = 3;
 
         construct {
-            var color_button_remove = new ColorButton ("none");
+            orientation = Gtk.Orientation.HORIZONTAL;
+            spacing = COLORBOX_SPACING;
+            margin_start = 12;
+            margin_end = 12;
+            halign = Gtk.Align.CENTER;
+
             color_buttons = new Gee.ArrayList<ColorButton> ();
-            color_buttons.add (new ColorButton ("blue"));
-            color_buttons.add (new ColorButton ("mint"));
-            color_buttons.add (new ColorButton ("green"));
-            color_buttons.add (new ColorButton ("yellow"));
-            color_buttons.add (new ColorButton ("orange"));
-            color_buttons.add (new ColorButton ("red"));
-            color_buttons.add (new ColorButton ("pink"));
-            color_buttons.add (new ColorButton ("purple"));
-            color_buttons.add (new ColorButton ("brown"));
-            color_buttons.add (new ColorButton ("slate"));
+            for (int i = 0; i < Preferences.TAGS_COLORS.length; i++) {
+                color_buttons.add (new ColorButton (Preferences.TAGS_COLORS[i]));
+            }
+            append (color_buttons[0]);
+            for (int i = 1; i < color_buttons.size; i++) {
+                append (color_buttons[i]);
+            }
 
-            var colorbox = new Gtk.Grid () {
-                column_spacing = COLORBOX_SPACING,
-                margin_start = 3,
-                halign = Gtk.Align.START
+            //Rather than connecting to each button toggled, check which active after any click
+            var gesture_click = new Gtk.GestureClick () {
+                button = Gdk.BUTTON_PRIMARY,
+                propagation_phase = Gtk.PropagationPhase.CAPTURE
             };
+            add_controller (gesture_click);
+            gesture_click.pressed.connect ((n_press, x, y) => {
+                color_buttons.foreach ((b) => { b.active = false; return Source.CONTINUE; });
+            });
+            gesture_click.released.connect ((n_press, x, y) => {
+                Idle.add (() => {
+                    int index = 0;
+                    color_buttons.foreach ((b) => {
+                        if (b.active) {
+                            color_changed (index);
+                            return Source.REMOVE;
+                        }
 
-            colorbox.add (color_button_remove);
-
-            for (int i = 0; i < color_buttons.size; i++) {
-                colorbox.add (color_buttons[i]);
-            }
-
-            add (colorbox);
-
-            try {
-                string css = ".nohover { background: none; }";
-
-                var css_provider = new Gtk.CssProvider ();
-                css_provider.load_from_data (css, -1);
-
-                var style_context = get_style_context ();
-                style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-                style_context.add_class ("nohover");
-            } catch (GLib.Error e) {
-                warning ("Failed to parse css style : %s", e.message);
-            }
-
-            show_all ();
-
-            // Cannot use this for every button due to this being a MenuItem
-            button_press_event.connect (button_pressed_cb);
-        }
-
-        private void clear_checks () {
-            color_buttons.foreach ((b) => { b.active = false; return true;});
+                        index++;
+                        return Source.CONTINUE;
+                    });
+                    return Source.REMOVE;
+                });
+            });
         }
 
         public void check_color (int color) {
-            if (color == 0 || color > color_buttons.size) {
+            if (color < 0 || color > color_buttons.size) {
                 return;
             }
 
-            color_buttons[color - 1].active = true;
-        }
-
-        private bool button_pressed_cb (Gdk.EventButton event) {
-            var color_button_width = color_buttons[0].get_allocated_width ();
-
-            int y0 = (get_allocated_height () - color_button_width) / 2;
-            int x0 = COLORBOX_SPACING + color_button_width;
-
-            double ex, ey;
-            event.get_coords (out ex, out ey);
-            if (ey < y0 || ey > y0 + color_button_width) {
-                return true;
-            }
-
-            if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
-                var width = get_allocated_width ();
-                int x = width - 27;
-                for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
-                    if (ex <= x && ex >= x - color_button_width) {
-                        color_changed (i);
-                        clear_checks ();
-                        check_color (i);
-                        break;
-                    }
-
-                    x -= x0;
-                }
-            } else {
-                int x = 27;
-                for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
-                    if (ex >= x && ex <= x + color_button_width) {
-                        color_changed (i);
-                        clear_checks ();
-                        check_color (i);
-                        break;
-                    }
-
-                    x += x0;
-                }
-            }
-
-            return true;
+            color_buttons[color].active = true;
         }
     }
 }

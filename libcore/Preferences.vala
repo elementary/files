@@ -16,13 +16,13 @@
 ***/
 
 namespace Files {
-
     public static Preferences? preferences = null;
-
+    //This just makes it easier to get and set settings - we could just access the settings directly.
+    //The properties are bound to the settings in Application.
     public class Preferences : Object {
         /* First element set to null in order that the text renderer background is not set */
         public const string?[] TAGS_COLORS = {
-            null, "#64baff", "#43d6b5", "#9bdb4d", "#ffe16b", "#ffc27d", "#ff8c82", "#f4679d", "#cd9ef7", "#a3907c", "#95a3ab", null
+            "none", "blue", "mint", "green", "yellow", "orange", "red", "pink", "purple", "brown", "slate"
         };
 
         public bool show_hidden_files {get; set; default = false;}

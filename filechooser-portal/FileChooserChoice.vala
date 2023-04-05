@@ -26,7 +26,7 @@ public class Files.FileChooserChoice : Gtk.Box {
 
         var label = new Gtk.Label (label);
         bind_property ("label", label, "label", BindingFlags.DEFAULT);
-        add (label);
+        append (label);
 
         if (options.n_children () == 0) {
             var check = new Gtk.CheckButton ();
@@ -42,7 +42,7 @@ public class Files.FileChooserChoice : Gtk.Box {
                 }
             );
 
-            add (check);
+            append (check);
         } else {
             var combo = new Gtk.ComboBoxText ();
             var iter = options.iterator ();
@@ -53,7 +53,7 @@ public class Files.FileChooserChoice : Gtk.Box {
             }
 
             bind_property ("selected", combo, "active-id", BindingFlags.BIDIRECTIONAL);
-            add (combo);
+            append (combo);
         }
     }
 }

@@ -31,7 +31,7 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
         return ++row_id; //Must be > 0
     }
 
-    public static SidebarItemInterface? get_item (uint32 id) {
+    public static SidebarItemInterface? get_item_by_id (uint32 id) {
         if (id == 0) {
             return null;
         }
@@ -51,7 +51,7 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
     public abstract bool permanent { get; construct; } // Whether can be deleted
     public abstract bool can_insert_before { get; set; default = true; }
     public abstract bool can_insert_after { get; set; default = true; }
-    public abstract int get_index ();
+    public abstract int get_index (); //Implemented by Gtk.ListBoxRow
 
     /* Provision of plugin items with additional menu options */
     //TODO Make a separate interface?
@@ -59,15 +59,26 @@ public interface Sidebar.SidebarItemInterface : Gtk.Widget {
     public abstract ActionGroup? action_group {get; set; default = null;}
     public abstract string? action_group_namespace { get; set; default = null;}
 
-    public abstract void destroy_bookmark ();
+    public virtual void destroy_item () {
+        item_map_lock.@lock ();
+        SidebarItemInterface.item_id_map.unset (id);
+        item_map_lock.unlock ();
+        destroy ();
+    }
+
     public virtual void update_icon (Icon icon) {
         gicon = icon;
     }
 
     public virtual void add_extra_menu_items (PopupMenuBuilder menu_builder) {}
     public virtual void update_plugin_data (Files.SidebarPluginItem item) {}
-
+    public virtual void start_renaming () {} // Get new name from user (only overridden for Bookmark.Row for now)
     public virtual void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
         list.open_item (this, flag);
+    }
+    public virtual bool can_drag () {
+        string protocol, path;
+        Files.FileUtils.split_protocol_from_path (uri, out protocol, out path);
+        return !(path == "" || path == Path.DIR_SEPARATOR_S);
     }
 }

@@ -18,47 +18,36 @@
 
 ***/
 
-namespace Files.View {
-    public class DirectoryNotFound : Files.View.Welcome {
-        public Directory dir_saved;
-        public ViewContainer ctab;
+public class Files.DirectoryNotFound : Granite.Placeholder {
+    public GLib.File location { get; construct; }
+    public DirectoryNotFound (string uri) {
+        Object (
+            title: _("This Folder Does Not Exist"),
+            location: GLib.File.new_for_uri (uri)
+        );
 
-        public DirectoryNotFound (Directory dir, ViewContainer tab) {
-            base (_("This Folder Does Not Exist"),
-                  _("The folder \"%s\" can't be found.").printf (dir.location.get_basename ()));
+        description = _("The folder \"%s\" can't be found.").printf (location.get_basename ());
+        var create_button = append_button (
+            new ThemedIcon ("edit-add"),
+            _("Create"),
+            _("Create the folder \"%s\"").printf (location.get_basename ())
+        );
 
-            append ("folder-new", _("Create"), _("Create the folder \"%s\"").printf (dir.location.get_basename ()));
+        create_button.clicked.connect (() => {
+            try {
+                location.make_directory_with_parents (null);
+                activate_action ("win.path-change-request", "(su)", location.get_uri (), OpenFlag.DEFAULT);
+            } catch (Error e) {
+                var dialog = new Granite.MessageDialog (
+                    _("Failed to create the folder"),
+                    e.message,
+                    new ThemedIcon ("dialog-error"),
+                    Gtk.ButtonsType.CLOSE
+                );
 
-            dir_saved = dir;
-            ctab = tab;
-
-            this.activated.connect ((index) => {
-                bool success = false;
-
-                try {
-                    success = dir.location.make_directory_with_parents (null);
-                } catch (Error e) {
-                    if (e is IOError.EXISTS) {
-                        success = true;
-                    } else {
-                        var dialog = new Granite.MessageDialog (
-                            _("Failed to create the folder"),
-                            e.message,
-                            new ThemedIcon ("dialog-error"),
-                            Gtk.ButtonsType.CLOSE
-                        );
-
-                        dialog.run ();
-                        dialog.destroy ();
-                    }
-                }
-
-                if (success) {
-                    ctab.reload ();
-                }
-            });
-
-            show_all ();
-        }
+                dialog.present ();
+                dialog.destroy ();
+            }
+        });
     }
 }

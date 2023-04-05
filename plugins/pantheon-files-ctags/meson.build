@@ -1,4 +1,4 @@
-ctags_plugin_dir = join_paths(plugin_dir, 'core')
+ctags_plugin_dir = join_paths(plugin_dir, 'gtk4')
 
 shared_module(
     'pantheon-files-ctags',

@@ -21,38 +21,37 @@
 namespace Files {
     public enum WindowState {
         NORMAL,
-        TILED_START,
-        TILED_END,
+        TILED_LEFT,
+        TILED_RIGHT,
+        TILED_BOTTOM,
+        TILED_TOP,
         MAXIMIZED,
         INVALID;
 
-        public string to_string () {
-            switch (this) {
-                case NORMAL:
-                    return "Marlin.WindowState.NORMAL";
-                case TILED_START:
-                    return "Marlin.WindowState.TILED_START";
-                case TILED_END:
-                    return "Marlin.WindowState.TILED_END";
-                case MAXIMIZED:
-                    return "Marlin.WindowState.MAXIMIZED";
-                default:
-                    return "Marlin.WindowState.INVALID";
-            }
-        }
+        public static Files.WindowState from_gdk_toplevel_state (
+            Gdk.ToplevelState state
+        ) {
 
-        public static Files.WindowState from_gdk_window_state (Gdk.WindowState state, bool start = true) {
-            if (Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state) {
+            if (Gdk.ToplevelState.MAXIMIZED in state) {
                 return Files.WindowState.MAXIMIZED;
-            } else if (Gdk.WindowState.TILED in state) {
-                return start ? Files.WindowState.TILED_START : Files.WindowState.TILED_END;
+            } else if (Gdk.ToplevelState.LEFT_TILED in state) {
+                return Files.WindowState.TILED_LEFT;
+            } else if (Gdk.ToplevelState.RIGHT_TILED in state) {
+                return Files.WindowState.TILED_RIGHT;
+            } else if (Gdk.ToplevelState.BOTTOM_TILED in state) {
+                return Files.WindowState.TILED_BOTTOM;
+            } else if (Gdk.ToplevelState.TOP_TILED in state) {
+                return Files.WindowState.TILED_TOP;
             } else {
                 return Files.WindowState.NORMAL;
             }
         }
 
         public bool is_tiled () {
-            return this == TILED_START | this == TILED_END;
+            return this == TILED_LEFT ||
+                   this == TILED_RIGHT ||
+                   this == TILED_BOTTOM ||
+                   this == TILED_TOP;
         }
 
         public bool is_maximized () {
@@ -60,20 +59,66 @@ namespace Files {
         }
     }
 
+    public enum SortType {
+        FILE_COLUMN,
+        COLOR,
+        PIXBUF,
+        FILENAME,
+        SIZE,
+        TYPE,
+        MODIFIED,
+        CUSTOM;
 
+        public static SortType from_string (string sort_name) {
+            switch (sort_name) {
+                case "name":
+                case "NAME":
+                case "FILENAME":
+                    return SortType.FILENAME;
+                case "size":
+                case "SIZE":
+                    return SortType.SIZE;
+                case "type":
+                case "TYPE":
+                    return SortType.TYPE;
+                case "modified":
+                case "MODIFIED":
+                    return SortType.MODIFIED;
+                default:
+                    return SortType.FILENAME;
+            }
+        }
+
+        public unowned string to_string () {
+            switch (this) {
+                case SortType.FILENAME:
+                    return "FILENAME";
+                case SortType.SIZE:
+                    return "SIZE";
+                case SortType.TYPE:
+                    return "TYPE";
+                case SortType.MODIFIED:
+                    return "MODIFIED";
+                default:
+                    critical ("COLUMN id %u unsupported", this);
+                    return "";
+            }
+        }
+    }
 
     public enum ViewMode {
         /* First three modes must match the corresponding mode switch indices */
         ICON = 0,
-        LIST = 1,
-        MILLER_COLUMNS = 2,
+        LIST,
+        MULTICOLUMN,
+        INVALID, //End of real modes.
         CURRENT,
         PREFERRED,
-        INVALID
     }
 
     public enum OpenFlag {
         DEFAULT,
+        APPEND,
         NEW_ROOT,
         NEW_TAB,
         NEW_WINDOW,
@@ -145,5 +190,36 @@ namespace Files {
         XDND_DIRECT_SAVE0,
         NETSCAPE_URL,
         BOOKMARK_ROW
+    }
+
+    public enum Permissions.Type {
+        USER,
+        GROUP,
+        OTHER
+    }
+
+    public enum Permissions.Value {
+        READ,
+        WRITE,
+        EXE
+    }
+
+    public static bool is_chmod_code (string str) {
+        try {
+            var regex = new Regex ("^[0-7]{3}$");
+            if (regex.match (str)) {
+                return true;
+            }
+        } catch (RegexError e) {
+            assert_not_reached ();
+        }
+
+        return false;
+    }
+
+    public enum PathBarMode {
+        CRUMBS,
+        ENTRY,
+        SEARCH
     }
 }

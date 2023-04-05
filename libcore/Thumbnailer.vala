@@ -25,11 +25,7 @@
 ***/
 
 /**
- * WARNING: The source code in this file may do harm to animals. Dead kittens
- * are to be expected.
- *
- *
- * MarlinThumbnailer is a class for requesting thumbnails from org.xfce.tumbler.*
+ * Files.Thumbnailer is a class for requesting thumbnails from org.xfce.tumbler.*
  * D-Bus services. This header contains an in-depth description of its design to make
  * it easier to understand why things are the way they are.
  *
@@ -231,7 +227,6 @@ namespace Files {
                     foreach (var file in files) {
                         // Do not leave in LOADING state
                         file.thumbstate= Files.File.ThumbState.NONE;
-                        file.query_thumbnail_update ();
                     }
                 }
             });
@@ -367,7 +362,6 @@ namespace Files {
                 var goffile = Files.File.get_by_uri (uri);
                 if (goffile.thumbstate == Files.File.ThumbState.LOADING) {
                     goffile.thumbstate = Files.File.ThumbState.NONE;
-                    goffile.query_thumbnail_update ();
                 }
             }
 
@@ -383,7 +377,9 @@ namespace Files {
             var goffile = Files.File.get_by_uri (uri);
             if (goffile != null) {
                 goffile.thumbstate = state;
-                goffile.query_thumbnail_update ();
+                goffile.update_gicon_and_paintable ();
+                // Signal fileitem widgets to update
+                goffile.icon_changed ();
             }
         }
     }

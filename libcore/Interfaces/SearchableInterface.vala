@@ -15,7 +15,7 @@
 
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
-namespace Files.View.Chrome {
+namespace Files {
     /* Interface implemented by SearchResults */
     public interface Searchable : Gtk.Widget {
         public signal void file_selected (GLib.File file);

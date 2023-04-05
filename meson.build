@@ -1,7 +1,7 @@
 project(
-    'io.elementary.files',
+    'io.elementary.files4',
     'vala', 'c',
-    version: '6.3.0',
+    version: '7.0.0',
     meson_version: '>= 0.50.0'
 )
 
@@ -26,7 +26,7 @@ add_project_arguments(
 #
 # Define Vala minimal version
 #
-vala_version_required = '0.48.2'
+vala_version_required = '0.50.0'
 vala = meson.get_compiler('vala')
 cc = meson.get_compiler('c')
 
@@ -37,7 +37,7 @@ endif
 #
 # Project dependencies
 #
-min_glib_version = '2.64.6'
+min_glib_version = '2.72'
 
 glib_dep = dependency('glib-2.0', version: '>='+min_glib_version)
 gobject_dep = dependency('gobject-2.0', version: '>='+min_glib_version)
@@ -45,9 +45,11 @@ gio_dep = dependency('gio-2.0', version: '>='+min_glib_version)
 gio_unix_dep = dependency('gio-unix-2.0', version: '>='+min_glib_version)
 gmodule_dep = dependency('gmodule-2.0', version: '>='+min_glib_version)
 gee_dep = dependency('gee-0.8')
-gtk_dep = dependency('gtk+-3.0', version: '>=3.22.25')
-granite_dep = dependency('granite', version: '>=6.1.0')
-handy_dep = dependency('libhandy-1', version: '>=0.83.0')
+gtk_dep = dependency('gtk4')
+granite_dep = dependency('granite-7', version: '>=7.0.0')
+adwaita_dep = dependency('libadwaita-1')
+# Handy dep kept temporarily while porting
+# handy_dep = dependency('libhandy-1', version: '>=1.4.0')
 
 common_deps = [
     glib_dep,
@@ -57,25 +59,24 @@ common_deps = [
     gmodule_dep,
     gee_dep,
     gtk_dep,
-    granite_dep
+    granite_dep,
+    adwaita_dep
 ]
 
 pango_dep = dependency('pango', version: '>=1.1.2')
 sqlite3_dep = dependency('sqlite3')
 libcanberra_dep = dependency('libcanberra', version: '>=0.30')
-
 notify_dep = dependency('libnotify', version: '>=0.7.2')
+plank_dep = dependency('plank', version: '>=0.10.9')
 
 posix_dep = vala.find_library('posix')
 linux_dep = vala.find_library('linux')
 math_dep = cc.find_library('m')
 
-plank_dep = dependency('plank', version: '>=0.10.9')
-
-zeitgeist_dep = dependency('zeitgeist-2.0', required: get_option('with-zeitgeist'))
-if (zeitgeist_dep.found())
-    add_project_arguments('--define=HAVE_ZEITGEIST', language: 'vala')
-endif
+# zeitgeist_dep = dependency('zeitgeist-2.0', required: get_option('with-zeitgeist'))
+# if (zeitgeist_dep.found())
+#     add_project_arguments('--define=HAVE_ZEITGEIST', language: 'vala')
+# endif
 
 add_project_arguments(
     ['--vapidir', join_paths(meson.current_source_dir(), 'vapi')],
@@ -114,9 +115,9 @@ resources = gnome.compile_resources(
 subdir('libcore')
 subdir('src')
 subdir('data')
-subdir('pantheon-files-daemon')
+# subdir('pantheon-files-daemon')
 subdir('plugins')
-subdir('filechooser-portal')
+# subdir('filechooser-portal')
 meson.add_install_script('meson/post_install.py')
 
 subdir('po')

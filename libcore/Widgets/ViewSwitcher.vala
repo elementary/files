@@ -1,10 +1,5 @@
 /***
-    ViewSwicher.cs
-
-    Authors:
-       mathijshenquet <mathijs.henquet@gmail.com>
-       ammonkey <am.monkeyd@gmail.com>
-
+*   Copyright (c) 2016-2022 elementary LLC. <https://elementary.io>
     Copyright (c) 2010 mathijshenquet
 
     This program is free software: you can redistribute it and/or modify
@@ -19,78 +14,108 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    Authors:
+       mathijshenquet <mathijs.henquet@gmail.com>
+       ammonkey <am.monkeyd@gmail.com>
 ***/
 
-namespace Files.View.Chrome {
-    public class ViewSwitcher : Gtk.Box {
-        public GLib.SimpleAction action { get; construct; }
+public class Files.ViewSwitcher : Gtk.Box {
+    public string action_name { get; construct; }
+    private GLib.ListModel children;
+    public ViewSwitcher (string action_name) {
+        Object (action_name: action_name);
+    }
 
-        public ViewSwitcher (GLib.SimpleAction view_mode_action) {
-            Object (action: view_mode_action);
-        }
+    construct {
+        add_css_class ("linked");
 
-        construct {
-            get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
+        /* Grid View item */
+        var id = (uint32)ViewMode.ICON;
+        var grid_view_btn = new Gtk.ToggleButton () {
+            child = new Gtk.Image.from_icon_name ("view-grid-symbolic"),
+            tooltip_markup = get_tooltip_for_id (id, _("View as Grid")),
+            action_name = this.action_name,
+            action_target = new Variant.uint32 (id),
+            focusable = false
+        };
+        grid_view_btn.toggled.connect (() => {
+            if (grid_view_btn.active) {
+                set_mode ((uint32)ViewMode.ICON);
+            }
+        });
+        grid_view_btn.set_data<uint32> ("id", id);
 
-            /* Grid View item */
-            var id = (uint32)ViewMode.ICON;
-            var grid_view_btn = new Gtk.RadioButton (null) {
-                image = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.BUTTON),
-                tooltip_markup = get_tooltip_for_id (id, _("View as Grid"))
-            };
-            grid_view_btn.set_mode (false);
-            grid_view_btn.toggled.connect (on_mode_changed);
-            grid_view_btn.set_data<uint32> ("id", id);
-
-            /* List View */
-            id = (uint32)ViewMode.LIST;
-            var list_view_btn = new Gtk.RadioButton.from_widget (grid_view_btn) {
-                image = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.BUTTON),
-                tooltip_markup = get_tooltip_for_id (id, _("View as List"))
-            };
-            list_view_btn.set_mode (false);
-            list_view_btn.toggled.connect (on_mode_changed);
-            list_view_btn.set_data<uint32> ("id", id);
+        /* List View */
+        id = (uint32)ViewMode.LIST;
+        var list_view_btn = new Gtk.ToggleButton () {
+            child = new Gtk.Image.from_icon_name ("view-list-symbolic"),
+            tooltip_markup = get_tooltip_for_id (id, _("View as List")),
+            action_name = this.action_name,
+            action_target = new Variant.uint32 (id),
+            focusable = false
+        };
+        list_view_btn.toggled.connect (() => {
+            if (list_view_btn.active) {
+                set_mode ((uint32)ViewMode.LIST);
+            }
+        });
+        list_view_btn.set_data<uint32> ("id", id);
 
 
-            /* Item 2 */
-            id = (uint32)ViewMode.MILLER_COLUMNS;
-            var column_view_btn = new Gtk.RadioButton.from_widget (grid_view_btn) {
-                image = new Gtk.Image.from_icon_name ("view-column-symbolic", Gtk.IconSize.BUTTON),
-                tooltip_markup = get_tooltip_for_id (id, _("View in Columns"))
-            };
-            column_view_btn.set_mode (false);
-            column_view_btn.toggled.connect (on_mode_changed);
-            column_view_btn.set_data<ViewMode> ("id", ViewMode.MILLER_COLUMNS);
+        /* Item 2 */
+        id = (uint32)ViewMode.MULTICOLUMN;
+        var column_view_btn = new Gtk.ToggleButton () {
+            child = new Gtk.Image.from_icon_name ("view-column-symbolic"),
+            tooltip_markup = get_tooltip_for_id (id, _("View in Columns")),
+            action_name = this.action_name,
+            action_target = new Variant.uint32 (id),
+            focusable = false
+        };
+        column_view_btn.toggled.connect (() => {
+            if (column_view_btn.active) {
+                set_mode ((uint32)ViewMode.MULTICOLUMN);
+            }
+        });
+        column_view_btn.set_data<uint32> ("id", ViewMode.MULTICOLUMN);
 
-            valign = Gtk.Align.CENTER;
-            add (grid_view_btn);
-            add (list_view_btn);
-            add (column_view_btn);
-        }
+        valign = Gtk.Align.CENTER;
+        append (grid_view_btn);
+        append (list_view_btn);
+        append (column_view_btn);
+    }
 
-        private string get_tooltip_for_id (uint32 id, string description) {
-            var app = (Gtk.Application)Application.get_default ();
-            var detailed_name = Action.print_detailed_name ("win." + action.name, new Variant.uint32 (id));
-            var accels = app.get_accels_for_action (detailed_name);
-            return Granite.markup_accel_tooltip (accels, description);
-        }
+    private string get_tooltip_for_id (uint32 id, string description) {
+        var app = (Gtk.Application)Application.get_default ();
+        var detailed_name = Action.print_detailed_name (action_name, new Variant.uint32 (id));
+        var accels = app.get_accels_for_action (detailed_name);
+        return Granite.markup_accel_tooltip (accels, description);
+    }
 
-        private void on_mode_changed (Gtk.ToggleButton source) {
-            if (!source.active) {
-                return;
+    public void set_mode (uint32 mode) {
+        var child = get_first_child ();
+        while (child != null) {
+            if (child.get_data<uint32> ("id") != mode) {
+                ((Gtk.ToggleButton)child).active = false;
+            } else {
+                ((Gtk.ToggleButton)child).active = true;
             }
 
-            action.activate (source.get_data<uint32> ("id"));
+            child = child.get_next_sibling ();
+        }
+    }
+
+    public ViewMode get_mode () {
+        var child = get_first_child ();
+        while (child != null) {
+            if (((Gtk.ToggleButton)child).active) {
+                return (ViewMode)(child.get_data<uint32> ("id"));
+            }
+
+            child = child.get_next_sibling ();
         }
 
-        public void set_mode (uint32 mode) {
-            this.@foreach ((child) => {
-                if (child.get_data<uint32> ("id") == mode) {
-                    ((Gtk.RadioButton)child).active = true;
-                    action.activate (child.get_data<uint32> ("id"));
-                }
-            });
-        }
+        critical ("No active mode found - return 0");
+        return 0;
     }
 }

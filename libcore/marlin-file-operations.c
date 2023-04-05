@@ -776,7 +776,7 @@ delete_job (GTask *task,
 
 void
 marlin_file_operations_delete (GList               *files,
-                               GtkWindow           *parent_window,
+                               GtkRoot           *parent_window,
                                gboolean             try_trash,
                                GCancellable        *cancellable,
                                GAsyncReadyCallback  callback,
@@ -2794,8 +2794,8 @@ report_move_progress (FilesFileOperationsCopyMoveJob *move_job, int total, int l
 typedef struct {
     GFile *file;
     gboolean overwrite;
-    gboolean has_position;
-    GdkPoint position;
+    // gboolean has_position;
+    // GdkPoint position;
 } MoveFileCopyFallback;
 
 static MoveFileCopyFallback *

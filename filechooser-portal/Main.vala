@@ -24,7 +24,7 @@ public class Files.FileChooserPortal : Object {
     private static bool opt_replace = false;
     private static bool show_version = false;
 
-    private HashTable<string, FileChooserDialog> dialogs;
+    private HashTable<string, Files.FileChooserDialog> dialogs;
     private DBusConnection connection;
 
     private const OptionEntry[] ENTRIES = {
@@ -35,7 +35,7 @@ public class Files.FileChooserPortal : Object {
 
     public FileChooserPortal (DBusConnection connection) {
         this.connection = connection;
-        dialogs = new HashTable<string, FileChooserDialog> (str_hash, str_equal);
+        dialogs = new HashTable<string, Files.FileChooserDialog> (str_hash, str_equal);
     }
 
     /**
@@ -161,7 +161,6 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        dialog.show_all ();
         yield;
 
         dialogs.remove (parent_window);
@@ -317,7 +316,6 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        dialog.show_all ();
         yield;
 
         dialogs.remove (parent_window);
@@ -430,7 +428,6 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        dialog.show_all ();
         yield;
 
         dialogs.remove (parent_window);
@@ -468,7 +465,7 @@ public class Files.FileChooserPortal : Object {
             };
 
         var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
-        replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+        replace_button.get_style_context ().add_class ("destructive-action");
 
         return replace_dialog;
     }
@@ -490,7 +487,7 @@ public class Files.FileChooserPortal : Object {
         /* Avoid pointless and confusing recursion */
         Environment.unset_variable ("GTK_USE_PORTAL");
 
-        Gtk.init (ref args);
+        // Gtk.init (ref args);
 
         var context = new OptionContext ("- FileChooser portal");
         context.add_main_entries (ENTRIES, null);
@@ -517,7 +514,7 @@ public class Files.FileChooserPortal : Object {
                 "org.freedesktop.impl.portal.desktop.elementary.files",
                 BusNameOwnerFlags.ALLOW_REPLACEMENT | (opt_replace ? BusNameOwnerFlags.REPLACE : 0),
                 on_bus_acquired,
-                () => debug ("org.freedesktop.impl.portal.desktop.elementary.files acquired"),
+                () => debug ("org.freedesktop.impl.portal.desktop.elementary.files4 acquired"),
                 () => loop.quit ()
             );
             loop.run ();

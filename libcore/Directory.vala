@@ -38,10 +38,10 @@ public class Files.Directory : Object {
     private const int QUERY_INFO_TIMEOUT_SEC = 20;
     private const int MOUNT_TIMEOUT_SEC = 60;
 
-    public GLib.File creation_key {get; construct;}
-    public GLib.File location {get; private set;}
-    public GLib.File? selected_file {get; private set;}
-    public Files.File file {get; private set;}
+    public GLib.File creation_key { get; construct; }
+    public GLib.File location { get; private set; }
+    public GLib.File? selected_file { get; private set; }
+    public Files.File file { get; private set construct; }
     public int icon_size = 32;
 
     public enum State {
@@ -50,7 +50,8 @@ public class Files.Directory : Object {
         LOADED,
         TIMED_OUT
     }
-    public State state {get; private set;}
+
+    public State state { get; private set; }
 
     private HashTable<GLib.File,Files.File> file_hash;
     public uint displayed_files_count {get; private set;}
@@ -62,16 +63,13 @@ public class Files.Directory : Object {
     private FileMonitor? monitor = null;
     private List<unowned Files.File>? sorted_dirs = null;
 
-    public signal void file_loaded (Files.File file);
-    public signal void file_added (Files.File? file, bool is_internal); /* null used to signal failed operation */
+    //Signals listened to by client Slots
+    public signal void file_added (Files.File file,bool is_internal);
+    public signal void duplicate_added (Files.File file);
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
-    public signal void icon_changed (Files.File file); /* Called directly by Files.File - handled by AbstractDirectoryView
-                                                        Gets emitted for any kind of file operation */
-
     public signal void done_loading ();
-    public signal void thumbs_loaded ();
-    public signal void need_reload (bool original_request);
+    public signal void will_reload (); // Do not call directly
 
     private uint idle_consume_changes_id = 0;
     private bool removed_from_cache;
@@ -96,8 +94,6 @@ public class Files.Directory : Object {
     public bool has_mounts {get; private set;}
     public bool has_trash_dirs {get; private set;}
     public bool can_load {get; private set;}
-    public bool can_open_files {get; private set;}
-    public bool can_stream_files {get; private set;}
     public bool allow_user_interaction {get; set; default = true;}
 
     private bool is_ready = false;
@@ -150,15 +146,12 @@ public class Files.Directory : Object {
         return dir;
     }
 
-    public static Directory from_file (Files.File gof) {
-        return from_gfile (gof.get_target_location ());
-    }
-
     private Directory (GLib.File _file) {
         Object (
             creation_key: _file
         );
 
+        assert (creation_key != null);
         location = _file;
         file = Files.File.get (location);
         selected_file = null;
@@ -175,22 +168,15 @@ public class Files.Directory : Object {
         is_no_info = ("cdda mtp gphoto2 ssh sftp afp afc dav davs".contains (scheme));
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("smb ftp sftp afp dav davs".contains (scheme));
-        /* Previously, mtp protocol had problems launching files but this currently works
-         * using newer devices such as Android phones so this restriction is lifted. The flag is
-         * retained in case it needs reinstating or using for another protocol.
-         */
-        can_open_files = true;
-        /* Previously, mtp protocol had problems streaming files but this currently works
-         * using newer devices such as Android phones so this restriction is lifted.
-         */
-        can_stream_files = !("ftp sftp".contains (scheme));
 
         file_hash = new HashTable<GLib.File, Files.File> (GLib.File.hash, GLib.File.equal);
 
         if (is_recent) {
-           Files.Preferences.get_default ().notify["remember-history"].connect (() => {
-                need_reload (true);
+            Files.Preferences.get_default ().notify["remember-history"].connect (() => {
+                schedule_reload ();
             });
+
+            schedule_reload ();
         }
     }
 
@@ -199,23 +185,19 @@ public class Files.Directory : Object {
         if (is_trash) {
             disconnect_volume_monitor_signals ();
         }
-
-        if (file != null && file.is_directory) {
-            file.set_expanded (false); // Ensure any remaining folder icons are not displayed as expanded
-        }
     }
 
-    /** Views call the following function with null parameter - file_loaded and done_loading
+    /** Views call the following function with null parameter - file_added and done_loading
       * signals are emitted and cause the view and view container to update.
       *
       * LocationBar calls this function, with a callback, on its own Directory instances in order
       * to perform filename completion.- Emitting a done_loaded signal in that case would cause
       * the premature ending of text entry.
      **/
-    public void init (FileLoadedFunc? file_loaded_func = null, DoneLoadingFunc? done_loading_func = null) {
+    public async bool init (FileLoadedFunc? file_loaded_func = null, DoneLoadingFunc? done_loading_func = null) {
         if (state == State.LOADING) {
             debug ("Directory Init re-entered - already loading");
-            return; /* Do not re-enter */
+            return false; /* Do not re-enter */
         }
 
         var previous_state = state;
@@ -226,13 +208,15 @@ public class Files.Directory : Object {
 
         /* If we already have a loaded file cache just list them */
         if (previous_state == State.LOADED) {
+            // list_cached_files (file_loaded_func);
             list_cached_files (file_loaded_func, done_loading_func);
         /* else fully initialise the directory */
         } else {
             state = State.LOADING;
-            prepare_directory.begin (file_loaded_func, done_loading_func);
+            yield prepare_directory (file_loaded_func, done_loading_func);
         }
         /* done_loaded signal is emitted when ready */
+        return true;
     }
 
     /* This is also called when reloading the directory so that another attempt to connect to
@@ -256,7 +240,7 @@ public class Files.Directory : Object {
                     location = parent;
                     success = yield get_file_info ();
                 } else {
-                    debug ("Parent is null for file %s", file.uri);
+                    warning ("Parent is null for file %s", file.uri);
                     success = false;
                 }
             }
@@ -468,7 +452,6 @@ public class Files.Directory : Object {
         return success;
     }
 
-
     private async void make_ready (bool ready, FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
         debug ("make ready");
         can_load = ready;
@@ -573,11 +556,12 @@ public class Files.Directory : Object {
 
     private void on_mount_changed (GLib.VolumeMonitor vm, GLib.Mount mount) {
         if (state == State.LOADED) {
-            need_reload (true);
+            schedule_reload ();
         }
     }
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
+        // unowned Directory dir = (Directory) object;
         if (is_last) {
             var dir = (Directory) object; // Adds a reference temporarily
             // Replace the toggle ref with a normal ref before removing from cache
@@ -589,25 +573,40 @@ public class Files.Directory : Object {
     }
 
     public void cancel () {
-        /* This should only be called when closing the view - it will cancel initialisation of the directory */
+        /* This should only be called when closing the view -
+         * it will cancel initialisation of the directory */
         cancellable.cancel ();
         cancel_timeouts ();
     }
 
+    uint reload_timeout_id = 0;
+    public void schedule_reload () {
+        will_reload (); // Signal client slots to prepare
+        if (reload_timeout_id > 0) {
+            warning ("Reload request received too rapidly");
+            return;
+        }
 
-    public void reload () {
         debug ("Reload - state is %s", state.to_string ());
         if (state == State.TIMED_OUT && file.is_mounted) {
             debug ("Unmounting because of timeout");
             cancellable.cancel ();
             cancellable = new Cancellable ();
-            file.location.unmount_mountable_with_operation.begin (GLib.MountUnmountFlags.FORCE, null, cancellable);
+            file.location.unmount_mountable_with_operation.begin (
+                GLib.MountUnmountFlags.FORCE,
+                null,
+                cancellable
+            );
             file.mount = null;
             file.is_mounted = false;
         }
 
-        clear_directory_info ();
-        init ();
+        reload_timeout_id = Timeout.add (100, () => {
+            clear_directory_info ();
+            init.begin ();
+            reload_timeout_id = 0;
+            return GLib.Source.REMOVE;
+        });
     }
 
     /** Called in preparation for a reload **/
@@ -637,6 +636,7 @@ public class Files.Directory : Object {
         }
     }
 
+    // private void list_cached_files (FileLoadedFunc? file_loaded_func) {
     private void list_cached_files (FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
         debug ("list cached files");
         if (state != State.LOADED) {
@@ -646,10 +646,9 @@ public class Files.Directory : Object {
 
         state = State.LOADING;
         displayed_files_count = 0;
-        bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
         foreach (unowned Files.File gof in file_hash.get_values ()) {
             if (gof != null) {
-                after_load_file (gof, show_hidden, file_loaded_func);
+                after_load_file (gof, file_loaded_func);
             }
         }
 
@@ -686,7 +685,6 @@ public class Files.Directory : Object {
         can_load = true;
         displayed_files_count = 0;
         state = State.LOADING;
-        bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
 
         try {
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
@@ -726,7 +724,7 @@ public class Files.Directory : Object {
                             gof.update ();
 
                             file_hash.insert (gof.location, gof);
-                            after_load_file (gof, show_hidden, file_loaded_func);
+                            after_load_file (gof, file_loaded_func);
                         }
                     }
                 } catch (Error e) {
@@ -760,15 +758,13 @@ public class Files.Directory : Object {
         }
     }
 
-    private void after_load_file (Files.File gof, bool show_hidden, FileLoadedFunc? file_loaded_func) {
-        if (!gof.is_hidden || show_hidden) {
-            displayed_files_count++;
+    private void after_load_file (Files.File gof, FileLoadedFunc? file_loaded_func) {
+        displayed_files_count++;
 
-            if (file_loaded_func == null) {
-                file_loaded (gof);
-            } else {
-                file_loaded_func (gof);
-            }
+        if (file_loaded_func == null) {
+            file_added (gof, true);
+        } else {
+            file_loaded_func (gof);
         }
     }
 
@@ -789,10 +785,7 @@ public class Files.Directory : Object {
         } else {
             done_loading_func ();
         }
-
-        if (file.is_directory) { /* Fails for non-existent directories */
-            file.set_expanded (true);
-        }
+        //It is up to each view to update file expanded count as needed;
     }
 
     public void block_monitor () {
@@ -813,22 +806,9 @@ public class Files.Directory : Object {
         return file_hash.get_values ();
     }
 
-    public void load_hiddens () {
-        if (!can_load) {
-            return;
-        }
-        if (state != State.LOADED) {
-            list_directory_async.begin (null, null);
-        } else {
-            list_cached_files (null, null);
-        }
-    }
-
     public void update_files () {
         foreach (unowned Files.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null &&
-                (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
-
+            if (gof != null && gof.info != null) {
                 gof.update ();
             }
         }
@@ -836,10 +816,7 @@ public class Files.Directory : Object {
 
     public void update_desktop_files () {
         foreach (unowned Files.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null &&
-                (!gof.is_hidden || Preferences.get_default ().show_hidden_files) &&
-                gof.is_desktop) {
-
+            if (gof != null && gof.info != null && gof.is_desktop) {
                 gof.update_desktop_file ();
             }
         }
@@ -900,13 +877,19 @@ public class Files.Directory : Object {
         return gof.info != null;
     }
 
-    private void changed_and_refresh (Files.File gof) {
-        gof.update ();
-
-        if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
-            file_changed (gof);
-            gof.changed ();
+    public void changed_and_refresh (Files.File file) {
+        if (file.thumbstate == Files.File.ThumbState.LOADED) {
+            file.thumbstate = Files.File.ThumbState.UNKNOWN;
         }
+        var tp = file.get_thumbnail_path ();
+        // cannot tell what has changed so force update of thumbnail in cache
+        if (tp != null) {
+            IconInfo.remove_cache (tp);
+        }
+
+        file.update ();
+        // Signal views to update
+        file_changed (file);
     }
 
     private void add_and_refresh (Files.File gof, bool is_internal) {
@@ -915,10 +898,7 @@ public class Files.Directory : Object {
         }
 
         gof.update ();
-
-        if ((!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
-            file_added (gof, is_internal);
-        }
+        file_added (gof, is_internal);
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* add to sorted_dirs */
@@ -943,10 +923,7 @@ public class Files.Directory : Object {
 
     private void notify_file_removed (Files.File gof) {
         remove_file_from_cache (gof);
-
-        if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
-            file_deleted (gof);
-        }
+        file_deleted (gof);
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* remove from sorted_dirs */
@@ -961,6 +938,12 @@ public class Files.Directory : Object {
         }
 
         gof.remove_from_caches ();
+        if (gof.is_folder ()) {
+            (GLib.Application.get_default ()).activate_action (
+                "folder-deleted",
+                new Variant ("s", gof.uri)
+            );
+        }
     }
 
     private struct FChanges {
@@ -1027,7 +1010,7 @@ public class Files.Directory : Object {
             _freeze_update = value;
             if (!value && can_load) {
                 if (list_fchanges_count >= FCHANGES_MAX) {
-                    need_reload (true);
+                    schedule_reload ();
                 } else if (list_fchanges_count > 0) {
                     list_fchanges.reverse ();
                     foreach (var fchange in list_fchanges) {
@@ -1063,10 +1046,19 @@ public class Files.Directory : Object {
         foreach (unowned var change in changes) {
             unowned var loc = change.from;
             Directory? dir = cache_lookup_parent (loc);
-
             if (dir != null) {
-                Files.File gof = dir.file_cache_find_or_insert (loc, true);
-                dir.notify_file_added (gof, change.is_internal);
+                var gof = dir.file_hash_lookup_location (loc);
+                if (gof == null) {
+                    gof = new Files.File (loc, dir.location);
+                    dir.file_hash.insert (loc, gof);
+                    dir.notify_file_added (gof, change.is_internal);
+                } else if (change.is_internal) {
+                    dir.duplicate_added (gof);
+                } else {
+                    debug ("change is external (monitor) - do not select");
+                }
+            } else {
+                debug ("added file no parent");
             }
         }
     }
@@ -1075,10 +1067,19 @@ public class Files.Directory : Object {
     public static void notify_files_added_internally (List<GLib.File> files) {
         foreach (unowned var loc in files) {
             Directory? dir = cache_lookup_parent (loc);
-
             if (dir != null) {
-                Files.File gof = dir.file_cache_find_or_insert (loc, true);
-                dir.notify_file_added (gof, true);
+                var gof = dir.file_hash_lookup_location (loc);
+                if (gof == null) {
+                    warning ("create and add");
+                    gof = new Files.File (loc, dir.location);
+                    dir.file_hash.insert (loc, gof);
+                    dir.notify_file_added (gof, true);
+                } else {
+                    debug ("duplicate added");
+                    dir.duplicate_added (gof);
+                }
+            } else {
+                warning ("no parent");
             }
         }
     }
@@ -1135,6 +1136,10 @@ public class Files.Directory : Object {
         notify_files_added_internally (list_to);
     }
 
+    public static Directory from_file (Files.File gof) {
+        return from_gfile (gof.get_target_location ());
+    }
+
     private static void remove_file_from_cache (Files.File gof) {
         Directory? dir = cache_lookup (gof.directory);
         if (dir != null) {
@@ -1157,7 +1162,11 @@ public class Files.Directory : Object {
                     cached_dir.file.query_update (); /* This is synchronous and causes blocking */
                 }
             } else {
-                critical ("Invalid directory found in cache");
+                warning ("Invalid directory found in cache key %s, removing", file.get_basename ());
+                if (cached_dir.file == null) {
+                    warning ("cached dir file is null");
+                    warning ("creation key %s", cached_dir.creation_key.get_basename ());
+                }
                 cached_dir = null;
                 lock (directory_cache) {
                     directory_cache.remove (file);
@@ -1176,20 +1185,14 @@ public class Files.Directory : Object {
     }
 
     public static bool remove_dir_from_cache (Directory dir) {
-        if (dir.file.is_directory) {
-            dir.file.is_expanded = false;
-            dir.file.changed ();
-        }
-
-        // In case dir was never initialised remove both creation_key and
-        // location.
+        assert_nonnull (dir);
+        debug ("remove dir from cache %s", dir.creation_key.get_basename () );
         lock (directory_cache) {
             if ((directory_cache.lookup (dir.location) != null) ||
                 (directory_cache.lookup (dir.creation_key) != null)) {
 
                 directory_cache.remove (dir.location);
                 directory_cache.remove (dir.creation_key);
-
                 dir.removed_from_cache = true;
                 return true;
             }
@@ -1241,7 +1244,7 @@ public class Files.Directory : Object {
 
     public bool is_empty () {
         /* only return true when loaded to avoid temporary appearance of empty message while loading */
-        return (state == State.LOADED && file_hash.size () == 0);
+        return (state != State.LOADED || file_hash.size () == 0);
     }
 
     public unowned List<unowned Files.File>? get_sorted_dirs () {
@@ -1267,6 +1270,7 @@ public class Files.Directory : Object {
         cancel_timeout (ref idle_consume_changes_id);
         cancel_timeout (ref load_timeout_id);
         cancel_timeout (ref mount_timeout_id);
+        cancel_timeout (ref reload_timeout_id);
     }
 
     private bool cancel_timeout (ref uint id) {
