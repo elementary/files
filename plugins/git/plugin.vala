@@ -44,7 +44,10 @@
                 repo.file_status_foreach (status_options,
                                           (path, status_flags) => {
 
-                    status_map.insert (path, status_flags);
+                    if (!(Ggit.StatusFlags.IGNORED in status_flags)) {
+                        status_map.insert (path, status_flags);
+                    }
+
                     return 0;
                 });
             } catch (Error e) {
