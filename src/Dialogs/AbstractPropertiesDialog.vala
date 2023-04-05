@@ -26,7 +26,7 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
     protected Gtk.Stack stack;
     protected Gtk.StackSwitcher stack_switcher;
     protected Gtk.Widget header_title;
-    protected Files.StorageBar? storagebar = null;
+    protected Gtk.LevelBar storage_levelbar;
 
     protected enum PanelType {
         INFO,
@@ -151,13 +151,26 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
 
             uint64 fs_capacity = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
             uint64 fs_used = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
-            uint64 fs_available = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
-            uint64 fs_reserved = fs_capacity - fs_used - fs_available;
 
-            storagebar = new Files.StorageBar.with_total_usage (fs_capacity, fs_used + fs_reserved);
-            update_storage_block_size (fs_reserved, Files.StorageBar.ItemDescription.OTHER);
+            storage_levelbar = new Gtk.LevelBar.for_interval (0, fs_capacity) {
+                value = fs_used,
+                hexpand = true
+            };
+            storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, 0.6 * fs_capacity);
+            storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, 0.9 * fs_capacity);
+            storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_FULL, fs_capacity);
+            storage_levelbar.get_style_context ().add_class ("inverted");
 
-            info_grid.attach (storagebar, 0, line + 1, 4, 1);
+            var storage_label = new Gtk.Label (
+                create_storage_label ((uint64) storage_levelbar.value, fs_capacity)
+            );
+
+            info_grid.attach (storage_levelbar, 0, line + 1, 4);
+            info_grid.attach (storage_label, 0, line + 2, 4);
+
+            storage_levelbar.notify["value"].connect (() => {
+                storage_label.label = create_storage_label ((uint64) storage_levelbar.value, fs_capacity);
+            });
         } else {
             /* We're not able to gether the usage statistics, show an error
              * message to let the user know. */
@@ -179,10 +192,7 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
         }
     }
 
-    protected void update_storage_block_size (uint64 size,
-                                              Files.StorageBar.ItemDescription item_description) {
-        if (storagebar != null) {
-            storagebar.update_block_size (item_description, size);
-        }
+    private string create_storage_label (uint64 value, uint64 max_value) {
+        return _("%s free out of %s").printf (format_size (max_value - value), format_size (max_value));
     }
 }
