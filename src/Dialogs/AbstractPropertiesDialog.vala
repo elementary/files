@@ -151,6 +151,8 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
 
             uint64 fs_capacity = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
             uint64 fs_used = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
+            uint64 fs_available = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
+            uint64 fs_reserved = fs_capacity - fs_used - fs_available;
 
             storage_levelbar = new Gtk.LevelBar.for_interval (0, fs_capacity) {
                 value = fs_used,
@@ -162,14 +164,14 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
             storage_levelbar.get_style_context ().add_class ("inverted");
 
             var storage_label = new Gtk.Label (
-                create_storage_label (fs_used, fs_capacity)
+                create_storage_label (fs_used + fs_reserved, fs_capacity)
             );
 
             info_grid.attach (storage_levelbar, 0, line + 1, 4);
             info_grid.attach (storage_label, 0, line + 2, 4);
 
             storage_levelbar.notify["value"].connect (() => {
-                storage_label.label = create_storage_label ((uint64) storage_levelbar.value, fs_capacity);
+                storage_label.label = create_storage_label ((uint64) storage_levelbar.value + fs_reserved, fs_capacity);
             });
         } else {
             /* We're not able to gether the usage statistics, show an error
