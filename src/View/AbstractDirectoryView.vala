@@ -1686,6 +1686,11 @@ namespace Files {
                             timestamp
                         );
 
+                        Idle.add (() => {
+                            update_selected_files_and_menu ();
+                            return Source.REMOVE;
+                        });
+
                         break;
 
                     default:

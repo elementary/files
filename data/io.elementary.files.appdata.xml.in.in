@@ -42,8 +42,8 @@
         <issue url="https://github.com/elementary/files/issues/2141">Reinstate mount option in storage menu</issue>
         <issue url="https://github.com/elementary/files/issues/2148">Fix crash when entering path on other Linux</issue>
         <issue url="https://github.com/elementary/files/issues/2151">Fix no norubberband selection in List View if started outside list</issue>
-        <issue url="https://github.com/elementary/files/issues/2152">Fix List View selection not persisting when changing to Icon View
-        </issue>
+        <issue url="https://github.com/elementary/files/issues/2152">Fix List View selection not persisting when changing to Icon View</issue>
+        <issue url="https://github.com/elementary/files/issues/2153">Property overlay doesn't appear when selection is created by drag-drop or paste</issue>
       </issues>
     </release>
 
