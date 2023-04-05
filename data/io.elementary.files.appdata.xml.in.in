@@ -48,6 +48,7 @@
         <issue url="https://github.com/elementary/files/issues/1781">Some devices not accessible by MTP or PTP</issue>
         <issue url="https://github.com/elementary/files/issues/1997">Path completion should be case sensitive</issue>
         <issue url="https://github.com/elementary/files/issues/2047">Filechooser default typing action is search instead of rename</issue>
+        <issue url="https://github.com/elementary/files/issues/2153">Property overlay doesn't appear when selection is created by drag-drop or paste</issue>
       </issues>
     </release>
 
