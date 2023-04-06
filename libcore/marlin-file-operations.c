@@ -1559,7 +1559,7 @@ retry:
         return CREATE_DEST_DIR_FAILED;
     }
 
-    files_file_changes_queue_file_added (*dest);
+    files_file_changes_queue_file_added (*dest, TRUE);
 
     // Start UNDO-REDO
     files_undo_action_data_add_origin_target_pair (job->undo_redo_data, src, *dest);
@@ -2266,7 +2266,7 @@ retry:
         if (copy_job->is_move) {
             files_file_changes_queue_file_moved (src, dest);
         } else {
-           files_file_changes_queue_file_added (dest);
+           files_file_changes_queue_file_added (dest, TRUE);
         }
 
         // Start UNDO-REDO

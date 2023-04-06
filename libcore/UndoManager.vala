@@ -677,7 +677,7 @@ namespace Files {
             }
         }
 
-        public unowned string get_next_redo_description () {
+        public unowned string? get_next_redo_description () {
             var action = get_next_redo_action ();
             if (action != null) {
                 return action.action_type.to_redo_string ();

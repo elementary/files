@@ -21,7 +21,6 @@ namespace Files.FileUtils {
      **/
     const string RESERVED_CHARS = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
                                    GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
-
     public GLib.List<GLib.File> files_from_uris (string uris) {
         var result = new GLib.List<GLib.File> ();
         var uri_list = GLib.Uri.list_extract_uris (uris);
@@ -556,7 +555,7 @@ namespace Files.FileUtils {
                 var removed_files = new GLib.List<GLib.File> ();
                 removed_files.append (old_location);
                 Files.Directory.notify_files_removed (removed_files);
-                Files.Directory.notify_files_added (added_files);
+                Files.Directory.notify_files_added_internally (added_files);
             } else {
                 warning ("Renamed file has no Files.Directory.Async");
             }
@@ -570,7 +569,7 @@ namespace Files.FileUtils {
 
             if (dir != null) {
                 /* We emit this signal anyway so callers can know rename failed and disconnect */
-                dir.file_added (null);
+                dir.file_added (null, true);
             }
 
             throw e;
@@ -1051,7 +1050,6 @@ namespace Files.FileUtils {
         uint count;
 
         parse_previous_duplicate_name (name, is_link, out name_base, out suffix, out count);
-
         if (is_link) {
             result = get_link_name (name_base, count + count_increment, max_length);
         } else {
@@ -1064,11 +1062,11 @@ namespace Files.FileUtils {
     private void parse_previous_duplicate_name (
         string name, bool is_link, out string name_base, out string suffix, out int count
     ) {
-        name_base = "";
+        name_base = name;
         suffix = "";
         count = 0;
 
-        string name_without_suffix = name;
+        var name_without_suffix = name;
         var last_index = name.length - 1;
         var index_of_suffix = name.length;
 
@@ -1083,9 +1081,10 @@ namespace Files.FileUtils {
         var max_extension_length = 4;
         if (index_of_suffix >= last_index - max_extension_length &&
             index_of_suffix < last_index) {
-
             suffix = name.slice (index_of_suffix, name.length);
             name_without_suffix = name.slice (0, index_of_suffix);
+        } else {
+            index_of_suffix = name.length;
         }
 
         int index_of_opening = name_without_suffix.last_index_of (_(OPENING_COPY_LINK_TAG));
