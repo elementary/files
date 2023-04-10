@@ -155,7 +155,7 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
             uint64 fs_reserved = fs_capacity - fs_used - fs_available;
 
             storage_levelbar = new Gtk.LevelBar.for_interval (0, fs_capacity) {
-                value = fs_used,
+                value = fs_used + fs_reserved,
                 hexpand = true
             };
             storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, 0.6 * fs_capacity);
