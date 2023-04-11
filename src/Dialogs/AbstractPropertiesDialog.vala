@@ -26,7 +26,6 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
     protected Gtk.Stack stack;
     protected Gtk.StackSwitcher stack_switcher;
     protected Gtk.Widget header_title;
-    protected Gtk.LevelBar storage_levelbar;
 
     protected enum PanelType {
         INFO,
@@ -154,7 +153,7 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
             uint64 fs_available = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
             uint64 fs_reserved = fs_capacity - fs_used - fs_available;
 
-            storage_levelbar = new Gtk.LevelBar.for_interval (0, fs_capacity) {
+            var storage_levelbar = new Gtk.LevelBar.for_interval (0, fs_capacity) {
                 value = fs_used + fs_reserved,
                 hexpand = true
             };
@@ -164,15 +163,11 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
             storage_levelbar.get_style_context ().add_class ("inverted");
 
             var storage_label = new Gtk.Label (
-                create_storage_label (fs_used + fs_reserved, fs_capacity)
+                _("%s free out of %s").printf (format_size (fs_capacity - fs_used + fs_reserved), format_size (fs_capacity))
             );
 
             info_grid.attach (storage_levelbar, 0, line + 1, 4);
             info_grid.attach (storage_label, 0, line + 2, 4);
-
-            storage_levelbar.notify["value"].connect (() => {
-                storage_label.label = create_storage_label ((uint64) storage_levelbar.value + fs_reserved, fs_capacity);
-            });
         } else {
             /* We're not able to gether the usage statistics, show an error
              * message to let the user know. */
@@ -192,9 +187,5 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
             info_grid.attach (used_label, 0, line + 3, 1, 1);
             info_grid.attach_next_to (used_value, used_label, Gtk.PositionType.RIGHT);
         }
-    }
-
-    private string create_storage_label (uint64 value, uint64 max_value) {
-        return _("%s free out of %s").printf (format_size (max_value - value), format_size (max_value));
     }
 }

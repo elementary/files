@@ -97,7 +97,6 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
         }
 
         create_storage_bar (info, 3);
-        storage_levelbar.value = used_space;
         show_all ();
     }
 }
