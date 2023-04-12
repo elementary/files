@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-11 19:23+0000\n"
-"PO-Revision-Date: 2023-03-04 13:25+0000\n"
+"PO-Revision-Date: 2023-04-13 17:59+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.16.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -1606,10 +1606,9 @@ msgid "Device Usage"
 msgstr "Wykorzystanie urządzenia"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:166
-#, fuzzy, c-format
-#| msgid "(%s Free of %s)"
+#, c-format
 msgid "%s free out of %s"
-msgstr "(%s wolne z %s)"
+msgstr "%s wolne z %s"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:174
 msgid "Capacity:"
