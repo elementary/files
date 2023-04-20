@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-02 12:23+0000\n"
+"POT-Creation-Date: 2023-04-11 19:23+0000\n"
 "PO-Revision-Date: 2023-02-16 21:22+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
@@ -64,52 +64,34 @@ msgstr ""
 "Windows."
 
 #: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:82
-#: data/io.elementary.files.appdata.xml.in.in:140
-#: data/io.elementary.files.appdata.xml.in.in:158
-#: data/io.elementary.files.appdata.xml.in.in:183
-#: data/io.elementary.files.appdata.xml.in.in:260
-#: data/io.elementary.files.appdata.xml.in.in:277
+#: data/io.elementary.files.appdata.xml.in.in:58
+#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:89
+#: data/io.elementary.files.appdata.xml.in.in:116
+msgid "Minor updates:"
+msgstr "Actualitzacions menors:"
+
+#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/io.elementary.files.appdata.xml.in.in:60
+#: data/io.elementary.files.appdata.xml.in.in:76
+#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:118
+msgid "Updated translations"
+msgstr "Traduccions actualitzades"
+
+#: data/io.elementary.files.appdata.xml.in.in:54
+#: data/io.elementary.files.appdata.xml.in.in:101
 msgid "Improvements:"
 msgstr "Millores:"
 
-#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/io.elementary.files.appdata.xml.in.in:56
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 "Mou la configuració global del menú contextual a un menú d'aplicació a la "
 "barra de capçalera"
 
-#: data/io.elementary.files.appdata.xml.in.in:40
-#: data/io.elementary.files.appdata.xml.in.in:56
-#: data/io.elementary.files.appdata.xml.in.in:71
-#: data/io.elementary.files.appdata.xml.in.in:97
-#: data/io.elementary.files.appdata.xml.in.in:109
-#: data/io.elementary.files.appdata.xml.in.in:132
-#: data/io.elementary.files.appdata.xml.in.in:150
-#: data/io.elementary.files.appdata.xml.in.in:175
-#: data/io.elementary.files.appdata.xml.in.in:201
-msgid "Minor updates:"
-msgstr "Actualitzacions menors:"
-
-#: data/io.elementary.files.appdata.xml.in.in:42
-#: data/io.elementary.files.appdata.xml.in.in:58
-#: data/io.elementary.files.appdata.xml.in.in:73
-#: data/io.elementary.files.appdata.xml.in.in:99
-#: data/io.elementary.files.appdata.xml.in.in:111
-#: data/io.elementary.files.appdata.xml.in.in:134
-#: data/io.elementary.files.appdata.xml.in.in:152
-#: data/io.elementary.files.appdata.xml.in.in:177
-#: data/io.elementary.files.appdata.xml.in.in:203
-#: data/io.elementary.files.appdata.xml.in.in:218
-#: data/io.elementary.files.appdata.xml.in.in:234
-#: data/io.elementary.files.appdata.xml.in.in:249
-#: data/io.elementary.files.appdata.xml.in.in:266
-#: data/io.elementary.files.appdata.xml.in.in:295
-msgid "Updated translations"
-msgstr "Traduccions actualitzades"
-
-#: data/io.elementary.files.appdata.xml.in.in:84
+#: data/io.elementary.files.appdata.xml.in.in:103
 msgid ""
 "Provide option to select folders with single click and activate with double "
 "click"
@@ -117,49 +99,39 @@ msgstr ""
 "Proporciona una opció per seleccionar carpetes amb un sol clic i activar amb "
 "dos."
 
-#: data/io.elementary.files.appdata.xml.in.in:85
+#: data/io.elementary.files.appdata.xml.in.in:104
 msgid ""
 "Only show the properties overlay when files are selected, not when hovered"
 msgstr ""
 "Només es mostren les propietats quan se seleccionen els fitxers, no quan "
 "s'hi passa per damunt."
 
-#: data/io.elementary.files.appdata.xml.in.in:87
-#: data/io.elementary.files.appdata.xml.in.in:105
-#: data/io.elementary.files.appdata.xml.in.in:117
-#: data/io.elementary.files.appdata.xml.in.in:144
-#: data/io.elementary.files.appdata.xml.in.in:164
-#: data/io.elementary.files.appdata.xml.in.in:192
-#: data/io.elementary.files.appdata.xml.in.in:209
-#: data/io.elementary.files.appdata.xml.in.in:224
-#: data/io.elementary.files.appdata.xml.in.in:240
-#: data/io.elementary.files.appdata.xml.in.in:255
-#: data/io.elementary.files.appdata.xml.in.in:272
+#: data/io.elementary.files.appdata.xml.in.in:106
 msgid "Fixes:"
 msgstr "Correccions:"
 
-#: data/io.elementary.files.appdata.xml.in.in:89
+#: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Fix unexpected file activation after navigation with double-click"
 msgstr "Correcció de l'activació de fitxers en navegar després d'un clic doble"
 
-#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:109
 msgid "Fix dimmed window after use of filechooser portal"
 msgstr ""
 "Correcció de la finestra enfosquida després d'usar el portal de selecció de "
 "fitxers"
 
-#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Fix possible crash when rapidly changing view modes"
 msgstr ""
 "Correcció de la fallada possible en canviar ràpidament de mode de "
 "visualització"
 
-#: data/io.elementary.files.appdata.xml.in.in:92
+#: data/io.elementary.files.appdata.xml.in.in:111
 msgid "Fix startup when restored remote location is no longer connected"
 msgstr ""
 "Correcció de l'inici quan la ubicació remota restaurada ja no està connectada"
 
-#: data/io.elementary.files.appdata.xml.in.in:93
+#: data/io.elementary.files.appdata.xml.in.in:112
 msgid ""
 "Ensure infobar shows in connection server dialog when connection attempt "
 "fails"
@@ -167,372 +139,16 @@ msgstr ""
 "Assegura que la barra d'informació mostri un diàleg de la connexió del "
 "servidor quan falli l'intent de connexió."
 
-#: data/io.elementary.files.appdata.xml.in.in:94
+#: data/io.elementary.files.appdata.xml.in.in:113
 msgid "Ensure correct icon for bookmark to a file that is not a folder"
 msgstr ""
 "Assegura la icona correcta del marcador d'un fitxer que no sigui una carpeta."
 
-#: data/io.elementary.files.appdata.xml.in.in:95
+#: data/io.elementary.files.appdata.xml.in.in:114
 msgid "Fix possible crash when removing a bookmark"
 msgstr "Correcció d'una fallada possible en suprimir un marcador"
 
-#: data/io.elementary.files.appdata.xml.in.in:107
-msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
-msgstr "S'ha corregit una regressió en allunyar amb Ctrl + Desplaçament avall."
-
-#: data/io.elementary.files.appdata.xml.in.in:119
-msgid "Renaming with the same name no longer shows an error dialog"
-msgstr "El canvi de nom amb el mateix nom ja no mostra cap diàleg d'error."
-
-#: data/io.elementary.files.appdata.xml.in.in:120
-msgid "Ctrl + A when renaming now selects all the text in the entry"
-msgstr ""
-"Teclejar Ctrl + A quan es canvia el nom ara selecciona tot el text de "
-"l'entrada."
-
-#: data/io.elementary.files.appdata.xml.in.in:121
-msgid "Selecting multiple items with Shift + Arrow keys now works properly"
-msgstr ""
-"La selecció de diversos elements amb les tecles Maj + fletxa ara funciona "
-"correctament."
-
-#: data/io.elementary.files.appdata.xml.in.in:122
-msgid "The appearance of the cursor now matches the action"
-msgstr "Ara l'aspecte del cursor coincideix amb l'acció."
-
-#: data/io.elementary.files.appdata.xml.in.in:123
-msgid "The Trash sidebar item can no longer be removed"
-msgstr "L'element de la barra lateral de la Paperera ja no es pot eliminar."
-
-#: data/io.elementary.files.appdata.xml.in.in:124
-msgid "Network sidebar plugins such as NextCloud are now added correctly"
-msgstr ""
-"Els connectors de xarxa de la barra lateral, com ara NextCloud, s'afegeixen "
-"correctament."
-
-#: data/io.elementary.files.appdata.xml.in.in:125
-msgid "Duplication of subfolders in ListView under some circumstances is fixed"
-msgstr ""
-"Es corregeix la duplicació de subcarpetes a vista de llista en algunes "
-"circumstàncies."
-
-#: data/io.elementary.files.appdata.xml.in.in:126
-msgid ""
-"Bookmarks are now highlighted when a file they can accept is dragged onto "
-"them"
-msgstr ""
-"Les adreces d'interès ara es ressalten quan s'hi arrossega un fitxer que "
-"poden acceptar."
-
-#: data/io.elementary.files.appdata.xml.in.in:127
-msgid "Folders not being restored properly under some circumstances is fixed"
-msgstr ""
-"Les carpetes que no s'estan restaurant correctament en algunes "
-"circumstàncies s'ha solucionat."
-
-#: data/io.elementary.files.appdata.xml.in.in:128
-msgid ""
-"Show confirmation dialog in file chooser before overwriting an existing file"
-msgstr ""
-"Mostra el diàleg de confirmació al selector de fitxers abans de "
-"sobreescriure un fitxer existent."
-
-#: data/io.elementary.files.appdata.xml.in.in:129
-msgid "Ctrl + V now always pastes into background folder"
-msgstr "Ctrl + V ara sempre enganxa a la carpeta de fons."
-
-#: data/io.elementary.files.appdata.xml.in.in:130
-msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
-msgstr "Maj + Ctrl + V ara enganxa a la carpeta seleccionada si n'hi ha."
-
-#: data/io.elementary.files.appdata.xml.in.in:142
-msgid "Show New Tab and New Window shortcuts in context menus"
-msgstr ""
-"Es mostren les dreceres de la pestanya nova i la finestra nova als menús "
-"contextuals."
-
-#: data/io.elementary.files.appdata.xml.in.in:146
-msgid "Double click selects instead of exiting while renaming in list view"
-msgstr ""
-"Doble clic per seleccionar en comptes de sortir mentre es canvia el nom a la "
-"vista de llista"
-
-#: data/io.elementary.files.appdata.xml.in.in:147
-msgid "Show public share icon in breadcrumbs"
-msgstr "Es mostra la icona de compartició pública a la navegació."
-
-#: data/io.elementary.files.appdata.xml.in.in:148
-msgid "Prevent a crash when dragging to re-arrange bookmarks"
-msgstr ""
-"S'evita un bloqueig quan arrossegueu per reorganitzar les adreces d'interès."
-
-#: data/io.elementary.files.appdata.xml.in.in:160
-msgid "Close FileChooser with Esc key"
-msgstr "Tanqueu el selector de fitxers amb la tecla ESC."
-
-#: data/io.elementary.files.appdata.xml.in.in:161
-msgid "Use new emblems for git status"
-msgstr "Ús d'emblemes nous per a l'estat de git"
-
-#: data/io.elementary.files.appdata.xml.in.in:162
-msgid "Show selection actions in secondary click menu"
-msgstr "Mostra les accions de selecció al menú de clic secundari."
-
-#: data/io.elementary.files.appdata.xml.in.in:166
-msgid "Always show Permissions page in Properties dialog"
-msgstr "Mostra sempre la pàgina de permisos al diàleg de propietats."
-
-#: data/io.elementary.files.appdata.xml.in.in:167
-msgid ""
-"In Permissions page, show user and group numeric IDs when names not available"
-msgstr ""
-"A la pàgina de permisos, mostra els ID numèrics d'usuari i grup quan els "
-"noms no estiguin disponibles."
-
-#: data/io.elementary.files.appdata.xml.in.in:168
-msgid "In Permissions page, show message when no information available"
-msgstr ""
-"A la pàgina de permisos, mostra el missatge quan no hi hagi informació "
-"disponible."
-
-#: data/io.elementary.files.appdata.xml.in.in:170
-#: data/io.elementary.files.appdata.xml.in.in:215
-#: data/io.elementary.files.appdata.xml.in.in:232
-#: data/io.elementary.files.appdata.xml.in.in:247
-#: data/io.elementary.files.appdata.xml.in.in:264
-#: data/io.elementary.files.appdata.xml.in.in:292
-msgid "Other updates:"
-msgstr "Altres actualitzacions:"
-
-#: data/io.elementary.files.appdata.xml.in.in:172
-msgid "Only allow one FileChooser per parent window"
-msgstr "Només es permet un selector de fitxers per finestra principal."
-
-#: data/io.elementary.files.appdata.xml.in.in:173
-msgid ""
-"Navigate to folder when pressing enter in FileChooser instead of selecting"
-msgstr ""
-"Es navega a la carpeta quan premeu retorn al selector de fitxers en lloc de "
-"seleccionar."
-
-#: data/io.elementary.files.appdata.xml.in.in:185
-msgid ""
-"Use \"Send Mail\" portal instead of contract, improving compatibility with "
-"alternate email apps"
-msgstr ""
-"Ús del portal \"Envia missatges\" en lloc del contracte: millora de la "
-"compatibilitat amb aplicacions de correu alternatives"
-
-#: data/io.elementary.files.appdata.xml.in.in:186
-msgid "Add file filters and New Folder options to file chooser portal"
-msgstr ""
-"Addicció de filtres de fitxers i opcions de carpeta nova al portal de "
-"selecció de fitxers"
-
-#: data/io.elementary.files.appdata.xml.in.in:187
-msgid ""
-"Allow blank passwords for remote connections, e.g. for SSH via a private key"
-msgstr ""
-"Permet contrasenyes en blanc per a connexions remotes, p. ex. per a SSH "
-"mitjançant una clau privada."
-
-#: data/io.elementary.files.appdata.xml.in.in:188
-msgid "Make ejecting devices safer"
-msgstr "Expulsió de dispositius més segura"
-
-#: data/io.elementary.files.appdata.xml.in.in:189
-msgid "Add option to stop drive if possible"
-msgstr "Addició d'una opció per aturar la unitat si és possible"
-
-#: data/io.elementary.files.appdata.xml.in.in:190
-msgid "Show unformatted drives and drives without media"
-msgstr "Mostra unitats sense format i unitats sense mitjans."
-
-#: data/io.elementary.files.appdata.xml.in.in:194
-msgid ""
-"Fix pasting of selected pathbar text into another window using middle-click"
-msgstr ""
-"Correcció de l'enganxament del text de la barra de camí seleccionada a una "
-"altra finestra fent clic amb el botó mitjà"
-
-#: data/io.elementary.files.appdata.xml.in.in:195
-msgid "Fix selecting multiple groups of files"
-msgstr "Correcció de la selecció de diversos grups de fitxers"
-
-#: data/io.elementary.files.appdata.xml.in.in:196
-msgid "Allow dropping bookmark directly below the Recent bookmark"
-msgstr ""
-"Permet deixar anar el marcador directament a sota del marcador de Recents."
-
-#: data/io.elementary.files.appdata.xml.in.in:197
-msgid "Do not show unusable drop target below the Trash bookmark"
-msgstr ""
-"No es mostra l'objectiu de desplegament inutilitzable a sota de l'adreça "
-"d'interès de la Paperera."
-
-#: data/io.elementary.files.appdata.xml.in.in:198
-msgid "Fix sidebar showing both drive and volume for same device"
-msgstr ""
-"Correcció de la barra lateral que mostra la unitat i el volum del mateix "
-"dispositiu"
-
-#: data/io.elementary.files.appdata.xml.in.in:199
-msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
-msgstr ""
-"Correcció de la barra lateral que mostra els servidors SSH a les seccions "
-"d'emmagatzematge i xarxa"
-
-#: data/io.elementary.files.appdata.xml.in.in:211
-msgid "Show translated bookmark names when changing languages"
-msgstr ""
-"Es mostren els noms de les adreces d'interès traduïdes en canviar de llengua."
-
-#: data/io.elementary.files.appdata.xml.in.in:212
-msgid "Stop some audio file icons disappearing when scrolling or changing view"
-msgstr ""
-"Atura la desaparició d'icones de fitxers en desplaçaments o canvis de "
-"visualització."
-
-#: data/io.elementary.files.appdata.xml.in.in:213
-msgid ""
-"Stop brief appearance of status overlay when changing root folder in Column "
-"View"
-msgstr ""
-"S'atura l'aparició breu de la superposició d'estat quan es canvia la carpeta "
-"arrel a la vista de columna."
-
-#: data/io.elementary.files.appdata.xml.in.in:217
-msgid "Remove message about reporting issues when running from Terminal"
-msgstr ""
-"Supressió del missatge sobre els informes quan s'executa des de Terminal"
-
-#: data/io.elementary.files.appdata.xml.in.in:226
-msgid "Open bookmarks in a new tab with Ctrl + Click"
-msgstr "Obriu els marcadors en una pestanya nova amb Ctrl + clic."
-
-#: data/io.elementary.files.appdata.xml.in.in:227
-msgid "Fix dropping uris onto storage devices and network locations in sidebar"
-msgstr ""
-"Correcció de deixar anar URI als dispositius d’emmagatzematge i a les "
-"ubicacions de xarxa de la barra lateral"
-
-#: data/io.elementary.files.appdata.xml.in.in:228
-msgid "Fix restoring tabs after a system restart"
-msgstr ""
-"Correcció de la restauració de les pestanyes després del reinici del sistema"
-
-#: data/io.elementary.files.appdata.xml.in.in:229
-msgid ""
-"Don't unselect when secondary clicking blank space around a file or folder"
-msgstr ""
-"No s'anul·la la selecció quan feu clic secundari a l'espai en blanc al "
-"voltant d'un fitxer o carpeta."
-
-#: data/io.elementary.files.appdata.xml.in.in:230
-msgid ""
-"Show the folder context menu when secondary clicking outside of a selection"
-msgstr ""
-"Es mostra el menú contextual de la carpeta quan feu clic secundari fora "
-"d'una selecció."
-
-#: data/io.elementary.files.appdata.xml.in.in:242
-msgid "Fix small context menus on breadcrumbs"
-msgstr "Correcció de menús contextuals petits a les molles"
-
-#: data/io.elementary.files.appdata.xml.in.in:243
-msgid "Fix bookmarking a single selected item with Ctrl + D"
-msgstr "Correcció dels marcadors d'un element seleccionat amb Ctrl + D"
-
-#: data/io.elementary.files.appdata.xml.in.in:244
-msgid "Fix renaming bookmarks in the sidebar"
-msgstr ""
-"Correcció del canvi de nom de les adreces d'interès de la barra lateral"
-
-#: data/io.elementary.files.appdata.xml.in.in:245
-msgid "Fix an issue with showing color tags when thumbnails are hidden"
-msgstr "Correcció de les etiquetes de colors quan s'amaguen les miniatures"
-
-#: data/io.elementary.files.appdata.xml.in.in:257
-msgid "Fix freeze when comparing copied files"
-msgstr "Correcció de la congelació quan es comparen fitxers copiats"
-
-#: data/io.elementary.files.appdata.xml.in.in:258
-msgid "Fix truncation of final column in Column View under some circumstances"
-msgstr ""
-"Correcció del truncament de la columna final a la vista de columna en "
-"algunes circumstàncies"
-
-#: data/io.elementary.files.appdata.xml.in.in:262
-msgid "Show more keyboard accelerators in menus"
-msgstr "Es mostren més acceleradors de teclat als menús."
-
-#: data/io.elementary.files.appdata.xml.in.in:274
-msgid "Fix connecting to AFP servers so that passwords are remembered"
-msgstr ""
-"Correcció de la connexió als servidors d'AFP perquè es recordin les "
-"contrasenyes"
-
-#: data/io.elementary.files.appdata.xml.in.in:275
-msgid "Fix MTP mounts"
-msgstr "Correcció dels muntatges d'MTP"
-
-#: data/io.elementary.files.appdata.xml.in.in:279
-msgid "Launch files with double click instead of single click"
-msgstr "Obertura de fitxers amb doble clic en lloc de fer un sol clic"
-
-#: data/io.elementary.files.appdata.xml.in.in:280
-msgid "Provide a File Chooser portal for Flatpak apps"
-msgstr ""
-"Es proporciona un portal Selector de fitxers per a les aplicacions de "
-"Flatpak."
-
-#: data/io.elementary.files.appdata.xml.in.in:281
-msgid "Brand new animated Sidebar"
-msgstr "Barra lateral animada totalment nova"
-
-#: data/io.elementary.files.appdata.xml.in.in:282
-msgid "Dark style support"
-msgstr "Admissió de l’estil fosc"
-
-#: data/io.elementary.files.appdata.xml.in.in:283
-msgid "Mint and Bubblegum color tags"
-msgstr "Etiquetes de colors Mint i Bubblegum"
-
-#: data/io.elementary.files.appdata.xml.in.in:284
-msgid "Do not restore locations that have become inaccessible"
-msgstr "No restauris les ubicacions que han quedat inaccessibles."
-
-#: data/io.elementary.files.appdata.xml.in.in:285
-msgid "Clicking between thumbnail and text now activates/selects in Grid view"
-msgstr ""
-"Fent clic entre la miniatura i el text, ara s'activa / selecciona la "
-"visualització en graella."
-
-#: data/io.elementary.files.appdata.xml.in.in:286
-msgid "AFC protocol support"
-msgstr "Admissió del protocol d'AFC"
-
-#: data/io.elementary.files.appdata.xml.in.in:287
-msgid "Add a smaller minimum icon size in list view"
-msgstr "Addició d'una mida mínima d'icona més petita a la vista de llista"
-
-#: data/io.elementary.files.appdata.xml.in.in:288
-msgid "Show emblems inline in list views"
-msgstr "Es mostren els emblemes en línia a les vistes de llista."
-
-#: data/io.elementary.files.appdata.xml.in.in:289
-msgid "Performance improvements"
-msgstr "Millores de rendiment"
-
-#: data/io.elementary.files.appdata.xml.in.in:290
-msgid "Stability improvements"
-msgstr "Millores d'estabilitat"
-
-#: data/io.elementary.files.appdata.xml.in.in:294
-msgid "Rename \"Devices\" to \"Storage\""
-msgstr "Canvi de nom de \"Dispositius\" a \"Emmagatzematge\""
-
-#: data/io.elementary.files.appdata.xml.in.in:329
+#: data/io.elementary.files.appdata.xml.in.in:164
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
@@ -543,6 +159,303 @@ msgstr "Executa el Fitxers del Pantheon com a administrador"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Cal autenticació per executar el Fitxers com a administrador."
+
+#~ msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
+#~ msgstr ""
+#~ "S'ha corregit una regressió en allunyar amb Ctrl + Desplaçament avall."
+
+#~ msgid "Renaming with the same name no longer shows an error dialog"
+#~ msgstr "El canvi de nom amb el mateix nom ja no mostra cap diàleg d'error."
+
+#~ msgid "Ctrl + A when renaming now selects all the text in the entry"
+#~ msgstr ""
+#~ "Teclejar Ctrl + A quan es canvia el nom ara selecciona tot el text de "
+#~ "l'entrada."
+
+#~ msgid "Selecting multiple items with Shift + Arrow keys now works properly"
+#~ msgstr ""
+#~ "La selecció de diversos elements amb les tecles Maj + fletxa ara funciona "
+#~ "correctament."
+
+#~ msgid "The appearance of the cursor now matches the action"
+#~ msgstr "Ara l'aspecte del cursor coincideix amb l'acció."
+
+#~ msgid "The Trash sidebar item can no longer be removed"
+#~ msgstr "L'element de la barra lateral de la Paperera ja no es pot eliminar."
+
+#~ msgid "Network sidebar plugins such as NextCloud are now added correctly"
+#~ msgstr ""
+#~ "Els connectors de xarxa de la barra lateral, com ara NextCloud, "
+#~ "s'afegeixen correctament."
+
+#~ msgid ""
+#~ "Duplication of subfolders in ListView under some circumstances is fixed"
+#~ msgstr ""
+#~ "Es corregeix la duplicació de subcarpetes a vista de llista en algunes "
+#~ "circumstàncies."
+
+#~ msgid ""
+#~ "Bookmarks are now highlighted when a file they can accept is dragged onto "
+#~ "them"
+#~ msgstr ""
+#~ "Les adreces d'interès ara es ressalten quan s'hi arrossega un fitxer que "
+#~ "poden acceptar."
+
+#~ msgid ""
+#~ "Folders not being restored properly under some circumstances is fixed"
+#~ msgstr ""
+#~ "Les carpetes que no s'estan restaurant correctament en algunes "
+#~ "circumstàncies s'ha solucionat."
+
+#~ msgid ""
+#~ "Show confirmation dialog in file chooser before overwriting an existing "
+#~ "file"
+#~ msgstr ""
+#~ "Mostra el diàleg de confirmació al selector de fitxers abans de "
+#~ "sobreescriure un fitxer existent."
+
+#~ msgid "Ctrl + V now always pastes into background folder"
+#~ msgstr "Ctrl + V ara sempre enganxa a la carpeta de fons."
+
+#~ msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
+#~ msgstr "Maj + Ctrl + V ara enganxa a la carpeta seleccionada si n'hi ha."
+
+#~ msgid "Show New Tab and New Window shortcuts in context menus"
+#~ msgstr ""
+#~ "Es mostren les dreceres de la pestanya nova i la finestra nova als menús "
+#~ "contextuals."
+
+#~ msgid "Double click selects instead of exiting while renaming in list view"
+#~ msgstr ""
+#~ "Doble clic per seleccionar en comptes de sortir mentre es canvia el nom a "
+#~ "la vista de llista"
+
+#~ msgid "Show public share icon in breadcrumbs"
+#~ msgstr "Es mostra la icona de compartició pública a la navegació."
+
+#~ msgid "Prevent a crash when dragging to re-arrange bookmarks"
+#~ msgstr ""
+#~ "S'evita un bloqueig quan arrossegueu per reorganitzar les adreces "
+#~ "d'interès."
+
+#~ msgid "Close FileChooser with Esc key"
+#~ msgstr "Tanqueu el selector de fitxers amb la tecla ESC."
+
+#~ msgid "Use new emblems for git status"
+#~ msgstr "Ús d'emblemes nous per a l'estat de git"
+
+#~ msgid "Show selection actions in secondary click menu"
+#~ msgstr "Mostra les accions de selecció al menú de clic secundari."
+
+#~ msgid "Always show Permissions page in Properties dialog"
+#~ msgstr "Mostra sempre la pàgina de permisos al diàleg de propietats."
+
+#~ msgid ""
+#~ "In Permissions page, show user and group numeric IDs when names not "
+#~ "available"
+#~ msgstr ""
+#~ "A la pàgina de permisos, mostra els ID numèrics d'usuari i grup quan els "
+#~ "noms no estiguin disponibles."
+
+#~ msgid "In Permissions page, show message when no information available"
+#~ msgstr ""
+#~ "A la pàgina de permisos, mostra el missatge quan no hi hagi informació "
+#~ "disponible."
+
+#~ msgid "Other updates:"
+#~ msgstr "Altres actualitzacions:"
+
+#~ msgid "Only allow one FileChooser per parent window"
+#~ msgstr "Només es permet un selector de fitxers per finestra principal."
+
+#~ msgid ""
+#~ "Navigate to folder when pressing enter in FileChooser instead of selecting"
+#~ msgstr ""
+#~ "Es navega a la carpeta quan premeu retorn al selector de fitxers en lloc "
+#~ "de seleccionar."
+
+#~ msgid ""
+#~ "Use \"Send Mail\" portal instead of contract, improving compatibility "
+#~ "with alternate email apps"
+#~ msgstr ""
+#~ "Ús del portal \"Envia missatges\" en lloc del contracte: millora de la "
+#~ "compatibilitat amb aplicacions de correu alternatives"
+
+#~ msgid "Add file filters and New Folder options to file chooser portal"
+#~ msgstr ""
+#~ "Addicció de filtres de fitxers i opcions de carpeta nova al portal de "
+#~ "selecció de fitxers"
+
+#~ msgid ""
+#~ "Allow blank passwords for remote connections, e.g. for SSH via a private "
+#~ "key"
+#~ msgstr ""
+#~ "Permet contrasenyes en blanc per a connexions remotes, p. ex. per a SSH "
+#~ "mitjançant una clau privada."
+
+#~ msgid "Make ejecting devices safer"
+#~ msgstr "Expulsió de dispositius més segura"
+
+#~ msgid "Add option to stop drive if possible"
+#~ msgstr "Addició d'una opció per aturar la unitat si és possible"
+
+#~ msgid "Show unformatted drives and drives without media"
+#~ msgstr "Mostra unitats sense format i unitats sense mitjans."
+
+#~ msgid ""
+#~ "Fix pasting of selected pathbar text into another window using middle-"
+#~ "click"
+#~ msgstr ""
+#~ "Correcció de l'enganxament del text de la barra de camí seleccionada a "
+#~ "una altra finestra fent clic amb el botó mitjà"
+
+#~ msgid "Fix selecting multiple groups of files"
+#~ msgstr "Correcció de la selecció de diversos grups de fitxers"
+
+#~ msgid "Allow dropping bookmark directly below the Recent bookmark"
+#~ msgstr ""
+#~ "Permet deixar anar el marcador directament a sota del marcador de Recents."
+
+#~ msgid "Do not show unusable drop target below the Trash bookmark"
+#~ msgstr ""
+#~ "No es mostra l'objectiu de desplegament inutilitzable a sota de l'adreça "
+#~ "d'interès de la Paperera."
+
+#~ msgid "Fix sidebar showing both drive and volume for same device"
+#~ msgstr ""
+#~ "Correcció de la barra lateral que mostra la unitat i el volum del mateix "
+#~ "dispositiu"
+
+#~ msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
+#~ msgstr ""
+#~ "Correcció de la barra lateral que mostra els servidors SSH a les seccions "
+#~ "d'emmagatzematge i xarxa"
+
+#~ msgid "Show translated bookmark names when changing languages"
+#~ msgstr ""
+#~ "Es mostren els noms de les adreces d'interès traduïdes en canviar de "
+#~ "llengua."
+
+#~ msgid ""
+#~ "Stop some audio file icons disappearing when scrolling or changing view"
+#~ msgstr ""
+#~ "Atura la desaparició d'icones de fitxers en desplaçaments o canvis de "
+#~ "visualització."
+
+#~ msgid ""
+#~ "Stop brief appearance of status overlay when changing root folder in "
+#~ "Column View"
+#~ msgstr ""
+#~ "S'atura l'aparició breu de la superposició d'estat quan es canvia la "
+#~ "carpeta arrel a la vista de columna."
+
+#~ msgid "Remove message about reporting issues when running from Terminal"
+#~ msgstr ""
+#~ "Supressió del missatge sobre els informes quan s'executa des de Terminal"
+
+#~ msgid "Open bookmarks in a new tab with Ctrl + Click"
+#~ msgstr "Obriu els marcadors en una pestanya nova amb Ctrl + clic."
+
+#~ msgid ""
+#~ "Fix dropping uris onto storage devices and network locations in sidebar"
+#~ msgstr ""
+#~ "Correcció de deixar anar URI als dispositius d’emmagatzematge i a les "
+#~ "ubicacions de xarxa de la barra lateral"
+
+#~ msgid "Fix restoring tabs after a system restart"
+#~ msgstr ""
+#~ "Correcció de la restauració de les pestanyes després del reinici del "
+#~ "sistema"
+
+#~ msgid ""
+#~ "Don't unselect when secondary clicking blank space around a file or folder"
+#~ msgstr ""
+#~ "No s'anul·la la selecció quan feu clic secundari a l'espai en blanc al "
+#~ "voltant d'un fitxer o carpeta."
+
+#~ msgid ""
+#~ "Show the folder context menu when secondary clicking outside of a "
+#~ "selection"
+#~ msgstr ""
+#~ "Es mostra el menú contextual de la carpeta quan feu clic secundari fora "
+#~ "d'una selecció."
+
+#~ msgid "Fix small context menus on breadcrumbs"
+#~ msgstr "Correcció de menús contextuals petits a les molles"
+
+#~ msgid "Fix bookmarking a single selected item with Ctrl + D"
+#~ msgstr "Correcció dels marcadors d'un element seleccionat amb Ctrl + D"
+
+#~ msgid "Fix renaming bookmarks in the sidebar"
+#~ msgstr ""
+#~ "Correcció del canvi de nom de les adreces d'interès de la barra lateral"
+
+#~ msgid "Fix an issue with showing color tags when thumbnails are hidden"
+#~ msgstr "Correcció de les etiquetes de colors quan s'amaguen les miniatures"
+
+#~ msgid "Fix freeze when comparing copied files"
+#~ msgstr "Correcció de la congelació quan es comparen fitxers copiats"
+
+#~ msgid ""
+#~ "Fix truncation of final column in Column View under some circumstances"
+#~ msgstr ""
+#~ "Correcció del truncament de la columna final a la vista de columna en "
+#~ "algunes circumstàncies"
+
+#~ msgid "Show more keyboard accelerators in menus"
+#~ msgstr "Es mostren més acceleradors de teclat als menús."
+
+#~ msgid "Fix connecting to AFP servers so that passwords are remembered"
+#~ msgstr ""
+#~ "Correcció de la connexió als servidors d'AFP perquè es recordin les "
+#~ "contrasenyes"
+
+#~ msgid "Fix MTP mounts"
+#~ msgstr "Correcció dels muntatges d'MTP"
+
+#~ msgid "Launch files with double click instead of single click"
+#~ msgstr "Obertura de fitxers amb doble clic en lloc de fer un sol clic"
+
+#~ msgid "Provide a File Chooser portal for Flatpak apps"
+#~ msgstr ""
+#~ "Es proporciona un portal Selector de fitxers per a les aplicacions de "
+#~ "Flatpak."
+
+#~ msgid "Brand new animated Sidebar"
+#~ msgstr "Barra lateral animada totalment nova"
+
+#~ msgid "Dark style support"
+#~ msgstr "Admissió de l’estil fosc"
+
+#~ msgid "Mint and Bubblegum color tags"
+#~ msgstr "Etiquetes de colors Mint i Bubblegum"
+
+#~ msgid "Do not restore locations that have become inaccessible"
+#~ msgstr "No restauris les ubicacions que han quedat inaccessibles."
+
+#~ msgid ""
+#~ "Clicking between thumbnail and text now activates/selects in Grid view"
+#~ msgstr ""
+#~ "Fent clic entre la miniatura i el text, ara s'activa / selecciona la "
+#~ "visualització en graella."
+
+#~ msgid "AFC protocol support"
+#~ msgstr "Admissió del protocol d'AFC"
+
+#~ msgid "Add a smaller minimum icon size in list view"
+#~ msgstr "Addició d'una mida mínima d'icona més petita a la vista de llista"
+
+#~ msgid "Show emblems inline in list views"
+#~ msgstr "Es mostren els emblemes en línia a les vistes de llista."
+
+#~ msgid "Performance improvements"
+#~ msgstr "Millores de rendiment"
+
+#~ msgid "Stability improvements"
+#~ msgstr "Millores d'estabilitat"
+
+#~ msgid "Rename \"Devices\" to \"Storage\""
+#~ msgstr "Canvi de nom de \"Dispositius\" a \"Emmagatzematge\""
 
 #~ msgid "Bookmark menu option for network mounts in sidebar"
 #~ msgstr ""

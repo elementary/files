@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-02 12:23+0000\n"
+"POT-Creation-Date: 2023-04-11 19:23+0000\n"
 "PO-Revision-Date: 2023-02-16 21:22+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
@@ -66,52 +66,34 @@ msgstr ""
 "WebDAV lub udziałów systemu Microsoft Windows."
 
 #: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:82
-#: data/io.elementary.files.appdata.xml.in.in:140
-#: data/io.elementary.files.appdata.xml.in.in:158
-#: data/io.elementary.files.appdata.xml.in.in:183
-#: data/io.elementary.files.appdata.xml.in.in:260
-#: data/io.elementary.files.appdata.xml.in.in:277
+#: data/io.elementary.files.appdata.xml.in.in:58
+#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:89
+#: data/io.elementary.files.appdata.xml.in.in:116
+msgid "Minor updates:"
+msgstr "Drobne aktualizacje:"
+
+#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/io.elementary.files.appdata.xml.in.in:60
+#: data/io.elementary.files.appdata.xml.in.in:76
+#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:118
+msgid "Updated translations"
+msgstr "Zaktualizowane tłumaczenia"
+
+#: data/io.elementary.files.appdata.xml.in.in:54
+#: data/io.elementary.files.appdata.xml.in.in:101
 msgid "Improvements:"
 msgstr "Ulepszenia:"
 
-#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/io.elementary.files.appdata.xml.in.in:56
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 "Przeniesiono ustawienia globalne z menu kontekstowego do menu aplikacji w "
 "pasku górnym"
 
-#: data/io.elementary.files.appdata.xml.in.in:40
-#: data/io.elementary.files.appdata.xml.in.in:56
-#: data/io.elementary.files.appdata.xml.in.in:71
-#: data/io.elementary.files.appdata.xml.in.in:97
-#: data/io.elementary.files.appdata.xml.in.in:109
-#: data/io.elementary.files.appdata.xml.in.in:132
-#: data/io.elementary.files.appdata.xml.in.in:150
-#: data/io.elementary.files.appdata.xml.in.in:175
-#: data/io.elementary.files.appdata.xml.in.in:201
-msgid "Minor updates:"
-msgstr "Drobne aktualizacje:"
-
-#: data/io.elementary.files.appdata.xml.in.in:42
-#: data/io.elementary.files.appdata.xml.in.in:58
-#: data/io.elementary.files.appdata.xml.in.in:73
-#: data/io.elementary.files.appdata.xml.in.in:99
-#: data/io.elementary.files.appdata.xml.in.in:111
-#: data/io.elementary.files.appdata.xml.in.in:134
-#: data/io.elementary.files.appdata.xml.in.in:152
-#: data/io.elementary.files.appdata.xml.in.in:177
-#: data/io.elementary.files.appdata.xml.in.in:203
-#: data/io.elementary.files.appdata.xml.in.in:218
-#: data/io.elementary.files.appdata.xml.in.in:234
-#: data/io.elementary.files.appdata.xml.in.in:249
-#: data/io.elementary.files.appdata.xml.in.in:266
-#: data/io.elementary.files.appdata.xml.in.in:295
-msgid "Updated translations"
-msgstr "Zaktualizowane tłumaczenia"
-
-#: data/io.elementary.files.appdata.xml.in.in:84
+#: data/io.elementary.files.appdata.xml.in.in:103
 msgid ""
 "Provide option to select folders with single click and activate with double "
 "click"
@@ -119,47 +101,37 @@ msgstr ""
 "Dodano możliwość wybierania folderów pojedynczym kliknięciem i aktywacji "
 "podwójnym"
 
-#: data/io.elementary.files.appdata.xml.in.in:85
+#: data/io.elementary.files.appdata.xml.in.in:104
 msgid ""
 "Only show the properties overlay when files are selected, not when hovered"
 msgstr ""
 "Nakładka z właściwościami pokazywana jest tylko gdy pliki są wybrane, a nie "
 "najechane myszką"
 
-#: data/io.elementary.files.appdata.xml.in.in:87
-#: data/io.elementary.files.appdata.xml.in.in:105
-#: data/io.elementary.files.appdata.xml.in.in:117
-#: data/io.elementary.files.appdata.xml.in.in:144
-#: data/io.elementary.files.appdata.xml.in.in:164
-#: data/io.elementary.files.appdata.xml.in.in:192
-#: data/io.elementary.files.appdata.xml.in.in:209
-#: data/io.elementary.files.appdata.xml.in.in:224
-#: data/io.elementary.files.appdata.xml.in.in:240
-#: data/io.elementary.files.appdata.xml.in.in:255
-#: data/io.elementary.files.appdata.xml.in.in:272
+#: data/io.elementary.files.appdata.xml.in.in:106
 msgid "Fixes:"
 msgstr "Poprawki:"
 
-#: data/io.elementary.files.appdata.xml.in.in:89
+#: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Fix unexpected file activation after navigation with double-click"
 msgstr ""
 "Naprawiono niespodziewaną aktywację pliku po nawigacji podwójnym kliknięciem"
 
-#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:109
 msgid "Fix dimmed window after use of filechooser portal"
 msgstr "Naprawiono przyciemnione okno po użyciu portalu wyboru pliku"
 
-#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Fix possible crash when rapidly changing view modes"
 msgstr "Naprawiono potencjalny błąd krytyczny przy szybkiej zmianie trybów"
 
-#: data/io.elementary.files.appdata.xml.in.in:92
+#: data/io.elementary.files.appdata.xml.in.in:111
 msgid "Fix startup when restored remote location is no longer connected"
 msgstr ""
 "Naprawiono uruchamianie w przypadku gdy zewnętrzna lokalizacja nie jest już "
 "połączona"
 
-#: data/io.elementary.files.appdata.xml.in.in:93
+#: data/io.elementary.files.appdata.xml.in.in:112
 msgid ""
 "Ensure infobar shows in connection server dialog when connection attempt "
 "fails"
@@ -167,362 +139,17 @@ msgstr ""
 "Upewniono się, że pasek informacyjny jest pokazany w oknie łączenia z "
 "serwerem w przypadku gdy połączenie nie powiedzie się"
 
-#: data/io.elementary.files.appdata.xml.in.in:94
+#: data/io.elementary.files.appdata.xml.in.in:113
 msgid "Ensure correct icon for bookmark to a file that is not a folder"
 msgstr ""
 "Upewniono się, że poprawna ikona jest pokazana na okładce plików, które nie "
 "są folderami"
 
-#: data/io.elementary.files.appdata.xml.in.in:95
+#: data/io.elementary.files.appdata.xml.in.in:114
 msgid "Fix possible crash when removing a bookmark"
 msgstr "Naprawiono potencjalny błąd występujące podczas usuwania zakładki"
 
-#: data/io.elementary.files.appdata.xml.in.in:107
-msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
-msgstr "Naprawiono regresję przy korzystaniu z Ctrl + Przewijanie w dół"
-
-#: data/io.elementary.files.appdata.xml.in.in:119
-msgid "Renaming with the same name no longer shows an error dialog"
-msgstr "Zmiana nazwy na taką samą nie skutkuje już oknem błędu"
-
-#: data/io.elementary.files.appdata.xml.in.in:120
-msgid "Ctrl + A when renaming now selects all the text in the entry"
-msgstr ""
-"Ctrl + A podczas zmiany nazwy skutkuje teraz zaznaczeniem całego tekstu"
-
-#: data/io.elementary.files.appdata.xml.in.in:121
-msgid "Selecting multiple items with Shift + Arrow keys now works properly"
-msgstr ""
-"Wybieranie wielu rzeczy przy użyciu Shift + Strzałki działa teraz poprawnie"
-
-#: data/io.elementary.files.appdata.xml.in.in:122
-msgid "The appearance of the cursor now matches the action"
-msgstr "Wygląd kursora jest teraz dopasowany do wykonywanej czynności"
-
-#: data/io.elementary.files.appdata.xml.in.in:123
-msgid "The Trash sidebar item can no longer be removed"
-msgstr "Ikona kosza w panelu bocznym nie może już być usunięta"
-
-#: data/io.elementary.files.appdata.xml.in.in:124
-msgid "Network sidebar plugins such as NextCloud are now added correctly"
-msgstr ""
-"Wtyczki sieciowe do panelu bocznego, takie jak NextCloud, są teraz dodawane "
-"poprawnie"
-
-#: data/io.elementary.files.appdata.xml.in.in:125
-msgid "Duplication of subfolders in ListView under some circumstances is fixed"
-msgstr ""
-"Naprawiono duplikację podfolderów w widoku listowym w pewnych okolicznościach"
-
-#: data/io.elementary.files.appdata.xml.in.in:126
-msgid ""
-"Bookmarks are now highlighted when a file they can accept is dragged onto "
-"them"
-msgstr ""
-"Zakładki są teraz podświetlone gdy plik który akceptują jest na nie "
-"przeniesiony"
-
-#: data/io.elementary.files.appdata.xml.in.in:127
-msgid "Folders not being restored properly under some circumstances is fixed"
-msgstr ""
-"Naprawiono problem z folderami które czasami nie były poprawnie przywracane"
-
-#: data/io.elementary.files.appdata.xml.in.in:128
-msgid ""
-"Show confirmation dialog in file chooser before overwriting an existing file"
-msgstr ""
-"Pokaż dialog potwierdzający w wyborze plików przed nadpisaniem istniejącego "
-"pliku"
-
-#: data/io.elementary.files.appdata.xml.in.in:129
-msgid "Ctrl + V now always pastes into background folder"
-msgstr "Ctrl + V zawsze wkleja teraz w otwarty folder"
-
-#: data/io.elementary.files.appdata.xml.in.in:130
-msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
-msgstr "Shift + Ctrl + V wkleja teraz w zaznaczony folder o ile taki istnieje"
-
-#: data/io.elementary.files.appdata.xml.in.in:142
-msgid "Show New Tab and New Window shortcuts in context menus"
-msgstr "Pokaż skróty otwarcia nowej karty i nowego okna w menu kontekstowych"
-
-#: data/io.elementary.files.appdata.xml.in.in:146
-msgid "Double click selects instead of exiting while renaming in list view"
-msgstr ""
-"Podwójne kliknięcie zamiast wyjściem jest teraz wybieraniem podczas zmiany "
-"nazwy w widoku listy"
-
-#: data/io.elementary.files.appdata.xml.in.in:147
-msgid "Show public share icon in breadcrumbs"
-msgstr "Pokaż ikonę udostępniania w ścieżce okruchów"
-
-#: data/io.elementary.files.appdata.xml.in.in:148
-msgid "Prevent a crash when dragging to re-arrange bookmarks"
-msgstr ""
-"Zapobiegnięto błędowi krytycznemu przy przeciąganiu zakładek w celu zmiany "
-"kolejności"
-
-#: data/io.elementary.files.appdata.xml.in.in:160
-msgid "Close FileChooser with Esc key"
-msgstr "Zamknięcie wybierania plików klawisze Escape"
-
-#: data/io.elementary.files.appdata.xml.in.in:161
-msgid "Use new emblems for git status"
-msgstr "Użyto nowych odznak dla statusu gita"
-
-#: data/io.elementary.files.appdata.xml.in.in:162
-msgid "Show selection actions in secondary click menu"
-msgstr "Pokazano akcje wybierania w menu przycisku drugorzędnego"
-
-#: data/io.elementary.files.appdata.xml.in.in:166
-msgid "Always show Permissions page in Properties dialog"
-msgstr "Zawsze pokazywana jest stron uprawnień w oknie dialogowym właściwości"
-
-#: data/io.elementary.files.appdata.xml.in.in:167
-msgid ""
-"In Permissions page, show user and group numeric IDs when names not available"
-msgstr ""
-"Na stronie uprawnień pokazywane są numeryczne ID użytkownika i grupy gdy "
-"nazwy nie są dostępne"
-
-#: data/io.elementary.files.appdata.xml.in.in:168
-msgid "In Permissions page, show message when no information available"
-msgstr ""
-"Na stronie uprawnień pokazano wiadomość w przypadku braku dostępnych "
-"informacji"
-
-#: data/io.elementary.files.appdata.xml.in.in:170
-#: data/io.elementary.files.appdata.xml.in.in:215
-#: data/io.elementary.files.appdata.xml.in.in:232
-#: data/io.elementary.files.appdata.xml.in.in:247
-#: data/io.elementary.files.appdata.xml.in.in:264
-#: data/io.elementary.files.appdata.xml.in.in:292
-msgid "Other updates:"
-msgstr "Inne aktualizacje:"
-
-#: data/io.elementary.files.appdata.xml.in.in:172
-msgid "Only allow one FileChooser per parent window"
-msgstr ""
-"Zablokowano możliwość wyświetlania więcej niż jednego okna wybierania plików"
-
-#: data/io.elementary.files.appdata.xml.in.in:173
-msgid ""
-"Navigate to folder when pressing enter in FileChooser instead of selecting"
-msgstr ""
-"Nawigacja pomiędzy folderami za pomocą przycisku enter przy wybieraniu plików"
-
-#: data/io.elementary.files.appdata.xml.in.in:185
-msgid ""
-"Use \"Send Mail\" portal instead of contract, improving compatibility with "
-"alternate email apps"
-msgstr ""
-"Użyto portalu „Wyślij wiadomość” zamiast kontraktu, by poprawić "
-"kompatybilność z alternatywnymi aplikacjami pocztowymi"
-
-#: data/io.elementary.files.appdata.xml.in.in:186
-msgid "Add file filters and New Folder options to file chooser portal"
-msgstr "Dodano filtry plików oraz opcję Nowy folder do portalu wyboru pliku"
-
-#: data/io.elementary.files.appdata.xml.in.in:187
-msgid ""
-"Allow blank passwords for remote connections, e.g. for SSH via a private key"
-msgstr ""
-"Dozwolono puste hasła dla połączeń zdalnych, n.p. dla SSH przez klucz "
-"prywatny"
-
-#: data/io.elementary.files.appdata.xml.in.in:188
-msgid "Make ejecting devices safer"
-msgstr "Sprawiono, że wysuwanie urządzeń jest bezpieczniejsze"
-
-#: data/io.elementary.files.appdata.xml.in.in:189
-msgid "Add option to stop drive if possible"
-msgstr "Dodano opcję zatrzymania napędu tam gdzie to możliwe"
-
-#: data/io.elementary.files.appdata.xml.in.in:190
-msgid "Show unformatted drives and drives without media"
-msgstr "Pokazano niesformatowane napędy oraz napędy bez mediów"
-
-#: data/io.elementary.files.appdata.xml.in.in:194
-msgid ""
-"Fix pasting of selected pathbar text into another window using middle-click"
-msgstr ""
-"Naprawiono wklejanie tekstu zaznaczonej ścieżki do innego okna przy użyciu "
-"środkowego przycisku myszy"
-
-#: data/io.elementary.files.appdata.xml.in.in:195
-msgid "Fix selecting multiple groups of files"
-msgstr "Naprawiono zaznaczanie wielu grup plików"
-
-#: data/io.elementary.files.appdata.xml.in.in:196
-msgid "Allow dropping bookmark directly below the Recent bookmark"
-msgstr "Dozwolono upuszczać zakładki dokładnie poniżej zakładki Ostatnie"
-
-#: data/io.elementary.files.appdata.xml.in.in:197
-msgid "Do not show unusable drop target below the Trash bookmark"
-msgstr "Schowano nieużywane cele upuszczenia poniżej zakładki Kosz"
-
-#: data/io.elementary.files.appdata.xml.in.in:198
-msgid "Fix sidebar showing both drive and volume for same device"
-msgstr ""
-"Naprawiono panel boczny pokazujący zarówno napęd i pojemność dla tego samego "
-"urządzenia"
-
-#: data/io.elementary.files.appdata.xml.in.in:199
-msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
-msgstr ""
-"Naprawiono panel boczny pokazujący serwery SSH zarówno w sekcjach Pamięć "
-"masowa oraz Sieć"
-
-#: data/io.elementary.files.appdata.xml.in.in:211
-msgid "Show translated bookmark names when changing languages"
-msgstr "Pokaż przetłumaczone zakładki podczas zmieniania języków"
-
-#: data/io.elementary.files.appdata.xml.in.in:212
-msgid "Stop some audio file icons disappearing when scrolling or changing view"
-msgstr ""
-"Naprawiono błąd ze znikającą ikoną plików audio podczas przewijania lub "
-"zmiany widoku"
-
-#: data/io.elementary.files.appdata.xml.in.in:213
-msgid ""
-"Stop brief appearance of status overlay when changing root folder in Column "
-"View"
-msgstr ""
-"Naprawiono błąd z krótkimi pojawieniami się przykrycia statusu przy zmianie "
-"folderu root'a w widoku kolumnowym"
-
-#: data/io.elementary.files.appdata.xml.in.in:217
-msgid "Remove message about reporting issues when running from Terminal"
-msgstr ""
-"Usunięto wiadomość o zgłaszaniu błędów podczas uruchamiania z Terminala"
-
-#: data/io.elementary.files.appdata.xml.in.in:226
-msgid "Open bookmarks in a new tab with Ctrl + Click"
-msgstr ""
-"Zakładki są teraz otwierane w nowej karcie przy naciśnięciu Ctrl + Klik"
-
-#: data/io.elementary.files.appdata.xml.in.in:227
-msgid "Fix dropping uris onto storage devices and network locations in sidebar"
-msgstr ""
-"Naprawiono upuszczanie URI na urządzenia pamięci masowej oraz lokalizacje "
-"sieciowe w panelu bocznym"
-
-#: data/io.elementary.files.appdata.xml.in.in:228
-msgid "Fix restoring tabs after a system restart"
-msgstr "Naprawiono przywracanie kart po restarcie systemu"
-
-#: data/io.elementary.files.appdata.xml.in.in:229
-msgid ""
-"Don't unselect when secondary clicking blank space around a file or folder"
-msgstr ""
-"Aplikacja nie odznacza już przy klikaniu drugim klawiszem myszy pustej "
-"przestrzeni nieopodal pliku lub folderu"
-
-#: data/io.elementary.files.appdata.xml.in.in:230
-msgid ""
-"Show the folder context menu when secondary clicking outside of a selection"
-msgstr ""
-"Pokaż menu kontekstowe folderu po kliknięciu drugim przyciskiem myszy poza "
-"zaznaczeniem"
-
-#: data/io.elementary.files.appdata.xml.in.in:242
-msgid "Fix small context menus on breadcrumbs"
-msgstr "Naprawiono małe menu kontekstowe na ścieżce"
-
-#: data/io.elementary.files.appdata.xml.in.in:243
-msgid "Fix bookmarking a single selected item with Ctrl + D"
-msgstr ""
-"Naprawiono dodawanie zakładek dla jednego zaznaczenia przy użyciu Ctrl + D"
-
-#: data/io.elementary.files.appdata.xml.in.in:244
-msgid "Fix renaming bookmarks in the sidebar"
-msgstr "Naprawiono zmienianie nazw zakładek w panelu bocznym"
-
-#: data/io.elementary.files.appdata.xml.in.in:245
-msgid "Fix an issue with showing color tags when thumbnails are hidden"
-msgstr ""
-"Naprawiono problem z pokazywaniem kolorowych tagów gdy podglądy są ukryte"
-
-#: data/io.elementary.files.appdata.xml.in.in:257
-msgid "Fix freeze when comparing copied files"
-msgstr ""
-"Naprawiono zawieszanie aplikacji podczas porównywania skopiowanych plików"
-
-#: data/io.elementary.files.appdata.xml.in.in:258
-msgid "Fix truncation of final column in Column View under some circumstances"
-msgstr ""
-"Naprawiono przycinanie ostatniej kolumny w widoku kolumnowym w pewnych "
-"okolicznościach"
-
-#: data/io.elementary.files.appdata.xml.in.in:262
-msgid "Show more keyboard accelerators in menus"
-msgstr "Pokazano więcej akceleratorów klawiatury w menu"
-
-#: data/io.elementary.files.appdata.xml.in.in:274
-msgid "Fix connecting to AFP servers so that passwords are remembered"
-msgstr "Naprawiono łączenie się z serwerami AFP by hasła były zapamiętywane"
-
-#: data/io.elementary.files.appdata.xml.in.in:275
-msgid "Fix MTP mounts"
-msgstr "Naprawiono montowanie MTP"
-
-#: data/io.elementary.files.appdata.xml.in.in:279
-msgid "Launch files with double click instead of single click"
-msgstr ""
-"Uruchamianie plików za pomocą podwójnego kliknięcia zamiast pojedynczego "
-"kliknięcia"
-
-#: data/io.elementary.files.appdata.xml.in.in:280
-msgid "Provide a File Chooser portal for Flatpak apps"
-msgstr "Dodano portal wybierania plików dla aplikacji Flatpak"
-
-#: data/io.elementary.files.appdata.xml.in.in:281
-msgid "Brand new animated Sidebar"
-msgstr "Całkiem nowy animowany panel boczny"
-
-#: data/io.elementary.files.appdata.xml.in.in:282
-msgid "Dark style support"
-msgstr "Wsparcie ciemnego motywu"
-
-#: data/io.elementary.files.appdata.xml.in.in:283
-msgid "Mint and Bubblegum color tags"
-msgstr "Kolorowe tagi w kolorze mięty i gumy balonowej"
-
-#: data/io.elementary.files.appdata.xml.in.in:284
-msgid "Do not restore locations that have become inaccessible"
-msgstr "Niedostępne lokalizacje nie są już przywracane"
-
-#: data/io.elementary.files.appdata.xml.in.in:285
-msgid "Clicking between thumbnail and text now activates/selects in Grid view"
-msgstr ""
-"Klikanie pomiędzy miniaturką a tekstem teraz uruchamia/zaznacza w widoku "
-"siatki"
-
-#: data/io.elementary.files.appdata.xml.in.in:286
-msgid "AFC protocol support"
-msgstr "Wsparcie dla protokołu AFC"
-
-#: data/io.elementary.files.appdata.xml.in.in:287
-msgid "Add a smaller minimum icon size in list view"
-msgstr "Dodano mniejszy rozmiar ikon w widoku listy"
-
-#: data/io.elementary.files.appdata.xml.in.in:288
-msgid "Show emblems inline in list views"
-msgstr "Emblematy są teraz pokazywane w tej samej linii w widoku listy"
-
-#: data/io.elementary.files.appdata.xml.in.in:289
-msgid "Performance improvements"
-msgstr "Poprawki wydajności"
-
-#: data/io.elementary.files.appdata.xml.in.in:290
-msgid "Stability improvements"
-msgstr "Ulepszenia stabilności"
-
-#: data/io.elementary.files.appdata.xml.in.in:294
-msgid "Rename \"Devices\" to \"Storage\""
-msgstr "Zmieniono nazwę \"Urządzeń\" na \"Pamięć masowa\""
-
-#: data/io.elementary.files.appdata.xml.in.in:329
+#: data/io.elementary.files.appdata.xml.in.in:164
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
@@ -533,6 +160,296 @@ msgstr "Uruchom Pliki Pantheon jako administrator"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Aby uruchomić Pliki jako administrator wymagane jest uwierzytelnienie"
+
+#~ msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
+#~ msgstr "Naprawiono regresję przy korzystaniu z Ctrl + Przewijanie w dół"
+
+#~ msgid "Renaming with the same name no longer shows an error dialog"
+#~ msgstr "Zmiana nazwy na taką samą nie skutkuje już oknem błędu"
+
+#~ msgid "Ctrl + A when renaming now selects all the text in the entry"
+#~ msgstr ""
+#~ "Ctrl + A podczas zmiany nazwy skutkuje teraz zaznaczeniem całego tekstu"
+
+#~ msgid "Selecting multiple items with Shift + Arrow keys now works properly"
+#~ msgstr ""
+#~ "Wybieranie wielu rzeczy przy użyciu Shift + Strzałki działa teraz "
+#~ "poprawnie"
+
+#~ msgid "The appearance of the cursor now matches the action"
+#~ msgstr "Wygląd kursora jest teraz dopasowany do wykonywanej czynności"
+
+#~ msgid "The Trash sidebar item can no longer be removed"
+#~ msgstr "Ikona kosza w panelu bocznym nie może już być usunięta"
+
+#~ msgid "Network sidebar plugins such as NextCloud are now added correctly"
+#~ msgstr ""
+#~ "Wtyczki sieciowe do panelu bocznego, takie jak NextCloud, są teraz "
+#~ "dodawane poprawnie"
+
+#~ msgid ""
+#~ "Duplication of subfolders in ListView under some circumstances is fixed"
+#~ msgstr ""
+#~ "Naprawiono duplikację podfolderów w widoku listowym w pewnych "
+#~ "okolicznościach"
+
+#~ msgid ""
+#~ "Bookmarks are now highlighted when a file they can accept is dragged onto "
+#~ "them"
+#~ msgstr ""
+#~ "Zakładki są teraz podświetlone gdy plik który akceptują jest na nie "
+#~ "przeniesiony"
+
+#~ msgid ""
+#~ "Folders not being restored properly under some circumstances is fixed"
+#~ msgstr ""
+#~ "Naprawiono problem z folderami które czasami nie były poprawnie "
+#~ "przywracane"
+
+#~ msgid ""
+#~ "Show confirmation dialog in file chooser before overwriting an existing "
+#~ "file"
+#~ msgstr ""
+#~ "Pokaż dialog potwierdzający w wyborze plików przed nadpisaniem "
+#~ "istniejącego pliku"
+
+#~ msgid "Ctrl + V now always pastes into background folder"
+#~ msgstr "Ctrl + V zawsze wkleja teraz w otwarty folder"
+
+#~ msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
+#~ msgstr ""
+#~ "Shift + Ctrl + V wkleja teraz w zaznaczony folder o ile taki istnieje"
+
+#~ msgid "Show New Tab and New Window shortcuts in context menus"
+#~ msgstr ""
+#~ "Pokaż skróty otwarcia nowej karty i nowego okna w menu kontekstowych"
+
+#~ msgid "Double click selects instead of exiting while renaming in list view"
+#~ msgstr ""
+#~ "Podwójne kliknięcie zamiast wyjściem jest teraz wybieraniem podczas "
+#~ "zmiany nazwy w widoku listy"
+
+#~ msgid "Show public share icon in breadcrumbs"
+#~ msgstr "Pokaż ikonę udostępniania w ścieżce okruchów"
+
+#~ msgid "Prevent a crash when dragging to re-arrange bookmarks"
+#~ msgstr ""
+#~ "Zapobiegnięto błędowi krytycznemu przy przeciąganiu zakładek w celu "
+#~ "zmiany kolejności"
+
+#~ msgid "Close FileChooser with Esc key"
+#~ msgstr "Zamknięcie wybierania plików klawisze Escape"
+
+#~ msgid "Use new emblems for git status"
+#~ msgstr "Użyto nowych odznak dla statusu gita"
+
+#~ msgid "Show selection actions in secondary click menu"
+#~ msgstr "Pokazano akcje wybierania w menu przycisku drugorzędnego"
+
+#~ msgid "Always show Permissions page in Properties dialog"
+#~ msgstr ""
+#~ "Zawsze pokazywana jest stron uprawnień w oknie dialogowym właściwości"
+
+#~ msgid ""
+#~ "In Permissions page, show user and group numeric IDs when names not "
+#~ "available"
+#~ msgstr ""
+#~ "Na stronie uprawnień pokazywane są numeryczne ID użytkownika i grupy gdy "
+#~ "nazwy nie są dostępne"
+
+#~ msgid "In Permissions page, show message when no information available"
+#~ msgstr ""
+#~ "Na stronie uprawnień pokazano wiadomość w przypadku braku dostępnych "
+#~ "informacji"
+
+#~ msgid "Other updates:"
+#~ msgstr "Inne aktualizacje:"
+
+#~ msgid "Only allow one FileChooser per parent window"
+#~ msgstr ""
+#~ "Zablokowano możliwość wyświetlania więcej niż jednego okna wybierania "
+#~ "plików"
+
+#~ msgid ""
+#~ "Navigate to folder when pressing enter in FileChooser instead of selecting"
+#~ msgstr ""
+#~ "Nawigacja pomiędzy folderami za pomocą przycisku enter przy wybieraniu "
+#~ "plików"
+
+#~ msgid ""
+#~ "Use \"Send Mail\" portal instead of contract, improving compatibility "
+#~ "with alternate email apps"
+#~ msgstr ""
+#~ "Użyto portalu „Wyślij wiadomość” zamiast kontraktu, by poprawić "
+#~ "kompatybilność z alternatywnymi aplikacjami pocztowymi"
+
+#~ msgid "Add file filters and New Folder options to file chooser portal"
+#~ msgstr "Dodano filtry plików oraz opcję Nowy folder do portalu wyboru pliku"
+
+#~ msgid ""
+#~ "Allow blank passwords for remote connections, e.g. for SSH via a private "
+#~ "key"
+#~ msgstr ""
+#~ "Dozwolono puste hasła dla połączeń zdalnych, n.p. dla SSH przez klucz "
+#~ "prywatny"
+
+#~ msgid "Make ejecting devices safer"
+#~ msgstr "Sprawiono, że wysuwanie urządzeń jest bezpieczniejsze"
+
+#~ msgid "Add option to stop drive if possible"
+#~ msgstr "Dodano opcję zatrzymania napędu tam gdzie to możliwe"
+
+#~ msgid "Show unformatted drives and drives without media"
+#~ msgstr "Pokazano niesformatowane napędy oraz napędy bez mediów"
+
+#~ msgid ""
+#~ "Fix pasting of selected pathbar text into another window using middle-"
+#~ "click"
+#~ msgstr ""
+#~ "Naprawiono wklejanie tekstu zaznaczonej ścieżki do innego okna przy "
+#~ "użyciu środkowego przycisku myszy"
+
+#~ msgid "Fix selecting multiple groups of files"
+#~ msgstr "Naprawiono zaznaczanie wielu grup plików"
+
+#~ msgid "Allow dropping bookmark directly below the Recent bookmark"
+#~ msgstr "Dozwolono upuszczać zakładki dokładnie poniżej zakładki Ostatnie"
+
+#~ msgid "Do not show unusable drop target below the Trash bookmark"
+#~ msgstr "Schowano nieużywane cele upuszczenia poniżej zakładki Kosz"
+
+#~ msgid "Fix sidebar showing both drive and volume for same device"
+#~ msgstr ""
+#~ "Naprawiono panel boczny pokazujący zarówno napęd i pojemność dla tego "
+#~ "samego urządzenia"
+
+#~ msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
+#~ msgstr ""
+#~ "Naprawiono panel boczny pokazujący serwery SSH zarówno w sekcjach Pamięć "
+#~ "masowa oraz Sieć"
+
+#~ msgid "Show translated bookmark names when changing languages"
+#~ msgstr "Pokaż przetłumaczone zakładki podczas zmieniania języków"
+
+#~ msgid ""
+#~ "Stop some audio file icons disappearing when scrolling or changing view"
+#~ msgstr ""
+#~ "Naprawiono błąd ze znikającą ikoną plików audio podczas przewijania lub "
+#~ "zmiany widoku"
+
+#~ msgid ""
+#~ "Stop brief appearance of status overlay when changing root folder in "
+#~ "Column View"
+#~ msgstr ""
+#~ "Naprawiono błąd z krótkimi pojawieniami się przykrycia statusu przy "
+#~ "zmianie folderu root'a w widoku kolumnowym"
+
+#~ msgid "Remove message about reporting issues when running from Terminal"
+#~ msgstr ""
+#~ "Usunięto wiadomość o zgłaszaniu błędów podczas uruchamiania z Terminala"
+
+#~ msgid "Open bookmarks in a new tab with Ctrl + Click"
+#~ msgstr ""
+#~ "Zakładki są teraz otwierane w nowej karcie przy naciśnięciu Ctrl + Klik"
+
+#~ msgid ""
+#~ "Fix dropping uris onto storage devices and network locations in sidebar"
+#~ msgstr ""
+#~ "Naprawiono upuszczanie URI na urządzenia pamięci masowej oraz lokalizacje "
+#~ "sieciowe w panelu bocznym"
+
+#~ msgid "Fix restoring tabs after a system restart"
+#~ msgstr "Naprawiono przywracanie kart po restarcie systemu"
+
+#~ msgid ""
+#~ "Don't unselect when secondary clicking blank space around a file or folder"
+#~ msgstr ""
+#~ "Aplikacja nie odznacza już przy klikaniu drugim klawiszem myszy pustej "
+#~ "przestrzeni nieopodal pliku lub folderu"
+
+#~ msgid ""
+#~ "Show the folder context menu when secondary clicking outside of a "
+#~ "selection"
+#~ msgstr ""
+#~ "Pokaż menu kontekstowe folderu po kliknięciu drugim przyciskiem myszy "
+#~ "poza zaznaczeniem"
+
+#~ msgid "Fix small context menus on breadcrumbs"
+#~ msgstr "Naprawiono małe menu kontekstowe na ścieżce"
+
+#~ msgid "Fix bookmarking a single selected item with Ctrl + D"
+#~ msgstr ""
+#~ "Naprawiono dodawanie zakładek dla jednego zaznaczenia przy użyciu Ctrl + D"
+
+#~ msgid "Fix renaming bookmarks in the sidebar"
+#~ msgstr "Naprawiono zmienianie nazw zakładek w panelu bocznym"
+
+#~ msgid "Fix an issue with showing color tags when thumbnails are hidden"
+#~ msgstr ""
+#~ "Naprawiono problem z pokazywaniem kolorowych tagów gdy podglądy są ukryte"
+
+#~ msgid "Fix freeze when comparing copied files"
+#~ msgstr ""
+#~ "Naprawiono zawieszanie aplikacji podczas porównywania skopiowanych plików"
+
+#~ msgid ""
+#~ "Fix truncation of final column in Column View under some circumstances"
+#~ msgstr ""
+#~ "Naprawiono przycinanie ostatniej kolumny w widoku kolumnowym w pewnych "
+#~ "okolicznościach"
+
+#~ msgid "Show more keyboard accelerators in menus"
+#~ msgstr "Pokazano więcej akceleratorów klawiatury w menu"
+
+#~ msgid "Fix connecting to AFP servers so that passwords are remembered"
+#~ msgstr "Naprawiono łączenie się z serwerami AFP by hasła były zapamiętywane"
+
+#~ msgid "Fix MTP mounts"
+#~ msgstr "Naprawiono montowanie MTP"
+
+#~ msgid "Launch files with double click instead of single click"
+#~ msgstr ""
+#~ "Uruchamianie plików za pomocą podwójnego kliknięcia zamiast pojedynczego "
+#~ "kliknięcia"
+
+#~ msgid "Provide a File Chooser portal for Flatpak apps"
+#~ msgstr "Dodano portal wybierania plików dla aplikacji Flatpak"
+
+#~ msgid "Brand new animated Sidebar"
+#~ msgstr "Całkiem nowy animowany panel boczny"
+
+#~ msgid "Dark style support"
+#~ msgstr "Wsparcie ciemnego motywu"
+
+#~ msgid "Mint and Bubblegum color tags"
+#~ msgstr "Kolorowe tagi w kolorze mięty i gumy balonowej"
+
+#~ msgid "Do not restore locations that have become inaccessible"
+#~ msgstr "Niedostępne lokalizacje nie są już przywracane"
+
+#~ msgid ""
+#~ "Clicking between thumbnail and text now activates/selects in Grid view"
+#~ msgstr ""
+#~ "Klikanie pomiędzy miniaturką a tekstem teraz uruchamia/zaznacza w widoku "
+#~ "siatki"
+
+#~ msgid "AFC protocol support"
+#~ msgstr "Wsparcie dla protokołu AFC"
+
+#~ msgid "Add a smaller minimum icon size in list view"
+#~ msgstr "Dodano mniejszy rozmiar ikon w widoku listy"
+
+#~ msgid "Show emblems inline in list views"
+#~ msgstr "Emblematy są teraz pokazywane w tej samej linii w widoku listy"
+
+#~ msgid "Performance improvements"
+#~ msgstr "Poprawki wydajności"
+
+#~ msgid "Stability improvements"
+#~ msgstr "Ulepszenia stabilności"
+
+#~ msgid "Rename \"Devices\" to \"Storage\""
+#~ msgstr "Zmieniono nazwę \"Urządzeń\" na \"Pamięć masowa\""
 
 #~ msgid "Bookmark menu option for network mounts in sidebar"
 #~ msgstr ""

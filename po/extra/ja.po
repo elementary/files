@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-02 12:23+0000\n"
-"PO-Revision-Date: 2023-02-16 21:22+0000\n"
+"POT-Creation-Date: 2023-04-11 19:23+0000\n"
+"PO-Revision-Date: 2023-04-04 22:59+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.16.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -65,52 +65,34 @@ msgstr ""
 "イルにアクセスできます。"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:82
-#: data/io.elementary.files.appdata.xml.in.in:140
-#: data/io.elementary.files.appdata.xml.in.in:158
-#: data/io.elementary.files.appdata.xml.in.in:183
-#: data/io.elementary.files.appdata.xml.in.in:260
-#: data/io.elementary.files.appdata.xml.in.in:277
+#: data/io.elementary.files.appdata.xml.in.in:58
+#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:89
+#: data/io.elementary.files.appdata.xml.in.in:116
+msgid "Minor updates:"
+msgstr "そのほかのアップデート:"
+
+#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/io.elementary.files.appdata.xml.in.in:60
+#: data/io.elementary.files.appdata.xml.in.in:76
+#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:118
+msgid "Updated translations"
+msgstr "翻訳の更新"
+
+#: data/io.elementary.files.appdata.xml.in.in:54
+#: data/io.elementary.files.appdata.xml.in.in:101
 msgid "Improvements:"
 msgstr "改善点:"
 
-#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/io.elementary.files.appdata.xml.in.in:56
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 "アプリ全体の設定を、コンテキストメニューからヘッダーバー内のアプリメニューに"
 "移動"
 
-#: data/io.elementary.files.appdata.xml.in.in:40
-#: data/io.elementary.files.appdata.xml.in.in:56
-#: data/io.elementary.files.appdata.xml.in.in:71
-#: data/io.elementary.files.appdata.xml.in.in:97
-#: data/io.elementary.files.appdata.xml.in.in:109
-#: data/io.elementary.files.appdata.xml.in.in:132
-#: data/io.elementary.files.appdata.xml.in.in:150
-#: data/io.elementary.files.appdata.xml.in.in:175
-#: data/io.elementary.files.appdata.xml.in.in:201
-msgid "Minor updates:"
-msgstr "そのほかのアップデート:"
-
-#: data/io.elementary.files.appdata.xml.in.in:42
-#: data/io.elementary.files.appdata.xml.in.in:58
-#: data/io.elementary.files.appdata.xml.in.in:73
-#: data/io.elementary.files.appdata.xml.in.in:99
-#: data/io.elementary.files.appdata.xml.in.in:111
-#: data/io.elementary.files.appdata.xml.in.in:134
-#: data/io.elementary.files.appdata.xml.in.in:152
-#: data/io.elementary.files.appdata.xml.in.in:177
-#: data/io.elementary.files.appdata.xml.in.in:203
-#: data/io.elementary.files.appdata.xml.in.in:218
-#: data/io.elementary.files.appdata.xml.in.in:234
-#: data/io.elementary.files.appdata.xml.in.in:249
-#: data/io.elementary.files.appdata.xml.in.in:266
-#: data/io.elementary.files.appdata.xml.in.in:295
-msgid "Updated translations"
-msgstr "翻訳の更新"
-
-#: data/io.elementary.files.appdata.xml.in.in:84
+#: data/io.elementary.files.appdata.xml.in.in:103
 msgid ""
 "Provide option to select folders with single click and activate with double "
 "click"
@@ -118,416 +100,54 @@ msgstr ""
 "シングルクリックでフォルダーを選択しダブルクリックで開くことができるオプショ"
 "ンを追加"
 
-#: data/io.elementary.files.appdata.xml.in.in:85
+#: data/io.elementary.files.appdata.xml.in.in:104
 msgid ""
 "Only show the properties overlay when files are selected, not when hovered"
 msgstr ""
 "ファイルプロパティー表示のオーバーレイを、ファイルホバー時ではなく選択時に表"
 "示するように修正"
 
-#: data/io.elementary.files.appdata.xml.in.in:87
-#: data/io.elementary.files.appdata.xml.in.in:105
-#: data/io.elementary.files.appdata.xml.in.in:117
-#: data/io.elementary.files.appdata.xml.in.in:144
-#: data/io.elementary.files.appdata.xml.in.in:164
-#: data/io.elementary.files.appdata.xml.in.in:192
-#: data/io.elementary.files.appdata.xml.in.in:209
-#: data/io.elementary.files.appdata.xml.in.in:224
-#: data/io.elementary.files.appdata.xml.in.in:240
-#: data/io.elementary.files.appdata.xml.in.in:255
-#: data/io.elementary.files.appdata.xml.in.in:272
+#: data/io.elementary.files.appdata.xml.in.in:106
 msgid "Fixes:"
 msgstr "修正点:"
 
-#: data/io.elementary.files.appdata.xml.in.in:89
+#: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Fix unexpected file activation after navigation with double-click"
 msgstr ""
 "ダブルクリックでフォルダを開くと、意図せずフォルダ内のファイルも開かれてしま"
 "う不具合を修正"
 
-#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:109
 msgid "Fix dimmed window after use of filechooser portal"
 msgstr "ファイル選択ポータル使用後、ウィンドウが薄暗く表示される不具合を修正"
 
-#: data/io.elementary.files.appdata.xml.in.in:91
+#: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Fix possible crash when rapidly changing view modes"
 msgstr "表示モードを頻繁に切り替えるとクラッシュすることがある不具合を修正"
 
-#: data/io.elementary.files.appdata.xml.in.in:92
+#: data/io.elementary.files.appdata.xml.in.in:111
 msgid "Fix startup when restored remote location is no longer connected"
 msgstr ""
 "最後に開いていたのが切断済みのネットワーク上の場所だった場合のアプリ起動後の"
 "状態を修正"
 
-#: data/io.elementary.files.appdata.xml.in.in:93
+#: data/io.elementary.files.appdata.xml.in.in:112
 msgid ""
 "Ensure infobar shows in connection server dialog when connection attempt "
 "fails"
 msgstr "“サーバーを接続”ダイアログ: 接続失敗時に情報バーが表示されるように修正"
 
-#: data/io.elementary.files.appdata.xml.in.in:94
+#: data/io.elementary.files.appdata.xml.in.in:113
 msgid "Ensure correct icon for bookmark to a file that is not a folder"
 msgstr ""
 "ブックマークがフォルダーではなくファイルの場合に正しいアイコンが表示されるよ"
 "うに修正"
 
-#: data/io.elementary.files.appdata.xml.in.in:95
+#: data/io.elementary.files.appdata.xml.in.in:114
 msgid "Fix possible crash when removing a bookmark"
 msgstr "ブックマーク削除時にクラッシュすることがある不具合を修正"
 
-#: data/io.elementary.files.appdata.xml.in.in:107
-msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
-msgstr "Ctrl + 下スクロールで縮小表示できなくなっていたリグレッションを修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:119
-msgid "Renaming with the same name no longer shows an error dialog"
-msgstr ""
-"ファイル名変更時に現在と同じファイル名を設定しても、エラーダイアログを表示し"
-"ないように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:120
-msgid "Ctrl + A when renaming now selects all the text in the entry"
-msgstr ""
-"ファイル名変更時に Ctrl + A が押された場合は、エントリー内のテキストを全選択"
-"するように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:121
-msgid "Selecting multiple items with Shift + Arrow keys now works properly"
-msgstr "Shift + 矢印キーでの複数項目選択が適切に機能するように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:122
-msgid "The appearance of the cursor now matches the action"
-msgstr "カーソル形状がアクションに合致するように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:123
-msgid "The Trash sidebar item can no longer be removed"
-msgstr "サイドバーから“ゴミ箱”の項目を削除できてしまっていた不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:124
-msgid "Network sidebar plugins such as NextCloud are now added correctly"
-msgstr ""
-"NextCloud などのネットワークプラグインがサイドバーに適切に追加されるように修"
-"正"
-
-#: data/io.elementary.files.appdata.xml.in.in:125
-msgid "Duplication of subfolders in ListView under some circumstances is fixed"
-msgstr ""
-"特定の状況下において、リスト表示でのサブフォルダーが重複表示されてしまう不具"
-"合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:126
-msgid ""
-"Bookmarks are now highlighted when a file they can accept is dragged onto "
-"them"
-msgstr ""
-"処理可能なファイルをブックマークに対してドラッグした際に、ブックマークがハイ"
-"ライト表示されるように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:127
-msgid "Folders not being restored properly under some circumstances is fixed"
-msgstr "特定の状況下において、フォルダーが適切に復元されない不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:128
-msgid ""
-"Show confirmation dialog in file chooser before overwriting an existing file"
-msgstr ""
-"ファイル選択ダイアログ: 既存のファイルを上書きする前に、確認ダイアログを表示"
-"するように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:129
-msgid "Ctrl + V now always pastes into background folder"
-msgstr ""
-"Ctrl + V キーを使った場合は常に、現在開いているフォルダーへの貼り付けが行われ"
-"るように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:130
-msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
-msgstr ""
-"Shift + Ctrl + V キーを使うと、選択中のフォルダーがあればその中に貼り付けする"
-"ように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:142
-msgid "Show New Tab and New Window shortcuts in context menus"
-msgstr ""
-"コンテキストメニューに“新しいタブ”と“新しいウィンドウ”のキーボードショート"
-"カットを表示するように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:146
-msgid "Double click selects instead of exiting while renaming in list view"
-msgstr ""
-"リスト表示でファイル名を変更中にファイルをダブルクリックすると、名前の変更を"
-"終了するのではなくファイルを選択するように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:147
-msgid "Show public share icon in breadcrumbs"
-msgstr ""
-"パンくずリストに“公開”フォルダーの共有アイコンが表示されていなかったのを修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:148
-msgid "Prevent a crash when dragging to re-arrange bookmarks"
-msgstr "ドラッグしてブックマークを並び替えするとクラッシュする不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:160
-msgid "Close FileChooser with Esc key"
-msgstr "Esc キーでファイル選択ダイアログを閉じれるように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:161
-msgid "Use new emblems for git status"
-msgstr "Git ステータス表示に新しいエンブレムを使うように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:162
-msgid "Show selection actions in secondary click menu"
-msgstr "副クリックメニューにファイル選択アクションを表示"
-
-#: data/io.elementary.files.appdata.xml.in.in:166
-msgid "Always show Permissions page in Properties dialog"
-msgstr "“プロパティー”ダイアログに“権限”のページを常に表示するように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:167
-msgid ""
-"In Permissions page, show user and group numeric IDs when names not available"
-msgstr ""
-"“権限”のページにおいて、ユーザー名とグループ名が利用できない場合は数値のユー"
-"ザー ID とグループ ID を表示するように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:168
-msgid "In Permissions page, show message when no information available"
-msgstr ""
-"“権限”のページにおいて、情報が利用できない場合はメッセージを表示するように修"
-"正"
-
-#: data/io.elementary.files.appdata.xml.in.in:170
-#: data/io.elementary.files.appdata.xml.in.in:215
-#: data/io.elementary.files.appdata.xml.in.in:232
-#: data/io.elementary.files.appdata.xml.in.in:247
-#: data/io.elementary.files.appdata.xml.in.in:264
-#: data/io.elementary.files.appdata.xml.in.in:292
-msgid "Other updates:"
-msgstr "そのほかのアップデート:"
-
-#: data/io.elementary.files.appdata.xml.in.in:172
-msgid "Only allow one FileChooser per parent window"
-msgstr ""
-"親ウィンドウ一つに対して複数のファイル選択ダイアログを開ける不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:173
-msgid ""
-"Navigate to folder when pressing enter in FileChooser instead of selecting"
-msgstr ""
-"ファイル選択ダイアログで Enter キーを押した際に、フォルダーを選択するのではな"
-"くその中にある項目を表示するように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:185
-msgid ""
-"Use \"Send Mail\" portal instead of contract, improving compatibility with "
-"alternate email apps"
-msgstr ""
-"Contract ではなく“メールを送信”ポータルを使用するように修正し、ほかのメールア"
-"プリとの互換性を改善"
-
-#: data/io.elementary.files.appdata.xml.in.in:186
-msgid "Add file filters and New Folder options to file chooser portal"
-msgstr ""
-"ファイル選択ポータルにファイルの種類を絞ったり新しいフォルダーを作成したりで"
-"きるオプションを追加"
-
-#: data/io.elementary.files.appdata.xml.in.in:187
-msgid ""
-"Allow blank passwords for remote connections, e.g. for SSH via a private key"
-msgstr "リモート接続の空パスワードを許可 (プライベートキーでの SSH 接続など)"
-
-#: data/io.elementary.files.appdata.xml.in.in:188
-msgid "Make ejecting devices safer"
-msgstr "デバイスをより安全に取り出せるように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:189
-msgid "Add option to stop drive if possible"
-msgstr "可能であればドライブを停止できるオプションを追加"
-
-#: data/io.elementary.files.appdata.xml.in.in:190
-msgid "Show unformatted drives and drives without media"
-msgstr "未フォーマットのドライブとメディアがないドライブを表示するように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:194
-msgid ""
-"Fix pasting of selected pathbar text into another window using middle-click"
-msgstr ""
-"選択されたパスバーのテキストを中クリックで別ウィンドウに貼り付けできる機能を"
-"追加"
-
-#: data/io.elementary.files.appdata.xml.in.in:195
-msgid "Fix selecting multiple groups of files"
-msgstr "複数グループのファイルを選択する際の不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:196
-msgid "Allow dropping bookmark directly below the Recent bookmark"
-msgstr "“最近使用した項目”の直下にブックマークをドロップできるように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:197
-msgid "Do not show unusable drop target below the Trash bookmark"
-msgstr "サイドバーの“ゴミ箱”の直下ではドロップマークを表示しないように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:198
-msgid "Fix sidebar showing both drive and volume for same device"
-msgstr ""
-"同じデバイスに対してドライブとボリュームの両方がサイドバーに表示されていた不"
-"具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:199
-msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
-msgstr ""
-"SSH サーバーがサイドバーの“ストレージ”と“ネットワーク”のセクション両方に表示"
-"されていた不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:211
-msgid "Show translated bookmark names when changing languages"
-msgstr "表示言語を変更した際にブックマーク名を変更後の言語で表示するように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:212
-msgid "Stop some audio file icons disappearing when scrolling or changing view"
-msgstr ""
-"スクロールしたりビューを切り替えたりすると、オーディオファイルのアイコンが消"
-"えることがある不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:213
-msgid ""
-"Stop brief appearance of status overlay when changing root folder in Column "
-"View"
-msgstr ""
-"カラム表示でルートフォルダーを変更すると状態オーバーレイが一瞬表示されていた"
-"不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:217
-msgid "Remove message about reporting issues when running from Terminal"
-msgstr ""
-"“ターミナル”からこのアプリを起動した際に表示される、不具合の報告先に関する"
-"メッセージを削除"
-
-#: data/io.elementary.files.appdata.xml.in.in:226
-msgid "Open bookmarks in a new tab with Ctrl + Click"
-msgstr "Ctrl + クリックでブックマークを新しいタブで開けるように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:227
-msgid "Fix dropping uris onto storage devices and network locations in sidebar"
-msgstr ""
-"サイドバー上のストレージデバイスやネットワークの場所に URI をドラッグアンドド"
-"ロップできない不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:228
-msgid "Fix restoring tabs after a system restart"
-msgstr ""
-"“ファイル”を閉じずにシステムを再起動した場合、タブが復元されない不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:229
-msgid ""
-"Don't unselect when secondary clicking blank space around a file or folder"
-msgstr ""
-"ファイルやフォルダー周辺の空白領域を副クリックした場合に、選択項目が解除され"
-"る不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:230
-msgid ""
-"Show the folder context menu when secondary clicking outside of a selection"
-msgstr ""
-"選択項目以外の場所で副クリックした場合はフォルダーのコンテキストメニューを表"
-"示するように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:242
-msgid "Fix small context menus on breadcrumbs"
-msgstr ""
-"ぱんくずリストのコンテキストメニューが小さく描画されてしまう不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:243
-msgid "Fix bookmarking a single selected item with Ctrl + D"
-msgstr "選択中の1項目を Ctrl + D キーでブックマークできない不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:244
-msgid "Fix renaming bookmarks in the sidebar"
-msgstr "サイドバーのブックマークを名称変更できない不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:245
-msgid "Fix an issue with showing color tags when thumbnails are hidden"
-msgstr ""
-"サムネイルが非表示の場合に発生する、カラータグを表示する機能の不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:257
-msgid "Fix freeze when comparing copied files"
-msgstr "コピーしたファイルを比較する際にフリーズする不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:258
-msgid "Fix truncation of final column in Column View under some circumstances"
-msgstr ""
-"特定の状況下において、カラム表示の最後の列が途切れて表示されてしまう不具合を"
-"修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:262
-msgid "Show more keyboard accelerators in menus"
-msgstr "メニュー項目に表示するキーボードショートカットを追加"
-
-#: data/io.elementary.files.appdata.xml.in.in:274
-msgid "Fix connecting to AFP servers so that passwords are remembered"
-msgstr "AFP サーバーへの接続時にパスワードを保存するように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:275
-msgid "Fix MTP mounts"
-msgstr "MTP のマウントを修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:279
-msgid "Launch files with double click instead of single click"
-msgstr "ファイルをシングルクリックではなくダブルクリックで開くように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:280
-msgid "Provide a File Chooser portal for Flatpak apps"
-msgstr "Flatpak アプリ向けにファイル選択ポータルを提供"
-
-#: data/io.elementary.files.appdata.xml.in.in:281
-msgid "Brand new animated Sidebar"
-msgstr "アニメーション付きのサイドバーを提供"
-
-#: data/io.elementary.files.appdata.xml.in.in:282
-msgid "Dark style support"
-msgstr "ダークスタイルへの対応"
-
-#: data/io.elementary.files.appdata.xml.in.in:283
-msgid "Mint and Bubblegum color tags"
-msgstr "ミントとピンク色のタグを追加"
-
-#: data/io.elementary.files.appdata.xml.in.in:284
-msgid "Do not restore locations that have become inaccessible"
-msgstr ""
-"アクセス不可能になった場所をアプリ起動時やタブの復元時に表示しないように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:285
-msgid "Clicking between thumbnail and text now activates/selects in Grid view"
-msgstr ""
-"グリッド表示において、ファイルのサムネイルと名前の間をクリックした場合にファ"
-"イルを選択するように変更"
-
-#: data/io.elementary.files.appdata.xml.in.in:286
-msgid "AFC protocol support"
-msgstr "AFC プロトコルに対応"
-
-#: data/io.elementary.files.appdata.xml.in.in:287
-msgid "Add a smaller minimum icon size in list view"
-msgstr "リスト表示でのアイコンにより小さいサイズを追加"
-
-#: data/io.elementary.files.appdata.xml.in.in:288
-msgid "Show emblems inline in list views"
-msgstr "リスト表示でエンブレムをインライン表示するように変更"
-
-#: data/io.elementary.files.appdata.xml.in.in:289
-msgid "Performance improvements"
-msgstr "パフォーマンスの改善"
-
-#: data/io.elementary.files.appdata.xml.in.in:290
-msgid "Stability improvements"
-msgstr "安定性の改善"
-
-#: data/io.elementary.files.appdata.xml.in.in:294
-msgid "Rename \"Devices\" to \"Storage\""
-msgstr "\"デバイス\"を\"ストレージ\"に名称変更"
-
-#: data/io.elementary.files.appdata.xml.in.in:329
+#: data/io.elementary.files.appdata.xml.in.in:164
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
@@ -538,6 +158,301 @@ msgstr "“ファイル”を管理者として実行"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "“ファイル”を管理者として実行するには認証が必要です"
+
+#~ msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
+#~ msgstr "Ctrl + 下スクロールで縮小表示できなくなっていたリグレッションを修正"
+
+#~ msgid "Renaming with the same name no longer shows an error dialog"
+#~ msgstr ""
+#~ "ファイル名変更時に現在と同じファイル名を設定しても、エラーダイアログを表示"
+#~ "しないように修正"
+
+#~ msgid "Ctrl + A when renaming now selects all the text in the entry"
+#~ msgstr ""
+#~ "ファイル名変更時に Ctrl + A が押された場合は、エントリー内のテキストを全選"
+#~ "択するように修正"
+
+#~ msgid "Selecting multiple items with Shift + Arrow keys now works properly"
+#~ msgstr "Shift + 矢印キーでの複数項目選択が適切に機能するように修正"
+
+#~ msgid "The appearance of the cursor now matches the action"
+#~ msgstr "カーソル形状がアクションに合致するように修正"
+
+#~ msgid "The Trash sidebar item can no longer be removed"
+#~ msgstr "サイドバーから“ゴミ箱”の項目を削除できてしまっていた不具合を修正"
+
+#~ msgid "Network sidebar plugins such as NextCloud are now added correctly"
+#~ msgstr ""
+#~ "NextCloud などのネットワークプラグインがサイドバーに適切に追加されるように"
+#~ "修正"
+
+#~ msgid ""
+#~ "Duplication of subfolders in ListView under some circumstances is fixed"
+#~ msgstr ""
+#~ "特定の状況下において、リスト表示でのサブフォルダーが重複表示されてしまう不"
+#~ "具合を修正"
+
+#~ msgid ""
+#~ "Bookmarks are now highlighted when a file they can accept is dragged onto "
+#~ "them"
+#~ msgstr ""
+#~ "処理可能なファイルをブックマークに対してドラッグした際に、ブックマークがハ"
+#~ "イライト表示されるように修正"
+
+#~ msgid ""
+#~ "Folders not being restored properly under some circumstances is fixed"
+#~ msgstr "特定の状況下において、フォルダーが適切に復元されない不具合を修正"
+
+#~ msgid ""
+#~ "Show confirmation dialog in file chooser before overwriting an existing "
+#~ "file"
+#~ msgstr ""
+#~ "ファイル選択ダイアログ: 既存のファイルを上書きする前に、確認ダイアログを表"
+#~ "示するように修正"
+
+#~ msgid "Ctrl + V now always pastes into background folder"
+#~ msgstr ""
+#~ "Ctrl + V キーを使った場合は常に、現在開いているフォルダーへの貼り付けが行"
+#~ "われるように修正"
+
+#~ msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
+#~ msgstr ""
+#~ "Shift + Ctrl + V キーを使うと、選択中のフォルダーがあればその中に貼り付け"
+#~ "するように修正"
+
+#~ msgid "Show New Tab and New Window shortcuts in context menus"
+#~ msgstr ""
+#~ "コンテキストメニューに“新しいタブ”と“新しいウィンドウ”のキーボードショート"
+#~ "カットを表示するように修正"
+
+#~ msgid "Double click selects instead of exiting while renaming in list view"
+#~ msgstr ""
+#~ "リスト表示でファイル名を変更中にファイルをダブルクリックすると、名前の変更"
+#~ "を終了するのではなくファイルを選択するように修正"
+
+#~ msgid "Show public share icon in breadcrumbs"
+#~ msgstr ""
+#~ "パンくずリストに“公開”フォルダーの共有アイコンが表示されていなかったのを修"
+#~ "正"
+
+#~ msgid "Prevent a crash when dragging to re-arrange bookmarks"
+#~ msgstr "ドラッグしてブックマークを並び替えするとクラッシュする不具合を修正"
+
+#~ msgid "Close FileChooser with Esc key"
+#~ msgstr "Esc キーでファイル選択ダイアログを閉じれるように修正"
+
+#~ msgid "Use new emblems for git status"
+#~ msgstr "Git ステータス表示に新しいエンブレムを使うように修正"
+
+#~ msgid "Show selection actions in secondary click menu"
+#~ msgstr "副クリックメニューにファイル選択アクションを表示"
+
+#~ msgid "Always show Permissions page in Properties dialog"
+#~ msgstr "“プロパティー”ダイアログに“権限”のページを常に表示するように修正"
+
+#~ msgid ""
+#~ "In Permissions page, show user and group numeric IDs when names not "
+#~ "available"
+#~ msgstr ""
+#~ "“権限”のページにおいて、ユーザー名とグループ名が利用できない場合は数値の"
+#~ "ユーザー ID とグループ ID を表示するように修正"
+
+#~ msgid "In Permissions page, show message when no information available"
+#~ msgstr ""
+#~ "“権限”のページにおいて、情報が利用できない場合はメッセージを表示するように"
+#~ "修正"
+
+#~ msgid "Other updates:"
+#~ msgstr "そのほかのアップデート:"
+
+#~ msgid "Only allow one FileChooser per parent window"
+#~ msgstr ""
+#~ "親ウィンドウ一つに対して複数のファイル選択ダイアログを開ける不具合を修正"
+
+#~ msgid ""
+#~ "Navigate to folder when pressing enter in FileChooser instead of selecting"
+#~ msgstr ""
+#~ "ファイル選択ダイアログで Enter キーを押した際に、フォルダーを選択するので"
+#~ "はなくその中にある項目を表示するように修正"
+
+#~ msgid ""
+#~ "Use \"Send Mail\" portal instead of contract, improving compatibility "
+#~ "with alternate email apps"
+#~ msgstr ""
+#~ "Contract ではなく“メールを送信”ポータルを使用するように修正し、代替メール"
+#~ "アプリとの互換性を改善"
+
+#~ msgid "Add file filters and New Folder options to file chooser portal"
+#~ msgstr ""
+#~ "ファイル選択ポータルにファイルの種類を絞ったり新しいフォルダーを作成したり"
+#~ "できるオプションを追加"
+
+#~ msgid ""
+#~ "Allow blank passwords for remote connections, e.g. for SSH via a private "
+#~ "key"
+#~ msgstr ""
+#~ "リモート接続の空パスワードを許可 (プライベートキーでの SSH 接続など)"
+
+#~ msgid "Make ejecting devices safer"
+#~ msgstr "デバイスをより安全に取り出せるように修正"
+
+#~ msgid "Add option to stop drive if possible"
+#~ msgstr "可能であればドライブを停止できるオプションを追加"
+
+#~ msgid "Show unformatted drives and drives without media"
+#~ msgstr ""
+#~ "未フォーマットのドライブとメディアがないドライブを表示するように修正"
+
+#~ msgid ""
+#~ "Fix pasting of selected pathbar text into another window using middle-"
+#~ "click"
+#~ msgstr ""
+#~ "選択されたパスバーのテキストを中クリックで別ウィンドウに貼り付けできる機能"
+#~ "を追加"
+
+#~ msgid "Fix selecting multiple groups of files"
+#~ msgstr "複数グループのファイルを選択する際の不具合を修正"
+
+#~ msgid "Allow dropping bookmark directly below the Recent bookmark"
+#~ msgstr "“最近使用した項目”の直下にブックマークをドロップできるように修正"
+
+#~ msgid "Do not show unusable drop target below the Trash bookmark"
+#~ msgstr "サイドバーの“ゴミ箱”の直下ではドロップマークを表示しないように修正"
+
+#~ msgid "Fix sidebar showing both drive and volume for same device"
+#~ msgstr ""
+#~ "同じデバイスに対してドライブとボリュームの両方がサイドバーに表示されていた"
+#~ "不具合を修正"
+
+#~ msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
+#~ msgstr ""
+#~ "SSH サーバーがサイドバーの“ストレージ”と“ネットワーク”のセクション両方に表"
+#~ "示されていた不具合を修正"
+
+#~ msgid "Show translated bookmark names when changing languages"
+#~ msgstr ""
+#~ "表示言語を変更した際にブックマーク名を変更後の言語で表示するように修正"
+
+#~ msgid ""
+#~ "Stop some audio file icons disappearing when scrolling or changing view"
+#~ msgstr ""
+#~ "スクロールしたりビューを切り替えたりすると、オーディオファイルのアイコンが"
+#~ "消えることがある不具合を修正"
+
+#~ msgid ""
+#~ "Stop brief appearance of status overlay when changing root folder in "
+#~ "Column View"
+#~ msgstr ""
+#~ "カラム表示でルートフォルダーを変更すると状態オーバーレイが一瞬表示されてい"
+#~ "た不具合を修正"
+
+#~ msgid "Remove message about reporting issues when running from Terminal"
+#~ msgstr ""
+#~ "“ターミナル”からこのアプリを起動した際に表示される、不具合の報告先に関する"
+#~ "メッセージを削除"
+
+#~ msgid "Open bookmarks in a new tab with Ctrl + Click"
+#~ msgstr "Ctrl + クリックでブックマークを新しいタブで開けるように修正"
+
+#~ msgid ""
+#~ "Fix dropping uris onto storage devices and network locations in sidebar"
+#~ msgstr ""
+#~ "サイドバー上のストレージデバイスやネットワークの場所に URI をドラッグアン"
+#~ "ドドロップできない不具合を修正"
+
+#~ msgid "Fix restoring tabs after a system restart"
+#~ msgstr ""
+#~ "“ファイル”を閉じずにシステムを再起動した場合、タブが復元されない不具合を修"
+#~ "正"
+
+#~ msgid ""
+#~ "Don't unselect when secondary clicking blank space around a file or folder"
+#~ msgstr ""
+#~ "ファイルやフォルダー周辺の空白領域を副クリックした場合に、選択項目が解除さ"
+#~ "れる不具合を修正"
+
+#~ msgid ""
+#~ "Show the folder context menu when secondary clicking outside of a "
+#~ "selection"
+#~ msgstr ""
+#~ "選択項目以外の場所で副クリックした場合はフォルダーのコンテキストメニューを"
+#~ "表示するように修正"
+
+#~ msgid "Fix small context menus on breadcrumbs"
+#~ msgstr ""
+#~ "ぱんくずリストのコンテキストメニューが小さく描画されてしまう不具合を修正"
+
+#~ msgid "Fix bookmarking a single selected item with Ctrl + D"
+#~ msgstr "選択中の1項目を Ctrl + D キーでブックマークできない不具合を修正"
+
+#~ msgid "Fix renaming bookmarks in the sidebar"
+#~ msgstr "サイドバーのブックマークを名称変更できない不具合を修正"
+
+#~ msgid "Fix an issue with showing color tags when thumbnails are hidden"
+#~ msgstr ""
+#~ "サムネイルが非表示の場合に発生する、カラータグを表示する機能の不具合を修正"
+
+#~ msgid "Fix freeze when comparing copied files"
+#~ msgstr "コピーしたファイルを比較する際にフリーズする不具合を修正"
+
+#~ msgid ""
+#~ "Fix truncation of final column in Column View under some circumstances"
+#~ msgstr ""
+#~ "特定の状況下において、カラム表示の最後の列が途切れて表示されてしまう不具合"
+#~ "を修正"
+
+#~ msgid "Show more keyboard accelerators in menus"
+#~ msgstr "メニュー項目に表示するキーボードショートカットを追加"
+
+#~ msgid "Fix connecting to AFP servers so that passwords are remembered"
+#~ msgstr "AFP サーバーへの接続時にパスワードを保存するように修正"
+
+#~ msgid "Fix MTP mounts"
+#~ msgstr "MTP のマウントを修正"
+
+#~ msgid "Launch files with double click instead of single click"
+#~ msgstr "ファイルをシングルクリックではなくダブルクリックで開くように修正"
+
+#~ msgid "Provide a File Chooser portal for Flatpak apps"
+#~ msgstr "Flatpak アプリ向けにファイル選択ポータルを提供"
+
+#~ msgid "Brand new animated Sidebar"
+#~ msgstr "アニメーション付きのサイドバーを提供"
+
+#~ msgid "Dark style support"
+#~ msgstr "ダークスタイルへの対応"
+
+#~ msgid "Mint and Bubblegum color tags"
+#~ msgstr "ミントとピンク色のタグを追加"
+
+#~ msgid "Do not restore locations that have become inaccessible"
+#~ msgstr ""
+#~ "アクセス不可能になった場所をアプリ起動時やタブの復元時に表示しないように修"
+#~ "正"
+
+#~ msgid ""
+#~ "Clicking between thumbnail and text now activates/selects in Grid view"
+#~ msgstr ""
+#~ "グリッド表示において、ファイルのサムネイルと名前の間をクリックした場合に"
+#~ "ファイルを選択するように変更"
+
+#~ msgid "AFC protocol support"
+#~ msgstr "AFC プロトコルに対応"
+
+#~ msgid "Add a smaller minimum icon size in list view"
+#~ msgstr "リスト表示でのアイコンにより小さいサイズを追加"
+
+#~ msgid "Show emblems inline in list views"
+#~ msgstr "リスト表示でエンブレムをインライン表示するように変更"
+
+#~ msgid "Performance improvements"
+#~ msgstr "パフォーマンスの改善"
+
+#~ msgid "Stability improvements"
+#~ msgstr "安定性の改善"
+
+#~ msgid "Rename \"Devices\" to \"Storage\""
+#~ msgstr "\"デバイス\"を\"ストレージ\"に名称変更"
 
 #~ msgid "Bookmark menu option for network mounts in sidebar"
 #~ msgstr ""
