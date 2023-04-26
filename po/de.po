@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-11 19:23+0000\n"
-"PO-Revision-Date: 2023-03-07 13:25+0000\n"
+"PO-Revision-Date: 2023-04-19 20:59+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.16.4\n"
 "X-Launchpad-Export-Date: 2017-06-14 06:05+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -1607,10 +1607,9 @@ msgid "Device Usage"
 msgstr "Gerätauslastung"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:166
-#, fuzzy, c-format
-#| msgid "(%s Free of %s)"
+#, c-format
 msgid "%s free out of %s"
-msgstr "(%s frei von %s)"
+msgstr "%s von %s frei"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:174
 msgid "Capacity:"
