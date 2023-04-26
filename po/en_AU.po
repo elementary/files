@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-11 19:23+0000\n"
+"POT-Creation-Date: 2023-04-26 23:58+0000\n"
 "PO-Revision-Date: 2022-04-20 10:20+0000\n"
 "Last-Translator: Joel Jose <joel750jose@gmail.com>\n"
 "Language-Team: English (Australia) <https://l10n.elementary.io/projects/"
@@ -226,49 +226,134 @@ msgstr "Copy Here"
 msgid "Link Here"
 msgstr "Link Here"
 
-#: libcore/File.vala:545 libcore/File.vala:1101 libcore/File.vala:1120
+#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2324
+msgid "Name"
+msgstr "Name"
+
+#: libcore/Enums.vala:160
+#, fuzzy
+#| msgid "Create"
+msgid "Creation Date"
+msgstr "Create"
+
+#: libcore/Enums.vala:163
+#, fuzzy
+#| msgid "Last modified:"
+msgid "Last modification date"
+msgstr "Last modified:"
+
+#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2329
+#: src/View/ListView.vala:27
+msgid "Size"
+msgstr "Size"
+
+#: libcore/Enums.vala:189
+msgid "Number sequence"
+msgstr ""
+
+#: libcore/Enums.vala:192
+msgid "Text"
+msgstr ""
+
+#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2339
+msgid "Date"
+msgstr "Date"
+
+#: libcore/Enums.vala:211
+msgid "Suffix"
+msgstr ""
+
+#: libcore/Enums.vala:214
+msgid "Prefix"
+msgstr ""
+
+#: libcore/Enums.vala:224
+msgid "Text to put at the end"
+msgstr ""
+
+#: libcore/Enums.vala:227
+msgid "Text to put at the start"
+msgstr ""
+
+#: libcore/Enums.vala:246
+msgid "Default Format - Date only"
+msgstr ""
+
+#: libcore/Enums.vala:248
+msgid "Default Format - Date and Time"
+msgstr ""
+
+#: libcore/Enums.vala:250
+msgid "Locale Format - Date and Time"
+msgstr ""
+
+#: libcore/Enums.vala:252
+msgid "ISO 8601 Format - Date only"
+msgstr ""
+
+#: libcore/Enums.vala:254
+msgid "ISO 8601 Format - Date and Time"
+msgstr ""
+
+#: libcore/Enums.vala:270
+#, fuzzy
+#| msgid "Create"
+msgid "Date created"
+msgstr "Create"
+
+#: libcore/Enums.vala:272
+#, fuzzy
+#| msgid "Modified"
+msgid "Date Modified"
+msgstr "Modified"
+
+#: libcore/Enums.vala:274
+msgid "Current Date"
+msgstr ""
+
+#: libcore/File.vala:547 libcore/File.vala:1103 libcore/File.vala:1122
 msgid "Inaccessible"
 msgstr "Inaccessible"
 
-#: libcore/File.vala:886
+#: libcore/File.vala:888
 #, fuzzy
 msgid "Failed to parse the desktop file"
 msgstr "Failed to parse the desktop file: %s"
 
-#: libcore/File.vala:890
+#: libcore/File.vala:892
 #, fuzzy
 #| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
 msgstr "Failed to parse the desktop file: %s"
 
-#: libcore/File.vala:902
+#: libcore/File.vala:904
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "Failed to parse the desktop file: %s"
 
-#: libcore/File.vala:911
+#: libcore/File.vala:913
 #, fuzzy
 msgid "Unable to Launch Desktop File: "
 msgstr "Failed to parse the desktop file: %s"
 
-#: libcore/File.vala:1115
+#: libcore/File.vala:1117
 #, fuzzy
 #| msgid "Empty File"
 msgid "Empty"
 msgstr "Empty File"
 
-#: libcore/File.vala:1117
+#: libcore/File.vala:1119
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/File.vala:1124
+#: libcore/File.vala:1126
 msgid "----"
 msgstr ""
 
-#: libcore/File.vala:1131
+#: libcore/File.vala:1133
 #, c-format
 msgid "link to %s"
 msgstr "link to %s"
@@ -1101,7 +1186,7 @@ msgid "_Unmount"
 msgstr "_Unmount"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2039
+#: src/View/AbstractDirectoryView.vala:2041
 msgid "Properties"
 msgstr "Properties"
 
@@ -1115,7 +1200,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "Remove"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2032
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2034
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
@@ -1626,8 +1711,8 @@ msgstr "Show the version of the program"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Open uri(s) in new tab"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1920
-#: src/View/AbstractDirectoryView.vala:1926
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1922
+#: src/View/AbstractDirectoryView.vala:1928
 msgid "New Window"
 msgstr "New Window"
 
@@ -1799,7 +1884,7 @@ msgid "Original Location:"
 msgstr "Original Location:"
 
 #: src/Dialogs/PropertiesWindow.vala:648
-#: src/View/AbstractDirectoryView.vala:2007
+#: src/View/AbstractDirectoryView.vala:2009
 msgid "Other Application…"
 msgstr "Other Application…"
 
@@ -1885,7 +1970,7 @@ msgid "Could not open files or URIs with this app"
 msgstr "Unable to open files or uris with this app"
 
 #: src/View/AbstractDirectoryView.vala:837
-#: src/View/AbstractDirectoryView.vala:1148
+#: src/View/AbstractDirectoryView.vala:1150
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Cannot open this file"
@@ -1910,176 +1995,164 @@ msgstr "Cannot open this file"
 msgid "Cannot identify file type to open"
 msgstr "Cannot identify file type to open"
 
-#: src/View/AbstractDirectoryView.vala:1618
+#: src/View/AbstractDirectoryView.vala:1620
 msgid "Cannot drop this file"
 msgstr "Cannot drop this file"
 
-#: src/View/AbstractDirectoryView.vala:1619
+#: src/View/AbstractDirectoryView.vala:1621
 msgid "Invalid file name provided"
 msgstr "Invalid file name provided"
 
-#: src/View/AbstractDirectoryView.vala:1903
-#: src/View/AbstractDirectoryView.vala:1909 src/View/Window.vala:183
+#: src/View/AbstractDirectoryView.vala:1905
+#: src/View/AbstractDirectoryView.vala:1911 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "New Tab"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1945
 msgid "Run"
 msgstr "Run"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1952
 #, c-format
 msgid "Open in %s"
 msgstr "Open in %s"
 
-#: src/View/AbstractDirectoryView.vala:2019
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Open in"
 msgstr "Open in"
 
-#: src/View/AbstractDirectoryView.vala:2021
+#: src/View/AbstractDirectoryView.vala:2023
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Open with"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2061
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:2072
 #, fuzzy
 #| msgid "Restore All"
 msgid "Deselect All"
 msgstr "Restore All"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2080
 msgid "Cut"
 msgstr "Cut"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2088
 msgid "Copy"
 msgstr "Copy"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2095
 msgid "Move to Trash"
 msgstr "Move to the Rubbish Bin"
 
-#: src/View/AbstractDirectoryView.vala:2098
+#: src/View/AbstractDirectoryView.vala:2100
 #, fuzzy
 #| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "Delete permanently"
 
-#: src/View/AbstractDirectoryView.vala:2105
+#: src/View/AbstractDirectoryView.vala:2107
 msgid "Restore from Trash"
 msgstr "Restore from Rubbish Bin"
 
-#: src/View/AbstractDirectoryView.vala:2128
+#: src/View/AbstractDirectoryView.vala:2130
 msgid "Open Parent Folder"
 msgstr "Open Parent Folder"
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2133
 msgid "Remove from History"
 msgstr "Remove from History"
 
-#: src/View/AbstractDirectoryView.vala:2157
+#: src/View/AbstractDirectoryView.vala:2159
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Rename"
 
-#: src/View/AbstractDirectoryView.vala:2164
+#: src/View/AbstractDirectoryView.vala:2166
 #, fuzzy
 msgid "Copy as Link"
 msgstr "Paste"
 
-#: src/View/AbstractDirectoryView.vala:2187
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2269
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "Paste into Folder"
 
-#: src/View/AbstractDirectoryView.vala:2192
-#: src/View/AbstractDirectoryView.vala:2244
+#: src/View/AbstractDirectoryView.vala:2194
+#: src/View/AbstractDirectoryView.vala:2246
 msgid "Paste into Folder"
 msgstr "Paste into Folder"
 
-#: src/View/AbstractDirectoryView.vala:2202
-#: src/View/AbstractDirectoryView.vala:2272
+#: src/View/AbstractDirectoryView.vala:2204
+#: src/View/AbstractDirectoryView.vala:2274
 msgid "Paste"
 msgstr "Paste"
 
-#: src/View/AbstractDirectoryView.vala:2322
-msgid "Name"
-msgstr "Name"
-
-#: src/View/AbstractDirectoryView.vala:2327 src/View/ListView.vala:27
-msgid "Size"
-msgstr "Size"
-
-#: src/View/AbstractDirectoryView.vala:2332 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2334 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Type"
 
-#: src/View/AbstractDirectoryView.vala:2337
-msgid "Date"
-msgstr "Date"
-
-#: src/View/AbstractDirectoryView.vala:2342
+#: src/View/AbstractDirectoryView.vala:2344
 msgid "Reversed Order"
 msgstr "Reverse Order"
 
-#: src/View/AbstractDirectoryView.vala:2345
+#: src/View/AbstractDirectoryView.vala:2347
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2357
+#: src/View/AbstractDirectoryView.vala:2359
 msgid "Sort by"
 msgstr "Sort by"
 
-#: src/View/AbstractDirectoryView.vala:2365
+#: src/View/AbstractDirectoryView.vala:2367
 msgid "Folder"
 msgstr "Folder"
 
-#: src/View/AbstractDirectoryView.vala:2371
+#: src/View/AbstractDirectoryView.vala:2373
 msgid "Empty File"
 msgstr "Empty File"
 
-#: src/View/AbstractDirectoryView.vala:2422
+#: src/View/AbstractDirectoryView.vala:2424
 msgid "New"
 msgstr "New"
 
-#: src/View/AbstractDirectoryView.vala:2665
+#: src/View/AbstractDirectoryView.vala:2667
 #, c-format
 msgid "Untitled %s"
 msgstr "Untitled %s"
 
-#: src/View/AbstractDirectoryView.vala:2983
-#: src/View/AbstractDirectoryView.vala:3176
+#: src/View/AbstractDirectoryView.vala:2985
+#: src/View/AbstractDirectoryView.vala:3178
 msgid "Cannot remove files from here"
 msgstr "Cannot remove files from here"
 
-#: src/View/AbstractDirectoryView.vala:2984
-#: src/View/AbstractDirectoryView.vala:3149
-#: src/View/AbstractDirectoryView.vala:3160
-#: src/View/AbstractDirectoryView.vala:3177
+#: src/View/AbstractDirectoryView.vala:2986
+#: src/View/AbstractDirectoryView.vala:3151
+#: src/View/AbstractDirectoryView.vala:3162
+#: src/View/AbstractDirectoryView.vala:3179
 msgid "You do not have permission to change this location"
 msgstr "You do not have permission to change this location"
 
-#: src/View/AbstractDirectoryView.vala:3117
+#: src/View/AbstractDirectoryView.vala:3119
 msgid "Cannot copy files that are in the trash"
 msgstr "Cannot copy files that are in the Rubbish Bin"
 
-#: src/View/AbstractDirectoryView.vala:3118
+#: src/View/AbstractDirectoryView.vala:3120
 msgid "Cutting the selection instead"
 msgstr "Cutting the selection instead"
 
-#: src/View/AbstractDirectoryView.vala:3148
-#: src/View/AbstractDirectoryView.vala:3159
+#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:3161
 msgid "Cannot paste files here"
 msgstr "Cannot paste files here"
 
