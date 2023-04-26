@@ -60,8 +60,6 @@ namespace Files {
         }
     }
 
-
-
     public enum ViewMode {
         /* First three modes must match the corresponding mode switch indices */
         ICON = 0,
@@ -145,5 +143,138 @@ namespace Files {
         XDND_DIRECT_SAVE0,
         NETSCAPE_URL,
         BOOKMARK_ROW
+    }
+
+    public enum SortBy {
+        NAME,
+        CREATED,
+        MODIFIED,
+        SIZE;
+
+        public string to_string () {
+            switch (this) {
+                case SortBy.NAME:
+                    return _("Name");
+
+                case SortBy.CREATED:
+                    return _("Creation Date");
+
+                case SortBy.MODIFIED:
+                    return _("Last modification date");
+
+                case SortBy.SIZE:
+                    return _("Size");
+
+                default:
+                    assert_not_reached ();
+            }
+        }
+    }
+
+    public enum RenameStatus {
+        VALID,
+        IGNORED,
+        INVALID
+    }
+
+    public enum RenameMode {
+        TEXT,
+        NUMBER_SEQUENCE,
+        DATETIME,
+        INVALID;
+
+        public string to_string () {
+            switch (this) {
+                case RenameMode.NUMBER_SEQUENCE:
+                    return _("Number sequence");
+
+                case RenameMode.TEXT:
+                    return _("Text");
+
+                case RenameMode.DATETIME:
+                    return _("Date");
+
+                default:
+                    assert_not_reached ();
+            }
+        }
+    }
+
+    public enum RenamePosition {
+        SUFFIX,
+        PREFIX,
+        INVALID;
+
+        public string to_string () {
+            switch (this) {
+                case RenamePosition.SUFFIX:
+                    return _("Suffix");
+
+                case RenamePosition.PREFIX:
+                    return _("Prefix");
+
+                default:
+                    assert_not_reached ();
+            }
+        }
+
+        public string to_placeholder () {
+            switch (this) {
+                case RenamePosition.SUFFIX:
+                    return _("Text to put at the end");
+
+                case RenamePosition.PREFIX:
+                    return _("Text to put at the start");
+
+                default:
+                    assert_not_reached ();
+            }
+        }
+    }
+
+    public enum RenameDateFormat {
+        DEFAULT,
+        DEFAULT_DATETIME,
+        LOCALE,
+        ISO_DATE,
+        ISO_DATETIME,
+        INVALID;
+
+        public string to_string () {
+            switch (this) {
+                case RenameDateFormat.DEFAULT:
+                    return _("Default Format - Date only");
+                case RenameDateFormat.DEFAULT_DATETIME:
+                    return _("Default Format - Date and Time");
+                case RenameDateFormat.LOCALE:
+                    return _("Locale Format - Date and Time");
+                case RenameDateFormat.ISO_DATE:
+                    return _("ISO 8601 Format - Date only");
+                case RenameDateFormat.ISO_DATETIME:
+                    return _("ISO 8601 Format - Date and Time");
+                default:
+                    assert_not_reached ();
+            }
+        }
+    }
+
+    public enum RenameDateSource {
+        DEFAULT,
+        MODIFIED,
+        NOW,
+        INVALID;
+
+        public string to_string () {
+            switch (this) {
+                case RenameDateSource.DEFAULT:
+                    return _("Date created");
+                case RenameDateSource.MODIFIED:
+                    return _("Date Modified");
+                case RenameDateSource.NOW:
+                    return _("Current Date");
+                default:
+                    assert_not_reached ();
+            }
+        }
     }
 }
