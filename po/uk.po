@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-26 23:58+0000\n"
-"PO-Revision-Date: 2023-04-23 10:59+0000\n"
+"PO-Revision-Date: 2023-04-28 11:36+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -16,9 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.16.4\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-12 06:02+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -212,16 +212,12 @@ msgid "Name"
 msgstr "Назва"
 
 #: libcore/Enums.vala:160
-#, fuzzy
-#| msgid "Create"
 msgid "Creation Date"
-msgstr "Створити"
+msgstr "Дата створення"
 
 #: libcore/Enums.vala:163
-#, fuzzy
-#| msgid "Last modified:"
 msgid "Last modification date"
-msgstr "Востаннє змінено:"
+msgstr "Дата останньої зміни"
 
 #: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2329
 #: src/View/ListView.vala:27
@@ -230,11 +226,11 @@ msgstr "Розмір"
 
 #: libcore/Enums.vala:189
 msgid "Number sequence"
-msgstr ""
+msgstr "Послідовність чисел"
 
 #: libcore/Enums.vala:192
 msgid "Text"
-msgstr ""
+msgstr "Текст"
 
 #: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2339
 msgid "Date"
@@ -242,55 +238,51 @@ msgstr "Дата"
 
 #: libcore/Enums.vala:211
 msgid "Suffix"
-msgstr ""
+msgstr "Суфікс"
 
 #: libcore/Enums.vala:214
 msgid "Prefix"
-msgstr ""
+msgstr "Префікс"
 
 #: libcore/Enums.vala:224
 msgid "Text to put at the end"
-msgstr ""
+msgstr "Текст, який потрібно вставити в кінці"
 
 #: libcore/Enums.vala:227
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Текст, який потрібно вставити на початку"
 
 #: libcore/Enums.vala:246
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "Усталений формат - Лише дата"
 
 #: libcore/Enums.vala:248
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "Усталений формат - Дата й час"
 
 #: libcore/Enums.vala:250
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "Місцевий формат - Дата й час"
 
 #: libcore/Enums.vala:252
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "Формат ISO 8601 - Лише дата"
 
 #: libcore/Enums.vala:254
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "Формат ISO 8601 - Дата й час"
 
 #: libcore/Enums.vala:270
-#, fuzzy
-#| msgid "Recreate"
 msgid "Date created"
-msgstr "Створити знову"
+msgstr "Дата створення"
 
 #: libcore/Enums.vala:272
-#, fuzzy
-#| msgid "Modified"
 msgid "Date Modified"
-msgstr "Змінено"
+msgstr "Дата зміни"
 
 #: libcore/Enums.vala:274
 msgid "Current Date"
-msgstr ""
+msgstr "Поточна дата"
 
 #: libcore/File.vala:547 libcore/File.vala:1103 libcore/File.vala:1122
 msgid "Inaccessible"
