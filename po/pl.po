@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-26 23:58+0000\n"
-"PO-Revision-Date: 2023-04-13 17:59+0000\n"
+"PO-Revision-Date: 2023-04-28 11:36+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.16.4\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -213,16 +213,12 @@ msgid "Name"
 msgstr "Nazwy"
 
 #: libcore/Enums.vala:160
-#, fuzzy
-#| msgid "Create"
 msgid "Creation Date"
-msgstr "Utwórz"
+msgstr "Data utworzenia"
 
 #: libcore/Enums.vala:163
-#, fuzzy
-#| msgid "Last modified:"
 msgid "Last modification date"
-msgstr "Ostatnia modyfikacja:"
+msgstr "Data ostatniej modyfikacji"
 
 #: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2329
 #: src/View/ListView.vala:27
@@ -231,11 +227,11 @@ msgstr "Rozmiar"
 
 #: libcore/Enums.vala:189
 msgid "Number sequence"
-msgstr ""
+msgstr "Sekwencja liczb"
 
 #: libcore/Enums.vala:192
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 #: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2339
 msgid "Date"
@@ -243,55 +239,51 @@ msgstr "Daty"
 
 #: libcore/Enums.vala:211
 msgid "Suffix"
-msgstr ""
+msgstr "Sufiks"
 
 #: libcore/Enums.vala:214
 msgid "Prefix"
-msgstr ""
+msgstr "Prefiks"
 
 #: libcore/Enums.vala:224
 msgid "Text to put at the end"
-msgstr ""
+msgstr "Tekst, który ma być dodany na końcu"
 
 #: libcore/Enums.vala:227
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Tekst, który ma być dodany na początku"
 
 #: libcore/Enums.vala:246
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "Domyślny format - Tylko data"
 
 #: libcore/Enums.vala:248
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "Domyślny format - data i godzina"
 
 #: libcore/Enums.vala:250
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "Format języka - data i godzina"
 
 #: libcore/Enums.vala:252
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "Format ISO 8601 - tylko data"
 
 #: libcore/Enums.vala:254
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "Format ISO 8601 - data i godzina"
 
 #: libcore/Enums.vala:270
-#, fuzzy
-#| msgid "Recreate"
 msgid "Date created"
-msgstr "Odtwórz"
+msgstr "Data utworzenia"
 
 #: libcore/Enums.vala:272
-#, fuzzy
-#| msgid "Modified"
 msgid "Date Modified"
-msgstr "Czas modyfikacji"
+msgstr "Data modyfikacji"
 
 #: libcore/Enums.vala:274
 msgid "Current Date"
-msgstr ""
+msgstr "Aktualna data"
 
 #: libcore/File.vala:547 libcore/File.vala:1103 libcore/File.vala:1122
 msgid "Inaccessible"
