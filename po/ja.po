@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-26 23:58+0000\n"
-"PO-Revision-Date: 2023-04-13 17:59+0000\n"
+"PO-Revision-Date: 2023-04-28 11:36+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.16.4\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -213,16 +213,12 @@ msgid "Name"
 msgstr "ファイル名"
 
 #: libcore/Enums.vala:160
-#, fuzzy
-#| msgid "Create"
 msgid "Creation Date"
-msgstr "作成"
+msgstr "作成日時"
 
 #: libcore/Enums.vala:163
-#, fuzzy
-#| msgid "Last modified:"
 msgid "Last modification date"
-msgstr "最終更新日時:"
+msgstr "最終更新日時"
 
 #: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2329
 #: src/View/ListView.vala:27
@@ -231,11 +227,11 @@ msgstr "サイズ"
 
 #: libcore/Enums.vala:189
 msgid "Number sequence"
-msgstr ""
+msgstr "序数"
 
 #: libcore/Enums.vala:192
 msgid "Text"
-msgstr ""
+msgstr "テキスト"
 
 #: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2339
 msgid "Date"
@@ -243,55 +239,51 @@ msgstr "日付"
 
 #: libcore/Enums.vala:211
 msgid "Suffix"
-msgstr ""
+msgstr "サフィックス"
 
 #: libcore/Enums.vala:214
 msgid "Prefix"
-msgstr ""
+msgstr "プレフィックス"
 
 #: libcore/Enums.vala:224
 msgid "Text to put at the end"
-msgstr ""
+msgstr "末尾につけるテキスト"
 
 #: libcore/Enums.vala:227
 msgid "Text to put at the start"
-msgstr ""
+msgstr "先頭につけるテキスト"
 
 #: libcore/Enums.vala:246
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "デフォルトの書式 - 日付のみ"
 
 #: libcore/Enums.vala:248
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "デフォルトの書式 - 日付と時刻"
 
 #: libcore/Enums.vala:250
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "ロケールの書式 - 日付と時刻"
 
 #: libcore/Enums.vala:252
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "ISO 8601 の書式 - 日付のみ"
 
 #: libcore/Enums.vala:254
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "ISO 8601 の書式 - 日付と時刻"
 
 #: libcore/Enums.vala:270
-#, fuzzy
-#| msgid "Recreate"
 msgid "Date created"
-msgstr "再作成"
+msgstr "作成日時"
 
 #: libcore/Enums.vala:272
-#, fuzzy
-#| msgid "Modified"
 msgid "Date Modified"
 msgstr "変更日時"
 
 #: libcore/Enums.vala:274
 msgid "Current Date"
-msgstr ""
+msgstr "現在時刻"
 
 #: libcore/File.vala:547 libcore/File.vala:1103 libcore/File.vala:1122
 msgid "Inaccessible"
