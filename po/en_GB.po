@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-30 01:43+0000\n"
-"PO-Revision-Date: 2023-04-28 11:36+0000\n"
-"Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
+"PO-Revision-Date: 2023-05-03 17:06+0000\n"
+"Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/files/en_GB/>\n"
 "Language: en_GB\n"
@@ -1724,7 +1724,7 @@ msgstr "Number sequence"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
 msgid "Fixed Text"
-msgstr ""
+msgstr "Fixed Text"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
 #, fuzzy
@@ -1746,7 +1746,7 @@ msgstr "User name:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:130
 msgid "Unchanged"
-msgstr ""
+msgstr "Unchanged"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
 #: src/View/AbstractDirectoryView.vala:2424
@@ -1771,7 +1771,7 @@ msgstr "Replace with"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:171
 msgid "Number in order of:"
-msgstr ""
+msgstr "Number in order of:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:176
 #, fuzzy
@@ -1781,11 +1781,11 @@ msgstr "Date Modified"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:239
 msgid "Text to be replaced"
-msgstr ""
+msgstr "Text to be replaced"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:351
 msgid "Apply"
-msgstr ""
+msgstr "Apply"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
 #, fuzzy
@@ -1795,7 +1795,7 @@ msgstr "Ignore"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
 msgid "Name is not changed"
-msgstr ""
+msgstr "Name is not changed"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
 #, fuzzy
@@ -1805,7 +1805,7 @@ msgstr "Undo Rename"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
 msgid "Name is invalid or already exists"
-msgstr ""
+msgstr "Name is invalid or already exists"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
 #, fuzzy
@@ -1821,20 +1821,20 @@ msgstr "Reversed Order"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:52
 msgid "Start Number"
-msgstr ""
+msgstr "Start Number"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
 msgid "Digits"
-msgstr ""
+msgstr "Digits"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
 msgid "Separator"
-msgstr ""
+msgstr "Separator"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:302
 #, c-format
 msgid "%0*d,%0*d,%0*d…"
-msgstr ""
+msgstr "%0*d,%0*d,%0*d…"
 
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
