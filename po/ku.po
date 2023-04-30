@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-26 23:58+0000\n"
+"POT-Creation-Date: 2023-04-30 01:43+0000\n"
 "PO-Revision-Date: 2018-02-05 00:11+0000\n"
 "Last-Translator: Rokar <mail@rokar.de>\n"
 "Language-Team: Kurdish <https://weblate.elementary.io/projects/files/files/"
@@ -18,6 +18,8 @@ msgstr ""
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:356
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr ""
@@ -217,11 +219,13 @@ msgstr ""
 msgid "Link Here"
 msgstr ""
 
-#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2324
+#: libcore/Enums.vala:157 src/Dialogs/BulkRenamer/RenamerDialog.vala:174
+#: src/View/AbstractDirectoryView.vala:2324
 msgid "Name"
 msgstr ""
 
-#: libcore/Enums.vala:160
+#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:96
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:100
 #, fuzzy
 #| msgid "Create"
 msgid "Creation Date"
@@ -233,8 +237,8 @@ msgstr "Avakirin"
 msgid "Last modification date"
 msgstr "Guherandina dawî:"
 
-#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2329
-#: src/View/ListView.vala:27
+#: libcore/Enums.vala:166 src/Dialogs/BulkRenamer/RenamerDialog.vala:177
+#: src/View/AbstractDirectoryView.vala:2329 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Mezinahî"
 
@@ -242,7 +246,7 @@ msgstr "Mezinahî"
 msgid "Number sequence"
 msgstr ""
 
-#: libcore/Enums.vala:192
+#: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:306
 msgid "Text"
 msgstr ""
 
@@ -286,7 +290,7 @@ msgstr ""
 msgid "ISO 8601 Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:270
+#: libcore/Enums.vala:270 src/Dialogs/BulkRenamer/RenamerDialog.vala:175
 #, fuzzy
 #| msgid "Create"
 msgid "Date created"
@@ -1134,6 +1138,7 @@ msgid "Remove"
 msgstr "Rake"
 
 #: libcore/PopupMenuBuilder.vala:66
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:85
 msgid "Rename"
 msgstr "Nav biguherîne"
 
@@ -1246,7 +1251,7 @@ msgstr "Pergala pelan"
 msgid "_Cancel"
 msgstr ""
 
-#: libcore/StockDialogs.vala:21
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:361
 #, fuzzy
 msgid "Delete"
 msgstr "Hemûyan _jê bibe"
@@ -1702,6 +1707,143 @@ msgstr ""
 msgid "Used:"
 msgstr ""
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:34
+#, fuzzy
+#| msgid "new file"
+msgid "Original filename"
+msgstr "pelekî nû"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:36
+#, fuzzy
+#| msgid "Modified"
+msgid "Modified original"
+msgstr "Guhertî"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:247
+#, fuzzy
+#| msgid "Rename"
+msgid "New basename"
+msgstr "Nav biguherîne"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:79
+#, fuzzy
+#| msgid "Rename"
+msgid "Bulk Rename"
+msgstr "Nav biguherîne"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
+msgid "Number Sequence"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
+msgid "Fixed Text"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
+msgid "Add Prefix"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
+msgid "Add Suffix"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
+#, fuzzy
+msgid "Basename:"
+msgstr "Navê _Bikarhêner:"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:130
+msgid "Unchanged"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
+#: src/View/AbstractDirectoryView.vala:2424
+#, fuzzy
+msgid "New"
+msgstr "Tor"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132 src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Guhertî"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:144
+msgid "Original Basename"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
+#, fuzzy
+#| msgid "Replace with"
+msgid "Replacement text"
+msgstr "Biguherîne bi"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:171
+msgid "Number in order of:"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:176
+#, fuzzy
+#| msgid "Modified"
+msgid "Date modified"
+msgstr "Guhertî"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:239
+msgid "Text to be replaced"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:351
+msgid "Apply"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+#, fuzzy
+#| msgid "Ignore"
+msgid "Ignored"
+msgstr "Nebîne"
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+msgid "Name is not changed"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+#, fuzzy
+#| msgid "Rename"
+msgid "Cannot rename"
+msgstr "Nav biguherîne"
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+msgid "Name is invalid or already exists"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
+#, fuzzy
+#| msgid "Filename"
+msgid "Will be renamed"
+msgstr "Navê pel"
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
+msgid "Reverse Order"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:52
+msgid "Start Number"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
+msgid "Digits"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
+msgid "Separator"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:302
+#, c-format
+msgid "%0*d,%0*d,%0*d…"
+msgstr ""
+
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
 msgstr ""
@@ -2010,11 +2152,6 @@ msgstr "_Peldank:"
 msgid "Empty File"
 msgstr "Pel tên kopîkirin"
 
-#: src/View/AbstractDirectoryView.vala:2424
-#, fuzzy
-msgid "New"
-msgstr "Tor"
-
 #: src/View/AbstractDirectoryView.vala:2667
 #, c-format
 msgid "Untitled %s"
@@ -2071,10 +2208,6 @@ msgstr "Dosiya sermasê ya nederbasdar"
 #: src/View/ListView.vala:26
 msgid "Filename"
 msgstr "Navê pel"
-
-#: src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Guhertî"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"

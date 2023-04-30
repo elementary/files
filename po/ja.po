@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-26 23:58+0000\n"
+"POT-Creation-Date: 2023-04-30 01:43+0000\n"
 "PO-Revision-Date: 2023-04-28 11:36+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
-"\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
+">\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,6 +23,8 @@ msgstr ""
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:356
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "キャンセル"
@@ -208,11 +210,13 @@ msgstr "ここへコピー"
 msgid "Link Here"
 msgstr "ここへリンク"
 
-#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2324
+#: libcore/Enums.vala:157 src/Dialogs/BulkRenamer/RenamerDialog.vala:174
+#: src/View/AbstractDirectoryView.vala:2324
 msgid "Name"
 msgstr "ファイル名"
 
-#: libcore/Enums.vala:160
+#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:96
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:100
 msgid "Creation Date"
 msgstr "作成日時"
 
@@ -220,8 +224,8 @@ msgstr "作成日時"
 msgid "Last modification date"
 msgstr "最終更新日時"
 
-#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2329
-#: src/View/ListView.vala:27
+#: libcore/Enums.vala:166 src/Dialogs/BulkRenamer/RenamerDialog.vala:177
+#: src/View/AbstractDirectoryView.vala:2329 src/View/ListView.vala:27
 msgid "Size"
 msgstr "サイズ"
 
@@ -229,7 +233,7 @@ msgstr "サイズ"
 msgid "Number sequence"
 msgstr "序数"
 
-#: libcore/Enums.vala:192
+#: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:306
 msgid "Text"
 msgstr "テキスト"
 
@@ -273,7 +277,7 @@ msgstr "ISO 8601 の書式 - 日付のみ"
 msgid "ISO 8601 Format - Date and Time"
 msgstr "ISO 8601 の書式 - 日付と時刻"
 
-#: libcore/Enums.vala:270
+#: libcore/Enums.vala:270 src/Dialogs/BulkRenamer/RenamerDialog.vala:175
 msgid "Date created"
 msgstr "作成日時"
 
@@ -1099,6 +1103,7 @@ msgid "Remove"
 msgstr "ブックマークから削除"
 
 #: libcore/PopupMenuBuilder.vala:66
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:85
 msgid "Rename"
 msgstr "名前を変更"
 
@@ -1205,7 +1210,7 @@ msgstr "ファイルシステム"
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: libcore/StockDialogs.vala:21
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:361
 msgid "Delete"
 msgstr "削除"
 
@@ -1644,6 +1649,153 @@ msgstr "利用可能:"
 msgid "Used:"
 msgstr "使用済み:"
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:34
+#, fuzzy
+#| msgid "Original file"
+msgid "Original filename"
+msgstr "元のファイル"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:36
+#, fuzzy
+#| msgid "Modified"
+msgid "Modified original"
+msgstr "変更日時"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:247
+#, fuzzy
+#| msgid "Redo Rename"
+msgid "New basename"
+msgstr "“名前を変更”をやり直す"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:79
+#, fuzzy
+#| msgid "Rename"
+msgid "Bulk Rename"
+msgstr "名前を変更"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
+#, fuzzy
+#| msgid "Number sequence"
+msgid "Number Sequence"
+msgstr "序数"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
+msgid "Fixed Text"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
+#, fuzzy
+#| msgid "Prefix"
+msgid "Add Prefix"
+msgstr "プレフィックス"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
+#, fuzzy
+#| msgid "Suffix"
+msgid "Add Suffix"
+msgstr "サフィックス"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
+#, fuzzy
+#| msgid "User name:"
+msgid "Basename:"
+msgstr "ユーザー名:"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:130
+msgid "Unchanged"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
+#: src/View/AbstractDirectoryView.vala:2424
+msgid "New"
+msgstr "新規作成"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132 src/View/ListView.vala:29
+msgid "Modified"
+msgstr "変更日時"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:144
+#, fuzzy
+#| msgid "Original file"
+msgid "Original Basename"
+msgstr "元のファイル"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
+#, fuzzy
+#| msgid "Replace with"
+msgid "Replacement text"
+msgstr "置換後のファイル"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:171
+msgid "Number in order of:"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:176
+#, fuzzy
+#| msgid "Date Modified"
+msgid "Date modified"
+msgstr "変更日時"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:239
+msgid "Text to be replaced"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:351
+msgid "Apply"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+#, fuzzy
+#| msgid "Ignore"
+msgid "Ignored"
+msgstr "無視する"
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+msgid "Name is not changed"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+#, fuzzy
+#| msgid "Undo Rename"
+msgid "Cannot rename"
+msgstr "“名前を変更”を元に戻す"
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+msgid "Name is invalid or already exists"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
+#, fuzzy
+#| msgid "Filename"
+msgid "Will be renamed"
+msgstr "ファイル名"
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
+#, fuzzy
+#| msgid "Reversed Order"
+msgid "Reverse Order"
+msgstr "逆順"
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:52
+msgid "Start Number"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
+msgid "Digits"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
+msgid "Separator"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:302
+#, c-format
+msgid "%0*d,%0*d,%0*d…"
+msgstr ""
+
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
 msgstr "デフォルトに設定"
@@ -1941,10 +2093,6 @@ msgstr "フォルダー"
 msgid "Empty File"
 msgstr "空ファイル"
 
-#: src/View/AbstractDirectoryView.vala:2424
-msgid "New"
-msgstr "新規作成"
-
 #: src/View/AbstractDirectoryView.vala:2667
 #, c-format
 msgid "Untitled %s"
@@ -2000,10 +2148,6 @@ msgstr "フォルダーを作成できませんでした"
 #: src/View/ListView.vala:26
 msgid "Filename"
 msgstr "ファイル名"
-
-#: src/View/ListView.vala:29
-msgid "Modified"
-msgstr "変更日時"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"

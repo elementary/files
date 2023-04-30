@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-26 23:58+0000\n"
+"POT-Creation-Date: 2023-04-30 01:43+0000\n"
 "PO-Revision-Date: 2023-04-14 23:59+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
@@ -23,6 +23,8 @@ msgstr ""
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:356
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "Annuler"
@@ -208,11 +210,13 @@ msgstr "Copier ici"
 msgid "Link Here"
 msgstr "Lier ici"
 
-#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2324
+#: libcore/Enums.vala:157 src/Dialogs/BulkRenamer/RenamerDialog.vala:174
+#: src/View/AbstractDirectoryView.vala:2324
 msgid "Name"
 msgstr "Nom"
 
-#: libcore/Enums.vala:160
+#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:96
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:100
 #, fuzzy
 #| msgid "Create"
 msgid "Creation Date"
@@ -224,8 +228,8 @@ msgstr "Créer"
 msgid "Last modification date"
 msgstr "Dernière modification :"
 
-#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2329
-#: src/View/ListView.vala:27
+#: libcore/Enums.vala:166 src/Dialogs/BulkRenamer/RenamerDialog.vala:177
+#: src/View/AbstractDirectoryView.vala:2329 src/View/ListView.vala:27
 msgid "Size"
 msgstr "Taille"
 
@@ -233,7 +237,7 @@ msgstr "Taille"
 msgid "Number sequence"
 msgstr ""
 
-#: libcore/Enums.vala:192
+#: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:306
 msgid "Text"
 msgstr ""
 
@@ -277,7 +281,7 @@ msgstr ""
 msgid "ISO 8601 Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:270
+#: libcore/Enums.vala:270 src/Dialogs/BulkRenamer/RenamerDialog.vala:175
 #, fuzzy
 #| msgid "Recreate"
 msgid "Date created"
@@ -1149,6 +1153,7 @@ msgid "Remove"
 msgstr "Retirer"
 
 #: libcore/PopupMenuBuilder.vala:66
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:85
 msgid "Rename"
 msgstr "Renommer"
 
@@ -1256,7 +1261,7 @@ msgstr "Système de fichier"
 msgid "_Cancel"
 msgstr "Annuler"
 
-#: libcore/StockDialogs.vala:21
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:361
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -1710,6 +1715,147 @@ msgstr "Disponible :"
 msgid "Used:"
 msgstr "Utilisé :"
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:34
+#, fuzzy
+#| msgid "Original file"
+msgid "Original filename"
+msgstr "Fichier original"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:36
+#, fuzzy
+#| msgid "Modified"
+msgid "Modified original"
+msgstr "Modifié"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:247
+#, fuzzy
+#| msgid "Redo Rename"
+msgid "New basename"
+msgstr "Rétablir le renommage"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:79
+#, fuzzy
+#| msgid "Rename"
+msgid "Bulk Rename"
+msgstr "Renommer"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
+msgid "Number Sequence"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
+msgid "Fixed Text"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
+msgid "Add Prefix"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
+msgid "Add Suffix"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
+#, fuzzy
+#| msgid "User name:"
+msgid "Basename:"
+msgstr "Nom d'utilisateur :"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:130
+msgid "Unchanged"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
+#: src/View/AbstractDirectoryView.vala:2424
+msgid "New"
+msgstr "Nouveau"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132 src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Modifié"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:144
+#, fuzzy
+#| msgid "Original file"
+msgid "Original Basename"
+msgstr "Fichier original"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
+#, fuzzy
+#| msgid "Replace with"
+msgid "Replacement text"
+msgstr "Remplacer par"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:171
+msgid "Number in order of:"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:176
+#, fuzzy
+#| msgid "Modified"
+msgid "Date modified"
+msgstr "Modifié"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:239
+msgid "Text to be replaced"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:351
+msgid "Apply"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+#, fuzzy
+#| msgid "Ignore"
+msgid "Ignored"
+msgstr "Ignorer"
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+msgid "Name is not changed"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+#, fuzzy
+#| msgid "Undo Rename"
+msgid "Cannot rename"
+msgstr "Annuler le renommage"
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+msgid "Name is invalid or already exists"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
+#, fuzzy
+#| msgid "Filename"
+msgid "Will be renamed"
+msgstr "Nom du fichier"
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
+#, fuzzy
+#| msgid "Reversed Order"
+msgid "Reverse Order"
+msgstr "Ordre décroissant"
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:52
+msgid "Start Number"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
+msgid "Digits"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
+msgid "Separator"
+msgstr ""
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:302
+#, c-format
+msgid "%0*d,%0*d,%0*d…"
+msgstr ""
+
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
 msgstr "Définir comme valeur par défaut"
@@ -2016,10 +2162,6 @@ msgstr "Dossier"
 msgid "Empty File"
 msgstr "Fichier vide"
 
-#: src/View/AbstractDirectoryView.vala:2424
-msgid "New"
-msgstr "Nouveau"
-
 #: src/View/AbstractDirectoryView.vala:2667
 #, c-format
 msgid "Untitled %s"
@@ -2075,10 +2217,6 @@ msgstr "Impossible de créer le dossier"
 #: src/View/ListView.vala:26
 msgid "Filename"
 msgstr "Nom du fichier"
-
-#: src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Modifié"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
