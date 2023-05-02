@@ -349,8 +349,10 @@ namespace Files {
         /* These two functions accelerate the loading of Views especially for large folders
          * Views are not displayed until fully loaded */
         protected override void freeze_tree () {
-            tree.freeze_child_notify ();
-            tree_frozen = true;
+            if (!tree_frozen) {
+                tree.freeze_child_notify ();
+                tree_frozen = true;
+            }
         }
 
         protected override void thaw_tree () {
@@ -360,12 +362,17 @@ namespace Files {
             }
         }
 
+        // For scrolling
         protected override void freeze_child_notify () {
             tree.freeze_child_notify ();
         }
 
         protected override void thaw_child_notify () {
-            tree.thaw_child_notify ();
+            // Do not prematurely thaw tree when loading
+            if (!tree_frozen) {
+                tree.thaw_child_notify ();
+            }
+
         }
     }
 
