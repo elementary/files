@@ -247,7 +247,7 @@ public class Files.RenamerModifier : Object {
                         dt = file.modified;
                         break;
                     case RenameDateSource.NOW:
-                        dt = (uint64)get_monotonic_time ();
+                        dt = 0;
                         break;
                     default: // Created
                         dt = file.info.get_attribute_uint64 (GLib.FileAttribute.TIME_CREATED);
@@ -276,7 +276,13 @@ public class Files.RenamerModifier : Object {
     }
 
     public string get_formated_datetime (uint64 dt) {
-        var datetime = new DateTime.from_unix_local ((int64)dt);
+        DateTime datetime;
+        if (dt > 0) {
+            datetime = new DateTime.from_unix_local ((int64)dt);
+        } else {
+            datetime = new DateTime.now ();
+        }
+
         switch ((uint)format) {
             case RenameDateFormat.DEFAULT_DATETIME:
                 return datetime.format (Granite.DateTime.get_default_date_format (false, true, true).
