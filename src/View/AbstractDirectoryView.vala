@@ -1103,21 +1103,23 @@ namespace Files {
         }
 
         private void on_selection_action_rename (GLib.SimpleAction action, GLib.Variant? param) {
-            rename_selected_file ();
+            rename_selection ();
         }
 
-        private void rename_selected_file () {
+        private void rename_selection () {
             if (selected_files == null) {
                 return;
             }
 
             if (selected_files.next != null) {
-                warning ("Cannot rename multiple files (yet) - renaming first only");
+                var rename_dialog = new Files.RenamerDialog (selected_files) {
+                    transient_for = slot.window
+                };
+                rename_dialog.run ();
+                rename_dialog.destroy ();
+            } else {
+                rename_file (selected_files.data);
             }
-
-            /* Batch renaming will be provided by a contractor */
-
-            rename_file (selected_files.first ().data);
         }
 
         private void on_selection_action_cut (GLib.SimpleAction action, GLib.Variant? param) {
@@ -2491,7 +2493,7 @@ namespace Files {
             action_set_enabled (common_actions, "paste", !in_recent && is_writable);
             action_set_enabled (common_actions, "paste-into", !renaming & can_paste_into);
             action_set_enabled (common_actions, "open-in", !renaming & only_folders);
-            action_set_enabled (selection_actions, "rename", !renaming & is_selected && !more_than_one_selected && can_rename);
+            action_set_enabled (selection_actions, "rename", !renaming & is_selected && can_rename);
             action_set_enabled (selection_actions, "view-in-location", !renaming & is_selected);
             action_set_enabled (selection_actions, "open", !renaming && is_selected && !more_than_one_selected && can_open);
             action_set_enabled (selection_actions, "open-with-app", !renaming && can_open);
@@ -2971,7 +2973,7 @@ namespace Files {
 
                 case Gdk.Key.F2:
                     if (no_mods && selection_actions.get_action_enabled ("rename")) {
-                        rename_selected_file ();
+                        rename_selection ();
                         res = true;
                     }
 
