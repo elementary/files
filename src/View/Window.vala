@@ -344,7 +344,9 @@ namespace Files.View {
             });
 
             tabs.tab_switched.connect ((old_tab, new_tab) => {
-                change_tab (tabs.get_tab_position (new_tab));
+                if (new_tab != null) {
+                    change_tab (tabs.get_tab_position (new_tab));
+                }
             });
 
             tabs.tab_restored.connect ((label, restore_data, icon) => {
@@ -1052,7 +1054,9 @@ namespace Files.View {
         }
 
         private void save_active_tab_position () {
-            Files.app_settings.set_int ("active-tab-position", tabs.get_tab_position (tabs.current));
+            if (tabs.current != null) {
+                Files.app_settings.set_int ("active-tab-position", tabs.get_tab_position (tabs.current));
+            }
         }
 
         public uint restore_tabs () {
