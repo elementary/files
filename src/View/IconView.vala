@@ -392,12 +392,16 @@ namespace Files {
             }
         }
 
+        // For scrolling
         protected override void freeze_child_notify () {
             tree.freeze_child_notify ();
         }
 
         protected override void thaw_child_notify () {
-            tree.thaw_child_notify ();
+            //Do not prematurely thaw tree while loading
+            if (!tree_frozen) {
+                tree.thaw_child_notify ();
+            }
         }
 
         protected void linear_select_path (Gtk.TreePath path) {
