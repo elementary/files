@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-30 01:43+0000\n"
-"PO-Revision-Date: 2023-05-03 17:06+0000\n"
+"PO-Revision-Date: 2023-05-04 08:26+0000\n"
 "Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
 "\n"
@@ -1747,7 +1747,7 @@ msgstr "Оригинальная"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
 #: src/View/AbstractDirectoryView.vala:2424
 msgid "New"
-msgstr "Новая"
+msgstr "Создать"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132 src/View/ListView.vala:29
 msgid "Modified"
@@ -1763,7 +1763,7 @@ msgstr "На что заменить"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:171
 msgid "Number in order of:"
-msgstr "Порядок чиел:"
+msgstr "Порядок чисел:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:176
 msgid "Date modified"
