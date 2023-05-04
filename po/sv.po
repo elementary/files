@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-30 01:43+0000\n"
+"POT-Creation-Date: 2023-05-04 08:26+0000\n"
 "PO-Revision-Date: 2018-10-22 00:03+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/files/"
@@ -24,7 +24,7 @@ msgstr ""
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:356
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:363
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "Avbryt"
@@ -221,8 +221,7 @@ msgstr "Kopiera hit"
 msgid "Link Here"
 msgstr "Länka hit"
 
-#: libcore/Enums.vala:157 src/Dialogs/BulkRenamer/RenamerDialog.vala:174
-#: src/View/AbstractDirectoryView.vala:2324
+#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2330
 msgid "Name"
 msgstr "Namn"
 
@@ -239,8 +238,8 @@ msgstr "Skapa"
 msgid "Last modification date"
 msgstr "Senast ändrad:"
 
-#: libcore/Enums.vala:166 src/Dialogs/BulkRenamer/RenamerDialog.vala:177
-#: src/View/AbstractDirectoryView.vala:2329 src/View/ListView.vala:27
+#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2335
+#: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Storlek"
 
@@ -252,7 +251,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2339
+#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2345
 msgid "Date"
 msgstr "Datum"
 
@@ -292,7 +291,7 @@ msgstr ""
 msgid "ISO 8601 Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:270 src/Dialogs/BulkRenamer/RenamerDialog.vala:175
+#: libcore/Enums.vala:270
 #, fuzzy
 #| msgid "Create"
 msgid "Date created"
@@ -1186,7 +1185,7 @@ msgid "_Unmount"
 msgstr "_Avmontera"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2041
+#: src/View/AbstractDirectoryView.vala:2047
 msgid "Properties"
 msgstr "Egenskaper"
 
@@ -1200,7 +1199,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "Ta bort"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2034
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2040
 #, fuzzy
 #| msgid "Bookmarks"
 msgid "Add to Bookmarks"
@@ -1293,7 +1292,7 @@ msgstr "Filsystem"
 msgid "_Cancel"
 msgstr "Avbryt"
 
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:361
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:368
 #, fuzzy
 msgid "Delete"
 msgstr "Raderad:"
@@ -1707,8 +1706,8 @@ msgstr "Visa programversionen"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Öppna uri(s) i en ny tab"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1922
-#: src/View/AbstractDirectoryView.vala:1928
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1928
+#: src/View/AbstractDirectoryView.vala:1934
 msgid "New Window"
 msgstr "Nytt fönster"
 
@@ -1818,7 +1817,7 @@ msgid "Modified original"
 msgstr "Ändrad"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:247
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:254
 #, fuzzy
 #| msgid "Rename"
 msgid "New basename"
@@ -1854,46 +1853,81 @@ msgstr ""
 msgid "Basename:"
 msgstr "Användarnamn:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:130
+#. TRANSLATORS: Used as "Basename: Unchanged"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
+msgctxt "bulk-rename"
 msgid "Unchanged"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
-#: src/View/AbstractDirectoryView.vala:2424
+#. TRANSLATORS: Used as "Basename: New"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:133
+#, fuzzy
+#| msgid "New"
+msgctxt "bulk-rename"
 msgid "New"
 msgstr "Ny"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132 src/View/ListView.vala:29
+#. TRANSLATORS: Used as "Basename: Modified"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:135
+#, fuzzy
+#| msgid "Modified"
+msgctxt "bulk-rename"
 msgid "Modified"
 msgstr "Ändrad"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:144
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
 #, fuzzy
 #| msgid "Original file"
 msgid "Original Basename"
 msgstr "Ursprunglig fil"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:150
 #, fuzzy
 #| msgid "Replace with"
 msgid "Replacement text"
 msgstr "Ersätt med"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:171
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:174
 msgid "Number in order of:"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:176
+#. TRANSLATORS: Used as "Number in order of: Name"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:178
+#, fuzzy
+#| msgid "Name"
+msgctxt "bulk-rename"
+msgid "Name"
+msgstr "Namn"
+
+#. TRANSLATORS: Used as "Number in order of: Date created"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:180
+#, fuzzy
+#| msgid "Create"
+msgctxt "bulk-rename"
+msgid "Date created"
+msgstr "Skapa"
+
+#. TRANSLATORS: Used as "Number in order of: Date modified"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:182
 #, fuzzy
 #| msgid "Modified"
+msgctxt "bulk-rename"
 msgid "Date modified"
 msgstr "Ändrad"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:239
+#. TRANSLATORS: Used as "Number in order of: Size"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:184
+#, fuzzy
+#| msgid "Size"
+msgctxt "bulk-rename"
+msgid "Size"
+msgstr "Storlek"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:246
 msgid "Text to be replaced"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:351
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:358
 msgid "Apply"
 msgstr ""
 
@@ -2020,7 +2054,7 @@ msgid "Original Location:"
 msgstr "Ursprunglig plats:"
 
 #: src/Dialogs/PropertiesWindow.vala:648
-#: src/View/AbstractDirectoryView.vala:2009
+#: src/View/AbstractDirectoryView.vala:2015
 msgid "Other Application…"
 msgstr "Annat program…"
 
@@ -2103,184 +2137,188 @@ msgstr "Kunde inte öppna URI:erna"
 msgid "Could not open files or URIs with this app"
 msgstr "Kunde inte öppna filer eller URI:er med det här programmet"
 
-#: src/View/AbstractDirectoryView.vala:837
-#: src/View/AbstractDirectoryView.vala:1150
+#: src/View/AbstractDirectoryView.vala:839
+#: src/View/AbstractDirectoryView.vala:1152
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Kan inte öppna denna filen"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:847
+#: src/View/AbstractDirectoryView.vala:849
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:848
+#: src/View/AbstractDirectoryView.vala:850
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:863
+#: src/View/AbstractDirectoryView.vala:865
 msgid "Cannot open this file"
 msgstr "Kan inte öppna denna filen"
 
-#: src/View/AbstractDirectoryView.vala:876
+#: src/View/AbstractDirectoryView.vala:878
 msgid "Cannot identify file type to open"
 msgstr "Det går inte att identifiera filtyp som ska öppnas"
 
-#: src/View/AbstractDirectoryView.vala:1620
+#: src/View/AbstractDirectoryView.vala:1626
 msgid "Cannot drop this file"
 msgstr "Kan inte släppa denna fil"
 
-#: src/View/AbstractDirectoryView.vala:1621
+#: src/View/AbstractDirectoryView.vala:1627
 msgid "Invalid file name provided"
 msgstr "Ogiltigt filnamn angivit"
 
-#: src/View/AbstractDirectoryView.vala:1905
-#: src/View/AbstractDirectoryView.vala:1911 src/View/Window.vala:183
+#: src/View/AbstractDirectoryView.vala:1911
+#: src/View/AbstractDirectoryView.vala:1917 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "Ny flik"
 
-#: src/View/AbstractDirectoryView.vala:1945
+#: src/View/AbstractDirectoryView.vala:1951
 msgid "Run"
 msgstr "Kör"
 
-#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/AbstractDirectoryView.vala:1958
 #, c-format
 msgid "Open in %s"
 msgstr "Öppna med %s"
 
-#: src/View/AbstractDirectoryView.vala:2021
+#: src/View/AbstractDirectoryView.vala:2027
 msgid "Open in"
 msgstr "Öppna med"
 
-#: src/View/AbstractDirectoryView.vala:2023
+#: src/View/AbstractDirectoryView.vala:2029
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Öppna med"
 
-#: src/View/AbstractDirectoryView.vala:2054
+#: src/View/AbstractDirectoryView.vala:2060
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2063
+#: src/View/AbstractDirectoryView.vala:2069
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2072
+#: src/View/AbstractDirectoryView.vala:2078
 #, fuzzy
 #| msgid "Restore All"
 msgid "Deselect All"
 msgstr "Återställ alla"
 
-#: src/View/AbstractDirectoryView.vala:2080
+#: src/View/AbstractDirectoryView.vala:2086
 msgid "Cut"
 msgstr "Klipp ut"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Copy"
 msgstr "Kopiera"
 
-#: src/View/AbstractDirectoryView.vala:2095
+#: src/View/AbstractDirectoryView.vala:2101
 msgid "Move to Trash"
 msgstr "Flytta till papperskorgen"
 
-#: src/View/AbstractDirectoryView.vala:2100
+#: src/View/AbstractDirectoryView.vala:2106
 #, fuzzy
 #| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "Radera permanent"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2113
 msgid "Restore from Trash"
 msgstr "Återställ från papperskorgen"
 
-#: src/View/AbstractDirectoryView.vala:2130
+#: src/View/AbstractDirectoryView.vala:2136
 msgid "Open Parent Folder"
 msgstr "Öppna mappen ovan"
 
-#: src/View/AbstractDirectoryView.vala:2133
+#: src/View/AbstractDirectoryView.vala:2139
 msgid "Remove from History"
 msgstr "Ta bort från historiken"
 
-#: src/View/AbstractDirectoryView.vala:2159
+#: src/View/AbstractDirectoryView.vala:2165
 #, fuzzy
 #| msgid "Rename"
 msgid "Rename…"
 msgstr "Byt namn"
 
-#: src/View/AbstractDirectoryView.vala:2166
+#: src/View/AbstractDirectoryView.vala:2172
 msgid "Copy as Link"
 msgstr "Kopiera som länk"
 
-#: src/View/AbstractDirectoryView.vala:2189
-#: src/View/AbstractDirectoryView.vala:2269
+#: src/View/AbstractDirectoryView.vala:2195
+#: src/View/AbstractDirectoryView.vala:2275
 msgid "Paste Link into Folder"
 msgstr "Klistra in länk i mapp"
 
-#: src/View/AbstractDirectoryView.vala:2194
-#: src/View/AbstractDirectoryView.vala:2246
+#: src/View/AbstractDirectoryView.vala:2200
+#: src/View/AbstractDirectoryView.vala:2252
 msgid "Paste into Folder"
 msgstr "Klistra in i mapp"
 
-#: src/View/AbstractDirectoryView.vala:2204
-#: src/View/AbstractDirectoryView.vala:2274
+#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2280
 msgid "Paste"
 msgstr "Klistra in"
 
-#: src/View/AbstractDirectoryView.vala:2334 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2340 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Filtyp"
 
-#: src/View/AbstractDirectoryView.vala:2344
+#: src/View/AbstractDirectoryView.vala:2350
 msgid "Reversed Order"
 msgstr "Omvänd ordning"
 
-#: src/View/AbstractDirectoryView.vala:2347
+#: src/View/AbstractDirectoryView.vala:2353
 msgid "Folders Before Files"
 msgstr "Mappar före filer"
 
-#: src/View/AbstractDirectoryView.vala:2359
+#: src/View/AbstractDirectoryView.vala:2365
 msgid "Sort by"
 msgstr "Sortera efter"
 
-#: src/View/AbstractDirectoryView.vala:2367
+#: src/View/AbstractDirectoryView.vala:2373
 msgid "Folder"
 msgstr "Mapp"
 
-#: src/View/AbstractDirectoryView.vala:2373
+#: src/View/AbstractDirectoryView.vala:2379
 msgid "Empty File"
 msgstr "Tom fil"
 
-#: src/View/AbstractDirectoryView.vala:2667
+#: src/View/AbstractDirectoryView.vala:2430
+msgid "New"
+msgstr "Ny"
+
+#: src/View/AbstractDirectoryView.vala:2673
 #, c-format
 msgid "Untitled %s"
 msgstr "Namnlös %s"
 
-#: src/View/AbstractDirectoryView.vala:2985
-#: src/View/AbstractDirectoryView.vala:3178
+#: src/View/AbstractDirectoryView.vala:2991
+#: src/View/AbstractDirectoryView.vala:3184
 msgid "Cannot remove files from here"
 msgstr "Det går inte att ta bort filer härifrån"
 
-#: src/View/AbstractDirectoryView.vala:2986
-#: src/View/AbstractDirectoryView.vala:3151
-#: src/View/AbstractDirectoryView.vala:3162
-#: src/View/AbstractDirectoryView.vala:3179
+#: src/View/AbstractDirectoryView.vala:2992
+#: src/View/AbstractDirectoryView.vala:3157
+#: src/View/AbstractDirectoryView.vala:3168
+#: src/View/AbstractDirectoryView.vala:3185
 msgid "You do not have permission to change this location"
 msgstr "Du har inte behörighet att ändra den här platsen"
 
-#: src/View/AbstractDirectoryView.vala:3119
+#: src/View/AbstractDirectoryView.vala:3125
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan inte kopiera filer som ligger i papperskorgen"
 
-#: src/View/AbstractDirectoryView.vala:3120
+#: src/View/AbstractDirectoryView.vala:3126
 msgid "Cutting the selection instead"
 msgstr "Klipper ut markeringen istället"
 
-#: src/View/AbstractDirectoryView.vala:3150
-#: src/View/AbstractDirectoryView.vala:3161
+#: src/View/AbstractDirectoryView.vala:3156
+#: src/View/AbstractDirectoryView.vala:3167
 msgid "Cannot paste files here"
 msgstr "Kan inte kopiera filer hit"
 
@@ -2313,6 +2351,10 @@ msgstr ""
 #: src/View/ListView.vala:26
 msgid "Filename"
 msgstr "Filnamn"
+
+#: src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Ändrad"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
@@ -2406,22 +2448,22 @@ msgstr "Den valda filen finns inte längre."
 msgid "Undo Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:497
+#: src/View/Window.vala:499
 #, fuzzy
 #| msgid "Close"
 msgid "Close Tab"
 msgstr "Stäng"
 
-#: src/View/Window.vala:498
+#: src/View/Window.vala:500
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Duplicerar \"%B\""
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:501 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Öppna i nytt fönster"
 
-#: src/View/Window.vala:627 src/View/Window.vala:637
+#: src/View/Window.vala:629 src/View/Window.vala:639
 msgid "(as Administrator)"
 msgstr "(som administratör)"
 
