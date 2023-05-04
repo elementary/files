@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-30 01:43+0000\n"
+"POT-Creation-Date: 2023-05-04 08:26+0000\n"
 "PO-Revision-Date: 2023-04-14 23:59+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://l10n.elementary.io/projects/files/extra/ka/"

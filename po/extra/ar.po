@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-30 01:43+0000\n"
+"POT-Creation-Date: 2023-05-04 08:26+0000\n"
 "PO-Revision-Date: 2023-02-16 21:22+0000\n"
 "Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/extra/ar/>\n"
