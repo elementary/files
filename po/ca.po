@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-30 01:43+0000\n"
-"PO-Revision-Date: 2023-04-28 11:36+0000\n"
+"PO-Revision-Date: 2023-05-03 17:06+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1694,63 +1694,47 @@ msgid "Used:"
 msgstr "Usat:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:34
-#, fuzzy
-#| msgid "Original file"
 msgid "Original filename"
-msgstr "Fitxer original"
+msgstr "Nom de fitxer original"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:36
-#, fuzzy
-#| msgid "Modified"
 msgid "Modified original"
-msgstr "Modificat"
+msgstr "Original modificat"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:247
-#, fuzzy
-#| msgid "Redo Rename"
 msgid "New basename"
-msgstr "Refés el canvi de nom"
+msgstr "Nom de base nou"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:79
-#, fuzzy
-#| msgid "Rename"
 msgid "Bulk Rename"
-msgstr "Canvia'n el nom"
+msgstr "Canvi de nom en bloc"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
-#, fuzzy
-#| msgid "Number sequence"
 msgid "Number Sequence"
 msgstr "Seqüència numèrica"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
 msgid "Fixed Text"
-msgstr ""
+msgstr "Text corregit"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
-#, fuzzy
-#| msgid "Prefix"
 msgid "Add Prefix"
-msgstr "Prefix"
+msgstr "Afegeix un prefix"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
-#, fuzzy
-#| msgid "Suffix"
 msgid "Add Suffix"
-msgstr "Sufix"
+msgstr "Afegeix un sufix"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
-#, fuzzy
-#| msgid "User name:"
 msgid "Basename:"
-msgstr "Nom d'usuari:"
+msgstr "Nom de base:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:130
 msgid "Unchanged"
-msgstr ""
+msgstr "Sense canvis"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
 #: src/View/AbstractDirectoryView.vala:2424
@@ -1762,83 +1746,69 @@ msgid "Modified"
 msgstr "Modificat"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:144
-#, fuzzy
-#| msgid "Original file"
 msgid "Original Basename"
-msgstr "Fitxer original"
+msgstr "Nom de base original"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
-#, fuzzy
-#| msgid "Replace with"
 msgid "Replacement text"
-msgstr "Reemplaça amb"
+msgstr "Text de substitució"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:171
 msgid "Number in order of:"
-msgstr ""
+msgstr "Número per ordre de"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:176
-#, fuzzy
-#| msgid "Date Modified"
 msgid "Date modified"
 msgstr "Data de modificació"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:239
 msgid "Text to be replaced"
-msgstr ""
+msgstr "Text per substituir"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:351
 msgid "Apply"
-msgstr ""
+msgstr "Aplica-ho"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
-#, fuzzy
-#| msgid "Ignore"
 msgid "Ignored"
-msgstr "Ignora"
+msgstr "Ignorat"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
 msgid "Name is not changed"
-msgstr ""
+msgstr "El nom no es canvia"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
-#, fuzzy
-#| msgid "Undo Rename"
 msgid "Cannot rename"
-msgstr "Desfés el canvi de nom"
+msgstr "No se'n pot canviar el nom."
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
 msgid "Name is invalid or already exists"
-msgstr ""
+msgstr "El nom no és vàlid o ja existeix."
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
-#, fuzzy
-#| msgid "Filename"
 msgid "Will be renamed"
-msgstr "Nom del fitxer"
+msgstr "Es canviarà de nom."
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
-#, fuzzy
-#| msgid "Reversed Order"
 msgid "Reverse Order"
 msgstr "Ordre invers"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:52
 msgid "Start Number"
-msgstr ""
+msgstr "Número inicial"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
 msgid "Digits"
-msgstr ""
+msgstr "Dígits"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
 msgid "Separator"
-msgstr ""
+msgstr "Separador"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:302
 #, c-format
 msgid "%0*d,%0*d,%0*d…"
-msgstr ""
+msgstr "%0*d,%0*d,%0*d…"
 
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
