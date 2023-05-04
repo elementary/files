@@ -128,8 +128,8 @@ public class Files.RenamerDialog : Granite.Dialog {
 
         var basename_label = new Gtk.Label (_("Basename:"));
         original_check = new Gtk.RadioButton.with_label (null, _("Unchanged")) { margin_start = 24 };
-        new_check = new Gtk.RadioButton.with_label_from_widget (original_check, _("New")) { margin_start = 24 };
-        replace_check = new Gtk.RadioButton.with_label_from_widget (original_check, _("Modified")) { margin_start = 24 };
+        new_check = new Gtk.RadioButton.with_label_from_widget (original_check, NC_("bulk-rename", "New")) { margin_start = 24 };
+        replace_check = new Gtk.RadioButton.with_label_from_widget (original_check, NC_("bulk-rename", "Modified")) { margin_start = 24 };
 
         var basename_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
             halign = Gtk.Align.CENTER,
@@ -171,10 +171,10 @@ public class Files.RenamerDialog : Granite.Dialog {
         var sortby_label = new Gtk.Label (_("Number in order of:"));
 
         //TODO Replace RadioButtons with linked ToggleButtons in Gtk4
-        var name_check = new Gtk.RadioButton.with_label (null, _("Name")) {margin_start = 6};
-        var created_check = new Gtk.RadioButton.with_label_from_widget (name_check, _("Date created")) {margin_start = 6};
-        var modified_check = new Gtk.RadioButton.with_label_from_widget (name_check, _("Date modified")) {margin_start = 6};
-        var size_check = new Gtk.RadioButton.with_label_from_widget (name_check, _("Size")) {margin_start = 6};
+        var name_check = new Gtk.RadioButton.with_label (null, NC_("bulk-rename", "Name")) {margin_start = 6};
+        var created_check = new Gtk.RadioButton.with_label_from_widget (name_check, NC_("bulk-rename", "Date created")) {margin_start = 6};
+        var modified_check = new Gtk.RadioButton.with_label_from_widget (name_check, NC_("bulk-rename", "Date modified")) {margin_start = 6};
+        var size_check = new Gtk.RadioButton.with_label_from_widget (name_check, NC_("bulk-rename", "Size")) {margin_start = 6};
 
         var sortby_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3) {
             margin_bottom = 6,
