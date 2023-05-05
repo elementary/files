@@ -72,7 +72,11 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
     private bool sort_directories_first = true;
 
+    private Gee.TreeMap<string?, Gtk.TreeRowReference> file_treerow_map;
+
     construct {
+        file_treerow_map = new Gee.TreeMap<string, Gtk.TreeRowReference> (null, null);
+
         set_column_types ({
             typeof (Files.File),
             typeof (string),
@@ -93,6 +97,20 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             ColumnID.FILENAME,
             Gtk.SortType.ASCENDING
         );
+    }
+
+    // Turn off sorting while files are being added
+    public void prepare_to_load () {
+        for (int i = 0; i < ColumnID.NUM_COLUMNS; i++) {
+            set_sort_func (i, () => {return 0;});
+        }
+    }
+
+    // Turn on sorting after model stops loading.
+    public void after_loading () {
+        for (int i = 0; i < ColumnID.NUM_COLUMNS; i++) {
+            set_sort_func (i, (Gtk.TreeIterCompareFunc) file_entry_compare_func);
+        }
     }
 
     public Files.File? file_for_path (Gtk.TreePath path) {
@@ -116,20 +134,14 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     }
 
     public bool get_first_iter_for_file (Files.File file, out Gtk.TreeIter? iter) {
-        Gtk.TreeIter? tmp_iter = null;
-        this.foreach ((model, path, i_iter) => {
-            Files.File? iter_file = null;
-            get (i_iter, ColumnID.FILE_COLUMN, ref iter_file);
-            if (iter_file == file) {
-                tmp_iter = i_iter;
-                return true;
-            }
-
+        iter = null;
+        var row = file_treerow_map.@get (file.uri);
+        if (row != null) {
+            get_iter (out iter, row.get_path ());
+            return true;
+        } else {
             return false;
-        });
-
-        iter = tmp_iter;
-        return tmp_iter != null;
+        }
     }
 
     public void get_value (Gtk.TreeIter iter, int column, out Value value) {
@@ -333,6 +345,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
                 if (change_dummy) {
                     // Instead of inserting a new row, change the dummy one
                     @set (file_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                    file_treerow_map.@set (file.uri, new Gtk.TreeRowReference (this, get_path (file_iter)));
                 }
             } else {
                 critical ("folder item with no child"); // The parent file must be a folder and have at lease a dummy entry

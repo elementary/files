@@ -637,11 +637,13 @@ namespace Files {
         }
 
         protected void connect_directory_loading_handlers (Directory dir) {
+            model.prepare_to_load ();
             dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_directory_done_loading);
         }
 
         protected void disconnect_directory_loading_handlers (Directory dir) {
+            model.after_loading ();
             dir.file_loaded.disconnect (on_directory_file_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);
         }
@@ -1408,7 +1410,11 @@ namespace Files {
                 is_writable = false;
             }
 
-            thaw_tree ();
+            Idle.add (() => {
+                thaw_tree ();
+                return Source.REMOVE;
+            });
+
 
             schedule_thumbnail_color_tag_timeout ();
         }
@@ -1468,7 +1474,7 @@ namespace Files {
 
         private void directory_hidden_changed (Directory dir, bool show) {
             /* May not be slot.directory - could be subdirectory */
-            dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
+            connect_directory_loading_handlers (dir);
             dir.load_hiddens ();
         }
 
