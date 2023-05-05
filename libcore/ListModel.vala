@@ -357,6 +357,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         if (!change_dummy) {
             // There was no dummy row to replace so create a new entry for this file
             insert_with_values (out file_iter, parent_iter, 0, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false);
+            file_treerow_map.@set (file.uri, new Gtk.TreeRowReference (this, get_path (file_iter)));
         }
 
         if (file.is_folder ()) {
