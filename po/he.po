@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-11 19:23+0000\n"
-"PO-Revision-Date: 2023-04-13 17:59+0000\n"
+"POT-Creation-Date: 2023-05-04 08:26+0000\n"
+"PO-Revision-Date: 2023-05-04 08:45+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -16,12 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.16.4\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:363
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "ביטול"
@@ -205,42 +207,120 @@ msgstr "העתקה לכאן"
 msgid "Link Here"
 msgstr "קישור לכאן"
 
-#: libcore/File.vala:545 libcore/File.vala:1101 libcore/File.vala:1120
+#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2330
+msgid "Name"
+msgstr "שם"
+
+#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:96
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:100
+msgid "Creation Date"
+msgstr "תאריך יצירה"
+
+#: libcore/Enums.vala:163
+msgid "Last modification date"
+msgstr "מועד שינוי אחרון"
+
+#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2335
+#: src/View/ListView.vala:27
+msgid "Size"
+msgstr "גודל"
+
+#: libcore/Enums.vala:189
+msgid "Number sequence"
+msgstr "רצף מספרים"
+
+#: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:306
+msgid "Text"
+msgstr "טקסט"
+
+#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2345
+msgid "Date"
+msgstr "תאריך"
+
+#: libcore/Enums.vala:211
+msgid "Suffix"
+msgstr "סיומת"
+
+#: libcore/Enums.vala:214
+msgid "Prefix"
+msgstr "קידומת"
+
+#: libcore/Enums.vala:224
+msgid "Text to put at the end"
+msgstr "טקסט להוספה בסוף"
+
+#: libcore/Enums.vala:227
+msgid "Text to put at the start"
+msgstr "טקסט להוספה בהתחלה"
+
+#: libcore/Enums.vala:246
+msgid "Default Format - Date only"
+msgstr "תבנית ברירת מחדל - תאריך בלבד"
+
+#: libcore/Enums.vala:248
+msgid "Default Format - Date and Time"
+msgstr "תבנית ברירת מחדל - תאריך ושעה"
+
+#: libcore/Enums.vala:250
+msgid "Locale Format - Date and Time"
+msgstr "תבנית מקומית - תאריך ושעה"
+
+#: libcore/Enums.vala:252
+msgid "ISO 8601 Format - Date only"
+msgstr "תבנית ISO 8601 - תאריך בלבד"
+
+#: libcore/Enums.vala:254
+msgid "ISO 8601 Format - Date and Time"
+msgstr "תאריך ISO 8601 - תאריך ושעה"
+
+#: libcore/Enums.vala:270
+msgid "Date created"
+msgstr "מועד היצירה"
+
+#: libcore/Enums.vala:272
+msgid "Date Modified"
+msgstr "מועד השינוי"
+
+#: libcore/Enums.vala:274
+msgid "Current Date"
+msgstr "תאריך נוכחי"
+
+#: libcore/File.vala:547 libcore/File.vala:1103 libcore/File.vala:1122
 msgid "Inaccessible"
 msgstr "אין גישה"
 
-#: libcore/File.vala:886
+#: libcore/File.vala:888
 msgid "Failed to parse the desktop file"
 msgstr "פענוח קובץ שולחן העבודה נכשל"
 
-#: libcore/File.vala:890
+#: libcore/File.vala:892
 msgid "Failed to parse the desktop file: "
 msgstr "פענוח קובץ שולחן העבודה נכשל: "
 
-#: libcore/File.vala:902
+#: libcore/File.vala:904
 msgid "Failed to create command from file: "
 msgstr "יצירת פקודה מקובץ נכשלה: "
 
-#: libcore/File.vala:911
+#: libcore/File.vala:913
 msgid "Unable to Launch Desktop File: "
 msgstr "לא ניתן להפעיל את קובץ שולחן העבודה: "
 
-#: libcore/File.vala:1115
+#: libcore/File.vala:1117
 msgid "Empty"
 msgstr "ריק"
 
-#: libcore/File.vala:1117
+#: libcore/File.vala:1119
 #, c-format
 msgid "%i item"
 msgid_plural "%i items"
 msgstr[0] "פריט"
 msgstr[1] "%i פריטים"
 
-#: libcore/File.vala:1124
+#: libcore/File.vala:1126
 msgid "----"
 msgstr "----"
 
-#: libcore/File.vala:1131
+#: libcore/File.vala:1133
 #, c-format
 msgid "link to %s"
 msgstr "קישור אל %s"
@@ -1029,6 +1109,7 @@ msgid "Remove"
 msgstr "הסרה"
 
 #: libcore/PopupMenuBuilder.vala:66
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:85
 msgid "Rename"
 msgstr "שינוי שם"
 
@@ -1041,7 +1122,7 @@ msgid "_Unmount"
 msgstr "_ניתוק עיגון"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2039
+#: src/View/AbstractDirectoryView.vala:2047
 msgid "Properties"
 msgstr "מאפיינים"
 
@@ -1053,7 +1134,7 @@ msgstr "שליפת אמצעי אחסון"
 msgid "Safely Remove"
 msgstr "הסרה בטוחה"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2032
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2040
 msgid "Add to Bookmarks"
 msgstr "הוספה לסימניות"
 
@@ -1135,7 +1216,7 @@ msgstr "מערכת קבצים"
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: libcore/StockDialogs.vala:21
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:368
 msgid "Delete"
 msgstr "מחיקה"
 
@@ -1477,8 +1558,8 @@ msgstr "הצגת גרסת התכנית"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "פתיחת כתובת אחת ומעלה, כל אחת בלשונית נפרדת"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1920
-#: src/View/AbstractDirectoryView.vala:1926
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1928
+#: src/View/AbstractDirectoryView.vala:1934
 msgid "New Window"
 msgstr "חלון חדש"
 
@@ -1574,6 +1655,148 @@ msgstr "פנויים:"
 msgid "Used:"
 msgstr "מנוצלים:"
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:34
+msgid "Original filename"
+msgstr "שם הקובץ המקורי"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:36
+msgid "Modified original"
+msgstr "מקור שנערך"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:254
+msgid "New basename"
+msgstr "שם בסיס חדש"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:79
+msgid "Bulk Rename"
+msgstr "שינוי שם במרוכז"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
+msgid "Number Sequence"
+msgstr "רצף מספרים"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
+msgid "Fixed Text"
+msgstr "טקסט קבוע"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
+msgid "Add Prefix"
+msgstr "הוספת קידומת"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
+msgid "Add Suffix"
+msgstr "הוספת סיומת"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
+msgid "Basename:"
+msgstr "שם בסיס:"
+
+#. TRANSLATORS: Used as "Basename: Unchanged"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
+msgctxt "bulk-rename"
+msgid "Unchanged"
+msgstr "ללא שינוי"
+
+#. TRANSLATORS: Used as "Basename: New"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:133
+msgctxt "bulk-rename"
+msgid "New"
+msgstr "חדש"
+
+#. TRANSLATORS: Used as "Basename: Modified"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:135
+msgctxt "bulk-rename"
+msgid "Modified"
+msgstr "מועד השינוי"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
+msgid "Original Basename"
+msgstr "שם בסיס מקורי"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:150
+msgid "Replacement text"
+msgstr "טקסט החלפה"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:174
+msgid "Number in order of:"
+msgstr "מספר לפי סדר:"
+
+#. TRANSLATORS: Used as "Number in order of: Name"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:178
+msgctxt "bulk-rename"
+msgid "Name"
+msgstr "שם"
+
+#. TRANSLATORS: Used as "Number in order of: Date created"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:180
+msgctxt "bulk-rename"
+msgid "Date created"
+msgstr "מועד היצירה"
+
+#. TRANSLATORS: Used as "Number in order of: Date modified"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:182
+msgctxt "bulk-rename"
+msgid "Date modified"
+msgstr "מועד השינוי"
+
+#. TRANSLATORS: Used as "Number in order of: Size"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:184
+msgctxt "bulk-rename"
+msgid "Size"
+msgstr "גודל"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:246
+msgid "Text to be replaced"
+msgstr "טקסט להחלפה"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:358
+msgid "Apply"
+msgstr "החלה"
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+msgid "Ignored"
+msgstr "זכה להתעלמות"
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+msgid "Name is not changed"
+msgstr "השם לא השתנה"
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+msgid "Cannot rename"
+msgstr "לא ניתן לשנות שם"
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+msgid "Name is invalid or already exists"
+msgstr "השם שגוי או שהוא כבר קיים"
+
+#: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
+msgid "Will be renamed"
+msgstr "השם ישתנה"
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
+msgid "Reverse Order"
+msgstr "היפוך סדר"
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:52
+msgid "Start Number"
+msgstr "מספר התחלתי"
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
+msgid "Digits"
+msgstr "ספרות"
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
+msgid "Separator"
+msgstr "מפריד"
+
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:302
+#, c-format
+msgid "%0*d,%0*d,%0*d…"
+msgstr "‎%0*d,%0*d,%0*d…"
+
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
 msgstr "הגדרה כבררת מחדל"
@@ -1647,7 +1870,7 @@ msgid "Original Location:"
 msgstr "מיקום מקורי:"
 
 #: src/Dialogs/PropertiesWindow.vala:648
-#: src/View/AbstractDirectoryView.vala:2007
+#: src/View/AbstractDirectoryView.vala:2015
 msgid "Other Application…"
 msgstr "יישום אחר…"
 
@@ -1730,18 +1953,18 @@ msgstr "לא ניתן לפתוח כתובות"
 msgid "Could not open files or URIs with this app"
 msgstr "לא ניתן לפתוח קבצים או כתובות עם יישום זה"
 
-#: src/View/AbstractDirectoryView.vala:837
-#: src/View/AbstractDirectoryView.vala:1148
+#: src/View/AbstractDirectoryView.vala:839
+#: src/View/AbstractDirectoryView.vala:1152
 msgid "Cannot execute this file"
 msgstr "לא ניתן להפעיל קובץ זה"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:847
+#: src/View/AbstractDirectoryView.vala:849
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "יש להעביר את „%s” אל מחוץ לסל האשפה בטרם הפתיחה"
 
-#: src/View/AbstractDirectoryView.vala:848
+#: src/View/AbstractDirectoryView.vala:850
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -1749,176 +1972,164 @@ msgstr ""
 "לא ניתן לפתוח קבצים מתוך פח האשפה. כדי לפתוח את הקובץ הזה, יש להעביר אותו "
 "למקום אחר."
 
-#: src/View/AbstractDirectoryView.vala:863
+#: src/View/AbstractDirectoryView.vala:865
 msgid "Cannot open this file"
 msgstr "לא ניתן לפתוח קובץ זה"
 
-#: src/View/AbstractDirectoryView.vala:876
+#: src/View/AbstractDirectoryView.vala:878
 msgid "Cannot identify file type to open"
 msgstr "לא ניתן לזהות את סוג הקובץ לפתיחה"
 
-#: src/View/AbstractDirectoryView.vala:1618
+#: src/View/AbstractDirectoryView.vala:1626
 msgid "Cannot drop this file"
 msgstr "לא ניתן להשליך קובץ זה"
 
-#: src/View/AbstractDirectoryView.vala:1619
+#: src/View/AbstractDirectoryView.vala:1627
 msgid "Invalid file name provided"
 msgstr "שם הקובץ שסופק שגוי"
 
-#: src/View/AbstractDirectoryView.vala:1903
-#: src/View/AbstractDirectoryView.vala:1909 src/View/Window.vala:183
+#: src/View/AbstractDirectoryView.vala:1911
+#: src/View/AbstractDirectoryView.vala:1917 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "לשונית חדשה"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1951
 msgid "Run"
 msgstr "הפעלה"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1958
 #, c-format
 msgid "Open in %s"
 msgstr "פתיחה עם %s"
 
-#: src/View/AbstractDirectoryView.vala:2019
+#: src/View/AbstractDirectoryView.vala:2027
 msgid "Open in"
 msgstr "פתיחה עם"
 
-#: src/View/AbstractDirectoryView.vala:2021
+#: src/View/AbstractDirectoryView.vala:2029
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "פתיחה באמצעות"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2060
 msgid "Select All"
 msgstr "לבחור הכול"
 
-#: src/View/AbstractDirectoryView.vala:2061
+#: src/View/AbstractDirectoryView.vala:2069
 msgid "Invert Selection"
 msgstr "היפוך הבחירה"
 
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:2078
 msgid "Deselect All"
 msgstr "ביטול הבחירה"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2086
 msgid "Cut"
 msgstr "גזירה"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Copy"
 msgstr "העתקה"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2101
 msgid "Move to Trash"
 msgstr "העברה לסל האשפה"
 
-#: src/View/AbstractDirectoryView.vala:2098
+#: src/View/AbstractDirectoryView.vala:2106
 msgid "Delete Permanently"
 msgstr "מחיקה לצמיתות"
 
-#: src/View/AbstractDirectoryView.vala:2105
+#: src/View/AbstractDirectoryView.vala:2113
 msgid "Restore from Trash"
 msgstr "שחזור מסל האשפה"
 
-#: src/View/AbstractDirectoryView.vala:2128
+#: src/View/AbstractDirectoryView.vala:2136
 msgid "Open Parent Folder"
 msgstr "פתיחת התיקייה העליונה"
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2139
 msgid "Remove from History"
 msgstr "הסרה מההיסטוריה"
 
-#: src/View/AbstractDirectoryView.vala:2157
+#: src/View/AbstractDirectoryView.vala:2165
 msgid "Rename…"
 msgstr "שינוי שם…"
 
-#: src/View/AbstractDirectoryView.vala:2164
+#: src/View/AbstractDirectoryView.vala:2172
 msgid "Copy as Link"
 msgstr "העתקה כקישור"
 
-#: src/View/AbstractDirectoryView.vala:2187
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2195
+#: src/View/AbstractDirectoryView.vala:2275
 msgid "Paste Link into Folder"
 msgstr "הדבקת קישור לתוך תיקייה"
 
-#: src/View/AbstractDirectoryView.vala:2192
-#: src/View/AbstractDirectoryView.vala:2244
+#: src/View/AbstractDirectoryView.vala:2200
+#: src/View/AbstractDirectoryView.vala:2252
 msgid "Paste into Folder"
 msgstr "הדבקה לתיקייה"
 
-#: src/View/AbstractDirectoryView.vala:2202
-#: src/View/AbstractDirectoryView.vala:2272
+#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2280
 msgid "Paste"
 msgstr "הדבקה"
 
-#: src/View/AbstractDirectoryView.vala:2322
-msgid "Name"
-msgstr "שם"
-
-#: src/View/AbstractDirectoryView.vala:2327 src/View/ListView.vala:27
-msgid "Size"
-msgstr "גודל"
-
-#: src/View/AbstractDirectoryView.vala:2332 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2340 src/View/ListView.vala:28
 msgid "Type"
 msgstr "סוג"
 
-#: src/View/AbstractDirectoryView.vala:2337
-msgid "Date"
-msgstr "תאריך"
-
-#: src/View/AbstractDirectoryView.vala:2342
+#: src/View/AbstractDirectoryView.vala:2350
 msgid "Reversed Order"
 msgstr "סדר הפוך"
 
-#: src/View/AbstractDirectoryView.vala:2345
+#: src/View/AbstractDirectoryView.vala:2353
 msgid "Folders Before Files"
 msgstr "תיקיות לפני קבצים"
 
-#: src/View/AbstractDirectoryView.vala:2357
+#: src/View/AbstractDirectoryView.vala:2365
 msgid "Sort by"
 msgstr "מיון לפי"
 
-#: src/View/AbstractDirectoryView.vala:2365
+#: src/View/AbstractDirectoryView.vala:2373
 msgid "Folder"
 msgstr "תיקייה"
 
-#: src/View/AbstractDirectoryView.vala:2371
+#: src/View/AbstractDirectoryView.vala:2379
 msgid "Empty File"
 msgstr "קובץ ריק"
 
-#: src/View/AbstractDirectoryView.vala:2422
+#: src/View/AbstractDirectoryView.vala:2430
 msgid "New"
 msgstr "חדש"
 
-#: src/View/AbstractDirectoryView.vala:2665
+#: src/View/AbstractDirectoryView.vala:2673
 #, c-format
 msgid "Untitled %s"
 msgstr "%s ללא שם"
 
-#: src/View/AbstractDirectoryView.vala:2983
-#: src/View/AbstractDirectoryView.vala:3176
+#: src/View/AbstractDirectoryView.vala:2991
+#: src/View/AbstractDirectoryView.vala:3184
 msgid "Cannot remove files from here"
 msgstr "לא ניתן להסיר מכאן קבצים"
 
-#: src/View/AbstractDirectoryView.vala:2984
-#: src/View/AbstractDirectoryView.vala:3149
-#: src/View/AbstractDirectoryView.vala:3160
-#: src/View/AbstractDirectoryView.vala:3177
+#: src/View/AbstractDirectoryView.vala:2992
+#: src/View/AbstractDirectoryView.vala:3157
+#: src/View/AbstractDirectoryView.vala:3168
+#: src/View/AbstractDirectoryView.vala:3185
 msgid "You do not have permission to change this location"
 msgstr "אין לך הרשאות לשנות את המיקום הזה"
 
-#: src/View/AbstractDirectoryView.vala:3117
+#: src/View/AbstractDirectoryView.vala:3125
 msgid "Cannot copy files that are in the trash"
 msgstr "לא ניתן להעתיק קבצים שנמצאים באשפה"
 
-#: src/View/AbstractDirectoryView.vala:3118
+#: src/View/AbstractDirectoryView.vala:3126
 msgid "Cutting the selection instead"
 msgstr "גזירת הבחירה במקום"
 
-#: src/View/AbstractDirectoryView.vala:3148
-#: src/View/AbstractDirectoryView.vala:3159
+#: src/View/AbstractDirectoryView.vala:3156
+#: src/View/AbstractDirectoryView.vala:3167
 msgid "Cannot paste files here"
 msgstr "לא ניתן להדביק לכאן קבצים"
 
@@ -2044,19 +2255,19 @@ msgstr "הקובץ שנבחר לא קיים עוד."
 msgid "Undo Close Tab"
 msgstr "שחזור לשונית"
 
-#: src/View/Window.vala:497
+#: src/View/Window.vala:499
 msgid "Close Tab"
 msgstr "סגירת לשונית"
 
-#: src/View/Window.vala:498
+#: src/View/Window.vala:500
 msgid "Duplicate Tab"
 msgstr "שכפול לשונית"
 
-#: src/View/Window.vala:499 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:501 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "פתיחה בחלון חדש"
 
-#: src/View/Window.vala:627 src/View/Window.vala:637
+#: src/View/Window.vala:629 src/View/Window.vala:639
 msgid "(as Administrator)"
 msgstr "(כמנהל)"
 
