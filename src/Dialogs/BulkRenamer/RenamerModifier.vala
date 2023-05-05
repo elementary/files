@@ -88,8 +88,8 @@ public class Files.RenamerModifier : Object {
                     var date_source_combo = new Gtk.ComboBoxText () {
                         valign = Gtk.Align.CENTER
                     };
-                    date_source_combo.insert (RenameDateSource.DEFAULT, "DEFAULT",
-                                              RenameDateSource.DEFAULT.to_string ());
+                    date_source_combo.insert (RenameDateSource.CREATED, "DEFAULT",
+                                              RenameDateSource.CREATED.to_string ());
                     date_source_combo.insert (RenameDateSource.MODIFIED, "MODIFICATION_DATE",
                                               RenameDateSource.MODIFIED.to_string ());
                     date_source_combo.insert (RenameDateSource.NOW, "CURRENT_DATE",
@@ -241,20 +241,20 @@ public class Files.RenamerModifier : Object {
                 break;
 
             case RenameMode.DATETIME:
-                uint64 dt;
                 switch (source) {
                     case RenameDateSource.MODIFIED:
-                        dt = file.modified;
+                        new_text = get_formated_datetime ((int64)file.modified);
+                        break;
+                    case RenameDateSource.CREATED:
+                        new_text = get_formated_datetime ((int64)file.created);
                         break;
                     case RenameDateSource.NOW:
-                        dt = 0;
+                        new_text = get_formated_datetime (-1);
                         break;
-                    default: // Created
-                        dt = file.info.get_attribute_uint64 (GLib.FileAttribute.TIME_CREATED);
+                    default:
                         break;
                 }
 
-                new_text = get_formated_datetime (dt);
                 break;
 
             default:
@@ -275,12 +275,14 @@ public class Files.RenamerModifier : Object {
         return input;
     }
 
-    public string get_formated_datetime (uint64 dt) {
+    public string get_formated_datetime (int64 dt) {
         DateTime datetime;
         if (dt > 0) {
-            datetime = new DateTime.from_unix_local ((int64)dt);
-        } else {
+            datetime = new DateTime.from_unix_local (dt);
+        } else if (dt < 0) {
             datetime = new DateTime.now ();
+        } else {
+            return "";
         }
 
         switch ((uint)format) {
