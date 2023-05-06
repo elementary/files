@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-04 08:26+0000\n"
-"PO-Revision-Date: 2023-05-03 17:06+0000\n"
+"PO-Revision-Date: 2023-05-05 21:06+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1689,24 +1689,18 @@ msgstr "基準ファイル名:"
 
 #. TRANSLATORS: Used as "Basename: Unchanged"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
-#, fuzzy
-#| msgid "Unchanged"
 msgctxt "bulk-rename"
 msgid "Unchanged"
-msgstr "変更なし"
+msgstr "変更しない"
 
 #. TRANSLATORS: Used as "Basename: New"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:133
-#, fuzzy
-#| msgid "New"
 msgctxt "bulk-rename"
 msgid "New"
 msgstr "新規"
 
 #. TRANSLATORS: Used as "Basename: Modified"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:135
-#, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modified"
 msgstr "変更日時"
@@ -1725,32 +1719,24 @@ msgstr "番号を振る基準:"
 
 #. TRANSLATORS: Used as "Number in order of: Name"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:178
-#, fuzzy
-#| msgid "Name"
 msgctxt "bulk-rename"
 msgid "Name"
 msgstr "ファイル名"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:180
-#, fuzzy
-#| msgid "Date created"
 msgctxt "bulk-rename"
 msgid "Date created"
 msgstr "作成日時"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:182
-#, fuzzy
-#| msgid "Date modified"
 msgctxt "bulk-rename"
 msgid "Date modified"
 msgstr "変更日時"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:184
-#, fuzzy
-#| msgid "Size"
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "サイズ"
@@ -2103,7 +2089,7 @@ msgstr "空ファイル"
 
 #: src/View/AbstractDirectoryView.vala:2430
 msgid "New"
-msgstr "新規"
+msgstr "新規作成"
 
 #: src/View/AbstractDirectoryView.vala:2673
 #, c-format
