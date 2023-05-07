@@ -88,26 +88,22 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             typeof (bool)
         });
 
-        // We do not want a default sort order - one of the visible columns must always be sorted
-        for (int i = 0; i < ColumnID.NUM_COLUMNS; i++) {
-            set_sort_func (i, (Gtk.TreeIterCompareFunc) file_entry_compare_func);
-        }
-
         set_sort_column_id (
             ColumnID.FILENAME,
             Gtk.SortType.ASCENDING
         );
+        set_sorting_off ();
     }
 
     // Turn off sorting while files are being added
-    public void prepare_to_load () {
+    public void set_sorting_off () {
         for (int i = 0; i < ColumnID.NUM_COLUMNS; i++) {
             set_sort_func (i, () => {return 0;});
         }
     }
 
     // Turn on sorting after model stops loading.
-    public void after_loading () {
+    public void set_sorting_on () {
         for (int i = 0; i < ColumnID.NUM_COLUMNS; i++) {
             set_sort_func (i, (Gtk.TreeIterCompareFunc) file_entry_compare_func);
         }
@@ -286,6 +282,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
                 return;
             }
 
+            set_sorting_off ();
             foreach (var file in files) {
                 if (!show_hidden_files && file.is_hidden) {
                     continue;
@@ -307,6 +304,8 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
                     insert_with_values (out child_iter, child_iter, -1, PrivColumnID.DUMMY, true);
                 }
             }
+
+            set_sorting_on ();
         }
     }
 
@@ -320,6 +319,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             Files.File child_file;
             // Remove all child nodes so they are refreshed if subdirectory reloaded
             // Faster than checking for duplicates
+            set_sorting_off ();
             if (iter_children (out child_iter, parent_iter)) {
                 get (child_iter, ColumnID.FILE_COLUMN, out child_file);
                 if (child_file != null) {
@@ -337,6 +337,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             // Insert dummy;
             insert_with_values (out child_iter, parent_iter, -1, PrivColumnID.DUMMY, true);
             subdirectory_unloaded (dir);
+            set_sorting_on ();
             return true;
         }
 
