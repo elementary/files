@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-04 08:26+0000\n"
-"PO-Revision-Date: 2023-05-03 17:06+0000\n"
+"PO-Revision-Date: 2023-05-05 21:06+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -217,16 +217,12 @@ msgstr "Név"
 
 #: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:96
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:100
-#, fuzzy
-#| msgid "Create"
 msgid "Creation Date"
-msgstr "Létrehozás"
+msgstr "Készítés dátuma"
 
 #: libcore/Enums.vala:163
-#, fuzzy
-#| msgid "Last modified:"
 msgid "Last modification date"
-msgstr "Utoljára módosítva:"
+msgstr "Utolsó módosítás dátuma"
 
 #: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2335
 #: src/View/ListView.vala:27
@@ -235,11 +231,11 @@ msgstr "Méret"
 
 #: libcore/Enums.vala:189
 msgid "Number sequence"
-msgstr ""
+msgstr "Számsor"
 
 #: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:306
 msgid "Text"
-msgstr ""
+msgstr "Szöveg"
 
 #: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2345
 msgid "Date"
@@ -247,55 +243,51 @@ msgstr "Dátum"
 
 #: libcore/Enums.vala:211
 msgid "Suffix"
-msgstr ""
+msgstr "Utótag"
 
 #: libcore/Enums.vala:214
 msgid "Prefix"
-msgstr ""
+msgstr "Előtag"
 
 #: libcore/Enums.vala:224
 msgid "Text to put at the end"
-msgstr ""
+msgstr "A végére helyezendő szöveg"
 
 #: libcore/Enums.vala:227
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Az elejére helyezendő szöveg"
 
 #: libcore/Enums.vala:246
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "Alapértelmezett formátum - csak dátum"
 
 #: libcore/Enums.vala:248
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "Alapértelmezett formátum - dátum és idő"
 
 #: libcore/Enums.vala:250
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "Területi formátum - dátum és idő"
 
 #: libcore/Enums.vala:252
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "ISO 8601 formátum - csak dátum"
 
 #: libcore/Enums.vala:254
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "ISO 6801 formátum - dátum és idő"
 
 #: libcore/Enums.vala:270
-#, fuzzy
-#| msgid "Recreate"
 msgid "Date created"
-msgstr "Létrehozás újra"
+msgstr "Létrehozás dátuma"
 
 #: libcore/Enums.vala:272
-#, fuzzy
-#| msgid "Modified"
 msgid "Date Modified"
-msgstr "Módosítva"
+msgstr "Módosítás dátuma"
 
 #: libcore/Enums.vala:274
 msgid "Current Date"
-msgstr ""
+msgstr "Jelenlegi dátum"
 
 #: libcore/File.vala:547 libcore/File.vala:1103 libcore/File.vala:1122
 msgid "Inaccessible"
@@ -1682,175 +1674,141 @@ msgid "Used:"
 msgstr "Használva:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:34
-#, fuzzy
-#| msgid "Original file"
 msgid "Original filename"
-msgstr "Eredeti fájl"
+msgstr "Eredeti fájlnév"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:36
-#, fuzzy
-#| msgid "Modified"
 msgid "Modified original"
-msgstr "Módosítva"
+msgstr "Módosított eredeti"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:254
-#, fuzzy
-#| msgid "Redo Rename"
 msgid "New basename"
-msgstr "Átnevezés újra"
+msgstr "Új alapnév"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:79
-#, fuzzy
-#| msgid "Rename"
 msgid "Bulk Rename"
-msgstr "Átnevezés"
+msgstr "Csoportos átnevezés"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
 msgid "Number Sequence"
-msgstr ""
+msgstr "Számsor"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
 msgid "Fixed Text"
-msgstr ""
+msgstr "Rögzített szöveg"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
 msgid "Add Prefix"
-msgstr ""
+msgstr "Előtag hozzáadása"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
 msgid "Add Suffix"
-msgstr ""
+msgstr "Utótag hozzáadása"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
-#, fuzzy
-#| msgid "User name:"
 msgid "Basename:"
-msgstr "Felhasználónév:"
+msgstr "Alapnév:"
 
 #. TRANSLATORS: Used as "Basename: Unchanged"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
 msgctxt "bulk-rename"
 msgid "Unchanged"
-msgstr ""
+msgstr "változatlan"
 
 #. TRANSLATORS: Used as "Basename: New"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:133
-#, fuzzy
-#| msgid "New"
 msgctxt "bulk-rename"
 msgid "New"
-msgstr "Új"
+msgstr "új"
 
 #. TRANSLATORS: Used as "Basename: Modified"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:135
-#, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modified"
-msgstr "Módosítva"
+msgstr "módosított"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
-#, fuzzy
-#| msgid "Original file"
 msgid "Original Basename"
-msgstr "Eredeti fájl"
+msgstr "Eredeti alapnév"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:150
-#, fuzzy
-#| msgid "Replace with"
 msgid "Replacement text"
-msgstr "Cserélje erre"
+msgstr "Csereszöveg"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:174
 msgid "Number in order of:"
-msgstr ""
+msgstr "Számozás a következő szerint:"
 
 #. TRANSLATORS: Used as "Number in order of: Name"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:178
-#, fuzzy
-#| msgid "Name"
 msgctxt "bulk-rename"
 msgid "Name"
-msgstr "Név"
+msgstr "név"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:180
-#, fuzzy
-#| msgid "Recreate"
 msgctxt "bulk-rename"
 msgid "Date created"
-msgstr "Létrehozás újra"
+msgstr "létrehozás dátuma"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:182
-#, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Date modified"
-msgstr "Módosítva"
+msgstr "módosítás dátuma"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:184
-#, fuzzy
-#| msgid "Size"
 msgctxt "bulk-rename"
 msgid "Size"
-msgstr "Méret"
+msgstr "méret"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:246
 msgid "Text to be replaced"
-msgstr ""
+msgstr "Cserélendő szöveg"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:358
 msgid "Apply"
-msgstr ""
+msgstr "Alkalmazás"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
-#, fuzzy
-#| msgid "Ignore"
 msgid "Ignored"
-msgstr "Mellőzés"
+msgstr "Mellőzve"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
 msgid "Name is not changed"
-msgstr ""
+msgstr "A név nem változott"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
-#, fuzzy
-#| msgid "Undo Rename"
 msgid "Cannot rename"
-msgstr "Átnevezés visszavonása"
+msgstr "Nem nevezhető át"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
 msgid "Name is invalid or already exists"
-msgstr ""
+msgstr "A név érvénytelen vagy már létezik"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
-#, fuzzy
-#| msgid "Filename"
 msgid "Will be renamed"
-msgstr "Fájlnév"
+msgstr "Átnevezésre kerül"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
-#, fuzzy
-#| msgid "Reversed Order"
 msgid "Reverse Order"
-msgstr "Fordított sorrend"
+msgstr "Sorrend megfordítása"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:52
 msgid "Start Number"
-msgstr ""
+msgstr "Kezdőszám"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
 msgid "Digits"
-msgstr ""
+msgstr "Számjegyek"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
 msgid "Separator"
-msgstr ""
+msgstr "Elválasztó"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:302
 #, c-format
