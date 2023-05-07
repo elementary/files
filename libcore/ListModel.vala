@@ -410,6 +410,11 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         return false;
     }
 
+    public new void clear () {
+        file_treerow_map.clear ();
+        base.clear ();
+    }
+
     private int file_entry_compare_func (Gtk.TreeIter a, Gtk.TreeIter b) {
         Files.File? file_a = null;
         Files.File? file_b = null;
