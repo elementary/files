@@ -300,6 +300,8 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
                     @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
                 }
 
+                file_treerow_map.@set (file.uri, new Gtk.TreeRowReference (this, get_path (child_iter)));
+
                 if (file.is_folder ()) {
                     // Append a dummy child so expander will show even when folder is empty.
                     insert_with_values (out child_iter, child_iter, -1, PrivColumnID.DUMMY, true);
@@ -315,10 +317,21 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             var dir = Files.Directory.from_file (file);
             dir.cancel ();
             Gtk.TreeIter? child_iter = null;
+            Files.File child_file;
             // Remove all child nodes so they are refreshed if subdirectory reloaded
             // Faster than checking for duplicates
             if (iter_children (out child_iter, parent_iter)) {
-                while (remove (ref child_iter)) {};
+                get (child_iter, ColumnID.FILE_COLUMN, out child_file);
+                if (child_file != null) {
+                    file_treerow_map.unset (child_file.uri);
+                }
+
+                while (remove (ref child_iter)) {
+                    get (child_iter, ColumnID.FILE_COLUMN, out child_file);
+                    if (child_file != null) {
+                        file_treerow_map.unset (child_file.uri);
+                    }
+                };
             }
 
             // Insert dummy;
@@ -356,7 +369,12 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
         if (!change_dummy) {
             // There was no dummy row to replace so create a new entry for this file
-            insert_with_values (out file_iter, parent_iter, 0, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false);
+            insert_with_values (
+                out file_iter, parent_iter, -1,
+                ColumnID.FILE_COLUMN, file,
+                PrivColumnID.DUMMY, false
+            );
+
             file_treerow_map.@set (file.uri, new Gtk.TreeRowReference (this, get_path (file_iter)));
         }
 
@@ -385,6 +403,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             }
 
             remove (ref file_iter);
+            file_treerow_map.unset (file.uri);
             return true;
         }
 
