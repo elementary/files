@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-04 08:26+0000\n"
-"PO-Revision-Date: 2023-05-03 17:06+0000\n"
+"PO-Revision-Date: 2023-05-09 17:06+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -1751,27 +1751,21 @@ msgstr "Nazwa podstawowa:"
 
 #. TRANSLATORS: Used as "Basename: Unchanged"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
-#, fuzzy
-#| msgid "Unchanged"
 msgctxt "bulk-rename"
 msgid "Unchanged"
 msgstr "Niezmieniona"
 
 #. TRANSLATORS: Used as "Basename: New"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:133
-#, fuzzy
-#| msgid "New"
 msgctxt "bulk-rename"
 msgid "New"
-msgstr "Nowy"
+msgstr "Nowa"
 
 #. TRANSLATORS: Used as "Basename: Modified"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:135
-#, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modified"
-msgstr "Czas modyfikacji"
+msgstr "Zmodyfikowana"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
 msgid "Original Basename"
@@ -1787,32 +1781,24 @@ msgstr "Ponumeruj według:"
 
 #. TRANSLATORS: Used as "Number in order of: Name"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:178
-#, fuzzy
-#| msgid "Name"
 msgctxt "bulk-rename"
 msgid "Name"
-msgstr "Nazwy"
+msgstr "Nazwa"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:180
-#, fuzzy
-#| msgid "Date created"
 msgctxt "bulk-rename"
 msgid "Date created"
 msgstr "Data utworzenia"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:182
-#, fuzzy
-#| msgid "Date modified"
 msgctxt "bulk-rename"
 msgid "Date modified"
 msgstr "Data modyfikacji"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:184
-#, fuzzy
-#| msgid "Size"
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "Rozmiar"
