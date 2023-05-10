@@ -51,8 +51,8 @@ appdata_in = configure_file(
 i18n.merge_file(
     input: policy_in,
     output: meson.project_name() + '.policy',
-    po_dir: join_paths(meson.source_root(), 'po', 'extra'),
-    data_dirs: join_paths(meson.source_root(), 'po'),
+    po_dir: join_paths(meson.project_source_root(), 'po', 'extra'),
+    data_dirs: join_paths(meson.project_source_root(), 'po'),
     install: true,
     install_dir: join_paths(get_option('datadir'), 'polkit-1', 'actions'),
 )
@@ -62,7 +62,7 @@ i18n.merge_file(
     output: meson.project_name() + '.desktop',
     install: true,
     install_dir: join_paths(get_option('datadir'), 'applications'),
-    po_dir: join_paths(meson.source_root(), 'po', 'extra'),
+    po_dir: join_paths(meson.project_source_root(), 'po', 'extra'),
     type: 'desktop'
 )
 
@@ -71,7 +71,7 @@ i18n.merge_file(
     output: meson.project_name() + '.appdata.xml',
     install: true,
     install_dir: join_paths(get_option('datadir'), 'metainfo'),
-    po_dir: join_paths(meson.source_root(), 'po', 'extra'),
+    po_dir: join_paths(meson.project_source_root(), 'po', 'extra'),
     type: 'xml'
 )
 
