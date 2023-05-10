@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-10 16:11+0000\n"
-"PO-Revision-Date: 2023-02-14 14:25+0000\n"
+"PO-Revision-Date: 2023-05-12 17:06+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.17\n"
 
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:10
@@ -65,7 +65,7 @@ msgstr "תיקונים מזעריים:"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
-msgstr ""
+msgstr "נעשה שימוש בסרגל צבעוני להצגת ניצולת הכונן בחלונית המאפיינים"
 
 #: data/io.elementary.files.appdata.xml.in.in:39
 #: data/io.elementary.files.appdata.xml.in.in:52
