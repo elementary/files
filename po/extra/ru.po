@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 08:26+0000\n"
+"POT-Creation-Date: 2023-05-10 16:11+0000\n"
 "PO-Revision-Date: 2023-04-10 06:59+0000\n"
 "Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/"
@@ -66,83 +66,35 @@ msgstr ""
 "Windows."
 
 #: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:58
-#: data/io.elementary.files.appdata.xml.in.in:74
-#: data/io.elementary.files.appdata.xml.in.in:89
-#: data/io.elementary.files.appdata.xml.in.in:116
+#: data/io.elementary.files.appdata.xml.in.in:50
+#: data/io.elementary.files.appdata.xml.in.in:72
+#: data/io.elementary.files.appdata.xml.in.in:88
+#: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Minor updates:"
 msgstr "Незначительные обновления:"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
-#: data/io.elementary.files.appdata.xml.in.in:60
-#: data/io.elementary.files.appdata.xml.in.in:76
-#: data/io.elementary.files.appdata.xml.in.in:91
-#: data/io.elementary.files.appdata.xml.in.in:118
+msgid "Use a colorful level bar to show disk usage in the properties dialog"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:39
+#: data/io.elementary.files.appdata.xml.in.in:52
+#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Updated translations"
 msgstr "Обновлены переводы"
 
-#: data/io.elementary.files.appdata.xml.in.in:54
-#: data/io.elementary.files.appdata.xml.in.in:101
+#: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Improvements:"
 msgstr "Улучшения:"
 
-#: data/io.elementary.files.appdata.xml.in.in:56
+#: data/io.elementary.files.appdata.xml.in.in:70
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr "Глобальные настройки были перенесены в меню в заголовок окна"
 
-#: data/io.elementary.files.appdata.xml.in.in:103
-msgid ""
-"Provide option to select folders with single click and activate with double "
-"click"
-msgstr "Опция для выбора папок одинарным щелчком и активации двойным щелчоком"
-
-#: data/io.elementary.files.appdata.xml.in.in:104
-msgid ""
-"Only show the properties overlay when files are selected, not when hovered"
-msgstr ""
-"Отображение оверлея со свойствами, только когда файл выбран, а не при "
-"наведении"
-
-#: data/io.elementary.files.appdata.xml.in.in:106
-msgid "Fixes:"
-msgstr "Исправления:"
-
-#: data/io.elementary.files.appdata.xml.in.in:108
-msgid "Fix unexpected file activation after navigation with double-click"
-msgstr "Исправлена активация файлов после навигации"
-
-#: data/io.elementary.files.appdata.xml.in.in:109
-msgid "Fix dimmed window after use of filechooser portal"
-msgstr "Исправлено затемнение окна после использования портала filechooser"
-
-#: data/io.elementary.files.appdata.xml.in.in:110
-msgid "Fix possible crash when rapidly changing view modes"
-msgstr ""
-"Исправлено падение программы при быстром переключении видов отображения"
-
-#: data/io.elementary.files.appdata.xml.in.in:111
-msgid "Fix startup when restored remote location is no longer connected"
-msgstr ""
-"Испралена загрузка программы, когда удалённое хранилище больше не доступно"
-
-#: data/io.elementary.files.appdata.xml.in.in:112
-msgid ""
-"Ensure infobar shows in connection server dialog when connection attempt "
-"fails"
-msgstr ""
-"Испралено отображение инфобара в диалоге подключения сервера, когда не "
-"удаётся подключиться к серверу"
-
-#: data/io.elementary.files.appdata.xml.in.in:113
-msgid "Ensure correct icon for bookmark to a file that is not a folder"
-msgstr "Исправлена иконка закладок файлов"
-
-#: data/io.elementary.files.appdata.xml.in.in:114
-msgid "Fix possible crash when removing a bookmark"
-msgstr "Исправлено падание программы при удалении закладки"
-
-#: data/io.elementary.files.appdata.xml.in.in:164
+#: data/io.elementary.files.appdata.xml.in.in:155
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
@@ -153,6 +105,48 @@ msgstr "Запустить Pantheon Files с правами администра
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Для запуска Файлов с правами администратора требуется аутентификация"
+
+#~ msgid ""
+#~ "Provide option to select folders with single click and activate with "
+#~ "double click"
+#~ msgstr ""
+#~ "Опция для выбора папок одинарным щелчком и активации двойным щелчоком"
+
+#~ msgid ""
+#~ "Only show the properties overlay when files are selected, not when hovered"
+#~ msgstr ""
+#~ "Отображение оверлея со свойствами, только когда файл выбран, а не при "
+#~ "наведении"
+
+#~ msgid "Fixes:"
+#~ msgstr "Исправления:"
+
+#~ msgid "Fix unexpected file activation after navigation with double-click"
+#~ msgstr "Исправлена активация файлов после навигации"
+
+#~ msgid "Fix dimmed window after use of filechooser portal"
+#~ msgstr "Исправлено затемнение окна после использования портала filechooser"
+
+#~ msgid "Fix possible crash when rapidly changing view modes"
+#~ msgstr ""
+#~ "Исправлено падение программы при быстром переключении видов отображения"
+
+#~ msgid "Fix startup when restored remote location is no longer connected"
+#~ msgstr ""
+#~ "Испралена загрузка программы, когда удалённое хранилище больше не доступно"
+
+#~ msgid ""
+#~ "Ensure infobar shows in connection server dialog when connection attempt "
+#~ "fails"
+#~ msgstr ""
+#~ "Испралено отображение инфобара в диалоге подключения сервера, когда не "
+#~ "удаётся подключиться к серверу"
+
+#~ msgid "Ensure correct icon for bookmark to a file that is not a folder"
+#~ msgstr "Исправлена иконка закладок файлов"
+
+#~ msgid "Fix possible crash when removing a bookmark"
+#~ msgstr "Исправлено падание программы при удалении закладки"
 
 #~ msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
 #~ msgstr ""

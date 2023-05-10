@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 08:26+0000\n"
+"POT-Creation-Date: 2023-05-10 16:11+0000\n"
 "PO-Revision-Date: 2023-02-14 14:25+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
@@ -65,88 +65,37 @@ msgstr ""
 "Windows."
 
 #: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:58
-#: data/io.elementary.files.appdata.xml.in.in:74
-#: data/io.elementary.files.appdata.xml.in.in:89
-#: data/io.elementary.files.appdata.xml.in.in:116
+#: data/io.elementary.files.appdata.xml.in.in:50
+#: data/io.elementary.files.appdata.xml.in.in:72
+#: data/io.elementary.files.appdata.xml.in.in:88
+#: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Minor updates:"
 msgstr "Незначні оновлення:"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
-#: data/io.elementary.files.appdata.xml.in.in:60
-#: data/io.elementary.files.appdata.xml.in.in:76
-#: data/io.elementary.files.appdata.xml.in.in:91
-#: data/io.elementary.files.appdata.xml.in.in:118
+msgid "Use a colorful level bar to show disk usage in the properties dialog"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:39
+#: data/io.elementary.files.appdata.xml.in.in:52
+#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Updated translations"
 msgstr "Оновлено переклади"
 
-#: data/io.elementary.files.appdata.xml.in.in:54
-#: data/io.elementary.files.appdata.xml.in.in:101
+#: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Improvements:"
 msgstr "Поліпшено:"
 
-#: data/io.elementary.files.appdata.xml.in.in:56
+#: data/io.elementary.files.appdata.xml.in.in:70
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 "Глобальні налаштування з контекстного меню перенесено в меню застосунку на "
 "панелі заголовка"
 
-#: data/io.elementary.files.appdata.xml.in.in:103
-msgid ""
-"Provide option to select folders with single click and activate with double "
-"click"
-msgstr ""
-"Можливість вибору тек одним клацанням миші та активації подвійним клацанням"
-
-#: data/io.elementary.files.appdata.xml.in.in:104
-msgid ""
-"Only show the properties overlay when files are selected, not when hovered"
-msgstr ""
-"Показ накладення властивостей лише за умови виділення файлів, а не за "
-"наведення на них курсору миші"
-
-#: data/io.elementary.files.appdata.xml.in.in:106
-msgid "Fixes:"
-msgstr "Виправлення:"
-
-#: data/io.elementary.files.appdata.xml.in.in:108
-msgid "Fix unexpected file activation after navigation with double-click"
-msgstr ""
-"Виправлено неочікувану активацію файлу після переходу за подвійним клацанням"
-
-#: data/io.elementary.files.appdata.xml.in.in:109
-msgid "Fix dimmed window after use of filechooser portal"
-msgstr "Виправлено затемнення вікна після використання порталу вибору файлів"
-
-#: data/io.elementary.files.appdata.xml.in.in:110
-msgid "Fix possible crash when rapidly changing view modes"
-msgstr "Усунено можливий збій під час швидкої зміни режимів перегляду"
-
-#: data/io.elementary.files.appdata.xml.in.in:111
-msgid "Fix startup when restored remote location is no longer connected"
-msgstr ""
-"Виправлено запуск, коли відновлене віддалене розташування більше не "
-"під'єднане"
-
-#: data/io.elementary.files.appdata.xml.in.in:112
-msgid ""
-"Ensure infobar shows in connection server dialog when connection attempt "
-"fails"
-msgstr ""
-"Забезпечено показ інформаційної панелі в діалоговому вікні сервера "
-"підключення за невдалої спроби з'єднання"
-
-#: data/io.elementary.files.appdata.xml.in.in:113
-msgid "Ensure correct icon for bookmark to a file that is not a folder"
-msgstr ""
-"Піктограма закладки файлу, який не є текою, відтепер показується коректно"
-
-#: data/io.elementary.files.appdata.xml.in.in:114
-msgid "Fix possible crash when removing a bookmark"
-msgstr "Усунуто можливий збій під час вилучення закладки"
-
-#: data/io.elementary.files.appdata.xml.in.in:164
+#: data/io.elementary.files.appdata.xml.in.in:155
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
@@ -157,6 +106,53 @@ msgstr "Запуск Pantheon файлів в якості адміністра�
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Автентифікація потрібна для запуску Файлів від імені адміністратора"
+
+#~ msgid ""
+#~ "Provide option to select folders with single click and activate with "
+#~ "double click"
+#~ msgstr ""
+#~ "Можливість вибору тек одним клацанням миші та активації подвійним "
+#~ "клацанням"
+
+#~ msgid ""
+#~ "Only show the properties overlay when files are selected, not when hovered"
+#~ msgstr ""
+#~ "Показ накладення властивостей лише за умови виділення файлів, а не за "
+#~ "наведення на них курсору миші"
+
+#~ msgid "Fixes:"
+#~ msgstr "Виправлення:"
+
+#~ msgid "Fix unexpected file activation after navigation with double-click"
+#~ msgstr ""
+#~ "Виправлено неочікувану активацію файлу після переходу за подвійним "
+#~ "клацанням"
+
+#~ msgid "Fix dimmed window after use of filechooser portal"
+#~ msgstr ""
+#~ "Виправлено затемнення вікна після використання порталу вибору файлів"
+
+#~ msgid "Fix possible crash when rapidly changing view modes"
+#~ msgstr "Усунено можливий збій під час швидкої зміни режимів перегляду"
+
+#~ msgid "Fix startup when restored remote location is no longer connected"
+#~ msgstr ""
+#~ "Виправлено запуск, коли відновлене віддалене розташування більше не "
+#~ "під'єднане"
+
+#~ msgid ""
+#~ "Ensure infobar shows in connection server dialog when connection attempt "
+#~ "fails"
+#~ msgstr ""
+#~ "Забезпечено показ інформаційної панелі в діалоговому вікні сервера "
+#~ "підключення за невдалої спроби з'єднання"
+
+#~ msgid "Ensure correct icon for bookmark to a file that is not a folder"
+#~ msgstr ""
+#~ "Піктограма закладки файлу, який не є текою, відтепер показується коректно"
+
+#~ msgid "Fix possible crash when removing a bookmark"
+#~ msgstr "Усунуто можливий збій під час вилучення закладки"
 
 #~ msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
 #~ msgstr ""

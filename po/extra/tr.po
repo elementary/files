@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 08:26+0000\n"
+"POT-Creation-Date: 2023-05-10 16:11+0000\n"
 "PO-Revision-Date: 2022-11-08 00:58+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
@@ -63,77 +63,35 @@ msgstr ""
 "cihazla ya da FTP, SFTP, AFP, Webdav ve Windows ile paylaşabilirsiniz."
 
 #: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:58
-#: data/io.elementary.files.appdata.xml.in.in:74
-#: data/io.elementary.files.appdata.xml.in.in:89
-#: data/io.elementary.files.appdata.xml.in.in:116
+#: data/io.elementary.files.appdata.xml.in.in:50
+#: data/io.elementary.files.appdata.xml.in.in:72
+#: data/io.elementary.files.appdata.xml.in.in:88
+#: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Minor updates:"
 msgstr "Küçük güncellemeler:"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
-#: data/io.elementary.files.appdata.xml.in.in:60
-#: data/io.elementary.files.appdata.xml.in.in:76
-#: data/io.elementary.files.appdata.xml.in.in:91
-#: data/io.elementary.files.appdata.xml.in.in:118
+msgid "Use a colorful level bar to show disk usage in the properties dialog"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:39
+#: data/io.elementary.files.appdata.xml.in.in:52
+#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Updated translations"
 msgstr "Çeviriler güncellendi"
 
-#: data/io.elementary.files.appdata.xml.in.in:54
-#: data/io.elementary.files.appdata.xml.in.in:101
+#: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Improvements:"
 msgstr "İyileştirmeler:"
 
-#: data/io.elementary.files.appdata.xml.in.in:56
+#: data/io.elementary.files.appdata.xml.in.in:70
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:103
-msgid ""
-"Provide option to select folders with single click and activate with double "
-"click"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:104
-msgid ""
-"Only show the properties overlay when files are selected, not when hovered"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:106
-msgid "Fixes:"
-msgstr "Düzeltmeler:"
-
-#: data/io.elementary.files.appdata.xml.in.in:108
-msgid "Fix unexpected file activation after navigation with double-click"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:109
-msgid "Fix dimmed window after use of filechooser portal"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:110
-msgid "Fix possible crash when rapidly changing view modes"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:111
-msgid "Fix startup when restored remote location is no longer connected"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:112
-msgid ""
-"Ensure infobar shows in connection server dialog when connection attempt "
-"fails"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:113
-msgid "Ensure correct icon for bookmark to a file that is not a folder"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:114
-msgid "Fix possible crash when removing a bookmark"
-msgstr "Bir yer imini kaldırırken oluşabilecek olası kilitlenme düzeltildi"
-
-#: data/io.elementary.files.appdata.xml.in.in:164
+#: data/io.elementary.files.appdata.xml.in.in:155
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
@@ -144,6 +102,12 @@ msgstr "Pantheon Dosyalar'ı yönetici olarak çalıştır"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Dosyaları Yönetici olarak çalıştırmak için kimlik doğrulama gerekir"
+
+#~ msgid "Fixes:"
+#~ msgstr "Düzeltmeler:"
+
+#~ msgid "Fix possible crash when removing a bookmark"
+#~ msgstr "Bir yer imini kaldırırken oluşabilecek olası kilitlenme düzeltildi"
 
 #~ msgid "Other updates:"
 #~ msgstr "Diğer güncellemeler:"
