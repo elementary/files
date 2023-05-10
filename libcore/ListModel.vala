@@ -321,17 +321,12 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             // Faster than checking for duplicates
             set_sorting_off ();
             if (iter_children (out child_iter, parent_iter)) {
-                get (child_iter, ColumnID.FILE_COLUMN, out child_file);
-                if (child_file != null) {
-                    file_treerow_map.unset (child_file.uri);
-                }
-
-                while (remove (ref child_iter)) {
+                do {
                     get (child_iter, ColumnID.FILE_COLUMN, out child_file);
                     if (child_file != null) {
                         file_treerow_map.unset (child_file.uri);
                     }
-                };
+                } while (remove (ref child_iter));
             }
 
             // Insert dummy;
