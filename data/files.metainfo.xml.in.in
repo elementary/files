@@ -1,34 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2016–2021 elementary, Inc. <contact@elementary.io> -->
-<component type="desktop">
+<!-- Copyright 2016–2023 elementary, Inc. <contact@elementary.io> -->
+<component type="desktop-application">
   <id>io.elementary.files</id>
   <launchable type="desktop-id">io.elementary.files.desktop</launchable>
   <translation type="gettext">io.elementary.files</translation>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_group>elementary</project_group>
   <project_license>GPL-3.0+</project_license>
+
   <name>Files</name>
   <summary>Browse and manage files and folders</summary>
   <description>
     <p>Easily copy, move, and rename your files, or use folders to stay organized. Whether you like files in lists, grids or columns, you can always find them right away. Access all your files, whether locally, on an external device or remotely using FTP, SFTP, AFP, Webdav, or Windows share.</p>
   </description>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>Quick access to settings like zoom levels and hidden files</caption>
+      <image>https://raw.githubusercontent.com/elementary/files/6.3.1/data/screenshot-grid.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>See more metadata at a glance in List view</caption>
+      <image>https://raw.githubusercontent.com/elementary/files/6.3.1/data/screenshot-list.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Browse complex trees faster with Column view</caption>
+      <image>https://raw.githubusercontent.com/elementary/files/6.3.1/data/screenshot-column.png</image>
+    </screenshot>
+  </screenshots>
+
+  <branding>
+    <color type="primary">#3689e6</color>
+  </branding>
+
+  <content_rating type="oars-1.1" />
+
   <provides>
     <binary>@exec_name@</binary>
     <binary>@exec_name@-daemon</binary>
     <binary>@exec_name@-pkexec</binary>
   </provides>
-  <screenshots>
-    <screenshot type="default">
-      <image>https://raw.githubusercontent.com/elementary/files/6.3.1/data/screenshot-grid.png</image>
-    </screenshot>
-    <screenshot type="default">
-      <image>https://raw.githubusercontent.com/elementary/files/6.3.1/data/screenshot-list.png</image>
-    </screenshot>
-    <screenshot type="default">
-      <image>https://raw.githubusercontent.com/elementary/files/6.3.1/data/screenshot-column.png</image>
-    </screenshot>
-  </screenshots>
-  <content_rating type="oars-1.1" />
+
+  <recommends>
+    <display_length compare="ge">730</display_length>
+  </recommends>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </supports>
+
+
+  <url type="homepage">https://elementary.io/</url>
+  <url type="bugtracker">https://github.com/elementary/files/issues</url>
+  <url type="donation">https://elementary.io/get-involved#funding</url>
+  <url type="help">https://github.com/elementary/files/discussions/categories/q-a</url>
+  <url type="translate">https://l10n.elementary.io/projects/files</url>
+
+  <developer_name>elementary, Inc.</developer_name>
+  <project_group>elementary</project_group>
+  <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
     <release version="6.3.2" date="2023-05-10" urgency="medium">
@@ -151,12 +180,4 @@
     <release version="0.3.0.3" date="2016-10-10"/>
     <release version="0.3.0.2" date="2016-09-01"/>
   </releases>
-
-  <developer_name>elementary, Inc.</developer_name>
-  <url type="homepage">https://elementary.io/</url>
-  <url type="bugtracker">https://github.com/elementary/files/issues</url>
-  <url type="donation">https://elementary.io/get-involved#funding</url>
-  <url type="help">https://github.com/elementary/files/discussions/categories/q-a</url>
-  <url type="translate">https://l10n.elementary.io/projects/files</url>
-  <update_contact>contact_AT_elementary.io</update_contact>
 </component>

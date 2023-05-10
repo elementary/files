@@ -42,8 +42,8 @@ desktop_in = configure_file(
 )
 
 appdata_in = configure_file(
-    input: meson.project_name() + '.appdata.xml.in.in',
-    output: meson.project_name() + '.appdata.xml.in',
+    input: 'files.metainfo.xml.in.in',
+    output: 'files.metainfo.xml.in',
     configuration: config_data,
     install: false,
 )
@@ -68,10 +68,10 @@ i18n.merge_file(
 
 i18n.merge_file(
     input: appdata_in,
-    output: meson.project_name() + '.appdata.xml',
+    output: meson.project_name() + '.metainfo.xml',
     install: true,
-    install_dir: join_paths(get_option('datadir'), 'metainfo'),
-    po_dir: join_paths(meson.project_source_root(), 'po', 'extra'),
+    install_dir: get_option('datadir') / 'metainfo',
+    po_dir: meson.project_source_root() / 'po' / 'extra',
     type: 'xml'
 )
 
