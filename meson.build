@@ -2,7 +2,7 @@ project(
     'io.elementary.files',
     'vala', 'c',
     version: '6.3.1',
-    meson_version: '>= 0.50.0'
+    meson_version: '>= 0.58.0'
 )
 
 #
@@ -88,7 +88,7 @@ add_project_arguments(
 config_data = configuration_data()
 config_data.set('plugin_dir', plugin_dir)
 config_data.set('version', meson.project_version())
-config_data.set('testdata_dir', join_paths(meson.source_root(), 'data', 'tests'))
+config_data.set('testdata_dir', join_paths(meson.project_source_root(), 'data', 'tests'))
 config_data.set('app_name', meson.project_name())
 config_data.set('gettext_package', meson.project_name())
 config_data.set('locale_dir', join_paths(get_option('prefix'), get_option('localedir')))
