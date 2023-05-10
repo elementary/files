@@ -316,7 +316,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             var dir = Files.Directory.from_file (file);
             dir.cancel ();
             Gtk.TreeIter? child_iter = null;
-            Files.File child_file;
+            Files.File? child_file = null;
             // Remove all child nodes so they are refreshed if subdirectory reloaded
             // Faster than checking for duplicates
             set_sorting_off ();
