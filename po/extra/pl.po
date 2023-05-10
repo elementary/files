@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 08:26+0000\n"
+"POT-Creation-Date: 2023-05-10 16:11+0000\n"
 "PO-Revision-Date: 2023-02-16 21:22+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
@@ -66,90 +66,37 @@ msgstr ""
 "WebDAV lub udziałów systemu Microsoft Windows."
 
 #: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:58
-#: data/io.elementary.files.appdata.xml.in.in:74
-#: data/io.elementary.files.appdata.xml.in.in:89
-#: data/io.elementary.files.appdata.xml.in.in:116
+#: data/io.elementary.files.appdata.xml.in.in:50
+#: data/io.elementary.files.appdata.xml.in.in:72
+#: data/io.elementary.files.appdata.xml.in.in:88
+#: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Minor updates:"
 msgstr "Drobne aktualizacje:"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
-#: data/io.elementary.files.appdata.xml.in.in:60
-#: data/io.elementary.files.appdata.xml.in.in:76
-#: data/io.elementary.files.appdata.xml.in.in:91
-#: data/io.elementary.files.appdata.xml.in.in:118
+msgid "Use a colorful level bar to show disk usage in the properties dialog"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:39
+#: data/io.elementary.files.appdata.xml.in.in:52
+#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Updated translations"
 msgstr "Zaktualizowane tłumaczenia"
 
-#: data/io.elementary.files.appdata.xml.in.in:54
-#: data/io.elementary.files.appdata.xml.in.in:101
+#: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Improvements:"
 msgstr "Ulepszenia:"
 
-#: data/io.elementary.files.appdata.xml.in.in:56
+#: data/io.elementary.files.appdata.xml.in.in:70
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 "Przeniesiono ustawienia globalne z menu kontekstowego do menu aplikacji w "
 "pasku górnym"
 
-#: data/io.elementary.files.appdata.xml.in.in:103
-msgid ""
-"Provide option to select folders with single click and activate with double "
-"click"
-msgstr ""
-"Dodano możliwość wybierania folderów pojedynczym kliknięciem i aktywacji "
-"podwójnym"
-
-#: data/io.elementary.files.appdata.xml.in.in:104
-msgid ""
-"Only show the properties overlay when files are selected, not when hovered"
-msgstr ""
-"Nakładka z właściwościami pokazywana jest tylko gdy pliki są wybrane, a nie "
-"najechane myszką"
-
-#: data/io.elementary.files.appdata.xml.in.in:106
-msgid "Fixes:"
-msgstr "Poprawki:"
-
-#: data/io.elementary.files.appdata.xml.in.in:108
-msgid "Fix unexpected file activation after navigation with double-click"
-msgstr ""
-"Naprawiono niespodziewaną aktywację pliku po nawigacji podwójnym kliknięciem"
-
-#: data/io.elementary.files.appdata.xml.in.in:109
-msgid "Fix dimmed window after use of filechooser portal"
-msgstr "Naprawiono przyciemnione okno po użyciu portalu wyboru pliku"
-
-#: data/io.elementary.files.appdata.xml.in.in:110
-msgid "Fix possible crash when rapidly changing view modes"
-msgstr "Naprawiono potencjalny błąd krytyczny przy szybkiej zmianie trybów"
-
-#: data/io.elementary.files.appdata.xml.in.in:111
-msgid "Fix startup when restored remote location is no longer connected"
-msgstr ""
-"Naprawiono uruchamianie w przypadku gdy zewnętrzna lokalizacja nie jest już "
-"połączona"
-
-#: data/io.elementary.files.appdata.xml.in.in:112
-msgid ""
-"Ensure infobar shows in connection server dialog when connection attempt "
-"fails"
-msgstr ""
-"Upewniono się, że pasek informacyjny jest pokazany w oknie łączenia z "
-"serwerem w przypadku gdy połączenie nie powiedzie się"
-
-#: data/io.elementary.files.appdata.xml.in.in:113
-msgid "Ensure correct icon for bookmark to a file that is not a folder"
-msgstr ""
-"Upewniono się, że poprawna ikona jest pokazana na okładce plików, które nie "
-"są folderami"
-
-#: data/io.elementary.files.appdata.xml.in.in:114
-msgid "Fix possible crash when removing a bookmark"
-msgstr "Naprawiono potencjalny błąd występujące podczas usuwania zakładki"
-
-#: data/io.elementary.files.appdata.xml.in.in:164
+#: data/io.elementary.files.appdata.xml.in.in:155
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
@@ -160,6 +107,53 @@ msgstr "Uruchom Pliki Pantheon jako administrator"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Aby uruchomić Pliki jako administrator wymagane jest uwierzytelnienie"
+
+#~ msgid ""
+#~ "Provide option to select folders with single click and activate with "
+#~ "double click"
+#~ msgstr ""
+#~ "Dodano możliwość wybierania folderów pojedynczym kliknięciem i aktywacji "
+#~ "podwójnym"
+
+#~ msgid ""
+#~ "Only show the properties overlay when files are selected, not when hovered"
+#~ msgstr ""
+#~ "Nakładka z właściwościami pokazywana jest tylko gdy pliki są wybrane, a "
+#~ "nie najechane myszką"
+
+#~ msgid "Fixes:"
+#~ msgstr "Poprawki:"
+
+#~ msgid "Fix unexpected file activation after navigation with double-click"
+#~ msgstr ""
+#~ "Naprawiono niespodziewaną aktywację pliku po nawigacji podwójnym "
+#~ "kliknięciem"
+
+#~ msgid "Fix dimmed window after use of filechooser portal"
+#~ msgstr "Naprawiono przyciemnione okno po użyciu portalu wyboru pliku"
+
+#~ msgid "Fix possible crash when rapidly changing view modes"
+#~ msgstr "Naprawiono potencjalny błąd krytyczny przy szybkiej zmianie trybów"
+
+#~ msgid "Fix startup when restored remote location is no longer connected"
+#~ msgstr ""
+#~ "Naprawiono uruchamianie w przypadku gdy zewnętrzna lokalizacja nie jest "
+#~ "już połączona"
+
+#~ msgid ""
+#~ "Ensure infobar shows in connection server dialog when connection attempt "
+#~ "fails"
+#~ msgstr ""
+#~ "Upewniono się, że pasek informacyjny jest pokazany w oknie łączenia z "
+#~ "serwerem w przypadku gdy połączenie nie powiedzie się"
+
+#~ msgid "Ensure correct icon for bookmark to a file that is not a folder"
+#~ msgstr ""
+#~ "Upewniono się, że poprawna ikona jest pokazana na okładce plików, które "
+#~ "nie są folderami"
+
+#~ msgid "Fix possible crash when removing a bookmark"
+#~ msgstr "Naprawiono potencjalny błąd występujące podczas usuwania zakładki"
 
 #~ msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
 #~ msgstr "Naprawiono regresję przy korzystaniu z Ctrl + Przewijanie w dół"

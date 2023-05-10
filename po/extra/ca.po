@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 08:26+0000\n"
+"POT-Creation-Date: 2023-05-10 16:11+0000\n"
 "PO-Revision-Date: 2023-02-16 21:22+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
@@ -64,91 +64,37 @@ msgstr ""
 "Windows."
 
 #: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:58
-#: data/io.elementary.files.appdata.xml.in.in:74
-#: data/io.elementary.files.appdata.xml.in.in:89
-#: data/io.elementary.files.appdata.xml.in.in:116
+#: data/io.elementary.files.appdata.xml.in.in:50
+#: data/io.elementary.files.appdata.xml.in.in:72
+#: data/io.elementary.files.appdata.xml.in.in:88
+#: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Minor updates:"
 msgstr "Actualitzacions menors:"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
-#: data/io.elementary.files.appdata.xml.in.in:60
-#: data/io.elementary.files.appdata.xml.in.in:76
-#: data/io.elementary.files.appdata.xml.in.in:91
-#: data/io.elementary.files.appdata.xml.in.in:118
+msgid "Use a colorful level bar to show disk usage in the properties dialog"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:39
+#: data/io.elementary.files.appdata.xml.in.in:52
+#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Updated translations"
 msgstr "Traduccions actualitzades"
 
-#: data/io.elementary.files.appdata.xml.in.in:54
-#: data/io.elementary.files.appdata.xml.in.in:101
+#: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Improvements:"
 msgstr "Millores:"
 
-#: data/io.elementary.files.appdata.xml.in.in:56
+#: data/io.elementary.files.appdata.xml.in.in:70
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 "Mou la configuració global del menú contextual a un menú d'aplicació a la "
 "barra de capçalera"
 
-#: data/io.elementary.files.appdata.xml.in.in:103
-msgid ""
-"Provide option to select folders with single click and activate with double "
-"click"
-msgstr ""
-"Proporciona una opció per seleccionar carpetes amb un sol clic i activar amb "
-"dos."
-
-#: data/io.elementary.files.appdata.xml.in.in:104
-msgid ""
-"Only show the properties overlay when files are selected, not when hovered"
-msgstr ""
-"Només es mostren les propietats quan se seleccionen els fitxers, no quan "
-"s'hi passa per damunt."
-
-#: data/io.elementary.files.appdata.xml.in.in:106
-msgid "Fixes:"
-msgstr "Correccions:"
-
-#: data/io.elementary.files.appdata.xml.in.in:108
-msgid "Fix unexpected file activation after navigation with double-click"
-msgstr "Correcció de l'activació de fitxers en navegar després d'un clic doble"
-
-#: data/io.elementary.files.appdata.xml.in.in:109
-msgid "Fix dimmed window after use of filechooser portal"
-msgstr ""
-"Correcció de la finestra enfosquida després d'usar el portal de selecció de "
-"fitxers"
-
-#: data/io.elementary.files.appdata.xml.in.in:110
-msgid "Fix possible crash when rapidly changing view modes"
-msgstr ""
-"Correcció de la fallada possible en canviar ràpidament de mode de "
-"visualització"
-
-#: data/io.elementary.files.appdata.xml.in.in:111
-msgid "Fix startup when restored remote location is no longer connected"
-msgstr ""
-"Correcció de l'inici quan la ubicació remota restaurada ja no està connectada"
-
-#: data/io.elementary.files.appdata.xml.in.in:112
-msgid ""
-"Ensure infobar shows in connection server dialog when connection attempt "
-"fails"
-msgstr ""
-"Assegura que la barra d'informació mostri un diàleg de la connexió del "
-"servidor quan falli l'intent de connexió."
-
-#: data/io.elementary.files.appdata.xml.in.in:113
-msgid "Ensure correct icon for bookmark to a file that is not a folder"
-msgstr ""
-"Assegura la icona correcta del marcador d'un fitxer que no sigui una carpeta."
-
-#: data/io.elementary.files.appdata.xml.in.in:114
-msgid "Fix possible crash when removing a bookmark"
-msgstr "Correcció d'una fallada possible en suprimir un marcador"
-
-#: data/io.elementary.files.appdata.xml.in.in:164
+#: data/io.elementary.files.appdata.xml.in.in:155
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
@@ -159,6 +105,56 @@ msgstr "Executa el Fitxers del Pantheon com a administrador"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Cal autenticació per executar el Fitxers com a administrador."
+
+#~ msgid ""
+#~ "Provide option to select folders with single click and activate with "
+#~ "double click"
+#~ msgstr ""
+#~ "Proporciona una opció per seleccionar carpetes amb un sol clic i activar "
+#~ "amb dos."
+
+#~ msgid ""
+#~ "Only show the properties overlay when files are selected, not when hovered"
+#~ msgstr ""
+#~ "Només es mostren les propietats quan se seleccionen els fitxers, no quan "
+#~ "s'hi passa per damunt."
+
+#~ msgid "Fixes:"
+#~ msgstr "Correccions:"
+
+#~ msgid "Fix unexpected file activation after navigation with double-click"
+#~ msgstr ""
+#~ "Correcció de l'activació de fitxers en navegar després d'un clic doble"
+
+#~ msgid "Fix dimmed window after use of filechooser portal"
+#~ msgstr ""
+#~ "Correcció de la finestra enfosquida després d'usar el portal de selecció "
+#~ "de fitxers"
+
+#~ msgid "Fix possible crash when rapidly changing view modes"
+#~ msgstr ""
+#~ "Correcció de la fallada possible en canviar ràpidament de mode de "
+#~ "visualització"
+
+#~ msgid "Fix startup when restored remote location is no longer connected"
+#~ msgstr ""
+#~ "Correcció de l'inici quan la ubicació remota restaurada ja no està "
+#~ "connectada"
+
+#~ msgid ""
+#~ "Ensure infobar shows in connection server dialog when connection attempt "
+#~ "fails"
+#~ msgstr ""
+#~ "Assegura que la barra d'informació mostri un diàleg de la connexió del "
+#~ "servidor quan falli l'intent de connexió."
+
+#~ msgid "Ensure correct icon for bookmark to a file that is not a folder"
+#~ msgstr ""
+#~ "Assegura la icona correcta del marcador d'un fitxer que no sigui una "
+#~ "carpeta."
+
+#~ msgid "Fix possible crash when removing a bookmark"
+#~ msgstr "Correcció d'una fallada possible en suprimir un marcador"
 
 #~ msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
 #~ msgstr ""
