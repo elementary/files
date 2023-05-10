@@ -637,13 +637,13 @@ namespace Files {
         }
 
         protected void connect_directory_loading_handlers (Directory dir) {
-            model.prepare_to_load ();
+            model.set_sorting_off ();
             dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_directory_done_loading);
         }
 
         protected void disconnect_directory_loading_handlers (Directory dir) {
-            model.after_loading ();
+            model.set_sorting_on ();
             dir.file_loaded.disconnect (on_directory_file_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);
         }
