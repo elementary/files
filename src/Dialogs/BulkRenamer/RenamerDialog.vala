@@ -56,6 +56,7 @@ public class Files.RenamerDialog : Granite.Dialog {
     private Gtk.Revealer suffix_revealer;
     private Gtk.Entry basename_entry;
     private Gtk.Entry replacement_entry;
+    private Granite.Widgets.ModeButton basename_modebutton;
     private Gtk.RadioButton replace_check;
     private Gtk.RadioButton new_check;
     private Gtk.RadioButton original_check;
@@ -127,22 +128,22 @@ public class Files.RenamerDialog : Granite.Dialog {
         suffix_box.pack_start (suffix_revealer, false, false);
 
         var basename_label = new Gtk.Label (_("Basename:"));
+        basename_modebutton = new Granite.Widgets.ModeButton ();
         /// TRANSLATORS: Used as "Basename: Unchanged"
-        original_check = new Gtk.RadioButton.with_label (null, NC_("bulk-rename", "Unchanged")) { margin_start = 24 };
+        basename_modebutton.append_text (NC_("bulk-rename", "Unchanged"));
         /// TRANSLATORS: Used as "Basename: New"
-        new_check = new Gtk.RadioButton.with_label_from_widget (original_check, NC_("bulk-rename", "New")) { margin_start = 24 };
+        basename_modebutton.append_text (NC_("bulk-rename", "New"));
         /// TRANSLATORS: Used as "Basename: Modified"
-        replace_check = new Gtk.RadioButton.with_label_from_widget (original_check, NC_("bulk-rename", "Modified")) { margin_start = 24 };
+        basename_modebutton.append_text (NC_("bulk-rename", "Modified"));
+        basename_modebutton.selected = 0;
 
-        var basename_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
+        var basename_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
             halign = Gtk.Align.CENTER,
             margin_bottom = 24
         };
 
         basename_box.pack_start (basename_label);
-        basename_box.pack_start (original_check);
-        basename_box.pack_start (replace_check);
-        basename_box.pack_start (new_check);
+        basename_box.pack_end (basename_modebutton);
 
         var original_label = new Gtk.Label (_("Original Basename"));
         basename_entry = new Gtk.Entry ();
@@ -232,29 +233,28 @@ public class Files.RenamerDialog : Granite.Dialog {
         replacement_entry_stack.visible_child_name = "box";
 
 
-        /* Connect signals */
-        original_check.toggled.connect (() => {
-            if (original_check.active) {
-                basename_entry_stack.visible_child_name = "label";
-                replacement_entry_stack.visible_child_name = "box";
-                schedule_view_update ();
+        // /* Connect signals */
+        basename_modebutton.notify["selected"].connect (() => {
+            switch (basename_modebutton.selected) {
+                case 0:
+                    basename_entry_stack.visible_child_name = "label";
+                    replacement_entry_stack.visible_child_name = "box";
+                    break;
+                case 1:
+                    basename_entry_stack.visible_child_name = "entry";
+                    basename_entry.placeholder_text = _("New basename");
+                    replacement_entry_stack.visible_child_name = "box";
+                    break;
+                case 2:
+                    basename_entry_stack.visible_child_name = "entry";
+                    basename_entry.placeholder_text = _("Text to be replaced");
+                    replacement_entry_stack.visible_child_name = "entry";
+                    break;
+                default:
+                    assert_not_reached ();
             }
-        });
-        replace_check.toggled.connect (() => {
-            if (replace_check.active) {
-                basename_entry_stack.visible_child_name = "entry";
-                basename_entry.placeholder_text = _("Text to be replaced");
-                replacement_entry_stack.visible_child_name = "entry";
-                schedule_view_update ();
-            }
-        });
-        new_check.toggled.connect (() => {
-            if (new_check.active) {
-                basename_entry_stack.visible_child_name = "entry";
-                basename_entry.placeholder_text = _("New basename");
-                replacement_entry_stack.visible_child_name = "box";
-                schedule_view_update ();
-            }
+
+            schedule_view_update ();
         });
 
         basename_entry.changed.connect (() => {
@@ -452,8 +452,8 @@ public class Files.RenamerDialog : Granite.Dialog {
             button.label = mod.get_button_text ();
         };
 
-        var custom_basename = original_check.active ? null : basename_entry.text;
-        var replacement_text = replace_check.active ? replacement_entry.text : null;
+        var custom_basename = basename_modebutton.selected == 0 ? null : basename_entry.text;
+        var replacement_text = basename_modebutton.selected == 2 ? replacement_entry.text : null;
         renamer.schedule_update (custom_basename, replacement_text);
     }
 
