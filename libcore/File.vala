@@ -672,7 +672,7 @@ public class Files.File : GLib.Object {
 
     public bool ensure_query_info () {
         if (info == null) {
-            query_update ();
+            query_info ();
         }
 
         return info != null;
