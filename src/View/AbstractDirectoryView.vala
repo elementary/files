@@ -1452,6 +1452,12 @@ namespace Files {
                 unblock_model ();
             }
 
+            foreach (Files.File file in slot.directory.get_files ()) {
+                if (file.is_folder ()) {
+                    file.update_size ();
+                }
+            }
+
             action_set_state (background_actions, "show-hidden", show);
         }
 

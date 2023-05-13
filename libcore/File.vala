@@ -1095,7 +1095,7 @@ public class Files.File : GLib.Object {
         return null;
     }
 
-    private void update_size () {
+    public void update_size () {
         if (is_folder () || is_root_network_folder ()) {
             format_size = format_item_count ();
         } else if (info.has_attribute (GLib.FileAttribute.STANDARD_SIZE)) {
@@ -1123,14 +1123,25 @@ public class Files.File : GLib.Object {
             return;
         }
 
+        var pref_show_hidden = Files.Preferences.get_default ().show_hidden_files;
         if (location.has_uri_scheme ("file") ||
             (is_mounted && location.is_native ())) {
 
             try {
-                var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
+                var f_enum = location.enumerate_children (
+                    FileAttribute.STANDARD_IS_HIDDEN,
+                    FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                    null
+                );
                 count = 0;
-                while (f_enum.next_file () != null) {
-                    count++;
+                FileInfo info;
+                // Only count visible items
+                while ((info = f_enum.next_file ()) != null) {
+                    if (pref_show_hidden ||
+                        !info.get_attribute_boolean (FileAttribute.STANDARD_IS_HIDDEN)) {
+
+                        count++;
+                    }
                 }
             } catch (Error e) {
                 count = -1;
