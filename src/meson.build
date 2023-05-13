@@ -26,6 +26,11 @@ pantheon_files_exec = executable (
     'Dialogs/PropertiesWindow.vala',
     'Dialogs/VolumePropertiesWindow.vala',
 
+    'Dialogs/BulkRenamer/Renamer.vala',
+    'Dialogs/BulkRenamer/RenamerModifier.vala',
+    'Dialogs/BulkRenamer/RenamerDialog.vala',
+    'Dialogs/BulkRenamer/RenamerListBox.vala',
+
     'Utils/MimeActions.vala',
     'Utils/Permissions.vala',
     'Utils/AppUtils.vala',
@@ -55,7 +60,6 @@ pantheon_files_exec = executable (
     'View/Widgets/ProgressInfoWidget.vala',
     'View/Widgets/SingleLineEditableLabel.vala',
     'View/Widgets/SearchResults.vala',
-    'View/Widgets/StorageBar.vala',
     'View/Widgets/Welcome.vala',
 
     'View/Sidebar/AbstractMountableRow.vala',

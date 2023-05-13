@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-02 12:23+0000\n"
+"POT-Creation-Date: 2023-05-10 16:11+0000\n"
 "PO-Revision-Date: 2022-01-25 22:09+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/extra/cs/>\n"
@@ -62,444 +62,35 @@ msgstr ""
 "AFP, Webdav nebo sdílení Windows."
 
 #: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:82
-#: data/io.elementary.files.appdata.xml.in.in:140
-#: data/io.elementary.files.appdata.xml.in.in:158
-#: data/io.elementary.files.appdata.xml.in.in:183
-#: data/io.elementary.files.appdata.xml.in.in:260
-#: data/io.elementary.files.appdata.xml.in.in:277
+#: data/io.elementary.files.appdata.xml.in.in:50
+#: data/io.elementary.files.appdata.xml.in.in:72
+#: data/io.elementary.files.appdata.xml.in.in:88
+#: data/io.elementary.files.appdata.xml.in.in:103
+msgid "Minor updates:"
+msgstr "Drobné aktualizace:"
+
+#: data/io.elementary.files.appdata.xml.in.in:38
+msgid "Use a colorful level bar to show disk usage in the properties dialog"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:39
+#: data/io.elementary.files.appdata.xml.in.in:52
+#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:105
+msgid "Updated translations"
+msgstr "Aktualizovány překlady"
+
+#: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Improvements:"
 msgstr "Vylepšení:"
 
-#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/io.elementary.files.appdata.xml.in.in:70
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:40
-#: data/io.elementary.files.appdata.xml.in.in:56
-#: data/io.elementary.files.appdata.xml.in.in:71
-#: data/io.elementary.files.appdata.xml.in.in:97
-#: data/io.elementary.files.appdata.xml.in.in:109
-#: data/io.elementary.files.appdata.xml.in.in:132
-#: data/io.elementary.files.appdata.xml.in.in:150
-#: data/io.elementary.files.appdata.xml.in.in:175
-#: data/io.elementary.files.appdata.xml.in.in:201
-msgid "Minor updates:"
-msgstr "Drobné aktualizace:"
-
-#: data/io.elementary.files.appdata.xml.in.in:42
-#: data/io.elementary.files.appdata.xml.in.in:58
-#: data/io.elementary.files.appdata.xml.in.in:73
-#: data/io.elementary.files.appdata.xml.in.in:99
-#: data/io.elementary.files.appdata.xml.in.in:111
-#: data/io.elementary.files.appdata.xml.in.in:134
-#: data/io.elementary.files.appdata.xml.in.in:152
-#: data/io.elementary.files.appdata.xml.in.in:177
-#: data/io.elementary.files.appdata.xml.in.in:203
-#: data/io.elementary.files.appdata.xml.in.in:218
-#: data/io.elementary.files.appdata.xml.in.in:234
-#: data/io.elementary.files.appdata.xml.in.in:249
-#: data/io.elementary.files.appdata.xml.in.in:266
-#: data/io.elementary.files.appdata.xml.in.in:295
-msgid "Updated translations"
-msgstr "Aktualizovány překlady"
-
-#: data/io.elementary.files.appdata.xml.in.in:84
-msgid ""
-"Provide option to select folders with single click and activate with double "
-"click"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:85
-msgid ""
-"Only show the properties overlay when files are selected, not when hovered"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:87
-#: data/io.elementary.files.appdata.xml.in.in:105
-#: data/io.elementary.files.appdata.xml.in.in:117
-#: data/io.elementary.files.appdata.xml.in.in:144
-#: data/io.elementary.files.appdata.xml.in.in:164
-#: data/io.elementary.files.appdata.xml.in.in:192
-#: data/io.elementary.files.appdata.xml.in.in:209
-#: data/io.elementary.files.appdata.xml.in.in:224
-#: data/io.elementary.files.appdata.xml.in.in:240
-#: data/io.elementary.files.appdata.xml.in.in:255
-#: data/io.elementary.files.appdata.xml.in.in:272
-msgid "Fixes:"
-msgstr "Opravy:"
-
-#: data/io.elementary.files.appdata.xml.in.in:89
-msgid "Fix unexpected file activation after navigation with double-click"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:90
-#, fuzzy
-#| msgid "Add file filters and New Folder options to file chooser portal"
-msgid "Fix dimmed window after use of filechooser portal"
-msgstr ""
-"Přidány filtry souborů do voleb Nová složka do portálu dialogu výběru souboru"
-
-#: data/io.elementary.files.appdata.xml.in.in:91
-msgid "Fix possible crash when rapidly changing view modes"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:92
-msgid "Fix startup when restored remote location is no longer connected"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:93
-msgid ""
-"Ensure infobar shows in connection server dialog when connection attempt "
-"fails"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:94
-msgid "Ensure correct icon for bookmark to a file that is not a folder"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:95
-#, fuzzy
-#| msgid "Fix a crash when restoring items from the Trash"
-msgid "Fix possible crash when removing a bookmark"
-msgstr "Oprava padání při obnově položek z koše"
-
-#: data/io.elementary.files.appdata.xml.in.in:107
-msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:119
-msgid "Renaming with the same name no longer shows an error dialog"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:120
-msgid "Ctrl + A when renaming now selects all the text in the entry"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:121
-msgid "Selecting multiple items with Shift + Arrow keys now works properly"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:122
-msgid "The appearance of the cursor now matches the action"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:123
-msgid "The Trash sidebar item can no longer be removed"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:124
-msgid "Network sidebar plugins such as NextCloud are now added correctly"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:125
-#, fuzzy
-#| msgid ""
-#| "Fix truncation of final column in Column View under some circumstances"
-msgid "Duplication of subfolders in ListView under some circumstances is fixed"
-msgstr ""
-"Opraveno zkracování posledního sloupce ve sloupcovém zobrazení za určitých "
-"podmínek"
-
-#: data/io.elementary.files.appdata.xml.in.in:126
-msgid ""
-"Bookmarks are now highlighted when a file they can accept is dragged onto "
-"them"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:127
-msgid "Folders not being restored properly under some circumstances is fixed"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:128
-msgid ""
-"Show confirmation dialog in file chooser before overwriting an existing file"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:129
-msgid "Ctrl + V now always pastes into background folder"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:130
-msgid "Shift + Ctrl + V now pastes into selected folder if there is one"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:142
-msgid "Show New Tab and New Window shortcuts in context menus"
-msgstr ""
-"V kontextových nabídkách zobrazovány zkratky pro Nový panel a Nové okno"
-
-#: data/io.elementary.files.appdata.xml.in.in:146
-msgid "Double click selects instead of exiting while renaming in list view"
-msgstr ""
-"Při přejmenovávání v zobrazení seznamu dvojklik namísto ukončení provede "
-"výběr"
-
-#: data/io.elementary.files.appdata.xml.in.in:147
-msgid "Show public share icon in breadcrumbs"
-msgstr "V drobečkových navigacích zobrazována ikona veřejného sdílení"
-
-#: data/io.elementary.files.appdata.xml.in.in:148
-msgid "Prevent a crash when dragging to re-arrange bookmarks"
-msgstr "Zabráněno pádu při změně pořadí záložek jejich přetahováním"
-
-#: data/io.elementary.files.appdata.xml.in.in:160
-msgid "Close FileChooser with Esc key"
-msgstr "Dialog pro výběr souboru zavřete klávesou Esc"
-
-#: data/io.elementary.files.appdata.xml.in.in:161
-msgid "Use new emblems for git status"
-msgstr "Použity nové emblémy pro git stav"
-
-#: data/io.elementary.files.appdata.xml.in.in:162
-msgid "Show selection actions in secondary click menu"
-msgstr "Zobrazeny akce výběru v kontextové nabídce (pravé tlačítko myši)"
-
-#: data/io.elementary.files.appdata.xml.in.in:166
-msgid "Always show Permissions page in Properties dialog"
-msgstr "V dialogu Vlastnosti vždy zobrazována stránka Oprávnění"
-
-#: data/io.elementary.files.appdata.xml.in.in:167
-msgid ""
-"In Permissions page, show user and group numeric IDs when names not available"
-msgstr ""
-"Na stránce Oprávnění, když nejsou k dispozici jména/názvy, náhradně "
-"zobrazovány číselné identifikátory uživatele a skupiny"
-
-#: data/io.elementary.files.appdata.xml.in.in:168
-msgid "In Permissions page, show message when no information available"
-msgstr ""
-"Na stránce Oprávnění, když nejsou k dispozici potřebné údaje, zobrazena "
-"zpráva o tom"
-
-#: data/io.elementary.files.appdata.xml.in.in:170
-#: data/io.elementary.files.appdata.xml.in.in:215
-#: data/io.elementary.files.appdata.xml.in.in:232
-#: data/io.elementary.files.appdata.xml.in.in:247
-#: data/io.elementary.files.appdata.xml.in.in:264
-#: data/io.elementary.files.appdata.xml.in.in:292
-msgid "Other updates:"
-msgstr "Ostatní aktualizace:"
-
-#: data/io.elementary.files.appdata.xml.in.in:172
-msgid "Only allow one FileChooser per parent window"
-msgstr ""
-"V rámci jednoho nadřazeného okna umožněn pouze jeden dialog pro výběr souboru"
-
-#: data/io.elementary.files.appdata.xml.in.in:173
-msgid ""
-"Navigate to folder when pressing enter in FileChooser instead of selecting"
-msgstr ""
-"Přejít do složky při stisknutí klávesy Enter v dialogu pro výběr souboru "
-"namísto jejího vybrání"
-
-#: data/io.elementary.files.appdata.xml.in.in:185
-msgid ""
-"Use \"Send Mail\" portal instead of contract, improving compatibility with "
-"alternate email apps"
-msgstr ""
-"Použití portálu „Odeslat e-mail“ namísto smlouvy, což zlepšuje kompatibilitu "
-"s alternativními e-mailovými aplikacemi"
-
-#: data/io.elementary.files.appdata.xml.in.in:186
-msgid "Add file filters and New Folder options to file chooser portal"
-msgstr ""
-"Přidány filtry souborů do voleb Nová složka do portálu dialogu výběru souboru"
-
-#: data/io.elementary.files.appdata.xml.in.in:187
-msgid ""
-"Allow blank passwords for remote connections, e.g. for SSH via a private key"
-msgstr ""
-"Umožněna prázdná hesla pro vzdálená připojení, např. pro SSH prostřednictvím "
-"soukromého klíče"
-
-#: data/io.elementary.files.appdata.xml.in.in:188
-msgid "Make ejecting devices safer"
-msgstr "Bezpečnější odpojování zařízení"
-
-#: data/io.elementary.files.appdata.xml.in.in:189
-msgid "Add option to stop drive if possible"
-msgstr "Přidána volba pro zastavení jednotky, pokud je to možné"
-
-#: data/io.elementary.files.appdata.xml.in.in:190
-msgid "Show unformatted drives and drives without media"
-msgstr ""
-"Zobrazovány nenaformátované jednotky nebo ty, ve kterých se nenachází médium"
-
-#: data/io.elementary.files.appdata.xml.in.in:194
-msgid ""
-"Fix pasting of selected pathbar text into another window using middle-click"
-msgstr ""
-"Opraveno vkládán vybraného textu z pruhu popisu umístění do jiného okna "
-"použitím kliknutí prostředním tlačítkem"
-
-#: data/io.elementary.files.appdata.xml.in.in:195
-msgid "Fix selecting multiple groups of files"
-msgstr "Opraveno vybírání vícero skupin souborů"
-
-#: data/io.elementary.files.appdata.xml.in.in:196
-msgid "Allow dropping bookmark directly below the Recent bookmark"
-msgstr "Umožněno přetahování záložky přímo pod Nedávnou záložku"
-
-#: data/io.elementary.files.appdata.xml.in.in:197
-msgid "Do not show unusable drop target below the Trash bookmark"
-msgstr "Nezobrazován nepoužitelný cíl upuštění pod záložkou Koš"
-
-#: data/io.elementary.files.appdata.xml.in.in:198
-msgid "Fix sidebar showing both drive and volume for same device"
-msgstr ""
-"Opraven postranní panel zobrazující jak jednotku tak hlasitost pro stejné "
-"zařízení"
-
-#: data/io.elementary.files.appdata.xml.in.in:199
-msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
-msgstr ""
-"Opraven postranní pruh zobrazující SSH servery jak v sekci Úložiště, tak Síť"
-
-#: data/io.elementary.files.appdata.xml.in.in:211
-msgid "Show translated bookmark names when changing languages"
-msgstr "Při změně jazyka zobrazovány přeložené názvy záložek"
-
-#: data/io.elementary.files.appdata.xml.in.in:212
-msgid "Stop some audio file icons disappearing when scrolling or changing view"
-msgstr ""
-"Odstraněno mizení ikon některých souborů se zvukem při posunování nebo změně "
-"pohledu"
-
-#: data/io.elementary.files.appdata.xml.in.in:213
-msgid ""
-"Stop brief appearance of status overlay when changing root folder in Column "
-"View"
-msgstr ""
-"Odstraněno chvilkové zobrazení stavového překryvu při změně kořenové složky "
-"ve sloupcovém zobrazení"
-
-#: data/io.elementary.files.appdata.xml.in.in:217
-msgid "Remove message about reporting issues when running from Terminal"
-msgstr "Odebrána zpráva o hlášení problémů při spouštění z Terminálu"
-
-#: data/io.elementary.files.appdata.xml.in.in:226
-msgid "Open bookmarks in a new tab with Ctrl + Click"
-msgstr "Záložky otevřete v nových panelech přidržením klávesy Ctrl při klikání"
-
-#: data/io.elementary.files.appdata.xml.in.in:227
-msgid "Fix dropping uris onto storage devices and network locations in sidebar"
-msgstr ""
-"Opraveno upouštění URI adres na úložná zařízení a síťová umístění v "
-"postranním panelu"
-
-#: data/io.elementary.files.appdata.xml.in.in:228
-msgid "Fix restoring tabs after a system restart"
-msgstr "Opraveno obnovování panelů po restartu systému"
-
-#: data/io.elementary.files.appdata.xml.in.in:229
-msgid ""
-"Don't unselect when secondary clicking blank space around a file or folder"
-msgstr ""
-"Nerušit výběr při kliknutí pravým tlačítkem na volný prostor okolo souboru "
-"či složky"
-
-#: data/io.elementary.files.appdata.xml.in.in:230
-msgid ""
-"Show the folder context menu when secondary clicking outside of a selection"
-msgstr ""
-"Zobrazit kontextovou nabídku složky při kliknutí pravým tlačítkem myši mimo "
-"výběr"
-
-#: data/io.elementary.files.appdata.xml.in.in:242
-msgid "Fix small context menus on breadcrumbs"
-msgstr "Opraveny malé kontextové nabídky na drobečkové navigaci"
-
-#: data/io.elementary.files.appdata.xml.in.in:243
-msgid "Fix bookmarking a single selected item with Ctrl + D"
-msgstr ""
-"Opraveno přidávání do záložek jediné označené položky stisknutím Ctrl+D"
-
-#: data/io.elementary.files.appdata.xml.in.in:244
-msgid "Fix renaming bookmarks in the sidebar"
-msgstr "Opraveno přejmenovávání záložek v postranním panelu"
-
-#: data/io.elementary.files.appdata.xml.in.in:245
-msgid "Fix an issue with showing color tags when thumbnails are hidden"
-msgstr "Opraven problém se zobrazování barevných štítků při skrytých náhledech"
-
-#: data/io.elementary.files.appdata.xml.in.in:257
-msgid "Fix freeze when comparing copied files"
-msgstr "Opraveno mrznutí při porovnávání zkopírovaných souborů"
-
-#: data/io.elementary.files.appdata.xml.in.in:258
-msgid "Fix truncation of final column in Column View under some circumstances"
-msgstr ""
-"Opraveno zkracování posledního sloupce ve sloupcovém zobrazení za určitých "
-"podmínek"
-
-#: data/io.elementary.files.appdata.xml.in.in:262
-msgid "Show more keyboard accelerators in menus"
-msgstr "Zobrazováno více klávesových akcelerátorů v nabídkách"
-
-#: data/io.elementary.files.appdata.xml.in.in:274
-msgid "Fix connecting to AFP servers so that passwords are remembered"
-msgstr "Opraveno připojování k AFP serverům, takže jsou zapamatována hesla"
-
-#: data/io.elementary.files.appdata.xml.in.in:275
-msgid "Fix MTP mounts"
-msgstr "Opravena MTP připojení"
-
-#: data/io.elementary.files.appdata.xml.in.in:279
-msgid "Launch files with double click instead of single click"
-msgstr "Spouštění souborů dvojklikem namísto jediného kliknutí"
-
-#: data/io.elementary.files.appdata.xml.in.in:280
-msgid "Provide a File Chooser portal for Flatpak apps"
-msgstr ""
-"Poskytuje portál pro výběr souborů pro aplikace pocházející z Flatpak balíčků"
-
-#: data/io.elementary.files.appdata.xml.in.in:281
-msgid "Brand new animated Sidebar"
-msgstr "Zcela nový animovaný postranní panel"
-
-#: data/io.elementary.files.appdata.xml.in.in:282
-msgid "Dark style support"
-msgstr "Podpora pro tmavý vzhled"
-
-#: data/io.elementary.files.appdata.xml.in.in:283
-msgid "Mint and Bubblegum color tags"
-msgstr "Mátová a žvýkačková barva pro štítky"
-
-#: data/io.elementary.files.appdata.xml.in.in:284
-msgid "Do not restore locations that have become inaccessible"
-msgstr "Neobnovovat umístění, která přestanou být dostupná"
-
-#: data/io.elementary.files.appdata.xml.in.in:285
-msgid "Clicking between thumbnail and text now activates/selects in Grid view"
-msgstr "Kliknutí mezi náhled a text nyní v zobrazení v mřížce aktivuje/vybírá"
-
-#: data/io.elementary.files.appdata.xml.in.in:286
-msgid "AFC protocol support"
-msgstr "Podpora protokolu AFC"
-
-#: data/io.elementary.files.appdata.xml.in.in:287
-msgid "Add a smaller minimum icon size in list view"
-msgstr "Přidána menší minimální velikost ikon v zobrazení v seznamu"
-
-#: data/io.elementary.files.appdata.xml.in.in:288
-msgid "Show emblems inline in list views"
-msgstr "V zobrazení v seznamu zobrazovat emblémy"
-
-#: data/io.elementary.files.appdata.xml.in.in:289
-msgid "Performance improvements"
-msgstr "Vylepšení výkonu"
-
-#: data/io.elementary.files.appdata.xml.in.in:290
-msgid "Stability improvements"
-msgstr "Vylepšení stability"
-
-#: data/io.elementary.files.appdata.xml.in.in:294
-msgid "Rename \"Devices\" to \"Storage\""
-msgstr "„Zařízení“ přejmenována na „Úložiště“"
-
-#: data/io.elementary.files.appdata.xml.in.in:329
+#: data/io.elementary.files.appdata.xml.in.in:155
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
@@ -512,6 +103,259 @@ msgid "Authentication is required to run Files as Administrator"
 msgstr ""
 "Pro spuštění aplikace Soubory s oprávněními na úrovni správce systému je "
 "vyžadováno ověření se"
+
+#~ msgid "Fixes:"
+#~ msgstr "Opravy:"
+
+#, fuzzy
+#~| msgid "Add file filters and New Folder options to file chooser portal"
+#~ msgid "Fix dimmed window after use of filechooser portal"
+#~ msgstr ""
+#~ "Přidány filtry souborů do voleb Nová složka do portálu dialogu výběru "
+#~ "souboru"
+
+#, fuzzy
+#~| msgid "Fix a crash when restoring items from the Trash"
+#~ msgid "Fix possible crash when removing a bookmark"
+#~ msgstr "Oprava padání při obnově položek z koše"
+
+#, fuzzy
+#~| msgid ""
+#~| "Fix truncation of final column in Column View under some circumstances"
+#~ msgid ""
+#~ "Duplication of subfolders in ListView under some circumstances is fixed"
+#~ msgstr ""
+#~ "Opraveno zkracování posledního sloupce ve sloupcovém zobrazení za "
+#~ "určitých podmínek"
+
+#~ msgid "Show New Tab and New Window shortcuts in context menus"
+#~ msgstr ""
+#~ "V kontextových nabídkách zobrazovány zkratky pro Nový panel a Nové okno"
+
+#~ msgid "Double click selects instead of exiting while renaming in list view"
+#~ msgstr ""
+#~ "Při přejmenovávání v zobrazení seznamu dvojklik namísto ukončení provede "
+#~ "výběr"
+
+#~ msgid "Show public share icon in breadcrumbs"
+#~ msgstr "V drobečkových navigacích zobrazována ikona veřejného sdílení"
+
+#~ msgid "Prevent a crash when dragging to re-arrange bookmarks"
+#~ msgstr "Zabráněno pádu při změně pořadí záložek jejich přetahováním"
+
+#~ msgid "Close FileChooser with Esc key"
+#~ msgstr "Dialog pro výběr souboru zavřete klávesou Esc"
+
+#~ msgid "Use new emblems for git status"
+#~ msgstr "Použity nové emblémy pro git stav"
+
+#~ msgid "Show selection actions in secondary click menu"
+#~ msgstr "Zobrazeny akce výběru v kontextové nabídce (pravé tlačítko myši)"
+
+#~ msgid "Always show Permissions page in Properties dialog"
+#~ msgstr "V dialogu Vlastnosti vždy zobrazována stránka Oprávnění"
+
+#~ msgid ""
+#~ "In Permissions page, show user and group numeric IDs when names not "
+#~ "available"
+#~ msgstr ""
+#~ "Na stránce Oprávnění, když nejsou k dispozici jména/názvy, náhradně "
+#~ "zobrazovány číselné identifikátory uživatele a skupiny"
+
+#~ msgid "In Permissions page, show message when no information available"
+#~ msgstr ""
+#~ "Na stránce Oprávnění, když nejsou k dispozici potřebné údaje, zobrazena "
+#~ "zpráva o tom"
+
+#~ msgid "Other updates:"
+#~ msgstr "Ostatní aktualizace:"
+
+#~ msgid "Only allow one FileChooser per parent window"
+#~ msgstr ""
+#~ "V rámci jednoho nadřazeného okna umožněn pouze jeden dialog pro výběr "
+#~ "souboru"
+
+#~ msgid ""
+#~ "Navigate to folder when pressing enter in FileChooser instead of selecting"
+#~ msgstr ""
+#~ "Přejít do složky při stisknutí klávesy Enter v dialogu pro výběr souboru "
+#~ "namísto jejího vybrání"
+
+#~ msgid ""
+#~ "Use \"Send Mail\" portal instead of contract, improving compatibility "
+#~ "with alternate email apps"
+#~ msgstr ""
+#~ "Použití portálu „Odeslat e-mail“ namísto smlouvy, což zlepšuje "
+#~ "kompatibilitu s alternativními e-mailovými aplikacemi"
+
+#~ msgid "Add file filters and New Folder options to file chooser portal"
+#~ msgstr ""
+#~ "Přidány filtry souborů do voleb Nová složka do portálu dialogu výběru "
+#~ "souboru"
+
+#~ msgid ""
+#~ "Allow blank passwords for remote connections, e.g. for SSH via a private "
+#~ "key"
+#~ msgstr ""
+#~ "Umožněna prázdná hesla pro vzdálená připojení, např. pro SSH "
+#~ "prostřednictvím soukromého klíče"
+
+#~ msgid "Make ejecting devices safer"
+#~ msgstr "Bezpečnější odpojování zařízení"
+
+#~ msgid "Add option to stop drive if possible"
+#~ msgstr "Přidána volba pro zastavení jednotky, pokud je to možné"
+
+#~ msgid "Show unformatted drives and drives without media"
+#~ msgstr ""
+#~ "Zobrazovány nenaformátované jednotky nebo ty, ve kterých se nenachází "
+#~ "médium"
+
+#~ msgid ""
+#~ "Fix pasting of selected pathbar text into another window using middle-"
+#~ "click"
+#~ msgstr ""
+#~ "Opraveno vkládán vybraného textu z pruhu popisu umístění do jiného okna "
+#~ "použitím kliknutí prostředním tlačítkem"
+
+#~ msgid "Fix selecting multiple groups of files"
+#~ msgstr "Opraveno vybírání vícero skupin souborů"
+
+#~ msgid "Allow dropping bookmark directly below the Recent bookmark"
+#~ msgstr "Umožněno přetahování záložky přímo pod Nedávnou záložku"
+
+#~ msgid "Do not show unusable drop target below the Trash bookmark"
+#~ msgstr "Nezobrazován nepoužitelný cíl upuštění pod záložkou Koš"
+
+#~ msgid "Fix sidebar showing both drive and volume for same device"
+#~ msgstr ""
+#~ "Opraven postranní panel zobrazující jak jednotku tak hlasitost pro stejné "
+#~ "zařízení"
+
+#~ msgid "Fix sidebar showing SSH servers in both Storage and Network sections"
+#~ msgstr ""
+#~ "Opraven postranní pruh zobrazující SSH servery jak v sekci Úložiště, tak "
+#~ "Síť"
+
+#~ msgid "Show translated bookmark names when changing languages"
+#~ msgstr "Při změně jazyka zobrazovány přeložené názvy záložek"
+
+#~ msgid ""
+#~ "Stop some audio file icons disappearing when scrolling or changing view"
+#~ msgstr ""
+#~ "Odstraněno mizení ikon některých souborů se zvukem při posunování nebo "
+#~ "změně pohledu"
+
+#~ msgid ""
+#~ "Stop brief appearance of status overlay when changing root folder in "
+#~ "Column View"
+#~ msgstr ""
+#~ "Odstraněno chvilkové zobrazení stavového překryvu při změně kořenové "
+#~ "složky ve sloupcovém zobrazení"
+
+#~ msgid "Remove message about reporting issues when running from Terminal"
+#~ msgstr "Odebrána zpráva o hlášení problémů při spouštění z Terminálu"
+
+#~ msgid "Open bookmarks in a new tab with Ctrl + Click"
+#~ msgstr ""
+#~ "Záložky otevřete v nových panelech přidržením klávesy Ctrl při klikání"
+
+#~ msgid ""
+#~ "Fix dropping uris onto storage devices and network locations in sidebar"
+#~ msgstr ""
+#~ "Opraveno upouštění URI adres na úložná zařízení a síťová umístění v "
+#~ "postranním panelu"
+
+#~ msgid "Fix restoring tabs after a system restart"
+#~ msgstr "Opraveno obnovování panelů po restartu systému"
+
+#~ msgid ""
+#~ "Don't unselect when secondary clicking blank space around a file or folder"
+#~ msgstr ""
+#~ "Nerušit výběr při kliknutí pravým tlačítkem na volný prostor okolo "
+#~ "souboru či složky"
+
+#~ msgid ""
+#~ "Show the folder context menu when secondary clicking outside of a "
+#~ "selection"
+#~ msgstr ""
+#~ "Zobrazit kontextovou nabídku složky při kliknutí pravým tlačítkem myši "
+#~ "mimo výběr"
+
+#~ msgid "Fix small context menus on breadcrumbs"
+#~ msgstr "Opraveny malé kontextové nabídky na drobečkové navigaci"
+
+#~ msgid "Fix bookmarking a single selected item with Ctrl + D"
+#~ msgstr ""
+#~ "Opraveno přidávání do záložek jediné označené položky stisknutím Ctrl+D"
+
+#~ msgid "Fix renaming bookmarks in the sidebar"
+#~ msgstr "Opraveno přejmenovávání záložek v postranním panelu"
+
+#~ msgid "Fix an issue with showing color tags when thumbnails are hidden"
+#~ msgstr ""
+#~ "Opraven problém se zobrazování barevných štítků při skrytých náhledech"
+
+#~ msgid "Fix freeze when comparing copied files"
+#~ msgstr "Opraveno mrznutí při porovnávání zkopírovaných souborů"
+
+#~ msgid ""
+#~ "Fix truncation of final column in Column View under some circumstances"
+#~ msgstr ""
+#~ "Opraveno zkracování posledního sloupce ve sloupcovém zobrazení za "
+#~ "určitých podmínek"
+
+#~ msgid "Show more keyboard accelerators in menus"
+#~ msgstr "Zobrazováno více klávesových akcelerátorů v nabídkách"
+
+#~ msgid "Fix connecting to AFP servers so that passwords are remembered"
+#~ msgstr "Opraveno připojování k AFP serverům, takže jsou zapamatována hesla"
+
+#~ msgid "Fix MTP mounts"
+#~ msgstr "Opravena MTP připojení"
+
+#~ msgid "Launch files with double click instead of single click"
+#~ msgstr "Spouštění souborů dvojklikem namísto jediného kliknutí"
+
+#~ msgid "Provide a File Chooser portal for Flatpak apps"
+#~ msgstr ""
+#~ "Poskytuje portál pro výběr souborů pro aplikace pocházející z Flatpak "
+#~ "balíčků"
+
+#~ msgid "Brand new animated Sidebar"
+#~ msgstr "Zcela nový animovaný postranní panel"
+
+#~ msgid "Dark style support"
+#~ msgstr "Podpora pro tmavý vzhled"
+
+#~ msgid "Mint and Bubblegum color tags"
+#~ msgstr "Mátová a žvýkačková barva pro štítky"
+
+#~ msgid "Do not restore locations that have become inaccessible"
+#~ msgstr "Neobnovovat umístění, která přestanou být dostupná"
+
+#~ msgid ""
+#~ "Clicking between thumbnail and text now activates/selects in Grid view"
+#~ msgstr ""
+#~ "Kliknutí mezi náhled a text nyní v zobrazení v mřížce aktivuje/vybírá"
+
+#~ msgid "AFC protocol support"
+#~ msgstr "Podpora protokolu AFC"
+
+#~ msgid "Add a smaller minimum icon size in list view"
+#~ msgstr "Přidána menší minimální velikost ikon v zobrazení v seznamu"
+
+#~ msgid "Show emblems inline in list views"
+#~ msgstr "V zobrazení v seznamu zobrazovat emblémy"
+
+#~ msgid "Performance improvements"
+#~ msgstr "Vylepšení výkonu"
+
+#~ msgid "Stability improvements"
+#~ msgstr "Vylepšení stability"
+
+#~ msgid "Rename \"Devices\" to \"Storage\""
+#~ msgstr "„Zařízení“ přejmenována na „Úložiště“"
 
 #~ msgid "Bookmark menu option for network mounts in sidebar"
 #~ msgstr "Volba záložka pro síťová připojení (mount) v postranním panelu"

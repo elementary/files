@@ -72,7 +72,11 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
     private bool sort_directories_first = true;
 
+    private Gee.TreeMap<string?, Gtk.TreeRowReference> file_treerow_map;
+
     construct {
+        file_treerow_map = new Gee.TreeMap<string, Gtk.TreeRowReference> (null, null);
+
         set_column_types ({
             typeof (Files.File),
             typeof (string),
@@ -84,15 +88,25 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             typeof (bool)
         });
 
-        // We do not want a default sort order - one of the visible columns must always be sorted
-        for (int i = 0; i < ColumnID.NUM_COLUMNS; i++) {
-            set_sort_func (i, (Gtk.TreeIterCompareFunc) file_entry_compare_func);
-        }
-
         set_sort_column_id (
             ColumnID.FILENAME,
             Gtk.SortType.ASCENDING
         );
+        set_sorting_off ();
+    }
+
+    // Turn off sorting while files are being added
+    public void set_sorting_off () {
+        for (int i = 0; i < ColumnID.NUM_COLUMNS; i++) {
+            set_sort_func (i, () => {return 0;});
+        }
+    }
+
+    // Turn on sorting after model stops loading.
+    public void set_sorting_on () {
+        for (int i = 0; i < ColumnID.NUM_COLUMNS; i++) {
+            set_sort_func (i, (Gtk.TreeIterCompareFunc) file_entry_compare_func);
+        }
     }
 
     public Files.File? file_for_path (Gtk.TreePath path) {
@@ -116,20 +130,14 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     }
 
     public bool get_first_iter_for_file (Files.File file, out Gtk.TreeIter? iter) {
-        Gtk.TreeIter? tmp_iter = null;
-        this.foreach ((model, path, i_iter) => {
-            Files.File? iter_file = null;
-            get (i_iter, ColumnID.FILE_COLUMN, ref iter_file);
-            if (iter_file == file) {
-                tmp_iter = i_iter;
-                return true;
-            }
-
+        iter = null;
+        var row = file_treerow_map.@get (file.uri);
+        if (row != null) {
+            get_iter (out iter, row.get_path ());
+            return true;
+        } else {
             return false;
-        });
-
-        iter = tmp_iter;
-        return tmp_iter != null;
+        }
     }
 
     public void get_value (Gtk.TreeIter iter, int column, out Value value) {
@@ -274,6 +282,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
                 return;
             }
 
+            set_sorting_off ();
             foreach (var file in files) {
                 if (!show_hidden_files && file.is_hidden) {
                     continue;
@@ -288,11 +297,15 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
                     @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
                 }
 
+                file_treerow_map.@set (file.uri, new Gtk.TreeRowReference (this, get_path (child_iter)));
+
                 if (file.is_folder ()) {
                     // Append a dummy child so expander will show even when folder is empty.
                     insert_with_values (out child_iter, child_iter, -1, PrivColumnID.DUMMY, true);
                 }
             }
+
+            set_sorting_on ();
         }
     }
 
@@ -303,15 +316,23 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             var dir = Files.Directory.from_file (file);
             dir.cancel ();
             Gtk.TreeIter? child_iter = null;
+            Files.File? child_file = null;
             // Remove all child nodes so they are refreshed if subdirectory reloaded
             // Faster than checking for duplicates
+            set_sorting_off ();
             if (iter_children (out child_iter, parent_iter)) {
-                while (remove (ref child_iter)) {};
+                do {
+                    get (child_iter, ColumnID.FILE_COLUMN, out child_file);
+                    if (child_file != null) {
+                        file_treerow_map.unset (child_file.uri);
+                    }
+                } while (remove (ref child_iter));
             }
 
             // Insert dummy;
             insert_with_values (out child_iter, parent_iter, -1, PrivColumnID.DUMMY, true);
             subdirectory_unloaded (dir);
+            set_sorting_on ();
             return true;
         }
 
@@ -333,6 +354,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
                 if (change_dummy) {
                     // Instead of inserting a new row, change the dummy one
                     @set (file_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                    file_treerow_map.@set (file.uri, new Gtk.TreeRowReference (this, get_path (file_iter)));
                 }
             } else {
                 critical ("folder item with no child"); // The parent file must be a folder and have at lease a dummy entry
@@ -343,7 +365,13 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
         if (!change_dummy) {
             // There was no dummy row to replace so create a new entry for this file
-            insert_with_values (out file_iter, parent_iter, 0, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false);
+            insert_with_values (
+                out file_iter, parent_iter, -1,
+                ColumnID.FILE_COLUMN, file,
+                PrivColumnID.DUMMY, false
+            );
+
+            file_treerow_map.@set (file.uri, new Gtk.TreeRowReference (this, get_path (file_iter)));
         }
 
         if (file.is_folder ()) {
@@ -371,10 +399,16 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
             }
 
             remove (ref file_iter);
+            file_treerow_map.unset (file.uri);
             return true;
         }
 
         return false;
+    }
+
+    public new void clear () {
+        file_treerow_map.clear ();
+        base.clear ();
     }
 
     private int file_entry_compare_func (Gtk.TreeIter a, Gtk.TreeIter b) {
