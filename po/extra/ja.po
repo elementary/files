@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-13 15:42+0000\n"
-"PO-Revision-Date: 2023-05-12 17:06+0000\n"
+"PO-Revision-Date: 2023-05-14 18:06+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,15 +65,15 @@ msgstr ""
 
 #: data/files.metainfo.xml.in.in:18
 msgid "Quick access to settings like zoom levels and hidden files"
-msgstr ""
+msgstr "拡大レベルや隠しファイルの表示などの設定に素早くアクセス可能"
 
 #: data/files.metainfo.xml.in.in:22
 msgid "See more metadata at a glance in List view"
-msgstr ""
+msgstr "リスト表示ではより詳細なメタ情報を一目で確認可能"
 
 #: data/files.metainfo.xml.in.in:26
 msgid "Browse complex trees faster with Column view"
-msgstr ""
+msgstr "カラム表示を使えば複雑なツリーも素早く表示"
 
 #: data/files.metainfo.xml.in.in:58
 msgid "elementary, Inc."
