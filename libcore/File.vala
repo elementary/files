@@ -1113,7 +1113,7 @@ public class Files.File : GLib.Object {
         } else if (count == 0) {
             return _("Empty");
         } else {
-            return ngettext ("%i item", "%i items", count).printf (count);
+            return ngettext ("%'d item", "%'d items", count).printf (count);
         }
 
     }
