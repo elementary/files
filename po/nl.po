@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 08:26+0000\n"
-"PO-Revision-Date: 2023-05-03 17:06+0000\n"
+"POT-Creation-Date: 2023-05-10 16:11+0000\n"
+"PO-Revision-Date: 2023-05-07 16:06+0000\n"
 "Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -231,7 +231,7 @@ msgstr "Grootte"
 msgid "Number sequence"
 msgstr "Nummerreeks"
 
-#: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:306
+#: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
 msgstr "Tekst"
 
@@ -1727,153 +1727,127 @@ msgstr "Bulk Hernoemen"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
 msgid "Number Sequence"
-msgstr ""
+msgstr "Nummerreeks"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
 msgid "Fixed Text"
-msgstr ""
+msgstr "Vaste tekst"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
 msgid "Add Prefix"
-msgstr ""
+msgstr "Voorvoegsel toevoegen"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
 msgid "Add Suffix"
-msgstr ""
+msgstr "Achtervoegsel toevoegen"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
-#, fuzzy
-#| msgid "User name:"
 msgid "Basename:"
-msgstr "Gebruikersnaam:"
+msgstr "Basisnaam:"
 
 #. TRANSLATORS: Used as "Basename: Unchanged"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
 msgctxt "bulk-rename"
 msgid "Unchanged"
-msgstr ""
+msgstr "Onveranderd"
 
 #. TRANSLATORS: Used as "Basename: New"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:133
-#, fuzzy
-#| msgid "New"
 msgctxt "bulk-rename"
 msgid "New"
 msgstr "Nieuw"
 
 #. TRANSLATORS: Used as "Basename: Modified"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:135
-#, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modified"
 msgstr "Gewijzigd"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
-#, fuzzy
-#| msgid "Original file"
 msgid "Original Basename"
-msgstr "Origineel bestand"
+msgstr "Originele basisnaam"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:150
-#, fuzzy
-#| msgid "Replace with"
 msgid "Replacement text"
-msgstr "Vervang met"
+msgstr "Vervangende tekst"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:174
 msgid "Number in order of:"
-msgstr ""
+msgstr "Nummeren op volgorde van:"
 
 #. TRANSLATORS: Used as "Number in order of: Name"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:178
-#, fuzzy
-#| msgid "Name"
 msgctxt "bulk-rename"
 msgid "Name"
 msgstr "Naam"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:180
-#, fuzzy
-#| msgid "Date created"
 msgctxt "bulk-rename"
 msgid "Date created"
 msgstr "Aanmaakdatum"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:182
-#, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Date modified"
-msgstr "Gewijzigd"
+msgstr "Wijzigingsdatum"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:184
-#, fuzzy
-#| msgid "Size"
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "Grootte"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:246
 msgid "Text to be replaced"
-msgstr ""
+msgstr "Tekst om te vervangen"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:358
 msgid "Apply"
-msgstr ""
+msgstr "Toepassen"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
-#, fuzzy
-#| msgid "Ignore"
 msgid "Ignored"
-msgstr "Negeren"
+msgstr "Genegeerd"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
 msgid "Name is not changed"
-msgstr ""
+msgstr "Naam is niet gewijzigd"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
-#, fuzzy
-#| msgid "Undo Rename"
 msgid "Cannot rename"
-msgstr "Hernoemen ongedaan maken"
+msgstr "Kan niet hernoemen"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
 msgid "Name is invalid or already exists"
-msgstr ""
+msgstr "Naam is ongeldig of bestaat al"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
-#, fuzzy
-#| msgid "Filename"
 msgid "Will be renamed"
-msgstr "Bestandsnaam"
+msgstr "Zal worden hernoemd"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
-#, fuzzy
-#| msgid "Reversed Order"
 msgid "Reverse Order"
-msgstr "Omgekeerde volgorde"
+msgstr "Volgorde omkeren"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:52
 msgid "Start Number"
-msgstr ""
+msgstr "Begingetal"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
 msgid "Digits"
-msgstr ""
+msgstr "Cijfers"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
 msgid "Separator"
-msgstr ""
+msgstr "Scheider"
 
-#: src/Dialogs/BulkRenamer/RenamerModifier.vala:302
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:310
 #, c-format
 msgid "%0*d,%0*d,%0*d…"
-msgstr ""
+msgstr "%0*d,%0*d,%0*d…"
 
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"

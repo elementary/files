@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 08:26+0000\n"
-"PO-Revision-Date: 2023-04-04 22:59+0000\n"
+"POT-Creation-Date: 2023-05-10 16:11+0000\n"
+"PO-Revision-Date: 2023-05-12 17:06+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.16.4\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -65,89 +65,38 @@ msgstr ""
 "イルにアクセスできます。"
 
 #: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:58
-#: data/io.elementary.files.appdata.xml.in.in:74
-#: data/io.elementary.files.appdata.xml.in.in:89
-#: data/io.elementary.files.appdata.xml.in.in:116
+#: data/io.elementary.files.appdata.xml.in.in:50
+#: data/io.elementary.files.appdata.xml.in.in:72
+#: data/io.elementary.files.appdata.xml.in.in:88
+#: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Minor updates:"
 msgstr "そのほかのアップデート:"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
-#: data/io.elementary.files.appdata.xml.in.in:60
-#: data/io.elementary.files.appdata.xml.in.in:76
-#: data/io.elementary.files.appdata.xml.in.in:91
-#: data/io.elementary.files.appdata.xml.in.in:118
+msgid "Use a colorful level bar to show disk usage in the properties dialog"
+msgstr "プロパティーダイアログのディスク使用量表示に色付きのレベルバーを使用するよう"
+"に変更"
+
+#: data/io.elementary.files.appdata.xml.in.in:39
+#: data/io.elementary.files.appdata.xml.in.in:52
+#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Updated translations"
 msgstr "翻訳の更新"
 
-#: data/io.elementary.files.appdata.xml.in.in:54
-#: data/io.elementary.files.appdata.xml.in.in:101
+#: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Improvements:"
 msgstr "改善点:"
 
-#: data/io.elementary.files.appdata.xml.in.in:56
+#: data/io.elementary.files.appdata.xml.in.in:70
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 "アプリ全体の設定を、コンテキストメニューからヘッダーバー内のアプリメニューに"
 "移動"
 
-#: data/io.elementary.files.appdata.xml.in.in:103
-msgid ""
-"Provide option to select folders with single click and activate with double "
-"click"
-msgstr ""
-"シングルクリックでフォルダーを選択しダブルクリックで開くことができるオプショ"
-"ンを追加"
-
-#: data/io.elementary.files.appdata.xml.in.in:104
-msgid ""
-"Only show the properties overlay when files are selected, not when hovered"
-msgstr ""
-"ファイルプロパティー表示のオーバーレイを、ファイルホバー時ではなく選択時に表"
-"示するように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:106
-msgid "Fixes:"
-msgstr "修正点:"
-
-#: data/io.elementary.files.appdata.xml.in.in:108
-msgid "Fix unexpected file activation after navigation with double-click"
-msgstr ""
-"ダブルクリックでフォルダを開くと、意図せずフォルダ内のファイルも開かれてしま"
-"う不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:109
-msgid "Fix dimmed window after use of filechooser portal"
-msgstr "ファイル選択ポータル使用後、ウィンドウが薄暗く表示される不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:110
-msgid "Fix possible crash when rapidly changing view modes"
-msgstr "表示モードを頻繁に切り替えるとクラッシュすることがある不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:111
-msgid "Fix startup when restored remote location is no longer connected"
-msgstr ""
-"最後に開いていたのが切断済みのネットワーク上の場所だった場合のアプリ起動後の"
-"状態を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:112
-msgid ""
-"Ensure infobar shows in connection server dialog when connection attempt "
-"fails"
-msgstr "“サーバーを接続”ダイアログ: 接続失敗時に情報バーが表示されるように修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:113
-msgid "Ensure correct icon for bookmark to a file that is not a folder"
-msgstr ""
-"ブックマークがフォルダーではなくファイルの場合に正しいアイコンが表示されるよ"
-"うに修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:114
-msgid "Fix possible crash when removing a bookmark"
-msgstr "ブックマーク削除時にクラッシュすることがある不具合を修正"
-
-#: data/io.elementary.files.appdata.xml.in.in:164
+#: data/io.elementary.files.appdata.xml.in.in:155
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
@@ -158,6 +107,53 @@ msgstr "“ファイル”を管理者として実行"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "“ファイル”を管理者として実行するには認証が必要です"
+
+#~ msgid ""
+#~ "Provide option to select folders with single click and activate with "
+#~ "double click"
+#~ msgstr ""
+#~ "シングルクリックでフォルダーを選択しダブルクリックで開くことができるオプ"
+#~ "ションを追加"
+
+#~ msgid ""
+#~ "Only show the properties overlay when files are selected, not when hovered"
+#~ msgstr ""
+#~ "ファイルプロパティー表示のオーバーレイを、ファイルホバー時ではなく選択時に"
+#~ "表示するように修正"
+
+#~ msgid "Fixes:"
+#~ msgstr "修正点:"
+
+#~ msgid "Fix unexpected file activation after navigation with double-click"
+#~ msgstr ""
+#~ "ダブルクリックでフォルダを開くと、意図せずフォルダ内のファイルも開かれてし"
+#~ "まう不具合を修正"
+
+#~ msgid "Fix dimmed window after use of filechooser portal"
+#~ msgstr ""
+#~ "ファイル選択ポータル使用後、ウィンドウが薄暗く表示される不具合を修正"
+
+#~ msgid "Fix possible crash when rapidly changing view modes"
+#~ msgstr "表示モードを頻繁に切り替えるとクラッシュすることがある不具合を修正"
+
+#~ msgid "Fix startup when restored remote location is no longer connected"
+#~ msgstr ""
+#~ "最後に開いていたのが切断済みのネットワーク上の場所だった場合のアプリ起動後"
+#~ "の状態を修正"
+
+#~ msgid ""
+#~ "Ensure infobar shows in connection server dialog when connection attempt "
+#~ "fails"
+#~ msgstr ""
+#~ "“サーバーを接続”ダイアログ: 接続失敗時に情報バーが表示されるように修正"
+
+#~ msgid "Ensure correct icon for bookmark to a file that is not a folder"
+#~ msgstr ""
+#~ "ブックマークがフォルダーではなくファイルの場合に正しいアイコンが表示される"
+#~ "ように修正"
+
+#~ msgid "Fix possible crash when removing a bookmark"
+#~ msgstr "ブックマーク削除時にクラッシュすることがある不具合を修正"
 
 #~ msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
 #~ msgstr "Ctrl + 下スクロールで縮小表示できなくなっていたリグレッションを修正"

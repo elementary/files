@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 08:26+0000\n"
-"PO-Revision-Date: 2023-05-04 08:45+0000\n"
-"Last-Translator: Nicolas <nicolas.bouzin@tutanota.com>\n"
+"POT-Creation-Date: 2023-05-10 16:11+0000\n"
+"PO-Revision-Date: 2023-05-05 21:06+0000\n"
+"Last-Translator: Benjamin <morantbenjamin@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "Ouvrir le fichier en lecture seule"
 
 #: filechooser-portal/FileChooserDialog.vala:376
 msgid "Enter new filename"
-msgstr "nouveau fichier"
+msgstr "Saisissez un nouveau nom de fichier"
 
 #: filechooser-portal/Main.vala:107
 msgid "Select"
@@ -216,16 +216,12 @@ msgstr "Nom"
 
 #: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:96
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:100
-#, fuzzy
-#| msgid "Create"
 msgid "Creation Date"
-msgstr "Créer"
+msgstr "Date de création"
 
 #: libcore/Enums.vala:163
-#, fuzzy
-#| msgid "Last modified:"
 msgid "Last modification date"
-msgstr "Dernière modification :"
+msgstr "Date de dernière modification"
 
 #: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2335
 #: src/View/ListView.vala:27
@@ -234,11 +230,11 @@ msgstr "Taille"
 
 #: libcore/Enums.vala:189
 msgid "Number sequence"
-msgstr ""
+msgstr "Suite de numéros"
 
-#: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:306
+#: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "Texte"
 
 #: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2345
 msgid "Date"
@@ -246,55 +242,51 @@ msgstr "Date"
 
 #: libcore/Enums.vala:211
 msgid "Suffix"
-msgstr ""
+msgstr "Suffixe"
 
 #: libcore/Enums.vala:214
 msgid "Prefix"
-msgstr ""
+msgstr "Préfixe"
 
 #: libcore/Enums.vala:224
 msgid "Text to put at the end"
-msgstr ""
+msgstr "Texte à ajouter à la fin"
 
 #: libcore/Enums.vala:227
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Texte à ajouter au début"
 
 #: libcore/Enums.vala:246
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "Format par défaut - Uniquement la date"
 
 #: libcore/Enums.vala:248
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "Format par défaut - Date et heure"
 
 #: libcore/Enums.vala:250
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "Format défini par la langue - Date et heure"
 
 #: libcore/Enums.vala:252
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "Format ISO 8601 - Uniquement la date"
 
 #: libcore/Enums.vala:254
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "Format ISO 8601 - Date et heure"
 
 #: libcore/Enums.vala:270
-#, fuzzy
-#| msgid "Recreate"
 msgid "Date created"
-msgstr "Créer à nouveau"
+msgstr "Date de création"
 
 #: libcore/Enums.vala:272
-#, fuzzy
-#| msgid "Modified"
 msgid "Date Modified"
-msgstr "Modifié"
+msgstr "Date de modification"
 
 #: libcore/Enums.vala:274
 msgid "Current Date"
-msgstr ""
+msgstr "Date actuelle"
 
 #: libcore/File.vala:547 libcore/File.vala:1103 libcore/File.vala:1122
 msgid "Inaccessible"
@@ -1254,7 +1246,7 @@ msgstr "GPHOTO2"
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:44
 #: src/View/Sidebar/DeviceListBox.vala:140
 msgid "File System"
-msgstr "Système de fichier"
+msgstr "Système de fichiers"
 
 #: libcore/StockDialogs.vala:20
 msgid "_Cancel"
@@ -1715,180 +1707,146 @@ msgid "Used:"
 msgstr "Utilisé :"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:34
-#, fuzzy
-#| msgid "Original file"
 msgid "Original filename"
-msgstr "Fichier original"
+msgstr "Nom du fichier d'origine"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:36
-#, fuzzy
-#| msgid "Modified"
 msgid "Modified original"
-msgstr "Modifié"
+msgstr "Nom d'origine modifié"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:254
-#, fuzzy
-#| msgid "Redo Rename"
 msgid "New basename"
-msgstr "Rétablir le renommage"
+msgstr "Nouvelle base du nom"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:79
-#, fuzzy
-#| msgid "Rename"
 msgid "Bulk Rename"
-msgstr "Renommer"
+msgstr "Renommer en masse"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
 msgid "Number Sequence"
-msgstr ""
+msgstr "Suite de numéros"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
 msgid "Fixed Text"
-msgstr ""
+msgstr "Texte fixe"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
 msgid "Add Prefix"
-msgstr ""
+msgstr "Ajouter un préfixe"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
 msgid "Add Suffix"
-msgstr ""
+msgstr "Ajouter un suffixe"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
-#, fuzzy
-#| msgid "User name:"
 msgid "Basename:"
-msgstr "Nom d'utilisateur :"
+msgstr "Base du nom :"
 
 #. TRANSLATORS: Used as "Basename: Unchanged"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
 msgctxt "bulk-rename"
 msgid "Unchanged"
-msgstr ""
+msgstr "Inchangée"
 
 #. TRANSLATORS: Used as "Basename: New"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:133
-#, fuzzy
-#| msgid "New"
 msgctxt "bulk-rename"
 msgid "New"
-msgstr "Nouveau"
+msgstr "Nouvelle"
 
 #. TRANSLATORS: Used as "Basename: Modified"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:135
-#, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modified"
-msgstr "Modifié"
+msgstr "Modifiée"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
-#, fuzzy
-#| msgid "Original file"
 msgid "Original Basename"
-msgstr "Fichier original"
+msgstr "Base du nom d'origine"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:150
-#, fuzzy
-#| msgid "Replace with"
 msgid "Replacement text"
-msgstr "Remplacer par"
+msgstr "Texte de remplacement"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:174
 msgid "Number in order of:"
-msgstr ""
+msgstr "Numéros ordonnés par :"
 
 #. TRANSLATORS: Used as "Number in order of: Name"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:178
-#, fuzzy
-#| msgid "Name"
 msgctxt "bulk-rename"
 msgid "Name"
 msgstr "Nom"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:180
-#, fuzzy
-#| msgid "Recreate"
 msgctxt "bulk-rename"
 msgid "Date created"
-msgstr "Créer à nouveau"
+msgstr "Date de création"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:182
-#, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Date modified"
-msgstr "Modifié"
+msgstr "Date de modiciation"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:184
-#, fuzzy
-#| msgid "Size"
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "Taille"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:246
 msgid "Text to be replaced"
-msgstr ""
+msgstr "Texte à remplacer"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:358
 msgid "Apply"
-msgstr ""
+msgstr "Appliquer"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
-#, fuzzy
-#| msgid "Ignore"
 msgid "Ignored"
-msgstr "Ignorer"
+msgstr "Ignoré"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
 msgid "Name is not changed"
-msgstr ""
+msgstr "Le nom n'est pas changé"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
-#, fuzzy
-#| msgid "Undo Rename"
 msgid "Cannot rename"
-msgstr "Annuler le renommage"
+msgstr "Impossible de renommer"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
 msgid "Name is invalid or already exists"
-msgstr ""
+msgstr "Le nom n'est pas valide ou existe déjà"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
-#, fuzzy
-#| msgid "Filename"
 msgid "Will be renamed"
-msgstr "Nom du fichier"
+msgstr "Sera renommé"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
-#, fuzzy
-#| msgid "Reversed Order"
 msgid "Reverse Order"
 msgstr "Ordre décroissant"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:52
 msgid "Start Number"
-msgstr ""
+msgstr "Premier numéro"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
 msgid "Digits"
-msgstr ""
+msgstr "Numéros"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
 msgid "Separator"
-msgstr ""
+msgstr "Séparateur"
 
-#: src/Dialogs/BulkRenamer/RenamerModifier.vala:302
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:310
 #, c-format
 msgid "%0*d,%0*d,%0*d…"
-msgstr ""
+msgstr "%0*d,%0*d,%0*d…"
 
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"

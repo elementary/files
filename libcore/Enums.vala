@@ -259,14 +259,14 @@ namespace Files {
     }
 
     public enum RenameDateSource {
-        DEFAULT,
+        CREATED,
         MODIFIED,
         NOW,
         INVALID;
 
         public string to_string () {
             switch (this) {
-                case RenameDateSource.DEFAULT:
+                case RenameDateSource.CREATED:
                     return _("Date created");
                 case RenameDateSource.MODIFIED:
                     return _("Date Modified");

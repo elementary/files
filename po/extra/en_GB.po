@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 08:26+0000\n"
-"PO-Revision-Date: 2023-02-14 14:25+0000\n"
+"POT-Creation-Date: 2023-05-10 16:11+0000\n"
+"PO-Revision-Date: 2023-05-12 17:06+0000\n"
 "Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/extra/en_GB/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -62,83 +62,36 @@ msgstr ""
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 
 #: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:58
-#: data/io.elementary.files.appdata.xml.in.in:74
-#: data/io.elementary.files.appdata.xml.in.in:89
-#: data/io.elementary.files.appdata.xml.in.in:116
+#: data/io.elementary.files.appdata.xml.in.in:50
+#: data/io.elementary.files.appdata.xml.in.in:72
+#: data/io.elementary.files.appdata.xml.in.in:88
+#: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Minor updates:"
 msgstr "Minor updates:"
 
 #: data/io.elementary.files.appdata.xml.in.in:38
-#: data/io.elementary.files.appdata.xml.in.in:60
-#: data/io.elementary.files.appdata.xml.in.in:76
-#: data/io.elementary.files.appdata.xml.in.in:91
-#: data/io.elementary.files.appdata.xml.in.in:118
+msgid "Use a colorful level bar to show disk usage in the properties dialog"
+msgstr "Use a colourful level bar to show disk usage in the properties dialog"
+
+#: data/io.elementary.files.appdata.xml.in.in:39
+#: data/io.elementary.files.appdata.xml.in.in:52
+#: data/io.elementary.files.appdata.xml.in.in:74
+#: data/io.elementary.files.appdata.xml.in.in:90
+#: data/io.elementary.files.appdata.xml.in.in:105
 msgid "Updated translations"
 msgstr "Updated translations"
 
-#: data/io.elementary.files.appdata.xml.in.in:54
-#: data/io.elementary.files.appdata.xml.in.in:101
+#: data/io.elementary.files.appdata.xml.in.in:68
 msgid "Improvements:"
 msgstr "Improvements:"
 
-#: data/io.elementary.files.appdata.xml.in.in:56
+#: data/io.elementary.files.appdata.xml.in.in:70
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 "Move global settings from the context menu to an app menu in the headerbar"
 
-#: data/io.elementary.files.appdata.xml.in.in:103
-msgid ""
-"Provide option to select folders with single click and activate with double "
-"click"
-msgstr ""
-"Provide option to select folders with single click and activate with double "
-"click"
-
-#: data/io.elementary.files.appdata.xml.in.in:104
-msgid ""
-"Only show the properties overlay when files are selected, not when hovered"
-msgstr ""
-"Only show the properties overlay when files are selected, not when hovered"
-
-#: data/io.elementary.files.appdata.xml.in.in:106
-msgid "Fixes:"
-msgstr "Fixes:"
-
-#: data/io.elementary.files.appdata.xml.in.in:108
-msgid "Fix unexpected file activation after navigation with double-click"
-msgstr "Fix unexpected file activation after navigation with double-click"
-
-#: data/io.elementary.files.appdata.xml.in.in:109
-msgid "Fix dimmed window after use of filechooser portal"
-msgstr "Fix dimmed window after use of filechooser portal"
-
-#: data/io.elementary.files.appdata.xml.in.in:110
-msgid "Fix possible crash when rapidly changing view modes"
-msgstr "Fix possible crash when rapidly changing view modes"
-
-#: data/io.elementary.files.appdata.xml.in.in:111
-msgid "Fix startup when restored remote location is no longer connected"
-msgstr "Fix startup when restored remote location is no longer connected"
-
-#: data/io.elementary.files.appdata.xml.in.in:112
-msgid ""
-"Ensure infobar shows in connection server dialog when connection attempt "
-"fails"
-msgstr ""
-"Ensure infobar shows in connection server dialog when connection attempt "
-"fails"
-
-#: data/io.elementary.files.appdata.xml.in.in:113
-msgid "Ensure correct icon for bookmark to a file that is not a folder"
-msgstr "Ensure correct icon for bookmark to a file that is not a folder"
-
-#: data/io.elementary.files.appdata.xml.in.in:114
-msgid "Fix possible crash when removing a bookmark"
-msgstr "Fix possible crash when removing a bookmark"
-
-#: data/io.elementary.files.appdata.xml.in.in:164
+#: data/io.elementary.files.appdata.xml.in.in:155
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
@@ -149,6 +102,46 @@ msgstr "Run Pantheon Files as Administrator"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Authentication is required to run Files as Administrator"
+
+#~ msgid ""
+#~ "Provide option to select folders with single click and activate with "
+#~ "double click"
+#~ msgstr ""
+#~ "Provide option to select folders with single click and activate with "
+#~ "double click"
+
+#~ msgid ""
+#~ "Only show the properties overlay when files are selected, not when hovered"
+#~ msgstr ""
+#~ "Only show the properties overlay when files are selected, not when hovered"
+
+#~ msgid "Fixes:"
+#~ msgstr "Fixes:"
+
+#~ msgid "Fix unexpected file activation after navigation with double-click"
+#~ msgstr "Fix unexpected file activation after navigation with double-click"
+
+#~ msgid "Fix dimmed window after use of filechooser portal"
+#~ msgstr "Fix dimmed window after use of filechooser portal"
+
+#~ msgid "Fix possible crash when rapidly changing view modes"
+#~ msgstr "Fix possible crash when rapidly changing view modes"
+
+#~ msgid "Fix startup when restored remote location is no longer connected"
+#~ msgstr "Fix startup when restored remote location is no longer connected"
+
+#~ msgid ""
+#~ "Ensure infobar shows in connection server dialog when connection attempt "
+#~ "fails"
+#~ msgstr ""
+#~ "Ensure infobar shows in connection server dialog when connection attempt "
+#~ "fails"
+
+#~ msgid "Ensure correct icon for bookmark to a file that is not a folder"
+#~ msgstr "Ensure correct icon for bookmark to a file that is not a folder"
+
+#~ msgid "Fix possible crash when removing a bookmark"
+#~ msgstr "Fix possible crash when removing a bookmark"
 
 #~ msgid "A regression in zooming out using Ctrl + ScrollDown is fixed"
 #~ msgstr "A regression in zooming out using Ctrl + ScrollDown is fixed"

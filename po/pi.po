@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 08:26+0000\n"
+"POT-Creation-Date: 2023-05-10 16:11+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
@@ -215,7 +215,7 @@ msgstr ""
 msgid "Number sequence"
 msgstr ""
 
-#: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:306
+#: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
 msgstr ""
 
@@ -1763,7 +1763,7 @@ msgstr ""
 msgid "Separator"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerModifier.vala:302
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:310
 #, c-format
 msgid "%0*d,%0*d,%0*d…"
 msgstr ""

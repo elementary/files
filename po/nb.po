@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 08:26+0000\n"
-"PO-Revision-Date: 2023-02-25 18:18+0000\n"
+"POT-Creation-Date: 2023-05-10 16:11+0000\n"
+"PO-Revision-Date: 2023-05-05 21:06+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "files/nb/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -237,11 +237,11 @@ msgstr "Størrelse"
 
 #: libcore/Enums.vala:189
 msgid "Number sequence"
-msgstr ""
+msgstr "Nummersekvens"
 
-#: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:306
+#: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 #: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2345
 msgid "Date"
@@ -1908,7 +1908,7 @@ msgstr "Gi nytt navn"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
 msgid "Name is invalid or already exists"
-msgstr ""
+msgstr "Navnet er ugyldig eller finnes allerede"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
 #, fuzzy
@@ -1934,7 +1934,7 @@ msgstr ""
 msgid "Separator"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerModifier.vala:302
+#: src/Dialogs/BulkRenamer/RenamerModifier.vala:310
 #, c-format
 msgid "%0*d,%0*d,%0*d…"
 msgstr ""
