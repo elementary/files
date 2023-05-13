@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-10 16:11+0000\n"
+"POT-Creation-Date: 2023-05-13 15:42+0000\n"
 "PO-Revision-Date: 2020-11-01 18:47+0000\n"
 "Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
 "Language-Team: Danish <https://l10n.elementary.io/projects/files/extra/da/>\n"
@@ -19,8 +19,7 @@ msgstr ""
 "X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:3
-#: data/io.elementary.files.appdata.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "Filer"
 
@@ -44,11 +43,11 @@ msgstr "Nyt vindue"
 msgid "New Window As Administrator"
 msgstr "Nyt vindue som administrator"
 
-#: data/io.elementary.files.appdata.xml.in.in:11
+#: data/files.metainfo.xml.in.in:11
 msgid "Browse and manage files and folders"
 msgstr "Gennemse og håndter filer og mapper"
 
-#: data/io.elementary.files.appdata.xml.in.in:13
+#: data/files.metainfo.xml.in.in:13
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -61,40 +60,48 @@ msgstr ""
 "lokale eller på en ekstern enhed eller fjernt ve brug af FTP, SFTP, AFP, "
 "Webdav eller Windows-share."
 
-#: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:50
-#: data/io.elementary.files.appdata.xml.in.in:72
-#: data/io.elementary.files.appdata.xml.in.in:88
-#: data/io.elementary.files.appdata.xml.in.in:103
-msgid "Minor updates:"
-msgstr "Mindre fejlrettelser:"
-
-#: data/io.elementary.files.appdata.xml.in.in:38
-msgid "Use a colorful level bar to show disk usage in the properties dialog"
+#: data/files.metainfo.xml.in.in:18
+msgid "Quick access to settings like zoom levels and hidden files"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:39
-#: data/io.elementary.files.appdata.xml.in.in:52
-#: data/io.elementary.files.appdata.xml.in.in:74
-#: data/io.elementary.files.appdata.xml.in.in:90
-#: data/io.elementary.files.appdata.xml.in.in:105
-msgid "Updated translations"
-msgstr "Opdaterede oversættelser"
-
-#: data/io.elementary.files.appdata.xml.in.in:68
-msgid "Improvements:"
-msgstr "Forbedringer:"
-
-#: data/io.elementary.files.appdata.xml.in.in:70
-msgid ""
-"Move global settings from the context menu to an app menu in the headerbar"
+#: data/files.metainfo.xml.in.in:22
+msgid "See more metadata at a glance in List view"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:155
+#: data/files.metainfo.xml.in.in:26
+msgid "Browse complex trees faster with Column view"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:58
 #, fuzzy
 #| msgid "elementary LLC."
 msgid "elementary, Inc."
 msgstr "elementary ApS."
+
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:79
+#: data/files.metainfo.xml.in.in:101 data/files.metainfo.xml.in.in:117
+#: data/files.metainfo.xml.in.in:132
+msgid "Minor updates:"
+msgstr "Mindre fejlrettelser:"
+
+#: data/files.metainfo.xml.in.in:67
+msgid "Use a colorful level bar to show disk usage in the properties dialog"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:81
+#: data/files.metainfo.xml.in.in:103 data/files.metainfo.xml.in.in:119
+#: data/files.metainfo.xml.in.in:134
+msgid "Updated translations"
+msgstr "Opdaterede oversættelser"
+
+#: data/files.metainfo.xml.in.in:97
+msgid "Improvements:"
+msgstr "Forbedringer:"
+
+#: data/files.metainfo.xml.in.in:99
+msgid ""
+"Move global settings from the context menu to an app menu in the headerbar"
+msgstr ""
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
