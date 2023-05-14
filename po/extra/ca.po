@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-13 15:42+0000\n"
-"PO-Revision-Date: 2023-05-12 17:06+0000\n"
+"PO-Revision-Date: 2023-05-14 18:06+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,15 +64,15 @@ msgstr ""
 
 #: data/files.metainfo.xml.in.in:18
 msgid "Quick access to settings like zoom levels and hidden files"
-msgstr ""
+msgstr "Accés ràpid a paràmetres com els nivells de zoom i els fitxers ocults"
 
 #: data/files.metainfo.xml.in.in:22
 msgid "See more metadata at a glance in List view"
-msgstr ""
+msgstr "Vegeu més metadades d'un cop d'ull a la vista de llista"
 
 #: data/files.metainfo.xml.in.in:26
 msgid "Browse complex trees faster with Column view"
-msgstr ""
+msgstr "Exploreu arbres complexos més ràpidament amb la vista de columna"
 
 #: data/files.metainfo.xml.in.in:58
 msgid "elementary, Inc."
