@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-13 15:42+0000\n"
-"PO-Revision-Date: 2023-05-12 17:06+0000\n"
+"PO-Revision-Date: 2023-05-14 18:06+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -56,15 +56,15 @@ msgstr ""
 
 #: data/files.metainfo.xml.in.in:18
 msgid "Quick access to settings like zoom levels and hidden files"
-msgstr ""
+msgstr "גישה מהירה להגדרות כגון רמות תקריב וקבצים נסתרים"
 
 #: data/files.metainfo.xml.in.in:22
 msgid "See more metadata at a glance in List view"
-msgstr ""
+msgstr "הצגת נתוני על רבים יותר במבט חטוף בתצוגת רשימה"
 
 #: data/files.metainfo.xml.in.in:26
 msgid "Browse complex trees faster with Column view"
-msgstr ""
+msgstr "עיון בעצים מורכבים מהר יותר עם תצוגת עמודות"
 
 #: data/files.metainfo.xml.in.in:58
 msgid "elementary, Inc."
