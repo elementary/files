@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-10 16:11+0000\n"
+"POT-Creation-Date: 2023-05-13 15:42+0000\n"
 "PO-Revision-Date: 2020-11-16 11:15+0000\n"
 "Last-Translator: deovaliandro <mdv16h@student.unhas.ac.id>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/extra/"
@@ -19,8 +19,7 @@ msgstr ""
 "X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:3
-#: data/io.elementary.files.appdata.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "Berkas"
 
@@ -44,11 +43,11 @@ msgstr "Jendela Baru"
 msgid "New Window As Administrator"
 msgstr "Jendela Baru Sebagai Administrator"
 
-#: data/io.elementary.files.appdata.xml.in.in:11
+#: data/files.metainfo.xml.in.in:11
 msgid "Browse and manage files and folders"
 msgstr "Jelajahi dan kelola berkas dan folder"
 
-#: data/io.elementary.files.appdata.xml.in.in:13
+#: data/files.metainfo.xml.in.in:13
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -61,40 +60,48 @@ msgstr ""
 "semua berkas Anda, baik lokal, pada perangkat eksternal atau jarak jauh "
 "menggunakan FTP, SFTP, AFP, Webdav, atau Windows share."
 
-#: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:50
-#: data/io.elementary.files.appdata.xml.in.in:72
-#: data/io.elementary.files.appdata.xml.in.in:88
-#: data/io.elementary.files.appdata.xml.in.in:103
+#: data/files.metainfo.xml.in.in:18
+msgid "Quick access to settings like zoom levels and hidden files"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:22
+msgid "See more metadata at a glance in List view"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:26
+msgid "Browse complex trees faster with Column view"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:58
+msgid "elementary, Inc."
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:79
+#: data/files.metainfo.xml.in.in:101 data/files.metainfo.xml.in.in:117
+#: data/files.metainfo.xml.in.in:132
 #, fuzzy
 #| msgid "Minor bug fixes"
 msgid "Minor updates:"
 msgstr "Perbaikan kesalahan kecil"
 
-#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/files.metainfo.xml.in.in:67
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:39
-#: data/io.elementary.files.appdata.xml.in.in:52
-#: data/io.elementary.files.appdata.xml.in.in:74
-#: data/io.elementary.files.appdata.xml.in.in:90
-#: data/io.elementary.files.appdata.xml.in.in:105
+#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:81
+#: data/files.metainfo.xml.in.in:103 data/files.metainfo.xml.in.in:119
+#: data/files.metainfo.xml.in.in:134
 #, fuzzy
 msgid "Updated translations"
 msgstr "Terjemahan baru"
 
-#: data/io.elementary.files.appdata.xml.in.in:68
+#: data/files.metainfo.xml.in.in:97
 msgid "Improvements:"
 msgstr "Perbaikan:"
 
-#: data/io.elementary.files.appdata.xml.in.in:70
+#: data/files.metainfo.xml.in.in:99
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
-msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:155
-msgid "elementary, Inc."
 msgstr ""
 
 #: data/io.elementary.files.policy.in.in:10

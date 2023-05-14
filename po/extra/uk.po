@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-10 16:11+0000\n"
-"PO-Revision-Date: 2023-02-14 14:25+0000\n"
+"POT-Creation-Date: 2023-05-13 15:42+0000\n"
+"PO-Revision-Date: 2023-05-12 17:06+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -18,11 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:3
-#: data/io.elementary.files.appdata.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "Файли"
 
@@ -46,11 +45,11 @@ msgstr "Нове вікно"
 msgid "New Window As Administrator"
 msgstr "Нове вікно Як адміністратор"
 
-#: data/io.elementary.files.appdata.xml.in.in:11
+#: data/files.metainfo.xml.in.in:11
 msgid "Browse and manage files and folders"
 msgstr "Перегляд і редагування файлів та тек"
 
-#: data/io.elementary.files.appdata.xml.in.in:13
+#: data/files.metainfo.xml.in.in:13
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -64,40 +63,50 @@ msgstr ""
 "віддалено, за допомогою FTP, SFTP, AFP, Webdav або спільний доступ до "
 "Windows."
 
-#: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:50
-#: data/io.elementary.files.appdata.xml.in.in:72
-#: data/io.elementary.files.appdata.xml.in.in:88
-#: data/io.elementary.files.appdata.xml.in.in:103
+#: data/files.metainfo.xml.in.in:18
+msgid "Quick access to settings like zoom levels and hidden files"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:22
+msgid "See more metadata at a glance in List view"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:26
+msgid "Browse complex trees faster with Column view"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:58
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
+
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:79
+#: data/files.metainfo.xml.in.in:101 data/files.metainfo.xml.in.in:117
+#: data/files.metainfo.xml.in.in:132
 msgid "Minor updates:"
 msgstr "Незначні оновлення:"
 
-#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/files.metainfo.xml.in.in:67
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
 msgstr ""
+"Використано кольорову смужку рівня для позначення використання диска у "
+"діалоговому вікні властивостей"
 
-#: data/io.elementary.files.appdata.xml.in.in:39
-#: data/io.elementary.files.appdata.xml.in.in:52
-#: data/io.elementary.files.appdata.xml.in.in:74
-#: data/io.elementary.files.appdata.xml.in.in:90
-#: data/io.elementary.files.appdata.xml.in.in:105
+#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:81
+#: data/files.metainfo.xml.in.in:103 data/files.metainfo.xml.in.in:119
+#: data/files.metainfo.xml.in.in:134
 msgid "Updated translations"
 msgstr "Оновлено переклади"
 
-#: data/io.elementary.files.appdata.xml.in.in:68
+#: data/files.metainfo.xml.in.in:97
 msgid "Improvements:"
 msgstr "Поліпшено:"
 
-#: data/io.elementary.files.appdata.xml.in.in:70
+#: data/files.metainfo.xml.in.in:99
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 "Глобальні налаштування з контекстного меню перенесено в меню застосунку на "
 "панелі заголовка"
-
-#: data/io.elementary.files.appdata.xml.in.in:155
-msgid "elementary, Inc."
-msgstr "elementary, Inc."
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
