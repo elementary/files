@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-13 15:42+0000\n"
-"PO-Revision-Date: 2023-05-13 15:42+0000\n"
+"PO-Revision-Date: 2023-05-14 18:06+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
 "Language: pl\n"
@@ -66,15 +66,17 @@ msgstr ""
 
 #: data/files.metainfo.xml.in.in:18
 msgid "Quick access to settings like zoom levels and hidden files"
-msgstr ""
+msgstr "Szybki dostęp do ustawień takich jak poziom przybliżenia i ukryte pliki"
 
 #: data/files.metainfo.xml.in.in:22
 msgid "See more metadata at a glance in List view"
-msgstr ""
+msgstr "Więcej łatwo widocznych metadanych w widoku listy"
 
 #: data/files.metainfo.xml.in.in:26
 msgid "Browse complex trees faster with Column view"
 msgstr ""
+"Szybsze przeglądanie skomplikowanych struktur drzewiastych w widoku "
+"kolumnowym"
 
 #: data/files.metainfo.xml.in.in:58
 msgid "elementary, Inc."
