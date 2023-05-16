@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-13 15:42+0000\n"
-"PO-Revision-Date: 2023-05-05 21:06+0000\n"
+"PO-Revision-Date: 2023-05-14 18:06+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -1631,7 +1631,7 @@ msgstr "Fájlműveletek"
 #: src/ProgressUIHandler.vala:181
 #, c-format
 msgid "Completed %s"
-msgstr "%s befejezett"
+msgstr "%s befejezve"
 
 #: src/ProgressUIHandler.vala:184
 msgid "All file operations have ended"
