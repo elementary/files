@@ -1109,7 +1109,7 @@ public class Files.File : GLib.Object {
         ensure_item_count (true); // Re-count file items
 
         if (count < 0) {
-            return (_("----"));
+            return (_("—"));
         } else if (count == 0) {
             return _("Empty");
         } else {
