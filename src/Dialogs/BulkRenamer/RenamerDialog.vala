@@ -129,18 +129,18 @@ public class Files.RenamerDialog : Granite.Dialog {
         var basename_label = new Gtk.Label (_("Basename:"));
         // In Gtk4 replace RadioButtons with linked ToggleButtons
         original_basename_toggle = new Gtk.RadioButton (null) {
-            label = NC_("bulk-rename", "Unchanged"),
+            label = NC_("bulk-rename", "Keep"),
             active = true
         };
         original_basename_toggle.set_mode (false);
 
         new_basename_toggle = new Gtk.RadioButton.from_widget (original_basename_toggle) {
-            label = NC_("bulk-rename", "New")
+            label = NC_("bulk-rename", "Replace")
         };
         new_basename_toggle.set_mode (false);
 
         replace_basename_toggle = new Gtk.RadioButton.from_widget (original_basename_toggle) {
-            label = NC_("bulk-rename", "Modified")
+            label = NC_("bulk-rename", "Modify")
         };
         replace_basename_toggle.set_mode (false);
 
