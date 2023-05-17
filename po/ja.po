@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-13 15:42+0000\n"
+"POT-Creation-Date: 2023-05-16 21:56+0000\n"
 "PO-Revision-Date: 2023-05-05 21:06+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
@@ -24,7 +24,7 @@ msgstr ""
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:363
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:380
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "キャンセル"
@@ -1209,7 +1209,7 @@ msgstr "ファイルシステム"
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:368
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:385
 msgid "Delete"
 msgstr "削除"
 
@@ -1657,7 +1657,7 @@ msgid "Modified original"
 msgstr "元ファイルの変更日時"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:254
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:260
 msgid "New basename"
 msgstr "新しい基準ファイル名"
 
@@ -1687,65 +1687,62 @@ msgstr "サフィックスを追加"
 msgid "Basename:"
 msgstr "基準ファイル名:"
 
-#. TRANSLATORS: Used as "Basename: Unchanged"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
 msgid "Unchanged"
 msgstr "変更しない"
 
-#. TRANSLATORS: Used as "Basename: New"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:133
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 msgctxt "bulk-rename"
 msgid "New"
 msgstr "新規"
 
-#. TRANSLATORS: Used as "Basename: Modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:135
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 msgctxt "bulk-rename"
 msgid "Modified"
 msgstr "変更日時"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
 msgid "Original Basename"
 msgstr "元の基準ファイル名"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:150
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:164
 msgid "Replacement text"
 msgstr "置換後のテキスト"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:174
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:188
 msgid "Number in order of:"
 msgstr "番号を振る基準:"
 
 #. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:178
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
 msgctxt "bulk-rename"
 msgid "Name"
 msgstr "ファイル名"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:180
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
 msgctxt "bulk-rename"
 msgid "Date created"
 msgstr "作成日時"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:182
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
 msgctxt "bulk-rename"
 msgid "Date modified"
 msgstr "変更日時"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:184
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:198
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "サイズ"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:246
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:269
 msgid "Text to be replaced"
 msgstr "置換対象のテキスト"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:358
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:375
 msgid "Apply"
 msgstr "適用"
 

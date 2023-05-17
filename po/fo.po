@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-13 15:42+0000\n"
+"POT-Creation-Date: 2023-05-16 21:56+0000\n"
 "PO-Revision-Date: 2015-12-21 13:44+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:363
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:380
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "Ógilda"
@@ -1241,7 +1241,7 @@ msgstr "Fíluskipan"
 msgid "_Cancel"
 msgstr "Ógilda"
 
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:368
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:385
 #, fuzzy
 msgid "Delete"
 msgstr "Strika _Allar"
@@ -1710,7 +1710,7 @@ msgid "Modified original"
 msgstr "Broytt"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:254
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:260
 #, fuzzy
 #| msgid "Re_name"
 msgid "New basename"
@@ -1746,51 +1746,48 @@ msgstr ""
 msgid "Basename:"
 msgstr "Ný_nevn"
 
-#. TRANSLATORS: Used as "Basename: Unchanged"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
 msgid "Unchanged"
 msgstr ""
 
-#. TRANSLATORS: Used as "Basename: New"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:133
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
 msgctxt "bulk-rename"
 msgid "New"
 msgstr "Netverk"
 
-#. TRANSLATORS: Used as "Basename: Modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:135
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modified"
 msgstr "Broytt"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
 #, fuzzy
 #| msgid "Original file"
 msgid "Original Basename"
 msgstr "Upprunafíla"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:150
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:164
 #, fuzzy
 #| msgid "Replace"
 msgid "Replacement text"
 msgstr "Set í staðin"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:174
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:188
 msgid "Number in order of:"
 msgstr ""
 
 #. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:178
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
 msgctxt "bulk-rename"
 msgid "Name"
 msgstr ""
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:180
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
 #, fuzzy
 #| msgid "Create"
 msgctxt "bulk-rename"
@@ -1798,7 +1795,7 @@ msgid "Date created"
 msgstr "Stovna"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:182
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
@@ -1806,18 +1803,18 @@ msgid "Date modified"
 msgstr "Broytt"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:184
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:198
 #, fuzzy
 #| msgid "Size"
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "Stødd"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:246
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:269
 msgid "Text to be replaced"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:358
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:375
 msgid "Apply"
 msgstr ""
 
