@@ -1148,7 +1148,6 @@ public class Files.File : GLib.Object {
             }
         }
 
-
     }
 
     private void update_formated_type () {
