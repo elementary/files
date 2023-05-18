@@ -920,6 +920,12 @@ public class Files.Directory : Object {
             file_added (gof, is_internal);
         }
 
+        this.file.update_size ();
+        var parent = cache_lookup_parent (this.file.location);
+        if (parent != null) {
+            parent.file_changed (this.file);
+        }
+
         if (!gof.is_hidden && gof.is_folder ()) {
             /* add to sorted_dirs */
             if (sorted_dirs.find (gof) == null) {
@@ -946,6 +952,12 @@ public class Files.Directory : Object {
 
         if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
             file_deleted (gof);
+        }
+
+        this.file.update_size ();
+        var parent = cache_lookup_parent (this.file.location);
+        if (parent != null) {
+            parent.file_changed (this.file);
         }
 
         if (!gof.is_hidden && gof.is_folder ()) {
