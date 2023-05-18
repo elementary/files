@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-10 16:11+0000\n"
+"POT-Creation-Date: 2023-05-16 21:56+0000\n"
 "PO-Revision-Date: 2016-10-16 09:51+0000\n"
 "Last-Translator: Waqar Ahmed <waqar.17a@gmail.com>\n"
 "Language-Team: Urdu <ur@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:363
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:380
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "منسوخ کریں"
@@ -1285,7 +1285,7 @@ msgstr "فائل کا نظام"
 msgid "_Cancel"
 msgstr "منسوخ کریں"
 
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:368
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:385
 #, fuzzy
 msgid "Delete"
 msgstr "حذف شدہ:"
@@ -1782,7 +1782,7 @@ msgid "Modified original"
 msgstr "تبدیل کردہ"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:254
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:260
 #, fuzzy
 #| msgid "Rename"
 msgid "New basename"
@@ -1817,46 +1817,43 @@ msgstr ""
 msgid "Basename:"
 msgstr "صارف کا نام"
 
-#. TRANSLATORS: Used as "Basename: Unchanged"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
 msgid "Unchanged"
 msgstr ""
 
-#. TRANSLATORS: Used as "Basename: New"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:133
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
 #| msgid "New"
 msgctxt "bulk-rename"
 msgid "New"
 msgstr "نیا"
 
-#. TRANSLATORS: Used as "Basename: Modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:135
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modified"
 msgstr "تبدیل کردہ"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
 #, fuzzy
 #| msgid "Original file"
 msgid "Original Basename"
 msgstr "اصل فائل"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:150
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:164
 #, fuzzy
 #| msgid "Replace with"
 msgid "Replacement text"
 msgstr "تبدیل کریں بمع"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:174
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:188
 msgid "Number in order of:"
 msgstr ""
 
 #. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:178
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
 #, fuzzy
 #| msgid "Name"
 msgctxt "bulk-rename"
@@ -1864,7 +1861,7 @@ msgid "Name"
 msgstr "نام"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:180
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
 #, fuzzy
 #| msgid "Create"
 msgctxt "bulk-rename"
@@ -1872,7 +1869,7 @@ msgid "Date created"
 msgstr "بنائیں"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:182
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
@@ -1880,18 +1877,18 @@ msgid "Date modified"
 msgstr "تبدیل کردہ"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:184
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:198
 #, fuzzy
 #| msgid "Size"
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "سائز"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:246
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:269
 msgid "Text to be replaced"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:358
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:375
 msgid "Apply"
 msgstr ""
 

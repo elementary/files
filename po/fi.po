@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-10 16:11+0000\n"
+"POT-Creation-Date: 2023-05-16 21:56+0000\n"
 "PO-Revision-Date: 2023-03-31 09:59+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
@@ -24,7 +24,7 @@ msgstr ""
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:363
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:380
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "Peru"
@@ -1251,7 +1251,7 @@ msgstr "Tiedostojärjestelmä"
 msgid "_Cancel"
 msgstr "_Peru"
 
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:368
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:385
 msgid "Delete"
 msgstr "Poista"
 
@@ -1710,7 +1710,7 @@ msgid "Modified original"
 msgstr "Muokattu"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:254
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:260
 #, fuzzy
 #| msgid "Redo Rename"
 msgid "New basename"
@@ -1746,46 +1746,43 @@ msgstr ""
 msgid "Basename:"
 msgstr "Käyttäjätunnus:"
 
-#. TRANSLATORS: Used as "Basename: Unchanged"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
 msgid "Unchanged"
 msgstr ""
 
-#. TRANSLATORS: Used as "Basename: New"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:133
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
 #| msgid "New"
 msgctxt "bulk-rename"
 msgid "New"
 msgstr "Uusi"
 
-#. TRANSLATORS: Used as "Basename: Modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:135
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modified"
 msgstr "Muokattu"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
 #, fuzzy
 #| msgid "Original file"
 msgid "Original Basename"
 msgstr "Alkuperäinen tiedosto"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:150
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:164
 #, fuzzy
 #| msgid "Replace with"
 msgid "Replacement text"
 msgstr "Korvaava"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:174
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:188
 msgid "Number in order of:"
 msgstr ""
 
 #. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:178
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
 #, fuzzy
 #| msgid "Name"
 msgctxt "bulk-rename"
@@ -1793,7 +1790,7 @@ msgid "Name"
 msgstr "Nimi"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:180
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
 #, fuzzy
 #| msgid "Recreate"
 msgctxt "bulk-rename"
@@ -1801,7 +1798,7 @@ msgid "Date created"
 msgstr "Luo uudelleen"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:182
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
@@ -1809,18 +1806,18 @@ msgid "Date modified"
 msgstr "Muokattu"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:184
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:198
 #, fuzzy
 #| msgid "Size"
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "Koko"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:246
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:269
 msgid "Text to be replaced"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:358
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:375
 msgid "Apply"
 msgstr ""
 

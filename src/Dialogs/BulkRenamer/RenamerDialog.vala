@@ -56,9 +56,9 @@ public class Files.RenamerDialog : Granite.Dialog {
     private Gtk.Revealer suffix_revealer;
     private Gtk.Entry basename_entry;
     private Gtk.Entry replacement_entry;
-    private Gtk.RadioButton replace_check;
-    private Gtk.RadioButton new_check;
-    private Gtk.RadioButton original_check;
+    private Gtk.RadioButton replace_basename_toggle;
+    private Gtk.RadioButton new_basename_toggle;
+    private Gtk.RadioButton original_basename_toggle;
     private Gtk.Revealer sortby_revealer;
     private SimpleActionGroup actions;
 
@@ -127,22 +127,36 @@ public class Files.RenamerDialog : Granite.Dialog {
         suffix_box.pack_start (suffix_revealer, false, false);
 
         var basename_label = new Gtk.Label (_("Basename:"));
-        /// TRANSLATORS: Used as "Basename: Unchanged"
-        original_check = new Gtk.RadioButton.with_label (null, NC_("bulk-rename", "Unchanged")) { margin_start = 24 };
-        /// TRANSLATORS: Used as "Basename: New"
-        new_check = new Gtk.RadioButton.with_label_from_widget (original_check, NC_("bulk-rename", "New")) { margin_start = 24 };
-        /// TRANSLATORS: Used as "Basename: Modified"
-        replace_check = new Gtk.RadioButton.with_label_from_widget (original_check, NC_("bulk-rename", "Modified")) { margin_start = 24 };
+        // In Gtk4 replace RadioButtons with linked ToggleButtons
+        original_basename_toggle = new Gtk.RadioButton (null) {
+            label = NC_("bulk-rename", "Unchanged"),
+            active = true
+        };
+        original_basename_toggle.set_mode (false);
 
-        var basename_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
+        new_basename_toggle = new Gtk.RadioButton.from_widget (original_basename_toggle) {
+            label = NC_("bulk-rename", "New")
+        };
+        new_basename_toggle.set_mode (false);
+
+        replace_basename_toggle = new Gtk.RadioButton.from_widget (original_basename_toggle) {
+            label = NC_("bulk-rename", "Modified")
+        };
+        replace_basename_toggle.set_mode (false);
+
+        var toggle_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        toggle_box.get_style_context ().add_class ("linked");
+        toggle_box.pack_start (original_basename_toggle);
+        toggle_box.pack_start (new_basename_toggle);
+        toggle_box.pack_start (replace_basename_toggle);
+
+        var basename_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
             halign = Gtk.Align.CENTER,
             margin_bottom = 24
         };
 
         basename_box.pack_start (basename_label);
-        basename_box.pack_start (original_check);
-        basename_box.pack_start (replace_check);
-        basename_box.pack_start (new_check);
+        basename_box.pack_end (toggle_box);
 
         var original_label = new Gtk.Label (_("Original Basename"));
         basename_entry = new Gtk.Entry ();
@@ -173,7 +187,7 @@ public class Files.RenamerDialog : Granite.Dialog {
 
         var sortby_label = new Gtk.Label (_("Number in order of:"));
 
-        //TODO Replace RadioButtons with linked ToggleButtons in Gtk4
+        //TODO Replace RadioButtons with linked RadioButtons in Gtk4
         /// TRANSLATORS: Used as "Number in order of: Name"
         var name_check = new Gtk.RadioButton.with_label (null, NC_("bulk-rename", "Name")) {margin_start = 6};
         /// TRANSLATORS: Used as "Number in order of: Date created"
@@ -232,27 +246,28 @@ public class Files.RenamerDialog : Granite.Dialog {
         replacement_entry_stack.visible_child_name = "box";
 
 
-        /* Connect signals */
-        original_check.toggled.connect (() => {
-            if (original_check.active) {
+        // /* Connect signals */
+        original_basename_toggle.toggled.connect (() => {
+            if (original_basename_toggle.active) {
                 basename_entry_stack.visible_child_name = "label";
                 replacement_entry_stack.visible_child_name = "box";
                 schedule_view_update ();
             }
         });
-        replace_check.toggled.connect (() => {
-            if (replace_check.active) {
-                basename_entry_stack.visible_child_name = "entry";
-                basename_entry.placeholder_text = _("Text to be replaced");
-                replacement_entry_stack.visible_child_name = "entry";
-                schedule_view_update ();
-            }
-        });
-        new_check.toggled.connect (() => {
-            if (new_check.active) {
+        new_basename_toggle.toggled.connect (() => {
+            if (new_basename_toggle.active) {
                 basename_entry_stack.visible_child_name = "entry";
                 basename_entry.placeholder_text = _("New basename");
                 replacement_entry_stack.visible_child_name = "box";
+                schedule_view_update ();
+            }
+        });
+        replace_basename_toggle.toggled.connect (() => {
+            if (replace_basename_toggle.active) {
+                warning ("replace toggled active");
+                basename_entry_stack.visible_child_name = "entry";
+                basename_entry.placeholder_text = _("Text to be replaced");
+                replacement_entry_stack.visible_child_name = "entry";
                 schedule_view_update ();
             }
         });
@@ -333,6 +348,8 @@ public class Files.RenamerDialog : Granite.Dialog {
                 renamer.listbox.sortby = SortBy.NAME;
             }
         });
+
+        schedule_view_update ();
     }
 
     private void add_modifier (RenamerModifier mod) {
@@ -452,8 +469,8 @@ public class Files.RenamerDialog : Granite.Dialog {
             button.label = mod.get_button_text ();
         };
 
-        var custom_basename = original_check.active ? null : basename_entry.text;
-        var replacement_text = replace_check.active ? replacement_entry.text : null;
+        var custom_basename = original_basename_toggle.active ? null : basename_entry.text;
+        var replacement_text = replace_basename_toggle.active ? replacement_entry.text : null;
         renamer.schedule_update (custom_basename, replacement_text);
     }
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-10 16:11+0000\n"
-"PO-Revision-Date: 2023-04-04 22:59+0000\n"
+"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"PO-Revision-Date: 2023-05-14 18:06+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
 ">\n"
@@ -17,11 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.16.4\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:3
-#: data/io.elementary.files.appdata.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "ファイル"
 
@@ -47,11 +46,11 @@ msgstr "新しいウィンドウ"
 msgid "New Window As Administrator"
 msgstr "新しい管理者ウィンドウ"
 
-#: data/io.elementary.files.appdata.xml.in.in:11
+#: data/files.metainfo.xml.in.in:11
 msgid "Browse and manage files and folders"
 msgstr "ファイルとフォルダーを閲覧したり管理したりします"
 
-#: data/io.elementary.files.appdata.xml.in.in:13
+#: data/files.metainfo.xml.in.in:13
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -64,40 +63,50 @@ msgstr ""
 "FTP、SFTP、AFP、Webdav などのリモートや Windows 共有であっても、すべてのファ"
 "イルにアクセスできます。"
 
-#: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:50
-#: data/io.elementary.files.appdata.xml.in.in:72
-#: data/io.elementary.files.appdata.xml.in.in:88
-#: data/io.elementary.files.appdata.xml.in.in:103
+#: data/files.metainfo.xml.in.in:18
+msgid "Quick access to settings like zoom levels and hidden files"
+msgstr "拡大レベルや隠しファイルの表示などの設定に素早くアクセス可能"
+
+#: data/files.metainfo.xml.in.in:22
+msgid "See more metadata at a glance in List view"
+msgstr "リスト表示ではより詳細なメタ情報を一目で確認可能"
+
+#: data/files.metainfo.xml.in.in:26
+msgid "Browse complex trees faster with Column view"
+msgstr "カラム表示を使えば複雑なツリーも素早く表示"
+
+#: data/files.metainfo.xml.in.in:58
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
+
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:79
+#: data/files.metainfo.xml.in.in:101 data/files.metainfo.xml.in.in:117
+#: data/files.metainfo.xml.in.in:132
 msgid "Minor updates:"
 msgstr "そのほかのアップデート:"
 
-#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/files.metainfo.xml.in.in:67
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
 msgstr ""
+"プロパティーダイアログのディスク使用量表示に色付きのレベルバーを使用するよう"
+"に変更"
 
-#: data/io.elementary.files.appdata.xml.in.in:39
-#: data/io.elementary.files.appdata.xml.in.in:52
-#: data/io.elementary.files.appdata.xml.in.in:74
-#: data/io.elementary.files.appdata.xml.in.in:90
-#: data/io.elementary.files.appdata.xml.in.in:105
+#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:81
+#: data/files.metainfo.xml.in.in:103 data/files.metainfo.xml.in.in:119
+#: data/files.metainfo.xml.in.in:134
 msgid "Updated translations"
 msgstr "翻訳の更新"
 
-#: data/io.elementary.files.appdata.xml.in.in:68
+#: data/files.metainfo.xml.in.in:97
 msgid "Improvements:"
 msgstr "改善点:"
 
-#: data/io.elementary.files.appdata.xml.in.in:70
+#: data/files.metainfo.xml.in.in:99
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 "アプリ全体の設定を、コンテキストメニューからヘッダーバー内のアプリメニューに"
 "移動"
-
-#: data/io.elementary.files.appdata.xml.in.in:155
-msgid "elementary, Inc."
-msgstr "elementary, Inc."
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"

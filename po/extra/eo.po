@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-10 16:11+0000\n"
+"POT-Creation-Date: 2023-05-16 21:56+0000\n"
 "PO-Revision-Date: 2020-03-17 15:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/extra/eo/"
@@ -20,8 +20,7 @@ msgstr ""
 "X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:3
-#: data/io.elementary.files.appdata.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "Dosieroj"
 
@@ -46,11 +45,11 @@ msgstr "Nova fenestro"
 msgid "New Window As Administrator"
 msgstr "Nova administranta fenestro"
 
-#: data/io.elementary.files.appdata.xml.in.in:11
+#: data/files.metainfo.xml.in.in:11
 msgid "Browse and manage files and folders"
 msgstr "Foliumi kaj mastrumi dosierojn kaj dosierujojn"
 
-#: data/io.elementary.files.appdata.xml.in.in:13
+#: data/files.metainfo.xml.in.in:13
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -63,40 +62,48 @@ msgstr ""
 "memorujo, aŭ defore per FTP-, SFTP-, AFP-, Webdav-aŭ Vindoza kunhavigo-"
 "protokoloj."
 
-#: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:50
-#: data/io.elementary.files.appdata.xml.in.in:72
-#: data/io.elementary.files.appdata.xml.in.in:88
-#: data/io.elementary.files.appdata.xml.in.in:103
-msgid "Minor updates:"
-msgstr "Malgravaj ĝisdatigoj:"
-
-#: data/io.elementary.files.appdata.xml.in.in:38
-msgid "Use a colorful level bar to show disk usage in the properties dialog"
+#: data/files.metainfo.xml.in.in:18
+msgid "Quick access to settings like zoom levels and hidden files"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:39
-#: data/io.elementary.files.appdata.xml.in.in:52
-#: data/io.elementary.files.appdata.xml.in.in:74
-#: data/io.elementary.files.appdata.xml.in.in:90
-#: data/io.elementary.files.appdata.xml.in.in:105
-msgid "Updated translations"
-msgstr "Ĝisdatigitaj tradukoj"
-
-#: data/io.elementary.files.appdata.xml.in.in:68
-msgid "Improvements:"
+#: data/files.metainfo.xml.in.in:22
+msgid "See more metadata at a glance in List view"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:70
-msgid ""
-"Move global settings from the context menu to an app menu in the headerbar"
+#: data/files.metainfo.xml.in.in:26
+msgid "Browse complex trees faster with Column view"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:155
+#: data/files.metainfo.xml.in.in:58
 #, fuzzy
 #| msgid "elementary LLC."
 msgid "elementary, Inc."
 msgstr "elementary LLC."
+
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:79
+#: data/files.metainfo.xml.in.in:101 data/files.metainfo.xml.in.in:117
+#: data/files.metainfo.xml.in.in:132
+msgid "Minor updates:"
+msgstr "Malgravaj ĝisdatigoj:"
+
+#: data/files.metainfo.xml.in.in:67
+msgid "Use a colorful level bar to show disk usage in the properties dialog"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:81
+#: data/files.metainfo.xml.in.in:103 data/files.metainfo.xml.in.in:119
+#: data/files.metainfo.xml.in.in:134
+msgid "Updated translations"
+msgstr "Ĝisdatigitaj tradukoj"
+
+#: data/files.metainfo.xml.in.in:97
+msgid "Improvements:"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:99
+msgid ""
+"Move global settings from the context menu to an app menu in the headerbar"
+msgstr ""
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"

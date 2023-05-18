@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-10 16:11+0000\n"
+"POT-Creation-Date: 2023-05-16 21:56+0000\n"
 "PO-Revision-Date: 2021-05-22 18:59+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/extra/mr/"
@@ -13,8 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 4.4.2\n"
 
-#: data/io.elementary.files.desktop.in.in:3
-#: data/io.elementary.files.appdata.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "फायली"
 
@@ -38,11 +37,11 @@ msgstr "नवीन विंडो"
 msgid "New Window As Administrator"
 msgstr "प्रशासक म्हणून नवीन विंडो"
 
-#: data/io.elementary.files.appdata.xml.in.in:11
+#: data/files.metainfo.xml.in.in:11
 msgid "Browse and manage files and folders"
 msgstr "फायली आणि फोल्डर ब्राउझ आणि व्यवस्थापित करा"
 
-#: data/io.elementary.files.appdata.xml.in.in:13
+#: data/files.metainfo.xml.in.in:13
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -54,38 +53,46 @@ msgstr ""
 "नेहमी शोधू शकता. आपल्या सर्व फाइल्स ऍक्सेस करा, स्थानिकरित्या, बाह्य डिव्हाइसवर किंवा "
 "दूरस्थपणे FTP, SFTP, AFP, Webdav किंवा Windows सामायिकरण वापरून."
 
-#: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:50
-#: data/io.elementary.files.appdata.xml.in.in:72
-#: data/io.elementary.files.appdata.xml.in.in:88
-#: data/io.elementary.files.appdata.xml.in.in:103
+#: data/files.metainfo.xml.in.in:18
+msgid "Quick access to settings like zoom levels and hidden files"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:22
+msgid "See more metadata at a glance in List view"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:26
+msgid "Browse complex trees faster with Column view"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:58
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
+
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:79
+#: data/files.metainfo.xml.in.in:101 data/files.metainfo.xml.in.in:117
+#: data/files.metainfo.xml.in.in:132
 msgid "Minor updates:"
 msgstr "किरकोळ अपडेट्स:"
 
-#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/files.metainfo.xml.in.in:67
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:39
-#: data/io.elementary.files.appdata.xml.in.in:52
-#: data/io.elementary.files.appdata.xml.in.in:74
-#: data/io.elementary.files.appdata.xml.in.in:90
-#: data/io.elementary.files.appdata.xml.in.in:105
+#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:81
+#: data/files.metainfo.xml.in.in:103 data/files.metainfo.xml.in.in:119
+#: data/files.metainfo.xml.in.in:134
 msgid "Updated translations"
 msgstr "अद्ययावत भाषांतर"
 
-#: data/io.elementary.files.appdata.xml.in.in:68
+#: data/files.metainfo.xml.in.in:97
 msgid "Improvements:"
 msgstr "सुधारणा:"
 
-#: data/io.elementary.files.appdata.xml.in.in:70
+#: data/files.metainfo.xml.in.in:99
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
-
-#: data/io.elementary.files.appdata.xml.in.in:155
-msgid "elementary, Inc."
-msgstr "elementary, Inc."
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"

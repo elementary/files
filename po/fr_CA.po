@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-10 16:11+0000\n"
+"POT-Creation-Date: 2023-05-16 21:56+0000\n"
 "PO-Revision-Date: 2016-08-25 14:39+0000\n"
 "Last-Translator: Nate <natejms@outlook.com>\n"
 "Language-Team: French (Canada) <fr_CA@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
 #: libcore/FileConflictDialog.vala:188
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:363
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:380
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr ""
@@ -1228,7 +1228,7 @@ msgstr ""
 msgid "_Cancel"
 msgstr ""
 
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:368
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:385
 #, fuzzy
 msgid "Delete"
 msgstr "Supprimer le lien vers « %s »"
@@ -1687,7 +1687,7 @@ msgid "Modified original"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:254
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:260
 msgid "New basename"
 msgstr ""
 
@@ -1718,44 +1718,41 @@ msgstr ""
 msgid "Basename:"
 msgstr "_Nom d'utilisateur :"
 
-#. TRANSLATORS: Used as "Basename: Unchanged"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:131
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
 msgid "Unchanged"
 msgstr ""
 
-#. TRANSLATORS: Used as "Basename: New"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:133
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 msgctxt "bulk-rename"
 msgid "New"
 msgstr ""
 
-#. TRANSLATORS: Used as "Basename: Modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:135
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 msgctxt "bulk-rename"
 msgid "Modified"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:147
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
 msgid "Original Basename"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:150
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:164
 msgid "Replacement text"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:174
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:188
 msgid "Number in order of:"
 msgstr ""
 
 #. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:178
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
 msgctxt "bulk-rename"
 msgid "Name"
 msgstr ""
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:180
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
 #, fuzzy
 #| msgid "Create"
 msgctxt "bulk-rename"
@@ -1763,24 +1760,24 @@ msgid "Date created"
 msgstr "Créer"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:182
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
 msgctxt "bulk-rename"
 msgid "Date modified"
 msgstr ""
 
 #. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:184
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:198
 #, fuzzy
 #| msgid "Size"
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "Taille"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:246
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:269
 msgid "Text to be replaced"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:358
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:375
 msgid "Apply"
 msgstr ""
 

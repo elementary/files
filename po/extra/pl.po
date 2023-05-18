@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-10 16:11+0000\n"
-"PO-Revision-Date: 2023-02-16 21:22+0000\n"
+"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"PO-Revision-Date: 2023-05-14 18:06+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
 "Language: pl\n"
@@ -17,11 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:3
-#: data/io.elementary.files.appdata.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "Pliki"
 
@@ -47,11 +46,11 @@ msgstr "Nowe okno"
 msgid "New Window As Administrator"
 msgstr "Nowe okno jako administrator"
 
-#: data/io.elementary.files.appdata.xml.in.in:11
+#: data/files.metainfo.xml.in.in:11
 msgid "Browse and manage files and folders"
 msgstr "Przeglądaj i zarządzaj plikami oraz katalogami"
 
-#: data/io.elementary.files.appdata.xml.in.in:13
+#: data/files.metainfo.xml.in.in:13
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -65,40 +64,51 @@ msgstr ""
 "urządzeniach zewnętrznych lub zdalnych, używając rozwiązań FTP, SFTP, AFP, "
 "WebDAV lub udziałów systemu Microsoft Windows."
 
-#: data/io.elementary.files.appdata.xml.in.in:36
-#: data/io.elementary.files.appdata.xml.in.in:50
-#: data/io.elementary.files.appdata.xml.in.in:72
-#: data/io.elementary.files.appdata.xml.in.in:88
-#: data/io.elementary.files.appdata.xml.in.in:103
+#: data/files.metainfo.xml.in.in:18
+msgid "Quick access to settings like zoom levels and hidden files"
+msgstr ""
+"Szybki dostęp do ustawień takich jak poziom przybliżenia i ukryte pliki"
+
+#: data/files.metainfo.xml.in.in:22
+msgid "See more metadata at a glance in List view"
+msgstr "Więcej łatwo widocznych metadanych w widoku listy"
+
+#: data/files.metainfo.xml.in.in:26
+msgid "Browse complex trees faster with Column view"
+msgstr ""
+"Szybsze przeglądanie skomplikowanych struktur drzewiastych w widoku "
+"kolumnowym"
+
+#: data/files.metainfo.xml.in.in:58
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
+
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:79
+#: data/files.metainfo.xml.in.in:101 data/files.metainfo.xml.in.in:117
+#: data/files.metainfo.xml.in.in:132
 msgid "Minor updates:"
 msgstr "Drobne aktualizacje:"
 
-#: data/io.elementary.files.appdata.xml.in.in:38
+#: data/files.metainfo.xml.in.in:67
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
-msgstr ""
+msgstr "Kolorowy pasek poziomu zapełnienia dysku w oknie właściwości"
 
-#: data/io.elementary.files.appdata.xml.in.in:39
-#: data/io.elementary.files.appdata.xml.in.in:52
-#: data/io.elementary.files.appdata.xml.in.in:74
-#: data/io.elementary.files.appdata.xml.in.in:90
-#: data/io.elementary.files.appdata.xml.in.in:105
+#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:81
+#: data/files.metainfo.xml.in.in:103 data/files.metainfo.xml.in.in:119
+#: data/files.metainfo.xml.in.in:134
 msgid "Updated translations"
 msgstr "Zaktualizowane tłumaczenia"
 
-#: data/io.elementary.files.appdata.xml.in.in:68
+#: data/files.metainfo.xml.in.in:97
 msgid "Improvements:"
 msgstr "Ulepszenia:"
 
-#: data/io.elementary.files.appdata.xml.in.in:70
+#: data/files.metainfo.xml.in.in:99
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 "Przeniesiono ustawienia globalne z menu kontekstowego do menu aplikacji w "
 "pasku górnym"
-
-#: data/io.elementary.files.appdata.xml.in.in:155
-msgid "elementary, Inc."
-msgstr "elementary, Inc."
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
