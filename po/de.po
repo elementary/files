@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2023-05-07 16:06+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
@@ -1752,17 +1752,22 @@ msgstr "Basisname:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
-msgstr "Unverändert"
+msgid "Keep"
+msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
+#, fuzzy
+#| msgid "Replace"
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "Neu"
+msgid "Replace"
+msgstr "Ersetzen"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
+#, fuzzy
+#| msgctxt "bulk-rename"
+#| msgid "Modified"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "Geändert"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
@@ -2608,6 +2613,14 @@ msgstr "Unterhalb dieses Ordners"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Zuletzt verwendet"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Unchanged"
+#~ msgstr "Unverändert"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "Neu"
 
 #, c-format
 #~ msgid "Replace the target of “%s”?"

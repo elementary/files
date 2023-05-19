@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
-"PO-Revision-Date: 2022-10-12 12:57+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
+"PO-Revision-Date: 2023-05-19 08:06+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -40,10 +40,8 @@ msgid "Open File as Read Only"
 msgstr "Dosyayı Salt Okunur Olarak Aç"
 
 #: filechooser-portal/FileChooserDialog.vala:376
-#, fuzzy
-#| msgid "new file"
 msgid "Enter new filename"
-msgstr "yeni dosya"
+msgstr "Yeni dosya adı girin"
 
 #: filechooser-portal/Main.vala:107
 msgid "Select"
@@ -60,18 +58,18 @@ msgstr "Kaydet"
 #: filechooser-portal/Main.vala:448
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr ""
+msgstr "Bu dosya “%s” için bir bağlantıdır"
 
 #: filechooser-portal/Main.vala:451
 msgid "This file is a link."
-msgstr ""
+msgstr "Bu dosya bir bağlantıdır."
 
 #: filechooser-portal/Main.vala:454
-#, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr "Değiştirmek, var olan içeriğin üzerine yazılmasına neden olacak."
+msgstr ""
+"Bir bağlantının değiştirilmesi, hedefin içeriğinin üzerine yazılmasına neden "
+"olur. Bağlantı kalacaktır"
 
 #: filechooser-portal/Main.vala:456
 #, c-format
@@ -215,20 +213,16 @@ msgstr "Bağlantı Oluştur"
 
 #: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2330
 msgid "Name"
-msgstr "İsim"
+msgstr "Ad"
 
 #: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:96
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:100
-#, fuzzy
-#| msgid "Create"
 msgid "Creation Date"
-msgstr "Oluştur"
+msgstr "Oluşturma Tarihi"
 
 #: libcore/Enums.vala:163
-#, fuzzy
-#| msgid "Last modified:"
 msgid "Last modification date"
-msgstr "Son düzenlenme tarihi:"
+msgstr "Son değiştirme tarihi"
 
 #: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2335
 #: src/View/ListView.vala:27
@@ -237,11 +231,11 @@ msgstr "Boyut"
 
 #: libcore/Enums.vala:189
 msgid "Number sequence"
-msgstr ""
+msgstr "Numara serisi"
 
 #: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "Metin"
 
 #: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2345
 msgid "Date"
@@ -249,55 +243,51 @@ msgstr "Tarih"
 
 #: libcore/Enums.vala:211
 msgid "Suffix"
-msgstr ""
+msgstr "Sonek"
 
 #: libcore/Enums.vala:214
 msgid "Prefix"
-msgstr ""
+msgstr "Önek"
 
 #: libcore/Enums.vala:224
 msgid "Text to put at the end"
-msgstr ""
+msgstr "Sona eklenecek metin"
 
 #: libcore/Enums.vala:227
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Başlangıca eklenecek metin"
 
 #: libcore/Enums.vala:246
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "Varsayılan Biçim - Yalnızca tarih"
 
 #: libcore/Enums.vala:248
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "Varsayılan Biçim - Tarih ve Saat"
 
 #: libcore/Enums.vala:250
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "Yerel Biçim - Tarih ve Saat"
 
 #: libcore/Enums.vala:252
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "ISO 8601 Biçimi - Yalnızca tarih"
 
 #: libcore/Enums.vala:254
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "ISO 8601 Biçimi - Tarih ve Saat"
 
 #: libcore/Enums.vala:270
-#, fuzzy
-#| msgid "Recreate"
 msgid "Date created"
-msgstr "Yeniden Oluştur"
+msgstr "Oluşturma tarihi"
 
 #: libcore/Enums.vala:272
-#, fuzzy
-#| msgid "Modified"
 msgid "Date Modified"
-msgstr "Değiştirildi"
+msgstr "Değiştirme Tarihi"
 
 #: libcore/Enums.vala:274
 msgid "Current Date"
-msgstr ""
+msgstr "Geçerli Tarih"
 
 #: libcore/File.vala:547 libcore/File.vala:1103 libcore/File.vala:1122
 msgid "Inaccessible"
@@ -1288,179 +1278,116 @@ msgid "Empty _Trash"
 msgstr "Çöpü _Boşalt"
 
 #: libcore/UndoManager.vala:22
-#, fuzzy
-#| msgid "Copy"
 msgid "Undo Copy"
-msgstr "Kopyala"
+msgstr "Kopyalamayı Geri Al"
 
 #: libcore/UndoManager.vala:24
-#, fuzzy
-#| msgid "Duplicate Tab"
 msgid "Undo Duplicate"
-msgstr "Sekmeyi Çoğalt"
+msgstr "Çoğaltmayı Geri Al"
 
 #: libcore/UndoManager.vala:26
-#, fuzzy
-#| msgid "Undo Close Tab"
 msgid "Undo Move"
-msgstr "Kapanan Sekmeyi Geri Al"
+msgstr "Taşımayı Geri Al"
 
 #: libcore/UndoManager.vala:28
-#, fuzzy
-#| msgid "Rename"
 msgid "Undo Rename"
-msgstr "Yeniden Adlandır"
+msgstr "Yeniden Adlandırmayı Geri Al"
 
 #: libcore/UndoManager.vala:30
-#, fuzzy
-#| msgid "_Undo creation of an empty file"
 msgid "Undo Create Empty File"
-msgstr "Boş bir dosya oluşturulmasını _geri al"
+msgstr "Boş Dosya Oluşturmayı Geri Al"
 
 #: libcore/UndoManager.vala:32
-#, fuzzy
-#| msgid "_Undo creation of a file from template"
 msgid "Undo Create File from Template"
-msgstr "Şablondan bir dosya oluşturulmasını _geri al"
+msgstr "Şablondan Dosya Oluşturmayı Geri Al"
 
 #: libcore/UndoManager.vala:34
-#, fuzzy
-#| msgid "_Undo creation of %d folder"
-#| msgid_plural "_Undo creation of %d folders"
 msgid "Undo Create Folder"
-msgstr "%d klasör oluşturulmasını _geri al"
+msgstr "Klasör Oluşturmayı Geri Al"
 
 #: libcore/UndoManager.vala:36
-#, fuzzy
-#| msgid "Move to Trash"
 msgid "Undo Move to Trash"
-msgstr "Çöpe Taşı"
+msgstr "Çöpe Taşımayı Geri Al"
 
 #: libcore/UndoManager.vala:38
-#, fuzzy
-#| msgid "_Undo create link to %d item"
-#| msgid_plural "_Undo create link to %d items"
 msgid "Undo Create Link"
-msgstr "%d öğenin bağlantı oluşturulmasını _geri al"
+msgstr "Bağlantı Oluşturmayı Geri Al"
 
 #: libcore/UndoManager.vala:40
-#, fuzzy
-#| msgid "Restore from Trash"
 msgid "Undo Restore from Trash"
-msgstr "Çöpten Geri Yükle"
+msgstr "Çöpten Geri Yüklemeyi Geri Al"
 
 #: libcore/UndoManager.vala:42
-#, fuzzy
-#| msgid "Setting permissions"
 msgid "Undo Set Permissions"
-msgstr "İzinler atanıyor"
+msgstr "İzinleri Ayarlayı Geri Al"
 
 #: libcore/UndoManager.vala:44
-#, fuzzy
-#| msgid "Undo change permissions of %d item"
-#| msgid_plural "Undo change permissions of %d items"
 msgid "Undo Set Permissions Recursively"
-msgstr "%d öğenin izin değişikliğini _geri al"
+msgstr "İzinleri Yinelemeli Olarak Ayarlamayı Geri Al"
 
 #: libcore/UndoManager.vala:46
-#, fuzzy
-#| msgid "Undo change owner of %d item"
-#| msgid_plural "Undo change owner of %d items"
 msgid "Undo Change Owner"
-msgstr "%d öğenin sahibinin değişikliğini _geri al"
+msgstr "Sahibi Değiştirmeyi Geri Al"
 
 #: libcore/UndoManager.vala:48
-#, fuzzy
-#| msgid "Undo change group of %d item"
-#| msgid_plural "Undo change group of %d items"
 msgid "Undo Change Group"
-msgstr "%d öğenin grup değişikliğini _geri al"
+msgstr "Grubu Değiştirmeyi Geri Al"
 
 #: libcore/UndoManager.vala:57
-#, fuzzy
-#| msgid "Copy"
 msgid "Redo Copy"
-msgstr "Kopyala"
+msgstr "Kopyalamayı Yeniden Yap"
 
 #: libcore/UndoManager.vala:59
-#, fuzzy
-#| msgid "Duplicate Tab"
 msgid "Redo Duplicate"
-msgstr "Sekmeyi Çoğalt"
+msgstr "Çoğaltmayı Yeniden Yap"
 
 #: libcore/UndoManager.vala:61
 msgid "Redo Move"
-msgstr ""
+msgstr "Taşımayı Yeniden Yap"
 
 #: libcore/UndoManager.vala:63
-#, fuzzy
-#| msgid "Rename"
 msgid "Redo Rename"
-msgstr "Yeniden Adlandır"
+msgstr "Yeniden Adlandırmayı Yeniden Yap"
 
 #: libcore/UndoManager.vala:65
-#, fuzzy
-#| msgid "_Redo creation of an empty file"
 msgid "Redo Create Empty File"
-msgstr "Boş bir dosya oluşturulmasını _yinele"
+msgstr "Boş Dosya Oluşturmayı Yeniden Yap"
 
 #: libcore/UndoManager.vala:67
-#, fuzzy
-#| msgid "_Redo creation of a file from template"
 msgid "Redo Create File from Template"
-msgstr "Şablondan boş bir dosya oluşturulmasını _yinele"
+msgstr "Şablondan Dosya Oluşturmayı Yeniden Yap"
 
 #: libcore/UndoManager.vala:69
-#, fuzzy
-#| msgid "Failed to create the folder"
 msgid "Redo Create Folder"
-msgstr "Klasör oluşturulamadı"
+msgstr "Klasör Oluşturmayı Yeniden Yap"
 
 #: libcore/UndoManager.vala:71
-#, fuzzy
-#| msgid "Move to Trash"
 msgid "Redo Move to Trash"
-msgstr "Çöpe Taşı"
+msgstr "Çöpe Taşımayı Yeniden Yap"
 
 #: libcore/UndoManager.vala:73
-#, fuzzy
-#| msgid "_Redo create link to %d item"
-#| msgid_plural "_Redo create link to %d items"
 msgid "Redo Create Link"
-msgstr "%d öğeye bağlantı oluşturulmasını _yinele"
+msgstr "Bağlantı Oluşturmayı Yeniden Yap"
 
 #: libcore/UndoManager.vala:75
-#, fuzzy
-#| msgid "Restore from Trash"
 msgid "Redo Restore from Trash"
-msgstr "Çöpten Geri Yükle"
+msgstr "Çöpten Geri Yüklemeyi Yeniden Yap"
 
 #: libcore/UndoManager.vala:77
-#, fuzzy
-#| msgid "Setting permissions"
 msgid "Redo Set Permissions"
-msgstr "İzinler atanıyor"
+msgstr "İzinleri Ayarlayı Yeniden Yap"
 
 #: libcore/UndoManager.vala:79
-#, fuzzy
-#| msgid "Redo change permissions of %d item"
-#| msgid_plural "Redo change permissions of %d items"
 msgid "Redo Set Permissions Recursively"
-msgstr "%d öğenin izinlerinin değiştirilmesini yinele"
+msgstr "İzinleri Yinelemeli Olarak Ayarlamayı Yeniden Yap"
 
 #: libcore/UndoManager.vala:81
-#, fuzzy
-#| msgid "Redo change owner of %d item"
-#| msgid_plural "Redo change owner of %d items"
 msgid "Redo Change Owner"
-msgstr "%d öğenin sahibinin değiştirilmesini yinele"
+msgstr "Sahibi Değiştirmeyi Yeniden Yap"
 
 #: libcore/UndoManager.vala:83
-#, fuzzy
-#| msgid "Redo change group of %d item"
-#| msgid_plural "Redo change group of %d items"
 msgid "Redo Change Group"
-msgstr "%d öğenin grup değişikliğini yinele"
+msgstr "Grubu Değiştirmeyi Yeniden Yap"
 
 #: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
@@ -1731,10 +1658,9 @@ msgid "Device Usage"
 msgstr "Aygıt Kullanımı"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:166
-#, fuzzy, c-format
-#| msgid "(%s Free of %s)"
+#, c-format
 msgid "%s free out of %s"
-msgstr "(%2$s / %1$s Boş)"
+msgstr "%2$s / %1$s boş"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:174
 msgid "Capacity:"
@@ -1756,10 +1682,8 @@ msgid "Used:"
 msgstr "Kullanılan:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:34
-#, fuzzy
-#| msgid "Original file"
 msgid "Original filename"
-msgstr "Özgün dosya"
+msgstr "Özgün dosya adı"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:36
 #, fuzzy
@@ -1772,156 +1696,136 @@ msgstr "Değiştirildi"
 #, fuzzy
 #| msgid "Rename"
 msgid "New basename"
-msgstr "Yeniden Adlandır"
+msgstr "Yeni taban adı"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:79
-#, fuzzy
-#| msgid "Rename"
 msgid "Bulk Rename"
-msgstr "Yeniden Adlandır"
+msgstr "Toplu Yeniden Adlandır"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
 msgid "Number Sequence"
-msgstr ""
+msgstr "Numara Serisi"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
 msgid "Fixed Text"
-msgstr ""
+msgstr "Sabit Metin"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
 msgid "Add Prefix"
-msgstr ""
+msgstr "Önek Ekle"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
 msgid "Add Suffix"
-msgstr ""
+msgstr "Sonek Ekle"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
 #, fuzzy
 #| msgid "User name:"
 msgid "Basename:"
-msgstr "Kullanıcı adı:"
+msgstr "Taban adı:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
+msgid "Keep"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
-#| msgid "New"
+#| msgid "Replace"
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "Yeni"
+msgid "Replace"
+msgstr "Yerine Koy"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
+#| msgctxt "bulk-rename"
 #| msgid "Modified"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "Değiştirildi"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
-#, fuzzy
-#| msgid "Original file"
 msgid "Original Basename"
-msgstr "Özgün dosya"
+msgstr "Özgün Taban Adı"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:164
-#, fuzzy
-#| msgid "Replace with"
 msgid "Replacement text"
-msgstr "Bununla değiştir"
+msgstr "Değiştirme metni"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:188
 msgid "Number in order of:"
-msgstr ""
+msgstr "Sıra numarası:"
 
 #. TRANSLATORS: Used as "Number in order of: Name"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
-#, fuzzy
-#| msgid "Name"
 msgctxt "bulk-rename"
 msgid "Name"
-msgstr "İsim"
+msgstr "Ad"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
-#, fuzzy
-#| msgid "Recreate"
 msgctxt "bulk-rename"
 msgid "Date created"
-msgstr "Yeniden Oluştur"
+msgstr "Oluşturma tarihi"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
-#, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Date modified"
-msgstr "Değiştirildi"
+msgstr "Değiştirme tarihi"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:198
-#, fuzzy
-#| msgid "Size"
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "Boyut"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:269
 msgid "Text to be replaced"
-msgstr ""
+msgstr "Değiştirilecek metin"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:375
 msgid "Apply"
-msgstr ""
+msgstr "Uygula"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
-#, fuzzy
-#| msgid "Ignore"
 msgid "Ignored"
-msgstr "Yoksay"
+msgstr "Yoksayıldı"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
 msgid "Name is not changed"
-msgstr ""
+msgstr "Ad değişmedi"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
-#, fuzzy
-#| msgid "Rename"
 msgid "Cannot rename"
-msgstr "Yeniden Adlandır"
+msgstr "Yeniden adlandırılamıyor"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
 msgid "Name is invalid or already exists"
-msgstr ""
+msgstr "Ad geçersiz veya zaten var"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
-#, fuzzy
-#| msgid "Filename"
 msgid "Will be renamed"
-msgstr "Dosya adı"
+msgstr "Yeniden adlandırılacak"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
-#, fuzzy
-#| msgid "Reversed Order"
 msgid "Reverse Order"
 msgstr "Tersine Sırala"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:52
 msgid "Start Number"
-msgstr ""
+msgstr "Başlangıç Numarası"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
+#, fuzzy
 msgid "Digits"
-msgstr ""
+msgstr "Basamak"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
 msgid "Separator"
-msgstr ""
+msgstr "Ayırıcı"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:310
 #, c-format
@@ -2503,10 +2407,8 @@ msgid "Connect Server…"
 msgstr "Sunucuya Bağlan…"
 
 #: src/View/Sidebar/VolumeRow.vala:166
-#, fuzzy
-#| msgid "_Mount"
 msgid "Mount"
-msgstr "_Bağla"
+msgstr "Bağla"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
@@ -2534,30 +2436,30 @@ msgid "Next"
 msgstr "Sonraki"
 
 #: src/View/Widgets/HeaderBar.vala:97
+#, fuzzy
 msgid "Zoom Out"
-msgstr ""
+msgstr "Uzaklaştır"
 
 #: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "Varsayılan yakınlaştırma seviyesi"
 
 #: src/View/Widgets/HeaderBar.vala:115
+#, fuzzy
 msgid "Zoom In"
-msgstr ""
+msgstr "Yakınlaştır"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "Gezinmek için çift tıklayın"
 
 #: src/View/Widgets/HeaderBar.vala:155
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "Bir klasöre çift tıklama onu açar, tek tıklama onu seçer"
 
 #: src/View/Widgets/HeaderBar.vala:160
-#, fuzzy
-#| msgid "Folders Before Files"
 msgid "Sort Folders before Files"
-msgstr "Dosyalardan Önce Klasörler"
+msgstr "Klasörleri Dosyalardan Önce Sırala"
 
 #: src/View/Widgets/HeaderBar.vala:164
 #, fuzzy
@@ -2566,38 +2468,28 @@ msgid "Show in View"
 msgstr "Gizli Dosyaları Göster"
 
 #: src/View/Widgets/HeaderBar.vala:171
-#, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Hidden Files"
-msgstr "Gizli Dosyaları Göster"
+msgstr "Gizli Dosyalar"
 
 #: src/View/Widgets/HeaderBar.vala:175
-#, fuzzy
-#| msgid "Hide Thumbnails"
 msgid "Local Thumbnails"
-msgstr "Küçük Resimleri Gizle"
+msgstr "Yerel Küçük Resimler"
 
 #: src/View/Widgets/HeaderBar.vala:180
-#, fuzzy
-#| msgid "Show Remote Thumbnails"
 msgid "Remote Thumbnails"
-msgstr "Uzak Küçük Resimleri Göster"
+msgstr "Uzak Küçük Resimler"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
-msgstr ""
+msgstr "Menü"
 
 #: src/View/Widgets/HeaderBar.vala:283
-#, fuzzy
-#| msgid "The operation timed out."
 msgid "No operation to undo"
-msgstr "İşlem zaman aşımına uğradı."
+msgstr "Geri alınacak işlem yok"
 
 #: src/View/Widgets/HeaderBar.vala:290
-#, fuzzy
-#| msgid "The operation timed out."
 msgid "No operation to redo"
-msgstr "İşlem zaman aşımına uğradı."
+msgstr "Yeniden yapılacak işlem yok"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2690,6 +2582,14 @@ msgstr "Bu Klasörün Altında"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Son Kullanılan"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Unchanged"
+#~ msgstr "Değişiklik Yok"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "Yeni"
 
 #, c-format
 #~ msgid "Replace the target of “%s”?"

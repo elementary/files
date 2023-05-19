@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2023-05-14 18:06+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
@@ -1714,17 +1714,22 @@ msgstr "Alapnév:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
-msgstr "változatlan"
+msgid "Keep"
+msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
+#, fuzzy
+#| msgid "Replace"
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "új"
+msgid "Replace"
+msgstr "Felülírás"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
+#, fuzzy
+#| msgctxt "bulk-rename"
+#| msgid "Modified"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "módosított"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
@@ -2558,6 +2563,14 @@ msgstr "Ezen mappa alatt"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Mostanában használt"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Unchanged"
+#~ msgstr "változatlan"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "új"
 
 #, c-format
 #~ msgid "Replace the target of “%s”?"

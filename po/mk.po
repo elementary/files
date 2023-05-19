@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2016-06-30 19:07+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Macedonian <mk@li.org>\n"
@@ -1756,20 +1756,19 @@ msgstr "_Корисничко име:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
+msgid "Keep"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-#, fuzzy
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "Мрежа"
+msgid "Replace"
+msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "Променето"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
@@ -2627,6 +2626,11 @@ msgstr ""
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr ""
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "Мрежа"
 
 #, fuzzy
 #~| msgid "File Operations"

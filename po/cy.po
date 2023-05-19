@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2019-07-22 01:24+0000\n"
 "Last-Translator: Christopher Griffiths <chris@cgriff.co.uk>\n"
 "Language-Team: Welsh <https://l10n.elementary.io/projects/files/files/cy/>\n"
@@ -1800,19 +1800,20 @@ msgstr "Enw _Defnyddiwr:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
+msgid "Keep"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
+#, fuzzy
 msgctxt "bulk-rename"
-msgid "New"
-msgstr ""
+msgid "Replace"
+msgstr "Amnewid ffeil \"%s\"?"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
 #| msgid "Modified:"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "Addaswyd:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
