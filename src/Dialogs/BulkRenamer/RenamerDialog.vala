@@ -56,7 +56,7 @@ public class Files.RenamerDialog : Granite.Dialog {
     private Gtk.Revealer suffix_revealer;
     private Gtk.Entry basename_entry;
     private Gtk.Entry replacement_entry;
-    private Gtk.RadioButton replace_basename_toggle;
+    private Gtk.RadioButton modify_basename_toggle;
     private Gtk.RadioButton new_basename_toggle;
     private Gtk.RadioButton original_basename_toggle;
     private Gtk.Revealer sortby_revealer;
@@ -129,26 +129,26 @@ public class Files.RenamerDialog : Granite.Dialog {
         var basename_label = new Gtk.Label (_("Basename:"));
         // In Gtk4 replace RadioButtons with linked ToggleButtons
         original_basename_toggle = new Gtk.RadioButton (null) {
-            label = NC_("bulk-rename", "Unchanged"),
+            label = NC_("bulk-rename", "Keep"),
             active = true
         };
         original_basename_toggle.set_mode (false);
 
         new_basename_toggle = new Gtk.RadioButton.from_widget (original_basename_toggle) {
-            label = NC_("bulk-rename", "New")
+            label = NC_("bulk-rename", "Replace")
         };
         new_basename_toggle.set_mode (false);
 
-        replace_basename_toggle = new Gtk.RadioButton.from_widget (original_basename_toggle) {
-            label = NC_("bulk-rename", "Modified")
+        modify_basename_toggle = new Gtk.RadioButton.from_widget (original_basename_toggle) {
+            label = NC_("bulk-rename", "Modify")
         };
-        replace_basename_toggle.set_mode (false);
+        modify_basename_toggle.set_mode (false);
 
         var toggle_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         toggle_box.get_style_context ().add_class ("linked");
         toggle_box.pack_start (original_basename_toggle);
         toggle_box.pack_start (new_basename_toggle);
-        toggle_box.pack_start (replace_basename_toggle);
+        toggle_box.pack_start (modify_basename_toggle);
 
         var basename_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
             halign = Gtk.Align.CENTER,
@@ -262,8 +262,8 @@ public class Files.RenamerDialog : Granite.Dialog {
                 schedule_view_update ();
             }
         });
-        replace_basename_toggle.toggled.connect (() => {
-            if (replace_basename_toggle.active) {
+        modify_basename_toggle.toggled.connect (() => {
+            if (modify_basename_toggle.active) {
                 warning ("replace toggled active");
                 basename_entry_stack.visible_child_name = "entry";
                 basename_entry.placeholder_text = _("Text to be replaced");
@@ -470,7 +470,7 @@ public class Files.RenamerDialog : Granite.Dialog {
         };
 
         var custom_basename = original_basename_toggle.active ? null : basename_entry.text;
-        var replacement_text = replace_basename_toggle.active ? replacement_entry.text : null;
+        var replacement_text = modify_basename_toggle.active ? replacement_entry.text : null;
         renamer.schedule_update (custom_basename, replacement_text);
     }
 
