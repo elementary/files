@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2022-08-07 19:15+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://l10n.elementary.io/projects/files/files/ko/>\n"
@@ -1763,21 +1763,21 @@ msgstr "사용자 이름:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
+msgid "Keep"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
-#| msgid "New"
+#| msgid "Replace"
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "새로 만들기"
+msgid "Replace"
+msgstr "바꾸기"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "수정"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
@@ -2637,6 +2637,12 @@ msgstr "이 폴더에 있음"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "최근 사용 기록"
+
+#, fuzzy
+#~| msgid "New"
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "새로 만들기"
 
 #, c-format
 #~ msgid "Replace the target of “%s”?"

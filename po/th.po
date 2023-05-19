@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2017-01-18 07:57+0000\n"
 "Last-Translator: Panan <panan25444@gmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -1758,20 +1758,21 @@ msgstr "ชื่อผู้ใช้ (_U) :"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
+msgid "Keep"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
+#| msgid "Replace"
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "เครือข่าย"
+msgid "Replace"
+msgstr "เขียนทับ"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
 #| msgid "Last modified:"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "แก้ไขครั้งสุดท้าย:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
@@ -2644,6 +2645,11 @@ msgstr ""
 #, fuzzy
 msgid "Recently Used"
 msgstr "ล่าสุด"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "เครือข่าย"
 
 #, fuzzy
 #~| msgid "Replacing it will overwrite its content."

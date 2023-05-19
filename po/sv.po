@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2018-10-22 00:03+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/files/"
@@ -1855,21 +1855,21 @@ msgstr "Användarnamn:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
+msgid "Keep"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
-#| msgid "New"
+#| msgid "Replace"
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "Ny"
+msgid "Replace"
+msgstr "Ersätt"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "Ändrad"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
@@ -2768,6 +2768,12 @@ msgstr "Under denna mapp"
 #| msgid "Recently used"
 msgid "Recently Used"
 msgstr "Senaste använda"
+
+#, fuzzy
+#~| msgid "New"
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "Ny"
 
 #, fuzzy
 #~| msgid "Replacing it will overwrite its content."

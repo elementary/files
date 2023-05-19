@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2018-02-05 00:11+0000\n"
 "Last-Translator: Rokar <mail@rokar.de>\n"
 "Language-Team: Kurdish <https://weblate.elementary.io/projects/files/files/"
@@ -1756,20 +1756,21 @@ msgstr "Navê _Bikarhêner:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
+msgid "Keep"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
+#| msgid "Replace"
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "Tor"
+msgid "Replace"
+msgstr "Biguherîne"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "Guhertî"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
@@ -2637,6 +2638,11 @@ msgstr ""
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr ""
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "Tor"
 
 #, fuzzy
 #~| msgid "Replacing it will overwrite its content."

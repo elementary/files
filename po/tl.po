@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2017-08-22 19:27+0000\n"
 "Last-Translator: anjelo del carmen <anjelo2009@live.com>\n"
 "Language-Team: Tagalog <https://weblate.elementary.io/projects/files/files/"
@@ -1810,20 +1810,21 @@ msgstr "Pangalan ng _user"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
+msgid "Keep"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
+#| msgid "Replace"
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "Network"
+msgid "Replace"
+msgstr "Palitan"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "Huling nabago"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
@@ -2701,6 +2702,11 @@ msgstr "Sa Polder na Ito"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Kamakailan"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "Network"
 
 #, fuzzy
 #~| msgid "File Operations"

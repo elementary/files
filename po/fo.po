@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2015-12-21 13:44+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
@@ -1748,20 +1748,21 @@ msgstr "Ný_nevn"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
+msgid "Keep"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
+#| msgid "Replace"
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "Netverk"
+msgid "Replace"
+msgstr "Set í staðin"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "Broytt"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
@@ -2615,6 +2616,11 @@ msgstr ""
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr ""
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "Netverk"
 
 #, fuzzy
 #~ msgid "Error while moving files to trash."

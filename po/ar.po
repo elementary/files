@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2022-11-09 14:29+0000\n"
 "Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -1916,21 +1916,21 @@ msgstr "اسم المستخدم:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
+msgid "Keep"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
-#| msgid "New"
+#| msgid "Replace"
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "جديد"
+msgid "Replace"
+msgstr "إستبدل"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "عُدِّل"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
@@ -2858,6 +2858,12 @@ msgstr "تحت هذا المجلد"
 #| msgid "Recently used"
 msgid "Recently Used"
 msgstr "تم استخدامه مؤخرا"
+
+#, fuzzy
+#~| msgid "New"
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "جديد"
 
 #, fuzzy
 #~| msgid "Replacing it will overwrite its content."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2023-05-05 21:06+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
@@ -1746,17 +1746,22 @@ msgstr "Базова назва:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
-msgstr "Незмінена"
+msgid "Keep"
+msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
+#, fuzzy
+#| msgid "Replace"
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "Нова"
+msgid "Replace"
+msgstr "Замінити"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
+#, fuzzy
+#| msgctxt "bulk-rename"
+#| msgid "Modified"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "Змінена"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
@@ -2605,6 +2610,14 @@ msgstr "Під цією текою"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Нещодавні"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Unchanged"
+#~ msgstr "Незмінена"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "Нова"
 
 #, c-format
 #~ msgid "Replace the target of “%s”?"
