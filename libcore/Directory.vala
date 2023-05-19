@@ -1054,12 +1054,9 @@ public class Files.Directory : Object {
         Directory? first_dir = cache_lookup_parent (files.data);
         if (first_dir != null) {
             foreach (unowned var loc in files) {
-                assert (loc != null);
-                Directory? dir = cache_lookup_parent (loc);
-                assert (dir != null && first_dir.file.location.equal (dir.file.location));
                 Files.File? gof = null;
-                gof = dir.file_cache_find_or_insert (loc, out already_present);
-                dir.notify_file_changed (gof);
+                gof = first_dir.file_cache_find_or_insert (loc, out already_present);
+                first_dir.notify_file_changed (gof);
             }
         } else {
             foreach (unowned var loc in files) {
@@ -1084,15 +1081,11 @@ public class Files.Directory : Object {
             foreach (unowned var change in changes) {
                 unowned var loc = change.from;
                 // Each set or changes should refer to the same folder but check anyway
-                //TODO Remove assertion before merging
-                assert (loc != null);
-                Directory? dir = cache_lookup_parent (loc);
-                assert (dir != null && first_dir.file.location.equal (dir.file.location));
                 if (prev_loc == null || !loc.equal (prev_loc)) {
-                    Files.File gof = dir.file_cache_find_or_insert (loc, out already_present, true);
+                    Files.File gof = first_dir.file_cache_find_or_insert (loc, out already_present, true);
                     if (!already_present) {
                         files_added = true;
-                        dir.notify_file_added (gof, change.is_internal);
+                        first_dir.notify_file_added (gof, change.is_internal);
                     } // Else ignore files already added from duplicate event or internally
 
                     prev_loc = loc;
@@ -1117,14 +1110,10 @@ public class Files.Directory : Object {
         if (first_dir != null) {
             foreach (unowned var loc in files) {
                 // Each set or changes should refer to the same folder but check anyway
-                //TODO Remove assertion before merging
-                assert (loc != null);
-                Directory? dir = cache_lookup_parent (loc);
-                assert (dir != null && first_dir.file.location.equal (dir.file.location));
-                Files.File gof = dir.file_cache_find_or_insert (loc, out already_present, true);
+                Files.File gof = first_dir.file_cache_find_or_insert (loc, out already_present, true);
                 if (!already_present) {
                     files_added = true;
-                    dir.notify_file_added (gof, true);
+                    first_dir.notify_file_added (gof, true);
                 } // Else ignore files added via FileMonitor event
             }
 
@@ -1152,23 +1141,14 @@ public class Files.Directory : Object {
 
     // Can we assume all from same parent location??
     public static void notify_files_removed (List<GLib.File> files) {
-        // bool already_present = false;
         bool files_removed = false;
         Directory? first_dir = cache_lookup_parent (files.data);
         if (first_dir != null) {
             foreach (unowned var loc in files) {
-                // Each set or changes should refer to the same folder but check anyway
-                //TODO Remove assertion before merging
-                assert (loc != null);
-                Directory? dir = cache_lookup_parent (loc);
-                assert (dir != null && first_dir.file.location.equal (dir.file.location));
-                // if (dir != null) {
-                // We do not want to insert it if absent as we are removing
-                Files.File? gof = dir.file_hash.lookup (loc);
-                // Files.File gof = dir.file_cache_find_or_insert (loc, out already_present);
+                Files.File? gof = first_dir.file_hash.lookup (loc);
                 if (gof != null) {
                     files_removed = true;
-                    dir.notify_file_removed (gof);
+                    first_dir.notify_file_removed (gof);
                 }
             }
 
