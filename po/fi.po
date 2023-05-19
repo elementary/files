@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-16 21:56+0000\n"
-"PO-Revision-Date: 2023-03-31 09:59+0000\n"
+"PO-Revision-Date: 2023-05-19 08:06+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
-"Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
-">\n"
+"Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/>"
+"\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.4\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -216,16 +216,12 @@ msgstr "Nimi"
 
 #: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:96
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:100
-#, fuzzy
-#| msgid "Create"
 msgid "Creation Date"
-msgstr "Luo"
+msgstr "Luontipäivä"
 
 #: libcore/Enums.vala:163
-#, fuzzy
-#| msgid "Last modified:"
 msgid "Last modification date"
-msgstr "Viimeksi muokattu:"
+msgstr "Viimeisimmän muokkauksen päivä"
 
 #: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2335
 #: src/View/ListView.vala:27
@@ -234,11 +230,11 @@ msgstr "Koko"
 
 #: libcore/Enums.vala:189
 msgid "Number sequence"
-msgstr ""
+msgstr "Numerosarja"
 
 #: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "Teksti"
 
 #: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2345
 msgid "Date"
@@ -246,55 +242,51 @@ msgstr "Päivä"
 
 #: libcore/Enums.vala:211
 msgid "Suffix"
-msgstr ""
+msgstr "Jälkiliite"
 
 #: libcore/Enums.vala:214
 msgid "Prefix"
-msgstr ""
+msgstr "Etuliite"
 
 #: libcore/Enums.vala:224
 msgid "Text to put at the end"
-msgstr ""
+msgstr "Loppuun asetettava teksti"
 
 #: libcore/Enums.vala:227
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Alkuun asetettava teksti"
 
 #: libcore/Enums.vala:246
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "Oletusmuoto - pelkkä päivä"
 
 #: libcore/Enums.vala:248
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "Oletusmuoto - päivä ja aika"
 
 #: libcore/Enums.vala:250
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "Paikallinen muoto - päivä ja aika"
 
 #: libcore/Enums.vala:252
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "ISO 8601 -muoto - pelkkä päivä"
 
 #: libcore/Enums.vala:254
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "ISO 8601 -muoto - päivä ja aika"
 
 #: libcore/Enums.vala:270
-#, fuzzy
-#| msgid "Recreate"
 msgid "Date created"
-msgstr "Luo uudelleen"
+msgstr "Luontipäivä"
 
 #: libcore/Enums.vala:272
-#, fuzzy
-#| msgid "Modified"
 msgid "Date Modified"
-msgstr "Muokattu"
+msgstr "Muokkauspäivä"
 
 #: libcore/Enums.vala:274
 msgid "Current Date"
-msgstr ""
+msgstr "Nykyinen päivä"
 
 #: libcore/File.vala:547 libcore/File.vala:1103 libcore/File.vala:1122
 msgid "Inaccessible"
@@ -1673,10 +1665,9 @@ msgid "Device Usage"
 msgstr "Laitteen käyttö"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:166
-#, fuzzy, c-format
-#| msgid "(%s Free of %s)"
+#, c-format
 msgid "%s free out of %s"
-msgstr "(vapaana %s, kokonaistila %s)"
+msgstr "Vapaana %s/%s"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:174
 msgid "Capacity:"
@@ -1698,164 +1689,130 @@ msgid "Used:"
 msgstr "Käytetty:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:34
-#, fuzzy
-#| msgid "Original file"
 msgid "Original filename"
-msgstr "Alkuperäinen tiedosto"
+msgstr "Alkuperäinen tiedostonimi"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:36
-#, fuzzy
-#| msgid "Modified"
 msgid "Modified original"
-msgstr "Muokattu"
+msgstr "Muokattu alkuperäinen"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:260
-#, fuzzy
-#| msgid "Redo Rename"
 msgid "New basename"
-msgstr "Tee uudelleen uudelleennimeäminen"
+msgstr "Uusi perusnimi"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:79
-#, fuzzy
-#| msgid "Rename"
 msgid "Bulk Rename"
-msgstr "Nimeä uudelleen"
+msgstr "Uudelleennimeäminen massana"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
 msgid "Number Sequence"
-msgstr ""
+msgstr "Numerosarja"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
 msgid "Fixed Text"
-msgstr ""
+msgstr "Kiinteä teksti"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
 msgid "Add Prefix"
-msgstr ""
+msgstr "Lisää etuliite"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
 msgid "Add Suffix"
-msgstr ""
+msgstr "Lisää jälkiliite"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
-#, fuzzy
-#| msgid "User name:"
 msgid "Basename:"
-msgstr "Käyttäjätunnus:"
+msgstr "Perusnimi:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
 msgid "Unchanged"
-msgstr ""
+msgstr "Muuttumaton"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-#, fuzzy
-#| msgid "New"
 msgctxt "bulk-rename"
 msgid "New"
 msgstr "Uusi"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-#, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modified"
 msgstr "Muokattu"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
-#, fuzzy
-#| msgid "Original file"
 msgid "Original Basename"
-msgstr "Alkuperäinen tiedosto"
+msgstr "Alkuperäinen perusnimi"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:164
-#, fuzzy
-#| msgid "Replace with"
 msgid "Replacement text"
-msgstr "Korvaava"
+msgstr "Korvaava teksti"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:188
 msgid "Number in order of:"
-msgstr ""
+msgstr "Numero järjestyksessä:"
 
 #. TRANSLATORS: Used as "Number in order of: Name"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
-#, fuzzy
-#| msgid "Name"
 msgctxt "bulk-rename"
 msgid "Name"
 msgstr "Nimi"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
-#, fuzzy
-#| msgid "Recreate"
 msgctxt "bulk-rename"
 msgid "Date created"
-msgstr "Luo uudelleen"
+msgstr "Luontipäivä"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
-#, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Date modified"
-msgstr "Muokattu"
+msgstr "Muokkauspäivä"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:198
-#, fuzzy
-#| msgid "Size"
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "Koko"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:269
 msgid "Text to be replaced"
-msgstr ""
+msgstr "Korvattava teksti"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:375
 msgid "Apply"
-msgstr ""
+msgstr "Toteuta"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
-#, fuzzy
-#| msgid "Ignore"
 msgid "Ignored"
-msgstr "Ohita"
+msgstr "Ohitettu"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
 msgid "Name is not changed"
-msgstr ""
+msgstr "Nimi ei ole muuttunut"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
-#, fuzzy
-#| msgid "Undo Rename"
 msgid "Cannot rename"
-msgstr "Kumoa uudelleennimeäminen"
+msgstr "Nimeäminen uudelleen ei onnistu"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
 msgid "Name is invalid or already exists"
-msgstr ""
+msgstr "Nimi on virheellinen tai se on jo käytössä"
 
 #: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
-#, fuzzy
-#| msgid "Filename"
 msgid "Will be renamed"
-msgstr "Tiedostonimi"
+msgstr "Nimetään uudelleen"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
-#, fuzzy
-#| msgid "Reversed Order"
 msgid "Reverse Order"
 msgstr "Käänteinen järjestys"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:52
 msgid "Start Number"
-msgstr ""
+msgstr "Aloitusnumero"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
 msgid "Digits"
@@ -1863,7 +1820,7 @@ msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
 msgid "Separator"
-msgstr ""
+msgstr "Erotin"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:310
 #, c-format
