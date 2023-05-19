@@ -945,7 +945,7 @@ public class Files.Directory : Object {
     }
 
     private void notify_file_removed (Files.File gof) {
-        remove_file_from_cache (gof);
+        this.file_hash.remove (gof.location);
 
         if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
             file_deleted (gof);
@@ -991,25 +991,26 @@ public class Files.Directory : Object {
         }
     }
 
-    // We do not monitor MOVED events as these are also associated with CREATED and DELETED events
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
         switch (event) {
-        case FileMonitorEvent.CREATED:
-            Files.FileChanges.queue_file_added (_file, false);
-            break;
-        case FileMonitorEvent.DELETED:
-            Files.FileChanges.queue_file_removed (_file);
-            break;
-        case FileMonitorEvent.ATTRIBUTE_CHANGED: /* test  last to avoid unnecessary action when file renamed */
-            // e.g. changed permissions
-            Files.FileChanges.queue_file_changed (_file);
-            break;
-        case FileMonitorEvent.CHANGES_DONE_HINT:
-            // TODO Check for unexpected regressions caused by not refreshing file info here. It should already
-            // have been done if requried by one of the set of changes so doing it again is inefficient.
-            break;
-        default:
-            break;
+            case FileMonitorEvent.CREATED:
+                Files.FileChanges.queue_file_added (_file, false);
+                break;
+            case FileMonitorEvent.DELETED:
+                Files.FileChanges.queue_file_removed (_file);
+                break;
+            case FileMonitorEvent.ATTRIBUTE_CHANGED: /* test  last to avoid unnecessary action when file renamed */
+                // e.g. changed permissions
+                Files.FileChanges.queue_file_changed (_file);
+                break;
+            case FileMonitorEvent.CHANGES_DONE_HINT:
+                // TODO Check for unexpected regressions caused by not refreshing file info here. It should already
+                // have been done if requried by one of the set of changes so doing it again is inefficient.
+                break;
+            case FileMonitorEvent.MOVED:
+                break;
+            default:
+                break;
         }
 
         if (idle_consume_changes_id == 0) {
@@ -1092,7 +1093,7 @@ public class Files.Directory : Object {
                     if (!already_present) {
                         files_added = true;
                         dir.notify_file_added (gof, change.is_internal);
-                    }
+                    } // Else ignore files already added from duplicate event or internally
 
                     prev_loc = loc;
                 }
@@ -1124,7 +1125,7 @@ public class Files.Directory : Object {
                 if (!already_present) {
                     files_added = true;
                     dir.notify_file_added (gof, true);
-                }
+                } // Else ignore files added via FileMonitor event
             }
 
             if (files_added) {
@@ -1134,12 +1135,24 @@ public class Files.Directory : Object {
                     parent.file_changed (first_dir.file);
                 }
             }
+        } else {
+            Directory? parent_dir = null;
+            var first_parent = files.data.get_parent ();
+            parent_dir = cache_lookup_parent (first_parent);
+            if (parent_dir != null) {
+                var gof = parent_dir.file_hash.lookup (first_parent);
+                if (gof != null) {
+                    // Files added to child folder item parent_dir
+                    gof.ensure_size ();
+                    parent_dir.file_changed (gof);
+                }
+            }
         }
     }
 
     // Can we assume all from same parent location??
     public static void notify_files_removed (List<GLib.File> files) {
-        bool already_present = false;
+        // bool already_present = false;
         bool files_removed = false;
         Directory? first_dir = cache_lookup_parent (files.data);
         if (first_dir != null) {
@@ -1150,27 +1163,39 @@ public class Files.Directory : Object {
                 Directory? dir = cache_lookup_parent (loc);
                 assert (dir != null && first_dir.file.location.equal (dir.file.location));
                 // if (dir != null) {
-                Files.File gof = dir.file_cache_find_or_insert (loc, out already_present);
-                if (already_present) {
+                // We do not want to insert it if absent as we are removing
+                Files.File? gof = dir.file_hash.lookup (loc);
+                // Files.File gof = dir.file_cache_find_or_insert (loc, out already_present);
+                if (gof != null) {
                     files_removed = true;
                     dir.notify_file_removed (gof);
                 }
             }
 
             if (files_removed) {
-                warning ("notify files removed dir %s", first_dir.file.basename);
-                first_dir.file.ensure_size ();  // Can we just use file_cache size?
                 var parent = cache_lookup_parent (first_dir.file.location);
                 if (parent != null) {
+                    first_dir.file.ensure_size ();  // Can we just use file_cache size?
                     parent.file_changed (first_dir.file);
                 }
             }
         } else {
-            warning ("notify removed null parent first dir");
-            foreach (unowned var loc in files) {
-                var dir = cache_lookup (loc);
-                if (dir != null) {
-                    dir.file_deleted (dir.file);
+            Directory? parent_dir = null;
+            var first_parent = files.data.get_parent ();
+            parent_dir = cache_lookup_parent (first_parent);
+            if (parent_dir != null) {
+                var gof = parent_dir.file_hash.lookup (first_parent);
+                if (gof != null) {
+                    // Files removed from child folder item of parent_dir
+                    gof.ensure_size ();
+                    parent_dir.file_changed (gof);
+                }
+            } else {
+                foreach (unowned var loc in files) {
+                    var dir = cache_lookup (loc);
+                    if (dir != null) {
+                        dir.file_deleted (dir.file);
+                    }
                 }
             }
         }
@@ -1191,13 +1216,6 @@ public class Files.Directory : Object {
 
         notify_files_removed (list_from);
         notify_files_added_internally (list_to);
-    }
-
-    private static void remove_file_from_cache (Files.File gof) {
-        Directory? dir = cache_lookup (gof.directory);
-        if (dir != null) {
-            dir.file_hash.remove (gof.location);
-        }
     }
 
     /* Files.Directory.directory_cache related functions */
