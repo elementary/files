@@ -540,7 +540,7 @@ public class Files.File : GLib.Object {
         }
 
         /* sizes */
-        update_size ();
+        ensure_size ();
         /* modified date */
         if (info.has_attribute (GLib.FileAttribute.TIME_MODIFIED)) {
             formated_modified = get_formated_time (GLib.FileAttribute.TIME_MODIFIED);
@@ -633,7 +633,7 @@ public class Files.File : GLib.Object {
     public void update_desktop_file () {
         utf8_collation_key = get_display_name ().collate_key_for_filename ();
         update_formated_type ();
-        update_size ();
+        ensure_size ();
         icon_changed ();
     }
 
@@ -1095,27 +1095,21 @@ public class Files.File : GLib.Object {
         return null;
     }
 
-    public void update_size () {
-        if (is_folder () || is_root_network_folder ()) {
-            format_size = format_item_count ();
+    public void ensure_size () {
+        ensure_item_count (true);
+        if (count >= 0) {
+            if (count < 0) {
+                format_size = "—";
+            } else if (count == 0) {
+                format_size = _("Empty");
+            } else {
+                format_size = ngettext ("%'d item", "%'d items", count).printf (count);
+            }
         } else if (info.has_attribute (GLib.FileAttribute.STANDARD_SIZE)) {
             format_size = GLib.format_size (size);
         } else {
             format_size = _("Inaccessible");
         }
-    }
-
-    private string format_item_count () {
-        ensure_item_count (true); // Re-count file items
-
-        if (count < 0) {
-            return "—";
-        } else if (count == 0) {
-            return _("Empty");
-        } else {
-            return ngettext ("%'d item", "%'d items", count).printf (count);
-        }
-
     }
 
     private void ensure_item_count (bool recount) {

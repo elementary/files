@@ -1454,7 +1454,7 @@ namespace Files {
 
             foreach (Files.File file in slot.directory.get_files ()) {
                 if (file.is_folder ()) {
-                    file.update_size ();
+                    file.ensure_size ();
                 }
             }
 
