@@ -6,9 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
-"PO-Revision-Date: 2023-05-16 21:57+0000\n"
-"Last-Translator: Deleted User <noreply+2670@weblate.org>\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
+"PO-Revision-Date: 2023-05-21 06:06+0000\n"
+"Last-Translator: Faisal Rachmadin <frachmadin@users.noreply.l10n.elementary."
+"io>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
 "id/>\n"
 "Language: id\n"
@@ -1709,18 +1710,18 @@ msgstr "Nama dasar:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
+msgid "Keep"
 msgstr "Tetap"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "Baru"
+msgid "Replace"
+msgstr "Ganti"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 msgctxt "bulk-rename"
-msgid "Modified"
-msgstr "Diubah"
+msgid "Modify"
+msgstr "Ubah"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
 msgid "Original Basename"
@@ -1987,11 +1988,11 @@ msgstr "Tidak dapat mengidentifikasi jenis berkas yang akan dibuka"
 
 #: src/View/AbstractDirectoryView.vala:1626
 msgid "Cannot drop this file"
-msgstr "Tidak bisa drop berkas ini"
+msgstr "Tidak dapat melepas berkas ini"
 
 #: src/View/AbstractDirectoryView.vala:1627
 msgid "Invalid file name provided"
-msgstr "Nama berkas tidak valid disediakan"
+msgstr "Nama berkas tidak valid tersedia"
 
 #: src/View/AbstractDirectoryView.vala:1911
 #: src/View/AbstractDirectoryView.vala:1917 src/View/Window.vala:183
@@ -2039,7 +2040,7 @@ msgstr "Salin"
 
 #: src/View/AbstractDirectoryView.vala:2101
 msgid "Move to Trash"
-msgstr "Pindahkan ke Tong Sampah"
+msgstr "Pindahkan ke Keranjang Sampah"
 
 #: src/View/AbstractDirectoryView.vala:2106
 msgid "Delete Permanently"
@@ -2047,7 +2048,7 @@ msgstr "Hapus Permanen"
 
 #: src/View/AbstractDirectoryView.vala:2113
 msgid "Restore from Trash"
-msgstr "Pulihkan Dari Tong Sampah"
+msgstr "Pulihkan Dari Keranjang Sampah"
 
 #: src/View/AbstractDirectoryView.vala:2136
 msgid "Open Parent Folder"
@@ -2082,7 +2083,7 @@ msgstr "Tempel"
 
 #: src/View/AbstractDirectoryView.vala:2340 src/View/ListView.vala:28
 msgid "Type"
-msgstr "Tipe"
+msgstr "Jenis"
 
 #: src/View/AbstractDirectoryView.vala:2350
 msgid "Reversed Order"
@@ -2090,7 +2091,7 @@ msgstr "Urutan Terbalik"
 
 #: src/View/AbstractDirectoryView.vala:2353
 msgid "Folders Before Files"
-msgstr "Folder-folder Sebelum Berkas-berkas"
+msgstr "Folder Sebelum Berkas"
 
 #: src/View/AbstractDirectoryView.vala:2365
 msgid "Sort by"
@@ -2102,7 +2103,7 @@ msgstr "Folder"
 
 #: src/View/AbstractDirectoryView.vala:2379
 msgid "Empty File"
-msgstr "Berkas kosong"
+msgstr "Berkas Kosong"
 
 #: src/View/AbstractDirectoryView.vala:2430
 msgid "New"
@@ -2127,20 +2128,20 @@ msgstr "Anda tidak memiliki izin untuk mengubah lokasi ini"
 
 #: src/View/AbstractDirectoryView.vala:3125
 msgid "Cannot copy files that are in the trash"
-msgstr "Tidak bisa menyalin berkas yang ada di tong sampah"
+msgstr "Tidak dapat menyalin berkas yang ada di keranjang sampah"
 
 #: src/View/AbstractDirectoryView.vala:3126
 msgid "Cutting the selection instead"
-msgstr "Pemotongan pilihan sebagai gantinya"
+msgstr "Potong seleksi sebagai gantinya"
 
 #: src/View/AbstractDirectoryView.vala:3156
 #: src/View/AbstractDirectoryView.vala:3167
 msgid "Cannot paste files here"
-msgstr "Tidak bisa menempelkan berkas disini"
+msgstr "Tidak dapat menempelkan berkas kesini"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:374
 msgid "This Folder Does Not Exist"
-msgstr "Folder ini tidak ada"
+msgstr "Folder Ini Tidak Ada"
 
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
@@ -2166,7 +2167,7 @@ msgstr "Nama berkas"
 
 #: src/View/ListView.vala:29
 msgid "Modified"
-msgstr "Diubah pada"
+msgstr "Diubah"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
@@ -2174,7 +2175,7 @@ msgstr "Mode privasi menyala"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr "Tidak ada file terbaru yang diingat"
+msgstr "Tidak ada berkas terkini yang diingat"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
@@ -2190,11 +2191,11 @@ msgstr "Folder Ini Kosong"
 
 #: src/View/Slot.vala:32
 msgid "Trash Is Empty"
-msgstr "Tong Sampah Kosong"
+msgstr "Keranjang Sampah Kosong"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
-msgstr "Tidak Ada Berkas Baru"
+msgstr "Tidak Ada Berkas Terkini"
 
 #: src/View/Slot.vala:34
 msgid "Access Denied"
@@ -2218,15 +2219,15 @@ msgstr "Jaringan kerja diperlukan untuk menjangkau folder ini"
 
 #: src/View/ViewContainer.vala:382
 msgid "This Folder Does Not Belong to You"
-msgstr "Folder ini tidak sesuai dengan Anda"
+msgstr "Folder Ini Bukan Milik Anda"
 
 #: src/View/ViewContainer.vala:383
 msgid "You don't have permission to view this folder."
-msgstr "Anda tak punya izin untuk melihat folder ini."
+msgstr "Anda tidak punya izin melihat folder ini."
 
 #: src/View/ViewContainer.vala:385
 msgid "Unable to Mount Folder"
-msgstr "Tidak dapat ke Mengaitkan Folder"
+msgstr "Tidak dapat Mengaitkan Folder"
 
 #: src/View/ViewContainer.vala:386
 msgid "Could not connect to the server for this folder."
@@ -2234,15 +2235,15 @@ msgstr "Tidak dapat terhubung ke server untuk folder ini."
 
 #: src/View/ViewContainer.vala:389
 msgid "Unable to Display Folder Contents"
-msgstr "Tidak dapat menampilkan isi Folder"
+msgstr "Tidak dapat Menampilkan Isi Folder"
 
 #: src/View/ViewContainer.vala:390
 msgid "The operation timed out."
-msgstr "Operasi habis."
+msgstr "Waktu operasi habis."
 
 #: src/View/ViewContainer.vala:392
 msgid "Unable to Show Folder"
-msgstr "Tidak dapat menampilkan folder"
+msgstr "Tidak dapat Menampilkan Folder"
 
 #: src/View/ViewContainer.vala:393
 msgid "The server for this folder could not be located."
@@ -2258,17 +2259,15 @@ msgstr "Berkas yang dipilih sudah tidak ada lagi."
 
 #: src/View/Window.vala:184
 msgid "Undo Close Tab"
-msgstr "Batalkan Tutup Tab"
+msgstr "Batal Tutup Tab"
 
 #: src/View/Window.vala:499
 msgid "Close Tab"
 msgstr "Tutup Tab"
 
 #: src/View/Window.vala:500
-#, fuzzy
-#| msgid "Duplicating \"%s\""
 msgid "Duplicate Tab"
-msgstr "Menggandakan \"%s\""
+msgstr "Gandakan Tab"
 
 #: src/View/Window.vala:501 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
@@ -2293,7 +2292,7 @@ msgstr "Lepas Kait '%s'"
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
 msgid "%s free"
-msgstr "%s bebas"
+msgstr "%s tersisa"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:308
 #, c-format
@@ -2318,20 +2317,20 @@ msgstr "Lihat folder beranda"
 
 #: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
-msgstr "Lihat daftar berkas yang baru saja digunakan"
+msgstr "Lihat daftar berkas yang terkini digunakan"
 
 #: src/View/Sidebar/BookmarkListBox.vala:171
 msgid "Open the Trash"
-msgstr "Buka Tong Sampah"
+msgstr "Buka Keranjang Sampah"
 
 #: src/View/Sidebar/DeviceListBox.vala:152
 msgid "View the root of the local filesystem"
-msgstr "Lihat root dari berkas sistem lokal"
+msgstr "Lihat akar dari berkas sistem lokal"
 
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr "%s tidak berisi data yang dapat diakses."
+msgstr "%s berisi data yang tidak dapat diakses."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
@@ -2350,7 +2349,7 @@ msgstr "Seluruh Jaringan"
 
 #: src/View/Sidebar/NetworkListBox.vala:131
 msgid "Browse the contents of the network"
-msgstr "Jelajahi isi dari jaringan"
+msgstr "Jelajahi isi jaringan"
 
 #: src/View/Sidebar/SidebarWindow.vala:45
 #: src/View/Widgets/SearchResults.vala:289
@@ -2359,7 +2358,7 @@ msgstr "Penanda Taut"
 
 #: src/View/Sidebar/SidebarWindow.vala:46
 msgid "Common places plus saved folders and files"
-msgstr "Tempat umum ditambah folder dan file yang disimpan"
+msgstr "Tempat umum serta folder dan berkas yang disimpan"
 
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
@@ -2379,10 +2378,8 @@ msgid "Connect Server…"
 msgstr "Menyambung ke Server…"
 
 #: src/View/Sidebar/VolumeRow.vala:166
-#, fuzzy
-#| msgid "_Mount"
 msgid "Mount"
-msgstr "Kaitkan (_M)"
+msgstr "Kaitkan"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
@@ -2399,7 +2396,7 @@ msgstr "Buka di Tab Baru"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:500
 msgid "Open in Other Application…"
-msgstr "Buka Dengan Aplikasi Lain…"
+msgstr "Buka dengan Aplikasi Lain…"
 
 #: src/View/Widgets/HeaderBar.vala:75
 msgid "Previous"
@@ -2411,69 +2408,55 @@ msgstr "Selanjutnya"
 
 #: src/View/Widgets/HeaderBar.vala:97
 msgid "Zoom Out"
-msgstr ""
+msgstr "Perkecil"
 
 #: src/View/Widgets/HeaderBar.vala:106
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "Perbesar 1:1"
 
 #: src/View/Widgets/HeaderBar.vala:115
 msgid "Zoom In"
-msgstr ""
+msgstr "Perbesar"
 
 #: src/View/Widgets/HeaderBar.vala:154
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "Klik ganda untuk Navigasi"
 
 #: src/View/Widgets/HeaderBar.vala:155
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "Klik ganda pada folder untuk membuka, klik tunggal untuk memilih"
 
 #: src/View/Widgets/HeaderBar.vala:160
-#, fuzzy
-#| msgid "Folders Before Files"
 msgid "Sort Folders before Files"
-msgstr "Folder-folder Sebelum Berkas-berkas"
+msgstr "Urutkan Folder sebelum Berkas"
 
 #: src/View/Widgets/HeaderBar.vala:164
-#, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Show in View"
-msgstr "Tampilkan Berkas Tersembunyi"
+msgstr "Tunjukkan pada Tampilan"
 
 #: src/View/Widgets/HeaderBar.vala:171
-#, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Hidden Files"
-msgstr "Tampilkan Berkas Tersembunyi"
+msgstr "Berkas Tersembunyi"
 
 #: src/View/Widgets/HeaderBar.vala:175
-#, fuzzy
-#| msgid "Hide Thumbnails"
 msgid "Local Thumbnails"
-msgstr "Sembunyikan Thumbnail"
+msgstr "Gambar Mini Lokal"
 
 #: src/View/Widgets/HeaderBar.vala:180
-#, fuzzy
-#| msgid "Show Remote Thumbnails"
 msgid "Remote Thumbnails"
-msgstr "Tampilkan Gambar Mini Jauh"
+msgstr "Gambar Mini Jarak Jauh"
 
 #: src/View/Widgets/HeaderBar.vala:208
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: src/View/Widgets/HeaderBar.vala:283
-#, fuzzy
-#| msgid "The operation timed out."
 msgid "No operation to undo"
-msgstr "Operasi habis."
+msgstr "Tidak ada operasi untuk dibatalkan"
 
 #: src/View/Widgets/HeaderBar.vala:290
-#, fuzzy
-#| msgid "The operation timed out."
 msgid "No operation to redo"
-msgstr "Operasi habis."
+msgstr "Tidak ada operasi untuk diulang"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
@@ -2492,7 +2475,7 @@ msgstr "%u folder"
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] " dan %u item-item lain (%s) dipilih"
+msgstr[0] " dan %u item lain (%s) dipilih"
 
 #: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
 msgid " selected"
@@ -2508,7 +2491,7 @@ msgstr "%u objek terpilih (%s)"
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
-msgstr[0] "%u subfolder, "
+msgstr[0] "%u sub folder, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:232
@@ -2545,7 +2528,7 @@ msgstr "Tulis"
 
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
-msgstr "Menjalankan"
+msgstr "Jalankan"
 
 #: src/View/Widgets/SearchResults.vala:89
 msgid "More Results …"
@@ -2561,7 +2544,15 @@ msgstr "Di bawah Folder Ini"
 
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
-msgstr "Baru Digunakan"
+msgstr "Terkini Digunakan"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Unchanged"
+#~ msgstr "Tetap"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "Baru"
 
 #, fuzzy
 #~| msgid "Replacing it will overwrite its content."

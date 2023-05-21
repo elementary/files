@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
-"PO-Revision-Date: 2023-05-04 08:45+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
+"PO-Revision-Date: 2023-05-21 06:06+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -1696,18 +1696,18 @@ msgstr "שם בסיס:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
-msgstr "ללא שינוי"
+msgid "Keep"
+msgstr "שמירה"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "חדש"
+msgid "Replace"
+msgstr "החלפה"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 msgctxt "bulk-rename"
-msgid "Modified"
-msgstr "מועד השינוי"
+msgid "Modify"
+msgstr "שינוי"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
 msgid "Original Basename"
@@ -2540,6 +2540,14 @@ msgstr "מתחת לתיקייה זו"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "בשימוש לאחרונה"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Unchanged"
+#~ msgstr "ללא שינוי"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "חדש"
 
 #, c-format
 #~ msgid "Replace the target of “%s”?"

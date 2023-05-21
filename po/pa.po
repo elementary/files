@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2021-08-16 13:30+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/files/pa/"
@@ -1801,21 +1801,21 @@ msgstr "ਵਰਤੋਂਕਾਰ ਨਾਂ:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
+msgid "Keep"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
-#| msgid "New"
+#| msgid "Replace"
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "ਨਵਾਂ/ਨਵੀਂ"
+msgid "Replace"
+msgstr "ਬਦਲੋ"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "ਤਬਦੀਲੀ ਦਾ ਵੇਲ਼ਾ"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
@@ -2692,6 +2692,12 @@ msgstr "ਇਸ ਫ਼ੋਲਡਰ ਦੇ ਹੇਠਾਂ"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "ਹਾਲੀਆ ਵਰਤੇ ਗਏ"
+
+#, fuzzy
+#~| msgid "New"
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "ਨਵਾਂ/ਨਵੀਂ"
 
 #, fuzzy
 #~| msgid "Replacing it will overwrite its content."

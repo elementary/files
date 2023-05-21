@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: Grzegorz Kulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/files/files/szl/"
@@ -1847,21 +1847,21 @@ msgstr "Miano używocza:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
+msgid "Keep"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
-#| msgid "New"
+#| msgid "Replace"
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "Nowy"
+msgid "Replace"
+msgstr "Zastōmp"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
 #| msgid "Modified"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "Modyfikacyjo"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
@@ -2763,6 +2763,12 @@ msgstr "Pod tym katalogym"
 #| msgid "Recently used"
 msgid "Recently Used"
 msgstr "Ôstatnio używane"
+
+#, fuzzy
+#~| msgid "New"
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "Nowy"
 
 #, fuzzy
 #~| msgid "Replacing it will overwrite its content."

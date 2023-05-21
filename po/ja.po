@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
-"PO-Revision-Date: 2023-05-05 21:06+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
+"PO-Revision-Date: 2023-05-21 06:06+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1689,18 +1689,18 @@ msgstr "基準ファイル名:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
-msgstr "変更しない"
+msgid "Keep"
+msgstr "維持"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "新規"
+msgid "Replace"
+msgstr "置換"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 msgctxt "bulk-rename"
-msgid "Modified"
-msgstr "変更日時"
+msgid "Modify"
+msgstr "変更"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
 msgid "Original Basename"
@@ -2524,6 +2524,14 @@ msgstr "このフォルダー以下"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "最近使用した項目"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Unchanged"
+#~ msgstr "変更しない"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "新規"
 
 #, c-format
 #~ msgid "Replace the target of “%s”?"

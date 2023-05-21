@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2018-06-10 00:11+0000\n"
 "Last-Translator: Gamunu Balagalla <gamunu.balagalla@gmail.com>\n"
 "Language-Team: Sinhala <https://weblate.elementary.io/projects/files/files/"
@@ -1679,17 +1679,17 @@ msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
+msgid "Keep"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 msgctxt "bulk-rename"
-msgid "New"
+msgid "Replace"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161

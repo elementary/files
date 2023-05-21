@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 21:56+0000\n"
+"POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2023-05-09 17:06+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
@@ -1733,17 +1733,22 @@ msgstr "Nom de base:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
-msgid "Unchanged"
-msgstr "Sense canvis"
+msgid "Keep"
+msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
+#, fuzzy
+#| msgid "Replace"
 msgctxt "bulk-rename"
-msgid "New"
-msgstr "Nou"
+msgid "Replace"
+msgstr "Substitueix"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
+#, fuzzy
+#| msgctxt "bulk-rename"
+#| msgid "Modified"
 msgctxt "bulk-rename"
-msgid "Modified"
+msgid "Modify"
 msgstr "Modificat"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
@@ -2580,6 +2585,14 @@ msgstr "Per sota d'aquesta carpeta"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "D'ús recent"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Unchanged"
+#~ msgstr "Sense canvis"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "New"
+#~ msgstr "Nou"
 
 #, c-format
 #~ msgid "Replace the target of “%s”?"
