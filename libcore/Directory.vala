@@ -910,11 +910,15 @@ public class Files.Directory : Object {
     }
 
     private void add_and_refresh (Files.File gof, bool is_internal) {
-        if (gof.info == null) {
-            critical ("FILE INFO null");
+        // Check whether we have FileInfo
+        if (!gof.ensure_query_info ()) {
+            critical ("FILE INFO unavailable");
+            // Fallback to determining hidden status from file name
+            gof.is_hidden = gof.basename.has_prefix (".") || gof.basename.has_prefix ("~");
+        } else {
+            // Update properties from FileInfo
+            gof.update ();
         }
-
-        gof.update ();
 
         if ((!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
             file_added (gof, is_internal);

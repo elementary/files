@@ -440,7 +440,9 @@ public class Files.File : GLib.Object {
     }
 
     public void update () {
-        GLib.return_if_fail (info != null);
+        if (info == null) {
+            return;
+        }
 
         /* free previously allocated */
         clear_info ();
