@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-19 11:55+0000\n"
-"PO-Revision-Date: 2023-05-19 08:06+0000\n"
+"PO-Revision-Date: 2023-05-21 06:06+0000\n"
 "Last-Translator: Faisal Rachmadin <frachmadin@users.noreply.l10n.elementary."
 "io>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/files/files/"
@@ -1711,22 +1711,17 @@ msgstr "Nama dasar:"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
 msgid "Keep"
-msgstr ""
+msgstr "Tetap"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-#, fuzzy
-#| msgid "Replace"
 msgctxt "bulk-rename"
 msgid "Replace"
 msgstr "Ganti"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-#, fuzzy
-#| msgctxt "bulk-rename"
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modify"
-msgstr "Diubah"
+msgstr "Ubah"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
 msgid "Original Basename"

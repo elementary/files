@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-19 11:55+0000\n"
-"PO-Revision-Date: 2023-05-05 21:06+0000\n"
-"Last-Translator: Benjamin <morantbenjamin@gmail.com>\n"
+"PO-Revision-Date: 2023-05-23 09:06+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -1748,22 +1748,17 @@ msgstr "Base du nom :"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
 msgid "Keep"
-msgstr ""
+msgstr "Conserver"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-#, fuzzy
-#| msgid "Replace"
 msgctxt "bulk-rename"
 msgid "Replace"
 msgstr "Remplacer"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-#, fuzzy
-#| msgctxt "bulk-rename"
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modify"
-msgstr "Modifiée"
+msgstr "Modifier"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
 msgid "Original Basename"

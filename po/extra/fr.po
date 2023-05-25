@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-19 11:55+0000\n"
-"PO-Revision-Date: 2023-02-16 21:22+0000\n"
+"PO-Revision-Date: 2023-05-23 09:06+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
@@ -63,14 +63,17 @@ msgstr ""
 #: data/files.metainfo.xml.in.in:18
 msgid "Quick access to settings like zoom levels and hidden files"
 msgstr ""
+"Accédez rapidement aux paramètres tels que le niveau de zoom et les fichiers "
+"cachés"
 
 #: data/files.metainfo.xml.in.in:22
 msgid "See more metadata at a glance in List view"
-msgstr ""
+msgstr "Visualisez plus de métadonnées en un coup d'œil dans la vue en liste"
 
 #: data/files.metainfo.xml.in.in:26
 msgid "Browse complex trees faster with Column view"
 msgstr ""
+"Naviguez plus rapidement dans les arbres complexes avec la vue en colonnes"
 
 #: data/files.metainfo.xml.in.in:58
 msgid "elementary, Inc."
@@ -85,6 +88,8 @@ msgstr "Mises à jour mineures :"
 #: data/files.metainfo.xml.in.in:67
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
 msgstr ""
+"Utilisez une barre colorée pour afficher l'utilisation du disque dans la "
+"boîte de dialogue des propriétés"
 
 #: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:81
 #: data/files.metainfo.xml.in.in:103 data/files.metainfo.xml.in.in:119

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-19 11:55+0000\n"
-"PO-Revision-Date: 2023-05-14 18:06+0000\n"
+"PO-Revision-Date: 2023-05-23 09:06+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -1715,22 +1715,17 @@ msgstr "Alapnév:"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
 msgid "Keep"
-msgstr ""
+msgstr "Megtartás"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-#, fuzzy
-#| msgid "Replace"
 msgctxt "bulk-rename"
 msgid "Replace"
 msgstr "Felülírás"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-#, fuzzy
-#| msgctxt "bulk-rename"
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modify"
-msgstr "módosított"
+msgstr "Módosítás"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
 msgid "Original Basename"
