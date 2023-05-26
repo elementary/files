@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-19 11:55+0000\n"
-"PO-Revision-Date: 2023-05-27 14:06+0000\n"
-"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
+"PO-Revision-Date: 2023-05-27 14:07+0000\n"
+"Last-Translator: DutchVipperloid <svenroelof@e.email>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -138,15 +138,15 @@ msgstr "Share:"
 
 #: libcore/ConnectServerDialog.vala:184
 msgid "Path of shared folder on server (Optional)"
-msgstr "Pad naar de gedeelde folder op de server (Optioneel)"
+msgstr "Pad naar de gedeelde map op de server (Optioneel)"
 
 #: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
-msgstr "Folder:"
+msgstr "Map:"
 
 #: libcore/ConnectServerDialog.vala:190
 msgid "User Details"
-msgstr "Gebruikersgegevens"
+msgstr "Gebruikerdetails"
 
 #: libcore/ConnectServerDialog.vala:195
 msgid "Name of Windows domain"
@@ -207,7 +207,7 @@ msgstr "Hierheen kopiëren"
 
 #: libcore/DndHandler.vala:102
 msgid "Link Here"
-msgstr "Hierheen een snelkoppeling maken"
+msgstr "Hier een snelkoppeling maken"
 
 #: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2330
 msgid "Name"
@@ -383,7 +383,7 @@ msgstr "Vervang"
 #: libcore/FileConflictDialog.vala:299
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Folder \"%s\" samenvoegen?"
+msgstr "Map \"%s\" samenvoegen?"
 
 #: libcore/FileConflictDialog.vala:300
 msgid ""
@@ -396,32 +396,32 @@ msgstr ""
 #: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een oudere folder met dezelfde naam in \"%s\"."
+msgstr "Een oudere map met dezelfde naam bestaat al in \"%s\"."
 
 #: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een nieuwere folder met dezelfde naam in \"%s\"."
+msgstr "Een nieuwere map met dezelfde naam bestaat al in\"%s\"."
 
 #: libcore/FileConflictDialog.vala:306
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een andere folder met dezelfde naam in \"%s\"."
+msgstr "Er bestaat al een andere map met dezelfde naam in \"%s\"."
 
 #: libcore/FileConflictDialog.vala:309
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "Vervang folder \"%s\"?"
+msgstr "Vervang map \"%s\"?"
 
 #: libcore/FileConflictDialog.vala:310
 msgid "Replacing it will remove all files in the folder."
 msgstr ""
-"Bij het vervangen ervan zullen alle bestanden in de folder verwijderd worden."
+"Bij het vervangen ervan zullen alle bestanden in de map verwijderd worden."
 
 #: libcore/FileConflictDialog.vala:311
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een folder met dezelfde naam in \"%s\"."
+msgstr "Er bestaat al een map met dezelfde naam in \"%s\"."
 
 #: libcore/FileConflictDialog.vala:314
 #, c-format
