@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-19 11:55+0000\n"
-"PO-Revision-Date: 2023-05-07 16:06+0000\n"
+"PO-Revision-Date: 2023-05-30 18:07+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -230,7 +230,7 @@ msgstr "Größe"
 
 #: libcore/Enums.vala:189
 msgid "Number sequence"
-msgstr ""
+msgstr "Nummerierung"
 
 #: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
@@ -1731,12 +1731,12 @@ msgstr "Mehrfach umbenennen"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
 msgid "Number Sequence"
-msgstr ""
+msgstr "Nummerierung"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
 msgid "Fixed Text"
-msgstr "Fester Text"
+msgstr "Festgeleger Text"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
 msgid "Add Prefix"
@@ -1753,22 +1753,17 @@ msgstr "Basisname:"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
 msgid "Keep"
-msgstr ""
+msgstr "Beibehalten"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-#, fuzzy
-#| msgid "Replace"
 msgctxt "bulk-rename"
 msgid "Replace"
 msgstr "Ersetzen"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-#, fuzzy
-#| msgctxt "bulk-rename"
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modify"
-msgstr "Geändert"
+msgstr "Ändern"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
 msgid "Original Basename"
