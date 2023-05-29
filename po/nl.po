@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-19 11:55+0000\n"
 "PO-Revision-Date: 2023-05-30 18:07+0000\n"
-"Last-Translator: DutchVipperloid <svenroelof@e.email>\n"
+"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -2538,8 +2538,8 @@ msgstr "%u items geselecteerd (%s)"
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
-msgstr[0] "%u ondergelegen folder, "
-msgstr[1] "%u ondergelegen folders, "
+msgstr[0] "%u submap, "
+msgstr[1] "%u submappen, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:232
