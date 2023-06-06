@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-19 11:55+0000\n"
+"POT-Creation-Date: 2023-06-06 10:21+0000\n"
 "PO-Revision-Date: 2023-05-19 08:06+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
@@ -210,7 +210,7 @@ msgstr "Kopioi tähän"
 msgid "Link Here"
 msgstr "Linkitä tänne"
 
-#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2330
+#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2336
 msgid "Name"
 msgstr "Nimi"
 
@@ -223,7 +223,7 @@ msgstr "Luontipäivä"
 msgid "Last modification date"
 msgstr "Viimeisimmän muokkauksen päivä"
 
-#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2335
+#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2341
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Koko"
@@ -236,7 +236,7 @@ msgstr "Numerosarja"
 msgid "Text"
 msgstr "Teksti"
 
-#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2345
+#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2351
 msgid "Date"
 msgstr "Päivä"
 
@@ -288,42 +288,40 @@ msgstr "Muokkauspäivä"
 msgid "Current Date"
 msgstr "Nykyinen päivä"
 
-#: libcore/File.vala:547 libcore/File.vala:1103 libcore/File.vala:1122
+#: libcore/File.vala:550 libcore/File.vala:1113
 msgid "Inaccessible"
 msgstr "Ei käytettävissä"
 
-#: libcore/File.vala:888
+#: libcore/File.vala:891
 msgid "Failed to parse the desktop file"
 msgstr "Desktop-tiedoston jäsentäminen epäonnistui"
 
-#: libcore/File.vala:892
+#: libcore/File.vala:895
 msgid "Failed to parse the desktop file: "
 msgstr "Desktop-tiedoston jäsennys epäonnistui: "
 
-#: libcore/File.vala:904
+#: libcore/File.vala:907
 msgid "Failed to create command from file: "
 msgstr "Komennon luominen tiedostosta epäonnistui: "
 
-#: libcore/File.vala:913
+#: libcore/File.vala:916
 msgid "Unable to Launch Desktop File: "
 msgstr "Desktop-tiedoston käynnistäminen epäonnistui: "
 
-#: libcore/File.vala:1117
+#: libcore/File.vala:1106
 msgid "Empty"
 msgstr "Tyhjä"
 
-#: libcore/File.vala:1119
-#, c-format
-msgid "%i item"
-msgid_plural "%i items"
+#: libcore/File.vala:1108
+#, fuzzy, c-format
+#| msgid "%i item"
+#| msgid_plural "%i items"
+msgid "%'d item"
+msgid_plural "%'d items"
 msgstr[0] "%i kohde"
 msgstr[1] "%i kohdetta"
 
-#: libcore/File.vala:1126
-msgid "----"
-msgstr ""
-
-#: libcore/File.vala:1133
+#: libcore/File.vala:1153
 #, c-format
 msgid "link to %s"
 msgstr "linkki kohteeseen %s"
@@ -1149,7 +1147,7 @@ msgid "_Unmount"
 msgstr "_Irrota"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2047
+#: src/View/AbstractDirectoryView.vala:2053
 msgid "Properties"
 msgstr "Ominaisuudet"
 
@@ -1161,7 +1159,7 @@ msgstr "Irrota media"
 msgid "Safely Remove"
 msgstr "Poista turvallisesti"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2040
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2046
 msgid "Add to Bookmarks"
 msgstr "Lisää kirjanmerkkeihin"
 
@@ -1591,8 +1589,8 @@ msgstr "Näytä ohjelman versio"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Avaa yksi tai useampi URI, jokainen omaan välilehteensä"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1928
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1940
 msgid "New Window"
 msgstr "Uusi ikkuna"
 
@@ -1907,7 +1905,7 @@ msgid "Original Location:"
 msgstr "Alkuperäinen sijainti:"
 
 #: src/Dialogs/PropertiesWindow.vala:648
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Other Application…"
 msgstr "Muu sovellus…"
 
@@ -2017,156 +2015,156 @@ msgstr "Tämän tiedoston avaaminen ei onnistu"
 msgid "Cannot identify file type to open"
 msgstr "Avattavan tiedoston tiedostotyyppiä ei tunnistettu"
 
-#: src/View/AbstractDirectoryView.vala:1626
+#: src/View/AbstractDirectoryView.vala:1632
 msgid "Cannot drop this file"
 msgstr "Tämän tiedoston pudottaminen ei onnistu"
 
-#: src/View/AbstractDirectoryView.vala:1627
+#: src/View/AbstractDirectoryView.vala:1633
 msgid "Invalid file name provided"
 msgstr "Virheellinen tiedostonimi"
 
-#: src/View/AbstractDirectoryView.vala:1911
-#: src/View/AbstractDirectoryView.vala:1917 src/View/Window.vala:183
+#: src/View/AbstractDirectoryView.vala:1917
+#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "Uusi välilehti"
 
-#: src/View/AbstractDirectoryView.vala:1951
+#: src/View/AbstractDirectoryView.vala:1957
 msgid "Run"
 msgstr "Suorita"
 
-#: src/View/AbstractDirectoryView.vala:1958
+#: src/View/AbstractDirectoryView.vala:1964
 #, c-format
 msgid "Open in %s"
 msgstr "Avaa sovelluksella %s"
 
-#: src/View/AbstractDirectoryView.vala:2027
+#: src/View/AbstractDirectoryView.vala:2033
 msgid "Open in"
 msgstr "Avaa sovelluksella"
 
-#: src/View/AbstractDirectoryView.vala:2029
+#: src/View/AbstractDirectoryView.vala:2035
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Avaa sovelluksella"
 
-#: src/View/AbstractDirectoryView.vala:2060
+#: src/View/AbstractDirectoryView.vala:2066
 msgid "Select All"
 msgstr "Valitse kaikki"
 
-#: src/View/AbstractDirectoryView.vala:2069
+#: src/View/AbstractDirectoryView.vala:2075
 msgid "Invert Selection"
 msgstr "Käänteinen valinta"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2084
 msgid "Deselect All"
 msgstr "Älä valitse mitään"
 
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2092
 msgid "Cut"
 msgstr "Leikkaa"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2094
+#: src/View/AbstractDirectoryView.vala:2100
 msgid "Copy"
 msgstr "Kopioi"
 
-#: src/View/AbstractDirectoryView.vala:2101
+#: src/View/AbstractDirectoryView.vala:2107
 msgid "Move to Trash"
 msgstr "Siirrä roskakoriin"
 
-#: src/View/AbstractDirectoryView.vala:2106
+#: src/View/AbstractDirectoryView.vala:2112
 msgid "Delete Permanently"
 msgstr "Poista lopullisesti"
 
-#: src/View/AbstractDirectoryView.vala:2113
+#: src/View/AbstractDirectoryView.vala:2119
 msgid "Restore from Trash"
 msgstr "Palauta roskakorista"
 
-#: src/View/AbstractDirectoryView.vala:2136
+#: src/View/AbstractDirectoryView.vala:2142
 msgid "Open Parent Folder"
 msgstr "Avaa ylätason kansio"
 
-#: src/View/AbstractDirectoryView.vala:2139
+#: src/View/AbstractDirectoryView.vala:2145
 msgid "Remove from History"
 msgstr "Poista historiasta"
 
-#: src/View/AbstractDirectoryView.vala:2165
+#: src/View/AbstractDirectoryView.vala:2171
 msgid "Rename…"
 msgstr "Nimeä uudelleen…"
 
-#: src/View/AbstractDirectoryView.vala:2172
+#: src/View/AbstractDirectoryView.vala:2178
 msgid "Copy as Link"
 msgstr "Kopioi linkkinä"
 
-#: src/View/AbstractDirectoryView.vala:2195
-#: src/View/AbstractDirectoryView.vala:2275
+#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2281
 msgid "Paste Link into Folder"
 msgstr "Liitä linkki kansioon"
 
-#: src/View/AbstractDirectoryView.vala:2200
-#: src/View/AbstractDirectoryView.vala:2252
+#: src/View/AbstractDirectoryView.vala:2206
+#: src/View/AbstractDirectoryView.vala:2258
 msgid "Paste into Folder"
 msgstr "Liitä kansioon"
 
-#: src/View/AbstractDirectoryView.vala:2210
-#: src/View/AbstractDirectoryView.vala:2280
+#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2286
 msgid "Paste"
 msgstr "Liitä"
 
-#: src/View/AbstractDirectoryView.vala:2340 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2346 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Tyyppi"
 
-#: src/View/AbstractDirectoryView.vala:2350
+#: src/View/AbstractDirectoryView.vala:2356
 msgid "Reversed Order"
 msgstr "Käänteinen järjestys"
 
-#: src/View/AbstractDirectoryView.vala:2353
+#: src/View/AbstractDirectoryView.vala:2359
 msgid "Folders Before Files"
 msgstr "Kansiot ennen tiedostoja"
 
-#: src/View/AbstractDirectoryView.vala:2365
+#: src/View/AbstractDirectoryView.vala:2371
 msgid "Sort by"
 msgstr "Järjestä"
 
-#: src/View/AbstractDirectoryView.vala:2373
+#: src/View/AbstractDirectoryView.vala:2379
 msgid "Folder"
 msgstr "Kansio"
 
-#: src/View/AbstractDirectoryView.vala:2379
+#: src/View/AbstractDirectoryView.vala:2385
 msgid "Empty File"
 msgstr "Tyhjä tiedosto"
 
-#: src/View/AbstractDirectoryView.vala:2430
+#: src/View/AbstractDirectoryView.vala:2436
 msgid "New"
 msgstr "Uusi"
 
-#: src/View/AbstractDirectoryView.vala:2673
+#: src/View/AbstractDirectoryView.vala:2679
 #, c-format
 msgid "Untitled %s"
 msgstr "Nimetön %s"
 
-#: src/View/AbstractDirectoryView.vala:2991
-#: src/View/AbstractDirectoryView.vala:3184
+#: src/View/AbstractDirectoryView.vala:2997
+#: src/View/AbstractDirectoryView.vala:3190
 msgid "Cannot remove files from here"
 msgstr "Tiedostojen poistaminen täältä ei onnistu"
 
-#: src/View/AbstractDirectoryView.vala:2992
-#: src/View/AbstractDirectoryView.vala:3157
-#: src/View/AbstractDirectoryView.vala:3168
-#: src/View/AbstractDirectoryView.vala:3185
+#: src/View/AbstractDirectoryView.vala:2998
+#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3174
+#: src/View/AbstractDirectoryView.vala:3191
 msgid "You do not have permission to change this location"
 msgstr "Sinulla ei ole käyttöoikeutta muuttaa tätä sijaintia"
 
-#: src/View/AbstractDirectoryView.vala:3125
+#: src/View/AbstractDirectoryView.vala:3131
 msgid "Cannot copy files that are in the trash"
 msgstr "Roskakorissa olevia tiedostoja ei voi kopioida"
 
-#: src/View/AbstractDirectoryView.vala:3126
+#: src/View/AbstractDirectoryView.vala:3132
 msgid "Cutting the selection instead"
 msgstr "Sen sijaan leikataan valinta"
 
-#: src/View/AbstractDirectoryView.vala:3156
-#: src/View/AbstractDirectoryView.vala:3167
+#: src/View/AbstractDirectoryView.vala:3162
+#: src/View/AbstractDirectoryView.vala:3173
 msgid "Cannot paste files here"
 msgstr "Tiedostoja ei voi liittää tänne"
 

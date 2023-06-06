@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-19 11:55+0000\n"
+"POT-Creation-Date: 2023-06-06 10:21+0000\n"
 "PO-Revision-Date: 2023-05-23 09:06+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
@@ -211,7 +211,7 @@ msgstr "Másolás ide"
 msgid "Link Here"
 msgstr "Hivatkozás ide"
 
-#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2330
+#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2336
 msgid "Name"
 msgstr "Név"
 
@@ -224,7 +224,7 @@ msgstr "Készítés dátuma"
 msgid "Last modification date"
 msgstr "Utolsó módosítás dátuma"
 
-#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2335
+#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2341
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Méret"
@@ -237,7 +237,7 @@ msgstr "Számsor"
 msgid "Text"
 msgstr "Szöveg"
 
-#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2345
+#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2351
 msgid "Date"
 msgstr "Dátum"
 
@@ -289,42 +289,40 @@ msgstr "Módosítás dátuma"
 msgid "Current Date"
 msgstr "Jelenlegi dátum"
 
-#: libcore/File.vala:547 libcore/File.vala:1103 libcore/File.vala:1122
+#: libcore/File.vala:550 libcore/File.vala:1113
 msgid "Inaccessible"
 msgstr "Hozzáférhetetlen"
 
-#: libcore/File.vala:888
+#: libcore/File.vala:891
 msgid "Failed to parse the desktop file"
 msgstr "Nem sikerült elemezni az asztali fájlt"
 
-#: libcore/File.vala:892
+#: libcore/File.vala:895
 msgid "Failed to parse the desktop file: "
 msgstr "Az asztali fájl elemzése sikertelen: "
 
-#: libcore/File.vala:904
+#: libcore/File.vala:907
 msgid "Failed to create command from file: "
 msgstr "Nem sikerült parancsot létrehozni ebből a fájlból: "
 
-#: libcore/File.vala:913
+#: libcore/File.vala:916
 msgid "Unable to Launch Desktop File: "
 msgstr "Nem sikerült elindítani ezt az asztali fájlt: "
 
-#: libcore/File.vala:1117
+#: libcore/File.vala:1106
 msgid "Empty"
 msgstr "Üres"
 
-#: libcore/File.vala:1119
-#, c-format
-msgid "%i item"
-msgid_plural "%i items"
+#: libcore/File.vala:1108
+#, fuzzy, c-format
+#| msgid "%i item"
+#| msgid_plural "%i items"
+msgid "%'d item"
+msgid_plural "%'d items"
 msgstr[0] "%i elem"
 msgstr[1] "%i elem"
 
-#: libcore/File.vala:1126
-msgid "----"
-msgstr "----"
-
-#: libcore/File.vala:1133
+#: libcore/File.vala:1153
 #, c-format
 msgid "link to %s"
 msgstr "hivatkozás erre: %s"
@@ -1138,7 +1136,7 @@ msgid "_Unmount"
 msgstr "_Leválasztás"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2047
+#: src/View/AbstractDirectoryView.vala:2053
 msgid "Properties"
 msgstr "Tulajdonságok"
 
@@ -1150,7 +1148,7 @@ msgstr "Média kiadása"
 msgid "Safely Remove"
 msgstr "Biztonságos eltávolítás"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2040
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2046
 msgid "Add to Bookmarks"
 msgstr "Hozzáadás a könyvjelzőkhöz"
 
@@ -1576,8 +1574,8 @@ msgstr "A program verziószámának megjelenítése"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "URI cím(ek) megjelenítése új lapon"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1928
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1940
 msgid "New Window"
 msgstr "Új ablak"
 
@@ -1885,7 +1883,7 @@ msgid "Original Location:"
 msgstr "Eredeti hely:"
 
 #: src/Dialogs/PropertiesWindow.vala:648
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Other Application…"
 msgstr "Egyéb alkalmazás…"
 
@@ -1995,156 +1993,156 @@ msgstr "Ez a fájl nem nyitható meg"
 msgid "Cannot identify file type to open"
 msgstr "Nem azonosítható be a fájltípus a megnyitáshoz"
 
-#: src/View/AbstractDirectoryView.vala:1626
+#: src/View/AbstractDirectoryView.vala:1632
 msgid "Cannot drop this file"
 msgstr "A fájlt nem lehet ide helyezni"
 
-#: src/View/AbstractDirectoryView.vala:1627
+#: src/View/AbstractDirectoryView.vala:1633
 msgid "Invalid file name provided"
 msgstr "A megadott fájlnév érvénytelen"
 
-#: src/View/AbstractDirectoryView.vala:1911
-#: src/View/AbstractDirectoryView.vala:1917 src/View/Window.vala:183
+#: src/View/AbstractDirectoryView.vala:1917
+#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "Új lap"
 
-#: src/View/AbstractDirectoryView.vala:1951
+#: src/View/AbstractDirectoryView.vala:1957
 msgid "Run"
 msgstr "Futtatás"
 
-#: src/View/AbstractDirectoryView.vala:1958
+#: src/View/AbstractDirectoryView.vala:1964
 #, c-format
 msgid "Open in %s"
 msgstr "Megnyitás ebben: %s"
 
-#: src/View/AbstractDirectoryView.vala:2027
+#: src/View/AbstractDirectoryView.vala:2033
 msgid "Open in"
 msgstr "Megnyitás ebben"
 
-#: src/View/AbstractDirectoryView.vala:2029
+#: src/View/AbstractDirectoryView.vala:2035
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Megnyitás ezzel"
 
-#: src/View/AbstractDirectoryView.vala:2060
+#: src/View/AbstractDirectoryView.vala:2066
 msgid "Select All"
 msgstr "Összes kijelölése"
 
-#: src/View/AbstractDirectoryView.vala:2069
+#: src/View/AbstractDirectoryView.vala:2075
 msgid "Invert Selection"
 msgstr "Kijelölés megfordítása"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2084
 msgid "Deselect All"
 msgstr "Kijelölés megszüntetése"
 
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2092
 msgid "Cut"
 msgstr "Kivágás"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2094
+#: src/View/AbstractDirectoryView.vala:2100
 msgid "Copy"
 msgstr "Másolás"
 
-#: src/View/AbstractDirectoryView.vala:2101
+#: src/View/AbstractDirectoryView.vala:2107
 msgid "Move to Trash"
 msgstr "Áthelyezés a kukába"
 
-#: src/View/AbstractDirectoryView.vala:2106
+#: src/View/AbstractDirectoryView.vala:2112
 msgid "Delete Permanently"
 msgstr "Végleges törlés"
 
-#: src/View/AbstractDirectoryView.vala:2113
+#: src/View/AbstractDirectoryView.vala:2119
 msgid "Restore from Trash"
 msgstr "Visszaállítás a kukából"
 
-#: src/View/AbstractDirectoryView.vala:2136
+#: src/View/AbstractDirectoryView.vala:2142
 msgid "Open Parent Folder"
 msgstr "Szülőmappa megnyitása"
 
-#: src/View/AbstractDirectoryView.vala:2139
+#: src/View/AbstractDirectoryView.vala:2145
 msgid "Remove from History"
 msgstr "Eltávolítás az előzmények közül"
 
-#: src/View/AbstractDirectoryView.vala:2165
+#: src/View/AbstractDirectoryView.vala:2171
 msgid "Rename…"
 msgstr "Átnevezés…"
 
-#: src/View/AbstractDirectoryView.vala:2172
+#: src/View/AbstractDirectoryView.vala:2178
 msgid "Copy as Link"
 msgstr "Másolás hivatkozásként"
 
-#: src/View/AbstractDirectoryView.vala:2195
-#: src/View/AbstractDirectoryView.vala:2275
+#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2281
 msgid "Paste Link into Folder"
 msgstr "Hivatkozás beillesztése mappába"
 
-#: src/View/AbstractDirectoryView.vala:2200
-#: src/View/AbstractDirectoryView.vala:2252
+#: src/View/AbstractDirectoryView.vala:2206
+#: src/View/AbstractDirectoryView.vala:2258
 msgid "Paste into Folder"
 msgstr "Beillesztés mappába"
 
-#: src/View/AbstractDirectoryView.vala:2210
-#: src/View/AbstractDirectoryView.vala:2280
+#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2286
 msgid "Paste"
 msgstr "Beillesztés"
 
-#: src/View/AbstractDirectoryView.vala:2340 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2346 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Típus"
 
-#: src/View/AbstractDirectoryView.vala:2350
+#: src/View/AbstractDirectoryView.vala:2356
 msgid "Reversed Order"
 msgstr "Fordított sorrend"
 
-#: src/View/AbstractDirectoryView.vala:2353
+#: src/View/AbstractDirectoryView.vala:2359
 msgid "Folders Before Files"
 msgstr "Mappák a fájlok előtt"
 
-#: src/View/AbstractDirectoryView.vala:2365
+#: src/View/AbstractDirectoryView.vala:2371
 msgid "Sort by"
 msgstr "Rendezés"
 
-#: src/View/AbstractDirectoryView.vala:2373
+#: src/View/AbstractDirectoryView.vala:2379
 msgid "Folder"
 msgstr "Mappa"
 
-#: src/View/AbstractDirectoryView.vala:2379
+#: src/View/AbstractDirectoryView.vala:2385
 msgid "Empty File"
 msgstr "Üres fájl"
 
-#: src/View/AbstractDirectoryView.vala:2430
+#: src/View/AbstractDirectoryView.vala:2436
 msgid "New"
 msgstr "Új"
 
-#: src/View/AbstractDirectoryView.vala:2673
+#: src/View/AbstractDirectoryView.vala:2679
 #, c-format
 msgid "Untitled %s"
 msgstr "Névtelen %s"
 
-#: src/View/AbstractDirectoryView.vala:2991
-#: src/View/AbstractDirectoryView.vala:3184
+#: src/View/AbstractDirectoryView.vala:2997
+#: src/View/AbstractDirectoryView.vala:3190
 msgid "Cannot remove files from here"
 msgstr "A fájlok nem távolíthatók el innen"
 
-#: src/View/AbstractDirectoryView.vala:2992
-#: src/View/AbstractDirectoryView.vala:3157
-#: src/View/AbstractDirectoryView.vala:3168
-#: src/View/AbstractDirectoryView.vala:3185
+#: src/View/AbstractDirectoryView.vala:2998
+#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3174
+#: src/View/AbstractDirectoryView.vala:3191
 msgid "You do not have permission to change this location"
 msgstr "Nincs engedélye az elérési út megváltoztatására"
 
-#: src/View/AbstractDirectoryView.vala:3125
+#: src/View/AbstractDirectoryView.vala:3131
 msgid "Cannot copy files that are in the trash"
 msgstr "A kukában levő fájlok nem másolhatóak"
 
-#: src/View/AbstractDirectoryView.vala:3126
+#: src/View/AbstractDirectoryView.vala:3132
 msgid "Cutting the selection instead"
 msgstr "A kijelöltek kivágása inkább"
 
-#: src/View/AbstractDirectoryView.vala:3156
-#: src/View/AbstractDirectoryView.vala:3167
+#: src/View/AbstractDirectoryView.vala:3162
+#: src/View/AbstractDirectoryView.vala:3173
 msgid "Cannot paste files here"
 msgstr "Fájlok beillesztése itt nem lehetséges"
 
@@ -2558,6 +2556,9 @@ msgstr "Ezen mappa alatt"
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Mostanában használt"
+
+#~ msgid "----"
+#~ msgstr "----"
 
 #~ msgctxt "bulk-rename"
 #~ msgid "Unchanged"
