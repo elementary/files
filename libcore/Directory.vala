@@ -860,11 +860,12 @@ public class Files.Directory : Object {
         file_hash.insert (gof.location, gof);
     }
 
-    public Files.File file_cache_find_or_insert (GLib.File file, bool update_hash = false) {
+    private Files.File file_cache_find_or_insert (GLib.File file, out bool was_in_hash, bool update_hash = false) {
         Files.File? result = file_hash.lookup (file);
         /* Although file_hash.lookup returns an unowned value, Vala will add a reference
          * as the return value is owned.  This matches the behaviour of Files.File.cache_lookup */
         if (result == null) {
+            was_in_hash = false;
             result = Files.File.cache_lookup (file);
 
             if (result == null) {
@@ -873,6 +874,8 @@ public class Files.Directory : Object {
             } else if (update_hash) {
                 file_hash.insert (file, result);
             }
+        } else {
+            was_in_hash = true;
         }
 
         result.is_gone = false;
@@ -946,7 +949,7 @@ public class Files.Directory : Object {
     }
 
     private void notify_file_removed (Files.File gof) {
-        remove_file_from_cache (gof);
+        this.file_hash.remove (gof.location);
 
         if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
             file_deleted (gof);
@@ -992,21 +995,26 @@ public class Files.Directory : Object {
         }
     }
 
-    // We do not monitor MOVED events as these are also associated with CREATED and DELETED events
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
         switch (event) {
-        case FileMonitorEvent.CREATED:
-            Files.FileChanges.queue_file_added (_file, false);
-            break;
-        case FileMonitorEvent.DELETED:
-            Files.FileChanges.queue_file_removed (_file);
-            break;
-        case FileMonitorEvent.CHANGES_DONE_HINT: /* test  last to avoid unnecessary action when file renamed */
-        case FileMonitorEvent.ATTRIBUTE_CHANGED:
-            Files.FileChanges.queue_file_changed (_file);
-            break;
-        default:
-            break;
+            case FileMonitorEvent.CREATED:
+                Files.FileChanges.queue_file_added (_file, false);
+                break;
+            case FileMonitorEvent.DELETED:
+                Files.FileChanges.queue_file_removed (_file);
+                break;
+            case FileMonitorEvent.ATTRIBUTE_CHANGED: /* test  last to avoid unnecessary action when file renamed */
+                // e.g. changed permissions
+                Files.FileChanges.queue_file_changed (_file);
+                break;
+            case FileMonitorEvent.CHANGES_DONE_HINT:
+                // TODO Check for unexpected regressions caused by not refreshing file info here. It should already
+                // have been done if requried by one of the set of changes so doing it again is inefficient.
+                break;
+            case FileMonitorEvent.MOVED:
+                break;
+            default:
+                break;
         }
 
         if (idle_consume_changes_id == 0) {
@@ -1046,83 +1054,138 @@ public class Files.Directory : Object {
     }
 
     public static void notify_files_changed (List<GLib.File> files) {
-        foreach (unowned var loc in files) {
-            assert (loc != null);
-            Directory? parent_dir = cache_lookup_parent (loc);
-            Files.File? gof = null;
-            if (parent_dir != null) {
-                gof = parent_dir.file_cache_find_or_insert (loc);
-                parent_dir.notify_file_changed (gof);
+        bool already_present = false;
+        Directory? first_dir = cache_lookup_parent (files.data);
+        if (first_dir != null) {
+            foreach (unowned var loc in files) {
+                Files.File? gof = null;
+                gof = first_dir.file_cache_find_or_insert (loc, out already_present);
+                first_dir.notify_file_changed (gof);
             }
-
-            /* Has a background directory been changed (e.g. properties)? If so notify the view(s)*/
-            Directory? dir = cache_lookup (loc);
-            if (dir != null) {
-                dir.notify_file_changed (dir.file);
-            }
-        }
-    }
-
-    public static void notify_changes_added (List<Files.FileChanges.Change> changes) {
-        foreach (unowned var change in changes) {
-            unowned var loc = change.from;
-            Directory? dir = cache_lookup_parent (loc);
-
-            if (dir != null) {
-                Files.File gof = dir.file_cache_find_or_insert (loc, true);
-                dir.notify_file_added (gof, change.is_internal);
-            }
-        }
-    }
-
-    // Only call in relation to internal file operations
-    public static void notify_files_added_internally (List<GLib.File> files) {
-        foreach (unowned var loc in files) {
-            Directory? dir = cache_lookup_parent (loc);
-
-            if (dir != null) {
-                Files.File gof = dir.file_cache_find_or_insert (loc, true);
-                dir.notify_file_added (gof, true);
-            }
-        }
-    }
-
-    public static void notify_files_removed (List<GLib.File> files) {
-        List<Directory> dirs = null;
-        bool found;
-
-        foreach (unowned var loc in files) {
-            if (loc == null) {
-                continue;
-            }
-
-            Directory? dir = cache_lookup_parent (loc);
-
-            if (dir != null) {
-                Files.File gof = dir.file_cache_find_or_insert (loc);
-                dir.notify_file_removed (gof);
-                found = false;
-
-                foreach (var d in dirs) {
-                    if (d == dir) {
-                        found = true;
-                        break;
-                    }
+        } else {
+            foreach (unowned var loc in files) {
+                Directory? dir = cache_lookup (loc);
+                if (dir != null) {
+                    // A background directory not showing as an item in another view been changed (e.g. properties)
+                    dir.notify_file_changed (dir.file); // Uncertain whether this is required
                 }
+            }
+        }
+    }
 
-                if (!found) {
-                    dirs.prepend (dir);
+    // This could receive either an internal change an external change or a pair or internal/external changes for
+    // each file operation depending on whether the folder supported monitoring and whether operation was internal
+    // or external. If the file is already in the cache we do not add it again
+    public static void notify_changes_added (List<Files.FileChanges.Change> changes) {
+        bool already_present = false;
+        bool files_added = false;
+        Directory? first_dir = cache_lookup_parent (changes.data.from);
+        GLib.File? prev_loc = null;
+        if (first_dir != null) {
+            foreach (unowned var change in changes) {
+                unowned var loc = change.from;
+                // Each set or changes should refer to the same folder but check anyway
+                if (prev_loc == null || !loc.equal (prev_loc)) {
+                    Files.File gof = first_dir.file_cache_find_or_insert (loc, out already_present, true);
+                    if (!already_present) {
+                        files_added = true;
+                        first_dir.notify_file_added (gof, change.is_internal);
+                    } // Else ignore files already added from duplicate event or internally
+
+                    prev_loc = loc;
+                }
+            }
+
+            if (files_added) {
+                first_dir.file.ensure_size ();  // Can we just use file_cache size?
+                var parent = cache_lookup_parent (first_dir.file.location);
+                if (parent != null) {
+                    parent.file_changed (first_dir.file);
+                }
+            }
+        }
+    }
+
+    // Only call in relation to internal file operations.  Can assume all files added to same directory.
+    public static void notify_files_added_internally (List<GLib.File> files) {
+        bool already_present = false;
+        bool files_added = false;
+        Directory? first_dir = cache_lookup_parent (files.data);
+        if (first_dir != null) {
+            foreach (unowned var loc in files) {
+                // Each set or changes should refer to the same folder but check anyway
+                Files.File gof = first_dir.file_cache_find_or_insert (loc, out already_present, true);
+                if (!already_present) {
+                    files_added = true;
+                    first_dir.notify_file_added (gof, true);
+                } // Else ignore files added via FileMonitor event
+            }
+
+            if (files_added) {
+                first_dir.file.ensure_size ();  // Can we just use file_cache size?
+                var parent = cache_lookup_parent (first_dir.file.location);
+                if (parent != null) {
+                    parent.file_changed (first_dir.file);
+                }
+            }
+        } else {
+            Directory? parent_dir = null;
+            var first_parent = files.data.get_parent ();
+            parent_dir = cache_lookup_parent (first_parent);
+            if (parent_dir != null) {
+                var gof = parent_dir.file_hash.lookup (first_parent);
+                if (gof != null) {
+                    // Files added to child folder item parent_dir
+                    gof.ensure_size ();
+                    parent_dir.file_changed (gof);
+                }
+            }
+        }
+    }
+
+    // Can we assume all from same parent location??
+    public static void notify_files_removed (List<GLib.File> files) {
+        bool files_removed = false;
+        Directory? first_dir = cache_lookup_parent (files.data);
+        if (first_dir != null) {
+            foreach (unowned var loc in files) {
+                Files.File? gof = first_dir.file_hash.lookup (loc);
+                if (gof != null) {
+                    files_removed = true;
+                    first_dir.notify_file_removed (gof);
+                }
+            }
+
+            if (files_removed) {
+                var parent = cache_lookup_parent (first_dir.file.location);
+                if (parent != null) {
+                    first_dir.file.ensure_size ();  // Can we just use file_cache size?
+                    parent.file_changed (first_dir.file);
+                }
+            }
+        } else {
+            Directory? parent_dir = null;
+            var first_parent = files.data.get_parent ();
+            parent_dir = cache_lookup_parent (first_parent);
+            if (parent_dir != null) {
+                var gof = parent_dir.file_hash.lookup (first_parent);
+                if (gof != null) {
+                    // Files removed from child folder item of parent_dir
+                    gof.ensure_size ();
+                    parent_dir.file_changed (gof);
                 }
             } else {
-                dir = cache_lookup (loc);
-                if (dir != null) {
-                    dir.file_deleted (dir.file);
+                foreach (unowned var loc in files) {
+                    var dir = cache_lookup (loc);
+                    if (dir != null) {
+                        dir.file_deleted (dir.file);
+                    }
                 }
             }
         }
     }
 
-    //Only called internally as FileMonitorEvent.MOVED events not handled
+    // Only called internally as FileMonitorEvent.MOVED events not handled
     public static void notify_files_moved (List<GLib.Array<GLib.File>> files) {
         var list_from = new List<GLib.File> ();
         var list_to = new List<GLib.File> ();
@@ -1137,13 +1200,6 @@ public class Files.Directory : Object {
 
         notify_files_removed (list_from);
         notify_files_added_internally (list_to);
-    }
-
-    private static void remove_file_from_cache (Files.File gof) {
-        Directory? dir = cache_lookup (gof.directory);
-        if (dir != null) {
-            dir.file_hash.remove (gof.location);
-        }
     }
 
     /* Files.Directory.directory_cache related functions */

@@ -57,6 +57,7 @@ public class Files.File : GLib.Object {
     public string? custom_display_name = null;
     public string uri { get; construct; }
     public uint64 size = 0;
+    public int count = -1;
     public string format_size = null;
     public int color = 0;
     public uint64 modified;
@@ -541,7 +542,7 @@ public class Files.File : GLib.Object {
         }
 
         /* sizes */
-        update_size ();
+        ensure_size ();
         /* modified date */
         if (info.has_attribute (GLib.FileAttribute.TIME_MODIFIED)) {
             formated_modified = get_formated_time (GLib.FileAttribute.TIME_MODIFIED);
@@ -634,7 +635,7 @@ public class Files.File : GLib.Object {
     public void update_desktop_file () {
         utf8_collation_key = get_display_name ().collate_key_for_filename ();
         update_formated_type ();
-        update_size ();
+        ensure_size ();
         icon_changed ();
     }
 
@@ -1096,9 +1097,16 @@ public class Files.File : GLib.Object {
         return null;
     }
 
-    private void update_size () {
-        if (is_folder () || is_root_network_folder ()) {
-            format_size = item_count ();
+    public void ensure_size () {
+        ensure_item_count (true);
+        if (count >= 0) {
+            if (count < 0) {
+                format_size = "—";
+            } else if (count == 0) {
+                format_size = _("Empty");
+            } else {
+                format_size = ngettext ("%'d item", "%'d items", count).printf (count);
+            }
         } else if (info.has_attribute (GLib.FileAttribute.STANDARD_SIZE)) {
             format_size = GLib.format_size (size);
         } else {
@@ -1106,26 +1114,36 @@ public class Files.File : GLib.Object {
         }
     }
 
-    private string item_count () {
-        if (is_mounted && location.is_native ()) {
-            try {
-                var f_enum = location.enumerate_children ("", FileQueryInfoFlags.NONE, null);
-                var count = 0;
-                while (f_enum.next_file () != null) {
-                    count++;
-                }
+    private void ensure_item_count (bool recount) {
+        if (count >= 0 && !recount) {
+            return;
+        }
 
-                if (count == 0) {
-                    return _("Empty");
-                } else {
-                    return ngettext ("%i item", "%i items", count).printf (count);
+        var pref_show_hidden = Files.Preferences.get_default ().show_hidden_files;
+        if (location.has_uri_scheme ("file") ||
+            (is_mounted && location.is_native ())) {
+
+            try {
+                var f_enum = location.enumerate_children (
+                    FileAttribute.STANDARD_IS_HIDDEN,
+                    FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                    null
+                );
+                count = 0;
+                FileInfo info;
+                // Only count visible items
+                while ((info = f_enum.next_file ()) != null) {
+                    if (pref_show_hidden ||
+                        !info.get_attribute_boolean (FileAttribute.STANDARD_IS_HIDDEN)) {
+
+                        count++;
+                    }
                 }
             } catch (Error e) {
-                return _("Inaccessible");
+                count = -1;
             }
         }
 
-        return _("----");
     }
 
     private void update_formated_type () {
@@ -1239,7 +1257,6 @@ public class Files.File : GLib.Object {
         /* As folder files have a fixed standard size (4K) assign them a virtual size of -1 for now
          * so always sorts first. */
 
-        /* TODO Sort folders according to number of files inside like Dolphin? */
         if (is_folder () && !other.is_folder ()) {
             return -1;
         }
@@ -1249,11 +1266,26 @@ public class Files.File : GLib.Object {
         }
 
         if (is_folder () && other.is_folder ()) {
-            return 0;
+            /* Compare folders according to number of files inside */
+            // Ensure we have a count but for performance do not recount items
+            ensure_item_count (false);
+            other.ensure_item_count (false);
+
+            if (count < other.count) {
+                return -1;
+            } else if (count > other.count) {
+                return 1;
+            }
+        } else {
+            /* Only compare sizes for regular files */
+            if (size < other.size) {
+                return -1;
+            } else if (size > other.size) {
+                return 1;
+            }
         }
 
-        /* Only compare sizes for regular files */
-        return compare_files_by_size (other);
+        return 0;
     }
 
     private void update_icon_internal (int size, int scale) {
