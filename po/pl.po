@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-06 10:21+0000\n"
-"PO-Revision-Date: 2023-05-24 20:06+0000\n"
+"PO-Revision-Date: 2023-06-08 18:07+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -313,14 +313,12 @@ msgid "Empty"
 msgstr "Pusty"
 
 #: libcore/File.vala:1108
-#, fuzzy, c-format
-#| msgid "%i item"
-#| msgid_plural "%i items"
+#, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
-msgstr[0] "%i obiekt"
-msgstr[1] "%i obiekty"
-msgstr[2] "%i obiektów"
+msgstr[0] "%'d obiekt"
+msgstr[1] "%'d obiekty"
+msgstr[2] "%'d obiektów"
 
 #: libcore/File.vala:1153
 #, c-format
