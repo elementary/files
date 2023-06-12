@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-06 10:21+0000\n"
-"PO-Revision-Date: 2023-05-23 09:06+0000\n"
+"PO-Revision-Date: 2023-06-13 12:07+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -313,13 +313,11 @@ msgid "Empty"
 msgstr "Vide"
 
 #: libcore/File.vala:1108
-#, fuzzy, c-format
-#| msgid "%i item"
-#| msgid_plural "%i items"
+#, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
-msgstr[0] "%i élément"
-msgstr[1] "%i éléments"
+msgstr[0] "%'d élément"
+msgstr[1] "%'d éléments"
 
 #: libcore/File.vala:1153
 #, c-format
