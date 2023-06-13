@@ -2,7 +2,7 @@
     Copyright (c) 1999, 2000 Red Hat, Inc.
     Copyright (c) 2000, 2001 Eazel, Inc.
     Copyright (c) 2013 Julián Unrrein <junrrein@gmail.com>
-    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
+    Copyright (c) 2015-2023 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
