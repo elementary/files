@@ -151,7 +151,7 @@ namespace Files {
                         selected_paths.prepend (p);
                     });
                     /* Ensure cursor follows last selection */
-                    tree.set_cursor (path, null, false); /* This selects path but unselects rest! */
+                    set_cursor_on_cell (path, name_renderer, false, false);
 
                     selected_paths.@foreach ((p) => {
                        selection.select_path (p);
@@ -306,8 +306,16 @@ namespace Files {
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top) {
-            scroll_to_cell (path, scroll_to_top);
+
             tree.set_cursor_on_cell (path, name_column, renderer, start_editing);
+
+            // In List View the above function scrolls a small distance but the cursor does not
+            // always become visible (Gtk bug?). We therefore complete the scroll with the function below
+            // This only works with a Timeout (an Idle is insufficient)
+            Timeout.add (50, () => {
+                tree.scroll_to_cell (path, name_column, scroll_to_top, 0.0f, 0.0f);
+                return Source.REMOVE;
+            });
         }
 
         public override void set_cursor (Gtk.TreePath? path,
