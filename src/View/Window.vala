@@ -483,7 +483,9 @@ namespace Files.View {
 
                     if (is_child) {
                         /* Select the child  */
-                        ((ViewContainer)(tabs.current.page)).focus_location_if_in_current_directory (location);
+                        current_tab.focus_location_if_in_current_directory (location);
+                    } else if (ftype == FileType.REGULAR) {
+                        current_tab.focus_location_if_in_current_directory (_location);
                     }
 
                     return;
