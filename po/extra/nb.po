@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-06 10:21+0000\n"
-"PO-Revision-Date: 2021-08-17 10:58+0000\n"
+"PO-Revision-Date: 2023-06-15 14:07+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "extra/nb/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
@@ -64,14 +64,16 @@ msgstr ""
 #: data/files.metainfo.xml.in.in:18
 msgid "Quick access to settings like zoom levels and hidden files"
 msgstr ""
+"Hurtigtilgang til innstillinger som f.eks. forstørrelsesnivå og skjulte filer"
 
 #: data/files.metainfo.xml.in.in:22
+#, fuzzy
 msgid "See more metadata at a glance in List view"
-msgstr ""
+msgstr "Vis mer metadata i overblikk i listevisning"
 
 #: data/files.metainfo.xml.in.in:26
 msgid "Browse complex trees faster with Column view"
-msgstr ""
+msgstr "Utforsk komplekse trær raskere med kolonnevisning"
 
 #: data/files.metainfo.xml.in.in:58
 #, fuzzy
@@ -89,7 +91,7 @@ msgstr "Retting av småfeil"
 
 #: data/files.metainfo.xml.in.in:67
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
-msgstr ""
+msgstr "Bruk fargerik nivåfelt for å vise diskbruk i egenskapsdialogen"
 
 #: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:81
 #: data/files.metainfo.xml.in.in:103 data/files.metainfo.xml.in.in:119
@@ -103,9 +105,12 @@ msgid "Improvements:"
 msgstr "Forbedringer:"
 
 #: data/files.metainfo.xml.in.in:99
+#, fuzzy
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
+"Globale innstillinger flyttet fra bindeleddsmeny til en programmeny i "
+"hodefeltet"
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
