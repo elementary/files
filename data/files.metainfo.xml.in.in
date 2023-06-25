@@ -16,15 +16,15 @@
   <screenshots>
     <screenshot type="default">
       <caption>Quick access to settings like zoom levels and hidden files</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/6.3.1/data/screenshot-grid.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.4.0/data/screenshot-grid.png</image>
     </screenshot>
     <screenshot>
       <caption>See more metadata at a glance in List view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/6.3.1/data/screenshot-list.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.4.0/data/screenshot-list.png</image>
     </screenshot>
     <screenshot>
       <caption>Browse complex trees faster with Column view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/6.3.1/data/screenshot-column.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.4.0/data/screenshot-column.png</image>
     </screenshot>
   </screenshots>
 
@@ -60,8 +60,12 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
-    <release version="6.3.2" date="2023-05-10" urgency="medium">
+    <release version="6.4.0" date="2023-06-25" urgency="medium">
       <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Implement a bulk rename functionality</li>
+        </ul>
         <p>Minor updates:</p>
         <ul>
           <li>Use a colorful level bar to show disk usage in the properties dialog</li>
@@ -69,8 +73,8 @@
         </ul>
       </description>
       <issues>
-        <issue url="https://github.com/elementary/files/issues/2172">Hangs when a folder with a large number of files needs to be shown</issue>
-        <issue url="https://github.com/elementary/files/issues/1040">Bulk rename</issue>
+        <issue url="https://github.com/elementary/files/issues/2195">When viewing a folder, externally created hidden files are shown</issue>
+       <issue url="https://github.com/elementary/files/issues/2172">Hangs when a folder with a large number of files needs to be shown</issue>
       </issues>
     </release>
 
@@ -181,3 +185,4 @@
     <release version="0.3.0.2" date="2016-09-01"/>
   </releases>
 </component>
+
