@@ -50,6 +50,10 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         });
 
         set_sort_func (device_sort_func);
+
+        this.enter_notify_event.connect (() => {
+            refresh_info ();
+        });
     }
 
     private int device_sort_func (Gtk.ListBoxRow? row1, Gtk.ListBoxRow? row2) {

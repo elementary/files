@@ -326,6 +326,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     public virtual void update_free_space () {
+        debug ("update free space");
         add_mountable_tooltip.begin ();
     }
 
