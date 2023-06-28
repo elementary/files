@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-28 19:58+0000\n"
-"PO-Revision-Date: 2023-05-14 18:06+0000\n"
+"PO-Revision-Date: 2023-06-30 17:37+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -76,7 +76,7 @@ msgstr "שיפורים:"
 
 #: data/files.metainfo.xml.in.in:67
 msgid "Implement a bulk rename functionality"
-msgstr ""
+msgstr "הטמעת יכולת שינוי שם במרוכז"
 
 #: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:84
 #: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:122
