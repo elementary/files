@@ -912,39 +912,33 @@ public class Files.Directory : Object {
         }
     }
 
-    private void add_and_refresh (Files.File gof, bool is_internal) {
-        // Check whether we have FileInfo
-        if (!gof.ensure_query_info ()) {
-            critical ("FILE INFO unavailable");
-            // Fallback to determining hidden status from file name
-            gof.is_hidden = gof.basename.has_prefix (".") || gof.basename.has_prefix ("~");
-        } else {
-            // Update properties from FileInfo
-            gof.update ();
-        }
-
+    private void notify_file_added (Files.File gof, bool is_internal) {
+        // Do not delay adding file to model - use fallback is_hidden
+        gof.is_hidden = gof.basename.has_prefix (".") || gof.basename.has_prefix ("~");
         if ((!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
             file_added (gof, is_internal);
         }
 
-        if (!gof.is_hidden && gof.is_folder ()) {
-            /* add to sorted_dirs */
-            if (sorted_dirs.find (gof) == null) {
-                sorted_dirs.insert_sorted (gof,
-                    Files.File.compare_by_display_name);
+        query_info_async.begin (gof, null, (obj, res) => {
+            if (gof.info == null) {
+                critical ("%s FILE INFO unavailable", gof.basename);
+            } else {
+                // Update properties from FileInfo
+                gof.update ();
+                if (!gof.is_hidden && gof.is_folder ()) {
+                    /* add to sorted_dirs */
+                    if (sorted_dirs.find (gof) == null) {
+                        sorted_dirs.insert_sorted (gof,
+                            Files.File.compare_by_display_name);
+                    }
+                }
             }
-        }
+        });
     }
 
     private void notify_file_changed (Files.File gof) {
         query_info_async.begin (gof, null, () => {
             changed_and_refresh (gof);
-        });
-    }
-
-    private void notify_file_added (Files.File gof, bool is_internal) {
-        query_info_async.begin (gof, null, () => {
-            add_and_refresh (gof, is_internal);
         });
     }
 
