@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-28 19:58+0000\n"
-"PO-Revision-Date: 2023-05-14 18:06+0000\n"
+"PO-Revision-Date: 2023-06-30 17:37+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -85,7 +85,7 @@ msgstr "改善点:"
 
 #: data/files.metainfo.xml.in.in:67
 msgid "Implement a bulk rename functionality"
-msgstr ""
+msgstr "ファイル名の一括変更機能を追加"
 
 #: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:84
 #: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:122
