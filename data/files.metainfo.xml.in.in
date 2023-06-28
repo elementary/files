@@ -74,8 +74,8 @@
       </description>
       <issues>
         <issue url="https://github.com/elementary/files/issues/2195">When viewing a folder, externally created hidden files are shown</issue>
-       <issue url="https://github.com/elementary/files/issues/2172">Hangs when a folder with a large number of files needs to be shown</issue>       
-       <issue url="https://github.com/elementary/files/issues/2216">Renaming or replacing a file leaves a temporary file in the same directory</issue>
+        <issue url="https://github.com/elementary/files/issues/2172">Hangs when a folder with a large number of files needs to be shown</issue>       
+        <issue url="https://github.com/elementary/files/issues/2216">Renaming or replacing a file leaves a temporary file in the same directory</issue>
       </issues>
     </release>
 
