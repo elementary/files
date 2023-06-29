@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 10:21+0000\n"
+"POT-Creation-Date: 2023-06-28 19:58+0000\n"
 "PO-Revision-Date: 2023-06-15 14:07+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
@@ -1938,7 +1938,7 @@ msgid "Separator"
 msgstr "Inndeler"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:310
-#, c-format, fuzzy
+#, fuzzy, c-format
 msgid "%0*d,%0*d,%0*d…"
 msgstr "%0*d,%0*d,%0*d…"
 

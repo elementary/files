@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 10:21+0000\n"
+"POT-Creation-Date: 2023-06-28 19:58+0000\n"
 "PO-Revision-Date: 2017-01-19 12:53+0000\n"
 "Last-Translator: William <Unknown>\n"
 "Language-Team: Ido <io@li.org>\n"
@@ -70,29 +70,33 @@ msgstr ""
 msgid "elementary, Inc."
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:79
-#: data/files.metainfo.xml.in.in:101 data/files.metainfo.xml.in.in:117
-#: data/files.metainfo.xml.in.in:132
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:102
+msgid "Improvements:"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:67
+msgid "Implement a bulk rename functionality"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:84
+#: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:122
+#: data/files.metainfo.xml.in.in:137
 #, fuzzy
 msgid "Minor updates:"
 msgstr "Nova tradukuri"
 
-#: data/files.metainfo.xml.in.in:67
+#: data/files.metainfo.xml.in.in:71
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:81
-#: data/files.metainfo.xml.in.in:103 data/files.metainfo.xml.in.in:119
-#: data/files.metainfo.xml.in.in:134
+#: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:86
+#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:124
+#: data/files.metainfo.xml.in.in:139
 #, fuzzy
 msgid "Updated translations"
 msgstr "Nova tradukuri"
 
-#: data/files.metainfo.xml.in.in:97
-msgid "Improvements:"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:99
+#: data/files.metainfo.xml.in.in:104
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""

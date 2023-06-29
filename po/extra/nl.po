@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-06 10:21+0000\n"
+"POT-Creation-Date: 2023-06-28 19:58+0000\n"
 "PO-Revision-Date: 2023-04-13 17:59+0000\n"
 "Last-Translator: DutchVipperloid <svenroelof@e.email>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
@@ -76,27 +76,31 @@ msgstr ""
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
-#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:79
-#: data/files.metainfo.xml.in.in:101 data/files.metainfo.xml.in.in:117
-#: data/files.metainfo.xml.in.in:132
-msgid "Minor updates:"
-msgstr "Kleine updates:"
-
-#: data/files.metainfo.xml.in.in:67
-msgid "Use a colorful level bar to show disk usage in the properties dialog"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:81
-#: data/files.metainfo.xml.in.in:103 data/files.metainfo.xml.in.in:119
-#: data/files.metainfo.xml.in.in:134
-msgid "Updated translations"
-msgstr "Bijgewerkte vertalingen"
-
-#: data/files.metainfo.xml.in.in:97
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:102
 msgid "Improvements:"
 msgstr "Verbeteringen:"
 
-#: data/files.metainfo.xml.in.in:99
+#: data/files.metainfo.xml.in.in:67
+msgid "Implement a bulk rename functionality"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:84
+#: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:122
+#: data/files.metainfo.xml.in.in:137
+msgid "Minor updates:"
+msgstr "Kleine updates:"
+
+#: data/files.metainfo.xml.in.in:71
+msgid "Use a colorful level bar to show disk usage in the properties dialog"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:86
+#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:124
+#: data/files.metainfo.xml.in.in:139
+msgid "Updated translations"
+msgstr "Bijgewerkte vertalingen"
+
+#: data/files.metainfo.xml.in.in:104
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
