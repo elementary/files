@@ -1,32 +1,17 @@
 /***
-    Copyright (c)  1999, 2000 Eazel, Inc.
-                   2015-2018 elementary LLC <https://elementary.io>
-
-    This program is free software: you can redistribute it and/or modify it
-    under the terms of the GNU Lesser General Public License version 3, as published
-    by the Free Software Foundation, Inc.,.
-
-    This program is distributed in the hope that it will be useful, but
-    WITHOUT ANY WARRANTY; without even the implied warranties of
-    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
-    PURPOSE. See the GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License along
-    with this program. If not, see <http://www.gnu.org/licenses/>.
-
-    Authors : John Sullivan <sullivan@eazel.com>
-              Jeremy Wootten <jeremy@elementaryos.org>
+ * Copyright (c)  1999, 2000 Eazel, Inc.
+ * Copyright 2015 - 2023 elementary, Inc. <https://elementary.io>
+ * SPDX-License-Identifier: GPL-3.0-or-later
 ***/
 
 namespace Files {
-    public class Bookmark {
-
+    public class Bookmark : Object {
         public signal void contents_changed ();
         public signal void deleted ();
 
         public string custom_name { get; set; default = "";}
 
-        public Files.File gof_file { get; private set; }
+        public Files.File gof_file { get; construct; }
 
         public string basename {
             get { return gof_file.get_display_name (); }
@@ -46,20 +31,22 @@ namespace Files {
         };
 
         public Bookmark (Files.File gof_file, string label = "") {
-            this.gof_file = gof_file;
-            if (label != gof_file.basename) {
-                this.custom_name = label;
-            }
-
-            connect_file ();
+            Object (
+                gof_file: gof_file,
+                custom_name: label
+            );
         }
 
         public Bookmark.from_uri (string uri, string label = "") {
-            this.gof_file = Files.File.get_by_uri (uri);
-            if (label != gof_file.basename) {
-                this.custom_name = label;
-            }
+            Object (
+                gof_file: Files.File.get_by_uri (uri),
+                custom_name: label
+            );
+        }
 
+        construct {
+            //Ensure correct icon is available
+            gof_file.ensure_query_info ();
             connect_file ();
         }
 
@@ -76,8 +63,8 @@ namespace Files {
         }
 
         public GLib.Icon get_icon () {
-            if (gof_file.icon != null) {
-                return gof_file.icon;
+            if (gof_file.gicon != null) {
+                return gof_file.gicon;
             } else {
                 // Get minimal info to determine icon
                 var ftype = gof_file.location.query_file_type (FileQueryInfoFlags.NONE);
