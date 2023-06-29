@@ -119,7 +119,7 @@ namespace Files {
             bool is_drop_file = (file == drop_file);
 
             if (file.is_directory) {
-                var names = ((GLib.ThemedIcon) file.icon).get_names ();
+                var names = ((GLib.ThemedIcon) file.gicon).get_names ();
                 if (names.length > 0) {
                     special_icon_name = names[0];
                 } else {
