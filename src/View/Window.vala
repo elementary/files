@@ -529,7 +529,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
          * so capture its unique id instead */
         // var id = content.id;
         content.tab_name_changed.connect ((tab_name) => {
-            check_for_tabs_with_the_same_name ();
+            check_for_tabs_with_same_name ();
             // set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
         });
 
