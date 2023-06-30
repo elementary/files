@@ -14,7 +14,6 @@
  * (used in history navigation buttons)
  */
 public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
-    public signal void right_click (Gdk.EventButton ev);
     public signal void slow_press ();
 
     private Gtk.Menu _menu;
@@ -29,9 +28,7 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
         }
     }
 
-    private int long_press_time = Gtk.Settings.get_default ().gtk_double_click_time * 2;
-    private uint timeout = 0;
-    private uint last_click_time = 0;
+    // private int long_press_time = Gtk.Settings.get_default ().gtk_double_click_time * 2;
 
     public ButtonWithMenu (string icon_name) {
         image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.LARGE_TOOLBAR);
@@ -44,33 +41,28 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
 
         mnemonic_activate.connect (on_mnemonic_activate);
 
-        events |= Gdk.EventMask.BUTTON_PRESS_MASK |
-                  Gdk.EventMask.BUTTON_RELEASE_MASK |
-                  Gdk.EventMask.BUTTON_MOTION_MASK;
-
-        button_press_event.connect (on_button_press_event);
-        button_release_event.connect (on_button_release_event);
-        motion_notify_event.connect (() => {
-            if (timeout > 0) {
-                Source.remove (timeout);
-                timeout = 0;
-                active = false;
-            }
-
-            return Gdk.EVENT_PROPAGATE;
+        var press_gesture = new Gtk.GestureMultiPress (this) {
+            button = 1
+        };
+        press_gesture.released.connect ((n_press, x, y) => {
+            active = true;
+            slow_press ();
+            press_gesture.set_state (CLAIMED);
         });
 
-        timeout = 0;
+        var secondary_click_gesture = new Gtk.GestureMultiPress (this) {
+            button = 3
+        };
+        secondary_click_gesture.pressed.connect (() => {
+            popup_menu ();
+            secondary_click_gesture.set_state (CLAIMED);
+        });
 
-        realize.connect (() => {
-            get_toplevel ().configure_event.connect (() => {
-                if (timeout > 0) {
-                    Source.remove (timeout);
-                    timeout = 0;
-                }
+        var long_press_gesture = new Gtk.GestureLongPress (this);
 
-                return false;
-            });
+        long_press_gesture.pressed.connect (() => {
+            popup_menu ();
+            long_press_gesture.set_state (CLAIMED);
         });
     }
 
@@ -85,46 +77,6 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
     public override void show_all () {
         menu.show_all ();
         base.show_all ();
-    }
-
-    private bool on_button_release_event (Gdk.EventButton ev) {
-        if (ev.time - last_click_time < long_press_time) {
-            slow_press ();
-            active = false;
-        }
-
-        if (timeout > 0) {
-            Source.remove (timeout);
-            timeout = 0;
-        }
-
-        return false;
-    }
-
-    private bool on_button_press_event (Gdk.EventButton ev) {
-        /* If the button is kept pressed, don't make the user wait when there's no action */
-        int max_press_time = long_press_time;
-        if (ev.button == 1 || ev.button == 3) {
-            active = true;
-        }
-
-        if (timeout == 0 && ev.button == 1) {
-            last_click_time = ev.time;
-            timeout = Timeout.add (max_press_time, () => {
-                /* long click */
-                timeout = 0;
-                popup_menu (ev);
-                return GLib.Source.REMOVE;
-            });
-        }
-
-        if (ev.button == 3) {
-            /* right_click */
-            right_click (ev);
-            popup_menu (ev);
-        }
-        return true;
-
     }
 
     private bool on_mnemonic_activate (bool group_cycling) {
