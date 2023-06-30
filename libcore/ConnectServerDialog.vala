@@ -1,23 +1,9 @@
 /*
-* Copyright (c) 2015-2018 elementary LLC. (https://elementary.io)
-*
-* This program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU Lesser General Public
-* License as published by the Free Software Foundation; either
-* version 3 of the License, or (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-* General Public License for more details.
-*
-* You should have received a copy of the GNU General Public
-* License along with this program; if not, write to the
-* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-* Boston, MA 02110-1335 USA.
-*
-* Authored by: Corentin Noël <corentin@elementary.io>
-*/
+ * SPDX-License-Identifier: GPL-3.0
+ * SPDX-FileCopyrightText: 2015-2023 elementary, Inc. (https://elementary.io)
+ *
+ * Authored by: Corentin Noël <corentin@elementary.io>
+ */
 
 public class PF.ConnectServerDialog : Granite.Dialog {
     [Flags]
@@ -110,12 +96,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
     public string server_uri {get; private set; default = "";}
 
     public ConnectServerDialog (Gtk.Window window) {
-        Object (
-            transient_for: window
-        );
-
-        show_all ();
-        type_combobox.active = 0;
+        Object (transient_for: window);
     }
 
     construct {
@@ -135,7 +116,9 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             placeholder_text = _("Server name or IP address")
         };
 
-        var server_label = new DetailLabel (_("Server:"), server_entry);
+        var server_label = new Gtk.Label (_("Server:")) {
+            xalign = 1
+        };
 
         port_spinbutton = new Gtk.SpinButton.with_range (0, ushort.MAX, 1) {
             digits = 0,
@@ -143,49 +126,51 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             update_policy = Gtk.SpinButtonUpdatePolicy.IF_VALID
         };
 
-        var port_label = new DetailLabel (_("Port:"), port_spinbutton) {
+        var port_label = new Gtk.Label (_("Port:")) {
             xalign = 1
         };
 
-        var port_grid = new Gtk.Grid () {
-            column_spacing = 6,
+        var port_box = new Gtk.Box (HORIZONTAL, 6) {
             margin_start = 6
         };
-
-        port_grid.add (port_label);
-        port_grid.add (port_spinbutton);
+        port_box.add (port_label);
+        port_box.add (port_spinbutton);
 
         port_revealer = new Gtk.Revealer () {
+            child = port_box,
             transition_type = Gtk.RevealerTransitionType.SLIDE_RIGHT
         };
 
-        port_revealer.add (port_grid);
-
-        var server_port_grid = new Gtk.Grid ();
-        server_port_grid.add (server_entry);
-        server_port_grid.add (port_revealer);
+        var server_port_box = new Gtk.Box (HORIZONTAL, 0);
+        server_port_box.add (server_entry);
+        server_port_box.add (port_revealer);
 
         var type_store = new Gtk.ListStore (2, typeof (MethodInfo), typeof (string));
 
         type_combobox = new Gtk.ComboBox.with_model (type_store);
+
         var renderer = new Gtk.CellRendererText ();
         type_combobox.pack_start (renderer, true);
         type_combobox.add_attribute (renderer, "text", 1);
 
-        var type_label = new DetailLabel (_("Type:"), type_combobox);
+        var type_label = new Gtk.Label (_("Type:")) {
+            xalign = 1
+        };
 
         share_entry = new Gtk.Entry () {
             placeholder_text = _("Name of share on server (Optional)")
         };
 
-        var share_label = new DetailLabel (_("Share:"), share_entry);
+        var share_label = new_detailed_label (_("Share:"), share_entry);
 
         folder_entry = new Gtk.Entry () {
             placeholder_text = _("Path of shared folder on server (Optional)"),
             text = "/"
         };
 
-        var folder_label = new DetailLabel (_("Folder:"), folder_entry);
+        var folder_label = new Gtk.Label (_("Folder:")) {
+            xalign = 1
+        };
 
         user_header_label = new Granite.HeaderLabel (_("User Details"));
 
@@ -194,14 +179,14 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             text = "WORKGROUP",
             placeholder_text = _("Name of Windows domain")
         };
-        var domain_label = new DetailLabel (_("Domain name:"), domain_entry);
+        var domain_label = new_detailed_label (_("Domain name:"), domain_entry);
 
         user_entry = new Granite.ValidatedEntry () {
             is_valid = true,
             text = Environment.get_user_name (),
             placeholder_text = _("Name of user on server")
         };
-        var user_label = new DetailLabel (_("User name:"), user_entry);
+        var user_label = new_detailed_label (_("User name:"), user_entry);
 
         password_entry = new Granite.ValidatedEntry () {
             input_purpose = Gtk.InputPurpose.PASSWORD,
@@ -209,15 +194,14 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             is_valid = true
         };
 
-        var password_label = new DetailLabel (_("Password:"), password_entry);
+        var password_label = new_detailed_label (_("Password:"), password_entry);
 
         remember_checkbutton = new Gtk.CheckButton.with_label (_("Remember this password"));
 
         remember_revealer = new Gtk.Revealer () {
+            child = remember_checkbutton,
             transition_type = Gtk.RevealerTransitionType.SLIDE_DOWN
         };
-
-        remember_revealer.add (remember_checkbutton);
 
         cancel_button = new Gtk.Button.with_label (_("Cancel"));
         cancel_button.clicked.connect (on_cancel_clicked);
@@ -236,12 +220,11 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         continue_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         continue_button.clicked.connect (on_continue_clicked);
 
-        var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
-            layout_style = Gtk.ButtonBoxStyle.END,
-            margin_top = 24,
-            spacing = 6
+        var button_box = new Gtk.Box (HORIZONTAL, 6) {
+            halign = END,
+            homogeneous = true,
+            margin_top = 24
         };
-
         button_box.add (cancel_button);
         button_box.add (connect_button);
         button_box.add (continue_button);
@@ -259,7 +242,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         grid.attach (type_label, 0, 2);
         grid.attach (type_combobox, 1, 2);
         grid.attach (server_label, 0, 3);
-        grid.attach (server_port_grid, 1, 3);
+        grid.attach (server_port_box, 1, 3);
 
         grid.attach (share_label, 0, 4);
         grid.attach (share_entry, 1, 4);
@@ -282,22 +265,19 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         var connecting_label = new Gtk.Label (_("Connecting…"));
 
-        var connecting_grid = new Gtk.Grid () {
-            orientation = Gtk.Orientation.VERTICAL,
-            row_spacing = 6,
-            halign = Gtk.Align.CENTER,
-            valign = Gtk.Align.CENTER
+        var connecting_box = new Gtk.Box (VERTICAL, 6) {
+            halign = CENTER,
+            valign = CENTER
         };
-
-        connecting_grid.add (connecting_label);
-        connecting_grid.add (connecting_spinner);
+        connecting_box.add (connecting_label);
+        connecting_box.add (connecting_spinner);
 
         stack = new Gtk.Stack () {
             transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
         };
 
         stack.add_named (grid, "content");
-        stack.add_named (connecting_grid, "connecting");
+        stack.add_named (connecting_box, "connecting");
 
         var content_area = get_content_area ();
         content_area.border_width = 0;
@@ -305,6 +285,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         content_area.margin_bottom = 2;
         content_area.add (stack);
         content_area.add (button_box);
+        content_area.show_all ();
 
         default_width = 400;
 
@@ -321,6 +302,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         }
 
         type_combobox.changed.connect (() => type_changed ());
+        type_combobox.active = 0;
 
         server_entry.changed.connect (() => {
             server_entry.is_valid = server_entry.text.length > 3;
@@ -611,19 +593,13 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         }
     }
 
-    private class DetailLabel : Gtk.Label {
-        public Gtk.Widget? linked_widget {get; construct;}
+    private Gtk.Label new_detailed_label (string label, Gtk.Widget linked_widget) {
+        var _label = new Gtk.Label (label) {
+            xalign = 1
+        };
 
-        public DetailLabel (string label, Gtk.Widget linked_widget) {
-           Object (
-                label: label,
-                linked_widget: linked_widget
-            );
-        }
+        linked_widget.bind_property ("visible", _label, "visible", SYNC_CREATE);
 
-        construct {
-            xalign = 1;
-            linked_widget.bind_property ("visible", this, "visible", GLib.BindingFlags.SYNC_CREATE);
-        }
+        return _label;
     }
 }
