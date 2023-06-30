@@ -527,9 +527,10 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         tab_view.selected_page = tab;
         /* Capturing ViewContainer object reference in closure prevents its proper destruction
          * so capture its unique id instead */
-        var id = content.id;
+        // var id = content.id;
         content.tab_name_changed.connect ((tab_name) => {
-            set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
+            check_for_tabs_with_the_same_name ();
+            // set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
         });
 
         content.loading.connect ((is_loading) => {
@@ -589,45 +590,105 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         return -1;
     }
 
-    private string check_for_tab_with_same_name (int id, string path) {
-        if (path == Files.INVALID_TAB_NAME) {
-             return path;
-        }
-
-        var new_label = Path.get_basename (path);
+    /** Compare every tab label with every other and resolve ambiguities **/
+    private void check_for_tabs_with_same_name () {
+        // Take list copy so foreach clauses can be nested safely
+        // var copy_tabs = tab_view.tabs.copy ();
         for (uint i = 0; i < tab_view.n_pages; i++) {
+        // foreach (unowned var tab in tab_view.tabs) {
             var tab = (Adw.TabPage)(tab_view.pages.get_item (i));
-            var content = (ViewContainer)(tab.child);
-            if (content.id != id) {
-                string content_path = content.tab_name;
-                string content_label = Path.get_basename (content_path);
-                if (tab.title == new_label) {
-                    if (content_path != path) {
-                        new_label = disambiguate_name (new_label, path, content_path); /*Relabel calling tab */
-                        if (content_label == tab.title) {
-                            /* Also relabel conflicting tab (but not before this function finishes) */
-                            Idle.add_full (GLib.Priority.LOW, () => {
-                                var unique_name = disambiguate_name (content_label, content_path, path);
-                                set_tab_label (unique_name, tab, content_path);
-                                return GLib.Source.REMOVE;
-                            });
-                        }
-                    }
-                } else if (content_label == new_label &&
-                           content_path == path &&
-                           content_label != tab.title) {
+            unowned var content = (ViewContainer)(tab.child);
+            if (content.tab_name == Files.INVALID_TAB_NAME) {
+                set_tab_label (content.tab_name, tab, content.tab_name);
+                continue;
+            }
 
-                    /* Revert to short label when possible */
-                    Idle.add_full (GLib.Priority.LOW, () => {
-                        set_tab_label (content_label, tab, content_path);
-                        return GLib.Source.REMOVE;
-                    });
+            var path = content.location.get_path ();
+            if (path == null) { // e.g. for uris like network://
+                set_tab_label (content.tab_name, tab, content.tab_name);
+                continue;
+            }
+            var basename = Path.get_basename (path);
+
+            // Ignore content not named from the path
+            if (!content.tab_name.has_suffix (basename)) {
+                set_tab_label (content.tab_name, tab, content.tab_name);
+                continue;
+            }
+
+            // Tab label defaults to the basename.
+            set_tab_label (basename, tab, content.tab_name);
+
+            // Compare with every other tab for same label
+            for (uint j = 0; j < tab_view.n_pages; j++) {
+                var tab2 = (Adw.TabPage)(tab_view.pages.get_item (j));
+                unowned var content2 = (ViewContainer)(tab2.child);
+            // foreach (unowned var tab2 in copy_tabs) {
+                // var content2 = (ViewContainer)(tab2.page);
+                if (content2 == content || content2.tab_name == Files.INVALID_TAB_NAME) {
+                    continue;
+                }
+
+                var path2 = content2.location.get_path ();
+                if (path2 == null) { // e.g. for uris like network://
+                    continue;
+                }
+                var basename2 = Path.get_basename (path2);
+
+                // Ignore content not named from the path
+                if (!content2.tab_name.has_suffix (basename2)) {
+                    continue;
+                }
+
+                if (basename2 == basename && path2 != path) {
+                    set_tab_label (FileUtils.disambiguate_uri (path2, path), tab2, content2.tab_name);
+                    set_tab_label (FileUtils.disambiguate_uri (path, path2), tab, content.tab_name);
                 }
             }
         }
 
-        return new_label;
+        return;
     }
+
+    // private string check_for_tab_with_same_name (int id, string path) {
+    //     if (path == Files.INVALID_TAB_NAME) {
+    //          return path;
+    //     }
+
+    //     var new_label = Path.get_basename (path);
+    //     for (uint i = 0; i < tab_view.n_pages; i++) {
+    //         var tab = (Adw.TabPage)(tab_view.pages.get_item (i));
+    //         var content = (ViewContainer)(tab.child);
+    //         if (content.id != id) {
+    //             string content_path = content.tab_name;
+    //             string content_label = Path.get_basename (content_path);
+    //             if (tab.title == new_label) {
+    //                 if (content_path != path) {
+    //                     new_label = disambiguate_name (new_label, path, content_path); /*Relabel calling tab */
+    //                     if (content_label == tab.title) {
+    //                         /* Also relabel conflicting tab (but not before this function finishes) */
+    //                         Idle.add_full (GLib.Priority.LOW, () => {
+    //                             var unique_name = disambiguate_name (content_label, content_path, path);
+    //                             set_tab_label (unique_name, tab, content_path);
+    //                             return GLib.Source.REMOVE;
+    //                         });
+    //                     }
+    //                 }
+    //             } else if (content_label == new_label &&
+    //                        content_path == path &&
+    //                        content_label != tab.title) {
+
+    //                 /* Revert to short label when possible */
+    //                 Idle.add_full (GLib.Priority.LOW, () => {
+    //                     set_tab_label (content_label, tab, content_path);
+    //                     return GLib.Source.REMOVE;
+    //                 });
+    //             }
+    //         }
+    //     }
+
+    //     return new_label;
+    // }
 
     /* Just to append "as Administrator" when appropriate */
     private void set_tab_label (string label, Adw.TabPage tab, string? tooltip = null) {
