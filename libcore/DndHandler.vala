@@ -283,7 +283,7 @@ namespace Files {
                 // text = DndHandler.data_to_string (selection_data.get_data_with_length ());
                 var string_val = Value (typeof (string));
                 try {
-                    if (cp.get_value (out string_val)) { //FIXME Valadoc has ref instead of out
+                    if (cp.get_value (ref string_val)) {
                         text = string_val.get_string ();
                     }
                 } catch (Error e) {
