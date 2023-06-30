@@ -45,21 +45,21 @@ public class Files.RenamerListBox : Gtk.ListBox {
                 xalign = 0.0f
             };
 
-            var arrow_image = new Gtk.Image.from_icon_name ("go-next-symbolic", Gtk.IconSize.MENU);
+            var arrow_image = new Gtk.Image.from_icon_name ("go-next-symbolic") {
+                icon_size = Gtk.IconSize.NORMAL
+            };
 
             var status_image = new Gtk.Image () {
                 halign = Gtk.Align.END
             };
 
-            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
-                margin = 6
-            };
-            box.pack_start (oldname_label);
-            box.pack_end (status_image);
-            box.pack_end (newname_label);
-            box.set_center_widget (arrow_image); // Should not pack center widget
-            add (box);
-            show_all ();
+            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+            // box.pack_start (oldname_label);
+            // box.pack_end (status_image);
+            // box.pack_end (newname_label);
+            // box.set_center_widget (arrow_image); // Should not pack center widget
+            set_child (box);
+            // show_all ();
 
             notify["new-name"].connect (() => {
                 newname_label.label = new_name;
@@ -95,14 +95,14 @@ public class Files.RenamerListBox : Gtk.ListBox {
         selection_mode = Gtk.SelectionMode.NONE;
         set_sort_func (sort_func);
         invalidate_sort ();
-        show_all ();
+        // show_all ();
 
         notify["sortby"].connect (invalidate_sort);
     }
 
     public RenamerListRow add_file (Files.File file) {
         var row = new RenamerListRow (file);
-        add (row);
+        append (row);
         return row;
     }
 
