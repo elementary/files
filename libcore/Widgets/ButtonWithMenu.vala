@@ -40,7 +40,7 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
         mnemonic_activate.connect (on_mnemonic_activate);
 
         var press_gesture = new Gtk.GestureMultiPress (this) {
-            button = 1
+            button = Gdk.BUTTON_PRIMARY
         };
         press_gesture.released.connect (() => {
             slow_press ();
@@ -48,7 +48,7 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
         });
 
         var secondary_click_gesture = new Gtk.GestureMultiPress (this) {
-            button = 3
+            button = Gdk.BUTTON_SECONDARY
         };
         secondary_click_gesture.pressed.connect (() => {
             popup_menu ();
