@@ -286,20 +286,20 @@ public class PF.ConnectServerDialog : Gtk.Widget {
 
         var connecting_label = new Gtk.Label (_("Connecting…"));
 
-        var connecting_grid = new Gtk.Box (Gtk.Orientation.VERTICAL, 6) {
+        var connecting_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6) {
             halign = Gtk.Align.CENTER,
             valign = Gtk.Align.CENTER
         };
 
-        connecting_grid.append (connecting_label);
-        connecting_grid.append (connecting_spinner);
+        connecting_box.append (connecting_label);
+        connecting_box.append (connecting_spinner);
 
         stack = new Gtk.Stack () {
             transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
         };
 
         stack.add_named (grid, "content");
-        stack.add_named (connecting_grid, "connecting");
+        stack.add_named (connecting_box, "connecting");
 
         var content_area = _dialog.get_content_area ();
         content_area.margin_end = content_area.margin_start = 12;
