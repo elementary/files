@@ -138,8 +138,8 @@ public class PF.ConnectServerDialog : Gtk.Window {
         var port_box = new Gtk.Box (HORIZONTAL, 6) {
             margin_start = 6
         };
-        port_box.add (port_label);
-        port_box.add (port_spinbutton);
+        port_box.append (port_label);
+        port_box.append (port_spinbutton);
 
         port_revealer = new Gtk.Revealer () {
             child = port_box,
@@ -147,8 +147,8 @@ public class PF.ConnectServerDialog : Gtk.Window {
         };
 
         var server_port_box = new Gtk.Box (HORIZONTAL, 0);
-        server_port_box.add (server_entry);
-        server_port_box.add (port_revealer);
+        server_port_box.append (server_entry);
+        server_port_box.append (port_revealer);
 
         var type_store = new Gtk.ListStore (2, typeof (MethodInfo), typeof (string));
 
