@@ -20,7 +20,10 @@
 */
 
 public class Files.RenamerModifier : Object {
-    protected class EditWidget : Gtk.Bin {
+    protected class EditWidget : Gtk.Widget {
+        static construct {
+            set_layout_manager_type (typeof (Gtk.BinLayout));
+        }
         public RenamerModifier modifier { get; construct; }
 
         public EditWidget (RenamerModifier modifier) {
