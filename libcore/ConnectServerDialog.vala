@@ -279,10 +279,22 @@ remember_checkbutton = new Gtk.CheckButton.with_label (_("Remember this password
         stack.add_named (grid, "content");
         stack.add_named (connecting_box, "connecting");
 
-        var content_area = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
+        var content_area = new Gtk.Box (Gtk.Orientation.VERTICAL, 12) {
+            margin_top = 12,
+            margin_end = 12,
+            margin_start = 12,
+            margin_bottom = 12
+        };
         content_area.append (stack);
         content_area.append (button_box);
-        content_area.set_parent (this);
+
+        var handle = new Gtk.WindowHandle () {
+            child = content_area
+        };
+
+        add_css_class ("dialog");
+        child = handle;
+        titlebar = new Gtk.Grid () { visible = false };
 
         /* skip methods that don't have corresponding gvfs uri schemes */
         unowned string[] supported_schemes = GLib.Vfs.get_default ().get_supported_uri_schemes ();
