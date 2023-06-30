@@ -381,7 +381,7 @@ public class PF.ConnectServerDialog : Gtk.Widget {
         connect_button.visible = true;
         continue_button.visible = false;
         connect_button.sensitive = valid_entries ();
-        set_default_widget (connect_button)
+        _dialog.set_default_widget (connect_button);
         // connect_button.grab_default ();
     }
 
