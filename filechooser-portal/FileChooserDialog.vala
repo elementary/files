@@ -98,12 +98,12 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
             tooltip_markup = "Next",
             sensitive = false
         };
-        next_button.add_css_class ("flat");
+        next_button.add_css_class (Granite.STYLE_CLASS_FLAT);
 
         header = new Gtk.HeaderBar () {
             title_widget = title_widget
         };
-        header.add_css_class ("flat");
+        header.add_css_class (Granite.STYLE_CLASS_FLAT);
         header.pack_start (previous_button);
         header.pack_start (next_button);
 
@@ -118,7 +118,7 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
             use_underline = true,
             halign = Gtk.Align.END
         };
-        accept_button.add_css_class ("suggested-action");
+        accept_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
 
         filter_box = new Gtk.ComboBoxText ();
 

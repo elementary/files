@@ -465,7 +465,7 @@ public class Files.FileChooserPortal : Object {
             };
 
         var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
-        replace_button.get_style_context ().add_class ("destructive-action");
+        replace_button.get_style_context ().add_class (Granite.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
         return replace_dialog;
     }

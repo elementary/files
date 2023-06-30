@@ -141,8 +141,7 @@ public class PF.ConnectServerDialog : Gtk.Widget {
             message_type = Gtk.MessageType.INFO,
             revealed = false
         };
-        //TODO Insert correct css class
-        info_bar.add_css_class ("frame");
+        info_bar.add_css_class (Granite.STYLE_CLASS_FRAME);
         info_bar.add_child (info_label);
 
         var server_header_label = new Granite.HeaderLabel (_("Server Details"));
@@ -226,6 +225,7 @@ public class PF.ConnectServerDialog : Gtk.Widget {
         remember_checkbutton = new Gtk.CheckButton.with_label (_("Remember this password"));
 
         remember_revealer = new Gtk.Revealer () {
+            child = remember_checkbutton,
             transition_type = Gtk.RevealerTransitionType.SLIDE_DOWN
         };
 
@@ -235,13 +235,11 @@ public class PF.ConnectServerDialog : Gtk.Widget {
         cancel_button.clicked.connect (on_cancel_clicked);
 
         connect_button = new Gtk.Button.with_label (_("Connect"));
-        //TODO Insert correct css class
-        connect_button.add_css_class ("suggested-action");
+        connect_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
         connect_button.clicked.connect (on_connect_clicked);
 
         continue_button = new Gtk.Button.with_label (_("Continue"));
-        //TODO Insert correct css class
-        continue_button.add_css_class ("suggested-action");
+        continue_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
         continue_button.clicked.connect (on_continue_clicked);
 
         var button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
@@ -383,6 +381,7 @@ public class PF.ConnectServerDialog : Gtk.Widget {
         connect_button.visible = true;
         continue_button.visible = false;
         connect_button.sensitive = valid_entries ();
+        set_default_widget (connect_button)
         // connect_button.grab_default ();
     }
 

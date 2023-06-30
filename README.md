@@ -16,7 +16,7 @@ You'll need the following dependencies:
 * libgee-0.8-dev
 * libgit2-glib-1.0-dev
 * libglib2.0-dev
-* libgranite-dev >= 6.1.0
+* libgranite-7-dev
 * libgtk-4-dev
 * libadwaita-1-dev
 * libnotify-dev
