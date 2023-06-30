@@ -25,7 +25,7 @@ jobs:
       run: |
         apt update
         apt install -y libcloudproviders-dev libdbus-glib-1-dev libnotify-dev libpango1.0-dev libplank-dev
-        apt install -y libgala-dev libgee-0.8-dev libglib2.0-dev libgranite-7-dev libgtk-4-dev libadwaita-1-dev libhandy-1-dev libcanberra-dev libsqlite3-dev
+        apt install -y libgala-dev libgee-0.8-dev libglib2.0-dev libgranite-7-dev libgtk-4-dev libadwaita-1-dev libcanberra-dev libsqlite3-dev
         apt install -y meson valac
     - name: Build
       env:
