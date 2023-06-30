@@ -161,7 +161,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             placeholder_text = _("Name of share on server (Optional)")
         };
 
-        var share_label = new DetailLabel (_("Share:"), share_entry);
+        var share_label = new_detailed_label (_("Share:"), share_entry);
 
         folder_entry = new Gtk.Entry () {
             placeholder_text = _("Path of shared folder on server (Optional)"),
@@ -179,14 +179,14 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             text = "WORKGROUP",
             placeholder_text = _("Name of Windows domain")
         };
-        var domain_label = new DetailLabel (_("Domain name:"), domain_entry);
+        var domain_label = new_detailed_label (_("Domain name:"), domain_entry);
 
         user_entry = new Granite.ValidatedEntry () {
             is_valid = true,
             text = Environment.get_user_name (),
             placeholder_text = _("Name of user on server")
         };
-        var user_label = new DetailLabel (_("User name:"), user_entry);
+        var user_label = new_detailed_label (_("User name:"), user_entry);
 
         password_entry = new Granite.ValidatedEntry () {
             input_purpose = Gtk.InputPurpose.PASSWORD,
@@ -194,7 +194,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             is_valid = true
         };
 
-        var password_label = new DetailLabel (_("Password:"), password_entry);
+        var password_label = new_detailed_label (_("Password:"), password_entry);
 
         remember_checkbutton = new Gtk.CheckButton.with_label (_("Remember this password"));
 
@@ -593,19 +593,13 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         }
     }
 
-    private class DetailLabel : Gtk.Label {
-        public Gtk.Widget? linked_widget {get; construct;}
+    private Gtk.Label new_detailed_label (string label, Gtk.Widget linked_widget) {
+        var _label = new Gtk.Label (label) {
+            xalign = 1
+        };
 
-        public DetailLabel (string label, Gtk.Widget linked_widget) {
-           Object (
-                label: label,
-                linked_widget: linked_widget
-            );
-        }
+        linked_widget.bind_property ("visible", _label, "visible", SYNC_CREATE);
 
-        construct {
-            xalign = 1;
-            linked_widget.bind_property ("visible", this, "visible", GLib.BindingFlags.SYNC_CREATE);
-        }
+        return _label;
     }
 }
