@@ -89,12 +89,14 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
         title_widget.append (location_bar);
 
         var previous_button = new Gtk.Button.from_icon_name ("go-previous-symbolic") {
+            pixel_size = 24,
             tooltip_markup = "Previous",
             sensitive = false
         };
         previous_button.add_css_class (Granite.STYLE_CLASS_FLAT);
 
         var next_button = new Gtk.Button.from_icon_name ("go-next-symbolic") {
+            pixel_size = 24,
             tooltip_markup = "Next",
             sensitive = false
         };
