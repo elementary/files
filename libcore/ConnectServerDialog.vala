@@ -202,7 +202,7 @@ public class PF.ConnectServerDialog : Gtk.Window {
 
         var password_label = new_detailed_label (_("Password:"), password_entry);
 
-remember_checkbutton = new Gtk.CheckButton.with_label (_("Remember this password"));
+        remember_checkbutton = new Gtk.CheckButton.with_label (_("Remember this password"));
 
         remember_revealer = new Gtk.Revealer () {
             child = remember_checkbutton,
