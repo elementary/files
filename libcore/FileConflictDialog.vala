@@ -187,8 +187,7 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
 
         replace_button = (Gtk.Button) add_button (_("Replace"), ResponseType.REPLACE);
-        //TODO Use correct css class
-        replace_button.add_css_class ("destructive-action");
+        replace_button.add_css_class (Granite.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
         var comparison_grid = new Gtk.Grid () {
             column_spacing = 6,
