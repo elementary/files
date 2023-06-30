@@ -47,7 +47,7 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
         }
     }
 
-    private Adw.HeaderBar header;
+    private Gtk.HeaderBar header;
     private View.Chrome.BasicLocationBar location_bar;
     private Gtk.FileChooserWidget chooser;
     private Gtk.TreeView tree_view;
@@ -100,7 +100,7 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
         };
         next_button.add_css_class ("flat");
 
-        header = new Adw.HeaderBar () {
+        header = new Gtk.HeaderBar () {
             title_widget = title_widget
         };
         header.add_css_class ("flat");
