@@ -79,7 +79,6 @@ namespace Files {
                 child = widget
             };
             content_box.prepend (overlay);
-            overlay.child = widget;
         }
 
         construct {
