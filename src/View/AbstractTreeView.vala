@@ -232,7 +232,6 @@ namespace Files {
             int height = rect.height;
              /* Note: is_blank_at_pos () returns "true" on the whitespace below and
              * above text pixels, which we do not want. We deal with this later.*/
-            var is_blank = tree.is_blank_at_pos ((int)x, (int)y, null, null, null, null);
             // Ensure blank area continues across row division
             is_blank = is_blank || cy < 5 || cy > height - 5;
 
