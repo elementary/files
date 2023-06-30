@@ -1118,7 +1118,7 @@ namespace Files {
                 var rename_dialog = new Files.RenamerDialog (selected_files) {
                     transient_for = slot.window
                 };
-                rename_dialog.run ();
+                rename_dialog.present ();
                 rename_dialog.destroy ();
             } else {
                 rename_file (selected_files.data);
