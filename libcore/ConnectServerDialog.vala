@@ -19,10 +19,7 @@
 * Authored by: Corentin Noël <corentin@elementary.io>
 */
 
-public class PF.ConnectServerDialog : Gtk.Widget {
-// Gtk.Dialog is final type and cannot be subclassed.
-// public class PF.ConnectServerDialog : Granite.Dialog {
-
+public class PF.ConnectServerDialog : Gtk.Window {
 
     [Flags]
     private enum WidgetsFlag {
@@ -112,28 +109,17 @@ public class PF.ConnectServerDialog : Gtk.Widget {
     private bool needs_password = false; // Whether to allow blank password
 
     public string server_uri {get; private set; default = "";}
-    private Gtk.Dialog _dialog;
-    public bool modal {
-        get {
-            return _dialog.modal;
-        }
-
-        set {
-            _dialog.modal = value;
-        }
-    }
 
     public signal void response (Gtk.ResponseType response);
 
     public ConnectServerDialog (Gtk.Window window) {
-        Object ();
-        _dialog.transient_for = window;
-
+        Object (
+            transient_for: window
+        );
     }
 
     construct {
-        _dialog = new Granite.Dialog ();
-        _dialog.set_parent (this);
+        default_width = 400;
 
         info_label = new Gtk.Label (null);
 
@@ -301,13 +287,10 @@ public class PF.ConnectServerDialog : Gtk.Widget {
         stack.add_named (grid, "content");
         stack.add_named (connecting_box, "connecting");
 
-        var content_area = _dialog.get_content_area ();
-        content_area.margin_end = content_area.margin_start = 12;
-        content_area.margin_bottom = 2;
+        var content_area = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
         content_area.append (stack);
         content_area.append (button_box);
-
-        // default_width = 400;
+        content_area.set_parent (this);
 
         /* skip methods that don't have corresponding gvfs uri schemes */
         unowned string[] supported_schemes = GLib.Vfs.get_default ().get_supported_uri_schemes ();
@@ -381,8 +364,7 @@ public class PF.ConnectServerDialog : Gtk.Widget {
         connect_button.visible = true;
         continue_button.visible = false;
         connect_button.sensitive = valid_entries ();
-        _dialog.set_default_widget (connect_button);
-        // connect_button.grab_default ();
+        set_default_widget (connect_button);
     }
 
     private void verify_details () {
@@ -395,7 +377,7 @@ public class PF.ConnectServerDialog : Gtk.Widget {
 
         continue_button.visible = true;
         continue_button.sensitive = false; /* something has to change */
-        // continue_button.grab_default ();
+        set_default_widget (continue_button);
 
         show_info ();
         loop.run ();
