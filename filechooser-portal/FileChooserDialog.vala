@@ -79,6 +79,7 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
     }
 
     construct {
+        add_css_class ("dialog");
         previous_files = new Queue<GLib.File> ();
         next_paths = new Queue<GLib.File> ();
 
@@ -89,18 +90,18 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
         title_widget.append (location_bar);
 
         var previous_button = new Gtk.Button.from_icon_name ("go-previous-symbolic") {
-            pixel_size = 24,
             tooltip_markup = "Previous",
             sensitive = false
         };
         previous_button.add_css_class (Granite.STYLE_CLASS_FLAT);
+        previous_button.add_css_class (Granite.STYLE_CLASS_LARGE_ICONS);
 
         var next_button = new Gtk.Button.from_icon_name ("go-next-symbolic") {
-            pixel_size = 24,
             tooltip_markup = "Next",
             sensitive = false
         };
         next_button.add_css_class (Granite.STYLE_CLASS_FLAT);
+        next_button.add_css_class (Granite.STYLE_CLASS_LARGE_ICONS);
 
         header = new Gtk.HeaderBar () {
             title_widget = title_widget
