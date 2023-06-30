@@ -97,7 +97,7 @@ public class Files.RenamerListBox : Gtk.Box {
         };
         list_box.set_sort_func (sort_func);
         list_box.invalidate_sort ();
-        list_box.set_parent (this); 
+        list_box.set_parent (this);
         // show_all ();
 
         notify["sortby"].connect (list_box.invalidate_sort);
