@@ -19,7 +19,7 @@
  *
 */
 
-public class Files.RenamerListBox : Gtk.ListBox {
+public class Files.RenamerListBox : Gtk.Box {
     public class RenamerListRow : Gtk.ListBoxRow {
         public string old_name { get; construct; }
         public string new_name { get; set construct; }
@@ -87,17 +87,20 @@ public class Files.RenamerListBox : Gtk.ListBox {
     }
 
     /* RenamerListBox */
-
+    public Gtk.ListBox list_box { get; construct; }
     public SortBy sortby { get; set; default = SortBy.NAME; }
     construct {
-        vexpand = true;
-        can_focus = false;
-        selection_mode = Gtk.SelectionMode.NONE;
-        set_sort_func (sort_func);
-        invalidate_sort ();
+        list_box = new Gtk.ListBox () {
+            vexpand = true,
+            can_focus = false,
+            selection_mode = Gtk.SelectionMode.NONE
+        };
+        list_box.set_sort_func (sort_func);
+        list_box.invalidate_sort ();
+        list_box.set_parent (this); 
         // show_all ();
 
-        notify["sortby"].connect (invalidate_sort);
+        notify["sortby"].connect (list_box.invalidate_sort);
     }
 
     public RenamerListRow add_file (Files.File file) {
