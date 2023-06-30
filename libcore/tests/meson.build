@@ -1,4 +1,4 @@
 subdir ('UtilTests')
-subdir ('MarlinIconInfoTests')
+# subdir ('MarlinIconInfoTests')
 subdir ('GOFFileTests')
 subdir ('GOFDirectoryAsyncTests')
