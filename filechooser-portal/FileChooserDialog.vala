@@ -92,7 +92,7 @@ public class Files.FileChooserDialog : Gtk.Window, Xdp.Request {
             tooltip_markup = "Previous",
             sensitive = false
         };
-        previous_button.add_css_class ("flat");
+        previous_button.add_css_class (Granite.STYLE_CLASS_FLAT);
 
         var next_button = new Gtk.Button.from_icon_name ("go-next-symbolic") {
             tooltip_markup = "Next",
