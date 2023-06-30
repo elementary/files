@@ -28,8 +28,6 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
         }
     }
 
-    // private int long_press_time = Gtk.Settings.get_default ().gtk_double_click_time * 2;
-
     public ButtonWithMenu (string icon_name) {
         image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.LARGE_TOOLBAR);
     }
@@ -44,8 +42,7 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
         var press_gesture = new Gtk.GestureMultiPress (this) {
             button = 1
         };
-        press_gesture.released.connect ((n_press, x, y) => {
-            active = true;
+        press_gesture.released.connect (() => {
             slow_press ();
             press_gesture.set_state (CLAIMED);
         });
@@ -93,9 +90,9 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
         return true;
     }
 
-    protected new void popup_menu (Gdk.EventButton? ev = null) {
-        menu.popup_at_widget (this, Gdk.Gravity.SOUTH_WEST, Gdk.Gravity.NORTH_WEST, ev);
-
+    protected new void popup_menu () {
+        active = true;
+        menu.popup_at_widget (this, SOUTH_WEST, NORTH_WEST, Gtk.get_current_event ());
         menu.select_first (false);
     }
 }
