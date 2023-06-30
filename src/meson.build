@@ -29,7 +29,7 @@ pantheon_files_exec = executable (
     'Dialogs/BulkRenamer/Renamer.vala',
     'Dialogs/BulkRenamer/RenamerModifier.vala',
     'Dialogs/BulkRenamer/RenamerDialog.vala',
-    'Dialogs/BulkRenamer/RenamerListBoxRow.vala',
+    'Dialogs/BulkRenamer/RenamerListRow.vala',
 
     'Utils/MimeActions.vala',
     'Utils/Permissions.vala',
