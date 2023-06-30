@@ -163,18 +163,18 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
 
         var reset_button = new Gtk.Button.with_label (_("Reset"));
 
-        var expander_grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
+        var expander_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
             margin_top = 6,
             margin_bottom = 6
         };
 
-        expander_grid.append (rename_entry);
-        expander_grid.append (reset_button);
+        expander_box.append (rename_entry);
+        expander_box.append (reset_button);
 
         var expander = new Gtk.Expander.with_mnemonic (_("_Select a new name for the destination")) {
-            child = expander_grid
+            child = expander_box
         };
-        expander.child = expander_grid;
+        expander.child = expander_box;
 
         apply_all_checkbutton = new Gtk.CheckButton.with_label (_("Apply this action to all files"));
 
