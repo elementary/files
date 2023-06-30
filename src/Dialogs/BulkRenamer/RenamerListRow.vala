@@ -42,9 +42,7 @@ public class Files.RenamerListRow : Gtk.ListBoxRow {
             hexpand = true
         };
 
-        var status_image = new Gtk.Image () {
-            halign = Gtk.Align.END
-        };
+        var status_image = new Gtk.Image ();
 
         var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
             margin_top = 6,
