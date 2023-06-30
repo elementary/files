@@ -220,12 +220,11 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         continue_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         continue_button.clicked.connect (on_continue_clicked);
 
-        var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
-            layout_style = Gtk.ButtonBoxStyle.END,
-            margin_top = 24,
-            spacing = 6
+        var button_box = new Gtk.Box (HORIZONTAL, 6) {
+            halign = END,
+            homogeneous = true,
+            margin_top = 24
         };
-
         button_box.add (cancel_button);
         button_box.add (connect_button);
         button_box.add (continue_button);
