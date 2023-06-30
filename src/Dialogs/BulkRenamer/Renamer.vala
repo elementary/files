@@ -53,7 +53,8 @@ public class Files.Renamer : Object {
     }
 
     public void rename_files () {
-        listbox.get_children ().@foreach ((child) => {
+        var child = listbox.get_first_child ();
+        while (child != null) {
             var row = (RenamerListBox.RenamerListRow)child;
             unowned string output_name = row.new_name;
             var file = row.file;
@@ -71,7 +72,9 @@ public class Files.Renamer : Object {
                     }
                 );
             }
-        });
+
+            child = child.get_next_sibling ();
+        }
     }
 
     private string strip_extension (string filename, out string extension) {
@@ -119,7 +122,10 @@ public class Files.Renamer : Object {
         bool has_invalid = false;
 
         /* Apply basename to each item */
-        listbox.get_children ().@foreach ((child) => {
+        var child = listbox.get_first_child ();
+        var n_children = 0;
+        while (child != null) {
+            n_children++;
             var row = (RenamerListBox.RenamerListRow)child;
             string input_name = "";
             string extension = "";
@@ -135,22 +141,27 @@ public class Files.Renamer : Object {
             }
 
             row.new_name = input_name;
-        });
+
+            child = child.get_next_sibling ();
+        }
 
         /* Apply each modifier to each item (in required order) */
-        var n_children = listbox.get_children ().length ();
         foreach (var mod in modifier_chain) {
             uint index = mod.is_reversed ? n_children - 1 : 0;
             int incr = mod.is_reversed ? -1 : 1;
-            listbox.get_children ().@foreach ((child) => {
+            child = listbox.get_first_child ();
+            while (child != null) {
                 var row = (RenamerListBox.RenamerListRow)child;
                 row.new_name = mod.rename (row.new_name, index, row.file);
                 index += incr;
-            });
+
+                child = child.get_next_sibling ();
+            }
         }
 
         /* Reapply extension and check validity */
-        listbox.get_children ().@foreach ((child) => {
+        child = listbox.get_first_child ();
+        while (child != null) {
             var row = (RenamerListBox.RenamerListRow)child;
             row.new_name = row.new_name.concat (row.extension);
             if (row.new_name == previous_final_name ||
@@ -165,7 +176,9 @@ public class Files.Renamer : Object {
             }
 
             previous_final_name = row.new_name;
-        });
+
+            child = child.get_next_sibling ();
+        }
 
         can_rename = !has_invalid;
         updating = false;
