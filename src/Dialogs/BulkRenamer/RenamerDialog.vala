@@ -56,9 +56,9 @@ public class Files.RenamerDialog : Granite.Dialog {
     private Gtk.Revealer suffix_revealer;
     private Gtk.Entry basename_entry;
     private Gtk.Entry replacement_entry;
-    private Gtk.RadioButton modify_basename_toggle;
-    private Gtk.RadioButton new_basename_toggle;
-    private Gtk.RadioButton original_basename_toggle;
+    private Gtk.ToggleButton modify_basename_toggle;
+    private Gtk.ToggleButton new_basename_toggle;
+    private Gtk.ToggleButton original_basename_toggle;
     private Gtk.Revealer sortby_revealer;
     private SimpleActionGroup actions;
 
@@ -83,7 +83,7 @@ public class Files.RenamerDialog : Granite.Dialog {
         var cancel_button = add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
 
         var rename_button = add_button (_("Rename"), Gtk.ResponseType.APPLY);
-        rename_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        rename_button.get_style_context ().add_class ("suggested-action");
         renamer.bind_property (
             "can-rename", rename_button, "sensitive", GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE
         );
@@ -101,62 +101,64 @@ public class Files.RenamerDialog : Granite.Dialog {
         suffix_menumodel.append (_("Fixed Text"), Action.print_detailed_name ("renamer.add-text", suffix_var));
 
         var prefix_button = new Gtk.MenuButton () {
-            always_show_image = true,
-            image = new Gtk.Image.from_icon_name ("list-add", Gtk.IconSize.BUTTON),
+            // always_show_image = true,
+            // image = new Gtk.Image.from_icon_name ("list-add", Gtk.IconSize.BUTTON),
             label = _("Add Prefix"),
             menu_model = prefix_menumodel
         };
         prefix_revealer = new Gtk.Revealer () {
             reveal_child = true
         };
-        prefix_revealer.add (prefix_button);
+        prefix_revealer.set_child (prefix_button);
         prefix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        prefix_box.pack_end (prefix_revealer, false, false);
+        // prefix_box.pack_end (prefix_revealer, false, false);
 
         var suffix_button = new Gtk.MenuButton () {
-            always_show_image = true,
-            image = new Gtk.Image.from_icon_name ("list-add", Gtk.IconSize.BUTTON),
+            // always_show_image = true,
+            // image = new Gtk.Image.from_icon_name ("list-add", Gtk.IconSize.BUTTON),
             label = _("Add Suffix"),
             menu_model = suffix_menumodel
         };
         suffix_revealer = new Gtk.Revealer () {
             reveal_child = true
         };
-        suffix_revealer.add (suffix_button);
+        suffix_revealer.set_child (suffix_button);
         suffix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        suffix_box.pack_start (suffix_revealer, false, false);
+        // suffix_box.pack_start (suffix_revealer, false, false);
 
         var basename_label = new Gtk.Label (_("Basename:"));
         // In Gtk4 replace RadioButtons with linked ToggleButtons
-        original_basename_toggle = new Gtk.RadioButton (null) {
+        original_basename_toggle = new Gtk.ToggleButton () {
             label = NC_("bulk-rename", "Keep"),
             active = true
         };
-        original_basename_toggle.set_mode (false);
+        // original_basename_toggle.set_mode (false);
 
-        new_basename_toggle = new Gtk.RadioButton.from_widget (original_basename_toggle) {
+        new_basename_toggle = new Gtk.ToggleButton () {
+            group = original_basename_toggle,
             label = NC_("bulk-rename", "Replace")
         };
-        new_basename_toggle.set_mode (false);
+        // new_basename_toggle.set_mode (false);
 
-        modify_basename_toggle = new Gtk.RadioButton.from_widget (original_basename_toggle) {
+        modify_basename_toggle = new Gtk.ToggleButton () {
+            group = original_basename_toggle,
             label = NC_("bulk-rename", "Modify")
         };
-        modify_basename_toggle.set_mode (false);
+        // modify_basename_toggle.set_mode (false);
 
         var toggle_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         toggle_box.get_style_context ().add_class ("linked");
-        toggle_box.pack_start (original_basename_toggle);
-        toggle_box.pack_start (new_basename_toggle);
-        toggle_box.pack_start (modify_basename_toggle);
+        // toggle_box.pack_start (original_basename_toggle);
+        // toggle_box.pack_start (new_basename_toggle);
+        // toggle_box.pack_start (modify_basename_toggle);
 
         var basename_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
             halign = Gtk.Align.CENTER,
             margin_bottom = 24
         };
 
-        basename_box.pack_start (basename_label);
-        basename_box.pack_end (toggle_box);
+        // basename_box.pack_start (basename_label);
+        // basename_box.pack_end (toggle_box);
 
         var original_label = new Gtk.Label (_("Original Basename"));
         basename_entry = new Gtk.Entry ();
@@ -164,7 +166,7 @@ public class Files.RenamerDialog : Granite.Dialog {
             placeholder_text = _("Replacement text")
         };
 
-        var replacement_entry_stack = new Gtk.Stack () { homogeneous = true };
+        var replacement_entry_stack = new Gtk.Stack ();
         replacement_entry_stack.add_named (replacement_entry, "entry");
         replacement_entry_stack.add_named (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), "box");
 
@@ -173,46 +175,57 @@ public class Files.RenamerDialog : Granite.Dialog {
         basename_entry_stack.add_named (basename_entry, "entry");
 
         /* Filename list */
-        var list_scrolled_window = new Gtk.ScrolledWindow (null, null) {
+        var list_scrolled_window = new Gtk.ScrolledWindow () {
             hexpand = true,
             min_content_width = 400,
             min_content_height = 200,
             hscrollbar_policy = Gtk.PolicyType.NEVER,
             can_focus = false
         };
-        list_scrolled_window.add (renamer.listbox);
+        list_scrolled_window.set_child (renamer.listbox);
 
         var frame = new Gtk.Frame (null);
-        frame.add (list_scrolled_window);
+        frame.set_child (list_scrolled_window);
 
         var sortby_label = new Gtk.Label (_("Number in order of:"));
 
-        //TODO Replace RadioButtons with linked RadioButtons in Gtk4
+        //TODO Replace RadioButtons with linked ToggleButtons in Gtk4
         /// TRANSLATORS: Used as "Number in order of: Name"
-        var name_check = new Gtk.RadioButton.with_label (null, NC_("bulk-rename", "Name")) {margin_start = 6};
+        var name_check = new Gtk.ToggleButton.with_label (NC_("bulk-rename", "Name")) {
+            margin_start = 6
+        };
         /// TRANSLATORS: Used as "Number in order of: Date created"
-        var created_check = new Gtk.RadioButton.with_label_from_widget (name_check, NC_("bulk-rename", "Date created")) {margin_start = 6};
+        var created_check = new Gtk.ToggleButton.with_label (NC_("bulk-rename", "Date created")) {
+            group = name_check,
+            margin_start = 6
+        };
         /// TRANSLATORS: Used as "Number in order of: Date modified"
-        var modified_check = new Gtk.RadioButton.with_label_from_widget (name_check, NC_("bulk-rename", "Date modified")) {margin_start = 6};
+        var modified_check = new Gtk.ToggleButton.with_label (NC_("bulk-rename", "Date modified")) {
+            group = name_check,
+            margin_start = 6
+        };
         /// TRANSLATORS: Used as "Number in order of: Size"
-        var size_check = new Gtk.RadioButton.with_label_from_widget (name_check, NC_("bulk-rename", "Size")) {margin_start = 6};
+        var size_check = new Gtk.ToggleButton.with_label (NC_("bulk-rename", "Size")) {
+            group = name_check,
+            margin_start = 6
+        };
 
         var sortby_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3) {
             margin_bottom = 6,
             margin_top = 12
         };
-        sortby_box.pack_start (sortby_label);
-        sortby_box.pack_start (name_check);
-        sortby_box.pack_start (created_check);
-        sortby_box.pack_start (modified_check);
-        sortby_box.pack_start (size_check);
+        // sortby_box.pack_start (sortby_label);
+        // sortby_box.pack_start (name_check);
+        // sortby_box.pack_start (created_check);
+        // sortby_box.pack_start (modified_check);
+        // sortby_box.pack_start (size_check);
 
         sortby_revealer = new Gtk.Revealer () {
             hexpand = false,
             reveal_child = false,
             halign = Gtk.Align.START
         };
-        sortby_revealer.add (sortby_box);
+        sortby_revealer.set_child (sortby_box);
 
         var list_grid = new Gtk.Grid () {
             column_homogeneous = true
@@ -235,11 +248,11 @@ public class Files.RenamerDialog : Granite.Dialog {
         controls_grid.attach (replacement_entry_stack, 1, 1, 1, 1);
 
         var content_box = get_content_area ();
-        content_box.pack_start (basename_box);
-        content_box.pack_start (controls_grid);
-        content_box.pack_start (list_grid);
-        content_box.margin = 10;
-        content_box.show_all ();
+        // content_box.pack_start (basename_box);
+        // content_box.pack_start (controls_grid);
+        // content_box.pack_start (list_grid);
+        // content_box.margin = 10;
+        // content_box.show_all ();
 
 
         basename_entry_stack.visible_child_name = "label";
@@ -292,7 +305,7 @@ public class Files.RenamerDialog : Granite.Dialog {
                                 e.message,
                                 new ThemedIcon ("dialog-error")
                             );
-                            dlg.run ();
+                            dlg.present ();
                             dlg.destroy ();
                         }
                     }
@@ -305,30 +318,30 @@ public class Files.RenamerDialog : Granite.Dialog {
             }
         });
 
-        key_press_event.connect ((event) => {
-            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
-            bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
-            bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
-            bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
-            Gdk.ModifierType consumed_mods;
-            switch (KeyUtils.map_key (event, out consumed_mods)) {
-                case Gdk.Key.Escape:
-                    if (mods == 0) {
-                        response (Gtk.ResponseType.REJECT);
-                    }
+        // key_press_event.connect ((event) => {
+        //     var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+        //     bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
+        //     bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
+        //     bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
+        //     Gdk.ModifierType consumed_mods;
+        //     switch (KeyUtils.map_key (event, out consumed_mods)) {
+        //         case Gdk.Key.Escape:
+        //             if (mods == 0) {
+        //                 response (Gtk.ResponseType.REJECT);
+        //             }
 
-                    return true;
-                default:
-                    break;
-            }
+        //             return true;
+        //         default:
+        //             break;
+        //     }
 
 
-            return false;
-        });
+        //     return false;
+        // });
 
-        delete_event.connect (() => {
-            response (Gtk.ResponseType.REJECT);
-        });
+        // delete_event.connect (() => {
+        //     response (Gtk.ResponseType.REJECT);
+        // });
 
         notify["n-number-seq"].connect (() => {
             sortby_revealer.reveal_child = n_number_seq > 0;
@@ -363,17 +376,18 @@ public class Files.RenamerDialog : Granite.Dialog {
         }
         renamer.modifier_chain.add (mod);
         var mod_button = new Gtk.Button.with_label (mod.mode.to_string ()) {
-            always_show_image = true,
-            image = new Gtk.Image.from_icon_name ("pan-down-symbolic", Gtk.IconSize.MENU),
-            image_position = Gtk.PositionType.RIGHT,
+            // always_show_image = true,
+            // image = new Gtk.Image.from_icon_name ("pan-down-symbolic", Gtk.IconSize.MENU),
+            // image_position = Gtk.PositionType.RIGHT,
             margin_start = 3,
             margin_end = 3
         };
         mod.set_data<Gtk.Button> ("button", mod_button);
         mod_button.clicked.connect (() => {
-            var edit_dialog = new Gtk.Popover (mod_button);
+            var edit_dialog = new Gtk.Popover ();
+            edit_dialog.set_parent (mod_button);
             var apply_button = new Gtk.Button.with_label (_("Apply"));
-            apply_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DEFAULT);
+            apply_button.get_style_context ().add_class ("default");
             apply_button.clicked.connect (() => {
                 edit_dialog.popdown ();
             });
@@ -389,58 +403,58 @@ public class Files.RenamerDialog : Granite.Dialog {
 
             });
             var button_box = new Gtk.ActionBar ();
-            button_box.pack_end (apply_button);
-            button_box.pack_start (delete_button);
-            button_box.pack_end (cancel_button);
+            // button_box.pack_end (apply_button);
+            // button_box.pack_start (delete_button);
+            // button_box.pack_end (cancel_button);
 
             var edit_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
-            edit_box.pack_start (mod.get_modifier_widget ());
-            edit_box.pack_start (button_box);
+            // edit_box.pack_start (mod.get_modifier_widget ());
+            // edit_box.pack_start (button_box);
 
-            edit_dialog.add (edit_box);
+            edit_dialog.set_child (edit_box);
             edit_dialog.closed.connect (() => {
                 schedule_view_update ();
-                edit_dialog.remove (edit_box);
+                // edit_dialog.remove (edit_box);
                 edit_dialog.destroy ();
-                edit_box.destroy ();
+                // edit_box.destroy ();
             });
 
-            edit_dialog.key_press_event.connect ((event) => {
-                switch (event.keyval) {
-                    case Gdk.Key.Return:
-                    case Gdk.Key.KP_Enter:
-                        edit_dialog.popdown ();
+            // edit_dialog.key_press_event.connect ((event) => {
+            //     switch (event.keyval) {
+            //         case Gdk.Key.Return:
+            //         case Gdk.Key.KP_Enter:
+            //             edit_dialog.popdown ();
 
-                        return true;
-                    case Gdk.Key.Escape:
-                        mod.cancel_edit ();
-                        edit_dialog.popdown ();
+            //             return true;
+            //         case Gdk.Key.Escape:
+            //             mod.cancel_edit ();
+            //             edit_dialog.popdown ();
 
-                        return true;
+            //             return true;
 
-                    default:
-                        return false;
-                }
-            });
-            edit_dialog.show_all ();
+            //         default:
+            //             return false;
+            //     }
+            // });
+            // edit_dialog.show_all ();
             edit_dialog.popup ();
             return;
         });
 
-        mod_button.show_all ();
+        // mod_button.show_all ();
 
         if (mod.pos == RenamePosition.PREFIX) {
             // In Gtk3 required to keep add buttons on outside. In Gtk4, can use append and prepend
             prefix_box.remove (prefix_revealer);
-            prefix_box.pack_end (mod_button, false, false);
-            prefix_box.pack_end (prefix_revealer, false, false);
+            // prefix_box.pack_end (mod_button, false, false);
+            // prefix_box.pack_end (prefix_revealer, false, false);
         } else {
             suffix_box.remove (suffix_revealer);
-            suffix_box.pack_start (mod_button, false, false);
-            suffix_box.pack_start (suffix_revealer, false, false);
+            // suffix_box.pack_start (mod_button, false, false);
+            // suffix_box.pack_start (suffix_revealer, false, false);
         }
 
-        controls_grid.show_all ();
+        // controls_grid.show_all ();
         controls_grid.queue_draw ();
         schedule_view_update ();
     }
