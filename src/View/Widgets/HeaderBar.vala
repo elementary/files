@@ -58,7 +58,7 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
         }
     }
 
-    private Adw.HeaderBar headerbar;
+    private Gtk.HeaderBar headerbar;
     private LocationBar? location_bar;
     private Chrome.ButtonWithMenu button_forward;
     private Chrome.ButtonWithMenu button_back;
@@ -76,7 +76,7 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
     }
 
     construct {
-        headerbar = new Adw.HeaderBar ();
+        headerbar = new Gtk.HeaderBar ();
         button_back = new View.Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic");
 
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
