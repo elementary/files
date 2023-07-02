@@ -62,7 +62,7 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
                 message_dialog.destroy ();
             });
 
-            message_dialog.show ();
+            message_dialog.present ();
             return confirmed;
         }
 
