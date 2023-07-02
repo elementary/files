@@ -44,7 +44,7 @@ namespace PF {
             foreach (unowned string title in buttons) {
                 unowned Gtk.Widget button = dialog.add_button (title, response_id);
                 if (title == DELETE || title == DELETE_ALL || title == EMPTY_TRASH) {
-                    button.add_css_class ("destructive-action");
+                    button.add_css_class (Granite.STYLE_CLASS_DESTRUCTIVE_ACTION);
                 }
 
                 response_id++;
