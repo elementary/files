@@ -166,7 +166,7 @@ namespace PF {
                 dialog.destroy ();
             });
 
-            dialog.show ();
+            dialog.present ();
             return Source.REMOVE;
         });
 
