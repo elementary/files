@@ -35,10 +35,12 @@ namespace PF {
         }
 
         Idle.add (() => {
-            var dialog = new Granite.MessageDialog.with_image_from_icon_name (primary_text,
-                                                                              secondary_text,
-                                                                              image_name,
-                                                                              Gtk.ButtonsType.NONE);
+            var dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                primary_text,
+                secondary_text,
+                image_name,
+                Gtk.ButtonsType.NONE
+            );
             dialog.transient_for = parent_window;
             int response_id = 0;
             foreach (unowned string title in buttons) {
