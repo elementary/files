@@ -158,7 +158,7 @@ public class Files.Progress.UIHandler : Object {
             if (!info.is_cancelled) {
                 var title = info.title;  /* Do not keep ref to info */
                 Timeout.add (100, () => {
-                    if (!(((Gtk.Root)(application.get_active_window ()).get_focus () != null))) { //??Gtk4
+                    if (!application.get_active_window ().is_active ) {
                         show_operation_complete_notification (title, active_infos < 1);
                     }
 
