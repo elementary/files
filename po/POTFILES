@@ -62,7 +62,7 @@ src/ZeitgeistManager.vala
 
 src/Dialogs/AbstractPropertiesDialog.vala
 src/Dialogs/BulkRenamer/RenamerDialog.vala
-src/Dialogs/BulkRenamer/RenamerListBox.vala
+src/Dialogs/BulkRenamer/RenamerListRow.vala
 src/Dialogs/BulkRenamer/RenamerModifier.vala
 src/Dialogs/ChooseAppDialog.vala
 src/Dialogs/PropertiesWindow.vala
