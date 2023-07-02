@@ -68,16 +68,12 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
 
     construct {
         var app_instance = (Gtk.Application)(GLib.Application.get_default ());
-        button_back = new View.Chrome.ButtonWithMenu.from_icon_name (
-            "go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR
-        );
+        button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic");
 
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
-        button_forward = new View.Chrome.ButtonWithMenu.from_icon_name (
-            "go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR
-        );
+        button_forward = new View.Chrome.ButtonWithMenu ("go-next-symbolic");
 
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);

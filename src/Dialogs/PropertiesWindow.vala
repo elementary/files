@@ -65,12 +65,12 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private GLib.List<DeepCount>? deep_count_directories = null;
 
     private Gee.Set<string>? mimes;
-    private ValueLabel contains_value;
-    private ValueLabel resolution_value;
-    private ValueLabel size_value;
-    private ValueLabel type_value;
-    private KeyLabel contains_key_label;
-    private KeyLabel type_key_label;
+    private Gtk.Label contains_value;
+    private Gtk.Label resolution_value;
+    private Gtk.Label size_value;
+    private Gtk.Label type_value;
+    private Gtk.Label contains_key_label;
+    private Gtk.Label type_key_label;
     private string ftype; /* common type */
     private Gtk.Spinner spinner;
     private int size_warning = 0;
@@ -522,18 +522,18 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
     private void construct_info_panel (Files.File file) {
         /* Have to have these separate as size call is async */
-        var size_key_label = new KeyLabel (_("Size:"));
+        var size_key_label = make_key_label (_("Size:"));
 
         spinner = new Gtk.Spinner ();
         spinner.halign = Gtk.Align.START;
 
-        size_value = new ValueLabel ("");
+        size_value = make_value_label ("");
 
-        type_key_label = new KeyLabel (_("Type:"));
-        type_value = new ValueLabel ("");
+        type_key_label = make_key_label (_("Type:"));
+        type_value = make_value_label ("");
 
-        contains_key_label = new KeyLabel (_("Contains:"));
-        contains_value = new ValueLabel ("");
+        contains_key_label = make_key_label (_("Contains:"));
+        contains_value = make_value_label ("");
 
         /* Dialog may get displayed after these labels are hidden so we set no_show_all to true */
         type_key_label.no_show_all = true;
@@ -556,8 +556,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             var time_created = FileUtils.get_formatted_time_attribute_from_info (file.info,
                                                                                  FileAttribute.TIME_CREATED);
             if (time_created != "") {
-                var key_label = new KeyLabel (_("Created:"));
-                var value_label = new ValueLabel (time_created);
+                var key_label = make_key_label (_("Created:"));
+                var value_label = make_value_label (time_created);
                 info_grid.attach (key_label, 0, n, 1, 1);
                 info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
                 n++;
@@ -567,8 +567,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                                                                                   FileAttribute.TIME_MODIFIED);
 
             if (time_modified != "") {
-                var key_label = new KeyLabel (_("Modified:"));
-                var value_label = new ValueLabel (time_modified);
+                var key_label = make_key_label (_("Modified:"));
+                var value_label = make_value_label (time_modified);
                 info_grid.attach (key_label, 0, n, 1, 1);
                 info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
                 n++;
@@ -579,8 +579,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             var deletion_date = FileUtils.get_formatted_time_attribute_from_info (file.info,
                                                                                   FileAttribute.TRASH_DELETION_DATE);
             if (deletion_date != "") {
-                var key_label = new KeyLabel (_("Deleted:"));
-                var value_label = new ValueLabel (deletion_date);
+                var key_label = make_key_label (_("Deleted:"));
+                var value_label = make_value_label (deletion_date);
                 info_grid.attach (key_label, 0, n, 1, 1);
                 info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
                 n++;
@@ -589,23 +589,23 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         var ftype = filetype (file);
 
-        var mimetype_key = new KeyLabel (_("Media type:"));
-        var mimetype_value = new ValueLabel (ftype);
+        var mimetype_key = make_key_label (_("Media type:"));
+        var mimetype_value = make_value_label (ftype);
         info_grid.attach (mimetype_key, 0, n, 1, 1);
         info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
         n++;
 
         if (only_one && "image" in ftype) {
-            var resolution_key = new KeyLabel (_("Resolution:"));
-            resolution_value = new ValueLabel (resolution (file));
+            var resolution_key = make_key_label (_("Resolution:"));
+            resolution_value = make_value_label (resolution (file));
             info_grid.attach (resolution_key, 0, n, 1, 1);
             info_grid.attach_next_to (resolution_value, resolution_key, Gtk.PositionType.RIGHT, 3, 1);
             n++;
         }
 
         if (got_common_location ()) {
-            var location_key = new KeyLabel (_("Location:"));
-            var location_value = new ValueLabel (location (file));
+            var location_key = make_key_label (_("Location:"));
+            var location_value = make_value_label (location (file));
             location_value.ellipsize = Pango.EllipsizeMode.MIDDLE;
             location_value.max_width_chars = 32;
             info_grid.attach (location_key, 0, n, 1, 1);
@@ -614,16 +614,16 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         if (only_one && file.info.get_is_symlink ()) {
-            var key_label = new KeyLabel (_("Target:"));
-            var value_label = new ValueLabel (file.info.get_symlink_target ());
+            var key_label = make_key_label (_("Target:"));
+            var value_label = make_value_label (file.info.get_symlink_target ());
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;
         }
 
         if (file.is_trashed ()) {
-            var key_label = new KeyLabel (_("Original Location:"));
-            var value_label = new ValueLabel (original_location (file));
+            var key_label = make_key_label (_("Original Location:"));
+            var value_label = make_value_label (original_location (file));
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;
@@ -665,7 +665,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
             combo.changed.connect (combo_open_with_changed);
 
-            var key_label = new KeyLabel (_("Open with:"));
+            var key_label = make_key_label (_("Open with:"));
 
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (combo, key_label, Gtk.PositionType.RIGHT);
@@ -934,20 +934,20 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         if (owner_user_choice == null) {
             return null;
         } else {
-            var owner_user_label = new KeyLabel (_("Owner:"));
-            var group_combo_label = new KeyLabel (_("Group:"));
+            var owner_user_label = make_key_label (_("Owner:"));
+            var group_combo_label = make_key_label (_("Group:"));
             group_combo_label.margin_bottom = 12;
 
             var group_combo = create_group_choice ();
             group_combo.margin_bottom = 12;
 
-            var owner_label = new KeyLabel (_("Owner:"));
+            var owner_label = make_key_label (_("Owner:"));
             perm_button_user = create_perm_choice (Permissions.Type.USER);
 
-            var group_label = new KeyLabel (_("Group:"));
+            var group_label = make_key_label (_("Group:"));
             perm_button_group = create_perm_choice (Permissions.Type.GROUP);
 
-            var other_label = new KeyLabel (_("Everyone:"));
+            var other_label = make_key_label (_("Everyone:"));
             perm_button_other = create_perm_choice (Permissions.Type.OTHER);
 
             perm_code = new Gtk.Entry ();

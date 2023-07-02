@@ -62,7 +62,7 @@ src/ZeitgeistManager.vala
 
 src/Dialogs/AbstractPropertiesDialog.vala
 src/Dialogs/BulkRenamer/RenamerDialog.vala
-src/Dialogs/BulkRenamer/RenamerListBox.vala
+src/Dialogs/BulkRenamer/RenamerListRow.vala
 src/Dialogs/BulkRenamer/RenamerModifier.vala
 src/Dialogs/ChooseAppDialog.vala
 src/Dialogs/PropertiesWindow.vala
@@ -98,7 +98,6 @@ src/View/Sidebar/VolumelessMountRow.vala
 src/View/Widgets/AbstractEditableLabel.vala
 src/View/Widgets/BreadcrumbsEntry.vala
 src/View/Widgets/HeaderBar.vala
-src/View/Widgets/Label.vala
 src/View/Widgets/LocationBar.vala
 src/View/Widgets/MultiLineEditableLabel.vala
 src/View/Widgets/OverlayBar.vala
