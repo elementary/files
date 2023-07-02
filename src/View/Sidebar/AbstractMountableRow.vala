@@ -109,8 +109,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     construct {
-        unmount_eject_button = new Gtk.Button () {
-            icon_name = "media-eject-symbolic",
+        unmount_eject_button = new Gtk.Button.from_icon_name ("media-eject-symbolic") {
             tooltip_text = (can_eject ? _("Eject '%s'") : _("Unmount '%s'")).printf (custom_name)
         };
 
