@@ -49,7 +49,7 @@ public class PermissionButton : Gtk.Box {
         btn_exe.set_data ("permissiontype", permission_type);
         btn_exe.set_data ("permissionvalue", Permissions.Value.EXE);
 
-        add_css_class ("linked");
+        add_css_class (Granite.STYLE_CLASS_LINKED);
         append (btn_read);
         append (btn_write);
         append (btn_exe);
