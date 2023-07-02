@@ -37,7 +37,10 @@ public class Files.RenamerModifier : Object {
                 column_homogeneous = true,
                 column_spacing = 6,
                 row_spacing = 6
-                // margin = 12
+                margin_top = 12,
+                margin_end = 12,
+                margin_bottom = 12,
+                margin_start = 12
             };
             Gtk.Widget controls;
             var flags = BindingFlags.DEFAULT;
