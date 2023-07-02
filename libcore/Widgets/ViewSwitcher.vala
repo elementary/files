@@ -24,14 +24,12 @@
 namespace Files.View.Chrome {
     public class ViewSwitcher : Gtk.Box {
         public GLib.SimpleAction action { get; construct; }
-        private GLib.ListModel children;
         public ViewSwitcher (GLib.SimpleAction view_mode_action) {
             Object (action: view_mode_action);
         }
 
         construct {
-            children = observe_children ();
-            add_css_class ("linked");
+            add_css_class (Granite.STYLE_CLASS_LINKED);
 
             /* Grid View item */
             var id = (uint32)ViewMode.ICON;
@@ -46,6 +44,7 @@ namespace Files.View.Chrome {
             id = (uint32)ViewMode.LIST;
             var list_view_btn = new Gtk.ToggleButton () {
                 child = new Gtk.Image.from_icon_name ("view-list-symbolic"),
+                group = grid_view_btn,
                 tooltip_markup = get_tooltip_for_id (id, _("View as List"))
             };
             list_view_btn.toggled.connect (on_mode_changed);
@@ -56,6 +55,7 @@ namespace Files.View.Chrome {
             id = (uint32)ViewMode.MILLER_COLUMNS;
             var column_view_btn = new Gtk.ToggleButton () {
                 child = new Gtk.Image.from_icon_name ("view-column-symbolic"),
+                group = grid_view_btn,
                 tooltip_markup = get_tooltip_for_id (id, _("View in Columns"))
             };
             column_view_btn.toggled.connect (on_mode_changed);
@@ -83,12 +83,13 @@ namespace Files.View.Chrome {
         }
 
         public void set_mode (uint32 mode) {
-            for (uint i = 0; i < children.get_n_items (); i++) {
-                var child = children.get_item (i);
+            unowned var child = get_first_child ();
+            while (child != null) {
                 if (child.get_data<uint32> ("id") == mode) {
                     ((Gtk.ToggleButton)child).active = true;
                     action.activate (child.get_data<uint32> ("id"));
                 }
+                child = child.get_next_sibling ();
             }
         }
     }
