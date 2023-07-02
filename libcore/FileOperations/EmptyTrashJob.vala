@@ -54,8 +54,7 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
 
             message_dialog.transient_for = parent_window;
             unowned Gtk.Widget empty_button = message_dialog.add_button (EMPTY_TRASH, Gtk.ResponseType.YES);
-            //TODO Correct css class
-            empty_button.add_css_class ("destructive-action");
+            empty_button.add_css_class (Granite.STYLE_CLASS_DESTRUCTIVE_ACTION);
             bool confirmed = false;
             // Gtk.ResponseType response = (Gtk.ResponseType) message_dialog.run ();
             message_dialog.response.connect ((response_id) => {
