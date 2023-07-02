@@ -60,7 +60,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private Gdk.DragAction? current_suggested_action = null;
 
     protected Gtk.Grid content_grid;
-    protected Gtk.Box icon_label_grid;
+    protected Gtk.Grid icon_label_grid;
     protected Gtk.Stack label_stack;
     protected Gtk.Entry editable;
     protected Gtk.Label label;
@@ -151,9 +151,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         icon = new Gtk.Image.from_gicon (gicon);
 
-        icon_label_grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-        icon_label_grid.append (icon);
-        icon_label_grid.append (label_stack);
+        icon_label_grid = new Gtk.Grid () {
+            column_spacing = 6
+        };
+        icon_label_grid.attach (icon, 0, 0, 1, 2);
+        icon_label_grid.attach (label_stack, 1, 0);
 
 
 

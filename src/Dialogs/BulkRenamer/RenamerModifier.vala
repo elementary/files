@@ -36,7 +36,7 @@ public class Files.RenamerModifier : Object {
             var grid = new Gtk.Grid () {
                 column_homogeneous = true,
                 column_spacing = 6,
-                row_spacing = 6
+                row_spacing = 6,
                 margin_top = 12,
                 margin_end = 12,
                 margin_bottom = 12,

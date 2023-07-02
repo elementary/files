@@ -148,7 +148,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         storage_style_context.add_class ("inverted");
         storage_style_context.add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        icon_label_grid.append (storage_levelbar);
+        icon_label_grid.attach (storage_levelbar, 1, 1);
 
         volume_monitor.mount_removed.connect (on_mount_removed);
         volume_monitor.mount_added.connect (on_mount_added);
