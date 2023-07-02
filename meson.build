@@ -47,8 +47,6 @@ gee_dep = dependency('gee-0.8')
 gtk_dep = dependency('gtk4')
 granite_dep = dependency('granite-7', version: '>=7.0.0')
 adwaita_dep = dependency('libadwaita-1')
-# Handy dep kept temporarily while porting
-# handy_dep = dependency('libhandy-1', version: '>=1.4.0')
 
 common_deps = [
     glib_dep,
