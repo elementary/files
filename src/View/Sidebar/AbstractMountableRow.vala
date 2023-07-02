@@ -145,7 +145,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_FULL, 1);
 
         unowned var storage_style_context = storage_levelbar.get_style_context ();
-        storage_style_context.add_class ("flat");
+        storage_style_context.add_class (Granite.STYLE_CLASS_FLAT);
         storage_style_context.add_class ("inverted");
         storage_style_context.add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
