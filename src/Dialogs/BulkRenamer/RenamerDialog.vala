@@ -104,7 +104,7 @@ public class Files.RenamerDialog : Granite.Dialog {
             transition_type = SLIDE_LEFT
         };
 
-        prefix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        prefix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
         prefix_box.add (prefix_revealer);
 
         var suffix_button_box = new Gtk.Box (HORIZONTAL, 0);
@@ -123,7 +123,7 @@ public class Files.RenamerDialog : Granite.Dialog {
             transition_type = SLIDE_RIGHT
         };
 
-        suffix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        suffix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
         suffix_box.add (suffix_revealer);
 
         var basename_label = new Gtk.Label (_("Basename:"));
