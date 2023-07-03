@@ -34,7 +34,7 @@ namespace Files.View.Chrome {
             /* Grid View item */
             var id = (uint32)ViewMode.ICON;
             var grid_view_btn = new Gtk.ToggleButton () {
-                child = new Gtk.Image.from_icon_name ("view-grid-symbolic"),
+                icon_name = "view-grid-symbolic",
                 tooltip_markup = get_tooltip_for_id (id, _("View as Grid"))
             };
             grid_view_btn.toggled.connect (on_mode_changed);
@@ -43,7 +43,7 @@ namespace Files.View.Chrome {
             /* List View */
             id = (uint32)ViewMode.LIST;
             var list_view_btn = new Gtk.ToggleButton () {
-                child = new Gtk.Image.from_icon_name ("view-list-symbolic"),
+                icon_name = "view-list-symbolic",
                 group = grid_view_btn,
                 tooltip_markup = get_tooltip_for_id (id, _("View as List"))
             };
@@ -54,7 +54,7 @@ namespace Files.View.Chrome {
             /* Item 2 */
             id = (uint32)ViewMode.MILLER_COLUMNS;
             var column_view_btn = new Gtk.ToggleButton () {
-                child = new Gtk.Image.from_icon_name ("view-column-symbolic"),
+                icon_name = "view-column-symbolic",
                 group = grid_view_btn,
                 tooltip_markup = get_tooltip_for_id (id, _("View in Columns"))
             };
