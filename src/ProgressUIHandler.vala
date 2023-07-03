@@ -95,7 +95,7 @@ public class Files.Progress.UIHandler : Object {
             add_to_window (info);
             progress_window.present ();
         } else if (progress_window.visible) {
-                add_to_window (info);
+            add_to_window (info);
         }
 
         update_launcher (info, true);
@@ -105,7 +105,7 @@ public class Files.Progress.UIHandler : Object {
         ensure_window ();
 
         var progress_widget = new Progress.InfoWidget (info);
-        window_vbox.prepend (progress_widget);
+        window_vbox.append (progress_widget);
 
         progress_widget.cancelled.connect ((info) => {
             progress_info_finished_cb (info);
@@ -120,26 +120,27 @@ public class Files.Progress.UIHandler : Object {
 
     private void ensure_window () {
         if (progress_window == null) {
+            window_vbox = new Gtk.Box (VERTICAL, 12) {
+                margin_end = 10,
+                margin_start = 10
+            };
+
             /* This provides an undeletable, unminimisable window in which to show the info widgets */
             progress_window = new Granite.Dialog () {
                 resizable = false,
                 title = _("File Operations"),
-                icon_name = "system-file-manager"
+                icon_name = "system-file-manager",
+                transient_for = application.get_active_window ()
             };
 
-            window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
-
-            // progress_window.get_content_area ().set_border_width (10);
             progress_window.get_content_area ().append (window_vbox);
-            this.window_vbox.show ();
+            window_vbox.show ();
 
             // progress_window.delete_event.connect ((widget, event) => {
             // progress_window.close.connect ((widget) => {
             //     widget.hide ();
             // });
         }
-
-        progress_window.set_transient_for (application.get_active_window ());
     }
 
     private void progress_info_finished_cb (PF.Progress.Info info) {

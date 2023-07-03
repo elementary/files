@@ -77,12 +77,13 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
 
     construct {
         headerbar = new Gtk.HeaderBar ();
-        button_back = new View.Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic");
+        var app_instance = (Gtk.Application)(GLib.Application.get_default ());
+        button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic");
 
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.add_css_class ("flat");
 
-        button_forward = new View.Chrome.ButtonWithMenu.from_icon_name ("go-next-symbolic");
+        button_forward = new View.Chrome.ButtonWithMenu ("go-next-symbolic");
 
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.add_css_class ("flat");

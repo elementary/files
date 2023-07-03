@@ -35,7 +35,6 @@ namespace Files {
 
     public static Gtk.Label make_value_label (string label) {
         return new Gtk.Label (label) {
-            can_focus = true,
             halign = Gtk.Align.START,
             selectable = true,
             use_markup = true

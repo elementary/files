@@ -163,18 +163,16 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
 
         var reset_button = new Gtk.Button.with_label (_("Reset"));
 
-        var expander_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
+        var expander_box = new Gtk.Box (HORIZONTAL, 6) {
             margin_top = 6,
             margin_bottom = 6
         };
-
         expander_box.append (rename_entry);
         expander_box.append (reset_button);
 
         var expander = new Gtk.Expander.with_mnemonic (_("_Select a new name for the destination")) {
             child = expander_box
         };
-        expander.child = expander_box;
 
         apply_all_checkbutton = new Gtk.CheckButton.with_label (_("Apply this action to all files"));
 
@@ -212,15 +210,12 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         comparison_grid.attach (source_time_title_label, 1, 7, 1, 1);
         comparison_grid.attach (source_time_label, 2, 7, 1, 1);
 
-        var grid = new Gtk.Grid () {
-            column_spacing = 12,
-            row_spacing = 6
-        };
-        grid.attach (comparison_grid, 0, 0);
-        grid.attach (expander, 0, 1);
-        grid.attach (apply_all_checkbutton, 0, 2);
+        var box = new Gtk.Box (VERTICAL, 6);
+        box.append (comparison_grid);
+        box.append (expander);
+        box.append (apply_all_checkbutton);
 
-        custom_bin.append (grid);
+        custom_bin.append (box);
 
         source_type_label.bind_property ("visible", source_type_title_label, "visible");
         destination_type_label.bind_property ("visible", destination_type_title_label, "visible");

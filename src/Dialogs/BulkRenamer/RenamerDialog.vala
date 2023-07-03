@@ -352,13 +352,13 @@ public class Files.RenamerDialog : Granite.Dialog {
 
         name_check.toggled.connect (() => {
             if (size_check.active) {
-                renamer.listbox.sortby = SortBy.SIZE;
+                renamer.sortby = SortBy.SIZE;
             } else if (created_check.active) {
-                renamer.listbox.sortby = SortBy.CREATED;
+                renamer.sortby = SortBy.CREATED;
             } else if (modified_check.active) {
-                renamer.listbox.sortby = SortBy.MODIFIED;
+                renamer.sortby = SortBy.MODIFIED;
             } else {
-                renamer.listbox.sortby = SortBy.NAME;
+                renamer.sortby = SortBy.NAME;
             }
         });
 

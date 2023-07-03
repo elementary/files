@@ -169,14 +169,14 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
         } else {
             /* We're not able to gether the usage statistics, show an error
              * message to let the user know. */
-            var capacity_label = Files.make_key_label (_("Capacity:"));
-            var capacity_value = Files.make_value_label (_("Unknown"));
+            var capacity_label = make_key_label (_("Capacity:"));
+            var capacity_value = make_value_label (_("Unknown"));
 
-            var available_label = Files.make_key_label (_("Available:"));
-            var available_value = Files.make_value_label (_("Unknown"));
+            var available_label = make_key_label (_("Available:"));
+            var available_value = make_value_label (_("Unknown"));
 
-            var used_label = Files.make_key_label (_("Used:"));
-            var used_value = Files.make_value_label (_("Unknown"));
+            var used_label = make_key_label (_("Used:"));
+            var used_value = make_value_label (_("Unknown"));
 
             info_grid.attach (capacity_label, 0, line + 1, 1, 1);
             info_grid.attach_next_to (capacity_value, capacity_label, Gtk.PositionType.RIGHT);
