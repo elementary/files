@@ -29,14 +29,17 @@ public class Files.RenamerListRow : Gtk.ListBoxRow {
 
     construct {
         var oldname_label = new Gtk.Label (old_name) {
-            xalign = 0.0f
+            wrap = true,
+            xalign = 0
         };
 
         var newname_label = new Gtk.Label (new_name) {
-            xalign = 0.0f
+            wrap = true,
+            xalign = 0
         };
 
         size_group.add_widget (newname_label);
+        size_group.add_widget (oldname_label);
 
         var arrow_image = new Gtk.Image.from_icon_name ("go-next-symbolic", Gtk.IconSize.MENU) {
             hexpand = true
@@ -55,7 +58,6 @@ public class Files.RenamerListRow : Gtk.ListBoxRow {
         box.add (newname_label);
         box.add (status_image);
 
-        can_focus = false;
         child = box;
         show_all ();
 
