@@ -56,7 +56,6 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
             unowned Gtk.Widget empty_button = message_dialog.add_button (EMPTY_TRASH, Gtk.ResponseType.YES);
             empty_button.add_css_class (Granite.STYLE_CLASS_DESTRUCTIVE_ACTION);
             bool confirmed = false;
-            // Gtk.ResponseType response = (Gtk.ResponseType) message_dialog.run ();
             message_dialog.response.connect ((response_id) => {
                 confirmed = response_id == Gtk.ResponseType.YES;
                 message_dialog.destroy ();
