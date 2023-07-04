@@ -83,7 +83,7 @@ public class Files.RenamerDialog : Granite.Dialog {
         var cancel_button = add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
 
         var rename_button = add_button (_("Rename"), Gtk.ResponseType.APPLY);
-        rename_button.get_style_context ().add_class ("suggested-action");
+        rename_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
         renamer.bind_property (
             "can-rename", rename_button, "sensitive", GLib.BindingFlags.DEFAULT | GLib.BindingFlags.SYNC_CREATE
         );
