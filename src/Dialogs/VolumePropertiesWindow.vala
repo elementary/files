@@ -94,6 +94,5 @@ public class Files.View.VolumePropertiesWindow : AbstractPropertiesDialog {
         }
 
         create_storage_bar (info, 3);
-        // update_storage_block_size (used_space, Files.StorageBar.ItemDescription.FILES);
     }
 }
