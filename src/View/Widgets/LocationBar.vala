@@ -47,7 +47,6 @@ namespace Files.View.Chrome {
 
         uint focus_timeout_id = 0;
 
-        public signal void reload_request ();
         public signal void focus_file_request (GLib.File? file);
         public signal void escape ();
 
@@ -146,7 +145,9 @@ namespace Files.View.Chrome {
             if (has_focus) {
                 bread.activate ();
             } else {
-                reload_request ();
+                var app_instance = (Gtk.Application)(GLib.Application.get_default ());
+                var active_window = (Gtk.ApplicationWindow) app_instance.get_active_window ();
+                active_window.activate_action ("refresh", null);
             }
         }
 

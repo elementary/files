@@ -235,7 +235,6 @@ namespace Files.View {
                 current_tab.is_frozen = false;
                 uri_path_change_request (loc, flag);
             });
-            top_menu.reload_request.connect (action_reload);
             top_menu.focus_location_request.connect ((loc) => {
                 current_tab.focus_location_if_in_current_directory (loc, true);
             });

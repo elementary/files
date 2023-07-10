@@ -27,7 +27,6 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
     public signal void focus_location_request (GLib.File? location);
     public signal void path_change_request (string path, Files.OpenFlag flag);
     public signal void escape ();
-    public signal void reload_request ();
 
     public ViewSwitcher? view_switcher { get; construct; }
     public bool locked_focus { get; private set; default = false; }
@@ -237,10 +236,6 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
 
         button_back.slow_press.connect (() => {
             back (1);
-        });
-
-        location_bar.reload_request.connect (() => {
-            reload_request ();
         });
 
         location_bar.focus_file_request.connect ((file) => {
