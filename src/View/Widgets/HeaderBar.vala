@@ -22,8 +22,6 @@
 */
 
 public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
-    public signal void forward (int steps);
-    public signal void back (int steps); /* TODO combine using negative step */
     public signal void focus_location_request (GLib.File? location);
     public signal void path_change_request (string path, Files.OpenFlag flag);
     public signal void escape ();
@@ -232,11 +230,13 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         });
 
         button_forward.slow_press.connect (() => {
-            forward (1);
+            var active_window = (Gtk.ApplicationWindow) app_instance.get_active_window ();
+            active_window.activate_action ("forward", new Variant.int32 (1));
         });
 
         button_back.slow_press.connect (() => {
-            back (1);
+            var active_window = (Gtk.ApplicationWindow) app_instance.get_active_window ();
+            active_window.activate_action ("back", new Variant.int32 (1));
         });
 
         location_bar.reload_request.connect (() => {
@@ -325,7 +325,9 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
                            */
             var item = new Gtk.MenuItem.with_label (FileUtils.sanitize_path (path, null, false));
             item.activate.connect (() => {
-                back (cn);
+                var app_instance = (Gtk.Application)(GLib.Application.get_default ());
+                var active_window = (Gtk.ApplicationWindow) app_instance.get_active_window ();
+                active_window.activate_action ("back", new Variant.int32 (cn));
             });
 
             back_menu.insert (item, -1);
@@ -343,7 +345,9 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
             int cn = n++; /* For explanation look up */
             var item = new Gtk.MenuItem.with_label (FileUtils.sanitize_path (path, null, false));
             item.activate.connect (() => {
-                forward (cn);
+                var app_instance = (Gtk.Application)(GLib.Application.get_default ());
+                var active_window = (Gtk.ApplicationWindow) app_instance.get_active_window ();
+                active_window.activate_action ("forward", new Variant.int32 (cn));
             });
 
             forward_menu.insert (item, -1);

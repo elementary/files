@@ -42,7 +42,9 @@ namespace Files.View {
             {"singleclick-select", null, null, "false", change_state_single_click_select},
             {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
             {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
-            {"folders-before-files", null, null, "true", change_state_folders_before_files}
+            {"folders-before-files", null, null, "true", change_state_folders_before_files},
+            {"forward", action_forward, "i"},
+            {"back", action_back, "i"}
         };
 
         public uint window_number { get; construct; }
@@ -228,8 +230,6 @@ namespace Files.View {
             /* Connect and abstract signals to local ones
             /*/
 
-            top_menu.forward.connect ((steps) => { current_tab.go_forward (steps); });
-            top_menu.back.connect ((steps) => { current_tab.go_back (steps); });
             top_menu.escape.connect (grab_focus);
             top_menu.path_change_request.connect ((loc, flag) => {
                 current_tab.is_frozen = false;
@@ -751,6 +751,14 @@ namespace Files.View {
             ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
             current_tab.change_view_mode (mode);
             /* ViewContainer takes care of changing appearance */
+        }
+
+        private void action_back (SimpleAction action, Variant? param) {
+            current_tab.go_back (param.get_int32 ());
+        }
+
+        private void action_forward (SimpleAction action, Variant? param) {
+            current_tab.go_forward (param.get_int32 ());
         }
 
         private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
