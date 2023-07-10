@@ -230,13 +230,11 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         });
 
         button_forward.slow_press.connect (() => {
-            var active_window = (Gtk.ApplicationWindow) app_instance.get_active_window ();
-            active_window.activate_action ("forward", new Variant.int32 (1));
+            get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
         });
 
         button_back.slow_press.connect (() => {
-            var active_window = (Gtk.ApplicationWindow) app_instance.get_active_window ();
-            active_window.activate_action ("back", new Variant.int32 (1));
+            get_action_group ("win").activate_action ("back", new Variant.int32 (1));
         });
 
         location_bar.reload_request.connect (() => {
