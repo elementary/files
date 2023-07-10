@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 19:58+0000\n"
+"POT-Creation-Date: 2023-07-10 08:19-0700\n"
 "PO-Revision-Date: 2019-07-22 01:24+0000\n"
 "Last-Translator: Christopher Griffiths <chris@cgriff.co.uk>\n"
 "Language-Team: Welsh <https://l10n.elementary.io/projects/files/files/cy/>\n"
@@ -16,10 +16,10 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:380
+#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:185
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr ""
@@ -66,7 +66,6 @@ msgstr ""
 
 #: filechooser-portal/Main.vala:456
 #, fuzzy, c-format
-#| msgid "Replace file \"%s\"?"
 msgid "Replace “%s”?"
 msgstr "Amnewid ffeil \"%s\"?"
 
@@ -74,122 +73,122 @@ msgstr "Amnewid ffeil \"%s\"?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:46
+#: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
 msgstr "FTP Cyhoeddus"
 
-#: libcore/ConnectServerDialog.vala:52
+#: libcore/ConnectServerDialog.vala:38
 msgid "FTP (with login)"
 msgstr "FTP (gyda mewngofnodiad)"
 
-#: libcore/ConnectServerDialog.vala:59
+#: libcore/ConnectServerDialog.vala:45
 msgid "SSH"
 msgstr "SSH"
 
-#: libcore/ConnectServerDialog.vala:65
+#: libcore/ConnectServerDialog.vala:51
 msgid "AFP (Apple Filing Protocol)"
 msgstr "AFP (Protocol Ffeilio Apple)"
 
-#: libcore/ConnectServerDialog.vala:71
+#: libcore/ConnectServerDialog.vala:57
 msgid "Windows share"
 msgstr "Rhaniad Windows"
 
-#: libcore/ConnectServerDialog.vala:77
+#: libcore/ConnectServerDialog.vala:63
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: libcore/ConnectServerDialog.vala:84
+#: libcore/ConnectServerDialog.vala:70
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV Diogel (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:131
+#: libcore/ConnectServerDialog.vala:112
 msgid "Server Details"
 msgstr "Manylion Gweinydd"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:116
 msgid "Server name or IP address"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:138
+#: libcore/ConnectServerDialog.vala:119
 #, fuzzy
 msgid "Server:"
 msgstr "_Gweinydd:"
 
-#: libcore/ConnectServerDialog.vala:146
+#: libcore/ConnectServerDialog.vala:129
 #, fuzzy
 msgid "Port:"
 msgstr "_Porth:"
 
-#: libcore/ConnectServerDialog.vala:175 libcore/FileConflictDialog.vala:109
-#: libcore/FileConflictDialog.vala:143 src/Dialogs/PropertiesWindow.vala:532
+#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
+#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:532
 msgid "Type:"
 msgstr "Math:"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:161
 msgid "Name of share on server (Optional)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:164
 #, fuzzy
 msgid "Share:"
 msgstr "_Rhaniad:"
 
-#: libcore/ConnectServerDialog.vala:184
+#: libcore/ConnectServerDialog.vala:167
 msgid "Path of shared folder on server (Optional)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:188
+#: libcore/ConnectServerDialog.vala:171
 #, fuzzy
 msgid "Folder:"
 msgstr "_Plygell:"
 
-#: libcore/ConnectServerDialog.vala:190
+#: libcore/ConnectServerDialog.vala:175
 msgid "User Details"
 msgstr "Manylion Defnyddiwr"
 
-#: libcore/ConnectServerDialog.vala:195
+#: libcore/ConnectServerDialog.vala:180
 msgid "Name of Windows domain"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:197
+#: libcore/ConnectServerDialog.vala:182
 #, fuzzy
 msgid "Domain name:"
 msgstr "_Enw Parth:"
 
-#: libcore/ConnectServerDialog.vala:202
+#: libcore/ConnectServerDialog.vala:187
 msgid "Name of user on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:204
+#: libcore/ConnectServerDialog.vala:189
 #, fuzzy
 msgid "User name:"
 msgstr "Enw _Defnyddiwr:"
 
-#: libcore/ConnectServerDialog.vala:212
+#: libcore/ConnectServerDialog.vala:197
 #, fuzzy
 msgid "Password:"
 msgstr "Cyfrin_air:"
 
-#: libcore/ConnectServerDialog.vala:214
+#: libcore/ConnectServerDialog.vala:199
 #, fuzzy
 msgid "Remember this password"
 msgstr "_Cofio'r cyfrinair yma"
 
-#: libcore/ConnectServerDialog.vala:225
+#: libcore/ConnectServerDialog.vala:209
 #, fuzzy
 msgid "Connect"
 msgstr "Cy_sylltu"
 
-#: libcore/ConnectServerDialog.vala:232
+#: libcore/ConnectServerDialog.vala:216
 msgid "Continue"
 msgstr "Parhau"
 
-#: libcore/ConnectServerDialog.vala:283
+#: libcore/ConnectServerDialog.vala:266
 #, fuzzy
 msgid "Connecting…"
 msgstr "Yn cysylltu..."
 
-#: libcore/ConnectServerDialog.vala:391
+#: libcore/ConnectServerDialog.vala:373
 msgid "Please verify your user details."
 msgstr "Dilyswch eich manylion defnyddiwr."
 
@@ -214,12 +213,12 @@ msgstr ""
 msgid "Link Here"
 msgstr ""
 
-#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2336
+#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2335
 msgid "Name"
 msgstr ""
 
-#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:96
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:100
+#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
 msgid "Creation Date"
 msgstr ""
 
@@ -227,7 +226,7 @@ msgstr ""
 msgid "Last modification date"
 msgstr ""
 
-#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2341
+#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2340
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr ""
@@ -240,7 +239,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2351
+#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2350
 msgid "Date"
 msgstr ""
 
@@ -282,13 +281,11 @@ msgstr ""
 
 #: libcore/Enums.vala:270
 #, fuzzy
-#| msgid "Created:"
 msgid "Date created"
 msgstr "Crëwyd:"
 
 #: libcore/Enums.vala:272
 #, fuzzy
-#| msgid "Modified:"
 msgid "Date Modified"
 msgstr "Addaswyd:"
 
@@ -340,61 +337,61 @@ msgstr ""
 msgid "File conflict"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:97
+#: libcore/FileConflictDialog.vala:96
 msgid "Original file"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:99 libcore/FileConflictDialog.vala:133
+#: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
 #: src/Dialogs/PropertiesWindow.vala:525
 msgid "Size:"
 msgstr "Maint:"
 
-#: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
+#: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
 msgid "Last modified:"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:131
+#: libcore/FileConflictDialog.vala:130
 msgid "Replace with"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:165
+#: libcore/FileConflictDialog.vala:164
 msgid "Reset"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:177
+#: libcore/FileConflictDialog.vala:173
 msgid "_Select a new name for the destination"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:180
+#: libcore/FileConflictDialog.vala:177
 msgid "Apply this action to all files"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:182 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:183
+#: libcore/FileConflictDialog.vala:180
 msgid "Re_name"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:182
 msgid "Keep Newest"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:186
+#: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:190
+#: libcore/FileConflictDialog.vala:187
 msgid "Replace"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:299
+#: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:300
+#: libcore/FileConflictDialog.vala:294
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -402,60 +399,60 @@ msgstr ""
 "Bydd cadarnhâd yn cael ei ofyn cyn amnewid unrhyw ffeil yn y ffolder sy'n "
 "croesdynnu gyda'r ffeiliau sy'n cael eu copïo."
 
-#: libcore/FileConflictDialog.vala:302
+#: libcore/FileConflictDialog.vala:296
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Mae plygell hŷn o'r un enw yn bodoli eisoes yn \"%s\"."
 
-#: libcore/FileConflictDialog.vala:304
+#: libcore/FileConflictDialog.vala:298
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Mae plygell ddiweddarach o'r un enw yn bodoli eisoes yn \"%s\"."
 
-#: libcore/FileConflictDialog.vala:306
+#: libcore/FileConflictDialog.vala:300
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Mae plygell arall o'r un enw yn bodoli eisoes yn \"%s\"."
 
-#: libcore/FileConflictDialog.vala:309
+#: libcore/FileConflictDialog.vala:303
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Amnewid ffolder \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:304
 msgid "Replacing it will remove all files in the folder."
 msgstr "Fe fydd ei hamnewid yn cael gwared â phob ffeil yn y plygell."
 
-#: libcore/FileConflictDialog.vala:311
+#: libcore/FileConflictDialog.vala:305
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:314
+#: libcore/FileConflictDialog.vala:308
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Amnewid ffeil \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:315
+#: libcore/FileConflictDialog.vala:309
 msgid "Replacing it will overwrite its content."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:318
+#: libcore/FileConflictDialog.vala:312
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Mae ffeil hŷn o'r un enw yn bodoli eisoes yn \"%s\"."
 
-#: libcore/FileConflictDialog.vala:320
+#: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:322
+#: libcore/FileConflictDialog.vala:316
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:348
+#: libcore/FileConflictDialog.vala:342
 msgid "Merge"
 msgstr ""
 
@@ -487,7 +484,6 @@ msgstr ""
 
 #: libcore/FileUtils.vala:185
 #, fuzzy
-#| msgid "Created:"
 msgid "Recreate"
 msgstr "Crëwyd:"
 
@@ -1190,7 +1186,7 @@ msgid "Remove"
 msgstr ""
 
 #: libcore/PopupMenuBuilder.vala:66
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:85
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 msgid "Rename"
 msgstr ""
 
@@ -1203,7 +1199,7 @@ msgid "_Unmount"
 msgstr ""
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2053
+#: src/View/AbstractDirectoryView.vala:2052
 msgid "Properties"
 msgstr "Priodweddau"
 
@@ -1215,7 +1211,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2046
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2045
 msgid "Add to Bookmarks"
 msgstr ""
 
@@ -1297,7 +1293,7 @@ msgstr ""
 msgid "_Cancel"
 msgstr ""
 
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:385
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
 #, fuzzy
 msgid "Delete"
 msgstr "Dilëwyd:"
@@ -1381,7 +1377,6 @@ msgstr ""
 
 #: libcore/UndoManager.vala:42
 #, fuzzy
-#| msgid "Permissions"
 msgid "Undo Set Permissions"
 msgstr "Caniatadau"
 
@@ -1439,7 +1434,6 @@ msgstr ""
 
 #: libcore/UndoManager.vala:77
 #, fuzzy
-#| msgid "Permissions"
 msgid "Redo Set Permissions"
 msgstr "Caniatadau"
 
@@ -1651,8 +1645,8 @@ msgstr "Dangos fersiwn y rhaglen"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Agor un neu fwy URI, pob un yn eu tab eu hunain"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1934
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1933
+#: src/View/AbstractDirectoryView.vala:1939
 msgid "New Window"
 msgstr "Ffenestr Newydd"
 
@@ -1692,7 +1686,6 @@ msgstr ""
 
 #: src/DesktopLauncher.vala:23
 #, fuzzy
-#| msgid "New Window"
 msgid "New _Window"
 msgstr "Ffenestr Newydd"
 
@@ -1700,7 +1693,7 @@ msgstr "Ffenestr Newydd"
 msgid "New Window As _Administrator"
 msgstr ""
 
-#: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
+#: src/ProgressUIHandler.vala:131 src/ProgressUIHandler.vala:187
 msgid "File Operations"
 msgstr "Gweithrediadau Ffeiliau"
 
@@ -1750,43 +1743,41 @@ msgstr "Ar Gael:"
 msgid "Used:"
 msgstr "Defnyddiwyd:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:34
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:21
 #, fuzzy
-#| msgid "Original Location:"
 msgid "Original filename"
 msgstr "Lleoliad Gwreiddiol:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:36
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:23
 #, fuzzy
-#| msgid "Modified:"
 msgid "Modified original"
 msgstr "Addaswyd:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:260
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:25
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:252
 msgid "New basename"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:79
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
 msgid "Bulk Rename"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:89
 msgid "Fixed Text"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
-msgid "Add Prefix"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:93
+msgid "Add Prefix…"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
-msgid "Add Suffix"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:112
+msgid "Add Suffix…"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
@@ -1807,80 +1798,76 @@ msgstr "Amnewid ffeil \"%s\"?"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
-#| msgid "Modified:"
 msgctxt "bulk-rename"
 msgid "Modify"
 msgstr "Addaswyd:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
 #, fuzzy
-#| msgid "Original Location:"
 msgid "Original Basename"
 msgstr "Lleoliad Gwreiddiol:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:164
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:168
 msgid "Replacement text"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:188
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
 msgstr ""
 
 #. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:190
 msgctxt "bulk-rename"
 msgid "Name"
 msgstr ""
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
 #, fuzzy
-#| msgid "Created:"
 msgctxt "bulk-rename"
 msgid "Date created"
 msgstr "Crëwyd:"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
 #, fuzzy
-#| msgid "Modified:"
 msgctxt "bulk-rename"
 msgid "Date modified"
 msgstr "Addaswyd:"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:198
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
 #, fuzzy
-#| msgid "Size:"
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "Maint:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:269
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:375
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:328
 msgid "Apply"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 msgid "Ignored"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 msgid "Name is not changed"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 msgid "Cannot rename"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 msgid "Name is invalid or already exists"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:78
 msgid "Will be renamed"
 msgstr ""
 
@@ -1992,7 +1979,7 @@ msgid "Original Location:"
 msgstr "Lleoliad Gwreiddiol:"
 
 #: src/Dialogs/PropertiesWindow.vala:648
-#: src/View/AbstractDirectoryView.vala:2021
+#: src/View/AbstractDirectoryView.vala:2020
 msgid "Other Application…"
 msgstr "Rhaglen Arall…"
 
@@ -2084,7 +2071,7 @@ msgid "Could not open files or URIs with this app"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:839
-#: src/View/AbstractDirectoryView.vala:1152
+#: src/View/AbstractDirectoryView.vala:1151
 msgid "Cannot execute this file"
 msgstr ""
 
@@ -2108,157 +2095,157 @@ msgstr ""
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1632
+#: src/View/AbstractDirectoryView.vala:1631
 msgid "Cannot drop this file"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1633
+#: src/View/AbstractDirectoryView.vala:1632
 msgid "Invalid file name provided"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1917
-#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:183
+#: src/View/AbstractDirectoryView.vala:1916
+#: src/View/AbstractDirectoryView.vala:1922 src/View/Window.vala:183
 msgid "New Tab"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:1956
 msgid "Run"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1963
 #, c-format
 msgid "Open in %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2035
+#: src/View/AbstractDirectoryView.vala:2034
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2066
+#: src/View/AbstractDirectoryView.vala:2065
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2075
+#: src/View/AbstractDirectoryView.vala:2074
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2084
+#: src/View/AbstractDirectoryView.vala:2083
 msgid "Deselect All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2092
+#: src/View/AbstractDirectoryView.vala:2091
 msgid "Cut"
 msgstr ""
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2100
+#: src/View/AbstractDirectoryView.vala:2099
 msgid "Copy"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2106
 msgid "Move to Trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2111
 msgid "Delete Permanently"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2119
+#: src/View/AbstractDirectoryView.vala:2118
 msgid "Restore from Trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2142
+#: src/View/AbstractDirectoryView.vala:2141
 msgid "Open Parent Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2145
+#: src/View/AbstractDirectoryView.vala:2144
 msgid "Remove from History"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2171
+#: src/View/AbstractDirectoryView.vala:2170
 msgid "Rename…"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2178
+#: src/View/AbstractDirectoryView.vala:2177
 msgid "Copy as Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2201
-#: src/View/AbstractDirectoryView.vala:2281
+#: src/View/AbstractDirectoryView.vala:2200
+#: src/View/AbstractDirectoryView.vala:2280
 msgid "Paste Link into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2206
-#: src/View/AbstractDirectoryView.vala:2258
+#: src/View/AbstractDirectoryView.vala:2205
+#: src/View/AbstractDirectoryView.vala:2257
 msgid "Paste into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2216
-#: src/View/AbstractDirectoryView.vala:2286
+#: src/View/AbstractDirectoryView.vala:2215
+#: src/View/AbstractDirectoryView.vala:2285
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2346 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2345 src/View/ListView.vala:28
 msgid "Type"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2356
+#: src/View/AbstractDirectoryView.vala:2355
 msgid "Reversed Order"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2359
+#: src/View/AbstractDirectoryView.vala:2358
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2371
+#: src/View/AbstractDirectoryView.vala:2370
 msgid "Sort by"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2379
+#: src/View/AbstractDirectoryView.vala:2378
 #, fuzzy
 msgid "Folder"
 msgstr "_Plygell:"
 
-#: src/View/AbstractDirectoryView.vala:2385
+#: src/View/AbstractDirectoryView.vala:2384
 msgid "Empty File"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2436
+#: src/View/AbstractDirectoryView.vala:2435
 msgid "New"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2679
+#: src/View/AbstractDirectoryView.vala:2678
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2997
-#: src/View/AbstractDirectoryView.vala:3190
+#: src/View/AbstractDirectoryView.vala:2996
+#: src/View/AbstractDirectoryView.vala:3189
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2998
-#: src/View/AbstractDirectoryView.vala:3163
-#: src/View/AbstractDirectoryView.vala:3174
-#: src/View/AbstractDirectoryView.vala:3191
+#: src/View/AbstractDirectoryView.vala:2997
+#: src/View/AbstractDirectoryView.vala:3162
+#: src/View/AbstractDirectoryView.vala:3173
+#: src/View/AbstractDirectoryView.vala:3190
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:3130
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3132
+#: src/View/AbstractDirectoryView.vala:3131
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3162
-#: src/View/AbstractDirectoryView.vala:3173
+#: src/View/AbstractDirectoryView.vala:3161
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -2386,7 +2373,6 @@ msgstr ""
 
 #: src/View/Window.vala:499
 #, fuzzy
-#| msgid "Close"
 msgid "Close Tab"
 msgstr "Cau"
 
@@ -2522,65 +2508,64 @@ msgstr ""
 msgid "Open in Other Application…"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:75
+#: src/View/Widgets/HeaderBar.vala:73
 msgid "Previous"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:82
+#: src/View/Widgets/HeaderBar.vala:78
 msgid "Next"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:97
+#: src/View/Widgets/HeaderBar.vala:93
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:106
+#: src/View/Widgets/HeaderBar.vala:102
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:115
+#: src/View/Widgets/HeaderBar.vala:111
 msgid "Zoom In"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:154
+#: src/View/Widgets/HeaderBar.vala:150
 msgid "Double-click to Navigate"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:155
+#: src/View/Widgets/HeaderBar.vala:151
 msgid "Double-click on a folder opens it, single-click selects it"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:160
+#: src/View/Widgets/HeaderBar.vala:156
 msgid "Sort Folders before Files"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:164
+#: src/View/Widgets/HeaderBar.vala:160
 msgid "Show in View"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:171
+#: src/View/Widgets/HeaderBar.vala:167
 #, fuzzy
-#| msgid "Quit Files"
 msgid "Hidden Files"
 msgstr "Cau Ffeiliau"
 
-#: src/View/Widgets/HeaderBar.vala:175
+#: src/View/Widgets/HeaderBar.vala:171
 msgid "Local Thumbnails"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:180
+#: src/View/Widgets/HeaderBar.vala:176
 msgid "Remote Thumbnails"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:208
+#: src/View/Widgets/HeaderBar.vala:204
 msgid "Menu"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:283
+#: src/View/Widgets/HeaderBar.vala:279
 msgid "No operation to undo"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:290
+#: src/View/Widgets/HeaderBar.vala:286
 msgid "No operation to redo"
 msgstr ""
 

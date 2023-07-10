@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 19:58+0000\n"
+"POT-Creation-Date: 2023-07-10 08:19-0700\n"
 "PO-Revision-Date: 2023-05-16 04:06+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
@@ -82,32 +82,36 @@ msgstr "Просматривайте деревья папок быстрее в
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
-#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:102
-msgid "Improvements:"
-msgstr "Улучшения:"
-
-#: data/files.metainfo.xml.in.in:67
-msgid "Implement a bulk rename functionality"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:84
-#: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:122
-#: data/files.metainfo.xml.in.in:137
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:82
+#: data/files.metainfo.xml.in.in:97 data/files.metainfo.xml.in.in:119
+#: data/files.metainfo.xml.in.in:135 data/files.metainfo.xml.in.in:150
 msgid "Minor updates:"
 msgstr "Незначительные обновления:"
 
-#: data/files.metainfo.xml.in.in:71
+#: data/files.metainfo.xml.in.in:67
+msgid "Design updates for Bulk Rename"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:85
+#: data/files.metainfo.xml.in.in:99 data/files.metainfo.xml.in.in:121
+#: data/files.metainfo.xml.in.in:137 data/files.metainfo.xml.in.in:152
+msgid "Updated translations"
+msgstr "Обновлены переводы"
+
+#: data/files.metainfo.xml.in.in:78 data/files.metainfo.xml.in.in:115
+msgid "Improvements:"
+msgstr "Улучшения:"
+
+#: data/files.metainfo.xml.in.in:80
+msgid "Implement a bulk rename functionality"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:84
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
 msgstr ""
 "Теперь используется цветная полоска уровня использования диска в окне свойств"
 
-#: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:86
-#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:124
-#: data/files.metainfo.xml.in.in:139
-msgid "Updated translations"
-msgstr "Обновлены переводы"
-
-#: data/files.metainfo.xml.in.in:104
+#: data/files.metainfo.xml.in.in:117
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr "Глобальные настройки были перенесены в меню в заголовок окна"

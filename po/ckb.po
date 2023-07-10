@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 19:58+0000\n"
+"POT-Creation-Date: 2023-07-10 08:19-0700\n"
 "PO-Revision-Date: 2022-09-21 10:08+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
@@ -16,10 +16,10 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:380
+#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:185
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "هەڵوەشاندنەوە"
@@ -36,7 +36,6 @@ msgstr "کردنەوەی پەڕگە بە شێوەی تەنها بینین"
 
 #: filechooser-portal/FileChooserDialog.vala:376
 #, fuzzy
-#| msgid "new file"
 msgid "Enter new filename"
 msgstr "پەڕگەی تازە"
 
@@ -63,7 +62,6 @@ msgstr ""
 
 #: filechooser-portal/Main.vala:454
 #, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
 msgstr "ئاڵوگۆڕکردن ئۆڤەرڕایتی ناوەڕۆکەکەی دەکات."
@@ -77,112 +75,112 @@ msgstr "ئاڵوگۆڕ بە \"%s\"؟"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "ئاڵوگۆڕکردن گۆڕانکاری بەسەر ناوەڕۆکەکەیدا دەهێنێت"
 
-#: libcore/ConnectServerDialog.vala:46
+#: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
 msgstr "FTP گشتی"
 
-#: libcore/ConnectServerDialog.vala:52
+#: libcore/ConnectServerDialog.vala:38
 msgid "FTP (with login)"
 msgstr "FTP (چوونەژوور)"
 
-#: libcore/ConnectServerDialog.vala:59
+#: libcore/ConnectServerDialog.vala:45
 msgid "SSH"
 msgstr "SSH"
 
-#: libcore/ConnectServerDialog.vala:65
+#: libcore/ConnectServerDialog.vala:51
 msgid "AFP (Apple Filing Protocol)"
 msgstr "AFP (Apple Filing Protocol)"
 
-#: libcore/ConnectServerDialog.vala:71
+#: libcore/ConnectServerDialog.vala:57
 msgid "Windows share"
 msgstr "هاوبەشی پەنجێرە"
 
-#: libcore/ConnectServerDialog.vala:77
+#: libcore/ConnectServerDialog.vala:63
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: libcore/ConnectServerDialog.vala:84
+#: libcore/ConnectServerDialog.vala:70
 msgid "Secure WebDAV (HTTPS)"
 msgstr "ئاسایشێ WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:131
+#: libcore/ConnectServerDialog.vala:112
 msgid "Server Details"
 msgstr "زانیارییەکانی ڕاژە"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:116
 msgid "Server name or IP address"
 msgstr "ناوی ڕاژە یان ناونیشانی ئای پی"
 
-#: libcore/ConnectServerDialog.vala:138
+#: libcore/ConnectServerDialog.vala:119
 msgid "Server:"
 msgstr "ڕاژە:"
 
-#: libcore/ConnectServerDialog.vala:146
+#: libcore/ConnectServerDialog.vala:129
 msgid "Port:"
 msgstr "دەرچە:"
 
-#: libcore/ConnectServerDialog.vala:175 libcore/FileConflictDialog.vala:109
-#: libcore/FileConflictDialog.vala:143 src/Dialogs/PropertiesWindow.vala:532
+#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
+#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:532
 msgid "Type:"
 msgstr "جۆر:"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:161
 msgid "Name of share on server (Optional)"
 msgstr "ناوی پشک لەسەر ڕاژە (ئارەزوومەندانە)"
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:164
 msgid "Share:"
 msgstr "هاوبەشیکردن:"
 
-#: libcore/ConnectServerDialog.vala:184
+#: libcore/ConnectServerDialog.vala:167
 msgid "Path of shared folder on server (Optional)"
 msgstr "شوێنی بوخچەی هاوبەشی پێکراو لەسەر ڕاژە (ئارەزوومەندانە)"
 
-#: libcore/ConnectServerDialog.vala:188
+#: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
 msgstr "بوخچە:"
 
-#: libcore/ConnectServerDialog.vala:190
+#: libcore/ConnectServerDialog.vala:175
 msgid "User Details"
 msgstr "زانیارییەکانی بەکارهێنەر"
 
-#: libcore/ConnectServerDialog.vala:195
+#: libcore/ConnectServerDialog.vala:180
 msgid "Name of Windows domain"
 msgstr "ناوی دۆمەینی ویندۆز"
 
-#: libcore/ConnectServerDialog.vala:197
+#: libcore/ConnectServerDialog.vala:182
 msgid "Domain name:"
 msgstr "ناوی دۆمەین:"
 
-#: libcore/ConnectServerDialog.vala:202
+#: libcore/ConnectServerDialog.vala:187
 msgid "Name of user on server"
 msgstr "ناوی بەکارهێنەر لەسەر ڕاژە"
 
-#: libcore/ConnectServerDialog.vala:204
+#: libcore/ConnectServerDialog.vala:189
 msgid "User name:"
 msgstr "ناوی بەکارهێنەر:"
 
-#: libcore/ConnectServerDialog.vala:212
+#: libcore/ConnectServerDialog.vala:197
 msgid "Password:"
 msgstr "تێپەڕەوشە:"
 
-#: libcore/ConnectServerDialog.vala:214
+#: libcore/ConnectServerDialog.vala:199
 msgid "Remember this password"
 msgstr "ئەم تێپەڕەوشەیەت لە یاد بێت"
 
-#: libcore/ConnectServerDialog.vala:225
+#: libcore/ConnectServerDialog.vala:209
 msgid "Connect"
 msgstr "پەیوەستبوون"
 
-#: libcore/ConnectServerDialog.vala:232
+#: libcore/ConnectServerDialog.vala:216
 msgid "Continue"
 msgstr "بەردەوامبوون"
 
-#: libcore/ConnectServerDialog.vala:283
+#: libcore/ConnectServerDialog.vala:266
 msgid "Connecting…"
 msgstr "پەیوەستبوون…"
 
-#: libcore/ConnectServerDialog.vala:391
+#: libcore/ConnectServerDialog.vala:373
 msgid "Please verify your user details."
 msgstr "تکایە زانیارییەکانی بەکارهێنەرت دڵنیا بکەوە."
 
@@ -207,24 +205,22 @@ msgstr "کۆپیکردن بۆ ئێرە"
 msgid "Link Here"
 msgstr "لینککردنی بێرەوە"
 
-#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2336
+#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2335
 msgid "Name"
 msgstr "ناو"
 
-#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:96
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:100
+#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
 #, fuzzy
-#| msgid "Create"
 msgid "Creation Date"
 msgstr "دروستکردن"
 
 #: libcore/Enums.vala:163
 #, fuzzy
-#| msgid "Last modified:"
 msgid "Last modification date"
 msgstr "کۆتا دەستکاریکردن:"
 
-#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2341
+#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2340
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "قەبارە"
@@ -237,7 +233,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2351
+#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2350
 msgid "Date"
 msgstr "ڕێکەوت"
 
@@ -279,13 +275,11 @@ msgstr ""
 
 #: libcore/Enums.vala:270
 #, fuzzy
-#| msgid "Recreate"
 msgid "Date created"
 msgstr "دروستکردنەوە"
 
 #: libcore/Enums.vala:272
 #, fuzzy
-#| msgid "Modified"
 msgid "Date Modified"
 msgstr "ڕێکەوتی دەستکاریکردن"
 
@@ -319,8 +313,6 @@ msgstr "بەتاڵ"
 
 #: libcore/File.vala:1108
 #, fuzzy, c-format
-#| msgid "%i item"
-#| msgid_plural "%i items"
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%i دانە"
@@ -335,61 +327,61 @@ msgstr "لینککردنی بۆ %s"
 msgid "File conflict"
 msgstr "کۆنفلیکتی فایل"
 
-#: libcore/FileConflictDialog.vala:97
+#: libcore/FileConflictDialog.vala:96
 msgid "Original file"
 msgstr "پەڕگەی ڕەسەن"
 
-#: libcore/FileConflictDialog.vala:99 libcore/FileConflictDialog.vala:133
+#: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
 #: src/Dialogs/PropertiesWindow.vala:525
 msgid "Size:"
 msgstr "قەبارە:"
 
-#: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
+#: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
 msgid "Last modified:"
 msgstr "کۆتا دەستکاریکردن:"
 
-#: libcore/FileConflictDialog.vala:131
+#: libcore/FileConflictDialog.vala:130
 msgid "Replace with"
 msgstr "ئاڵوگۆڕکردن بە"
 
-#: libcore/FileConflictDialog.vala:165
+#: libcore/FileConflictDialog.vala:164
 msgid "Reset"
 msgstr "ڕێکخستنەوە وەکو بنەڕەت"
 
-#: libcore/FileConflictDialog.vala:177
+#: libcore/FileConflictDialog.vala:173
 msgid "_Select a new name for the destination"
 msgstr "_ناوێکی تازە بۆ ئامانجەکە دیاریبکە"
 
-#: libcore/FileConflictDialog.vala:180
+#: libcore/FileConflictDialog.vala:177
 msgid "Apply this action to all files"
 msgstr "ئەم کردارە بەسەر هەموو پەڕگەکاندا بسەپێنە"
 
-#: libcore/FileConflictDialog.vala:182 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_پەڕاندن"
 
-#: libcore/FileConflictDialog.vala:183
+#: libcore/FileConflictDialog.vala:180
 msgid "Re_name"
 msgstr "ناونانەوە"
 
-#: libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:182
 msgid "Keep Newest"
 msgstr "هێشتنەوەی نوێترین"
 
-#: libcore/FileConflictDialog.vala:186
+#: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "بیپەڕێنە ئەگەر بەم دواییانە ڕەسەنەکە زیاتر گۆڕانکاری تێدا کرابوو"
 
-#: libcore/FileConflictDialog.vala:190
+#: libcore/FileConflictDialog.vala:187
 msgid "Replace"
 msgstr "ئاڵوگۆڕکردن"
 
-#: libcore/FileConflictDialog.vala:299
+#: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "یەکخستنی بوخچە \"%s\"؟"
 
-#: libcore/FileConflictDialog.vala:300
+#: libcore/FileConflictDialog.vala:294
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -397,60 +389,60 @@ msgstr ""
 "یەکخستن پێویستی بە دڵنیابوونەوە هەیە پێش ئەوەی ئاڵوگۆڕی پەڕگەکان بکات لە "
 "بوخچەکەدا کە پێکداچوون دروست دەکەن لەگەڵ ئەو پەڕگانەی کە لەبەرگیراونەوە."
 
-#: libcore/FileConflictDialog.vala:302
+#: libcore/FileConflictDialog.vala:296
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "بوخچەیەکی کۆنتر بە هەمان ناو لە \"%s\" بوونی هەیە."
 
-#: libcore/FileConflictDialog.vala:304
+#: libcore/FileConflictDialog.vala:298
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "بوخچەیەکی نوێتر بە هەمان ناو لە \"%s\" بوونی هەیە."
 
-#: libcore/FileConflictDialog.vala:306
+#: libcore/FileConflictDialog.vala:300
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "بوخچەیەکی تر بە هەمان ناو لە \"%s\" بوونی هەیە."
 
-#: libcore/FileConflictDialog.vala:309
+#: libcore/FileConflictDialog.vala:303
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "ئاڵوگۆڕکردنی بوخچە \"%s\"؟"
 
-#: libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:304
 msgid "Replacing it will remove all files in the folder."
 msgstr "ئاڵوگۆڕکردن هەموو پەڕگەکانی ناو بوخچە دەسڕێتەوە."
 
-#: libcore/FileConflictDialog.vala:311
+#: libcore/FileConflictDialog.vala:305
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "بوخچەیەک بە هەمان ناو لە \"%s\" بوونی هەیە."
 
-#: libcore/FileConflictDialog.vala:314
+#: libcore/FileConflictDialog.vala:308
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "ئاڵوگۆڕکردنی پەڕگە \"%s\"؟"
 
-#: libcore/FileConflictDialog.vala:315
+#: libcore/FileConflictDialog.vala:309
 msgid "Replacing it will overwrite its content."
 msgstr "ئاڵوگۆڕکردن ئۆڤەرڕایتی ناوەڕۆکەکەی دەکات."
 
-#: libcore/FileConflictDialog.vala:318
+#: libcore/FileConflictDialog.vala:312
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "پەڕگەیەکی کۆنتر بە هەمان ناو لە \"%s\" بوونی هەیە."
 
-#: libcore/FileConflictDialog.vala:320
+#: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "پەڕگەیەکی نوێتر بە هەمان ناو لە \"%s\" هەیە."
 
-#: libcore/FileConflictDialog.vala:322
+#: libcore/FileConflictDialog.vala:316
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "پەڕگەیەکی تر بە هەمان ناو لە \"%s\" هەیە."
 
-#: libcore/FileConflictDialog.vala:348
+#: libcore/FileConflictDialog.vala:342
 msgid "Merge"
 msgstr "یەکخستن"
 
@@ -1126,7 +1118,7 @@ msgid "Remove"
 msgstr "سڕینەوە"
 
 #: libcore/PopupMenuBuilder.vala:66
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:85
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 msgid "Rename"
 msgstr "ناوگۆڕین"
 
@@ -1139,7 +1131,7 @@ msgid "_Unmount"
 msgstr "_ئەنماونت"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2053
+#: src/View/AbstractDirectoryView.vala:2052
 msgid "Properties"
 msgstr "تایبەتمەندییەکان"
 
@@ -1151,7 +1143,7 @@ msgstr "دەرکردنی میدیا"
 msgid "Safely Remove"
 msgstr "دەرکردنی سەلامەت"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2046
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2045
 msgid "Add to Bookmarks"
 msgstr "زیادکردنی بۆ جێدۆز"
 
@@ -1233,7 +1225,7 @@ msgstr "فایل سیستەم"
 msgid "_Cancel"
 msgstr "_هەڵوەشاندنەوە"
 
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:385
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
 msgid "Delete"
 msgstr "سڕینەوە"
 
@@ -1275,49 +1267,41 @@ msgstr "بەتاڵکردنی سەبەتە"
 
 #: libcore/UndoManager.vala:22
 #, fuzzy
-#| msgid "Copy"
 msgid "Undo Copy"
 msgstr "کۆپی"
 
 #: libcore/UndoManager.vala:24
 #, fuzzy
-#| msgid "Duplicate Tab"
 msgid "Undo Duplicate"
 msgstr "بەدووکردنی تاب"
 
 #: libcore/UndoManager.vala:26
 #, fuzzy
-#| msgid "Undo Close Tab"
 msgid "Undo Move"
 msgstr "ئەندو کڵۆز تاب"
 
 #: libcore/UndoManager.vala:28
 #, fuzzy
-#| msgid "Rename"
 msgid "Undo Rename"
 msgstr "ناوگۆڕین"
 
 #: libcore/UndoManager.vala:30
 #, fuzzy
-#| msgid "Empty File"
 msgid "Undo Create Empty File"
 msgstr "پەڕگەی بەتاڵ"
 
 #: libcore/UndoManager.vala:32
 #, fuzzy
-#| msgid "Cannot remove files from here"
 msgid "Undo Create File from Template"
 msgstr "ناتوانیت پەڕگەکان لێرەوە بسڕیتەوە"
 
 #: libcore/UndoManager.vala:34
 #, fuzzy
-#| msgid "Open Parent Folder"
 msgid "Undo Create Folder"
 msgstr "کردنەوەی بوخچەی باوان"
 
 #: libcore/UndoManager.vala:36
 #, fuzzy
-#| msgid "Move to Trash"
 msgid "Undo Move to Trash"
 msgstr "گواستنەوەی بۆ تەنەکە"
 
@@ -1327,13 +1311,11 @@ msgstr ""
 
 #: libcore/UndoManager.vala:40
 #, fuzzy
-#| msgid "Restore from Trash"
 msgid "Undo Restore from Trash"
 msgstr "گەڕاندنەوە لە تەنەکەدا"
 
 #: libcore/UndoManager.vala:42
 #, fuzzy
-#| msgid "Setting permissions"
 msgid "Undo Set Permissions"
 msgstr "دانانی مۆڵەتەکان"
 
@@ -1351,13 +1333,11 @@ msgstr ""
 
 #: libcore/UndoManager.vala:57
 #, fuzzy
-#| msgid "Copy"
 msgid "Redo Copy"
 msgstr "کۆپی"
 
 #: libcore/UndoManager.vala:59
 #, fuzzy
-#| msgid "Duplicate Tab"
 msgid "Redo Duplicate"
 msgstr "بەدووکردنی تاب"
 
@@ -1367,13 +1347,11 @@ msgstr ""
 
 #: libcore/UndoManager.vala:63
 #, fuzzy
-#| msgid "Rename"
 msgid "Redo Rename"
 msgstr "ناوگۆڕین"
 
 #: libcore/UndoManager.vala:65
 #, fuzzy
-#| msgid "Empty File"
 msgid "Redo Create Empty File"
 msgstr "پەڕگەی بەتاڵ"
 
@@ -1383,13 +1361,11 @@ msgstr ""
 
 #: libcore/UndoManager.vala:69
 #, fuzzy
-#| msgid "Failed to create the folder"
 msgid "Redo Create Folder"
 msgstr "دروستکردنی بوخچە شکستی هێنا"
 
 #: libcore/UndoManager.vala:71
 #, fuzzy
-#| msgid "Move to Trash"
 msgid "Redo Move to Trash"
 msgstr "گواستنەوەی بۆ تەنەکە"
 
@@ -1399,13 +1375,11 @@ msgstr ""
 
 #: libcore/UndoManager.vala:75
 #, fuzzy
-#| msgid "Restore from Trash"
 msgid "Redo Restore from Trash"
 msgstr "گەڕاندنەوە لە تەنەکەدا"
 
 #: libcore/UndoManager.vala:77
 #, fuzzy
-#| msgid "Setting permissions"
 msgid "Redo Set Permissions"
 msgstr "دانانی مۆڵەتەکان"
 
@@ -1612,8 +1586,8 @@ msgstr "پشاندنانی وەشانی پرۆگرامەکە"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "کردنەوەی یەک URI یان زیاتر، هەر یەکەیان لە تابی خۆیدا"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1934
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1933
+#: src/View/AbstractDirectoryView.vala:1939
 msgid "New Window"
 msgstr "پەنجەرەی تازە"
 
@@ -1659,7 +1633,7 @@ msgstr "پەنجەری_نوێ"
 msgid "New Window As _Administrator"
 msgstr "پەنجەری نوێ وەکو بەڕێوەبەری سیستەم"
 
-#: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
+#: src/ProgressUIHandler.vala:131 src/ProgressUIHandler.vala:187
 msgid "File Operations"
 msgstr "کارەکانی پەڕگە"
 
@@ -1687,7 +1661,6 @@ msgstr "بەکارهێنانی ئامێر"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:166
 #, fuzzy, c-format
-#| msgid "%s used of %s"
 msgid "%s free out of %s"
 msgstr "%s بەکارهاتووە لە %s دا"
 
@@ -1710,52 +1683,47 @@ msgstr "بەردەست:"
 msgid "Used:"
 msgstr "بەکارهاتوو:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:34
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:21
 #, fuzzy
-#| msgid "Original file"
 msgid "Original filename"
 msgstr "پەڕگەی ڕەسەن"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:36
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:23
 #, fuzzy
-#| msgid "Modified"
 msgid "Modified original"
 msgstr "ڕێکەوتی دەستکاریکردن"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:260
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:25
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:252
 #, fuzzy
-#| msgid "Rename"
 msgid "New basename"
 msgstr "ناوگۆڕین"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:79
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
 #, fuzzy
-#| msgid "Rename"
 msgid "Bulk Rename"
 msgstr "ناوگۆڕین"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:89
 msgid "Fixed Text"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
-msgid "Add Prefix"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:93
+msgid "Add Prefix…"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
-msgid "Add Suffix"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:112
+msgid "Add Suffix…"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
 #, fuzzy
-#| msgid "User name:"
 msgid "Basename:"
 msgstr "ناوی بەکارهێنەر:"
 
@@ -1766,103 +1734,92 @@ msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
-#| msgid "Replace"
 msgctxt "bulk-rename"
 msgid "Replace"
 msgstr "ئاڵوگۆڕکردن"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modify"
 msgstr "ڕێکەوتی دەستکاریکردن"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
 #, fuzzy
-#| msgid "Original file"
 msgid "Original Basename"
 msgstr "پەڕگەی ڕەسەن"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:164
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:168
 #, fuzzy
-#| msgid "Replace with"
 msgid "Replacement text"
 msgstr "ئاڵوگۆڕکردن بە"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:188
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
 msgstr ""
 
 #. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:190
 #, fuzzy
-#| msgid "Name"
 msgctxt "bulk-rename"
 msgid "Name"
 msgstr "ناو"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
 #, fuzzy
-#| msgid "Recreate"
 msgctxt "bulk-rename"
 msgid "Date created"
 msgstr "دروستکردنەوە"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
 #, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Date modified"
 msgstr "ڕێکەوتی دەستکاریکردن"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:198
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
 #, fuzzy
-#| msgid "Size"
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "قەبارە"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:269
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:375
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:328
 msgid "Apply"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 #, fuzzy
-#| msgid "Ignore"
 msgid "Ignored"
 msgstr "چەپاندن"
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 msgid "Name is not changed"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 #, fuzzy
-#| msgid "Rename"
 msgid "Cannot rename"
 msgstr "ناوگۆڕین"
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 msgid "Name is invalid or already exists"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:78
 #, fuzzy
-#| msgid "Filename"
 msgid "Will be renamed"
 msgstr "فایلنەیم"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
 #, fuzzy
-#| msgid "Reversed Order"
 msgid "Reverse Order"
 msgstr "ڕیزی پێچەوانە"
 
@@ -1956,7 +1913,7 @@ msgid "Original Location:"
 msgstr "شوێنی ڕەسەن:"
 
 #: src/Dialogs/PropertiesWindow.vala:648
-#: src/View/AbstractDirectoryView.vala:2021
+#: src/View/AbstractDirectoryView.vala:2020
 msgid "Other Application…"
 msgstr "ئەپڵیکەیشنی تر…"
 
@@ -2040,7 +1997,7 @@ msgid "Could not open files or URIs with this app"
 msgstr "نەتوانرا ییەکان یان پەڕگەکان بەم ئەپە بکرێنەوە"
 
 #: src/View/AbstractDirectoryView.vala:839
-#: src/View/AbstractDirectoryView.vala:1152
+#: src/View/AbstractDirectoryView.vala:1151
 msgid "Cannot execute this file"
 msgstr "ئەم پەڕگەیە نەکرایەوە"
 
@@ -2065,156 +2022,156 @@ msgstr "ناتوانێت ئەم پەڕگەیە بکاتەوە"
 msgid "Cannot identify file type to open"
 msgstr "ناتوانێت جۆری پەڕگە دیاریبکات بۆ کردنەوەی"
 
-#: src/View/AbstractDirectoryView.vala:1632
+#: src/View/AbstractDirectoryView.vala:1631
 msgid "Cannot drop this file"
 msgstr "ناتوانێت ئەم پەڕگەیە بەرداتەوە"
 
-#: src/View/AbstractDirectoryView.vala:1633
+#: src/View/AbstractDirectoryView.vala:1632
 msgid "Invalid file name provided"
 msgstr "ناوێکی نەگونجاوی پەڕگە پێشکەشکراوە"
 
-#: src/View/AbstractDirectoryView.vala:1917
-#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:183
+#: src/View/AbstractDirectoryView.vala:1916
+#: src/View/AbstractDirectoryView.vala:1922 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "تابێ نوێ"
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:1956
 msgid "Run"
 msgstr "ڕەن"
 
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1963
 #, c-format
 msgid "Open in %s"
 msgstr "کردنەوەی لە %s دا"
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
 msgstr "کردنەوە لە"
 
-#: src/View/AbstractDirectoryView.vala:2035
+#: src/View/AbstractDirectoryView.vala:2034
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "کردنەوە بە"
 
-#: src/View/AbstractDirectoryView.vala:2066
+#: src/View/AbstractDirectoryView.vala:2065
 msgid "Select All"
 msgstr "دیاریکردنی هەموو"
 
-#: src/View/AbstractDirectoryView.vala:2075
+#: src/View/AbstractDirectoryView.vala:2074
 msgid "Invert Selection"
 msgstr "پێچەوانەکردنەوەی دیاریکردن"
 
-#: src/View/AbstractDirectoryView.vala:2084
+#: src/View/AbstractDirectoryView.vala:2083
 msgid "Deselect All"
 msgstr "هەڵوەشاندنەوەی دیاریکردن"
 
-#: src/View/AbstractDirectoryView.vala:2092
+#: src/View/AbstractDirectoryView.vala:2091
 msgid "Cut"
 msgstr "بڕین"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2100
+#: src/View/AbstractDirectoryView.vala:2099
 msgid "Copy"
 msgstr "کۆپی"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2106
 msgid "Move to Trash"
 msgstr "گواستنەوەی بۆ تەنەکە"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2111
 msgid "Delete Permanently"
 msgstr "سڕینەوەی بەیەکجاری"
 
-#: src/View/AbstractDirectoryView.vala:2119
+#: src/View/AbstractDirectoryView.vala:2118
 msgid "Restore from Trash"
 msgstr "گەڕاندنەوە لە تەنەکەدا"
 
-#: src/View/AbstractDirectoryView.vala:2142
+#: src/View/AbstractDirectoryView.vala:2141
 msgid "Open Parent Folder"
 msgstr "کردنەوەی بوخچەی باوان"
 
-#: src/View/AbstractDirectoryView.vala:2145
+#: src/View/AbstractDirectoryView.vala:2144
 msgid "Remove from History"
 msgstr "سڕینەوەی لە مێژوودا"
 
-#: src/View/AbstractDirectoryView.vala:2171
+#: src/View/AbstractDirectoryView.vala:2170
 msgid "Rename…"
 msgstr "ناوگۆڕین…"
 
-#: src/View/AbstractDirectoryView.vala:2178
+#: src/View/AbstractDirectoryView.vala:2177
 msgid "Copy as Link"
 msgstr "کۆپیکردنی وەکو لینک"
 
-#: src/View/AbstractDirectoryView.vala:2201
-#: src/View/AbstractDirectoryView.vala:2281
+#: src/View/AbstractDirectoryView.vala:2200
+#: src/View/AbstractDirectoryView.vala:2280
 msgid "Paste Link into Folder"
 msgstr "لەبەرگرتنەوەی لینک بۆناو بوخچە"
 
-#: src/View/AbstractDirectoryView.vala:2206
-#: src/View/AbstractDirectoryView.vala:2258
+#: src/View/AbstractDirectoryView.vala:2205
+#: src/View/AbstractDirectoryView.vala:2257
 msgid "Paste into Folder"
 msgstr "لەبەرگرتنەوە بۆناو بوخچە"
 
-#: src/View/AbstractDirectoryView.vala:2216
-#: src/View/AbstractDirectoryView.vala:2286
+#: src/View/AbstractDirectoryView.vala:2215
+#: src/View/AbstractDirectoryView.vala:2285
 msgid "Paste"
 msgstr "لەبەرگرتنەوە"
 
-#: src/View/AbstractDirectoryView.vala:2346 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2345 src/View/ListView.vala:28
 msgid "Type"
 msgstr "جۆر"
 
-#: src/View/AbstractDirectoryView.vala:2356
+#: src/View/AbstractDirectoryView.vala:2355
 msgid "Reversed Order"
 msgstr "ڕیزی پێچەوانە"
 
-#: src/View/AbstractDirectoryView.vala:2359
+#: src/View/AbstractDirectoryView.vala:2358
 msgid "Folders Before Files"
 msgstr "بوخچەکان پێش پەڕگەکان"
 
-#: src/View/AbstractDirectoryView.vala:2371
+#: src/View/AbstractDirectoryView.vala:2370
 msgid "Sort by"
 msgstr "ڕیزکردن بەپێی"
 
-#: src/View/AbstractDirectoryView.vala:2379
+#: src/View/AbstractDirectoryView.vala:2378
 msgid "Folder"
 msgstr "بوخچە"
 
-#: src/View/AbstractDirectoryView.vala:2385
+#: src/View/AbstractDirectoryView.vala:2384
 msgid "Empty File"
 msgstr "پەڕگەی بەتاڵ"
 
-#: src/View/AbstractDirectoryView.vala:2436
+#: src/View/AbstractDirectoryView.vala:2435
 msgid "New"
 msgstr "نوێ"
 
-#: src/View/AbstractDirectoryView.vala:2679
+#: src/View/AbstractDirectoryView.vala:2678
 #, c-format
 msgid "Untitled %s"
 msgstr "%s ی بێ ناونیشان"
 
-#: src/View/AbstractDirectoryView.vala:2997
-#: src/View/AbstractDirectoryView.vala:3190
+#: src/View/AbstractDirectoryView.vala:2996
+#: src/View/AbstractDirectoryView.vala:3189
 msgid "Cannot remove files from here"
 msgstr "ناتوانیت پەڕگەکان لێرەوە بسڕیتەوە"
 
-#: src/View/AbstractDirectoryView.vala:2998
-#: src/View/AbstractDirectoryView.vala:3163
-#: src/View/AbstractDirectoryView.vala:3174
-#: src/View/AbstractDirectoryView.vala:3191
+#: src/View/AbstractDirectoryView.vala:2997
+#: src/View/AbstractDirectoryView.vala:3162
+#: src/View/AbstractDirectoryView.vala:3173
+#: src/View/AbstractDirectoryView.vala:3190
 msgid "You do not have permission to change this location"
 msgstr "مۆڵەتت نییە بۆ گۆڕینی ئەم شوێنە"
 
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:3130
 msgid "Cannot copy files that are in the trash"
 msgstr "ناتوانیت پەڕگەکانی ناو تەنەکە کۆپی بکەیت"
 
-#: src/View/AbstractDirectoryView.vala:3132
+#: src/View/AbstractDirectoryView.vala:3131
 msgid "Cutting the selection instead"
 msgstr "بڕینی دیاریکراوەکان لەجیاتی"
 
-#: src/View/AbstractDirectoryView.vala:3162
-#: src/View/AbstractDirectoryView.vala:3173
+#: src/View/AbstractDirectoryView.vala:3161
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "Cannot paste files here"
 msgstr "ناتوانیت پەڕگەکان لێرە پەیست بکەیت"
 
@@ -2458,7 +2415,6 @@ msgstr "پەیوەستکردنی ڕاژە…"
 
 #: src/View/Sidebar/VolumeRow.vala:166
 #, fuzzy
-#| msgid "_Mount"
 msgid "Mount"
 msgstr "_ماونت"
 
@@ -2479,77 +2435,70 @@ msgstr "کردنەوە لە تابێکی نوێدا"
 msgid "Open in Other Application…"
 msgstr "کردنەوە لە ئەپڵیکەیشنەکانی تر…"
 
-#: src/View/Widgets/HeaderBar.vala:75
+#: src/View/Widgets/HeaderBar.vala:73
 msgid "Previous"
 msgstr "پێشتر"
 
-#: src/View/Widgets/HeaderBar.vala:82
+#: src/View/Widgets/HeaderBar.vala:78
 msgid "Next"
 msgstr "دواتر"
 
-#: src/View/Widgets/HeaderBar.vala:97
+#: src/View/Widgets/HeaderBar.vala:93
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:106
+#: src/View/Widgets/HeaderBar.vala:102
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:115
+#: src/View/Widgets/HeaderBar.vala:111
 msgid "Zoom In"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:154
+#: src/View/Widgets/HeaderBar.vala:150
 msgid "Double-click to Navigate"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:155
+#: src/View/Widgets/HeaderBar.vala:151
 msgid "Double-click on a folder opens it, single-click selects it"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:160
+#: src/View/Widgets/HeaderBar.vala:156
 #, fuzzy
-#| msgid "Folders Before Files"
 msgid "Sort Folders before Files"
 msgstr "بوخچەکان پێش پەڕگەکان"
 
-#: src/View/Widgets/HeaderBar.vala:164
+#: src/View/Widgets/HeaderBar.vala:160
 #, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Show in View"
+msgstr "پشاندانی پەڕگە شاراوەکان"
+
+#: src/View/Widgets/HeaderBar.vala:167
+#, fuzzy
+msgid "Hidden Files"
 msgstr "پشاندانی پەڕگە شاراوەکان"
 
 #: src/View/Widgets/HeaderBar.vala:171
 #, fuzzy
-#| msgid "Show Hidden Files"
-msgid "Hidden Files"
-msgstr "پشاندانی پەڕگە شاراوەکان"
-
-#: src/View/Widgets/HeaderBar.vala:175
-#, fuzzy
-#| msgid "Hide Thumbnails"
 msgid "Local Thumbnails"
 msgstr "شاردنەوەی سەمبنەیڵەکان"
 
-#: src/View/Widgets/HeaderBar.vala:180
+#: src/View/Widgets/HeaderBar.vala:176
 #, fuzzy
-#| msgid "Show Remote Thumbnails"
 msgid "Remote Thumbnails"
 msgstr "پشاندانی سەمبنەیڵی ڕیمۆت"
 
-#: src/View/Widgets/HeaderBar.vala:208
+#: src/View/Widgets/HeaderBar.vala:204
 msgid "Menu"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:283
+#: src/View/Widgets/HeaderBar.vala:279
 #, fuzzy
-#| msgid "The operation timed out."
 msgid "No operation to undo"
 msgstr "کارەکە تایم ئاوت بوو."
 
-#: src/View/Widgets/HeaderBar.vala:290
+#: src/View/Widgets/HeaderBar.vala:286
 #, fuzzy
-#| msgid "The operation timed out."
 msgid "No operation to redo"
 msgstr "کارەکە تایم ئاوت بوو."
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 19:58+0000\n"
+"POT-Creation-Date: 2023-07-10 08:19-0700\n"
 "PO-Revision-Date: 2023-06-08 18:07+0000\n"
 "Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
@@ -16,16 +16,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:380
+#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:185
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "Отменить"
@@ -80,112 +80,112 @@ msgstr "Заменить «%s»?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "При замене файла его содержимое будет перезаписано"
 
-#: libcore/ConnectServerDialog.vala:46
+#: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
 msgstr "FTP (публичный)"
 
-#: libcore/ConnectServerDialog.vala:52
+#: libcore/ConnectServerDialog.vala:38
 msgid "FTP (with login)"
 msgstr "FTP (с аутентификацией)"
 
-#: libcore/ConnectServerDialog.vala:59
+#: libcore/ConnectServerDialog.vala:45
 msgid "SSH"
 msgstr "SSH"
 
-#: libcore/ConnectServerDialog.vala:65
+#: libcore/ConnectServerDialog.vala:51
 msgid "AFP (Apple Filing Protocol)"
 msgstr "AFP (Протокол передачи файлов Apple)"
 
-#: libcore/ConnectServerDialog.vala:71
+#: libcore/ConnectServerDialog.vala:57
 msgid "Windows share"
 msgstr "Ресурс Windows"
 
-#: libcore/ConnectServerDialog.vala:77
+#: libcore/ConnectServerDialog.vala:63
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: libcore/ConnectServerDialog.vala:84
+#: libcore/ConnectServerDialog.vala:70
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Защищённый WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:131
+#: libcore/ConnectServerDialog.vala:112
 msgid "Server Details"
 msgstr "Сведения о сервере"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:116
 msgid "Server name or IP address"
 msgstr "Имя или IP-адрес сервера"
 
-#: libcore/ConnectServerDialog.vala:138
+#: libcore/ConnectServerDialog.vala:119
 msgid "Server:"
 msgstr "Сервер:"
 
-#: libcore/ConnectServerDialog.vala:146
+#: libcore/ConnectServerDialog.vala:129
 msgid "Port:"
 msgstr "Порт:"
 
-#: libcore/ConnectServerDialog.vala:175 libcore/FileConflictDialog.vala:109
-#: libcore/FileConflictDialog.vala:143 src/Dialogs/PropertiesWindow.vala:532
+#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
+#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:532
 msgid "Type:"
 msgstr "Тип:"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:161
 msgid "Name of share on server (Optional)"
 msgstr "Название общего ресурса на сервере (необязательно)"
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:164
 msgid "Share:"
 msgstr "Ресурс:"
 
-#: libcore/ConnectServerDialog.vala:184
+#: libcore/ConnectServerDialog.vala:167
 msgid "Path of shared folder on server (Optional)"
 msgstr "Путь к общей папке на сервере (необязательно)"
 
-#: libcore/ConnectServerDialog.vala:188
+#: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
 msgstr "Папка:"
 
-#: libcore/ConnectServerDialog.vala:190
+#: libcore/ConnectServerDialog.vala:175
 msgid "User Details"
 msgstr "Сведения о пользователе"
 
-#: libcore/ConnectServerDialog.vala:195
+#: libcore/ConnectServerDialog.vala:180
 msgid "Name of Windows domain"
 msgstr "Имя домена Windows"
 
-#: libcore/ConnectServerDialog.vala:197
+#: libcore/ConnectServerDialog.vala:182
 msgid "Domain name:"
 msgstr "Домен:"
 
-#: libcore/ConnectServerDialog.vala:202
+#: libcore/ConnectServerDialog.vala:187
 msgid "Name of user on server"
 msgstr "Имя пользователя на сервере"
 
-#: libcore/ConnectServerDialog.vala:204
+#: libcore/ConnectServerDialog.vala:189
 msgid "User name:"
 msgstr "Имя пользователя:"
 
-#: libcore/ConnectServerDialog.vala:212
+#: libcore/ConnectServerDialog.vala:197
 msgid "Password:"
 msgstr "Пароль:"
 
-#: libcore/ConnectServerDialog.vala:214
+#: libcore/ConnectServerDialog.vala:199
 msgid "Remember this password"
 msgstr "Запомнить этот пароль"
 
-#: libcore/ConnectServerDialog.vala:225
+#: libcore/ConnectServerDialog.vala:209
 msgid "Connect"
 msgstr "Подключиться"
 
-#: libcore/ConnectServerDialog.vala:232
+#: libcore/ConnectServerDialog.vala:216
 msgid "Continue"
 msgstr "Продолжить"
 
-#: libcore/ConnectServerDialog.vala:283
+#: libcore/ConnectServerDialog.vala:266
 msgid "Connecting…"
 msgstr "Подключение…"
 
-#: libcore/ConnectServerDialog.vala:391
+#: libcore/ConnectServerDialog.vala:373
 msgid "Please verify your user details."
 msgstr "Проверьте данные пользователя."
 
@@ -210,12 +210,12 @@ msgstr "Копировать сюда"
 msgid "Link Here"
 msgstr "Создать ссылку здесь"
 
-#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2336
+#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2335
 msgid "Name"
 msgstr "Имя"
 
-#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:96
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:100
+#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
 msgid "Creation Date"
 msgstr "Дата создания"
 
@@ -223,7 +223,7 @@ msgstr "Дата создания"
 msgid "Last modification date"
 msgstr "Дата последнего изменения"
 
-#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2341
+#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2340
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Размер"
@@ -236,7 +236,7 @@ msgstr "Последовательность чисел"
 msgid "Text"
 msgstr "Текст"
 
-#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2351
+#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2350
 msgid "Date"
 msgstr "Дата"
 
@@ -329,61 +329,61 @@ msgstr "ссылка на %s"
 msgid "File conflict"
 msgstr "Конфликт файлов"
 
-#: libcore/FileConflictDialog.vala:97
+#: libcore/FileConflictDialog.vala:96
 msgid "Original file"
 msgstr "Исходный файл"
 
-#: libcore/FileConflictDialog.vala:99 libcore/FileConflictDialog.vala:133
+#: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
 #: src/Dialogs/PropertiesWindow.vala:525
 msgid "Size:"
 msgstr "Размер:"
 
-#: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
+#: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
 msgid "Last modified:"
 msgstr "Последнее изменение:"
 
-#: libcore/FileConflictDialog.vala:131
+#: libcore/FileConflictDialog.vala:130
 msgid "Replace with"
 msgstr "Заменить на"
 
-#: libcore/FileConflictDialog.vala:165
+#: libcore/FileConflictDialog.vala:164
 msgid "Reset"
 msgstr "Сбросить"
 
-#: libcore/FileConflictDialog.vala:177
+#: libcore/FileConflictDialog.vala:173
 msgid "_Select a new name for the destination"
 msgstr "_Выберите имя, которое вы хотите назначить"
 
-#: libcore/FileConflictDialog.vala:180
+#: libcore/FileConflictDialog.vala:177
 msgid "Apply this action to all files"
 msgstr "Применить это действие ко всем файлам"
 
-#: libcore/FileConflictDialog.vala:182 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_Пропустить"
 
-#: libcore/FileConflictDialog.vala:183
+#: libcore/FileConflictDialog.vala:180
 msgid "Re_name"
 msgstr "Переи_меновать"
 
-#: libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:182
 msgid "Keep Newest"
 msgstr "Оставить новый"
 
-#: libcore/FileConflictDialog.vala:186
+#: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "Пропустить, если оригинал был недавно изменён"
 
-#: libcore/FileConflictDialog.vala:190
+#: libcore/FileConflictDialog.vala:187
 msgid "Replace"
 msgstr "Заменить"
 
-#: libcore/FileConflictDialog.vala:299
+#: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Объединить папку «%s»?"
 
-#: libcore/FileConflictDialog.vala:300
+#: libcore/FileConflictDialog.vala:294
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -391,60 +391,60 @@ msgstr ""
 "Если при объединении возникнут конфликты с копируемыми файлами, вам будет "
 "предложено подтвердить замену."
 
-#: libcore/FileConflictDialog.vala:302
+#: libcore/FileConflictDialog.vala:296
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Более старая папка с таким именем уже существует в «%s»."
 
-#: libcore/FileConflictDialog.vala:304
+#: libcore/FileConflictDialog.vala:298
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Более новая папка с таким именем уже существует в «%s»."
 
-#: libcore/FileConflictDialog.vala:306
+#: libcore/FileConflictDialog.vala:300
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Другая папка с таким именем уже существует в «%s»."
 
-#: libcore/FileConflictDialog.vala:309
+#: libcore/FileConflictDialog.vala:303
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Заменить папку «%s»?"
 
-#: libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:304
 msgid "Replacing it will remove all files in the folder."
 msgstr "При замене все файлы в папке будут удалены."
 
-#: libcore/FileConflictDialog.vala:311
+#: libcore/FileConflictDialog.vala:305
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Папка с таким именем уже существует в «%s»."
 
-#: libcore/FileConflictDialog.vala:314
+#: libcore/FileConflictDialog.vala:308
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Заменить файл «%s»?"
 
-#: libcore/FileConflictDialog.vala:315
+#: libcore/FileConflictDialog.vala:309
 msgid "Replacing it will overwrite its content."
 msgstr "При замене файла его содержимое будет перезаписано."
 
-#: libcore/FileConflictDialog.vala:318
+#: libcore/FileConflictDialog.vala:312
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Более старый файл с таким именем уже существует в «%s»."
 
-#: libcore/FileConflictDialog.vala:320
+#: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Более новый файл с таким именем уже существует в «%s»."
 
-#: libcore/FileConflictDialog.vala:322
+#: libcore/FileConflictDialog.vala:316
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Другой файл с таким именем уже существует в «%s»."
 
-#: libcore/FileConflictDialog.vala:348
+#: libcore/FileConflictDialog.vala:342
 msgid "Merge"
 msgstr "Объединить"
 
@@ -1135,7 +1135,7 @@ msgid "Remove"
 msgstr "Удалить"
 
 #: libcore/PopupMenuBuilder.vala:66
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:85
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 msgid "Rename"
 msgstr "Переименовать"
 
@@ -1148,7 +1148,7 @@ msgid "_Unmount"
 msgstr "_Отключить"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2053
+#: src/View/AbstractDirectoryView.vala:2052
 msgid "Properties"
 msgstr "Свойства"
 
@@ -1160,7 +1160,7 @@ msgstr "Извлечь носитель"
 msgid "Safely Remove"
 msgstr "Безопасно извлечь"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2046
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2045
 msgid "Add to Bookmarks"
 msgstr "Добавить в закладки"
 
@@ -1242,7 +1242,7 @@ msgstr "Файловая система"
 msgid "_Cancel"
 msgstr "_Отменить"
 
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:385
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
 msgid "Delete"
 msgstr "Удалить"
 
@@ -1599,8 +1599,8 @@ msgstr "Показать версию программы"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Открыть одну или несколько ссылок URI, каждую в новой вкладке"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1934
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1933
+#: src/View/AbstractDirectoryView.vala:1939
 msgid "New Window"
 msgstr "Новое окно"
 
@@ -1646,7 +1646,7 @@ msgstr "Новое _окно"
 msgid "New Window As _Administrator"
 msgstr "Новое окно с правами _администратора"
 
-#: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
+#: src/ProgressUIHandler.vala:131 src/ProgressUIHandler.vala:187
 msgid "File Operations"
 msgstr "Работа с файлами"
 
@@ -1696,39 +1696,41 @@ msgstr "Доступно:"
 msgid "Used:"
 msgstr "Использовано:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:34
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:21
 msgid "Original filename"
 msgstr "Исходное имя файла"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:36
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:23
 msgid "Modified original"
 msgstr "Изменённое имя файла"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:260
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:25
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:252
 msgid "New basename"
 msgstr "Новая основа имени"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:79
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
 msgid "Bulk Rename"
 msgstr "Массовое переименование"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
 msgstr "Последовательность чисел"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:89
 msgid "Fixed Text"
 msgstr "Фиксированный текст"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
-msgid "Add Prefix"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:93
+#, fuzzy
+msgid "Add Prefix…"
 msgstr "Добавить префикс"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
-msgid "Add Suffix"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:112
+#, fuzzy
+msgid "Add Suffix…"
 msgstr "Добавить суффикс"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
@@ -1750,67 +1752,68 @@ msgctxt "bulk-rename"
 msgid "Modify"
 msgstr "Изменить"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
 msgid "Original Basename"
 msgstr "Оригинальное имя файла"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:164
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:168
 msgid "Replacement text"
 msgstr "На что заменить"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:188
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
 msgstr "Порядок чисел:"
 
 #. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:190
 msgctxt "bulk-rename"
 msgid "Name"
 msgstr "По имени"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
 msgctxt "bulk-rename"
 msgid "Date created"
 msgstr "По дате создания"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
 msgctxt "bulk-rename"
 msgid "Date modified"
 msgstr "По дате изменения"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:198
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "По размеру"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:269
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
 msgstr "Текст для замены"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:375
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:328
 msgid "Apply"
 msgstr "Применить"
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 msgid "Ignored"
 msgstr "Проигнорировано"
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 msgid "Name is not changed"
 msgstr "Имя не будет изменено"
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 msgid "Cannot rename"
 msgstr "Невозможно переименовать"
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 msgid "Name is invalid or already exists"
 msgstr "Имя неправильное или уже существует"
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:78
 msgid "Will be renamed"
 msgstr "Будет переименовано"
 
@@ -1912,7 +1915,7 @@ msgid "Original Location:"
 msgstr "Исходное расположение:"
 
 #: src/Dialogs/PropertiesWindow.vala:648
-#: src/View/AbstractDirectoryView.vala:2021
+#: src/View/AbstractDirectoryView.vala:2020
 msgid "Other Application…"
 msgstr "Другое приложение…"
 
@@ -2000,7 +2003,7 @@ msgid "Could not open files or URIs with this app"
 msgstr "Не удалось открыть файлы или ссылки URI с помощью этого приложения"
 
 #: src/View/AbstractDirectoryView.vala:839
-#: src/View/AbstractDirectoryView.vala:1152
+#: src/View/AbstractDirectoryView.vala:1151
 msgid "Cannot execute this file"
 msgstr "Не удаётся выполнить этот файл"
 
@@ -2026,156 +2029,156 @@ msgstr "Не удалось открыть этот файл"
 msgid "Cannot identify file type to open"
 msgstr "Не удалось определить тип файла для открытия"
 
-#: src/View/AbstractDirectoryView.vala:1632
+#: src/View/AbstractDirectoryView.vala:1631
 msgid "Cannot drop this file"
 msgstr "Не удаётся поместить этот файл"
 
-#: src/View/AbstractDirectoryView.vala:1633
+#: src/View/AbstractDirectoryView.vala:1632
 msgid "Invalid file name provided"
 msgstr "Недопустимое имя файла"
 
-#: src/View/AbstractDirectoryView.vala:1917
-#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:183
+#: src/View/AbstractDirectoryView.vala:1916
+#: src/View/AbstractDirectoryView.vala:1922 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "Новая вкладка"
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:1956
 msgid "Run"
 msgstr "Выполнить"
 
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1963
 #, c-format
 msgid "Open in %s"
 msgstr "Открыть в %s"
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
 msgstr "Открыть в"
 
-#: src/View/AbstractDirectoryView.vala:2035
+#: src/View/AbstractDirectoryView.vala:2034
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Открыть с помощью"
 
-#: src/View/AbstractDirectoryView.vala:2066
+#: src/View/AbstractDirectoryView.vala:2065
 msgid "Select All"
 msgstr "Выделить всё"
 
-#: src/View/AbstractDirectoryView.vala:2075
+#: src/View/AbstractDirectoryView.vala:2074
 msgid "Invert Selection"
 msgstr "Инвертировать выделение"
 
-#: src/View/AbstractDirectoryView.vala:2084
+#: src/View/AbstractDirectoryView.vala:2083
 msgid "Deselect All"
 msgstr "Снять выделение со всего"
 
-#: src/View/AbstractDirectoryView.vala:2092
+#: src/View/AbstractDirectoryView.vala:2091
 msgid "Cut"
 msgstr "Вырезать"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2100
+#: src/View/AbstractDirectoryView.vala:2099
 msgid "Copy"
 msgstr "Копировать"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2106
 msgid "Move to Trash"
 msgstr "Переместить в корзину"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2111
 msgid "Delete Permanently"
 msgstr "Удалить безвозвратно"
 
-#: src/View/AbstractDirectoryView.vala:2119
+#: src/View/AbstractDirectoryView.vala:2118
 msgid "Restore from Trash"
 msgstr "Восстановить из корзины"
 
-#: src/View/AbstractDirectoryView.vala:2142
+#: src/View/AbstractDirectoryView.vala:2141
 msgid "Open Parent Folder"
 msgstr "Открыть родительскую папку"
 
-#: src/View/AbstractDirectoryView.vala:2145
+#: src/View/AbstractDirectoryView.vala:2144
 msgid "Remove from History"
 msgstr "Удалить из истории"
 
-#: src/View/AbstractDirectoryView.vala:2171
+#: src/View/AbstractDirectoryView.vala:2170
 msgid "Rename…"
 msgstr "Переименовать…"
 
-#: src/View/AbstractDirectoryView.vala:2178
+#: src/View/AbstractDirectoryView.vala:2177
 msgid "Copy as Link"
 msgstr "Копировать ссылку"
 
-#: src/View/AbstractDirectoryView.vala:2201
-#: src/View/AbstractDirectoryView.vala:2281
+#: src/View/AbstractDirectoryView.vala:2200
+#: src/View/AbstractDirectoryView.vala:2280
 msgid "Paste Link into Folder"
 msgstr "Вставить ссылку в папку"
 
-#: src/View/AbstractDirectoryView.vala:2206
-#: src/View/AbstractDirectoryView.vala:2258
+#: src/View/AbstractDirectoryView.vala:2205
+#: src/View/AbstractDirectoryView.vala:2257
 msgid "Paste into Folder"
 msgstr "Вставить в папку"
 
-#: src/View/AbstractDirectoryView.vala:2216
-#: src/View/AbstractDirectoryView.vala:2286
+#: src/View/AbstractDirectoryView.vala:2215
+#: src/View/AbstractDirectoryView.vala:2285
 msgid "Paste"
 msgstr "Вставить"
 
-#: src/View/AbstractDirectoryView.vala:2346 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2345 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Тип"
 
-#: src/View/AbstractDirectoryView.vala:2356
+#: src/View/AbstractDirectoryView.vala:2355
 msgid "Reversed Order"
 msgstr "В обратном порядке"
 
-#: src/View/AbstractDirectoryView.vala:2359
+#: src/View/AbstractDirectoryView.vala:2358
 msgid "Folders Before Files"
 msgstr "Папки перед файлами"
 
-#: src/View/AbstractDirectoryView.vala:2371
+#: src/View/AbstractDirectoryView.vala:2370
 msgid "Sort by"
 msgstr "Сортировать"
 
-#: src/View/AbstractDirectoryView.vala:2379
+#: src/View/AbstractDirectoryView.vala:2378
 msgid "Folder"
 msgstr "Папка"
 
-#: src/View/AbstractDirectoryView.vala:2385
+#: src/View/AbstractDirectoryView.vala:2384
 msgid "Empty File"
 msgstr "Пустой файл"
 
-#: src/View/AbstractDirectoryView.vala:2436
+#: src/View/AbstractDirectoryView.vala:2435
 msgid "New"
 msgstr "Создать"
 
-#: src/View/AbstractDirectoryView.vala:2679
+#: src/View/AbstractDirectoryView.vala:2678
 #, c-format
 msgid "Untitled %s"
 msgstr "Безымянный %s"
 
-#: src/View/AbstractDirectoryView.vala:2997
-#: src/View/AbstractDirectoryView.vala:3190
+#: src/View/AbstractDirectoryView.vala:2996
+#: src/View/AbstractDirectoryView.vala:3189
 msgid "Cannot remove files from here"
 msgstr "Не удалось удалить файлы отсюда"
 
-#: src/View/AbstractDirectoryView.vala:2998
-#: src/View/AbstractDirectoryView.vala:3163
-#: src/View/AbstractDirectoryView.vala:3174
-#: src/View/AbstractDirectoryView.vala:3191
+#: src/View/AbstractDirectoryView.vala:2997
+#: src/View/AbstractDirectoryView.vala:3162
+#: src/View/AbstractDirectoryView.vala:3173
+#: src/View/AbstractDirectoryView.vala:3190
 msgid "You do not have permission to change this location"
 msgstr "У вас нет прав на изменение этого расположения"
 
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:3130
 msgid "Cannot copy files that are in the trash"
 msgstr "Невозможно копировать файлы, находящиеся в корзине"
 
-#: src/View/AbstractDirectoryView.vala:3132
+#: src/View/AbstractDirectoryView.vala:3131
 msgid "Cutting the selection instead"
 msgstr "Вырезать невыделенное"
 
-#: src/View/AbstractDirectoryView.vala:3162
-#: src/View/AbstractDirectoryView.vala:3173
+#: src/View/AbstractDirectoryView.vala:3161
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "Cannot paste files here"
 msgstr "Не удалось вставить файлы сюда"
 
@@ -2439,63 +2442,63 @@ msgstr "Открыть в новой вкладке"
 msgid "Open in Other Application…"
 msgstr "Открыть в другом приложении…"
 
-#: src/View/Widgets/HeaderBar.vala:75
+#: src/View/Widgets/HeaderBar.vala:73
 msgid "Previous"
 msgstr "Назад"
 
-#: src/View/Widgets/HeaderBar.vala:82
+#: src/View/Widgets/HeaderBar.vala:78
 msgid "Next"
 msgstr "Далее"
 
-#: src/View/Widgets/HeaderBar.vala:97
+#: src/View/Widgets/HeaderBar.vala:93
 msgid "Zoom Out"
 msgstr "Отдалить"
 
-#: src/View/Widgets/HeaderBar.vala:106
+#: src/View/Widgets/HeaderBar.vala:102
 msgid "Zoom 1:1"
 msgstr "Сбросить масштаб"
 
-#: src/View/Widgets/HeaderBar.vala:115
+#: src/View/Widgets/HeaderBar.vala:111
 msgid "Zoom In"
 msgstr "Приблизить"
 
-#: src/View/Widgets/HeaderBar.vala:154
+#: src/View/Widgets/HeaderBar.vala:150
 msgid "Double-click to Navigate"
 msgstr "Навигация двойным щелчком"
 
-#: src/View/Widgets/HeaderBar.vala:155
+#: src/View/Widgets/HeaderBar.vala:151
 msgid "Double-click on a folder opens it, single-click selects it"
 msgstr "Двойной щелчок по папке открывает её, одинарный — выбирает"
 
-#: src/View/Widgets/HeaderBar.vala:160
+#: src/View/Widgets/HeaderBar.vala:156
 msgid "Sort Folders before Files"
 msgstr "Сортировать папки перед файлами"
 
-#: src/View/Widgets/HeaderBar.vala:164
+#: src/View/Widgets/HeaderBar.vala:160
 msgid "Show in View"
 msgstr "Показывать"
 
-#: src/View/Widgets/HeaderBar.vala:171
+#: src/View/Widgets/HeaderBar.vala:167
 msgid "Hidden Files"
 msgstr "Скрытые файлы"
 
-#: src/View/Widgets/HeaderBar.vala:175
+#: src/View/Widgets/HeaderBar.vala:171
 msgid "Local Thumbnails"
 msgstr "Локальные миниатюры"
 
-#: src/View/Widgets/HeaderBar.vala:180
+#: src/View/Widgets/HeaderBar.vala:176
 msgid "Remote Thumbnails"
 msgstr "Удалённые миниатюры"
 
-#: src/View/Widgets/HeaderBar.vala:208
+#: src/View/Widgets/HeaderBar.vala:204
 msgid "Menu"
 msgstr "Меню"
 
-#: src/View/Widgets/HeaderBar.vala:283
+#: src/View/Widgets/HeaderBar.vala:279
 msgid "No operation to undo"
 msgstr "Нечего отменять"
 
-#: src/View/Widgets/HeaderBar.vala:290
+#: src/View/Widgets/HeaderBar.vala:286
 msgid "No operation to redo"
 msgstr "Нечего повторять"
 

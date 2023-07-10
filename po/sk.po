@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 19:58+0000\n"
+"POT-Creation-Date: 2023-07-10 08:19-0700\n"
 "PO-Revision-Date: 2022-12-26 20:25+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
@@ -21,10 +21,10 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:380
+#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:185
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "Zrušiť"
@@ -41,7 +41,6 @@ msgstr "Otvoriť súbor iba na čítanie"
 
 #: filechooser-portal/FileChooserDialog.vala:376
 #, fuzzy
-#| msgid "new file"
 msgid "Enter new filename"
 msgstr "nový súbor"
 
@@ -68,7 +67,6 @@ msgstr ""
 
 #: filechooser-portal/Main.vala:454
 #, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
 msgstr "Nahradením sa prepíše jeho obsah."
@@ -82,112 +80,112 @@ msgstr "Nahradiť „%s“?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Nahradením tohoto súboru sa prepíše jeho obsah"
 
-#: libcore/ConnectServerDialog.vala:46
+#: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
 msgstr "Verejné FTP"
 
-#: libcore/ConnectServerDialog.vala:52
+#: libcore/ConnectServerDialog.vala:38
 msgid "FTP (with login)"
 msgstr "FTP (s prihlásením)"
 
-#: libcore/ConnectServerDialog.vala:59
+#: libcore/ConnectServerDialog.vala:45
 msgid "SSH"
 msgstr "SSH"
 
-#: libcore/ConnectServerDialog.vala:65
+#: libcore/ConnectServerDialog.vala:51
 msgid "AFP (Apple Filing Protocol)"
 msgstr "AFP (Apple Filing Protocol)"
 
-#: libcore/ConnectServerDialog.vala:71
+#: libcore/ConnectServerDialog.vala:57
 msgid "Windows share"
 msgstr "Zdieľanie Windows"
 
-#: libcore/ConnectServerDialog.vala:77
+#: libcore/ConnectServerDialog.vala:63
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: libcore/ConnectServerDialog.vala:84
+#: libcore/ConnectServerDialog.vala:70
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Zabezpečený WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:131
+#: libcore/ConnectServerDialog.vala:112
 msgid "Server Details"
 msgstr "Podrobnosti o serveri"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:116
 msgid "Server name or IP address"
 msgstr "Názov serveru alebo jeho IP adresa"
 
-#: libcore/ConnectServerDialog.vala:138
+#: libcore/ConnectServerDialog.vala:119
 msgid "Server:"
 msgstr "Server:"
 
-#: libcore/ConnectServerDialog.vala:146
+#: libcore/ConnectServerDialog.vala:129
 msgid "Port:"
 msgstr "Port:"
 
-#: libcore/ConnectServerDialog.vala:175 libcore/FileConflictDialog.vala:109
-#: libcore/FileConflictDialog.vala:143 src/Dialogs/PropertiesWindow.vala:532
+#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
+#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:532
 msgid "Type:"
 msgstr "Typ:"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:161
 msgid "Name of share on server (Optional)"
 msgstr "Názov zdieľania na serveri (nepovinné)"
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:164
 msgid "Share:"
 msgstr "Zdieľanie:"
 
-#: libcore/ConnectServerDialog.vala:184
+#: libcore/ConnectServerDialog.vala:167
 msgid "Path of shared folder on server (Optional)"
 msgstr "Umiestnenie zdieľaného priečinka na serveri (nepovinné)"
 
-#: libcore/ConnectServerDialog.vala:188
+#: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
 msgstr "Priečinok:"
 
-#: libcore/ConnectServerDialog.vala:190
+#: libcore/ConnectServerDialog.vala:175
 msgid "User Details"
 msgstr "Podrobnosti o používateľovi"
 
-#: libcore/ConnectServerDialog.vala:195
+#: libcore/ConnectServerDialog.vala:180
 msgid "Name of Windows domain"
 msgstr "Názov domény Windows"
 
-#: libcore/ConnectServerDialog.vala:197
+#: libcore/ConnectServerDialog.vala:182
 msgid "Domain name:"
 msgstr "Názov domény:"
 
-#: libcore/ConnectServerDialog.vala:202
+#: libcore/ConnectServerDialog.vala:187
 msgid "Name of user on server"
 msgstr "Používateľské meno na serveri"
 
-#: libcore/ConnectServerDialog.vala:204
+#: libcore/ConnectServerDialog.vala:189
 msgid "User name:"
 msgstr "Používateľské meno:"
 
-#: libcore/ConnectServerDialog.vala:212
+#: libcore/ConnectServerDialog.vala:197
 msgid "Password:"
 msgstr "Heslo:"
 
-#: libcore/ConnectServerDialog.vala:214
+#: libcore/ConnectServerDialog.vala:199
 msgid "Remember this password"
 msgstr "Zapamätať si heslo"
 
-#: libcore/ConnectServerDialog.vala:225
+#: libcore/ConnectServerDialog.vala:209
 msgid "Connect"
 msgstr "Pripojiť"
 
-#: libcore/ConnectServerDialog.vala:232
+#: libcore/ConnectServerDialog.vala:216
 msgid "Continue"
 msgstr "Pokračovať"
 
-#: libcore/ConnectServerDialog.vala:283
+#: libcore/ConnectServerDialog.vala:266
 msgid "Connecting…"
 msgstr "Pripája sa…"
 
-#: libcore/ConnectServerDialog.vala:391
+#: libcore/ConnectServerDialog.vala:373
 msgid "Please verify your user details."
 msgstr "Skontrolujte prosím svoje používateľské údaje."
 
@@ -212,24 +210,22 @@ msgstr "Kopírovať sem"
 msgid "Link Here"
 msgstr "Pridať odkaz sem"
 
-#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2336
+#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2335
 msgid "Name"
 msgstr "Názov"
 
-#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:96
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:100
+#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
 #, fuzzy
-#| msgid "Create"
 msgid "Creation Date"
 msgstr "Vytvoriť"
 
 #: libcore/Enums.vala:163
 #, fuzzy
-#| msgid "Last modified:"
 msgid "Last modification date"
 msgstr "Naposledy upravené:"
 
-#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2341
+#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2340
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Veľkosť"
@@ -242,7 +238,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2351
+#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2350
 msgid "Date"
 msgstr "Dátum"
 
@@ -284,13 +280,11 @@ msgstr ""
 
 #: libcore/Enums.vala:270
 #, fuzzy
-#| msgid "Recreate"
 msgid "Date created"
 msgstr "Znovu vytvoriť"
 
 #: libcore/Enums.vala:272
 #, fuzzy
-#| msgid "Modified"
 msgid "Date Modified"
 msgstr "Upravené"
 
@@ -324,8 +318,6 @@ msgstr "Prázdne"
 
 #: libcore/File.vala:1108
 #, fuzzy, c-format
-#| msgid "%i item"
-#| msgid_plural "%i items"
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%i položka"
@@ -341,61 +333,61 @@ msgstr "odkaz na %s"
 msgid "File conflict"
 msgstr "Konflikt súborov"
 
-#: libcore/FileConflictDialog.vala:97
+#: libcore/FileConflictDialog.vala:96
 msgid "Original file"
 msgstr "Pôvodný súbor"
 
-#: libcore/FileConflictDialog.vala:99 libcore/FileConflictDialog.vala:133
+#: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
 #: src/Dialogs/PropertiesWindow.vala:525
 msgid "Size:"
 msgstr "Veľkosť:"
 
-#: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
+#: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
 msgid "Last modified:"
 msgstr "Naposledy upravené:"
 
-#: libcore/FileConflictDialog.vala:131
+#: libcore/FileConflictDialog.vala:130
 msgid "Replace with"
 msgstr "Nahradiť za"
 
-#: libcore/FileConflictDialog.vala:165
+#: libcore/FileConflictDialog.vala:164
 msgid "Reset"
 msgstr "Resetovať"
 
-#: libcore/FileConflictDialog.vala:177
+#: libcore/FileConflictDialog.vala:173
 msgid "_Select a new name for the destination"
 msgstr "_Vyberte nový názov pre cieľové umiestnenie"
 
-#: libcore/FileConflictDialog.vala:180
+#: libcore/FileConflictDialog.vala:177
 msgid "Apply this action to all files"
 msgstr "Použiť túto akciu na všetky súbory"
 
-#: libcore/FileConflictDialog.vala:182 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_Preskočiť"
 
-#: libcore/FileConflictDialog.vala:183
+#: libcore/FileConflictDialog.vala:180
 msgid "Re_name"
 msgstr "_Premenovať"
 
-#: libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:182
 msgid "Keep Newest"
 msgstr "Ponechať najnovšie"
 
-#: libcore/FileConflictDialog.vala:186
+#: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "Preskočiť ak bol pôvodný súbor nedávno upravený"
 
-#: libcore/FileConflictDialog.vala:190
+#: libcore/FileConflictDialog.vala:187
 msgid "Replace"
 msgstr "Nahradiť"
 
-#: libcore/FileConflictDialog.vala:299
+#: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Zlúčiť priečinok „%s“?"
 
-#: libcore/FileConflictDialog.vala:300
+#: libcore/FileConflictDialog.vala:294
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -403,60 +395,60 @@ msgstr ""
 "Zlúčenie si vyžiada potvrdenie pred nahradením akýchkoľvek súborov v "
 "priečinku, ktoré sú v konflikte s kopírovanými súbormi."
 
-#: libcore/FileConflictDialog.vala:302
+#: libcore/FileConflictDialog.vala:296
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Starší priečinok s rovnakým názvom už existuje v „%s“."
 
-#: libcore/FileConflictDialog.vala:304
+#: libcore/FileConflictDialog.vala:298
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Novší priečinok s rovnakým názvom už existuje v „%s“."
 
-#: libcore/FileConflictDialog.vala:306
+#: libcore/FileConflictDialog.vala:300
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Iný priečinok s rovnakým názvom už existuje v „%s“."
 
-#: libcore/FileConflictDialog.vala:309
+#: libcore/FileConflictDialog.vala:303
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Nahradiť priečinok „%s“?"
 
-#: libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:304
 msgid "Replacing it will remove all files in the folder."
 msgstr "Nahradením sa odstránia všetky súbory v priečinku."
 
-#: libcore/FileConflictDialog.vala:311
+#: libcore/FileConflictDialog.vala:305
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Priečinok s rovnakým názvom už existuje v „%s“."
 
-#: libcore/FileConflictDialog.vala:314
+#: libcore/FileConflictDialog.vala:308
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Nahradiť súbor „%s“?"
 
-#: libcore/FileConflictDialog.vala:315
+#: libcore/FileConflictDialog.vala:309
 msgid "Replacing it will overwrite its content."
 msgstr "Nahradením sa prepíše jeho obsah."
 
-#: libcore/FileConflictDialog.vala:318
+#: libcore/FileConflictDialog.vala:312
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Starší súbor s rovnakým názvom už existuje v „%s“."
 
-#: libcore/FileConflictDialog.vala:320
+#: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Novší súbor s rovnakým názvom už existuje v„%s“."
 
-#: libcore/FileConflictDialog.vala:322
+#: libcore/FileConflictDialog.vala:316
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Iný súbor s rovnakým názvom už existuje v „%s“."
 
-#: libcore/FileConflictDialog.vala:348
+#: libcore/FileConflictDialog.vala:342
 msgid "Merge"
 msgstr "Zlúčiť"
 
@@ -1163,7 +1155,7 @@ msgid "Remove"
 msgstr "Odstrániť"
 
 #: libcore/PopupMenuBuilder.vala:66
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:85
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 msgid "Rename"
 msgstr "Premenovať"
 
@@ -1176,7 +1168,7 @@ msgid "_Unmount"
 msgstr "_Odpojiť"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2053
+#: src/View/AbstractDirectoryView.vala:2052
 msgid "Properties"
 msgstr "Vlastnosti"
 
@@ -1188,7 +1180,7 @@ msgstr "Vysunúť médium"
 msgid "Safely Remove"
 msgstr "Bezpečne odobrať"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2046
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2045
 msgid "Add to Bookmarks"
 msgstr "Pridať medzi záložky"
 
@@ -1270,7 +1262,7 @@ msgstr "Súborový systém"
 msgid "_Cancel"
 msgstr "_Zrušiť"
 
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:385
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
 msgid "Delete"
 msgstr "Vymazať"
 
@@ -1312,102 +1304,81 @@ msgstr "Vyprázdniť _kôš"
 
 #: libcore/UndoManager.vala:22
 #, fuzzy
-#| msgid "Copy"
 msgid "Undo Copy"
 msgstr "Kopírovať"
 
 #: libcore/UndoManager.vala:24
 #, fuzzy
-#| msgid "Duplicate Tab"
 msgid "Undo Duplicate"
 msgstr "Duplikovať kartu"
 
 #: libcore/UndoManager.vala:26
 #, fuzzy
-#| msgid "Undo Close Tab"
 msgid "Undo Move"
 msgstr "Vrátiť späť zatvorenie karty"
 
 #: libcore/UndoManager.vala:28
 #, fuzzy
-#| msgid "Rename"
 msgid "Undo Rename"
 msgstr "Premenovať"
 
 #: libcore/UndoManager.vala:30
 #, fuzzy
-#| msgid "_Undo creation of an empty file"
 msgid "Undo Create Empty File"
 msgstr "_Vrátiť vytvorenie prázdneho súboru"
 
 #: libcore/UndoManager.vala:32
 #, fuzzy
-#| msgid "_Undo creation of a file from template"
 msgid "Undo Create File from Template"
 msgstr "_Vrátiť vytvorenie súboru zo šablóny"
 
 #: libcore/UndoManager.vala:34
 #, fuzzy
-#| msgid "_Undo creation of %d folder"
-#| msgid_plural "_Undo creation of %d folders"
 msgid "Undo Create Folder"
 msgstr "Vrátiť naspäť vytvorenie %d priečinka"
 
 #: libcore/UndoManager.vala:36
 #, fuzzy
-#| msgid "Move to Trash"
 msgid "Undo Move to Trash"
 msgstr "Presunúť do koša"
 
 #: libcore/UndoManager.vala:38
 #, fuzzy
-#| msgid "_Undo create link to %d item"
-#| msgid_plural "_Undo create link to %d items"
 msgid "Undo Create Link"
 msgstr "Vrátiť naspäť vytvorenie odkazu na %d položku"
 
 #: libcore/UndoManager.vala:40
 #, fuzzy
-#| msgid "Restore from Trash"
 msgid "Undo Restore from Trash"
 msgstr "Obnoviť z koša"
 
 #: libcore/UndoManager.vala:42
 #, fuzzy
-#| msgid "Setting permissions"
 msgid "Undo Set Permissions"
 msgstr "Nastavujú sa oprávnenia"
 
 #: libcore/UndoManager.vala:44
 #, fuzzy
-#| msgid "Undo change permissions of %d item"
-#| msgid_plural "Undo change permissions of %d items"
 msgid "Undo Set Permissions Recursively"
 msgstr "Vrátiť naspäť zmenu oprávnení %d položky"
 
 #: libcore/UndoManager.vala:46
 #, fuzzy
-#| msgid "Undo change owner of %d item"
-#| msgid_plural "Undo change owner of %d items"
 msgid "Undo Change Owner"
 msgstr "Vrátiť naspäť zmenu vlastníka %d položky"
 
 #: libcore/UndoManager.vala:48
 #, fuzzy
-#| msgid "Undo change group of %d item"
-#| msgid_plural "Undo change group of %d items"
 msgid "Undo Change Group"
 msgstr "Vrátiť naspäť zmenu skupiny %d položky"
 
 #: libcore/UndoManager.vala:57
 #, fuzzy
-#| msgid "Copy"
 msgid "Redo Copy"
 msgstr "Kopírovať"
 
 #: libcore/UndoManager.vala:59
 #, fuzzy
-#| msgid "Duplicate Tab"
 msgid "Redo Duplicate"
 msgstr "Duplikovať kartu"
 
@@ -1417,71 +1388,56 @@ msgstr ""
 
 #: libcore/UndoManager.vala:63
 #, fuzzy
-#| msgid "Rename"
 msgid "Redo Rename"
 msgstr "Premenovať"
 
 #: libcore/UndoManager.vala:65
 #, fuzzy
-#| msgid "_Redo creation of an empty file"
 msgid "Redo Create Empty File"
 msgstr "_Obnoviť vytvorenie prázdneho súboru"
 
 #: libcore/UndoManager.vala:67
 #, fuzzy
-#| msgid "_Redo creation of a file from template"
 msgid "Redo Create File from Template"
 msgstr "_Obnoviť vytvorenie súboru na základe šablóny"
 
 #: libcore/UndoManager.vala:69
 #, fuzzy
-#| msgid "Failed to create the folder"
 msgid "Redo Create Folder"
 msgstr "Vytvorenie priečinka sa nepodarilo"
 
 #: libcore/UndoManager.vala:71
 #, fuzzy
-#| msgid "Move to Trash"
 msgid "Redo Move to Trash"
 msgstr "Presunúť do koša"
 
 #: libcore/UndoManager.vala:73
 #, fuzzy
-#| msgid "_Redo create link to %d item"
-#| msgid_plural "_Redo create link to %d items"
 msgid "Redo Create Link"
 msgstr "_Obnoviť tvorbu odkazu k %d položke"
 
 #: libcore/UndoManager.vala:75
 #, fuzzy
-#| msgid "Restore from Trash"
 msgid "Redo Restore from Trash"
 msgstr "Obnoviť z koša"
 
 #: libcore/UndoManager.vala:77
 #, fuzzy
-#| msgid "Setting permissions"
 msgid "Redo Set Permissions"
 msgstr "Nastavujú sa oprávnenia"
 
 #: libcore/UndoManager.vala:79
 #, fuzzy
-#| msgid "Redo change permissions of %d item"
-#| msgid_plural "Redo change permissions of %d items"
 msgid "Redo Set Permissions Recursively"
 msgstr "Obnoviť zmenu povolení %d položky"
 
 #: libcore/UndoManager.vala:81
 #, fuzzy
-#| msgid "Redo change owner of %d item"
-#| msgid_plural "Redo change owner of %d items"
 msgid "Redo Change Owner"
 msgstr "Obnoviť zmenu vlastníka %d položky"
 
 #: libcore/UndoManager.vala:83
 #, fuzzy
-#| msgid "Redo change group of %d item"
-#| msgid_plural "Redo change group of %d items"
 msgid "Redo Change Group"
 msgstr "Obnoviť zmenu skupiny %d položky"
 
@@ -1680,8 +1636,8 @@ msgstr "Zobraziť verziu programu"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Otvoriť jeden (alebo viac) URI, každý na novej karte"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1934
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1933
+#: src/View/AbstractDirectoryView.vala:1939
 msgid "New Window"
 msgstr "Nové okno"
 
@@ -1727,7 +1683,7 @@ msgstr "Nové _okno"
 msgid "New Window As _Administrator"
 msgstr "Nové okno ako _Správca"
 
-#: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
+#: src/ProgressUIHandler.vala:131 src/ProgressUIHandler.vala:187
 msgid "File Operations"
 msgstr "Činnosti so súbormi"
 
@@ -1755,7 +1711,6 @@ msgstr "Využitie zariadenia"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:166
 #, fuzzy, c-format
-#| msgid "(%s Free of %s)"
 msgid "%s free out of %s"
 msgstr "(%s voľné z %s)"
 
@@ -1778,52 +1733,47 @@ msgstr "Dostupné:"
 msgid "Used:"
 msgstr "Použité:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:34
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:21
 #, fuzzy
-#| msgid "Original file"
 msgid "Original filename"
 msgstr "Pôvodný súbor"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:36
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:23
 #, fuzzy
-#| msgid "Modified"
 msgid "Modified original"
 msgstr "Upravené"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:260
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:25
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:252
 #, fuzzy
-#| msgid "Rename"
 msgid "New basename"
 msgstr "Premenovať"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:79
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
 #, fuzzy
-#| msgid "Rename"
 msgid "Bulk Rename"
 msgstr "Premenovať"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:89
 msgid "Fixed Text"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
-msgid "Add Prefix"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:93
+msgid "Add Prefix…"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
-msgid "Add Suffix"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:112
+msgid "Add Suffix…"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
 #, fuzzy
-#| msgid "User name:"
 msgid "Basename:"
 msgstr "Používateľské meno:"
 
@@ -1834,103 +1784,92 @@ msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
-#| msgid "Replace"
 msgctxt "bulk-rename"
 msgid "Replace"
 msgstr "Nahradiť"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modify"
 msgstr "Upravené"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
 #, fuzzy
-#| msgid "Original file"
 msgid "Original Basename"
 msgstr "Pôvodný súbor"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:164
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:168
 #, fuzzy
-#| msgid "Replace with"
 msgid "Replacement text"
 msgstr "Nahradiť za"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:188
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
 msgstr ""
 
 #. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:190
 #, fuzzy
-#| msgid "Name"
 msgctxt "bulk-rename"
 msgid "Name"
 msgstr "Názov"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
 #, fuzzy
-#| msgid "Recreate"
 msgctxt "bulk-rename"
 msgid "Date created"
 msgstr "Znovu vytvoriť"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
 #, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Date modified"
 msgstr "Upravené"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:198
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
 #, fuzzy
-#| msgid "Size"
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "Veľkosť"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:269
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:375
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:328
 msgid "Apply"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 #, fuzzy
-#| msgid "Ignore"
 msgid "Ignored"
 msgstr "Ignorovať"
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 msgid "Name is not changed"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 #, fuzzy
-#| msgid "Rename"
 msgid "Cannot rename"
 msgstr "Premenovať"
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 msgid "Name is invalid or already exists"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:78
 #, fuzzy
-#| msgid "Filename"
 msgid "Will be renamed"
 msgstr "Názov súboru"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
 #, fuzzy
-#| msgid "Reversed Order"
 msgid "Reverse Order"
 msgstr "Opačné poradie"
 
@@ -2031,7 +1970,7 @@ msgid "Original Location:"
 msgstr "Pôvodné umiestnenie:"
 
 #: src/Dialogs/PropertiesWindow.vala:648
-#: src/View/AbstractDirectoryView.vala:2021
+#: src/View/AbstractDirectoryView.vala:2020
 msgid "Other Application…"
 msgstr "Iná aplikácia…"
 
@@ -2119,7 +2058,7 @@ msgid "Could not open files or URIs with this app"
 msgstr "Pomocou tejto aplikácie sa nepodarilo otvoriť súbory alebo URI"
 
 #: src/View/AbstractDirectoryView.vala:839
-#: src/View/AbstractDirectoryView.vala:1152
+#: src/View/AbstractDirectoryView.vala:1151
 msgid "Cannot execute this file"
 msgstr "Tento súbor sa nedá spustiť"
 
@@ -2145,156 +2084,156 @@ msgstr "Tento súbor sa nedá otvoriť"
 msgid "Cannot identify file type to open"
 msgstr "Nedarí sa zistiť typ súboru, ktorý má byť otvorený"
 
-#: src/View/AbstractDirectoryView.vala:1632
+#: src/View/AbstractDirectoryView.vala:1631
 msgid "Cannot drop this file"
 msgstr "Tento súbor sa nedá premiestniť"
 
-#: src/View/AbstractDirectoryView.vala:1633
+#: src/View/AbstractDirectoryView.vala:1632
 msgid "Invalid file name provided"
 msgstr "Zadaný nesprávny názov súboru"
 
-#: src/View/AbstractDirectoryView.vala:1917
-#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:183
+#: src/View/AbstractDirectoryView.vala:1916
+#: src/View/AbstractDirectoryView.vala:1922 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "Nová karta"
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:1956
 msgid "Run"
 msgstr "Spustiť"
 
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1963
 #, c-format
 msgid "Open in %s"
 msgstr "Otvoriť v %s"
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
 msgstr "Otvoriť v"
 
-#: src/View/AbstractDirectoryView.vala:2035
+#: src/View/AbstractDirectoryView.vala:2034
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Otvoriť pomocou"
 
-#: src/View/AbstractDirectoryView.vala:2066
+#: src/View/AbstractDirectoryView.vala:2065
 msgid "Select All"
 msgstr "Vybrať všetko"
 
-#: src/View/AbstractDirectoryView.vala:2075
+#: src/View/AbstractDirectoryView.vala:2074
 msgid "Invert Selection"
 msgstr "Invertovať výber"
 
-#: src/View/AbstractDirectoryView.vala:2084
+#: src/View/AbstractDirectoryView.vala:2083
 msgid "Deselect All"
 msgstr "Odznačiť všetko"
 
-#: src/View/AbstractDirectoryView.vala:2092
+#: src/View/AbstractDirectoryView.vala:2091
 msgid "Cut"
 msgstr "Vystrihnúť"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2100
+#: src/View/AbstractDirectoryView.vala:2099
 msgid "Copy"
 msgstr "Kopírovať"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2106
 msgid "Move to Trash"
 msgstr "Presunúť do koša"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2111
 msgid "Delete Permanently"
 msgstr "Odstrániť natrvalo"
 
-#: src/View/AbstractDirectoryView.vala:2119
+#: src/View/AbstractDirectoryView.vala:2118
 msgid "Restore from Trash"
 msgstr "Obnoviť z koša"
 
-#: src/View/AbstractDirectoryView.vala:2142
+#: src/View/AbstractDirectoryView.vala:2141
 msgid "Open Parent Folder"
 msgstr "Otvoriť nadriadený priečinok"
 
-#: src/View/AbstractDirectoryView.vala:2145
+#: src/View/AbstractDirectoryView.vala:2144
 msgid "Remove from History"
 msgstr "Odstrániť z histórie"
 
-#: src/View/AbstractDirectoryView.vala:2171
+#: src/View/AbstractDirectoryView.vala:2170
 msgid "Rename…"
 msgstr "Premenovať…"
 
-#: src/View/AbstractDirectoryView.vala:2178
+#: src/View/AbstractDirectoryView.vala:2177
 msgid "Copy as Link"
 msgstr "Kopírovať ako odkaz"
 
-#: src/View/AbstractDirectoryView.vala:2201
-#: src/View/AbstractDirectoryView.vala:2281
+#: src/View/AbstractDirectoryView.vala:2200
+#: src/View/AbstractDirectoryView.vala:2280
 msgid "Paste Link into Folder"
 msgstr "Vložiť odkaz do priečinku"
 
-#: src/View/AbstractDirectoryView.vala:2206
-#: src/View/AbstractDirectoryView.vala:2258
+#: src/View/AbstractDirectoryView.vala:2205
+#: src/View/AbstractDirectoryView.vala:2257
 msgid "Paste into Folder"
 msgstr "Vložiť do priečinku"
 
-#: src/View/AbstractDirectoryView.vala:2216
-#: src/View/AbstractDirectoryView.vala:2286
+#: src/View/AbstractDirectoryView.vala:2215
+#: src/View/AbstractDirectoryView.vala:2285
 msgid "Paste"
 msgstr "Vložiť"
 
-#: src/View/AbstractDirectoryView.vala:2346 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2345 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Typ"
 
-#: src/View/AbstractDirectoryView.vala:2356
+#: src/View/AbstractDirectoryView.vala:2355
 msgid "Reversed Order"
 msgstr "Opačné poradie"
 
-#: src/View/AbstractDirectoryView.vala:2359
+#: src/View/AbstractDirectoryView.vala:2358
 msgid "Folders Before Files"
 msgstr "Priečinky pred súbormi"
 
-#: src/View/AbstractDirectoryView.vala:2371
+#: src/View/AbstractDirectoryView.vala:2370
 msgid "Sort by"
 msgstr "Zoradiť podľa"
 
-#: src/View/AbstractDirectoryView.vala:2379
+#: src/View/AbstractDirectoryView.vala:2378
 msgid "Folder"
 msgstr "Priečinok"
 
-#: src/View/AbstractDirectoryView.vala:2385
+#: src/View/AbstractDirectoryView.vala:2384
 msgid "Empty File"
 msgstr "Prázdny súbor"
 
-#: src/View/AbstractDirectoryView.vala:2436
+#: src/View/AbstractDirectoryView.vala:2435
 msgid "New"
 msgstr "Nový"
 
-#: src/View/AbstractDirectoryView.vala:2679
+#: src/View/AbstractDirectoryView.vala:2678
 #, c-format
 msgid "Untitled %s"
 msgstr "Bez názvu %s"
 
-#: src/View/AbstractDirectoryView.vala:2997
-#: src/View/AbstractDirectoryView.vala:3190
+#: src/View/AbstractDirectoryView.vala:2996
+#: src/View/AbstractDirectoryView.vala:3189
 msgid "Cannot remove files from here"
 msgstr "Z tohoto umiestnenia sa nedajú odstrániť súbory"
 
-#: src/View/AbstractDirectoryView.vala:2998
-#: src/View/AbstractDirectoryView.vala:3163
-#: src/View/AbstractDirectoryView.vala:3174
-#: src/View/AbstractDirectoryView.vala:3191
+#: src/View/AbstractDirectoryView.vala:2997
+#: src/View/AbstractDirectoryView.vala:3162
+#: src/View/AbstractDirectoryView.vala:3173
+#: src/View/AbstractDirectoryView.vala:3190
 msgid "You do not have permission to change this location"
 msgstr "Nemáte oprávnenie na zmenu umiestnenia"
 
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:3130
 msgid "Cannot copy files that are in the trash"
 msgstr "Súbory v koši nie je možné kopírovať"
 
-#: src/View/AbstractDirectoryView.vala:3132
+#: src/View/AbstractDirectoryView.vala:3131
 msgid "Cutting the selection instead"
 msgstr "Namiesto toho sa vybrané položky vystrihnú"
 
-#: src/View/AbstractDirectoryView.vala:3162
-#: src/View/AbstractDirectoryView.vala:3173
+#: src/View/AbstractDirectoryView.vala:3161
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "Cannot paste files here"
 msgstr "Do tohoto umiestnenia sa nedajú vložiť súbory"
 
@@ -2538,7 +2477,6 @@ msgstr "Pripojiť server…"
 
 #: src/View/Sidebar/VolumeRow.vala:166
 #, fuzzy
-#| msgid "_Mount"
 msgid "Mount"
 msgstr "_Pripojiť"
 
@@ -2559,77 +2497,70 @@ msgstr "Otvoriť na novej karte"
 msgid "Open in Other Application…"
 msgstr "Otvoriť v inej aplikácii…"
 
-#: src/View/Widgets/HeaderBar.vala:75
+#: src/View/Widgets/HeaderBar.vala:73
 msgid "Previous"
 msgstr "Predchádzajúce"
 
-#: src/View/Widgets/HeaderBar.vala:82
+#: src/View/Widgets/HeaderBar.vala:78
 msgid "Next"
 msgstr "Nasledujúce"
 
-#: src/View/Widgets/HeaderBar.vala:97
+#: src/View/Widgets/HeaderBar.vala:93
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:106
+#: src/View/Widgets/HeaderBar.vala:102
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:115
+#: src/View/Widgets/HeaderBar.vala:111
 msgid "Zoom In"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:154
+#: src/View/Widgets/HeaderBar.vala:150
 msgid "Double-click to Navigate"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:155
+#: src/View/Widgets/HeaderBar.vala:151
 msgid "Double-click on a folder opens it, single-click selects it"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:160
+#: src/View/Widgets/HeaderBar.vala:156
 #, fuzzy
-#| msgid "Folders Before Files"
 msgid "Sort Folders before Files"
 msgstr "Priečinky pred súbormi"
 
-#: src/View/Widgets/HeaderBar.vala:164
+#: src/View/Widgets/HeaderBar.vala:160
 #, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Show in View"
+msgstr "Zobraziť skryté súbory"
+
+#: src/View/Widgets/HeaderBar.vala:167
+#, fuzzy
+msgid "Hidden Files"
 msgstr "Zobraziť skryté súbory"
 
 #: src/View/Widgets/HeaderBar.vala:171
 #, fuzzy
-#| msgid "Show Hidden Files"
-msgid "Hidden Files"
-msgstr "Zobraziť skryté súbory"
-
-#: src/View/Widgets/HeaderBar.vala:175
-#, fuzzy
-#| msgid "Hide Thumbnails"
 msgid "Local Thumbnails"
 msgstr "Skryť náhľadové obrázky"
 
-#: src/View/Widgets/HeaderBar.vala:180
+#: src/View/Widgets/HeaderBar.vala:176
 #, fuzzy
-#| msgid "Show Remote Thumbnails"
 msgid "Remote Thumbnails"
 msgstr "Zobraziť vzdialené náhľadové obrázky"
 
-#: src/View/Widgets/HeaderBar.vala:208
+#: src/View/Widgets/HeaderBar.vala:204
 msgid "Menu"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:283
+#: src/View/Widgets/HeaderBar.vala:279
 #, fuzzy
-#| msgid "The operation timed out."
 msgid "No operation to undo"
 msgstr "Časovač dokončenia akcie vypršal."
 
-#: src/View/Widgets/HeaderBar.vala:290
+#: src/View/Widgets/HeaderBar.vala:286
 #, fuzzy
-#| msgid "The operation timed out."
 msgid "No operation to redo"
 msgstr "Časovač dokončenia akcie vypršal."
 
