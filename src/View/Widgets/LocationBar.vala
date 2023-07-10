@@ -145,9 +145,7 @@ namespace Files.View.Chrome {
             if (has_focus) {
                 bread.activate ();
             } else {
-                var app_instance = (Gtk.Application)(GLib.Application.get_default ());
-                var active_window = (Gtk.ApplicationWindow) app_instance.get_active_window ();
-                active_window.activate_action ("refresh", null);
+                get_action_group ("win").activate_action ("refresh", null);
             }
         }
 
