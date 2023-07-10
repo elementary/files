@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 19:58+0000\n"
+"POT-Creation-Date: 2023-07-10 08:19-0700\n"
 "PO-Revision-Date: 2017-02-14 10:17+0000\n"
 "Last-Translator: Cody Garver <cody@elementaryos.org>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -20,10 +20,10 @@ msgstr ""
 "X-Generator: Launchpad (build 18402)\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:222 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:188
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:380
+#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
+#: libcore/FileConflictDialog.vala:185
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
 msgstr "Ακύρωση"
@@ -40,13 +40,11 @@ msgstr ""
 
 #: filechooser-portal/FileChooserDialog.vala:376
 #, fuzzy
-#| msgid "new file"
 msgid "Enter new filename"
 msgstr "νέο αρχείο"
 
 #: filechooser-portal/Main.vala:107
 #, fuzzy
-#| msgid " selected"
 msgid "Select"
 msgstr " επιλέχτηκε"
 
@@ -69,140 +67,137 @@ msgstr ""
 
 #: filechooser-portal/Main.vala:454
 #, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
 msgstr "Η αντικατάστασή του θα αντικαταστήσει το περιεχόμενό του."
 
 #: filechooser-portal/Main.vala:456
 #, fuzzy, c-format
-#| msgid "Replace file \"%s\"?"
 msgid "Replace “%s”?"
 msgstr "Αντικατάσταση αρχείου \"%s\";"
 
 #: filechooser-portal/Main.vala:457
 #, fuzzy
-#| msgid "Replacing it will overwrite its content."
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Η αντικατάστασή του θα αντικαταστήσει το περιεχόμενό του."
 
-#: libcore/ConnectServerDialog.vala:46
+#: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
 msgstr "Δημόσιο FTP"
 
-#: libcore/ConnectServerDialog.vala:52
+#: libcore/ConnectServerDialog.vala:38
 msgid "FTP (with login)"
 msgstr "FTP (με σύνδεση)"
 
-#: libcore/ConnectServerDialog.vala:59
+#: libcore/ConnectServerDialog.vala:45
 msgid "SSH"
 msgstr "SSH"
 
-#: libcore/ConnectServerDialog.vala:65
+#: libcore/ConnectServerDialog.vala:51
 msgid "AFP (Apple Filing Protocol)"
 msgstr "AFP (Apple Filing Protocol)"
 
-#: libcore/ConnectServerDialog.vala:71
+#: libcore/ConnectServerDialog.vala:57
 msgid "Windows share"
 msgstr "Windows share"
 
-#: libcore/ConnectServerDialog.vala:77
+#: libcore/ConnectServerDialog.vala:63
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: libcore/ConnectServerDialog.vala:84
+#: libcore/ConnectServerDialog.vala:70
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Ασφαλές WebDAV (HTTPS)"
 
-#: libcore/ConnectServerDialog.vala:131
+#: libcore/ConnectServerDialog.vala:112
 msgid "Server Details"
 msgstr "Λεπτομέρειες διακομιστή"
 
-#: libcore/ConnectServerDialog.vala:135
+#: libcore/ConnectServerDialog.vala:116
 msgid "Server name or IP address"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:138
+#: libcore/ConnectServerDialog.vala:119
 #, fuzzy
 msgid "Server:"
 msgstr "_Διακομιστής:"
 
-#: libcore/ConnectServerDialog.vala:146
+#: libcore/ConnectServerDialog.vala:129
 #, fuzzy
 msgid "Port:"
 msgstr "_Θύρα:"
 
-#: libcore/ConnectServerDialog.vala:175 libcore/FileConflictDialog.vala:109
-#: libcore/FileConflictDialog.vala:143 src/Dialogs/PropertiesWindow.vala:532
+#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
+#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:532
 msgid "Type:"
 msgstr "Τύπος:"
 
-#: libcore/ConnectServerDialog.vala:178
+#: libcore/ConnectServerDialog.vala:161
 msgid "Name of share on server (Optional)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:181
+#: libcore/ConnectServerDialog.vala:164
 #, fuzzy
 msgid "Share:"
 msgstr "_Κοινή χρήση:"
 
-#: libcore/ConnectServerDialog.vala:184
+#: libcore/ConnectServerDialog.vala:167
 msgid "Path of shared folder on server (Optional)"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:188
+#: libcore/ConnectServerDialog.vala:171
 #, fuzzy
 msgid "Folder:"
 msgstr "_Φάκελος:"
 
-#: libcore/ConnectServerDialog.vala:190
+#: libcore/ConnectServerDialog.vala:175
 msgid "User Details"
 msgstr "Λεπτομέρειες χρήστη"
 
-#: libcore/ConnectServerDialog.vala:195
+#: libcore/ConnectServerDialog.vala:180
 #, fuzzy
 msgid "Name of Windows domain"
 msgstr "Νέο παράθυρο ως _διαχειριστής"
 
-#: libcore/ConnectServerDialog.vala:197
+#: libcore/ConnectServerDialog.vala:182
 #, fuzzy
 msgid "Domain name:"
 msgstr "_Όνομα τομέα:"
 
-#: libcore/ConnectServerDialog.vala:202
+#: libcore/ConnectServerDialog.vala:187
 msgid "Name of user on server"
 msgstr ""
 
-#: libcore/ConnectServerDialog.vala:204
+#: libcore/ConnectServerDialog.vala:189
 #, fuzzy
 msgid "User name:"
 msgstr "_Όνομα χρήστη:"
 
-#: libcore/ConnectServerDialog.vala:212
+#: libcore/ConnectServerDialog.vala:197
 #, fuzzy
 msgid "Password:"
 msgstr "Συνθη_ματικό:"
 
-#: libcore/ConnectServerDialog.vala:214
+#: libcore/ConnectServerDialog.vala:199
 #, fuzzy
 msgid "Remember this password"
 msgstr "_Απομνημόνευση αυτού του συνθηματικού"
 
-#: libcore/ConnectServerDialog.vala:225
+#: libcore/ConnectServerDialog.vala:209
 #, fuzzy
 msgid "Connect"
 msgstr "_Σύνδεση"
 
-#: libcore/ConnectServerDialog.vala:232
+#: libcore/ConnectServerDialog.vala:216
 msgid "Continue"
 msgstr "Συνέχεια"
 
-#: libcore/ConnectServerDialog.vala:283
+#: libcore/ConnectServerDialog.vala:266
 #, fuzzy
 msgid "Connecting…"
 msgstr "Γίνεται σύνδεση..."
 
-#: libcore/ConnectServerDialog.vala:391
+#: libcore/ConnectServerDialog.vala:373
 msgid "Please verify your user details."
 msgstr "Παρακαλώ επαληθεύστε τις πληροφορίες χρήστη."
 
@@ -227,24 +222,22 @@ msgstr "Αντιγραφή εδώ"
 msgid "Link Here"
 msgstr ""
 
-#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2336
+#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2335
 msgid "Name"
 msgstr "Όνομα"
 
-#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:96
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:100
+#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
 #, fuzzy
-#| msgid "Create"
 msgid "Creation Date"
 msgstr "Δημιουργία"
 
 #: libcore/Enums.vala:163
 #, fuzzy
-#| msgid "Last modified:"
 msgid "Last modification date"
 msgstr "Τελευταία τροποποίηση:"
 
-#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2341
+#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2340
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Μέγεθος"
@@ -257,7 +250,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2351
+#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2350
 msgid "Date"
 msgstr "Ημερομηνία"
 
@@ -299,13 +292,11 @@ msgstr ""
 
 #: libcore/Enums.vala:270
 #, fuzzy
-#| msgid "Create"
 msgid "Date created"
 msgstr "Δημιουργία"
 
 #: libcore/Enums.vala:272
 #, fuzzy
-#| msgid "Modified"
 msgid "Date Modified"
 msgstr "Τροποποιήθηκε"
 
@@ -324,7 +315,6 @@ msgstr "Αποτυχία ανάλυσης αρχείου επιφάνειας ε
 
 #: libcore/File.vala:895
 #, fuzzy
-#| msgid "Failed to parse the desktop file: %s"
 msgid "Failed to parse the desktop file: "
 msgstr "Αποτυχία ανάλυσης αρχείου επιφάνειας εργασίας: %s"
 
@@ -340,14 +330,11 @@ msgstr "Αποτυχία ανάλυσης αρχείου επιφάνειας ε
 
 #: libcore/File.vala:1106
 #, fuzzy
-#| msgid "Empty File"
 msgid "Empty"
 msgstr "Κενό αρχείο"
 
 #: libcore/File.vala:1108
 #, fuzzy, c-format
-#| msgid "%'d minute"
-#| msgid_plural "%'d minutes"
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d λεπτό"
@@ -362,61 +349,61 @@ msgstr "σύνδεσμος προς το %s"
 msgid "File conflict"
 msgstr "Σύγκρουση αρχείων"
 
-#: libcore/FileConflictDialog.vala:97
+#: libcore/FileConflictDialog.vala:96
 msgid "Original file"
 msgstr "Αρχικό αρχείο"
 
-#: libcore/FileConflictDialog.vala:99 libcore/FileConflictDialog.vala:133
+#: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
 #: src/Dialogs/PropertiesWindow.vala:525
 msgid "Size:"
 msgstr "Μέγεθος:"
 
-#: libcore/FileConflictDialog.vala:117 libcore/FileConflictDialog.vala:151
+#: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
 msgid "Last modified:"
 msgstr "Τελευταία τροποποίηση:"
 
-#: libcore/FileConflictDialog.vala:131
+#: libcore/FileConflictDialog.vala:130
 msgid "Replace with"
 msgstr "Αντικατάσταση με"
 
-#: libcore/FileConflictDialog.vala:165
+#: libcore/FileConflictDialog.vala:164
 msgid "Reset"
 msgstr "Επαναφορά"
 
-#: libcore/FileConflictDialog.vala:177
+#: libcore/FileConflictDialog.vala:173
 msgid "_Select a new name for the destination"
 msgstr "_Επιλέξτε ένα νέο όνομα για τον προορισμό"
 
-#: libcore/FileConflictDialog.vala:180
+#: libcore/FileConflictDialog.vala:177
 msgid "Apply this action to all files"
 msgstr "Εφαρμογή αυτής της ενέργειας σε όλα τα αρχεία"
 
-#: libcore/FileConflictDialog.vala:182 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_Παράλειψη"
 
-#: libcore/FileConflictDialog.vala:183
+#: libcore/FileConflictDialog.vala:180
 msgid "Re_name"
 msgstr "_Μετονομασία"
 
-#: libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:182
 msgid "Keep Newest"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:186
+#: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:190
+#: libcore/FileConflictDialog.vala:187
 msgid "Replace"
 msgstr "Αντικατάσταση"
 
-#: libcore/FileConflictDialog.vala:299
+#: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Συγχώνευση φακέλου \"%s\";"
 
-#: libcore/FileConflictDialog.vala:300
+#: libcore/FileConflictDialog.vala:294
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -424,66 +411,65 @@ msgstr ""
 "Η συγχώνευση θα ζητήσει επιβεβαίωση προτού αντικαταστήσει αρχεία στο φάκελο "
 "που συγκρούονται με τα αρχεία που αντιγράφονται."
 
-#: libcore/FileConflictDialog.vala:302
+#: libcore/FileConflictDialog.vala:296
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένας παλαιότερος φάκελος με το ίδιο όνομα στο \"%s\"."
 
-#: libcore/FileConflictDialog.vala:304
+#: libcore/FileConflictDialog.vala:298
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένας νεότερος φάκελος με το ίδιο όνομα στο \"%s\"."
 
-#: libcore/FileConflictDialog.vala:306
+#: libcore/FileConflictDialog.vala:300
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένας φάκελος με το ίδιο όνομα στο \"%s\"."
 
-#: libcore/FileConflictDialog.vala:309
+#: libcore/FileConflictDialog.vala:303
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Αντικατάσταση φακέλου \"%s\";"
 
-#: libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:304
 msgid "Replacing it will remove all files in the folder."
 msgstr "Η αντικατάστασή του θα διαγράψει όλα τα αρχεία του φακέλου."
 
-#: libcore/FileConflictDialog.vala:311
+#: libcore/FileConflictDialog.vala:305
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένας φάκελος με το ίδιο όνομα στο \"%s\"."
 
-#: libcore/FileConflictDialog.vala:314
+#: libcore/FileConflictDialog.vala:308
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Αντικατάσταση αρχείου \"%s\";"
 
-#: libcore/FileConflictDialog.vala:315
+#: libcore/FileConflictDialog.vala:309
 msgid "Replacing it will overwrite its content."
 msgstr "Η αντικατάστασή του θα αντικαταστήσει το περιεχόμενό του."
 
-#: libcore/FileConflictDialog.vala:318
+#: libcore/FileConflictDialog.vala:312
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένα παλαιότερο αρχείο με το ίδιο όνομα στο \"%s\"."
 
-#: libcore/FileConflictDialog.vala:320
+#: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένα νεότερο αρχείο με το ίδιο όνομα στο \"%s\"."
 
-#: libcore/FileConflictDialog.vala:322
+#: libcore/FileConflictDialog.vala:316
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένα αρχείο με το ίδιο όνομα στο \"%s\"."
 
-#: libcore/FileConflictDialog.vala:348
+#: libcore/FileConflictDialog.vala:342
 msgid "Merge"
 msgstr "Συγχώνευση"
 
 #: libcore/FileUtils.vala:82
 #, fuzzy, c-format
-#| msgid "Could not determine original location of \"%s\" "
 msgid "Could not determine original location of \"%s\""
 msgstr "Αδυναμία προσδιορισμού αρχικής τοποθεσίας του \"%s\" "
 
@@ -493,7 +479,6 @@ msgstr "Το αντικείμενο δεν μπορεί να επαναφερθ�
 
 #: libcore/FileUtils.vala:177
 #, fuzzy, c-format
-#| msgid "The file selected no longer exists."
 msgid "The original folder %s no longer exists"
 msgstr "Το επιλεγμένο αρχείο δεν υπάρχει πλέον."
 
@@ -511,7 +496,6 @@ msgstr ""
 
 #: libcore/FileUtils.vala:185
 #, fuzzy
-#| msgid "Create"
 msgid "Recreate"
 msgstr "Δημιουργία"
 
@@ -587,7 +571,6 @@ msgstr[1] "περίπου %'d ώρες"
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
 #: libcore/FileUtils.vala:1038
 #, fuzzy
-#| msgid " (copy)"
 msgid "copy"
 msgstr " (αντίγραφο)"
 
@@ -599,7 +582,6 @@ msgstr ""
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:1042
 #, fuzzy
-#| msgid " ("
 msgid "("
 msgstr " ("
 
@@ -653,8 +635,8 @@ msgstr ""
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr ""
-"Παρουσιάστηκε σφάλμα κατά τη λήψη πληροφοριών για τα αρχεία του φακέλου \"%B"
-"\"."
+"Παρουσιάστηκε σφάλμα κατά τη λήψη πληροφοριών για τα αρχεία του φακέλου "
+"\"%B\"."
 
 #: libcore/marlin-file-operations.c:243 libcore/marlin-file-operations.c:1749
 msgid "_Skip files"
@@ -756,7 +738,6 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:622
 #, fuzzy
-#| msgid "Cannot move file to trash.  Try to delete it?"
 msgid "Cannot move file to trash. Try to delete it?"
 msgstr ""
 "Η μετακίνηση του αρχείου στον κάδο είναι αδύνατη. Να γίνει προσπάθεια για "
@@ -1133,7 +1114,6 @@ msgstr "Παρουσιάστηκε σφάλμα κατά τη δημιουργί
 
 #: libcore/marlin-file-operations.c:3681
 #, fuzzy
-#| msgid "Moving files to trash"
 msgid "Zero files to process"
 msgstr "Γίνεται μετακίνηση των αρχείων στον κάδο"
 
@@ -1184,7 +1164,7 @@ msgid "Remove"
 msgstr "Κατάργηση"
 
 #: libcore/PopupMenuBuilder.vala:66
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:85
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 msgid "Rename"
 msgstr "Μετονομασία"
 
@@ -1197,7 +1177,7 @@ msgid "_Unmount"
 msgstr "_Αποπροσάρτηση"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2053
+#: src/View/AbstractDirectoryView.vala:2052
 msgid "Properties"
 msgstr "Ιδιότητες"
 
@@ -1207,31 +1187,26 @@ msgstr ""
 
 #: libcore/PopupMenuBuilder.vala:88
 #, fuzzy
-#| msgid "Remove"
 msgid "Safely Remove"
 msgstr "Κατάργηση"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2046
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2045
 #, fuzzy
-#| msgid "Bookmarks"
 msgid "Add to Bookmarks"
 msgstr "Σελιδοδείκτες"
 
 #: libcore/PopupMenuBuilder.vala:104
 #, fuzzy
-#| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete All Trash"
 msgstr "Να γίνει μόνιμη διαγραφή όλων των αντικειμένων στον κάδο απορριμμάτων;"
 
 #: libcore/PopupMenuBuilder.vala:104
 #, fuzzy
-#| msgid "Permanently delete all items from Trash?"
 msgid "Permanently Delete Trash"
 msgstr "Να γίνει μόνιμη διαγραφή όλων των αντικειμένων στον κάδο απορριμμάτων;"
 
 #: libcore/PopupMenuBuilder.vala:117
 #, fuzzy
-#| msgid "Permanently delete all items from Trash on this mount?"
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
 "Θέλετε να διαγράψετε οριστικά όλα τα αντικείμενα απ'τον κάδο ανακύκλωσης σε "
@@ -1252,7 +1227,6 @@ msgstr "AFP"
 
 #: libcore/Resources.vala:62
 #, fuzzy
-#| msgid "AFP"
 msgid "AFC"
 msgstr "AFP"
 
@@ -1306,7 +1280,7 @@ msgstr "Σύστημα αρχείων"
 msgid "_Cancel"
 msgstr "Ακύρωση"
 
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:385
+#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
 #, fuzzy
 msgid "Delete"
 msgstr "Διαγράφηκε:"
@@ -1349,7 +1323,6 @@ msgstr "Άδειασμα _Απορριμμάτων"
 
 #: libcore/UndoManager.vala:22
 #, fuzzy
-#| msgid "Copy"
 msgid "Undo Copy"
 msgstr "Αντιγραφή"
 
@@ -1364,78 +1337,61 @@ msgstr ""
 
 #: libcore/UndoManager.vala:28
 #, fuzzy
-#| msgid "Rename"
 msgid "Undo Rename"
 msgstr "Μετονομασία"
 
 #: libcore/UndoManager.vala:30
 #, fuzzy
-#| msgid "_Undo creation of an empty file"
 msgid "Undo Create Empty File"
 msgstr "_Αναίρεση δημιουργίας κενού αρχείου"
 
 #: libcore/UndoManager.vala:32
 #, fuzzy
-#| msgid "_Undo creation of a file from template"
 msgid "Undo Create File from Template"
 msgstr "_Αναίρεση δημιουργίας αρχείου από τα πρότυπα"
 
 #: libcore/UndoManager.vala:34
 #, fuzzy
-#| msgid "_Undo creation of %d folder"
-#| msgid_plural "_Undo creation of %d folders"
 msgid "Undo Create Folder"
 msgstr "_Αναίρεση δημιουργίας %d φακέλου"
 
 #: libcore/UndoManager.vala:36
 #, fuzzy
-#| msgid "Move to Trash"
 msgid "Undo Move to Trash"
 msgstr "Μετακίνηση στον κάδο"
 
 #: libcore/UndoManager.vala:38
 #, fuzzy
-#| msgid "_Undo create link to %d item"
-#| msgid_plural "_Undo create link to %d items"
 msgid "Undo Create Link"
 msgstr "_Αναίρεση δημιουργίας συνδέσμου του %d στοιχείου"
 
 #: libcore/UndoManager.vala:40
 #, fuzzy
-#| msgid "Restore from Trash"
 msgid "Undo Restore from Trash"
 msgstr "Επαναφορά από τον κάδο"
 
 #: libcore/UndoManager.vala:42
 #, fuzzy
-#| msgid "Setting permissions"
 msgid "Undo Set Permissions"
 msgstr "Ορισμός δικαιωμάτων"
 
 #: libcore/UndoManager.vala:44
 #, fuzzy
-#| msgid "Undo change permissions of %d item"
-#| msgid_plural "Undo change permissions of %d items"
 msgid "Undo Set Permissions Recursively"
 msgstr "Αναίρεση αλλαγής δικαιωμάτων του %d στοιχείου"
 
 #: libcore/UndoManager.vala:46
 #, fuzzy
-#| msgid "Undo change owner of %d item"
-#| msgid_plural "Undo change owner of %d items"
 msgid "Undo Change Owner"
 msgstr "Αναίρεση αλλαγής ιδιοκτήτη του %d αντικειμένου"
 
 #: libcore/UndoManager.vala:48
 #, fuzzy
-#| msgid "Undo change group of %d item"
-#| msgid_plural "Undo change group of %d items"
 msgid "Undo Change Group"
 msgstr "Αναίρεση αλλαγής ομάδας του %d αντικειμένου"
 
 #: libcore/UndoManager.vala:57
 #, fuzzy
-#| msgid "Copy"
 msgid "Redo Copy"
 msgstr "Αντιγραφή"
 
@@ -1450,19 +1406,16 @@ msgstr ""
 
 #: libcore/UndoManager.vala:63
 #, fuzzy
-#| msgid "Rename"
 msgid "Redo Rename"
 msgstr "Μετονομασία"
 
 #: libcore/UndoManager.vala:65
 #, fuzzy
-#| msgid "_Redo creation of an empty file"
 msgid "Redo Create Empty File"
 msgstr "Επανάληψη δημιουργίας ενός κενού αρχείου"
 
 #: libcore/UndoManager.vala:67
 #, fuzzy
-#| msgid "_Redo creation of a file from template"
 msgid "Redo Create File from Template"
 msgstr "Επανάληψη δημιουργίας ενός αρχείου από πρότυπο"
 
@@ -1476,47 +1429,36 @@ msgstr ""
 
 #: libcore/UndoManager.vala:71
 #, fuzzy
-#| msgid "Move to Trash"
 msgid "Redo Move to Trash"
 msgstr "Μετακίνηση στον κάδο"
 
 #: libcore/UndoManager.vala:73
 #, fuzzy
-#| msgid "_Redo create link to %d item"
-#| msgid_plural "_Redo create link to %d items"
 msgid "Redo Create Link"
 msgstr "Επανάληψη δημιουργίας συνδέσμου %d αντικειμένου"
 
 #: libcore/UndoManager.vala:75
 #, fuzzy
-#| msgid "Restore from Trash"
 msgid "Redo Restore from Trash"
 msgstr "Επαναφορά από τον κάδο"
 
 #: libcore/UndoManager.vala:77
 #, fuzzy
-#| msgid "Setting permissions"
 msgid "Redo Set Permissions"
 msgstr "Ορισμός δικαιωμάτων"
 
 #: libcore/UndoManager.vala:79
 #, fuzzy
-#| msgid "Redo change permissions of %d item"
-#| msgid_plural "Redo change permissions of %d items"
 msgid "Redo Set Permissions Recursively"
 msgstr "Επανάληψη αλλαγής δικαιωμάτων του %d αντικειμένου"
 
 #: libcore/UndoManager.vala:81
 #, fuzzy
-#| msgid "Redo change owner of %d item"
-#| msgid_plural "Redo change owner of %d items"
 msgid "Redo Change Owner"
 msgstr "Επανάληψη αλλαγής ιδιοκτήτη του %d αντικειμένου"
 
 #: libcore/UndoManager.vala:83
 #, fuzzy
-#| msgid "Redo change group of %d item"
-#| msgid_plural "Redo change group of %d items"
 msgid "Redo Change Group"
 msgstr "Επανάληψη αλλαγής ομάδας του %d αντικειμένου"
 
@@ -1605,19 +1547,16 @@ msgstr "Γίνεται άδειασμα του κάδου"
 
 #: libcore/FileOperations/MountUtils.vala:31
 #, fuzzy, c-format
-#| msgid "Unable to mount %s"
 msgid "Unable to unmount '%s'"
 msgstr "Αδυναμία προσάρτησης του %s"
 
 #: libcore/FileOperations/MountUtils.vala:52
 #, fuzzy, c-format
-#| msgid "Unable to eject %V"
 msgid "Unable to eject '%s'"
 msgstr "Αδυναμία εξαγωγής του %V"
 
 #: libcore/FileOperations/MountUtils.vala:104
 #, fuzzy, c-format
-#| msgid "Unable to mount %s"
 msgid "Unable to mount '%s'"
 msgstr "Αδυναμία προσάρτησης του %s"
 
@@ -1652,7 +1591,6 @@ msgstr "Αν διαγράψετε ένα αντικείμενο, θα χαθεί
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/FileOperations/DeleteJob.vala:68
 #, fuzzy, c-format
-#| msgid "Permanently delete all items from Trash?"
 msgid "Permanently delete “%s”?"
 msgstr "Να γίνει μόνιμη διαγραφή όλων των αντικειμένων στον κάδο απορριμμάτων;"
 
@@ -1734,8 +1672,8 @@ msgstr "Εμφάνιση της έκδοσης του προγράμματος."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Άνοιγμα uri (s) σε νέα καρτέλα"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1934
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1933
+#: src/View/AbstractDirectoryView.vala:1939
 msgid "New Window"
 msgstr "Νέο παράθυρο"
 
@@ -1782,7 +1720,7 @@ msgstr "Νέο _παράθυρο"
 msgid "New Window As _Administrator"
 msgstr "Νέο παράθυρο ως _διαχειριστής"
 
-#: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
+#: src/ProgressUIHandler.vala:131 src/ProgressUIHandler.vala:187
 msgid "File Operations"
 msgstr "Λειτουργίες αρχείων"
 
@@ -1810,7 +1748,6 @@ msgstr "Χρήση συσκευής"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:166
 #, fuzzy, c-format
-#| msgid "(%s Free of %s)"
 msgid "%s free out of %s"
 msgstr "(%s ελεύθερα από %s)"
 
@@ -1833,47 +1770,43 @@ msgstr "Διαθέσιμα:"
 msgid "Used:"
 msgstr "Χρησιμοποιούνται:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:34
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:21
 #, fuzzy
-#| msgid "Original file"
 msgid "Original filename"
 msgstr "Αρχικό αρχείο"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:36
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:23
 #, fuzzy
-#| msgid "Modified"
 msgid "Modified original"
 msgstr "Τροποποιήθηκε"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:38
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:260
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:25
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:252
 #, fuzzy
-#| msgid "Rename"
 msgid "New basename"
 msgstr "Μετονομασία"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:79
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
 #, fuzzy
-#| msgid "Rename"
 msgid "Bulk Rename"
 msgstr "Μετονομασία"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:95
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:99
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:97
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:101
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:89
 msgid "Fixed Text"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:106
-msgid "Add Prefix"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:93
+msgid "Add Prefix…"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:119
-msgid "Add Suffix"
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:112
+msgid "Add Suffix…"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
@@ -1888,103 +1821,92 @@ msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 #, fuzzy
-#| msgid "Replace"
 msgctxt "bulk-rename"
 msgid "Replace"
 msgstr "Αντικατάσταση"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
 #, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modify"
 msgstr "Τροποποιήθηκε"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
 #, fuzzy
-#| msgid "Original file"
 msgid "Original Basename"
 msgstr "Αρχικό αρχείο"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:164
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:168
 #, fuzzy
-#| msgid "Replace with"
 msgid "Replacement text"
 msgstr "Αντικατάσταση με"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:188
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
 msgstr ""
 
 #. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:190
 #, fuzzy
-#| msgid "Name"
 msgctxt "bulk-rename"
 msgid "Name"
 msgstr "Όνομα"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
 #, fuzzy
-#| msgid "Create"
 msgctxt "bulk-rename"
 msgid "Date created"
 msgstr "Δημιουργία"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
 #, fuzzy
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Date modified"
 msgstr "Τροποποιήθηκε"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:198
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
 #, fuzzy
-#| msgid "Size"
 msgctxt "bulk-rename"
 msgid "Size"
 msgstr "Μέγεθος"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:269
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:375
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:328
 msgid "Apply"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 #, fuzzy
-#| msgid "Ignore"
 msgid "Ignored"
 msgstr "Παράβλεψη"
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:72
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 msgid "Name is not changed"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 #, fuzzy
-#| msgid "Rename"
 msgid "Cannot rename"
 msgstr "Μετονομασία"
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:76
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 msgid "Name is invalid or already exists"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerListBox.vala:80
+#: src/Dialogs/BulkRenamer/RenamerListRow.vala:78
 #, fuzzy
-#| msgid "Filename"
 msgid "Will be renamed"
 msgstr "Όνομα αρχείου"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
 #, fuzzy
-#| msgid "Reversed Order"
 msgid "Reverse Order"
 msgstr "Αντίστροφη σειρά"
 
@@ -2078,7 +2000,7 @@ msgid "Original Location:"
 msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:648
-#: src/View/AbstractDirectoryView.vala:2021
+#: src/View/AbstractDirectoryView.vala:2020
 msgid "Other Application…"
 msgstr "Άλλη εφαρμογή..."
 
@@ -2162,7 +2084,7 @@ msgid "Could not open files or URIs with this app"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:839
-#: src/View/AbstractDirectoryView.vala:1152
+#: src/View/AbstractDirectoryView.vala:1151
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Το άνοιγμα αυτού του αρχείου είναι αδύνατο"
@@ -2187,164 +2109,161 @@ msgstr "Το άνοιγμα αυτού του αρχείου είναι αδύν
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1632
+#: src/View/AbstractDirectoryView.vala:1631
 msgid "Cannot drop this file"
 msgstr "Η ρίψη αυτού του αρχείου είναι αδύνατη"
 
-#: src/View/AbstractDirectoryView.vala:1633
+#: src/View/AbstractDirectoryView.vala:1632
 msgid "Invalid file name provided"
 msgstr "Δόθηκε μη έγκυρο όνομα αρχείου"
 
-#: src/View/AbstractDirectoryView.vala:1917
-#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:183
+#: src/View/AbstractDirectoryView.vala:1916
+#: src/View/AbstractDirectoryView.vala:1922 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "Νέα καρτέλα"
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:1956
 msgid "Run"
 msgstr "Εκτέλεση"
 
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1963
 #, c-format
 msgid "Open in %s"
 msgstr "Άνοιγμα σε %s"
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
 msgstr "Άνοιγμα σε"
 
-#: src/View/AbstractDirectoryView.vala:2035
+#: src/View/AbstractDirectoryView.vala:2034
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Άνοιγμα με"
 
-#: src/View/AbstractDirectoryView.vala:2066
+#: src/View/AbstractDirectoryView.vala:2065
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2075
+#: src/View/AbstractDirectoryView.vala:2074
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2084
+#: src/View/AbstractDirectoryView.vala:2083
 #, fuzzy
-#| msgid "Restore All"
 msgid "Deselect All"
 msgstr "Επαναφορά όλων"
 
-#: src/View/AbstractDirectoryView.vala:2092
+#: src/View/AbstractDirectoryView.vala:2091
 msgid "Cut"
 msgstr "Αποκοπή"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2100
+#: src/View/AbstractDirectoryView.vala:2099
 msgid "Copy"
 msgstr "Αντιγραφή"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2106
 msgid "Move to Trash"
 msgstr "Μετακίνηση στον κάδο"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2111
 #, fuzzy
-#| msgid "Delete permanently"
 msgid "Delete Permanently"
 msgstr "Οριστική διαγραφή"
 
-#: src/View/AbstractDirectoryView.vala:2119
+#: src/View/AbstractDirectoryView.vala:2118
 msgid "Restore from Trash"
 msgstr "Επαναφορά από τον κάδο"
 
-#: src/View/AbstractDirectoryView.vala:2142
+#: src/View/AbstractDirectoryView.vala:2141
 msgid "Open Parent Folder"
 msgstr "Άνοιγμα γονικού φακέλου"
 
-#: src/View/AbstractDirectoryView.vala:2145
+#: src/View/AbstractDirectoryView.vala:2144
 msgid "Remove from History"
 msgstr "Αφαίρεση από το ιστορικό"
 
-#: src/View/AbstractDirectoryView.vala:2171
+#: src/View/AbstractDirectoryView.vala:2170
 #, fuzzy
-#| msgid "Rename"
 msgid "Rename…"
 msgstr "Μετονομασία"
 
-#: src/View/AbstractDirectoryView.vala:2178
+#: src/View/AbstractDirectoryView.vala:2177
 #, fuzzy
 msgid "Copy as Link"
 msgstr "Επικόλληση"
 
-#: src/View/AbstractDirectoryView.vala:2201
-#: src/View/AbstractDirectoryView.vala:2281
+#: src/View/AbstractDirectoryView.vala:2200
+#: src/View/AbstractDirectoryView.vala:2280
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "Επικόλληση στον φάκελο"
 
-#: src/View/AbstractDirectoryView.vala:2206
-#: src/View/AbstractDirectoryView.vala:2258
+#: src/View/AbstractDirectoryView.vala:2205
+#: src/View/AbstractDirectoryView.vala:2257
 msgid "Paste into Folder"
 msgstr "Επικόλληση στον φάκελο"
 
-#: src/View/AbstractDirectoryView.vala:2216
-#: src/View/AbstractDirectoryView.vala:2286
+#: src/View/AbstractDirectoryView.vala:2215
+#: src/View/AbstractDirectoryView.vala:2285
 msgid "Paste"
 msgstr "Επικόλληση"
 
-#: src/View/AbstractDirectoryView.vala:2346 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2345 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Τύπος"
 
-#: src/View/AbstractDirectoryView.vala:2356
+#: src/View/AbstractDirectoryView.vala:2355
 msgid "Reversed Order"
 msgstr "Αντίστροφη σειρά"
 
-#: src/View/AbstractDirectoryView.vala:2359
+#: src/View/AbstractDirectoryView.vala:2358
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2371
+#: src/View/AbstractDirectoryView.vala:2370
 msgid "Sort by"
 msgstr "Ταξινόμηση κατά"
 
-#: src/View/AbstractDirectoryView.vala:2379
+#: src/View/AbstractDirectoryView.vala:2378
 msgid "Folder"
 msgstr "Φάκελος"
 
-#: src/View/AbstractDirectoryView.vala:2385
+#: src/View/AbstractDirectoryView.vala:2384
 msgid "Empty File"
 msgstr "Κενό αρχείο"
 
-#: src/View/AbstractDirectoryView.vala:2436
+#: src/View/AbstractDirectoryView.vala:2435
 msgid "New"
 msgstr "Νέος/-o"
 
-#: src/View/AbstractDirectoryView.vala:2679
+#: src/View/AbstractDirectoryView.vala:2678
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2997
-#: src/View/AbstractDirectoryView.vala:3190
+#: src/View/AbstractDirectoryView.vala:2996
+#: src/View/AbstractDirectoryView.vala:3189
 msgid "Cannot remove files from here"
 msgstr "Η αφαίρεση αρχείων από εδώ είναι αδύνατη"
 
-#: src/View/AbstractDirectoryView.vala:2998
-#: src/View/AbstractDirectoryView.vala:3163
-#: src/View/AbstractDirectoryView.vala:3174
-#: src/View/AbstractDirectoryView.vala:3191
+#: src/View/AbstractDirectoryView.vala:2997
+#: src/View/AbstractDirectoryView.vala:3162
+#: src/View/AbstractDirectoryView.vala:3173
+#: src/View/AbstractDirectoryView.vala:3190
 msgid "You do not have permission to change this location"
 msgstr "Δεν έχετε τα δικαιώματα για να αλλάξετε αυτήν την τοποθεσία"
 
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:3130
 msgid "Cannot copy files that are in the trash"
 msgstr "Η αντιγραφή των αρχείων που βρίσκονται στον κάδο είναι αδύνατη"
 
-#: src/View/AbstractDirectoryView.vala:3132
+#: src/View/AbstractDirectoryView.vala:3131
 msgid "Cutting the selection instead"
 msgstr "Αποκοπή της επιλογής πάραυτα"
 
-#: src/View/AbstractDirectoryView.vala:3162
-#: src/View/AbstractDirectoryView.vala:3173
+#: src/View/AbstractDirectoryView.vala:3161
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "Cannot paste files here"
 msgstr "Η επικόλληση αρχείων εδώ είναι αδύνατη"
 
@@ -2477,7 +2396,6 @@ msgstr ""
 
 #: src/View/Window.vala:499
 #, fuzzy
-#| msgid "Close"
 msgid "Close Tab"
 msgstr "Κλείσιμο"
 
@@ -2497,14 +2415,12 @@ msgstr "(ως διαχειριστής)"
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
 #, fuzzy, c-format
-#| msgid "Delete '%s'"
 msgid "Eject '%s'"
 msgstr "Διαγραφή του '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:173
 #, fuzzy, c-format
-#| msgid "Unable to mount %s"
 msgid "Unmount '%s'"
 msgstr "Αδυναμία προσάρτησης του %s"
 
@@ -2523,7 +2439,6 @@ msgstr "%S από %S"
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
 #, fuzzy, c-format
-#| msgid "%s (%s, %s)"
 msgid "%s (%s)"
 msgstr "%s (%s, %s)"
 
@@ -2549,7 +2464,6 @@ msgstr "Άνοιγμα του κάδου"
 
 #: src/View/Sidebar/DeviceListBox.vala:152
 #, fuzzy
-#| msgid "View the list of recently used files"
 msgid "View the root of the local filesystem"
 msgstr "Προβολή της λίστας των πρόσφατα χρησιμοποιημένων αρχείων"
 
@@ -2599,19 +2513,16 @@ msgstr ""
 
 #: src/View/Sidebar/SidebarWindow.vala:84
 #, fuzzy
-#| msgid "Connect to Server…"
 msgid "Connect Server…"
 msgstr "Σύνδεση σε διακομιστή..."
 
 #: src/View/Sidebar/VolumeRow.vala:166
 #, fuzzy
-#| msgid "_Mount"
 msgid "Mount"
 msgstr "_Προσάρτηση"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy
-#| msgid "_Unmount"
 msgid "Bind mount"
 msgstr "_Αποπροσάρτηση"
 
@@ -2628,69 +2539,67 @@ msgstr "Άνοιγμα σε νέα καρτέλα"
 msgid "Open in Other Application…"
 msgstr "Άνοιγμα σε άλλη εφαρμογή..."
 
-#: src/View/Widgets/HeaderBar.vala:75
+#: src/View/Widgets/HeaderBar.vala:73
 msgid "Previous"
 msgstr "Προηγούμενο"
 
-#: src/View/Widgets/HeaderBar.vala:82
+#: src/View/Widgets/HeaderBar.vala:78
 msgid "Next"
 msgstr "Επόμενο"
 
-#: src/View/Widgets/HeaderBar.vala:97
+#: src/View/Widgets/HeaderBar.vala:93
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:106
+#: src/View/Widgets/HeaderBar.vala:102
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:115
+#: src/View/Widgets/HeaderBar.vala:111
 msgid "Zoom In"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:154
+#: src/View/Widgets/HeaderBar.vala:150
 msgid "Double-click to Navigate"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:155
+#: src/View/Widgets/HeaderBar.vala:151
 msgid "Double-click on a folder opens it, single-click selects it"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:160
+#: src/View/Widgets/HeaderBar.vala:156
 msgid "Sort Folders before Files"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:164
+#: src/View/Widgets/HeaderBar.vala:160
 #, fuzzy
-#| msgid "Show Hidden Files"
 msgid "Show in View"
+msgstr "Προβολή κρυφών αρχείων"
+
+#: src/View/Widgets/HeaderBar.vala:167
+#, fuzzy
+msgid "Hidden Files"
 msgstr "Προβολή κρυφών αρχείων"
 
 #: src/View/Widgets/HeaderBar.vala:171
 #, fuzzy
-#| msgid "Show Hidden Files"
-msgid "Hidden Files"
-msgstr "Προβολή κρυφών αρχείων"
-
-#: src/View/Widgets/HeaderBar.vala:175
-#, fuzzy
 msgid "Local Thumbnails"
 msgstr "Εμφάνιση περισσότερων _λεπτομερειών"
 
-#: src/View/Widgets/HeaderBar.vala:180
+#: src/View/Widgets/HeaderBar.vala:176
 #, fuzzy
 msgid "Remote Thumbnails"
 msgstr "Εμφάνιση περισσότερων _λεπτομερειών"
 
-#: src/View/Widgets/HeaderBar.vala:208
+#: src/View/Widgets/HeaderBar.vala:204
 msgid "Menu"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:283
+#: src/View/Widgets/HeaderBar.vala:279
 msgid "No operation to undo"
 msgstr ""
 
-#: src/View/Widgets/HeaderBar.vala:290
+#: src/View/Widgets/HeaderBar.vala:286
 msgid "No operation to redo"
 msgstr ""
 
@@ -2710,7 +2619,6 @@ msgstr "%u φάκελοι"
 
 #: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
 #, fuzzy, c-format
-#| msgid " and %u other item (%s) selected"
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " και %u άλλο αντικείμενο (%s) επιλέχθηκαν"
@@ -2728,7 +2636,6 @@ msgstr "%u επιλεγμένα αντικείμενα (%s)"
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:226
 #, fuzzy, c-format
-#| msgid "%u sub-folder, "
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u υποφάκελος, "
@@ -2737,7 +2644,6 @@ msgstr[1] "%u υποφάκελος, "
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:232
 #, fuzzy, c-format
-#| msgid "%u file, "
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u αρχείο, "
@@ -2757,7 +2663,6 @@ msgstr "άγνωστο μέγεθος"
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:249
 #, fuzzy, c-format
-#| msgid "%u file not readable"
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] "%u αρχείο δεν είναι αναγνώσιμο"
