@@ -60,6 +60,19 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="6.4.1" date="2023-07-09" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Design updates for Bulk Rename</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/2238">copying folders copies all its children</issue>
+      </issues>
+    </release>
+  
     <release version="6.4.0" date="2023-06-29" urgency="medium">
       <description>
         <p>Improvements:</p>
