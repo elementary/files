@@ -131,14 +131,8 @@ namespace Files.View {
                 marlin_app.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
                 marlin_app.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});
                 marlin_app.set_accels_for_action ("win.go-to::UP", {"<Alt>Up"});
-                marlin_app.set_accels_for_action (
-                    Action.print_detailed_name ("win.forward", new Variant.int32 (1)),
-                    {"<Alt>Right", "XF86Forward"}
-                );
-                marlin_app.set_accels_for_action (
-                    Action.print_detailed_name ("win.back", new Variant.int32 (1)),
-                    {"<Alt>Left", "XF86Back"}
-                );
+                marlin_app.set_accels_for_action ("win.forward(1)", {"<Alt>Right", "XF86Forward"});
+                marlin_app.set_accels_for_action ("win.back(1)", {"<Alt>Left", "XF86Back"});
                 marlin_app.set_accels_for_action ("win.info::HELP", {"F1"});
                 marlin_app.set_accels_for_action ("win.tab::TAB", {"<Ctrl><Alt>T"});
                 marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
