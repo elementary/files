@@ -207,11 +207,12 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         lside_pane.start_child = sidebar;
         lside_pane.end_child = tab_view;
 
-        var grid = new Gtk.Grid ();
-        grid.attach (top_menu, 0, 0);
-        grid.attach (lside_pane, 0, 1);
+        var box = new Gtk.Box (VERTICAL, 0);
+        box.append (top_menu);
+        box.append (lside_pane);
 
-        set_child (grid);
+        child = box;
+        titlebar = new Gtk.Grid () { visible = false };
 
         /** Apply preferences */
         var prefs = Files.app_settings;
