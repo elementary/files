@@ -1119,7 +1119,6 @@ namespace Files {
                     transient_for = slot.window
                 };
                 rename_dialog.present ();
-                rename_dialog.destroy ();
             } else {
                 rename_file (selected_files.data);
             }

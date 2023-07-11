@@ -130,8 +130,8 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
             marlin_app.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});
             marlin_app.set_accels_for_action ("win.go-to::UP", {"<Alt>Up"});
-            marlin_app.set_accels_for_action ("win.go-to::FORWARD", {"<Alt>Right", "XF86Forward"});
-            marlin_app.set_accels_for_action ("win.go-to::BACK", {"<Alt>Left", "XF86Back"});
+            marlin_app.set_accels_for_action ("win.forward(1)", {"<Alt>Right", "XF86Forward"});
+            marlin_app.set_accels_for_action ("win.back(1)", {"<Alt>Left", "XF86Back"});
             marlin_app.set_accels_for_action ("win.info::HELP", {"F1"});
             marlin_app.set_accels_for_action ("win.tab::TAB", {"<Ctrl><Alt>T"});
             marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
@@ -224,14 +224,11 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         /* Connect and abstract signals to local ones
         /*/
 
-        top_menu.forward.connect ((steps) => { current_container.go_forward (steps); });
-        top_menu.back.connect ((steps) => { current_container.go_back (steps); });
         top_menu.escape.connect (grab_focus);
         top_menu.path_change_request.connect ((loc, flag) => {
             current_container.is_frozen = false;
             uri_path_change_request (loc, flag);
         });
-        top_menu.reload_request.connect (action_reload);
         top_menu.focus_location_request.connect ((loc) => {
             current_container.focus_location_if_in_current_directory (loc, true);
         });
@@ -882,14 +879,6 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
             case "UP":
                 current_container.go_up ();
-                break;
-
-            case "FORWARD":
-                current_container.go_forward (1);
-                break;
-
-            case "BACK":
-                current_container.go_back (1);
                 break;
 
             default:

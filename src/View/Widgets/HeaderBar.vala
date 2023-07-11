@@ -22,14 +22,9 @@
 */
 
 public class Files.View.Chrome.HeaderBar : Gtk.Box {
-
-    public signal void forward (int steps);
-    public signal void back (int steps); /* TODO combine using negative step */
     public signal void focus_location_request (GLib.File? location);
     public signal void path_change_request (string path, Files.OpenFlag flag);
     public signal void escape ();
-    public signal void reload_request ();
-
 
     public ViewSwitcher? view_switcher { get; construct; }
     public bool locked_focus { get; private set; default = false; }
@@ -62,22 +57,12 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
     private LocationBar? location_bar;
     private Chrome.ButtonWithMenu button_forward;
     private Chrome.ButtonWithMenu button_back;
-    private Gtk.Button zoom_default_button;
-    private Gtk.Button zoom_in_button;
-    private Gtk.Button zoom_out_button;
-    private Gtk.Button undo_button;
-    private Gtk.Button redo_button;
-    private string[] undo_accels;
-    private string[] redo_accels;
-    private unowned UndoManager undo_manager;
 
     public HeaderBar (ViewSwitcher switcher) {
         Object (view_switcher: switcher);
     }
 
     construct {
-        headerbar = new Gtk.HeaderBar ();
-        var app_instance = (Gtk.Application)(GLib.Application.get_default ());
         button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic");
 
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
@@ -92,43 +77,46 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
 
         location_bar = new LocationBar ();
 
+        var menu = new AppMenu ();
+
+        // AppMenu button
+        var app_menu = new Gtk.MenuButton () {
+            icon_name = "open-menu",
+            popover = menu,
+            primary = true,
+            tooltip_text = _("Menu")
+        };
+        app_menu.get_first_child ().add_css_class (Granite.STYLE_CLASS_LARGE_ICONS);
+
+        headerbar = new Gtk.HeaderBar ();
         headerbar.pack_start (button_back);
         headerbar.pack_start (button_forward);
         headerbar.pack_start (view_switcher);
         headerbar.pack_start (location_bar);
+        headerbar.pack_end (app_menu);
 
         append (headerbar);
-
-        // Connect to all view settings rather than try to connect and disconnect
-        // continuously to current view mode setting.
-        Files.icon_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
-        Files.list_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
-        Files.column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
 
         view_switcher.action.activate.connect ((id) => {
             switch ((ViewMode)(id.get_uint32 ())) {
                 case ViewMode.ICON:
-                    on_zoom_setting_changed (Files.icon_view_settings, "zoom-level");
+                    menu.on_zoom_setting_changed (Files.icon_view_settings, "zoom-level");
                     break;
                 case ViewMode.LIST:
-                    on_zoom_setting_changed (Files.list_view_settings, "zoom-level");
+                    menu.on_zoom_setting_changed (Files.list_view_settings, "zoom-level");
                     break;
                 case ViewMode.MILLER_COLUMNS:
-                    on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
+                    menu.on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
                     break;
             }
         });
 
         button_forward.slow_press.connect (() => {
-            forward (1);
+            activate_action ("forward", "(1)");
         });
 
         button_back.slow_press.connect (() => {
-            back (1);
-        });
-
-        location_bar.reload_request.connect (() => {
-            reload_request ();
+            activate_action ("back", "(1)");
         });
 
         location_bar.focus_file_request.connect ((file) => {
@@ -151,47 +139,6 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
         });
 
         location_bar.escape.connect (() => {escape ();});
-
-        undo_manager = UndoManager.instance ();
-        undo_manager.request_menu_update.connect (set_undo_redo_tooltips);
-        set_undo_redo_tooltips ();
-    }
-
-    private void set_undo_redo_tooltips () {
-        unowned var undo_action_s = undo_manager.get_next_undo_description ();
-        unowned var redo_action_s = undo_manager.get_next_redo_description ();
-
-        undo_button.tooltip_markup = Granite.markup_accel_tooltip (
-            undo_accels,
-            undo_action_s != null ?
-            undo_action_s :
-            _("No operation to undo")
-        );
-
-        redo_button.tooltip_markup = Granite.markup_accel_tooltip (
-            redo_accels,
-            redo_action_s != null ?
-            redo_action_s :
-            _("No operation to redo")
-        );
-    }
-
-    private void on_zoom_setting_changed (Settings settings, string key) {
-        if (settings == null) {
-            critical ("Zoom string from settinggs: Null settings");
-            zoom_default_button.label = "";
-            return;
-        }
-
-        var default_zoom = (Files.ZoomLevel)(settings.get_enum ("default-zoom-level"));
-        var zoom_level = (Files.ZoomLevel)(settings.get_enum ("zoom-level"));
-        zoom_default_button.label = ("%.0f%%").printf ((double)(zoom_level.to_icon_size ()) / (double)(default_zoom.to_icon_size ()) * 100);
-
-        var max_zoom = settings.get_enum ("maximum-zoom-level");
-        var min_zoom = settings.get_enum ("minimum-zoom-level");
-
-        zoom_in_button.sensitive = zoom_level < max_zoom;
-        zoom_out_button.sensitive = zoom_level > min_zoom;
     }
 
     public bool enter_search_mode (string term = "") {
@@ -209,7 +156,7 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
             var path = path_list.@get (i);
             var item = new MenuItem (
                 FileUtils.sanitize_path (path, null, false),
-                Action.print_detailed_name ("win.back", new Variant.int32 (i))
+                Action.print_detailed_name ("win.back", new Variant.int32 (i + 1))
             );
             back_menu.append_item (item);
         }
@@ -224,7 +171,7 @@ public class Files.View.Chrome.HeaderBar : Gtk.Box {
             var path = path_list.@get (i);
             var item = new MenuItem (
                 FileUtils.sanitize_path (path, null, false),
-                Action.print_detailed_name ("win.forward", new Variant.int32 (i))
+                Action.print_detailed_name ("win.forward", new Variant.int32 (i + 1))
             );
             forward_menu.append_item (item);
         }

@@ -26,10 +26,6 @@ namespace Files.View {
         private string current_uri = null;
         private int history_list_length = 10;
 
-        /* The two menus which are displayed on the back/forward buttons */
-        public GLib.Menu back_menu;
-        public GLib.Menu forward_menu;
-
         public Browser () {
             back_stack = new Stack<string> ();
             forward_stack = new Stack<string> ();

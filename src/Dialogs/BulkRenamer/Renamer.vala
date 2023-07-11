@@ -34,6 +34,7 @@ public class Files.Renamer : Object {
         listbox = new Gtk.ListBox () {
             can_focus = false,
             selection_mode = Gtk.SelectionMode.NONE,
+            hexpand = true,
             vexpand = true
         };
         listbox.set_sort_func (sort_func);

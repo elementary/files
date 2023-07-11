@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 19:58+0000\n"
+"POT-Creation-Date: 2023-07-10 08:19-0700\n"
 "PO-Revision-Date: 2023-06-15 14:07+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
@@ -77,38 +77,40 @@ msgstr "Utforsk komplekse trær raskere med kolonnevisning"
 
 #: data/files.metainfo.xml.in.in:58
 #, fuzzy
-#| msgid "elementary LLC."
 msgid "elementary, Inc."
 msgstr "elementary LLC. (selskap med begrenset ansvar)"
 
-#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:102
-msgid "Improvements:"
-msgstr "Forbedringer:"
-
-#: data/files.metainfo.xml.in.in:67
-msgid "Implement a bulk rename functionality"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:84
-#: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:122
-#: data/files.metainfo.xml.in.in:137
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:82
+#: data/files.metainfo.xml.in.in:97 data/files.metainfo.xml.in.in:119
+#: data/files.metainfo.xml.in.in:135 data/files.metainfo.xml.in.in:150
 #, fuzzy
-#| msgid "Minor bug fixes"
 msgid "Minor updates:"
 msgstr "Retting av småfeil"
 
-#: data/files.metainfo.xml.in.in:71
-msgid "Use a colorful level bar to show disk usage in the properties dialog"
-msgstr "Bruk fargerik nivåfelt for å vise diskbruk i egenskapsdialogen"
+#: data/files.metainfo.xml.in.in:67
+msgid "Design updates for Bulk Rename"
+msgstr ""
 
-#: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:86
-#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:124
-#: data/files.metainfo.xml.in.in:139
+#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:85
+#: data/files.metainfo.xml.in.in:99 data/files.metainfo.xml.in.in:121
+#: data/files.metainfo.xml.in.in:137 data/files.metainfo.xml.in.in:152
 #, fuzzy
 msgid "Updated translations"
 msgstr "Nye oversettelser"
 
-#: data/files.metainfo.xml.in.in:104
+#: data/files.metainfo.xml.in.in:78 data/files.metainfo.xml.in.in:115
+msgid "Improvements:"
+msgstr "Forbedringer:"
+
+#: data/files.metainfo.xml.in.in:80
+msgid "Implement a bulk rename functionality"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:84
+msgid "Use a colorful level bar to show disk usage in the properties dialog"
+msgstr "Bruk fargerik nivåfelt for å vise diskbruk i egenskapsdialogen"
+
+#: data/files.metainfo.xml.in.in:117
 #, fuzzy
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
