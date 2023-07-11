@@ -24,7 +24,6 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
     protected Gtk.Grid info_grid;
     protected Gtk.Grid layout;
     protected Gtk.Stack stack;
-    protected Gtk.StackSwitcher stack_switcher;
     protected Gtk.Widget header_title;
 
     protected enum PanelType {
@@ -35,15 +34,12 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
     protected AbstractPropertiesDialog (string _title, Gtk.Window parent) {
         Object (title: _title,
                 transient_for: parent,
-                resizable: false,
-                deletable: false,
-                window_position: Gtk.WindowPosition.CENTER_ON_PARENT,
                 destroy_with_parent: true
         );
     }
 
     construct {
-        set_default_size (220, -1);
+        default_width = 220;
 
         var info_header = new Granite.HeaderLabel (_("Info"));
 
@@ -51,30 +47,22 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
             column_spacing = 6,
             row_spacing = 6
         };
-
-        info_grid.attach (info_header, 0, 0, 2, 1);
+        info_grid.attach (info_header, 0, 0, 2);
 
         stack = new Gtk.Stack ();
         stack.add_titled (info_grid, PanelType.INFO.to_string (), _("General"));
 
-        stack_switcher = new Gtk.StackSwitcher () {
-            homogeneous = true,
-            margin_top = 12,
-            no_show_all = true,
-            stack = stack
-        };
-
         layout = new Gtk.Grid () {
-            margin = 12,
-            margin_top = 0,
+            margin_bottom = 12,
+            margin_start = 12,
+            margin_end = 12,
             column_spacing = 12,
-            row_spacing = 6
+            row_spacing = 6,
+            vexpand = true
         };
+        layout.attach (stack, 0, 2, 2);
 
-        layout.attach (stack_switcher, 0, 1, 2, 1);
-        layout.attach (stack, 0, 2, 2, 1);
-
-        ((Gtk.Box) get_content_area ()).add (layout);
+        get_content_area ().add (layout);
 
         add_button (_("Close"), Gtk.ResponseType.CLOSE);
         response.connect ((source, type) => {
@@ -90,22 +78,32 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
         header_title.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
         header_title.hexpand = true;
         header_title.margin_top = 6;
-        header_title.valign = Gtk.Align.CENTER;
-        layout.attach (header_title, 1, 0, 1, 1);
+        header_title.valign = CENTER;
+
+        if (header_title is Gtk.Label) {
+            header_title.halign = START;
+            ((Gtk.Label) header_title).selectable = true;
+        }
+
+        layout.attach (header_title, 1, 0);
     }
 
     protected void overlay_emblems (Gtk.Image file_icon, List<string>? emblems_list) {
+        var file_overlay = new Gtk.Overlay () {
+            child = file_icon
+        };
+        layout.attach (file_overlay, 0, 0);
+
         if (emblems_list != null) {
             int pos = 0;
-            var emblem_grid = new Gtk.Grid () {
-                orientation = Gtk.Orientation.VERTICAL,
+            var emblem_box = new Gtk.Box (VERTICAL, 0) {
                 halign = Gtk.Align.END,
                 valign = Gtk.Align.END
             };
 
             foreach (string emblem_name in emblems_list) {
                 var emblem = new Gtk.Image.from_icon_name (emblem_name, Gtk.IconSize.BUTTON);
-                emblem_grid.add (emblem);
+                emblem_box.add (emblem);
 
                 pos++;
                 if (pos > 3) { /* Only room for 3 emblems */
@@ -113,35 +111,14 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
                 }
             }
 
-            var file_img = new Gtk.Overlay () {
-                valign = Gtk.Align.CENTER,
-                width_request = 48,
-                height_request = 48
-            };
 
-            file_img.add_overlay (file_icon);
-            file_img.add_overlay (emblem_grid);
-
-            layout.attach (file_img, 0, 0, 1, 1);
-        } else {
-            layout.attach (file_icon, 0, 0, 1, 1);
-        }
-    }
-
-    protected void add_section (Gtk.Stack stack, string title, string name, Gtk.Container content) {
-        if (content != null) {
-            stack.add_titled (content, name, title);
-        }
-
-        /* Only show the stack switcher when there's more than a single tab */
-        if (stack.get_children () != null) {
-            stack_switcher.show ();
+            file_overlay.add_overlay (emblem_box);
         }
     }
 
     protected void create_storage_bar (GLib.FileInfo file_info, int line) {
         var storage_header = new Granite.HeaderLabel (_("Device Usage"));
-        info_grid.attach (storage_header, 0, line, 1, 1);
+        info_grid.attach (storage_header, 0, line);
 
         if (file_info != null &&
             file_info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&

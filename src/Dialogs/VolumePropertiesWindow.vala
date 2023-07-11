@@ -20,10 +20,7 @@
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
 
-namespace Files.View {
-
-public class VolumePropertiesWindow : AbstractPropertiesDialog {
-
+public class Files.View.VolumePropertiesWindow : AbstractPropertiesDialog {
     public VolumePropertiesWindow (GLib.Mount? mount, Gtk.Window parent) {
         base (_("Disk Properties"), parent);
 
@@ -71,9 +68,7 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
             overlay_emblems (file_icon, emblems_list);
         }
 
-        header_title = new Gtk.Label (mount_name) {
-            halign = Gtk.Align.START
-        };
+        header_title = new Gtk.Label (mount_name);
 
         create_header_title ();
 
@@ -99,5 +94,4 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
         create_storage_bar (info, 3);
         show_all ();
     }
-}
 }
