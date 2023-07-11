@@ -301,7 +301,6 @@ namespace Files.View {
 
             location_bar.escape.connect (grab_focus);
 
-
             headerbar.focus_in_event.connect (() => {
                 current_tab.is_frozen = true;
                 return true;
