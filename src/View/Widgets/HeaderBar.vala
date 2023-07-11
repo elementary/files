@@ -22,8 +22,6 @@
 */
 
 public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
-    public signal void forward (int steps);
-    public signal void back (int steps); /* TODO combine using negative step */
     public signal void focus_location_request (GLib.File? location);
     public signal void path_change_request (string path, Files.OpenFlag flag);
     public signal void escape ();
@@ -104,11 +102,11 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
         });
 
         button_forward.slow_press.connect (() => {
-            forward (1);
+            get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
         });
 
         button_back.slow_press.connect (() => {
-            back (1);
+            get_action_group ("win").activate_action ("back", new Variant.int32 (1));
         });
 
         location_bar.reload_request.connect (() => {
@@ -146,41 +144,31 @@ public class Files.View.Chrome.HeaderBar : Hdy.HeaderBar {
 
     public void set_back_menu (Gee.List<string> path_list) {
         /* Clear the back menu and re-add the correct entries. */
-        var back_menu = new Gtk.Menu ();
-        var n = 1;
-        foreach (string path in path_list) {
-            int cn = n++; /* No i'm not mad, thats just how closures work in vala (and other langs).
-                           * You see if I would just use back(n) the reference to n would be passed
-                           * in the closure, resulting in a value of n which would always be n=1. So
-                           * by introducting a new variable I can bypass this anoyance.
-                           */
-            var item = new Gtk.MenuItem.with_label (FileUtils.sanitize_path (path, null, false));
-            item.activate.connect (() => {
-                back (cn);
-            });
-
-            back_menu.insert (item, -1);
+        var back_menu = new Menu ();
+        for (int i = 0; i < path_list.size; i++) {
+            var path = path_list.@get (i);
+            var item = new MenuItem (
+                FileUtils.sanitize_path (path, null, false),
+                Action.print_detailed_name ("win.back", new Variant.int32 (i + 1))
+            );
+            back_menu.append_item (item);
         }
 
-        back_menu.show_all ();
         button_back.menu = back_menu;
     }
 
     public void set_forward_menu (Gee.List<string> path_list) {
         /* Same for the forward menu */
-        var forward_menu = new Gtk.Menu ();
-        var n = 1;
-        foreach (string path in path_list) {
-            int cn = n++; /* For explanation look up */
-            var item = new Gtk.MenuItem.with_label (FileUtils.sanitize_path (path, null, false));
-            item.activate.connect (() => {
-                forward (cn);
-            });
-
-            forward_menu.insert (item, -1);
+        var forward_menu = new Menu ();
+        for (int i = 0; i < path_list.size; i++) {
+            var path = path_list.@get (i);
+            var item = new MenuItem (
+                FileUtils.sanitize_path (path, null, false),
+                Action.print_detailed_name ("win.forward", new Variant.int32 (i + 1))
+            );
+            forward_menu.append_item (item);
         }
 
-        forward_menu.show_all ();
         button_forward.menu = forward_menu;
     }
 
