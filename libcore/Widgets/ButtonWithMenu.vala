@@ -16,15 +16,11 @@
 public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
     public signal void slow_press ();
 
-    private Gtk.Menu _menu;
-    public Gtk.Menu menu {
-        get {
-            return _menu;
-        }
+    private Gtk.Menu gtk_menu;
 
+    public Menu menu {
         set {
-            _menu = value;
-            update_menu_properties ();
+            gtk_menu.bind_model (value, null, false);
         }
     }
 
@@ -35,7 +31,11 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
     construct {
         use_underline = true;
 
-        menu = new Gtk.Menu ();
+        gtk_menu = new Gtk.Menu ();
+        gtk_menu.attach_to_widget (this, null);
+        gtk_menu.deactivate.connect ( () => {
+            active = false;
+        });
 
         mnemonic_activate.connect (on_mnemonic_activate);
 
@@ -63,19 +63,6 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
         });
     }
 
-    private void update_menu_properties () {
-        menu.attach_to_widget (this, null);
-        menu.deactivate.connect ( () => {
-            active = false;
-        });
-        menu.deactivate.connect (menu.popdown);
-    }
-
-    public override void show_all () {
-        menu.show_all ();
-        base.show_all ();
-    }
-
     private bool on_mnemonic_activate (bool group_cycling) {
         /* ToggleButton always grabs focus away from the editor,
          * so reimplement Widget's version, which only grabs the
@@ -92,7 +79,7 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
 
     protected new void popup_menu () {
         active = true;
-        menu.popup_at_widget (this, SOUTH_WEST, NORTH_WEST, Gtk.get_current_event ());
-        menu.select_first (false);
+        gtk_menu.popup_at_widget (this, SOUTH_WEST, NORTH_WEST, Gtk.get_current_event ());
+        gtk_menu.select_first (false);
     }
 }
