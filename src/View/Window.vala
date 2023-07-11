@@ -193,11 +193,11 @@ namespace Files.View {
 
             location_bar = new Chrome.LocationBar ();
 
-            var menu = new AppMenu ();
+            var app_menu = new AppMenu ();
 
-            var app_menu = new Gtk.MenuButton () {
+            var menu_button = new Gtk.MenuButton () {
                 image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR),
-                popover = menu,
+                popover = app_menu,
                 tooltip_text = _("Menu")
             };
 
@@ -209,7 +209,7 @@ namespace Files.View {
             headerbar.pack_start (button_forward);
             headerbar.pack_start (view_switcher);
             headerbar.pack_start (location_bar);
-            headerbar.pack_end (app_menu);
+            headerbar.pack_end (menu_button);
 
             tabs = new Granite.Widgets.DynamicNotebook.with_accellabels (
                 new Granite.AccelLabel (_("New Tab"), "<Ctrl>t"),
@@ -261,13 +261,13 @@ namespace Files.View {
             view_switcher.action.activate.connect ((id) => {
                 switch ((ViewMode)(id.get_uint32 ())) {
                     case ViewMode.ICON:
-                        menu.on_zoom_setting_changed (Files.icon_view_settings, "zoom-level");
+                        app_menu.on_zoom_setting_changed (Files.icon_view_settings, "zoom-level");
                         break;
                     case ViewMode.LIST:
-                        menu.on_zoom_setting_changed (Files.list_view_settings, "zoom-level");
+                        app_menu.on_zoom_setting_changed (Files.list_view_settings, "zoom-level");
                         break;
                     case ViewMode.MILLER_COLUMNS:
-                        menu.on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
+                        app_menu.on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
                         break;
                 }
             });
