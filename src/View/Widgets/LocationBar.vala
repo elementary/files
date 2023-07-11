@@ -47,7 +47,6 @@ namespace Files.View.Chrome {
 
         uint focus_timeout_id = 0;
 
-        public signal void reload_request ();
         public signal void focus_file_request (GLib.File? file);
         public signal void escape ();
 
@@ -146,7 +145,7 @@ namespace Files.View.Chrome {
             if (has_focus) {
                 bread.activate ();
             } else {
-                reload_request ();
+                get_action_group ("win").activate_action ("refresh", null);
             }
         }
 
