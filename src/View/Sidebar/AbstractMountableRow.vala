@@ -118,12 +118,11 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         working_spinner = new Gtk.Spinner ();
 
         unmount_eject_revealer = new Gtk.Revealer () {
+            child = unmount_eject_button,
             transition_type = Gtk.RevealerTransitionType.SLIDE_LEFT,
             valign = Gtk.Align.CENTER,
             reveal_child = false
         };
-
-        unmount_eject_revealer.set_child (unmount_eject_button);
 
         unmount_eject_working_stack = new Gtk.Stack () {
             margin_start = 6,
