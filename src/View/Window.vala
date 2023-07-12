@@ -193,11 +193,12 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         free_space_change.connect (sidebar.on_free_space_change);
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-            hexpand = true,
-            vexpand = true,
             position = Files.app_settings.get_int ("sidebar-width"),
             start_child = sidebar,
-            end_child = tab_view
+            end_child = tab_view,
+            resize_start_child = false,
+            shrink_end_child = false,
+            shrink_start_child = false
         };
 
         var box = new Gtk.Box (VERTICAL, 0);
