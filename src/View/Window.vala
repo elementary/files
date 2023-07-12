@@ -235,35 +235,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         undo_manager.request_menu_update.connect (update_undo_actions);
 
-        var eventcontrollerkey = new Gtk.EventControllerKey (this);
-        eventcontrollerkey.key_pressed.connect ((keyval, keycode, mods) => {
-            bool no_mods = (mods == 0);
-            bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
-            bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
-
-            /* Use Tab to toggle View and Sidebar keyboard focus.  This works better than using a focus chain
-             * because cannot tab out of location bar and also unwanted items tend to get focused.
-             * There are other hotkeys for operating/focusing other widgets.
-             * Using modified Arrow keys no longer works due to recent changes.  */
-            if (keyval == Gdk.Key.Tab) {
-                if (top_menu.locked_focus) {
-                    return Gdk.EVENT_PROPAGATE;
-                }
-
-                if (no_mods || only_shift_pressed) {
-                    if (!sidebar.has_focus) {
-                        sidebar.grab_focus ();
-                    } else {
-                        current_tab.grab_focus ();
-                    }
-
-                    return Gdk.EVENT_STOP;
-                }
-            }
-
-            return Gdk.EVENT_PROPAGATE;
-        });
-
         key_press_event.connect_after ((event) => {
             Gdk.ModifierType state;
             event.get_state (out state);
