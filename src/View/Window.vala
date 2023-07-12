@@ -176,32 +176,27 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         tab_view = new Hdy.TabView ();
 
+        var app_instance = (Gtk.Application)(GLib.Application.get_default ());
+
+        var new_tab_button = new Gtk.Button.from_icon_name ("list-add-symbolic") {
+            action_name = "win.tab",
+            action_target = new Variant.string ("NEW")
+        };
+        new_tab_button.tooltip_markup = Granite.markup_accel_tooltip (
+            app_instance.get_accels_for_action ("win.tab::NEW"),
+            _("New Tab")
+        );
+
         tab_bar = new Hdy.TabBar () {
             autohide = false,
             expand_tabs = false,
+            start_action_widget = new_tab_button,
             view = tab_view
         };
 
         var tab_box = new Gtk.Box (VERTICAL, 0);
         tab_box.add (tab_bar);
         tab_box.add (tab_view);
-
-        // tabs = new Granite.Widgets.DynamicNotebook.with_accellabels (
-        //     new Granite.AccelLabel (_("New Tab"), "<Ctrl>t"),
-        //     new Granite.AccelLabel (_("Undo Close Tab"), "<Shift><Ctrl>t")
-        // ) {
-        //     show_tabs = true,
-        //     allow_restoring = true,
-        //     allow_duplication = true,
-        //     allow_new_window = true,
-        //     group_name = Config.APP_NAME
-        // };
-
-        // TODO Reimplement if needed
-        // this.configure_event.connect_after ((e) => {
-        //     tabs.set_size_request (e.width / 2, -1);
-        //     return false;
-        // });
 
         sidebar = new Sidebar.SidebarWindow ();
         free_space_change.connect (sidebar.on_free_space_change);
