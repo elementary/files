@@ -990,11 +990,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         sidebar_width = int.max (sidebar_width, min_width);
         Files.app_settings.set_int ("sidebar-width", sidebar_width);
 
-        int width, height;
-
-        // Includes shadow for normal windows (but not maximized or tiled)
-        get_size (out width, out height);
-
         // TODO: replace with Gtk.Window.fullscreened in Gtk4
         if (is_maximized || Gdk.WindowState.FULLSCREEN in get_window ().get_state ()) {
             Files.app_settings.set_enum (
@@ -1004,9 +999,14 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             Files.app_settings.set_enum (
                 "window-state", Files.WindowState.NORMAL
             );
-        }
 
-        Files.app_settings.set ("window-size", "(ii)", width, height);
+            if (!(get_style_context ().has_class ("tiled"))) {
+                int width, height;
+                // Includes shadow for normal windows (but not maximized or tiled)
+                get_size (out width, out height);
+                Files.app_settings.set ("window-size", "(ii)", width, height);
+            }
+        }
     }
 
     private void save_tabs () {
