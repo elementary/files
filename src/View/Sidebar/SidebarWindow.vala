@@ -46,24 +46,27 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
             tooltip_text = _("Common places plus saved folders and files")
         };
 
-        var bookmark_revealer = new Gtk.Revealer ();
-        bookmark_revealer.add (bookmark_listbox);
+        var bookmark_revealer = new Gtk.Revealer () {
+            child = bookmark_listbox
+        };
 
         /// TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
         var device_expander = new SidebarExpander (_("Storage")) {
             tooltip_text = _("Internal and connected storage devices")
         };
 
-        var device_revealer = new Gtk.Revealer ();
-        device_revealer.add (device_listbox);
+        var device_revealer = new Gtk.Revealer () {
+            child = device_listbox
+        };
 
         var network_expander = new SidebarExpander (_("Network")) {
             tooltip_text = _("Devices and places available via a network"),
             no_show_all = Files.is_admin ()
         };
 
-        var network_revealer = new Gtk.Revealer ();
-        network_revealer.add (network_listbox);
+        var network_revealer = new Gtk.Revealer () {
+            child = network_listbox
+        };
 
         bookmarklists_grid = new Gtk.Grid () {
             orientation = Gtk.Orientation.VERTICAL,
