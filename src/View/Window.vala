@@ -37,8 +37,10 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         {"info", action_info, "s"},
         {"view-mode", action_view_mode, "u", "0" },
         {"show-hidden", null, null, "false", change_state_show_hidden},
+        {"singleclick-select", null, null, "false", change_state_single_click_select},
         {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-        {"hide-local-thumbnails", null, null, "true", change_state_show_local_thumbnails},
+        {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
+        {"folders-before-files", null, null, "true", change_state_folders_before_files},
         {"forward", action_forward, "i"},
         {"back", action_back, "i"}
     };
@@ -60,6 +62,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     public Adw.TabBar tab_bar;
     private Gtk.Paned lside_pane;
     public SidebarInterface sidebar;
+
     public ViewContainer? current_container {
         get {
             return tab_view.selected_page != null ?
@@ -202,10 +205,12 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         free_space_change.connect (sidebar.on_free_space_change);
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-            position = Files.app_settings.get_int ("sidebar-width")
+            hexpand = true,
+            vexpand = true,
+            position = Files.app_settings.get_int ("sidebar-width"),
+            start_child = sidebar,
+            end_child = tab_view
         };
-        lside_pane.start_child = sidebar;
-        lside_pane.end_child = tab_view;
 
         var box = new Gtk.Box (VERTICAL, 0);
         box.append (top_menu);
@@ -215,9 +220,12 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         titlebar = new Gtk.Grid () { visible = false };
 
         /** Apply preferences */
-        var prefs = Files.app_settings;
-        get_action ("show-hidden").set_state (prefs.get_boolean ("show-hiddenfiles"));
-        get_action ("show-remote-thumbnails").set_state (prefs.get_boolean ("show-remote-thumbnails"));
+        var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
+        get_action ("show-hidden").set_state (prefs.show_hidden_files);
+        get_action ("show-local-thumbnails").set_state (prefs.show_local_thumbnails);
+        get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
+        get_action ("singleclick-select").set_state (prefs.singleclick_select);
+        get_action ("folders-before-files").set_state (prefs.sort_directories_first);
     }
 
     private void connect_signals () {
@@ -233,27 +241,12 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         top_menu.focus_location_request.connect ((loc) => {
             current_container.focus_location_if_in_current_directory (loc, true);
         });
-        top_menu.state_flags_changed.connect ((previous_flags) => {
-            var flags = get_state_flags ();
-            if (Gtk.StateFlags.FOCUSED in flags &&
-                !(Gtk.StateFlags.FOCUSED in previous_flags)) {
-
-                //Focus in
-                current_container.is_frozen = true;
-            } else if (Gtk.StateFlags.FOCUSED in previous_flags &&
-                !(Gtk.StateFlags.FOCUSED in flags)) {
-
-                //Focus out
-                current_container.is_frozen = false;
-            }
-        });
-
         // top_menu.focus_in_event.connect (() => {
-        //     current_container.is_frozen = true;
+        //     current_tab.is_frozen = true;
         //     return true;
         // });
         // top_menu.focus_out_event.connect (() => {
-        //     current_container.is_frozen = false;
+        //     current_tab.is_frozen = false;
         //     return true;
         // });
 
@@ -284,7 +277,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         //                 if (!sidebar.has_focus) {
         //                     sidebar.grab_focus ();
         //                 } else {
-        //                     current_container.grab_focus ();
+        //                     current_tab.grab_focus ();
         //                 }
 
         //                 return true;
@@ -329,9 +322,10 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             return false;
         });
 
-        // tab_view.new_tab_requested.connect (() => {
+        // tabs.new_tab_requested.connect (() => {
         //     add_tab ();
         // });
+
         //TODO Implement handlers for new signals
         tab_view.indicator_activated.connect (() => {});
         tab_view.setup_menu.connect (() => {});
@@ -340,11 +334,11 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             var view_container = (ViewContainer)(tab.child);
             // tab.restore_data = view_container.location.get_uri ();
 
-            // /* If closing tab is current, set current_container to null to ensure
-            //  * closed ViewContainer is destroyed. It will be reassigned in tab_changed
-            //  */
-            // if (view_container == current_container) {
-            //     current_container = null;
+            /* If closing tab is current, set current_tab to null to ensure
+             * closed ViewContainer is destroyed. It will be reassigned in tab_changed
+             */
+            // if (view_container == current_tab) {
+            //     current_tab = null;
             // }
 
             view_container.close ();
@@ -374,7 +368,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         //TODO Reimplement in Gtk4
         tab_view.create_window.connect (() => {
             // /* Called when tab dragged out of notebook */
-            // var vc = (ViewContainer)(tab.child) ;
+            // var vc = (ViewContainer)(tab.page) ;
             // /* Close view now to disconnect signal handler closures which can trigger after slot destruction */
             // vc.close ();
 
@@ -1000,6 +994,12 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         Files.app_settings.set_boolean ("show-hiddenfiles", state);
     }
 
+    public void change_state_single_click_select (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+        Files.Preferences.get_default ().singleclick_select = state;
+    }
+
     public void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
@@ -1007,9 +1007,15 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     public void change_state_show_local_thumbnails (GLib.SimpleAction action) {
-        bool state = action.state.get_boolean ();
+        bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
         Files.app_settings.set_boolean ("show-local-thumbnails", state);
+    }
+
+    public void change_state_folders_before_files (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+        Files.Preferences.get_default ().sort_directories_first = state;
     }
 
     private void connect_to_server () {
@@ -1088,7 +1094,6 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
         // Includes shadow for normal windows (but not maximized or tiled)
         // get_size (out width, out height);
-        // get_position (out x, out y);
 
         var toplevel_state = ((Gdk.Toplevel)get_surface ()).get_state ();
         // If window is tiled, is it on left (start = true) or right (start = false)?
@@ -1099,7 +1104,6 @@ public class Files.View.Window : Gtk.ApplicationWindow {
                                        toplevel_state);
 
         Files.app_settings.set ("window-size", "(ii)", get_width (), get_height ());
-        // Files.app_settings.set ("window-position", "(ii)", x, y);
     }
 
     private void save_tabs () {
