@@ -149,20 +149,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                                        "position", SettingsBindFlags.DEFAULT);
 
             var state = (Files.WindowState)(Files.app_settings.get_enum ("window-state"));
-
-            switch (state) {
-                case Files.WindowState.MAXIMIZED:
-                    maximize ();
-                    break;
-                default:
-                    int default_x, default_y;
-                    Files.app_settings.get ("window-position", "(ii)", out default_x, out default_y);
-
-                    if (default_x != -1 && default_y != -1) {
-                        move (default_x, default_y);
-                    }
-
-                    break;
+            if (state == Files.WindowState.MAXIMIZED) {
+                maximize ();
             }
         }
 
@@ -1002,22 +990,24 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         sidebar_width = int.max (sidebar_width, min_width);
         Files.app_settings.set_int ("sidebar-width", sidebar_width);
 
-        int width, height, x, y;
+        var state = get_window ().get_state ();
+        // TODO: replace with Gtk.Window.fullscreened in Gtk4
+        if (is_maximized || Gdk.WindowState.FULLSCREEN in state) {
+            Files.app_settings.set_enum (
+                "window-state", Files.WindowState.MAXIMIZED
+            );
+        } else {
+            Files.app_settings.set_enum (
+                "window-state", Files.WindowState.NORMAL
+            );
 
-        // Includes shadow for normal windows (but not maximized or tiled)
-        get_size (out width, out height);
-        get_position (out x, out y);
-
-        var gdk_state = get_window ().get_state ();
-        // If window is tiled, is it on left (start = true) or right (start = false)?
-        var rect = get_display ().get_monitor_at_point (x, y).get_geometry ();
-        var start = x + width < rect.width;
-
-        Files.app_settings.set_enum ("window-state",
-                                       Files.WindowState.from_gdk_window_state (gdk_state, start));
-
-        Files.app_settings.set ("window-size", "(ii)", width, height);
-        Files.app_settings.set ("window-position", "(ii)", x, y);
+            if (!(Gdk.WindowState.TILED in state)) {
+                int width, height;
+                // Includes shadow for normal windows (but not maximized or tiled)
+                get_size (out width, out height);
+                Files.app_settings.set ("window-size", "(ii)", width, height);
+            }
+        }
     }
 
     private void save_tabs () {
