@@ -53,15 +53,22 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
+    public ViewContainer? current_container {
+        get {
+            return tab_view.selected_page != null ?
+                (ViewContainer)(tab_view.selected_page.child) : null;
+        }
+    }
+
     public Gtk.Builder ui;
     public Files.Application marlin_app { get; construct; }
     private unowned UndoManager undo_manager;
     public Chrome.HeaderBar top_menu;
     public Chrome.ViewSwitcher view_switcher;
-    public Granite.Widgets.DynamicNotebook tabs;
+    public Hdy.TabView tab_view;
+    public Hdy.TabBar tab_bar;
     private Gtk.Paned lside_pane;
     public SidebarInterface sidebar;
-    public ViewContainer? current_tab = null;
 
     private bool tabs_restored = false;
     private int restoring_tabs = 0;
@@ -167,23 +174,34 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             custom_title = new Gtk.Label (null)
         };
 
-        tabs = new Granite.Widgets.DynamicNotebook.with_accellabels (
-            new Granite.AccelLabel (_("New Tab"), "<Ctrl>t"),
-            new Granite.AccelLabel (_("Undo Close Tab"), "<Shift><Ctrl>t")
-        ) {
-            show_tabs = true,
-            allow_restoring = true,
-            allow_duplication = true,
-            allow_new_window = true,
-            group_name = Config.APP_NAME
+        tab_view = new Hdy.TabView ();
+
+        tab_bar = new Hdy.TabBar () {
+            autohide = false,
+            expand_tabs = false,
+            view = tab_view
         };
 
-        this.configure_event.connect_after ((e) => {
-            tabs.set_size_request (e.width / 2, -1);
-            return false;
-        });
+        var tab_box = new Gtk.Box (VERTICAL, 0);
+        tab_box.add (tab_bar);
+        tab_box.add (tab_view);
 
-        tabs.show ();
+        // tabs = new Granite.Widgets.DynamicNotebook.with_accellabels (
+        //     new Granite.AccelLabel (_("New Tab"), "<Ctrl>t"),
+        //     new Granite.AccelLabel (_("Undo Close Tab"), "<Shift><Ctrl>t")
+        // ) {
+        //     show_tabs = true,
+        //     allow_restoring = true,
+        //     allow_duplication = true,
+        //     allow_new_window = true,
+        //     group_name = Config.APP_NAME
+        // };
+
+        // TODO Reimplement if needed
+        // this.configure_event.connect_after ((e) => {
+        //     tabs.set_size_request (e.width / 2, -1);
+        //     return false;
+        // });
 
         sidebar = new Sidebar.SidebarWindow ();
         free_space_change.connect (sidebar.on_free_space_change);
@@ -193,7 +211,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             position = Files.app_settings.get_int ("sidebar-width")
         };
         lside_pane.pack1 (sidebar, false, false);
-        lside_pane.pack2 (tabs, true, true);
+        lside_pane.pack2 (tab_box, true, true);
 
         var grid = new Gtk.Grid ();
         grid.attach (top_menu, 0, 0);
@@ -218,18 +236,18 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         top_menu.escape.connect (grab_focus);
         top_menu.path_change_request.connect ((loc, flag) => {
-            current_tab.is_frozen = false;
+            current_container.is_frozen = false;
             uri_path_change_request (loc, flag);
         });
         top_menu.focus_location_request.connect ((loc) => {
-            current_tab.focus_location_if_in_current_directory (loc, true);
+            current_container.focus_location_if_in_current_directory (loc, true);
         });
         top_menu.focus_in_event.connect (() => {
-            current_tab.is_frozen = true;
+            current_container.is_frozen = true;
             return true;
         });
         top_menu.focus_out_event.connect (() => {
-            current_tab.is_frozen = false;
+            current_container.is_frozen = false;
             return true;
         });
 
@@ -268,78 +286,84 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             return false;
         });
 
-        tabs.new_tab_requested.connect (() => {
-            add_tab ();
-        });
+        // tabs.new_tab_requested.connect (() => {
+        //     add_tab ();
+        // });
 
-        tabs.close_tab_requested.connect ((tab) => {
-            var view_container = (ViewContainer)(tab.page);
-            tab.restore_data = view_container.location.get_uri ();
+        //TODO Implement handlers for new signals
+        tab_view.indicator_activated.connect (() => {});
+        tab_view.setup_menu.connect (() => {});
 
-            /* If closing tab is current, set current_tab to null to ensure
+        tab_view.close_page.connect ((tab) => {
+            var view_container = (ViewContainer)(tab.child);
+            // tab.restore_data = view_container.location.get_uri ();
+
+            /* If closing tab is current, set current_container to null to ensure
              * closed ViewContainer is destroyed. It will be reassigned in tab_changed
              */
-            if (view_container == current_tab) {
-                current_tab = null;
-            }
+            // if (view_container == current_container) {
+            //     current_container = null;
+            // }
 
             view_container.close ();
+            tab_view.close_page_finish (tab, false); // No need to confirm
 
-            if (tabs.n_tabs == 1) {
+            if (tab_view.n_pages == 1) {
                 add_tab ();
             }
 
             return true;
         });
 
-        tabs.tab_switched.connect ((old_tab, new_tab) => {
-            if (new_tab != null) {
-                change_tab (tabs.get_tab_position (new_tab));
-            }
+        tab_view.page_reordered.connect ((tab, position) => {
+            change_tab (position);
         });
 
-        tabs.tab_restored.connect ((label, restore_data, icon) => {
-            add_tab_by_uri (restore_data);
+        //TODO Implement in Gtk4 (Signal absent in TabBar)
+        // tab_view.tab_restored.connect ((label, restore_data, icon) => {
+        //     add_tab_by_uri (restore_data);
+        // });
+
+        //TODO Implement in Gtk4 (Signal absent in TabBar)
+        // tab_view.tab_duplicated.connect ((tab) => {
+        //     add_tab_by_uri (((ViewContainer)(tab.child)).uri);
+        // });
+
+        //TODO Reimplement in Gtk4
+        tab_view.create_window.connect (() => {
+            // /* Called when tab dragged out of notebook */
+            // var vc = (ViewContainer)(tab.page) ;
+            // /* Close view now to disconnect signal handler closures which can trigger after slot destruction */
+            // vc.close ();
+
+            // marlin_app.create_window (vc.location, real_mode (vc.view_mode));
+
+            // /* remove_tab function uses Idle loop to close tab */
+            // remove_tab (tab);
+            return marlin_app.create_window ().tab_view;
         });
 
-        tabs.tab_duplicated.connect ((tab) => {
-            add_tab_by_uri (((ViewContainer)(tab.page)).uri);
-        });
-
-        tabs.tab_moved.connect ((tab) => {
-            /* Called when tab dragged out of notebook */
-            var vc = (ViewContainer)(tab.page) ;
-            /* Close view now to disconnect signal handler closures which can trigger after slot destruction */
-            vc.close ();
-
-            marlin_app.create_window (vc.location, real_mode (vc.view_mode));
-
-            /* remove_tab function uses Idle loop to close tab */
-            remove_tab (tab);
-        });
-
-
-        tabs.tab_added.connect ((tab) => {
-            var vc = (ViewContainer)(tab.page) ;
+        tab_view.page_attached.connect ((tab, pos) => {
+            var vc = (ViewContainer)(tab.child) ;
             vc.window = this;
         });
 
-        tabs.tab_removed.connect (on_tab_removed);
+        tab_view.page_detached.connect (on_page_detached);
 
         sidebar.request_focus.connect (() => {
-            return !current_tab.locked_focus && !top_menu.locked_focus;
+            return !current_container.locked_focus && !top_menu.locked_focus;
         });
 
         sidebar.sync_needed.connect (() => {
-            loading_uri (current_tab.uri);
+            loading_uri (current_container.uri);
         });
 
         sidebar.path_change_request.connect (uri_path_change_request);
         sidebar.connect_server_request.connect (connect_to_server);
     }
 
-    private void on_tab_removed () {
-        if (tabs.n_tabs == 0) {
+    private void on_page_detached () {
+        if (tab_view.n_pages == 0) {
             add_tab ();
         }
 
@@ -351,10 +375,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void change_tab (int offset) {
-        ViewContainer? old_tab = current_tab;
-        current_tab = (ViewContainer)((tabs.get_tab_by_index (offset)).page);
+        ViewContainer? old_tab = current_container;
+        tab_view.selected_page = tab_view.get_nth_page (offset);
 
-        if (current_tab == null || old_tab == current_tab) {
+        if (current_container == null || old_tab == current_container) {
             return;
         }
 
@@ -367,10 +391,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             old_tab.is_frozen = false;
         }
 
-        loading_uri (current_tab.uri);
-        current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
-        sidebar.sync_uri (current_tab.uri);
-        top_menu.working = current_tab.is_frozen;
+        loading_uri (current_container.uri);
+        current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
+        sidebar.sync_uri (current_container.uri);
+        top_menu.working = current_container.is_frozen;
         save_active_tab_position ();
     }
 
@@ -388,8 +412,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
                 add_tab (location, mode);
                 /* Ensure default tab's slot is active so it can be focused */
-                current_tab = (ViewContainer)(tabs.current.page);
-                current_tab.set_active_state (true, false);
+                current_container.set_active_state (true, false);
             }
         } else {
             /* Open tabs at each requested location */
@@ -427,12 +450,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             bool is_child;
             var existing_tab_position = location_is_duplicate (location, out is_child);
             if (existing_tab_position >= 0) {
-                tabs.current = tabs.get_tab_by_index (existing_tab_position);
+                tab_view.selected_page = tab_view.get_nth_page (existing_tab_position);
                 change_tab (existing_tab_position);
 
                 if (is_child) {
                     /* Select the child  */
-                    ((ViewContainer)(tabs.current.page)).focus_location_if_in_current_directory (location);
+                    current_container.focus_location_if_in_current_directory (location);
                 }
 
                 return;
@@ -441,22 +464,29 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         mode = real_mode (mode);
         var content = new View.ViewContainer (this);
-        var tab = new Granite.Widgets.Tab.with_accellabels (
-            "",
-            null,
-            content,
-            new Granite.AccelLabel (_("Close Tab"), "<Ctrl>w"),
-            new Granite.AccelLabel (_("Duplicate Tab"), "<Ctrl><Alt>t"),
-            new Granite.AccelLabel (_("Open in New Window"), "<Ctrl><Alt>n")
-        ) {
-            ellipsize_mode = Pango.EllipsizeMode.MIDDLE
-        };
+        // var tab = new Hdy.TabPage ()
+        // .with_accellabels (
+        //     "",
+        //     null,
+        //     content,
+        //     new Granite.AccelLabel (_("Close Tab"), "<Ctrl>w"),
+        //     new Granite.AccelLabel (_("Duplicate Tab"), "<Ctrl><Alt>t"),
+        //     new Granite.AccelLabel (_("Open in New Window"), "<Ctrl><Alt>n")
+        // )
+        // {
+        //     child = content
+        // };
 
-        change_tab ((int)tabs.insert_tab (tab, -1));
-        tabs.current = tab;
+        // change_tab ((int)tab_view.insert_tab (tab, -1));
+        var tab = tab_view.append (content);
+        tab_view.selected_page = tab;
+        /* Capturing ViewContainer object reference in closure prevents its proper destruction
+         * so capture its unique id instead */
+        // var id = content.id;
 
         content.tab_name_changed.connect ((tab_name) => {
-            check_for_tabs_with_same_name (); // Also sets tab_label.
+            check_for_tabs_with_same_name ();
+            // set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
         });
 
         content.loading.connect ((is_loading) => {
@@ -471,7 +501,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 }
             }
 
-            tab.working = is_loading;
+            content.working = is_loading;
             update_top_menu ();
             if (restoring_tabs == 0 && !is_loading) {
                 save_tabs ();
@@ -498,8 +528,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         parent_path = FileUtils.get_parent_path_from_path (location.get_path ());
         int existing_position = 0;
 
-        foreach (Granite.Widgets.Tab tab in tabs.tabs) {
-            var tab_location = ((ViewContainer)(tab.page)).location;
+        for (uint i = 0; i < tab_view.n_pages; i++) {
+            var tab = (Hdy.TabPage)(tab_view.get_pages ().get_item (i));
+            var tab_location = ((ViewContainer)(tab.child)).location;
             string tab_uri = tab_location.get_uri ();
 
             if (FileUtils.same_location (uri, tab_uri)) {
@@ -518,9 +549,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     /** Compare every tab label with every other and resolve ambiguities **/
     private void check_for_tabs_with_same_name () {
         // Take list copy so foreach clauses can be nested safely
-        var copy_tabs = tabs.tabs.copy ();
-        foreach (unowned var tab in tabs.tabs) {
-            var content = (ViewContainer)(tab.page);
+        // var copy_tabs = tab_view.tabs.copy ();
+        for (uint i = 0; i < tab_view.n_pages; i++) {
+        // foreach (unowned var tab in tab_view.tabs) {
+            var tab = (Hdy.TabPage)(tab_view.get_pages ().get_item (i));
+            unowned var content = (ViewContainer)(tab.child);
             if (content.tab_name == Files.INVALID_TAB_NAME) {
                 set_tab_label (content.tab_name, tab, content.tab_name);
                 continue;
@@ -543,8 +576,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             set_tab_label (basename, tab, content.tab_name);
 
             // Compare with every other tab for same label
-            foreach (unowned var tab2 in copy_tabs) {
-                var content2 = (ViewContainer)(tab2.page);
+            for (uint j = 0; j < tab_view.n_pages; j++) {
+                var tab2 = (Hdy.TabPage)(tab_view.get_pages ().get_item (j));
+                unowned var content2 = (ViewContainer)(tab2.child);
+            // foreach (unowned var tab2 in copy_tabs) {
+                // var content2 = (ViewContainer)(tab2.page);
                 if (content2 == content || content2.tab_name == Files.INVALID_TAB_NAME) {
                     continue;
                 }
@@ -571,14 +607,14 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     /* Just to append "as Administrator" when appropriate */
-    private void set_tab_label (string label, Granite.Widgets.Tab tab, string? tooltip = null) {
+    private void set_tab_label (string label, Hdy.TabPage tab, string? tooltip = null) {
 
         string lab = label;
         if (Files.is_admin ()) {
             lab += (" " + _("(as Administrator)"));
         }
 
-        tab.label = lab;
+        tab.title = lab;
 
         /* Needs change to Granite to allow (visible) tooltip amendment.
          * This compiles because tab is a widget but the tootip is overridden by that set internally */
@@ -588,7 +624,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 tt += (" " + _("(as Administrator)"));
             }
 
-            tab.set_tooltip_text (tt);
+            tab.tooltip = tt;
         }
     }
 
@@ -601,14 +637,20 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     public void remove_content (ViewContainer view_container) {
-        remove_tab (tabs.get_tab_by_widget ((Gtk.Widget)view_container));
+        for (uint i = 0; i < tab_view.n_pages; i++) {
+            var tab = (Hdy.TabPage)(tab_view.get_pages ().get_item (i));
+            if (tab.child == view_container) {
+                remove_tab (tab);
+                break;
+            }
+        }
     }
 
-    private void remove_tab (Granite.Widgets.Tab? tab) {
+    private void remove_tab (Hdy.TabPage? tab) {
         if (tab != null) {
             /* Use Idle in case of rapid closing of multiple tabs during restore */
             Idle.add_full (Priority.LOW, () => {
-                tab.close ();
+                tab_view.close_page (tab);
                 return GLib.Source.REMOVE;
             });
         }
@@ -642,9 +684,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
         /* Note: Duplicate bookmarks will not be created by BookmarkList */
-        unowned var selected_files = current_tab.view.get_selected_files ();
+        unowned var selected_files = current_container.view.get_selected_files ();
         if (selected_files == null) {
-            sidebar.add_favorite_uri (current_tab.location.get_uri ());
+            sidebar.add_favorite_uri (current_container.location.get_uri ());
         } else if (selected_files.first ().next == null) {
             sidebar.add_favorite_uri (selected_files.first ().data.uri);
         } // Ignore if more than one item selected
@@ -652,7 +694,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
         /* Do not initiate search while slot is frozen e.g. during loading */
-        if (current_tab == null || current_tab.is_frozen) {
+        if (current_container == null || current_container.is_frozen) {
             return;
         }
 
@@ -684,30 +726,30 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void action_reload () {
         /* avoid spawning reload when key kept pressed */
-        if (tabs.current.working) {
+        if (((ViewContainer)(tab_view.selected_page.child)).working) {
             warning ("Too rapid reloading suppressed");
             return;
         }
-        current_tab.reload ();
+        current_container.reload ();
         sidebar.reload ();
     }
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
-        if (current_tab == null) { // can occur during startup
+        if (current_container == null) { // can occur during startup
             return;
         }
 
         ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
-        current_tab.change_view_mode (mode);
+        current_container.change_view_mode (mode);
         /* ViewContainer takes care of changing appearance */
     }
 
     private void action_back (SimpleAction action, Variant? param) {
-        current_tab.go_back (param.get_int32 ());
+        current_container.go_back (param.get_int32 ());
     }
 
     private void action_forward (SimpleAction action, Variant? param) {
-        current_tab.go_forward (param.get_int32 ());
+        current_container.go_forward (param.get_int32 ());
     }
 
     private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
@@ -737,7 +779,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 break;
 
             case "UP":
-                current_tab.go_up ();
+                current_container.go_up ();
                 break;
 
             default:
@@ -746,19 +788,19 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void action_zoom (GLib.SimpleAction action, GLib.Variant? param) {
-        if (current_tab != null) {
-            assert (current_tab.view != null);
+        if (current_container != null) {
+            assert (current_container.view != null);
             switch (param.get_string ()) {
                 case "ZOOM_IN":
-                    current_tab.view.zoom_in ();
+                    current_container.view.zoom_in ();
                     break;
 
                 case "ZOOM_OUT":
-                    current_tab.view.zoom_out ();
+                    current_container.view.zoom_out ();
                     break;
 
                 case "ZOOM_NORMAL":
-                    current_tab.view.zoom_normal ();
+                    current_container.view.zoom_normal ();
                     break;
 
                 default:
@@ -774,23 +816,23 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 break;
 
             case "CLOSE":
-                remove_tab (tabs.current);
+                remove_tab (tab_view.selected_page);
                 break;
 
             case "NEXT":
-                tabs.next_page ();
+                tab_view.select_next_page ();
                 break;
 
             case "PREVIOUS":
-                tabs.previous_page ();
+                tab_view.select_previous_page ();
                 break;
 
             case "TAB":
-                add_tab (current_tab.location, current_tab.view_mode);
+                add_tab (current_container.location, current_container.view_mode);
                 break;
 
             case "WINDOW":
-                tabs.tab_moved (tabs.current, 0, 0);
+                tab_view.create_window ();
                 break;
 
             default:
@@ -845,8 +887,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     public void after_undo_redo () {
-        if (current_tab.slot.directory.is_recent) {
-            current_tab.reload ();
+        if (current_container.slot.directory.is_recent) {
+            current_container.reload ();
         }
 
         doing_undo_redo = false;
@@ -919,7 +961,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 return mode;
 
             case ViewMode.CURRENT:
-                return current_tab.view_mode;
+                return current_container.view_mode;
 
             default:
                 break;
@@ -934,11 +976,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         top_menu.destroy (); /* stop unwanted signals if quit while pathbar in focus */
 
-        tabs.tab_removed.disconnect (on_tab_removed); /* Avoid infinite loop */
+        tab_view.page_detached.disconnect (on_page_detached); /* Avoid infinite loop */
 
-        foreach (var tab in tabs.tabs) {
-            current_tab = null;
-            ((View.ViewContainer)(tab.page)).close ();
+        for (uint i = 0; i < tab_view.n_pages; i++) {
+            var tab_page = (Hdy.TabPage)(tab_view.get_pages ().get_item (i));
+            ((View.ViewContainer)(tab_page.child)).close ();
         }
 
         this.destroy ();
@@ -984,9 +1026,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
 
         VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
-        foreach (var tab in tabs.tabs) {
-            assert (tab != null);
-            var view_container = (ViewContainer)(tab.page) ;
+        for (uint i = 0; i < tab_view.n_pages; i++) {
+            var tab = (Hdy.TabPage)(tab_view.get_pages ().get_item (i));
+            var view_container = (ViewContainer)(tab.child) ;
 
             /* Do not save if "File does not exist" or "Does not belong to you" */
             if (!view_container.can_show_folder) {
@@ -1005,9 +1047,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void save_active_tab_position () {
-        if (tabs.current != null) {
-            Files.app_settings.set_int ("active-tab-position", tabs.get_tab_position (tabs.current));
-        }
+        Files.app_settings.set_int (
+            "active-tab-position",
+            tab_view.get_page_position (tab_view.selected_page)
+        );
     }
 
     public uint restore_tabs () {
@@ -1070,15 +1113,14 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             active_tab_position = 0;
         }
 
-        tabs.current = tabs.get_tab_by_index (active_tab_position);
-        current_tab = (ViewContainer?)(tabs.current.page);
+        tab_view.selected_page = tab_view.get_nth_page (active_tab_position);
 
         string path = "";
-        if (current_tab != null) {
-            path = current_tab.get_tip_uri ();
+        if (current_container != null) {
+            path = current_container.get_tip_uri ();
 
             if (path == null || path == "") {
-                path = current_tab.get_root_uri ();
+                path = current_container.get_root_uri ();
             }
         }
 
@@ -1089,8 +1131,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void expand_miller_view (string tip_uri, string unescaped_root_uri) {
         /* It might be more elegant for Miller.vala to handle this */
-        var tab = tabs.current;
-        var view = (ViewContainer)(tab.page) ;
+        var tab = tab_view.selected_page;
+        var view = (ViewContainer)(tab.child);
         var mwcols = (Miller)(view.view) ;
         var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri);
 
@@ -1120,28 +1162,28 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void update_top_menu () {
-        if (restoring_tabs > 0 || current_tab == null) {
+        if (restoring_tabs > 0 || current_container == null) {
             return;
         }
 
         /* Update browser buttons */
-        top_menu.set_back_menu (current_tab.get_go_back_path_list ());
-        top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
-        top_menu.can_go_back = current_tab.can_go_back;
-        top_menu.can_go_forward = (current_tab.can_show_folder && current_tab.can_go_forward);
-        top_menu.working = current_tab.is_loading;
+        top_menu.set_back_menu (current_container.get_go_back_path_list ());
+        top_menu.set_forward_menu (current_container.get_go_forward_path_list ());
+        top_menu.can_go_back = current_container.can_go_back;
+        top_menu.can_go_forward = (current_container.can_show_folder && current_container.can_go_forward);
+        top_menu.working = current_container.is_loading;
 
         /* Update viewmode switch, action state and settings */
-        var mode = current_tab.view_mode;
+        var mode = current_container.view_mode;
         view_switcher.set_mode (mode);
-        view_switcher.sensitive = current_tab.can_show_folder;
+        view_switcher.sensitive = current_container.can_show_folder;
         get_action ("view-mode").change_state (new Variant.uint32 (mode));
         Files.app_settings.set_enum ("default-viewmode", mode);
     }
 
     private void update_labels (string uri) {
-        if (current_tab != null) { /* Can happen during restore */
-            set_title (current_tab.tab_name); /* Not actually visible on elementaryos */
+        if (current_container != null) { /* Can happen during restore */
+            set_title (current_container.tab_name); /* Not actually visible on elementaryos */
             top_menu.update_location_bar (uri);
             sidebar.sync_uri (uri);
         }
@@ -1151,12 +1193,13 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         debug ("Mount %s removed", mount.get_name ());
         GLib.File root = mount.get_root ();
 
-        foreach (var page in tabs.get_children ()) {
-            var view_container = (View.ViewContainer)page ;
+        for (uint i = 0; i < tab_view.get_pages ().get_n_items (); i++) {
+        // foreach (var page in tab_view.get_children ()) {
+            var view_container = (View.ViewContainer)(tab_view.get_pages ().get_item (i)) ;
             GLib.File location = view_container.location;
 
             if (location == null || location.has_prefix (root) || location.equal (root)) {
-                if (view_container == current_tab) {
+                if (view_container == current_container) {
                     view_container.focus_location (GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()));
                 } else {
                     remove_content (view_container);
@@ -1171,14 +1214,14 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         if (file != null) {
             switch (flag) {
                 case Files.OpenFlag.NEW_TAB:
-                    add_tab (file, current_tab.view_mode);
+                    add_tab (file, current_container.view_mode);
                     break;
                 case Files.OpenFlag.NEW_WINDOW:
-                    add_window (file, current_tab.view_mode);
+                    add_window (file, current_container.view_mode);
                     break;
                 default:
                     grab_focus ();
-                    current_tab.focus_location (file);
+                    current_container.focus_location (file);
                     break;
             }
         } else {
@@ -1189,8 +1232,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     /** Use this function to standardise how locations are generated from uris **/
     private GLib.File? get_file_from_uri (string uri) {
         string? current_uri = null;
-        if (current_tab != null && current_tab.location != null) {
-            current_uri = current_tab.location.get_uri ();
+        if (current_container != null && current_container.location != null) {
+            current_uri = current_container.location.get_uri ();
         }
 
         string path = FileUtils.sanitize_path (uri, current_uri);
@@ -1202,6 +1245,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     public new void grab_focus () {
-        current_tab.grab_focus ();
+        current_container.grab_focus ();
     }
 }
