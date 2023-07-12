@@ -247,12 +247,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         undo_manager.request_menu_update.connect (update_undo_actions);
 
-        key_press_event.connect ((event) => {
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            uint keyval;
-            event.get_keyval (out keyval);
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
+        var eventcontrollerkey = new Gtk.EventControllerKey (this);
+        eventcontrollerkey.key_pressed.connect ((keyval, keycode, mods) => {
             bool no_mods = (mods == 0);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
             bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
@@ -261,26 +257,23 @@ public class Files.View.Window : Hdy.ApplicationWindow {
              * because cannot tab out of location bar and also unwanted items tend to get focused.
              * There are other hotkeys for operating/focusing other widgets.
              * Using modified Arrow keys no longer works due to recent changes.  */
-            switch (keyval) {
-                case Gdk.Key.Tab:
-                    if (top_menu.locked_focus) {
-                        return false;
+            if (keyval == Gdk.Key.Tab) {
+                if (top_menu.locked_focus) {
+                    return Gdk.EVENT_PROPAGATE;
+                }
+
+                if (no_mods || only_shift_pressed) {
+                    if (!sidebar.has_focus) {
+                        sidebar.grab_focus ();
+                    } else {
+                        current_tab.grab_focus ();
                     }
 
-                    if (no_mods || only_shift_pressed) {
-                        if (!sidebar.has_focus) {
-                            sidebar.grab_focus ();
-                        } else {
-                            current_tab.grab_focus ();
-                        }
-
-                        return true;
-                    }
-
-                    break;
+                    return Gdk.EVENT_STOP;
+                }
             }
 
-            return false;
+            return Gdk.EVENT_PROPAGATE;
         });
 
         key_press_event.connect_after ((event) => {
