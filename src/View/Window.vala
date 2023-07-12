@@ -174,15 +174,21 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             custom_title = new Gtk.Label (null)
         };
 
-        var tab_menumodel = new Menu ();
-        tab_menumodel.append (_("Close Other Tabs"), null);
-        tab_menumodel.append (_("Close Tabs to the Right"), null);
-        tab_menumodel.append (_("Close Tab"), "win.tab::CLOSE");
-        tab_menumodel.append (_("Open in New Window"), "win.tab::WINDOW");
-        tab_menumodel.append (_("Duplicate Tab"), "win.tab::TAB");
+        var close_tab_section = new Menu ();
+        close_tab_section.append (_("Close Other Tabs"), null);
+        close_tab_section.append (_("Close Tabs to the Right"), null);
+        close_tab_section.append (_("Close Tab"), "win.tab::CLOSE");
+
+        var open_tab_section = new Menu ();
+        open_tab_section.append (_("Open in New Window"), "win.tab::WINDOW");
+        open_tab_section.append (_("Duplicate Tab"), "win.tab::TAB");
+
+        var tab_menu = new Menu ();
+        tab_menu.append_section (null, close_tab_section);
+        tab_menu.append_section (null, open_tab_section);
 
         tab_view = new Hdy.TabView () {
-            menu_model = tab_menumodel
+            menu_model = tab_menu
         };
 
         var app_instance = (Gtk.Application)(GLib.Application.get_default ());
