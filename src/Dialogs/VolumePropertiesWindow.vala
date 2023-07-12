@@ -21,7 +21,6 @@
 */
 
 public class Files.View.VolumePropertiesWindow : AbstractPropertiesDialog {
-
     public VolumePropertiesWindow (GLib.Mount? mount, Gtk.Window parent) {
         base (_("Disk Properties"), parent);
 
@@ -70,9 +69,7 @@ public class Files.View.VolumePropertiesWindow : AbstractPropertiesDialog {
             overlay_emblems (file_icon, emblems_list);
         }
 
-        header_title = new Gtk.Label (mount_name) {
-            halign = Gtk.Align.START
-        };
+        header_title = new Gtk.Label (mount_name);
 
         create_header_title ();
 
