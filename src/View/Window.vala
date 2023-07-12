@@ -990,8 +990,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         sidebar_width = int.max (sidebar_width, min_width);
         Files.app_settings.set_int ("sidebar-width", sidebar_width);
 
+        var state = get_window ().get_state ();
         // TODO: replace with Gtk.Window.fullscreened in Gtk4
-        if (is_maximized || Gdk.WindowState.FULLSCREEN in get_window ().get_state ()) {
+        if (is_maximized || Gdk.WindowState.FULLSCREEN in state) {
             Files.app_settings.set_enum (
                 "window-state", Files.WindowState.MAXIMIZED
             );
@@ -1000,7 +1001,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 "window-state", Files.WindowState.NORMAL
             );
 
-            if (!(get_style_context ().has_class ("tiled"))) {
+            if (!(Gdk.WindowState.TILED in state)) {
                 int width, height;
                 // Includes shadow for normal windows (but not maximized or tiled)
                 get_size (out width, out height);
