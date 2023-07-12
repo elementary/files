@@ -289,8 +289,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_view.indicator_activated.connect (() => {});
         tab_view.setup_menu.connect (() => {});
 
-        tab_view.close_page.connect ((tab) => {
-            var view_container = (ViewContainer)(tab.child);
+        tab_view.close_page.connect ((page) => {
+            var view_container = (ViewContainer)(page.child);
             // tab.restore_data = view_container.location.get_uri ();
 
             /* If closing tab is current, set current_container to null to ensure
@@ -301,13 +301,13 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             // }
 
             view_container.close ();
-            tab_view.close_page_finish (tab, false); // No need to confirm
+            tab_view.close_page_finish (page, true);
 
-            if (tab_view.n_pages == 1) {
+            if (tab_view.n_pages == 0) {
                 add_tab ();
             }
 
-            return true;
+            return Gdk.EVENT_STOP;
         });
 
         tab_view.page_reordered.connect ((tab, position) => {
