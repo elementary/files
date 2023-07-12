@@ -51,8 +51,9 @@ public class Files.View.VolumePropertiesWindow : AbstractPropertiesDialog {
         }
 
         /* Build the header box */
-        var file_icon = new Gtk.Image ();
-        file_icon.set_from_gicon (mount_icon, Gtk.IconSize.DIALOG);
+        var file_icon = new Gtk.Image.from_gicon (mount_icon, Gtk.IconSize.DIALOG) {
+            pixel_size = 48
+        };
 
         if (file_icon != null) {
             var emblems_list = new GLib.List<string> ();
