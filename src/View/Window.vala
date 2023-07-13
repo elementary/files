@@ -205,6 +205,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_bar = new Hdy.TabBar () {
             autohide = false,
             expand_tabs = false,
+            inverted = true,
             start_action_widget = new_tab_button,
             view = tab_view
         };
