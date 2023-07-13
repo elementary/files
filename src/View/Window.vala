@@ -79,20 +79,19 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     public signal void free_space_change ();
 
     public Window (Files.Application application) {
-    // , Gdk.Screen myscreen = Gdk.Screen.get_default ()) {
         Object (
             application: application,
             marlin_app: application,
-            height_request: 300,
-            icon_name: "system-file-manager",
-            // screen: myscreen,
-            title: _(APP_TITLE),
-            width_request: 500,
             window_number: application.window_count
         );
     }
 
     construct {
+        height_request = 300;
+        width_request = 500;
+        icon_name = "system-file-manager";
+        title = _(APP_TITLE);
+
         add_action_entries (WIN_ENTRIES, this);
         undo_actions_set_insensitive ();
 
