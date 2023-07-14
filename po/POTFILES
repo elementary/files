@@ -98,7 +98,6 @@ src/View/Sidebar/VolumelessMountRow.vala
 src/View/Widgets/AbstractEditableLabel.vala
 src/View/Widgets/AppMenu.vala
 src/View/Widgets/BreadcrumbsEntry.vala
-src/View/Widgets/HeaderBar.vala
 src/View/Widgets/LocationBar.vala
 src/View/Widgets/MultiLineEditableLabel.vala
 src/View/Widgets/OverlayBar.vala
