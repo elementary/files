@@ -613,9 +613,9 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
             n++;
         }
 
-        if (only_one && file.info.get_is_symlink ()) {
+        if (only_one && file.info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_SYMLINK)) {
             var key_label = make_key_label (_("Target:"));
-            var value_label = make_value_label (file.info.get_symlink_target ());
+            var value_label = make_value_label (file.info.get_attribute_byte_string (GLib.FileAttribute.STANDARD_SYMLINK_TARGET));
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;

@@ -2583,7 +2583,8 @@ namespace Files {
                 GLib.FileInfo? info = enumerator.next_file (null);
 
                 while (count < MAX_TEMPLATES && (info != null)) {
-                    if (!info.get_is_hidden () && !info.get_is_backup ()) {
+                    if (!info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_HIDDEN) &&
+                        !info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_BACKUP)) {
                         location = template_folder.get_child (info.get_name ());
                         if (info.get_file_type () == GLib.FileType.DIRECTORY) {
                             folder_list.prepend (location);

@@ -58,7 +58,7 @@ public class Files.TrashMonitor : GLib.Object {
         try {
             var attribs = GLib.FileAttribute.STANDARD_ICON + "," + GLib.FileAttribute.TRASH_ITEM_COUNT;
             var info = yield trash_file.query_info_async (attribs, GLib.FileQueryInfoFlags.NONE);
-            var new_icon = info.get_icon ();
+            var new_icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
             if (new_icon != null) {
                 icon = new_icon;
             }

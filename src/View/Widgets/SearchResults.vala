@@ -63,8 +63,8 @@ namespace Files.View.Chrome {
             public Match (FileInfo info, string path_string, GLib.File parent, SearchResults.Category category) {
                 var _name = info.get_display_name ();
                 Object (name: Markup.escape_text (_name),
-                        mime: info.get_content_type (),
-                        icon: info.get_icon (),
+                        mime: info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE),
+                        icon: info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon,
                         path_string: path_string,
                         file: parent.resolve_relative_path (info.get_name ()),
                         sortkey: category.to_string () + _name);
@@ -991,7 +991,7 @@ namespace Files.View.Chrome {
                        (info = enumerator.next_file (null)) != null &&
                        category_count < max_results) {
 
-                    if (info.get_is_hidden () && !include_hidden) {
+                    if (info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_HIDDEN) && !include_hidden) {
                         continue;
                     }
 
