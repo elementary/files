@@ -165,13 +165,13 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     private void build_window () {
-        button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic");
+        button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic") {
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"))
+        };
 
-        button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
-
-        button_forward = new View.Chrome.ButtonWithMenu ("go-next-symbolic");
-
-        button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
+        button_forward = new View.Chrome.ButtonWithMenu ("go-next-symbolic") {
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"))
+        };
 
         view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
             margin_end = 20
