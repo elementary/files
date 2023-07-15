@@ -56,12 +56,15 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     public Gtk.Builder ui;
     public Files.Application marlin_app { get; construct; }
     private unowned UndoManager undo_manager;
-    public Chrome.HeaderBar top_menu;
+    public Gtk.HeaderBar headerbar;
     public Chrome.ViewSwitcher view_switcher;
     public Adw.TabView tab_view;
     public Adw.TabBar tab_bar;
     private Gtk.Paned lside_pane;
     public SidebarInterface sidebar;
+    private Chrome.ButtonWithMenu button_forward;
+    private Chrome.ButtonWithMenu button_back;
+    private Chrome.LocationBar? location_bar;
 
     public ViewContainer? current_container {
         get {
@@ -70,6 +73,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         }
     }
 
+    private bool locked_focus { get; set; default = false; }
     private bool tabs_restored = false;
     private int restoring_tabs = 0;
     private bool doing_undo_redo = false;
@@ -140,7 +144,6 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         }
 
         build_window ();
-        connect_signals ();
 
         int width, height;
         Files.app_settings.get ("window-size", "(ii)", out width, out height);
@@ -162,12 +165,39 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     private void build_window () {
-        view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode"));
+        button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic");
+
+        button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
+
+        button_forward = new View.Chrome.ButtonWithMenu ("go-next-symbolic");
+
+        button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
+
+        view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
+            margin_end = 20
+        };
         view_switcher.set_mode (Files.app_settings.get_enum ("default-viewmode"));
 
-        top_menu = new Chrome.HeaderBar (view_switcher) {
-            custom_title = new Gtk.Label (null)
+        location_bar = new Chrome.LocationBar ();
+
+        var app_menu = new AppMenu ();
+
+        var menu_button = new Gtk.MenuButton () {
+            icon_name = "open-menu",
+            popover = app_menu,
+            primary = true,
+            tooltip_text = _("Menu")
         };
+        menu_button.get_first_child ().add_css_class (Granite.STYLE_CLASS_LARGE_ICONS);
+
+        headerbar = new Gtk.HeaderBar () {
+            title_widget = new Gtk.Label (null)
+        };
+        headerbar.pack_start (button_back);
+        headerbar.pack_start (button_forward);
+        headerbar.pack_start (view_switcher);
+        headerbar.pack_start (location_bar);
+        headerbar.pack_end (menu_button);
 
         tab_view = new Adw.TabView ();
         // .with_accellabels (
@@ -201,7 +231,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         };
 
         var box = new Gtk.Box (VERTICAL, 0);
-        box.append (top_menu);
+        box.append (headerbar);
         box.append (lside_pane);
 
         child = box;
@@ -214,28 +244,54 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
-    }
 
-    private void connect_signals () {
         /*/
         /* Connect and abstract signals to local ones
         /*/
 
-        top_menu.escape.connect (grab_focus);
-        top_menu.path_change_request.connect ((loc, flag) => {
-            current_container.is_frozen = false;
-            uri_path_change_request (loc, flag);
+        view_switcher.action.activate.connect ((id) => {
+            switch ((ViewMode)(id.get_uint32 ())) {
+                case ViewMode.ICON:
+                    app_menu.on_zoom_setting_changed (Files.icon_view_settings, "zoom-level");
+                    break;
+                case ViewMode.LIST:
+                    app_menu.on_zoom_setting_changed (Files.list_view_settings, "zoom-level");
+                    break;
+                case ViewMode.MILLER_COLUMNS:
+                    app_menu.on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
+                    break;
+            }
         });
-        top_menu.focus_location_request.connect ((loc) => {
+
+
+        button_forward.slow_press.connect (() => {
+            activate_action ("forward", new Variant.int32 (1));
+        });
+
+        button_back.slow_press.connect (() => {
+            activate_action ("back", new Variant.int32 (1));
+        });
+
+        location_bar.escape.connect (grab_focus);
+
+        location_bar.path_change_request.connect ((path, flag) => {
+            current_container.is_frozen = false;
+            uri_path_change_request (path, flag);
+        });
+
+        location_bar.focus_file_request.connect ((loc) => {
             current_container.focus_location_if_in_current_directory (loc, true);
         });
-        // top_menu.focus_in_event.connect (() => {
-        //     current_tab.is_frozen = true;
-        //     return true;
+
+        //TODO Implement focus tracking for Gtk4 if required
+        // headerbar.focus_in_event.connect ((event) => {
+        //     locked_focus = true;
+        //     return focus_in_event (event);
         // });
-        // top_menu.focus_out_event.connect (() => {
-        //     current_tab.is_frozen = false;
-        //     return true;
+
+        // headerbar.focus_out_event.connect ((event) => {
+        //     locked_focus = false;
+        //     return focus_out_event (event);
         // });
 
         undo_manager.request_menu_update.connect (update_undo_actions);
@@ -259,12 +315,11 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         //     return false;
         // });
 
-
         //TODO Rewrite for Gtk4
         var surface = get_surface ();
         surface.layout.connect ((w, h) => {
             if (((Gdk.Toplevel)surface).state == Gdk.ToplevelState.MINIMIZED) {
-                top_menu.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
+                location_bar.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
             }
         });
 
@@ -285,11 +340,11 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             var view_container = (ViewContainer)(tab.child);
             // tab.restore_data = view_container.location.get_uri ();
 
-            /* If closing tab is current, set current_tab to null to ensure
+            /* If closing tab is current, set current_container to null to ensure
              * closed ViewContainer is destroyed. It will be reassigned in tab_changed
              */
-            // if (view_container == current_tab) {
-            //     current_tab = null;
+            // if (view_container == current_container) {
+            //     current_container = null;
             // }
 
             view_container.close ();
@@ -339,7 +394,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         tab_view.page_detached.connect (on_page_detached);
 
         sidebar.request_focus.connect (() => {
-            return !current_container.locked_focus && !top_menu.locked_focus;
+            return !current_container.locked_focus && !locked_focus;
         });
 
         sidebar.sync_needed.connect (() => {
@@ -382,7 +437,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         loading_uri (current_container.uri);
         current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
         sidebar.sync_uri (current_container.uri);
-        top_menu.working = current_container.is_frozen;
+        location_bar.sensitive = !current_container.is_frozen;
         save_active_tab_position ();
     }
 
@@ -489,14 +544,15 @@ public class Files.View.Window : Gtk.ApplicationWindow {
             }
 
             content.working = is_loading;
-            update_top_menu ();
+            update_headerbar ();
+
             if (restoring_tabs == 0 && !is_loading) {
                 save_tabs ();
             }
         });
 
         content.active.connect (() => {
-            update_top_menu ();
+            update_headerbar ();
         });
 
         if (!location.equal (_location)) {
@@ -724,7 +780,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     private void action_edit_path () {
-        top_menu.enter_navigate_mode ();
+        location_bar.enter_navigate_mode ();
     }
 
     private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
@@ -744,9 +800,9 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         }
 
         if (param == null) {
-            top_menu.enter_search_mode ();
+            location_bar.enter_search_mode ("");
         } else {
-            top_menu.enter_search_mode (param.get_string ());
+            location_bar.enter_search_mode (param.get_string ());
         }
     }
 
@@ -1019,7 +1075,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         save_geometries ();
         save_tabs ();
 
-        top_menu.destroy (); /* stop unwanted signals if quit while pathbar in focus */
+        headerbar.destroy (); /* stop unwanted signals if quit while pathbar in focus */
 
         tab_view.page_detached.disconnect (on_page_detached); /* Avoid infinite loop */
 
@@ -1168,7 +1224,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         }
 
         /* Render the final path in the location bar without animation */
-        top_menu.update_location_bar (path, false);
+        update_location_bar (path, false);
         return restoring_tabs;
     }
 
@@ -1202,17 +1258,17 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         }
     }
 
-    private void update_top_menu () {
+    private void update_headerbar () {
         if (restoring_tabs > 0 || current_container == null) {
             return;
         }
 
         /* Update browser buttons */
-        top_menu.set_back_menu (current_container.get_go_back_path_list ());
-        top_menu.set_forward_menu (current_container.get_go_forward_path_list ());
-        top_menu.can_go_back = current_container.can_go_back;
-        top_menu.can_go_forward = (current_container.can_show_folder && current_container.can_go_forward);
-        top_menu.working = current_container.is_loading;
+        set_back_menu (current_container.get_go_back_path_list ());
+        set_forward_menu (current_container.get_go_forward_path_list ());
+        button_back.sensitive = current_container.can_go_back;
+        button_forward.sensitive = (current_container.can_show_folder && current_container.can_go_forward);
+        location_bar.sensitive = !current_container.is_loading;
 
         /* Update viewmode switch, action state and settings */
         var mode = current_container.view_mode;
@@ -1222,10 +1278,46 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         Files.app_settings.set_enum ("default-viewmode", mode);
     }
 
+    private void set_back_menu (Gee.List<string> path_list) {
+        /* Clear the back menu and re-add the correct entries. */
+        var back_menu = new Menu ();
+        for (int i = 0; i < path_list.size; i++) {
+            var path = path_list.@get (i);
+            var item = new MenuItem (
+                FileUtils.sanitize_path (path, null, false),
+                Action.print_detailed_name ("win.back", new Variant.int32 (i + 1))
+            );
+            back_menu.append_item (item);
+        }
+
+        button_back.menu = back_menu;
+    }
+
+    private void set_forward_menu (Gee.List<string> path_list) {
+        /* Same for the forward menu */
+        var forward_menu = new Menu ();
+        for (int i = 0; i < path_list.size; i++) {
+            var path = path_list.@get (i);
+            var item = new MenuItem (
+                FileUtils.sanitize_path (path, null, false),
+                Action.print_detailed_name ("win.forward", new Variant.int32 (i + 1))
+            );
+            forward_menu.append_item (item);
+        }
+
+        button_forward.menu = forward_menu;
+    }
+
+    private void update_location_bar (string new_path, bool with_animation = true) {
+        location_bar.with_animation = with_animation;
+        location_bar.set_display_path (new_path);
+        location_bar.with_animation = true;
+    }
+
     private void update_labels (string uri) {
         if (current_container != null) { /* Can happen during restore */
             set_title (current_container.tab_name); /* Not actually visible on elementaryos */
-            top_menu.update_location_bar (uri);
+            update_location_bar (uri);
             sidebar.sync_uri (uri);
         }
     }
