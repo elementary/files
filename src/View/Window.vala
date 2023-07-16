@@ -53,7 +53,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    public ViewContainer? current_container {
+    private ViewContainer? current_container {
         get {
             if (tab_view.selected_page != null) {
                 return (ViewContainer) tab_view.selected_page.child;
