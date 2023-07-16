@@ -207,21 +207,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         headerbar.pack_start (location_bar);
         headerbar.pack_end (menu_button);
 
-        var close_tab_section = new Menu ();
-        close_tab_section.append (_("Close Other Tabs"), null);
-        close_tab_section.append (_("Close Tabs to the Right"), null);
-        close_tab_section.append (_("Close Tab"), "win.tab::CLOSE");
-
-        var open_tab_section = new Menu ();
-        open_tab_section.append (_("Open in New Window"), "win.tab::WINDOW");
-        open_tab_section.append (_("Duplicate Tab"), "win.tab::TAB");
-
-        var tab_menu = new Menu ();
-        tab_menu.append_section (null, close_tab_section);
-        tab_menu.append_section (null, open_tab_section);
-
         tab_view = new Hdy.TabView () {
-            menu_model = tab_menu
+            menu_model = new Menu ()
         };
 
         var app_instance = (Gtk.Application)(GLib.Application.get_default ());
@@ -355,13 +342,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             return false;
         });
 
-        // tabs.new_tab_requested.connect (() => {
-        //     add_tab ();
-        // });
-
         //TODO Implement handlers for new signals
         tab_view.indicator_activated.connect (() => {});
-        tab_view.setup_menu.connect (() => {});
+
+        tab_view.setup_menu.connect (tab_view_setup_menu);
 
         tab_view.close_page.connect ((page) => {
             var view_container = (ViewContainer)(page.child);
@@ -429,6 +413,28 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         sidebar.path_change_request.connect (uri_path_change_request);
         sidebar.connect_server_request.connect (connect_to_server);
+    }
+
+    private void tab_view_setup_menu (Hdy.TabPage? page) {
+        if (page == null) {
+            return;
+        }
+
+        var tab_menu = (Menu) tab_view.menu_model;
+        tab_menu.remove_all ();
+
+        // TODO: Set up actions for this page specifically
+        var close_tab_section = new Menu ();
+        close_tab_section.append (_("Close Other Tabs"), null);
+        close_tab_section.append (_("Close Tabs to the Right"), null);
+        close_tab_section.append (_("Close Tab"), "win.tab::CLOSE");
+
+        var open_tab_section = new Menu ();
+        open_tab_section.append (_("Open in New Window"), "win.tab::WINDOW");
+        open_tab_section.append (_("Duplicate Tab"), "win.tab::TAB");
+
+        tab_menu.append_section (null, close_tab_section);
+        tab_menu.append_section (null, open_tab_section);
     }
 
     private void on_page_detached () {
