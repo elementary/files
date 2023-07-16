@@ -475,20 +475,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void change_tab (Hdy.TabPage page) {
-        ViewContainer? old_tab = current_container;
-        tab_view.selected_page = page;
-
-        if (current_container == null || old_tab == current_container) {
-            return;
-        }
-
         if (restoring_tabs > 0) { //Return if some restored tabs still loading
             return;
-        }
-
-        if (old_tab != null) {
-            old_tab.set_active_state (false);
-            old_tab.is_frozen = false;
         }
 
         loading_uri (current_container.uri);
@@ -565,7 +553,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         var content = new View.ViewContainer (this);
 
         var page = tab_view.append (content);
-        tab_view.selected_page = page;
 
         content.tab_name_changed.connect ((tab_name) => {
             check_for_tabs_with_same_name ();
@@ -600,6 +587,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         } else {
             content.add_view (mode, location);
         }
+
+        tab_view.selected_page = page;
     }
 
     private int location_is_duplicate (GLib.File location, out bool is_child) {
@@ -1312,8 +1301,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         debug ("Mount %s removed", mount.get_name ());
         GLib.File root = mount.get_root ();
 
-        for (uint i = 0; i < tab_view.get_pages ().get_n_items (); i++) {
-        // foreach (var page in tab_view.get_children ()) {
+        for (uint i = 0; i < tab_view.n_pages; i++) {
             var view_container = (View.ViewContainer)(tab_view.get_pages ().get_item (i)) ;
             GLib.File location = view_container.location;
 
