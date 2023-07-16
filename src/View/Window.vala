@@ -367,8 +367,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         });
 
         tab_view.page_attached.connect ((tab, pos) => {
-            var vc = (ViewContainer)(tab.child) ;
-            vc.window = this;
+            var view_container = (ViewContainer) tab.child;
+            view_container.window = this;
         });
 
         tab_view.page_detached.connect (on_page_detached);
@@ -620,10 +620,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     /** Compare every tab label with every other and resolve ambiguities **/
     private void check_for_tabs_with_same_name () {
-        // Take list copy so foreach clauses can be nested safely
-        // var copy_tabs = tab_view.tabs.copy ();
         for (uint i = 0; i < tab_view.n_pages; i++) {
-        // foreach (unowned var tab in tab_view.tabs) {
             var tab = (Hdy.TabPage)(tab_view.get_pages ().get_item (i));
             unowned var content = (ViewContainer)(tab.child);
             if (content.tab_name == Files.INVALID_TAB_NAME) {
@@ -651,8 +648,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             for (uint j = 0; j < tab_view.n_pages; j++) {
                 var tab2 = (Hdy.TabPage)(tab_view.get_pages ().get_item (j));
                 unowned var content2 = (ViewContainer)(tab2.child);
-            // foreach (unowned var tab2 in copy_tabs) {
-                // var content2 = (ViewContainer)(tab2.page);
                 if (content2 == content || content2.tab_name == Files.INVALID_TAB_NAME) {
                     continue;
                 }
@@ -709,12 +704,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     public void remove_content (ViewContainer view_container) {
-        for (uint i = 0; i < tab_view.n_pages; i++) {
-            var tab = (Hdy.TabPage)(tab_view.get_pages ().get_item (i));
-            if (tab.child == view_container) {
-                remove_tab (tab);
-                break;
-            }
+        if (view_container.parent != null && view_container.parent is Hdy.TabPage) {
+            remove_tab ((Hdy.TabPage) view_container.parent);
         }
     }
 
