@@ -64,7 +64,7 @@ class PF.ChooseAppDialog : Object {
                     var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
                                                         FileQueryInfoFlags.NONE, null);
 
-                    app.set_as_default_for_type (info.get_content_type ());
+                    app.set_as_default_for_type (info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE));
                 }
                 catch (GLib.Error error) {
                     critical ("Could not set as default: %s", error.message);

@@ -38,7 +38,7 @@ namespace Files {
                 var subject = new Zeitgeist.Subject ();
                 subject.current_uri = subject.uri = uri;
                 subject.text = info.get_display_name ();
-                subject.mimetype = info.get_content_type ();
+                subject.mimetype = info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE);
                 subject.origin = Path.get_dirname (uri);
                 subject.manifestation = Zeitgeist.NFO.FILE_DATA_OBJECT;
                 subject.interpretation = Zeitgeist.NFO.FOLDER;
