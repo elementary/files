@@ -342,21 +342,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             return false;
         });
 
-        //TODO Implement handlers for new signals
-        tab_view.indicator_activated.connect (() => {});
-
         tab_view.setup_menu.connect (tab_view_setup_menu);
 
         tab_view.close_page.connect ((page) => {
-            var view_container = (ViewContainer)(page.child);
+            var view_container = (ViewContainer) page.child;
             // tab.restore_data = view_container.location.get_uri ();
-
-            /* If closing tab is current, set current_container to null to ensure
-             * closed ViewContainer is destroyed. It will be reassigned in tab_changed
-             */
-            // if (view_container == current_container) {
-            //     current_container = null;
-            // }
 
             view_container.close ();
             tab_view.close_page_finish (page, true);
@@ -368,31 +358,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             return Gdk.EVENT_STOP;
         });
 
-        tab_view.page_reordered.connect ((tab, position) => {
-            change_tab (position);
+        tab_view.notify["selected-page"].connect (() => {
+            change_tab (tab_view.selected_page);
         });
 
-        //TODO Implement in Gtk4 (Signal absent in TabBar)
-        // tab_view.tab_restored.connect ((label, restore_data, icon) => {
-        //     add_tab_by_uri (restore_data);
-        // });
-
-        //TODO Implement in Gtk4 (Signal absent in TabBar)
-        // tab_view.tab_duplicated.connect ((tab) => {
-        //     add_tab_by_uri (((ViewContainer)(tab.child)).uri);
-        // });
-
-        //TODO Reimplement in Gtk4
         tab_view.create_window.connect (() => {
-            // /* Called when tab dragged out of notebook */
-            // var vc = (ViewContainer)(tab.page) ;
-            // /* Close view now to disconnect signal handler closures which can trigger after slot destruction */
-            // vc.close ();
-
-            // marlin_app.create_window (vc.location, real_mode (vc.view_mode));
-
-            // /* remove_tab function uses Idle loop to close tab */
-            // remove_tab (tab);
             return marlin_app.create_window ().tab_view;
         });
 
@@ -504,9 +474,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         this.title = title;
     }
 
-    private void change_tab (int offset) {
+    private void change_tab (Hdy.TabPage page) {
         ViewContainer? old_tab = current_container;
-        tab_view.selected_page = tab_view.get_nth_page (offset);
+        tab_view.selected_page = page;
 
         if (current_container == null || old_tab == current_container) {
             return;
@@ -581,7 +551,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             var existing_tab_position = location_is_duplicate (location, out is_child);
             if (existing_tab_position >= 0) {
                 tab_view.selected_page = tab_view.get_nth_page (existing_tab_position);
-                change_tab (existing_tab_position);
 
                 if (is_child) {
                     /* Select the child  */
@@ -594,29 +563,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         mode = real_mode (mode);
         var content = new View.ViewContainer (this);
-        // var tab = new Hdy.TabPage ()
-        // .with_accellabels (
-        //     "",
-        //     null,
-        //     content,
-        //     new Granite.AccelLabel (_("Close Tab"), "<Ctrl>w"),
-        //     new Granite.AccelLabel (_("Duplicate Tab"), "<Ctrl><Alt>t"),
-        //     new Granite.AccelLabel (_("Open in New Window"), "<Ctrl><Alt>n")
-        // )
-        // {
-        //     child = content
-        // };
 
-        // change_tab ((int)tab_view.insert_tab (tab, -1));
-        var tab = tab_view.append (content);
-        tab_view.selected_page = tab;
-        /* Capturing ViewContainer object reference in closure prevents its proper destruction
-         * so capture its unique id instead */
-        // var id = content.id;
+        var page = tab_view.append (content);
+        tab_view.selected_page = page;
 
         content.tab_name_changed.connect ((tab_name) => {
             check_for_tabs_with_same_name ();
-            // set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
         });
 
         content.loading.connect ((is_loading) => {
@@ -631,7 +583,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 }
             }
 
-            content.working = is_loading;
+            page.loading = is_loading;
             update_headerbar ();
 
             if (restoring_tabs == 0 && !is_loading) {
@@ -857,7 +809,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void action_reload () {
         /* avoid spawning reload when key kept pressed */
-        if (current_container.working) {
+        if (tab_view.selected_page.loading) {
             warning ("Too rapid reloading suppressed");
             return;
         }

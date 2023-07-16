@@ -28,7 +28,6 @@ namespace Files.View {
         public Gtk.Widget? content_item;
         public bool can_show_folder { get; private set; default = false; }
         private View.Window? _window = null;
-        public bool working { get; set; }
         public View.Window window {
             get {
                 return _window;
