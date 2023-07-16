@@ -420,21 +420,76 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             return;
         }
 
+        var action_close = new SimpleAction ("tabmenu-close", null);
+        var action_close_end = new SimpleAction ("tabmenu-close-end", null);
+        var action_close_others = new SimpleAction ("tabmenu-close-others", null);
+        var action_duplicate = new SimpleAction ("tabmenu-duplicate", null);
+        var action_new_window = new SimpleAction ("tabmenu-new-window", null);
+
+        add_action (action_close);
+        add_action (action_close_end);
+        add_action (action_close_others);
+        add_action (action_duplicate);
+        add_action (action_new_window);
+
+        marlin_app.set_accels_for_action ("win.tabmenu-close", {"<Ctrl>W"});
+        marlin_app.set_accels_for_action ("win.tabmenu-duplicate", {"<Ctrl><Alt>T"});
+        marlin_app.set_accels_for_action ("win.tabmenu-new-window", {"<Ctrl><Alt>N"});
+
         var tab_menu = (Menu) tab_view.menu_model;
         tab_menu.remove_all ();
 
-        // TODO: Set up actions for this page specifically
         var close_tab_section = new Menu ();
-        close_tab_section.append (_("Close Other Tabs"), null);
-        close_tab_section.append (_("Close Tabs to the Right"), null);
-        close_tab_section.append (_("Close Tab"), "win.tab::CLOSE");
+        close_tab_section.append (_("Close Other Tabs"), "win.tabmenu-close-others");
+        /// TRANSLATORS: For RTL this should be "to the left"
+        close_tab_section.append (_("Close Tabs to the Right"), "win.tabmenu-close-end");
+        close_tab_section.append (_("Close Tab"), "win.tabmenu-close");
 
         var open_tab_section = new Menu ();
-        open_tab_section.append (_("Open in New Window"), "win.tab::WINDOW");
-        open_tab_section.append (_("Duplicate Tab"), "win.tab::TAB");
+        open_tab_section.append (_("Open in New Window"), "win.tabmenu-new-window");
+        open_tab_section.append (_("Duplicate Tab"), "win.tabmenu-duplicate");
 
         tab_menu.append_section (null, close_tab_section);
         tab_menu.append_section (null, open_tab_section);
+
+        action_close.activate.connect (() => {
+            remove_tab (page);
+        });
+
+        var tab_position = tab_view.get_page_position (page) + 1;
+        if (tab_position == tab_view.n_pages) {
+            action_close_end.set_enabled (false);
+        } else {
+            action_close_end.activate.connect (() => {
+                for (var i = tab_position; i < tab_view.n_pages; i++) {
+                    remove_tab (tab_view.get_nth_page (i));
+                }
+            });
+        }
+
+        if (tab_view.n_pages == 1) {
+            action_close_others.set_enabled (false);
+        } else {
+            action_close_others.activate.connect (() => {
+                for (var i = 0; i < tab_view.n_pages; i++) {
+                    if (tab_view.get_nth_page (i) == page) {
+                        continue;
+                    }
+
+                    remove_tab (tab_view.get_nth_page (i));
+                }
+            });
+        }
+
+        action_duplicate.activate.connect (() => {
+            var view_container = (ViewContainer) page.child;
+            add_tab (view_container.location, view_container.view_mode);
+        });
+
+        action_new_window.activate.connect (() => {
+            var view_container = (ViewContainer) page.child;
+            add_window (view_container.location, view_container.view_mode);
+        });
     }
 
     private void on_page_detached () {
