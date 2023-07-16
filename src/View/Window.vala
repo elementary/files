@@ -439,18 +439,18 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         var tab_menu = (Menu) tab_view.menu_model;
         tab_menu.remove_all ();
 
-        var close_tab_section = new Menu ();
-        close_tab_section.append (_("Close Other Tabs"), "win.tabmenu-close-others");
-        /// TRANSLATORS: For RTL this should be "to the left"
-        close_tab_section.append (_("Close Tabs to the Right"), "win.tabmenu-close-end");
-        close_tab_section.append (_("Close Tab"), "win.tabmenu-close");
-
         var open_tab_section = new Menu ();
         open_tab_section.append (_("Open in New Window"), "win.tabmenu-new-window");
         open_tab_section.append (_("Duplicate Tab"), "win.tabmenu-duplicate");
 
-        tab_menu.append_section (null, close_tab_section);
+        var close_tab_section = new Menu ();
+        close_tab_section.append (_("Close Tabs to the Right"), "win.tabmenu-close-end");
+        close_tab_section.append (_("Close Other Tabs"), "win.tabmenu-close-others");
+        /// TRANSLATORS: For RTL this should be "to the left"
+        close_tab_section.append (_("Close Tab"), "win.tabmenu-close");
+
         tab_menu.append_section (null, open_tab_section);
+        tab_menu.append_section (null, close_tab_section);
 
         action_close.activate.connect (() => {
             remove_tab (page);
