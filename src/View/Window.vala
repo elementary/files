@@ -55,8 +55,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     public ViewContainer? current_container {
         get {
-            return tab_view.selected_page != null ?
-                (ViewContainer)(tab_view.selected_page.child) : null;
+            if (tab_view.selected_page != null) {
+                return (ViewContainer) tab_view.selected_page.child;
+            }
+
+            return null;
         }
     }
 
@@ -793,7 +796,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void action_reload () {
         /* avoid spawning reload when key kept pressed */
-        if (((ViewContainer)(tab_view.selected_page.child)).working) {
+        if (current_container.working) {
             warning ("Too rapid reloading suppressed");
             return;
         }
@@ -802,7 +805,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
-        if (current_container == null) { // can occur during startup
+        if (tab_view == null || current_container == null) { // can occur during startup
             return;
         }
 
