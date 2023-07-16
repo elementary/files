@@ -222,11 +222,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             _("New Tab")
         );
 
-        var tab_history_menu = new Menu ();
-
         var tab_history_button = new Gtk.MenuButton () {
             image = new Gtk.Image.from_icon_name ("document-open-recent-symbolic", MENU),
-            menu_model = tab_history_menu,
             tooltip_text = _("Closed Tabs"),
             use_popover = false
         };
@@ -357,8 +354,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_view.close_page.connect ((page) => {
             var view_container = (ViewContainer) page.child;
 
+            if (tab_history_button.menu_model == null) {
+                tab_history_button.menu_model = new Menu ();
+            }
+
             var path = view_container.location.get_uri ();
-            tab_history_menu.append (
+            ((Menu) tab_history_button.menu_model).append (
                 FileUtils.sanitize_path (path, null, false),
                 null
             );
