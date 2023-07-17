@@ -632,8 +632,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         int existing_position = 0;
 
         for (uint i = 0; i < tab_view.n_pages; i++) {
-            var tab = (Hdy.TabPage)(tab_view.get_pages ().get_item (i));
-            var tab_location = ((ViewContainer)(tab.child)).location;
+            var tab = (Hdy.TabPage) tab_view.get_pages ().get_item (i);
+            var tab_location = ((ViewContainer) tab.child).location;
             string tab_uri = tab_location.get_uri ();
 
             if (FileUtils.same_location (uri, tab_uri)) {
@@ -652,8 +652,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     /** Compare every tab label with every other and resolve ambiguities **/
     private void check_for_tabs_with_same_name () {
         for (uint i = 0; i < tab_view.n_pages; i++) {
-            var tab = (Hdy.TabPage)(tab_view.get_pages ().get_item (i));
-            unowned var content = (ViewContainer)(tab.child);
+            var tab = (Hdy.TabPage) tab_view.get_pages ().get_item (i);
+            unowned var content = (ViewContainer) tab.child;
             if (content.tab_name == Files.INVALID_TAB_NAME) {
                 set_tab_label (content.tab_name, tab, content.tab_name);
                 continue;
@@ -677,8 +677,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
             // Compare with every other tab for same label
             for (uint j = 0; j < tab_view.n_pages; j++) {
-                var tab2 = (Hdy.TabPage)(tab_view.get_pages ().get_item (j));
-                unowned var content2 = (ViewContainer)(tab2.child);
+                var tab2 = (Hdy.TabPage) tab_view.get_pages ().get_item (j);
+                unowned var content2 = (ViewContainer) tab2.child;
                 if (content2 == content || content2.tab_name == Files.INVALID_TAB_NAME) {
                     continue;
                 }
@@ -1089,8 +1089,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_view.page_detached.disconnect (on_page_detached); /* Avoid infinite loop */
 
         for (uint i = 0; i < tab_view.n_pages; i++) {
-            var tab_page = (Hdy.TabPage)(tab_view.get_pages ().get_item (i));
-            ((View.ViewContainer)(tab_page.child)).close ();
+            var tab_page = (Hdy.TabPage) tab_view.get_pages ().get_item (i);
+            ((View.ViewContainer) tab_page.child).close ();
         }
 
         this.destroy ();
@@ -1137,8 +1137,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
         for (uint i = 0; i < tab_view.n_pages; i++) {
-            var tab = (Hdy.TabPage)(tab_view.get_pages ().get_item (i));
-            var view_container = (ViewContainer)(tab.child) ;
+            var tab = (Hdy.TabPage) tab_view.get_pages ().get_item (i);
+            var view_container = (ViewContainer) tab.child;
 
             /* Do not save if "File does not exist" or "Does not belong to you" */
             if (!view_container.can_show_folder) {
@@ -1340,7 +1340,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         GLib.File root = mount.get_root ();
 
         for (uint i = 0; i < tab_view.n_pages; i++) {
-            var view_container = (View.ViewContainer)(tab_view.get_pages ().get_item (i)) ;
+            var view_container = (View.ViewContainer) tab_view.get_pages ().get_item (i);
             GLib.File location = view_container.location;
 
             if (location == null || location.has_prefix (root) || location.equal (root)) {
