@@ -40,6 +40,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"singleclick-select", null, null, "false", change_state_single_click_select},
         {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
         {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
+        {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"folders-before-files", null, null, "true", change_state_folders_before_files},
         {"forward", action_forward, "i"},
         {"back", action_back, "i"}
@@ -75,6 +76,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private Chrome.ButtonWithMenu button_forward;
     private Chrome.ButtonWithMenu button_back;
     private Chrome.LocationBar? location_bar;
+    private Gtk.MenuButton tab_history_button;
 
     private bool locked_focus { get; set; default = false; }
     private bool tabs_restored = false;
@@ -222,7 +224,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             _("New Tab")
         );
 
-        var tab_history_button = new Gtk.MenuButton () {
+        tab_history_button = new Gtk.MenuButton () {
             image = new Gtk.Image.from_icon_name ("document-open-recent-symbolic", MENU),
             tooltip_text = _("Closed Tabs"),
             use_popover = false
@@ -351,47 +353,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         tab_view.setup_menu.connect (tab_view_setup_menu);
 
-        var action_restore = new SimpleAction ("tabhistory-restore", VariantType.STRING);
-        add_action (action_restore);
-
-        action_restore.activate.connect ((parameter) => {
-            add_tab_by_uri (parameter.get_string ());
-
-            var menu = (Menu) tab_history_button.menu_model;
-            for (var i = 0; i < menu.get_n_items (); i++) {
-                if (parameter == menu.get_item_attribute_value (i, Menu.ATTRIBUTE_TARGET, VariantType.STRING)) {
-                    menu.remove (i);
-                    break;
-                }
-            }
-
-            if (menu.get_n_items () == 0) {
-                tab_history_button.menu_model = null;
-            }
-        });
-
-        tab_view.close_page.connect ((page) => {
-            var view_container = (ViewContainer) page.child;
-
-            if (tab_history_button.menu_model == null) {
-                tab_history_button.menu_model = new Menu ();
-            }
-
-            var path = view_container.location.get_uri ();
-            ((Menu) tab_history_button.menu_model).append (
-                FileUtils.sanitize_path (path, null, false),
-                "win.tabhistory-restore::%s".printf (path)
-            );
-
-            view_container.close ();
-            tab_view.close_page_finish (page, true);
-
-            if (tab_view.n_pages == 0) {
-                add_tab ();
-            }
-
-            return Gdk.EVENT_STOP;
-        });
+        tab_view.close_page.connect (tab_view_close_page);
 
         tab_view.notify["selected-page"].connect (() => {
             change_tab (tab_view.selected_page);
@@ -418,6 +380,40 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         sidebar.path_change_request.connect (uri_path_change_request);
         sidebar.connect_server_request.connect (connect_to_server);
+    }
+
+    private bool tab_view_close_page (Hdy.TabPage page) {
+        var view_container = (ViewContainer) page.child;
+
+        if (tab_history_button.menu_model == null) {
+            tab_history_button.menu_model = new Menu ();
+        }
+
+        var path = view_container.location.get_uri ();
+        var path_in_menu = false;
+        var menu = (Menu) tab_history_button.menu_model;
+        for (var i = 0; i < menu.get_n_items (); i++) {
+            if (path == menu.get_item_attribute_value (i, Menu.ATTRIBUTE_TARGET, VariantType.STRING).get_string ()) {
+                path_in_menu = true;
+                break;
+            }
+        }
+
+        if (!path_in_menu) {
+            menu.append (
+                FileUtils.sanitize_path (path, null, false),
+                "win.tabhistory-restore::%s".printf (path)
+            );
+        }
+
+        view_container.close ();
+        tab_view.close_page_finish (page, true);
+
+        if (tab_view.n_pages == 0) {
+            add_tab ();
+        }
+
+        return Gdk.EVENT_STOP;
     }
 
     private void tab_view_setup_menu (Hdy.TabPage? page) {
@@ -830,6 +826,22 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
         current_container.reload ();
         sidebar.reload ();
+    }
+
+    private void action_tabhistory_restore (SimpleAction action, GLib.Variant? parameter) {
+        add_tab_by_uri (parameter.get_string ());
+
+        var menu = (Menu) tab_history_button.menu_model;
+        for (var i = 0; i < menu.get_n_items (); i++) {
+            if (parameter == menu.get_item_attribute_value (i, Menu.ATTRIBUTE_TARGET, VariantType.STRING)) {
+                menu.remove (i);
+                break;
+            }
+        }
+
+        if (menu.get_n_items () == 0) {
+            tab_history_button.menu_model = null;
+        }
     }
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
