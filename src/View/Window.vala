@@ -586,7 +586,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         var page = tab_view.append (content);
 
         content.tab_name_changed.connect ((tab_name) => {
-            check_for_tabs_with_same_name ();
+            check_for_tabs_with_same_name (); // Also sets tab_label
         });
 
         content.loading.connect ((is_loading) => {
