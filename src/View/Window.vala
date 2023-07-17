@@ -445,9 +445,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         open_tab_section.append (_("Duplicate Tab"), "win.tabmenu-duplicate");
 
         var close_tab_section = new Menu ();
+        /// TRANSLATORS: For RTL this should be "to the left"
         close_tab_section.append (_("Close Tabs to the Right"), "win.tabmenu-close-end");
         close_tab_section.append (_("Close Other Tabs"), "win.tabmenu-close-others");
-        /// TRANSLATORS: For RTL this should be "to the left"
         close_tab_section.append (_("Close Tab"), "win.tabmenu-close");
 
         tab_menu.append_section (null, open_tab_section);
