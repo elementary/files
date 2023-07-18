@@ -360,7 +360,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         });
 
         tab_view.create_window.connect (() => {
-            return marlin_app.create_window ().tab_view;
+            return marlin_app.create_empty_window ().tab_view;
         });
 
         tab_view.page_attached.connect ((tab, pos) => {
@@ -425,23 +425,23 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         var action_close_end = new SimpleAction ("tabmenu-close-end", null);
         var action_close_others = new SimpleAction ("tabmenu-close-others", null);
         var action_duplicate = new SimpleAction ("tabmenu-duplicate", null);
-        var action_new_window = new SimpleAction ("tabmenu-new-window", null);
+        var action_move_to_new_window = new SimpleAction ("tabmenu-move-to-window", null);
 
         add_action (action_close);
         add_action (action_close_end);
         add_action (action_close_others);
         add_action (action_duplicate);
-        add_action (action_new_window);
+        add_action (action_move_to_new_window);
 
         marlin_app.set_accels_for_action ("win.tabmenu-close", {"<Ctrl>W"});
         marlin_app.set_accels_for_action ("win.tabmenu-duplicate", {"<Ctrl><Alt>T"});
-        marlin_app.set_accels_for_action ("win.tabmenu-new-window", {"<Ctrl><Alt>N"});
+        marlin_app.set_accels_for_action ("win.tabmenu-move-to-window", {"<Ctrl><Alt>N"});
 
         var tab_menu = (Menu) tab_view.menu_model;
         tab_menu.remove_all ();
 
         var open_tab_section = new Menu ();
-        open_tab_section.append (_("Open in New Window"), "win.tabmenu-new-window");
+        open_tab_section.append (_("Open in New Window"), "win.tabmenu-move-to-window");
         open_tab_section.append (_("Duplicate Tab"), "win.tabmenu-duplicate");
 
         var close_tab_section = new Menu ();
@@ -487,9 +487,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             add_tab (view_container.location, view_container.view_mode);
         });
 
-        action_new_window.activate.connect (() => {
+        action_move_to_new_window.activate.connect (() => {
             var view_container = (ViewContainer) page.child;
-            add_window (view_container.location, view_container.view_mode);
+            move_content_to_new_window (view_container);
         });
     }
 
@@ -734,9 +734,18 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         return !sidebar.has_favorite_uri (uri);
     }
 
+    private void move_content_to_new_window (ViewContainer view_container) {
+        add_window (view_container.location, view_container.view_mode);
+        remove_content (view_container);
+    }
+
     public void remove_content (ViewContainer view_container) {
-        if (view_container.parent != null && view_container.parent is Hdy.TabPage) {
-            remove_tab ((Hdy.TabPage) view_container.parent);
+        for (int n = 0; n < tab_view.n_pages; n++) {
+            var tab = tab_view.get_nth_page (n);
+            if (tab.get_child () == view_container) {
+                remove_tab (tab);
+                return;
+            }
         }
     }
 
@@ -942,7 +951,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 break;
 
             case "WINDOW":
-                tab_view.create_window ();
+                //Move current tab to a new window
+                move_content_to_new_window (current_container);
                 break;
 
             default:
