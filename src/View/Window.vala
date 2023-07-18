@@ -425,7 +425,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         var action_close_end = new SimpleAction ("tabmenu-close-end", null);
         var action_close_others = new SimpleAction ("tabmenu-close-others", null);
         var action_duplicate = new SimpleAction ("tabmenu-duplicate", null);
-        var action_move_to_new_window = new SimpleAction ("tabmenu-new-window", null);
+        var action_move_to_new_window = new SimpleAction ("tabmenu-move-to-window", null);
 
         add_action (action_close);
         add_action (action_close_end);
@@ -441,7 +441,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_menu.remove_all ();
 
         var open_tab_section = new Menu ();
-        open_tab_section.append (_("Open in New Window"), "win.tabmenu-new-window");
+        open_tab_section.append (_("Open in New Window"), "win.tabmenu-move-to-window");
         open_tab_section.append (_("Duplicate Tab"), "win.tabmenu-duplicate");
 
         var close_tab_section = new Menu ();
