@@ -360,7 +360,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         });
 
         tab_view.create_window.connect (() => {
-            return marlin_app.create_window ().tab_view;
+            return marlin_app.create_empty_window ().tab_view;
         });
 
         tab_view.page_attached.connect ((tab, pos) => {
