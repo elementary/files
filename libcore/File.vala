@@ -224,7 +224,7 @@ public class Files.File : GLib.Object {
             return false;
         }
 
-        return info.get_is_symlink ();
+        return info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_SYMLINK);
     }
 
     public bool is_desktop_file () {
@@ -350,7 +350,7 @@ public class Files.File : GLib.Object {
             return null;
         }
 
-        return info.get_symlink_target ();
+        return info.get_attribute_byte_string (GLib.FileAttribute.STANDARD_SYMLINK_TARGET);
     }
 
     public unowned string? get_ftype () {
@@ -447,8 +447,9 @@ public class Files.File : GLib.Object {
 
         /* free previously allocated */
         clear_info ();
-        is_hidden = info.get_is_hidden () || info.get_is_backup ();
-        size = info.get_size ();
+        is_hidden = info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_HIDDEN) ||
+                    info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_BACKUP);
+        size = info.get_attribute_uint64 (GLib.FileAttribute.STANDARD_SIZE);
         file_type = info.get_file_type ();
         is_directory = (file_type == GLib.FileType.DIRECTORY);
         modified = info.get_attribute_uint64 (GLib.FileAttribute.TIME_MODIFIED);

@@ -442,7 +442,7 @@ public class Files.FileChooserPortal : Object {
         if (file.query_file_type (FileQueryInfoFlags.NOFOLLOW_SYMLINKS) == FileType.SYMBOLIC_LINK) {
             try {
                 var info = file.query_info (FileAttribute.STANDARD_SYMLINK_TARGET, FileQueryInfoFlags.NONE);
-                primary = _("This file is a link to “%s”").printf (info.get_symlink_target ());
+                primary = _("This file is a link to “%s”").printf (info.get_attribute_byte_string (GLib.FileAttribute.STANDARD_SYMLINK_TARGET));
             } catch (Error e) {
                 warning ("Could not get info for %s", file.get_uri ());
                 primary = _("This file is a link.");

@@ -146,7 +146,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     }
 
     private void add_to_knowns_queue (Files.File file, FileInfo info) {
-        file.tagstype = info.get_content_type ();
+        file.tagstype = info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE);
         file.update_type ();
 
         knowns.push_head (file);
