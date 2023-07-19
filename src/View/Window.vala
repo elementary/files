@@ -582,12 +582,6 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
         var page = tab_view.append (content);
 
-        // change_tab ((int)tab_view.insert_tab (tab, -1));
-        var tab = tab_view.append (content);
-        tab_view.selected_page = tab;
-        /* Capturing ViewContainer object reference in closure prevents its proper destruction
-         * so capture its unique id instead */
-        // var id = content.id;
         content.tab_name_changed.connect ((tab_name) => {
             check_for_tabs_with_same_name (); // Also sets tab_label
         });
@@ -708,7 +702,7 @@ public class Files.View.Window : Gtk.ApplicationWindow {
     }
 
     /* Just to append "as Administrator" when appropriate */
-    private void set_tab_label (string label, Hdy.TabPage tab, string? tooltip = null) {
+    private void set_tab_label (string label, Adw.TabPage tab, string? tooltip = null) {
         string lab = label;
         if (Files.is_admin ()) {
             lab += (" " + _("(as Administrator)"));
@@ -726,25 +720,6 @@ public class Files.View.Window : Gtk.ApplicationWindow {
 
             tab.tooltip = tt;
         }
-    }
-
-    private string disambiguate_name (string name, string path, string conflict_path) {
-        string prefix = "";
-        string prefix_conflict = "";
-        string path_temp = path;
-        string conflict_path_temp = conflict_path;
-
-        /* Add parent directories until path and conflict path differ */
-        while (prefix == prefix_conflict) {
-            var parent_path= FileUtils.get_parent_path_from_path (path_temp);
-            var parent_conflict_path = FileUtils.get_parent_path_from_path (conflict_path_temp);
-            prefix = Path.get_basename (parent_path) + Path.DIR_SEPARATOR_S + prefix;
-            prefix_conflict = Path.get_basename (parent_conflict_path) + Path.DIR_SEPARATOR_S + prefix_conflict;
-            path_temp= parent_path;
-            conflict_path_temp = parent_conflict_path;
-        }
-
-        return prefix + name;
     }
 
     public void bookmark_uri (string uri, string custom_name = "") {
