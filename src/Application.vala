@@ -298,6 +298,17 @@ public class Files.Application : Gtk.Application {
                                         prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 
+    public View.Window? create_empty_window () {
+        if (this.get_windows ().length () >= MAX_WINDOWS) { //Can be assumed to be limited in length
+            return null;
+        }
+
+        var win = new View.Window (this);
+        add_window (win as Gtk.Window);
+        plugins.interface_loaded (win as Gtk.Widget);
+        return win;
+    }
+
     public View.Window? create_window (GLib.File? location = null,
                                        ViewMode viewmode = ViewMode.PREFERRED) {
 
@@ -308,13 +319,7 @@ public class Files.Application : Gtk.Application {
     private View.Window? create_window_with_tabs (GLib.File[] locations = {},
                                                   ViewMode viewmode = ViewMode.PREFERRED) {
 
-        if (this.get_windows ().length () >= MAX_WINDOWS) { //Can be assumed to be limited in length
-            return null;
-        }
-
-        var win = new View.Window (this);
-        add_window (win as Gtk.Window);
-        plugins.interface_loaded (win as Gtk.Widget);
+        var win = create_empty_window ();
         win.open_tabs (locations, viewmode);
 
         return win;
