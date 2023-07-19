@@ -155,15 +155,14 @@ public class Files.View.Window : Gtk.ApplicationWindow {
         default_width = width;
         default_height = height;
 
-        // if (is_first_window) {
-        //     Files.app_settings.bind ("sidebar-width", lside_pane,
-        //                                "position", SettingsBindFlags.DEFAULT);
+        if (is_first_window) {
+            Files.app_settings.bind ("sidebar-width", lside_pane, "position", DEFAULT);
 
-        //     var state = (Files.WindowState)(Files.app_settings.get_enum ("window-state"));
-        //     if (state == Files.WindowState.MAXIMIZED) {
-        //         maximize ();
-        //     }
-        // }
+            var state = (Files.WindowState)(Files.app_settings.get_enum ("window-state"));
+            if (state == Files.WindowState.MAXIMIZED) {
+                maximize ();
+            }
+        }
 
         loading_uri.connect (update_labels);
         present ();
