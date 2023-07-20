@@ -947,6 +947,11 @@ namespace Files {
             if (select) { /* This true once view finished loading */
                 add_gof_file_to_selection (file);
             }
+
+            // Need to thumbnail new files (after initial load) regardless of their origin
+            if (slot.directory.state == Directory.State.LOADED) {
+                schedule_thumbnail_color_tag_timeout ();
+            }
         }
 
         private void handle_free_space_change () {
@@ -2711,7 +2716,7 @@ namespace Files {
             /* Check all known conditions preventing thumbnailing at earliest possible stage */
             if (thumbnail_source_id != 0 ||
                 !slot.directory.can_open_files ||
-                slot.directory.is_loading ()) {
+                slot.directory.state != Directory.State.LOADED) {
 
                     return;
             }
