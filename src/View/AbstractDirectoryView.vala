@@ -938,10 +938,12 @@ namespace Files {
             }
         }
 
-        private void add_file (Files.File file, Directory dir, bool select = true) {
-            model.add_file (file, dir);
+        // Only called after initial loading finished, in response to files added due to internal or external
+        // file operations
+        private void add_file (Files.File file, Directory dir, bool is_internal = true) {
+            model.insert_sorted (file, dir);
 
-            if (select) { /* This true once view finished loading */
+            if (is_internal) { /* This true once view finished loading */
                 add_gof_file_to_selection (file);
             }
         }
@@ -1018,7 +1020,16 @@ namespace Files {
             /* Assume writability on remote locations */
             /**TODO** Reliably determine writability with various remote protocols.*/
             if (is_writable || !slot.directory.is_local) {
-                start_renaming_file (file_to_rename);
+                // Wait for model to sort before starting to rename.
+                Timeout.add (50, () => {
+                    if (model.sort_pending) {
+                        return Source.CONTINUE;
+                    } else {
+                        start_renaming_file (file_to_rename);
+                        return Source.REMOVE;
+                    }
+                });
+
             } else {
                 warning ("You do not have permission to rename this file");
             }
@@ -1332,8 +1343,8 @@ namespace Files {
         }
 
         private void on_directory_file_loaded (Directory dir, Files.File file) {
-            add_file (file, dir, false); /* Do not select files added during initial load */
-            /* no freespace change signal required */
+            // Do not select or sort files added during initial load.
+            model.add_file (file, dir);
         }
 
         private void on_directory_file_changed (Directory dir, Files.File file) {
@@ -3711,7 +3722,6 @@ namespace Files {
                 critical ("Failed to find rename file in model");
                 return;
             }
-
             /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
             /* The order of the next three lines must not be changed */
             renaming = true;
