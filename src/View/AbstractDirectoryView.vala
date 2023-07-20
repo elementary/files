@@ -327,6 +327,11 @@ namespace Files {
                 view.button_press_event.connect (on_view_button_press_event);
                 view.button_release_event.connect (on_view_button_release_event);
                 view.draw.connect (on_view_draw);
+                view.realize.connect (() => {
+                    if (slot.directory.state == Directory.State.LOADED) {
+                        schedule_thumbnail_color_tag_timeout ();
+                    }
+                });
             }
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
@@ -944,6 +949,10 @@ namespace Files {
             if (select) { /* This true once view finished loading */
                 add_gof_file_to_selection (file);
             }
+
+            if (slot.directory.state == Directory.State.LOADED) {
+                plugins.update_file_info (file);
+            }
         }
 
         private void handle_free_space_change () {
@@ -1360,6 +1369,7 @@ namespace Files {
 
         private void on_directory_file_icon_changed (Directory dir, Files.File file) {
             model.file_changed (file, dir);
+            plugins.update_file_info (file);
             draw_when_idle ();
         }
 
@@ -1411,11 +1421,9 @@ namespace Files {
 
             Idle.add (() => {
                 thaw_tree ();
+                schedule_thumbnail_color_tag_timeout ();
                 return Source.REMOVE;
             });
-
-
-            schedule_thumbnail_color_tag_timeout ();
         }
 
     /** Handle zoom level change */
