@@ -1411,11 +1411,10 @@ namespace Files {
 
             Idle.add (() => {
                 thaw_tree ();
+                // Wait for tree to thaw before thumbnailing else fails to find visible files
+                schedule_thumbnail_color_tag_timeout ();
                 return Source.REMOVE;
             });
-
-
-            schedule_thumbnail_color_tag_timeout ();
         }
 
     /** Handle zoom level change */
