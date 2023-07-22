@@ -37,9 +37,10 @@ public class FileManager1 : Object {
 
     private void open_items_and_folders (string[] uris, string startup_id) throws DBusError, IOError {
         /* The io.elementary.files app will open folder uris as view, other items will cause the parent folder
-         * to open and the item be selected.  Each view will open in a separate tab in one window */
+         * to open and the item be selected.  Each view will open in a separate tab in a new window   They 
+         * will not be remembered or restored */
 
-        StringBuilder sb = new StringBuilder ("io.elementary.files -t");
+        StringBuilder sb = new StringBuilder ("io.elementary.files -n");
         foreach (string s in uris) {
                 sb.append (" ");
                 sb.append (FileManager1.prepare_uri_for_appinfo_create (s));
