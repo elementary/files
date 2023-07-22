@@ -160,7 +160,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         default_height = height;
 
         if (is_first_window) {
-            File.app_settings.changed["restore-tabs"].connect (() => {
+            Files.app_settings.changed["restore-tabs"].connect (() => {
                 // Always honor this setting if changed while Files is running
                 tabs_restored = Files.app_settings.get_boolean ("restore-tabs");
             });
