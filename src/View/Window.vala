@@ -1139,7 +1139,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void save_tabs () {
-        if (!is_first_window) {
+        if (!is_first_window || !tabs_restored) {
             return; //TODO Save all windows
         }
 
