@@ -165,6 +165,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 tabs_restored = Files.app_settings.get_boolean ("restore-tabs");
             });
 
+            Files.Preferences.get_default ().notify["remember-history"].connect (() => {
+                tabs_restored = Files.Preferences.get_default ().remember_history;
+            });
+
             Files.app_settings.bind ("sidebar-width", lside_pane,
                                        "position", SettingsBindFlags.DEFAULT);
 
