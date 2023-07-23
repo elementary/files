@@ -295,24 +295,26 @@ namespace Files {
             return sb.str;
         }
 
+        // Used when dragging a file item
         public static void set_selection_data_from_file_list (Gtk.SelectionData selection_data,
                                                               GLib.List<Files.File> file_list,
                                                               string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
-            set_stringbuilder_from_file_list (sb, file_list, prefix, false);  /* Use escaped paths */
+            set_stringbuilder_from_file_list (sb, file_list, prefix, false); // This will keep the "file://" protocol
             selection_data.@set (selection_data.get_target (),
                                  8,
                                  sb.data);
 
         }
 
+        // Used when copying a file item
         public static void set_selection_text_from_file_list (Gtk.SelectionData selection_data,
                                                               GLib.List<Files.File> file_list,
                                                               string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
-            set_stringbuilder_from_file_list (sb, file_list, prefix, true); /* Use sanitized paths */
+            set_stringbuilder_from_file_list (sb, file_list, prefix, true); // This will remove the "file://" protocol
             sb.truncate (sb.len - 2);  /* Do not want "\r\n" at end when pasting into text*/
             selection_data.set_text (sb.str, (int)(sb.len));
         }
