@@ -48,7 +48,7 @@ namespace Files.FileUtils {
     }
 
     public GLib.File? get_file_for_path (string? path) {
-        string? new_path = sanitize_path (path);
+        string? new_path = sanitize_path (path, null, false);
 
         if (new_path != null && new_path.length > 0) {
             return GLib.File.new_for_commandline_arg (new_path);
@@ -281,8 +281,8 @@ namespace Files.FileUtils {
       **/
 
     public string sanitize_path (string? input_uri,
-                                 string? input_current_uri = null,
-                                 bool include_file_protocol = true) {
+                                 string? input_current_uri,
+                                 bool include_file_protocol) {
         string unsanitized_uri;
         string unsanitized_current_uri;
         string path = "";

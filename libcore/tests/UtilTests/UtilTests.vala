@@ -26,31 +26,31 @@ void add_file_utils_tests () {
     });
 
     Test.add_func ("/FileUtils/sanitize_zero_length_abs_path", () => {
-        assert (Files.FileUtils.sanitize_path ("", null) == "");
+        assert (Files.FileUtils.sanitize_path ("", null, true) == "");
     });
 
     Test.add_func ("/FileUtils/afc_device_root_strip_colon", () => {
         /* Remove extraneous trailing colon-number from afc device name */
         string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb";
-        assert (Files.FileUtils.sanitize_path (afc_device + ":3/") == afc_device);
+        assert (Files.FileUtils.sanitize_path (afc_device + ":3/", null, true) == afc_device);
     });
 
     Test.add_func ("/FileUtils/afc_device_root_no_colon", () => {
         string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb";
-        assert (Files.FileUtils.sanitize_path (afc_device) == afc_device);
+        assert (Files.FileUtils.sanitize_path (afc_device, null, false) == afc_device);
     });
 
     Test.add_func ("/FileUtils/afc_path_strip_colon", () => {
         /* Remove extraneous trailing colon-number from afc device name, but not from folder name */
         string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb";
         var path = "/some/path/with/colon:3";
-        assert (Files.FileUtils.sanitize_path (afc_device + ":3" + path) == afc_device + path);
+        assert (Files.FileUtils.sanitize_path (afc_device + ":3" + path, null, true) == afc_device + path);
     });
 
     Test.add_func ("/FileUtils/afc_device_do_not_strip_colon", () => {
         /* Do not remove colon-nonnumber from afc device name */
         string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb:b";
-        assert (Files.FileUtils.sanitize_path (afc_device) == afc_device);
+        assert (Files.FileUtils.sanitize_path (afc_device, null, false) == afc_device);
     });
 
     Test.add_func ("/FileUtils/sanitize_null_rel_path", () => {
@@ -71,22 +71,22 @@ void add_file_utils_tests () {
 
     Test.add_func ("/FileUtils/sanitize_double_dot", () => {
         string cp = "file:///usr/share";
-        assert (Files.FileUtils.sanitize_path ("../", cp) == "file:///usr");
+        assert (Files.FileUtils.sanitize_path ("../", cp, true) == "file:///usr");
     });
 
     Test.add_func ("/FileUtils/sanitize_double_dot_remote", () => {
         string cp = "afp://user@server/root/folder/subfolder";
-        assert (Files.FileUtils.sanitize_path ("../", cp) == "afp://user@server/root/folder");
+        assert (Files.FileUtils.sanitize_path ("../", cp, false) == "afp://user@server/root/folder");
     });
 
     Test.add_func ("/FileUtils/sanitize_single_dot", () => {
         string cp = "file:///usr/share";
-        assert (Files.FileUtils.sanitize_path ("./", cp) == "file:///usr/share");
+        assert (Files.FileUtils.sanitize_path ("./", cp, true) == "file:///usr/share");
     });
 
     Test.add_func ("/FileUtils/sanitize_ignore_embedded_single_dot", () => {
         string cp = "";
-        assert (Files.FileUtils.sanitize_path ("/home/./user", cp) == "file:///home/./user");
+        assert (Files.FileUtils.sanitize_path ("/home/./user", cp, true) == "file:///home/./user");
     });
 
     Test.add_func ("/FileUtils/sanitize_ignore_embedded_double_dot_strip", () => {
@@ -101,12 +101,12 @@ void add_file_utils_tests () {
 
     Test.add_func ("/FileUtils/sanitize_network_double_dot", () => {
         string cp = "network://";
-        assert (Files.FileUtils.sanitize_path ("../", cp) == "network://");
+        assert (Files.FileUtils.sanitize_path ("../", cp, true) == "network://");
     });
 
     Test.add_func ("/FileUtils/sanitize_remove_excess_slash1", () => {
         string cp = "network:///";
-        assert (Files.FileUtils.sanitize_path ("", cp) == "network://");
+        assert (Files.FileUtils.sanitize_path ("", cp, false) == "network://");
     });
 
     Test.add_func ("/FileUtils/sanitize_remove_excess_slash2", () => {
@@ -116,7 +116,7 @@ void add_file_utils_tests () {
 
     Test.add_func ("/FileUtils/sanitize_remove_excess_slash3", () => {
         string p = "file:////home/Documents";
-        assert (Files.FileUtils.sanitize_path (p, null) == "file:///home/Documents");
+        assert (Files.FileUtils.sanitize_path (p, null, true) == "file:///home/Documents");
     });
 
     /* Get file for path */

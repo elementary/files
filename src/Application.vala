@@ -205,7 +205,7 @@ public class Files.Application : Gtk.Application {
 
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
-            string path = FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir ());
+            string path = FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir (), false);
             GLib.File? file = null;
 
             if (path.length > 0) {

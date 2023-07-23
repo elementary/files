@@ -231,13 +231,17 @@ public class Files.FileChooserPortal : Object {
         }
 
         if ("current_folder" in options) {
-            dialog.set_current_folder (FileUtils.sanitize_path (options["current_folder"].get_bytestring ()));
+            dialog.set_current_folder (
+                FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, false)
+            );
         }
 
         var supplied_uri = "";
         if ("current_file" in options) {
             supplied_uri = FileUtils.sanitize_path (
-                options["current_file"].get_bytestring (), Environment.get_home_dir ()
+                options["current_file"].get_bytestring (),
+                Environment.get_home_dir (),
+                false
             );
 
             if (supplied_uri != "") {
@@ -380,7 +384,9 @@ public class Files.FileChooserPortal : Object {
         }
 
         if ("current_folder" in options) {
-            dialog.set_current_folder (FileUtils.sanitize_path (options["current_folder"].get_bytestring ()));
+            dialog.set_current_folder (
+                FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, false)
+            );
         }
 
         if ("choices" in options) {

@@ -1256,7 +1256,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         var tab = tab_view.selected_page;
         var view = (ViewContainer)(tab.child);
         var mwcols = (Miller)(view.view) ;
-        var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri);
+        var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri, null, false);
 
         if (unescaped_tip_uri == null) {
             warning ("Invalid tip uri for Miller View");
@@ -1393,7 +1393,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             current_uri = current_container.location.get_uri ();
         }
 
-        string path = FileUtils.sanitize_path (uri, current_uri);
+        string path = FileUtils.sanitize_path (uri, current_uri, false);
         if (path.length > 0) {
             return GLib.File.new_for_uri (FileUtils.escape_uri (path));
         } else {
