@@ -25,7 +25,8 @@ namespace Files.FileUtils {
         var result = new GLib.List<GLib.File> ();
         var uri_list = GLib.Uri.list_extract_uris (uris);
         foreach (unowned string uri in uri_list) {
-            result.append (GLib.File.new_for_uri (uri));
+            var unquoted_uri = Shell.unquote (uri); // Extracted uri may be quoted
+            result.append (GLib.File.new_for_uri (unquoted_uri));
         }
 
         return result;
