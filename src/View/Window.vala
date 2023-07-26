@@ -160,6 +160,15 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         default_height = height;
 
         if (is_first_window) {
+            Files.app_settings.changed["restore-tabs"].connect (() => {
+                // Always honor this setting if changed while Files is running
+                tabs_restored = Files.app_settings.get_boolean ("restore-tabs");
+            });
+
+            Files.Preferences.get_default ().notify["remember-history"].connect (() => {
+                tabs_restored = Files.Preferences.get_default ().remember_history;
+            });
+
             Files.app_settings.bind ("sidebar-width", lside_pane,
                                        "position", SettingsBindFlags.DEFAULT);
 
@@ -1139,7 +1148,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void save_tabs () {
-        if (!is_first_window) {
+        if (!is_first_window || !tabs_restored) {
             return; //TODO Save all windows
         }
 
