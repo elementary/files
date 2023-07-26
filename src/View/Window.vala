@@ -527,7 +527,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     public void open_tabs (GLib.File[]? files = null,
                            ViewMode mode = ViewMode.PREFERRED,
-                           bool ignore_duplicate = false) {
+                           bool ignore_duplicate = false,
+                           bool no_restore = false) {
 
         if (files == null || files.length == 0 || files[0] == null) {
             /* Restore session if not root and settings allow */
@@ -542,6 +543,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 current_container.set_active_state (true, false);
             }
         } else {
+            if (!no_restore) {
+                restore_tabs ();
+            }
             /* Open tabs at each requested location */
             /* As files may be derived from commandline, we use a new sanitized one */
             foreach (var file in files) {

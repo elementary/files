@@ -155,7 +155,7 @@ public class Files.Application : Gtk.Application {
         options [1] = { "tab", 't', 0, OptionArg.NONE, ref open_in_tab,
                         N_("Open one or more URIs, each in their own tab"), null };
         options [2] = { "new-window", 'n', 0, OptionArg.NONE, out create_new_window,
-                        N_("New Window"), null };
+                        N_("Open a New Window that does not restore or save tabs"), null };
         options [3] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
                         N_("Quit Files"), null };
         options [4] = { "debug", 'd', 0, OptionArg.NONE, ref debug,
@@ -220,14 +220,16 @@ public class Files.Application : Gtk.Application {
         /* Open application */
         if (files != null) {
             if (create_new_window || window_count == 0) {
-                /* Open window with tabs at each requested location. */
-                create_window_with_tabs (files);
-            } else {
+                /* Open window with tabs at each requested location 
+                 * If the -n option is given, no restoring or saving of tabs occurs. */
+                create_window_with_tabs (files, ViewMode.PREFERRED, create_new_window);
+            } else { // window_count must be > 0
                 var win = (View.Window)(get_active_window ());
                 win.open_tabs (files, ViewMode.PREFERRED, true); /* Ignore if duplicate tab in existing window */
             }
         } else if (create_new_window || window_count == 0) {
-            create_window_with_tabs ();
+            /* A default tab is created */
+            create_window_with_tabs (null, ViewMode.PREFERRED, create_new_window);
         }
 
         if (window_count > 0) {
@@ -310,17 +312,19 @@ public class Files.Application : Gtk.Application {
     }
 
     public View.Window? create_window (GLib.File? location = null,
-                                       ViewMode viewmode = ViewMode.PREFERRED) {
+                                       ViewMode viewmode = ViewMode.PREFERRED,
+                                       bool no_restore = false) {
 
-        return create_window_with_tabs ({location}, viewmode);
+        return create_window_with_tabs ({location}, viewmode, no_restore);
     }
 
     /* All window creation should be done via this function */
     private View.Window? create_window_with_tabs (GLib.File[] locations = {},
-                                                  ViewMode viewmode = ViewMode.PREFERRED) {
+                                                  ViewMode viewmode,
+                                                  bool no_restore) {
 
         var win = create_empty_window ();
-        win.open_tabs (locations, viewmode);
+        win.open_tabs (locations, viewmode, false, no_restore);
 
         return win;
     }
