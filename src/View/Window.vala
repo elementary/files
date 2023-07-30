@@ -520,8 +520,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                            ViewMode mode = ViewMode.PREFERRED,
                            bool ignore_duplicate = false) {
 
-        if (
-            restore_tabs () < 1 &&
+        // Always try to restore tabs
+        var n_tabs_restored = restore_tabs ();
+        if (n_tabs_restored < 1 &&
             (files == null || files.length == 0 || files[0] == null)
         ) {
             /* Open a tab pointing at the default location if no tabs restored and none provided*/
