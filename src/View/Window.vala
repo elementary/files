@@ -1138,10 +1138,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void save_tabs () {
-        if (!is_first_window) {
-            return; //TODO Save all windows
-        }
-
         if (!Files.Preferences.get_default ().remember_history) {
             return;  /* Do not clear existing settings if history is off */
         }
