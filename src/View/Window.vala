@@ -1138,8 +1138,14 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void save_tabs () {
-        if (!Files.Preferences.get_default ().remember_history) {
-            return;  /* Do not clear existing settings if history is off */
+        /* Do not overwrite existing settings if history or restore-tabs is off
+         * or is admin window */
+        if (
+            !Files.Preferences.get_default ().remember_history ||
+            !Files.app_settings.get_boolean ("restore-tabs") ||
+            Files.is_admin ()
+        ) {
+            return;
         }
 
         VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
