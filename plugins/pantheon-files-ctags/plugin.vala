@@ -250,15 +250,19 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     }
 
     public override void update_file_info (Files.File file) {
-        // if (file.info != null && !f_ignore_dir (file.directory) &&
-        //     (!file.is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
+        if (
+            file.info != null &&
+            !f_ignore_dir (file.directory) &&
+            file.color < 0 &&
+            (!file.is_hidden || Files.Preferences.get_default ().show_hidden_files)
+        ) {
 
-        //     if (file.location.has_uri_scheme ("recent")) {
-        //         rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());
-        //     } else {
-        //         rreal_update_file_info.begin (file);
-        //     }
-        // }
+            if (file.location.has_uri_scheme ("recent")) {
+                rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());
+            } else {
+                rreal_update_file_info.begin (file);
+            }
+        }
     }
 
     public override void context_menu (Gtk.Widget widget, GLib.List<Files.File> selected_files) {
