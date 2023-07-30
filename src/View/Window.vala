@@ -520,12 +520,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                            ViewMode mode = ViewMode.PREFERRED,
                            bool ignore_duplicate = false) {
 
-        uint n_restored_tabs = 0;
-        if (Files.app_settings.get_boolean ("restore-tabs") && !Files.is_admin ()) {
-            n_restored_tabs = restore_tabs ();
-        }
-
-        if (n_restored_tabs < 1 && (files == null || files.length == 0 || files[0] == null)) {
+        if (
+            restore_tabs () < 1 &&
+            (files == null || files.length == 0 || files[0] == null)
+        ) {
             /* Open a tab pointing at the default location if no tabs restored and none provided*/
             var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
             add_tab (location, mode);
@@ -1176,9 +1174,15 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         );
     }
 
-    public uint restore_tabs () {
-        /* Do not restore tabs if history off nor more than once */
-        if (!Files.Preferences.get_default ().remember_history || tabs_restored || !is_first_window) { //TODO Restore all windows
+    private uint restore_tabs () {
+        /* Do not restore tabs more than once or if various conditions not met */
+        if (
+            tabs_restored ||
+            !is_first_window ||
+            !Files.Preferences.get_default ().remember_history ||
+            Files.app_settings.get_boolean ("restore-tabs") ||
+            Files.is_admin ()
+        ) {
             return 0;
         } else {
             tabs_restored = true;
