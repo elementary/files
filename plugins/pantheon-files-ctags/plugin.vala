@@ -401,7 +401,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         }
 
         public void check_color (int color) {
-            if (color == 0 || color > color_buttons.size) {
+            if (color <= 0 || color > color_buttons.size) {
                 return;
             }
 
