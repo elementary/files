@@ -70,7 +70,11 @@ public class Files.File : GLib.Object {
                 _color = value;
                 info.set_attribute_string ("metadata::color-tag", value.to_string ());
                 // Save the attribute to disk synchronously for now (there is no async version of this function)
-                location.set_attribute_string ("metadata::color-tag", value.to_string (), FileQueryInfoFlags.NONE);
+                try {
+                    location.set_attribute_string ("metadata::color-tag", value.to_string (), FileQueryInfoFlags.NONE);
+                } catch (Error e) {
+                    warning ("Error setting color attribute on file %s - %s", uri, e.message);
+                }
             }
         }
     }
@@ -490,8 +494,6 @@ public class Files.File : GLib.Object {
 
         if (info.has_attribute ("metadata::color-tag")) {
             color = int.parse (info.get_attribute_string ("metadata::color-tag"));
-        } else {
-            warning ("color-tag attribute not found for %s", basename);
         }
         /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
         unowned string target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
