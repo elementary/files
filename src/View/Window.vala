@@ -1181,7 +1181,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             tabs_restored ||
             !is_first_window ||
             !Files.Preferences.get_default ().remember_history ||
-            Files.app_settings.get_boolean ("restore-tabs") ||
+            !Files.app_settings.get_boolean ("restore-tabs") ||
             Files.is_admin ()
         ) {
             return 0;
