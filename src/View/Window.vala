@@ -520,18 +520,17 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                            ViewMode mode = ViewMode.PREFERRED,
                            bool ignore_duplicate = false) {
 
-        if (files == null || files.length == 0 || files[0] == null) {
-            /* Restore session if not root and settings allow */
-            if (Files.is_admin () ||
-                !Files.app_settings.get_boolean ("restore-tabs") ||
-                restore_tabs () < 1) {
+        uint n_restored_tabs = 0;
+        if (Files.app_settings.get_boolean ("restore-tabs") && !Files.is_admin ()) {
+            n_restored_tabs = restore_tabs ();
+        }
 
-                /* Open a tab pointing at the default location if no tabs restored*/
-                var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
-                add_tab (location, mode);
-                /* Ensure default tab's slot is active so it can be focused */
-                current_container.set_active_state (true, false);
-            }
+        if (n_restored_tabs < 1 && (files == null || files.length == 0 || files[0] == null)) {
+            /* Open a tab pointing at the default location if no tabs restored and none provided*/
+            var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
+            add_tab (location, mode);
+            /* Ensure default tab's slot is active so it can be focused */
+            current_container.set_active_state (true, false);
         } else {
             /* Open tabs at each requested location */
             /* As files may be derived from commandline, we use a new sanitized one */
