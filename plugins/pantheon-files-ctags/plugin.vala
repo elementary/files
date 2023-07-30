@@ -93,92 +93,93 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         return false;
     }
 
-    public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
-        /* It is possible more than one directory will call this simultaneously so do not cancel */
-    }
+    // public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
+    //     /* It is possible more than one directory will call this simultaneously so do not cancel */
+    // }
 
     private void add_entry (Files.File gof, GenericArray<Variant> entries) {
-        var entry = new Variant.strv (
-                        { gof.uri,
-                          gof.get_ftype (),
-                          gof.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED).to_string (),
-                          gof.color.to_string ()
-                        }
-                    );
+        // var entry = new Variant.strv (
+        //                 { gof.uri,
+        //                   gof.get_ftype (),
+        //                   gof.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED).to_string (),
+        //                   gof.color.to_string ()
+        //                 }
+        //             );
 
-        entries.add (entry);
+        // entries.add (entry);
     }
 
     private async void consume_knowns_queue () {
-        var entries = new GenericArray<Variant> ();
-        Files.File gof;
-        while ((gof = knowns.pop_head ()) != null) {
-            add_entry (gof, entries);
-        }
+        // var entries = new GenericArray<Variant> ();
+        // Files.File gof;
+        // while ((gof = knowns.pop_head ()) != null) {
+        //     add_entry (gof, entries);
+        // }
 
-        if (entries.length > 0) {
-            debug ("--- known entries %d", entries.length);
-            try {
-                yield daemon.record_uris (entries.data);
-            } catch (Error err) {
-                warning ("%s", err.message);
-            }
-        }
+        // if (entries.length > 0) {
+        //     debug ("--- known entries %d", entries.length);
+        //     try {
+        //         yield daemon.record_uris (entries.data);
+        //     } catch (Error err) {
+        //         warning ("%s", err.message);
+        //     }
+        // }
     }
 
     private async void consume_unknowns_queue () {
-        Files.File gof = null;
-        /* Length of unknowns queue limited to visible files by AbstractDirectoryView.
-         * Avoid querying whole directory in case very large. */
-        while ((gof = unknowns.pop_head ()) != null) {
-            try {
-                FileInfo? info = gof.info; /* file info should already be up to date at this point */
-                if (info == null) {
-                    info = yield gof.location.query_info_async (FileAttribute.STANDARD_CONTENT_TYPE, 0, 0, cancellable);
-                }
+        // Files.File gof = null;
+        // /* Length of unknowns queue limited to visible files by AbstractDirectoryView.
+        //  * Avoid querying whole directory in case very large. */
+        // while ((gof = unknowns.pop_head ()) != null) {
+        //     try {
+        //         FileInfo? info = gof.info; /* file info should already be up to date at this point */
+        //         if (info == null) {
+        //             info = yield gof.location.query_info_async (FileAttribute.STANDARD_CONTENT_TYPE, 0, 0, cancellable);
+        //         }
 
-                add_to_knowns_queue (gof, info);
-            } catch (Error err2) {
-                warning ("query_info failed: %s %s", err2.message, gof.uri);
-            }
+        //         add_to_knowns_queue (gof, info);
+        //     } catch (Error err2) {
+        //         warning ("query_info failed: %s %s", err2.message, gof.uri);
+        //     }
 
-        }
+        // }
     }
 
     private void add_to_knowns_queue (Files.File file, FileInfo info) {
-        file.tagstype = info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE);
-        file.update_type ();
+        // file.tagstype = info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE);
+        // file.update_type ();
 
-        knowns.push_head (file);
-        if (t_consume_knowns != 0) {
-            Source.remove (t_consume_knowns);
-            t_consume_knowns = 0;
-        }
+        // knowns.push_head (file);
+        // if (t_consume_knowns != 0) {
+        //     Source.remove (t_consume_knowns);
+        //     t_consume_knowns = 0;
+        // }
 
-        t_consume_knowns = Timeout.add (300, () => {
-                                        consume_knowns_queue.begin ();
-                                        t_consume_knowns = 0;
-                                        return GLib.Source.REMOVE;
-                                        });
+        // t_consume_knowns = Timeout.add (300, () => {
+        //                                 consume_knowns_queue.begin ();
+        //                                 t_consume_knowns = 0;
+        //                                 return GLib.Source.REMOVE;
+        //                                 });
     }
 
     private void add_to_unknowns_queue (Files.File file) {
-        if (file.get_ftype () == "application/octet-stream") {
-            unknowns.push_head (file);
+        // if (file.get_ftype () == "application/octet-stream") {
+        //     unknowns.push_head (file);
 
-            if (idle_consume_unknowns == 0) {
-                idle_consume_unknowns = Idle.add (() => {
-                      consume_unknowns_queue.begin ();
-                      idle_consume_unknowns = 0;
-                      return GLib.Source.REMOVE;
-                  });
-            }
-        }
+        //     if (idle_consume_unknowns == 0) {
+        //         idle_consume_unknowns = Idle.add (() => {
+        //               consume_unknowns_queue.begin ();
+        //               idle_consume_unknowns = 0;
+        //               return GLib.Source.REMOVE;
+        //           });
+        //     }
+        // }
     }
 
     private async void rreal_update_file_info (Files.File file) {
         try {
-            if (!file.exists) {
+            if (!file.exists || file.color >= 0) {
+                // Delete the entry if file no longer exists or we obtained color info from metadata
                 yield daemon.delete_entry (file.uri);
                 return;
             }
@@ -193,29 +194,31 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 uint64 modified = int64.parse (row_iter.next_value ().get_string ());
                 unowned string type = row_iter.next_value ().get_string ();
                 var color = int.parse (row_iter.next_value ().get_string ());
-                if (file.color != color) {
-                    file.color = color;
-                    file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
-                }
+                // if (file.color != color) {
+                warning ("Setting file color from database for %s", file.basename);
+                file.color = color; // This will store color in metadata
+                file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
+                yield daemon.delete_entry (file.uri);
+                // }
                 /* check modified time field only on user dirs. We don't want to query again and
                  * again system directories */
 
-                /* Is this necessary ? */
-                if (file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified &&
-                    f_is_user_dir (file.directory)) {
+                // /* Is this necessary ? */
+                // if (file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified &&
+                //     f_is_user_dir (file.directory)) {
 
-                    add_to_unknowns_queue (file);
-                    return;
-                }
+                //     add_to_unknowns_queue (file);
+                //     return;
+                // }
 
-                if (type.length > 0 && file.get_ftype () == "application/octet-stream") {
-                    if (type != "application/octet-stream") {
-                        file.tagstype = type;
-                        file.update_type ();
-                    }
-                }
+                // if (type.length > 0 && file.get_ftype () == "application/octet-stream") {
+                //     if (type != "application/octet-stream") {
+                //         file.tagstype = type;
+                //         file.update_type ();
+                //     }
+                // }
             } else {
-                add_to_unknowns_queue (file);
+                // add_to_unknowns_queue (file);
             }
         } catch (Error err) {
             warning ("%s", err.message);
@@ -239,6 +242,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 row_iter.next_value ();
                 row_iter.next_value ();
                 file.color = int.parse (row_iter.next_value ().get_string ());
+                yield daemon.delete_entry (target_uri);
             }
         } catch (Error err) {
             warning ("%s", err.message);

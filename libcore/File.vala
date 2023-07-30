@@ -59,17 +59,19 @@ public class Files.File : GLib.Object {
     public uint64 size = 0;
     public int count = -1;
     public string format_size = null;
-    private int _color = 0;
+    private int _color = -1;  // Negative means undetermined
     public int color {
         get {
             return _color;
         }
 
         set {
-            _color = value;
-            info.set_attribute_string ("metadata::color-tag", value.to_string (), FileQueryInfoFlags.NONE);
-            // Save the attribute to disk synchronously for now (there is no async version of this function)
-            location.set_attribute_string ("metadata::color-tag", value.to_string (), FileQueryInfoFlags.NONE);
+            if (value >= 0 && value < Files.Preferences.TAGS_COLORS.length) {
+                _color = value;
+                info.set_attribute_string ("metadata::color-tag", value.to_string ());
+                // Save the attribute to disk synchronously for now (there is no async version of this function)
+                location.set_attribute_string ("metadata::color-tag", value.to_string (), FileQueryInfoFlags.NONE);
+            }
         }
     }
 
