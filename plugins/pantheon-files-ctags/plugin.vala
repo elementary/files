@@ -28,16 +28,10 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     private MarlinDaemon daemon;
     private bool ignore_dir;
 
-    private Queue<Files.File> unknowns;
-    private Queue<Files.File> knowns;
-    private uint idle_consume_unknowns = 0;
-    private uint t_consume_knowns = 0;
     private Cancellable cancellable;
     private GLib.List<Files.File> current_selected_files;
 
     public CTags () {
-        unknowns = new Queue<Files.File> ();
-        knowns = new Queue<Files.File> ();
         cancellable = new Cancellable ();
 
         try {
@@ -62,19 +56,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         "davs"
     };
 
-    private bool f_is_user_dir (GLib.File dir) {
-        return_val_if_fail (dir != null, false);
-        var uri = dir.get_uri ();
-
-        foreach (var duri in USER_DIRS) {
-            if (Posix.strncmp (uri, duri, duri.length) == 0) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     private bool f_ignore_dir (GLib.File dir) {
         return_val_if_fail (dir != null, true);
         var uri = dir.get_uri ();
@@ -93,89 +74,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         return false;
     }
 
-    // public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
-    //     /* It is possible more than one directory will call this simultaneously so do not cancel */
-    // }
-
-    private void add_entry (Files.File gof, GenericArray<Variant> entries) {
-        // var entry = new Variant.strv (
-        //                 { gof.uri,
-        //                   gof.get_ftype (),
-        //                   gof.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED).to_string (),
-        //                   gof.color.to_string ()
-        //                 }
-        //             );
-
-        // entries.add (entry);
-    }
-
-    private async void consume_knowns_queue () {
-        // var entries = new GenericArray<Variant> ();
-        // Files.File gof;
-        // while ((gof = knowns.pop_head ()) != null) {
-        //     add_entry (gof, entries);
-        // }
-
-        // if (entries.length > 0) {
-        //     debug ("--- known entries %d", entries.length);
-        //     try {
-        //         yield daemon.record_uris (entries.data);
-        //     } catch (Error err) {
-        //         warning ("%s", err.message);
-        //     }
-        // }
-    }
-
-    private async void consume_unknowns_queue () {
-        // Files.File gof = null;
-        // /* Length of unknowns queue limited to visible files by AbstractDirectoryView.
-        //  * Avoid querying whole directory in case very large. */
-        // while ((gof = unknowns.pop_head ()) != null) {
-        //     try {
-        //         FileInfo? info = gof.info; /* file info should already be up to date at this point */
-        //         if (info == null) {
-        //             info = yield gof.location.query_info_async (FileAttribute.STANDARD_CONTENT_TYPE, 0, 0, cancellable);
-        //         }
-
-        //         add_to_knowns_queue (gof, info);
-        //     } catch (Error err2) {
-        //         warning ("query_info failed: %s %s", err2.message, gof.uri);
-        //     }
-
-        // }
-    }
-
-    private void add_to_knowns_queue (Files.File file, FileInfo info) {
-        // file.tagstype = info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE);
-        // file.update_type ();
-
-        // knowns.push_head (file);
-        // if (t_consume_knowns != 0) {
-        //     Source.remove (t_consume_knowns);
-        //     t_consume_knowns = 0;
-        // }
-
-        // t_consume_knowns = Timeout.add (300, () => {
-        //                                 consume_knowns_queue.begin ();
-        //                                 t_consume_knowns = 0;
-        //                                 return GLib.Source.REMOVE;
-        //                                 });
-    }
-
-    private void add_to_unknowns_queue (Files.File file) {
-        // if (file.get_ftype () == "application/octet-stream") {
-        //     unknowns.push_head (file);
-
-        //     if (idle_consume_unknowns == 0) {
-        //         idle_consume_unknowns = Idle.add (() => {
-        //               consume_unknowns_queue.begin ();
-        //               idle_consume_unknowns = 0;
-        //               return GLib.Source.REMOVE;
-        //           });
-        //     }
-        // }
-    }
-
     private async void rreal_update_file_info (Files.File file) {
         try {
             if (!file.exists || file.color >= 0) {
@@ -191,34 +89,13 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             VariantIter row_iter = iter.next_value ().iterator ();
 
             if (row_iter.n_children () == 3) {
-                uint64 modified = int64.parse (row_iter.next_value ().get_string ());
-                unowned string type = row_iter.next_value ().get_string ();
+                int64.parse (row_iter.next_value ().get_string ()); // Skip modified date
+                row_iter.next_value ().get_string (); // Skip file type
                 var color = int.parse (row_iter.next_value ().get_string ());
-                // if (file.color != color) {
-                warning ("Setting file color from database for %s", file.basename);
+                debug ("Setting file color from database for %s", file.basename);
                 file.color = color; // This will store color in metadata
                 file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
                 yield daemon.delete_entry (file.uri);
-                // }
-                /* check modified time field only on user dirs. We don't want to query again and
-                 * again system directories */
-
-                // /* Is this necessary ? */
-                // if (file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified &&
-                //     f_is_user_dir (file.directory)) {
-
-                //     add_to_unknowns_queue (file);
-                //     return;
-                // }
-
-                // if (type.length > 0 && file.get_ftype () == "application/octet-stream") {
-                //     if (type != "application/octet-stream") {
-                //         file.tagstype = type;
-                //         file.update_type ();
-                //     }
-                // }
-            } else {
-                // add_to_unknowns_queue (file);
             }
         } catch (Error err) {
             warning ("%s", err.message);
@@ -242,6 +119,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 row_iter.next_value ();
                 row_iter.next_value ();
                 file.color = int.parse (row_iter.next_value ().get_string ());
+                debug ("Setting target file color from database for %s", target_uri);
                 yield daemon.delete_entry (target_uri);
             }
         } catch (Error err) {
@@ -293,7 +171,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     }
 
     private async void set_color (GLib.List<Files.File> files, int n) throws IOError {
-        var entries = new GenericArray<Variant> ();
         foreach (unowned Files.File file in files) {
             if (!(file is Files.File)) {
                 continue;
