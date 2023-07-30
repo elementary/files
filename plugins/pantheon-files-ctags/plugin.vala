@@ -246,15 +246,15 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     }
 
     public override void update_file_info (Files.File file) {
-        if (file.info != null && !f_ignore_dir (file.directory) &&
-            (!file.is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
+        // if (file.info != null && !f_ignore_dir (file.directory) &&
+        //     (!file.is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
 
-            if (file.location.has_uri_scheme ("recent")) {
-                rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());
-            } else {
-                rreal_update_file_info.begin (file);
-            }
-        }
+        //     if (file.location.has_uri_scheme ("recent")) {
+        //         rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());
+        //     } else {
+        //         rreal_update_file_info.begin (file);
+        //     }
+        // }
     }
 
     public override void context_menu (Gtk.Widget widget, GLib.List<Files.File> selected_files) {
@@ -300,23 +300,17 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
             if (target_file.color != n) {
                 target_file.color = n;
-                add_entry (target_file, entries);
             }
         }
 
-        if (entries != null) {
-            try {
-                yield daemon.record_uris (entries.data);
-                /* If the color of the target is set while in recent view, we have to
-                 * update the recent view to reflect this */
-                foreach (unowned Files.File file in files) {
-                    if (file.location.has_uri_scheme ("recent")) {
-                        update_file_info (file);
-                        file.icon_changed (); /* Just need to trigger redraw */
-                    }
+        if (files != null) {
+            /* If the color of the target is set while in recent view, we have to
+             * update the recent view to reflect this */
+            foreach (unowned Files.File file in files) {
+                if (file.location.has_uri_scheme ("recent")) {
+                    update_file_info (file);
+                    file.icon_changed (); /* Just need to trigger redraw */
                 }
-            } catch (Error err) {
-                warning ("%s", err.message);
             }
         }
     }

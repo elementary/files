@@ -35,7 +35,7 @@ public class Files.File : GLib.Object {
         "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name," +
         "standard::display-name,standard::content-type,standard::fast-content-type,standard::size," +
         "standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem," +
-        "thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed";
+        "thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed,metadata::color-tag";
 
     public signal void changed ();
     public signal void icon_changed ();
@@ -59,7 +59,20 @@ public class Files.File : GLib.Object {
     public uint64 size = 0;
     public int count = -1;
     public string format_size = null;
-    public int color = 0;
+    private int _color = 0;
+    public int color {
+        get {
+            return _color;
+        }
+
+        set {
+            _color = value;
+            info.set_attribute_string ("metadata::color-tag", value.to_string (), FileQueryInfoFlags.NONE);
+            // Save the attribute to disk synchronously for now (there is no async version of this function)
+            location.set_attribute_string ("metadata::color-tag", value.to_string (), FileQueryInfoFlags.NONE);
+        }
+    }
+
     public uint64 modified;
     public uint64 created;
     public string formated_modified = null;
@@ -473,6 +486,11 @@ public class Files.File : GLib.Object {
             icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
         }
 
+        if (info.has_attribute ("metadata::color-tag")) {
+            color = int.parse (info.get_attribute_string ("metadata::color-tag"));
+        } else {
+            warning ("color-tag attribute not found for %s", basename);
+        }
         /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
         unowned string target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
         if (target_uri != null) {
