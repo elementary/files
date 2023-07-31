@@ -520,18 +520,16 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                            ViewMode mode = ViewMode.PREFERRED,
                            bool ignore_duplicate = false) {
 
-        if (files == null || files.length == 0 || files[0] == null) {
-            /* Restore session if not root and settings allow */
-            if (Files.is_admin () ||
-                !Files.app_settings.get_boolean ("restore-tabs") ||
-                restore_tabs () < 1) {
-
-                /* Open a tab pointing at the default location if no tabs restored*/
-                var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
-                add_tab (location, mode);
-                /* Ensure default tab's slot is active so it can be focused */
-                current_container.set_active_state (true, false);
-            }
+        // Always try to restore tabs
+        var n_tabs_restored = restore_tabs ();
+        if (n_tabs_restored < 1 &&
+            (files == null || files.length == 0 || files[0] == null)
+        ) {
+            /* Open a tab pointing at the default location if no tabs restored and none provided*/
+            var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
+            add_tab (location, mode);
+            /* Ensure default tab's slot is active so it can be focused */
+            current_container.set_active_state (true, false);
         } else {
             /* Open tabs at each requested location */
             /* As files may be derived from commandline, we use a new sanitized one */
@@ -1139,12 +1137,14 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void save_tabs () {
-        if (!is_first_window) {
-            return; //TODO Save all windows
-        }
-
-        if (!Files.Preferences.get_default ().remember_history) {
-            return;  /* Do not clear existing settings if history is off */
+        /* Do not overwrite existing settings if history or restore-tabs is off
+         * or is admin window */
+        if (
+            !Files.Preferences.get_default ().remember_history ||
+            !Files.app_settings.get_boolean ("restore-tabs") ||
+            Files.is_admin ()
+        ) {
+            return;
         }
 
         VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
@@ -1175,9 +1175,15 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         );
     }
 
-    public uint restore_tabs () {
-        /* Do not restore tabs if history off nor more than once */
-        if (!Files.Preferences.get_default ().remember_history || tabs_restored || !is_first_window) { //TODO Restore all windows
+    private uint restore_tabs () {
+        /* Do not restore tabs more than once or if various conditions not met */
+        if (
+            tabs_restored ||
+            !is_first_window ||
+            !Files.Preferences.get_default ().remember_history ||
+            !Files.app_settings.get_boolean ("restore-tabs") ||
+            Files.is_admin ()
+        ) {
             return 0;
         } else {
             tabs_restored = true;
