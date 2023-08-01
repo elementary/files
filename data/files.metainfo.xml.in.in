@@ -60,6 +60,23 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="6.4.2" date="2023-08-01" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>New Tab Bar with improved animations, smoother drag-and-drop, and reorganized tab context menus</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/1339">When Single Tab, DnD will create a new window</issue>
+        <issue url="https://github.com/elementary/files/issues/2235">Opening from another apps remove the tabs history</issue>
+      </issues>
+    </release>
+
     <release version="6.4.1" date="2023-07-10" urgency="medium">
       <description>
         <p>Minor updates:</p>
