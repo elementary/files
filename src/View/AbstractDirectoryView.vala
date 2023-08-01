@@ -2321,7 +2321,9 @@ namespace Files {
             }
 
             if (!in_trash) {
-                plugins.hook_context_menu (menu as Gtk.Widget, get_files_for_action ());
+                // We send the actual files - it is up to the plugin to extract target
+                // if needed.  Color tag plugin needs actual file, others need target
+                plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
             }
 
             menu.set_screen (null);
