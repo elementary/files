@@ -26,8 +26,6 @@ interface MarlinDaemon : Object {
 public class Files.Plugins.CTags : Files.Plugins.Base {
     /* May be used by more than one directory simultaneously so do not make assumptions */
     private MarlinDaemon daemon;
-    private bool ignore_dir;
-
     private Cancellable cancellable;
     private GLib.List<Files.File> current_selected_files;
 
@@ -116,7 +114,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     }
 
     public override void context_menu (Gtk.Widget widget, GLib.List<Files.File> selected_files) {
-        if (selected_files == null || ignore_dir) {
+        if (selected_files == null) {
             return;
         }
 
