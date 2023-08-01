@@ -52,7 +52,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
             var info = yield file.location.query_info_async ("metadata::color-tag", FileQueryInfoFlags.NONE);
             if (info.has_attribute ("metadata::color-tag")) {
-                file.color = int.parse (info.get_attribute_string ("metadata::color-tag")); // This will store color in metadata
+                file.color = int.parse (info.get_attribute_string ("metadata::color-tag"));
                 file.icon_changed ();
             } else {
                 // Look for color in Files daemon database
@@ -63,6 +63,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 VariantIter row_iter = iter.next_value ().iterator ();
 
                 if (row_iter.n_children () == 3) {
+                    /* Only interested in color tag */
                     int64.parse (row_iter.next_value ().get_string ()); // Skip modified date
                     row_iter.next_value ().get_string (); // Skip file type
                     file.color = int.parse (row_iter.next_value ().get_string ()); // This will store color in metadata
@@ -83,7 +84,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         var target_file = GLib.File.new_for_uri (target_uri);
         var info = yield target_file.query_info_async ("metadata::color-tag", FileQueryInfoFlags.NONE);
         if (info.has_attribute ("metadata::color-tag")) {
-            file.color = int.parse (info.get_attribute_string ("metadata::color-tag")); // This will store color in metadata
+            file.color = int.parse (info.get_attribute_string ("metadata::color-tag"));
             file.icon_changed ();
         } else {
             try {
@@ -94,7 +95,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 VariantIter row_iter = iter.next_value ().iterator ();
 
                 if (row_iter.n_children () == 3) {
-                    /* Only interested in color tag in recent:// at the moment */
+                    /* Only interested in color tag */
                     row_iter.next_value ();
                     row_iter.next_value ();
                     file.color = int.parse (row_iter.next_value ().get_string ());
