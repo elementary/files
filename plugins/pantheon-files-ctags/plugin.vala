@@ -42,38 +42,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         }
     }
 
-    /* Arbitrary user dir list */
-    private const string USER_DIRS[2] = {
-        "file:///home",
-        "file:///media"
-    };
-
-    private const string IGNORE_SCHEMES [5] = {
-        "ftp",
-        "sftp",
-        "afp",
-        "dav",
-        "davs"
-    };
-
-    private bool f_ignore_dir (GLib.File dir) {
-        return_val_if_fail (dir != null, true);
-        var uri = dir.get_uri ();
-
-        if (uri == "file:///tmp") {
-            return true;
-        }
-
-        var uri_scheme = Uri.parse_scheme (uri);
-        foreach (var scheme in IGNORE_SCHEMES) {
-            if (scheme == uri_scheme) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     private async void rreal_update_file_info (Files.File file) {
         try {
             if (!file.exists || file.color >= 0) {
@@ -141,18 +109,8 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     }
 
     public override void update_file_info (Files.File file) {
-        if (
-            file.info != null &&
-            !f_ignore_dir (file.directory) &&
-            file.color < 0 &&
-            (!file.is_hidden || Files.Preferences.get_default ().show_hidden_files)
-        ) {
-
-            if (file.location.has_uri_scheme ("recent")) {
-                rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());
-            } else {
-                rreal_update_file_info.begin (file);
-            }
+        if (!file.is_hidden || Files.Preferences.get_default ().show_hidden_files) {
+            rreal_update_file_info.begin (file);
         }
     }
 
@@ -208,6 +166,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
              * update the recent view to reflect this */
             foreach (unowned Files.File file in files) {
                 if (file.location.has_uri_scheme ("recent")) {
+                    file.color = n;
                     file.icon_changed (); /* Just need to trigger redraw */
                 }
             }
