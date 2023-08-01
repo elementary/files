@@ -327,6 +327,9 @@ namespace Files {
                 view.button_press_event.connect (on_view_button_press_event);
                 view.button_release_event.connect (on_view_button_release_event);
                 view.draw.connect (on_view_draw);
+                view.realize.connect (() => {
+                   schedule_thumbnail_color_tag_timeout ();
+                });
             }
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
