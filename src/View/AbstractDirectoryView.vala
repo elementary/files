@@ -1326,6 +1326,10 @@ namespace Files {
             if (file != null) {
                 add_file (file, dir, is_internal); /* Only select files added to view by this app */
                 handle_free_space_change ();
+                Idle.add (() => {
+                    update_thumbnail_info_and_plugins (file);
+                    return Source.REMOVE;
+                });
             } else {
                 critical ("Null file added");
             }
@@ -1341,25 +1345,25 @@ namespace Files {
                 /* The slot directory has changed - it can only be the properties */
                 is_writable = slot.directory.file.is_writable ();
             } else {
-                remove_marlin_icon_info_cache (file);
-                model.file_changed (file, dir);
-                /* 2nd parameter is for returned request id if required - we do not use it? */
-                /* This is required if we need to dequeue the request */
+                on_directory_file_icon_changed (dir, file);
+            }
+        }
+
+        private void on_directory_file_icon_changed (Directory dir, Files.File file) {
+            remove_marlin_icon_info_cache (file);
+            model.file_changed (file, dir);
+            // Only really need to update visible files but Gtk4 should take care of that
+            Idle.add (() => {
+                schedule_thumbnail_color_tag_timeout ();
                 if ((!slot.directory.is_network && show_local_thumbnails) ||
                     (show_remote_thumbnails && slot.directory.can_open_files)) {
 
                     thumbnailer.queue_file (file, null, large_thumbnails);
-                    if (plugins != null) {
-                        plugins.update_file_info (file);
-                    }
                 }
-            }
 
-            draw_when_idle ();
-        }
+                return Source.REMOVE;
+            });
 
-        private void on_directory_file_icon_changed (Directory dir, Files.File file) {
-            model.file_changed (file, dir);
             draw_when_idle ();
         }
 
@@ -1409,13 +1413,12 @@ namespace Files {
                 is_writable = false;
             }
 
+            // Wait for view to draw so thumbnails and color tags displayed on first sight
             Idle.add (() => {
                 thaw_tree ();
+                schedule_thumbnail_color_tag_timeout ();
                 return Source.REMOVE;
             });
-
-
-            schedule_thumbnail_color_tag_timeout ();
         }
 
     /** Handle zoom level change */
@@ -2745,7 +2748,6 @@ namespace Files {
                 Files.File? file;
                 GLib.List<Files.File> visible_files = null;
                 uint actually_visible = 0;
-
                 if (get_visible_range (out start_path, out end_path)) {
                     sp = start_path;
                     ep = end_path;
@@ -2770,23 +2772,12 @@ namespace Files {
                         file = model.file_for_iter (iter); // Maybe null if dummy row or file being deleted
                         path = model.get_path (iter);
 
-                        if (file != null && !file.is_gone) {
-                            // Only update thumbnail if it is going to be shown
-                            if ((slot.directory.is_network && show_remote_thumbnails) ||
-                                (!slot.directory.is_network && show_local_thumbnails)) {
-
-                                file.query_thumbnail_update (); // Ensure thumbstate up to date
-                                /* Ask thumbnailer only if ThumbState UNKNOWN */
-                                if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
-                                    visible_files.prepend (file);
-                                    if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-                                        actually_visible++;
-                                    }
-                                }
-                            }
-                           /* In any case, ensure color-tag info is correct */
-                            if (plugins != null) {
-                                plugins.update_file_info (file);
+                        update_thumbnail_info_and_plugins (file);
+                        /* Ask thumbnailer only if ThumbState UNKNOWN */
+                        if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
+                            visible_files.prepend (file);
+                            if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
+                                actually_visible++;
                             }
                         }
                         /* check if we've reached the end of the visible range */
@@ -2816,7 +2807,22 @@ namespace Files {
             });
         }
 
+        // Called on individual files when added or changed as well as on all visible files
+        // by schedule_thumbnail_color_tag_timeout.
+        private void update_thumbnail_info_and_plugins (Files.File file) {
+            if (file != null && !file.is_gone) {
+                // Only update thumbnail if it is going to be shown
+                if ((slot.directory.is_network && show_remote_thumbnails) ||
+                    (!slot.directory.is_network && show_local_thumbnails)) {
 
+                    file.query_thumbnail_update (); // Ensure thumbstate up to date
+                }
+               /* In any case, ensure color-tag info is correct */
+                if (plugins != null) {
+                    plugins.update_file_info (file);
+                }
+            }
+        }
 /** HELPER AND CONVENIENCE FUNCTIONS */
         /** This helps ensure that file item updates are reflected on screen without too many redraws **/
         uint draw_timeout_id = 0;
