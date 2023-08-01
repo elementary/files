@@ -1355,9 +1355,8 @@ namespace Files {
         private void on_directory_file_icon_changed (Directory dir, Files.File file) {
             remove_marlin_icon_info_cache (file);
             model.file_changed (file, dir);
-            // Only really need to update visible files but Gtk4 should take care of that
             Idle.add (() => {
-                schedule_thumbnail_color_tag_timeout ();
+                update_thumbnail_info_and_plugins (file);
                 if ((!slot.directory.is_network && show_local_thumbnails) ||
                     (show_remote_thumbnails && slot.directory.can_open_files)) {
 
