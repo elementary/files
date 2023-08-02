@@ -64,7 +64,8 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                     /* Only interested in color tag */
                     int64.parse (row_iter.next_value ().get_string ()); // Skip modified date
                     row_iter.next_value ().get_string (); // Skip file type
-                    file.color = int.parse (row_iter.next_value ().get_string ()); // This will store color in metadata
+                    file.color = int.parse (row_iter.next_value ().get_string ());
+                    file.location.set_attribute_string ("metadata::color-tag", file.color.to_string (), FileQueryInfoFlags.NONE);
                     file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
                     yield daemon.delete_entry (file.uri);
                 }
@@ -74,38 +75,39 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         }
     }
 
-    private async void rreal_update_file_info_for_recent (Files.File file, string? target_uri) {
-        if (target_uri == null) { /* e.g. for recent:/// */
-            return;
-        }
+    // private async void rreal_update_file_info_for_recent (Files.File file, string? target_uri) {
+    //     if (target_uri == null) { /* e.g. for recent:/// */
+    //         return;
+    //     }
 
-        var target_file = GLib.File.new_for_uri (target_uri);
-        var info = yield target_file.query_info_async ("metadata::color-tag", FileQueryInfoFlags.NONE);
-        if (info.has_attribute ("metadata::color-tag")) {
-            file.color = int.parse (info.get_attribute_string ("metadata::color-tag"));
-            file.icon_changed ();
-        } else {
-            try {
-                var rc = yield daemon.get_uri_infos (target_uri);
+    //     var target_file = GLib.File.new_for_uri (target_uri);
+    //     var info = yield target_file.query_info_async ("metadata::color-tag", FileQueryInfoFlags.NONE);
+    //     if (info.has_attribute ("metadata::color-tag")) {
+    //         file.color = int.parse (info.get_attribute_string ("metadata::color-tag"));
+    //         file.icon_changed ();
+    //     } else {
+    //         try {
+    //             var rc = yield daemon.get_uri_infos (target_uri);
 
-                VariantIter iter = rc.iterator ();
-                assert (iter.n_children () == 1);
-                VariantIter row_iter = iter.next_value ().iterator ();
+    //             VariantIter iter = rc.iterator ();
+    //             assert (iter.n_children () == 1);
+    //             VariantIter row_iter = iter.next_value ().iterator ();
 
-                if (row_iter.n_children () == 3) {
-                    /* Only interested in color tag */
-                    row_iter.next_value ();
-                    row_iter.next_value ();
-                    file.color = int.parse (row_iter.next_value ().get_string ());
-                    file.icon_changed ();
-                    debug ("Setting recent target file color from database for %s", target_uri);
-                    yield daemon.delete_entry (target_uri);
-                }
-            } catch (Error err) {
-                warning ("%s", err.message);
-            }
-        }
-    }
+    //             if (row_iter.n_children () == 3) {
+    //                 /* Only interested in color tag */
+    //                 row_iter.next_value ();
+    //                 row_iter.next_value ();
+    //                 file.color = int.parse (row_iter.next_value ().get_string ());
+    //                 file.location.set_attribute_string ("metadata::color-tag", file.color.to_string (), FileQueryInfoFlags.NONE);
+    //                 file.icon_changed ();
+    //                 debug ("Setting recent target file color from database for %s", target_uri);
+    //                 yield daemon.delete_entry (target_uri);
+    //             }
+    //         } catch (Error err) {
+    //             warning ("%s", err.message);
+    //         }
+    //     }
+    // }
 
     public override void update_file_info (Files.File file) {
         if (!file.is_hidden || Files.Preferences.get_default ().show_hidden_files) {
