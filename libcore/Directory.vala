@@ -860,7 +860,16 @@ public class Files.Directory : Object {
         file_hash.insert (gof.location, gof);
     }
 
-    private Files.File file_cache_find_or_insert (GLib.File file, out bool was_in_hash, bool update_hash = false) {
+    private Files.File? file_cache_find_or_insert (
+        GLib.File file,
+        out bool was_in_hash,
+        bool update_hash
+    ) {
+        // Ignore transient files
+        if (file.get_basename ().contains ("goutputstream")) {
+            was_in_hash = true; // Indicate not added to hash
+            return null;
+        }
         Files.File? result = file_hash.lookup (file);
         /* Although file_hash.lookup returns an unowned value, Vala will add a reference
          * as the return value is owned.  This matches the behaviour of Files.File.cache_lookup */
@@ -1051,9 +1060,14 @@ public class Files.Directory : Object {
         Directory? first_dir = cache_lookup_parent (files.data);
         if (first_dir != null) {
             foreach (unowned var loc in files) {
-                Files.File? gof = null;
-                gof = first_dir.file_cache_find_or_insert (loc, out already_present);
-                first_dir.notify_file_changed (gof);
+                Files.File? gof = first_dir.file_cache_find_or_insert (
+                    loc,
+                    out already_present,
+                    false
+                );
+                if (gof != null) { // returns null if file should be ignored
+                    first_dir.notify_file_changed (gof);
+                }
             }
         } else {
             foreach (unowned var loc in files) {
@@ -1080,11 +1094,15 @@ public class Files.Directory : Object {
                 // Children of newly created folder must have null parent Files.Directory
                 // We expect each set of changes to refer to the same Directory
                 if (dir != null && dir == first_dir) {
-                    Files.File gof = first_dir.file_cache_find_or_insert (change.from, out already_present, true);
-                    if (!already_present) {
+                    Files.File? gof = first_dir.file_cache_find_or_insert (
+                        change.from,
+                        out already_present,
+                        true
+                    );
+                    if (gof != null && !already_present) {
                         files_added = true;
                         first_dir.notify_file_added (gof, change.is_internal);
-                    } // Else ignore files already added from duplicate event or internally
+                    } // Else ignore transient files and files already added from duplicate event or internally
                 } else {
                     critical ("Unexpected parent of newly created file");
                 }
@@ -1108,11 +1126,15 @@ public class Files.Directory : Object {
         if (first_dir != null) {
             foreach (unowned var loc in files) {
                 // Each set or changes should refer to the same folder but check anyway
-                Files.File gof = first_dir.file_cache_find_or_insert (loc, out already_present, true);
-                if (!already_present) {
+                Files.File? gof = first_dir.file_cache_find_or_insert (
+                    loc,
+                    out already_present,
+                    true
+                );
+                if (gof != null && !already_present) {
                     files_added = true;
                     first_dir.notify_file_added (gof, true);
-                } // Else ignore files added via FileMonitor event
+                } // Else ignore transient files and files added via FileMonitor event
             }
 
             if (files_added) {
