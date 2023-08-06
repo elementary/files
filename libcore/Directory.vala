@@ -914,7 +914,6 @@ public class Files.Directory : Object {
 
     private void notify_file_added (Files.File gof, bool is_internal) {
         // Do not delay adding file to model - use fallback is_hidden
-        gof.is_hidden = gof.basename.has_prefix (".") || gof.basename.has_prefix ("~");
         if ((!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
             file_added (gof, is_internal);
         }
