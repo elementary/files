@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-10 08:19-0700\n"
-"PO-Revision-Date: 2023-06-08 18:07+0000\n"
+"PO-Revision-Date: 2023-08-08 01:00+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -1734,14 +1734,12 @@ msgid "Fixed Text"
 msgstr "Ustalony tekst"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:93
-#, fuzzy
 msgid "Add Prefix…"
-msgstr "Dodaj prefiks"
+msgstr "Dodaj prefiks…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:112
-#, fuzzy
 msgid "Add Suffix…"
-msgstr "Dodaj sufiks"
+msgstr "Dodaj sufiks…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
 msgid "Basename:"
