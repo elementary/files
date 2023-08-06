@@ -866,7 +866,7 @@ public class Files.Directory : Object {
         bool update_hash
     ) {
         // Ignore transient files
-        if (file.get_basename ().contains ("goutputstream")) {
+        if (file.get_basename ().has_prefix (".goutputstream")) {
             was_in_hash = true; // Indicate not added to hash
             return null;
         }
