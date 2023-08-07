@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-10 08:19-0700\n"
-"PO-Revision-Date: 2023-06-13 12:07+0000\n"
+"PO-Revision-Date: 2023-08-08 01:00+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -1730,14 +1730,12 @@ msgid "Fixed Text"
 msgstr "Texte fixe"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:93
-#, fuzzy
 msgid "Add Prefix…"
-msgstr "Ajouter un préfixe"
+msgstr "Ajouter un préfixe…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:112
-#, fuzzy
 msgid "Add Suffix…"
-msgstr "Ajouter un suffixe"
+msgstr "Ajouter un suffixe…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
 msgid "Basename:"
