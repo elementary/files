@@ -564,13 +564,13 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         if (ignore_duplicate) {
             bool is_child;
-            var existing_tab_position = location_is_duplicate (location, out is_child);
+            var existing_tab_position = location_is_duplicate (_location, out is_child);
             if (existing_tab_position >= 0) {
                 tab_view.selected_page = tab_view.get_nth_page (existing_tab_position);
 
                 if (is_child) {
                     /* Select the child  */
-                    current_container.focus_location_if_in_current_directory (location);
+                    current_container.focus_location_if_in_current_directory (_location);
                 }
 
                 return;
