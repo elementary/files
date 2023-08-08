@@ -621,11 +621,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private int location_is_duplicate (GLib.File location, out bool is_child) {
         is_child = false;
-        string parent_path = "";
-        string uri = location.get_uri ();
         bool is_folder = location.query_file_type (FileQueryInfoFlags.NONE) == FileType.DIRECTORY;
-        /* Ensures consistent format of protocol and path */
-        parent_path = FileUtils.get_parent_path_from_path (location.get_path ());
+        var uri = is_folder ? location.get_uri () : location.get_parent ().get_uri ();
         int existing_position = 0;
 
         for (int i = 0; i < tab_view.n_pages; i++) {
@@ -634,9 +631,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             string tab_uri = tab_location.get_uri ();
 
             if (FileUtils.same_location (uri, tab_uri)) {
-                return existing_position;
-            } else if (!is_folder && FileUtils.same_location (location.get_parent ().get_uri (), tab_uri)) {
-                is_child = true;
+                is_child = !is_folder;
                 return existing_position;
             }
 
