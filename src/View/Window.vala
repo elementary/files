@@ -408,7 +408,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_view.close_page_finish (page, true);
 
         if (tab_view.n_pages == 0) {
-            add_tab ();
+            add_new_tab ();
         }
 
         return Gdk.EVENT_STOP;
@@ -482,7 +482,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         action_duplicate.activate.connect (() => {
             var view_container = (ViewContainer) page.child;
-            add_tab (view_container.location, view_container.view_mode);
+            add_tab (view_container.location, view_container.view_mode, false);
         });
 
         action_move_to_new_window.activate.connect (() => {
@@ -493,7 +493,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void on_page_detached () {
         if (tab_view.n_pages == 0) {
-            add_tab ();
+            add_new_tab ();
         }
 
         save_tabs ();
@@ -516,58 +516,62 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         save_active_tab_position ();
     }
 
+    // Called from commandline or other apps so do not usually want duplicate tabs
     public void open_tabs (GLib.File[]? files = null,
                            ViewMode mode = ViewMode.PREFERRED,
-                           bool ignore_duplicate = false) {
+                           bool ignore_duplicate = true) {
 
         // Always try to restore tabs
         var n_tabs_restored = restore_tabs ();
-        if (n_tabs_restored < 1 &&
-            (files == null || files.length == 0 || files[0] == null)
-        ) {
+        var no_files = (files == null || files.length == 0 || files[0] == null);
+        if (n_tabs_restored < 1 && no_files) {
             /* Open a tab pointing at the default location if no tabs restored and none provided*/
             var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
-            add_tab (location, mode);
+            add_tab (location, mode, ignore_duplicate);
             /* Ensure default tab's slot is active so it can be focused */
             current_container.set_active_state (true, false);
+
         } else {
             /* Open tabs at each requested location */
             /* As files may be derived from commandline, we use a new sanitized one */
             foreach (var file in files) {
-                add_tab (get_file_from_uri (file.get_uri ()), mode, ignore_duplicate);
+                add_tab (
+                    get_file_from_uri (file.get_uri ()),
+                    mode,
+                    ignore_duplicate
+                );
             }
         }
     }
 
-    private void add_tab_by_uri (string uri, ViewMode mode = ViewMode.PREFERRED) {
-        var file = get_file_from_uri (uri);
-        if (file != null) {
-            add_tab (file, mode);
-        } else {
-            add_tab ();
-        }
+    // Usually called explicitly by user so do not ignore duplicates
+    private void add_tab_by_uri (
+        string uri,
+        ViewMode mode = ViewMode.PREFERRED,
+        bool ignore_duplicate = false
+    ) {
+        add_tab (get_file_from_uri (uri), mode, ignore_duplicate);
     }
 
-    private void add_tab (GLib.File _location = GLib.File.new_for_commandline_arg (Environment.get_home_dir ()),
-                         ViewMode mode = ViewMode.PREFERRED,
-                         bool ignore_duplicate = false) {
+    private void add_new_tab () {
+        add_tab (
+            GLib.File.new_for_commandline_arg (Environment.get_home_dir ()),
+            ViewMode.PREFERRED,
+            false // Allow duplicate
+        );
+    }
 
-        GLib.File location;
-        // For simplicity we do not use cancellable. If issues arise may need to do this.
-        var ftype = _location.query_file_type (FileQueryInfoFlags.NONE, null);
-
-        if (ftype == FileType.REGULAR) {
-            location = _location.get_parent ();
-        } else {
-            location = _location.dup ();
-        }
+    private void add_tab (
+        GLib.File _location,
+        ViewMode mode,
+        bool ignore_duplicate
+    ) {
 
         if (ignore_duplicate) {
             bool is_child;
             var existing_tab_position = location_is_duplicate (_location, out is_child);
             if (existing_tab_position >= 0) {
                 tab_view.selected_page = tab_view.get_nth_page (existing_tab_position);
-
                 if (is_child) {
                     /* Select the child  */
                     current_container.focus_location_if_in_current_directory (_location);
@@ -575,6 +579,15 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
                 return;
             }
+        }
+
+        GLib.File location;
+        // For simplicity we do not use cancellable. If issues arise may need to do this.
+        var ftype = _location.query_file_type (FileQueryInfoFlags.NONE, null);
+        if (ftype == FileType.REGULAR) {
+            location = _location.get_parent ();
+        } else {
+            location = _location.dup ();
         }
 
         mode = real_mode (mode);
@@ -923,7 +936,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private void action_tab (GLib.SimpleAction action, GLib.Variant? param) {
         switch (param.get_string ()) {
             case "NEW":
-                add_tab ();
+                add_new_tab ();
                 break;
 
             case "CLOSE":
@@ -939,7 +952,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 break;
 
             case "TAB":
-                add_tab (current_container.location, current_container.view_mode);
+                add_tab (current_container.location, current_container.view_mode, false);
                 break;
 
             case "WINDOW":
@@ -1372,7 +1385,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         if (file != null) {
             switch (flag) {
                 case Files.OpenFlag.NEW_TAB:
-                    add_tab (file, current_container.view_mode);
+                    add_tab (file, current_container.view_mode, false); // Allow duplicate
                     break;
                 case Files.OpenFlag.NEW_WINDOW:
                     add_window (file, current_container.view_mode);
