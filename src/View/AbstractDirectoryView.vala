@@ -475,7 +475,7 @@ namespace Files {
             }
 
             // Ensure focus file not overridden later
-            if (set_cursor_timeout_id > 0){
+            if (set_cursor_timeout_id > 0) {
                 Source.remove (set_cursor_timeout_id);
                 set_cursor_timeout_id = 0;
             }

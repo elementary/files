@@ -498,7 +498,7 @@ namespace Files.View {
                         var list = new List<GLib.File> ();
                         list.prepend (loc);
                         aslot.select_glib_files (list, loc);
-                    } else  {
+                    } else {
                         view.focus_first_for_empty_selection (false); /* Just focus first file */
                     }
                 } else {
