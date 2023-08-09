@@ -483,29 +483,34 @@ namespace Files.View {
                 return;
             }
 
-            FileInfo? info = aslot.lookup_file_info (loc);
-            FileType filetype = FileType.UNKNOWN;
-            if (info != null) { /* location is in the current folder */
-                filetype = info.get_file_type ();
-                if (filetype != FileType.DIRECTORY || no_path_change) {
-                    if (unselect_others) {
-                        aslot.set_all_selected (false);
-                        selected_locations = null;
-                    }
+            // Tab may still be loading so wait until finished
+            Idle.add_full (GLib.Priority.LOW, () => {
+                if (is_loading) {
+                    return Source.CONTINUE;
+                } else if (no_path_change) {
+                    Files.File? file = aslot.directory.file_hash_lookup_location (loc);
+                    if (file != null) { /* location is in the current folder */
+                        if (unselect_others) {
+                            aslot.set_all_selected (false);
+                            selected_locations = null;
+                        }
 
-                    var list = new List<GLib.File> ();
-                    list.prepend (loc);
-                    aslot.select_glib_files (list, loc);
-                    return;
+                        var list = new List<GLib.File> ();
+                        list.prepend (loc);
+                        aslot.select_glib_files (list, loc);
+                    } else  {
+                        view.focus_first_for_empty_selection (false); /* Just focus first file */
+                    }
+                } else {
+                    /* Attempt to navigate to the location */
+                    if (loc != null) {
+                        open_location (loc);
+                    }
                 }
-            } else if (no_path_change) { /* not in current, do not navigate to it*/
-                view.focus_first_for_empty_selection (false); /* Just focus first file */
-                return;
-            }
-            /* Attempt to navigate to the location */
-            if (loc != null) {
-                open_location (loc);
-            }
+
+                return Source.REMOVE;
+            });
+
         }
 
         public void focus_location_if_in_current_directory (GLib.File? loc,
