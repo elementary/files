@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-10 08:19-0700\n"
-"PO-Revision-Date: 2023-08-10 11:41+0000\n"
+"PO-Revision-Date: 2023-08-11 12:08+0000\n"
 "Last-Translator: Jakub Kyzr <jakubkyzr@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/files/cs/>\n"
 "Language: cs\n"
@@ -213,14 +213,12 @@ msgstr "Název souboru"
 
 #: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
-#, fuzzy
 msgid "Creation Date"
-msgstr "Vytvořit"
+msgstr "Datum vytvoření"
 
 #: libcore/Enums.vala:163
-#, fuzzy
 msgid "Last modification date"
-msgstr "Naposledy změněno:"
+msgstr "Datum poslední změny"
 
 #: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2340
 #: src/View/ListView.vala:27
@@ -229,11 +227,11 @@ msgstr "Velikost"
 
 #: libcore/Enums.vala:189
 msgid "Number sequence"
-msgstr ""
+msgstr "Posloupnost čísel"
 
 #: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2350
 msgid "Date"
@@ -241,53 +239,51 @@ msgstr "Změněno"
 
 #: libcore/Enums.vala:211
 msgid "Suffix"
-msgstr ""
+msgstr "Koncovka"
 
 #: libcore/Enums.vala:214
 msgid "Prefix"
-msgstr ""
+msgstr "Předpona"
 
 #: libcore/Enums.vala:224
 msgid "Text to put at the end"
-msgstr ""
+msgstr "Text na konci"
 
 #: libcore/Enums.vala:227
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Text na začátku"
 
 #: libcore/Enums.vala:246
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "Výchozí formát - pouze datum"
 
 #: libcore/Enums.vala:248
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "Výchozí formát - datum a čas"
 
 #: libcore/Enums.vala:250
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "Formát místního jazyka - datum a čas"
 
 #: libcore/Enums.vala:252
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "Formát ISO 8601 - pouze datum"
 
 #: libcore/Enums.vala:254
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "Formát ISO 8601 - datum a čas"
 
 #: libcore/Enums.vala:270
-#, fuzzy
 msgid "Date created"
-msgstr "Znovuvytvořit"
+msgstr "Datum vytvoření"
 
 #: libcore/Enums.vala:272
-#, fuzzy
 msgid "Date Modified"
-msgstr "Změněno"
+msgstr "Datum změny"
 
 #: libcore/Enums.vala:274
 msgid "Current Date"
-msgstr ""
+msgstr "Aktuální datum"
 
 #: libcore/File.vala:550 libcore/File.vala:1113
 msgid "Inaccessible"
@@ -314,12 +310,12 @@ msgid "Empty"
 msgstr "Prázdné"
 
 #: libcore/File.vala:1108
-#, fuzzy, c-format
+#, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
-msgstr[0] "%i položka"
-msgstr[1] "%i položky"
-msgstr[2] "%i položek"
+msgstr[0] "%'d položka"
+msgstr[1] "%'d položky"
+msgstr[2] "%'d položek"
 
 #: libcore/File.vala:1153
 #, c-format
@@ -1292,74 +1288,60 @@ msgid "Empty _Trash"
 msgstr "Vyprázdnit _koš"
 
 #: libcore/UndoManager.vala:22
-#, fuzzy
 msgid "Undo Copy"
-msgstr "Zkopírovat"
+msgstr "Vrátit kopii"
 
 #: libcore/UndoManager.vala:24
-#, fuzzy
 msgid "Undo Duplicate"
-msgstr "Zduplikovat panel"
+msgstr "Vrátit duplikaci"
 
 #: libcore/UndoManager.vala:26
-#, fuzzy
 msgid "Undo Move"
-msgstr "Otevřít zavřený panel"
+msgstr "Vrátit přesun"
 
 #: libcore/UndoManager.vala:28
-#, fuzzy
 msgid "Undo Rename"
-msgstr "Přejmenovat"
+msgstr "Vrátit přejmenování"
 
 #: libcore/UndoManager.vala:30
-#, fuzzy
 msgid "Undo Create Empty File"
-msgstr "_Vrátit vytvoření prázdného souboru"
+msgstr "Vrátit vytvoření prázdného souboru"
 
 #: libcore/UndoManager.vala:32
-#, fuzzy
 msgid "Undo Create File from Template"
-msgstr "_Vrátit vytvoření souboru z šablony"
+msgstr "Vrátit vytvoření souboru z šablony"
 
 #: libcore/UndoManager.vala:34
-#, fuzzy
 msgid "Undo Create Folder"
-msgstr "_Vrátit vytvoření %d složky"
+msgstr "Vrátit vytvoření složky"
 
 #: libcore/UndoManager.vala:36
-#, fuzzy
 msgid "Undo Move to Trash"
-msgstr "Přesunout do koše"
+msgstr "Vrátit přesun do koše"
 
 #: libcore/UndoManager.vala:38
-#, fuzzy
 msgid "Undo Create Link"
-msgstr "_Vrátit vytvoření odkazu na %d položku"
+msgstr "Vrátit vytvoření odkazu"
 
 #: libcore/UndoManager.vala:40
-#, fuzzy
 msgid "Undo Restore from Trash"
-msgstr "Obnovit z Koše"
+msgstr "Vrátit obnovu z koše"
 
 #: libcore/UndoManager.vala:42
-#, fuzzy
 msgid "Undo Set Permissions"
-msgstr "Nastavuje se oprávnění"
+msgstr "Vrátit nastavení oprávnění"
 
 #: libcore/UndoManager.vala:44
-#, fuzzy
 msgid "Undo Set Permissions Recursively"
-msgstr "Vrátit změnu práv %d položky"
+msgstr "Vrátit rekurzivní nastavení oprávnění"
 
 #: libcore/UndoManager.vala:46
-#, fuzzy
 msgid "Undo Change Owner"
-msgstr "Vrátit změnu vlastníka %d položky"
+msgstr "Vrátit změnu vlastníka"
 
 #: libcore/UndoManager.vala:48
-#, fuzzy
 msgid "Undo Change Group"
-msgstr "Vrátit změnu skupiny %d položky"
+msgstr "Vrátit změnu skupiny"
 
 #: libcore/UndoManager.vala:57
 #, fuzzy
