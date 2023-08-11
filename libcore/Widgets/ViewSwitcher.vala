@@ -1,10 +1,5 @@
 /***
-    ViewSwicher.cs
-
-    Authors:
-       mathijshenquet <mathijs.henquet@gmail.com>
-       ammonkey <am.monkeyd@gmail.com>
-
+*   Copyright (c) 2016-2023 elementary LLC. <https://elementary.io>
     Copyright (c) 2010 mathijshenquet
 
     This program is free software: you can redistribute it and/or modify
@@ -19,78 +14,95 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    Authors:
+       mathijshenquet <mathijs.henquet@gmail.com>
+       ammonkey <am.monkeyd@gmail.com>
 ***/
 
-namespace Files.View.Chrome {
-    public class ViewSwitcher : Gtk.Box {
-        public GLib.SimpleAction action { get; construct; }
+public class Files.ViewSwitcher : Gtk.Box {
+    private const string ACTION_VIEW_MODE = "win.view-mode";
+    // Keep a list of children to iterate - compatible with both Gtk3 and Gtk4
+    private GLib.List<Gtk.ToggleButton> children = null;
 
-        public ViewSwitcher (GLib.SimpleAction view_mode_action) {
-            Object (action: view_mode_action);
+    construct {
+        valign = Gtk.Align.CENTER;
+        get_style_context ().add_class ("linked");
+
+        var grid_view_btn = new ModeButton (
+            (uint32)ViewMode.ICON,
+            "view-grid-symbolic",
+            _("View as Grid")
+        );
+        var list_view_btn = new ModeButton (
+            (uint32)ViewMode.LIST,
+            "view-list-symbolic",
+            _("View as List")
+        );
+        var column_view_btn = new ModeButton (
+            (uint32)ViewMode.MILLER_COLUMNS,
+            "view-column-symbolic",
+            _("View as Columns")
+        );
+
+        append_button (grid_view_btn);
+        append_button (list_view_btn);
+        append_button (column_view_btn);
+
+        // Implement radiobutton behaviour for Gtk3 (in Gtk4 can be added to group)
+        grid_view_btn.toggled.connect (set_mode_from_button);
+        list_view_btn.toggled.connect (set_mode_from_button);
+        column_view_btn.toggled.connect (set_mode_from_button);
+    }
+
+    private void append_button (Gtk.ToggleButton child) {
+        add (child);
+        children.append (child);
+    }
+
+    private void set_mode_from_button (Gtk.ToggleButton button) {
+        if (button.active) {
+            set_mode (button.action_target.get_uint32 ());
+        }
+    }
+
+    public void set_mode (uint32 mode) {
+        unowned var child_list = children.first ();
+        while (child_list != null) {
+            child_list.data.active = child_list.data.action_target.get_uint32 () == mode;
+            child_list = child_list.next;
+        }
+    }
+
+    public ViewMode get_mode () {
+        unowned var child_list = children.first ();
+        while (child_list != null) {
+            if (child_list.data.active) {
+                return (ViewMode)(child_list.data.action_target.get_uint32 ());
+            }
+
+            child_list = child_list.next;
         }
 
-        construct {
-            get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
+        critical ("No active mode found - return 0");
+        return 0;
+    }
 
-            /* Grid View item */
-            var id = (uint32)ViewMode.ICON;
-            var grid_view_btn = new Gtk.RadioButton (null) {
-                image = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.BUTTON),
-                tooltip_markup = get_tooltip_for_id (id, _("View as Grid"))
-            };
-            grid_view_btn.set_mode (false);
-            grid_view_btn.toggled.connect (on_mode_changed);
-            grid_view_btn.set_data<uint32> ("id", id);
-
-            /* List View */
-            id = (uint32)ViewMode.LIST;
-            var list_view_btn = new Gtk.RadioButton.from_widget (grid_view_btn) {
-                image = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.BUTTON),
-                tooltip_markup = get_tooltip_for_id (id, _("View as List"))
-            };
-            list_view_btn.set_mode (false);
-            list_view_btn.toggled.connect (on_mode_changed);
-            list_view_btn.set_data<uint32> ("id", id);
-
-
-            /* Item 2 */
-            id = (uint32)ViewMode.MILLER_COLUMNS;
-            var column_view_btn = new Gtk.RadioButton.from_widget (grid_view_btn) {
-                image = new Gtk.Image.from_icon_name ("view-column-symbolic", Gtk.IconSize.BUTTON),
-                tooltip_markup = get_tooltip_for_id (id, _("View in Columns"))
-            };
-            column_view_btn.set_mode (false);
-            column_view_btn.toggled.connect (on_mode_changed);
-            column_view_btn.set_data<ViewMode> ("id", ViewMode.MILLER_COLUMNS);
-
-            valign = Gtk.Align.CENTER;
-            add (grid_view_btn);
-            add (list_view_btn);
-            add (column_view_btn);
+    private class ModeButton : Gtk.ToggleButton {
+        public ModeButton (uint32 id, string icon_name, string tooltip) {
+            child = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.BUTTON);
+            tooltip_markup = get_tooltip_for_id (id, tooltip);
+            action_name = ACTION_VIEW_MODE;
+            action_target = new Variant.uint32 (id);
+            sensitive = true;
+            can_focus = false;
         }
 
         private string get_tooltip_for_id (uint32 id, string description) {
             var app = (Gtk.Application)Application.get_default ();
-            var detailed_name = Action.print_detailed_name ("win." + action.name, new Variant.uint32 (id));
+            var detailed_name = Action.print_detailed_name (ACTION_VIEW_MODE, new Variant.uint32 (id));
             var accels = app.get_accels_for_action (detailed_name);
             return Granite.markup_accel_tooltip (accels, description);
-        }
-
-        private void on_mode_changed (Gtk.ToggleButton source) {
-            if (!source.active) {
-                return;
-            }
-
-            action.activate (source.get_data<uint32> ("id"));
-        }
-
-        public void set_mode (uint32 mode) {
-            this.@foreach ((child) => {
-                if (child.get_data<uint32> ("id") == mode) {
-                    ((Gtk.RadioButton)child).active = true;
-                    action.activate (child.get_data<uint32> ("id"));
-                }
-            });
         }
     }
 }

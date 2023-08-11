@@ -68,7 +68,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     public Files.Application marlin_app { get; construct; }
     private unowned UndoManager undo_manager;
     public Hdy.HeaderBar headerbar;
-    public Chrome.ViewSwitcher view_switcher;
+    public Files.ViewSwitcher view_switcher;
     public Hdy.TabView tab_view;
     public Hdy.TabBar tab_bar;
     private Gtk.Paned lside_pane;
@@ -184,7 +184,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
-        view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
+        view_switcher = new Files.ViewSwitcher () {
             margin_end = 20
         };
         view_switcher.set_mode (Files.app_settings.get_enum ("default-viewmode"));
@@ -271,21 +271,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         /*/
         /* Connect and abstract signals to local ones
         /*/
-
-        view_switcher.action.activate.connect ((id) => {
-            switch ((ViewMode)(id.get_uint32 ())) {
-                case ViewMode.ICON:
-                    app_menu.on_zoom_setting_changed (Files.icon_view_settings, "zoom-level");
-                    break;
-                case ViewMode.LIST:
-                    app_menu.on_zoom_setting_changed (Files.list_view_settings, "zoom-level");
-                    break;
-                case ViewMode.MILLER_COLUMNS:
-                    app_menu.on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
-                    break;
-            }
-        });
-
 
         button_forward.slow_press.connect (() => {
             get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
