@@ -14,7 +14,9 @@ public class Files.ButtonWithMenu : Gtk.EventBox {
     }
 
     construct {
-        var image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.BUTTON);
+        var image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.LARGE_TOOLBAR) {
+            margin_start = margin_end = 6
+        };
         menu = new Menu ();
         popover = new Gtk.Popover.from_model (this, menu);
 
