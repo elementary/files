@@ -1,85 +1,68 @@
 /*
- * SPDX-License-Identifier: GPL-3.0
- * SPDX-FileCopyrightText: 2011-2013 Mathijs Henquet
- *                         2023 elementary, Inc. (https://elementary.io)
- *
- * Authored by: Mathijs Henquet <mathijs.henquet@gmail.com>,
- *              ammonkey <am.monkeyd@gmail.com>
- */
-
-/**
- * ButtonWithMenu
- * - support long click / right click with depressed button states
- * - activate a GtkAction if any or popup a menu
- * (used in history navigation buttons)
- */
-public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
-    public signal void slow_press ();
-
-    private Gtk.Menu gtk_menu;
-
-    public Menu menu {
-        set {
-            gtk_menu.bind_model (value, null, false);
-        }
-    }
-
+ * Copyright 2023 elementary, Inc. <https://elementary.io>
+ * SPDX-License-Identifier: GPL-3.0-or-later
+*/
+public class Files.ButtonWithMenu : Gtk.EventBox {
+    private Gtk.Popover popover;
+    private Menu? menu;
+    public string icon_name { get; construct; }
+    public signal void activated ();
     public ButtonWithMenu (string icon_name) {
-        image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.LARGE_TOOLBAR);
+        Object (
+            icon_name: icon_name
+        );
     }
 
     construct {
-        use_underline = true;
+        var image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.BUTTON);
+        menu = new Menu ();
+        popover = new Gtk.Popover.from_model (this, menu);
 
-        gtk_menu = new Gtk.Menu ();
-        gtk_menu.attach_to_widget (this, null);
-        gtk_menu.deactivate.connect ( () => {
-            active = false;
-        });
-
-        mnemonic_activate.connect (on_mnemonic_activate);
-
-        var press_gesture = new Gtk.GestureMultiPress (this) {
-            button = Gdk.BUTTON_PRIMARY
+        var longpress_controller = new Gtk.GestureLongPress (this) {
+            button = Gdk.BUTTON_PRIMARY,
+            delay_factor = 2.0,
+            propagation_phase = Gtk.PropagationPhase.BUBBLE
         };
-        press_gesture.released.connect (() => {
-            slow_press ();
-            press_gesture.set_state (CLAIMED);
+
+        longpress_controller.pressed.connect ((x, y) => {
+            longpress_controller.set_state (Gtk.EventSequenceState.CLAIMED);
+            show_popover ();
+        });
+        longpress_controller.cancelled.connect (() => {
+            activated ();
         });
 
-        var secondary_click_gesture = new Gtk.GestureMultiPress (this) {
-            button = Gdk.BUTTON_SECONDARY
+        var secondary_click_controller = new Gtk.GestureMultiPress (this) {
+            button = Gdk.BUTTON_SECONDARY,
+            propagation_phase = Gtk.PropagationPhase.BUBBLE
         };
-        secondary_click_gesture.pressed.connect (() => {
-            popup_menu ();
-            secondary_click_gesture.set_state (CLAIMED);
+        secondary_click_controller.pressed.connect (() => {
+            secondary_click_controller.set_state (Gtk.EventSequenceState.CLAIMED);
+            show_popover ();
         });
 
-        var long_press_gesture = new Gtk.GestureLongPress (this);
+        add (image);
+        show_all ();
 
-        long_press_gesture.pressed.connect (() => {
-            popup_menu ();
-            long_press_gesture.set_state (CLAIMED);
-        });
+        //TODO Dim image when insensitive (this happens automatically in Gtk4)
     }
 
-    private bool on_mnemonic_activate (bool group_cycling) {
-        /* ToggleButton always grabs focus away from the editor,
-         * so reimplement Widget's version, which only grabs the
-         * focus if we are group cycling.
-         */
-        if (!group_cycling) {
-            activate ();
-        } else if (can_focus) {
-            grab_focus ();
+    public void update_menu (Gee.List<string> path_list) {
+        /* Clear the menu and re-add the correct entries. */
+        menu.remove_all ();
+        for (int i = 0; i < path_list.size; i++) {
+            var path = path_list.@get (i);
+            var item = new MenuItem (
+                FileUtils.sanitize_path (path, null, false),
+                Action.print_detailed_name ("win.back", new Variant.int32 (i + 1))
+            );
+            menu.append_item (item);
         }
-
-        return true;
     }
 
-    protected new void popup_menu () {
-        active = true;
-        gtk_menu.popup_at_widget (this, SOUTH_WEST, NORTH_WEST, Gtk.get_current_event ());
-        gtk_menu.select_first (false);
+    private void show_popover () {
+        if (menu.get_n_items () > 0) {
+            popover.popup ();
+        }
     }
 }

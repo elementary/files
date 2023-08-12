@@ -73,8 +73,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     public Hdy.TabBar tab_bar;
     private Gtk.Paned lside_pane;
     public SidebarInterface sidebar;
-    private Chrome.ButtonWithMenu button_forward;
-    private Chrome.ButtonWithMenu button_back;
+    private Files.ButtonWithMenu button_forward;
+    private Files.ButtonWithMenu button_back;
     private Chrome.LocationBar? location_bar;
     private Gtk.MenuButton tab_history_button;
 
@@ -174,12 +174,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void build_window () {
-        button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic");
+        button_back = new Files.ButtonWithMenu ("go-previous-symbolic");
 
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
-        button_forward = new View.Chrome.ButtonWithMenu ("go-next-symbolic");
+        button_forward = new Files.ButtonWithMenu ("go-next-symbolic");
 
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
@@ -286,12 +286,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             }
         });
 
-
-        button_forward.slow_press.connect (() => {
+        button_forward.activated.connect (() => {
             get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
         });
 
-        button_back.slow_press.connect (() => {
+        button_back.activated.connect (() => {
             get_action_group ("win").activate_action ("back", new Variant.int32 (1));
         });
 
@@ -1310,33 +1309,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void set_back_menu (Gee.List<string> path_list) {
-        /* Clear the back menu and re-add the correct entries. */
-        var back_menu = new Menu ();
-        for (int i = 0; i < path_list.size; i++) {
-            var path = path_list.@get (i);
-            var item = new MenuItem (
-                FileUtils.sanitize_path (path, null, false),
-                Action.print_detailed_name ("win.back", new Variant.int32 (i + 1))
-            );
-            back_menu.append_item (item);
-        }
-
-        button_back.menu = back_menu;
+        button_back.update_menu (path_list);
     }
 
     private void set_forward_menu (Gee.List<string> path_list) {
-        /* Same for the forward menu */
-        var forward_menu = new Menu ();
-        for (int i = 0; i < path_list.size; i++) {
-            var path = path_list.@get (i);
-            var item = new MenuItem (
-                FileUtils.sanitize_path (path, null, false),
-                Action.print_detailed_name ("win.forward", new Variant.int32 (i + 1))
-            );
-            forward_menu.append_item (item);
-        }
-
-        button_forward.menu = forward_menu;
+        button_forward.update_menu (path_list);
     }
 
     private void update_location_bar (string new_path, bool with_animation = true) {
