@@ -360,7 +360,6 @@ namespace Files.View {
             overlay_statusbar.hide ();
         }
 
-
         public void on_slot_directory_loaded (Directory dir) {
             can_show_folder = dir.can_load;
             /* First deal with all cases where directory could not be loaded */
@@ -371,28 +370,46 @@ namespace Files.View {
                     if (!dir.is_trash) {
                         content = new DirectoryNotFound (slot.directory, this);
                     } else {
-                        content = new View.Welcome (_("This Folder Does Not Exist"),
-                                                    _("You cannot create a folder here."));
+                        content = new Files.Placeholder (_("This Folder Does Not Exist")) {
+                            description = _("You cannot create a folder here.")
+                        };
                     }
                 } else if (!dir.network_available) {
-                    content = new View.Welcome (_("The network is unavailable"),
-                                                _("A working network is needed to reach this folder") + "\n\n" +
-                                                dir.last_error_message);
+                    content = new Files.Placeholder (_("The network is unavailable")) {
+                        description = string.join (
+                            "\n\n",
+                            _("A working network is needed to reach this folder"),
+                            dir.last_error_message
+                        )
+                    };
                 } else if (dir.permission_denied) {
                     content = new Files.Placeholder (_("This Folder Does Not Belong to You")) {
                         description = _("You don't have permission to view this folder.")
                     };
                 } else if (!dir.file.is_connected) {
-                    content = new View.Welcome (_("Unable to Mount Folder"),
-                                                _("Could not connect to the server for this folder.") + "\n\n" +
-                                                dir.last_error_message);
+                    content = new Files.Placeholder (_("Unable to Mount Folder")) {
+                        description = string.join (
+                            "\n\n",
+                            _("Could not connect to the server for this folder."),
+                            dir.last_error_message
+                        )
+                    };
                 } else if (slot.directory.state == Directory.State.TIMED_OUT) {
-                    content = new View.Welcome (_("Unable to Display Folder Contents"),
-                                                _("The operation timed out.") + "\n\n" + dir.last_error_message);
+                    content = new Files.Placeholder (_("Unable to Display Folder Contents")) {
+                        description = string.join (
+                            "\n\n",
+                            _("The operation timed out."),
+                            dir.last_error_message
+                        )
+                    };
                 } else {
-                    content = new View.Welcome (_("Unable to Show Folder"),
-                                                _("The server for this folder could not be located.") + "\n\n" +
-                                                dir.last_error_message);
+                    content = new Files.Placeholder (_("Unable to Show Folder")) {
+                        description = string.join (
+                             "\n\n",
+                            _("The server for this folder could not be located."),
+                            dir.last_error_message
+                        )
+                    };
                 }
             /* Now deal with cases where file (s) within the loaded folder has to be selected */
             } else if (selected_locations != null) {
@@ -402,8 +419,9 @@ namespace Files.View {
                 if (dir.selected_file.query_exists ()) {
                     focus_location_if_in_current_directory (dir.selected_file);
                 } else {
-                    content = new View.Welcome (_("File not Found"),
-                                                _("The file selected no longer exists."));
+                    content = new Files.Placeholder (_("File not Found")) {
+                        description = _("The file selected no longer exists.")
+                    };
                     can_show_folder = false;
                 }
             } else {
