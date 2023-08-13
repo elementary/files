@@ -379,8 +379,9 @@ namespace Files.View {
                                                 _("A working network is needed to reach this folder") + "\n\n" +
                                                 dir.last_error_message);
                 } else if (dir.permission_denied) {
-                    content = new View.Welcome (_("This Folder Does Not Belong to You"),
-                                                _("You don't have permission to view this folder."));
+                    content = new Files.Placeholder (_("This Folder Does Not Belong to You")) {
+                        description = _("You don't have permission to view this folder.")
+                    };
                 } else if (!dir.file.is_connected) {
                     content = new View.Welcome (_("Unable to Mount Folder"),
                                                 _("Could not connect to the server for this folder.") + "\n\n" +
