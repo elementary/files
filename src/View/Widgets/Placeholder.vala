@@ -3,7 +3,7 @@
 * SPDX-License-Identifier: LGPL-3.0-or-later
 */
 
-// Based on Granite7 Placeholder widget 
+// Replacement for Granite7 Placeholder widget in Gtk3
 public class Files.Placeholder : Gtk.Bin {
     public string title { get; construct set; }
     public string description { get; set; }
@@ -79,7 +79,7 @@ public class Files.Placeholder : Gtk.Bin {
     }
 
     public Gtk.Button append_button (Icon icon, string label, string description) {
-        var image = new Gtk.Image.from_gicon (icon, Gtk.IconSize.LARGE_TOOLBAR);
+        var image = new Gtk.Image.from_gicon (icon, Gtk.IconSize.DIALOG);
         var label_widget = new Gtk.Label (label) {
             wrap = true,
             xalign = 0

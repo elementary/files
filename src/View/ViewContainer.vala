@@ -368,7 +368,7 @@ namespace Files.View {
                     content = new View.PrivacyModeOn (this);
                 } else if (!dir.file.exists) {
                     if (!dir.is_trash) {
-                        content = new DirectoryNotFound (slot.directory, this);
+                        content = new Files.DirectoryNotFound (slot.directory, this);
                     } else {
                         content = new Files.Placeholder (_("This Folder Does Not Exist")) {
                             description = _("You cannot create a folder here.")
