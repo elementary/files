@@ -365,7 +365,7 @@ namespace Files.View {
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
                 if (dir.is_recent && !Files.Preferences.get_default ().remember_history) {
-                    content = new View.PrivacyModeOn (this);
+                    content = new Files.PrivacyModeOn (this);
                 } else if (!dir.file.exists) {
                     if (!dir.is_trash) {
                         content = new Files.DirectoryNotFound (slot.directory, this);

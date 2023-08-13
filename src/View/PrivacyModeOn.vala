@@ -18,32 +18,37 @@
 
 ***/
 
-namespace Files.View {
-    public class PrivacyModeOn : Files.View.Welcome {
-        public Directory dir_saved;
-        public ViewContainer ctab;
-        public bool remember_history {get; set;}
+public class Files.PrivacyModeOn : Gtk.Bin {
+    public View.ViewContainer ctab {get; construct; }
+    public bool remember_history { get; set; }
 
-        public PrivacyModeOn (ViewContainer tab) {
-            base (_("Privacy mode is on"), _("No recent files are remembered"));
+    public PrivacyModeOn (View.ViewContainer _ctab) {
+        Object (
+            ctab: _ctab
+        );
+    }
 
-            append ("preferences-system-privacy", _("Change security settings"),
-                    _("Open the system security and privacy settings app"));
+    construct {
+        var placeholder = new Files.Placeholder (_("Privacy mode is on")) {
+            description = _("No recent files are remembered")
+        };
 
-            this.activated.connect ((index) => {
-                switch (index) {
-                    case 0:
-                        var ctx = get_window ().get_display ().get_app_launch_context ();
-                        try {
-                            AppInfo.launch_default_for_uri ("settings://security", ctx);
-                        } catch (Error e) {
-                            critical ("No default security app found");
-                        }
-                        break;
-                }
-            });
+        var change_button = placeholder.append_button (
+            new ThemedIcon ("preferences-system-privacy"),
+            _("Change security settings"),
+            _("Open the system security and privacy settings app")
+        );
 
-            show_all ();
-        }
+        change_button.clicked.connect ((index) => {
+            var ctx = get_window ().get_display ().get_app_launch_context ();
+            try {
+                AppInfo.launch_default_for_uri ("settings://security", ctx);
+            } catch (Error e) {
+                critical ("No default security app found");
+            }
+        });
+
+        add (placeholder);
+        show_all ();
     }
 }
