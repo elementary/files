@@ -92,7 +92,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         add (scrolled_window);
 
         //For now hide action bar when admin. This might need revisiting if other actions are added
-        if (!Files.is_admin ()){
+        if (!Files.is_admin ()) {
             add (action_bar);
         }
 
