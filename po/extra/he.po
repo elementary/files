@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-10 08:19-0700\n"
-"PO-Revision-Date: 2023-05-14 18:06+0000\n"
+"PO-Revision-Date: 2023-08-08 01:00+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -78,7 +78,7 @@ msgstr "תיקונים מזעריים:"
 
 #: data/files.metainfo.xml.in.in:67
 msgid "Design updates for Bulk Rename"
-msgstr ""
+msgstr "עדכוני עיצוב לשינוי שם במרוכז"
 
 #: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:85
 #: data/files.metainfo.xml.in.in:99 data/files.metainfo.xml.in.in:121
@@ -92,7 +92,7 @@ msgstr "שיפורים:"
 
 #: data/files.metainfo.xml.in.in:80
 msgid "Implement a bulk rename functionality"
-msgstr ""
+msgstr "הטמעת יכולת שינוי שם במרוכז"
 
 #: data/files.metainfo.xml.in.in:84
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
