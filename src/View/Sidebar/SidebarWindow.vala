@@ -267,7 +267,6 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
 
             child = box;
 
-            // unowned Gtk.StyleContext style_context = get_style_context ();
             add_css_class (Granite.STYLE_CLASS_H4_LABEL);
             add_css_class ("expander");
             get_style_context ().add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
