@@ -72,6 +72,8 @@
         </ul>
       </description>
       <issues>
+        <issue url="https://github.com/elementary/files/issues/491">Color tag is not restored when the file or folder is untrashed</issue>
+        <issue url="https://github.com/elementary/files/issues/1208">Wishlist idea: use extended file attributes for tags</issue>
         <issue url="https://github.com/elementary/files/issues/1339">When Single Tab, DnD will create a new window</issue>
         <issue url="https://github.com/elementary/files/issues/2235">Opening from another apps remove the tabs history</issue>
       </issues>
