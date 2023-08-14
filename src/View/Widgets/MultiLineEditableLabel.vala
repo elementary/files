@@ -29,8 +29,10 @@ namespace Files {
             /* Block propagation of button press event as this would cause renaming to end */
             textview.button_press_event.connect_after (() => { return true; });
 
-            scrolled_window = new Gtk.ScrolledWindow (null, null);
-            scrolled_window.add (textview);
+            scrolled_window = new Gtk.ScrolledWindow (null, null) {
+                child = textview
+            };
+
             return scrolled_window as Gtk.Widget;
         }
 
