@@ -364,7 +364,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         drag_failed.connect ((ctx, res) => {
             if (res == Gtk.DragResult.NO_TARGET) {
-                Gdk.Window app_window = list.get_window ().get_effective_toplevel ();
+                Gdk.Window app_window = get_window ().get_effective_toplevel ();
                 Gdk.Window drag_window = ctx.get_drag_window ();
                 Gdk.Rectangle app_rect, drag_rect, intersect_rect;
 

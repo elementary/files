@@ -82,6 +82,29 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         return row;
     }
 
+    private void clear () {
+        foreach (Gtk.Widget child in get_children ()) {
+            remove (child);
+            if (child is SidebarItemInterface) {
+                ((SidebarItemInterface)child).destroy_bookmark ();
+            }
+        }
+    }
+
+    public bool has_uri (string uri, out unowned SidebarItemInterface? row = null) {
+        row = null;
+        foreach (unowned Gtk.Widget child in get_children ()) {
+            if (child is SidebarItemInterface) {
+                if (((SidebarItemInterface)child).uri == uri) {
+                    row = (SidebarItemInterface)child;
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
         var row = add_bookmark (plugin_item.name,
                                 plugin_item.uri,
@@ -210,7 +233,7 @@ public class Sidebar.BookmarkListBox : Gtk.ListBox, Sidebar.SidebarListInterface
         }
     }
 
-    public override bool remove_item_by_id (uint32 id) {
+    public bool remove_item_by_id (uint32 id) {
         bool removed = false;
         this.@foreach ((child) => {
             if (child is SidebarItemInterface) {

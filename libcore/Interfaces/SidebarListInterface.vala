@@ -21,9 +21,11 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public interface Sidebar.SidebarListInterface : Gtk.Container {
+public interface Sidebar.SidebarListInterface : Object {
     public abstract Files.SidebarInterface sidebar { get; construct; }
 
+    public abstract bool remove_item_by_id (uint32 id);
+    public abstract bool has_uri (string uri, out unowned SidebarItemInterface? row = null);
     public abstract void select_item (SidebarItemInterface? item);
     public abstract void unselect_all_items ();
 
@@ -36,41 +38,7 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
 
     public virtual uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {return 0;}
 
-    public virtual void clear () {
-        foreach (Gtk.Widget child in get_children ()) {
-            remove (child);
-            if (child is SidebarItemInterface) {
-                ((SidebarItemInterface)child).destroy_bookmark ();
-            }
-        }
-    }
-
     public virtual void rename_bookmark_by_uri (string uri, string new_name) {}
-
-    public virtual void remove_bookmark_by_uri (string uri) {
-        SidebarItemInterface? row = null;
-        if (has_uri (uri, out row)) {
-            if (row.permanent) {
-                return;
-            }
-            remove (row);
-            row.destroy_bookmark ();
-        }
-    }
-
-    public virtual bool has_uri (string uri, out unowned SidebarItemInterface? row = null) {
-        row = null;
-        foreach (unowned Gtk.Widget child in get_children ()) {
-            if (child is SidebarItemInterface) {
-                if (((SidebarItemInterface)child).uri == uri) {
-                    row = (SidebarItemInterface)child;
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
 
     public virtual bool select_uri (string uri) {
         unselect_all_items ();
@@ -78,25 +46,6 @@ public interface Sidebar.SidebarListInterface : Gtk.Container {
         if (has_uri (uri, out row)) {
             select_item (row);
             return true;
-        }
-
-        return false;
-    }
-
-    public virtual bool remove_item_by_id (uint32 id) {
-        foreach (Gtk.Widget child in get_children ()) {
-            if (child is SidebarItemInterface) {
-                unowned var row = (SidebarItemInterface)child;
-                if (row.permanent) {
-                    continue;
-                }
-
-                if (row.id == id) {
-                    remove (row);
-                    row.destroy_bookmark ();
-                    return true;
-                }
-            }
         }
 
         return false;

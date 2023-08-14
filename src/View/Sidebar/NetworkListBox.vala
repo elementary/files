@@ -73,6 +73,48 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         return row;
     }
 
+    private void clear () {
+        foreach (Gtk.Widget child in get_children ()) {
+            remove (child);
+            if (child is SidebarItemInterface) {
+                ((SidebarItemInterface)child).destroy_bookmark ();
+            }
+        }
+    }
+
+    public bool has_uri (string uri, out unowned SidebarItemInterface? row = null) {
+        row = null;
+        foreach (unowned Gtk.Widget child in get_children ()) {
+            if (child is SidebarItemInterface) {
+                if (((SidebarItemInterface)child).uri == uri) {
+                    row = (SidebarItemInterface)child;
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public virtual bool remove_item_by_id (uint32 id) {
+        foreach (Gtk.Widget child in get_children ()) {
+            if (child is SidebarItemInterface) {
+                unowned var row = (SidebarItemInterface)child;
+                if (row.permanent) {
+                    continue;
+                }
+
+                if (row.id == id) {
+                    remove (row);
+                    row.destroy_bookmark ();
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
         var row = add_bookmark (plugin_item.name,
                                 plugin_item.uri,
