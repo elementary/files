@@ -5,7 +5,7 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public interface Sidebar.SidebarListInterface : Gtk.Widget {
+public interface Sidebar.SidebarListInterface : Object {
     public abstract Files.SidebarInterface sidebar { get; construct; }
     public abstract Gtk.ListBox list_box { get; internal set; }
 

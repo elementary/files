@@ -8,9 +8,9 @@
 
 public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     private Gtk.ScrolledWindow scrolled_window;
-    private SidebarListInterface bookmark_listbox;
-    private SidebarListInterface device_listbox;
-    private SidebarListInterface network_listbox;
+    private BookmarkListBox bookmark_listbox;
+    private DeviceListBox device_listbox;
+    private NetworkListBox network_listbox;
 
     private string selected_uri = "";
     private bool loading = false;
