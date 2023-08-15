@@ -9,7 +9,7 @@ public interface Sidebar.SidebarListInterface : Object {
     public abstract Files.SidebarInterface sidebar { get; construct; }
     public abstract Gtk.ListBox list_box { get; internal set; }
 
-    public abstract void select_item (SidebarItemInterface? item);
+    public abstract void select_item (Gtk.ListBoxRow? item);
     public abstract void unselect_all_items ();
 
     public virtual void open_item (SidebarItemInterface item, Files.OpenFlag flag = DEFAULT) {
@@ -27,19 +27,19 @@ public interface Sidebar.SidebarListInterface : Object {
         foreach (unowned var child in list_box.get_children ()) {
             list_box.remove (child);
             if (child is SidebarItemInterface) {
-                ((SidebarItemInterface)child).destroy_bookmark ();
+                ((SidebarItemInterface) child).destroy_bookmark ();
             }
         }
     }
 
     public virtual void rename_bookmark_by_uri (string uri, string new_name) {}
 
-    public virtual bool has_uri (string uri, out unowned SidebarItemInterface? row = null) {
+    public virtual bool has_uri (string uri, out unowned Gtk.ListBoxRow? row = null) {
         row = null;
         foreach (unowned var child in list_box.get_children ()) {
             if (child is SidebarItemInterface) {
                 if (((SidebarItemInterface)child).uri == uri) {
-                    row = (SidebarItemInterface)child;
+                    row = (Gtk.ListBoxRow) child;
                     return true;
                 }
             }
@@ -50,7 +50,7 @@ public interface Sidebar.SidebarListInterface : Object {
 
     public virtual bool select_uri (string uri) {
         unselect_all_items ();
-        SidebarItemInterface? row = null;
+        Gtk.ListBoxRow? row = null;
         if (has_uri (uri, out row)) {
             select_item (row);
             return true;
@@ -68,7 +68,7 @@ public interface Sidebar.SidebarListInterface : Object {
                 }
 
                 if (row.id == id) {
-                    list_box.remove (row);
+                    list_box.remove (child);
                     row.destroy_bookmark ();
                     return true;
                 }
@@ -85,8 +85,8 @@ public interface Sidebar.SidebarListInterface : Object {
 
     /* Second parameter is index of target after which the item should be inserted */
     public virtual bool move_item_after (SidebarItemInterface item, int target_index) {
-        return false;
-    } // By default not-reorderable
+        return false; // By default not-reorderable
+    }
 
     // Whether can drop rows or uris onto list itself (as opposed to onto rows in list)
     public virtual bool is_drop_target () {

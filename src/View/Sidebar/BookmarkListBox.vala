@@ -46,19 +46,19 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         });
 
         list_box.row_activated.connect ((row) => {
-            if (row is SidebarItemInterface) {
-                ((SidebarItemInterface) row).activated ();
+            if (row is BookmarkRow) {
+                ((BookmarkRow) row).activated ();
             }
         });
 
         list_box.row_selected.connect ((row) => {
-            if (row is SidebarItemInterface) {
-                select_item ((SidebarItemInterface) row);
+            if (row is BookmarkRow) {
+                select_item (row);
             }
         });
     }
 
-    public SidebarItemInterface? add_bookmark (string label,
+    public BookmarkRow? add_bookmark (string label,
                                                string uri,
                                                Icon gicon,
                                                bool pinned = false,
@@ -67,7 +67,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         return insert_bookmark (label, uri, gicon, -1, pinned, permanent);
     }
 
-    private SidebarItemInterface? insert_bookmark (string label,
+    private BookmarkRow? insert_bookmark (string label,
                                                    string uri,
                                                    Icon gicon,
                                                    int index,
@@ -100,9 +100,9 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
 
-    public void select_item (SidebarItemInterface? item) {
+    public void select_item (Gtk.ListBoxRow? item) {
         if (item != null && item is BookmarkRow) {
-            list_box.select_row ((BookmarkRow)item);
+            list_box.select_row (item);
         } else {
             unselect_all_items ();
         }
@@ -115,7 +115,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     public void refresh () {
         clear ();
 
-        SidebarItemInterface? row;
+        BookmarkRow? row;
         var home_uri = "";
         try {
             home_uri = GLib.Filename.to_uri (PF.UserUtils.get_real_user_home (), null);
@@ -196,7 +196,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
         int pinned = 0; // Assume pinned items only at start and end of list
         foreach (unowned var child in list_box.get_children ()) {
-            if (((SidebarItemInterface)child).pinned) {
+            if (((BookmarkRow)child).pinned) {
                 pinned++;
             } else {
                 break;
@@ -219,8 +219,8 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     public override bool remove_item_by_id (uint32 id) {
         bool removed = false;
         list_box.@foreach ((child) => {
-            if (child is SidebarItemInterface) {
-                unowned var row = (SidebarItemInterface)child;
+            if (child is BookmarkRow) {
+                unowned var row = (BookmarkRow)child;
                if (!row.permanent && row.id == id) {
                     list_box.remove (row);
                     bookmark_list.delete_items_with_uri (row.uri); //Assumes no duplicates
@@ -237,7 +237,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             return null;
         }
 
-        return (SidebarItemInterface?)(list_box.get_row_at_index (index));
+        return (SidebarItemInterface?) list_box.get_row_at_index (index);
     }
 
     public override bool move_item_after (SidebarItemInterface item, int target_index) {
@@ -250,12 +250,12 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             return false;
         }
 
-        list_box.remove (item);
+        list_box.remove ((Gtk.ListBoxRow) item);
 
         if (old_index > target_index) {
-            list_box.insert (item, ++target_index);
+            list_box.insert ((Gtk.ListBoxRow) item, ++target_index);
         } else {
-            list_box.insert (item, target_index);
+            list_box.insert ((Gtk.ListBoxRow) item, target_index);
         }
 
         bookmark_list.move_item_uri (item.uri, target_index - old_index);

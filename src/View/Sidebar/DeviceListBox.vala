@@ -44,14 +44,14 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         volume_monitor.volume_added.connect (bookmark_volume);
 
         list_box.row_activated.connect ((row) => {
-            if (row is SidebarItemInterface) {
-                ((SidebarItemInterface) row).activated ();
+            if (row is BookmarkRow) {
+                ((BookmarkRow) row).activated ();
             }
         });
 
         list_box.row_selected.connect ((row) => {
-            if (row is SidebarItemInterface) {
-                select_item ((SidebarItemInterface) row);
+            if (row is BookmarkRow) {
+                select_item (row);
             }
         });
 
@@ -250,7 +250,7 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         return false;
     }
 
-    public SidebarItemInterface? add_sidebar_row (string label, string uri, Icon gicon) {
+    public BookmarkRow? add_sidebar_row (string label, string uri, Icon gicon) {
         //We do not want devices to be added by external agents
         return null;
     }
@@ -263,9 +263,9 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         }
     }
 
-    public void select_item (SidebarItemInterface? item) {
+    public void select_item (Gtk.ListBoxRow? item) {
         if (item != null && item is AbstractMountableRow) {
-            list_box.select_row ((AbstractMountableRow)item);
+            list_box.select_row (item);
         } else {
             unselect_all_items ();
         }

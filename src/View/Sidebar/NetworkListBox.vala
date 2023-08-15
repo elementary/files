@@ -40,14 +40,14 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         volume_monitor.mount_added.connect (bookmark_mount_if_not_shadowed);
 
         list_box.row_activated.connect ((row) => {
-            if (row is SidebarItemInterface) {
-                ((SidebarItemInterface) row).activated ();
+            if (row is BookmarkRow) {
+                ((BookmarkRow) row).activated ();
             }
         });
 
         list_box.row_selected.connect ((row) => {
-            if (row is SidebarItemInterface) {
-                select_item ((SidebarItemInterface) row);
+            if (row is BookmarkRow) {
+                select_item (row);
             }
         });
 
@@ -61,8 +61,8 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         return strcmp (key1, key2);
     }
 
-    private SidebarItemInterface? add_bookmark (string label, string uri, Icon gicon, bool permanent, bool pinned, string? uuid, Mount? mount) {
-        SidebarItemInterface? row = null;
+    private BookmarkRow? add_bookmark (string label, string uri, Icon gicon, bool permanent, bool pinned, string? uuid, Mount? mount) {
+        Gtk.ListBoxRow? row = null;
 
         if (!has_uri (uri, out row)) {
             row = new NetworkRow (
@@ -79,7 +79,7 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             list_box.add (row);
         }
 
-        return row;
+        return (BookmarkRow) row;
     }
 
     public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
@@ -149,9 +149,9 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         list_box.unselect_all ();
     }
 
-    public void select_item (SidebarItemInterface? item) {
+    public void select_item (Gtk.ListBoxRow? item) {
         if (item != null && item is NetworkRow) {
-            list_box.select_row ((NetworkRow)item);
+            list_box.select_row (item);
         } else {
             unselect_all_items ();
         }
