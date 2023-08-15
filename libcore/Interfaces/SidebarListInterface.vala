@@ -25,10 +25,11 @@ public interface Sidebar.SidebarListInterface : Object {
 
     public virtual void clear () {
         foreach (unowned var child in list_box.get_children ()) {
-            list_box.remove (child);
             if (child is SidebarItemInterface) {
                 ((SidebarItemInterface) child).destroy_bookmark ();
             }
+
+            list_box.remove (child);
         }
     }
 
