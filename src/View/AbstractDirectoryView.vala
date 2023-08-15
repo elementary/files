@@ -314,7 +314,7 @@ namespace Files {
             view = create_view ();
 
             if (view != null) {
-                add (view);
+                child = view;
                 show_all ();
                 connect_drag_drop_signals (view);
                 view.add_events (Gdk.EventMask.POINTER_MOTION_MASK |
