@@ -21,7 +21,7 @@
  */
 
 public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
-    public Files.SidebarInterface sidebar {get; construct;}
+    public Files.SidebarInterface sidebar { get; construct; }
     public Gtk.ListBox list_box { get; internal set; }
 
     private Files.BookmarkList bookmark_list;
