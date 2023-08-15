@@ -20,36 +20,42 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
+public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
+    public Files.SidebarInterface sidebar { get; construct; }
+    public Gtk.ListBox list_box { get; internal set; }
+
     private VolumeMonitor volume_monitor;
 
-    public Files.SidebarInterface sidebar { get; construct; }
-
     public DeviceListBox (Files.SidebarInterface sidebar) {
-        Object (
-            sidebar: sidebar
-        );
+        Object (sidebar: sidebar);
     }
 
     construct {
-        hexpand = true;
+        list_box = new Gtk.ListBox () {
+            hexpand = true,
+            selection_mode = Gtk.SelectionMode.SINGLE
+        };
+
+        add (list_box);
+
         volume_monitor = VolumeMonitor.@get ();
         volume_monitor.drive_connected.connect (bookmark_drive);
         volume_monitor.mount_added.connect (bookmark_mount_without_volume);
         volume_monitor.volume_added.connect (bookmark_volume);
 
-        row_activated.connect ((row) => {
+        list_box.row_activated.connect ((row) => {
             if (row is SidebarItemInterface) {
                 ((SidebarItemInterface) row).activated ();
             }
         });
-        row_selected.connect ((row) => {
+
+        list_box.row_selected.connect ((row) => {
             if (row is SidebarItemInterface) {
                 select_item ((SidebarItemInterface) row);
             }
         });
 
-        set_sort_func (device_sort_func);
+        list_box.set_sort_func (device_sort_func);
     }
 
     private int device_sort_func (Gtk.ListBoxRow? row1, Gtk.ListBoxRow? row2) {
@@ -105,7 +111,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
                 );
             }
 
-            add (new_bm);
+            list_box.add (new_bm);
 
             show_all ();
             bm = new_bm;
@@ -167,7 +173,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     public override void refresh_info () {
-        get_children ().@foreach ((item) => {
+        list_box.get_children ().@foreach ((item) => {
             if (item is AbstractMountableRow) {
                 ((AbstractMountableRow)item).update_free_space ();
             }
@@ -229,7 +235,7 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
         var searched_uuid = uuid != null ? uuid : fallback;
 
         if (searched_uuid != null) {
-            foreach (unowned var child in get_children ()) {
+            foreach (unowned var child in list_box.get_children ()) {
                 row = null;
                 if (child is AbstractMountableRow) {
                     row = (AbstractMountableRow)child;
@@ -250,16 +256,16 @@ public class Sidebar.DeviceListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
     }
 
     public void unselect_all_items () {
-        foreach (unowned var child in get_children ()) {
+        foreach (unowned var child in list_box.get_children ()) {
             if (child is AbstractMountableRow) {
-                unselect_row ((AbstractMountableRow)child);
+                list_box.unselect_row ((AbstractMountableRow)child);
             }
         }
     }
 
     public void select_item (SidebarItemInterface? item) {
         if (item != null && item is AbstractMountableRow) {
-            select_row ((AbstractMountableRow)item);
+            list_box.select_row ((AbstractMountableRow)item);
         } else {
             unselect_all_items ();
         }

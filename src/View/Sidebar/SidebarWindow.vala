@@ -178,13 +178,6 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         return true;
     }
 
-    public bool remove_item_by_id (uint32 item_id) {
-        // We do not know which listbox the row is in so try remove from each in turn
-        return bookmark_listbox.remove_item_by_id (item_id) ||
-               device_listbox.remove_item_by_id (item_id) ||
-               network_listbox.remove_item_by_id (item_id);
-    }
-
     uint sync_timeout_id = 0;
     public void sync_uri (string location) {
         if (sync_timeout_id > 0) {
