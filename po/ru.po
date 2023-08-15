@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-10 08:19-0700\n"
-"PO-Revision-Date: 2023-06-08 18:07+0000\n"
-"Last-Translator: lenemter <lenemter@gmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
-">\n"
+"PO-Revision-Date: 2023-08-03 17:45+0000\n"
+"Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1724,14 +1724,12 @@ msgid "Fixed Text"
 msgstr "Фиксированный текст"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:93
-#, fuzzy
 msgid "Add Prefix…"
-msgstr "Добавить префикс"
+msgstr "Добавить префикс…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:112
-#, fuzzy
 msgid "Add Suffix…"
-msgstr "Добавить суффикс"
+msgstr "Добавить суффикс…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
 msgid "Basename:"

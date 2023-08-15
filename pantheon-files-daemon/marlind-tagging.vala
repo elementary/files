@@ -33,6 +33,8 @@ valac --pkg sqlite3 --pkg gio-2.0 -o sqlitesample marlin_tagging.vala && ./sqlit
 
 */
 
+/* This is being replaced by storing color info in file metadata but will be kept for a while to provide
+ * transparent transfer of data */
 [DBus (name = "io.elementary.files.db")]
 public class MarlinTags : Object {
     private const string CMD = "INSERT OR REPLACE INTO tags (uri, content_type, color, modified_time, dir) " +

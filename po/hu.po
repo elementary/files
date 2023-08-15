@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-10 08:19-0700\n"
-"PO-Revision-Date: 2023-06-08 18:07+0000\n"
+"PO-Revision-Date: 2023-08-05 15:08+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -830,15 +830,15 @@ msgstr "„%s” megkettőzése"
 #, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "%'d fájl áthelyezése (ebben: „%s”) a következőbe: „%s”"
-msgstr[1] "%'d fájl áthelyezése (ebben: „%s”) a következőbe: „%s”"
+msgstr[0] "%'d fájl áthelyezése (innen: „%s”) a következőbe: „%s”"
+msgstr[1] "%'d fájl áthelyezése (innen: „%s”) a következőbe: „%s”"
 
 #: libcore/marlin-file-operations.c:1213
 #, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "%'d fájl másolása (ebben: „%s”) a következőbe: „%s”"
-msgstr[1] "%'d fájl másolása (ebben: „%s”) a következőbe: „%s”"
+msgstr[0] "%'d fájl másolása (innen: „%s”) a következőbe: „%s”"
+msgstr[1] "%'d fájl másolása (innen: „%s”) a következőbe: „%s”"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -846,8 +846,8 @@ msgstr[1] "%'d fájl másolása (ebben: „%s”) a következőbe: „%s”"
 #, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "%'d fájl megkettőzése (ebben: „%s”)"
-msgstr[1] "%'d fájl megkettőzése (ebben: „%s”)"
+msgstr[0] "%'d fájl megkettőzése (itt: „%s”)"
+msgstr[1] "%'d fájl megkettőzése (itt: „%s”)"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -1697,14 +1697,12 @@ msgid "Fixed Text"
 msgstr "Rögzített szöveg"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:93
-#, fuzzy
 msgid "Add Prefix…"
-msgstr "Előtag hozzáadása"
+msgstr "Előtag hozzáadása…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:112
-#, fuzzy
 msgid "Add Suffix…"
-msgstr "Utótag hozzáadása"
+msgstr "Utótag hozzáadása…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
 msgid "Basename:"

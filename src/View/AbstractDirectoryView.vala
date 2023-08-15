@@ -328,9 +328,7 @@ namespace Files {
                 view.button_release_event.connect (on_view_button_release_event);
                 view.draw.connect (on_view_draw);
                 view.realize.connect (() => {
-                    if (slot.directory.state == Directory.State.LOADED) {
-                        schedule_thumbnail_color_tag_timeout ();
-                    }
+                   schedule_thumbnail_color_tag_timeout ();
                 });
             }
 
@@ -943,10 +941,12 @@ namespace Files {
             }
         }
 
-        private void add_file (Files.File file, Directory dir, bool select = true) {
-            model.add_file (file, dir);
+        // Only called after initial loading finished, in response to files added due to internal or external
+        // file operations
+        private void add_file (Files.File file, Directory dir, bool is_internal = true) {
+            model.insert_sorted (file, dir);
 
-            if (select) { /* This true once view finished loading */
+            if (is_internal) { /* This true once view finished loading */
                 add_gof_file_to_selection (file);
             }
 
@@ -1027,7 +1027,16 @@ namespace Files {
             /* Assume writability on remote locations */
             /**TODO** Reliably determine writability with various remote protocols.*/
             if (is_writable || !slot.directory.is_local) {
-                start_renaming_file (file_to_rename);
+                // Wait for model to sort before starting to rename.
+                Timeout.add (50, () => {
+                    if (model.sort_pending) {
+                        return Source.CONTINUE;
+                    } else {
+                        start_renaming_file (file_to_rename);
+                        return Source.REMOVE;
+                    }
+                });
+
             } else {
                 warning ("You do not have permission to rename this file");
             }
@@ -1335,14 +1344,18 @@ namespace Files {
             if (file != null) {
                 add_file (file, dir, is_internal); /* Only select files added to view by this app */
                 handle_free_space_change ();
+                Idle.add (() => {
+                    update_thumbnail_info_and_plugins (file);
+                    return Source.REMOVE;
+                });
             } else {
                 critical ("Null file added");
             }
         }
 
         private void on_directory_file_loaded (Directory dir, Files.File file) {
-            add_file (file, dir, false); /* Do not select files added during initial load */
-            /* no freespace change signal required */
+            // Do not select or sort files added during initial load.
+            model.add_file (file, dir);
         }
 
         private void on_directory_file_changed (Directory dir, Files.File file) {
@@ -1350,26 +1363,24 @@ namespace Files {
                 /* The slot directory has changed - it can only be the properties */
                 is_writable = slot.directory.file.is_writable ();
             } else {
-                remove_marlin_icon_info_cache (file);
-                model.file_changed (file, dir);
-                /* 2nd parameter is for returned request id if required - we do not use it? */
-                /* This is required if we need to dequeue the request */
+                on_directory_file_icon_changed (dir, file);
+            }
+        }
+
+        private void on_directory_file_icon_changed (Directory dir, Files.File file) {
+            remove_marlin_icon_info_cache (file);
+            model.file_changed (file, dir);
+            Idle.add (() => {
+                update_thumbnail_info_and_plugins (file);
                 if ((!slot.directory.is_network && show_local_thumbnails) ||
                     (show_remote_thumbnails && slot.directory.can_open_files)) {
 
                     thumbnailer.queue_file (file, null, large_thumbnails);
-                    if (plugins != null) {
-                        plugins.update_file_info (file);
-                    }
                 }
-            }
 
-            draw_when_idle ();
-        }
+                return Source.REMOVE;
+            });
 
-        private void on_directory_file_icon_changed (Directory dir, Files.File file) {
-            model.file_changed (file, dir);
-            plugins.update_file_info (file);
             draw_when_idle ();
         }
 
@@ -1419,6 +1430,7 @@ namespace Files {
                 is_writable = false;
             }
 
+            // Wait for view to draw so thumbnails and color tags displayed on first sight
             Idle.add (() => {
                 thaw_tree ();
                 schedule_thumbnail_color_tag_timeout ();
@@ -2323,7 +2335,9 @@ namespace Files {
             }
 
             if (!in_trash) {
-                plugins.hook_context_menu (menu as Gtk.Widget, get_files_for_action ());
+                // We send the actual files - it is up to the plugin to extract target
+                // if needed.  Color tag plugin needs actual file, others need target
+                plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
             }
 
             menu.set_screen (null);
@@ -2753,7 +2767,6 @@ namespace Files {
                 Files.File? file;
                 GLib.List<Files.File> visible_files = null;
                 uint actually_visible = 0;
-
                 if (get_visible_range (out start_path, out end_path)) {
                     sp = start_path;
                     ep = end_path;
@@ -2778,23 +2791,12 @@ namespace Files {
                         file = model.file_for_iter (iter); // Maybe null if dummy row or file being deleted
                         path = model.get_path (iter);
 
-                        if (file != null && !file.is_gone) {
-                            // Only update thumbnail if it is going to be shown
-                            if ((slot.directory.is_network && show_remote_thumbnails) ||
-                                (!slot.directory.is_network && show_local_thumbnails)) {
-
-                                file.query_thumbnail_update (); // Ensure thumbstate up to date
-                                /* Ask thumbnailer only if ThumbState UNKNOWN */
-                                if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
-                                    visible_files.prepend (file);
-                                    if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-                                        actually_visible++;
-                                    }
-                                }
-                            }
-                           /* In any case, ensure color-tag info is correct */
-                            if (plugins != null) {
-                                plugins.update_file_info (file);
+                        update_thumbnail_info_and_plugins (file);
+                        /* Ask thumbnailer only if ThumbState UNKNOWN */
+                        if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
+                            visible_files.prepend (file);
+                            if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
+                                actually_visible++;
                             }
                         }
                         /* check if we've reached the end of the visible range */
@@ -2824,7 +2826,22 @@ namespace Files {
             });
         }
 
+        // Called on individual files when added or changed as well as on all visible files
+        // by schedule_thumbnail_color_tag_timeout.
+        private void update_thumbnail_info_and_plugins (Files.File file) {
+            if (file != null && !file.is_gone) {
+                // Only update thumbnail if it is going to be shown
+                if ((slot.directory.is_network && show_remote_thumbnails) ||
+                    (!slot.directory.is_network && show_local_thumbnails)) {
 
+                    file.query_thumbnail_update (); // Ensure thumbstate up to date
+                }
+               /* In any case, ensure color-tag info and git emblem is correct */
+                if (plugins != null) {
+                    plugins.update_file_info (file);
+                }
+            }
+        }
 /** HELPER AND CONVENIENCE FUNCTIONS */
         /** This helps ensure that file item updates are reflected on screen without too many redraws **/
         uint draw_timeout_id = 0;
@@ -3719,7 +3736,6 @@ namespace Files {
                 critical ("Failed to find rename file in model");
                 return;
             }
-
             /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
             /* The order of the next three lines must not be changed */
             renaming = true;

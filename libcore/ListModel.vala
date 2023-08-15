@@ -152,7 +152,11 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
                 break;
             case ColumnID.COLOR:
                 value = Value (typeof (string));
-                if (file != null && file.color < Files.Preferences.TAGS_COLORS.length) {
+                if (
+                    file != null &&
+                    file.color >= 0 &&
+                    file.color < Files.Preferences.TAGS_COLORS.length
+                ) {
                     value.set_string (Files.Preferences.TAGS_COLORS[file.color]);
                 } else {
                     value.set_string (Files.Preferences.TAGS_COLORS[0]);
@@ -240,15 +244,41 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         }
 
         this.sort_directories_first = sort_directories_first;
-        int sort_column_id;
-        Gtk.SortType order;
-        if (!get_sort_column_id (out sort_column_id, out order)) {
-            sort_column_id = ColumnID.FILENAME;
-            order = Gtk.SortType.ASCENDING;
-        }
+        resort ();
+    }
 
-        set_sort_column_id (Gtk.TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID, order);
-        set_sort_column_id (sort_column_id, order);
+    private uint resort_timeout_id = 0;
+    private bool delay_resort = true;
+    public bool sort_pending {
+        get {
+            return resort_timeout_id > 0;
+        }
+    }
+
+    private void resort () {
+        if (!sort_pending) {
+            resort_timeout_id = Idle.add (() => {
+                if (delay_resort) {
+                    delay_resort = false;
+                    return Source.CONTINUE;
+                } else {
+                    delay_resort = true;
+                    int sort_column_id;
+                    Gtk.SortType order;
+                    if (!get_sort_column_id (out sort_column_id, out order)) {
+                        sort_column_id = ColumnID.FILENAME;
+                        order = Gtk.SortType.ASCENDING;
+                    }
+
+                    set_sort_column_id (Gtk.TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID, order);
+                    set_sort_column_id (sort_column_id, order);
+                    resort_timeout_id = 0;
+                    return Source.REMOVE;
+                }
+            });
+        } else {
+            delay_resort = true;
+        }
     }
 
     public bool get_subdirectory (Gtk.TreePath path, out Files.Directory? dir) {
@@ -339,6 +369,14 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         return false;
     }
 
+    public bool insert_sorted (Files.File file, Files.Directory dir) {
+        if (add_file (file, dir)) {
+            resort ();
+            return true;
+        }
+
+        return false;
+    }
     /* Returns true if the file was not in the model and was added */
     public bool add_file (Files.File file, Files.Directory dir) {
         Gtk.TreeIter? parent_iter, file_iter, dummy_iter;
@@ -355,6 +393,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
                     // Instead of inserting a new row, change the dummy one
                     @set (file_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
                     file_treerow_map.@set (file.uri, new Gtk.TreeRowReference (this, get_path (file_iter)));
+                    // No resorting required
                 }
             } else {
                 critical ("folder item with no child"); // The parent file must be a folder and have at lease a dummy entry
