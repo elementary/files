@@ -25,11 +25,23 @@ public class Files.Renamer : Object {
     public bool can_rename { get; set; default = false; }
     public string directory { get; private set; default = ""; }
     public Gee.ArrayList<RenamerModifier> modifier_chain { get; construct; }
-    public RenamerListBox listbox { get; construct; }
+    public Gtk.ListBox listbox { get; private set; }
+    public SortBy sortby { get; set; default = SortBy.NAME; }
 
     construct {
         modifier_chain = new Gee.ArrayList<RenamerModifier> ();
-        listbox = new RenamerListBox ();
+
+        listbox = new Gtk.ListBox () {
+            can_focus = false,
+            selection_mode = Gtk.SelectionMode.NONE,
+            hexpand = true,
+            vexpand = true
+        };
+        listbox.set_sort_func (sort_func);
+        listbox.invalidate_sort ();
+        listbox.show_all ();
+
+        notify["sortby"].connect (listbox.invalidate_sort);
     }
 
     public void add_files (List<Files.File> files) {
@@ -46,7 +58,8 @@ public class Files.Renamer : Object {
             var dir = Path.get_dirname (path);
             if (dir == directory) {
                 f.ensure_query_info ();
-                var row = listbox.add_file (f);
+                var row = new RenamerListRow (f);
+                listbox.add (row);
                 row.new_name = Path.get_basename (path);
             }
         }
@@ -54,7 +67,7 @@ public class Files.Renamer : Object {
 
     public void rename_files () {
         listbox.get_children ().@foreach ((child) => {
-            var row = (RenamerListBox.RenamerListRow)child;
+            var row = (RenamerListRow)child;
             unowned string output_name = row.new_name;
             var file = row.file;
 
@@ -120,7 +133,7 @@ public class Files.Renamer : Object {
 
         /* Apply basename to each item */
         listbox.get_children ().@foreach ((child) => {
-            var row = (RenamerListBox.RenamerListRow)child;
+            var row = (RenamerListRow)child;
             string input_name = "";
             string extension = "";
             if (custom_basename != null && replacement_text == null) {
@@ -143,7 +156,7 @@ public class Files.Renamer : Object {
             uint index = mod.is_reversed ? n_children - 1 : 0;
             int incr = mod.is_reversed ? -1 : 1;
             listbox.get_children ().@foreach ((child) => {
-                var row = (RenamerListBox.RenamerListRow)child;
+                var row = (RenamerListRow)child;
                 row.new_name = mod.rename (row.new_name, index, row.file);
                 index += incr;
             });
@@ -151,7 +164,7 @@ public class Files.Renamer : Object {
 
         /* Reapply extension and check validity */
         listbox.get_children ().@foreach ((child) => {
-            var row = (RenamerListBox.RenamerListRow)child;
+            var row = (RenamerListRow)child;
             row.new_name = row.new_name.concat (row.extension);
             if (row.new_name == previous_final_name ||
                 invalid_name (row.new_name, row.file)) {
@@ -169,5 +182,20 @@ public class Files.Renamer : Object {
 
         can_rename = !has_invalid;
         updating = false;
+    }
+
+    private int sort_func (Gtk.ListBoxRow row1, Gtk.ListBoxRow row2) {
+        var file1 = ((RenamerListRow)row1).file;
+        var file2 = ((RenamerListRow)row2).file;
+        switch (sortby) {
+            case SortBy.CREATED:
+                return file1.compare_files_by_created (file2);
+            case SortBy.MODIFIED:
+                return file1.compare_files_by_time (file2);
+            case SortBy.SIZE:
+                return file1.compare_files_by_size (file2);
+            default:
+                return file1.compare_by_display_name (file2);
+        }
     }
 }

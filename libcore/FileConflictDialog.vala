@@ -60,8 +60,7 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         Object (
             title: _("File conflict"),
             transient_for: parent,
-            resizable: false,
-            skip_taskbar_hint: true
+            resizable: false
         );
 
         source = Files.File.@get (_source);
@@ -164,18 +163,16 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
 
         var reset_button = new Gtk.Button.with_label (_("Reset"));
 
-        var expander_grid = new Gtk.Grid () {
+        var expander_box = new Gtk.Box (HORIZONTAL, 6) {
             margin_top = 6,
-            margin_bottom = 6,
-            column_spacing = 6,
-            orientation = Gtk.Orientation.HORIZONTAL
+            margin_bottom = 6
         };
+        expander_box.add (rename_entry);
+        expander_box.add (reset_button);
 
-        expander_grid.add (rename_entry);
-        expander_grid.add (reset_button);
-
-        var expander = new Gtk.Expander.with_mnemonic (_("_Select a new name for the destination"));
-        expander.add (expander_grid);
+        var expander = new Gtk.Expander.with_mnemonic (_("_Select a new name for the destination")) {
+            child = expander_box
+        };
 
         apply_all_checkbutton = new Gtk.CheckButton.with_label (_("Apply this action to all files"));
 
@@ -213,16 +210,13 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         comparison_grid.attach (source_time_title_label, 1, 7, 1, 1);
         comparison_grid.attach (source_time_label, 2, 7, 1, 1);
 
-        var grid = new Gtk.Grid () {
-            column_spacing = 12,
-            row_spacing = 6
-        };
-        grid.attach (comparison_grid, 0, 0);
-        grid.attach (expander, 0, 1);
-        grid.attach (apply_all_checkbutton, 0, 2);
-        grid.show_all ();
+        var box = new Gtk.Box (VERTICAL, 6);
+        box.add (comparison_grid);
+        box.add (expander);
+        box.add (apply_all_checkbutton);
+        box.show_all ();
 
-        custom_bin.add (grid);
+        custom_bin.child = box;
 
         source_type_label.bind_property ("visible", source_type_title_label, "visible");
         destination_type_label.bind_property ("visible", destination_type_title_label, "visible");

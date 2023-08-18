@@ -914,7 +914,6 @@ public class Files.Directory : Object {
 
     private void notify_file_added (Files.File gof, bool is_internal) {
         // Do not delay adding file to model - use fallback is_hidden
-        gof.is_hidden = gof.basename.has_prefix (".") || gof.basename.has_prefix ("~");
         if ((!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
             file_added (gof, is_internal);
         }
@@ -1074,19 +1073,20 @@ public class Files.Directory : Object {
         bool already_present = false;
         bool files_added = false;
         Directory? first_dir = cache_lookup_parent (changes.data.from);
-        GLib.File? prev_loc = null;
         if (first_dir != null) {
             foreach (unowned var change in changes) {
-                unowned var loc = change.from;
-                // Each set or changes should refer to the same folder but check anyway
-                if (prev_loc == null || !loc.equal (prev_loc)) {
-                    Files.File gof = first_dir.file_cache_find_or_insert (loc, out already_present, true);
+                // `change.from`` holds the location of the newly created file, not where it came from
+                var dir = cache_lookup_parent (change.from);
+                // Children of newly created folder must have null parent Files.Directory
+                // We expect each set of changes to refer to the same Directory
+                if (dir != null && dir == first_dir) {
+                    Files.File gof = first_dir.file_cache_find_or_insert (change.from, out already_present, true);
                     if (!already_present) {
                         files_added = true;
                         first_dir.notify_file_added (gof, change.is_internal);
                     } // Else ignore files already added from duplicate event or internally
-
-                    prev_loc = loc;
+                } else {
+                    critical ("Unexpected parent of newly created file");
                 }
             }
 

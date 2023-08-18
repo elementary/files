@@ -20,9 +20,7 @@
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
 
-namespace Files.View {
-
-public class PropertiesWindow : AbstractPropertiesDialog {
+public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
     private Gtk.Entry perm_code;
     private bool perm_code_should_update = true;
     private Gtk.Label l_perm;
@@ -65,12 +63,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private GLib.List<DeepCount>? deep_count_directories = null;
 
     private Gee.Set<string>? mimes;
-    private ValueLabel contains_value;
-    private ValueLabel resolution_value;
-    private ValueLabel size_value;
-    private ValueLabel type_value;
-    private KeyLabel contains_key_label;
-    private KeyLabel type_key_label;
+    private Gtk.Label resolution_value;
+    private Gtk.Label size_value;
     private string ftype; /* common type */
     private Gtk.Spinner spinner;
     private int size_warning = 0;
@@ -193,21 +187,17 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         /* create some widgets first (may be hidden by update_selection_size ()) */
         var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), Files.File.IconFlags.NONE);
         if (file_pix != null) {
-            var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
+            var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG) {
+                pixel_size = 48
+            };
             overlay_emblems (file_icon, goffile.emblems_list);
         }
 
         /* Build header box */
         if (!only_one ) {
-            var label = new Gtk.Label (get_selected_label (selected_folders, selected_files));
-            label.halign = Gtk.Align.START;
-            header_title = label;
+            header_title = new Gtk.Label (get_selected_label (selected_folders, selected_files));
         } else if (!goffile.is_writable ()) {
-            var label = new Gtk.Label (goffile.info.get_name ()) {
-                halign = Gtk.Align.START,
-                selectable = true
-            };
-            header_title = label;
+            header_title = new Gtk.Label (goffile.info.get_name ());
         } else {
             entry = new Gtk.Entry ();
             original_name = goffile.info.get_name ();
@@ -235,35 +225,84 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 }
             }
         } else {
+            var label = new Gtk.Label (_("Unable to determine file ownership and permissions"));
+
             perm_grid = new Gtk.Grid () {
-                expand = true,
+                hexpand = true,
+                vexpand = true,
                 valign = Gtk.Align.CENTER
             };
-            perm_grid.add (new Gtk.Label (_("Unable to determine file ownership and permissions")));
+            perm_grid.attach (label, 0, 0);
         }
 
-        add_section (stack, _("Permissions"), PanelType.PERMISSIONS.to_string (), perm_grid);
-        show_all ();
+        stack.add_titled (perm_grid, PanelType.PERMISSIONS.to_string (), _("Permissions"));
+
+        var stack_switcher = new Gtk.StackSwitcher () {
+            homogeneous = true,
+            margin_top = 12,
+            stack = stack
+        };
+
+        layout.attach (stack_switcher, 0, 1, 2);
+        layout.show_all ();
+
+        present ();
     }
 
     private void update_size_value () {
         size_value.label = format_size (total_size);
-        contains_value.label = get_contains_value (folder_count, file_count);
-        update_widgets_state ();
+
+        if (uncounted_folders == 0) {
+            spinner.hide ();
+        }
+
+        if (only_one && ftype != null) {
+            var type_key_label = make_key_label (_("Type:"));
+            var type_value = make_value_label (goffile.formated_type);
+
+            info_grid.attach (type_key_label, 0, 2);
+            info_grid.attach_next_to (type_value, type_key_label, RIGHT);
+        }
+
+        if ((header_title is Gtk.Entry) && !view.in_recent) {
+            int start_offset= 0, end_offset = -1;
+
+            FileUtils.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset,
+                                         goffile.is_folder ());
+
+            ((Gtk.Entry) header_title).select_region (start_offset, end_offset);
+        }
+
+        var contains_value = get_contains_value (folder_count, file_count);
+        /* Only show 'contains' label when only folders selected - otherwise could be ambiguous whether
+         * the "contained files" counted are only in the subfolders or not.*/
+        /* Only show 'contains' label when folders selected are not empty */
+        if (selected_files == 0 && contains_value.length > 0) {
+            var contains_key_label = make_key_label (_("Contains:"));
+            var contains_label = make_value_label (contains_value);
+
+            info_grid.attach (contains_key_label, 0, 3);
+            info_grid.attach_next_to (contains_label, contains_key_label, RIGHT);
+        }
 
         if (size_warning > 0) {
-            var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
-            size_warning_image.halign = Gtk.Align.START;
-            size_warning_image.hexpand = true;
-            var warning = ngettext ("%i file could not be read due to permissions or other errors.",
-                                    "%i files could not be read due to permissions or other errors.",
-                                    (ulong) size_warning).printf (size_warning);
+            var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", MENU) {
+                halign = START,
+                hexpand = true
+            };
+
+            var warning = ngettext (
+                "%i file could not be read due to permissions or other errors.",
+                "%i files could not be read due to permissions or other errors.",
+                (ulong) size_warning
+            ).printf (size_warning);
 
             size_warning_image.tooltip_markup = "<b>" + _("Actual Size Could Be Larger") + "</b>" + "\n" + warning
                                                 ;
-            info_grid.attach_next_to (size_warning_image, size_value, Gtk.PositionType.RIGHT);
-            info_grid.show_all ();
+            info_grid.attach_next_to (size_warning_image, size_value, RIGHT);
         }
+
+        info_grid.show_all ();
     }
 
     private void update_selection_size () {
@@ -522,32 +561,16 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
     private void construct_info_panel (Files.File file) {
         /* Have to have these separate as size call is async */
-        var size_key_label = new KeyLabel (_("Size:"));
+        var size_key_label = make_key_label (_("Size:"));
 
         spinner = new Gtk.Spinner ();
         spinner.halign = Gtk.Align.START;
 
-        size_value = new ValueLabel ("");
+        size_value = make_value_label ("");
 
-        type_key_label = new KeyLabel (_("Type:"));
-        type_value = new ValueLabel ("");
-
-        contains_key_label = new KeyLabel (_("Contains:"));
-        contains_value = new ValueLabel ("");
-
-        /* Dialog may get displayed after these labels are hidden so we set no_show_all to true */
-        type_key_label.no_show_all = true;
-        type_value.no_show_all = true;
-        contains_key_label.no_show_all = true;
-        contains_value.no_show_all = true;
-
-        info_grid.attach (size_key_label, 0, 1, 1, 1);
-        info_grid.attach_next_to (spinner, size_key_label, Gtk.PositionType.RIGHT);
-        info_grid.attach_next_to (size_value, size_key_label, Gtk.PositionType.RIGHT);
-        info_grid.attach (type_key_label, 0, 2, 1, 1);
-        info_grid.attach_next_to (type_value, type_key_label, Gtk.PositionType.RIGHT, 3, 1);
-        info_grid.attach (contains_key_label, 0, 3, 1, 1);
-        info_grid.attach_next_to (contains_value, contains_key_label, Gtk.PositionType.RIGHT, 3, 1);
+        info_grid.attach (size_key_label, 0, 1);
+        info_grid.attach_next_to (spinner, size_key_label, RIGHT);
+        info_grid.attach_next_to (size_value, size_key_label, RIGHT);
 
         int n = 4;
 
@@ -556,8 +579,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             var time_created = FileUtils.get_formatted_time_attribute_from_info (file.info,
                                                                                  FileAttribute.TIME_CREATED);
             if (time_created != "") {
-                var key_label = new KeyLabel (_("Created:"));
-                var value_label = new ValueLabel (time_created);
+                var key_label = make_key_label (_("Created:"));
+                var value_label = make_value_label (time_created);
                 info_grid.attach (key_label, 0, n, 1, 1);
                 info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
                 n++;
@@ -567,8 +590,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                                                                                   FileAttribute.TIME_MODIFIED);
 
             if (time_modified != "") {
-                var key_label = new KeyLabel (_("Modified:"));
-                var value_label = new ValueLabel (time_modified);
+                var key_label = make_key_label (_("Modified:"));
+                var value_label = make_value_label (time_modified);
                 info_grid.attach (key_label, 0, n, 1, 1);
                 info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
                 n++;
@@ -579,8 +602,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             var deletion_date = FileUtils.get_formatted_time_attribute_from_info (file.info,
                                                                                   FileAttribute.TRASH_DELETION_DATE);
             if (deletion_date != "") {
-                var key_label = new KeyLabel (_("Deleted:"));
-                var value_label = new ValueLabel (deletion_date);
+                var key_label = make_key_label (_("Deleted:"));
+                var value_label = make_value_label (deletion_date);
                 info_grid.attach (key_label, 0, n, 1, 1);
                 info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
                 n++;
@@ -589,23 +612,23 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         var ftype = filetype (file);
 
-        var mimetype_key = new KeyLabel (_("Media type:"));
-        var mimetype_value = new ValueLabel (ftype);
+        var mimetype_key = make_key_label (_("Media type:"));
+        var mimetype_value = make_value_label (ftype);
         info_grid.attach (mimetype_key, 0, n, 1, 1);
         info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
         n++;
 
         if (only_one && "image" in ftype) {
-            var resolution_key = new KeyLabel (_("Resolution:"));
-            resolution_value = new ValueLabel (resolution (file));
+            var resolution_key = make_key_label (_("Resolution:"));
+            resolution_value = make_value_label (resolution (file));
             info_grid.attach (resolution_key, 0, n, 1, 1);
             info_grid.attach_next_to (resolution_value, resolution_key, Gtk.PositionType.RIGHT, 3, 1);
             n++;
         }
 
         if (got_common_location ()) {
-            var location_key = new KeyLabel (_("Location:"));
-            var location_value = new ValueLabel (location (file));
+            var location_key = make_key_label (_("Location:"));
+            var location_value = make_value_label (location (file));
             location_value.ellipsize = Pango.EllipsizeMode.MIDDLE;
             location_value.max_width_chars = 32;
             info_grid.attach (location_key, 0, n, 1, 1);
@@ -613,17 +636,17 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             n++;
         }
 
-        if (only_one && file.info.get_is_symlink ()) {
-            var key_label = new KeyLabel (_("Target:"));
-            var value_label = new ValueLabel (file.info.get_symlink_target ());
+        if (only_one && file.info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_SYMLINK)) {
+            var key_label = make_key_label (_("Target:"));
+            var value_label = make_value_label (file.info.get_attribute_byte_string (GLib.FileAttribute.STANDARD_SYMLINK_TARGET));
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;
         }
 
         if (file.is_trashed ()) {
-            var key_label = new KeyLabel (_("Original Location:"));
-            var value_label = new ValueLabel (original_location (file));
+            var key_label = make_key_label (_("Original Location:"));
+            var value_label = make_value_label (original_location (file));
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;
@@ -665,7 +688,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
             combo.changed.connect (combo_open_with_changed);
 
-            var key_label = new KeyLabel (_("Open with:"));
+            var key_label = make_key_label (_("Open with:"));
 
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (combo, key_label, Gtk.PositionType.RIGHT);
@@ -934,20 +957,20 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         if (owner_user_choice == null) {
             return null;
         } else {
-            var owner_user_label = new KeyLabel (_("Owner:"));
-            var group_combo_label = new KeyLabel (_("Group:"));
+            var owner_user_label = make_key_label (_("Owner:"));
+            var group_combo_label = make_key_label (_("Group:"));
             group_combo_label.margin_bottom = 12;
 
             var group_combo = create_group_choice ();
             group_combo.margin_bottom = 12;
 
-            var owner_label = new KeyLabel (_("Owner:"));
+            var owner_label = make_key_label (_("Owner:"));
             perm_button_user = create_perm_choice (Permissions.Type.USER);
 
-            var group_label = new KeyLabel (_("Group:"));
+            var group_label = make_key_label (_("Group:"));
             perm_button_group = create_perm_choice (Permissions.Type.GROUP);
 
-            var other_label = new KeyLabel (_("Everyone:"));
+            var other_label = make_key_label (_("Everyone:"));
             perm_button_other = create_perm_choice (Permissions.Type.OTHER);
 
             perm_code = new Gtk.Entry ();
@@ -1269,41 +1292,4 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return folders_txt;
         }
     }
-
-    /** Hide certain widgets under certain conditions **/
-    private void update_widgets_state () {
-        if (uncounted_folders == 0) {
-            spinner.hide ();
-        }
-
-        if (!only_one) {
-            type_key_label.hide ();
-            type_value.hide ();
-        } else {
-            if (ftype != null) {
-                type_value.label = goffile.formated_type;
-            }
-        }
-
-        if ((header_title is Gtk.Entry) && !view.in_recent) {
-            int start_offset= 0, end_offset = -1;
-
-            FileUtils.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset,
-                                         goffile.is_folder ());
-
-            ((Gtk.Entry) header_title).select_region (start_offset, end_offset);
-        }
-
-        /* Only show 'contains' label when only folders selected - otherwise could be ambiguous whether
-         * the "contained files" counted are only in the subfolders or not.*/
-        /* Only show 'contains' label when folders selected are not empty */
-        if (selected_files > 0 || contains_value.label.length < 1) {
-            contains_key_label.hide ();
-            contains_value.hide ();
-        } else { /* Make sure it shows otherwise (may have been hidden by previous call)*/
-            contains_key_label.show ();
-            contains_value.show ();
-        }
-    }
-}
 }

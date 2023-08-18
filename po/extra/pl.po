@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 19:58+0000\n"
-"PO-Revision-Date: 2023-05-14 18:06+0000\n"
+"POT-Creation-Date: 2023-07-10 08:19-0700\n"
+"PO-Revision-Date: 2023-08-08 01:00+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
 "Language: pl\n"
@@ -83,31 +83,35 @@ msgstr ""
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
-#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:102
-msgid "Improvements:"
-msgstr "Ulepszenia:"
-
-#: data/files.metainfo.xml.in.in:67
-msgid "Implement a bulk rename functionality"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:84
-#: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:122
-#: data/files.metainfo.xml.in.in:137
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:82
+#: data/files.metainfo.xml.in.in:97 data/files.metainfo.xml.in.in:119
+#: data/files.metainfo.xml.in.in:135 data/files.metainfo.xml.in.in:150
 msgid "Minor updates:"
 msgstr "Drobne aktualizacje:"
 
-#: data/files.metainfo.xml.in.in:71
-msgid "Use a colorful level bar to show disk usage in the properties dialog"
-msgstr "Kolorowy pasek poziomu zapełnienia dysku w oknie właściwości"
+#: data/files.metainfo.xml.in.in:67
+msgid "Design updates for Bulk Rename"
+msgstr "Aktualizacja design'u dla wielokrotnej zmiany nazwy"
 
-#: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:86
-#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:124
-#: data/files.metainfo.xml.in.in:139
+#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:85
+#: data/files.metainfo.xml.in.in:99 data/files.metainfo.xml.in.in:121
+#: data/files.metainfo.xml.in.in:137 data/files.metainfo.xml.in.in:152
 msgid "Updated translations"
 msgstr "Zaktualizowane tłumaczenia"
 
-#: data/files.metainfo.xml.in.in:104
+#: data/files.metainfo.xml.in.in:78 data/files.metainfo.xml.in.in:115
+msgid "Improvements:"
+msgstr "Ulepszenia:"
+
+#: data/files.metainfo.xml.in.in:80
+msgid "Implement a bulk rename functionality"
+msgstr "Implementacja funkcji wielokrotnej zmiany nazwy"
+
+#: data/files.metainfo.xml.in.in:84
+msgid "Use a colorful level bar to show disk usage in the properties dialog"
+msgstr "Kolorowy pasek poziomu zapełnienia dysku w oknie właściwości"
+
+#: data/files.metainfo.xml.in.in:117
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""

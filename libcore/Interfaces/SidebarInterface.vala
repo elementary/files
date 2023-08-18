@@ -42,7 +42,6 @@ public interface Files.SidebarInterface : Gtk.Widget {
         public signal bool request_focus ();
         public signal void sync_needed ();
         public signal void path_change_request (string uri, Files.OpenFlag flag);
-        public signal void connect_server_request ();
         public abstract void add_favorite_uri (string uri, string custom_name = "");
         public abstract bool has_favorite_uri (string uri);
         public abstract void sync_uri (string uri);

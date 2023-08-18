@@ -26,18 +26,10 @@ interface MarlinDaemon : Object {
 public class Files.Plugins.CTags : Files.Plugins.Base {
     /* May be used by more than one directory simultaneously so do not make assumptions */
     private MarlinDaemon daemon;
-    private bool ignore_dir;
-
-    private Queue<Files.File> unknowns;
-    private Queue<Files.File> knowns;
-    private uint idle_consume_unknowns = 0;
-    private uint t_consume_knowns = 0;
     private Cancellable cancellable;
     private GLib.List<Files.File> current_selected_files;
 
     public CTags () {
-        unknowns = new Queue<Files.File> ();
-        knowns = new Queue<Files.File> ();
         cancellable = new Cancellable ();
 
         try {
@@ -48,197 +40,35 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         }
     }
 
-    /* Arbitrary user dir list */
-    private const string USER_DIRS[2] = {
-        "file:///home",
-        "file:///media"
-    };
-
-    private const string IGNORE_SCHEMES [5] = {
-        "ftp",
-        "sftp",
-        "afp",
-        "dav",
-        "davs"
-    };
-
-    private bool f_is_user_dir (GLib.File dir) {
-        return_val_if_fail (dir != null, false);
-        var uri = dir.get_uri ();
-
-        foreach (var duri in USER_DIRS) {
-            if (Posix.strncmp (uri, duri, duri.length) == 0) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private bool f_ignore_dir (GLib.File dir) {
-        return_val_if_fail (dir != null, true);
-        var uri = dir.get_uri ();
-
-        if (uri == "file:///tmp") {
-            return true;
-        }
-
-        var uri_scheme = Uri.parse_scheme (uri);
-        foreach (var scheme in IGNORE_SCHEMES) {
-            if (scheme == uri_scheme) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
-        /* It is possible more than one directory will call this simultaneously so do not cancel */
-    }
-
-    private void add_entry (Files.File gof, GenericArray<Variant> entries) {
-        var entry = new Variant.strv (
-                        { gof.uri,
-                          gof.get_ftype (),
-                          gof.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED).to_string (),
-                          gof.color.to_string ()
-                        }
-                    );
-
-        entries.add (entry);
-    }
-
-    private async void consume_knowns_queue () {
-        var entries = new GenericArray<Variant> ();
-        Files.File gof;
-        while ((gof = knowns.pop_head ()) != null) {
-            add_entry (gof, entries);
-        }
-
-        if (entries.length > 0) {
-            debug ("--- known entries %d", entries.length);
-            try {
-                yield daemon.record_uris (entries.data);
-            } catch (Error err) {
-                warning ("%s", err.message);
-            }
-        }
-    }
-
-    private async void consume_unknowns_queue () {
-        Files.File gof = null;
-        /* Length of unknowns queue limited to visible files by AbstractDirectoryView.
-         * Avoid querying whole directory in case very large. */
-        while ((gof = unknowns.pop_head ()) != null) {
-            try {
-                FileInfo? info = gof.info; /* file info should already be up to date at this point */
-                if (info == null) {
-                    info = yield gof.location.query_info_async (FileAttribute.STANDARD_CONTENT_TYPE, 0, 0, cancellable);
-                }
-
-                add_to_knowns_queue (gof, info);
-            } catch (Error err2) {
-                warning ("query_info failed: %s %s", err2.message, gof.uri);
-            }
-
-        }
-    }
-
-    private void add_to_knowns_queue (Files.File file, FileInfo info) {
-        file.tagstype = info.get_content_type ();
-        file.update_type ();
-
-        knowns.push_head (file);
-        if (t_consume_knowns != 0) {
-            Source.remove (t_consume_knowns);
-            t_consume_knowns = 0;
-        }
-
-        t_consume_knowns = Timeout.add (300, () => {
-                                        consume_knowns_queue.begin ();
-                                        t_consume_knowns = 0;
-                                        return GLib.Source.REMOVE;
-                                        });
-    }
-
-    private void add_to_unknowns_queue (Files.File file) {
-        if (file.get_ftype () == "application/octet-stream") {
-            unknowns.push_head (file);
-
-            if (idle_consume_unknowns == 0) {
-                idle_consume_unknowns = Idle.add (() => {
-                      consume_unknowns_queue.begin ();
-                      idle_consume_unknowns = 0;
-                      return GLib.Source.REMOVE;
-                  });
-            }
-        }
-    }
-
     private async void rreal_update_file_info (Files.File file) {
         try {
-            if (!file.exists) {
+            if (!file.exists || file.color >= 0) {
+                // Delete the entry if file no longer exists or we obtained color info from metadata
                 yield daemon.delete_entry (file.uri);
                 return;
             }
 
-            var rc = yield daemon.get_uri_infos (file.uri);
-
-            VariantIter iter = rc.iterator ();
-            assert (iter.n_children () == 1);
-            VariantIter row_iter = iter.next_value ().iterator ();
-
-            if (row_iter.n_children () == 3) {
-                uint64 modified = int64.parse (row_iter.next_value ().get_string ());
-                unowned string type = row_iter.next_value ().get_string ();
-                var color = int.parse (row_iter.next_value ().get_string ());
-                if (file.color != color) {
-                    file.color = color;
-                    file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
-                }
-                /* check modified time field only on user dirs. We don't want to query again and
-                 * again system directories */
-
-                /* Is this necessary ? */
-                if (file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified &&
-                    f_is_user_dir (file.directory)) {
-
-                    add_to_unknowns_queue (file);
-                    return;
-                }
-
-                if (type.length > 0 && file.get_ftype () == "application/octet-stream") {
-                    if (type != "application/octet-stream") {
-                        file.tagstype = type;
-                        file.update_type ();
-                    }
-                }
+            var info = yield file.location.query_info_async ("metadata::color-tag", FileQueryInfoFlags.NONE);
+            if (info.has_attribute ("metadata::color-tag")) {
+                file.color = int.parse (info.get_attribute_string ("metadata::color-tag"));
+                file.icon_changed ();
             } else {
-                add_to_unknowns_queue (file);
-            }
-        } catch (Error err) {
-            warning ("%s", err.message);
-        }
-    }
+                // Look for color in Files daemon database
+                var rc = yield daemon.get_uri_infos (file.uri);
 
-    private async void rreal_update_file_info_for_recent (Files.File file, string? target_uri) {
-        if (target_uri == null) { /* e.g. for recent:/// */
-            return;
-        }
+                VariantIter iter = rc.iterator ();
+                assert (iter.n_children () == 1);
+                VariantIter row_iter = iter.next_value ().iterator ();
 
-        try {
-            var rc = yield daemon.get_uri_infos (target_uri);
-
-            VariantIter iter = rc.iterator ();
-            assert (iter.n_children () == 1);
-            VariantIter row_iter = iter.next_value ().iterator ();
-
-            if (row_iter.n_children () == 3) {
-                /* Only interested in color tag in recent:// at the moment */
-                row_iter.next_value ();
-                row_iter.next_value ();
-                file.color = int.parse (row_iter.next_value ().get_string ());
+                if (row_iter.n_children () == 3) {
+                    /* Only interested in color tag */
+                    int64.parse (row_iter.next_value ().get_string ()); // Skip modified date
+                    row_iter.next_value ().get_string (); // Skip file type
+                    file.color = int.parse (row_iter.next_value ().get_string ());
+                    file.location.set_attribute_string ("metadata::color-tag", file.color.to_string (), FileQueryInfoFlags.NONE);
+                    file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
+                    yield daemon.delete_entry (file.uri);
+                }
             }
         } catch (Error err) {
             warning ("%s", err.message);
@@ -246,19 +76,13 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     }
 
     public override void update_file_info (Files.File file) {
-        if (file.info != null && !f_ignore_dir (file.directory) &&
-            (!file.is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
-
-            if (file.location.has_uri_scheme ("recent")) {
-                rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());
-            } else {
-                rreal_update_file_info.begin (file);
-            }
+        if (!file.is_hidden || Files.Preferences.get_default ().show_hidden_files) {
+            rreal_update_file_info.begin (file);
         }
     }
 
     public override void context_menu (Gtk.Widget widget, GLib.List<Files.File> selected_files) {
-        if (selected_files == null || ignore_dir) {
+        if (selected_files == null) {
             return;
         }
 
@@ -285,7 +109,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     }
 
     private async void set_color (GLib.List<Files.File> files, int n) throws IOError {
-        var entries = new GenericArray<Variant> ();
         foreach (unowned Files.File file in files) {
             if (!(file is Files.File)) {
                 continue;
@@ -300,23 +123,19 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
             if (target_file.color != n) {
                 target_file.color = n;
-                add_entry (target_file, entries);
+                target_file.location.set_attribute_string ("metadata::color-tag", n.to_string (), FileQueryInfoFlags.NONE);
+                target_file.icon_changed ();
             }
         }
 
-        if (entries != null) {
-            try {
-                yield daemon.record_uris (entries.data);
-                /* If the color of the target is set while in recent view, we have to
-                 * update the recent view to reflect this */
-                foreach (unowned Files.File file in files) {
-                    if (file.location.has_uri_scheme ("recent")) {
-                        update_file_info (file);
-                        file.icon_changed (); /* Just need to trigger redraw */
-                    }
+        if (files != null) {
+            /* If the color of the target is set while in recent view, we have to
+             * update the recent view to reflect this */
+            foreach (unowned Files.File file in files) {
+                if (file.location.has_uri_scheme ("recent")) {
+                    file.color = n;
+                    file.icon_changed (); /* Just need to trigger redraw */
                 }
-            } catch (Error err) {
-                warning ("%s", err.message);
             }
         }
     }
@@ -399,7 +218,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         }
 
         public void check_color (int color) {
-            if (color == 0 || color > color_buttons.size) {
+            if (color <= 0 || color > color_buttons.size) {
                 return;
             }
 

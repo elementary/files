@@ -2082,7 +2082,7 @@ test_dir_is_parent (GFile *child, GFile *root)
                               g_cancellable_get_current (),
                               NULL);
 
-    if (g_file_info_get_is_symlink (info)) {
+    if (g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK)) {
         target = g_file_new_for_path (
                     g_file_info_get_attribute_byte_string (info, G_FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET)
                  );

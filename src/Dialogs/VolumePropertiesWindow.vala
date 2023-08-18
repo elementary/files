@@ -20,10 +20,7 @@
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
 
-namespace Files.View {
-
-public class VolumePropertiesWindow : AbstractPropertiesDialog {
-
+public class Files.View.VolumePropertiesWindow : AbstractPropertiesDialog {
     public VolumePropertiesWindow (GLib.Mount? mount, Gtk.Window parent) {
         base (_("Disk Properties"), parent);
 
@@ -54,8 +51,9 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
         }
 
         /* Build the header box */
-        var file_icon = new Gtk.Image ();
-        file_icon.set_from_gicon (mount_icon, Gtk.IconSize.DIALOG);
+        var file_icon = new Gtk.Image.from_gicon (mount_icon, Gtk.IconSize.DIALOG) {
+            pixel_size = 48
+        };
 
         if (file_icon != null) {
             var emblems_list = new GLib.List<string> ();
@@ -71,14 +69,12 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
             overlay_emblems (file_icon, emblems_list);
         }
 
-        header_title = new Gtk.Label (mount_name) {
-            halign = Gtk.Align.START
-        };
+        header_title = new Gtk.Label (mount_name);
 
         create_header_title ();
 
-        var location_label = new KeyLabel (_("Location:"));
-        var location_value = new ValueLabel ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) +
+        var location_label = make_key_label (_("Location:"));
+        var location_value = make_value_label ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) +
                                              "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
 
         info_grid.attach (location_label, 0, 1, 1, 1);
@@ -87,8 +83,8 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
         uint64 used_space = 0;
 
         if (info != null && info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
-            var key_label = new KeyLabel (_("Format:"));
-            var value_label = new ValueLabel (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
+            var key_label = make_key_label (_("Format:"));
+            var value_label = make_value_label (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
 
             info_grid.attach (key_label, 0, 2, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT);
@@ -99,5 +95,4 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
         create_storage_bar (info, 3);
         show_all ();
     }
-}
 }
