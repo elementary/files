@@ -70,7 +70,10 @@ posix_dep = vala.find_library('posix')
 linux_dep = vala.find_library('linux')
 math_dep = cc.find_library('m')
 
-plank_dep = dependency('plank', version: '>=0.10.9')
+plank_dep = dependency('plank', version: '>=0.10.9', required: get_option('with-plank'))
+if (plank_dep.found())
+    add_project_arguments('--define=HAVE_PLANK', language: 'vala')
+endif
 
 zeitgeist_dep = dependency('zeitgeist-2.0', required: get_option('with-zeitgeist'))
 if (zeitgeist_dep.found())
@@ -121,6 +124,5 @@ subdir('po')
 
 gnome.post_install(
     glib_compile_schemas: true,
-    gtk_update_icon_cache: true,
     update_desktop_database: true
 )

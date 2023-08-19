@@ -376,9 +376,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                     var device = ctx.get_device ();
                     int x, y;
                     device.get_position (null, out x, out y);
+#if HAVE_PLANK
                     Plank.PoofWindow poof_window;
                     poof_window = Plank.PoofWindow.get_default ();
                     poof_window.show_at (x, y);
+#endif
                     return true;
                 }
             }

@@ -1,2 +1,3 @@
+option('with-plank', type : 'feature', value : 'auto', description : 'Use Plank poof window')
 option('with-zeitgeist', type : 'feature', value : 'auto', description : 'Add Zeitgeist support')
 option('systemduserunitdir', type: 'string', value: '', description: 'custom directory for systemd user units, or \'no\' to disable')

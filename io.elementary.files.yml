@@ -1,0 +1,75 @@
+app-id: io.elementary.files
+
+runtime: io.elementary.Platform
+runtime-version: '7.2'
+sdk: io.elementary.Sdk
+
+command: io.elementary.files
+
+finish-args:
+  - '--device=dri'
+  - '--share=ipc'
+  - '--socket=fallback-x11'
+  - '--socket=wayland'
+  - '--share=network'
+
+modules:
+  - name: canberra
+    config-opts:
+      - '--enable-gstreamer'
+      - '--enable-pulse'
+      - '--disable-oss'
+      - '--disable-static'
+      - '--with-builtin=dso'
+    sources:
+      - type: git
+        url: http://git.0pointer.net/clone/libcanberra.git
+        disable-shallow-clone: true
+
+  - name: cloudproviders
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/World/libcloudproviders.git
+
+  - name: git2-glib
+    buildsystem: meson
+    builddir: true
+    config-opts:
+      - '-Dpython=false'
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/libgit2-glib.git
+        tag: v1.1.0
+    modules:
+      - name: ssh2
+        buildsystem: cmake-ninja
+        config-opts:
+          - '-DCMAKE_BUILD_TYPE=RelWithDebInfo'
+          - '-DBUILD_SHARED_LIBS:BOOL=ON'
+          - '-DBUILD_EXAMPLES:BOOL=OFF'
+          - '-DBUILD_TESTING:BOOL=OFF'
+          - '-DCMAKE_INSTALL_LIBDIR:PATH=/app/lib'
+        cleanup:
+          - '/share/man'
+          - '/share/doc'
+        sources:
+          - type: git
+            url: https://github.com/libssh2/libssh2.git
+            tag: libssh2-1.10.0
+      - name: libgit2
+        buildsystem: cmake-ninja
+        config-opts:
+          - '-DCMAKE_BUILD_TYPE=RelWithDebInfo'
+        sources:
+          - type: git
+            url: https://github.com/libgit2/libgit2.git
+            tag: 'v1.5.1'
+
+  - name: files
+    buildsystem: meson
+    config-opts:
+      - '-Dsystemduserunitdir=no'
+    sources:
+      - type: dir
+        path: .
