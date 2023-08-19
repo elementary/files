@@ -1,3 +1,3 @@
 [D-BUS Service]
-Name=@exec_name@.db
+Name=@exec_name@
 Exec=@install_prefix@/@bin_dir@/@exec_name@-daemon

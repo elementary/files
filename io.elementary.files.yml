@@ -8,10 +8,14 @@ command: io.elementary.files
 
 finish-args:
   - '--device=dri'
+  - '--filesystem=home'
+  - '--filesystem=/media'
+  - '--filesystem=/run/media'
   - '--share=ipc'
+  - '--share=network'
   - '--socket=fallback-x11'
   - '--socket=wayland'
-  - '--share=network'
+  - '--talk-name=org.freedesktop.FileManager1'
 
 modules:
   - name: canberra

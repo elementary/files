@@ -13,7 +13,7 @@ configure_file(
 
 configure_file(
     input: meson.project_name() + '-filemanager1.service.in',
-    output: meson.project_name() + '.Filemanager1.service',
+    output: 'org.freedesktop.FileManager1.service',
     configuration: config_data,
     install: true,
     install_dir: join_paths(get_option('datadir'), 'dbus-1', 'services')
