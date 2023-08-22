@@ -59,7 +59,7 @@ public class Files.File : GLib.Object {
     public uint64 size = 0;
     public int count = -1;
     public string format_size = null;
-    public int color = 0;
+    public int color { get; set; default = -1; }
     public uint64 modified;
     public uint64 created;
     public string formated_modified = null;
@@ -477,7 +477,6 @@ public class Files.File : GLib.Object {
             icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
         }
 
-        /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
         unowned string target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
         if (target_uri != null) {
             if (Uri.parse_scheme (target_uri) == "afp") {

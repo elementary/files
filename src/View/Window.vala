@@ -377,7 +377,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         });
 
         sidebar.path_change_request.connect (uri_path_change_request);
-        sidebar.connect_server_request.connect (connect_to_server);
     }
 
     private bool tab_view_close_page (Hdy.TabPage page) {
