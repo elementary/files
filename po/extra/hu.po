@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-10 08:19-0700\n"
+"POT-Creation-Date: 2023-08-22 16:29+0000\n"
 "PO-Revision-Date: 2023-08-03 17:45+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/extra/hu/"
@@ -79,36 +79,44 @@ msgstr "Bonyolult szerkezetek böngészése az Oszlopnézettel"
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
-#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:82
-#: data/files.metainfo.xml.in.in:97 data/files.metainfo.xml.in.in:119
-#: data/files.metainfo.xml.in.in:135 data/files.metainfo.xml.in.in:150
-msgid "Minor updates:"
-msgstr "Kisebb frissítések:"
-
-#: data/files.metainfo.xml.in.in:67
-msgid "Design updates for Bulk Rename"
-msgstr "Dizájnfrissítések a csoportos átnevezéshez"
-
-#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:85
-#: data/files.metainfo.xml.in.in:99 data/files.metainfo.xml.in.in:121
-#: data/files.metainfo.xml.in.in:137 data/files.metainfo.xml.in.in:152
-msgid "Updated translations"
-msgstr "Frissített fordítások"
-
-#: data/files.metainfo.xml.in.in:78 data/files.metainfo.xml.in.in:115
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:99
+#: data/files.metainfo.xml.in.in:136
 msgid "Improvements:"
 msgstr "Fejlesztések:"
 
-#: data/files.metainfo.xml.in.in:80
+#: data/files.metainfo.xml.in.in:67
+msgid ""
+"New Tab Bar with improved animations, smoother drag-and-drop, and "
+"reorganized tab context menus"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:103 data/files.metainfo.xml.in.in:118
+#: data/files.metainfo.xml.in.in:140 data/files.metainfo.xml.in.in:156
+#: data/files.metainfo.xml.in.in:171
+msgid "Minor updates:"
+msgstr "Kisebb frissítések:"
+
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:106
+#: data/files.metainfo.xml.in.in:120 data/files.metainfo.xml.in.in:142
+#: data/files.metainfo.xml.in.in:158 data/files.metainfo.xml.in.in:173
+msgid "Updated translations"
+msgstr "Frissített fordítások"
+
+#: data/files.metainfo.xml.in.in:89
+msgid "Design updates for Bulk Rename"
+msgstr "Dizájnfrissítések a csoportos átnevezéshez"
+
+#: data/files.metainfo.xml.in.in:101
 msgid "Implement a bulk rename functionality"
 msgstr "Csoportos átnevezés funkció"
 
-#: data/files.metainfo.xml.in.in:84
+#: data/files.metainfo.xml.in.in:105
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
 msgstr ""
 "Színes sáv használata lemezhasználat kijelzéséhez a Tulajdonságok ablakban"
 
-#: data/files.metainfo.xml.in.in:117
+#: data/files.metainfo.xml.in.in:138
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
