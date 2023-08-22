@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-10 08:19-0700\n"
+"POT-Creation-Date: 2023-08-22 16:29+0000\n"
 "PO-Revision-Date: 2021-06-19 20:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -122,7 +122,7 @@ msgid "Port:"
 msgstr "पोर्ट:"
 
 #: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
-#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:532
+#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:260
 msgid "Type:"
 msgstr "प्रकार:"
 
@@ -207,124 +207,124 @@ msgstr "येथे कॉपी करा"
 msgid "Link Here"
 msgstr "येथे दुवा साधा"
 
-#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2335
+#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2353
 msgid "Name"
 msgstr "नाव"
 
-#: libcore/Enums.vala:160 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
+#: libcore/Enums.vala:144 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
 #, fuzzy
 msgid "Creation Date"
 msgstr "तयार करा"
 
-#: libcore/Enums.vala:163
+#: libcore/Enums.vala:147
 #, fuzzy
 msgid "Last modification date"
 msgstr "शेवटी बदल केलेला:"
 
-#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2340
+#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2358
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "आकार"
 
-#: libcore/Enums.vala:189
+#: libcore/Enums.vala:173
 msgid "Number sequence"
 msgstr ""
 
-#: libcore/Enums.vala:192 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
+#: libcore/Enums.vala:176 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2350
+#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2368
 msgid "Date"
 msgstr "दिनांक"
 
-#: libcore/Enums.vala:211
+#: libcore/Enums.vala:195
 msgid "Suffix"
 msgstr ""
 
-#: libcore/Enums.vala:214
+#: libcore/Enums.vala:198
 msgid "Prefix"
 msgstr ""
 
-#: libcore/Enums.vala:224
+#: libcore/Enums.vala:208
 msgid "Text to put at the end"
 msgstr ""
 
-#: libcore/Enums.vala:227
+#: libcore/Enums.vala:211
 msgid "Text to put at the start"
 msgstr ""
 
-#: libcore/Enums.vala:246
+#: libcore/Enums.vala:230
 msgid "Default Format - Date only"
 msgstr ""
 
-#: libcore/Enums.vala:248
+#: libcore/Enums.vala:232
 msgid "Default Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:250
+#: libcore/Enums.vala:234
 msgid "Locale Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:252
+#: libcore/Enums.vala:236
 msgid "ISO 8601 Format - Date only"
 msgstr ""
 
-#: libcore/Enums.vala:254
+#: libcore/Enums.vala:238
 msgid "ISO 8601 Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:270
+#: libcore/Enums.vala:254
 #, fuzzy
 msgid "Date created"
 msgstr "पुन्हा तयार करा"
 
-#: libcore/Enums.vala:272
+#: libcore/Enums.vala:256
 #, fuzzy
 msgid "Date Modified"
 msgstr "सुधारित"
 
-#: libcore/Enums.vala:274
+#: libcore/Enums.vala:258
 msgid "Current Date"
 msgstr ""
 
-#: libcore/File.vala:550 libcore/File.vala:1113
+#: libcore/File.vala:554 libcore/File.vala:1117
 msgid "Inaccessible"
 msgstr "मिळविण्यास अशक्य"
 
-#: libcore/File.vala:891
+#: libcore/File.vala:895
 msgid "Failed to parse the desktop file"
 msgstr "डेस्कटॉप फाइल विश्लेषित करण्यात अयशस्वी"
 
-#: libcore/File.vala:895
+#: libcore/File.vala:899
 #, fuzzy
 msgid "Failed to parse the desktop file: "
 msgstr "डेस्कटॉप फाईल :%s पार्स होऊ शकली नाही"
 
-#: libcore/File.vala:907
+#: libcore/File.vala:911
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "%s : फाइलमधून कमांड तयार करण्यात अयशस्वी"
 
-#: libcore/File.vala:916
+#: libcore/File.vala:920
 #, fuzzy
 msgid "Unable to Launch Desktop File: "
 msgstr "%s: डेस्कटॉप फाइल सुरु करण्यात अक्षम"
 
-#: libcore/File.vala:1106
+#: libcore/File.vala:1110
 #, fuzzy
 msgid "Empty"
 msgstr "रिकामी फाईल"
 
-#: libcore/File.vala:1108
+#: libcore/File.vala:1112
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d मिनिट"
 msgstr[1] "%'d मिनिटे"
 
-#: libcore/File.vala:1153
+#: libcore/File.vala:1157
 #, c-format
 msgid "link to %s"
 msgstr "%s ची लिंक"
@@ -338,7 +338,7 @@ msgid "Original file"
 msgstr "मूळ फाइल"
 
 #: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
-#: src/Dialogs/PropertiesWindow.vala:525
+#: src/Dialogs/PropertiesWindow.vala:564
 msgid "Size:"
 msgstr "आकार:"
 
@@ -534,7 +534,7 @@ msgstr[1] "%'d मिनिटे"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:1026 src/Dialogs/PropertiesWindow.vala:1241
+#: libcore/FileUtils.vala:1026 src/Dialogs/PropertiesWindow.vala:1264
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
@@ -1135,8 +1135,8 @@ msgstr "(_M)माउंट करा"
 msgid "_Unmount"
 msgstr "(_U)अनमाउंट करा"
 
-#: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2052
+#: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
+#: src/View/AbstractDirectoryView.vala:2068
 msgid "Properties"
 msgstr "गुणधर्म"
 
@@ -1149,7 +1149,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "काढा"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2045
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2061
 msgid "Add to Bookmarks"
 msgstr "बुकमार्क मध्ये जोडा"
 
@@ -1195,7 +1195,7 @@ msgstr "डीएव्हीएस"
 msgid "FTP"
 msgstr "FTP"
 
-#: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:60
+#: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:47
 msgid "Network"
 msgstr "नेटवर्क"
 
@@ -1223,7 +1223,7 @@ msgstr "MTP"
 msgid "GPHOTO2"
 msgstr "जीफोटो2"
 
-#: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:44
+#: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
 #: src/View/Sidebar/DeviceListBox.vala:140
 msgid "File System"
 msgstr "फाईल प्रणाली"
@@ -1459,7 +1459,7 @@ msgid "The destination is read-only."
 msgstr "गंतव्य केवळ वाचनीय आहे."
 
 #: libcore/FileOperations/CommonJob.vala:285
-#: src/Dialogs/AbstractPropertiesDialog.vala:79
+#: src/Dialogs/AbstractPropertiesDialog.vala:67
 msgid "Close"
 msgstr "बंद करा"
 
@@ -1601,8 +1601,8 @@ msgstr "प्रोग्रामची आवृत्ती दाखवा"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "प्रत्येक एक किंवा अधिक यूआरआय उघडा, प्रत्येक त्यांच्या स्वत: च्या टॅबमध्ये"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1933
-#: src/View/AbstractDirectoryView.vala:1939
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
 msgid "New Window"
 msgstr "नवीन विंडो"
 
@@ -1665,39 +1665,39 @@ msgstr "%s पूर्ण"
 msgid "All file operations have ended"
 msgstr "सर्व फाइल ऑपरेशन्स संपले आहेत"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:48
+#: src/Dialogs/AbstractPropertiesDialog.vala:44
 msgid "Info"
 msgstr "माहिती"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:58
+#: src/Dialogs/AbstractPropertiesDialog.vala:53
 msgid "General"
 msgstr "साधारण"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:143
+#: src/Dialogs/AbstractPropertiesDialog.vala:120
 msgid "Device Usage"
 msgstr "डिव्हाइस वापर"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:166
+#: src/Dialogs/AbstractPropertiesDialog.vala:143
 #, fuzzy, c-format
 msgid "%s free out of %s"
 msgstr "(%s मधील %s रिकामे)"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:174
+#: src/Dialogs/AbstractPropertiesDialog.vala:151
 msgid "Capacity:"
 msgstr "क्षमता:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:175
-#: src/Dialogs/AbstractPropertiesDialog.vala:178
-#: src/Dialogs/AbstractPropertiesDialog.vala:181
-#: src/Dialogs/PropertiesWindow.vala:454 src/Dialogs/PropertiesWindow.vala:493
+#: src/Dialogs/AbstractPropertiesDialog.vala:152
+#: src/Dialogs/AbstractPropertiesDialog.vala:155
+#: src/Dialogs/AbstractPropertiesDialog.vala:158
+#: src/Dialogs/PropertiesWindow.vala:493 src/Dialogs/PropertiesWindow.vala:532
 msgid "Unknown"
 msgstr "अज्ञात"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:177
+#: src/Dialogs/AbstractPropertiesDialog.vala:154
 msgid "Available:"
 msgstr "उपलब्ध:"
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:180
+#: src/Dialogs/AbstractPropertiesDialog.vala:157
 msgid "Used:"
 msgstr "वापरलेली:"
 
@@ -1862,118 +1862,118 @@ msgstr ""
 msgid "Set as default"
 msgstr "डीफॉल्ट म्हणून सेट करा"
 
-#: src/Dialogs/PropertiesWindow.vala:242
+#: src/Dialogs/PropertiesWindow.vala:228
 msgid "Unable to determine file ownership and permissions"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:245
+#: src/Dialogs/PropertiesWindow.vala:238
 msgid "Permissions"
 msgstr "परवानग्या"
 
-#: src/Dialogs/PropertiesWindow.vala:258
+#: src/Dialogs/PropertiesWindow.vala:281
+msgid "Contains:"
+msgstr "समाविष्ट गोष्टी:"
+
+#: src/Dialogs/PropertiesWindow.vala:295
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] "परवानग्या किंवा इतर त्रुटीमुळे %i फाइल वाचली जाऊ शकली नाही."
 msgstr[1] "परवानग्या किंवा इतर त्रुटींमुळे %i फायली वाचल्या जाऊ शकल्या नाहीत."
 
-#: src/Dialogs/PropertiesWindow.vala:262
+#: src/Dialogs/PropertiesWindow.vala:300
 msgid "Actual Size Could Be Larger"
 msgstr "वास्तविक आकार मोठा असू शकतो"
 
-#: src/Dialogs/PropertiesWindow.vala:282 src/Dialogs/PropertiesWindow.vala:301
+#: src/Dialogs/PropertiesWindow.vala:321 src/Dialogs/PropertiesWindow.vala:340
 msgid "unknown"
 msgstr "अज्ञात"
 
-#: src/Dialogs/PropertiesWindow.vala:465
+#: src/Dialogs/PropertiesWindow.vala:504
 msgid "Loading…"
 msgstr "लोड करीत आहे…"
 
-#: src/Dialogs/PropertiesWindow.vala:499
+#: src/Dialogs/PropertiesWindow.vala:538
 msgid "Could not be determined"
 msgstr "निश्चित केले जाऊ शकत नाही"
 
-#: src/Dialogs/PropertiesWindow.vala:535
-msgid "Contains:"
-msgstr "समाविष्ट गोष्टी:"
-
-#: src/Dialogs/PropertiesWindow.vala:559
+#: src/Dialogs/PropertiesWindow.vala:582
 msgid "Created:"
 msgstr "तयार केले:"
 
-#: src/Dialogs/PropertiesWindow.vala:570
+#: src/Dialogs/PropertiesWindow.vala:593
 msgid "Modified:"
 msgstr "सुधारित:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:605
 msgid "Deleted:"
 msgstr "हटविले:"
 
-#: src/Dialogs/PropertiesWindow.vala:592
+#: src/Dialogs/PropertiesWindow.vala:615
 msgid "Media type:"
 msgstr "मीडिया प्रकार:"
 
-#: src/Dialogs/PropertiesWindow.vala:599
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Resolution:"
 msgstr "रिझॉल्युशन:"
 
-#: src/Dialogs/PropertiesWindow.vala:607
-#: src/Dialogs/VolumePropertiesWindow.vala:80
+#: src/Dialogs/PropertiesWindow.vala:630
+#: src/Dialogs/VolumePropertiesWindow.vala:76
 msgid "Location:"
 msgstr "स्थान:"
 
-#: src/Dialogs/PropertiesWindow.vala:617
+#: src/Dialogs/PropertiesWindow.vala:640
 msgid "Target:"
 msgstr "लक्ष्य:"
 
-#: src/Dialogs/PropertiesWindow.vala:625
+#: src/Dialogs/PropertiesWindow.vala:648
 msgid "Original Location:"
 msgstr "मूळ स्थान:"
 
-#: src/Dialogs/PropertiesWindow.vala:648
-#: src/View/AbstractDirectoryView.vala:2020
+#: src/Dialogs/PropertiesWindow.vala:671
+#: src/View/AbstractDirectoryView.vala:2036
 msgid "Other Application…"
 msgstr "इतर अप्लिकेशन…"
 
-#: src/Dialogs/PropertiesWindow.vala:668
+#: src/Dialogs/PropertiesWindow.vala:691
 msgid "Open with:"
 msgstr "च्या सहाय्याने उघडा:"
 
-#: src/Dialogs/PropertiesWindow.vala:937 src/Dialogs/PropertiesWindow.vala:944
+#: src/Dialogs/PropertiesWindow.vala:960 src/Dialogs/PropertiesWindow.vala:967
 msgid "Owner:"
 msgstr "मालक:"
 
-#: src/Dialogs/PropertiesWindow.vala:938 src/Dialogs/PropertiesWindow.vala:947
+#: src/Dialogs/PropertiesWindow.vala:961 src/Dialogs/PropertiesWindow.vala:970
 msgid "Group:"
 msgstr "गट:"
 
-#: src/Dialogs/PropertiesWindow.vala:950
+#: src/Dialogs/PropertiesWindow.vala:973
 msgid "Everyone:"
 msgstr "प्रत्येकजण:"
 
-#: src/Dialogs/PropertiesWindow.vala:1232
+#: src/Dialogs/PropertiesWindow.vala:1255
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u सबफोल्डर"
 msgstr[1] "%u सबफोल्डर"
 
-#: src/Dialogs/PropertiesWindow.vala:1236
-#: src/Dialogs/PropertiesWindow.vala:1258
+#: src/Dialogs/PropertiesWindow.vala:1259
+#: src/Dialogs/PropertiesWindow.vala:1281
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "%u फाईल"
 msgstr[1] "%u फायली"
 
-#: src/Dialogs/PropertiesWindow.vala:1254 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1277 src/View/Widgets/OverlayBar.vala:171
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u फोल्डर"
 msgstr[1] "%u फोल्डर"
 
-#: src/Dialogs/PropertiesWindow.vala:1263
+#: src/Dialogs/PropertiesWindow.vala:1286
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -1981,16 +1981,16 @@ msgstr[0] "%u निवडलेला आयटम"
 msgstr[1] "%u निवडलेले आयटम"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1265
+#: src/Dialogs/PropertiesWindow.vala:1288
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:28
+#: src/Dialogs/VolumePropertiesWindow.vala:25
 msgid "Disk Properties"
 msgstr "डिस्क गुणधर्म"
 
-#: src/Dialogs/VolumePropertiesWindow.vala:90
+#: src/Dialogs/VolumePropertiesWindow.vala:86
 msgid "Format:"
 msgstr "स्वरूप:"
 
@@ -2014,18 +2014,18 @@ msgstr "यूआरआय उघडू शकले नाही"
 msgid "Could not open files or URIs with this app"
 msgstr "या अॅपसह फायली किंवा यूआरआय उघडू शकत नाही"
 
-#: src/View/AbstractDirectoryView.vala:839
-#: src/View/AbstractDirectoryView.vala:1151
+#: src/View/AbstractDirectoryView.vala:842
+#: src/View/AbstractDirectoryView.vala:1165
 msgid "Cannot execute this file"
 msgstr "ही फाईल कार्यान्वित करू शकत नाही"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:849
+#: src/View/AbstractDirectoryView.vala:852
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "उघडण्यापूर्वी कचर्‍यामधून “%s” हलविले जाणे आवश्यक आहे"
 
-#: src/View/AbstractDirectoryView.vala:850
+#: src/View/AbstractDirectoryView.vala:853
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -2033,165 +2033,165 @@ msgstr ""
 "कचर्‍यामधील फायली उघडल्या जाऊ शकत नाहीत. ही फाईल उघडण्यासाठी, ती इतरत्र हलविली "
 "जाणे आवश्यक आहे."
 
-#: src/View/AbstractDirectoryView.vala:865
+#: src/View/AbstractDirectoryView.vala:868
 msgid "Cannot open this file"
 msgstr "ही फाइल उघडू शकत नाही"
 
-#: src/View/AbstractDirectoryView.vala:878
+#: src/View/AbstractDirectoryView.vala:881
 msgid "Cannot identify file type to open"
 msgstr "उघडण्यासाठी फाइल प्रकार ओळखू शकत नाही"
 
-#: src/View/AbstractDirectoryView.vala:1631
+#: src/View/AbstractDirectoryView.vala:1647
 msgid "Cannot drop this file"
 msgstr "ही फाईल सोडू शकत नाही"
 
-#: src/View/AbstractDirectoryView.vala:1632
+#: src/View/AbstractDirectoryView.vala:1648
 msgid "Invalid file name provided"
 msgstr "अवैध फाइल नाव प्रदान केले"
 
-#: src/View/AbstractDirectoryView.vala:1916
-#: src/View/AbstractDirectoryView.vala:1922 src/View/Window.vala:183
+#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
 msgid "New Tab"
 msgstr "नवीन टॅब"
 
-#: src/View/AbstractDirectoryView.vala:1956
+#: src/View/AbstractDirectoryView.vala:1972
 msgid "Run"
 msgstr "चालवा"
 
-#: src/View/AbstractDirectoryView.vala:1963
+#: src/View/AbstractDirectoryView.vala:1979
 #, c-format
 msgid "Open in %s"
 msgstr "%s मध्ये उघडा"
 
-#: src/View/AbstractDirectoryView.vala:2032
+#: src/View/AbstractDirectoryView.vala:2048
 msgid "Open in"
 msgstr "मध्ये उघडा"
 
-#: src/View/AbstractDirectoryView.vala:2034
+#: src/View/AbstractDirectoryView.vala:2050
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "उघडण्यासाठी वापरा"
 
-#: src/View/AbstractDirectoryView.vala:2065
+#: src/View/AbstractDirectoryView.vala:2081
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2074
+#: src/View/AbstractDirectoryView.vala:2090
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2083
+#: src/View/AbstractDirectoryView.vala:2099
 #, fuzzy
 msgid "Deselect All"
 msgstr "सर्व पुनर्संचयित करा"
 
-#: src/View/AbstractDirectoryView.vala:2091
+#: src/View/AbstractDirectoryView.vala:2107
 msgid "Cut"
 msgstr "कट"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2099
+#: src/View/AbstractDirectoryView.vala:2115
 msgid "Copy"
 msgstr "कॉपी"
 
-#: src/View/AbstractDirectoryView.vala:2106
+#: src/View/AbstractDirectoryView.vala:2122
 msgid "Move to Trash"
 msgstr "फाइल्स कचर्यामध्ये टाका"
 
-#: src/View/AbstractDirectoryView.vala:2111
+#: src/View/AbstractDirectoryView.vala:2127
 msgid "Delete Permanently"
 msgstr "कायमचे हटवा"
 
-#: src/View/AbstractDirectoryView.vala:2118
+#: src/View/AbstractDirectoryView.vala:2134
 msgid "Restore from Trash"
 msgstr "कचरापेटी मधून पुनर्संचयित करा"
 
-#: src/View/AbstractDirectoryView.vala:2141
+#: src/View/AbstractDirectoryView.vala:2157
 msgid "Open Parent Folder"
 msgstr "पॅरेन्ट फोल्डर उघडा"
 
-#: src/View/AbstractDirectoryView.vala:2144
+#: src/View/AbstractDirectoryView.vala:2160
 msgid "Remove from History"
 msgstr "इतिहासातून काढा"
 
-#: src/View/AbstractDirectoryView.vala:2170
+#: src/View/AbstractDirectoryView.vala:2186
 msgid "Rename…"
 msgstr "पुनर्नामित करा…"
 
-#: src/View/AbstractDirectoryView.vala:2177
+#: src/View/AbstractDirectoryView.vala:2193
 msgid "Copy as Link"
 msgstr "लिंक कॉपी करा"
 
-#: src/View/AbstractDirectoryView.vala:2200
-#: src/View/AbstractDirectoryView.vala:2280
+#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2296
 msgid "Paste Link into Folder"
 msgstr "फोल्डरमध्ये लिंक पेस्ट करा"
 
-#: src/View/AbstractDirectoryView.vala:2205
-#: src/View/AbstractDirectoryView.vala:2257
+#: src/View/AbstractDirectoryView.vala:2221
+#: src/View/AbstractDirectoryView.vala:2273
 msgid "Paste into Folder"
 msgstr "फोल्डरमध्ये पेस्ट करा"
 
-#: src/View/AbstractDirectoryView.vala:2215
-#: src/View/AbstractDirectoryView.vala:2285
+#: src/View/AbstractDirectoryView.vala:2231
+#: src/View/AbstractDirectoryView.vala:2301
 msgid "Paste"
 msgstr "पेस्ट"
 
-#: src/View/AbstractDirectoryView.vala:2345 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2363 src/View/ListView.vala:28
 msgid "Type"
 msgstr "प्रकार"
 
-#: src/View/AbstractDirectoryView.vala:2355
+#: src/View/AbstractDirectoryView.vala:2373
 msgid "Reversed Order"
 msgstr "उलट क्रम"
 
-#: src/View/AbstractDirectoryView.vala:2358
+#: src/View/AbstractDirectoryView.vala:2376
 msgid "Folders Before Files"
 msgstr "फायली आधी फोल्डर"
 
-#: src/View/AbstractDirectoryView.vala:2370
+#: src/View/AbstractDirectoryView.vala:2388
 msgid "Sort by"
 msgstr "याच्या क्रमाने लावा"
 
-#: src/View/AbstractDirectoryView.vala:2378
+#: src/View/AbstractDirectoryView.vala:2396
 msgid "Folder"
 msgstr "फोल्डर"
 
-#: src/View/AbstractDirectoryView.vala:2384
+#: src/View/AbstractDirectoryView.vala:2402
 msgid "Empty File"
 msgstr "रिकामी फाईल"
 
-#: src/View/AbstractDirectoryView.vala:2435
+#: src/View/AbstractDirectoryView.vala:2453
 msgid "New"
 msgstr "नवीन"
 
-#: src/View/AbstractDirectoryView.vala:2678
+#: src/View/AbstractDirectoryView.vala:2697
 #, c-format
 msgid "Untitled %s"
 msgstr "शीर्षकविरहित %s"
 
-#: src/View/AbstractDirectoryView.vala:2996
-#: src/View/AbstractDirectoryView.vala:3189
+#: src/View/AbstractDirectoryView.vala:3018
+#: src/View/AbstractDirectoryView.vala:3211
 msgid "Cannot remove files from here"
 msgstr "येथून फायली काढू शकत नाही"
 
-#: src/View/AbstractDirectoryView.vala:2997
-#: src/View/AbstractDirectoryView.vala:3162
-#: src/View/AbstractDirectoryView.vala:3173
-#: src/View/AbstractDirectoryView.vala:3190
+#: src/View/AbstractDirectoryView.vala:3019
+#: src/View/AbstractDirectoryView.vala:3184
+#: src/View/AbstractDirectoryView.vala:3195
+#: src/View/AbstractDirectoryView.vala:3212
 msgid "You do not have permission to change this location"
 msgstr "आपल्याला ही जागा बदलण्याची परवानगी नाही"
 
-#: src/View/AbstractDirectoryView.vala:3130
+#: src/View/AbstractDirectoryView.vala:3152
 msgid "Cannot copy files that are in the trash"
 msgstr "कचर्यात असलेल्या फायली कॉपी करू शकत नाही"
 
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:3153
 msgid "Cutting the selection instead"
 msgstr "त्याऐवजी निवडलेले कट करीत आहोत"
 
-#: src/View/AbstractDirectoryView.vala:3161
-#: src/View/AbstractDirectoryView.vala:3172
+#: src/View/AbstractDirectoryView.vala:3183
+#: src/View/AbstractDirectoryView.vala:3194
 msgid "Cannot paste files here"
 msgstr "येथे फायली पेस्ट करू शकत नाही"
 
@@ -2313,50 +2313,75 @@ msgstr "फाइल सापडली नाही"
 msgid "The file selected no longer exists."
 msgstr "निवडलेली फाइल यापुढे विद्यमान नाही."
 
-#: src/View/Window.vala:184
-msgid "Undo Close Tab"
-msgstr "टॅब पूर्ववत करा"
+#: src/View/Window.vala:179
+msgid "Previous"
+msgstr "मागील"
 
-#: src/View/Window.vala:499
-msgid "Close Tab"
+#: src/View/Window.vala:184
+msgid "Next"
+msgstr "पुढील"
+
+#: src/View/Window.vala:199
+msgid "Menu"
+msgstr ""
+
+#: src/View/Window.vala:229
+#, fuzzy
+#| msgid "Close Tab"
+msgid "Closed Tabs"
 msgstr "टॅब बंद करा"
 
-#: src/View/Window.vala:500
+#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+msgid "Open in New Window"
+msgstr "नवीन विंडोमध्ये उघडा"
+
+#: src/View/Window.vala:442
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "\"%s\" डुप्लिकेट करीत आहे"
 
-#: src/View/Window.vala:501 src/View/Widgets/BreadcrumbsEntry.vala:457
-msgid "Open in New Window"
-msgstr "नवीन विंडोमध्ये उघडा"
+#. TRANSLATORS: For RTL this should be "to the left"
+#: src/View/Window.vala:446
+msgid "Close Tabs to the Right"
+msgstr ""
 
-#: src/View/Window.vala:629 src/View/Window.vala:639
+#: src/View/Window.vala:447
+#, fuzzy
+#| msgid "Close Tab"
+msgid "Close Other Tabs"
+msgstr "टॅब बंद करा"
+
+#: src/View/Window.vala:448
+msgid "Close Tab"
+msgstr "टॅब बंद करा"
+
+#: src/View/Window.vala:708 src/View/Window.vala:718
 msgid "(as Administrator)"
 msgstr "(प्रशासक म्हणून)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:173
+#: src/View/Sidebar/AbstractMountableRow.vala:172
 #, fuzzy, c-format
 msgid "Eject '%s'"
 msgstr "'%s' हटवा"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:173
+#: src/View/Sidebar/AbstractMountableRow.vala:172
 #, fuzzy, c-format
 msgid "Unmount '%s'"
 msgstr "'%s' माउंट करण्यास अक्षम"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:307
+#: src/View/Sidebar/AbstractMountableRow.vala:306
 #, c-format
 msgid "%s free"
 msgstr "%s मोकळी"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:308
+#: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
 msgid "%s used of %s"
 msgstr "%s पैकी %s वापरात"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:338
+#: src/View/Sidebar/AbstractMountableRow.vala:337
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
@@ -2364,7 +2389,7 @@ msgstr "%s पैकी %s वापरात"
 msgid "%s (%s)"
 msgstr "%s (%s, %s)"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:338
+#: src/View/Sidebar/AbstractMountableRow.vala:337
 msgid "Not mounted"
 msgstr ""
 
@@ -2406,29 +2431,29 @@ msgstr "संपूर्ण नेटवर्क"
 msgid "Browse the contents of the network"
 msgstr "नेटवर्कची सामग्री ब्राउझ करा"
 
-#: src/View/Sidebar/SidebarWindow.vala:45
-#: src/View/Widgets/SearchResults.vala:289
+#: src/View/Sidebar/SidebarWindow.vala:30
+#: src/View/Widgets/SearchResults.vala:284
 msgid "Bookmarks"
 msgstr "बुकमार्क"
 
-#: src/View/Sidebar/SidebarWindow.vala:46
+#: src/View/Sidebar/SidebarWindow.vala:31
 msgid "Common places plus saved folders and files"
 msgstr "सामान्य ठिकाणे तसेच जतन केलेली फोल्डर्स आणि फायली"
 
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
-#: src/View/Sidebar/SidebarWindow.vala:53
+#: src/View/Sidebar/SidebarWindow.vala:39
 msgid "Storage"
 msgstr "साठवण"
 
-#: src/View/Sidebar/SidebarWindow.vala:54
+#: src/View/Sidebar/SidebarWindow.vala:40
 msgid "Internal and connected storage devices"
 msgstr "अंतर्गत आणि कनेक्ट केलेले स्टोरेज डिव्हाइस"
 
-#: src/View/Sidebar/SidebarWindow.vala:61
+#: src/View/Sidebar/SidebarWindow.vala:48
 msgid "Devices and places available via a network"
 msgstr "नेटवर्कद्वारे उपलब्ध साधने आणि ठिकाणे"
 
-#: src/View/Sidebar/SidebarWindow.vala:84
+#: src/View/Sidebar/SidebarWindow.vala:73
 msgid "Connect Server…"
 msgstr "सर्वरला कनेक्ट करा…"
 
@@ -2442,8 +2467,63 @@ msgstr "(_M)माउंट करा"
 msgid "Bind mount"
 msgstr "(_U)अनमाउंट करा"
 
+#: src/View/Widgets/AppMenu.vala:25
+msgid "Zoom Out"
+msgstr ""
+
+#: src/View/Widgets/AppMenu.vala:34
+msgid "Zoom 1:1"
+msgstr ""
+
+#: src/View/Widgets/AppMenu.vala:43
+msgid "Zoom In"
+msgstr ""
+
+#: src/View/Widgets/AppMenu.vala:81
+msgid "Double-click to Navigate"
+msgstr ""
+
+#: src/View/Widgets/AppMenu.vala:82
+msgid "Double-click on a folder opens it, single-click selects it"
+msgstr ""
+
+#: src/View/Widgets/AppMenu.vala:86
+#, fuzzy
+msgid "Sort Folders before Files"
+msgstr "फायली आधी फोल्डर"
+
+#: src/View/Widgets/AppMenu.vala:90
+#, fuzzy
+msgid "Show in View"
+msgstr "लपविलेल्या फायली दाखवा"
+
+#: src/View/Widgets/AppMenu.vala:97
+#, fuzzy
+msgid "Hidden Files"
+msgstr "लपविलेल्या फायली दाखवा"
+
+#: src/View/Widgets/AppMenu.vala:101
+#, fuzzy
+msgid "Local Thumbnails"
+msgstr "थंबनेल्स लपवा"
+
+#: src/View/Widgets/AppMenu.vala:106
+#, fuzzy
+msgid "Remote Thumbnails"
+msgstr "रिमोट थंबनेल्स दाखवा"
+
+#: src/View/Widgets/AppMenu.vala:147
+#, fuzzy
+msgid "No operation to undo"
+msgstr "ऑपरेशन कालबाह्य झाले आहे."
+
+#: src/View/Widgets/AppMenu.vala:154
+#, fuzzy
+msgid "No operation to redo"
+msgstr "ऑपरेशन कालबाह्य झाले आहे."
+
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
-#: src/View/Widgets/LocationBar.vala:200
+#: src/View/Widgets/LocationBar.vala:199
 msgid "Search or Type Path"
 msgstr "पाथ शोधा अथवा टाईप करा"
 
@@ -2455,78 +2535,11 @@ msgstr "नवीन टॅबमध्ये उघडा"
 msgid "Open in Other Application…"
 msgstr "अन्य अप्लिकेशनमध्ये उघडा…"
 
-#: src/View/Widgets/HeaderBar.vala:73
-msgid "Previous"
-msgstr "मागील"
-
-#: src/View/Widgets/HeaderBar.vala:78
-msgid "Next"
-msgstr "पुढील"
-
-#: src/View/Widgets/HeaderBar.vala:93
-msgid "Zoom Out"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:102
-msgid "Zoom 1:1"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:111
-msgid "Zoom In"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:150
-msgid "Double-click to Navigate"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:151
-msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:156
-#, fuzzy
-msgid "Sort Folders before Files"
-msgstr "फायली आधी फोल्डर"
-
-#: src/View/Widgets/HeaderBar.vala:160
-#, fuzzy
-msgid "Show in View"
-msgstr "लपविलेल्या फायली दाखवा"
-
-#: src/View/Widgets/HeaderBar.vala:167
-#, fuzzy
-msgid "Hidden Files"
-msgstr "लपविलेल्या फायली दाखवा"
-
-#: src/View/Widgets/HeaderBar.vala:171
-#, fuzzy
-msgid "Local Thumbnails"
-msgstr "थंबनेल्स लपवा"
-
-#: src/View/Widgets/HeaderBar.vala:176
-#, fuzzy
-msgid "Remote Thumbnails"
-msgstr "रिमोट थंबनेल्स दाखवा"
-
-#: src/View/Widgets/HeaderBar.vala:204
-msgid "Menu"
-msgstr ""
-
-#: src/View/Widgets/HeaderBar.vala:279
-#, fuzzy
-msgid "No operation to undo"
-msgstr "ऑपरेशन कालबाह्य झाले आहे."
-
-#: src/View/Widgets/HeaderBar.vala:286
-#, fuzzy
-msgid "No operation to redo"
-msgstr "ऑपरेशन कालबाह्य झाले आहे."
-
-#: src/View/Widgets/LocationBar.vala:196
+#: src/View/Widgets/LocationBar.vala:195
 msgid "Reload this folder"
 msgstr "हे फोल्डर रीलोड करा"
 
-#: src/View/Widgets/LocationBar.vala:209
+#: src/View/Widgets/LocationBar.vala:208
 msgid "Searching…"
 msgstr "शोधत आहे…"
 
@@ -2602,17 +2615,20 @@ msgstr "चालवा"
 msgid "More Results …"
 msgstr "अधिक परिणाम …"
 
-#: src/View/Widgets/SearchResults.vala:281
+#: src/View/Widgets/SearchResults.vala:276
 msgid "In This Folder"
 msgstr "या फोल्डरमध्ये"
 
-#: src/View/Widgets/SearchResults.vala:285
+#: src/View/Widgets/SearchResults.vala:280
 msgid "Below This Folder"
 msgstr "या फोल्डर खाली"
 
-#: src/View/Widgets/SearchResults.vala:294
+#: src/View/Widgets/SearchResults.vala:289
 msgid "Recently Used"
 msgstr "अलीकडे वापरलेले"
+
+#~ msgid "Undo Close Tab"
+#~ msgstr "टॅब पूर्ववत करा"
 
 #, fuzzy
 #~| msgid "New"
