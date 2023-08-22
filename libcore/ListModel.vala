@@ -152,7 +152,11 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
                 break;
             case ColumnID.COLOR:
                 value = Value (typeof (string));
-                if (file != null && file.color < Files.Preferences.TAGS_COLORS.length) {
+                if (
+                    file != null &&
+                    file.color >= 0 &&
+                    file.color < Files.Preferences.TAGS_COLORS.length
+                ) {
                     value.set_string (Files.Preferences.TAGS_COLORS[file.color]);
                 } else {
                     value.set_string (Files.Preferences.TAGS_COLORS[0]);
