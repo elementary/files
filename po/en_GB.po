@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-22 16:29+0000\n"
-"PO-Revision-Date: 2023-08-03 17:45+0000\n"
-"Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
+"PO-Revision-Date: 2023-08-24 02:54+0000\n"
+"Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/files/en_GB/>\n"
 "Language: en_GB\n"
@@ -2291,10 +2291,8 @@ msgid "Menu"
 msgstr "Menu"
 
 #: src/View/Window.vala:229
-#, fuzzy
-#| msgid "Close Tab"
 msgid "Closed Tabs"
-msgstr "Close Tab"
+msgstr "Closed Tabs"
 
 #: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
@@ -2307,13 +2305,11 @@ msgstr "Duplicate Tab"
 #. TRANSLATORS: For RTL this should be "to the left"
 #: src/View/Window.vala:446
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Close Tabs to the Right"
 
 #: src/View/Window.vala:447
-#, fuzzy
-#| msgid "Close Tab"
 msgid "Close Other Tabs"
-msgstr "Close Tab"
+msgstr "Close Other Tabs"
 
 #: src/View/Window.vala:448
 msgid "Close Tab"
