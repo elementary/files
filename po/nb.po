@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-22 16:29+0000\n"
-"PO-Revision-Date: 2023-06-15 14:07+0000\n"
+"PO-Revision-Date: 2023-08-24 02:54+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "files/nb/>\n"
@@ -2366,7 +2366,7 @@ msgstr "Dupliserer fane"
 #. TRANSLATORS: For RTL this should be "to the left"
 #: src/View/Window.vala:446
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Lukk faner til høyre"
 
 #: src/View/Window.vala:447
 #, fuzzy
