@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-22 16:29+0000\n"
-"PO-Revision-Date: 2023-08-05 15:08+0000\n"
+"PO-Revision-Date: 2023-08-24 02:54+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -2276,10 +2276,8 @@ msgid "Menu"
 msgstr "Menü"
 
 #: src/View/Window.vala:229
-#, fuzzy
-#| msgid "Close Tab"
 msgid "Closed Tabs"
-msgstr "Lap bezárása"
+msgstr "Bezárt lapok"
 
 #: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
@@ -2292,13 +2290,11 @@ msgstr "Lap megkettőzése"
 #. TRANSLATORS: For RTL this should be "to the left"
 #: src/View/Window.vala:446
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "A jobbra lévő lapok bezárása"
 
 #: src/View/Window.vala:447
-#, fuzzy
-#| msgid "Close Tab"
 msgid "Close Other Tabs"
-msgstr "Lap bezárása"
+msgstr "A többi lap bezárása"
 
 #: src/View/Window.vala:448
 msgid "Close Tab"
