@@ -72,7 +72,7 @@ namespace Files.View.Chrome {
 
             var css_provider = new Gtk.CssProvider ();
             try {
-                css_provider.load_from_data (".noradius-button { border-radius: 0; }".data);
+                css_provider.load_from_data (".noradius-button { border-radius: 0; }", -1);
                 style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             } catch (Error e) {
                 critical ("Unable to style pathbar button: %s", e.message);

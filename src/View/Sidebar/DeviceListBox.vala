@@ -21,31 +21,22 @@
  */
 
 public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
-    public Gtk.Widget list_widget { get; construct; }
     public Files.SidebarInterface sidebar { get; construct; }
+    public Gtk.ListBox list_box { get; internal set; }
 
-    private Gtk.ListBox list_box {
-        get {
-            return (Gtk.ListBox)list_widget;
-        }
-    }
     private VolumeMonitor volume_monitor;
 
-    public signal void refresh_freespace ();
-
     public DeviceListBox (Files.SidebarInterface sidebar) {
-        Object (
-            sidebar: sidebar
-        );
+        Object (sidebar: sidebar);
     }
 
     construct {
-        list_widget = new Gtk.ListBox () {
+        list_box = new Gtk.ListBox () {
             hexpand = true,
             selection_mode = Gtk.SelectionMode.SINGLE
         };
 
-        append (list_widget);
+        append (list_box);
 
         volume_monitor = VolumeMonitor.@get ();
         volume_monitor.drive_connected.connect (bookmark_drive);
@@ -53,13 +44,14 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         volume_monitor.volume_added.connect (bookmark_volume);
 
         list_box.row_activated.connect ((row) => {
-            if (row is SidebarItemInterface) {
-                ((SidebarItemInterface) row).activated ();
+            if (row is BookmarkRow) {
+                ((BookmarkRow) row).activated ();
             }
         });
+
         list_box.row_selected.connect ((row) => {
-            if (row is SidebarItemInterface) {
-                select_item ((SidebarItemInterface) row);
+            if (row is BookmarkRow) {
+                select_item (row);
             }
         });
 
@@ -126,9 +118,6 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         }
 
         assert (bm != null);
-        refresh_freespace.connect (() => {
-            bm.update_free_space ();
-        });
         return bm; // Should not be null (either an existing bookmark or a new one)
     }
 
@@ -148,7 +137,7 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
     public void refresh () {
-        clear_list ();
+        clear ();
 
         var root_uri = _(Files.ROOT_FS_URI);
         if (root_uri != "") {
@@ -183,7 +172,14 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
     public override void refresh_info () {
-        refresh_freespace ();
+        unowned var child = list_box.get_first_child ();
+        while (child != null) {
+            if (child is AbstractMountableRow) {
+                ((AbstractMountableRow) child).update_free_space ();
+            }
+
+            child = child.get_next_sibling ();
+        }
     }
 
     private void bookmark_drive (Drive drive) {
@@ -257,23 +253,18 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         return false;
     }
 
-    public SidebarItemInterface? add_sidebar_row (string label, string uri, Icon gicon) {
+    public BookmarkRow? add_sidebar_row (string label, string uri, Icon gicon) {
         //We do not want devices to be added by external agents
         return null;
     }
 
     public void unselect_all_items () {
         list_box.unselect_all ();
-        // foreach (unowned var child in get_children ()) {
-        //     if (child is AbstractMountableRow) {
-        //         unselect_row ((AbstractMountableRow)child);
-        //     }
-        // }
     }
 
-    public void select_item (SidebarItemInterface? item) {
+    public void select_item (Gtk.ListBoxRow? item) {
         if (item != null && item is AbstractMountableRow) {
-            list_box.select_row ((AbstractMountableRow)item);
+            list_box.select_row (item);
         } else {
             unselect_all_items ();
         }

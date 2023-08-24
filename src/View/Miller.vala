@@ -57,17 +57,18 @@ namespace Files.View {
 
             colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
 
+            viewport = new Gtk.Viewport (null, null) {
+                child = colpane
+            };
+
             scrolled_window = new Gtk.ScrolledWindow () {
+                child = viewport,
                 hscrollbar_policy = Gtk.PolicyType.AUTOMATIC,
                 vscrollbar_policy = Gtk.PolicyType.NEVER
             };
 
             hadj = scrolled_window.get_hadjustment ();
 
-            viewport = new Gtk.Viewport (null, null);
-            viewport.set_child (this.colpane);
-
-            scrolled_window.set_child (viewport);
             add_overlay (scrolled_window);
 
             make_view ();

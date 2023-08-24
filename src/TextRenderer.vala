@@ -152,7 +152,7 @@ namespace Files {
                         previous_contrasting_rgba.alpha = contrasting_foreground_rgba.alpha;
                         string css = "* {color: %s;}".printf (contrasting_foreground_rgba.to_string ());
                         try {
-                            text_css.load_from_data (css.data);
+                            text_css.load_from_data (css, css.length);
                         } catch (Error e) {
                             critical (e.message);
                         }
@@ -329,7 +329,7 @@ namespace Files {
                 }
 
                 try {
-                    provider.load_from_data (css.data);
+                    provider.load_from_data (css, css.length);
                     style_context.add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
                     // style_context.render_background (cr, x0, y0, focus_rect_width, focus_rect_height);
                     ss.render_background (style_context, x0, y0, focus_rect_width, focus_rect_height);

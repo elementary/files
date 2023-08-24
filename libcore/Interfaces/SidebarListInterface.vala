@@ -1,78 +1,48 @@
 /*
- * SidebarListInterface.vala
- *
- * Copyright 2020 elementary LLC. <https://elementary.io>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
+ * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-FileCopyrightText: 2020-2023 elementary, Inc. (https://elementary.io)
  *
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public interface Sidebar.SidebarListInterface : Gtk.Widget {
+public interface Sidebar.SidebarListInterface : Object {
     public abstract Files.SidebarInterface sidebar { get; construct; }
-    public abstract Gtk.Widget list_widget { get; construct; }
+    public abstract Gtk.ListBox list_box { get; internal set; }
 
-    public abstract void select_item (SidebarItemInterface? item);
+    public abstract void select_item (Gtk.ListBoxRow? item);
     public abstract void unselect_all_items ();
 
-    public virtual void open_item (SidebarItemInterface item, Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
+    public virtual void open_item (SidebarItemInterface item, Files.OpenFlag flag = DEFAULT) {
         sidebar.path_change_request (item.uri, flag);
     }
 
     public abstract void refresh (); //Clear and recreate all rows
     public virtual void refresh_info () {} //Update all rows without recreating them
 
-    public virtual uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {return 0;}
+    public virtual uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
+        return 0;
+    }
 
-    public virtual void clear_list () {
+    public virtual void clear () {
         Gtk.Widget? child;
-        while ((child = list_widget.get_first_child ()) != null) {
-            child.unparent ();
+        while ((child = list_box.get_first_child ()) != null) {
+            list_box.remove (child);
             if (child is SidebarItemInterface) {
-                ((SidebarItemInterface)child).destroy_bookmark ();
+                ((SidebarItemInterface) child).destroy_bookmark ();
             }
-
-            child = child.get_next_sibling ();
         }
     }
 
     public virtual void rename_bookmark_by_uri (string uri, string new_name) {}
 
-    public virtual void remove_bookmark_by_uri (string uri) {
-        SidebarItemInterface? row = null;
-        if (has_uri (uri, out row)) {
-            if (row.permanent) {
-                return;
-            }
-
-            row.unparent ();
-            row.destroy_bookmark ();
-        }
-    }
-
-    public virtual bool has_uri (string uri, out unowned SidebarItemInterface? row = null) {
+    public virtual bool has_uri (string uri, out unowned Gtk.ListBoxRow? row = null) {
         row = null;
-        Gtk.Widget? child = get_first_child ();
-        bool uri_found = false;
+        Gtk.Widget? child = list_box.get_first_child ();
         while (child != null) {
             if (child is SidebarItemInterface) {
                 if (((SidebarItemInterface)child).uri == uri) {
-                    row = (SidebarItemInterface)child;
-                    uri_found = true;
-                    break;
+                    row = (Gtk.ListBoxRow) child;
+                    return true;
                 }
             }
 
@@ -84,7 +54,7 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
 
     public virtual bool select_uri (string uri) {
         unselect_all_items ();
-        SidebarItemInterface? row = null;
+        Gtk.ListBoxRow? row = null;
         if (has_uri (uri, out row)) {
             select_item (row);
             return true;
@@ -94,21 +64,25 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
     }
 
     public virtual bool remove_item_by_id (uint32 id) {
-        Gtk.Widget? child = get_first_child ();
-        bool removed = false;
+        Gtk.Widget? child = list_box.get_first_child ();
         while (child != null) {
             if (child is SidebarItemInterface) {
                 unowned var row = (SidebarItemInterface)child;
-                if (!row.permanent && row.id == id) {
-                    row.unparent ();
+                if (row.permanent) {
+                    continue;
+                }
+
+                if (row.id == id) {
+                    list_box.remove (child);
                     row.destroy_bookmark ();
-                    removed = true;
-                    break;
+                    return true;
                 }
             }
+
+            child = child.get_next_sibling ();
         }
 
-        return removed;
+        return false;
     }
 
     /* Returns true if favorite successfully added */
@@ -118,8 +92,11 @@ public interface Sidebar.SidebarListInterface : Gtk.Widget {
 
     /* Second parameter is index of target after which the item should be inserted */
     public virtual bool move_item_after (SidebarItemInterface item, int target_index) {
-        return false;
-    } // By default not-reorderable
+        return false; // By default not-reorderable
+    }
 
-    public virtual bool is_drop_target () { return false; } // Whether can drop rows or uris onto list itself (as opposed to onto rows in list)
+    // Whether can drop rows or uris onto list itself (as opposed to onto rows in list)
+    public virtual bool is_drop_target () {
+        return false;
+    }
 }

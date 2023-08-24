@@ -40,8 +40,9 @@ namespace Files {
             //TODO Use EventController if required
             // textview.button_press_event.connect_after (() => { return true; });
 
-            scrolled_window = new Gtk.ScrolledWindow ();
-            scrolled_window.set_child (textview);
+            scrolled_window = new Gtk.ScrolledWindow () {
+                child = textview
+            };
         }
 
         public unowned Gtk.Editable? get_delegate () {
