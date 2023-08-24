@@ -37,7 +37,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             selection_mode = Gtk.SelectionMode.SINGLE
         };
 
-        add (list_box);
+        append (list_box);
 
         trash_monitor = Files.TrashMonitor.get_default ();
         bookmark_list = Files.BookmarkList.get_instance ();
@@ -82,7 +82,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         if (index >= 0) {
             list_box.insert (row, index);
         } else {
-            list_box.add (row);
+            list_box.append (row);
         }
 
         return row;
@@ -114,7 +114,6 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
     public void refresh () {
         clear ();
-
         BookmarkRow? row;
         var home_uri = "";
         try {
@@ -195,12 +194,10 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                                        int pos = 0) {
 
         int pinned = 0; // Assume pinned items only at start and end of list
-        foreach (unowned var child in list_box.get_children ()) {
-            if (((BookmarkRow)child).pinned) {
-                pinned++;
-            } else {
-                break;
-            }
+        var child = list_box.get_first_child ();
+        while (child != null && ((SidebarItemInterface)child).pinned) {
+            pinned++;
+            child = child.get_next_sibling ();
         }
 
         if (pos < pinned) {
@@ -217,27 +214,24 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
     public override bool remove_item_by_id (uint32 id) {
+        var row = list_box.get_row_at_index (0);
         bool removed = false;
-        list_box.@foreach ((child) => {
-            if (child is BookmarkRow) {
-                unowned var row = (BookmarkRow)child;
-               if (!row.permanent && row.id == id) {
-                    list_box.remove (row);
-                    bookmark_list.delete_items_with_uri (row.uri); //Assumes no duplicates
+        while (row != null && !removed) {
+            if (row is BookmarkRow) {
+                var item = (BookmarkRow) row;
+                if (!item.permanent && item.id == id) {
+                    list_box.remove (item);
+                    bookmark_list.delete_items_with_uri (item.uri); //Assumes no duplicates
                     removed = true;
                 }
             }
-        });
+        };
 
         return removed;
     }
 
     public SidebarItemInterface? get_item_at_index (int index) {
-        if (index < 0 || index > list_box.get_children ().length ()) {
-            return null;
-        }
-
-        return (SidebarItemInterface?) list_box.get_row_at_index (index);
+        return (SidebarItemInterface?)(list_box.get_row_at_index (index));
     }
 
     public override bool move_item_after (SidebarItemInterface item, int target_index) {

@@ -51,7 +51,7 @@ public class Files.View.VolumePropertiesWindow : AbstractPropertiesDialog {
         }
 
         /* Build the header box */
-        var file_icon = new Gtk.Image.from_gicon (mount_icon, Gtk.IconSize.DIALOG) {
+        var file_icon = new Gtk.Image.from_gicon (mount_icon) {
             pixel_size = 48
         };
 
@@ -93,6 +93,5 @@ public class Files.View.VolumePropertiesWindow : AbstractPropertiesDialog {
         }
 
         create_storage_bar (info, 3);
-        show_all ();
     }
 }

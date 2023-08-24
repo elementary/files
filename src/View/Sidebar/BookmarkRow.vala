@@ -24,20 +24,22 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     /* Targets available from BookmarkRow when it is the dragged
      * Just the row ID as text at the moment
      */
-    static Gtk.TargetEntry[] source_targets = {
-        {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.BOOKMARK_ROW}
-    };
 
-    /* Targets accepted when dropped onto movable BookmarkRow
-     * Either BookmarkRow id as text or a list of uris as text is accepted at the moment
-     * Depending on where it is dropped (edge or middle) it will either be used to create a
-     * new bookmark or to initiate a file operation with the bookmark uri as target  */
-    static Gtk.TargetEntry[] dest_targets = {
-        {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
-        {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.BOOKMARK_ROW},
-    };
+     //TODO Rework DnD for Gtk4
+    // static Gtk.TargetEntry[] source_targets = {
+    //     {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.BOOKMARK_ROW}
+    // };
 
-    static Gdk.Atom text_data_atom = Gdk.Atom.intern_static_string ("text/plain");
+    // /* Targets accepted when dropped onto movable BookmarkRow
+    //  * Either BookmarkRow id as text or a list of uris as text is accepted at the moment
+    //  * Depending on where it is dropped (edge or middle) it will either be used to create a
+    //  * new bookmark or to initiate a file operation with the bookmark uri as target  */
+    // static Gtk.TargetEntry[] dest_targets = {
+    //     {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
+    //     {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.BOOKMARK_ROW},
+    // };
+
+    // static Gdk.Atom text_data_atom = Gdk.Atom.intern_static_string ("text/plain");
 
     /* Each row gets a unique id.  The methods relating to this are in the SidebarItemInterface */
     static construct {
@@ -55,7 +57,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private List<GLib.File> drop_file_list = null;
     private string? drop_text = null;
     private bool drop_occurred = false;
-    private Gdk.DragAction? current_suggested_action = Gdk.DragAction.DEFAULT;
+    private Gdk.DragAction? current_suggested_action = null;
 
     protected Gtk.Grid content_grid;
     protected Gtk.Grid icon_label_grid;
@@ -127,9 +129,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             ellipsize = Pango.EllipsizeMode.END
         };
 
-        label_stack = new Gtk.Stack () {
-            homogeneous = false
-        };
+        label_stack = new Gtk.Stack ();
         label_stack.add_named (label, "label");
 
         if (!pinned) {
@@ -140,47 +140,44 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                     custom_name = editable.text;
                     list.rename_bookmark_by_uri (uri, custom_name);
                 }
-                label_stack.visible_child_name = "label";
             });
 
-            editable.focus_out_event.connect (() =>{
+            editable.editing_done.connect (() =>{
                 label_stack.visible_child_name = "label";
             });
         }
+
         label_stack.visible_child_name = "label";
 
-        icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.MENU);
+        icon = new Gtk.Image.from_gicon (gicon);
 
         icon_label_grid = new Gtk.Grid () {
             column_spacing = 6
         };
         icon_label_grid.attach (icon, 0, 0, 1, 2);
-        icon_label_grid.add (label_stack);
+        icon_label_grid.attach (label_stack, 1, 0);
 
-        var event_box = new Gtk.EventBox () {
-            above_child = false
-        };
-        event_box.add (icon_label_grid);
+
 
         content_grid = new Gtk.Grid ();
-        content_grid.attach (event_box, 0, 0);
+        content_grid.attach (icon_label_grid, 0, 0);
 
-        add (content_grid);
-        show_all ();
+        set_child (content_grid);
 
-        key_press_event.connect (on_key_press_event);
-        button_release_event.connect_after (after_button_release_event);
+        //TODO Use EventControllers
+        // key_press_event.connect (on_key_press_event);
+        // button_release_event.connect_after (after_button_release_event);
 
         notify["gicon"].connect (() => {
-            icon.set_from_gicon (gicon, Gtk.IconSize.MENU);
+            icon.set_from_gicon (gicon);
         });
 
         notify["custom-name"].connect (() => {
             label.label = display_name;
         });
 
-        set_up_drag ();
-        set_up_drop ();
+        // set_up_drag ();
+        // set_up_drop ();
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
@@ -214,81 +211,80 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         base.destroy ();
     }
 
-    protected virtual bool on_key_press_event (Gdk.EventKey event) {
-        uint keyval;
-        event.get_keyval (out keyval);
-        switch (keyval) {
-            case Gdk.Key.F2:
-                rename ();
-                return true;
+    //TODO Use EventControllers
+    // protected virtual bool on_key_press_event (Gdk.EventKey event) {
+    //     uint keyval;
+    //     event.get_keyval (out keyval);
+    //     switch (keyval) {
+    //         case Gdk.Key.F2:
+    //             rename ();
+    //             return true;
 
-            case Gdk.Key.Escape:
-                cancel_rename ();
-                return true;
+    //         case Gdk.Key.Escape:
+    //             cancel_rename ();
+    //             return true;
 
-            default:
-                break;
-        }
-        return false;
-    }
+    //         default:
+    //             break;
+    //     }
+    //     return false;
+    // }
 
-    protected virtual bool after_button_release_event (Gdk.EventButton event) {
-        if (!valid) { //Ignore if in the process of being removed
-            return true;
-        }
+    // protected virtual bool after_button_release_event (Gdk.EventButton event) {
+    //     if (!valid) { //Ignore if in the process of being removed
+    //         return true;
+    //     }
 
-        if (label_stack.visible_child_name == "editable") { //Do not interfere with renaming
-            return false;
-        }
+    //     if (label_stack.visible_child_name == "editable") { //Do not interfere with renaming
+    //         return false;
+    //     }
 
-        Gdk.ModifierType state;
-        event.get_state (out state);
-        var mods = state & Gtk.accelerator_get_default_mod_mask ();
-        var control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
-        var other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
-        var only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
+    //     Gdk.ModifierType state;
+    //     event.get_state (out state);
+    //     var mods = state & Gtk.accelerator_get_default_mod_mask ();
+    //     var control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
+    //     var other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
+    //     var only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
 
-        uint button;
-        event.get_button (out button);
-        switch (button) {
-            case Gdk.BUTTON_PRIMARY:
-                if (only_control_pressed) {
-                    activated (Files.OpenFlag.NEW_TAB);
-                    return true;
-                } else {
-                    return false;
-                }
+    //     uint button;
+    //     event.get_button (out button);
+    //     switch (button) {
+    //         case Gdk.BUTTON_PRIMARY:
+    //             if (only_control_pressed) {
+    //                 activated (Files.OpenFlag.NEW_TAB);
+    //                 return true;
+    //             } else {
+    //                 return false;
+    //             }
 
-            case Gdk.BUTTON_SECONDARY:
-                popup_context_menu (event);
-                return true;
+    //         case Gdk.BUTTON_SECONDARY:
+    //             popup_context_menu (event);
+    //             return true;
 
-            case Gdk.BUTTON_MIDDLE:
-                activated (Files.OpenFlag.NEW_TAB);
-                return true;
+    //         case Gdk.BUTTON_MIDDLE:
+    //             activated (Files.OpenFlag.NEW_TAB);
+    //             return true;
 
-            default:
-                return false;
-        }
-    }
+    //         default:
+    //             return false;
+    //     }
+    // }
 
-    protected virtual void popup_context_menu (Gdk.EventButton event) {
-        var menu_builder = new PopupMenuBuilder ()
-            .add_open (() => {activated ();})
-            .add_separator ()
-            .add_open_tab (() => {activated (Files.OpenFlag.NEW_TAB);})
-            .add_open_window (() => {activated (Files.OpenFlag.NEW_WINDOW);});
-
-        add_extra_menu_items (menu_builder);
-
+    protected virtual void popup_context_menu () {
         if (menu_model != null) {
-            menu_builder
-                .build_from_model (menu_model, action_group_namespace, action_group)
-                .popup_at_pointer (event);
+            new Gtk.PopoverMenu.from_model (menu_model).popup ();
         } else {
+            var menu_builder = new PopupMenuBuilder ()
+                .add_open (() => {activated ();})
+                .add_separator ()
+                .add_open_tab (() => {activated (Files.OpenFlag.NEW_TAB);})
+                .add_open_window (() => {activated (Files.OpenFlag.NEW_WINDOW);});
+
+            add_extra_menu_items (menu_builder);
+
             menu_builder
                 .build ()
-                .popup_at_pointer (event);
+                .popup ();
         }
     }
 
@@ -319,79 +315,79 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     /* DRAG DROP IMPLEMENTATION */
-    private void set_up_drag () {
-        if (pinned) { //Pinned items cannot be dragged
-            return;
-        }
-        /*Set up as Drag Source*/
-        Gtk.drag_source_set (
-            this,
-            Gdk.ModifierType.BUTTON1_MASK,
-            source_targets,
-            Gdk.DragAction.MOVE
-        );
+    // private void set_up_drag () {
+    //     if (pinned) { //Pinned items cannot be dragged
+    //         return;
+    //     }
+    //     /*Set up as Drag Source*/
+    //     Gtk.drag_source_set (
+    //         this,
+    //         Gdk.ModifierType.BUTTON1_MASK,
+    //         source_targets,
+    //         Gdk.DragAction.MOVE
+    //     );
 
-        drag_begin.connect ((ctx) => {
-            /* Make an image of this row on a new surface */
-            Gtk.Allocation alloc;
-            get_allocation (out alloc);
-            var surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, alloc.width, alloc.height);
-            var cr = new Cairo.Context (surface);
-            draw (cr);
-            /* Make drag image semi-transparent (painting on cr does not work) */
-            var surface2 = new Cairo.ImageSurface (Cairo.Format.ARGB32, alloc.width, alloc.height);
-            var cr2 = new Cairo.Context (surface2);
-            cr2.set_source_surface (cr.get_target (), 0, 1);
-            cr2.set_operator (Cairo.Operator.OVER);
-            cr2.paint_with_alpha (0.5);
+    //     drag_begin.connect ((ctx) => {
+    //         /* Make an image of this row on a new surface */
+    //         Gtk.Allocation alloc;
+    //         get_allocation (out alloc);
+    //         var surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, alloc.width, alloc.height);
+    //         var cr = new Cairo.Context (surface);
+    //         draw (cr);
+    //         /* Make drag image semi-transparent (painting on cr does not work) */
+    //         var surface2 = new Cairo.ImageSurface (Cairo.Format.ARGB32, alloc.width, alloc.height);
+    //         var cr2 = new Cairo.Context (surface2);
+    //         cr2.set_source_surface (cr.get_target (), 0, 1);
+    //         cr2.set_operator (Cairo.Operator.OVER);
+    //         cr2.paint_with_alpha (0.5);
 
-            /* Make drag image coincide with dragged row at start */
-            var device = Gtk.get_current_event_device ();
-            int x, y;
-            Gdk.ModifierType mask;
-            get_window ().get_device_position (device, out x, out y, out mask);
-            surface2.set_device_offset (-x, 0);
-            /* Set the drag icon to an image of this row */
-            Gtk.drag_set_icon_surface (ctx, surface2);
-        });
+    //         /* Make drag image coincide with dragged row at start */
+    //         var device = Gtk.get_current_event_device ();
+    //         int x, y;
+    //         Gdk.ModifierType mask;
+    //         get_window ().get_device_position (device, out x, out y, out mask);
+    //         surface2.set_device_offset (-x, 0);
+    //         /* Set the drag icon to an image of this row */
+    //         Gtk.drag_set_icon_surface (ctx, surface2);
+    //     });
 
-        /* Pass the item id as selection data by converting to string.*/
-        //TODO There may be a more elegant method of passing a pointer to `this` directly.
-        drag_data_get.connect ((ctx, sel_data, info, time) => {
-            uint8[] data = id.to_string ().data;
-            sel_data.@set (text_data_atom, 8, data);
-        });
+    //     /* Pass the item id as selection data by converting to string.*/
+    //     //TODO There may be a more elegant method of passing a pointer to `this` directly.
+    //     drag_data_get.connect ((ctx, sel_data, info, time) => {
+    //         uint8[] data = id.to_string ().data;
+    //         sel_data.@set (text_data_atom, 8, data);
+    //     });
 
-        drag_failed.connect ((ctx, res) => {
-            if (res == Gtk.DragResult.NO_TARGET) {
-                Gdk.Window app_window = list.list_box.get_window ().get_effective_toplevel ();
-                Gdk.Window drag_window = ctx.get_drag_window ();
-                Gdk.Rectangle app_rect, drag_rect, intersect_rect;
+    //     drag_failed.connect ((ctx, res) => {
+    //         if (res == Gtk.DragResult.NO_TARGET) {
+    //             Gdk.Window app_window = list.get_window ().get_effective_toplevel ();
+    //             Gdk.Window drag_window = ctx.get_drag_window ();
+    //             Gdk.Rectangle app_rect, drag_rect, intersect_rect;
 
-                app_window.get_frame_extents (out app_rect);
-                drag_window.get_frame_extents (out drag_rect);
+    //             app_window.get_frame_extents (out app_rect);
+    //             drag_window.get_frame_extents (out drag_rect);
 
-                if (!drag_rect.intersect (app_rect, out intersect_rect)) {
-                    list.remove_item_by_id (id);
-                    var device = ctx.get_device ();
-                    int x, y;
-                    device.get_position (null, out x, out y);
-                    Plank.PoofWindow poof_window;
-                    poof_window = Plank.PoofWindow.get_default ();
-                    poof_window.show_at (x, y);
-                    return true;
-                }
-            }
+    //             if (!drag_rect.intersect (app_rect, out intersect_rect)) {
+    //                 list.remove_item_by_id (id);
+    //                 var device = ctx.get_device ();
+    //                 int x, y;
+    //                 device.get_position (null, out x, out y);
+    //                 Plank.PoofWindow poof_window;
+    //                 poof_window = Plank.PoofWindow.get_default ();
+    //                 poof_window.show_at (x, y);
+    //                 return true;
+    //             }
+    //         }
 
-            return false;
-        });
+    //         return false;
+    //     });
 
-        drag_end.connect ((ctx) => {
-            reset_drag_drop ();
-        });
-    }
+    //     drag_end.connect ((ctx) => {
+    //         reset_drag_drop ();
+    //     });
+    // }
 
-    /* Set up as a drag destination. */
+    // /* Set up as a drag destination. */
     private void set_up_drop () {
         var drop_revealer_child = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
             margin_top = 12,
@@ -402,165 +398,164 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             child = drop_revealer_child,
             transition_type = Gtk.RevealerTransitionType.SLIDE_UP
         };
-        drop_revealer.show_all ();
 
         content_grid.attach (drop_revealer, 0, 1);
 
-        Gtk.drag_dest_set (
-            this,
-            Gtk.DestDefaults.MOTION | Gtk.DestDefaults.HIGHLIGHT,
-            dest_targets,
-            Gdk.DragAction.MOVE | Gdk.DragAction.COPY | Gdk.DragAction.LINK | Gdk.DragAction.ASK
-        );
+    //     Gtk.drag_dest_set (
+    //         this,
+    //         Gtk.DestDefaults.MOTION | Gtk.DestDefaults.HIGHLIGHT,
+    //         dest_targets,
+    //         Gdk.DragAction.MOVE | Gdk.DragAction.COPY | Gdk.DragAction.LINK | Gdk.DragAction.ASK
+    //     );
 
-        drag_data_received.connect ((ctx, x, y, sel_data, info, time) => {
-            drop_text = null;
-            // Extract the require text from info and convert to file list if appropriate
-            switch (info) {
-                case Files.TargetType.BOOKMARK_ROW:
-                    drop_text = sel_data.get_text ();
-                    break;
+    //     drag_data_received.connect ((ctx, x, y, sel_data, info, time) => {
+    //         drop_text = null;
+    //         // Extract the require text from info and convert to file list if appropriate
+    //         switch (info) {
+    //             case Files.TargetType.BOOKMARK_ROW:
+    //                 drop_text = sel_data.get_text ();
+    //                 break;
 
-                case Files.TargetType.TEXT_URI_LIST:
-                    if (!Files.DndHandler.selection_data_is_uri_list (sel_data, info, out drop_text)) {
-                        warning ("sel data not uri list");
-                        drop_text = null;
-                    } else {
-                        drop_file_list = Files.FileUtils.files_from_uris (drop_text);
-                    }
+    //             case Files.TargetType.TEXT_URI_LIST:
+    //                 if (!Files.DndHandler.selection_data_is_uri_list (sel_data, info, out drop_text)) {
+    //                     warning ("sel data not uri list");
+    //                     drop_text = null;
+    //                 } else {
+    //                     drop_file_list = Files.FileUtils.files_from_uris (drop_text);
+    //                 }
 
-                    break;
+    //                 break;
 
-                default:
-                    return;
-            }
+    //             default:
+    //                 return;
+    //         }
 
-            if (drop_occurred) {
-                var success = false;
-                switch (info) {
-                    case Files.TargetType.BOOKMARK_ROW:
-                        success = process_dropped_row (ctx, drop_text, drop_revealer.child_revealed);
-                        break;
+    //         if (drop_occurred) {
+    //             var success = false;
+    //             switch (info) {
+    //                 case Files.TargetType.BOOKMARK_ROW:
+    //                     success = process_dropped_row (ctx, drop_text, drop_revealer.child_revealed);
+    //                     break;
 
-                    case Files.TargetType.TEXT_URI_LIST:
-                        success = process_dropped_uris (ctx, drop_file_list, drop_revealer.child_revealed);
-                        break;
-                }
+    //                 case Files.TargetType.TEXT_URI_LIST:
+    //                     success = process_dropped_uris (ctx, drop_file_list, drop_revealer.child_revealed);
+    //                     break;
+    //             }
 
-                /* Signal source to cleanup after drag */
-                Gtk.drag_finish (ctx, success, false, time);
-                reset_drag_drop ();
-            }
-        });
+    //             /* Signal source to cleanup after drag */
+    //             Gtk.drag_finish (ctx, success, false, time);
+    //             reset_drag_drop ();
+    //         }
+    //     });
 
-        /* Handle motion over a potential drop target, update current suggested action */
-        drag_motion.connect ((ctx, x, y, time) => {
-            var target = Gtk.drag_dest_find_target (this, ctx, null);
-            if (drop_text == null) {
-                if (target != Gdk.Atom.NONE) {
-                    Gtk.drag_get_data (this, ctx, target, time);
-                }
+    //     /* Handle motion over a potential drop target, update current suggested action */
+    //     drag_motion.connect ((ctx, x, y, time) => {
+    //         var target = Gtk.drag_dest_find_target (this, ctx, null);
+    //         if (drop_text == null) {
+    //             if (target != Gdk.Atom.NONE) {
+    //                 Gtk.drag_get_data (this, ctx, target, time);
+    //             }
 
-                return true;
-            }
+    //             return true;
+    //         }
 
-            var pos = get_index ();
-            var previous_item = (BookmarkRow?)(list.get_item_at_index (pos - 1));
-            var next_item = (BookmarkRow?)(list.get_item_at_index (pos + 1));
+    //         var pos = get_index ();
+    //         var previous_item = (BookmarkRow?)(list.get_item_at_index (pos - 1));
+    //         var next_item = (BookmarkRow?)(list.get_item_at_index (pos + 1));
 
-            if (previous_item != null) {
-                previous_item.reveal_drop_target (false);
-            }
+    //         if (previous_item != null) {
+    //             previous_item.reveal_drop_target (false);
+    //         }
 
-            var row_height = icon_label_grid.get_allocated_height ();
-            bool reveal = false;
+    //         var row_height = icon_label_grid.get_allocated_height ();
+    //         bool reveal = false;
 
-            current_suggested_action = Gdk.DragAction.DEFAULT;
-            switch (target.name ()) {
-                case "text/plain":
-                    reveal = can_insert_after &&
-                             (next_item == null || next_item.can_insert_before) &&
-                              y > row_height / 2;
+    //         current_suggested_action = Gdk.DragAction.DEFAULT;
+    //         switch (target.name ()) {
+    //             case "text/plain":
+    //                 reveal = can_insert_after &&
+    //                          (next_item == null || next_item.can_insert_before) &&
+    //                           y > row_height / 2;
 
-                    break;
+    //                 break;
 
-                case "text/uri-list": // File(s) being dragged
-                    reveal = can_insert_after &&
-                             (next_item == null || next_item.can_insert_before) &&
-                              y > row_height - 1;
+    //             case "text/uri-list": // File(s) being dragged
+    //                 reveal = can_insert_after &&
+    //                          (next_item == null || next_item.can_insert_before) &&
+    //                           y > row_height - 1;
 
-                    // When dropping onto a row, determine what actions are possible
-                    if (!reveal && drop_file_list != null) {
-                        Files.FileUtils.file_accepts_drop (
-                            target_file,
-                            drop_file_list, ctx,
-                            out current_suggested_action
-                        );
+    //                 // When dropping onto a row, determine what actions are possible
+    //                 if (!reveal && drop_file_list != null) {
+    //                     Files.FileUtils.file_accepts_drop (
+    //                         target_file,
+    //                         drop_file_list, ctx,
+    //                         out current_suggested_action
+    //                     );
 
-                        if (current_suggested_action != Gdk.DragAction.DEFAULT) {
-                            highlight (true);
-                        }
-                    } else {
-                        highlight (false);
-                    }
+    //                     if (current_suggested_action != Gdk.DragAction.DEFAULT) {
+    //                         highlight (true);
+    //                     }
+    //                 } else {
+    //                     highlight (false);
+    //                 }
 
-                    break;
-                default:
-                    break;
-            }
+    //                 break;
+    //             default:
+    //                 break;
+    //         }
 
-            if (reveal_drop_target (reveal)) {
-                current_suggested_action = Gdk.DragAction.LINK; //A bookmark is effectively a link
-                if (target.name () == "text/uri-list" && drop_text != null &&
-                    list.has_uri (drop_text.strip ())) { //Need to remove trailing newline
+    //         if (reveal_drop_target (reveal)) {
+    //             current_suggested_action = Gdk.DragAction.LINK; //A bookmark is effectively a link
+    //             if (target.name () == "text/uri-list" && drop_text != null &&
+    //                 list.has_uri (drop_text.strip ())) { //Need to remove trailing newline
 
-                    current_suggested_action = Gdk.DragAction.DEFAULT; //Do not allowing dropping duplicate URI
-                    reveal = false;
-                }
-            }
+    //                 current_suggested_action = Gdk.DragAction.DEFAULT; //Do not allowing dropping duplicate URI
+    //                 reveal = false;
+    //             }
+    //         }
 
-            Gdk.drag_status (ctx, current_suggested_action, time);
-            return true;
-        });
+    //         Gdk.drag_status (ctx, current_suggested_action, time);
+    //         return true;
+    //     });
 
-        drag_leave.connect (() => {
-            reset_drag_drop ();
-        });
+    //     drag_leave.connect (() => {
+    //         reset_drag_drop ();
+    //     });
 
-        drag_drop.connect ((ctx, x, y, time) => {
-            var target = Gtk.drag_dest_find_target (this, ctx, null);
-            if (target != Gdk.Atom.NONE) {
-            /* Source info obtained during `drag_motion` is cleared in `drag_leave` (which occurs first)
-             * so we have to get it again.  The drop is actioned in `drag_data_received` when `drop_occurred`
-             * is set to true */
-                drop_occurred = true;
-                Gtk.drag_get_data (this, ctx, target, time);
-            } else {
-                return false; // Indicate not a valid drop site
-            }
+    //     drag_drop.connect ((ctx, x, y, time) => {
+    //         var target = Gtk.drag_dest_find_target (this, ctx, null);
+    //         if (target != Gdk.Atom.NONE) {
+    //         /* Source info obtained during `drag_motion` is cleared in `drag_leave` (which occurs first)
+    //          * so we have to get it again.  The drop is actioned in `drag_data_received` when `drop_occurred`
+    //          * is set to true */
+    //             drop_occurred = true;
+    //             Gtk.drag_get_data (this, ctx, target, time);
+    //         } else {
+    //             return false; // Indicate not a valid drop site
+    //         }
 
-            return true;
-        });
+    //         return true;
+    //     });
     }
 
-    protected void highlight (bool show) {
-        if (show && !get_style_context ().has_class (Gtk.STYLE_CLASS_HIGHLIGHT)) {
-            get_style_context ().add_class (Gtk.STYLE_CLASS_HIGHLIGHT);
-        } else if (!show && get_style_context ().has_class (Gtk.STYLE_CLASS_HIGHLIGHT)) {
-            get_style_context ().remove_class (Gtk.STYLE_CLASS_HIGHLIGHT);
-        }
-    }
+    // protected void highlight (bool show) {
+    //     if (show && !get_style_context ().has_class (Gtk.STYLE_CLASS_HIGHLIGHT)) {
+    //         get_style_context ().add_class (Gtk.STYLE_CLASS_HIGHLIGHT);
+    //     } else if (!show && get_style_context ().has_class (Gtk.STYLE_CLASS_HIGHLIGHT)) {
+    //         get_style_context ().remove_class (Gtk.STYLE_CLASS_HIGHLIGHT);
+    //     }
+    // }
 
-    private void reset_drag_drop () {
-        drop_file_list = null;
-        drop_text = null;
-        drop_occurred = false;
-        current_suggested_action = Gdk.DragAction.DEFAULT;
-        reveal_drop_target (false);
-        highlight (false);
-    }
+    // private void reset_drag_drop () {
+    //     drop_file_list = null;
+    //     drop_text = null;
+    //     drop_occurred = false;
+    //     current_suggested_action = Gdk.DragAction.DEFAULT;
+    //     reveal_drop_target (false);
+    //     highlight (false);
+    // }
 
-    private bool process_dropped_row (Gdk.DragContext ctx, string drop_text, bool dropped_between) {
+    private bool process_dropped_row (Gdk.Drag ctx, string drop_text, bool dropped_between) {
         var id = (uint32)(uint.parse (drop_text));
         var item = SidebarItemInterface.get_item (id);
 
@@ -575,7 +570,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         return true;
     }
 
-    private bool process_dropped_uris (Gdk.DragContext ctx,
+    private bool process_dropped_uris (Gdk.Drag ctx,
                                        List<GLib.File> drop_file_list,
                                        bool dropped_between) {
 
@@ -601,9 +596,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 );
             }
 
-            if (real_action == Gdk.DragAction.DEFAULT) {
-                return false;
-            }
+            // if (real_action == null) {
+            //     return false;
+            // }
 
             dnd_handler.dnd_perform (
                 this,

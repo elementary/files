@@ -28,6 +28,7 @@ namespace Files.View {
         public Gtk.Widget? content_item;
         public bool can_show_folder { get; private set; default = false; }
         private View.Window? _window = null;
+        public bool working { get; set; }
         public View.Window window {
             get {
                 return _window;
@@ -51,6 +52,7 @@ namespace Files.View {
                 return slot != null ? slot.location : null;
             }
         }
+
         public string uri {
             get {
                 return slot != null ? slot.uri : "";
@@ -108,7 +110,6 @@ namespace Files.View {
             window = win;
             browser = new Browser ();
 
-            set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
             connect_signals ();
         }
 
@@ -120,8 +121,8 @@ namespace Files.View {
             loading.connect ((loading) => {
                 is_loading = loading;
             });
-
-            button_press_event.connect (on_button_press_event);
+            //TODO Use EventController
+            // button_press_event.connect (on_button_press_event);
         }
 
         private void connect_window_signals () {
@@ -164,8 +165,7 @@ namespace Files.View {
                 content_item = value;
 
                 if (content_item != null) {
-                    add (content_item);
-                    content_item.show_all ();
+                    append (content_item);
                 }
             }
             get {
@@ -208,7 +208,7 @@ namespace Files.View {
             }
         }
 
-        public void go_back (int n = 1) {
+        public void go_back (uint n) {
             string? path = browser.go_back (n);
 
             if (path != null) {
@@ -218,7 +218,7 @@ namespace Files.View {
             }
         }
 
-        public void go_forward (int n = 1) {
+        public void go_forward (uint n) {
             string? path = browser.go_forward (n);
 
             if (path != null) {
@@ -243,14 +243,11 @@ namespace Files.View {
                 this.view = new Slot (loc, this, mode);
             }
 
-            overlay_statusbar = new View.OverlayBar (view.overlay) {
-                no_show_all = true
-            };
+            overlay_statusbar = new View.OverlayBar (view.overlay);
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
             slot.initialize_directory ();
-            show_all ();
 
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
              * The slot becomes active when the tab becomes current */
@@ -561,36 +558,38 @@ namespace Files.View {
             overlay_statusbar.selection_changed (files);
         }
 
-        private bool on_button_press_event (Gdk.EventButton event) {
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            uint button;
-            event.get_button (out button);
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            bool result = false;
-            switch (button) {
-                /* Extra mouse button actions */
-                case 6:
-                case 8:
-                    if (mods == 0) {
-                        result = true;
-                        go_back ();
-                    }
-                    break;
+    //TODO Use EventController
+    //     private bool on_button_press_event (Gdk.EventButton event) {
+    //         Gdk.ModifierType state;
+    //         event.get_state (out state);
+    //         uint button;
+    //         event.get_button (out button);
+    //         var mods = state & Gtk.accelerator_get_default_mod_mask ();
+    //         bool result = false;
+    //         switch (button) {
+    //             /* Extra mouse button actions */
+    //             case 6:
+    //             case 8:
+    //                 if (mods == 0) {
+    //                     result = true;
+    //                     go_back ();
+    //                 }
+    //                 break;
 
-                case 7:
-                case 9:
-                    if (mods == 0) {
-                        result = true;
-                        go_forward ();
-                    }
-                    break;
+    //             case 7:
+    //             case 9:
+    //                 if (mods == 0) {
+    //                     result = true;
+    //                     go_forward ();
+    //                 }
+    //                 break;
 
-                default:
-                    break;
-            }
+    //             default:
+    //                 break;
+    //         }
 
-            return result;
-        }
-    }
+    //         return result;
+    //     }
+    // }
+}
 }

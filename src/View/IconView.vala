@@ -130,7 +130,7 @@ namespace Files {
         public override Gtk.TreePath? get_path_at_pos (int win_x, int win_y) {
             /* Supplied coords are drag coords - need IconView bin window coords */
             /* Icon view does not scroll horizontally so no adjustment needed for x coord*/
-            return tree.get_path_at_pos (win_x, win_y + (int)(get_vadjustment ().get_value ()));
+            return tree.get_path_at_pos (win_x, win_y + (int)(scrolled_window.get_vadjustment ().get_value ()));
         }
 
         public override void tree_select_all () {
@@ -206,15 +206,15 @@ namespace Files {
             return tree.has_focus;
         }
 
-        protected override uint get_event_position_info (Gdk.EventButton event,
+        protected override uint get_event_position_info (double x, double y,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
             Gtk.CellRenderer? cell_renderer;
             uint zone;
             path = null;
 
-            double x, y;
-            event.get_coords (out x, out y);
+            // double x, y;
+            // event.get_coords (out x, out y);
 
             tree.get_item_at_pos ((int)x, (int)y, out path, out cell_renderer);
             zone = (path != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
@@ -229,7 +229,7 @@ namespace Files {
                     /* rectangles are in bin window coordinates - need to adjust event y coordinate
                      * for vertical scrolling in order to accurately detect which area of TextRenderer was
                      * clicked on */
-                    y -= (int)(get_vadjustment ().value);
+                    y -= (int)(scrolled_window.get_vadjustment ().value);
                     Gtk.TreeIter iter;
                     model.get_iter (out iter, path);
                     string? text = null;
@@ -248,8 +248,8 @@ namespace Files {
                         /* Fake location outside centre bottom of item for rubberbanding because IconView
                          * unlike TreeView will not rubberband if clicked on an item. */
                          //TODO Rewrite needed for Gtk4 where events are immutable
-                        event.x = rect.x + rect.width / 2;
-                        event.y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
+                        // event.x = rect.x + rect.width / 2;
+                        // event.y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
                     }
                 } else {
                     bool on_helper = false;
@@ -332,24 +332,24 @@ namespace Files {
                     if (only_shift_pressed && selected_files != null) {
                         linear_select_path (path);
                     } else if (control_pressed) {
-                        set_cursor (path, false, false, false);
+                        set_view_cursor (path, false, false, false);
                         previous_linear_selection_path = path;
                     } else {
                         unselect_all ();
-                        set_cursor (path, false, true, false);
+                        set_view_cursor (path, false, true, false);
                         previous_linear_selection_path = path;
                     }
                 }
             } else {
                 path = new Gtk.TreePath.from_indices (0);
-                set_cursor (path, false, !control_pressed, false);
+                set_view_cursor (path, false, !control_pressed, false);
                 previous_linear_selection_path = path;
             }
 
             return true;
         }
 
-        public override void set_cursor (Gtk.TreePath? path,
+        public override void set_view_cursor (Gtk.TreePath? path,
                                          bool start_editing,
                                          bool select,
                                          bool scroll_to_top) {
@@ -378,31 +378,27 @@ namespace Files {
 
         /* These two functions accelerate the loading of Views especially for large folders
          * Views are not displayed until fully loaded */
-        protected override void freeze_tree () {
-            tree_frozen = true;
-            tree.freeze_child_notify ();
-            tree.set_model (null);
-        }
+        // protected override void freeze_tree () {
+            // tree_frozen = true;
+            // tree.freeze_child_notify ();
+            // tree.set_model (null);
+        // }
 
-        protected override void thaw_tree () {
-            if (tree_frozen) {
-                tree.set_model (model);
-                tree.thaw_child_notify ();
-                tree_frozen = false;
-            }
-        }
+        // protected override void thaw_tree () {
+            // if (tree_frozen) {
+            //     tree.set_model (model);
+            //     tree.thaw_child_notify ();
+            //     tree_frozen = false;
+            // }
+        // }
 
-        // For scrolling
-        protected override void freeze_child_notify () {
-            tree.freeze_child_notify ();
-        }
+        // protected override void freeze_child_notify () {
+            // tree.freeze_child_notify ();
+        // }
 
-        protected override void thaw_child_notify () {
-            //Do not prematurely thaw tree while loading
-            if (!tree_frozen) {
-                tree.thaw_child_notify ();
-            }
-        }
+        // protected override void thaw_child_notify () {
+            // tree.thaw_child_notify ();
+        // }
 
         protected void linear_select_path (Gtk.TreePath path) {
             /* We override the native Gtk.IconView behaviour when selecting files with Shift-Click */

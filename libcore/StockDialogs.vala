@@ -33,7 +33,7 @@ public const string EMPTY_TRASH = _("Empty _Trash");
 namespace PF.Dialogs {
     public Granite.MessageDialog show_error_dialog (string primary_text,
                                                     string secondary_text,
-                                                    Gtk.Window? parent) {
+                                                    Gtk.Root? parent) {
         /* Use default button type "CLOSE" */
         var dialog = new Granite.MessageDialog.with_image_from_icon_name (primary_text, secondary_text, "dialog-error");
         return display_dialog (dialog, parent);
@@ -48,9 +48,9 @@ namespace PF.Dialogs {
         return display_dialog (dialog, parent);
     }
 
-    private Granite.MessageDialog display_dialog (Granite.MessageDialog dialog, Gtk.Window? parent) {
+    private Granite.MessageDialog display_dialog (Granite.MessageDialog dialog, Gtk.Root? parent) {
         if (parent != null && parent is Gtk.Window) {
-            dialog.set_transient_for (parent);
+            dialog.set_transient_for ((Gtk.Window)parent);
         }
 
         dialog.response.connect_after (() => {

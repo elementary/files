@@ -57,11 +57,11 @@ namespace Files.View.Chrome {
         protected Gee.Collection<BreadcrumbElement>? old_elements;
 
         protected Gtk.StyleContext button_context;
-        protected Gtk.StyleContext button_context_active;
+        // protected Gtk.StyleContext button_context_active;
         protected const int BREAD_SPACING = 12;
         protected const double YPAD = 0; /* y padding */
 
-        private Gdk.Window? entry_window = null;
+        // private Gdk.Window? entry_window = null;
 
         protected bool context_menu_showing = false;
 
@@ -72,7 +72,7 @@ namespace Files.View.Chrome {
 
             var css_provider = new Gtk.CssProvider ();
             try {
-                css_provider.load_from_data (".noradius-button { border-radius: 0; }");
+                css_provider.load_from_data (".noradius-button { border-radius: 0; }", -1);
                 style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             } catch (Error e) {
                 critical ("Unable to style pathbar button: %s", e.message);
@@ -82,7 +82,7 @@ namespace Files.View.Chrome {
 
             elements = new Gee.ArrayList<BreadcrumbElement> ();
             old_elements = new Gee.ArrayList<BreadcrumbElement> ();
-            connect_signals ();
+            // connect_signals ();
 
             minimum_width = 100;
             notify["scale-factor"].connect (() => {
@@ -90,18 +90,18 @@ namespace Files.View.Chrome {
             });
         }
 
-        protected virtual void connect_signals () {
-            realize.connect_after (after_realize);
-            activate.connect (on_activate);
-            button_release_event.connect (on_button_release_event);
-            button_press_event.connect (on_button_press_event);
-            icon_press.connect (on_icon_press);
-            motion_notify_event.connect_after (after_motion_notify);
-            focus_in_event.connect (on_focus_in);
-            focus_out_event.connect (on_focus_out);
-            key_press_event.connect (on_key_press_event);
-            changed.connect (on_entry_text_changed);
-        }
+        // protected virtual void connect_signals () {
+        //     realize.connect_after (after_realize);
+        //     activate.connect (on_activate);
+        //     button_release_event.connect (on_button_release_event);
+        //     button_press_event.connect (on_button_press_event);
+        //     icon_press.connect (on_icon_press);
+        //     motion_notify_event.connect_after (after_motion_notify);
+        //     focus_in_event.connect (on_focus_in);
+        //     focus_out_event.connect (on_focus_out);
+        //     key_press_event.connect (on_key_press_event);
+        //     changed.connect (on_entry_text_changed);
+        // }
 
     /** Navigatable Interface **/
     /***************************/
@@ -124,12 +124,12 @@ namespace Files.View.Chrome {
         }
 
         protected void set_action_icon_tooltip (string? tip) {
-            if (secondary_icon_pixbuf != null && tip != null && tip.length > 0) {
+            if (secondary_icon_paintable != null && tip != null && tip.length > 0) {
                 set_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY, tip);
             }
         }
         public string? get_action_icon_tooltip () {
-            if (secondary_icon_pixbuf != null) {
+            if (secondary_icon_paintable != null) {
                 return get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
             } else {
                 return null;
@@ -137,7 +137,7 @@ namespace Files.View.Chrome {
         }
 
         protected void hide_action_icon () {
-            secondary_icon_pixbuf = null;
+            secondary_icon_paintable = null;
         }
 
         public void set_entry_text (string? txt) {
@@ -180,183 +180,183 @@ namespace Files.View.Chrome {
 
     /** Signal handling **/
     /*********************/
-        public virtual bool on_key_press_event (Gdk.EventKey event) {
-            if (event.is_modifier == 1) {
-                return true;
-            }
+        // public virtual bool on_key_press_event (Gdk.EventKey event) {
+        //     if (event.is_modifier == 1) {
+        //         return true;
+        //     }
 
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
+        //     Gdk.ModifierType state;
+        //     event.get_state (out state);
+        //     var mods = state & Gtk.accelerator_get_default_mod_mask ();
+        //     bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
 
-            uint keyval;
-            event.get_keyval (out keyval);
-            switch (keyval) {
-                /* Do not trap unmodified Down and Up keys - used by some input methods */
-                case Gdk.Key.KP_Down:
-                case Gdk.Key.Down:
-                    if (only_control_pressed) {
-                        go_down ();
-                        return true;
-                    }
+        //     uint keyval;
+        //     event.get_keyval (out keyval);
+        //     switch (keyval) {
+        //         /* Do not trap unmodified Down and Up keys - used by some input methods */
+        //         case Gdk.Key.KP_Down:
+        //         case Gdk.Key.Down:
+        //             if (only_control_pressed) {
+        //                 go_down ();
+        //                 return true;
+        //             }
 
-                    break;
+        //             break;
 
-                case Gdk.Key.KP_Up:
-                case Gdk.Key.Up:
-                    if (only_control_pressed) {
-                        go_up ();
-                        return true;
-                    }
+        //         case Gdk.Key.KP_Up:
+        //         case Gdk.Key.Up:
+        //             if (only_control_pressed) {
+        //                 go_up ();
+        //                 return true;
+        //             }
 
-                    break;
+        //             break;
 
-                case Gdk.Key.Escape:
-                    activate_path ("");
-                    return true;
+        //         case Gdk.Key.Escape:
+        //             activate_path ("");
+        //             return true;
 
-                case Gdk.Key.l:
-                    if (only_control_pressed) {
-                        set_entry_text (current_dir_path);
-                        grab_focus ();
-                        return true;
-                    } else {
-                        break;
-                    }
-                default:
-                    break;
-            }
+        //         case Gdk.Key.l:
+        //             if (only_control_pressed) {
+        //                 set_entry_text (current_dir_path);
+        //                 grab_focus ();
+        //                 return true;
+        //             } else {
+        //                 break;
+        //             }
+        //         default:
+        //             break;
+        //     }
 
-            return false;
-        }
+        //     return false;
+        // }
 
-        protected virtual bool on_button_press_event (Gdk.EventButton event) {
-            uint button;
-            event.get_button (out button);
-            context_menu_showing = has_focus && button == Gdk.BUTTON_SECONDARY;
-            return !has_focus;  // Only pass to default Gtk handler when focused and Entry showing.
-        }
+        // protected virtual bool on_button_press_event (Gdk.EventButton event) {
+        //     uint button;
+        //     event.get_button (out button);
+        //     context_menu_showing = has_focus && button == Gdk.BUTTON_SECONDARY;
+        //     return !has_focus;  // Only pass to default Gtk handler when focused and Entry showing.
+        // }
 
-         protected virtual bool on_button_release_event (Gdk.EventButton event) {
-            /* Only activate breadcrumbs with primary click when pathbar does not have focus and breadcrumbs showing.
-             * Note that in home directory, the breadcrumbs are hidden and a placeholder shown even when pathbar does
-             * not have focus. */
-            uint button;
-            event.get_button (out button);
-            if (button == Gdk.BUTTON_PRIMARY && !has_focus && !hide_breadcrumbs && !is_icon_event (event)) {
-                reset_elements_states ();
-                double x, y;
-                event.get_coords (out x, out y);
-                var el = get_element_from_coordinates ((int)x, (int)y);
-                if (el != null) {
-                    activate_path (get_path_from_element (el));
-                    return true;
-                }
-            }
+        //  protected virtual bool on_button_release_event (Gdk.EventButton event) {
+        //     /* Only activate breadcrumbs with primary click when pathbar does not have focus and breadcrumbs showing.
+        //      * Note that in home directory, the breadcrumbs are hidden and a placeholder shown even when pathbar does
+        //      * not have focus. */
+        //     uint button;
+        //     event.get_button (out button);
+        //     if (button == Gdk.BUTTON_PRIMARY && !has_focus && !hide_breadcrumbs && !is_icon_event (event)) {
+        //         reset_elements_states ();
+        //         double x, y;
+        //         event.get_coords (out x, out y);
+        //         var el = get_element_from_coordinates ((int)x, (int)y);
+        //         if (el != null) {
+        //             activate_path (get_path_from_element (el));
+        //             return true;
+        //         }
+        //     }
 
-            if (!has_focus) {
-                grab_focus (); // Hide breadcrumbs and behave as Gtk.Entry.
-            }
+        //     if (!has_focus) {
+        //         grab_focus (); // Hide breadcrumbs and behave as Gtk.Entry.
+        //     }
 
-            return false;
-        }
+        //     return false;
+        // }
 
-        protected bool is_icon_event (Gdk.EventButton event) {
-            /* We need to distinguish whether the event comes from one of the icons.
-             * There doesn't seem to be a way of doing this directly so we check the window width */
-            return (event.get_window ().get_width () <= ICON_WIDTH);
-        }
+        // protected bool is_icon_event (Gdk.EventButton event) {
+        //     /* We need to distinguish whether the event comes from one of the icons.
+        //      * There doesn't seem to be a way of doing this directly so we check the window width */
+        //     return (event.get_window ().get_width () <= ICON_WIDTH);
+        // }
 
-        void on_icon_press (Gtk.EntryIconPosition pos) {
-            if (pos == Gtk.EntryIconPosition.SECONDARY) {
-                action_icon_press ();
-            } else {
-                primary_icon_press ();
-            }
-        }
+        // void on_icon_press (Gtk.EntryIconPosition pos) {
+        //     if (pos == Gtk.EntryIconPosition.SECONDARY) {
+        //         action_icon_press ();
+        //     } else {
+        //         primary_icon_press ();
+        //     }
+        // }
 
-        void after_realize () {
-            /* After realizing, we take a reference on the Gdk.Window of the Entry so
-             * we can set the cursor icon as needed. This relies on Gtk storing the
-             * owning widget as the user data on a Gdk.Window. The required window
-             * will be the first child of the entry.
-             */
-            entry_window = get_window ().get_children_with_user_data (this).data;
-        }
+        // void after_realize () {
+        //     /* After realizing, we take a reference on the Gdk.Window of the Entry so
+        //      * we can set the cursor icon as needed. This relies on Gtk storing the
+        //      * owning widget as the user data on a Gdk.Window. The required window
+        //      * will be the first child of the entry.
+        //      */
+        //     entry_window = get_window ().get_children_with_user_data (this).data;
+        // }
 
-        bool after_motion_notify (Gdk.EventMotion event) {
-            if (is_focus) {
-                return false;
-            }
+        // bool after_motion_notify (Gdk.EventMotion event) {
+        //     if (is_focus) {
+        //         return false;
+        //     }
 
-            string? tip = null;
-            if (secondary_icon_pixbuf != null) {
-                tip = get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
-            }
+        //     string? tip = null;
+        //     if (secondary_icon_paintable != null) {
+        //         tip = get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
+        //     }
 
 
-            set_tooltip_markup ("");
-            double x, y;
-            event.get_coords (out x, out y);
-            var el = get_element_from_coordinates ((int)x, (int)y);
-            if (el != null && !hide_breadcrumbs) {
-                set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
-                set_entry_cursor ("default");
-            } else {
-                set_entry_cursor ("text");
-                set_default_entry_tooltip ();
-            }
+        //     set_tooltip_markup ("");
+        //     double x, y;
+        //     event.get_coords (out x, out y);
+        //     var el = get_element_from_coordinates ((int)x, (int)y);
+        //     if (el != null && !hide_breadcrumbs) {
+        //         set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
+        //         set_entry_cursor ("default");
+        //     } else {
+        //         set_entry_cursor ("text");
+        //         set_default_entry_tooltip ();
+        //     }
 
-            if (tip != null) {
-            /* We must reset the icon tooltip as the above line turns all tooltips off */
-                set_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY, tip);
-            }
-            return false;
-        }
+        //     if (tip != null) {
+        //     /* We must reset the icon tooltip as the above line turns all tooltips off */
+        //         set_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY, tip);
+        //     }
+        //     return false;
+        // }
 
-        private uint focus_out_timeout_id = 0;
-        protected virtual bool on_focus_out (Gdk.EventFocus event) {
-            if (focus_out_timeout_id == 0) {
-                /* Delay acting on focus out - may be temporary, due to keyboard layout change */
-                focus_out_timeout_id = GLib.Timeout.add (10, () => {
-                    focus_out_event (event);
-                    return GLib.Source.REMOVE;
-                });
+        // private uint focus_out_timeout_id = 0;
+        // protected virtual bool on_focus_out (Gdk.EventFocus event) {
+        //     if (focus_out_timeout_id == 0) {
+        //         /* Delay acting on focus out - may be temporary, due to keyboard layout change */
+        //         focus_out_timeout_id = GLib.Timeout.add (10, () => {
+        //             focus_out_event (event);
+        //             return GLib.Source.REMOVE;
+        //         });
 
-                return true;
-            } else {
-                /* This the delayed propagated event */
-                focus_out_timeout_id = 0;
-                base.focus_out_event (event);
+        //         return true;
+        //     } else {
+        //         /* This the delayed propagated event */
+        //         focus_out_timeout_id = 0;
+        //         base.focus_out_event (event);
 
-                if (context_menu_showing) {
-                    return true;
-                }
+        //         if (context_menu_showing) {
+        //             return true;
+        //         }
 
-                // Do not lose entry text if another window is focused
-                if (((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
-                    reset ();
-                }
+        //         // Do not lose entry text if another window is focused
+        //         if (((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
+        //             reset ();
+        //         }
 
-                return false;
-            }
-        }
+        //         return false;
+        //     }
+        // }
 
-        protected virtual bool on_focus_in (Gdk.EventFocus event) {
-            if (focus_out_timeout_id > 0) {
-                /* There was a temporary focus out due to keyboard layout change.
-                 * Cancel propagation of focus out event and ignore focus in event */
-                GLib.Source.remove (focus_out_timeout_id);
-                focus_out_timeout_id = 0;
-                return true;
-            } else {
-                context_menu_showing = false;
-                current_dir_path = get_breadcrumbs_path (false);
-                set_entry_text (current_dir_path);
-                return false;
-            }
-        }
+        // protected virtual bool on_focus_in (Gdk.EventFocus event) {
+        //     if (focus_out_timeout_id > 0) {
+        //         /* There was a temporary focus out due to keyboard layout change.
+        //          * Cancel propagation of focus out event and ignore focus in event */
+        //         GLib.Source.remove (focus_out_timeout_id);
+        //         focus_out_timeout_id = 0;
+        //         return true;
+        //     } else {
+        //         context_menu_showing = false;
+        //         current_dir_path = get_breadcrumbs_path (false);
+        //         set_entry_text (current_dir_path);
+        //         return false;
+        //     }
+        // }
 
         protected virtual void on_activate () {
             activate_path (FileUtils.sanitize_path (text, current_dir_path));
@@ -379,7 +379,8 @@ namespace Files.View.Chrome {
     /** Entry functions **/
     /****************************/
         public void set_entry_cursor (string cursor_name) {
-            entry_window.set_cursor (new Gdk.Cursor.from_name (entry_window.get_display (), cursor_name));
+            // entry_window.set_cursor (new Gdk.Cursor.from_name (entry_window.get_display (), cursor_name));
+            set_cursor (new Gdk.Cursor.from_name (cursor_name, null));
         }
 
         protected virtual void set_default_entry_tooltip () {
@@ -419,8 +420,8 @@ namespace Files.View.Chrome {
             var w = displayed_breadcrumbs.first ().data.natural_width;
             if (l > 1) {
                 weak Gtk.StyleContext style_context = get_style_context ();
-                var state = style_context.get_state ();
-                var padding = style_context.get_padding (state);
+                // var state = style_context.get_state ();
+                var padding = style_context.get_padding ();
                 w += (l - 1) * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
 
                 /* Allow extra space for last breadcrumb */
@@ -657,132 +658,133 @@ namespace Files.View.Chrome {
             animation_timeout_id = make_animation (els, 0.0, 1.0, Files.LOCATION_BAR_ANIMATION_TIME_USEC);
         }
 
-        public override bool draw (Cairo.Context cr) {
-            weak Gtk.StyleContext style_context = get_style_context ();
-            if (button_context_active == null) {
-                button_context_active = new Gtk.StyleContext ();
-                button_context_active.set_path (style_context.get_path ());
-                button_context_active.set_state (Gtk.StateFlags.ACTIVE);
-            }
-            var state = style_context.get_state ();
-            var is_rtl = Gtk.StateFlags.DIR_RTL in state;
-            var padding = style_context.get_padding (state);
-            base.draw (cr);
-            double height = get_allocated_height ();
-            double width = get_allocated_width ();
+        //TODO Replace with Snapshot
+        // public override bool draw (Cairo.Context cr) {
+            // weak Gtk.StyleContext style_context = get_style_context ();
+            // // if (button_context_active == null) {
+            //     // button_context_active = new Gtk.StyleContext ();
+            //     // button_context_active.set_path (style_context.get_path ());
+            //     // button_context_active.set_state (Gtk.StateFlags.ACTIVE);
+            // // }
+            // var state = style_context.get_state ();
+            // var is_rtl = Gtk.StateFlags.DIR_RTL in state;
+            // var padding = style_context.get_padding ();
+            // base.draw (cr);
+            // double height = get_allocated_height ();
+            // double width = get_allocated_width ();
 
-            int scale = style_context.get_scale ();
-            if (breadcrumb_icons.scale != scale) {
-                breadcrumb_icons.scale = scale;
+            // int scale = style_context.get_scale ();
+            // if (breadcrumb_icons.scale != scale) {
+            //     breadcrumb_icons.scale = scale;
 
-                string protocol = "";
-                if (elements.size > 0) {
-                    protocol = elements[0].text;
-                }
-                set_element_icons (protocol, elements);
-            }
+            //     string protocol = "";
+            //     if (elements.size > 0) {
+            //         protocol = elements[0].text;
+            //     }
+            //     set_element_icons (protocol, elements);
+            // }
 
-            style_context.save ();
-            style_context.set_state (Gtk.StateFlags.ACTIVE);
-            Gtk.Border border = style_context.get_margin (state);
-            style_context.restore ();
+            // style_context.save ();
+            // style_context.set_state (Gtk.StateFlags.ACTIVE);
+            // Gtk.Border border = style_context.get_margin (state);
+            // style_context.restore ();
 
-            if (!is_focus && !hide_breadcrumbs) {
-                double margin = border.top;
+            // if (!is_focus && !hide_breadcrumbs) {
+            //     double margin = border.top;
 
-                /* Ensure there is an editable area to the right of the breadcrumbs */
-                double width_marged = width - 2 * margin - MINIMUM_LOCATION_BAR_ENTRY_WIDTH - ICON_WIDTH;
-                double height_marged = height - 2 * margin;
-                double x_render;
-                if (is_rtl) {
-                    x_render = width - margin;
-                } else {
-                    x_render = margin;
-                }
-                GLib.List<BreadcrumbElement> displayed_breadcrumbs = null;
-                double max_width = get_displayed_breadcrumbs_natural_width (out displayed_breadcrumbs);
-                /* each element must not be bigger than the width/breadcrumbs count */
-                double total_arrow_width = displayed_breadcrumbs.length () * (height_marged / 2 + padding.left);
-                width_marged -= total_arrow_width;
-                if (max_width > width_marged) { /* let's check if the breadcrumbs are bigger than the widget */
-                    var unfixed = displayed_breadcrumbs.length () - 2; //Can assumed to be limited in length
-                    if (unfixed > 0) {
-                        width_marged -= unfixed * MINIMUM_BREADCRUMB_WIDTH;
-                    }
-                    fix_displayed_widths (displayed_breadcrumbs, width_marged);
-                    distribute_shortfall (displayed_breadcrumbs, width_marged);
-                }
-                cr.save ();
-                /* Really draw the elements */
-                foreach (BreadcrumbElement element in displayed_breadcrumbs) {
-                    x_render = element.draw (cr, x_render, margin, height_marged, this);
-                    /* save element x axis position */
-                    if (is_rtl) {
-                        element.x = x_render + element.real_width;
-                    } else {
-                        element.x = x_render - element.real_width;
-                    }
-                }
-                /* Draw animated removal of elements when shortening the breadcrumbs */
-                if (old_elements != null) {
-                    foreach (BreadcrumbElement element in old_elements) {
-                        if (element.display) {
-                            x_render = element.draw (cr, x_render, margin, height_marged, this);
-                            /* save element x axis position */
-                            if (is_rtl) {
-                                element.x = x_render + element.real_width;
-                            } else {
-                                element.x = x_render - element.real_width;
-                            }
-                        }
-                    }
-                }
-                cr.restore ();
-            } else if (placeholder != "") {
-                assert (placeholder != null);
-                assert (text != null);
-                int layout_width, layout_height;
-                double text_width, text_height;
-                Pango.Layout layout;
-                /** TODO - Get offset due to margins from style context **/
-                int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 5 : 0;
+            //     /* Ensure there is an editable area to the right of the breadcrumbs */
+            //     double width_marged = width - 2 * margin - MINIMUM_LOCATION_BAR_ENTRY_WIDTH - ICON_WIDTH;
+            //     double height_marged = height - 2 * margin;
+            //     double x_render;
+            //     if (is_rtl) {
+            //         x_render = width - margin;
+            //     } else {
+            //         x_render = margin;
+            //     }
+            //     GLib.List<BreadcrumbElement> displayed_breadcrumbs = null;
+            //     double max_width = get_displayed_breadcrumbs_natural_width (out displayed_breadcrumbs);
+            //     /* each element must not be bigger than the width/breadcrumbs count */
+            //     double total_arrow_width = displayed_breadcrumbs.length () * (height_marged / 2 + padding.left);
+            //     width_marged -= total_arrow_width;
+            //     if (max_width > width_marged) { /* let's check if the breadcrumbs are bigger than the widget */
+            //         var unfixed = displayed_breadcrumbs.length () - 2; //Can assumed to be limited in length
+            //         if (unfixed > 0) {
+            //             width_marged -= unfixed * MINIMUM_BREADCRUMB_WIDTH;
+            //         }
+            //         fix_displayed_widths (displayed_breadcrumbs, width_marged);
+            //         distribute_shortfall (displayed_breadcrumbs, width_marged);
+            //     }
+            //     cr.save ();
+            //     /* Really draw the elements */
+            //     foreach (BreadcrumbElement element in displayed_breadcrumbs) {
+            //         x_render = element.draw (cr, x_render, margin, height_marged, this);
+            //         /* save element x axis position */
+            //         if (is_rtl) {
+            //             element.x = x_render + element.real_width;
+            //         } else {
+            //             element.x = x_render - element.real_width;
+            //         }
+            //     }
+            //     /* Draw animated removal of elements when shortening the breadcrumbs */
+            //     if (old_elements != null) {
+            //         foreach (BreadcrumbElement element in old_elements) {
+            //             if (element.display) {
+            //                 x_render = element.draw (cr, x_render, margin, height_marged, this);
+            //                 /* save element x axis position */
+            //                 if (is_rtl) {
+            //                     element.x = x_render + element.real_width;
+            //                 } else {
+            //                     element.x = x_render - element.real_width;
+            //                 }
+            //             }
+            //         }
+            //     }
+            //     cr.restore ();
+            // } else if (placeholder != "") {
+            //     assert (placeholder != null);
+            //     assert (text != null);
+            //     int layout_width, layout_height;
+            //     double text_width, text_height;
+            //     Pango.Layout layout;
+            //     /** TODO - Get offset due to margins from style context **/
+            //     int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 5 : 0;
 
-                Gdk.RGBA rgba;
-                var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
-                if (!colored) {
-                    colored = get_style_context ().lookup_color ("text_color", out rgba);
-                    if (!colored) {
-                    /* If neither "placeholder_text_color" or "text_color" defined in theme (unlikely) fallback to a
-                     *  color that is hopefully still visible in light and dark variants */
-                        rgba = {0.6, 0.6, 0.5, 1};
-                    }
-                }
+            //     Gdk.RGBA rgba;
+            //     var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
+            //     if (!colored) {
+            //         colored = get_style_context ().lookup_color ("text_color", out rgba);
+            //         if (!colored) {
+            //         /* If neither "placeholder_text_color" or "text_color" defined in theme (unlikely) fallback to a
+            //          *  color that is hopefully still visible in light and dark variants */
+            //             rgba = {0.6, 0.6, 0.5, 1};
+            //         }
+            //     }
 
-                cr.set_source_rgba (rgba.red, rgba.green, rgba.blue, 1);
+            //     cr.set_source_rgba (rgba.red, rgba.green, rgba.blue, 1);
 
-                if (is_rtl) {
-                    layout = create_pango_layout (text + placeholder);
-                } else {
-                    layout = create_pango_layout (text);
-                }
+            //     if (is_rtl) {
+            //         layout = create_pango_layout (text + placeholder);
+            //     } else {
+            //         layout = create_pango_layout (text);
+            //     }
 
-                layout.get_size (out layout_width, out layout_height);
-                text_width = Pango.units_to_double (layout_width);
-                text_height = Pango.units_to_double (layout_height);
-                /** TODO - Get offset due to margins from style context **/
-                var vertical_offset = get_allocated_height () / 2 - text_height / 2;
-                if (is_rtl) {
-                   cr.move_to (width - (text_width + icon_width + 6), vertical_offset);
-                } else {
-                   cr.move_to (text_width + icon_width + 6, vertical_offset);
-                }
+            //     layout.get_size (out layout_width, out layout_height);
+            //     text_width = Pango.units_to_double (layout_width);
+            //     text_height = Pango.units_to_double (layout_height);
+            //     /** TODO - Get offset due to margins from style context **/
+            //     var vertical_offset = get_allocated_height () / 2 - text_height / 2;
+            //     if (is_rtl) {
+            //        cr.move_to (width - (text_width + icon_width + 6), vertical_offset);
+            //     } else {
+            //        cr.move_to (text_width + icon_width + 6, vertical_offset);
+            //     }
 
-                layout.set_text (placeholder, -1);
-                Pango.cairo_show_layout (cr, layout);
-            }
+            //     layout.set_text (placeholder, -1);
+            //     Pango.cairo_show_layout (cr, layout);
+            // }
 
-            return true;
-        }
+        //     return true;
+        // }
 
         public int get_minimum_width () {
             return minimum_width;

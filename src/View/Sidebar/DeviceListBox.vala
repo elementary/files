@@ -36,7 +36,7 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
             selection_mode = Gtk.SelectionMode.SINGLE
         };
 
-        add (list_box);
+        append (list_box);
 
         volume_monitor = VolumeMonitor.@get ();
         volume_monitor.drive_connected.connect (bookmark_drive);
@@ -111,9 +111,8 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
                 );
             }
 
-            list_box.add (new_bm);
+            list_box.append (new_bm);
 
-            show_all ();
             bm = new_bm;
             bm.update_free_space ();
         }
@@ -173,11 +172,14 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
     public override void refresh_info () {
-        list_box.get_children ().@foreach ((item) => {
-            if (item is AbstractMountableRow) {
-                ((AbstractMountableRow)item).update_free_space ();
+        unowned var child = list_box.get_first_child ();
+        while (child != null) {
+            if (child is AbstractMountableRow) {
+                ((AbstractMountableRow) child).update_free_space ();
             }
-        });
+
+            child = child.get_next_sibling ();
+        }
     }
 
     private void bookmark_drive (Drive drive) {
@@ -233,20 +235,21 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
     private bool has_uuid (string? uuid, string? fallback, out AbstractMountableRow? row) {
         var searched_uuid = uuid != null ? uuid : fallback;
-
+        row = null;
         if (searched_uuid != null) {
-            foreach (unowned var child in list_box.get_children ()) {
-                row = null;
+            var child = list_box.get_first_child ();
+            while (child != null) {
                 if (child is AbstractMountableRow) {
-                    row = (AbstractMountableRow)child;
-                    if (row.uuid == searched_uuid) {
+                    if (((AbstractMountableRow)child).uuid == searched_uuid) {
+                        row = ((AbstractMountableRow)child);
                         return true;
                     }
                 }
+
+                child = child.get_next_sibling ();
             }
         }
 
-        row = null;
         return false;
     }
 
@@ -256,11 +259,7 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
     public void unselect_all_items () {
-        foreach (unowned var child in list_box.get_children ()) {
-            if (child is AbstractMountableRow) {
-                list_box.unselect_row ((AbstractMountableRow)child);
-            }
-        }
+        list_box.unselect_all ();
     }
 
     public void select_item (Gtk.ListBoxRow? item) {

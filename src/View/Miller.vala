@@ -58,11 +58,10 @@ namespace Files.View {
             colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
 
             viewport = new Gtk.Viewport (null, null) {
-                shadow_type = Gtk.ShadowType.NONE
+                child = colpane
             };
-            viewport.add (colpane);
 
-            scrolled_window = new Gtk.ScrolledWindow (null, null) {
+            scrolled_window = new Gtk.ScrolledWindow () {
                 child = viewport,
                 hscrollbar_policy = Gtk.PolicyType.AUTOMATIC,
                 vscrollbar_policy = Gtk.PolicyType.NEVER
@@ -71,8 +70,6 @@ namespace Files.View {
             hadj = scrolled_window.get_hadjustment ();
 
             add_overlay (scrolled_window);
-
-            content_box.show_all ();
 
             make_view ();
 
@@ -100,19 +97,18 @@ namespace Files.View {
                 hexpand = true
             };
 
-            guest.hpane.pack1 (guest.get_directory_view (), false, false);
-            guest.hpane.pack2 (guest.colpane, true, true);
-            guest.hpane.show_all ();
+            guest.hpane.start_child = guest.get_directory_view ();
+            guest.hpane.end_child = guest.colpane;
 
             connect_slot_signals (guest);
 
             if (host != null) {
                 truncate_list_after_slot (host);
                 host.select_gof_file (guest.file);
-                host.colpane.add (guest.hpane);
+                host.colpane.append (guest.hpane);
                 guest.initialize_directory ();
             } else {
-                this.colpane.add (guest.hpane);
+                this.colpane.append (guest.hpane);
             }
 
             slot_list.append (guest); // Must add to list before scrolling
@@ -136,9 +132,12 @@ namespace Files.View {
                 }
             });
 
-            ((View.Slot)(slot)).colpane.@foreach ((w) => {
-                w.destroy ();
-            });
+            var child = ((View.Slot)slot).colpane.get_first_child ();
+            while (child != null) {
+                var next = child.get_next_sibling ();
+                child.destroy ();
+                child = next;
+            }
 
             slot_list.nth (n).next = null;
             calculate_total_width ();
@@ -256,7 +255,8 @@ namespace Files.View {
             slot.new_container_request.connect (on_new_container_request);
             slot.size_change.connect (update_total_width);
             slot.folder_deleted.connect (on_slot_folder_deleted);
-            slot.colpane.key_press_event.connect (on_key_pressed);
+            //TODO Use EventController
+            // slot.colpane.key_press_event.connect (on_key_pressed);
             slot.path_changed.connect (on_slot_path_changed);
             slot.directory_loaded.connect (on_slot_directory_loaded);
             slot.hpane.notify["position"].connect (update_total_width);
@@ -270,7 +270,7 @@ namespace Files.View {
             slot.new_container_request.disconnect (on_new_container_request);
             slot.size_change.disconnect (update_total_width);
             slot.folder_deleted.disconnect (on_slot_folder_deleted);
-            slot.colpane.key_press_event.disconnect (on_key_pressed);
+            // slot.colpane.key_press_event.disconnect (on_key_pressed);
             slot.path_changed.disconnect (on_slot_path_changed);
             slot.directory_loaded.disconnect (on_slot_directory_loaded);
         }
@@ -358,80 +358,81 @@ namespace Files.View {
             }
         }
 
-        private bool on_key_pressed (Gtk.Widget box, Gdk.EventKey event) {
-            /* Only handle unmodified keys */
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            if ((state & Gtk.accelerator_get_default_mod_mask ()) > 0) {
-                return false;
-            }
+        //TODO Use EventController
+        // private bool on_key_pressed (Gtk.Widget box, Gdk.EventKey event) {
+        //     /* Only handle unmodified keys */
+        //     Gdk.ModifierType state;
+        //     event.get_state (out state);
+        //     if ((state & Gtk.accelerator_get_default_mod_mask ()) > 0) {
+        //         return false;
+        //     }
 
-            int current_position = slot_list.index (current_slot);
+        //     int current_position = slot_list.index (current_slot);
 
-            if (slot_list.nth_data (current_position).get_directory_view ().renaming) {
-                return false;
-            }
+        //     if (slot_list.nth_data (current_position).get_directory_view ().renaming) {
+        //         return false;
+        //     }
 
-            View.Slot to_activate = null;
+        //     View.Slot to_activate = null;
 
-            uint keyval;
-            event.get_keyval (out keyval);
-            switch (keyval) {
-                case Gdk.Key.Left:
-                    if (current_position > 0) {
-                        to_activate = slot_list.nth_data (current_position - 1);
-                    }
+        //     uint keyval;
+        //     event.get_keyval (out keyval);
+        //     switch (keyval) {
+        //         case Gdk.Key.Left:
+        //             if (current_position > 0) {
+        //                 to_activate = slot_list.nth_data (current_position - 1);
+        //             }
 
-                    break;
+        //             break;
 
-                case Gdk.Key.Right:
-                    if (current_slot.get_selected_files () == null) {
-                        return true;
-                    }
+        //         case Gdk.Key.Right:
+        //             if (current_slot.get_selected_files () == null) {
+        //                 return true;
+        //             }
 
-                    Files.File? selected_file = current_slot.get_selected_files ().data;
+        //             Files.File? selected_file = current_slot.get_selected_files ().data;
 
-                    if (selected_file == null) {
-                        return true;
-                    }
+        //             if (selected_file == null) {
+        //                 return true;
+        //             }
 
-                    GLib.File current_location = selected_file.location;
-                    GLib.File? next_location = null;
+        //             GLib.File current_location = selected_file.location;
+        //             GLib.File? next_location = null;
 
-                    if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
-                        next_location = slot_list.nth_data (current_position + 1).location;
-                    }
+        //             if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
+        //                 next_location = slot_list.nth_data (current_position + 1).location;
+        //             }
 
-                    if (next_location != null && next_location.equal (current_location)) {
-                        to_activate = slot_list.nth_data (current_position + 1);
-                    } else if (selected_file.is_folder ()) {
-                        add_location (current_location, current_slot);
-                        return true;
-                    }
+        //             if (next_location != null && next_location.equal (current_location)) {
+        //                 to_activate = slot_list.nth_data (current_position + 1);
+        //             } else if (selected_file.is_folder ()) {
+        //                 add_location (current_location, current_slot);
+        //                 return true;
+        //             }
 
-                    break;
+        //             break;
 
-                case Gdk.Key.BackSpace:
-                        if (current_position > 0) {
-                            truncate_list_after_slot (slot_list.nth_data (current_position - 1));
-                        } else {
-                            ctab.go_up ();
-                            return true;
-                        }
+        //         case Gdk.Key.BackSpace:
+        //                 if (current_position > 0) {
+        //                     truncate_list_after_slot (slot_list.nth_data (current_position - 1));
+        //                 } else {
+        //                     ctab.go_up ();
+        //                     return true;
+        //                 }
 
-                    break;
+        //             break;
 
-                default:
-                    break;
-            }
+        //         default:
+        //             break;
+        //     }
 
-            if (to_activate != null) {
-                to_activate.active ();
-                to_activate.focus_first_for_empty_selection (true); /* Selects as well as focusses */
-            }
+        //     if (to_activate != null) {
+        //         to_activate.active ();
+        //         to_activate.focus_first_for_empty_selection (true); /* Selects as well as focusses */
+        //     }
 
-            return false;
-        }
+        //     return false;
+        // }
 
         private void on_slot_selection_changed (GLib.List<Files.File> files) {
             selection_changed (files);
@@ -484,7 +485,7 @@ namespace Files.View {
                     hadj_value += offset;
                 }
 
-                offset = total_width_before + slot.width - hadj_value - viewport.get_view_window ().get_width ();
+                offset = total_width_before + slot.width - hadj_value - viewport.child.get_width ();
                 if (offset > 0) { /*scroll  until right hand edge of active slot is in view*/
                     hadj_value += offset;
                 }

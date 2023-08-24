@@ -17,71 +17,71 @@
 ***/
 
 namespace Files {
-    public abstract class AbstractEditableLabel : Gtk.Frame, Gtk.Editable, Gtk.CellEditable {
+    public interface EditableLabelInterface : Gtk.Widget {
+        // [NoAccessorMethod]
+        // public abstract bool editing_canceled { get; set; }
+        public abstract bool small_size { get; set; }
+        public abstract bool draw_outline { get; set; }
+        public abstract float yalign { get; set; }
+        public abstract float xalign { get; set; }
 
-        public bool editing_canceled { get; set; }
-        public bool small_size { get; set; }
-        public float yalign {get; set;}
-        public float xalign {get; set;}
-        public string original_name;
-        public bool draw_outline {get; set;}
+        // public virtual signal void editing_done ();
+        // public virtual signal void remove_widget ();
 
-        private Gtk.Widget editable_widget;
+        // public bool draw_outline {get; set;}
 
-        protected AbstractEditableLabel () {
-            editable_widget = create_editable_widget ();
-            add (editable_widget);
-            show_all ();
-            get_real_editable ().key_press_event.connect (on_key_press_event);
-        }
+        // private Gtk.Widget editable_widget;
 
-        public virtual bool on_key_press_event (Gdk.EventKey event) {
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            uint keyval;
-            event.get_keyval (out keyval);
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
+        // construct {
+        //     init_delegate ();
+        //     set_child (get_delegate ());
+        //     // get_delegate ().key_press_event.connect (on_key_press_event);
+        // }
 
-            switch (keyval) {
-                case Gdk.Key.Return:
-                case Gdk.Key.KP_Enter:
-                    /*  Only end rename with unmodified Enter. This is to allow use of Ctrl-Enter
-                     *  to commit Chinese/Japanese characters when using some input methods, without ending rename.
-                     */
-                    if (mods == 0) {
-                        end_editing (false);
-                        return true;
-                    }
+        //TODO Use EventControllers
+        // public virtual bool on_key_press_event (Gdk.EventKey event) {
+        //     Gdk.ModifierType state;
+        //     event.get_state (out state);
+        //     uint keyval;
+        //     event.get_keyval (out keyval);
+        //     var mods = state & Gtk.accelerator_get_default_mod_mask ();
+        //     bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
 
-                    break;
+        //     switch (keyval) {
+        //         case Gdk.Key.Return:
+        //         case Gdk.Key.KP_Enter:
+        //             /*  Only end rename with unmodified Enter. This is to allow use of Ctrl-Enter
+        //              *  to commit Chinese/Japanese characters when using some input methods, without ending rename.
+        //              */
+        //             if (mods == 0) {
+        //                 end_editing (false);
+        //                 return true;
+        //             }
 
-                case Gdk.Key.Escape:
-                    end_editing (true);
-                    return true;
+        //             break;
 
-                case Gdk.Key.z:
-                    /* Undo with Ctrl-Z only */
-                    if (only_control_pressed) {
-                        set_text (original_name);
-                        return true;
-                    }
-                    break;
+        //         case Gdk.Key.Escape:
+        //             end_editing (true);
+        //             return true;
 
-                default:
-                    break;
-            }
-            return false;
-        }
+        //         case Gdk.Key.z:
+        //             /* Undo with Ctrl-Z only */
+        //             if (only_control_pressed) {
+        //                 set_text (original_name);
+        //                 return true;
+        //             }
+        //             break;
 
-        public void end_editing (bool cancelled) {
+        //         default:
+        //             break;
+        //     }
+        //     return false;
+        // }
+
+        public virtual void end_editing (bool cancelled) {
             editing_canceled = cancelled;
             remove_widget ();
             editing_done ();
-        }
-
-        public virtual void set_text (string text) {
-            original_name = text;
         }
 
         public virtual void set_line_wrap (bool wrap) {}
@@ -90,8 +90,7 @@ namespace Files {
         public virtual void set_padding (int xpad, int ypad) {}
 
         public abstract new void set_size_request (int width, int height);
-        public abstract Gtk.Widget create_editable_widget ();
-        public abstract string get_text ();
+        public abstract void init_delegate ();
         public abstract void select_region (int start_pos, int end_pos);
         public abstract void do_delete_text (int start_pos, int end_pos);
         public abstract void do_insert_text (string new_text, int new_text_length, ref int position);
@@ -99,10 +98,14 @@ namespace Files {
         public abstract int get_position ();
         public abstract bool get_selection_bounds (out int start_pos, out int end_pos);
         public abstract void set_position (int position);
-        public abstract Gtk.Widget get_real_editable ();
+        public abstract string get_text ();
+        public abstract void set_text (string text);
 
+        // public abstract void start_editing (Gdk.Event? event);
 
-        /** CellEditable interface */
-        public virtual void start_editing (Gdk.Event? event) {}
+        public abstract bool editing_canceled { get; set; }
+        public abstract void start_editing (Gdk.Event? event);
+        public signal void editing_done ();
+        public signal void remove_widget ();
     }
 }

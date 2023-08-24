@@ -17,35 +17,43 @@
 ***/
 
 namespace Files {
-    public class MultiLineEditableLabel : AbstractEditableLabel {
-
+    public class MultiLineEditableLabel : Gtk.Frame, EditableLabelInterface {
         protected Gtk.ScrolledWindow scrolled_window;
         protected Gtk.TextView textview;
 
-        public MultiLineEditableLabel () {}
+        // public bool editing_canceled { get; set; }
+        public bool small_size { get; set; }
+        public bool draw_outline { get; set; }
+        public float yalign {get; set;}
+        public float xalign {get; set;}
 
-        public override Gtk.Widget create_editable_widget () {
+        // public signal void editing_done ();
+        // public signal void remove_widget ();
+
+        construct {
+            init_delegate ();
+            set_child (textview);
+        }
+        public void init_delegate () {
             textview = new Gtk.TextView ();
             /* Block propagation of button press event as this would cause renaming to end */
-            textview.button_press_event.connect_after (() => { return true; });
+            //TODO Use EventController if required
+            // textview.button_press_event.connect_after (() => { return true; });
 
-            scrolled_window = new Gtk.ScrolledWindow (null, null) {
+            scrolled_window = new Gtk.ScrolledWindow () {
                 child = textview
             };
-
-            return scrolled_window as Gtk.Widget;
         }
 
-        public override Gtk.Widget get_real_editable () {
-            return textview;
+        public unowned Gtk.Editable? get_delegate () {
+            return (Gtk.Editable?)textview;
         }
 
-        public override void set_text (string text) {
+        public void set_text (string text) {
             textview.get_buffer ().set_text (text);
-            original_name = text;
         }
 
-        public override void set_line_wrap (bool wrap) {
+        public void set_line_wrap (bool wrap) {
             if (!wrap) {
                 textview.set_wrap_mode (Gtk.WrapMode.NONE);
             } else {
@@ -53,7 +61,7 @@ namespace Files {
             }
         }
 
-        public override void set_line_wrap_mode (Pango.WrapMode mode) {
+        public void set_line_wrap_mode (Pango.WrapMode mode) {
             switch (mode) {
                 case Pango.WrapMode.CHAR:
                     textview.set_wrap_mode (Gtk.WrapMode.CHAR);
@@ -72,29 +80,30 @@ namespace Files {
             }
         }
 
-        public override void set_justify (Gtk.Justification jtype) {
+        public void set_justify (Gtk.Justification jtype) {
             textview.justification = jtype;
         }
 
-        public override void set_padding (int xpad, int ypad) {
+        public void set_padding (int xpad, int ypad) {
             textview.set_margin_start (xpad);
             textview.set_margin_end (xpad);
             textview.set_margin_top (ypad);
             textview.set_margin_bottom (ypad);
         }
 
-        public override string get_text () {
+        public string get_text () {
             var buffer = textview.get_buffer ();
             Gtk.TextIter? start = null;
             Gtk.TextIter? end = null;
             buffer.get_start_iter (out start);
             buffer.get_end_iter (out end);
-            return buffer.get_text (start, end, false);
+            var text = buffer.get_text (start, end, false);
+            return text;
         }
 
         /** Gtk.Editable interface */
 
-        public override void select_region (int start_pos, int end_pos) {
+        public void select_region (int start_pos, int end_pos) {
             textview.grab_focus ();
             var buffer = textview.get_buffer ();
             Gtk.TextIter? ins = null;
@@ -111,7 +120,7 @@ namespace Files {
             buffer.select_range (ins, bound);
         }
 
-        public override void do_delete_text (int start_pos, int end_pos) {
+        public void do_delete_text (int start_pos, int end_pos) {
             var buffer = textview.get_buffer ();
             Gtk.TextIter? start = null;
             Gtk.TextIter? end = null;
@@ -127,7 +136,7 @@ namespace Files {
             buffer.delete_range (start, end);
         }
 
-        public override void do_insert_text (string new_text, int new_text_length, ref int position) {
+        public void do_insert_text (string new_text, int new_text_length, ref int position) {
             var buffer = textview.get_buffer ();
             Gtk.TextIter? pos = null;
 
@@ -135,7 +144,7 @@ namespace Files {
             buffer.insert (ref pos, new_text, new_text_length);
         }
 
-        public override string get_chars (int start_pos, int end_pos) {
+        public string get_chars (int start_pos, int end_pos) {
             var buffer = textview.get_buffer ();
             Gtk.TextIter? start = null;
             Gtk.TextIter? end = null;
@@ -151,7 +160,7 @@ namespace Files {
             return buffer.get_text (start, end, false);
         }
 
-        public override int get_position () {
+        public int get_position () {
             var buffer = textview.get_buffer ();
             var mark = buffer.get_insert ();
             Gtk.TextIter? iter = null;
@@ -160,7 +169,7 @@ namespace Files {
             return iter.get_offset ();
         }
 
-        public override bool get_selection_bounds (out int start_pos, out int end_pos) {
+        public bool get_selection_bounds (out int start_pos, out int end_pos) {
             var buffer = textview.get_buffer ();
             Gtk.TextIter? start = null;
             Gtk.TextIter? end = null;
@@ -172,7 +181,7 @@ namespace Files {
             return start_pos != end_pos;
         }
 
-        public override void set_position (int position) {
+        public void set_position (int position) {
             var buffer = textview.get_buffer ();
             Gtk.TextIter? iter = null;
             buffer.get_start_iter (out iter);
@@ -180,29 +189,34 @@ namespace Files {
             buffer.place_cursor (iter);
         }
 
-        public override bool draw (Cairo.Context cr) {
-            bool result = base.draw (cr);
-            if (draw_outline) {
-                Gtk.Allocation allocation;
-                Gdk.RGBA color;
-                Gdk.Rectangle outline;
+        //TODO Use snapshot if necessary
+        //  public bool draw (Cairo.Context cr) {
+        //     bool result = base.draw (cr);
+        //     if (draw_outline) {
+        //         Gtk.Allocation allocation;
+        //         Gdk.RGBA color;
+        //         Gdk.Rectangle outline;
 
-                get_allocation (out allocation);
-                color = get_style_context ().get_color (get_state_flags ());
-                Gdk.cairo_set_source_rgba (cr, color);
-                cr.set_line_width (1.0);
-                outline = {0, 0, allocation.width, allocation.height};
-                Gdk.cairo_rectangle (cr, outline);
-                cr.stroke ();
-            }
-            return result;
-        }
+        //         get_allocation (out allocation);
+        //         color = get_style_context ().get_color (get_state_flags ());
+        //         Gdk.cairo_set_source_rgba (cr, color);
+        //         cr.set_line_width (1.0);
+        //         outline = {0, 0, allocation.width, allocation.height};
+        //         Gdk.cairo_rectangle (cr, outline);
+        //         cr.stroke ();
+        //     }
+        //     return result;
+        // }
 
-        public override void set_size_request (int width, int height) {
-            textview.set_size_request (width, height);
-        }
+        // public new void set_size_request (int width, int height) {
+        //     textview.set_size_request (width, height);
+        // }
 
-        public override void start_editing (Gdk.Event? event) {
+        //CellEditable interface (abstract part);
+        [NoAccessorMethod]
+        public bool editing_canceled { get; set; }
+
+        public void start_editing (Gdk.Event? event) {
             textview.grab_focus ();
         }
     }

@@ -5,7 +5,8 @@
  * Authored by: Corentin Noël <corentin@elementary.io>
  */
 
-public class PF.ConnectServerDialog : Granite.Dialog {
+public class PF.ConnectServerDialog : Gtk.Window {
+
     [Flags]
     private enum WidgetsFlag {
         NONE,
@@ -95,19 +96,23 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
     public string server_uri {get; private set; default = "";}
 
+    public signal void response (Gtk.ResponseType response);
+
     public ConnectServerDialog (Gtk.Window window) {
         Object (transient_for: window);
     }
 
     construct {
+        default_width = 400;
+
         info_label = new Gtk.Label (null);
 
         info_bar = new Gtk.InfoBar () {
             message_type = Gtk.MessageType.INFO,
             revealed = false
         };
-        info_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FRAME);
-        info_bar.get_content_area ().add (info_label);
+        info_bar.add_css_class (Granite.STYLE_CLASS_FRAME);
+        info_bar.add_child (info_label);
 
         var server_header_label = new Granite.HeaderLabel (_("Server Details"));
 
@@ -133,8 +138,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         var port_box = new Gtk.Box (HORIZONTAL, 6) {
             margin_start = 6
         };
-        port_box.add (port_label);
-        port_box.add (port_spinbutton);
+        port_box.append (port_label);
+        port_box.append (port_spinbutton);
 
         port_revealer = new Gtk.Revealer () {
             child = port_box,
@@ -142,13 +147,12 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         };
 
         var server_port_box = new Gtk.Box (HORIZONTAL, 0);
-        server_port_box.add (server_entry);
-        server_port_box.add (port_revealer);
+        server_port_box.append (server_entry);
+        server_port_box.append (port_revealer);
 
         var type_store = new Gtk.ListStore (2, typeof (MethodInfo), typeof (string));
 
         type_combobox = new Gtk.ComboBox.with_model (type_store);
-
         var renderer = new Gtk.CellRendererText ();
         type_combobox.pack_start (renderer, true);
         type_combobox.add_attribute (renderer, "text", 1);
@@ -179,6 +183,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             text = "WORKGROUP",
             placeholder_text = _("Name of Windows domain")
         };
+
         var domain_label = new_detailed_label (_("Domain name:"), domain_entry);
 
         user_entry = new Granite.ValidatedEntry () {
@@ -186,6 +191,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             text = Environment.get_user_name (),
             placeholder_text = _("Name of user on server")
         };
+
         var user_label = new_detailed_label (_("User name:"), user_entry);
 
         password_entry = new Granite.ValidatedEntry () {
@@ -206,18 +212,12 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         cancel_button = new Gtk.Button.with_label (_("Cancel"));
         cancel_button.clicked.connect (on_cancel_clicked);
 
-        connect_button = new Gtk.Button.with_label (_("Connect")) {
-             can_default = true,
-             no_show_all = true
-         };
-        connect_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        connect_button = new Gtk.Button.with_label (_("Connect"));
+        connect_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
         connect_button.clicked.connect (on_connect_clicked);
 
-        continue_button = new Gtk.Button.with_label (_("Continue")) {
-            can_default = true,
-            no_show_all = true
-        };
-        continue_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        continue_button = new Gtk.Button.with_label (_("Continue"));
+        continue_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
         continue_button.clicked.connect (on_continue_clicked);
 
         var button_box = new Gtk.Box (HORIZONTAL, 6) {
@@ -225,9 +225,9 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             homogeneous = true,
             margin_top = 24
         };
-        button_box.add (cancel_button);
-        button_box.add (connect_button);
-        button_box.add (continue_button);
+        button_box.append (cancel_button);
+        button_box.append (connect_button);
+        button_box.append (continue_button);
 
         var grid = new Gtk.Grid () {
             row_spacing = 6,
@@ -269,8 +269,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             halign = CENTER,
             valign = CENTER
         };
-        connecting_box.add (connecting_label);
-        connecting_box.add (connecting_spinner);
+        connecting_box.append (connecting_label);
+        connecting_box.append (connecting_spinner);
 
         stack = new Gtk.Stack () {
             transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
@@ -279,15 +279,22 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         stack.add_named (grid, "content");
         stack.add_named (connecting_box, "connecting");
 
-        var content_area = get_content_area ();
-        content_area.border_width = 0;
-        content_area.margin_end = content_area.margin_start = 12;
-        content_area.margin_bottom = 2;
-        content_area.add (stack);
-        content_area.add (button_box);
-        content_area.show_all ();
+        var content_area = new Gtk.Box (Gtk.Orientation.VERTICAL, 12) {
+            margin_top = 12,
+            margin_end = 12,
+            margin_start = 12,
+            margin_bottom = 12
+        };
+        content_area.append (stack);
+        content_area.append (button_box);
 
-        default_width = 400;
+        var handle = new Gtk.WindowHandle () {
+            child = content_area
+        };
+
+        add_css_class ("dialog");
+        child = handle;
+        titlebar = new Gtk.Grid () { visible = false };
 
         /* skip methods that don't have corresponding gvfs uri schemes */
         unowned string[] supported_schemes = GLib.Vfs.get_default ().get_supported_uri_schemes ();
@@ -362,7 +369,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         connect_button.visible = true;
         continue_button.visible = false;
         connect_button.sensitive = valid_entries ();
-        connect_button.grab_default ();
+        set_default_widget (connect_button);
     }
 
     private void verify_details () {
@@ -375,7 +382,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         continue_button.visible = true;
         continue_button.sensitive = false; /* something has to change */
-        continue_button.grab_default ();
+        set_default_widget (continue_button);
 
         show_info ();
         loop.run ();

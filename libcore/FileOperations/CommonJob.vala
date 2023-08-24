@@ -26,8 +26,8 @@ public class Files.FileOperations.CommonJob {
     protected bool skip_all_error;
     private GLib.GenericSet<GLib.File>? skip_readdir_error_set;
     protected GLib.GenericSet<GLib.File>? skip_files;
-    protected CommonJob (Gtk.Window? parent_window = null) {
-        this.parent_window = parent_window;
+    protected CommonJob (Gtk.Root? parent_window = null) {
+        this.parent_window = (parent_window is Gtk.Window) ? (Gtk.Window)parent_window : null;
         inhibit_cookie = 0;
         progress = new PF.Progress.Info ();
         cancellable = progress.cancellable;
@@ -44,6 +44,7 @@ public class Files.FileOperations.CommonJob {
     }
 
     protected void inhibit_power_manager (string message) {
+
         weak Gtk.Application app = (Gtk.Application) GLib.Application.get_default ();
         inhibit_cookie = app.inhibit (
             parent_window,
@@ -275,7 +276,7 @@ public class Files.FileOperations.CommonJob {
             foreach (unowned string title in buttons) {
                 unowned Gtk.Widget button = dialog.add_button (title, response_id);
                 if (title == DELETE || title == DELETE_ALL || title == EMPTY_TRASH) {
-                    button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                    button.get_style_context ().add_class (Granite.STYLE_CLASS_DESTRUCTIVE_ACTION);
                 }
 
                 response_id++;

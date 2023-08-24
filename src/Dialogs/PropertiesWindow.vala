@@ -113,7 +113,9 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
     /* Count of files current including top level (selected) files other than folders */
     private uint file_count;
 
-    public PropertiesWindow (GLib.List<Files.File> _files, Files.AbstractDirectoryView _view, Gtk.Window parent) {
+    public PropertiesWindow (
+        GLib.List<Files.File> _files, Files.AbstractDirectoryView _view, Gtk.Window parent
+    ) {
         base (_("Properties"), parent);
 
         if (_files == null) {
@@ -129,10 +131,12 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         view = _view;
 
         /* Connect signal before creating any DeepCount directories */
-        this.destroy.connect (() => {
+        this.close_request.connect (() => {
             foreach (var dir in deep_count_directories) {
                 dir.cancel ();
             }
+
+            return false;
         });
 
         /* The properties window may outlive the passed-in file object
@@ -187,7 +191,7 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         /* create some widgets first (may be hidden by update_selection_size ()) */
         var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), Files.File.IconFlags.NONE);
         if (file_pix != null) {
-            var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG) {
+            var file_icon = new Gtk.Image.from_gicon (file_pix) {
                 pixel_size = 48
             };
             overlay_emblems (file_icon, goffile.emblems_list);
@@ -207,10 +211,10 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
                 rename_file (goffile, entry.get_text ());
             });
 
-            entry.focus_out_event.connect (() => {
-                rename_file (goffile, entry.get_text ());
-                return false;
-            });
+            // entry.focus_out_event.connect (() => {
+            //     rename_file (goffile, entry.get_text ());
+            //     return false;
+            // });
 
             header_title = entry;
         }
@@ -220,8 +224,10 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         /* Permissions */
         if (construct_perm_panel () != null) {
             if (!goffile.can_set_permissions ()) {
-                foreach (var widget in perm_grid.get_children ()) {
-                    widget.set_sensitive (false);
+                var child = perm_grid.get_first_child ();
+                while (child != null) {
+                    child.set_sensitive (false);
+                    child = child.get_next_sibling ();
                 }
             }
         } else {
@@ -238,13 +244,12 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         stack.add_titled (perm_grid, PanelType.PERMISSIONS.to_string (), _("Permissions"));
 
         var stack_switcher = new Gtk.StackSwitcher () {
-            homogeneous = true,
+            // homogeneous = true,
             margin_top = 12,
             stack = stack
         };
 
         layout.attach (stack_switcher, 0, 1, 2);
-        layout.show_all ();
 
         present ();
     }
@@ -286,7 +291,7 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         }
 
         if (size_warning > 0) {
-            var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", MENU) {
+            var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic") {
                 halign = START,
                 hexpand = true
             };
@@ -301,8 +306,6 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
                                                 ;
             info_grid.attach_next_to (size_warning_image, size_value, RIGHT);
         }
-
-        info_grid.show_all ();
     }
 
     private void update_selection_size () {

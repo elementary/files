@@ -24,7 +24,8 @@ public interface Sidebar.SidebarListInterface : Object {
     }
 
     public virtual void clear () {
-        foreach (Gtk.Widget child in list_box.get_children ()) {
+        Gtk.Widget? child;
+        while ((child = list_box.get_first_child ()) != null) {
             list_box.remove (child);
             if (child is SidebarItemInterface) {
                 ((SidebarItemInterface) child).destroy_bookmark ();
@@ -36,13 +37,16 @@ public interface Sidebar.SidebarListInterface : Object {
 
     public virtual bool has_uri (string uri, out unowned Gtk.ListBoxRow? row = null) {
         row = null;
-        foreach (unowned var child in list_box.get_children ()) {
+        Gtk.Widget? child = list_box.get_first_child ();
+        while (child != null) {
             if (child is SidebarItemInterface) {
                 if (((SidebarItemInterface)child).uri == uri) {
                     row = (Gtk.ListBoxRow) child;
                     return true;
                 }
             }
+
+            child = child.get_next_sibling ();
         }
 
         return false;
@@ -60,7 +64,8 @@ public interface Sidebar.SidebarListInterface : Object {
     }
 
     public virtual bool remove_item_by_id (uint32 id) {
-        foreach (unowned var child in list_box.get_children ()) {
+        Gtk.Widget? child = list_box.get_first_child ();
+        while (child != null) {
             if (child is SidebarItemInterface) {
                 unowned var row = (SidebarItemInterface)child;
                 if (row.permanent) {
@@ -73,6 +78,8 @@ public interface Sidebar.SidebarListInterface : Object {
                     return true;
                 }
             }
+
+            child = child.get_next_sibling ();
         }
 
         return false;

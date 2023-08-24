@@ -18,7 +18,6 @@
 
 namespace Files {
     public class TextRenderer: Gtk.CellRendererText {
-
         const int MAX_LINES = 5;
         private int border_radius { get; private set; }
         public int double_border_radius { get; private set; }
@@ -59,7 +58,7 @@ namespace Files {
             }
         }
 
-        private bool is_list_view;
+        public bool is_list_view { get; construct; }
 
         public int text_width;
         public int text_height;
@@ -70,23 +69,25 @@ namespace Files {
 
         Pango.Layout layout;
         Gtk.Widget widget;
-        AbstractEditableLabel entry;
+        EditableLabelInterface entry;
 
         construct {
-            this.mode = Gtk.CellRendererMode.EDITABLE;
+            if (is_list_view) {
+                entry = new SingleLineEditableLabel ();
+            } else {
+                entry = new MultiLineEditableLabel ();
+            }
+
+            mode = Gtk.CellRendererMode.EDITABLE;
             text_css = new Gtk.CssProvider ();
             previous_background_rgba = { 0, 0, 0, 0 };
             previous_contrasting_rgba = { 0, 0, 0, 0 };
         }
 
         public TextRenderer (ViewMode viewmode) {
-            if (viewmode == ViewMode.ICON) {
-                entry = new MultiLineEditableLabel ();
-                is_list_view = false;
-            } else {
-                entry = new SingleLineEditableLabel ();
-                is_list_view = true;
-            }
+            Object (
+                is_list_view: viewmode != ViewMode.ICON
+            );
 
             entry.editing_done.connect (on_entry_editing_done);
         }
@@ -99,7 +100,7 @@ namespace Files {
             minimum_size = natural_size;
         }
 
-        public override void render (Cairo.Context cr,
+        public override void snapshot (Gtk.Snapshot ss,
                                      Gtk.Widget widget,
                                      Gdk.Rectangle background_area,
                                      Gdk.Rectangle cell_area,
@@ -122,7 +123,7 @@ namespace Files {
             style_context.set_state (state);
 
             int focus_rect_width, focus_rect_height;
-            draw_focus (cr, cell_area, flags, style_context, state, out text_x_offset, out text_y_offset,
+            draw_focus (ss, cell_area, flags, style_context, state, out text_x_offset, out text_y_offset,
                         out focus_rect_width, out focus_rect_height);
 
             /* Position text relative to the focus rectangle */
@@ -149,9 +150,9 @@ namespace Files {
                         previous_contrasting_rgba.green = contrasting_foreground_rgba.green;
                         previous_contrasting_rgba.blue = contrasting_foreground_rgba.blue;
                         previous_contrasting_rgba.alpha = contrasting_foreground_rgba.alpha;
-                        string data = "* {color: %s;}".printf (contrasting_foreground_rgba.to_string ());
+                        string css = "* {color: %s;}".printf (contrasting_foreground_rgba.to_string ());
                         try {
-                            text_css.load_from_data (data);
+                            text_css.load_from_data (css, css.length);
                         } catch (Error e) {
                             critical (e.message);
                         }
@@ -161,10 +162,12 @@ namespace Files {
                 style_context.add_provider (text_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             }
 
-            style_context.render_layout (cr,
-                                         cell_area.x + text_x_offset,
-                                         cell_area.y + text_y_offset,
-                                         layout);
+            ss.render_layout (
+                style_context,
+                cell_area.x + text_x_offset,
+                cell_area.y + text_y_offset,
+                layout
+            );
 
             style_context.restore (); /* NOTE: This does not remove added classes */
             style_context.remove_provider (text_css); /* No error if provider not added */
@@ -235,10 +238,9 @@ namespace Files {
             entry.set_size_request (wrap_width, -1);
             entry.set_position (-1);
             entry.set_data ("marlin-text-renderer-path", path.dup ());
-            entry.show_all ();
 
             base.start_editing (event, widget, path, background_area, cell_area, flags);
-            return entry;
+            return (Gtk.CellEditable?)entry;
         }
 
         public void end_editing (bool cancel) {
@@ -253,15 +255,9 @@ namespace Files {
                 return;
             }
 
-            /* disconnect from the previously set widget */
-            if (widget != null) {
-                disconnect_widget_signals ();
-            }
-
             widget = _widget;
 
             if (widget != null) {
-                connect_widget_signals ();
                 context = widget.get_pango_context ();
                 layout = new Pango.Layout (context);
 
@@ -280,22 +276,6 @@ namespace Files {
             }
         }
 
-        private void connect_widget_signals () {
-            widget.destroy.connect (invalidate);
-            widget.style_updated.connect (invalidate);
-        }
-
-        private void disconnect_widget_signals () {
-            widget.destroy.disconnect (invalidate);
-            widget.style_updated.disconnect (invalidate);
-        }
-
-        private void invalidate () {
-            disconnect_widget_signals ();
-            set_widget (null);
-            file = null;
-        }
-
         private void on_entry_editing_done () {
             bool cancelled = entry.editing_canceled;
             base.stop_editing (cancelled);
@@ -310,7 +290,7 @@ namespace Files {
             file = null;
         }
 
-        private void draw_focus (Cairo.Context cr,
+        private void draw_focus (Gtk.Snapshot ss,
                                  Gdk.Rectangle cell_area,
                                  Gtk.CellRendererState flags,
                                  Gtk.StyleContext style_context,
@@ -341,17 +321,18 @@ namespace Files {
                 int x0 = cell_area.x + x_offset;
                 int y0 = cell_area.y + y_offset;
                 var provider = new Gtk.CssProvider ();
-                string data;
+                string css;
                 if (selected && !background_set) {
-                    data = "* {border-radius: 5px;}";
+                    css = "* {border-radius: 5px;}";
                 } else {
-                    data = "* {border-radius: 5px; background-color: %s;}".printf (background_rgba.to_string ());
+                    css = "* {border-radius: 5px; background-color: %s;}".printf (background_rgba.to_string ());
                 }
 
                 try {
-                    provider.load_from_data (data);
+                    provider.load_from_data (css, css.length);
                     style_context.add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-                    style_context.render_background (cr, x0, y0, focus_rect_width, focus_rect_height);
+                    // style_context.render_background (cr, x0, y0, focus_rect_width, focus_rect_height);
+                    ss.render_background (style_context, x0, y0, focus_rect_width, focus_rect_height);
                     style_context.remove_provider (provider);
                 } catch (Error e) {
                     critical (e.message);

@@ -16,9 +16,9 @@ You'll need the following dependencies:
 * libgee-0.8-dev
 * libgit2-glib-1.0-dev
 * libglib2.0-dev
-* libgranite-dev >= 6.1.0
-* libgtk-3-dev
-* libhandy-1-dev >= 0.83.0
+* libgranite-7-dev
+* libgtk-4-dev
+* libadwaita-1-dev
 * libnotify-dev
 * libpango1.0-dev
 * libplank-dev

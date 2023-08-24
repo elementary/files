@@ -16,30 +16,35 @@
 public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
     public signal void slow_press ();
 
-    private Gtk.Menu gtk_menu;
+    private Gtk.PopoverMenu popover;
 
     public Menu menu {
         set {
-            gtk_menu.bind_model (value, null, false);
+            popover.menu_model = value;
         }
     }
 
     public ButtonWithMenu (string icon_name) {
-        image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.LARGE_TOOLBAR);
+        Object (icon_name: icon_name);
     }
 
     construct {
+        add_css_class (Granite.STYLE_CLASS_LARGE_ICONS);
         use_underline = true;
 
-        gtk_menu = new Gtk.Menu ();
-        gtk_menu.attach_to_widget (this, null);
-        gtk_menu.deactivate.connect ( () => {
+        popover = new Gtk.PopoverMenu.from_model (null) {
+            autohide = true,
+            has_arrow = false
+        };
+        popover.set_parent (this);
+
+        popover.closed.connect (() => {
             active = false;
         });
 
         mnemonic_activate.connect (on_mnemonic_activate);
 
-        var press_gesture = new Gtk.GestureMultiPress (this) {
+        var press_gesture = new Gtk.GestureClick () {
             button = Gdk.BUTTON_PRIMARY
         };
         press_gesture.released.connect (() => {
@@ -47,7 +52,7 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
             press_gesture.set_state (CLAIMED);
         });
 
-        var secondary_click_gesture = new Gtk.GestureMultiPress (this) {
+        var secondary_click_gesture = new Gtk.GestureClick () {
             button = Gdk.BUTTON_SECONDARY
         };
         secondary_click_gesture.pressed.connect (() => {
@@ -55,12 +60,16 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
             secondary_click_gesture.set_state (CLAIMED);
         });
 
-        var long_press_gesture = new Gtk.GestureLongPress (this);
+        var long_press_gesture = new Gtk.GestureLongPress ();
 
         long_press_gesture.pressed.connect (() => {
             popup_menu ();
             long_press_gesture.set_state (CLAIMED);
         });
+
+        add_controller (press_gesture);
+        add_controller (secondary_click_gesture);
+        add_controller (long_press_gesture);
     }
 
     private bool on_mnemonic_activate (bool group_cycling) {
@@ -79,7 +88,6 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
 
     protected new void popup_menu () {
         active = true;
-        gtk_menu.popup_at_widget (this, SOUTH_WEST, NORTH_WEST, Gtk.get_current_event ());
-        gtk_menu.select_first (false);
+        popover.popup ();
     }
 }

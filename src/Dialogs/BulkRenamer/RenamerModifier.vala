@@ -20,7 +20,10 @@
 */
 
 public class Files.RenamerModifier : Object {
-    protected class EditWidget : Gtk.Bin {
+    protected class EditWidget : Gtk.Widget {
+        static construct {
+            set_layout_manager_type (typeof (Gtk.BinLayout));
+        }
         public RenamerModifier modifier { get; construct; }
 
         public EditWidget (RenamerModifier modifier) {
@@ -34,7 +37,10 @@ public class Files.RenamerModifier : Object {
                 column_homogeneous = true,
                 column_spacing = 6,
                 row_spacing = 6,
-                margin = 12
+                margin_top = 12,
+                margin_end = 12,
+                margin_bottom = 12,
+                margin_start = 12
             };
             Gtk.Widget controls;
             var flags = BindingFlags.DEFAULT;
@@ -114,8 +120,8 @@ public class Files.RenamerModifier : Object {
                                               RenameDateFormat.ISO_DATETIME.to_string ());
 
                     var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
-                    box.add (date_source_combo);
-                    box.add (date_format_combo);
+                    box.append (date_source_combo);
+                    box.append (date_format_combo);
                     controls = box;
 
                     date_source_combo.active = modifier.source;
@@ -156,8 +162,7 @@ public class Files.RenamerModifier : Object {
             grid.attach (separator_label, 0, 0);
             grid.attach (separator_entry, 1, 0);
             grid.attach (controls, 0, 1, 2, 1);
-            add (grid);
-            show_all ();
+            grid.set_parent (this);
         }
     }
 

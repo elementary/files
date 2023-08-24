@@ -163,11 +163,11 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         }
 
         if (!is_mounted) {
-            var mount_item = new Gtk.MenuItem.with_mnemonic (_("Mount"));
-            mount_item.activate.connect (() => {
-                mount_volume ();
-            });
-            menu_builder.add_item (mount_item);
+            // var mount_item = new Gtk.MenuItem.with_mnemonic (_("Mount"));
+            // mount_item.activate.connect (() => {
+            //     mount_volume ();
+            // });
+            // menu_builder.add_item (mount_item);
         }
 
         var sort_key = drive.get_sort_key ();

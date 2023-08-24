@@ -32,7 +32,7 @@ public class Files.Application : Gtk.Application {
 
     private VolumeMonitor volume_monitor;
     private Progress.UIHandler progress_handler;
-    private ClipboardManager clipboard;
+    // private ClipboardManager clipboard;
     private Gtk.RecentManager recent;
 
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
@@ -70,13 +70,13 @@ public class Files.Application : Gtk.Application {
 
         init_schemas ();
 
-        Gtk.IconTheme.get_default ().changed.connect (() => {
+        Gtk.IconTheme.get_for_display (Gdk.Display.get_default ()).changed.connect (() => {
             Files.IconInfo.clear_caches ();
         });
 
         progress_handler = new Progress.UIHandler ();
 
-        this.clipboard = ClipboardManager.get_for_display ();
+        // this.clipboard = ClipboardManager.get_for_display ();
         this.recent = new Gtk.RecentManager ();
 
         /* Global static variable "plugins" declared in PluginManager.vala */
@@ -109,9 +109,9 @@ public class Files.Application : Gtk.Application {
         });
     }
 
-    public unowned ClipboardManager get_clipboard_manager () {
-        return this.clipboard;
-    }
+    // public unowned ClipboardManager get_clipboard_manager () {
+    //     return this.clipboard;
+    // }
 
     public unowned Gtk.RecentManager get_recent_manager () {
         return this.recent;
@@ -167,7 +167,7 @@ public class Files.Application : Gtk.Application {
 
         var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));
         context.add_main_entries (options, null);
-        context.add_group (Gtk.get_option_group (true));
+        // context.add_group (Gtk.get_option_group (true));
 
         string[] args = cmd.get_arguments ();
         /* We need to store arguments in an unowned variable for context.parse */

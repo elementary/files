@@ -144,7 +144,7 @@ namespace Files {
                 var selection = tree.get_selection ();
                 selection.select_path (path);
                 if (cursor_follows) {
-                    /* Unlike for IconView, set_cursor unselects previously selected paths (Gtk bug?),
+                    /* Unlike for IconView, set_view_cursor unselects previously selected paths (Gtk bug?),
                      * so we have to remember them and reselect afterwards */
                     GLib.List<Gtk.TreePath> selected_paths = null;
                     selection.selected_foreach ((m, p, i) => {
@@ -201,7 +201,7 @@ namespace Files {
             return tree.has_focus;
         }
 
-        protected override uint get_event_position_info (Gdk.EventButton event,
+        protected override uint get_event_position_info (double x, double y,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
             Gtk.TreePath? p = null;
@@ -210,13 +210,19 @@ namespace Files {
             int cx, cy, depth;
             path = null;
 
-            var ewindow = event.get_window ();
-            if (ewindow != tree.get_bin_window ()) {
-                return ClickZone.INVALID;
-            }
+            // var ewindow = event.get_window ();
+            // if (ewindow != tree.get_bin_window ()) {
+            //     return ClickZone.INVALID;
+            // }
 
-            double x, y;
-            event.get_coords (out x, out y);
+            // double x, y;
+            // event.get_coords (out x, out y);
+
+            /* Determine whether there whitespace at this point.  Note: this function returns false when the
+             * position is on the edge of the cell, even though this appears to be blank. We
+             * deal with this below. */
+            var is_blank = tree.is_blank_at_pos ((int)x, (int)y, null, null, null, null);
+
             tree.get_path_at_pos ((int)x, (int)y, out p, out c, out cx, out cy);
             path = p;
             depth = p != null ? p.get_depth () : 0;
@@ -226,7 +232,6 @@ namespace Files {
             int height = rect.height;
              /* Note: is_blank_at_pos () returns "true" on the whitespace below and
              * above text pixels, which we do not want. We deal with this later.*/
-            var is_blank = tree.is_blank_at_pos ((int)x, (int)y, null, null, null, null);
             // Ensure blank area continues across row division
             is_blank = is_blank || cy < 5 || cy > height - 5;
 
@@ -310,7 +315,7 @@ namespace Files {
             tree.set_cursor_on_cell (path, name_column, renderer, start_editing);
         }
 
-        public override void set_cursor (Gtk.TreePath? path,
+        public override void set_view_cursor (Gtk.TreePath? path,
                                          bool start_editing,
                                          bool select,
                                          bool scroll_to_top) {
@@ -348,32 +353,25 @@ namespace Files {
 
         /* These two functions accelerate the loading of Views especially for large folders
          * Views are not displayed until fully loaded */
-        protected override void freeze_tree () {
-            if (!tree_frozen) {
-                tree.freeze_child_notify ();
-                tree_frozen = true;
-            }
-        }
+        // protected override void freeze_tree () {
+            // tree.freeze_child_notify ();
+            // tree_frozen = true;
+        // }
 
-        protected override void thaw_tree () {
-            if (tree_frozen) {
-                tree.thaw_child_notify ();
-                tree_frozen = false;
-            }
-        }
+        // protected override void thaw_tree () {
+            // if (tree_frozen) {
+            //     tree.thaw_child_notify ();
+            //     tree_frozen = false;
+            // }
+        // }
 
-        // For scrolling
-        protected override void freeze_child_notify () {
-            tree.freeze_child_notify ();
-        }
+        // protected override void freeze_child_notify () {
+        //     tree.freeze_child_notify ();
+        // }
 
-        protected override void thaw_child_notify () {
-            // Do not prematurely thaw tree when loading
-            if (!tree_frozen) {
-                tree.thaw_child_notify ();
-            }
-
-        }
+        // protected override void thaw_child_notify () {
+        //     tree.thaw_child_notify ();
+        // }
     }
 
     protected class TreeView : Gtk.TreeView {
@@ -392,29 +390,30 @@ namespace Files {
             }
         }
 
-        /* Override base class in order to disable the Gtk.TreeView local search functionality */
-        public override bool key_press_event (Gdk.EventKey event) {
-            /* We still need the base class to handle cursor keys first */
-            uint keyval;
-            event.get_keyval (out keyval);
-            switch (keyval) {
-                case Gdk.Key.Up:
-                case Gdk.Key.Down:
-                case Gdk.Key.KP_Up:
-                case Gdk.Key.KP_Down:
-                case Gdk.Key.Page_Up:
-                case Gdk.Key.Page_Down:
-                case Gdk.Key.KP_Page_Up:
-                case Gdk.Key.KP_Page_Down:
-                case Gdk.Key.Home:
-                case Gdk.Key.End:
+        //TODO Use EventControllers
+        // /* Override base class in order to disable the Gtk.TreeView local search functionality */
+        // public override bool key_press_event (Gdk.EventKey event) {
+        //     /* We still need the base class to handle cursor keys first */
+        //     uint keyval;
+        //     event.get_keyval (out keyval);
+        //     switch (keyval) {
+        //         case Gdk.Key.Up:
+        //         case Gdk.Key.Down:
+        //         case Gdk.Key.KP_Up:
+        //         case Gdk.Key.KP_Down:
+        //         case Gdk.Key.Page_Up:
+        //         case Gdk.Key.Page_Down:
+        //         case Gdk.Key.KP_Page_Up:
+        //         case Gdk.Key.KP_Page_Down:
+        //         case Gdk.Key.Home:
+        //         case Gdk.Key.End:
 
-                    return base.key_press_event (event);
+        //             return base.key_press_event (event);
 
-                default:
+        //         default:
 
-                    return false; // Pass event to Window handler.
-            }
-        }
+        //             return false; // Pass event to Window handler.
+        //     }
+        // }
     }
 }

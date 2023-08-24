@@ -1,9 +1,9 @@
 pantheon_files_deps = [
     common_deps,
-    handy_dep,
+    adwaita_dep,
     pantheon_files_core_dep,
-    plank_dep,
-    zeitgeist_dep,
+    # plank_dep, #Requires Gtk3
+    # zeitgeist_dep,
     project_config_dep,
 ]
 
@@ -45,9 +45,9 @@ pantheon_files_exec = executable (
     'View/ListView.vala',
     'View/Miller.vala',
     'View/PrivacyModeOn.vala',
-    'View/Slot.vala',
     'View/ViewContainer.vala',
     'View/Window.vala',
+    'View/Slot.vala',
 
     'View/Widgets/AbstractEditableLabel.vala',
     'View/Widgets/AppMenu.vala',

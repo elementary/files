@@ -65,7 +65,7 @@ namespace Files.View.Chrome {
             search_results.file_activated.connect (on_search_results_file_activated);
             search_results.cursor_changed.connect (on_search_results_cursor_changed);
             search_results.first_match_found.connect (on_search_results_first_match_found);
-            search_results.realize.connect (on_search_results_realize);
+            search_results.notify["mapped"].connect (on_search_results_realize);
             search_results.exit.connect (on_search_results_exit);
             search_results.notify["working"].connect (on_search_results_working_changed);
         }
@@ -96,7 +96,7 @@ namespace Files.View.Chrome {
 
         private void on_search_results_realize () {
             /*Is this necessary every popup? */
-            ((Gtk.Window)get_toplevel ()).get_group ().add_window (search_results);
+            ((Gtk.Window)get_root ()).get_group ().add_window (search_results);
         }
         private void on_search_results_exit (bool exit_navigate = true) {
             /* Search result widget ensures it has closed and released grab */
@@ -120,22 +120,23 @@ namespace Files.View.Chrome {
             }
         }
 
-        protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
-            base.after_bread_focus_out_event (event);
-            search_mode = false;
-            hide_search_icon ();
-            show_refresh_icon ();
-            focus_out_event (event);
-            check_home ();
-            return true;
-        }
-        protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
-            base.after_bread_focus_in_event (event);
-            focus_in_event (event);
-            search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
-            show_navigate_icon ();
-            return true;
-        }
+        //TODO Rework focus handling
+        // protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
+        //     base.after_bread_focus_out_event (event);
+        //     search_mode = false;
+        //     hide_search_icon ();
+        //     show_refresh_icon ();
+        //     focus_out_event (event);
+        //     check_home ();
+        //     return true;
+        // }
+        // protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
+        //     base.after_bread_focus_in_event (event);
+        //     focus_in_event (event);
+        //     search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
+        //     show_navigate_icon ();
+        //     return true;
+        // }
 
         private void on_bread_open_with_request (GLib.File file, AppInfo? app) {
             Files.MimeActions.open_glib_file_request (file, this, app);
@@ -145,7 +146,7 @@ namespace Files.View.Chrome {
             if (has_focus) {
                 bread.activate ();
             } else {
-                get_action_group ("win").activate_action ("refresh", null);
+                activate_action ("refresh", null);
             }
         }
 
@@ -286,7 +287,7 @@ namespace Files.View.Chrome {
         }
 
         private void check_home () {
-            if (!((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
+            if (!(((Gdk.Toplevel)get_root ()).get_state () == Gdk.ToplevelState.FOCUSED)) {
                 return;
             }
 

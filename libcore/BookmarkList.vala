@@ -59,7 +59,7 @@ namespace Files {
 
             /*Check bookmarks file exists and in right place */
             string filename = GLib.Path.build_filename (config_dir,
-                                                        "gtk-3.0",
+                                                        "gtk4",
                                                         "bookmarks",
                                                         null);
 
