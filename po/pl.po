@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-22 16:29+0000\n"
-"PO-Revision-Date: 2023-08-08 01:00+0000\n"
+"PO-Revision-Date: 2023-08-26 15:08+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -2323,10 +2323,8 @@ msgid "Menu"
 msgstr "Menu"
 
 #: src/View/Window.vala:229
-#, fuzzy
-#| msgid "Close Tab"
 msgid "Closed Tabs"
-msgstr "Zamknij kartę"
+msgstr "Zamknięte karty"
 
 #: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
@@ -2339,13 +2337,11 @@ msgstr "Zduplikuj kartę"
 #. TRANSLATORS: For RTL this should be "to the left"
 #: src/View/Window.vala:446
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Zamknij karty po prawej"
 
 #: src/View/Window.vala:447
-#, fuzzy
-#| msgid "Close Tab"
 msgid "Close Other Tabs"
-msgstr "Zamknij kartę"
+msgstr "Zamknij inne karty"
 
 #: src/View/Window.vala:448
 msgid "Close Tab"
