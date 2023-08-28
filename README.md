@@ -17,7 +17,7 @@ You'll need the following dependencies:
 * libglib2.0-dev
 * libgranite-dev >= 6.1.0
 * libgtk-3-dev
-* libhandy-1-dev >= 0.83.0
+* libhandy-1-dev >= 1.2.0
 * libpango1.0-dev
 * libplank-dev
 * libsqlite3-dev
