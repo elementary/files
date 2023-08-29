@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-22 16:29+0000\n"
 "PO-Revision-Date: 2023-08-30 12:08+0000\n"
-"Last-Translator: Jakub Kyzr <jakubkyzr@gmail.com>\n"
+"Last-Translator: Jan <sebek_jan@yahoo.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/files/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -136,7 +136,7 @@ msgstr "Sdílení:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Path of shared folder on server (Optional)"
-msgstr "Popis umístění sdílené složky na serveru (volitelné)"
+msgstr "Cesta umístění sdílené složky na serveru (volitelné)"
 
 #: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
@@ -434,7 +434,7 @@ msgstr "Starší soubor se stejným názvem už v „%s“ existuje."
 #: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Novější soubor se stejným názvem už v „%s“ existuje."
+msgstr "Novější soubor se stejným názvem již v „%s“ existuje."
 
 #: libcore/FileConflictDialog.vala:316
 #, c-format
