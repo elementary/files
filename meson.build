@@ -64,8 +64,6 @@ pango_dep = dependency('pango', version: '>=1.1.2')
 sqlite3_dep = dependency('sqlite3')
 libcanberra_dep = dependency('libcanberra', version: '>=0.30')
 
-notify_dep = dependency('libnotify', version: '>=0.7.2')
-
 posix_dep = vala.find_library('posix')
 linux_dep = vala.find_library('linux')
 math_dep = cc.find_library('m')
