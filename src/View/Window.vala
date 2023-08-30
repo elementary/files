@@ -504,8 +504,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void on_page_detached () {
         if (tab_view.n_pages == 0) {
-            add_tab.begin (default_location, default_mode, false, (obj, res) => {
-                // We assume adding default tab always succeeds
+            add_tab.begin (default_location, default_mode, false, () => {
+                // We can assume adding default tab always succeeds
                 save_tabs ();
             });
         } else {
@@ -544,9 +544,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         ) {
             // Open a tab pointing at the default location if no tabs restored and none provided
             // Duplicates are not ignored
-            var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
-            add_tab.begin (location, mode, false, () => {
-                /* Ensure default tab's slot is active so it can be focused */
+            add_tab.begin (default_location, mode, false, () => {
+                // We can assume adding default tab always succeeds
+                // Ensure default tab's slot is active so it can be focused
                 current_container.set_active_state (true, false);
             });
 
@@ -574,6 +574,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         bool ignore_duplicate
     ) {
 
+        // Do not try to restore locations that we cannot determine the filetype. This will
+        // include deleted and other non-existent locations.  Note however, that disconnected remote
+        // location may still give correct result, presumably due to caching by gvfs, so such
+        // locations will still attempt to load.  Files.Directory must handle that.
+
         GLib.File location;
         GLib.FileType ftype;
         // For simplicity we do not use cancellable. If issues arise may need to do this.
@@ -585,7 +590,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
             ftype = info.get_file_type ();
         } catch (Error e) {
-            critical ("No info for requested location - abandon loading");
+            debug ("No info for requested location - abandon loading");
             return false;
         }
 
