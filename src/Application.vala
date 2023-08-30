@@ -224,7 +224,7 @@ public class Files.Application : Gtk.Application {
                 create_window_with_tabs (files);
             } else {
                 var win = (View.Window)(get_active_window ());
-                win.open_tabs (files, ViewMode.PREFERRED, true); /* Ignore if duplicate tab in existing window */
+                win.open_tabs.begin (files, ViewMode.PREFERRED, true); /* Ignore if duplicate tab in existing window */
             }
         } else if (create_new_window || window_count == 0) {
             create_window_with_tabs ();
@@ -320,7 +320,7 @@ public class Files.Application : Gtk.Application {
                                                   ViewMode viewmode = ViewMode.PREFERRED) {
 
         var win = create_empty_window ();
-        win.open_tabs (locations, viewmode);
+        win.open_tabs.begin (locations, viewmode, false);
 
         return win;
     }

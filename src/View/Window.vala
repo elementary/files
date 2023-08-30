@@ -531,12 +531,14 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         save_active_tab_position ();
     }
 
-    public void open_tabs (GLib.File[]? files = null,
-                           ViewMode mode = default_mode,
-                           bool ignore_duplicate = false) {
+    public async void open_tabs (
+        GLib.File[]? files,
+        ViewMode mode = default_mode,
+        bool ignore_duplicate
+    ) {
 
         // Always try to restore tabs
-        var n_tabs_restored = restore_tabs ();
+        var n_tabs_restored = yield restore_tabs ();
         if (n_tabs_restored < 1 &&
             (files == null || files.length == 0 || files[0] == null)
         ) {
@@ -1211,7 +1213,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         );
     }
 
-    private uint restore_tabs () {
+    private async uint restore_tabs () {
         /* Do not restore tabs more than once or if various conditions not met */
         if (
             tabs_restored ||
@@ -1237,21 +1239,15 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         restoring_tabs = 0;
 
         while (iter.next ("(uss)", out mode, out root_uri, out tip_uri)) {
-
             if (mode < 0 || mode >= ViewMode.INVALID ||
                 root_uri == null || root_uri == "" || tip_uri == null) {
 
                 continue;
             }
 
-            /* We do not check valid location here because it may cause the interface to hang
-             * before the window appears (e.g. if trying to connect to a server that has become unavailable)
-             * Leave it to Files.Directory.Async to deal with invalid locations asynchronously.
-             * Restored tabs with invalid locations are removed in the `loading` signal handler.
-             */
-
-            restoring_tabs++;
-            add_tab_by_uri.begin (root_uri, mode);
+            if (yield add_tab_by_uri (root_uri, mode)) {
+                restoring_tabs++;
+            }
 
             if (mode == ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
                 expand_miller_view (tip_uri, root_uri);
@@ -1276,8 +1272,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         if (active_tab_position < 0 || active_tab_position >= restoring_tabs) {
             active_tab_position = 0;
         }
-
-        tab_view.selected_page = tab_view.get_nth_page (active_tab_position);
 
         string path = "";
         if (current_container != null) {
