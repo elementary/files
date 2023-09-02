@@ -26,7 +26,7 @@ add_project_arguments(
 #
 # Define Vala minimal version
 #
-vala_version_required = '0.48.2'
+vala_version_required = '0.50.0'
 vala = meson.get_compiler('vala')
 cc = meson.get_compiler('c')
 
