@@ -9,8 +9,7 @@ executable(
     pantheon_files_daemon_files,
 
     dependencies : [
-        pantheon_files_core_dep,
-        notify_dep
+        pantheon_files_core_dep
     ],
     install: true,
 )

@@ -166,14 +166,6 @@ namespace Files.View.Chrome {
 
             zg_index = new Zeitgeist.Index ();
 #endif
-            var frame = new Gtk.Frame (null) {
-                shadow_type = Gtk.ShadowType.ETCHED_IN
-            };
-
-            scroll = new Gtk.ScrolledWindow (null, null) {
-                hscrollbar_policy = Gtk.PolicyType.NEVER
-            };
-
             view = new Gtk.TreeView () {
                 headers_visible = false,
                 level_indentation = 12,
@@ -186,6 +178,11 @@ namespace Files.View.Chrome {
             view.get_selection ().set_select_function ((selection, list, path, path_selected) => {
                 return path.get_depth () != 0;
             });
+
+            scroll = new Gtk.ScrolledWindow (null, null) {
+                child = view,
+                hscrollbar_policy = Gtk.PolicyType.NEVER
+            };
 
             get_style_context ().add_class ("completion-popup");
 
@@ -249,9 +246,7 @@ namespace Files.View.Chrome {
             list.append (out zeitgeist_results, null);
 #endif
 
-            scroll.add (view);
-            frame.add (scroll);
-            add (frame);
+            child = scroll;
 
             button_press_event.connect (on_button_press_event);
             view.button_press_event.connect (on_view_button_press_event);
