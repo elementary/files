@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 11:54+0000\n"
-"PO-Revision-Date: 2023-08-24 18:25+0000\n"
+"PO-Revision-Date: 2023-09-04 14:08+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
-">\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
@@ -1628,11 +1628,11 @@ msgstr "[URI…]"
 
 #: src/Application.vala:92
 msgid "Error: Running Files as root using sudo is not possible."
-msgstr ""
+msgstr "Ошибка: запуск Файлов от имени root через sudo невозможен."
 
 #: src/Application.vala:93
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
-msgstr ""
+msgstr "Пожалуйста, используйте команду: io.elementary.files-pkexec [папка]"
 
 #: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
