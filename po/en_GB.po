@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 11:54+0000\n"
-"PO-Revision-Date: 2023-08-24 02:54+0000\n"
+"PO-Revision-Date: 2023-09-04 14:08+0000\n"
 "Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "files/files/en_GB/>\n"
@@ -1616,11 +1616,11 @@ msgstr "[URI…]"
 
 #: src/Application.vala:92
 msgid "Error: Running Files as root using sudo is not possible."
-msgstr ""
+msgstr "Error: Running Files as root using sudo is not possible."
 
 #: src/Application.vala:93
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
-msgstr ""
+msgstr "Please use the command: io.elementary.files-pkexec [folder]"
 
 #: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
