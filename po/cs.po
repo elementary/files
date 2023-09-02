@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
 "PO-Revision-Date: 2023-08-30 12:08+0000\n"
 "Last-Translator: Jan <sebek_jan@yahoo.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/files/cs/>\n"
@@ -1222,7 +1222,7 @@ msgstr "SFTP"
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Koš"
 
@@ -1239,7 +1239,7 @@ msgid "GPHOTO2"
 msgstr "GPHOTO2"
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Souborový systém"
 
@@ -1583,32 +1583,7 @@ msgstr "Smazat označené"
 msgid "Send by Email"
 msgstr "Odeslat e-mailem"
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "Zobrazit verzi programu"
-
-#: src/Application.vala:156
-msgid "Open one or more URIs, each in their own tab"
-msgstr "Otevřít jedno (nebo více) URI, každé v novém panelu"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "Nové okno"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "Ukončit Soubory"
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "Vypisovat ladicí zprávy"
-
-#: src/Application.vala:165
-msgid "[URI…]"
-msgstr "[URI…]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1618,7 +1593,40 @@ msgstr ""
 "\n"
 "Procházet souborový systém správcem souborů"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "Zobrazit verzi programu"
+
+#: src/Application.vala:74
+msgid "Open one or more URIs, each in their own tab"
+msgstr "Otevřít jedno (nebo více) URI, každé v novém panelu"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "Nové okno"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "Ukončit Soubory"
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "Vypisovat ladicí zprávy"
+
+#: src/Application.vala:80
+msgid "[URI…]"
+msgstr "[URI…]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr ""
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr ""
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nelze použít dohromady s URI."
 
@@ -2028,7 +2036,7 @@ msgid "Invalid file name provided"
 msgstr "Zadán neplatný název souboru"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "Nová karta"
 
@@ -2234,7 +2242,7 @@ msgstr "Nejsou zde žádné nedávno použité soubory"
 msgid "Access Denied"
 msgstr "Přístup odepřen"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "Domů"
 
@@ -2290,44 +2298,44 @@ msgstr "Soubor nenalezen"
 msgid "The file selected no longer exists."
 msgstr "Vybraný soubor už neexistuje."
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "Předchozí"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "Následující"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
 msgstr "Nabídka"
 
-#: src/View/Window.vala:229
+#: src/View/Window.vala:227
 msgid "Closed Tabs"
 msgstr "Zavřené panely"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Otevřít v novém okně"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 msgid "Duplicate Tab"
 msgstr "Zduplikovat panel"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
 msgstr "Zavřít panely napravo"
 
-#: src/View/Window.vala:447
+#: src/View/Window.vala:445
 msgid "Close Other Tabs"
 msgstr "Zavřít ostatní panely"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 msgid "Close Tab"
 msgstr "Zavřít panel"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(jako správce)"
 
@@ -2365,19 +2373,19 @@ msgstr "%s (%s)"
 msgid "Not mounted"
 msgstr "Nepřipojeno"
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 msgid "View the home folder"
 msgstr "Zobrazit domovskou složku"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "Zobrazit nedávno použité soubory"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Otevřít Koš"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
 msgstr "Zobrazit kořen místního souborového systému"
 
@@ -2397,11 +2405,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Nenaformátováno nebo bez média"
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Celá síť"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "Procházet obsah sítě"
 

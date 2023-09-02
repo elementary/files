@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
 "PO-Revision-Date: 2021-08-16 13:30+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/files/pa/"
@@ -1215,7 +1215,7 @@ msgstr "ਐੱਸ ਐੱਫ਼ ਟੀ ਪੀ"
 msgid "SMB"
 msgstr "ਐੱਸ ਐੱਮ ਬੀ"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "ਰੱਦੀ ਟੋਕਰੀ"
 
@@ -1232,7 +1232,7 @@ msgid "GPHOTO2"
 msgstr "ਜੀ-ਫ਼ੋਟੋ2"
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "ਫ਼ਾਇਲ ਸਿਸਟਮ"
 
@@ -1594,32 +1594,7 @@ msgstr "ਚੁਨਿੰਦਾ ਨੂੰ ਮਿਟਾਓ"
 msgid "Send by Email"
 msgstr ""
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "ਪ੍ਰੋਗਰਾਮ ਦਾ ਵਰਜਨ ਵਿਖਾਓ"
-
-#: src/Application.vala:156
-msgid "Open one or more URIs, each in their own tab"
-msgstr "ਇੱਕ ਜਾਂ ਵੱਧ URIs ਖੋਲ੍ਹੋ, ਹਰੇਕ ਨੂੰ ਆਪਣੀ ਅਲੱਗ ਟੈਬ 'ਚ"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "ਨਵੀਂ ਵਿੰਡੋ"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "ਫ਼ਾਇਲਸ (ਸਾਫ਼ਟਵੇਅਰ) ਨੂੰ ਬੰਦ ਕਰੋ"
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "ਡੀਬੱਗ ਲਾਗਿੰਗ ਚਾਲੂ ਕਰੋ"
-
-#: src/Application.vala:165
-msgid "[URI…]"
-msgstr "[URI...]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1629,7 +1604,40 @@ msgstr ""
 "\n"
 "ਫ਼ਾਇਲ ਮੈਨੇਜਰ ਨਾਲ਼ ਫ਼ਾਇਲ ਸਿਸਟਮ ਨੂੰ ਫਰੋਲੋ"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "ਪ੍ਰੋਗਰਾਮ ਦਾ ਵਰਜਨ ਵਿਖਾਓ"
+
+#: src/Application.vala:74
+msgid "Open one or more URIs, each in their own tab"
+msgstr "ਇੱਕ ਜਾਂ ਵੱਧ URIs ਖੋਲ੍ਹੋ, ਹਰੇਕ ਨੂੰ ਆਪਣੀ ਅਲੱਗ ਟੈਬ 'ਚ"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "ਨਵੀਂ ਵਿੰਡੋ"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "ਫ਼ਾਇਲਸ (ਸਾਫ਼ਟਵੇਅਰ) ਨੂੰ ਬੰਦ ਕਰੋ"
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "ਡੀਬੱਗ ਲਾਗਿੰਗ ਚਾਲੂ ਕਰੋ"
+
+#: src/Application.vala:80
+msgid "[URI…]"
+msgstr "[URI...]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr ""
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr ""
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "--quit ਨੂੰ URIs ਨੂੰ ਬੰਦ ਕਰਨ ਲਈ ਨਹੀਂ ਵਰਤਿਆ ਜਾ ਸਕਦਾ।"
 
@@ -2051,7 +2059,7 @@ msgid "Invalid file name provided"
 msgstr "ਦਿੱਤਾ ਗਿਆ ਫ਼ਾਇਲ ਦਾ ਨਾਂ ਜਾਇਜ਼ ਨਹੀਂ ਹੈ"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "ਨਵੀਂ ਟੈਬ"
 
@@ -2258,7 +2266,7 @@ msgstr "ਕੋਈ ਹਾਲੀਆ ਫ਼ਾਇਲਾਂ ਨਹੀਂ ਹਨ"
 msgid "Access Denied"
 msgstr "ਪਹੁੰਚ ਠੁਕਰਾਈ ਗਈ"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "ਮੁੱਖ/ਘਰ"
 
@@ -2314,49 +2322,49 @@ msgstr "ਫ਼ਾਇਲ ਨਹੀਂ ਮਿਲੀ"
 msgid "The file selected no longer exists."
 msgstr "ਚੁਣੀ ਹੋਈ ਫ਼ਾਇਲ ਮੌਜੂਦ ਨਹੀਂ ਰਹੀ।"
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "ਪਿਛਲਾ/ਪਿਛਲੀ"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "ਅਗਲਾ/ਅਗਲੀ"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:229
+#: src/View/Window.vala:227
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Closed Tabs"
 msgstr "ਟੈਬ ਬੰਦ ਕਰੋ"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "ਨਵੀਂ ਵਿੰਡੋ 'ਚ ਖੋਲ੍ਹੋ"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "\"%s\" ਨੂੰ ਡੁਪਲੀਕੇਟ ਕਰ ਰਿਹੈ"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:447
+#: src/View/Window.vala:445
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Close Other Tabs"
 msgstr "ਟੈਬ ਬੰਦ ਕਰੋ"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 msgid "Close Tab"
 msgstr "ਟੈਬ ਬੰਦ ਕਰੋ"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(ਬਤੌਰ ਐਡਮਿਨ)"
 
@@ -2394,19 +2402,19 @@ msgstr "%s (%s, %s)"
 msgid "Not mounted"
 msgstr ""
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 msgid "View the home folder"
 msgstr "ਮੁੱਖ ਫ਼ੋਲਡਰ ਵੇਖੋ"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "ਹਾਲ ਹੀ ਵਿੱਚ ਵਰਤੀਆਂ ਫ਼ਾਇਲਾਂ ਦੀ ਲਿਸਟ ਵੇਖੋ"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "ਰੱਦੀ ਟੋਕਰੀ ਖੋਲ੍ਹੋ"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
 msgstr "ਲੋਕਲ ਫ਼ਾਇਲ ਸਿਸਟਮ ਦੀ ਜੜ੍ਹ ਵੇਖੋ"
 
@@ -2424,11 +2432,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr ""
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "ਸਾਰਾ ਨੈਟਵਰਕ"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "ਨੈੱਟਵਰਕ ਦੀ ਸਮੱਗਰੀ ਫਰੋਲੋ"
 
