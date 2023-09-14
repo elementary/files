@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
 "PO-Revision-Date: 2017-02-14 10:17+0000\n"
 "Last-Translator: Cody Garver <cody@elementaryos.org>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -1254,7 +1254,7 @@ msgstr "SFTP"
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Κάδος"
 
@@ -1271,7 +1271,7 @@ msgid "GPHOTO2"
 msgstr ""
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Σύστημα αρχείων"
 
@@ -1663,34 +1663,7 @@ msgstr " επιλέχτηκε"
 msgid "Send by Email"
 msgstr ""
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "Εμφάνιση της έκδοσης του προγράμματος."
-
-#: src/Application.vala:156
-#, fuzzy
-msgid "Open one or more URIs, each in their own tab"
-msgstr "Άνοιγμα uri (s) σε νέα καρτέλα"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "Νέο παράθυρο"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "Έξοδος από τα Αρχεία"
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "Ενεργοποίηση καταγραφής εντοπισμού σφαλμάτων"
-
-#: src/Application.vala:165
-#, fuzzy
-msgid "[URI…]"
-msgstr "[URI…]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1700,7 +1673,42 @@ msgstr ""
 "\n"
 "Περιήγηση του συστήματος αρχείων με το διαχειριστή αρχείων"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "Εμφάνιση της έκδοσης του προγράμματος."
+
+#: src/Application.vala:74
+#, fuzzy
+msgid "Open one or more URIs, each in their own tab"
+msgstr "Άνοιγμα uri (s) σε νέα καρτέλα"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "Νέο παράθυρο"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "Έξοδος από τα Αρχεία"
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "Ενεργοποίηση καταγραφής εντοπισμού σφαλμάτων"
+
+#: src/Application.vala:80
+#, fuzzy
+msgid "[URI…]"
+msgstr "[URI…]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr ""
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr ""
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "το --quit δεν μπορεί να χρησιμοποιηθεί σε URI."
 
@@ -2118,7 +2126,7 @@ msgid "Invalid file name provided"
 msgstr "Δόθηκε μη έγκυρο όνομα αρχείου"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "Νέα καρτέλα"
 
@@ -2333,7 +2341,7 @@ msgstr "Δεν υπάρχουν πρόσφατα αρχεία"
 msgid "Access Denied"
 msgstr "Δεν επιτρέπεται η πρόσβαση"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "Προσωπικός φάκελος"
 
@@ -2390,48 +2398,48 @@ msgstr "Το αρχείο δεν βρέθηκε"
 msgid "The file selected no longer exists."
 msgstr "Το επιλεγμένο αρχείο δεν υπάρχει πλέον."
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "Προηγούμενο"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "Επόμενο"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:229
+#: src/View/Window.vala:227
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "Κλείσιμο"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Άνοιγμα σε νέο παράθυρο"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Δημιουργείται αντίγραφο του \"%B\""
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:447
+#: src/View/Window.vala:445
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "Κλείσιμο"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 #, fuzzy
 msgid "Close Tab"
 msgstr "Κλείσιμο"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(ως διαχειριστής)"
 
@@ -2469,7 +2477,7 @@ msgstr "%s (%s, %s)"
 msgid "Not mounted"
 msgstr ""
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 #, fuzzy
 msgid "View the home folder"
 msgstr ""
@@ -2477,15 +2485,15 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "Προβολή της λίστας των πρόσφατα χρησιμοποιημένων αρχείων"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Άνοιγμα του κάδου"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy
 msgid "View the root of the local filesystem"
 msgstr "Προβολή της λίστας των πρόσφατα χρησιμοποιημένων αρχείων"
@@ -2504,11 +2512,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr ""
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Όλο το δίκτυο σας"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "Περιήγηση στα περιεχόμενα του δικτύου"
 

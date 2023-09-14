@@ -3426,6 +3426,7 @@ namespace Files {
             slot.directory.file_added.disconnect (after_renamed_file_added);
             /* new_file will be null if rename failed */
             if (new_file != null) {
+                selected_files_invalid = true;
                 select_and_scroll_to_gof_file (new_file);
             }
         }

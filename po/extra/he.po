@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
-"PO-Revision-Date: 2023-08-08 01:00+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
+"PO-Revision-Date: 2023-08-24 02:54+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -80,6 +80,8 @@ msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
 msgstr ""
+"סרגל לשוניות חדש עם הנפשות משופרות, גרירה ושחרור בצורה חלקה יותר ותפריטי "
+"הקשר ללשוניות סודרו מחדש"
 
 #: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:87
 #: data/files.metainfo.xml.in.in:103 data/files.metainfo.xml.in.in:118

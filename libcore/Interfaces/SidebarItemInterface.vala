@@ -21,7 +21,7 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public interface Sidebar.SidebarItemInterface : Gtk.Widget {
+public interface Sidebar.SidebarItemInterface : Object {
     /* Non constant static members must be initialised in implementing class */
     protected static uint32 row_id;
     protected static Gee.HashMap<uint32, SidebarItemInterface> item_id_map;

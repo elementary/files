@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
 "PO-Revision-Date: 2023-08-08 01:00+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
@@ -1230,7 +1230,7 @@ msgstr "SFTP"
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Papierkorb"
 
@@ -1247,7 +1247,7 @@ msgid "GPHOTO2"
 msgstr "GPHOTO2"
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Dateisystem"
 
@@ -1602,32 +1602,7 @@ msgstr "Markierte löschen"
 msgid "Send by Email"
 msgstr "Per E-Mail senden"
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "Versionsnummer des Programms anzeigen"
-
-#: src/Application.vala:156
-msgid "Open one or more URIs, each in their own tab"
-msgstr "Eine oder mehrere URIs öffnen, jede in einem eigenen Tab"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "Neues Fenster"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "Dateiverwaltung beenden"
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "Nachrichten zur Fehlerdiagnose anzeigen"
-
-#: src/Application.vala:165
-msgid "[URI…]"
-msgstr "[Adresse …]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1637,7 +1612,40 @@ msgstr ""
 "\n"
 "Das Dateisystem mit Hilfe der Dateiverwaltung durchsuchen"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "Versionsnummer des Programms anzeigen"
+
+#: src/Application.vala:74
+msgid "Open one or more URIs, each in their own tab"
+msgstr "Eine oder mehrere URIs öffnen, jede in einem eigenen Tab"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "Neues Fenster"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "Dateiverwaltung beenden"
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "Nachrichten zur Fehlerdiagnose anzeigen"
+
+#: src/Application.vala:80
+msgid "[URI…]"
+msgstr "[Adresse …]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr ""
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr ""
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kann nicht mit Adressen benutzt werden."
 
@@ -2045,7 +2053,7 @@ msgid "Invalid file name provided"
 msgstr "Ungültiger Name angegeben"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "Neuer Tab"
 
@@ -2253,7 +2261,7 @@ msgstr "Es gibt keine zuletzt verwendeten Dateien"
 msgid "Access Denied"
 msgstr "Zugriff verweigert"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "Persönlicher Ordner"
 
@@ -2313,48 +2321,48 @@ msgstr "Datei nicht gefuden"
 msgid "The file selected no longer exists."
 msgstr "Die ausgewählte Datei existiert nicht mehr."
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "Zurück"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "Vor"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
 msgstr "Menü"
 
-#: src/View/Window.vala:229
+#: src/View/Window.vala:227
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Closed Tabs"
 msgstr "Tab schließen"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "In neuem Fenster öffnen"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 msgid "Duplicate Tab"
 msgstr "Tab duplizieren"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:447
+#: src/View/Window.vala:445
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Close Other Tabs"
 msgstr "Tab schließen"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 msgid "Close Tab"
 msgstr "Tab schließen"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(als Systemverwalter)"
 
@@ -2392,19 +2400,19 @@ msgstr "%s ( %s)"
 msgid "Not mounted"
 msgstr "Nicht eingehängt"
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 msgid "View the home folder"
 msgstr "Persönlichen Ordner anzeigen"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "Liste der zuletzt verwendeten Dateien anzeigen"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Papierkorb öffnen"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
 msgstr "Wurzel des lokalen Dateisystems anzeigen"
 
@@ -2424,11 +2432,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Nicht formatiert oder kein Medium eingelegt"
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Gesamtes Netzwerk"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "Inhalt des Netzwerks durchsuchen"
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
 "PO-Revision-Date: 2021-03-21 17:09+0000\n"
 "Last-Translator: Shukrullo Turgunov <shookrullo@gmail.com>\n"
 "Language-Team: Uzbek <https://l10n.elementary.io/projects/files/files/uz/>\n"
@@ -1172,7 +1172,7 @@ msgstr ""
 msgid "SMB"
 msgstr ""
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Savatcha"
 
@@ -1189,7 +1189,7 @@ msgid "GPHOTO2"
 msgstr ""
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Fayl tizimi"
 
@@ -1544,32 +1544,7 @@ msgstr ""
 msgid "Send by Email"
 msgstr ""
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "Dastur talqinini ko'rsatish"
-
-#: src/Application.vala:156
-msgid "Open one or more URIs, each in their own tab"
-msgstr "Bir yoki bir nechta bog'lamalarni, har birini alohida yorliqda ochish"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "Yangi oyna"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "Chiqish"
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "Tahlil qilish uchun jurnalga yozib borishni yoqish"
-
-#: src/Application.vala:165
-msgid "[URI…]"
-msgstr "[URI...]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1579,7 +1554,40 @@ msgstr ""
 "\n"
 "Fayl tizimini fayl menejerida ko'rish"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "Dastur talqinini ko'rsatish"
+
+#: src/Application.vala:74
+msgid "Open one or more URIs, each in their own tab"
+msgstr "Bir yoki bir nechta bog'lamalarni, har birini alohida yorliqda ochish"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "Yangi oyna"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "Chiqish"
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "Tahlil qilish uchun jurnalga yozib borishni yoqish"
+
+#: src/Application.vala:80
+msgid "[URI…]"
+msgstr "[URI...]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr ""
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr ""
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "Manzillar (URI) bilan birgalikda --quit ni ishlatib bo'lmaydi."
 
@@ -1995,7 +2003,7 @@ msgid "Invalid file name provided"
 msgstr "Fayl nomi noto'g'ri"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "Yangi yorliq ochish"
 
@@ -2202,7 +2210,7 @@ msgstr "Bu yerda yaqin orada foydalanilgan fayllar yo'q"
 msgid "Access Denied"
 msgstr "Taqiqlangan hudud"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "Uy papkasi"
 
@@ -2258,47 +2266,47 @@ msgstr "Fayl topilmadi"
 msgid "The file selected no longer exists."
 msgstr "Tanlangan fayl endi mavjud emas."
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "Orqaga"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "Oldinga"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:229
+#: src/View/Window.vala:227
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "Yopish"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Yangi oynada ochish"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 msgid "Duplicate Tab"
 msgstr ""
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:447
+#: src/View/Window.vala:445
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "Yopish"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 #, fuzzy
 msgid "Close Tab"
 msgstr "Yopish"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(administrator huquqi bilan)"
 
@@ -2336,19 +2344,19 @@ msgstr "%s (%s, %s)"
 msgid "Not mounted"
 msgstr ""
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 msgid "View the home folder"
 msgstr "Uy katalogini ko'rish"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "Yaqin orada foydalanilgan fayllar ro'yxatini ko'rish"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Savatchani ochish"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
 msgstr "Mahalliy fayl tizimining ildiz qismini ko'rish"
 
@@ -2366,11 +2374,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr ""
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Butun tarmoq"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "Tarmoq tarkibini ko'rish"
 
