@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
-"PO-Revision-Date: 2023-08-11 12:08+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
+"PO-Revision-Date: 2023-08-30 12:08+0000\n"
 "Last-Translator: Jan <sebek_jan@yahoo.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/files/cs/>\n"
 "Language: cs\n"
@@ -136,7 +136,7 @@ msgstr "Sdílení:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Path of shared folder on server (Optional)"
-msgstr "Popis umístění sdílené složky na serveru (volitelné)"
+msgstr "Cesta umístění sdílené složky na serveru (volitelné)"
 
 #: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
@@ -434,7 +434,7 @@ msgstr "Starší soubor se stejným názvem už v „%s“ existuje."
 #: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Novější soubor se stejným názvem už v „%s“ existuje."
+msgstr "Novější soubor se stejným názvem již v „%s“ existuje."
 
 #: libcore/FileConflictDialog.vala:316
 #, c-format
@@ -1222,7 +1222,7 @@ msgstr "SFTP"
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Koš"
 
@@ -1239,7 +1239,7 @@ msgid "GPHOTO2"
 msgstr "GPHOTO2"
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Souborový systém"
 
@@ -1344,73 +1344,60 @@ msgid "Undo Change Group"
 msgstr "Vrátit změnu skupiny"
 
 #: libcore/UndoManager.vala:57
-#, fuzzy
 msgid "Redo Copy"
-msgstr "Zkopírovat"
+msgstr "Znovu kopírovat"
 
 #: libcore/UndoManager.vala:59
-#, fuzzy
 msgid "Redo Duplicate"
-msgstr "Zduplikovat panel"
+msgstr "Znovu duplikovat"
 
 #: libcore/UndoManager.vala:61
 msgid "Redo Move"
-msgstr ""
+msgstr "Znovu přesunout"
 
 #: libcore/UndoManager.vala:63
-#, fuzzy
 msgid "Redo Rename"
-msgstr "Přejmenovat"
+msgstr "Znovu přejmenovat"
 
 #: libcore/UndoManager.vala:65
-#, fuzzy
 msgid "Redo Create Empty File"
-msgstr "_Znovu vytvořit prázdný soubor"
+msgstr "Znovu vytvořit prázdný soubor"
 
 #: libcore/UndoManager.vala:67
-#, fuzzy
 msgid "Redo Create File from Template"
-msgstr "_Znovu vytvořit soubor z šablony"
+msgstr "Znovu vytvořit soubor z šablony"
 
 #: libcore/UndoManager.vala:69
-#, fuzzy
 msgid "Redo Create Folder"
-msgstr "Nepodařilo se vytvořit složku"
+msgstr "Znovu vytvořit složku"
 
 #: libcore/UndoManager.vala:71
-#, fuzzy
 msgid "Redo Move to Trash"
-msgstr "Přesunout do koše"
+msgstr "Znovu přesunout do Koše"
 
 #: libcore/UndoManager.vala:73
-#, fuzzy
 msgid "Redo Create Link"
-msgstr "_Znovu vytvořit odkaz na %d položku"
+msgstr "Znovu vytvořit odkaz"
 
 #: libcore/UndoManager.vala:75
-#, fuzzy
 msgid "Redo Restore from Trash"
-msgstr "Obnovit z Koše"
+msgstr "Znovu obnovit z Koše"
 
 #: libcore/UndoManager.vala:77
-#, fuzzy
 msgid "Redo Set Permissions"
-msgstr "Nastavuje se oprávnění"
+msgstr "Znovu provést změnu práv"
 
 #: libcore/UndoManager.vala:79
-#, fuzzy
 msgid "Redo Set Permissions Recursively"
-msgstr "Znovu provést změnu práv %d položky"
+msgstr "Znovu provést změnu práv rekurzivně"
 
 #: libcore/UndoManager.vala:81
-#, fuzzy
 msgid "Redo Change Owner"
-msgstr "Znovu provést změnu vlastníka %d položky"
+msgstr "Znovu provést změnu vlastníka"
 
 #: libcore/UndoManager.vala:83
-#, fuzzy
 msgid "Redo Change Group"
-msgstr "Znovu provést změnu skupiny %d položky"
+msgstr "Znovu provést změnu skupiny"
 
 #: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
@@ -1596,32 +1583,7 @@ msgstr "Smazat označené"
 msgid "Send by Email"
 msgstr "Odeslat e-mailem"
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "Zobrazit verzi programu"
-
-#: src/Application.vala:156
-msgid "Open one or more URIs, each in their own tab"
-msgstr "Otevřít jedno (nebo více) URI, každé v novém panelu"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "Nové okno"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "Ukončit Soubory"
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "Vypisovat ladicí zprávy"
-
-#: src/Application.vala:165
-msgid "[URI…]"
-msgstr "[URI…]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1631,7 +1593,40 @@ msgstr ""
 "\n"
 "Procházet souborový systém správcem souborů"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "Zobrazit verzi programu"
+
+#: src/Application.vala:74
+msgid "Open one or more URIs, each in their own tab"
+msgstr "Otevřít jedno (nebo více) URI, každé v novém panelu"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "Nové okno"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "Ukončit Soubory"
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "Vypisovat ladicí zprávy"
+
+#: src/Application.vala:80
+msgid "[URI…]"
+msgstr "[URI…]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr ""
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr ""
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nelze použít dohromady s URI."
 
@@ -1678,9 +1673,9 @@ msgid "Device Usage"
 msgstr "Využití zařízení"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:143
-#, fuzzy, c-format
+#, c-format
 msgid "%s free out of %s"
-msgstr "(%s volných z %s)"
+msgstr "%s volných z %s"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:151
 msgid "Capacity:"
@@ -1702,161 +1697,144 @@ msgid "Used:"
 msgstr "Použitý:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:21
-#, fuzzy
 msgid "Original filename"
-msgstr "Původní soubor"
+msgstr "Původní název"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:23
-#, fuzzy
 msgid "Modified original"
-msgstr "Změněno"
+msgstr "Změněný originál"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:25
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:252
-#, fuzzy
 msgid "New basename"
-msgstr "Přejmenovat"
+msgstr "Nový základní název"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
-#, fuzzy
 msgid "Bulk Rename"
-msgstr "Přejmenovat"
+msgstr "Hromadně přejmenovat"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
-msgstr ""
+msgstr "Posloupnost čísel"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:89
 msgid "Fixed Text"
-msgstr ""
+msgstr "Pevný text"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:93
 msgid "Add Prefix…"
-msgstr ""
+msgstr "Přidat předponu…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:112
 msgid "Add Suffix…"
-msgstr ""
+msgstr "Přidat příponu…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
-#, fuzzy
 msgid "Basename:"
-msgstr "Uživatelské jméno:"
+msgstr "Základní název:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
 msgid "Keep"
-msgstr ""
+msgstr "Ponechat"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-#, fuzzy
 msgctxt "bulk-rename"
 msgid "Replace"
 msgstr "Nahradit"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-#, fuzzy
 msgctxt "bulk-rename"
 msgid "Modify"
-msgstr "Změněno"
+msgstr "Změnit"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
-#, fuzzy
 msgid "Original Basename"
-msgstr "Původní soubor"
+msgstr "Původní základní název"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:168
-#, fuzzy
 msgid "Replacement text"
-msgstr "Nahradit za"
+msgstr "Náhradní text"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
-msgstr ""
+msgstr "Očíslovat podle:"
 
 #. TRANSLATORS: Used as "Number in order of: Name"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:190
-#, fuzzy
 msgctxt "bulk-rename"
 msgid "Name"
-msgstr "Název souboru"
+msgstr "Názvu"
 
 #. TRANSLATORS: Used as "Number in order of: Date created"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
-#, fuzzy
 msgctxt "bulk-rename"
 msgid "Date created"
-msgstr "Znovuvytvořit"
+msgstr "Data vytvoření"
 
 #. TRANSLATORS: Used as "Number in order of: Date modified"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
-#, fuzzy
 msgctxt "bulk-rename"
 msgid "Date modified"
-msgstr "Změněno"
+msgstr "Data změny"
 
 #. TRANSLATORS: Used as "Number in order of: Size"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
-#, fuzzy
 msgctxt "bulk-rename"
 msgid "Size"
-msgstr "Velikost"
+msgstr "Velikosti"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
-msgstr ""
+msgstr "Nahrazovaný text"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:328
 msgid "Apply"
-msgstr ""
+msgstr "Použít"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
-#, fuzzy
 msgid "Ignored"
-msgstr "Ignorovat"
+msgstr "Ignorované"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 msgid "Name is not changed"
-msgstr ""
+msgstr "Název není změněn"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
-#, fuzzy
 msgid "Cannot rename"
-msgstr "Přejmenovat"
+msgstr "Nelze přejmenovat"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 msgid "Name is invalid or already exists"
-msgstr ""
+msgstr "Název je neplatný nebo již existuje"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:78
-#, fuzzy
 msgid "Will be renamed"
-msgstr "Název souboru"
+msgstr "Bude přejmenován"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
-#, fuzzy
 msgid "Reverse Order"
 msgstr "Opačné pořadí"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:52
 msgid "Start Number"
-msgstr ""
+msgstr "Počáteční číslo"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
 msgid "Digits"
-msgstr ""
+msgstr "Čísla"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
 msgid "Separator"
-msgstr ""
+msgstr "Oddělovač"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:310
 #, c-format
 msgid "%0*d,%0*d,%0*d…"
-msgstr ""
+msgstr "%0*d,%0*d,%0*d…"
 
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
@@ -2058,7 +2036,7 @@ msgid "Invalid file name provided"
 msgstr "Zadán neplatný název souboru"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "Nová karta"
 
@@ -2264,7 +2242,7 @@ msgstr "Nejsou zde žádné nedávno použité soubory"
 msgid "Access Denied"
 msgstr "Přístup odepřen"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "Domů"
 
@@ -2320,48 +2298,44 @@ msgstr "Soubor nenalezen"
 msgid "The file selected no longer exists."
 msgstr "Vybraný soubor už neexistuje."
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "Předchozí"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "Následující"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
-msgstr ""
+msgstr "Nabídka"
 
-#: src/View/Window.vala:229
-#, fuzzy
-#| msgid "Close Tab"
+#: src/View/Window.vala:227
 msgid "Closed Tabs"
-msgstr "Zavřít panel"
+msgstr "Zavřené panely"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Otevřít v novém okně"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 msgid "Duplicate Tab"
 msgstr "Zduplikovat panel"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Zavřít panely napravo"
 
-#: src/View/Window.vala:447
-#, fuzzy
-#| msgid "Close Tab"
+#: src/View/Window.vala:445
 msgid "Close Other Tabs"
-msgstr "Zavřít panel"
+msgstr "Zavřít ostatní panely"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 msgid "Close Tab"
 msgstr "Zavřít panel"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(jako správce)"
 
@@ -2399,19 +2373,19 @@ msgstr "%s (%s)"
 msgid "Not mounted"
 msgstr "Nepřipojeno"
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 msgid "View the home folder"
 msgstr "Zobrazit domovskou složku"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "Zobrazit nedávno použité soubory"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Otevřít Koš"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
 msgstr "Zobrazit kořen místního souborového systému"
 
@@ -2431,11 +2405,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Nenaformátováno nebo bez média"
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Celá síť"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "Procházet obsah sítě"
 
@@ -2466,9 +2440,8 @@ msgid "Connect Server…"
 msgstr "Připojit k serveru…"
 
 #: src/View/Sidebar/VolumeRow.vala:166
-#, fuzzy
 msgid "Mount"
-msgstr "_Připojit"
+msgstr "Připojit"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
@@ -2476,58 +2449,51 @@ msgstr "Bind připojení"
 
 #: src/View/Widgets/AppMenu.vala:25
 msgid "Zoom Out"
-msgstr ""
+msgstr "Oddálit"
 
 #: src/View/Widgets/AppMenu.vala:34
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "Přiblížení 1:1"
 
 #: src/View/Widgets/AppMenu.vala:43
 msgid "Zoom In"
-msgstr ""
+msgstr "Přiblížit"
 
 #: src/View/Widgets/AppMenu.vala:81
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "Dvojitým kliknutím přejdete"
 
 #: src/View/Widgets/AppMenu.vala:82
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "Dvojitý klik na složku ji otevře, jeden klik ji zvolí"
 
 #: src/View/Widgets/AppMenu.vala:86
-#, fuzzy
 msgid "Sort Folders before Files"
-msgstr "Složky před soubory"
+msgstr "Seřadit složky před soubory"
 
 #: src/View/Widgets/AppMenu.vala:90
-#, fuzzy
 msgid "Show in View"
-msgstr "Zobrazovat skryté soubory"
+msgstr "Zobrazit v zobrazení"
 
 #: src/View/Widgets/AppMenu.vala:97
-#, fuzzy
 msgid "Hidden Files"
-msgstr "Zobrazovat skryté soubory"
+msgstr "Skryté soubory"
 
 #: src/View/Widgets/AppMenu.vala:101
-#, fuzzy
 msgid "Local Thumbnails"
-msgstr "Skrýt náhledy"
+msgstr "Místní miniatury"
 
 #: src/View/Widgets/AppMenu.vala:106
-#, fuzzy
 msgid "Remote Thumbnails"
-msgstr "Zobrazovat náhledy souborů ze vzdálených úložišť"
+msgstr "Vzdálené miniatury"
 
 #: src/View/Widgets/AppMenu.vala:147
-#, fuzzy
 msgid "No operation to undo"
-msgstr "Překročen časový limit operace."
+msgstr "Žádná operace k vrácení"
 
 #: src/View/Widgets/AppMenu.vala:154
-#, fuzzy
 msgid "No operation to redo"
-msgstr "Překročen časový limit operace."
+msgstr "Žádná operace k opakování"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:124
 #: src/View/Widgets/LocationBar.vala:199

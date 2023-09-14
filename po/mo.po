@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -1239,7 +1239,7 @@ msgstr "SFTP"
 msgid "SMB"
 msgstr "smb"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Gunoi"
 
@@ -1256,7 +1256,7 @@ msgid "GPHOTO2"
 msgstr ""
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Sistemul de fișiere"
 
@@ -1643,34 +1643,7 @@ msgstr " selectat"
 msgid "Send by Email"
 msgstr ""
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "Afișați versiunea programului."
-
-#: src/Application.vala:156
-#, fuzzy
-msgid "Open one or more URIs, each in their own tab"
-msgstr "Deschide uri(s) în fila nouă"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "Nouă fereastră"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "Ieșiți din Fișiere."
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "Activați curățarea registrului"
-
-#: src/Application.vala:165
-#, fuzzy
-msgid "[URI…]"
-msgstr "[URI....]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1680,7 +1653,42 @@ msgstr ""
 "\n"
 "Navigați în sistemul de fișiere cu managerul de fișiere"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "Afișați versiunea programului."
+
+#: src/Application.vala:74
+#, fuzzy
+msgid "Open one or more URIs, each in their own tab"
+msgstr "Deschide uri(s) în fila nouă"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "Nouă fereastră"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "Ieșiți din Fișiere."
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "Activați curățarea registrului"
+
+#: src/Application.vala:80
+#, fuzzy
+msgid "[URI…]"
+msgstr "[URI....]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr ""
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr ""
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "- quit nu poate fi folosit cu URI."
 
@@ -2103,7 +2111,7 @@ msgid "Invalid file name provided"
 msgstr "Numele de fișier furnizat nevalid"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "Filă nouă"
 
@@ -2316,7 +2324,7 @@ msgstr "Nu există fișiere recente"
 msgid "Access Denied"
 msgstr "Acces interzis"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "Acasă"
 
@@ -2372,48 +2380,48 @@ msgstr "Fișierul nu a fost găsit"
 msgid "The file selected no longer exists."
 msgstr "Fișierul selectat nu mai există."
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "Anterior"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "Înainte"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:229
+#: src/View/Window.vala:227
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "Închide"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Deschideți într-o nouă fereastră"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Duplicarea \"%B\""
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:447
+#: src/View/Window.vala:445
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "Închide"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 #, fuzzy
 msgid "Close Tab"
 msgstr "Închide"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(ca Administrator)"
 
@@ -2451,7 +2459,7 @@ msgstr "%s (%s, %s)"
 msgid "Not mounted"
 msgstr ""
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 #, fuzzy
 msgid "View the home folder"
 msgstr ""
@@ -2459,15 +2467,15 @@ msgstr ""
 "↵\n"
 "%s"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "Vizualizați lista fișierelor utilizate recent"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Deschideți Coșul de gunoi"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy
 msgid "View the root of the local filesystem"
 msgstr "Vizualizați lista fișierelor utilizate recent"
@@ -2486,11 +2494,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr ""
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Toată rețeaua"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "Răsfoiți conținutul rețelei"
 

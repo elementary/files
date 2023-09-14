@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
-"PO-Revision-Date: 2023-08-03 17:45+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
+"PO-Revision-Date: 2023-09-06 05:08+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -1187,7 +1187,7 @@ msgstr "SFTP"
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "סל האשפה"
 
@@ -1204,7 +1204,7 @@ msgid "GPHOTO2"
 msgstr "GPHOTO2"
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "מערכת קבצים"
 
@@ -1546,32 +1546,7 @@ msgstr "מחיקת אלו שנבחרו"
 msgid "Send by Email"
 msgstr "שליחה בדוא״ל"
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "הצגת גרסת התכנית"
-
-#: src/Application.vala:156
-msgid "Open one or more URIs, each in their own tab"
-msgstr "פתיחת כתובת אחת ומעלה, כל אחת בלשונית נפרדת"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "חלון חדש"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "יציאה מקבצים"
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "הפעלת תיעוד לניפוי שגיאות"
-
-#: src/Application.vala:165
-msgid "[URI…]"
-msgstr "[URI...]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1581,7 +1556,40 @@ msgstr ""
 "\n"
 "עיון במערכת הקבצים עם מנהל הקבצים"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "הצגת גרסת התכנית"
+
+#: src/Application.vala:74
+msgid "Open one or more URIs, each in their own tab"
+msgstr "פתיחת כתובת אחת ומעלה, כל אחת בלשונית נפרדת"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "חלון חדש"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "יציאה מקבצים"
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "הפעלת תיעוד לניפוי שגיאות"
+
+#: src/Application.vala:80
+msgid "[URI…]"
+msgstr "[URI...]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr "שגיאה: הרצת תוכנת הקבצים כמשתמש על עם sudo אינה אפשרית."
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr "נא להשתמש בפקודה: io.elementary.files-pkexec [folder]"
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "אי אפשר להשתמש ב־‎--quit עם כתובות מלאות."
 
@@ -1983,7 +1991,7 @@ msgid "Invalid file name provided"
 msgstr "שם הקובץ שסופק שגוי"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "לשונית חדשה"
 
@@ -2189,7 +2197,7 @@ msgstr "אין קבצים אחרונים"
 msgid "Access Denied"
 msgstr "הגישה נדחתה"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "בית"
 
@@ -2245,48 +2253,44 @@ msgstr "קובץ לא נמצא"
 msgid "The file selected no longer exists."
 msgstr "הקובץ שנבחר לא קיים עוד."
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "הקודם"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "הבא"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
 msgstr "תפריט"
 
-#: src/View/Window.vala:229
-#, fuzzy
-#| msgid "Close Tab"
+#: src/View/Window.vala:227
 msgid "Closed Tabs"
-msgstr "סגירת לשונית"
+msgstr "לשוניות סגורות"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "פתיחה בחלון חדש"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 msgid "Duplicate Tab"
 msgstr "שכפול לשונית"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "סגירת לשוניות לימין"
 
-#: src/View/Window.vala:447
-#, fuzzy
-#| msgid "Close Tab"
+#: src/View/Window.vala:445
 msgid "Close Other Tabs"
-msgstr "סגירת לשונית"
+msgstr "סגירת הלשוניות האחרות"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 msgid "Close Tab"
 msgstr "סגירת לשונית"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(כמנהל)"
 
@@ -2324,19 +2328,19 @@ msgstr "%s (%s)"
 msgid "Not mounted"
 msgstr "מנותק"
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 msgid "View the home folder"
 msgstr "הצגת תיקיית הבית"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "הצגת רשימת הקבצים בהם נעשה שימוש לאחרונה"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "פתיחת סל האשפה"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
 msgstr "הצגת שורש מערכת הקבצים המקומית"
 
@@ -2356,11 +2360,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "לא מפורמט או שאין מדיה"
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "כל הרשת"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "עיון בתוכן הרשת"
 

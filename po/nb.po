@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
-"PO-Revision-Date: 2023-06-15 14:07+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
+"PO-Revision-Date: 2023-08-24 02:54+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "files/nb/>\n"
@@ -1219,7 +1219,7 @@ msgstr "SFTP"
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Papirkurv"
 
@@ -1236,7 +1236,7 @@ msgid "GPHOTO2"
 msgstr "GPHOTO2"
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Filsystem"
 
@@ -1614,33 +1614,7 @@ msgstr "Slett valgte"
 msgid "Send by Email"
 msgstr "Send per e-post"
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "Vis programversjon"
-
-#: src/Application.vala:156
-#, fuzzy
-msgid "Open one or more URIs, each in their own tab"
-msgstr "Åpne én eller flere URI-er, i egne faner"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "Nytt vindu"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "Lukk program"
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "Slå på feilsøkingslogging"
-
-#: src/Application.vala:165
-msgid "[URI…]"
-msgstr "[URI …]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1650,7 +1624,41 @@ msgstr ""
 "\n"
 "Bla gjennom filsystemet med filbehandleren"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "Vis programversjon"
+
+#: src/Application.vala:74
+#, fuzzy
+msgid "Open one or more URIs, each in their own tab"
+msgstr "Åpne én eller flere URI-er, i egne faner"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "Nytt vindu"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "Lukk program"
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "Slå på feilsøkingslogging"
+
+#: src/Application.vala:80
+msgid "[URI…]"
+msgstr "[URI …]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr ""
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr ""
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kan ikke brukes med URI'er."
 
@@ -2075,7 +2083,7 @@ msgid "Invalid file name provided"
 msgstr "Ugyldig filnavn angitt"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "Ny fane"
 
@@ -2281,7 +2289,7 @@ msgstr "Det finnes ingen nylige filer"
 msgid "Access Denied"
 msgstr "Ingen tilgang"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "Hjem"
 
@@ -2337,48 +2345,48 @@ msgstr "Finner ikke fil"
 msgid "The file selected no longer exists."
 msgstr "Den valgte filen finnes ikke lenger."
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "Forrige"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "Neste"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
 msgstr "Meny"
 
-#: src/View/Window.vala:229
+#: src/View/Window.vala:227
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Closed Tabs"
 msgstr "Lukk fane"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Åpne i et nytt vindu"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 msgid "Duplicate Tab"
 msgstr "Dupliserer fane"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Lukk faner til høyre"
 
-#: src/View/Window.vala:447
+#: src/View/Window.vala:445
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Close Other Tabs"
 msgstr "Lukk fane"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 msgid "Close Tab"
 msgstr "Lukk fane"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(som Administrator)"
 
@@ -2416,19 +2424,19 @@ msgstr "%s (%s)"
 msgid "Not mounted"
 msgstr "Ikke montert"
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 msgid "View the home folder"
 msgstr "Vis hjemmemappen"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "Se listen over nylig brukte filer"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Åpne papirkurven"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
 msgstr "Vis roten av det lokale filsystemet"
 
@@ -2448,11 +2456,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Uformatert eller ingen media"
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Hele nettverket"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "Bla igjennom innholdet på nettverket"
 

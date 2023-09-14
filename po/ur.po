@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
 "PO-Revision-Date: 2016-10-16 09:51+0000\n"
 "Last-Translator: Waqar Ahmed <waqar.17a@gmail.com>\n"
 "Language-Team: Urdu <ur@li.org>\n"
@@ -1232,7 +1232,7 @@ msgstr "SFTP"
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "ردی"
 
@@ -1249,7 +1249,7 @@ msgid "GPHOTO2"
 msgstr ""
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "فائل کا نظام"
 
@@ -1619,34 +1619,7 @@ msgstr " منتخب کردہ"
 msgid "Send by Email"
 msgstr ""
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "پروگرام کا ورژن دکھائیں."
-
-#: src/Application.vala:156
-#, fuzzy
-msgid "Open one or more URIs, each in their own tab"
-msgstr "uri کو نئی ٹیب میں کھولیں"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "نئی ونڈو"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "فائلیں بند کریں۔"
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "ڈی بگ لاگنگ فعال کریں"
-
-#: src/Application.vala:165
-#, fuzzy
-msgid "[URI…]"
-msgstr "[URI...]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1656,7 +1629,42 @@ msgstr ""
 "\n"
 "فائل منیجر سے فائل نظام دیکھیں"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "پروگرام کا ورژن دکھائیں."
+
+#: src/Application.vala:74
+#, fuzzy
+msgid "Open one or more URIs, each in their own tab"
+msgstr "uri کو نئی ٹیب میں کھولیں"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "نئی ونڈو"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "فائلیں بند کریں۔"
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "ڈی بگ لاگنگ فعال کریں"
+
+#: src/Application.vala:80
+#, fuzzy
+msgid "[URI…]"
+msgstr "[URI...]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr ""
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr ""
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "quit-- ، URI کے ساتھ استعمال نہیں ہوسکتا۔"
 
@@ -2075,7 +2083,7 @@ msgid "Invalid file name provided"
 msgstr "فائل کا نام ناموزوں ہے"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "نئی ٹیب"
 
@@ -2287,7 +2295,7 @@ msgstr "کوئی حالیہ فائلیں نہیں"
 msgid "Access Denied"
 msgstr "رسائی روک دی گئی."
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "گھر"
 
@@ -2343,48 +2351,48 @@ msgstr "فائل نہیں پائی گئی"
 msgid "The file selected no longer exists."
 msgstr "منتخب کردہ فائل اب موجود نہیں"
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "سابقہ"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "اگلا"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:229
+#: src/View/Window.vala:227
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "بند کریں"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "نئی ونڈو میں کھولیں"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "‏\"%B\" کی نقل بنائی جارہی ہے"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:447
+#: src/View/Window.vala:445
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "بند کریں"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 #, fuzzy
 msgid "Close Tab"
 msgstr "بند کریں"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(بطور ایڈمنسٹریٹر)"
 
@@ -2422,20 +2430,20 @@ msgstr "%s (کاپی) %s"
 msgid "Not mounted"
 msgstr ""
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 #, fuzzy
 msgid "View the home folder"
 msgstr "فولڈر '%s' بنانے میں ناکامی"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "حالیہ استعمال کردہ فائلوں کی فہرست دیکھیں"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "ردی کھولیں"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy
 msgid "View the root of the local filesystem"
 msgstr "حالیہ استعمال کردہ فائلوں کی فہرست دیکھیں"
@@ -2454,11 +2462,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr ""
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "پورا نیٹ ورک"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "نیٹ ورک کا مواد براؤز کریں"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
 "PO-Revision-Date: 2022-04-20 10:20+0000\n"
 "Last-Translator: Joel Jose <joel750jose@gmail.com>\n"
 "Language-Team: English (Australia) <https://l10n.elementary.io/projects/"
@@ -1244,7 +1244,7 @@ msgstr "SFTP"
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Rubbish Bin"
 
@@ -1261,7 +1261,7 @@ msgid "GPHOTO2"
 msgstr ""
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "File System"
 
@@ -1645,34 +1645,7 @@ msgstr " selected"
 msgid "Send by Email"
 msgstr ""
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "Show the version of the program"
-
-#: src/Application.vala:156
-#, fuzzy
-msgid "Open one or more URIs, each in their own tab"
-msgstr "Open uri(s) in new tab"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "New Window"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "Quit Files"
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "Enable debug logging"
-
-#: src/Application.vala:165
-#, fuzzy
-msgid "[URI…]"
-msgstr "[URI...]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1682,7 +1655,42 @@ msgstr ""
 "\n"
 "Browse the file system with the file manager"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "Show the version of the program"
+
+#: src/Application.vala:74
+#, fuzzy
+msgid "Open one or more URIs, each in their own tab"
+msgstr "Open uri(s) in new tab"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "New Window"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "Quit Files"
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "Enable debug logging"
+
+#: src/Application.vala:80
+#, fuzzy
+msgid "[URI…]"
+msgstr "[URI...]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr ""
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr ""
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "--quit cannot be used with URIs."
 
@@ -2103,7 +2111,7 @@ msgid "Invalid file name provided"
 msgstr "Invalid file name provided"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "New Tab"
 
@@ -2318,7 +2326,7 @@ msgstr "There Are No Recent Files"
 msgid "Access Denied"
 msgstr "Access Denied"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "Home"
 
@@ -2374,48 +2382,48 @@ msgstr "File not Found"
 msgid "The file selected no longer exists."
 msgstr "The selected file no longer exists."
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "Previous"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "Next"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:229
+#: src/View/Window.vala:227
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "Close"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Open in New Window"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Duplicating \"%B\""
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:447
+#: src/View/Window.vala:445
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "Close"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 #, fuzzy
 msgid "Close Tab"
 msgstr "Close"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(as Administrator)"
 
@@ -2453,7 +2461,7 @@ msgstr "%s (%s)"
 msgid "Not mounted"
 msgstr ""
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 #, fuzzy
 msgid "View the home folder"
 msgstr ""
@@ -2461,15 +2469,15 @@ msgstr ""
 "\n"
 "%s"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "View the list of recently used files"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Open the Rubbish Bin"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy
 msgid "View the root of the local filesystem"
 msgstr "View the list of recently used files"
@@ -2488,11 +2496,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr ""
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Entire Network"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "Browse the contents of the network"
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
-"PO-Revision-Date: 2023-08-03 17:45+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
+"PO-Revision-Date: 2023-09-04 14:08+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
 ">\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-12 06:02+0000\n"
 
@@ -1228,7 +1228,7 @@ msgstr "SFTP"
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Смітник"
 
@@ -1245,7 +1245,7 @@ msgid "GPHOTO2"
 msgstr "GPHOTO2"
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Файлова система"
 
@@ -1596,32 +1596,7 @@ msgstr "Видалити вибране"
 msgid "Send by Email"
 msgstr "Надіслати е-поштою"
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "Показати версію застосунку"
-
-#: src/Application.vala:156
-msgid "Open one or more URIs, each in their own tab"
-msgstr "Відкрити одну чи більше адресу в новій вкладці"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "Нове вікно"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "Вийти з Файлів"
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "Увімкнути журнал налагодження"
-
-#: src/Application.vala:165
-msgid "[URI…]"
-msgstr "[URI…]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1631,7 +1606,42 @@ msgstr ""
 "\n"
 "Перегляд файлової системи менеджером файлів"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "Показати версію застосунку"
+
+#: src/Application.vala:74
+msgid "Open one or more URIs, each in their own tab"
+msgstr "Відкрити одну чи більше адресу в новій вкладці"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "Нове вікно"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "Вийти з Файлів"
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "Увімкнути журнал налагодження"
+
+#: src/Application.vala:80
+msgid "[URI…]"
+msgstr "[URI…]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr ""
+"Помилка: Запуск Файлів від імені користувача root за допомогою sudo "
+"неможливий."
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr "Скористайтеся командою: io.elementary.files-pkexec [folder]"
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "--quit неможливо використати з URI."
 
@@ -2044,7 +2054,7 @@ msgid "Invalid file name provided"
 msgstr "Неправильна назва файлу"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "Нова вкладка"
 
@@ -2250,7 +2260,7 @@ msgstr "Немає нещодавніх файлів"
 msgid "Access Denied"
 msgstr "Доступ заборонено"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "Домівка"
 
@@ -2306,48 +2316,44 @@ msgstr "Файл не знайдено"
 msgid "The file selected no longer exists."
 msgstr "Виділеного файлу більше не існує."
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "Попередній"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "Наступний"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
 msgstr "Меню"
 
-#: src/View/Window.vala:229
-#, fuzzy
-#| msgid "Close Tab"
+#: src/View/Window.vala:227
 msgid "Closed Tabs"
-msgstr "Закрити вкладку"
+msgstr "Закриті вкладки"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Відкрити у новому вікні"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 msgid "Duplicate Tab"
 msgstr "Дублювати вкладку"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Закрити вкладки праворуч"
 
-#: src/View/Window.vala:447
-#, fuzzy
-#| msgid "Close Tab"
+#: src/View/Window.vala:445
 msgid "Close Other Tabs"
-msgstr "Закрити вкладку"
+msgstr "Закрити інші вкладки"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 msgid "Close Tab"
 msgstr "Закрити вкладку"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(як Адміністратор)"
 
@@ -2385,19 +2391,19 @@ msgstr "%s (%s)"
 msgid "Not mounted"
 msgstr "Не змонтовано"
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 msgid "View the home folder"
 msgstr "Переглянути домашню теку"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "Переглянути список нещодавніх файлів"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Відкрити смітник"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
 msgstr "Переглянути кореневу частину локальної файлової системи"
 
@@ -2417,11 +2423,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Неформатований або відсутній носій"
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Вся мережа"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "Перегляд вмісту мережі"
 
