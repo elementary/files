@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 11:54+0000\n"
-"PO-Revision-Date: 2023-08-24 02:54+0000\n"
+"PO-Revision-Date: 2023-09-17 12:08+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "files/nb/>\n"
@@ -1652,11 +1652,11 @@ msgstr "[URI …]"
 
 #: src/Application.vala:92
 msgid "Error: Running Files as root using sudo is not possible."
-msgstr ""
+msgstr "Feil: Kjøring av filer med rot-tilgang ved bruk av sudo er ikke mulig."
 
 #: src/Application.vala:93
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
-msgstr ""
+msgstr "Bruk kommandoen: io.elementary.files-pkexec [mappe]"
 
 #: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
