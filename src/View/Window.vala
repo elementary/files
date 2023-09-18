@@ -376,7 +376,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             view_container.window = this;
         });
 
-        tab_view.page_detached.connect (on_page_detached);
 
         sidebar.request_focus.connect (() => {
             return !current_container.locked_focus && !locked_focus;
@@ -498,18 +497,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             var view_container = (ViewContainer) page.child;
             move_content_to_new_window (view_container);
         });
-    }
-
-    private void on_page_detached () {
-        if (tab_view.n_pages == 0) {
-            add_tab.begin (default_location, default_mode, false, () => {
-                // We can assume adding default tab always succeeds
-                save_tabs ();
-            });
-        } else {
-            save_tabs ();
-        }
-
     }
 
     public new void set_title (string title) {
@@ -1134,8 +1121,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         // Prevent saved focused tab changing
         tab_view.notify["selected-page"].disconnect (change_tab);
-
-        tab_view.page_detached.disconnect (on_page_detached); /* Avoid infinite loop */
 
         for (int i = 0; i < tab_view.n_pages; i++) {
             var tab_page = (Hdy.TabPage) tab_view.get_nth_page (i);
