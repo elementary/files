@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
 "PO-Revision-Date: 2022-10-20 13:57+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
@@ -1220,7 +1220,7 @@ msgstr "SFTP"
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Lixo"
 
@@ -1237,7 +1237,7 @@ msgid "GPHOTO2"
 msgstr "GPHOTO2"
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Sistema de ficheiros"
 
@@ -1617,32 +1617,7 @@ msgstr "Eliminar a Seleção"
 msgid "Send by Email"
 msgstr "Enviar por E-mail"
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "Mostrar a versão da aplicação"
-
-#: src/Application.vala:156
-msgid "Open one or more URIs, each in their own tab"
-msgstr "Abrir um ou mais URL's, cada um num novo separador"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "Nova janela"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "Sair da aplicação Ficheiros"
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "Ativar registos de depuração"
-
-#: src/Application.vala:165
-msgid "[URI…]"
-msgstr "[URI...]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1652,7 +1627,40 @@ msgstr ""
 "\n"
 "Explorar o sistema de ficheiros com o gestor de ficheiros"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "Mostrar a versão da aplicação"
+
+#: src/Application.vala:74
+msgid "Open one or more URIs, each in their own tab"
+msgstr "Abrir um ou mais URL's, cada um num novo separador"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "Nova janela"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "Sair da aplicação Ficheiros"
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "Ativar registos de depuração"
+
+#: src/Application.vala:80
+msgid "[URI…]"
+msgstr "[URI...]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr ""
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr ""
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "--quit não pode ser utilizado com URIs."
 
@@ -2072,7 +2080,7 @@ msgid "Invalid file name provided"
 msgstr "Introduzido um nome do ficheiro inválido"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "Novo separador"
 
@@ -2279,7 +2287,7 @@ msgstr "Não existem ficheiros recentes"
 msgid "Access Denied"
 msgstr "Acesso negado"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "Pasta pessoal"
 
@@ -2335,48 +2343,48 @@ msgstr "Ficheiro não encontrado"
 msgid "The file selected no longer exists."
 msgstr "O ficheiro selecionado já não existe."
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "Anterior"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "Seguinte"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:229
+#: src/View/Window.vala:227
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Closed Tabs"
 msgstr "Fechar separador"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Abrir numa nova janela"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 msgid "Duplicate Tab"
 msgstr "Duplicar separador"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:447
+#: src/View/Window.vala:445
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Close Other Tabs"
 msgstr "Fechar separador"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 msgid "Close Tab"
 msgstr "Fechar separador"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(como Administrador)"
 
@@ -2414,19 +2422,19 @@ msgstr "%s (%s)"
 msgid "Not mounted"
 msgstr "Não montado"
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 msgid "View the home folder"
 msgstr "Ver a pasta pessoal"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "Ver a lista de ficheiros usados recentemente"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Abrir o lixo"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
 msgstr "Ver o root do sistema de ficheiros local"
 
@@ -2446,11 +2454,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Não formatado ou sem meio de suporte"
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Toda a rede"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "Explorar o conteúdo da rede"
 

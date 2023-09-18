@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
-"PO-Revision-Date: 2023-08-24 02:54+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
+"PO-Revision-Date: 2023-09-04 14:08+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
 "\n"
@@ -1180,7 +1180,7 @@ msgstr "SFTP"
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "ゴミ箱"
 
@@ -1197,7 +1197,7 @@ msgid "GPHOTO2"
 msgstr "GPHOTO2"
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "ファイルシステム"
 
@@ -1539,32 +1539,7 @@ msgstr "選択項目を削除"
 msgid "Send by Email"
 msgstr "メールで送る"
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "プログラムのバージョンを表示します"
-
-#: src/Application.vala:156
-msgid "Open one or more URIs, each in their own tab"
-msgstr "1 つ以上の URI を、それぞれ別のタブで開きます"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "新しいウィンドウ"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "“ファイル”を終了します"
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "デバックログを有効にします"
-
-#: src/Application.vala:165
-msgid "[URI…]"
-msgstr "[URI…]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1574,7 +1549,40 @@ msgstr ""
 "\n"
 "ファイルマネージャーでファイルシステムを閲覧します"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "プログラムのバージョンを表示します"
+
+#: src/Application.vala:74
+msgid "Open one or more URIs, each in their own tab"
+msgstr "1 つ以上の URI を、それぞれ別のタブで開きます"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "新しいウィンドウ"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "“ファイル”を終了します"
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "デバックログを有効にします"
+
+#: src/Application.vala:80
+msgid "[URI…]"
+msgstr "[URI…]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr "エラー: sudo を使用して root として“ファイル”を実行することはできません。"
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr "次のコマンドを使用してください: io.elementary.files-pkexec [フォルダー]"
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "--quit オプションには URI を指定できません。"
 
@@ -1971,7 +1979,7 @@ msgid "Invalid file name provided"
 msgstr "不適切なファイル名が入力されました"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "新しいタブ"
 
@@ -2177,7 +2185,7 @@ msgstr "最近使用したファイルはありません"
 msgid "Access Denied"
 msgstr "アクセスが拒否されました"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "ホーム"
 
@@ -2233,44 +2241,44 @@ msgstr "ファイルが見つかりませんでした"
 msgid "The file selected no longer exists."
 msgstr "選択されたファイルは存在しません。"
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "前へ戻る"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "次へ進む"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
 msgstr "メニュー"
 
-#: src/View/Window.vala:229
+#: src/View/Window.vala:227
 msgid "Closed Tabs"
 msgstr "閉じたタブ"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "新しいウィンドウで開く"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 msgid "Duplicate Tab"
 msgstr "タブを複製"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
 msgstr "右側のタブを閉じる"
 
-#: src/View/Window.vala:447
+#: src/View/Window.vala:445
 msgid "Close Other Tabs"
 msgstr "ほかのタブを閉じる"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 msgid "Close Tab"
 msgstr "タブを閉じる"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(管理者)"
 
@@ -2308,19 +2316,19 @@ msgstr "%s (%s)"
 msgid "Not mounted"
 msgstr "マウントされていません"
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 msgid "View the home folder"
 msgstr "ホームフォルダーを表示します"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "最近使用したファイルの一覧を表示します"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "ゴミ箱を開きます"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
 msgstr "ローカルファイルシステムのルートフォルダーを表示します"
 
@@ -2340,11 +2348,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "フォーマットされていないかメディアがありません"
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "ネットワーク全体"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "ネットワークの内容を閲覧します"
 

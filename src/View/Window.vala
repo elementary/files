@@ -24,7 +24,6 @@
 public class Files.View.Window : Hdy.ApplicationWindow {
     const GLib.ActionEntry [] WIN_ENTRIES = {
         {"new-window", action_new_window},
-        {"quit", action_quit},
         {"refresh", action_reload},
         {"undo", action_undo},
         {"redo", action_redo},
@@ -125,7 +124,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         // Setting accels on `application` does not work in construct clause
         // Must set before building window so ViewSwitcher can lookup the accels for tooltips
         if (is_first_window) {
-            marlin_app.set_accels_for_action ("win.quit", {"<Ctrl>Q"});
             marlin_app.set_accels_for_action ("win.new-window", {"<Ctrl>N"});
             marlin_app.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
             marlin_app.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
@@ -370,7 +368,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_view.notify["selected-page"].connect (change_tab);
 
         tab_view.create_window.connect (() => {
-            return marlin_app.create_empty_window ().tab_view;
+            return new Window (marlin_app).tab_view;
         });
 
         tab_view.page_attached.connect ((tab, pos) => {
@@ -801,8 +799,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void add_window (GLib.File location = default_location, ViewMode mode = default_mode) {
-
-        marlin_app.create_window (location, real_mode (mode));
+        with (new Window (marlin_app)) {
+            add_tab (location, real_mode (mode), false);
+            present ();
+        }
     }
 
     private void undo_actions_set_insensitive () {
@@ -861,10 +861,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 return GLib.Source.REMOVE;
             });
         }
-    }
-
-    private void action_quit (GLib.SimpleAction action, GLib.Variant? param) {
-        ((Files.Application)(application)).quit ();
     }
 
     private void action_reload () {

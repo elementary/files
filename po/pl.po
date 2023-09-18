@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 16:29+0000\n"
-"PO-Revision-Date: 2023-08-26 15:08+0000\n"
+"POT-Creation-Date: 2023-09-02 11:54+0000\n"
+"PO-Revision-Date: 2023-09-08 11:27+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -1235,7 +1235,7 @@ msgstr "SFTP"
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:163
+#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Kosz"
 
@@ -1252,7 +1252,7 @@ msgid "GPHOTO2"
 msgstr "GPHOTO2"
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
-#: src/View/Sidebar/DeviceListBox.vala:140
+#: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "System plików"
 
@@ -1601,32 +1601,7 @@ msgstr "Usuń zaznaczone"
 msgid "Send by Email"
 msgstr "Wyślij przez E-mail"
 
-#: src/Application.vala:154
-msgid "Show the version of the program"
-msgstr "Wyświetl wersję programu"
-
-#: src/Application.vala:156
-msgid "Open one or more URIs, each in their own tab"
-msgstr "Otwórz jeden lub więcej adresów URI, każde w osobnej karcie"
-
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
-msgid "New Window"
-msgstr "Nowe okno"
-
-#: src/Application.vala:160
-msgid "Quit Files"
-msgstr "Opuść menedżer plików"
-
-#: src/Application.vala:162
-msgid "Enable debug logging"
-msgstr "Wyświetla szczegółowe komunikaty diagnostyczne"
-
-#: src/Application.vala:165
-msgid "[URI…]"
-msgstr "[URI…]"
-
-#: src/Application.vala:168
+#: src/Application.vala:67
 msgid ""
 "\n"
 "\n"
@@ -1636,7 +1611,40 @@ msgstr ""
 "\n"
 "Umożliwia przeglądanie systemu plików i zarządza jego zawartością"
 
-#: src/Application.vala:196
+#: src/Application.vala:68
+msgid "Show the version of the program"
+msgstr "Wyświetl wersję programu"
+
+#: src/Application.vala:74
+msgid "Open one or more URIs, each in their own tab"
+msgstr "Otwórz jeden lub więcej adresów URI, każde w osobnej karcie"
+
+#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
+#: src/View/AbstractDirectoryView.vala:1955
+msgid "New Window"
+msgstr "Nowe okno"
+
+#: src/Application.vala:76
+msgid "Quit Files"
+msgstr "Opuść menedżer plików"
+
+#: src/Application.vala:77
+msgid "Enable debug logging"
+msgstr "Wyświetla szczegółowe komunikaty diagnostyczne"
+
+#: src/Application.vala:80
+msgid "[URI…]"
+msgstr "[URI…]"
+
+#: src/Application.vala:92
+msgid "Error: Running Files as root using sudo is not possible."
+msgstr "Błąd: Uruchamianie Plików jako root przy użyciu sudo nie jest możliwe."
+
+#: src/Application.vala:93
+msgid "Please use the command: io.elementary.files-pkexec [folder]"
+msgstr "Proszę użyć polecenia: io.elementary.files-pkexec [folder]"
+
+#: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
 msgstr "Nie można użyć opcji --quit z adresem URI."
 
@@ -2048,7 +2056,7 @@ msgid "Invalid file name provided"
 msgstr "Podano nieprawidłową nazwę pliku"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:224
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
 msgid "New Tab"
 msgstr "Nowa karta"
 
@@ -2254,7 +2262,7 @@ msgstr "Brak ostatnio otworzonych plików"
 msgid "Access Denied"
 msgstr "Brak dostępu"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:121
+#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "Katalog użytkownika"
 
@@ -2310,44 +2318,44 @@ msgstr "Plik nie istnieje"
 msgid "The file selected no longer exists."
 msgstr "Wybrany plik nie istnieje."
 
-#: src/View/Window.vala:179
+#: src/View/Window.vala:177
 msgid "Previous"
 msgstr "Poprzedni"
 
-#: src/View/Window.vala:184
+#: src/View/Window.vala:182
 msgid "Next"
 msgstr "Następny"
 
-#: src/View/Window.vala:199
+#: src/View/Window.vala:197
 msgid "Menu"
 msgstr "Menu"
 
-#: src/View/Window.vala:229
+#: src/View/Window.vala:227
 msgid "Closed Tabs"
 msgstr "Zamknięte karty"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Otwórz w nowym oknie"
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:440
 msgid "Duplicate Tab"
 msgstr "Zduplikuj kartę"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
 msgstr "Zamknij karty po prawej"
 
-#: src/View/Window.vala:447
+#: src/View/Window.vala:445
 msgid "Close Other Tabs"
 msgstr "Zamknij inne karty"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:446
 msgid "Close Tab"
 msgstr "Zamknij kartę"
 
-#: src/View/Window.vala:708 src/View/Window.vala:718
+#: src/View/Window.vala:706 src/View/Window.vala:716
 msgid "(as Administrator)"
 msgstr "(jako administrator)"
 
@@ -2385,19 +2393,19 @@ msgstr "%s (%s)"
 msgid "Not mounted"
 msgstr "Nie zamontowano"
 
-#: src/View/Sidebar/BookmarkListBox.vala:129
+#: src/View/Sidebar/BookmarkListBox.vala:135
 msgid "View the home folder"
 msgstr "Zobacz katalog domowy"
 
-#: src/View/Sidebar/BookmarkListBox.vala:146
+#: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
 msgstr "Zobacz listę ostatnio używanych plików"
 
-#: src/View/Sidebar/BookmarkListBox.vala:171
+#: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Otwórz kosz"
 
-#: src/View/Sidebar/DeviceListBox.vala:152
+#: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
 msgstr "Wyświetlenie katalogu głównego lokalnego systemu plików"
 
@@ -2417,11 +2425,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Niesformatowany lub brak mediów"
 
-#: src/View/Sidebar/NetworkListBox.vala:121
+#: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Cała sieć"
 
-#: src/View/Sidebar/NetworkListBox.vala:131
+#: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
 msgstr "Przegląda zawartość sieci"
 
