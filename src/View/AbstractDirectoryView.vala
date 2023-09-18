@@ -2791,13 +2791,14 @@ namespace Files {
                     while (valid_iter && thumbnail_source_id > 0) {
                         file = model.file_for_iter (iter); // Maybe null if dummy row or file being deleted
                         path = model.get_path (iter);
-
-                        update_thumbnail_info_and_plugins (file);
-                        /* Ask thumbnailer only if ThumbState UNKNOWN */
-                        if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
-                            visible_files.prepend (file);
-                            if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-                                actually_visible++;
+                        if (file != null) {
+                            update_thumbnail_info_and_plugins (file);
+                            /* Ask thumbnailer only if ThumbState UNKNOWN */
+                            if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
+                                visible_files.prepend (file);
+                                if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
+                                    actually_visible++;
+                                }
                             }
                         }
                         /* check if we've reached the end of the visible range */
