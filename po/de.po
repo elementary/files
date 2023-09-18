@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-02 11:54+0000\n"
-"PO-Revision-Date: 2023-08-08 01:00+0000\n"
+"PO-Revision-Date: 2023-09-19 19:08+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -1640,10 +1640,11 @@ msgstr "[Adresse …]"
 #: src/Application.vala:92
 msgid "Error: Running Files as root using sudo is not possible."
 msgstr ""
+"Fehler: »Dateien« kann nicht als »root« mittels »sudo« ausgeführt werden."
 
 #: src/Application.vala:93
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
-msgstr ""
+msgstr "Verwenden Sie den Befehl: io.elementary.files-pkexec [Ordner]"
 
 #: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
@@ -2334,10 +2335,8 @@ msgid "Menu"
 msgstr "Menü"
 
 #: src/View/Window.vala:227
-#, fuzzy
-#| msgid "Close Tab"
 msgid "Closed Tabs"
-msgstr "Tab schließen"
+msgstr "Geschlossene Tabs"
 
 #: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
@@ -2350,13 +2349,11 @@ msgstr "Tab duplizieren"
 #. TRANSLATORS: For RTL this should be "to the left"
 #: src/View/Window.vala:444
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Rechte Tabs schließen"
 
 #: src/View/Window.vala:445
-#, fuzzy
-#| msgid "Close Tab"
 msgid "Close Other Tabs"
-msgstr "Tab schließen"
+msgstr "Andere Tabs schließen"
 
 #: src/View/Window.vala:446
 msgid "Close Tab"
