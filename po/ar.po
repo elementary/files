@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 11:54+0000\n"
+"POT-Creation-Date: 2023-09-25 17:29+0000\n"
 "PO-Revision-Date: 2022-11-09 14:29+0000\n"
 "Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -2175,7 +2175,7 @@ msgid "Invalid file name provided"
 msgstr "اسم الملف غير صالح"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:234
 msgid "New Tab"
 msgstr "علامة تبويب جديدة"
 
@@ -2296,28 +2296,28 @@ msgstr "جديد"
 msgid "Untitled %s"
 msgstr "بدون عنوان %s"
 
-#: src/View/AbstractDirectoryView.vala:3018
-#: src/View/AbstractDirectoryView.vala:3211
+#: src/View/AbstractDirectoryView.vala:3019
+#: src/View/AbstractDirectoryView.vala:3212
 msgid "Cannot remove files from here"
 msgstr "لا يمكن إزالة الملفات من هنا"
 
-#: src/View/AbstractDirectoryView.vala:3019
-#: src/View/AbstractDirectoryView.vala:3184
-#: src/View/AbstractDirectoryView.vala:3195
-#: src/View/AbstractDirectoryView.vala:3212
+#: src/View/AbstractDirectoryView.vala:3020
+#: src/View/AbstractDirectoryView.vala:3185
+#: src/View/AbstractDirectoryView.vala:3196
+#: src/View/AbstractDirectoryView.vala:3213
 msgid "You do not have permission to change this location"
 msgstr "ليس لديك إذن لتغيير هذا الموقع"
 
-#: src/View/AbstractDirectoryView.vala:3152
+#: src/View/AbstractDirectoryView.vala:3153
 msgid "Cannot copy files that are in the trash"
 msgstr "لا يمكن نسخ الملفات الموجودة في سلة المهملات"
 
-#: src/View/AbstractDirectoryView.vala:3153
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cutting the selection instead"
 msgstr "قص المحدد بدلاً من ذلك"
 
-#: src/View/AbstractDirectoryView.vala:3183
-#: src/View/AbstractDirectoryView.vala:3194
+#: src/View/AbstractDirectoryView.vala:3184
+#: src/View/AbstractDirectoryView.vala:3195
 msgid "Cannot paste files here"
 msgstr "لا يمكن لصق الملفات هنا"
 
@@ -2439,48 +2439,48 @@ msgstr "لم يتم ايجاد الملف"
 msgid "The file selected no longer exists."
 msgstr "الملف المختار لم يعد موجودا."
 
-#: src/View/Window.vala:177
+#: src/View/Window.vala:189
 msgid "Previous"
 msgstr "السابق"
 
-#: src/View/Window.vala:182
+#: src/View/Window.vala:194
 msgid "Next"
 msgstr "التالي"
 
-#: src/View/Window.vala:197
+#: src/View/Window.vala:209
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:227
+#: src/View/Window.vala:239
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "أغلق"
 
-#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:450 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "فتح في نافذة جديدة"
 
-#: src/View/Window.vala:440
+#: src/View/Window.vala:451
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "يُنسخ \"%s\" مرة أخرى"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:444
+#: src/View/Window.vala:455
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:445
+#: src/View/Window.vala:456
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "أغلق"
 
-#: src/View/Window.vala:446
+#: src/View/Window.vala:457
 #, fuzzy
 msgid "Close Tab"
 msgstr "أغلق"
 
-#: src/View/Window.vala:706 src/View/Window.vala:716
+#: src/View/Window.vala:738 src/View/Window.vala:748
 msgid "(as Administrator)"
 msgstr "(كمسؤول)"
 
