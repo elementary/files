@@ -60,6 +60,22 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="6.5.1" date="2023-09-20" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/1753">Files crashes immediately after opening</issue>
+        <issue url="https://github.com/elementary/files/issues/2315">Navigating to empty folder and back reliably crashes Files</issue>
+        <issue url="https://github.com/elementary/files/issues/2309">Files no longer recognises URI parameter on command line</issue>
+        <issue url="https://github.com/elementary/files/issues/2305">Help option does not work if there is a busy Files process</issue>
+        <issue url="https://github.com/elementary/files/issues/2295">Refresh required before cut/paste will work if file is renamed</issue>
+      </issues>
+    </release>
+
     <release version="6.5.0" date="2023-08-17" urgency="medium">
       <description>
         <p>Improvements:</p>
