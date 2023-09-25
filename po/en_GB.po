@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 11:54+0000\n"
+"POT-Creation-Date: 2023-09-25 17:29+0000\n"
 "PO-Revision-Date: 2023-09-04 14:08+0000\n"
 "Last-Translator: Jeremy Wootten <jeremy@elementaryos.org>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
@@ -2024,7 +2024,7 @@ msgid "Invalid file name provided"
 msgstr "Invalid file name provided"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:234
 msgid "New Tab"
 msgstr "New Tab"
 
@@ -2143,28 +2143,28 @@ msgstr "New"
 msgid "Untitled %s"
 msgstr "Untitled %s"
 
-#: src/View/AbstractDirectoryView.vala:3018
-#: src/View/AbstractDirectoryView.vala:3211
+#: src/View/AbstractDirectoryView.vala:3019
+#: src/View/AbstractDirectoryView.vala:3212
 msgid "Cannot remove files from here"
 msgstr "Cannot remove files from here"
 
-#: src/View/AbstractDirectoryView.vala:3019
-#: src/View/AbstractDirectoryView.vala:3184
-#: src/View/AbstractDirectoryView.vala:3195
-#: src/View/AbstractDirectoryView.vala:3212
+#: src/View/AbstractDirectoryView.vala:3020
+#: src/View/AbstractDirectoryView.vala:3185
+#: src/View/AbstractDirectoryView.vala:3196
+#: src/View/AbstractDirectoryView.vala:3213
 msgid "You do not have permission to change this location"
 msgstr "You do not have permission to change this location"
 
-#: src/View/AbstractDirectoryView.vala:3152
+#: src/View/AbstractDirectoryView.vala:3153
 msgid "Cannot copy files that are in the trash"
 msgstr "Cannot copy files that are in the Rubbish Bin"
 
-#: src/View/AbstractDirectoryView.vala:3153
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cutting the selection instead"
 msgstr "Cutting the selection instead"
 
-#: src/View/AbstractDirectoryView.vala:3183
-#: src/View/AbstractDirectoryView.vala:3194
+#: src/View/AbstractDirectoryView.vala:3184
+#: src/View/AbstractDirectoryView.vala:3195
 msgid "Cannot paste files here"
 msgstr "Cannot paste files here"
 
@@ -2286,44 +2286,44 @@ msgstr "File not Found"
 msgid "The file selected no longer exists."
 msgstr "The file selected no longer exists."
 
-#: src/View/Window.vala:177
+#: src/View/Window.vala:189
 msgid "Previous"
 msgstr "Previous"
 
-#: src/View/Window.vala:182
+#: src/View/Window.vala:194
 msgid "Next"
 msgstr "Next"
 
-#: src/View/Window.vala:197
+#: src/View/Window.vala:209
 msgid "Menu"
 msgstr "Menu"
 
-#: src/View/Window.vala:227
+#: src/View/Window.vala:239
 msgid "Closed Tabs"
 msgstr "Closed Tabs"
 
-#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:450 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Open in New Window"
 
-#: src/View/Window.vala:440
+#: src/View/Window.vala:451
 msgid "Duplicate Tab"
 msgstr "Duplicate Tab"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:444
+#: src/View/Window.vala:455
 msgid "Close Tabs to the Right"
 msgstr "Close Tabs to the Right"
 
-#: src/View/Window.vala:445
+#: src/View/Window.vala:456
 msgid "Close Other Tabs"
 msgstr "Close Other Tabs"
 
-#: src/View/Window.vala:446
+#: src/View/Window.vala:457
 msgid "Close Tab"
 msgstr "Close Tab"
 
-#: src/View/Window.vala:706 src/View/Window.vala:716
+#: src/View/Window.vala:738 src/View/Window.vala:748
 msgid "(as Administrator)"
 msgstr "(as Administrator)"
 
