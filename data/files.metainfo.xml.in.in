@@ -16,15 +16,15 @@
   <screenshots>
     <screenshot type="default">
       <caption>Quick access to settings like zoom levels and hidden files</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/6.5.1/data/screenshot-grid.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.5.0/data/screenshot-grid.png</image>
     </screenshot>
     <screenshot>
       <caption>See more metadata at a glance in List view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/6.5.1/data/screenshot-list.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.5.0/data/screenshot-list.png</image>
     </screenshot>
     <screenshot>
       <caption>Browse complex trees faster with Column view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/6.5.1/data/screenshot-column.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.5.0/data/screenshot-column.png</image>
     </screenshot>
   </screenshots>
 
@@ -68,6 +68,7 @@
         </ul>
       </description>
       <issues>
+        <issue url="https://github.com/elementary/files/issues/1753">Files crashes immediately after opening</issue>
         <issue url="https://github.com/elementary/files/issues/2315">Navigating to empty folder and back reliably crashes Files</issue>
         <issue url="https://github.com/elementary/files/issues/2309">Files no longer recognises URI parameter on command line</issue>
         <issue url="https://github.com/elementary/files/issues/2305">Help option does not work if there is a busy Files process</issue>
