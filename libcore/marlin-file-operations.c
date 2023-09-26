@@ -41,25 +41,6 @@
 
 #include "pantheon-files-core.h"
 
-typedef struct _SourceInfo SourceInfo;
-typedef struct _TransferInfo TransferInfo;
-
-typedef void (* CountProgressCallback) (FilesFileOperationsCommonJob *job, SourceInfo *source_info);
-
-struct _SourceInfo {
-    int num_files;
-    goffset num_bytes;
-    int num_files_since_progress;
-    CountProgressCallback count_callback;
-};
-
-struct _TransferInfo {
-    int num_files;
-    goffset num_bytes;
-    guint64 last_report_time;
-    int last_reported_files_left;
-};
-
 #define SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE 15
 //#define NSEC_PER_SEC 1000000000
 #define NSEC_PER_MSEC 1000000
