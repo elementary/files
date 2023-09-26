@@ -1,3 +1,9 @@
+pantheon-files (6.5.2) jammy; urgency=medium
+
+  * New upstream release
+
+ -- Danielle Foré <danielle@elementary.io>  Tue, 26 Sep 2023 08:39:15 -0700
+
 pantheon-files (6.5.1) jammy; urgency=medium
 
   * New upstream release
