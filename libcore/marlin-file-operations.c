@@ -57,18 +57,6 @@ static void scan_sources (GList *files,
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
 
-static gboolean
-can_delete_without_confirm (GFile *file)
-{
-    if (g_file_has_uri_scheme (file, "burn") ||
-        g_file_has_uri_scheme (file, "x-nautilus-desktop") ||
-        g_file_has_uri_scheme (file, "trash")) {
-        return TRUE;
-    }
-
-    return FALSE;
-}
-
 /* Since this happens on a thread we can't use the global prefs object */
 static gboolean
 should_confirm_trash (void)
@@ -700,7 +688,7 @@ delete_job (GTask *task,
         if (job->try_trash && g_file_has_uri_scheme (file, "trash")) {
             must_confirm_delete_in_trash = TRUE;
             to_delete_files = g_list_prepend (to_delete_files, file);
-        } else if (can_delete_without_confirm (file)) {
+        } else if (marlin_file_operations_delete_job_can_delete_without_confirm (file)) {
             to_delete_files = g_list_prepend (to_delete_files, file);
         } else {
             if (job->try_trash &&
