@@ -517,7 +517,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     public async void open_tabs (
-        GLib.File[]? files,
+        GLib.GenericArray<GLib.File>? files,
         ViewMode mode = default_mode,
         bool ignore_duplicate
     ) {
@@ -536,10 +536,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             });
 
         } else {
-            /* Open tabs at each requested location */
-            /* As files may be derived from commandline, we use a new sanitized one */
-            foreach (var file in files) {
-                add_tab.begin (get_file_from_uri (file.get_uri ()), mode, ignore_duplicate);
+            if (files != null) {
+                foreach (unowned var file in files) {
+                    add_tab.begin (file, mode, ignore_duplicate);
+                }
             }
         }
     }
