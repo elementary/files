@@ -517,7 +517,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     public async void open_tabs (
-        GLib.File[]? files,
+        owned GLib.File[]? files,
         ViewMode mode = default_mode,
         bool ignore_duplicate
     ) {
