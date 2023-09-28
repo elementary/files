@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-25 17:29+0000\n"
-"PO-Revision-Date: 2023-08-24 02:54+0000\n"
+"PO-Revision-Date: 2023-09-26 16:24+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -1601,11 +1601,11 @@ msgstr "[URI...]"
 
 #: src/Application.vala:92
 msgid "Error: Running Files as root using sudo is not possible."
-msgstr ""
+msgstr "Hiba: a Fájlkezelő futtatása rendszergazdaként sudo-val nem lehetséges."
 
 #: src/Application.vala:93
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
-msgstr ""
+msgstr "Használja ezt a parancsot: io.elementary.files-pkexec [mappa]"
 
 #: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
