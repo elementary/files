@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 11:54+0000\n"
+"POT-Creation-Date: 2023-09-25 17:29+0000\n"
 "PO-Revision-Date: 2022-12-26 20:25+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
@@ -2101,7 +2101,7 @@ msgid "Invalid file name provided"
 msgstr "Zadaný nesprávny názov súboru"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:234
 msgid "New Tab"
 msgstr "Nová karta"
 
@@ -2220,28 +2220,28 @@ msgstr "Nový"
 msgid "Untitled %s"
 msgstr "Bez názvu %s"
 
-#: src/View/AbstractDirectoryView.vala:3018
-#: src/View/AbstractDirectoryView.vala:3211
+#: src/View/AbstractDirectoryView.vala:3019
+#: src/View/AbstractDirectoryView.vala:3212
 msgid "Cannot remove files from here"
 msgstr "Z tohoto umiestnenia sa nedajú odstrániť súbory"
 
-#: src/View/AbstractDirectoryView.vala:3019
-#: src/View/AbstractDirectoryView.vala:3184
-#: src/View/AbstractDirectoryView.vala:3195
-#: src/View/AbstractDirectoryView.vala:3212
+#: src/View/AbstractDirectoryView.vala:3020
+#: src/View/AbstractDirectoryView.vala:3185
+#: src/View/AbstractDirectoryView.vala:3196
+#: src/View/AbstractDirectoryView.vala:3213
 msgid "You do not have permission to change this location"
 msgstr "Nemáte oprávnenie na zmenu umiestnenia"
 
-#: src/View/AbstractDirectoryView.vala:3152
+#: src/View/AbstractDirectoryView.vala:3153
 msgid "Cannot copy files that are in the trash"
 msgstr "Súbory v koši nie je možné kopírovať"
 
-#: src/View/AbstractDirectoryView.vala:3153
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cutting the selection instead"
 msgstr "Namiesto toho sa vybrané položky vystrihnú"
 
-#: src/View/AbstractDirectoryView.vala:3183
-#: src/View/AbstractDirectoryView.vala:3194
+#: src/View/AbstractDirectoryView.vala:3184
+#: src/View/AbstractDirectoryView.vala:3195
 msgid "Cannot paste files here"
 msgstr "Do tohoto umiestnenia sa nedajú vložiť súbory"
 
@@ -2363,48 +2363,48 @@ msgstr "Súbor nebol nájdený"
 msgid "The file selected no longer exists."
 msgstr "Vybraný súbor už neexistuje."
 
-#: src/View/Window.vala:177
+#: src/View/Window.vala:189
 msgid "Previous"
 msgstr "Predchádzajúce"
 
-#: src/View/Window.vala:182
+#: src/View/Window.vala:194
 msgid "Next"
 msgstr "Nasledujúce"
 
-#: src/View/Window.vala:197
+#: src/View/Window.vala:209
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:227
+#: src/View/Window.vala:239
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Closed Tabs"
 msgstr "Zatvoriť kartu"
 
-#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:450 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Otvoriť v novom okne"
 
-#: src/View/Window.vala:440
+#: src/View/Window.vala:451
 msgid "Duplicate Tab"
 msgstr "Duplikovať kartu"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:444
+#: src/View/Window.vala:455
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:445
+#: src/View/Window.vala:456
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Close Other Tabs"
 msgstr "Zatvoriť kartu"
 
-#: src/View/Window.vala:446
+#: src/View/Window.vala:457
 msgid "Close Tab"
 msgstr "Zatvoriť kartu"
 
-#: src/View/Window.vala:706 src/View/Window.vala:716
+#: src/View/Window.vala:738 src/View/Window.vala:748
 msgid "(as Administrator)"
 msgstr "(ako správca)"
 

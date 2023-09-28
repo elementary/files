@@ -26,6 +26,12 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         Files.FileChanges.consume_changes (true);
     }
 
+    public static bool can_delete_without_confirm (GLib.File file) {
+        return file.has_uri_scheme ("burn") ||
+            file.has_uri_scheme ("x-nautilus-desktop") ||
+            file.has_uri_scheme ("trash");
+    }
+
     public DeleteJob (Gtk.Window? parent_window, GLib.List<GLib.File> files, bool try_trash) {
         base (parent_window);
         this.files = files.copy_deep ((GLib.CopyFunc<GLib.File>) GLib.Object.ref);

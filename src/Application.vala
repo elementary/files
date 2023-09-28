@@ -214,9 +214,9 @@ public class Files.Application : Gtk.Application {
                 files[i] = GLib.File.new_for_uri (FileUtils.escape_uri (uri));
             }
 
-            window.open_tabs (files, PREFERRED, !new_window); // Ignore duplicates tabs in a existing window
+            window.open_tabs.begin (files, PREFERRED, !new_window); // Ignore duplicates tabs in a existing window
         } else if (window.tab_view.n_pages == 0) {
-            window.open_tabs ();
+            window.open_tabs.begin (null, PREFERRED, false);
         }
 
         window.present ();

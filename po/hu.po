@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 11:54+0000\n"
-"PO-Revision-Date: 2023-08-24 02:54+0000\n"
+"POT-Creation-Date: 2023-09-25 17:29+0000\n"
+"PO-Revision-Date: 2023-09-26 16:24+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -1601,11 +1601,11 @@ msgstr "[URI...]"
 
 #: src/Application.vala:92
 msgid "Error: Running Files as root using sudo is not possible."
-msgstr ""
+msgstr "Hiba: a Fájlkezelő futtatása rendszergazdaként sudo-val nem lehetséges."
 
 #: src/Application.vala:93
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
-msgstr ""
+msgstr "Használja ezt a parancsot: io.elementary.files-pkexec [mappa]"
 
 #: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
@@ -2009,7 +2009,7 @@ msgid "Invalid file name provided"
 msgstr "A megadott fájlnév érvénytelen"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:234
 msgid "New Tab"
 msgstr "Új lap"
 
@@ -2128,28 +2128,28 @@ msgstr "Új"
 msgid "Untitled %s"
 msgstr "Névtelen %s"
 
-#: src/View/AbstractDirectoryView.vala:3018
-#: src/View/AbstractDirectoryView.vala:3211
+#: src/View/AbstractDirectoryView.vala:3019
+#: src/View/AbstractDirectoryView.vala:3212
 msgid "Cannot remove files from here"
 msgstr "A fájlok nem távolíthatók el innen"
 
-#: src/View/AbstractDirectoryView.vala:3019
-#: src/View/AbstractDirectoryView.vala:3184
-#: src/View/AbstractDirectoryView.vala:3195
-#: src/View/AbstractDirectoryView.vala:3212
+#: src/View/AbstractDirectoryView.vala:3020
+#: src/View/AbstractDirectoryView.vala:3185
+#: src/View/AbstractDirectoryView.vala:3196
+#: src/View/AbstractDirectoryView.vala:3213
 msgid "You do not have permission to change this location"
 msgstr "Nincs engedélye az elérési út megváltoztatására"
 
-#: src/View/AbstractDirectoryView.vala:3152
+#: src/View/AbstractDirectoryView.vala:3153
 msgid "Cannot copy files that are in the trash"
 msgstr "A kukában levő fájlok nem másolhatóak"
 
-#: src/View/AbstractDirectoryView.vala:3153
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cutting the selection instead"
 msgstr "A kijelöltek kivágása inkább"
 
-#: src/View/AbstractDirectoryView.vala:3183
-#: src/View/AbstractDirectoryView.vala:3194
+#: src/View/AbstractDirectoryView.vala:3184
+#: src/View/AbstractDirectoryView.vala:3195
 msgid "Cannot paste files here"
 msgstr "Fájlok beillesztése itt nem lehetséges"
 
@@ -2271,44 +2271,44 @@ msgstr "Fájl nem található"
 msgid "The file selected no longer exists."
 msgstr "A kiválasztott fájl már nem létezik."
 
-#: src/View/Window.vala:177
+#: src/View/Window.vala:189
 msgid "Previous"
 msgstr "Előző"
 
-#: src/View/Window.vala:182
+#: src/View/Window.vala:194
 msgid "Next"
 msgstr "Következő"
 
-#: src/View/Window.vala:197
+#: src/View/Window.vala:209
 msgid "Menu"
 msgstr "Menü"
 
-#: src/View/Window.vala:227
+#: src/View/Window.vala:239
 msgid "Closed Tabs"
 msgstr "Bezárt lapok"
 
-#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:450 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "Megnyitás új ablakban"
 
-#: src/View/Window.vala:440
+#: src/View/Window.vala:451
 msgid "Duplicate Tab"
 msgstr "Lap megkettőzése"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:444
+#: src/View/Window.vala:455
 msgid "Close Tabs to the Right"
 msgstr "A jobbra lévő lapok bezárása"
 
-#: src/View/Window.vala:445
+#: src/View/Window.vala:456
 msgid "Close Other Tabs"
 msgstr "A többi lap bezárása"
 
-#: src/View/Window.vala:446
+#: src/View/Window.vala:457
 msgid "Close Tab"
 msgstr "Lap bezárása"
 
-#: src/View/Window.vala:706 src/View/Window.vala:716
+#: src/View/Window.vala:738 src/View/Window.vala:748
 msgid "(as Administrator)"
 msgstr "(Rendszergazdaként)"
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 11:54+0000\n"
-"PO-Revision-Date: 2023-08-08 01:00+0000\n"
+"POT-Creation-Date: 2023-09-25 17:29+0000\n"
+"PO-Revision-Date: 2023-09-19 19:08+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -1640,10 +1640,11 @@ msgstr "[Adresse …]"
 #: src/Application.vala:92
 msgid "Error: Running Files as root using sudo is not possible."
 msgstr ""
+"Fehler: »Dateien« kann nicht als »root« mittels »sudo« ausgeführt werden."
 
 #: src/Application.vala:93
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
-msgstr ""
+msgstr "Verwenden Sie den Befehl: io.elementary.files-pkexec [Ordner]"
 
 #: src/Application.vala:110
 msgid "--quit cannot be used with URIs."
@@ -2053,7 +2054,7 @@ msgid "Invalid file name provided"
 msgstr "Ungültiger Name angegeben"
 
 #: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:222
+#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:234
 msgid "New Tab"
 msgstr "Neuer Tab"
 
@@ -2172,30 +2173,30 @@ msgstr "Neu"
 msgid "Untitled %s"
 msgstr "Ohne Namen %s"
 
-#: src/View/AbstractDirectoryView.vala:3018
-#: src/View/AbstractDirectoryView.vala:3211
+#: src/View/AbstractDirectoryView.vala:3019
+#: src/View/AbstractDirectoryView.vala:3212
 msgid "Cannot remove files from here"
 msgstr "Dateien können von diesem Ort nicht entfernt werden"
 
-#: src/View/AbstractDirectoryView.vala:3019
-#: src/View/AbstractDirectoryView.vala:3184
-#: src/View/AbstractDirectoryView.vala:3195
-#: src/View/AbstractDirectoryView.vala:3212
+#: src/View/AbstractDirectoryView.vala:3020
+#: src/View/AbstractDirectoryView.vala:3185
+#: src/View/AbstractDirectoryView.vala:3196
+#: src/View/AbstractDirectoryView.vala:3213
 msgid "You do not have permission to change this location"
 msgstr ""
 "Sie haben nicht die notwendigen Zugriffsrechte, an diesem Ort Änderungen "
 "vorzunehmen."
 
-#: src/View/AbstractDirectoryView.vala:3152
+#: src/View/AbstractDirectoryView.vala:3153
 msgid "Cannot copy files that are in the trash"
 msgstr "Dateien im Papierkorb können nicht kopiert werden"
 
-#: src/View/AbstractDirectoryView.vala:3153
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cutting the selection instead"
 msgstr "Die ausgewählten Objekte wurden stattdessen ausgeschnitten"
 
-#: src/View/AbstractDirectoryView.vala:3183
-#: src/View/AbstractDirectoryView.vala:3194
+#: src/View/AbstractDirectoryView.vala:3184
+#: src/View/AbstractDirectoryView.vala:3195
 msgid "Cannot paste files here"
 msgstr "An diesem Ort können keine Dateien eingefügt werden"
 
@@ -2321,48 +2322,44 @@ msgstr "Datei nicht gefuden"
 msgid "The file selected no longer exists."
 msgstr "Die ausgewählte Datei existiert nicht mehr."
 
-#: src/View/Window.vala:177
+#: src/View/Window.vala:189
 msgid "Previous"
 msgstr "Zurück"
 
-#: src/View/Window.vala:182
+#: src/View/Window.vala:194
 msgid "Next"
 msgstr "Vor"
 
-#: src/View/Window.vala:197
+#: src/View/Window.vala:209
 msgid "Menu"
 msgstr "Menü"
 
-#: src/View/Window.vala:227
-#, fuzzy
-#| msgid "Close Tab"
+#: src/View/Window.vala:239
 msgid "Closed Tabs"
-msgstr "Tab schließen"
+msgstr "Geschlossene Tabs"
 
-#: src/View/Window.vala:439 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:450 src/View/Widgets/BreadcrumbsEntry.vala:457
 msgid "Open in New Window"
 msgstr "In neuem Fenster öffnen"
 
-#: src/View/Window.vala:440
+#: src/View/Window.vala:451
 msgid "Duplicate Tab"
 msgstr "Tab duplizieren"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:444
+#: src/View/Window.vala:455
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Rechte Tabs schließen"
 
-#: src/View/Window.vala:445
-#, fuzzy
-#| msgid "Close Tab"
+#: src/View/Window.vala:456
 msgid "Close Other Tabs"
-msgstr "Tab schließen"
+msgstr "Andere Tabs schließen"
 
-#: src/View/Window.vala:446
+#: src/View/Window.vala:457
 msgid "Close Tab"
 msgstr "Tab schließen"
 
-#: src/View/Window.vala:706 src/View/Window.vala:716
+#: src/View/Window.vala:738 src/View/Window.vala:748
 msgid "(as Administrator)"
 msgstr "(als Systemverwalter)"
 
