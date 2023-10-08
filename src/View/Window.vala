@@ -1233,16 +1233,18 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
             if (yield add_tab_by_uri (root_uri, mode)) {
                 restoring_tabs++;
-
                 var tab = tab_view.selected_page;
-
                 if (tab != null &&
-                    mode == ViewMode.MILLER_COLUMNS &&
+                    tab.child != null &&
                     tip_uri != root_uri) {
 
-                    var miller = (Miller)((ViewContainer)(tab.child)).view;
-                    expand_miller_view (miller, tip_uri, root_uri);
+                    var view = ((ViewContainer)(tab.child)).view;
+                    if (view != null && view is Miller) {
+                        expand_miller_view ((Miller)view, tip_uri, root_uri);
+                    }
                 }
+            } else {
+                debug ("Failed to restore tab %s", root_uri);
             }
 
             mode = ViewMode.INVALID;
