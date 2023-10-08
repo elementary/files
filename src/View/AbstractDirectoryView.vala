@@ -1367,10 +1367,7 @@ namespace Files {
             remove_marlin_icon_info_cache (file);
             model.file_changed (file, dir);
             Idle.add (() => {
-                update_thumbnail_info_and_plugins (file);
-                if ((!slot.directory.is_network && show_local_thumbnails) ||
-                    (show_remote_thumbnails && slot.directory.can_open_files)) {
-
+                if (update_thumbnail_info_and_plugins (file)) {
                     thumbnailer.queue_file (file, null, large_thumbnails);
                 }
 
@@ -2825,8 +2822,8 @@ namespace Files {
 
         // Called on individual files when added or changed as well as on all visible files
         // by schedule_thumbnail_color_tag_timeout.
-        private void update_thumbnail_info_and_plugins (Files.File file) {
-            if (file != null && !file.is_gone) {
+        private bool update_thumbnail_info_and_plugins (Files.File file) {
+            if (slot.directory != null && file != null && !file.is_gone) {
                 // Only update thumbnail if it is going to be shown
                 if ((slot.directory.is_network && show_remote_thumbnails) ||
                     (!slot.directory.is_network && show_local_thumbnails)) {
@@ -2837,7 +2834,11 @@ namespace Files {
                 if (plugins != null) {
                     plugins.update_file_info (file);
                 }
+            } else {
+                return false;
             }
+
+            return true;
         }
 /** HELPER AND CONVENIENCE FUNCTIONS */
         /** This helps ensure that file item updates are reflected on screen without too many redraws **/
