@@ -3423,7 +3423,14 @@ namespace Files {
             /* new_file will be null if rename failed */
             if (new_file != null) {
                 selected_files_invalid = true;
-                select_and_scroll_to_gof_file (new_file);
+                Idle.add (() => {
+                    if (model.sort_pending) {
+                        return Source.CONTINUE;
+                    } else {
+                        select_and_scroll_to_gof_file (new_file);
+                        return Source.REMOVE;
+                    }
+                });
             }
         }
 
