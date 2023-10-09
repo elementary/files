@@ -1374,7 +1374,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         GLib.File root = mount.get_root ();
 
         for (int i = 0; i < tab_view.n_pages; i++) {
-            var view_container = (View.ViewContainer) tab_view.get_nth_page (i);
+            var view_container = (View.ViewContainer) (tab_view.get_nth_page (i).child);
             GLib.File location = view_container.location;
 
             if (location == null || location.has_prefix (root) || location.equal (root)) {
