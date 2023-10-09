@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-10 08:19-0700\n"
-"PO-Revision-Date: 2023-05-14 18:06+0000\n"
+"POT-Creation-Date: 2023-09-28 10:22+0000\n"
+"PO-Revision-Date: 2023-08-24 02:54+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
@@ -79,37 +79,49 @@ msgstr "Переглядайте складні дерева швидше у п�
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
-#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:82
-#: data/files.metainfo.xml.in.in:97 data/files.metainfo.xml.in.in:119
-#: data/files.metainfo.xml.in.in:135 data/files.metainfo.xml.in.in:150
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:77
+#: data/files.metainfo.xml.in.in:97 data/files.metainfo.xml.in.in:115
+#: data/files.metainfo.xml.in.in:131 data/files.metainfo.xml.in.in:146
+#: data/files.metainfo.xml.in.in:168 data/files.metainfo.xml.in.in:184
+#: data/files.metainfo.xml.in.in:199
 msgid "Minor updates:"
 msgstr "Незначні оновлення:"
 
-#: data/files.metainfo.xml.in.in:67
-msgid "Design updates for Bulk Rename"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:85
-#: data/files.metainfo.xml.in.in:99 data/files.metainfo.xml.in.in:121
-#: data/files.metainfo.xml.in.in:137 data/files.metainfo.xml.in.in:152
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:79
+#: data/files.metainfo.xml.in.in:99 data/files.metainfo.xml.in.in:134
+#: data/files.metainfo.xml.in.in:148 data/files.metainfo.xml.in.in:170
+#: data/files.metainfo.xml.in.in:186 data/files.metainfo.xml.in.in:201
 msgid "Updated translations"
 msgstr "Оновлено переклади"
 
-#: data/files.metainfo.xml.in.in:78 data/files.metainfo.xml.in.in:115
+#: data/files.metainfo.xml.in.in:93 data/files.metainfo.xml.in.in:127
+#: data/files.metainfo.xml.in.in:164
 msgid "Improvements:"
 msgstr "Поліпшено:"
 
-#: data/files.metainfo.xml.in.in:80
-msgid "Implement a bulk rename functionality"
+#: data/files.metainfo.xml.in.in:95
+msgid ""
+"New Tab Bar with improved animations, smoother drag-and-drop, and "
+"reorganized tab context menus"
 msgstr ""
+"Нова панель вкладок з покращеною анімацією, плавнішим перетягуванням та "
+"перевпорядкованим контекстними меню вкладок"
 
-#: data/files.metainfo.xml.in.in:84
+#: data/files.metainfo.xml.in.in:117
+msgid "Design updates for Bulk Rename"
+msgstr "Оновлення для групового перейменування"
+
+#: data/files.metainfo.xml.in.in:129
+msgid "Implement a bulk rename functionality"
+msgstr "Впроваджено функціональність групового перейменування"
+
+#: data/files.metainfo.xml.in.in:133
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
 msgstr ""
 "Використано кольорову смужку рівня для позначення використання диска у "
 "діалоговому вікні властивостей"
 
-#: data/files.metainfo.xml.in.in:117
+#: data/files.metainfo.xml.in.in:166
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""

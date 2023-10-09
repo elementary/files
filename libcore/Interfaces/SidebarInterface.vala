@@ -36,13 +36,10 @@ public interface Files.SidebarInterface : Gtk.Widget {
         /* Plugin interface */
         public abstract uint32 add_plugin_item (Files.SidebarPluginItem item, Files.PlaceType category);
         public abstract bool update_plugin_item (Files.SidebarPluginItem item, uint32 item_id);
-        public abstract bool remove_item_by_id (uint32 item_id); //Returns true if successfully removed
         /* Window interface */
-        public signal void request_update ();
         public signal bool request_focus ();
         public signal void sync_needed ();
         public signal void path_change_request (string uri, Files.OpenFlag flag);
-        public signal void connect_server_request ();
         public abstract void add_favorite_uri (string uri, string custom_name = "");
         public abstract bool has_favorite_uri (string uri);
         public abstract void sync_uri (string uri);

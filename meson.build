@@ -1,8 +1,8 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '6.4.1',
-    meson_version: '>= 0.58.0'
+    version: '6.5.2',
+    meson_version: '>= 0.59.0'
 )
 
 #
@@ -26,7 +26,7 @@ add_project_arguments(
 #
 # Define Vala minimal version
 #
-vala_version_required = '0.48.2'
+vala_version_required = '0.50.0'
 vala = meson.get_compiler('vala')
 cc = meson.get_compiler('c')
 
@@ -63,8 +63,6 @@ common_deps = [
 pango_dep = dependency('pango', version: '>=1.1.2')
 sqlite3_dep = dependency('sqlite3')
 libcanberra_dep = dependency('libcanberra', version: '>=0.30')
-
-notify_dep = dependency('libnotify', version: '>=0.7.2')
 
 posix_dep = vala.find_library('posix')
 linux_dep = vala.find_library('linux')
@@ -117,6 +115,9 @@ subdir('data')
 subdir('pantheon-files-daemon')
 subdir('plugins')
 subdir('filechooser-portal')
-meson.add_install_script('meson/post_install.py')
-
 subdir('po')
+
+gnome.post_install(
+    glib_compile_schemas: true,
+    update_desktop_database: true
+)

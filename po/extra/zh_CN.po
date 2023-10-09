@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-10 08:19-0700\n"
+"POT-Creation-Date: 2023-09-28 10:22+0000\n"
 "PO-Revision-Date: 2022-07-21 13:28+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
@@ -76,35 +76,45 @@ msgstr ""
 msgid "elementary, Inc."
 msgstr "elementary LLC."
 
-#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:82
-#: data/files.metainfo.xml.in.in:97 data/files.metainfo.xml.in.in:119
-#: data/files.metainfo.xml.in.in:135 data/files.metainfo.xml.in.in:150
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:77
+#: data/files.metainfo.xml.in.in:97 data/files.metainfo.xml.in.in:115
+#: data/files.metainfo.xml.in.in:131 data/files.metainfo.xml.in.in:146
+#: data/files.metainfo.xml.in.in:168 data/files.metainfo.xml.in.in:184
+#: data/files.metainfo.xml.in.in:199
 msgid "Minor updates:"
 msgstr "常规更新："
 
-#: data/files.metainfo.xml.in.in:67
-msgid "Design updates for Bulk Rename"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:68 data/files.metainfo.xml.in.in:85
-#: data/files.metainfo.xml.in.in:99 data/files.metainfo.xml.in.in:121
-#: data/files.metainfo.xml.in.in:137 data/files.metainfo.xml.in.in:152
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:79
+#: data/files.metainfo.xml.in.in:99 data/files.metainfo.xml.in.in:134
+#: data/files.metainfo.xml.in.in:148 data/files.metainfo.xml.in.in:170
+#: data/files.metainfo.xml.in.in:186 data/files.metainfo.xml.in.in:201
 msgid "Updated translations"
 msgstr "更新翻译"
 
-#: data/files.metainfo.xml.in.in:78 data/files.metainfo.xml.in.in:115
+#: data/files.metainfo.xml.in.in:93 data/files.metainfo.xml.in.in:127
+#: data/files.metainfo.xml.in.in:164
 msgid "Improvements:"
 msgstr "改进："
 
-#: data/files.metainfo.xml.in.in:80
-msgid "Implement a bulk rename functionality"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:84
-msgid "Use a colorful level bar to show disk usage in the properties dialog"
+#: data/files.metainfo.xml.in.in:95
+msgid ""
+"New Tab Bar with improved animations, smoother drag-and-drop, and "
+"reorganized tab context menus"
 msgstr ""
 
 #: data/files.metainfo.xml.in.in:117
+msgid "Design updates for Bulk Rename"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:129
+msgid "Implement a bulk rename functionality"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:133
+msgid "Use a colorful level bar to show disk usage in the properties dialog"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:166
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
