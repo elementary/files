@@ -531,11 +531,18 @@ namespace Files.View {
             return path;
         }
 
-        public void reload () {
+        // Saves selected locations to be restored after reloading
+        // Called by all slots that will reload
+        public AbstractSlot? prepare_reload () {
             var slot = get_current_slot ();
             if (slot != null) {
-                slot.reload ();
+                selected_locations = null;
+                foreach (Files.File file in slot.get_selected_files ()) {
+                    selected_locations.prepend (file.location);
+                }
             }
+
+            return slot;
         }
 
         public Gee.List<string> get_go_back_path_list () {
