@@ -989,6 +989,11 @@ public class Files.Directory : Object {
     }
 
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
+        // Ignore events from transient streams
+        if (_file.get_basename ().has_prefix (".goutputstream")) {
+            return;
+        }
+
         switch (event) {
             case FileMonitorEvent.CREATED:
                 Files.FileChanges.queue_file_added (_file, false);
