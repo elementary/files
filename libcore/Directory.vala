@@ -1001,18 +1001,22 @@ public class Files.Directory : Object {
             case FileMonitorEvent.DELETED:
                 Files.FileChanges.queue_file_removed (_file);
                 break;
-            case FileMonitorEvent.ATTRIBUTE_CHANGED: /* test  last to avoid unnecessary action when file renamed */
-                // // e.g. changed permissions
+            case FileMonitorEvent.ATTRIBUTE_CHANGED:
+                // e.g. changed permissions
                 Files.FileChanges.queue_file_changed (_file);
                 break;
             case FileMonitorEvent.CHANGES_DONE_HINT:
-                // TODO Check for unexpected regressions caused by not refreshing file info here. It should already
-                // have been done if requried by one of the set of changes so doing it again is inefficient.
                 Files.FileChanges.queue_file_changed (_file);
                 break;
+            // Move events should not be received as relevant flag is not set
             case FileMonitorEvent.MOVED:
+            case FileMonitorEvent.MOVED_IN:
+            case FileMonitorEvent.MOVED_OUT:
                 break;
-            default:
+            case FileMonitorEvent.RENAMED:
+            case FileMonitorEvent.PRE_UNMOUNT:
+            case FileMonitorEvent.UNMOUNTED:
+            case FileMonitorEvent.CHANGED:
                 break;
         }
 
