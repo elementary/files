@@ -81,6 +81,22 @@ public class Files.File : GLib.Object {
     [CCode (cname = "can_unmount")]
     public bool _can_unmount;
     public uint thumbstate = Files.File.ThumbState.UNKNOWN;
+    private string? _thumbnail_path = null;
+    public string thumbnail_path {
+        get {
+            if (_thumbnail_path == null) {
+                if (info != null && info.has_attribute (GLib.FileAttribute.THUMBNAIL_PATH)) {
+                    _thumbnail_path = info.get_attribute_byte_string (GLib.FileAttribute.THUMBNAIL_PATH);
+                }
+            }
+
+            return _thumbnail_path;
+        }
+
+        set {
+            _thumbnail_path = value;
+        }
+    }
     public string thumbnail_path = null;
     public bool is_mounted = true;
     public bool exists = true;
@@ -569,7 +585,7 @@ public class Files.File : GLib.Object {
         utf8_collation_key = get_display_name ().collate_key_for_filename ();
         /* mark the thumb flags as state none, we'll load the thumbs once the directory
          * would be loaded on a thread */
-        if (get_thumbnail_path () != null) {
+        if (thumbnail_path != null) {
             thumbstate = Files.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
         }
 
@@ -656,7 +672,7 @@ public class Files.File : GLib.Object {
         if (pix_size <= 1 || pix_scale <= 0) {
             return;
         }
-        if (get_thumbnail_path () == null && thumbstate == ThumbState.READY) {
+        if (thumbnail_path == null && thumbstate == ThumbState.READY) {
             var md5_hash = GLib.Checksum.compute_for_string (GLib.ChecksumType.MD5, uri);
             var base_name = "%s.png".printf (md5_hash);
 
@@ -685,16 +701,7 @@ public class Files.File : GLib.Object {
         return info != null;
     }
 
-    public unowned string? get_thumbnail_path () {
-        unowned string? path = null;
-        if (thumbnail_path != null) {
-            path = thumbnail_path;
-        } else if (info != null && info.has_attribute (GLib.FileAttribute.THUMBNAIL_PATH)) {
-            path = info.get_attribute_byte_string (GLib.FileAttribute.THUMBNAIL_PATH);
-        }
 
-        return path;
-    }
 
     public bool can_set_owner () {
         /* unknown file uid */
@@ -1311,10 +1318,7 @@ public class Files.File : GLib.Object {
         }
 
         if (Files.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == Files.File.ThumbState.READY) {
-            unowned string? thumb_path = get_thumbnail_path ();
-            if (thumb_path != null) {
-                return Files.IconInfo.lookup_from_path (thumb_path, size, scale);
-            }
+            return Files.IconInfo.lookup_from_path (thumbnail_path, size, scale);
         }
 
         return null;
