@@ -1364,7 +1364,6 @@ namespace Files {
         }
 
         private void on_directory_file_icon_changed (Directory dir, Files.File file) {
-            remove_marlin_icon_info_cache (file);
             model.file_changed (file, dir);
             Idle.add (() => {
                 update_thumbnail_info_and_plugins (file);
@@ -1385,12 +1384,6 @@ namespace Files {
              * that does not matter.  */
             file.exists = false;
             model.remove_file (file, dir);
-
-            remove_marlin_icon_info_cache (file);
-
-            if (file.get_thumbnail_path () != null) {
-                FileUtils.remove_thumbnail_paths_for_uri (file.uri);
-            }
 
             if (plugins != null) {
                 plugins.update_file_info (file);
@@ -2920,21 +2913,7 @@ namespace Files {
                 }
         }
 
-        private void remove_marlin_icon_info_cache (Files.File file) {
-            string? path = file.get_thumbnail_path ();
 
-            if (path != null) {
-                Files.IconSize s;
-
-                for (int z = ZoomLevel.SMALLEST;
-                     z <= ZoomLevel.LARGEST;
-                     z++) {
-
-                    s = ((ZoomLevel) z).to_icon_size ();
-                    Files.IconInfo.remove_cache (path, s, get_scale_factor ());
-                }
-            }
-        }
 
         /* For actions on the background we need to return the current slot directory, but this
          * should not be added to the list of selected files
