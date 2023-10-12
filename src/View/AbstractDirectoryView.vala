@@ -123,7 +123,6 @@ namespace Files {
 
         protected ZoomLevel minimum_zoom = ZoomLevel.SMALLEST;
         protected ZoomLevel maximum_zoom = ZoomLevel.LARGEST;
-        protected bool large_thumbnails = false;
 
         /* Used only when acting as drag source */
         double drag_x = 0;
@@ -294,7 +293,6 @@ namespace Files {
                 if (req == thumbnail_request) {
                     thumbnail_request = -1;
                 }
-
                 draw_when_idle ();
             });
 
@@ -1341,7 +1339,7 @@ namespace Files {
                 add_file (file, dir, is_internal); /* Only select files added to view by this app */
                 handle_free_space_change ();
                 Idle.add (() => {
-                    update_thumbnail_info_and_plugins (file);
+                    update_icon_and_plugins (file);
                     return Source.REMOVE;
                 });
             } else {
@@ -1366,11 +1364,11 @@ namespace Files {
         private void on_directory_file_icon_changed (Directory dir, Files.File file) {
             model.file_changed (file, dir);
             Idle.add (() => {
-                update_thumbnail_info_and_plugins (file);
+                update_icon_and_plugins (file);
                 if ((!slot.directory.is_network && show_local_thumbnails) ||
                     (show_remote_thumbnails && slot.directory.can_open_files)) {
 
-                    thumbnailer.queue_file (file, null, large_thumbnails);
+                    thumbnailer.queue_file (file, null);
                 }
 
                 return Source.REMOVE;
@@ -1429,14 +1427,6 @@ namespace Files {
 
     /** Handle zoom level change */
         private void on_zoom_level_changed (ZoomLevel zoom) {
-            var size = icon_size * get_scale_factor ();
-
-            if (!large_thumbnails && size > 128 || large_thumbnails && size <= 128) {
-                large_thumbnails = size > 128;
-                slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
-                schedule_thumbnail_color_tag_timeout ();
-            }
-
             model.icon_size = icon_size;
             change_zoom_level ();
         }
@@ -2780,7 +2770,7 @@ namespace Files {
                         file = model.file_for_iter (iter); // Maybe null if dummy row or file being deleted
                         path = model.get_path (iter);
                         if (file != null) {
-                            update_thumbnail_info_and_plugins (file);
+                            update_icon_and_plugins (file);
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
                             if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
                                 visible_files.prepend (file);
@@ -2805,7 +2795,7 @@ namespace Files {
                     * thumbnails are not hidden by settings
                  */
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
-                    thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
+                    thumbnailer.queue_files (visible_files, out thumbnail_request);
                 } else {
                     draw_when_idle ();
                 }
@@ -2818,13 +2808,13 @@ namespace Files {
 
         // Called on individual files when added or changed as well as on all visible files
         // by schedule_thumbnail_color_tag_timeout.
-        private void update_thumbnail_info_and_plugins (Files.File file) {
+        private void update_icon_and_plugins (Files.File file) {
             if (file != null && !file.is_gone) {
                 // Only update thumbnail if it is going to be shown
                 if ((slot.directory.is_network && show_remote_thumbnails) ||
                     (!slot.directory.is_network && show_local_thumbnails)) {
 
-                    file.query_thumbnail_update (); // Ensure thumbstate up to date
+                    file.update_icon ();
                 }
                /* In any case, ensure color-tag info is correct */
                 if (plugins != null) {
