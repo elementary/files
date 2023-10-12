@@ -18,8 +18,8 @@
 
 public class Files.IconInfo : GLib.Object {
     private int64 last_use_time;
-    private Gdk.Pixbuf? pixbuf;
-    private string icon_name;
+    public Gdk.Pixbuf? pixbuf { get; private set; default = null; }
+    public string icon_name { get; private set; default = ""; }
 
     public Files.IconInfo.for_pixbuf (Gdk.Pixbuf? pixbuf) {
         this.pixbuf = pixbuf;
@@ -121,8 +121,8 @@ public class Files.IconInfo : GLib.Object {
         }
     }
 
-    public static Files.IconInfo? get_generic_icon (int size, int scale) {
-        var generic_icon = new GLib.ThemedIcon ("text-x-generic");
+    public static Files.IconInfo get_generic_icon (int size, int scale) {
+        var generic_icon = new GLib.ThemedIcon ("text-x-generic"); // Assume theme always contains this?
         return IconInfo.lookup (generic_icon, size, scale);
     }
 
@@ -140,9 +140,6 @@ public class Files.IconInfo : GLib.Object {
         return null;
     }
 
-    public bool is_fallback () {
-        return pixbuf == null;
-    }
 
     public Gdk.Pixbuf? get_pixbuf_nodefault () {
         last_use_time = GLib.get_monotonic_time ();
