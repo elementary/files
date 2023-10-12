@@ -18,8 +18,8 @@
 
 public class Files.IconInfo : GLib.Object {
     private int64 last_use_time;
-    private Gdk.Pixbuf? pixbuf;
-    private string icon_name;
+    public Gdk.Pixbuf? pixbuf { get; private set; default = null; }
+    public string icon_name { get; private set; default = ""; }
 
     public Files.IconInfo.for_pixbuf (Gdk.Pixbuf? pixbuf) {
         this.pixbuf = pixbuf;
@@ -46,20 +46,28 @@ public class Files.IconInfo : GLib.Object {
         pixbuf = null;
     }
 
-    public static Files.IconInfo? lookup (GLib.Icon icon, int size, int scale) {
+    public static Files.IconInfo? lookup (
+        GLib.Icon icon,
+        int size,
+        int scale,
+        bool cache_loadable = false
+    ) {
         size = int.max (1, size);
 
+        IconInfo? icon_info = null;
         if (icon is GLib.LoadableIcon) {
-            if (loadable_icon_cache == null) {
-                loadable_icon_cache = new GLib.HashTable<LoadableIconKey, Files.IconInfo> (LoadableIconKey.hash,
-                                                                                            LoadableIconKey.equal);
-            }
-
-            var loadable_key = new LoadableIconKey (icon, size, scale);
-
-            var icon_info = loadable_icon_cache.lookup (loadable_key);
-            if (icon_info != null) {
-                return icon_info;
+            if (cache_loadable) {
+                if (loadable_icon_cache == null) {
+                    loadable_icon_cache = new GLib.HashTable<LoadableIconKey, Files.IconInfo> (
+                        LoadableIconKey.hash,
+                        LoadableIconKey.equal
+                    );
+                } else {
+                    icon_info = loadable_icon_cache.lookup (new LoadableIconKey (icon, size, scale));
+                    if (icon_info != null) {
+                        return icon_info;
+                    }
+                }
             }
 
             var str_icon = icon.to_string ();
@@ -78,22 +86,13 @@ public class Files.IconInfo : GLib.Object {
 
             if (pixbuf != null) {
                 icon_info = new IconInfo.for_pixbuf (pixbuf);
-                loadable_icon_cache.insert (loadable_key.dup (), icon_info);
+                if (cache_loadable) {
+                    loadable_icon_cache.insert (new LoadableIconKey (icon, size, scale), icon_info);
+                }
             }
 
             return icon_info;
         } else if (icon is GLib.ThemedIcon) {
-            if (themed_icon_cache == null) {
-                themed_icon_cache = new GLib.HashTable<ThemedIconKey, Files.IconInfo> (ThemedIconKey.hash,
-                                                                                        ThemedIconKey.equal);
-            }
-
-            var themed_key = new ThemedIconKey ((GLib.ThemedIcon) icon, size, scale);
-            var icon_info = themed_icon_cache.lookup (themed_key);
-            if (icon_info != null) {
-                return icon_info;
-            }
-
             var theme = get_icon_theme ();
             Gtk.IconInfo? gtkicon_info = null;
             // lookup_by_gicon_for_scale is treating all the icons equally, keep using the first found one before any fallback one
@@ -105,7 +104,6 @@ public class Files.IconInfo : GLib.Object {
 
             if (gtkicon_info != null) {
                 icon_info = new Files.IconInfo.for_icon_info (gtkicon_info);
-                themed_icon_cache.insert ((owned) themed_key, icon_info);
             }
 
             return icon_info;
@@ -123,8 +121,8 @@ public class Files.IconInfo : GLib.Object {
         }
     }
 
-    public static Files.IconInfo? get_generic_icon (int size, int scale) {
-        var generic_icon = new GLib.ThemedIcon ("text-x-generic");
+    public static Files.IconInfo get_generic_icon (int size, int scale) {
+        var generic_icon = new GLib.ThemedIcon ("text-x-generic"); // Assume theme always contains this?
         return IconInfo.lookup (generic_icon, size, scale);
     }
 
@@ -133,14 +131,15 @@ public class Files.IconInfo : GLib.Object {
         return Files.IconInfo.lookup (themed_icon, size, scale);
     }
 
-    public static Files.IconInfo? lookup_from_path (string path, int size, int scale) {
-        var file_icon = new GLib.FileIcon (GLib.File.new_for_path (path));
-        return Files.IconInfo.lookup (file_icon, size, scale);
+    public static Files.IconInfo? lookup_from_path (string? path, int size, int scale, bool is_remote = false) {
+        if (path != null) {
+            var file_icon = new GLib.FileIcon (GLib.File.new_for_path (path));
+            return Files.IconInfo.lookup (file_icon, size, scale, is_remote);
+        }
+
+        return null;
     }
 
-    public bool is_fallback () {
-        return pixbuf == null;
-    }
 
     public Gdk.Pixbuf? get_pixbuf_nodefault () {
         last_use_time = GLib.get_monotonic_time ();
@@ -285,6 +284,7 @@ public class Files.IconInfo : GLib.Object {
         var time_now = GLib.get_monotonic_time ();
         var reap_time_extended = reap_time * 6;
         if (loadable_icon_cache != null) {
+            // Only reap cached icons that are no longer referenced by any other object
             loadable_icon_cache.foreach_remove ((loadableicon, icon_info) => {
                 if (icon_info.pixbuf != null && icon_info.pixbuf.ref_count == 1) {
                     if ((time_now - icon_info.last_use_time) > reap_time_extended) {
