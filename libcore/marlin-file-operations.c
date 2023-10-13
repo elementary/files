@@ -41,32 +41,6 @@
 
 #include "pantheon-files-core.h"
 
-typedef struct _SourceInfo SourceInfo;
-typedef struct _TransferInfo TransferInfo;
-
-typedef void (* CountProgressCallback) (FilesFileOperationsCommonJob *job, SourceInfo *source_info);
-
-typedef enum {
-    OP_KIND_COPY,
-    OP_KIND_MOVE,
-    OP_KIND_DELETE
-} OpKind;
-
-struct _SourceInfo {
-    int num_files;
-    goffset num_bytes;
-    int num_files_since_progress;
-    OpKind op;
-    CountProgressCallback count_callback;
-};
-
-struct _TransferInfo {
-    int num_files;
-    goffset num_bytes;
-    guint64 last_report_time;
-    int last_reported_files_left;
-};
-
 #define SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE 15
 //#define NSEC_PER_SEC 1000000000
 #define NSEC_PER_MSEC 1000000
@@ -78,23 +52,10 @@ struct _TransferInfo {
 static void scan_sources (GList *files,
                           SourceInfo *source_info,
                           CountProgressCallback count_callback,
-                          FilesFileOperationsCommonJob *job,
-                          OpKind kind);
+                          FilesFileOperationsCommonJob *job);
 
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
-
-static gboolean
-can_delete_without_confirm (GFile *file)
-{
-    if (g_file_has_uri_scheme (file, "burn") ||
-        g_file_has_uri_scheme (file, "x-nautilus-desktop") ||
-        g_file_has_uri_scheme (file, "trash")) {
-        return TRUE;
-    }
-
-    return FALSE;
-}
 
 /* Since this happens on a thread we can't use the global prefs object */
 static gboolean
@@ -461,8 +422,7 @@ delete_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_sk
     scan_sources (files,
                   &source_info,
                   (CountProgressCallback) report_delete_count_progress,
-                  job,
-                  OP_KIND_DELETE);
+                  job);
     if (marlin_file_operations_common_job_aborted (job)) {
         return;
     }
@@ -728,7 +688,7 @@ delete_job (GTask *task,
         if (job->try_trash && g_file_has_uri_scheme (file, "trash")) {
             must_confirm_delete_in_trash = TRUE;
             to_delete_files = g_list_prepend (to_delete_files, file);
-        } else if (can_delete_without_confirm (file)) {
+        } else if (marlin_file_operations_delete_job_can_delete_without_confirm (file)) {
             to_delete_files = g_list_prepend (to_delete_files, file);
         } else {
             if (job->try_trash &&
@@ -870,16 +830,22 @@ count_file (GFileInfo *info,
 }
 
 static char *
-get_scan_primary (OpKind kind)
+get_scan_primary (FilesFileOperationsCommonJob *job)
 {
-    switch (kind) {
-    default:
-    case OP_KIND_COPY:
-        return g_strdup (_("Error while copying."));
-    case OP_KIND_MOVE:
-        return g_strdup (_("Error while moving."));
-    case OP_KIND_DELETE:
+    g_assert (MARLIN_FILE_OPERATIONS_IS_COMMON_JOB (job));
+
+    if (MARLIN_FILE_OPERATIONS_IS_DELETE_JOB (job)) {
         return g_strdup (_("Error while deleting."));
+    } else if (MARLIN_FILE_OPERATIONS_IS_COPY_MOVE_JOB (job)) {
+        FilesFileOperationsCopyMoveJob *move_job = MARLIN_FILE_OPERATIONS_COPY_MOVE_JOB (job);
+        if (move_job->is_move) {
+            return g_strdup (_("Error while moving."));
+        } else {
+            return g_strdup (_("Error while copying."));
+        }
+    } else {
+        g_warn_if_reached ();
+        return g_strdup (_("Error while copying."));
     }
 }
 
@@ -930,7 +896,7 @@ retry:
             g_error_free (error);
         } else if (error) {
             gchar *dir_basename = files_file_utils_custom_basename_from_file (dir);
-            primary = get_scan_primary (source_info->op);
+            primary = get_scan_primary (job);
             details = NULL;
 
             if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
@@ -976,7 +942,7 @@ retry:
         g_error_free (error);
     } else {
         gchar *dir_basename = files_file_utils_custom_basename_from_file (dir);
-        primary = get_scan_primary (source_info->op);
+        primary = get_scan_primary (job);
         details = NULL;
 
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
@@ -1064,7 +1030,7 @@ retry:
         g_error_free (error);
     } else {
         gchar *file_basename = files_file_utils_custom_basename_from_file (file);
-        primary = get_scan_primary (source_info->op);
+        primary = get_scan_primary (job);
         details = NULL;
 
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
@@ -1123,14 +1089,12 @@ static void
 scan_sources (GList *files,
               SourceInfo *source_info,
               CountProgressCallback count_callback,
-              FilesFileOperationsCommonJob *job,
-              OpKind kind)
+              FilesFileOperationsCommonJob *job)
 {
     GList *l;
     GFile *file;
 
     memset (source_info, 0, sizeof (SourceInfo));
-    source_info->op = kind;
     source_info->count_callback = count_callback;
     source_info->count_callback (job, source_info);
 
@@ -2692,8 +2656,7 @@ copy_job (GTask *task,
     scan_sources (job->files,
                   &source_info,
                   (CountProgressCallback) report_copy_move_count_progress,
-                  common,
-                  OP_KIND_COPY);
+                  common);
     if (marlin_file_operations_common_job_aborted (common)) {
         goto aborted;
     }
@@ -3175,8 +3138,7 @@ move_job (GTask *task,
     scan_sources (fallback_files,
                   &source_info,
                   (CountProgressCallback) report_copy_move_count_progress,
-                  common,
-                  OP_KIND_MOVE);
+                  common);
 
     g_list_free (fallback_files);
 

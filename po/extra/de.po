@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-02 11:54+0000\n"
+"POT-Creation-Date: 2023-09-28 10:22+0000\n"
 "PO-Revision-Date: 2021-11-05 09:33+0000\n"
 "Last-Translator: supaeasy <ismo+github@wolffson.ch>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/extra/de/>\n"
@@ -80,43 +80,45 @@ msgstr ""
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
-#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:99
-#: data/files.metainfo.xml.in.in:136
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:77
+#: data/files.metainfo.xml.in.in:97 data/files.metainfo.xml.in.in:115
+#: data/files.metainfo.xml.in.in:131 data/files.metainfo.xml.in.in:146
+#: data/files.metainfo.xml.in.in:168 data/files.metainfo.xml.in.in:184
+#: data/files.metainfo.xml.in.in:199
+msgid "Minor updates:"
+msgstr "Weitere Aktualisierungen:"
+
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:79
+#: data/files.metainfo.xml.in.in:99 data/files.metainfo.xml.in.in:134
+#: data/files.metainfo.xml.in.in:148 data/files.metainfo.xml.in.in:170
+#: data/files.metainfo.xml.in.in:186 data/files.metainfo.xml.in.in:201
+msgid "Updated translations"
+msgstr "Aktualisierte Übersetzungen"
+
+#: data/files.metainfo.xml.in.in:93 data/files.metainfo.xml.in.in:127
+#: data/files.metainfo.xml.in.in:164
 msgid "Improvements:"
 msgstr "Verbesserungen:"
 
-#: data/files.metainfo.xml.in.in:67
+#: data/files.metainfo.xml.in.in:95
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:87
-#: data/files.metainfo.xml.in.in:103 data/files.metainfo.xml.in.in:118
-#: data/files.metainfo.xml.in.in:140 data/files.metainfo.xml.in.in:156
-#: data/files.metainfo.xml.in.in:171
-msgid "Minor updates:"
-msgstr "Weitere Aktualisierungen:"
-
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:106
-#: data/files.metainfo.xml.in.in:120 data/files.metainfo.xml.in.in:142
-#: data/files.metainfo.xml.in.in:158 data/files.metainfo.xml.in.in:173
-msgid "Updated translations"
-msgstr "Aktualisierte Übersetzungen"
-
-#: data/files.metainfo.xml.in.in:89
+#: data/files.metainfo.xml.in.in:117
 msgid "Design updates for Bulk Rename"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:101
+#: data/files.metainfo.xml.in.in:129
 msgid "Implement a bulk rename functionality"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:105
+#: data/files.metainfo.xml.in.in:133
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:138
+#: data/files.metainfo.xml.in.in:166
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""

@@ -199,23 +199,24 @@ public class Files.Application : Gtk.Application {
             }
 
             window = new View.Window (this);
+            new_window = true;
         }
 
         // Convert remaining arguments to GLib.Files
-        string[] uris;
+        (unowned string)[] uris;
 
-        if (options.lookup (GLib.OPTION_REMAINING, "^as", out uris)) {
+        if (options.lookup (GLib.OPTION_REMAINING, "^a&s", out uris)) {
             var working_directory = cmd.get_cwd () ?? GLib.Environment.get_current_dir ();
-            GLib.File[] files = new GLib.File[uris.length];
+            GLib.File[] files = new GLib.File[GLib.strv_length (uris)];
 
-            for (var i = 0; i < uris.length; ++i) {
+            for (var i = 0; uris[i] != null; ++i) {
                 var uri = FileUtils.sanitize_path (uris[i], working_directory);
                 files[i] = GLib.File.new_for_uri (FileUtils.escape_uri (uri));
             }
 
-            window.open_tabs (files, PREFERRED, !new_window); // Ignore duplicates tabs in a existing window
+            window.open_tabs.begin (files, PREFERRED, !new_window); // Ignore duplicates tabs in a existing window
         } else if (window.tab_view.n_pages == 0) {
-            window.open_tabs ();
+            window.open_tabs.begin (null, PREFERRED, false);
         }
 
         window.present ();
