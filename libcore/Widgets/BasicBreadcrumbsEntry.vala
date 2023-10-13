@@ -108,7 +108,7 @@ namespace Files.View.Chrome {
         public void set_breadcrumbs_path (string path) {
             string protocol;
             string newpath;
-            string sanitized_path = FileUtils.sanitize_path (path);
+            string sanitized_path = FileUtils.sanitize_path (path, null, true);
 
             FileUtils.split_protocol_from_path (sanitized_path, out protocol, out newpath);
             var newelements = new Gee.ArrayList<BreadcrumbElement> ();
@@ -359,7 +359,7 @@ namespace Files.View.Chrome {
         }
 
         protected virtual void on_activate () {
-            activate_path (FileUtils.sanitize_path (text, current_dir_path));
+            activate_path (FileUtils.sanitize_path (text, current_dir_path, true));
             text = "";
         }
 
