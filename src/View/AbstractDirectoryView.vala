@@ -1369,6 +1369,10 @@ namespace Files {
         }
 
         private void on_directory_file_icon_changed (Directory dir, Files.File file) {
+            if (is_frozen) {
+                return;
+            }
+
             remove_marlin_icon_info_cache (file);
             model.file_changed (file, dir);
             Idle.add (() => {
