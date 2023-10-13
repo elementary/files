@@ -20,29 +20,38 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface {
+public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     public Files.SidebarInterface sidebar { get; construct; }
+    public Gtk.ListBox list_box { get; internal set; }
+
     public NetworkListBox (Files.SidebarInterface sidebar) {
-        Object (
-            sidebar: sidebar
-        );
+        Object (sidebar: sidebar);
     }
 
     construct {
+        list_box = new Gtk.ListBox () {
+            hexpand = true,
+            selection_mode = Gtk.SelectionMode.SINGLE
+        };
+
+        add (list_box);
+
         var volume_monitor = VolumeMonitor.@get ();
         volume_monitor.mount_added.connect (bookmark_mount_if_not_shadowed);
-        row_activated.connect ((row) => {
-            if (row is SidebarItemInterface) {
-                ((SidebarItemInterface) row).activated ();
-            }
-        });
-        row_selected.connect ((row) => {
-            if (row is SidebarItemInterface) {
-                select_item ((SidebarItemInterface) row);
+
+        list_box.row_activated.connect ((row) => {
+            if (row is BookmarkRow) {
+                ((BookmarkRow) row).activated ();
             }
         });
 
-        set_sort_func (network_sort_func);
+        list_box.row_selected.connect ((row) => {
+            if (row is BookmarkRow) {
+                select_item (row);
+            }
+        });
+
+        list_box.set_sort_func (network_sort_func);
     }
 
     private int network_sort_func (Gtk.ListBoxRow? row1, Gtk.ListBoxRow? row2) {
@@ -52,8 +61,8 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
         return strcmp (key1, key2);
     }
 
-    private SidebarItemInterface? add_bookmark (string label, string uri, Icon gicon, bool permanent, bool pinned, string? uuid, Mount? mount) {
-        SidebarItemInterface? row = null;
+    private BookmarkRow? add_bookmark (string label, string uri, Icon gicon, bool permanent, bool pinned, string? uuid, Mount? mount) {
+        Gtk.ListBoxRow? row = null;
 
         if (!has_uri (uri, out row)) {
             row = new NetworkRow (
@@ -67,10 +76,10 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
                 mount
             );
 
-            add (row);
+            list_box.add (row);
         }
 
-        return row;
+        return (BookmarkRow) row;
     }
 
     public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
@@ -137,12 +146,12 @@ public class Sidebar.NetworkListBox : Gtk.ListBox, Sidebar.SidebarListInterface 
     }
 
     public void unselect_all_items () {
-        unselect_all ();
+        list_box.unselect_all ();
     }
 
-    public void select_item (SidebarItemInterface? item) {
+    public void select_item (Gtk.ListBoxRow? item) {
         if (item != null && item is NetworkRow) {
-            select_row ((NetworkRow)item);
+            list_box.select_row (item);
         } else {
             unselect_all_items ();
         }

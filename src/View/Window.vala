@@ -24,7 +24,6 @@
 public class Files.View.Window : Hdy.ApplicationWindow {
     const GLib.ActionEntry [] WIN_ENTRIES = {
         {"new-window", action_new_window},
-        {"quit", action_quit},
         {"refresh", action_reload},
         {"undo", action_undo},
         {"redo", action_redo},
@@ -61,6 +60,18 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             }
 
             return null;
+        }
+    }
+
+    public ViewMode default_mode {
+        get {
+            return ViewMode.PREFERRED;
+        }
+    }
+
+    public GLib.File default_location {
+        owned get {
+            return GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
         }
     }
 
@@ -113,7 +124,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         // Setting accels on `application` does not work in construct clause
         // Must set before building window so ViewSwitcher can lookup the accels for tooltips
         if (is_first_window) {
-            marlin_app.set_accels_for_action ("win.quit", {"<Ctrl>Q"});
             marlin_app.set_accels_for_action ("win.new-window", {"<Ctrl>N"});
             marlin_app.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
             marlin_app.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
@@ -358,7 +368,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_view.notify["selected-page"].connect (change_tab);
 
         tab_view.create_window.connect (() => {
-            return marlin_app.create_empty_window ().tab_view;
+            return new Window (marlin_app).tab_view;
         });
 
         tab_view.page_attached.connect ((tab, pos) => {
@@ -366,7 +376,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             view_container.window = this;
         });
 
-        tab_view.page_detached.connect (on_page_detached);
 
         sidebar.request_focus.connect (() => {
             return !current_container.locked_focus && !locked_focus;
@@ -377,7 +386,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         });
 
         sidebar.path_change_request.connect (uri_path_change_request);
-        sidebar.connect_server_request.connect (connect_to_server);
     }
 
     private bool tab_view_close_page (Hdy.TabPage page) {
@@ -408,7 +416,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_view.close_page_finish (page, true);
 
         if (tab_view.n_pages == 0) {
-            add_tab ();
+            add_tab.begin (default_location, default_mode, false);
         }
 
         return Gdk.EVENT_STOP;
@@ -482,21 +490,13 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         action_duplicate.activate.connect (() => {
             var view_container = (ViewContainer) page.child;
-            add_tab (view_container.location, view_container.view_mode);
+            add_tab.begin (view_container.location, view_container.view_mode, false);
         });
 
         action_move_to_new_window.activate.connect (() => {
             var view_container = (ViewContainer) page.child;
             move_content_to_new_window (view_container);
         });
-    }
-
-    private void on_page_detached () {
-        if (tab_view.n_pages == 0) {
-            add_tab ();
-        }
-
-        save_tabs ();
     }
 
     public new void set_title (string title) {
@@ -516,47 +516,69 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         save_active_tab_position ();
     }
 
-    public void open_tabs (GLib.File[]? files = null,
-                           ViewMode mode = ViewMode.PREFERRED,
-                           bool ignore_duplicate = false) {
+    public async void open_tabs (
+        owned GLib.File[]? files,
+        ViewMode mode = default_mode,
+        bool ignore_duplicate
+    ) {
 
-        if (files == null || files.length == 0 || files[0] == null) {
-            /* Restore session if not root and settings allow */
-            if (Files.is_admin () ||
-                !Files.app_settings.get_boolean ("restore-tabs") ||
-                restore_tabs () < 1) {
-
-                /* Open a tab pointing at the default location if no tabs restored*/
-                var location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
-                add_tab (location, mode);
-                /* Ensure default tab's slot is active so it can be focused */
+        // Always try to restore tabs
+        var n_tabs_restored = yield restore_tabs ();
+        if (n_tabs_restored < 1 &&
+            (files == null || files.length == 0 || files[0] == null)
+        ) {
+            // Open a tab pointing at the default location if no tabs restored and none provided
+            // Duplicates are not ignored
+            add_tab.begin (default_location, mode, false, () => {
+                // We can assume adding default tab always succeeds
+                // Ensure default tab's slot is active so it can be focused
                 current_container.set_active_state (true, false);
-            }
+            });
+
         } else {
             /* Open tabs at each requested location */
             /* As files may be derived from commandline, we use a new sanitized one */
             foreach (var file in files) {
-                add_tab (get_file_from_uri (file.get_uri ()), mode, ignore_duplicate);
+                add_tab.begin (get_file_from_uri (file.get_uri ()), mode, ignore_duplicate);
             }
         }
     }
 
-    private void add_tab_by_uri (string uri, ViewMode mode = ViewMode.PREFERRED) {
+    private async bool add_tab_by_uri (string uri, ViewMode mode = default_mode) {
         var file = get_file_from_uri (uri);
         if (file != null) {
-            add_tab (file, mode);
+            return yield add_tab (file, mode, false);
         } else {
-            add_tab ();
+            return yield add_tab (default_location, mode, false);
         }
     }
 
-    private void add_tab (GLib.File _location = GLib.File.new_for_commandline_arg (Environment.get_home_dir ()),
-                         ViewMode mode = ViewMode.PREFERRED,
-                         bool ignore_duplicate = false) {
+    private async bool add_tab (
+        GLib.File _location = default_location,
+        ViewMode mode = default_mode,
+        bool ignore_duplicate
+    ) {
+
+        // Do not try to restore locations that we cannot determine the filetype. This will
+        // include deleted and other non-existent locations.  Note however, that disconnected remote
+        // location may still give correct result, presumably due to caching by gvfs, so such
+        // locations will still attempt to load.  Files.Directory must handle that.
 
         GLib.File location;
+        GLib.FileType ftype;
         // For simplicity we do not use cancellable. If issues arise may need to do this.
-        var ftype = _location.query_file_type (FileQueryInfoFlags.NONE, null);
+        try {
+            var info = yield _location.query_info_async (
+                FileAttribute.STANDARD_TYPE,
+                FileQueryInfoFlags.NONE
+            );
+
+            ftype = info.get_file_type ();
+        } catch (Error e) {
+            debug ("No info for requested location - abandon loading");
+            return false;
+        }
+
 
         if (ftype == FileType.REGULAR) {
             location = _location.get_parent ();
@@ -566,7 +588,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         if (ignore_duplicate) {
             bool is_child;
-            var existing_tab_position = location_is_duplicate (location, out is_child);
+            var existing_tab_position = location_is_duplicate (
+                location,
+                ftype == FileType.DIRECTORY,
+                out is_child
+            );
             if (existing_tab_position >= 0) {
                 tab_view.selected_page = tab_view.get_nth_page (existing_tab_position);
 
@@ -575,7 +601,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                     current_container.focus_location_if_in_current_directory (location);
                 }
 
-                return;
+                return false;
             }
         }
 
@@ -619,13 +645,14 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
 
         tab_view.selected_page = page;
+
+        return true;
     }
 
-    private int location_is_duplicate (GLib.File location, out bool is_child) {
+    private int location_is_duplicate (GLib.File location, bool is_folder, out bool is_child) {
         is_child = false;
         string parent_path = "";
         string uri = location.get_uri ();
-        bool is_folder = location.query_file_type (FileQueryInfoFlags.NONE) == FileType.DIRECTORY;
         /* Ensures consistent format of protocol and path */
         parent_path = FileUtils.get_parent_path_from_path (location.get_path ());
         int existing_position = 0;
@@ -758,10 +785,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    private void add_window (GLib.File location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
-                             ViewMode mode = ViewMode.PREFERRED) {
-
-        marlin_app.create_window (location, real_mode (mode));
+    private void add_window (GLib.File location = default_location, ViewMode mode = default_mode) {
+        with (new Window (marlin_app)) {
+            add_tab (location, real_mode (mode), false);
+            present ();
+        }
     }
 
     private void undo_actions_set_insensitive () {
@@ -822,10 +850,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    private void action_quit (GLib.SimpleAction action, GLib.Variant? param) {
-        ((Files.Application)(application)).quit ();
-    }
-
     private void action_reload () {
         /* avoid spawning reload when key kept pressed */
         if (tab_view.selected_page.loading) {
@@ -837,7 +861,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void action_tabhistory_restore (SimpleAction action, GLib.Variant? parameter) {
-        add_tab_by_uri (parameter.get_string ());
+        add_tab_by_uri.begin (parameter.get_string ());
 
         var menu = (Menu) tab_history_button.menu_model;
         for (var i = 0; i < menu.get_n_items (); i++) {
@@ -930,7 +954,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private void action_tab (GLib.SimpleAction action, GLib.Variant? param) {
         switch (param.get_string ()) {
             case "NEW":
-                add_tab ();
+                add_tab.begin (default_location, default_mode, false);
                 break;
 
             case "CLOSE":
@@ -946,7 +970,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 break;
 
             case "TAB":
-                add_tab (current_container.location, current_container.view_mode);
+                add_tab.begin (current_container.location, current_container.view_mode, false);
                 break;
 
             case "WINDOW":
@@ -1098,8 +1122,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         // Prevent saved focused tab changing
         tab_view.notify["selected-page"].disconnect (change_tab);
 
-        tab_view.page_detached.disconnect (on_page_detached); /* Avoid infinite loop */
-
         for (int i = 0; i < tab_view.n_pages; i++) {
             var tab_page = (Hdy.TabPage) tab_view.get_nth_page (i);
             ((View.ViewContainer) tab_page.child).close ();
@@ -1139,12 +1161,14 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void save_tabs () {
-        if (!is_first_window) {
-            return; //TODO Save all windows
-        }
-
-        if (!Files.Preferences.get_default ().remember_history) {
-            return;  /* Do not clear existing settings if history is off */
+        /* Do not overwrite existing settings if history or restore-tabs is off
+         * or is admin window */
+        if (
+            !Files.Preferences.get_default ().remember_history ||
+            !Files.app_settings.get_boolean ("restore-tabs") ||
+            Files.is_admin ()
+        ) {
+            return;
         }
 
         VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
@@ -1175,9 +1199,15 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         );
     }
 
-    public uint restore_tabs () {
-        /* Do not restore tabs if history off nor more than once */
-        if (!Files.Preferences.get_default ().remember_history || tabs_restored || !is_first_window) { //TODO Restore all windows
+    private async uint restore_tabs () {
+        /* Do not restore tabs more than once or if various conditions not met */
+        if (
+            tabs_restored ||
+            !is_first_window ||
+            !Files.Preferences.get_default ().remember_history ||
+            !Files.app_settings.get_boolean ("restore-tabs") ||
+            Files.is_admin ()
+        ) {
             return 0;
         } else {
             tabs_restored = true;
@@ -1195,21 +1225,15 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         restoring_tabs = 0;
 
         while (iter.next ("(uss)", out mode, out root_uri, out tip_uri)) {
-
             if (mode < 0 || mode >= ViewMode.INVALID ||
                 root_uri == null || root_uri == "" || tip_uri == null) {
 
                 continue;
             }
 
-            /* We do not check valid location here because it may cause the interface to hang
-             * before the window appears (e.g. if trying to connect to a server that has become unavailable)
-             * Leave it to Files.Directory.Async to deal with invalid locations asynchronously.
-             * Restored tabs with invalid locations are removed in the `loading` signal handler.
-             */
-
-            restoring_tabs++;
-            add_tab_by_uri (root_uri, mode);
+            if (yield add_tab_by_uri (root_uri, mode)) {
+                restoring_tabs++;
+            }
 
             if (mode == ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
                 expand_miller_view (tip_uri, root_uri);
@@ -1234,8 +1258,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         if (active_tab_position < 0 || active_tab_position >= restoring_tabs) {
             active_tab_position = 0;
         }
-
-        tab_view.selected_page = tab_view.get_nth_page (active_tab_position);
 
         string path = "";
         if (current_container != null) {
@@ -1371,7 +1393,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         if (file != null) {
             switch (flag) {
                 case Files.OpenFlag.NEW_TAB:
-                    add_tab (file, current_container.view_mode);
+                    add_tab.begin (file, current_container.view_mode, false);
                     break;
                 case Files.OpenFlag.NEW_WINDOW:
                     add_window (file, current_container.view_mode);

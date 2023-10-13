@@ -1,31 +1,16 @@
-/* SidebarWindow.vala
- *
- * Copyright 2020–2021 elementary, Inc. <https://elementary.io>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
+/*
+ * SPDX-License-Identifier: GPL-2.0+
+ * SPDX-FileCopyrightText: 2020-2023 elementary, Inc. (https://elementary.io)
  *
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
-    Gtk.ScrolledWindow scrolled_window;
-    Gtk.Grid bookmarklists_grid;
-    SidebarListInterface bookmark_listbox;
-    SidebarListInterface device_listbox;
-    SidebarListInterface network_listbox;
+
+public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
+    private Gtk.ScrolledWindow scrolled_window;
+    private BookmarkListBox bookmark_listbox;
+    private DeviceListBox device_listbox;
+    private NetworkListBox network_listbox;
 
     private string selected_uri = "";
     private bool loading = false;
@@ -68,37 +53,36 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
             child = network_listbox
         };
 
-        bookmarklists_grid = new Gtk.Grid () {
-            orientation = Gtk.Orientation.VERTICAL,
+        var bookmarklists_box = new Gtk.Box (VERTICAL, 0) {
             vexpand = true
         };
-        bookmarklists_grid.add (bookmark_expander);
-        bookmarklists_grid.add (bookmark_revealer);
-        bookmarklists_grid.add (device_expander);
-        bookmarklists_grid.add (device_revealer);
-        bookmarklists_grid.add (network_expander);
-        bookmarklists_grid.add (network_revealer);
+        bookmarklists_box.add (bookmark_expander);
+        bookmarklists_box.add (bookmark_revealer);
+        bookmarklists_box.add (device_expander);
+        bookmarklists_box.add (device_revealer);
+        bookmarklists_box.add (network_expander);
+        bookmarklists_box.add (network_revealer);
 
         scrolled_window = new Gtk.ScrolledWindow (null, null) {
+            child = bookmarklists_box,
             hscrollbar_policy = Gtk.PolicyType.NEVER
         };
-        scrolled_window.add (bookmarklists_grid);
 
-        var connect_server_button = new Gtk.Button.with_label (_("Connect Server…")) {
-            always_show_image = true,
+        var connect_server_box = new Gtk.Box (HORIZONTAL, 0);
+        connect_server_box.add (new Gtk.Image.from_icon_name ("network-server-symbolic", MENU));
+        connect_server_box.add (new Gtk.Label (_("Connect Server…")));
+
+        var connect_server_button = new Gtk.Button () {
+            action_name = "win.go-to",
+            action_target = "SERVER",
+            child = connect_server_box,
             hexpand = true,
-            image = new Gtk.Image.from_icon_name ("network-server-symbolic", Gtk.IconSize.MENU),
-            no_show_all = Files.is_admin (),
-            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>C"})
+            tooltip_markup = Granite.markup_accel_tooltip (
+                ((Gtk.Application) GLib.Application.get_default ()).get_accels_for_action ("win.go-to::SERVER")
+            )
         };
 
-        connect_server_button.get_child ().halign = Gtk.Align.START;
-
-        var action_bar = new Gtk.ActionBar () {
-            //For now hide action bar when admin. This might need revisiting if other actions are added
-            no_show_all = Files.is_admin ()
-        };
-
+        var action_bar = new Gtk.ActionBar ();
         action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
         action_bar.add (connect_server_button);
 
@@ -106,7 +90,11 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
         width_request = Files.app_settings.get_int ("minimum-sidebar-width");
         get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
         add (scrolled_window);
-        add (action_bar);
+
+        //For now hide action bar when admin. This might need revisiting if other actions are added
+        if (!Files.is_admin ()) {
+            add (action_bar);
+        }
 
         plugins.sidebar_loaded (this);
 
@@ -127,10 +115,6 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
         bookmark_expander.bind_property ("active", bookmark_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
         device_expander.bind_property ("active", device_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
         network_expander.bind_property ("active", network_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
-
-        connect_server_button.clicked.connect (() => {
-            connect_server_request ();
-        });
     }
 
     private void refresh (bool bookmarks = true, bool devices = true, bool network = true) {
@@ -192,13 +176,6 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
         row.update_plugin_data (item);
 
         return true;
-    }
-
-    public bool remove_item_by_id (uint32 item_id) {
-        // We do not know which listbox the row is in so try remove from each in turn
-        return bookmark_listbox.remove_item_by_id (item_id) ||
-               device_listbox.remove_item_by_id (item_id) ||
-               network_listbox.remove_item_by_id (item_id);
     }
 
     uint sync_timeout_id = 0;
@@ -278,11 +255,11 @@ public class Sidebar.SidebarWindow : Gtk.Grid, Files.SidebarInterface {
             arrow_style_context.add_class (Gtk.STYLE_CLASS_ARROW);
             arrow_style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-            var grid = new Gtk.Grid ();
-            grid.add (title);
-            grid.add (arrow);
+            var box = new Gtk.Box (HORIZONTAL, 0);
+            box.add (title);
+            box.add (arrow);
 
-            add (grid);
+            child = box;
 
             unowned Gtk.StyleContext style_context = get_style_context ();
             style_context.add_class (Granite.STYLE_CLASS_H4_LABEL);

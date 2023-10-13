@@ -63,6 +63,69 @@ public class Files.Application : Gtk.Application {
         /* Needed by Glib.Application */
         this.application_id = APP_ID; //Ensures an unique instance.
         this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
+
+        set_option_context_parameter_string (_("\n\nBrowse the file system with the file manager"));
+        add_main_option ("version", '\0', NONE, NONE, _("Show the version of the program"), null);
+
+        /* The -t option is redundant but is retained for backward compatability
+         * Locations are always opened in tabs unless -n option specified,
+         * in the active window, if present, or after opening a window if not.
+         */
+        add_main_option ("tab", 't', NONE, NONE, _("Open one or more URIs, each in their own tab"), null );
+        add_main_option ("new-window", 'n', NONE, NONE, _("New Window"), null );
+        add_main_option ("quit", 'q', NONE, NONE, _("Quit Files"), null );
+        add_main_option ("debug", 'd', NONE, NONE, _("Enable debug logging"), null );
+
+        // GLib.OPTION_REMAINING: Catches the remaining arguments
+        add_main_option (GLib.OPTION_REMAINING, '\0', NONE, STRING_ARRAY, "\0", _("[URI…]") );
+    }
+
+    protected override int handle_local_options (GLib.VariantDict options) {
+        if ("version" in options) {
+            stdout.printf ("io.elementary.files %s\n", Config.VERSION);
+            return Posix.EXIT_SUCCESS;
+        }
+
+        // Only allow running with root privileges using pkexec, not using sudo */
+        if (Files.is_admin () && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
+            stderr.printf (
+                _("Error: Running Files as root using sudo is not possible.") + " " +
+                _("Please use the command: io.elementary.files-pkexec [folder]")
+            );
+
+            return Posix.EXIT_FAILURE;
+        }
+
+        try {
+            register (); // register early so we can handle the quit flag locally
+        } catch (Error e) {
+            stderr.printf ("Error: failed to register application: %s", e.message);
+            return Posix.EXIT_FAILURE;
+        }
+
+        var remote = is_remote;
+
+        if ("quit" in options) {
+            if (GLib.OPTION_REMAINING in options) {
+                stderr.printf (_("--quit cannot be used with URIs.") + "\n");
+                return Posix.EXIT_FAILURE;
+            }
+
+            if (remote) {
+                activate_action ("quit", null);
+            }
+
+            return Posix.EXIT_SUCCESS;
+        }
+
+        // Only handle --debug if not remote
+        // FIXME: GLib.Environment.set_variable() is not thread-safe, use a custom GLib.LogFuncWriter for this
+        if (!remote && "debug" in options) {
+            GLib.Environment.set_variable ("G_MESSAGES_DEBUG", "all", false);
+            options.remove ("debug");
+        }
+
+        return -1;
     }
 
     public override void startup () {
@@ -107,6 +170,12 @@ public class Files.Application : Gtk.Application {
             gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
             Files.EmblemRenderer.clear_cache ();
         });
+
+        var quit_action = new SimpleAction ("quit", null);
+        quit_action.activate.connect (quit);
+        add_action (quit_action);
+
+        set_accels_for_action ("app.quit", { "<Ctrl>Q" });
     }
 
     public unowned ClipboardManager get_clipboard_manager () {
@@ -117,125 +186,46 @@ public class Files.Application : Gtk.Application {
         return this.recent;
     }
 
-    public override int command_line (ApplicationCommandLine cmd) {
-        /* Only allow running with root privileges using pkexec, not using sudo */
-        if (Files.is_admin () && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
-            warning ("Running Files as root using sudo is not possible. " +
-                     "Please use the command: io.elementary.files-pkexec [folder]");
-            quit ();
-            return 1;
-        };
+    public override int command_line (GLib.ApplicationCommandLine cmd) {
+        unowned var options = cmd.get_options_dict ();
 
-        this.hold ();
-        int result = _command_line (cmd);
-        this.release ();
-        return result;
+        var window = (View.Window) active_window;
+        bool new_window = false;
+
+        if (window == null || options.lookup ("new-window", "b", out new_window) && new_window) {
+            if (get_windows ().length () >= MAX_WINDOWS) { // Can be assumed to be limited in length
+                cmd.printerr_literal ("Error: failed to create new window, maximum limit reached.");
+                return Posix.EXIT_FAILURE;
+            }
+
+            window = new View.Window (this);
+            new_window = true;
+        }
+
+        // Convert remaining arguments to GLib.Files
+        (unowned string)[] uris;
+
+        if (options.lookup (GLib.OPTION_REMAINING, "^a&s", out uris)) {
+            var working_directory = cmd.get_cwd () ?? GLib.Environment.get_current_dir ();
+            GLib.File[] files = new GLib.File[GLib.strv_length (uris)];
+
+            for (var i = 0; uris[i] != null; ++i) {
+                var uri = FileUtils.sanitize_path (uris[i], working_directory, false);
+                files[i] = GLib.File.new_for_uri (FileUtils.escape_uri (uri));
+            }
+
+            window.open_tabs.begin (files, PREFERRED, !new_window); // Ignore duplicates tabs in a existing window
+        } else if (window.tab_view.n_pages == 0) {
+            window.open_tabs.begin (null, PREFERRED, false);
+        }
+
+        window.present ();
+        return Posix.EXIT_SUCCESS;
     }
 
-    /* The array that holds the file commandline arguments
-       needs some boilerplate so its size gets updated. */
-    [CCode (array_length = false, array_null_terminated = true)]
-    private string[]? remaining = null;
-
-    private int _command_line (ApplicationCommandLine cmd) {
-        /* Setup the argument parser */
-        bool version = false;
-        /* The -t option is redundant but is retained for backward compatability
-         * Locations are always opened in tabs unless -n option specified,
-         * in the active window, if present, or after opening a window if not.
-         */
-        bool open_in_tab = true;
-        bool create_new_window = false;
-        bool kill_shell = false;
-        bool debug = false;
-
-        OptionEntry[] options = new OptionEntry [7];
-        options [0] = { "version", '\0', 0, OptionArg.NONE, ref version,
-                        N_("Show the version of the program"), null };
-        options [1] = { "tab", 't', 0, OptionArg.NONE, ref open_in_tab,
-                        N_("Open one or more URIs, each in their own tab"), null };
-        options [2] = { "new-window", 'n', 0, OptionArg.NONE, out create_new_window,
-                        N_("New Window"), null };
-        options [3] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
-                        N_("Quit Files"), null };
-        options [4] = { "debug", 'd', 0, OptionArg.NONE, ref debug,
-                        N_("Enable debug logging"), null };
-        /* "" = G_OPTION_REMAINING: Catches the remaining arguments */
-        options [5] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
-                        null, N_("[URI…]") };
-        options [6] = { null };
-
-        var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));
-        context.add_main_entries (options, null);
-        context.add_group (Gtk.get_option_group (true));
-
-        string[] args = cmd.get_arguments ();
-        /* We need to store arguments in an unowned variable for context.parse */
-        unowned string[] args_aux = args;
-
-        /* Parse arguments */
-        try {
-            context.parse (ref args_aux);
-        } catch (OptionError error) {
-            cmd.printerr ("Could not parse arguments: %s\n", error.message);
-            return Posix.EXIT_FAILURE;
-        }
-
-        /* Handle arguments */
-        if (debug) {
-            GLib.Environment.set_variable ("G_MESSAGES_DEBUG", "all", false);
-        }
-
-        if (version) {
-            cmd.print ("io.elementary.files %s\n", Config.VERSION);
-            return Posix.EXIT_SUCCESS;
-        }
-
-        if (kill_shell) {
-            if (remaining != null) {
-                cmd.printerr ("%s\n", _("--quit cannot be used with URIs."));
-                return Posix.EXIT_FAILURE;
-            } else {
-                this.quit ();
-                return Posix.EXIT_SUCCESS;
-            }
-        }
-
-        GLib.File[] files = null;
-
-        /* Convert remaining arguments to GFiles */
-        foreach (string filepath in remaining) {
-            string path = FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir (), false);
-            GLib.File? file = null;
-
-            if (path.length > 0) {
-                file = GLib.File.new_for_uri (FileUtils.escape_uri (path));
-            }
-
-            if (file != null) {
-                files += (file);
-            }
-        }
-
-        /* Open application */
-        if (files != null) {
-            if (create_new_window || window_count == 0) {
-                /* Open window with tabs at each requested location. */
-                create_window_with_tabs (files);
-            } else {
-                var win = (View.Window)(get_active_window ());
-                win.open_tabs (files, ViewMode.PREFERRED, true); /* Ignore if duplicate tab in existing window */
-            }
-        } else if (create_new_window || window_count == 0) {
-            create_window_with_tabs ();
-        }
-
-        if (window_count > 0) {
-            get_active_window ().present ();
-            return Posix.EXIT_SUCCESS;
-        } else {
-            return Posix.EXIT_FAILURE;
-        }
+    protected override void window_added (Gtk.Window window) {
+        plugins.interface_loaded (window);
+        base.window_added (window);
     }
 
     public override void quit_mainloop () {
@@ -296,32 +286,5 @@ public class Files.Application : Gtk.Application {
                                      Files.Preferences.get_default (), "remember-history", GLib.SettingsBindFlags.GET);
         gtk_file_chooser_settings.bind ("sort-directories-first",
                                         prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
-    }
-
-    public View.Window? create_empty_window () {
-        if (this.get_windows ().length () >= MAX_WINDOWS) { //Can be assumed to be limited in length
-            return null;
-        }
-
-        var win = new View.Window (this);
-        add_window (win as Gtk.Window);
-        plugins.interface_loaded (win as Gtk.Widget);
-        return win;
-    }
-
-    public View.Window? create_window (GLib.File? location = null,
-                                       ViewMode viewmode = ViewMode.PREFERRED) {
-
-        return create_window_with_tabs ({location}, viewmode);
-    }
-
-    /* All window creation should be done via this function */
-    private View.Window? create_window_with_tabs (GLib.File[] locations = {},
-                                                  ViewMode viewmode = ViewMode.PREFERRED) {
-
-        var win = create_empty_window ();
-        win.open_tabs (locations, viewmode);
-
-        return win;
     }
 }
