@@ -83,7 +83,7 @@ public class Files.AppMenu : Gtk.Popover {
             action_name = "win.singleclick-select"
         };
 
-        var foldes_before_files = new Granite.SwitchModelButton (_("Sort Folders before Files")) {
+        var folders_before_files = new Granite.SwitchModelButton (_("Sort Folders before Files")) {
             action_name = "win.folders-before-files"
         };
 
