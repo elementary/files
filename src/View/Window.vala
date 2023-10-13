@@ -41,6 +41,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
         {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"folders-before-files", null, null, "true", change_state_folders_before_files},
+        {"restore-tabs-on-startup", null, null, "true", change_state_restore_tabs_on_startup},
         {"forward", action_forward, "i"},
         {"back", action_back, "i"}
     };
@@ -277,6 +278,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
+        get_action ("restore-tabs-on-startup").set_state (app_settings.get_boolean ("restore-tabs"));
 
         /*/
         /* Connect and abstract signals to local ones
@@ -1065,6 +1067,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
         Files.Preferences.get_default ().sort_directories_first = state;
+    }
+
+    public void change_state_restore_tabs_on_startup (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+        Files.app_settings.set_boolean ("restore-tabs", state);
     }
 
     private void connect_to_server () {

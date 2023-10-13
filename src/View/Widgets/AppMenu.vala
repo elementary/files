@@ -87,6 +87,10 @@ public class Files.AppMenu : Gtk.Popover {
             action_name = "win.folders-before-files"
         };
 
+        var restore_tabs = new Granite.SwitchModelButton (_("Restore Tabs on Starting")) {
+            action_name = "win.restore-tabs-on-startup"
+        };
+
         var show_header = new Granite.HeaderLabel (_("Show in View"));
 
         var show_hidden_button = new Gtk.CheckButton () {
@@ -115,7 +119,8 @@ public class Files.AppMenu : Gtk.Popover {
         menu_box.add (undo_redo_box);
         menu_box.add (new Gtk.Separator (HORIZONTAL) { margin_bottom = 3 });
         menu_box.add (double_click_button);
-        menu_box.add (foldes_before_files);
+        menu_box.add (folders_before_files);
+        menu_box.add (restore_tabs);
         menu_box.add (new Gtk.Separator (HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
         menu_box.add (show_header);
         menu_box.add (show_hidden_button);
