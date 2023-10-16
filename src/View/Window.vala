@@ -856,7 +856,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             warning ("Too rapid reloading suppressed");
             return;
         }
-        current_container.reload ();
+
+        var slot = current_container.prepare_reload ();
+        if (slot != null) {
+            slot.reload (); // Initial reload request - will propagate to all alots showing same location
+        }
+
         sidebar.reload ();
     }
 
@@ -1031,7 +1036,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     public void after_undo_redo () {
         if (current_container.slot.directory.is_recent) {
-            current_container.reload ();
+            get_action_group ("win").activate_action ("refresh", null);
         }
 
         doing_undo_redo = false;
