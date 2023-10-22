@@ -67,7 +67,8 @@ namespace Files {
             {"trash", on_selection_action_trash},
             {"delete", on_selection_action_delete},
             {"restore", on_selection_action_restore},
-            {"invert-selection", invert_selection}
+            {"invert-selection", invert_selection},
+            {"mark-as-hidden", on_selection_action_mark_as_hidden, "b"}
         };
 
         const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
@@ -1142,6 +1143,19 @@ namespace Files {
             clipboard.cut_files (selection);
         }
 
+        private void on_selection_action_mark_as_hidden (GLib.SimpleAction action, GLib.Variant? param) {
+
+            bool hide = param.get_boolean ();
+            unowned var selection = get_selected_files ();
+            foreach (File file in selection) {
+                if (hide && !file.info.has_attribute ("metadata::hidden")) {
+                    file.info.set_attribute_string ("metadata::hidden", "true");
+                } else if (!hide && file.info.has_attribute ("metadata::hidden")) {
+                    file.info.remove_attribute ("metadata::hidden");
+                }
+            }
+        }
+
         private void on_selection_action_trash (GLib.SimpleAction action, GLib.Variant? param) {
             trash_or_delete_selected_files (Files.is_admin ());
         }
@@ -2133,6 +2147,31 @@ namespace Files {
                 };
                 delete_menuitem.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
+                var mark_as_hidden_menuitem = new Gtk.CheckMenuItem () {
+                    action_name = "selection.mark-as-hidden"
+                };
+
+                bool all_hidden = true, all_not_hidden = true, inconsistent = true;
+                foreach (File file in selection) {
+                    var hidden = false;
+                    if (file.info.has_attribute ("metadata::hidden")) {
+                        hidden = bool.parse (file.info.get_attribute_string ("metadata::hidden"));
+                    }
+
+                    all_hidden = all_hidden && hidden;
+                    all_not_hidden = all_not_hidden && !hidden;
+                    inconsistent = !all_hidden && !all_not_hidden;
+                    if (inconsistent) {
+                        break;
+                    }
+                }
+
+                var val = new GLib.Variant.boolean (!all_hidden);
+                mark_as_hidden_menuitem.set_active (all_hidden);
+                mark_as_hidden_menuitem.set_inconsistent (inconsistent);
+                mark_as_hidden_menuitem.action_target = val;
+                mark_as_hidden_menuitem.label = all_hidden ? _("Unmark as Hidden") : _("Mark as Hidden");
+
                 /* In trash, only show context menu when all selected files are in root folder */
                 if (in_trash && valid_selection_for_restore ()) {
                     var restore_menuitem = new Gtk.MenuItem.with_label (_("Restore from Trash"));
@@ -2206,6 +2245,7 @@ namespace Files {
                         menu.add (cut_menuitem);
                         menu.add (copy_menuitem);
                         menu.add (copy_link_menuitem);
+                        menu.add (mark_as_hidden_menuitem);
 
                         // Do not display the 'Paste into' menuitem if nothing to paste
                         // Do not display 'Paste' menuitem if there is a selected folder ('Paste into' enabled)
