@@ -2147,30 +2147,20 @@ namespace Files {
                 };
                 delete_menuitem.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
-                var mark_as_hidden_menuitem = new Gtk.CheckMenuItem () {
+                var mark_as_hidden_menuitem = new Gtk.MenuItem () {
                     action_name = "selection.mark-as-hidden"
                 };
 
-                bool all_hidden = true, all_not_hidden = true, inconsistent = true;
+                bool some_not_hidden = false;
                 foreach (File file in selection) {
-                    var hidden = false;
-                    if (file.info.has_attribute ("metadata::hidden")) {
-                        hidden = bool.parse (file.info.get_attribute_string ("metadata::hidden"));
-                    }
-
-                    all_hidden = all_hidden && hidden;
-                    all_not_hidden = all_not_hidden && !hidden;
-                    inconsistent = !all_hidden && !all_not_hidden;
-                    if (inconsistent) {
-                        break;
+                    if (!file.is_hidden) {
+                        some_not_hidden = true;
                     }
                 }
 
-                var val = new GLib.Variant.boolean (!all_hidden);
-                mark_as_hidden_menuitem.set_active (all_hidden);
-                mark_as_hidden_menuitem.set_inconsistent (inconsistent);
+                var val = new GLib.Variant.boolean (some_not_hidden);
                 mark_as_hidden_menuitem.action_target = val;
-                mark_as_hidden_menuitem.label = all_hidden ? _("Unmark as Hidden") : _("Mark as Hidden");
+                mark_as_hidden_menuitem.label = some_not_hidden ? _("Mark as Hidden") : _("Unmark as Hidden");
 
                 /* In trash, only show context menu when all selected files are in root folder */
                 if (in_trash && valid_selection_for_restore ()) {
