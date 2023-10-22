@@ -1147,11 +1147,17 @@ namespace Files {
             var hide = param.get_boolean ();
             unowned var selection = get_selected_files ();
             foreach (File file in selection) {
-                if (hide && !file.is_hidden_format && !file.info.has_attribute ("standard::is-hidden")) {
-                    file.info.set_attribute_boolean ("standard::is-hidden", true);
-                } else if (!hide && file.info.has_attribute ("standard::is-hidden")) {
-                    file.info.set_attribute_boolean ("standard::is-hidden", false);
+                bool val = false;
+                if (hide && !file.is_hidden) {
+                    val = true;
+                } else if (!hide && !file.is_hidden_format) {
+                    val = false;
+                } else {
+                    continue;
                 }
+
+                file.info.set_attribute_string ("metadata::hidden", val.to_string ());
+                file.location.set_attribute_string ("metadata::hidden", val.to_string (), FileQueryInfoFlags.NONE, null);
             }
 
             // If not showing hidden files reload view to reflect changes

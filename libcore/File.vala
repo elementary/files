@@ -35,7 +35,7 @@ public class Files.File : GLib.Object {
         "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name," +
         "standard::display-name,standard::content-type,standard::fast-content-type,standard::size," +
         "standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem," +
-        "thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed";
+        "thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed,metadata::hidden";
 
     public signal void changed ();
     public signal void icon_changed ();
@@ -78,8 +78,8 @@ public class Files.File : GLib.Object {
         get {
             return is_hidden_format ||
                 (info != null &&
-                info.has_attribute ("standard::is-hidden") &&
-                info.get_attribute_boolean ("standard::is-hidden"));
+                info.has_attribute ("metadata::hidden") &&
+                bool.parse (info.get_attribute_string ("metadata::hidden")));
         }
     }
     public bool is_hidden_format { get; construct; }
@@ -189,7 +189,7 @@ public class Files.File : GLib.Object {
             }
         });
 
-        // Filename formats to regard as permanently hidden 
+        // Filename formats to regard as permanently hidden
         is_hidden_format = basename.has_prefix (".") ||
                            basename.has_prefix ("~") ||
                            basename.has_suffix ("~"); // Temporary backup files are regarded as hidden
