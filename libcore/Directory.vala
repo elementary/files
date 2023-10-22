@@ -809,8 +809,18 @@ public class Files.Directory : Object {
         }
     }
 
+    // Called by Model when loading a subdirectory
     public List<unowned Files.File> get_files () {
-        return file_hash.get_values ();
+        List<unowned Files.File> file_list = null;
+        foreach (unowned Files.File gof in file_hash.get_values ()) {
+            if (gof != null && gof.info != null &&
+                (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
+
+                file_list.prepend (gof);
+            }
+        }
+
+        return file_list;
     }
 
     public void load_hiddens () {
