@@ -1469,21 +1469,16 @@ namespace Files {
     /** Handle Preference changes */
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             bool show = ((Files.Preferences) prefs).show_hidden_files;
-            model.show_hidden_files = show;
             cancel ();
             /* As directory may reload, for consistent behaviour always lose selection */
             unselect_all ();
 
-            if (!show) {
-                block_model ();
-                model.clear ();
-            }
+            block_model ();
+            model.clear ();
 
             directory_hidden_changed (slot.directory, show);
 
-            if (!show) {
-                unblock_model ();
-            }
+            unblock_model ();
 
             foreach (Files.File file in slot.directory.get_files ()) {
                 if (file.is_folder ()) {
