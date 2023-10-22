@@ -76,7 +76,10 @@ public class Files.File : GLib.Object {
     public GLib.FileType file_type;
     public bool is_hidden {
         get {
-            return is_hidden_format || (info != null && info.has_attribute ("metadata::hidden"));
+            return is_hidden_format ||
+                (info != null &&
+                info.has_attribute ("standard::is-hidden") &&
+                info.get_attribute_boolean ("standard::is-hidden"));
         }
     }
     public bool is_hidden_format { get; construct; }
@@ -186,9 +189,10 @@ public class Files.File : GLib.Object {
             }
         });
 
-        is_hidden_format = basename.has_prefix (".") || // Linux hidden file
-                            basename.has_prefix ("~") ||
-                            basename.has_suffix ("~"); // Temporary backup files are regarded as hidden
+        // Filename formats to regard as permanently hidden 
+        is_hidden_format = basename.has_prefix (".") ||
+                           basename.has_prefix ("~") ||
+                           basename.has_suffix ("~"); // Temporary backup files are regarded as hidden
     }
 
     public void remove_from_caches () {

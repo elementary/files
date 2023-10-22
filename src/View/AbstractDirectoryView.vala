@@ -1147,10 +1147,10 @@ namespace Files {
             var hide = param.get_boolean ();
             unowned var selection = get_selected_files ();
             foreach (File file in selection) {
-                if (hide && !file.info.has_attribute ("metadata::hidden")) {
-                    file.info.set_attribute_string ("metadata::hidden", "true");
-                } else if (!hide && file.info.has_attribute ("metadata::hidden")) {
-                    file.info.remove_attribute ("metadata::hidden");
+                if (hide && !file.is_hidden_format && !file.info.has_attribute ("standard::is-hidden")) {
+                    file.info.set_attribute_boolean ("standard::is-hidden", true);
+                } else if (!hide && file.info.has_attribute ("standard::is-hidden")) {
+                    file.info.set_attribute_boolean ("standard::is-hidden", false);
                 }
             }
 
@@ -2151,16 +2151,22 @@ namespace Files {
                     action_name = "selection.mark-as-hidden"
                 };
 
-                bool some_not_hidden = false;
+                bool some_not_hidden = false, some_permanently_hidden = false;
                 foreach (File file in selection) {
                     if (!file.is_hidden) {
                         some_not_hidden = true;
+                    }
+
+                    if (file.is_hidden_format) {
+                        some_permanently_hidden = true;
                     }
                 }
 
                 var val = new GLib.Variant.boolean (some_not_hidden);
                 mark_as_hidden_menuitem.action_target = val;
                 mark_as_hidden_menuitem.label = some_not_hidden ? _("Mark as Hidden") : _("Unmark as Hidden");
+
+                action_set_enabled (selection_actions, "mark-as-hidden", !some_permanently_hidden);
 
                 /* In trash, only show context menu when all selected files are in root folder */
                 if (in_trash && valid_selection_for_restore ()) {
