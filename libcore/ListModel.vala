@@ -59,7 +59,6 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         }
     }
 
-    public bool show_hidden_files { get; set; default = false; }
 
     private enum PrivColumnID {
         DUMMY = ColumnID.NUM_COLUMNS
@@ -314,9 +313,6 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
             set_sorting_off ();
             foreach (var file in files) {
-                if (!show_hidden_files && file.is_hidden) {
-                    continue;
-                }
 
                 if (change_dummy) {
                     // Instead of inserting a new row, change the dummy one
