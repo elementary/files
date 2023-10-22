@@ -74,7 +74,12 @@ public class Files.File : GLib.Object {
     public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
     public Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
     public GLib.FileType file_type;
-    public bool is_hidden { get; construct; }
+    public bool is_hidden {
+        get {
+            return is_hidden_format || (info != null && info.has_attribute ("metadata::hidden"));
+        }
+    }
+    public bool is_hidden_format { get; construct; }
     public bool is_directory = false;
     public bool is_desktop = false;
     public bool is_expanded = false;
@@ -181,11 +186,9 @@ public class Files.File : GLib.Object {
             }
         });
 
-        // We do not allow "hidden" status to change as this causes problems with
-        // adding/removing files from view model
-        is_hidden = basename.has_prefix (".") || // Linux hidden file
-                    basename.has_prefix ("~") ||
-                    basename.has_suffix ("~"); // Temporary backup files are regarded as hidden
+        is_hidden_format = basename.has_prefix (".") || // Linux hidden file
+                            basename.has_prefix ("~") ||
+                            basename.has_suffix ("~"); // Temporary backup files are regarded as hidden
     }
 
     public void remove_from_caches () {
