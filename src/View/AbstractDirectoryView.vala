@@ -1144,8 +1144,7 @@ namespace Files {
         }
 
         private void on_selection_action_mark_as_hidden (GLib.SimpleAction action, GLib.Variant? param) {
-
-            bool hide = param.get_boolean ();
+            var hide = param.get_boolean ();
             unowned var selection = get_selected_files ();
             foreach (File file in selection) {
                 if (hide && !file.info.has_attribute ("metadata::hidden")) {
@@ -1154,6 +1153,12 @@ namespace Files {
                     file.info.remove_attribute ("metadata::hidden");
                 }
             }
+
+            // If not showing hidden files reload view to reflect changes
+            if (!Files.Preferences.get_default ().show_hidden_files) {
+                on_show_hidden_files_changed ();
+            }
+
         }
 
         private void on_selection_action_trash (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1467,8 +1472,8 @@ namespace Files {
         }
 
     /** Handle Preference changes */
-        private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            bool show = ((Files.Preferences) prefs).show_hidden_files;
+        private void on_show_hidden_files_changed () {
+            bool show = ((Files.Preferences).get_default ()).show_hidden_files;
             cancel ();
             /* As directory may reload, for consistent behaviour always lose selection */
             unselect_all ();
