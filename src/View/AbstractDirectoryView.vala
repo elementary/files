@@ -1157,7 +1157,12 @@ namespace Files {
                 }
 
                 file.info.set_attribute_string ("metadata::hidden", val.to_string ());
-                file.location.set_attribute_string ("metadata::hidden", val.to_string (), FileQueryInfoFlags.NONE, null);
+                try {
+                    file.location.set_attribute_string ("metadata::hidden", val.to_string (), FileQueryInfoFlags.NONE, null);
+                } catch (Error e) {
+                    warning ("Error setting attribute 'metadata::hidden' - %s", e.message);
+                }
+
             }
 
             // If not showing hidden files reload view to reflect changes
