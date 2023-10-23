@@ -828,7 +828,7 @@ namespace Files.FileUtils {
             var parent = drop_file.get_parent ();
 
             if (parent != null && parent.equal (target_location)) {
-                valid_actions &= Gdk.DragAction.LINK; // Only LINK is valid
+                valid_actions = Gdk.DragAction.DEFAULT; // Ignore (GitHub bug #1759)
             }
 
             var scheme = drop_file.get_uri_scheme ();
