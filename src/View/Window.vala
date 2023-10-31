@@ -42,7 +42,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"folders-before-files", null, null, "true", change_state_folders_before_files},
         {"forward", action_forward, "i"},
-        {"back", action_back, "i"}
+        {"back", action_back, "i"},
+        {"focus-sidebar", action_focus_sidebar}
     };
 
     public uint window_number { get; construct; }
@@ -160,6 +161,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.info::HELP", {"F1"});
             marlin_app.set_accels_for_action ("win.tab::TAB", {"<Ctrl><Alt>T"});
             marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
+            marlin_app.set_accels_for_action ("win.focus-sidebar", {"<Ctrl>Left"});
         }
 
         build_window ();
@@ -1027,6 +1029,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 critical (e.message);
             }
         });
+    }
+
+    private void action_focus_sidebar () {
+        sidebar.focus ();
     }
 
     private void before_undo_redo () {

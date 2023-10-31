@@ -45,4 +45,5 @@ public interface Files.SidebarInterface : Gtk.Widget {
         public abstract void sync_uri (string uri);
         public abstract void reload ();
         public abstract void on_free_space_change ();
+        public abstract void focus ();
 }

@@ -92,4 +92,13 @@ public interface Sidebar.SidebarListInterface : Object {
     public virtual bool is_drop_target () {
         return false;
     }
+
+    public void focus () {
+        var focus_row = list_box.get_selected_row ();
+        if (focus_row == null) {
+            focus_row = list_box.get_row_at_index (0);
+        }
+
+        focus_row.grab_focus ();
+    }
 }
