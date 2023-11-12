@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-28 10:22+0000\n"
-"PO-Revision-Date: 2023-09-06 05:08+0000\n"
+"PO-Revision-Date: 2023-11-11 16:10+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.0.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -176,7 +176,7 @@ msgstr "התחברות"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Continue"
-msgstr "הבא"
+msgstr "להמשיך"
 
 #: libcore/ConnectServerDialog.vala:266
 msgid "Connecting…"
@@ -653,7 +653,7 @@ msgstr[1] "%'d קבצים בהכנה למחיקה (%s)"
 
 #: libcore/marlin-file-operations.c:467
 msgid "Moving files to trash"
-msgstr "קבצים מועברים לסל האשפה"
+msgstr "קבצים מועברים לאשפה"
 
 #: libcore/marlin-file-operations.c:469
 #, c-format
@@ -717,7 +717,7 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:757
 msgid "Trashing Files"
-msgstr "קבצים מועברים לסל האשפה"
+msgstr "קבצים מועברים לאשפה"
 
 #: libcore/marlin-file-operations.c:759
 msgid "Deleting Files"
@@ -1702,7 +1702,7 @@ msgstr "שם בסיס:"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
 msgid "Keep"
-msgstr "שמירה"
+msgstr "שימור"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
 msgctxt "bulk-rename"
@@ -1998,7 +1998,7 @@ msgstr "לשונית חדשה"
 
 #: src/View/AbstractDirectoryView.vala:1972
 msgid "Run"
-msgstr "הפעלה"
+msgstr "הרצה"
 
 #: src/View/AbstractDirectoryView.vala:1979
 #, c-format
