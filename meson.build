@@ -68,8 +68,6 @@ posix_dep = vala.find_library('posix')
 linux_dep = vala.find_library('linux')
 math_dep = cc.find_library('m')
 
-plank_dep = dependency('plank', version: '>=0.10.9')
-
 zeitgeist_dep = dependency('zeitgeist-2.0', required: get_option('with-zeitgeist'))
 if (zeitgeist_dep.found())
     add_project_arguments('--define=HAVE_ZEITGEIST', language: 'vala')
