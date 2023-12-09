@@ -945,9 +945,13 @@ namespace Files {
         // file operations
         private void add_file (Files.File file, Directory dir, bool is_internal = true) {
             model.insert_sorted (file, dir);
-
             if (is_internal) { /* This true once view finished loading */
-                add_gof_file_to_selection (file);
+                // Do not select until the model has resorted else wrong file is selected
+                ulong model_resorted = 0;
+                model_resorted = model.rows_reordered.connect (() => {
+                     model.disconnect (model_resorted);
+                     add_gof_file_to_selection (file);
+                });
             }
         }
 
