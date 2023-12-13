@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-13 19:10+0000\n"
-"PO-Revision-Date: 2023-08-24 02:54+0000\n"
+"PO-Revision-Date: 2023-12-13 23:30+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
 "Language: he\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.0.2\n"
 
 #: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
 msgid "Files"
@@ -80,30 +80,29 @@ msgstr "תיקונים מזעריים:"
 
 #: data/files.metainfo.xml.in.in:67
 msgid "Discontinue support for dragging bookmark out of sidebar"
-msgstr ""
+msgstr "הופסקה התמיכה בגרירת סימניות אל מחוץ לסרגל הצד"
 
 #: data/files.metainfo.xml.in.in:68
-#, fuzzy
-#| msgid "Fix unexpected file activation after navigation with double-click"
 msgid "Fix unexpected scrolling after renaming a folder"
-msgstr "תוקנה הפעלת קובץ בלתי צפויה לאחר ניווט עם לחיצה כפולה"
+msgstr "תוקנה גלילה לא צפויה לאחר שינוי שם תיקייה"
 
 #: data/files.metainfo.xml.in.in:69
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
-msgstr ""
+msgstr "תוקנה קריסה בעת מעבר לתצוגת רשת במצבים נדירים במיוחד"
 
 #: data/files.metainfo.xml.in.in:70
 msgid "Ensure the selection persists after refreshing the view"
-msgstr ""
+msgstr "וידוא שהבחירה נשארת אחרי רענון התצוגה"
 
 #: data/files.metainfo.xml.in.in:71
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
+"תוקנה הבעיה שיישום הקבצים לא מצליח לפתוח אם מתבצע ניסיון לשחזר מקום מנותק"
 
 #: data/files.metainfo.xml.in.in:72
 msgid "Fix the view continuing to show when a location is unmounted"
-msgstr ""
+msgstr "תוקנה התצוגה שממשיכה להופיע כאשר המקום מנותק"
 
 #: data/files.metainfo.xml.in.in:73 data/files.metainfo.xml.in.in:90
 #: data/files.metainfo.xml.in.in:102 data/files.metainfo.xml.in.in:122
