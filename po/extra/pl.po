@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-13 19:10+0000\n"
-"PO-Revision-Date: 2023-08-26 15:08+0000\n"
+"PO-Revision-Date: 2023-12-17 00:10+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/extra/pl/>\n"
 "Language: pl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.0.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
@@ -93,31 +93,32 @@ msgstr "Drobne aktualizacje:"
 
 #: data/files.metainfo.xml.in.in:67
 msgid "Discontinue support for dragging bookmark out of sidebar"
-msgstr ""
+msgstr "Zakończono wsparcie dla przeciągania zakładki poza pasek boczny"
 
 #: data/files.metainfo.xml.in.in:68
-#, fuzzy
-#| msgid "Fix unexpected file activation after navigation with double-click"
 msgid "Fix unexpected scrolling after renaming a folder"
-msgstr ""
-"Naprawiono niespodziewaną aktywację pliku po nawigacji podwójnym kliknięciem"
+msgstr "Naprawiono niespodziewane przewijanie po zmianie nazwy folderu"
 
 #: data/files.metainfo.xml.in.in:69
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
-msgstr ""
+msgstr "Naprawiono rzadki crash podczas zmiany do widoku siatki"
 
 #: data/files.metainfo.xml.in.in:70
 msgid "Ensure the selection persists after refreshing the view"
-msgstr ""
+msgstr "Upewniono się, że zaznaczenie nie zmienia się po odświeżeniu widoku"
 
 #: data/files.metainfo.xml.in.in:71
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
+"Naprawiono błąd przez który Pliki nie uruchamiały się podczas próby "
+"przywrócenia odłączonej lokacji"
 
 #: data/files.metainfo.xml.in.in:72
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
+"Naprawiono widok, który pozostawał widoczny podczas gdy lokacja została "
+"odmontowana"
 
 #: data/files.metainfo.xml.in.in:73 data/files.metainfo.xml.in.in:90
 #: data/files.metainfo.xml.in.in:102 data/files.metainfo.xml.in.in:122
