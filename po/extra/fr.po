@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-13 19:10+0000\n"
-"PO-Revision-Date: 2023-08-24 02:54+0000\n"
+"PO-Revision-Date: 2023-12-19 09:10+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.0.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
@@ -90,31 +90,37 @@ msgstr "Mises à jour mineures :"
 #: data/files.metainfo.xml.in.in:67
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
+"Arrêt de la prise en charge du déplacement des favoris hors de la barre "
+"latérale"
 
 #: data/files.metainfo.xml.in.in:68
-#, fuzzy
-#| msgid "Fix unexpected file activation after navigation with double-click"
 msgid "Fix unexpected scrolling after renaming a folder"
-msgstr ""
-"Correction de l'ouverture inattendue d'un fichier après une navigation par "
-"double-clic"
+msgstr "Correction d'un défilement inattendu après avoir renommé un dossier"
 
 #: data/files.metainfo.xml.in.in:69
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
+"Correction d'un plantage lors du passage à l'affichage sous forme de grille "
+"dans de rares circonstances"
 
 #: data/files.metainfo.xml.in.in:70
 msgid "Ensure the selection persists after refreshing the view"
 msgstr ""
+"Nous nos sommes assurés que la sélection persiste après l'actualisation de "
+"la vue"
 
 #: data/files.metainfo.xml.in.in:71
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
+"Correction de l'échec de l'ouverture de Fichiers lors de la restauration "
+"d'un emplacement déconnecté"
 
 #: data/files.metainfo.xml.in.in:72
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
+"Correction de la vue qui continue à s'afficher lorsqu'un emplacement est "
+"démonté"
 
 #: data/files.metainfo.xml.in.in:73 data/files.metainfo.xml.in.in:90
 #: data/files.metainfo.xml.in.in:102 data/files.metainfo.xml.in.in:122
