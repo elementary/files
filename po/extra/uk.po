@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-28 10:22+0000\n"
-"PO-Revision-Date: 2023-08-24 02:54+0000\n"
+"POT-Creation-Date: 2023-12-13 19:10+0000\n"
+"PO-Revision-Date: 2023-12-19 09:10+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -16,9 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.17\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.0.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
@@ -79,27 +79,57 @@ msgstr "Переглядайте складні дерева швидше у п�
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
-#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:77
-#: data/files.metainfo.xml.in.in:97 data/files.metainfo.xml.in.in:115
-#: data/files.metainfo.xml.in.in:131 data/files.metainfo.xml.in.in:146
-#: data/files.metainfo.xml.in.in:168 data/files.metainfo.xml.in.in:184
-#: data/files.metainfo.xml.in.in:199
+#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:88
+#: data/files.metainfo.xml.in.in:100 data/files.metainfo.xml.in.in:120
+#: data/files.metainfo.xml.in.in:138 data/files.metainfo.xml.in.in:154
+#: data/files.metainfo.xml.in.in:169 data/files.metainfo.xml.in.in:191
+#: data/files.metainfo.xml.in.in:207 data/files.metainfo.xml.in.in:222
 msgid "Minor updates:"
 msgstr "Незначні оновлення:"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:79
-#: data/files.metainfo.xml.in.in:99 data/files.metainfo.xml.in.in:134
-#: data/files.metainfo.xml.in.in:148 data/files.metainfo.xml.in.in:170
-#: data/files.metainfo.xml.in.in:186 data/files.metainfo.xml.in.in:201
+#: data/files.metainfo.xml.in.in:67
+msgid "Discontinue support for dragging bookmark out of sidebar"
+msgstr "Припинено підтримку перетягування закладок з бічної панелі"
+
+#: data/files.metainfo.xml.in.in:68
+msgid "Fix unexpected scrolling after renaming a folder"
+msgstr "Виправлено неочікуване прокручування після перейменування теки"
+
+#: data/files.metainfo.xml.in.in:69
+msgid ""
+"Fixes a crash when switching to viewing as grid under rare circumstances"
+msgstr ""
+"Виправлено збій під час переходу до перегляду у вигляді сітки за рідкісних "
+"обставин"
+
+#: data/files.metainfo.xml.in.in:70
+msgid "Ensure the selection persists after refreshing the view"
+msgstr "Вибір зберігається після оновлення подання"
+
+#: data/files.metainfo.xml.in.in:71
+msgid "Fix Files failing to open if trying to restore a disconnected location"
+msgstr ""
+"Виправлено помилку, коли файли не відкриваються під час спроби відновити "
+"від'єднане розташування"
+
+#: data/files.metainfo.xml.in.in:72
+msgid "Fix the view continuing to show when a location is unmounted"
+msgstr "Виправлено продовження показу не змонтованого розташування"
+
+#: data/files.metainfo.xml.in.in:73 data/files.metainfo.xml.in.in:90
+#: data/files.metainfo.xml.in.in:102 data/files.metainfo.xml.in.in:122
+#: data/files.metainfo.xml.in.in:157 data/files.metainfo.xml.in.in:171
+#: data/files.metainfo.xml.in.in:193 data/files.metainfo.xml.in.in:209
+#: data/files.metainfo.xml.in.in:224
 msgid "Updated translations"
 msgstr "Оновлено переклади"
 
-#: data/files.metainfo.xml.in.in:93 data/files.metainfo.xml.in.in:127
-#: data/files.metainfo.xml.in.in:164
+#: data/files.metainfo.xml.in.in:116 data/files.metainfo.xml.in.in:150
+#: data/files.metainfo.xml.in.in:187
 msgid "Improvements:"
 msgstr "Поліпшено:"
 
-#: data/files.metainfo.xml.in.in:95
+#: data/files.metainfo.xml.in.in:118
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
@@ -107,21 +137,21 @@ msgstr ""
 "Нова панель вкладок з покращеною анімацією, плавнішим перетягуванням та "
 "перевпорядкованим контекстними меню вкладок"
 
-#: data/files.metainfo.xml.in.in:117
+#: data/files.metainfo.xml.in.in:140
 msgid "Design updates for Bulk Rename"
 msgstr "Оновлення для групового перейменування"
 
-#: data/files.metainfo.xml.in.in:129
+#: data/files.metainfo.xml.in.in:152
 msgid "Implement a bulk rename functionality"
 msgstr "Впроваджено функціональність групового перейменування"
 
-#: data/files.metainfo.xml.in.in:133
+#: data/files.metainfo.xml.in.in:156
 msgid "Use a colorful level bar to show disk usage in the properties dialog"
 msgstr ""
 "Використано кольорову смужку рівня для позначення використання диска у "
 "діалоговому вікні властивостей"
 
-#: data/files.metainfo.xml.in.in:166
+#: data/files.metainfo.xml.in.in:189
 msgid ""
 "Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
@@ -151,11 +181,6 @@ msgstr "Автентифікація потрібна для запуску Фа
 
 #~ msgid "Fixes:"
 #~ msgstr "Виправлення:"
-
-#~ msgid "Fix unexpected file activation after navigation with double-click"
-#~ msgstr ""
-#~ "Виправлено неочікувану активацію файлу після переходу за подвійним "
-#~ "клацанням"
 
 #~ msgid "Fix dimmed window after use of filechooser portal"
 #~ msgstr ""

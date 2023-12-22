@@ -16,15 +16,15 @@
   <screenshots>
     <screenshot type="default">
       <caption>Quick access to settings like zoom levels and hidden files</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/6.5.2/data/screenshot-grid.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.5.3/data/screenshot-grid.png</image>
     </screenshot>
     <screenshot>
       <caption>See more metadata at a glance in List view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/6.5.2/data/screenshot-list.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.5.3/data/screenshot-list.png</image>
     </screenshot>
     <screenshot>
       <caption>Browse complex trees faster with Column view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/6.5.2/data/screenshot-column.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.5.3/data/screenshot-column.png</image>
     </screenshot>
   </screenshots>
 
@@ -60,6 +60,29 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="6.5.3" date="2023-12-11" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Discontinue support for dragging bookmark out of sidebar</li>
+          <li>Fix unexpected scrolling after renaming a folder</li>
+          <li>Fixes a crash when switching to viewing as grid under rare circumstances</li>
+          <li>Ensure the selection persists after refreshing the view</li>
+          <li>Fix Files failing to open if trying to restore a disconnected location</li>
+          <li>Fix the view continuing to show when a location is unmounted</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/2292">Don't depend on LibPlank</issue>
+        <issue url="https://github.com/elementary/files/issues/2325">Unexpected scroll to bottom after renaming folder</issue>
+        <issue url="https://github.com/elementary/files/issues/2326">Switching to View as Grid with large thumbnails and containing a link to an image crashes Files</issue>
+        <issue url="https://github.com/elementary/files/issues/2328">Selection changes on refreshing the view</issue>
+        <issue url="https://github.com/elementary/files/issues/2330">Files does not open if restoring disconnected location into Column View</issue>
+        <issue url="https://github.com/elementary/files/issues/2337">Unmounting a location does not close the view</issue>
+      </issues>
+    </release>
+
     <release version="6.5.2" date="2023-09-26" urgency="medium">
       <description>
         <p>Minor updates:</p>
