@@ -34,37 +34,6 @@ namespace Files {
             debug ("Icon View destruct");
         }
 
-        private void set_up_view () {
-            tree.set_model (model);
-            tree.set_selection_mode (Gtk.SelectionMode.MULTIPLE);
-            tree.set_columns (-1);
-
-            name_renderer = new Files.TextRenderer (ViewMode.ICON);
-            icon_renderer = new Files.IconRenderer (ViewMode.ICON);
-
-            set_up_name_renderer ();
-
-            tree.pack_start (icon_renderer, false);
-            tree.pack_end (name_renderer, false);
-
-            tree.add_attribute (name_renderer, "text", ListModel.ColumnID.FILENAME);
-            tree.add_attribute (name_renderer, "file", ListModel.ColumnID.FILE_COLUMN);
-            tree.add_attribute (name_renderer, "background", ListModel.ColumnID.COLOR);
-            tree.add_attribute (icon_renderer, "file", ListModel.ColumnID.FILE_COLUMN);
-
-            connect_tree_signals ();
-            tree.realize.connect ((w) => {
-                tree.grab_focus ();
-            });
-        }
-
-        protected override void set_up_name_renderer () {
-            base.set_up_name_renderer ();
-            name_renderer.wrap_mode = Pango.WrapMode.WORD_CHAR;
-            name_renderer.xalign = 0.5f;
-            name_renderer.yalign = 0.0f;
-        }
-
         protected override void connect_tree_signals () {
             tree.selection_changed.connect (on_view_selection_changed);
         }
@@ -74,8 +43,30 @@ namespace Files {
         }
 
         protected override Gtk.Widget? create_view () {
-            tree = new Gtk.IconView ();
-            set_up_view ();
+            tree = new Gtk.IconView.with_model (model) {
+                selection_mode = MULTIPLE,
+                columns = -1,
+            };
+
+            icon_renderer = new Files.IconRenderer (ViewMode.ICON);
+            tree.pack_start (icon_renderer, false);
+            tree.add_attribute (icon_renderer, "file", ListModel.ColumnID.FILE_COLUMN);
+
+            name_renderer = new Files.TextRenderer (ViewMode.ICON) {
+                wrap_mode = WORD_CHAR,
+                xalign = 0.5f,
+                yalign = 0.0f
+            };
+            set_up_name_renderer ();
+            tree.pack_end (name_renderer, false);
+            tree.add_attribute (name_renderer, "text", ListModel.ColumnID.FILENAME);
+            tree.add_attribute (name_renderer, "file", ListModel.ColumnID.FILE_COLUMN);
+            tree.add_attribute (name_renderer, "background", ListModel.ColumnID.COLOR);
+
+            connect_tree_signals ();
+            tree.realize.connect ((w) => {
+                tree.grab_focus ();
+            });
 
             return tree as Gtk.Widget;
         }
