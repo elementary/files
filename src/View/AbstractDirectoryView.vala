@@ -111,7 +111,7 @@ namespace Files {
                     _zoom_level = value;
                 }
 
-                on_zoom_level_changed (value);
+                on_zoom_level_changed (_zoom_level);
             }
         }
 

@@ -72,22 +72,15 @@ namespace Files {
         }
 
         protected override void set_up_zoom_level () {
+            minimum_zoom = (ZoomLevel)Files.icon_view_settings.get_enum ("minimum-zoom-level");
+            maximum_zoom = (ZoomLevel)Files.icon_view_settings.get_enum ("maximum-zoom-level");
+            zoom_level =  (ZoomLevel)Files.icon_view_settings.get_enum ("zoom-level");
+
             Files.icon_view_settings.bind (
                 "zoom-level",
                 this, "zoom-level",
-                GLib.SettingsBindFlags.DEFAULT
+                GLib.SettingsBindFlags.SET
             );
-
-            minimum_zoom = (ZoomLevel)Files.icon_view_settings.get_enum ("minimum-zoom-level");
-            maximum_zoom = (ZoomLevel)Files.icon_view_settings.get_enum ("maximum-zoom-level");
-
-            if (zoom_level < minimum_zoom) {
-                zoom_level = minimum_zoom;
-            }
-
-            if (zoom_level > maximum_zoom) {
-                zoom_level = maximum_zoom;
-            }
         }
 
         public override ZoomLevel get_normal_zoom_level () {
