@@ -62,6 +62,7 @@ namespace Files {
             tree.add_attribute (name_renderer, "text", ListModel.ColumnID.FILENAME);
             tree.add_attribute (name_renderer, "file", ListModel.ColumnID.FILE_COLUMN);
             tree.add_attribute (name_renderer, "background", ListModel.ColumnID.COLOR);
+            tree.bind_property ("item-width", name_renderer, "item-width", DEFAULT);
 
             connect_tree_signals ();
             tree.realize.connect ((w) => {
@@ -91,15 +92,8 @@ namespace Files {
         }
 
         public override void change_zoom_level () {
-            int spacing = (int)((double)icon_size * (0.3 - zoom_level * 0.03));
-            int item_width = (int)((double)icon_size * (2.5 - zoom_level * 0.2));
-            if (tree != null) {
-                tree.set_column_spacing (spacing);
-                tree.set_item_width (item_width);
-            }
-
-            name_renderer.item_width = item_width;
-
+            tree.column_spacing = (int)(icon_size * (0.3 - zoom_level * 0.03));
+            tree.item_width = (int)(icon_size * (2.5 - zoom_level * 0.2));
             base.change_zoom_level (); /* Sets name_renderer zoom_level */
         }
 
