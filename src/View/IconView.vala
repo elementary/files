@@ -92,8 +92,8 @@ namespace Files {
         }
 
         public override void change_zoom_level () {
-            tree.column_spacing = (int)(icon_size * (0.3 - zoom_level * 0.03));
-            tree.item_width = (int)(icon_size * (2.5 - zoom_level * 0.2));
+            tree.column_spacing = (int)(icon_size * (0.4 - zoom_level * 0.03));
+            tree.row_spacing = tree.column_spacing;
             base.change_zoom_level (); /* Sets name_renderer zoom_level */
         }
 
@@ -184,7 +184,7 @@ namespace Files {
             return tree.has_focus;
         }
 
-        protected override uint get_event_position_info (Gdk.EventButton event,
+        protected override uint get_event_position_info (Gdk.Event event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
             Gtk.CellRenderer? cell_renderer;
@@ -222,13 +222,6 @@ namespace Files {
                         y >= rect.y + text_renderer.text_height + text_renderer.text_y_offset
                     );
                     zone = is_on_blank ? zone : ClickZone.NAME;
-                    if (is_on_blank && rubberband) {
-                        /* Fake location outside centre bottom of item for rubberbanding because IconView
-                         * unlike TreeView will not rubberband if clicked on an item. */
-                         //TODO Rewrite needed for Gtk4 where events are immutable
-                        event.x = rect.x + rect.width / 2;
-                        event.y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
-                    }
                 } else {
                     bool on_helper = false;
                     Files.File? file = model.file_for_path (path);
