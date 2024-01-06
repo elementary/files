@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-13 19:10+0000\n"
-"PO-Revision-Date: 2023-08-24 18:25+0000\n"
-"Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/"
-">\n"
+"PO-Revision-Date: 2024-01-05 10:11+0000\n"
+"Last-Translator: lenemter <lenemter@gmail.com>\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/extra/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.17\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.0.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
@@ -93,29 +93,34 @@ msgstr "Незначительные обновления:"
 #: data/files.metainfo.xml.in.in:67
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
+"Удалена возможность удаления закладок путём перетаскивания их из бокового "
+"меню"
 
 #: data/files.metainfo.xml.in.in:68
-#, fuzzy
-#| msgid "Fix unexpected file activation after navigation with double-click"
 msgid "Fix unexpected scrolling after renaming a folder"
-msgstr "Исправлена активация файлов после навигации"
+msgstr "Исправлена неожиданная прокрутка после переименования папки"
 
 #: data/files.metainfo.xml.in.in:69
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
+"Исправлен вылет при переключении в вид сетки при некоторых обстоятельствах"
 
 #: data/files.metainfo.xml.in.in:70
 msgid "Ensure the selection persists after refreshing the view"
-msgstr ""
+msgstr "Выделение теперь сохраняется при обновлении"
 
 #: data/files.metainfo.xml.in.in:71
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
+"Исправлена ошибка, из-за которой Файлы не запускались при восстановлении "
+"отключённой папки"
 
 #: data/files.metainfo.xml.in.in:72
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
+"Исправлена ошибка, из-за которой папка продолжала быть открытой даже после "
+"демонтирования локации"
 
 #: data/files.metainfo.xml.in.in:73 data/files.metainfo.xml.in.in:90
 #: data/files.metainfo.xml.in.in:102 data/files.metainfo.xml.in.in:122
