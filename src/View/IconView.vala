@@ -75,7 +75,7 @@ namespace Files {
         protected override void set_up_zoom_level () {
             minimum_zoom = (ZoomLevel)Files.icon_view_settings.get_enum ("minimum-zoom-level");
             maximum_zoom = (ZoomLevel)Files.icon_view_settings.get_enum ("maximum-zoom-level");
-            zoom_level =  (ZoomLevel)Files.icon_view_settings.get_enum ("zoom-level");
+            zoom_level = (ZoomLevel)Files.icon_view_settings.get_enum ("zoom-level");
 
             Files.icon_view_settings.bind (
                 "zoom-level",
@@ -351,27 +351,27 @@ namespace Files {
          * Views are not displayed until fully loaded */
         protected override void freeze_tree () {
             tree_frozen = true;
-            tree.freeze_child_notify ();
+            tree.freeze_notify ();
             tree.set_model (null);
         }
 
         protected override void thaw_tree () {
             if (tree_frozen) {
                 tree.set_model (model);
-                tree.thaw_child_notify ();
+                tree.thaw_notify ();
                 tree_frozen = false;
             }
         }
 
         // For scrolling
         protected override void freeze_child_notify () {
-            tree.freeze_child_notify ();
+            tree.freeze_notify ();
         }
 
         protected override void thaw_child_notify () {
             //Do not prematurely thaw tree while loading
             if (!tree_frozen) {
-                tree.thaw_child_notify ();
+                tree.thaw_notify ();
             }
         }
 
