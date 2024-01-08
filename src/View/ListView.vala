@@ -202,7 +202,7 @@ namespace Files {
             return tree as Gtk.Widget;
         }
 
-        protected override Settings? get_settings () {
+        protected override Settings? get_view_settings () {
             return Files.list_view_settings;
         }
 

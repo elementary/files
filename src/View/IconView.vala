@@ -82,11 +82,9 @@ namespace Files {
             return tree as Gtk.Widget;
         }
 
-        protected override Settings? get_settings () {
+        protected override Settings? get_view_settings () {
             return Files.icon_view_settings;
         }
-
-
 
         public override void change_zoom_level () {
             int spacing = (int)((double)icon_size * (0.3 - zoom_level * 0.03));

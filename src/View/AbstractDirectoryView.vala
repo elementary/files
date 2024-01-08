@@ -427,12 +427,12 @@ namespace Files {
         }
 
         public void zoom_normal () {
-            var view_settings = get_settings ();
+            var view_settings = get_view_settings ();
             if (view_settings == null) {
                 return;
             }
 
-            zoom_level = view_settings.get_enum ("default-zoom-level"); // syncs to settings
+            zoom_level = (ZoomLevel)view_settings.get_enum ("default-zoom-level"); // syncs to settings
         }
 
         private uint set_cursor_timeout_id = 0;
@@ -3962,9 +3962,9 @@ namespace Files {
             scroll_to_path (path, scroll_to_top);
         }
 
-        protected virtual Settings? get_settings () { return null; }
+        protected virtual Settings? get_view_settings () { return null; }
         protected virtual void set_up_zoom_level () {
-            var view_settings = get_settings ();
+            var view_settings = get_view_settings ();
             if (view_settings == null) {
                 return;
             }
