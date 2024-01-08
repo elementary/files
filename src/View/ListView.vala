@@ -55,9 +55,12 @@ namespace Files {
                     name_column.min_width = preferred_column_width;
                 } else {
                     var renderer = new Gtk.CellRendererText ();
-                    var col = new Gtk.TreeViewColumn.with_attributes (column_titles [k - fnc],
-                                                                        renderer,
-                                                                        "text", k) {
+                    var col = new Gtk.TreeViewColumn.with_attributes (
+                        column_titles [k - fnc],
+                        renderer,
+                        "text",
+                        k
+                    ) {
                         sort_column_id = k,
                         resizable = false,
                         expand = false,
@@ -91,10 +94,10 @@ namespace Files {
         }
 
         private void schedule_unload_subdirectory_at_path (Gtk.TreePath path) {
-                /* unload subdirectory from model and remove from our list of subdirectories
-                 * after a delay, in case of rapid collapsing and re-expanding of rows */
-                subdirectories_to_unload.append (new Gtk.TreeRowReference (model, path));
-                schedule_model_unload_directories ();
+            /* unload subdirectory from model and remove from our list of subdirectories
+             * after a delay, in case of rapid collapsing and re-expanding of rows */
+            subdirectories_to_unload.append (new Gtk.TreeRowReference (model, path));
+            schedule_model_unload_directories ();
         }
 
         private void set_path_expanded (Gtk.TreePath path, bool expanded) {
@@ -206,11 +209,6 @@ namespace Files {
             return Files.list_view_settings;
         }
 
-
-
-
-
-
         private void add_subdirectory_at_path (Gtk.TreePath path) {
             /* If a new subdirectory is loaded, connect it, load it
              * and add it to the list of subdirectories */
@@ -269,6 +267,7 @@ namespace Files {
                     return get_next_visible_iter (ref iter, false);
                 }
             }
+
             return false;
         }
 

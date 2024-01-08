@@ -33,6 +33,7 @@ namespace Files {
         protected override void connect_tree_signals () {
             tree.get_selection ().changed.connect (on_view_selection_changed);
         }
+
         protected override void disconnect_tree_signals () {
             tree.get_selection ().changed.disconnect (on_view_selection_changed);
         }
@@ -70,8 +71,10 @@ namespace Files {
             };
 
             name_column.pack_start (icon_renderer, false);
-            name_column.set_attributes (icon_renderer,
-                                        "file", Files.ListModel.ColumnID.FILE_COLUMN);
+            name_column.set_attributes (
+                icon_renderer,
+                "file", Files.ListModel.ColumnID.FILE_COLUMN
+            );
 
             name_column.pack_start (name_renderer, true);
             name_column.set_attributes (
@@ -138,23 +141,25 @@ namespace Files {
          * It would take an exponentially long time. Use "select_files" function in parent class.
          */
         public override void select_path (Gtk.TreePath? path, bool cursor_follows = false) {
-            if (path != null) {
-                var selection = tree.get_selection ();
-                selection.select_path (path);
-                if (cursor_follows) {
-                    /* Unlike for IconView, set_cursor unselects previously selected paths (Gtk bug?),
-                     * so we have to remember them and reselect afterwards */
-                    GLib.List<Gtk.TreePath> selected_paths = null;
-                    selection.selected_foreach ((m, p, i) => {
-                        selected_paths.prepend (p);
-                    });
-                    /* Ensure cursor follows last selection */
-                    tree.set_cursor (path, null, false); /* This selects path but unselects rest! */
+            if (path == null) {
+                return;
+            }
 
-                    selected_paths.@foreach ((p) => {
-                       selection.select_path (p);
-                    });
-                }
+            var selection = tree.get_selection ();
+            selection.select_path (path);
+            if (cursor_follows) {
+                /* Unlike for IconView, set_cursor unselects previously selected paths (Gtk bug?),
+                 * so we have to remember them and reselect afterwards */
+                GLib.List<Gtk.TreePath> selected_paths = null;
+                selection.selected_foreach ((m, p, i) => {
+                    selected_paths.prepend (p);
+                });
+                /* Ensure cursor follows last selection */
+                tree.set_cursor (path, null, false); /* This selects path but unselects rest! */
+
+                selected_paths.@foreach ((p) => {
+                   selection.select_path (p);
+                });
             }
         }
         public override void unselect_path (Gtk.TreePath? path) {
@@ -171,17 +176,20 @@ namespace Files {
             }
         }
 
-        public override bool get_visible_range (out Gtk.TreePath? start_path,
-                                                out Gtk.TreePath? end_path) {
+        public override bool get_visible_range (
+            out Gtk.TreePath? start_path,
+            out Gtk.TreePath? end_path
+        ) {
             start_path = null;
             end_path = null;
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-
-        protected override uint get_event_position_info (Gdk.EventButton event,
-                                                         out Gtk.TreePath? path,
-                                                         bool rubberband = false) {
+        protected override uint get_event_position_info (
+            Gdk.EventButton event,
+            out Gtk.TreePath? path,
+            bool rubberband = false
+        ) {
             Gtk.TreePath? p = null;
             unowned Gtk.TreeViewColumn? c = null;
             uint zone;
@@ -274,18 +282,22 @@ namespace Files {
             tree.scroll_to_cell (path, name_column, scroll_to_top, 0.5f, 0.5f);
         }
 
-        protected override void set_cursor_on_cell (Gtk.TreePath path,
-                                                    Gtk.CellRenderer renderer,
-                                                    bool start_editing,
-                                                    bool scroll_to_top) {
+        protected override void set_cursor_on_cell (
+            Gtk.TreePath path,
+            Gtk.CellRenderer renderer,
+            bool start_editing,
+            bool scroll_to_top
+        ) {
             scroll_to_cell (path, scroll_to_top);
             tree.set_cursor_on_cell (path, name_column, renderer, start_editing);
         }
 
-        public override void set_cursor (Gtk.TreePath? path,
-                                         bool start_editing,
-                                         bool select,
-                                         bool scroll_to_top) {
+        public override void set_cursor (
+            Gtk.TreePath? path,
+            bool start_editing,
+            bool select,
+            bool scroll_to_top
+        ) {
             if (path == null) {
                 return;
             }
@@ -344,7 +356,6 @@ namespace Files {
             if (!tree_frozen) {
                 tree.thaw_child_notify ();
             }
-
         }
     }
 

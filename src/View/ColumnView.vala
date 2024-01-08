@@ -49,7 +49,8 @@ namespace Files {
                 double_click_timeout_id = 0;
                 is_frozen = false;
 
-                if (source_drag_file_list == null && selection_only_contains_folders (get_selected_files ())) {
+                if (source_drag_file_list == null &&
+                    selection_only_contains_folders (get_selected_files ())) {
                     activate_selected_items ();
                 }
             }
@@ -114,7 +115,6 @@ namespace Files {
 
             selected_folder = file;
             bool result = true;
-
             var type = event.get_event_type ();
             if (type == Gdk.EventType.BUTTON_PRESS) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */

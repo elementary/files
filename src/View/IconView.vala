@@ -164,7 +164,6 @@ namespace Files {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-
         protected override uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
