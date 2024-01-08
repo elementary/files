@@ -220,7 +220,6 @@ namespace Files.View {
             }
 
             directory = Directory.from_gfile (loc);
-            assert (directory != null);
             connect_dir_signals ();
         }
 
