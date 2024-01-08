@@ -149,7 +149,6 @@ namespace Files.View {
 
             /*  Column View requires slots to determine their own width (other views' width determined by Window */
             if (mode == ViewMode.MILLER_COLUMNS) {
-
                 if (dir.is_empty ()) { /* No files in the file cache */
                     Pango.Rectangle extents;
                     var layout = dir_view.create_pango_layout (null);
@@ -222,7 +221,6 @@ namespace Files.View {
 
             directory = Directory.from_gfile (loc);
             assert (directory != null);
-
             connect_dir_signals ();
         }
 
@@ -425,6 +423,7 @@ namespace Files.View {
             } else if (directory.permission_denied) {
                 msg = DENIED_MESSAGE;
             }
+
             return msg;
         }
     }
