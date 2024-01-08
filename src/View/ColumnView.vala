@@ -61,8 +61,6 @@ namespace Files {
             return Files.column_view_settings;
         }
 
-
-
         protected override Gtk.Widget? create_view () {
             model.has_child = false;
             base.create_view ();
@@ -145,7 +143,7 @@ namespace Files {
             return result;
         }
 
-        protected override bool handle_default_button_click (Gdk.EventButton event) {
+        protected override bool handle_default_button_click (Gdk.Event event) {
             cancel_await_double_click ();
             return base.handle_default_button_click (event);
         }

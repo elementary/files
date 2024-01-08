@@ -3862,7 +3862,7 @@ namespace Files {
             return true;
         }
 
-        protected virtual bool handle_default_button_click (Gdk.EventButton event) {
+        protected virtual bool handle_default_button_click (Gdk.Event event) {
             /* pass unhandled events to the View.Window */
             return false;
         }
