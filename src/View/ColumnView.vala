@@ -61,12 +61,7 @@ namespace Files {
             return Files.column_view_settings;
         }
 
-        public override ZoomLevel get_normal_zoom_level () {
-            var zoom = Files.column_view_settings.get_enum ("default-zoom-level");
-            Files.column_view_settings.set_enum ("zoom-level", zoom);
 
-            return (ZoomLevel)zoom;
-        }
 
         protected override Gtk.Widget? create_view () {
             model.has_child = false;

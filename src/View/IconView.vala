@@ -86,12 +86,7 @@ namespace Files {
             return Files.icon_view_settings;
         }
 
-        public override ZoomLevel get_normal_zoom_level () {
-            var zoom = Files.icon_view_settings.get_enum ("default-zoom-level");
-            Files.icon_view_settings.set_enum ("zoom-level", zoom);
 
-            return (ZoomLevel)zoom;
-        }
 
         public override void change_zoom_level () {
             int spacing = (int)((double)icon_size * (0.3 - zoom_level * 0.03));

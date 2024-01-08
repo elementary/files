@@ -427,7 +427,12 @@ namespace Files {
         }
 
         public void zoom_normal () {
-            zoom_level = get_normal_zoom_level ();
+            var view_settings = get_settings ();
+            if (view_settings == null) {
+                return;
+            }
+
+            zoom_level = view_settings.get_enum ("default-zoom-level"); // syncs to settings
         }
 
         private uint set_cursor_timeout_id = 0;
@@ -4021,7 +4026,6 @@ namespace Files {
 
         protected abstract Gtk.Widget? create_view ();
 
-        protected abstract ZoomLevel get_normal_zoom_level ();
         protected abstract uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
