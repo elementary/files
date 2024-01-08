@@ -38,7 +38,7 @@ namespace Files {
             get { return directory != null ? directory.file : null; }
         }
 
-        public new GLib.File? location {
+        public GLib.File? location {
             get {
                 return directory != null ? directory.location : null;
             }
