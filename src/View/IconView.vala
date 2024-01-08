@@ -82,23 +82,8 @@ namespace Files {
             return tree as Gtk.Widget;
         }
 
-        protected override void set_up_zoom_level () {
-            Files.icon_view_settings.bind (
-                "zoom-level",
-                this, "zoom-level",
-                GLib.SettingsBindFlags.DEFAULT
-            );
-
-            minimum_zoom = (ZoomLevel)Files.icon_view_settings.get_enum ("minimum-zoom-level");
-            maximum_zoom = (ZoomLevel)Files.icon_view_settings.get_enum ("maximum-zoom-level");
-
-            if (zoom_level < minimum_zoom) {
-                zoom_level = minimum_zoom;
-            }
-
-            if (zoom_level > maximum_zoom) {
-                zoom_level = maximum_zoom;
-            }
+        protected override Settings? get_settings () {
+            return Files.icon_view_settings;
         }
 
         public override ZoomLevel get_normal_zoom_level () {

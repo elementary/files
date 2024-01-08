@@ -3957,6 +3957,25 @@ namespace Files {
             scroll_to_path (path, scroll_to_top);
         }
 
+        protected virtual Settings? get_settings () { return null; }
+        protected virtual void set_up_zoom_level () {
+            var view_settings = get_settings ();
+            if (view_settings == null) {
+                return;
+            }
+
+            minimum_zoom = (ZoomLevel)view_settings.get_enum ("minimum-zoom-level");
+            maximum_zoom = (ZoomLevel)view_settings.get_enum ("maximum-zoom-level");
+            zoom_level = (ZoomLevel)view_settings.get_enum ("zoom-level");
+
+            view_settings.bind (
+                "zoom-level",
+                this, "zoom-level",
+                GLib.SettingsBindFlags.SET
+            );
+        }
+
+
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
         public abstract Gtk.TreePath? get_path_at_pos (int x, int win);
@@ -4001,7 +4020,7 @@ namespace Files {
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
 
         protected abstract Gtk.Widget? create_view ();
-        protected abstract void set_up_zoom_level ();
+
         protected abstract ZoomLevel get_normal_zoom_level ();
         protected abstract uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
