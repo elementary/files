@@ -51,40 +51,46 @@ namespace Files {
                 resizable = true
             };
 
-            name_renderer = new Files.TextRenderer (ViewMode.LIST);
-            name_renderer.@set ("wrap-width", -1);
-            name_renderer.@set ("zoom-level", ZoomLevel.NORMAL);
-            name_renderer.@set ("ellipsize-set", true);
-            name_renderer.@set ("ellipsize", Pango.EllipsizeMode.END);
-            name_renderer.xalign = 0.0f;
-            name_renderer.yalign = 0.5f;
+            name_renderer = new Files.TextRenderer (ViewMode.LIST) {
+                wrap_width = -1,
+                zoom_level = NORMAL,
+                ellipsize_set = true,
+                ellipsize = END,
+                xalign = 0.0f,
+                yalign = 0.5f
+            };
 
             icon_renderer = new IconRenderer () {
                 show_emblems = false,
                 lpad = 6
             };
 
-            var emblem_renderer = new Files.EmblemRenderer ();
-            emblem_renderer.yalign = 0.5f;
+            var emblem_renderer = new Files.EmblemRenderer () {
+                yalign = 0.5f
+            };
 
             name_column.pack_start (icon_renderer, false);
             name_column.set_attributes (icon_renderer,
                                         "file", Files.ListModel.ColumnID.FILE_COLUMN);
 
             name_column.pack_start (name_renderer, true);
-            name_column.set_attributes (name_renderer,
-                                        "text", Files.ListModel.ColumnID.FILENAME,
-                                        "file", Files.ListModel.ColumnID.FILE_COLUMN,
-                                        "background", Files.ListModel.ColumnID.COLOR);
+            name_column.set_attributes (
+                name_renderer,
+                "text", Files.ListModel.ColumnID.FILENAME,
+                "file", Files.ListModel.ColumnID.FILE_COLUMN,
+                "background", Files.ListModel.ColumnID.COLOR
+            );
 
             name_column.pack_start (emblem_renderer, false);
-            name_column.set_attributes (emblem_renderer,
-                                        "file", Files.ListModel.ColumnID.FILE_COLUMN);
+            name_column.set_attributes (
+                emblem_renderer,
+                "file", Files.ListModel.ColumnID.FILE_COLUMN
+            );
 
             tree.append_column (name_column);
 
-
             connect_tree_signals ();
+
             tree.realize.connect ((w) => {
                 tree.grab_focus ();
                 tree.columns_autosize ();
