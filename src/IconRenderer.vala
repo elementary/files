@@ -32,6 +32,7 @@ namespace Files {
         public Gdk.Rectangle hover_helper_rect;
         public Gdk.Rectangle hover_rect;
         public int lpad {get; set; default = 0;}
+        public bool show_emblems { get; set; default = true; }
         public Files.File? drop_file {get; set;}
 
         public ZoomLevel zoom_level {
@@ -63,7 +64,7 @@ namespace Files {
         private int h_overlap; // Horizontal overlap between helper and icon
         private int v_overlap; // Vertical overlap between helper and icon
         private int helper_size;
-        private bool show_emblems;
+
         private ZoomLevel _zoom_level = ZoomLevel.NORMAL;
         private Files.File? _file;
         private Files.IconSize icon_size;
@@ -82,10 +83,6 @@ namespace Files {
             hover_helper_rect = {0, 0, (int) Files.IconSize.EMBLEM, (int) Files.IconSize.EMBLEM};
         }
 
-        public IconRenderer (ViewMode view_mode) {
-            show_emblems = view_mode == ViewMode.ICON;
-            xpad = 0;
-        }
 
         public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
                                      Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {

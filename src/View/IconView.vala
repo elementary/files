@@ -40,7 +40,9 @@ namespace Files {
             tree.set_columns (-1);
 
             name_renderer = new Files.TextRenderer (ViewMode.ICON);
-            icon_renderer = new Files.IconRenderer (ViewMode.ICON);
+            icon_renderer = new Files.IconRenderer () {
+                show_emblems = true
+            };
 
             set_up_name_renderer ();
 

@@ -24,14 +24,9 @@ namespace Files {
 
         public ColumnView (View.Slot _slot) {
             base (_slot);
+            icon_renderer.show_emblems = false;
             /* We do not need to load the directory - this is done by Miller View*/
             /* We do not need to connect to "row-activated" signal - we handle left-clicks ourselves */
-        }
-
-        protected override void set_up_icon_renderer () {
-            icon_renderer = new IconRenderer (ViewMode.MILLER_COLUMNS) {
-                lpad = 6
-            };
         }
 
         protected new void on_view_selection_changed () {

@@ -38,12 +38,6 @@ namespace Files {
             base (_slot);
         }
 
-        protected override void set_up_icon_renderer () {
-            icon_renderer = new IconRenderer (ViewMode.LIST) {
-                lpad = 6
-            };
-        }
-
         private void connect_additional_signals () {
             tree.row_expanded.connect (on_row_expanded);
             tree.row_collapsed.connect (on_row_collapsed);
