@@ -103,7 +103,6 @@ namespace Files {
         public abstract void user_path_change_request (GLib.File loc, bool make_root);
         public abstract void focus_first_for_empty_selection (bool select);
         public abstract void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location);
-        protected abstract void make_view ();
         public abstract void close ();
         public abstract FileInfo? lookup_file_info (GLib.File loc);
 

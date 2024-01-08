@@ -82,7 +82,27 @@ namespace Files.View {
             width = preferred_column_width;
 
             set_up_directory (_location); /* Connect dir signals before making view */
-            make_view ();
+            switch (mode) {
+                case ViewMode.MILLER_COLUMNS:
+                    dir_view = new Files.ColumnView (this);
+                    break;
+
+                case ViewMode.LIST:;
+                    dir_view = new Files.ListView (this);
+                    break;
+
+                case ViewMode.ICON:
+                    dir_view = new Files.IconView (this);
+                    break;
+
+                default:
+                    break;
+            }
+
+            /* Miller View creates its own overlay and handles packing of the directory view */
+            if (mode != ViewMode.MILLER_COLUMNS) {
+                add_overlay (dir_view);
+            }
             connect_dir_view_signals ();
             connect_slot_signals ();
 
@@ -263,32 +283,6 @@ namespace Files.View {
                 /* Propagate reload signal to any other slot showing this directory indicating it is not
                  * the original signal */
                 directory.need_reload (false);
-            }
-        }
-
-        protected override void make_view () {
-            assert (dir_view == null);
-
-            switch (mode) {
-                case ViewMode.MILLER_COLUMNS:
-                    dir_view = new Files.ColumnView (this);
-                    break;
-
-                case ViewMode.LIST:;
-                    dir_view = new Files.ListView (this);
-                    break;
-
-                case ViewMode.ICON:
-                    dir_view = new Files.IconView (this);
-                    break;
-
-                default:
-                    break;
-            }
-
-            /* Miller View creates its own overlay and handles packing of the directory view */
-            if (mode != ViewMode.MILLER_COLUMNS) {
-                add_overlay (dir_view);
             }
         }
 

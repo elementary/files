@@ -74,7 +74,8 @@ namespace Files.View {
 
             content_box.show_all ();
 
-            make_view ();
+            current_slot = null;
+            add_location (root_location, null); /* current slot gets set by this */
 
             is_frozen = true;
         }
@@ -83,10 +84,6 @@ namespace Files.View {
             debug ("Miller destruct");
         }
 
-        protected override void make_view () {
-            current_slot = null;
-            add_location (root_location, null); /* current slot gets set by this */
-        }
 
         /** Creates a new slot in the host slot hpane */
         public void add_location (GLib.File loc, View.Slot? host = null) {
