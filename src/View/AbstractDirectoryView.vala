@@ -3471,7 +3471,7 @@ namespace Files {
             return false;
         }
 
-        protected virtual bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
+        protected virtual bool handle_primary_button_click (Gdk.Event event, Gtk.TreePath? path) {
             return true;
         }
 
