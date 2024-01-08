@@ -38,8 +38,18 @@ namespace Files {
             get { return directory != null ? directory.file : null; }
         }
 
-        public GLib.File? location {
-            get { return directory != null ? directory.location : null; }
+        public new GLib.File? location {
+            get {
+                return directory != null ? directory.location : null;
+            }
+
+            set construct {
+                if (value == null) {
+                    return;
+                }
+
+                directory = Directory.from_gfile (value);
+            }
         }
 
         public string uri {
