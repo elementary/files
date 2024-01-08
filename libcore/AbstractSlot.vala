@@ -44,10 +44,6 @@ namespace Files {
             }
 
             set construct {
-                if (value == null) {
-                    return;
-                }
-
                 directory = Directory.from_gfile (value);
             }
         }
