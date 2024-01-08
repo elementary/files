@@ -148,10 +148,6 @@ namespace Files {
             return base.handle_default_button_click (event);
         }
 
-        protected override void change_zoom_level () {
-            base.change_zoom_level ();
-        }
-
         public override void cancel () {
             base.cancel ();
             cancel_await_double_click ();
