@@ -93,6 +93,39 @@ namespace Files.View {
             }
         }
 
+        public Gtk.Widget? content {
+            set {
+                if (content_item != null) {
+                    remove (content_item);
+                }
+
+                content_item = value;
+
+                if (content_item != null) {
+                    add (content_item);
+                    content_item.show_all ();
+                }
+            }
+            get {
+                return content_item;
+            }
+        }
+
+        // Either the path or a special name or fallback if invalid
+        // Window will use as little as possible to distinguish tabs
+        private string label = "";
+        public string tab_name {
+            private set {
+                if (label != value) { /* Do not signal if no change */
+                    label = value;
+                    tab_name_changed (value);
+                }
+            }
+            get {
+                return label;
+            }
+        }
+
         public bool is_loading {get; private set; default = false;}
 
         private View.OverlayBar overlay_statusbar;
@@ -152,39 +185,6 @@ namespace Files.View {
         public void close () {
             disconnect_signals ();
             view.close ();
-        }
-
-        public Gtk.Widget? content {
-            set {
-                if (content_item != null) {
-                    remove (content_item);
-                }
-
-                content_item = value;
-
-                if (content_item != null) {
-                    add (content_item);
-                    content_item.show_all ();
-                }
-            }
-            get {
-                return content_item;
-            }
-        }
-
-        // Either the path or a special name or fallback if invalid
-        // Window will use as little as possible to distinguish tabs
-        private string label = "";
-        public string tab_name {
-            private set {
-                if (label != value) { /* Do not signal if no change */
-                    label = value;
-                    tab_name_changed (value);
-                }
-            }
-            get {
-                return label;
-            }
         }
 
         public bool go_up () {
