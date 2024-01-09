@@ -428,7 +428,6 @@ namespace Files.View {
             }
 
             if (can_show_folder) {
-                assert (view != null);
                 content = view.get_content_box ();
                 var directory = dir.file;
 
@@ -564,12 +563,10 @@ namespace Files.View {
         }
 
         public Gee.List<string> get_go_back_path_list () {
-            assert (browser != null);
             return browser.go_back_list ();
         }
 
         public Gee.List<string> get_go_forward_path_list () {
-            assert (browser != null);
             return browser.go_forward_list ();
         }
 
