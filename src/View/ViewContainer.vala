@@ -193,11 +193,9 @@ namespace Files.View {
         }
 
         private void on_folder_deleted (GLib.File deleted) {
-            if (deleted.equal (this.location)) {
-                if (!go_up ()) {
-                    close ();
-                    window.remove_content (this);
-                }
+            if (deleted.equal (this.location) && !go_up ()) {
+                close ();
+                window.remove_content (this);
             }
         }
 
