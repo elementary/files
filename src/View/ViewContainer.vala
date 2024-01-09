@@ -246,7 +246,12 @@ namespace Files.View {
                 no_show_all = true
             };
 
-            connect_slot_signals (this.view);
+            view.active.connect (on_slot_active);
+            view.path_changed.connect (on_slot_path_changed);
+            view.new_container_request.connect (on_slot_new_container_request);
+            view.selection_changed.connect (on_slot_selection_changed);
+            view.directory_loaded.connect (on_slot_directory_loaded);
+
             directory_is_loading (loc);
             slot.initialize_directory ();
             show_all ();
@@ -277,13 +282,6 @@ namespace Files.View {
             /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
-        private void connect_slot_signals (Files.AbstractSlot aslot) {
-            aslot.active.connect (on_slot_active);
-            aslot.path_changed.connect (on_slot_path_changed);
-            aslot.new_container_request.connect (on_slot_new_container_request);
-            aslot.selection_changed.connect (on_slot_selection_changed);
-            aslot.directory_loaded.connect (on_slot_directory_loaded);
-        }
 
         private void disconnect_slot_signals (Files.AbstractSlot aslot) {
             aslot.active.disconnect (on_slot_active);
