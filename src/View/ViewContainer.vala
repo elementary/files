@@ -157,11 +157,6 @@ namespace Files.View {
             debug ("ViewContainer destruct");
         }
 
-        private void disconnect_signals () {
-            disconnect_slot_signals (view);
-            disconnect_window_signals ();
-        }
-
         private void disconnect_window_signals () {
             if (window != null) {
                 window.folder_deleted.disconnect (on_folder_deleted);
@@ -178,7 +173,8 @@ namespace Files.View {
         }
 
         public void close () {
-            disconnect_signals ();
+            disconnect_slot_signals (view);
+            disconnect_window_signals ();
             view.close ();
         }
 
