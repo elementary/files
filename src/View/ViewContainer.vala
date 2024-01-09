@@ -260,23 +260,21 @@ namespace Files.View {
         **/
         public void change_view_mode (ViewMode mode, GLib.File? loc = null) {
             var aslot = get_current_slot ();
-            if (aslot == null) {
+            if (aslot == null || mode == view_mode) {
                 return;
             }
 
-            if (mode != view_mode) {
-                aslot.close ();
-                view_mode = mode;
-                loading (false);
-                store_selection ();
-                /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
-                disconnect_slot_signals (view);
-                add_view (mode, loc ?? location);
-                /* Slot is created inactive so we activate now since we must be the current tab
-                 * to have received a change mode instruction */
-                set_active_state (true);
-                /* Do not update top menu (or record uri) unless folder loads successfully */
-            }
+            aslot.close ();
+            view_mode = mode;
+            loading (false);
+            store_selection ();
+            /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
+            disconnect_slot_signals (view);
+            add_view (mode, loc ?? location);
+            /* Slot is created inactive so we activate now since we must be the current tab
+             * to have received a change mode instruction */
+            set_active_state (true);
+            /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
         private void connect_slot_signals (Files.AbstractSlot aslot) {
