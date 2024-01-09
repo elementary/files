@@ -313,9 +313,10 @@ namespace Files.View {
             refresh_slot_info (slot.location);
         }
 
-        private void open_location (GLib.File loc,
-                                    Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT) {
-
+        private void open_location (
+            GLib.File loc,
+            Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT
+        ) {
             switch ((Files.OpenFlag)flag) {
                 case Files.OpenFlag.NEW_TAB:
                 case Files.OpenFlag.NEW_WINDOW:
@@ -333,7 +334,10 @@ namespace Files.View {
             }
         }
 
-        private void on_slot_new_container_request (GLib.File loc, Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT) {
+        private void on_slot_new_container_request (
+            GLib.File loc,
+            Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT
+        ) {
             open_location (loc, flag);
         }
 
@@ -496,10 +500,11 @@ namespace Files.View {
             }
         }
 
-        public void focus_location (GLib.File? loc,
-                                    bool no_path_change = false,
-                                    bool unselect_others = false) {
-
+        public void focus_location (
+            GLib.File? loc,
+            bool no_path_change = false,
+            bool unselect_others = false
+        ) {
             /* This function navigates to another folder if necessary if
              * select_in_current_only is not set to true.
              */
@@ -543,8 +548,10 @@ namespace Files.View {
             }
         }
 
-        public void focus_location_if_in_current_directory (GLib.File? loc,
-                                                            bool unselect_others = false) {
+        public void focus_location_if_in_current_directory (
+            GLib.File? loc,
+            bool unselect_others = false
+        ) {
             focus_location (loc, true, unselect_others);
         }
 
