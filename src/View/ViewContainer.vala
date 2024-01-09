@@ -33,13 +33,13 @@ namespace Files.View {
                 return _window;
             }
 
-            set {
+            set construct {
                 if (_window != null) {
                     disconnect_window_signals ();
                 }
 
                 _window = value;
-                connect_window_signals ();
+                _window.folder_deleted.connect (on_folder_deleted);
             }
         }
 
@@ -105,9 +105,13 @@ namespace Files.View {
 
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (View.Window win) {
-            window = win;
-            browser = new Browser ();
+            Object (
+                window: win
+            );
+        }
 
+        construct {
+            browser = new Browser ();
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
             connect_signals ();
         }
@@ -124,11 +128,6 @@ namespace Files.View {
             button_press_event.connect (on_button_press_event);
         }
 
-        private void connect_window_signals () {
-            if (window != null) {
-                window.folder_deleted.connect (on_folder_deleted);
-            }
-        }
 
         private void disconnect_signals () {
             disconnect_slot_signals (view);
