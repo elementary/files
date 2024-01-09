@@ -156,9 +156,8 @@ namespace Files.View {
             button_controller.pressed.connect ((n_press, x, y) => {
                 Gdk.ModifierType state;
                 Gtk.get_current_event_state (out state);
-                var button = button_controller.get_button ();
                 var mods = state & Gtk.accelerator_get_default_mod_mask ();
-                switch (button) {
+                switch (button_controller.button) {
                     /* Extra mouse button actions */
                     case 6:
                     case 8:
