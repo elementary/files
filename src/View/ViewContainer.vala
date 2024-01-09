@@ -146,14 +146,6 @@ namespace Files.View {
         construct {
             browser = new Browser ();
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
-            connect_signals ();
-        }
-
-        ~ViewContainer () {
-            debug ("ViewContainer destruct");
-        }
-
-        private void connect_signals () {
             loading.connect ((loading) => {
                 is_loading = loading;
             });
@@ -161,6 +153,9 @@ namespace Files.View {
             button_press_event.connect (on_button_press_event);
         }
 
+        ~ViewContainer () {
+            debug ("ViewContainer destruct");
+        }
 
         private void disconnect_signals () {
             disconnect_slot_signals (view);
