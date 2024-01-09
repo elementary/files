@@ -145,7 +145,6 @@ namespace Files.View {
 
         construct {
             browser = new Browser ();
-            set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
             loading.connect ((loading) => {
                 is_loading = loading;
             });
