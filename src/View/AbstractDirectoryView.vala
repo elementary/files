@@ -111,7 +111,7 @@ namespace Files {
                     _zoom_level = value;
                 }
 
-                on_zoom_level_changed (value);
+                on_zoom_level_changed (_zoom_level);
             }
         }
 
@@ -3248,7 +3248,7 @@ namespace Files {
                 return true;
             }
 
-            click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
+            click_zone = get_event_position_info (event, out path, false);
 
             if ((path != null && hover_path == null) ||
                 (path == null && hover_path != null) ||
@@ -4025,8 +4025,7 @@ namespace Files {
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
 
         protected abstract Gtk.Widget? create_view ();
-
-        protected abstract uint get_event_position_info (Gdk.EventButton event,
+        protected abstract uint get_event_position_info (Gdk.Event event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
 

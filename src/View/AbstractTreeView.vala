@@ -102,93 +102,9 @@ public abstract class Files.AbstractTreeView : Files.AbstractDirectoryView {
         return tree as Gtk.Widget;
     }
 
-    public override void change_zoom_level () {
-        if (tree != null) {
-            base.change_zoom_level ();
-            tree.columns_autosize ();
-            tree.set_property ("zoom-level", zoom_level);
-        }
-    }
-
-    public override GLib.List<Gtk.TreePath> get_selected_paths () {
-        return tree.get_selection ().get_selected_rows (null);
-    }
-
-    public override void highlight_path (Gtk.TreePath? path) {
-        tree.set_drag_dest_row (path, Gtk.TreeViewDropPosition.INTO_OR_AFTER);
-    }
-
-    public override Gtk.TreePath? get_path_at_pos (int x, int y) {
-        Gtk.TreePath? path = null;
-
-        if (x >= 0 && y >= 0 && tree.get_dest_row_at_pos (x, y, out path, null)) {
-            return path;
-        } else {
-            return null;
-        }
-    }
-
-    public override void tree_select_all () {
-        tree.get_selection ().select_all ();
-    }
-
-    public override void tree_unselect_all () {
-        tree.get_selection ().unselect_all ();
-    }
-
-    /* Avoid using this function with "cursor_follows = true" to select large numbers of files one by one
-     * It would take an exponentially long time. Use "select_files" function in parent class.
-     */
-    public override void select_path (Gtk.TreePath? path, bool cursor_follows = false) {
-        if (path == null) {
-            return;
-        }
-
-        var selection = tree.get_selection ();
-        selection.select_path (path);
-        if (cursor_follows) {
-            /* Unlike for IconView, set_cursor unselects previously selected paths (Gtk bug?),
-             * so we have to remember them and reselect afterwards */
-            GLib.List<Gtk.TreePath> selected_paths = null;
-            selection.selected_foreach ((m, p, i) => {
-                selected_paths.prepend (p);
-            });
-            /* Ensure cursor follows last selection */
-            tree.set_cursor (path, null, false); /* This selects path but unselects rest! */
-
-            selected_paths.@foreach ((p) => {
-               selection.select_path (p);
-            });
-        }
-    }
-    public override void unselect_path (Gtk.TreePath? path) {
-        if (path != null) {
-            tree.get_selection ().unselect_path (path);
-        }
-    }
-
-    public override bool path_is_selected (Gtk.TreePath? path) {
-        if (path != null) {
-            return tree.get_selection ().path_is_selected (path);
-        } else {
-            return false;
-        }
-    }
-
-    public override bool get_visible_range (
-        out Gtk.TreePath? start_path,
-        out Gtk.TreePath? end_path
-    ) {
-        start_path = null;
-        end_path = null;
-        return tree.get_visible_range (out start_path, out end_path);
-    }
-
-    protected override uint get_event_position_info (
-        Gdk.EventButton event,
-        out Gtk.TreePath? path,
-        bool rubberband = false
-    ) {
+    protected override uint get_event_position_info (Gdk.Event event,
+                                                     out Gtk.TreePath? path,
+                                                     bool rubberband = false) {
         Gtk.TreePath? p = null;
         unowned Gtk.TreeViewColumn? c = null;
         uint zone;
@@ -275,6 +191,90 @@ public abstract class Files.AbstractTreeView : Files.AbstractDirectoryView {
         }
 
         return zone;
+    }
+
+
+    public override void change_zoom_level () {
+        if (tree != null) {
+            base.change_zoom_level ();
+            tree.columns_autosize ();
+            tree.set_property ("zoom-level", zoom_level);
+        }
+    }
+
+    public override GLib.List<Gtk.TreePath> get_selected_paths () {
+        return tree.get_selection ().get_selected_rows (null);
+    }
+
+    public override void highlight_path (Gtk.TreePath? path) {
+        tree.set_drag_dest_row (path, Gtk.TreeViewDropPosition.INTO_OR_AFTER);
+    }
+
+    public override Gtk.TreePath? get_path_at_pos (int x, int y) {
+        Gtk.TreePath? path = null;
+
+        if (x >= 0 && y >= 0 && tree.get_dest_row_at_pos (x, y, out path, null)) {
+            return path;
+        } else {
+            return null;
+        }
+    }
+
+    public override void tree_select_all () {
+        tree.get_selection ().select_all ();
+    }
+
+    public override void tree_unselect_all () {
+        tree.get_selection ().unselect_all ();
+    }
+
+    /* Avoid using this function with "cursor_follows = true" to select large numbers of files one by one
+     * It would take an exponentially long time. Use "select_files" function in parent class.
+     */
+    public override void select_path (Gtk.TreePath? path, bool cursor_follows = false) {
+        if (path == null) {
+            return;
+        }
+
+        var selection = tree.get_selection ();
+        selection.select_path (path);
+        if (cursor_follows) {
+            /* Unlike for IconView, set_cursor unselects previously selected paths (Gtk bug?),
+             * so we have to remember them and reselect afterwards */
+            GLib.List<Gtk.TreePath> selected_paths = null;
+            selection.selected_foreach ((m, p, i) => {
+                selected_paths.prepend (p);
+            });
+            /* Ensure cursor follows last selection */
+            tree.set_cursor (path, null, false); /* This selects path but unselects rest! */
+
+            selected_paths.@foreach ((p) => {
+               selection.select_path (p);
+            });
+        }
+    }
+
+    public override void unselect_path (Gtk.TreePath? path) {
+        if (path != null) {
+            tree.get_selection ().unselect_path (path);
+        }
+    }
+
+    public override bool path_is_selected (Gtk.TreePath? path) {
+        if (path != null) {
+            return tree.get_selection ().path_is_selected (path);
+        } else {
+            return false;
+        }
+    }
+
+    public override bool get_visible_range (
+        out Gtk.TreePath? start_path,
+        out Gtk.TreePath? end_path
+    ) {
+        start_path = null;
+        end_path = null;
+        return tree.get_visible_range (out start_path, out end_path);
     }
 
     protected override void scroll_to_path (Gtk.TreePath path, bool scroll_to_top) {
