@@ -111,7 +111,7 @@ namespace Files {
                     _zoom_level = value;
                 }
 
-                on_zoom_level_changed (value);
+                on_zoom_level_changed (_zoom_level);
             }
         }
 
@@ -3243,7 +3243,7 @@ namespace Files {
                 return true;
             }
 
-            click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
+            click_zone = get_event_position_info (event, out path, false);
 
             if ((path != null && hover_path == null) ||
                 (path == null && hover_path != null) ||
@@ -3973,7 +3973,7 @@ namespace Files {
         protected abstract ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
         protected abstract uint get_selected_files_from_model (out GLib.List<Files.File> selected_files);
-        protected abstract uint get_event_position_info (Gdk.EventButton event,
+        protected abstract uint get_event_position_info (Gdk.Event event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
 
