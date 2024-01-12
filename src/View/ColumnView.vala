@@ -62,29 +62,8 @@ namespace Files {
             return false;
         }
 
-        protected override void set_up_zoom_level () {
-            Files.column_view_settings.bind (
-                "zoom-level",
-                this, "zoom-level",
-                GLib.SettingsBindFlags.DEFAULT
-            );
-
-            maximum_zoom = (ZoomLevel)Files.column_view_settings.get_enum ("maximum-zoom-level");
-
-            if (zoom_level < minimum_zoom) { /* Defaults to ZoomLevel.SMALLEST */
-                zoom_level = minimum_zoom;
-            }
-
-            if (zoom_level > maximum_zoom) {
-                zoom_level = maximum_zoom;
-            }
-        }
-
-        public override ZoomLevel get_normal_zoom_level () {
-            var zoom = Files.column_view_settings.get_enum ("default-zoom-level");
-            Files.column_view_settings.set_enum ("zoom-level", zoom);
-
-            return (ZoomLevel)zoom;
+        public override Settings? get_view_settings () {
+            return Files.column_view_settings;
         }
 
         protected override Gtk.Widget? create_view () {

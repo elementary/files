@@ -427,7 +427,14 @@ namespace Files {
         }
 
         public void zoom_normal () {
-            zoom_level = get_normal_zoom_level ();
+            var view_settings = get_view_settings ();
+            if (view_settings == null) {
+                zoom_level = ZoomLevel.NORMAL;
+            } else {
+                zoom_level = (ZoomLevel)view_settings.get_enum ("default-zoom-level"); // syncs to settings
+            }
+
+
         }
 
         private uint set_cursor_timeout_id = 0;
@@ -3925,6 +3932,25 @@ namespace Files {
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
         protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
+        protected virtual Settings? get_view_settings () { return null; }
+        protected virtual void set_up_zoom_level () {
+            var view_settings = get_view_settings ();
+            if (view_settings == null) {
+                minimum_zoom = ZoomLevel.SMALLEST;
+                maximum_zoom = ZoomLevel.LARGEST;
+                zoom_level = ZoomLevel.NORMAL;
+            } else {
+                minimum_zoom = (ZoomLevel)view_settings.get_enum ("minimum-zoom-level");
+                maximum_zoom = (ZoomLevel)view_settings.get_enum ("maximum-zoom-level");
+                zoom_level = (ZoomLevel)view_settings.get_enum ("zoom-level");
+
+                view_settings.bind (
+                    "zoom-level",
+                    this, "zoom-level",
+                    GLib.SettingsBindFlags.SET
+                );
+            }
+        }
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
@@ -3969,8 +3995,6 @@ namespace Files {
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
 
         protected abstract Gtk.Widget? create_view ();
-        protected abstract void set_up_zoom_level ();
-        protected abstract ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
         protected abstract uint get_selected_files_from_model (out GLib.List<Files.File> selected_files);
         protected abstract uint get_event_position_info (Gdk.Event event,
