@@ -70,23 +70,8 @@ public class Files.IconView : Files.AbstractDirectoryView {
         return tree as Gtk.Widget;
     }
 
-    protected override void set_up_zoom_level () {
-        minimum_zoom = (ZoomLevel)Files.icon_view_settings.get_enum ("minimum-zoom-level");
-        maximum_zoom = (ZoomLevel)Files.icon_view_settings.get_enum ("maximum-zoom-level");
-        zoom_level = (ZoomLevel)Files.icon_view_settings.get_enum ("zoom-level");
-
-        Files.icon_view_settings.bind (
-            "zoom-level",
-            this, "zoom-level",
-            GLib.SettingsBindFlags.SET
-        );
-    }
-
-    public override ZoomLevel get_normal_zoom_level () {
-        var zoom = Files.icon_view_settings.get_enum ("default-zoom-level");
-        Files.icon_view_settings.set_enum ("zoom-level", zoom);
-
-        return (ZoomLevel)zoom;
+    public override Settings? get_view_settings () {
+        return Files.icon_view_settings;
     }
 
     public override void change_zoom_level () {
