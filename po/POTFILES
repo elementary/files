@@ -52,7 +52,6 @@ plugins/send-by-email/plugin.vala
 
 src/Application.vala
 src/DeepCount.vala
-src/DesktopLauncher.vala
 src/main.vala
 src/ProgressUIHandler.vala
 src/TextRenderer.vala

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.elementary.files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 19:58+0000\n"
+"POT-Creation-Date: 2024-01-12 22:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1140,7 +1140,7 @@ msgstr ""
 msgid "Preparing"
 msgstr ""
 
-#: libcore/Resources.vala:22 src/DesktopLauncher.vala:25
+#: libcore/Resources.vala:22
 msgid "Files"
 msgstr ""
 
@@ -1567,22 +1567,6 @@ msgstr ""
 
 #: src/Application.vala:196
 msgid "--quit cannot be used with URIs."
-msgstr ""
-
-#: src/DesktopLauncher.vala:21
-msgid "Browse your files"
-msgstr ""
-
-#: src/DesktopLauncher.vala:22
-msgid "File Manager"
-msgstr ""
-
-#: src/DesktopLauncher.vala:23
-msgid "New _Window"
-msgstr ""
-
-#: src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
 msgstr ""
 
 #: src/ProgressUIHandler.vala:126 src/ProgressUIHandler.vala:187
