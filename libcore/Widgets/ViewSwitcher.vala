@@ -23,6 +23,8 @@
 
 namespace Files.View.Chrome {
     public class ViewSwitcher : Gtk.Box {
+        private List<Gtk.ToggleButton> buttons;
+
         public GLib.SimpleAction action { get; construct; }
 
         public ViewSwitcher (GLib.SimpleAction view_mode_action) {
@@ -32,36 +34,40 @@ namespace Files.View.Chrome {
         construct {
             get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
 
+            buttons = new List<Gtk.ToggleButton> ();
             /* Grid View item */
             var id = (uint32)ViewMode.ICON;
-            var grid_view_btn = new Gtk.RadioButton (null) {
+            var grid_view_btn = new Gtk.ToggleButton () {
                 image = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.BUTTON),
                 tooltip_markup = get_tooltip_for_id (id, _("View as Grid"))
             };
             grid_view_btn.set_mode (false);
             grid_view_btn.toggled.connect (on_mode_changed);
             grid_view_btn.set_data<uint32> ("id", id);
+            buttons.append (grid_view_btn);
 
             /* List View */
             id = (uint32)ViewMode.LIST;
-            var list_view_btn = new Gtk.RadioButton.from_widget (grid_view_btn) {
+            var list_view_btn = new Gtk.ToggleButton () {
                 image = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.BUTTON),
                 tooltip_markup = get_tooltip_for_id (id, _("View as List"))
             };
             list_view_btn.set_mode (false);
             list_view_btn.toggled.connect (on_mode_changed);
             list_view_btn.set_data<uint32> ("id", id);
+            buttons.append (list_view_btn);
 
 
             /* Item 2 */
             id = (uint32)ViewMode.MILLER_COLUMNS;
-            var column_view_btn = new Gtk.RadioButton.from_widget (grid_view_btn) {
+            var column_view_btn = new Gtk.ToggleButton () {
                 image = new Gtk.Image.from_icon_name ("view-column-symbolic", Gtk.IconSize.BUTTON),
                 tooltip_markup = get_tooltip_for_id (id, _("View in Columns"))
             };
             column_view_btn.set_mode (false);
             column_view_btn.toggled.connect (on_mode_changed);
             column_view_btn.set_data<ViewMode> ("id", ViewMode.MILLER_COLUMNS);
+            buttons.append (column_view_btn);
 
             valign = Gtk.Align.CENTER;
             add (grid_view_btn);
@@ -81,16 +87,19 @@ namespace Files.View.Chrome {
                 return;
             }
 
-            action.activate (source.get_data<uint32> ("id"));
+            var id = source.get_data<uint32> ("id");
+            set_mode (id);
+            action.activate (id);
         }
 
         public void set_mode (uint32 mode) {
-            this.@foreach ((child) => {
-                if (child.get_data<uint32> ("id") == mode) {
-                    ((Gtk.RadioButton)child).active = true;
-                    action.activate (child.get_data<uint32> ("id"));
+            foreach (var btn in buttons) {
+                if (btn.get_data<uint32> ("id") != mode) {
+                    btn.active = false;
+                } else {
+                    btn.active = true;
                 }
-            });
+            }
         }
     }
 }
