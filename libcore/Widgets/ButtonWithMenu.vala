@@ -16,13 +16,8 @@
 public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
     public signal void slow_press ();
 
-    private Gtk.Menu gtk_menu;
-
-    public Menu menu {
-        set {
-            gtk_menu.bind_model (value, null, false);
-        }
-    }
+    private Gtk.PopoverMenu popover;
+    public Menu? menu { get; set; default = null; }
 
     public ButtonWithMenu (string icon_name) {
         image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.LARGE_TOOLBAR);
@@ -31,11 +26,9 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
     construct {
         use_underline = true;
 
-        gtk_menu = new Gtk.Menu ();
-        gtk_menu.attach_to_widget (this, null);
-        gtk_menu.deactivate.connect ( () => {
-            active = false;
-        });
+        can_focus = false; // Have a shortcut to operate so no need to focus
+        popover = new Gtk.PopoverMenu ();
+        popover.relative_to = this;
 
         mnemonic_activate.connect (on_mnemonic_activate);
 
@@ -51,16 +44,21 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
             button = Gdk.BUTTON_SECONDARY
         };
         secondary_click_gesture.pressed.connect (() => {
-            popup_menu ();
+            show_popover ();
             secondary_click_gesture.set_state (CLAIMED);
         });
 
         var long_press_gesture = new Gtk.GestureLongPress (this);
 
         long_press_gesture.pressed.connect (() => {
-            popup_menu ();
+            show_popover ();
             long_press_gesture.set_state (CLAIMED);
         });
+    }
+
+    private void show_popover () {
+        popover.bind_model (menu, null);
+        popover.popup ();
     }
 
     private bool on_mnemonic_activate (bool group_cycling) {
@@ -75,11 +73,5 @@ public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
         }
 
         return true;
-    }
-
-    protected new void popup_menu () {
-        active = true;
-        gtk_menu.popup_at_widget (this, SOUTH_WEST, NORTH_WEST, Gtk.get_current_event ());
-        gtk_menu.select_first (false);
     }
 }

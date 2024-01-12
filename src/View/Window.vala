@@ -1342,7 +1342,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             var path = path_list.@get (i);
             var item = new MenuItem (
                 FileUtils.sanitize_path (path, null, false),
-                Action.print_detailed_name ("win.back", new Variant.int32 (i + 1))
+                Action.print_detailed_name ("win.back", new Variant.int32 (i))
             );
             back_menu.append_item (item);
         }
@@ -1357,7 +1357,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             var path = path_list.@get (i);
             var item = new MenuItem (
                 FileUtils.sanitize_path (path, null, false),
-                Action.print_detailed_name ("win.forward", new Variant.int32 (i + 1))
+                Action.print_detailed_name ("win.forward", new Variant.int32 (i))
             );
             forward_menu.append_item (item);
         }
