@@ -4027,9 +4027,6 @@ namespace Files {
 
         protected abstract Gtk.Widget? create_view ();
 
-        protected abstract void set_up_zoom_level ();
-        protected abstract ZoomLevel get_normal_zoom_level ();
-
         protected abstract uint get_event_position_info (Gdk.Event event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
