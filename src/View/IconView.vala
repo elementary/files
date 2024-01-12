@@ -162,10 +162,6 @@ public class Files.IconView : Files.AbstractDirectoryView {
         return tree.get_visible_range (out start_path, out end_path);
     }
 
-    protected override bool view_has_focus () {
-        return tree.has_focus;
-    }
-
     protected override uint get_event_position_info (Gdk.Event event,
                                                      out Gtk.TreePath? path,
                                                      bool rubberband = false) {

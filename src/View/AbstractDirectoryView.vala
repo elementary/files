@@ -3943,6 +3943,10 @@ namespace Files {
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
         protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
 
+        protected virtual bool view_has_focus () {
+            return view.has_focus;
+        }
+
         protected virtual void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
             if (path == null || slot == null || slot.directory == null ||
                 slot.directory.permission_denied || slot.directory.is_empty ()) {
@@ -3998,7 +4002,6 @@ namespace Files {
         protected abstract Gtk.Widget? create_view ();
         protected abstract void set_up_zoom_level ();
         protected abstract ZoomLevel get_normal_zoom_level ();
-        protected abstract bool view_has_focus ();
         protected abstract uint get_event_position_info (Gdk.Event event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
