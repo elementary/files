@@ -226,14 +226,7 @@ public class Files.IconView : Files.AbstractDirectoryView {
         return zone;
     }
 
-    protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
-        /* slot && directory should not be null but see lp:1595438  & https://github.com/elementary/files/issues/1699 */
-        if (tree == null || path == null || slot == null || slot.directory == null ||
-            slot.directory.permission_denied || slot.directory.is_empty ()) {
-
-            return;
-        }
-
+    protected override void scroll_to_path (Gtk.TreePath path, bool scroll_to_top) {
         tree.scroll_to_path (path, scroll_to_top, 0.5f, 0.5f);
     }
 

@@ -3943,6 +3943,16 @@ namespace Files {
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
         protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
 
+        protected virtual void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
+            if (path == null || slot == null || slot.directory == null ||
+                slot.directory.permission_denied || slot.directory.is_empty ()) {
+
+                return;
+            }
+
+            scroll_to_path (path, scroll_to_top);
+        }
+
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
         public abstract Gtk.TreePath? get_path_at_pos (int x, int win);
@@ -3993,8 +4003,7 @@ namespace Files {
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
 
-        protected abstract void scroll_to_cell (Gtk.TreePath? path,
-                                                bool scroll_to_top);
+        protected abstract void scroll_to_path (Gtk.TreePath path, bool scroll_to_top);
         protected abstract void set_cursor_on_cell (Gtk.TreePath path,
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
