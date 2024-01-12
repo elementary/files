@@ -3478,7 +3478,7 @@ namespace Files {
             return false;
         }
 
-        protected virtual bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
+        protected virtual bool handle_primary_button_click (Gdk.Event event, Gtk.TreePath? path) {
             return true;
         }
 
@@ -3864,7 +3864,7 @@ namespace Files {
             return true;
         }
 
-        protected virtual bool handle_default_button_click (Gdk.EventButton event) {
+        protected virtual bool handle_default_button_click (Gdk.Event event) {
             /* pass unhandled events to the View.Window */
             return false;
         }
