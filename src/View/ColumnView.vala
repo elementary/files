@@ -150,5 +150,6 @@ public class Files.ColumnView : AbstractTreeView {
     public override void cancel () {
         base.cancel ();
         cancel_await_double_click ();
+
     }
 }
