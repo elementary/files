@@ -3981,25 +3981,6 @@ namespace Files {
             scroll_to_path (path, scroll_to_top);
         }
 
-        protected virtual Settings? get_view_settings () { return null; }
-        protected virtual void set_up_zoom_level () {
-            var view_settings = get_view_settings ();
-            if (view_settings == null) {
-                return;
-            }
-
-            minimum_zoom = (ZoomLevel)view_settings.get_enum ("minimum-zoom-level");
-            maximum_zoom = (ZoomLevel)view_settings.get_enum ("maximum-zoom-level");
-            zoom_level = (ZoomLevel)view_settings.get_enum ("zoom-level");
-
-            view_settings.bind (
-                "zoom-level",
-                this, "zoom-level",
-                GLib.SettingsBindFlags.SET
-            );
-        }
-
-
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
         public abstract Gtk.TreePath? get_path_at_pos (int x, int win);
