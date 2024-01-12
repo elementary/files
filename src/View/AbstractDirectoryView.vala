@@ -3922,6 +3922,23 @@ namespace Files {
             update_selected_files_and_menu ();
         }
 
+        protected uint get_selected_files_from_model (out GLib.List<Files.File> selected_files) {
+            List<Files.File> list = null;
+            uint count = 0;
+            var selected_paths = get_selected_paths ();
+            foreach (var path in selected_paths) {
+                var file = model.file_for_path (path);
+                if (file != null) {
+                    list.prepend ((owned)file);
+                    count++;
+                } else {
+                    critical ("Null file in model");
+                }
+            }
+            selected_files = (owned)list;
+            return count;
+        }
+
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
         protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
@@ -3972,7 +3989,6 @@ namespace Files {
         protected abstract void set_up_zoom_level ();
         protected abstract ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
-        protected abstract uint get_selected_files_from_model (out GLib.List<Files.File> selected_files);
         protected abstract uint get_event_position_info (Gdk.Event event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);

@@ -180,23 +180,6 @@ namespace Files {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        protected override uint get_selected_files_from_model (out GLib.List<Files.File> selected_files) {
-            uint count = 0;
-
-            GLib.List<Files.File> list = null;
-            tree.get_selection ().selected_foreach ((model, path, iter) => {
-                Files.File? file; /* can be null if click on blank row in list view */
-                model.@get (iter, Files.ListModel.ColumnID.FILE_COLUMN, out file, -1);
-                if (file != null) {
-                    list.prepend ((owned) file);
-                    count++;
-                }
-            });
-
-            selected_files = (owned)list;
-            return count;
-        }
-
         protected override bool view_has_focus () {
             return tree.has_focus;
         }

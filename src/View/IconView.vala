@@ -162,24 +162,6 @@ public class Files.IconView : Files.AbstractDirectoryView {
         return tree.get_visible_range (out start_path, out end_path);
     }
 
-    protected override uint get_selected_files_from_model (out GLib.List<Files.File> selected_files) {
-        GLib.List<Files.File> list = null;
-        uint count = 0;
-
-        tree.selected_foreach ((tree, path) => {
-            Files.File? file = model.file_for_path (path);
-            if (file != null) {
-                list.prepend ((owned)file);
-                count++;
-            } else {
-                critical ("Null file in model");
-            }
-        });
-
-        selected_files = (owned)list;
-        return count;
-    }
-
     protected override bool view_has_focus () {
         return tree.has_focus;
     }
