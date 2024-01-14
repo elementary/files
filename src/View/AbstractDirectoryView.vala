@@ -111,7 +111,7 @@ namespace Files {
                     _zoom_level = value;
                 }
 
-                on_zoom_level_changed (value);
+                on_zoom_level_changed (_zoom_level);
             }
         }
 
@@ -427,7 +427,14 @@ namespace Files {
         }
 
         public void zoom_normal () {
-            zoom_level = get_normal_zoom_level ();
+            var view_settings = get_view_settings ();
+            if (view_settings == null) {
+                zoom_level = ZoomLevel.NORMAL;
+            } else {
+                zoom_level = (ZoomLevel)view_settings.get_enum ("default-zoom-level"); // syncs to settings
+            }
+
+
         }
 
         private uint set_cursor_timeout_id = 0;
@@ -1364,6 +1371,10 @@ namespace Files {
         }
 
         private void on_directory_file_icon_changed (Directory dir, Files.File file) {
+            if (is_frozen) {
+                return;
+            }
+
             remove_marlin_icon_info_cache (file);
             model.file_changed (file, dir);
             Idle.add (() => {
@@ -3239,7 +3250,7 @@ namespace Files {
                 return true;
             }
 
-            click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
+            click_zone = get_event_position_info (event, out path, false);
 
             if ((path != null && hover_path == null) ||
                 (path == null && hover_path != null) ||
@@ -3423,7 +3434,14 @@ namespace Files {
             /* new_file will be null if rename failed */
             if (new_file != null) {
                 selected_files_invalid = true;
-                select_and_scroll_to_gof_file (new_file);
+                Idle.add (() => {
+                    if (model.sort_pending) {
+                        return Source.CONTINUE;
+                    } else {
+                        select_and_scroll_to_gof_file (new_file);
+                        return Source.REMOVE;
+                    }
+                });
             }
         }
 
@@ -3460,7 +3478,7 @@ namespace Files {
             return false;
         }
 
-        protected virtual bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
+        protected virtual bool handle_primary_button_click (Gdk.Event event, Gtk.TreePath? path) {
             return true;
         }
 
@@ -3846,7 +3864,7 @@ namespace Files {
             return true;
         }
 
-        protected virtual bool handle_default_button_click (Gdk.EventButton event) {
+        protected virtual bool handle_default_button_click (Gdk.Event event) {
             /* pass unhandled events to the View.Window */
             return false;
         }
@@ -3914,6 +3932,25 @@ namespace Files {
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
         protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
+        protected virtual Settings? get_view_settings () { return null; }
+        protected virtual void set_up_zoom_level () {
+            var view_settings = get_view_settings ();
+            if (view_settings == null) {
+                minimum_zoom = ZoomLevel.SMALLEST;
+                maximum_zoom = ZoomLevel.LARGEST;
+                zoom_level = ZoomLevel.NORMAL;
+            } else {
+                minimum_zoom = (ZoomLevel)view_settings.get_enum ("minimum-zoom-level");
+                maximum_zoom = (ZoomLevel)view_settings.get_enum ("maximum-zoom-level");
+                zoom_level = (ZoomLevel)view_settings.get_enum ("zoom-level");
+
+                view_settings.bind (
+                    "zoom-level",
+                    this, "zoom-level",
+                    GLib.SettingsBindFlags.SET
+                );
+            }
+        }
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
@@ -3958,11 +3995,9 @@ namespace Files {
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
 
         protected abstract Gtk.Widget? create_view ();
-        protected abstract void set_up_zoom_level ();
-        protected abstract ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
         protected abstract uint get_selected_files_from_model (out GLib.List<Files.File> selected_files);
-        protected abstract uint get_event_position_info (Gdk.EventButton event,
+        protected abstract uint get_event_position_info (Gdk.Event event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
 
