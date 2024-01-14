@@ -201,7 +201,7 @@ namespace Files {
             return tree.has_focus;
         }
 
-        protected override uint get_event_position_info (Gdk.EventButton event,
+        protected override uint get_event_position_info (Gdk.Event event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
             Gtk.TreePath? p = null;
