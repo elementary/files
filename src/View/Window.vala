@@ -856,7 +856,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             warning ("Too rapid reloading suppressed");
             return;
         }
-        current_container.reload ();
+
+        var slot = current_container.prepare_reload ();
+        if (slot != null) {
+            slot.reload (); // Initial reload request - will propagate to all alots showing same location
+        }
+
         sidebar.reload ();
     }
 
@@ -1031,7 +1036,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     public void after_undo_redo () {
         if (current_container.slot.directory.is_recent) {
-            current_container.reload ();
+            get_action_group ("win").activate_action ("refresh", null);
         }
 
         doing_undo_redo = false;
@@ -1233,10 +1238,18 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
             if (yield add_tab_by_uri (root_uri, mode)) {
                 restoring_tabs++;
-            }
+                var tab = tab_view.selected_page;
+                if (tab != null &&
+                    tab.child != null &&
+                    tip_uri != root_uri) {
 
-            if (mode == ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
-                expand_miller_view (tip_uri, root_uri);
+                    var view = ((ViewContainer)(tab.child)).view;
+                    if (view != null && view is Miller) {
+                        expand_miller_view ((Miller)view, tip_uri, root_uri);
+                    }
+                }
+            } else {
+                debug ("Failed to restore tab %s", root_uri);
             }
 
             mode = ViewMode.INVALID;
@@ -1273,11 +1286,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         return restoring_tabs;
     }
 
-    private void expand_miller_view (string tip_uri, string unescaped_root_uri) {
+    private void expand_miller_view (Miller miller_view, string tip_uri, string unescaped_root_uri) {
         /* It might be more elegant for Miller.vala to handle this */
-        var tab = tab_view.selected_page;
-        var view = (ViewContainer)(tab.child);
-        var mwcols = (Miller)(view.view) ;
         var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri);
 
         if (unescaped_tip_uri == null) {
@@ -1298,7 +1308,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 uri += (GLib.Path.DIR_SEPARATOR_S + dir);
                 gfile = get_file_from_uri (uri);
 
-                mwcols.add_location (gfile, mwcols.current_slot); // MillerView can deal with multiple scroll requests
+                miller_view.add_location (gfile, miller_view.current_slot); // MillerView can deal with multiple scroll requests
             }
         } else {
             warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);
@@ -1374,7 +1384,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         GLib.File root = mount.get_root ();
 
         for (int i = 0; i < tab_view.n_pages; i++) {
-            var view_container = (View.ViewContainer) tab_view.get_nth_page (i);
+            var view_container = (View.ViewContainer) (tab_view.get_nth_page (i).child);
             GLib.File location = view_container.location;
 
             if (location == null || location.has_prefix (root) || location.equal (root)) {

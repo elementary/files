@@ -48,7 +48,7 @@ namespace Files {
             }
         }
 
-        private bool not_double_click (Gdk.EventButton event, Gtk.TreePath? path) {
+        private bool not_double_click () {
             if (double_click_timeout_id != 0) {
                 awaiting_double_click = false;
                 double_click_timeout_id = 0;
@@ -62,29 +62,8 @@ namespace Files {
             return false;
         }
 
-        protected override void set_up_zoom_level () {
-            Files.column_view_settings.bind (
-                "zoom-level",
-                this, "zoom-level",
-                GLib.SettingsBindFlags.DEFAULT
-            );
-
-            maximum_zoom = (ZoomLevel)Files.column_view_settings.get_enum ("maximum-zoom-level");
-
-            if (zoom_level < minimum_zoom) { /* Defaults to ZoomLevel.SMALLEST */
-                zoom_level = minimum_zoom;
-            }
-
-            if (zoom_level > maximum_zoom) {
-                zoom_level = maximum_zoom;
-            }
-        }
-
-        public override ZoomLevel get_normal_zoom_level () {
-            var zoom = Files.column_view_settings.get_enum ("default-zoom-level");
-            Files.column_view_settings.set_enum ("zoom-level", zoom);
-
-            return (ZoomLevel)zoom;
+        public override Settings? get_view_settings () {
+            return Files.column_view_settings;
         }
 
         protected override Gtk.Widget? create_view () {
@@ -121,7 +100,7 @@ namespace Files {
             return base.on_view_key_press_event (event);
         }
 
-        protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
+        protected override bool handle_primary_button_click (Gdk.Event event, Gtk.TreePath? path) {
             Files.File? file = null;
             Files.File? selected_folder = null;
             Gtk.TreeIter? iter = null;
@@ -151,7 +130,7 @@ namespace Files {
                     awaiting_double_click = true;
                     is_frozen = true;
                     double_click_timeout_id = GLib.Timeout.add (300, () => {
-                        not_double_click (event, path);
+                        not_double_click ();
                         return GLib.Source.REMOVE;
                     });
                 }
@@ -169,13 +148,9 @@ namespace Files {
             return result;
         }
 
-        protected override bool handle_default_button_click (Gdk.EventButton event) {
+        protected override bool handle_default_button_click (Gdk.Event event) {
             cancel_await_double_click ();
             return base.handle_default_button_click (event);
-        }
-
-        protected override void change_zoom_level () {
-            base.change_zoom_level ();
         }
 
         public override void cancel () {

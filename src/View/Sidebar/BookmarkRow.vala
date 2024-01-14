@@ -362,30 +362,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             sel_data.@set (text_data_atom, 8, data);
         });
 
-        drag_failed.connect ((ctx, res) => {
-            if (res == Gtk.DragResult.NO_TARGET) {
-                Gdk.Window app_window = list.list_box.get_window ().get_effective_toplevel ();
-                Gdk.Window drag_window = ctx.get_drag_window ();
-                Gdk.Rectangle app_rect, drag_rect, intersect_rect;
-
-                app_window.get_frame_extents (out app_rect);
-                drag_window.get_frame_extents (out drag_rect);
-
-                if (!drag_rect.intersect (app_rect, out intersect_rect)) {
-                    list.remove_item_by_id (id);
-                    var device = ctx.get_device ();
-                    int x, y;
-                    device.get_position (null, out x, out y);
-                    Plank.PoofWindow poof_window;
-                    poof_window = Plank.PoofWindow.get_default ();
-                    poof_window.show_at (x, y);
-                    return true;
-                }
-            }
-
-            return false;
-        });
-
         drag_end.connect ((ctx) => {
             reset_drag_drop ();
         });
