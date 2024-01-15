@@ -3929,6 +3929,23 @@ namespace Files {
             update_selected_files_and_menu ();
         }
 
+        protected uint get_selected_files_from_model (out GLib.List<Files.File> selected_files) {
+            List<Files.File> list = null;
+            uint count = 0;
+            var selected_paths = get_selected_paths ();
+            foreach (var path in selected_paths) {
+                var file = model.file_for_path (path);
+                if (file != null) {
+                    list.prepend ((owned)file);
+                    count++;
+                } else {
+                    critical ("Null file in model");
+                }
+            }
+            selected_files = (owned)list;
+            return count;
+        }
+
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
         protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
@@ -3950,6 +3967,20 @@ namespace Files {
                     GLib.SettingsBindFlags.SET
                 );
             }
+        }
+
+        protected virtual bool view_has_focus () {
+            return view.has_focus;
+        }
+
+        protected virtual void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
+            if (path == null || slot == null || slot.directory == null ||
+                slot.directory.permission_denied || slot.directory.is_empty ()) {
+
+                return;
+            }
+
+            scroll_to_path (path, scroll_to_top);
         }
 
 /** Abstract methods - must be overridden*/
@@ -3995,14 +4026,12 @@ namespace Files {
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
 
         protected abstract Gtk.Widget? create_view ();
-        protected abstract bool view_has_focus ();
-        protected abstract uint get_selected_files_from_model (out GLib.List<Files.File> selected_files);
+
         protected abstract uint get_event_position_info (Gdk.Event event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
 
-        protected abstract void scroll_to_cell (Gtk.TreePath? path,
-                                                bool scroll_to_top);
+        protected abstract void scroll_to_path (Gtk.TreePath path, bool scroll_to_top);
         protected abstract void set_cursor_on_cell (Gtk.TreePath path,
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
