@@ -33,13 +33,14 @@ namespace Files.View {
                 return _window;
             }
 
-            set construct {
+            set {
                 if (_window != null) {
                     disconnect_window_signals ();
                 }
 
                 _window = value;
                 _window.folder_deleted.connect (on_folder_deleted);
+                _window.connect_content_signals (this);
             }
         }
 
@@ -136,13 +137,8 @@ namespace Files.View {
         public signal void loading (bool is_loading);
         public signal void active ();
 
-        /* Initial location now set by Window.make_tab after connecting signals */
-        public ViewContainer (View.Window win) {
-            Object (
-                window: win
-            );
-        }
-
+        /* Initial location now set by Window.make_tab after connecting signals.
+         * Window property set when tab is attached to a tab_view (See Window.vala) */
         construct {
             browser = new Browser ();
             loading.connect ((loading) => {
@@ -157,6 +153,7 @@ namespace Files.View {
         private void disconnect_window_signals () {
             if (window != null) {
                 window.folder_deleted.disconnect (on_folder_deleted);
+                window.disconnect_content_signals (this);
             }
         }
 
