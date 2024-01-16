@@ -148,37 +148,6 @@ namespace Files.View {
             loading.connect ((loading) => {
                 is_loading = loading;
             });
-
-            var button_controller = new Gtk.GestureMultiPress (this) {
-                button = 0,
-                propagation_phase = CAPTURE
-            };
-            button_controller.pressed.connect ((n_press, x, y) => {
-                Gdk.ModifierType state;
-                Gtk.get_current_event_state (out state);
-                var mods = state & Gtk.accelerator_get_default_mod_mask ();
-                switch (button_controller.button) {
-                    /* Extra mouse button actions */
-                    case 6:
-                    case 8:
-                        if (mods == 0) {
-                            button_controller.set_state (CLAIMED);
-                            go_back ();
-                        }
-                        break;
-
-                    case 7:
-                    case 9:
-                        if (mods == 0) {
-                            button_controller.set_state (CLAIMED);
-                            go_forward ();
-                        }
-                        break;
-
-                    default:
-                        break;
-                }
-            });
         }
 
         ~ViewContainer () {
