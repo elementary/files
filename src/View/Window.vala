@@ -22,6 +22,8 @@
 */
 
 public class Files.View.Window : Hdy.ApplicationWindow {
+    static uint window_id = 0;
+
     const GLib.ActionEntry [] WIN_ENTRIES = {
         {"new-window", action_new_window},
         {"refresh", action_reload},
@@ -98,11 +100,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     public signal void folder_deleted (GLib.File location);
     public signal void free_space_change ();
 
-    public Window (Files.Application application) {
+    public Window (Files.Application _application) {
         Object (
-            application: application,
-            marlin_app: application,
-            window_number: application.window_count
+            application: (Gtk.Application)_application,
+            marlin_app: _application,
+            window_number: Files.View.Window.window_id++
         );
     }
 
