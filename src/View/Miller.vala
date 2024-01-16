@@ -47,7 +47,7 @@ namespace Files.View {
             }
         }
 
-        public Miller (GLib.File loc, View.ViewContainer _ctab, ViewMode _mode) {
+        public Miller (GLib.File loc, View.ViewContainer _ctab) {
             Object (
                 location: loc,
                 root_location: loc,
