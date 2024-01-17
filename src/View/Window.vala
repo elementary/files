@@ -610,7 +610,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         mode = real_mode (mode);
         var content = new View.ViewContainer ();
-        connect_content_signals (content);
+
         if (!location.equal (_location)) {
             content.add_view (mode, location, {_location});
         } else {
@@ -619,6 +619,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         var page = tab_view.append (content);
         tab_view.selected_page = page;
+
+        connect_content_signals (content);
 
         return true;
     }
