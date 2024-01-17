@@ -39,7 +39,11 @@ namespace Files.View {
                 }
 
                 _window = value;
-                connect_window_signals ();
+                _window.folder_deleted.connect (on_folder_deleted);
+                _window.connect_content_signals (this);
+                _window.loading_uri (slot.location.get_uri ());
+                directory_is_loading (slot.location);
+                slot.initialize_directory ();
             }
         }
 
@@ -93,68 +97,6 @@ namespace Files.View {
             }
         }
 
-        public bool is_loading {get; private set; default = false;}
-
-        private View.OverlayBar overlay_statusbar;
-        private Browser browser;
-        private GLib.List<GLib.File>? selected_locations = null;
-
-        public signal void tab_name_changed (string tab_name);
-        public signal void loading (bool is_loading);
-        public signal void active ();
-
-        /* Initial location now set by Window.make_tab after connecting signals */
-        public ViewContainer (View.Window win) {
-            window = win;
-            browser = new Browser ();
-
-            set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
-            connect_signals ();
-        }
-
-        ~ViewContainer () {
-            debug ("ViewContainer destruct");
-        }
-
-        private void connect_signals () {
-            loading.connect ((loading) => {
-                is_loading = loading;
-            });
-
-            button_press_event.connect (on_button_press_event);
-        }
-
-        private void connect_window_signals () {
-            if (window != null) {
-                window.folder_deleted.connect (on_folder_deleted);
-            }
-        }
-
-        private void disconnect_signals () {
-            disconnect_slot_signals (view);
-            disconnect_window_signals ();
-        }
-
-        private void disconnect_window_signals () {
-            if (window != null) {
-                window.folder_deleted.disconnect (on_folder_deleted);
-            }
-        }
-
-        private void on_folder_deleted (GLib.File deleted) {
-            if (deleted.equal (this.location)) {
-                if (!go_up ()) {
-                    close ();
-                    window.remove_content (this);
-                }
-            }
-        }
-
-        public void close () {
-            disconnect_signals ();
-            view.close ();
-        }
-
         public Gtk.Widget? content {
             set {
                 if (content_item != null) {
@@ -186,6 +128,50 @@ namespace Files.View {
             get {
                 return label;
             }
+        }
+
+        public bool is_loading {get; private set; default = false;}
+
+        private View.OverlayBar overlay_statusbar;
+        private Browser browser;
+        private GLib.List<GLib.File>? selected_locations = null;
+
+        public signal void tab_name_changed (string tab_name);
+        public signal void loading (bool is_loading);
+        public signal void active ();
+
+        /* Initial location now set by Window.make_tab after connecting signals.
+         * Window property set when tab is attached to a tab_view (See Window.vala) */
+        construct {
+            browser = new Browser ();
+            loading.connect ((loading) => {
+                is_loading = loading;
+            });
+            button_press_event.connect (on_button_press_event);
+        }
+
+        ~ViewContainer () {
+            debug ("ViewContainer destruct");
+        }
+
+        private void disconnect_window_signals () {
+            if (window != null) {
+                window.folder_deleted.disconnect (on_folder_deleted);
+                window.disconnect_content_signals (this);
+            }
+        }
+
+        private void on_folder_deleted (GLib.File deleted) requires (window != null) {
+            if (deleted.equal (this.location) && !go_up ()) {
+                close ();
+                window.remove_content (this);
+            }
+        }
+
+        public void close () {
+            disconnect_slot_signals (view);
+            disconnect_window_signals ();
+            view.close ();
         }
 
         public bool go_up () {
@@ -247,9 +233,12 @@ namespace Files.View {
                 no_show_all = true
             };
 
-            connect_slot_signals (this.view);
-            directory_is_loading (loc);
-            slot.initialize_directory ();
+            view.active.connect (on_slot_active);
+            view.path_changed.connect (on_slot_path_changed);
+            view.new_container_request.connect (on_slot_new_container_request);
+            view.selection_changed.connect (on_slot_selection_changed);
+            view.directory_loaded.connect (on_slot_directory_loaded);
+
             show_all ();
 
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
@@ -261,32 +250,23 @@ namespace Files.View {
         **/
         public void change_view_mode (ViewMode mode, GLib.File? loc = null) {
             var aslot = get_current_slot ();
-            if (aslot == null) {
+            if (aslot == null || mode == view_mode) {
                 return;
             }
 
-            if (mode != view_mode) {
-                aslot.close ();
-                view_mode = mode;
-                loading (false);
-                store_selection ();
-                /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
-                disconnect_slot_signals (view);
-                add_view (mode, loc ?? location);
-                /* Slot is created inactive so we activate now since we must be the current tab
-                 * to have received a change mode instruction */
-                set_active_state (true);
-                /* Do not update top menu (or record uri) unless folder loads successfully */
-            }
+            aslot.close ();
+            view_mode = mode;
+            loading (false);
+            store_selection ();
+            /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
+            disconnect_slot_signals (view);
+            add_view (mode, loc ?? location);
+            /* Slot is created inactive so we activate now since we must be the current tab
+             * to have received a change mode instruction */
+            set_active_state (true);
+            /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
-        private void connect_slot_signals (Files.AbstractSlot aslot) {
-            aslot.active.connect (on_slot_active);
-            aslot.path_changed.connect (on_slot_path_changed);
-            aslot.new_container_request.connect (on_slot_new_container_request);
-            aslot.selection_changed.connect (on_slot_selection_changed);
-            aslot.directory_loaded.connect (on_slot_directory_loaded);
-        }
 
         private void disconnect_slot_signals (Files.AbstractSlot aslot) {
             aslot.active.disconnect (on_slot_active);
@@ -300,9 +280,10 @@ namespace Files.View {
             refresh_slot_info (slot.location);
         }
 
-        private void open_location (GLib.File loc,
-                                    Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT) {
-
+        private void open_location (
+            GLib.File loc,
+            Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT
+        ) requires (window != null) {
             switch ((Files.OpenFlag)flag) {
                 case Files.OpenFlag.NEW_TAB:
                 case Files.OpenFlag.NEW_WINDOW:
@@ -320,7 +301,10 @@ namespace Files.View {
             }
         }
 
-        private void on_slot_new_container_request (GLib.File loc, Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT) {
+        private void on_slot_new_container_request (
+            GLib.File loc,
+            Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT
+        ) {
             open_location (loc, flag);
         }
 
@@ -339,6 +323,10 @@ namespace Files.View {
 
         private void refresh_slot_info (GLib.File loc) {
             update_tab_name ();
+            if (window == null) { // On initial creation window is set later
+                return;
+            }
+
             window.loading_uri (loc.get_uri ()); /* Updates labels as well */
             /* Do not update top menu (or record uri) unless folder loads successfully */
         }
@@ -371,27 +359,48 @@ namespace Files.View {
                     if (!dir.is_trash) {
                         content = new DirectoryNotFound (slot.directory, this);
                     } else {
-                        content = new View.Welcome (_("This Folder Does Not Exist"),
-                                                    _("You cannot create a folder here."));
+                        content = new Welcome (
+                            _("This Folder Does Not Exist"),
+                            _("You cannot create a folder here.")
+                        );
                     }
                 } else if (!dir.network_available) {
-                    content = new View.Welcome (_("The network is unavailable"),
-                                                _("A working network is needed to reach this folder") + "\n\n" +
-                                                dir.last_error_message);
+                    content = new Welcome (
+                        _("The network is unavailable"),
+                        "%s\n\n%s".printf (
+                            _("A working network is needed to reach this folder"),
+                            dir.last_error_message
+                        )
+                    );
                 } else if (dir.permission_denied) {
-                    content = new View.Welcome (_("This Folder Does Not Belong to You"),
-                                                _("You don't have permission to view this folder."));
+                    content = new Welcome (
+                        _("This Folder Does Not Belong to You"),
+                        _("You don't have permission to view this folder.")
+                    );
                 } else if (!dir.file.is_connected) {
-                    content = new View.Welcome (_("Unable to Mount Folder"),
-                                                _("Could not connect to the server for this folder.") + "\n\n" +
-                                                dir.last_error_message);
+                    content = new Welcome (
+                        _("Unable to Mount Folder"),
+                        "%s\n\n%s".printf (
+                            _("Could not connect to the server for this folder."),
+                            dir.last_error_message
+                        )
+                    );
                 } else if (slot.directory.state == Directory.State.TIMED_OUT) {
-                    content = new View.Welcome (_("Unable to Display Folder Contents"),
-                                                _("The operation timed out.") + "\n\n" + dir.last_error_message);
+                    content = new Welcome (
+                        _("Unable to Display Folder Contents"),
+                        "%s\n\n%s".printf (
+                            _("The operation timed out."),
+                            dir.last_error_message
+                        )
+                    );
                 } else {
-                    content = new View.Welcome (_("Unable to Show Folder"),
-                                                _("The server for this folder could not be located.") + "\n\n" +
-                                                dir.last_error_message);
+                    content = new Welcome (
+                        _("Unable to Show Folder"),
+                        "%s\n\n%s".printf (
+                            _("The server for this folder could not be located."),
+                            dir.last_error_message
+                        )
+                    );
                 }
             /* Now deal with cases where file (s) within the loaded folder has to be selected */
             } else if (selected_locations != null) {
@@ -401,8 +410,10 @@ namespace Files.View {
                 if (dir.selected_file.query_exists ()) {
                     focus_location_if_in_current_directory (dir.selected_file);
                 } else {
-                    content = new View.Welcome (_("File not Found"),
-                                                _("The file selected no longer exists."));
+                    content = new Welcome (
+                        _("File not Found"),
+                        _("The file selected no longer exists.")
+                    );
                     can_show_folder = false;
                 }
             } else {
@@ -410,7 +421,6 @@ namespace Files.View {
             }
 
             if (can_show_folder) {
-                assert (view != null);
                 content = view.get_content_box ();
                 var directory = dir.file;
 
@@ -461,10 +471,11 @@ namespace Files.View {
             }
         }
 
-        public void focus_location (GLib.File? loc,
-                                    bool no_path_change = false,
-                                    bool unselect_others = false) {
-
+        public void focus_location (
+            GLib.File? loc,
+            bool no_path_change = false,
+            bool unselect_others = false
+        ) {
             /* This function navigates to another folder if necessary if
              * select_in_current_only is not set to true.
              */
@@ -508,8 +519,10 @@ namespace Files.View {
             }
         }
 
-        public void focus_location_if_in_current_directory (GLib.File? loc,
-                                                            bool unselect_others = false) {
+        public void focus_location_if_in_current_directory (
+            GLib.File? loc,
+            bool unselect_others = false
+        ) {
             focus_location (loc, true, unselect_others);
         }
 
@@ -546,12 +559,10 @@ namespace Files.View {
         }
 
         public Gee.List<string> get_go_back_path_list () {
-            assert (browser != null);
             return browser.go_back_list ();
         }
 
         public Gee.List<string> get_go_forward_path_list () {
-            assert (browser != null);
             return browser.go_forward_list ();
         }
 
