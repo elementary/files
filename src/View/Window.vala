@@ -283,7 +283,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         /*/
         /* Connect and abstract signals to local ones
         /*/
-
         view_switcher.action.activate.connect ((id) => {
             switch ((ViewMode)(id.get_uint32 ())) {
                 case ViewMode.ICON:
@@ -347,9 +346,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
             return false;
         });
-
-
-
 
         //TODO Rewrite for Gtk4
         window_state_event.connect ((event) => {
@@ -797,10 +793,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void add_window (GLib.File location = default_location, ViewMode mode = default_mode) {
-        with (new Window (marlin_app)) {
-            add_tab (location, real_mode (mode), false);
-            present ();
-        }
+        var new_window = new Window (marlin_app);
+        new_window.add_tab (location, real_mode (mode), false);
+        new_window.present ();
     }
 
     private void undo_actions_set_insensitive () {
