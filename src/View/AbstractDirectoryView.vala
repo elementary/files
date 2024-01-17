@@ -269,7 +269,11 @@ namespace Files {
         protected Files.ListModel model;
         protected Files.IconRenderer icon_renderer;
         protected unowned View.Slot slot; // Must be unowned else cyclic reference stops destruction
-        protected unowned View.Window window; /*For convenience - this can be derived from slot */
+        protected unowned View.Window? window {
+            get {
+                return slot.ctab.window;
+            }
+        }
         protected static DndHandler dnd_handler = new DndHandler ();
 
         protected unowned Gtk.RecentManager recent;
@@ -279,7 +283,6 @@ namespace Files {
 
         protected AbstractDirectoryView (View.Slot _slot) {
             slot = _slot;
-            window = _slot.window;
             editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
