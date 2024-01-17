@@ -44,7 +44,7 @@ namespace Files.View {
             }
         }
 
-        public unowned View.Window window {
+        public unowned View.Window? window {
             get { return ctab.window; }
         }
 
@@ -136,7 +136,9 @@ namespace Files.View {
             });
 
             folder_deleted.connect ((file, dir) => {
-               ((Files.Application)(window.application)).folder_deleted (file.location);
+                if (window != null) {
+                    ((Files.Application)(window.application)).folder_deleted (file.location);
+                }
             });
         }
 

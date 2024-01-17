@@ -159,7 +159,7 @@ namespace Files.View {
             }
         }
 
-        private void on_folder_deleted (GLib.File deleted) {
+        private void on_folder_deleted (GLib.File deleted) requires (window != null) {
             if (deleted.equal (this.location) && !go_up ()) {
                 close ();
                 window.remove_content (this);
@@ -283,7 +283,7 @@ namespace Files.View {
         private void open_location (
             GLib.File loc,
             Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT
-        ) {
+        ) requires (window != null) {
             switch ((Files.OpenFlag)flag) {
                 case Files.OpenFlag.NEW_TAB:
                 case Files.OpenFlag.NEW_WINDOW:

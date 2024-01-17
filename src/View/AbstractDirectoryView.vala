@@ -961,7 +961,7 @@ namespace Files {
             }
         }
 
-        private void handle_free_space_change () {
+        private void handle_free_space_change () requires (window != null) {
             /* Wait at least 250 mS after last space change before signalling to avoid unnecessary updates*/
             if (add_remove_file_timeout_id == 0) {
                 signal_free_space_change = false;
@@ -1190,7 +1190,7 @@ namespace Files {
             open_file (file, null, null);
         }
 
-        private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
+        private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) requires (window != null) {
             GLib.File location;
             if (selected_files != null) {
                 location = selected_files.data.get_target_location ();
@@ -1203,11 +1203,11 @@ namespace Files {
 
         /** Background actions */
 
-        private void change_state_show_hidden (GLib.SimpleAction action) {
+        private void change_state_show_hidden (GLib.SimpleAction action) requires (window != null) {
             window.change_state_show_hidden (action);
         }
 
-        private void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
+        private void change_state_show_remote_thumbnails (GLib.SimpleAction action) requires (window != null) {
             window.change_state_show_remote_thumbnails (action);
         }
 
@@ -1927,7 +1927,7 @@ namespace Files {
             }
         }
 
-        protected void show_context_menu (Gdk.Event event) {
+        protected void show_context_menu (Gdk.Event event) requires (window != null) {
             cancel_drag_timer ();
             /* select selection or background context menu */
             update_menu_actions ();
@@ -2892,7 +2892,7 @@ namespace Files {
             real_view.motion_notify_event.disconnect (on_drag_timeout_motion_notify);
         }
 
-        private void start_drag_scroll_timer (Gdk.DragContext context) {
+        private void start_drag_scroll_timer (Gdk.DragContext context) requires (window != null) {
             drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                           50,
                                                           () => {
