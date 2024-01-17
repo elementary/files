@@ -349,47 +349,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         });
 
 
-        var button_controller = new Gtk.GestureMultiPress (this) {
-            button = 0,
-            propagation_phase = CAPTURE
-        };
-
-        button_controller.pressed.connect ((n_press, x, y) => {
-            Gdk.ModifierType state;
-            Gtk.get_current_event_state (out state);
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            switch (button_controller.button) {
-                case 0:
-                    if ((mods & Gdk.ModifierType.MOD1_MASK) > 0) {
-                        button_controller.set_state (CLAIMED);
-                        if ((mods & Gdk.ModifierType.SHIFT_MASK) > 0) {
-                            current_container.go_forward ();
-                        } else {
-                             current_container.go_back ();
-                        }
-                    }
-                    break;
-                /* Extra mouse button actions */
-                case 6:
-                case 8:
-                    if (mods == 0) {
-                        button_controller.set_state (CLAIMED);
-                        current_container.go_back ();
-                    }
-                    break;
-
-                case 7:
-                case 9:
-                    if (mods == 0) {
-                        button_controller.set_state (CLAIMED);
-                        current_container.go_forward ();
-                    }
-                    break;
-
-                default:
-                    break;
-            }
-        });
 
 
         //TODO Rewrite for Gtk4
