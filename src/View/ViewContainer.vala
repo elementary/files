@@ -220,7 +220,7 @@ namespace Files.View {
             }
 
             if (mode == ViewMode.MILLER_COLUMNS) {
-                this.view = new Miller (loc, this, mode);
+                this.view = new Miller (loc, this);
             } else {
                 this.view = new Slot (loc, this, mode);
             }

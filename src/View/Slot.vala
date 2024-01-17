@@ -19,11 +19,11 @@
 
 namespace Files.View {
     public class Slot : Files.AbstractSlot {
-        private unowned View.ViewContainer ctab;
-        private ViewMode mode;
+        public unowned View.ViewContainer ctab { get; construct; }
+        public ViewMode mode { get; construct; }
+
         private int preferred_column_width;
         private Files.AbstractDirectoryView? dir_view = null;
-
         private uint reload_timeout_id = 0;
         private uint path_change_timeout_id = 0;
         private bool original_reload_request = false;
@@ -45,7 +45,7 @@ namespace Files.View {
         }
 
         public unowned View.Window window {
-            get {return ctab.window;}
+            get { return ctab.window; }
         }
 
         public override bool is_frozen {
@@ -75,18 +75,44 @@ namespace Files.View {
         public signal void size_change ();
 
         public Slot (GLib.File _location, View.ViewContainer _ctab, ViewMode _mode) {
-            ctab = _ctab;
-            mode = _mode;
-            is_active = false;
-            preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
-            width = preferred_column_width;
+            Object (
+                ctab: _ctab,
+                mode: _mode,
+                location: _location
+            );
+        }
 
-            set_up_directory (_location); /* Connect dir signals before making view */
-            make_view ();
+        construct {
+            switch (mode) {
+                case ViewMode.MILLER_COLUMNS:
+                    dir_view = new Files.ColumnView (this);
+                    break;
+
+                case ViewMode.LIST:;
+                    dir_view = new Files.ListView (this);
+                    break;
+
+                case ViewMode.ICON:
+                    dir_view = new Files.IconView (this);
+                    break;
+
+                default:
+                    break;
+            }
+
+            /* Miller View creates its own overlay and handles packing of the directory view */
+            if (mode != ViewMode.MILLER_COLUMNS) {
+                add_overlay (dir_view);
+            }
+
+            connect_dir_signals ();
             connect_dir_view_signals ();
             connect_slot_signals ();
 
+            is_active = false;
             is_frozen = true;
+            preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
+            width = preferred_column_width;
         }
 
         ~Slot () {
@@ -149,7 +175,6 @@ namespace Files.View {
 
             /*  Column View requires slots to determine their own width (other views' width determined by Window */
             if (mode == ViewMode.MILLER_COLUMNS) {
-
                 if (dir.is_empty ()) { /* No files in the file cache */
                     Pango.Rectangle extents;
                     var layout = dir_view.create_pango_layout (null);
@@ -215,17 +240,6 @@ namespace Files.View {
             });
         }
 
-        private void set_up_directory (GLib.File loc) {
-            if (directory != null) {
-                disconnect_dir_signals ();
-            }
-
-            directory = Directory.from_gfile (loc);
-            assert (directory != null);
-
-            connect_dir_signals ();
-        }
-
         private void on_dir_view_path_change_request (GLib.File loc, Files.OpenFlag flag, bool make_root) {
             if (flag == 0) { /* make view in existing container */
                 if (mode == ViewMode.MILLER_COLUMNS) {
@@ -241,8 +255,12 @@ namespace Files.View {
         public override void user_path_change_request (GLib.File loc, bool make_root = true) {
         /** Only this function must be used to change or reload the path **/
             var old_dir = directory;
-            set_up_directory (loc);
+            if (directory != null) {
+                disconnect_dir_signals ();
+            }
 
+            location = loc;
+            connect_dir_signals ();
             path_changed ();
             /* ViewContainer listens to this signal takes care of updating appearance */
             dir_view.change_directory (old_dir, directory);
@@ -266,32 +284,6 @@ namespace Files.View {
                 /* Propagate reload signal to any other slot showing this directory indicating it is not
                  * the original signal */
                 directory.need_reload (false);
-            }
-        }
-
-        protected override void make_view () {
-            assert (dir_view == null);
-
-            switch (mode) {
-                case ViewMode.MILLER_COLUMNS:
-                    dir_view = new Files.ColumnView (this);
-                    break;
-
-                case ViewMode.LIST:;
-                    dir_view = new Files.ListView (this);
-                    break;
-
-                case ViewMode.ICON:
-                    dir_view = new Files.IconView (this);
-                    break;
-
-                default:
-                    break;
-            }
-
-            /* Miller View creates its own overlay and handles packing of the directory view */
-            if (mode != ViewMode.MILLER_COLUMNS) {
-                add_overlay (dir_view);
             }
         }
 
@@ -425,6 +417,7 @@ namespace Files.View {
             } else if (directory.permission_denied) {
                 msg = DENIED_MESSAGE;
             }
+
             return msg;
         }
     }
