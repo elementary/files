@@ -41,6 +41,7 @@ namespace Files.View {
                 _window = value;
                 _window.folder_deleted.connect (on_folder_deleted);
                 _window.connect_content_signals (this);
+                _window.loading_uri (slot.location.get_uri ());
             }
         }
 
@@ -322,6 +323,10 @@ namespace Files.View {
 
         private void refresh_slot_info (GLib.File loc) {
             update_tab_name ();
+            if (window == null) { // On initial creation window is set later
+                return;
+            }
+
             window.loading_uri (loc.get_uri ()); /* Updates labels as well */
             /* Do not update top menu (or record uri) unless folder loads successfully */
         }
