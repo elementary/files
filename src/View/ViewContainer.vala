@@ -42,6 +42,8 @@ namespace Files.View {
                 _window.folder_deleted.connect (on_folder_deleted);
                 _window.connect_content_signals (this);
                 _window.loading_uri (slot.location.get_uri ());
+                directory_is_loading (slot.location);
+                slot.initialize_directory ();
             }
         }
 
@@ -237,8 +239,6 @@ namespace Files.View {
             view.selection_changed.connect (on_slot_selection_changed);
             view.directory_loaded.connect (on_slot_directory_loaded);
 
-            directory_is_loading (loc);
-            slot.initialize_directory ();
             show_all ();
 
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
