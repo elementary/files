@@ -1209,6 +1209,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void save_active_tab_position () {
+        if (tab_view.selected_page == null) {
+            return;
+        }
+
         Files.app_settings.set_int (
             "active-tab-position",
             tab_view.get_page_position (tab_view.selected_page)
