@@ -30,7 +30,25 @@ namespace Files {
             debug ("ATV destruct");
         }
 
-        protected virtual void create_and_set_up_name_column () {
+        protected abstract void set_up_icon_renderer ();
+
+        protected override void connect_tree_signals () {
+            tree.get_selection ().changed.connect (on_view_selection_changed);
+        }
+
+        protected override void disconnect_tree_signals () {
+            tree.get_selection ().changed.disconnect (on_view_selection_changed);
+        }
+
+        protected override Gtk.Widget? create_view () {
+            tree = new Files.TreeView () {
+                model = model,
+                headers_visible = false,
+                rubber_banding = true
+            };
+
+            tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
+
             name_column = new Gtk.TreeViewColumn () {
                 sort_column_id = Files.ListModel.ColumnID.FILENAME,
                 expand = true,
@@ -38,7 +56,14 @@ namespace Files {
             };
 
             name_renderer = new Files.TextRenderer (ViewMode.LIST);
-            set_up_name_renderer ();
+            base.set_up_name_renderer ();
+            name_renderer.@set ("wrap-width", -1);
+            name_renderer.@set ("zoom-level", ZoomLevel.NORMAL);
+            name_renderer.@set ("ellipsize-set", true);
+            name_renderer.@set ("ellipsize", Pango.EllipsizeMode.END);
+            name_renderer.xalign = 0.0f;
+            name_renderer.yalign = 0.5f;
+
             set_up_icon_renderer ();
             var emblem_renderer = new Files.EmblemRenderer ();
             emblem_renderer.yalign = 0.5f;
@@ -58,46 +83,12 @@ namespace Files {
                                         "file", Files.ListModel.ColumnID.FILE_COLUMN);
 
             tree.append_column (name_column);
-        }
-
-        protected abstract void set_up_icon_renderer ();
-
-        protected void set_up_view () {
             connect_tree_signals ();
             tree.realize.connect ((w) => {
                 tree.grab_focus ();
                 tree.columns_autosize ();
                 tree.zoom_level = zoom_level;
             });
-        }
-
-        protected override void set_up_name_renderer () {
-            base.set_up_name_renderer ();
-            name_renderer.@set ("wrap-width", -1);
-            name_renderer.@set ("zoom-level", ZoomLevel.NORMAL);
-            name_renderer.@set ("ellipsize-set", true);
-            name_renderer.@set ("ellipsize", Pango.EllipsizeMode.END);
-            name_renderer.xalign = 0.0f;
-            name_renderer.yalign = 0.5f;
-        }
-
-        protected override void connect_tree_signals () {
-            tree.get_selection ().changed.connect (on_view_selection_changed);
-        }
-        protected override void disconnect_tree_signals () {
-            tree.get_selection ().changed.disconnect (on_view_selection_changed);
-        }
-
-        protected override Gtk.Widget? create_view () {
-            tree = new Files.TreeView () {
-                model = model,
-                headers_visible = false,
-                rubber_banding = true
-            };
-
-            tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
-            create_and_set_up_name_column ();
-            set_up_view ();
 
             return tree as Gtk.Widget;
         }
