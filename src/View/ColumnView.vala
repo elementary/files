@@ -29,9 +29,7 @@ namespace Files {
         }
 
         protected override void set_up_icon_renderer () {
-            icon_renderer = new IconRenderer (ViewMode.MILLER_COLUMNS) {
-                lpad = 6
-            };
+            icon_renderer = new IconRenderer ();
         }
 
         protected new void on_view_selection_changed () {
