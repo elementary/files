@@ -42,8 +42,7 @@ namespace Files.View {
                 _window.folder_deleted.connect (on_folder_deleted);
                 _window.connect_content_signals (this);
                 _window.loading_uri (slot.location.get_uri ());
-                directory_is_loading (slot.location);
-                slot.initialize_directory ();
+                load_directory ();
             }
         }
 
@@ -265,8 +264,14 @@ namespace Files.View {
              * to have received a change mode instruction */
             set_active_state (true);
             /* Do not update top menu (or record uri) unless folder loads successfully */
+            load_directory ();
+
         }
 
+        private void load_directory () {
+            directory_is_loading (slot.location);
+            slot.initialize_directory ();
+        }
 
         private void disconnect_slot_signals (Files.AbstractSlot aslot) {
             aslot.active.disconnect (on_slot_active);
