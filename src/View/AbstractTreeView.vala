@@ -55,14 +55,16 @@ namespace Files {
                 resizable = true
             };
 
-            name_renderer = new Files.TextRenderer (ViewMode.LIST);
-            base.set_up_name_renderer ();
-            name_renderer.@set ("wrap-width", -1);
-            name_renderer.@set ("zoom-level", ZoomLevel.NORMAL);
-            name_renderer.@set ("ellipsize-set", true);
-            name_renderer.@set ("ellipsize", Pango.EllipsizeMode.END);
-            name_renderer.xalign = 0.0f;
-            name_renderer.yalign = 0.5f;
+            name_renderer = new Files.TextRenderer (ViewMode.LIST) {
+                wrap_width = -1,
+                zoom_level = ZoomLevel.NORMAL,
+                ellipsize_set = true,
+                ellipsize = Pango.EllipsizeMode.END,
+                xalign = 0.0f,
+                yalign = 0.5f
+            };
+            set_up_name_renderer ();
+
 
             set_up_icon_renderer ();
             var emblem_renderer = new Files.EmblemRenderer ();

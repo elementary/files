@@ -345,7 +345,7 @@ namespace Files {
             debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
         }
 
-        protected virtual void set_up_name_renderer () {
+        protected void set_up_name_renderer () {
             name_renderer.editable = false;
             name_renderer.edited.connect (on_name_edited);
             name_renderer.editing_canceled.connect (on_name_editing_canceled);
