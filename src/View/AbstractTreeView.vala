@@ -180,27 +180,6 @@ namespace Files {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        protected override uint get_selected_files_from_model (out GLib.List<Files.File> selected_files) {
-            uint count = 0;
-
-            GLib.List<Files.File> list = null;
-            tree.get_selection ().selected_foreach ((model, path, iter) => {
-                Files.File? file; /* can be null if click on blank row in list view */
-                model.@get (iter, Files.ListModel.ColumnID.FILE_COLUMN, out file, -1);
-                if (file != null) {
-                    list.prepend ((owned) file);
-                    count++;
-                }
-            });
-
-            selected_files = (owned)list;
-            return count;
-        }
-
-        protected override bool view_has_focus () {
-            return tree.has_focus;
-        }
-
         protected override uint get_event_position_info (Gdk.Event event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
@@ -292,13 +271,7 @@ namespace Files {
             return zone;
         }
 
-        protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
-            if (tree == null || path == null || slot == null || slot.directory == null ||
-                slot.directory.permission_denied || slot.directory.is_empty ()) {
-
-                return;
-            }
-
+        protected override void scroll_to_path (Gtk.TreePath path, bool scroll_to_top) {
             tree.scroll_to_cell (path, name_column, scroll_to_top, 0.5f, 0.5f);
         }
 

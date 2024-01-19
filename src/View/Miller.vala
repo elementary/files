@@ -18,11 +18,11 @@
 
 namespace Files.View {
     public class Miller : Files.AbstractSlot {
-        private unowned View.ViewContainer ctab;
+        public unowned View.ViewContainer ctab { get; construct; }
 
         /* Need private copy of initial location as Miller
          * does not have its own Asyncdirectory object */
-        private GLib.File root_location;
+        public GLib.File root_location { get; set construct; }
 
         private Gtk.Box colpane;
 
@@ -47,10 +47,15 @@ namespace Files.View {
             }
         }
 
-        public Miller (GLib.File loc, View.ViewContainer ctab, ViewMode mode) {
-            this.ctab = ctab;
-            this.root_location = loc;
+        public Miller (GLib.File loc, View.ViewContainer _ctab) {
+            Object (
+                location: loc,
+                root_location: loc,
+                ctab: _ctab
+            );
+        }
 
+        construct {
             (Files.Preferences.get_default ()).notify["show-hidden-files"].connect ((s, p) => {
                 show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
             });
@@ -74,7 +79,8 @@ namespace Files.View {
 
             content_box.show_all ();
 
-            make_view ();
+            current_slot = null;
+            add_location (root_location, null); /* current slot gets set by this */
 
             is_frozen = true;
         }
@@ -83,10 +89,6 @@ namespace Files.View {
             debug ("Miller destruct");
         }
 
-        protected override void make_view () {
-            current_slot = null;
-            add_location (root_location, null); /* current slot gets set by this */
-        }
 
         /** Creates a new slot in the host slot hpane */
         public void add_location (GLib.File loc, View.Slot? host = null) {
