@@ -47,7 +47,10 @@ public class Files.IconView : Files.AbstractDirectoryView {
             columns = -1,
         };
 
-        icon_renderer = new Files.IconRenderer (ViewMode.ICON);
+        icon_renderer = new IconRenderer () {
+            show_emblems = true
+        };
+
         tree.pack_start (icon_renderer, false);
         tree.add_attribute (icon_renderer, "file", ListModel.ColumnID.FILE_COLUMN);
 
@@ -147,28 +150,6 @@ public class Files.IconView : Files.AbstractDirectoryView {
         return tree.get_visible_range (out start_path, out end_path);
     }
 
-    protected override uint get_selected_files_from_model (out GLib.List<Files.File> selected_files) {
-        GLib.List<Files.File> list = null;
-        uint count = 0;
-
-        tree.selected_foreach ((tree, path) => {
-            Files.File? file = model.file_for_path (path);
-            if (file != null) {
-                list.prepend ((owned)file);
-                count++;
-            } else {
-                critical ("Null file in model");
-            }
-        });
-
-        selected_files = (owned)list;
-        return count;
-    }
-
-    protected override bool view_has_focus () {
-        return tree.has_focus;
-    }
-
     protected override uint get_event_position_info (Gdk.Event event,
                                                      out Gtk.TreePath? path,
                                                      bool rubberband = false) {
@@ -229,14 +210,7 @@ public class Files.IconView : Files.AbstractDirectoryView {
         return zone;
     }
 
-    protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
-        /* slot && directory should not be null but see lp:1595438  & https://github.com/elementary/files/issues/1699 */
-        if (tree == null || path == null || slot == null || slot.directory == null ||
-            slot.directory.permission_denied || slot.directory.is_empty ()) {
-
-            return;
-        }
-
+    protected override void scroll_to_path (Gtk.TreePath path, bool scroll_to_top) {
         tree.scroll_to_path (path, scroll_to_top, 0.5f, 0.5f);
     }
 
