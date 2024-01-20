@@ -235,14 +235,14 @@ namespace Files {
                          */
                         disconnect_tree_signals ();
                         clipboard.changed.disconnect (on_clipboard_changed);
-                        view.key_press_event.disconnect (on_view_key_press_event);
                     } else {
-                        view.key_press_event.connect (on_view_key_press_event);
                         clipboard.changed.connect (on_clipboard_changed);
                         connect_tree_signals ();
 
                         update_menu_actions ();
                     }
+
+                    key_controller.propagation_phase = value ? Gtk.PropagationPhase.NONE : Gtk.PropagationPhase.BUBBLE;
                 }
             }
 
@@ -277,6 +277,8 @@ namespace Files {
         protected static DndHandler dnd_handler = new DndHandler ();
 
         protected unowned Gtk.RecentManager recent;
+
+        protected Gtk.EventControllerKey key_controller;
 
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
@@ -326,13 +328,18 @@ namespace Files {
 
                 view.motion_notify_event.connect (on_motion_notify_event);
                 view.leave_notify_event.connect (on_leave_notify_event);
-                view.key_press_event.connect (on_view_key_press_event);
                 view.button_press_event.connect (on_view_button_press_event);
                 view.button_release_event.connect (on_view_button_release_event);
                 view.draw.connect (on_view_draw);
                 view.realize.connect (() => {
                    schedule_thumbnail_color_tag_timeout ();
                 });
+
+                key_controller = new Gtk.EventControllerKey (view) {
+                    propagation_phase = BUBBLE
+                };
+
+                key_controller.key_pressed.connect (on_view_key_press_event);
             }
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
@@ -2982,20 +2989,20 @@ namespace Files {
         }
 
 /** Keyboard event handling **/
-        protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
+        protected virtual bool on_view_key_press_event (uint original_keyval, uint keycode, Gdk.ModifierType state) {
             if (is_frozen) {
                 return true;
             }
 
-            if (event.is_modifier == 1) {
+            var event = Gtk.get_current_event ();
+            if (((Gdk.EventKey)event).is_modifier == 1) {
                 return true;
             }
 
             cancel_hover ();
 
-            Gdk.ModifierType consumed_mods, state;
-            var keyval = KeyUtils.map_key (event, out consumed_mods);
-            event.get_state (out state);
+            Gdk.ModifierType consumed_mods;
+            var keyval = KeyUtils.map_key (original_keyval, keycode, out consumed_mods);
 
             var mods = (state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);

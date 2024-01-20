@@ -258,7 +258,6 @@ namespace Files.View {
             slot.new_container_request.connect (on_new_container_request);
             slot.size_change.connect (update_total_width);
             slot.folder_deleted.connect (on_slot_folder_deleted);
-            slot.colpane.key_press_event.connect (on_key_pressed);
             slot.path_changed.connect (on_slot_path_changed);
             slot.directory_loaded.connect (on_slot_directory_loaded);
             slot.hpane.notify["position"].connect (update_total_width);
@@ -272,7 +271,6 @@ namespace Files.View {
             slot.new_container_request.disconnect (on_new_container_request);
             slot.size_change.disconnect (update_total_width);
             slot.folder_deleted.disconnect (on_slot_folder_deleted);
-            slot.colpane.key_press_event.disconnect (on_key_pressed);
             slot.path_changed.disconnect (on_slot_path_changed);
             slot.directory_loaded.disconnect (on_slot_directory_loaded);
         }
@@ -360,7 +358,8 @@ namespace Files.View {
             }
         }
 
-        private bool on_key_pressed (Gtk.Widget box, Gdk.EventKey event) {
+        // Called by ColumnView
+        public bool on_miller_key_pressed (Gdk.EventKey event) {
             /* Only handle unmodified keys */
             Gdk.ModifierType state;
             event.get_state (out state);

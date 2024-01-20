@@ -24,15 +24,14 @@ namespace KeyUtils {
      * to the same position as on a Latin QWERTY keyboard. If the conversion fails, the unprocessed
      * event.keyval is used. */
     //TODO Needs complete rewrite for Gtk4 so leaving some direct access of event struct
-    public static uint map_key (Gdk.EventKey event, out Gdk.ModifierType consumed_mods) {
-        uint original_keyval, keyval;
-        event.get_keyval (out original_keyval);
-        keyval = original_keyval;
+    public static uint map_key (uint original_keyval, uint keycode, out Gdk.ModifierType consumed_mods) {
+        uint keyval = original_keyval;
         consumed_mods = 0;
 
         if (keyval > 127) {
             int eff_grp, level;
-            var display = event.get_device ().get_display ();
+            var event = (Gdk.EventKey)(Gtk.get_current_event ());
+            var display = Gtk.get_current_event_device ().get_display ();
             var keymap = Gdk.Keymap.get_for_display (display);
             if (!keymap.translate_keyboard_state (
                     event.hardware_keycode,

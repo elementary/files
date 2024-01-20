@@ -73,31 +73,28 @@ namespace Files {
             return tree as Gtk.Widget;
         }
 
-        protected override bool on_view_key_press_event (Gdk.EventKey event) {
-            Gdk.ModifierType state;
-            event.get_state (out state);
+        /* Handle back and forward cursor keys differently */
+        public override bool key_press_event (Gdk.EventKey event) {
             uint keyval;
             event.get_keyval (out keyval);
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
+            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
-
             switch (keyval) {
-                /* Do not emit alert sound on left and right cursor keys in Miller View */
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
                 case Gdk.Key.BackSpace:
                     if (no_mods) {
                         /* Pass event to MillerView */
-                        slot.colpane.key_press_event (event);
-                        return true;
+                        return ((Files.View.Miller)(slot.ctab.view)).on_miller_key_pressed (event);
                     }
+
                     break;
 
                 default:
                     break;
             }
 
-            return base.on_view_key_press_event (event);
+            return key_controller.handle_event (event);
         }
 
         protected override bool handle_primary_button_click (Gdk.Event event, Gtk.TreePath? path) {

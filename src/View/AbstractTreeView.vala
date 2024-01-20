@@ -365,7 +365,7 @@ namespace Files {
             }
         }
 
-        /* Override base class in order to disable the Gtk.TreeView local search functionality */
+        /* Override Gtk.TreeView default key press signal handler in order to disable the local search functionality */
         public override bool key_press_event (Gdk.EventKey event) {
             /* We still need the base class to handle cursor keys first */
             uint keyval;
@@ -382,11 +382,11 @@ namespace Files {
                 case Gdk.Key.Home:
                 case Gdk.Key.End:
 
-                    return base.key_press_event (event);
+                    return base.key_press_event (event); // Handled by Gtk.TreeView
 
                 default:
 
-                    return false; // Pass event to Window handler.
+                    return Gdk.EVENT_PROPAGATE; // Handled by AbstractDirectoryView or Window
             }
         }
     }
