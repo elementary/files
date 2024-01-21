@@ -56,6 +56,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private string? drop_text = null;
     private bool drop_occurred = false;
     private Gdk.DragAction? current_suggested_action = Gdk.DragAction.DEFAULT;
+    private Gtk.EventControllerKey key_controller;
 
     protected Gtk.Grid content_grid;
     protected Gtk.Grid icon_label_grid;
@@ -168,7 +169,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         add (content_grid);
         show_all ();
 
-        key_press_event.connect (on_key_press_event);
+        key_controller = new Gtk.EventControllerKey (this) {
+            propagation_phase = BUBBLE
+        };
+        key_controller.key_pressed.connect (on_key_press_event);
         button_release_event.connect_after (after_button_release_event);
 
         notify["gicon"].connect (() => {
@@ -214,9 +218,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         base.destroy ();
     }
 
-    protected virtual bool on_key_press_event (Gdk.EventKey event) {
-        uint keyval;
-        event.get_keyval (out keyval);
+    protected virtual bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
         switch (keyval) {
             case Gdk.Key.F2:
                 rename ();
@@ -229,6 +231,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             default:
                 break;
         }
+
         return false;
     }
 
