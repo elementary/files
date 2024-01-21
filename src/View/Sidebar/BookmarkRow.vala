@@ -56,6 +56,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private string? drop_text = null;
     private bool drop_occurred = false;
     private Gdk.DragAction? current_suggested_action = Gdk.DragAction.DEFAULT;
+    private Gtk.EventControllerKey key_controller;
 
     protected Gtk.Grid content_grid;
     protected Gtk.Grid icon_label_grid;
@@ -168,7 +169,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         add (content_grid);
         show_all ();
 
-        key_press_event.connect (on_key_press_event);
+        key_controller = new Gtk.EventControllerKey (this) {
+            propagation_phase = BUBBLE
+        };
+        key_controller.key_pressed.connect (on_key_press_event);
         button_release_event.connect_after (after_button_release_event);
 
         notify["gicon"].connect (() => {
@@ -214,9 +218,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         base.destroy ();
     }
 
-    protected virtual bool on_key_press_event (Gdk.EventKey event) {
-        uint keyval;
-        event.get_keyval (out keyval);
+    protected virtual bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
         switch (keyval) {
             case Gdk.Key.F2:
                 rename ();
@@ -226,13 +228,18 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 cancel_rename ();
                 return true;
 
+            case Gdk.Key.Menu:
+                popup_context_menu ();
+                return true;
+
             default:
                 break;
         }
+
         return false;
     }
 
-    protected virtual bool after_button_release_event (Gdk.EventButton event) {
+    protected virtual bool after_button_release_event (Gdk.Event event = Gtk.get_current_event ()) {
         if (!valid) { //Ignore if in the process of being removed
             return true;
         }
@@ -260,7 +267,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 }
 
             case Gdk.BUTTON_SECONDARY:
-                popup_context_menu (event);
+                popup_context_menu ();
                 return true;
 
             case Gdk.BUTTON_MIDDLE:
@@ -272,7 +279,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
     }
 
-    protected virtual void popup_context_menu (Gdk.EventButton event) {
+    protected virtual void popup_context_menu (Gdk.Event event = Gtk.get_current_event ()) {
         var menu_builder = new PopupMenuBuilder ()
             .add_open (() => {activated ();})
             .add_separator ()
