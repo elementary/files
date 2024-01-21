@@ -228,6 +228,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 cancel_rename ();
                 return true;
 
+            case Gdk.Key.Menu:
+                popup_context_menu ();
+                return true;
+
             default:
                 break;
         }
@@ -235,7 +239,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         return false;
     }
 
-    protected virtual bool after_button_release_event (Gdk.EventButton event) {
+    protected virtual bool after_button_release_event (Gdk.Event event = Gtk.get_current_event ()) {
         if (!valid) { //Ignore if in the process of being removed
             return true;
         }
@@ -263,7 +267,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 }
 
             case Gdk.BUTTON_SECONDARY:
-                popup_context_menu (event);
+                popup_context_menu ();
                 return true;
 
             case Gdk.BUTTON_MIDDLE:
@@ -275,7 +279,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
     }
 
-    protected virtual void popup_context_menu (Gdk.EventButton event) {
+    protected virtual void popup_context_menu (Gdk.Event event = Gtk.get_current_event ()) {
         var menu_builder = new PopupMenuBuilder ()
             .add_open (() => {activated ();})
             .add_separator ()
