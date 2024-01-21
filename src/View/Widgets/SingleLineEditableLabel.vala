@@ -18,29 +18,20 @@
 
 namespace Files {
     public class SingleLineEditableLabel : AbstractEditableLabel {
-
         protected Gtk.Entry textview;
         private int select_start = 0;
         private int select_end = 0;
 
-        public SingleLineEditableLabel () {}
-
-        public override Gtk.Widget create_editable_widget () {
+        construct {
             textview = new Gtk.Entry ();
-            /* Block propagation of button press event as this would cause renaming to end */
-            textview.button_press_event.connect_after (() => { return true; });
-            return textview as Gtk.Widget;
-        }
-
-        public override Gtk.Widget get_real_editable () {
-            return textview;
+            connect_editable_widget (textview);
+            add (textview);
         }
 
         public override void set_text (string text) {
             textview.set_text (text);
             original_name = text;
         }
-
 
         public override void set_justify (Gtk.Justification jtype) {
             switch (jtype) {
@@ -82,7 +73,6 @@ namespace Files {
         }
 
         /** Gtk.Editable interface */
-
         public override void select_region (int start_pos, int end_pos) {
             /* Cannot select textview region here because it is not realised yet and the selected region
              * will be overridden when keyboard focus is grabbed after realising. So just remember start and end.
