@@ -66,10 +66,8 @@ namespace Files {
             return textview.get_text ();
         }
 
-        public override bool on_key_press_event (Gdk.EventKey event) {
+        public override bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
             /* Ensure rename cancelled on cursor Up/Down */
-            uint keyval;
-            event.get_keyval (out keyval);
             switch (keyval) {
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
@@ -80,7 +78,7 @@ namespace Files {
                     break;
             }
 
-            return base.on_key_press_event (event);
+            return base.on_key_press_event (keyval, keycode, state);
         }
 
         /** Gtk.Editable interface */

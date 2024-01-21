@@ -27,22 +27,20 @@ namespace Files {
         public bool draw_outline {get; set;}
 
         private Gtk.Widget editable_widget;
+        private Gtk.EventControllerKey key_controller;
 
         protected AbstractEditableLabel () {
             editable_widget = create_editable_widget ();
             add (editable_widget);
             show_all ();
             get_real_editable ().key_press_event.connect (on_key_press_event);
+            key_controller = new Gtk.EventControllerKey (get_real_editable ());
+            key_controller.key_pressed.connect (on_key_press_event);
         }
 
-        public virtual bool on_key_press_event (Gdk.EventKey event) {
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            uint keyval;
-            event.get_keyval (out keyval);
+        public virtual bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
             var mods = state & Gtk.accelerator_get_default_mod_mask ();
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
-
             switch (keyval) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
@@ -71,6 +69,7 @@ namespace Files {
                 default:
                     break;
             }
+
             return false;
         }
 
