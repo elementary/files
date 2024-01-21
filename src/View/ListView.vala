@@ -39,9 +39,7 @@ namespace Files {
         }
 
         protected override void set_up_icon_renderer () {
-            icon_renderer = new IconRenderer (ViewMode.LIST) {
-                lpad = 6
-            };
+            icon_renderer = new IconRenderer ();
         }
 
         private void connect_additional_signals () {

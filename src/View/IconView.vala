@@ -47,7 +47,10 @@ public class Files.IconView : Files.AbstractDirectoryView {
             columns = -1,
         };
 
-        icon_renderer = new Files.IconRenderer (ViewMode.ICON);
+        icon_renderer = new IconRenderer () {
+            show_emblems = true
+        };
+
         tree.pack_start (icon_renderer, false);
         tree.add_attribute (icon_renderer, "file", ListModel.ColumnID.FILE_COLUMN);
 
