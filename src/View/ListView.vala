@@ -39,9 +39,7 @@ namespace Files {
         }
 
         protected override void set_up_icon_renderer () {
-            icon_renderer = new IconRenderer (ViewMode.LIST) {
-                lpad = 6
-            };
+            icon_renderer = new IconRenderer ();
         }
 
         private void connect_additional_signals () {
@@ -154,15 +152,10 @@ namespace Files {
             }
         }
 
-        protected override bool on_view_key_press_event (Gdk.EventKey event) {
-            Gdk.ModifierType state;
-            event.get_state (out state);
+        protected override bool on_view_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
             bool control_pressed = ((state & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((state & Gdk.ModifierType.SHIFT_MASK) != 0);
-
             if (!control_pressed && !shift_pressed) {
-                uint keyval;
-                event.get_keyval (out keyval);
                 switch (keyval) {
                     case Gdk.Key.Right:
                         Gtk.TreePath? path = null;
@@ -193,7 +186,7 @@ namespace Files {
                 }
             }
 
-            return base.on_view_key_press_event (event);
+            return base.on_view_key_press_event (keyval, keycode, state);
         }
 
         protected override Gtk.Widget? create_view () {
