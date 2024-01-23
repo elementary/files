@@ -75,9 +75,7 @@ namespace Files.View.Chrome {
 
     /** Overridden Navigatable interface functions **/
     /************************************************/
-        public override bool on_key_press_event (Gdk.EventKey event) {
-            uint keyval;
-            event.get_keyval (out keyval);
+        public override bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
             switch (keyval) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
@@ -85,6 +83,7 @@ namespace Files.View.Chrome {
                     if (search_mode) {
                         return true;
                     }
+
                     break;
                 case Gdk.Key.KP_Tab:
                 case Gdk.Key.Tab:
@@ -92,7 +91,7 @@ namespace Files.View.Chrome {
                     return true;
             }
 
-            return base.on_key_press_event (event);
+            return base.on_key_press_event (keyval, keycode, state);
         }
 
         public override void reset () {
