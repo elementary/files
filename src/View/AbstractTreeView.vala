@@ -24,12 +24,6 @@ namespace Files {
 
         protected AbstractTreeView (View.Slot _slot) {
             base (_slot);
-
-            // Override Gtk.TreeView default key press signal handler in order to disable
-            // the native local search functionality
-            tree.key_press_event.connect (() => {
-                return key_controller.handle_event (Gtk.get_current_event ());
-            });
         }
 
         ~AbstractTreeView () {
