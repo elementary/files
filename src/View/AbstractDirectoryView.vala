@@ -2994,7 +2994,6 @@ namespace Files {
 
 /** Keyboard event handling **/
         protected virtual bool on_view_key_press_event (uint original_keyval, uint keycode, Gdk.ModifierType state) {
-warning ("ADV on_view_key_press_event");
             if (is_frozen) {
                 return true;
             }
@@ -3254,7 +3253,6 @@ warning ("ADV on_view_key_press_event");
                 return GLib.Source.REMOVE;
             });
 
-warning ("ADV on_view_key_press_event returning %s", res.to_string ());
             return res;
         }
 

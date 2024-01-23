@@ -336,19 +336,17 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         };
 
         key_controller.key_pressed.connect ((keyval, keycode, state) => {
-warning ("Window key pressed");
             var mods = state & Gtk.accelerator_get_default_mod_mask ();
             /* Use find function instead of view interactive search */
             if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
                 /* Use printable characters to initiate search */
                 var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
                 if (uc.isprint ()) {
-warning ("find");
                     activate_action ("find", uc.to_string ());
                     return Gdk.EVENT_STOP;
                 }
             }
-warning ("propagating");
+
             return Gdk.EVENT_PROPAGATE;
         });
 
