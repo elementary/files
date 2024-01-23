@@ -190,7 +190,7 @@ namespace Files.View.Chrome {
                 case Gdk.Key.KP_Down:
                 case Gdk.Key.Down:
                     if (only_control_pressed) {
-                        go_down ();
+                        activate_path ("");
                         return true;
                     }
 
@@ -358,10 +358,6 @@ namespace Files.View.Chrome {
 
         protected virtual void on_entry_text_changed () {
             entry_text_changed (text);
-        }
-
-        protected virtual void go_down () {
-            activate_path ("");
         }
 
         protected virtual void go_up () {
