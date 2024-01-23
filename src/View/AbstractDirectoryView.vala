@@ -3128,11 +3128,20 @@ namespace Files {
                     }
 
                     break;
+                case Gdk.Key.BackSpace:
+                    if ((this is ColumnView) && no_mods) {
+                        return ((Files.View.Miller)(slot.ctab.view)).on_miller_key_pressed (keyval, keycode, state);
+                    }
 
+                    break;
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
+                    if ((this is ColumnView) && no_mods) {
+                        return ((Files.View.Miller)(slot.ctab.view)).on_miller_key_pressed (keyval, keycode, state);
+                    }
+
                     unowned GLib.List<Files.File> selection = get_selected_files ();
                     if (only_alt_pressed && keyval == Gdk.Key.Down) {
                         /* Only open a single selected folder */
