@@ -209,14 +209,6 @@ namespace Files.View.Chrome {
                     activate_path ("");
                     return true;
 
-                case Gdk.Key.l:
-                    if (only_control_pressed) {
-                        set_entry_text (current_dir_path);
-                        grab_focus ();
-                        return true;
-                    } else {
-                        break;
-                    }
                 default:
                     break;
             }
