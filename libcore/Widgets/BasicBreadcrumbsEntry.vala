@@ -62,6 +62,7 @@ namespace Files.View.Chrome {
         protected const double YPAD = 0; /* y padding */
 
         private Gdk.Window? entry_window = null;
+        private Gtk.EventControllerKey key_controller;
 
         protected bool context_menu_showing = false;
 
@@ -82,15 +83,7 @@ namespace Files.View.Chrome {
 
             elements = new Gee.ArrayList<BreadcrumbElement> ();
             old_elements = new Gee.ArrayList<BreadcrumbElement> ();
-            connect_signals ();
 
-            minimum_width = 100;
-            notify["scale-factor"].connect (() => {
-                breadcrumb_icons.scale = scale_factor;
-            });
-        }
-
-        protected virtual void connect_signals () {
             realize.connect_after (after_realize);
             activate.connect (on_activate);
             button_release_event.connect (on_button_release_event);
@@ -99,8 +92,17 @@ namespace Files.View.Chrome {
             motion_notify_event.connect_after (after_motion_notify);
             focus_in_event.connect (on_focus_in);
             focus_out_event.connect (on_focus_out);
-            key_press_event.connect (on_key_press_event);
             changed.connect (on_entry_text_changed);
+
+            key_controller = new Gtk.EventControllerKey (this) {
+                propagation_phase = BUBBLE
+            };
+            key_controller.key_pressed.connect (on_key_press_event);
+
+            minimum_width = 100;
+            notify["scale-factor"].connect (() => {
+                breadcrumb_icons.scale = scale_factor;
+            });
         }
 
     /** Navigatable Interface **/
@@ -180,18 +182,9 @@ namespace Files.View.Chrome {
 
     /** Signal handling **/
     /*********************/
-        public virtual bool on_key_press_event (Gdk.EventKey event) {
-            if (event.is_modifier == 1) {
-                return true;
-            }
-
-            Gdk.ModifierType state;
-            event.get_state (out state);
+        public virtual bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
             var mods = state & Gtk.accelerator_get_default_mod_mask ();
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
-
-            uint keyval;
-            event.get_keyval (out keyval);
             switch (keyval) {
                 /* Do not trap unmodified Down and Up keys - used by some input methods */
                 case Gdk.Key.KP_Down:
