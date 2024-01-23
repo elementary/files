@@ -96,6 +96,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private int restoring_tabs = 0;
     private bool doing_undo_redo = false;
 
+    private Gtk.EventControllerKey key_controller; //[Gtk3] Does not work unless we keep this ref
+
     public signal void loading_uri (string location);
     public signal void folder_deleted (GLib.File location);
     public signal void free_space_change ();
@@ -329,22 +331,23 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         undo_manager.request_menu_update.connect (update_undo_actions);
 
-        key_press_event.connect_after ((event) => {
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            uint keyval;
-            event.get_keyval (out keyval);
+        key_controller = new Gtk.EventControllerKey (this) {
+            propagation_phase = BUBBLE
+        };
+
+        key_controller.key_pressed.connect ((keyval, keycode, state) => {
+            var mods = state & Gtk.accelerator_get_default_mod_mask ();
             /* Use find function instead of view interactive search */
-            if (state == 0 || state == Gdk.ModifierType.SHIFT_MASK) {
+            if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
                 /* Use printable characters to initiate search */
                 var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
                 if (uc.isprint ()) {
                     activate_action ("find", uc.to_string ());
-                    return true;
+                    return Gdk.EVENT_STOP;
                 }
             }
 
-            return false;
+            return Gdk.EVENT_PROPAGATE;
         });
 
         //TODO Rewrite for Gtk4
