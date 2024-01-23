@@ -71,30 +71,6 @@ namespace Files {
             return tree as Gtk.Widget;
         }
 
-        /* Handle back and forward cursor keys differently */
-        public override bool key_press_event (Gdk.EventKey event) {
-            uint keyval;
-            event.get_keyval (out keyval);
-            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
-            bool no_mods = (mods == 0);
-            switch (keyval) {
-                case Gdk.Key.Left:
-                case Gdk.Key.Right:
-                case Gdk.Key.BackSpace:
-                    if (no_mods) {
-                        /* Pass event to MillerView */
-                        return ((Files.View.Miller)(slot.ctab.view)).on_miller_key_pressed (event);
-                    }
-
-                    break;
-
-                default:
-                    break;
-            }
-
-            return key_controller.handle_event (event);
-        }
-
         protected override bool handle_primary_button_click (Gdk.Event event, Gtk.TreePath? path) {
             Files.File? file = null;
             Files.File? selected_folder = null;

@@ -332,7 +332,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         undo_manager.request_menu_update.connect (update_undo_actions);
 
         key_controller = new Gtk.EventControllerKey (this) {
-            propagation_phase = BUBBLE
+            propagation_phase = CAPTURE
         };
 
         key_controller.key_pressed.connect ((keyval, keycode, state) => {
