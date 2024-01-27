@@ -336,6 +336,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         };
 
         key_controller.key_pressed.connect ((keyval, keycode, state) => {
+            if (!current_container.has_focus) {
+                return Gdk.EVENT_PROPAGATE;
+            }
+
             var mods = state & Gtk.accelerator_get_default_mod_mask ();
             /* Use find function instead of view interactive search */
             if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
