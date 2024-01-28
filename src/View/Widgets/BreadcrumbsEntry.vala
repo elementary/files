@@ -30,7 +30,20 @@ namespace Files.View.Chrome {
         bool match_found = false;
         bool multiple_completions = false;
         string to_complete = ""; // Beginning of filename to be completed
-        string completion_text = ""; // Candidate completion (placeholder)
+        string completion_text {
+            get {
+                return this.placeholder;
+            }
+
+            set {
+                if (placeholder != value) {
+                    placeholder = value;
+                    queue_draw ();
+                    /* This corrects undiagnosed bug after completion required on remote filesystem */
+                    set_position (-1);
+                }
+            }
+        } // Candidate completion (placeholder)
         string matching_filename = "";
         string common_chars = "";
 
@@ -96,7 +109,7 @@ namespace Files.View.Chrome {
 
         public override void reset () {
             base.reset ();
-            clear_completion ();
+            completion_text = "";
             current_completion_dir = null; // Do not cancel as this could interfere with a loading tab
         }
 
@@ -141,7 +154,7 @@ namespace Files.View.Chrome {
             if (to_complete.length > 0) {
                 do_completion (txt);
             } else {
-                clear_completion ();
+                completion_text = "";
             }
         }
 
@@ -165,7 +178,7 @@ namespace Files.View.Chrome {
                 current_completion_dir = Directory.from_gfile (file);
             }
 
-            clear_completion ();
+            completion_text ="";
             matching_filename = "";
             multiple_completions = false;
             match_found = false;
@@ -200,22 +213,10 @@ namespace Files.View.Chrome {
                 set_entry_text (newpath);
             }
 
-            set_completion_text ("");
+            completion_text = "";
         }
 
-        private void set_completion_text (string txt) {
-            completion_text = txt;
-            if (placeholder != completion_text) {
-                placeholder = completion_text;
-                queue_draw ();
-                /* This corrects undiagnosed bug after completion required on remote filesystem */
-                set_position (-1);
-            }
-        }
 
-        private void clear_completion () {
-            set_completion_text ("");
-        }
 
         /**
          * This function is used as a callback for files.file_loaded.
@@ -266,7 +267,7 @@ namespace Files.View.Chrome {
 
             if (multiple_completions) {
                 // We do not change the typed characters if there are multiple matches
-                set_completion_text (common_chars);
+                completion_text = common_chars;
             } else if (match_found) {
                 string str = Path.DIR_SEPARATOR_S;
                 if (text.length >= 1) {
@@ -274,9 +275,7 @@ namespace Files.View.Chrome {
                 }
                 // Change the typed characters to the match the filename when only one match.
                 set_text (str + matching_filename.slice (0, to_complete.length));
-                set_completion_text (
-                    matching_filename.slice (to_complete.length, matching_filename.length)
-                );
+                completion_text = matching_filename.slice (to_complete.length, matching_filename.length);
             }
         }
 
