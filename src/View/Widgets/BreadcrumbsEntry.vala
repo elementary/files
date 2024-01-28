@@ -150,7 +150,7 @@ namespace Files.View.Chrome {
                 return; // Nothing typed yet
             }
 
-            GLib.File? file = FileUtils.get_file_for_path (FileUtils.sanitize_path (path, current_dir_path));
+            var file = FileUtils.get_file_for_path (path);
             if (file == null) {
                 return;
             }
@@ -165,13 +165,11 @@ namespace Files.View.Chrome {
                 current_completion_dir = Directory.from_gfile (file);
             }
 
-            if (current_completion_dir.can_load) {
-                clear_completion ();
-                matching_filename = "";
-                multiple_completions = false;
-                match_found = false;
-                current_completion_dir.init (on_file_loaded, on_done_loading);
-            }
+            clear_completion ();
+            matching_filename = "";
+            multiple_completions = false;
+            match_found = false;
+            current_completion_dir.init (on_file_loaded, on_done_loading);
         }
 
         protected void complete () {
@@ -262,6 +260,10 @@ namespace Files.View.Chrome {
         }
 
         private void on_done_loading () {
+            if (!current_completion_dir.can_load) {
+                return;
+            }
+
             if (multiple_completions) {
                 // We do not change the typed characters if there are multiple matches
                 set_completion_text (common_chars);
