@@ -44,8 +44,8 @@ namespace Files.View.Chrome {
                 }
             }
         } // Candidate completion (placeholder)
+
         string matching_filename = "";
-        string common_chars = "";
 
         public bool search_mode = false; // Used to suppress activate events while searching
 
@@ -140,49 +140,44 @@ namespace Files.View.Chrome {
       * Implementing interface virtual functions **/
     /****************************/
         public void completion_needed () {
-            string? txt = this.text;
-            if (txt == null || txt.length < 1) {
+            string? path = this.text;
+            if (path == null || path.length < 1) {
                 return;
             }
 
             to_complete = "";
+            completion_text = "";
             /* don't use get_basename (), it will return "folder" for "/folder/" */
-            int last_slash = txt.last_index_of_char ('/');
-            if (last_slash > -1 && last_slash < txt.length) {
-                to_complete = txt.slice (last_slash + 1, text.length);
+            int last_slash = path.last_index_of_char ('/');
+            if (last_slash > -1 && last_slash < path.length) {
+                to_complete = path.slice (last_slash + 1, path.length);
             }
+
             if (to_complete.length > 0) {
-                do_completion (txt);
-            } else {
-                completion_text = "";
-            }
-        }
+                if (path == current_dir_path) {
+                    return; // Nothing typed yet
+                }
 
-        private void do_completion (string path) {
-            if (path == current_dir_path) {
-                return; // Nothing typed yet
-            }
+                var file = FileUtils.get_file_for_path (path);
+                if (file == null) {
+                    return;
+                }
 
-            var file = FileUtils.get_file_for_path (path);
-            if (file == null) {
-                return;
-            }
+                if (file.has_parent (null)) {
+                    file = file.get_parent ();
+                } else {
+                    return;
+                }
 
-            if (file.has_parent (null)) {
-                file = file.get_parent ();
-            } else {
-                return;
-            }
+                if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
+                    current_completion_dir = Directory.from_gfile (file);
+                }
 
-            if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
-                current_completion_dir = Directory.from_gfile (file);
+                matching_filename = "";
+                multiple_completions = false;
+                match_found = false;
+                current_completion_dir.init (on_file_loaded, () => {});
             }
-
-            completion_text ="";
-            matching_filename = "";
-            multiple_completions = false;
-            match_found = false;
-            current_completion_dir.init (on_file_loaded, on_done_loading);
         }
 
         protected void complete () {
@@ -216,8 +211,6 @@ namespace Files.View.Chrome {
             completion_text = "";
         }
 
-
-
         /**
          * This function is used as a callback for files.file_loaded.
          * We check that the file can be used
@@ -238,13 +231,13 @@ namespace Files.View.Chrome {
                     var residue = matching_filename.slice (to_complete.length, matching_filename.length);
                     if (!match_found) {
                         match_found = true;
-                        common_chars = residue;
+                        completion_text = residue;
                     } else {
                         multiple_completions = true;
                         unichar c1, c2 = 0;
                         int index1 = 0, index2 = 0;
                         var new_common_chars = "";
-                        while (common_chars.get_next_char (ref index1, out c1) &&
+                        while (completion_text.get_next_char (ref index1, out c1) &&
                                residue.get_next_char (ref index2, out c2)) {
 
                             if (c1 == c2 && index1 == index2) {
@@ -254,28 +247,9 @@ namespace Files.View.Chrome {
                             }
                         }
 
-                        common_chars = new_common_chars;
+                        completion_text = new_common_chars;
                     }
                 }
-            }
-        }
-
-        private void on_done_loading () {
-            if (!current_completion_dir.can_load) {
-                return;
-            }
-
-            if (multiple_completions) {
-                // We do not change the typed characters if there are multiple matches
-                completion_text = common_chars;
-            } else if (match_found) {
-                string str = Path.DIR_SEPARATOR_S;
-                if (text.length >= 1) {
-                    str = text.slice (0, text.length - to_complete.length);
-                }
-                // Change the typed characters to the match the filename when only one match.
-                set_text (str + matching_filename.slice (0, to_complete.length));
-                completion_text = matching_filename.slice (to_complete.length, matching_filename.length);
             }
         }
 
