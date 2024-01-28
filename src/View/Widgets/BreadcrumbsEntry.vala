@@ -100,7 +100,18 @@ namespace Files.View.Chrome {
                     break;
                 case Gdk.Key.KP_Tab:
                 case Gdk.Key.Tab:
-                    complete ();
+                    if (completion_text.length == 0) {
+                        return true;
+                    }
+
+                    string path = text + completion_text;
+                    /* If there are multiple results, tab as far as we can, otherwise do the entire result */
+                    if (!multiple_completions) {
+                        completed (path);
+                    } else {
+                        set_entry_text (path);
+                    }
+
                     return true;
             }
 
@@ -180,19 +191,19 @@ namespace Files.View.Chrome {
             }
         }
 
-        protected void complete () {
-            if (completion_text.length == 0) {
-                return;
-            }
+        // protected void complete () {
+        //     if (completion_text.length == 0) {
+        //         return;
+        //     }
 
-            string path = text + completion_text;
-            /* If there are multiple results, tab as far as we can, otherwise do the entire result */
-            if (!multiple_completions) {
-                completed (path);
-            } else {
-                set_entry_text (path);
-            }
-        }
+        //     string path = text + completion_text;
+        //     /* If there are multiple results, tab as far as we can, otherwise do the entire result */
+        //     if (!multiple_completions) {
+        //         completed (path);
+        //     } else {
+        //         set_entry_text (path);
+        //     }
+        // }
 
         private void completed (string txt) {
             var gfile = FileUtils.get_file_for_path (txt); /* Sanitizes path */
