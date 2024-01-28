@@ -246,14 +246,12 @@ namespace Files.View.Chrome {
                         while (common_chars.get_next_char (ref index1, out c1) &&
                                matching_filename.get_next_char (ref index2, out c2)) {
 
-                            if (c1 == c2) {
+                            if (c1 == c2 && index1 == index2) {
                                 common_chars += c1.to_string ();
                             } else {
                                 break;
                             }
                         }
-
-
                     }
                 }
             }
@@ -272,7 +270,6 @@ namespace Files.View.Chrome {
                 if (text.length >= 1) {
                     str = text.slice (0, text.length - to_complete.length);
                 }
-
                 // Change the typed characters to the match the filename when only one match.
                 set_text (str + matching_filename.slice (0, to_complete.length));
                 set_completion_text (
