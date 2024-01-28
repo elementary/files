@@ -45,8 +45,6 @@ namespace Files.View.Chrome {
             }
         } // Candidate completion (placeholder)
 
-        string matching_filename = "";
-
         public bool search_mode = false; // Used to suppress activate events while searching
 
         /** Drag and drop support **/
@@ -173,7 +171,6 @@ namespace Files.View.Chrome {
                     current_completion_dir = Directory.from_gfile (file);
                 }
 
-                matching_filename = "";
                 multiple_completions = false;
                 match_found = false;
                 current_completion_dir.init (on_file_loaded, () => {});
@@ -196,8 +193,7 @@ namespace Files.View.Chrome {
             string file_display_name = file.get_display_name ();
             if (file_display_name.length > to_complete.length) {
                 if (file_display_name.up ().has_prefix (to_complete.up ())) {
-                    matching_filename = file_display_name;
-                    var residue = matching_filename.slice (to_complete.length, matching_filename.length);
+                    var residue = file_display_name.slice (to_complete.length, file_display_name.length);
                     if (!match_found) {
                         match_found = true;
                         completion_text = residue;
