@@ -100,18 +100,7 @@ namespace Files.View.Chrome {
                     break;
                 case Gdk.Key.KP_Tab:
                 case Gdk.Key.Tab:
-                    if (completion_text.length == 0) {
-                        return true;
-                    }
-
-                    string path = text + completion_text;
-                    /* If there are multiple results, tab as far as we can, otherwise do the entire result */
-                    if (!multiple_completions) {
-                        completed (path);
-                    } else {
-                        set_entry_text (path);
-                    }
-
+                    set_entry_text (text + completion_text);
                     return true;
             }
 
@@ -205,22 +194,9 @@ namespace Files.View.Chrome {
         //     }
         // }
 
-        private void completed (string txt) {
-            var gfile = FileUtils.get_file_for_path (txt); /* Sanitizes path */
-            var newpath = gfile.get_path ();
 
-            /* If path changed, update breadcrumbs and continue editing */
-            if (newpath != null) {
-                /* If completed, then GOF File must exist */
-                if ((Files.File.@get (gfile)).is_directory) {
-                    newpath += GLib.Path.DIR_SEPARATOR_S;
-                }
 
-                set_entry_text (newpath);
-            }
 
-            completion_text = "";
-        }
 
         /**
          * This function is used as a callback for files.file_loaded.
