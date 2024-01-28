@@ -234,24 +234,26 @@ namespace Files.View.Chrome {
             if (file_display_name.length > to_complete.length) {
                 if (file_display_name.up ().has_prefix (to_complete.up ())) {
                     matching_filename = file_display_name;
+                    var residue = matching_filename.slice (to_complete.length, matching_filename.length);
                     if (!match_found) {
                         match_found = true;
-                        common_chars = matching_filename.slice (
-                            to_complete.length, matching_filename.length
-                        );
+                        common_chars = residue;
                     } else {
                         multiple_completions = true;
-                        unichar c1 = {}, c2 = {};
-                        int index1 = 0, index2 = common_chars.length - 1;
+                        unichar c1, c2 = 0;
+                        int index1 = 0, index2 = 0;
+                        var new_common_chars = "";
                         while (common_chars.get_next_char (ref index1, out c1) &&
-                               matching_filename.get_next_char (ref index2, out c2)) {
+                               residue.get_next_char (ref index2, out c2)) {
 
                             if (c1 == c2 && index1 == index2) {
-                                common_chars += c1.to_string ();
+                                new_common_chars += c1.to_string ();
                             } else {
                                 break;
                             }
                         }
+
+                        common_chars = new_common_chars;
                     }
                 }
             }
