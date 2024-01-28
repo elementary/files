@@ -180,24 +180,6 @@ namespace Files.View.Chrome {
             }
         }
 
-        // protected void complete () {
-        //     if (completion_text.length == 0) {
-        //         return;
-        //     }
-
-        //     string path = text + completion_text;
-        //     /* If there are multiple results, tab as far as we can, otherwise do the entire result */
-        //     if (!multiple_completions) {
-        //         completed (path);
-        //     } else {
-        //         set_entry_text (path);
-        //     }
-        // }
-
-
-
-
-
         /**
          * This function is used as a callback for files.file_loaded.
          * We check that the file can be used
