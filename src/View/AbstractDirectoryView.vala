@@ -327,7 +327,6 @@ namespace Files {
 
                 view.motion_notify_event.connect (on_motion_notify_event);
                 view.leave_notify_event.connect (on_leave_notify_event);
-                view.button_release_event.connect (on_view_button_release_event);
                 view.draw.connect (on_view_draw);
                 view.realize.connect (() => {
                    schedule_thumbnail_color_tag_timeout ();
@@ -343,6 +342,7 @@ namespace Files {
                     button = 0
                 };
                 button_controller.pressed.connect (on_view_button_press_event);
+                button_controller.released.connect (on_view_button_release_event);
             }
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
@@ -3614,6 +3614,7 @@ namespace Files {
 
                     /* Ensure selected files list and menu actions are updated before context menu shown */
                     update_selected_files_and_menu ();
+                    should_scroll = false; // Miller should not scroll while context menu opening
                     break;
 
                 default:
@@ -3622,23 +3623,18 @@ namespace Files {
             }
         }
 
-        protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
+        protected virtual void on_view_button_release_event (int n_press, double x, double y) {
             unblock_drag_and_drop ();
             /* Ignore button release from click that started renaming.
              * View may lose focus during a drag if another tab is hovered, in which case
              * we do not want to refocus this view.
              * Under both these circumstances, 'should_activate' will be false */
             if (renaming || !view_has_focus ()) {
-                return true;
+                return;
             }
 
             slot.active (should_scroll);
-
-            // Gtk.Widget widget = ;
-            double x, y;
-            uint button;
-            event.get_coords (out x, out y);
-            event.get_button (out button);
+            var button = button_controller.get_current_button ();
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (get_child (), (int)drag_x, (int)drag_y, (int)x, (int)y)) {
                 if (should_activate) {
@@ -3653,7 +3649,7 @@ namespace Files {
                 } else if (should_select && click_path != null) {
                     select_path (click_path);
                 } else if (button == Gdk.BUTTON_SECONDARY) {
-                    show_context_menu (event);
+                    on_popup_menu ();
                 }
             }
 
@@ -3668,7 +3664,7 @@ namespace Files {
             should_deselect = false;
             should_select = false;
             click_path = null;
-            return false;
+            return;
         }
 
         public virtual void change_zoom_level () {
