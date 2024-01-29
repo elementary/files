@@ -189,7 +189,6 @@ namespace Files {
         protected bool on_directory = false;
         protected bool one_or_less = true;
         protected bool should_activate = false;
-        protected bool should_scroll = true;
         protected bool should_deselect = false;
         public bool singleclick_select { get; set; }
         protected bool should_select = false;
@@ -3497,7 +3496,6 @@ namespace Files {
             should_activate = false;
             should_deselect = false;
             should_select = false;
-            should_scroll = true;
 
             /* Handle all selection and deselection explicitly in the following switch statement */
             switch (button) {
@@ -3614,7 +3612,6 @@ namespace Files {
 
                     /* Ensure selected files list and menu actions are updated before context menu shown */
                     update_selected_files_and_menu ();
-                    should_scroll = false; // Miller should not scroll while context menu opening
                     break;
 
                 default:
@@ -3633,8 +3630,9 @@ namespace Files {
                 return;
             }
 
-            slot.active (should_scroll);
             var button = button_controller.get_current_button ();
+            slot.active (button == Gdk.BUTTON_SECONDARY);
+
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (get_child (), (int)drag_x, (int)drag_y, (int)x, (int)y)) {
                 if (should_activate) {
