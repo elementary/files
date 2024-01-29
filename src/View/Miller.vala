@@ -18,11 +18,11 @@
 
 namespace Files.View {
     public class Miller : Files.AbstractSlot {
-        private unowned View.ViewContainer ctab;
+        public unowned View.ViewContainer ctab { get; construct; }
 
         /* Need private copy of initial location as Miller
          * does not have its own Asyncdirectory object */
-        private GLib.File root_location;
+        public GLib.File root_location { get; set construct; }
 
         private Gtk.Box colpane;
 
@@ -47,10 +47,15 @@ namespace Files.View {
             }
         }
 
-        public Miller (GLib.File loc, View.ViewContainer ctab, ViewMode mode) {
-            this.ctab = ctab;
-            this.root_location = loc;
+        public Miller (GLib.File loc, View.ViewContainer _ctab) {
+            Object (
+                location: loc,
+                root_location: loc,
+                ctab: _ctab
+            );
+        }
 
+        construct {
             (Files.Preferences.get_default ()).notify["show-hidden-files"].connect ((s, p) => {
                 show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
             });
@@ -74,7 +79,8 @@ namespace Files.View {
 
             content_box.show_all ();
 
-            make_view ();
+            current_slot = null;
+            add_location (root_location, null); /* current slot gets set by this */
 
             is_frozen = true;
         }
@@ -83,10 +89,6 @@ namespace Files.View {
             debug ("Miller destruct");
         }
 
-        protected override void make_view () {
-            current_slot = null;
-            add_location (root_location, null); /* current slot gets set by this */
-        }
 
         /** Creates a new slot in the host slot hpane */
         public void add_location (GLib.File loc, View.Slot? host = null) {
@@ -256,7 +258,6 @@ namespace Files.View {
             slot.new_container_request.connect (on_new_container_request);
             slot.size_change.connect (update_total_width);
             slot.folder_deleted.connect (on_slot_folder_deleted);
-            slot.colpane.key_press_event.connect (on_key_pressed);
             slot.path_changed.connect (on_slot_path_changed);
             slot.directory_loaded.connect (on_slot_directory_loaded);
             slot.hpane.notify["position"].connect (update_total_width);
@@ -270,7 +271,6 @@ namespace Files.View {
             slot.new_container_request.disconnect (on_new_container_request);
             slot.size_change.disconnect (update_total_width);
             slot.folder_deleted.disconnect (on_slot_folder_deleted);
-            slot.colpane.key_press_event.disconnect (on_key_pressed);
             slot.path_changed.disconnect (on_slot_path_changed);
             slot.directory_loaded.disconnect (on_slot_directory_loaded);
         }
@@ -358,24 +358,17 @@ namespace Files.View {
             }
         }
 
-        private bool on_key_pressed (Gtk.Widget box, Gdk.EventKey event) {
-            /* Only handle unmodified keys */
-            Gdk.ModifierType state;
-            event.get_state (out state);
+        public bool on_miller_key_pressed (uint keyval, uint keycode, Gdk.ModifierType state) {
             if ((state & Gtk.accelerator_get_default_mod_mask ()) > 0) {
                 return false;
             }
 
             int current_position = slot_list.index (current_slot);
-
             if (slot_list.nth_data (current_position).get_directory_view ().renaming) {
                 return false;
             }
 
-            View.Slot to_activate = null;
-
-            uint keyval;
-            event.get_keyval (out keyval);
+            View.Slot? to_activate = null;
             switch (keyval) {
                 case Gdk.Key.Left:
                     if (current_position > 0) {
@@ -390,14 +383,12 @@ namespace Files.View {
                     }
 
                     Files.File? selected_file = current_slot.get_selected_files ().data;
-
                     if (selected_file == null) {
                         return true;
                     }
 
                     GLib.File current_location = selected_file.location;
                     GLib.File? next_location = null;
-
                     if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
                         next_location = slot_list.nth_data (current_position + 1).location;
                     }
