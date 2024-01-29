@@ -128,8 +128,6 @@ namespace Files {
         /* Used only when acting as drag source */
         double drag_x = 0;
         double drag_y = 0;
-        int drag_button;
-        uint drag_timer_id = 0;
         protected GLib.List<Files.File> source_drag_file_list = null;
         protected Gdk.Atom current_target_type = Gdk.Atom.NONE;
 
@@ -341,7 +339,8 @@ namespace Files {
                 key_controller.key_pressed.connect (on_view_key_press_event);
 
                 button_controller = new Gtk.GestureMultiPress (view) {
-                    propagation_phase = CAPTURE
+                    propagation_phase = CAPTURE,
+                    button = 0
                 };
                 button_controller.pressed.connect (on_view_button_press_event);
             }
@@ -728,7 +727,7 @@ namespace Files {
             /* Set up as drag source */
             Gtk.drag_source_set (
                 widget,
-                Gdk.ModifierType.BUTTON1_MASK | Gdk.ModifierType.BUTTON3_MASK | Gdk.ModifierType.CONTROL_MASK,
+                Gdk.ModifierType.BUTTON1_MASK | Gdk.ModifierType.CONTROL_MASK,
                 DRAG_TARGETS,
                 FILE_DRAG_ACTIONS
             );
@@ -736,11 +735,6 @@ namespace Files {
             widget.drag_data_get.connect (on_drag_data_get);
             widget.drag_data_delete.connect (on_drag_data_delete);
             widget.drag_end.connect (on_drag_end);
-        }
-
-        protected void cancel_drag_timer () {
-            disconnect_drag_timeout_motion_and_release_events ();
-            cancel_timeout (ref drag_timer_id);
         }
 
         protected void cancel_thumbnailing () {
@@ -1535,43 +1529,6 @@ namespace Files {
             return true;
         }
 
-    /** Handle Button events */
-        private bool on_drag_timeout_button_release () {
-            /* Only active during drag timeout */
-            cancel_drag_timer ();
-            return true;
-        }
-
-/** Handle Motion events */
-        private bool on_drag_timeout_motion_notify (Gdk.EventMotion event) {
-            /* Only active during drag timeout */
-            Gdk.DragContext context;
-            var widget = get_child ();
-            double x, y;
-            event.get_coords (out x, out y);
-
-            if (Gtk.drag_check_threshold (widget, (int)drag_x, (int)drag_y, (int)x, (int)y)) {
-                cancel_drag_timer ();
-                should_activate = false;
-                var target_list = new Gtk.TargetList (DRAG_TARGETS);
-                var actions = FILE_DRAG_ACTIONS;
-
-                if (drag_button == Gdk.BUTTON_SECONDARY) {
-                    actions |= Gdk.DragAction.ASK;
-                }
-
-                context = Gtk.drag_begin_with_coordinates (widget,
-                                                           target_list,
-                                                           actions,
-                                                           drag_button,
-                                                           (Gdk.Event) event,
-                                                            (int)x, (int)y);
-                return true;
-            } else {
-                return false;
-            }
-        }
-
 /** Handle TreeModel events */
         protected virtual void on_row_deleted (Gtk.TreePath path) {
             unselect_all ();
@@ -1930,7 +1887,6 @@ namespace Files {
 
 
         protected void show_context_menu (Gdk.Event event) requires (window != null) {
-            cancel_drag_timer ();
             /* select selection or background context menu */
             update_menu_actions ();
 
@@ -2878,22 +2834,6 @@ namespace Files {
             model.row_deleted.connect (on_row_deleted);
         }
 
-        private void connect_drag_timeout_motion_and_release_events () {
-            var real_view = get_child ();
-            real_view.button_release_event.connect (on_drag_timeout_button_release);
-            real_view.motion_notify_event.connect (on_drag_timeout_motion_notify);
-        }
-
-        private void disconnect_drag_timeout_motion_and_release_events () {
-            if (drag_timer_id == 0) {
-                return;
-            }
-
-            var real_view = get_child ();
-            real_view.button_release_event.disconnect (on_drag_timeout_button_release);
-            real_view.motion_notify_event.disconnect (on_drag_timeout_motion_notify);
-        }
-
         private void start_drag_scroll_timer (Gdk.DragContext context) requires (window != null) {
             drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                           50,
@@ -3521,27 +3461,16 @@ namespace Files {
             }
 
             cancel_hover (); /* cancel overlay statusbar cancellables */
-
-            /* Ignore if second button pressed before first released - not permitted during rubberbanding.
-             * Multiple click produces an event without corresponding release event so do not block that.
-             */
-            //TODO Check how to do this with EventController
-            // var type = event.get_event_type ();
-            // if (dnd_disabled && type == Gdk.EventType.BUTTON_PRESS) {
-            // if (dnd_disabled && n_press == 1) {
-            //     return true;
-            // }
-
             grab_focus ();
 
             Gtk.TreePath? path = null;
             // /* Remember position of click for detecting drag motion*/
-            // event.get_coords (out drag_x, out drag_y);
             drag_x = x;
             drag_y = y;
             var button = button_controller.get_current_button ();
             Gdk.ModifierType state;
             Gtk.get_current_event_state (out state); // In Gtk4 this can be obtained from controller
+
             //Only rubberband with primary button
             click_zone = get_event_position_info (x, y, out path, button == Gdk.BUTTON_PRIMARY);
             click_path = path;
@@ -3685,29 +3614,6 @@ namespace Files {
 
                     /* Ensure selected files list and menu actions are updated before context menu shown */
                     update_selected_files_and_menu ();
-                    unblock_drag_and_drop ();
-        // protected void start_drag_timer (Gdk.Event event) {
-            connect_drag_timeout_motion_and_release_events ();
-            // uint button;
-            // if (event.get_button (out button)) {
-                drag_button = (int)button;
-
-                drag_timer_id = GLib.Timeout.add_full (
-                    GLib.Priority.LOW,
-                    300,
-                    () => {
-                        on_drag_timeout_button_release ();
-                        return GLib.Source.REMOVE;
-                    }
-                );
-            // }
-        // }
-                    // start_drag_timer (event);
-
-        // protected virtual bool handle_secondary_button_click () {
-                    should_scroll = false;
-        // }
-
                     break;
 
                 default:
@@ -3906,7 +3812,6 @@ namespace Files {
             grab_focus (); /* Cancel any renaming */
             cancel_hover ();
             cancel_thumbnailing ();
-            cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
             cancel_timeout (ref add_remove_file_timeout_id);
             cancel_timeout (ref set_cursor_timeout_id);
