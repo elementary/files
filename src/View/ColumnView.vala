@@ -73,10 +73,10 @@ namespace Files {
 
 
         protected override bool handle_primary_button_click (
-            uint n_press, 
-            Gdk.ModifierType mods, 
+            uint n_press,
+            Gdk.ModifierType mods,
             Gtk.TreePath? path
-        ){
+        ) {
             Files.File? file = null;
             Files.File? selected_folder = null;
             Gtk.TreeIter? iter = null;
