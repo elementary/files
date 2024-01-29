@@ -279,6 +279,7 @@ namespace Files {
         protected unowned Gtk.RecentManager recent;
 
         protected Gtk.EventControllerKey key_controller;
+        protected Gtk.GestureMultiPress button_controller;
 
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
@@ -328,7 +329,6 @@ namespace Files {
 
                 view.motion_notify_event.connect (on_motion_notify_event);
                 view.leave_notify_event.connect (on_leave_notify_event);
-                view.button_press_event.connect (on_view_button_press_event);
                 view.button_release_event.connect (on_view_button_release_event);
                 view.draw.connect (on_view_draw);
                 view.realize.connect (() => {
@@ -338,8 +338,12 @@ namespace Files {
                 key_controller = new Gtk.EventControllerKey (view) {
                     propagation_phase = BUBBLE
                 };
-
                 key_controller.key_pressed.connect (on_view_key_press_event);
+
+                button_controller = new Gtk.GestureMultiPress (view) {
+                    propagation_phase = CAPTURE
+                };
+                button_controller.pressed.connect (on_view_button_press_event);
             }
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
@@ -1532,7 +1536,7 @@ namespace Files {
         }
 
     /** Handle Button events */
-        private bool on_drag_timeout_button_release (Gdk.EventButton event) {
+        private bool on_drag_timeout_button_release () {
             /* Only active during drag timeout */
             cancel_drag_timer ();
             return true;
@@ -1923,20 +1927,7 @@ namespace Files {
          * instead.
         **/
 
-        protected void start_drag_timer (Gdk.Event event) {
-            connect_drag_timeout_motion_and_release_events ();
-            uint button;
-            if (event.get_button (out button)) {
-                drag_button = (int)button;
 
-                drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
-                                                       300,
-                                                       () => {
-                    on_drag_timeout_button_release ((Gdk.EventButton)event);
-                    return GLib.Source.REMOVE;
-                });
-            }
-        }
 
         protected void show_context_menu (Gdk.Event event) requires (window != null) {
             cancel_drag_timer ();
@@ -3274,7 +3265,9 @@ namespace Files {
                 return true;
             }
 
-            click_zone = get_event_position_info (event, out path, false);
+            double x, y;
+            event.get_coords (out x, out y);
+            click_zone = get_event_position_info (x, y, out path, false);
 
             if ((path != null && hover_path == null) ||
                 (path == null && hover_path != null) ||
@@ -3502,12 +3495,7 @@ namespace Files {
             return false;
         }
 
-        protected virtual bool handle_primary_button_click (Gdk.Event event, Gtk.TreePath? path) {
-            return true;
-        }
-
-        protected virtual bool handle_secondary_button_click (Gdk.EventButton event) {
-            should_scroll = false;
+        protected virtual bool handle_primary_button_click (uint n_press, Gdk.ModifierType mods, Gtk.TreePath? path) {
             return true;
         }
 
@@ -3526,7 +3514,7 @@ namespace Files {
             }
         }
 
-        protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
+        protected virtual void on_view_button_press_event (int n_press, double x, double y) {
             if (renaming) {
                 /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
                 name_renderer.end_editing (false);
@@ -3537,24 +3525,26 @@ namespace Files {
             /* Ignore if second button pressed before first released - not permitted during rubberbanding.
              * Multiple click produces an event without corresponding release event so do not block that.
              */
-            var type = event.get_event_type ();
-            if (dnd_disabled && type == Gdk.EventType.BUTTON_PRESS) {
-                return true;
-            }
+            //TODO Check how to do this with EventController
+            // var type = event.get_event_type ();
+            // if (dnd_disabled && type == Gdk.EventType.BUTTON_PRESS) {
+            // if (dnd_disabled && n_press == 1) {
+            //     return true;
+            // }
 
             grab_focus ();
 
             Gtk.TreePath? path = null;
-            /* Remember position of click for detecting drag motion*/
-            event.get_coords (out drag_x, out drag_y);
-            uint button;
-            event.get_button (out button);
-            //Only rubberband with primary button
-            click_zone = get_event_position_info (event, out path, button == Gdk.BUTTON_PRIMARY);
-            click_path = path;
-
+            // /* Remember position of click for detecting drag motion*/
+            // event.get_coords (out drag_x, out drag_y);
+            drag_x = x;
+            drag_y = y;
+            var button = button_controller.get_current_button ();
             Gdk.ModifierType state;
-            event.get_state (out state);
+            Gtk.get_current_event_state (out state); // In Gtk4 this can be obtained from controller
+            //Only rubberband with primary button
+            click_zone = get_event_position_info (x, y, out path, button == Gdk.BUTTON_PRIMARY);
+            click_path = path;
             var mods = state & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
@@ -3564,14 +3554,14 @@ namespace Files {
             bool only_shift_pressed = shift_pressed && !control_pressed && !other_mod_pressed;
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
-            bool double_click_event = (type == Gdk.EventType.@2BUTTON_PRESS);
+            bool double_click_event = (n_press == 2);
             /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
              * dragging on blank areas
              */
             block_drag_and_drop ();
             /* Handle un-modified clicks or control-clicks here else pass on. */
             if (!will_handle_button_press (no_mods, only_control_pressed, only_shift_pressed)) {
-                return false;
+                return;
             }
 
             bool result = false; // default false so events get passed to Window
@@ -3622,7 +3612,7 @@ namespace Files {
 
                                 select_path (path, true);
                                 unblock_drag_and_drop ();
-                                result = handle_primary_button_click (event, path);
+                                result = handle_primary_button_click (n_press, mods, path);
                             }
 
                             update_selected_files_and_menu ();
@@ -3647,7 +3637,7 @@ namespace Files {
                         case ClickZone.EXPANDER:
                             /* on expanders (if any) or xpad. Handle ourselves so that clicking
                              * on xpad also expands/collapses row (accessibility). */
-                            result = expand_collapse (path);
+                            expand_collapse (path);
                             break;
 
                         default:
@@ -3663,8 +3653,6 @@ namespace Files {
 
                     should_activate = true;
                     unblock_drag_and_drop ();
-                    result = true;
-
                     break;
 
                 case Gdk.BUTTON_SECONDARY: // button 3
@@ -3698,17 +3686,34 @@ namespace Files {
                     /* Ensure selected files list and menu actions are updated before context menu shown */
                     update_selected_files_and_menu ();
                     unblock_drag_and_drop ();
-                    start_drag_timer (event);
+        // protected void start_drag_timer (Gdk.Event event) {
+            connect_drag_timeout_motion_and_release_events ();
+            // uint button;
+            // if (event.get_button (out button)) {
+                drag_button = (int)button;
 
-                    result = handle_secondary_button_click (event);
+                drag_timer_id = GLib.Timeout.add_full (
+                    GLib.Priority.LOW,
+                    300,
+                    () => {
+                        on_drag_timeout_button_release ();
+                        return GLib.Source.REMOVE;
+                    }
+                );
+            // }
+        // }
+                    // start_drag_timer (event);
+
+        // protected virtual bool handle_secondary_button_click () {
+                    should_scroll = false;
+        // }
+
                     break;
 
                 default:
-                    result = handle_default_button_click (event);
+                    result = handle_default_button_click ();
                     break;
             }
-
-            return result;
         }
 
         protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
@@ -3888,7 +3893,7 @@ namespace Files {
             return true;
         }
 
-        protected virtual bool handle_default_button_click (Gdk.Event event) {
+        protected virtual bool handle_default_button_click () {
             /* pass unhandled events to the View.Window */
             return false;
         }
@@ -4105,7 +4110,7 @@ namespace Files {
 
         protected abstract Gtk.Widget? create_view ();
 
-        protected abstract uint get_event_position_info (Gdk.Event event,
+        protected abstract uint get_event_position_info (double x, double y,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
 

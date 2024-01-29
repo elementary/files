@@ -71,7 +71,12 @@ namespace Files {
             return tree as Gtk.Widget;
         }
 
-        protected override bool handle_primary_button_click (Gdk.Event event, Gtk.TreePath? path) {
+
+        protected override bool handle_primary_button_click (
+            uint n_press, 
+            Gdk.ModifierType mods, 
+            Gtk.TreePath? path
+        ){
             Files.File? file = null;
             Files.File? selected_folder = null;
             Gtk.TreeIter? iter = null;
@@ -85,14 +90,12 @@ namespace Files {
             }
 
             if (file == null || !file.is_folder ()) {
-                return base.handle_primary_button_click (event, path);
+                return base.handle_primary_button_click (n_press, mods, path);
             }
 
             selected_folder = file;
             bool result = true;
-
-            var type = event.get_event_type ();
-            if (type == Gdk.EventType.BUTTON_PRESS) {
+            if (n_press == 1) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
                 if (awaiting_double_click) {
                     result = true;
@@ -105,7 +108,7 @@ namespace Files {
                         return GLib.Source.REMOVE;
                     });
                 }
-            } else if (type == Gdk.EventType.@2BUTTON_PRESS) {
+            } else if (n_press == 2) {
                 should_activate = false;
                 cancel_await_double_click ();
 
@@ -119,9 +122,9 @@ namespace Files {
             return result;
         }
 
-        protected override bool handle_default_button_click (Gdk.Event event) {
+        protected override bool handle_default_button_click () {
             cancel_await_double_click ();
-            return base.handle_default_button_click (event);
+            return base.handle_default_button_click ();
         }
 
         public override void cancel () {
