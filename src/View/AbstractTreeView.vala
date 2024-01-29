@@ -357,30 +357,5 @@ namespace Files {
                 return _zoom_level;
             }
         }
-
-        /* Override Gtk.TreeView default key press signal handler in order to disable the local search functionality */
-        public override bool key_press_event (Gdk.EventKey event) {
-            /* We still need the base class to handle cursor keys first */
-            uint keyval;
-            event.get_keyval (out keyval);
-            switch (keyval) {
-                case Gdk.Key.Up:
-                case Gdk.Key.Down:
-                case Gdk.Key.KP_Up:
-                case Gdk.Key.KP_Down:
-                case Gdk.Key.Page_Up:
-                case Gdk.Key.Page_Down:
-                case Gdk.Key.KP_Page_Up:
-                case Gdk.Key.KP_Page_Down:
-                case Gdk.Key.Home:
-                case Gdk.Key.End:
-
-                    return base.key_press_event (event); // Handled by Gtk.TreeView
-
-                default:
-
-                    return Gdk.EVENT_PROPAGATE; // Handled by AbstractDirectoryView or Window
-            }
-        }
     }
 }

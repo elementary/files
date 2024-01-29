@@ -334,18 +334,23 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         undo_manager.request_menu_update.connect (update_undo_actions);
 
         key_controller = new Gtk.EventControllerKey (this) {
-            propagation_phase = BUBBLE
+            propagation_phase = CAPTURE
         };
 
         key_controller.key_pressed.connect ((keyval, keycode, state) => {
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            /* Use find function instead of view interactive search */
-            if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
-                /* Use printable characters to initiate search */
-                var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
-                if (uc.isprint ()) {
-                    activate_action ("find", uc.to_string ());
-                    return Gdk.EVENT_STOP;
+            var focus_widget = get_focus ();
+            if (focus_widget != null && current_container != null &&
+                focus_widget.is_ancestor (current_container)) {
+
+                var mods = state & Gtk.accelerator_get_default_mod_mask ();
+                /* Use find function instead of view interactive search */
+                if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
+                    /* Use printable characters to initiate search */
+                    var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
+                    if (uc.isprint ()) {
+                        activate_action ("find", uc.to_string ());
+                        return Gdk.EVENT_STOP;
+                    }
                 }
             }
 

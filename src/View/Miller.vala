@@ -358,25 +358,17 @@ namespace Files.View {
             }
         }
 
-        // Called by ColumnView
-        public bool on_miller_key_pressed (Gdk.EventKey event) {
-            /* Only handle unmodified keys */
-            Gdk.ModifierType state;
-            event.get_state (out state);
+        public bool on_miller_key_pressed (uint keyval, uint keycode, Gdk.ModifierType state) {
             if ((state & Gtk.accelerator_get_default_mod_mask ()) > 0) {
                 return false;
             }
 
             int current_position = slot_list.index (current_slot);
-
             if (slot_list.nth_data (current_position).get_directory_view ().renaming) {
                 return false;
             }
 
-            View.Slot to_activate = null;
-
-            uint keyval;
-            event.get_keyval (out keyval);
+            View.Slot? to_activate = null;
             switch (keyval) {
                 case Gdk.Key.Left:
                     if (current_position > 0) {
@@ -391,14 +383,12 @@ namespace Files.View {
                     }
 
                     Files.File? selected_file = current_slot.get_selected_files ().data;
-
                     if (selected_file == null) {
                         return true;
                     }
 
                     GLib.File current_location = selected_file.location;
                     GLib.File? next_location = null;
-
                     if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
                         next_location = slot_list.nth_data (current_position + 1).location;
                     }

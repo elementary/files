@@ -461,6 +461,7 @@ namespace Files.View {
         public void set_active_state (bool is_active, bool animate = true) {
             var aslot = get_current_slot ();
             if (aslot != null) {
+                aslot.grab_focus ();
                 /* Since async loading it may not have been determined whether slot is loadable */
                 aslot.set_active_state (is_active, animate);
                 if (is_active) {

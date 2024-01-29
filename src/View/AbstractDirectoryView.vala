@@ -3006,7 +3006,7 @@ namespace Files {
             cancel_hover ();
 
             Gdk.ModifierType consumed_mods;
-            var keyval = KeyUtils.map_key (original_keyval, keycode, out consumed_mods);
+            var keyval = map_key (original_keyval, keycode, out consumed_mods);
 
             var mods = (state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
@@ -3131,8 +3131,6 @@ namespace Files {
 
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
-                case Gdk.Key.Left:
-                case Gdk.Key.Right:
                     unowned GLib.List<Files.File> selection = get_selected_files ();
                     if (only_alt_pressed && keyval == Gdk.Key.Down) {
                         /* Only open a single selected folder */
@@ -3145,6 +3143,18 @@ namespace Files {
                             res = true;
                         }
 
+                        break;
+                    }
+
+                    res = move_cursor (keyval, only_shift_pressed, control_pressed);
+                    break;
+
+                case Gdk.Key.Left:
+                case Gdk.Key.Right:
+                case Gdk.Key.BackSpace:
+                    if ((this is ColumnView) && no_mods) {
+                        ((Files.View.Miller)(slot.ctab.view)).on_miller_key_pressed (keyval, keycode, state);
+                        res = true;
                         break;
                     }
 
@@ -3996,6 +4006,60 @@ namespace Files {
 
             scroll_to_path (path, scroll_to_top);
         }
+
+    //TODO Needs complete rewrite for Gtk4 so leaving some direct access of event struct
+    protected static uint map_key (uint original_keyval, uint keycode, out Gdk.ModifierType consumed_mods) {
+        uint keyval = original_keyval;
+        consumed_mods = 0;
+
+        if (keyval > 127) {
+            int eff_grp, level;
+            var event = (Gdk.EventKey)(Gtk.get_current_event ());
+            var display = Gtk.get_current_event_device ().get_display ();
+            var keymap = Gdk.Keymap.get_for_display (display);
+            if (!keymap.translate_keyboard_state (
+                    event.hardware_keycode,
+                    event.state, event.group,
+                    out keyval, out eff_grp,
+                    out level, out consumed_mods)) {
+
+                warning ("translate keyboard state failed");
+                keyval = original_keyval;
+                consumed_mods = 0;
+            } else {
+                keyval = 0;
+                for (uint key = 32; key < 128; key++) {
+                    if (match_keycode (keymap, key, event.hardware_keycode, level)) {
+                        keyval = key;
+                        break;
+                    }
+                }
+
+                if (keyval == 0) {
+                    debug ("Could not match hardware code to ASCII hotkey");
+                    keyval = original_keyval;
+                    consumed_mods = 0;
+                }
+            }
+        }
+
+        return keyval;
+    }
+
+    /** Returns true if the code parameter matches the keycode of the keyval parameter for
+      * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/
+    protected static bool match_keycode (Gdk.Keymap keymap, uint keyval, uint code, int level) {
+        Gdk.KeymapKey [] keys;
+        if (keymap.get_entries_for_keyval (keyval, out keys)) {
+            foreach (var key in keys) {
+                if (code == key.keycode && level == key.level) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
