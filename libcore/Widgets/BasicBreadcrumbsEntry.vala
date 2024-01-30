@@ -224,7 +224,7 @@ namespace Files.View.Chrome {
         }
 
         protected virtual void on_button_pressed_event (int n_press, double x, double y) {
-            if (has_focus) {
+            if (has_focus && button_controller.get_current_button () == Gdk.BUTTON_SECONDARY) {
                 context_menu_showing = true;
             } else {
                 // Block propagation
