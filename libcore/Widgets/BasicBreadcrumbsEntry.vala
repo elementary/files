@@ -240,9 +240,11 @@ namespace Files.View.Chrome {
             if (button_controller.get_current_button () == Gdk.BUTTON_PRIMARY &&
                 !has_focus && !hide_breadcrumbs &&
                 !is_icon_event (x)) {
+
                 reset_elements_states ();
                 var el = get_element_from_coordinates (x);
                 if (el != null) {
+                    button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
                     activate_path (get_path_from_element (el));
                     return;
                 }

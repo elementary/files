@@ -472,24 +472,26 @@ namespace Files.View.Chrome {
              * Note, breadcrumbs are hidden when in home directory even when the pathbar does not have focus.*/
             if (is_icon_event (x) || has_focus || hide_breadcrumbs) {
                 base.on_button_pressed_event (n_press, x, y);
-            } else {
+            } else { // Clicked on breadcrumb?
                 var el = mark_pressed_element (x);
                 if (el != null) {
                     switch (button_controller.get_current_button ()) {
-                        case 1:
-                            break; // Long press support discontinued as provided by system settings
                         case 2:
                             if (el != null) {
+                                button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
                                 activate_path (get_path_from_element (el), Files.OpenFlag.NEW_TAB);
                             }
+
                             break;
 
                         case 3:
                             button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
                             load_right_click_menu (Gtk.get_current_event (), el);
+
                             break;
 
                         default:
+                            base.on_button_pressed_event (n_press, x, y);
                             break;
                     }
                 }
