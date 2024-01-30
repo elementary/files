@@ -228,8 +228,8 @@ namespace Files.View.Chrome {
                 if (button_controller.get_current_button () == Gdk.BUTTON_SECONDARY) {
                     context_menu_showing = true;
                 }
-            } else {
-                // Block propagation when !has_focus
+            } else if (!is_icon_event (x)) {
+                // Block propagation when !has_focus unless icon pressed
                 button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
             }
         }
