@@ -224,10 +224,12 @@ namespace Files.View.Chrome {
         }
 
         protected virtual void on_button_pressed_event (int n_press, double x, double y) {
-            if (has_focus && button_controller.get_current_button () == Gdk.BUTTON_SECONDARY) {
-                context_menu_showing = true;
+            if (has_focus) {
+                if (button_controller.get_current_button () == Gdk.BUTTON_SECONDARY) {
+                    context_menu_showing = true;
+                }
             } else {
-                // Block propagation
+                // Block propagation when !has_focus
                 button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
             }
         }
