@@ -70,12 +70,11 @@ namespace Files.View.Chrome {
         }
 
         private void on_search_results_file_selected (GLib.File file) {
-            /* Search result widget ensures it has closed and released grab */
-            /* Returned result might be a link or a server */
             var gof = new Files.File (file, null);
             gof.ensure_query_info ();
 
             path_change_request (gof.get_target_location ().get_uri ());
+            on_search_results_exit ();
         }
         private void on_search_results_file_activated (GLib.File file) {
             AppInfo? app = MimeActions.get_default_application_for_glib_file (file);
@@ -121,8 +120,6 @@ namespace Files.View.Chrome {
 
         protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
             base.after_bread_focus_out_event (event);
-            hide_search_icon ();
-            search_mode = false;
             show_refresh_icon ();
             focus_out_event (event);
             check_home ();

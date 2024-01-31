@@ -757,7 +757,6 @@ namespace Files.View.Chrome {
             if (accepted == null && !get_iter_at_cursor (out accepted)) {
                 return;
             }
-
             GLib.File? file = null;
             string sortkey = "";
             // Check whether file match or ellipsis activated
@@ -771,7 +770,6 @@ namespace Files.View.Chrome {
                 } else {
                     critical ("Search match with no associated file and not an ellipsis");
                 }
-
                 return;
             }
 

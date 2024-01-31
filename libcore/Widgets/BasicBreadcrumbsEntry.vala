@@ -671,7 +671,7 @@ namespace Files.View.Chrome {
             Gtk.Border border = style_context.get_margin (state);
             style_context.restore ();
 
-            if (!is_focus && !hide_breadcrumbs && !lock_focus) {
+            if (!has_focus && !hide_breadcrumbs && !lock_focus) {
                 double margin = border.top;
 
                 /* Ensure there is an editable area to the right of the breadcrumbs */
