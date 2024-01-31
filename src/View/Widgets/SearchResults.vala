@@ -141,7 +141,6 @@ namespace Files.View.Chrome {
         Gtk.TreeModelFilter filter;
         Gtk.ScrolledWindow scroll;
 
-        private Gtk.GestureMultiPress button_controller;
         private Gtk.GestureMultiPress search_tree_view_button_controller;
         private Gtk.EventControllerKey key_controller;
 
@@ -439,17 +438,6 @@ namespace Files.View.Chrome {
             }
         }
 
-        void on_button_pressed_event (int n_press, double x, double y) {
-            if (x >= 0 && y >= 0 && x < get_allocated_width () && y < get_allocated_height ()) {
-                process_button_pressed (
-                    button_controller.get_current_button (),
-                    n_press, x, y
-                );
-            } else {
-                cancel ();
-                exit ();
-            }
-        }
 
         void on_view_button_pressed_event (int n_press, double x, double y) {
             process_button_pressed (
