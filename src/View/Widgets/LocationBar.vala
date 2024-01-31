@@ -125,22 +125,23 @@ warning ("search results exit - exit navigate %s", exit_navigate.to_string ());
             }
         }
 
-        // protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
-        //     base.after_bread_focus_out_event (event);
-        //     search_mode = false;
-        //     hide_search_icon ();
-        //     show_refresh_icon ();
-        //     focus_out_event (event);
-        //     check_home ();
-        //     return true;
-        // }
-        // protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
-        //     base.after_bread_focus_in_event (event);
-        //     focus_in_event (event);
-        //     search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
-        //     show_navigate_icon ();
-        //     return true;
-        // }
+        protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
+            base.after_bread_focus_out_event (event);
+            // search_mode = false;
+            // hide_search_icon ();
+            show_refresh_icon ();
+            focus_out_event (event);
+            check_home ();
+            return true;
+        }
+
+        protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
+            base.after_bread_focus_in_event (event);
+            focus_in_event (event);
+            search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
+            show_navigate_icon ();
+            return true;
+        }
 
         private void on_bread_open_with_request (GLib.File file, AppInfo? app) {
             Files.MimeActions.open_glib_file_request (file, this, app);
@@ -273,7 +274,7 @@ warning ("search results exit - exit navigate %s", exit_navigate.to_string ());
         private void switch_to_search_mode () {
             search_mode = true;
             hide_navigate_icon ();
-            hide_search_icon ();
+            // hide_search_icon ();
             show_search_icon ();
             bread.hide_breadcrumbs = true;
             /* Next line ensures that the pathbar not lose focus when the mouse if over the sidebar,
@@ -310,7 +311,7 @@ warning ("search results exit - exit navigate %s", exit_navigate.to_string ());
         }
 
         private void check_home () {
-            if (!((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
+            if (search_mode || !((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
                 return;
             }
 
