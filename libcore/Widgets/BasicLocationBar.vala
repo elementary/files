@@ -84,7 +84,6 @@ namespace Files.View.Chrome {
         }
 
         protected virtual void after_bread_text_changed (string txt) {
-// warning ("BLB text changed %s", txt);
             if (txt == "") {
                 bread.set_placeholder (_("Type a path"));
                 bread.set_action_icon_tooltip ("");
@@ -123,7 +122,6 @@ namespace Files.View.Chrome {
         }
 
         protected void show_breadcrumbs () {
-// warning ("BLB show breadcrumbs");
             bread.set_breadcrumbs_path (displayed_path);
             this.minimum_width = bread.get_minimum_width () + 48; /* Allow extra space for margins */
             this.set_size_request (this.minimum_width, -1);

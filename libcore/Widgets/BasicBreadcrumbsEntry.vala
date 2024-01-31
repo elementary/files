@@ -303,7 +303,6 @@ namespace Files.View.Chrome {
 
         private uint focus_out_timeout_id = 0;
         protected virtual bool on_focus_out (Gdk.EventFocus event) {
-warning ("BBE focus out");
             if (focus_out_timeout_id == 0) {
                 /* Delay acting on focus out - may be temporary, due to keyboard layout change */
                 focus_out_timeout_id = GLib.Timeout.add (10, () => {
@@ -323,7 +322,6 @@ warning ("BBE focus out");
 
                 // Do not lose entry text if another window is focused
                 if (!lock_focus && ((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
-warning ("BBE reset on focus out");
                     reset ();
                 }
 
@@ -338,10 +336,9 @@ warning ("BBE reset on focus out");
                 GLib.Source.remove (focus_out_timeout_id);
                 focus_out_timeout_id = 0;
                 return true;
-            } else if (!lock_focus){ // Do not overwrite when searching
+            } else if (!lock_focus) { // Do not overwrite when searching
                 context_menu_showing = false;
                 current_dir_path = get_breadcrumbs_path (false);
-                warning ("set text after focus in");
                 set_entry_text (current_dir_path);
                 return false;
             } else {

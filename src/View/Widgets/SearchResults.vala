@@ -309,7 +309,6 @@ namespace Files.View.Chrome {
 
         /** Search interface functions **/
         public void cancel () {
-warning ("CANCEL");
             /* popdown first to avoid unwanted cursor change signals */
             popdown ();
             if (current_operation != null) {
@@ -320,7 +319,6 @@ warning ("CANCEL");
         }
 
         public void search (string term, GLib.File folder) {
-warning ("search %s", term);
             update_category_headers (); // Ensure category header color matches theme.
 
             if (term.normalize ().casefold () != search_term) {
@@ -373,7 +371,6 @@ warning ("search %s", term);
 
             current_operation.cancelled.connect (file_search_operation.cancel);
 
-            warning ("clear prior to search");
             clear ();
 
             working = true;
@@ -450,7 +447,6 @@ warning ("search %s", term);
                 );
             } else {
                 cancel ();
-warning ("EXIT press outside");
                 exit ();
             }
         }
@@ -483,13 +479,11 @@ warning ("EXIT press outside");
             bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
             bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
             bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
-warning ("SR key pressed %s", Gdk.keyval_name (keyval));
             if (mods != 0 && !only_shift_pressed) {
                 if (only_control_pressed) {
                     if (keyval == Gdk.Key.l) {
 
                         cancel (); /* release any grab */
-                        warning ("cancel after Ctrl l key press event");
                         exit (false); /* Do not exit navigate mode */
                         return true;
                         //TODO CLAIM?
@@ -538,7 +532,6 @@ warning ("SR key pressed %s", Gdk.keyval_name (keyval));
                     return true;
                 case Gdk.Key.Escape:
                     cancel (); /* release any grab */
-                    warning ("escape pressed exit");
                     exit ();
                     return true;
                 default:
@@ -819,7 +812,6 @@ warning ("SR key pressed %s", Gdk.keyval_name (keyval));
         }
 
         protected void clear () {
-warning ("CLEAR");
             /* Disconnect the cursor-changed signal so that it does not get emitted when entries removed
              * causing incorrect files to get selected in icon search_tree_view */
             bool was_popped_up = visible;

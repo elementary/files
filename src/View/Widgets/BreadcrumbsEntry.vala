@@ -45,7 +45,6 @@ namespace Files.View.Chrome {
             }
         } // Candidate completion (placeholder)
 
-        // public bool search_mode = false; // Used to suppress activate events while searching
 
         /** Drag and drop support **/
         protected const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY |
@@ -92,14 +91,12 @@ namespace Files.View.Chrome {
                 case Gdk.Key.KP_Enter:
                 case Gdk.Key.ISO_Enter:
                     if (lock_focus) {
-                    // if (search_mode) {
                         return true;
                     }
 
                     break;
                 case Gdk.Key.KP_Tab:
                 case Gdk.Key.Tab:
-                    warning ("set text after key press");
                     set_entry_text (text + completion_text);
                     return true;
             }
