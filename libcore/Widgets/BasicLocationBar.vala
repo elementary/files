@@ -79,11 +79,12 @@ namespace Files.View.Chrome {
             bread.entry_text_changed.connect_after (after_bread_text_changed);
             bread.activate_path.connect (on_bread_activate_path);
             bread.action_icon_press.connect (on_bread_action_icon_press);
-            bread.focus_in_event.connect_after (after_bread_focus_in_event);
-            bread.focus_out_event.connect_after (after_bread_focus_out_event);
+            // bread.focus_in_event.connect_after (after_bread_focus_in_event);
+            // bread.focus_out_event.connect_after (after_bread_focus_out_event);
         }
 
         protected virtual void after_bread_text_changed (string txt) {
+warning ("BLB text changed %s", txt);
             if (txt == "") {
                 bread.set_placeholder (_("Type a path"));
                 bread.set_action_icon_tooltip ("");
@@ -94,14 +95,14 @@ namespace Files.View.Chrome {
             }
         }
 
-        protected virtual bool after_bread_focus_in_event (Gdk.EventFocus event) {
-            show_navigate_icon ();
-            return true;
-        }
-        protected virtual bool after_bread_focus_out_event (Gdk.EventFocus event) {
-            hide_navigate_icon ();
-            return true;
-        }
+        // protected virtual bool after_bread_focus_in_event (Gdk.EventFocus event) {
+        //     show_navigate_icon ();
+        //     return true;
+        // }
+        // protected virtual bool after_bread_focus_out_event (Gdk.EventFocus event) {
+        //     hide_navigate_icon ();
+        //     return true;
+        // }
 
         protected virtual void on_bread_action_icon_press () {
             bread.activate ();
@@ -121,6 +122,7 @@ namespace Files.View.Chrome {
         }
 
         protected void show_breadcrumbs () {
+warning ("BLB show breadcrumbs");
             bread.set_breadcrumbs_path (displayed_path);
             this.minimum_width = bread.get_minimum_width () + 48; /* Allow extra space for margins */
             this.set_size_request (this.minimum_width, -1);

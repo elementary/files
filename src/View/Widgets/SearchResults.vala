@@ -148,15 +148,11 @@ namespace Files.View.Chrome {
         private Gtk.EventControllerKey key_controller;
 
         public SearchResults (Gtk.Widget parent_widget) {
-            // Object (resizable: false,
-            //         type_hint: Gdk.WindowTypeHint.COMBO,
-            //         type: Gtk.WindowType.POPUP);
-
             Object (
                 relative_to: parent_widget,
                 position: Gtk.PositionType.BOTTOM
             );
-            // parent = parent_widget;
+            parent = parent_widget;
         }
 
         construct {
@@ -197,9 +193,6 @@ namespace Files.View.Chrome {
             scroll = new Gtk.ScrolledWindow (null, null) {
                 child = search_tree_view,
                 hscrollbar_policy = Gtk.PolicyType.NEVER,
-                min_content_height = 200,
-                vexpand = true,
-                hexpand = true
             };
             // scroll_clamp.child = scroll;
 
@@ -282,7 +275,7 @@ namespace Files.View.Chrome {
 
             search_tree_view_button_controller.pressed.connect (on_view_button_pressed_event);
             key_controller = new Gtk.EventControllerKey (this) {
-                propagation_phase = BUBBLE
+                propagation_phase = CAPTURE
             };
 
             key_controller.key_pressed.connect (on_key_pressed_event);
@@ -502,6 +495,7 @@ warning ("search %s", term);
         }
 
         bool on_key_pressed_event (uint keyval, uint kecode, Gdk.ModifierType state) {
+warning ("SR key pressed");
             var mods = state & Gtk.accelerator_get_default_mod_mask ();
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
@@ -568,6 +562,7 @@ warning ("search %s", term);
                     break;
             }
 
+warning ("pass to parent");
             return parent.event (Gtk.get_current_event ());
         }
 
@@ -675,20 +670,22 @@ warning ("search %s", term);
             int items, headers = 0;
             items = n_matches (out headers);
 
-        warning ("resize popup - visible %s, items/headers %u, working %s", visible.to_string (), items + headers, working.to_string ());
+        // warning ("resize popup - visible %s, items/headers %u, working %s", visible.to_string (), items + headers, working.to_string ());
 
             if (visible && items + headers <= 1 && !working) {
             // if (items + headers <= 1 && !working) {
-                warning ("hide");
+                // warning ("hide");
                 hide ();
             } else if (!visible && items + headers > 1 && !working) {
             // } else if (items + headers > 1 && !working) {
-                warning ("popup");
+                // warning ("popup");
                 show_all ();
-                search_tree_view.width_request = get_relative_to ().width_request;
-                warning ("wr %u", search_tree_view.width_request);
+                var wdth = 
+                scroll.width_request = int.max (200, parent.get_allocated_width ());
+                scroll.height_request = ((Gtk.Window)(parent.get_toplevel ())).get_allocated_height () * 4 / 5;
+                warning ("width %u, height %u", scroll.width_request, scroll.height_request);
                 popup (); /* On first call search_tree_view gets realized after a delay */
-                search_tree_view.grab_focus ();
+                // search_tree_view.grab_focus ();
             }
 
             // if (!visible) {
@@ -697,14 +694,14 @@ warning ("search %s", term);
             // }
 
             /* Should only reach here if search_tree_view has been realized  or is being realized but is not yet realized */
-            if (!search_tree_view.get_realized ()) { /* Need to recall resize_popup to get correct cell height */
-                Idle.add (() => {
-                    resize_popup ();
-                    return GLib.Source.REMOVE;
-                });
+            // if (!search_tree_resizeview.get_realized ()) { /* Need to recall resize_popup to get correct cell height */
+            //     Idle.add (() => {
+            //         resize_popup ();
+            //         return GLib.Source.REMOVE;
+            //     });
 
-                return;
-            }
+            //     return;
+            // }
 
             // /* Ensure window remains fully on screen */
             // var workarea = Gdk.Display.get_default ()

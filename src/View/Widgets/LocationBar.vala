@@ -89,9 +89,10 @@ namespace Files.View.Chrome {
         }
 
         private void on_search_results_cursor_changed (GLib.File? file) {
-            if (file != null) {
-                schedule_focus_file_request (file);
-            }
+warning ("LB cursor changed");
+            // if (file != null) {
+            //     schedule_focus_file_request (file);
+            // }
         }
 
         // private void on_search_results_realize () {
@@ -99,12 +100,16 @@ namespace Files.View.Chrome {
         //     ((Gtk.Window)get_toplevel ()).get_group ().add_window (search_results);
         // }
         private void on_search_results_exit (bool exit_navigate = true) {
+warning ("search results exit - exit navigate %s", exit_navigate.to_string ());
             /* Search result widget ensures it has closed and released grab */
             bread.reset_im_context ();
+
             if (focus_timeout_id > 0) {
                 GLib.Source.remove (focus_timeout_id);
             }
+
             if (exit_navigate) {
+                bread.hide_breadcrumbs = false;
                 escape ();
             } else {
                 bread.set_entry_text (bread.get_breadcrumbs_path (false));
@@ -120,22 +125,22 @@ namespace Files.View.Chrome {
             }
         }
 
-        protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
-            base.after_bread_focus_out_event (event);
-            search_mode = false;
-            hide_search_icon ();
-            show_refresh_icon ();
-            focus_out_event (event);
-            check_home ();
-            return true;
-        }
-        protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
-            base.after_bread_focus_in_event (event);
-            focus_in_event (event);
-            search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
-            show_navigate_icon ();
-            return true;
-        }
+        // protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
+        //     base.after_bread_focus_out_event (event);
+        //     search_mode = false;
+        //     hide_search_icon ();
+        //     show_refresh_icon ();
+        //     focus_out_event (event);
+        //     check_home ();
+        //     return true;
+        // }
+        // protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
+        //     base.after_bread_focus_in_event (event);
+        //     focus_in_event (event);
+        //     search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
+        //     show_navigate_icon ();
+        //     return true;
+        // }
 
         private void on_bread_open_with_request (GLib.File file, AppInfo? app) {
             Files.MimeActions.open_glib_file_request (file, this, app);
@@ -150,7 +155,7 @@ namespace Files.View.Chrome {
         }
 
         protected override void after_bread_text_changed (string txt) {
-        warning ("LB bread text changed");
+        warning ("LB bread text changed txt %s", txt);
             if (txt.length < 1) {
                 if (search_mode) {
                     warning ("txt < 1 in search mode, txt %s", txt);
@@ -219,6 +224,7 @@ namespace Files.View.Chrome {
         }
 
         public bool enter_search_mode (string term = "") {
+warning ("LB enter search mode term <%s>", term);
             if (!sensitive) {
                 return false;
             }
@@ -226,6 +232,9 @@ namespace Files.View.Chrome {
             if (!search_mode) {
                 /* Initialise search mode but do not search until first character has been received */
                 if (set_focussed ()) {
+                warning ("LB set entry text blank after enter search mode");
+                    search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
+                    bread.hide_breadcrumbs = true;
                     bread.set_entry_text (term);
                 } else {
                     return false;
@@ -238,6 +247,7 @@ namespace Files.View.Chrome {
         }
 
         public virtual bool enter_navigate_mode (string? current = null) {
+warning ("LB enter navigate");
             if (sensitive && set_focussed ()) {
                 show_navigate_icon ();
                 return true;
@@ -247,11 +257,13 @@ namespace Files.View.Chrome {
         }
 
         private void switch_to_navigate_mode () {
+warning ("LB switch to navigate");
         warning ("LB switch to navigate");
             search_mode = false;
             cancel_search ();
             hide_search_icon ();
             show_navigate_icon ();
+            bread.hide_breadcrumbs = true;
         }
 
         private void switch_to_search_mode () {
@@ -259,6 +271,7 @@ namespace Files.View.Chrome {
             hide_navigate_icon ();
             hide_search_icon ();
             show_search_icon ();
+            bread.hide_breadcrumbs = true;
             /* Next line ensures that the pathbar not lose focus when the mouse if over the sidebar,
              * which would normally grab the focus */
             after_bread_text_changed (bread.get_entry_text ());
