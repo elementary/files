@@ -249,12 +249,6 @@ namespace Files.View.Chrome {
 
             child = scroll;
 
-            button_controller = new Gtk.GestureMultiPress (scroll) {
-                button = 0,
-                propagation_phase = BUBBLE
-            };
-
-            button_controller.pressed.connect (on_button_pressed_event);
             search_tree_view_button_controller = new Gtk.GestureMultiPress (search_tree_view) {
                 button = 0,
                 propagation_phase = BUBBLE
