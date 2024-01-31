@@ -96,7 +96,6 @@ namespace Files.View.Chrome {
             /* Search result widget ensures it has closed and released grab */
             bread.reset_im_context ();
             search_mode = false;
-            bread.reset ();
 
             if (focus_timeout_id > 0) {
                 GLib.Source.remove (focus_timeout_id);
@@ -105,7 +104,6 @@ namespace Files.View.Chrome {
             if (exit_navigate) {
                 escape ();
             } else {
-                bread.set_entry_text (bread.get_breadcrumbs_path (false));
                 enter_navigate_mode ();
             }
         }
