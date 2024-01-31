@@ -25,13 +25,15 @@ namespace Files.View.Chrome {
         private SearchResults search_results;
         private GLib.File? search_location = null;
 
-        public bool search_mode {
+        private bool search_mode {
             get {
-                return bread.search_mode;
+            warning ("SEARCHMODE %s", bread.lock_focus.to_string ());
+                return bread.lock_focus;
             }
 
             private set {
-                bread.search_mode = value; //Ensure no path change requests from entry while searching
+            warning ("SEARCMODE SET %s", value.to_string ());
+                bread.lock_focus = value; //Ensure no path change requests from entry while searching
             }
         }
 
@@ -89,29 +91,27 @@ namespace Files.View.Chrome {
         }
 
         private void on_search_results_cursor_changed (GLib.File? file) {
-warning ("LB cursor changed");
             if (file != null) {
                 schedule_focus_file_request (file);
             }
         }
 
-        // private void on_search_results_realize () {
-        //     /*Is this necessary every popup? */
-        //     ((Gtk.Window)get_toplevel ()).get_group ().add_window (search_results);
-        // }
         private void on_search_results_exit (bool exit_navigate = true) {
 warning ("search results exit - exit navigate %s", exit_navigate.to_string ());
             /* Search result widget ensures it has closed and released grab */
             bread.reset_im_context ();
+            search_mode = false;
+            warning ("set entry txt blank");
+            bread.set_entry_text ("");
 
             if (focus_timeout_id > 0) {
                 GLib.Source.remove (focus_timeout_id);
             }
 
             if (exit_navigate) {
-                bread.hide_breadcrumbs = false;
                 escape ();
             } else {
+            warning ("set entry text path");
                 bread.set_entry_text (bread.get_breadcrumbs_path (false));
                 enter_navigate_mode ();
             }
@@ -155,7 +155,7 @@ warning ("search results exit - exit navigate %s", exit_navigate.to_string ());
         }
 
         protected override void after_bread_text_changed (string txt) {
-        warning ("LB bread text changed txt %s", txt);
+        // warning ("LB bread text changed txt %s", txt);
             if (txt.length < 1) {
                 if (search_mode) {
                     warning ("txt < 1 in search mode, txt %s", txt);
@@ -224,7 +224,7 @@ warning ("search results exit - exit navigate %s", exit_navigate.to_string ());
         }
 
         public bool enter_search_mode (string term = "") {
-warning ("LB enter search mode term <%s>", term);
+// warning ("LB enter search mode term <%s>", term);
             if (!sensitive) {
                 return false;
             }
@@ -232,22 +232,26 @@ warning ("LB enter search mode term <%s>", term);
             if (!search_mode) {
                 /* Initialise search mode but do not search until first character has been received */
                 if (set_focussed ()) {
-                warning ("LB set entry text blank after enter search mode");
+                warning ("LB set entry text after enter search mode %s", term);
                     search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
-                    bread.hide_breadcrumbs = true;
+                    search_mode = true;
+                    // bread.hide_breadcrumbs = true;
+                    // bread.lock_focus = true;
                     bread.set_entry_text (term);
                 } else {
                     return false;
                 }
             } else {
                 /* repeat search with new settings */
+                warning ("repeat search with %s", bread.get_entry_text ());
                 search_results.search (bread.get_entry_text (), search_location);
             }
+
             return true;
         }
 
         public virtual bool enter_navigate_mode (string? current = null) {
-warning ("LB enter navigate");
+// warning ("LB enter navigate");
             if (sensitive && set_focussed ()) {
                 show_navigate_icon ();
                 return true;
@@ -257,7 +261,7 @@ warning ("LB enter navigate");
         }
 
         private void switch_to_navigate_mode () {
-warning ("LB switch to navigate");
+// warning ("LB switch to navigate");
         warning ("LB switch to navigate");
             search_mode = false;
             cancel_search ();
@@ -278,7 +282,7 @@ warning ("LB switch to navigate");
         }
 
         private void cancel_search () {
-        warning ("LB cancel search");
+        // warning ("LB cancel search");
             search_results.cancel ();
         }
 

@@ -40,6 +40,7 @@ namespace Files.View.Chrome {
         }
 
         public bool hide_breadcrumbs { get; set; default = false; }
+        public bool lock_focus { get; set; default = false; }
         public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 16;
         public const double MINIMUM_BREADCRUMB_WIDTH = 12;
         public const int ICON_WIDTH = 32;
@@ -90,8 +91,8 @@ namespace Files.View.Chrome {
             button_press_event.connect (on_button_press_event);
             icon_press.connect (on_icon_press);
             motion_notify_event.connect_after (after_motion_notify);
-            // focus_in_event.connect (on_focus_in);
-            // focus_out_event.connect (on_focus_out);
+            focus_in_event.connect (on_focus_in);
+            focus_out_event.connect (on_focus_out);
             changed.connect (on_entry_text_changed);
 
             key_controller = new Gtk.EventControllerKey (this) {
@@ -143,7 +144,6 @@ namespace Files.View.Chrome {
         }
 
         public void set_entry_text (string? txt) {
-warning ("set entry text <%s>", txt);
             if (text != null) {
                 this.text = txt;
                 set_position (-1);
@@ -155,7 +155,6 @@ warning ("set entry text <%s>", txt);
             return text;
         }
         public virtual void reset () {
-warning ("BBE reset");
             set_entry_text ("");
             hide_action_icon ();
             set_placeholder ("");
@@ -303,52 +302,55 @@ warning ("BBE reset");
         }
 
         private uint focus_out_timeout_id = 0;
-//         protected virtual bool on_focus_out (Gdk.EventFocus event) {
-// //             if (focus_out_timeout_id == 0) {
-// //                 /* Delay acting on focus out - may be temporary, due to keyboard layout change */
-// //                 focus_out_timeout_id = GLib.Timeout.add (10, () => {
-// //                     focus_out_event (event);
-// //                     return GLib.Source.REMOVE;
-// //                 });
+        protected virtual bool on_focus_out (Gdk.EventFocus event) {
+warning ("BBE focus out");
+            if (focus_out_timeout_id == 0) {
+                /* Delay acting on focus out - may be temporary, due to keyboard layout change */
+                focus_out_timeout_id = GLib.Timeout.add (10, () => {
+                    focus_out_event (event);
+                    return GLib.Source.REMOVE;
+                });
 
-// //                 return true;
-// //             } else {
-// //                 /* This the delayed propagated event */
-// //                 focus_out_timeout_id = 0;
-// //                 base.focus_out_event (event);
+                return true;
+            } else {
+                /* This the delayed propagated event */
+                focus_out_timeout_id = 0;
+                base.focus_out_event (event);
 
-// //                 if (context_menu_showing) {
-// //                     return true;
-// //                 }
+                if (context_menu_showing) {
+                    return true;
+                }
 
-// //                 // Do not lose entry text if another window is focused
-// // //                 if (((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
-// // // warning ("BBE reset on focus out");
-// // //                     reset ();
-// // //                 }
+                // Do not lose entry text if another window is focused
+                if (!lock_focus && ((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
+warning ("BBE reset on focus out");
+                    reset ();
+                }
 
-// //                 return false;
-// //             }
-//         }
+                return false;
+            }
+        }
 
-        // protected virtual bool on_focus_in (Gdk.EventFocus event) {
-        //     // if (focus_out_timeout_id > 0) {
-        //     //     /* There was a temporary focus out due to keyboard layout change.
-        //     //      * Cancel propagation of focus out event and ignore focus in event */
-        //     //     GLib.Source.remove (focus_out_timeout_id);
-        //     //     focus_out_timeout_id = 0;
-        //     //     return true;
-        //     // } else {
-        //     //     context_menu_showing = false;
-        //     //     current_dir_path = get_breadcrumbs_path (false);
-        //     //     set_entry_text (current_dir_path);
-        //     //     return false;
-        //     // }
-        // }
+        protected virtual bool on_focus_in (Gdk.EventFocus event) {
+            if (focus_out_timeout_id > 0) {
+                /* There was a temporary focus out due to keyboard layout change.
+                 * Cancel propagation of focus out event and ignore focus in event */
+                GLib.Source.remove (focus_out_timeout_id);
+                focus_out_timeout_id = 0;
+                return true;
+            } else if (!lock_focus){ // Do not overwrite when searching
+                context_menu_showing = false;
+                current_dir_path = get_breadcrumbs_path (false);
+                warning ("set text after focus in");
+                set_entry_text (current_dir_path);
+                return false;
+            } else {
+                return false;
+            }
+        }
 
         protected virtual void on_activate () {
             activate_path (FileUtils.sanitize_path (text, current_dir_path));
-warning ("BBE txt set blank on activate");
             text = "";
         }
 
@@ -357,7 +359,6 @@ warning ("BBE txt set blank on activate");
         }
 
         protected virtual void go_up () {
-warning ("BBE go up");
             text = FileUtils.get_parent_path_from_path (text);
             set_position (-1);
         }
@@ -673,7 +674,7 @@ warning ("BBE go up");
             Gtk.Border border = style_context.get_margin (state);
             style_context.restore ();
 
-            if (!is_focus && !hide_breadcrumbs) {
+            if (!is_focus && !hide_breadcrumbs && !lock_focus) {
                 double margin = border.top;
 
                 /* Ensure there is an editable area to the right of the breadcrumbs */

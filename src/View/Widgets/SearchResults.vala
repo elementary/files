@@ -450,6 +450,7 @@ warning ("search %s", term);
                 );
             } else {
                 cancel ();
+warning ("EXIT press outside");
                 exit ();
             }
         }
@@ -482,12 +483,13 @@ warning ("search %s", term);
             bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
             bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
             bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
-
+warning ("SR key pressed %s", Gdk.keyval_name (keyval));
             if (mods != 0 && !only_shift_pressed) {
                 if (only_control_pressed) {
                     if (keyval == Gdk.Key.l) {
-                        warning ("cancel after key press event");
+
                         cancel (); /* release any grab */
+                        warning ("cancel after Ctrl l key press event");
                         exit (false); /* Do not exit navigate mode */
                         return true;
                         //TODO CLAIM?
@@ -536,6 +538,7 @@ warning ("search %s", term);
                     return true;
                 case Gdk.Key.Escape:
                     cancel (); /* release any grab */
+                    warning ("escape pressed exit");
                     exit ();
                     return true;
                 default:
