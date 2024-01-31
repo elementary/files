@@ -65,7 +65,7 @@ namespace Files.View.Chrome {
             search_results.file_activated.connect (on_search_results_file_activated);
             search_results.cursor_changed.connect (on_search_results_cursor_changed);
             search_results.first_match_found.connect (on_search_results_first_match_found);
-            search_results.realize.connect (on_search_results_realize);
+            // search_results.realize.connect (on_search_results_realize);
             search_results.exit.connect (on_search_results_exit);
             search_results.notify["working"].connect (on_search_results_working_changed);
         }
@@ -94,10 +94,10 @@ namespace Files.View.Chrome {
             }
         }
 
-        private void on_search_results_realize () {
-            /*Is this necessary every popup? */
-            ((Gtk.Window)get_toplevel ()).get_group ().add_window (search_results);
-        }
+        // private void on_search_results_realize () {
+        //     /*Is this necessary every popup? */
+        //     ((Gtk.Window)get_toplevel ()).get_group ().add_window (search_results);
+        // }
         private void on_search_results_exit (bool exit_navigate = true) {
             /* Search result widget ensures it has closed and released grab */
             bread.reset_im_context ();
@@ -150,8 +150,10 @@ namespace Files.View.Chrome {
         }
 
         protected override void after_bread_text_changed (string txt) {
+        warning ("LB bread text changed");
             if (txt.length < 1) {
                 if (search_mode) {
+                    warning ("txt < 1 in search mode, txt %s", txt);
                     switch_to_navigate_mode ();
                 }
                 show_placeholder ();
@@ -160,6 +162,7 @@ namespace Files.View.Chrome {
             hide_placeholder ();
             if (search_mode) {
                 if (txt.contains (Path.DIR_SEPARATOR_S)) {
+                    warning ("txt contains SEP in search mode");
                     switch_to_navigate_mode ();
                 } else {
                     show_search_icon ();
@@ -167,6 +170,7 @@ namespace Files.View.Chrome {
                 }
             } else {
                 if (!txt.contains (Path.DIR_SEPARATOR_S)) {
+                    warning ("LB switch to search txt %s", txt);
                     switch_to_search_mode ();
                 } else {
                     base.after_bread_text_changed (txt);
@@ -243,6 +247,7 @@ namespace Files.View.Chrome {
         }
 
         private void switch_to_navigate_mode () {
+        warning ("LB switch to navigate");
             search_mode = false;
             cancel_search ();
             hide_search_icon ();
@@ -260,10 +265,12 @@ namespace Files.View.Chrome {
         }
 
         private void cancel_search () {
+        warning ("LB cancel search");
             search_results.cancel ();
         }
 
         public void cancel () {
+            warning ("LB cancel");
             cancel_search ();
             on_search_results_exit (); /* Exit navigation mode as well */
         }

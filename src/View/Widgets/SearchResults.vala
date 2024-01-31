@@ -17,7 +17,7 @@
 ***/
 
 namespace Files.View.Chrome {
-    public class SearchResults : Gtk.Window, Searchable {
+    public class SearchResults : Gtk.Popover, Searchable {
         private const string ELLIPSIS_NAME = "ELLIPSIS";
         /* The order of these categories governs the order in which matches appear in the search search_tree_view.
          * The category represents a first level sort.  Within a category the matches sort alphabetically on name */
@@ -148,11 +148,15 @@ namespace Files.View.Chrome {
         private Gtk.EventControllerKey key_controller;
 
         public SearchResults (Gtk.Widget parent_widget) {
-            Object (resizable: false,
-                    type_hint: Gdk.WindowTypeHint.COMBO,
-                    type: Gtk.WindowType.POPUP);
+            // Object (resizable: false,
+            //         type_hint: Gdk.WindowTypeHint.COMBO,
+            //         type: Gtk.WindowType.POPUP);
 
-            parent = parent_widget;
+            Object (
+                relative_to: parent_widget,
+                position: Gtk.PositionType.BOTTOM
+            );
+            // parent = parent_widget;
         }
 
         construct {
@@ -173,7 +177,9 @@ namespace Files.View.Chrome {
             search_tree_view = new Gtk.TreeView () {
                 headers_visible = false,
                 level_indentation = 12,
-                show_expanders = false
+                show_expanders = false,
+                // hexpand = true,
+                // vexpand = true
             };
 
             search_tree_view.get_selection ().set_mode (Gtk.SelectionMode.BROWSE);
@@ -183,10 +189,19 @@ namespace Files.View.Chrome {
                 return path.get_depth () != 0;
             });
 
+            // var scroll_clamp = new Hdy.Clamp () {
+            //     orientation = HORIZONTAL,
+            //     maximum_size = 400
+            // };
+
             scroll = new Gtk.ScrolledWindow (null, null) {
                 child = search_tree_view,
-                hscrollbar_policy = Gtk.PolicyType.NEVER
+                hscrollbar_policy = Gtk.PolicyType.NEVER,
+                min_content_height = 200,
+                vexpand = true,
+                hexpand = true
             };
+            // scroll_clamp.child = scroll;
 
             get_style_context ().add_class ("completion-popup");
 
@@ -251,6 +266,8 @@ namespace Files.View.Chrome {
 #endif
 
             child = scroll;
+            // child = scroll_clamp;
+            // show_all ();
 
             button_controller = new Gtk.GestureMultiPress (this) {
                 button = 0,
@@ -311,6 +328,7 @@ namespace Files.View.Chrome {
 
         /** Search interface functions **/
         public void cancel () {
+warning ("CANCEL");
             /* popdown first to avoid unwanted cursor change signals */
             popdown ();
             if (current_operation != null) {
@@ -321,6 +339,7 @@ namespace Files.View.Chrome {
         }
 
         public void search (string term, GLib.File folder) {
+warning ("search %s", term);
             update_category_headers (); // Ensure category header color matches theme.
 
             device = Gtk.get_current_event_device ();
@@ -335,6 +354,7 @@ namespace Files.View.Chrome {
             }
 
             if (!current_operation.is_cancelled ()) {
+                warning ("current op is cancelled");
                 current_operation.cancel ();
             }
 
@@ -378,6 +398,7 @@ namespace Files.View.Chrome {
 
             current_operation.cancelled.connect (file_search_operation.cancel);
 
+            warning ("clear prior to search");
             clear ();
 
             working = true;
@@ -453,6 +474,7 @@ namespace Files.View.Chrome {
                     n_press, x, y
                 );
             } else {
+                warning ("cancel after button press event");
                 cancel ();
                 exit ();
             }
@@ -490,6 +512,7 @@ namespace Files.View.Chrome {
             if (mods != 0 && !only_shift_pressed) {
                 if (only_control_pressed) {
                     if (keyval == Gdk.Key.l) {
+                        warning ("cancel after key press event");
                         cancel (); /* release any grab */
                         exit (false); /* Do not exit navigate mode */
                         return true;
@@ -644,23 +667,35 @@ namespace Files.View.Chrome {
         }
 
         void resize_popup () {
-            var parent_window = parent.get_window ();
-            if (parent_window == null) {
-                return;
-            }
+
+            // var parent_window = parent.get_window ();
+            // if (parent_window == null) {
+            //     return;
+            // }
 
             int items, headers = 0;
             items = n_matches (out headers);
 
+        warning ("resize popup - visible %s, items/headers %u, working %s", visible.to_string (), items + headers, working.to_string ());
+
             if (visible && items + headers <= 1 && !working) {
+            // if (items + headers <= 1 && !working) {
+                warning ("hide");
                 hide ();
             } else if (!visible && items + headers > 1 && !working) {
+            // } else if (items + headers > 1 && !working) {
+                warning ("popup");
+                show_all ();
+                search_tree_view.width_request = get_relative_to ().width_request;
+                warning ("wr %u", search_tree_view.width_request);
                 popup (); /* On first call search_tree_view gets realized after a delay */
+                search_tree_view.grab_focus ();
             }
 
-            if (!visible) {
-                return; /* No need to resize */
-            }
+            // if (!visible) {
+            //     warning ("NOT VISIBLE");
+            //     return; /* No need to resize */
+            // }
 
             /* Should only reach here if search_tree_view has been realized  or is being realized but is not yet realized */
             if (!search_tree_view.get_realized ()) { /* Need to recall resize_popup to get correct cell height */
@@ -672,31 +707,31 @@ namespace Files.View.Chrome {
                 return;
             }
 
-            /* Ensure window remains fully on screen */
-            var workarea = Gdk.Display.get_default ()
-                                      .get_monitor_at_window (parent_window)
-                                      .get_workarea ();
+            // /* Ensure window remains fully on screen */
+            // var workarea = Gdk.Display.get_default ()
+            //                           .get_monitor_at_window (parent_window)
+            //                           .get_workarea ();
 
-            int x, y;
-            Gtk.Allocation parent_alloc;
-            parent_window.get_origin (out x, out y);
-            parent.get_allocation (out parent_alloc);
+            // int x, y;
+            // Gtk.Allocation parent_alloc;
+            // parent_window.get_origin (out x, out y);
+            // parent.get_allocation (out parent_alloc);
 
-            x = (x + parent_alloc.x).clamp (workarea.x, workarea.x + workarea.width - width_request);
-            y += parent_alloc.y + parent_alloc.height;
+            // x = (x + parent_alloc.x).clamp (workarea.x, workarea.x + workarea.width - width_request);
+            // y += parent_alloc.y + parent_alloc.height;
 
-            int separator_height;
-            Gdk.Rectangle cell_area;
-            search_tree_view.style_get ("vertical-separator", out separator_height);
-            search_tree_view.get_cell_area (new Gtk.TreePath.from_indices (0), null, out cell_area);
-            var total = int.max ((items + headers), 2);
-            var height = total * (cell_area.height + separator_height);
-            height = height.clamp (0, workarea.y + workarea.height - y - 12);
+            // int separator_height;
+            // Gdk.Rectangle cell_area;
+            // search_tree_view.style_get ("vertical-separator", out separator_height);
+            // search_tree_view.get_cell_area (new Gtk.TreePath.from_indices (0), null, out cell_area);
+            // var total = int.max ((items + headers), 2);
+            // var height = total * (cell_area.height + separator_height);
+            // height = height.clamp (0, workarea.y + workarea.height - y - 12);
 
-            scroll.set_min_content_height (height);
-            set_size_request (int.min (parent_alloc.width, workarea.width), height);
-            move (x, y);
-            resize (width_request, height_request);
+            // scroll.set_min_content_height (height);
+            // set_size_request (int.min (parent_alloc.width, workarea.width), height);
+            // move (x, y);
+            // resize (width_request, height_request);
         }
 
         bool get_iter_at_cursor (out Gtk.TreeIter iter) {
@@ -719,46 +754,46 @@ namespace Files.View.Chrome {
             search_tree_view.set_cursor (path, null, false);
         }
 
-        void popup () {
-            if (get_mapped ()) {
-                return;
-            }
+        // void popup () {
+        //     if (get_mapped ()) {
+        //         return;
+        //     }
 
-            set_screen (parent.get_screen ());
-            show_all ();
-            search_tree_view.grab_focus ();
+        //     // set_screen (parent.get_screen ());
+        //     show_all ();
+        //     search_tree_view.grab_focus ();
 
-            /* Ensure device grab and ungrab are paired */
-            if (!is_grabbing && device != null) {
-                Gtk.device_grab_add (this, device, true);
-                device.get_seat ().grab (get_window (), Gdk.SeatCapabilities.ALL_POINTING,
-                                         true, null, null, null);
+        //     // /* Ensure device grab and ungrab are paired */
+        //     // if (!is_grabbing && device != null) {
+        //     //     Gtk.device_grab_add (this, device, true);
+        //     //     device.get_seat ().grab (get_window (), Gdk.SeatCapabilities.ALL_POINTING,
+        //     //                              true, null, null, null);
 
-                is_grabbing = true;
-            }
-            /* Paired with disconnect function in popdown () */
-            connect_view_cursor_changed_signal ();
-        }
+        //     //     is_grabbing = true;
+        //     // }
+        //     /* Paired with disconnect function in popdown () */
+        //     connect_view_cursor_changed_signal ();
+        // }
 
-        void popdown () {
-            /* Paired with connect function in popup () */
-            disconnect_view_cursor_changed_signal ();
-            if (is_grabbing) {
-                if (device == null) {
-                    /* 'device' can become null during searching for reasons as yet unidentified. This ensures
-                     * that grab and ungrab are matched (else interface freezes after some searches)
-                     */
-                    device = Gtk.get_current_event_device ();
-                    debug ("Reference to device was lost while grabbing - should not happen");
-                }
+        // void popdown () {
+        //     /* Paired with connect function in popup () */
+        //     disconnect_view_cursor_changed_signal ();
+        //     // if (is_grabbing) {
+        //     //     if (device == null) {
+        //     //         /* 'device' can become null during searching for reasons as yet unidentified. This ensures
+        //     //          * that grab and ungrab are matched (else interface freezes after some searches)
+        //     //          */
+        //     //         device = Gtk.get_current_event_device ();
+        //     //         debug ("Reference to device was lost while grabbing - should not happen");
+        //     //     }
 
-                device.get_seat ().ungrab ();
-                Gtk.device_grab_remove (this, device);
-                is_grabbing = false;
-            }
+        //     //     device.get_seat ().ungrab ();
+        //     //     Gtk.device_grab_remove (this, device);
+        //     //     is_grabbing = false;
+        //     // }
 
-            hide ();
-        }
+        //     hide ();
+        // }
 
         void add_results (Gee.List<Match> new_results, Gtk.TreeIter parent) {
             if (current_operation.is_cancelled ()) {
@@ -902,6 +937,7 @@ namespace Files.View.Chrome {
         }
 
         protected void clear () {
+warning ("CLEAR");
             /* Disconnect the cursor-changed signal so that it does not get emitted when entries removed
              * causing incorrect files to get selected in icon search_tree_view */
             bool was_popped_up = has_popped_up ();
@@ -1160,7 +1196,8 @@ namespace Files.View.Chrome {
         }
 
         public bool has_popped_up () {
-            return is_grabbing;
+            return search_tree_view.visible;
+            // return is_grabbing;
         }
 
         private void connect_view_cursor_changed_signal () {
