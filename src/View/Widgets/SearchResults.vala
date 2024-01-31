@@ -250,7 +250,7 @@ namespace Files.View.Chrome {
 
             child = scroll;
 
-            button_controller = new Gtk.GestureMultiPress (this) {
+            button_controller = new Gtk.GestureMultiPress (scroll) {
                 button = 0,
                 propagation_phase = BUBBLE
             };
