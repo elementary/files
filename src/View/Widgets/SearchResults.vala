@@ -648,7 +648,7 @@ warning ("search %s", term);
             } else if (!visible && items + headers > 1 && !working) {
                 show_all ();
                 scroll.width_request = int.max (200, parent.get_allocated_width ());
-                scroll.height_request = ((Gtk.Window)(parent.get_toplevel ())).get_allocated_height () - 48;
+                scroll.height_request = ((Gtk.Window)(parent.get_toplevel ())).get_allocated_height () / 2;
                 connect_view_cursor_changed_signal ();
                 popup (); /* On first call search_tree_view gets realized after a delay */
             }
