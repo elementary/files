@@ -183,6 +183,7 @@ namespace Files.View.Chrome {
             scroll = new Gtk.ScrolledWindow (null, null) {
                 child = search_tree_view,
                 hscrollbar_policy = Gtk.PolicyType.NEVER,
+                propagate_natural_height = true,
             };
 
             get_style_context ().add_class ("completion-popup");
@@ -246,7 +247,6 @@ namespace Files.View.Chrome {
 #if HAVE_ZEITGEIST
             list.append (out zeitgeist_results, null);
 #endif
-
             child = scroll;
 
             search_tree_view_button_controller = new Gtk.GestureMultiPress (search_tree_view) {
@@ -617,16 +617,25 @@ namespace Files.View.Chrome {
         void resize_popup () {
             int items, headers = 0;
             items = n_matches (out headers);
-            if (visible && items + headers <= 1 && !working) {
+            show_all ();
+
+            if (items + headers <= 1) {
                 disconnect_view_cursor_changed_signal ();
-                hide ();
-            } else if (!visible && items + headers > 1 && !working) {
-                show_all ();
-                scroll.width_request = int.max (200, parent.get_allocated_width ());
-                scroll.height_request = ((Gtk.Window)(parent.get_toplevel ())).get_allocated_height () / 2;
+            } else {
                 connect_view_cursor_changed_signal ();
-                popup (); /* On first call search_tree_view gets realized after a delay */
             }
+
+            Idle.add (() => {
+                if (search_tree_view.get_realized ()) {
+                    popup ();
+                    Gtk.Window toplevel = (Gtk.Window)(parent.get_ancestor (typeof (Gtk.Window)));
+                    scroll.min_content_height = int.min (toplevel.get_allocated_height (), (items + headers) * 24);
+                    scroll.width_request = int.max (200, parent.get_allocated_width ());
+                    return Source.REMOVE;
+                } else {
+                    return Source.CONTINUE;
+                }
+            });
         }
 
         bool get_iter_at_cursor (out Gtk.TreeIter iter) {

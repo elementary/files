@@ -97,7 +97,7 @@ namespace Files.View.Chrome {
             /* Search result widget ensures it has closed and released grab */
             bread.reset_im_context ();
             search_mode = false;
-            bread.set_entry_text ("");
+            bread.reset ();
 
             if (focus_timeout_id > 0) {
                 GLib.Source.remove (focus_timeout_id);
@@ -121,7 +121,8 @@ namespace Files.View.Chrome {
 
         protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
             base.after_bread_focus_out_event (event);
-            // hide_search_icon ();
+            hide_search_icon ();
+            search_mode = false;
             show_refresh_icon ();
             focus_out_event (event);
             check_home ();
@@ -156,6 +157,7 @@ namespace Files.View.Chrome {
                 show_placeholder ();
                 return;
             }
+
             hide_placeholder ();
             if (search_mode) {
                 if (txt.contains (Path.DIR_SEPARATOR_S)) {
@@ -250,14 +252,12 @@ namespace Files.View.Chrome {
             cancel_search ();
             hide_search_icon ();
             show_navigate_icon ();
-            bread.hide_breadcrumbs = true;
         }
 
         private void switch_to_search_mode () {
             search_mode = true;
             hide_navigate_icon ();
             show_search_icon ();
-            bread.hide_breadcrumbs = true;
             /* Next line ensures that the pathbar not lose focus when the mouse if over the sidebar,
              * which would normally grab the focus */
             after_bread_text_changed (bread.get_entry_text ());
