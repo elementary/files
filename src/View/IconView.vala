@@ -150,15 +150,13 @@ public class Files.IconView : Files.AbstractDirectoryView {
         return tree.get_visible_range (out start_path, out end_path);
     }
 
-    protected override uint get_event_position_info (Gdk.Event event,
+    protected override uint get_event_position_info (double x, double y,
                                                      out Gtk.TreePath? path,
                                                      bool rubberband = false) {
         Gtk.CellRenderer? cell_renderer;
         uint zone;
         path = null;
 
-        double x, y;
-        event.get_coords (out x, out y);
 
         tree.get_item_at_pos ((int)x, (int)y, out path, out cell_renderer);
         zone = (path != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);

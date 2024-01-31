@@ -30,9 +30,20 @@ namespace Files.View.Chrome {
         bool match_found = false;
         bool multiple_completions = false;
         string to_complete = ""; // Beginning of filename to be completed
-        string completion_text = ""; // Candidate completion (placeholder)
-        string matching_filename = "";
-        string common_chars = "";
+        string completion_text {
+            get {
+                return this.placeholder;
+            }
+
+            set {
+                if (placeholder != value) {
+                    placeholder = value;
+                    queue_draw ();
+                    /* This corrects undiagnosed bug after completion required on remote filesystem */
+                    set_position (-1);
+                }
+            }
+        } // Candidate completion (placeholder)
 
         public bool search_mode = false; // Used to suppress activate events while searching
 
@@ -87,7 +98,7 @@ namespace Files.View.Chrome {
                     break;
                 case Gdk.Key.KP_Tab:
                 case Gdk.Key.Tab:
-                    complete ();
+                    set_entry_text (text + completion_text);
                     return true;
             }
 
@@ -96,7 +107,7 @@ namespace Files.View.Chrome {
 
         public override void reset () {
             base.reset ();
-            clear_completion ();
+            completion_text = "";
             current_completion_dir = null; // Do not cancel as this could interfere with a loading tab
         }
 
@@ -127,96 +138,43 @@ namespace Files.View.Chrome {
       * Implementing interface virtual functions **/
     /****************************/
         public void completion_needed () {
-            string? txt = this.text;
-            if (txt == null || txt.length < 1) {
+            string? path = this.text;
+            if (path == null || path.length < 1) {
                 return;
             }
 
             to_complete = "";
+            completion_text = "";
             /* don't use get_basename (), it will return "folder" for "/folder/" */
-            int last_slash = txt.last_index_of_char ('/');
-            if (last_slash > -1 && last_slash < txt.length) {
-                to_complete = txt.slice (last_slash + 1, text.length);
+            int last_slash = path.last_index_of_char ('/');
+            if (last_slash > -1 && last_slash < path.length) {
+                to_complete = path.slice (last_slash + 1, path.length);
             }
+
             if (to_complete.length > 0) {
-                do_completion (txt);
-            } else {
-                clear_completion ();
-            }
-        }
-
-        private void do_completion (string path) {
-            if (path == current_dir_path) {
-                return; // Nothing typed yet
-            }
-
-            GLib.File? file = FileUtils.get_file_for_path (FileUtils.sanitize_path (path, current_dir_path));
-            if (file == null) {
-                return;
-            }
-
-            if (file.has_parent (null)) {
-                file = file.get_parent ();
-            } else {
-                return;
-            }
-
-            if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
-                current_completion_dir = Directory.from_gfile (file);
-            }
-
-            if (current_completion_dir.can_load) {
-                clear_completion ();
-                matching_filename = "";
-                multiple_completions = false;
-                match_found = false;
-                current_completion_dir.init (on_file_loaded, on_done_loading);
-            }
-        }
-
-        protected void complete () {
-            if (completion_text.length == 0) {
-                return;
-            }
-
-            string path = text + completion_text;
-            /* If there are multiple results, tab as far as we can, otherwise do the entire result */
-            if (!multiple_completions) {
-                completed (path);
-            } else {
-                set_entry_text (path);
-            }
-        }
-
-        private void completed (string txt) {
-            var gfile = FileUtils.get_file_for_path (txt); /* Sanitizes path */
-            var newpath = gfile.get_path ();
-
-            /* If path changed, update breadcrumbs and continue editing */
-            if (newpath != null) {
-                /* If completed, then GOF File must exist */
-                if ((Files.File.@get (gfile)).is_directory) {
-                    newpath += GLib.Path.DIR_SEPARATOR_S;
+                if (path == current_dir_path) {
+                    return; // Nothing typed yet
                 }
 
-                set_entry_text (newpath);
+                var file = FileUtils.get_file_for_path (path);
+                if (file == null) {
+                    return;
+                }
+
+                if (file.has_parent (null)) {
+                    file = file.get_parent ();
+                } else {
+                    return;
+                }
+
+                if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
+                    current_completion_dir = Directory.from_gfile (file);
+                }
+
+                multiple_completions = false;
+                match_found = false;
+                current_completion_dir.init (on_file_loaded, () => {});
             }
-
-            set_completion_text ("");
-        }
-
-        private void set_completion_text (string txt) {
-            completion_text = txt;
-            if (placeholder != completion_text) {
-                placeholder = completion_text;
-                queue_draw ();
-                /* This corrects undiagnosed bug after completion required on remote filesystem */
-                set_position (-1);
-            }
-        }
-
-        private void clear_completion () {
-            set_completion_text ("");
         }
 
         /**
@@ -235,47 +193,28 @@ namespace Files.View.Chrome {
             string file_display_name = file.get_display_name ();
             if (file_display_name.length > to_complete.length) {
                 if (file_display_name.up ().has_prefix (to_complete.up ())) {
-                    matching_filename = file_display_name;
+                    var residue = file_display_name.slice (to_complete.length, file_display_name.length);
                     if (!match_found) {
                         match_found = true;
-                        common_chars = matching_filename.slice (
-                            to_complete.length, matching_filename.length
-                        );
+                        completion_text = residue;
                     } else {
                         multiple_completions = true;
-                        unichar c1 = {}, c2 = {};
-                        int index1 = 0, index2 = common_chars.length - 1;
-                        while (common_chars.get_next_char (ref index1, out c1) &&
-                               matching_filename.get_next_char (ref index2, out c2)) {
+                        unichar c1, c2 = 0;
+                        int index1 = 0, index2 = 0;
+                        var new_common_chars = "";
+                        while (completion_text.get_next_char (ref index1, out c1) &&
+                               residue.get_next_char (ref index2, out c2)) {
 
-                            if (c1 == c2) {
-                                common_chars += c1.to_string ();
+                            if (c1 == c2 && index1 == index2) {
+                                new_common_chars += c1.to_string ();
                             } else {
                                 break;
                             }
                         }
 
-
+                        completion_text = new_common_chars;
                     }
                 }
-            }
-        }
-
-        private void on_done_loading () {
-            if (multiple_completions) {
-                // We do not change the typed characters if there are multiple matches
-                set_completion_text (common_chars);
-            } else if (match_found) {
-                string str = Path.DIR_SEPARATOR_S;
-                if (text.length >= 1) {
-                    str = text.slice (0, text.length - to_complete.length);
-                }
-
-                // Change the typed characters to the match the filename when only one match.
-                set_text (str + matching_filename.slice (0, to_complete.length));
-                set_completion_text (
-                    matching_filename.slice (to_complete.length, matching_filename.length)
-                );
             }
         }
 
