@@ -494,10 +494,9 @@ namespace Files.View.Chrome {
                         exit (false); /* Do not exit navigate mode */
                         return true;
                         //TODO CLAIM?
+                    } else {
+                        return parent.event (Gtk.get_current_event ());
                     }
-                    // else {
-                    //     parent.key_press_event (event);
-                    // }
                 } else if (only_alt_pressed &&
                            keyval == Gdk.Key.Return ||
                            keyval == Gdk.Key.KP_Enter ||
@@ -546,7 +545,7 @@ namespace Files.View.Chrome {
                     break;
             }
 
-            return false;
+            return parent.event (Gtk.get_current_event ());
         }
 
         void select_first () {
