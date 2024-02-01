@@ -614,11 +614,12 @@ namespace Files.View.Chrome {
 
             if (items + headers <= 1) {
                 disconnect_view_cursor_changed_signal ();
-            } else {
-                connect_view_cursor_changed_signal ();
+                popdown ();
+                return;
             }
 
             Idle.add (() => {
+                connect_view_cursor_changed_signal ();
                 if (search_tree_view.get_realized ()) {
                     popup ();
                     Gtk.Window toplevel = (Gtk.Window)(parent.get_ancestor (typeof (Gtk.Window)));
@@ -789,13 +790,6 @@ namespace Files.View.Chrome {
         }
 
         protected void clear () {
-            /* Disconnect the cursor-changed signal so that it does not get emitted when entries removed
-             * causing incorrect files to get selected in icon search_tree_view */
-            bool was_popped_up = visible;
-            if (was_popped_up) {
-                disconnect_view_cursor_changed_signal ();
-            }
-
             Gtk.TreeIter parent, iter;
             for (var valid = list.get_iter_first (out parent);
                  valid;
@@ -806,12 +800,6 @@ namespace Files.View.Chrome {
                 }
 
                 while (list.remove (ref iter));
-            }
-
-            resize_popup ();
-            if (was_popped_up && visible) {
-                /* Reconnect signal only if remained popped up */
-                connect_view_cursor_changed_signal ();
             }
         }
 
