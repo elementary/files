@@ -99,7 +99,6 @@ namespace Files.View.Chrome {
         }
 
         private void on_search_results_exit (bool exit_navigate = true) {
-            /* Search result widget ensures it has closed and released grab */
             bread.reset_im_context ();
             search_mode = false;
 
@@ -110,7 +109,7 @@ namespace Files.View.Chrome {
             if (exit_navigate) {
                 escape ();
             } else {
-                enter_navigate_mode ();
+                switch_to_navigate_mode ();
             }
         }
 
@@ -129,9 +128,12 @@ namespace Files.View.Chrome {
 
         protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
             base.after_bread_focus_out_event (event);
-            show_refresh_icon ();
-            focus_out_event (event);
-            check_home ();
+            if (!search_mode) {
+                show_refresh_icon ();
+                focus_out_event (event);
+                check_home ();
+            }
+
             return true;
         }
 
@@ -157,10 +159,11 @@ namespace Files.View.Chrome {
 
         protected override void after_bread_text_changed (string txt) {
             if (txt.length < 1) {
+                show_placeholder ();
                 if (search_mode) {
                     switch_to_navigate_mode ();
                 }
-                show_placeholder ();
+
                 return;
             }
 
@@ -221,16 +224,16 @@ namespace Files.View.Chrome {
             bread.action_icon_name = null;
         }
 
+        // Enter directly into search mode by <Ctrl>F
         public bool enter_search_mode (string term = "") {
             if (!sensitive) {
                 return false;
             }
 
             if (!search_mode) {
-                /* Initialise search mode but do not search until first character has been received */
+                /* Focusing will switch to navigate mode*/
                 if (set_focussed ()) {
-                    search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
-                    search_mode = true;
+                    /* Entering a suitable term will switch to search mode */
                     bread.set_entry_text (term);
                 } else {
                     return false;
@@ -243,9 +246,9 @@ namespace Files.View.Chrome {
             return true;
         }
 
+        // When focussed from directory view
         public virtual bool enter_navigate_mode (string? current = null) {
             if (sensitive && set_focussed ()) {
-                search_mode = false;
                 show_navigate_icon ();
                 return true;
             } else {
@@ -253,9 +256,12 @@ namespace Files.View.Chrome {
             }
         }
 
+        // When in search mode, switch to navigate mode
         private void switch_to_navigate_mode () {
-            search_mode = false;
-            cancel_search ();
+            if (search_mode) {
+                cancel_search ();
+                search_mode = false;
+            }
 
             show_navigate_icon ();
         }

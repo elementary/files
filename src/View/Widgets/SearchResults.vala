@@ -462,11 +462,9 @@ namespace Files.View.Chrome {
             if (mods != 0 && !only_shift_pressed) {
                 if (only_control_pressed) {
                     if (keyval == Gdk.Key.l) {
-
                         cancel (); /* release any grab */
                         exit (false); /* Do not exit navigate mode */
                         return true;
-                        //TODO CLAIM?
                     } else {
                         return parent.event (Gtk.get_current_event ());
                     }
@@ -510,7 +508,7 @@ namespace Files.View.Chrome {
                     select_adjacent (up);
                     return true;
                 case Gdk.Key.Escape:
-                    cancel (); /* release any grab */
+                    cancel ();
                     exit ();
                     return true;
                 default:
