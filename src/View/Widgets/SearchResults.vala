@@ -495,7 +495,7 @@ namespace Files.View.Chrome {
                         return true;
                         //TODO CLAIM?
                     } else {
-                        return parent.event (Gtk.get_current_event ());
+                        return key_controller.forward (parent);
                     }
                 } else if (only_alt_pressed &&
                            keyval == Gdk.Key.Return ||
@@ -513,6 +513,7 @@ namespace Files.View.Chrome {
                 case Gdk.Key.ISO_Enter:
                     accept (null, false); // Navigate to the selected file
                     return true;
+
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
                 case Gdk.Key.Tab:
@@ -545,7 +546,7 @@ namespace Files.View.Chrome {
                     break;
             }
 
-            return parent.event (Gtk.get_current_event ());
+            return key_controller.forward (parent);
         }
 
         void select_first () {
