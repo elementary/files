@@ -83,6 +83,7 @@ namespace Files.View.Chrome {
             path_change_request (gof.get_target_location ().get_uri ());
             on_search_results_exit ();
         }
+
         private void on_search_results_file_activated (GLib.File file) {
             AppInfo? app = MimeActions.get_default_application_for_glib_file (file);
             MimeActions.open_glib_file_request (file, this, app);
@@ -159,16 +160,12 @@ namespace Files.View.Chrome {
         }
 
         protected override void after_bread_text_changed (string txt) {
+            hide_placeholder ();
             if (txt.length < 1) {
-                show_placeholder ();
-                if (search_mode) {
-                    switch_to_navigate_mode ();
-                }
-
+                cancel ();
                 return;
             }
 
-            hide_placeholder ();
             if (search_mode) {
                 if (txt.contains (Path.DIR_SEPARATOR_S)) {
                     switch_to_navigate_mode ();
@@ -184,9 +181,6 @@ namespace Files.View.Chrome {
                 }
             }
         }
-
-
-
 
         protected void show_refresh_icon () {
             bread.get_style_context ().remove_class ("spin");
