@@ -39,12 +39,18 @@ namespace Files.View.Chrome {
             }
         }
 
+        // Used to stop breadcrums being shown for user's home folder
         public bool hide_breadcrumbs { get; set; default = false; }
-        public bool lock_mode { get; set; default = false; } // When true stops mode changing on focus out
+        // Used to stop mode changing when search popover grabs focus
+        public bool lock_mode { get; set; default = false; }
+
         public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 16;
         public const double MINIMUM_BREADCRUMB_WIDTH = 12;
         public const int ICON_WIDTH = 32;
+
+        // Used for both completions and as a placeholder
         protected string placeholder = ""; /*Note: This is not the same as the Gtk.Entry placeholder_text */
+
         protected BreadcrumbElement? clicked_element = null;
         protected string? current_dir_path = null;
         /* This list will contain all BreadcrumbElement */
@@ -166,6 +172,7 @@ namespace Files.View.Chrome {
 
         public void set_placeholder (string txt) {
             placeholder = txt;
+            queue_draw ();
         }
 
         public void show_default_action_icon () {
@@ -672,6 +679,7 @@ namespace Files.View.Chrome {
             style_context.restore ();
 
             if (!has_focus && !hide_breadcrumbs && !lock_mode) {
+                // Draw breadcrumbs
                 double margin = border.top;
 
                 /* Ensure there is an editable area to the right of the breadcrumbs */
@@ -721,6 +729,7 @@ namespace Files.View.Chrome {
                         }
                     }
                 }
+
                 cr.restore ();
             } else if (placeholder != "") {
                 assert (placeholder != null);
@@ -728,9 +737,9 @@ namespace Files.View.Chrome {
                 int layout_width, layout_height;
                 double text_width, text_height;
                 Pango.Layout layout;
-                /** TODO - Get offset due to margins from style context **/
-                int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 5 : 0;
 
+                /** TODO - Get offset due to margins from style context **/
+                int offset = 6 + (primary_icon_name != null ? ICON_WIDTH : 0);
                 Gdk.RGBA rgba;
                 var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
                 if (!colored) {
@@ -754,11 +763,12 @@ namespace Files.View.Chrome {
                 text_width = Pango.units_to_double (layout_width);
                 text_height = Pango.units_to_double (layout_height);
                 /** TODO - Get offset due to margins from style context **/
-                var vertical_offset = get_allocated_height () / 2 - text_height / 2;
+                // Convert to double to avoid rounding errors
+                var vertical_offset = (int) (((double) get_allocated_height ()) / 2.0 - (double) text_height / 2.0);
                 if (is_rtl) {
-                   cr.move_to (width - (text_width + icon_width + 6), vertical_offset);
+                   cr.move_to (width - (text_width + offset), vertical_offset);
                 } else {
-                   cr.move_to (text_width + icon_width + 6, vertical_offset);
+                   cr.move_to (text_width + offset, vertical_offset);
                 }
 
                 layout.set_text (placeholder, -1);

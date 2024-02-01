@@ -132,7 +132,7 @@ namespace Files.View.Chrome {
         }
 
         public void hide_primary_icon () {
-            primary_icon_pixbuf = null;
+            primary_icon_name = null;
         }
 
         protected override void set_default_entry_tooltip () {
