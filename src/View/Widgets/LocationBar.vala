@@ -33,9 +33,10 @@ namespace Files.View.Chrome {
             private set {
                 bread.lock_focus = value; //Ensure no path change requests from entry while searching
                 if (!value) {
-                    hide_search_icon ();
+                    bread.set_primary_icon_name (null);
                 } else {
-                    show_search_icon ();
+                    bread.get_style_context ().remove_class ("spin");
+                    bread.set_primary_icon_name (Files.ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC);
                     hide_navigate_icon ();
                 }
             }
@@ -172,7 +173,6 @@ namespace Files.View.Chrome {
                 if (txt.contains (Path.DIR_SEPARATOR_S)) {
                     switch_to_navigate_mode ();
                 } else {
-                    show_search_icon ();
                     search_results.search (txt, search_location);
                 }
             } else {
@@ -185,19 +185,8 @@ namespace Files.View.Chrome {
             }
         }
 
-        protected override void show_navigate_icon () {
-            show_search_icon ();
-            base.show_navigate_icon ();
-        }
 
-        protected void show_search_icon () {
-            bread.get_style_context ().remove_class ("spin");
-            bread.set_primary_icon_name (Files.ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC);
-        }
 
-        protected void hide_search_icon () {
-            bread.set_primary_icon_name (null);
-        }
 
         protected void show_refresh_icon () {
             bread.get_style_context ().remove_class ("spin");
