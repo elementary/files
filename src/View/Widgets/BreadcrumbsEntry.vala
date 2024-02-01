@@ -97,8 +97,14 @@ namespace Files.View.Chrome {
                     break;
                 case Gdk.Key.KP_Tab:
                 case Gdk.Key.Tab:
-                    set_entry_text (text + completion_text);
-                    return true;
+                    if (text.length > 0) { // Do not enter placeholder as text
+                        set_entry_text (text + completion_text);
+                        return true;
+                    }
+
+                    break;
+                default:
+                    break;
             }
 
             return base.on_key_press_event (keyval, keycode, state);
