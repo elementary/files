@@ -254,7 +254,21 @@ namespace Files.View.Chrome {
                 propagation_phase = BUBBLE
             };
 
-            search_tree_view_button_controller.pressed.connect (on_view_button_pressed_event);
+            search_tree_view_button_controller.pressed.connect ((n_press, x, y) => {
+                Gtk.TreePath path;
+                Gtk.TreeIter iter;
+
+                search_tree_view.get_path_at_pos ((int) x, (int) y, out path, null, null, null);
+                if (path != null && path.get_depth () > 1) {
+                    filter.get_iter (out iter, path);
+                    filter.convert_iter_to_child_iter (out iter, iter);
+                    /* This will call cancel () */
+                    accept (iter, search_tree_view_button_controller.get_current_button () > 1);
+                } else {
+                    Gdk.beep ();
+                }
+            });
+
             key_controller = new Gtk.EventControllerKey (this) {
                 propagation_phase = CAPTURE
             };
@@ -432,26 +446,6 @@ namespace Files.View.Chrome {
             }
         }
 
-
-        void on_view_button_pressed_event (int n_press, double x, double y) {
-            process_button_pressed (
-                search_tree_view_button_controller.get_current_button (),
-                n_press, x, y
-            );
-        }
-
-        private void process_button_pressed (uint button, int n_press, double x, double y) {
-            Gtk.TreePath path;
-            Gtk.TreeIter iter;
-
-            search_tree_view.get_path_at_pos ((int) x, (int) y, out path, null, null, null);
-            if (path != null && path.get_depth () > 1) {
-                filter.get_iter (out iter, path);
-                filter.convert_iter_to_child_iter (out iter, iter);
-                accept (iter, button > 1); /* This will call cancel () */
-            }
-        }
-
         bool on_key_pressed_event (uint keyval, uint kecode, Gdk.ModifierType state) {
             var mods = state & Gtk.accelerator_get_default_mod_mask ();
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
@@ -466,7 +460,7 @@ namespace Files.View.Chrome {
                         exit (false); /* Do not exit navigate mode */
                         return true;
                     } else {
-                        return parent.event (Gtk.get_current_event ());
+                        return key_controller.forward (parent);
                     }
                 } else if (only_alt_pressed &&
                            keyval == Gdk.Key.Return ||
@@ -484,6 +478,7 @@ namespace Files.View.Chrome {
                 case Gdk.Key.ISO_Enter:
                     accept (null, false); // Navigate to the selected file
                     return true;
+
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
                 case Gdk.Key.Tab:
@@ -515,7 +510,7 @@ namespace Files.View.Chrome {
                     break;
             }
 
-            return parent.event (Gtk.get_current_event ());
+            return key_controller.forward (parent);
         }
 
         void select_first () {
