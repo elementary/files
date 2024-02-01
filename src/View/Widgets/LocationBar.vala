@@ -116,6 +116,11 @@ namespace Files.View.Chrome {
             }
         }
 
+        protected override void on_bread_activate_path (string path, Files.OpenFlag flag) {
+            search_mode = false; // Ensure breadcrumbs can show
+            base.on_bread_activate_path (path, flag);
+        }
+
         protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
             base.after_bread_focus_out_event (event);
             show_refresh_icon ();
