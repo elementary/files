@@ -106,6 +106,7 @@ namespace Files.View.Chrome {
 
             if (focus_timeout_id > 0) {
                 GLib.Source.remove (focus_timeout_id);
+                focus_timeout_id = 0;
             }
 
             if (exit_navigate) {
@@ -266,8 +267,8 @@ namespace Files.View.Chrome {
             }
 
             focus_timeout_id = GLib.Timeout.add (300, () => {
-                focus_file_request (file);
                 focus_timeout_id = 0;
+                focus_file_request (file);
                 return GLib.Source.REMOVE;
             });
         }
