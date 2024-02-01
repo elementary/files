@@ -27,11 +27,11 @@ namespace Files.View.Chrome {
 
         private bool search_mode {
             get {
-                return bread.lock_focus;
+                return bread.lock_mode;
             }
 
             private set {
-                bread.lock_focus = value; //Ensure no path change requests from entry while searching
+                bread.lock_mode = value; //Ensure no path change requests from entry while searching
                 if (!value) {
                     bread.set_primary_icon_name (null);
                 } else {
@@ -235,7 +235,7 @@ namespace Files.View.Chrome {
             return true;
         }
 
-        // When focussed from directory view
+        // Called when `edit-path` action invoked
         public virtual bool enter_navigate_mode (string? current = null) {
             if (sensitive && set_focussed ()) {
                 show_navigate_icon ();

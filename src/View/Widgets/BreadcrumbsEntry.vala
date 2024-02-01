@@ -90,7 +90,7 @@ namespace Files.View.Chrome {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                 case Gdk.Key.ISO_Enter:
-                    if (lock_focus) {
+                    if (lock_mode) {
                         return true;
                     }
 

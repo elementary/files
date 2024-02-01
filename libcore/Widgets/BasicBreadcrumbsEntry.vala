@@ -40,7 +40,7 @@ namespace Files.View.Chrome {
         }
 
         public bool hide_breadcrumbs { get; set; default = false; }
-        public bool lock_focus { get; set; default = false; }
+        public bool lock_mode { get; set; default = false; } // When true stops mode changing on focus out
         public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 16;
         public const double MINIMUM_BREADCRUMB_WIDTH = 12;
         public const int ICON_WIDTH = 32;
@@ -320,8 +320,8 @@ namespace Files.View.Chrome {
                     return true;
                 }
 
-                // Do not lose entry text if another window is focused
-                if (!lock_focus && ((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
+                // Do not lose entry text if another window is focused or focus is locked
+                if (!lock_mode && ((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
                     reset ();
                 }
 
@@ -336,7 +336,7 @@ namespace Files.View.Chrome {
                 GLib.Source.remove (focus_out_timeout_id);
                 focus_out_timeout_id = 0;
                 return true;
-            } else if (!lock_focus) { // Do not overwrite when searching
+            } else if (!lock_mode) { // Do not overwrite when searching
                 context_menu_showing = false;
                 current_dir_path = get_breadcrumbs_path (false);
                 set_entry_text (current_dir_path);
@@ -671,7 +671,7 @@ namespace Files.View.Chrome {
             Gtk.Border border = style_context.get_margin (state);
             style_context.restore ();
 
-            if (!has_focus && !hide_breadcrumbs && !lock_focus) {
+            if (!has_focus && !hide_breadcrumbs && !lock_mode) {
                 double margin = border.top;
 
                 /* Ensure there is an editable area to the right of the breadcrumbs */
