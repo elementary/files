@@ -252,18 +252,43 @@ namespace Files.View.Chrome {
 
             child = scroll;
 
+            // Receive button events when clicking outside search window
             button_controller = new Gtk.GestureMultiPress (this) {
                 button = 0,
                 propagation_phase = BUBBLE
             };
 
-            button_controller.pressed.connect (on_button_pressed_event);
+
+            button_controller.pressed.connect ((n_press, x, y) => {
+                // Should only receive events outside search treeview but check anyway
+                if (x < 0 || y < 0 || x > get_allocated_width () || y > get_allocated_height ()) {
+                warning ("x %f y %f", x, y);
+                    cancel ();
+                    exit ();
+                }
+            });
+
+            // Receive button events when clicking inside search treeview
             search_tree_view_button_controller = new Gtk.GestureMultiPress (search_tree_view) {
                 button = 0,
                 propagation_phase = BUBBLE
             };
 
-            search_tree_view_button_controller.pressed.connect (on_view_button_pressed_event);
+            search_tree_view_button_controller.pressed.connect ((n_press, x, y) => {
+                Gtk.TreePath path;
+                Gtk.TreeIter iter;
+
+                search_tree_view.get_path_at_pos ((int) x, (int) y, out path, null, null, null);
+                if (path != null && path.get_depth () > 1) {
+                    filter.get_iter (out iter, path);
+                    filter.convert_iter_to_child_iter (out iter, iter);
+                    /* This will call cancel () */
+                    accept (iter, search_tree_view_button_controller.get_current_button () > 1);
+                } else {
+                    Gdk.beep ();
+                }
+            });
+
             key_controller = new Gtk.EventControllerKey (this) {
                 propagation_phase = BUBBLE
             };
@@ -443,39 +468,6 @@ namespace Files.View.Chrome {
                 filter.get_iter (out iter, path);
                 filter.convert_iter_to_child_iter (out iter, iter);
                 cursor_changed (get_file_at_iter (iter));
-            }
-        }
-
-        void on_button_pressed_event (int n_press, double x, double y) {
-            if (x >= 0 && y >= 0 && x < get_allocated_width () && y < get_allocated_height ()) {
-                process_button_pressed (
-                    button_controller.get_current_button (),
-                    n_press, x, y
-                );
-            } else {
-                cancel ();
-                exit ();
-            }
-        }
-
-        void on_view_button_pressed_event (int n_press, double x, double y) {
-            process_button_pressed (
-                search_tree_view_button_controller.get_current_button (),
-                n_press, x, y
-            );
-        }
-
-        private void process_button_pressed (uint button, int n_press, double x, double y) {
-            Gtk.TreePath path;
-            Gtk.TreeIter iter;
-
-            search_tree_view.get_path_at_pos ((int) x, (int) y, out path, null, null, null);
-            if (path != null && path.get_depth () > 1) {
-                filter.get_iter (out iter, path);
-                filter.convert_iter_to_child_iter (out iter, iter);
-                accept (iter, button > 1); /* This will call cancel () */
-            } else {
-                Gdk.beep ();
             }
         }
 
