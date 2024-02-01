@@ -81,13 +81,13 @@ namespace Files.View.Chrome {
             gof.ensure_query_info ();
 
             path_change_request (gof.get_target_location ().get_uri ());
-            on_search_results_exit (false);
+            on_search_results_exit ();
         }
 
         private void on_search_results_file_activated (GLib.File file) {
             AppInfo? app = MimeActions.get_default_application_for_glib_file (file);
             MimeActions.open_glib_file_request (file, this, app);
-            on_search_results_exit (true);
+            on_search_results_exit ();
         }
 
         private void on_search_results_first_match_found (GLib.File? file) {
@@ -100,7 +100,7 @@ namespace Files.View.Chrome {
             }
         }
 
-        private void on_search_results_exit (bool exit_navigate) {
+        private void on_search_results_exit () {
             search_mode = false;
             bread.reset_im_context ();
 
@@ -109,11 +109,7 @@ namespace Files.View.Chrome {
                 focus_timeout_id = 0;
             }
 
-            if (exit_navigate) {
-                escape ();
-            } else {
-                switch_to_navigate_mode ();
-            }
+            escape ();
         }
 
         private void on_search_results_working_changed () {
@@ -258,7 +254,7 @@ namespace Files.View.Chrome {
 
         public void cancel () {
             cancel_search ();
-            on_search_results_exit (true); /* Exit navigation mode as well */
+            on_search_results_exit (); /* Exit navigation mode as well */
         }
 
         private void schedule_focus_file_request (GLib.File? file) {
