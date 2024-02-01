@@ -32,6 +32,12 @@ namespace Files.View.Chrome {
 
             private set {
                 bread.lock_focus = value; //Ensure no path change requests from entry while searching
+                if (!value) {
+                    hide_search_icon ();
+                } else {
+                    show_search_icon ();
+                    hide_navigate_icon ();
+                }
             }
         }
 
@@ -250,14 +256,12 @@ namespace Files.View.Chrome {
         private void switch_to_navigate_mode () {
             search_mode = false;
             cancel_search ();
-            hide_search_icon ();
+
             show_navigate_icon ();
         }
 
         private void switch_to_search_mode () {
             search_mode = true;
-            hide_navigate_icon ();
-            show_search_icon ();
             /* Next line ensures that the pathbar not lose focus when the mouse if over the sidebar,
              * which would normally grab the focus */
             after_bread_text_changed (bread.get_entry_text ());
@@ -302,10 +306,8 @@ namespace Files.View.Chrome {
 
             if (bread.hide_breadcrumbs) {
                 show_placeholder ();
-                show_search_icon ();
             } else {
                 hide_placeholder ();
-                hide_search_icon ();
             }
         }
     }
