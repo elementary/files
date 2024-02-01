@@ -81,13 +81,13 @@ namespace Files.View.Chrome {
             gof.ensure_query_info ();
 
             path_change_request (gof.get_target_location ().get_uri ());
-            on_search_results_exit ();
+            on_search_results_exit (false);
         }
 
         private void on_search_results_file_activated (GLib.File file) {
             AppInfo? app = MimeActions.get_default_application_for_glib_file (file);
             MimeActions.open_glib_file_request (file, this, app);
-            on_search_results_exit ();
+            on_search_results_exit (true);
         }
 
         private void on_search_results_first_match_found (GLib.File? file) {
@@ -100,9 +100,9 @@ namespace Files.View.Chrome {
             }
         }
 
-        private void on_search_results_exit (bool exit_navigate = true) {
-            bread.reset_im_context ();
+        private void on_search_results_exit (bool exit_navigate) {
             search_mode = false;
+            bread.reset_im_context ();
 
             if (focus_timeout_id > 0) {
                 GLib.Source.remove (focus_timeout_id);
@@ -160,7 +160,6 @@ namespace Files.View.Chrome {
         }
 
         protected override void after_bread_text_changed (string txt) {
-            hide_placeholder ();
             if (txt.length < 1) {
                 cancel ();
                 return;
@@ -186,10 +185,6 @@ namespace Files.View.Chrome {
             bread.get_style_context ().remove_class ("spin");
             bread.action_icon_name = Files.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC;
             bread.set_action_icon_tooltip (Granite.markup_accel_tooltip ({"F5", "<Ctrl>R"}, _("Reload this folder")));
-        }
-
-        private void show_placeholder () {
-            bread.set_placeholder (_("Search or Type Path"));
         }
 
         private void hide_placeholder () {
@@ -262,7 +257,7 @@ namespace Files.View.Chrome {
 
         public void cancel () {
             cancel_search ();
-            on_search_results_exit (); /* Exit navigation mode as well */
+            on_search_results_exit (true); /* Exit navigation mode as well */
         }
 
         private void schedule_focus_file_request (GLib.File? file) {
@@ -294,7 +289,7 @@ namespace Files.View.Chrome {
             }
 
             if (bread.hide_breadcrumbs) {
-                show_placeholder ();
+                bread.set_placeholder (_("Search or Type Path"));
             } else {
                 hide_placeholder ();
             }
