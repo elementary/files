@@ -257,8 +257,6 @@ namespace Files.View.Chrome {
                 button = 0,
                 propagation_phase = BUBBLE
             };
-
-
             button_controller.pressed.connect ((n_press, x, y) => {
                 // Should only receive events outside search treeview but check anyway
                 if (x < 0 || y < 0 || x > get_allocated_width () || y > get_allocated_height ()) {
@@ -273,7 +271,6 @@ namespace Files.View.Chrome {
                 button = 0,
                 propagation_phase = BUBBLE
             };
-
             search_tree_view_button_controller.pressed.connect ((n_press, x, y) => {
                 Gtk.TreePath path;
                 Gtk.TreeIter iter;
@@ -292,7 +289,6 @@ namespace Files.View.Chrome {
             key_controller = new Gtk.EventControllerKey (this) {
                 propagation_phase = BUBBLE
             };
-
             key_controller.key_pressed.connect (on_key_pressed_event);
         }
 
@@ -338,6 +334,7 @@ namespace Files.View.Chrome {
         public void cancel () {
             /* popdown first to avoid unwanted cursor change signals */
             popdown ();
+
             if (current_operation != null) {
                 current_operation.cancel ();
             }
@@ -348,13 +345,13 @@ namespace Files.View.Chrome {
         public void search (string term, GLib.File folder) {
             update_category_headers (); // Ensure category header color matches theme.
 
-            device = Gtk.get_current_event_device ();
             if (term.normalize ().casefold () != search_term) {
                 search_term = term.normalize ().casefold ();
                 max_results = MAX_RESULTS;
                 max_depth = MAX_DEPTH;
             }
 
+            device = Gtk.get_current_event_device ();
             if (device != null && device.input_source == Gdk.InputSource.KEYBOARD) {
                 device = device.associated_device;
             }
@@ -416,7 +413,6 @@ namespace Files.View.Chrome {
                 allow_adding_results = true;
 
                 var it = waiting_results.map_iterator ();
-
                 while (it.next ()) {
                     add_results (it.get_value (), it.get_key ());
                 }
@@ -544,7 +540,6 @@ namespace Files.View.Chrome {
         void select_first () {
             Gtk.TreeIter iter;
             list.get_iter_first (out iter);
-
             do {
                 if (!list.iter_has_child (iter)) {
                     continue;
@@ -561,9 +556,7 @@ namespace Files.View.Chrome {
 
         void select_last () {
             Gtk.TreeIter iter;
-
             list.iter_nth_child (out iter, null, filter.iter_n_children (null) - 1);
-
             do {
                 if (!list.iter_has_child (iter)) {
                     continue;
@@ -621,7 +614,6 @@ namespace Files.View.Chrome {
         int n_matches (out int n_headers = null) {
             var matches = 0;
             n_headers = 0;
-
             Gtk.TreeIter iter;
             for (var valid = list.get_iter_first (out iter); valid; valid = list.iter_next (ref iter)) {
                 var n_children = list.iter_n_children (iter);
