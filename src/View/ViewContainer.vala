@@ -135,6 +135,8 @@ namespace Files.View {
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
+        private Gtk.GestureMultiPress button_controller;
+
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
         public signal void active ();
@@ -146,7 +148,14 @@ namespace Files.View {
             loading.connect ((loading) => {
                 is_loading = loading;
             });
-            button_press_event.connect (on_button_press_event);
+
+            // Capture special mouse buttons before propagating to DirectorVview and Gtk.TreeView
+            button_controller = new Gtk.GestureMultiPress (this) {
+                button = 0,
+                propagation_phase = CAPTURE
+            };
+
+            button_controller.pressed.connect (on_button_pressed_event);
         }
 
         ~ViewContainer () {
@@ -585,19 +594,16 @@ namespace Files.View {
             overlay_statusbar.selection_changed (files);
         }
 
-        private bool on_button_press_event (Gdk.EventButton event) {
+        private void on_button_pressed_event (int n_press, double x, double y) {
             Gdk.ModifierType state;
-            event.get_state (out state);
-            uint button;
-            event.get_button (out button);
+            var button = button_controller.get_current_button ();
+            Gtk.get_current_event_state (out state);
             var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            bool result = false;
             switch (button) {
                 /* Extra mouse button actions */
                 case 6:
                 case 8:
                     if (mods == 0) {
-                        result = true;
                         go_back ();
                     }
                     break;
@@ -605,7 +611,6 @@ namespace Files.View {
                 case 7:
                 case 9:
                     if (mods == 0) {
-                        result = true;
                         go_forward ();
                     }
                     break;
@@ -613,8 +618,6 @@ namespace Files.View {
                 default:
                     break;
             }
-
-            return result;
         }
     }
 }
