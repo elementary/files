@@ -63,6 +63,7 @@ namespace Files.View.Chrome {
 
         private Gdk.Window? entry_window = null;
         private Gtk.EventControllerKey key_controller;
+        private Gtk.EventControllerMotion motion_controller;
 
         protected bool context_menu_showing = false;
 
@@ -89,7 +90,6 @@ namespace Files.View.Chrome {
             button_release_event.connect (on_button_release_event);
             button_press_event.connect (on_button_press_event);
             icon_press.connect (on_icon_press);
-            motion_notify_event.connect_after (after_motion_notify);
             focus_in_event.connect (on_focus_in);
             focus_out_event.connect (on_focus_out);
             changed.connect (on_entry_text_changed);
@@ -98,6 +98,9 @@ namespace Files.View.Chrome {
                 propagation_phase = BUBBLE
             };
             key_controller.key_pressed.connect (on_key_press_event);
+
+            motion_controller = new Gtk.EventControllerMotion (this);
+            motion_controller.motion.connect (on_motion_event);
 
             minimum_width = 100;
             notify["scale-factor"].connect (() => {
@@ -270,9 +273,9 @@ namespace Files.View.Chrome {
             entry_window = get_window ().get_children_with_user_data (this).data;
         }
 
-        bool after_motion_notify (Gdk.EventMotion event) {
+        void on_motion_event (double x, double y) {
             if (is_focus) {
-                return false;
+                return;
             }
 
             string? tip = null;
@@ -282,8 +285,6 @@ namespace Files.View.Chrome {
 
 
             set_tooltip_markup ("");
-            double x, y;
-            event.get_coords (out x, out y);
             var el = get_element_from_coordinates ((int)x, (int)y);
             if (el != null && !hide_breadcrumbs) {
                 set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
@@ -297,7 +298,6 @@ namespace Files.View.Chrome {
             /* We must reset the icon tooltip as the above line turns all tooltips off */
                 set_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY, tip);
             }
-            return false;
         }
 
         private uint focus_out_timeout_id = 0;
