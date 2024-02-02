@@ -277,6 +277,7 @@ namespace Files {
 
         protected Gtk.EventControllerKey key_controller;
         protected Gtk.GestureMultiPress button_controller;
+        protected Gtk.EventControllerScroll scroll_controller;
 
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
@@ -335,6 +336,16 @@ namespace Files {
                     propagation_phase = BUBBLE
                 };
                 key_controller.key_pressed.connect (on_view_key_press_event);
+                // Workaround for scroll events getting consumed by scroll controller
+                key_controller.key_released.connect (() => {
+                    Gdk.ModifierType state;
+                    Gtk.get_current_event_state (out state);
+
+                    var mods = state & Gtk.accelerator_get_default_mod_mask ();
+                    if ((mods & Gdk.ModifierType.CONTROL_MASK) > 0) {
+                        scroll_controller.propagation_phase = NONE;
+                    }
+                });
 
                 button_controller = new Gtk.GestureMultiPress (view) {
                     propagation_phase = CAPTURE,
@@ -342,6 +353,11 @@ namespace Files {
                 };
                 button_controller.pressed.connect (on_view_button_press_event);
                 button_controller.released.connect (on_view_button_release_event);
+
+                scroll_controller = new Gtk.EventControllerScroll (view, VERTICAL) {
+                    propagation_phase = NONE
+                };
+                scroll_controller.scroll.connect (on_scroll_event);
             }
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
@@ -375,8 +391,6 @@ namespace Files {
                 clipboard.changed.connect (on_clipboard_changed);
                 on_clipboard_changed ();
             });
-
-            scroll_event.connect (on_scroll_event);
 
             get_vadjustment ().value_changed.connect_after (() => {
                 schedule_thumbnail_color_tag_timeout ();
@@ -755,49 +769,6 @@ namespace Files {
             });
 
             return only_folders;
-        }
-
-    /** Handle scroll events */
-        protected bool handle_scroll_event (Gdk.EventScroll event) {
-            if (is_frozen) {
-                return true;
-            }
-
-            Gdk.ModifierType state;
-            event.get_state (out state);
-
-            if ((state & Gdk.ModifierType.CONTROL_MASK) > 0) {
-                Gdk.ScrollDirection direction;
-                double delta_x, delta_y;
-                if (event.get_scroll_direction (out direction)) { // Only true for discrete scrolling
-                    if (direction == Gdk.ScrollDirection.UP) {
-                        zoom_in ();
-                        return true;
-
-                    } else if (direction == Gdk.ScrollDirection.DOWN) {
-                        zoom_out ();
-                        return true;
-                    }
-
-                    return false;
-                } else if (event.get_scroll_deltas (out delta_x, out delta_y)) {
-                    /* try to emulate a normal scrolling event by summing deltas.
-                     * step size of 0.5 chosen to match sensitivity */
-                    total_delta_y += delta_y;
-
-                    if (total_delta_y >= 0.5) {
-                        total_delta_y = 0;
-                        zoom_out ();
-                    } else if (total_delta_y <= -0.5) {
-                        total_delta_y = 0;
-                        zoom_in ();
-                    }
-
-                    return true;
-                }
-            }
-
-            return false;
         }
 
         protected GLib.List<Files.File>
@@ -2930,6 +2901,7 @@ namespace Files {
 
             var event = Gtk.get_current_event ();
             if (((Gdk.EventKey)event).is_modifier == 1) {
+                scroll_controller.propagation_phase = CAPTURE;
                 return true;
             }
 
@@ -3263,35 +3235,25 @@ namespace Files {
             return false;
         }
 
-        protected virtual bool on_scroll_event (Gdk.EventScroll event) {
-            Gdk.ScrollDirection direction;
-            event.get_scroll_direction (out direction);
+        protected virtual void on_scroll_event (double dx, double dy) {
             Gdk.ModifierType state;
-            event.get_state (out state);
-            if ((state & Gdk.ModifierType.CONTROL_MASK) == 0) {
-                double increment = 0.0;
+            Gtk.get_current_event_state (out state);
 
-                switch (direction) {
-                    case Gdk.ScrollDirection.LEFT:
-                        increment = 5.0;
-                        break;
+            if (!is_frozen && (state & Gdk.ModifierType.CONTROL_MASK) > 0) {
+                /* try to emulate a normal scrolling event by summing deltas.
+                 * step size of 0.5 chosen to match sensitivity */
+                total_delta_y += dy;
 
-                    case Gdk.ScrollDirection.RIGHT:
-                        increment = -5.0;
-                        break;
-
-                    case Gdk.ScrollDirection.SMOOTH:
-                        double delta_x;
-                        event.get_scroll_deltas (out delta_x, null);
-                        increment = delta_x * 10.0;
-                        break;
-
-                    default:
-                        break;
+                if (total_delta_y >= 0.5) {
+                    total_delta_y = 0;
+                    zoom_out ();
+                } else if (total_delta_y <= -0.5) {
+                    total_delta_y = 0;
+                    zoom_in ();
                 }
             }
 
-            return handle_scroll_event (event);
+
         }
 
     /** name renderer signals */
