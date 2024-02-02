@@ -57,6 +57,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private bool drop_occurred = false;
     private Gdk.DragAction? current_suggested_action = Gdk.DragAction.DEFAULT;
     private Gtk.EventControllerKey key_controller;
+    private Gtk.GestureMultiPress button_controller;
 
     protected Gtk.Grid content_grid;
     protected Gtk.Grid icon_label_grid;
@@ -173,7 +174,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             propagation_phase = BUBBLE
         };
         key_controller.key_pressed.connect (on_key_press_event);
-        button_release_event.connect_after (after_button_release_event);
+
+        button_controller = new Gtk.GestureMultiPress (this) {
+            propagation_phase = BUBBLE,
+            button = 0
+        };
+        button_controller.released.connect (button_release_event);
 
         notify["gicon"].connect (() => {
             icon.set_from_gicon (gicon, Gtk.IconSize.MENU);
@@ -239,47 +245,43 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         return false;
     }
 
-    protected virtual bool after_button_release_event (Gdk.Event event = Gtk.get_current_event ()) {
+    protected virtual void button_release_event (int n_press, double x, double y) {
         if (!valid) { //Ignore if in the process of being removed
-            return true;
+            return;
         }
 
         if (label_stack.visible_child_name == "editable") { //Do not interfere with renaming
-            return false;
+            return;
         }
 
         Gdk.ModifierType state;
-        event.get_state (out state);
+        Gtk.get_current_event_state (out state);
         var mods = state & Gtk.accelerator_get_default_mod_mask ();
         var control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
         var other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
         var only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
 
-        uint button;
-        event.get_button (out button);
-        switch (button) {
+        switch (button_controller.get_current_button ()) {
             case Gdk.BUTTON_PRIMARY:
                 if (only_control_pressed) {
                     activated (Files.OpenFlag.NEW_TAB);
-                    return true;
-                } else {
-                    return false;
                 }
 
+                break;
             case Gdk.BUTTON_SECONDARY:
                 popup_context_menu ();
-                return true;
+                break;
 
             case Gdk.BUTTON_MIDDLE:
                 activated (Files.OpenFlag.NEW_TAB);
-                return true;
+                break;
 
             default:
-                return false;
+                break;
         }
     }
 
-    protected virtual void popup_context_menu (Gdk.Event event = Gtk.get_current_event ()) {
+    protected virtual void popup_context_menu () {
         var menu_builder = new PopupMenuBuilder ()
             .add_open (() => {activated ();})
             .add_separator ()
@@ -291,11 +293,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         if (menu_model != null) {
             menu_builder
                 .build_from_model (menu_model, action_group_namespace, action_group)
-                .popup_at_pointer (event);
+                .popup_at_pointer (null);
         } else {
             menu_builder
                 .build ()
-                .popup_at_pointer (event);
+                .popup_at_pointer (null);
         }
     }
 
