@@ -214,6 +214,7 @@ namespace Files.View.Chrome {
                     break;
 
                 case Gdk.Key.Escape:
+                    lock_mode = false;
                     activate_path ("");
                     return true;
 
