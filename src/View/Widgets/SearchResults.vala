@@ -393,10 +393,14 @@ namespace Files.View.Chrome {
             current_operation.cancelled.connect (file_search_operation.cancel);
 
             clear ();
-
-            working = true;
             n_results = 0;
 
+            // Do not search for blank term
+            if (term == "") {
+                return;
+            }
+
+            working = true;
             directory_queue.add (folder);
 
             allow_adding_results = false;
@@ -624,12 +628,12 @@ namespace Files.View.Chrome {
         void resize_popup () {
             int items, headers = 0;
             items = n_matches (out headers);
-            show_all ();
 
             if (items + headers <= 1) {
                 disconnect_view_cursor_changed_signal ();
                 popdown ();
             } else {
+                show_all ();
                 connect_view_cursor_changed_signal ();
                 Gtk.Window toplevel = (Gtk.Window)(get_relative_to ().get_ancestor (typeof (Gtk.Window)));
                 scroll.min_content_height = int.min (toplevel.get_allocated_height (), (items + headers) * 24);
