@@ -331,7 +331,7 @@ namespace Files.View.Chrome {
                 Source.remove (search_timeout_id);
             }
 
-            cancel ();
+            popdown ();
             search_timeout_id = Timeout.add (100, () => {
                 search (term, root);
                 search_timeout_id = 0;
