@@ -176,7 +176,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         key_controller.key_pressed.connect (on_key_press_event);
 
         button_controller = new Gtk.GestureMultiPress (this) {
-            propagation_phase = BUBBLE
+            propagation_phase = BUBBLE,
+            button = 0
         };
         button_controller.released.connect (button_release_event);
 
@@ -280,7 +281,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
     }
 
-    protected virtual void popup_context_menu (Gdk.Event event = Gtk.get_current_event ()) {
+    protected virtual void popup_context_menu () {
         var menu_builder = new PopupMenuBuilder ()
             .add_open (() => {activated ();})
             .add_separator ()
@@ -292,11 +293,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         if (menu_model != null) {
             menu_builder
                 .build_from_model (menu_model, action_group_namespace, action_group)
-                .popup_at_pointer (event);
+                .popup_at_pointer (null);
         } else {
             menu_builder
                 .build ()
-                .popup_at_pointer (event);
+                .popup_at_pointer (null);
         }
     }
 
