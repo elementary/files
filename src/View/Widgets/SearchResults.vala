@@ -629,13 +629,12 @@ namespace Files.View.Chrome {
             if (items + headers <= 1) {
                 disconnect_view_cursor_changed_signal ();
                 popdown ();
-                ;
             } else {
                 connect_view_cursor_changed_signal ();
-                popup ();
-                Gtk.Window toplevel = (Gtk.Window)(parent.get_ancestor (typeof (Gtk.Window)));
+                Gtk.Window toplevel = (Gtk.Window)(get_relative_to ().get_ancestor (typeof (Gtk.Window)));
                 scroll.min_content_height = int.min (toplevel.get_allocated_height (), (items + headers) * 24);
-                scroll.width_request = int.max (200, parent.get_allocated_width ());
+                scroll.width_request = int.max (200, get_relative_to ().get_allocated_width ());
+                popup ();
             }
         }
 
