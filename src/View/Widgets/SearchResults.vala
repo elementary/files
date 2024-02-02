@@ -325,7 +325,21 @@ namespace Files.View.Chrome {
             clear ();
         }
 
-        public void search (string term, GLib.File folder) {
+        private uint search_timeout_id = 0;
+        public void begin_search (string term, GLib.File root) {
+            if (search_timeout_id > 0) {
+                Source.remove (search_timeout_id);
+            }
+
+            cancel ();
+            search_timeout_id = Timeout.add (100, () => {
+                search (term, root);
+                search_timeout_id = 0;
+                return Source.REMOVE;
+            });
+        }
+
+        private void search (string term, GLib.File folder) {
             update_category_headers (); // Ensure category header color matches theme.
 
             if (term.normalize ().casefold () != search_term) {

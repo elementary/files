@@ -168,7 +168,7 @@ namespace Files.View.Chrome {
                 if (txt.contains (Path.DIR_SEPARATOR_S)) {
                     switch_to_navigate_mode ();
                 } else {
-                    search_results.search (txt, search_location);
+                    search_results.begin_search (txt, search_location);
                 }
             } else {
                 if (!txt.contains (Path.DIR_SEPARATOR_S)) {
