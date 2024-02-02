@@ -21,6 +21,7 @@
 
 namespace Files.View.Chrome {
     public class LocationBar : BasicLocationBar {
+        const string PLACEHOLDER = N_("Search or Type Path");
         private BreadcrumbsEntry bread;
         private SearchResults search_results;
         private GLib.File? search_location = null;
