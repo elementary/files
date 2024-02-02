@@ -207,20 +207,13 @@ namespace Files.View.Chrome {
                 return false;
             }
 
-            if (!search_mode) {
-                /* Focusing will switch to navigate mode*/
-                if (set_focussed ()) {
-                    /* Entering a suitable term will switch to search mode */
-                    bread.set_entry_text (term);
-                } else {
-                    return false;
-                }
-            } else {
-                /* repeat search with new settings */
-                search_results.search (bread.get_entry_text (), search_location);
+            if (!search_mode && set_focussed ()) {
+                bread.set_entry_text (term);
+                switch_to_search_mode ();
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         // Called when `edit-path` action invoked
