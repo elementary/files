@@ -61,7 +61,9 @@ namespace Files.View.Chrome {
             var _bread = new BreadcrumbsEntry ();
             base (_bread as Navigatable);
             bread = _bread;
-            search_results = new SearchResults (bread);
+            search_results = new SearchResults (bread) {
+                relative_to = this
+            };
             connect_additional_signals ();
             show_refresh_icon ();
         }

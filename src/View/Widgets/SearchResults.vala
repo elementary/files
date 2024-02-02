@@ -140,16 +140,16 @@ namespace Files.View.Chrome {
         Gtk.TreeStore list;
         Gtk.TreeModelFilter filter;
         Gtk.ScrolledWindow scroll;
+        public Gtk.Widget delegate_widget { get; construct; }
 
         private Gtk.GestureMultiPress search_tree_view_button_controller;
         private Gtk.EventControllerKey key_controller;
 
-        public SearchResults (Gtk.Widget parent_widget) {
+        public SearchResults (Gtk.Widget _delegate_widget) {
             Object (
-                relative_to: parent_widget,
-                position: Gtk.PositionType.BOTTOM
+                position: Gtk.PositionType.BOTTOM,
+                delegate_widget: _delegate_widget
             );
-            parent = parent_widget;
         }
 
         construct {
@@ -460,7 +460,7 @@ namespace Files.View.Chrome {
                         exit (false); /* Do not exit navigate mode */
                         return true;
                     } else {
-                        return key_controller.forward (parent);
+                        return key_controller.forward (delegate_widget);
                     }
                 } else if (only_alt_pressed &&
                            keyval == Gdk.Key.Return ||
@@ -510,7 +510,7 @@ namespace Files.View.Chrome {
                     break;
             }
 
-            return key_controller.forward (parent);
+            return key_controller.forward (delegate_widget);
         }
 
         void select_first () {
