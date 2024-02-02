@@ -277,6 +277,7 @@ namespace Files {
 
         protected Gtk.EventControllerKey key_controller;
         protected Gtk.GestureMultiPress button_controller;
+        protected Gtk.EventControllerMotion motion_controller;
 
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
@@ -324,8 +325,6 @@ namespace Files {
                                  Gdk.EventMask.ENTER_NOTIFY_MASK |
                                  Gdk.EventMask.LEAVE_NOTIFY_MASK);
 
-                view.motion_notify_event.connect (on_motion_notify_event);
-                view.leave_notify_event.connect (on_leave_notify_event);
                 view.draw.connect (on_view_draw);
                 view.realize.connect (() => {
                    schedule_thumbnail_color_tag_timeout ();
@@ -342,6 +341,12 @@ namespace Files {
                 };
                 button_controller.pressed.connect (on_view_button_press_event);
                 button_controller.released.connect (on_view_button_release_event);
+
+                motion_controller = new Gtk.EventControllerMotion (view) {
+                    propagation_phase = CAPTURE
+                };
+                motion_controller.motion.connect (on_motion_notify_event);
+                motion_controller.leave.connect (on_leave_notify_event);
             }
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
@@ -3196,16 +3201,15 @@ namespace Files {
             return res;
         }
 
-        protected bool on_motion_notify_event (Gdk.EventMotion event) {
+        protected void on_motion_notify_event (double x, double y) {
+            // Determine appropriate cursor
             Gtk.TreePath? path = null;
             Files.File? file = null;
 
             if (renaming || is_frozen) {
-                return true;
+                return;
             }
 
-            double x, y;
-            event.get_coords (out x, out y);
             click_zone = get_event_position_info (x, y, out path, false);
 
             if ((path != null && hover_path == null) ||
@@ -3254,13 +3258,10 @@ namespace Files {
 
                 previous_click_zone = click_zone;
             }
-
-            return false;
         }
 
-        protected bool on_leave_notify_event (Gdk.EventCrossing event) {
+        protected void on_leave_notify_event () {
             hover_path = null;
-            return false;
         }
 
         protected virtual bool on_scroll_event (Gdk.EventScroll event) {
