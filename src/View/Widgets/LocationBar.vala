@@ -159,11 +159,6 @@ namespace Files.View.Chrome {
         }
 
         protected override void after_bread_text_changed (string txt) {
-            if (txt.length < 1) {
-                cancel ();
-                return;
-            }
-
             if (search_mode) {
                 if (txt.contains (Path.DIR_SEPARATOR_S)) {
                     switch_to_navigate_mode ();
@@ -171,7 +166,7 @@ namespace Files.View.Chrome {
                     search_results.begin_search (txt, search_location);
                 }
             } else {
-                if (!txt.contains (Path.DIR_SEPARATOR_S)) {
+                if (txt != "" && !txt.contains (Path.DIR_SEPARATOR_S)) {
                     switch_to_search_mode ();
                 } else {
                     base.after_bread_text_changed (txt);
