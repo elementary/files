@@ -615,21 +615,14 @@ namespace Files.View.Chrome {
             if (items + headers <= 1) {
                 disconnect_view_cursor_changed_signal ();
                 popdown ();
-                return;
-            }
-
-            Idle.add (() => {
+                ;
+            } else {
                 connect_view_cursor_changed_signal ();
-                if (search_tree_view.get_realized ()) {
-                    popup ();
-                    Gtk.Window toplevel = (Gtk.Window)(parent.get_ancestor (typeof (Gtk.Window)));
-                    scroll.min_content_height = int.min (toplevel.get_allocated_height (), (items + headers) * 24);
-                    scroll.width_request = int.max (200, parent.get_allocated_width ());
-                    return Source.REMOVE;
-                } else {
-                    return Source.CONTINUE;
-                }
-            });
+                popup ();
+                Gtk.Window toplevel = (Gtk.Window)(parent.get_ancestor (typeof (Gtk.Window)));
+                scroll.min_content_height = int.min (toplevel.get_allocated_height (), (items + headers) * 24);
+                scroll.width_request = int.max (200, parent.get_allocated_width ());
+            }
         }
 
         bool get_iter_at_cursor (out Gtk.TreeIter iter) {
