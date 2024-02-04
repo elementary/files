@@ -19,7 +19,6 @@ You'll need the following dependencies:
 * libgtk-3-dev
 * libhandy-1-dev >= 1.2.0
 * libpango1.0-dev
-* libplank-dev
 * libsqlite3-dev
 * libunity-dev
 * libzeitgeist-2.0-dev
