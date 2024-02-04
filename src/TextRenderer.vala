@@ -82,12 +82,15 @@ namespace Files {
         public TextRenderer (ViewMode viewmode) {
             if (viewmode == ViewMode.ICON) {
                 entry = new MultiLineEditableLabel ();
+                entry.set_justify (Gtk.Justification.CENTER);
                 is_list_view = false;
             } else {
                 entry = new SingleLineEditableLabel ();
+                entry.set_justify (Gtk.Justification.LEFT);
                 is_list_view = true;
             }
 
+            entry.set_line_wrap (true);
             entry.editing_done.connect (on_entry_editing_done);
         }
 
@@ -216,22 +219,9 @@ namespace Files {
                 return null;
             }
 
-            float xalign, yalign;
-            get_alignment (out xalign, out yalign);
 
             entry.set_text (text);
-            entry.set_line_wrap (true);
             entry.set_line_wrap_mode (wrap_mode);
-
-            if (!is_list_view) {
-                entry.set_justify (Gtk.Justification.CENTER);
-                entry.draw_outline = true;
-            } else {
-                entry.set_justify (Gtk.Justification.LEFT);
-                entry.draw_outline = false;
-            }
-
-            entry.yalign = this.yalign;
             entry.set_size_request (wrap_width, -1);
             entry.set_position (-1);
             entry.set_data ("marlin-text-renderer-path", path.dup ());

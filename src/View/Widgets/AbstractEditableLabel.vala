@@ -18,31 +18,19 @@
 
 namespace Files {
     public abstract class AbstractEditableLabel : Gtk.Frame, Gtk.Editable, Gtk.CellEditable {
-
         public bool editing_canceled { get; set; }
-        public bool small_size { get; set; }
-        public float yalign {get; set;}
-        public float xalign {get; set;}
         public string original_name;
-        public bool draw_outline {get; set;}
+        private Gtk.EventControllerKey key_controller;
 
-        private Gtk.Widget editable_widget;
-
-        protected AbstractEditableLabel () {
-            editable_widget = create_editable_widget ();
-            add (editable_widget);
-            show_all ();
-            get_real_editable ().key_press_event.connect (on_key_press_event);
+        protected void connect_editable_widget (Gtk.Widget editable_widget) {
+            key_controller = new Gtk.EventControllerKey (editable_widget);
+            key_controller.key_pressed.connect (on_key_press_event);
+            editable_widget.button_press_event.connect_after (() => { return true; });
         }
 
-        public virtual bool on_key_press_event (Gdk.EventKey event) {
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            uint keyval;
-            event.get_keyval (out keyval);
+        protected virtual bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
             var mods = state & Gtk.accelerator_get_default_mod_mask ();
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
-
             switch (keyval) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
@@ -71,6 +59,7 @@ namespace Files {
                 default:
                     break;
             }
+
             return false;
         }
 
@@ -90,7 +79,6 @@ namespace Files {
         public virtual void set_padding (int xpad, int ypad) {}
 
         public abstract new void set_size_request (int width, int height);
-        public abstract Gtk.Widget create_editable_widget ();
         public abstract string get_text ();
         public abstract void select_region (int start_pos, int end_pos);
         public abstract void do_delete_text (int start_pos, int end_pos);
@@ -99,8 +87,6 @@ namespace Files {
         public abstract int get_position ();
         public abstract bool get_selection_bounds (out int start_pos, out int end_pos);
         public abstract void set_position (int position);
-        public abstract Gtk.Widget get_real_editable ();
-
 
         /** CellEditable interface */
         public virtual void start_editing (Gdk.Event? event) {}

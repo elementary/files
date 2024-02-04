@@ -56,6 +56,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private string? drop_text = null;
     private bool drop_occurred = false;
     private Gdk.DragAction? current_suggested_action = Gdk.DragAction.DEFAULT;
+    private Gtk.EventControllerKey key_controller;
+    private Gtk.GestureMultiPress button_controller;
 
     protected Gtk.Grid content_grid;
     protected Gtk.Grid icon_label_grid;
@@ -168,8 +170,16 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         add (content_grid);
         show_all ();
 
-        key_press_event.connect (on_key_press_event);
-        button_release_event.connect_after (after_button_release_event);
+        key_controller = new Gtk.EventControllerKey (this) {
+            propagation_phase = BUBBLE
+        };
+        key_controller.key_pressed.connect (on_key_press_event);
+
+        button_controller = new Gtk.GestureMultiPress (this) {
+            propagation_phase = BUBBLE,
+            button = 0
+        };
+        button_controller.released.connect (button_release_event);
 
         notify["gicon"].connect (() => {
             icon.set_from_gicon (gicon, Gtk.IconSize.MENU);
@@ -214,9 +224,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         base.destroy ();
     }
 
-    protected virtual bool on_key_press_event (Gdk.EventKey event) {
-        uint keyval;
-        event.get_keyval (out keyval);
+    protected virtual bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
         switch (keyval) {
             case Gdk.Key.F2:
                 rename ();
@@ -226,53 +234,54 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 cancel_rename ();
                 return true;
 
+            case Gdk.Key.Menu:
+                popup_context_menu ();
+                return true;
+
             default:
                 break;
         }
+
         return false;
     }
 
-    protected virtual bool after_button_release_event (Gdk.EventButton event) {
+    protected virtual void button_release_event (int n_press, double x, double y) {
         if (!valid) { //Ignore if in the process of being removed
-            return true;
+            return;
         }
 
         if (label_stack.visible_child_name == "editable") { //Do not interfere with renaming
-            return false;
+            return;
         }
 
         Gdk.ModifierType state;
-        event.get_state (out state);
+        Gtk.get_current_event_state (out state);
         var mods = state & Gtk.accelerator_get_default_mod_mask ();
         var control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
         var other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
         var only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
 
-        uint button;
-        event.get_button (out button);
-        switch (button) {
+        switch (button_controller.get_current_button ()) {
             case Gdk.BUTTON_PRIMARY:
                 if (only_control_pressed) {
                     activated (Files.OpenFlag.NEW_TAB);
-                    return true;
-                } else {
-                    return false;
                 }
 
+                break;
             case Gdk.BUTTON_SECONDARY:
-                popup_context_menu (event);
-                return true;
+                popup_context_menu ();
+                break;
 
             case Gdk.BUTTON_MIDDLE:
                 activated (Files.OpenFlag.NEW_TAB);
-                return true;
+                break;
 
             default:
-                return false;
+                break;
         }
     }
 
-    protected virtual void popup_context_menu (Gdk.EventButton event) {
+    protected virtual void popup_context_menu () {
         var menu_builder = new PopupMenuBuilder ()
             .add_open (() => {activated ();})
             .add_separator ()
@@ -284,11 +293,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         if (menu_model != null) {
             menu_builder
                 .build_from_model (menu_model, action_group_namespace, action_group)
-                .popup_at_pointer (event);
+                .popup_at_pointer (null);
         } else {
             menu_builder
                 .build ()
-                .popup_at_pointer (event);
+                .popup_at_pointer (null);
         }
     }
 
@@ -360,30 +369,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         drag_data_get.connect ((ctx, sel_data, info, time) => {
             uint8[] data = id.to_string ().data;
             sel_data.@set (text_data_atom, 8, data);
-        });
-
-        drag_failed.connect ((ctx, res) => {
-            if (res == Gtk.DragResult.NO_TARGET) {
-                Gdk.Window app_window = list.list_box.get_window ().get_effective_toplevel ();
-                Gdk.Window drag_window = ctx.get_drag_window ();
-                Gdk.Rectangle app_rect, drag_rect, intersect_rect;
-
-                app_window.get_frame_extents (out app_rect);
-                drag_window.get_frame_extents (out drag_rect);
-
-                if (!drag_rect.intersect (app_rect, out intersect_rect)) {
-                    list.remove_item_by_id (id);
-                    var device = ctx.get_device ();
-                    int x, y;
-                    device.get_position (null, out x, out y);
-                    Plank.PoofWindow poof_window;
-                    poof_window = Plank.PoofWindow.get_default ();
-                    poof_window.show_at (x, y);
-                    return true;
-                }
-            }
-
-            return false;
         });
 
         drag_end.connect ((ctx) => {
