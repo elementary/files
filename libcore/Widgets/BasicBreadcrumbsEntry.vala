@@ -400,8 +400,7 @@ namespace Files.View.Chrome {
             var w = displayed_breadcrumbs.first ().data.natural_width;
             if (l > 1) {
                 weak Gtk.StyleContext style_context = get_style_context ();
-                var state = style_context.get_state ();
-                var padding = style_context.get_padding (state);
+                var padding = style_context.get_padding (style_context.get_state ());
                 w += (l - 1) * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
 
                 /* Allow extra space for last breadcrumb */
@@ -645,9 +644,8 @@ namespace Files.View.Chrome {
                 button_context_active.set_path (style_context.get_path ());
                 button_context_active.set_state (Gtk.StateFlags.ACTIVE);
             }
-            var state = style_context.get_state ();
-            var is_rtl = Gtk.StateFlags.DIR_RTL in state;
-            var padding = style_context.get_padding (state);
+            var is_rtl = Gtk.StateFlags.DIR_RTL in style_context.get_state ();
+            var padding = style_context.get_padding (style_context.get_state ());
             base.draw (cr);
             double height = get_allocated_height ();
             double width = get_allocated_width ();
@@ -665,7 +663,7 @@ namespace Files.View.Chrome {
 
             style_context.save ();
             style_context.set_state (Gtk.StateFlags.ACTIVE);
-            Gtk.Border border = style_context.get_margin (state);
+            Gtk.Border border = style_context.get_margin (style_context.get_state ());
             style_context.restore ();
 
             if (!is_focus && !hide_breadcrumbs) {
