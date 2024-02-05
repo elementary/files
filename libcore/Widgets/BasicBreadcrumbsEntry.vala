@@ -295,7 +295,7 @@ namespace Files.View.Chrome {
 
             set_tooltip_markup ("");
 
-            var el = get_element_from_coordinates ((int)x, (int)y);
+            var el = get_element_from_coordinates (x);
             if (el != null && !hide_breadcrumbs) {
                 set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
                 set_entry_cursor ("default");
