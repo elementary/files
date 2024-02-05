@@ -64,6 +64,7 @@ namespace Files.View.Chrome {
         private Gdk.Window? entry_window = null;
         private Gtk.EventControllerKey key_controller;
         protected Gtk.GestureMultiPress button_controller;
+        private Gtk.EventControllerMotion motion_controller;
 
         protected bool context_menu_showing = false;
 
@@ -88,7 +89,6 @@ namespace Files.View.Chrome {
             realize.connect_after (after_realize);
             activate.connect (on_activate);
             icon_press.connect (on_icon_press);
-            motion_notify_event.connect_after (after_motion_notify);
             focus_in_event.connect (on_focus_in);
             focus_out_event.connect (on_focus_out);
             changed.connect (on_entry_text_changed);
@@ -105,6 +105,8 @@ namespace Files.View.Chrome {
             button_controller.pressed.connect (on_button_pressed_event);
             button_controller.released.connect (on_button_released_event);
 
+            motion_controller = new Gtk.EventControllerMotion (this);
+            motion_controller.motion.connect (on_motion_event);
 
             minimum_width = 100;
             notify["scale-factor"].connect (() => {
@@ -281,9 +283,9 @@ namespace Files.View.Chrome {
             entry_window = get_window ().get_children_with_user_data (this).data;
         }
 
-        bool after_motion_notify (Gdk.EventMotion event) {
+        void on_motion_event (double x, double y) {
             if (is_focus) {
-                return false;
+                return;
             }
 
             string? tip = null;
@@ -291,11 +293,9 @@ namespace Files.View.Chrome {
                 tip = get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
             }
 
-
             set_tooltip_markup ("");
-            double x, y;
-            event.get_coords (out x, out y);
-            var el = get_element_from_coordinates (x);
+
+            var el = get_element_from_coordinates ((int)x, (int)y);
             if (el != null && !hide_breadcrumbs) {
                 set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
                 set_entry_cursor ("default");
@@ -308,7 +308,6 @@ namespace Files.View.Chrome {
             /* We must reset the icon tooltip as the above line turns all tooltips off */
                 set_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY, tip);
             }
-            return false;
         }
 
         private uint focus_out_timeout_id = 0;
@@ -411,8 +410,7 @@ namespace Files.View.Chrome {
             var w = displayed_breadcrumbs.first ().data.natural_width;
             if (l > 1) {
                 weak Gtk.StyleContext style_context = get_style_context ();
-                var state = style_context.get_state ();
-                var padding = style_context.get_padding (state);
+                var padding = style_context.get_padding (style_context.get_state ());
                 w += (l - 1) * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
 
                 /* Allow extra space for last breadcrumb */
@@ -656,9 +654,8 @@ namespace Files.View.Chrome {
                 button_context_active.set_path (style_context.get_path ());
                 button_context_active.set_state (Gtk.StateFlags.ACTIVE);
             }
-            var state = style_context.get_state ();
-            var is_rtl = Gtk.StateFlags.DIR_RTL in state;
-            var padding = style_context.get_padding (state);
+            var is_rtl = Gtk.StateFlags.DIR_RTL in style_context.get_state ();
+            var padding = style_context.get_padding (style_context.get_state ());
             base.draw (cr);
             double height = get_allocated_height ();
             double width = get_allocated_width ();
@@ -676,7 +673,7 @@ namespace Files.View.Chrome {
 
             style_context.save ();
             style_context.set_state (Gtk.StateFlags.ACTIVE);
-            Gtk.Border border = style_context.get_margin (state);
+            Gtk.Border border = style_context.get_margin (style_context.get_state ());
             style_context.restore ();
 
             if (!is_focus && !hide_breadcrumbs) {
