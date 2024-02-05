@@ -111,15 +111,6 @@ namespace Files.View.Chrome {
             current_completion_dir = null; // Do not cancel as this could interfere with a loading tab
         }
 
-        protected override bool on_button_release_event (Gdk.EventButton event) {
-            if (drop_file_list != null) {
-                return true;
-            }
-
-            return base.on_button_release_event (event);
-        }
-
-
     /** Search related functions **/
     /******************************/
         public void set_primary_icon_name (string? icon_name) {
@@ -237,7 +228,7 @@ namespace Files.View.Chrome {
                 element.pressed = false;
             }
 
-            var el = get_element_from_coordinates (x, y);
+            var el = get_element_from_coordinates ((double) x);
             current_suggested_action = Gdk.DragAction.DEFAULT;
             if (el != null && drop_file_list != null) {
                 el.pressed = true;
@@ -339,7 +330,7 @@ namespace Files.View.Chrome {
         }
     /** Context menu functions **/
     /****************************/
-        private void load_right_click_menu (Gdk.EventButton event, BreadcrumbElement clicked_element) {
+        private void load_right_click_menu (Gdk.Event event, BreadcrumbElement clicked_element) {
             string path = get_path_from_element (clicked_element);
             string parent_path = FileUtils.get_parent_path_from_path (path);
             GLib.File? root = FileUtils.get_file_for_path (parent_path);
@@ -467,7 +458,7 @@ namespace Files.View.Chrome {
 
         private Files.File? get_target_location (int x, int y) {
             Files.File? file;
-            var el = get_element_from_coordinates (x, y);
+            var el = get_element_from_coordinates ((double) x);
             if (el != null) {
                 file = Files.File.get (GLib.File.new_for_commandline_arg (get_path_from_element (el)));
                 file.ensure_query_info ();
@@ -476,39 +467,48 @@ namespace Files.View.Chrome {
             return null;
         }
 
-        protected override bool on_button_press_event (Gdk.EventButton event) {
+        protected override void on_button_pressed_event (int n_press, double x, double y) {
             /* Only handle if not on icon and breadcrumbs are visible.
              * Note, breadcrumbs are hidden when in home directory even when the pathbar does not have focus.*/
-            if (is_icon_event (event) || has_focus || hide_breadcrumbs) {
-                return base.on_button_press_event (event);
-            } else {
-                var el = mark_pressed_element (event);
+            if (is_icon_event (x) || has_focus || hide_breadcrumbs) {
+                base.on_button_pressed_event (n_press, x, y);
+            } else { // Clicked on breadcrumb?
+                var el = mark_pressed_element (x);
                 if (el != null) {
-                    uint button;
-                    event.get_button (out button);
-                    switch (button) {
-                        case 1:
-                            break; // Long press support discontinued as provided by system settings
+                    switch (button_controller.get_current_button ()) {
                         case 2:
-                            handle_middle_button_press (event, el);
+                            if (el != null) {
+                                button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
+                                activate_path (get_path_from_element (el), Files.OpenFlag.NEW_TAB);
+                            }
+
                             break;
+
                         case 3:
-                            handle_secondary_button_press (event, el);
+                            button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
+                            load_right_click_menu (Gtk.get_current_event (), el);
+
                             break;
+
                         default:
+                            base.on_button_pressed_event (n_press, x, y);
                             break;
                     }
                 }
             }
-
-            return true;
         }
 
-        private BreadcrumbElement? mark_pressed_element (Gdk.EventButton event) {
+        protected override void on_button_released_event (int n_press, double x, double y) {
+            if (drop_file_list != null) {
+                return;
+            }
+
+            base.on_button_released_event (n_press, x, y);
+        }
+
+        private BreadcrumbElement? mark_pressed_element (double x) {
             reset_elements_states ();
-            double x, y;
-            event.get_coords (out x, out y);
-            BreadcrumbElement? el = get_element_from_coordinates ((int)x, (int)y);
+            BreadcrumbElement? el = get_element_from_coordinates (x);
             if (el != null) {
                 el.pressed = true;
                 queue_draw ();
@@ -516,14 +516,8 @@ namespace Files.View.Chrome {
             return el;
         }
 
-        protected void handle_middle_button_press (Gdk.EventButton event, BreadcrumbElement? el) {
-            if (el != null) {
-                activate_path (get_path_from_element (el), Files.OpenFlag.NEW_TAB);
-            }
-        }
 
-        protected void handle_secondary_button_press (Gdk.EventButton event, BreadcrumbElement? el) {
-            load_right_click_menu (event, el);
-        }
+
+
     }
 }
