@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-04 11:41+0000\n"
-"PO-Revision-Date: 2023-09-04 14:08+0000\n"
+"PO-Revision-Date: 2024-02-11 09:22+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.0.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -74,7 +74,7 @@ msgstr ""
 #: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
-msgstr "“%s” を置き換えますか？"
+msgstr "“%s” を置き換えますか?"
 
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
@@ -379,7 +379,7 @@ msgstr "置換"
 #: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "フォルダー \"%s\" を統合しますか？"
+msgstr "フォルダー \"%s\" を統合しますか?"
 
 #: libcore/FileConflictDialog.vala:294
 msgid ""
@@ -407,7 +407,7 @@ msgstr "\"%s\" 内に同じ名前のフォルダーがすでに存在してい�
 #: libcore/FileConflictDialog.vala:303
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "フォルダー \"%s\" を置き換えますか？"
+msgstr "フォルダー \"%s\" を置き換えますか?"
 
 #: libcore/FileConflictDialog.vala:304
 msgid "Replacing it will remove all files in the folder."
@@ -421,7 +421,7 @@ msgstr "\"%s\" 内に同じ名前のフォルダーがすでに存在してい�
 #: libcore/FileConflictDialog.vala:308
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "ファイル \"%s\" を置き換えますか？"
+msgstr "ファイル \"%s\" を置き換えますか?"
 
 #: libcore/FileConflictDialog.vala:309
 msgid "Replacing it will overwrite its content."
@@ -462,7 +462,7 @@ msgstr "元のフォルダー %s はすでに存在しません"
 
 #: libcore/FileUtils.vala:178
 msgid "Would you like to recreate it?"
-msgstr "再作成しますか？"
+msgstr "再作成しますか?"
 
 #: libcore/FileUtils.vala:183
 msgid "Ignore"
@@ -690,7 +690,7 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:577
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr "ファイルをゴミ箱に移動できません。すぐに削除してみますか？"
+msgstr "ファイルをゴミ箱に移動できません。すぐに削除してみますか?"
 
 #: libcore/marlin-file-operations.c:578
 msgid ""
@@ -702,7 +702,7 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:582
 msgid "Cannot move file to trash. Try to delete it?"
-msgstr "ファイルをゴミ箱に移動できません。削除してみますか？"
+msgstr "ファイルをゴミ箱に移動できません。削除してみますか?"
 
 #: libcore/marlin-file-operations.c:583
 msgid ""
@@ -1418,7 +1418,7 @@ msgstr "ゴミ箱を空にしています"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:85
 msgid "Permanently delete all items from Trash?"
-msgstr "ゴミ箱からすべての項目を完全に削除しますか？"
+msgstr "ゴミ箱からすべての項目を完全に削除しますか?"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:86
 msgid ""
@@ -1430,7 +1430,7 @@ msgstr ""
 
 #: libcore/FileOperations/EmptyTrashJob.vala:89
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr "このドライブのゴミ箱にあるすべての項目を完全に削除しますか？"
+msgstr "このドライブのゴミ箱にあるすべての項目を完全に削除しますか?"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:90
 msgid "All items in the trash on this mount, will be permanently deleted."
@@ -1456,7 +1456,7 @@ msgstr "'%s' をマウントできません"
 #: libcore/FileOperations/DeleteJob.vala:51
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
-msgstr "ゴミ箱から \"%s\" を完全に削除してもよろしいですか？"
+msgstr "ゴミ箱から \"%s\" を完全に削除してもよろしいですか?"
 
 #: libcore/FileOperations/DeleteJob.vala:53
 #, c-format
@@ -1466,7 +1466,7 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] "選択中の%'d個の項目をゴミ箱から完全に削除してもよろしいですか？"
+msgstr[0] "選択中の%'d個の項目をゴミ箱から完全に削除してもよろしいですか?"
 
 #: libcore/FileOperations/DeleteJob.vala:59
 msgid "If you delete an item, it will be permanently lost."
@@ -1477,14 +1477,14 @@ msgstr "項目を完全に削除すると、元に戻すことはできません
 #: libcore/FileOperations/DeleteJob.vala:74
 #, c-format
 msgid "Permanently delete “%s”?"
-msgstr "“%s” を完全に削除しますか？"
+msgstr "“%s” を完全に削除しますか?"
 
 #: libcore/FileOperations/DeleteJob.vala:76
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "選択中の%'d個の項目を完全に削除してもよろしいですか？"
+msgstr[0] "選択中の%'d個の項目を完全に削除してもよろしいですか?"
 
 #: libcore/FileOperations/DeleteJob.vala:82
 msgid "Deleted items are not sent to Trash and are not recoverable."
@@ -2166,11 +2166,11 @@ msgstr "最近使用したファイルは記録されません"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr "セキュリティー設定を変更"
+msgstr "セキュリティ設定を変更"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr "システムのセキュリティーとプライバシー設定アプリを開きます"
+msgstr "システムのセキュリティとプライバシー設定アプリを開きます"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"

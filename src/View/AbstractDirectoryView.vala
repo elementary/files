@@ -3490,7 +3490,6 @@ namespace Files {
                 return;
             }
 
-            bool result = false; // default false so events get passed to Window
             should_activate = false;
             should_deselect = false;
             should_select = false;
@@ -3526,7 +3525,9 @@ namespace Files {
                              * Rubberband if modifer pressed or if not on the icon and either
                              * the item is unselected. */
                             if (!no_mods || (on_blank && !path_selected)) {
-                                result = only_shift_pressed && handle_multi_select (path);
+                                if (only_shift_pressed && handle_multi_select (path)) {
+                                    button_controller.set_state (CLAIMED);
+                                }
                                 // Have to select on button release because IconView, unlike TreeView,
                                 // will not both select and rubberband
                                 should_select = true;
@@ -3537,7 +3538,9 @@ namespace Files {
 
                                 select_path (path, true);
                                 unblock_drag_and_drop ();
-                                result = handle_primary_button_click (n_press, mods, path);
+                                if (handle_primary_button_click (n_press, mods, path)) {
+                                    button_controller.set_state (CLAIMED);
+                                }
                             }
 
                             update_selected_files_and_menu ();
@@ -3545,7 +3548,9 @@ namespace Files {
 
                         case ClickZone.HELPER:
                             if (only_control_pressed || only_shift_pressed) { /* Treat like modified click on icon */
-                                result = only_shift_pressed && handle_multi_select (path);
+                                if (only_shift_pressed && handle_multi_select (path)) {
+                                    button_controller.set_state (CLAIMED);
+                                }
                             } else {
                                 if (path_selected) {
                                     /* Don't deselect yet, may drag */
@@ -3555,7 +3560,7 @@ namespace Files {
                                 }
 
                                 unblock_drag_and_drop ();
-                                result = true; /* Prevent rubberbanding and deselection of other paths */
+                                button_controller.set_state (CLAIMED); /* Prevent rubberbanding and deselection of other paths */
                             }
                             break;
 
@@ -3613,7 +3618,9 @@ namespace Files {
                     break;
 
                 default:
-                    result = handle_default_button_click ();
+                    if (handle_default_button_click ()) {
+                        button_controller.set_state (CLAIMED);
+                    }
                     break;
             }
         }
