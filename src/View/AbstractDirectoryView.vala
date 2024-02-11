@@ -277,6 +277,7 @@ namespace Files {
 
         protected Gtk.EventControllerKey key_controller;
         protected Gtk.GestureMultiPress button_controller;
+        protected Gtk.EventControllerMotion motion_controller;
 
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
@@ -320,12 +321,7 @@ namespace Files {
                 child = view;
                 show_all ();
                 connect_drag_drop_signals (view);
-                view.add_events (Gdk.EventMask.POINTER_MOTION_MASK |
-                                 Gdk.EventMask.ENTER_NOTIFY_MASK |
-                                 Gdk.EventMask.LEAVE_NOTIFY_MASK);
 
-                view.motion_notify_event.connect (on_motion_notify_event);
-                view.leave_notify_event.connect (on_leave_notify_event);
                 view.draw.connect (on_view_draw);
                 view.realize.connect (() => {
                    schedule_thumbnail_color_tag_timeout ();
@@ -342,6 +338,12 @@ namespace Files {
                 };
                 button_controller.pressed.connect (on_view_button_press_event);
                 button_controller.released.connect (on_view_button_release_event);
+
+                motion_controller = new Gtk.EventControllerMotion (view) {
+                    propagation_phase = CAPTURE
+                };
+                motion_controller.motion.connect (on_motion_notify_event);
+                motion_controller.leave.connect (on_leave_notify_event);
             }
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
@@ -3196,16 +3198,15 @@ namespace Files {
             return res;
         }
 
-        protected bool on_motion_notify_event (Gdk.EventMotion event) {
+        protected void on_motion_notify_event (double x, double y) {
+            // Determine appropriate cursor
             Gtk.TreePath? path = null;
             Files.File? file = null;
 
             if (renaming || is_frozen) {
-                return true;
+                return;
             }
 
-            double x, y;
-            event.get_coords (out x, out y);
             click_zone = get_event_position_info (x, y, out path, false);
 
             if ((path != null && hover_path == null) ||
@@ -3254,13 +3255,10 @@ namespace Files {
 
                 previous_click_zone = click_zone;
             }
-
-            return false;
         }
 
-        protected bool on_leave_notify_event (Gdk.EventCrossing event) {
+        protected void on_leave_notify_event () {
             hover_path = null;
-            return false;
         }
 
         protected virtual bool on_scroll_event (Gdk.EventScroll event) {
@@ -3492,7 +3490,6 @@ namespace Files {
                 return;
             }
 
-            bool result = false; // default false so events get passed to Window
             should_activate = false;
             should_deselect = false;
             should_select = false;
@@ -3528,7 +3525,9 @@ namespace Files {
                              * Rubberband if modifer pressed or if not on the icon and either
                              * the item is unselected. */
                             if (!no_mods || (on_blank && !path_selected)) {
-                                result = only_shift_pressed && handle_multi_select (path);
+                                if (only_shift_pressed && handle_multi_select (path)) {
+                                    button_controller.set_state (CLAIMED);
+                                }
                                 // Have to select on button release because IconView, unlike TreeView,
                                 // will not both select and rubberband
                                 should_select = true;
@@ -3539,7 +3538,9 @@ namespace Files {
 
                                 select_path (path, true);
                                 unblock_drag_and_drop ();
-                                result = handle_primary_button_click (n_press, mods, path);
+                                if (handle_primary_button_click (n_press, mods, path)) {
+                                    button_controller.set_state (CLAIMED);
+                                }
                             }
 
                             update_selected_files_and_menu ();
@@ -3547,7 +3548,9 @@ namespace Files {
 
                         case ClickZone.HELPER:
                             if (only_control_pressed || only_shift_pressed) { /* Treat like modified click on icon */
-                                result = only_shift_pressed && handle_multi_select (path);
+                                if (only_shift_pressed && handle_multi_select (path)) {
+                                    button_controller.set_state (CLAIMED);
+                                }
                             } else {
                                 if (path_selected) {
                                     /* Don't deselect yet, may drag */
@@ -3557,7 +3560,7 @@ namespace Files {
                                 }
 
                                 unblock_drag_and_drop ();
-                                result = true; /* Prevent rubberbanding and deselection of other paths */
+                                button_controller.set_state (CLAIMED); /* Prevent rubberbanding and deselection of other paths */
                             }
                             break;
 
@@ -3615,7 +3618,9 @@ namespace Files {
                     break;
 
                 default:
-                    result = handle_default_button_click ();
+                    if (handle_default_button_click ()) {
+                        button_controller.set_state (CLAIMED);
+                    }
                     break;
             }
         }
