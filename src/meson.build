@@ -2,7 +2,6 @@ pantheon_files_deps = [
     common_deps,
     handy_dep,
     pantheon_files_core_dep,
-    plank_dep,
     zeitgeist_dep,
     project_config_dep,
 ]
@@ -34,7 +33,6 @@ pantheon_files_exec = executable (
     'Utils/MimeActions.vala',
     'Utils/Permissions.vala',
     'Utils/AppUtils.vala',
-    'Utils/KeyUtils.vala',
 
     'View/AbstractDirectoryView.vala',
     'View/AbstractTreeView.vala',

@@ -18,26 +18,16 @@
 
 namespace Files {
     public class MultiLineEditableLabel : AbstractEditableLabel {
-
         protected Gtk.ScrolledWindow scrolled_window;
-        protected Gtk.TextView textview;
+        public Gtk.TextView textview { get; construct; }
 
-        public MultiLineEditableLabel () {}
-
-        public override Gtk.Widget create_editable_widget () {
+        construct {
             textview = new Gtk.TextView ();
-            /* Block propagation of button press event as this would cause renaming to end */
-            textview.button_press_event.connect_after (() => { return true; });
-
+            connect_editable_widget (textview);
             scrolled_window = new Gtk.ScrolledWindow (null, null) {
                 child = textview
             };
-
-            return scrolled_window as Gtk.Widget;
-        }
-
-        public override Gtk.Widget get_real_editable () {
-            return textview;
+            add (scrolled_window);
         }
 
         public override void set_text (string text) {
@@ -93,7 +83,6 @@ namespace Files {
         }
 
         /** Gtk.Editable interface */
-
         public override void select_region (int start_pos, int end_pos) {
             textview.grab_focus ();
             var buffer = textview.get_buffer ();
@@ -182,19 +171,17 @@ namespace Files {
 
         public override bool draw (Cairo.Context cr) {
             bool result = base.draw (cr);
-            if (draw_outline) {
-                Gtk.Allocation allocation;
-                Gdk.RGBA color;
-                Gdk.Rectangle outline;
+            Gtk.Allocation allocation;
+            Gdk.RGBA color;
+            Gdk.Rectangle outline;
 
-                get_allocation (out allocation);
-                color = get_style_context ().get_color (get_state_flags ());
-                Gdk.cairo_set_source_rgba (cr, color);
-                cr.set_line_width (1.0);
-                outline = {0, 0, allocation.width, allocation.height};
-                Gdk.cairo_rectangle (cr, outline);
-                cr.stroke ();
-            }
+            get_allocation (out allocation);
+            color = get_style_context ().get_color (get_state_flags ());
+            Gdk.cairo_set_source_rgba (cr, color);
+            cr.set_line_width (1.0);
+            outline = {0, 0, allocation.width, allocation.height};
+            Gdk.cairo_rectangle (cr, outline);
+            cr.stroke ();
             return result;
         }
 

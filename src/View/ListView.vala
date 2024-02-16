@@ -39,9 +39,7 @@ namespace Files {
         }
 
         protected override void set_up_icon_renderer () {
-            icon_renderer = new IconRenderer (ViewMode.LIST) {
-                lpad = 6
-            };
+            icon_renderer = new IconRenderer ();
         }
 
         private void connect_additional_signals () {
@@ -154,15 +152,10 @@ namespace Files {
             }
         }
 
-        protected override bool on_view_key_press_event (Gdk.EventKey event) {
-            Gdk.ModifierType state;
-            event.get_state (out state);
+        protected override bool on_view_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
             bool control_pressed = ((state & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((state & Gdk.ModifierType.SHIFT_MASK) != 0);
-
             if (!control_pressed && !shift_pressed) {
-                uint keyval;
-                event.get_keyval (out keyval);
                 switch (keyval) {
                     case Gdk.Key.Right:
                         Gtk.TreePath? path = null;
@@ -193,7 +186,7 @@ namespace Files {
                 }
             }
 
-            return base.on_view_key_press_event (event);
+            return base.on_view_key_press_event (keyval, keycode, state);
         }
 
         protected override Gtk.Widget? create_view () {
@@ -208,29 +201,8 @@ namespace Files {
             return tree as Gtk.Widget;
         }
 
-        protected override void set_up_zoom_level () {
-            Files.list_view_settings.bind (
-                "zoom-level",
-                this, "zoom-level",
-                GLib.SettingsBindFlags.DEFAULT
-            );
-
-            maximum_zoom = (ZoomLevel)Files.list_view_settings.get_enum ("maximum-zoom-level");
-
-            if (zoom_level < minimum_zoom) { /* Defaults to ZoomLevel.SMALLEST */
-                zoom_level = minimum_zoom;
-            }
-
-            if (zoom_level > maximum_zoom) {
-                zoom_level = maximum_zoom;
-            }
-        }
-
-        public override ZoomLevel get_normal_zoom_level () {
-            var zoom = Files.list_view_settings.get_enum ("default-zoom-level");
-            Files.list_view_settings.set_enum ("zoom-level", zoom);
-
-            return (ZoomLevel)zoom;
+        public override Settings? get_view_settings () {
+            return Files.list_view_settings;
         }
 
         private void add_subdirectory_at_path (Gtk.TreePath path) {

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-28 10:22+0000\n"
+"POT-Creation-Date: 2024-02-04 11:41+0000\n"
 "PO-Revision-Date: 2022-09-21 10:08+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
@@ -205,7 +205,7 @@ msgstr "کۆپیکردن بۆ ئێرە"
 msgid "Link Here"
 msgstr "لینککردنی بێرەوە"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2353
+#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2324
 msgid "Name"
 msgstr "ناو"
 
@@ -220,7 +220,7 @@ msgstr "دروستکردن"
 msgid "Last modification date"
 msgstr "کۆتا دەستکاریکردن:"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2358
+#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2329
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "قەبارە"
@@ -233,7 +233,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2368
+#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2339
 msgid "Date"
 msgstr "ڕێکەوت"
 
@@ -1132,7 +1132,7 @@ msgid "_Unmount"
 msgstr "_ئەنماونت"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2068
+#: src/View/AbstractDirectoryView.vala:2039
 msgid "Properties"
 msgstr "تایبەتمەندییەکان"
 
@@ -1144,7 +1144,7 @@ msgstr "دەرکردنی میدیا"
 msgid "Safely Remove"
 msgstr "دەرکردنی سەلامەت"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2061
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2032
 msgid "Add to Bookmarks"
 msgstr "زیادکردنی بۆ جێدۆز"
 
@@ -1449,11 +1449,15 @@ msgstr "ئامانج تەنها دەخوێندرێتەوە."
 msgid "Close"
 msgstr "داخستن"
 
-#: libcore/FileOperations/EmptyTrashJob.vala:40
+#: libcore/FileOperations/EmptyTrashJob.vala:76
+msgid "Emptying Trash"
+msgstr "بەتاڵکردنی تەنەکە"
+
+#: libcore/FileOperations/EmptyTrashJob.vala:85
 msgid "Permanently delete all items from Trash?"
 msgstr "ڕەشکردنەوەی هەموو دانەکانی ناو تەنەکەی خۆڵ بۆ هەمیشە؟"
 
-#: libcore/FileOperations/EmptyTrashJob.vala:41
+#: libcore/FileOperations/EmptyTrashJob.vala:86
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
@@ -1461,17 +1465,13 @@ msgstr ""
 "هەموو دانەکانی ناو بوخچە تەنەکە خۆڵییەکان، بە ئەوانەی کە لەسەر پەپکەی "
 "دەرەکیشەوە کە ماونت کراوە، بۆ هەمیشە ڕەش دەکرێنەوە."
 
-#: libcore/FileOperations/EmptyTrashJob.vala:44
+#: libcore/FileOperations/EmptyTrashJob.vala:89
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr "ڕەش کردنەوەی سەرجەم دانەکان لە تەنەکەی خۆڵ لەسەر ئەم ماونتە؟"
 
-#: libcore/FileOperations/EmptyTrashJob.vala:45
+#: libcore/FileOperations/EmptyTrashJob.vala:90
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "هەموو دانەکانی ناو تەنەکەی خۆڵی سەر ئەم ماونە بۆ هەمیشە ڕەش دەکرێنەوە."
-
-#: libcore/FileOperations/EmptyTrashJob.vala:111
-msgid "Emptying Trash"
-msgstr "بەتاڵکردنی تەنەکە"
 
 #: libcore/FileOperations/MountUtils.vala:31
 #, c-format
@@ -1529,17 +1529,17 @@ msgstr[1] "دڵنیای لە ڕەشکردنەوەی دانە دیاریکراو�
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr "دانە ڕەشکراوەکان نەخراونەتە تەنەکەوە و ناشگەڕێندرێنەوە."
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:178
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:183
 #, c-format
 msgid "Navigate to %s"
 msgstr "چوون بۆ %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:304
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:290
 #, c-format
 msgid "Go to %s"
 msgstr "چوون بۆ %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:386
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:367
 msgid "Type Path"
 msgstr "تایپ پاث"
 
@@ -1579,7 +1579,7 @@ msgstr "سڕینەوەی دیاریکراوەکان"
 msgid "Send by Email"
 msgstr "ناردن بە ئیمێڵ"
 
-#: src/Application.vala:67
+#: src/Application.vala:64
 msgid ""
 "\n"
 "\n"
@@ -1589,40 +1589,40 @@ msgstr ""
 "\n"
 "گەڕان بەناو فایل سیستەمدا بە فایل مەنێجەر"
 
-#: src/Application.vala:68
+#: src/Application.vala:65
 msgid "Show the version of the program"
 msgstr "پشاندنانی وەشانی پرۆگرامەکە"
 
-#: src/Application.vala:74
+#: src/Application.vala:71
 msgid "Open one or more URIs, each in their own tab"
 msgstr "کردنەوەی یەک URI یان زیاتر، هەر یەکەیان لە تابی خۆیدا"
 
-#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1949
-#: src/View/AbstractDirectoryView.vala:1955
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1920
+#: src/View/AbstractDirectoryView.vala:1926
 msgid "New Window"
 msgstr "پەنجەرەی تازە"
 
-#: src/Application.vala:76
+#: src/Application.vala:73
 msgid "Quit Files"
 msgstr "داخستنی فایلز"
 
-#: src/Application.vala:77
+#: src/Application.vala:74
 msgid "Enable debug logging"
 msgstr "کاراکردنی دیبەگ لۆگگین"
 
-#: src/Application.vala:80
+#: src/Application.vala:77
 msgid "[URI…]"
 msgstr "[URI…]"
 
-#: src/Application.vala:92
+#: src/Application.vala:89
 msgid "Error: Running Files as root using sudo is not possible."
 msgstr ""
 
-#: src/Application.vala:93
+#: src/Application.vala:90
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
 msgstr ""
 
-#: src/Application.vala:110
+#: src/Application.vala:107
 msgid "--quit cannot be used with URIs."
 msgstr "--کویت لەگەڵ URIیەکان بەکار نایەت."
 
@@ -1922,7 +1922,7 @@ msgid "Original Location:"
 msgstr "شوێنی ڕەسەن:"
 
 #: src/Dialogs/PropertiesWindow.vala:671
-#: src/View/AbstractDirectoryView.vala:2036
+#: src/View/AbstractDirectoryView.vala:2007
 msgid "Other Application…"
 msgstr "ئەپڵیکەیشنی تر…"
 
@@ -2005,186 +2005,186 @@ msgstr "نەتوانرا URI ییەکان بکرێنەوە"
 msgid "Could not open files or URIs with this app"
 msgstr "نەتوانرا ییەکان یان پەڕگەکان بەم ئەپە بکرێنەوە"
 
-#: src/View/AbstractDirectoryView.vala:842
-#: src/View/AbstractDirectoryView.vala:1165
+#: src/View/AbstractDirectoryView.vala:856
+#: src/View/AbstractDirectoryView.vala:1183
 msgid "Cannot execute this file"
 msgstr "ئەم پەڕگەیە نەکرایەوە"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:852
+#: src/View/AbstractDirectoryView.vala:866
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "پێشکردنەوەی سەرەتا پێویستە پەڕگەی \"%s\" لە تەنەکە دەربهێندرێت"
 
-#: src/View/AbstractDirectoryView.vala:853
+#: src/View/AbstractDirectoryView.vala:867
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 "پەڕگەکانی ناو تەنەکە ناکرێنەوە. بۆ کردنەوەی ئەم پەڕگەیە، دەبێت دەریبهێنیت."
 
-#: src/View/AbstractDirectoryView.vala:868
+#: src/View/AbstractDirectoryView.vala:882
 msgid "Cannot open this file"
 msgstr "ناتوانێت ئەم پەڕگەیە بکاتەوە"
 
-#: src/View/AbstractDirectoryView.vala:881
+#: src/View/AbstractDirectoryView.vala:895
 msgid "Cannot identify file type to open"
 msgstr "ناتوانێت جۆری پەڕگە دیاریبکات بۆ کردنەوەی"
 
-#: src/View/AbstractDirectoryView.vala:1647
+#: src/View/AbstractDirectoryView.vala:1632
 msgid "Cannot drop this file"
 msgstr "ناتوانێت ئەم پەڕگەیە بەرداتەوە"
 
-#: src/View/AbstractDirectoryView.vala:1648
+#: src/View/AbstractDirectoryView.vala:1633
 msgid "Invalid file name provided"
 msgstr "ناوێکی نەگونجاوی پەڕگە پێشکەشکراوە"
 
-#: src/View/AbstractDirectoryView.vala:1932
-#: src/View/AbstractDirectoryView.vala:1938 src/View/Window.vala:234
+#: src/View/AbstractDirectoryView.vala:1903
+#: src/View/AbstractDirectoryView.vala:1909 src/View/Window.vala:238
 msgid "New Tab"
 msgstr "تابێ نوێ"
 
-#: src/View/AbstractDirectoryView.vala:1972
+#: src/View/AbstractDirectoryView.vala:1943
 msgid "Run"
 msgstr "ڕەن"
 
-#: src/View/AbstractDirectoryView.vala:1979
+#: src/View/AbstractDirectoryView.vala:1950
 #, c-format
 msgid "Open in %s"
 msgstr "کردنەوەی لە %s دا"
 
-#: src/View/AbstractDirectoryView.vala:2048
+#: src/View/AbstractDirectoryView.vala:2019
 msgid "Open in"
 msgstr "کردنەوە لە"
 
-#: src/View/AbstractDirectoryView.vala:2050
-#: src/View/Widgets/BreadcrumbsEntry.vala:493
+#: src/View/AbstractDirectoryView.vala:2021
+#: src/View/Widgets/BreadcrumbsEntry.vala:431
 msgid "Open with"
 msgstr "کردنەوە بە"
 
-#: src/View/AbstractDirectoryView.vala:2081
+#: src/View/AbstractDirectoryView.vala:2052
 msgid "Select All"
 msgstr "دیاریکردنی هەموو"
 
-#: src/View/AbstractDirectoryView.vala:2090
+#: src/View/AbstractDirectoryView.vala:2061
 msgid "Invert Selection"
 msgstr "پێچەوانەکردنەوەی دیاریکردن"
 
-#: src/View/AbstractDirectoryView.vala:2099
+#: src/View/AbstractDirectoryView.vala:2070
 msgid "Deselect All"
 msgstr "هەڵوەشاندنەوەی دیاریکردن"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2078
 msgid "Cut"
 msgstr "بڕین"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2115
+#: src/View/AbstractDirectoryView.vala:2086
 msgid "Copy"
 msgstr "کۆپی"
 
-#: src/View/AbstractDirectoryView.vala:2122
+#: src/View/AbstractDirectoryView.vala:2093
 msgid "Move to Trash"
 msgstr "گواستنەوەی بۆ تەنەکە"
 
-#: src/View/AbstractDirectoryView.vala:2127
+#: src/View/AbstractDirectoryView.vala:2098
 msgid "Delete Permanently"
 msgstr "سڕینەوەی بەیەکجاری"
 
-#: src/View/AbstractDirectoryView.vala:2134
+#: src/View/AbstractDirectoryView.vala:2105
 msgid "Restore from Trash"
 msgstr "گەڕاندنەوە لە تەنەکەدا"
 
-#: src/View/AbstractDirectoryView.vala:2157
+#: src/View/AbstractDirectoryView.vala:2128
 msgid "Open Parent Folder"
 msgstr "کردنەوەی بوخچەی باوان"
 
-#: src/View/AbstractDirectoryView.vala:2160
+#: src/View/AbstractDirectoryView.vala:2131
 msgid "Remove from History"
 msgstr "سڕینەوەی لە مێژوودا"
 
-#: src/View/AbstractDirectoryView.vala:2186
+#: src/View/AbstractDirectoryView.vala:2157
 msgid "Rename…"
 msgstr "ناوگۆڕین…"
 
-#: src/View/AbstractDirectoryView.vala:2193
+#: src/View/AbstractDirectoryView.vala:2164
 msgid "Copy as Link"
 msgstr "کۆپیکردنی وەکو لینک"
 
-#: src/View/AbstractDirectoryView.vala:2216
-#: src/View/AbstractDirectoryView.vala:2296
+#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2267
 msgid "Paste Link into Folder"
 msgstr "لەبەرگرتنەوەی لینک بۆناو بوخچە"
 
-#: src/View/AbstractDirectoryView.vala:2221
-#: src/View/AbstractDirectoryView.vala:2273
+#: src/View/AbstractDirectoryView.vala:2192
+#: src/View/AbstractDirectoryView.vala:2244
 msgid "Paste into Folder"
 msgstr "لەبەرگرتنەوە بۆناو بوخچە"
 
-#: src/View/AbstractDirectoryView.vala:2231
-#: src/View/AbstractDirectoryView.vala:2301
+#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2272
 msgid "Paste"
 msgstr "لەبەرگرتنەوە"
 
-#: src/View/AbstractDirectoryView.vala:2363 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2334 src/View/ListView.vala:28
 msgid "Type"
 msgstr "جۆر"
 
-#: src/View/AbstractDirectoryView.vala:2373
+#: src/View/AbstractDirectoryView.vala:2344
 msgid "Reversed Order"
 msgstr "ڕیزی پێچەوانە"
 
-#: src/View/AbstractDirectoryView.vala:2376
+#: src/View/AbstractDirectoryView.vala:2347
 msgid "Folders Before Files"
 msgstr "بوخچەکان پێش پەڕگەکان"
 
-#: src/View/AbstractDirectoryView.vala:2388
+#: src/View/AbstractDirectoryView.vala:2359
 msgid "Sort by"
 msgstr "ڕیزکردن بەپێی"
 
-#: src/View/AbstractDirectoryView.vala:2396
+#: src/View/AbstractDirectoryView.vala:2367
 msgid "Folder"
 msgstr "بوخچە"
 
-#: src/View/AbstractDirectoryView.vala:2402
+#: src/View/AbstractDirectoryView.vala:2373
 msgid "Empty File"
 msgstr "پەڕگەی بەتاڵ"
 
-#: src/View/AbstractDirectoryView.vala:2453
+#: src/View/AbstractDirectoryView.vala:2424
 msgid "New"
 msgstr "نوێ"
 
-#: src/View/AbstractDirectoryView.vala:2697
+#: src/View/AbstractDirectoryView.vala:2668
 #, c-format
 msgid "Untitled %s"
 msgstr "%s ی بێ ناونیشان"
 
-#: src/View/AbstractDirectoryView.vala:3019
-#: src/View/AbstractDirectoryView.vala:3212
+#: src/View/AbstractDirectoryView.vala:2974
+#: src/View/AbstractDirectoryView.vala:3177
 msgid "Cannot remove files from here"
 msgstr "ناتوانیت پەڕگەکان لێرەوە بسڕیتەوە"
 
-#: src/View/AbstractDirectoryView.vala:3020
-#: src/View/AbstractDirectoryView.vala:3185
-#: src/View/AbstractDirectoryView.vala:3196
-#: src/View/AbstractDirectoryView.vala:3213
+#: src/View/AbstractDirectoryView.vala:2975
+#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:3161
+#: src/View/AbstractDirectoryView.vala:3178
 msgid "You do not have permission to change this location"
 msgstr "مۆڵەتت نییە بۆ گۆڕینی ئەم شوێنە"
 
-#: src/View/AbstractDirectoryView.vala:3153
+#: src/View/AbstractDirectoryView.vala:3118
 msgid "Cannot copy files that are in the trash"
 msgstr "ناتوانیت پەڕگەکانی ناو تەنەکە کۆپی بکەیت"
 
-#: src/View/AbstractDirectoryView.vala:3154
+#: src/View/AbstractDirectoryView.vala:3119
 msgid "Cutting the selection instead"
 msgstr "بڕینی دیاریکراوەکان لەجیاتی"
 
-#: src/View/AbstractDirectoryView.vala:3184
-#: src/View/AbstractDirectoryView.vala:3195
+#: src/View/AbstractDirectoryView.vala:3149
+#: src/View/AbstractDirectoryView.vala:3160
 msgid "Cannot paste files here"
 msgstr "ناتوانیت پەڕگەکان لێرە پەیست بکەیت"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:374
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
 msgstr "ئەم بوخچەیە بوونی نییە"
 
@@ -2246,104 +2246,104 @@ msgstr "هیچ پەڕگەیەکی ئەم دواییە نییە"
 msgid "Access Denied"
 msgstr "دەستگەیشتنت نییە"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
+#: src/View/ViewContainer.vala:356 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "ماڵ"
 
-#: src/View/ViewContainer.vala:375
+#: src/View/ViewContainer.vala:378
 msgid "You cannot create a folder here."
 msgstr "ناتوانیت لێرە بوخچە دروست بکەیت."
 
-#: src/View/ViewContainer.vala:378
+#: src/View/ViewContainer.vala:383
 msgid "The network is unavailable"
 msgstr "تۆڕ بەردەست نییە"
 
-#: src/View/ViewContainer.vala:379
+#: src/View/ViewContainer.vala:385
 msgid "A working network is needed to reach this folder"
 msgstr "تۆڕێکی کارکردوو پێویستە بۆ گەیشتن بەم بوخچەیە"
 
-#: src/View/ViewContainer.vala:382
+#: src/View/ViewContainer.vala:391
 msgid "This Folder Does Not Belong to You"
 msgstr "ئەم بوخچەیە هی تۆ نییە"
 
-#: src/View/ViewContainer.vala:383
+#: src/View/ViewContainer.vala:392
 msgid "You don't have permission to view this folder."
 msgstr "مۆڵەتی بینینی ئەم بوخچەیەت نییە."
 
-#: src/View/ViewContainer.vala:385
+#: src/View/ViewContainer.vala:396
 msgid "Unable to Mount Folder"
 msgstr "نەتوانرا ماونتی بوخچە بکرێت"
 
-#: src/View/ViewContainer.vala:386
+#: src/View/ViewContainer.vala:398
 msgid "Could not connect to the server for this folder."
 msgstr "نەتوارا بە ڕاژەوە پەیوەست بکرێت بۆ ئەم بوخچەیە."
 
-#: src/View/ViewContainer.vala:389
+#: src/View/ViewContainer.vala:404
 msgid "Unable to Display Folder Contents"
 msgstr "نەتوانرا ناوەڕۆکی بوخچە پشان بدرێت"
 
-#: src/View/ViewContainer.vala:390
+#: src/View/ViewContainer.vala:406
 msgid "The operation timed out."
 msgstr "کارەکە تایم ئاوت بوو."
 
-#: src/View/ViewContainer.vala:392
+#: src/View/ViewContainer.vala:412
 msgid "Unable to Show Folder"
 msgstr "نەتوانرا بوخچە پشان بدرێت"
 
-#: src/View/ViewContainer.vala:393
+#: src/View/ViewContainer.vala:414
 msgid "The server for this folder could not be located."
 msgstr "شوێنی ڕاژە بۆ ئەم بوخچەیە نادۆزرێتەوە."
 
-#: src/View/ViewContainer.vala:404
+#: src/View/ViewContainer.vala:428
 msgid "File not Found"
 msgstr "پەڕگە نەدۆزرایەوە"
 
-#: src/View/ViewContainer.vala:405
+#: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "پەڕگەی دیاریکراو چیتر بوونی نییە."
 
-#: src/View/Window.vala:189
+#: src/View/Window.vala:193
 msgid "Previous"
 msgstr "پێشتر"
 
-#: src/View/Window.vala:194
+#: src/View/Window.vala:198
 msgid "Next"
 msgstr "دواتر"
 
-#: src/View/Window.vala:209
+#: src/View/Window.vala:213
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:239
+#: src/View/Window.vala:243
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Closed Tabs"
 msgstr "داخستنی تاب"
 
-#: src/View/Window.vala:450 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:395
 msgid "Open in New Window"
 msgstr "کردنەوەی لە پەنجەرەی تازەدا"
 
-#: src/View/Window.vala:451
+#: src/View/Window.vala:461
 msgid "Duplicate Tab"
 msgstr "بەدووکردنی تاب"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:455
+#: src/View/Window.vala:465
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:456
+#: src/View/Window.vala:466
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Close Other Tabs"
 msgstr "داخستنی تاب"
 
-#: src/View/Window.vala:457
+#: src/View/Window.vala:467
 msgid "Close Tab"
 msgstr "داخستنی تاب"
 
-#: src/View/Window.vala:738 src/View/Window.vala:748
+#: src/View/Window.vala:755 src/View/Window.vala:765
 msgid "(as Administrator)"
 msgstr "(وەکو بەڕێوەبەر)"
 
@@ -2511,16 +2511,16 @@ msgstr "کارەکە تایم ئاوت بوو."
 msgid "No operation to redo"
 msgstr "کارەکە تایم ئاوت بوو."
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:124
+#: src/View/Widgets/BreadcrumbsEntry.vala:134
 #: src/View/Widgets/LocationBar.vala:199
 msgid "Search or Type Path"
 msgstr "لێرە بگەڕێ یان شوێنێک بنووسە"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
+#: src/View/Widgets/BreadcrumbsEntry.vala:388
 msgid "Open in New Tab"
 msgstr "کردنەوە لە تابێکی نوێدا"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:500
+#: src/View/Widgets/BreadcrumbsEntry.vala:438
 msgid "Open in Other Application…"
 msgstr "کردنەوە لە ئەپڵیکەیشنەکانی تر…"
 

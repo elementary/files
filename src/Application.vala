@@ -42,9 +42,6 @@ public class Files.Application : Gtk.Application {
     public Settings gnome_privacy_settings { get; construct; }
     public Settings gtk_file_chooser_settings { get; construct; }
 
-
-    public int window_count { get; private set; }
-
     bool quitting = false;
 
     static construct {
@@ -154,12 +151,6 @@ public class Files.Application : Gtk.Application {
 #if HAVE_UNITY
         QuicklistHandler.get_singleton ();
 #endif
-
-        window_count = 0;
-        this.window_added.connect_after (() => {window_count++;});
-        this.window_removed.connect (() => {
-            window_count--;
-        });
 
         var granite_settings = Granite.Settings.get_default ();
         var gtk_settings = Gtk.Settings.get_default ();

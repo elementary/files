@@ -30,9 +30,20 @@ namespace Files.View.Chrome {
         bool match_found = false;
         bool multiple_completions = false;
         string to_complete = ""; // Beginning of filename to be completed
-        string completion_text = ""; // Candidate completion (placeholder)
-        string matching_filename = "";
-        string common_chars = "";
+        string completion_text {
+            get {
+                return this.placeholder;
+            }
+
+            set {
+                if (placeholder != value) {
+                    placeholder = value;
+                    queue_draw ();
+                    /* This corrects undiagnosed bug after completion required on remote filesystem */
+                    set_position (-1);
+                }
+            }
+        } // Candidate completion (placeholder)
 
         public bool search_mode = false; // Used to suppress activate events while searching
 
@@ -75,9 +86,7 @@ namespace Files.View.Chrome {
 
     /** Overridden Navigatable interface functions **/
     /************************************************/
-        public override bool on_key_press_event (Gdk.EventKey event) {
-            uint keyval;
-            event.get_keyval (out keyval);
+        public override bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
             switch (keyval) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
@@ -85,30 +94,22 @@ namespace Files.View.Chrome {
                     if (search_mode) {
                         return true;
                     }
+
                     break;
                 case Gdk.Key.KP_Tab:
                 case Gdk.Key.Tab:
-                    complete ();
+                    set_entry_text (text + completion_text);
                     return true;
             }
 
-            return base.on_key_press_event (event);
+            return base.on_key_press_event (keyval, keycode, state);
         }
 
         public override void reset () {
             base.reset ();
-            clear_completion ();
+            completion_text = "";
             current_completion_dir = null; // Do not cancel as this could interfere with a loading tab
         }
-
-        protected override bool on_button_release_event (Gdk.EventButton event) {
-            if (drop_file_list != null) {
-                return true;
-            }
-
-            return base.on_button_release_event (event);
-        }
-
 
     /** Search related functions **/
     /******************************/
@@ -128,96 +129,43 @@ namespace Files.View.Chrome {
       * Implementing interface virtual functions **/
     /****************************/
         public void completion_needed () {
-            string? txt = this.text;
-            if (txt == null || txt.length < 1) {
+            string? path = this.text;
+            if (path == null || path.length < 1) {
                 return;
             }
 
             to_complete = "";
+            completion_text = "";
             /* don't use get_basename (), it will return "folder" for "/folder/" */
-            int last_slash = txt.last_index_of_char ('/');
-            if (last_slash > -1 && last_slash < txt.length) {
-                to_complete = txt.slice (last_slash + 1, text.length);
+            int last_slash = path.last_index_of_char ('/');
+            if (last_slash > -1 && last_slash < path.length) {
+                to_complete = path.slice (last_slash + 1, path.length);
             }
+
             if (to_complete.length > 0) {
-                do_completion (txt);
-            } else {
-                clear_completion ();
-            }
-        }
-
-        private void do_completion (string path) {
-            if (path == current_dir_path) {
-                return; // Nothing typed yet
-            }
-
-            GLib.File? file = FileUtils.get_file_for_path (FileUtils.sanitize_path (path, current_dir_path));
-            if (file == null) {
-                return;
-            }
-
-            if (file.has_parent (null)) {
-                file = file.get_parent ();
-            } else {
-                return;
-            }
-
-            if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
-                current_completion_dir = Directory.from_gfile (file);
-            }
-
-            if (current_completion_dir.can_load) {
-                clear_completion ();
-                matching_filename = "";
-                multiple_completions = false;
-                match_found = false;
-                current_completion_dir.init (on_file_loaded, on_done_loading);
-            }
-        }
-
-        protected void complete () {
-            if (completion_text.length == 0) {
-                return;
-            }
-
-            string path = text + completion_text;
-            /* If there are multiple results, tab as far as we can, otherwise do the entire result */
-            if (!multiple_completions) {
-                completed (path);
-            } else {
-                set_entry_text (path);
-            }
-        }
-
-        private void completed (string txt) {
-            var gfile = FileUtils.get_file_for_path (txt); /* Sanitizes path */
-            var newpath = gfile.get_path ();
-
-            /* If path changed, update breadcrumbs and continue editing */
-            if (newpath != null) {
-                /* If completed, then GOF File must exist */
-                if ((Files.File.@get (gfile)).is_directory) {
-                    newpath += GLib.Path.DIR_SEPARATOR_S;
+                if (path == current_dir_path) {
+                    return; // Nothing typed yet
                 }
 
-                set_entry_text (newpath);
+                var file = FileUtils.get_file_for_path (path);
+                if (file == null) {
+                    return;
+                }
+
+                if (file.has_parent (null)) {
+                    file = file.get_parent ();
+                } else {
+                    return;
+                }
+
+                if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
+                    current_completion_dir = Directory.from_gfile (file);
+                }
+
+                multiple_completions = false;
+                match_found = false;
+                current_completion_dir.init (on_file_loaded, () => {});
             }
-
-            set_completion_text ("");
-        }
-
-        private void set_completion_text (string txt) {
-            completion_text = txt;
-            if (placeholder != completion_text) {
-                placeholder = completion_text;
-                queue_draw ();
-                /* This corrects undiagnosed bug after completion required on remote filesystem */
-                set_position (-1);
-            }
-        }
-
-        private void clear_completion () {
-            set_completion_text ("");
         }
 
         /**
@@ -236,47 +184,28 @@ namespace Files.View.Chrome {
             string file_display_name = file.get_display_name ();
             if (file_display_name.length > to_complete.length) {
                 if (file_display_name.up ().has_prefix (to_complete.up ())) {
-                    matching_filename = file_display_name;
+                    var residue = file_display_name.slice (to_complete.length, file_display_name.length);
                     if (!match_found) {
                         match_found = true;
-                        common_chars = matching_filename.slice (
-                            to_complete.length, matching_filename.length
-                        );
+                        completion_text = residue;
                     } else {
                         multiple_completions = true;
-                        unichar c1 = {}, c2 = {};
-                        int index1 = 0, index2 = common_chars.length - 1;
-                        while (common_chars.get_next_char (ref index1, out c1) &&
-                               matching_filename.get_next_char (ref index2, out c2)) {
+                        unichar c1, c2 = 0;
+                        int index1 = 0, index2 = 0;
+                        var new_common_chars = "";
+                        while (completion_text.get_next_char (ref index1, out c1) &&
+                               residue.get_next_char (ref index2, out c2)) {
 
-                            if (c1 == c2) {
-                                common_chars += c1.to_string ();
+                            if (c1 == c2 && index1 == index2) {
+                                new_common_chars += c1.to_string ();
                             } else {
                                 break;
                             }
                         }
 
-
+                        completion_text = new_common_chars;
                     }
                 }
-            }
-        }
-
-        private void on_done_loading () {
-            if (multiple_completions) {
-                // We do not change the typed characters if there are multiple matches
-                set_completion_text (common_chars);
-            } else if (match_found) {
-                string str = Path.DIR_SEPARATOR_S;
-                if (text.length >= 1) {
-                    str = text.slice (0, text.length - to_complete.length);
-                }
-
-                // Change the typed characters to the match the filename when only one match.
-                set_text (str + matching_filename.slice (0, to_complete.length));
-                set_completion_text (
-                    matching_filename.slice (to_complete.length, matching_filename.length)
-                );
             }
         }
 
@@ -299,7 +228,7 @@ namespace Files.View.Chrome {
                 element.pressed = false;
             }
 
-            var el = get_element_from_coordinates (x, y);
+            var el = get_element_from_coordinates ((double) x);
             current_suggested_action = Gdk.DragAction.DEFAULT;
             if (el != null && drop_file_list != null) {
                 el.pressed = true;
@@ -401,7 +330,7 @@ namespace Files.View.Chrome {
         }
     /** Context menu functions **/
     /****************************/
-        private void load_right_click_menu (Gdk.EventButton event, BreadcrumbElement clicked_element) {
+        private void load_right_click_menu (Gdk.Event event, BreadcrumbElement clicked_element) {
             string path = get_path_from_element (clicked_element);
             string parent_path = FileUtils.get_parent_path_from_path (path);
             GLib.File? root = FileUtils.get_file_for_path (parent_path);
@@ -529,7 +458,7 @@ namespace Files.View.Chrome {
 
         private Files.File? get_target_location (int x, int y) {
             Files.File? file;
-            var el = get_element_from_coordinates (x, y);
+            var el = get_element_from_coordinates ((double) x);
             if (el != null) {
                 file = Files.File.get (GLib.File.new_for_commandline_arg (get_path_from_element (el)));
                 file.ensure_query_info ();
@@ -538,39 +467,48 @@ namespace Files.View.Chrome {
             return null;
         }
 
-        protected override bool on_button_press_event (Gdk.EventButton event) {
+        protected override void on_button_pressed_event (int n_press, double x, double y) {
             /* Only handle if not on icon and breadcrumbs are visible.
              * Note, breadcrumbs are hidden when in home directory even when the pathbar does not have focus.*/
-            if (is_icon_event (event) || has_focus || hide_breadcrumbs) {
-                return base.on_button_press_event (event);
-            } else {
-                var el = mark_pressed_element (event);
+            if (is_icon_event (x) || has_focus || hide_breadcrumbs) {
+                base.on_button_pressed_event (n_press, x, y);
+            } else { // Clicked on breadcrumb?
+                var el = mark_pressed_element (x);
                 if (el != null) {
-                    uint button;
-                    event.get_button (out button);
-                    switch (button) {
-                        case 1:
-                            break; // Long press support discontinued as provided by system settings
+                    switch (button_controller.get_current_button ()) {
                         case 2:
-                            handle_middle_button_press (event, el);
+                            if (el != null) {
+                                button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
+                                activate_path (get_path_from_element (el), Files.OpenFlag.NEW_TAB);
+                            }
+
                             break;
+
                         case 3:
-                            handle_secondary_button_press (event, el);
+                            button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
+                            load_right_click_menu (Gtk.get_current_event (), el);
+
                             break;
+
                         default:
+                            base.on_button_pressed_event (n_press, x, y);
                             break;
                     }
                 }
             }
-
-            return true;
         }
 
-        private BreadcrumbElement? mark_pressed_element (Gdk.EventButton event) {
+        protected override void on_button_released_event (int n_press, double x, double y) {
+            if (drop_file_list != null) {
+                return;
+            }
+
+            base.on_button_released_event (n_press, x, y);
+        }
+
+        private BreadcrumbElement? mark_pressed_element (double x) {
             reset_elements_states ();
-            double x, y;
-            event.get_coords (out x, out y);
-            BreadcrumbElement? el = get_element_from_coordinates ((int)x, (int)y);
+            BreadcrumbElement? el = get_element_from_coordinates (x);
             if (el != null) {
                 el.pressed = true;
                 queue_draw ();
@@ -578,14 +516,8 @@ namespace Files.View.Chrome {
             return el;
         }
 
-        protected void handle_middle_button_press (Gdk.EventButton event, BreadcrumbElement? el) {
-            if (el != null) {
-                activate_path (get_path_from_element (el), Files.OpenFlag.NEW_TAB);
-            }
-        }
 
-        protected void handle_secondary_button_press (Gdk.EventButton event, BreadcrumbElement? el) {
-            load_right_click_menu (event, el);
-        }
+
+
     }
 }
