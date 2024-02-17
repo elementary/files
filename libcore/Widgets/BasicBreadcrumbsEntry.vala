@@ -63,6 +63,8 @@ namespace Files.View.Chrome {
 
         private Gdk.Window? entry_window = null;
         private Gtk.EventControllerKey key_controller;
+        protected Gtk.GestureMultiPress button_controller;
+        private Gtk.EventControllerMotion motion_controller;
 
         protected bool context_menu_showing = false;
 
@@ -86,10 +88,7 @@ namespace Files.View.Chrome {
 
             realize.connect_after (after_realize);
             activate.connect (on_activate);
-            button_release_event.connect (on_button_release_event);
-            button_press_event.connect (on_button_press_event);
             icon_press.connect (on_icon_press);
-            motion_notify_event.connect_after (after_motion_notify);
             focus_in_event.connect (on_focus_in);
             focus_out_event.connect (on_focus_out);
             changed.connect (on_entry_text_changed);
@@ -98,6 +97,16 @@ namespace Files.View.Chrome {
                 propagation_phase = BUBBLE
             };
             key_controller.key_pressed.connect (on_key_press_event);
+
+            button_controller = new Gtk.GestureMultiPress (this) {
+                button = 0,
+                propagation_phase = CAPTURE
+            };
+            button_controller.pressed.connect (on_button_pressed_event);
+            button_controller.released.connect (on_button_released_event);
+
+            motion_controller = new Gtk.EventControllerMotion (this);
+            motion_controller.motion.connect (on_motion_event);
 
             minimum_width = 100;
             notify["scale-factor"].connect (() => {
@@ -216,27 +225,32 @@ namespace Files.View.Chrome {
             return false;
         }
 
-        protected virtual bool on_button_press_event (Gdk.EventButton event) {
-            uint button;
-            event.get_button (out button);
-            context_menu_showing = has_focus && button == Gdk.BUTTON_SECONDARY;
-            return !has_focus;  // Only pass to default Gtk handler when focused and Entry showing.
+        protected virtual void on_button_pressed_event (int n_press, double x, double y) {
+            if (has_focus) {
+                if (button_controller.get_current_button () == Gdk.BUTTON_SECONDARY) {
+                    context_menu_showing = true;
+                }
+            } else if (!is_icon_event (x)) {
+                // Block propagation when !has_focus unless icon pressed
+                button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
+            }
         }
 
-         protected virtual bool on_button_release_event (Gdk.EventButton event) {
+         protected virtual void on_button_released_event (int n_press, double x, double y) {
             /* Only activate breadcrumbs with primary click when pathbar does not have focus and breadcrumbs showing.
              * Note that in home directory, the breadcrumbs are hidden and a placeholder shown even when pathbar does
              * not have focus. */
-            uint button;
-            event.get_button (out button);
-            if (button == Gdk.BUTTON_PRIMARY && !has_focus && !hide_breadcrumbs && !is_icon_event (event)) {
+
+            if (button_controller.get_current_button () == Gdk.BUTTON_PRIMARY &&
+                !has_focus && !hide_breadcrumbs &&
+                !is_icon_event (x)) {
+
                 reset_elements_states ();
-                double x, y;
-                event.get_coords (out x, out y);
-                var el = get_element_from_coordinates ((int)x, (int)y);
+                var el = get_element_from_coordinates (x);
                 if (el != null) {
+                    button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
                     activate_path (get_path_from_element (el));
-                    return true;
+                    return;
                 }
             }
 
@@ -244,13 +258,12 @@ namespace Files.View.Chrome {
                 grab_focus (); // Hide breadcrumbs and behave as Gtk.Entry.
             }
 
-            return false;
         }
 
-        protected bool is_icon_event (Gdk.EventButton event) {
+        protected bool is_icon_event (double x) {
             /* We need to distinguish whether the event comes from one of the icons.
              * There doesn't seem to be a way of doing this directly so we check the window width */
-            return (event.get_window ().get_width () <= ICON_WIDTH);
+            return x <= ICON_WIDTH || x >= get_allocated_width () - ICON_WIDTH;
         }
 
         void on_icon_press (Gtk.EntryIconPosition pos) {
@@ -270,9 +283,9 @@ namespace Files.View.Chrome {
             entry_window = get_window ().get_children_with_user_data (this).data;
         }
 
-        bool after_motion_notify (Gdk.EventMotion event) {
+        void on_motion_event (double x, double y) {
             if (is_focus) {
-                return false;
+                return;
             }
 
             string? tip = null;
@@ -280,11 +293,9 @@ namespace Files.View.Chrome {
                 tip = get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
             }
 
-
             set_tooltip_markup ("");
-            double x, y;
-            event.get_coords (out x, out y);
-            var el = get_element_from_coordinates ((int)x, (int)y);
+
+            var el = get_element_from_coordinates (x);
             if (el != null && !hide_breadcrumbs) {
                 set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
                 set_entry_cursor ("default");
@@ -297,7 +308,6 @@ namespace Files.View.Chrome {
             /* We must reset the icon tooltip as the above line turns all tooltips off */
                 set_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY, tip);
             }
-            return false;
         }
 
         private uint focus_out_timeout_id = 0;
@@ -400,8 +410,7 @@ namespace Files.View.Chrome {
             var w = displayed_breadcrumbs.first ().data.natural_width;
             if (l > 1) {
                 weak Gtk.StyleContext style_context = get_style_context ();
-                var state = style_context.get_state ();
-                var padding = style_context.get_padding (state);
+                var padding = style_context.get_padding (style_context.get_state ());
                 w += (l - 1) * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
 
                 /* Allow extra space for last breadcrumb */
@@ -451,7 +460,7 @@ namespace Files.View.Chrome {
             }
         }
 
-        protected BreadcrumbElement? get_element_from_coordinates (int x, int y) {
+        protected BreadcrumbElement? get_element_from_coordinates (double x) {
             double width = get_allocated_width () - ICON_WIDTH;
             double height = get_allocated_height ();
             var is_rtl = Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ();
@@ -645,9 +654,8 @@ namespace Files.View.Chrome {
                 button_context_active.set_path (style_context.get_path ());
                 button_context_active.set_state (Gtk.StateFlags.ACTIVE);
             }
-            var state = style_context.get_state ();
-            var is_rtl = Gtk.StateFlags.DIR_RTL in state;
-            var padding = style_context.get_padding (state);
+            var is_rtl = Gtk.StateFlags.DIR_RTL in style_context.get_state ();
+            var padding = style_context.get_padding (style_context.get_state ());
             base.draw (cr);
             double height = get_allocated_height ();
             double width = get_allocated_width ();
@@ -665,7 +673,7 @@ namespace Files.View.Chrome {
 
             style_context.save ();
             style_context.set_state (Gtk.StateFlags.ACTIVE);
-            Gtk.Border border = style_context.get_margin (state);
+            Gtk.Border border = style_context.get_margin (style_context.get_state ());
             style_context.restore ();
 
             if (!is_focus && !hide_breadcrumbs) {

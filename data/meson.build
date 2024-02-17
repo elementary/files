@@ -75,10 +75,6 @@ i18n.merge_file(
     type: 'xml'
 )
 
-install_data(
-    join_paths(meson.current_source_dir(), 'icons', 'poof.png'),
-    install_dir: join_paths(get_option('datadir'), 'pixmaps', meson.project_name())
-)
 
 install_data(
     join_paths(meson.current_source_dir(),'schemas', meson.project_name() + '.gschema.xml'),

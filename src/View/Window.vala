@@ -336,14 +336,21 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         };
 
         key_controller.key_pressed.connect ((keyval, keycode, state) => {
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            /* Use find function instead of view interactive search */
-            if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
-                /* Use printable characters to initiate search */
-                var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
-                if (uc.isprint ()) {
-                    activate_action ("find", uc.to_string ());
-                    return Gdk.EVENT_STOP;
+            // Handle key press events when directoryview has focus except when it must retain
+            // focus because e.g.renaming
+            var focus_widget = get_focus ();
+            if (current_container != null && !current_container.locked_focus &&
+                focus_widget != null && focus_widget.is_ancestor (current_container)) {
+
+                var mods = state & Gtk.accelerator_get_default_mod_mask ();
+                /* Use find function instead of view interactive search */
+                if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
+                    /* Use printable characters to initiate search */
+                    var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
+                    if (uc.isprint ()) {
+                        activate_action ("find", uc.to_string ());
+                        return Gdk.EVENT_STOP;
+                    }
                 }
             }
 
