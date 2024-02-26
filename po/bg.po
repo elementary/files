@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-04 11:41+0000\n"
+"POT-Creation-Date: 2024-02-18 13:10+0000\n"
 "PO-Revision-Date: 2017-04-09 19:04+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Bulgarian\n"
@@ -225,7 +225,7 @@ msgstr "Препис Тук"
 msgid "Link Here"
 msgstr "Създаване на връзка"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2324
+#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2326
 msgid "Name"
 msgstr "Име"
 
@@ -240,7 +240,7 @@ msgstr "Създаване"
 msgid "Last modification date"
 msgstr "Последна промяна:"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2329
+#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2331
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Размер"
@@ -253,7 +253,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2339
+#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2341
 msgid "Date"
 msgstr "Дата"
 
@@ -1162,7 +1162,7 @@ msgid "_Unmount"
 msgstr "_Демонтиране"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2039
+#: src/View/AbstractDirectoryView.vala:2041
 msgid "Properties"
 msgstr "Настройки"
 
@@ -1175,7 +1175,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "Премахни"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2032
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2034
 #, fuzzy
 msgid "Add to Bookmarks"
 msgstr "Отметки"
@@ -1586,17 +1586,17 @@ msgstr[1] "Искате ли наистина да изтриете завина
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:183
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:189
 #, c-format
 msgid "Navigate to %s"
 msgstr "Насочи се към %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:290
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:300
 #, c-format
 msgid "Go to %s"
 msgstr "Отиди в %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:367
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:377
 #, fuzzy
 msgid "Type Path"
 msgstr "Въведете път"
@@ -1658,8 +1658,8 @@ msgstr "Покажи версията на програмата."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Отваряне на адреса/те в нов подпрозорец"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1920
-#: src/View/AbstractDirectoryView.vala:1926
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1922
+#: src/View/AbstractDirectoryView.vala:1928
 msgid "New Window"
 msgstr "Нов прозорец"
 
@@ -1798,23 +1798,6 @@ msgstr ""
 msgid "Basename:"
 msgstr "_Потребителско име:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
-msgctxt "bulk-rename"
-msgid "Keep"
-msgstr ""
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Replace"
-msgstr "Заместване"
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Modify"
-msgstr "Промяна"
-
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
 #, fuzzy
@@ -1829,34 +1812,6 @@ msgstr "Замяна с"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
 msgstr ""
-
-#. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:190
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Name"
-msgstr "Име"
-
-#. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Date created"
-msgstr "Създаване"
-
-#. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Date modified"
-msgstr "Промяна"
-
-#. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Size"
-msgstr "Размер"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
@@ -1985,7 +1940,7 @@ msgid "Original Location:"
 msgstr "Първоначално местоположение:"
 
 #: src/Dialogs/PropertiesWindow.vala:671
-#: src/View/AbstractDirectoryView.vala:2007
+#: src/View/AbstractDirectoryView.vala:2009
 msgid "Other Application…"
 msgstr "Друга програма..."
 
@@ -2070,187 +2025,187 @@ msgstr "Не може да бъде преименувано на '%s'"
 msgid "Could not open files or URIs with this app"
 msgstr "Не може да отворите файловете или uris с това приложение."
 
-#: src/View/AbstractDirectoryView.vala:856
-#: src/View/AbstractDirectoryView.vala:1183
+#: src/View/AbstractDirectoryView.vala:858
+#: src/View/AbstractDirectoryView.vala:1185
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Файлът не може да се отвори"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:866
+#: src/View/AbstractDirectoryView.vala:868
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:867
+#: src/View/AbstractDirectoryView.vala:869
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:882
+#: src/View/AbstractDirectoryView.vala:884
 msgid "Cannot open this file"
 msgstr "Файлът не може да се отвори"
 
-#: src/View/AbstractDirectoryView.vala:895
+#: src/View/AbstractDirectoryView.vala:897
 msgid "Cannot identify file type to open"
 msgstr "Неизвестен формат файл."
 
-#: src/View/AbstractDirectoryView.vala:1632
+#: src/View/AbstractDirectoryView.vala:1634
 msgid "Cannot drop this file"
 msgstr "Не може да се метне този файл"
 
-#: src/View/AbstractDirectoryView.vala:1633
+#: src/View/AbstractDirectoryView.vala:1635
 msgid "Invalid file name provided"
 msgstr "Невярно дадено файлово име"
 
-#: src/View/AbstractDirectoryView.vala:1903
-#: src/View/AbstractDirectoryView.vala:1909 src/View/Window.vala:238
+#: src/View/AbstractDirectoryView.vala:1905
+#: src/View/AbstractDirectoryView.vala:1911 src/View/Window.vala:238
 msgid "New Tab"
 msgstr "Нов подпрозорец"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1945
 msgid "Run"
 msgstr "Изпълнение"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1952
 #, c-format
 msgid "Open in %s"
 msgstr "Отваряне с %s"
 
-#: src/View/AbstractDirectoryView.vala:2019
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Open in"
 msgstr "Отваряне в"
 
-#: src/View/AbstractDirectoryView.vala:2021
-#: src/View/Widgets/BreadcrumbsEntry.vala:431
+#: src/View/AbstractDirectoryView.vala:2023
+#: src/View/Widgets/BreadcrumbsEntry.vala:422
 msgid "Open with"
 msgstr "Отвори с"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2061
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:2072
 #, fuzzy
 msgid "Deselect All"
 msgstr "Възстанови всички"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2080
 msgid "Cut"
 msgstr "Отрязване"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2088
 msgid "Copy"
 msgstr "Преписване"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2095
 msgid "Move to Trash"
 msgstr "Преместване в Кошчето"
 
-#: src/View/AbstractDirectoryView.vala:2098
+#: src/View/AbstractDirectoryView.vala:2100
 #, fuzzy
 msgid "Delete Permanently"
 msgstr "Изтрий безвъзвратно"
 
-#: src/View/AbstractDirectoryView.vala:2105
+#: src/View/AbstractDirectoryView.vala:2107
 msgid "Restore from Trash"
 msgstr "Възстанови от Кошчето"
 
-#: src/View/AbstractDirectoryView.vala:2128
+#: src/View/AbstractDirectoryView.vala:2130
 msgid "Open Parent Folder"
 msgstr "Отваряне на родителската папка"
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2133
 msgid "Remove from History"
 msgstr "Премахване от хронологията"
 
-#: src/View/AbstractDirectoryView.vala:2157
+#: src/View/AbstractDirectoryView.vala:2159
 #, fuzzy
 msgid "Rename…"
 msgstr "Преименуване"
 
-#: src/View/AbstractDirectoryView.vala:2164
+#: src/View/AbstractDirectoryView.vala:2166
 #, fuzzy
 msgid "Copy as Link"
 msgstr "Поставяне"
 
-#: src/View/AbstractDirectoryView.vala:2187
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2269
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "Сложи в Папката"
 
-#: src/View/AbstractDirectoryView.vala:2192
-#: src/View/AbstractDirectoryView.vala:2244
+#: src/View/AbstractDirectoryView.vala:2194
+#: src/View/AbstractDirectoryView.vala:2246
 msgid "Paste into Folder"
 msgstr "Сложи в Папката"
 
-#: src/View/AbstractDirectoryView.vala:2202
-#: src/View/AbstractDirectoryView.vala:2272
+#: src/View/AbstractDirectoryView.vala:2204
+#: src/View/AbstractDirectoryView.vala:2274
 msgid "Paste"
 msgstr "Поставяне"
 
-#: src/View/AbstractDirectoryView.vala:2334 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2336 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Тип"
 
-#: src/View/AbstractDirectoryView.vala:2344
+#: src/View/AbstractDirectoryView.vala:2346
 msgid "Reversed Order"
 msgstr "Обратен ред"
 
-#: src/View/AbstractDirectoryView.vala:2347
+#: src/View/AbstractDirectoryView.vala:2349
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2359
+#: src/View/AbstractDirectoryView.vala:2361
 msgid "Sort by"
 msgstr "Подреждане по"
 
-#: src/View/AbstractDirectoryView.vala:2367
+#: src/View/AbstractDirectoryView.vala:2369
 msgid "Folder"
 msgstr "Папка"
 
-#: src/View/AbstractDirectoryView.vala:2373
+#: src/View/AbstractDirectoryView.vala:2375
 msgid "Empty File"
 msgstr "Празен файл"
 
-#: src/View/AbstractDirectoryView.vala:2424
+#: src/View/AbstractDirectoryView.vala:2426
 msgid "New"
 msgstr "Създаване на"
 
-#: src/View/AbstractDirectoryView.vala:2668
+#: src/View/AbstractDirectoryView.vala:2670
 #, c-format
 msgid "Untitled %s"
 msgstr "Неименован %s"
 
-#: src/View/AbstractDirectoryView.vala:2974
-#: src/View/AbstractDirectoryView.vala:3177
+#: src/View/AbstractDirectoryView.vala:2976
+#: src/View/AbstractDirectoryView.vala:3179
 msgid "Cannot remove files from here"
 msgstr "Не можете да изтривате файлове от тук."
 
-#: src/View/AbstractDirectoryView.vala:2975
-#: src/View/AbstractDirectoryView.vala:3150
-#: src/View/AbstractDirectoryView.vala:3161
-#: src/View/AbstractDirectoryView.vala:3178
+#: src/View/AbstractDirectoryView.vala:2977
+#: src/View/AbstractDirectoryView.vala:3152
+#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3180
 msgid "You do not have permission to change this location"
 msgstr "Нямате позволение да променяте това местоположение."
 
-#: src/View/AbstractDirectoryView.vala:3118
+#: src/View/AbstractDirectoryView.vala:3120
 msgid "Cannot copy files that are in the trash"
 msgstr "Не можете да копирате файловете, които са в кошчето."
 
-#: src/View/AbstractDirectoryView.vala:3119
+#: src/View/AbstractDirectoryView.vala:3121
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3149
-#: src/View/AbstractDirectoryView.vala:3160
+#: src/View/AbstractDirectoryView.vala:3151
+#: src/View/AbstractDirectoryView.vala:3162
 msgid "Cannot paste files here"
 msgstr "Не можете да поставяте файлове тук."
 
@@ -2393,7 +2348,7 @@ msgstr ""
 msgid "Closed Tabs"
 msgstr "Затваряне"
 
-#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:395
+#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:386
 msgid "Open in New Window"
 msgstr "Отваряне в нов прозорец"
 
@@ -2589,16 +2544,16 @@ msgstr "Времето за изчакване на операцията изт�
 msgid "No operation to redo"
 msgstr "Времето за изчакване на операцията изтече."
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:134
+#: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:199
 msgid "Search or Type Path"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:388
+#: src/View/Widgets/BreadcrumbsEntry.vala:379
 msgid "Open in New Tab"
 msgstr "Отваряне в нов подпрозорец"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open in Other Application…"
 msgstr "Отваряне с друга програма..."
 
@@ -2696,6 +2651,36 @@ msgstr "В тази папка"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Скорошни"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Replace"
+#~ msgstr "Заместване"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Modify"
+#~ msgstr "Промяна"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Name"
+#~ msgstr "Име"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Date created"
+#~ msgstr "Създаване"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Date modified"
+#~ msgstr "Промяна"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Size"
+#~ msgstr "Размер"
 
 #, fuzzy
 #~| msgid "New"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-04 11:41+0000\n"
+"POT-Creation-Date: 2024-02-18 13:10+0000\n"
 "PO-Revision-Date: 2023-11-01 19:10+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
@@ -209,7 +209,7 @@ msgstr "Kopioi tähän"
 msgid "Link Here"
 msgstr "Linkitä tänne"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2324
+#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2326
 msgid "Name"
 msgstr "Nimi"
 
@@ -222,7 +222,7 @@ msgstr "Luontipäivä"
 msgid "Last modification date"
 msgstr "Viimeisimmän muokkauksen päivä"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2329
+#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2331
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Koko"
@@ -235,7 +235,7 @@ msgstr "Numerosarja"
 msgid "Text"
 msgstr "Teksti"
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2339
+#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2341
 msgid "Date"
 msgstr "Päivä"
 
@@ -1145,7 +1145,7 @@ msgid "_Unmount"
 msgstr "_Irrota"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2039
+#: src/View/AbstractDirectoryView.vala:2041
 msgid "Properties"
 msgstr "Ominaisuudet"
 
@@ -1157,7 +1157,7 @@ msgstr "Irrota media"
 msgid "Safely Remove"
 msgstr "Poista turvallisesti"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2032
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2034
 msgid "Add to Bookmarks"
 msgstr "Lisää kirjanmerkkeihin"
 
@@ -1529,17 +1529,17 @@ msgstr ""
 "Poistettuja tietueita ei siirretä roskakoriin, eivätkä ne ole "
 "palautettavissa."
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:183
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:189
 #, c-format
 msgid "Navigate to %s"
 msgstr "Siirry kohteeseen %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:290
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:300
 #, c-format
 msgid "Go to %s"
 msgstr "Siirry kohteeseen %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:367
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:377
 msgid "Type Path"
 msgstr "Kirjoita polku"
 
@@ -1597,8 +1597,8 @@ msgstr "Näytä ohjelman versio"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Avaa yksi tai useampi URI, jokainen omaan välilehteensä"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1920
-#: src/View/AbstractDirectoryView.vala:1926
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1922
+#: src/View/AbstractDirectoryView.vala:1928
 msgid "New Window"
 msgstr "Uusi ikkuna"
 
@@ -1733,21 +1733,6 @@ msgstr "Lisää jälkiliite…"
 msgid "Basename:"
 msgstr "Perusnimi:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
-msgctxt "bulk-rename"
-msgid "Keep"
-msgstr "Säilytä"
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-msgctxt "bulk-rename"
-msgid "Replace"
-msgstr "Korvaa"
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-msgctxt "bulk-rename"
-msgid "Modify"
-msgstr "Muokkaa"
-
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
 msgid "Original Basename"
@@ -1760,30 +1745,6 @@ msgstr "Korvaava teksti"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
 msgstr "Numero järjestyksessä:"
-
-#. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:190
-msgctxt "bulk-rename"
-msgid "Name"
-msgstr "Nimi"
-
-#. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
-msgctxt "bulk-rename"
-msgid "Date created"
-msgstr "Luontipäivä"
-
-#. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
-msgctxt "bulk-rename"
-msgid "Date modified"
-msgstr "Muokkauspäivä"
-
-#. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
-msgctxt "bulk-rename"
-msgid "Size"
-msgstr "Koko"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
@@ -1909,7 +1870,7 @@ msgid "Original Location:"
 msgstr "Alkuperäinen sijainti:"
 
 #: src/Dialogs/PropertiesWindow.vala:671
-#: src/View/AbstractDirectoryView.vala:2007
+#: src/View/AbstractDirectoryView.vala:2009
 msgid "Other Application…"
 msgstr "Muu sovellus…"
 
@@ -1992,18 +1953,18 @@ msgstr "URI:en avaaminen ei onnistunut"
 msgid "Could not open files or URIs with this app"
 msgstr "Tiedostojen tai URI:en avaaminen tällä sovelluksella ei onnistu"
 
-#: src/View/AbstractDirectoryView.vala:856
-#: src/View/AbstractDirectoryView.vala:1183
+#: src/View/AbstractDirectoryView.vala:858
+#: src/View/AbstractDirectoryView.vala:1185
 msgid "Cannot execute this file"
 msgstr "Tätä tiedostoa ei voida suorittaa"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:866
+#: src/View/AbstractDirectoryView.vala:868
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "“%s” tulee siirtää pois roskakorista ennen avaamista"
 
-#: src/View/AbstractDirectoryView.vala:867
+#: src/View/AbstractDirectoryView.vala:869
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -2011,164 +1972,164 @@ msgstr ""
 "Roskakorin sisällä olevia tiedostoja ei voi avata. Jos haluat avata tämän "
 "tiedoston, siirrä se jonnekin muualle."
 
-#: src/View/AbstractDirectoryView.vala:882
+#: src/View/AbstractDirectoryView.vala:884
 msgid "Cannot open this file"
 msgstr "Tämän tiedoston avaaminen ei onnistu"
 
-#: src/View/AbstractDirectoryView.vala:895
+#: src/View/AbstractDirectoryView.vala:897
 msgid "Cannot identify file type to open"
 msgstr "Avattavan tiedoston tiedostotyyppiä ei tunnistettu"
 
-#: src/View/AbstractDirectoryView.vala:1632
+#: src/View/AbstractDirectoryView.vala:1634
 msgid "Cannot drop this file"
 msgstr "Tämän tiedoston pudottaminen ei onnistu"
 
-#: src/View/AbstractDirectoryView.vala:1633
+#: src/View/AbstractDirectoryView.vala:1635
 msgid "Invalid file name provided"
 msgstr "Virheellinen tiedostonimi"
 
-#: src/View/AbstractDirectoryView.vala:1903
-#: src/View/AbstractDirectoryView.vala:1909 src/View/Window.vala:238
+#: src/View/AbstractDirectoryView.vala:1905
+#: src/View/AbstractDirectoryView.vala:1911 src/View/Window.vala:238
 msgid "New Tab"
 msgstr "Uusi välilehti"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1945
 msgid "Run"
 msgstr "Suorita"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1952
 #, c-format
 msgid "Open in %s"
 msgstr "Avaa sovelluksella %s"
 
-#: src/View/AbstractDirectoryView.vala:2019
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Open in"
 msgstr "Avaa sovelluksella"
 
-#: src/View/AbstractDirectoryView.vala:2021
-#: src/View/Widgets/BreadcrumbsEntry.vala:431
+#: src/View/AbstractDirectoryView.vala:2023
+#: src/View/Widgets/BreadcrumbsEntry.vala:422
 msgid "Open with"
 msgstr "Avaa sovelluksella"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Select All"
 msgstr "Valitse kaikki"
 
-#: src/View/AbstractDirectoryView.vala:2061
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Invert Selection"
 msgstr "Käänteinen valinta"
 
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:2072
 msgid "Deselect All"
 msgstr "Älä valitse mitään"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2080
 msgid "Cut"
 msgstr "Leikkaa"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2088
 msgid "Copy"
 msgstr "Kopioi"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2095
 msgid "Move to Trash"
 msgstr "Siirrä roskakoriin"
 
-#: src/View/AbstractDirectoryView.vala:2098
+#: src/View/AbstractDirectoryView.vala:2100
 msgid "Delete Permanently"
 msgstr "Poista lopullisesti"
 
-#: src/View/AbstractDirectoryView.vala:2105
+#: src/View/AbstractDirectoryView.vala:2107
 msgid "Restore from Trash"
 msgstr "Palauta roskakorista"
 
-#: src/View/AbstractDirectoryView.vala:2128
+#: src/View/AbstractDirectoryView.vala:2130
 msgid "Open Parent Folder"
 msgstr "Avaa ylätason kansio"
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2133
 msgid "Remove from History"
 msgstr "Poista historiasta"
 
-#: src/View/AbstractDirectoryView.vala:2157
+#: src/View/AbstractDirectoryView.vala:2159
 msgid "Rename…"
 msgstr "Nimeä uudelleen…"
 
-#: src/View/AbstractDirectoryView.vala:2164
+#: src/View/AbstractDirectoryView.vala:2166
 msgid "Copy as Link"
 msgstr "Kopioi linkkinä"
 
-#: src/View/AbstractDirectoryView.vala:2187
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2269
 msgid "Paste Link into Folder"
 msgstr "Liitä linkki kansioon"
 
-#: src/View/AbstractDirectoryView.vala:2192
-#: src/View/AbstractDirectoryView.vala:2244
+#: src/View/AbstractDirectoryView.vala:2194
+#: src/View/AbstractDirectoryView.vala:2246
 msgid "Paste into Folder"
 msgstr "Liitä kansioon"
 
-#: src/View/AbstractDirectoryView.vala:2202
-#: src/View/AbstractDirectoryView.vala:2272
+#: src/View/AbstractDirectoryView.vala:2204
+#: src/View/AbstractDirectoryView.vala:2274
 msgid "Paste"
 msgstr "Liitä"
 
-#: src/View/AbstractDirectoryView.vala:2334 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2336 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Tyyppi"
 
-#: src/View/AbstractDirectoryView.vala:2344
+#: src/View/AbstractDirectoryView.vala:2346
 msgid "Reversed Order"
 msgstr "Käänteinen järjestys"
 
-#: src/View/AbstractDirectoryView.vala:2347
+#: src/View/AbstractDirectoryView.vala:2349
 msgid "Folders Before Files"
 msgstr "Kansiot ennen tiedostoja"
 
-#: src/View/AbstractDirectoryView.vala:2359
+#: src/View/AbstractDirectoryView.vala:2361
 msgid "Sort by"
 msgstr "Järjestä"
 
-#: src/View/AbstractDirectoryView.vala:2367
+#: src/View/AbstractDirectoryView.vala:2369
 msgid "Folder"
 msgstr "Kansio"
 
-#: src/View/AbstractDirectoryView.vala:2373
+#: src/View/AbstractDirectoryView.vala:2375
 msgid "Empty File"
 msgstr "Tyhjä tiedosto"
 
-#: src/View/AbstractDirectoryView.vala:2424
+#: src/View/AbstractDirectoryView.vala:2426
 msgid "New"
 msgstr "Uusi"
 
-#: src/View/AbstractDirectoryView.vala:2668
+#: src/View/AbstractDirectoryView.vala:2670
 #, c-format
 msgid "Untitled %s"
 msgstr "Nimetön %s"
 
-#: src/View/AbstractDirectoryView.vala:2974
-#: src/View/AbstractDirectoryView.vala:3177
+#: src/View/AbstractDirectoryView.vala:2976
+#: src/View/AbstractDirectoryView.vala:3179
 msgid "Cannot remove files from here"
 msgstr "Tiedostojen poistaminen täältä ei onnistu"
 
-#: src/View/AbstractDirectoryView.vala:2975
-#: src/View/AbstractDirectoryView.vala:3150
-#: src/View/AbstractDirectoryView.vala:3161
-#: src/View/AbstractDirectoryView.vala:3178
+#: src/View/AbstractDirectoryView.vala:2977
+#: src/View/AbstractDirectoryView.vala:3152
+#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3180
 msgid "You do not have permission to change this location"
 msgstr "Sinulla ei ole käyttöoikeutta muuttaa tätä sijaintia"
 
-#: src/View/AbstractDirectoryView.vala:3118
+#: src/View/AbstractDirectoryView.vala:3120
 msgid "Cannot copy files that are in the trash"
 msgstr "Roskakorissa olevia tiedostoja ei voi kopioida"
 
-#: src/View/AbstractDirectoryView.vala:3119
+#: src/View/AbstractDirectoryView.vala:3121
 msgid "Cutting the selection instead"
 msgstr "Sen sijaan leikataan valinta"
 
-#: src/View/AbstractDirectoryView.vala:3149
-#: src/View/AbstractDirectoryView.vala:3160
+#: src/View/AbstractDirectoryView.vala:3151
+#: src/View/AbstractDirectoryView.vala:3162
 msgid "Cannot paste files here"
 msgstr "Tiedostoja ei voi liittää tänne"
 
@@ -2306,7 +2267,7 @@ msgstr "Valikko"
 msgid "Closed Tabs"
 msgstr "Suljetut välilehdet"
 
-#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:395
+#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:386
 msgid "Open in New Window"
 msgstr "Avaa uudessa ikkunassa"
 
@@ -2487,16 +2448,16 @@ msgstr "Ei kumottavaa toimintoa"
 msgid "No operation to redo"
 msgstr "Ei uudelleentehtävää toimintoa"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:134
+#: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:199
 msgid "Search or Type Path"
 msgstr "Etsi tai kirjoita polku"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:388
+#: src/View/Widgets/BreadcrumbsEntry.vala:379
 msgid "Open in New Tab"
 msgstr "Avaa uudessa välilehdessä"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open in Other Application…"
 msgstr "Avaa muussa sovelluksessa…"
 
@@ -2591,6 +2552,34 @@ msgstr "Tämän kansion alapuolella"
 #: src/View/Widgets/SearchResults.vala:289
 msgid "Recently Used"
 msgstr "Äskettäin käytetty"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Keep"
+#~ msgstr "Säilytä"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Replace"
+#~ msgstr "Korvaa"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Modify"
+#~ msgstr "Muokkaa"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Name"
+#~ msgstr "Nimi"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Date created"
+#~ msgstr "Luontipäivä"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Date modified"
+#~ msgstr "Muokkauspäivä"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Size"
+#~ msgstr "Koko"
 
 #~ msgid "Undo Close Tab"
 #~ msgstr "Kumoa välilehden sulkeminen"
