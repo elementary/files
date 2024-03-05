@@ -141,7 +141,6 @@ namespace Files.View.Chrome {
         Gtk.TreeModelFilter filter;
         Gtk.ScrolledWindow scroll;
         public Gtk.Widget delegate_widget { get; construct; }
-
         private Gtk.GestureMultiPress search_tree_view_button_controller;
         private Gtk.EventControllerKey key_controller;
 
@@ -253,7 +252,6 @@ namespace Files.View.Chrome {
                 button = 0,
                 propagation_phase = BUBBLE
             };
-
             search_tree_view_button_controller.pressed.connect ((n_press, x, y) => {
                 Gtk.TreePath path;
                 Gtk.TreeIter iter;
@@ -272,7 +270,6 @@ namespace Files.View.Chrome {
             key_controller = new Gtk.EventControllerKey (this) {
                 propagation_phase = CAPTURE
             };
-
             key_controller.key_pressed.connect (on_key_pressed_event);
         }
 
@@ -318,6 +315,7 @@ namespace Files.View.Chrome {
         public void cancel () {
             /* popdown first to avoid unwanted cursor change signals */
             popdown ();
+
             if (current_operation != null) {
                 current_operation.cancel ();
             }
@@ -409,7 +407,6 @@ namespace Files.View.Chrome {
                 allow_adding_results = true;
 
                 var it = waiting_results.map_iterator ();
-
                 while (it.next ()) {
                     add_results (it.get_value (), it.get_key ());
                 }
@@ -477,6 +474,7 @@ namespace Files.View.Chrome {
                         cancel (); /* release any grab */
                         exit (false); /* Do not exit navigate mode */
                         return true;
+                        //TODO CLAIM?
                     } else {
                         return key_controller.forward (delegate_widget);
                     }
@@ -534,7 +532,6 @@ namespace Files.View.Chrome {
         void select_first () {
             Gtk.TreeIter iter;
             list.get_iter_first (out iter);
-
             do {
                 if (!list.iter_has_child (iter)) {
                     continue;
@@ -551,9 +548,7 @@ namespace Files.View.Chrome {
 
         void select_last () {
             Gtk.TreeIter iter;
-
             list.iter_nth_child (out iter, null, filter.iter_n_children (null) - 1);
-
             do {
                 if (!list.iter_has_child (iter)) {
                     continue;
@@ -611,7 +606,6 @@ namespace Files.View.Chrome {
         int n_matches (out int n_headers = null) {
             var matches = 0;
             n_headers = 0;
-
             Gtk.TreeIter iter;
             for (var valid = list.get_iter_first (out iter); valid; valid = list.iter_next (ref iter)) {
                 var n_children = list.iter_n_children (iter);
