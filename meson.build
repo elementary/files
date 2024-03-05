@@ -1,8 +1,8 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '6.5.3',
-    meson_version: '>= 0.59.0'
+    version: '7.0.0',
+    meson_version: '>= 1.3.0'
 )
 
 #
@@ -26,7 +26,7 @@ add_project_arguments(
 #
 # Define Vala minimal version
 #
-vala_version_required = '0.50.0'
+vala_version_required = '0.56.0'
 vala = meson.get_compiler('vala')
 cc = meson.get_compiler('c')
 
@@ -37,17 +37,16 @@ endif
 #
 # Project dependencies
 #
-min_glib_version = '2.64.6'
-
+min_glib_version = '2.78'
 glib_dep = dependency('glib-2.0', version: '>='+min_glib_version)
 gobject_dep = dependency('gobject-2.0', version: '>='+min_glib_version)
 gio_dep = dependency('gio-2.0', version: '>='+min_glib_version)
 gio_unix_dep = dependency('gio-unix-2.0', version: '>='+min_glib_version)
 gmodule_dep = dependency('gmodule-2.0', version: '>='+min_glib_version)
-gee_dep = dependency('gee-0.8')
-gtk_dep = dependency('gtk+-3.0', version: '>=3.22.25')
-granite_dep = dependency('granite', version: '>=6.1.0')
-handy_dep = dependency('libhandy-1', version: '>=0.83.0')
+gee_dep = dependency('gee-0.8', version: '>=0.20')
+gtk_dep = dependency('gtk4', version: '>=4.1')
+granite_dep = dependency('granite-7', version: '>=7.0.0')
+adwaita_dep = dependency('libadwaita-1')
 
 common_deps = [
     glib_dep,
@@ -60,23 +59,22 @@ common_deps = [
     granite_dep
 ]
 
-pango_dep = dependency('pango', version: '>=1.1.2')
-sqlite3_dep = dependency('sqlite3')
+pango_dep = dependency('pango', version: '>=1.50.0')
+# sqlite3_dep = dependency('sqlite3')
 libcanberra_dep = dependency('libcanberra', version: '>=0.30')
-
 posix_dep = vala.find_library('posix')
 linux_dep = vala.find_library('linux')
 math_dep = cc.find_library('m')
 
-zeitgeist_dep = dependency('zeitgeist-2.0', required: get_option('with-zeitgeist'))
-if (zeitgeist_dep.found())
-    add_project_arguments('--define=HAVE_ZEITGEIST', language: 'vala')
-endif
+# zeitgeist_dep = dependency('zeitgeist-2.0', required: get_option('with-zeitgeist'))
+# if (zeitgeist_dep.found())
+#     add_project_arguments('--define=HAVE_ZEITGEIST', language: 'vala')
+# endif
 
-add_project_arguments(
-    ['--vapidir', join_paths(meson.current_source_dir(), 'vapi')],
-    language: 'vala'
-)
+# add_project_arguments(
+#     ['--vapidir', join_paths(meson.current_source_dir(), 'vapi')],
+#     language: 'vala'
+# )
 
 
 #Configuration file
@@ -110,9 +108,9 @@ resources = gnome.compile_resources(
 subdir('libcore')
 subdir('src')
 subdir('data')
-subdir('pantheon-files-daemon')
-subdir('plugins')
-subdir('filechooser-portal')
+# subdir('pantheon-files-daemon')
+# subdir('plugins')
+# subdir('filechooser-portal')
 subdir('po')
 
 gnome.post_install(
