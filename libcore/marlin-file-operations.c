@@ -447,9 +447,10 @@ delete_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_sk
         }
     }
 
-    PFSoundManager *sm;
-    sm = pf_sound_manager_get_instance (); /* returns unowned instance - no need to unref */
-    pf_sound_manager_play_delete_sound (sm);
+    //TODO Port to Gtk4
+    // PFSoundManager *sm;
+    // sm = pf_sound_manager_get_instance (); /* returns unowned instance - no need to unref */
+    // pf_sound_manager_play_delete_sound (sm);
 }
 
 static void
@@ -2757,8 +2758,6 @@ report_move_progress (FilesFileOperationsCopyMoveJob *move_job, int total, int l
 typedef struct {
     GFile *file;
     gboolean overwrite;
-    gboolean has_position;
-    GdkPoint position;
 } MoveFileCopyFallback;
 
 static MoveFileCopyFallback *

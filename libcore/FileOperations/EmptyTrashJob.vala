@@ -100,7 +100,7 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
                 };
 
                 unowned var empty_button = message_dialog.add_button (EMPTY_TRASH, Gtk.ResponseType.YES);
-                empty_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                empty_button.get_style_context ().add_class (Granite.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
                 message_dialog.response.connect ((response) => {
                     if (response == Gtk.ResponseType.YES) {
@@ -129,6 +129,7 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
 
         /* There is no job callback after emptying trash */
         Files.UndoManager.instance ().trash_has_emptied ();
-        PF.SoundManager.get_instance ().play_empty_trash_sound ();
+        //TODO Port SoundManager to Gtk4
+        // PF.SoundManager.get_instance ().play_empty_trash_sound ();
     }
 }

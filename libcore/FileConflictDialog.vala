@@ -66,13 +66,14 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         source = Files.File.@get (_source);
         destination = Files.File.@get (_destination);
         destination.query_update ();
-        var thumbnailer = Files.Thumbnailer.get ();
-        thumbnailer.finished.connect (() => {
-            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   Files.File.IconFlags.USE_THUMBNAILS);
-        });
+        //TODO Port thumbnailer to Gtk4
+        // var thumbnailer = Files.Thumbnailer.get ();
+        // thumbnailer.finished.connect (() => {
+        //     destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
+        //                                                            Files.File.IconFlags.USE_THUMBNAILS);
+        // });
 
-        thumbnailer.queue_file (destination, null, false);
+        // thumbnailer.queue_file (destination, null, false);
         destination_size_label.label = destination.format_size;
         destination_time_label.label = destination.formated_modified;
 
@@ -167,8 +168,8 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
             margin_top = 6,
             margin_bottom = 6
         };
-        expander_box.add (rename_entry);
-        expander_box.add (reset_button);
+        expander_box.append (rename_entry);
+        expander_box.append (reset_button);
 
         var expander = new Gtk.Expander.with_mnemonic (_("_Select a new name for the destination")) {
             child = expander_box
@@ -185,7 +186,7 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
 
         replace_button = (Gtk.Button) add_button (_("Replace"), ResponseType.REPLACE);
-        replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+        replace_button.add_css_class (Granite.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
         var comparison_grid = new Gtk.Grid () {
             column_spacing = 6,
@@ -211,12 +212,12 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         comparison_grid.attach (source_time_label, 2, 7, 1, 1);
 
         var box = new Gtk.Box (VERTICAL, 6);
-        box.add (comparison_grid);
-        box.add (expander);
-        box.add (apply_all_checkbutton);
-        box.show_all ();
+        box.append (comparison_grid);
+        box.append (expander);
+        box.append (apply_all_checkbutton);
+        // box.show_all ();
 
-        custom_bin.child = box;
+        custom_bin.append (box);
 
         source_type_label.bind_property ("visible", source_type_title_label, "visible");
         destination_type_label.bind_property ("visible", destination_type_title_label, "visible");
@@ -325,14 +326,12 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
             source_type_label.label = src_ftype;
         } else {
             source_type_label.visible = false;
-            source_type_label.no_show_all = true;
         }
 
         if (should_show_type && dest_ftype != null) {
             destination_type_label.label = dest_ftype;
         } else {
             destination_type_label.visible = false;
-            destination_type_label.no_show_all = true;
         }
 
         /* Populate the entry */

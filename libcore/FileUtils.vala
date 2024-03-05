@@ -186,34 +186,37 @@ namespace Files.FileUtils {
         recreate_button.tooltip_text =
              _ ("The folder will be recreated and selected files that were originally there will be restored to it");
 
+        var success = false;
         dialog.set_default_response (Gtk.ResponseType.ACCEPT);
+        dialog.response.connect ((res) => {
+            dialog.destroy ();
+            switch (res) {
+                case Gtk.ResponseType.ACCEPT:
+                    try {
+                        file.make_directory_with_parents ();
+                        success = true;
+                    } catch (Error e) {
+                        var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                            _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
+                            e.message,
+                            "dialog-error",
+                            Gtk.ButtonsType.CLOSE
+                        );
 
-        var response = dialog.run ();
-        dialog.destroy ();
-        switch (response) {
-            case Gtk.ResponseType.ACCEPT:
-                try {
-                    file.make_directory_with_parents ();
-                    return true;
-                } catch (Error e) {
-                    var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
-                        _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
-                        e.message,
-                        "dialog-error",
-                        Gtk.ButtonsType.CLOSE
-                    );
+                        error_dialog.present ();
+                        error_dialog.destroy ();
+                    }
 
-                    error_dialog.run ();
-                    error_dialog.destroy ();
-                }
+                    break;
 
-                break;
+                default:
+                    break;
+            }
+        });
 
-            default:
-                break;
-        }
+        dialog.present ();
 
-        return false;
+        return success;
     }
 
     public string? get_path_for_symlink (GLib.File file) {
