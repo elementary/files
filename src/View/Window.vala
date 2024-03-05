@@ -177,10 +177,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             Files.app_settings.bind ("sidebar-width", lside_pane,
                                        "position", SettingsBindFlags.DEFAULT);
 
-            var state = (Files.WindowState)(Files.app_settings.get_enum ("window-state"));
-            if (state == Files.WindowState.MAXIMIZED) {
-                maximize ();
-            }
+            // var state = (Files.WindowState)(Files.app_settings.get_enum ("window-state"));
+            // if (state == Files.WindowState.MAXIMIZED) {
+            //     maximize ();
+            // }
         }
 
         loading_uri.connect (update_labels);
@@ -358,13 +358,13 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         });
 
         //TODO Rewrite for Gtk4
-        window_state_event.connect ((event) => {
-            if (Gdk.WindowState.ICONIFIED in event.changed_mask) {
-                location_bar.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
-            }
+        // window_state_event.connect ((event) => {
+        //     if (Gdk.WindowState.ICONIFIED in event.changed_mask) {
+        //         location_bar.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
+        //     }
 
-            return false;
-        });
+        //     return false;
+        // });
 
         delete_event.connect (() => {
             quit ();
@@ -1161,24 +1161,24 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         sidebar_width = int.max (sidebar_width, min_width);
         Files.app_settings.set_int ("sidebar-width", sidebar_width);
 
-        var state = get_window ().get_state ();
-        // TODO: replace with Gtk.Window.fullscreened in Gtk4
-        if (is_maximized || Gdk.WindowState.FULLSCREEN in state) {
-            Files.app_settings.set_enum (
-                "window-state", Files.WindowState.MAXIMIZED
-            );
-        } else {
-            Files.app_settings.set_enum (
-                "window-state", Files.WindowState.NORMAL
-            );
+        // var state = get_window ().get_state ();
+        // // TODO: replace with Gtk.Window.fullscreened in Gtk4
+        // if (is_maximized || Gdk.WindowState.FULLSCREEN in state) {
+        //     Files.app_settings.set_enum (
+        //         "window-state", Files.WindowState.MAXIMIZED
+        //     );
+        // } else {
+        //     Files.app_settings.set_enum (
+        //         "window-state", Files.WindowState.NORMAL
+        //     );
 
-            if (!(Gdk.WindowState.TILED in state)) {
-                int width, height;
-                // Includes shadow for normal windows (but not maximized or tiled)
-                get_size (out width, out height);
-                Files.app_settings.set ("window-size", "(ii)", width, height);
-            }
-        }
+        //     if (!(Gdk.WindowState.TILED in state)) {
+        //         int width, height;
+        //         // Includes shadow for normal windows (but not maximized or tiled)
+        //         get_size (out width, out height);
+        //         Files.app_settings.set ("window-size", "(ii)", width, height);
+        //     }
+        // }
     }
 
     private void save_tabs () {

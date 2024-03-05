@@ -11,7 +11,7 @@ pantheon_files_core_deps = [
 ]
 
 pantheon_files_core_vala_files = files(
-    # 'AbstractSlot.vala',
+    'AbstractSlot.vala',
     # 'Bookmark.vala',
     # 'BookmarkList.vala',
     'CallWhenReady.vala',
@@ -19,7 +19,7 @@ pantheon_files_core_vala_files = files(
     # 'ConnectServerDialog.vala',
     'Directory.vala',
     # 'DndHandler.vala',
-    # 'Enums.vala',
+    'Enums.vala',
     'File.vala',
     'FileChanges.vala',
     'FileConflictDialog.vala',

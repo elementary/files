@@ -19,30 +19,30 @@
  ***/
 
 namespace Files {
-    public enum WindowState {
-        NORMAL,
-        MAXIMIZED,
-        INVALID;
+    // public enum WindowState {
+    //     NORMAL,
+    //     MAXIMIZED,
+    //     INVALID;
 
-        public string to_string () {
-            switch (this) {
-                case NORMAL:
-                    return "Marlin.WindowState.NORMAL";
-                case MAXIMIZED:
-                    return "Marlin.WindowState.MAXIMIZED";
-                default:
-                    return "Marlin.WindowState.INVALID";
-            }
-        }
+    //     public string to_string () {
+    //         switch (this) {
+    //             case NORMAL:
+    //                 return "Marlin.WindowState.NORMAL";
+    //             case MAXIMIZED:
+    //                 return "Marlin.WindowState.MAXIMIZED";
+    //             default:
+    //                 return "Marlin.WindowState.INVALID";
+    //         }
+    //     }
 
-        public static Files.WindowState from_gdk_window_state (Gdk.WindowState state) {
-            if (Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state) {
-                return Files.WindowState.MAXIMIZED;
-            } else {
-                return Files.WindowState.NORMAL;
-            }
-        }
-    }
+    //     public static Files.WindowState from_gdk_window_state (Gdk.WindowState state) {
+    //         if (Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state) {
+    //             return Files.WindowState.MAXIMIZED;
+    //         } else {
+    //             return Files.WindowState.NORMAL;
+    //         }
+    //     }
+    // }
 
     public enum ViewMode {
         /* First three modes must match the corresponding mode switch indices */
