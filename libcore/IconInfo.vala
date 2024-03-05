@@ -55,7 +55,7 @@ public class Files.IconInfo : GLib.Object {
             if ((width >= 1 || width == -1) && (height >= 1 || height == -1)) {
                 try {
                     pixbuf = new Gdk.Pixbuf.from_file_at_scale (
-                        str_icon, 
+                        str_icon,
                         int.min (size, width) * scale,
                         int.min (size, height) * scale, true
                     );
@@ -74,7 +74,7 @@ public class Files.IconInfo : GLib.Object {
             //TODO Deal with ThemedIcon if required
             return null;
         } else {
-            //TODO Deal with other 
+            //TODO Deal with other
             return null;
         }
     }
@@ -119,7 +119,7 @@ public class Files.IconInfo : GLib.Object {
                 theme_name = "hicolor"
             };
         }
-        
+
         return theme;
     }
 

@@ -354,7 +354,7 @@ namespace Files {
                     propagation_phase = NONE
                 };
                 scroll_controller.scroll.connect (on_scroll_event);
-                
+
                 motion_controller = new Gtk.EventControllerMotion (view) {
                     propagation_phase = CAPTURE
                 };
