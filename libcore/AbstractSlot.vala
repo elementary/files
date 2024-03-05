@@ -73,17 +73,20 @@ namespace Files {
         public signal void directory_loaded (Files.Directory dir);
 
         public void add_extra_widget (Gtk.Widget widget) {
-            extra_location_widgets.pack_start (widget);
+            extra_location_widgets.prepend (widget);
         }
 
         public void add_extra_action_widget (Gtk.Widget widget) {
-            extra_action_widgets.pack_start (widget);
+            extra_action_widgets.prepend (widget);
         }
 
         public void add_overlay (Gtk.Widget widget) {
-            overlay = new Gtk.Overlay ();
-            content_box.pack_start (overlay, true, true, 0);
-            overlay.add (widget);
+            overlay = new Gtk.Overlay () {
+                hexpand = true,
+                vexpand = true
+            };
+            content_box.prepend (overlay);
+            overlay.child = widget;
         }
 
         construct {
@@ -93,10 +96,10 @@ namespace Files {
             };
 
             extra_location_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-            content_box.pack_start (extra_location_widgets, false, false, 0);
+            content_box.prepend (extra_location_widgets);
 
             extra_action_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-            content_box.pack_end (extra_action_widgets, false, false, 0);
+            content_box.append (extra_action_widgets);
             slot_number = -1;
         }
 
