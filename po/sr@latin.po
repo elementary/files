@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-13 19:10+0000\n"
+"POT-Creation-Date: 2024-02-18 13:10+0000\n"
 "PO-Revision-Date: 2016-06-30 19:09+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Serbian Latin <sr@latin@li.org>\n"
@@ -219,7 +219,7 @@ msgstr ""
 msgid "Link Here"
 msgstr ""
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2357
+#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2326
 msgid "Name"
 msgstr ""
 
@@ -233,7 +233,7 @@ msgstr "Napravi"
 msgid "Last modification date"
 msgstr ""
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2362
+#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2331
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Veličina"
@@ -246,7 +246,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2372
+#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2341
 msgid "Date"
 msgstr ""
 
@@ -1152,7 +1152,7 @@ msgid "_Unmount"
 msgstr ""
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2072
+#: src/View/AbstractDirectoryView.vala:2041
 msgid "Properties"
 msgstr "Osobine"
 
@@ -1164,7 +1164,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2065
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2034
 msgid "Add to Bookmarks"
 msgstr ""
 
@@ -1462,26 +1462,26 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: libcore/FileOperations/EmptyTrashJob.vala:40
+#: libcore/FileOperations/EmptyTrashJob.vala:76
+msgid "Emptying Trash"
+msgstr ""
+
+#: libcore/FileOperations/EmptyTrashJob.vala:85
 msgid "Permanently delete all items from Trash?"
 msgstr ""
 
-#: libcore/FileOperations/EmptyTrashJob.vala:41
+#: libcore/FileOperations/EmptyTrashJob.vala:86
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
 
-#: libcore/FileOperations/EmptyTrashJob.vala:44
+#: libcore/FileOperations/EmptyTrashJob.vala:89
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
 
-#: libcore/FileOperations/EmptyTrashJob.vala:45
+#: libcore/FileOperations/EmptyTrashJob.vala:90
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
-
-#: libcore/FileOperations/EmptyTrashJob.vala:111
-msgid "Emptying Trash"
 msgstr ""
 
 #: libcore/FileOperations/MountUtils.vala:31
@@ -1540,17 +1540,17 @@ msgstr[1] ""
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:178
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:189
 #, c-format
 msgid "Navigate to %s"
 msgstr ""
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:304
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:300
 #, c-format
 msgid "Go to %s"
 msgstr ""
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:386
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:377
 #, fuzzy
 msgid "Type Path"
 msgstr "Tip"
@@ -1593,47 +1593,47 @@ msgstr " izabrano"
 msgid "Send by Email"
 msgstr ""
 
-#: src/Application.vala:67
+#: src/Application.vala:64
 msgid ""
 "\n"
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
 
-#: src/Application.vala:68
+#: src/Application.vala:65
 msgid "Show the version of the program"
 msgstr ""
 
-#: src/Application.vala:74
+#: src/Application.vala:71
 msgid "Open one or more URIs, each in their own tab"
 msgstr ""
 
-#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1953
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1922
+#: src/View/AbstractDirectoryView.vala:1928
 msgid "New Window"
 msgstr ""
 
-#: src/Application.vala:76
+#: src/Application.vala:73
 msgid "Quit Files"
 msgstr ""
 
-#: src/Application.vala:77
+#: src/Application.vala:74
 msgid "Enable debug logging"
 msgstr ""
 
-#: src/Application.vala:80
+#: src/Application.vala:77
 msgid "[URI…]"
 msgstr ""
 
-#: src/Application.vala:92
+#: src/Application.vala:89
 msgid "Error: Running Files as root using sudo is not possible."
 msgstr ""
 
-#: src/Application.vala:93
+#: src/Application.vala:90
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
 msgstr ""
 
-#: src/Application.vala:110
+#: src/Application.vala:107
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
@@ -1745,22 +1745,6 @@ msgstr ""
 msgid "Basename:"
 msgstr "_Korisničko ime:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
-msgctxt "bulk-rename"
-msgid "Keep"
-msgstr ""
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-msgctxt "bulk-rename"
-msgid "Replace"
-msgstr ""
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Modify"
-msgstr "Izmenjeno"
-
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
 msgid "Original Basename"
@@ -1773,33 +1757,6 @@ msgstr ""
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
 msgstr ""
-
-#. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:190
-msgctxt "bulk-rename"
-msgid "Name"
-msgstr ""
-
-#. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Date created"
-msgstr "Napravi"
-
-#. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Date modified"
-msgstr "Izmenjeno"
-
-#. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Size"
-msgstr "Veličina"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
@@ -1924,7 +1881,7 @@ msgid "Original Location:"
 msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:671
-#: src/View/AbstractDirectoryView.vala:2040
+#: src/View/AbstractDirectoryView.vala:2009
 msgid "Other Application…"
 msgstr ""
 
@@ -2007,186 +1964,186 @@ msgstr ""
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:842
-#: src/View/AbstractDirectoryView.vala:1165
+#: src/View/AbstractDirectoryView.vala:858
+#: src/View/AbstractDirectoryView.vala:1185
 msgid "Cannot execute this file"
 msgstr ""
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:852
+#: src/View/AbstractDirectoryView.vala:868
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:853
+#: src/View/AbstractDirectoryView.vala:869
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:868
+#: src/View/AbstractDirectoryView.vala:884
 msgid "Cannot open this file"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:881
+#: src/View/AbstractDirectoryView.vala:897
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1651
+#: src/View/AbstractDirectoryView.vala:1634
 msgid "Cannot drop this file"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1652
+#: src/View/AbstractDirectoryView.vala:1635
 msgid "Invalid file name provided"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1936
-#: src/View/AbstractDirectoryView.vala:1942 src/View/Window.vala:234
+#: src/View/AbstractDirectoryView.vala:1905
+#: src/View/AbstractDirectoryView.vala:1911 src/View/Window.vala:238
 msgid "New Tab"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1976
+#: src/View/AbstractDirectoryView.vala:1945
 msgid "Run"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1983
+#: src/View/AbstractDirectoryView.vala:1952
 #, c-format
 msgid "Open in %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Open in"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2054
-#: src/View/Widgets/BreadcrumbsEntry.vala:493
+#: src/View/AbstractDirectoryView.vala:2023
+#: src/View/Widgets/BreadcrumbsEntry.vala:422
 msgid "Open with"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2094
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2103
+#: src/View/AbstractDirectoryView.vala:2072
 msgid "Deselect All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2111
+#: src/View/AbstractDirectoryView.vala:2080
 msgid "Cut"
 msgstr ""
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2119
+#: src/View/AbstractDirectoryView.vala:2088
 msgid "Copy"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2126
+#: src/View/AbstractDirectoryView.vala:2095
 msgid "Move to Trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2100
 #, fuzzy
 msgid "Delete Permanently"
 msgstr " izabrano"
 
-#: src/View/AbstractDirectoryView.vala:2138
+#: src/View/AbstractDirectoryView.vala:2107
 msgid "Restore from Trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2161
+#: src/View/AbstractDirectoryView.vala:2130
 msgid "Open Parent Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2164
+#: src/View/AbstractDirectoryView.vala:2133
 msgid "Remove from History"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2159
 msgid "Rename…"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2166
 msgid "Copy as Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2220
-#: src/View/AbstractDirectoryView.vala:2300
+#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2269
 msgid "Paste Link into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2225
-#: src/View/AbstractDirectoryView.vala:2277
+#: src/View/AbstractDirectoryView.vala:2194
+#: src/View/AbstractDirectoryView.vala:2246
 msgid "Paste into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2235
-#: src/View/AbstractDirectoryView.vala:2305
+#: src/View/AbstractDirectoryView.vala:2204
+#: src/View/AbstractDirectoryView.vala:2274
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2367 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2336 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Tip"
 
-#: src/View/AbstractDirectoryView.vala:2377
+#: src/View/AbstractDirectoryView.vala:2346
 msgid "Reversed Order"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2380
+#: src/View/AbstractDirectoryView.vala:2349
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2392
+#: src/View/AbstractDirectoryView.vala:2361
 msgid "Sort by"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2400
+#: src/View/AbstractDirectoryView.vala:2369
 msgid "Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2406
+#: src/View/AbstractDirectoryView.vala:2375
 msgid "Empty File"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2457
+#: src/View/AbstractDirectoryView.vala:2426
 msgid "New"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2701
+#: src/View/AbstractDirectoryView.vala:2670
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3023
-#: src/View/AbstractDirectoryView.vala:3216
+#: src/View/AbstractDirectoryView.vala:2976
+#: src/View/AbstractDirectoryView.vala:3179
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3024
-#: src/View/AbstractDirectoryView.vala:3189
-#: src/View/AbstractDirectoryView.vala:3200
-#: src/View/AbstractDirectoryView.vala:3217
+#: src/View/AbstractDirectoryView.vala:2977
+#: src/View/AbstractDirectoryView.vala:3152
+#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3180
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3157
+#: src/View/AbstractDirectoryView.vala:3120
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3158
+#: src/View/AbstractDirectoryView.vala:3121
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3188
-#: src/View/AbstractDirectoryView.vala:3199
+#: src/View/AbstractDirectoryView.vala:3151
+#: src/View/AbstractDirectoryView.vala:3162
 msgid "Cannot paste files here"
 msgstr ""
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:374
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
 msgstr ""
 
@@ -2252,100 +2209,100 @@ msgstr ""
 msgid "Access Denied"
 msgstr ""
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
+#: src/View/ViewContainer.vala:356 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "Početak"
 
-#: src/View/ViewContainer.vala:375
+#: src/View/ViewContainer.vala:378
 msgid "You cannot create a folder here."
 msgstr ""
 
-#: src/View/ViewContainer.vala:378
+#: src/View/ViewContainer.vala:383
 msgid "The network is unavailable"
 msgstr ""
 
-#: src/View/ViewContainer.vala:379
+#: src/View/ViewContainer.vala:385
 msgid "A working network is needed to reach this folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:382
+#: src/View/ViewContainer.vala:391
 msgid "This Folder Does Not Belong to You"
 msgstr ""
 
-#: src/View/ViewContainer.vala:383
+#: src/View/ViewContainer.vala:392
 msgid "You don't have permission to view this folder."
 msgstr "Nemate dozvolu za pregled ove fascikle."
 
-#: src/View/ViewContainer.vala:385
+#: src/View/ViewContainer.vala:396
 msgid "Unable to Mount Folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:386
+#: src/View/ViewContainer.vala:398
 msgid "Could not connect to the server for this folder."
 msgstr ""
 
-#: src/View/ViewContainer.vala:389
+#: src/View/ViewContainer.vala:404
 msgid "Unable to Display Folder Contents"
 msgstr ""
 
-#: src/View/ViewContainer.vala:390
+#: src/View/ViewContainer.vala:406
 msgid "The operation timed out."
 msgstr ""
 
-#: src/View/ViewContainer.vala:392
+#: src/View/ViewContainer.vala:412
 msgid "Unable to Show Folder"
 msgstr ""
 
-#: src/View/ViewContainer.vala:393
+#: src/View/ViewContainer.vala:414
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: src/View/ViewContainer.vala:404
+#: src/View/ViewContainer.vala:428
 msgid "File not Found"
 msgstr ""
 
-#: src/View/ViewContainer.vala:405
+#: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Window.vala:189
+#: src/View/Window.vala:193
 msgid "Previous"
 msgstr ""
 
-#: src/View/Window.vala:194
+#: src/View/Window.vala:198
 msgid "Next"
 msgstr ""
 
-#: src/View/Window.vala:209
+#: src/View/Window.vala:213
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:239
+#: src/View/Window.vala:243
 msgid "Closed Tabs"
 msgstr ""
 
-#: src/View/Window.vala:450 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:386
 msgid "Open in New Window"
 msgstr ""
 
-#: src/View/Window.vala:451
+#: src/View/Window.vala:461
 msgid "Duplicate Tab"
 msgstr ""
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:455
+#: src/View/Window.vala:465
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:456
+#: src/View/Window.vala:466
 msgid "Close Other Tabs"
 msgstr ""
 
-#: src/View/Window.vala:457
+#: src/View/Window.vala:467
 msgid "Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:738 src/View/Window.vala:748
+#: src/View/Window.vala:755 src/View/Window.vala:765
 msgid "(as Administrator)"
 msgstr "(kao Administrator)"
 
@@ -2508,16 +2465,16 @@ msgstr ""
 msgid "No operation to redo"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:124
+#: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:199
 msgid "Search or Type Path"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
+#: src/View/Widgets/BreadcrumbsEntry.vala:379
 msgid "Open in New Tab"
 msgstr "Otvori u novoj pregradi"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:500
+#: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open in Other Application…"
 msgstr ""
 
@@ -2616,6 +2573,26 @@ msgstr ""
 #: src/View/Widgets/SearchResults.vala:289
 msgid "Recently Used"
 msgstr ""
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Modify"
+#~ msgstr "Izmenjeno"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Date created"
+#~ msgstr "Napravi"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Date modified"
+#~ msgstr "Izmenjeno"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Size"
+#~ msgstr "Veličina"
 
 #, fuzzy
 #~| msgid "Network"

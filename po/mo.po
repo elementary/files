@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-13 19:10+0000\n"
+"POT-Creation-Date: 2024-02-18 13:10+0000\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -216,7 +216,7 @@ msgstr "Copiați aici"
 msgid "Link Here"
 msgstr "Link aici"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2357
+#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2326
 msgid "Name"
 msgstr "Nume"
 
@@ -231,7 +231,7 @@ msgstr "Creează"
 msgid "Last modification date"
 msgstr "Modificat ultima dată:"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2362
+#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2331
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Mărime"
@@ -244,7 +244,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2372
+#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2341
 msgid "Date"
 msgstr "Dată"
 
@@ -1162,7 +1162,7 @@ msgid "_Unmount"
 msgstr "_Dezmontează"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2072
+#: src/View/AbstractDirectoryView.vala:2041
 msgid "Properties"
 msgstr "Proprietăți"
 
@@ -1175,7 +1175,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "Elimină"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2065
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2034
 #, fuzzy
 msgid "Add to Bookmarks"
 msgstr "Marcaje"
@@ -1502,12 +1502,16 @@ msgstr "Destinația este numai pentru citire."
 msgid "Close"
 msgstr "Închide"
 
-#: libcore/FileOperations/EmptyTrashJob.vala:40
+#: libcore/FileOperations/EmptyTrashJob.vala:76
+msgid "Emptying Trash"
+msgstr "Golirea coșului de gunoi"
+
+#: libcore/FileOperations/EmptyTrashJob.vala:85
 msgid "Permanently delete all items from Trash?"
 msgstr ""
 "Permiteți ștergerea definitivă a tuturor articolelor din Coșul de gunoi?"
 
-#: libcore/FileOperations/EmptyTrashJob.vala:41
+#: libcore/FileOperations/EmptyTrashJob.vala:86
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
@@ -1515,20 +1519,16 @@ msgstr ""
 "Toate elementele din toate directoarele de gunoi, inclusiv cele de pe orice "
 "unități externe montate, vor fi șterse definitiv."
 
-#: libcore/FileOperations/EmptyTrashJob.vala:44
+#: libcore/FileOperations/EmptyTrashJob.vala:89
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
 "Ștergeți definitiv toate elementele din Coșul de gunoi pe acest suport?"
 
-#: libcore/FileOperations/EmptyTrashJob.vala:45
+#: libcore/FileOperations/EmptyTrashJob.vala:90
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
 "Toate elementele din coșul de gunoi de pe acest suport vor fi șterse "
 "definitiv."
-
-#: libcore/FileOperations/EmptyTrashJob.vala:111
-msgid "Emptying Trash"
-msgstr "Golirea coșului de gunoi"
 
 #: libcore/FileOperations/MountUtils.vala:31
 #, fuzzy, c-format
@@ -1591,17 +1591,17 @@ msgstr[1] "Sigur doriți să ștergeți definitiv elementul%'d 2 selectat?"
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:178
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:189
 #, c-format
 msgid "Navigate to %s"
 msgstr "Navigați la %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:304
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:300
 #, c-format
 msgid "Go to %s"
 msgstr "Mergi la %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:386
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:377
 #, fuzzy
 msgid "Type Path"
 msgstr "Tastați o rută"
@@ -1644,7 +1644,7 @@ msgstr " selectat"
 msgid "Send by Email"
 msgstr ""
 
-#: src/Application.vala:67
+#: src/Application.vala:64
 msgid ""
 "\n"
 "\n"
@@ -1654,42 +1654,42 @@ msgstr ""
 "\n"
 "Navigați în sistemul de fișiere cu managerul de fișiere"
 
-#: src/Application.vala:68
+#: src/Application.vala:65
 msgid "Show the version of the program"
 msgstr "Afișați versiunea programului."
 
-#: src/Application.vala:74
+#: src/Application.vala:71
 #, fuzzy
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Deschide uri(s) în fila nouă"
 
-#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1953
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1922
+#: src/View/AbstractDirectoryView.vala:1928
 msgid "New Window"
 msgstr "Nouă fereastră"
 
-#: src/Application.vala:76
+#: src/Application.vala:73
 msgid "Quit Files"
 msgstr "Ieșiți din Fișiere."
 
-#: src/Application.vala:77
+#: src/Application.vala:74
 msgid "Enable debug logging"
 msgstr "Activați curățarea registrului"
 
-#: src/Application.vala:80
+#: src/Application.vala:77
 #, fuzzy
 msgid "[URI…]"
 msgstr "[URI....]"
 
-#: src/Application.vala:92
+#: src/Application.vala:89
 msgid "Error: Running Files as root using sudo is not possible."
 msgstr ""
 
-#: src/Application.vala:93
+#: src/Application.vala:90
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
 msgstr ""
 
-#: src/Application.vala:110
+#: src/Application.vala:107
 msgid "--quit cannot be used with URIs."
 msgstr "- quit nu poate fi folosit cu URI."
 
@@ -1803,23 +1803,6 @@ msgstr ""
 msgid "Basename:"
 msgstr "_Nume de utilizator:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
-msgctxt "bulk-rename"
-msgid "Keep"
-msgstr ""
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Replace"
-msgstr "Înlocuește"
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Modify"
-msgstr "Modificat"
-
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
 #, fuzzy
@@ -1834,34 +1817,6 @@ msgstr "Reemplasează cu"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
 msgstr ""
-
-#. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:190
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Name"
-msgstr "Nume"
-
-#. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Date created"
-msgstr "Creează"
-
-#. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Date modified"
-msgstr "Modificat"
-
-#. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Size"
-msgstr "Mărime"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
@@ -1992,7 +1947,7 @@ msgid "Original Location:"
 msgstr "Locația originală:"
 
 #: src/Dialogs/PropertiesWindow.vala:671
-#: src/View/AbstractDirectoryView.vala:2040
+#: src/View/AbstractDirectoryView.vala:2009
 msgid "Other Application…"
 msgstr "Alte aplicații…"
 
@@ -2077,189 +2032,189 @@ msgstr "Nu s-a putut redenumi '%s'"
 msgid "Could not open files or URIs with this app"
 msgstr "Imposibil de deschis fișiere sau uris cu această aplicație"
 
-#: src/View/AbstractDirectoryView.vala:842
-#: src/View/AbstractDirectoryView.vala:1165
+#: src/View/AbstractDirectoryView.vala:858
+#: src/View/AbstractDirectoryView.vala:1185
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Nu se poate deschide acest fișier"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:852
+#: src/View/AbstractDirectoryView.vala:868
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:853
+#: src/View/AbstractDirectoryView.vala:869
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:868
+#: src/View/AbstractDirectoryView.vala:884
 msgid "Cannot open this file"
 msgstr "Nu se poate deschide acest fișier"
 
-#: src/View/AbstractDirectoryView.vala:881
+#: src/View/AbstractDirectoryView.vala:897
 msgid "Cannot identify file type to open"
 msgstr "Nu se poate identifica tipul de fișier pentru a fi deschis"
 
-#: src/View/AbstractDirectoryView.vala:1651
+#: src/View/AbstractDirectoryView.vala:1634
 msgid "Cannot drop this file"
 msgstr "Nu puteți renunța la acest fișier"
 
-#: src/View/AbstractDirectoryView.vala:1652
+#: src/View/AbstractDirectoryView.vala:1635
 msgid "Invalid file name provided"
 msgstr "Numele de fișier furnizat nevalid"
 
-#: src/View/AbstractDirectoryView.vala:1936
-#: src/View/AbstractDirectoryView.vala:1942 src/View/Window.vala:234
+#: src/View/AbstractDirectoryView.vala:1905
+#: src/View/AbstractDirectoryView.vala:1911 src/View/Window.vala:238
 msgid "New Tab"
 msgstr "Filă nouă"
 
-#: src/View/AbstractDirectoryView.vala:1976
+#: src/View/AbstractDirectoryView.vala:1945
 msgid "Run"
 msgstr "Aleargă"
 
-#: src/View/AbstractDirectoryView.vala:1983
+#: src/View/AbstractDirectoryView.vala:1952
 #, c-format
 msgid "Open in %s"
 msgstr "Deschide în %s"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Open in"
 msgstr "Deschide în"
 
-#: src/View/AbstractDirectoryView.vala:2054
-#: src/View/Widgets/BreadcrumbsEntry.vala:493
+#: src/View/AbstractDirectoryView.vala:2023
+#: src/View/Widgets/BreadcrumbsEntry.vala:422
 msgid "Open with"
 msgstr "Deschide cu"
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2094
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2103
+#: src/View/AbstractDirectoryView.vala:2072
 #, fuzzy
 msgid "Deselect All"
 msgstr "Restaurați tot"
 
-#: src/View/AbstractDirectoryView.vala:2111
+#: src/View/AbstractDirectoryView.vala:2080
 msgid "Cut"
 msgstr "Taie"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2119
+#: src/View/AbstractDirectoryView.vala:2088
 msgid "Copy"
 msgstr "Copie"
 
-#: src/View/AbstractDirectoryView.vala:2126
+#: src/View/AbstractDirectoryView.vala:2095
 msgid "Move to Trash"
 msgstr "Aruncă la gunoi"
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2100
 #, fuzzy
 msgid "Delete Permanently"
 msgstr "Șterge Permanent"
 
-#: src/View/AbstractDirectoryView.vala:2138
+#: src/View/AbstractDirectoryView.vala:2107
 msgid "Restore from Trash"
 msgstr "Restaurați din Coșul de gunoi"
 
-#: src/View/AbstractDirectoryView.vala:2161
+#: src/View/AbstractDirectoryView.vala:2130
 msgid "Open Parent Folder"
 msgstr "Deschideți dosarul părinte"
 
-#: src/View/AbstractDirectoryView.vala:2164
+#: src/View/AbstractDirectoryView.vala:2133
 msgid "Remove from History"
 msgstr "Șterge din istoric"
 
-#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2159
 #, fuzzy
 msgid "Rename…"
 msgstr "Redenumește"
 
-#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2166
 msgid "Copy as Link"
 msgstr "Copiați ca legătură"
 
-#: src/View/AbstractDirectoryView.vala:2220
-#: src/View/AbstractDirectoryView.vala:2300
+#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2269
 msgid "Paste Link into Folder"
 msgstr "Inserați o legătură în carpetă"
 
-#: src/View/AbstractDirectoryView.vala:2225
-#: src/View/AbstractDirectoryView.vala:2277
+#: src/View/AbstractDirectoryView.vala:2194
+#: src/View/AbstractDirectoryView.vala:2246
 msgid "Paste into Folder"
 msgstr "Lipiți în carpetă"
 
-#: src/View/AbstractDirectoryView.vala:2235
-#: src/View/AbstractDirectoryView.vala:2305
+#: src/View/AbstractDirectoryView.vala:2204
+#: src/View/AbstractDirectoryView.vala:2274
 msgid "Paste"
 msgstr "Lipește"
 
-#: src/View/AbstractDirectoryView.vala:2367 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2336 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Tipul"
 
-#: src/View/AbstractDirectoryView.vala:2377
+#: src/View/AbstractDirectoryView.vala:2346
 msgid "Reversed Order"
 msgstr "Ordinul inversat"
 
-#: src/View/AbstractDirectoryView.vala:2380
+#: src/View/AbstractDirectoryView.vala:2349
 msgid "Folders Before Files"
 msgstr "Carpete înainte de fișiere"
 
-#: src/View/AbstractDirectoryView.vala:2392
+#: src/View/AbstractDirectoryView.vala:2361
 msgid "Sort by"
 msgstr "Filtrează după"
 
-#: src/View/AbstractDirectoryView.vala:2400
+#: src/View/AbstractDirectoryView.vala:2369
 msgid "Folder"
 msgstr "Carpetă"
 
-#: src/View/AbstractDirectoryView.vala:2406
+#: src/View/AbstractDirectoryView.vala:2375
 msgid "Empty File"
 msgstr "Fișier gol"
 
-#: src/View/AbstractDirectoryView.vala:2457
+#: src/View/AbstractDirectoryView.vala:2426
 msgid "New"
 msgstr "Nou"
 
-#: src/View/AbstractDirectoryView.vala:2701
+#: src/View/AbstractDirectoryView.vala:2670
 #, c-format
 msgid "Untitled %s"
 msgstr "Fără titlu %s"
 
-#: src/View/AbstractDirectoryView.vala:3023
-#: src/View/AbstractDirectoryView.vala:3216
+#: src/View/AbstractDirectoryView.vala:2976
+#: src/View/AbstractDirectoryView.vala:3179
 msgid "Cannot remove files from here"
 msgstr "Nu pot fi eliminate fișiere de aici"
 
-#: src/View/AbstractDirectoryView.vala:3024
-#: src/View/AbstractDirectoryView.vala:3189
-#: src/View/AbstractDirectoryView.vala:3200
-#: src/View/AbstractDirectoryView.vala:3217
+#: src/View/AbstractDirectoryView.vala:2977
+#: src/View/AbstractDirectoryView.vala:3152
+#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3180
 msgid "You do not have permission to change this location"
 msgstr "Nu aveți permisiunea de a modifica această locație"
 
-#: src/View/AbstractDirectoryView.vala:3157
+#: src/View/AbstractDirectoryView.vala:3120
 msgid "Cannot copy files that are in the trash"
 msgstr "Nu se pot copia fișierele din coșul de gunoi"
 
-#: src/View/AbstractDirectoryView.vala:3158
+#: src/View/AbstractDirectoryView.vala:3121
 msgid "Cutting the selection instead"
 msgstr "Tăiați selecția în loc"
 
-#: src/View/AbstractDirectoryView.vala:3188
-#: src/View/AbstractDirectoryView.vala:3199
+#: src/View/AbstractDirectoryView.vala:3151
+#: src/View/AbstractDirectoryView.vala:3162
 msgid "Cannot paste files here"
 msgstr "Nu se pot lipi fișiere aici"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:374
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
 msgstr "Acest dosar nu există"
 
@@ -2325,104 +2280,104 @@ msgstr "Nu există fișiere recente"
 msgid "Access Denied"
 msgstr "Acces interzis"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
+#: src/View/ViewContainer.vala:356 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "Acasă"
 
-#: src/View/ViewContainer.vala:375
+#: src/View/ViewContainer.vala:378
 msgid "You cannot create a folder here."
 msgstr "Nu puteți crea un dosar aici."
 
-#: src/View/ViewContainer.vala:378
+#: src/View/ViewContainer.vala:383
 msgid "The network is unavailable"
 msgstr "Rețeaua nu este disponibilă"
 
-#: src/View/ViewContainer.vala:379
+#: src/View/ViewContainer.vala:385
 msgid "A working network is needed to reach this folder"
 msgstr "Este necesar o rețea de lucru pentru a ajunge la acest dosar"
 
-#: src/View/ViewContainer.vala:382
+#: src/View/ViewContainer.vala:391
 msgid "This Folder Does Not Belong to You"
 msgstr "Acest dosar nu este al tău"
 
-#: src/View/ViewContainer.vala:383
+#: src/View/ViewContainer.vala:392
 msgid "You don't have permission to view this folder."
 msgstr "Nu aveți permisiunea de a vizualiza acest dosar."
 
-#: src/View/ViewContainer.vala:385
+#: src/View/ViewContainer.vala:396
 msgid "Unable to Mount Folder"
 msgstr "Imposibil de montat dosarul"
 
-#: src/View/ViewContainer.vala:386
+#: src/View/ViewContainer.vala:398
 msgid "Could not connect to the server for this folder."
 msgstr "Nu s-a putut conecta la server pentru acest dosar."
 
-#: src/View/ViewContainer.vala:389
+#: src/View/ViewContainer.vala:404
 msgid "Unable to Display Folder Contents"
 msgstr "Conținutul folderelor nu poate fi afișat"
 
-#: src/View/ViewContainer.vala:390
+#: src/View/ViewContainer.vala:406
 msgid "The operation timed out."
 msgstr "Operația a expirat."
 
-#: src/View/ViewContainer.vala:392
+#: src/View/ViewContainer.vala:412
 msgid "Unable to Show Folder"
 msgstr "Folderul nu poate fi afișat"
 
-#: src/View/ViewContainer.vala:393
+#: src/View/ViewContainer.vala:414
 msgid "The server for this folder could not be located."
 msgstr "Serverul pentru acest dosar nu a putut fi localizat."
 
-#: src/View/ViewContainer.vala:404
+#: src/View/ViewContainer.vala:428
 msgid "File not Found"
 msgstr "Fișierul nu a fost găsit"
 
-#: src/View/ViewContainer.vala:405
+#: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "Fișierul selectat nu mai există."
 
-#: src/View/Window.vala:189
+#: src/View/Window.vala:193
 msgid "Previous"
 msgstr "Anterior"
 
-#: src/View/Window.vala:194
+#: src/View/Window.vala:198
 msgid "Next"
 msgstr "Înainte"
 
-#: src/View/Window.vala:209
+#: src/View/Window.vala:213
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:239
+#: src/View/Window.vala:243
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "Închide"
 
-#: src/View/Window.vala:450 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:386
 msgid "Open in New Window"
 msgstr "Deschideți într-o nouă fereastră"
 
-#: src/View/Window.vala:451
+#: src/View/Window.vala:461
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Duplicarea \"%B\""
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:455
+#: src/View/Window.vala:465
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:456
+#: src/View/Window.vala:466
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "Închide"
 
-#: src/View/Window.vala:457
+#: src/View/Window.vala:467
 #, fuzzy
 msgid "Close Tab"
 msgstr "Închide"
 
-#: src/View/Window.vala:738 src/View/Window.vala:748
+#: src/View/Window.vala:755 src/View/Window.vala:765
 msgid "(as Administrator)"
 msgstr "(ca Administrator)"
 
@@ -2595,16 +2550,16 @@ msgstr "Operația a expirat."
 msgid "No operation to redo"
 msgstr "Operația a expirat."
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:124
+#: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:199
 msgid "Search or Type Path"
 msgstr "Căutați sau tastați ruta"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
+#: src/View/Widgets/BreadcrumbsEntry.vala:379
 msgid "Open in New Tab"
 msgstr "Deschideți într-o filă nouă"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:500
+#: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open in Other Application…"
 msgstr "Deschideți cu altă aplicație …"
 
@@ -2700,6 +2655,36 @@ msgstr "Sub acest dosar"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Folosit recent"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Replace"
+#~ msgstr "Înlocuește"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Modify"
+#~ msgstr "Modificat"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Name"
+#~ msgstr "Nume"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Date created"
+#~ msgstr "Creează"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Date modified"
+#~ msgstr "Modificat"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Size"
+#~ msgstr "Mărime"
 
 #, fuzzy
 #~| msgid "New"

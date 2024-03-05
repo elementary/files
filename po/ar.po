@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-13 19:10+0000\n"
+"POT-Creation-Date: 2024-02-18 13:10+0000\n"
 "PO-Revision-Date: 2022-11-09 14:29+0000\n"
 "Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -214,7 +214,7 @@ msgstr "نسخ إلى هنا"
 msgid "Link Here"
 msgstr "اضف الرابط إلى هنا"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2357
+#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2326
 msgid "Name"
 msgstr "الاسم"
 
@@ -229,7 +229,7 @@ msgstr "أنشئ"
 msgid "Last modification date"
 msgstr "آخر تعديل:"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2362
+#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2331
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "الحجم"
@@ -242,7 +242,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2372
+#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2341
 msgid "Date"
 msgstr "التاريخ"
 
@@ -1227,7 +1227,7 @@ msgid "_Unmount"
 msgstr "ا_فصل"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2072
+#: src/View/AbstractDirectoryView.vala:2041
 msgid "Properties"
 msgstr "خصائص"
 
@@ -1240,7 +1240,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "أزِل"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2065
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2034
 #, fuzzy
 msgid "Add to Bookmarks"
 msgstr "المؤشرات"
@@ -1557,11 +1557,15 @@ msgstr "الوِجهة قابلة للقراءة فقط."
 msgid "Close"
 msgstr "أغلق"
 
-#: libcore/FileOperations/EmptyTrashJob.vala:40
+#: libcore/FileOperations/EmptyTrashJob.vala:76
+msgid "Emptying Trash"
+msgstr "إفراغ المهملات"
+
+#: libcore/FileOperations/EmptyTrashJob.vala:85
 msgid "Permanently delete all items from Trash?"
 msgstr "حذف جميع الملفات في سلة المهملات بشكل نهائي؟"
 
-#: libcore/FileOperations/EmptyTrashJob.vala:41
+#: libcore/FileOperations/EmptyTrashJob.vala:86
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
@@ -1569,17 +1573,13 @@ msgstr ""
 "جميع الأشياء في كل مجلدات المهملات، تشمل التي تم تركيبها على أي قرص خارجي، "
 "ستحذف نهائيا."
 
-#: libcore/FileOperations/EmptyTrashJob.vala:44
+#: libcore/FileOperations/EmptyTrashJob.vala:89
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr "حذف كل الأشياء نهائيا من المهملات على هذا القرص؟"
 
-#: libcore/FileOperations/EmptyTrashJob.vala:45
+#: libcore/FileOperations/EmptyTrashJob.vala:90
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "جميع الأشياء في المهملات على هذا القرص, سيتم حذفها نهائيا."
-
-#: libcore/FileOperations/EmptyTrashJob.vala:111
-msgid "Emptying Trash"
-msgstr "إفراغ المهملات"
 
 #: libcore/FileOperations/MountUtils.vala:31
 #, fuzzy, c-format
@@ -1645,17 +1645,17 @@ msgstr[5] "أمتأكد أنّك تريد حذف الـ%I'd عنصر المخت�
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr "الأشياء المحذوفة لن ترسل إلى المهملات ولن تكون قابلة للإستعادة."
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:178
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:189
 #, c-format
 msgid "Navigate to %s"
 msgstr "انتقل إلى %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:304
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:300
 #, c-format
 msgid "Go to %s"
 msgstr "إذهب إلى %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:386
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:377
 #, fuzzy
 msgid "Type Path"
 msgstr "النّوع"
@@ -1696,7 +1696,7 @@ msgstr "احذف المختار"
 msgid "Send by Email"
 msgstr ""
 
-#: src/Application.vala:67
+#: src/Application.vala:64
 msgid ""
 "\n"
 "\n"
@@ -1706,40 +1706,40 @@ msgstr ""
 "\n"
 "تصفح نظام الملفات بمدير الملفات"
 
-#: src/Application.vala:68
+#: src/Application.vala:65
 msgid "Show the version of the program"
 msgstr "اعرض إصدار البرنامج"
 
-#: src/Application.vala:74
+#: src/Application.vala:71
 msgid "Open one or more URIs, each in their own tab"
 msgstr "إفتح الرابط أو الروابط في علامة أو علامات تبويب جديدة"
 
-#: src/Application.vala:75 src/View/AbstractDirectoryView.vala:1953
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1922
+#: src/View/AbstractDirectoryView.vala:1928
 msgid "New Window"
 msgstr "نافذة جديدة"
 
-#: src/Application.vala:76
+#: src/Application.vala:73
 msgid "Quit Files"
 msgstr "اخرج من الملفات"
 
-#: src/Application.vala:77
+#: src/Application.vala:74
 msgid "Enable debug logging"
 msgstr "تمكين تسجيل التصحيح"
 
-#: src/Application.vala:80
+#: src/Application.vala:77
 msgid "[URI…]"
 msgstr "[عنوان URI...]"
 
-#: src/Application.vala:92
+#: src/Application.vala:89
 msgid "Error: Running Files as root using sudo is not possible."
 msgstr ""
 
-#: src/Application.vala:93
+#: src/Application.vala:90
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
 msgstr ""
 
-#: src/Application.vala:110
+#: src/Application.vala:107
 msgid "--quit cannot be used with URIs."
 msgstr "--سيتم الانهاء والخروج لا يمكن استخدام ‪ مع المسارات."
 
@@ -1853,23 +1853,6 @@ msgstr ""
 msgid "Basename:"
 msgstr "اسم المستخدم:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
-msgctxt "bulk-rename"
-msgid "Keep"
-msgstr ""
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Replace"
-msgstr "إستبدل"
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Modify"
-msgstr "عُدِّل"
-
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
 #, fuzzy
@@ -1884,34 +1867,6 @@ msgstr "إستبدال بـ"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
 msgstr ""
-
-#. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:190
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Name"
-msgstr "الاسم"
-
-#. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Date created"
-msgstr "أنشئ"
-
-#. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Date modified"
-msgstr "عُدِّل"
-
-#. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Size"
-msgstr "الحجم"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
@@ -2043,7 +1998,7 @@ msgid "Original Location:"
 msgstr "المكان اﻷصلي:"
 
 #: src/Dialogs/PropertiesWindow.vala:671
-#: src/View/AbstractDirectoryView.vala:2040
+#: src/View/AbstractDirectoryView.vala:2009
 msgid "Other Application…"
 msgstr "تطبيقات أخرى …"
 
@@ -2142,187 +2097,187 @@ msgstr "لم يتم فتح عنوان URI"
 msgid "Could not open files or URIs with this app"
 msgstr "لم يتم فتح الملفات او عنوان URI في هذا التطبيق"
 
-#: src/View/AbstractDirectoryView.vala:842
-#: src/View/AbstractDirectoryView.vala:1165
+#: src/View/AbstractDirectoryView.vala:858
+#: src/View/AbstractDirectoryView.vala:1185
 msgid "Cannot execute this file"
 msgstr "لا يمكن تنفيذ هذا الملف"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:852
+#: src/View/AbstractDirectoryView.vala:868
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:853
+#: src/View/AbstractDirectoryView.vala:869
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:868
+#: src/View/AbstractDirectoryView.vala:884
 msgid "Cannot open this file"
 msgstr "لا يمكن فتح هذا الملف"
 
-#: src/View/AbstractDirectoryView.vala:881
+#: src/View/AbstractDirectoryView.vala:897
 msgid "Cannot identify file type to open"
 msgstr "لا يمكن تحديد نوع الملف لفتحه"
 
-#: src/View/AbstractDirectoryView.vala:1651
+#: src/View/AbstractDirectoryView.vala:1634
 msgid "Cannot drop this file"
 msgstr "لا يمكن إسقاط هذا الملف"
 
-#: src/View/AbstractDirectoryView.vala:1652
+#: src/View/AbstractDirectoryView.vala:1635
 msgid "Invalid file name provided"
 msgstr "اسم الملف غير صالح"
 
-#: src/View/AbstractDirectoryView.vala:1936
-#: src/View/AbstractDirectoryView.vala:1942 src/View/Window.vala:234
+#: src/View/AbstractDirectoryView.vala:1905
+#: src/View/AbstractDirectoryView.vala:1911 src/View/Window.vala:238
 msgid "New Tab"
 msgstr "علامة تبويب جديدة"
 
-#: src/View/AbstractDirectoryView.vala:1976
+#: src/View/AbstractDirectoryView.vala:1945
 msgid "Run"
 msgstr "شغل"
 
-#: src/View/AbstractDirectoryView.vala:1983
+#: src/View/AbstractDirectoryView.vala:1952
 #, c-format
 msgid "Open in %s"
 msgstr "إفتح في %s"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Open in"
 msgstr "إفتح في"
 
-#: src/View/AbstractDirectoryView.vala:2054
-#: src/View/Widgets/BreadcrumbsEntry.vala:493
+#: src/View/AbstractDirectoryView.vala:2023
+#: src/View/Widgets/BreadcrumbsEntry.vala:422
 msgid "Open with"
 msgstr "فتح باستخدام"
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2094
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2103
+#: src/View/AbstractDirectoryView.vala:2072
 #, fuzzy
 msgid "Deselect All"
 msgstr "إستعادة الكل"
 
-#: src/View/AbstractDirectoryView.vala:2111
+#: src/View/AbstractDirectoryView.vala:2080
 msgid "Cut"
 msgstr "قص"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2119
+#: src/View/AbstractDirectoryView.vala:2088
 msgid "Copy"
 msgstr "نسخ"
 
-#: src/View/AbstractDirectoryView.vala:2126
+#: src/View/AbstractDirectoryView.vala:2095
 msgid "Move to Trash"
 msgstr "انقل إلى المُهملات"
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2100
 #, fuzzy
 msgid "Delete Permanently"
 msgstr "حذف بشكل دائم"
 
-#: src/View/AbstractDirectoryView.vala:2138
+#: src/View/AbstractDirectoryView.vala:2107
 msgid "Restore from Trash"
 msgstr "استعد من المُهملات"
 
-#: src/View/AbstractDirectoryView.vala:2161
+#: src/View/AbstractDirectoryView.vala:2130
 msgid "Open Parent Folder"
 msgstr "فتح الملف الاعلى"
 
-#: src/View/AbstractDirectoryView.vala:2164
+#: src/View/AbstractDirectoryView.vala:2133
 msgid "Remove from History"
 msgstr "امسح من السجل"
 
-#: src/View/AbstractDirectoryView.vala:2190
+#: src/View/AbstractDirectoryView.vala:2159
 msgid "Rename…"
 msgstr "إعادة تسمية…"
 
-#: src/View/AbstractDirectoryView.vala:2197
+#: src/View/AbstractDirectoryView.vala:2166
 msgid "Copy as Link"
 msgstr "نسخ كرابط"
 
-#: src/View/AbstractDirectoryView.vala:2220
-#: src/View/AbstractDirectoryView.vala:2300
+#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2269
 msgid "Paste Link into Folder"
 msgstr "لصق الرابط في المجلد"
 
-#: src/View/AbstractDirectoryView.vala:2225
-#: src/View/AbstractDirectoryView.vala:2277
+#: src/View/AbstractDirectoryView.vala:2194
+#: src/View/AbstractDirectoryView.vala:2246
 msgid "Paste into Folder"
 msgstr "لصق في المجلد"
 
-#: src/View/AbstractDirectoryView.vala:2235
-#: src/View/AbstractDirectoryView.vala:2305
+#: src/View/AbstractDirectoryView.vala:2204
+#: src/View/AbstractDirectoryView.vala:2274
 msgid "Paste"
 msgstr "لصق"
 
-#: src/View/AbstractDirectoryView.vala:2367 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2336 src/View/ListView.vala:28
 msgid "Type"
 msgstr "النّوع"
 
-#: src/View/AbstractDirectoryView.vala:2377
+#: src/View/AbstractDirectoryView.vala:2346
 msgid "Reversed Order"
 msgstr "ترتيب عكسي"
 
-#: src/View/AbstractDirectoryView.vala:2380
+#: src/View/AbstractDirectoryView.vala:2349
 msgid "Folders Before Files"
 msgstr "المجلدات قبل الملفات"
 
-#: src/View/AbstractDirectoryView.vala:2392
+#: src/View/AbstractDirectoryView.vala:2361
 msgid "Sort by"
 msgstr "ترتيب حسب"
 
-#: src/View/AbstractDirectoryView.vala:2400
+#: src/View/AbstractDirectoryView.vala:2369
 msgid "Folder"
 msgstr "مجلد"
 
-#: src/View/AbstractDirectoryView.vala:2406
+#: src/View/AbstractDirectoryView.vala:2375
 msgid "Empty File"
 msgstr "ملف فارغ"
 
-#: src/View/AbstractDirectoryView.vala:2457
+#: src/View/AbstractDirectoryView.vala:2426
 msgid "New"
 msgstr "جديد"
 
-#: src/View/AbstractDirectoryView.vala:2701
+#: src/View/AbstractDirectoryView.vala:2670
 #, c-format
 msgid "Untitled %s"
 msgstr "بدون عنوان %s"
 
-#: src/View/AbstractDirectoryView.vala:3023
-#: src/View/AbstractDirectoryView.vala:3216
+#: src/View/AbstractDirectoryView.vala:2976
+#: src/View/AbstractDirectoryView.vala:3179
 msgid "Cannot remove files from here"
 msgstr "لا يمكن إزالة الملفات من هنا"
 
-#: src/View/AbstractDirectoryView.vala:3024
-#: src/View/AbstractDirectoryView.vala:3189
-#: src/View/AbstractDirectoryView.vala:3200
-#: src/View/AbstractDirectoryView.vala:3217
+#: src/View/AbstractDirectoryView.vala:2977
+#: src/View/AbstractDirectoryView.vala:3152
+#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3180
 msgid "You do not have permission to change this location"
 msgstr "ليس لديك إذن لتغيير هذا الموقع"
 
-#: src/View/AbstractDirectoryView.vala:3157
+#: src/View/AbstractDirectoryView.vala:3120
 msgid "Cannot copy files that are in the trash"
 msgstr "لا يمكن نسخ الملفات الموجودة في سلة المهملات"
 
-#: src/View/AbstractDirectoryView.vala:3158
+#: src/View/AbstractDirectoryView.vala:3121
 msgid "Cutting the selection instead"
 msgstr "قص المحدد بدلاً من ذلك"
 
-#: src/View/AbstractDirectoryView.vala:3188
-#: src/View/AbstractDirectoryView.vala:3199
+#: src/View/AbstractDirectoryView.vala:3151
+#: src/View/AbstractDirectoryView.vala:3162
 msgid "Cannot paste files here"
 msgstr "لا يمكن لصق الملفات هنا"
 
-#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:374
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
 msgstr "هذا المجلد غير موجود"
 
@@ -2384,104 +2339,104 @@ msgstr "لا توجد ملفات حديثة"
 msgid "Access Denied"
 msgstr "الوصول ممنوع"
 
-#: src/View/ViewContainer.vala:354 src/View/Sidebar/BookmarkListBox.vala:127
+#: src/View/ViewContainer.vala:356 src/View/Sidebar/BookmarkListBox.vala:127
 msgid "Home"
 msgstr "المنزل"
 
-#: src/View/ViewContainer.vala:375
+#: src/View/ViewContainer.vala:378
 msgid "You cannot create a folder here."
 msgstr "لا يمكنك إنشاء مجلد هنا."
 
-#: src/View/ViewContainer.vala:378
+#: src/View/ViewContainer.vala:383
 msgid "The network is unavailable"
 msgstr "الشبكة غير متاحة"
 
-#: src/View/ViewContainer.vala:379
+#: src/View/ViewContainer.vala:385
 msgid "A working network is needed to reach this folder"
 msgstr "هناك حاجة إلى شبكة عمل للوصول إلى هذا المجلد"
 
-#: src/View/ViewContainer.vala:382
+#: src/View/ViewContainer.vala:391
 msgid "This Folder Does Not Belong to You"
 msgstr "هذا المجلد لا ينتمي إليك"
 
-#: src/View/ViewContainer.vala:383
+#: src/View/ViewContainer.vala:392
 msgid "You don't have permission to view this folder."
 msgstr "أنت لا تملك الصلاحية للإطلاع على الملف."
 
-#: src/View/ViewContainer.vala:385
+#: src/View/ViewContainer.vala:396
 msgid "Unable to Mount Folder"
 msgstr "تعذر تحميل المجلد"
 
-#: src/View/ViewContainer.vala:386
+#: src/View/ViewContainer.vala:398
 msgid "Could not connect to the server for this folder."
 msgstr "تعذر الاتصال بالخادم لهذا المجلد."
 
-#: src/View/ViewContainer.vala:389
+#: src/View/ViewContainer.vala:404
 msgid "Unable to Display Folder Contents"
 msgstr "لم نتمكن من عرض محتويات المجلد"
 
-#: src/View/ViewContainer.vala:390
+#: src/View/ViewContainer.vala:406
 msgid "The operation timed out."
 msgstr "زاد وقت العملية عن المدة المسموح بها."
 
-#: src/View/ViewContainer.vala:392
+#: src/View/ViewContainer.vala:412
 msgid "Unable to Show Folder"
 msgstr "لم نتمكن من عرض المجلد"
 
-#: src/View/ViewContainer.vala:393
+#: src/View/ViewContainer.vala:414
 msgid "The server for this folder could not be located."
 msgstr "لم يتم العثور على مكان الخادم لهذا المجلد."
 
-#: src/View/ViewContainer.vala:404
+#: src/View/ViewContainer.vala:428
 msgid "File not Found"
 msgstr "لم يتم ايجاد الملف"
 
-#: src/View/ViewContainer.vala:405
+#: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "الملف المختار لم يعد موجودا."
 
-#: src/View/Window.vala:189
+#: src/View/Window.vala:193
 msgid "Previous"
 msgstr "السابق"
 
-#: src/View/Window.vala:194
+#: src/View/Window.vala:198
 msgid "Next"
 msgstr "التالي"
 
-#: src/View/Window.vala:209
+#: src/View/Window.vala:213
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:239
+#: src/View/Window.vala:243
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "أغلق"
 
-#: src/View/Window.vala:450 src/View/Widgets/BreadcrumbsEntry.vala:457
+#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:386
 msgid "Open in New Window"
 msgstr "فتح في نافذة جديدة"
 
-#: src/View/Window.vala:451
+#: src/View/Window.vala:461
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "يُنسخ \"%s\" مرة أخرى"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:455
+#: src/View/Window.vala:465
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:456
+#: src/View/Window.vala:466
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "أغلق"
 
-#: src/View/Window.vala:457
+#: src/View/Window.vala:467
 #, fuzzy
 msgid "Close Tab"
 msgstr "أغلق"
 
-#: src/View/Window.vala:738 src/View/Window.vala:748
+#: src/View/Window.vala:755 src/View/Window.vala:765
 msgid "(as Administrator)"
 msgstr "(كمسؤول)"
 
@@ -2651,16 +2606,16 @@ msgstr "زاد وقت العملية عن المدة المسموح بها."
 msgid "No operation to redo"
 msgstr "زاد وقت العملية عن المدة المسموح بها."
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:124
+#: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:199
 msgid "Search or Type Path"
 msgstr "البحث أو كتابة المسار"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:450
+#: src/View/Widgets/BreadcrumbsEntry.vala:379
 msgid "Open in New Tab"
 msgstr "فتح في علامة تبويب جديدة"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:500
+#: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open in Other Application…"
 msgstr "فتح في تطبيق آخر…"
 
@@ -2772,6 +2727,36 @@ msgstr "تحت هذا المجلد"
 #, fuzzy
 msgid "Recently Used"
 msgstr "تم استخدامه مؤخرا"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Replace"
+#~ msgstr "إستبدل"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Modify"
+#~ msgstr "عُدِّل"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Name"
+#~ msgstr "الاسم"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Date created"
+#~ msgstr "أنشئ"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Date modified"
+#~ msgstr "عُدِّل"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Size"
+#~ msgstr "الحجم"
 
 #, fuzzy
 #~| msgid "New"
