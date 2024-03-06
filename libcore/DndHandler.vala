@@ -147,12 +147,12 @@ namespace Files {
             }
         }
 
-        public string? get_source_filename (Gdk.DragContext context) {
+        public string? get_source_filename (Gdk.Window source_window) {
             uchar []? data = null;
             Gdk.Atom property_name = Gdk.Atom.intern_static_string ("XdndDirectSave0");
             Gdk.Atom property_type = Gdk.Atom.intern_static_string ("text/plain");
 
-            bool exists = Gdk.property_get (context.get_source_window (),
+            bool exists = Gdk.property_get (source_window,
                                             property_name,
                                             property_type,
                                             0, /* offset into property to start getting */
@@ -176,11 +176,11 @@ namespace Files {
             }
         }
 
-        public void set_source_uri (Gdk.DragContext context, string uri) {
+        public void set_source_uri (Gdk.Window source_window, string uri) {
             debug ("DNDHANDLER: set source uri to %s", uri);
             Gdk.Atom property_name = Gdk.Atom.intern_static_string ("XdndDirectSave0");
             Gdk.Atom property_type = Gdk.Atom.intern_static_string ("text/plain");
-            Gdk.property_change (context.get_source_window (),
+            Gdk.property_change (source_window,
                                  property_name,
                                  property_type,
                                  8,
@@ -189,7 +189,7 @@ namespace Files {
                                  uri.length);
         }
 
-        public bool handle_xdnddirectsave (Gdk.DragContext context,
+        public bool handle_xdnddirectsave (Gdk.Window source_window,
                                            Files.File drop_target,
                                            Gtk.SelectionData selection) {
             bool success = false;
@@ -219,13 +219,13 @@ namespace Files {
             }
 
             if (!success) {
-                set_source_uri (context, "");
+                set_source_uri (source_window, "");
             }
 
             return success;
         }
 
-        public bool handle_netscape_url (Gdk.DragContext context, Files.File drop_target, Gtk.SelectionData selection) {
+        public bool handle_netscape_url (Gdk.Window source_window, Files.File drop_target, Gtk.SelectionData selection) {
             string [] parts = (selection.get_text ()).split ("\n");
 
             /* _NETSCAPE_URL looks like this: "$URL\n$TITLE" - should be 2 parts */

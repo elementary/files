@@ -1624,12 +1624,12 @@ namespace Files {
             if (target == Gdk.Atom.intern_static_string ("XdndDirectSave0")) {
                 Files.File? target_file = get_drop_target_file (x, y);
                 /* get XdndDirectSave file name from DnD source window */
-                string? filename = dnd_handler.get_source_filename (context);
+                string? filename = dnd_handler.get_source_filename (context.get_source_window ());
                 if (target_file != null && filename != null) {
                     /* Get uri of source file when dropped */
                     uri = target_file.get_target_location ().resolve_relative_path (filename).get_uri ();
                     /* Setup the XdndDirectSave property on the source window */
-                    dnd_handler.set_source_uri (context, uri);
+                    dnd_handler.set_source_uri (context.get_source_window (), uri);
                 } else {
                     PF.Dialogs.show_error_dialog (_("Cannot drop this file"),
                                                   _("Invalid file name provided"), window);
@@ -1671,13 +1671,13 @@ namespace Files {
 
                 switch (info) {
                     case Files.TargetType.XDND_DIRECT_SAVE0:
-                        success = dnd_handler.handle_xdnddirectsave (context,
+                        success = dnd_handler.handle_xdnddirectsave (context.get_source_window (),
                                                                      drop_target_file,
                                                                      selection_data);
                         break;
 
                     case Files.TargetType.NETSCAPE_URL:
-                        success = dnd_handler.handle_netscape_url (context,
+                        success = dnd_handler.handle_netscape_url (context.get_source_window (),
                                                                    drop_target_file,
                                                                    selection_data);
                         break;
