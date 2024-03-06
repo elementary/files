@@ -3433,7 +3433,7 @@ namespace Files {
         }
 
         protected virtual bool handle_primary_button_click (uint n_press, Gdk.ModifierType mods, Gtk.TreePath? path) {
-            return true;
+            return false; // Allow drag'n'drop
         }
 
         protected void block_drag_and_drop () {
@@ -3456,7 +3456,6 @@ namespace Files {
                 /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
                 name_renderer.end_editing (false);
             }
-
             cancel_hover (); /* cancel overlay statusbar cancellables */
             grab_focus ();
 
