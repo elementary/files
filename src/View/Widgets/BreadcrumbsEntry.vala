@@ -233,7 +233,7 @@ namespace Files.View.Chrome {
             if (el != null && drop_file_list != null) {
                 el.pressed = true;
                 drop_target_file = get_target_location (x, y);
-                current_actions = FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
+                current_actions = DndHandler.file_accepts_drop (drop_target_file, drop_file_list,
                                                                context,
                                                                out current_suggested_action);
             }
@@ -286,7 +286,7 @@ namespace Files.View.Chrome {
                 current_suggested_action = 0;
                 drop_target_file = get_target_location (x, y);
                 if (drop_target_file != null) {
-                    current_actions = FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
+                    current_actions = DndHandler.file_accepts_drop (drop_target_file, drop_file_list,
                                                                      context,
                                                                      out current_suggested_action);
 

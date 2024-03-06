@@ -476,7 +476,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
                     // When dropping onto a row, determine what actions are possible
                     if (!reveal && drop_file_list != null) {
-                        Files.FileUtils.file_accepts_drop (
+                        Files.DndHandler.file_accepts_drop (
                             target_file,
                             drop_file_list, ctx,
                             out current_suggested_action
