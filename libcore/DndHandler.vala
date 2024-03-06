@@ -238,7 +238,6 @@ namespace Files {
         }
 
         public bool handle_file_drag_actions (Gtk.Widget dest_widget,
-                                              Gdk.DragContext context,
                                               Files.File drop_target,
                                               GLib.List<GLib.File> drop_file_list,
                                               Gdk.DragAction possible_actions,
@@ -341,11 +340,12 @@ namespace Files {
 
         public static Gdk.DragAction file_accepts_drop (Files.File dest,
                                                  GLib.List<GLib.File> drop_file_list, // read-only
-                                                 Gdk.DragContext context,
+                                                 Gdk.DragAction selected_action,
+                                                 Gdk.DragAction possible_actions,
                                                  out Gdk.DragAction suggested_action_return) {
 
-            var actions = context.get_actions ();
-            var suggested_action = context.get_suggested_action ();
+            var actions = possible_actions;
+            var suggested_action = selected_action;
             var target_location = dest.get_target_location ();
             suggested_action_return = Gdk.DragAction.PRIVATE;
 

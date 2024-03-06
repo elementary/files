@@ -486,7 +486,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                     if (!reveal && drop_file_list != null) {
                         Files.DndHandler.file_accepts_drop (
                             target_file,
-                            drop_file_list, ctx,
+                            drop_file_list,
+                            ctx.get_selected_action (),
+                            ctx.get_actions (),
                             out current_suggested_action
                         );
 
