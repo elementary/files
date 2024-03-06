@@ -315,7 +315,7 @@ namespace Files.View.Chrome {
             }
         }
 
-        protected void on_drag_leave (Gdk.DragContext drag_context, uint time) {
+        protected void on_drag_leave (uint time) {
             foreach (BreadcrumbElement element in elements) {
                 if (element.pressed) {
                     element.pressed = false;

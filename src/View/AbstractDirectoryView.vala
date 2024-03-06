@@ -1719,7 +1719,7 @@ namespace Files {
         }
 
         /* Signal emitted on destination when drag leaves the widget or *before* dropping */
-        private void on_drag_leave (Gdk.DragContext context, uint timestamp) {
+        private void on_drag_leave (uint timestamp) {
             /* reset the drop-file for the icon renderer */
             icon_renderer.drop_file = null;
             /* stop any running drag autoscroll timer */
