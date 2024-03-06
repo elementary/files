@@ -425,16 +425,16 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 switch (info) {
                     case Files.TargetType.BOOKMARK_ROW:
                         success = process_dropped_row (
-                            drop_text, 
+                            drop_text,
                             drop_revealer.child_revealed
                         );
                         break;
 
                     case Files.TargetType.TEXT_URI_LIST:
                         success = process_dropped_uris (
-                            ctx.get_selected_action (), 
+                            ctx.get_selected_action (),
                             ctx.get_actions (),
-                            drop_file_list, 
+                            drop_file_list,
                             drop_revealer.child_revealed
                         );
                         break;
