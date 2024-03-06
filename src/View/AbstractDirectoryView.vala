@@ -1544,7 +1544,7 @@ namespace Files {
 /** DRAG AND DROP SOURCE */
 
         /* Signal emitted on source when drag begins */
-        private void on_drag_begin (Gdk.DragContext context) {
+        private void on_drag_begin () {
             should_activate = false;
         }
 
@@ -1575,13 +1575,13 @@ namespace Files {
         }
 
         /* Signal emitted on source after a DND move operation */
-        private void on_drag_data_delete (Gdk.DragContext context) {
+        private void on_drag_data_delete () {
             /* block real_view default handler because handled in on_drag_end */
             GLib.Signal.stop_emission_by_name (get_child (), "drag-data-delete");
         }
 
         /* Signal emitted on source after completion of DnD. */
-        private void on_drag_end (Gdk.DragContext context) {
+        private void on_drag_end () {
             source_drag_file_list = null;
         }
 
@@ -1603,7 +1603,7 @@ namespace Files {
             }
 
             if (drag_scroll_timer_id == 0) {
-                start_drag_scroll_timer (context);
+                start_drag_scroll_timer (Gtk.get_current_event_device ());
             }
 
             Gdk.drag_status (context, current_suggested_action, timestamp);
@@ -2835,13 +2835,12 @@ namespace Files {
             model.row_deleted.connect (on_row_deleted);
         }
 
-        private void start_drag_scroll_timer (Gdk.DragContext context) requires (window != null) {
+        private void start_drag_scroll_timer (Gdk.Device pointer) requires (window != null) {
             drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                           50,
                                                           () => {
                 Gtk.Widget? widget = get_child ();
                 if (widget != null) {
-                    Gdk.Device pointer = context.get_device ();
                     Gdk.Window window = widget.get_window ();
                     int x, y, w, h;
 
