@@ -3433,7 +3433,7 @@ namespace Files {
         }
 
         protected virtual bool handle_primary_button_click (uint n_press, Gdk.ModifierType mods, Gtk.TreePath? path) {
-            return true;
+            return false;
         }
 
         protected void block_drag_and_drop () {
