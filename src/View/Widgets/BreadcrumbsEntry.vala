@@ -311,11 +311,11 @@ namespace Files.View.Chrome {
                     }
                 }
                 Gtk.drag_finish (context, success, false, timestamp);
-                on_drag_leave (context, timestamp);
+                on_drag_leave ();
             }
         }
 
-        protected void on_drag_leave (uint time) {
+        protected void on_drag_leave () {
             foreach (BreadcrumbElement element in elements) {
                 if (element.pressed) {
                     element.pressed = false;
