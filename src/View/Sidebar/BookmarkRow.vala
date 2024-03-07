@@ -424,11 +424,19 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 var success = false;
                 switch (info) {
                     case Files.TargetType.BOOKMARK_ROW:
-                        success = process_dropped_row (ctx, drop_text, drop_revealer.child_revealed);
+                        success = process_dropped_row (
+                            drop_text,
+                            drop_revealer.child_revealed
+                        );
                         break;
 
                     case Files.TargetType.TEXT_URI_LIST:
-                        success = process_dropped_uris (ctx, drop_file_list, drop_revealer.child_revealed);
+                        success = process_dropped_uris (
+                            ctx.get_selected_action (),
+                            ctx.get_actions (),
+                            drop_file_list,
+                            drop_revealer.child_revealed
+                        );
                         break;
                 }
 
@@ -476,9 +484,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
                     // When dropping onto a row, determine what actions are possible
                     if (!reveal && drop_file_list != null) {
-                        Files.FileUtils.file_accepts_drop (
+                        Files.DndHandler.file_accepts_drop (
                             target_file,
-                            drop_file_list, ctx,
+                            drop_file_list,
+                            ctx.get_selected_action (),
+                            ctx.get_actions (),
                             out current_suggested_action
                         );
 
@@ -545,7 +555,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         highlight (false);
     }
 
-    private bool process_dropped_row (Gdk.DragContext ctx, string drop_text, bool dropped_between) {
+    private bool process_dropped_row (string drop_text, bool dropped_between) {
         var id = (uint32)(uint.parse (drop_text));
         var item = SidebarItemInterface.get_item (id);
 
@@ -560,7 +570,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         return true;
     }
 
-    private bool process_dropped_uris (Gdk.DragContext ctx,
+    private bool process_dropped_uris (Gdk.DragAction selected_action,
+                                       Gdk.DragAction possible_actions,
                                        List<GLib.File> drop_file_list,
                                        bool dropped_between) {
 
@@ -570,10 +581,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             return list.add_favorite (drop_file_list.data.get_uri (), "", pos);
         } else {
             var dnd_handler = new Files.DndHandler ();
-            var real_action = ctx.get_selected_action ();
+            var real_action = selected_action;
 
             if (real_action == Gdk.DragAction.ASK) {
-                var actions = ctx.get_actions ();
+                var actions = possible_actions;
 
                 if (uri.has_prefix ("trash://")) {
                     actions &= Gdk.DragAction.MOVE;
@@ -586,7 +597,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 );
             }
 
-            if (real_action == Gdk.DragAction.DEFAULT) {
+            if (real_action == 0) {
                 return false;
             }
 
