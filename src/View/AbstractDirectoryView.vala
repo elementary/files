@@ -161,6 +161,8 @@ namespace Files {
 
         /* Used for blocking and unblocking DnD */
         protected bool dnd_disabled = false;
+        /* Suppress native behavior when required */
+        private bool button_press_disabled = false;
         private void* drag_data;
 
         /* support for generating thumbnails */
@@ -331,6 +333,13 @@ namespace Files {
                     propagation_phase = BUBBLE
                 };
                 key_controller.key_pressed.connect (on_view_key_press_event);
+
+                // Hack required to suppress native behaviour when dragging
+                // multiple selected items with GestureMultiPress event controller
+                // Native behaviour deselects items except the one clicked on
+                view.button_press_event.connect (() => {
+                    return button_press_disabled;
+                });
 
                 button_controller = new Gtk.GestureMultiPress (view) {
                     propagation_phase = CAPTURE,
@@ -3536,10 +3545,13 @@ namespace Files {
                                 }
 
                                 select_path (path, true);
-                                unblock_drag_and_drop ();
+
                                 if (handle_primary_button_click (n_press, mods, path)) {
                                     button_controller.set_state (CLAIMED);
                                 }
+
+                                button_press_disabled = true;
+                                unblock_drag_and_drop ();
                             }
 
                             update_selected_files_and_menu ();
@@ -3626,6 +3638,7 @@ namespace Files {
 
         protected virtual void on_view_button_release_event (int n_press, double x, double y) {
             unblock_drag_and_drop ();
+            button_press_disabled = false;
             /* Ignore button release from click that started renaming.
              * View may lose focus during a drag if another tab is hovered, in which case
              * we do not want to refocus this view.
