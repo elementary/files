@@ -281,8 +281,6 @@ namespace Files.View.Chrome {
                     filter.convert_iter_to_child_iter (out iter, iter);
                     /* This will call cancel () */
                     accept (iter, search_tree_view_button_controller.get_current_button () > 1);
-                } else {
-                    Gdk.beep ();
                 }
             });
 
@@ -507,7 +505,6 @@ namespace Files.View.Chrome {
                 case Gdk.Key.Tab:
                 case Gdk.Key.ISO_Left_Tab:
                     if (list_empty ()) {
-                        Gdk.beep ();
                         return true;
                     }
 
@@ -841,7 +838,6 @@ namespace Files.View.Chrome {
 
         void accept (Gtk.TreeIter? accepted, bool activate) {
             if (accepted == null && !get_iter_at_cursor (out accepted)) {
-                Gdk.beep ();
                 return;
             }
 
@@ -857,7 +853,6 @@ namespace Files.View.Chrome {
                     search (search_term, current_root);
                 } else {
                     critical ("Search match with no associated file and not an ellipsis");
-                    Gdk.beep ();
                 }
 
                 return;
