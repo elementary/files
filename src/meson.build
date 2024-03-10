@@ -10,7 +10,7 @@ pantheon_files_exec = executable (
     meson.project_name (),
     resources,
 
-    # 'Application.vala',
+    'Application.vala',
     # 'ClipboardManager.vala',
     # 'DeepCount.vala',
     # 'EmblemRenderer.vala',
