@@ -77,8 +77,8 @@ public class Files.Plugins.Contractor : Files.Plugins.Base {
             for (int i = 0; i < contracts.size; i++) {
                 var contract = contracts.get (i);
                 var menu_item = new MenuItem (
-                    contract.get_display_name (), 
-                    "contract.execute::"+ i.to_string ()
+                    contract.get_display_name (),
+                    "contract.execute::"+ i.to_string () //vala-lint=no-space
                 );
                 contracts_menu.append_item (menu_item);
             }

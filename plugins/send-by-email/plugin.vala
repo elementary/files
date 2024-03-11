@@ -18,7 +18,7 @@
 */
 
 public class Files.Plugins.SendByEmail : Files.Plugins.Base {
-    private  GLib.File[] files;
+    private GLib.File[] files;
 
     public override void context_menu (Gtk.PopoverMenu menu_widget, List<Files.File> gof_files) {
         if (gof_files == null || gof_files.length () == 0) {
