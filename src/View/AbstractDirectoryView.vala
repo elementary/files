@@ -1894,108 +1894,67 @@ namespace Files {
             /* select selection or background context menu */
             update_menu_actions ();
 
-            var menu = new Gtk.Menu ();
-
+            var menu = new Menu ();
             var selection = get_files_for_action ();
             var selected_file = selection.data;
-
-            var open_submenu = new Gtk.Menu ();
+            var open_submenu = new Menu ();
 
             if (common_actions.get_action_enabled ("open-in")) {
-                var new_tab_menuitem = new Gtk.MenuItem ();
-                if (selected_files != null) {
-                    new_tab_menuitem.add (new Granite.AccelLabel (
-                        _("New Tab"),
-                        "<Shift>Return"
-                    ));
-                    new_tab_menuitem.action_name = "common.open-in";
-                } else {
-                    new_tab_menuitem.add (new Granite.AccelLabel.from_action_name (
-                        _("New Tab"),
-                        "win.tab::TAB"
-                    ));
-                    new_tab_menuitem.action_name = "win.tab";
-                }
-
-                new_tab_menuitem.action_target = "TAB";
-
-                var new_window_menuitem = new Gtk.MenuItem ();
-                if (selected_files != null) {
-                    new_window_menuitem.add (new Granite.AccelLabel (
-                        _("New Window"),
-                        "<Shift><Ctrl>Return"
-                    ));
-                    new_window_menuitem.action_name = "common.open-in";
-                } else {
-                    new_window_menuitem.add (new Granite.AccelLabel.from_action_name (
-                        _("New Window"),
-                        "win.tab::WINDOW"
-                    ));
-                    new_window_menuitem.action_name = "win.tab";
-                }
-                new_window_menuitem.action_target = "WINDOW";
-
-                open_submenu.add (new_tab_menuitem);
-                open_submenu.add (new_window_menuitem);
-                open_submenu.add (new Gtk.SeparatorMenuItem ());
+                var new_tab_menuitem = new MenuItem (
+                    _("New Tab"),
+                    selected_files != null ? "common.open-in::TAB" : "win.tab::TAB"
+                );
+                var new_window_menuitem = new MenuItem (
+                    _("New Window"),
+                    selected_files != null ? "common.open-in::WINDOW" : "win.tab::WINDOW"
+                );
+                open_submenu.append_item (new_tab_menuitem);
+                open_submenu.append_item (new_window_menuitem);
             }
 
             if (!selected_file.is_mountable () &&
                 !selected_file.is_root_network_folder () &&
                 can_open_file (selected_file)) {
-
                 if (!selected_file.is_folder () && selected_file.is_executable ()) {
-                    var run_menuitem = new Gtk.MenuItem.with_label (_("Run"));
-                    run_menuitem.action_name = "selection.open";
-
-                    menu.add (run_menuitem);
+                    var run_menuitem = new MenuItem (
+                        _("Run"),
+                        "selection.open"
+                    );
+                    menu.append_item (run_menuitem);
                 } else if (default_app != null && default_app.get_id () != APP_ID + ".desktop") {
-                    var open_menuitem = new Gtk.MenuItem ();
-                    open_menuitem.add (new Granite.AccelLabel (
+                    var open_menuitem = new MenuItem (
                         _("Open in %s").printf (default_app.get_display_name ()),
-                        "Return"
-                    ));
-                    open_menuitem.action_name = "selection.open-with-default";
-
-                    menu.add (open_menuitem);
+                        "selection.open-with-default"
+                    );
+                    menu.append_item (open_menuitem);
                 }
 
                 open_with_apps = MimeActions.get_applications_for_files (selection);
-
                 if (selected_file.is_executable () == false) {
                     filter_default_app_from_open_with_apps ();
                 }
 
                 filter_this_app_from_open_with_apps ();
-
                 if (open_with_apps != null && open_with_apps.data != null) {
                     unowned string last_label = "";
                     unowned string last_exec = "";
                     uint count = 0;
-
+                    var open_with_section = new Menu ();
                     foreach (unowned AppInfo app_info in open_with_apps) {
                         /* Ensure no duplicate items */
                         unowned string label = app_info.get_display_name ();
                         unowned string exec = app_info.get_executable ().split (" ")[0];
                         if (label != last_label || exec != last_exec) {
-                            var app_image = new Gtk.Image.from_gicon (
-                                app_info.get_icon (),
-                                Gtk.IconSize.MENU
+                            var menuitem = new MenuItem (
+                                label,
+                                null
                             );
-                            app_image.pixel_size = 16;
-
-                            var label_grid = new Gtk.Grid ();
-                            label_grid.add (app_image);
-                            label_grid.add (new Gtk.Label (label));
-
-                            var menuitem = new Gtk.MenuItem ();
-                            menuitem.add (label_grid);
-                            menuitem.set_detailed_action_name (GLib.Action.print_detailed_name (
+                            menuitem.set_action_and_target_value (
                                 "selection.open-with-app",
-                                new GLib.Variant.uint32 (count)
-                            ));
-
-                            open_submenu.add (menuitem);
+                                new Variant.uint32 (count)
+                            );
+                            menuitem.set_icon (app_info.get_icon ());
+                            open_with_section.append_item (menuitem);
                         }
 
                         last_label = label;
@@ -2004,430 +1963,363 @@ namespace Files {
                     };
 
                     if (count > 0) {
-                        open_submenu.add (new Gtk.SeparatorMenuItem ());
+                        open_submenu.append_section (null, open_with_section);
                     }
                 }
 
                 if (selection != null && selection.first ().next == null) { // Only one selected
-                    var other_apps_menuitem = new Gtk.MenuItem.with_label (_("Other Application…"));
-                    other_apps_menuitem.action_name = "selection.open-with-other-app";
-
-                    open_submenu.add (other_apps_menuitem);
+                    var other_apps_menuitem = new MenuItem (
+                        _("Other Application…"),
+                        "selection.open-with-other-app"
+                    );
+                    open_submenu.append_item (other_apps_menuitem);
                 }
             }
 
-            var open_submenu_item = new Gtk.MenuItem ();
-            if (open_submenu.get_children ().length () > 0) { //Can be assumed to be limited length
-                open_submenu_item.submenu = open_submenu;
-
+            if (open_submenu.get_n_items () > 0) { //Can be assumed to be limited length
                 if (selected_file.is_folder () || selected_file.is_root_network_folder ()) {
-                    open_submenu_item.label = _("Open in");
+                    menu.append_submenu (_("Open in"), open_submenu);
                 } else {
-                    open_submenu_item.label = _("Open with");
+                    menu.append_submenu (_("Open with"), open_submenu);
                 }
-
-                menu.add (open_submenu_item);
             }
 
-            var paste_menuitem = new Gtk.MenuItem ();
-            paste_menuitem.action_name = "common.paste";
-
-            var bookmark_menuitem = new Gtk.MenuItem ();
-            bookmark_menuitem.add (new Granite.AccelLabel (
+            var paste_menuitem = new MenuItem (
+                null, // label will be set later
+                "common.paste"
+            );
+            var bookmark_menuitem = new MenuItem (
                 _("Add to Bookmarks"),
-                "<Ctrl>d"
-            ));
-            bookmark_menuitem.action_name = "common.bookmark";
-
-            var properties_menuitem = new Gtk.MenuItem ();
-            properties_menuitem.add (new Granite.AccelLabel (
+                "common.bookmark"
+            );
+            var properties_menuitem = new MenuItem (
                 _("Properties"),
-                "<Alt>Return"
-            ));
-            properties_menuitem.action_name = "common.properties";
-
-            Gtk.MenuItem? select_all_menuitem = null;
-            Gtk.MenuItem? deselect_all_menuitem = null;
-            Gtk.MenuItem? invert_selection_menuitem = null;
+                "common.properties"
+            );
+            MenuItem? select_all_menuitem = null;
+            MenuItem? deselect_all_menuitem = null;
+            MenuItem? invert_selection_menuitem = null;
             if (!all_selected) {
-                select_all_menuitem = new Gtk.MenuItem () {
-                    action_name = "common.select-all"
-                };
-                select_all_menuitem.add (new Granite.AccelLabel.from_action_name (
+                select_all_menuitem = new MenuItem (
                     _("Select All"),
-                    select_all_menuitem.action_name
-                ));
-
+                    "common.select-all"
+                );
                 if (get_selected_files () != null) {
-                    invert_selection_menuitem = new Gtk.MenuItem () {
-                        action_name = "selection.invert-selection"
-                    };
-                    invert_selection_menuitem.add (new Granite.AccelLabel.from_action_name (
+                    invert_selection_menuitem = new MenuItem (
                         _("Invert Selection"),
-                        invert_selection_menuitem.action_name
-                    ));
+                        "selection.invert-selection"
+                    );
                 }
             } else {
-                deselect_all_menuitem = new Gtk.MenuItem () {
-                    action_name = "common.select-all"
-                };
-                deselect_all_menuitem.add (new Granite.AccelLabel.from_action_name (
+                deselect_all_menuitem = new MenuItem (
                     _("Deselect All"),
-                    deselect_all_menuitem.action_name
-                ));
+                    "common.select-all"
+                );
             }
 
             if (get_selected_files () != null) { // Add selection actions
-                var cut_menuitem = new Gtk.MenuItem ();
-                cut_menuitem.add (new Granite.AccelLabel (
+                var cut_menuitem = new MenuItem (
                     _("Cut"),
-                    "<Ctrl>x"
-                ));
-                cut_menuitem.action_name = "selection.cut";
-
-                var copy_menuitem = new Gtk.MenuItem ();
+                    "selection.cut"
+                );
+                var copy_menuitem = new MenuItem (
                 ///TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-                copy_menuitem.add (new Granite.AccelLabel (
                     _("Copy"),
-                    "<Ctrl>c"
-                ));
-                copy_menuitem.action_name = "common.copy";
-
-                var trash_menuitem = new Gtk.MenuItem ();
-                trash_menuitem.add (new Granite.AccelLabel (
+                    "common.copy"
+                );
+                var trash_menuitem = new MenuItem (
                     _("Move to Trash"),
-                    "Delete"
-                ));
-                trash_menuitem.action_name = "selection.trash";
-
-                var delete_menuitem = new Gtk.MenuItem.with_label (_("Delete Permanently")) {
-                    action_name = "selection.delete"
-                };
-                delete_menuitem.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                    "selection.trash"
+                );
+                var delete_menuitem = new MenuItem (
+                    _("Delete Permanently"),
+                    "selection.delete"
+                );
+                //FIXME Can this be emulated in GMenu?
+                // delete_menuitem.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
                 /* In trash, only show context menu when all selected files are in root folder */
                 if (in_trash && valid_selection_for_restore ()) {
-                    var restore_menuitem = new Gtk.MenuItem.with_label (_("Restore from Trash"));
-                    restore_menuitem.action_name = "selection.restore";
-
-                    menu.add (new Gtk.SeparatorMenuItem ());
-                    menu.add (restore_menuitem);
-                    menu.add (delete_menuitem);
-                    menu.add (new Gtk.SeparatorMenuItem ());
-                    menu.add (cut_menuitem);
+                    var restore_menuitem = new MenuItem (
+                        _("Restore from Trash"),
+                        "selection.restore"
+                    );
+                    var restore_delete_menu = new Menu ();
+                    restore_delete_menu.append_item (restore_menuitem);
+                    restore_delete_menu.append_item (delete_menuitem);
+                    menu.append_section (null, restore_delete_menu);
+                    menu.append_item (cut_menuitem);
                     if (select_all_menuitem != null) {
-                        menu.add (select_all_menuitem);
+                        menu.append_item (select_all_menuitem);
                     }
 
                     if (deselect_all_menuitem != null) {
-                        menu.add (deselect_all_menuitem);
+                        menu.append_item (deselect_all_menuitem);
                     }
 
                     if (invert_selection_menuitem != null) {
-                        menu.add (invert_selection_menuitem);
+                        menu.append_item (invert_selection_menuitem);
                     }
 
-                    menu.add (new Gtk.SeparatorMenuItem ());
-                    menu.add (properties_menuitem);
+                    var properties_menu = new Menu ();
+                    properties_menu.append_item (properties_menuitem);
+                    menu.append_section (null, properties_menu);
                 } else if (in_recent) {
-                    var open_parent_menuitem = new Gtk.MenuItem.with_label (_("Open Parent Folder"));
-                    open_parent_menuitem.action_name = "selection.view-in-location";
+                    var open_parent_menuitem = new MenuItem (
+                        _("Open Parent Folder"),
+                        "selection.view-in-location"
+                    );
+                    var forget_menuitem = new MenuItem (
+                        _("Remove from History"),
+                        "selection.forget"
+                    );
+                    menu.append_item (open_parent_menuitem);
+                    var forget_copy_menu = new Menu ();
+                    forget_copy_menu.append_item (forget_menuitem);
+                    forget_copy_menu.append_item (copy_menuitem);
+                    menu.append_section (null, forget_copy_menu);
 
-                    var forget_menuitem = new Gtk.MenuItem.with_label (_("Remove from History"));
-                    forget_menuitem.action_name = "selection.forget";
-
-                    menu.add (open_parent_menuitem);
-                    menu.add (new Gtk.SeparatorMenuItem ());
-                    menu.add (forget_menuitem);
-                    menu.add (copy_menuitem);
                     if (select_all_menuitem != null) {
-                        menu.add (select_all_menuitem);
+                        menu.append_item (select_all_menuitem);
                     }
-
                     if (deselect_all_menuitem != null) {
-                        menu.add (deselect_all_menuitem);
+                        menu.append_item (deselect_all_menuitem);
                     }
-
                     if (invert_selection_menuitem != null) {
-                        menu.add (invert_selection_menuitem);
+                        menu.append_item (invert_selection_menuitem);
                     }
+                    menu.append_item (trash_menuitem);
 
-                    menu.add (trash_menuitem);
-                    menu.add (new Gtk.SeparatorMenuItem ());
-                    menu.add (properties_menuitem);
+                    var properties_menu = new Menu ();
+                    properties_menu.append_item (properties_menuitem);
+                    menu.append_section (null, properties_menu);
                 } else {
                     if (valid_selection_for_edit ()) {
-                        var rename_menuitem = new Gtk.MenuItem ();
-                        rename_menuitem.add (new Granite.AccelLabel (
+                        var rename_menuitem = new MenuItem (
                             _("Rename…"),
-                            "F2"
-                        ));
-                        rename_menuitem.action_name = "selection.rename";
-
-                        var copy_link_menuitem = new Gtk.MenuItem ();
-                        copy_link_menuitem.add (new Granite.AccelLabel (
+                            "selection.rename"
+                        );
+                        var copy_link_menuitem = new MenuItem (
                             _("Copy as Link"),
-                            "<Shift><Ctrl>c"
-                        ));
-                        copy_link_menuitem.action_name = "common.copy-link";
-
-                        if (menu.get_children ().find (open_submenu_item) != null) {
-                            menu.add (new Gtk.SeparatorMenuItem ());
-                        }
-
-                        menu.add (cut_menuitem);
-                        menu.add (copy_menuitem);
-                        menu.add (copy_link_menuitem);
+                            "common.copy-link"
+                        );
+                        menu.append_item (cut_menuitem);
+                        menu.append_item (copy_menuitem);
+                        menu.append_item (copy_link_menuitem);
 
                         // Do not display the 'Paste into' menuitem if nothing to paste
                         // Do not display 'Paste' menuitem if there is a selected folder ('Paste into' enabled)
                         if (common_actions.get_action_enabled ("paste-into") &&
                             clipboard != null && clipboard.can_paste) {
-                            var paste_into_menuitem = new Gtk.MenuItem () {
-                                action_name = "common.paste-into"
-                            };
-
-                            if (clipboard.files_linked) {
-                                paste_into_menuitem.add (new Granite.AccelLabel (
-                                    _("Paste Link into Folder"),
-                                    "<Shift><Ctrl>v"
-                                ));
-                            } else {
-                                paste_into_menuitem.add (new Granite.AccelLabel (
-                                    _("Paste into Folder"),
-                                    "<Shift><Ctrl>v"
-                                ));
-                            }
-
-                            menu.add (paste_into_menuitem);
+                            var paste_into_menuitem = new MenuItem (
+                                clipboard.files_linked ?
+                                _("Paste Link into Folder") :
+                                _("Paste into Folder"),
+                                "common.paste-into"
+                            );
+                            menu.append_item (paste_into_menuitem);
                         } else if (common_actions.get_action_enabled ("paste") &&
                             clipboard != null && clipboard.can_paste) {
-
-                            paste_menuitem.add (new Granite.AccelLabel (
-                                _("Paste"),
-                                "<Ctrl>v"
-                            ));
-                            menu.add (paste_menuitem);
+                            paste_menuitem.set_label (_("Paste"));
+                            menu.append_item (paste_menuitem);
                         }
 
                         if (select_all_menuitem != null) {
-                            menu.add (select_all_menuitem);
+                            menu.append_item (select_all_menuitem);
                         }
 
                         if (deselect_all_menuitem != null) {
-                            menu.add (deselect_all_menuitem);
+                            menu.append_item (deselect_all_menuitem);
                         }
 
                         if (invert_selection_menuitem != null) {
-                            menu.add (invert_selection_menuitem);
+                            menu.append_item (invert_selection_menuitem);
                         }
 
-                        menu.add (new Gtk.SeparatorMenuItem ());
                         if (slot.directory.has_trash_dirs && !Files.is_admin ()) {
-                            menu.add (trash_menuitem);
+                            menu.append_item (trash_menuitem);
                         } else {
-                            menu.add (delete_menuitem);
+                            menu.append_item (delete_menuitem);
                         }
 
-                        menu.add (rename_menuitem);
+                        menu.append_item (rename_menuitem);
                     }
 
                     /* Do  not offer to bookmark if location is already bookmarked */
                     if (common_actions.get_action_enabled ("bookmark") &&
                         window.can_bookmark_uri (selected_files.data.uri)) {
 
-                        menu.add (bookmark_menuitem);
+                        menu.append_item (bookmark_menuitem);
                     }
 
-                    menu.add (new Gtk.SeparatorMenuItem ());
-                    menu.add (properties_menuitem);
+                    var properties_menu = new Menu ();
+                    properties_menu.append_item (properties_menuitem);
+                    menu.append_section (null, properties_menu);
                 }
             } else { // Add background folder actions
                 if (in_trash) {
                     if (clipboard != null && clipboard.has_cutted_file (null)) {
-                        paste_menuitem.add (new Granite.AccelLabel (
-                            _("Paste into Folder"),
-                            "<Ctrl>v"
-                        ));
-                        menu.add (paste_menuitem);
+                        paste_menuitem.set_label (_("Paste into Folder"));
+                        menu.append_item (paste_menuitem);
                         if (select_all_menuitem != null) {
-                            menu.add (select_all_menuitem);
+                            menu.append_item (select_all_menuitem);
                         }
                     }
                 } else if (in_recent) {
                     if (select_all_menuitem != null) {
-                        menu.add (select_all_menuitem);
+                        menu.append_item (select_all_menuitem);
                     }
 
-                    menu.add (new Gtk.SeparatorMenuItem ());
-                    menu.add (new SortSubMenuItem ());
-                    menu.add (new Gtk.SeparatorMenuItem ());
+                    menu.append_submenu (_("Sort by"), build_sort_submenu ());
                 } else {
                     if (!in_network_root) {
-                        menu.add (new Gtk.SeparatorMenuItem ());
                         /* If something is pastable in the clipboard, show the option even if it is not enabled */
                         if (clipboard != null && clipboard.can_paste) {
                             if (clipboard.files_linked) {
-                                paste_menuitem.add (new Granite.AccelLabel (
-                                    _("Paste Link into Folder"),
-                                    "<Ctrl>v"
-                                ));
+                                paste_menuitem.set_label (_("Paste Link into Folder"));
                             } else {
-                                paste_menuitem.add (new Granite.AccelLabel (
-                                    _("Paste"),
-                                    "<Ctrl>v"
-                                ));
+                                paste_menuitem.set_label (_("Paste"));
                             }
                         }
 
-                        menu.add (paste_menuitem);
+                        menu.append_item (paste_menuitem);
                         if (select_all_menuitem != null) {
-                            menu.add (select_all_menuitem);
+                            menu.append_item (select_all_menuitem);
                         }
 
                         if (is_writable) {
-                            menu.add (new NewSubMenuItem ());
+                            menu.append_submenu (_("New"), build_new_submenu ());
                         }
 
-                        menu.add (new SortSubMenuItem ());
+                        menu.append_submenu (_("Sort by"), build_sort_submenu ());
                     }
 
                     /* Do  not offer to bookmark if location is already bookmarked */
                     if (common_actions.get_action_enabled ("bookmark") &&
                         window.can_bookmark_uri (slot.directory.file.uri)) {
 
-                        menu.add (bookmark_menuitem);
+                        menu.append_item (bookmark_menuitem);
                     }
 
                     if (!in_network_root) {
-                        menu.add (new Gtk.SeparatorMenuItem ());
-                        menu.add (properties_menuitem);
+                        // menu.add (new Gtk.SeparatorMenuItem ());
+                        menu.append_item (properties_menuitem);
                     }
                 }
             }
 
-            if (!in_trash) {
-                // We send the actual files - it is up to the plugin to extract target
-                // if needed.  Color tag plugin needs actual file, others need target
-                plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
-            }
+            double x, y;
+            event.get_coords (out x, out y);
+            popover_menu = new Gtk.PopoverMenu () {
+                relative_to = view,
+                pointing_to = {(int) x, (int) y, 1, 1}
+            };
+            popover_menu.bind_model (menu, null);
 
-            menu.set_screen (null);
-            menu.attach_to_widget (this, null);
+            // if (!in_trash) {
+            //     // We send the actual files - it is up to the plugin to extract target
+            //     // if needed.  Color tag plugin needs actual file, others need target
+            //     plugins.hook_context_menu (popover_menu, get_selected_files ());
+            // }
 
             /* Override style Granite.STYLE_CLASS_H2_LABEL of view when it is empty */
             if (slot.directory.is_empty ()) {
-                menu.get_style_context ().add_class (Gtk.STYLE_CLASS_CONTEXT_MENU);
+                popover_menu.get_style_context ().add_class (Gtk.STYLE_CLASS_CONTEXT_MENU);
             }
 
-            menu.show_all ();
-            menu.popup_at_pointer (event);
+            popover_menu.show_all ();
+            popover_menu.popup ();
         }
 
-        private class SortSubMenuItem : Gtk.MenuItem {
-            construct {
-                var name_radioitem = new Gtk.CheckMenuItem.with_label (_("Name"));
-                name_radioitem.action_name = "background.sort-by";
-                name_radioitem.action_target = "name";
-                name_radioitem.draw_as_radio = true;
+        public Gtk.PopoverMenu popover_menu;
 
-                var size_radioitem = new Gtk.CheckMenuItem.with_label (_("Size"));
-                size_radioitem.action_name = "background.sort-by";
-                size_radioitem.action_target = "size";
-                size_radioitem.draw_as_radio = true;
+        private Menu build_sort_submenu () {
+            var menu = new Menu ();
+            var name_radioitem = new MenuItem (
+                _("Name"),
+                "background.sort-by::name"
+            );
+            var size_radioitem = new MenuItem (
+                _("Size"),
+                "background.sort-by::size"
+            );
+            var type_radioitem = new MenuItem (
+                _("Type"),
+                "background.sort-by::type"
+            );
+            var date_radioitem = new MenuItem (
+                _("Date"),
+                "background.sort-by::modified"
+            );
+            var reversed_checkitem = new MenuItem (
+                _("Reversed Order"),
+                "background.reverse"
+            );
+            var folders_first_checkitem = new MenuItem (
+                _("Folders Before Files"),
+                "background.folders-first"
+            );
+            menu.append_item (name_radioitem);
+            menu.append_item (size_radioitem);
+            menu.append_item (type_radioitem);
+            menu.append_item (date_radioitem);
+            menu.append_item (reversed_checkitem);
+            menu.append_item (folders_first_checkitem);
 
-                var type_radioitem = new Gtk.CheckMenuItem.with_label (_("Type"));
-                type_radioitem.action_name = "background.sort-by";
-                type_radioitem.action_target = "type";
-                type_radioitem.draw_as_radio = true;
-
-                var date_radioitem = new Gtk.CheckMenuItem.with_label (_("Date"));
-                date_radioitem.action_name = "background.sort-by";
-                date_radioitem.action_target = "modified";
-                date_radioitem.draw_as_radio = true;
-
-                var reversed_checkitem = new Gtk.CheckMenuItem.with_label (_("Reversed Order"));
-                reversed_checkitem.action_name = "background.reverse";
-
-                var folders_first_checkitem = new Gtk.CheckMenuItem.with_label (_("Folders Before Files"));
-                folders_first_checkitem.action_name = "background.folders-first";
-
-                submenu = new Gtk.Menu ();
-                submenu.add (name_radioitem);
-                submenu.add (size_radioitem);
-                submenu.add (type_radioitem);
-                submenu.add (date_radioitem);
-                submenu.add (new Gtk.SeparatorMenuItem ());
-                submenu.add (reversed_checkitem);
-                submenu.add (folders_first_checkitem);
-
-                label = _("Sort by");
-            }
+            return menu;
         }
 
-        private class NewSubMenuItem : Gtk.MenuItem {
-            construct {
-                var folder_menuitem = new Gtk.MenuItem ();
-                folder_menuitem.add (new Granite.AccelLabel (
-                    _("Folder"),
-                    "<Ctrl><Shift>n"
-                ));
-                folder_menuitem.action_name = "background.new";
-                folder_menuitem.action_target = "FOLDER";
+        private Menu build_new_submenu () {
+            var menu = new Menu ();
+            var folder_menuitem = new MenuItem (
+                _("Folder"),
+                "background.new::FOLDER"
+            );
+            var file_menuitem = new MenuItem (
+                _("Empty File"),
+                "background.new::FILE"
+            );
+            menu.append_item (folder_menuitem);
+            menu.append_item (file_menuitem);
 
-                var file_menuitem = new Gtk.MenuItem.with_label (_("Empty File"));
-                file_menuitem.action_name = "background.new";
-                file_menuitem.action_target = "FILE";
+            /* Potential optimisation - do just once when app starts or view created */
+            templates = null;
+            unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
+            if (template_path != null) {
+                var template_folder = GLib.File.new_for_path (template_path);
+                load_templates_from_folder (template_folder);
 
-                submenu = new Gtk.Menu ();
-                submenu.add (folder_menuitem);
-                submenu.add (file_menuitem);
+                if (templates.length () > 0) { //Can be assumed to be limited length
+                    // We need to get directories first
+                    templates.reverse ();
 
-                /* Potential optimisation - do just once when app starts or view created */
-                templates = null;
-                unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
-                if (template_path != null) {
-                    var template_folder = GLib.File.new_for_path (template_path);
-                    load_templates_from_folder (template_folder);
-
-                    if (templates.length () > 0) { //Can be assumed to be limited length
-                        submenu.add (new Gtk.SeparatorMenuItem ());
-
-                        // We need to get directories first
-                        templates.reverse ();
-
-                        var active_submenu = submenu;
-                        int index = 0;
-                        foreach (unowned GLib.File template in templates) {
-                            var label = template.get_basename ();
-                            var ftype = template.query_file_type (GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
-                            if (ftype == GLib.FileType.DIRECTORY) {
-                                if (template == template_folder) {
-                                    active_submenu = submenu;
-                                } else {
-                                    active_submenu = new Gtk.Menu ();
-
-                                    var submenu_item = new Gtk.MenuItem.with_label (label);
-                                    submenu_item.submenu = active_submenu;
-
-                                    submenu.add (submenu_item);
-                                }
+                    var active_submenu = menu;
+                    int index = 0;
+                    foreach (unowned GLib.File template in templates) {
+                        var label = template.get_basename ();
+                        var ftype = template.query_file_type (GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                        if (ftype == GLib.FileType.DIRECTORY) {
+                            if (template == template_folder) {
+                                active_submenu = menu;
                             } else {
-                                var template_menuitem = new Gtk.MenuItem.with_label (label);
-                                template_menuitem.set_detailed_action_name ("background.create-from::" +
-                                                                            index.to_string ());
-
-                                active_submenu.add (template_menuitem);
-
+                                var new_submenu = new Menu ();
+                                active_submenu.append_submenu ("label", new_submenu);
+                                active_submenu = new_submenu;
                             }
-
-                            index++;
+                        } else {
+                            var template_menuitem = new MenuItem (
+                                label,
+                                "background.create-from::" + index.to_string ()
+                            );
+                            active_submenu.append_item (template_menuitem);
                         }
+
+                        index++;
                     }
                 }
-
-                label = _("New");
             }
+
+            return menu;
         }
 
         private bool valid_selection_for_edit () {
