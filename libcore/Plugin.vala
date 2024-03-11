@@ -18,7 +18,7 @@
 
 public abstract class Files.Plugins.Base {
     public virtual void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) { }
-    public virtual void context_menu (Gtk.Widget widget, List<Files.File> files) { }
+    public virtual void context_menu (Gtk.PopoverMenu menu_widget, List<Files.File> files) { }
     public virtual void sidebar_loaded (Gtk.Widget widget) { }
     public virtual void update_sidebar (Gtk.Widget widget) { }
     public virtual void update_file_info (Files.File file) { }
