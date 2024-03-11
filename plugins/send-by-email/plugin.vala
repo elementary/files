@@ -17,16 +17,45 @@
 * Boston, MA 02110-1301 USA
 */
 
-public class Files.Plugins.SendByEmailMenuItem : Gtk.MenuItem {
-    private GLib.File[] files;
+public class Files.Plugins.SendByEmail : Files.Plugins.Base {
+    private  GLib.File[] files;
 
-    public SendByEmailMenuItem (GLib.File[] files) {
-        this.files = files;
+    public override void context_menu (Gtk.PopoverMenu menu_widget, List<Files.File> gof_files) {
+        if (gof_files == null || gof_files.length () == 0) {
+            return;
+        }
 
-        label = _("Send by Email");
+        files = get_file_array (gof_files);
+        if (files.length > 0) {
+            var send_action = new SimpleAction ("send", null);
+            send_action.activate.connect (send_email);
+            var email_action_group = new SimpleActionGroup ();
+            email_action_group.add_action (send_action);
+            menu_widget.insert_action_group ("email", email_action_group);
+            var email_menu = new Menu ();
+            var email_item = new MenuItem (_("Send by Email"), "email.send");
+            email_menu.append_item (email_item);
+            ((Menu)(menu_widget.menu_model)).append_section (null, email_menu);
+        }
     }
 
-    public override void activate () {
+    private static GLib.File[] get_file_array (List<Files.File> files) {
+        GLib.File[] file_array = new GLib.File[0];
+
+        foreach (unowned Files.File file in files) {
+            if (file.location != null && !file.is_directory && file.is_readable ()) {
+                if (file.location.get_uri_scheme () == "recent") {
+                    file_array += GLib.File.new_for_uri (file.get_display_target_uri ());
+                } else {
+                    file_array += file.location;
+                }
+            }
+        }
+
+        return file_array;
+    }
+
+    private void send_email () {
         try {
             var portal = Portal.Email.get ();
 
@@ -76,14 +105,14 @@ public class Files.Plugins.SendByEmailMenuItem : Gtk.MenuItem {
     }
 
     private async string window_export () {
-        var window = get_toplevel ().get_window ();
+        var surface = window.get_root ().get_surface ();
 
-        if (window is Gdk.X11.Window) {
-            var xid = ((Gdk.X11.Window) window).get_xid ();
+        if (surface is Gdk.X11.Surface) {
+            var xid = ((Gdk.X11.Surface) surface).get_xid ();
             return "x11:%x".printf ((uint) xid);
-        } else if (window is Gdk.Wayland.Window) {
+        } else if (surface is Gdk.Wayland.Toplevel) {
             var handle = "wayland:";
-            ((Gdk.Wayland.Window) window).export_handle ((w, h) => {
+            ((Gdk.Wayland.Toplevel) surface).export_handle ((toplevel, h) => {
                 handle += h;
                 window_export.callback ();
             });
@@ -94,50 +123,10 @@ public class Files.Plugins.SendByEmailMenuItem : Gtk.MenuItem {
             }
 
             return "";
-
         } else {
             warning ("Unknown windowing system, not exporting window");
             return "";
         }
-    }
-}
-
-public class Files.Plugins.SendByEmail : Files.Plugins.Base {
-
-    public override void context_menu (Gtk.Widget widget, List<Files.File> gof_files) {
-        var menu = widget as Gtk.Menu;
-
-        if (gof_files == null || gof_files.length () == 0) {
-            return;
-        }
-
-        var files = get_file_array (gof_files);
-        if (files != null && files.length > 0) {
-            add_menuitem (menu, new Gtk.SeparatorMenuItem ());
-            add_menuitem (menu, new SendByEmailMenuItem (files));
-        }
-    }
-
-    private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
-        menu.append (menu_item);
-        menu_item.show ();
-        plugins.menuitem_references.add (menu_item);
-    }
-
-    private static GLib.File[] get_file_array (List<Files.File> files) {
-        GLib.File[] file_array = new GLib.File[0];
-
-        foreach (unowned Files.File file in files) {
-            if (file.location != null && !file.is_directory && file.is_readable ()) {
-                if (file.location.get_uri_scheme () == "recent") {
-                    file_array += GLib.File.new_for_uri (file.get_display_target_uri ());
-                } else {
-                    file_array += file.location;
-                }
-            }
-        }
-
-        return file_array;
     }
 }
 

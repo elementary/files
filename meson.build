@@ -109,7 +109,7 @@ subdir('libcore')
 # subdir('src')
 subdir('data')
 # subdir('pantheon-files-daemon')
-# subdir('plugins')
+subdir('plugins')
 # subdir('filechooser-portal')
 subdir('po')
 

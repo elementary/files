@@ -1,6 +1,6 @@
 send_by_email_plugin_dir = join_paths(plugin_dir, 'core')
 
-gdk_dep = [ dependency('gdk-x11-3.0'), dependency('gdk-wayland-3.0') ]
+gdk_dep = [ dependency('gtk4-x11'), dependency('gtk4-wayland') ]
 
 shared_module(
     'pantheon-files-send-by-email',
