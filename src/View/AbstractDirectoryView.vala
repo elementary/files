@@ -2216,11 +2216,11 @@ namespace Files {
             };
             popover_menu.bind_model (menu, null);
 
-            // if (!in_trash) {
-            //     // We send the actual files - it is up to the plugin to extract target
-            //     // if needed.  Color tag plugin needs actual file, others need target
-            //     plugins.hook_context_menu (popover_menu, get_selected_files ());
-            // }
+            if (!in_trash) {
+                // We send the actual files - it is up to the plugin to extract target
+                // if needed.  Color tag plugin needs actual file, others need target
+                plugins.hook_context_menu (popover_menu, menu, get_selected_files ());
+            }
 
             /* Override style Granite.STYLE_CLASS_H2_LABEL of view when it is empty */
             if (slot.directory.is_empty ()) {

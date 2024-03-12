@@ -18,7 +18,8 @@
 
 public abstract class Files.Plugins.Base {
     public virtual void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) { }
-    public virtual void context_menu (Gtk.PopoverMenu menu_widget, List<Files.File> files) { }
+    //Have to pass the model separately in Gtk3 - not necessary in Gtk4 as can be obtained from PopoverMenu
+    public virtual void context_menu (Gtk.PopoverMenu menu_widget, Menu menu, List<Files.File> files) { }
     public virtual void sidebar_loaded (Gtk.Widget widget) { }
     public virtual void update_sidebar (Gtk.Widget widget) { }
     public virtual void update_file_info (Files.File file) { }

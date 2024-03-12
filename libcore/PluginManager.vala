@@ -172,9 +172,9 @@ public class Files.PluginManager : Object {
         }
     }
 
-    public void hook_context_menu (Gtk.PopoverMenu menu_widget, List<Files.File> files) {
+    public void hook_context_menu (Gtk.PopoverMenu menu_widget, Menu menu, List<Files.File> files) {
         foreach (var plugin in plugin_hash.values) {
-            plugin.context_menu (menu_widget, files);
+            plugin.context_menu (menu_widget, menu, files);
         }
     }
 
