@@ -31,17 +31,12 @@ public class Files.PluginManager : Object {
     bool is_admin = false;
 
     [Version (deprecated = true, deprecated_since = "0.2", replacement = "Files.PluginManager.menuitem_references")]
-    public GLib.List<Gtk.Widget>? menus; /* this doesn't manage GObject references properly */
-
-    public Gee.List<Gtk.Widget> menuitem_references { get; private set; }
-
     private string[] plugin_dirs;
 
     public PluginManager (string plugin_dir, uint user_id) {
         is_admin = (user_id == 0);
         plugin_hash = new Gee.HashMap<string,Plugins.Base> ();
         names = new Gee.ArrayList<string> ();
-        menuitem_references = new Gee.LinkedList<Gtk.Widget> ();
         plugin_dirs = new string[0];
 
         if (!is_admin) {
@@ -177,37 +172,10 @@ public class Files.PluginManager : Object {
         }
     }
 
-    public void hook_context_menu (Gtk.Widget menu, List<Files.File> files) {
-        drop_menu_references (menu);
-
-        if (menu is Gtk.Menu) {
-            drop_plugin_menuitems ();
-        }
-
+    public void hook_context_menu (Gtk.PopoverMenu menu_widget, List<Files.File> files) {
         foreach (var plugin in plugin_hash.values) {
-            plugin.context_menu (menu, files);
+            plugin.context_menu (menu_widget, files);
         }
-    }
-
-    private void drop_plugin_menuitems () {
-        foreach (var menu_item in menuitem_references) {
-            menu_item.parent.remove (menu_item);
-        }
-
-        menuitem_references.clear ();
-    }
-
-    [Version (deprecated = true, deprecated_since = "0.2", replacement = "Files.PluginManager.drop_plugin_menuitems")]
-    private void drop_menu_references (Gtk.Widget menu) {
-        if (menus == null) {
-            return;
-        }
-
-        foreach (var item in menus) {
-            item.destroy ();
-        }
-
-        menus = null;
     }
 
     public void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
