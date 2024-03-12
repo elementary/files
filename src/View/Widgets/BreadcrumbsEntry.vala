@@ -45,7 +45,6 @@ namespace Files.View.Chrome {
             }
         } // Candidate completion (placeholder)
 
-        public bool search_mode = false; // Used to suppress activate events while searching
 
         /** Drag and drop support **/
         protected const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY |
@@ -91,15 +90,21 @@ namespace Files.View.Chrome {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                 case Gdk.Key.ISO_Enter:
-                    if (search_mode) {
+                    if (lock_mode) {
                         return true;
                     }
 
                     break;
                 case Gdk.Key.KP_Tab:
                 case Gdk.Key.Tab:
-                    set_entry_text (text + completion_text);
-                    return true;
+                    if (text.length > 0) { // Do not enter placeholder as text
+                        set_entry_text (text + completion_text);
+                        return true;
+                    }
+
+                    break;
+                default:
+                    break;
             }
 
             return base.on_key_press_event (keyval, keycode, state);
@@ -118,7 +123,7 @@ namespace Files.View.Chrome {
         }
 
         public void hide_primary_icon () {
-            primary_icon_pixbuf = null;
+            primary_icon_name = null;
         }
 
         protected override void set_default_entry_tooltip () {
