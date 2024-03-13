@@ -87,7 +87,7 @@ public class Files.AppMenu : Gtk.Popover {
             action_name = "win.folders-before-files"
         };
 
-        var restore_tabs = new Granite.SwitchModelButton (_("Restore Tabs on Starting")) {
+        var restore_tabs = new Granite.SwitchModelButton (_("Restore Tabs from Last Time")) {
             action_name = "win.restore-tabs-on-startup"
         };
 
