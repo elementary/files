@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-04 11:41+0000\n"
+"POT-Creation-Date: 2024-02-18 13:10+0000\n"
 "PO-Revision-Date: 2023-08-03 17:45+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://l10n.elementary.io/projects/files/files/ka/"
@@ -208,7 +208,7 @@ msgstr "აქ ჩაკოპირება"
 msgid "Link Here"
 msgstr "აქ ბმულის შექმნა"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2324
+#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2326
 msgid "Name"
 msgstr "სახელი"
 
@@ -221,7 +221,7 @@ msgstr "შექმნის თარიღი"
 msgid "Last modification date"
 msgstr "ბოლო ცვლილების თარიღი"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2329
+#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2331
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "ზომა"
@@ -234,7 +234,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2339
+#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2341
 msgid "Date"
 msgstr "თარიღი"
 
@@ -1092,7 +1092,7 @@ msgid "_Unmount"
 msgstr "_მოხსნა"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2039
+#: src/View/AbstractDirectoryView.vala:2041
 msgid "Properties"
 msgstr "_თვისებები"
 
@@ -1104,7 +1104,7 @@ msgstr "დისკის გამოღება"
 msgid "Safely Remove"
 msgstr "უსაფრთხოდ მოცილება"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2032
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2034
 msgid "Add to Bookmarks"
 msgstr "სანიშნეებში დამატება"
 
@@ -1468,17 +1468,17 @@ msgstr[0] "ნამდვილად გნებავთ მონიშნ�
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:183
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:189
 #, c-format
 msgid "Navigate to %s"
 msgstr "გადასვლა %s-ში"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:290
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:300
 #, c-format
 msgid "Go to %s"
 msgstr "გადასვლა %s-ში"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:367
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:377
 msgid "Type Path"
 msgstr "შეიყვანეთ ბილიკი"
 
@@ -1536,8 +1536,8 @@ msgstr "პროგრამის ვერსიის ჩვენება"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "ერთი ან მეტი URI-ის, თითოეულის თავის საკუთარ ჩანართში გახსნა"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1920
-#: src/View/AbstractDirectoryView.vala:1926
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1922
+#: src/View/AbstractDirectoryView.vala:1928
 msgid "New Window"
 msgstr "ახალი ფანჯარა"
 
@@ -1670,23 +1670,6 @@ msgstr ""
 msgid "Basename:"
 msgstr "საბაზისო სახელი:"
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
-msgctxt "bulk-rename"
-msgid "Keep"
-msgstr ""
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Replace"
-msgstr "ჩანაცვლება"
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Modify"
-msgstr "შეიცვალა"
-
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
 msgid "Original Basename"
@@ -1699,30 +1682,6 @@ msgstr "ჩასანაცვლებელი ტექსტი"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
 msgstr ""
-
-#. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:190
-msgctxt "bulk-rename"
-msgid "Name"
-msgstr "სახელი"
-
-#. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
-msgctxt "bulk-rename"
-msgid "Date created"
-msgstr "შექმნის თარიღი"
-
-#. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
-msgctxt "bulk-rename"
-msgid "Date modified"
-msgstr "ცვლილების თარიღი"
-
-#. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
-msgctxt "bulk-rename"
-msgid "Size"
-msgstr "ზომა"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
@@ -1846,7 +1805,7 @@ msgid "Original Location:"
 msgstr "საწყისი მდებარეობა:"
 
 #: src/Dialogs/PropertiesWindow.vala:671
-#: src/View/AbstractDirectoryView.vala:2007
+#: src/View/AbstractDirectoryView.vala:2009
 msgid "Other Application…"
 msgstr ""
 
@@ -1925,181 +1884,181 @@ msgstr "URI-ების გახსნის შეცდომა"
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:856
-#: src/View/AbstractDirectoryView.vala:1183
+#: src/View/AbstractDirectoryView.vala:858
+#: src/View/AbstractDirectoryView.vala:1185
 msgid "Cannot execute this file"
 msgstr "ამ ფაილს ვერ გაუშვებთ"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:866
+#: src/View/AbstractDirectoryView.vala:868
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:867
+#: src/View/AbstractDirectoryView.vala:869
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:882
+#: src/View/AbstractDirectoryView.vala:884
 msgid "Cannot open this file"
 msgstr "ამ ფაილს ვერ გახსნით"
 
-#: src/View/AbstractDirectoryView.vala:895
+#: src/View/AbstractDirectoryView.vala:897
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1632
+#: src/View/AbstractDirectoryView.vala:1634
 msgid "Cannot drop this file"
 msgstr "ამ ფაილს ვერ დააგდებთ"
 
-#: src/View/AbstractDirectoryView.vala:1633
+#: src/View/AbstractDirectoryView.vala:1635
 msgid "Invalid file name provided"
 msgstr "მითითებული ფაილის სახელი არასწორია"
 
-#: src/View/AbstractDirectoryView.vala:1903
-#: src/View/AbstractDirectoryView.vala:1909 src/View/Window.vala:238
+#: src/View/AbstractDirectoryView.vala:1905
+#: src/View/AbstractDirectoryView.vala:1911 src/View/Window.vala:238
 msgid "New Tab"
 msgstr "ახალი ჩანართი"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1945
 msgid "Run"
 msgstr "გაშვება"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1952
 #, c-format
 msgid "Open in %s"
 msgstr "%s-ით გახსნა"
 
-#: src/View/AbstractDirectoryView.vala:2019
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Open in"
 msgstr "გახსნა პროგრამაში"
 
-#: src/View/AbstractDirectoryView.vala:2021
-#: src/View/Widgets/BreadcrumbsEntry.vala:431
+#: src/View/AbstractDirectoryView.vala:2023
+#: src/View/Widgets/BreadcrumbsEntry.vala:422
 msgid "Open with"
 msgstr "გამხსნელი პროგრამა"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2054
 msgid "Select All"
 msgstr "ყველას მონიშვნა"
 
-#: src/View/AbstractDirectoryView.vala:2061
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Invert Selection"
 msgstr "მონიშვნის ინვერსია"
 
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:2072
 msgid "Deselect All"
 msgstr "მონიშვნის მოხსნა"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2080
 msgid "Cut"
 msgstr "ამოჭრა"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2088
 msgid "Copy"
 msgstr "კოპირება"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2095
 msgid "Move to Trash"
 msgstr "ნაგავში გადატანა"
 
-#: src/View/AbstractDirectoryView.vala:2098
+#: src/View/AbstractDirectoryView.vala:2100
 msgid "Delete Permanently"
 msgstr "სამუდამოდ წაშლა"
 
-#: src/View/AbstractDirectoryView.vala:2105
+#: src/View/AbstractDirectoryView.vala:2107
 msgid "Restore from Trash"
 msgstr "სანაგვე ყუთიდან აღდგენა"
 
-#: src/View/AbstractDirectoryView.vala:2128
+#: src/View/AbstractDirectoryView.vala:2130
 msgid "Open Parent Folder"
 msgstr "მშობელი საქაღალდის გახსნა"
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2133
 msgid "Remove from History"
 msgstr "ისტორიიდან წაშლა"
 
-#: src/View/AbstractDirectoryView.vala:2157
+#: src/View/AbstractDirectoryView.vala:2159
 msgid "Rename…"
 msgstr "სახელის გადარქმევა…"
 
-#: src/View/AbstractDirectoryView.vala:2164
+#: src/View/AbstractDirectoryView.vala:2166
 msgid "Copy as Link"
 msgstr "ბმულის სახით ჩსმა"
 
-#: src/View/AbstractDirectoryView.vala:2187
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2189
+#: src/View/AbstractDirectoryView.vala:2269
 msgid "Paste Link into Folder"
 msgstr "ბმულის საქაღალდეში ჩასმა"
 
-#: src/View/AbstractDirectoryView.vala:2192
-#: src/View/AbstractDirectoryView.vala:2244
+#: src/View/AbstractDirectoryView.vala:2194
+#: src/View/AbstractDirectoryView.vala:2246
 msgid "Paste into Folder"
 msgstr "საქაღალდეში ჩასმა"
 
-#: src/View/AbstractDirectoryView.vala:2202
-#: src/View/AbstractDirectoryView.vala:2272
+#: src/View/AbstractDirectoryView.vala:2204
+#: src/View/AbstractDirectoryView.vala:2274
 msgid "Paste"
 msgstr "ჩასმა"
 
-#: src/View/AbstractDirectoryView.vala:2334 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2336 src/View/ListView.vala:28
 msgid "Type"
 msgstr "ტიპი"
 
-#: src/View/AbstractDirectoryView.vala:2344
+#: src/View/AbstractDirectoryView.vala:2346
 msgid "Reversed Order"
 msgstr "შებრუნებული წყობა"
 
-#: src/View/AbstractDirectoryView.vala:2347
+#: src/View/AbstractDirectoryView.vala:2349
 msgid "Folders Before Files"
 msgstr "საქაღალდეების ფაილებამდე ჩვენება"
 
-#: src/View/AbstractDirectoryView.vala:2359
+#: src/View/AbstractDirectoryView.vala:2361
 msgid "Sort by"
 msgstr "დალაგება"
 
-#: src/View/AbstractDirectoryView.vala:2367
+#: src/View/AbstractDirectoryView.vala:2369
 msgid "Folder"
 msgstr "საქაღალდე"
 
-#: src/View/AbstractDirectoryView.vala:2373
+#: src/View/AbstractDirectoryView.vala:2375
 msgid "Empty File"
 msgstr "ცარიელი ფაილი"
 
-#: src/View/AbstractDirectoryView.vala:2424
+#: src/View/AbstractDirectoryView.vala:2426
 msgid "New"
 msgstr "ახალი"
 
-#: src/View/AbstractDirectoryView.vala:2668
+#: src/View/AbstractDirectoryView.vala:2670
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2974
-#: src/View/AbstractDirectoryView.vala:3177
+#: src/View/AbstractDirectoryView.vala:2976
+#: src/View/AbstractDirectoryView.vala:3179
 msgid "Cannot remove files from here"
 msgstr "აქედან ფაილებს ვერ წაშლით"
 
-#: src/View/AbstractDirectoryView.vala:2975
-#: src/View/AbstractDirectoryView.vala:3150
-#: src/View/AbstractDirectoryView.vala:3161
-#: src/View/AbstractDirectoryView.vala:3178
+#: src/View/AbstractDirectoryView.vala:2977
+#: src/View/AbstractDirectoryView.vala:3152
+#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3180
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3118
+#: src/View/AbstractDirectoryView.vala:3120
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3119
+#: src/View/AbstractDirectoryView.vala:3121
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3149
-#: src/View/AbstractDirectoryView.vala:3160
+#: src/View/AbstractDirectoryView.vala:3151
+#: src/View/AbstractDirectoryView.vala:3162
 msgid "Cannot paste files here"
 msgstr "ფაილებს აქ ვერ ჩასვამთ"
 
@@ -2239,7 +2198,7 @@ msgstr "მენიუ"
 msgid "Closed Tabs"
 msgstr "ჩანართის დახურვა"
 
-#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:395
+#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:386
 msgid "Open in New Window"
 msgstr "ახალ ფანჯარაში გახსნა"
 
@@ -2420,16 +2379,16 @@ msgstr ""
 msgid "No operation to redo"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:134
+#: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:199
 msgid "Search or Type Path"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:388
+#: src/View/Widgets/BreadcrumbsEntry.vala:379
 msgid "Open in New Tab"
 msgstr "ახალ ჩანართში გახსნა"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open in Other Application…"
 msgstr "სხვა პროგრამით გახსნა…"
 
@@ -2520,6 +2479,32 @@ msgstr "ამ საქაღალდის ქვემოთ"
 #: src/View/Widgets/SearchResults.vala:289
 msgid "Recently Used"
 msgstr "ახლახანს _გამოყენებული"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Replace"
+#~ msgstr "ჩანაცვლება"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Modify"
+#~ msgstr "შეიცვალა"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Name"
+#~ msgstr "სახელი"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Date created"
+#~ msgstr "შექმნის თარიღი"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Date modified"
+#~ msgstr "ცვლილების თარიღი"
+
+#~ msgctxt "bulk-rename"
+#~ msgid "Size"
+#~ msgstr "ზომა"
 
 #~ msgid "Undo Close Tab"
 #~ msgstr "ჩანართის დახურვის გაუქმება"
