@@ -978,6 +978,10 @@ namespace Files {
                      add_gof_file_to_selection (file);
                 });
             }
+
+            if (slot.directory.state == Directory.State.LOADED) {
+                plugins.update_file_info (file);
+            }
         }
 
         private void handle_free_space_change () requires (window != null) {
@@ -2818,7 +2822,7 @@ namespace Files {
 
                     file.query_thumbnail_update (); // Ensure thumbstate up to date
                 }
-               /* In any case, ensure color-tag info is correct */
+               /* In any case, ensure color-tag info and git emblem is correct */
                 if (plugins != null) {
                     plugins.update_file_info (file);
                 }

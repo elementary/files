@@ -18,18 +18,22 @@
 
     public class Files.GitRepoInfo : Object {
         public Ggit.Repository repo { get; construct; }
+        public GLib.File root_folder { get; construct; }
         public HashTable<string, Ggit.StatusFlags> status_map { get; construct; }
         static Ggit.StatusOptions status_options;
 
         static construct {
-            status_options = new Ggit.StatusOptions (Ggit.StatusOption.DEFAULT,
-                                                     Ggit.StatusShow.INDEX_AND_WORKDIR,
-                                                     {});
+            status_options = new Ggit.StatusOptions (
+                Ggit.StatusOption.INCLUDE_UNTRACKED | Ggit.StatusOption.RECURSE_UNTRACKED_DIRS,
+                Ggit.StatusShow.INDEX_AND_WORKDIR,
+                null
+            );
         }
 
         construct {
             status_map = new HashTable<string, Ggit.StatusFlags> (str_hash, str_equal);
             get_status_list ();
+            root_folder = repo.location.get_parent ();
         }
 
         public GitRepoInfo (Ggit.Repository _repo) {
@@ -58,10 +62,34 @@
             return true;
         }
 
+        public void update_status (File gof) {
+            if (gof.is_folder ()) {
+                return;
+            }
+
+            var file = gof.location;
+            try {
+                var status_flags = repo.file_status (file);
+                if (!(Ggit.StatusFlags.IGNORED in status_flags)) {
+                    // Repo location is that of .git folder
+                    var path = root_folder.get_relative_path (file);
+                    if (path != null) {
+                        status_map.insert (path, status_flags);
+                    }
+                }
+            } catch (Error e) {
+                critical ("getting status failed for path %s - %s", file.get_path (), e.message);
+                return;
+            }
+        }
+
         public Ggit.StatusFlags? lookup_status (string path) {
             var result = Ggit.StatusFlags.CURRENT;
             status_map.@foreach ((k, v) => {
-                if (k.has_prefix (path)) {
+                // Return status of item itself, or if folder the status of its (first) child
+                if (k == path ||
+                    Path.get_dirname (k).has_prefix (path)) {
+
                     result = v;
                 }
             });
@@ -141,9 +169,9 @@ public class Files.Plugins.Git : Files.Plugins.Base {
                     var git_repo = Ggit.Repository.open (gitdir);
                     repo_info = new Files.GitRepoInfo (git_repo);
                     repo_map.insert (repo_uri, repo_info);
-                } else {
-                    repo_info.get_status_list ();
                 }
+
+                repo_info.get_status_list ();
 
                 if (!child_map.contains (dir_uri)) {
                     var rel_path = repo_info.repo.location.get_parent ().get_relative_path (directory.location);
@@ -152,9 +180,9 @@ public class Files.Plugins.Git : Files.Plugins.Base {
                     } else {
                         rel_path = "";
                     }
+
                     Files.GitRepoChildInfo child_info = { repo_uri, rel_path };
                     child_map.insert (dir_uri, child_info);
-                } else {
                 }
             }
         } catch (Error e) {
@@ -178,6 +206,7 @@ public class Files.Plugins.Git : Files.Plugins.Base {
         Files.GitRepoInfo? repo_info = repo_map.lookup (child_info.repo_uri);
 
         if (repo_info != null) {
+            repo_info.update_status (gof);
             var rel_path = child_info.rel_path + gof.basename;
             if (rel_path != null) {
                 var git_status = repo_info.lookup_status (rel_path);
@@ -192,6 +221,7 @@ public class Files.Plugins.Git : Files.Plugins.Base {
                             break;
 
                         case Ggit.StatusFlags.WORKING_TREE_NEW:
+                        case Ggit.StatusFlags.INDEX_NEW:
                             gof.add_emblem ("emblem-git-new");
                             break;
 
