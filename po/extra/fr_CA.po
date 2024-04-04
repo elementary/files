@@ -1,32 +1,28 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 13:10+0000\n"
+"POT-Creation-Date: 2024-04-04 14:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 
-#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr ""
 
-#: data/io.elementary.files.desktop.in.in:4
+#: data/io.elementary.files.desktop.in.in:7
 msgid "Browse your files"
 msgstr ""
 
-#: data/io.elementary.files.desktop.in.in:5
+#: data/io.elementary.files.desktop.in.in:9
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
 
-#: data/io.elementary.files.desktop.in.in:6
-msgid "File Manager"
-msgstr ""
-
-#: data/io.elementary.files.desktop.in.in:20
+#: data/io.elementary.files.desktop.in.in:25
 msgid "New Window"
 msgstr ""
 
-#: data/io.elementary.files.desktop.in.in:24
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr ""
 

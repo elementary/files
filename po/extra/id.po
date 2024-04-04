@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 13:10+0000\n"
+"POT-Creation-Date: 2024-04-04 14:09+0000\n"
 "PO-Revision-Date: 2023-05-27 14:06+0000\n"
 "Last-Translator: Faisal Rachmadin <frachmadin@users.noreply.l10n.elementary."
 "io>\n"
@@ -20,27 +20,23 @@ msgstr ""
 "X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "Berkas"
 
-#: data/io.elementary.files.desktop.in.in:4
+#: data/io.elementary.files.desktop.in.in:7
 msgid "Browse your files"
 msgstr "Jelajahi berkas Anda"
 
-#: data/io.elementary.files.desktop.in.in:5
+#: data/io.elementary.files.desktop.in.in:9
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "folder;pengelola;jelajah;diska;berkas sistem;"
 
-#: data/io.elementary.files.desktop.in.in:6
-msgid "File Manager"
-msgstr "Pengelola Berkas"
-
-#: data/io.elementary.files.desktop.in.in:20
+#: data/io.elementary.files.desktop.in.in:25
 msgid "New Window"
 msgstr "Jendela Baru"
 
-#: data/io.elementary.files.desktop.in.in:24
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr "Jendela Baru Sebagai Administrator"
 
@@ -158,6 +154,9 @@ msgstr "Jalankan Berkas Pantheon sebagai Administrator"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Otentikasi diperlukan untuk menjalankan Berkas sebagai Administrator"
+
+#~ msgid "File Manager"
+#~ msgstr "Pengelola Berkas"
 
 #, fuzzy
 #~| msgid "Fix a crash when restoring items from the Trash"

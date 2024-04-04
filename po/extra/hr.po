@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 13:10+0000\n"
+"POT-Creation-Date: 2024-04-04 14:09+0000\n"
 "PO-Revision-Date: 2017-08-16 12:18+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://weblate.elementary.io/projects/files/extra/"
@@ -21,27 +21,23 @@ msgstr ""
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "Datoteke"
 
-#: data/io.elementary.files.desktop.in.in:4
+#: data/io.elementary.files.desktop.in.in:7
 msgid "Browse your files"
 msgstr "Pregledaj svoje datoteke"
 
-#: data/io.elementary.files.desktop.in.in:5
+#: data/io.elementary.files.desktop.in.in:9
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "mapa;upravitelj;istraži;disk;datotečni sustav;"
 
-#: data/io.elementary.files.desktop.in.in:6
-msgid "File Manager"
-msgstr "Upravitelj datoteka"
-
-#: data/io.elementary.files.desktop.in.in:20
+#: data/io.elementary.files.desktop.in.in:25
 msgid "New Window"
 msgstr "Novi prozor"
 
-#: data/io.elementary.files.desktop.in.in:24
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr "Novi prozor kao Administrator"
 
@@ -156,6 +152,9 @@ msgstr "Pokreni Pantheon datoteke kao Administrator"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Potrebna je ovjera za pokretanje Datoteka kao Administratora"
+
+#~ msgid "File Manager"
+#~ msgstr "Upravitelj datoteka"
 
 #, fuzzy
 #~| msgid "Fix a crash when restoring items from the Trash"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 13:10+0000\n"
+"POT-Creation-Date: 2024-04-04 14:09+0000\n"
 "PO-Revision-Date: 2021-07-28 00:16+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/extra/pa/"
@@ -13,27 +13,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 4.4.2\n"
 
-#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "ਫ਼ਾਇਲਸ"
 
-#: data/io.elementary.files.desktop.in.in:4
+#: data/io.elementary.files.desktop.in.in:7
 msgid "Browse your files"
 msgstr "ਸਾਰੀਆਂ ਫ਼ਾਇਲਾਂ ਫਰੋਲੋ"
 
-#: data/io.elementary.files.desktop.in.in:5
+#: data/io.elementary.files.desktop.in.in:9
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "ਫ਼ੋਲਡਰ;ਮੈਨੇਜਰ;ਫਰੋਲੋ;ਡਿਸਕ; ਫ਼ਾਇਲਸਿਸਟਮ;"
 
-#: data/io.elementary.files.desktop.in.in:6
-msgid "File Manager"
-msgstr "ਫ਼ਾਇਲ ਮੈਨੇਜਰ"
-
-#: data/io.elementary.files.desktop.in.in:20
+#: data/io.elementary.files.desktop.in.in:25
 msgid "New Window"
 msgstr "ਨਵੀਂ ਵਿੰਡੋ"
 
-#: data/io.elementary.files.desktop.in.in:24
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr "ਨਵੀਂ ਵਿੰਡੋ ਬਤੌਰ ਐਡਮਿਨ"
 
@@ -145,6 +141,9 @@ msgstr ""
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "ਫ਼ਾਇਲਸ (ਸਾਫ਼ਟਵੇਅਰ) ਨੂੰ ਬਤੌਰ ਐਡਮਿਨ ਚਲਾਉਣ ਲਈ ਵਰਤੋਂਕਾਰ ਦੀ ਤਸਦੀਕ ਕਰਨ ਦੀ ਲੋੜ ਪੈਂਦੀ ਹੈ"
+
+#~ msgid "File Manager"
+#~ msgstr "ਫ਼ਾਇਲ ਮੈਨੇਜਰ"
 
 #~ msgid "Fixes:"
 #~ msgstr "ਹੱਲ:"
