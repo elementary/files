@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 13:10+0000\n"
+"POT-Creation-Date: 2024-04-04 14:09+0000\n"
 "PO-Revision-Date: 2023-05-21 06:06+0000\n"
 "Last-Translator: Faisal Rachmadin <frachmadin@users.noreply.l10n.elementary."
 "io>\n"
@@ -208,7 +208,7 @@ msgstr "Salin Kesini"
 msgid "Link Here"
 msgstr "Taut Kesini"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2326
+#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2338
 msgid "Name"
 msgstr "Nama"
 
@@ -221,7 +221,7 @@ msgstr "Tanggal Pembuatan"
 msgid "Last modification date"
 msgstr "Tanggal modifikasi terakhir"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2331
+#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2343
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Ukuran"
@@ -234,7 +234,7 @@ msgstr "Urutan angka"
 msgid "Text"
 msgstr "Teks"
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2341
+#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2353
 msgid "Date"
 msgstr "Tanggal"
 
@@ -516,13 +516,13 @@ msgstr "Kemarin pada %s"
 msgid "%%A at %s"
 msgstr "%%A pada %s"
 
-#: libcore/FileUtils.vala:1015
+#: libcore/FileUtils.vala:898
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d detik"
 
-#: libcore/FileUtils.vala:1019 libcore/FileUtils.vala:1027
+#: libcore/FileUtils.vala:902 libcore/FileUtils.vala:910
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -530,40 +530,40 @@ msgstr[0] "%'d menit"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:1026 src/Dialogs/PropertiesWindow.vala:1264
+#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1264
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:1026
+#: libcore/FileUtils.vala:909
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d jam"
 
-#: libcore/FileUtils.vala:1030
+#: libcore/FileUtils.vala:913
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "sekitar %'d jam"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1038
+#: libcore/FileUtils.vala:921
 msgid "copy"
 msgstr "copy"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1040
+#: libcore/FileUtils.vala:923
 msgid "link"
 msgstr "link"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1042
+#: libcore/FileUtils.vala:925
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1044
+#: libcore/FileUtils.vala:927
 msgid ")"
 msgstr ")"
 
@@ -1127,7 +1127,7 @@ msgid "_Unmount"
 msgstr "_Lepas Kaitkan"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2041
+#: src/View/AbstractDirectoryView.vala:2053
 msgid "Properties"
 msgstr "Properti"
 
@@ -1139,7 +1139,7 @@ msgstr "Copot Media"
 msgid "Safely Remove"
 msgstr "Lepas Dengan Aman"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2034
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2046
 msgid "Add to Bookmarks"
 msgstr "Tambahkan ke Penanda Taut"
 
@@ -1579,8 +1579,8 @@ msgstr "Tampilkan versi program"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Buka satu atau lebih URI, dalam tab masing-masing"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1922
-#: src/View/AbstractDirectoryView.vala:1928
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1940
 msgid "New Window"
 msgstr "Jendela Baru"
 
@@ -1849,7 +1849,7 @@ msgid "Original Location:"
 msgstr "Lokasi Asli:"
 
 #: src/Dialogs/PropertiesWindow.vala:671
-#: src/View/AbstractDirectoryView.vala:2009
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Other Application…"
 msgstr "Aplikasi Lain…"
 
@@ -1928,18 +1928,18 @@ msgstr "Tidak dapat membuka URI"
 msgid "Could not open files or URIs with this app"
 msgstr "Tidak dapat membuka berkas atau URI dengan aplikasi ini"
 
-#: src/View/AbstractDirectoryView.vala:858
-#: src/View/AbstractDirectoryView.vala:1185
+#: src/View/AbstractDirectoryView.vala:867
+#: src/View/AbstractDirectoryView.vala:1194
 msgid "Cannot execute this file"
 msgstr "Berkas tidak dapat dibuka"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:868
+#: src/View/AbstractDirectoryView.vala:877
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "“%s” harus dipindahkan dari Keranjang Sampah sebelum dibuka"
 
-#: src/View/AbstractDirectoryView.vala:869
+#: src/View/AbstractDirectoryView.vala:878
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -1947,164 +1947,164 @@ msgstr ""
 "Berkas dalam Keranjang Sampah tidak dapat dibuka. Untuk membuka, berkas "
 "harus dipindahkan."
 
-#: src/View/AbstractDirectoryView.vala:884
+#: src/View/AbstractDirectoryView.vala:893
 msgid "Cannot open this file"
 msgstr "Tidak dapat membuka berkas ini"
 
-#: src/View/AbstractDirectoryView.vala:897
+#: src/View/AbstractDirectoryView.vala:906
 msgid "Cannot identify file type to open"
 msgstr "Tidak dapat mengidentifikasi jenis berkas yang akan dibuka"
 
-#: src/View/AbstractDirectoryView.vala:1634
+#: src/View/AbstractDirectoryView.vala:1643
 msgid "Cannot drop this file"
 msgstr "Tidak dapat melepas berkas ini"
 
-#: src/View/AbstractDirectoryView.vala:1635
+#: src/View/AbstractDirectoryView.vala:1644
 msgid "Invalid file name provided"
 msgstr "Nama berkas tidak valid tersedia"
 
-#: src/View/AbstractDirectoryView.vala:1905
-#: src/View/AbstractDirectoryView.vala:1911 src/View/Window.vala:238
+#: src/View/AbstractDirectoryView.vala:1917
+#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:238
 msgid "New Tab"
 msgstr "Tab Baru"
 
-#: src/View/AbstractDirectoryView.vala:1945
+#: src/View/AbstractDirectoryView.vala:1957
 msgid "Run"
 msgstr "Jalankan"
 
-#: src/View/AbstractDirectoryView.vala:1952
+#: src/View/AbstractDirectoryView.vala:1964
 #, c-format
 msgid "Open in %s"
 msgstr "Buka di %s"
 
-#: src/View/AbstractDirectoryView.vala:2021
+#: src/View/AbstractDirectoryView.vala:2033
 msgid "Open in"
 msgstr "Buka di"
 
-#: src/View/AbstractDirectoryView.vala:2023
-#: src/View/Widgets/BreadcrumbsEntry.vala:422
+#: src/View/AbstractDirectoryView.vala:2035
+#: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "Buka dengan"
 
-#: src/View/AbstractDirectoryView.vala:2054
+#: src/View/AbstractDirectoryView.vala:2066
 msgid "Select All"
 msgstr "Pilih Semua"
 
-#: src/View/AbstractDirectoryView.vala:2063
+#: src/View/AbstractDirectoryView.vala:2075
 msgid "Invert Selection"
 msgstr "Balikkan Seleksi"
 
-#: src/View/AbstractDirectoryView.vala:2072
+#: src/View/AbstractDirectoryView.vala:2084
 msgid "Deselect All"
 msgstr "Batal Pilih Semua"
 
-#: src/View/AbstractDirectoryView.vala:2080
+#: src/View/AbstractDirectoryView.vala:2092
 msgid "Cut"
 msgstr "Potong"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2088
+#: src/View/AbstractDirectoryView.vala:2100
 msgid "Copy"
 msgstr "Salin"
 
-#: src/View/AbstractDirectoryView.vala:2095
+#: src/View/AbstractDirectoryView.vala:2107
 msgid "Move to Trash"
 msgstr "Pindahkan ke Keranjang Sampah"
 
-#: src/View/AbstractDirectoryView.vala:2100
+#: src/View/AbstractDirectoryView.vala:2112
 msgid "Delete Permanently"
 msgstr "Hapus Permanen"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2119
 msgid "Restore from Trash"
 msgstr "Pulihkan Dari Keranjang Sampah"
 
-#: src/View/AbstractDirectoryView.vala:2130
+#: src/View/AbstractDirectoryView.vala:2142
 msgid "Open Parent Folder"
 msgstr "Buka Folder Induk"
 
-#: src/View/AbstractDirectoryView.vala:2133
+#: src/View/AbstractDirectoryView.vala:2145
 msgid "Remove from History"
 msgstr "Hapus dari Riwayat"
 
-#: src/View/AbstractDirectoryView.vala:2159
+#: src/View/AbstractDirectoryView.vala:2171
 msgid "Rename…"
 msgstr "Ubah nama…"
 
-#: src/View/AbstractDirectoryView.vala:2166
+#: src/View/AbstractDirectoryView.vala:2178
 msgid "Copy as Link"
 msgstr "Salin sebagai Tautan"
 
-#: src/View/AbstractDirectoryView.vala:2189
-#: src/View/AbstractDirectoryView.vala:2269
+#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2281
 msgid "Paste Link into Folder"
 msgstr "Tempel Tautan ke dalam Folder"
 
-#: src/View/AbstractDirectoryView.vala:2194
-#: src/View/AbstractDirectoryView.vala:2246
+#: src/View/AbstractDirectoryView.vala:2206
+#: src/View/AbstractDirectoryView.vala:2258
 msgid "Paste into Folder"
 msgstr "Tempel ke Dalam Folder"
 
-#: src/View/AbstractDirectoryView.vala:2204
-#: src/View/AbstractDirectoryView.vala:2274
+#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2286
 msgid "Paste"
 msgstr "Tempel"
 
-#: src/View/AbstractDirectoryView.vala:2336 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2348 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Jenis"
 
-#: src/View/AbstractDirectoryView.vala:2346
+#: src/View/AbstractDirectoryView.vala:2358
 msgid "Reversed Order"
 msgstr "Urutan Terbalik"
 
-#: src/View/AbstractDirectoryView.vala:2349
+#: src/View/AbstractDirectoryView.vala:2361
 msgid "Folders Before Files"
 msgstr "Folder Sebelum Berkas"
 
-#: src/View/AbstractDirectoryView.vala:2361
+#: src/View/AbstractDirectoryView.vala:2373
 msgid "Sort by"
 msgstr "Urut berdasarkan"
 
-#: src/View/AbstractDirectoryView.vala:2369
+#: src/View/AbstractDirectoryView.vala:2381
 msgid "Folder"
 msgstr "Folder"
 
-#: src/View/AbstractDirectoryView.vala:2375
+#: src/View/AbstractDirectoryView.vala:2387
 msgid "Empty File"
 msgstr "Berkas Kosong"
 
-#: src/View/AbstractDirectoryView.vala:2426
+#: src/View/AbstractDirectoryView.vala:2438
 msgid "New"
 msgstr "Baru"
 
-#: src/View/AbstractDirectoryView.vala:2670
+#: src/View/AbstractDirectoryView.vala:2682
 #, c-format
 msgid "Untitled %s"
 msgstr "Tanpa Judul %s"
 
-#: src/View/AbstractDirectoryView.vala:2976
-#: src/View/AbstractDirectoryView.vala:3179
+#: src/View/AbstractDirectoryView.vala:2987
+#: src/View/AbstractDirectoryView.vala:3190
 msgid "Cannot remove files from here"
 msgstr "Tidak dapat menghapus berkas dari sini"
 
-#: src/View/AbstractDirectoryView.vala:2977
-#: src/View/AbstractDirectoryView.vala:3152
+#: src/View/AbstractDirectoryView.vala:2988
 #: src/View/AbstractDirectoryView.vala:3163
-#: src/View/AbstractDirectoryView.vala:3180
+#: src/View/AbstractDirectoryView.vala:3174
+#: src/View/AbstractDirectoryView.vala:3191
 msgid "You do not have permission to change this location"
 msgstr "Anda tidak memiliki izin untuk mengubah lokasi ini"
 
-#: src/View/AbstractDirectoryView.vala:3120
+#: src/View/AbstractDirectoryView.vala:3131
 msgid "Cannot copy files that are in the trash"
 msgstr "Tidak dapat menyalin berkas yang ada di keranjang sampah"
 
-#: src/View/AbstractDirectoryView.vala:3121
+#: src/View/AbstractDirectoryView.vala:3132
 msgid "Cutting the selection instead"
 msgstr "Potong seleksi sebagai gantinya"
 
-#: src/View/AbstractDirectoryView.vala:3151
 #: src/View/AbstractDirectoryView.vala:3162
+#: src/View/AbstractDirectoryView.vala:3173
 msgid "Cannot paste files here"
 msgstr "Tidak dapat menempelkan berkas kesini"
 
@@ -2244,7 +2244,7 @@ msgstr "Menu"
 msgid "Closed Tabs"
 msgstr "Tutup Tab"
 
-#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:386
+#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:393
 msgid "Open in New Window"
 msgstr "Buka di Jendela Baru"
 
@@ -2346,7 +2346,7 @@ msgid "Browse the contents of the network"
 msgstr "Jelajahi isi jaringan"
 
 #: src/View/Sidebar/SidebarWindow.vala:30
-#: src/View/Widgets/SearchResults.vala:284
+#: src/View/Widgets/SearchResults.vala:323
 msgid "Bookmarks"
 msgstr "Penanda Taut"
 
@@ -2432,11 +2432,11 @@ msgstr "Tidak ada operasi untuk diulang"
 msgid "Search or Type Path"
 msgstr "Cari atau Ketik Jalur"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:379
+#: src/View/Widgets/BreadcrumbsEntry.vala:386
 msgid "Open in New Tab"
 msgstr "Buka di Tab Baru"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:429
+#: src/View/Widgets/BreadcrumbsEntry.vala:436
 msgid "Open in Other Application…"
 msgstr "Buka dengan Aplikasi Lain…"
 
@@ -2516,15 +2516,15 @@ msgstr "Jalankan"
 msgid "More Results …"
 msgstr "Hasil Lebih …"
 
-#: src/View/Widgets/SearchResults.vala:276
+#: src/View/Widgets/SearchResults.vala:315
 msgid "In This Folder"
 msgstr "Dalam Folder ini"
 
-#: src/View/Widgets/SearchResults.vala:280
+#: src/View/Widgets/SearchResults.vala:319
 msgid "Below This Folder"
 msgstr "Di bawah Folder Ini"
 
-#: src/View/Widgets/SearchResults.vala:289
+#: src/View/Widgets/SearchResults.vala:328
 msgid "Recently Used"
 msgstr "Terkini Digunakan"
 

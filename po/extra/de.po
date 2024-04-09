@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 13:10+0000\n"
+"POT-Creation-Date: 2024-04-04 14:09+0000\n"
 "PO-Revision-Date: 2021-11-05 09:33+0000\n"
 "Last-Translator: supaeasy <ismo+github@wolffson.ch>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/extra/de/>\n"
@@ -19,29 +19,25 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-14 06:05+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "Dateien"
 
-#: data/io.elementary.files.desktop.in.in:4
+#: data/io.elementary.files.desktop.in.in:7
 msgid "Browse your files"
 msgstr "Dateien und Ordner durchsuchen"
 
-#: data/io.elementary.files.desktop.in.in:5
+#: data/io.elementary.files.desktop.in.in:9
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
 "Verzeichnis;Ordner;Verwaltung;Durchsuchen;Festplatte;Dateisystem;Explorer;"
 "File;Folder;"
 
-#: data/io.elementary.files.desktop.in.in:6
-msgid "File Manager"
-msgstr "Dateiverwaltung"
-
-#: data/io.elementary.files.desktop.in.in:20
+#: data/io.elementary.files.desktop.in.in:25
 msgid "New Window"
 msgstr "Neues Fenster"
 
-#: data/io.elementary.files.desktop.in.in:24
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr "Neues Fenster als Administrator ausführen"
 
@@ -158,6 +154,9 @@ msgid "Authentication is required to run Files as Administrator"
 msgstr ""
 "Damit Dateien als Systemverwalter ausgeführt werden kann, ist eine "
 "Legitimierung nötig"
+
+#~ msgid "File Manager"
+#~ msgstr "Dateiverwaltung"
 
 #~ msgid "Fixes:"
 #~ msgstr "Fehlerbehebungen:"
