@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-04 14:09+0000\n"
+"POT-Creation-Date: 2024-04-16 17:08+0000\n"
 "PO-Revision-Date: 2023-11-11 16:10+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
@@ -1953,7 +1953,7 @@ msgid "Invalid file name provided"
 msgstr "שם הקובץ שסופק שגוי"
 
 #: src/View/AbstractDirectoryView.vala:1917
-#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:238
+#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "לשונית חדשה"
 
@@ -2215,44 +2215,44 @@ msgstr "קובץ לא נמצא"
 msgid "The file selected no longer exists."
 msgstr "הקובץ שנבחר לא קיים עוד."
 
-#: src/View/Window.vala:193
+#: src/View/Window.vala:194
 msgid "Previous"
 msgstr "הקודם"
 
-#: src/View/Window.vala:198
+#: src/View/Window.vala:199
 msgid "Next"
 msgstr "הבא"
 
-#: src/View/Window.vala:213
+#: src/View/Window.vala:214
 msgid "Menu"
 msgstr "תפריט"
 
-#: src/View/Window.vala:243
+#: src/View/Window.vala:244
 msgid "Closed Tabs"
 msgstr "לשוניות סגורות"
 
-#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:393
+#: src/View/Window.vala:462 src/View/Widgets/BreadcrumbsEntry.vala:393
 msgid "Open in New Window"
 msgstr "פתיחה בחלון חדש"
 
-#: src/View/Window.vala:461
+#: src/View/Window.vala:463
 msgid "Duplicate Tab"
 msgstr "שכפול לשונית"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:465
+#: src/View/Window.vala:467
 msgid "Close Tabs to the Right"
 msgstr "סגירת לשוניות לימין"
 
-#: src/View/Window.vala:466
+#: src/View/Window.vala:468
 msgid "Close Other Tabs"
 msgstr "סגירת הלשוניות האחרות"
 
-#: src/View/Window.vala:467
+#: src/View/Window.vala:469
 msgid "Close Tab"
 msgstr "סגירת לשונית"
 
-#: src/View/Window.vala:755 src/View/Window.vala:765
+#: src/View/Window.vala:757 src/View/Window.vala:767
 msgid "(as Administrator)"
 msgstr "(כמנהל)"
 
@@ -2389,26 +2389,32 @@ msgid "Sort Folders before Files"
 msgstr "מיון תיקיות לפי קבצים"
 
 #: src/View/Widgets/AppMenu.vala:90
+#, fuzzy
+#| msgid "Restore '%s' from trash"
+msgid "Restore Tabs from Last Time"
+msgstr "שחזור ‚%s‘ מסל האשפה"
+
+#: src/View/Widgets/AppMenu.vala:94
 msgid "Show in View"
 msgstr "הצגה בתצוגה"
 
-#: src/View/Widgets/AppMenu.vala:97
+#: src/View/Widgets/AppMenu.vala:101
 msgid "Hidden Files"
 msgstr "קבצים מוסתרים"
 
-#: src/View/Widgets/AppMenu.vala:101
+#: src/View/Widgets/AppMenu.vala:105
 msgid "Local Thumbnails"
 msgstr "תמונות ממוזערות מקומיות"
 
-#: src/View/Widgets/AppMenu.vala:106
+#: src/View/Widgets/AppMenu.vala:110
 msgid "Remote Thumbnails"
 msgstr "תמונות ממוזערות מרוחקות"
 
-#: src/View/Widgets/AppMenu.vala:147
+#: src/View/Widgets/AppMenu.vala:152
 msgid "No operation to undo"
 msgstr "אין פעולה לביטול"
 
-#: src/View/Widgets/AppMenu.vala:154
+#: src/View/Widgets/AppMenu.vala:159
 msgid "No operation to redo"
 msgstr "אין פעולה לביצוע חוזר"
 
@@ -2763,9 +2769,6 @@ msgstr "בשימוש לאחרונה"
 
 #~ msgid "Move '%s' to trash"
 #~ msgstr "העברת ‚%s‘ לסל האשפה"
-
-#~ msgid "Restore '%s' from trash"
-#~ msgstr "שחזור ‚%s‘ מסל האשפה"
 
 #~ msgid "Create links to %d items"
 #~ msgstr "יצירת קישור ל־%d פריטים"

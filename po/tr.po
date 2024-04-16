@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-04 14:09+0000\n"
+"POT-Creation-Date: 2024-04-16 17:08+0000\n"
 "PO-Revision-Date: 2023-05-19 08:06+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
@@ -1985,7 +1985,7 @@ msgid "Invalid file name provided"
 msgstr "Belirtilen dosya adı geçersiz"
 
 #: src/View/AbstractDirectoryView.vala:1917
-#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:238
+#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "Yeni Sekme"
 
@@ -2247,48 +2247,48 @@ msgstr "Dosya Bulunamadı"
 msgid "The file selected no longer exists."
 msgstr "Seçilen dosya artık yok."
 
-#: src/View/Window.vala:193
+#: src/View/Window.vala:194
 msgid "Previous"
 msgstr "Önceki"
 
-#: src/View/Window.vala:198
+#: src/View/Window.vala:199
 msgid "Next"
 msgstr "Sonraki"
 
-#: src/View/Window.vala:213
+#: src/View/Window.vala:214
 msgid "Menu"
 msgstr "Menü"
 
-#: src/View/Window.vala:243
+#: src/View/Window.vala:244
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Closed Tabs"
 msgstr "Sekmeyi Kapat"
 
-#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:393
+#: src/View/Window.vala:462 src/View/Widgets/BreadcrumbsEntry.vala:393
 msgid "Open in New Window"
 msgstr "Yeni Pencerede Aç"
 
-#: src/View/Window.vala:461
+#: src/View/Window.vala:463
 msgid "Duplicate Tab"
 msgstr "Sekmeyi Çoğalt"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:465
+#: src/View/Window.vala:467
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:466
+#: src/View/Window.vala:468
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Close Other Tabs"
 msgstr "Sekmeyi Kapat"
 
-#: src/View/Window.vala:467
+#: src/View/Window.vala:469
 msgid "Close Tab"
 msgstr "Sekmeyi Kapat"
 
-#: src/View/Window.vala:755 src/View/Window.vala:765
+#: src/View/Window.vala:757 src/View/Window.vala:767
 msgid "(as Administrator)"
 msgstr "(yönetici olarak)"
 
@@ -2428,26 +2428,32 @@ msgstr "Klasörleri Dosyalardan Önce Sırala"
 
 #: src/View/Widgets/AppMenu.vala:90
 #, fuzzy
+#| msgid "Restore '%s' from trash"
+msgid "Restore Tabs from Last Time"
+msgstr "'%s' öğesini çöpten geri yükle"
+
+#: src/View/Widgets/AppMenu.vala:94
+#, fuzzy
 msgid "Show in View"
 msgstr "Gizli Dosyaları Göster"
 
-#: src/View/Widgets/AppMenu.vala:97
+#: src/View/Widgets/AppMenu.vala:101
 msgid "Hidden Files"
 msgstr "Gizli Dosyalar"
 
-#: src/View/Widgets/AppMenu.vala:101
+#: src/View/Widgets/AppMenu.vala:105
 msgid "Local Thumbnails"
 msgstr "Yerel Küçük Resimler"
 
-#: src/View/Widgets/AppMenu.vala:106
+#: src/View/Widgets/AppMenu.vala:110
 msgid "Remote Thumbnails"
 msgstr "Uzak Küçük Resimler"
 
-#: src/View/Widgets/AppMenu.vala:147
+#: src/View/Widgets/AppMenu.vala:152
 msgid "No operation to undo"
 msgstr "Geri alınacak işlem yok"
 
-#: src/View/Widgets/AppMenu.vala:154
+#: src/View/Widgets/AppMenu.vala:159
 msgid "No operation to redo"
 msgstr "Yeniden yapılacak işlem yok"
 
@@ -2803,9 +2809,6 @@ msgstr "Son Kullanılan"
 
 #~ msgid "Move '%s' to trash"
 #~ msgstr "'%s' öğesini çöpe taşı"
-
-#~ msgid "Restore '%s' from trash"
-#~ msgstr "'%s' öğesini çöpten geri yükle"
 
 #~ msgid "Create links to %d items"
 #~ msgstr "%d öğeye bağlantı oluştur"

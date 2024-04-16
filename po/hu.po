@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-04 14:09+0000\n"
+"POT-Creation-Date: 2024-04-16 17:08+0000\n"
 "PO-Revision-Date: 2023-09-26 16:24+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
@@ -1972,7 +1972,7 @@ msgid "Invalid file name provided"
 msgstr "A megadott fájlnév érvénytelen"
 
 #: src/View/AbstractDirectoryView.vala:1917
-#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:238
+#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "Új lap"
 
@@ -2234,44 +2234,44 @@ msgstr "Fájl nem található"
 msgid "The file selected no longer exists."
 msgstr "A kiválasztott fájl már nem létezik."
 
-#: src/View/Window.vala:193
+#: src/View/Window.vala:194
 msgid "Previous"
 msgstr "Előző"
 
-#: src/View/Window.vala:198
+#: src/View/Window.vala:199
 msgid "Next"
 msgstr "Következő"
 
-#: src/View/Window.vala:213
+#: src/View/Window.vala:214
 msgid "Menu"
 msgstr "Menü"
 
-#: src/View/Window.vala:243
+#: src/View/Window.vala:244
 msgid "Closed Tabs"
 msgstr "Bezárt lapok"
 
-#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:393
+#: src/View/Window.vala:462 src/View/Widgets/BreadcrumbsEntry.vala:393
 msgid "Open in New Window"
 msgstr "Megnyitás új ablakban"
 
-#: src/View/Window.vala:461
+#: src/View/Window.vala:463
 msgid "Duplicate Tab"
 msgstr "Lap megkettőzése"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:465
+#: src/View/Window.vala:467
 msgid "Close Tabs to the Right"
 msgstr "A jobbra lévő lapok bezárása"
 
-#: src/View/Window.vala:466
+#: src/View/Window.vala:468
 msgid "Close Other Tabs"
 msgstr "A többi lap bezárása"
 
-#: src/View/Window.vala:467
+#: src/View/Window.vala:469
 msgid "Close Tab"
 msgstr "Lap bezárása"
 
-#: src/View/Window.vala:755 src/View/Window.vala:765
+#: src/View/Window.vala:757 src/View/Window.vala:767
 msgid "(as Administrator)"
 msgstr "(Rendszergazdaként)"
 
@@ -2408,26 +2408,32 @@ msgid "Sort Folders before Files"
 msgstr "Mappák rendezése a fájlok elé"
 
 #: src/View/Widgets/AppMenu.vala:90
+#, fuzzy
+#| msgid "Restore '%s' from trash"
+msgid "Restore Tabs from Last Time"
+msgstr "A(z) '%s' visszaállítása a kukából"
+
+#: src/View/Widgets/AppMenu.vala:94
 msgid "Show in View"
 msgstr "Megjelenítés a nézetben"
 
-#: src/View/Widgets/AppMenu.vala:97
+#: src/View/Widgets/AppMenu.vala:101
 msgid "Hidden Files"
 msgstr "Rejtett fájlok"
 
-#: src/View/Widgets/AppMenu.vala:101
+#: src/View/Widgets/AppMenu.vala:105
 msgid "Local Thumbnails"
 msgstr "Helyi előnézetek"
 
-#: src/View/Widgets/AppMenu.vala:106
+#: src/View/Widgets/AppMenu.vala:110
 msgid "Remote Thumbnails"
 msgstr "Távoli előnézetek"
 
-#: src/View/Widgets/AppMenu.vala:147
+#: src/View/Widgets/AppMenu.vala:152
 msgid "No operation to undo"
 msgstr "Nincs visszavonható művelet"
 
-#: src/View/Widgets/AppMenu.vala:154
+#: src/View/Widgets/AppMenu.vala:159
 msgid "No operation to redo"
 msgstr "Nincs újra végrehajtható művelet"
 
@@ -2783,9 +2789,6 @@ msgstr "Mostanában használt"
 
 #~ msgid "Move '%s' to trash"
 #~ msgstr "A(z) '%s' áthelyezés a kukába"
-
-#~ msgid "Restore '%s' from trash"
-#~ msgstr "A(z) '%s' visszaállítása a kukából"
 
 #~ msgid "Create links to %d items"
 #~ msgstr "Hivatkozása létrehozása %d elemre"
