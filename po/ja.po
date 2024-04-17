@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-16 17:08+0000\n"
-"PO-Revision-Date: 2024-02-18 13:10+0000\n"
+"PO-Revision-Date: 2024-04-19 14:13+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2379,10 +2379,8 @@ msgid "Sort Folders before Files"
 msgstr "ファイルの前にフォルダーを表示"
 
 #: src/View/Widgets/AppMenu.vala:90
-#, fuzzy
-#| msgid "Restore '%s' from trash"
 msgid "Restore Tabs from Last Time"
-msgstr "'%s' をゴミ箱から元の場所へ戻す"
+msgstr "前回開いていたタブを復元"
 
 #: src/View/Widgets/AppMenu.vala:94
 msgid "Show in View"
