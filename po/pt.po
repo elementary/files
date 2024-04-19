@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-16 17:08+0000\n"
-"PO-Revision-Date: 2022-10-20 13:57+0000\n"
+"PO-Revision-Date: 2024-04-19 15:17+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 5.0.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -41,9 +41,8 @@ msgid "Open File as Read Only"
 msgstr "Abrir ficheiro com Apenas-Leitura"
 
 #: filechooser-portal/FileChooserDialog.vala:376
-#, fuzzy
 msgid "Enter new filename"
-msgstr "novo ficheiro"
+msgstr "Introduzir novo nome de ficheiro"
 
 #: filechooser-portal/Main.vala:107
 msgid "Select"
@@ -60,17 +59,18 @@ msgstr "Guardar"
 #: filechooser-portal/Main.vala:448
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr ""
+msgstr "Este ficheiro é uma ligação para \"%s\""
 
 #: filechooser-portal/Main.vala:451
 msgid "This file is a link."
-msgstr ""
+msgstr "Este ficheiro é uma ligação."
 
 #: filechooser-portal/Main.vala:454
-#, fuzzy
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr "Se o substituir, sobrepõe o seu conteúdo."
+msgstr ""
+"A substituição de uma ligação substituirá o conteúdo do destino. A ligação "
+"permanecerá"
 
 #: filechooser-portal/Main.vala:456
 #, c-format
@@ -217,14 +217,12 @@ msgstr "Nome"
 
 #: libcore/Enums.vala:144 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
-#, fuzzy
 msgid "Creation Date"
-msgstr "Criar"
+msgstr "Data de criação"
 
 #: libcore/Enums.vala:147
-#, fuzzy
 msgid "Last modification date"
-msgstr "Última modificação:"
+msgstr "Data da última modificação"
 
 #: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2343
 #: src/View/ListView.vala:27
@@ -233,7 +231,7 @@ msgstr "Tamanho"
 
 #: libcore/Enums.vala:173
 msgid "Number sequence"
-msgstr ""
+msgstr "Sequência numérica"
 
 #: libcore/Enums.vala:176 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
@@ -253,11 +251,11 @@ msgstr ""
 
 #: libcore/Enums.vala:208
 msgid "Text to put at the end"
-msgstr ""
+msgstr "Texto a colocar no final"
 
 #: libcore/Enums.vala:211
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Texto a colocar no início"
 
 #: libcore/Enums.vala:230
 msgid "Default Format - Date only"
@@ -291,7 +289,7 @@ msgstr "Modificado"
 
 #: libcore/Enums.vala:258
 msgid "Current Date"
-msgstr ""
+msgstr "Data atual"
 
 #: libcore/File.vala:554 libcore/File.vala:1117
 msgid "Inaccessible"
@@ -318,11 +316,11 @@ msgid "Empty"
 msgstr "Vazio"
 
 #: libcore/File.vala:1112
-#, fuzzy, c-format
+#, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
-msgstr[0] "%i item"
-msgstr[1] "%i itens"
+msgstr[0] "%'d item"
+msgstr[1] "%'d itens"
 
 #: libcore/File.vala:1157
 #, c-format
@@ -1297,9 +1295,8 @@ msgid "Undo Duplicate"
 msgstr "Duplicar separador"
 
 #: libcore/UndoManager.vala:26
-#, fuzzy
 msgid "Undo Move"
-msgstr "Anular o fechar separador"
+msgstr "Anular mover"
 
 #: libcore/UndoManager.vala:28
 #, fuzzy
@@ -1317,24 +1314,20 @@ msgid "Undo Create File from Template"
 msgstr "An_ular a criação do ficheiro a partir de um modelo"
 
 #: libcore/UndoManager.vala:34
-#, fuzzy
 msgid "Undo Create Folder"
-msgstr "An_ular a criação de %d pasta"
+msgstr "Anular a criação de pasta"
 
 #: libcore/UndoManager.vala:36
-#, fuzzy
 msgid "Undo Move to Trash"
-msgstr "Mover para o lixo"
+msgstr "Anular mover para o lixo"
 
 #: libcore/UndoManager.vala:38
-#, fuzzy
 msgid "Undo Create Link"
-msgstr "An_ular a criação de uma ligação para %d item"
+msgstr "Anular a criação de uma ligação"
 
 #: libcore/UndoManager.vala:40
-#, fuzzy
 msgid "Undo Restore from Trash"
-msgstr "Restaurar do lixo"
+msgstr "Anular restaurar do lixo"
 
 #: libcore/UndoManager.vala:42
 #, fuzzy
@@ -1342,19 +1335,16 @@ msgid "Undo Set Permissions"
 msgstr "A definir as permissões"
 
 #: libcore/UndoManager.vala:44
-#, fuzzy
 msgid "Undo Set Permissions Recursively"
-msgstr "An_ular a alteração de permissões para %d item"
+msgstr "Desfazer definir permissões recursivamente"
 
 #: libcore/UndoManager.vala:46
-#, fuzzy
 msgid "Undo Change Owner"
-msgstr "An_ular a alteração do proprietário para %d item"
+msgstr "Anular a alteração do proprietário"
 
 #: libcore/UndoManager.vala:48
-#, fuzzy
 msgid "Undo Change Group"
-msgstr "An_ular a alteração de grupo para %d item"
+msgstr "Anular a alteração de grupo"
 
 #: libcore/UndoManager.vala:57
 #, fuzzy
@@ -1396,9 +1386,8 @@ msgid "Redo Move to Trash"
 msgstr "Mover para o lixo"
 
 #: libcore/UndoManager.vala:73
-#, fuzzy
 msgid "Redo Create Link"
-msgstr "_Refazer a criação da ligação para %d item"
+msgstr "Refazer a criação da ligação"
 
 #: libcore/UndoManager.vala:75
 #, fuzzy
@@ -1406,24 +1395,20 @@ msgid "Redo Restore from Trash"
 msgstr "Restaurar do lixo"
 
 #: libcore/UndoManager.vala:77
-#, fuzzy
 msgid "Redo Set Permissions"
-msgstr "A definir as permissões"
+msgstr "Refazer o definir permissões"
 
 #: libcore/UndoManager.vala:79
-#, fuzzy
 msgid "Redo Set Permissions Recursively"
-msgstr "Refazer a alteração de permissões do item %d"
+msgstr "Refazer definir permissões recursivamente"
 
 #: libcore/UndoManager.vala:81
-#, fuzzy
 msgid "Redo Change Owner"
-msgstr "Refazer a alteração de proprietário de %d item"
+msgstr "Refazer a alteração de proprietário"
 
 #: libcore/UndoManager.vala:83
-#, fuzzy
 msgid "Redo Change Group"
-msgstr "_Refazer a alteração de grupo de %d item"
+msgstr "Refazer a alteração de grupo"
 
 #: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
