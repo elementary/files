@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-16 17:08+0000\n"
-"PO-Revision-Date: 2024-04-19 15:22+0000\n"
-"Last-Translator: Joao Pinheiro <joaolopespinheiro@gmail.com>\n"
+"PO-Revision-Date: 2024-04-19 15:31+0000\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
 "Language: pt\n"
@@ -912,8 +912,8 @@ msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"A pasta \"%s\" não pode ser copiada, porque o utilizador não tem as "
-"permissões necessárias."
+"A pasta \"%s\" não pode ser copiada porque não tem permissões para a criar "
+"no destino."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -941,8 +941,7 @@ msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"A pasta \"%s\" não pode ser copiada, porque o utilizador não tem as "
-"permissões necessárias."
+"A pasta \"%s\" não pode ser copiada porque não tem permissões para a ler."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1504,10 +1503,10 @@ msgid_plural ""
 "trash?"
 msgstr[0] ""
 "Tem a certeza de que pretende eliminar permanentemente \"%'d\" item "
-"selecionado?"
+"selecionado do lixo?"
 msgstr[1] ""
-"Tem a certeza de que pretende eliminar permanentemente \"%'d\" itens "
-"selecionados?"
+"Tem a certeza de que pretende eliminar permanentemente os \"%'d\" itens "
+"selecionados do lixo?"
 
 #: libcore/FileOperations/DeleteJob.vala:59
 msgid "If you delete an item, it will be permanently lost."
@@ -1529,7 +1528,7 @@ msgstr[0] ""
 "Tem a certeza de que pretende eliminar permanentemente \"%'d\" item "
 "selecionado?"
 msgstr[1] ""
-"Tem a certeza de que pretende eliminar permanentemente \"%'d\" itens "
+"Tem a certeza de que pretende eliminar permanentemente os \"%'d\" itens "
 "selecionados?"
 
 #: libcore/FileOperations/DeleteJob.vala:82
@@ -1704,23 +1703,20 @@ msgstr "Utilizado:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:21
 msgid "Original filename"
-msgstr "Nome original"
+msgstr "Nome de ficheiro original"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:23
-#, fuzzy
 msgid "Modified original"
-msgstr "Modificado"
+msgstr "Original modificado"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:25
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:252
-#, fuzzy
 msgid "New basename"
-msgstr "Mudar nome"
+msgstr "Novo nome de base"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
-#, fuzzy
 msgid "Bulk Rename"
-msgstr "Mudar nome"
+msgstr "Renomear em massa"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
@@ -1741,20 +1737,17 @@ msgid "Add Suffix…"
 msgstr "Adicionar sufixo…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
-#, fuzzy
 msgid "Basename:"
-msgstr "Nome de utilizador:"
+msgstr "Nome base:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
-#, fuzzy
 msgid "Original Basename"
-msgstr "Ficheiro original"
+msgstr "Nome base original"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:168
-#, fuzzy
 msgid "Replacement text"
-msgstr "Substituir por"
+msgstr "Texto de substituição"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
@@ -2282,10 +2275,8 @@ msgid "Menu"
 msgstr "Menu"
 
 #: src/View/Window.vala:244
-#, fuzzy
-#| msgid "Close Tab"
 msgid "Closed Tabs"
-msgstr "Fechar separador"
+msgstr "Separadores fechados"
 
 #: src/View/Window.vala:462 src/View/Widgets/BreadcrumbsEntry.vala:393
 msgid "Open in New Window"
@@ -2301,10 +2292,8 @@ msgid "Close Tabs to the Right"
 msgstr "Fechar separadores à direita"
 
 #: src/View/Window.vala:468
-#, fuzzy
-#| msgid "Close Tab"
 msgid "Close Other Tabs"
-msgstr "Fechar separador"
+msgstr "Fechar outros separadores"
 
 #: src/View/Window.vala:469
 msgid "Close Tab"
@@ -2415,9 +2404,8 @@ msgid "Connect Server…"
 msgstr "Ligar Servidor…"
 
 #: src/View/Sidebar/VolumeRow.vala:166
-#, fuzzy
 msgid "Mount"
-msgstr "_Montar"
+msgstr "Montar"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
@@ -2444,45 +2432,36 @@ msgid "Double-click on a folder opens it, single-click selects it"
 msgstr "Um duplo clique numa pasta abre-a, um clique único seleciona-a"
 
 #: src/View/Widgets/AppMenu.vala:86
-#, fuzzy
 msgid "Sort Folders before Files"
-msgstr "Colocar pastas antes dos ficheiros"
+msgstr "Ordenar pastas antes dos ficheiros"
 
 #: src/View/Widgets/AppMenu.vala:90
-#, fuzzy
-#| msgid "Restore '%s' from trash"
 msgid "Restore Tabs from Last Time"
-msgstr "Recuperar \"%s\" do lixo"
+msgstr "Restaurar separadores da última vez"
 
 #: src/View/Widgets/AppMenu.vala:94
-#, fuzzy
 msgid "Show in View"
-msgstr "Mostrar ficheiros ocultos"
+msgstr "Mostrar em Ver"
 
 #: src/View/Widgets/AppMenu.vala:101
-#, fuzzy
 msgid "Hidden Files"
-msgstr "Mostrar ficheiros ocultos"
+msgstr "Ficheiros ocultos"
 
 #: src/View/Widgets/AppMenu.vala:105
-#, fuzzy
 msgid "Local Thumbnails"
-msgstr "Ocultar miniaturas"
+msgstr "Miniaturas locais"
 
 #: src/View/Widgets/AppMenu.vala:110
-#, fuzzy
 msgid "Remote Thumbnails"
-msgstr "Mostrar miniaturas remotas"
+msgstr "Miniaturas remotas"
 
 #: src/View/Widgets/AppMenu.vala:152
-#, fuzzy
 msgid "No operation to undo"
-msgstr "A operação excedeu o tempo."
+msgstr "Nenhuma operação a anular"
 
 #: src/View/Widgets/AppMenu.vala:159
-#, fuzzy
 msgid "No operation to redo"
-msgstr "A operação excedeu o tempo."
+msgstr "Nenhuma operação a refazer"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:199
