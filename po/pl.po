@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-16 17:08+0000\n"
-"PO-Revision-Date: 2023-11-11 16:10+0000\n"
+"PO-Revision-Date: 2024-04-20 18:13+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -446,7 +446,7 @@ msgstr "W katalogu „%s” znajduje się już inny plik o tej samej nazwie."
 
 #: libcore/FileConflictDialog.vala:342
 msgid "Merge"
-msgstr "Połącz"
+msgstr "Scal"
 
 #: libcore/FileUtils.vala:82
 #, c-format
@@ -2454,10 +2454,8 @@ msgid "Sort Folders before Files"
 msgstr "Sortuj katalogi przed plikami"
 
 #: src/View/Widgets/AppMenu.vala:90
-#, fuzzy
-#| msgid "Restore '%s' from trash"
 msgid "Restore Tabs from Last Time"
-msgstr "Przywraca „%s” z kosza"
+msgstr "Przywróć ostatnie karty"
 
 #: src/View/Widgets/AppMenu.vala:94
 msgid "Show in View"
