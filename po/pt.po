@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-16 17:08+0000\n"
 "PO-Revision-Date: 2024-04-19 15:31+0000\n"
-"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+"Last-Translator: Joao Pinheiro <joaolopespinheiro@gmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
 "Language: pt\n"
@@ -1762,30 +1762,26 @@ msgid "Apply"
 msgstr "Aplicar"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
-#, fuzzy
 msgid "Ignored"
-msgstr "Ignorar"
+msgstr "Ignorado"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 msgid "Name is not changed"
 msgstr "O nome não foi mudado"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
-#, fuzzy
 msgid "Cannot rename"
-msgstr "Mudar nome"
+msgstr "Impossível de alterar o nome"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 msgid "Name is invalid or already exists"
 msgstr "O nome é inválido ou já existe"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:78
-#, fuzzy
 msgid "Will be renamed"
-msgstr "Nome do ficheiro"
+msgstr "O nome vai ser alterado"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
-#, fuzzy
 msgid "Reverse Order"
 msgstr "Ordem Inversa"
 
