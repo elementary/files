@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-16 17:08+0000\n"
-"PO-Revision-Date: 2023-11-11 16:10+0000\n"
+"PO-Revision-Date: 2024-04-19 14:13+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
@@ -2389,10 +2389,8 @@ msgid "Sort Folders before Files"
 msgstr "מיון תיקיות לפי קבצים"
 
 #: src/View/Widgets/AppMenu.vala:90
-#, fuzzy
-#| msgid "Restore '%s' from trash"
 msgid "Restore Tabs from Last Time"
-msgstr "שחזור ‚%s‘ מסל האשפה"
+msgstr "שחזור לשוניות מהפעם האחרונה"
 
 #: src/View/Widgets/AppMenu.vala:94
 msgid "Show in View"
