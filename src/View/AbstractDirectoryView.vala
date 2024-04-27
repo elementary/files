@@ -1296,17 +1296,10 @@ namespace Files {
             var file = get_files_for_action ().nth_data (0);
 
             var active_window = (Gtk.Window) get_toplevel ();
-
-            var portal = new Xdp.Portal ();
-
             Xdp.Parent? parent = active_window != null ? Xdp.parent_new_gtk (active_window) : null;
 
-            portal.set_wallpaper.begin (
-                parent,
-                file.uri,
-                NONE,
-                null
-            );
+            var portal = new Xdp.Portal ();
+            portal.set_wallpaper.begin (parent, file.uri, NONE, null);
         }
 
         private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) {
