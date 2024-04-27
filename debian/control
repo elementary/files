@@ -30,7 +30,7 @@ Package: pantheon-files
 Architecture: any
 Depends: gvfs,
          libpantheon-files-core0 (= ${binary:Version}),
-         tumbler,
+         tumbler-common,
          ${misc:Depends},
          ${shlibs:Depends}
 Recommends: contractor, exfat-fuse, gvfs-backends, tumbler-plugins-extra
