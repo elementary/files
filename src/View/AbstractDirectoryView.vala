@@ -2337,9 +2337,7 @@ namespace Files {
                 // if needed.  Color tag plugin needs actual file, others need target
                 plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
 
-                var file = get_files_for_action ().nth_data (0);
-
-                if ("image" in file.info.get_content_type ()) {
+                if (selection.length () == 1 && "image" in selection.nth_data (0).info.get_content_type ()) {
                     var wallpaper_menuitem = new Gtk.MenuItem.with_label (_("Set as Wallpaper")) {
                         action_name = "common.set-wallpaper"
                     };
