@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-16 17:08+0000\n"
-"PO-Revision-Date: 2023-09-08 11:27+0000\n"
+"PO-Revision-Date: 2024-04-29 20:13+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -2448,10 +2448,8 @@ msgid "Sort Folders before Files"
 msgstr "Trier les dossiers avant les fichiers"
 
 #: src/View/Widgets/AppMenu.vala:90
-#, fuzzy
-#| msgid "Restore '%s' from trash"
 msgid "Restore Tabs from Last Time"
-msgstr "Restaure « %s » depuis la corbeille"
+msgstr "Restaurer les derniers onglets"
 
 #: src/View/Widgets/AppMenu.vala:94
 msgid "Show in View"
