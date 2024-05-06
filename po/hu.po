@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-04 06:39+0000\n"
-"PO-Revision-Date: 2023-09-26 16:24+0000\n"
+"PO-Revision-Date: 2024-05-07 05:13+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -2408,10 +2408,8 @@ msgid "Sort Folders before Files"
 msgstr "Mappák rendezése a fájlok elé"
 
 #: src/View/Widgets/AppMenu.vala:90
-#, fuzzy
-#| msgid "Restore '%s' from trash"
 msgid "Restore Tabs from Last Time"
-msgstr "A(z) '%s' visszaállítása a kukából"
+msgstr "Lapok visszaállítása legutóbbról"
 
 #: src/View/Widgets/AppMenu.vala:94
 msgid "Show in View"
