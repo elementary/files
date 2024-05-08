@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-04 06:39+0000\n"
-"PO-Revision-Date: 2024-05-07 05:13+0000\n"
+"PO-Revision-Date: 2024-05-09 13:13+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
 "\n"
@@ -1072,7 +1072,7 @@ msgstr "新しいファイル"
 #: libcore/marlin-file-operations.c:3951
 #, c-format
 msgid "Error while creating directory %s."
-msgstr "ディレクトリー %s の作成中にエラーが発生しました。"
+msgstr "ディレクトリ %s の作成中にエラーが発生しました。"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3954
@@ -1084,7 +1084,7 @@ msgstr "ファイル %s の作成中にエラーが発生しました。"
 #: libcore/marlin-file-operations.c:3960
 #, c-format
 msgid "There was an error creating the directory in %s."
-msgstr "%s 内へのディレクトリーの作成中にエラーが発生しました。"
+msgstr "%s 内へのディレクトリの作成中にエラーが発生しました。"
 
 #: libcore/PopupMenuBuilder.vala:54
 msgid "Open in New _Tab"
