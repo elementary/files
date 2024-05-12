@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-04 06:39+0000\n"
-"PO-Revision-Date: 2024-04-19 14:13+0000\n"
+"PO-Revision-Date: 2024-05-09 13:13+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0.2\n"
+"X-Generator: Weblate 5.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -316,7 +316,7 @@ msgstr "空"
 #, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
-msgstr[0] "%'d項目"
+msgstr[0] "%'d 項目"
 
 #: libcore/File.vala:1157
 #, c-format
@@ -500,31 +500,31 @@ msgstr "'%s' へ名前を変更できません"
 #: libcore/FileUtils.vala:657
 #, c-format
 msgid "Today at %s"
-msgstr "今日の%s"
+msgstr "今日の %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:665
 #, c-format
 msgid "Yesterday at %s"
-msgstr "昨日の%s"
+msgstr "昨日の %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:673
 #, c-format
 msgid "%%A at %s"
-msgstr "%%Aの%s"
+msgstr "%%Aの %s"
 
 #: libcore/FileUtils.vala:898
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] "%'d秒"
+msgstr[0] "%'d 秒"
 
 #: libcore/FileUtils.vala:902 libcore/FileUtils.vala:910
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] "%'d分"
+msgstr[0] "%'d 分"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
@@ -537,13 +537,13 @@ msgstr "%s、%s"
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] "%'d時間"
+msgstr[0] "%'d 時間"
 
 #: libcore/FileUtils.vala:913
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] "約%'d時間"
+msgstr[0] "約 %'d 時間"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
 #: libcore/FileUtils.vala:921
@@ -569,7 +569,7 @@ msgstr ")"
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "残り%'d個のファイルを削除しています"
+msgstr[0] "残り %'d 個のファイルを削除しています"
 
 #: libcore/marlin-file-operations.c:97
 msgid "Deleting files"
@@ -649,7 +649,7 @@ msgstr "\"%s\" の削除中にエラーが発生しました。"
 #, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
-msgstr[0] "%'d個のファイル (%s) を削除する準備をしています"
+msgstr[0] "%'d 個のファイル (%s) を削除する準備をしています"
 
 #: libcore/marlin-file-operations.c:467
 msgid "Moving files to trash"
@@ -659,7 +659,7 @@ msgstr "ファイルをゴミ箱に移動しています"
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "残り%'d個のファイルをゴミ箱に移動しています"
+msgstr[0] "残り %'d 個のファイルをゴミ箱に移動しています"
 
 #: libcore/marlin-file-operations.c:568 libcore/marlin-file-operations.c:571
 #: libcore/marlin-file-operations.c:574
@@ -735,7 +735,7 @@ msgstr "ファイルを削除しています"
 #, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] "%'d個のファイル (%s) をコピーする準備をしています"
+msgstr[0] "%'d 個のファイル (%s) をコピーする準備をしています"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -745,7 +745,7 @@ msgstr[0] "%'d個のファイル (%s) をコピーする準備をしています
 #, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
-msgstr[0] "%'d個のファイル (%s) を移動する準備をしています"
+msgstr[0] "%'d 個のファイル (%s) を移動する準備をしています"
 
 #: libcore/marlin-file-operations.c:842 libcore/marlin-file-operations.c:1687
 #: libcore/marlin-file-operations.c:1740
@@ -819,13 +819,13 @@ msgstr "\"%s\" を複製しています"
 #, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "%'d個のファイルを \"%s\" から \"%s\" へ移動しています"
+msgstr[0] "%'d 個のファイルを \"%s\" から \"%s\" へ移動しています"
 
 #: libcore/marlin-file-operations.c:1177
 #, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "%'d個のファイルを \"%s\" から \"%s\" へコピーしています"
+msgstr[0] "%'d 個のファイルを \"%s\" から \"%s\" へコピーしています"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -833,7 +833,7 @@ msgstr[0] "%'d個のファイルを \"%s\" から \"%s\" へコピーしてい�
 #, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "%'d個のファイルを \"%s\" 内で複製しています"
+msgstr[0] "%'d 個のファイルを \"%s\" 内で複製しています"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -843,13 +843,13 @@ msgstr[0] "%'d個のファイルを \"%s\" 内で複製しています"
 #, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "%'d個のファイルを \"%s\" へ移動しています"
+msgstr[0] "%'d 個のファイルを \"%s\" へ移動しています"
 
 #: libcore/marlin-file-operations.c:1201
 #, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "%'d個のファイルを \"%s\" へコピーしています"
+msgstr[0] "%'d 個のファイルを \"%s\" へコピーしています"
 
 #: libcore/marlin-file-operations.c:1207
 #, c-format
@@ -1072,7 +1072,7 @@ msgstr "新しいファイル"
 #: libcore/marlin-file-operations.c:3951
 #, c-format
 msgid "Error while creating directory %s."
-msgstr "フォルダー %s の作成中にエラーが発生しました。"
+msgstr "ディレクトリ %s の作成中にエラーが発生しました。"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3954
@@ -1084,7 +1084,7 @@ msgstr "ファイル %s の作成中にエラーが発生しました。"
 #: libcore/marlin-file-operations.c:3960
 #, c-format
 msgid "There was an error creating the directory in %s."
-msgstr "%s 内へのフォルダーの作成中にエラーが発生しました。"
+msgstr "%s 内へのディレクトリの作成中にエラーが発生しました。"
 
 #: libcore/PopupMenuBuilder.vala:54
 msgid "Open in New _Tab"
@@ -1466,7 +1466,7 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] "選択中の%'d個の項目をゴミ箱から完全に削除してもよろしいですか?"
+msgstr[0] "選択中の %'d 個の項目をゴミ箱から完全に削除してもよろしいですか?"
 
 #: libcore/FileOperations/DeleteJob.vala:59
 msgid "If you delete an item, it will be permanently lost."
@@ -1484,7 +1484,7 @@ msgstr "“%s” を完全に削除しますか?"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "選択中の%'d個の項目を完全に削除してもよろしいですか?"
+msgstr[0] "選択中の %'d 個の項目を完全に削除してもよろしいですか?"
 
 #: libcore/FileOperations/DeleteJob.vala:82
 msgid "Deleted items are not sent to Trash and are not recoverable."
@@ -1776,7 +1776,7 @@ msgstr "内容:"
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] "%i個のファイルが権限またはそのほかのエラーにより読み込めません。"
+msgstr[0] "%i 個のファイルが権限またはそのほかのエラーにより読み込めません。"
 
 #: src/Dialogs/PropertiesWindow.vala:300
 msgid "Actual Size Could Be Larger"
@@ -1852,26 +1852,26 @@ msgstr "全員:"
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] "%u個のサブフォルダー"
+msgstr[0] "%u 個のサブフォルダー"
 
 #: src/Dialogs/PropertiesWindow.vala:1259
 #: src/Dialogs/PropertiesWindow.vala:1281
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] "%u個のファイル"
+msgstr[0] "%u 個のファイル"
 
 #: src/Dialogs/PropertiesWindow.vala:1277 src/View/Widgets/OverlayBar.vala:171
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] "%u個のフォルダー"
+msgstr[0] "%u 個のフォルダー"
 
 #: src/Dialogs/PropertiesWindow.vala:1286
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] "%u個の選択項目"
+msgstr[0] "%u 個の選択項目"
 
 #. TRANSLATORS: total (folders, files)
 #: src/Dialogs/PropertiesWindow.vala:1288
@@ -2261,12 +2261,12 @@ msgstr "'%s' をアンマウント"
 #: src/View/Sidebar/AbstractMountableRow.vala:306
 #, c-format
 msgid "%s free"
-msgstr "%s が利用可能"
+msgstr "%s 利用可能"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:307
 #, c-format
 msgid "%s used of %s"
-msgstr "%2$s 中 %1$s が使用済み"
+msgstr "%2$s 中 %1$s 使用済み"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:337
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
@@ -2360,7 +2360,7 @@ msgstr "縮小"
 
 #: src/View/Widgets/AppMenu.vala:34
 msgid "Zoom 1:1"
-msgstr "100 % 表示"
+msgstr "100% 表示"
 
 #: src/View/Widgets/AppMenu.vala:43
 msgid "Zoom In"
@@ -2430,13 +2430,13 @@ msgstr "検索しています…"
 #: src/View/Widgets/OverlayBar.vala:162
 #, c-format
 msgid "%u folders"
-msgstr "%u個のフォルダー"
+msgstr "%u 個のフォルダー"
 
 #: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] " と%u個のほかの項目を選択 (%s)"
+msgstr[0] " と %u 個のほかの項目を選択 (%s)"
 
 #: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
 msgid " selected"
@@ -2445,21 +2445,21 @@ msgstr " を選択"
 #: src/View/Widgets/OverlayBar.vala:181
 #, c-format
 msgid "%u items selected (%s)"
-msgstr "%u個の項目を選択 (%s)"
+msgstr "%u 個の項目を選択 (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:226
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
-msgstr[0] "%u個のサブフォルダー、 "
+msgstr[0] "%u 個のサブフォルダー、 "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:232
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
-msgstr[0] "%u個のファイル、 "
+msgstr[0] "%u 個のファイル、 "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:242
@@ -2477,7 +2477,7 @@ msgstr "不明なサイズ"
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
-msgstr[0] "%u個のファイルが読み込めません"
+msgstr[0] "%u 個のファイルが読み込めません"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
