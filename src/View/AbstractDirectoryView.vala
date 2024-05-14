@@ -89,7 +89,8 @@ namespace Files {
             {"bookmark", on_common_action_bookmark},
             {"properties", on_common_action_properties},
             {"copy-link", on_common_action_copy_link},
-            {"select-all", toggle_select_all}
+            {"select-all", toggle_select_all},
+            {"set-wallpaper", action_set_wallpaper}
         };
 
         GLib.SimpleActionGroup common_actions;
@@ -1291,6 +1292,15 @@ namespace Files {
         }
 
         /** Common actions */
+        private void action_set_wallpaper (GLib.SimpleAction action, GLib.Variant? param) {
+            var file = get_files_for_action ().nth_data (0);
+
+            var active_window = (Gtk.Window) get_toplevel ();
+            Xdp.Parent? parent = active_window != null ? Xdp.parent_new_gtk (active_window) : null;
+
+            var portal = new Xdp.Portal ();
+            portal.set_wallpaper.begin (parent, file.uri, NONE, null);
+        }
 
         private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) {
             default_app = null;
@@ -2319,6 +2329,14 @@ namespace Files {
                 // We send the actual files - it is up to the plugin to extract target
                 // if needed.  Color tag plugin needs actual file, others need target
                 plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
+
+                if (selection.length () == 1 && "image" in selection.nth_data (0).info.get_content_type ()) {
+                    var wallpaper_menuitem = new Gtk.MenuItem.with_label (_("Set as Wallpaper")) {
+                        action_name = "common.set-wallpaper"
+                    };
+
+                    menu.add (wallpaper_menuitem);
+                }
             }
 
             menu.set_screen (null);
@@ -2523,6 +2541,7 @@ namespace Files {
             action_set_enabled (common_actions, "copy", !renaming && !in_trash && can_copy);
             action_set_enabled (common_actions, "copy-link", !renaming && !in_trash && !in_recent && can_copy);
             action_set_enabled (common_actions, "bookmark", !renaming && !more_than_one_selected);
+            action_set_enabled (common_actions, "set-wallpaper", !renaming && !more_than_one_selected);
 
             update_default_app (selection);
             update_menu_actions_sort ();
