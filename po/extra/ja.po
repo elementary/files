@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-14 18:24+0000\n"
-"PO-Revision-Date: 2024-05-09 13:13+0000\n"
+"PO-Revision-Date: 2024-05-15 20:13+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/extra/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,11 +79,11 @@ msgstr "そのほかのアップデート:"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "Restoring tabs from last time is now optional"
-msgstr ""
+msgstr "前回開いていたタブを復元する機能をオプションに変更"
 
 #: data/files.metainfo.xml.in.in:70
 msgid "Drag and select can no longer be done with secondary pointer button"
-msgstr ""
+msgstr "副ボタンではドラッグや選択ができないように修正"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:93
 #: data/files.metainfo.xml.in.in:110 data/files.metainfo.xml.in.in:122
