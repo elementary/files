@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-14 18:24+0000\n"
-"PO-Revision-Date: 2024-05-17 17:06+0000\n"
+"PO-Revision-Date: 2024-05-18 18:13+0000\n"
 "Last-Translator: Arno <arnoant21@gmail.com>\n"
 "Language-Team: Luxembourgish <https://l10n.elementary.io/projects/files/"
 "files/lb/>\n"
@@ -320,7 +320,7 @@ msgstr[1] "%'d Objeten"
 #: libcore/File.vala:1157
 #, c-format
 msgid "link to %s"
-msgstr "Link zu %s"
+msgstr "link zu %s"
 
 #: libcore/FileConflictDialog.vala:61
 msgid "File conflict"
@@ -556,7 +556,7 @@ msgstr "kopéieren"
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:923
 msgid "link"
-msgstr "Link"
+msgstr "link"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:925
@@ -1239,9 +1239,8 @@ msgid "_Retry"
 msgstr ""
 
 #: libcore/StockDialogs.vala:25
-#, fuzzy
 msgid "Delete _All"
-msgstr "Läschen '%s'"
+msgstr "All_Läschen"
 
 #: libcore/StockDialogs.vala:26
 msgid "_Replace"
@@ -2311,55 +2310,57 @@ msgstr ""
 
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
-msgstr ""
+msgstr "D'Poubelle opmaachen"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
-msgstr ""
+msgstr "Kuckt d'Root vum lokalen Dateiesystem"
 
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s enthält keng accessibel Donnéeën."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"Fir dësen Drive ze benotzen, musst Dir en nei astiechen, oder Medien asetzen "
+"oder formatéieren."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Onformatéiert oder keng Medien"
 
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
-msgstr ""
+msgstr "Ganz Netzwierk"
 
 #: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "Browst den Inhalt vum Netzwierk"
 
 #: src/View/Sidebar/SidebarWindow.vala:30
 #: src/View/Widgets/SearchResults.vala:323
 msgid "Bookmarks"
-msgstr ""
+msgstr "Bookmarken"
 
 #: src/View/Sidebar/SidebarWindow.vala:31
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "Gemeinsam Plazen plus gespäichert Dossieren an Dateien"
 
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:39
 msgid "Storage"
-msgstr ""
+msgstr "Späicher"
 
 #: src/View/Sidebar/SidebarWindow.vala:40
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "Intern a verbonne Späicherapparater"
 
 #: src/View/Sidebar/SidebarWindow.vala:48
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "Apparater a Plaze sinn iwwer engem Netzwierk disponibel"
 
 #: src/View/Sidebar/SidebarWindow.vala:73
 msgid "Connect Server…"
@@ -2367,63 +2368,63 @@ msgstr "Mat dem Server verbannen…"
 
 #: src/View/Sidebar/VolumeRow.vala:166
 msgid "Mount"
-msgstr ""
+msgstr "Mounten"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
-msgstr ""
+msgstr "Bind mounten"
 
 #: src/View/Widgets/AppMenu.vala:25
 msgid "Zoom Out"
-msgstr ""
+msgstr "Raus zoomen"
 
 #: src/View/Widgets/AppMenu.vala:34
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "1:1 zoomen"
 
 #: src/View/Widgets/AppMenu.vala:43
 msgid "Zoom In"
-msgstr ""
+msgstr "Ran zoomen"
 
 #: src/View/Widgets/AppMenu.vala:81
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "Double-Click fir ze Navigéieren"
 
 #: src/View/Widgets/AppMenu.vala:82
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "Double-Click op een Dossier mécht et op, Eenzel-Click wielt et aus"
 
 #: src/View/Widgets/AppMenu.vala:86
 msgid "Sort Folders before Files"
-msgstr ""
+msgstr "Dossieren virun Dateien sortéieren"
 
 #: src/View/Widgets/AppMenu.vala:90
 msgid "Restore Tabs from Last Time"
-msgstr ""
+msgstr "Tabs vum leschte Kéier restauréieren"
 
 #: src/View/Widgets/AppMenu.vala:94
 msgid "Show in View"
-msgstr ""
+msgstr "An View weisen"
 
 #: src/View/Widgets/AppMenu.vala:101
 msgid "Hidden Files"
-msgstr ""
+msgstr "Verstoppt Dateien"
 
 #: src/View/Widgets/AppMenu.vala:105
 msgid "Local Thumbnails"
-msgstr ""
+msgstr "Lokal Thumbnails"
 
 #: src/View/Widgets/AppMenu.vala:110
 msgid "Remote Thumbnails"
-msgstr ""
+msgstr "Remote Thumbnails"
 
 #: src/View/Widgets/AppMenu.vala:152
 msgid "No operation to undo"
-msgstr ""
+msgstr "Keng Operatioun fir ze undoen"
 
 #: src/View/Widgets/AppMenu.vala:159
 msgid "No operation to redo"
-msgstr ""
+msgstr "Keng Operatioun fir ze redoen"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:199
@@ -2432,31 +2433,31 @@ msgstr ""
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:386
 msgid "Open in New Tab"
-msgstr ""
+msgstr "An engem neien Tab opmaachen"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:436
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "An enger anerer Uwendung opmaachen…"
 
 #: src/View/Widgets/LocationBar.vala:195
 msgid "Reload this folder"
-msgstr ""
+msgstr "Luet dësen Dossier nei"
 
 #: src/View/Widgets/LocationBar.vala:208
 msgid "Searching…"
-msgstr ""
+msgstr "Sichen…"
 
 #: src/View/Widgets/OverlayBar.vala:162
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u Dossieren"
 
 #: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " an %u aner Element (%s) ausgewielt"
+msgstr[1] " an %u aner Elementer (%s) ausgewielt"
 
 #: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
 msgid " selected"
@@ -2465,42 +2466,42 @@ msgstr " ausgewielt"
 #: src/View/Widgets/OverlayBar.vala:181
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u Elementer ausgewielt (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:226
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u Ënner-Dossier, "
+msgstr[1] "%u Ënner-Dossieren, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:232
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u Datei, "
+msgstr[1] "%u Dateien, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:242
 #, c-format
 msgid "%s approx."
-msgstr ""
+msgstr "%s ca."
 
 #. TRANSLATORS: 'size' refers to disk space
 #: src/View/Widgets/OverlayBar.vala:245
 msgid "unknown size"
-msgstr ""
+msgstr "onbekannt Gréisst"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:249
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u Datei net liesbar"
+msgstr[1] "%u Dateien net liesbar"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -2512,11 +2513,11 @@ msgstr "Schreiwen"
 
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
-msgstr ""
+msgstr "Ausféieren"
 
 #: src/View/Widgets/SearchResults.vala:89
 msgid "More Results …"
-msgstr ""
+msgstr "Méi Resultater …"
 
 #: src/View/Widgets/SearchResults.vala:315
 msgid "In This Folder"
@@ -2524,11 +2525,11 @@ msgstr "An dësem Dossier"
 
 #: src/View/Widgets/SearchResults.vala:319
 msgid "Below This Folder"
-msgstr ""
+msgstr "Ënnert dësem Dossier"
 
 #: src/View/Widgets/SearchResults.vala:328
 msgid "Recently Used"
-msgstr ""
+msgstr "Viru kuerzem benotzt"
 
 #, fuzzy
 #~ msgid "Connect to a network server"
