@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-14 18:24+0000\n"
-"PO-Revision-Date: 2024-05-17 16:07+0000\n"
+"PO-Revision-Date: 2024-05-17 16:32+0000\n"
 "Last-Translator: Arno <arnoant21@gmail.com>\n"
 "Language-Team: Luxembourgish <https://l10n.elementary.io/projects/files/"
 "files/lb/>\n"
@@ -429,79 +429,83 @@ msgstr "Ersetzen wäert säin Inhalt iwwerschreiwen."
 #: libcore/FileConflictDialog.vala:312
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Eng méi al Datei mam selwechten Numm existéiert schonn am »%s«."
 
 #: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Eng méi nei Datei mam selwechten Numm existéiert schonn am »%s«."
 
 #: libcore/FileConflictDialog.vala:316
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "En anere Fichier mam selwechten Numm existéiert schonn am »%s«."
 
 #: libcore/FileConflictDialog.vala:342
 msgid "Merge"
-msgstr ""
+msgstr "Fusionéieren"
 
 #: libcore/FileUtils.vala:82
 #, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr ""
+msgstr "Konnt den ursprénglechen Standuert vum »%s« net bestëmmen"
 
 #: libcore/FileUtils.vala:83
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "D'Element kann net aus der Poubelle restauréiert ginn"
 
 #: libcore/FileUtils.vala:177
 #, c-format
 msgid "The original folder %s no longer exists"
-msgstr ""
+msgstr "Den originalen Dossier %s existéiert net méi"
 
 #: libcore/FileUtils.vala:178
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "Wëllt Dir et nei schafen?"
 
 #: libcore/FileUtils.vala:183
 msgid "Ignore"
-msgstr ""
+msgstr "Ignoréieren"
 
 #: libcore/FileUtils.vala:184
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "Keng Dateien, déi an dësem Dossier waren, ginn restauréiert"
 
 #: libcore/FileUtils.vala:185
 msgid "Recreate"
-msgstr ""
+msgstr "Neischafen"
 
 #: libcore/FileUtils.vala:187
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
+"Den Dossier gëtt nei geschaf a gewielte Dateien, déi ursprénglech do waren, "
+"ginn dorop restauréiert"
 
 #: libcore/FileUtils.vala:200
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
+"Konnt den Dossier %s net nei schafen. All Dateien an dësem Dossier ginn "
+"ignoréiert"
 
 #: libcore/FileUtils.vala:566
 #, c-format
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Konnt net op '%s' ëmbenennen"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:657
 #, c-format
 msgid "Today at %s"
-msgstr ""
+msgstr "Haut um %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:665
 #, c-format
 msgid "Yesterday at %s"
-msgstr ""
+msgstr "Gëschter um %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:673
