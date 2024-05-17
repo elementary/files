@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-14 18:24+0000\n"
-"PO-Revision-Date: 2015-12-21 13:47+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
-"Language-Team: Luxembourgish <lb@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2024-05-17 16:07+0000\n"
+"Last-Translator: Arno <arnoant21@gmail.com>\n"
+"Language-Team: Luxembourgish <https://l10n.elementary.io/projects/files/"
+"files/lb/>\n"
+"Language: lb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -26,122 +27,121 @@ msgstr ""
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
-msgstr ""
+msgstr "Ofbriechen"
 
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Dateie schreiwgeschützt opmaachen"
 
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Datei schreiwgeschützt opmaachen"
 
 #: filechooser-portal/FileChooserDialog.vala:376
 msgid "Enter new filename"
-msgstr ""
+msgstr "Een neien Numm vun der Datei aginn"
 
 #: filechooser-portal/Main.vala:107
 msgid "Select"
-msgstr ""
+msgstr "Wielen"
 
 #: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
-msgstr ""
+msgstr "Opmaachen"
 
 #: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
-msgstr ""
+msgstr "Späicheren"
 
 #: filechooser-portal/Main.vala:448
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr ""
+msgstr "Dës Datei ass e Link mat »%s«"
 
 #: filechooser-portal/Main.vala:451
 msgid "This file is a link."
-msgstr ""
+msgstr "Dës Datei ass e Link."
 
 #: filechooser-portal/Main.vala:454
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr ""
+msgstr "E Link ersetzen iwwerschreift den Inhalt vum Ziel. De Link bleift"
 
 #: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
-msgstr ""
+msgstr "»%s« ersetzen?"
 
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
-msgstr ""
+msgstr "Wann Dir dës Datei ersetzt, gëtt hiren aktuellen Inhalt iwwerschriwwen"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
-msgstr ""
+msgstr "Ëffentlech FTP"
 
 #: libcore/ConnectServerDialog.vala:38
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (mat Login)"
 
 #: libcore/ConnectServerDialog.vala:45
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: libcore/ConnectServerDialog.vala:51
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: libcore/ConnectServerDialog.vala:57
 msgid "Windows share"
-msgstr ""
+msgstr "Windows-Deelen"
 
 #: libcore/ConnectServerDialog.vala:63
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: libcore/ConnectServerDialog.vala:70
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Séchere WebDAV (HTTPS)"
 
 #: libcore/ConnectServerDialog.vala:112
 msgid "Server Details"
-msgstr "Server Detail"
+msgstr "Server Detailer"
 
 #: libcore/ConnectServerDialog.vala:116
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Servernumm oder IP-Adress"
 
 #: libcore/ConnectServerDialog.vala:119
 msgid "Server:"
-msgstr ""
+msgstr "Server:"
 
 #: libcore/ConnectServerDialog.vala:129
 msgid "Port:"
-msgstr ""
+msgstr "Port:"
 
 #: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
 #: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:260
 msgid "Type:"
-msgstr ""
+msgstr "Typ:"
 
 #: libcore/ConnectServerDialog.vala:161
 msgid "Name of share on server (Optional)"
-msgstr ""
+msgstr "Deelnum op de Server (Fakultativ)"
 
 #: libcore/ConnectServerDialog.vala:164
 msgid "Share:"
-msgstr ""
+msgstr "Deelen:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Path of shared folder on server (Optional)"
-msgstr ""
+msgstr "Wee vum gedeelten Dossier um Server (Fakultativ)"
 
 #: libcore/ConnectServerDialog.vala:171
-#, fuzzy
 msgid "Folder:"
-msgstr "_Dossier:"
+msgstr "Dossier:"
 
 #: libcore/ConnectServerDialog.vala:175
 msgid "User Details"
@@ -149,283 +149,282 @@ msgstr "Benotzer Detailen"
 
 #: libcore/ConnectServerDialog.vala:180
 msgid "Name of Windows domain"
-msgstr ""
+msgstr "Numm vum Windows-Domain"
 
 #: libcore/ConnectServerDialog.vala:182
 msgid "Domain name:"
-msgstr ""
+msgstr "Domain Numm:"
 
 #: libcore/ConnectServerDialog.vala:187
 msgid "Name of user on server"
-msgstr ""
+msgstr "Benotzernumm op de Server"
 
 #: libcore/ConnectServerDialog.vala:189
 msgid "User name:"
-msgstr ""
+msgstr "Benotzernumm:"
 
 #: libcore/ConnectServerDialog.vala:197
-#, fuzzy
 msgid "Password:"
-msgstr "Pass_wuert"
+msgstr "Passwuert:"
 
 #: libcore/ConnectServerDialog.vala:199
 msgid "Remember this password"
-msgstr ""
+msgstr "Dëst Passwuert mierken"
 
 #: libcore/ConnectServerDialog.vala:209
-#, fuzzy
 msgid "Connect"
-msgstr "Verbannen..."
+msgstr "Verbannen"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Continue"
-msgstr "Weidermaachen"
+msgstr "Weider"
 
 #: libcore/ConnectServerDialog.vala:266
-#, fuzzy
 msgid "Connecting…"
-msgstr "Verbannen..."
+msgstr "Verbannen…"
 
 #: libcore/ConnectServerDialog.vala:373
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Iwwerpréift Är Detailer w.e.g. ."
 
 #: libcore/Directory.vala:736
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "De Server huet net innerhalb der Zäitlimit geäntwert"
 
 #: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "»%s« konnt net ausgefouert ginn"
 
 #: libcore/DndHandler.vala:100
 msgid "Move Here"
-msgstr ""
+msgstr "Heihi réckelen"
 
 #: libcore/DndHandler.vala:101
 msgid "Copy Here"
-msgstr ""
+msgstr "Heihi kopéieren"
 
 #: libcore/DndHandler.vala:102
 msgid "Link Here"
-msgstr ""
+msgstr "E Link hei schafen"
 
 #: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2356
 msgid "Name"
-msgstr ""
+msgstr "Numm"
 
 #: libcore/Enums.vala:144 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
 msgid "Creation Date"
-msgstr ""
+msgstr "Créatioun Datum"
 
 #: libcore/Enums.vala:147
 msgid "Last modification date"
-msgstr ""
+msgstr "Lescht geännert"
 
 #: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2361
 #: src/View/ListView.vala:27
 msgid "Size"
-msgstr ""
+msgstr "Gréisst"
 
 #: libcore/Enums.vala:173
 msgid "Number sequence"
-msgstr ""
+msgstr "Nummeréierung"
 
 #: libcore/Enums.vala:176 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2371
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: libcore/Enums.vala:195
 msgid "Suffix"
-msgstr ""
+msgstr "Extensioun"
 
 #: libcore/Enums.vala:198
 msgid "Prefix"
-msgstr ""
+msgstr "Präfix"
 
 #: libcore/Enums.vala:208
 msgid "Text to put at the end"
-msgstr ""
+msgstr "Text fir um Enn ze setzen"
 
 #: libcore/Enums.vala:211
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Text fir am Ufank ze setzen"
 
 #: libcore/Enums.vala:230
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "Standardformat - nëmmen Datum"
 
 #: libcore/Enums.vala:232
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "Standardformat – Datum an Zäit"
 
 #: libcore/Enums.vala:234
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "Lokaliséiert Format - Datum an Zäit"
 
 #: libcore/Enums.vala:236
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "ISO 8601 Format - nëmmen Datum"
 
 #: libcore/Enums.vala:238
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "ISO 8601 Format - Datum an Zäit"
 
 #: libcore/Enums.vala:254
 msgid "Date created"
-msgstr ""
+msgstr "Créatioun Datum"
 
 #: libcore/Enums.vala:256
 msgid "Date Modified"
-msgstr ""
+msgstr "Ännerungsdatum"
 
 #: libcore/Enums.vala:258
 msgid "Current Date"
-msgstr ""
+msgstr "Aktuell Datum"
 
 #: libcore/File.vala:554 libcore/File.vala:1117
 msgid "Inaccessible"
-msgstr ""
+msgstr "Onzougänglech"
 
 #: libcore/File.vala:895
 msgid "Failed to parse the desktop file"
-msgstr ""
+msgstr "Konnt d'Desktopdatei net parséieren"
 
 #: libcore/File.vala:899
 msgid "Failed to parse the desktop file: "
-msgstr ""
+msgstr "Konnt d'Desktopdatei net parséieren: "
 
 #: libcore/File.vala:911
 msgid "Failed to create command from file: "
-msgstr ""
+msgstr "Konnt de Kommando aus der Datei net erstellen: "
 
 #: libcore/File.vala:920
 msgid "Unable to Launch Desktop File: "
-msgstr ""
+msgstr "Kann de Desktop-Datei net starten: "
 
 #: libcore/File.vala:1110
 msgid "Empty"
-msgstr ""
+msgstr "Eidel"
 
 #: libcore/File.vala:1112
 #, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d Objet"
+msgstr[1] "%'d Objeten"
 
 #: libcore/File.vala:1157
-#, fuzzy, c-format
+#, c-format
 msgid "link to %s"
-msgstr "Läschen '%s'"
+msgstr "Link zu %s"
 
 #: libcore/FileConflictDialog.vala:61
 msgid "File conflict"
-msgstr ""
+msgstr "Dateikonflikt"
 
 #: libcore/FileConflictDialog.vala:96
 msgid "Original file"
-msgstr ""
+msgstr "Originaldatei"
 
 #: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
 #: src/Dialogs/PropertiesWindow.vala:564
 msgid "Size:"
-msgstr ""
+msgstr "Gréisst:"
 
 #: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
 msgid "Last modified:"
-msgstr ""
+msgstr "Lescht geännert:"
 
 #: libcore/FileConflictDialog.vala:130
 msgid "Replace with"
-msgstr ""
+msgstr "Ersetzen mat"
 
 #: libcore/FileConflictDialog.vala:164
 msgid "Reset"
-msgstr ""
+msgstr "Zerécksetzen"
 
 #: libcore/FileConflictDialog.vala:173
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "_Wielt en neien Numm fir d'Ziel"
 
 #: libcore/FileConflictDialog.vala:177
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Dës Aktioun op all Deteien uwenden"
 
 #: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
 msgid "_Skip"
-msgstr ""
+msgstr "_Iwwersprangen"
 
 #: libcore/FileConflictDialog.vala:180
 msgid "Re_name"
-msgstr ""
+msgstr "Ëm_benennen"
 
 #: libcore/FileConflictDialog.vala:182
 msgid "Keep Newest"
-msgstr ""
+msgstr "Neisten halen"
 
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Iwwersprangen, wann d'Original méi viru kuerzem geännert gouf"
 
 #: libcore/FileConflictDialog.vala:187
 msgid "Replace"
-msgstr ""
+msgstr "Ersetzen"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "Dossier »%s« fusionéieren?"
 
 #: libcore/FileConflictDialog.vala:294
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"D'Fusioun freet no Bestätegung ier Dir Dateien am Dossier ersetzt, déi mat "
+"de kopéierte Dateien konflikt sinn."
 
 #: libcore/FileConflictDialog.vala:296
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "En eeleren Dossier mam selwechten Numm existéiert schonn am »%s«."
 
 #: libcore/FileConflictDialog.vala:298
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "En méi neien Dossier mam selwechten Numm existéiert schonn am »%s«."
 
 #: libcore/FileConflictDialog.vala:300
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "En Dossier mam selwechten Numm existéiert schonn am »%s«."
 
 #: libcore/FileConflictDialog.vala:303
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "Dossier »%s« ersetzen?"
 
 #: libcore/FileConflictDialog.vala:304
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "Den Ersetzen vum Dossier läscht all enthalen Dateien."
 
 #: libcore/FileConflictDialog.vala:305
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "En Dossier mam selwechten Numm existéiert schonn am »%s«."
 
 #: libcore/FileConflictDialog.vala:308
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "Datei »%s« ersetzen?"
 
 #: libcore/FileConflictDialog.vala:309
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "Ersetzen wäert säin Inhalt iwwerschreiwen."
 
 #: libcore/FileConflictDialog.vala:312
 #, c-format
