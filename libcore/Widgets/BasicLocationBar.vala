@@ -21,6 +21,7 @@
 
 namespace Files.View.Chrome {
     public class BasicLocationBar : Gtk.Box, Locatable {
+        const string PLACEHOLDER = N_("Type a Path");
         private Navigatable bread;
         protected Gtk.Widget widget;
         private int minimum_width = 100;
@@ -85,7 +86,7 @@ namespace Files.View.Chrome {
 
         protected virtual void after_bread_text_changed (string txt) {
             if (txt == "") {
-                bread.set_placeholder (_("Type a path"));
+                bread.set_placeholder (_(PLACEHOLDER));
                 bread.set_action_icon_tooltip ("");
                 bread.hide_action_icon ();
             } else {
@@ -98,6 +99,7 @@ namespace Files.View.Chrome {
             show_navigate_icon ();
             return true;
         }
+
         protected virtual bool after_bread_focus_out_event (Gdk.EventFocus event) {
             hide_navigate_icon ();
             return true;
