@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-14 18:24+0000\n"
-"PO-Revision-Date: 2024-05-07 05:13+0000\n"
+"PO-Revision-Date: 2024-05-21 23:13+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -2059,10 +2059,8 @@ msgid "Paste"
 msgstr "Beillesztés"
 
 #: src/View/AbstractDirectoryView.vala:2334
-#, fuzzy
-#| msgid "Set as default"
 msgid "Set as Wallpaper"
-msgstr "Beállítás alapértelmezettként"
+msgstr "Beállítás háttérképként"
 
 #: src/View/AbstractDirectoryView.vala:2366 src/View/ListView.vala:28
 msgid "Type"
