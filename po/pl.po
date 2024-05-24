@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-14 18:24+0000\n"
-"PO-Revision-Date: 2024-04-20 18:13+0000\n"
+"PO-Revision-Date: 2024-05-25 08:13+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0.2\n"
+"X-Generator: Weblate 5.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -2105,10 +2105,8 @@ msgid "Paste"
 msgstr "Wklej"
 
 #: src/View/AbstractDirectoryView.vala:2334
-#, fuzzy
-#| msgid "Set as default"
 msgid "Set as Wallpaper"
-msgstr "Ustaw jako domyślną"
+msgstr "Ustaw jako tapetę"
 
 #: src/View/AbstractDirectoryView.vala:2366 src/View/ListView.vala:28
 msgid "Type"
