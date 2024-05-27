@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-04 06:39+0000\n"
+"POT-Creation-Date: 2024-05-14 18:24+0000\n"
 "PO-Revision-Date: 2021-03-21 17:09+0000\n"
 "Last-Translator: Shukrullo Turgunov <shookrullo@gmail.com>\n"
 "Language-Team: Uzbek <https://l10n.elementary.io/projects/files/files/uz/>\n"
@@ -205,7 +205,7 @@ msgstr "Bu yerga nusxalash"
 msgid "Link Here"
 msgstr "Bu yerga bog'lama yaratish"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2338
+#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2356
 msgid "Name"
 msgstr "Nomi"
 
@@ -220,7 +220,7 @@ msgstr "Yaratish"
 msgid "Last modification date"
 msgstr "Oxirgi martta o'zgartirilgan:"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2343
+#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2361
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Hajmi"
@@ -233,7 +233,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2353
+#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2371
 msgid "Date"
 msgstr "Sana"
 
@@ -1100,7 +1100,7 @@ msgid "_Unmount"
 msgstr "_Uzish"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2053
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Properties"
 msgstr "Xususiyatlar"
 
@@ -1113,7 +1113,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "O'chirish"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2046
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2056
 msgid "Add to Bookmarks"
 msgstr "Xatcho'pga qo'shish"
 
@@ -1563,8 +1563,8 @@ msgstr "Dastur talqinini ko'rsatish"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Bir yoki bir nechta bog'lamalarni, har birini alohida yorliqda ochish"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1934
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1944
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "New Window"
 msgstr "Yangi oyna"
 
@@ -1844,7 +1844,7 @@ msgid "Original Location:"
 msgstr "Asl joylashuvi:"
 
 #: src/Dialogs/PropertiesWindow.vala:671
-#: src/View/AbstractDirectoryView.vala:2021
+#: src/View/AbstractDirectoryView.vala:2031
 msgid "Other Application…"
 msgstr "Boshqa ilova…"
 
@@ -1923,18 +1923,18 @@ msgstr "URIlarni ochib bo'lmadi"
 msgid "Could not open files or URIs with this app"
 msgstr "Ushbu dastur yordamida fayllarni yoki URIni ochib bo'lmadi"
 
-#: src/View/AbstractDirectoryView.vala:867
-#: src/View/AbstractDirectoryView.vala:1194
+#: src/View/AbstractDirectoryView.vala:868
+#: src/View/AbstractDirectoryView.vala:1195
 msgid "Cannot execute this file"
 msgstr "Ushbu faylni ishga tushirib bo'lmadi"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:877
+#: src/View/AbstractDirectoryView.vala:878
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "\"%s\" faylni ochishdan avval Savatchadan chiqarib olish kerak"
 
-#: src/View/AbstractDirectoryView.vala:878
+#: src/View/AbstractDirectoryView.vala:879
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -1942,165 +1942,171 @@ msgstr ""
 "Savatchadagi fayllar ochilmaydi. Uni ochish uchun avval boshqa joyga "
 "ko'chirib olish kerak."
 
-#: src/View/AbstractDirectoryView.vala:893
+#: src/View/AbstractDirectoryView.vala:894
 msgid "Cannot open this file"
 msgstr "Faylni ochib bo'lmadi"
 
-#: src/View/AbstractDirectoryView.vala:906
+#: src/View/AbstractDirectoryView.vala:907
 msgid "Cannot identify file type to open"
 msgstr "Faylni ochish uchun turini aniqlab bo'lmadi"
 
-#: src/View/AbstractDirectoryView.vala:1643
+#: src/View/AbstractDirectoryView.vala:1653
 msgid "Cannot drop this file"
 msgstr "Ushbu faylga joylashtirib bo'lmadi"
 
-#: src/View/AbstractDirectoryView.vala:1644
+#: src/View/AbstractDirectoryView.vala:1654
 msgid "Invalid file name provided"
 msgstr "Fayl nomi noto'g'ri"
 
-#: src/View/AbstractDirectoryView.vala:1917
-#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:239
+#: src/View/AbstractDirectoryView.vala:1927
+#: src/View/AbstractDirectoryView.vala:1933 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "Yangi yorliq ochish"
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:1967
 msgid "Run"
 msgstr "Ishga tushirish"
 
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1974
 #, c-format
 msgid "Open in %s"
 msgstr "\"%s\" da ochish"
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2043
 msgid "Open in"
 msgstr "Ushbu dasturda ochish"
 
-#: src/View/AbstractDirectoryView.vala:2035
+#: src/View/AbstractDirectoryView.vala:2045
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "Ushbu dastur yordamida ochish"
 
-#: src/View/AbstractDirectoryView.vala:2066
+#: src/View/AbstractDirectoryView.vala:2076
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2075
+#: src/View/AbstractDirectoryView.vala:2085
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2084
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Deselect All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2092
+#: src/View/AbstractDirectoryView.vala:2102
 msgid "Cut"
 msgstr "Qirqib olish"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2100
+#: src/View/AbstractDirectoryView.vala:2110
 msgid "Copy"
 msgstr "Nusxa olish"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2117
 msgid "Move to Trash"
 msgstr "Savatchaga o'tkazish"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2122
 #, fuzzy
 msgid "Delete Permanently"
 msgstr "To'liq o'chirib tashlash"
 
-#: src/View/AbstractDirectoryView.vala:2119
+#: src/View/AbstractDirectoryView.vala:2129
 msgid "Restore from Trash"
 msgstr "Savatchadan tiklash"
 
-#: src/View/AbstractDirectoryView.vala:2142
+#: src/View/AbstractDirectoryView.vala:2152
 msgid "Open Parent Folder"
 msgstr "Bosh papkani ochish"
 
-#: src/View/AbstractDirectoryView.vala:2145
+#: src/View/AbstractDirectoryView.vala:2155
 msgid "Remove from History"
 msgstr "Tarixdan tozalash"
 
-#: src/View/AbstractDirectoryView.vala:2171
+#: src/View/AbstractDirectoryView.vala:2181
 msgid "Rename…"
 msgstr "Qaytanomlash…"
 
-#: src/View/AbstractDirectoryView.vala:2178
+#: src/View/AbstractDirectoryView.vala:2188
 msgid "Copy as Link"
 msgstr "Bog'lamasidan nusxa olish"
 
-#: src/View/AbstractDirectoryView.vala:2201
-#: src/View/AbstractDirectoryView.vala:2281
+#: src/View/AbstractDirectoryView.vala:2211
+#: src/View/AbstractDirectoryView.vala:2291
 msgid "Paste Link into Folder"
 msgstr "Papkaga bog'lama joylashtirish"
 
-#: src/View/AbstractDirectoryView.vala:2206
-#: src/View/AbstractDirectoryView.vala:2258
+#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2268
 msgid "Paste into Folder"
 msgstr "Papkaga joylashtirish"
 
-#: src/View/AbstractDirectoryView.vala:2216
-#: src/View/AbstractDirectoryView.vala:2286
+#: src/View/AbstractDirectoryView.vala:2226
+#: src/View/AbstractDirectoryView.vala:2296
 msgid "Paste"
 msgstr "Joylashtirish"
 
-#: src/View/AbstractDirectoryView.vala:2348 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2334
+#, fuzzy
+#| msgid "Set as default"
+msgid "Set as Wallpaper"
+msgstr "Asosiy sifatida o'rnatish"
+
+#: src/View/AbstractDirectoryView.vala:2366 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Turi"
 
-#: src/View/AbstractDirectoryView.vala:2358
+#: src/View/AbstractDirectoryView.vala:2376
 msgid "Reversed Order"
 msgstr "Teskari taribda"
 
-#: src/View/AbstractDirectoryView.vala:2361
+#: src/View/AbstractDirectoryView.vala:2379
 msgid "Folders Before Files"
 msgstr "Papkalar fayllardan oldin"
 
-#: src/View/AbstractDirectoryView.vala:2373
+#: src/View/AbstractDirectoryView.vala:2391
 msgid "Sort by"
 msgstr "Tartiblash"
 
-#: src/View/AbstractDirectoryView.vala:2381
+#: src/View/AbstractDirectoryView.vala:2399
 msgid "Folder"
 msgstr "Papka"
 
-#: src/View/AbstractDirectoryView.vala:2387
+#: src/View/AbstractDirectoryView.vala:2405
 msgid "Empty File"
 msgstr "Bo'sh fayl"
 
-#: src/View/AbstractDirectoryView.vala:2438
+#: src/View/AbstractDirectoryView.vala:2456
 msgid "New"
 msgstr "Yaratish"
 
-#: src/View/AbstractDirectoryView.vala:2682
+#: src/View/AbstractDirectoryView.vala:2701
 #, c-format
 msgid "Untitled %s"
 msgstr "Nomsiz \"%s\""
 
-#: src/View/AbstractDirectoryView.vala:2987
-#: src/View/AbstractDirectoryView.vala:3190
+#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:3209
 msgid "Cannot remove files from here"
 msgstr "Bu yerdan fayllarni o'chirib bo'lmadi"
 
-#: src/View/AbstractDirectoryView.vala:2988
-#: src/View/AbstractDirectoryView.vala:3163
-#: src/View/AbstractDirectoryView.vala:3174
-#: src/View/AbstractDirectoryView.vala:3191
+#: src/View/AbstractDirectoryView.vala:3007
+#: src/View/AbstractDirectoryView.vala:3182
+#: src/View/AbstractDirectoryView.vala:3193
+#: src/View/AbstractDirectoryView.vala:3210
 msgid "You do not have permission to change this location"
 msgstr "Ushbu joylashuvni o'zgartirish uchun sizda huquq yetarli emas"
 
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:3150
 msgid "Cannot copy files that are in the trash"
 msgstr "Savatchada turgan fayllardan nusxa olib bo'lmaydi"
 
-#: src/View/AbstractDirectoryView.vala:3132
+#: src/View/AbstractDirectoryView.vala:3151
 msgid "Cutting the selection instead"
 msgstr "Belgilanmaganlarni qirqib olish"
 
-#: src/View/AbstractDirectoryView.vala:3162
-#: src/View/AbstractDirectoryView.vala:3173
+#: src/View/AbstractDirectoryView.vala:3181
+#: src/View/AbstractDirectoryView.vala:3192
 msgid "Cannot paste files here"
 msgstr "Bu yerga fayllarni joylashtirib bo'lmadi"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-04 06:39+0000\n"
+"POT-Creation-Date: 2024-05-14 18:24+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
@@ -215,7 +215,7 @@ msgstr "Kopijuoti čia"
 msgid "Link Here"
 msgstr "Kurti nuorodą čia"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2338
+#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2356
 msgid "Name"
 msgstr "Pavadinimas"
 
@@ -230,7 +230,7 @@ msgstr "Sukurti"
 msgid "Last modification date"
 msgstr "Paskutinis pakeitimas:"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2343
+#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2361
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Dydis"
@@ -243,7 +243,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2353
+#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2371
 msgid "Date"
 msgstr "Data"
 
@@ -1194,7 +1194,7 @@ msgid "_Unmount"
 msgstr "_Atjungti"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2053
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Properties"
 msgstr "Savybės"
 
@@ -1207,7 +1207,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "Šalinti"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2046
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2056
 #, fuzzy
 msgid "Add to Bookmarks"
 msgstr "Žymelės"
@@ -1687,8 +1687,8 @@ msgstr "Rodyti programos versiją."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Atverti vieną ar daugiau URI, kiekvieną atskiroje kortelėje"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1934
-#: src/View/AbstractDirectoryView.vala:1940
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1944
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "New Window"
 msgstr "Naujas langas"
 
@@ -1968,7 +1968,7 @@ msgid "Original Location:"
 msgstr "Pradinė vieta:"
 
 #: src/Dialogs/PropertiesWindow.vala:671
-#: src/View/AbstractDirectoryView.vala:2021
+#: src/View/AbstractDirectoryView.vala:2031
 msgid "Other Application…"
 msgstr "Kita programa…"
 
@@ -2056,184 +2056,190 @@ msgstr "Nepavyko atverti URI"
 msgid "Could not open files or URIs with this app"
 msgstr "Naudojant šią programą, nepavyko atverti failų ar URI"
 
-#: src/View/AbstractDirectoryView.vala:867
-#: src/View/AbstractDirectoryView.vala:1194
+#: src/View/AbstractDirectoryView.vala:868
+#: src/View/AbstractDirectoryView.vala:1195
 msgid "Cannot execute this file"
 msgstr "Nepavyksta vykdyti šio failo"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:877
+#: src/View/AbstractDirectoryView.vala:878
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:878
+#: src/View/AbstractDirectoryView.vala:879
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:893
+#: src/View/AbstractDirectoryView.vala:894
 msgid "Cannot open this file"
 msgstr "Nepavyksta atverti šio failo"
 
-#: src/View/AbstractDirectoryView.vala:906
+#: src/View/AbstractDirectoryView.vala:907
 msgid "Cannot identify file type to open"
 msgstr "Nepavyksta atpažinti norimo atverti failo tipą"
 
-#: src/View/AbstractDirectoryView.vala:1643
+#: src/View/AbstractDirectoryView.vala:1653
 msgid "Cannot drop this file"
 msgstr "Negalima numesti šio failo"
 
-#: src/View/AbstractDirectoryView.vala:1644
+#: src/View/AbstractDirectoryView.vala:1654
 msgid "Invalid file name provided"
 msgstr "Pateiktas neteisingas failo pavadinimas"
 
-#: src/View/AbstractDirectoryView.vala:1917
-#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:239
+#: src/View/AbstractDirectoryView.vala:1927
+#: src/View/AbstractDirectoryView.vala:1933 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "Nauja kortelė"
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:1967
 msgid "Run"
 msgstr "Vykdyti"
 
-#: src/View/AbstractDirectoryView.vala:1964
+#: src/View/AbstractDirectoryView.vala:1974
 #, c-format
 msgid "Open in %s"
 msgstr "Atverti naudojant %s"
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2043
 msgid "Open in"
 msgstr "Kur atverti"
 
-#: src/View/AbstractDirectoryView.vala:2035
+#: src/View/AbstractDirectoryView.vala:2045
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "Atverti naudojant"
 
-#: src/View/AbstractDirectoryView.vala:2066
+#: src/View/AbstractDirectoryView.vala:2076
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2075
+#: src/View/AbstractDirectoryView.vala:2085
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2084
+#: src/View/AbstractDirectoryView.vala:2094
 #, fuzzy
 msgid "Deselect All"
 msgstr "Atkurti visus"
 
-#: src/View/AbstractDirectoryView.vala:2092
+#: src/View/AbstractDirectoryView.vala:2102
 msgid "Cut"
 msgstr "Iškirpti"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2100
+#: src/View/AbstractDirectoryView.vala:2110
 msgid "Copy"
 msgstr "Kopijuoti"
 
-#: src/View/AbstractDirectoryView.vala:2107
+#: src/View/AbstractDirectoryView.vala:2117
 msgid "Move to Trash"
 msgstr "Perkelti į šiukšliadėžę"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2122
 #, fuzzy
 msgid "Delete Permanently"
 msgstr "Ištrinti visiems laikams"
 
-#: src/View/AbstractDirectoryView.vala:2119
+#: src/View/AbstractDirectoryView.vala:2129
 msgid "Restore from Trash"
 msgstr "Atkurti iš šiukšlinės"
 
-#: src/View/AbstractDirectoryView.vala:2142
+#: src/View/AbstractDirectoryView.vala:2152
 msgid "Open Parent Folder"
 msgstr "Atverti tėvinį aplanką"
 
-#: src/View/AbstractDirectoryView.vala:2145
+#: src/View/AbstractDirectoryView.vala:2155
 msgid "Remove from History"
 msgstr "Šalinti iš žurnalo"
 
-#: src/View/AbstractDirectoryView.vala:2171
+#: src/View/AbstractDirectoryView.vala:2181
 #, fuzzy
 msgid "Rename…"
 msgstr "Pervadinti"
 
-#: src/View/AbstractDirectoryView.vala:2178
+#: src/View/AbstractDirectoryView.vala:2188
 msgid "Copy as Link"
 msgstr "Kopijuoti kaip nuorodą"
 
-#: src/View/AbstractDirectoryView.vala:2201
-#: src/View/AbstractDirectoryView.vala:2281
+#: src/View/AbstractDirectoryView.vala:2211
+#: src/View/AbstractDirectoryView.vala:2291
 msgid "Paste Link into Folder"
 msgstr "Įdėti nuorodą į aplanką"
 
-#: src/View/AbstractDirectoryView.vala:2206
-#: src/View/AbstractDirectoryView.vala:2258
+#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2268
 msgid "Paste into Folder"
 msgstr "Įdėti į aplanką"
 
-#: src/View/AbstractDirectoryView.vala:2216
-#: src/View/AbstractDirectoryView.vala:2286
+#: src/View/AbstractDirectoryView.vala:2226
+#: src/View/AbstractDirectoryView.vala:2296
 msgid "Paste"
 msgstr "Įdėti"
 
-#: src/View/AbstractDirectoryView.vala:2348 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2334
+#, fuzzy
+#| msgid "Set as default"
+msgid "Set as Wallpaper"
+msgstr "Nustatyti numatytąja"
+
+#: src/View/AbstractDirectoryView.vala:2366 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Tipas"
 
-#: src/View/AbstractDirectoryView.vala:2358
+#: src/View/AbstractDirectoryView.vala:2376
 msgid "Reversed Order"
 msgstr "Atvirkštine tvarka"
 
-#: src/View/AbstractDirectoryView.vala:2361
+#: src/View/AbstractDirectoryView.vala:2379
 msgid "Folders Before Files"
 msgstr "Pirma aplankai, po to failai"
 
-#: src/View/AbstractDirectoryView.vala:2373
+#: src/View/AbstractDirectoryView.vala:2391
 msgid "Sort by"
 msgstr "Rikiuoti pagal"
 
-#: src/View/AbstractDirectoryView.vala:2381
+#: src/View/AbstractDirectoryView.vala:2399
 msgid "Folder"
 msgstr "Aplankas"
 
-#: src/View/AbstractDirectoryView.vala:2387
+#: src/View/AbstractDirectoryView.vala:2405
 msgid "Empty File"
 msgstr "Tuščias failas"
 
-#: src/View/AbstractDirectoryView.vala:2438
+#: src/View/AbstractDirectoryView.vala:2456
 msgid "New"
 msgstr "Naujas"
 
-#: src/View/AbstractDirectoryView.vala:2682
+#: src/View/AbstractDirectoryView.vala:2701
 #, c-format
 msgid "Untitled %s"
 msgstr "Be pavadinimo %s"
 
-#: src/View/AbstractDirectoryView.vala:2987
-#: src/View/AbstractDirectoryView.vala:3190
+#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:3209
 msgid "Cannot remove files from here"
 msgstr "Failai negali būti iš čia pašalinti"
 
-#: src/View/AbstractDirectoryView.vala:2988
-#: src/View/AbstractDirectoryView.vala:3163
-#: src/View/AbstractDirectoryView.vala:3174
-#: src/View/AbstractDirectoryView.vala:3191
+#: src/View/AbstractDirectoryView.vala:3007
+#: src/View/AbstractDirectoryView.vala:3182
+#: src/View/AbstractDirectoryView.vala:3193
+#: src/View/AbstractDirectoryView.vala:3210
 msgid "You do not have permission to change this location"
 msgstr "Jūs neturite leidimų keisti šios vietos"
 
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:3150
 msgid "Cannot copy files that are in the trash"
 msgstr "Nepavyksta nukopijuoti failų, kurie yra šiukšlinėje"
 
-#: src/View/AbstractDirectoryView.vala:3132
+#: src/View/AbstractDirectoryView.vala:3151
 msgid "Cutting the selection instead"
 msgstr "Vietoj to, iškerpamas pasirinkimas"
 
-#: src/View/AbstractDirectoryView.vala:3162
-#: src/View/AbstractDirectoryView.vala:3173
+#: src/View/AbstractDirectoryView.vala:3181
+#: src/View/AbstractDirectoryView.vala:3192
 msgid "Cannot paste files here"
 msgstr "Failai negali būti čia įdėti"
 
