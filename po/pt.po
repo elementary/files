@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-04 11:41+0000\n"
-"PO-Revision-Date: 2022-10-20 13:57+0000\n"
+"POT-Creation-Date: 2024-05-14 18:24+0000\n"
+"PO-Revision-Date: 2024-04-19 15:31+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 5.0.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -41,9 +41,8 @@ msgid "Open File as Read Only"
 msgstr "Abrir ficheiro com Apenas-Leitura"
 
 #: filechooser-portal/FileChooserDialog.vala:376
-#, fuzzy
 msgid "Enter new filename"
-msgstr "novo ficheiro"
+msgstr "Introduzir novo nome de ficheiro"
 
 #: filechooser-portal/Main.vala:107
 msgid "Select"
@@ -60,17 +59,18 @@ msgstr "Guardar"
 #: filechooser-portal/Main.vala:448
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr ""
+msgstr "Este ficheiro é uma ligação para \"%s\""
 
 #: filechooser-portal/Main.vala:451
 msgid "This file is a link."
-msgstr ""
+msgstr "Este ficheiro é uma ligação."
 
 #: filechooser-portal/Main.vala:454
-#, fuzzy
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr "Se o substituir, sobrepõe o seu conteúdo."
+msgstr ""
+"A substituição de uma ligação substituirá o conteúdo do destino. A ligação "
+"permanecerá"
 
 #: filechooser-portal/Main.vala:456
 #, c-format
@@ -211,87 +211,83 @@ msgstr "Copiar para Aqui"
 msgid "Link Here"
 msgstr "Criar uma Ligação para Aqui"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2324
+#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2356
 msgid "Name"
 msgstr "Nome"
 
 #: libcore/Enums.vala:144 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
-#, fuzzy
 msgid "Creation Date"
-msgstr "Criar"
+msgstr "Data de criação"
 
 #: libcore/Enums.vala:147
-#, fuzzy
 msgid "Last modification date"
-msgstr "Última modificação:"
+msgstr "Data da última modificação"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2329
+#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2361
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Tamanho"
 
 #: libcore/Enums.vala:173
 msgid "Number sequence"
-msgstr ""
+msgstr "Sequência numérica"
 
 #: libcore/Enums.vala:176 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "Texto"
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2339
+#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2371
 msgid "Date"
 msgstr "Data"
 
 #: libcore/Enums.vala:195
 msgid "Suffix"
-msgstr ""
+msgstr "Sufixo"
 
 #: libcore/Enums.vala:198
 msgid "Prefix"
-msgstr ""
+msgstr "Prefixo"
 
 #: libcore/Enums.vala:208
 msgid "Text to put at the end"
-msgstr ""
+msgstr "Texto a colocar no final"
 
 #: libcore/Enums.vala:211
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Texto a colocar no início"
 
 #: libcore/Enums.vala:230
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "Formato padrão - Apenas data"
 
 #: libcore/Enums.vala:232
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "Formato padrão - Data e hora"
 
 #: libcore/Enums.vala:234
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "Formato local - Data e hora"
 
 #: libcore/Enums.vala:236
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "Formato ISO 8601 - Apenas data"
 
 #: libcore/Enums.vala:238
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "Formato ISO 8601 - Data e hora"
 
 #: libcore/Enums.vala:254
-#, fuzzy
 msgid "Date created"
-msgstr "Recriar"
+msgstr "Data criada"
 
 #: libcore/Enums.vala:256
-#, fuzzy
 msgid "Date Modified"
-msgstr "Modificado"
+msgstr "Data modificada"
 
 #: libcore/Enums.vala:258
 msgid "Current Date"
-msgstr ""
+msgstr "Data atual"
 
 #: libcore/File.vala:554 libcore/File.vala:1117
 msgid "Inaccessible"
@@ -318,11 +314,11 @@ msgid "Empty"
 msgstr "Vazio"
 
 #: libcore/File.vala:1112
-#, fuzzy, c-format
+#, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
-msgstr[0] "%i item"
-msgstr[1] "%i itens"
+msgstr[0] "%'d item"
+msgstr[1] "%'d itens"
 
 #: libcore/File.vala:1157
 #, c-format
@@ -519,14 +515,14 @@ msgstr "Ontem às %s"
 msgid "%%A at %s"
 msgstr "%%A às %s"
 
-#: libcore/FileUtils.vala:1015
+#: libcore/FileUtils.vala:898
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d segundo"
 msgstr[1] "%'d segundos"
 
-#: libcore/FileUtils.vala:1019 libcore/FileUtils.vala:1027
+#: libcore/FileUtils.vala:902 libcore/FileUtils.vala:910
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -535,19 +531,19 @@ msgstr[1] "%'d minutos"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:1026 src/Dialogs/PropertiesWindow.vala:1264
+#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1264
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:1026
+#: libcore/FileUtils.vala:909
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d hora"
 msgstr[1] "%'d horas"
 
-#: libcore/FileUtils.vala:1030
+#: libcore/FileUtils.vala:913
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -555,22 +551,22 @@ msgstr[0] "aproximadamente %'d hora"
 msgstr[1] "aproximadamente %'d horas"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1038
+#: libcore/FileUtils.vala:921
 msgid "copy"
 msgstr "cópia"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1040
+#: libcore/FileUtils.vala:923
 msgid "link"
 msgstr "ligação"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1042
+#: libcore/FileUtils.vala:925
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1044
+#: libcore/FileUtils.vala:927
 msgid ")"
 msgstr ")"
 
@@ -916,8 +912,8 @@ msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"A pasta \"%s\" não pode ser copiada, porque o utilizador não tem as "
-"permissões necessárias."
+"A pasta \"%s\" não pode ser copiada porque não tem permissões para a criar "
+"no destino."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -945,8 +941,7 @@ msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"A pasta \"%s\" não pode ser copiada, porque o utilizador não tem as "
-"permissões necessárias."
+"A pasta \"%s\" não pode ser copiada porque não tem permissões para a ler."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1152,7 +1147,7 @@ msgid "_Unmount"
 msgstr "_Desmontar"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2039
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Properties"
 msgstr "Propriedades"
 
@@ -1164,7 +1159,7 @@ msgstr "Ejetar"
 msgid "Safely Remove"
 msgstr "Remover com segurança"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2032
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2056
 msgid "Add to Bookmarks"
 msgstr "Adicionar aos marcadores"
 
@@ -1287,143 +1282,116 @@ msgid "Empty _Trash"
 msgstr "Esvaziar _lixo"
 
 #: libcore/UndoManager.vala:22
-#, fuzzy
 msgid "Undo Copy"
-msgstr "Copiar"
+msgstr "Anular copiar"
 
 #: libcore/UndoManager.vala:24
-#, fuzzy
 msgid "Undo Duplicate"
-msgstr "Duplicar separador"
+msgstr "Anular duplicar"
 
 #: libcore/UndoManager.vala:26
-#, fuzzy
 msgid "Undo Move"
-msgstr "Anular o fechar separador"
+msgstr "Anular mover"
 
 #: libcore/UndoManager.vala:28
-#, fuzzy
 msgid "Undo Rename"
-msgstr "Mudar nome"
+msgstr "Anular mudança de nome"
 
 #: libcore/UndoManager.vala:30
-#, fuzzy
 msgid "Undo Create Empty File"
-msgstr "An_ular a criação do ficheiro vazio"
+msgstr "Anular a criação de ficheiro vazio"
 
 #: libcore/UndoManager.vala:32
-#, fuzzy
 msgid "Undo Create File from Template"
-msgstr "An_ular a criação do ficheiro a partir de um modelo"
+msgstr "Anular a criação do ficheiro a partir de um modelo"
 
 #: libcore/UndoManager.vala:34
-#, fuzzy
 msgid "Undo Create Folder"
-msgstr "An_ular a criação de %d pasta"
+msgstr "Anular a criação de pasta"
 
 #: libcore/UndoManager.vala:36
-#, fuzzy
 msgid "Undo Move to Trash"
-msgstr "Mover para o lixo"
+msgstr "Anular mover para o lixo"
 
 #: libcore/UndoManager.vala:38
-#, fuzzy
 msgid "Undo Create Link"
-msgstr "An_ular a criação de uma ligação para %d item"
+msgstr "Anular a criação de uma ligação"
 
 #: libcore/UndoManager.vala:40
-#, fuzzy
 msgid "Undo Restore from Trash"
-msgstr "Restaurar do lixo"
+msgstr "Anular restaurar do lixo"
 
 #: libcore/UndoManager.vala:42
-#, fuzzy
 msgid "Undo Set Permissions"
-msgstr "A definir as permissões"
+msgstr "Anular as permissões definidas"
 
 #: libcore/UndoManager.vala:44
-#, fuzzy
 msgid "Undo Set Permissions Recursively"
-msgstr "An_ular a alteração de permissões para %d item"
+msgstr "Desfazer definir permissões recursivamente"
 
 #: libcore/UndoManager.vala:46
-#, fuzzy
 msgid "Undo Change Owner"
-msgstr "An_ular a alteração do proprietário para %d item"
+msgstr "Anular a alteração do proprietário"
 
 #: libcore/UndoManager.vala:48
-#, fuzzy
 msgid "Undo Change Group"
-msgstr "An_ular a alteração de grupo para %d item"
+msgstr "Anular a alteração de grupo"
 
 #: libcore/UndoManager.vala:57
-#, fuzzy
 msgid "Redo Copy"
-msgstr "Copiar"
+msgstr "Refazer copiar"
 
 #: libcore/UndoManager.vala:59
-#, fuzzy
 msgid "Redo Duplicate"
-msgstr "Duplicar separador"
+msgstr "Refazer duplicar separador"
 
 #: libcore/UndoManager.vala:61
 msgid "Redo Move"
-msgstr ""
+msgstr "Refazer mover"
 
 #: libcore/UndoManager.vala:63
-#, fuzzy
 msgid "Redo Rename"
-msgstr "Mudar nome"
+msgstr "Refazer mudar nome"
 
 #: libcore/UndoManager.vala:65
-#, fuzzy
 msgid "Redo Create Empty File"
-msgstr "_Refazer a criação de um ficheiro vazio"
+msgstr "Refazer a criação de um ficheiro vazio"
 
 #: libcore/UndoManager.vala:67
-#, fuzzy
 msgid "Redo Create File from Template"
-msgstr "_Refazer a criação de um ficheiro a partir de modelo"
+msgstr "Refazer a criação de um ficheiro a partir de modelo"
 
 #: libcore/UndoManager.vala:69
-#, fuzzy
 msgid "Redo Create Folder"
-msgstr "Falha na criação da pasta"
+msgstr "Refazer criação da pasta"
 
 #: libcore/UndoManager.vala:71
-#, fuzzy
 msgid "Redo Move to Trash"
-msgstr "Mover para o lixo"
+msgstr "Refazer mover para o lixo"
 
 #: libcore/UndoManager.vala:73
-#, fuzzy
 msgid "Redo Create Link"
-msgstr "_Refazer a criação da ligação para %d item"
+msgstr "Refazer a criação da ligação"
 
 #: libcore/UndoManager.vala:75
-#, fuzzy
 msgid "Redo Restore from Trash"
-msgstr "Restaurar do lixo"
+msgstr "Refazer restaurar do lixo"
 
 #: libcore/UndoManager.vala:77
-#, fuzzy
 msgid "Redo Set Permissions"
-msgstr "A definir as permissões"
+msgstr "Refazer o definir permissões"
 
 #: libcore/UndoManager.vala:79
-#, fuzzy
 msgid "Redo Set Permissions Recursively"
-msgstr "Refazer a alteração de permissões do item %d"
+msgstr "Refazer definir permissões recursivamente"
 
 #: libcore/UndoManager.vala:81
-#, fuzzy
 msgid "Redo Change Owner"
-msgstr "Refazer a alteração de proprietário de %d item"
+msgstr "Refazer a alteração de proprietário"
 
 #: libcore/UndoManager.vala:83
-#, fuzzy
 msgid "Redo Change Group"
-msgstr "_Refazer a alteração de grupo de %d item"
+msgstr "Refazer a alteração de grupo"
 
 #: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
@@ -1535,10 +1503,10 @@ msgid_plural ""
 "trash?"
 msgstr[0] ""
 "Tem a certeza de que pretende eliminar permanentemente \"%'d\" item "
-"selecionado?"
+"selecionado do lixo?"
 msgstr[1] ""
-"Tem a certeza de que pretende eliminar permanentemente \"%'d\" itens "
-"selecionados?"
+"Tem a certeza de que pretende eliminar permanentemente os \"%'d\" itens "
+"selecionados do lixo?"
 
 #: libcore/FileOperations/DeleteJob.vala:59
 msgid "If you delete an item, it will be permanently lost."
@@ -1560,7 +1528,7 @@ msgstr[0] ""
 "Tem a certeza de que pretende eliminar permanentemente \"%'d\" item "
 "selecionado?"
 msgstr[1] ""
-"Tem a certeza de que pretende eliminar permanentemente \"%'d\" itens "
+"Tem a certeza de que pretende eliminar permanentemente os \"%'d\" itens "
 "selecionados?"
 
 #: libcore/FileOperations/DeleteJob.vala:82
@@ -1568,17 +1536,17 @@ msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
 "Os itens eliminados não são enviados para o lixo e não são recuperáveis."
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:183
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:189
 #, c-format
 msgid "Navigate to %s"
 msgstr "Navegar para %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:290
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:300
 #, c-format
 msgid "Go to %s"
 msgstr "Ir para %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:367
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:377
 msgid "Type Path"
 msgstr "Escreva um caminho"
 
@@ -1636,8 +1604,8 @@ msgstr "Mostrar a versão da aplicação"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Abrir um ou mais URL's, cada um num novo separador"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1920
-#: src/View/AbstractDirectoryView.vala:1926
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1944
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "New Window"
 msgstr "Nova janela"
 
@@ -1656,10 +1624,12 @@ msgstr "[URI...]"
 #: src/Application.vala:89
 msgid "Error: Running Files as root using sudo is not possible."
 msgstr ""
+"Erro: impossível utilizar o comando \"sudo\" para executar Ficheiros como "
+"administrador."
 
 #: src/Application.vala:90
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
-msgstr ""
+msgstr "Use o comando: io.elementary.files-pkexec [folder]"
 
 #: src/Application.vala:107
 msgid "--quit cannot be used with URIs."
@@ -1708,9 +1678,9 @@ msgid "Device Usage"
 msgstr "Utilização do dispositivo"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:143
-#, fuzzy, c-format
+#, c-format
 msgid "%s free out of %s"
-msgstr "(%s Livres de %s)"
+msgstr "%s livre de %s"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:151
 msgid "Capacity:"
@@ -1732,161 +1702,105 @@ msgid "Used:"
 msgstr "Utilizado:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:21
-#, fuzzy
 msgid "Original filename"
-msgstr "Ficheiro original"
+msgstr "Nome de ficheiro original"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:23
-#, fuzzy
 msgid "Modified original"
-msgstr "Modificado"
+msgstr "Original modificado"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:25
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:252
-#, fuzzy
 msgid "New basename"
-msgstr "Mudar nome"
+msgstr "Novo nome de base"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
-#, fuzzy
 msgid "Bulk Rename"
-msgstr "Mudar nome"
+msgstr "Renomear em massa"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
-msgstr ""
+msgstr "Sequência numérica"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:89
 msgid "Fixed Text"
-msgstr ""
+msgstr "Texto fixo"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:93
 msgid "Add Prefix…"
-msgstr ""
+msgstr "Adicionar prefixo…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:112
 msgid "Add Suffix…"
-msgstr ""
+msgstr "Adicionar sufixo…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
-#, fuzzy
 msgid "Basename:"
-msgstr "Nome de utilizador:"
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
-msgctxt "bulk-rename"
-msgid "Keep"
-msgstr ""
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Replace"
-msgstr "Substituir"
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Modify"
-msgstr "Modificado"
+msgstr "Nome base:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
-#, fuzzy
 msgid "Original Basename"
-msgstr "Ficheiro original"
+msgstr "Nome base original"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:168
-#, fuzzy
 msgid "Replacement text"
-msgstr "Substituir por"
+msgstr "Texto de substituição"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
-msgstr ""
-
-#. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:190
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Name"
-msgstr "Nome"
-
-#. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Date created"
-msgstr "Recriar"
-
-#. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Date modified"
-msgstr "Modificado"
-
-#. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
-#, fuzzy
-msgctxt "bulk-rename"
-msgid "Size"
-msgstr "Tamanho"
+msgstr "Número por ordem de:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
-msgstr ""
+msgstr "Texto a substituir"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:328
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
-#, fuzzy
 msgid "Ignored"
-msgstr "Ignorar"
+msgstr "Ignorado"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 msgid "Name is not changed"
-msgstr ""
+msgstr "O nome não foi mudado"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
-#, fuzzy
 msgid "Cannot rename"
-msgstr "Mudar nome"
+msgstr "Impossível de alterar o nome"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 msgid "Name is invalid or already exists"
-msgstr ""
+msgstr "O nome é inválido ou já existe"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:78
-#, fuzzy
 msgid "Will be renamed"
-msgstr "Nome do ficheiro"
+msgstr "O nome vai ser alterado"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
-#, fuzzy
 msgid "Reverse Order"
-msgstr "Ordem Inversa"
+msgstr "Ordem inversa"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:52
 msgid "Start Number"
-msgstr ""
+msgstr "Número de início"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
 msgid "Digits"
-msgstr ""
+msgstr "Dígitos"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
 msgid "Separator"
-msgstr ""
+msgstr "Separador"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:310
 #, c-format
 msgid "%0*d,%0*d,%0*d…"
-msgstr ""
+msgstr "%0*d,%0*d,%0*d…"
 
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
@@ -1962,7 +1876,7 @@ msgid "Original Location:"
 msgstr "Localização original:"
 
 #: src/Dialogs/PropertiesWindow.vala:671
-#: src/View/AbstractDirectoryView.vala:2007
+#: src/View/AbstractDirectoryView.vala:2031
 msgid "Other Application…"
 msgstr "Outra aplicação…"
 
@@ -2045,18 +1959,18 @@ msgstr "Não foi possível abrir o(s) URL(s)"
 msgid "Could not open files or URIs with this app"
 msgstr "Não é possível abrir ficheiros ou URL's com esta aplicação"
 
-#: src/View/AbstractDirectoryView.vala:856
-#: src/View/AbstractDirectoryView.vala:1183
+#: src/View/AbstractDirectoryView.vala:868
+#: src/View/AbstractDirectoryView.vala:1195
 msgid "Cannot execute this file"
 msgstr "Impossível abrir este ficheiro"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:866
+#: src/View/AbstractDirectoryView.vala:878
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "\"%s\" deve ser movido do Lixo antes de abrir"
 
-#: src/View/AbstractDirectoryView.vala:867
+#: src/View/AbstractDirectoryView.vala:879
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -2064,164 +1978,170 @@ msgstr ""
 "Os ficheiros dentro do Lixo não podem ser abertos. Para abrir este ficheiro, "
 "o mesmo deve ser movido para outro local."
 
-#: src/View/AbstractDirectoryView.vala:882
+#: src/View/AbstractDirectoryView.vala:894
 msgid "Cannot open this file"
 msgstr "Impossível abrir este ficheiro"
 
-#: src/View/AbstractDirectoryView.vala:895
+#: src/View/AbstractDirectoryView.vala:907
 msgid "Cannot identify file type to open"
 msgstr "Impossível identificar tipo de ficheiro para abrir"
 
-#: src/View/AbstractDirectoryView.vala:1632
+#: src/View/AbstractDirectoryView.vala:1653
 msgid "Cannot drop this file"
 msgstr "Impossível arrastar este ficheiro"
 
-#: src/View/AbstractDirectoryView.vala:1633
+#: src/View/AbstractDirectoryView.vala:1654
 msgid "Invalid file name provided"
 msgstr "Introduzido um nome do ficheiro inválido"
 
-#: src/View/AbstractDirectoryView.vala:1903
-#: src/View/AbstractDirectoryView.vala:1909 src/View/Window.vala:238
+#: src/View/AbstractDirectoryView.vala:1927
+#: src/View/AbstractDirectoryView.vala:1933 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "Novo separador"
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1967
 msgid "Run"
 msgstr "Executar"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1974
 #, c-format
 msgid "Open in %s"
 msgstr "Abrir em %s"
 
-#: src/View/AbstractDirectoryView.vala:2019
+#: src/View/AbstractDirectoryView.vala:2043
 msgid "Open in"
 msgstr "Abrir em"
 
-#: src/View/AbstractDirectoryView.vala:2021
-#: src/View/Widgets/BreadcrumbsEntry.vala:431
+#: src/View/AbstractDirectoryView.vala:2045
+#: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "Abrir com"
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2076
 msgid "Select All"
 msgstr "Selecionar tudo"
 
-#: src/View/AbstractDirectoryView.vala:2061
+#: src/View/AbstractDirectoryView.vala:2085
 msgid "Invert Selection"
 msgstr "Inverter seleção"
 
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Deselect All"
 msgstr "Desselecionar tudo"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2102
 msgid "Cut"
 msgstr "Cortar"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2110
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2117
 msgid "Move to Trash"
 msgstr "Mover para o lixo"
 
-#: src/View/AbstractDirectoryView.vala:2098
+#: src/View/AbstractDirectoryView.vala:2122
 msgid "Delete Permanently"
 msgstr "Eliminar permanentemente"
 
-#: src/View/AbstractDirectoryView.vala:2105
+#: src/View/AbstractDirectoryView.vala:2129
 msgid "Restore from Trash"
 msgstr "Restaurar do lixo"
 
-#: src/View/AbstractDirectoryView.vala:2128
+#: src/View/AbstractDirectoryView.vala:2152
 msgid "Open Parent Folder"
 msgstr "Abrir pasta principal"
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2155
 msgid "Remove from History"
 msgstr "Remover do Histórico"
 
-#: src/View/AbstractDirectoryView.vala:2157
+#: src/View/AbstractDirectoryView.vala:2181
 msgid "Rename…"
 msgstr "Renomear…"
 
-#: src/View/AbstractDirectoryView.vala:2164
+#: src/View/AbstractDirectoryView.vala:2188
 msgid "Copy as Link"
 msgstr "Copiar como Hiperligação"
 
-#: src/View/AbstractDirectoryView.vala:2187
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2211
+#: src/View/AbstractDirectoryView.vala:2291
 msgid "Paste Link into Folder"
 msgstr "Colar ligação nesta pasta"
 
-#: src/View/AbstractDirectoryView.vala:2192
-#: src/View/AbstractDirectoryView.vala:2244
+#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2268
 msgid "Paste into Folder"
 msgstr "Colar nesta pasta"
 
-#: src/View/AbstractDirectoryView.vala:2202
-#: src/View/AbstractDirectoryView.vala:2272
+#: src/View/AbstractDirectoryView.vala:2226
+#: src/View/AbstractDirectoryView.vala:2296
 msgid "Paste"
 msgstr "Colar"
 
-#: src/View/AbstractDirectoryView.vala:2334 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2334
+#, fuzzy
+#| msgid "Set as default"
+msgid "Set as Wallpaper"
+msgstr "Definir como predefinição"
+
+#: src/View/AbstractDirectoryView.vala:2366 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Tipo"
 
-#: src/View/AbstractDirectoryView.vala:2344
+#: src/View/AbstractDirectoryView.vala:2376
 msgid "Reversed Order"
 msgstr "Ordem Inversa"
 
-#: src/View/AbstractDirectoryView.vala:2347
+#: src/View/AbstractDirectoryView.vala:2379
 msgid "Folders Before Files"
 msgstr "Colocar pastas antes dos ficheiros"
 
-#: src/View/AbstractDirectoryView.vala:2359
+#: src/View/AbstractDirectoryView.vala:2391
 msgid "Sort by"
 msgstr "Ordenar por"
 
-#: src/View/AbstractDirectoryView.vala:2367
+#: src/View/AbstractDirectoryView.vala:2399
 msgid "Folder"
 msgstr "Pasta"
 
-#: src/View/AbstractDirectoryView.vala:2373
+#: src/View/AbstractDirectoryView.vala:2405
 msgid "Empty File"
 msgstr "Ficheiro vazio"
 
-#: src/View/AbstractDirectoryView.vala:2424
+#: src/View/AbstractDirectoryView.vala:2456
 msgid "New"
 msgstr "Novo"
 
-#: src/View/AbstractDirectoryView.vala:2668
+#: src/View/AbstractDirectoryView.vala:2701
 #, c-format
 msgid "Untitled %s"
 msgstr "%s Sem Nome"
 
-#: src/View/AbstractDirectoryView.vala:2974
-#: src/View/AbstractDirectoryView.vala:3177
+#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:3209
 msgid "Cannot remove files from here"
 msgstr "Não é possível remover ficheiros daqui"
 
-#: src/View/AbstractDirectoryView.vala:2975
-#: src/View/AbstractDirectoryView.vala:3150
-#: src/View/AbstractDirectoryView.vala:3161
-#: src/View/AbstractDirectoryView.vala:3178
+#: src/View/AbstractDirectoryView.vala:3007
+#: src/View/AbstractDirectoryView.vala:3182
+#: src/View/AbstractDirectoryView.vala:3193
+#: src/View/AbstractDirectoryView.vala:3210
 msgid "You do not have permission to change this location"
 msgstr "Não tem permissões para mudar este local"
 
-#: src/View/AbstractDirectoryView.vala:3118
+#: src/View/AbstractDirectoryView.vala:3150
 msgid "Cannot copy files that are in the trash"
 msgstr "Não é possível copiar os ficheiros que estão no lixo"
 
-#: src/View/AbstractDirectoryView.vala:3119
+#: src/View/AbstractDirectoryView.vala:3151
 msgid "Cutting the selection instead"
 msgstr "Então cortar a seleção"
 
-#: src/View/AbstractDirectoryView.vala:3149
-#: src/View/AbstractDirectoryView.vala:3160
+#: src/View/AbstractDirectoryView.vala:3181
+#: src/View/AbstractDirectoryView.vala:3192
 msgid "Cannot paste files here"
 msgstr "Não pode colar ficheiros aqui"
 
@@ -2344,48 +2264,44 @@ msgstr "Ficheiro não encontrado"
 msgid "The file selected no longer exists."
 msgstr "O ficheiro selecionado já não existe."
 
-#: src/View/Window.vala:193
+#: src/View/Window.vala:194
 msgid "Previous"
 msgstr "Anterior"
 
-#: src/View/Window.vala:198
+#: src/View/Window.vala:199
 msgid "Next"
 msgstr "Seguinte"
 
-#: src/View/Window.vala:213
+#: src/View/Window.vala:214
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
-#: src/View/Window.vala:243
-#, fuzzy
-#| msgid "Close Tab"
+#: src/View/Window.vala:244
 msgid "Closed Tabs"
-msgstr "Fechar separador"
+msgstr "Separadores fechados"
 
-#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:395
+#: src/View/Window.vala:462 src/View/Widgets/BreadcrumbsEntry.vala:393
 msgid "Open in New Window"
 msgstr "Abrir numa nova janela"
 
-#: src/View/Window.vala:461
+#: src/View/Window.vala:463
 msgid "Duplicate Tab"
 msgstr "Duplicar separador"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:465
-msgid "Close Tabs to the Right"
-msgstr ""
-
-#: src/View/Window.vala:466
-#, fuzzy
-#| msgid "Close Tab"
-msgid "Close Other Tabs"
-msgstr "Fechar separador"
-
 #: src/View/Window.vala:467
+msgid "Close Tabs to the Right"
+msgstr "Fechar separadores à direita"
+
+#: src/View/Window.vala:468
+msgid "Close Other Tabs"
+msgstr "Fechar outros separadores"
+
+#: src/View/Window.vala:469
 msgid "Close Tab"
 msgstr "Fechar separador"
 
-#: src/View/Window.vala:755 src/View/Window.vala:765
+#: src/View/Window.vala:757 src/View/Window.vala:767
 msgid "(as Administrator)"
 msgstr "(como Administrador)"
 
@@ -2464,7 +2380,7 @@ msgid "Browse the contents of the network"
 msgstr "Explorar o conteúdo da rede"
 
 #: src/View/Sidebar/SidebarWindow.vala:30
-#: src/View/Widgets/SearchResults.vala:284
+#: src/View/Widgets/SearchResults.vala:323
 msgid "Bookmarks"
 msgstr "Marcadores"
 
@@ -2490,9 +2406,8 @@ msgid "Connect Server…"
 msgstr "Ligar Servidor…"
 
 #: src/View/Sidebar/VolumeRow.vala:166
-#, fuzzy
 msgid "Mount"
-msgstr "_Montar"
+msgstr "Montar"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
@@ -2500,69 +2415,66 @@ msgstr "Ligar montagem"
 
 #: src/View/Widgets/AppMenu.vala:25
 msgid "Zoom Out"
-msgstr ""
+msgstr "Reduzir o zoom"
 
 #: src/View/Widgets/AppMenu.vala:34
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "Zoom 1:1"
 
 #: src/View/Widgets/AppMenu.vala:43
 msgid "Zoom In"
-msgstr ""
+msgstr "Aumentar o zoom"
 
 #: src/View/Widgets/AppMenu.vala:81
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "Fazer duplo clique para navegar"
 
 #: src/View/Widgets/AppMenu.vala:82
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "Um duplo clique numa pasta abre-a, um clique único seleciona-a"
 
 #: src/View/Widgets/AppMenu.vala:86
-#, fuzzy
 msgid "Sort Folders before Files"
-msgstr "Colocar pastas antes dos ficheiros"
+msgstr "Ordenar pastas antes dos ficheiros"
 
 #: src/View/Widgets/AppMenu.vala:90
-#, fuzzy
-msgid "Show in View"
-msgstr "Mostrar ficheiros ocultos"
+msgid "Restore Tabs from Last Time"
+msgstr "Restaurar separadores da última vez"
 
-#: src/View/Widgets/AppMenu.vala:97
-#, fuzzy
-msgid "Hidden Files"
-msgstr "Mostrar ficheiros ocultos"
+#: src/View/Widgets/AppMenu.vala:94
+msgid "Show in View"
+msgstr "Mostrar em Ver"
 
 #: src/View/Widgets/AppMenu.vala:101
-#, fuzzy
+msgid "Hidden Files"
+msgstr "Ficheiros ocultos"
+
+#: src/View/Widgets/AppMenu.vala:105
 msgid "Local Thumbnails"
-msgstr "Ocultar miniaturas"
+msgstr "Miniaturas locais"
 
-#: src/View/Widgets/AppMenu.vala:106
-#, fuzzy
+#: src/View/Widgets/AppMenu.vala:110
 msgid "Remote Thumbnails"
-msgstr "Mostrar miniaturas remotas"
+msgstr "Miniaturas remotas"
 
-#: src/View/Widgets/AppMenu.vala:147
-#, fuzzy
+#: src/View/Widgets/AppMenu.vala:152
 msgid "No operation to undo"
-msgstr "A operação excedeu o tempo."
+msgstr "Nenhuma operação a anular"
 
-#: src/View/Widgets/AppMenu.vala:154
-#, fuzzy
+#: src/View/Widgets/AppMenu.vala:159
 msgid "No operation to redo"
-msgstr "A operação excedeu o tempo."
+msgstr "Nenhuma operação a refazer"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:134
+#: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:199
 msgid "Search or Type Path"
 msgstr "Pesquisar ou escrever caminho"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:388
+#: src/View/Widgets/BreadcrumbsEntry.vala:386
 msgid "Open in New Tab"
 msgstr "Abrir num novo separador"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:436
 msgid "Open in Other Application…"
 msgstr "Abrir com outra aplicação…"
 
@@ -2646,17 +2558,47 @@ msgstr "Executar"
 msgid "More Results …"
 msgstr "Mais Resultados …"
 
-#: src/View/Widgets/SearchResults.vala:276
+#: src/View/Widgets/SearchResults.vala:315
 msgid "In This Folder"
 msgstr "Nesta pasta"
 
-#: src/View/Widgets/SearchResults.vala:280
+#: src/View/Widgets/SearchResults.vala:319
 msgid "Below This Folder"
 msgstr "Abaixo desta pasta"
 
-#: src/View/Widgets/SearchResults.vala:289
+#: src/View/Widgets/SearchResults.vala:328
 msgid "Recently Used"
 msgstr "Utilizados Recentemente"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Replace"
+#~ msgstr "Substituir"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Modify"
+#~ msgstr "Modificado"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Name"
+#~ msgstr "Nome"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Date created"
+#~ msgstr "Recriar"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Date modified"
+#~ msgstr "Modificado"
+
+#, fuzzy
+#~ msgctxt "bulk-rename"
+#~ msgid "Size"
+#~ msgstr "Tamanho"
 
 #~ msgid "Undo Close Tab"
 #~ msgstr "Anular o fechar separador"
@@ -2880,9 +2822,6 @@ msgstr "Utilizados Recentemente"
 
 #~ msgid "Move '%s' to trash"
 #~ msgstr "Mover \"%s\" para o lixo"
-
-#~ msgid "Restore '%s' from trash"
-#~ msgstr "Recuperar \"%s\" do lixo"
 
 #~ msgid "Create links to %d items"
 #~ msgstr "Criar ligação a %d itens"

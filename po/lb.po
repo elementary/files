@@ -7,17 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-04 11:41+0000\n"
-"PO-Revision-Date: 2015-12-21 13:47+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
-"Language-Team: Luxembourgish <lb@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2024-05-14 18:24+0000\n"
+"PO-Revision-Date: 2024-05-18 18:13+0000\n"
+"Last-Translator: Arno <arnoant21@gmail.com>\n"
+"Language-Team: Luxembourgish <https://l10n.elementary.io/projects/files/"
+"files/lb/>\n"
+"Language: lb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -26,122 +27,121 @@ msgstr ""
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
-msgstr ""
+msgstr "Ofbriechen"
 
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Dateie schreiwgeschützt opmaachen"
 
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Datei schreiwgeschützt opmaachen"
 
 #: filechooser-portal/FileChooserDialog.vala:376
 msgid "Enter new filename"
-msgstr ""
+msgstr "Een neien Numm vun der Datei aginn"
 
 #: filechooser-portal/Main.vala:107
 msgid "Select"
-msgstr ""
+msgstr "Wielen"
 
 #: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
-msgstr ""
+msgstr "Opmaachen"
 
 #: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
-msgstr ""
+msgstr "Späicheren"
 
 #: filechooser-portal/Main.vala:448
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr ""
+msgstr "Dës Datei ass e Link mat »%s«"
 
 #: filechooser-portal/Main.vala:451
 msgid "This file is a link."
-msgstr ""
+msgstr "Dës Datei ass e Link."
 
 #: filechooser-portal/Main.vala:454
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr ""
+msgstr "E Link ersetzen iwwerschreift den Inhalt vum Ziel. De Link bleift"
 
 #: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
-msgstr ""
+msgstr "»%s« ersetzen?"
 
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
-msgstr ""
+msgstr "Wann Dir dës Datei ersetzt, gëtt hiren aktuellen Inhalt iwwerschriwwen"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
-msgstr ""
+msgstr "Ëffentlech FTP"
 
 #: libcore/ConnectServerDialog.vala:38
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (mat Login)"
 
 #: libcore/ConnectServerDialog.vala:45
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: libcore/ConnectServerDialog.vala:51
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: libcore/ConnectServerDialog.vala:57
 msgid "Windows share"
-msgstr ""
+msgstr "Windows-Deelen"
 
 #: libcore/ConnectServerDialog.vala:63
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: libcore/ConnectServerDialog.vala:70
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Séchere WebDAV (HTTPS)"
 
 #: libcore/ConnectServerDialog.vala:112
 msgid "Server Details"
-msgstr "Server Detail"
+msgstr "Server Detailer"
 
 #: libcore/ConnectServerDialog.vala:116
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Servernumm oder IP-Adress"
 
 #: libcore/ConnectServerDialog.vala:119
 msgid "Server:"
-msgstr ""
+msgstr "Server:"
 
 #: libcore/ConnectServerDialog.vala:129
 msgid "Port:"
-msgstr ""
+msgstr "Port:"
 
 #: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
 #: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:260
 msgid "Type:"
-msgstr ""
+msgstr "Typ:"
 
 #: libcore/ConnectServerDialog.vala:161
 msgid "Name of share on server (Optional)"
-msgstr ""
+msgstr "Deelnum op de Server (Fakultativ)"
 
 #: libcore/ConnectServerDialog.vala:164
 msgid "Share:"
-msgstr ""
+msgstr "Deelen:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Path of shared folder on server (Optional)"
-msgstr ""
+msgstr "Wee vum gedeelten Dossier um Server (Fakultativ)"
 
 #: libcore/ConnectServerDialog.vala:171
-#, fuzzy
 msgid "Folder:"
-msgstr "_Dossier:"
+msgstr "Dossier:"
 
 #: libcore/ConnectServerDialog.vala:175
 msgid "User Details"
@@ -149,432 +149,435 @@ msgstr "Benotzer Detailen"
 
 #: libcore/ConnectServerDialog.vala:180
 msgid "Name of Windows domain"
-msgstr ""
+msgstr "Numm vum Windows-Domain"
 
 #: libcore/ConnectServerDialog.vala:182
 msgid "Domain name:"
-msgstr ""
+msgstr "Domain Numm:"
 
 #: libcore/ConnectServerDialog.vala:187
 msgid "Name of user on server"
-msgstr ""
+msgstr "Benotzernumm op de Server"
 
 #: libcore/ConnectServerDialog.vala:189
 msgid "User name:"
-msgstr ""
+msgstr "Benotzernumm:"
 
 #: libcore/ConnectServerDialog.vala:197
-#, fuzzy
 msgid "Password:"
-msgstr "Pass_wuert"
+msgstr "Passwuert:"
 
 #: libcore/ConnectServerDialog.vala:199
 msgid "Remember this password"
-msgstr ""
+msgstr "Dëst Passwuert mierken"
 
 #: libcore/ConnectServerDialog.vala:209
-#, fuzzy
 msgid "Connect"
-msgstr "Verbannen..."
+msgstr "Verbannen"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Continue"
-msgstr "Weidermaachen"
+msgstr "Weider"
 
 #: libcore/ConnectServerDialog.vala:266
-#, fuzzy
 msgid "Connecting…"
-msgstr "Verbannen..."
+msgstr "Verbannen…"
 
 #: libcore/ConnectServerDialog.vala:373
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Iwwerpréift Är Detailer w.e.g. ."
 
 #: libcore/Directory.vala:736
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "De Server huet net innerhalb der Zäitlimit geäntwert"
 
 #: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "»%s« konnt net ausgefouert ginn"
 
 #: libcore/DndHandler.vala:100
 msgid "Move Here"
-msgstr ""
+msgstr "Heihi réckelen"
 
 #: libcore/DndHandler.vala:101
 msgid "Copy Here"
-msgstr ""
+msgstr "Heihi kopéieren"
 
 #: libcore/DndHandler.vala:102
 msgid "Link Here"
-msgstr ""
+msgstr "E Link hei schafen"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2324
+#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2356
 msgid "Name"
-msgstr ""
+msgstr "Numm"
 
 #: libcore/Enums.vala:144 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
 msgid "Creation Date"
-msgstr ""
+msgstr "Créatioun Datum"
 
 #: libcore/Enums.vala:147
 msgid "Last modification date"
-msgstr ""
+msgstr "Lescht geännert"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2329
+#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2361
 #: src/View/ListView.vala:27
 msgid "Size"
-msgstr ""
+msgstr "Gréisst"
 
 #: libcore/Enums.vala:173
 msgid "Number sequence"
-msgstr ""
+msgstr "Nummeréierung"
 
 #: libcore/Enums.vala:176 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2339
+#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2371
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: libcore/Enums.vala:195
 msgid "Suffix"
-msgstr ""
+msgstr "Extensioun"
 
 #: libcore/Enums.vala:198
 msgid "Prefix"
-msgstr ""
+msgstr "Präfix"
 
 #: libcore/Enums.vala:208
 msgid "Text to put at the end"
-msgstr ""
+msgstr "Text fir um Enn ze setzen"
 
 #: libcore/Enums.vala:211
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Text fir am Ufank ze setzen"
 
 #: libcore/Enums.vala:230
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "Standardformat - nëmmen Datum"
 
 #: libcore/Enums.vala:232
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "Standardformat – Datum an Zäit"
 
 #: libcore/Enums.vala:234
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "Lokaliséiert Format - Datum an Zäit"
 
 #: libcore/Enums.vala:236
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "ISO 8601 Format - nëmmen Datum"
 
 #: libcore/Enums.vala:238
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "ISO 8601 Format - Datum an Zäit"
 
 #: libcore/Enums.vala:254
 msgid "Date created"
-msgstr ""
+msgstr "Créatioun Datum"
 
 #: libcore/Enums.vala:256
 msgid "Date Modified"
-msgstr ""
+msgstr "Ännerungsdatum"
 
 #: libcore/Enums.vala:258
 msgid "Current Date"
-msgstr ""
+msgstr "Aktuell Datum"
 
 #: libcore/File.vala:554 libcore/File.vala:1117
 msgid "Inaccessible"
-msgstr ""
+msgstr "Onzougänglech"
 
 #: libcore/File.vala:895
 msgid "Failed to parse the desktop file"
-msgstr ""
+msgstr "Konnt d'Desktopdatei net parséieren"
 
 #: libcore/File.vala:899
 msgid "Failed to parse the desktop file: "
-msgstr ""
+msgstr "Konnt d'Desktopdatei net parséieren: "
 
 #: libcore/File.vala:911
 msgid "Failed to create command from file: "
-msgstr ""
+msgstr "Konnt de Kommando aus der Datei net erstellen: "
 
 #: libcore/File.vala:920
 msgid "Unable to Launch Desktop File: "
-msgstr ""
+msgstr "Kann de Desktop-Datei net starten: "
 
 #: libcore/File.vala:1110
 msgid "Empty"
-msgstr ""
+msgstr "Eidel"
 
 #: libcore/File.vala:1112
 #, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d Objet"
+msgstr[1] "%'d Objeten"
 
 #: libcore/File.vala:1157
-#, fuzzy, c-format
+#, c-format
 msgid "link to %s"
-msgstr "Läschen '%s'"
+msgstr "link zu %s"
 
 #: libcore/FileConflictDialog.vala:61
 msgid "File conflict"
-msgstr ""
+msgstr "Dateikonflikt"
 
 #: libcore/FileConflictDialog.vala:96
 msgid "Original file"
-msgstr ""
+msgstr "Originaldatei"
 
 #: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
 #: src/Dialogs/PropertiesWindow.vala:564
 msgid "Size:"
-msgstr ""
+msgstr "Gréisst:"
 
 #: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
 msgid "Last modified:"
-msgstr ""
+msgstr "Lescht geännert:"
 
 #: libcore/FileConflictDialog.vala:130
 msgid "Replace with"
-msgstr ""
+msgstr "Ersetzen mat"
 
 #: libcore/FileConflictDialog.vala:164
 msgid "Reset"
-msgstr ""
+msgstr "Zerécksetzen"
 
 #: libcore/FileConflictDialog.vala:173
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "_Wielt en neien Numm fir d'Ziel"
 
 #: libcore/FileConflictDialog.vala:177
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Dës Aktioun op all Deteien uwenden"
 
 #: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
 msgid "_Skip"
-msgstr ""
+msgstr "_Iwwersprangen"
 
 #: libcore/FileConflictDialog.vala:180
 msgid "Re_name"
-msgstr ""
+msgstr "Ëm_benennen"
 
 #: libcore/FileConflictDialog.vala:182
 msgid "Keep Newest"
-msgstr ""
+msgstr "Neisten halen"
 
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Iwwersprangen, wann d'Original méi viru kuerzem geännert gouf"
 
 #: libcore/FileConflictDialog.vala:187
 msgid "Replace"
-msgstr ""
+msgstr "Ersetzen"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "Dossier »%s« fusionéieren?"
 
 #: libcore/FileConflictDialog.vala:294
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"D'Fusioun freet no Bestätegung ier Dir Dateien am Dossier ersetzt, déi mat "
+"de kopéierte Dateien konflikt sinn."
 
 #: libcore/FileConflictDialog.vala:296
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "En eeleren Dossier mam selwechten Numm existéiert schonn am »%s«."
 
 #: libcore/FileConflictDialog.vala:298
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "En méi neien Dossier mam selwechten Numm existéiert schonn am »%s«."
 
 #: libcore/FileConflictDialog.vala:300
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "En Dossier mam selwechten Numm existéiert schonn am »%s«."
 
 #: libcore/FileConflictDialog.vala:303
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "Dossier »%s« ersetzen?"
 
 #: libcore/FileConflictDialog.vala:304
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "Den Ersetzen vum Dossier läscht all enthalen Dateien."
 
 #: libcore/FileConflictDialog.vala:305
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "En Dossier mam selwechten Numm existéiert schonn am »%s«."
 
 #: libcore/FileConflictDialog.vala:308
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "Datei »%s« ersetzen?"
 
 #: libcore/FileConflictDialog.vala:309
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "Ersetzen wäert säin Inhalt iwwerschreiwen."
 
 #: libcore/FileConflictDialog.vala:312
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Eng méi al Datei mam selwechten Numm existéiert schonn am »%s«."
 
 #: libcore/FileConflictDialog.vala:314
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Eng méi nei Datei mam selwechten Numm existéiert schonn am »%s«."
 
 #: libcore/FileConflictDialog.vala:316
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "En anere Fichier mam selwechten Numm existéiert schonn am »%s«."
 
 #: libcore/FileConflictDialog.vala:342
 msgid "Merge"
-msgstr ""
+msgstr "Fusionéieren"
 
 #: libcore/FileUtils.vala:82
 #, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr ""
+msgstr "Konnt den ursprénglechen Standuert vum »%s« net bestëmmen"
 
 #: libcore/FileUtils.vala:83
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "D'Element kann net aus der Poubelle restauréiert ginn"
 
 #: libcore/FileUtils.vala:177
 #, c-format
 msgid "The original folder %s no longer exists"
-msgstr ""
+msgstr "Den originalen Dossier %s existéiert net méi"
 
 #: libcore/FileUtils.vala:178
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "Wëllt Dir et nei schafen?"
 
 #: libcore/FileUtils.vala:183
 msgid "Ignore"
-msgstr ""
+msgstr "Ignoréieren"
 
 #: libcore/FileUtils.vala:184
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "Keng Dateien, déi an dësem Dossier waren, ginn restauréiert"
 
 #: libcore/FileUtils.vala:185
 msgid "Recreate"
-msgstr ""
+msgstr "Neischafen"
 
 #: libcore/FileUtils.vala:187
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
+"Den Dossier gëtt nei geschaf a gewielte Dateien, déi ursprénglech do waren, "
+"ginn dorop restauréiert"
 
 #: libcore/FileUtils.vala:200
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
+"Konnt den Dossier %s net nei schafen. All Dateien an dësem Dossier ginn "
+"ignoréiert"
 
 #: libcore/FileUtils.vala:566
 #, c-format
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Konnt net op '%s' ëmbenennen"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:657
 #, c-format
 msgid "Today at %s"
-msgstr ""
+msgstr "Haut um %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:665
 #, c-format
 msgid "Yesterday at %s"
-msgstr ""
+msgstr "Gëschter um %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:673
 #, c-format
 msgid "%%A at %s"
-msgstr ""
+msgstr "%%A um %s"
 
-#: libcore/FileUtils.vala:1015
+#: libcore/FileUtils.vala:898
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d Sekonn"
+msgstr[1] "%'d Sekonnen"
 
-#: libcore/FileUtils.vala:1019 libcore/FileUtils.vala:1027
+#: libcore/FileUtils.vala:902 libcore/FileUtils.vala:910
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d Minutt"
+msgstr[1] "%'d Minutten"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:1026 src/Dialogs/PropertiesWindow.vala:1264
+#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1264
 #, c-format
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:1026
+#: libcore/FileUtils.vala:909
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d Stonn"
+msgstr[1] "%'d Stonnen"
 
-#: libcore/FileUtils.vala:1030
+#: libcore/FileUtils.vala:913
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ongeféier %'d Stonn"
+msgstr[1] "ongeféier %'d Stonnen"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:1038
+#: libcore/FileUtils.vala:921
 msgid "copy"
-msgstr ""
+msgstr "kopéieren"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:1040
+#: libcore/FileUtils.vala:923
 msgid "link"
-msgstr ""
+msgstr "link"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1042
+#: libcore/FileUtils.vala:925
 msgid "("
-msgstr ""
+msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:1044
+#: libcore/FileUtils.vala:927
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: libcore/marlin-file-operations.c:92
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d Datei iwwreg fir ze läschen"
+msgstr[1] "%'d Dateien iwwreg fir ze läschen"
 
 #: libcore/marlin-file-operations.c:97
 msgid "Deleting files"
-msgstr ""
+msgstr "Dateien gi geläscht"
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
@@ -582,14 +585,14 @@ msgstr ""
 #, c-format
 msgid "%s left"
 msgid_plural "%s left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s iwwreg"
+msgstr[1] "%s iwwreg"
 
 #: libcore/marlin-file-operations.c:182 libcore/marlin-file-operations.c:223
 #: libcore/marlin-file-operations.c:270 libcore/marlin-file-operations.c:354
 #: libcore/marlin-file-operations.c:838
 msgid "Error while deleting."
-msgstr ""
+msgstr "Feeler beim Läschen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -599,6 +602,8 @@ msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"D'Dateien am Dossier »%s« kënnen net geläscht ginn, well Dir keng Rechter "
+"hutt fir se ze gesinn."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -608,10 +613,12 @@ msgstr ""
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr ""
+"Et gouf e Feeler beim Erhalen vun Informatioun iwwer d'Dateien am Dossier "
+"»%s«."
 
 #: libcore/marlin-file-operations.c:204 libcore/marlin-file-operations.c:1713
 msgid "_Skip files"
-msgstr ""
+msgstr "_Dateien iwwersprangen"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -621,6 +628,8 @@ msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
+"Den Dossier »%s« kann net geläscht ginn, well Dir keng Rechter hutt en ze "
+"liesen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -628,19 +637,19 @@ msgstr ""
 #: libcore/marlin-file-operations.c:1755
 #, c-format
 msgid "There was an error reading the folder \"%s\"."
-msgstr ""
+msgstr "Et gouf e Feeler beim Liesen vum Dossier \"%s\"."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:273
 #, c-format
 msgid "Could not remove the folder %s."
-msgstr ""
+msgstr "Konnt den Dossier %s net läschen."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:357
 #, c-format
 msgid "There was an error deleting %s."
-msgstr ""
+msgstr "Et gouf e Feeler beim Läschen vum %s."
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -650,74 +659,84 @@ msgstr ""
 #, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Virbereedung fir %'d Datei (%s) ze läschen"
+msgstr[1] "Virbereedung fir %'d Dateien (%s) ze läschen"
 
 #: libcore/marlin-file-operations.c:467
 msgid "Moving files to trash"
-msgstr ""
+msgstr "D'Dateie ginn an d'Poubelle geréckelt"
 
 #: libcore/marlin-file-operations.c:469
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d Datei iwwreg fir ze läschen"
+msgstr[1] "%'d Dateie iwwreg fir ze läschen"
 
 #: libcore/marlin-file-operations.c:568 libcore/marlin-file-operations.c:571
 #: libcore/marlin-file-operations.c:574
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Kann d'Datei net an d'Poubelle réckelen oder läschen"
 
 #: libcore/marlin-file-operations.c:569
 msgid "It is not permitted to trash or delete files on a read only filesystem."
-msgstr ""
+msgstr "Et ass net erlaabt Dateien op engem Read-Only Dateiesystem ze läschen."
 
 #: libcore/marlin-file-operations.c:572
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Et ass net erlaabt Dateien an Dossieren ze läschen, fir déi Dir keng "
+"Schreifrechter hutt."
 
 #: libcore/marlin-file-operations.c:575
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"Et ass net erlaabt Dossieren ze läschen, fir déi Dir keng Schreifrechter "
+"hutt."
 
 #: libcore/marlin-file-operations.c:577
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "Kann d'Datei net an d'Poubelle réckelen. Probéieren direkt ze läschen?"
 
 #: libcore/marlin-file-operations.c:578
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Dës Datei konnt net an d'Poubelle geréckelt ginn. Kuckt Detailer ënnen fir "
+"weider Informatiounen."
 
 #: libcore/marlin-file-operations.c:582
 msgid "Cannot move file to trash. Try to delete it?"
-msgstr ""
+msgstr "Kann d'Datei net an d'Poubelle réckelen. Probéieren ze läschen?"
 
 #: libcore/marlin-file-operations.c:583
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Dës Datei konnt net an d'Poubelle geréckelt ginn. Dir kënnt et vläicht och "
+"net läschen."
 
 #: libcore/marlin-file-operations.c:589
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Een Datei läschen läscht se permanent"
 
 #: libcore/marlin-file-operations.c:757
 msgid "Trashing Files"
-msgstr ""
+msgstr "Dateie gi geläscht"
 
 #: libcore/marlin-file-operations.c:759
 msgid "Deleting Files"
-msgstr ""
+msgstr "Dateie gi geläscht"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -727,8 +746,8 @@ msgstr ""
 #, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Virbereeden fir %'d Datei (%s) ze kopéieren"
+msgstr[1] "Virbereeden fir %'d Dateien (%s) ze kopéieren"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1013,7 +1032,7 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:3187
 msgid "Moving Files"
-msgstr ""
+msgstr "D'Dateie gi geréckelt"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1097,12 +1116,12 @@ msgstr ""
 
 #: libcore/PopupMenuBuilder.vala:62
 msgid "Remove"
-msgstr ""
+msgstr "Läschen"
 
 #: libcore/PopupMenuBuilder.vala:66
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 msgid "Rename"
-msgstr ""
+msgstr "Ëmbenennen"
 
 #: libcore/PopupMenuBuilder.vala:70
 msgid "_Mount"
@@ -1113,7 +1132,7 @@ msgid "_Unmount"
 msgstr ""
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2039
+#: src/View/AbstractDirectoryView.vala:2063
 msgid "Properties"
 msgstr ""
 
@@ -1125,7 +1144,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2032
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2056
 msgid "Add to Bookmarks"
 msgstr ""
 
@@ -1144,11 +1163,11 @@ msgstr ""
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
 msgid "Preparing"
-msgstr ""
+msgstr "Virbereeden"
 
 #: libcore/Resources.vala:22 src/DesktopLauncher.vala:25
 msgid "Files"
-msgstr ""
+msgstr "Dateien"
 
 #: libcore/Resources.vala:61
 msgid "AFP"
@@ -1184,7 +1203,7 @@ msgstr ""
 
 #: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
-msgstr ""
+msgstr "Poubelle"
 
 #: libcore/Resources.vala:70
 msgid "Recent"
@@ -1208,9 +1227,8 @@ msgid "_Cancel"
 msgstr ""
 
 #: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
-#, fuzzy
 msgid "Delete"
-msgstr "Läschen '%s'"
+msgstr "Läschen"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
@@ -1221,9 +1239,8 @@ msgid "_Retry"
 msgstr ""
 
 #: libcore/StockDialogs.vala:25
-#, fuzzy
 msgid "Delete _All"
-msgstr "Läschen '%s'"
+msgstr "All_Läschen"
 
 #: libcore/StockDialogs.vala:26
 msgid "_Replace"
@@ -1235,7 +1252,7 @@ msgstr ""
 
 #: libcore/StockDialogs.vala:28
 msgid "_Merge"
-msgstr ""
+msgstr "_Fusionéieren"
 
 #: libcore/StockDialogs.vala:29
 msgid "Merge _All"
@@ -1491,17 +1508,17 @@ msgstr[1] ""
 msgid "Deleted items are not sent to Trash and are not recoverable."
 msgstr ""
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:183
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:189
 #, c-format
 msgid "Navigate to %s"
 msgstr ""
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:290
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:300
 #, c-format
 msgid "Go to %s"
 msgstr ""
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:367
+#: libcore/Widgets/BasicBreadcrumbsEntry.vala:377
 msgid "Type Path"
 msgstr ""
 
@@ -1556,8 +1573,8 @@ msgstr ""
 msgid "Open one or more URIs, each in their own tab"
 msgstr ""
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1920
-#: src/View/AbstractDirectoryView.vala:1926
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1944
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "New Window"
 msgstr ""
 
@@ -1690,21 +1707,6 @@ msgstr ""
 msgid "Basename:"
 msgstr ""
 
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
-msgctxt "bulk-rename"
-msgid "Keep"
-msgstr ""
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-msgctxt "bulk-rename"
-msgid "Replace"
-msgstr ""
-
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-msgctxt "bulk-rename"
-msgid "Modify"
-msgstr ""
-
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
 msgid "Original Basename"
@@ -1716,30 +1718,6 @@ msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
-msgstr ""
-
-#. TRANSLATORS: Used as "Number in order of: Name"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:190
-msgctxt "bulk-rename"
-msgid "Name"
-msgstr ""
-
-#. TRANSLATORS: Used as "Number in order of: Date created"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:192
-msgctxt "bulk-rename"
-msgid "Date created"
-msgstr ""
-
-#. TRANSLATORS: Used as "Number in order of: Date modified"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:194
-msgctxt "bulk-rename"
-msgid "Date modified"
-msgstr ""
-
-#. TRANSLATORS: Used as "Number in order of: Size"
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:196
-msgctxt "bulk-rename"
-msgid "Size"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
@@ -1801,7 +1779,7 @@ msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:238
 msgid "Permissions"
-msgstr ""
+msgstr "Rechter"
 
 #: src/Dialogs/PropertiesWindow.vala:281
 msgid "Contains:"
@@ -1840,7 +1818,7 @@ msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:605
 msgid "Deleted:"
-msgstr ""
+msgstr "Geläscht:"
 
 #: src/Dialogs/PropertiesWindow.vala:615
 msgid "Media type:"
@@ -1853,7 +1831,7 @@ msgstr ""
 #: src/Dialogs/PropertiesWindow.vala:630
 #: src/Dialogs/VolumePropertiesWindow.vala:76
 msgid "Location:"
-msgstr ""
+msgstr "Standuert:"
 
 #: src/Dialogs/PropertiesWindow.vala:640
 msgid "Target:"
@@ -1861,10 +1839,10 @@ msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:648
 msgid "Original Location:"
-msgstr ""
+msgstr "Ursprénglechen Standuert:"
 
 #: src/Dialogs/PropertiesWindow.vala:671
-#: src/View/AbstractDirectoryView.vala:2007
+#: src/View/AbstractDirectoryView.vala:2031
 msgid "Other Application…"
 msgstr ""
 
@@ -1947,182 +1925,185 @@ msgstr ""
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:856
-#: src/View/AbstractDirectoryView.vala:1183
+#: src/View/AbstractDirectoryView.vala:868
+#: src/View/AbstractDirectoryView.vala:1195
 msgid "Cannot execute this file"
 msgstr ""
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:866
+#: src/View/AbstractDirectoryView.vala:878
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:867
+#: src/View/AbstractDirectoryView.vala:879
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:882
+#: src/View/AbstractDirectoryView.vala:894
 msgid "Cannot open this file"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:895
+#: src/View/AbstractDirectoryView.vala:907
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1632
+#: src/View/AbstractDirectoryView.vala:1653
 msgid "Cannot drop this file"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1633
+#: src/View/AbstractDirectoryView.vala:1654
 msgid "Invalid file name provided"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1903
-#: src/View/AbstractDirectoryView.vala:1909 src/View/Window.vala:238
+#: src/View/AbstractDirectoryView.vala:1927
+#: src/View/AbstractDirectoryView.vala:1933 src/View/Window.vala:239
 msgid "New Tab"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1943
+#: src/View/AbstractDirectoryView.vala:1967
 msgid "Run"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1974
 #, c-format
 msgid "Open in %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2019
+#: src/View/AbstractDirectoryView.vala:2043
 msgid "Open in"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2021
-#: src/View/Widgets/BreadcrumbsEntry.vala:431
+#: src/View/AbstractDirectoryView.vala:2045
+#: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2052
+#: src/View/AbstractDirectoryView.vala:2076
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2061
+#: src/View/AbstractDirectoryView.vala:2085
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Deselect All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2102
 msgid "Cut"
 msgstr ""
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2110
 msgid "Copy"
-msgstr ""
+msgstr "Kopéieren"
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2117
 msgid "Move to Trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2098
+#: src/View/AbstractDirectoryView.vala:2122
 msgid "Delete Permanently"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2105
+#: src/View/AbstractDirectoryView.vala:2129
 msgid "Restore from Trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2128
+#: src/View/AbstractDirectoryView.vala:2152
 msgid "Open Parent Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2155
 msgid "Remove from History"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2157
+#: src/View/AbstractDirectoryView.vala:2181
 msgid "Rename…"
-msgstr ""
+msgstr "Ëmbenennen…"
 
-#: src/View/AbstractDirectoryView.vala:2164
+#: src/View/AbstractDirectoryView.vala:2188
 msgid "Copy as Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2187
-#: src/View/AbstractDirectoryView.vala:2267
+#: src/View/AbstractDirectoryView.vala:2211
+#: src/View/AbstractDirectoryView.vala:2291
 msgid "Paste Link into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2192
-#: src/View/AbstractDirectoryView.vala:2244
+#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2268
 msgid "Paste into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2202
-#: src/View/AbstractDirectoryView.vala:2272
+#: src/View/AbstractDirectoryView.vala:2226
+#: src/View/AbstractDirectoryView.vala:2296
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2334 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2334
+msgid "Set as Wallpaper"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2366 src/View/ListView.vala:28
 msgid "Type"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2344
+#: src/View/AbstractDirectoryView.vala:2376
 msgid "Reversed Order"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2347
+#: src/View/AbstractDirectoryView.vala:2379
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2359
+#: src/View/AbstractDirectoryView.vala:2391
 msgid "Sort by"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2367
-#, fuzzy
+#: src/View/AbstractDirectoryView.vala:2399
 msgid "Folder"
-msgstr "_Dossier:"
+msgstr "Dossier"
 
-#: src/View/AbstractDirectoryView.vala:2373
+#: src/View/AbstractDirectoryView.vala:2405
 msgid "Empty File"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2424
+#: src/View/AbstractDirectoryView.vala:2456
 msgid "New"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2668
+#: src/View/AbstractDirectoryView.vala:2701
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2974
-#: src/View/AbstractDirectoryView.vala:3177
+#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:3209
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2975
-#: src/View/AbstractDirectoryView.vala:3150
-#: src/View/AbstractDirectoryView.vala:3161
-#: src/View/AbstractDirectoryView.vala:3178
+#: src/View/AbstractDirectoryView.vala:3007
+#: src/View/AbstractDirectoryView.vala:3182
+#: src/View/AbstractDirectoryView.vala:3193
+#: src/View/AbstractDirectoryView.vala:3210
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3118
+#: src/View/AbstractDirectoryView.vala:3150
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3119
+#: src/View/AbstractDirectoryView.vala:3151
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3149
-#: src/View/AbstractDirectoryView.vala:3160
+#: src/View/AbstractDirectoryView.vala:3181
+#: src/View/AbstractDirectoryView.vala:3192
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -2244,44 +2225,44 @@ msgstr ""
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Window.vala:193
+#: src/View/Window.vala:194
 msgid "Previous"
 msgstr ""
 
-#: src/View/Window.vala:198
+#: src/View/Window.vala:199
 msgid "Next"
 msgstr ""
 
-#: src/View/Window.vala:213
+#: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:243
+#: src/View/Window.vala:244
 msgid "Closed Tabs"
 msgstr ""
 
-#: src/View/Window.vala:460 src/View/Widgets/BreadcrumbsEntry.vala:395
+#: src/View/Window.vala:462 src/View/Widgets/BreadcrumbsEntry.vala:393
 msgid "Open in New Window"
 msgstr ""
 
-#: src/View/Window.vala:461
+#: src/View/Window.vala:463
 msgid "Duplicate Tab"
 msgstr ""
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:465
+#: src/View/Window.vala:467
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:466
+#: src/View/Window.vala:468
 msgid "Close Other Tabs"
 msgstr ""
 
-#: src/View/Window.vala:467
+#: src/View/Window.vala:469
 msgid "Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:755 src/View/Window.vala:765
+#: src/View/Window.vala:757 src/View/Window.vala:767
 msgid "(as Administrator)"
 msgstr ""
 
@@ -2313,7 +2294,7 @@ msgstr ""
 #: src/View/Widgets/SearchResults.vala:76
 #, c-format
 msgid "%s (%s)"
-msgstr ""
+msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:337
 msgid "Not mounted"
@@ -2329,221 +2310,226 @@ msgstr ""
 
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
-msgstr ""
+msgstr "D'Poubelle opmaachen"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
-msgstr ""
+msgstr "Kuckt d'Root vum lokalen Dateiesystem"
 
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s enthält keng accessibel Donnéeën."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"Fir dësen Drive ze benotzen, musst Dir en nei astiechen, oder Medien asetzen "
+"oder formatéieren."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Onformatéiert oder keng Medien"
 
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
-msgstr ""
+msgstr "Ganz Netzwierk"
 
 #: src/View/Sidebar/NetworkListBox.vala:140
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "Browst den Inhalt vum Netzwierk"
 
 #: src/View/Sidebar/SidebarWindow.vala:30
-#: src/View/Widgets/SearchResults.vala:284
+#: src/View/Widgets/SearchResults.vala:323
 msgid "Bookmarks"
-msgstr ""
+msgstr "Bookmarken"
 
 #: src/View/Sidebar/SidebarWindow.vala:31
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "Gemeinsam Plazen plus gespäichert Dossieren an Dateien"
 
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:39
 msgid "Storage"
-msgstr ""
+msgstr "Späicher"
 
 #: src/View/Sidebar/SidebarWindow.vala:40
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "Intern a verbonne Späicherapparater"
 
 #: src/View/Sidebar/SidebarWindow.vala:48
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "Apparater a Plaze sinn iwwer engem Netzwierk disponibel"
 
 #: src/View/Sidebar/SidebarWindow.vala:73
-#, fuzzy
 msgid "Connect Server…"
-msgstr "Mat dem Server verbannen"
+msgstr "Mat dem Server verbannen…"
 
 #: src/View/Sidebar/VolumeRow.vala:166
 msgid "Mount"
-msgstr ""
+msgstr "Mounten"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
-msgstr ""
+msgstr "Bind mounten"
 
 #: src/View/Widgets/AppMenu.vala:25
 msgid "Zoom Out"
-msgstr ""
+msgstr "Raus zoomen"
 
 #: src/View/Widgets/AppMenu.vala:34
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "1:1 zoomen"
 
 #: src/View/Widgets/AppMenu.vala:43
 msgid "Zoom In"
-msgstr ""
+msgstr "Ran zoomen"
 
 #: src/View/Widgets/AppMenu.vala:81
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "Double-Click fir ze Navigéieren"
 
 #: src/View/Widgets/AppMenu.vala:82
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "Double-Click op een Dossier mécht et op, Eenzel-Click wielt et aus"
 
 #: src/View/Widgets/AppMenu.vala:86
 msgid "Sort Folders before Files"
-msgstr ""
+msgstr "Dossieren virun Dateien sortéieren"
 
 #: src/View/Widgets/AppMenu.vala:90
-msgid "Show in View"
-msgstr ""
+msgid "Restore Tabs from Last Time"
+msgstr "Tabs vum leschte Kéier restauréieren"
 
-#: src/View/Widgets/AppMenu.vala:97
-msgid "Hidden Files"
-msgstr ""
+#: src/View/Widgets/AppMenu.vala:94
+msgid "Show in View"
+msgstr "An View weisen"
 
 #: src/View/Widgets/AppMenu.vala:101
+msgid "Hidden Files"
+msgstr "Verstoppt Dateien"
+
+#: src/View/Widgets/AppMenu.vala:105
 msgid "Local Thumbnails"
-msgstr ""
+msgstr "Lokal Thumbnails"
 
-#: src/View/Widgets/AppMenu.vala:106
+#: src/View/Widgets/AppMenu.vala:110
 msgid "Remote Thumbnails"
-msgstr ""
+msgstr "Remote Thumbnails"
 
-#: src/View/Widgets/AppMenu.vala:147
+#: src/View/Widgets/AppMenu.vala:152
 msgid "No operation to undo"
-msgstr ""
+msgstr "Keng Operatioun fir ze undoen"
 
-#: src/View/Widgets/AppMenu.vala:154
+#: src/View/Widgets/AppMenu.vala:159
 msgid "No operation to redo"
-msgstr ""
+msgstr "Keng Operatioun fir ze redoen"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:134
+#: src/View/Widgets/BreadcrumbsEntry.vala:125
 #: src/View/Widgets/LocationBar.vala:199
 msgid "Search or Type Path"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:388
+#: src/View/Widgets/BreadcrumbsEntry.vala:386
 msgid "Open in New Tab"
-msgstr ""
+msgstr "An engem neien Tab opmaachen"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:438
+#: src/View/Widgets/BreadcrumbsEntry.vala:436
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "An enger anerer Uwendung opmaachen…"
 
 #: src/View/Widgets/LocationBar.vala:195
 msgid "Reload this folder"
-msgstr ""
+msgstr "Luet dësen Dossier nei"
 
 #: src/View/Widgets/LocationBar.vala:208
 msgid "Searching…"
-msgstr ""
+msgstr "Sichen…"
 
 #: src/View/Widgets/OverlayBar.vala:162
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u Dossieren"
 
 #: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " an %u aner Element (%s) ausgewielt"
+msgstr[1] " an %u aner Elementer (%s) ausgewielt"
 
 #: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
 msgid " selected"
-msgstr ""
+msgstr " ausgewielt"
 
 #: src/View/Widgets/OverlayBar.vala:181
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u Elementer ausgewielt (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:226
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u Ënner-Dossier, "
+msgstr[1] "%u Ënner-Dossieren, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:232
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u Datei, "
+msgstr[1] "%u Dateien, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:242
 #, c-format
 msgid "%s approx."
-msgstr ""
+msgstr "%s ca."
 
 #. TRANSLATORS: 'size' refers to disk space
 #: src/View/Widgets/OverlayBar.vala:245
 msgid "unknown size"
-msgstr ""
+msgstr "onbekannt Gréisst"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:249
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u Datei net liesbar"
+msgstr[1] "%u Dateien net liesbar"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
-msgstr ""
+msgstr "Liesen"
 
 #: src/View/Widgets/PermissionButton.vala:42
 msgid "Write"
-msgstr ""
+msgstr "Schreiwen"
 
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
-msgstr ""
+msgstr "Ausféieren"
 
 #: src/View/Widgets/SearchResults.vala:89
 msgid "More Results …"
-msgstr ""
+msgstr "Méi Resultater …"
 
-#: src/View/Widgets/SearchResults.vala:276
+#: src/View/Widgets/SearchResults.vala:315
 msgid "In This Folder"
-msgstr ""
+msgstr "An dësem Dossier"
 
-#: src/View/Widgets/SearchResults.vala:280
+#: src/View/Widgets/SearchResults.vala:319
 msgid "Below This Folder"
-msgstr ""
+msgstr "Ënnert dësem Dossier"
 
-#: src/View/Widgets/SearchResults.vala:289
+#: src/View/Widgets/SearchResults.vala:328
 msgid "Recently Used"
-msgstr ""
+msgstr "Viru kuerzem benotzt"
 
 #, fuzzy
 #~ msgid "Connect to a network server"
