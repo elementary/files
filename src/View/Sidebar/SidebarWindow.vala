@@ -230,6 +230,10 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         device_listbox.refresh_info ();
     }
 
+    public void focus () {
+        bookmark_listbox.focus ();
+    }
+
     private class SidebarExpander : Gtk.ToggleButton {
         public string expander_label { get; construct; }
         private static Gtk.CssProvider expander_provider;
