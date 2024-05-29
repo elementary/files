@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-14 18:24+0000\n"
-"PO-Revision-Date: 2024-05-13 11:13+0000\n"
+"PO-Revision-Date: 2024-05-29 18:06+0000\n"
 "Last-Translator: Sven <622b1a13-49d8-4ace-bca7-48bff17b4780@unbox.at>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -1129,11 +1129,11 @@ msgstr "Er is een fout opgetreden bij het aanmaken van een map in %s."
 
 #: libcore/PopupMenuBuilder.vala:54
 msgid "Open in New _Tab"
-msgstr "Open in Nieuwe _Tab"
+msgstr "Open in nieuwe _tab"
 
 #: libcore/PopupMenuBuilder.vala:58
 msgid "Open in New _Window"
-msgstr "Open in Nieuw _Venster"
+msgstr "Open in nieuw _venster"
 
 #: libcore/PopupMenuBuilder.vala:62
 msgid "Remove"
@@ -1159,7 +1159,7 @@ msgstr "Eigenschappen"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr "Media Uitwerpen"
+msgstr "Media uitwerpen"
 
 #: libcore/PopupMenuBuilder.vala:88
 msgid "Safely Remove"
@@ -1253,11 +1253,11 @@ msgstr "Verwijderen"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
-msgstr "Alles _Overslaan"
+msgstr "Alles _overslaan"
 
 #: libcore/StockDialogs.vala:24
 msgid "_Retry"
-msgstr "Opnieuw P_roberen"
+msgstr "Opnieuw p_roberen"
 
 #: libcore/StockDialogs.vala:25
 msgid "Delete _All"
