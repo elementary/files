@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-14 18:24+0000\n"
-"PO-Revision-Date: 2024-05-29 18:11+0000\n"
+"PO-Revision-Date: 2024-05-30 13:12+0000\n"
 "Last-Translator: Sven <622b1a13-49d8-4ace-bca7-48bff17b4780@unbox.at>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
@@ -1171,7 +1171,7 @@ msgstr "Aan bladwijzers toevoegen"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete All Trash"
-msgstr "Alles in de Prullenbak Permanent Verwijderen"
+msgstr "Alles in de prullenbak permanent verwijderen"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash"
@@ -1277,15 +1277,15 @@ msgstr "Sa_menvoegen"
 
 #: libcore/StockDialogs.vala:29
 msgid "Merge _All"
-msgstr "_Alles Samenvoegen"
+msgstr "_Alles samenvoegen"
 
 #: libcore/StockDialogs.vala:30
 msgid "Copy _Anyway"
-msgstr "_Toch Kopiëren"
+msgstr "_Toch kopiëren"
 
 #: libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
-msgstr "Leeg _Prullenbak"
+msgstr "Leeg _prullenbak"
 
 #: libcore/UndoManager.vala:22
 msgid "Undo Copy"
@@ -2451,10 +2451,8 @@ msgid "Sort Folders before Files"
 msgstr "Mappen sorteren voor bestanden"
 
 #: src/View/Widgets/AppMenu.vala:90
-#, fuzzy
-#| msgid "Restore '%s' from trash"
 msgid "Restore Tabs from Last Time"
-msgstr "Herstel '%s' uit de prullenbak"
+msgstr "Tabbladen herstellen van de vorige keer"
 
 #: src/View/Widgets/AppMenu.vala:94
 msgid "Show in View"
