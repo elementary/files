@@ -1325,6 +1325,22 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         var tip_location = FileUtils.get_file_for_path (unescaped_tip_uri);
         var root_location = FileUtils.get_file_for_path (unescaped_root_uri);
+
+        // If the root location no longer exists do not show the tab at all
+        if (!root_location.query_exists ()) {
+            warning ("Invalid root uri for Miller View");
+            return;
+        }
+
+        // If the tip location no longer exists search up the tree for existing folder
+        while (!tip_location.equal (root_location) && !tip_location.query_exists ()) {
+            tip_location = tip_location.get_parent ();
+            warning ("Invalid tip uri for Miller View - trying parent");
+            if (tip_location == null) {
+                tip_location = root_location.dup ();
+            }
+        }
+
         var relative_path = root_location.get_relative_path (tip_location);
         GLib.File gfile;
 
