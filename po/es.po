@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-14 18:24+0000\n"
-"PO-Revision-Date: 2024-06-11 00:16+0000\n"
+"PO-Revision-Date: 2024-06-14 16:16+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <edwood.grant@gmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
 "\n"
@@ -2085,7 +2085,7 @@ msgstr "Pegar"
 
 #: src/View/AbstractDirectoryView.vala:2334
 msgid "Set as Wallpaper"
-msgstr "Establecer como fondo de pantalla"
+msgstr "Establecer como fondo de escritorio"
 
 #: src/View/AbstractDirectoryView.vala:2366 src/View/ListView.vala:28
 msgid "Type"
