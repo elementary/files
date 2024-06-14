@@ -996,6 +996,8 @@ public class Files.Directory : Object {
             case FileMonitorEvent.DELETED:
                 Files.FileChanges.queue_file_removed (_file);
                 break;
+            case FileMonitorEvent.CHANGED:
+                // e.g. When data streamed into file
             case FileMonitorEvent.ATTRIBUTE_CHANGED: /* test  last to avoid unnecessary action when file renamed */
                 // e.g. changed permissions
                 Files.FileChanges.queue_file_changed (_file);
