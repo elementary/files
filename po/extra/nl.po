@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-14 18:24+0000\n"
-"PO-Revision-Date: 2023-04-13 17:59+0000\n"
-"Last-Translator: DutchVipperloid <svenroelof@e.email>\n"
+"PO-Revision-Date: 2024-06-08 11:16+0000\n"
+"Last-Translator: Thijs Dickmans <thijs@dickmans.be>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.4\n"
+"X-Generator: Weblate 5.5.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
@@ -58,15 +58,15 @@ msgstr ""
 
 #: data/files.metainfo.xml.in.in:18
 msgid "Quick access to settings like zoom levels and hidden files"
-msgstr ""
+msgstr "Snelle toegang tot instellingen zoals zoomniveau en verborgen bestanden"
 
 #: data/files.metainfo.xml.in.in:22
 msgid "See more metadata at a glance in List view"
-msgstr ""
+msgstr "Bekijk meer metadata in een oogopslag in lijst weergave"
 
 #: data/files.metainfo.xml.in.in:26
 msgid "Browse complex trees faster with Column view"
-msgstr ""
+msgstr "Sneller bladeren door complexe boomstructuren met kolomweergave"
 
 #: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:85
 #: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:120
@@ -76,11 +76,11 @@ msgstr "Kleine updates:"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "Restoring tabs from last time is now optional"
-msgstr ""
+msgstr "Tabbladen van de vorige keer herstellen is nu optioneel"
 
 #: data/files.metainfo.xml.in.in:70
 msgid "Drag and select can no longer be done with secondary pointer button"
-msgstr ""
+msgstr "Slepen en selecteren kan niet langer met de secundaire aanwijsknop"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:93
 #: data/files.metainfo.xml.in.in:110 data/files.metainfo.xml.in.in:122
@@ -90,7 +90,7 @@ msgstr "Bijgewerkte vertalingen"
 
 #: data/files.metainfo.xml.in.in:87
 msgid "Discontinue support for dragging bookmark out of sidebar"
-msgstr ""
+msgstr "Stop ondersteuning voor het slepen van bladwijzers uit de zijbalk"
 
 #: data/files.metainfo.xml.in.in:88
 #, fuzzy
@@ -102,18 +102,24 @@ msgstr "Fix onverwachte activatie van bestand na navigatie met dubbele klik"
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
+"Lost een crash op bij het overschakelen naar weergave als raster onder "
+"uitzonderlijke omstandigheden"
 
 #: data/files.metainfo.xml.in.in:90
 msgid "Ensure the selection persists after refreshing the view"
 msgstr ""
+"Zorg ervoor dat de selectie blijft bestaan na het verversen van de weergave"
 
 #: data/files.metainfo.xml.in.in:91
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
+"Fix Bestanden worden niet geopend als wordt geprobeerd een niet "
+"geconnecteerde locatie te herstellen"
 
 #: data/files.metainfo.xml.in.in:92
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
+"Fix dat de weergave zichtbaar blijft wanneer een locatie los gekoppeld wordt"
 
 #: data/files.metainfo.xml.in.in:136
 msgid "Improvements:"
@@ -124,6 +130,8 @@ msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
 msgstr ""
+"Nieuwe tabbalk met verbeterde animaties, soepeler slepen en neerzetten en "
+"gereorganiseerde contextmenu's voor tabbladen"
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
