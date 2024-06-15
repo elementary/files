@@ -163,7 +163,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.forward(1)", {"<Alt>Right", "XF86Forward"});
             marlin_app.set_accels_for_action ("win.back(1)", {"<Alt>Left", "XF86Back"});
             marlin_app.set_accels_for_action ("win.info::HELP", {"F1"});
-            marlin_app.set_accels_for_action ("win.tab::TAB", {"<Ctrl><Alt>T"});
+            marlin_app.set_accels_for_action ("win.tab::TAB", {"<Shift><Ctrl>K"});
             marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
         }
 
@@ -452,7 +452,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         add_action (action_move_to_new_window);
 
         marlin_app.set_accels_for_action ("win.tabmenu-close", {"<Ctrl>W"});
-        marlin_app.set_accels_for_action ("win.tabmenu-duplicate", {"<Ctrl><Alt>T"});
+        marlin_app.set_accels_for_action ("win.tabmenu-duplicate", {"<Shift><Ctrl>K"});
         marlin_app.set_accels_for_action ("win.tabmenu-move-to-window", {"<Ctrl><Alt>N"});
 
         var tab_menu = (Menu) tab_view.menu_model;
