@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-14 18:24+0000\n"
-"PO-Revision-Date: 2024-05-13 11:13+0000\n"
-"Last-Translator: Sven <622b1a13-49d8-4ace-bca7-48bff17b4780@unbox.at>\n"
+"PO-Revision-Date: 2024-06-08 11:16+0000\n"
+"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.5.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -1129,11 +1129,11 @@ msgstr "Er is een fout opgetreden bij het aanmaken van een map in %s."
 
 #: libcore/PopupMenuBuilder.vala:54
 msgid "Open in New _Tab"
-msgstr "Open in Nieuwe _Tab"
+msgstr "Open in nieuwe _tab"
 
 #: libcore/PopupMenuBuilder.vala:58
 msgid "Open in New _Window"
-msgstr "Open in Nieuw _Venster"
+msgstr "Open in nieuw _venster"
 
 #: libcore/PopupMenuBuilder.vala:62
 msgid "Remove"
@@ -1159,7 +1159,7 @@ msgstr "Eigenschappen"
 
 #: libcore/PopupMenuBuilder.vala:83
 msgid "Eject Media"
-msgstr "Media Uitwerpen"
+msgstr "Media uitwerpen"
 
 #: libcore/PopupMenuBuilder.vala:88
 msgid "Safely Remove"
@@ -1171,15 +1171,15 @@ msgstr "Aan bladwijzers toevoegen"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete All Trash"
-msgstr "Alles in de Prullenbak Permanent Verwijderen"
+msgstr "Alles in de prullenbak permanent verwijderen"
 
 #: libcore/PopupMenuBuilder.vala:104
 msgid "Permanently Delete Trash"
-msgstr "Prullenbak Permanent Legen"
+msgstr "Prullenbak permanent legen"
 
 #: libcore/PopupMenuBuilder.vala:117
 msgid "Permanently Delete Trash on this Mount"
-msgstr "Permanent de Inhoud van de Prullenbak op deze Schijf Legen"
+msgstr "Permanent de inhoud van de prullenbak op deze schijf legen"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -1253,19 +1253,19 @@ msgstr "Verwijderen"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
-msgstr "Alles _Overslaan"
+msgstr "Alles _overslaan"
 
 #: libcore/StockDialogs.vala:24
 msgid "_Retry"
-msgstr "Opnieuw P_roberen"
+msgstr "_Opnieuw proberen"
 
 #: libcore/StockDialogs.vala:25
 msgid "Delete _All"
-msgstr "Alles Ver_wijderen"
+msgstr "Alles _verwijderen"
 
 #: libcore/StockDialogs.vala:26
 msgid "_Replace"
-msgstr "Ve_rvangen"
+msgstr "_Vervangen"
 
 #: libcore/StockDialogs.vala:27
 msgid "Replace _All"
@@ -1277,15 +1277,15 @@ msgstr "Sa_menvoegen"
 
 #: libcore/StockDialogs.vala:29
 msgid "Merge _All"
-msgstr "_Alles Samenvoegen"
+msgstr "_Alles samenvoegen"
 
 #: libcore/StockDialogs.vala:30
 msgid "Copy _Anyway"
-msgstr "_Toch Kopiëren"
+msgstr "_Toch kopiëren"
 
 #: libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
-msgstr "Leeg _Prullenbak"
+msgstr "Leeg _prullenbak"
 
 #: libcore/UndoManager.vala:22
 msgid "Undo Copy"
@@ -2096,10 +2096,8 @@ msgid "Paste"
 msgstr "Plakken"
 
 #: src/View/AbstractDirectoryView.vala:2334
-#, fuzzy
-#| msgid "Set as default"
 msgid "Set as Wallpaper"
-msgstr "Instellen als standaard"
+msgstr "Instellen als achtergrond"
 
 #: src/View/AbstractDirectoryView.vala:2366 src/View/ListView.vala:28
 msgid "Type"
@@ -2424,7 +2422,7 @@ msgstr "Koppelen"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
-msgstr "Koppelen"
+msgstr "Bindkoppelen"
 
 #: src/View/Widgets/AppMenu.vala:25
 msgid "Zoom Out"
@@ -2451,10 +2449,8 @@ msgid "Sort Folders before Files"
 msgstr "Mappen sorteren voor bestanden"
 
 #: src/View/Widgets/AppMenu.vala:90
-#, fuzzy
-#| msgid "Restore '%s' from trash"
 msgid "Restore Tabs from Last Time"
-msgstr "Herstel '%s' uit de prullenbak"
+msgstr "Tabbladen herstellen van de vorige keer"
 
 #: src/View/Widgets/AppMenu.vala:94
 msgid "Show in View"
