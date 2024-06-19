@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-14 18:24+0000\n"
-"PO-Revision-Date: 2024-05-27 06:13+0000\n"
+"PO-Revision-Date: 2024-06-19 17:48+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
 "\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.5.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -58,7 +58,7 @@ msgstr "保存"
 #: filechooser-portal/Main.vala:448
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr "このファイルは “%s” へのリンクです"
+msgstr "このファイルは“%s”へのリンクです"
 
 #: filechooser-portal/Main.vala:451
 msgid "This file is a link."
@@ -74,7 +74,7 @@ msgstr ""
 #: filechooser-portal/Main.vala:456
 #, c-format
 msgid "Replace “%s”?"
-msgstr "“%s” を置き換えますか?"
+msgstr "“%s”を置き換えますか?"
 
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
@@ -1477,7 +1477,7 @@ msgstr "項目を完全に削除すると、元に戻すことはできません
 #: libcore/FileOperations/DeleteJob.vala:74
 #, c-format
 msgid "Permanently delete “%s”?"
-msgstr "“%s” を完全に削除しますか?"
+msgstr "“%s”を完全に削除しますか?"
 
 #: libcore/FileOperations/DeleteJob.vala:76
 #, c-format
@@ -1916,7 +1916,7 @@ msgstr "このファイルを実行できません"
 #: src/View/AbstractDirectoryView.vala:878
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
-msgstr "“%s” を開くには、ゴミ箱から移動させる必要があります"
+msgstr "“%s”を開くには、ゴミ箱から移動させる必要があります"
 
 #: src/View/AbstractDirectoryView.vala:879
 msgid ""
