@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-18 13:10+0000\n"
+"POT-Creation-Date: 2024-05-14 18:24+0000\n"
 "PO-Revision-Date: 2021-12-22 17:55+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
@@ -20,27 +20,23 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "Ficheiros"
 
-#: data/io.elementary.files.desktop.in.in:4
+#: data/io.elementary.files.desktop.in.in:7
 msgid "Browse your files"
 msgstr "Gestão de ficheiros"
 
-#: data/io.elementary.files.desktop.in.in:5
+#: data/io.elementary.files.desktop.in.in:9
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "pasta;gestão;explorar;disco;sistema de ficheiros;"
 
-#: data/io.elementary.files.desktop.in.in:6
-msgid "File Manager"
-msgstr "Gestor de Ficheiros"
-
-#: data/io.elementary.files.desktop.in.in:20
+#: data/io.elementary.files.desktop.in.in:25
 msgid "New Window"
 msgstr "Nova janela"
 
-#: data/io.elementary.files.desktop.in.in:24
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr "Nova Janela como Administrador"
 
@@ -73,77 +69,59 @@ msgstr ""
 msgid "Browse complex trees faster with Column view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:58
-msgid "elementary, Inc."
-msgstr "elementary, Inc."
-
-#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:88
-#: data/files.metainfo.xml.in.in:100 data/files.metainfo.xml.in.in:120
-#: data/files.metainfo.xml.in.in:138 data/files.metainfo.xml.in.in:154
-#: data/files.metainfo.xml.in.in:169 data/files.metainfo.xml.in.in:191
-#: data/files.metainfo.xml.in.in:207 data/files.metainfo.xml.in.in:222
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:85
+#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:120
+#: data/files.metainfo.xml.in.in:140
 msgid "Minor updates:"
 msgstr "Pequenas atualizações:"
 
-#: data/files.metainfo.xml.in.in:67
+#: data/files.metainfo.xml.in.in:69
+msgid "Restoring tabs from last time is now optional"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:70
+msgid "Drag and select can no longer be done with secondary pointer button"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:110 data/files.metainfo.xml.in.in:122
+#: data/files.metainfo.xml.in.in:142
+msgid "Updated translations"
+msgstr "Traduções atualizadas"
+
+#: data/files.metainfo.xml.in.in:87
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:68
+#: data/files.metainfo.xml.in.in:88
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:69
+#: data/files.metainfo.xml.in.in:89
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:70
+#: data/files.metainfo.xml.in.in:90
 msgid "Ensure the selection persists after refreshing the view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:71
+#: data/files.metainfo.xml.in.in:91
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:72
+#: data/files.metainfo.xml.in.in:92
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:73 data/files.metainfo.xml.in.in:90
-#: data/files.metainfo.xml.in.in:102 data/files.metainfo.xml.in.in:122
-#: data/files.metainfo.xml.in.in:157 data/files.metainfo.xml.in.in:171
-#: data/files.metainfo.xml.in.in:193 data/files.metainfo.xml.in.in:209
-#: data/files.metainfo.xml.in.in:224
-msgid "Updated translations"
-msgstr "Traduções atualizadas"
-
-#: data/files.metainfo.xml.in.in:116 data/files.metainfo.xml.in.in:150
-#: data/files.metainfo.xml.in.in:187
+#: data/files.metainfo.xml.in.in:136
 msgid "Improvements:"
 msgstr "Melhorias:"
 
-#: data/files.metainfo.xml.in.in:118
+#: data/files.metainfo.xml.in.in:138
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:140
-msgid "Design updates for Bulk Rename"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:152
-msgid "Implement a bulk rename functionality"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:156
-msgid "Use a colorful level bar to show disk usage in the properties dialog"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:189
-msgid ""
-"Move global settings from the context menu to an app menu in the headerbar"
 msgstr ""
 
 #: data/io.elementary.files.policy.in.in:10
@@ -153,6 +131,12 @@ msgstr "Executar o Ficheiros como Administrador"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Autenticação é necessária para executar o Ficheiros como Administrador"
+
+#~ msgid "elementary, Inc."
+#~ msgstr "elementary, Inc."
+
+#~ msgid "File Manager"
+#~ msgstr "Gestor de Ficheiros"
 
 #~ msgid "Fixes:"
 #~ msgstr "Correções:"

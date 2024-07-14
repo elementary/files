@@ -89,7 +89,8 @@ namespace Files {
             {"bookmark", on_common_action_bookmark},
             {"properties", on_common_action_properties},
             {"copy-link", on_common_action_copy_link},
-            {"select-all", toggle_select_all}
+            {"select-all", toggle_select_all},
+            {"set-wallpaper", action_set_wallpaper}
         };
 
         GLib.SimpleActionGroup common_actions;
@@ -161,6 +162,8 @@ namespace Files {
 
         /* Used for blocking and unblocking DnD */
         protected bool dnd_disabled = false;
+        /* Suppress native behavior when required */
+        private bool button_press_disabled = false;
         private void* drag_data;
 
         /* support for generating thumbnails */
@@ -341,6 +344,13 @@ namespace Files {
                     if ((mods & Gdk.ModifierType.CONTROL_MASK) > 0) {
                         scroll_controller.propagation_phase = NONE;
                     }
+                });
+
+                // Hack required to suppress native behaviour when dragging
+                // multiple selected items with GestureMultiPress event controller
+                // Native behaviour deselects items except the one clicked on
+                view.button_press_event.connect (() => {
+                    return button_press_disabled;
                 });
 
                 button_controller = new Gtk.GestureMultiPress (view) {
@@ -1253,6 +1263,15 @@ namespace Files {
         }
 
         /** Common actions */
+        private void action_set_wallpaper (GLib.SimpleAction action, GLib.Variant? param) {
+            var file = get_files_for_action ().nth_data (0);
+
+            var active_window = (Gtk.Window) get_toplevel ();
+            Xdp.Parent? parent = active_window != null ? Xdp.parent_new_gtk (active_window) : null;
+
+            var portal = new Xdp.Portal ();
+            portal.set_wallpaper.begin (parent, file.uri, NONE, null);
+        }
 
         private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) {
             default_app = null;
@@ -1515,7 +1534,7 @@ namespace Files {
 /** DRAG AND DROP SOURCE */
 
         /* Signal emitted on source when drag begins */
-        private void on_drag_begin (Gdk.DragContext context) {
+        private void on_drag_begin () {
             should_activate = false;
         }
 
@@ -1546,13 +1565,13 @@ namespace Files {
         }
 
         /* Signal emitted on source after a DND move operation */
-        private void on_drag_data_delete (Gdk.DragContext context) {
+        private void on_drag_data_delete () {
             /* block real_view default handler because handled in on_drag_end */
             GLib.Signal.stop_emission_by_name (get_child (), "drag-data-delete");
         }
 
         /* Signal emitted on source after completion of DnD. */
-        private void on_drag_end (Gdk.DragContext context) {
+        private void on_drag_end () {
             source_drag_file_list = null;
         }
 
@@ -1574,7 +1593,7 @@ namespace Files {
             }
 
             if (drag_scroll_timer_id == 0) {
-                start_drag_scroll_timer (context);
+                start_drag_scroll_timer (Gtk.get_current_event_device ());
             }
 
             Gdk.drag_status (context, current_suggested_action, timestamp);
@@ -1595,12 +1614,12 @@ namespace Files {
             if (target == Gdk.Atom.intern_static_string ("XdndDirectSave0")) {
                 Files.File? target_file = get_drop_target_file (x, y);
                 /* get XdndDirectSave file name from DnD source window */
-                string? filename = dnd_handler.get_source_filename (context);
+                string? filename = dnd_handler.get_source_filename (context.get_source_window ());
                 if (target_file != null && filename != null) {
                     /* Get uri of source file when dropped */
                     uri = target_file.get_target_location ().resolve_relative_path (filename).get_uri ();
                     /* Setup the XdndDirectSave property on the source window */
-                    dnd_handler.set_source_uri (context, uri);
+                    dnd_handler.set_source_uri (context.get_source_window (), uri);
                 } else {
                     PF.Dialogs.show_error_dialog (_("Cannot drop this file"),
                                                   _("Invalid file name provided"), window);
@@ -1642,13 +1661,13 @@ namespace Files {
 
                 switch (info) {
                     case Files.TargetType.XDND_DIRECT_SAVE0:
-                        success = dnd_handler.handle_xdnddirectsave (context,
+                        success = dnd_handler.handle_xdnddirectsave (context.get_source_window (),
                                                                      drop_target_file,
                                                                      selection_data);
                         break;
 
                     case Files.TargetType.NETSCAPE_URL:
-                        success = dnd_handler.handle_netscape_url (context,
+                        success = dnd_handler.handle_netscape_url (context.get_source_window (),
                                                                    drop_target_file,
                                                                    selection_data);
                         break;
@@ -1664,7 +1683,6 @@ namespace Files {
 
                         success = dnd_handler.handle_file_drag_actions (
                             get_child (),
-                            context,
                             drop_target_file,
                             destination_drop_file_list,
                             current_actions,
@@ -1691,7 +1709,7 @@ namespace Files {
         }
 
         /* Signal emitted on destination when drag leaves the widget or *before* dropping */
-        private void on_drag_leave (Gdk.DragContext context, uint timestamp) {
+        private void on_drag_leave () {
             /* reset the drop-file for the icon renderer */
             icon_renderer.drop_file = null;
             /* stop any running drag autoscroll timer */
@@ -1791,9 +1809,13 @@ namespace Files {
                         current_actions = current_suggested_action;
                     } else {
 
-                        current_actions = FileUtils.file_accepts_drop (drop_target_file,
-                                                                       destination_drop_file_list, context,
-                                                                       out current_suggested_action);
+                        current_actions = DndHandler.file_accepts_drop (
+                            drop_target_file,
+                            destination_drop_file_list,
+                            context.get_selected_action (),
+                            context.get_actions (),
+                            out current_suggested_action
+                        );
                     }
 
                     highlight_drop_file (drop_target_file, current_actions, get_path_at_pos (x, y));
@@ -2278,6 +2300,14 @@ namespace Files {
                 // We send the actual files - it is up to the plugin to extract target
                 // if needed.  Color tag plugin needs actual file, others need target
                 plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
+
+                if (selection.length () == 1 && "image" in selection.nth_data (0).info.get_content_type ()) {
+                    var wallpaper_menuitem = new Gtk.MenuItem.with_label (_("Set as Wallpaper")) {
+                        action_name = "common.set-wallpaper"
+                    };
+
+                    menu.add (wallpaper_menuitem);
+                }
             }
 
             menu.set_screen (null);
@@ -2482,6 +2512,7 @@ namespace Files {
             action_set_enabled (common_actions, "copy", !renaming && !in_trash && can_copy);
             action_set_enabled (common_actions, "copy-link", !renaming && !in_trash && !in_recent && can_copy);
             action_set_enabled (common_actions, "bookmark", !renaming && !more_than_one_selected);
+            action_set_enabled (common_actions, "set-wallpaper", !renaming && !more_than_one_selected);
 
             update_default_app (selection);
             update_menu_actions_sort ();
@@ -2806,13 +2837,12 @@ namespace Files {
             model.row_deleted.connect (on_row_deleted);
         }
 
-        private void start_drag_scroll_timer (Gdk.DragContext context) requires (window != null) {
+        private void start_drag_scroll_timer (Gdk.Device pointer) requires (window != null) {
             drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                           50,
                                                           () => {
                 Gtk.Widget? widget = get_child ();
                 if (widget != null) {
-                    Gdk.Device pointer = context.get_device ();
                     Gdk.Window window = widget.get_window ();
                     int x, y, w, h;
 
@@ -3395,7 +3425,7 @@ namespace Files {
         }
 
         protected virtual bool handle_primary_button_click (uint n_press, Gdk.ModifierType mods, Gtk.TreePath? path) {
-            return true;
+            return false; // Allow drag'n'drop
         }
 
         protected void block_drag_and_drop () {
@@ -3418,7 +3448,6 @@ namespace Files {
                 /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
                 name_renderer.end_editing (false);
             }
-
             cancel_hover (); /* cancel overlay statusbar cancellables */
             grab_focus ();
 
@@ -3499,10 +3528,13 @@ namespace Files {
                                 }
 
                                 select_path (path, true);
-                                unblock_drag_and_drop ();
+
                                 if (handle_primary_button_click (n_press, mods, path)) {
                                     button_controller.set_state (CLAIMED);
                                 }
+
+                                button_press_disabled = true;
+                                unblock_drag_and_drop ();
                             }
 
                             update_selected_files_and_menu ();
@@ -3589,6 +3621,7 @@ namespace Files {
 
         protected virtual void on_view_button_release_event (int n_press, double x, double y) {
             unblock_drag_and_drop ();
+            button_press_disabled = false;
             /* Ignore button release from click that started renaming.
              * View may lose focus during a drag if another tab is hovered, in which case
              * we do not want to refocus this view.

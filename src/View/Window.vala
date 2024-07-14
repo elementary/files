@@ -43,6 +43,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
         {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"folders-before-files", null, null, "true", change_state_folders_before_files},
+        {"restore-tabs-on-startup", null, null, "true", change_state_restore_tabs_on_startup},
         {"forward", action_forward, "i"},
         {"back", action_back, "i"}
     };
@@ -162,7 +163,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.forward(1)", {"<Alt>Right", "XF86Forward"});
             marlin_app.set_accels_for_action ("win.back(1)", {"<Alt>Left", "XF86Back"});
             marlin_app.set_accels_for_action ("win.info::HELP", {"F1"});
-            marlin_app.set_accels_for_action ("win.tab::TAB", {"<Ctrl><Alt>T"});
+            marlin_app.set_accels_for_action ("win.tab::TAB", {"<Shift><Ctrl>K"});
             marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
         }
 
@@ -281,6 +282,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
+        get_action ("restore-tabs-on-startup").set_state (app_settings.get_boolean ("restore-tabs"));
 
         /*/
         /* Connect and abstract signals to local ones
@@ -450,7 +452,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         add_action (action_move_to_new_window);
 
         marlin_app.set_accels_for_action ("win.tabmenu-close", {"<Ctrl>W"});
-        marlin_app.set_accels_for_action ("win.tabmenu-duplicate", {"<Ctrl><Alt>T"});
+        marlin_app.set_accels_for_action ("win.tabmenu-duplicate", {"<Shift><Ctrl>K"});
         marlin_app.set_accels_for_action ("win.tabmenu-move-to-window", {"<Ctrl><Alt>N"});
 
         var tab_menu = (Menu) tab_view.menu_model;
@@ -1088,6 +1090,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         Files.Preferences.get_default ().sort_directories_first = state;
     }
 
+    public void change_state_restore_tabs_on_startup (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+        Files.app_settings.set_boolean ("restore-tabs", state);
+    }
+
     private void connect_to_server () {
         var dialog = new PF.ConnectServerDialog ((Gtk.Window) this);
         string server_uri = "";
@@ -1317,6 +1325,22 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         var tip_location = FileUtils.get_file_for_path (unescaped_tip_uri);
         var root_location = FileUtils.get_file_for_path (unescaped_root_uri);
+
+        // If the root location no longer exists do not show the tab at all
+        if (!root_location.query_exists ()) {
+            warning ("Invalid root uri for Miller View");
+            return;
+        }
+
+        // If the tip location no longer exists search up the tree for existing folder
+        while (!tip_location.equal (root_location) && !tip_location.query_exists ()) {
+            tip_location = tip_location.get_parent ();
+            warning ("Invalid tip uri for Miller View - trying parent");
+            if (tip_location == null) {
+                tip_location = root_location.dup ();
+            }
+        }
+
         var relative_path = root_location.get_relative_path (tip_location);
         GLib.File gfile;
 
