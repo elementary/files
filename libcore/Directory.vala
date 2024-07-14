@@ -761,7 +761,7 @@ public class Files.Directory : Object {
     }
 
     private void after_load_file (Files.File gof, bool show_hidden, FileLoadedFunc? file_loaded_func) {
-        if (!gof.is_hidden || show_hidden) {
+        if (show_hidden || !(gof.is_hidden || gof.info.get_is_hidden ())) {
             displayed_files_count++;
 
             if (file_loaded_func == null) {

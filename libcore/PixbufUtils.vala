@@ -95,43 +95,6 @@ namespace PF.PixbufUtils {
         return dest;
     }
 
-    /* this routine colorizes the passed-in pixbuf by multiplying each pixel with the passed in color */
-    public Gdk.Pixbuf colorize (Gdk.Pixbuf src, Gdk.RGBA color) {
-        GLib.return_val_if_fail ((!src.has_alpha && src.n_channels == 3) || (src.has_alpha && src.n_channels == 4),
-                                 src);
-
-        GLib.return_val_if_fail (src.bits_per_sample == 8, src);
-
-        var red_value = (uint8) GLib.Math.floor (color.red * uint8.MAX);
-        var green_value = (uint8) GLib.Math.floor (color.green * uint8.MAX);
-        var blue_value = (uint8) GLib.Math.floor (color.blue * uint8.MAX);
-
-        var width = src.width;
-        var height = src.height;
-        var has_alpha = src.has_alpha;
-        var channels = src.n_channels;
-        var dest = new Gdk.Pixbuf (src.colorspace, has_alpha, src.bits_per_sample, width, height);
-        var dst_row_stride = dest.rowstride;
-        var src_row_stride = src.rowstride;
-        unowned uint8[] target_pix = (uint8[])dest.pixels;
-        unowned uint8[] original_pix = (uint8[])src.pixels;
-        for (int i = 0; i < height; i++) {
-            int src_row = i * src_row_stride;
-            int dst_row = i * dst_row_stride;
-            for (int j = 0; j < width; j++) {
-                var width_offset = j * channels;
-                target_pix[dst_row + width_offset] = (original_pix[src_row + width_offset] * red_value) >> 8;
-                target_pix[dst_row + width_offset + 1] = (original_pix[src_row + width_offset + 1] * green_value) >> 8;
-                target_pix[dst_row + width_offset + 2] = (original_pix[src_row + width_offset + 2] * blue_value) >> 8;
-                if (has_alpha) {
-                    target_pix[dst_row + width_offset + 3] = original_pix[src_row + width_offset + 3];
-                }
-            }
-        }
-
-        return dest;
-    }
-
     public Gdk.Pixbuf lucent (Gdk.Pixbuf src, uint percent) {
         GLib.return_val_if_fail (percent <= 100, src);
 

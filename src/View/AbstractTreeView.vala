@@ -30,15 +30,42 @@ namespace Files {
             debug ("ATV destruct");
         }
 
-        protected virtual void create_and_set_up_name_column () {
+        protected abstract void set_up_icon_renderer ();
+
+        protected override void connect_tree_signals () {
+            tree.get_selection ().changed.connect (on_view_selection_changed);
+        }
+
+        protected override void disconnect_tree_signals () {
+            tree.get_selection ().changed.disconnect (on_view_selection_changed);
+        }
+
+        protected override Gtk.Widget? create_view () {
+            tree = new Files.TreeView () {
+                model = model,
+                headers_visible = false,
+                rubber_banding = true
+            };
+
+            tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
+
             name_column = new Gtk.TreeViewColumn () {
                 sort_column_id = Files.ListModel.ColumnID.FILENAME,
                 expand = true,
                 resizable = true
             };
 
-            name_renderer = new Files.TextRenderer (ViewMode.LIST);
+            name_renderer = new Files.TextRenderer (ViewMode.LIST) {
+                wrap_width = -1,
+                zoom_level = ZoomLevel.NORMAL,
+                ellipsize_set = true,
+                ellipsize = Pango.EllipsizeMode.END,
+                xalign = 0.0f,
+                yalign = 0.5f
+            };
             set_up_name_renderer ();
+
+
             set_up_icon_renderer ();
             var emblem_renderer = new Files.EmblemRenderer ();
             emblem_renderer.yalign = 0.5f;
@@ -58,46 +85,12 @@ namespace Files {
                                         "file", Files.ListModel.ColumnID.FILE_COLUMN);
 
             tree.append_column (name_column);
-        }
-
-        protected abstract void set_up_icon_renderer ();
-
-        protected void set_up_view () {
             connect_tree_signals ();
             tree.realize.connect ((w) => {
                 tree.grab_focus ();
                 tree.columns_autosize ();
                 tree.zoom_level = zoom_level;
             });
-        }
-
-        protected override void set_up_name_renderer () {
-            base.set_up_name_renderer ();
-            name_renderer.@set ("wrap-width", -1);
-            name_renderer.@set ("zoom-level", ZoomLevel.NORMAL);
-            name_renderer.@set ("ellipsize-set", true);
-            name_renderer.@set ("ellipsize", Pango.EllipsizeMode.END);
-            name_renderer.xalign = 0.0f;
-            name_renderer.yalign = 0.5f;
-        }
-
-        protected override void connect_tree_signals () {
-            tree.get_selection ().changed.connect (on_view_selection_changed);
-        }
-        protected override void disconnect_tree_signals () {
-            tree.get_selection ().changed.disconnect (on_view_selection_changed);
-        }
-
-        protected override Gtk.Widget? create_view () {
-            tree = new Files.TreeView () {
-                model = model,
-                headers_visible = false,
-                rubber_banding = true
-            };
-
-            tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
-            create_and_set_up_name_column ();
-            set_up_view ();
 
             return tree as Gtk.Widget;
         }
@@ -180,28 +173,7 @@ namespace Files {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        protected override uint get_selected_files_from_model (out GLib.List<Files.File> selected_files) {
-            uint count = 0;
-
-            GLib.List<Files.File> list = null;
-            tree.get_selection ().selected_foreach ((model, path, iter) => {
-                Files.File? file; /* can be null if click on blank row in list view */
-                model.@get (iter, Files.ListModel.ColumnID.FILE_COLUMN, out file, -1);
-                if (file != null) {
-                    list.prepend ((owned) file);
-                    count++;
-                }
-            });
-
-            selected_files = (owned)list;
-            return count;
-        }
-
-        protected override bool view_has_focus () {
-            return tree.has_focus;
-        }
-
-        protected override uint get_event_position_info (Gdk.EventButton event,
+        protected override uint get_event_position_info (double wx, double wy,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
             Gtk.TreePath? p = null;
@@ -210,14 +182,9 @@ namespace Files {
             int cx, cy, depth;
             path = null;
 
-            var ewindow = event.get_window ();
-            if (ewindow != tree.get_bin_window ()) {
-                return ClickZone.INVALID;
-            }
-
-            double x, y;
-            event.get_coords (out x, out y);
-            tree.get_path_at_pos ((int)x, (int)y, out p, out c, out cx, out cy);
+            int x = 0, y = 0;
+            tree.convert_widget_to_bin_window_coords ((int) wx, (int) wy, out x, out y);
+            tree.get_path_at_pos (x, y, out p, out c, out cx, out cy);
             path = p;
             depth = p != null ? p.get_depth () : 0;
             /* Get rect for whole column; no simple way to get individual renderer sizes? */
@@ -292,13 +259,7 @@ namespace Files {
             return zone;
         }
 
-        protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
-            if (tree == null || path == null || slot == null || slot.directory == null ||
-                slot.directory.permission_denied || slot.directory.is_empty ()) {
-
-                return;
-            }
-
+        protected override void scroll_to_path (Gtk.TreePath path, bool scroll_to_top) {
             tree.scroll_to_cell (path, name_column, scroll_to_top, 0.5f, 0.5f);
         }
 
@@ -389,31 +350,6 @@ namespace Files {
 
             get {
                 return _zoom_level;
-            }
-        }
-
-        /* Override base class in order to disable the Gtk.TreeView local search functionality */
-        public override bool key_press_event (Gdk.EventKey event) {
-            /* We still need the base class to handle cursor keys first */
-            uint keyval;
-            event.get_keyval (out keyval);
-            switch (keyval) {
-                case Gdk.Key.Up:
-                case Gdk.Key.Down:
-                case Gdk.Key.KP_Up:
-                case Gdk.Key.KP_Down:
-                case Gdk.Key.Page_Up:
-                case Gdk.Key.Page_Down:
-                case Gdk.Key.KP_Page_Up:
-                case Gdk.Key.KP_Page_Down:
-                case Gdk.Key.Home:
-                case Gdk.Key.End:
-
-                    return base.key_press_event (event);
-
-                default:
-
-                    return false; // Pass event to Window handler.
             }
         }
     }

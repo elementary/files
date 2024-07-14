@@ -7,40 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-28 10:22+0000\n"
-"PO-Revision-Date: 2023-08-24 02:54+0000\n"
+"POT-Creation-Date: 2024-05-14 18:24+0000\n"
+"PO-Revision-Date: 2024-05-17 14:13+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "Fitxers"
 
-#: data/io.elementary.files.desktop.in.in:4
+#: data/io.elementary.files.desktop.in.in:7
 msgid "Browse your files"
 msgstr "Navegueu pels fitxers"
 
-#: data/io.elementary.files.desktop.in.in:5
+#: data/io.elementary.files.desktop.in.in:9
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "carpeta;gestor;explora;disc;sistema de fitxers;"
 
-#: data/io.elementary.files.desktop.in.in:6
-msgid "File Manager"
-msgstr "Gestor de fitxers"
-
-#: data/io.elementary.files.desktop.in.in:20
+#: data/io.elementary.files.desktop.in.in:25
 msgid "New Window"
 msgstr "Finestra nova"
 
-#: data/io.elementary.files.desktop.in.in:24
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr "Finestra nova com a administrador"
 
@@ -74,58 +70,71 @@ msgstr "Vegeu més metadades d'un cop d'ull a la vista de llista"
 msgid "Browse complex trees faster with Column view"
 msgstr "Exploreu arbres complexos més ràpidament amb la vista de columna"
 
-#: data/files.metainfo.xml.in.in:58
-msgid "elementary, Inc."
-msgstr "elementary, Inc."
-
-#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:77
-#: data/files.metainfo.xml.in.in:97 data/files.metainfo.xml.in.in:115
-#: data/files.metainfo.xml.in.in:131 data/files.metainfo.xml.in.in:146
-#: data/files.metainfo.xml.in.in:168 data/files.metainfo.xml.in.in:184
-#: data/files.metainfo.xml.in.in:199
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:85
+#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:120
+#: data/files.metainfo.xml.in.in:140
 msgid "Minor updates:"
 msgstr "Actualitzacions menors:"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:79
-#: data/files.metainfo.xml.in.in:99 data/files.metainfo.xml.in.in:134
-#: data/files.metainfo.xml.in.in:148 data/files.metainfo.xml.in.in:170
-#: data/files.metainfo.xml.in.in:186 data/files.metainfo.xml.in.in:201
+#: data/files.metainfo.xml.in.in:69
+msgid "Restoring tabs from last time is now optional"
+msgstr "La restauració de les pestanyes de l'última vegada és ara opcional."
+
+#: data/files.metainfo.xml.in.in:70
+msgid "Drag and select can no longer be done with secondary pointer button"
+msgstr ""
+"Arrossegar i seleccionar ja no es pot fer amb el botó del punter secundari."
+
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:110 data/files.metainfo.xml.in.in:122
+#: data/files.metainfo.xml.in.in:142
 msgid "Updated translations"
 msgstr "Traduccions actualitzades"
 
-#: data/files.metainfo.xml.in.in:93 data/files.metainfo.xml.in.in:127
-#: data/files.metainfo.xml.in.in:164
+#: data/files.metainfo.xml.in.in:87
+msgid "Discontinue support for dragging bookmark out of sidebar"
+msgstr ""
+"Suspensió del suport per arrossegar l'adreça d'interès fora de la barra "
+"lateral"
+
+#: data/files.metainfo.xml.in.in:88
+msgid "Fix unexpected scrolling after renaming a folder"
+msgstr ""
+"Correcció del desplaçament inesperat després de canviar el nom d'una carpeta"
+
+#: data/files.metainfo.xml.in.in:89
+msgid ""
+"Fixes a crash when switching to viewing as grid under rare circumstances"
+msgstr ""
+"Solució d'un error en canviar a la visualització com a quadrícula en rares "
+"circumstàncies"
+
+#: data/files.metainfo.xml.in.in:90
+msgid "Ensure the selection persists after refreshing the view"
+msgstr "S'assegura que la selecció persisteixi després d'actualitzar la vista."
+
+#: data/files.metainfo.xml.in.in:91
+msgid "Fix Files failing to open if trying to restore a disconnected location"
+msgstr ""
+"Correcció dels fitxers que no s'obren si s'intenta restaurar una ubicació "
+"desconnectada"
+
+#: data/files.metainfo.xml.in.in:92
+msgid "Fix the view continuing to show when a location is unmounted"
+msgstr ""
+"Correcció de la vista que es continua mostrant quan es desmunta una ubicació"
+
+#: data/files.metainfo.xml.in.in:136
 msgid "Improvements:"
 msgstr "Millores:"
 
-#: data/files.metainfo.xml.in.in:95
+#: data/files.metainfo.xml.in.in:138
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
 msgstr ""
 "Barra de pestanyes nova amb animacions millorades, arrossegar i deixar anar "
 "més suau i menús contextuals de pestanyes reorganitzats"
-
-#: data/files.metainfo.xml.in.in:117
-msgid "Design updates for Bulk Rename"
-msgstr "Actualitzacions de disseny per al canvi de nom massiu"
-
-#: data/files.metainfo.xml.in.in:129
-msgid "Implement a bulk rename functionality"
-msgstr "Implementació d'una funcionalitat de canvi de nom massiu"
-
-#: data/files.metainfo.xml.in.in:133
-msgid "Use a colorful level bar to show disk usage in the properties dialog"
-msgstr ""
-"Ús d'una barra de nivell acolorida per mostrar l'ús del disc al diàleg de "
-"propietats"
-
-#: data/files.metainfo.xml.in.in:166
-msgid ""
-"Move global settings from the context menu to an app menu in the headerbar"
-msgstr ""
-"Mou la configuració global del menú contextual a un menú d'aplicació a la "
-"barra de capçalera"
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
@@ -134,6 +143,29 @@ msgstr "Executa el Fitxers del Pantheon com a administrador"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Cal autenticació per executar el Fitxers com a administrador."
+
+#~ msgid "Design updates for Bulk Rename"
+#~ msgstr "Actualitzacions de disseny per al canvi de nom massiu"
+
+#~ msgid "Implement a bulk rename functionality"
+#~ msgstr "Implementació d'una funcionalitat de canvi de nom massiu"
+
+#~ msgid "Use a colorful level bar to show disk usage in the properties dialog"
+#~ msgstr ""
+#~ "Ús d'una barra de nivell acolorida per mostrar l'ús del disc al diàleg de "
+#~ "propietats"
+
+#~ msgid ""
+#~ "Move global settings from the context menu to an app menu in the headerbar"
+#~ msgstr ""
+#~ "Mou la configuració global del menú contextual a un menú d'aplicació a la "
+#~ "barra de capçalera"
+
+#~ msgid "elementary, Inc."
+#~ msgstr "elementary, Inc."
+
+#~ msgid "File Manager"
+#~ msgstr "Gestor de fitxers"
 
 #~ msgid ""
 #~ "Provide option to select folders with single click and activate with "
@@ -150,10 +182,6 @@ msgstr "Cal autenticació per executar el Fitxers com a administrador."
 
 #~ msgid "Fixes:"
 #~ msgstr "Correccions:"
-
-#~ msgid "Fix unexpected file activation after navigation with double-click"
-#~ msgstr ""
-#~ "Correcció de l'activació de fitxers en navegar després d'un clic doble"
 
 #~ msgid "Fix dimmed window after use of filechooser portal"
 #~ msgstr ""

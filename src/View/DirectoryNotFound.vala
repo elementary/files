@@ -54,7 +54,7 @@ namespace Files.View {
                 }
 
                 if (success) {
-                    ctab.reload ();
+                    get_action_group ("win").activate_action ("refresh", null);
                 }
             });
 
