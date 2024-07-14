@@ -238,9 +238,13 @@ namespace Files.View.Chrome {
             if (el != null && drop_file_list != null) {
                 el.pressed = true;
                 drop_target_file = get_target_location (x, y);
-                current_actions = FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
-                                                               context,
-                                                               out current_suggested_action);
+                current_actions = DndHandler.file_accepts_drop (
+                    drop_target_file,
+                    drop_file_list,
+                    context.get_selected_action (),
+                    context.get_actions (),
+                    out current_suggested_action
+                );
             }
 
             Gdk.drag_status (context, current_suggested_action, time);
@@ -291,14 +295,17 @@ namespace Files.View.Chrome {
                 current_suggested_action = 0;
                 drop_target_file = get_target_location (x, y);
                 if (drop_target_file != null) {
-                    current_actions = FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
-                                                                     context,
-                                                                     out current_suggested_action);
+                    current_actions = DndHandler.file_accepts_drop (
+                        drop_target_file,
+                        drop_file_list,
+                        context.get_selected_action (),
+                        context.get_actions (),
+                        out current_suggested_action
+                    );
 
                     if ((current_actions & FILE_DRAG_ACTIONS) != 0) {
                         success = dnd_handler.handle_file_drag_actions (
                             this,
-                            context,
                             drop_target_file,
                             drop_file_list,
                             current_actions,
@@ -309,11 +316,11 @@ namespace Files.View.Chrome {
                     }
                 }
                 Gtk.drag_finish (context, success, false, timestamp);
-                on_drag_leave (context, timestamp);
+                on_drag_leave ();
             }
         }
 
-        protected void on_drag_leave (Gdk.DragContext drag_context, uint time) {
+        protected void on_drag_leave () {
             foreach (BreadcrumbElement element in elements) {
                 if (element.pressed) {
                     element.pressed = false;
