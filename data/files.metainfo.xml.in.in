@@ -16,15 +16,15 @@
   <screenshots>
     <screenshot type="default">
       <caption>Quick access to settings like zoom levels and hidden files</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/6.5.2/data/screenshot-grid.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.5.3/data/screenshot-grid.png</image>
     </screenshot>
     <screenshot>
       <caption>See more metadata at a glance in List view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/6.5.2/data/screenshot-list.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.5.3/data/screenshot-list.png</image>
     </screenshot>
     <screenshot>
       <caption>Browse complex trees faster with Column view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/6.5.2/data/screenshot-column.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/6.5.3/data/screenshot-column.png</image>
     </screenshot>
   </screenshots>
 
@@ -55,11 +55,54 @@
   <url type="help">https://github.com/elementary/files/discussions/categories/q-a</url>
   <url type="translate">https://l10n.elementary.io/projects/files</url>
 
-  <developer_name>elementary, Inc.</developer_name>
+  <developer id="org.elementaryos">
+    <name>elementary, Inc.</name>
+  </developer>
   <project_group>elementary</project_group>
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="8.0.0" date="2024-05-13" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Restoring tabs from last time is now optional</li>
+          <li>Drag and select can no longer be done with secondary pointer button</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/2345">Hiding Files and Folders Without Adding dot in the File Name</issue>
+        <issue url="https://github.com/elementary/files/issues/2357">Unexpected selection after creating a new file</issue>
+        <issue url="https://github.com/elementary/files/issues/2394">Completion sometimes is incorrect</issue>
+        <issue url="https://github.com/elementary/files/issues/2395">Completion fails outside current folder</issue>
+        <issue url="https://github.com/elementary/files/issues/2397">Rename doesn't allow to type any characters</issue>
+      </issues>
+    </release>
+
+    <release version="6.5.3" date="2023-12-11" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Discontinue support for dragging bookmark out of sidebar</li>
+          <li>Fix unexpected scrolling after renaming a folder</li>
+          <li>Fixes a crash when switching to viewing as grid under rare circumstances</li>
+          <li>Ensure the selection persists after refreshing the view</li>
+          <li>Fix Files failing to open if trying to restore a disconnected location</li>
+          <li>Fix the view continuing to show when a location is unmounted</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/2292">Don't depend on LibPlank</issue>
+        <issue url="https://github.com/elementary/files/issues/2325">Unexpected scroll to bottom after renaming folder</issue>
+        <issue url="https://github.com/elementary/files/issues/2326">Switching to View as Grid with large thumbnails and containing a link to an image crashes Files</issue>
+        <issue url="https://github.com/elementary/files/issues/2328">Selection changes on refreshing the view</issue>
+        <issue url="https://github.com/elementary/files/issues/2330">Files does not open if restoring disconnected location into Column View</issue>
+        <issue url="https://github.com/elementary/files/issues/2337">Unmounting a location does not close the view</issue>
+      </issues>
+    </release>
+
     <release version="6.5.2" date="2023-09-26" urgency="medium">
       <description>
         <p>Minor updates:</p>
@@ -111,29 +154,12 @@
     </release>
 
     <release version="6.4.1" date="2023-07-10" urgency="medium">
-      <description>
-        <p>Minor updates:</p>
-        <ul>
-          <li>Design updates for Bulk Rename</li>
-        </ul>
-      </description>
       <issues>
         <issue url="https://github.com/elementary/files/issues/2238">copying folders copies all its children</issue>
       </issues>
     </release>
 
     <release version="6.4.0" date="2023-06-29" urgency="medium">
-      <description>
-        <p>Improvements:</p>
-        <ul>
-          <li>Implement a bulk rename functionality</li>
-        </ul>
-        <p>Minor updates:</p>
-        <ul>
-          <li>Use a colorful level bar to show disk usage in the properties dialog</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
       <issues>
         <issue url="https://github.com/elementary/files/issues/2195">When viewing a folder, externally created hidden files are shown</issue>
         <issue url="https://github.com/elementary/files/issues/2172">Hangs when a folder with a large number of files needs to be shown</issue>
@@ -142,12 +168,6 @@
     </release>
 
     <release version="6.3.1" date="2023-04-05" urgency="medium">
-      <description>
-        <p>Minor updates:</p>
-        <ul>
-          <li>Updated translations</li>
-        </ul>
-      </description>
       <issues>
         <issue url="https://github.com/elementary/files/issues/1161">Force update of git status when folder is refreshed</issue>
         <issue url="https://github.com/elementary/files/issues/2141">Reinstate mount option in storage menu</issue>
@@ -160,16 +180,6 @@
     </release>
 
     <release version="6.3.0" date="2023-02-27" urgency="medium">
-      <description>
-        <p>Improvements:</p>
-        <ul>
-          <li>Move global settings from the context menu to an app menu in the headerbar</li>
-        </ul>
-        <p>Minor updates:</p>
-        <ul>
-          <li>Updated translations</li>
-        </ul>
-      </description>
       <issues>
         <issue url="https://github.com/elementary/files/issues/593">Zooming is hidden</issue>
         <issue url="https://github.com/elementary/files/issues/1163">Invert logic of Show/Hide Thumbnails</issue>
@@ -180,12 +190,6 @@
     </release>
 
     <release version="6.2.2" date="2023-02-03" urgency="medium">
-      <description>
-        <p>Minor updates:</p>
-        <ul>
-          <li>Updated translations</li>
-        </ul>
-      </description>
       <issues>
         <issue url="https://github.com/elementary/files/pull/2122">Avoid crashes when disconnecting the provider</issue>
         <issue url="https://github.com/elementary/files/issues/2115">Paste into folder menu item doesn't work</issue>
@@ -195,12 +199,6 @@
     </release>
 
     <release version="6.2.1" date="2022-11-15" urgency="medium">
-      <description>
-        <p>Minor updates:</p>
-        <ul>
-          <li>Updated translations</li>
-        </ul>
-      </description>
       <issues>
         <issue url="https://github.com/elementary/files/issues/2098">New empty file closes the app</issue>
       </issues>
