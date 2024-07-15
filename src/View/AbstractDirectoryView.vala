@@ -426,15 +426,6 @@ namespace Files {
             common_actions = new GLib.SimpleActionGroup ();
             common_actions.add_action_entries (COMMON_ENTRIES, this);
             insert_action_group ("common", common_actions);
-
-            // action_set_state (background_actions, "show-hidden",
-            //                   Files.app_settings.get_boolean ("show-hiddenfiles"));
-
-            // action_set_state (background_actions, "show-remote-thumbnails",
-            //                   Files.app_settings.get_boolean ("show-remote-thumbnails"));
-
-            // action_set_state (background_actions, "show-local-thumbnails",
-            //                   Files.app_settings.get_boolean ("show-local-thumbnails"));
         }
 
         public void zoom_in () {
