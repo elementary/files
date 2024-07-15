@@ -167,16 +167,16 @@ namespace Files {
             return instance;
         }
 
-        public bool queue_file (Files.File file, out int request, bool large) {
+        public bool queue_file (Files.File file, out int request) {
             GLib.List<Files.File> files = null;
             files.append (file);
             int this_request;
-            bool success = queue_files (files, out this_request, large);
+            bool success = queue_files (files, out this_request);
             request = this_request;
             return success;
         }
 
-        public bool queue_files (GLib.List<Files.File> files, out int request, bool large) {
+        public bool queue_files (GLib.List<Files.File> files, out int request) {
             request = -1;
             if (proxy == null) {
                 return false;
@@ -212,9 +212,8 @@ namespace Files {
             }
 
             uint this_request = ++last_request;
-            var flavor = large ? "large" : "normal";
             var scheduler = "foreground";
-            proxy.queue.begin (uris, mime_hints, flavor, scheduler, 0, (obj, res) => {
+            proxy.queue.begin (uris, mime_hints, "large", scheduler, 0, (obj, res) => {
                 try {
                     uint handle;
                     handle = proxy.queue.end (res);
@@ -227,11 +226,11 @@ namespace Files {
                     };
                     handle_uris_mapping.insert (handle, uri_list);
                 } catch (GLib.Error e) {
-                    warning ("Thumbnailer proxy request %u failed: %s", this_request, e.message);
+                    debug ("Thumbnailer proxy request %u failed: %s", this_request, e.message);
                     foreach (var file in files) {
                         // Do not leave in LOADING state
-                        file.thumbstate= Files.File.ThumbState.NONE;
-                        file.query_thumbnail_update ();
+                        file.thumbstate = Files.File.ThumbState.NONE;
+                        file.update_icon ();
                     }
                 }
             });
@@ -323,7 +322,7 @@ namespace Files {
                     return GLib.Source.REMOVE;
                 });
             } else {
-                warning ("no ready uris");
+                debug ("no ready uris");
             }
         }
 
@@ -367,7 +366,7 @@ namespace Files {
                 var goffile = Files.File.get_by_uri (uri);
                 if (goffile.thumbstate == Files.File.ThumbState.LOADING) {
                     goffile.thumbstate = Files.File.ThumbState.NONE;
-                    goffile.query_thumbnail_update ();
+                    goffile.update_icon ();
                 }
             }
 
@@ -383,7 +382,7 @@ namespace Files {
             var goffile = Files.File.get_by_uri (uri);
             if (goffile != null) {
                 goffile.thumbstate = state;
-                goffile.query_thumbnail_update ();
+                goffile.update_icon ();
             }
         }
     }

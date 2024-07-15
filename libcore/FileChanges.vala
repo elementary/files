@@ -52,7 +52,15 @@ namespace Files.FileChanges {
     private static void queue_add_common (owned Change new_item) {
         unowned GLib.Queue<Change> queue = get_queue ();
         queue_mutex.@lock ();
-        queue.push_head ((owned) new_item);
+        unowned var last_item = queue.peek_head ();
+        // Ignore sequential duplicate events
+        if (last_item == null ||
+            !(last_item.from.equal (new_item.from)) ||
+            last_item.kind != new_item.kind) {
+
+            queue.push_head ((owned) new_item);
+        }
+
         queue_mutex.unlock ();
     }
 
