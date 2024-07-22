@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-14 18:06+0000\n"
-"PO-Revision-Date: 2024-04-29 20:13+0000\n"
+"POT-Creation-Date: 2024-05-14 18:24+0000\n"
+"PO-Revision-Date: 2024-06-08 11:16+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.5.5\n"
 "X-Launchpad-Export-Date: 2017-06-14 06:05+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -2103,10 +2103,8 @@ msgid "Paste"
 msgstr "Einfügen"
 
 #: src/View/AbstractDirectoryView.vala:2334
-#, fuzzy
-#| msgid "Set as default"
 msgid "Set as Wallpaper"
-msgstr "Als Vorgabe festlegen"
+msgstr "Als Hintergrundbild festlegen"
 
 #: src/View/AbstractDirectoryView.vala:2366 src/View/ListView.vala:28
 msgid "Type"

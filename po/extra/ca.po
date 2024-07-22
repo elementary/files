@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-14 18:06+0000\n"
-"PO-Revision-Date: 2023-12-17 00:10+0000\n"
+"POT-Creation-Date: 2024-05-14 18:24+0000\n"
+"PO-Revision-Date: 2024-05-17 14:13+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0.2\n"
+"X-Generator: Weblate 5.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
@@ -70,88 +70,71 @@ msgstr "Vegeu més metadades d'un cop d'ull a la vista de llista"
 msgid "Browse complex trees faster with Column view"
 msgstr "Exploreu arbres complexos més ràpidament amb la vista de columna"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:90
-#: data/files.metainfo.xml.in.in:102 data/files.metainfo.xml.in.in:122
-#: data/files.metainfo.xml.in.in:140 data/files.metainfo.xml.in.in:156
-#: data/files.metainfo.xml.in.in:171 data/files.metainfo.xml.in.in:193
-#: data/files.metainfo.xml.in.in:209 data/files.metainfo.xml.in.in:224
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:85
+#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:120
+#: data/files.metainfo.xml.in.in:140
 msgid "Minor updates:"
 msgstr "Actualitzacions menors:"
 
 #: data/files.metainfo.xml.in.in:69
+msgid "Restoring tabs from last time is now optional"
+msgstr "La restauració de les pestanyes de l'última vegada és ara opcional."
+
+#: data/files.metainfo.xml.in.in:70
+msgid "Drag and select can no longer be done with secondary pointer button"
+msgstr ""
+"Arrossegar i seleccionar ja no es pot fer amb el botó del punter secundari."
+
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:110 data/files.metainfo.xml.in.in:122
+#: data/files.metainfo.xml.in.in:142
+msgid "Updated translations"
+msgstr "Traduccions actualitzades"
+
+#: data/files.metainfo.xml.in.in:87
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 "Suspensió del suport per arrossegar l'adreça d'interès fora de la barra "
 "lateral"
 
-#: data/files.metainfo.xml.in.in:70
+#: data/files.metainfo.xml.in.in:88
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr ""
 "Correcció del desplaçament inesperat després de canviar el nom d'una carpeta"
 
-#: data/files.metainfo.xml.in.in:71
+#: data/files.metainfo.xml.in.in:89
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 "Solució d'un error en canviar a la visualització com a quadrícula en rares "
 "circumstàncies"
 
-#: data/files.metainfo.xml.in.in:72
+#: data/files.metainfo.xml.in.in:90
 msgid "Ensure the selection persists after refreshing the view"
 msgstr "S'assegura que la selecció persisteixi després d'actualitzar la vista."
 
-#: data/files.metainfo.xml.in.in:73
+#: data/files.metainfo.xml.in.in:91
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "Correcció dels fitxers que no s'obren si s'intenta restaurar una ubicació "
 "desconnectada"
 
-#: data/files.metainfo.xml.in.in:74
+#: data/files.metainfo.xml.in.in:92
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 "Correcció de la vista que es continua mostrant quan es desmunta una ubicació"
 
-#: data/files.metainfo.xml.in.in:75 data/files.metainfo.xml.in.in:92
-#: data/files.metainfo.xml.in.in:104 data/files.metainfo.xml.in.in:124
-#: data/files.metainfo.xml.in.in:159 data/files.metainfo.xml.in.in:173
-#: data/files.metainfo.xml.in.in:195 data/files.metainfo.xml.in.in:211
-#: data/files.metainfo.xml.in.in:226
-msgid "Updated translations"
-msgstr "Traduccions actualitzades"
-
-#: data/files.metainfo.xml.in.in:118 data/files.metainfo.xml.in.in:152
-#: data/files.metainfo.xml.in.in:189
+#: data/files.metainfo.xml.in.in:136
 msgid "Improvements:"
 msgstr "Millores:"
 
-#: data/files.metainfo.xml.in.in:120
+#: data/files.metainfo.xml.in.in:138
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
 msgstr ""
 "Barra de pestanyes nova amb animacions millorades, arrossegar i deixar anar "
 "més suau i menús contextuals de pestanyes reorganitzats"
-
-#: data/files.metainfo.xml.in.in:142
-msgid "Design updates for Bulk Rename"
-msgstr "Actualitzacions de disseny per al canvi de nom massiu"
-
-#: data/files.metainfo.xml.in.in:154
-msgid "Implement a bulk rename functionality"
-msgstr "Implementació d'una funcionalitat de canvi de nom massiu"
-
-#: data/files.metainfo.xml.in.in:158
-msgid "Use a colorful level bar to show disk usage in the properties dialog"
-msgstr ""
-"Ús d'una barra de nivell acolorida per mostrar l'ús del disc al diàleg de "
-"propietats"
-
-#: data/files.metainfo.xml.in.in:191
-msgid ""
-"Move global settings from the context menu to an app menu in the headerbar"
-msgstr ""
-"Mou la configuració global del menú contextual a un menú d'aplicació a la "
-"barra de capçalera"
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
@@ -160,6 +143,23 @@ msgstr "Executa el Fitxers del Pantheon com a administrador"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Cal autenticació per executar el Fitxers com a administrador."
+
+#~ msgid "Design updates for Bulk Rename"
+#~ msgstr "Actualitzacions de disseny per al canvi de nom massiu"
+
+#~ msgid "Implement a bulk rename functionality"
+#~ msgstr "Implementació d'una funcionalitat de canvi de nom massiu"
+
+#~ msgid "Use a colorful level bar to show disk usage in the properties dialog"
+#~ msgstr ""
+#~ "Ús d'una barra de nivell acolorida per mostrar l'ús del disc al diàleg de "
+#~ "propietats"
+
+#~ msgid ""
+#~ "Move global settings from the context menu to an app menu in the headerbar"
+#~ msgstr ""
+#~ "Mou la configuració global del menú contextual a un menú d'aplicació a la "
+#~ "barra de capçalera"
 
 #~ msgid "elementary, Inc."
 #~ msgstr "elementary, Inc."
