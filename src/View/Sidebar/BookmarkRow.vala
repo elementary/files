@@ -58,7 +58,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private Gtk.EventControllerKey key_controller;
     private Gtk.GestureMultiPress button_controller;
 
-    protected Files.File target_file;
+    protected Files.File? target_file;
     protected Gtk.Grid content_grid;
     protected Gtk.Grid icon_label_grid;
     protected Gtk.Stack label_stack;
@@ -72,7 +72,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             if (custom_name.strip () != "") {
                 return custom_name;
             } else {
-                return target_file.get_display_name ();
+                return target_file != null ? target_file.get_display_name () : "";
             }
         }
     }
@@ -108,8 +108,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     construct {
-        target_file = Files.File.get_by_uri (uri);
-        target_file.ensure_query_info ();
+        set_up_target_file_and_drop_actions ();
+        set_up_drag ();
+        set_up_drop ();
 
         /* If put margin on the row then drag and drop does not work when over the margin so we put
          * the margin on the content grid */
@@ -188,9 +189,27 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         notify["custom-name"].connect (() => {
             label.label = display_name;
         });
+    }
 
-        set_up_drag ();
-        set_up_drop ();
+    protected void set_up_target_file_and_drop_actions () {
+        if (uri != "") {
+            target_file = Files.File.get_by_uri (uri);
+            target_file.ensure_query_info ();
+            Gtk.drag_dest_set (
+                this,
+                Gtk.DestDefaults.MOTION | Gtk.DestDefaults.HIGHLIGHT,
+                dest_targets,
+                Gdk.DragAction.MOVE | Gdk.DragAction.COPY | Gdk.DragAction.LINK | Gdk.DragAction.ASK
+            );
+        } else {
+            target_file = null;
+            Gtk.drag_dest_set (
+                this,
+                Gtk.DestDefaults.MOTION,
+                null,
+                Gdk.DragAction.DEFAULT
+            );
+        }
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
@@ -376,7 +395,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         });
     }
 
-    /* Set up as a drag destination. */
+    /* Set machinery to handle drag (only actually used if mounted). */
     private void set_up_drop () {
         var drop_revealer_child = new Gtk.Separator (Gtk.Orientation.HORIZONTAL) {
             margin_top = 12,
@@ -390,13 +409,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         drop_revealer.show_all ();
 
         content_grid.attach (drop_revealer, 0, 1);
-
-        Gtk.drag_dest_set (
-            this,
-            Gtk.DestDefaults.MOTION | Gtk.DestDefaults.HIGHLIGHT,
-            dest_targets,
-            Gdk.DragAction.MOVE | Gdk.DragAction.COPY | Gdk.DragAction.LINK | Gdk.DragAction.ASK
-        );
 
         drag_data_received.connect ((ctx, x, y, sel_data, info, time) => {
             drop_text = null;
@@ -483,8 +495,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                               y > row_height - 1;
 
                     // When dropping onto a row, determine what actions are possible
-                    if (!reveal && drop_file_list != null) {
-                        Files.DndHandler.file_accepts_drop (
+                    if (!reveal && drop_file_list != null && uri != "") {
+                        var current_actions = Files.DndHandler.file_accepts_drop (
                             target_file,
                             drop_file_list,
                             ctx.get_selected_action (),
@@ -492,7 +504,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                             out current_suggested_action
                         );
 
-                        if (current_suggested_action != Gdk.DragAction.DEFAULT) {
+                        if (current_actions == DEFAULT) {
+                            current_suggested_action = DEFAULT;
+                        }
+
+                        if (current_suggested_action != DEFAULT) {
                             highlight (true);
                         }
                     } else {
@@ -504,12 +520,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                     break;
             }
 
-            if (reveal_drop_target (reveal)) {
-                current_suggested_action = Gdk.DragAction.LINK; //A bookmark is effectively a link
+            if (current_suggested_action != DEFAULT && reveal_drop_target (reveal)) {
+                current_suggested_action = LINK; //A bookmark is effectively a link
                 if (target.name () == "text/uri-list" && drop_text != null &&
                     list.has_uri (drop_text.strip ())) { //Need to remove trailing newline
 
-                    current_suggested_action = Gdk.DragAction.DEFAULT; //Do not allowing dropping duplicate URI
+                    current_suggested_action = DEFAULT; //Do not allowing dropping duplicate URI
                     reveal = false;
                 }
             }
