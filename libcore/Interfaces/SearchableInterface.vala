@@ -26,6 +26,5 @@ namespace Files.View.Chrome {
 
         public abstract void cancel ();
         public abstract void search (string txt, GLib.File search_location);
-        public abstract bool has_popped_up ();
     }
 }
