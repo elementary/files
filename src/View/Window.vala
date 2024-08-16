@@ -347,9 +347,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 var mods = state & Gtk.accelerator_get_default_mod_mask ();
                 /* Use find function instead of view interactive search */
                 if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
-                    /* Use printable characters to initiate search */
+                    /* Use printable characters (except space) to initiate search */
+                    /* Space is handled by directory view to open file items */
                     var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
-                    if (uc.isprint ()) {
+                    if (uc.isprint () && !uc.isspace ()) {
                         activate_action ("find", uc.to_string ());
                         return Gdk.EVENT_STOP;
                     }
