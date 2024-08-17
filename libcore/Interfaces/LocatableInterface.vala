@@ -21,6 +21,7 @@ namespace Files.View.Chrome {
         public signal void path_change_request (string path, Files.OpenFlag flag = Files.OpenFlag.DEFAULT);
 
         public abstract void set_display_path (string path);
+        public abstract void set_placeholder ();
         public abstract string get_display_path ();
         public abstract bool set_focussed ();
     }

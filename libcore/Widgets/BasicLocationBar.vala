@@ -86,7 +86,7 @@ namespace Files.View.Chrome {
 
         protected virtual void after_bread_text_changed (string txt) {
             if (txt == "") {
-                bread.set_placeholder (_(PLACEHOLDER));
+                set_placeholder ();
                 bread.set_action_icon_tooltip ("");
                 bread.hide_action_icon ();
             } else {
@@ -126,6 +126,10 @@ namespace Files.View.Chrome {
             bread.set_breadcrumbs_path (displayed_path);
             this.minimum_width = bread.get_minimum_width () + 48; /* Allow extra space for margins */
             this.set_size_request (this.minimum_width, -1);
+        }
+
+        protected virtual void set_placeholder () {
+            bread.set_placeholder (_(PLACEHOLDER));
         }
 
         public virtual void set_display_path (string path) {

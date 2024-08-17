@@ -160,11 +160,15 @@ namespace Files.View.Chrome {
         }
 
         protected override void after_bread_text_changed (string txt) {
+            hide_placeholder ();
             if (search_mode) {
                 if (txt.contains (Path.DIR_SEPARATOR_S)) {
                     switch_to_navigate_mode ();
-                } else {
+                } else if (txt != "") {
                     search_results.begin_search (txt, search_location);
+                } else {
+                    set_placeholder ();
+                    search_results.cancel ();
                 }
             } else {
                 if (txt != "" && !txt.contains (Path.DIR_SEPARATOR_S)) {
@@ -174,6 +178,10 @@ namespace Files.View.Chrome {
                     bread.completion_needed (); /* delegate to bread to decide whether completion really needed */
                 }
             }
+        }
+
+        protected override void set_placeholder () {
+            bread.set_placeholder (_(PLACEHOLDER));
         }
 
         protected void show_refresh_icon () {
