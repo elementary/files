@@ -2818,7 +2818,7 @@ namespace Files {
                 if ((slot.directory.is_network && show_remote_thumbnails) ||
                     (!slot.directory.is_network && show_local_thumbnails)) {
 
-                    file.update_icon ();
+                    file.query_thumbnail_update ();
                 }
                /* In any case, ensure color-tag info is correct */
                 if (plugins != null) {
