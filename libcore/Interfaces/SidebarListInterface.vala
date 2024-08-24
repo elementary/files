@@ -6,8 +6,8 @@
  */
 
 public interface Sidebar.SidebarListInterface : Object {
-    public abstract Files.SidebarInterface sidebar { get; construct; }
-    public abstract Gtk.ListBox list_box { get; internal set; }
+    public abstract Files.SidebarInterface sidebar { get; set construct; }
+    public abstract Gtk.ListBox list_box { get; set construct; }
 
     public abstract void select_item (Gtk.ListBoxRow? item);
     public abstract void unselect_all_items ();

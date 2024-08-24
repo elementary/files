@@ -77,12 +77,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
     }
 
-    public SidebarListInterface list { get; construct; }
-    public uint32 id { get; construct; }
+    public SidebarListInterface list { get; set construct; }
+    public uint32 id { get; set construct; }
     public string uri { get; set construct; }
     public Icon gicon { get; set construct; }
-    public bool pinned { get; construct; } // Cannot be dragged
-    public bool permanent { get; construct; } // Cannot be removed
+    public bool pinned { get; set construct; } // Cannot be dragged
+    public bool permanent { get; set construct; } // Cannot be removed
     public bool can_insert_before { get; set; default = true; }
     public bool can_insert_after { get; set; default = true; }
 
