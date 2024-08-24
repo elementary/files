@@ -511,7 +511,6 @@ public class Files.FileChooserPortal : Object {
 
         var loop = new MainLoop (null, false);
         try {
-            var session_bus = Bus.get_sync (BusType.SESSION);
             var owner_id = Bus.own_name (
                 BusType.SESSION,
                 "org.freedesktop.impl.portal.desktop.elementary.files",
