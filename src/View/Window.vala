@@ -807,7 +807,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void add_window (GLib.File location = default_location, ViewMode mode = default_mode) {
         var new_window = new Window (marlin_app);
-        new_window.add_tab (location, real_mode (mode), false);
+        new_window.add_tab.begin (location, real_mode (mode), false);
         new_window.present ();
     }
 
