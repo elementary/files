@@ -213,10 +213,6 @@ public class Files.IconInfo : GLib.Object {
             scale = _scale;
         }
 
-        public LoadableIconKey dup () {
-            return new LoadableIconKey (icon, size, scale);
-        }
-
         public static uint hash (LoadableIconKey a) {
             return a.icon.hash () ^ a.size;
         }
@@ -236,17 +232,6 @@ public class Files.IconInfo : GLib.Object {
             icon = _icon;
             size = _size;
             scale = _scale;
-        }
-
-        public uint hash () {
-            return icon.hash () ^ (size * scale);
-        }
-
-        public bool equal (ThemedIconKey other) {
-            if (this.size != other.size || this.scale != other.scale)
-                return false;
-
-            return this.icon.equal (other.icon);
         }
     }
 
