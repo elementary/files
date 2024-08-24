@@ -41,12 +41,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     /* Each row gets a unique id.  The methods relating to this are in the SidebarItemInterface */
     static construct {
-        SidebarItemInterface.row_id = new Rand.with_seed (
+        row_id = new Rand.with_seed (
             int.parse (get_real_time ().to_string ())
         ).next_int ();
 
-        SidebarItemInterface.item_map_lock = Mutex ();
-        SidebarItemInterface.item_id_map = new Gee.HashMap<uint32, SidebarItemInterface> ();
+        item_map_lock = Mutex ();
+        item_id_map = new Gee.HashMap<uint32, SidebarItemInterface> ();
     }
 
     private bool valid = true; //Set to false if scheduled for removal
@@ -117,9 +117,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         set_tooltip_text (Files.FileUtils.sanitize_path (uri, null, false));
 
         selectable = true;
-        id = SidebarItemInterface.get_next_item_id ();
+        id = get_next_item_id ();
         item_map_lock.@lock ();
-        SidebarItemInterface.item_id_map.@set (id, this);
+        item_id_map.@set (id, this);
         item_map_lock.unlock ();
 
         label = new Gtk.Label (display_name) {
@@ -219,7 +219,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         /* We destroy all bookmarks - even permanent ones when refreshing */
         valid = false;
         item_map_lock.@lock ();
-        SidebarItemInterface.item_id_map.unset (id);
+        item_id_map.unset (id);
         item_map_lock.unlock ();
         base.destroy ();
     }
@@ -557,7 +557,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     private bool process_dropped_row (string drop_text, bool dropped_between) {
         var id = (uint32)(uint.parse (drop_text));
-        var item = SidebarItemInterface.get_item (id);
+        var item = get_item (id);
 
         if (item == null ||
             !dropped_between ||
