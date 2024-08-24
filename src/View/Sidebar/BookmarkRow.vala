@@ -179,7 +179,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             propagation_phase = BUBBLE,
             button = 0
         };
-        button_controller.released.connect (button_release_event);
+        button_controller.released.connect (on_button_release_event);
 
         notify["gicon"].connect (() => {
             icon.set_from_gicon (gicon, Gtk.IconSize.MENU);
@@ -245,7 +245,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         return false;
     }
 
-    protected virtual void button_release_event (int n_press, double x, double y) {
+    protected virtual void on_button_release_event (int n_press, double x, double y) {
         if (!valid) { //Ignore if in the process of being removed
             return;
         }
