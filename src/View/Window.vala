@@ -298,6 +298,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 case ViewMode.MILLER_COLUMNS:
                     app_menu.on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
                     break;
+                case ViewMode.PREFERRED:
+                case ViewMode.CURRENT:
+                case ViewMode.INVALID:
+                    assert_not_reached (); //The switcher should not generate these modes
             }
         });
 
