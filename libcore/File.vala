@@ -683,16 +683,10 @@ public class Files.File : GLib.Object {
                 var md5_hash = GLib.Checksum.compute_for_string (GLib.ChecksumType.MD5, uri);
                 var base_name = "%s.png".printf (md5_hash);
 
-                /* Use $XDG_CACHE_HOME specified thumbnail directory instead of hard coding */
-                unowned string folder_size = "normal";
-                if (pix_size * pix_scale > 128) {
-                    folder_size = "large";
-                }
-
                 thumbnail_path = GLib.Path.build_filename (
                     GLib.Environment.get_user_cache_dir (),
                     "thumbnails",
-                    folder_size,
+                    "large",
                     base_name
                 );
             } else if (thumbnail_loaded) {
