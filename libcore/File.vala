@@ -98,7 +98,8 @@ public class Files.File : GLib.Object {
             _thumbnail_path = value;
         }
     }
-    private bool thumbnail_loaded = false;
+
+    public bool thumbnail_loaded = false;
     public bool is_mounted = true;
     public bool exists = true;
     public uint32 uid;

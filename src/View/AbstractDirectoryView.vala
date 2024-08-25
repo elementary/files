@@ -1402,6 +1402,8 @@ namespace Files {
         }
 
         private void on_directory_file_icon_changed (Directory dir, Files.File file) {
+            file.thumbnail_loaded = false;
+
             if (is_frozen) {
                 return;
             }
