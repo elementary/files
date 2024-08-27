@@ -300,6 +300,7 @@ namespace Files {
                 if (req == thumbnail_request) {
                     thumbnail_request = -1;
                 }
+
                 draw_when_idle ();
             });
 
@@ -1401,6 +1402,8 @@ namespace Files {
         }
 
         private void on_directory_file_icon_changed (Directory dir, Files.File file) {
+            file.thumbnail_loaded = false;
+
             if (is_frozen) {
                 return;
             }
@@ -2713,13 +2716,13 @@ namespace Files {
             assert (slot is Files.AbstractSlot && slot.directory != null);
 
             /* Check all known conditions preventing thumbnailing at earliest possible stage */
-            if (thumbnail_source_id != 0 ||
-                !slot.directory.can_open_files ||
+            if (!slot.directory.can_open_files ||
                 slot.directory.is_loading ()) {
 
                     return;
             }
 
+            /* Restart the timeout.
             /* Do not cancel existing requests to avoid missing thumbnails */
             cancel_timeout (ref thumbnail_source_id);
             /* In order to improve performance of the Icon View when there are a large number of files,
@@ -2800,9 +2803,10 @@ namespace Files {
                  */
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request);
-                } else {
-                    draw_when_idle ();
                 }
+
+                //Need to redraw anyway so that standard icons are rendered.
+                draw_when_idle ();
 
                 thumbnail_source_id = 0;
 
@@ -2812,8 +2816,8 @@ namespace Files {
 
         // Called on individual files when added or changed as well as on all visible files
         // by schedule_thumbnail_color_tag_timeout.
-        private void update_icon_and_plugins (Files.File file) {
-            if (file != null && !file.is_gone) {
+        private void update_icon_and_plugins (Files.File file) requires (file != null) {
+            if (!file.is_gone) {
                 // Only update thumbnail if it is going to be shown
                 if ((slot.directory.is_network && show_remote_thumbnails) ||
                     (!slot.directory.is_network && show_local_thumbnails)) {
