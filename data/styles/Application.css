@@ -1,0 +1,34 @@
+/*FIXME: Remove list styles in Gtk4*/
+list.rich-list > row {
+    padding: 6px;
+    min-height: 32px;
+}
+
+list.rich-list label {
+    margin: 0 6px;
+}
+
+list.rich-list button.toggle {
+    margin: 3px 0;
+}
+
+list:not(.horizontal) row.separator,
+list.separators:not(.horizontal) > row:not(.separator) + row:not(.separator) {
+    border-top: 1px solid @menu_separator;
+}
+
+list.boxed-list {
+    border-radius: 6px;
+    box-shadow: 0 1px 3px alpha(black, 0.1);
+}
+
+list.boxed-list > row:first-child {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+list.boxed-list > row:last-child {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-width: 0;
+}

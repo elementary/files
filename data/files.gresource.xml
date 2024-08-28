@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/io/elementary/files/">
+    <file alias="Application.css" compressed="true">styles/Application.css</file>
     <file alias="ColorButton.css" compressed="true">styles/ColorButton.css</file>
     <file alias="DiskRenderer.css" compressed="true">styles/DiskRenderer.css</file>
     <file alias="SidebarExpander.css" compressed="true">styles/SidebarExpander.css</file>
+  </gresource>
+  <gresource prefix="/io/elementary/files/icons">
+    <file alias="scalable/status/permission-execute-prevent-symbolic.svg" compressed="true" preprocess="xml-stripblanks">icons/permission-execute-prevent.svg</file>
+    <file alias="scalable/status/permission-execute-symbolic.svg" compressed="true" preprocess="xml-stripblanks">icons/permission-execute.svg</file>
+    <file alias="scalable/status/permission-read-prevent-symbolic.svg" compressed="true" preprocess="xml-stripblanks">icons/permission-read-prevent.svg</file>
+    <file alias="scalable/status/permission-read-symbolic.svg" compressed="true" preprocess="xml-stripblanks">icons/permission-read.svg</file>
+    <file alias="scalable/status/permission-write-prevent-symbolic.svg" compressed="true" preprocess="xml-stripblanks">icons/permission-write-prevent.svg</file>
+    <file alias="scalable/status/permission-write-symbolic.svg" compressed="true" preprocess="xml-stripblanks">icons/permission-write.svg</file>
   </gresource>
 </gresources>
