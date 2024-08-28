@@ -85,10 +85,12 @@ public class Files.File : GLib.Object {
     private string? _thumbnail_path = null;
     public string thumbnail_path {
         get {
-            if (_thumbnail_path == null) {
-                if (info != null && info.has_attribute (GLib.FileAttribute.THUMBNAIL_PATH)) {
-                    _thumbnail_path = info.get_attribute_byte_string (GLib.FileAttribute.THUMBNAIL_PATH);
-                }
+            if (_thumbnail_path == null &&
+                info != null &&
+                info.has_attribute (GLib.FileAttribute.THUMBNAIL_PATH)) {
+
+                // This attribute points to the largest available thumbnail (distro agnostic)
+                _thumbnail_path = info.get_attribute_byte_string (GLib.FileAttribute.THUMBNAIL_PATH);
             }
 
             return _thumbnail_path;
