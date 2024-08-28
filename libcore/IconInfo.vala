@@ -122,7 +122,7 @@ public class Files.IconInfo : GLib.Object {
     }
 
     public static Files.IconInfo get_generic_icon (int size, int scale) {
-        var generic_icon = new GLib.ThemedIcon ("text-x-generic"); // Assume theme always contains this?
+        var generic_icon = new GLib.ThemedIcon ("text-x-generic");
         return IconInfo.lookup (generic_icon, size, scale);
     }
 
