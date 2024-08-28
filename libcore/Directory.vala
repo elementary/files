@@ -989,6 +989,11 @@ public class Files.Directory : Object {
     }
 
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
+        // Ignore events from transient streams
+        if (_file.get_basename ().has_prefix (".goutputstream")) {
+            return;
+        }
+
         switch (event) {
             case FileMonitorEvent.CREATED:
                 Files.FileChanges.queue_file_added (_file, false);
@@ -1004,7 +1009,8 @@ public class Files.Directory : Object {
                 break;
             case FileMonitorEvent.CHANGES_DONE_HINT:
                 // TODO Check for unexpected regressions caused by not refreshing file info here. It should already
-                // have been done if requried by one of the set of changes so doing it again is inefficient.
+                // have been done if required by one of the set of changes so doing it again is inefficient.
+                Files.FileChanges.queue_file_changed (_file);
                 break;
             case FileMonitorEvent.MOVED:
                 break;

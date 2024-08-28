@@ -75,13 +75,31 @@ public class Files.File : GLib.Object {
     public Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
     public GLib.FileType file_type;
     public bool is_hidden { get; construct; }
+    public bool is_remote = false;
     public bool is_directory = false;
     public bool is_desktop = false;
     public bool is_expanded = false;
     [CCode (cname = "can_unmount")]
     public bool _can_unmount;
     public uint thumbstate = Files.File.ThumbState.UNKNOWN;
-    public string thumbnail_path = null;
+    private string? _thumbnail_path = null;
+    public string thumbnail_path {
+        get {
+            if (_thumbnail_path == null) {
+                if (info != null && info.has_attribute (GLib.FileAttribute.THUMBNAIL_PATH)) {
+                    _thumbnail_path = info.get_attribute_byte_string (GLib.FileAttribute.THUMBNAIL_PATH);
+                }
+            }
+
+            return _thumbnail_path;
+        }
+
+        set {
+            _thumbnail_path = value;
+        }
+    }
+
+    public bool thumbnail_loaded = false;
     public bool is_mounted = true;
     public bool exists = true;
     public uint32 uid;
@@ -172,6 +190,8 @@ public class Files.File : GLib.Object {
     }
 
     construct {
+        var scheme = location.get_uri_scheme ();
+        is_remote = scheme != "" && scheme != "file";
         icon_changed.connect (() => {
             if (directory != null) {
                 var dir = Files.Directory.cache_lookup (directory);
@@ -419,7 +439,7 @@ public class Files.File : GLib.Object {
         }
     }
 
-    public Files.IconInfo? get_icon (int size, int scale, Files.File.IconFlags flags) {
+    private Files.IconInfo? get_icon (int size, int scale, Files.File.IconFlags flags) {
         GLib.return_val_if_fail (size >= 1, null);
 
         Files.IconInfo? icon = get_special_icon (size, scale, flags);
@@ -435,7 +455,7 @@ public class Files.File : GLib.Object {
         }
 
         if (gicon != null) {
-            icon = Files.IconInfo.lookup (gicon, size, scale);
+            icon = Files.IconInfo.lookup (gicon, size, scale, is_remote);
             if (icon == null || icon.is_fallback ()) {
                 icon = Files.IconInfo.get_generic_icon (size, scale);
             }
@@ -569,7 +589,7 @@ public class Files.File : GLib.Object {
         utf8_collation_key = get_display_name ().collate_key_for_filename ();
         /* mark the thumb flags as state none, we'll load the thumbs once the directory
          * would be loaded on a thread */
-        if (get_thumbnail_path () != null) {
+        if (thumbnail_path != null) {
             thumbstate = Files.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
         }
 
@@ -656,22 +676,23 @@ public class Files.File : GLib.Object {
         if (pix_size <= 1 || pix_scale <= 0) {
             return;
         }
-        if (get_thumbnail_path () == null && thumbstate == ThumbState.READY) {
-            var md5_hash = GLib.Checksum.compute_for_string (GLib.ChecksumType.MD5, uri);
-            var base_name = "%s.png".printf (md5_hash);
 
-            /* Use $XDG_CACHE_HOME specified thumbnail directory instead of hard coding */
-            unowned string folder_size = "normal";
-            if (pix_size * pix_scale > 128) {
-                folder_size = "large";
+        if (thumbstate == ThumbState.READY) {
+            if (thumbnail_path == null) {
+                debug ("Making own thumbnail path for %s - no attribute", uri);
+                var md5_hash = GLib.Checksum.compute_for_string (GLib.ChecksumType.MD5, uri);
+                var base_name = "%s.png".printf (md5_hash);
+
+                thumbnail_path = GLib.Path.build_filename (
+                    GLib.Environment.get_user_cache_dir (),
+                    "thumbnails",
+                    "large",
+                    base_name
+                );
+            } else if (thumbnail_loaded) {
+                // Avoid unnecessarily looking up thumbnail when scrolling
+                return;
             }
-
-            thumbnail_path = GLib.Path.build_filename (
-                GLib.Environment.get_user_cache_dir (),
-                "thumbnails",
-                folder_size,
-                base_name
-            );
         }
 
         update_icon_internal (pix_size, pix_scale);
@@ -685,16 +706,7 @@ public class Files.File : GLib.Object {
         return info != null;
     }
 
-    public unowned string? get_thumbnail_path () {
-        unowned string? path = null;
-        if (thumbnail_path != null) {
-            path = thumbnail_path;
-        } else if (info != null && info.has_attribute (GLib.FileAttribute.THUMBNAIL_PATH)) {
-            path = info.get_attribute_byte_string (GLib.FileAttribute.THUMBNAIL_PATH);
-        }
 
-        return path;
-    }
 
     public bool can_set_owner () {
         /* unknown file uid */
@@ -1311,10 +1323,8 @@ public class Files.File : GLib.Object {
         }
 
         if (Files.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == Files.File.ThumbState.READY) {
-            unowned string? thumb_path = get_thumbnail_path ();
-            if (thumb_path != null) {
-                return Files.IconInfo.lookup_from_path (thumb_path, size, scale);
-            }
+            thumbnail_loaded = true;
+            return Files.IconInfo.lookup_from_path (thumbnail_path, size, scale, is_remote);
         }
 
         return null;
