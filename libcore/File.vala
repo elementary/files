@@ -450,8 +450,6 @@ public class Files.File : GLib.Object {
         }
     }
 
-
-
     public void update () {
         if (info == null) {
             return;
@@ -573,6 +571,7 @@ public class Files.File : GLib.Object {
         }
 
         utf8_collation_key = get_display_name ().collate_key_for_filename ();
+
         thumbstate = Files.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
 
         /* formated type */
@@ -760,7 +759,6 @@ public class Files.File : GLib.Object {
             update ();
         }
     }
-
 
     public bool ensure_query_info () {
         if (info == null) {

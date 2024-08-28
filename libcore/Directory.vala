@@ -1006,6 +1006,8 @@ public class Files.Directory : Object {
                 Files.FileChanges.queue_file_changed (_file);
                 break;
             case FileMonitorEvent.CHANGES_DONE_HINT:
+                // TODO Check for unexpected regressions caused by not refreshing file info here. It should already
+                // have been done if required by one of the set of changes so doing it again is inefficient.
                 Files.FileChanges.queue_file_changed (_file);
                 break;
             // Move events should not be received as relevant flag is not set

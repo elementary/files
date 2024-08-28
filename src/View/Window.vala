@@ -298,6 +298,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 case ViewMode.MILLER_COLUMNS:
                     app_menu.on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
                     break;
+                case ViewMode.PREFERRED:
+                case ViewMode.CURRENT:
+                case ViewMode.INVALID:
+                    assert_not_reached (); //The switcher should not generate these modes
             }
         });
 
@@ -807,7 +811,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void add_window (GLib.File location = default_location, ViewMode mode = default_mode) {
         var new_window = new Window (marlin_app);
-        new_window.add_tab (location, real_mode (mode), false);
+        new_window.add_tab.begin (location, real_mode (mode), false);
         new_window.present ();
     }
 
