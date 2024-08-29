@@ -996,9 +996,9 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
             perm_grid.attach (owner_user_choice, 1, 0);
             perm_grid.attach (group_combo_label, 0, 1);
             perm_grid.attach (group_combo, 1, 1);
-            perm_grid.attach (l_perm, 0, 2);
-            perm_grid.attach (perm_code, 1, 2);
-            perm_grid.attach (permission_box, 0, 3, 2);
+            perm_grid.attach (permission_box, 0, 2, 2);
+            perm_grid.attach (l_perm, 0, 3);
+            perm_grid.attach (perm_code, 1, 3);
 
             update_perm_grid_toggle_states (goffile.permissions);
 
