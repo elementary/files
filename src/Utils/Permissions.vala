@@ -21,7 +21,19 @@ namespace Permissions {
     public enum Type {
         USER,
         GROUP,
-        OTHER
+        OTHER;
+
+        public string to_string () {
+            switch (this) {
+                case USER:
+                    return _("Owner");
+                case GROUP:
+                    return _("Group");
+                default:
+                case OTHER:
+                    return _("Everyone");
+            }
+        }
     }
 
     public enum Value {

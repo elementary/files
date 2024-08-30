@@ -1015,6 +1015,7 @@ public class Files.Directory : Object {
             case FileMonitorEvent.MOVED_IN:
             case FileMonitorEvent.MOVED_OUT:
                 break;
+            // Icon does not currently change for these events
             case FileMonitorEvent.RENAMED:
             case FileMonitorEvent.PRE_UNMOUNT:
             case FileMonitorEvent.UNMOUNTED:

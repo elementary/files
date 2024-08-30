@@ -17,10 +17,10 @@
 * Boston, MA 02110-1335 USA.
 */
 
-public class PermissionButton : Gtk.Grid {
-    public Gtk.ToggleButton btn_read;
-    public Gtk.ToggleButton btn_write;
-    public Gtk.ToggleButton btn_exe;
+public class PermissionButton : Gtk.ListBoxRow {
+    public Gtk.ToggleButton btn_read { get; private set; }
+    public Gtk.ToggleButton btn_write { get; private set; }
+    public Gtk.ToggleButton btn_exe { get; private set; }
 
     public Permissions.Type permission_type { get; construct; }
 
@@ -30,47 +30,81 @@ public class PermissionButton : Gtk.Grid {
         { Posix.S_IROTH, Posix.S_IWOTH, Posix.S_IXOTH }
     };
 
+    private static Gtk.SizeGroup label_sizegroup;
+
     public PermissionButton (Permissions.Type permission_type) {
         Object (permission_type: permission_type);
     }
 
+    static construct {
+        label_sizegroup = new Gtk.SizeGroup (HORIZONTAL);
+    }
+
     construct {
-        btn_read = new Gtk.ToggleButton.with_label (_("Read"));
+        var label = new Gtk.Label (permission_type.to_string ()) {
+            xalign = 0
+        };
+
+        label_sizegroup.add_widget (label);
+
+        btn_read = new Gtk.ToggleButton () {
+            hexpand = true,
+            image = new Gtk.Image.from_icon_name ("permission-read-symbolic", BUTTON),
+            tooltip_text = _("Read")
+        };
         btn_read.set_data ("permissiontype", permission_type);
         btn_read.set_data ("permissionvalue", Permissions.Value.READ);
 
-        btn_write = new Gtk.ToggleButton.with_label (_("Write"));
+        btn_write = new Gtk.ToggleButton () {
+            hexpand = true,
+            image = new Gtk.Image.from_icon_name ("permission-write-symbolic", BUTTON),
+            tooltip_text = _("Write")
+        };
         btn_write.set_data ("permissiontype", permission_type);
         btn_write.set_data ("permissionvalue", Permissions.Value.WRITE);
 
-        btn_exe = new Gtk.ToggleButton.with_label (_("Execute"));
+        btn_exe = new Gtk.ToggleButton () {
+            hexpand = true,
+            image = new Gtk.Image.from_icon_name ("permission-execute-symbolic", BUTTON),
+            tooltip_text = _("Execute")
+        };
         btn_exe.set_data ("permissiontype", permission_type);
         btn_exe.set_data ("permissionvalue", Permissions.Value.EXE);
 
-        column_homogeneous = true;
-        get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
-        add (btn_read);
-        add (btn_write);
-        add (btn_exe);
+        var box = new Gtk.Box (HORIZONTAL, 6);
+        box.add (label);
+        box.add (btn_read);
+        box.add (btn_write);
+        box.add (btn_exe);
+
+        child = box;
+        selectable = false;
+        activatable = false;
     }
 
     public void update_buttons (uint32 permissions) {
         if ((permissions & vfs_perms[permission_type, 0]) != 0) {
             btn_read.active = true;
+            ((Gtk.Image) btn_read.image).icon_name = "permission-read-symbolic";
         } else {
             btn_read.active = false;
+            ((Gtk.Image) btn_read.image).icon_name = "permission-read-prevent-symbolic";
         }
 
         if ((permissions & vfs_perms[permission_type, 1]) != 0) {
             btn_write.active = true;
+            ((Gtk.Image) btn_write.image).icon_name = "permission-write-symbolic";
         } else {
             btn_write.active = false;
+            ((Gtk.Image) btn_write.image).icon_name = "permission-write-prevent-symbolic";
         }
 
         if ((permissions & vfs_perms[permission_type, 2]) != 0) {
             btn_exe.active = true;
+            ((Gtk.Image) btn_exe.image).icon_name = "permission-execute-symbolic";
         } else {
             btn_exe.active = false;
+            ((Gtk.Image) btn_exe.image).icon_name = "permission-execute-prevent-symbolic";
         }
     }
 }

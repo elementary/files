@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-14 18:24+0000\n"
+"POT-Creation-Date: 2024-08-30 15:34+0000\n"
 "PO-Revision-Date: 2017-12-30 00:08+0000\n"
 "Last-Translator: Hải Hồ <hochihai1997@gmail.com>\n"
 "Language-Team: Vietnamese <https://weblate.elementary.io/projects/files/"
@@ -221,7 +221,7 @@ msgstr ""
 msgid "Link Here"
 msgstr ""
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2356
+#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2321
 msgid "Name"
 msgstr "Tên"
 
@@ -236,7 +236,7 @@ msgstr "Tạo"
 msgid "Last modification date"
 msgstr "Sửa đối cuối:"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2361
+#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2326
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Kích thước"
@@ -249,7 +249,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2371
+#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2336
 msgid "Date"
 msgstr "Ngày"
 
@@ -303,41 +303,41 @@ msgstr "Sửa đổi"
 msgid "Current Date"
 msgstr ""
 
-#: libcore/File.vala:554 libcore/File.vala:1117
+#: libcore/File.vala:574 libcore/File.vala:1129
 msgid "Inaccessible"
 msgstr ""
 
-#: libcore/File.vala:895
+#: libcore/File.vala:907
 #, fuzzy
 msgid "Failed to parse the desktop file"
 msgstr "Không thể mở tập tin"
 
-#: libcore/File.vala:899
+#: libcore/File.vala:911
 #, fuzzy
 msgid "Failed to parse the desktop file: "
 msgstr "Không thể mở tập tin"
 
-#: libcore/File.vala:911
+#: libcore/File.vala:923
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "Không thể mở tập tin"
 
-#: libcore/File.vala:920
+#: libcore/File.vala:932
 msgid "Unable to Launch Desktop File: "
 msgstr ""
 
-#: libcore/File.vala:1110
+#: libcore/File.vala:1122
 #, fuzzy
 msgid "Empty"
 msgstr "Tập tin trống"
 
-#: libcore/File.vala:1112
+#: libcore/File.vala:1124
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d phút"
 
-#: libcore/File.vala:1157
+#: libcore/File.vala:1169
 #, c-format
 msgid "link to %s"
 msgstr "liên kết tới %s"
@@ -544,7 +544,7 @@ msgstr[0] "%'d phút"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1264
+#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1265
 #, c-format
 msgid "%s, %s"
 msgstr ""
@@ -1127,7 +1127,7 @@ msgid "_Unmount"
 msgstr "_Bỏ gắn kết"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2063
+#: src/View/AbstractDirectoryView.vala:2028
 msgid "Properties"
 msgstr "Thuộc tính"
 
@@ -1140,7 +1140,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "Bỏ"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2056
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2021
 #, fuzzy
 msgid "Add to Bookmarks"
 msgstr "Đánh dấu chỉ mục"
@@ -1600,8 +1600,8 @@ msgstr "Hiển thị phiên bản."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Mở (các) uri trong tab mới"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1944
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1909
+#: src/View/AbstractDirectoryView.vala:1915
 msgid "New Window"
 msgstr ""
 
@@ -1881,7 +1881,7 @@ msgid "Original Location:"
 msgstr "Vị trí gốc ban đầu:"
 
 #: src/Dialogs/PropertiesWindow.vala:671
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Other Application…"
 msgstr "Ứng dụng khác…"
 
@@ -1889,41 +1889,37 @@ msgstr "Ứng dụng khác…"
 msgid "Open with:"
 msgstr "Mở bằng:"
 
-#: src/Dialogs/PropertiesWindow.vala:960 src/Dialogs/PropertiesWindow.vala:967
+#: src/Dialogs/PropertiesWindow.vala:960
 msgid "Owner:"
 msgstr "Người sở hữu:"
 
-#: src/Dialogs/PropertiesWindow.vala:961 src/Dialogs/PropertiesWindow.vala:970
+#: src/Dialogs/PropertiesWindow.vala:961
 msgid "Group:"
 msgstr "Nhóm:"
 
-#: src/Dialogs/PropertiesWindow.vala:973
-msgid "Everyone:"
-msgstr "Mọi người:"
-
-#: src/Dialogs/PropertiesWindow.vala:1255
+#: src/Dialogs/PropertiesWindow.vala:1256
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1259
-#: src/Dialogs/PropertiesWindow.vala:1281
+#: src/Dialogs/PropertiesWindow.vala:1260
+#: src/Dialogs/PropertiesWindow.vala:1282
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1277 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1278 src/View/Widgets/OverlayBar.vala:171
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1286
+#: src/Dialogs/PropertiesWindow.vala:1287
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -1931,7 +1927,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1288
+#: src/Dialogs/PropertiesWindow.vala:1289
 #, c-format
 msgid "%s (%s, %s)"
 msgstr ""
@@ -1966,192 +1962,210 @@ msgstr "Không thể đổi tên thành '%s'"
 msgid "Could not open files or URIs with this app"
 msgstr "Không thể mở tệp hoặc uris với ứng dụng này"
 
-#: src/View/AbstractDirectoryView.vala:868
-#: src/View/AbstractDirectoryView.vala:1195
+#: src/Utils/Permissions.vala:29
+#, fuzzy
+#| msgid "Owner:"
+msgid "Owner"
+msgstr "Người sở hữu:"
+
+#: src/Utils/Permissions.vala:31
+#, fuzzy
+#| msgid "Group:"
+msgid "Group"
+msgstr "Nhóm:"
+
+#: src/Utils/Permissions.vala:34
+#, fuzzy
+#| msgid "Everyone:"
+msgid "Everyone"
+msgstr "Mọi người:"
+
+#: src/View/AbstractDirectoryView.vala:856
+#: src/View/AbstractDirectoryView.vala:1183
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "Không thể mở tập tin này"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:878
+#: src/View/AbstractDirectoryView.vala:866
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:879
+#: src/View/AbstractDirectoryView.vala:867
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:894
+#: src/View/AbstractDirectoryView.vala:882
 msgid "Cannot open this file"
 msgstr "Không thể mở tập tin này"
 
-#: src/View/AbstractDirectoryView.vala:907
+#: src/View/AbstractDirectoryView.vala:895
 msgid "Cannot identify file type to open"
 msgstr "Không thể xác định loại tập tin để mở"
 
-#: src/View/AbstractDirectoryView.vala:1653
+#: src/View/AbstractDirectoryView.vala:1618
 msgid "Cannot drop this file"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1654
+#: src/View/AbstractDirectoryView.vala:1619
 msgid "Invalid file name provided"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1927
-#: src/View/AbstractDirectoryView.vala:1933 src/View/Window.vala:239
+#: src/View/AbstractDirectoryView.vala:1892
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "Tab mới"
 
-#: src/View/AbstractDirectoryView.vala:1967
+#: src/View/AbstractDirectoryView.vala:1932
 msgid "Run"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1974
+#: src/View/AbstractDirectoryView.vala:1939
 #, c-format
 msgid "Open in %s"
 msgstr "Mở trong %s"
 
-#: src/View/AbstractDirectoryView.vala:2043
+#: src/View/AbstractDirectoryView.vala:2008
 msgid "Open in"
 msgstr "Mở trong"
 
-#: src/View/AbstractDirectoryView.vala:2045
+#: src/View/AbstractDirectoryView.vala:2010
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "Mở với"
 
-#: src/View/AbstractDirectoryView.vala:2076
+#: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2050
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2094
+#: src/View/AbstractDirectoryView.vala:2059
 msgid "Deselect All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2102
+#: src/View/AbstractDirectoryView.vala:2067
 msgid "Cut"
 msgstr ""
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2110
+#: src/View/AbstractDirectoryView.vala:2075
 msgid "Copy"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2117
+#: src/View/AbstractDirectoryView.vala:2082
 msgid "Move to Trash"
 msgstr "Di chuyển vào Thùng rác"
 
-#: src/View/AbstractDirectoryView.vala:2122
+#: src/View/AbstractDirectoryView.vala:2087
 #, fuzzy
 msgid "Delete Permanently"
 msgstr "Xóa vĩnh viễn"
 
-#: src/View/AbstractDirectoryView.vala:2129
+#: src/View/AbstractDirectoryView.vala:2094
 #, fuzzy
 msgid "Restore from Trash"
 msgstr "Phục hồi %d mục từ thùng rác"
 
-#: src/View/AbstractDirectoryView.vala:2152
+#: src/View/AbstractDirectoryView.vala:2117
 msgid "Open Parent Folder"
 msgstr "Mở thư mục cha"
 
-#: src/View/AbstractDirectoryView.vala:2155
+#: src/View/AbstractDirectoryView.vala:2120
 msgid "Remove from History"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2181
+#: src/View/AbstractDirectoryView.vala:2146
 #, fuzzy
 msgid "Rename…"
 msgstr "Đổi tên"
 
-#: src/View/AbstractDirectoryView.vala:2188
+#: src/View/AbstractDirectoryView.vala:2153
 msgid "Copy as Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2211
-#: src/View/AbstractDirectoryView.vala:2291
+#: src/View/AbstractDirectoryView.vala:2176
+#: src/View/AbstractDirectoryView.vala:2256
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "Dán vào Thư mục"
 
-#: src/View/AbstractDirectoryView.vala:2216
-#: src/View/AbstractDirectoryView.vala:2268
+#: src/View/AbstractDirectoryView.vala:2181
+#: src/View/AbstractDirectoryView.vala:2233
 msgid "Paste into Folder"
 msgstr "Dán vào Thư mục"
 
-#: src/View/AbstractDirectoryView.vala:2226
-#: src/View/AbstractDirectoryView.vala:2296
+#: src/View/AbstractDirectoryView.vala:2191
+#: src/View/AbstractDirectoryView.vala:2261
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2334
+#: src/View/AbstractDirectoryView.vala:2299
 #, fuzzy
 #| msgid "Set as default"
 msgid "Set as Wallpaper"
 msgstr "Đặt làm mặc định"
 
-#: src/View/AbstractDirectoryView.vala:2366 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2331 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Loại"
 
-#: src/View/AbstractDirectoryView.vala:2376
+#: src/View/AbstractDirectoryView.vala:2341
 msgid "Reversed Order"
 msgstr "Lệnh đảo ngược"
 
-#: src/View/AbstractDirectoryView.vala:2379
+#: src/View/AbstractDirectoryView.vala:2344
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2391
+#: src/View/AbstractDirectoryView.vala:2356
 msgid "Sort by"
 msgstr "Sắp xếp theo"
 
-#: src/View/AbstractDirectoryView.vala:2399
+#: src/View/AbstractDirectoryView.vala:2364
 msgid "Folder"
 msgstr "Thư mục"
 
-#: src/View/AbstractDirectoryView.vala:2405
+#: src/View/AbstractDirectoryView.vala:2370
 msgid "Empty File"
 msgstr "Tập tin trống"
 
-#: src/View/AbstractDirectoryView.vala:2456
+#: src/View/AbstractDirectoryView.vala:2421
 msgid "New"
 msgstr "Mới"
 
-#: src/View/AbstractDirectoryView.vala:2701
+#: src/View/AbstractDirectoryView.vala:2666
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3006
-#: src/View/AbstractDirectoryView.vala:3209
+#: src/View/AbstractDirectoryView.vala:2961
+#: src/View/AbstractDirectoryView.vala:3164
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3007
-#: src/View/AbstractDirectoryView.vala:3182
-#: src/View/AbstractDirectoryView.vala:3193
-#: src/View/AbstractDirectoryView.vala:3210
+#: src/View/AbstractDirectoryView.vala:2962
+#: src/View/AbstractDirectoryView.vala:3137
+#: src/View/AbstractDirectoryView.vala:3148
+#: src/View/AbstractDirectoryView.vala:3165
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:3105
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3151
+#: src/View/AbstractDirectoryView.vala:3106
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3181
-#: src/View/AbstractDirectoryView.vala:3192
+#: src/View/AbstractDirectoryView.vala:3136
+#: src/View/AbstractDirectoryView.vala:3147
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -2291,31 +2305,31 @@ msgstr ""
 msgid "Closed Tabs"
 msgstr "Tab mới"
 
-#: src/View/Window.vala:462 src/View/Widgets/BreadcrumbsEntry.vala:393
+#: src/View/Window.vala:467 src/View/Widgets/BreadcrumbsEntry.vala:393
 msgid "Open in New Window"
 msgstr "Mở trong cửa số mới"
 
-#: src/View/Window.vala:463
+#: src/View/Window.vala:468
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Đang xóa tập tin"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:467
+#: src/View/Window.vala:472
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:468
+#: src/View/Window.vala:473
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "Tab mới"
 
-#: src/View/Window.vala:469
+#: src/View/Window.vala:474
 #, fuzzy
 msgid "Close Tab"
 msgstr "Tab mới"
 
-#: src/View/Window.vala:757 src/View/Window.vala:767
+#: src/View/Window.vala:762 src/View/Window.vala:772
 msgid "(as Administrator)"
 msgstr ""
 
@@ -2559,15 +2573,15 @@ msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] ""
 
-#: src/View/Widgets/PermissionButton.vala:38
+#: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"
 msgstr "Đọc"
 
-#: src/View/Widgets/PermissionButton.vala:42
+#: src/View/Widgets/PermissionButton.vala:61
 msgid "Write"
 msgstr "Ghi"
 
-#: src/View/Widgets/PermissionButton.vala:46
+#: src/View/Widgets/PermissionButton.vala:69
 msgid "Execute"
 msgstr "Thực thi"
 

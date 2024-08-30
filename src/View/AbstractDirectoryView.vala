@@ -2802,8 +2802,11 @@ namespace Files {
         private void update_icon_and_plugins (Files.File file) requires (file != null) {
             if (!file.is_gone) {
                 // Only update thumbnail if it is going to be shown
-                file.update_icon ();
-               /* In any case, ensure color-tag info is correct */
+                if (should_thumbnail) {
+                    file.update_icon ();
+                }
+
+                /* In any case, ensure color-tag info is correct */
                 if (plugins != null) {
                     plugins.update_file_info (file);
                 }
