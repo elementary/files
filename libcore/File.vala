@@ -631,10 +631,7 @@ public class Files.File : GLib.Object {
         utf8_collation_key = get_display_name ().collate_key_for_filename ();
         /* mark the thumb flags as state none, we'll load the thumbs once the directory
          * would be loaded on a thread */
-        if (thumbnail_path != null) {
-            thumbstate = Files.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
-        }
-
+        thumbstate = Files.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
         /* formated type */
         update_formated_type ();
 
