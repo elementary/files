@@ -103,7 +103,23 @@ public class Files.File : GLib.Object {
 
     public bool thumbnail_loaded = false;
     public bool is_mounted = true;
-    public bool exists = true;
+    private bool _exists = true;
+    public bool exists {
+        get {
+            return _exists;
+        }
+
+        set {
+            // File created existing and can only be set to not existing
+            if (!value && _exists) {
+                if (thumbnail_path != null) {
+                    FileUtils.remove_thumbnail_paths_for_uri (uri);
+                }
+            }
+
+            _exists = false;
+        }
+    }
     public uint32 uid;
     public uint32 gid;
     public string owner = null;
@@ -1092,7 +1108,6 @@ public class Files.File : GLib.Object {
         }
 
         is_mounted = true;
-        exists = true;
         is_connected = true;
         try {
             return location.query_info ("*", GLib.FileQueryInfoFlags.NONE);
