@@ -69,6 +69,7 @@ public class Files.File : GLib.Object {
     public string? custom_icon_name = null;
     public int pix_size = 16;
     public int pix_scale = 1;
+    private bool pix_is_final = false;
     public int width = 0;
     public int height = 0;
     public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
@@ -427,11 +428,12 @@ public class Files.File : GLib.Object {
         return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
-    public Gdk.Pixbuf? get_icon_pixbuf (int size, int scale, Files.File.IconFlags flags) {
-        GLib.return_val_if_fail (size >= 1, null);
-
-        var nicon = get_icon (size, scale, flags);
-        return nicon != null ? nicon.get_pixbuf_nodefault () : null;
+    public Gdk.Pixbuf? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
+        return get_icon (
+            _size.clamp (16, 512),
+            scale,
+            flags
+        ).get_pixbuf_nodefault ();
     }
 
     public void get_folder_icon_from_uri_or_path () {
@@ -457,31 +459,54 @@ public class Files.File : GLib.Object {
         }
     }
 
-    private Files.IconInfo? get_icon (int size, int scale, Files.File.IconFlags flags) {
-        GLib.return_val_if_fail (size >= 1, null);
+    // This re-fetches the icon even if we already have pixbuf of the same size.
+    // Assume dimensions are valid as it is private function
+    private Files.IconInfo get_icon (int requested_size, int scale, Files.File.IconFlags flags) {
+        pix_is_final = true;
+        Files.IconInfo? iconinfo = null;
+        var use_thumbnails = IconFlags.USE_THUMBNAILS in flags;
+        var awaiting_thumbnail = use_thumbnails &&
+                                 (thumbstate == ThumbState.LOADING || thumbstate == ThumbState.UNKNOWN);
 
-        Files.IconInfo? icon = get_special_icon (size, scale, flags);
-        if (icon != null && !icon.is_fallback ()) {
-            return icon;
-        }
+        var thumbnail_ready = use_thumbnails && thumbstate == ThumbState.READY;
 
-        GLib.Icon? gicon = null;
-        if (Files.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == Files.File.ThumbState.LOADING) {
-            gicon = new GLib.ThemedIcon ("image-loading");
-        } else {
-            gicon = this.icon;
-        }
-
-        if (gicon != null) {
-            icon = Files.IconInfo.lookup (gicon, size, scale, is_remote);
-            if (icon == null || icon.is_fallback ()) {
-                icon = Files.IconInfo.get_generic_icon (size, scale);
+        // Get "special" icon - custom icons or thumbnails
+        if (custom_icon_name != null) {
+            if (GLib.Path.is_absolute (custom_icon_name)) {
+                iconinfo = Files.IconInfo.lookup_from_path (custom_icon_name, requested_size, scale);
+            } else {
+                iconinfo = Files.IconInfo.lookup_from_name (custom_icon_name, requested_size, scale);
             }
-        } else {
-            icon = Files.IconInfo.get_generic_icon (size, scale);
         }
 
-        return icon;
+        if (iconinfo == null && thumbnail_ready) {
+            iconinfo = Files.IconInfo.lookup_from_path (thumbnail_path, requested_size, scale, is_remote);
+        }
+
+        if (iconinfo == null || iconinfo.pixbuf == null) {
+            GLib.Icon? gicon = null;
+            if (awaiting_thumbnail) {
+                gicon = new GLib.ThemedIcon ("image-loading");
+                pix_is_final = false;
+            } else {
+                gicon = this.icon;
+            }
+
+            if (gicon != null) {
+                iconinfo = Files.IconInfo.lookup (gicon, requested_size, scale, is_remote);
+                if (iconinfo == null || iconinfo.pixbuf == null) {
+                    iconinfo = Files.IconInfo.get_generic_icon (requested_size, scale);
+                }
+            } else {
+                iconinfo = Files.IconInfo.get_generic_icon (requested_size, scale);
+            }
+        }
+
+        assert_nonnull (iconinfo); // Assume that can always get generic icon
+        pix = iconinfo.get_pixbuf_nodefault ();
+        pix_size = requested_size;
+        pix_scale = scale;
+        return iconinfo;
     }
 
     public void update () {
@@ -662,16 +687,15 @@ public class Files.File : GLib.Object {
         }
     }
 
-    public void update_icon (int size, int scale) {
-        if (size <= 1) {
+    // This only changes the icon if the request dimensions have changed.
+    //TODO Rename function to reflect this
+    public void update_icon (int _size, int scale) {
+        var requested_size = _size.clamp (16, 512);
+        if (pix != null && pix_size == requested_size && pix_scale == scale) {
             return;
         }
 
-        if (pix != null && pix_size == size && pix_scale == scale) {
-            return;
-        }
-
-        update_icon_internal (size, scale);
+        get_icon (requested_size, scale, Files.File.IconFlags.USE_THUMBNAILS);
     }
 
     public void update_desktop_file () {
@@ -713,7 +737,7 @@ public class Files.File : GLib.Object {
             }
         }
 
-        update_icon_internal (pix_size, pix_scale);
+        get_icon (pix_size, pix_scale, Files.File.IconFlags.USE_THUMBNAILS);
     }
 
     public bool ensure_query_info () {
@@ -1321,29 +1345,4 @@ public class Files.File : GLib.Object {
         return 0;
     }
 
-    private void update_icon_internal (int size, int scale) {
-        GLib.return_if_fail (size >= 1);
-        pix = get_icon_pixbuf (size, scale, Files.File.IconFlags.USE_THUMBNAILS);
-        pix_size = size;
-        pix_scale = scale;
-    }
-
-    private Files.IconInfo? get_special_icon (int size, int scale, Files.File.IconFlags flags) {
-        GLib.return_val_if_fail (size >= 1, null);
-
-        if (custom_icon_name != null) {
-            if (GLib.Path.is_absolute (custom_icon_name)) {
-                return Files.IconInfo.lookup_from_path (custom_icon_name, size, scale);
-            } else {
-                return Files.IconInfo.lookup_from_name (custom_icon_name, size, scale);
-            }
-        }
-
-        if (Files.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == Files.File.ThumbState.READY) {
-            thumbnail_loaded = true;
-            return Files.IconInfo.lookup_from_path (thumbnail_path, size, scale, is_remote);
-        }
-
-        return null;
-    }
 }
