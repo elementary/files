@@ -2822,7 +2822,7 @@ namespace Files {
                 if ((slot.directory.is_network && show_remote_thumbnails) ||
                     (!slot.directory.is_network && show_local_thumbnails)) {
 
-                    file.query_thumbnail_update ();
+                    file.update_icon ();
                 }
                /* In any case, ensure color-tag info is correct */
                 if (plugins != null) {
