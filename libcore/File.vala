@@ -428,6 +428,7 @@ public class Files.File : GLib.Object {
         return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
+    //TODO Is it necessary to refetch the icon if have pix at requested size? 
     public Gdk.Pixbuf? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
         return get_icon (
             _size.clamp (16, 512),
@@ -461,6 +462,7 @@ public class Files.File : GLib.Object {
 
     // This re-fetches the icon even if we already have pixbuf of the same size.
     // Assume dimensions are valid as it is private function
+    // Return iconinfo may not be used for view display so do not update pix etc
     private Files.IconInfo get_icon (int requested_size, int scale, Files.File.IconFlags flags) {
         pix_is_final = true;
         Files.IconInfo? iconinfo = null;
@@ -503,9 +505,6 @@ public class Files.File : GLib.Object {
         }
 
         assert_nonnull (iconinfo); // Assume that can always get generic icon
-        pix = iconinfo.get_pixbuf_nodefault ();
-        pix_size = requested_size;
-        pix_scale = scale;
         return iconinfo;
     }
 
@@ -687,7 +686,8 @@ public class Files.File : GLib.Object {
         }
     }
 
-    // This only changes the icon if the request dimensions have changed.
+    // This only changes the file icon if the request dimensions have changed.
+    // Does not query thumbnail
     //TODO Rename function to reflect this
     public void update_icon (int _size, int scale) {
         var requested_size = _size.clamp (16, 512);
@@ -695,7 +695,10 @@ public class Files.File : GLib.Object {
             return;
         }
 
-        get_icon (requested_size, scale, Files.File.IconFlags.USE_THUMBNAILS);
+        var iconinfo = get_icon (requested_size, scale, Files.File.IconFlags.USE_THUMBNAILS);
+        pix = iconinfo.get_pixbuf_nodefault ();
+        pix_size = requested_size;
+        pix_scale = scale;
     }
 
     public void update_desktop_file () {
@@ -705,6 +708,7 @@ public class Files.File : GLib.Object {
         icon_changed ();
     }
 
+    // This refetches all file info and updates properties accordingly
     public void query_update () {
         var _info = query_info ();
         if (_info != null) {
@@ -713,12 +717,8 @@ public class Files.File : GLib.Object {
         }
     }
 
+    // This sets thumbnail path when thumb becomes ready and fetches the pix
     public void query_thumbnail_update () {
-        /* Silently ignore invalid requests */
-        if (pix_size <= 1 || pix_scale <= 0) {
-            return;
-        }
-
         if (thumbstate == ThumbState.READY) {
             if (thumbnail_path == null) {
                 debug ("Making own thumbnail path for %s - no attribute", uri);
@@ -737,7 +737,8 @@ public class Files.File : GLib.Object {
             }
         }
 
-        get_icon (pix_size, pix_scale, Files.File.IconFlags.USE_THUMBNAILS);
+        var iconinfo = get_icon (pix_size, pix_scale, Files.File.IconFlags.USE_THUMBNAILS);
+        pix = iconinfo.get_pixbuf_nodefault ();
     }
 
     public bool ensure_query_info () {
@@ -747,8 +748,6 @@ public class Files.File : GLib.Object {
 
         return info != null;
     }
-
-
 
     public bool can_set_owner () {
         /* unknown file uid */
