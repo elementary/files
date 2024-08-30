@@ -67,8 +67,8 @@ public class Files.File : GLib.Object {
     public string tagstype = null;
     public Gdk.Pixbuf? pix = null;
     public string? custom_icon_name = null;
-    public int pix_size = -1;
-    public int pix_scale = -1;
+    public int pix_size = 16;
+    public int pix_scale = 1;
     public int width = 0;
     public int height = 0;
     public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
