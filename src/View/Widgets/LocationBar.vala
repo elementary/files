@@ -156,12 +156,14 @@ namespace Files.View.Chrome {
 
         protected override void after_bread_text_changed (string txt) {
             if (txt.length < 1) {
-                if (search_mode) {
-                    switch_to_navigate_mode ();
+                if (!search_mode) {
+                    switch_to_search_mode ();
                 }
+
                 show_placeholder ();
                 return;
             }
+
             hide_placeholder ();
             if (search_mode) {
                 if (txt.contains (Path.DIR_SEPARATOR_S)) {
@@ -212,6 +214,7 @@ namespace Files.View.Chrome {
             if (!search_mode) {
                 /* Initialise search mode but do not search until first character has been received */
                 if (set_focussed ()) {
+                    search_mode = true;
                     bread.set_entry_text (term);
                 } else {
                     return false;
