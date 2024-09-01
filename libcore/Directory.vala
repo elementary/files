@@ -1001,9 +1001,7 @@ public class Files.Directory : Object {
             case FileMonitorEvent.DELETED:
                 Files.FileChanges.queue_file_removed (_file);
                 break;
-            case FileMonitorEvent.CHANGED:
-                // e.g. When data streamed into file
-            case FileMonitorEvent.ATTRIBUTE_CHANGED: /* test  last to avoid unnecessary action when file renamed */
+            case FileMonitorEvent.ATTRIBUTE_CHANGED:
                 // e.g. changed permissions
                 Files.FileChanges.queue_file_changed (_file);
                 break;
@@ -1012,9 +1010,16 @@ public class Files.Directory : Object {
                 // have been done if required by one of the set of changes so doing it again is inefficient.
                 Files.FileChanges.queue_file_changed (_file);
                 break;
+            // Move events should not be received as relevant flag is not set
             case FileMonitorEvent.MOVED:
+            case FileMonitorEvent.MOVED_IN:
+            case FileMonitorEvent.MOVED_OUT:
                 break;
-            default:
+            // Icon does not currently change for these events
+            case FileMonitorEvent.RENAMED:
+            case FileMonitorEvent.PRE_UNMOUNT:
+            case FileMonitorEvent.UNMOUNTED:
+            case FileMonitorEvent.CHANGED:
                 break;
         }
 

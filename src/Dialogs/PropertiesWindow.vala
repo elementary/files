@@ -964,13 +964,8 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
             var group_combo = create_group_choice ();
             group_combo.margin_bottom = 12;
 
-            var owner_label = make_key_label (_("Owner:"));
             perm_button_user = create_perm_choice (Permissions.Type.USER);
-
-            var group_label = make_key_label (_("Group:"));
             perm_button_group = create_perm_choice (Permissions.Type.GROUP);
-
-            var other_label = make_key_label (_("Everyone:"));
             perm_button_other = create_perm_choice (Permissions.Type.OTHER);
 
             perm_code = new Gtk.Entry ();
@@ -981,23 +976,29 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
             l_perm.halign = Gtk.Align.START;
             l_perm.use_markup = true;
 
+            var permission_box = new Gtk.ListBox () {
+                selection_mode = NONE
+            };
+            // FIXME: use constants in Gtk4
+            permission_box.get_style_context ().add_class ("frame");
+            permission_box.get_style_context ().add_class ("rich-list");
+            permission_box.get_style_context ().add_class ("boxed-list");
+            permission_box.get_style_context ().add_class ("separators");
+            permission_box.add (perm_button_user);
+            permission_box.add (perm_button_group);
+            permission_box.add (perm_button_other);
+
             perm_grid = new Gtk.Grid () {
                 column_spacing = 6,
-                row_spacing = 6,
-                halign = Gtk.Align.CENTER
+                row_spacing = 6
             };
-            perm_grid.attach (owner_user_label, 0, 1, 1, 1);
-            perm_grid.attach (owner_user_choice, 1, 1, 2, 1);
-            perm_grid.attach (group_combo_label, 0, 2, 1, 1);
-            perm_grid.attach (group_combo, 1, 2, 2, 1);
-            perm_grid.attach (owner_label, 0, 3, 1, 1);
-            perm_grid.attach (perm_button_user, 1, 3, 2, 1);
-            perm_grid.attach (group_label, 0, 4, 1, 1);
-            perm_grid.attach (perm_button_group, 1, 4, 2, 1);
-            perm_grid.attach (other_label, 0, 5, 1, 1);
-            perm_grid.attach (perm_button_other, 1, 5, 2, 1);
-            perm_grid.attach (l_perm, 1, 6, 1, 1);
-            perm_grid.attach (perm_code, 2, 6, 1, 1);
+            perm_grid.attach (owner_user_label, 0, 0);
+            perm_grid.attach (owner_user_choice, 1, 0);
+            perm_grid.attach (group_combo_label, 0, 1);
+            perm_grid.attach (group_combo, 1, 1);
+            perm_grid.attach (permission_box, 0, 2, 2);
+            perm_grid.attach (l_perm, 0, 3);
+            perm_grid.attach (perm_code, 1, 3);
 
             update_perm_grid_toggle_states (goffile.permissions);
 
