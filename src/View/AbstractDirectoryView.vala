@@ -76,9 +76,7 @@ namespace Files {
             {"sort-by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"},
             {"folders-first", on_background_action_folders_first_changed, null, "true"},
-            {"show-hidden", null, null, "false", change_state_show_hidden},
-            {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-            {"show-local-thumbnails", null, null, "true", change_state_show_local_thumbnails}
+            {"show-hidden", null, null, "false", change_state_show_hidden}
         };
 
         const GLib.ActionEntry [] COMMON_ENTRIES = {
@@ -192,7 +190,10 @@ namespace Files {
         protected bool one_or_less = true;
         protected bool should_activate = false;
         protected bool should_deselect = false;
+        protected bool should_thumbnail = true;
+
         public bool singleclick_select { get; set; }
+
         protected bool should_select = false;
         protected Gtk.TreePath? click_path = null;
         protected uint click_zone = ClickZone.ICON;
@@ -258,8 +259,6 @@ namespace Files {
         protected bool is_writable = false;
         protected bool is_loading;
         protected bool helpers_shown;
-        protected bool show_remote_thumbnails {get; set; default = true;}
-        protected bool show_local_thumbnails {get; set; default = false;}
 
         private bool all_selected = false;
 
@@ -295,20 +294,20 @@ namespace Files {
             recent = app.get_recent_manager ();
             app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
             app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
+
             thumbnailer = Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
                     thumbnail_request = -1;
                 }
+
                 draw_when_idle ();
             });
 
+            set_should_thumbnail ();
+
             model = new Files.ListModel ();
 
-            Files.app_settings.bind ("show-remote-thumbnails",
-                                                             this, "show_remote_thumbnails", SettingsBindFlags.GET);
-            Files.app_settings.bind ("show-local-thumbnails",
-                                                             this, "show_local_thumbnails", SettingsBindFlags.GET);
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
@@ -402,8 +401,8 @@ namespace Files {
 
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
-            prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
-            prefs.notify["show-local-thumbnails"].connect (on_show_local_thumbnails_changed);
+            prefs.notify["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
+            prefs.notify["show-local-thumbnails"].connect (on_show_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
             prefs.bind_property (
                 "singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
@@ -427,15 +426,6 @@ namespace Files {
             common_actions = new GLib.SimpleActionGroup ();
             common_actions.add_action_entries (COMMON_ENTRIES, this);
             insert_action_group ("common", common_actions);
-
-            action_set_state (background_actions, "show-hidden",
-                              Files.app_settings.get_boolean ("show-hiddenfiles"));
-
-            action_set_state (background_actions, "show-remote-thumbnails",
-                              Files.app_settings.get_boolean ("show-remote-thumbnails"));
-
-            action_set_state (background_actions, "show-local-thumbnails",
-                              Files.app_settings.get_boolean ("show-local-thumbnails"));
         }
 
         public void zoom_in () {
@@ -1225,14 +1215,6 @@ namespace Files {
             window.change_state_show_hidden (action);
         }
 
-        private void change_state_show_remote_thumbnails (GLib.SimpleAction action) requires (window != null) {
-            window.change_state_show_remote_thumbnails (action);
-        }
-
-        private void change_state_show_local_thumbnails (GLib.SimpleAction action) {
-            window.change_state_show_local_thumbnails (action);
-        }
-
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
             switch (param.get_string ()) {
                 case "FOLDER":
@@ -1408,9 +1390,7 @@ namespace Files {
             model.file_changed (file, dir);
             Idle.add (() => {
                 update_icon_and_plugins (file);
-                if ((!slot.directory.is_network && show_local_thumbnails) ||
-                    (show_remote_thumbnails && slot.directory.can_open_files)) {
-
+                if (should_thumbnail) {
                     thumbnailer.queue_file (file, null);
                 }
 
@@ -1502,15 +1482,17 @@ namespace Files {
             action_set_state (background_actions, "show-hidden", show);
         }
 
-        private void on_show_remote_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            show_remote_thumbnails = ((Files.Preferences) prefs).show_remote_thumbnails;
-            action_set_state (background_actions, "show-remote-thumbnails", show_remote_thumbnails);
-            slot.reload ();
+        private void set_should_thumbnail () {
+            var prefs = Files.Preferences.get_default ();
+            if (slot.directory.is_network) {
+                should_thumbnail = slot.directory.can_open_files && prefs.show_remote_thumbnails;
+            } else {
+                should_thumbnail = prefs.show_local_thumbnails;
+            }
         }
 
-        private void on_show_local_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            show_local_thumbnails = ((Files.Preferences) prefs).show_local_thumbnails;
-            action_set_state (background_actions, "show-local-thumbnails", show_local_thumbnails);
+        private void on_show_thumbnails_changed () {
+            set_should_thumbnail ();
             slot.reload ();
         }
 
@@ -2713,13 +2695,13 @@ namespace Files {
             assert (slot is Files.AbstractSlot && slot.directory != null);
 
             /* Check all known conditions preventing thumbnailing at earliest possible stage */
-            if (thumbnail_source_id != 0 ||
-                !slot.directory.can_open_files ||
+            if (!slot.directory.can_open_files ||
                 slot.directory.is_loading ()) {
 
                     return;
             }
 
+            /* Restart the timeout.
             /* Do not cancel existing requests to avoid missing thumbnails */
             cancel_timeout (ref thumbnail_source_id);
             /* In order to improve performance of the Icon View when there are a large number of files,
@@ -2776,11 +2758,15 @@ namespace Files {
                         if (file != null) {
                             update_icon_and_plugins (file);
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
-                            if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
-                                visible_files.prepend (file);
-                                if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-                                    actually_visible++;
+                            if (should_thumbnail) {
+                                if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
+                                    visible_files.prepend (file);
+                                    if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
+                                        actually_visible++;
+                                    }
                                 }
+                            } else {
+                                file.thumbstate = Files.File.ThumbState.NONE;
                             }
                         }
                         /* check if we've reached the end of the visible range */
@@ -2800,9 +2786,10 @@ namespace Files {
                  */
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request);
-                } else {
-                    draw_when_idle ();
                 }
+
+                //Need to redraw anyway so that standard icons are rendered.
+                draw_when_idle ();
 
                 thumbnail_source_id = 0;
 
@@ -2812,15 +2799,14 @@ namespace Files {
 
         // Called on individual files when added or changed as well as on all visible files
         // by schedule_thumbnail_color_tag_timeout.
-        private void update_icon_and_plugins (Files.File file) {
-            if (file != null && !file.is_gone) {
+        private void update_icon_and_plugins (Files.File file) requires (file != null) {
+            if (!file.is_gone) {
                 // Only update thumbnail if it is going to be shown
-                if ((slot.directory.is_network && show_remote_thumbnails) ||
-                    (!slot.directory.is_network && show_local_thumbnails)) {
-
+                if (should_thumbnail) {
                     file.query_thumbnail_update ();
                 }
-               /* In any case, ensure color-tag info is correct */
+
+                /* In any case, ensure color-tag info is correct */
                 if (plugins != null) {
                     plugins.update_file_info (file);
                 }

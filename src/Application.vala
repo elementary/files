@@ -152,6 +152,11 @@ public class Files.Application : Gtk.Application {
         QuicklistHandler.get_singleton ();
 #endif
 
+        var app_provider = new Gtk.CssProvider ();
+        app_provider.load_from_resource ("/io/elementary/files/Application.css");
+
+        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), app_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
         var granite_settings = Granite.Settings.get_default ();
         var gtk_settings = Gtk.Settings.get_default ();
 
