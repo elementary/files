@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-30 15:34+0000\n"
-"PO-Revision-Date: 2018-10-30 09:14+0000\n"
-"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <https://weblate.elementary.io/projects/"
+"PO-Revision-Date: 2024-09-02 00:57+0000\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hant/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -32,22 +32,20 @@ msgstr "取消"
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "以唯讀模式開啟檔案"
 
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "以唯讀模式開啟檔案"
 
 #: filechooser-portal/FileChooserDialog.vala:376
-#, fuzzy
 msgid "Enter new filename"
-msgstr "新檔案"
+msgstr "輸入新檔案名稱"
 
 #: filechooser-portal/Main.vala:107
-#, fuzzy
 msgid "Select"
-msgstr " 已選取"
+msgstr "選取"
 
 #: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
 msgid "Open"
@@ -55,32 +53,30 @@ msgstr "開啟"
 
 #: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
-msgstr ""
+msgstr "儲存"
 
 #: filechooser-portal/Main.vala:448
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr ""
+msgstr "這個檔案是目標為「%s」的連結"
 
 #: filechooser-portal/Main.vala:451
 msgid "This file is a link."
-msgstr ""
+msgstr "這個檔案是連結。"
 
 #: filechooser-portal/Main.vala:454
-#, fuzzy
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr "取代它將會覆蓋其內容。"
+msgstr "取代連結時會取代其目標的內容。連結本身會保留不變"
 
 #: filechooser-portal/Main.vala:456
-#, fuzzy, c-format
+#, c-format
 msgid "Replace “%s”?"
-msgstr "取代檔案「%s」？"
+msgstr "要取代「%s」嗎？"
 
 #: filechooser-portal/Main.vala:457
-#, fuzzy
 msgid "Replacing this file will overwrite its current contents"
-msgstr "取代它將會覆蓋其內容。"
+msgstr "取代此檔案會覆寫它目前的內容"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -132,18 +128,16 @@ msgid "Type:"
 msgstr "類型："
 
 #: libcore/ConnectServerDialog.vala:161
-#, fuzzy
 msgid "Name of share on server (Optional)"
-msgstr "伺服器上分享的名稱"
+msgstr "共享資料夾在伺服器上的名稱（可選）"
 
 #: libcore/ConnectServerDialog.vala:164
 msgid "Share:"
-msgstr "分享："
+msgstr "共享資料夾："
 
 #: libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Path of shared folder on server (Optional)"
-msgstr "伺服器上分享的資料夾路徑"
+msgstr "共享資料夾在伺服器上的路徑（可選）"
 
 #: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
@@ -220,14 +214,12 @@ msgstr "名稱"
 
 #: libcore/Enums.vala:144 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
-#, fuzzy
 msgid "Creation Date"
-msgstr "建立"
+msgstr "建立日期"
 
 #: libcore/Enums.vala:147
-#, fuzzy
 msgid "Last modification date"
-msgstr "上次日期："
+msgstr "上次修改日期"
 
 #: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2326
 #: src/View/ListView.vala:27
@@ -236,11 +228,11 @@ msgstr "大小"
 
 #: libcore/Enums.vala:173
 msgid "Number sequence"
-msgstr ""
+msgstr "數字序列"
 
 #: libcore/Enums.vala:176 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "文字"
 
 #: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2336
 msgid "Date"
@@ -248,53 +240,51 @@ msgstr "日期"
 
 #: libcore/Enums.vala:195
 msgid "Suffix"
-msgstr ""
+msgstr "後綴"
 
 #: libcore/Enums.vala:198
 msgid "Prefix"
-msgstr ""
+msgstr "前綴"
 
 #: libcore/Enums.vala:208
 msgid "Text to put at the end"
-msgstr ""
+msgstr "要放到尾端的文字"
 
 #: libcore/Enums.vala:211
 msgid "Text to put at the start"
-msgstr ""
+msgstr "要放到開頭的文字"
 
 #: libcore/Enums.vala:230
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "預設格式 - 僅日期"
 
 #: libcore/Enums.vala:232
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "預設格式 - 日期與時間"
 
 #: libcore/Enums.vala:234
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "地域格式 - 日期與時間"
 
 #: libcore/Enums.vala:236
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "ISO 8601 格式 - 僅日期"
 
 #: libcore/Enums.vala:238
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "ISO 8601 格式 - 日期與時間"
 
 #: libcore/Enums.vala:254
-#, fuzzy
 msgid "Date created"
-msgstr "建立"
+msgstr "建立日期"
 
 #: libcore/Enums.vala:256
-#, fuzzy
 msgid "Date Modified"
-msgstr "已修改"
+msgstr "修改日期"
 
 #: libcore/Enums.vala:258
 msgid "Current Date"
-msgstr ""
+msgstr "目前日期"
 
 #: libcore/File.vala:574 libcore/File.vala:1129
 msgid "Inaccessible"
@@ -302,12 +292,11 @@ msgstr "無法存取"
 
 #: libcore/File.vala:907
 msgid "Failed to parse the desktop file"
-msgstr "無法解析桌面檔"
+msgstr "無法剖析桌面檔"
 
 #: libcore/File.vala:911
-#, fuzzy
 msgid "Failed to parse the desktop file: "
-msgstr "無法解析桌面檔：%s"
+msgstr "無法剖析桌面檔： "
 
 #: libcore/File.vala:923
 #, fuzzy
@@ -325,10 +314,10 @@ msgid "Empty"
 msgstr "空白檔案"
 
 #: libcore/File.vala:1124
-#, fuzzy, c-format
+#, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
-msgstr[0] "%'d 分鐘"
+msgstr[0] "%'d 個項目"
 
 #: libcore/File.vala:1169
 #, c-format
@@ -459,22 +448,22 @@ msgid "Merge"
 msgstr "合併"
 
 #: libcore/FileUtils.vala:82
-#, fuzzy, c-format
+#, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr "無法決定「%s」的原始位置 "
+msgstr "無法判斷「%s」的原始位置"
 
 #: libcore/FileUtils.vala:83
 msgid "The item cannot be restored from trash"
-msgstr "此項目不能從垃圾筒還原。"
+msgstr "無法從垃圾筒還原項目"
 
 #: libcore/FileUtils.vala:177
-#, fuzzy, c-format
+#, c-format
 msgid "The original folder %s no longer exists"
-msgstr "選取的檔案不再存在。"
+msgstr "原始資料夾 %s 已不復存在"
 
 #: libcore/FileUtils.vala:178
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "要重新建立它嗎？"
 
 #: libcore/FileUtils.vala:183
 msgid "Ignore"
@@ -482,23 +471,22 @@ msgstr "忽略"
 
 #: libcore/FileUtils.vala:184
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "不會還原任何原本在此資料夾內的檔案"
 
 #: libcore/FileUtils.vala:185
-#, fuzzy
 msgid "Recreate"
-msgstr "建立"
+msgstr "重新建立"
 
 #: libcore/FileUtils.vala:187
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
-msgstr ""
+msgstr "會重新建立資料夾，並且將已選而原本在該資料夾下的檔案還原至該處"
 
 #: libcore/FileUtils.vala:200
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
-msgstr ""
+msgstr "無法重新建立資料夾 %s。將會忽略此資料夾內的所有檔案"
 
 #: libcore/FileUtils.vala:566
 #, c-format
@@ -589,10 +577,10 @@ msgstr "正在刪除檔案"
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
 #: libcore/marlin-file-operations.c:112
-#, fuzzy, c-format
+#, c-format
 msgid "%s left"
 msgid_plural "%s left"
-msgstr[0] "剩下 %T"
+msgstr[0] "剩下 %s"
 
 #: libcore/marlin-file-operations.c:182 libcore/marlin-file-operations.c:223
 #: libcore/marlin-file-operations.c:270 libcore/marlin-file-operations.c:354
