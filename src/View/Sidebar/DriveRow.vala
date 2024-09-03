@@ -125,9 +125,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
         var sort_key = drive.get_sort_key ();
         if (sort_key != null && sort_key.contains ("hotplug")) {
             var menu_builder = new PopupMenuBuilder ();
-            menu_builder.add_safely_remove (
-                Action.print_detailed_name ("device.safely-remove", new Variant.uint32 (id))
-            );
+            menu_builder.add_safely_remove (id);
 
             menu_builder.build (parent).popup_at_pointer (null);
         }
