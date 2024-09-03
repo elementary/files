@@ -22,8 +22,10 @@ public class PopupMenuBuilder : Object {
     Gtk.MenuItem[] menu_items = {};
     public uint n_items { get { return menu_items.length; }}
 
-    public Gtk.Menu build () {
-        var popupmenu = new Gtk.Menu ();
+    public Gtk.Menu build (Gtk.Widget attach_widget) {
+        var popupmenu = new Gtk.Menu () {
+            attach_widget = attach_widget
+        };
         foreach (var menu_item in menu_items) {
             popupmenu.append (menu_item);
         }
@@ -78,14 +80,20 @@ public class PopupMenuBuilder : Object {
         return add_item (new Gtk.MenuItem.with_mnemonic (_("Properties")), cb);
     }
 
-    public PopupMenuBuilder add_eject_drive (MenuitemCallback cb) {
+    public PopupMenuBuilder add_eject_drive (string detailed_action_name) {
         // Do we need different text for USB sticks and optical drives?
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Eject Media")), cb);
+        var menu_item = new Gtk.MenuItem.with_mnemonic (_("Eject Media"));
+        menu_item.set_detailed_action_name (detailed_action_name);
+
+        return add_item (menu_item);
     }
 
-    public PopupMenuBuilder add_safely_remove (MenuitemCallback cb) {
+    public PopupMenuBuilder add_safely_remove (string detailed_action_name) {
         // Do we need different text for USB sticks and optical drives?
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Safely Remove")), cb);
+        var menu_item = new Gtk.MenuItem.with_mnemonic (_("Safely Remove"));
+        menu_item.set_detailed_action_name (detailed_action_name);
+
+        return add_item (menu_item);
     }
 
     public PopupMenuBuilder add_bookmark (MenuitemCallback cb) {

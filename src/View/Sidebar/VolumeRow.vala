@@ -174,15 +174,13 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         if (sort_key != null && sort_key.contains ("hotplug")) {
             menu_builder
                 .add_separator ()
-                .add_safely_remove (() => {
-                    safely_remove_drive.begin (volume.get_drive ());
-                });
+                .add_safely_remove (Action.print_detailed_name ("device.safely-remove", new Variant.uint32 (id))
+            );
         } else if (mount == null && drive.can_eject ()) {
             menu_builder
                 .add_separator ()
-                .add_eject_drive (() => {
-                    eject_drive.begin (volume.get_drive ());
-                });
+                .add_eject_drive (Action.print_detailed_name ("device.eject", new Variant.uint32 (id))
+            );
         }
     }
 
