@@ -249,9 +249,8 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             }
         }
 
-        menu_builder
-            .add_separator ()
-            .add_drive_property (() => {show_mount_info ();}); // This will mount if necessary
+        menu_builder.add_separator ();
+        menu_builder.add_drive_property (id); // This will mount if necessary
     }
 
     protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {
@@ -342,7 +341,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
     protected virtual void on_mount_removed (Mount removed_mount) {}
     protected virtual void on_mount_added (Mount added_mount) {}
-    protected virtual void show_mount_info () {}
+    public virtual void show_mount_info () {}
     protected virtual async bool get_filesystem_space (Cancellable? update_cancellable) {
         return false;
     }

@@ -54,6 +54,14 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
             }
         });
 
+        var properties_action = new SimpleAction ("properties", new VariantType ("u"));
+        properties_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item (param.get_uint32 ());
+            if (row != null && row is AbstractMountableRow) {
+                ((AbstractMountableRow) row).show_mount_info ();
+            }
+        });
+
         var unmount_action = new SimpleAction ("unmount", new VariantType ("u"));
         unmount_action.activate.connect ((param) => {
             var row = SidebarItemInterface.get_item (param.get_uint32 ());
@@ -65,6 +73,7 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         var device_action_group = new SimpleActionGroup ();
         device_action_group.add_action (safely_remove_action);
         device_action_group.add_action (eject_action);
+        device_action_group.add_action (properties_action);
         device_action_group.add_action (unmount_action);
 
         insert_action_group ("device", device_action_group);

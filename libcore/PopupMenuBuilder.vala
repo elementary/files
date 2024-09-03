@@ -81,8 +81,13 @@ public class PopupMenuBuilder : Object {
         add_item (menu_item);
     }
 
-    public PopupMenuBuilder add_drive_property (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Properties")), cb);
+    public void add_drive_property (uint32 id) {
+        var menu_item = new Gtk.MenuItem.with_mnemonic (_("Properties"));
+        menu_item.set_detailed_action_name (
+            Action.print_detailed_name ("device.properties", new Variant.uint32 (id))
+        );
+
+        add_item (menu_item);
     }
 
     public void add_eject_drive (uint32 id) {
