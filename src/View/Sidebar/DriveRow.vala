@@ -127,7 +127,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
             var menu_builder = new PopupMenuBuilder ();
             menu_builder.add_safely_remove (id);
 
-            menu_builder.build (parent).popup_at_pointer (null);
+            menu_builder.build (this).popup_at_pointer (null);
         }
     }
 }

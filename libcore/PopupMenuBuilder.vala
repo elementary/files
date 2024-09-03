@@ -69,21 +69,21 @@ public class PopupMenuBuilder : Object {
     }
 
     public void add_unmount (uint32 id) {
-        add_with_action_name (_("_Unmount"), "device.unmount", id);
+        add_with_action_name (_("_Unmount"), "mountable.unmount", id);
     }
 
     public void add_drive_property (uint32 id) {
-        add_with_action_name (_("Properties"), "device.properties", id);
+        add_with_action_name (_("Properties"), "mountable.properties", id);
     }
 
     public void add_eject_drive (uint32 id) {
         // Do we need different text for USB sticks and optical drives?
-        add_with_action_name (_("Eject Media"), "device.eject", id);
+        add_with_action_name (_("Eject Media"), "mountable.eject", id);
     }
 
     public void add_safely_remove (uint32 id) {
         // Do we need different text for USB sticks and optical drives?
-        add_with_action_name (_("Safely Remove"), "device.safely-remove", id);
+        add_with_action_name (_("Safely Remove"), "mountable.safely-remove", id);
     }
 
     public PopupMenuBuilder add_bookmark (MenuitemCallback cb) {

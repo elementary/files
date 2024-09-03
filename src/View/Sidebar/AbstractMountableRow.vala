@@ -165,6 +165,46 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         add_mountable_tooltip.begin ();
 
         update_visibilities ();
+
+        var safely_remove_action = new SimpleAction ("safely-remove", new VariantType ("u"));
+        safely_remove_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item (param.get_uint32 ());
+            if (row != null && row is AbstractMountableRow) {
+                ((AbstractMountableRow) row).safely_remove_drive.begin ();
+            }
+        });
+
+        var eject_action = new SimpleAction ("eject", new VariantType ("u"));
+        eject_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item (param.get_uint32 ());
+            if (row != null && row is AbstractMountableRow) {
+                ((AbstractMountableRow) row).eject_drive.begin ();
+            }
+        });
+
+        var properties_action = new SimpleAction ("properties", new VariantType ("u"));
+        properties_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item (param.get_uint32 ());
+            if (row != null && row is AbstractMountableRow) {
+                ((AbstractMountableRow) row).show_mount_info ();
+            }
+        });
+
+        var unmount_action = new SimpleAction ("unmount", new VariantType ("u"));
+        unmount_action.activate.connect ((param) => {
+            var row = SidebarItemInterface.get_item (param.get_uint32 ());
+            if (row != null && row is AbstractMountableRow) {
+                ((AbstractMountableRow) row).unmount_mount.begin ();
+            }
+        });
+
+        var action_group = new SimpleActionGroup ();
+        action_group.add_action (safely_remove_action);
+        action_group.add_action (eject_action);
+        action_group.add_action (properties_action);
+        action_group.add_action (unmount_action);
+
+        insert_action_group ("mountable", action_group);
     }
 
     protected void update_visibilities () {
@@ -179,7 +219,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         working = item.show_spinner;
     }
 
-    public async bool unmount_mount () {
+    protected async bool unmount_mount () {
         if (working || !valid || permanent) {
             return false;
         }
@@ -203,7 +243,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         return success;
     }
 
-    public async void safely_remove_drive () {
+    protected async void safely_remove_drive () {
         if (working || !valid || drive == null) {
             return;
         }
@@ -218,7 +258,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         update_visibilities ();
     }
 
-    public async void eject_drive () {
+    protected async void eject_drive () {
         if (working || !valid || drive == null) {
             return;
         }
@@ -341,7 +381,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
     protected virtual void on_mount_removed (Mount removed_mount) {}
     protected virtual void on_mount_added (Mount added_mount) {}
-    public virtual void show_mount_info () {}
+    protected virtual void show_mount_info () {}
     protected virtual async bool get_filesystem_space (Cancellable? update_cancellable) {
         return false;
     }
