@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-30 15:34+0000\n"
-"PO-Revision-Date: 2024-06-19 17:48+0000\n"
+"PO-Revision-Date: 2024-08-31 18:16+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5.5\n"
+"X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -1904,22 +1904,16 @@ msgid "Could not open files or URIs with this app"
 msgstr "このアプリでファイルまたは URI を開けませんでした"
 
 #: src/Utils/Permissions.vala:29
-#, fuzzy
-#| msgid "Owner:"
 msgid "Owner"
-msgstr "所有者:"
+msgstr "所有者"
 
 #: src/Utils/Permissions.vala:31
-#, fuzzy
-#| msgid "Group:"
 msgid "Group"
-msgstr "グループ:"
+msgstr "グループ"
 
 #: src/Utils/Permissions.vala:34
-#, fuzzy
-#| msgid "Everyone:"
 msgid "Everyone"
-msgstr "全員:"
+msgstr "全員"
 
 #: src/View/AbstractDirectoryView.vala:856
 #: src/View/AbstractDirectoryView.vala:1183
@@ -1954,7 +1948,7 @@ msgstr "このファイルを削除できません"
 
 #: src/View/AbstractDirectoryView.vala:1619
 msgid "Invalid file name provided"
-msgstr "不適切なファイル名が入力されました"
+msgstr "無効なファイル名が入力されました"
 
 #: src/View/AbstractDirectoryView.vala:1892
 #: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:239
