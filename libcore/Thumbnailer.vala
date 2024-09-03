@@ -230,7 +230,7 @@ namespace Files {
                     foreach (var file in files) {
                         // Do not leave in LOADING state
                         file.thumbstate = Files.File.ThumbState.NONE;
-                        file.query_thumbnail_update ();
+                        file.update_icon ();
                     }
                 }
             });
@@ -366,7 +366,7 @@ namespace Files {
                 var goffile = Files.File.get_by_uri (uri);
                 if (goffile.thumbstate == Files.File.ThumbState.LOADING) {
                     goffile.thumbstate = Files.File.ThumbState.NONE;
-                    goffile.query_thumbnail_update ();
+                    goffile.update_icon ();
                 }
             }
 
@@ -382,7 +382,7 @@ namespace Files {
             var goffile = Files.File.get_by_uri (uri);
             if (goffile != null) {
                 goffile.thumbstate = state;
-                goffile.query_thumbnail_update ();
+                goffile.update_icon ();
             }
         }
     }
