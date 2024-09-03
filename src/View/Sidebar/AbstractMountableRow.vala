@@ -210,8 +210,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
         debug ("Eject/stop drive %s: can_eject %s, can_stop %s, can start %s, can start degraded %s, media_removable %s, drive removable %s",
             drive.get_name (), drive.can_eject ().to_string (), drive.can_stop ().to_string (), drive.can_start ().to_string (),
-            drive.can_start_degraded ().to_string (), drive.is_media_removable ().to_string (), drive.is_removable ().to_string ()
-        );
+            drive.can_start_degraded ().to_string (), drive.is_media_removable ().to_string (), drive.is_removable ().to_string ());
 
         working = true;
         yield Files.FileOperations.safely_remove_drive (drive, Files.get_active_window ());
