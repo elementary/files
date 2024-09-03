@@ -179,7 +179,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         working = item.show_spinner;
     }
 
-    protected async bool unmount_mount () {
+    public async bool unmount_mount () {
         if (working || !valid || permanent) {
             return false;
         }
@@ -245,7 +245,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             }
 
             if (mount.can_unmount ()) {
-                menu_builder.add_unmount (() => {unmount_mount.begin ();});
+                menu_builder.add_unmount (id);
             }
         }
 

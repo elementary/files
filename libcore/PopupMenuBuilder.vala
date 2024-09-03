@@ -72,8 +72,13 @@ public class PopupMenuBuilder : Object {
         return add_item (new Gtk.MenuItem.with_mnemonic (_("_Mount")), cb);
     }
 
-    public PopupMenuBuilder add_unmount (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("_Unmount")), cb);
+    public void add_unmount (uint32 id) {
+        var menu_item = new Gtk.MenuItem.with_mnemonic (_("_Unmount"));
+        menu_item.set_detailed_action_name (
+            Action.print_detailed_name ("device.unmount", new Variant.uint32 (id))
+        );
+
+        add_item (menu_item);
     }
 
     public PopupMenuBuilder add_drive_property (MenuitemCallback cb) {
