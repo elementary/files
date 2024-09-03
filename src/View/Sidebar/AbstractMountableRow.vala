@@ -167,22 +167,16 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         update_visibilities ();
 
         var safely_remove_action = new SimpleAction ("safely-remove", null);
-        safely_remove_action.activate.connect (() => {
-            safely_remove_drive.begin ();
-        });
+        safely_remove_action.activate.connect (() => safely_remove_drive.begin ());
 
         var eject_action = new SimpleAction ("eject", null);
-        eject_action.activate.connect (() => {
-            eject_drive.begin ();
-        });
+        eject_action.activate.connect (() => eject_drive.begin ());
 
         var properties_action = new SimpleAction ("properties", null);
         properties_action.activate.connect (show_mount_info);
 
         var unmount_action = new SimpleAction ("unmount", null);
-        unmount_action.activate.connect (() => {
-            unmount_mount.begin ();
-        });
+        unmount_action.activate.connect (() => unmount_mount.begin ());
 
         var action_group = new SimpleActionGroup ();
         action_group.add_action (safely_remove_action);
