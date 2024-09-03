@@ -67,8 +67,9 @@ public class Files.File : GLib.Object {
     public string tagstype = null;
     public Gdk.Pixbuf? pix = null;
     public string? custom_icon_name = null;
-    public int pix_size = -1;
-    public int pix_scale = -1;
+    public int pix_size = 16;
+    public int pix_scale = 1;
+    private bool pix_is_final = false;
     public int width = 0;
     public int height = 0;
     public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
@@ -85,10 +86,12 @@ public class Files.File : GLib.Object {
     private string? _thumbnail_path = null;
     public string thumbnail_path {
         get {
-            if (_thumbnail_path == null) {
-                if (info != null && info.has_attribute (GLib.FileAttribute.THUMBNAIL_PATH)) {
-                    _thumbnail_path = info.get_attribute_byte_string (GLib.FileAttribute.THUMBNAIL_PATH);
-                }
+            if (_thumbnail_path == null &&
+                info != null &&
+                info.has_attribute (GLib.FileAttribute.THUMBNAIL_PATH)) {
+
+                // This attribute points to the largest available thumbnail (distro agnostic)
+                _thumbnail_path = info.get_attribute_byte_string (GLib.FileAttribute.THUMBNAIL_PATH);
             }
 
             return _thumbnail_path;
@@ -101,7 +104,23 @@ public class Files.File : GLib.Object {
 
     public bool thumbnail_loaded = false;
     public bool is_mounted = true;
-    public bool exists = true;
+    private bool _exists = true;
+    public bool exists {
+        get {
+            return _exists;
+        }
+
+        set {
+            // File created existing and can only be set to not existing
+            if (!value && _exists) {
+                if (thumbnail_path != null) {
+                    FileUtils.remove_thumbnail_paths_for_uri (uri);
+                }
+            }
+
+            _exists = false;
+        }
+    }
     public uint32 uid;
     public uint32 gid;
     public string owner = null;
@@ -409,11 +428,13 @@ public class Files.File : GLib.Object {
         return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
-    public Gdk.Pixbuf? get_icon_pixbuf (int size, int scale, Files.File.IconFlags flags) {
-        GLib.return_val_if_fail (size >= 1, null);
-
-        var nicon = get_icon (size, scale, flags);
-        return nicon != null ? nicon.get_pixbuf_nodefault () : null;
+    //TODO Is it necessary to refetch the icon if have pix at requested size? 
+    public Gdk.Pixbuf? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
+        return get_icon (
+            _size.clamp (16, 512),
+            scale,
+            flags
+        ).get_pixbuf_nodefault ();
     }
 
     public void get_folder_icon_from_uri_or_path () {
@@ -439,31 +460,52 @@ public class Files.File : GLib.Object {
         }
     }
 
-    private Files.IconInfo? get_icon (int size, int scale, Files.File.IconFlags flags) {
-        GLib.return_val_if_fail (size >= 1, null);
+    // This re-fetches the icon even if we already have pixbuf of the same size.
+    // Assume dimensions are valid as it is private function
+    // Return iconinfo may not be used for view display so do not update pix etc
+    private Files.IconInfo get_icon (int requested_size, int scale, Files.File.IconFlags flags) {
+        pix_is_final = true;
+        Files.IconInfo? iconinfo = null;
+        var use_thumbnails = IconFlags.USE_THUMBNAILS in flags;
+        var awaiting_thumbnail = use_thumbnails &&
+                                 (thumbstate == ThumbState.LOADING || thumbstate == ThumbState.UNKNOWN);
 
-        Files.IconInfo? icon = get_special_icon (size, scale, flags);
-        if (icon != null && !icon.is_fallback ()) {
-            return icon;
-        }
+        var thumbnail_ready = use_thumbnails && thumbstate == ThumbState.READY;
 
-        GLib.Icon? gicon = null;
-        if (Files.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == Files.File.ThumbState.LOADING) {
-            gicon = new GLib.ThemedIcon ("image-loading");
-        } else {
-            gicon = this.icon;
-        }
-
-        if (gicon != null) {
-            icon = Files.IconInfo.lookup (gicon, size, scale, is_remote);
-            if (icon == null || icon.is_fallback ()) {
-                icon = Files.IconInfo.get_generic_icon (size, scale);
+        // Get "special" icon - custom icons or thumbnails
+        if (custom_icon_name != null) {
+            if (GLib.Path.is_absolute (custom_icon_name)) {
+                iconinfo = Files.IconInfo.lookup_from_path (custom_icon_name, requested_size, scale);
+            } else {
+                iconinfo = Files.IconInfo.lookup_from_name (custom_icon_name, requested_size, scale);
             }
-        } else {
-            icon = Files.IconInfo.get_generic_icon (size, scale);
         }
 
-        return icon;
+        if (iconinfo == null && thumbnail_ready) {
+            iconinfo = Files.IconInfo.lookup_from_path (thumbnail_path, requested_size, scale, is_remote);
+        }
+
+        if (iconinfo == null || iconinfo.pixbuf == null) {
+            GLib.Icon? gicon = null;
+            if (awaiting_thumbnail) {
+                gicon = new GLib.ThemedIcon ("image-loading");
+                pix_is_final = false;
+            } else {
+                gicon = this.icon;
+            }
+
+            if (gicon != null) {
+                iconinfo = Files.IconInfo.lookup (gicon, requested_size, scale, is_remote);
+                if (iconinfo == null || iconinfo.pixbuf == null) {
+                    iconinfo = Files.IconInfo.get_generic_icon (requested_size, scale);
+                }
+            } else {
+                iconinfo = Files.IconInfo.get_generic_icon (requested_size, scale);
+            }
+        }
+
+        assert_nonnull (iconinfo); // Assume that can always get generic icon
+        return iconinfo;
     }
 
     public void update () {
@@ -589,10 +631,7 @@ public class Files.File : GLib.Object {
         utf8_collation_key = get_display_name ().collate_key_for_filename ();
         /* mark the thumb flags as state none, we'll load the thumbs once the directory
          * would be loaded on a thread */
-        if (thumbnail_path != null) {
-            thumbstate = Files.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
-        }
-
+        thumbstate = Files.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
         /* formated type */
         update_formated_type ();
 
@@ -644,16 +683,52 @@ public class Files.File : GLib.Object {
         }
     }
 
-    public void update_icon (int size, int scale) {
-        if (size <= 1) {
+    // This only changes the file icon if the request dimensions have changed.
+    //TODO Rename function to reflect this
+    // Does not compile if use pix_size and pix_scale as default values for some reason
+    public void update_icon (int _size = -1, int _scale = -1) {
+        int requested_size = _size;
+        int requested_scale = _scale;
+        // Use existing values if dmensions unspecified
+        if (_size < 16) {
+            requested_size = pix_size;
+        }
+
+        if (_scale < 1) {
+            requested_scale = pix_scale;
+        }
+
+        if (thumbstate == ThumbState.UNKNOWN && thumbnail_path == null) {
+            debug ("Making own thumbnail path for %s - no attribute", uri);
+            // This is not distro-agnostic
+            var md5_hash = GLib.Checksum.compute_for_string (GLib.ChecksumType.MD5, uri);
+            var base_name = "%s.png".printf (md5_hash);
+
+            // For simplicity always create large thumbnail to be consistent with
+            // FileAttribute.THUMBNAIL_PATH?
+            // This also avoids switching between thumbnails on zooming and simplifies handing
+            // external edits which change the thumbnail
+            thumbnail_path = GLib.Path.build_filename (
+                GLib.Environment.get_user_cache_dir (),
+                "thumbnails",
+                "large",
+                base_name
+            );
+        }
+
+        var same_size = (pix_size == requested_size && pix_scale == requested_scale);
+        var valid_thumbnail = (thumbstate == ThumbState.NONE ||
+                              thumbstate == ThumbState.READY) &&
+                              pix_is_final;
+
+        if (pix != null && same_size && valid_thumbnail) {
             return;
         }
 
-        if (pix != null && pix_size == size && pix_scale == scale) {
-            return;
-        }
-
-        update_icon_internal (size, scale);
+        var iconinfo = get_icon (requested_size, requested_scale, Files.File.IconFlags.USE_THUMBNAILS);
+        pix = iconinfo.get_pixbuf_nodefault ();
+        pix_size = requested_size;
+        pix_scale = requested_scale;
     }
 
     public void update_desktop_file () {
@@ -663,6 +738,7 @@ public class Files.File : GLib.Object {
         icon_changed ();
     }
 
+    // This refetches all file info and updates properties accordingly
     public void query_update () {
         var _info = query_info ();
         if (_info != null) {
@@ -671,32 +747,6 @@ public class Files.File : GLib.Object {
         }
     }
 
-    public void query_thumbnail_update () {
-        /* Silently ignore invalid requests */
-        if (pix_size <= 1 || pix_scale <= 0) {
-            return;
-        }
-
-        if (thumbstate == ThumbState.READY) {
-            if (thumbnail_path == null) {
-                debug ("Making own thumbnail path for %s - no attribute", uri);
-                var md5_hash = GLib.Checksum.compute_for_string (GLib.ChecksumType.MD5, uri);
-                var base_name = "%s.png".printf (md5_hash);
-
-                thumbnail_path = GLib.Path.build_filename (
-                    GLib.Environment.get_user_cache_dir (),
-                    "thumbnails",
-                    "large",
-                    base_name
-                );
-            } else if (thumbnail_loaded) {
-                // Avoid unnecessarily looking up thumbnail when scrolling
-                return;
-            }
-        }
-
-        update_icon_internal (pix_size, pix_scale);
-    }
 
     public bool ensure_query_info () {
         if (info == null) {
@@ -705,8 +755,6 @@ public class Files.File : GLib.Object {
 
         return info != null;
     }
-
-
 
     public bool can_set_owner () {
         /* unknown file uid */
@@ -1090,7 +1138,6 @@ public class Files.File : GLib.Object {
         }
 
         is_mounted = true;
-        exists = true;
         is_connected = true;
         try {
             return location.query_info ("*", GLib.FileQueryInfoFlags.NONE);
@@ -1304,29 +1351,4 @@ public class Files.File : GLib.Object {
         return 0;
     }
 
-    private void update_icon_internal (int size, int scale) {
-        GLib.return_if_fail (size >= 1);
-        pix = get_icon_pixbuf (size, scale, Files.File.IconFlags.USE_THUMBNAILS);
-        pix_size = size;
-        pix_scale = scale;
-    }
-
-    private Files.IconInfo? get_special_icon (int size, int scale, Files.File.IconFlags flags) {
-        GLib.return_val_if_fail (size >= 1, null);
-
-        if (custom_icon_name != null) {
-            if (GLib.Path.is_absolute (custom_icon_name)) {
-                return Files.IconInfo.lookup_from_path (custom_icon_name, size, scale);
-            } else {
-                return Files.IconInfo.lookup_from_name (custom_icon_name, size, scale);
-            }
-        }
-
-        if (Files.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == Files.File.ThumbState.READY) {
-            thumbnail_loaded = true;
-            return Files.IconInfo.lookup_from_path (thumbnail_path, size, scale, is_remote);
-        }
-
-        return null;
-    }
 }

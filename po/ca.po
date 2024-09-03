@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-30 15:34+0000\n"
-"PO-Revision-Date: 2024-05-17 14:13+0000\n"
+"PO-Revision-Date: 2024-09-02 20:05+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -1952,22 +1952,16 @@ msgid "Could not open files or URIs with this app"
 msgstr "No s'han pogut obrir els fitxers o URI amb aquesta aplicació"
 
 #: src/Utils/Permissions.vala:29
-#, fuzzy
-#| msgid "Owner:"
 msgid "Owner"
-msgstr "Propietari:"
+msgstr "Propietari"
 
 #: src/Utils/Permissions.vala:31
-#, fuzzy
-#| msgid "Group:"
 msgid "Group"
-msgstr "Grup:"
+msgstr "Grup"
 
 #: src/Utils/Permissions.vala:34
-#, fuzzy
-#| msgid "Everyone:"
 msgid "Everyone"
-msgstr "Tothom:"
+msgstr "Tothom"
 
 #: src/View/AbstractDirectoryView.vala:856
 #: src/View/AbstractDirectoryView.vala:1183

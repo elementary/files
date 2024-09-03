@@ -2803,7 +2803,7 @@ namespace Files {
             if (!file.is_gone) {
                 // Only update thumbnail if it is going to be shown
                 if (should_thumbnail) {
-                    file.query_thumbnail_update ();
+                    file.update_icon ();
                 }
 
                 /* In any case, ensure color-tag info is correct */

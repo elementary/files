@@ -18,7 +18,7 @@
 
 public class Files.IconInfo : GLib.Object {
     private int64 last_use_time;
-    private Gdk.Pixbuf? pixbuf;
+    public Gdk.Pixbuf? pixbuf { get; set; }
     private string icon_name;
 
     public Files.IconInfo.for_pixbuf (Gdk.Pixbuf? pixbuf) {
