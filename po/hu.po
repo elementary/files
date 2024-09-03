@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-30 15:34+0000\n"
-"PO-Revision-Date: 2024-05-21 23:13+0000\n"
+"PO-Revision-Date: 2024-09-04 09:49+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -1933,22 +1933,16 @@ msgid "Could not open files or URIs with this app"
 msgstr "Nem lehet megnyitni a fájlokat vagy URI-kat ezzel az alkalmazással"
 
 #: src/Utils/Permissions.vala:29
-#, fuzzy
-#| msgid "Owner:"
 msgid "Owner"
-msgstr "Tulajdonos:"
+msgstr "Tulajdonos"
 
 #: src/Utils/Permissions.vala:31
-#, fuzzy
-#| msgid "Group:"
 msgid "Group"
-msgstr "Csoport:"
+msgstr "Csoport"
 
 #: src/Utils/Permissions.vala:34
-#, fuzzy
-#| msgid "Everyone:"
 msgid "Everyone"
-msgstr "Mindenki:"
+msgstr "Mindenki"
 
 #: src/View/AbstractDirectoryView.vala:856
 #: src/View/AbstractDirectoryView.vala:1183
