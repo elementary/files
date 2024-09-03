@@ -69,21 +69,21 @@ public class PopupMenuBuilder : Object {
     }
 
     public void add_unmount (uint32 id) {
-        add_item_with_action (_("_Unmount"), "device.unmount", id);
+        add_with_action_name (_("_Unmount"), "device.unmount", id);
     }
 
     public void add_drive_property (uint32 id) {
-        add_item_with_action (_("Properties"), "device.properties", id);
+        add_with_action_name (_("Properties"), "device.properties", id);
     }
 
     public void add_eject_drive (uint32 id) {
         // Do we need different text for USB sticks and optical drives?
-        add_item_with_action (_("Eject Media"), "device.eject", id);
+        add_with_action_name (_("Eject Media"), "device.eject", id);
     }
 
     public void add_safely_remove (uint32 id) {
         // Do we need different text for USB sticks and optical drives?
-        add_item_with_action (_("Safely Remove"), "device.safely-remove", id);
+        add_with_action_name (_("Safely Remove"), "device.safely-remove", id);
     }
 
     public PopupMenuBuilder add_bookmark (MenuitemCallback cb) {
@@ -121,7 +121,7 @@ public class PopupMenuBuilder : Object {
         return add_item (new Gtk.SeparatorMenuItem ());
     }
 
-    private void add_item_with_action (string label, string action_name, uint32 id) {
+    private void add_with_action_name (string label, string action_name, uint32 id) {
         var menu_item = new Gtk.MenuItem.with_mnemonic (label);
         menu_item.set_detailed_action_name (
             Action.print_detailed_name (action_name, new Variant.uint32 (id))
