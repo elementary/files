@@ -173,10 +173,10 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         var sort_key = drive.get_sort_key ();
         if (sort_key != null && sort_key.contains ("hotplug")) {
             menu_builder.add_separator ();
-            menu_builder.add_safely_remove (id);
+            menu_builder.add_safely_remove ();
         } else if (mount == null && drive.can_eject ()) {
             menu_builder.add_separator ();
-            menu_builder.add_eject_drive (id);
+            menu_builder.add_eject_drive ();
         }
     }
 
