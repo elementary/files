@@ -48,26 +48,6 @@ public class PopupMenuBuilder : Object {
         return menu;
     }
 
-    public void add_open () {
-        add_with_action_name (_("Open"), "bookmark.open");
-    }
-
-    public void add_open_tab () {
-        add_with_action_name (_("Open in New _Tab"), "bookmark.open-tab");
-    }
-
-    public void add_open_window () {
-        add_with_action_name (_("Open in New _Window"), "bookmark.open-window");
-    }
-
-    public void add_remove () {
-        add_with_action_name (_("Remove"), "bookmark.remove");
-    }
-
-    public void add_rename () {
-        add_with_action_name (_("Rename"), "bookmark.rename");
-    }
-
     public void add_unmount () {
         add_with_action_name (_("_Unmount"), "mountable.unmount");
     }
@@ -117,7 +97,7 @@ public class PopupMenuBuilder : Object {
         return add_item (new Gtk.SeparatorMenuItem ());
     }
 
-    private void add_with_action_name (string label, string action_name) {
+    public void add_with_action_name (string label, string action_name) {
         var menu_item = new Gtk.MenuItem.with_mnemonic (label);
         menu_item.set_detailed_action_name (
             Action.print_detailed_name (action_name, null)

@@ -307,10 +307,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     protected virtual void popup_context_menu () {
         var menu_builder = new PopupMenuBuilder ();
-        menu_builder.add_open ();
+        menu_builder.add_with_action_name (_("Open"), "bookmark.open");
         menu_builder.add_separator ();
-        menu_builder.add_open_tab ();
-        menu_builder.add_open_window ();
+        menu_builder.add_with_action_name (_("Open in New _Tab"), "bookmark.open-tab");
+        menu_builder.add_with_action_name (_("Open in New _Window"), "bookmark.open-window");
 
         add_extra_menu_items (menu_builder);
 
@@ -329,11 +329,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     /* Rows under "Bookmarks" can be removed or renamed */
         if (!permanent) {
             menu_builder.add_separator ();
-            menu_builder.add_remove ();
+            menu_builder.add_with_action_name (_("Remove"), "bookmark.remove");
         }
 
         if (!pinned) {
-            menu_builder.add_rename ();
+            menu_builder.add_with_action_name (_("Rename"), "bookmark.rename");
         }
 
         if (Uri.parse_scheme (uri) == "trash") {
