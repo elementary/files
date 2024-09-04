@@ -296,7 +296,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 .popup_at_pointer (null);
         } else {
             menu_builder
-                .build ()
+                .build (this)
                 .popup_at_pointer (null);
         }
     }
