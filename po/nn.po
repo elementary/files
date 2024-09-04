@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-30 15:34+0000\n"
+"POT-Creation-Date: 2024-09-04 09:49+0000\n"
 "PO-Revision-Date: 2020-07-16 16:16+0000\n"
 "Last-Translator: Martin Myrvold <myrvold.martin@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://l10n.elementary.io/projects/files/"
@@ -49,7 +49,7 @@ msgstr "ny fil"
 msgid "Select"
 msgstr " valt"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
 msgid "Open"
 msgstr "Opne"
 
@@ -296,43 +296,43 @@ msgstr "Sist endra"
 msgid "Current Date"
 msgstr ""
 
-#: libcore/File.vala:574 libcore/File.vala:1129
+#: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
 msgstr "Utilgjengeleg"
 
-#: libcore/File.vala:907
+#: libcore/File.vala:955
 #, fuzzy
 msgid "Failed to parse the desktop file"
 msgstr "Ugyldig skrivebordsfil"
 
-#: libcore/File.vala:911
+#: libcore/File.vala:959
 #, fuzzy
 msgid "Failed to parse the desktop file: "
 msgstr "Ugyldig skrivebordsfil"
 
-#: libcore/File.vala:923
+#: libcore/File.vala:971
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "Klarte ikkje å lage mappa"
 
-#: libcore/File.vala:932
+#: libcore/File.vala:980
 #, fuzzy
 msgid "Unable to Launch Desktop File: "
 msgstr "Kunne ikkje montere mappa"
 
-#: libcore/File.vala:1122
+#: libcore/File.vala:1169
 #, fuzzy
 msgid "Empty"
 msgstr "Tom fil"
 
-#: libcore/File.vala:1124
+#: libcore/File.vala:1171
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d minutt"
 msgstr[1] "%'d minutt"
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1216
 #, c-format
 msgid "link to %s"
 msgstr "lenke til %s"
@@ -1130,61 +1130,57 @@ msgstr "Feil under oppretting av fil «%B»."
 msgid "There was an error creating the directory in %s."
 msgstr "Det oppstod ein feil under oppretting av katalog i %F."
 
-#: libcore/PopupMenuBuilder.vala:54
+#: libcore/PopupMenuBuilder.vala:56
 msgid "Open in New _Tab"
 msgstr "Opne i ny _fane"
 
-#: libcore/PopupMenuBuilder.vala:58
+#: libcore/PopupMenuBuilder.vala:60
 msgid "Open in New _Window"
 msgstr "Opne i nytt _vindauge"
 
-#: libcore/PopupMenuBuilder.vala:62
+#: libcore/PopupMenuBuilder.vala:64
 msgid "Remove"
 msgstr "Fjern"
 
-#: libcore/PopupMenuBuilder.vala:66
+#: libcore/PopupMenuBuilder.vala:68
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 msgid "Rename"
 msgstr "Gje nytt namn"
 
-#: libcore/PopupMenuBuilder.vala:70
-msgid "_Mount"
-msgstr "_Monter"
-
-#: libcore/PopupMenuBuilder.vala:74
+#: libcore/PopupMenuBuilder.vala:72
 msgid "_Unmount"
 msgstr "_Avmonter"
 
-#: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
+#: libcore/PopupMenuBuilder.vala:76 src/Dialogs/PropertiesWindow.vala:117
 #: src/View/AbstractDirectoryView.vala:2028
 msgid "Properties"
 msgstr "Eigenskapar"
 
-#: libcore/PopupMenuBuilder.vala:83
+#: libcore/PopupMenuBuilder.vala:81
 msgid "Eject Media"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:88
+#: libcore/PopupMenuBuilder.vala:86
 #, fuzzy
 msgid "Safely Remove"
 msgstr "Fjern"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2021
+#: libcore/PopupMenuBuilder.vala:90 src/View/AbstractDirectoryView.vala:2021
 #, fuzzy
 msgid "Add to Bookmarks"
 msgstr "Bokmerke"
 
-#: libcore/PopupMenuBuilder.vala:104
+#: libcore/PopupMenuBuilder.vala:102
 #, fuzzy
 msgid "Permanently Delete All Trash"
 msgstr "Slette alle element i papirkorga permanent?"
 
-#: libcore/PopupMenuBuilder.vala:104
+#: libcore/PopupMenuBuilder.vala:102
 #, fuzzy
 msgid "Permanently Delete Trash"
 msgstr "Slette alle element i papirkorga permanent?"
 
-#: libcore/PopupMenuBuilder.vala:117
+#: libcore/PopupMenuBuilder.vala:115
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Slette alle element i papirkorga permanent på denne monterte eininga?"
@@ -2372,28 +2368,28 @@ msgid "(as Administrator)"
 msgstr "(som Administrator)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:192
 #, fuzzy, c-format
 msgid "Eject '%s'"
 msgstr "Slett «%s»"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:192
 #, fuzzy, c-format
 msgid "Unmount '%s'"
 msgstr "Kan ikkje montere '%s'"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:306
+#: src/View/Sidebar/AbstractMountableRow.vala:325
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar/AbstractMountableRow.vala:307
+#: src/View/Sidebar/AbstractMountableRow.vala:326
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%S av %S"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:356
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
@@ -2401,7 +2397,7 @@ msgstr "%S av %S"
 msgid "%s (%s)"
 msgstr "%s (%s, %s)"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:356
 msgid "Not mounted"
 msgstr ""
 
@@ -2544,7 +2540,7 @@ msgid "No operation to redo"
 msgstr "Tidsavbrot for operasjonen."
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
-#: src/View/Widgets/LocationBar.vala:199
+#: src/View/Widgets/LocationBar.vala:191
 msgid "Search or Type Path"
 msgstr "Søk eller skriv inn sti"
 
@@ -2556,11 +2552,11 @@ msgstr "Opne i ny fane"
 msgid "Open in Other Application…"
 msgstr "Opne i eit anna program…"
 
-#: src/View/Widgets/LocationBar.vala:195
+#: src/View/Widgets/LocationBar.vala:187
 msgid "Reload this folder"
 msgstr "Last inn mappa på nytt"
 
-#: src/View/Widgets/LocationBar.vala:208
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Searching…"
 msgstr "Søker…"
 
@@ -2648,6 +2644,9 @@ msgstr "Under denne mappa"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Nyleg brukt"
+
+#~ msgid "_Mount"
+#~ msgstr "_Monter"
 
 #, fuzzy
 #~ msgctxt "bulk-rename"

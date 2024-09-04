@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-30 15:34+0000\n"
+"POT-Creation-Date: 2024-09-04 09:49+0000\n"
 "PO-Revision-Date: 2021-06-19 20:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -44,7 +44,7 @@ msgstr "नवीन फाइल"
 msgid "Select"
 msgstr " निवडले"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
 msgid "Open"
 msgstr "उघडा"
 
@@ -289,42 +289,42 @@ msgstr "सुधारित"
 msgid "Current Date"
 msgstr ""
 
-#: libcore/File.vala:574 libcore/File.vala:1129
+#: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
 msgstr "मिळविण्यास अशक्य"
 
-#: libcore/File.vala:907
+#: libcore/File.vala:955
 msgid "Failed to parse the desktop file"
 msgstr "डेस्कटॉप फाइल विश्लेषित करण्यात अयशस्वी"
 
-#: libcore/File.vala:911
+#: libcore/File.vala:959
 #, fuzzy
 msgid "Failed to parse the desktop file: "
 msgstr "डेस्कटॉप फाईल :%s पार्स होऊ शकली नाही"
 
-#: libcore/File.vala:923
+#: libcore/File.vala:971
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "%s : फाइलमधून कमांड तयार करण्यात अयशस्वी"
 
-#: libcore/File.vala:932
+#: libcore/File.vala:980
 #, fuzzy
 msgid "Unable to Launch Desktop File: "
 msgstr "%s: डेस्कटॉप फाइल सुरु करण्यात अक्षम"
 
-#: libcore/File.vala:1122
+#: libcore/File.vala:1169
 #, fuzzy
 msgid "Empty"
 msgstr "रिकामी फाईल"
 
-#: libcore/File.vala:1124
+#: libcore/File.vala:1171
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d मिनिट"
 msgstr[1] "%'d मिनिटे"
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1216
 #, c-format
 msgid "link to %s"
 msgstr "%s ची लिंक"
@@ -1111,59 +1111,55 @@ msgstr "%s फाइल तयार करताना त्रुटी."
 msgid "There was an error creating the directory in %s."
 msgstr "%s मध्ये डिरेक्टरी तयार करताना त्रुटी आली."
 
-#: libcore/PopupMenuBuilder.vala:54
+#: libcore/PopupMenuBuilder.vala:56
 msgid "Open in New _Tab"
 msgstr "(_T)नवीन टॅब मध्ये उघडा"
 
-#: libcore/PopupMenuBuilder.vala:58
+#: libcore/PopupMenuBuilder.vala:60
 msgid "Open in New _Window"
 msgstr "(_W)नवीन विंडो मध्ये उघडा"
 
-#: libcore/PopupMenuBuilder.vala:62
+#: libcore/PopupMenuBuilder.vala:64
 msgid "Remove"
 msgstr "काढा"
 
-#: libcore/PopupMenuBuilder.vala:66
+#: libcore/PopupMenuBuilder.vala:68
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 msgid "Rename"
 msgstr "पुनर्नामित करा"
 
-#: libcore/PopupMenuBuilder.vala:70
-msgid "_Mount"
-msgstr "(_M)माउंट करा"
-
-#: libcore/PopupMenuBuilder.vala:74
+#: libcore/PopupMenuBuilder.vala:72
 msgid "_Unmount"
 msgstr "(_U)अनमाउंट करा"
 
-#: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
+#: libcore/PopupMenuBuilder.vala:76 src/Dialogs/PropertiesWindow.vala:117
 #: src/View/AbstractDirectoryView.vala:2028
 msgid "Properties"
 msgstr "गुणधर्म"
 
-#: libcore/PopupMenuBuilder.vala:83
+#: libcore/PopupMenuBuilder.vala:81
 msgid "Eject Media"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:88
+#: libcore/PopupMenuBuilder.vala:86
 #, fuzzy
 msgid "Safely Remove"
 msgstr "काढा"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2021
+#: libcore/PopupMenuBuilder.vala:90 src/View/AbstractDirectoryView.vala:2021
 msgid "Add to Bookmarks"
 msgstr "बुकमार्क मध्ये जोडा"
 
-#: libcore/PopupMenuBuilder.vala:104
+#: libcore/PopupMenuBuilder.vala:102
 msgid "Permanently Delete All Trash"
 msgstr "कचरापेटीमधून सर्व आयटम कायमचे हटवा"
 
-#: libcore/PopupMenuBuilder.vala:104
+#: libcore/PopupMenuBuilder.vala:102
 #, fuzzy
 msgid "Permanently Delete Trash"
 msgstr "कचरापेटीमधून सर्व आयटम कायमचे हटवा"
 
-#: libcore/PopupMenuBuilder.vala:117
+#: libcore/PopupMenuBuilder.vala:115
 msgid "Permanently Delete Trash on this Mount"
 msgstr "या माउंटवरील कचरापेटीमधील सर्व आयटम कायमचे हटवा"
 
@@ -2344,28 +2340,28 @@ msgid "(as Administrator)"
 msgstr "(प्रशासक म्हणून)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:192
 #, fuzzy, c-format
 msgid "Eject '%s'"
 msgstr "'%s' हटवा"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:192
 #, fuzzy, c-format
 msgid "Unmount '%s'"
 msgstr "'%s' माउंट करण्यास अक्षम"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:306
+#: src/View/Sidebar/AbstractMountableRow.vala:325
 #, c-format
 msgid "%s free"
 msgstr "%s मोकळी"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:307
+#: src/View/Sidebar/AbstractMountableRow.vala:326
 #, c-format
 msgid "%s used of %s"
 msgstr "%s पैकी %s वापरात"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:356
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
@@ -2373,7 +2369,7 @@ msgstr "%s पैकी %s वापरात"
 msgid "%s (%s)"
 msgstr "%s (%s, %s)"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:356
 msgid "Not mounted"
 msgstr ""
 
@@ -2513,7 +2509,7 @@ msgid "No operation to redo"
 msgstr "ऑपरेशन कालबाह्य झाले आहे."
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
-#: src/View/Widgets/LocationBar.vala:199
+#: src/View/Widgets/LocationBar.vala:191
 msgid "Search or Type Path"
 msgstr "पाथ शोधा अथवा टाईप करा"
 
@@ -2525,11 +2521,11 @@ msgstr "नवीन टॅबमध्ये उघडा"
 msgid "Open in Other Application…"
 msgstr "अन्य अप्लिकेशनमध्ये उघडा…"
 
-#: src/View/Widgets/LocationBar.vala:195
+#: src/View/Widgets/LocationBar.vala:187
 msgid "Reload this folder"
 msgstr "हे फोल्डर रीलोड करा"
 
-#: src/View/Widgets/LocationBar.vala:208
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Searching…"
 msgstr "शोधत आहे…"
 
@@ -2616,6 +2612,9 @@ msgstr "या फोल्डर खाली"
 #: src/View/Widgets/SearchResults.vala:328
 msgid "Recently Used"
 msgstr "अलीकडे वापरलेले"
+
+#~ msgid "_Mount"
+#~ msgstr "(_M)माउंट करा"
 
 #, fuzzy
 #~ msgctxt "bulk-rename"
