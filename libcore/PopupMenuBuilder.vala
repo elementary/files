@@ -111,10 +111,14 @@ public class PopupMenuBuilder : Object {
         return add_item (menu_item, cb);
     }
 
-    public PopupMenuBuilder add_empty_mount_trash (MenuitemCallback cb) {
+    public void add_empty_mount_trash () {
         var menu_item = new Gtk.MenuItem.with_mnemonic (_("Permanently Delete Trash on this Mount"));
+        menu_item.set_detailed_action_name (
+            Action.print_detailed_name ("mountable.empty-trash", null)
+        );
         menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-        return add_item (menu_item, cb);
+
+        add_item (menu_item);
     }
 
     public PopupMenuBuilder add_separator () {
