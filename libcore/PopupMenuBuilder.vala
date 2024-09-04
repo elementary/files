@@ -68,19 +68,6 @@ public class PopupMenuBuilder : Object {
         return add_item (new Gtk.MenuItem.with_label (_("Rename")), cb);
     }
 
-    public void add_unmount () {
-        add_with_action_name (_("_Unmount"), "mountable.unmount");
-    }
-
-    public void add_drive_property () {
-        add_with_action_name (_("Properties"), "mountable.properties");
-    }
-
-    public void add_eject_drive () {
-        // Do we need different text for USB sticks and optical drives?
-        add_with_action_name (_("Eject Media"), "mountable.eject");
-    }
-
     public void add_safely_remove () {
         // Do we need different text for USB sticks and optical drives?
         add_with_action_name (_("Safely Remove"), "mountable.safely-remove");
@@ -121,7 +108,7 @@ public class PopupMenuBuilder : Object {
         return add_item (new Gtk.SeparatorMenuItem ());
     }
 
-    private void add_with_action_name (string label, string action_name) {
+    public void add_with_action_name (string label, string action_name) {
         var menu_item = new Gtk.MenuItem.with_mnemonic (label);
         menu_item.set_detailed_action_name (
             Action.print_detailed_name (action_name, null)
