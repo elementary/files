@@ -201,10 +201,18 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         var open_window_action = new SimpleAction ("open-window", null);
         open_window_action.activate.connect (() => activated (NEW_WINDOW));
 
+        var rename_action = new SimpleAction ("rename", null);
+        rename_action.activate.connect (rename);
+
+        var remove_action = new SimpleAction ("remove", null);
+        remove_action.activate.connect (() => list.remove_item_by_id (id));
+
         var action_group = new SimpleActionGroup ();
         action_group.add_action (open_action);
         action_group.add_action (open_tab_action);
         action_group.add_action (open_window_action);
+        action_group.add_action (rename_action);
+        action_group.add_action (remove_action);
 
         insert_action_group ("bookmark", action_group);
     }
@@ -320,15 +328,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
     /* Rows under "Bookmarks" can be removed or renamed */
         if (!permanent) {
-            menu_builder
-                .add_separator ()
-                .add_remove (() => {list.remove_item_by_id (id);});
+            menu_builder.add_separator ();
+            menu_builder.add_remove ();
         }
 
         if (!pinned) {
-            menu_builder.add_rename (() => {
-                rename ();
-            });
+            menu_builder.add_rename ();
         }
 
         if (Uri.parse_scheme (uri) == "trash") {

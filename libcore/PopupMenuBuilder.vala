@@ -60,12 +60,12 @@ public class PopupMenuBuilder : Object {
         add_with_action_name (_("Open in New _Window"), "bookmark.open-window");
     }
 
-    public PopupMenuBuilder add_remove (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_label (_("Remove")), cb);
+    public void add_remove () {
+        add_with_action_name (_("Remove"), "bookmark.remove");
     }
 
-    public PopupMenuBuilder add_rename (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_label (_("Rename")), cb);
+    public void add_rename () {
+        add_with_action_name (_("Rename"), "bookmark.rename");
     }
 
     public void add_unmount () {
