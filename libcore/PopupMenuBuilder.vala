@@ -52,12 +52,12 @@ public class PopupMenuBuilder : Object {
         add_with_action_name (_("Open"), "bookmark.open");
     }
 
-    public PopupMenuBuilder add_open_tab (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open in New _Tab")), cb);
+    public void add_open_tab () {
+        add_with_action_name (_("Open in New _Tab"), "bookmark.open-tab");
     }
 
-    public PopupMenuBuilder add_open_window (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open in New _Window")), cb);
+    public void add_open_window () {
+        add_with_action_name (_("Open in New _Window"), "bookmark.open-tab");
     }
 
     public PopupMenuBuilder add_remove (MenuitemCallback cb) {

@@ -195,8 +195,16 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         var open_action = new SimpleAction ("open", null);
         open_action.activate.connect (() => activated ());
 
+        var open_tab_action = new SimpleAction ("open-tab", null);
+        open_tab_action.activate.connect (() => activated (NEW_TAB));
+
+        var open_window_action = new SimpleAction ("open-window", null);
+        open_window_action.activate.connect (() => activated (NEW_WINDOW));
+
         var action_group = new SimpleActionGroup ();
         action_group.add_action (open_action);
+        action_group.add_action (open_tab_action);
+        action_group.add_action (open_window_action);
 
         insert_action_group ("bookmark", action_group);
     }
@@ -293,8 +301,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         var menu_builder = new PopupMenuBuilder ();
         menu_builder.add_open ();
         menu_builder.add_separator ();
-        menu_builder.add_open_tab (() => {activated (Files.OpenFlag.NEW_TAB);});
-        menu_builder.add_open_window (() => {activated (Files.OpenFlag.NEW_WINDOW);});;
+        menu_builder.add_open_tab ();
+        menu_builder.add_open_window ();
 
         add_extra_menu_items (menu_builder);
 
