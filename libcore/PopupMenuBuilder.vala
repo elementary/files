@@ -48,8 +48,8 @@ public class PopupMenuBuilder : Object {
         return menu;
     }
 
-    public PopupMenuBuilder add_open (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open")), cb);
+    public void add_open () {
+        add_with_action_name (_("Open"), "bookmark.open");
     }
 
     public PopupMenuBuilder add_open_tab (MenuitemCallback cb) {

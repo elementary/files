@@ -191,6 +191,14 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         set_up_drag ();
         set_up_drop ();
+
+        var open_action = new SimpleAction ("open", null);
+        open_action.activate.connect (() => activated ());
+
+        var action_group = new SimpleActionGroup ();
+        action_group.add_action (open_action);
+
+        insert_action_group ("bookmark", action_group);
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
@@ -282,11 +290,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     protected virtual void popup_context_menu () {
-        var menu_builder = new PopupMenuBuilder ()
-            .add_open (() => {activated ();})
-            .add_separator ()
-            .add_open_tab (() => {activated (Files.OpenFlag.NEW_TAB);})
-            .add_open_window (() => {activated (Files.OpenFlag.NEW_WINDOW);});
+        var menu_builder = new PopupMenuBuilder ();
+        menu_builder.add_open ();
+        menu_builder.add_separator ();
+        menu_builder.add_open_tab (() => {activated (Files.OpenFlag.NEW_TAB);});
+        menu_builder.add_open_window (() => {activated (Files.OpenFlag.NEW_WINDOW);});;
 
         add_extra_menu_items (menu_builder);
 
