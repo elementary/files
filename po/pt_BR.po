@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-30 15:34+0000\n"
+"POT-Creation-Date: 2024-09-04 09:49+0000\n"
 "PO-Revision-Date: 2024-04-24 13:13+0000\n"
 "Last-Translator: Matheus Torres Carvalho <matheustcarvalho@hotmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
@@ -48,7 +48,7 @@ msgstr "novo arquivo"
 msgid "Select"
 msgstr "Selecionar"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
 msgid "Open"
 msgstr "Abrir"
 
@@ -296,42 +296,42 @@ msgstr "Modificado"
 msgid "Current Date"
 msgstr ""
 
-#: libcore/File.vala:574 libcore/File.vala:1129
+#: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
 msgstr "Inacessível"
 
-#: libcore/File.vala:907
+#: libcore/File.vala:955
 msgid "Failed to parse the desktop file"
 msgstr "Falha ao analisar o arquivo desktop"
 
-#: libcore/File.vala:911
+#: libcore/File.vala:959
 #, fuzzy
 msgid "Failed to parse the desktop file: "
 msgstr "Falha ao analisar o arquivo de desktop: %s"
 
-#: libcore/File.vala:923
+#: libcore/File.vala:971
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "Falha ao criar comando do arquivo: %s"
 
-#: libcore/File.vala:932
+#: libcore/File.vala:980
 #, fuzzy
 msgid "Unable to Launch Desktop File: "
 msgstr "Falha ao abrir o arquivo de desktop: %s"
 
-#: libcore/File.vala:1122
+#: libcore/File.vala:1169
 #, fuzzy
 msgid "Empty"
 msgstr "Arquivo vazio"
 
-#: libcore/File.vala:1124
+#: libcore/File.vala:1171
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d minuto"
 msgstr[1] "%'d minutos"
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1216
 #, c-format
 msgid "link to %s"
 msgstr "vincular a %s"
@@ -1134,61 +1134,57 @@ msgstr "Erro ao criar arquivo %s."
 msgid "There was an error creating the directory in %s."
 msgstr "Houve um erro ao criar o diretório em %s."
 
-#: libcore/PopupMenuBuilder.vala:54
+#: libcore/PopupMenuBuilder.vala:56
 msgid "Open in New _Tab"
 msgstr "Abrir em nova a_ba"
 
-#: libcore/PopupMenuBuilder.vala:58
+#: libcore/PopupMenuBuilder.vala:60
 msgid "Open in New _Window"
 msgstr "Abrir em nova _janela"
 
-#: libcore/PopupMenuBuilder.vala:62
+#: libcore/PopupMenuBuilder.vala:64
 msgid "Remove"
 msgstr "Remover"
 
-#: libcore/PopupMenuBuilder.vala:66
+#: libcore/PopupMenuBuilder.vala:68
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 msgid "Rename"
 msgstr "Renomear"
 
-#: libcore/PopupMenuBuilder.vala:70
-msgid "_Mount"
-msgstr "_Montar"
-
-#: libcore/PopupMenuBuilder.vala:74
+#: libcore/PopupMenuBuilder.vala:72
 msgid "_Unmount"
 msgstr "_Desmontar"
 
-#: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
+#: libcore/PopupMenuBuilder.vala:76 src/Dialogs/PropertiesWindow.vala:117
 #: src/View/AbstractDirectoryView.vala:2028
 msgid "Properties"
 msgstr "Propriedades"
 
-#: libcore/PopupMenuBuilder.vala:83
+#: libcore/PopupMenuBuilder.vala:81
 msgid "Eject Media"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:88
+#: libcore/PopupMenuBuilder.vala:86
 #, fuzzy
 msgid "Safely Remove"
 msgstr "Remover"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2021
+#: libcore/PopupMenuBuilder.vala:90 src/View/AbstractDirectoryView.vala:2021
 #, fuzzy
 msgid "Add to Bookmarks"
 msgstr "Favoritos"
 
-#: libcore/PopupMenuBuilder.vala:104
+#: libcore/PopupMenuBuilder.vala:102
 #, fuzzy
 msgid "Permanently Delete All Trash"
 msgstr "Deletar permanentemente todos os items da lixeira?"
 
-#: libcore/PopupMenuBuilder.vala:104
+#: libcore/PopupMenuBuilder.vala:102
 #, fuzzy
 msgid "Permanently Delete Trash"
 msgstr "Deletar permanentemente todos os items da lixeira?"
 
-#: libcore/PopupMenuBuilder.vala:117
+#: libcore/PopupMenuBuilder.vala:115
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Deletar permanentemente todos os itens da lixeira neste drive montado?"
@@ -2383,28 +2379,28 @@ msgid "(as Administrator)"
 msgstr "(como administrador)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:192
 #, fuzzy, c-format
 msgid "Eject '%s'"
 msgstr "Excluir '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:192
 #, fuzzy, c-format
 msgid "Unmount '%s'"
 msgstr "Não foi possível montar %s"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:306
+#: src/View/Sidebar/AbstractMountableRow.vala:325
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar/AbstractMountableRow.vala:307
+#: src/View/Sidebar/AbstractMountableRow.vala:326
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%s de %s"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:356
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
@@ -2412,7 +2408,7 @@ msgstr "%s de %s"
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:356
 msgid "Not mounted"
 msgstr ""
 
@@ -2555,7 +2551,7 @@ msgid "No operation to redo"
 msgstr "A operação expirou."
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
-#: src/View/Widgets/LocationBar.vala:199
+#: src/View/Widgets/LocationBar.vala:191
 msgid "Search or Type Path"
 msgstr "Pesquisar ou digitar caminho"
 
@@ -2567,11 +2563,11 @@ msgstr "Abrir em uma nova aba"
 msgid "Open in Other Application…"
 msgstr "Abrir com outro aplicativo…"
 
-#: src/View/Widgets/LocationBar.vala:195
+#: src/View/Widgets/LocationBar.vala:187
 msgid "Reload this folder"
 msgstr "Recarregar esta pasta"
 
-#: src/View/Widgets/LocationBar.vala:208
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Searching…"
 msgstr "Pesquisando…"
 
@@ -2659,6 +2655,9 @@ msgstr "Abaixo desta pasta"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Usado recentemente"
+
+#~ msgid "_Mount"
+#~ msgstr "_Montar"
 
 #, fuzzy
 #~ msgctxt "bulk-rename"

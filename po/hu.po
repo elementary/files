@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-30 15:34+0000\n"
-"PO-Revision-Date: 2024-05-21 23:13+0000\n"
+"POT-Creation-Date: 2024-09-04 09:49+0000\n"
+"PO-Revision-Date: 2024-09-04 09:49+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -48,7 +48,7 @@ msgstr "Adjon meg egy új fájlnevet"
 msgid "Select"
 msgstr "Kiválasztás"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
 msgid "Open"
 msgstr "Megnyitás"
 
@@ -289,38 +289,38 @@ msgstr "Módosítás dátuma"
 msgid "Current Date"
 msgstr "Jelenlegi dátum"
 
-#: libcore/File.vala:574 libcore/File.vala:1129
+#: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
 msgstr "Hozzáférhetetlen"
 
-#: libcore/File.vala:907
+#: libcore/File.vala:955
 msgid "Failed to parse the desktop file"
 msgstr "Nem sikerült elemezni az asztali fájlt"
 
-#: libcore/File.vala:911
+#: libcore/File.vala:959
 msgid "Failed to parse the desktop file: "
 msgstr "Az asztali fájl elemzése sikertelen: "
 
-#: libcore/File.vala:923
+#: libcore/File.vala:971
 msgid "Failed to create command from file: "
 msgstr "Nem sikerült parancsot létrehozni ebből a fájlból: "
 
-#: libcore/File.vala:932
+#: libcore/File.vala:980
 msgid "Unable to Launch Desktop File: "
 msgstr "Nem sikerült elindítani ezt az asztali fájlt: "
 
-#: libcore/File.vala:1122
+#: libcore/File.vala:1169
 msgid "Empty"
 msgstr "Üres"
 
-#: libcore/File.vala:1124
+#: libcore/File.vala:1171
 #, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d elem"
 msgstr[1] "%'d elem"
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1216
 #, c-format
 msgid "link to %s"
 msgstr "hivatkozás erre: %s"
@@ -1109,57 +1109,53 @@ msgstr "Hiba a következő fájl létrehozásakor: %s."
 msgid "There was an error creating the directory in %s."
 msgstr "Hiba a könyvtár létrehozásakor a következőben: %s."
 
-#: libcore/PopupMenuBuilder.vala:54
+#: libcore/PopupMenuBuilder.vala:56
 msgid "Open in New _Tab"
 msgstr "Megnyitás új _lapon"
 
-#: libcore/PopupMenuBuilder.vala:58
+#: libcore/PopupMenuBuilder.vala:60
 msgid "Open in New _Window"
 msgstr "Megnyitás új _ablakban"
 
-#: libcore/PopupMenuBuilder.vala:62
+#: libcore/PopupMenuBuilder.vala:64
 msgid "Remove"
 msgstr "Eltávolítás"
 
-#: libcore/PopupMenuBuilder.vala:66
+#: libcore/PopupMenuBuilder.vala:68
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 msgid "Rename"
 msgstr "Átnevezés"
 
-#: libcore/PopupMenuBuilder.vala:70
-msgid "_Mount"
-msgstr "_Csatolás"
-
-#: libcore/PopupMenuBuilder.vala:74
+#: libcore/PopupMenuBuilder.vala:72
 msgid "_Unmount"
 msgstr "_Leválasztás"
 
-#: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
+#: libcore/PopupMenuBuilder.vala:76 src/Dialogs/PropertiesWindow.vala:117
 #: src/View/AbstractDirectoryView.vala:2028
 msgid "Properties"
 msgstr "Tulajdonságok"
 
-#: libcore/PopupMenuBuilder.vala:83
+#: libcore/PopupMenuBuilder.vala:81
 msgid "Eject Media"
 msgstr "Média kiadása"
 
-#: libcore/PopupMenuBuilder.vala:88
+#: libcore/PopupMenuBuilder.vala:86
 msgid "Safely Remove"
 msgstr "Biztonságos eltávolítás"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2021
+#: libcore/PopupMenuBuilder.vala:90 src/View/AbstractDirectoryView.vala:2021
 msgid "Add to Bookmarks"
 msgstr "Hozzáadás a könyvjelzőkhöz"
 
-#: libcore/PopupMenuBuilder.vala:104
+#: libcore/PopupMenuBuilder.vala:102
 msgid "Permanently Delete All Trash"
 msgstr "A kuka teljes tartalmának végleges törlése"
 
-#: libcore/PopupMenuBuilder.vala:104
+#: libcore/PopupMenuBuilder.vala:102
 msgid "Permanently Delete Trash"
 msgstr "A kuka tartalmának végleges törlése"
 
-#: libcore/PopupMenuBuilder.vala:117
+#: libcore/PopupMenuBuilder.vala:115
 msgid "Permanently Delete Trash on this Mount"
 msgstr "A köteten található kuka tartalmának végleges törlése"
 
@@ -1933,22 +1929,16 @@ msgid "Could not open files or URIs with this app"
 msgstr "Nem lehet megnyitni a fájlokat vagy URI-kat ezzel az alkalmazással"
 
 #: src/Utils/Permissions.vala:29
-#, fuzzy
-#| msgid "Owner:"
 msgid "Owner"
-msgstr "Tulajdonos:"
+msgstr "Tulajdonos"
 
 #: src/Utils/Permissions.vala:31
-#, fuzzy
-#| msgid "Group:"
 msgid "Group"
-msgstr "Csoport:"
+msgstr "Csoport"
 
 #: src/Utils/Permissions.vala:34
-#, fuzzy
-#| msgid "Everyone:"
 msgid "Everyone"
-msgstr "Mindenki:"
+msgstr "Mindenki"
 
 #: src/View/AbstractDirectoryView.vala:856
 #: src/View/AbstractDirectoryView.vala:1183
@@ -2294,28 +2284,28 @@ msgid "(as Administrator)"
 msgstr "(Rendszergazdaként)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:192
 #, c-format
 msgid "Eject '%s'"
 msgstr "A(z) '%s' kiadása"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:192
 #, c-format
 msgid "Unmount '%s'"
 msgstr "A(z) '%s' leválasztása"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:306
+#: src/View/Sidebar/AbstractMountableRow.vala:325
 #, c-format
 msgid "%s free"
 msgstr "%s szabad"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:307
+#: src/View/Sidebar/AbstractMountableRow.vala:326
 #, c-format
 msgid "%s used of %s"
 msgstr "%s felhasználva, összesen: %s"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:356
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
@@ -2323,7 +2313,7 @@ msgstr "%s felhasználva, összesen: %s"
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:356
 msgid "Not mounted"
 msgstr "Nincs csatolva"
 
@@ -2454,7 +2444,7 @@ msgid "No operation to redo"
 msgstr "Nincs újra végrehajtható művelet"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
-#: src/View/Widgets/LocationBar.vala:199
+#: src/View/Widgets/LocationBar.vala:191
 msgid "Search or Type Path"
 msgstr "Keresés vagy útvonal megadása"
 
@@ -2466,11 +2456,11 @@ msgstr "Megnyitás új lapon"
 msgid "Open in Other Application…"
 msgstr "Megnyitás másik alkalmazással…"
 
-#: src/View/Widgets/LocationBar.vala:195
+#: src/View/Widgets/LocationBar.vala:187
 msgid "Reload this folder"
 msgstr "A mappa újratöltése"
 
-#: src/View/Widgets/LocationBar.vala:208
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Searching…"
 msgstr "Keresés…"
 
@@ -2557,6 +2547,9 @@ msgstr "Ezen mappa alatt"
 #: src/View/Widgets/SearchResults.vala:328
 msgid "Recently Used"
 msgstr "Mostanában használt"
+
+#~ msgid "_Mount"
+#~ msgstr "_Csatolás"
 
 #~ msgctxt "bulk-rename"
 #~ msgid "Keep"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-30 15:34+0000\n"
+"POT-Creation-Date: 2024-09-04 09:49+0000\n"
 "PO-Revision-Date: 2020-03-17 15:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
@@ -49,7 +49,7 @@ msgstr "nova dosiero"
 msgid "Select"
 msgstr " elektita(j)"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
 msgid "Open"
 msgstr "Malfermi"
 
@@ -296,43 +296,43 @@ msgstr "Modifita"
 msgid "Current Date"
 msgstr ""
 
-#: libcore/File.vala:574 libcore/File.vala:1129
+#: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
 msgstr ""
 
-#: libcore/File.vala:907
+#: libcore/File.vala:955
 #, fuzzy
 msgid "Failed to parse the desktop file"
 msgstr "Analizado de labortabla dosiero fiaskis: %s"
 
-#: libcore/File.vala:911
+#: libcore/File.vala:959
 #, fuzzy
 msgid "Failed to parse the desktop file: "
 msgstr "Analizado de labortabla dosiero fiaskis: %s"
 
-#: libcore/File.vala:923
+#: libcore/File.vala:971
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "Analizado de labortabla dosiero fiaskis: %s"
 
-#: libcore/File.vala:932
+#: libcore/File.vala:980
 #, fuzzy
 msgid "Unable to Launch Desktop File: "
 msgstr "Analizado de labortabla dosiero fiaskis: %s"
 
-#: libcore/File.vala:1122
+#: libcore/File.vala:1169
 #, fuzzy
 msgid "Empty"
 msgstr "Malplena dosiero"
 
-#: libcore/File.vala:1124
+#: libcore/File.vala:1171
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d minuto"
 msgstr[1] "%'d minutoj"
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1216
 #, c-format
 msgid "link to %s"
 msgstr "ligo al  %s"
@@ -1119,61 +1119,57 @@ msgstr "Okazis eraro kreanta la dosieron %s."
 msgid "There was an error creating the directory in %s."
 msgstr "Okazis eraro dum kreado de la dosierujo „%s“."
 
-#: libcore/PopupMenuBuilder.vala:54
+#: libcore/PopupMenuBuilder.vala:56
 msgid "Open in New _Tab"
 msgstr "Malfermi en nova _Langeto"
 
-#: libcore/PopupMenuBuilder.vala:58
+#: libcore/PopupMenuBuilder.vala:60
 msgid "Open in New _Window"
 msgstr "Malfermi en _Nova Fenestro"
 
-#: libcore/PopupMenuBuilder.vala:62
+#: libcore/PopupMenuBuilder.vala:64
 msgid "Remove"
 msgstr "Forigi"
 
-#: libcore/PopupMenuBuilder.vala:66
+#: libcore/PopupMenuBuilder.vala:68
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 msgid "Rename"
 msgstr "Renomi"
 
-#: libcore/PopupMenuBuilder.vala:70
-msgid "_Mount"
-msgstr "_Munti"
-
-#: libcore/PopupMenuBuilder.vala:74
+#: libcore/PopupMenuBuilder.vala:72
 msgid "_Unmount"
 msgstr "_Malmunti"
 
-#: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
+#: libcore/PopupMenuBuilder.vala:76 src/Dialogs/PropertiesWindow.vala:117
 #: src/View/AbstractDirectoryView.vala:2028
 msgid "Properties"
 msgstr "Atributoj"
 
-#: libcore/PopupMenuBuilder.vala:83
+#: libcore/PopupMenuBuilder.vala:81
 msgid "Eject Media"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:88
+#: libcore/PopupMenuBuilder.vala:86
 #, fuzzy
 msgid "Safely Remove"
 msgstr "Forigi"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2021
+#: libcore/PopupMenuBuilder.vala:90 src/View/AbstractDirectoryView.vala:2021
 #, fuzzy
 msgid "Add to Bookmarks"
 msgstr "Paĝosignoj"
 
-#: libcore/PopupMenuBuilder.vala:104
+#: libcore/PopupMenuBuilder.vala:102
 #, fuzzy
 msgid "Permanently Delete All Trash"
 msgstr "Ĉu definitive forigi ĉiujn elementojn el la rubujo?"
 
-#: libcore/PopupMenuBuilder.vala:104
+#: libcore/PopupMenuBuilder.vala:102
 #, fuzzy
 msgid "Permanently Delete Trash"
 msgstr "Ĉu definitive forigi ĉiujn elementojn el la rubujo?"
 
-#: libcore/PopupMenuBuilder.vala:117
+#: libcore/PopupMenuBuilder.vala:115
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Ĉu definitive forigi ĉiujn elementojn el ĉi muntaĵa rubujo?"
@@ -2361,28 +2357,28 @@ msgid "(as Administrator)"
 msgstr "(kiel administranto)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:192
 #, fuzzy, c-format
 msgid "Eject '%s'"
 msgstr "Forigi „%s“"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:192
 #, fuzzy, c-format
 msgid "Unmount '%s'"
 msgstr "Maleblas munti %s"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:306
+#: src/View/Sidebar/AbstractMountableRow.vala:325
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar/AbstractMountableRow.vala:307
+#: src/View/Sidebar/AbstractMountableRow.vala:326
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%s el %s"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:356
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
@@ -2390,7 +2386,7 @@ msgstr "%s el %s"
 msgid "%s (%s)"
 msgstr "%s (%s, %s)"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:356
 msgid "Not mounted"
 msgstr ""
 
@@ -2533,7 +2529,7 @@ msgid "No operation to redo"
 msgstr "La operacio eltempiĝis."
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
-#: src/View/Widgets/LocationBar.vala:199
+#: src/View/Widgets/LocationBar.vala:191
 msgid "Search or Type Path"
 msgstr "Serĉi aŭ tajpi dosierindikon"
 
@@ -2545,11 +2541,11 @@ msgstr "Malfermi en nova langeto"
 msgid "Open in Other Application…"
 msgstr "Malfermi en alia aplikaĵo…"
 
-#: src/View/Widgets/LocationBar.vala:195
+#: src/View/Widgets/LocationBar.vala:187
 msgid "Reload this folder"
 msgstr "Reŝargi la dosierujon"
 
-#: src/View/Widgets/LocationBar.vala:208
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Searching…"
 msgstr "Serĉanta…"
 
@@ -2637,6 +2633,9 @@ msgstr "Sub ĉi dosierujo"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Freŝdate uzitaj"
+
+#~ msgid "_Mount"
+#~ msgstr "_Munti"
 
 #, fuzzy
 #~ msgctxt "bulk-rename"

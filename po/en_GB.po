@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-30 15:34+0000\n"
+"POT-Creation-Date: 2024-09-04 09:49+0000\n"
 "PO-Revision-Date: 2024-05-20 08:13+0000\n"
 "Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
@@ -47,7 +47,7 @@ msgstr "Enter new filename"
 msgid "Select"
 msgstr "Select"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
 msgid "Open"
 msgstr "Open"
 
@@ -287,38 +287,38 @@ msgstr "Date Modified"
 msgid "Current Date"
 msgstr "Current Date"
 
-#: libcore/File.vala:574 libcore/File.vala:1129
+#: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
 msgstr "Inaccessible"
 
-#: libcore/File.vala:907
+#: libcore/File.vala:955
 msgid "Failed to parse the desktop file"
 msgstr "Failed to parse the desktop file"
 
-#: libcore/File.vala:911
+#: libcore/File.vala:959
 msgid "Failed to parse the desktop file: "
 msgstr "Failed to parse the desktop file: "
 
-#: libcore/File.vala:923
+#: libcore/File.vala:971
 msgid "Failed to create command from file: "
 msgstr "Failed to create command from file: "
 
-#: libcore/File.vala:932
+#: libcore/File.vala:980
 msgid "Unable to Launch Desktop File: "
 msgstr "Unable to Launch Desktop File: "
 
-#: libcore/File.vala:1122
+#: libcore/File.vala:1169
 msgid "Empty"
 msgstr "Empty"
 
-#: libcore/File.vala:1124
+#: libcore/File.vala:1171
 #, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d item"
 msgstr[1] "%'d items"
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1216
 #, c-format
 msgid "link to %s"
 msgstr "link to %s"
@@ -1118,57 +1118,53 @@ msgstr "Error while creating file %s."
 msgid "There was an error creating the directory in %s."
 msgstr "There was an error creating the directory in %s."
 
-#: libcore/PopupMenuBuilder.vala:54
+#: libcore/PopupMenuBuilder.vala:56
 msgid "Open in New _Tab"
 msgstr "Open in New _Tab"
 
-#: libcore/PopupMenuBuilder.vala:58
+#: libcore/PopupMenuBuilder.vala:60
 msgid "Open in New _Window"
 msgstr "Open in New _Window"
 
-#: libcore/PopupMenuBuilder.vala:62
+#: libcore/PopupMenuBuilder.vala:64
 msgid "Remove"
 msgstr "Remove"
 
-#: libcore/PopupMenuBuilder.vala:66
+#: libcore/PopupMenuBuilder.vala:68
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 msgid "Rename"
 msgstr "Rename"
 
-#: libcore/PopupMenuBuilder.vala:70
-msgid "_Mount"
-msgstr "_Mount"
-
-#: libcore/PopupMenuBuilder.vala:74
+#: libcore/PopupMenuBuilder.vala:72
 msgid "_Unmount"
 msgstr "_Unmount"
 
-#: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
+#: libcore/PopupMenuBuilder.vala:76 src/Dialogs/PropertiesWindow.vala:117
 #: src/View/AbstractDirectoryView.vala:2028
 msgid "Properties"
 msgstr "Properties"
 
-#: libcore/PopupMenuBuilder.vala:83
+#: libcore/PopupMenuBuilder.vala:81
 msgid "Eject Media"
 msgstr "Eject Media"
 
-#: libcore/PopupMenuBuilder.vala:88
+#: libcore/PopupMenuBuilder.vala:86
 msgid "Safely Remove"
 msgstr "Safely Remove"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2021
+#: libcore/PopupMenuBuilder.vala:90 src/View/AbstractDirectoryView.vala:2021
 msgid "Add to Bookmarks"
 msgstr "Add to Bookmarks"
 
-#: libcore/PopupMenuBuilder.vala:104
+#: libcore/PopupMenuBuilder.vala:102
 msgid "Permanently Delete All Trash"
 msgstr "Permanently Delete All Rubbish"
 
-#: libcore/PopupMenuBuilder.vala:104
+#: libcore/PopupMenuBuilder.vala:102
 msgid "Permanently Delete Trash"
 msgstr "Permanently Delete Rubbish"
 
-#: libcore/PopupMenuBuilder.vala:117
+#: libcore/PopupMenuBuilder.vala:115
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Permanently Delete Rubbish on this Mount"
 
@@ -2308,28 +2304,28 @@ msgid "(as Administrator)"
 msgstr "(as Administrator)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:192
 #, c-format
 msgid "Eject '%s'"
 msgstr "Eject '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:192
 #, c-format
 msgid "Unmount '%s'"
 msgstr "Unmount '%s'"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:306
+#: src/View/Sidebar/AbstractMountableRow.vala:325
 #, c-format
 msgid "%s free"
 msgstr "%s free"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:307
+#: src/View/Sidebar/AbstractMountableRow.vala:326
 #, c-format
 msgid "%s used of %s"
 msgstr "%s used of %s"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:356
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
@@ -2337,7 +2333,7 @@ msgstr "%s used of %s"
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:356
 msgid "Not mounted"
 msgstr "Not mounted"
 
@@ -2467,7 +2463,7 @@ msgid "No operation to redo"
 msgstr "No operation to redo"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
-#: src/View/Widgets/LocationBar.vala:199
+#: src/View/Widgets/LocationBar.vala:191
 msgid "Search or Type Path"
 msgstr "Search or Type Path"
 
@@ -2479,11 +2475,11 @@ msgstr "Open in New Tab"
 msgid "Open in Other Application…"
 msgstr "Open in Other Application…"
 
-#: src/View/Widgets/LocationBar.vala:195
+#: src/View/Widgets/LocationBar.vala:187
 msgid "Reload this folder"
 msgstr "Reload this folder"
 
-#: src/View/Widgets/LocationBar.vala:208
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Searching…"
 msgstr "Searching…"
 
@@ -2570,6 +2566,9 @@ msgstr "Below This Folder"
 #: src/View/Widgets/SearchResults.vala:328
 msgid "Recently Used"
 msgstr "Recently Used"
+
+#~ msgid "_Mount"
+#~ msgstr "_Mount"
 
 #~ msgctxt "bulk-rename"
 #~ msgid "Keep"

@@ -22,8 +22,10 @@ public class PopupMenuBuilder : Object {
     Gtk.MenuItem[] menu_items = {};
     public uint n_items { get { return menu_items.length; }}
 
-    public Gtk.Menu build () {
-        var popupmenu = new Gtk.Menu ();
+    public Gtk.Menu build (Gtk.Widget attach_widget) {
+        var popupmenu = new Gtk.Menu () {
+            attach_widget = attach_widget
+        };
         foreach (var menu_item in menu_items) {
             popupmenu.append (menu_item);
         }
@@ -66,26 +68,22 @@ public class PopupMenuBuilder : Object {
         return add_item (new Gtk.MenuItem.with_label (_("Rename")), cb);
     }
 
-    public PopupMenuBuilder add_mount (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("_Mount")), cb);
+    public void add_unmount () {
+        add_with_action_name (_("_Unmount"), "mountable.unmount");
     }
 
-    public PopupMenuBuilder add_unmount (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("_Unmount")), cb);
+    public void add_drive_property () {
+        add_with_action_name (_("Properties"), "mountable.properties");
     }
 
-    public PopupMenuBuilder add_drive_property (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Properties")), cb);
-    }
-
-    public PopupMenuBuilder add_eject_drive (MenuitemCallback cb) {
+    public void add_eject_drive () {
         // Do we need different text for USB sticks and optical drives?
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Eject Media")), cb);
+        add_with_action_name (_("Eject Media"), "mountable.eject");
     }
 
-    public PopupMenuBuilder add_safely_remove (MenuitemCallback cb) {
+    public void add_safely_remove () {
         // Do we need different text for USB sticks and optical drives?
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Safely Remove")), cb);
+        add_with_action_name (_("Safely Remove"), "mountable.safely-remove");
     }
 
     public PopupMenuBuilder add_bookmark (MenuitemCallback cb) {
@@ -121,6 +119,16 @@ public class PopupMenuBuilder : Object {
 
     public PopupMenuBuilder add_separator () {
         return add_item (new Gtk.SeparatorMenuItem ());
+    }
+
+    private void add_with_action_name (string label, string action_name) {
+        var menu_item = new Gtk.MenuItem.with_mnemonic (label);
+        menu_item.set_detailed_action_name (
+            Action.print_detailed_name (action_name, null)
+        );
+
+        menu_item.show ();
+        menu_items += menu_item;
     }
 
     public PopupMenuBuilder add_item (Gtk.MenuItem menu_item, MenuitemCallback? cb = null) {

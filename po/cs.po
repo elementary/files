@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-30 15:34+0000\n"
+"POT-Creation-Date: 2024-09-04 09:49+0000\n"
 "PO-Revision-Date: 2023-08-30 12:08+0000\n"
 "Last-Translator: Jan <sebek_jan@yahoo.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/files/cs/>\n"
@@ -46,7 +46,7 @@ msgstr "Zadejte nový název souboru"
 msgid "Select"
 msgstr "Vybrat"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
 msgid "Open"
 msgstr "Otevřít"
 
@@ -285,31 +285,31 @@ msgstr "Datum změny"
 msgid "Current Date"
 msgstr "Aktuální datum"
 
-#: libcore/File.vala:574 libcore/File.vala:1129
+#: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
 msgstr "Nedostupný"
 
-#: libcore/File.vala:907
+#: libcore/File.vala:955
 msgid "Failed to parse the desktop file"
 msgstr "Selhalo zpracování desktop souboru"
 
-#: libcore/File.vala:911
+#: libcore/File.vala:959
 msgid "Failed to parse the desktop file: "
 msgstr "Nezdařilo se zpracování souboru .desktop: "
 
-#: libcore/File.vala:923
+#: libcore/File.vala:971
 msgid "Failed to create command from file: "
 msgstr "Vytvoření příkazu ze souboru se nezdařilo: "
 
-#: libcore/File.vala:932
+#: libcore/File.vala:980
 msgid "Unable to Launch Desktop File: "
 msgstr "Nedaří se spustit desktop soubor: "
 
-#: libcore/File.vala:1122
+#: libcore/File.vala:1169
 msgid "Empty"
 msgstr "Prázdné"
 
-#: libcore/File.vala:1124
+#: libcore/File.vala:1171
 #, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
@@ -317,7 +317,7 @@ msgstr[0] "%'d položka"
 msgstr[1] "%'d položky"
 msgstr[2] "%'d položek"
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1216
 #, c-format
 msgid "link to %s"
 msgstr "odkaz na %s"
@@ -1128,57 +1128,53 @@ msgstr "Chyba při vytváření souboru %s."
 msgid "There was an error creating the directory in %s."
 msgstr "Při vytváření složky v %s došlo k chybě."
 
-#: libcore/PopupMenuBuilder.vala:54
+#: libcore/PopupMenuBuilder.vala:56
 msgid "Open in New _Tab"
 msgstr "Otevřít v nové kar_tě"
 
-#: libcore/PopupMenuBuilder.vala:58
+#: libcore/PopupMenuBuilder.vala:60
 msgid "Open in New _Window"
 msgstr "Otevřít v novém _okně"
 
-#: libcore/PopupMenuBuilder.vala:62
+#: libcore/PopupMenuBuilder.vala:64
 msgid "Remove"
 msgstr "Odstranit"
 
-#: libcore/PopupMenuBuilder.vala:66
+#: libcore/PopupMenuBuilder.vala:68
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 msgid "Rename"
 msgstr "Přejmenovat"
 
-#: libcore/PopupMenuBuilder.vala:70
-msgid "_Mount"
-msgstr "_Připojit"
-
-#: libcore/PopupMenuBuilder.vala:74
+#: libcore/PopupMenuBuilder.vala:72
 msgid "_Unmount"
 msgstr "_Odpojit"
 
-#: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
+#: libcore/PopupMenuBuilder.vala:76 src/Dialogs/PropertiesWindow.vala:117
 #: src/View/AbstractDirectoryView.vala:2028
 msgid "Properties"
 msgstr "Vlastnosti"
 
-#: libcore/PopupMenuBuilder.vala:83
+#: libcore/PopupMenuBuilder.vala:81
 msgid "Eject Media"
 msgstr "Vysunout médium"
 
-#: libcore/PopupMenuBuilder.vala:88
+#: libcore/PopupMenuBuilder.vala:86
 msgid "Safely Remove"
 msgstr "Bezpečně odebrat"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2021
+#: libcore/PopupMenuBuilder.vala:90 src/View/AbstractDirectoryView.vala:2021
 msgid "Add to Bookmarks"
 msgstr "Přidat do záložek"
 
-#: libcore/PopupMenuBuilder.vala:104
+#: libcore/PopupMenuBuilder.vala:102
 msgid "Permanently Delete All Trash"
 msgstr "Trvale smazat všechny položky z Koše"
 
-#: libcore/PopupMenuBuilder.vala:104
+#: libcore/PopupMenuBuilder.vala:102
 msgid "Permanently Delete Trash"
 msgstr "Trvale smazat všechny položky z Koše"
 
-#: libcore/PopupMenuBuilder.vala:117
+#: libcore/PopupMenuBuilder.vala:115
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Trvale smazat všechny položky z Koše v tomto připojení (mount)"
 
@@ -2322,28 +2318,28 @@ msgid "(as Administrator)"
 msgstr "(jako správce)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:192
 #, c-format
 msgid "Eject '%s'"
 msgstr "Vysunout „%s“"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:192
 #, c-format
 msgid "Unmount '%s'"
 msgstr "Odpojit „%s“"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:306
+#: src/View/Sidebar/AbstractMountableRow.vala:325
 #, c-format
 msgid "%s free"
 msgstr "%s volných"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:307
+#: src/View/Sidebar/AbstractMountableRow.vala:326
 #, c-format
 msgid "%s used of %s"
 msgstr "%s využito z %s"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:356
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
@@ -2351,7 +2347,7 @@ msgstr "%s využito z %s"
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:356
 msgid "Not mounted"
 msgstr "Nepřipojeno"
 
@@ -2484,7 +2480,7 @@ msgid "No operation to redo"
 msgstr "Žádná operace k opakování"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
-#: src/View/Widgets/LocationBar.vala:199
+#: src/View/Widgets/LocationBar.vala:191
 msgid "Search or Type Path"
 msgstr "Hledat nebo zadat popis umístění"
 
@@ -2496,11 +2492,11 @@ msgstr "Otevřít v nové kartě"
 msgid "Open in Other Application…"
 msgstr "Otevřít v jiné aplikaci…"
 
-#: src/View/Widgets/LocationBar.vala:195
+#: src/View/Widgets/LocationBar.vala:187
 msgid "Reload this folder"
 msgstr "Znovu načíst tuto složku"
 
-#: src/View/Widgets/LocationBar.vala:208
+#: src/View/Widgets/LocationBar.vala:200
 msgid "Searching…"
 msgstr "Hledání…"
 
@@ -2591,6 +2587,9 @@ msgstr "Pod touto složkou"
 #: src/View/Widgets/SearchResults.vala:328
 msgid "Recently Used"
 msgstr "Nedávno použité"
+
+#~ msgid "_Mount"
+#~ msgstr "_Připojit"
 
 #~ msgctxt "bulk-rename"
 #~ msgid "Keep"

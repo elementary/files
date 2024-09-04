@@ -165,6 +165,26 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         add_mountable_tooltip.begin ();
 
         update_visibilities ();
+
+        var safely_remove_action = new SimpleAction ("safely-remove", null);
+        safely_remove_action.activate.connect (() => safely_remove_drive.begin ());
+
+        var eject_action = new SimpleAction ("eject", null);
+        eject_action.activate.connect (() => eject_drive.begin ());
+
+        var properties_action = new SimpleAction ("properties", null);
+        properties_action.activate.connect (show_mount_info);
+
+        var unmount_action = new SimpleAction ("unmount", null);
+        unmount_action.activate.connect (() => unmount_mount.begin ());
+
+        var action_group = new SimpleActionGroup ();
+        action_group.add_action (safely_remove_action);
+        action_group.add_action (eject_action);
+        action_group.add_action (properties_action);
+        action_group.add_action (unmount_action);
+
+        insert_action_group ("mountable", action_group);
     }
 
     protected void update_visibilities () {
@@ -203,8 +223,8 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         return success;
     }
 
-    protected async void safely_remove_drive (Drive drive) {
-        if (working || !valid) {
+    protected async void safely_remove_drive () {
+        if (working || !valid || drive == null) {
             return;
         }
 
@@ -218,8 +238,8 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         update_visibilities ();
     }
 
-    protected async void eject_drive (Drive drive) {
-        if (working || !valid) {
+    protected async void eject_drive () {
+        if (working || !valid || drive == null) {
             return;
         }
         working = true;
@@ -245,13 +265,12 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             }
 
             if (mount.can_unmount ()) {
-                menu_builder.add_unmount (() => {unmount_mount.begin ();});
+                menu_builder.add_unmount ();
             }
         }
 
-        menu_builder
-            .add_separator ()
-            .add_drive_property (() => {show_mount_info ();}); // This will mount if necessary
+        menu_builder.add_separator ();
+        menu_builder.add_drive_property (); // This will mount if necessary
     }
 
     protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {
