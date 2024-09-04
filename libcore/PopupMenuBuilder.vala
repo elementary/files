@@ -57,7 +57,7 @@ public class PopupMenuBuilder : Object {
     }
 
     public void add_open_window () {
-        add_with_action_name (_("Open in New _Window"), "bookmark.open-tab");
+        add_with_action_name (_("Open in New _Window"), "bookmark.open-window");
     }
 
     public PopupMenuBuilder add_remove (MenuitemCallback cb) {
