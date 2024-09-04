@@ -86,10 +86,6 @@ public class PopupMenuBuilder : Object {
         add_with_action_name (_("Safely Remove"), "mountable.safely-remove");
     }
 
-    public PopupMenuBuilder add_bookmark (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Add to Bookmarks")), cb);
-    }
-
     public PopupMenuBuilder add_empty_all_trash (MenuitemCallback cb) {
         var volume_monitor = VolumeMonitor.@get ();
         int mounts_with_trash = 0;
