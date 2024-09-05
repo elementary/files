@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-04 09:49+0000\n"
+"POT-Creation-Date: 2024-09-05 16:00+0000\n"
 "PO-Revision-Date: 2024-09-04 09:49+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
@@ -211,81 +211,81 @@ msgstr "Másolás ide"
 msgid "Link Here"
 msgstr "Hivatkozás ide"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2321
+#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2321
 msgid "Name"
 msgstr "Név"
 
-#: libcore/Enums.vala:144 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
+#: libcore/Enums.vala:136 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
 msgid "Creation Date"
 msgstr "Készítés dátuma"
 
-#: libcore/Enums.vala:147
+#: libcore/Enums.vala:139
 msgid "Last modification date"
 msgstr "Utolsó módosítás dátuma"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2326
+#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2326
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Méret"
 
-#: libcore/Enums.vala:173
+#: libcore/Enums.vala:165
 msgid "Number sequence"
 msgstr "Számsor"
 
-#: libcore/Enums.vala:176 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
+#: libcore/Enums.vala:168 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
 msgstr "Szöveg"
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2336
+#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2336
 msgid "Date"
 msgstr "Dátum"
 
-#: libcore/Enums.vala:195
+#: libcore/Enums.vala:187
 msgid "Suffix"
 msgstr "Utótag"
 
-#: libcore/Enums.vala:198
+#: libcore/Enums.vala:190
 msgid "Prefix"
 msgstr "Előtag"
 
-#: libcore/Enums.vala:208
+#: libcore/Enums.vala:200
 msgid "Text to put at the end"
 msgstr "A végére helyezendő szöveg"
 
-#: libcore/Enums.vala:211
+#: libcore/Enums.vala:203
 msgid "Text to put at the start"
 msgstr "Az elejére helyezendő szöveg"
 
-#: libcore/Enums.vala:230
+#: libcore/Enums.vala:222
 msgid "Default Format - Date only"
 msgstr "Alapértelmezett formátum - csak dátum"
 
-#: libcore/Enums.vala:232
+#: libcore/Enums.vala:224
 msgid "Default Format - Date and Time"
 msgstr "Alapértelmezett formátum - dátum és idő"
 
-#: libcore/Enums.vala:234
+#: libcore/Enums.vala:226
 msgid "Locale Format - Date and Time"
 msgstr "Területi formátum - dátum és idő"
 
-#: libcore/Enums.vala:236
+#: libcore/Enums.vala:228
 msgid "ISO 8601 Format - Date only"
 msgstr "ISO 8601 formátum - csak dátum"
 
-#: libcore/Enums.vala:238
+#: libcore/Enums.vala:230
 msgid "ISO 8601 Format - Date and Time"
 msgstr "ISO 6801 formátum - dátum és idő"
 
-#: libcore/Enums.vala:254
+#: libcore/Enums.vala:246
 msgid "Date created"
 msgstr "Létrehozás dátuma"
 
-#: libcore/Enums.vala:256
+#: libcore/Enums.vala:248
 msgid "Date Modified"
 msgstr "Módosítás dátuma"
 
-#: libcore/Enums.vala:258
+#: libcore/Enums.vala:250
 msgid "Current Date"
 msgstr "Jelenlegi dátum"
 
@@ -1126,36 +1126,23 @@ msgstr "Eltávolítás"
 msgid "Rename"
 msgstr "Átnevezés"
 
-#: libcore/PopupMenuBuilder.vala:72
-msgid "_Unmount"
-msgstr "_Leválasztás"
-
-#: libcore/PopupMenuBuilder.vala:76 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2028
-msgid "Properties"
-msgstr "Tulajdonságok"
-
-#: libcore/PopupMenuBuilder.vala:81
-msgid "Eject Media"
-msgstr "Média kiadása"
-
-#: libcore/PopupMenuBuilder.vala:86
+#: libcore/PopupMenuBuilder.vala:73
 msgid "Safely Remove"
 msgstr "Biztonságos eltávolítás"
 
-#: libcore/PopupMenuBuilder.vala:90 src/View/AbstractDirectoryView.vala:2021
+#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
 msgid "Add to Bookmarks"
 msgstr "Hozzáadás a könyvjelzőkhöz"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:89
 msgid "Permanently Delete All Trash"
 msgstr "A kuka teljes tartalmának végleges törlése"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:89
 msgid "Permanently Delete Trash"
 msgstr "A kuka tartalmának végleges törlése"
 
-#: libcore/PopupMenuBuilder.vala:115
+#: libcore/PopupMenuBuilder.vala:102
 msgid "Permanently Delete Trash on this Mount"
 msgstr "A köteten található kuka tartalmának végleges törlése"
 
@@ -1780,6 +1767,12 @@ msgstr "%0*d,%0*d,%0*d…"
 msgid "Set as default"
 msgstr "Beállítás alapértelmezettként"
 
+#: src/Dialogs/PropertiesWindow.vala:117
+#: src/View/AbstractDirectoryView.vala:2028
+#: src/View/Sidebar/AbstractMountableRow.vala:273
+msgid "Properties"
+msgstr "Tulajdonságok"
+
 #: src/Dialogs/PropertiesWindow.vala:228
 msgid "Unable to determine file ownership and permissions"
 msgstr "Nem sikerült megállapítani a fájl tulajdonosát és engedélyeit"
@@ -2295,6 +2288,10 @@ msgstr "A(z) '%s' kiadása"
 msgid "Unmount '%s'"
 msgstr "A(z) '%s' leválasztása"
 
+#: src/View/Sidebar/AbstractMountableRow.vala:268
+msgid "_Unmount"
+msgstr "_Leválasztás"
+
 #: src/View/Sidebar/AbstractMountableRow.vala:325
 #, c-format
 msgid "%s free"
@@ -2386,6 +2383,10 @@ msgstr "Kapcsolódás szerverhez…"
 #: src/View/Sidebar/VolumeRow.vala:166
 msgid "Mount"
 msgstr "Csatolás"
+
+#: src/View/Sidebar/VolumeRow.vala:180
+msgid "Eject Media"
+msgstr "Média kiadása"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"

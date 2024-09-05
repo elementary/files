@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-04 09:49+0000\n"
+"POT-Creation-Date: 2024-09-05 16:00+0000\n"
 "PO-Revision-Date: 2021-03-12 05:56+0000\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <https://l10n.elementary.io/projects/files/files/sr/"
@@ -213,85 +213,85 @@ msgstr "Умножи овде"
 msgid "Link Here"
 msgstr "Повежи овде"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2321
+#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2321
 msgid "Name"
 msgstr "Назив"
 
-#: libcore/Enums.vala:144 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
+#: libcore/Enums.vala:136 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
 #, fuzzy
 msgid "Creation Date"
 msgstr "Направи"
 
-#: libcore/Enums.vala:147
+#: libcore/Enums.vala:139
 #, fuzzy
 msgid "Last modification date"
 msgstr "Последња измена:"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2326
+#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2326
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Величина"
 
-#: libcore/Enums.vala:173
+#: libcore/Enums.vala:165
 msgid "Number sequence"
 msgstr ""
 
-#: libcore/Enums.vala:176 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
+#: libcore/Enums.vala:168 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2336
+#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2336
 msgid "Date"
 msgstr "Датум"
 
-#: libcore/Enums.vala:195
+#: libcore/Enums.vala:187
 msgid "Suffix"
 msgstr ""
 
-#: libcore/Enums.vala:198
+#: libcore/Enums.vala:190
 msgid "Prefix"
 msgstr ""
 
-#: libcore/Enums.vala:208
+#: libcore/Enums.vala:200
 msgid "Text to put at the end"
 msgstr ""
 
-#: libcore/Enums.vala:211
+#: libcore/Enums.vala:203
 msgid "Text to put at the start"
 msgstr ""
 
-#: libcore/Enums.vala:230
+#: libcore/Enums.vala:222
 msgid "Default Format - Date only"
 msgstr ""
 
-#: libcore/Enums.vala:232
+#: libcore/Enums.vala:224
 msgid "Default Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:234
+#: libcore/Enums.vala:226
 msgid "Locale Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:236
+#: libcore/Enums.vala:228
 msgid "ISO 8601 Format - Date only"
 msgstr ""
 
-#: libcore/Enums.vala:238
+#: libcore/Enums.vala:230
 msgid "ISO 8601 Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:254
+#: libcore/Enums.vala:246
 #, fuzzy
 msgid "Date created"
 msgstr "Направи"
 
-#: libcore/Enums.vala:256
+#: libcore/Enums.vala:248
 #, fuzzy
 msgid "Date Modified"
 msgstr "Измењена"
 
-#: libcore/Enums.vala:258
+#: libcore/Enums.vala:250
 msgid "Current Date"
 msgstr ""
 
@@ -1164,39 +1164,26 @@ msgstr "Уклони"
 msgid "Rename"
 msgstr "Преименуј"
 
-#: libcore/PopupMenuBuilder.vala:72
-msgid "_Unmount"
-msgstr "_Откачи"
-
-#: libcore/PopupMenuBuilder.vala:76 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2028
-msgid "Properties"
-msgstr "Својства"
-
-#: libcore/PopupMenuBuilder.vala:81
-msgid "Eject Media"
-msgstr ""
-
-#: libcore/PopupMenuBuilder.vala:86
+#: libcore/PopupMenuBuilder.vala:73
 #, fuzzy
 msgid "Safely Remove"
 msgstr "Уклони"
 
-#: libcore/PopupMenuBuilder.vala:90 src/View/AbstractDirectoryView.vala:2021
+#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
 msgid "Add to Bookmarks"
 msgstr "Додај у обележиваче"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:89
 #, fuzzy
 msgid "Permanently Delete All Trash"
 msgstr "Да трајно обришем све ставке из смећа?"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:89
 #, fuzzy
 msgid "Permanently Delete Trash"
 msgstr "Да трајно обришем све ставке из смећа?"
 
-#: libcore/PopupMenuBuilder.vala:115
+#: libcore/PopupMenuBuilder.vala:102
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Да трајно обришем све ставке из смећа на овом качењу?"
@@ -1854,6 +1841,12 @@ msgstr ""
 msgid "Set as default"
 msgstr "Постави као основно"
 
+#: src/Dialogs/PropertiesWindow.vala:117
+#: src/View/AbstractDirectoryView.vala:2028
+#: src/View/Sidebar/AbstractMountableRow.vala:273
+msgid "Properties"
+msgstr "Својства"
+
 #: src/Dialogs/PropertiesWindow.vala:228
 msgid "Unable to determine file ownership and permissions"
 msgstr ""
@@ -2388,6 +2381,10 @@ msgstr "Избаци „%s“"
 msgid "Unmount '%s'"
 msgstr "Не могу да прикачим „%s“"
 
+#: src/View/Sidebar/AbstractMountableRow.vala:268
+msgid "_Unmount"
+msgstr "_Откачи"
+
 #: src/View/Sidebar/AbstractMountableRow.vala:325
 #, c-format
 msgid "%s free"
@@ -2478,6 +2475,10 @@ msgstr "Повежи се са сервером…"
 #, fuzzy
 msgid "Mount"
 msgstr "_Прикачи"
+
+#: src/View/Sidebar/VolumeRow.vala:180
+msgid "Eject Media"
+msgstr ""
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy
