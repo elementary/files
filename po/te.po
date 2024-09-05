@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:00+0000\n"
+"POT-Creation-Date: 2024-09-05 16:26+0000\n"
 "PO-Revision-Date: 2016-06-30 19:09+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Telugu <te@li.org>\n"
@@ -46,7 +46,7 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open"
 msgstr ""
 
@@ -1097,43 +1097,22 @@ msgstr ""
 msgid "There was an error creating the directory in %s."
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:56
-msgid "Open in New _Tab"
-msgstr "కొత్త ట్యాబ్‌లో తెరువు (_T)"
-
-#: libcore/PopupMenuBuilder.vala:60
-msgid "Open in New _Window"
-msgstr "కొత్త విండోలో తెరువు(_W)"
-
-#: libcore/PopupMenuBuilder.vala:64
-msgid "Remove"
-msgstr "తీసివేయి"
-
-#: libcore/PopupMenuBuilder.vala:68
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr ""
-
-#: libcore/PopupMenuBuilder.vala:73
+#: libcore/PopupMenuBuilder.vala:53
 #, fuzzy
 msgid "Safely Remove"
 msgstr "తీసివేయి"
 
-#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
-msgid "Add to Bookmarks"
-msgstr ""
-
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 #, fuzzy
 msgid "Permanently Delete All Trash"
 msgstr "చెత్తబుట్టని ఖాళీచెయ్యి  (_T)"
 
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 #, fuzzy
 msgid "Permanently Delete Trash"
 msgstr "చెత్తబుట్టని ఖాళీచెయ్యి  (_T)"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:78
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
 
@@ -1674,6 +1653,11 @@ msgstr ""
 msgid "Bulk Rename"
 msgstr ""
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:336
+msgid "Rename"
+msgstr ""
+
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
@@ -1983,6 +1967,10 @@ msgstr ""
 #: src/View/AbstractDirectoryView.vala:2010
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2021
+msgid "Add to Bookmarks"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:2041
@@ -2328,6 +2316,18 @@ msgstr ""
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr ""
+
+#: src/View/Sidebar/BookmarkRow.vala:312
+msgid "Open in New _Tab"
+msgstr "కొత్త ట్యాబ్‌లో తెరువు (_T)"
+
+#: src/View/Sidebar/BookmarkRow.vala:313
+msgid "Open in New _Window"
+msgstr "కొత్త విండోలో తెరువు(_W)"
+
+#: src/View/Sidebar/BookmarkRow.vala:332
+msgid "Remove"
+msgstr "తీసివేయి"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:00+0000\n"
+"POT-Creation-Date: 2024-09-05 16:26+0000\n"
 "PO-Revision-Date: 2021-06-19 20:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -44,7 +44,7 @@ msgstr "नवीन फाइल"
 msgid "Select"
 msgstr " निवडले"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open"
 msgstr "उघडा"
 
@@ -1111,42 +1111,21 @@ msgstr "%s फाइल तयार करताना त्रुटी."
 msgid "There was an error creating the directory in %s."
 msgstr "%s मध्ये डिरेक्टरी तयार करताना त्रुटी आली."
 
-#: libcore/PopupMenuBuilder.vala:56
-msgid "Open in New _Tab"
-msgstr "(_T)नवीन टॅब मध्ये उघडा"
-
-#: libcore/PopupMenuBuilder.vala:60
-msgid "Open in New _Window"
-msgstr "(_W)नवीन विंडो मध्ये उघडा"
-
-#: libcore/PopupMenuBuilder.vala:64
-msgid "Remove"
-msgstr "काढा"
-
-#: libcore/PopupMenuBuilder.vala:68
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr "पुनर्नामित करा"
-
-#: libcore/PopupMenuBuilder.vala:73
+#: libcore/PopupMenuBuilder.vala:53
 #, fuzzy
 msgid "Safely Remove"
 msgstr "काढा"
 
-#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
-msgid "Add to Bookmarks"
-msgstr "बुकमार्क मध्ये जोडा"
-
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 msgid "Permanently Delete All Trash"
 msgstr "कचरापेटीमधून सर्व आयटम कायमचे हटवा"
 
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 #, fuzzy
 msgid "Permanently Delete Trash"
 msgstr "कचरापेटीमधून सर्व आयटम कायमचे हटवा"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:78
 msgid "Permanently Delete Trash on this Mount"
 msgstr "या माउंटवरील कचरापेटीमधील सर्व आयटम कायमचे हटवा"
 
@@ -1714,6 +1693,11 @@ msgstr "पुनर्नामित करा"
 msgid "Bulk Rename"
 msgstr "पुनर्नामित करा"
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:336
+msgid "Rename"
+msgstr "पुनर्नामित करा"
+
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
@@ -2038,6 +2022,10 @@ msgstr "मध्ये उघडा"
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "उघडण्यासाठी वापरा"
+
+#: src/View/AbstractDirectoryView.vala:2021
+msgid "Add to Bookmarks"
+msgstr "बुकमार्क मध्ये जोडा"
 
 #: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
@@ -2381,6 +2369,18 @@ msgstr "अलीकडे वापरलेल्या फायलींच�
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "कचरा उघडा"
+
+#: src/View/Sidebar/BookmarkRow.vala:312
+msgid "Open in New _Tab"
+msgstr "(_T)नवीन टॅब मध्ये उघडा"
+
+#: src/View/Sidebar/BookmarkRow.vala:313
+msgid "Open in New _Window"
+msgstr "(_W)नवीन विंडो मध्ये उघडा"
+
+#: src/View/Sidebar/BookmarkRow.vala:332
+msgid "Remove"
+msgstr "काढा"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
