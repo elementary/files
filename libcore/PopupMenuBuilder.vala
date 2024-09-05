@@ -48,19 +48,6 @@ public class PopupMenuBuilder : Object {
         return menu;
     }
 
-    public void add_unmount () {
-        add_with_action_name (_("_Unmount"), "mountable.unmount");
-    }
-
-    public void add_drive_property () {
-        add_with_action_name (_("Properties"), "mountable.properties");
-    }
-
-    public void add_eject_drive () {
-        // Do we need different text for USB sticks and optical drives?
-        add_with_action_name (_("Eject Media"), "mountable.eject");
-    }
-
     public void add_safely_remove () {
         // Do we need different text for USB sticks and optical drives?
         add_with_action_name (_("Safely Remove"), "mountable.safely-remove");

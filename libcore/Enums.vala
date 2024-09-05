@@ -34,14 +34,6 @@ namespace Files {
                     return "Marlin.WindowState.INVALID";
             }
         }
-
-        public static Files.WindowState from_gdk_window_state (Gdk.WindowState state) {
-            if (Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state) {
-                return Files.WindowState.MAXIMIZED;
-            } else {
-                return Files.WindowState.NORMAL;
-            }
-        }
     }
 
     public enum ViewMode {
