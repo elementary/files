@@ -48,33 +48,9 @@ public class PopupMenuBuilder : Object {
         return menu;
     }
 
-    public PopupMenuBuilder add_open (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open")), cb);
-    }
-
-    public PopupMenuBuilder add_open_tab (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open in New _Tab")), cb);
-    }
-
-    public PopupMenuBuilder add_open_window (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open in New _Window")), cb);
-    }
-
-    public PopupMenuBuilder add_remove (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_label (_("Remove")), cb);
-    }
-
-    public PopupMenuBuilder add_rename (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_label (_("Rename")), cb);
-    }
-
     public void add_safely_remove () {
         // Do we need different text for USB sticks and optical drives?
         add_with_action_name (_("Safely Remove"), "mountable.safely-remove");
-    }
-
-    public PopupMenuBuilder add_bookmark (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Add to Bookmarks")), cb);
     }
 
     public PopupMenuBuilder add_empty_all_trash (MenuitemCallback cb) {
