@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-04 09:49+0000\n"
+"POT-Creation-Date: 2024-09-05 16:00+0000\n"
 "PO-Revision-Date: 2023-05-19 08:06+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
@@ -211,81 +211,81 @@ msgstr "Buraya Kopyala"
 msgid "Link Here"
 msgstr "Bağlantı Oluştur"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2321
+#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2321
 msgid "Name"
 msgstr "Ad"
 
-#: libcore/Enums.vala:144 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
+#: libcore/Enums.vala:136 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
 msgid "Creation Date"
 msgstr "Oluşturma Tarihi"
 
-#: libcore/Enums.vala:147
+#: libcore/Enums.vala:139
 msgid "Last modification date"
 msgstr "Son değiştirme tarihi"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2326
+#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2326
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Boyut"
 
-#: libcore/Enums.vala:173
+#: libcore/Enums.vala:165
 msgid "Number sequence"
 msgstr "Numara serisi"
 
-#: libcore/Enums.vala:176 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
+#: libcore/Enums.vala:168 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
 msgstr "Metin"
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2336
+#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2336
 msgid "Date"
 msgstr "Tarih"
 
-#: libcore/Enums.vala:195
+#: libcore/Enums.vala:187
 msgid "Suffix"
 msgstr "Sonek"
 
-#: libcore/Enums.vala:198
+#: libcore/Enums.vala:190
 msgid "Prefix"
 msgstr "Önek"
 
-#: libcore/Enums.vala:208
+#: libcore/Enums.vala:200
 msgid "Text to put at the end"
 msgstr "Sona eklenecek metin"
 
-#: libcore/Enums.vala:211
+#: libcore/Enums.vala:203
 msgid "Text to put at the start"
 msgstr "Başlangıca eklenecek metin"
 
-#: libcore/Enums.vala:230
+#: libcore/Enums.vala:222
 msgid "Default Format - Date only"
 msgstr "Varsayılan Biçim - Yalnızca tarih"
 
-#: libcore/Enums.vala:232
+#: libcore/Enums.vala:224
 msgid "Default Format - Date and Time"
 msgstr "Varsayılan Biçim - Tarih ve Saat"
 
-#: libcore/Enums.vala:234
+#: libcore/Enums.vala:226
 msgid "Locale Format - Date and Time"
 msgstr "Yerel Biçim - Tarih ve Saat"
 
-#: libcore/Enums.vala:236
+#: libcore/Enums.vala:228
 msgid "ISO 8601 Format - Date only"
 msgstr "ISO 8601 Biçimi - Yalnızca tarih"
 
-#: libcore/Enums.vala:238
+#: libcore/Enums.vala:230
 msgid "ISO 8601 Format - Date and Time"
 msgstr "ISO 8601 Biçimi - Tarih ve Saat"
 
-#: libcore/Enums.vala:254
+#: libcore/Enums.vala:246
 msgid "Date created"
 msgstr "Oluşturma tarihi"
 
-#: libcore/Enums.vala:256
+#: libcore/Enums.vala:248
 msgid "Date Modified"
 msgstr "Değiştirme Tarihi"
 
-#: libcore/Enums.vala:258
+#: libcore/Enums.vala:250
 msgid "Current Date"
 msgstr "Geçerli Tarih"
 
@@ -1131,36 +1131,23 @@ msgstr "Sil"
 msgid "Rename"
 msgstr "Yeniden Adlandır"
 
-#: libcore/PopupMenuBuilder.vala:72
-msgid "_Unmount"
-msgstr "_Çıkar"
-
-#: libcore/PopupMenuBuilder.vala:76 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2028
-msgid "Properties"
-msgstr "Özellikler"
-
-#: libcore/PopupMenuBuilder.vala:81
-msgid "Eject Media"
-msgstr "Medyayı Çıkar"
-
-#: libcore/PopupMenuBuilder.vala:86
+#: libcore/PopupMenuBuilder.vala:73
 msgid "Safely Remove"
 msgstr "Güvenle Kaldır"
 
-#: libcore/PopupMenuBuilder.vala:90 src/View/AbstractDirectoryView.vala:2021
+#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
 msgid "Add to Bookmarks"
 msgstr "Yer İmlerine Ekle"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:89
 msgid "Permanently Delete All Trash"
 msgstr "Tüm Çöpleri Kalıcı Olarak Sil"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:89
 msgid "Permanently Delete Trash"
 msgstr "Çöpleri Kalıcı Olarak Sil"
 
-#: libcore/PopupMenuBuilder.vala:115
+#: libcore/PopupMenuBuilder.vala:102
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Bu Bağlama Yolundaki Çöpü Kalıcı Olarak Sil"
 
@@ -1793,6 +1780,12 @@ msgstr ""
 msgid "Set as default"
 msgstr "Varsayılan olarak ayarla"
 
+#: src/Dialogs/PropertiesWindow.vala:117
+#: src/View/AbstractDirectoryView.vala:2028
+#: src/View/Sidebar/AbstractMountableRow.vala:273
+msgid "Properties"
+msgstr "Özellikler"
+
 #: src/Dialogs/PropertiesWindow.vala:228
 msgid "Unable to determine file ownership and permissions"
 msgstr "Dosya sahipliği ve izinleri belirlenemiyor"
@@ -2320,6 +2313,10 @@ msgstr "'%s' aygıtını çıkar"
 msgid "Unmount '%s'"
 msgstr "Çıkar: '%s'"
 
+#: src/View/Sidebar/AbstractMountableRow.vala:268
+msgid "_Unmount"
+msgstr "_Çıkar"
+
 #: src/View/Sidebar/AbstractMountableRow.vala:325
 #, c-format
 msgid "%s free"
@@ -2411,6 +2408,10 @@ msgstr "Sunucuya Bağlan…"
 #: src/View/Sidebar/VolumeRow.vala:166
 msgid "Mount"
 msgstr "Bağla"
+
+#: src/View/Sidebar/VolumeRow.vala:180
+msgid "Eject Media"
+msgstr "Medyayı Çıkar"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
