@@ -265,12 +265,12 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             }
 
             if (mount.can_unmount ()) {
-                menu_builder.add_unmount ();
+                menu_builder.add_with_action_name (_("_Unmount"), "mountable.unmount");
             }
         }
 
         menu_builder.add_separator ();
-        menu_builder.add_drive_property (); // This will mount if necessary
+        menu_builder.add_with_action_name (_("Properties"), "mountable.properties"); // This will mount if necessary
     }
 
     protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {
