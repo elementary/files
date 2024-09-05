@@ -176,7 +176,8 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
             menu_builder.add_safely_remove ();
         } else if (mount == null && drive.can_eject ()) {
             menu_builder.add_separator ();
-            menu_builder.add_eject_drive ();
+            // Do we need different text for USB sticks and optical drives?
+            menu_builder.add_with_action_name (_("Eject Media"), "mountable.eject");
         }
     }
 

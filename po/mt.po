@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-04 09:49+0000\n"
+"POT-Creation-Date: 2024-09-05 16:00+0000\n"
 "PO-Revision-Date: 2016-08-02 15:47+0000\n"
 "Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -203,81 +203,81 @@ msgstr ""
 msgid "Link Here"
 msgstr ""
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2321
+#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2321
 msgid "Name"
 msgstr ""
 
-#: libcore/Enums.vala:144 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
+#: libcore/Enums.vala:136 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
 msgid "Creation Date"
 msgstr ""
 
-#: libcore/Enums.vala:147
+#: libcore/Enums.vala:139
 msgid "Last modification date"
 msgstr ""
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2326
+#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2326
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr ""
 
-#: libcore/Enums.vala:173
+#: libcore/Enums.vala:165
 msgid "Number sequence"
 msgstr ""
 
-#: libcore/Enums.vala:176 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
+#: libcore/Enums.vala:168 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2336
+#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2336
 msgid "Date"
 msgstr ""
 
-#: libcore/Enums.vala:195
+#: libcore/Enums.vala:187
 msgid "Suffix"
 msgstr ""
 
-#: libcore/Enums.vala:198
+#: libcore/Enums.vala:190
 msgid "Prefix"
 msgstr ""
 
-#: libcore/Enums.vala:208
+#: libcore/Enums.vala:200
 msgid "Text to put at the end"
 msgstr ""
 
-#: libcore/Enums.vala:211
+#: libcore/Enums.vala:203
 msgid "Text to put at the start"
 msgstr ""
 
-#: libcore/Enums.vala:230
+#: libcore/Enums.vala:222
 msgid "Default Format - Date only"
 msgstr ""
 
-#: libcore/Enums.vala:232
+#: libcore/Enums.vala:224
 msgid "Default Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:234
+#: libcore/Enums.vala:226
 msgid "Locale Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:236
+#: libcore/Enums.vala:228
 msgid "ISO 8601 Format - Date only"
 msgstr ""
 
-#: libcore/Enums.vala:238
+#: libcore/Enums.vala:230
 msgid "ISO 8601 Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:254
+#: libcore/Enums.vala:246
 msgid "Date created"
 msgstr ""
 
-#: libcore/Enums.vala:256
+#: libcore/Enums.vala:248
 msgid "Date Modified"
 msgstr ""
 
-#: libcore/Enums.vala:258
+#: libcore/Enums.vala:250
 msgid "Current Date"
 msgstr ""
 
@@ -1136,36 +1136,23 @@ msgstr ""
 msgid "Rename"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:72
-msgid "_Unmount"
-msgstr ""
-
-#: libcore/PopupMenuBuilder.vala:76 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2028
-msgid "Properties"
-msgstr ""
-
-#: libcore/PopupMenuBuilder.vala:81
-msgid "Eject Media"
-msgstr ""
-
-#: libcore/PopupMenuBuilder.vala:86
+#: libcore/PopupMenuBuilder.vala:73
 msgid "Safely Remove"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:90 src/View/AbstractDirectoryView.vala:2021
+#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
 msgid "Add to Bookmarks"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:89
 msgid "Permanently Delete All Trash"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:89
 msgid "Permanently Delete Trash"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:115
+#: libcore/PopupMenuBuilder.vala:102
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
 
@@ -1786,6 +1773,12 @@ msgstr ""
 msgid "Set as default"
 msgstr ""
 
+#: src/Dialogs/PropertiesWindow.vala:117
+#: src/View/AbstractDirectoryView.vala:2028
+#: src/View/Sidebar/AbstractMountableRow.vala:273
+msgid "Properties"
+msgstr ""
+
 #: src/Dialogs/PropertiesWindow.vala:228
 msgid "Unable to determine file ownership and permissions"
 msgstr ""
@@ -2299,6 +2292,10 @@ msgstr ""
 msgid "Unmount '%s'"
 msgstr ""
 
+#: src/View/Sidebar/AbstractMountableRow.vala:268
+msgid "_Unmount"
+msgstr ""
+
 #: src/View/Sidebar/AbstractMountableRow.vala:325
 #, c-format
 msgid "%s free"
@@ -2387,6 +2384,10 @@ msgstr ""
 
 #: src/View/Sidebar/VolumeRow.vala:166
 msgid "Mount"
+msgstr ""
+
+#: src/View/Sidebar/VolumeRow.vala:180
+msgid "Eject Media"
 msgstr ""
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
