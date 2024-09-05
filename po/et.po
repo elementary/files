@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:00+0000\n"
+"POT-Creation-Date: 2024-09-05 16:26+0000\n"
 "PO-Revision-Date: 2016-08-03 23:51+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -48,7 +48,7 @@ msgstr "uus fail"
 msgid "Select"
 msgstr " on valitud"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open"
 msgstr "Avamine rakendusega..."
 
@@ -1138,44 +1138,22 @@ msgstr "Faili %B loomisel ilmnes viga."
 msgid "There was an error creating the directory in %s."
 msgstr "Kausta loomisel asukohta %F ilmnes viga."
 
-#: libcore/PopupMenuBuilder.vala:56
-msgid "Open in New _Tab"
-msgstr "Ava uues _kaardis"
-
-#: libcore/PopupMenuBuilder.vala:60
-msgid "Open in New _Window"
-msgstr "Ava uues _aknas"
-
-#: libcore/PopupMenuBuilder.vala:64
-msgid "Remove"
-msgstr "Eemalda järjehoidjatest"
-
-#: libcore/PopupMenuBuilder.vala:68
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr "Muuda nime"
-
-#: libcore/PopupMenuBuilder.vala:73
+#: libcore/PopupMenuBuilder.vala:53
 #, fuzzy
 msgid "Safely Remove"
 msgstr "Eemalda järjehoidjatest"
 
-#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
-#, fuzzy
-msgid "Add to Bookmarks"
-msgstr "Järjehoidjad:"
-
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 #, fuzzy
 msgid "Permanently Delete All Trash"
 msgstr "Soovid kõik prügikastis olevad failid jäädavalt kustutada?"
 
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 #, fuzzy
 msgid "Permanently Delete Trash"
 msgstr "Soovid kõik prügikastis olevad failid jäädavalt kustutada?"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:78
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
@@ -1756,6 +1734,11 @@ msgstr "Muuda nime"
 msgid "Bulk Rename"
 msgstr "Muuda nime"
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:336
+msgid "Rename"
+msgstr "Muuda nime"
+
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
@@ -2085,6 +2068,11 @@ msgstr "Ava..."
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "Ava koos"
+
+#: src/View/AbstractDirectoryView.vala:2021
+#, fuzzy
+msgid "Add to Bookmarks"
+msgstr "Järjehoidjad:"
 
 #: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
@@ -2439,6 +2427,18 @@ msgstr "Hiljuti kasutatud failide vaatamine"
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Vaata prügikastis olevaid faile"
+
+#: src/View/Sidebar/BookmarkRow.vala:312
+msgid "Open in New _Tab"
+msgstr "Ava uues _kaardis"
+
+#: src/View/Sidebar/BookmarkRow.vala:313
+msgid "Open in New _Window"
+msgstr "Ava uues _aknas"
+
+#: src/View/Sidebar/BookmarkRow.vala:332
+msgid "Remove"
+msgstr "Eemalda järjehoidjatest"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy

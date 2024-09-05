@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:00+0000\n"
+"POT-Creation-Date: 2024-09-05 16:26+0000\n"
 "PO-Revision-Date: 2024-08-31 18:16+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <edwood.grant@gmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/"
@@ -47,7 +47,7 @@ msgstr "Ingrese un nuevo nombre de archivo"
 msgid "Select"
 msgstr "Seleccionar"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open"
 msgstr "Abrir"
 
@@ -1121,40 +1121,19 @@ msgstr "Error al crear el archivo %s."
 msgid "There was an error creating the directory in %s."
 msgstr "Hubo un error al crear el directorio en %s."
 
-#: libcore/PopupMenuBuilder.vala:56
-msgid "Open in New _Tab"
-msgstr "Abrir en una pes_taña nueva"
-
-#: libcore/PopupMenuBuilder.vala:60
-msgid "Open in New _Window"
-msgstr "Abrir en una nueva _ventana"
-
-#: libcore/PopupMenuBuilder.vala:64
-msgid "Remove"
-msgstr "Quitar"
-
-#: libcore/PopupMenuBuilder.vala:68
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr "Cambiar nombre"
-
-#: libcore/PopupMenuBuilder.vala:73
+#: libcore/PopupMenuBuilder.vala:53
 msgid "Safely Remove"
 msgstr "Quitar con seguridad"
 
-#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
-msgid "Add to Bookmarks"
-msgstr "Añadir a Marcadores"
-
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 msgid "Permanently Delete All Trash"
 msgstr "Vaciar los contenidos de todas las papeleras"
 
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 msgid "Permanently Delete Trash"
 msgstr "Vaciar el contenido de la papelera"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:78
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Vaciar el contenido de la papelera de este medio"
 
@@ -1703,6 +1682,11 @@ msgstr "Nuevo nombre base"
 msgid "Bulk Rename"
 msgstr "Cambio de nombre masivo"
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:336
+msgid "Rename"
+msgstr "Cambiar nombre"
+
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
@@ -2016,6 +2000,10 @@ msgstr "Abrir en"
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "Abrir con"
+
+#: src/View/AbstractDirectoryView.vala:2021
+msgid "Add to Bookmarks"
+msgstr "Añadir a Marcadores"
 
 #: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
@@ -2351,6 +2339,18 @@ msgstr "Ver la lista de archivos usados recientemente"
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Abrir la papelera"
+
+#: src/View/Sidebar/BookmarkRow.vala:312
+msgid "Open in New _Tab"
+msgstr "Abrir en una pes_taña nueva"
+
+#: src/View/Sidebar/BookmarkRow.vala:313
+msgid "Open in New _Window"
+msgstr "Abrir en una nueva _ventana"
+
+#: src/View/Sidebar/BookmarkRow.vala:332
+msgid "Remove"
+msgstr "Quitar"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"

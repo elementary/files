@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:00+0000\n"
+"POT-Creation-Date: 2024-09-05 16:26+0000\n"
 "PO-Revision-Date: 2018-06-10 00:11+0000\n"
 "Last-Translator: Gamunu Balagalla <gamunu.balagalla@gmail.com>\n"
 "Language-Team: Sinhala <https://weblate.elementary.io/projects/files/files/"
@@ -42,7 +42,7 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open"
 msgstr ""
 
@@ -1079,40 +1079,19 @@ msgstr ""
 msgid "There was an error creating the directory in %s."
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:56
-msgid "Open in New _Tab"
-msgstr ""
-
-#: libcore/PopupMenuBuilder.vala:60
-msgid "Open in New _Window"
-msgstr ""
-
-#: libcore/PopupMenuBuilder.vala:64
-msgid "Remove"
-msgstr ""
-
-#: libcore/PopupMenuBuilder.vala:68
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr ""
-
-#: libcore/PopupMenuBuilder.vala:73
+#: libcore/PopupMenuBuilder.vala:53
 msgid "Safely Remove"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
-msgid "Add to Bookmarks"
-msgstr ""
-
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 msgid "Permanently Delete All Trash"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 msgid "Permanently Delete Trash"
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:78
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
 
@@ -1642,6 +1621,11 @@ msgstr ""
 msgid "Bulk Rename"
 msgstr ""
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:336
+msgid "Rename"
+msgstr ""
+
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
@@ -1950,6 +1934,10 @@ msgstr ""
 #: src/View/AbstractDirectoryView.vala:2010
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2021
+msgid "Add to Bookmarks"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:2041
@@ -2285,6 +2273,18 @@ msgstr ""
 
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
+msgstr ""
+
+#: src/View/Sidebar/BookmarkRow.vala:312
+msgid "Open in New _Tab"
+msgstr ""
+
+#: src/View/Sidebar/BookmarkRow.vala:313
+msgid "Open in New _Window"
+msgstr ""
+
+#: src/View/Sidebar/BookmarkRow.vala:332
+msgid "Remove"
 msgstr ""
 
 #: src/View/Sidebar/DeviceListBox.vala:158

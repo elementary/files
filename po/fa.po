@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:00+0000\n"
+"POT-Creation-Date: 2024-09-05 16:26+0000\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -48,7 +48,7 @@ msgstr "پرونده جدید"
 msgid "Select"
 msgstr " انتخاب شد."
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open"
 msgstr ""
 
@@ -1101,43 +1101,22 @@ msgstr "در هنگام ساخت پرونده %B خطایی رخداد."
 msgid "There was an error creating the directory in %s."
 msgstr "در هنگام ساخت پوشه در %F خطایی رخداد."
 
-#: libcore/PopupMenuBuilder.vala:56
-msgid "Open in New _Tab"
-msgstr "باز کردن در _برگه جدید"
-
-#: libcore/PopupMenuBuilder.vala:60
-msgid "Open in New _Window"
-msgstr "باز کردن در پنجره _جدید"
-
-#: libcore/PopupMenuBuilder.vala:64
-msgid "Remove"
-msgstr "حذف"
-
-#: libcore/PopupMenuBuilder.vala:68
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr ""
-
-#: libcore/PopupMenuBuilder.vala:73
+#: libcore/PopupMenuBuilder.vala:53
 #, fuzzy
 msgid "Safely Remove"
 msgstr "حذف"
 
-#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
-msgid "Add to Bookmarks"
-msgstr ""
-
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 #, fuzzy
 msgid "Permanently Delete All Trash"
 msgstr "بازیافت %d مورد از زباله‌دان"
 
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 #, fuzzy
 msgid "Permanently Delete Trash"
 msgstr "بازیافت %d مورد از زباله‌دان"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:78
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr "بازیافت %d مورد از زباله‌دان"
@@ -1710,6 +1689,11 @@ msgstr "ت_غییر نام"
 msgid "Bulk Rename"
 msgstr "ت_غییر نام"
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:336
+msgid "Rename"
+msgstr ""
+
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
@@ -2025,6 +2009,10 @@ msgstr ""
 #: src/View/AbstractDirectoryView.vala:2010
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2021
+msgid "Add to Bookmarks"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:2041
@@ -2383,6 +2371,18 @@ msgstr ""
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr ""
+
+#: src/View/Sidebar/BookmarkRow.vala:312
+msgid "Open in New _Tab"
+msgstr "باز کردن در _برگه جدید"
+
+#: src/View/Sidebar/BookmarkRow.vala:313
+msgid "Open in New _Window"
+msgstr "باز کردن در پنجره _جدید"
+
+#: src/View/Sidebar/BookmarkRow.vala:332
+msgid "Remove"
+msgstr "حذف"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"

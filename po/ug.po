@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:00+0000\n"
+"POT-Creation-Date: 2024-09-05 16:26+0000\n"
 "PO-Revision-Date: 2016-12-12 07:21+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -48,7 +48,7 @@ msgstr "يىڭى ھۆججەت قۇرۇش"
 msgid "Select"
 msgstr " تاللاندى"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open"
 msgstr "ئىچىش"
 
@@ -1115,44 +1115,22 @@ msgstr "%B ھۆججەتنى قۇرۇشتا خاتالىق كۆرۈلدى."
 msgid "There was an error creating the directory in %s."
 msgstr "%F غا مۇندەرىجە قۇرغاندا خاتالىق كۆرۈلدى."
 
-#: libcore/PopupMenuBuilder.vala:56
-msgid "Open in New _Tab"
-msgstr "يېڭى بەتكۈچتە ئىچىش(_T)"
-
-#: libcore/PopupMenuBuilder.vala:60
-msgid "Open in New _Window"
-msgstr "يېڭى كۆزنەكتە ئىچىش(_W)"
-
-#: libcore/PopupMenuBuilder.vala:64
-msgid "Remove"
-msgstr "چىقىرىۋىتىش"
-
-#: libcore/PopupMenuBuilder.vala:68
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr "ئىسمىنى ئۆزگەرتىش"
-
-#: libcore/PopupMenuBuilder.vala:73
+#: libcore/PopupMenuBuilder.vala:53
 #, fuzzy
 msgid "Safely Remove"
 msgstr "چىقىرىۋىتىش"
 
-#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
-#, fuzzy
-msgid "Add to Bookmarks"
-msgstr "خەتكۈچلەر"
-
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 #, fuzzy
 msgid "Permanently Delete All Trash"
 msgstr "ئەخلەت چېلىكىدىن ھەممە تۈرلەرنى راسىتتىنلا ئۆچۈرەمسىز؟"
 
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 #, fuzzy
 msgid "Permanently Delete Trash"
 msgstr "ئەخلەت چېلىكىدىن ھەممە تۈرلەرنى راسىتتىنلا ئۆچۈرەمسىز؟"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:78
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
@@ -1731,6 +1709,11 @@ msgstr "ئىسمىنى ئۆزگەرتىش"
 msgid "Bulk Rename"
 msgstr "ئىسمىنى ئۆزگەرتىش"
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:336
+msgid "Rename"
+msgstr "ئىسمىنى ئۆزگەرتىش"
+
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
@@ -2057,6 +2040,11 @@ msgstr "دا ئىچىش"
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "بىلەن ئىچىش"
+
+#: src/View/AbstractDirectoryView.vala:2021
+#, fuzzy
+msgid "Add to Bookmarks"
+msgstr "خەتكۈچلەر"
 
 #: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
@@ -2411,6 +2399,18 @@ msgstr "يىقىندا ئىشلەتكەن ھۆججەتلەر تىزىملىكى�
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "ئەخلەت چېلىكىنى ئىچىش"
+
+#: src/View/Sidebar/BookmarkRow.vala:312
+msgid "Open in New _Tab"
+msgstr "يېڭى بەتكۈچتە ئىچىش(_T)"
+
+#: src/View/Sidebar/BookmarkRow.vala:313
+msgid "Open in New _Window"
+msgstr "يېڭى كۆزنەكتە ئىچىش(_W)"
+
+#: src/View/Sidebar/BookmarkRow.vala:332
+msgid "Remove"
+msgstr "چىقىرىۋىتىش"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy

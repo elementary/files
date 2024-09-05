@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:00+0000\n"
+"POT-Creation-Date: 2024-09-05 16:26+0000\n"
 "PO-Revision-Date: 2024-09-04 09:49+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
@@ -48,7 +48,7 @@ msgstr "Adjon meg egy új fájlnevet"
 msgid "Select"
 msgstr "Kiválasztás"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open"
 msgstr "Megnyitás"
 
@@ -1109,40 +1109,19 @@ msgstr "Hiba a következő fájl létrehozásakor: %s."
 msgid "There was an error creating the directory in %s."
 msgstr "Hiba a könyvtár létrehozásakor a következőben: %s."
 
-#: libcore/PopupMenuBuilder.vala:56
-msgid "Open in New _Tab"
-msgstr "Megnyitás új _lapon"
-
-#: libcore/PopupMenuBuilder.vala:60
-msgid "Open in New _Window"
-msgstr "Megnyitás új _ablakban"
-
-#: libcore/PopupMenuBuilder.vala:64
-msgid "Remove"
-msgstr "Eltávolítás"
-
-#: libcore/PopupMenuBuilder.vala:68
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr "Átnevezés"
-
-#: libcore/PopupMenuBuilder.vala:73
+#: libcore/PopupMenuBuilder.vala:53
 msgid "Safely Remove"
 msgstr "Biztonságos eltávolítás"
 
-#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
-msgid "Add to Bookmarks"
-msgstr "Hozzáadás a könyvjelzőkhöz"
-
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 msgid "Permanently Delete All Trash"
 msgstr "A kuka teljes tartalmának végleges törlése"
 
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 msgid "Permanently Delete Trash"
 msgstr "A kuka tartalmának végleges törlése"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:78
 msgid "Permanently Delete Trash on this Mount"
 msgstr "A köteten található kuka tartalmának végleges törlése"
 
@@ -1679,6 +1658,11 @@ msgstr "Új alapnév"
 msgid "Bulk Rename"
 msgstr "Csoportos átnevezés"
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:336
+msgid "Rename"
+msgstr "Átnevezés"
+
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
@@ -1990,6 +1974,10 @@ msgstr "Megnyitás ebben"
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "Megnyitás ezzel"
+
+#: src/View/AbstractDirectoryView.vala:2021
+msgid "Add to Bookmarks"
+msgstr "Hozzáadás a könyvjelzőkhöz"
 
 #: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
@@ -2325,6 +2313,18 @@ msgstr "A mostanában használt fájlok megjelenítése"
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Kuka megnyitása"
+
+#: src/View/Sidebar/BookmarkRow.vala:312
+msgid "Open in New _Tab"
+msgstr "Megnyitás új _lapon"
+
+#: src/View/Sidebar/BookmarkRow.vala:313
+msgid "Open in New _Window"
+msgstr "Megnyitás új _ablakban"
+
+#: src/View/Sidebar/BookmarkRow.vala:332
+msgid "Remove"
+msgstr "Eltávolítás"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:00+0000\n"
+"POT-Creation-Date: 2024-09-05 16:26+0000\n"
 "PO-Revision-Date: 2017-04-09 19:04+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Bulgarian\n"
@@ -51,7 +51,7 @@ msgstr "нов файл"
 msgid "Select"
 msgstr " избрани"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open"
 msgstr "Отваряне"
 
@@ -1136,44 +1136,22 @@ msgstr "Грешка при създаван на файл %B."
 msgid "There was an error creating the directory in %s."
 msgstr "Появи се грешка при създаване на папка в %F."
 
-#: libcore/PopupMenuBuilder.vala:56
-msgid "Open in New _Tab"
-msgstr "Отваряне в нов подпрозорец"
-
-#: libcore/PopupMenuBuilder.vala:60
-msgid "Open in New _Window"
-msgstr "Отваряне в нов прозорец"
-
-#: libcore/PopupMenuBuilder.vala:64
-msgid "Remove"
-msgstr "Премахни"
-
-#: libcore/PopupMenuBuilder.vala:68
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr "Преименуване"
-
-#: libcore/PopupMenuBuilder.vala:73
+#: libcore/PopupMenuBuilder.vala:53
 #, fuzzy
 msgid "Safely Remove"
 msgstr "Премахни"
 
-#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
-#, fuzzy
-msgid "Add to Bookmarks"
-msgstr "Отметки"
-
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 #, fuzzy
 msgid "Permanently Delete All Trash"
 msgstr "Изтриване на файловете от кошчето завинаги?"
 
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 #, fuzzy
 msgid "Permanently Delete Trash"
 msgstr "Изтриване на файловете от кошчето завинаги?"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:78
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
@@ -1758,6 +1736,11 @@ msgstr "Преименуване"
 msgid "Bulk Rename"
 msgstr "Преименуване"
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:336
+msgid "Rename"
+msgstr "Преименуване"
+
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
@@ -2084,6 +2067,11 @@ msgstr "Отваряне в"
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "Отвори с"
+
+#: src/View/AbstractDirectoryView.vala:2021
+#, fuzzy
+msgid "Add to Bookmarks"
+msgstr "Отметки"
 
 #: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
@@ -2438,6 +2426,18 @@ msgstr "Виж листа с последно използвани файлов�
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Отваряне на кошчето"
+
+#: src/View/Sidebar/BookmarkRow.vala:312
+msgid "Open in New _Tab"
+msgstr "Отваряне в нов подпрозорец"
+
+#: src/View/Sidebar/BookmarkRow.vala:313
+msgid "Open in New _Window"
+msgstr "Отваряне в нов прозорец"
+
+#: src/View/Sidebar/BookmarkRow.vala:332
+msgid "Remove"
+msgstr "Премахни"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy

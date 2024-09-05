@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:00+0000\n"
+"POT-Creation-Date: 2024-09-05 16:26+0000\n"
 "PO-Revision-Date: 2024-09-02 20:05+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
@@ -47,7 +47,7 @@ msgstr "Nom nou del fitxer"
 msgid "Select"
 msgstr "Selecciona"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open"
 msgstr "Obre"
 
@@ -1119,40 +1119,19 @@ msgstr "S'ha produït un error en crear el fitxer %s."
 msgid "There was an error creating the directory in %s."
 msgstr "S'ha produït un error en crear el directori a %s."
 
-#: libcore/PopupMenuBuilder.vala:56
-msgid "Open in New _Tab"
-msgstr "Obre en una _pestanya nova"
-
-#: libcore/PopupMenuBuilder.vala:60
-msgid "Open in New _Window"
-msgstr "Obre en una _finestra nova"
-
-#: libcore/PopupMenuBuilder.vala:64
-msgid "Remove"
-msgstr "Suprimeix"
-
-#: libcore/PopupMenuBuilder.vala:68
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr "Canvia'n el nom"
-
-#: libcore/PopupMenuBuilder.vala:73
+#: libcore/PopupMenuBuilder.vala:53
 msgid "Safely Remove"
 msgstr "Expulsa'l amb seguretat"
 
-#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
-msgid "Add to Bookmarks"
-msgstr "Afegeix a les adreces d'interès"
-
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 msgid "Permanently Delete All Trash"
 msgstr "Suprimeix permanentment el que hi ha a la paperera"
 
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 msgid "Permanently Delete Trash"
 msgstr "Suprimeix el que hi ha a la paperera"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:78
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Suprimeix permanentment el que hi ha a la paperera en aquest muntatge"
 
@@ -1697,6 +1676,11 @@ msgstr "Nom de base nou"
 msgid "Bulk Rename"
 msgstr "Canvi de nom en bloc"
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:336
+msgid "Rename"
+msgstr "Canvia'n el nom"
+
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
@@ -2009,6 +1993,10 @@ msgstr "Obre a"
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "Obre amb"
+
+#: src/View/AbstractDirectoryView.vala:2021
+msgid "Add to Bookmarks"
+msgstr "Afegeix a les adreces d'interès"
 
 #: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
@@ -2345,6 +2333,18 @@ msgstr "Mostra la llista dels fitxers usats recentment"
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Obre la paperera"
+
+#: src/View/Sidebar/BookmarkRow.vala:312
+msgid "Open in New _Tab"
+msgstr "Obre en una _pestanya nova"
+
+#: src/View/Sidebar/BookmarkRow.vala:313
+msgid "Open in New _Window"
+msgstr "Obre en una _finestra nova"
+
+#: src/View/Sidebar/BookmarkRow.vala:332
+msgid "Remove"
+msgstr "Suprimeix"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"

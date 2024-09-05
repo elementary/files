@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:00+0000\n"
+"POT-Creation-Date: 2024-09-05 16:26+0000\n"
 "PO-Revision-Date: 2024-09-02 22:33+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
@@ -47,7 +47,7 @@ msgstr "輸入新檔案名稱"
 msgid "Select"
 msgstr "選取"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open"
 msgstr "開啟"
 
@@ -1074,40 +1074,19 @@ msgstr "建立檔案 %s 時發生錯誤。"
 msgid "There was an error creating the directory in %s."
 msgstr "在 %s 中建立目錄時發生錯誤。"
 
-#: libcore/PopupMenuBuilder.vala:56
-msgid "Open in New _Tab"
-msgstr "在新分頁中開啟(_T)"
-
-#: libcore/PopupMenuBuilder.vala:60
-msgid "Open in New _Window"
-msgstr "在新視窗中開啟(_W)"
-
-#: libcore/PopupMenuBuilder.vala:64
-msgid "Remove"
-msgstr "移除"
-
-#: libcore/PopupMenuBuilder.vala:68
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr "重新命名"
-
-#: libcore/PopupMenuBuilder.vala:73
+#: libcore/PopupMenuBuilder.vala:53
 msgid "Safely Remove"
 msgstr "安全地移除"
 
-#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
-msgid "Add to Bookmarks"
-msgstr "加入書籤"
-
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 msgid "Permanently Delete All Trash"
 msgstr "永久刪除垃圾筒中的所有項目"
 
-#: libcore/PopupMenuBuilder.vala:89
+#: libcore/PopupMenuBuilder.vala:65
 msgid "Permanently Delete Trash"
 msgstr "永久刪除垃圾筒中的項目"
 
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:78
 msgid "Permanently Delete Trash on this Mount"
 msgstr "永久刪除此掛載上的垃圾筒中的項目"
 
@@ -1670,6 +1649,11 @@ msgstr "新基礎檔名"
 msgid "Bulk Rename"
 msgstr "批次重新命名"
 
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:336
+msgid "Rename"
+msgstr "重新命名"
+
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
@@ -1980,6 +1964,10 @@ msgstr "開啟方式"
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "以此開啟"
+
+#: src/View/AbstractDirectoryView.vala:2021
+msgid "Add to Bookmarks"
+msgstr "加入書籤"
 
 #: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
@@ -2315,6 +2303,18 @@ msgstr "檢視最近使用檔案的清單"
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "開啟垃圾筒"
+
+#: src/View/Sidebar/BookmarkRow.vala:312
+msgid "Open in New _Tab"
+msgstr "在新分頁中開啟(_T)"
+
+#: src/View/Sidebar/BookmarkRow.vala:313
+msgid "Open in New _Window"
+msgstr "在新視窗中開啟(_W)"
+
+#: src/View/Sidebar/BookmarkRow.vala:332
+msgid "Remove"
+msgstr "移除"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
