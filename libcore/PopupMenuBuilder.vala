@@ -53,27 +53,6 @@ public class PopupMenuBuilder : Object {
         add_with_action_name (_("Safely Remove"), "mountable.safely-remove");
     }
 
-    public PopupMenuBuilder add_empty_all_trash (MenuitemCallback cb) {
-        var volume_monitor = VolumeMonitor.@get ();
-        int mounts_with_trash = 0;
-        foreach (Mount mount in volume_monitor.get_mounts ()) {
-            if (Files.FileOperations.mount_has_trash (mount)) {
-                mounts_with_trash++;
-            }
-        }
-
-        var text = mounts_with_trash > 0 ? _("Permanently Delete All Trash") : _("Permanently Delete Trash");
-        var menu_item = new Gtk.MenuItem.with_mnemonic (text);
-
-        if (Files.TrashMonitor.get_default ().is_empty) {
-            menu_item.sensitive = false;
-        } else {
-            menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-        }
-
-        return add_item (menu_item, cb);
-    }
-
     public PopupMenuBuilder add_empty_mount_trash (MenuitemCallback cb) {
         var menu_item = new Gtk.MenuItem.with_mnemonic (_("Permanently Delete Trash on this Mount"));
         menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
