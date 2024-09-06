@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:41+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2022-09-21 10:08+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
@@ -43,7 +43,7 @@ msgstr "پەڕگەی تازە"
 msgid "Select"
 msgstr "دیاریکردن"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "کردنەوە"
 
@@ -1110,15 +1110,7 @@ msgstr "هەڵەیەک هەبوو لە کاتی دروستکردنی دایرێ�
 msgid "Safely Remove"
 msgstr "دەرکردنی سەلامەت"
 
-#: libcore/PopupMenuBuilder.vala:65
-msgid "Permanently Delete All Trash"
-msgstr "سڕینەوەی هەموو سەبەتەی خۆڵ بەیەکجاری"
-
-#: libcore/PopupMenuBuilder.vala:65
-msgid "Permanently Delete Trash"
-msgstr "سڕینەوەی سەبەتە بەیەکجاری"
-
-#: libcore/PopupMenuBuilder.vala:78
+#: libcore/PopupMenuBuilder.vala:57
 msgid "Permanently Delete Trash on this Mount"
 msgstr "سڕینەوەی هەموو سەبەتەی خۆڵ بەیەکجاری لەسەر ئەم ماونتە"
 
@@ -1676,7 +1668,7 @@ msgid "Bulk Rename"
 msgstr "ناوگۆڕین"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:342
 msgid "Rename"
 msgstr "ناوگۆڕین"
 
@@ -2349,17 +2341,25 @@ msgstr "بینینی لیستی ئەو پەڕگانەی کە بەم دواییە
 msgid "Open the Trash"
 msgstr "کردنەوەی تەنەکە"
 
-#: src/View/Sidebar/BookmarkRow.vala:312
+#: src/View/Sidebar/BookmarkRow.vala:318
 msgid "Open in New _Tab"
 msgstr "کردنەوەی لە تابێکی نوێدا"
 
-#: src/View/Sidebar/BookmarkRow.vala:313
+#: src/View/Sidebar/BookmarkRow.vala:319
 msgid "Open in New _Window"
 msgstr "کردنەوەی لە پەنجەرەیەکی نوێدا"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Remove"
 msgstr "سڕینەوە"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+msgid "Permanently Delete All Trash"
+msgstr "سڕینەوەی هەموو سەبەتەی خۆڵ بەیەکجاری"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+msgid "Permanently Delete Trash"
+msgstr "سڕینەوەی سەبەتە بەیەکجاری"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"

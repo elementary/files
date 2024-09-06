@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:41+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2024-08-31 18:16+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/files/uk/"
@@ -48,7 +48,7 @@ msgstr "Введіть назву нового файлу"
 msgid "Select"
 msgstr "Вибрати"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "Відкрити"
 
@@ -1138,15 +1138,7 @@ msgstr "Помилка створення каталогу в %s."
 msgid "Safely Remove"
 msgstr "Безпечно витягнути"
 
-#: libcore/PopupMenuBuilder.vala:65
-msgid "Permanently Delete All Trash"
-msgstr "Остаточно видалити все зі смітника"
-
-#: libcore/PopupMenuBuilder.vala:65
-msgid "Permanently Delete Trash"
-msgstr "Остаточно видалити сміття"
-
-#: libcore/PopupMenuBuilder.vala:78
+#: libcore/PopupMenuBuilder.vala:57
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Остаточно видалити все зі смітника цього змонтованого носія"
 
@@ -1692,7 +1684,7 @@ msgid "Bulk Rename"
 msgstr "Масове перейменування"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:342
 msgid "Rename"
 msgstr "Перейменувати"
 
@@ -2358,17 +2350,25 @@ msgstr "Переглянути список нещодавніх файлів"
 msgid "Open the Trash"
 msgstr "Відкрити смітник"
 
-#: src/View/Sidebar/BookmarkRow.vala:312
+#: src/View/Sidebar/BookmarkRow.vala:318
 msgid "Open in New _Tab"
 msgstr "Відкрити у новій _вкладці"
 
-#: src/View/Sidebar/BookmarkRow.vala:313
+#: src/View/Sidebar/BookmarkRow.vala:319
 msgid "Open in New _Window"
 msgstr "Відкрити у новому _вікні"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Remove"
 msgstr "Вилучити"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+msgid "Permanently Delete All Trash"
+msgstr "Остаточно видалити все зі смітника"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+msgid "Permanently Delete Trash"
+msgstr "Остаточно видалити сміття"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"

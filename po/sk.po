@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:41+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2022-12-26 20:25+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
@@ -48,7 +48,7 @@ msgstr "nový súbor"
 msgid "Select"
 msgstr "Vybrať"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "Otvoriť"
 
@@ -1147,15 +1147,7 @@ msgstr "Nastala chyba pri vytváraní adresára v %s."
 msgid "Safely Remove"
 msgstr "Bezpečne odobrať"
 
-#: libcore/PopupMenuBuilder.vala:65
-msgid "Permanently Delete All Trash"
-msgstr "Natrvalo odstrániť obsah koša"
-
-#: libcore/PopupMenuBuilder.vala:65
-msgid "Permanently Delete Trash"
-msgstr "Natrvalo odstrániť nepotrebné súbory"
-
-#: libcore/PopupMenuBuilder.vala:78
+#: libcore/PopupMenuBuilder.vala:57
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Natrvalo odstrániť nepotrebné súbory na tomto umiestnení"
 
@@ -1726,7 +1718,7 @@ msgid "Bulk Rename"
 msgstr "Premenovať"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:342
 msgid "Rename"
 msgstr "Premenovať"
 
@@ -2411,17 +2403,25 @@ msgstr "Zobraziť zoznam nedávno použitých súborov"
 msgid "Open the Trash"
 msgstr "Otvoriť kôš"
 
-#: src/View/Sidebar/BookmarkRow.vala:312
+#: src/View/Sidebar/BookmarkRow.vala:318
 msgid "Open in New _Tab"
 msgstr "Otvoriť na novej _karte"
 
-#: src/View/Sidebar/BookmarkRow.vala:313
+#: src/View/Sidebar/BookmarkRow.vala:319
 msgid "Open in New _Window"
 msgstr "Otvoriť v novom _okne"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Remove"
 msgstr "Odstrániť"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+msgid "Permanently Delete All Trash"
+msgstr "Natrvalo odstrániť obsah koša"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+msgid "Permanently Delete Trash"
+msgstr "Natrvalo odstrániť nepotrebné súbory"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"

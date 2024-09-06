@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:41+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2023-05-19 08:06+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
@@ -47,7 +47,7 @@ msgstr "Yeni dosya adı girin"
 msgid "Select"
 msgstr "Seç"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "Aç"
 
@@ -1118,15 +1118,7 @@ msgstr "%s içerisinde dizin oluşturulurken bir hata oluştu."
 msgid "Safely Remove"
 msgstr "Güvenle Kaldır"
 
-#: libcore/PopupMenuBuilder.vala:65
-msgid "Permanently Delete All Trash"
-msgstr "Tüm Çöpleri Kalıcı Olarak Sil"
-
-#: libcore/PopupMenuBuilder.vala:65
-msgid "Permanently Delete Trash"
-msgstr "Çöpleri Kalıcı Olarak Sil"
-
-#: libcore/PopupMenuBuilder.vala:78
+#: libcore/PopupMenuBuilder.vala:57
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Bu Bağlama Yolundaki Çöpü Kalıcı Olarak Sil"
 
@@ -1668,7 +1660,7 @@ msgid "Bulk Rename"
 msgstr "Toplu Yeniden Adlandır"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:342
 msgid "Rename"
 msgstr "Yeniden Adlandır"
 
@@ -2339,17 +2331,25 @@ msgstr "Son kullanılan dosyaların listesini görüntüle"
 msgid "Open the Trash"
 msgstr "Çöp Kutusunu Aç"
 
-#: src/View/Sidebar/BookmarkRow.vala:312
+#: src/View/Sidebar/BookmarkRow.vala:318
 msgid "Open in New _Tab"
 msgstr "Yeni _Sekmede Aç"
 
-#: src/View/Sidebar/BookmarkRow.vala:313
+#: src/View/Sidebar/BookmarkRow.vala:319
 msgid "Open in New _Window"
 msgstr "Yeni _Pencerede Aç"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Remove"
 msgstr "Sil"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+msgid "Permanently Delete All Trash"
+msgstr "Tüm Çöpleri Kalıcı Olarak Sil"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+msgid "Permanently Delete Trash"
+msgstr "Çöpleri Kalıcı Olarak Sil"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"

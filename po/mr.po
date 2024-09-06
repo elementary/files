@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:41+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2021-06-19 20:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -44,7 +44,7 @@ msgstr "नवीन फाइल"
 msgid "Select"
 msgstr " निवडले"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "उघडा"
 
@@ -1116,16 +1116,7 @@ msgstr "%s मध्ये डिरेक्टरी तयार करता
 msgid "Safely Remove"
 msgstr "काढा"
 
-#: libcore/PopupMenuBuilder.vala:65
-msgid "Permanently Delete All Trash"
-msgstr "कचरापेटीमधून सर्व आयटम कायमचे हटवा"
-
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete Trash"
-msgstr "कचरापेटीमधून सर्व आयटम कायमचे हटवा"
-
-#: libcore/PopupMenuBuilder.vala:78
+#: libcore/PopupMenuBuilder.vala:57
 msgid "Permanently Delete Trash on this Mount"
 msgstr "या माउंटवरील कचरापेटीमधील सर्व आयटम कायमचे हटवा"
 
@@ -1694,7 +1685,7 @@ msgid "Bulk Rename"
 msgstr "पुनर्नामित करा"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:342
 msgid "Rename"
 msgstr "पुनर्नामित करा"
 
@@ -2370,17 +2361,26 @@ msgstr "अलीकडे वापरलेल्या फायलींच�
 msgid "Open the Trash"
 msgstr "कचरा उघडा"
 
-#: src/View/Sidebar/BookmarkRow.vala:312
+#: src/View/Sidebar/BookmarkRow.vala:318
 msgid "Open in New _Tab"
 msgstr "(_T)नवीन टॅब मध्ये उघडा"
 
-#: src/View/Sidebar/BookmarkRow.vala:313
+#: src/View/Sidebar/BookmarkRow.vala:319
 msgid "Open in New _Window"
 msgstr "(_W)नवीन विंडो मध्ये उघडा"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Remove"
 msgstr "काढा"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+msgid "Permanently Delete All Trash"
+msgstr "कचरापेटीमधून सर्व आयटम कायमचे हटवा"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete Trash"
+msgstr "कचरापेटीमधून सर्व आयटम कायमचे हटवा"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"

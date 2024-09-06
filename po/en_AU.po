@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:41+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2022-04-20 10:20+0000\n"
 "Last-Translator: Joel Jose <joel750jose@gmail.com>\n"
 "Language-Team: English (Australia) <https://l10n.elementary.io/projects/"
@@ -49,7 +49,7 @@ msgstr "new file"
 msgid "Select"
 msgstr " selected"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "Open"
 
@@ -1149,17 +1149,7 @@ msgstr "There was an error creating the directory in %s."
 msgid "Safely Remove"
 msgstr "Remove"
 
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete All Trash"
-msgstr "Permanently delete all items from the Rubbish Bin?"
-
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete Trash"
-msgstr "Permanently delete all items from the Rubbish Bin?"
-
-#: libcore/PopupMenuBuilder.vala:78
+#: libcore/PopupMenuBuilder.vala:57
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Permanently delete all items from the Rubbish Bin on this mount?"
@@ -1744,7 +1734,7 @@ msgid "Bulk Rename"
 msgstr "Rename"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:342
 msgid "Rename"
 msgstr "Rename"
 
@@ -2434,17 +2424,27 @@ msgstr "View the list of recently used files"
 msgid "Open the Trash"
 msgstr "Open the Rubbish Bin"
 
-#: src/View/Sidebar/BookmarkRow.vala:312
+#: src/View/Sidebar/BookmarkRow.vala:318
 msgid "Open in New _Tab"
 msgstr "Open in New _Tab"
 
-#: src/View/Sidebar/BookmarkRow.vala:313
+#: src/View/Sidebar/BookmarkRow.vala:319
 msgid "Open in New _Window"
 msgstr "Open in New _Window"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Remove"
 msgstr "Remove"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete All Trash"
+msgstr "Permanently delete all items from the Rubbish Bin?"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete Trash"
+msgstr "Permanently delete all items from the Rubbish Bin?"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy

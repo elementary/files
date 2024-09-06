@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:41+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2018-02-05 00:11+0000\n"
 "Last-Translator: Rokar <mail@rokar.de>\n"
 "Language-Team: Kurdish <https://weblate.elementary.io/projects/files/files/"
@@ -43,7 +43,7 @@ msgstr "pelekî nû"
 msgid "Select"
 msgstr ""
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "Veke"
 
@@ -1114,17 +1114,7 @@ msgstr "Di jêbirinê de çewtî."
 msgid "Safely Remove"
 msgstr "Rake"
 
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete All Trash"
-msgstr "Çopê _vala bike"
-
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete Trash"
-msgstr "Çopê _vala bike"
-
-#: libcore/PopupMenuBuilder.vala:78
+#: libcore/PopupMenuBuilder.vala:57
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
 
@@ -1675,7 +1665,7 @@ msgid "Bulk Rename"
 msgstr "Nav biguherîne"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:342
 msgid "Rename"
 msgstr "Nav biguherîne"
 
@@ -2349,17 +2339,27 @@ msgstr ""
 msgid "Open the Trash"
 msgstr ""
 
-#: src/View/Sidebar/BookmarkRow.vala:312
+#: src/View/Sidebar/BookmarkRow.vala:318
 msgid "Open in New _Tab"
 msgstr "Di hilpekîna _nû de Veke"
 
-#: src/View/Sidebar/BookmarkRow.vala:313
+#: src/View/Sidebar/BookmarkRow.vala:319
 msgid "Open in New _Window"
 msgstr "Di _Paceya Nû de veke"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Remove"
 msgstr "Rake"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete All Trash"
+msgstr "Çopê _vala bike"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete Trash"
+msgstr "Çopê _vala bike"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"

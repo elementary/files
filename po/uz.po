@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:41+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2021-03-21 17:09+0000\n"
 "Last-Translator: Shukrullo Turgunov <shookrullo@gmail.com>\n"
 "Language-Team: Uzbek <https://l10n.elementary.io/projects/files/files/uz/>\n"
@@ -42,7 +42,7 @@ msgstr ""
 msgid "Select"
 msgstr " belgilandi"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "Ochish"
 
@@ -1079,17 +1079,7 @@ msgstr ""
 msgid "Safely Remove"
 msgstr "O'chirish"
 
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete All Trash"
-msgstr "Savatchani tozalash"
-
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete Trash"
-msgstr "Savatchani tozalash"
-
-#: libcore/PopupMenuBuilder.vala:78
+#: libcore/PopupMenuBuilder.vala:57
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Ushbu ulangan qurilmaning savatchasini tozalash"
@@ -1645,7 +1635,7 @@ msgid "Bulk Rename"
 msgstr "Qaytanomlash"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:342
 msgid "Rename"
 msgstr "Qaytanomlash"
 
@@ -2313,17 +2303,27 @@ msgstr "Yaqin orada foydalanilgan fayllar ro'yxatini ko'rish"
 msgid "Open the Trash"
 msgstr "Savatchani ochish"
 
-#: src/View/Sidebar/BookmarkRow.vala:312
+#: src/View/Sidebar/BookmarkRow.vala:318
 msgid "Open in New _Tab"
 msgstr "Yangi y_orliqda ochish"
 
-#: src/View/Sidebar/BookmarkRow.vala:313
+#: src/View/Sidebar/BookmarkRow.vala:319
 msgid "Open in New _Window"
 msgstr "Yangi _oynada ochish"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Remove"
 msgstr "O'chirish"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete All Trash"
+msgstr "Savatchani tozalash"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete Trash"
+msgstr "Savatchani tozalash"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"

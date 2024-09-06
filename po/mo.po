@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:41+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -42,7 +42,7 @@ msgstr "fișier nou"
 msgid "Select"
 msgstr " selectat"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "Deschide"
 
@@ -1141,19 +1141,7 @@ msgstr "A apărut o eroare la crearea directorului în %F 1."
 msgid "Safely Remove"
 msgstr "Elimină"
 
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete All Trash"
-msgstr ""
-"Permiteți ștergerea definitivă a tuturor articolelor din Coșul de gunoi?"
-
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete Trash"
-msgstr ""
-"Permiteți ștergerea definitivă a tuturor articolelor din Coșul de gunoi?"
-
-#: libcore/PopupMenuBuilder.vala:78
+#: libcore/PopupMenuBuilder.vala:57
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
@@ -1742,7 +1730,7 @@ msgid "Bulk Rename"
 msgstr "Redenumește"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:342
 msgid "Rename"
 msgstr "Redenumește"
 
@@ -2432,17 +2420,29 @@ msgstr "Vizualizați lista fișierelor utilizate recent"
 msgid "Open the Trash"
 msgstr "Deschideți Coșul de gunoi"
 
-#: src/View/Sidebar/BookmarkRow.vala:312
+#: src/View/Sidebar/BookmarkRow.vala:318
 msgid "Open in New _Tab"
 msgstr "Deschideți într-un nou _Tab"
 
-#: src/View/Sidebar/BookmarkRow.vala:313
+#: src/View/Sidebar/BookmarkRow.vala:319
 msgid "Open in New _Window"
 msgstr "Deschide intr-o nouă_ fereastră"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Remove"
 msgstr "Elimină"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete All Trash"
+msgstr ""
+"Permiteți ștergerea definitivă a tuturor articolelor din Coșul de gunoi?"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete Trash"
+msgstr ""
+"Permiteți ștergerea definitivă a tuturor articolelor din Coșul de gunoi?"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:41+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2024-08-31 18:16+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://l10n.elementary.io/projects/files/files/ka/"
@@ -47,7 +47,7 @@ msgstr "შეიყვანეთ ახალი ფაილის სახ
 msgid "Select"
 msgstr "აირჩიეთ"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "გახსნა"
 
@@ -1070,15 +1070,7 @@ msgstr "შეცდომა საქაღალდის %s-ში შექ
 msgid "Safely Remove"
 msgstr "უსაფრთხოდ მოცილება"
 
-#: libcore/PopupMenuBuilder.vala:65
-msgid "Permanently Delete All Trash"
-msgstr "ნაგავის სრულად, სამუდამოდ წაშლა"
-
-#: libcore/PopupMenuBuilder.vala:65
-msgid "Permanently Delete Trash"
-msgstr "ნაგვის სამუდამოდ წაშლა"
-
-#: libcore/PopupMenuBuilder.vala:78
+#: libcore/PopupMenuBuilder.vala:57
 msgid "Permanently Delete Trash on this Mount"
 msgstr "ამ მიმაგრებაზე ნაგვის სამუდამოდ წაშლა"
 
@@ -1611,7 +1603,7 @@ msgid "Bulk Rename"
 msgstr "მასობრივი გადარქმევა"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:342
 msgid "Rename"
 msgstr "გადარქმევა"
 
@@ -2266,17 +2258,25 @@ msgstr "ახლახანს გამოყენებული ფაი�
 msgid "Open the Trash"
 msgstr "ნაგვის გახსნა"
 
-#: src/View/Sidebar/BookmarkRow.vala:312
+#: src/View/Sidebar/BookmarkRow.vala:318
 msgid "Open in New _Tab"
 msgstr "ახ_ალ დაფაში გახსნა"
 
-#: src/View/Sidebar/BookmarkRow.vala:313
+#: src/View/Sidebar/BookmarkRow.vala:319
 msgid "Open in New _Window"
 msgstr "ახალ ფან_ჯარაში გახსნა"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Remove"
 msgstr "_წაშლა"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+msgid "Permanently Delete All Trash"
+msgstr "ნაგავის სრულად, სამუდამოდ წაშლა"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+msgid "Permanently Delete Trash"
+msgstr "ნაგვის სამუდამოდ წაშლა"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"

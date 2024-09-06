@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:41+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2017-02-14 10:17+0000\n"
 "Last-Translator: Cody Garver <cody@elementaryos.org>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -48,7 +48,7 @@ msgstr "νέο αρχείο"
 msgid "Select"
 msgstr " επιλέχτηκε"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "Άνοιγμα"
 
@@ -1157,17 +1157,7 @@ msgstr "Παρουσιάστηκε σφάλμα κατά τη δημιουργί
 msgid "Safely Remove"
 msgstr "Κατάργηση"
 
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete All Trash"
-msgstr "Να γίνει μόνιμη διαγραφή όλων των αντικειμένων στον κάδο απορριμμάτων;"
-
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete Trash"
-msgstr "Να γίνει μόνιμη διαγραφή όλων των αντικειμένων στον κάδο απορριμμάτων;"
-
-#: libcore/PopupMenuBuilder.vala:78
+#: libcore/PopupMenuBuilder.vala:57
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
@@ -1762,7 +1752,7 @@ msgid "Bulk Rename"
 msgstr "Μετονομασία"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:342
 msgid "Rename"
 msgstr "Μετονομασία"
 
@@ -2450,17 +2440,27 @@ msgstr "Προβολή της λίστας των πρόσφατα χρησιμ�
 msgid "Open the Trash"
 msgstr "Άνοιγμα του κάδου"
 
-#: src/View/Sidebar/BookmarkRow.vala:312
+#: src/View/Sidebar/BookmarkRow.vala:318
 msgid "Open in New _Tab"
 msgstr "Άνοιγμα σε νέα _καρτέλα"
 
-#: src/View/Sidebar/BookmarkRow.vala:313
+#: src/View/Sidebar/BookmarkRow.vala:319
 msgid "Open in New _Window"
 msgstr "Άνοιγμα σε νέο _παράθυρο"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Remove"
 msgstr "Κατάργηση"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete All Trash"
+msgstr "Να γίνει μόνιμη διαγραφή όλων των αντικειμένων στον κάδο απορριμμάτων;"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete Trash"
+msgstr "Να γίνει μόνιμη διαγραφή όλων των αντικειμένων στον κάδο απορριμμάτων;"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy

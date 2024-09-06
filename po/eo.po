@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:41+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2020-03-17 15:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
@@ -49,7 +49,7 @@ msgstr "nova dosiero"
 msgid "Select"
 msgstr " elektita(j)"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "Malfermi"
 
@@ -1124,17 +1124,7 @@ msgstr "Okazis eraro dum kreado de la dosierujo „%s“."
 msgid "Safely Remove"
 msgstr "Forigi"
 
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete All Trash"
-msgstr "Ĉu definitive forigi ĉiujn elementojn el la rubujo?"
-
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete Trash"
-msgstr "Ĉu definitive forigi ĉiujn elementojn el la rubujo?"
-
-#: libcore/PopupMenuBuilder.vala:78
+#: libcore/PopupMenuBuilder.vala:57
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Ĉu definitive forigi ĉiujn elementojn el ĉi muntaĵa rubujo?"
@@ -1712,7 +1702,7 @@ msgid "Bulk Rename"
 msgstr "Renomi"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:342
 msgid "Rename"
 msgstr "Renomi"
 
@@ -2388,17 +2378,27 @@ msgstr "Vidi liston de freŝe uzitaj dosieroj"
 msgid "Open the Trash"
 msgstr "Malfermi la rubujon"
 
-#: src/View/Sidebar/BookmarkRow.vala:312
+#: src/View/Sidebar/BookmarkRow.vala:318
 msgid "Open in New _Tab"
 msgstr "Malfermi en nova _Langeto"
 
-#: src/View/Sidebar/BookmarkRow.vala:313
+#: src/View/Sidebar/BookmarkRow.vala:319
 msgid "Open in New _Window"
 msgstr "Malfermi en _Nova Fenestro"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Remove"
 msgstr "Forigi"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete All Trash"
+msgstr "Ĉu definitive forigi ĉiujn elementojn el la rubujo?"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete Trash"
+msgstr "Ĉu definitive forigi ĉiujn elementojn el la rubujo?"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy

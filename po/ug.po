@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:41+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2016-12-12 07:21+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -48,7 +48,7 @@ msgstr "يىڭى ھۆججەت قۇرۇش"
 msgid "Select"
 msgstr " تاللاندى"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:310
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "ئىچىش"
 
@@ -1120,17 +1120,7 @@ msgstr "%F غا مۇندەرىجە قۇرغاندا خاتالىق كۆرۈلد�
 msgid "Safely Remove"
 msgstr "چىقىرىۋىتىش"
 
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete All Trash"
-msgstr "ئەخلەت چېلىكىدىن ھەممە تۈرلەرنى راسىتتىنلا ئۆچۈرەمسىز؟"
-
-#: libcore/PopupMenuBuilder.vala:65
-#, fuzzy
-msgid "Permanently Delete Trash"
-msgstr "ئەخلەت چېلىكىدىن ھەممە تۈرلەرنى راسىتتىنلا ئۆچۈرەمسىز؟"
-
-#: libcore/PopupMenuBuilder.vala:78
+#: libcore/PopupMenuBuilder.vala:57
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr ""
@@ -1710,7 +1700,7 @@ msgid "Bulk Rename"
 msgstr "ئىسمىنى ئۆزگەرتىش"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:342
 msgid "Rename"
 msgstr "ئىسمىنى ئۆزگەرتىش"
 
@@ -2400,17 +2390,27 @@ msgstr "يىقىندا ئىشلەتكەن ھۆججەتلەر تىزىملىكى�
 msgid "Open the Trash"
 msgstr "ئەخلەت چېلىكىنى ئىچىش"
 
-#: src/View/Sidebar/BookmarkRow.vala:312
+#: src/View/Sidebar/BookmarkRow.vala:318
 msgid "Open in New _Tab"
 msgstr "يېڭى بەتكۈچتە ئىچىش(_T)"
 
-#: src/View/Sidebar/BookmarkRow.vala:313
+#: src/View/Sidebar/BookmarkRow.vala:319
 msgid "Open in New _Window"
 msgstr "يېڭى كۆزنەكتە ئىچىش(_W)"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Remove"
 msgstr "چىقىرىۋىتىش"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete All Trash"
+msgstr "ئەخلەت چېلىكىدىن ھەممە تۈرلەرنى راسىتتىنلا ئۆچۈرەمسىز؟"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete Trash"
+msgstr "ئەخلەت چېلىكىدىن ھەممە تۈرلەرنى راسىتتىنلا ئۆچۈرەمسىز؟"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy
