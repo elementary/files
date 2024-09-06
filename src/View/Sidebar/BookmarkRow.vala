@@ -90,6 +90,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     public ActionGroup? action_group {get; set; default = null;}
     public string? action_group_namespace { get; set; default = null;}
 
+    private SimpleAction empty_all_trash_action;
+
     public BookmarkRow (string _custom_name,
                         string uri,
                         Icon gicon,
@@ -207,12 +209,18 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         var remove_action = new SimpleAction ("remove", null);
         remove_action.activate.connect (() => list.remove_item_by_id (id));
 
+        empty_all_trash_action = new SimpleAction ("empty-all-trash", null);
+        empty_all_trash_action.activate.connect (() => {
+            new Files.FileOperations.EmptyTrashJob ((Gtk.Window) get_toplevel ()).empty_trash.begin ();
+        });
+
         var action_group = new SimpleActionGroup ();
         action_group.add_action (open_action);
         action_group.add_action (open_tab_action);
         action_group.add_action (open_window_action);
         action_group.add_action (rename_action);
         action_group.add_action (remove_action);
+        action_group.add_action (empty_all_trash_action);
 
         insert_action_group ("bookmark", action_group);
 
@@ -335,14 +343,26 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
 
         if (Uri.parse_scheme (uri) == "trash") {
-            menu_builder
-                .add_separator ()
-                .add_empty_all_trash (() => {
-                    new Files.FileOperations.EmptyTrashJob (
-                        (Gtk.Window)get_ancestor (typeof (Gtk.Window)
-                    )).empty_trash.begin ();
-                })
-            ;
+            var volume_monitor = VolumeMonitor.@get ();
+            int mounts_with_trash = 0;
+            foreach (Mount mount in volume_monitor.get_mounts ()) {
+                if (Files.FileOperations.mount_has_trash (mount)) {
+                    mounts_with_trash++;
+                }
+            }
+
+            var text = mounts_with_trash > 0 ? _("Permanently Delete All Trash") : _("Permanently Delete Trash");
+
+            var menu_item = new Gtk.MenuItem.with_mnemonic (text);
+            menu_item.set_detailed_action_name (
+                Action.print_detailed_name ("bookmark.empty-all-trash", null)
+            );
+            menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+
+            menu_builder.add_separator ();
+            menu_builder.add_item (menu_item);
+
+            empty_all_trash_action.set_enabled (!Files.TrashMonitor.get_default ().is_empty);
         }
     }
 
