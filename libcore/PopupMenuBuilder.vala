@@ -53,8 +53,8 @@ public class PopupMenuBuilder : Object {
         add_with_action_name (_("Safely Remove"), "mountable.safely-remove");
     }
 
-    public PopupMenuBuilder add_separator () {
-        return add_item (new Gtk.SeparatorMenuItem ());
+    public void add_separator () {
+        add_item (new Gtk.SeparatorMenuItem ());
     }
 
     public void add_with_action_name (string label, string action_name) {
@@ -67,9 +67,8 @@ public class PopupMenuBuilder : Object {
         menu_items += menu_item;
     }
 
-    public PopupMenuBuilder add_item (Gtk.MenuItem menu_item) {
+    public void add_item (Gtk.MenuItem menu_item) {
         menu_item.show ();
         menu_items += menu_item;
-        return this;
     }
 }
