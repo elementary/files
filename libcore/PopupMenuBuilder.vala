@@ -67,13 +67,7 @@ public class PopupMenuBuilder : Object {
         menu_items += menu_item;
     }
 
-    public PopupMenuBuilder add_item (Gtk.MenuItem menu_item, MenuitemCallback? cb = null) {
-        if (cb != null) {
-            menu_item.activate.connect ((menu_item) => {
-                cb (menu_item);
-            });
-        }
-
+    public PopupMenuBuilder add_item (Gtk.MenuItem menu_item) {
         menu_item.show ();
         menu_items += menu_item;
         return this;
