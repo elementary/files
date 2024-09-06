@@ -18,9 +18,7 @@
 ***/
 
 public class PopupMenuBuilder : Object {
-    public delegate void MenuitemCallback (Gtk.MenuItem menu_item);
     Gtk.MenuItem[] menu_items = {};
-    public uint n_items { get { return menu_items.length; }}
 
     public Gtk.Menu build (Gtk.Widget attach_widget) {
         var popupmenu = new Gtk.Menu () {
