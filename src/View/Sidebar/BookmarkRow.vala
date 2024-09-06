@@ -223,6 +223,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         action_group.add_action (empty_all_trash_action);
 
         insert_action_group ("bookmark", action_group);
+
+        ((Gtk.Application) Application.get_default ()).set_accels_for_action ("bookmark.rename", { "F2" });
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
@@ -258,10 +260,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     protected virtual bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
         switch (keyval) {
-            case Gdk.Key.F2:
-                rename ();
-                return true;
-
             case Gdk.Key.Escape:
                 cancel_rename ();
                 return true;
