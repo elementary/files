@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:00+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2022-11-09 14:29+0000\n"
 "Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -49,7 +49,7 @@ msgstr "ملف جديد"
 msgid "Select"
 msgstr " محددة"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "فتح"
 
@@ -127,7 +127,7 @@ msgid "Port:"
 msgstr "المنفذ:"
 
 #: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
-#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:260
+#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:242
 msgid "Type:"
 msgstr "النوع:"
 
@@ -350,7 +350,7 @@ msgid "Original file"
 msgstr "الملف الأصلي"
 
 #: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
-#: src/Dialogs/PropertiesWindow.vala:564
+#: src/Dialogs/PropertiesWindow.vala:546
 msgid "Size:"
 msgstr "الحجم:"
 
@@ -553,7 +553,7 @@ msgstr[5] "%'d دقائق"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1265
+#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr "%s، %s"
@@ -1201,44 +1201,12 @@ msgstr "خطأ أثناء إنشاء الملف %B."
 msgid "There was an error creating the directory in %s."
 msgstr "حدث خطأ عند إنشاء المجلد في %F."
 
-#: libcore/PopupMenuBuilder.vala:56
-msgid "Open in New _Tab"
-msgstr "افتح في _لسان جديد"
-
-#: libcore/PopupMenuBuilder.vala:60
-msgid "Open in New _Window"
-msgstr "افتح في _نافذة جديدة"
-
-#: libcore/PopupMenuBuilder.vala:64
-msgid "Remove"
-msgstr "أزِل"
-
-#: libcore/PopupMenuBuilder.vala:68
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr "إعادة تسمية"
-
-#: libcore/PopupMenuBuilder.vala:73
+#: libcore/PopupMenuBuilder.vala:53
 #, fuzzy
 msgid "Safely Remove"
 msgstr "أزِل"
 
-#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
-#, fuzzy
-msgid "Add to Bookmarks"
-msgstr "المؤشرات"
-
-#: libcore/PopupMenuBuilder.vala:89
-#, fuzzy
-msgid "Permanently Delete All Trash"
-msgstr "حذف جميع الملفات في سلة المهملات بشكل نهائي؟"
-
-#: libcore/PopupMenuBuilder.vala:89
-#, fuzzy
-msgid "Permanently Delete Trash"
-msgstr "حذف جميع الملفات في سلة المهملات بشكل نهائي؟"
-
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:57
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr "حذف كل الأشياء نهائيا من المهملات على هذا القرص؟"
@@ -1780,7 +1748,7 @@ msgstr "السعة:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
-#: src/Dialogs/PropertiesWindow.vala:493 src/Dialogs/PropertiesWindow.vala:532
+#: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
 msgid "Unknown"
 msgstr "مجهول"
 
@@ -1811,6 +1779,11 @@ msgstr "إعادة تسمية"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
 #, fuzzy
 msgid "Bulk Rename"
+msgstr "إعادة تسمية"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:342
+msgid "Rename"
 msgstr "إعادة تسمية"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
@@ -1908,25 +1881,21 @@ msgstr ""
 msgid "Set as default"
 msgstr "عيّن كإفتراضي"
 
-#: src/Dialogs/PropertiesWindow.vala:117
+#: src/Dialogs/PropertiesWindow.vala:116
 #: src/View/AbstractDirectoryView.vala:2028
 #: src/View/Sidebar/AbstractMountableRow.vala:273
 msgid "Properties"
 msgstr "خصائص"
 
-#: src/Dialogs/PropertiesWindow.vala:228
-msgid "Unable to determine file ownership and permissions"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:238
+#: src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
 msgstr "الصلاحيات"
 
-#: src/Dialogs/PropertiesWindow.vala:281
+#: src/Dialogs/PropertiesWindow.vala:263
 msgid "Contains:"
 msgstr "يحتوي:"
 
-#: src/Dialogs/PropertiesWindow.vala:295
+#: src/Dialogs/PropertiesWindow.vala:277
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
@@ -1937,73 +1906,77 @@ msgstr[3] "%i لم يتم التمكن من قراءة الملفات بسبب �
 msgstr[4] "%i لم يتم التمكن من قراءة الملفات بسبب الصلاحيات أو أخطاء أخرى."
 msgstr[5] "%i لم يتم التمكن من قراءة الملفات بسبب الصلاحيات أو أخطاء أخرى."
 
-#: src/Dialogs/PropertiesWindow.vala:300
+#: src/Dialogs/PropertiesWindow.vala:282
 msgid "Actual Size Could Be Larger"
 msgstr "الحجم الحالي يمكن أن يكون أكبر"
 
-#: src/Dialogs/PropertiesWindow.vala:321 src/Dialogs/PropertiesWindow.vala:340
+#: src/Dialogs/PropertiesWindow.vala:303 src/Dialogs/PropertiesWindow.vala:322
 msgid "unknown"
 msgstr "مجهول"
 
-#: src/Dialogs/PropertiesWindow.vala:504
+#: src/Dialogs/PropertiesWindow.vala:486
 msgid "Loading…"
 msgstr "تحميل …"
 
-#: src/Dialogs/PropertiesWindow.vala:538
+#: src/Dialogs/PropertiesWindow.vala:520
 msgid "Could not be determined"
 msgstr "لم يكن من الممكن تحديده"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:564
 msgid "Created:"
 msgstr "مُنشأ:"
 
-#: src/Dialogs/PropertiesWindow.vala:593
+#: src/Dialogs/PropertiesWindow.vala:575
 msgid "Modified:"
 msgstr "مُعدَّل:"
 
-#: src/Dialogs/PropertiesWindow.vala:605
+#: src/Dialogs/PropertiesWindow.vala:587
 msgid "Deleted:"
 msgstr "محذوف:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:597
 msgid "Media type:"
 msgstr "نوع الوسائط:"
 
-#: src/Dialogs/PropertiesWindow.vala:622
+#: src/Dialogs/PropertiesWindow.vala:604
 msgid "Resolution:"
 msgstr "الدقة:"
 
-#: src/Dialogs/PropertiesWindow.vala:630
+#: src/Dialogs/PropertiesWindow.vala:612
 #: src/Dialogs/VolumePropertiesWindow.vala:76
 msgid "Location:"
 msgstr "المكان:"
 
-#: src/Dialogs/PropertiesWindow.vala:640
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Target:"
 msgstr "الهدف:"
 
-#: src/Dialogs/PropertiesWindow.vala:648
+#: src/Dialogs/PropertiesWindow.vala:630
 msgid "Original Location:"
 msgstr "المكان اﻷصلي:"
 
-#: src/Dialogs/PropertiesWindow.vala:671
+#: src/Dialogs/PropertiesWindow.vala:653
 #: src/View/AbstractDirectoryView.vala:1996
 msgid "Other Application…"
 msgstr "تطبيقات أخرى …"
 
-#: src/Dialogs/PropertiesWindow.vala:691
+#: src/Dialogs/PropertiesWindow.vala:673
 msgid "Open with:"
 msgstr "إفتح باستخدام:"
 
-#: src/Dialogs/PropertiesWindow.vala:960
+#: src/Dialogs/PropertiesWindow.vala:940
+msgid "Unable to determine file ownership and permissions"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:947
 msgid "Owner:"
 msgstr "المالك:"
 
-#: src/Dialogs/PropertiesWindow.vala:961
+#: src/Dialogs/PropertiesWindow.vala:948
 msgid "Group:"
 msgstr "مجموعة:"
 
-#: src/Dialogs/PropertiesWindow.vala:1256
+#: src/Dialogs/PropertiesWindow.vala:1244
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
@@ -2014,8 +1987,8 @@ msgstr[3] "%u مجلدات فرعية"
 msgstr[4] "%u مجلدات فرعية"
 msgstr[5] "%u مجلدات فرعية"
 
-#: src/Dialogs/PropertiesWindow.vala:1260
-#: src/Dialogs/PropertiesWindow.vala:1282
+#: src/Dialogs/PropertiesWindow.vala:1248
+#: src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -2026,7 +1999,7 @@ msgstr[3] "%u ملفات"
 msgstr[4] "%u ملفات"
 msgstr[5] "%u ملفات"
 
-#: src/Dialogs/PropertiesWindow.vala:1278 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1266 src/View/Widgets/OverlayBar.vala:171
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -2037,7 +2010,7 @@ msgstr[3] "%u ملفات"
 msgstr[4] "%u ملفات"
 msgstr[5] "%u ملفات"
 
-#: src/Dialogs/PropertiesWindow.vala:1287
+#: src/Dialogs/PropertiesWindow.vala:1275
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -2049,7 +2022,7 @@ msgstr[4] "%u عناصر محددة"
 msgstr[5] "%u عنصر محدد"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1289
+#: src/Dialogs/PropertiesWindow.vala:1277
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
@@ -2155,6 +2128,11 @@ msgstr "إفتح في"
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "فتح باستخدام"
+
+#: src/View/AbstractDirectoryView.vala:2021
+#, fuzzy
+msgid "Add to Bookmarks"
+msgstr "المؤشرات"
 
 #: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
@@ -2499,6 +2477,28 @@ msgstr "عرض قائمة الملفات المفتوحة مؤخرا"
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "فتح المهملات"
+
+#: src/View/Sidebar/BookmarkRow.vala:318
+msgid "Open in New _Tab"
+msgstr "افتح في _لسان جديد"
+
+#: src/View/Sidebar/BookmarkRow.vala:319
+msgid "Open in New _Window"
+msgstr "افتح في _نافذة جديدة"
+
+#: src/View/Sidebar/BookmarkRow.vala:338
+msgid "Remove"
+msgstr "أزِل"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete All Trash"
+msgstr "حذف جميع الملفات في سلة المهملات بشكل نهائي؟"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete Trash"
+msgstr "حذف جميع الملفات في سلة المهملات بشكل نهائي؟"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy

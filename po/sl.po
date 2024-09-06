@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:00+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
 "PO-Revision-Date: 2020-04-26 23:10+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
@@ -50,7 +50,7 @@ msgstr "nova datoteka"
 msgid "Select"
 msgstr " izbranih"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "Odpri"
 
@@ -128,7 +128,7 @@ msgid "Port:"
 msgstr "Vrata:"
 
 #: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
-#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:260
+#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:242
 msgid "Type:"
 msgstr "Vrsta:"
 
@@ -348,7 +348,7 @@ msgid "Original file"
 msgstr "Izvirna datoteka"
 
 #: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
-#: src/Dialogs/PropertiesWindow.vala:564
+#: src/Dialogs/PropertiesWindow.vala:546
 msgid "Size:"
 msgstr "Velikost:"
 
@@ -547,7 +547,7 @@ msgstr[3] "%'d minute"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1265
+#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr "%s %s"
@@ -1159,44 +1159,12 @@ msgstr "Napaka med ustvarjanjem datoteke %s."
 msgid "There was an error creating the directory in %s."
 msgstr "Prišlo je do napake med ustvarjanjem mape v %s."
 
-#: libcore/PopupMenuBuilder.vala:56
-msgid "Open in New _Tab"
-msgstr "Odpri v novem _zavihku"
-
-#: libcore/PopupMenuBuilder.vala:60
-msgid "Open in New _Window"
-msgstr "Odpri v novem _oknu"
-
-#: libcore/PopupMenuBuilder.vala:64
-msgid "Remove"
-msgstr "Odstrani"
-
-#: libcore/PopupMenuBuilder.vala:68
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr "Preimenuj"
-
-#: libcore/PopupMenuBuilder.vala:73
+#: libcore/PopupMenuBuilder.vala:53
 #, fuzzy
 msgid "Safely Remove"
 msgstr "Odstrani"
 
-#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
-#, fuzzy
-msgid "Add to Bookmarks"
-msgstr "Zaznamki"
-
-#: libcore/PopupMenuBuilder.vala:89
-#, fuzzy
-msgid "Permanently Delete All Trash"
-msgstr "Trajno izbriši vse v smeteh?"
-
-#: libcore/PopupMenuBuilder.vala:89
-#, fuzzy
-msgid "Permanently Delete Trash"
-msgstr "Trajno izbriši vse v smeteh?"
-
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:57
 #, fuzzy
 msgid "Permanently Delete Trash on this Mount"
 msgstr "Trajno izbriši vse v smeteh na tem priklopu?"
@@ -1741,7 +1709,7 @@ msgstr "Kapaciteta:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
-#: src/Dialogs/PropertiesWindow.vala:493 src/Dialogs/PropertiesWindow.vala:532
+#: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
 msgid "Unknown"
 msgstr "Neznano"
 
@@ -1772,6 +1740,11 @@ msgstr "Preimenuj"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
 #, fuzzy
 msgid "Bulk Rename"
+msgstr "Preimenuj"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:342
+msgid "Rename"
 msgstr "Preimenuj"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
@@ -1869,25 +1842,21 @@ msgstr ""
 msgid "Set as default"
 msgstr "Nastavi kot privzeto"
 
-#: src/Dialogs/PropertiesWindow.vala:117
+#: src/Dialogs/PropertiesWindow.vala:116
 #: src/View/AbstractDirectoryView.vala:2028
 #: src/View/Sidebar/AbstractMountableRow.vala:273
 msgid "Properties"
 msgstr "Lastnosti"
 
-#: src/Dialogs/PropertiesWindow.vala:228
-msgid "Unable to determine file ownership and permissions"
-msgstr ""
-
-#: src/Dialogs/PropertiesWindow.vala:238
+#: src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
 msgstr "Dovoljenja"
 
-#: src/Dialogs/PropertiesWindow.vala:281
+#: src/Dialogs/PropertiesWindow.vala:263
 msgid "Contains:"
 msgstr "Vsebuje:"
 
-#: src/Dialogs/PropertiesWindow.vala:295
+#: src/Dialogs/PropertiesWindow.vala:277
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
@@ -1900,73 +1869,77 @@ msgstr[2] ""
 msgstr[3] ""
 "%i datotek ni bilo mogoče prebrati zaradi dovoljenj ali drugih napak."
 
-#: src/Dialogs/PropertiesWindow.vala:300
+#: src/Dialogs/PropertiesWindow.vala:282
 msgid "Actual Size Could Be Larger"
 msgstr "Dejanska velikost je lahko večja"
 
-#: src/Dialogs/PropertiesWindow.vala:321 src/Dialogs/PropertiesWindow.vala:340
+#: src/Dialogs/PropertiesWindow.vala:303 src/Dialogs/PropertiesWindow.vala:322
 msgid "unknown"
 msgstr "neznano"
 
-#: src/Dialogs/PropertiesWindow.vala:504
+#: src/Dialogs/PropertiesWindow.vala:486
 msgid "Loading…"
 msgstr "Nalaganje…"
 
-#: src/Dialogs/PropertiesWindow.vala:538
+#: src/Dialogs/PropertiesWindow.vala:520
 msgid "Could not be determined"
 msgstr "Ni bilo mogoče določiti"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:564
 msgid "Created:"
 msgstr "Ustvarjeno:"
 
-#: src/Dialogs/PropertiesWindow.vala:593
+#: src/Dialogs/PropertiesWindow.vala:575
 msgid "Modified:"
 msgstr "Spremenjeno:"
 
-#: src/Dialogs/PropertiesWindow.vala:605
+#: src/Dialogs/PropertiesWindow.vala:587
 msgid "Deleted:"
 msgstr "Izbrisano:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:597
 msgid "Media type:"
 msgstr "Tip:"
 
-#: src/Dialogs/PropertiesWindow.vala:622
+#: src/Dialogs/PropertiesWindow.vala:604
 msgid "Resolution:"
 msgstr "Ločljivost:"
 
-#: src/Dialogs/PropertiesWindow.vala:630
+#: src/Dialogs/PropertiesWindow.vala:612
 #: src/Dialogs/VolumePropertiesWindow.vala:76
 msgid "Location:"
 msgstr "Lokacija:"
 
-#: src/Dialogs/PropertiesWindow.vala:640
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Target:"
 msgstr "Cilj:"
 
-#: src/Dialogs/PropertiesWindow.vala:648
+#: src/Dialogs/PropertiesWindow.vala:630
 msgid "Original Location:"
 msgstr "Izvorna lokacija:"
 
-#: src/Dialogs/PropertiesWindow.vala:671
+#: src/Dialogs/PropertiesWindow.vala:653
 #: src/View/AbstractDirectoryView.vala:1996
 msgid "Other Application…"
 msgstr "Drugo aplikacijo…"
 
-#: src/Dialogs/PropertiesWindow.vala:691
+#: src/Dialogs/PropertiesWindow.vala:673
 msgid "Open with:"
 msgstr "Odpri s programom:"
 
-#: src/Dialogs/PropertiesWindow.vala:960
+#: src/Dialogs/PropertiesWindow.vala:940
+msgid "Unable to determine file ownership and permissions"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:947
 msgid "Owner:"
 msgstr "Lastnik:"
 
-#: src/Dialogs/PropertiesWindow.vala:961
+#: src/Dialogs/PropertiesWindow.vala:948
 msgid "Group:"
 msgstr "Skupina:"
 
-#: src/Dialogs/PropertiesWindow.vala:1256
+#: src/Dialogs/PropertiesWindow.vala:1244
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
@@ -1975,8 +1948,8 @@ msgstr[1] "%u podmapa"
 msgstr[2] "%u podmapi"
 msgstr[3] "%u podmap"
 
-#: src/Dialogs/PropertiesWindow.vala:1260
-#: src/Dialogs/PropertiesWindow.vala:1282
+#: src/Dialogs/PropertiesWindow.vala:1248
+#: src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -1985,7 +1958,7 @@ msgstr[1] "%u datoteka"
 msgstr[2] "%u datoteki"
 msgstr[3] "%u datotek"
 
-#: src/Dialogs/PropertiesWindow.vala:1278 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1266 src/View/Widgets/OverlayBar.vala:171
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -1994,7 +1967,7 @@ msgstr[1] "%u mapa"
 msgstr[2] "%u mapi"
 msgstr[3] "%u map"
 
-#: src/Dialogs/PropertiesWindow.vala:1287
+#: src/Dialogs/PropertiesWindow.vala:1275
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -2004,7 +1977,7 @@ msgstr[2] "%u izbrana predmeta"
 msgstr[3] "%u izbrani predmeti"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1289
+#: src/Dialogs/PropertiesWindow.vala:1277
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
@@ -2110,6 +2083,11 @@ msgstr "Odpri v"
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "Odpri z"
+
+#: src/View/AbstractDirectoryView.vala:2021
+#, fuzzy
+msgid "Add to Bookmarks"
+msgstr "Zaznamki"
 
 #: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
@@ -2454,6 +2432,28 @@ msgstr "Seznam nazadnje uporabljenih datotek"
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "Odpri smeti"
+
+#: src/View/Sidebar/BookmarkRow.vala:318
+msgid "Open in New _Tab"
+msgstr "Odpri v novem _zavihku"
+
+#: src/View/Sidebar/BookmarkRow.vala:319
+msgid "Open in New _Window"
+msgstr "Odpri v novem _oknu"
+
+#: src/View/Sidebar/BookmarkRow.vala:338
+msgid "Remove"
+msgstr "Odstrani"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete All Trash"
+msgstr "Trajno izbriši vse v smeteh?"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete Trash"
+msgstr "Trajno izbriši vse v smeteh?"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy

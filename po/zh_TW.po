@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-05 16:00+0000\n"
-"PO-Revision-Date: 2024-09-02 22:33+0000\n"
+"POT-Creation-Date: 2024-09-06 15:25+0000\n"
+"PO-Revision-Date: 2024-09-06 11:54+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hant/>\n"
@@ -47,7 +47,7 @@ msgstr "輸入新檔案名稱"
 msgid "Select"
 msgstr "選取"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:52
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "開啟"
 
@@ -123,7 +123,7 @@ msgid "Port:"
 msgstr "連接埠："
 
 #: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
-#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:260
+#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:242
 msgid "Type:"
 msgstr "類型："
 
@@ -299,19 +299,16 @@ msgid "Failed to parse the desktop file: "
 msgstr "無法剖析桌面檔： "
 
 #: libcore/File.vala:971
-#, fuzzy
 msgid "Failed to create command from file: "
-msgstr "無法根據此檔案建立指令：%s"
+msgstr "無法根據檔案建立指令： "
 
 #: libcore/File.vala:980
-#, fuzzy
 msgid "Unable to Launch Desktop File: "
-msgstr "無法啟動桌面檔：%s"
+msgstr "無法啟動桌面檔： "
 
 #: libcore/File.vala:1169
-#, fuzzy
 msgid "Empty"
-msgstr "空白檔案"
+msgstr "空白"
 
 #: libcore/File.vala:1171
 #, c-format
@@ -333,7 +330,7 @@ msgid "Original file"
 msgstr "原始檔案"
 
 #: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
-#: src/Dialogs/PropertiesWindow.vala:564
+#: src/Dialogs/PropertiesWindow.vala:546
 msgid "Size:"
 msgstr "大小："
 
@@ -495,21 +492,21 @@ msgstr "無法重新命名為「%s」"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:657
-#, fuzzy, c-format
+#, c-format
 msgid "Today at %s"
-msgstr "今日的 %-H:%M"
+msgstr "今日的 %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:665
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
-msgstr "昨日的 %-H:%M"
+msgstr "昨日的 %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:673
-#, fuzzy, c-format
+#, c-format
 msgid "%%A at %s"
-msgstr "%A的 %-H:%M"
+msgstr "%A的 %s"
 
 #: libcore/FileUtils.vala:898
 #, c-format
@@ -525,7 +522,7 @@ msgstr[0] "%'d 分鐘"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1265
+#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr "%s，%s"
@@ -544,25 +541,23 @@ msgstr[0] "預估還有 %'d 小時"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
 #: libcore/FileUtils.vala:921
-#, fuzzy
 msgid "copy"
-msgstr " (副本)"
+msgstr "副本"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:923
 msgid "link"
-msgstr ""
+msgstr "連結"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:925
-#, fuzzy
 msgid "("
-msgstr " ("
+msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:927
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: libcore/marlin-file-operations.c:92
 #, c-format
@@ -591,20 +586,20 @@ msgstr "刪除時發生錯誤。"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:188
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
-msgstr "無法刪除資料夾「%B」中的檔案，因為您沒有查看它們的許可權。"
+msgstr "無法刪除資料夾「%s」當中的檔案，因為您沒有足夠權限讀取它們。"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:193 libcore/marlin-file-operations.c:910
 #: libcore/marlin-file-operations.c:1702
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
-msgstr "在取得「%s」資料夾檔案的相關資訊時發生錯誤。"
+msgstr "取得資料夾「%s」中檔案的資訊時發生錯誤。"
 
 #: libcore/marlin-file-operations.c:204 libcore/marlin-file-operations.c:1713
 msgid "_Skip files"
@@ -613,41 +608,41 @@ msgstr "略過檔案(_S)"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:228
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr "無法刪除資料夾「%B」，因為您沒有讀取它的許可權。"
+msgstr "無法刪除資料夾「%s」，因為您沒有權限讀取它。"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:233 libcore/marlin-file-operations.c:956
 #: libcore/marlin-file-operations.c:1755
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error reading the folder \"%s\"."
-msgstr "讀取資料夾「%B」時發生錯誤。"
+msgstr "讀取資料夾「%s」時發生錯誤。"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:273
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the folder %s."
-msgstr "無法移除資料夾 %B。"
+msgstr "無法移除資料夾 %s。"
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:357
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error deleting %s."
-msgstr "刪除 %B 時發生錯誤。"
+msgstr "刪除 %s 時發生錯誤。"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:399
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
-msgstr[0] "正準備刪除 %'d 個檔案 (%S)"
+msgstr[0] "正準備刪除 %'d 個檔案 (%s)"
 
 #: libcore/marlin-file-operations.c:467
 msgid "Moving files to trash"
@@ -666,23 +661,23 @@ msgstr "無法將檔案丟至垃圾筒或刪除"
 
 #: libcore/marlin-file-operations.c:569
 msgid "It is not permitted to trash or delete files on a read only filesystem."
-msgstr "尚未取得在唯讀檔案系統上將檔案丟至垃圾筒，或刪除檔案的許可。"
+msgstr "在唯讀檔案系統上無法將檔案刪除或丟至垃圾筒。"
 
 #: libcore/marlin-file-operations.c:572
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
-msgstr "尚未取得在您未具寫入權的資料夾內將檔案丟至垃圾筒，或刪除檔案的許可。"
+msgstr "在您沒有寫入權限的資料夾中無法將檔案刪除或丟至垃圾筒。"
 
 #: libcore/marlin-file-operations.c:575
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr "尚未取得將您未具寫入權的資料夾丟至垃圾筒，或刪除資料夾的許可。"
+msgstr "無法將您沒有寫入權限的資料夾刪除或丟至垃圾筒。"
 
 #: libcore/marlin-file-operations.c:577
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr "無法將檔案丟至垃圾桶。是否現在嘗試刪除？"
+msgstr "無法將檔案丟至垃圾桶。是否嘗試現在直接完全刪除？"
 
 #: libcore/marlin-file-operations.c:578
 msgid ""
@@ -691,9 +686,8 @@ msgid ""
 msgstr "此檔案無法丟至垃圾桶中。請見下方詳細資料以深入瞭解更多資訊。"
 
 #: libcore/marlin-file-operations.c:582
-#, fuzzy
 msgid "Cannot move file to trash. Try to delete it?"
-msgstr "無法將檔案丟至垃圾筒。是否嘗試刪除？"
+msgstr "無法將檔案丟至垃圾桶。是否嘗試完全刪除？"
 
 #: libcore/marlin-file-operations.c:583
 msgid ""
@@ -722,20 +716,20 @@ msgstr "正在刪除檔案"
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:797
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] "正準備複製 %'d 個檔案 (%S)"
+msgstr[0] "正準備複製 %'d 個檔案 (%s)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:807
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
-msgstr[0] "正準備移動 %'d 個檔案 (%S)"
+msgstr[0] "正準備移動 %'d 個檔案 (%s)"
 
 #: libcore/marlin-file-operations.c:842 libcore/marlin-file-operations.c:1687
 #: libcore/marlin-file-operations.c:1740
@@ -785,21 +779,21 @@ msgstr "取得關於「%B」的資訊時發生錯誤。"
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:1161
-#, fuzzy, c-format
+#, c-format
 msgid "Moving \"%s\" to \"%s\""
-msgstr "正將「%B」移動到「%B」"
+msgstr "正將「%s」移動到「%s」"
 
 #: libcore/marlin-file-operations.c:1162
-#, fuzzy, c-format
+#, c-format
 msgid "Copying \"%s\" to \"%s\""
-msgstr "正將「%B」複製到「%B」"
+msgstr "正將「%s」複製到「%s」"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/marlin-file-operations.c:1166
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating \"%s\""
-msgstr "正在重製「%B」"
+msgstr "正在重製「%s」"
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
@@ -849,9 +843,9 @@ msgstr[0] "正在重製 %'d 個檔案"
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
 #: libcore/marlin-file-operations.c:1237
-#, fuzzy, c-format
+#, c-format
 msgid "%s of %s"
-msgstr "%S / %S"
+msgstr "%s / %s"
 
 #. TRANSLATORS: The two first %s and the last %s will expand to a size
 #. like "2 bytes" or "3 MB", the third %s to a time duration like
@@ -860,26 +854,26 @@ msgstr "%S / %S"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
 #: libcore/marlin-file-operations.c:1257
-#, fuzzy, c-format
+#, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
-msgstr[0] "%S / %S — 剩餘 %T (%S/秒)"
+msgstr[0] "%s / %s — 剩餘 %s (%s/秒)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1557
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
-msgstr "無法複製資料夾「%B」，因為您沒有在目的地端建立它的許可權。"
+msgstr "無法複製資料夾「%s」，因為您沒有在目的地端建立它的許可權。"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1562
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error creating the folder \"%s\"."
-msgstr "建立資料夾「%B」時發生錯誤。"
+msgstr "建立資料夾「%s」時發生錯誤。"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1074,40 +1068,11 @@ msgstr "建立檔案 %s 時發生錯誤。"
 msgid "There was an error creating the directory in %s."
 msgstr "在 %s 中建立目錄時發生錯誤。"
 
-#: libcore/PopupMenuBuilder.vala:56
-msgid "Open in New _Tab"
-msgstr "在新分頁中開啟(_T)"
-
-#: libcore/PopupMenuBuilder.vala:60
-msgid "Open in New _Window"
-msgstr "在新視窗中開啟(_W)"
-
-#: libcore/PopupMenuBuilder.vala:64
-msgid "Remove"
-msgstr "移除"
-
-#: libcore/PopupMenuBuilder.vala:68
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr "重新命名"
-
-#: libcore/PopupMenuBuilder.vala:73
+#: libcore/PopupMenuBuilder.vala:53
 msgid "Safely Remove"
 msgstr "安全地移除"
 
-#: libcore/PopupMenuBuilder.vala:77 src/View/AbstractDirectoryView.vala:2021
-msgid "Add to Bookmarks"
-msgstr "加入書籤"
-
-#: libcore/PopupMenuBuilder.vala:89
-msgid "Permanently Delete All Trash"
-msgstr "永久刪除垃圾筒中的所有項目"
-
-#: libcore/PopupMenuBuilder.vala:89
-msgid "Permanently Delete Trash"
-msgstr "永久刪除垃圾筒中的項目"
-
-#: libcore/PopupMenuBuilder.vala:102
+#: libcore/PopupMenuBuilder.vala:57
 msgid "Permanently Delete Trash on this Mount"
 msgstr "永久刪除此掛載上的垃圾筒中的項目"
 
@@ -1641,7 +1606,7 @@ msgstr "容量："
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
-#: src/Dialogs/PropertiesWindow.vala:493 src/Dialogs/PropertiesWindow.vala:532
+#: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
 msgid "Unknown"
 msgstr "未知"
 
@@ -1669,6 +1634,11 @@ msgstr "新基礎檔名"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
 msgid "Bulk Rename"
 msgstr "批次重新命名"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:342
+msgid "Rename"
+msgstr "重新命名"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
@@ -1758,123 +1728,123 @@ msgstr "%0*d、%0*d、%0*d…"
 msgid "Set as default"
 msgstr "設為預設值"
 
-#: src/Dialogs/PropertiesWindow.vala:117
+#: src/Dialogs/PropertiesWindow.vala:116
 #: src/View/AbstractDirectoryView.vala:2028
 #: src/View/Sidebar/AbstractMountableRow.vala:273
 msgid "Properties"
 msgstr "屬性"
 
-#: src/Dialogs/PropertiesWindow.vala:228
-msgid "Unable to determine file ownership and permissions"
-msgstr "無法判定檔案擁有權與權限"
-
-#: src/Dialogs/PropertiesWindow.vala:238
+#: src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
 msgstr "權限"
 
-#: src/Dialogs/PropertiesWindow.vala:281
+#: src/Dialogs/PropertiesWindow.vala:263
 msgid "Contains:"
 msgstr "包含："
 
-#: src/Dialogs/PropertiesWindow.vala:295
+#: src/Dialogs/PropertiesWindow.vala:277
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] "%i 個檔案無法讀取，因為權限問題或其他錯誤。"
 
-#: src/Dialogs/PropertiesWindow.vala:300
+#: src/Dialogs/PropertiesWindow.vala:282
 msgid "Actual Size Could Be Larger"
 msgstr "實際大小可能更大"
 
-#: src/Dialogs/PropertiesWindow.vala:321 src/Dialogs/PropertiesWindow.vala:340
+#: src/Dialogs/PropertiesWindow.vala:303 src/Dialogs/PropertiesWindow.vala:322
 msgid "unknown"
 msgstr "未知"
 
-#: src/Dialogs/PropertiesWindow.vala:504
+#: src/Dialogs/PropertiesWindow.vala:486
 msgid "Loading…"
 msgstr "載入中…"
 
-#: src/Dialogs/PropertiesWindow.vala:538
+#: src/Dialogs/PropertiesWindow.vala:520
 msgid "Could not be determined"
 msgstr "無法判定"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:564
 msgid "Created:"
 msgstr "建立時間："
 
-#: src/Dialogs/PropertiesWindow.vala:593
+#: src/Dialogs/PropertiesWindow.vala:575
 msgid "Modified:"
 msgstr "修改時間："
 
-#: src/Dialogs/PropertiesWindow.vala:605
+#: src/Dialogs/PropertiesWindow.vala:587
 msgid "Deleted:"
 msgstr "刪除時間："
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:597
 msgid "Media type:"
 msgstr "媒體類型："
 
-#: src/Dialogs/PropertiesWindow.vala:622
+#: src/Dialogs/PropertiesWindow.vala:604
 msgid "Resolution:"
 msgstr "解析度："
 
-#: src/Dialogs/PropertiesWindow.vala:630
+#: src/Dialogs/PropertiesWindow.vala:612
 #: src/Dialogs/VolumePropertiesWindow.vala:76
 msgid "Location:"
 msgstr "位置："
 
-#: src/Dialogs/PropertiesWindow.vala:640
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Target:"
 msgstr "目標："
 
-#: src/Dialogs/PropertiesWindow.vala:648
+#: src/Dialogs/PropertiesWindow.vala:630
 msgid "Original Location:"
 msgstr "原始位置："
 
-#: src/Dialogs/PropertiesWindow.vala:671
+#: src/Dialogs/PropertiesWindow.vala:653
 #: src/View/AbstractDirectoryView.vala:1996
 msgid "Other Application…"
 msgstr "其他應用程式…"
 
-#: src/Dialogs/PropertiesWindow.vala:691
+#: src/Dialogs/PropertiesWindow.vala:673
 msgid "Open with:"
 msgstr "以此開啟："
 
-#: src/Dialogs/PropertiesWindow.vala:960
+#: src/Dialogs/PropertiesWindow.vala:940
+msgid "Unable to determine file ownership and permissions"
+msgstr "無法判定檔案擁有權與權限"
+
+#: src/Dialogs/PropertiesWindow.vala:947
 msgid "Owner:"
 msgstr "擁有者："
 
-#: src/Dialogs/PropertiesWindow.vala:961
+#: src/Dialogs/PropertiesWindow.vala:948
 msgid "Group:"
 msgstr "群組："
 
-#: src/Dialogs/PropertiesWindow.vala:1256
+#: src/Dialogs/PropertiesWindow.vala:1244
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u 個子資料夾"
 
-#: src/Dialogs/PropertiesWindow.vala:1260
-#: src/Dialogs/PropertiesWindow.vala:1282
+#: src/Dialogs/PropertiesWindow.vala:1248
+#: src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "%u 個檔案"
 
-#: src/Dialogs/PropertiesWindow.vala:1278 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1266 src/View/Widgets/OverlayBar.vala:171
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u 個資料夾"
 
-#: src/Dialogs/PropertiesWindow.vala:1287
+#: src/Dialogs/PropertiesWindow.vala:1275
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
 msgstr[0] "%u 個選取項目"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1289
+#: src/Dialogs/PropertiesWindow.vala:1277
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s，%s)"
@@ -1980,6 +1950,10 @@ msgstr "開啟方式"
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "以此開啟"
+
+#: src/View/AbstractDirectoryView.vala:2021
+msgid "Add to Bookmarks"
+msgstr "加入書籤"
 
 #: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
@@ -2315,6 +2289,26 @@ msgstr "檢視最近使用檔案的清單"
 #: src/View/Sidebar/BookmarkListBox.vala:177
 msgid "Open the Trash"
 msgstr "開啟垃圾筒"
+
+#: src/View/Sidebar/BookmarkRow.vala:318
+msgid "Open in New _Tab"
+msgstr "在新分頁中開啟(_T)"
+
+#: src/View/Sidebar/BookmarkRow.vala:319
+msgid "Open in New _Window"
+msgstr "在新視窗中開啟(_W)"
+
+#: src/View/Sidebar/BookmarkRow.vala:338
+msgid "Remove"
+msgstr "移除"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+msgid "Permanently Delete All Trash"
+msgstr "永久刪除垃圾筒中的所有項目"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+msgid "Permanently Delete Trash"
+msgstr "永久刪除垃圾筒中的項目"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"

@@ -48,64 +48,9 @@ public class PopupMenuBuilder : Object {
         return menu;
     }
 
-    public PopupMenuBuilder add_open (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open")), cb);
-    }
-
-    public PopupMenuBuilder add_open_tab (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open in New _Tab")), cb);
-    }
-
-    public PopupMenuBuilder add_open_window (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open in New _Window")), cb);
-    }
-
-    public PopupMenuBuilder add_remove (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_label (_("Remove")), cb);
-    }
-
-    public PopupMenuBuilder add_rename (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_label (_("Rename")), cb);
-    }
-
     public void add_safely_remove () {
         // Do we need different text for USB sticks and optical drives?
         add_with_action_name (_("Safely Remove"), "mountable.safely-remove");
-    }
-
-    public PopupMenuBuilder add_bookmark (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Add to Bookmarks")), cb);
-    }
-
-    public PopupMenuBuilder add_empty_all_trash (MenuitemCallback cb) {
-        var volume_monitor = VolumeMonitor.@get ();
-        int mounts_with_trash = 0;
-        foreach (Mount mount in volume_monitor.get_mounts ()) {
-            if (Files.FileOperations.mount_has_trash (mount)) {
-                mounts_with_trash++;
-            }
-        }
-
-        var text = mounts_with_trash > 0 ? _("Permanently Delete All Trash") : _("Permanently Delete Trash");
-        var menu_item = new Gtk.MenuItem.with_mnemonic (text);
-
-        if (Files.TrashMonitor.get_default ().is_empty) {
-            menu_item.sensitive = false;
-        } else {
-            menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-        }
-
-        return add_item (menu_item, cb);
-    }
-
-    public void add_empty_mount_trash () {
-        var menu_item = new Gtk.MenuItem.with_mnemonic (_("Permanently Delete Trash on this Mount"));
-        menu_item.set_detailed_action_name (
-            Action.print_detailed_name ("mountable.empty-trash", null)
-        );
-        menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-
-        add_item (menu_item);
     }
 
     public PopupMenuBuilder add_separator () {
