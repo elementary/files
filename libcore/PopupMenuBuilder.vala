@@ -48,11 +48,6 @@ public class PopupMenuBuilder : Object {
         return menu;
     }
 
-    public void add_safely_remove () {
-        // Do we need different text for USB sticks and optical drives?
-        add_with_action_name (_("Safely Remove"), "mountable.safely-remove");
-    }
-
     public PopupMenuBuilder add_empty_mount_trash (MenuitemCallback cb) {
         var menu_item = new Gtk.MenuItem.with_mnemonic (_("Permanently Delete Trash on this Mount"));
         menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
