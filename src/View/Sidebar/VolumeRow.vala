@@ -79,6 +79,14 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         if (drive_name != null && drive_name != "") {
             custom_name = _("%s (%s)").printf (custom_name, drive_name);
         }
+
+        var mount_action = new SimpleAction ("mount", null);
+        mount_action.activate.connect (() => mount_volume ());
+
+        var action_group = new SimpleActionGroup ();
+        action_group.add_action (mount_action);
+
+        insert_action_group ("volume", action_group);
     }
 
     construct {
@@ -163,11 +171,7 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         }
 
         if (!is_mounted) {
-            var mount_item = new Gtk.MenuItem.with_mnemonic (_("Mount"));
-            mount_item.activate.connect (() => {
-                mount_volume ();
-            });
-            menu_builder.add_item (mount_item);
+            menu_builder.add_with_action_name (_("Mount"), "volume.mount");
         }
 
         var sort_key = drive.get_sort_key ();
