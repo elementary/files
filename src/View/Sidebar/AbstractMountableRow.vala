@@ -178,11 +178,15 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         var unmount_action = new SimpleAction ("unmount", null);
         unmount_action.activate.connect (() => unmount_mount.begin ());
 
+        var empty_trash_action = new SimpleAction ("empty-trash", null);
+        empty_trash_action.activate.connect (() => Files.FileOperations.empty_trash_for_mount (this, mount));
+
         var action_group = new SimpleActionGroup ();
         action_group.add_action (safely_remove_action);
         action_group.add_action (eject_action);
         action_group.add_action (properties_action);
         action_group.add_action (unmount_action);
+        action_group.add_action (empty_trash_action);
 
         insert_action_group ("mountable", action_group);
     }
@@ -256,12 +260,14 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
         if (mount != null) {
             if (Files.FileOperations.has_trash_files (mount)) {
-                menu_builder
-                    .add_separator ()
-                    .add_empty_mount_trash (() => {
-                        Files.FileOperations.empty_trash_for_mount (this, mount);
-                    })
-                ;
+                var trash_menu_item = new Gtk.MenuItem.with_mnemonic (_("Permanently Delete Trash on this Mount"));
+                trash_menu_item.set_detailed_action_name (
+                    Action.print_detailed_name ("mountable.empty-trash", null)
+                );
+                trash_menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+
+                menu_builder.add_separator ();
+                menu_builder.add_item (trash_menu_item);
             }
 
             if (mount.can_unmount ()) {
