@@ -79,6 +79,10 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         if (drive_name != null && drive_name != "") {
             custom_name = _("%s (%s)").printf (custom_name, drive_name);
         }
+    }
+
+    construct {
+        volume_monitor.volume_removed.connect (on_volume_removed);
 
         var mount_action = new SimpleAction ("mount", null);
         mount_action.activate.connect (() => mount_volume ());
@@ -87,10 +91,6 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         action_group.add_action (mount_action);
 
         insert_action_group ("volume", action_group);
-    }
-
-    construct {
-        volume_monitor.volume_removed.connect (on_volume_removed);
     }
 
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
