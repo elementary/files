@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-06 15:25+0000\n"
+"POT-Creation-Date: 2024-09-07 17:43+0000\n"
 "PO-Revision-Date: 2021-06-19 20:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -1111,14 +1111,10 @@ msgstr "%s फाइल तयार करताना त्रुटी."
 msgid "There was an error creating the directory in %s."
 msgstr "%s मध्ये डिरेक्टरी तयार करताना त्रुटी आली."
 
-#: libcore/PopupMenuBuilder.vala:53
+#: libcore/PopupMenuBuilder.vala:51
 #, fuzzy
 msgid "Safely Remove"
 msgstr "काढा"
-
-#: libcore/PopupMenuBuilder.vala:57
-msgid "Permanently Delete Trash on this Mount"
-msgstr "या माउंटवरील कचरापेटीमधील सर्व आयटम कायमचे हटवा"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -1786,7 +1782,7 @@ msgstr "डीफॉल्ट म्हणून सेट करा"
 
 #: src/Dialogs/PropertiesWindow.vala:116
 #: src/View/AbstractDirectoryView.vala:2028
-#: src/View/Sidebar/AbstractMountableRow.vala:273
+#: src/View/Sidebar/AbstractMountableRow.vala:279
 msgid "Properties"
 msgstr "गुणधर्म"
 
@@ -2312,32 +2308,36 @@ msgid "(as Administrator)"
 msgstr "(प्रशासक म्हणून)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:192
+#: src/View/Sidebar/AbstractMountableRow.vala:196
 #, fuzzy, c-format
 msgid "Eject '%s'"
 msgstr "'%s' हटवा"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:192
+#: src/View/Sidebar/AbstractMountableRow.vala:196
 #, fuzzy, c-format
 msgid "Unmount '%s'"
 msgstr "'%s' माउंट करण्यास अक्षम"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:268
+#: src/View/Sidebar/AbstractMountableRow.vala:263
+msgid "Permanently Delete Trash on this Mount"
+msgstr "या माउंटवरील कचरापेटीमधील सर्व आयटम कायमचे हटवा"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:274
 msgid "_Unmount"
 msgstr "(_U)अनमाउंट करा"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:325
+#: src/View/Sidebar/AbstractMountableRow.vala:331
 #, c-format
 msgid "%s free"
 msgstr "%s मोकळी"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:326
+#: src/View/Sidebar/AbstractMountableRow.vala:332
 #, c-format
 msgid "%s used of %s"
 msgstr "%s पैकी %s वापरात"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:356
+#: src/View/Sidebar/AbstractMountableRow.vala:362
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
@@ -2345,7 +2345,7 @@ msgstr "%s पैकी %s वापरात"
 msgid "%s (%s)"
 msgstr "%s (%s, %s)"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:356
+#: src/View/Sidebar/AbstractMountableRow.vala:362
 msgid "Not mounted"
 msgstr ""
 

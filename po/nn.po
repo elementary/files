@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-06 15:25+0000\n"
+"POT-Creation-Date: 2024-09-07 17:43+0000\n"
 "PO-Revision-Date: 2020-07-16 16:16+0000\n"
 "Last-Translator: Martin Myrvold <myrvold.martin@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://l10n.elementary.io/projects/files/"
@@ -1130,15 +1130,10 @@ msgstr "Feil under oppretting av fil «%B»."
 msgid "There was an error creating the directory in %s."
 msgstr "Det oppstod ein feil under oppretting av katalog i %F."
 
-#: libcore/PopupMenuBuilder.vala:53
+#: libcore/PopupMenuBuilder.vala:51
 #, fuzzy
 msgid "Safely Remove"
 msgstr "Fjern"
-
-#: libcore/PopupMenuBuilder.vala:57
-#, fuzzy
-msgid "Permanently Delete Trash on this Mount"
-msgstr "Slette alle element i papirkorga permanent på denne monterte eininga?"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -1810,7 +1805,7 @@ msgstr "Set som standard"
 
 #: src/Dialogs/PropertiesWindow.vala:116
 #: src/View/AbstractDirectoryView.vala:2028
-#: src/View/Sidebar/AbstractMountableRow.vala:273
+#: src/View/Sidebar/AbstractMountableRow.vala:279
 msgid "Properties"
 msgstr "Eigenskapar"
 
@@ -2339,32 +2334,37 @@ msgid "(as Administrator)"
 msgstr "(som Administrator)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:192
+#: src/View/Sidebar/AbstractMountableRow.vala:196
 #, fuzzy, c-format
 msgid "Eject '%s'"
 msgstr "Slett «%s»"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:192
+#: src/View/Sidebar/AbstractMountableRow.vala:196
 #, fuzzy, c-format
 msgid "Unmount '%s'"
 msgstr "Kan ikkje montere '%s'"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:268
+#: src/View/Sidebar/AbstractMountableRow.vala:263
+#, fuzzy
+msgid "Permanently Delete Trash on this Mount"
+msgstr "Slette alle element i papirkorga permanent på denne monterte eininga?"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:274
 msgid "_Unmount"
 msgstr "_Avmonter"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:325
+#: src/View/Sidebar/AbstractMountableRow.vala:331
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar/AbstractMountableRow.vala:326
+#: src/View/Sidebar/AbstractMountableRow.vala:332
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%S av %S"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:356
+#: src/View/Sidebar/AbstractMountableRow.vala:362
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
@@ -2372,7 +2372,7 @@ msgstr "%S av %S"
 msgid "%s (%s)"
 msgstr "%s (%s, %s)"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:356
+#: src/View/Sidebar/AbstractMountableRow.vala:362
 msgid "Not mounted"
 msgstr ""
 

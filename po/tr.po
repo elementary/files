@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-06 15:25+0000\n"
+"POT-Creation-Date: 2024-09-07 17:43+0000\n"
 "PO-Revision-Date: 2023-05-19 08:06+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
@@ -1114,13 +1114,9 @@ msgstr "%s dosyası oluşturulurken hata."
 msgid "There was an error creating the directory in %s."
 msgstr "%s içerisinde dizin oluşturulurken bir hata oluştu."
 
-#: libcore/PopupMenuBuilder.vala:53
+#: libcore/PopupMenuBuilder.vala:51
 msgid "Safely Remove"
 msgstr "Güvenle Kaldır"
-
-#: libcore/PopupMenuBuilder.vala:57
-msgid "Permanently Delete Trash on this Mount"
-msgstr "Bu Bağlama Yolundaki Çöpü Kalıcı Olarak Sil"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -1758,7 +1754,7 @@ msgstr "Varsayılan olarak ayarla"
 
 #: src/Dialogs/PropertiesWindow.vala:116
 #: src/View/AbstractDirectoryView.vala:2028
-#: src/View/Sidebar/AbstractMountableRow.vala:273
+#: src/View/Sidebar/AbstractMountableRow.vala:279
 msgid "Properties"
 msgstr "Özellikler"
 
@@ -2282,32 +2278,36 @@ msgid "(as Administrator)"
 msgstr "(yönetici olarak)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:192
+#: src/View/Sidebar/AbstractMountableRow.vala:196
 #, c-format
 msgid "Eject '%s'"
 msgstr "'%s' aygıtını çıkar"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:192
+#: src/View/Sidebar/AbstractMountableRow.vala:196
 #, c-format
 msgid "Unmount '%s'"
 msgstr "Çıkar: '%s'"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:268
+#: src/View/Sidebar/AbstractMountableRow.vala:263
+msgid "Permanently Delete Trash on this Mount"
+msgstr "Bu Bağlama Yolundaki Çöpü Kalıcı Olarak Sil"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:274
 msgid "_Unmount"
 msgstr "_Çıkar"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:325
+#: src/View/Sidebar/AbstractMountableRow.vala:331
 #, c-format
 msgid "%s free"
 msgstr "%s boş"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:326
+#: src/View/Sidebar/AbstractMountableRow.vala:332
 #, c-format
 msgid "%s used of %s"
 msgstr "%2$s alanın %1$s kadarı kullanılıyor"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:356
+#: src/View/Sidebar/AbstractMountableRow.vala:362
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
@@ -2315,7 +2315,7 @@ msgstr "%2$s alanın %1$s kadarı kullanılıyor"
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:356
+#: src/View/Sidebar/AbstractMountableRow.vala:362
 msgid "Not mounted"
 msgstr "Bağlı değil"
 

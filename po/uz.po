@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-06 15:25+0000\n"
+"POT-Creation-Date: 2024-09-07 17:43+0000\n"
 "PO-Revision-Date: 2021-03-21 17:09+0000\n"
 "Last-Translator: Shukrullo Turgunov <shookrullo@gmail.com>\n"
 "Language-Team: Uzbek <https://l10n.elementary.io/projects/files/files/uz/>\n"
@@ -1074,15 +1074,10 @@ msgstr ""
 msgid "There was an error creating the directory in %s."
 msgstr ""
 
-#: libcore/PopupMenuBuilder.vala:53
+#: libcore/PopupMenuBuilder.vala:51
 #, fuzzy
 msgid "Safely Remove"
 msgstr "O'chirish"
-
-#: libcore/PopupMenuBuilder.vala:57
-#, fuzzy
-msgid "Permanently Delete Trash on this Mount"
-msgstr "Ushbu ulangan qurilmaning savatchasini tozalash"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -1735,7 +1730,7 @@ msgstr "Asosiy sifatida o'rnatish"
 
 #: src/Dialogs/PropertiesWindow.vala:116
 #: src/View/AbstractDirectoryView.vala:2028
-#: src/View/Sidebar/AbstractMountableRow.vala:273
+#: src/View/Sidebar/AbstractMountableRow.vala:279
 msgid "Properties"
 msgstr "Xususiyatlar"
 
@@ -2254,32 +2249,37 @@ msgid "(as Administrator)"
 msgstr "(administrator huquqi bilan)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:192
+#: src/View/Sidebar/AbstractMountableRow.vala:196
 #, fuzzy, c-format
 msgid "Eject '%s'"
 msgstr "_Chiqarish"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:192
+#: src/View/Sidebar/AbstractMountableRow.vala:196
 #, fuzzy, c-format
 msgid "Unmount '%s'"
 msgstr "_Uzish"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:268
+#: src/View/Sidebar/AbstractMountableRow.vala:263
+#, fuzzy
+msgid "Permanently Delete Trash on this Mount"
+msgstr "Ushbu ulangan qurilmaning savatchasini tozalash"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:274
 msgid "_Unmount"
 msgstr "_Uzish"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:325
+#: src/View/Sidebar/AbstractMountableRow.vala:331
 #, c-format
 msgid "%s free"
 msgstr "%s bo'sh"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:326
+#: src/View/Sidebar/AbstractMountableRow.vala:332
 #, c-format
 msgid "%s used of %s"
 msgstr "%s dan %s qismi ishlatilgan"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:356
+#: src/View/Sidebar/AbstractMountableRow.vala:362
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
@@ -2287,7 +2287,7 @@ msgstr "%s dan %s qismi ishlatilgan"
 msgid "%s (%s)"
 msgstr "%s (%s, %s)"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:356
+#: src/View/Sidebar/AbstractMountableRow.vala:362
 msgid "Not mounted"
 msgstr ""
 
