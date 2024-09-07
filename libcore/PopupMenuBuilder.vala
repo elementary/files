@@ -18,9 +18,7 @@
 ***/
 
 public class PopupMenuBuilder : Object {
-    public delegate void MenuitemCallback (Gtk.MenuItem menu_item);
     Gtk.MenuItem[] menu_items = {};
-    public uint n_items { get { return menu_items.length; }}
 
     public Gtk.Menu build (Gtk.Widget attach_widget) {
         var popupmenu = new Gtk.Menu () {
@@ -48,14 +46,8 @@ public class PopupMenuBuilder : Object {
         return menu;
     }
 
-    public PopupMenuBuilder add_empty_mount_trash (MenuitemCallback cb) {
-        var menu_item = new Gtk.MenuItem.with_mnemonic (_("Permanently Delete Trash on this Mount"));
-        menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-        return add_item (menu_item, cb);
-    }
-
-    public PopupMenuBuilder add_separator () {
-        return add_item (new Gtk.SeparatorMenuItem ());
+    public void add_separator () {
+        add_item (new Gtk.SeparatorMenuItem ());
     }
 
     public void add_with_action_name (string label, string action_name) {
@@ -68,15 +60,8 @@ public class PopupMenuBuilder : Object {
         menu_items += menu_item;
     }
 
-    public PopupMenuBuilder add_item (Gtk.MenuItem menu_item, MenuitemCallback? cb = null) {
-        if (cb != null) {
-            menu_item.activate.connect ((menu_item) => {
-                cb (menu_item);
-            });
-        }
-
+    public void add_item (Gtk.MenuItem menu_item) {
         menu_item.show ();
         menu_items += menu_item;
-        return this;
     }
 }
