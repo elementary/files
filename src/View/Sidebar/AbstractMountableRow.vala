@@ -165,6 +165,30 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         add_mountable_tooltip.begin ();
 
         update_visibilities ();
+
+        var safely_remove_action = new SimpleAction ("safely-remove", null);
+        safely_remove_action.activate.connect (() => safely_remove_drive.begin ());
+
+        var eject_action = new SimpleAction ("eject", null);
+        eject_action.activate.connect (() => eject_drive.begin ());
+
+        var properties_action = new SimpleAction ("properties", null);
+        properties_action.activate.connect (show_mount_info);
+
+        var unmount_action = new SimpleAction ("unmount", null);
+        unmount_action.activate.connect (() => unmount_mount.begin ());
+
+        var empty_trash_action = new SimpleAction ("empty-trash", null);
+        empty_trash_action.activate.connect (() => Files.FileOperations.empty_trash_for_mount (this, mount));
+
+        var action_group = new SimpleActionGroup ();
+        action_group.add_action (safely_remove_action);
+        action_group.add_action (eject_action);
+        action_group.add_action (properties_action);
+        action_group.add_action (unmount_action);
+        action_group.add_action (empty_trash_action);
+
+        insert_action_group ("mountable", action_group);
     }
 
     protected void update_visibilities () {
@@ -203,8 +227,8 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         return success;
     }
 
-    protected async void safely_remove_drive (Drive drive) {
-        if (working || !valid) {
+    protected async void safely_remove_drive () {
+        if (working || !valid || drive == null) {
             return;
         }
 
@@ -218,8 +242,8 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         update_visibilities ();
     }
 
-    protected async void eject_drive (Drive drive) {
-        if (working || !valid) {
+    protected async void eject_drive () {
+        if (working || !valid || drive == null) {
             return;
         }
         working = true;
@@ -236,22 +260,23 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
         if (mount != null) {
             if (Files.FileOperations.has_trash_files (mount)) {
-                menu_builder
-                    .add_separator ()
-                    .add_empty_mount_trash (() => {
-                        Files.FileOperations.empty_trash_for_mount (this, mount);
-                    })
-                ;
+                var trash_menu_item = new Gtk.MenuItem.with_mnemonic (_("Permanently Delete Trash on this Mount"));
+                trash_menu_item.set_detailed_action_name (
+                    Action.print_detailed_name ("mountable.empty-trash", null)
+                );
+                trash_menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+
+                menu_builder.add_separator ();
+                menu_builder.add_item (trash_menu_item);
             }
 
             if (mount.can_unmount ()) {
-                menu_builder.add_unmount (() => {unmount_mount.begin ();});
+                menu_builder.add_with_action_name (_("_Unmount"), "mountable.unmount");
             }
         }
 
-        menu_builder
-            .add_separator ()
-            .add_drive_property (() => {show_mount_info ();}); // This will mount if necessary
+        menu_builder.add_separator ();
+        menu_builder.add_with_action_name (_("Properties"), "mountable.properties"); // This will mount if necessary
     }
 
     protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {

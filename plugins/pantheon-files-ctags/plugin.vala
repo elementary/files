@@ -108,7 +108,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         menu_item.show ();
     }
 
-    private async void set_color (GLib.List<Files.File> files, int n) throws IOError {
+    private async void set_color (GLib.List<Files.File> files, int n) throws Error {
         foreach (unowned Files.File file in files) {
             if (!(file is Files.File)) {
                 continue;

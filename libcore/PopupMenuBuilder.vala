@@ -18,12 +18,12 @@
 ***/
 
 public class PopupMenuBuilder : Object {
-    public delegate void MenuitemCallback (Gtk.MenuItem menu_item);
     Gtk.MenuItem[] menu_items = {};
-    public uint n_items { get { return menu_items.length; }}
 
-    public Gtk.Menu build () {
-        var popupmenu = new Gtk.Menu ();
+    public Gtk.Menu build (Gtk.Widget attach_widget) {
+        var popupmenu = new Gtk.Menu () {
+            attach_widget = attach_widget
+        };
         foreach (var menu_item in menu_items) {
             popupmenu.append (menu_item);
         }
@@ -46,92 +46,22 @@ public class PopupMenuBuilder : Object {
         return menu;
     }
 
-    public PopupMenuBuilder add_open (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open")), cb);
+    public void add_separator () {
+        add_item (new Gtk.SeparatorMenuItem ());
     }
 
-    public PopupMenuBuilder add_open_tab (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open in New _Tab")), cb);
-    }
-
-    public PopupMenuBuilder add_open_window (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Open in New _Window")), cb);
-    }
-
-    public PopupMenuBuilder add_remove (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_label (_("Remove")), cb);
-    }
-
-    public PopupMenuBuilder add_rename (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_label (_("Rename")), cb);
-    }
-
-    public PopupMenuBuilder add_mount (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("_Mount")), cb);
-    }
-
-    public PopupMenuBuilder add_unmount (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("_Unmount")), cb);
-    }
-
-    public PopupMenuBuilder add_drive_property (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Properties")), cb);
-    }
-
-    public PopupMenuBuilder add_eject_drive (MenuitemCallback cb) {
-        // Do we need different text for USB sticks and optical drives?
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Eject Media")), cb);
-    }
-
-    public PopupMenuBuilder add_safely_remove (MenuitemCallback cb) {
-        // Do we need different text for USB sticks and optical drives?
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Safely Remove")), cb);
-    }
-
-    public PopupMenuBuilder add_bookmark (MenuitemCallback cb) {
-        return add_item (new Gtk.MenuItem.with_mnemonic (_("Add to Bookmarks")), cb);
-    }
-
-    public PopupMenuBuilder add_empty_all_trash (MenuitemCallback cb) {
-        var volume_monitor = VolumeMonitor.@get ();
-        int mounts_with_trash = 0;
-        foreach (Mount mount in volume_monitor.get_mounts ()) {
-            if (Files.FileOperations.mount_has_trash (mount)) {
-                mounts_with_trash++;
-            }
-        }
-
-        var text = mounts_with_trash > 0 ? _("Permanently Delete All Trash") : _("Permanently Delete Trash");
-        var menu_item = new Gtk.MenuItem.with_mnemonic (text);
-
-        if (Files.TrashMonitor.get_default ().is_empty) {
-            menu_item.sensitive = false;
-        } else {
-            menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-        }
-
-        return add_item (menu_item, cb);
-    }
-
-    public PopupMenuBuilder add_empty_mount_trash (MenuitemCallback cb) {
-        var menu_item = new Gtk.MenuItem.with_mnemonic (_("Permanently Delete Trash on this Mount"));
-        menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-        return add_item (menu_item, cb);
-    }
-
-    public PopupMenuBuilder add_separator () {
-        return add_item (new Gtk.SeparatorMenuItem ());
-    }
-
-    public PopupMenuBuilder add_item (Gtk.MenuItem menu_item, MenuitemCallback? cb = null) {
-        if (cb != null) {
-            menu_item.activate.connect ((menu_item) => {
-                cb (menu_item);
-            });
-        }
+    public void add_with_action_name (string label, string action_name) {
+        var menu_item = new Gtk.MenuItem.with_mnemonic (label);
+        menu_item.set_detailed_action_name (
+            Action.print_detailed_name (action_name, null)
+        );
 
         menu_item.show ();
         menu_items += menu_item;
-        return this;
+    }
+
+    public void add_item (Gtk.MenuItem menu_item) {
+        menu_item.show ();
+        menu_items += menu_item;
     }
 }

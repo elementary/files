@@ -83,6 +83,14 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
 
     construct {
         volume_monitor.volume_removed.connect (on_volume_removed);
+
+        var mount_action = new SimpleAction ("mount", null);
+        mount_action.activate.connect (() => mount_volume ());
+
+        var action_group = new SimpleActionGroup ();
+        action_group.add_action (mount_action);
+
+        insert_action_group ("volume", action_group);
     }
 
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
@@ -163,26 +171,17 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         }
 
         if (!is_mounted) {
-            var mount_item = new Gtk.MenuItem.with_mnemonic (_("Mount"));
-            mount_item.activate.connect (() => {
-                mount_volume ();
-            });
-            menu_builder.add_item (mount_item);
+            menu_builder.add_with_action_name (_("Mount"), "volume.mount");
         }
 
         var sort_key = drive.get_sort_key ();
         if (sort_key != null && sort_key.contains ("hotplug")) {
-            menu_builder
-                .add_separator ()
-                .add_safely_remove (() => {
-                    safely_remove_drive.begin (volume.get_drive ());
-                });
+            menu_builder.add_separator ();
+            menu_builder.add_with_action_name (_("Safely Remove"), "mountable.safely-remove");
         } else if (mount == null && drive.can_eject ()) {
-            menu_builder
-                .add_separator ()
-                .add_eject_drive (() => {
-                    eject_drive.begin (volume.get_drive ());
-                });
+            menu_builder.add_separator ();
+            // Do we need different text for USB sticks and optical drives?
+            menu_builder.add_with_action_name (_("Eject Media"), "mountable.eject");
         }
     }
 
