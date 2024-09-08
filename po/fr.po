@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2024-05-15 20:13+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
@@ -1127,10 +1127,6 @@ msgstr "Erreur lors de la création du fichier %s."
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Erreur lors de la création du répertoire dans %s."
-
-#: libcore/PopupMenuBuilder.vala:51
-msgid "Safely Remove"
-msgstr "Retirer de façon sécurisée"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2390,6 +2386,10 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Non formaté ou sans média"
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+msgid "Safely Remove"
+msgstr "Retirer de façon sécurisée"
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Tout le réseau"
@@ -2424,11 +2424,11 @@ msgstr "Périphériques et emplacements disponibles en réseau"
 msgid "Connect Server…"
 msgstr "Se connecter à un serveur…"
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 msgid "Mount"
 msgstr "Monter"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr "Éjecter le média"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2022-09-19 03:03+0000\n"
 "Last-Translator: Issa1553 <fairfull.playing@gmail.com>\n"
 "Language-Team: Bosnian <https://l10n.elementary.io/projects/files/files/bs/"
@@ -1151,11 +1151,6 @@ msgstr "Greška prilikom kreiranja %B datoteke."
 #, fuzzy, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Došlo je do greške prilikom kreiranja direktorija u %F."
-
-#: libcore/PopupMenuBuilder.vala:51
-#, fuzzy
-msgid "Safely Remove"
-msgstr "Ukloni"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2473,6 +2468,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr ""
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+#, fuzzy
+msgid "Safely Remove"
+msgstr "Ukloni"
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Cijela mreža"
@@ -2508,12 +2508,12 @@ msgstr ""
 msgid "Connect Server…"
 msgstr "Spoji se na server..."
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 #, fuzzy
 msgid "Mount"
 msgstr "_Montiraj"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2024-09-06 11:54+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
@@ -1067,10 +1067,6 @@ msgstr "建立檔案 %s 時發生錯誤。"
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "在 %s 中建立目錄時發生錯誤。"
-
-#: libcore/PopupMenuBuilder.vala:51
-msgid "Safely Remove"
-msgstr "安全地移除"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2328,6 +2324,10 @@ msgstr "要使用這個磁碟您可能需要重新插入它、插入媒體，或
 msgid "Unformatted or no media"
 msgstr "未格式化或是沒有媒體"
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+msgid "Safely Remove"
+msgstr "安全地移除"
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "整個網路"
@@ -2362,11 +2362,11 @@ msgstr "透過網路可供利用的裝置與位置"
 msgid "Connect Server…"
 msgstr "連接到伺服器…"
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 msgid "Mount"
 msgstr "掛載"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr "退出媒體"
 

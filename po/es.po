@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2024-08-31 18:16+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <edwood.grant@gmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/"
@@ -1120,10 +1120,6 @@ msgstr "Error al crear el archivo %s."
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Hubo un error al crear el directorio en %s."
-
-#: libcore/PopupMenuBuilder.vala:51
-msgid "Safely Remove"
-msgstr "Quitar con seguridad"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2372,6 +2368,10 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Sin formato o sin medio"
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+msgid "Safely Remove"
+msgstr "Quitar con seguridad"
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Toda la red"
@@ -2406,11 +2406,11 @@ msgstr "Dispositivos y lugares disponibles a través de una red"
 msgid "Connect Server…"
 msgstr "Conectar con servidor…"
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 msgid "Mount"
 msgstr "Montar"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr "Expulsar medio"
 

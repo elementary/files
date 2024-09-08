@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2017-08-16 12:17+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://weblate.elementary.io/projects/files/files/"
@@ -1153,11 +1153,6 @@ msgstr "Greška pri stvaranju datoteke %B."
 #, fuzzy, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Pojavila se greška pri stvaranju mape u %F."
-
-#: libcore/PopupMenuBuilder.vala:51
-#, fuzzy
-msgid "Safely Remove"
-msgstr "Ukloni"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2481,6 +2476,11 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr ""
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+#, fuzzy
+msgid "Safely Remove"
+msgstr "Ukloni"
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Mrežne lokacije"
@@ -2516,12 +2516,12 @@ msgstr ""
 msgid "Connect Server…"
 msgstr "Povezivanje s poslužiteljem…"
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 #, fuzzy
 msgid "Mount"
 msgstr "_Montiraj"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr ""
 

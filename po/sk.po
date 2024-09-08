@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2022-12-26 20:25+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
@@ -1142,10 +1142,6 @@ msgstr "Chyba pri vytváraní súboru %s."
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Nastala chyba pri vytváraní adresára v %s."
-
-#: libcore/PopupMenuBuilder.vala:51
-msgid "Safely Remove"
-msgstr "Bezpečne odobrať"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2443,6 +2439,10 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Nenaformátované alebo bez médií"
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+msgid "Safely Remove"
+msgstr "Bezpečne odobrať"
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Celá sieť"
@@ -2477,12 +2477,12 @@ msgstr "Zariadenia a umiestnenia dostupné prostredníctvom siete"
 msgid "Connect Server…"
 msgstr "Pripojiť server…"
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 #, fuzzy
 msgid "Mount"
 msgstr "_Pripojiť"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr "Vysunúť médium"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2024-09-02 00:57+0000\n"
 "Last-Translator: DutchVipperloid <svenroelof@e.email>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
@@ -1126,10 +1126,6 @@ msgstr "Fout bij het maken van het bestand %s."
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Er is een fout opgetreden bij het aanmaken van een map in %s."
-
-#: libcore/PopupMenuBuilder.vala:51
-msgid "Safely Remove"
-msgstr "Veilig verwijderen"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2383,6 +2379,10 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Ongeformatteerd of geen media aanwezig"
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+msgid "Safely Remove"
+msgstr "Veilig verwijderen"
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Volledig netwerk"
@@ -2417,11 +2417,11 @@ msgstr "Apparaten en locaties beschikbaar via een netwerk"
 msgid "Connect Server…"
 msgstr "Verbind met server…"
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 msgid "Mount"
 msgstr "Koppelen"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr "Media uitwerpen"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2024-09-02 00:57+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
@@ -1135,10 +1135,6 @@ msgstr "Beim Erstellen der Datei »%s« ist ein Fehler aufgetreten."
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Beim Erstellen des Ordners in »%s« ist ein Fehler aufgetreten."
-
-#: libcore/PopupMenuBuilder.vala:51
-msgid "Safely Remove"
-msgstr "Sicher entfernen"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2396,6 +2392,10 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Nicht formatiert oder kein Medium eingelegt"
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+msgid "Safely Remove"
+msgstr "Sicher entfernen"
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Gesamtes Netzwerk"
@@ -2430,11 +2430,11 @@ msgstr "Über ein Netzwerk verfügbare Geräte und Orte"
 msgid "Connect Server…"
 msgstr "Mit Server verbinden …"
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 msgid "Mount"
 msgstr "Einhängen"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr "Medium auswerfen"
 

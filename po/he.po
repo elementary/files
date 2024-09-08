@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2024-08-31 18:16+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/files/he/>\n"
@@ -1092,10 +1092,6 @@ msgstr "אירעה שגיאה בעת יצירת הקובץ %s."
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "אירעה שגיאה בעת יצירת התיקייה תחת %s."
-
-#: libcore/PopupMenuBuilder.vala:51
-msgid "Safely Remove"
-msgstr "הסרה בטוחה"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2327,6 +2323,10 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "לא מפורמט או שאין מדיה"
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+msgid "Safely Remove"
+msgstr "הסרה בטוחה"
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "כל הרשת"
@@ -2361,11 +2361,11 @@ msgstr "התקנים ומיקומים שזמינים דרך הרשת"
 msgid "Connect Server…"
 msgstr "התחברות לשרת…"
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 msgid "Mount"
 msgstr "עיגון"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr "שליפת אמצעי אחסון"
 

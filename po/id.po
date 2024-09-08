@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2023-05-21 06:06+0000\n"
 "Last-Translator: Faisal Rachmadin <frachmadin@users.noreply.l10n.elementary."
 "io>\n"
@@ -1100,10 +1100,6 @@ msgstr "Kesalahan saat membuat berkas %s."
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Ada kesalahan saat membuat direktori di %s."
-
-#: libcore/PopupMenuBuilder.vala:51
-msgid "Safely Remove"
-msgstr "Lepas Dengan Aman"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2350,6 +2346,10 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Tidak terformat atau tidak ada media"
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+msgid "Safely Remove"
+msgstr "Lepas Dengan Aman"
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Seluruh Jaringan"
@@ -2384,11 +2384,11 @@ msgstr "Perangkat dan lokasi tersedia melalui jaringan"
 msgid "Connect Server…"
 msgstr "Menyambung ke Server…"
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 msgid "Mount"
 msgstr "Kaitkan"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr "Copot Media"
 

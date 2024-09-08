@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2024-08-31 18:16+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
@@ -1085,10 +1085,6 @@ msgstr "ファイル %s の作成中にエラーが発生しました。"
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "%s 内へのディレクトリの作成中にエラーが発生しました。"
-
-#: libcore/PopupMenuBuilder.vala:51
-msgid "Safely Remove"
-msgstr "安全に取り外す"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2317,6 +2313,10 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "未フォーマットまたはメディアなし"
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+msgid "Safely Remove"
+msgstr "安全に取り外す"
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "ネットワーク全体"
@@ -2351,11 +2351,11 @@ msgstr "ネットワーク経由で利用可能なデバイスと場所"
 msgid "Connect Server…"
 msgstr "サーバーを接続…"
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 msgid "Mount"
 msgstr "マウント"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr "メディアを取り出す"
 

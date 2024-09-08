@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2022-09-21 10:08+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
@@ -1105,10 +1105,6 @@ msgstr "هەڵە هەیە لە کاتی دروستکردنی پەڕگە %s."
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "هەڵەیەک هەبوو لە کاتی دروستکردنی دایرێکتۆرییەکە لە %s دا."
-
-#: libcore/PopupMenuBuilder.vala:51
-msgid "Safely Remove"
-msgstr "دەرکردنی سەلامەت"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2381,6 +2377,10 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "ئەن فۆڕماتد یان میدیا نییە"
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+msgid "Safely Remove"
+msgstr "دەرکردنی سەلامەت"
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "تەواوی تۆڕ"
@@ -2415,12 +2415,12 @@ msgstr "شوێن و ئامێرە بەردەستەکان بەهۆی تۆڕێکە�
 msgid "Connect Server…"
 msgstr "پەیوەستکردنی ڕاژە…"
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 #, fuzzy
 msgid "Mount"
 msgstr "_ماونت"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr "دەرکردنی میدیا"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2023-11-01 19:10+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
@@ -1118,10 +1118,6 @@ msgstr "Virhe luotaessa tiedostoa %s."
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Virhe luotaessa kansiota kohteeseen %s."
-
-#: libcore/PopupMenuBuilder.vala:51
-msgid "Safely Remove"
-msgstr "Poista turvallisesti"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2371,6 +2367,10 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Alustamaton tai ei mediaa"
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+msgid "Safely Remove"
+msgstr "Poista turvallisesti"
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Koko verkko"
@@ -2405,11 +2405,11 @@ msgstr "Laitteet ja paikat, jotka ovat saatavilla verkon kautta"
 msgid "Connect Server…"
 msgstr "Yhdistä palvelimeen…"
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 msgid "Mount"
 msgstr "Liitä"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr "Irrota media"
 

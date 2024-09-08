@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2024-09-04 09:49+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
@@ -1108,10 +1108,6 @@ msgstr "Hiba a következő fájl létrehozásakor: %s."
 #, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "Hiba a könyvtár létrehozásakor a következőben: %s."
-
-#: libcore/PopupMenuBuilder.vala:51
-msgid "Safely Remove"
-msgstr "Biztonságos eltávolítás"
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2346,6 +2342,10 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Formázatlan vagy nincs média"
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+msgid "Safely Remove"
+msgstr "Biztonságos eltávolítás"
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "Egész hálózaton"
@@ -2380,11 +2380,11 @@ msgstr "Hálózat segítségével elérhető eszközök és helyek"
 msgid "Connect Server…"
 msgstr "Kapcsolódás szerverhez…"
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 msgid "Mount"
 msgstr "Csatolás"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr "Média kiadása"
 

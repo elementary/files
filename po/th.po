@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-07 17:43+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2024-09-02 20:05+0000\n"
 "Last-Translator: Aefgh Threenine <aefgh39622@gmail.com>\n"
 "Language-Team: Thai <https://l10n.elementary.io/projects/files/files/th/>\n"
@@ -1089,10 +1089,6 @@ msgstr "เกิดข้อผิดพลาดระหว่างคัด
 #, fuzzy, c-format
 msgid "There was an error creating the directory in %s."
 msgstr "เกิดข้อผิดพลาดขณะอ่านโฟลเดอร์ \"%B\""
-
-#: libcore/PopupMenuBuilder.vala:51
-msgid "Safely Remove"
-msgstr ""
 
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
@@ -2359,6 +2355,10 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr ""
 
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+msgid "Safely Remove"
+msgstr ""
+
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
 msgstr "ทั้งเครือข่าย"
@@ -2394,12 +2394,12 @@ msgstr ""
 msgid "Connect Server…"
 msgstr "เชื่อมต่อไปยังเซิร์ฟเวอร์"
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 #, fuzzy
 msgid "Mount"
 msgstr "_เมานต์"
 
-#: src/View/Sidebar/VolumeRow.vala:180
+#: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
 msgstr ""
 
