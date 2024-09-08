@@ -177,7 +177,7 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         var sort_key = drive.get_sort_key ();
         if (sort_key != null && sort_key.contains ("hotplug")) {
             menu_builder.add_separator ();
-            menu_builder.add_safely_remove ();
+            menu_builder.add_with_action_name (_("Safely Remove"), "mountable.safely-remove");
         } else if (mount == null && drive.can_eject ()) {
             menu_builder.add_separator ();
             // Do we need different text for USB sticks and optical drives?

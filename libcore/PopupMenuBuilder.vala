@@ -46,11 +46,6 @@ public class PopupMenuBuilder : Object {
         return menu;
     }
 
-    public void add_safely_remove () {
-        // Do we need different text for USB sticks and optical drives?
-        add_with_action_name (_("Safely Remove"), "mountable.safely-remove");
-    }
-
     public void add_separator () {
         add_item (new Gtk.SeparatorMenuItem ());
     }
