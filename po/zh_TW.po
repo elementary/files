@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-08 08:46+0000\n"
-"PO-Revision-Date: 2024-09-06 11:54+0000\n"
+"PO-Revision-Date: 2024-09-09 12:16+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
 "files/files/zh_Hant/>\n"
@@ -506,7 +506,7 @@ msgstr "昨日的 %s"
 #: libcore/FileUtils.vala:673
 #, c-format
 msgid "%%A at %s"
-msgstr "%A的 %s"
+msgstr "%%A的 %s"
 
 #: libcore/FileUtils.vala:898
 #, c-format
@@ -2499,7 +2499,7 @@ msgstr "未知大小"
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
-msgstr[0] "%s 個檔案無法讀取"
+msgstr[0] "%u 個檔案無法讀取"
 
 #: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"
