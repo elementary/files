@@ -83,6 +83,7 @@ namespace Files.View.Chrome {
             gof.ensure_query_info ();
 
             path_change_request (gof.get_target_location ().get_uri ());
+            on_search_results_exit ();
         }
         private void on_search_results_file_activated (GLib.File file) {
             AppInfo? app = MimeActions.get_default_application_for_glib_file (file);
@@ -102,6 +103,7 @@ namespace Files.View.Chrome {
 
         private void on_search_results_exit (bool exit_navigate = true) {
             /* Search result widget ensures it has closed and released grab */
+            search_results.is_active = false;
             bread.reset_im_context ();
             if (focus_timeout_id > 0) {
                 GLib.Source.remove (focus_timeout_id);
