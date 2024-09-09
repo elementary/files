@@ -146,12 +146,17 @@ namespace Files.View.Chrome {
 
         public SearchResults (Gtk.Widget _delegate_widget) {
             Object (
-                position: Gtk.PositionType.BOTTOM,
                 delegate_widget: _delegate_widget
             );
         }
 
         construct {
+
+            relative_to = delegate_widget;
+            position = Gtk.PositionType.BOTTOM;
+            // Gtk4 can remove the arrow with:
+            // has_arrow = false;
+            // How can we do this in Gtk3?
 #if HAVE_ZEITGEIST
             var template = new Zeitgeist.Event ();
 
