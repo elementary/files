@@ -72,7 +72,7 @@ namespace Files.View.Chrome {
             search_results.file_activated.connect (on_search_results_file_activated);
             search_results.cursor_changed.connect (on_search_results_cursor_changed);
             search_results.first_match_found.connect (on_search_results_first_match_found);
-            search_results.realize.connect (on_search_results_realize);
+            // search_results.realize.connect (on_search_results_realize);
             search_results.exit.connect (on_search_results_exit);
             search_results.notify["working"].connect (on_search_results_working_changed);
         }
@@ -101,10 +101,10 @@ namespace Files.View.Chrome {
             }
         }
 
-        private void on_search_results_realize () {
-            /*Is this necessary every popup? */
-            ((Gtk.Window)get_toplevel ()).get_group ().add_window (search_results);
-        }
+        // private void on_search_results_realize () {
+        //     /*Is this necessary every popup? */
+        //     ((Gtk.Window)get_toplevel ()).get_group ().add_window (search_results);
+        // }
         private void on_search_results_exit (bool exit_navigate = true) {
             /* Search result widget ensures it has closed and released grab */
             bread.reset_im_context ();
