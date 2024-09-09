@@ -100,6 +100,15 @@ namespace Files.View.Chrome {
         const int DELAY_ADDING_RESULTS = 150;
 
         public bool working { get; private set; default = false; }
+        public bool is_active {
+            get {
+                return search_term != "";
+            }
+
+            set {
+                search_term = "";
+            }
+        }
 
         private new Gtk.Widget parent;
         protected int n_results { get; private set; default = 0; }
@@ -151,7 +160,6 @@ namespace Files.View.Chrome {
         }
 
         construct {
-
             relative_to = delegate_widget;
             position = Gtk.PositionType.BOTTOM;
             // Gtk4 can remove the arrow with:

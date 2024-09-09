@@ -123,11 +123,16 @@ namespace Files.View.Chrome {
         }
 
         protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
-            base.after_bread_focus_out_event (event);
-            search_mode = false;
-            show_refresh_icon ();
-            focus_out_event (event);
-            check_home ();
+            if (search_results.is_active) {
+                bread.hide_breadcrumbs = true;
+            } else {
+                base.after_bread_focus_out_event (event);
+                search_mode = false;
+                show_refresh_icon ();
+                focus_out_event (event);
+                check_home ();
+            }
+
             return true;
         }
         protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
