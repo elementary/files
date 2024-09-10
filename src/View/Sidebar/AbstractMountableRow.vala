@@ -252,26 +252,31 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         update_visibilities ();
     }
 
-    protected void add_extra_menu_items_for_mount (Mount? mount, PopupMenuBuilder menu_builder) {
+    protected void add_extra_menu_items_for_mount (Mount? mount, GLib.Menu menu) {
         // Do not add items for a volume that is in the middle of being mounted or unmounted
         if (working) {
             return;
         }
 
         if (mount != null) {
+            var menu_section = new GLib.Menu ();
+
             if (Files.FileOperations.has_trash_files (mount)) {
-                menu_builder.add_separator ();
                 // FIXME: any way to make destructive?
-                menu_builder.add_with_action_name (_("Permanently Delete Trash on this Mount"), "mountable.empty-trash");
+                menu_section.append (_("Permanently Delete Trash on this Mount"), "mountable.empty-trash");
             }
 
             if (mount.can_unmount ()) {
-                menu_builder.add_with_action_name (_("_Unmount"), "mountable.unmount");
+                menu_section.append (_("_Unmount"), "mountable.unmount");
             }
+
+            menu.append_section (null, menu_section);
         }
 
-        menu_builder.add_separator ();
-        menu_builder.add_with_action_name (_("Properties"), "mountable.properties"); // This will mount if necessary
+        var properties_section = new GLib.Menu ();
+        properties_section.append (_("Properties"), "mountable.properties"); // This will mount if necessary
+
+        menu.append_section (null, properties_section);
     }
 
     protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {
