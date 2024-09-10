@@ -353,14 +353,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
             var text = mounts_with_trash > 0 ? _("Permanently Delete All Trash") : _("Permanently Delete Trash");
 
-            var menu_item = new Gtk.MenuItem.with_mnemonic (text);
-            menu_item.set_detailed_action_name (
-                Action.print_detailed_name ("bookmark.empty-all-trash", null)
-            );
-            menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-
             menu_builder.add_separator ();
-            menu_builder.add_item (menu_item);
+            // FIXME: any way to make destructive?
+            menu_builder.add_with_action_name (text, "bookmark.empty-all-trash");
 
             empty_all_trash_action.set_enabled (!Files.TrashMonitor.get_default ().is_empty);
         }
