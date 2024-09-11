@@ -30,7 +30,6 @@ pantheon_files_core_vala_files = files(
     'Preferences.vala',
     'PluginManager.vala',
     'Plugin.vala',
-    'PopupMenuBuilder.vala',
     'ProgressInfo.vala',
     'ProgressInfoManager.vala',
     'Resources.vala',
