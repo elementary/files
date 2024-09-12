@@ -20,7 +20,6 @@ libcore/marlin-file-operations.c
 libcore/PixbufUtils.vala
 libcore/PluginManager.vala
 libcore/Plugin.vala
-libcore/PopupMenuBuilder.vala
 libcore/Preferences.vala
 libcore/ProgressInfoManager.vala
 libcore/ProgressInfo.vala
