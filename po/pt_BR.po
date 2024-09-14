@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-08 08:46+0000\n"
-"PO-Revision-Date: 2024-09-14 15:27+0000\n"
-"Last-Translator: celiopy <cepefilho@gmail.com>\n"
+"PO-Revision-Date: 2024-09-15 16:16+0000\n"
+"Last-Translator: José Rafael <jrafaeldesantana@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/files/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -32,7 +32,7 @@ msgstr "Cancelar"
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open Files as Read Only"
-msgstr "Abrir Arquivos como somente leitura"
+msgstr "Abrir arquivos como somente leitura"
 
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
@@ -40,9 +40,8 @@ msgid "Open File as Read Only"
 msgstr ""
 
 #: filechooser-portal/FileChooserDialog.vala:376
-#, fuzzy
 msgid "Enter new filename"
-msgstr "novo arquivo"
+msgstr "Digite o novo nome do arquivo"
 
 #: filechooser-portal/Main.vala:107
 msgid "Select"
@@ -54,7 +53,7 @@ msgstr "Abrir"
 
 #: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
 msgid "Save"
-msgstr ""
+msgstr "Salvar"
 
 #: filechooser-portal/Main.vala:448
 #, c-format
@@ -73,9 +72,9 @@ msgstr ""
 "permanecerá"
 
 #: filechooser-portal/Main.vala:456
-#, fuzzy, c-format
+#, c-format
 msgid "Replace “%s”?"
-msgstr "Substituir arquivo \"%s\"?"
+msgstr "Substituir \"%s\"?"
 
 #: filechooser-portal/Main.vala:457
 #, fuzzy
