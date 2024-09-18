@@ -91,6 +91,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     public ActionGroup? action_group {get; set; default = null;}
     public string? action_group_namespace { get; set; default = null;}
 
+    private SimpleAction empty_all_trash_action;
+
     public BookmarkRow (string _custom_name,
                         string uri,
                         Icon gicon,
@@ -189,7 +191,38 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         set_up_drag ();
         set_up_drop ();
-        set_up_target_file_and_drop_actions ();
+
+        var open_action = new SimpleAction ("open", null);
+        open_action.activate.connect (() => activated ());
+
+        var open_tab_action = new SimpleAction ("open-tab", null);
+        open_tab_action.activate.connect (() => activated (NEW_TAB));
+
+        var open_window_action = new SimpleAction ("open-window", null);
+        open_window_action.activate.connect (() => activated (NEW_WINDOW));
+
+        var rename_action = new SimpleAction ("rename", null);
+        rename_action.activate.connect (rename);
+
+        var remove_action = new SimpleAction ("remove", null);
+        remove_action.activate.connect (() => list.remove_item_by_id (id));
+
+        empty_all_trash_action = new SimpleAction ("empty-all-trash", null);
+        empty_all_trash_action.activate.connect (() => {
+            new Files.FileOperations.EmptyTrashJob ((Gtk.Window) get_toplevel ()).empty_trash.begin ();
+        });
+
+        var action_group = new SimpleActionGroup ();
+        action_group.add_action (open_action);
+        action_group.add_action (open_tab_action);
+        action_group.add_action (open_window_action);
+        action_group.add_action (rename_action);
+        action_group.add_action (remove_action);
+        action_group.add_action (empty_all_trash_action);
+
+        insert_action_group ("bookmark", action_group);
+
+        ((Gtk.Application) Application.get_default ()).set_accels_for_action ("bookmark.rename", { "F2" });
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
@@ -225,10 +258,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     protected virtual bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
         switch (keyval) {
-            case Gdk.Key.F2:
-                rename ();
-                return true;
-
             case Gdk.Key.Escape:
                 cancel_rename ();
                 return true;
@@ -281,48 +310,59 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     protected virtual void popup_context_menu () {
-        var menu_builder = new PopupMenuBuilder ()
-            .add_open (() => {activated ();})
-            .add_separator ()
-            .add_open_tab (() => {activated (Files.OpenFlag.NEW_TAB);})
-            .add_open_window (() => {activated (Files.OpenFlag.NEW_WINDOW);});
+        var open_section = new GLib.Menu ();
+        open_section.append (_("Open in New _Tab"), "bookmark.open-tab");
+        open_section.append (_("Open in New _Window"), "bookmark.open-window");
 
-        add_extra_menu_items (menu_builder);
+        var glib_menu = new GLib.Menu ();
+        glib_menu.append (_("Open"), "bookmark.open");
+        glib_menu.append_section (null, open_section);
+
+        add_extra_menu_items (glib_menu);
+
+        var popupmenu = new Gtk.Menu.from_model (glib_menu) {
+            attach_widget = this
+        };
 
         if (menu_model != null) {
-            menu_builder
-                .build_from_model (menu_model, action_group_namespace, action_group)
-                .popup_at_pointer (null);
-        } else {
-            menu_builder
-                .build ()
-                .popup_at_pointer (null);
+            popupmenu.insert_action_group (action_group_namespace, action_group);
+            glib_menu.append_section (null, menu_model);
         }
+
+        popupmenu.popup_at_pointer (null);
     }
 
-    protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+    protected override void add_extra_menu_items (GLib.Menu menu) {
     /* Rows under "Bookmarks" can be removed or renamed */
+        var menu_section = new GLib.Menu ();
         if (!permanent) {
-            menu_builder
-                .add_separator ()
-                .add_remove (() => {list.remove_item_by_id (id);});
+            menu_section.append (_("Remove"), "bookmark.remove");
         }
 
         if (!pinned) {
-            menu_builder.add_rename (() => {
-                rename ();
-            });
+            menu_section.append (_("Rename"), "bookmark.rename");
         }
 
+        menu.append_section (null, menu_section);
+
         if (Uri.parse_scheme (uri) == "trash") {
-            menu_builder
-                .add_separator ()
-                .add_empty_all_trash (() => {
-                    new Files.FileOperations.EmptyTrashJob (
-                        (Gtk.Window)get_ancestor (typeof (Gtk.Window)
-                    )).empty_trash.begin ();
-                })
-            ;
+            var volume_monitor = VolumeMonitor.@get ();
+            int mounts_with_trash = 0;
+            foreach (Mount mount in volume_monitor.get_mounts ()) {
+                if (Files.FileOperations.mount_has_trash (mount)) {
+                    mounts_with_trash++;
+                }
+            }
+
+            var text = mounts_with_trash > 0 ? _("Permanently Delete All Trash") : _("Permanently Delete Trash");
+
+            var trash_section = new GLib.Menu ();
+            // FIXME: any way to make destructive?
+            trash_section.append (text, "bookmark.empty-all-trash");
+
+            menu.append_section (null, trash_section);
+
+            empty_all_trash_action.set_enabled (!Files.TrashMonitor.get_default ().is_empty);
         }
     }
 
