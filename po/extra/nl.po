@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-14 18:24+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2024-06-28 11:16+0000\n"
 "Last-Translator: DutchVipperloid <svenroelof@e.email>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
@@ -58,7 +58,8 @@ msgstr ""
 
 #: data/files.metainfo.xml.in.in:18
 msgid "Quick access to settings like zoom levels and hidden files"
-msgstr "Snelle toegang tot instellingen zoals zoomniveau en verborgen bestanden"
+msgstr ""
+"Snelle toegang tot instellingen zoals zoomniveau en verborgen bestanden"
 
 #: data/files.metainfo.xml.in.in:22
 msgid "See more metadata at a glance in List view"

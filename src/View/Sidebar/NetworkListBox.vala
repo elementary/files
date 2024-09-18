@@ -21,8 +21,8 @@
  */
 
 public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
-    public Files.SidebarInterface sidebar { get; construct; }
-    public Gtk.ListBox list_box { get; internal set; }
+    public Files.SidebarInterface sidebar { get; set construct; }
+    public Gtk.ListBox list_box { get; set construct; }
 
     public NetworkListBox (Files.SidebarInterface sidebar) {
         Object (sidebar: sidebar);

@@ -32,6 +32,13 @@ namespace Files.View.Chrome {
 
             private set {
                 bread.search_mode = value; //Ensure no path change requests from entry while searching
+                if (!value) {
+                    bread.set_primary_icon_name (null);
+                } else {
+                    bread.get_style_context ().remove_class ("spin");
+                    bread.set_primary_icon_name (Files.ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC);
+                    hide_navigate_icon ();
+                }
             }
         }
 
@@ -123,7 +130,6 @@ namespace Files.View.Chrome {
         protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
             base.after_bread_focus_out_event (event);
             search_mode = false;
-            hide_search_icon ();
             show_refresh_icon ();
             focus_out_event (event);
             check_home ();
@@ -133,7 +139,6 @@ namespace Files.View.Chrome {
             base.after_bread_focus_in_event (event);
             focus_in_event (event);
             search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
-            show_navigate_icon ();
             return true;
         }
 
@@ -151,18 +156,19 @@ namespace Files.View.Chrome {
 
         protected override void after_bread_text_changed (string txt) {
             if (txt.length < 1) {
-                if (search_mode) {
-                    switch_to_navigate_mode ();
+                if (!search_mode) {
+                    switch_to_search_mode ();
                 }
+
                 show_placeholder ();
                 return;
             }
+
             hide_placeholder ();
             if (search_mode) {
                 if (txt.contains (Path.DIR_SEPARATOR_S)) {
                     switch_to_navigate_mode ();
                 } else {
-                    show_search_icon ();
                     search_results.search (txt, search_location);
                 }
             } else {
@@ -173,20 +179,6 @@ namespace Files.View.Chrome {
                     bread.completion_needed (); /* delegate to bread to decide whether completion really needed */
                 }
             }
-        }
-
-        protected override void show_navigate_icon () {
-            show_search_icon ();
-            base.show_navigate_icon ();
-        }
-
-        protected void show_search_icon () {
-            bread.get_style_context ().remove_class ("spin");
-            bread.set_primary_icon_name (Files.ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC);
-        }
-
-        protected void hide_search_icon () {
-            bread.set_primary_icon_name (null);
         }
 
         protected void show_refresh_icon () {
@@ -222,6 +214,7 @@ namespace Files.View.Chrome {
             if (!search_mode) {
                 /* Initialise search mode but do not search until first character has been received */
                 if (set_focussed ()) {
+                    search_mode = true;
                     bread.set_entry_text (term);
                 } else {
                     return false;
@@ -245,15 +238,12 @@ namespace Files.View.Chrome {
         private void switch_to_navigate_mode () {
             search_mode = false;
             cancel_search ();
-            hide_search_icon ();
             show_navigate_icon ();
         }
 
         private void switch_to_search_mode () {
             search_mode = true;
             hide_navigate_icon ();
-            hide_search_icon ();
-            show_search_icon ();
             /* Next line ensures that the pathbar not lose focus when the mouse if over the sidebar,
              * which would normally grab the focus */
             after_bread_text_changed (bread.get_entry_text ());
@@ -298,10 +288,8 @@ namespace Files.View.Chrome {
 
             if (bread.hide_breadcrumbs) {
                 show_placeholder ();
-                show_search_icon ();
             } else {
                 hide_placeholder ();
-                hide_search_icon ();
             }
         }
     }

@@ -298,6 +298,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 case ViewMode.MILLER_COLUMNS:
                     app_menu.on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
                     break;
+                case ViewMode.PREFERRED:
+                case ViewMode.CURRENT:
+                case ViewMode.INVALID:
+                    assert_not_reached (); //The switcher should not generate these modes
             }
         });
 
@@ -347,9 +351,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 var mods = state & Gtk.accelerator_get_default_mod_mask ();
                 /* Use find function instead of view interactive search */
                 if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
-                    /* Use printable characters to initiate search */
+                    /* Use printable characters (except space) to initiate search */
+                    /* Space is handled by directory view to open file items */
                     var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
-                    if (uc.isprint ()) {
+                    if (uc.isprint () && !uc.isspace ()) {
                         activate_action ("find", uc.to_string ());
                         return Gdk.EVENT_STOP;
                     }
@@ -806,7 +811,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void add_window (GLib.File location = default_location, ViewMode mode = default_mode) {
         var new_window = new Window (marlin_app);
-        new_window.add_tab (location, real_mode (mode), false);
+        new_window.add_tab.begin (location, real_mode (mode), false);
         new_window.present ();
     }
 
