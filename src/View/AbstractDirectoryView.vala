@@ -328,20 +328,18 @@ namespace Files {
                    schedule_thumbnail_color_tag_timeout ();
                 });
 
+                scroll_controller = new Gtk.EventControllerScroll (view, NONE);
+                scroll_controller.scroll.connect (on_scroll_event);
+
                 key_controller = new Gtk.EventControllerKey (view) {
                     propagation_phase = BUBBLE
                 };
                 key_controller.key_pressed.connect (on_view_key_press_event);
                 // Workaround for scroll events getting consumed by scroll controller
-                key_controller.key_released.connect (() => {
-                    Gdk.ModifierType state;
-                    Gtk.get_current_event_state (out state);
-
-                    var mods = state & Gtk.accelerator_get_default_mod_mask ();
-                    if ((mods & Gdk.ModifierType.CONTROL_MASK) > 0) {
-                        scroll_controller.propagation_phase = NONE;
-                    }
-                });
+                // Only handle scroll events when a key is pressed (for zooming), otherwise they will be handled
+                // by the native widget
+                key_controller.key_pressed.connect (() => {scroll_controller.flags = VERTICAL; return false;});
+                key_controller.key_released.connect (() => scroll_controller.flags = NONE);
 
                 // Hack required to suppress native behaviour when dragging
                 // multiple selected items with GestureMultiPress event controller
@@ -356,11 +354,6 @@ namespace Files {
                 };
                 button_controller.pressed.connect (on_view_button_press_event);
                 button_controller.released.connect (on_view_button_release_event);
-
-                scroll_controller = new Gtk.EventControllerScroll (view, VERTICAL) {
-                    propagation_phase = NONE
-                };
-                scroll_controller.scroll.connect (on_scroll_event);
 
                 motion_controller = new Gtk.EventControllerMotion (view) {
                     propagation_phase = CAPTURE
@@ -2887,11 +2880,6 @@ namespace Files {
             }
 
             var event = Gtk.get_current_event ();
-            if (((Gdk.EventKey)event).is_modifier == 1) {
-                scroll_controller.propagation_phase = CAPTURE;
-                return true;
-            }
-
             cancel_hover ();
 
             Gdk.ModifierType consumed_mods;
