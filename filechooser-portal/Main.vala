@@ -484,6 +484,7 @@ public class Files.FileChooserPortal : Object {
             connection.register_object ("/org/freedesktop/portal/desktop", new FileChooserPortal (connection));
         } catch (Error e) {
             critical ("Unable to register the object: %s", e.message);
+            // Should we quit main loop if this happens?
         }
     }
 
@@ -516,22 +517,16 @@ public class Files.FileChooserPortal : Object {
         }
 
         var loop = new MainLoop (null, false);
-        try {
-            var session_bus = Bus.get_sync (BusType.SESSION);
-            var owner_id = Bus.own_name (
-                BusType.SESSION,
-                "org.freedesktop.impl.portal.desktop.elementary.files",
-                BusNameOwnerFlags.ALLOW_REPLACEMENT | (opt_replace ? BusNameOwnerFlags.REPLACE : 0),
-                on_bus_acquired,
-                () => debug ("org.freedesktop.impl.portal.desktop.elementary.files acquired"),
-                () => loop.quit ()
-            );
-            loop.run ();
-            Bus.unown_name (owner_id);
-        } catch (Error e) {
-            printerr ("No session bus: %s\n", e.message);
-            return 2;
-        }
+        var owner_id = Bus.own_name (
+            BusType.SESSION,
+            "org.freedesktop.impl.portal.desktop.elementary.files",
+            BusNameOwnerFlags.ALLOW_REPLACEMENT | (opt_replace ? BusNameOwnerFlags.REPLACE : 0),
+            on_bus_acquired,
+            () => debug ("org.freedesktop.impl.portal.desktop.elementary.files acquired"),
+            () => loop.quit ()
+        );
+        loop.run ();
+        Bus.unown_name (owner_id);
 
         return 0;
     }

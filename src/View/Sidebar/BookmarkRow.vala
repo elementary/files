@@ -41,12 +41,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
     /* Each row gets a unique id.  The methods relating to this are in the SidebarItemInterface */
     static construct {
-        SidebarItemInterface.row_id = new Rand.with_seed (
+        row_id = new Rand.with_seed (
             int.parse (get_real_time ().to_string ())
         ).next_int ();
 
-        SidebarItemInterface.item_map_lock = Mutex ();
-        SidebarItemInterface.item_id_map = new Gee.HashMap<uint32, SidebarItemInterface> ();
+        item_map_lock = Mutex ();
+        item_id_map = new Gee.HashMap<uint32, SidebarItemInterface> ();
     }
 
     private bool valid = true; //Set to false if scheduled for removal
@@ -56,6 +56,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private string? drop_text = null;
     private bool drop_occurred = false;
     private Gdk.DragAction? current_suggested_action = Gdk.DragAction.DEFAULT;
+    private Gtk.EventControllerKey key_controller;
+    private Gtk.GestureMultiPress button_controller;
 
     protected Gtk.Grid content_grid;
     protected Gtk.Grid icon_label_grid;
@@ -75,18 +77,20 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         }
     }
 
-    public SidebarListInterface list { get; construct; }
-    public uint32 id { get; construct; }
+    public SidebarListInterface list { get; set construct; }
+    public uint32 id { get; set construct; }
     public string uri { get; set construct; }
     public Icon gicon { get; set construct; }
-    public bool pinned { get; construct; } // Cannot be dragged
-    public bool permanent { get; construct; } // Cannot be removed
+    public bool pinned { get; set construct; } // Cannot be dragged
+    public bool permanent { get; set construct; } // Cannot be removed
     public bool can_insert_before { get; set; default = true; }
     public bool can_insert_after { get; set; default = true; }
 
     public MenuModel? menu_model {get; set; default = null;}
     public ActionGroup? action_group {get; set; default = null;}
     public string? action_group_namespace { get; set; default = null;}
+
+    private SimpleAction empty_all_trash_action;
 
     public BookmarkRow (string _custom_name,
                         string uri,
@@ -115,9 +119,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         set_tooltip_text (Files.FileUtils.sanitize_path (uri, null, false));
 
         selectable = true;
-        id = SidebarItemInterface.get_next_item_id ();
+        id = get_next_item_id ();
         item_map_lock.@lock ();
-        SidebarItemInterface.item_id_map.@set (id, this);
+        item_id_map.@set (id, this);
         item_map_lock.unlock ();
 
         label = new Gtk.Label (display_name) {
@@ -168,8 +172,16 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         add (content_grid);
         show_all ();
 
-        key_press_event.connect (on_key_press_event);
-        button_release_event.connect_after (after_button_release_event);
+        key_controller = new Gtk.EventControllerKey (this) {
+            propagation_phase = BUBBLE
+        };
+        key_controller.key_pressed.connect (on_key_press_event);
+
+        button_controller = new Gtk.GestureMultiPress (this) {
+            propagation_phase = BUBBLE,
+            button = 0
+        };
+        button_controller.released.connect (on_button_release_event);
 
         notify["gicon"].connect (() => {
             icon.set_from_gicon (gicon, Gtk.IconSize.MENU);
@@ -181,6 +193,38 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         set_up_drag ();
         set_up_drop ();
+
+        var open_action = new SimpleAction ("open", null);
+        open_action.activate.connect (() => activated ());
+
+        var open_tab_action = new SimpleAction ("open-tab", null);
+        open_tab_action.activate.connect (() => activated (NEW_TAB));
+
+        var open_window_action = new SimpleAction ("open-window", null);
+        open_window_action.activate.connect (() => activated (NEW_WINDOW));
+
+        var rename_action = new SimpleAction ("rename", null);
+        rename_action.activate.connect (rename);
+
+        var remove_action = new SimpleAction ("remove", null);
+        remove_action.activate.connect (() => list.remove_item_by_id (id));
+
+        empty_all_trash_action = new SimpleAction ("empty-all-trash", null);
+        empty_all_trash_action.activate.connect (() => {
+            new Files.FileOperations.EmptyTrashJob ((Gtk.Window) get_toplevel ()).empty_trash.begin ();
+        });
+
+        var action_group = new SimpleActionGroup ();
+        action_group.add_action (open_action);
+        action_group.add_action (open_tab_action);
+        action_group.add_action (open_window_action);
+        action_group.add_action (rename_action);
+        action_group.add_action (remove_action);
+        action_group.add_action (empty_all_trash_action);
+
+        insert_action_group ("bookmark", action_group);
+
+        ((Gtk.Application) Application.get_default ()).set_accels_for_action ("bookmark.rename", { "F2" });
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
@@ -209,112 +253,118 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         /* We destroy all bookmarks - even permanent ones when refreshing */
         valid = false;
         item_map_lock.@lock ();
-        SidebarItemInterface.item_id_map.unset (id);
+        item_id_map.unset (id);
         item_map_lock.unlock ();
         base.destroy ();
     }
 
-    protected virtual bool on_key_press_event (Gdk.EventKey event) {
-        uint keyval;
-        event.get_keyval (out keyval);
+    protected virtual bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
         switch (keyval) {
-            case Gdk.Key.F2:
-                rename ();
-                return true;
-
             case Gdk.Key.Escape:
                 cancel_rename ();
+                return true;
+
+            case Gdk.Key.Menu:
+                popup_context_menu ();
                 return true;
 
             default:
                 break;
         }
+
         return false;
     }
 
-    protected virtual bool after_button_release_event (Gdk.EventButton event) {
+    protected virtual void on_button_release_event (int n_press, double x, double y) {
         if (!valid) { //Ignore if in the process of being removed
-            return true;
+            return;
         }
 
         if (label_stack.visible_child_name == "editable") { //Do not interfere with renaming
-            return false;
+            return;
         }
 
         Gdk.ModifierType state;
-        event.get_state (out state);
+        Gtk.get_current_event_state (out state);
         var mods = state & Gtk.accelerator_get_default_mod_mask ();
         var control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
         var other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
         var only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
 
-        uint button;
-        event.get_button (out button);
-        switch (button) {
+        switch (button_controller.get_current_button ()) {
             case Gdk.BUTTON_PRIMARY:
                 if (only_control_pressed) {
                     activated (Files.OpenFlag.NEW_TAB);
-                    return true;
-                } else {
-                    return false;
                 }
 
+                break;
             case Gdk.BUTTON_SECONDARY:
-                popup_context_menu (event);
-                return true;
+                popup_context_menu ();
+                break;
 
             case Gdk.BUTTON_MIDDLE:
                 activated (Files.OpenFlag.NEW_TAB);
-                return true;
+                break;
 
             default:
-                return false;
+                break;
         }
     }
 
-    protected virtual void popup_context_menu (Gdk.EventButton event) {
-        var menu_builder = new PopupMenuBuilder ()
-            .add_open (() => {activated ();})
-            .add_separator ()
-            .add_open_tab (() => {activated (Files.OpenFlag.NEW_TAB);})
-            .add_open_window (() => {activated (Files.OpenFlag.NEW_WINDOW);});
+    protected virtual void popup_context_menu () {
+        var open_section = new GLib.Menu ();
+        open_section.append (_("Open in New _Tab"), "bookmark.open-tab");
+        open_section.append (_("Open in New _Window"), "bookmark.open-window");
 
-        add_extra_menu_items (menu_builder);
+        var glib_menu = new GLib.Menu ();
+        glib_menu.append (_("Open"), "bookmark.open");
+        glib_menu.append_section (null, open_section);
+
+        add_extra_menu_items (glib_menu);
+
+        var popupmenu = new Gtk.Menu.from_model (glib_menu) {
+            attach_widget = this
+        };
 
         if (menu_model != null) {
-            menu_builder
-                .build_from_model (menu_model, action_group_namespace, action_group)
-                .popup_at_pointer (event);
-        } else {
-            menu_builder
-                .build ()
-                .popup_at_pointer (event);
+            popupmenu.insert_action_group (action_group_namespace, action_group);
+            glib_menu.append_section (null, menu_model);
         }
+
+        popupmenu.popup_at_pointer (null);
     }
 
-    protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+    protected override void add_extra_menu_items (GLib.Menu menu) {
     /* Rows under "Bookmarks" can be removed or renamed */
+        var menu_section = new GLib.Menu ();
         if (!permanent) {
-            menu_builder
-                .add_separator ()
-                .add_remove (() => {list.remove_item_by_id (id);});
+            menu_section.append (_("Remove"), "bookmark.remove");
         }
 
         if (!pinned) {
-            menu_builder.add_rename (() => {
-                rename ();
-            });
+            menu_section.append (_("Rename"), "bookmark.rename");
         }
 
+        menu.append_section (null, menu_section);
+
         if (Uri.parse_scheme (uri) == "trash") {
-            menu_builder
-                .add_separator ()
-                .add_empty_all_trash (() => {
-                    new Files.FileOperations.EmptyTrashJob (
-                        (Gtk.Window)get_ancestor (typeof (Gtk.Window)
-                    )).empty_trash.begin ();
-                })
-            ;
+            var volume_monitor = VolumeMonitor.@get ();
+            int mounts_with_trash = 0;
+            foreach (Mount mount in volume_monitor.get_mounts ()) {
+                if (Files.FileOperations.mount_has_trash (mount)) {
+                    mounts_with_trash++;
+                }
+            }
+
+            var text = mounts_with_trash > 0 ? _("Permanently Delete All Trash") : _("Permanently Delete Trash");
+
+            var trash_section = new GLib.Menu ();
+            // FIXME: any way to make destructive?
+            trash_section.append (text, "bookmark.empty-all-trash");
+
+            menu.append_section (null, trash_section);
+
+            empty_all_trash_action.set_enabled (!Files.TrashMonitor.get_default ().is_empty);
         }
     }
 
@@ -360,30 +410,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         drag_data_get.connect ((ctx, sel_data, info, time) => {
             uint8[] data = id.to_string ().data;
             sel_data.@set (text_data_atom, 8, data);
-        });
-
-        drag_failed.connect ((ctx, res) => {
-            if (res == Gtk.DragResult.NO_TARGET) {
-                Gdk.Window app_window = list.list_box.get_window ().get_effective_toplevel ();
-                Gdk.Window drag_window = ctx.get_drag_window ();
-                Gdk.Rectangle app_rect, drag_rect, intersect_rect;
-
-                app_window.get_frame_extents (out app_rect);
-                drag_window.get_frame_extents (out drag_rect);
-
-                if (!drag_rect.intersect (app_rect, out intersect_rect)) {
-                    list.remove_item_by_id (id);
-                    var device = ctx.get_device ();
-                    int x, y;
-                    device.get_position (null, out x, out y);
-                    Plank.PoofWindow poof_window;
-                    poof_window = Plank.PoofWindow.get_default ();
-                    poof_window.show_at (x, y);
-                    return true;
-                }
-            }
-
-            return false;
         });
 
         drag_end.connect ((ctx) => {
@@ -439,11 +465,19 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 var success = false;
                 switch (info) {
                     case Files.TargetType.BOOKMARK_ROW:
-                        success = process_dropped_row (ctx, drop_text, drop_revealer.child_revealed);
+                        success = process_dropped_row (
+                            drop_text,
+                            drop_revealer.child_revealed
+                        );
                         break;
 
                     case Files.TargetType.TEXT_URI_LIST:
-                        success = process_dropped_uris (ctx, drop_file_list, drop_revealer.child_revealed);
+                        success = process_dropped_uris (
+                            ctx.get_selected_action (),
+                            ctx.get_actions (),
+                            drop_file_list,
+                            drop_revealer.child_revealed
+                        );
                         break;
                 }
 
@@ -491,9 +525,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
                     // When dropping onto a row, determine what actions are possible
                     if (!reveal && drop_file_list != null) {
-                        Files.FileUtils.file_accepts_drop (
+                        Files.DndHandler.file_accepts_drop (
                             target_file,
-                            drop_file_list, ctx,
+                            drop_file_list,
+                            ctx.get_selected_action (),
+                            ctx.get_actions (),
                             out current_suggested_action
                         );
 
@@ -560,9 +596,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         highlight (false);
     }
 
-    private bool process_dropped_row (Gdk.DragContext ctx, string drop_text, bool dropped_between) {
+    private bool process_dropped_row (string drop_text, bool dropped_between) {
         var id = (uint32)(uint.parse (drop_text));
-        var item = SidebarItemInterface.get_item (id);
+        var item = get_item (id);
 
         if (item == null ||
             !dropped_between ||
@@ -575,7 +611,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         return true;
     }
 
-    private bool process_dropped_uris (Gdk.DragContext ctx,
+    private bool process_dropped_uris (Gdk.DragAction selected_action,
+                                       Gdk.DragAction possible_actions,
                                        List<GLib.File> drop_file_list,
                                        bool dropped_between) {
 
@@ -585,10 +622,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             return list.add_favorite (drop_file_list.data.get_uri (), "", pos);
         } else {
             var dnd_handler = new Files.DndHandler ();
-            var real_action = ctx.get_selected_action ();
+            var real_action = selected_action;
 
             if (real_action == Gdk.DragAction.ASK) {
-                var actions = ctx.get_actions ();
+                var actions = possible_actions;
 
                 if (uri.has_prefix ("trash://")) {
                     actions &= Gdk.DragAction.MOVE;
@@ -601,7 +638,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                 );
             }
 
-            if (real_action == Gdk.DragAction.DEFAULT) {
+            if (real_action == 0) {
                 return false;
             }
 

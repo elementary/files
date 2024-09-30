@@ -76,9 +76,7 @@ namespace Files {
             {"sort-by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"},
             {"folders-first", on_background_action_folders_first_changed, null, "true"},
-            {"show-hidden", null, null, "false", change_state_show_hidden},
-            {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-            {"show-local-thumbnails", null, null, "true", change_state_show_local_thumbnails}
+            {"show-hidden", null, null, "false", change_state_show_hidden}
         };
 
         const GLib.ActionEntry [] COMMON_ENTRIES = {
@@ -89,7 +87,8 @@ namespace Files {
             {"bookmark", on_common_action_bookmark},
             {"properties", on_common_action_properties},
             {"copy-link", on_common_action_copy_link},
-            {"select-all", toggle_select_all}
+            {"select-all", toggle_select_all},
+            {"set-wallpaper", action_set_wallpaper}
         };
 
         GLib.SimpleActionGroup common_actions;
@@ -111,7 +110,7 @@ namespace Files {
                     _zoom_level = value;
                 }
 
-                on_zoom_level_changed (value);
+                on_zoom_level_changed (_zoom_level);
             }
         }
 
@@ -123,13 +122,10 @@ namespace Files {
 
         protected ZoomLevel minimum_zoom = ZoomLevel.SMALLEST;
         protected ZoomLevel maximum_zoom = ZoomLevel.LARGEST;
-        protected bool large_thumbnails = false;
 
         /* Used only when acting as drag source */
         double drag_x = 0;
         double drag_y = 0;
-        int drag_button;
-        uint drag_timer_id = 0;
         protected GLib.List<Files.File> source_drag_file_list = null;
         protected Gdk.Atom current_target_type = Gdk.Atom.NONE;
 
@@ -163,6 +159,8 @@ namespace Files {
 
         /* Used for blocking and unblocking DnD */
         protected bool dnd_disabled = false;
+        /* Suppress native behavior when required */
+        private bool button_press_disabled = false;
         private void* drag_data;
 
         /* support for generating thumbnails */
@@ -191,9 +189,11 @@ namespace Files {
         protected bool on_directory = false;
         protected bool one_or_less = true;
         protected bool should_activate = false;
-        protected bool should_scroll = true;
         protected bool should_deselect = false;
+        protected bool should_thumbnail = true;
+
         public bool singleclick_select { get; set; }
+
         protected bool should_select = false;
         protected Gtk.TreePath? click_path = null;
         protected uint click_zone = ClickZone.ICON;
@@ -235,14 +235,14 @@ namespace Files {
                          */
                         disconnect_tree_signals ();
                         clipboard.changed.disconnect (on_clipboard_changed);
-                        view.key_press_event.disconnect (on_view_key_press_event);
                     } else {
-                        view.key_press_event.connect (on_view_key_press_event);
                         clipboard.changed.connect (on_clipboard_changed);
                         connect_tree_signals ();
 
                         update_menu_actions ();
                     }
+
+                    key_controller.propagation_phase = value ? Gtk.PropagationPhase.NONE : Gtk.PropagationPhase.BUBBLE;
                 }
             }
 
@@ -259,8 +259,6 @@ namespace Files {
         protected bool is_writable = false;
         protected bool is_loading;
         protected bool helpers_shown;
-        protected bool show_remote_thumbnails {get; set; default = true;}
-        protected bool show_local_thumbnails {get; set; default = false;}
 
         private bool all_selected = false;
 
@@ -269,17 +267,24 @@ namespace Files {
         protected Files.ListModel model;
         protected Files.IconRenderer icon_renderer;
         protected unowned View.Slot slot; // Must be unowned else cyclic reference stops destruction
-        protected unowned View.Window window; /*For convenience - this can be derived from slot */
+        protected unowned View.Window? window {
+            get {
+                return slot.ctab.window;
+            }
+        }
         protected static DndHandler dnd_handler = new DndHandler ();
 
         protected unowned Gtk.RecentManager recent;
+
+        protected Gtk.EventControllerKey key_controller;
+        protected Gtk.GestureMultiPress button_controller;
+        protected Gtk.EventControllerMotion motion_controller;
 
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
         protected AbstractDirectoryView (View.Slot _slot) {
             slot = _slot;
-            window = _slot.window;
             editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
@@ -289,6 +294,7 @@ namespace Files {
             recent = app.get_recent_manager ();
             app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
             app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
+
             thumbnailer = Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
@@ -298,12 +304,10 @@ namespace Files {
                 draw_when_idle ();
             });
 
+            set_should_thumbnail ();
+
             model = new Files.ListModel ();
 
-            Files.app_settings.bind ("show-remote-thumbnails",
-                                                             this, "show_remote_thumbnails", SettingsBindFlags.GET);
-            Files.app_settings.bind ("show-local-thumbnails",
-                                                             this, "show_local_thumbnails", SettingsBindFlags.GET);
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
@@ -317,19 +321,36 @@ namespace Files {
                 child = view;
                 show_all ();
                 connect_drag_drop_signals (view);
-                view.add_events (Gdk.EventMask.POINTER_MOTION_MASK |
-                                 Gdk.EventMask.ENTER_NOTIFY_MASK |
-                                 Gdk.EventMask.LEAVE_NOTIFY_MASK);
 
-                view.motion_notify_event.connect (on_motion_notify_event);
-                view.leave_notify_event.connect (on_leave_notify_event);
-                view.key_press_event.connect (on_view_key_press_event);
-                view.button_press_event.connect (on_view_button_press_event);
-                view.button_release_event.connect (on_view_button_release_event);
                 view.draw.connect (on_view_draw);
                 view.realize.connect (() => {
                    schedule_thumbnail_color_tag_timeout ();
                 });
+
+                key_controller = new Gtk.EventControllerKey (view) {
+                    propagation_phase = BUBBLE
+                };
+                key_controller.key_pressed.connect (on_view_key_press_event);
+
+                // Hack required to suppress native behaviour when dragging
+                // multiple selected items with GestureMultiPress event controller
+                // Native behaviour deselects items except the one clicked on
+                view.button_press_event.connect (() => {
+                    return button_press_disabled;
+                });
+
+                button_controller = new Gtk.GestureMultiPress (view) {
+                    propagation_phase = CAPTURE,
+                    button = 0
+                };
+                button_controller.pressed.connect (on_view_button_press_event);
+                button_controller.released.connect (on_view_button_release_event);
+
+                motion_controller = new Gtk.EventControllerMotion (view) {
+                    propagation_phase = CAPTURE
+                };
+                motion_controller.motion.connect (on_motion_notify_event);
+                motion_controller.leave.connect (on_leave_notify_event);
             }
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
@@ -342,7 +363,7 @@ namespace Files {
             debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
         }
 
-        protected virtual void set_up_name_renderer () {
+        protected void set_up_name_renderer () {
             name_renderer.editable = false;
             name_renderer.edited.connect (on_name_edited);
             name_renderer.editing_canceled.connect (on_name_editing_canceled);
@@ -380,8 +401,8 @@ namespace Files {
 
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
-            prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
-            prefs.notify["show-local-thumbnails"].connect (on_show_local_thumbnails_changed);
+            prefs.notify["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
+            prefs.notify["show-local-thumbnails"].connect (on_show_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
             prefs.bind_property (
                 "singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
@@ -405,15 +426,6 @@ namespace Files {
             common_actions = new GLib.SimpleActionGroup ();
             common_actions.add_action_entries (COMMON_ENTRIES, this);
             insert_action_group ("common", common_actions);
-
-            action_set_state (background_actions, "show-hidden",
-                              Files.app_settings.get_boolean ("show-hiddenfiles"));
-
-            action_set_state (background_actions, "show-remote-thumbnails",
-                              Files.app_settings.get_boolean ("show-remote-thumbnails"));
-
-            action_set_state (background_actions, "show-local-thumbnails",
-                              Files.app_settings.get_boolean ("show-local-thumbnails"));
         }
 
         public void zoom_in () {
@@ -427,7 +439,14 @@ namespace Files {
         }
 
         public void zoom_normal () {
-            zoom_level = get_normal_zoom_level ();
+            var view_settings = get_view_settings ();
+            if (view_settings == null) {
+                zoom_level = ZoomLevel.NORMAL;
+            } else {
+                zoom_level = (ZoomLevel)view_settings.get_enum ("default-zoom-level"); // syncs to settings
+            }
+
+
         }
 
         private uint set_cursor_timeout_id = 0;
@@ -707,7 +726,7 @@ namespace Files {
             /* Set up as drag source */
             Gtk.drag_source_set (
                 widget,
-                Gdk.ModifierType.BUTTON1_MASK | Gdk.ModifierType.BUTTON3_MASK | Gdk.ModifierType.CONTROL_MASK,
+                Gdk.ModifierType.BUTTON1_MASK | Gdk.ModifierType.CONTROL_MASK,
                 DRAG_TARGETS,
                 FILE_DRAG_ACTIONS
             );
@@ -715,11 +734,6 @@ namespace Files {
             widget.drag_data_get.connect (on_drag_data_get);
             widget.drag_data_delete.connect (on_drag_data_delete);
             widget.drag_end.connect (on_drag_end);
-        }
-
-        protected void cancel_drag_timer () {
-            disconnect_drag_timeout_motion_and_release_events ();
-            cancel_timeout (ref drag_timer_id);
         }
 
         protected void cancel_thumbnailing () {
@@ -945,13 +959,17 @@ namespace Files {
         // file operations
         private void add_file (Files.File file, Directory dir, bool is_internal = true) {
             model.insert_sorted (file, dir);
-
             if (is_internal) { /* This true once view finished loading */
-                add_gof_file_to_selection (file);
+                // Do not select until the model has resorted else wrong file is selected
+                ulong model_resorted = 0;
+                model_resorted = model.rows_reordered.connect (() => {
+                     model.disconnect (model_resorted);
+                     add_gof_file_to_selection (file);
+                });
             }
         }
 
-        private void handle_free_space_change () {
+        private void handle_free_space_change () requires (window != null) {
             /* Wait at least 250 mS after last space change before signalling to avoid unnecessary updates*/
             if (add_remove_file_timeout_id == 0) {
                 signal_free_space_change = false;
@@ -1180,7 +1198,7 @@ namespace Files {
             open_file (file, null, null);
         }
 
-        private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
+        private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) requires (window != null) {
             GLib.File location;
             if (selected_files != null) {
                 location = selected_files.data.get_target_location ();
@@ -1193,16 +1211,8 @@ namespace Files {
 
         /** Background actions */
 
-        private void change_state_show_hidden (GLib.SimpleAction action) {
+        private void change_state_show_hidden (GLib.SimpleAction action) requires (window != null) {
             window.change_state_show_hidden (action);
-        }
-
-        private void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
-            window.change_state_show_remote_thumbnails (action);
-        }
-
-        private void change_state_show_local_thumbnails (GLib.SimpleAction action) {
-            window.change_state_show_local_thumbnails (action);
         }
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1262,6 +1272,15 @@ namespace Files {
         }
 
         /** Common actions */
+        private void action_set_wallpaper (GLib.SimpleAction action, GLib.Variant? param) {
+            var file = get_files_for_action ().nth_data (0);
+
+            var active_window = (Gtk.Window) get_toplevel ();
+            Xdp.Parent? parent = active_window != null ? Xdp.parent_new_gtk (active_window) : null;
+
+            var portal = new Xdp.Portal ();
+            portal.set_wallpaper.begin (parent, file.uri, NONE, null);
+        }
 
         private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) {
             default_app = null;
@@ -1341,7 +1360,7 @@ namespace Files {
                 add_file (file, dir, is_internal); /* Only select files added to view by this app */
                 handle_free_space_change ();
                 Idle.add (() => {
-                    update_thumbnail_info_and_plugins (file);
+                    update_icon_and_plugins (file);
                     return Source.REMOVE;
                 });
             } else {
@@ -1368,14 +1387,11 @@ namespace Files {
                 return;
             }
 
-            remove_marlin_icon_info_cache (file);
             model.file_changed (file, dir);
             Idle.add (() => {
-                update_thumbnail_info_and_plugins (file);
-                if ((!slot.directory.is_network && show_local_thumbnails) ||
-                    (show_remote_thumbnails && slot.directory.can_open_files)) {
-
-                    thumbnailer.queue_file (file, null, large_thumbnails);
+                update_icon_and_plugins (file);
+                if (should_thumbnail) {
+                    thumbnailer.queue_file (file, null);
                 }
 
                 return Source.REMOVE;
@@ -1389,12 +1405,6 @@ namespace Files {
              * that does not matter.  */
             file.exists = false;
             model.remove_file (file, dir);
-
-            remove_marlin_icon_info_cache (file);
-
-            if (file.get_thumbnail_path () != null) {
-                FileUtils.remove_thumbnail_paths_for_uri (file.uri);
-            }
 
             if (plugins != null) {
                 plugins.update_file_info (file);
@@ -1440,14 +1450,6 @@ namespace Files {
 
     /** Handle zoom level change */
         private void on_zoom_level_changed (ZoomLevel zoom) {
-            var size = icon_size * get_scale_factor ();
-
-            if (!large_thumbnails && size > 128 || large_thumbnails && size <= 128) {
-                large_thumbnails = size > 128;
-                slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
-                schedule_thumbnail_color_tag_timeout ();
-            }
-
             model.icon_size = icon_size;
             change_zoom_level ();
         }
@@ -1480,15 +1482,17 @@ namespace Files {
             action_set_state (background_actions, "show-hidden", show);
         }
 
-        private void on_show_remote_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            show_remote_thumbnails = ((Files.Preferences) prefs).show_remote_thumbnails;
-            action_set_state (background_actions, "show-remote-thumbnails", show_remote_thumbnails);
-            slot.reload ();
+        private void set_should_thumbnail () {
+            var prefs = Files.Preferences.get_default ();
+            if (slot.directory.is_network) {
+                should_thumbnail = slot.directory.can_open_files && prefs.show_remote_thumbnails;
+            } else {
+                should_thumbnail = prefs.show_local_thumbnails;
+            }
         }
 
-        private void on_show_local_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            show_local_thumbnails = ((Files.Preferences) prefs).show_local_thumbnails;
-            action_set_state (background_actions, "show-local-thumbnails", show_local_thumbnails);
+        private void on_show_thumbnails_changed () {
+            set_should_thumbnail ();
             slot.reload ();
         }
 
@@ -1510,43 +1514,6 @@ namespace Files {
             return true;
         }
 
-    /** Handle Button events */
-        private bool on_drag_timeout_button_release (Gdk.EventButton event) {
-            /* Only active during drag timeout */
-            cancel_drag_timer ();
-            return true;
-        }
-
-/** Handle Motion events */
-        private bool on_drag_timeout_motion_notify (Gdk.EventMotion event) {
-            /* Only active during drag timeout */
-            Gdk.DragContext context;
-            var widget = get_child ();
-            double x, y;
-            event.get_coords (out x, out y);
-
-            if (Gtk.drag_check_threshold (widget, (int)drag_x, (int)drag_y, (int)x, (int)y)) {
-                cancel_drag_timer ();
-                should_activate = false;
-                var target_list = new Gtk.TargetList (DRAG_TARGETS);
-                var actions = FILE_DRAG_ACTIONS;
-
-                if (drag_button == Gdk.BUTTON_SECONDARY) {
-                    actions |= Gdk.DragAction.ASK;
-                }
-
-                context = Gtk.drag_begin_with_coordinates (widget,
-                                                           target_list,
-                                                           actions,
-                                                           drag_button,
-                                                           (Gdk.Event) event,
-                                                            (int)x, (int)y);
-                return true;
-            } else {
-                return false;
-            }
-        }
-
 /** Handle TreeModel events */
         protected virtual void on_row_deleted (Gtk.TreePath path) {
             unselect_all ();
@@ -1561,7 +1528,7 @@ namespace Files {
 /** DRAG AND DROP SOURCE */
 
         /* Signal emitted on source when drag begins */
-        private void on_drag_begin (Gdk.DragContext context) {
+        private void on_drag_begin () {
             should_activate = false;
         }
 
@@ -1592,13 +1559,13 @@ namespace Files {
         }
 
         /* Signal emitted on source after a DND move operation */
-        private void on_drag_data_delete (Gdk.DragContext context) {
+        private void on_drag_data_delete () {
             /* block real_view default handler because handled in on_drag_end */
             GLib.Signal.stop_emission_by_name (get_child (), "drag-data-delete");
         }
 
         /* Signal emitted on source after completion of DnD. */
-        private void on_drag_end (Gdk.DragContext context) {
+        private void on_drag_end () {
             source_drag_file_list = null;
         }
 
@@ -1620,7 +1587,7 @@ namespace Files {
             }
 
             if (drag_scroll_timer_id == 0) {
-                start_drag_scroll_timer (context);
+                start_drag_scroll_timer (Gtk.get_current_event_device ());
             }
 
             Gdk.drag_status (context, current_suggested_action, timestamp);
@@ -1641,12 +1608,12 @@ namespace Files {
             if (target == Gdk.Atom.intern_static_string ("XdndDirectSave0")) {
                 Files.File? target_file = get_drop_target_file (x, y);
                 /* get XdndDirectSave file name from DnD source window */
-                string? filename = dnd_handler.get_source_filename (context);
+                string? filename = dnd_handler.get_source_filename (context.get_source_window ());
                 if (target_file != null && filename != null) {
                     /* Get uri of source file when dropped */
                     uri = target_file.get_target_location ().resolve_relative_path (filename).get_uri ();
                     /* Setup the XdndDirectSave property on the source window */
-                    dnd_handler.set_source_uri (context, uri);
+                    dnd_handler.set_source_uri (context.get_source_window (), uri);
                 } else {
                     PF.Dialogs.show_error_dialog (_("Cannot drop this file"),
                                                   _("Invalid file name provided"), window);
@@ -1688,13 +1655,13 @@ namespace Files {
 
                 switch (info) {
                     case Files.TargetType.XDND_DIRECT_SAVE0:
-                        success = dnd_handler.handle_xdnddirectsave (context,
+                        success = dnd_handler.handle_xdnddirectsave (context.get_source_window (),
                                                                      drop_target_file,
                                                                      selection_data);
                         break;
 
                     case Files.TargetType.NETSCAPE_URL:
-                        success = dnd_handler.handle_netscape_url (context,
+                        success = dnd_handler.handle_netscape_url (context.get_source_window (),
                                                                    drop_target_file,
                                                                    selection_data);
                         break;
@@ -1710,7 +1677,6 @@ namespace Files {
 
                         success = dnd_handler.handle_file_drag_actions (
                             get_child (),
-                            context,
                             drop_target_file,
                             destination_drop_file_list,
                             current_actions,
@@ -1737,7 +1703,7 @@ namespace Files {
         }
 
         /* Signal emitted on destination when drag leaves the widget or *before* dropping */
-        private void on_drag_leave (Gdk.DragContext context, uint timestamp) {
+        private void on_drag_leave () {
             /* reset the drop-file for the icon renderer */
             icon_renderer.drop_file = null;
             /* stop any running drag autoscroll timer */
@@ -1837,9 +1803,13 @@ namespace Files {
                         current_actions = current_suggested_action;
                     } else {
 
-                        current_actions = FileUtils.file_accepts_drop (drop_target_file,
-                                                                       destination_drop_file_list, context,
-                                                                       out current_suggested_action);
+                        current_actions = DndHandler.file_accepts_drop (
+                            drop_target_file,
+                            destination_drop_file_list,
+                            context.get_selected_action (),
+                            context.get_actions (),
+                            out current_suggested_action
+                        );
                     }
 
                     highlight_drop_file (drop_target_file, current_actions, get_path_at_pos (x, y));
@@ -1902,23 +1872,9 @@ namespace Files {
          * instead.
         **/
 
-        protected void start_drag_timer (Gdk.Event event) {
-            connect_drag_timeout_motion_and_release_events ();
-            uint button;
-            if (event.get_button (out button)) {
-                drag_button = (int)button;
 
-                drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
-                                                       300,
-                                                       () => {
-                    on_drag_timeout_button_release ((Gdk.EventButton)event);
-                    return GLib.Source.REMOVE;
-                });
-            }
-        }
 
-        protected void show_context_menu (Gdk.Event event) {
-            cancel_drag_timer ();
+        protected void show_context_menu (Gdk.Event event) requires (window != null) {
             /* select selection or background context menu */
             update_menu_actions ();
 
@@ -2338,6 +2294,14 @@ namespace Files {
                 // We send the actual files - it is up to the plugin to extract target
                 // if needed.  Color tag plugin needs actual file, others need target
                 plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
+
+                if (selection.length () == 1 && "image" in selection.nth_data (0).info.get_content_type ()) {
+                    var wallpaper_menuitem = new Gtk.MenuItem.with_label (_("Set as Wallpaper")) {
+                        action_name = "common.set-wallpaper"
+                    };
+
+                    menu.add (wallpaper_menuitem);
+                }
             }
 
             menu.set_screen (null);
@@ -2542,6 +2506,7 @@ namespace Files {
             action_set_enabled (common_actions, "copy", !renaming && !in_trash && can_copy);
             action_set_enabled (common_actions, "copy-link", !renaming && !in_trash && !in_recent && can_copy);
             action_set_enabled (common_actions, "bookmark", !renaming && !more_than_one_selected);
+            action_set_enabled (common_actions, "set-wallpaper", !renaming && !more_than_one_selected);
 
             update_default_app (selection);
             update_menu_actions_sort ();
@@ -2730,13 +2695,13 @@ namespace Files {
             assert (slot is Files.AbstractSlot && slot.directory != null);
 
             /* Check all known conditions preventing thumbnailing at earliest possible stage */
-            if (thumbnail_source_id != 0 ||
-                !slot.directory.can_open_files ||
+            if (!slot.directory.can_open_files ||
                 slot.directory.is_loading ()) {
 
                     return;
             }
 
+            /* Restart the timeout.
             /* Do not cancel existing requests to avoid missing thumbnails */
             cancel_timeout (ref thumbnail_source_id);
             /* In order to improve performance of the Icon View when there are a large number of files,
@@ -2791,13 +2756,17 @@ namespace Files {
                         file = model.file_for_iter (iter); // Maybe null if dummy row or file being deleted
                         path = model.get_path (iter);
                         if (file != null) {
-                            update_thumbnail_info_and_plugins (file);
+                            update_icon_and_plugins (file);
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
-                            if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
-                                visible_files.prepend (file);
-                                if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-                                    actually_visible++;
+                            if (should_thumbnail) {
+                                if (file.thumbstate == Files.File.ThumbState.UNKNOWN) {
+                                    visible_files.prepend (file);
+                                    if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
+                                        actually_visible++;
+                                    }
                                 }
+                            } else {
+                                file.thumbstate = Files.File.ThumbState.NONE;
                             }
                         }
                         /* check if we've reached the end of the visible range */
@@ -2816,10 +2785,11 @@ namespace Files {
                     * thumbnails are not hidden by settings
                  */
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
-                    thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
-                } else {
-                    draw_when_idle ();
+                    thumbnailer.queue_files (visible_files, out thumbnail_request);
                 }
+
+                //Need to redraw anyway so that standard icons are rendered.
+                draw_when_idle ();
 
                 thumbnail_source_id = 0;
 
@@ -2829,15 +2799,14 @@ namespace Files {
 
         // Called on individual files when added or changed as well as on all visible files
         // by schedule_thumbnail_color_tag_timeout.
-        private void update_thumbnail_info_and_plugins (Files.File file) {
-            if (file != null && !file.is_gone) {
+        private void update_icon_and_plugins (Files.File file) requires (file != null) {
+            if (!file.is_gone) {
                 // Only update thumbnail if it is going to be shown
-                if ((slot.directory.is_network && show_remote_thumbnails) ||
-                    (!slot.directory.is_network && show_local_thumbnails)) {
-
-                    file.query_thumbnail_update (); // Ensure thumbstate up to date
+                if (should_thumbnail) {
+                    file.update_icon ();
                 }
-               /* In any case, ensure color-tag info is correct */
+
+                /* In any case, ensure color-tag info is correct */
                 if (plugins != null) {
                     plugins.update_file_info (file);
                 }
@@ -2866,29 +2835,12 @@ namespace Files {
             model.row_deleted.connect (on_row_deleted);
         }
 
-        private void connect_drag_timeout_motion_and_release_events () {
-            var real_view = get_child ();
-            real_view.button_release_event.connect (on_drag_timeout_button_release);
-            real_view.motion_notify_event.connect (on_drag_timeout_motion_notify);
-        }
-
-        private void disconnect_drag_timeout_motion_and_release_events () {
-            if (drag_timer_id == 0) {
-                return;
-            }
-
-            var real_view = get_child ();
-            real_view.button_release_event.disconnect (on_drag_timeout_button_release);
-            real_view.motion_notify_event.disconnect (on_drag_timeout_motion_notify);
-        }
-
-        private void start_drag_scroll_timer (Gdk.DragContext context) {
+        private void start_drag_scroll_timer (Gdk.Device pointer) requires (window != null) {
             drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                           50,
                                                           () => {
                 Gtk.Widget? widget = get_child ();
                 if (widget != null) {
-                    Gdk.Device pointer = context.get_device ();
                     Gdk.Window window = widget.get_window ();
                     int x, y, w, h;
 
@@ -2924,21 +2876,7 @@ namespace Files {
                 }
         }
 
-        private void remove_marlin_icon_info_cache (Files.File file) {
-            string? path = file.get_thumbnail_path ();
 
-            if (path != null) {
-                Files.IconSize s;
-
-                for (int z = ZoomLevel.SMALLEST;
-                     z <= ZoomLevel.LARGEST;
-                     z++) {
-
-                    s = ((ZoomLevel) z).to_icon_size ();
-                    Files.IconInfo.remove_cache (path, s, get_scale_factor ());
-                }
-            }
-        }
 
         /* For actions on the background we need to return the current slot directory, but this
          * should not be added to the list of selected files
@@ -2972,20 +2910,20 @@ namespace Files {
         }
 
 /** Keyboard event handling **/
-        protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
+        protected virtual bool on_view_key_press_event (uint original_keyval, uint keycode, Gdk.ModifierType state) {
             if (is_frozen) {
                 return true;
             }
 
-            if (event.is_modifier == 1) {
+            var event = Gtk.get_current_event ();
+            if (((Gdk.EventKey)event).is_modifier == 1) {
                 return true;
             }
 
             cancel_hover ();
 
-            Gdk.ModifierType consumed_mods, state;
-            var keyval = KeyUtils.map_key (event, out consumed_mods);
-            event.get_state (out state);
+            Gdk.ModifierType consumed_mods;
+            var keyval = map_key (original_keyval, keycode, out consumed_mods);
 
             var mods = (state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
@@ -3110,8 +3048,6 @@ namespace Files {
 
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
-                case Gdk.Key.Left:
-                case Gdk.Key.Right:
                     unowned GLib.List<Files.File> selection = get_selected_files ();
                     if (only_alt_pressed && keyval == Gdk.Key.Down) {
                         /* Only open a single selected folder */
@@ -3124,6 +3060,18 @@ namespace Files {
                             res = true;
                         }
 
+                        break;
+                    }
+
+                    res = move_cursor (keyval, only_shift_pressed, control_pressed);
+                    break;
+
+                case Gdk.Key.Left:
+                case Gdk.Key.Right:
+                case Gdk.Key.BackSpace:
+                    if ((this is ColumnView) && no_mods) {
+                        ((Files.View.Miller)(slot.ctab.view)).on_miller_key_pressed (keyval, keycode, state);
+                        res = true;
                         break;
                     }
 
@@ -3235,15 +3183,16 @@ namespace Files {
             return res;
         }
 
-        protected bool on_motion_notify_event (Gdk.EventMotion event) {
+        protected void on_motion_notify_event (double x, double y) {
+            // Determine appropriate cursor
             Gtk.TreePath? path = null;
             Files.File? file = null;
 
             if (renaming || is_frozen) {
-                return true;
+                return;
             }
 
-            click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
+            click_zone = get_event_position_info (x, y, out path, false);
 
             if ((path != null && hover_path == null) ||
                 (path == null && hover_path != null) ||
@@ -3291,13 +3240,10 @@ namespace Files {
 
                 previous_click_zone = click_zone;
             }
-
-            return false;
         }
 
-        protected bool on_leave_notify_event (Gdk.EventCrossing event) {
+        protected void on_leave_notify_event () {
             hover_path = null;
-            return false;
         }
 
         protected virtual bool on_scroll_event (Gdk.EventScroll event) {
@@ -3427,7 +3373,14 @@ namespace Files {
             /* new_file will be null if rename failed */
             if (new_file != null) {
                 selected_files_invalid = true;
-                select_and_scroll_to_gof_file (new_file);
+                Idle.add (() => {
+                    if (model.sort_pending) {
+                        return Source.CONTINUE;
+                    } else {
+                        select_and_scroll_to_gof_file (new_file);
+                        return Source.REMOVE;
+                    }
+                });
             }
         }
 
@@ -3464,13 +3417,8 @@ namespace Files {
             return false;
         }
 
-        protected virtual bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
-            return true;
-        }
-
-        protected virtual bool handle_secondary_button_click (Gdk.EventButton event) {
-            should_scroll = false;
-            return true;
+        protected virtual bool handle_primary_button_click (uint n_press, Gdk.ModifierType mods, Gtk.TreePath? path) {
+            return false; // Allow drag'n'drop
         }
 
         protected void block_drag_and_drop () {
@@ -3488,35 +3436,25 @@ namespace Files {
             }
         }
 
-        protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
+        protected virtual void on_view_button_press_event (int n_press, double x, double y) {
             if (renaming) {
                 /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
                 name_renderer.end_editing (false);
             }
-
             cancel_hover (); /* cancel overlay statusbar cancellables */
-
-            /* Ignore if second button pressed before first released - not permitted during rubberbanding.
-             * Multiple click produces an event without corresponding release event so do not block that.
-             */
-            var type = event.get_event_type ();
-            if (dnd_disabled && type == Gdk.EventType.BUTTON_PRESS) {
-                return true;
-            }
-
             grab_focus ();
 
             Gtk.TreePath? path = null;
-            /* Remember position of click for detecting drag motion*/
-            event.get_coords (out drag_x, out drag_y);
-            uint button;
-            event.get_button (out button);
-            //Only rubberband with primary button
-            click_zone = get_event_position_info (event, out path, button == Gdk.BUTTON_PRIMARY);
-            click_path = path;
-
+            // /* Remember position of click for detecting drag motion*/
+            drag_x = x;
+            drag_y = y;
+            var button = button_controller.get_current_button ();
             Gdk.ModifierType state;
-            event.get_state (out state);
+            Gtk.get_current_event_state (out state); // In Gtk4 this can be obtained from controller
+
+            //Only rubberband with primary button
+            click_zone = get_event_position_info (x, y, out path, button == Gdk.BUTTON_PRIMARY);
+            click_path = path;
             var mods = state & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
@@ -3526,21 +3464,19 @@ namespace Files {
             bool only_shift_pressed = shift_pressed && !control_pressed && !other_mod_pressed;
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
-            bool double_click_event = (type == Gdk.EventType.@2BUTTON_PRESS);
+            bool double_click_event = (n_press == 2);
             /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
              * dragging on blank areas
              */
             block_drag_and_drop ();
             /* Handle un-modified clicks or control-clicks here else pass on. */
             if (!will_handle_button_press (no_mods, only_control_pressed, only_shift_pressed)) {
-                return false;
+                return;
             }
 
-            bool result = false; // default false so events get passed to Window
             should_activate = false;
             should_deselect = false;
             should_select = false;
-            should_scroll = true;
 
             /* Handle all selection and deselection explicitly in the following switch statement */
             switch (button) {
@@ -3573,7 +3509,9 @@ namespace Files {
                              * Rubberband if modifer pressed or if not on the icon and either
                              * the item is unselected. */
                             if (!no_mods || (on_blank && !path_selected)) {
-                                result = only_shift_pressed && handle_multi_select (path);
+                                if (only_shift_pressed && handle_multi_select (path)) {
+                                    button_controller.set_state (CLAIMED);
+                                }
                                 // Have to select on button release because IconView, unlike TreeView,
                                 // will not both select and rubberband
                                 should_select = true;
@@ -3583,8 +3521,13 @@ namespace Files {
                                 }
 
                                 select_path (path, true);
+
+                                if (handle_primary_button_click (n_press, mods, path)) {
+                                    button_controller.set_state (CLAIMED);
+                                }
+
+                                button_press_disabled = true;
                                 unblock_drag_and_drop ();
-                                result = handle_primary_button_click (event, path);
                             }
 
                             update_selected_files_and_menu ();
@@ -3592,7 +3535,9 @@ namespace Files {
 
                         case ClickZone.HELPER:
                             if (only_control_pressed || only_shift_pressed) { /* Treat like modified click on icon */
-                                result = only_shift_pressed && handle_multi_select (path);
+                                if (only_shift_pressed && handle_multi_select (path)) {
+                                    button_controller.set_state (CLAIMED);
+                                }
                             } else {
                                 if (path_selected) {
                                     /* Don't deselect yet, may drag */
@@ -3602,14 +3547,14 @@ namespace Files {
                                 }
 
                                 unblock_drag_and_drop ();
-                                result = true; /* Prevent rubberbanding and deselection of other paths */
+                                button_controller.set_state (CLAIMED); /* Prevent rubberbanding and deselection of other paths */
                             }
                             break;
 
                         case ClickZone.EXPANDER:
                             /* on expanders (if any) or xpad. Handle ourselves so that clicking
                              * on xpad also expands/collapses row (accessibility). */
-                            result = expand_collapse (path);
+                            expand_collapse (path);
                             break;
 
                         default:
@@ -3625,8 +3570,6 @@ namespace Files {
 
                     should_activate = true;
                     unblock_drag_and_drop ();
-                    result = true;
-
                     break;
 
                 case Gdk.BUTTON_SECONDARY: // button 3
@@ -3659,37 +3602,30 @@ namespace Files {
 
                     /* Ensure selected files list and menu actions are updated before context menu shown */
                     update_selected_files_and_menu ();
-                    unblock_drag_and_drop ();
-                    start_drag_timer (event);
-
-                    result = handle_secondary_button_click (event);
                     break;
 
                 default:
-                    result = handle_default_button_click (event);
+                    if (handle_default_button_click ()) {
+                        button_controller.set_state (CLAIMED);
+                    }
                     break;
             }
-
-            return result;
         }
 
-        protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
+        protected virtual void on_view_button_release_event (int n_press, double x, double y) {
             unblock_drag_and_drop ();
+            button_press_disabled = false;
             /* Ignore button release from click that started renaming.
              * View may lose focus during a drag if another tab is hovered, in which case
              * we do not want to refocus this view.
              * Under both these circumstances, 'should_activate' will be false */
             if (renaming || !view_has_focus ()) {
-                return true;
+                return;
             }
 
-            slot.active (should_scroll);
+            var button = button_controller.get_current_button ();
+            slot.active (button == Gdk.BUTTON_SECONDARY);
 
-            // Gtk.Widget widget = ;
-            double x, y;
-            uint button;
-            event.get_coords (out x, out y);
-            event.get_button (out button);
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (get_child (), (int)drag_x, (int)drag_y, (int)x, (int)y)) {
                 if (should_activate) {
@@ -3704,7 +3640,7 @@ namespace Files {
                 } else if (should_select && click_path != null) {
                     select_path (click_path);
                 } else if (button == Gdk.BUTTON_SECONDARY) {
-                    show_context_menu (event);
+                    on_popup_menu ();
                 }
             }
 
@@ -3719,7 +3655,7 @@ namespace Files {
             should_deselect = false;
             should_select = false;
             click_path = null;
-            return false;
+            return;
         }
 
         public virtual void change_zoom_level () {
@@ -3850,7 +3786,7 @@ namespace Files {
             return true;
         }
 
-        protected virtual bool handle_default_button_click (Gdk.EventButton event) {
+        protected virtual bool handle_default_button_click () {
             /* pass unhandled events to the View.Window */
             return false;
         }
@@ -3863,7 +3799,6 @@ namespace Files {
             grab_focus (); /* Cancel any renaming */
             cancel_hover ();
             cancel_thumbnailing ();
-            cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
             cancel_timeout (ref add_remove_file_timeout_id);
             cancel_timeout (ref set_cursor_timeout_id);
@@ -3915,9 +3850,113 @@ namespace Files {
             update_selected_files_and_menu ();
         }
 
+        protected uint get_selected_files_from_model (out GLib.List<Files.File> selected_files) {
+            List<Files.File> list = null;
+            uint count = 0;
+            var selected_paths = get_selected_paths ();
+            foreach (var path in selected_paths) {
+                var file = model.file_for_path (path);
+                if (file != null) {
+                    list.prepend ((owned)file);
+                    count++;
+                } else {
+                    critical ("Null file in model");
+                }
+            }
+            selected_files = (owned)list;
+            return count;
+        }
+
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
         protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
+        protected virtual Settings? get_view_settings () { return null; }
+        protected virtual void set_up_zoom_level () {
+            var view_settings = get_view_settings ();
+            if (view_settings == null) {
+                minimum_zoom = ZoomLevel.SMALLEST;
+                maximum_zoom = ZoomLevel.LARGEST;
+                zoom_level = ZoomLevel.NORMAL;
+            } else {
+                minimum_zoom = (ZoomLevel)view_settings.get_enum ("minimum-zoom-level");
+                maximum_zoom = (ZoomLevel)view_settings.get_enum ("maximum-zoom-level");
+                zoom_level = (ZoomLevel)view_settings.get_enum ("zoom-level");
+
+                view_settings.bind (
+                    "zoom-level",
+                    this, "zoom-level",
+                    GLib.SettingsBindFlags.SET
+                );
+            }
+        }
+
+        protected virtual bool view_has_focus () {
+            return view.has_focus;
+        }
+
+        protected virtual void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
+            if (path == null || slot == null || slot.directory == null ||
+                slot.directory.permission_denied || slot.directory.is_empty ()) {
+
+                return;
+            }
+
+            scroll_to_path (path, scroll_to_top);
+        }
+
+    //TODO Needs complete rewrite for Gtk4 so leaving some direct access of event struct
+    protected static uint map_key (uint original_keyval, uint keycode, out Gdk.ModifierType consumed_mods) {
+        uint keyval = original_keyval;
+        consumed_mods = 0;
+
+        if (keyval > 127) {
+            int eff_grp, level;
+            var event = (Gdk.EventKey)(Gtk.get_current_event ());
+            var display = Gtk.get_current_event_device ().get_display ();
+            var keymap = Gdk.Keymap.get_for_display (display);
+            if (!keymap.translate_keyboard_state (
+                    event.hardware_keycode,
+                    event.state, event.group,
+                    out keyval, out eff_grp,
+                    out level, out consumed_mods)) {
+
+                warning ("translate keyboard state failed");
+                keyval = original_keyval;
+                consumed_mods = 0;
+            } else {
+                keyval = 0;
+                for (uint key = 32; key < 128; key++) {
+                    if (match_keycode (keymap, key, event.hardware_keycode, level)) {
+                        keyval = key;
+                        break;
+                    }
+                }
+
+                if (keyval == 0) {
+                    debug ("Could not match hardware code to ASCII hotkey");
+                    keyval = original_keyval;
+                    consumed_mods = 0;
+                }
+            }
+        }
+
+        return keyval;
+    }
+
+    /** Returns true if the code parameter matches the keycode of the keyval parameter for
+      * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/
+    protected static bool match_keycode (Gdk.Keymap keymap, uint keyval, uint code, int level) {
+        Gdk.KeymapKey [] keys;
+        if (keymap.get_entries_for_keyval (keyval, out keys)) {
+            foreach (var key in keys) {
+                if (code == key.keycode && level == key.level) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
@@ -3962,16 +4001,12 @@ namespace Files {
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
 
         protected abstract Gtk.Widget? create_view ();
-        protected abstract void set_up_zoom_level ();
-        protected abstract ZoomLevel get_normal_zoom_level ();
-        protected abstract bool view_has_focus ();
-        protected abstract uint get_selected_files_from_model (out GLib.List<Files.File> selected_files);
-        protected abstract uint get_event_position_info (Gdk.EventButton event,
+
+        protected abstract uint get_event_position_info (double x, double y,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
 
-        protected abstract void scroll_to_cell (Gtk.TreePath? path,
-                                                bool scroll_to_top);
+        protected abstract void scroll_to_path (Gtk.TreePath path, bool scroll_to_top);
         protected abstract void set_cursor_on_cell (Gtk.TreePath path,
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,

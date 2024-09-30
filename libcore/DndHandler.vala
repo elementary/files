@@ -147,12 +147,12 @@ namespace Files {
             }
         }
 
-        public string? get_source_filename (Gdk.DragContext context) {
+        public string? get_source_filename (Gdk.Window source_window) {
             uchar []? data = null;
             Gdk.Atom property_name = Gdk.Atom.intern_static_string ("XdndDirectSave0");
             Gdk.Atom property_type = Gdk.Atom.intern_static_string ("text/plain");
 
-            bool exists = Gdk.property_get (context.get_source_window (),
+            bool exists = Gdk.property_get (source_window,
                                             property_name,
                                             property_type,
                                             0, /* offset into property to start getting */
@@ -176,11 +176,11 @@ namespace Files {
             }
         }
 
-        public void set_source_uri (Gdk.DragContext context, string uri) {
+        public void set_source_uri (Gdk.Window source_window, string uri) {
             debug ("DNDHANDLER: set source uri to %s", uri);
             Gdk.Atom property_name = Gdk.Atom.intern_static_string ("XdndDirectSave0");
             Gdk.Atom property_type = Gdk.Atom.intern_static_string ("text/plain");
-            Gdk.property_change (context.get_source_window (),
+            Gdk.property_change (source_window,
                                  property_name,
                                  property_type,
                                  8,
@@ -189,7 +189,7 @@ namespace Files {
                                  uri.length);
         }
 
-        public bool handle_xdnddirectsave (Gdk.DragContext context,
+        public bool handle_xdnddirectsave (Gdk.Window source_window,
                                            Files.File drop_target,
                                            Gtk.SelectionData selection) {
             bool success = false;
@@ -219,13 +219,13 @@ namespace Files {
             }
 
             if (!success) {
-                set_source_uri (context, "");
+                set_source_uri (source_window, "");
             }
 
             return success;
         }
 
-        public bool handle_netscape_url (Gdk.DragContext context, Files.File drop_target, Gtk.SelectionData selection) {
+        public bool handle_netscape_url (Gdk.Window source_window, Files.File drop_target, Gtk.SelectionData selection) {
             string [] parts = (selection.get_text ()).split ("\n");
 
             /* _NETSCAPE_URL looks like this: "$URL\n$TITLE" - should be 2 parts */
@@ -238,7 +238,6 @@ namespace Files {
         }
 
         public bool handle_file_drag_actions (Gtk.Widget dest_widget,
-                                              Gdk.DragContext context,
                                               Files.File drop_target,
                                               GLib.List<GLib.File> drop_file_list,
                                               Gdk.DragAction possible_actions,
@@ -339,6 +338,124 @@ namespace Files {
             } else {
                 warning ("Invalid file list for drag and drop ignored");
             }
+        }
+
+        public static Gdk.DragAction file_accepts_drop (Files.File dest,
+                                                 GLib.List<GLib.File> drop_file_list, // read-only
+                                                 Gdk.DragAction selected_action,
+                                                 Gdk.DragAction possible_actions,
+                                                 out Gdk.DragAction suggested_action_return) {
+
+            var actions = possible_actions;
+            var suggested_action = selected_action;
+            var target_location = dest.get_target_location ();
+            suggested_action_return = Gdk.DragAction.PRIVATE;
+
+            if (drop_file_list == null || drop_file_list.data == null) {
+                return Gdk.DragAction.DEFAULT;
+            }
+
+            if (dest.is_folder ()) {
+                if (!dest.is_writable ()) {
+                    actions = Gdk.DragAction.DEFAULT;
+                } else {
+                    /* Modify actions and suggested_action according to source files */
+                    actions &= valid_actions_for_file_list (target_location,
+                                                            drop_file_list,
+                                                            ref suggested_action);
+                }
+            } else if (dest.is_executable ()) {
+                actions |= (Gdk.DragAction.COPY |
+                           Gdk.DragAction.MOVE |
+                           Gdk.DragAction.LINK |
+                           Gdk.DragAction.PRIVATE);
+            } else {
+                actions = Gdk.DragAction.DEFAULT;
+            }
+
+            if (actions == Gdk.DragAction.DEFAULT) { // No point asking if no other valid actions
+                return Gdk.DragAction.DEFAULT;
+            } else if (FileUtils.location_is_in_trash (target_location)) { // cannot copy or link to trash
+                actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
+            }
+
+            if (suggested_action in actions) {
+                suggested_action_return = suggested_action;
+            } else if (Gdk.DragAction.ASK in actions) {
+                suggested_action_return = Gdk.DragAction.ASK;
+            } else if (Gdk.DragAction.COPY in actions) {
+                suggested_action_return = Gdk.DragAction.COPY;
+            } else if (Gdk.DragAction.LINK in actions) {
+                suggested_action_return = Gdk.DragAction.LINK;
+            } else if (Gdk.DragAction.MOVE in actions) {
+                suggested_action_return = Gdk.DragAction.MOVE;
+            }
+
+            return actions;
+        }
+
+        private const uint MAX_FILES_CHECKED = 100; // Max checked copied from gof_file.c version
+        private static Gdk.DragAction valid_actions_for_file_list (GLib.File target_location,
+                                                            GLib.List<GLib.File> drop_file_list,
+                                                            ref Gdk.DragAction suggested_action) {
+
+            var valid_actions = Gdk.DragAction.DEFAULT |
+                                Gdk.DragAction.COPY |
+                                Gdk.DragAction.MOVE |
+                                Gdk.DragAction.LINK;
+
+            /* Check the first MAX_FILES_CHECKED and let
+             * the operation fail for file the same as target if it is
+             * buried in a large selection.  We can normally assume that all source files
+             * come from the same folder, but drops from outside Files could be from multiple
+             * folders. The valid actions are the lowest common denominator.
+             */
+            uint count = 0;
+            bool from_trash = false;
+
+            foreach (var drop_file in drop_file_list) {
+                if (FileUtils.location_is_in_trash (drop_file)) {
+                    from_trash = true;
+
+                    if (FileUtils.location_is_in_trash (target_location)) {
+                        valid_actions = Gdk.DragAction.DEFAULT; // No DnD within trash
+                    }
+                }
+
+                var parent = drop_file.get_parent ();
+
+                if (parent != null && parent.equal (target_location)) {
+                    valid_actions &= Gdk.DragAction.LINK; // Only LINK is valid
+                }
+
+                var scheme = drop_file.get_uri_scheme ();
+                if (scheme == null || !scheme.has_prefix ("file")) {
+                    valid_actions &= ~(Gdk.DragAction.LINK); // Can only LINK local files
+                }
+
+                if (++count > MAX_FILES_CHECKED ||
+                    valid_actions == Gdk.DragAction.DEFAULT) {
+
+                    break;
+                }
+            }
+
+            /* Modify Gtk suggested COPY action to MOVE if source is trash or dest is in
+             * same filesystem and if MOVE is a valid action.  We assume that it is not possible
+             * to drop files both from remote and local filesystems simultaneously
+             */
+            if ((Gdk.DragAction.COPY in valid_actions && Gdk.DragAction.MOVE in valid_actions) &&
+                 suggested_action == Gdk.DragAction.COPY &&
+                 (from_trash || FileUtils.same_file_system (drop_file_list.first ().data, target_location))) {
+
+                suggested_action = Gdk.DragAction.MOVE;
+            }
+
+            if (valid_actions != Gdk.DragAction.DEFAULT) {
+                valid_actions |= Gdk.DragAction.ASK; // Allow ASK if there is a possible action
+            }
+
+            return valid_actions;
         }
     }
 }

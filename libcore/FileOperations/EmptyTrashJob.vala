@@ -17,7 +17,7 @@
  */
 
 public class Files.FileOperations.EmptyTrashJob : CommonJob {
-    GLib.List<GLib.File> trash_dirs;
+    private GLib.List<GLib.File> trash_dirs;
 
     public EmptyTrashJob (Gtk.Window? parent_window = null, owned GLib.List<GLib.File>? trash_dirs = null) {
         base (parent_window);
@@ -27,41 +27,6 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
             this.trash_dirs = new GLib.List<GLib.File> ();
             this.trash_dirs.prepend (GLib.File.new_for_uri ("trash:"));
         }
-    }
-
-    /* Only called if confirmation known to be required - do not second guess */
-    private bool confirm_empty_trash () {
-        unowned GLib.File? first_dir = trash_dirs.nth_data (0);
-        if (first_dir != null) {
-            unowned string primary = null;
-            unowned string secondary = null;
-            if (first_dir.has_uri_scheme ("trash")) {
-                /* Empty all trash */
-                primary = _("Permanently delete all items from Trash?");
-                secondary = _("All items in all trash directories, including those on any mounted external drives, will be permanently deleted.");//vala-lint=line-length
-            } else {
-                /* Empty trash on a particular mounted volume */
-                primary = _("Permanently delete all items from Trash on this mount?");
-                secondary = _("All items in the trash on this mount, will be permanently deleted.");
-            }
-
-            var message_dialog = new Granite.MessageDialog.with_image_from_icon_name (
-                primary,
-                secondary,
-                "dialog-warning",
-                Gtk.ButtonsType.CANCEL
-            );
-
-            message_dialog.transient_for = parent_window;
-            unowned Gtk.Widget empty_button = message_dialog.add_button (EMPTY_TRASH, Gtk.ResponseType.YES);
-            empty_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
-            Gtk.ResponseType response = (Gtk.ResponseType) message_dialog.run ();
-            message_dialog.destroy ();
-
-            return response == Gtk.ResponseType.YES;
-        }
-
-        return true;
     }
 
     private async void delete_trash_file (GLib.File file, bool delete_file = true, bool delete_children = true) {
@@ -109,19 +74,61 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
 
     public async void empty_trash () {
         inhibit_power_manager (_("Emptying Trash"));
-        if (!Files.Preferences.get_default ().confirm_trash || confirm_empty_trash ()) {
-            progress.start ();
-            foreach (unowned GLib.File dir in trash_dirs) {
-                if (aborted ()) {
-                    break;
+
+        if (Files.Preferences.get_default ().confirm_trash) {
+            unowned GLib.File? first_dir = trash_dirs.nth_data (0);
+            if (first_dir != null) {
+                unowned string primary = null;
+                unowned string secondary = null;
+                if (first_dir.has_uri_scheme ("trash")) {
+                    /* Empty all trash */
+                    primary = _("Permanently delete all items from Trash?");
+                    secondary = _("All items in all trash directories, including those on any mounted external drives, will be permanently deleted.");//vala-lint=line-length
+                } else {
+                    /* Empty trash on a particular mounted volume */
+                    primary = _("Permanently delete all items from Trash on this mount?");
+                    secondary = _("All items in the trash on this mount, will be permanently deleted.");
                 }
 
-                yield delete_trash_file (dir, false, true);
+                var message_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                    primary,
+                    secondary,
+                    "dialog-warning",
+                    Gtk.ButtonsType.CANCEL
+                ) {
+                    transient_for = parent_window
+                };
+
+                unowned var empty_button = message_dialog.add_button (EMPTY_TRASH, Gtk.ResponseType.YES);
+                empty_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+
+                message_dialog.response.connect ((response) => {
+                    if (response == Gtk.ResponseType.YES) {
+                        internal_empty_trash.begin ();
+                    }
+
+                    message_dialog.destroy ();
+                });
+
+                message_dialog.present ();
+            }
+        } else {
+            internal_empty_trash.begin ();
+        }
+    }
+
+    private async void internal_empty_trash () {
+        progress.start ();
+        foreach (unowned GLib.File dir in trash_dirs) {
+            if (aborted ()) {
+                break;
             }
 
-            /* There is no job callback after emptying trash */
-            Files.UndoManager.instance ().trash_has_emptied ();
-            PF.SoundManager.get_instance ().play_empty_trash_sound ();
+            yield delete_trash_file (dir, false, true);
         }
+
+        /* There is no job callback after emptying trash */
+        Files.UndoManager.instance ().trash_has_emptied ();
+        PF.SoundManager.get_instance ().play_empty_trash_sound ();
     }
 }

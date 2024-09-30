@@ -129,18 +129,18 @@ public class Files.RenamerDialog : Granite.Dialog {
         var basename_label = new Gtk.Label (_("Basename:"));
         // In Gtk4 replace RadioButtons with linked ToggleButtons
         original_basename_toggle = new Gtk.RadioButton (null) {
-            label = NC_("bulk-rename", "Keep"),
+            label = C_("bulk-rename", "Keep"),
             active = true
         };
         original_basename_toggle.set_mode (false);
 
         new_basename_toggle = new Gtk.RadioButton.from_widget (original_basename_toggle) {
-            label = NC_("bulk-rename", "Replace")
+            label = C_("bulk-rename", "Replace")
         };
         new_basename_toggle.set_mode (false);
 
         modify_basename_toggle = new Gtk.RadioButton.from_widget (original_basename_toggle) {
-            label = NC_("bulk-rename", "Modify")
+            label = C_("bulk-rename", "Modify")
         };
         modify_basename_toggle.set_mode (false);
 
@@ -187,13 +187,13 @@ public class Files.RenamerDialog : Granite.Dialog {
 
         //TODO Replace RadioButtons with linked RadioButtons in Gtk4
         /// TRANSLATORS: Used as "Number in order of: Name"
-        var name_check = new Gtk.RadioButton.with_label (null, NC_("bulk-rename", "Name")) {margin_start = 6};
+        var name_check = new Gtk.RadioButton.with_label (null, C_("bulk-rename", "Name")) {margin_start = 6};
         /// TRANSLATORS: Used as "Number in order of: Date created"
-        var created_check = new Gtk.RadioButton.with_label_from_widget (name_check, NC_("bulk-rename", "Date created")) {margin_start = 6};
+        var created_check = new Gtk.RadioButton.with_label_from_widget (name_check, C_("bulk-rename", "Date created")) {margin_start = 6};
         /// TRANSLATORS: Used as "Number in order of: Date modified"
-        var modified_check = new Gtk.RadioButton.with_label_from_widget (name_check, NC_("bulk-rename", "Date modified")) {margin_start = 6};
+        var modified_check = new Gtk.RadioButton.with_label_from_widget (name_check, C_("bulk-rename", "Date modified")) {margin_start = 6};
         /// TRANSLATORS: Used as "Number in order of: Size"
-        var size_check = new Gtk.RadioButton.with_label_from_widget (name_check, NC_("bulk-rename", "Size")) {margin_start = 6};
+        var size_check = new Gtk.RadioButton.with_label_from_widget (name_check, C_("bulk-rename", "Size")) {margin_start = 6};
 
         var sortby_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3) {
             margin_bottom = 12

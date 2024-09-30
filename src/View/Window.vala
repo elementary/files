@@ -22,6 +22,8 @@
 */
 
 public class Files.View.Window : Hdy.ApplicationWindow {
+    static uint window_id = 0;
+
     const GLib.ActionEntry [] WIN_ENTRIES = {
         {"new-window", action_new_window},
         {"refresh", action_reload},
@@ -41,6 +43,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
         {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"folders-before-files", null, null, "true", change_state_folders_before_files},
+        {"restore-tabs-on-startup", null, null, "true", change_state_restore_tabs_on_startup},
         {"forward", action_forward, "i"},
         {"back", action_back, "i"}
     };
@@ -94,15 +97,17 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private int restoring_tabs = 0;
     private bool doing_undo_redo = false;
 
+    private Gtk.EventControllerKey key_controller; //[Gtk3] Does not work unless we keep this ref
+
     public signal void loading_uri (string location);
     public signal void folder_deleted (GLib.File location);
     public signal void free_space_change ();
 
-    public Window (Files.Application application) {
+    public Window (Files.Application _application) {
         Object (
-            application: application,
-            marlin_app: application,
-            window_number: application.window_count
+            application: (Gtk.Application)_application,
+            marlin_app: _application,
+            window_number: Files.View.Window.window_id++
         );
     }
 
@@ -158,7 +163,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.forward(1)", {"<Alt>Right", "XF86Forward"});
             marlin_app.set_accels_for_action ("win.back(1)", {"<Alt>Left", "XF86Back"});
             marlin_app.set_accels_for_action ("win.info::HELP", {"F1"});
-            marlin_app.set_accels_for_action ("win.tab::TAB", {"<Ctrl><Alt>T"});
+            marlin_app.set_accels_for_action ("win.tab::TAB", {"<Shift><Ctrl>K"});
             marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
         }
 
@@ -277,11 +282,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
+        get_action ("restore-tabs-on-startup").set_state (app_settings.get_boolean ("restore-tabs"));
 
         /*/
         /* Connect and abstract signals to local ones
         /*/
-
         view_switcher.action.activate.connect ((id) => {
             switch ((ViewMode)(id.get_uint32 ())) {
                 case ViewMode.ICON:
@@ -293,6 +298,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 case ViewMode.MILLER_COLUMNS:
                     app_menu.on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
                     break;
+                case ViewMode.PREFERRED:
+                case ViewMode.CURRENT:
+                case ViewMode.INVALID:
+                    assert_not_reached (); //The switcher should not generate these modes
             }
         });
 
@@ -328,24 +337,32 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         undo_manager.request_menu_update.connect (update_undo_actions);
 
-        key_press_event.connect_after ((event) => {
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            uint keyval;
-            event.get_keyval (out keyval);
-            /* Use find function instead of view interactive search */
-            if (state == 0 || state == Gdk.ModifierType.SHIFT_MASK) {
-                /* Use printable characters to initiate search */
-                var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
-                if (uc.isprint ()) {
-                    activate_action ("find", uc.to_string ());
-                    return true;
+        key_controller = new Gtk.EventControllerKey (this) {
+            propagation_phase = CAPTURE
+        };
+
+        key_controller.key_pressed.connect ((keyval, keycode, state) => {
+            // Handle key press events when directoryview has focus except when it must retain
+            // focus because e.g.renaming
+            var focus_widget = get_focus ();
+            if (current_container != null && !current_container.locked_focus &&
+                focus_widget != null && focus_widget.is_ancestor (current_container)) {
+
+                var mods = state & Gtk.accelerator_get_default_mod_mask ();
+                /* Use find function instead of view interactive search */
+                if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
+                    /* Use printable characters (except space) to initiate search */
+                    /* Space is handled by directory view to open file items */
+                    var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
+                    if (uc.isprint () && !uc.isspace ()) {
+                        activate_action ("find", uc.to_string ());
+                        return Gdk.EVENT_STOP;
+                    }
                 }
             }
 
-            return false;
+            return Gdk.EVENT_PROPAGATE;
         });
-
 
         //TODO Rewrite for Gtk4
         window_state_event.connect ((event) => {
@@ -440,7 +457,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         add_action (action_move_to_new_window);
 
         marlin_app.set_accels_for_action ("win.tabmenu-close", {"<Ctrl>W"});
-        marlin_app.set_accels_for_action ("win.tabmenu-duplicate", {"<Ctrl><Alt>T"});
+        marlin_app.set_accels_for_action ("win.tabmenu-duplicate", {"<Shift><Ctrl>K"});
         marlin_app.set_accels_for_action ("win.tabmenu-move-to-window", {"<Ctrl><Alt>N"});
 
         var tab_menu = (Menu) tab_view.menu_model;
@@ -558,7 +575,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         ViewMode mode = default_mode,
         bool ignore_duplicate
     ) {
-
         // Do not try to restore locations that we cannot determine the filetype. This will
         // include deleted and other non-existent locations.  Note however, that disconnected remote
         // location may still give correct result, presumably due to caching by gvfs, so such
@@ -606,37 +622,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
 
         mode = real_mode (mode);
-        var content = new View.ViewContainer (this);
-
-        var page = tab_view.append (content);
-
-        content.tab_name_changed.connect ((tab_name) => {
-            check_for_tabs_with_same_name (); // Also sets tab_label
-        });
-
-        content.loading.connect ((is_loading) => {
-            if (restoring_tabs > 0 && !is_loading) {
-                restoring_tabs--;
-                /* Each restored tab must signal with is_loading false once */
-                assert (restoring_tabs >= 0);
-                if (!content.can_show_folder) {
-                    warning ("Cannot restore %s, ignoring", content.uri);
-                    /* remove_tab function uses Idle loop to close tab */
-                    remove_content (content);
-                }
-            }
-
-            page.loading = is_loading;
-            update_headerbar ();
-
-            if (restoring_tabs == 0 && !is_loading) {
-                save_tabs ();
-            }
-        });
-
-        content.active.connect (() => {
-            update_headerbar ();
-        });
+        var content = new View.ViewContainer ();
 
         if (!location.equal (_location)) {
             content.add_view (mode, location, {_location});
@@ -644,9 +630,47 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             content.add_view (mode, location);
         }
 
+        var page = tab_view.append (content);
         tab_view.selected_page = page;
 
+        connect_content_signals (content);
+
         return true;
+    }
+
+    // Called by content when associated with tab view.
+    public void connect_content_signals (ViewContainer content) {
+        content.tab_name_changed.connect (check_for_tabs_with_same_name);
+        content.loading.connect (on_content_loading);
+        content.active.connect (update_headerbar);
+    }
+
+    public void disconnect_content_signals (ViewContainer content) {
+        content.tab_name_changed.disconnect (check_for_tabs_with_same_name);
+        content.loading.disconnect (on_content_loading);
+        content.active.disconnect (update_headerbar);
+    }
+
+    private void on_content_loading (ViewContainer content, bool is_loading) {
+        if (restoring_tabs > 0 && !is_loading) {
+            restoring_tabs--;
+            /* Each restored tab must signal with is_loading false once */
+            assert (restoring_tabs >= 0);
+            if (!content.can_show_folder) {
+                warning ("Cannot restore %s, ignoring", content.uri);
+                /* remove_tab function uses Idle loop to close tab */
+                remove_content (content);
+            }
+        }
+
+        tab_view.get_page (content).loading = is_loading;
+
+        check_for_tabs_with_same_name ();
+        update_headerbar ();
+
+        if (restoring_tabs == 0 && !is_loading) {
+            save_tabs ();
+        }
     }
 
     private int location_is_duplicate (GLib.File location, bool is_folder, out bool is_child) {
@@ -786,10 +810,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void add_window (GLib.File location = default_location, ViewMode mode = default_mode) {
-        with (new Window (marlin_app)) {
-            add_tab (location, real_mode (mode), false);
-            present ();
-        }
+        var new_window = new Window (marlin_app);
+        new_window.add_tab.begin (location, real_mode (mode), false);
+        new_window.present ();
     }
 
     private void undo_actions_set_insensitive () {
@@ -856,7 +879,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             warning ("Too rapid reloading suppressed");
             return;
         }
-        current_container.reload ();
+
+        var slot = current_container.prepare_reload ();
+        if (slot != null) {
+            slot.reload (); // Initial reload request - will propagate to all alots showing same location
+        }
+
         sidebar.reload ();
     }
 
@@ -1031,7 +1059,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     public void after_undo_redo () {
         if (current_container.slot.directory.is_recent) {
-            current_container.reload ();
+            get_action_group ("win").activate_action ("refresh", null);
         }
 
         doing_undo_redo = false;
@@ -1065,6 +1093,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
         Files.Preferences.get_default ().sort_directories_first = state;
+    }
+
+    public void change_state_restore_tabs_on_startup (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+        Files.app_settings.set_boolean ("restore-tabs", state);
     }
 
     private void connect_to_server () {
@@ -1193,6 +1227,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void save_active_tab_position () {
+        if (tab_view.selected_page == null) {
+            return;
+        }
+
         Files.app_settings.set_int (
             "active-tab-position",
             tab_view.get_page_position (tab_view.selected_page)
@@ -1233,10 +1271,18 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
             if (yield add_tab_by_uri (root_uri, mode)) {
                 restoring_tabs++;
-            }
+                var tab = tab_view.selected_page;
+                if (tab != null &&
+                    tab.child != null &&
+                    tip_uri != root_uri) {
 
-            if (mode == ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
-                expand_miller_view (tip_uri, root_uri);
+                    var view = ((ViewContainer)(tab.child)).view;
+                    if (view != null && view is Miller) {
+                        expand_miller_view ((Miller)view, tip_uri, root_uri);
+                    }
+                }
+            } else {
+                debug ("Failed to restore tab %s", root_uri);
             }
 
             mode = ViewMode.INVALID;
@@ -1273,11 +1319,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         return restoring_tabs;
     }
 
-    private void expand_miller_view (string tip_uri, string unescaped_root_uri) {
+    private void expand_miller_view (Miller miller_view, string tip_uri, string unescaped_root_uri) {
         /* It might be more elegant for Miller.vala to handle this */
-        var tab = tab_view.selected_page;
-        var view = (ViewContainer)(tab.child);
-        var mwcols = (Miller)(view.view) ;
         var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri, null, false);
 
         if (unescaped_tip_uri == null) {
@@ -1287,6 +1330,22 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         var tip_location = FileUtils.get_file_for_path (unescaped_tip_uri);
         var root_location = FileUtils.get_file_for_path (unescaped_root_uri);
+
+        // If the root location no longer exists do not show the tab at all
+        if (!root_location.query_exists ()) {
+            warning ("Invalid root uri for Miller View");
+            return;
+        }
+
+        // If the tip location no longer exists search up the tree for existing folder
+        while (!tip_location.equal (root_location) && !tip_location.query_exists ()) {
+            tip_location = tip_location.get_parent ();
+            warning ("Invalid tip uri for Miller View - trying parent");
+            if (tip_location == null) {
+                tip_location = root_location.dup ();
+            }
+        }
+
         var relative_path = root_location.get_relative_path (tip_location);
         GLib.File gfile;
 
@@ -1298,7 +1357,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 uri += (GLib.Path.DIR_SEPARATOR_S + dir);
                 gfile = get_file_from_uri (uri);
 
-                mwcols.add_location (gfile, mwcols.current_slot); // MillerView can deal with multiple scroll requests
+                miller_view.add_location (gfile, miller_view.current_slot); // MillerView can deal with multiple scroll requests
             }
         } else {
             warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);
@@ -1374,7 +1433,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         GLib.File root = mount.get_root ();
 
         for (int i = 0; i < tab_view.n_pages; i++) {
-            var view_container = (View.ViewContainer) tab_view.get_nth_page (i);
+            var view_container = (View.ViewContainer) (tab_view.get_nth_page (i).child);
             GLib.File location = view_container.location;
 
             if (location == null || location.has_prefix (root) || location.equal (root)) {

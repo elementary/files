@@ -79,8 +79,8 @@ public class Sidebar.VolumelessMountRow : Sidebar.AbstractMountableRow, SidebarI
         }
     }
 
-    protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
-        add_extra_menu_items_for_mount (mount, menu_builder);
+    protected override void add_extra_menu_items (GLib.Menu menu) {
+        add_extra_menu_items_for_mount (mount, menu);
     }
 
     protected override async bool get_filesystem_space (Cancellable? update_cancellable) {
