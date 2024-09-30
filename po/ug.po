@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-14 18:24+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
 "PO-Revision-Date: 2016-12-12 07:21+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -48,7 +48,7 @@ msgstr "يىڭى ھۆججەت قۇرۇش"
 msgid "Select"
 msgstr " تاللاندى"
 
-#: filechooser-portal/Main.vala:107 libcore/PopupMenuBuilder.vala:50
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:316
 msgid "Open"
 msgstr "ئىچىش"
 
@@ -128,7 +128,7 @@ msgid "Port:"
 msgstr "پورت(_P):"
 
 #: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
-#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:260
+#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:242
 msgid "Type:"
 msgstr "تىپى:"
 
@@ -222,124 +222,124 @@ msgstr "بۇ يەرگە كۆپەيتىش"
 msgid "Link Here"
 msgstr "بۇ يەرگە ئۇلاش"
 
-#: libcore/Enums.vala:141 src/View/AbstractDirectoryView.vala:2356
+#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2321
 msgid "Name"
 msgstr "ئىسىم"
 
-#: libcore/Enums.vala:144 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
+#: libcore/Enums.vala:136 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
 #, fuzzy
 msgid "Creation Date"
 msgstr "قۇرۇش"
 
-#: libcore/Enums.vala:147
+#: libcore/Enums.vala:139
 #, fuzzy
 msgid "Last modification date"
 msgstr "ئاخىرقى ئۆزگەرتىلگەن ۋاقىت:"
 
-#: libcore/Enums.vala:150 src/View/AbstractDirectoryView.vala:2361
+#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2326
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "چوڭلۇقى"
 
-#: libcore/Enums.vala:173
+#: libcore/Enums.vala:165
 msgid "Number sequence"
 msgstr ""
 
-#: libcore/Enums.vala:176 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
+#: libcore/Enums.vala:168 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:179 src/View/AbstractDirectoryView.vala:2371
+#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2336
 msgid "Date"
 msgstr "چىسلا"
 
-#: libcore/Enums.vala:195
+#: libcore/Enums.vala:187
 msgid "Suffix"
 msgstr ""
 
-#: libcore/Enums.vala:198
+#: libcore/Enums.vala:190
 msgid "Prefix"
 msgstr ""
 
-#: libcore/Enums.vala:208
+#: libcore/Enums.vala:200
 msgid "Text to put at the end"
 msgstr ""
 
-#: libcore/Enums.vala:211
+#: libcore/Enums.vala:203
 msgid "Text to put at the start"
 msgstr ""
 
-#: libcore/Enums.vala:230
+#: libcore/Enums.vala:222
 msgid "Default Format - Date only"
 msgstr ""
 
-#: libcore/Enums.vala:232
+#: libcore/Enums.vala:224
 msgid "Default Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:234
+#: libcore/Enums.vala:226
 msgid "Locale Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:236
+#: libcore/Enums.vala:228
 msgid "ISO 8601 Format - Date only"
 msgstr ""
 
-#: libcore/Enums.vala:238
+#: libcore/Enums.vala:230
 msgid "ISO 8601 Format - Date and Time"
 msgstr ""
 
-#: libcore/Enums.vala:254
+#: libcore/Enums.vala:246
 #, fuzzy
 msgid "Date created"
 msgstr "قۇرۇش"
 
-#: libcore/Enums.vala:256
+#: libcore/Enums.vala:248
 #, fuzzy
 msgid "Date Modified"
 msgstr "ئۆزگەرتىلگەن ۋاقتى"
 
-#: libcore/Enums.vala:258
+#: libcore/Enums.vala:250
 msgid "Current Date"
 msgstr ""
 
-#: libcore/File.vala:554 libcore/File.vala:1117
+#: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
 msgstr ""
 
-#: libcore/File.vala:895
+#: libcore/File.vala:955
 #, fuzzy
 msgid "Failed to parse the desktop file"
 msgstr "ئۈستەليۈزى ھۆججىتى %s نى ئانالىز قىلىش مەغلۇپ بولدى"
 
-#: libcore/File.vala:899
+#: libcore/File.vala:959
 #, fuzzy
 msgid "Failed to parse the desktop file: "
 msgstr "ئۈستەليۈزى ھۆججىتى %s نى ئانالىز قىلىش مەغلۇپ بولدى"
 
-#: libcore/File.vala:911
+#: libcore/File.vala:971
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "ئۈستەليۈزى ھۆججىتى %s نى ئانالىز قىلىش مەغلۇپ بولدى"
 
-#: libcore/File.vala:920
+#: libcore/File.vala:980
 #, fuzzy
 msgid "Unable to Launch Desktop File: "
 msgstr "ئۈستەليۈزى ھۆججىتى %s نى ئانالىز قىلىش مەغلۇپ بولدى"
 
-#: libcore/File.vala:1110
+#: libcore/File.vala:1169
 #, fuzzy
 msgid "Empty"
 msgstr "قۇرۇق ھۆججەت"
 
-#: libcore/File.vala:1112
+#: libcore/File.vala:1171
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d مىنۇت"
 
-#: libcore/File.vala:1157
+#: libcore/File.vala:1216
 #, c-format
 msgid "link to %s"
 msgstr "%s غا ئۇلاش"
@@ -353,7 +353,7 @@ msgid "Original file"
 msgstr "ئورىگىنال ھۆججەت"
 
 #: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
-#: src/Dialogs/PropertiesWindow.vala:564
+#: src/Dialogs/PropertiesWindow.vala:546
 msgid "Size:"
 msgstr "چوڭلۇقى:"
 
@@ -547,7 +547,7 @@ msgstr[0] "%'d مىنۇت"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1264
+#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr ""
@@ -1115,66 +1115,6 @@ msgstr "%B ھۆججەتنى قۇرۇشتا خاتالىق كۆرۈلدى."
 msgid "There was an error creating the directory in %s."
 msgstr "%F غا مۇندەرىجە قۇرغاندا خاتالىق كۆرۈلدى."
 
-#: libcore/PopupMenuBuilder.vala:54
-msgid "Open in New _Tab"
-msgstr "يېڭى بەتكۈچتە ئىچىش(_T)"
-
-#: libcore/PopupMenuBuilder.vala:58
-msgid "Open in New _Window"
-msgstr "يېڭى كۆزنەكتە ئىچىش(_W)"
-
-#: libcore/PopupMenuBuilder.vala:62
-msgid "Remove"
-msgstr "چىقىرىۋىتىش"
-
-#: libcore/PopupMenuBuilder.vala:66
-#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-msgid "Rename"
-msgstr "ئىسمىنى ئۆزگەرتىش"
-
-#: libcore/PopupMenuBuilder.vala:70
-msgid "_Mount"
-msgstr "چىتىش(_M)"
-
-#: libcore/PopupMenuBuilder.vala:74
-msgid "_Unmount"
-msgstr "چۈشۈرۈش(_U)"
-
-#: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:117
-#: src/View/AbstractDirectoryView.vala:2063
-msgid "Properties"
-msgstr "خاسلىقلىرى"
-
-#: libcore/PopupMenuBuilder.vala:83
-msgid "Eject Media"
-msgstr ""
-
-#: libcore/PopupMenuBuilder.vala:88
-#, fuzzy
-msgid "Safely Remove"
-msgstr "چىقىرىۋىتىش"
-
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2056
-#, fuzzy
-msgid "Add to Bookmarks"
-msgstr "خەتكۈچلەر"
-
-#: libcore/PopupMenuBuilder.vala:104
-#, fuzzy
-msgid "Permanently Delete All Trash"
-msgstr "ئەخلەت چېلىكىدىن ھەممە تۈرلەرنى راسىتتىنلا ئۆچۈرەمسىز؟"
-
-#: libcore/PopupMenuBuilder.vala:104
-#, fuzzy
-msgid "Permanently Delete Trash"
-msgstr "ئەخلەت چېلىكىدىن ھەممە تۈرلەرنى راسىتتىنلا ئۆچۈرەمسىز؟"
-
-#: libcore/PopupMenuBuilder.vala:117
-#, fuzzy
-msgid "Permanently Delete Trash on this Mount"
-msgstr ""
-"بۇ دىسكا رايونىدىكى بارلىق تۈرلەرنى ئەخلەت چېلىكىدىن مەڭگۈلۈك ئۆچۈرەمسىز؟"
-
 #: libcore/ProgressInfo.vala:31 libcore/ProgressInfo.vala:32
 #: libcore/ProgressInfo.vala:33
 msgid "Preparing"
@@ -1631,8 +1571,8 @@ msgstr "پروگراممىنىڭ نەشرىنى كۆرسىتىش"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "يىڭى بەتكۈچتە تورئادىرىسىنى ئىچىش"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1944
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1909
+#: src/View/AbstractDirectoryView.vala:1915
 msgid "New Window"
 msgstr "يىڭى كۆزنەك"
 
@@ -1715,7 +1655,7 @@ msgstr "سۈزۈكلۈكى:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
-#: src/Dialogs/PropertiesWindow.vala:493 src/Dialogs/PropertiesWindow.vala:532
+#: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
 msgid "Unknown"
 msgstr "نامەلۇم"
 
@@ -1746,6 +1686,11 @@ msgstr "ئىسمىنى ئۆزگەرتىش"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
 #, fuzzy
 msgid "Bulk Rename"
+msgstr "ئىسمىنى ئۆزگەرتىش"
+
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
+#: src/View/Sidebar/BookmarkRow.vala:342
+msgid "Rename"
 msgstr "ئىسمىنى ئۆزگەرتىش"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
@@ -1843,119 +1788,121 @@ msgstr ""
 msgid "Set as default"
 msgstr "نورمالدىكىسى قىلىپ تەڭشەش"
 
-#: src/Dialogs/PropertiesWindow.vala:228
-msgid "Unable to determine file ownership and permissions"
-msgstr ""
+#: src/Dialogs/PropertiesWindow.vala:116
+#: src/View/AbstractDirectoryView.vala:2028
+#: src/View/Sidebar/AbstractMountableRow.vala:279
+msgid "Properties"
+msgstr "خاسلىقلىرى"
 
-#: src/Dialogs/PropertiesWindow.vala:238
+#: src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
 msgstr "سالاھىيەتلەر"
 
-#: src/Dialogs/PropertiesWindow.vala:281
+#: src/Dialogs/PropertiesWindow.vala:263
 msgid "Contains:"
 msgstr "ئۆز ئىچىگە ئالغىنى:"
 
-#: src/Dialogs/PropertiesWindow.vala:295
+#: src/Dialogs/PropertiesWindow.vala:277
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
 "%i ھۆججەتنى سالاھىيەت ياكى باشقا خاتالىق سەۋەبىدىن ئوقۇغىلى بولمىدى."
 
-#: src/Dialogs/PropertiesWindow.vala:300
+#: src/Dialogs/PropertiesWindow.vala:282
 msgid "Actual Size Could Be Larger"
 msgstr "ئەمەلىي چوڭلۇقى چوڭراق بولىشى مۇمكىن"
 
-#: src/Dialogs/PropertiesWindow.vala:321 src/Dialogs/PropertiesWindow.vala:340
+#: src/Dialogs/PropertiesWindow.vala:303 src/Dialogs/PropertiesWindow.vala:322
 msgid "unknown"
 msgstr "نامەلۇم"
 
-#: src/Dialogs/PropertiesWindow.vala:504
+#: src/Dialogs/PropertiesWindow.vala:486
 msgid "Loading…"
 msgstr "يۈكلەۋاتىدۇ...."
 
-#: src/Dialogs/PropertiesWindow.vala:538
+#: src/Dialogs/PropertiesWindow.vala:520
 msgid "Could not be determined"
 msgstr "جەزملەشتۈرگىلى بولمىدى"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:564
 msgid "Created:"
 msgstr "قۇرۇلغان ۋاقتى:"
 
-#: src/Dialogs/PropertiesWindow.vala:593
+#: src/Dialogs/PropertiesWindow.vala:575
 msgid "Modified:"
 msgstr "ئۆزگەرتىلگەن ۋاقتى:"
 
-#: src/Dialogs/PropertiesWindow.vala:605
+#: src/Dialogs/PropertiesWindow.vala:587
 msgid "Deleted:"
 msgstr "ئۆچۈرۈلگەن ۋاقتى:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:597
 #, fuzzy
 msgid "Media type:"
 msgstr "ھۆججەت فورماتى:"
 
-#: src/Dialogs/PropertiesWindow.vala:622
+#: src/Dialogs/PropertiesWindow.vala:604
 msgid "Resolution:"
 msgstr "ئىنىقلىقى:"
 
-#: src/Dialogs/PropertiesWindow.vala:630
+#: src/Dialogs/PropertiesWindow.vala:612
 #: src/Dialogs/VolumePropertiesWindow.vala:76
 msgid "Location:"
 msgstr "ئورنى:"
 
-#: src/Dialogs/PropertiesWindow.vala:640
+#: src/Dialogs/PropertiesWindow.vala:622
 msgid "Target:"
 msgstr "نىشان:"
 
-#: src/Dialogs/PropertiesWindow.vala:648
+#: src/Dialogs/PropertiesWindow.vala:630
 msgid "Original Location:"
 msgstr "ئەسلى ئورنى:"
 
-#: src/Dialogs/PropertiesWindow.vala:671
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/Dialogs/PropertiesWindow.vala:653
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Other Application…"
 msgstr "باشقا ئەپلەر...."
 
-#: src/Dialogs/PropertiesWindow.vala:691
+#: src/Dialogs/PropertiesWindow.vala:673
 msgid "Open with:"
 msgstr "ئىچىش ئۇسۇلى:"
 
-#: src/Dialogs/PropertiesWindow.vala:960 src/Dialogs/PropertiesWindow.vala:967
+#: src/Dialogs/PropertiesWindow.vala:940
+msgid "Unable to determine file ownership and permissions"
+msgstr ""
+
+#: src/Dialogs/PropertiesWindow.vala:947
 msgid "Owner:"
 msgstr "ئىگىسى:"
 
-#: src/Dialogs/PropertiesWindow.vala:961 src/Dialogs/PropertiesWindow.vala:970
+#: src/Dialogs/PropertiesWindow.vala:948
 msgid "Group:"
 msgstr "گۇرۇپپا:"
 
-#: src/Dialogs/PropertiesWindow.vala:973
-msgid "Everyone:"
-msgstr "ھەربىر ئادەم:"
-
-#: src/Dialogs/PropertiesWindow.vala:1255
+#: src/Dialogs/PropertiesWindow.vala:1244
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1259
-#: src/Dialogs/PropertiesWindow.vala:1281
+#: src/Dialogs/PropertiesWindow.vala:1248
+#: src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1277 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1266 src/View/Widgets/OverlayBar.vala:171
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1286
+#: src/Dialogs/PropertiesWindow.vala:1275
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
@@ -1963,7 +1910,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1288
+#: src/Dialogs/PropertiesWindow.vala:1277
 #, c-format
 msgid "%s (%s, %s)"
 msgstr ""
@@ -1998,193 +1945,216 @@ msgstr "ئىسمىنى '%s' غا ئۆزگەرتكىلى بولمىدى"
 msgid "Could not open files or URIs with this app"
 msgstr "بۇ ئەپ بىلەن ھۆججەت ياكى تور ئادىرىسلىرىنى ئىچىش مەغلۇپ بولدى"
 
-#: src/View/AbstractDirectoryView.vala:868
-#: src/View/AbstractDirectoryView.vala:1195
+#: src/Utils/Permissions.vala:29
+#, fuzzy
+#| msgid "Owner:"
+msgid "Owner"
+msgstr "ئىگىسى:"
+
+#: src/Utils/Permissions.vala:31
+#, fuzzy
+#| msgid "Group:"
+msgid "Group"
+msgstr "گۇرۇپپا:"
+
+#: src/Utils/Permissions.vala:34
+#, fuzzy
+#| msgid "Everyone:"
+msgid "Everyone"
+msgstr "ھەربىر ئادەم:"
+
+#: src/View/AbstractDirectoryView.vala:856
+#: src/View/AbstractDirectoryView.vala:1183
 #, fuzzy
 msgid "Cannot execute this file"
 msgstr "بۇ ھۆججەتنى ئاچقىلى بولمىدى"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:878
+#: src/View/AbstractDirectoryView.vala:866
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:879
+#: src/View/AbstractDirectoryView.vala:867
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:894
+#: src/View/AbstractDirectoryView.vala:882
 msgid "Cannot open this file"
 msgstr "بۇ ھۆججەتنى ئاچقىلى بولمىدى"
 
-#: src/View/AbstractDirectoryView.vala:907
+#: src/View/AbstractDirectoryView.vala:895
 msgid "Cannot identify file type to open"
 msgstr "ئاچماقچى بولغان ھۆججەتنىڭ تۈرىنى پەرقلەندۈرگىلى بولمىدى"
 
-#: src/View/AbstractDirectoryView.vala:1653
+#: src/View/AbstractDirectoryView.vala:1618
 msgid "Cannot drop this file"
 msgstr "بۇ ھۆججەتنى قويغىلى بولمىدى"
 
-#: src/View/AbstractDirectoryView.vala:1654
+#: src/View/AbstractDirectoryView.vala:1619
 msgid "Invalid file name provided"
 msgstr "تەمىنلەنگەن ھۆججەت ئىسمى ئىناۋەتسىز"
 
-#: src/View/AbstractDirectoryView.vala:1927
-#: src/View/AbstractDirectoryView.vala:1933 src/View/Window.vala:239
+#: src/View/AbstractDirectoryView.vala:1892
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "يىڭى بەتكۈچ قۇرۇش"
 
-#: src/View/AbstractDirectoryView.vala:1967
+#: src/View/AbstractDirectoryView.vala:1932
 msgid "Run"
 msgstr "ئىجرا قىلىش"
 
-#: src/View/AbstractDirectoryView.vala:1974
+#: src/View/AbstractDirectoryView.vala:1939
 #, c-format
 msgid "Open in %s"
 msgstr "%s دا ئىچىش"
 
-#: src/View/AbstractDirectoryView.vala:2043
+#: src/View/AbstractDirectoryView.vala:2008
 msgid "Open in"
 msgstr "دا ئىچىش"
 
-#: src/View/AbstractDirectoryView.vala:2045
+#: src/View/AbstractDirectoryView.vala:2010
 #: src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open with"
 msgstr "بىلەن ئىچىش"
 
-#: src/View/AbstractDirectoryView.vala:2076
+#: src/View/AbstractDirectoryView.vala:2021
+#, fuzzy
+msgid "Add to Bookmarks"
+msgstr "خەتكۈچلەر"
+
+#: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2085
+#: src/View/AbstractDirectoryView.vala:2050
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2094
+#: src/View/AbstractDirectoryView.vala:2059
 #, fuzzy
 msgid "Deselect All"
 msgstr "ھەممىنى ئەسلىگە كەلتۈرۈش"
 
-#: src/View/AbstractDirectoryView.vala:2102
+#: src/View/AbstractDirectoryView.vala:2067
 msgid "Cut"
 msgstr "كىسىش"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2110
+#: src/View/AbstractDirectoryView.vala:2075
 msgid "Copy"
 msgstr "كۆپەيتىش"
 
-#: src/View/AbstractDirectoryView.vala:2117
+#: src/View/AbstractDirectoryView.vala:2082
 msgid "Move to Trash"
 msgstr "ئەخلەت چېلىكىگە تاشلاش"
 
-#: src/View/AbstractDirectoryView.vala:2122
+#: src/View/AbstractDirectoryView.vala:2087
 #, fuzzy
 msgid "Delete Permanently"
 msgstr "مەڭگۈلۈك ئۆچۈرۈش"
 
-#: src/View/AbstractDirectoryView.vala:2129
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Restore from Trash"
 msgstr "ئەخلەت چېلىكىدىن ئەسلىگە قايتۇرۇش"
 
-#: src/View/AbstractDirectoryView.vala:2152
+#: src/View/AbstractDirectoryView.vala:2117
 msgid "Open Parent Folder"
 msgstr "ئاتا مۇندەرىجىنى ئىچىش"
 
-#: src/View/AbstractDirectoryView.vala:2155
+#: src/View/AbstractDirectoryView.vala:2120
 msgid "Remove from History"
 msgstr "تارىختىن ئۆچۈرۈش"
 
-#: src/View/AbstractDirectoryView.vala:2181
+#: src/View/AbstractDirectoryView.vala:2146
 #, fuzzy
 msgid "Rename…"
 msgstr "ئىسمىنى ئۆزگەرتىش"
 
-#: src/View/AbstractDirectoryView.vala:2188
+#: src/View/AbstractDirectoryView.vala:2153
 #, fuzzy
 msgid "Copy as Link"
 msgstr "چاپلاش"
 
-#: src/View/AbstractDirectoryView.vala:2211
-#: src/View/AbstractDirectoryView.vala:2291
+#: src/View/AbstractDirectoryView.vala:2176
+#: src/View/AbstractDirectoryView.vala:2256
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "مۇندەرىجىگە چاپلاش"
 
-#: src/View/AbstractDirectoryView.vala:2216
-#: src/View/AbstractDirectoryView.vala:2268
+#: src/View/AbstractDirectoryView.vala:2181
+#: src/View/AbstractDirectoryView.vala:2233
 msgid "Paste into Folder"
 msgstr "مۇندەرىجىگە چاپلاش"
 
-#: src/View/AbstractDirectoryView.vala:2226
-#: src/View/AbstractDirectoryView.vala:2296
+#: src/View/AbstractDirectoryView.vala:2191
+#: src/View/AbstractDirectoryView.vala:2261
 msgid "Paste"
 msgstr "چاپلاش"
 
-#: src/View/AbstractDirectoryView.vala:2334
+#: src/View/AbstractDirectoryView.vala:2299
 #, fuzzy
 #| msgid "Set as default"
 msgid "Set as Wallpaper"
 msgstr "نورمالدىكىسى قىلىپ تەڭشەش"
 
-#: src/View/AbstractDirectoryView.vala:2366 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2331 src/View/ListView.vala:28
 msgid "Type"
 msgstr "تىپى"
 
-#: src/View/AbstractDirectoryView.vala:2376
+#: src/View/AbstractDirectoryView.vala:2341
 msgid "Reversed Order"
 msgstr "تەتۈر تەرتىپ بويىچە تىزىش"
 
-#: src/View/AbstractDirectoryView.vala:2379
+#: src/View/AbstractDirectoryView.vala:2344
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2391
+#: src/View/AbstractDirectoryView.vala:2356
 msgid "Sort by"
 msgstr "رەتكە تىزىش ئاساسى"
 
-#: src/View/AbstractDirectoryView.vala:2399
+#: src/View/AbstractDirectoryView.vala:2364
 msgid "Folder"
 msgstr "مۇندەرىجە"
 
-#: src/View/AbstractDirectoryView.vala:2405
+#: src/View/AbstractDirectoryView.vala:2370
 msgid "Empty File"
 msgstr "قۇرۇق ھۆججەت"
 
-#: src/View/AbstractDirectoryView.vala:2456
+#: src/View/AbstractDirectoryView.vala:2421
 msgid "New"
 msgstr "يىڭىدىن قۇرۇش"
 
-#: src/View/AbstractDirectoryView.vala:2701
+#: src/View/AbstractDirectoryView.vala:2666
 #, c-format
 msgid "Untitled %s"
 msgstr "ئىسىمسىز %s"
 
-#: src/View/AbstractDirectoryView.vala:3006
-#: src/View/AbstractDirectoryView.vala:3209
+#: src/View/AbstractDirectoryView.vala:2961
+#: src/View/AbstractDirectoryView.vala:3164
 msgid "Cannot remove files from here"
 msgstr "بۇ يەردىن ھۆججەتلەرنى يۆتكىگىلى بولمىدى"
 
-#: src/View/AbstractDirectoryView.vala:3007
-#: src/View/AbstractDirectoryView.vala:3182
-#: src/View/AbstractDirectoryView.vala:3193
-#: src/View/AbstractDirectoryView.vala:3210
+#: src/View/AbstractDirectoryView.vala:2962
+#: src/View/AbstractDirectoryView.vala:3137
+#: src/View/AbstractDirectoryView.vala:3148
+#: src/View/AbstractDirectoryView.vala:3165
 msgid "You do not have permission to change this location"
 msgstr "سىزنىڭ بۇ ئورۇننى ئۆزگەرتىش سالاھىيىتىڭىز يوق"
 
-#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:3105
 msgid "Cannot copy files that are in the trash"
 msgstr "ئەخلەت چېلىكىدىكى ھۆججەتلەرنى كۆپەيتكىلى بولمايدۇ"
 
-#: src/View/AbstractDirectoryView.vala:3151
+#: src/View/AbstractDirectoryView.vala:3106
 msgid "Cutting the selection instead"
 msgstr "تاللانغان مەزمۇننى كىسىش"
 
-#: src/View/AbstractDirectoryView.vala:3181
-#: src/View/AbstractDirectoryView.vala:3192
+#: src/View/AbstractDirectoryView.vala:3136
+#: src/View/AbstractDirectoryView.vala:3147
 msgid "Cannot paste files here"
 msgstr "ھۆججەتلەرنى بۇ يەرگە چاپلىغىلى بولمىدى"
 
@@ -2327,57 +2297,67 @@ msgstr ""
 msgid "Closed Tabs"
 msgstr "تاقاش"
 
-#: src/View/Window.vala:462 src/View/Widgets/BreadcrumbsEntry.vala:393
+#: src/View/Window.vala:467 src/View/Widgets/BreadcrumbsEntry.vala:393
 msgid "Open in New Window"
 msgstr "يېڭى كۆزنەكتە ئىچىش"
 
-#: src/View/Window.vala:463
+#: src/View/Window.vala:468
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "\"%B\" نى جايىدا كۆچۈرۈۋاتىدۇ"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:467
+#: src/View/Window.vala:472
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:468
+#: src/View/Window.vala:473
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "تاقاش"
 
-#: src/View/Window.vala:469
+#: src/View/Window.vala:474
 #, fuzzy
 msgid "Close Tab"
 msgstr "تاقاش"
 
-#: src/View/Window.vala:757 src/View/Window.vala:767
+#: src/View/Window.vala:762 src/View/Window.vala:772
 msgid "(as Administrator)"
 msgstr "(باشقۇرغۇچى سالاھىيىتىدە)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:196
 #, fuzzy, c-format
 msgid "Eject '%s'"
 msgstr "‹'%s' نى ئۆچۈرۈش"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
-#: src/View/Sidebar/AbstractMountableRow.vala:172
+#: src/View/Sidebar/AbstractMountableRow.vala:196
 #, fuzzy, c-format
 msgid "Unmount '%s'"
 msgstr "%s نى چۈشۈرگىلى بولمىدى"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:306
+#: src/View/Sidebar/AbstractMountableRow.vala:263
+#, fuzzy
+msgid "Permanently Delete Trash on this Mount"
+msgstr ""
+"بۇ دىسكا رايونىدىكى بارلىق تۈرلەرنى ئەخلەت چېلىكىدىن مەڭگۈلۈك ئۆچۈرەمسىز؟"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:274
+msgid "_Unmount"
+msgstr "چۈشۈرۈش(_U)"
+
+#: src/View/Sidebar/AbstractMountableRow.vala:331
 #, c-format
 msgid "%s free"
 msgstr ""
 
-#: src/View/Sidebar/AbstractMountableRow.vala:307
+#: src/View/Sidebar/AbstractMountableRow.vala:332
 #, fuzzy, c-format
 msgid "%s used of %s"
 msgstr "%S / %S"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:362
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #: src/View/Widgets/SearchResults.vala:76
@@ -2385,7 +2365,7 @@ msgstr "%S / %S"
 msgid "%s (%s)"
 msgstr "%s (كۆچۈرۈلمە)%s"
 
-#: src/View/Sidebar/AbstractMountableRow.vala:337
+#: src/View/Sidebar/AbstractMountableRow.vala:362
 msgid "Not mounted"
 msgstr ""
 
@@ -2405,6 +2385,28 @@ msgstr "يىقىندا ئىشلەتكەن ھۆججەتلەر تىزىملىكى�
 msgid "Open the Trash"
 msgstr "ئەخلەت چېلىكىنى ئىچىش"
 
+#: src/View/Sidebar/BookmarkRow.vala:318
+msgid "Open in New _Tab"
+msgstr "يېڭى بەتكۈچتە ئىچىش(_T)"
+
+#: src/View/Sidebar/BookmarkRow.vala:319
+msgid "Open in New _Window"
+msgstr "يېڭى كۆزنەكتە ئىچىش(_W)"
+
+#: src/View/Sidebar/BookmarkRow.vala:338
+msgid "Remove"
+msgstr "چىقىرىۋىتىش"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete All Trash"
+msgstr "ئەخلەت چېلىكىدىن ھەممە تۈرلەرنى راسىتتىنلا ئۆچۈرەمسىز؟"
+
+#: src/View/Sidebar/BookmarkRow.vala:354
+#, fuzzy
+msgid "Permanently Delete Trash"
+msgstr "ئەخلەت چېلىكىدىن ھەممە تۈرلەرنى راسىتتىنلا ئۆچۈرەمسىز؟"
+
 #: src/View/Sidebar/DeviceListBox.vala:158
 #, fuzzy
 msgid "View the root of the local filesystem"
@@ -2423,6 +2425,11 @@ msgstr ""
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
 msgstr ""
+
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:180
+#, fuzzy
+msgid "Safely Remove"
+msgstr "چىقىرىۋىتىش"
 
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
@@ -2459,10 +2466,14 @@ msgstr ""
 msgid "Connect Server…"
 msgstr "مۇلازىمېتىرغا ئۇلاش...."
 
-#: src/View/Sidebar/VolumeRow.vala:166
+#: src/View/Sidebar/VolumeRow.vala:174
 #, fuzzy
 msgid "Mount"
 msgstr "چىتىش(_M)"
+
+#: src/View/Sidebar/VolumeRow.vala:184
+msgid "Eject Media"
+msgstr ""
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy
@@ -2528,7 +2539,7 @@ msgid "No operation to redo"
 msgstr ""
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:125
-#: src/View/Widgets/LocationBar.vala:199
+#: src/View/Widgets/LocationBar.vala:191
 msgid "Search or Type Path"
 msgstr ""
 
@@ -2540,11 +2551,11 @@ msgstr "يېڭى بەتكۈچتە ئىچىش"
 msgid "Open in Other Application…"
 msgstr "باشقا ئەپتە ئىچىش...."
 
-#: src/View/Widgets/LocationBar.vala:195
+#: src/View/Widgets/LocationBar.vala:187
 msgid "Reload this folder"
 msgstr "بۇ مۇندەرىجىنى قايتا يۈكلەش"
 
-#: src/View/Widgets/LocationBar.vala:208
+#: src/View/Widgets/LocationBar.vala:200
 #, fuzzy
 msgid "Searching…"
 msgstr "يۈكلەۋاتىدۇ...."
@@ -2601,15 +2612,15 @@ msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] "%s ھۆججەت ئوقۇغىلى بولمايدىغان ھۆججەت"
 
-#: src/View/Widgets/PermissionButton.vala:38
+#: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"
 msgstr "ئوقۇش"
 
-#: src/View/Widgets/PermissionButton.vala:42
+#: src/View/Widgets/PermissionButton.vala:61
 msgid "Write"
 msgstr "يىزىش"
 
-#: src/View/Widgets/PermissionButton.vala:46
+#: src/View/Widgets/PermissionButton.vala:69
 msgid "Execute"
 msgstr "ئىجرا قىلىش"
 
@@ -2630,6 +2641,9 @@ msgstr "بۇ مۇندەرىجىدە"
 #, fuzzy
 msgid "Recently Used"
 msgstr "يىقىندىكىسى"
+
+#~ msgid "_Mount"
+#~ msgstr "چىتىش(_M)"
 
 #, fuzzy
 #~ msgctxt "bulk-rename"

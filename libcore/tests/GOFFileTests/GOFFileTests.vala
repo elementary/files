@@ -118,7 +118,7 @@ void new_hidden_local_test () {
     assert (file != null);
     assert (file.location != null);
     /* File is assumed to exist and be accessible when created */
-    assert (file.exists == true);
+    assert (file.exists);
     assert (file.is_connected == true);
     assert (file.is_mounted);
 

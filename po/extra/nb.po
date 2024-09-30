@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-14 18:24+0000\n"
-"PO-Revision-Date: 2023-08-26 15:08+0000\n"
+"POT-Creation-Date: 2024-09-08 08:46+0000\n"
+"PO-Revision-Date: 2024-06-16 21:16+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
 "extra/nb/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.5.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
@@ -80,11 +80,11 @@ msgstr "Retting av småfeil"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "Restoring tabs from last time is now optional"
-msgstr ""
+msgstr "Gjenoppretting av faner fra sist gang er nå valgfritt"
 
 #: data/files.metainfo.xml.in.in:70
 msgid "Drag and select can no longer be done with secondary pointer button"
-msgstr ""
+msgstr "Fjernet dra- og slipp med sekundær pekeknapp"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:93
 #: data/files.metainfo.xml.in.in:110 data/files.metainfo.xml.in.in:122
@@ -95,28 +95,30 @@ msgstr "Nye oversettelser"
 
 #: data/files.metainfo.xml.in.in:87
 msgid "Discontinue support for dragging bookmark out of sidebar"
-msgstr ""
+msgstr "Fjernet støtte for å dra bokmerke ut av sidefelt"
 
 #: data/files.metainfo.xml.in.in:88
 msgid "Fix unexpected scrolling after renaming a folder"
-msgstr ""
+msgstr "Fikset uventet rulling etter endring av mappenavn"
 
 #: data/files.metainfo.xml.in.in:89
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
-msgstr ""
+msgstr "Fikset sjeldent krasj ved bytting til rutenettsvisning"
 
 #: data/files.metainfo.xml.in.in:90
 msgid "Ensure the selection persists after refreshing the view"
-msgstr ""
+msgstr "Sikret visning av peker etter gjenoppfriskning av visning"
 
 #: data/files.metainfo.xml.in.in:91
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
+"Fikset at Filer ikke kan åpnes etter at man prøver å gjenopprette fra et "
+"frakoblet område"
 
 #: data/files.metainfo.xml.in.in:92
 msgid "Fix the view continuing to show when a location is unmounted"
-msgstr ""
+msgstr "Fikset at vinsing vedvarer etter at et område avmonteres"
 
 #: data/files.metainfo.xml.in.in:136
 msgid "Improvements:"
