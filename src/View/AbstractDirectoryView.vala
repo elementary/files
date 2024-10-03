@@ -3560,6 +3560,7 @@ namespace Files {
                             /* on expanders (if any) or xpad. Handle ourselves so that clicking
                              * on xpad also expands/collapses row (accessibility). */
                             expand_collapse (path);
+                            button_controller.set_state (CLAIMED);
                             break;
 
                         default:
