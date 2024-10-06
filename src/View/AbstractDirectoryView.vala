@@ -496,6 +496,12 @@ namespace Files {
                 return;
             }
 
+            // Ensure focus file not overridden later
+            if (set_cursor_timeout_id > 0) {
+                Source.remove (set_cursor_timeout_id);
+                set_cursor_timeout_id = 0;
+            }
+
             if (select_source_handler > 0) {
                 disconnect (select_source_handler);
                 select_source_handler = 0;
@@ -506,7 +512,6 @@ namespace Files {
 
             uint count = 0;
             Gtk.TreeIter? iter;
-
             foreach (Files.File f in files_to_select) {
                 /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
                 if (model.get_first_iter_for_file (f, out iter)) {
@@ -3555,6 +3560,7 @@ namespace Files {
                             /* on expanders (if any) or xpad. Handle ourselves so that clicking
                              * on xpad also expands/collapses row (accessibility). */
                             expand_collapse (path);
+                            button_controller.set_state (CLAIMED);
                             break;
 
                         default:
