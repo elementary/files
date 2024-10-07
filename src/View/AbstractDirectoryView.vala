@@ -3579,6 +3579,10 @@ namespace Files {
                     break;
 
                 case Gdk.BUTTON_SECONDARY: // button 3
+                    // No native behaviours on secondary click that we want
+                    // ListView will cause unwanted deselections otherwise.
+                    button_controller.set_state (CLAIMED);
+
                     switch (click_zone) {
                         case ClickZone.BLANK_NO_PATH:
                         case ClickZone.INVALID:
