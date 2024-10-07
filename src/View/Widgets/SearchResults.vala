@@ -137,6 +137,9 @@ namespace Files.View.Chrome {
         Gtk.TreeModelFilter filter;
         Gtk.ScrolledWindow scroll;
         public Gtk.Widget delegate_widget { get; construct; }
+
+        private Gtk.ListBox list_box;
+        private GLib.ListStore list_store;
         private Gtk.GestureMultiPress search_tree_view_button_controller;
         private Gtk.EventControllerKey key_controller;
 
@@ -166,6 +169,15 @@ namespace Files.View.Chrome {
 
             zg_index = new Zeitgeist.Index ();
 #endif
+
+            list_store = new GLib.ListStore (typeof (Match));
+
+            list_box = new Gtk.ListBox () {
+                selection_mode = BROWSE
+            };
+            list_box.bind_model (list_store, widget_create_func);
+            list_box.get_style_context ().add_class ("rich-list"); // FIXME: in Gtk4 use style constant
+
             search_tree_view = new Gtk.TreeView () {
                 headers_visible = false,
                 level_indentation = 12,
@@ -180,9 +192,12 @@ namespace Files.View.Chrome {
             });
 
             scroll = new Gtk.ScrolledWindow (null, null) {
-                child = search_tree_view,
+                child = list_box,
                 hscrollbar_policy = Gtk.PolicyType.NEVER,
-                propagate_natural_height = true,
+                margin_top = 6,
+                margin_bottom = 6,
+                max_content_height = 500,
+                propagate_natural_height = true
             };
 
             get_style_context ().add_class ("completion-popup");
@@ -271,6 +286,29 @@ namespace Files.View.Chrome {
                 propagation_phase = CAPTURE
             };
             key_controller.key_pressed.connect (on_key_pressed_event);
+        }
+
+        private Gtk.Widget widget_create_func (Object item) {
+            var match = (Match) item;
+
+            var image = new Gtk.Image.from_gicon (match.icon, DND);
+
+            var title_label = new Gtk.Label (match.name);
+
+            var path_label = new Gtk.Label (match.path_string);
+            path_label.get_style_context ().add_class (Granite.STYLE_CLASS_SMALL_LABEL);
+            path_label.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+
+            var box = new Gtk.Box (HORIZONTAL, 0);
+            box.add (image);
+            box.add (title_label);
+            box.add (path_label);
+
+            var list_box_row = new Gtk.ListBoxRow () {
+                child = box
+            };
+
+            return list_box_row;
         }
 
         private void update_category_headers () {
@@ -674,6 +712,8 @@ namespace Files.View.Chrome {
             }
 
             foreach (var match in new_results) {
+                list_store.append (match);
+
                 Gtk.TreeIter? iter = null;
                 GLib.File file;
                 /* do not add global result if already in local results */
