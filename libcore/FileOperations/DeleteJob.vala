@@ -84,4 +84,81 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                             false,
                             CANCEL, DELETE) == 1;
     }
+
+    protected void report_delete_progress (CommonJob.SourceInfo source_info, CommonJob.TransferInfo transfer_info) {
+        int64 now = GLib.get_monotonic_time () * 1000; // in ns
+        if (transfer_info.last_report_time != 0 &&
+            ((int64)transfer_info.last_report_time - now).abs () < 100 * CommonJob.NSEC_PER_MSEC) {
+            return;
+        }
+
+        transfer_info.last_report_time = now;
+
+        int files_left = source_info.num_files - transfer_info.num_files;
+
+        /* Races and whatnot could cause this to be negative... */
+        if (files_left < 0) {
+            files_left = 1;
+        }
+
+        string files_left_s = ngettext (
+            "%'d file left to delete",
+            "%'d files left to delete",
+            files_left
+        ).printf (files_left);
+
+        progress.take_status (_("Deleting files"));
+
+        double elapsed = time.elapsed ();
+        if (elapsed < CommonJob.SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE) {
+            progress.take_details ((owned) files_left_s);
+        } else {
+            double transfer_rate = transfer_info.num_files / elapsed;
+            int remaining_time = (int) GLib.Math.floor (files_left / transfer_rate);
+            int formated_time_unit;
+            string formated_time = FileUtils.format_time (remaining_time, out formated_time_unit);
+
+            /// TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
+            /// The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
+            string time_left_s = ngettext ("%s left", "%s left", formated_time_unit).printf (formated_time);
+
+            string details = files_left_s.concat ("\xE2\x80\x94", time_left_s); //FIXME Remove opaque hex
+            progress.take_details ((owned) details);
+        }
+
+        if (source_info.num_files != 0) {
+            progress.update_progress (transfer_info.num_files, source_info.num_files);
+        }
+    }
+
+    protected void report_delete_count_progress (CommonJob.SourceInfo source_info) {
+        /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
+        /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+        /// So this represents something like "Preparing to delete 100 files (200 MB)"
+        /// The order in which %'d and %s appear can be changed by using the right positional specifier.
+        var s = ngettext (
+            "Preparing to delete %'d file (%s)",
+            "Preparing to delete %'d files (%s)",
+            source_info.num_files
+        ).printf (source_info.num_files, GLib.format_size (source_info.num_bytes));
+        progress.take_details (s);
+        progress.pulse_progress ();
+    }
+
+    protected void report_trash_progress (int files_trashed, int total_files) {
+        var files_left = total_files - files_trashed;
+
+        progress.take_status (_("Moving files to trash"));
+
+        var s = ngettext (
+            "%'d file left to trash",
+            "%'d files left to trash",
+            files_left
+        ).printf (files_left);
+        progress.take_details (s);
+
+        if (total_files != 0) {
+            progress.update_progress (files_trashed, total_files);
+        }
+    }
 }
