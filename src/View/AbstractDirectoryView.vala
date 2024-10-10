@@ -906,7 +906,7 @@ namespace Files {
             }
         }
 
-        // Only called after initial loadilng finished, in response to files added due to internal or external
+        // Only called after initial loading finished, in response to files added due to internal or external
         // file operations
         private void add_file (Files.File file, Directory dir, bool is_internal = true) {
             model.insert_sorted (file, dir);
@@ -3622,8 +3622,6 @@ namespace Files {
             renaming = true;
             update_menu_actions ();
             is_frozen = true;
-
-
             uint count = 0;
             bool ok_next_time = false;
             Gtk.TreePath? start_path = null;
