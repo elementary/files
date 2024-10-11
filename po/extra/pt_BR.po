@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-08 08:46+0000\n"
+"POT-Creation-Date: 2024-10-10 18:21+0000\n"
 "PO-Revision-Date: 2024-09-15 16:16+0000\n"
 "Last-Translator: Neylson Soares <neylsonsoarest+weblate@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
@@ -93,7 +93,8 @@ msgstr "Traduções atualizadas"
 
 #: data/files.metainfo.xml.in.in:87
 msgid "Discontinue support for dragging bookmark out of sidebar"
-msgstr "Descontinuar suporte para arrastar favoritos para fora da barra lateral"
+msgstr ""
+"Descontinuar suporte para arrastar favoritos para fora da barra lateral"
 
 #: data/files.metainfo.xml.in.in:88
 msgid "Fix unexpected scrolling after renaming a folder"
