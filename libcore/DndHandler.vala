@@ -353,6 +353,10 @@ namespace Files {
                 return Gdk.DragAction.DEFAULT;
             }
 
+            if (!dest.is_mounted) {
+                return Gdk.DragAction.DEFAULT;
+            }
+
             if (dest.is_folder ()) {
                 if (!dest.is_writable ()) {
                     actions = Gdk.DragAction.DEFAULT;
