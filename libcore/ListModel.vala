@@ -129,15 +129,37 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         return iter_n_children (null);
     }
 
-    public bool get_first_iter_for_file (Files.File file, out Gtk.TreeIter? iter) {
-        iter = null;
-        var row = file_treerow_map.@get (file.uri);
-        if (row != null) {
-            get_iter (out iter, row.get_path ());
-            return true;
+    public Gtk.TreePath? get_path_for_first_file (Files.File? file) {
+        if (file == null) {
+            return null;
+        }
+
+        Gtk.TreeIter? iter = null;
+        if (get_first_iter_for_file (file, out iter)) {
+            return get_path (iter);
         } else {
+            return null;
+        }
+    }
+
+    private bool get_first_iter_for_file (Files.File? file, out Gtk.TreeIter? iter) {
+        iter = null;
+
+        if (file == null) {
             return false;
         }
+
+        var row = file_treerow_map.@get (file.uri);
+        if (row != null) {
+            if (row.valid ()) {
+                get_iter (out iter, row.get_path ());
+                return true;
+            } else {
+                file_treerow_map.unset (file.uri);
+            }
+        }
+
+        return false;
     }
 
     public void get_value (Gtk.TreeIter iter, int column, out Value value) {
