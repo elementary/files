@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-10 18:21+0000\n"
-"PO-Revision-Date: 2024-08-31 18:16+0000\n"
+"PO-Revision-Date: 2024-10-12 17:53+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/"
-">\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2161,8 +2161,7 @@ msgstr "Изменить параметры безопасности"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
-"Открыть приложение для настройки системы безопасности и конфиденциальности"
+msgstr "Открыть приложение для настройки защиты и приватности"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
