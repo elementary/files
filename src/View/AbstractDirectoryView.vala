@@ -212,8 +212,6 @@ namespace Files {
         protected GLib.List<Files.File> selected_files = null;
         private bool selected_files_invalid = true;
 
-        private static GLib.List<GLib.File> templates = null;
-
         private GLib.AppInfo default_app;
         private Gtk.TreePath? hover_path = null;
 
@@ -2489,7 +2487,7 @@ namespace Files {
             critical ("Action name not found: %s - cannot set state", name);
         }
 
-        private static void load_templates_from_folder (GLib.File template_folder, Gtk.Menu submenu) {
+        private static void load_templates_from_folder (GLib.File template_folder, Gtk.Menu submenu, uint count = 0) {
             GLib.List<GLib.File> file_list = null;
             GLib.List<GLib.File> folder_list = null;
 
@@ -2497,7 +2495,6 @@ namespace Files {
             var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
             try {
                 enumerator = template_folder.enumerate_children ("standard::*", flags, null);
-                uint count = templates.length (); //Assume to be limited in size
                 GLib.File location;
                 GLib.FileInfo? info = enumerator.next_file (null);
 
