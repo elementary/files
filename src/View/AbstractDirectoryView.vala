@@ -2344,11 +2344,69 @@ namespace Files {
 
                 unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
                 if (template_path != null) {
-                    var template_folder = GLib.File.new_for_path (template_path);
-                    load_templates_from_folder (template_folder, submenu);
+                    load_templates_from_folder (GLib.File.new_for_path (template_path), submenu);
                 }
 
                 label = _("New");
+            }
+
+            private void load_templates_from_folder (GLib.File template_folder, Gtk.Menu submenu, uint count = 0) {
+                GLib.List<GLib.File> file_list = null;
+                GLib.List<GLib.File> folder_list = null;
+
+                GLib.FileEnumerator enumerator;
+                var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
+                try {
+                    enumerator = template_folder.enumerate_children ("standard::*", flags, null);
+                    GLib.File location;
+                    GLib.FileInfo? info = enumerator.next_file (null);
+
+                    while (count < MAX_TEMPLATES && (info != null)) {
+                        if (!info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_HIDDEN) &&
+                            !info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_BACKUP)) {
+                            location = template_folder.get_child (info.get_name ());
+                            if (info.get_file_type () == GLib.FileType.DIRECTORY) {
+                                folder_list.prepend (location);
+                            } else {
+                                file_list.prepend (location);
+                                count ++;
+                            }
+                        }
+
+                        info = enumerator.next_file (null);
+                    }
+                } catch (GLib.Error error) {
+                    return;
+                }
+
+                if (folder_list.length () > 0) {
+                    folder_list.sort ((a, b) => {
+                        return strcmp (a.get_basename ().down (), b.get_basename ().down ());
+                    });
+
+                    folder_list.@foreach ((folder) => {
+                        var folder_menu = new Gtk.Menu ();
+                        var folder_menuitem = new Gtk.MenuItem.with_label (folder.get_basename ());
+                        folder_menuitem.submenu = folder_menu;
+                        submenu.add (folder_menuitem);
+                        load_templates_from_folder (folder, folder_menu);
+                    });
+                }
+
+                if (file_list.length () > 0) {
+                    file_list.sort ((a, b) => {
+                        return strcmp (a.get_basename ().down (), b.get_basename ().down ());
+                    });
+
+                    file_list.@foreach ((file) => {
+                        var template_menuitem = new Gtk.MenuItem.with_label (file.get_basename ()) {
+                            action_name = "background.create-from",
+                            action_target = file.get_path ()
+                        };
+
+                        submenu.add (template_menuitem);
+                    });
+                }
             }
         }
 
@@ -2485,65 +2543,6 @@ namespace Files {
                 }
             }
             critical ("Action name not found: %s - cannot set state", name);
-        }
-
-        private static void load_templates_from_folder (GLib.File template_folder, Gtk.Menu submenu, uint count = 0) {
-            GLib.List<GLib.File> file_list = null;
-            GLib.List<GLib.File> folder_list = null;
-
-            GLib.FileEnumerator enumerator;
-            var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
-            try {
-                enumerator = template_folder.enumerate_children ("standard::*", flags, null);
-                GLib.File location;
-                GLib.FileInfo? info = enumerator.next_file (null);
-
-                while (count < MAX_TEMPLATES && (info != null)) {
-                    if (!info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_HIDDEN) &&
-                        !info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_BACKUP)) {
-                        location = template_folder.get_child (info.get_name ());
-                        if (info.get_file_type () == GLib.FileType.DIRECTORY) {
-                            folder_list.prepend (location);
-                        } else {
-                            file_list.prepend (location);
-                            count ++;
-                        }
-                    }
-
-                    info = enumerator.next_file (null);
-                }
-            } catch (GLib.Error error) {
-                return;
-            }
-
-            if (folder_list.length () > 0) {
-                folder_list.sort ((a, b) => {
-                    return strcmp (a.get_basename ().down (), b.get_basename ().down ());
-                });
-
-                folder_list.@foreach ((folder) => {
-                    var folder_menu = new Gtk.Menu ();
-                    var folder_menuitem = new Gtk.MenuItem.with_label (folder.get_basename ());
-                    folder_menuitem.submenu = folder_menu;
-                    submenu.add (folder_menuitem);
-                    load_templates_from_folder (folder, folder_menu);
-                });
-            }
-
-            if (file_list.length () > 0) {
-                file_list.sort ((a, b) => {
-                    return strcmp (a.get_basename ().down (), b.get_basename ().down ());
-                });
-
-                file_list.@foreach ((file) => {
-                    var template_menuitem = new Gtk.MenuItem.with_label (file.get_basename ()) {
-                        action_name = "background.create-from",
-                        action_target = file.get_path ()
-                    };
-
-                    submenu.add (template_menuitem);
-                });
-            }
         }
 
         private void filter_this_app_from_open_with_apps () {
