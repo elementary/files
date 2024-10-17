@@ -82,7 +82,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     public Gtk.Builder ui;
     public Files.Application marlin_app { get; construct; }
     private unowned UndoManager undo_manager;
-    public Hdy.HeaderBar headerbar;
+    private Hdy.HeaderBar headerbar;
     public Chrome.ViewSwitcher view_switcher;
     public Hdy.TabView tab_view;
     public Hdy.TabBar tab_bar;
@@ -217,7 +217,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         };
 
         headerbar = new Hdy.HeaderBar () {
-            show_close_button = true,
+            show_close_button = false,
             custom_title = new Gtk.Label (null)
         };
         headerbar.pack_start (button_back);
@@ -257,6 +257,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         };
 
         var tab_box = new Gtk.Box (VERTICAL, 0);
+        tab_box.add (headerbar);
         tab_box.add (tab_bar);
         tab_box.add (tab_view);
 
@@ -267,15 +268,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             expand = true,
             position = Files.app_settings.get_int ("sidebar-width")
         };
+
         lside_pane.pack1 (sidebar, false, false);
         lside_pane.pack2 (tab_box, true, true);
-
-        var grid = new Gtk.Grid ();
-        grid.attach (headerbar, 0, 0);
-        grid.attach (lside_pane, 0, 1);
-        grid.show_all ();
-
-        add (grid);
+        lside_pane.show_all ();
+        add (lside_pane);
 
         /** Apply preferences */
         var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
