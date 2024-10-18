@@ -263,7 +263,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         var header_group = new Hdy.HeaderGroup ();
         header_group.add_header_bar (sidebar.headerbar);
         header_group.add_header_bar (headerbar);
-            
+
         /** Apply preferences */
         var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
         get_action ("show-hidden").set_state (prefs.show_hidden_files);
