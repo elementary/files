@@ -18,7 +18,7 @@
 ***/
 
 public class Files.Plugins.Cloud.Plugin : Files.Plugins.Base {
-    Files.SidebarInterface? sidebar;
+    Sidebar.SidebarInterface? sidebar;
     CloudProviders.Collector collector;
     GLib.GenericArray<CloudProviders.Provider> providers_connected;
 
@@ -34,7 +34,7 @@ public class Files.Plugins.Cloud.Plugin : Files.Plugins.Base {
      * @param a instance of Files.AbstractSidebar
      */
     public override void sidebar_loaded (Gtk.Widget widget) {
-        sidebar = (Files.SidebarInterface)widget;
+        sidebar = (Sidebar.SidebarInterface)widget;
         on_providers_changes ();
     }
 
@@ -94,7 +94,7 @@ public class Files.Plugins.Cloud.Plugin : Files.Plugins.Base {
         //  Fix menu loading with wrong order by forcing dbus to cache menu_model
         account.menu_model.get_n_items ();
         var reference = sidebar.add_plugin_item (adapt_plugin_item (provider, account),
-                                                 Files.PlaceType.NETWORK_CATEGORY);
+                                                 Sidebar.PlaceType.NETWORK_CATEGORY);
 
         //  Update sidebar representation of the cloudprovider account on it's properties changes
         account.notify.connect (() => {
@@ -106,10 +106,10 @@ public class Files.Plugins.Cloud.Plugin : Files.Plugins.Base {
     /**
      * Generate a SidebarPluginItem from provider and account information
      */
-    static Files.SidebarPluginItem adapt_plugin_item (CloudProviders.Provider provider,
+    static Sidebar.SidebarPluginItem adapt_plugin_item (CloudProviders.Provider provider,
                                                         CloudProviders.Account account) {
 
-        var item = new Files.SidebarPluginItem () {
+        var item = new Sidebar.SidebarPluginItem () {
             name = account.name,
             tooltip = account.path,
             uri = account.path,

@@ -5,8 +5,8 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public interface Sidebar.SidebarListInterface : Object {
-    public abstract Files.SidebarInterface sidebar { get; set construct; }
+public interface Files.Sidebar.SidebarListInterface : Object {
+    public abstract SidebarInterface sidebar { get; set construct; }
     public abstract Gtk.ListBox list_box { get; set construct; }
 
     public abstract void select_item (Gtk.ListBoxRow? item);
@@ -19,7 +19,7 @@ public interface Sidebar.SidebarListInterface : Object {
     public abstract void refresh (); //Clear and recreate all rows
     public virtual void refresh_info () {} //Update all rows without recreating them
 
-    public virtual uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
+    public virtual uint32 add_plugin_item (SidebarPluginItem plugin_item) {
         return 0;
     }
 

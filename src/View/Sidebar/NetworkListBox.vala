@@ -20,11 +20,11 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
-    public Files.SidebarInterface sidebar { get; set construct; }
+public class Files.Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
+    public Files.Sidebar.SidebarInterface sidebar { get; set construct; }
     public Gtk.ListBox list_box { get; set construct; }
 
-    public NetworkListBox (Files.SidebarInterface sidebar) {
+    public NetworkListBox (Files.Sidebar.SidebarInterface sidebar) {
         Object (sidebar: sidebar);
     }
 
@@ -82,7 +82,7 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         return (BookmarkRow) row;
     }
 
-    public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
+    public override uint32 add_plugin_item (Files.Sidebar.SidebarPluginItem plugin_item) {
         var row = add_bookmark (plugin_item.name,
                                 plugin_item.uri,
                                 plugin_item.icon,

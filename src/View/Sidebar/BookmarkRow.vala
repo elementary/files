@@ -20,7 +20,7 @@
  * Authors: Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
+public class Files.Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     /* Targets available from BookmarkRow when it is the dragged
      * Just the row ID as text at the moment
      */
@@ -224,10 +224,10 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         insert_action_group ("bookmark", action_group);
 
-        ((Gtk.Application) Application.get_default ()).set_accels_for_action ("bookmark.rename", { "F2" });
+        ((Gtk.Application)GLib.Application.get_default ()).set_accels_for_action ("bookmark.rename", { "F2" });
     }
 
-    protected override void update_plugin_data (Files.SidebarPluginItem item) {
+    protected override void update_plugin_data (SidebarPluginItem item) {
         custom_name = item.name;
         uri = item.uri;
         update_icon (item.icon);

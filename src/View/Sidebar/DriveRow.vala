@@ -30,7 +30,7 @@
 // For now these drives are not shown.
 //TODO Add functionality to format/partition such drives.
 
-public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterface {
+public class Files.Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterface {
     public override bool is_mounted {
         get {
             return false; // Volumeless drives are regarded as unmounted

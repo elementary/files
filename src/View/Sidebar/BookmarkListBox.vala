@@ -20,14 +20,14 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
-    public Files.SidebarInterface sidebar { get; set construct; }
+public class Files.Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
+    public Files.Sidebar.SidebarInterface sidebar { get; set construct; }
     public Gtk.ListBox list_box { get; set construct; }
 
     private Files.BookmarkList bookmark_list;
     private unowned Files.TrashMonitor trash_monitor;
 
-    public BookmarkListBox (Files.SidebarInterface sidebar) {
+    public BookmarkListBox (Files.Sidebar.SidebarInterface sidebar) {
         Object (sidebar: sidebar);
     }
 
@@ -88,7 +88,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         return row;
     }
 
-    public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
+    public override uint32 add_plugin_item (Files.Sidebar.SidebarPluginItem plugin_item) {
         var row = add_bookmark (plugin_item.name,
                                 plugin_item.uri,
                                 plugin_item.icon,

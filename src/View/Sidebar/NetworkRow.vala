@@ -20,7 +20,7 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Sidebar.NetworkRow : Sidebar.VolumelessMountRow {
+public class Files.Sidebar.NetworkRow : Sidebar.VolumelessMountRow {
     public NetworkRow (string name, string uri, Icon gicon, SidebarListInterface list,
                                bool pinned, bool permanent,
                                string? _uuid, Mount? _mount) {
@@ -57,7 +57,7 @@ public class Sidebar.NetworkRow : Sidebar.VolumelessMountRow {
     }
 
     protected override async bool get_filesystem_space (Cancellable? update_cancellable) {
-        File root;
+        GLib.File root;
         if (mount != null) {
             root = mount.get_root ();
         } else {

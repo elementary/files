@@ -23,7 +23,7 @@
 // Represents a mount not associated with a volume or drive - usually a bind mount
 // Also used for builtin row "FileSystem" which has null mount
 /*FIXME Identify and deal with any other conditions resulting in a volumeless mount */
-public class Sidebar.VolumelessMountRow : Sidebar.AbstractMountableRow, SidebarItemInterface {
+public class Files.Sidebar.VolumelessMountRow : Sidebar.AbstractMountableRow, SidebarItemInterface {
     public VolumelessMountRow (string name, string uri, Icon gicon, SidebarListInterface list,
                                bool pinned, bool permanent,
                                string? _uuid, Mount? _mount) {
@@ -84,11 +84,11 @@ public class Sidebar.VolumelessMountRow : Sidebar.AbstractMountableRow, SidebarI
     }
 
     protected override async bool get_filesystem_space (Cancellable? update_cancellable) {
-        File root;
+        GLib.File root;
         if (mount != null) {
             root = mount.get_root ();
         } else {
-            root = File.new_for_uri ("file:///"); //Is this always "file:///" if no mount?
+            root = GLib.File.new_for_uri ("file:///"); //Is this always "file:///" if no mount?
         }
 
         return yield get_filesystem_space_for_root (root, update_cancellable);

@@ -6,7 +6,7 @@
  */
 
 
-public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
+public class Files.Sidebar.SidebarWindow : Gtk.Box, Files.Sidebar.SidebarInterface {
     public Hdy.HeaderBar headerbar;
     private Gtk.ScrolledWindow scrolled_window;
     private BookmarkListBox bookmark_listbox;
@@ -26,6 +26,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     construct {
         orientation = Gtk.Orientation.VERTICAL;
         get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
+
 
         headerbar = new Hdy.HeaderBar () {
             custom_title = new Gtk.Label ("Test"),
@@ -152,18 +153,18 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     }
 
     /* SidebarInterface */
-    public uint32 add_plugin_item (Files.SidebarPluginItem plugin_item, Files.PlaceType category) {
+    public uint32 add_plugin_item (SidebarPluginItem plugin_item, PlaceType category) {
         uint32 id = 0;
         switch (category) {
-            case Files.PlaceType.BOOKMARKS_CATEGORY:
+            case PlaceType.BOOKMARKS_CATEGORY:
                 id = bookmark_listbox.add_plugin_item (plugin_item);
                 break;
 
-            case Files.PlaceType.STORAGE_CATEGORY:
+            case PlaceType.STORAGE_CATEGORY:
                 id = device_listbox.add_plugin_item (plugin_item);
                 break;
 
-            case Files.PlaceType.NETWORK_CATEGORY:
+            case PlaceType.NETWORK_CATEGORY:
                 id = network_listbox.add_plugin_item (plugin_item);
                 break;
 
@@ -174,7 +175,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         return id;
     }
 
-    public bool update_plugin_item (Files.SidebarPluginItem item, uint32 item_id) {
+    public bool update_plugin_item (SidebarPluginItem item, uint32 item_id) {
         if (item_id == 0) {
             return false;
         }
@@ -241,7 +242,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         device_listbox.refresh_info ();
     }
 
-    public void focus () {
+    public new void focus () {
         bookmark_listbox.focus ();
     }
 
