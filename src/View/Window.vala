@@ -82,14 +82,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     public Gtk.Builder ui;
     public Files.Application marlin_app { get; construct; }
     private unowned UndoManager undo_manager;
-    public Hdy.HeaderBar headerbar;
+    private Hdy.HeaderBar headerbar;
     public Chrome.ViewSwitcher view_switcher;
     public Hdy.TabView tab_view;
     public Hdy.TabBar tab_bar;
     private Gtk.Paned lside_pane;
-    public SidebarInterface sidebar;
-    private Chrome.ButtonWithMenu button_forward;
-    private Chrome.ButtonWithMenu button_back;
+    public Sidebar.SidebarWindow sidebar;
     private Chrome.LocationBar? location_bar;
     private Gtk.MenuButton tab_history_button;
 
@@ -191,16 +189,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void build_window () {
-        button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic");
-
-        button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
-        button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-
-        button_forward = new View.Chrome.ButtonWithMenu ("go-next-symbolic");
-
-        button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
-        button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-
         view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
             margin_end = 20
         };
@@ -220,8 +208,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             show_close_button = true,
             custom_title = new Gtk.Label (null)
         };
-        headerbar.pack_start (button_back);
-        headerbar.pack_start (button_forward);
         headerbar.pack_start (view_switcher);
         headerbar.pack_start (location_bar);
         headerbar.pack_end (menu_button);
@@ -257,6 +243,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         };
 
         var tab_box = new Gtk.Box (VERTICAL, 0);
+        tab_box.add (headerbar);
         tab_box.add (tab_bar);
         tab_box.add (tab_view);
 
@@ -267,15 +254,15 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             expand = true,
             position = Files.app_settings.get_int ("sidebar-width")
         };
+
         lside_pane.pack1 (sidebar, false, false);
         lside_pane.pack2 (tab_box, true, true);
+        lside_pane.show_all ();
+        add (lside_pane);
 
-        var grid = new Gtk.Grid ();
-        grid.attach (headerbar, 0, 0);
-        grid.attach (lside_pane, 0, 1);
-        grid.show_all ();
-
-        add (grid);
+        var header_group = new Hdy.HeaderGroup ();
+        header_group.add_header_bar (sidebar.headerbar);
+        header_group.add_header_bar (headerbar);
 
         /** Apply preferences */
         var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
@@ -305,15 +292,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 case ViewMode.INVALID:
                     assert_not_reached (); //The switcher should not generate these modes
             }
-        });
-
-
-        button_forward.slow_press.connect (() => {
-            get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
-        });
-
-        button_back.slow_press.connect (() => {
-            get_action_group ("win").activate_action ("back", new Variant.int32 (1));
         });
 
         location_bar.escape.connect (grab_focus);
@@ -1375,8 +1353,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         /* Update browser buttons */
         set_back_menu (current_container.get_go_back_path_list ());
         set_forward_menu (current_container.get_go_forward_path_list ());
-        button_back.sensitive = current_container.can_go_back;
-        button_forward.sensitive = (current_container.can_show_folder && current_container.can_go_forward);
+        sidebar.button_back.sensitive = current_container.can_go_back;
+        sidebar.button_forward.sensitive = (current_container.can_show_folder && current_container.can_go_forward);
         location_bar.sensitive = !current_container.is_loading;
 
         /* Update viewmode switch, action state and settings */
@@ -1399,7 +1377,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             back_menu.append_item (item);
         }
 
-        button_back.menu = back_menu;
+        sidebar.button_back.menu = back_menu;
     }
 
     private void set_forward_menu (Gee.List<string> path_list) {
@@ -1414,7 +1392,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             forward_menu.append_item (item);
         }
 
-        button_forward.menu = forward_menu;
+        sidebar.button_forward.menu = forward_menu;
     }
 
     private void update_location_bar (string new_path, bool with_animation = true) {

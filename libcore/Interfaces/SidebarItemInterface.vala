@@ -21,7 +21,7 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public interface Sidebar.SidebarItemInterface : Object {
+public interface Files.Sidebar.SidebarItemInterface : Object {
     /* Non constant static members must be initialised in implementing class */
     protected static uint32 row_id;
     protected static Gee.HashMap<uint32, SidebarItemInterface> item_id_map;
@@ -65,7 +65,7 @@ public interface Sidebar.SidebarItemInterface : Object {
     }
 
     public virtual void add_extra_menu_items (GLib.Menu menu) {}
-    public virtual void update_plugin_data (Files.SidebarPluginItem item) {}
+    public virtual void update_plugin_data (SidebarPluginItem item) {}
 
     public virtual void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
         list.open_item (this, flag);

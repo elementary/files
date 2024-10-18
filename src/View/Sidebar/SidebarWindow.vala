@@ -6,7 +6,10 @@
  */
 
 
-public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
+public class Files.Sidebar.SidebarWindow : Gtk.Box, SidebarInterface {
+    public Hdy.HeaderBar headerbar;
+    public View.Chrome.ButtonWithMenu button_back { get; construct; }
+    public View.Chrome.ButtonWithMenu button_forward { get; construct; }
     private Gtk.ScrolledWindow scrolled_window;
     private BookmarkListBox bookmark_listbox;
     private DeviceListBox device_listbox;
@@ -23,6 +26,38 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     }
 
     construct {
+        orientation = Gtk.Orientation.VERTICAL;
+        get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
+
+        button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic") {
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"))
+        };
+        button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+
+        button_forward = new View.Chrome.ButtonWithMenu ("go-next-symbolic") {
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"))
+        };
+        button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+
+        button_forward.slow_press.connect (() => {
+            get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
+        });
+
+        button_back.slow_press.connect (() => {
+            get_action_group ("win").activate_action ("back", new Variant.int32 (1));
+        });
+
+        var button_box = new Gtk.Box (HORIZONTAL, 0);
+        button_box.add (button_back);
+        button_box.add (button_forward);
+
+        headerbar = new Hdy.HeaderBar () {
+            custom_title = button_box,
+            show_close_button = true
+        };
+        headerbar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        add (headerbar);
+
         bookmark_listbox = new BookmarkListBox (this);
         device_listbox = new DeviceListBox (this);
         network_listbox = new NetworkListBox (this);
@@ -141,18 +176,18 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     }
 
     /* SidebarInterface */
-    public uint32 add_plugin_item (Files.SidebarPluginItem plugin_item, Files.PlaceType category) {
+    public uint32 add_plugin_item (SidebarPluginItem plugin_item, PlaceType category) {
         uint32 id = 0;
         switch (category) {
-            case Files.PlaceType.BOOKMARKS_CATEGORY:
+            case PlaceType.BOOKMARKS_CATEGORY:
                 id = bookmark_listbox.add_plugin_item (plugin_item);
                 break;
 
-            case Files.PlaceType.STORAGE_CATEGORY:
+            case PlaceType.STORAGE_CATEGORY:
                 id = device_listbox.add_plugin_item (plugin_item);
                 break;
 
-            case Files.PlaceType.NETWORK_CATEGORY:
+            case PlaceType.NETWORK_CATEGORY:
                 id = network_listbox.add_plugin_item (plugin_item);
                 break;
 
@@ -163,7 +198,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         return id;
     }
 
-    public bool update_plugin_item (Files.SidebarPluginItem item, uint32 item_id) {
+    public bool update_plugin_item (SidebarPluginItem item, uint32 item_id) {
         if (item_id == 0) {
             return false;
         }
@@ -230,7 +265,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         device_listbox.refresh_info ();
     }
 
-    public void focus () {
+    public new void focus () {
         bookmark_listbox.focus ();
     }
 

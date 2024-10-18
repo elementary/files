@@ -16,7 +16,7 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-namespace Files {
+namespace Files.Sidebar {
     [CCode (has_target = false)]
     public delegate void SidebarCallbackFunc (Gtk.Widget widget);
 
@@ -32,10 +32,10 @@ namespace Files {
     }
 }
 
-public interface Files.SidebarInterface : Gtk.Widget {
+public interface Files.Sidebar.SidebarInterface : Gtk.Widget {
         /* Plugin interface */
-        public abstract uint32 add_plugin_item (Files.SidebarPluginItem item, Files.PlaceType category);
-        public abstract bool update_plugin_item (Files.SidebarPluginItem item, uint32 item_id);
+        public abstract uint32 add_plugin_item (SidebarPluginItem item, PlaceType category);
+        public abstract bool update_plugin_item (SidebarPluginItem item, uint32 item_id);
         /* Window interface */
         public signal bool request_focus ();
         public signal void sync_needed ();

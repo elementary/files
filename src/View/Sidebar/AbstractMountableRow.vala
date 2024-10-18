@@ -20,14 +20,15 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-// Used to determine first level sort order.
-public enum MountableType {
-    VOLUMELESS_MOUNT,
-    VOLUME,
-    EMPTY_DRIVE
-}
 
-public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, SidebarItemInterface {
+
+public abstract class Files.Sidebar.AbstractMountableRow :Files.Sidebar.BookmarkRow, SidebarItemInterface {
+    // Used to determine first level sort order.
+    public enum MountableType {
+        VOLUMELESS_MOUNT,
+        VOLUME,
+        EMPTY_DRIVE
+    }
     private double storage_capacity = 0;
     private double storage_free = 0;
     public string sort_key { get; set construct; default = "";} // Higher index -> further down list
@@ -198,7 +199,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         storage_levelbar.visible = is_mounted;
     }
 
-    protected override void update_plugin_data (Files.SidebarPluginItem item) {
+    protected override void update_plugin_data (SidebarPluginItem item) {
         base.update_plugin_data (item);
         working = item.show_spinner;
     }
@@ -279,7 +280,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         menu.append_section (null, properties_section);
     }
 
-    protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {
+    protected async bool get_filesystem_space_for_root (GLib.File root, Cancellable? update_cancellable) {
         storage_capacity = 0;
         storage_free = 0;
 
