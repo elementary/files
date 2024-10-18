@@ -8,6 +8,8 @@
 
 public class Files.Sidebar.SidebarWindow : Gtk.Box, Files.Sidebar.SidebarInterface {
     public Hdy.HeaderBar headerbar;
+    public View.Chrome.ButtonWithMenu button_back { get; construct; }
+    public View.Chrome.ButtonWithMenu button_forward { get; construct; }
     private Gtk.ScrolledWindow scrolled_window;
     private BookmarkListBox bookmark_listbox;
     private DeviceListBox device_listbox;
@@ -27,9 +29,30 @@ public class Files.Sidebar.SidebarWindow : Gtk.Box, Files.Sidebar.SidebarInterfa
         orientation = Gtk.Orientation.VERTICAL;
         get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
 
+        button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic") {
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"))
+        };
+        button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+
+        button_forward = new View.Chrome.ButtonWithMenu ("go-next-symbolic") {
+            tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"))
+        };
+        button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+
+        button_forward.slow_press.connect (() => {
+            get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
+        });
+
+        button_back.slow_press.connect (() => {
+            get_action_group ("win").activate_action ("back", new Variant.int32 (1));
+        });
+
+        var button_box = new Gtk.Box (HORIZONTAL, 0);
+        button_box.add (button_back);
+        button_box.add (button_forward);
 
         headerbar = new Hdy.HeaderBar () {
-            custom_title = new Gtk.Label ("Test"),
+            custom_title = button_box,
             show_close_button = true
         };
         headerbar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
