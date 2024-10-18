@@ -20,13 +20,13 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Files.Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
-    public Files.Sidebar.SidebarInterface sidebar { get; set construct; }
+public class Files.Sidebar.DeviceListBox : Gtk.Box, SidebarListInterface {
+    public SidebarInterface sidebar { get; set construct; }
     public Gtk.ListBox list_box { get; set construct; }
 
     private VolumeMonitor volume_monitor;
 
-    public DeviceListBox (Files.Sidebar.SidebarInterface sidebar) {
+    public DeviceListBox (SidebarInterface sidebar) {
         Object (sidebar: sidebar);
     }
 
@@ -122,7 +122,7 @@ public class Files.Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface
         return bm; // Should not be null (either an existing bookmark or a new one)
     }
 
-    public override uint32 add_plugin_item (Files.Sidebar.SidebarPluginItem plugin_item) {
+    public override uint32 add_plugin_item (SidebarPluginItem plugin_item) {
         var row = add_bookmark (plugin_item.name,
                                  plugin_item.uri,
                                  plugin_item.icon,

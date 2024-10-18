@@ -23,7 +23,7 @@
 // Represents a mount not associated with a volume or drive - usually a bind mount
 // Also used for builtin row "FileSystem" which has null mount
 /*FIXME Identify and deal with any other conditions resulting in a volumeless mount */
-public class Files.Sidebar.VolumelessMountRow : Sidebar.AbstractMountableRow, SidebarItemInterface {
+public class Files.Sidebar.VolumelessMountRow : AbstractMountableRow, SidebarItemInterface {
     public VolumelessMountRow (string name, string uri, Icon gicon, SidebarListInterface list,
                                bool pinned, bool permanent,
                                string? _uuid, Mount? _mount) {

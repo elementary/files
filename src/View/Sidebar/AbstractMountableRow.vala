@@ -199,7 +199,7 @@ public abstract class Files.Sidebar.AbstractMountableRow :Files.Sidebar.Bookmark
         storage_levelbar.visible = is_mounted;
     }
 
-    protected override void update_plugin_data (Files.Sidebar.SidebarPluginItem item) {
+    protected override void update_plugin_data (SidebarPluginItem item) {
         base.update_plugin_data (item);
         working = item.show_spinner;
     }

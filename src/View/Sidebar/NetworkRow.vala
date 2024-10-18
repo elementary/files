@@ -20,7 +20,7 @@
  * Authors : Jeremy Wootten <jeremy@elementaryos.org>
  */
 
-public class Files.Sidebar.NetworkRow : Sidebar.VolumelessMountRow {
+public class Files.Sidebar.NetworkRow : VolumelessMountRow {
     public NetworkRow (string name, string uri, Icon gicon, SidebarListInterface list,
                                bool pinned, bool permanent,
                                string? _uuid, Mount? _mount) {

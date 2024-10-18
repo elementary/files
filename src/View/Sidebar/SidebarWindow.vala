@@ -6,7 +6,7 @@
  */
 
 
-public class Files.Sidebar.SidebarWindow : Gtk.Box, Files.Sidebar.SidebarInterface {
+public class Files.Sidebar.SidebarWindow : Gtk.Box, SidebarInterface {
     public Hdy.HeaderBar headerbar;
     public View.Chrome.ButtonWithMenu button_back { get; construct; }
     public View.Chrome.ButtonWithMenu button_forward { get; construct; }
