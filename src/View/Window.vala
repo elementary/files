@@ -87,7 +87,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     public Hdy.TabView tab_view;
     public Hdy.TabBar tab_bar;
     private Gtk.Paned lside_pane;
-    public SidebarInterface sidebar;
+    public Sidebar.SidebarWindow sidebar;
     private Chrome.ButtonWithMenu button_forward;
     private Chrome.ButtonWithMenu button_back;
     private Chrome.LocationBar? location_bar;
@@ -217,7 +217,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         };
 
         headerbar = new Hdy.HeaderBar () {
-            show_close_button = false,
+            show_close_button = true,
             custom_title = new Gtk.Label (null)
         };
         headerbar.pack_start (button_back);
@@ -273,6 +273,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         lside_pane.pack2 (tab_box, true, true);
         lside_pane.show_all ();
         add (lside_pane);
+
+        var header_group = new Hdy.HeaderGroup ();
+        header_group.add_header_bar (sidebar.headerbar);
+        header_group.add_header_bar (headerbar);
 
         /** Apply preferences */
         var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application

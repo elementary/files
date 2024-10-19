@@ -7,6 +7,7 @@
 
 
 public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
+    public Hdy.HeaderBar headerbar;
     private Gtk.ScrolledWindow scrolled_window;
     private BookmarkListBox bookmark_listbox;
     private DeviceListBox device_listbox;
@@ -23,6 +24,15 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     }
 
     construct {
+        orientation = Gtk.Orientation.VERTICAL;
+        get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
+
+        headerbar = new Hdy.HeaderBar () {
+            show_close_button = true
+        };
+        headerbar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        add (headerbar);
+
         bookmark_listbox = new BookmarkListBox (this);
         device_listbox = new DeviceListBox (this);
         network_listbox = new NetworkListBox (this);
