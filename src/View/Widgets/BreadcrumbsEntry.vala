@@ -45,7 +45,18 @@ namespace Files.View.Chrome {
             }
         } // Candidate completion (placeholder)
 
-        public bool search_mode = false; // Used to suppress activate events while searching
+        public new bool hide_breadcrumbs {
+            get {
+                return base.hide_breadcrumbs || search_mode;
+            }
+
+            set {
+                base.hide_breadcrumbs = value;
+            }
+        }
+
+        // Used to suppress various events while searching
+        public bool search_mode { set; get; default = false; }
 
         /** Drag and drop support **/
         protected const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY |
@@ -106,9 +117,14 @@ namespace Files.View.Chrome {
         }
 
         public override void reset () {
-            base.reset ();
-            completion_text = "";
-            current_completion_dir = null; // Do not cancel as this could interfere with a loading tab
+            if (search_mode) {
+                return;
+            } else {
+                base.reset ();
+                completion_text = "";
+                // Do not cancel as this could interfere with a loading tab
+                current_completion_dir = null;
+            }
         }
 
     /** Search related functions **/

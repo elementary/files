@@ -39,7 +39,19 @@ namespace Files.View.Chrome {
             }
         }
 
-        public bool hide_breadcrumbs { get; set; default = false; }
+        private bool _hide_breadcrumbs = false;
+        public bool hide_breadcrumbs {
+            get {
+                return _hide_breadcrumbs;
+            }
+
+            set {
+                _hide_breadcrumbs = value;
+                if (!hide_breadcrumbs) {
+                    set_entry_text ("");
+                }
+            }
+        }
         public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 16;
         public const double MINIMUM_BREADCRUMB_WIDTH = 12;
         public const int ICON_WIDTH = 32;

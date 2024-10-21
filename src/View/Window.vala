@@ -45,7 +45,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"folders-before-files", null, null, "true", change_state_folders_before_files},
         {"restore-tabs-on-startup", null, null, "true", change_state_restore_tabs_on_startup},
         {"forward", action_forward, "i"},
-        {"back", action_back, "i"}
+        {"back", action_back, "i"},
+        {"focus-sidebar", action_focus_sidebar}
     };
 
     public uint window_number { get; construct; }
@@ -165,6 +166,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.info::HELP", {"F1"});
             marlin_app.set_accels_for_action ("win.tab::TAB", {"<Shift><Ctrl>K"});
             marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
+            marlin_app.set_accels_for_action ("win.focus-sidebar", {"<Ctrl>Left"});
         }
 
         build_window ();
@@ -538,7 +540,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         ViewMode mode = default_mode,
         bool ignore_duplicate
     ) {
-
         // Always try to restore tabs
         var n_tabs_restored = yield restore_tabs ();
         if (n_tabs_restored < 1 &&
@@ -609,12 +610,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 ftype == FileType.DIRECTORY,
                 out is_child
             );
+
             if (existing_tab_position >= 0) {
                 tab_view.selected_page = tab_view.get_nth_page (existing_tab_position);
-
                 if (is_child) {
                     /* Select the child  */
-                    current_container.focus_location_if_in_current_directory (location);
+                    current_container.focus_location_if_in_current_directory (_location);
                 }
 
                 return false;
@@ -687,9 +688,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             string tab_uri = tab_location.get_uri ();
 
             if (FileUtils.same_location (uri, tab_uri)) {
-                return existing_position;
-            } else if (!is_folder && FileUtils.same_location (location.get_parent ().get_uri (), tab_uri)) {
-                is_child = true;
+                is_child = !is_folder;
                 return existing_position;
             }
 
@@ -1050,6 +1049,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 critical (e.message);
             }
         });
+    }
+
+    private void action_focus_sidebar () {
+        sidebar.focus ();
     }
 
     private void before_undo_redo () {
