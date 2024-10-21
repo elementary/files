@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-21 21:48+0000\n"
-"PO-Revision-Date: 2024-05-21 23:13+0000\n"
+"PO-Revision-Date: 2024-10-22 02:15+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/extra/hu/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
@@ -79,11 +79,11 @@ msgstr "Kisebb frissítések:"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "Redesign file permissions view"
-msgstr ""
+msgstr "Fájlengedély-nézet újratervezve"
 
 #: data/files.metainfo.xml.in.in:70
 msgid "Focus sidebar by pressing Ctrl + Left"
-msgstr ""
+msgstr "Az oldalsó sáv fókuszálása a Ctrl + Bal billentyűkkel"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:92
 #: data/files.metainfo.xml.in.in:114 data/files.metainfo.xml.in.in:131
