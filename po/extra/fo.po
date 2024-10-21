@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-10 18:21+0000\n"
+"POT-Creation-Date: 2024-10-21 21:48+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -50,56 +50,64 @@ msgstr ""
 msgid "Browse complex trees faster with Column view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:85
-#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:120
-#: data/files.metainfo.xml.in.in:140
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:88
+#: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:129
+#: data/files.metainfo.xml.in.in:141 data/files.metainfo.xml.in.in:161
 msgid "Minor updates:"
 msgstr ""
 
 #: data/files.metainfo.xml.in.in:69
-msgid "Restoring tabs from last time is now optional"
+msgid "Redesign file permissions view"
 msgstr ""
 
 #: data/files.metainfo.xml.in.in:70
-msgid "Drag and select can no longer be done with secondary pointer button"
+msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:93
-#: data/files.metainfo.xml.in.in:110 data/files.metainfo.xml.in.in:122
-#: data/files.metainfo.xml.in.in:142
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:92
+#: data/files.metainfo.xml.in.in:114 data/files.metainfo.xml.in.in:131
+#: data/files.metainfo.xml.in.in:143 data/files.metainfo.xml.in.in:163
 msgid "Updated translations"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:90
+msgid "Restoring tabs from last time is now optional"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:91
+msgid "Drag and select can no longer be done with secondary pointer button"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:108
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:88
+#: data/files.metainfo.xml.in.in:109
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:89
+#: data/files.metainfo.xml.in.in:110
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:90
+#: data/files.metainfo.xml.in.in:111
 msgid "Ensure the selection persists after refreshing the view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:91
+#: data/files.metainfo.xml.in.in:112
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:92
+#: data/files.metainfo.xml.in.in:113
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:136
+#: data/files.metainfo.xml.in.in:157
 msgid "Improvements:"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:138
+#: data/files.metainfo.xml.in.in:159
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
