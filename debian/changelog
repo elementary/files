@@ -1,3 +1,9 @@
+pantheon-files (7.1.0) noble; urgency=medium
+
+  * Release 7.1.0 (#2511)
+
+ -- elementary, Inc. <builds@elementary.io>  Tue, 22 Oct 2024 09:12:38 +0000
+
 pantheon-files (7.0.0) noble; urgency=medium
 
   * New upstream release
