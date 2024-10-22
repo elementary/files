@@ -16,15 +16,15 @@
   <screenshots>
     <screenshot type="default">
       <caption>Quick access to settings like zoom levels and hidden files</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/7.0.0/data/screenshot-grid.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/7.1.0/data/screenshot-grid.png</image>
     </screenshot>
     <screenshot>
       <caption>See more metadata at a glance in List view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/7.0.0/data/screenshot-list.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/7.1.0/data/screenshot-list.png</image>
     </screenshot>
     <screenshot>
       <caption>Browse complex trees faster with Column view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/7.0.0/data/screenshot-column.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/7.1.0/data/screenshot-column.png</image>
     </screenshot>
   </screenshots>
 
@@ -62,7 +62,7 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
-    <release version="7.1.0" date="2024-10-20" urgency="medium">
+    <release version="7.1.0" date="2024-10-21" urgency="medium">
       <description>
         <p>Minor updates:</p>
         <ul>
