@@ -79,6 +79,7 @@
         <issue url="https://github.com/elementary/files/issues/2455">No large thumbnails</issue>
         <issue url="https://github.com/elementary/files/issues/2483">With multiple files selected, clicking the right mouse button deselects everything</issue>
         <issue url="https://github.com/elementary/files/issues/2492">List view : Cannot close subfolder view for a folder</issue>
+        <issue url="https://github.com/elementary/files/issues/2495">Segfault when opening folders that have just been pasted into an empty folder</issue>
         <issue url="https://github.com/elementary/files/issues/2498">Cannot use search at all in Wayland session</issue>
       </issues>
     </release>
