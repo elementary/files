@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-21 21:48+0000\n"
-"PO-Revision-Date: 2024-10-26 20:03+0000\n"
-"Last-Translator: Max2020 <alcizmaxpereira@gmail.com>\n"
+"PO-Revision-Date: 2024-10-26 20:51+0000\n"
+"Last-Translator: Diogo Pessoa <diogopessoabr@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/files/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -1225,7 +1225,7 @@ msgid ""
 "drives, will be permanently deleted."
 msgstr ""
 "Todos os items e todos diretórios na lixeira, incluindo aqueles em qualquer "
-"drive externo montado, serão permanentemente deletados."
+"unidade externa montada, serão permanentemente excluídos."
 
 #: libcore/FileOperations/EmptyTrashJob.vala:89
 msgid "Permanently delete all items from Trash on this mount?"
@@ -1561,7 +1561,7 @@ msgstr "[URI…]"
 
 #: src/Application.vala:89
 msgid "Error: Running Files as root using sudo is not possible."
-msgstr "Erro: Não é possível executar arquivos como root usando sudo."
+msgstr "Erro: Não é possível executar Arquivos como root usando sudo."
 
 #: src/Application.vala:90
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
@@ -2376,12 +2376,12 @@ msgstr "Favoritos"
 
 #: src/View/Sidebar/SidebarWindow.vala:31
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "Locais comuns, além de pastas e arquivos salvos"
 
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:39
 msgid "Storage"
-msgstr ""
+msgstr "Armazenamento"
 
 #: src/View/Sidebar/SidebarWindow.vala:40
 msgid "Internal and connected storage devices"
@@ -2429,9 +2429,8 @@ msgid "Double-click on a folder opens it, single-click selects it"
 msgstr "Clique duplo em uma pasta para abrir, clique único para selecionar"
 
 #: src/View/Widgets/AppMenu.vala:86
-#, fuzzy
 msgid "Sort Folders before Files"
-msgstr "Pastas Antes de Arquivos"
+msgstr "Classificar Pastas antes dos Arquivos"
 
 #: src/View/Widgets/AppMenu.vala:90
 msgid "Restore Tabs from Last Time"
