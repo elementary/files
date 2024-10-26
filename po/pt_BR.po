@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-21 21:48+0000\n"
 "PO-Revision-Date: 2024-10-26 20:00+0000\n"
-"Last-Translator: celiopy <cepefilho@gmail.com>\n"
+"Last-Translator: Diogo Pessoa <diogopessoabr@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/files/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -130,9 +130,8 @@ msgid "Type:"
 msgstr "Tipo:"
 
 #: libcore/ConnectServerDialog.vala:161
-#, fuzzy
 msgid "Name of share on server (Optional)"
-msgstr "Nome do compartilhamento no servidor"
+msgstr "Nome do compartilhamento no servidor (Opcional)"
 
 #: libcore/ConnectServerDialog.vala:164
 msgid "Share:"
