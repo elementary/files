@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-21 21:48+0000\n"
 "PO-Revision-Date: 2024-10-26 19:55+0000\n"
-"Last-Translator: Diogo Pessoa <diogopessoabr@gmail.com>\n"
+"Last-Translator: celiopy <cepefilho@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/files/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -2455,9 +2455,8 @@ msgid "Remote Thumbnails"
 msgstr "Miniaturas Remotas"
 
 #: src/View/Widgets/AppMenu.vala:152
-#, fuzzy
 msgid "No operation to undo"
-msgstr "A operação expirou."
+msgstr "Nenhuma operação para desfazer"
 
 #: src/View/Widgets/AppMenu.vala:159
 msgid "No operation to redo"
@@ -2490,11 +2489,11 @@ msgid "%u folders"
 msgstr "%u pastas"
 
 #: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
-#, fuzzy, c-format
+#, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " e %u outro item (%s) selecionado"
-msgstr[1] " e %u outro item (%s) selecionado"
+msgstr[1] " e %u outros itens (%s) selecionado"
 
 #: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
 msgid " selected"
