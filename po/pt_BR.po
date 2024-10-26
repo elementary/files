@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-21 21:48+0000\n"
-"PO-Revision-Date: 2024-09-15 16:16+0000\n"
+"PO-Revision-Date: 2024-10-26 15:43+0000\n"
 "Last-Translator: celiopy <cepefilho@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/files/pt_BR/>\n"
@@ -2494,11 +2494,11 @@ msgstr ""
 
 #: src/View/Widgets/AppMenu.vala:81
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "Clique duplo para navegar"
 
 #: src/View/Widgets/AppMenu.vala:82
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "Clique duplo em uma pasta para abrir, clique único para selecionar"
 
 #: src/View/Widgets/AppMenu.vala:86
 #, fuzzy
