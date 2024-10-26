@@ -3194,13 +3194,12 @@ namespace Files {
         }
 
         protected virtual void on_scroll_event (double dx, double dy) {
-            Gdk.ModifierType state;
-            Gtk.get_current_event_state (out state);
-
             if (is_frozen) {
                 return;
             }
 
+            Gdk.ModifierType state;
+            Gtk.get_current_event_state (out state);
             if ((state & Gdk.ModifierType.CONTROL_MASK) > 0) {
                 /* try to emulate a normal scrolling event by summing deltas.
                  * step size of 0.5 chosen to match sensitivity */
