@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-21 21:48+0000\n"
-"PO-Revision-Date: 2024-10-26 19:16+0000\n"
-"Last-Translator: Faura <carvalho.programmer@gmail.com>\n"
+"PO-Revision-Date: 2024-10-26 19:55+0000\n"
+"Last-Translator: Diogo Pessoa <diogopessoabr@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/files/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -483,6 +483,8 @@ msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
+"A pasta será recriada e os arquivos selecionados que estavam originalmente "
+"lá, serão restaurados para lá"
 
 #: libcore/FileUtils.vala:200
 #, c-format
@@ -565,7 +567,7 @@ msgstr "("
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:927
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: libcore/marlin-file-operations.c:118 libcore/marlin-file-operations.c:159
 #: libcore/marlin-file-operations.c:206 libcore/marlin-file-operations.c:290
@@ -2384,25 +2386,23 @@ msgstr ""
 
 #: src/View/Sidebar/SidebarWindow.vala:40
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "Dispositivos de armazenamento interno e conectado"
 
 #: src/View/Sidebar/SidebarWindow.vala:48
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "Dispositivos e locais disponíveis através de uma rede"
 
 #: src/View/Sidebar/SidebarWindow.vala:73
-#, fuzzy
 msgid "Connect Server…"
-msgstr "Conectar ao servidor…"
+msgstr "Conectar ao Servidor…"
 
 #: src/View/Sidebar/VolumeRow.vala:174
-#, fuzzy
 msgid "Mount"
-msgstr "_Montar"
+msgstr "Montar"
 
 #: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
-msgstr ""
+msgstr "Ejetar mídia"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy
@@ -2411,7 +2411,7 @@ msgstr "_Desmontar"
 
 #: src/View/Widgets/AppMenu.vala:25
 msgid "Zoom Out"
-msgstr ""
+msgstr "Diminuir o Zoom"
 
 #: src/View/Widgets/AppMenu.vala:34
 msgid "Zoom 1:1"
@@ -2435,30 +2435,24 @@ msgid "Sort Folders before Files"
 msgstr "Pastas Antes de Arquivos"
 
 #: src/View/Widgets/AppMenu.vala:90
-#, fuzzy
-#| msgid "Restore '%s' from trash"
 msgid "Restore Tabs from Last Time"
-msgstr "Restaurar '%s' da lixeira"
+msgstr "Restaurar Abas da Última Vez"
 
 #: src/View/Widgets/AppMenu.vala:94
-#, fuzzy
 msgid "Show in View"
-msgstr "Mostrar arquivos ocultos"
+msgstr "Mostrar na Visualização"
 
 #: src/View/Widgets/AppMenu.vala:101
-#, fuzzy
 msgid "Hidden Files"
-msgstr "Mostrar arquivos ocultos"
+msgstr "Arquivos Ocultos"
 
 #: src/View/Widgets/AppMenu.vala:105
-#, fuzzy
 msgid "Local Thumbnails"
-msgstr "Ocultar miniaturas"
+msgstr "Miniaturas Locais"
 
 #: src/View/Widgets/AppMenu.vala:110
-#, fuzzy
 msgid "Remote Thumbnails"
-msgstr "Mostra miniaturas remotas"
+msgstr "Miniaturas Remotas"
 
 #: src/View/Widgets/AppMenu.vala:152
 #, fuzzy
@@ -2466,9 +2460,8 @@ msgid "No operation to undo"
 msgstr "A operação expirou."
 
 #: src/View/Widgets/AppMenu.vala:159
-#, fuzzy
 msgid "No operation to redo"
-msgstr "A operação expirou."
+msgstr "Nenhuma operação para refazer"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:141
 #: src/View/Widgets/LocationBar.vala:193
@@ -2514,19 +2507,19 @@ msgstr "%u itens selecionados (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:226
-#, fuzzy, c-format
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u sub-pasta, "
-msgstr[1] "%u sub-pasta, "
+msgstr[1] "%u sub-pastas, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:232
-#, fuzzy, c-format
+#, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u arquivo, "
-msgstr[1] "%u arquivo, "
+msgstr[1] "%u arquivos, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:242
@@ -2541,11 +2534,11 @@ msgstr "tamanho desconhecido"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:249
-#, fuzzy, c-format
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] "%u arquivo não legível"
-msgstr[1] "%u arquivo não legível"
+msgstr[1] "%u arquivos não legíveis"
 
 #: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"
@@ -2572,9 +2565,8 @@ msgid "Below This Folder"
 msgstr "Abaixo desta pasta"
 
 #: src/View/Widgets/SearchResults.vala:309
-#, fuzzy
 msgid "Recently Used"
-msgstr "Usado recentemente"
+msgstr "Usado Recentemente"
 
 #~ msgid "_Mount"
 #~ msgstr "_Montar"
