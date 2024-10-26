@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-21 21:48+0000\n"
 "PO-Revision-Date: 2024-10-26 18:10+0000\n"
-"Last-Translator: Faura <carvalho.programmer@gmail.com>\n"
+"Last-Translator: Diogo Pessoa <diogopessoabr@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/files/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -139,9 +139,8 @@ msgid "Share:"
 msgstr "Compartilhar:"
 
 #: libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Path of shared folder on server (Optional)"
-msgstr "Caminho da pasta compartilhada no servidor"
+msgstr "Caminho da pasta compartilhada no servidor (Opcional)"
 
 #: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
@@ -218,14 +217,12 @@ msgstr "Nome"
 
 #: libcore/Enums.vala:136 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
-#, fuzzy
 msgid "Creation Date"
-msgstr "Criar"
+msgstr "Data de Criação"
 
 #: libcore/Enums.vala:139
-#, fuzzy
 msgid "Last modification date"
-msgstr "Última modificação:"
+msgstr "Data da última modificação"
 
 #: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2295
 #: src/View/ListView.vala:27
