@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-21 21:48+0000\n"
 "PO-Revision-Date: 2024-10-26 19:16+0000\n"
-"Last-Translator: Diogo Pessoa <diogopessoabr@gmail.com>\n"
+"Last-Translator: Faura <carvalho.programmer@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/files/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -271,11 +271,11 @@ msgstr "Formato de localidade - Data e Hora"
 
 #: libcore/Enums.vala:228
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "Formato ISO 8601 - Somente data"
 
 #: libcore/Enums.vala:230
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "Formato ISO 8601 - Data e Hora"
 
 #: libcore/Enums.vala:246
 msgid "Date created"
@@ -287,7 +287,7 @@ msgstr "Data de Modificação"
 
 #: libcore/Enums.vala:250
 msgid "Current Date"
-msgstr ""
+msgstr "Data Atual"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
@@ -298,26 +298,23 @@ msgid "Failed to parse the desktop file"
 msgstr "Falha ao analisar o arquivo desktop"
 
 #: libcore/File.vala:959
-#, fuzzy
 msgid "Failed to parse the desktop file: "
-msgstr "Falha ao analisar o arquivo de desktop: %s"
+msgstr "Falha ao analisar o arquivo de desktop: "
 
 #: libcore/File.vala:971
-#, fuzzy
 msgid "Failed to create command from file: "
-msgstr "Falha ao criar comando do arquivo: %s"
+msgstr "Falha ao criar comando do arquivo: "
 
 #: libcore/File.vala:980
-#, fuzzy
 msgid "Unable to Launch Desktop File: "
-msgstr "Falha ao abrir o arquivo de desktop: %s"
+msgstr "Falha ao abrir o arquivo de desktop: "
 
 #: libcore/File.vala:1169
 msgid "Empty"
 msgstr "Vazio"
 
 #: libcore/File.vala:1171
-#, fuzzy, c-format
+#, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d minuto"
@@ -1567,7 +1564,7 @@ msgstr "Erro: Não é possível executar arquivos como root usando sudo."
 
 #: src/Application.vala:90
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
-msgstr ""
+msgstr "Por favor use o comando: io.elementary.files-pkexec [pasta]"
 
 #: src/Application.vala:107
 msgid "--quit cannot be used with URIs."
