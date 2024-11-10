@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-21 21:48+0000\n"
-"PO-Revision-Date: 2024-09-15 16:16+0000\n"
-"Last-Translator: celiopy <cepefilho@gmail.com>\n"
+"PO-Revision-Date: 2024-11-04 20:16+0000\n"
+"Last-Translator: Guilherme Faura <guilhermefaura@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/files/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -68,8 +68,7 @@ msgstr "Esse arquivo é um link."
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
 msgstr ""
-"A substituição de um link irá sobrescrever o conteúdo do destino. O link "
-"permanecerá"
+"A substituição do link irá sobrescrever seu conteúdo. O link permanecerá"
 
 #: filechooser-portal/Main.vala:456
 #, c-format
@@ -114,7 +113,7 @@ msgstr "Detalhes do servidor"
 
 #: libcore/ConnectServerDialog.vala:116
 msgid "Server name or IP address"
-msgstr "Nome do servidor e Endereço IP"
+msgstr "Nome do servidor ou endereço IP"
 
 #: libcore/ConnectServerDialog.vala:119
 msgid "Server:"
@@ -130,18 +129,16 @@ msgid "Type:"
 msgstr "Tipo:"
 
 #: libcore/ConnectServerDialog.vala:161
-#, fuzzy
 msgid "Name of share on server (Optional)"
-msgstr "Nome do compartilhamento no servidor"
+msgstr "Nome do compartilhamento no servidor (Opcional)"
 
 #: libcore/ConnectServerDialog.vala:164
 msgid "Share:"
 msgstr "Compartilhar:"
 
 #: libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Path of shared folder on server (Optional)"
-msgstr "Caminho da pasta compartilhada no servidor"
+msgstr "Caminho da pasta compartilhada no servidor (Opcional)"
 
 #: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
@@ -218,14 +215,12 @@ msgstr "Nome"
 
 #: libcore/Enums.vala:136 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
-#, fuzzy
 msgid "Creation Date"
-msgstr "Criar"
+msgstr "Data de Criação"
 
 #: libcore/Enums.vala:139
-#, fuzzy
 msgid "Last modification date"
-msgstr "Última modificação:"
+msgstr "Data da última modificação"
 
 #: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2295
 #: src/View/ListView.vala:27
@@ -234,11 +229,11 @@ msgstr "Tamanho"
 
 #: libcore/Enums.vala:165
 msgid "Number sequence"
-msgstr ""
+msgstr "Sequencia de números"
 
 #: libcore/Enums.vala:168 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "Texto"
 
 #: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2305
 msgid "Date"
@@ -246,53 +241,51 @@ msgstr "Data"
 
 #: libcore/Enums.vala:187
 msgid "Suffix"
-msgstr ""
+msgstr "Sufixo"
 
 #: libcore/Enums.vala:190
 msgid "Prefix"
-msgstr ""
+msgstr "Prefixo"
 
 #: libcore/Enums.vala:200
 msgid "Text to put at the end"
-msgstr ""
+msgstr "Texto para colocar no final"
 
 #: libcore/Enums.vala:203
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Texto para colocar no início"
 
 #: libcore/Enums.vala:222
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "Formato padrão - Somente data"
 
 #: libcore/Enums.vala:224
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "Formato padrão - Data e Hora"
 
 #: libcore/Enums.vala:226
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "Formato de localidade - Data e Hora"
 
 #: libcore/Enums.vala:228
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "Formato ISO 8601 - Somente data"
 
 #: libcore/Enums.vala:230
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "Formato ISO 8601 - Data e Hora"
 
 #: libcore/Enums.vala:246
-#, fuzzy
 msgid "Date created"
-msgstr "Criar"
+msgstr "Data de criação"
 
 #: libcore/Enums.vala:248
-#, fuzzy
 msgid "Date Modified"
-msgstr "Modificado"
+msgstr "Data de Modificação"
 
 #: libcore/Enums.vala:250
 msgid "Current Date"
-msgstr ""
+msgstr "Data Atual"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
@@ -303,27 +296,23 @@ msgid "Failed to parse the desktop file"
 msgstr "Falha ao analisar o arquivo desktop"
 
 #: libcore/File.vala:959
-#, fuzzy
 msgid "Failed to parse the desktop file: "
-msgstr "Falha ao analisar o arquivo de desktop: %s"
+msgstr "Falha ao analisar o arquivo de desktop: "
 
 #: libcore/File.vala:971
-#, fuzzy
 msgid "Failed to create command from file: "
-msgstr "Falha ao criar comando do arquivo: %s"
+msgstr "Falha ao criar comando do arquivo: "
 
 #: libcore/File.vala:980
-#, fuzzy
 msgid "Unable to Launch Desktop File: "
-msgstr "Falha ao abrir o arquivo de desktop: %s"
+msgstr "Falha ao abrir o arquivo de desktop: "
 
 #: libcore/File.vala:1169
-#, fuzzy
 msgid "Empty"
-msgstr "Arquivo vazio"
+msgstr "Vazio"
 
 #: libcore/File.vala:1171
-#, fuzzy, c-format
+#, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d minuto"
@@ -458,9 +447,9 @@ msgid "Merge"
 msgstr "Mesclar"
 
 #: libcore/FileUtils.vala:82
-#, fuzzy, c-format
+#, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr "Não foi possível determinar a localização original de \"%s\" "
+msgstr "Não foi possível determinar a localização original de \"%s\""
 
 #: libcore/FileUtils.vala:83
 msgid "The item cannot be restored from trash"
@@ -473,7 +462,7 @@ msgstr "A pasta original %s não existe mais"
 
 #: libcore/FileUtils.vala:178
 msgid "Would you like to recreate it?"
-msgstr ""
+msgstr "Gostaria de recriá-lo?"
 
 #: libcore/FileUtils.vala:183
 msgid "Ignore"
@@ -481,23 +470,26 @@ msgstr "Ignorar"
 
 #: libcore/FileUtils.vala:184
 msgid "No files that were in this folder will be restored"
-msgstr ""
+msgstr "Nenhum arquivo que estava nesta pasta será restaurado"
 
 #: libcore/FileUtils.vala:185
-#, fuzzy
 msgid "Recreate"
-msgstr "Criar"
+msgstr "Recriar"
 
 #: libcore/FileUtils.vala:187
 msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
+"A pasta será recriada e os arquivos selecionados que estavam originalmente "
+"lá, serão restaurados para lá"
 
 #: libcore/FileUtils.vala:200
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
+"Não foi possível recriar a pasta '%s'. Todos os arquivos desta pasta serão "
+"ignorados"
 
 #: libcore/FileUtils.vala:566
 #, c-format
@@ -565,7 +557,7 @@ msgstr "(cópia)"
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:923
 msgid "link"
-msgstr ""
+msgstr "link"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:925
@@ -575,7 +567,7 @@ msgstr "("
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:927
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: libcore/marlin-file-operations.c:118 libcore/marlin-file-operations.c:159
 #: libcore/marlin-file-operations.c:206 libcore/marlin-file-operations.c:290
@@ -680,7 +672,6 @@ msgstr ""
 "para maiores informações."
 
 #: libcore/marlin-file-operations.c:471
-#, fuzzy
 msgid "Cannot move file to trash. Try to delete it?"
 msgstr "Não é possível mover o arquivo para a lixeira. Tentar excluí-lo?"
 
@@ -912,9 +903,8 @@ msgid "There was an error creating the symlink in %s."
 msgstr "Houve um erro ao criar o link simbólico em %s."
 
 #: libcore/marlin-file-operations.c:3296
-#, fuzzy
 msgid "Zero files to process"
-msgstr "Movendo arquivos para a lixeira"
+msgstr "Zero arquivos para processar"
 
 #: libcore/marlin-file-operations.c:3303
 msgid "Cannot copy into trash."
@@ -964,9 +954,8 @@ msgid "AFP"
 msgstr "AFP"
 
 #: libcore/Resources.vala:62
-#, fuzzy
 msgid "AFC"
-msgstr "AFP"
+msgstr "AFC"
 
 #: libcore/Resources.vala:63
 msgid "DAV"
@@ -1006,7 +995,7 @@ msgstr "MTP"
 
 #: libcore/Resources.vala:72
 msgid "GPHOTO2"
-msgstr ""
+msgstr "GPHOTO2"
 
 #: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
 #: src/View/Sidebar/DeviceListBox.vala:146
@@ -1019,7 +1008,7 @@ msgstr "_Cancelar"
 
 #: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
 msgid "Delete"
-msgstr "Remover"
+msgstr "Excluir"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
@@ -1058,142 +1047,116 @@ msgid "Empty _Trash"
 msgstr "Esvaziar _lixeira"
 
 #: libcore/UndoManager.vala:22
-#, fuzzy
 msgid "Undo Copy"
-msgstr "Copiar"
+msgstr "Desfazer Cópia"
 
 #: libcore/UndoManager.vala:24
-#, fuzzy
 msgid "Undo Duplicate"
-msgstr "Duplicando \"%s\""
+msgstr "Desfazer Duplicado"
 
 #: libcore/UndoManager.vala:26
 msgid "Undo Move"
-msgstr ""
+msgstr "Desfazer Mover"
 
 #: libcore/UndoManager.vala:28
-#, fuzzy
 msgid "Undo Rename"
-msgstr "Renomear"
+msgstr "Desfazer Renomear"
 
 #: libcore/UndoManager.vala:30
-#, fuzzy
 msgid "Undo Create Empty File"
-msgstr "_Desfazer criação de um arquivo vazio"
+msgstr "Desfazer Criar Arquivo Vazio"
 
 #: libcore/UndoManager.vala:32
-#, fuzzy
 msgid "Undo Create File from Template"
-msgstr "_Desfazer criação de um arquivo de um modelo"
+msgstr "Desfazer Criar Arquivo de um Modelo"
 
 #: libcore/UndoManager.vala:34
-#, fuzzy
 msgid "Undo Create Folder"
-msgstr "_Desfazer criação de %d pasta"
+msgstr "Desfazer Criar Pasta"
 
 #: libcore/UndoManager.vala:36
-#, fuzzy
 msgid "Undo Move to Trash"
-msgstr "Mover para a lixeira"
+msgstr "Desfazer Mover para a Lixeira"
 
 #: libcore/UndoManager.vala:38
-#, fuzzy
 msgid "Undo Create Link"
-msgstr "_Desfazer criação de atalho de %d item"
+msgstr "Desfazer Criar Link"
 
 #: libcore/UndoManager.vala:40
-#, fuzzy
 msgid "Undo Restore from Trash"
-msgstr "Restaurar da lixeira"
+msgstr "Desfazer Restaurar da Lixeira"
 
 #: libcore/UndoManager.vala:42
-#, fuzzy
 msgid "Undo Set Permissions"
-msgstr "Definindo permissões"
+msgstr "Desfazer Definir Permissões"
 
 #: libcore/UndoManager.vala:44
-#, fuzzy
 msgid "Undo Set Permissions Recursively"
-msgstr "Desfazer mudanças de permissões de %d item"
+msgstr "Desfazer Permissões Definidas Recursivamente"
 
 #: libcore/UndoManager.vala:46
-#, fuzzy
 msgid "Undo Change Owner"
-msgstr "Desfazer mudanças de proprietário de %d item"
+msgstr "Desfazer Mudanças de Proprietário"
 
 #: libcore/UndoManager.vala:48
-#, fuzzy
 msgid "Undo Change Group"
-msgstr "Desfazer mudanças de grupo de %d item"
+msgstr "Desfazer Mudanças de Grupo"
 
 #: libcore/UndoManager.vala:57
-#, fuzzy
 msgid "Redo Copy"
-msgstr "Copiar"
+msgstr "Refazer Cópia"
 
 #: libcore/UndoManager.vala:59
-#, fuzzy
 msgid "Redo Duplicate"
-msgstr "Duplicando \"%s\""
+msgstr "Refazer Duplicado"
 
 #: libcore/UndoManager.vala:61
 msgid "Redo Move"
-msgstr ""
+msgstr "Refazer Mover"
 
 #: libcore/UndoManager.vala:63
-#, fuzzy
 msgid "Redo Rename"
-msgstr "Renomear"
+msgstr "Refazer Renomear"
 
 #: libcore/UndoManager.vala:65
-#, fuzzy
 msgid "Redo Create Empty File"
-msgstr "_Refazer criação de um arquivo vazio"
+msgstr "Refazer Criar Arquivo Vazio"
 
 #: libcore/UndoManager.vala:67
-#, fuzzy
 msgid "Redo Create File from Template"
-msgstr "_Refazer criação de um arquivo de um modelo"
+msgstr "Refazer Criar Arquivo de um Modelo"
 
 #: libcore/UndoManager.vala:69
-#, fuzzy
 msgid "Redo Create Folder"
-msgstr "Falha ao criar a pasta"
+msgstr "Refazer Criar Pasta"
 
 #: libcore/UndoManager.vala:71
-#, fuzzy
 msgid "Redo Move to Trash"
-msgstr "Mover para a lixeira"
+msgstr "Refazer Mover para a Lixeira"
 
 #: libcore/UndoManager.vala:73
-#, fuzzy
 msgid "Redo Create Link"
-msgstr "_Refazer criação de atalho de %d item"
+msgstr "Refazer Criar Link"
 
 #: libcore/UndoManager.vala:75
-#, fuzzy
 msgid "Redo Restore from Trash"
-msgstr "Restaurar da lixeira"
+msgstr "Refazer Restaurar da Lixeira"
 
 #: libcore/UndoManager.vala:77
-#, fuzzy
 msgid "Redo Set Permissions"
-msgstr "Definindo permissões"
+msgstr "Refazer Definir Permissões"
 
 #: libcore/UndoManager.vala:79
-#, fuzzy
 msgid "Redo Set Permissions Recursively"
-msgstr "Refazer mudança de permissões de %d item"
+msgstr "Refazer Permissões Definidas Recursivamente"
 
 #: libcore/UndoManager.vala:81
-#, fuzzy
 msgid "Redo Change Owner"
-msgstr "Refazer mudança de proprietário de %d item"
+msgstr "Refazer Mudança de Proprietário"
 
 #: libcore/UndoManager.vala:83
-#, fuzzy
 msgid "Redo Change Group"
-msgstr "Refazer mudança de grupo de %d item"
+msgstr "Refazer Mudança de Grupo"
 
 #: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
@@ -1262,8 +1225,8 @@ msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
-"Todos os items e todos  diretórios  na lixeira, incluindo aqueles em "
-"qualquer drive externo montado, serão permanentemente deletados."
+"Todos os items e todos diretórios na lixeira, incluindo aqueles em qualquer "
+"unidade externa montada, serão permanentemente excluídos."
 
 #: libcore/FileOperations/EmptyTrashJob.vala:89
 msgid "Permanently delete all items from Trash on this mount?"
@@ -1276,9 +1239,9 @@ msgstr ""
 "permanentemente deletados."
 
 #: libcore/FileOperations/MountUtils.vala:31
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to unmount '%s'"
-msgstr "Não foi possível montar %s"
+msgstr "Não é possível montar %s"
 
 #: libcore/FileOperations/MountUtils.vala:52
 #, c-format
@@ -1524,7 +1487,7 @@ msgstr "Ir para %s"
 
 #: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
 msgid "Type Path"
-msgstr "Digite um caminho"
+msgstr "Digite o caminho"
 
 #: libcore/Widgets/BasicLocationBar.vala:88
 msgid "Type a path"
@@ -1560,7 +1523,7 @@ msgstr "Excluir Selecionado"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
-msgstr ""
+msgstr "Enviar por Email"
 
 #: src/Application.vala:64
 msgid ""
@@ -1599,11 +1562,11 @@ msgstr "[URI…]"
 
 #: src/Application.vala:89
 msgid "Error: Running Files as root using sudo is not possible."
-msgstr ""
+msgstr "Erro: Rodar Arquivos como root usando sudo não é possível."
 
 #: src/Application.vala:90
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
-msgstr ""
+msgstr "Por favor use o comando: io.elementary.files-pkexec [pasta]"
 
 #: src/Application.vala:107
 msgid "--quit cannot be used with URIs."
@@ -1652,9 +1615,9 @@ msgid "Device Usage"
 msgstr "Utilização do dispositivo"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:143
-#, fuzzy, c-format
+#, c-format
 msgid "%s free out of %s"
-msgstr "(%s livre de %s)"
+msgstr "(%s disponível de %s)"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:151
 msgid "Capacity:"
@@ -1676,25 +1639,21 @@ msgid "Used:"
 msgstr "Utilizado:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:21
-#, fuzzy
 msgid "Original filename"
-msgstr "Arquivo original"
+msgstr "Nome do arquivo original"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:23
-#, fuzzy
 msgid "Modified original"
-msgstr "Modificado"
+msgstr "Original modificado"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:25
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:252
-#, fuzzy
 msgid "New basename"
-msgstr "Renomear"
+msgstr "Novo nome base"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
-#, fuzzy
 msgid "Bulk Rename"
-msgstr "Renomear"
+msgstr "Renomear em Massa"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 #: src/View/Sidebar/BookmarkRow.vala:345
@@ -1704,93 +1663,86 @@ msgstr "Renomear"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
-msgstr ""
+msgstr "Sequência Numérica"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:89
 msgid "Fixed Text"
-msgstr ""
+msgstr "Texto Corrigido"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:93
 msgid "Add Prefix…"
-msgstr ""
+msgstr "Adicionar Prefixo…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:112
 msgid "Add Suffix…"
-msgstr ""
+msgstr "Adicionar Sufixo…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:129
-#, fuzzy
 msgid "Basename:"
-msgstr "Nome de usuário:"
+msgstr "Nome Base:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
-#, fuzzy
 msgid "Original Basename"
-msgstr "Arquivo original"
+msgstr "Original Nome Base"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:168
-#, fuzzy
 msgid "Replacement text"
-msgstr "Substituir por"
+msgstr "Texto de substituição"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
-msgstr ""
+msgstr "Número em ordem de:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
-msgstr ""
+msgstr "Texto a ser substituído"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:328
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
-#, fuzzy
 msgid "Ignored"
-msgstr "Ignorar"
+msgstr "Ignorado"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 msgid "Name is not changed"
-msgstr ""
+msgstr "O nome não é alterado"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
-#, fuzzy
 msgid "Cannot rename"
-msgstr "Renomear"
+msgstr "Não é possível renomear"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 msgid "Name is invalid or already exists"
-msgstr ""
+msgstr "O nome é inválido ou já existe"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:78
-#, fuzzy
 msgid "Will be renamed"
-msgstr "Nome do arquivo"
+msgstr "Será renomeado"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
-#, fuzzy
 msgid "Reverse Order"
 msgstr "Ordem inversa"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:52
 msgid "Start Number"
-msgstr ""
+msgstr "Número Inicial"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
 msgid "Digits"
-msgstr ""
+msgstr "Dígitos"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
 msgid "Separator"
-msgstr ""
+msgstr "Separador"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:310
 #, c-format
 msgid "%0*d,%0*d,%0*d…"
-msgstr ""
+msgstr "%0*d,%0*d,%0*d…"
 
 #: src/Dialogs/ChooseAppDialog.vala:43
 msgid "Set as default"
@@ -1880,7 +1832,7 @@ msgstr "Abrir com:"
 
 #: src/Dialogs/PropertiesWindow.vala:940
 msgid "Unable to determine file ownership and permissions"
-msgstr ""
+msgstr "Não é possível determinar a propriedade e as permissões do arquivo"
 
 #: src/Dialogs/PropertiesWindow.vala:947
 msgid "Owner:"
@@ -1955,22 +1907,16 @@ msgid "Could not open files or URIs with this app"
 msgstr "Não foi possível abrir arquivos ou URIs com esse aplicativo"
 
 #: src/Utils/Permissions.vala:29
-#, fuzzy
-#| msgid "Owner:"
 msgid "Owner"
-msgstr "Proprietário:"
+msgstr "Proprietário"
 
 #: src/Utils/Permissions.vala:31
-#, fuzzy
-#| msgid "Group:"
 msgid "Group"
-msgstr "Grupo:"
+msgstr "Grupo"
 
 #: src/Utils/Permissions.vala:34
-#, fuzzy
-#| msgid "Everyone:"
 msgid "Everyone"
-msgstr "Todos:"
+msgstr "Todos"
 
 #: src/View/AbstractDirectoryView.vala:825
 #: src/View/AbstractDirectoryView.vala:1152
@@ -2031,22 +1977,20 @@ msgid "Open with"
 msgstr "Abrir com"
 
 #: src/View/AbstractDirectoryView.vala:1990
-#, fuzzy
 msgid "Add to Bookmarks"
-msgstr "Favoritos"
+msgstr "Adicionar a Favoritos"
 
 #: src/View/AbstractDirectoryView.vala:2010
 msgid "Select All"
-msgstr ""
+msgstr "Selecionar Tudo"
 
 #: src/View/AbstractDirectoryView.vala:2019
 msgid "Invert Selection"
-msgstr ""
+msgstr "Inverter Seleção"
 
 #: src/View/AbstractDirectoryView.vala:2028
-#, fuzzy
 msgid "Deselect All"
-msgstr "Restaurar tudo"
+msgstr "Desmarcar Tudo"
 
 #: src/View/AbstractDirectoryView.vala:2036
 msgid "Cut"
@@ -2062,7 +2006,6 @@ msgid "Move to Trash"
 msgstr "Mover para a lixeira"
 
 #: src/View/AbstractDirectoryView.vala:2056
-#, fuzzy
 msgid "Delete Permanently"
 msgstr "Excluir permanentemente"
 
@@ -2102,10 +2045,8 @@ msgid "Paste"
 msgstr "Colar"
 
 #: src/View/AbstractDirectoryView.vala:2268
-#, fuzzy
-#| msgid "Set as default"
 msgid "Set as Wallpaper"
-msgstr "Definir como padrão"
+msgstr "Definir como Papel de Parede"
 
 #: src/View/AbstractDirectoryView.vala:2300 src/View/ListView.vala:28
 msgid "Type"
@@ -2294,36 +2235,32 @@ msgstr "Próximo"
 
 #: src/View/Window.vala:216
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: src/View/Window.vala:246
-#, fuzzy
 msgid "Closed Tabs"
-msgstr "Fechar"
+msgstr "Abas Fechadas"
 
 #: src/View/Window.vala:469 src/View/Widgets/BreadcrumbsEntry.vala:409
 msgid "Open in New Window"
 msgstr "Abrir em uma nova janela"
 
 #: src/View/Window.vala:470
-#, fuzzy
 msgid "Duplicate Tab"
-msgstr "Duplicando \"%s\""
+msgstr "Abas Duplicadas"
 
 #. TRANSLATORS: For RTL this should be "to the left"
 #: src/View/Window.vala:474
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Fechar Abas à Direita"
 
 #: src/View/Window.vala:475
-#, fuzzy
 msgid "Close Other Tabs"
-msgstr "Fechar"
+msgstr "Fechar Outras Abas"
 
 #: src/View/Window.vala:476
-#, fuzzy
 msgid "Close Tab"
-msgstr "Fechar"
+msgstr "Fechar Aba"
 
 #: src/View/Window.vala:761 src/View/Window.vala:771
 msgid "(as Administrator)"
@@ -2331,20 +2268,19 @@ msgstr "(como administrador)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:196
-#, fuzzy, c-format
+#, c-format
 msgid "Eject '%s'"
-msgstr "Excluir '%s'"
+msgstr "Ejetar '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:196
-#, fuzzy, c-format
+#, c-format
 msgid "Unmount '%s'"
-msgstr "Não foi possível montar %s"
+msgstr "Desmontar '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:266
-#, fuzzy
 msgid "Permanently Delete Trash on this Mount"
-msgstr "Deletar permanentemente todos os itens da lixeira neste drive montado?"
+msgstr "Excluir Permanentemente o Lixo desta Montagem"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:270
 msgid "_Unmount"
@@ -2353,12 +2289,12 @@ msgstr "_Desmontar"
 #: src/View/Sidebar/AbstractMountableRow.vala:331
 #, c-format
 msgid "%s free"
-msgstr ""
+msgstr "%s livre"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:332
-#, fuzzy, c-format
+#, c-format
 msgid "%s used of %s"
-msgstr "%s de %s"
+msgstr "%s usado de %s"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:362
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
@@ -2370,12 +2306,11 @@ msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:362
 msgid "Not mounted"
-msgstr ""
+msgstr "Não montado"
 
 #: src/View/Sidebar/BookmarkListBox.vala:135
-#, fuzzy
 msgid "View the home folder"
-msgstr "Falha ao criar a pasta"
+msgstr "Visualizar a pasta pessoal"
 
 #: src/View/Sidebar/BookmarkListBox.vala:152
 msgid "View the list of recently used files"
@@ -2398,38 +2333,36 @@ msgid "Remove"
 msgstr "Remover"
 
 #: src/View/Sidebar/BookmarkRow.vala:359
-#, fuzzy
 msgid "Permanently Delete All Trash"
-msgstr "Deletar permanentemente todos os items da lixeira?"
+msgstr "Excluir Permanentemente todos os itens da Lixeira"
 
 #: src/View/Sidebar/BookmarkRow.vala:359
-#, fuzzy
 msgid "Permanently Delete Trash"
-msgstr "Deletar permanentemente todos os items da lixeira?"
+msgstr "Excluir Permanentemente o Lixo"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
-#, fuzzy
 msgid "View the root of the local filesystem"
-msgstr "Ver a lista de arquivos recém usados"
+msgstr "Visualizar a raiz do sistema de arquivos local"
 
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
 msgid "%s contains no accessible data."
-msgstr ""
+msgstr "%s não contém dados acessíveis."
 
 #: src/View/Sidebar/DriveRow.vala:71
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
+"Para usar esta unidade, talvez seja necessário reconectá-la, inserir mídia "
+"ou formatá-la."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr ""
+msgstr "Sem formatação ou sem mídia"
 
 #: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:181
-#, fuzzy
 msgid "Safely Remove"
-msgstr "Remover"
+msgstr "Remover com Segurança"
 
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
@@ -2446,100 +2379,88 @@ msgstr "Favoritos"
 
 #: src/View/Sidebar/SidebarWindow.vala:31
 msgid "Common places plus saved folders and files"
-msgstr ""
+msgstr "Locais comuns, além de pastas e arquivos salvos"
 
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:39
 msgid "Storage"
-msgstr ""
+msgstr "Armazenamento"
 
 #: src/View/Sidebar/SidebarWindow.vala:40
 msgid "Internal and connected storage devices"
-msgstr ""
+msgstr "Dispositivos de armazenamento interno e conectado"
 
 #: src/View/Sidebar/SidebarWindow.vala:48
 msgid "Devices and places available via a network"
-msgstr ""
+msgstr "Dispositivos e locais disponíveis através de uma rede"
 
 #: src/View/Sidebar/SidebarWindow.vala:73
-#, fuzzy
 msgid "Connect Server…"
-msgstr "Conectar ao servidor…"
+msgstr "Conectar ao Servidor…"
 
 #: src/View/Sidebar/VolumeRow.vala:174
-#, fuzzy
 msgid "Mount"
-msgstr "_Montar"
+msgstr "Montar"
 
 #: src/View/Sidebar/VolumeRow.vala:184
 msgid "Eject Media"
-msgstr ""
+msgstr "Ejetar mídia"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
-#, fuzzy
 msgid "Bind mount"
-msgstr "_Desmontar"
+msgstr "Vincular montagem"
 
 #: src/View/Widgets/AppMenu.vala:25
 msgid "Zoom Out"
-msgstr ""
+msgstr "Diminuir o Zoom"
 
 #: src/View/Widgets/AppMenu.vala:34
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "Zoom 1:1"
 
 #: src/View/Widgets/AppMenu.vala:43
 msgid "Zoom In"
-msgstr ""
+msgstr "Aumentar o Zoom"
 
 #: src/View/Widgets/AppMenu.vala:81
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "Clique duplo para navegar"
 
 #: src/View/Widgets/AppMenu.vala:82
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "Clique duplo em uma pasta para abrir, clique único para selecionar"
 
 #: src/View/Widgets/AppMenu.vala:86
-#, fuzzy
 msgid "Sort Folders before Files"
-msgstr "Pastas Antes de Arquivos"
+msgstr "Classificar Pastas antes dos Arquivos"
 
 #: src/View/Widgets/AppMenu.vala:90
-#, fuzzy
-#| msgid "Restore '%s' from trash"
 msgid "Restore Tabs from Last Time"
-msgstr "Restaurar '%s' da lixeira"
+msgstr "Restaurar Abas da Última Vez"
 
 #: src/View/Widgets/AppMenu.vala:94
-#, fuzzy
 msgid "Show in View"
-msgstr "Mostrar arquivos ocultos"
+msgstr "Mostrar na Visualização"
 
 #: src/View/Widgets/AppMenu.vala:101
-#, fuzzy
 msgid "Hidden Files"
-msgstr "Mostrar arquivos ocultos"
+msgstr "Arquivos Ocultos"
 
 #: src/View/Widgets/AppMenu.vala:105
-#, fuzzy
 msgid "Local Thumbnails"
-msgstr "Ocultar miniaturas"
+msgstr "Miniaturas Locais"
 
 #: src/View/Widgets/AppMenu.vala:110
-#, fuzzy
 msgid "Remote Thumbnails"
-msgstr "Mostra miniaturas remotas"
+msgstr "Miniaturas Remotas"
 
 #: src/View/Widgets/AppMenu.vala:152
-#, fuzzy
 msgid "No operation to undo"
-msgstr "A operação expirou."
+msgstr "Nenhuma operação para desfazer"
 
 #: src/View/Widgets/AppMenu.vala:159
-#, fuzzy
 msgid "No operation to redo"
-msgstr "A operação expirou."
+msgstr "Nenhuma operação para refazer"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:141
 #: src/View/Widgets/LocationBar.vala:193
@@ -2568,11 +2489,11 @@ msgid "%u folders"
 msgstr "%u pastas"
 
 #: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
-#, fuzzy, c-format
+#, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " e %u outro item (%s) selecionado"
-msgstr[1] " e %u outro item (%s) selecionado"
+msgstr[1] " e %u outros itens (%s) selecionado"
 
 #: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
 msgid " selected"
@@ -2585,19 +2506,19 @@ msgstr "%u itens selecionados (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:226
-#, fuzzy, c-format
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u sub-pasta, "
-msgstr[1] "%u sub-pasta, "
+msgstr[1] "%u sub-pastas, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:232
-#, fuzzy, c-format
+#, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u arquivo, "
-msgstr[1] "%u arquivo, "
+msgstr[1] "%u arquivos, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:242
@@ -2612,11 +2533,11 @@ msgstr "tamanho desconhecido"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:249
-#, fuzzy, c-format
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
 msgstr[0] "%u arquivo não legível"
-msgstr[1] "%u arquivo não legível"
+msgstr[1] "%u arquivos não legíveis"
 
 #: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"
@@ -2643,9 +2564,8 @@ msgid "Below This Folder"
 msgstr "Abaixo desta pasta"
 
 #: src/View/Widgets/SearchResults.vala:309
-#, fuzzy
 msgid "Recently Used"
-msgstr "Usado recentemente"
+msgstr "Usado Recentemente"
 
 #~ msgid "_Mount"
 #~ msgstr "_Montar"

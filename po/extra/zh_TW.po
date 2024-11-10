@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-21 21:48+0000\n"
-"PO-Revision-Date: 2024-09-19 08:57+0000\n"
+"PO-Revision-Date: 2024-11-06 11:17+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
 "files/extra/zh_Hant/>\n"
@@ -77,11 +77,11 @@ msgstr "小型更新："
 
 #: data/files.metainfo.xml.in.in:69
 msgid "Redesign file permissions view"
-msgstr ""
+msgstr "重新設計檔案權限畫面"
 
 #: data/files.metainfo.xml.in.in:70
 msgid "Focus sidebar by pressing Ctrl + Left"
-msgstr ""
+msgstr "按下 Ctrl + ← 來聚焦側邊欄"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:92
 #: data/files.metainfo.xml.in.in:114 data/files.metainfo.xml.in.in:131
