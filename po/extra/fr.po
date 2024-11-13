@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-21 21:48+0000\n"
-"PO-Revision-Date: 2024-11-13 13:40+0000\n"
+"PO-Revision-Date: 2024-11-13 14:31+0000\n"
 "Last-Translator: Thibaut Gallone <thigal.pierre@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
@@ -83,13 +83,13 @@ msgstr "Changer la vue des permissions de fichier"
 
 #: data/files.metainfo.xml.in.in:70
 msgid "Focus sidebar by pressing Ctrl + Left"
-msgstr ""
+msgstr "Changez le focus sur la barre latérale en appuyant sur Ctrl + Gauche"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:92
 #: data/files.metainfo.xml.in.in:114 data/files.metainfo.xml.in.in:131
 #: data/files.metainfo.xml.in.in:143 data/files.metainfo.xml.in.in:163
 msgid "Updated translations"
-msgstr "Mise à jour des traductions"
+msgstr "Traductions mises à jour"
 
 #: data/files.metainfo.xml.in.in:90
 msgid "Restoring tabs from last time is now optional"
