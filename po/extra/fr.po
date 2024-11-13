@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-21 21:48+0000\n"
 "PO-Revision-Date: 2024-11-13 14:31+0000\n"
-"Last-Translator: Thibaut Gallone <thigal.pierre@gmail.com>\n"
+"Last-Translator: Corentin Noël <tintou@noel.tf>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr "Mises à jour mineures :"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "Redesign file permissions view"
-msgstr "Changer la vue des permissions de fichier"
+msgstr "Remodelage de la vue des permissions de fichier"
 
 #: data/files.metainfo.xml.in.in:70
 msgid "Focus sidebar by pressing Ctrl + Left"
