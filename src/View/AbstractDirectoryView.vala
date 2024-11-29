@@ -3194,10 +3194,13 @@ namespace Files {
         }
 
         protected virtual void on_scroll_event (double dx, double dy) {
+            if (is_frozen) {
+                return;
+            }
+
             Gdk.ModifierType state;
             Gtk.get_current_event_state (out state);
-
-            if (!is_frozen && (state & Gdk.ModifierType.CONTROL_MASK) > 0) {
+            if ((state & Gdk.ModifierType.CONTROL_MASK) > 0) {
                 /* try to emulate a normal scrolling event by summing deltas.
                  * step size of 0.5 chosen to match sensitivity */
                 total_delta_y += dy;
@@ -3209,9 +3212,10 @@ namespace Files {
                     total_delta_y = 0;
                     zoom_in ();
                 }
+            } else {
+                // In case "key-released" signal was missed
+                scroll_controller.flags = NONE;
             }
-
-
         }
 
     /** name renderer signals */
