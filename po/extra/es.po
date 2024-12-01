@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-08 08:46+0000\n"
-"PO-Revision-Date: 2024-06-11 00:16+0000\n"
+"POT-Creation-Date: 2024-10-21 21:48+0000\n"
+"PO-Revision-Date: 2024-10-22 02:15+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <edwood.grant@gmail.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/"
-">\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/files/extra/es/>"
+"\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5.5\n"
+"X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
@@ -72,64 +72,73 @@ msgid "Browse complex trees faster with Column view"
 msgstr ""
 "Explore árboles de directorios complejos más rápido con vista de columna"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:85
-#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:120
-#: data/files.metainfo.xml.in.in:140
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:88
+#: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:129
+#: data/files.metainfo.xml.in.in:141 data/files.metainfo.xml.in.in:161
 msgid "Minor updates:"
 msgstr "Actualizaciones menores:"
 
 #: data/files.metainfo.xml.in.in:69
-msgid "Restoring tabs from last time is now optional"
-msgstr "Restaurar pestañas desde la última vez es ahora opcional"
+msgid "Redesign file permissions view"
+msgstr "Se rediseñó la vista de permisos de archivos"
 
 #: data/files.metainfo.xml.in.in:70
-msgid "Drag and select can no longer be done with secondary pointer button"
-msgstr "Ya no es posible arrastrar y soltar con el botón secundario"
+msgid "Focus sidebar by pressing Ctrl + Left"
+msgstr ""
+"Ahora se puede enfocar la barra lateral presionando Ctrl + Flecha izquierda"
 
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:93
-#: data/files.metainfo.xml.in.in:110 data/files.metainfo.xml.in.in:122
-#: data/files.metainfo.xml.in.in:142
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:92
+#: data/files.metainfo.xml.in.in:114 data/files.metainfo.xml.in.in:131
+#: data/files.metainfo.xml.in.in:143 data/files.metainfo.xml.in.in:163
 msgid "Updated translations"
 msgstr "Traducciones actualizadas"
 
-#: data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:90
+msgid "Restoring tabs from last time is now optional"
+msgstr "Restaurar pestañas desde la última vez es ahora opcional"
+
+#: data/files.metainfo.xml.in.in:91
+msgid "Drag and select can no longer be done with secondary pointer button"
+msgstr "Ya no es posible arrastrar y soltar con el botón secundario"
+
+#: data/files.metainfo.xml.in.in:108
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr "Se ha deshabilitado el arrastrar un marcador fuera de la barra lateral"
 
-#: data/files.metainfo.xml.in.in:88
+#: data/files.metainfo.xml.in.in:109
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr ""
 "Se corrigió un desplazamiento inesperado al cambiar de nombre de una carpeta"
 
-#: data/files.metainfo.xml.in.in:89
+#: data/files.metainfo.xml.in.in:110
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 "Se corrigió un error grave al cambiar a vista de cuadrícula en "
 "circunstancias específicas"
 
-#: data/files.metainfo.xml.in.in:90
+#: data/files.metainfo.xml.in.in:111
 msgid "Ensure the selection persists after refreshing the view"
 msgstr ""
 "Se garantiza que los elementos seleccionados persistan al refrescar la "
 "ventana"
 
-#: data/files.metainfo.xml.in.in:91
+#: data/files.metainfo.xml.in.in:112
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "Se corrigió que Archivos no pudiese ejecutar al tratar de restaurar una "
 "ubicación en una red desconectada"
 
-#: data/files.metainfo.xml.in.in:92
+#: data/files.metainfo.xml.in.in:113
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 "Se corrige que la ventana seguía activa cuando una ubicación se desmontaba"
 
-#: data/files.metainfo.xml.in.in:136
+#: data/files.metainfo.xml.in.in:157
 msgid "Improvements:"
 msgstr "Mejoras:"
 
-#: data/files.metainfo.xml.in.in:138
+#: data/files.metainfo.xml.in.in:159
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"

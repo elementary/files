@@ -17,25 +17,28 @@
  */
 
 public class Files.FileOperations.CommonJob {
+    protected const int NSEC_PER_MSEC = 1000000;
+    protected const int SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE = 15;
+
     [Compact]
     [CCode (cname = "SourceInfo")]
     protected class SourceInfo {
         [CCode (has_target = false, cname = "CountProgressCallback")]
-        protected delegate void CountProgressCallback (Files.FileOperations.CommonJob job, Files.FileOperations.CommonJob.SourceInfo info);
+        internal delegate void CountProgressCallback (Files.FileOperations.CommonJob job, Files.FileOperations.CommonJob.SourceInfo info);
 
-        protected int num_files;
-        protected size_t num_bytes;
-        protected int num_files_since_progress;
-        protected weak CountProgressCallback count_callback;
+        internal int num_files;
+        internal size_t num_bytes;
+        internal int num_files_since_progress;
+        internal weak CountProgressCallback count_callback;
     }
 
     [Compact]
     [CCode (cname = "TransferInfo")]
     protected class TransferInfo {
-        protected int num_files;
-        protected size_t num_bytes;
-        protected uint64 last_report_time;
-        protected int last_reported_files_left;
+        internal int num_files;
+        internal size_t num_bytes;
+        internal uint64 last_report_time;
+        internal int last_reported_files_left;
     }
 
     protected unowned Gtk.Window? parent_window;
