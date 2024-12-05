@@ -120,6 +120,8 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
     protected override void on_mount_added (Mount added_mount) {
         if (added_mount == volume.get_mount ()) {
             mount = volume.get_mount ();
+            uri = mount.get_root ().get_uri ();
+            set_up_target_file_and_drop_actions ();
             update_visibilities ();
         }
     }
@@ -127,6 +129,8 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
     protected override void on_mount_removed (Mount removed_mount) {
         if (volume.get_mount () == null) {
             mount = null;
+            uri = "";
+            set_up_target_file_and_drop_actions ();
             update_visibilities ();
         }
     }
