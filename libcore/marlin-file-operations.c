@@ -49,11 +49,6 @@
 
 #define IS_IO_ERROR(__error, KIND) (((__error)->domain == G_IO_ERROR && (__error)->code == G_IO_ERROR_ ## KIND))
 
-static void scan_sources (GList *files,
-                          SourceInfo *source_info,
-                          CountProgressCallback count_callback,
-                          FilesFileOperationsCommonJob *job);
-
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
 
@@ -324,7 +319,7 @@ delete_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_sk
 {
     GList *l;
     GFile *file;
-    SourceInfo source_info;
+    SourceInfo *source_info;
     TransferInfo transfer_info;
     gboolean skipped_file;
     FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
@@ -333,18 +328,16 @@ delete_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_sk
         return;
     }
 
-    scan_sources (files,
-                  &source_info,
-                  (CountProgressCallback) marlin_file_operations_delete_job_report_delete_count_progress,
-                  job);
+    source_info = marlin_file_operations_common_job_scan_sources (job, files);
     if (marlin_file_operations_common_job_aborted (job)) {
+        g_clear_pointer (&source_info, marlin_file_operations_common_job_source_info_free);
         return;
     }
 
     g_timer_start (job->time);
 
     memset (&transfer_info, 0, sizeof (transfer_info));
-    marlin_file_operations_delete_job_report_delete_progress (del_job, &source_info, &transfer_info);
+    marlin_file_operations_delete_job_report_delete_progress (del_job, source_info, &transfer_info);
 
     for (l = files;
          l != NULL && !marlin_file_operations_common_job_aborted (job);
@@ -354,12 +347,14 @@ delete_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_sk
         skipped_file = FALSE;
         delete_file (del_job, file,
                      &skipped_file,
-                     &source_info, &transfer_info,
+                     source_info, &transfer_info,
                      TRUE);
         if (skipped_file) {
             (*files_skipped)++;
         }
     }
+
+    g_clear_pointer (&source_info, marlin_file_operations_common_job_source_info_free);
 
     PFSoundManager *sm;
     sm = pf_sound_manager_get_instance (); /* returns unowned instance - no need to unref */
@@ -667,301 +662,6 @@ marlin_file_operations_delete_finish (GAsyncResult  *result,
     g_return_val_if_fail (g_task_is_valid (result, NULL), FALSE);
 
     return g_task_propagate_boolean (G_TASK (result), error);
-}
-
-static void
-count_file (GFileInfo *info,
-            FilesFileOperationsCommonJob *job,
-            SourceInfo *source_info)
-{
-    source_info->num_files += 1;
-    source_info->num_bytes += g_file_info_get_size (info);
-
-    if (source_info->num_files_since_progress++ > 100) {
-        source_info->count_callback (job, source_info);
-        source_info->num_files_since_progress = 0;
-    }
-}
-
-static char *
-get_scan_primary (FilesFileOperationsCommonJob *job)
-{
-    g_assert (MARLIN_FILE_OPERATIONS_IS_COMMON_JOB (job));
-
-    if (MARLIN_FILE_OPERATIONS_IS_DELETE_JOB (job)) {
-        return g_strdup (_("Error while deleting."));
-    } else if (MARLIN_FILE_OPERATIONS_IS_COPY_MOVE_JOB (job)) {
-        FilesFileOperationsCopyMoveJob *move_job = MARLIN_FILE_OPERATIONS_COPY_MOVE_JOB (job);
-        if (move_job->is_move) {
-            return g_strdup (_("Error while moving."));
-        } else {
-            return g_strdup (_("Error while copying."));
-        }
-    } else {
-        g_warn_if_reached ();
-        return g_strdup (_("Error while copying."));
-    }
-}
-
-static void
-scan_dir (GFile *dir,
-          SourceInfo *source_info,
-          FilesFileOperationsCommonJob *job,
-          GQueue *dirs)
-{
-    GFileInfo *info;
-    GError *error;
-    GFile *subdir;
-    GFileEnumerator *enumerator;
-    char *primary, *secondary, *details;
-    int response;
-    SourceInfo saved_info;
-
-    saved_info = *source_info;
-
-retry:
-    error = NULL;
-    enumerator = g_file_enumerate_children (dir,
-                                            G_FILE_ATTRIBUTE_STANDARD_NAME","
-                                            G_FILE_ATTRIBUTE_STANDARD_TYPE","
-                                            G_FILE_ATTRIBUTE_STANDARD_SIZE,
-                                            G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                                            job->cancellable,
-                                            &error);
-    if (enumerator) {
-        error = NULL;
-        while ((info = g_file_enumerator_next_file (enumerator, job->cancellable, &error)) != NULL) {
-            count_file (info, job, source_info);
-
-            if (g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY) {
-                subdir = g_file_get_child (dir,
-                                           g_file_info_get_name (info));
-
-                /* Push to head, since we want depth-first */
-                g_queue_push_head (dirs, subdir);
-            }
-
-            g_object_unref (info);
-        }
-        g_file_enumerator_close (enumerator, job->cancellable, NULL);
-        g_object_unref (enumerator);
-
-        if (error && IS_IO_ERROR (error, CANCELLED)) {
-            g_error_free (error);
-        } else if (error) {
-            gchar *dir_basename = files_file_utils_custom_basename_from_file (dir);
-            primary = get_scan_primary (job);
-            details = NULL;
-
-            if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = g_strdup_printf (_("Files in the folder \"%s\" cannot be handled because you do "
-                                             "not have permissions to see them."), dir_basename);
-            } else {
-                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = g_strdup_printf (_("There was an error getting information about the files in the folder \"%s\"."), dir_basename);
-                details = error->message;
-            }
-
-            g_free (dir_basename);
-            response = marlin_file_operations_common_job_run_warning (
-                job,
-                primary,
-                secondary,
-                details,
-                FALSE,
-                CANCEL, RETRY, SKIP,
-                NULL);
-
-            g_error_free (error);
-
-            if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                marlin_file_operations_common_job_abort_job (job);
-            } else if (response == 1) {
-                *source_info = saved_info;
-                goto retry;
-            } else if (response == 2) {
-                marlin_file_operations_common_job_skip_readdir_error (job, dir);
-            } else {
-                g_assert_not_reached ();
-            }
-        }
-
-    } else if (job->skip_all_error) {
-        g_error_free (error);
-        marlin_file_operations_common_job_skip_file (job, dir);
-    } else if (IS_IO_ERROR (error, CANCELLED)) {
-        g_error_free (error);
-    } else {
-        gchar *dir_basename = files_file_utils_custom_basename_from_file (dir);
-        primary = get_scan_primary (job);
-        details = NULL;
-
-        if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = g_strdup_printf (_("The folder \"%s\" cannot be handled because you do not have "
-                                         "permissions to read it."), dir_basename);
-        } else {
-            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = g_strdup_printf (_("There was an error reading the folder \"%s\"."), dir_basename);
-            details = error->message;
-        }
-
-        g_free (dir_basename);
-        /* set show_all to TRUE here, as we don't know how many
-         * files we'll end up processing yet.
-         */
-        response = marlin_file_operations_common_job_run_warning (
-            job,
-            primary,
-            secondary,
-            details,
-            TRUE,
-            CANCEL, SKIP_ALL, SKIP, RETRY,
-            NULL);
-
-        g_error_free (error);
-
-        if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            marlin_file_operations_common_job_abort_job (job);
-        } else if (response == 1 || response == 2) {
-            if (response == 1) {
-                job->skip_all_error = TRUE;
-            }
-            marlin_file_operations_common_job_skip_file (job, dir);
-        } else if (response == 3) {
-            goto retry;
-        } else {
-            g_assert_not_reached ();
-        }
-    }
-}
-
-static void
-scan_file (GFile *file,
-           SourceInfo *source_info,
-           FilesFileOperationsCommonJob *job)
-{
-    GFileInfo *info;
-    GError *error;
-    GQueue *dirs;
-    GFile *dir;
-    char *primary;
-    char *secondary;
-    char *details;
-    int response;
-
-    dirs = g_queue_new ();
-retry:
-    error = NULL;
-    info = NULL;
-
-    if (G_IS_FILE (file)) {
-        info = g_file_query_info (file,
-                                  G_FILE_ATTRIBUTE_STANDARD_TYPE","
-                                  G_FILE_ATTRIBUTE_STANDARD_SIZE,
-                                  G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                                  job->cancellable,
-                                  &error);
-    }
-
-    if (info) {
-        count_file (info, job, source_info);
-
-        if (g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY) {
-            g_queue_push_head (dirs, g_object_ref (file));
-        }
-
-        g_object_unref (info);
-    } else if (job->skip_all_error) {
-        g_error_free (error);
-        marlin_file_operations_common_job_skip_file (job, file);
-    } else if (IS_IO_ERROR (error, CANCELLED)) {
-        g_error_free (error);
-    } else {
-        gchar *file_basename = files_file_utils_custom_basename_from_file (file);
-        primary = get_scan_primary (job);
-        details = NULL;
-
-        if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = g_strdup_printf (_("The file \"%s\" cannot be handled because you do not have "
-                                         "permissions to read it."), file_basename);
-        } else {
-            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = g_strdup_printf (_("There was an error getting information about \"%s\"."), file_basename);
-            details = error->message;
-        }
-
-        g_free (file_basename);
-        /* set show_all to TRUE here, as we don't know how many
-         * files we'll end up processing yet.
-         */
-        response = marlin_file_operations_common_job_run_warning (
-            job,
-            primary,
-            secondary,
-            details,
-            TRUE,
-            CANCEL, SKIP_ALL, SKIP, RETRY,
-            NULL);
-
-        g_error_free (error);
-
-        if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            marlin_file_operations_common_job_abort_job (job);
-        } else if (response == 1 || response == 2) {
-            if (response == 1) {
-                job->skip_all_error = TRUE;
-            }
-            marlin_file_operations_common_job_skip_file (job, file);
-        } else if (response == 3) {
-            goto retry;
-        } else {
-            g_assert_not_reached ();
-        }
-    }
-
-    while (!marlin_file_operations_common_job_aborted (job) &&
-           (dir = g_queue_pop_head (dirs)) != NULL) {
-        scan_dir (dir, source_info, job, dirs);
-        g_object_unref (dir);
-    }
-
-    /* Free all from queue if we exited early */
-    g_queue_foreach (dirs, (GFunc)g_object_unref, NULL);
-    g_queue_free (dirs);
-}
-
-static void
-scan_sources (GList *files,
-              SourceInfo *source_info,
-              CountProgressCallback count_callback,
-              FilesFileOperationsCommonJob *job)
-{
-    GList *l;
-    GFile *file;
-
-    memset (source_info, 0, sizeof (SourceInfo));
-    source_info->count_callback = count_callback;
-    source_info->count_callback (job, source_info);
-
-    for (l = files; l != NULL && !marlin_file_operations_common_job_aborted (job); l = l->next) {
-        file = l->data;
-
-        scan_file (file,
-                   source_info,
-                   job);
-    }
-
-    /* Make sure we report the final count */
-    source_info->count_callback (job, source_info);
 }
 
 static GFile *
@@ -2341,16 +2041,13 @@ copy_job (GTask *task,
 {
     FilesFileOperationsCopyMoveJob *job = task_data;
     FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
-    SourceInfo source_info;
+    SourceInfo *source_info;
     TransferInfo transfer_info;
     char *dest_fs_id = NULL;
     GFile *dest;
 
     pf_progress_info_start (common->progress);
-    scan_sources (job->files,
-                  &source_info,
-                  (CountProgressCallback) marlin_file_operations_copy_move_job_report_copy_move_count_progress,
-                  common);
+    source_info = marlin_file_operations_common_job_scan_sources (common, job->files);
     if (marlin_file_operations_common_job_aborted (common)) {
         goto aborted;
     }
@@ -2367,7 +2064,7 @@ copy_job (GTask *task,
     marlin_file_operations_common_job_verify_destination (common,
                                                           dest,
                                                           &dest_fs_id,
-                                                          source_info.num_bytes);
+                                                          source_info->num_bytes);
     g_object_unref (dest);
     if (marlin_file_operations_common_job_aborted (common)) {
         goto aborted;
@@ -2378,10 +2075,10 @@ copy_job (GTask *task,
     memset (&transfer_info, 0, sizeof (transfer_info));
     copy_files (job,
                 dest_fs_id,
-                &source_info, &transfer_info);
+                source_info, &transfer_info);
 
 aborted:
-
+    g_clear_pointer (&source_info, marlin_file_operations_common_job_source_info_free);
     g_free (dest_fs_id);
 
     g_task_return_boolean (task, TRUE);
@@ -2783,7 +2480,7 @@ move_job (GTask *task,
     FilesFileOperationsCopyMoveJob *job = task_data;
     FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     GList *fallbacks = NULL;
-    SourceInfo source_info;
+    SourceInfo *source_info;
     TransferInfo transfer_info;
     char *dest_fs_id = NULL;
     char *dest_fs_type = NULL;
@@ -2808,10 +2505,7 @@ move_job (GTask *task,
        so scan for size */
 
     fallback_files = get_files_from_fallbacks (fallbacks);
-    scan_sources (fallback_files,
-                  &source_info,
-                  (CountProgressCallback) marlin_file_operations_copy_move_job_report_copy_move_count_progress,
-                  common);
+    source_info = marlin_file_operations_common_job_scan_sources (common, fallback_files);
 
     g_list_free (fallback_files);
 
@@ -2822,7 +2516,7 @@ move_job (GTask *task,
     marlin_file_operations_common_job_verify_destination (common,
                                                           job->destination,
                                                           NULL,
-                                                          source_info.num_bytes);
+                                                          source_info->num_bytes);
     if (marlin_file_operations_common_job_aborted (common)) {
         goto aborted;
     }
@@ -2831,9 +2525,10 @@ move_job (GTask *task,
     move_files (job,
                 fallbacks,
                 dest_fs_id, &dest_fs_type,
-                &source_info, &transfer_info);
+                source_info, &transfer_info);
 
 aborted:
+    g_clear_pointer (&source_info, marlin_file_operations_common_job_source_info_free);
     g_list_free_full (fallbacks, g_free);
 
     g_free (dest_fs_id);

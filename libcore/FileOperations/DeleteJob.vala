@@ -39,6 +39,10 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         this.user_cancel = false;
     }
 
+    protected override unowned string get_scan_primary () {
+        return _("Error while deleting.");
+    }
+
     protected bool confirm_delete_from_trash (GLib.List<GLib.File> to_delete_files) {
         string prompt;
 
@@ -131,7 +135,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         }
     }
 
-    protected void report_delete_count_progress (CommonJob.SourceInfo source_info) {
+    protected override void report_count_progress (CommonJob.SourceInfo source_info) {
         /// TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
         /// %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
         /// So this represents something like "Preparing to delete 100 files (200 MB)"
