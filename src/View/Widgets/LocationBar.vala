@@ -103,7 +103,6 @@ namespace Files.View.Chrome {
 
         private void on_search_results_exit (bool exit_navigate = true) {
             /* Search result widget ensures it has closed and released grab */
-            search_results.is_active = false;
             bread.reset_im_context ();
             if (focus_timeout_id > 0) {
                 GLib.Source.remove (focus_timeout_id);
@@ -251,7 +250,7 @@ namespace Files.View.Chrome {
         private void switch_to_search_mode () {
             search_mode = true;
             hide_navigate_icon ();
-            /* Next line ensures that the pathbar not lose focus when the mouse if over the sidebar,
+            /* Next line ensures that the pathbar not lose focus when the mouse is over the sidebar,
              * which would normally grab the focus */
             after_bread_text_changed (bread.get_entry_text ());
         }
