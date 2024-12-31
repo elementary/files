@@ -168,13 +168,15 @@ namespace Files.View.Chrome {
 
             hide_placeholder ();
             if (search_mode) {
-                if (txt.contains (Path.DIR_SEPARATOR_S)) {
+                if (text_is_path (txt)) {
                     switch_to_navigate_mode ();
+                    // Persist current entry
+                    bread.set_entry_text (txt);
                 } else {
                     search_results.search (txt, search_location);
                 }
             } else {
-                if (!txt.contains (Path.DIR_SEPARATOR_S)) {
+                if (!text_is_path (txt)) {
                     switch_to_search_mode ();
                 } else {
                     base.after_bread_text_changed (txt);
@@ -183,6 +185,9 @@ namespace Files.View.Chrome {
             }
         }
 
+        private bool text_is_path (string txt) {
+            return txt.contains (Path.DIR_SEPARATOR_S) || txt.contains (":");
+        }
         protected void show_refresh_icon () {
             bread.get_style_context ().remove_class ("spin");
             bread.action_icon_name = Files.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC;
