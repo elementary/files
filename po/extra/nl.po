@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-08 08:46+0000\n"
-"PO-Revision-Date: 2024-06-28 11:16+0000\n"
+"POT-Creation-Date: 2024-10-21 21:48+0000\n"
+"PO-Revision-Date: 2024-10-29 11:27+0000\n"
 "Last-Translator: DutchVipperloid <svenroelof@e.email>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/extra/nl/>\n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5.5\n"
+"X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
@@ -69,62 +69,70 @@ msgstr "Bekijk meer metadata in een oogopslag in lijst weergave"
 msgid "Browse complex trees faster with Column view"
 msgstr "Sneller bladeren door complexe boomstructuren met kolomweergave"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:85
-#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:120
-#: data/files.metainfo.xml.in.in:140
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:88
+#: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:129
+#: data/files.metainfo.xml.in.in:141 data/files.metainfo.xml.in.in:161
 msgid "Minor updates:"
 msgstr "Kleine updates:"
 
 #: data/files.metainfo.xml.in.in:69
-msgid "Restoring tabs from last time is now optional"
-msgstr "Tabbladen van de vorige keer herstellen is nu optioneel"
+msgid "Redesign file permissions view"
+msgstr "Ontwerp bestandrechten-weergave opnieuw"
 
 #: data/files.metainfo.xml.in.in:70
-msgid "Drag and select can no longer be done with secondary pointer button"
-msgstr "Slepen en selecteren kan niet langer met de secundaire aanwijsknop"
+msgid "Focus sidebar by pressing Ctrl + Left"
+msgstr "focus zijbalk door Ctrl + links in te drukken"
 
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:93
-#: data/files.metainfo.xml.in.in:110 data/files.metainfo.xml.in.in:122
-#: data/files.metainfo.xml.in.in:142
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:92
+#: data/files.metainfo.xml.in.in:114 data/files.metainfo.xml.in.in:131
+#: data/files.metainfo.xml.in.in:143 data/files.metainfo.xml.in.in:163
 msgid "Updated translations"
 msgstr "Bijgewerkte vertalingen"
 
-#: data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:90
+msgid "Restoring tabs from last time is now optional"
+msgstr "Tabbladen van de vorige keer herstellen is nu optioneel"
+
+#: data/files.metainfo.xml.in.in:91
+msgid "Drag and select can no longer be done with secondary pointer button"
+msgstr "Slepen en selecteren kan niet langer met de secundaire aanwijsknop"
+
+#: data/files.metainfo.xml.in.in:108
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr "Stop ondersteuning voor het slepen van bladwijzers uit de zijbalk"
 
-#: data/files.metainfo.xml.in.in:88
+#: data/files.metainfo.xml.in.in:109
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr "Fix onverwacht scrollen na het hernoemen van een map"
 
-#: data/files.metainfo.xml.in.in:89
+#: data/files.metainfo.xml.in.in:110
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 "Lost een crash op bij het overschakelen naar weergave als raster onder "
 "uitzonderlijke omstandigheden"
 
-#: data/files.metainfo.xml.in.in:90
+#: data/files.metainfo.xml.in.in:111
 msgid "Ensure the selection persists after refreshing the view"
 msgstr ""
 "Zorg ervoor dat de selectie blijft bestaan na het verversen van de weergave"
 
-#: data/files.metainfo.xml.in.in:91
+#: data/files.metainfo.xml.in.in:112
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "Fix Bestanden worden niet geopend als wordt geprobeerd een niet "
 "geconnecteerde locatie te herstellen"
 
-#: data/files.metainfo.xml.in.in:92
+#: data/files.metainfo.xml.in.in:113
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 "Fix dat de weergave zichtbaar blijft wanneer een locatie los gekoppeld wordt"
 
-#: data/files.metainfo.xml.in.in:136
+#: data/files.metainfo.xml.in.in:157
 msgid "Improvements:"
 msgstr "Verbeteringen:"
 
-#: data/files.metainfo.xml.in.in:138
+#: data/files.metainfo.xml.in.in:159
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"

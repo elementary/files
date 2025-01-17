@@ -72,7 +72,6 @@ namespace Files.View.Chrome {
             search_results.file_activated.connect (on_search_results_file_activated);
             search_results.cursor_changed.connect (on_search_results_cursor_changed);
             search_results.first_match_found.connect (on_search_results_first_match_found);
-            search_results.realize.connect (on_search_results_realize);
             search_results.exit.connect (on_search_results_exit);
             search_results.notify["working"].connect (on_search_results_working_changed);
         }
@@ -84,6 +83,7 @@ namespace Files.View.Chrome {
             gof.ensure_query_info ();
 
             path_change_request (gof.get_target_location ().get_uri ());
+            on_search_results_exit ();
         }
         private void on_search_results_file_activated (GLib.File file) {
             AppInfo? app = MimeActions.get_default_application_for_glib_file (file);
@@ -101,12 +101,9 @@ namespace Files.View.Chrome {
             }
         }
 
-        private void on_search_results_realize () {
-            /*Is this necessary every popup? */
-            ((Gtk.Window)get_toplevel ()).get_group ().add_window (search_results);
-        }
         private void on_search_results_exit (bool exit_navigate = true) {
             /* Search result widget ensures it has closed and released grab */
+            search_results.is_active = false;
             bread.reset_im_context ();
             if (focus_timeout_id > 0) {
                 GLib.Source.remove (focus_timeout_id);
@@ -128,11 +125,16 @@ namespace Files.View.Chrome {
         }
 
         protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
-            base.after_bread_focus_out_event (event);
-            search_mode = false;
-            show_refresh_icon ();
-            focus_out_event (event);
-            check_home ();
+            if (search_results.is_active) {
+                bread.hide_breadcrumbs = true;
+            } else {
+                base.after_bread_focus_out_event (event);
+                search_mode = false;
+                show_refresh_icon ();
+                focus_out_event (event);
+                check_home ();
+            }
+
             return true;
         }
         protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
