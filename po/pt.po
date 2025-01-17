@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-21 21:48+0000\n"
-"PO-Revision-Date: 2024-08-06 23:16+0000\n"
+"PO-Revision-Date: 2024-11-28 11:16+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/files/"
 "pt/>\n"
@@ -1905,22 +1905,16 @@ msgid "Could not open files or URIs with this app"
 msgstr "Não é possível abrir ficheiros ou URL's com esta aplicação"
 
 #: src/Utils/Permissions.vala:29
-#, fuzzy
-#| msgid "Owner:"
 msgid "Owner"
-msgstr "Proprietário:"
+msgstr "Proprietário"
 
 #: src/Utils/Permissions.vala:31
-#, fuzzy
-#| msgid "Group:"
 msgid "Group"
-msgstr "Grupo:"
+msgstr "Grupo"
 
 #: src/Utils/Permissions.vala:34
-#, fuzzy
-#| msgid "Everyone:"
 msgid "Everyone"
-msgstr "Todos:"
+msgstr "Todos"
 
 #: src/View/AbstractDirectoryView.vala:825
 #: src/View/AbstractDirectoryView.vala:1152
