@@ -64,7 +64,7 @@ public interface Sidebar.SidebarItemInterface : Object {
         gicon = icon;
     }
 
-    public virtual void add_extra_menu_items (PopupMenuBuilder menu_builder) {}
+    public virtual void add_extra_menu_items (GLib.Menu menu) {}
     public virtual void update_plugin_data (Files.SidebarPluginItem item) {}
 
     public virtual void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {

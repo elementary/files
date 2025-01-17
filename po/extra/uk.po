@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-06 15:25+0000\n"
-"PO-Revision-Date: 2024-05-15 20:13+0000\n"
+"POT-Creation-Date: 2024-10-21 21:48+0000\n"
+"PO-Revision-Date: 2024-10-22 02:32+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/files/extra/uk/"
 ">\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
@@ -71,62 +71,70 @@ msgstr "Швидкий огляд більшої кількості метада
 msgid "Browse complex trees faster with Column view"
 msgstr "Переглядайте складні дерева швидше у поданні стовпчиками"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:85
-#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:120
-#: data/files.metainfo.xml.in.in:140
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:88
+#: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:129
+#: data/files.metainfo.xml.in.in:141 data/files.metainfo.xml.in.in:161
 msgid "Minor updates:"
 msgstr "Незначні оновлення:"
 
 #: data/files.metainfo.xml.in.in:69
+msgid "Redesign file permissions view"
+msgstr "Перероблено подання дозволів на файли"
+
+#: data/files.metainfo.xml.in.in:70
+msgid "Focus sidebar by pressing Ctrl + Left"
+msgstr "Фокусування на бічній панелі за допомогою клавіш Ctrl + ліворуч"
+
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:92
+#: data/files.metainfo.xml.in.in:114 data/files.metainfo.xml.in.in:131
+#: data/files.metainfo.xml.in.in:143 data/files.metainfo.xml.in.in:163
+msgid "Updated translations"
+msgstr "Оновлено переклади"
+
+#: data/files.metainfo.xml.in.in:90
 msgid "Restoring tabs from last time is now optional"
 msgstr "Відновлення вкладок з минулого разу тепер необов'язкове"
 
-#: data/files.metainfo.xml.in.in:70
+#: data/files.metainfo.xml.in.in:91
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr ""
 "Перетягування та вибір більше не можна робити за допомогою вторинної кнопки "
 "вказівника"
 
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:93
-#: data/files.metainfo.xml.in.in:110 data/files.metainfo.xml.in.in:122
-#: data/files.metainfo.xml.in.in:142
-msgid "Updated translations"
-msgstr "Оновлено переклади"
-
-#: data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:108
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr "Припинено підтримку перетягування закладок з бічної панелі"
 
-#: data/files.metainfo.xml.in.in:88
+#: data/files.metainfo.xml.in.in:109
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr "Виправлено неочікуване прокручування після перейменування теки"
 
-#: data/files.metainfo.xml.in.in:89
+#: data/files.metainfo.xml.in.in:110
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 "Виправлено збій під час переходу до перегляду у вигляді сітки за рідкісних "
 "обставин"
 
-#: data/files.metainfo.xml.in.in:90
+#: data/files.metainfo.xml.in.in:111
 msgid "Ensure the selection persists after refreshing the view"
 msgstr "Вибір зберігається після оновлення подання"
 
-#: data/files.metainfo.xml.in.in:91
+#: data/files.metainfo.xml.in.in:112
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "Виправлено помилку, коли файли не відкриваються під час спроби відновити "
 "від'єднане розташування"
 
-#: data/files.metainfo.xml.in.in:92
+#: data/files.metainfo.xml.in.in:113
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr "Виправлено продовження показу не змонтованого розташування"
 
-#: data/files.metainfo.xml.in.in:136
+#: data/files.metainfo.xml.in.in:157
 msgid "Improvements:"
 msgstr "Поліпшено:"
 
-#: data/files.metainfo.xml.in.in:138
+#: data/files.metainfo.xml.in.in:159
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"

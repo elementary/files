@@ -124,10 +124,13 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
         // usable actions.  In future, actions like "Format" might be added.
         var sort_key = drive.get_sort_key ();
         if (sort_key != null && sort_key.contains ("hotplug")) {
-            var menu_builder = new PopupMenuBuilder ();
-            menu_builder.add_safely_remove ();
+            var menu = new GLib.Menu ();
+            menu.append (_("Safely Remove"), "mountable.safely-remove");
 
-            menu_builder.build (this).popup_at_pointer (null);
+            var gtk_menu = new Gtk.Menu.from_model (menu) {
+                attach_widget = this
+            };
+            gtk_menu.popup_at_pointer (null);
         }
     }
 }

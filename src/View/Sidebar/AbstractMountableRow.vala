@@ -178,11 +178,15 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         var unmount_action = new SimpleAction ("unmount", null);
         unmount_action.activate.connect (() => unmount_mount.begin ());
 
+        var empty_trash_action = new SimpleAction ("empty-trash", null);
+        empty_trash_action.activate.connect (() => Files.FileOperations.empty_trash_for_mount (this, mount));
+
         var action_group = new SimpleActionGroup ();
         action_group.add_action (safely_remove_action);
         action_group.add_action (eject_action);
         action_group.add_action (properties_action);
         action_group.add_action (unmount_action);
+        action_group.add_action (empty_trash_action);
 
         insert_action_group ("mountable", action_group);
     }
@@ -248,29 +252,31 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         update_visibilities ();
     }
 
-    protected void add_extra_menu_items_for_mount (Mount? mount, PopupMenuBuilder menu_builder) {
+    protected void add_extra_menu_items_for_mount (Mount? mount, GLib.Menu menu) {
         // Do not add items for a volume that is in the middle of being mounted or unmounted
         if (working) {
             return;
         }
 
         if (mount != null) {
+            var menu_section = new GLib.Menu ();
+
             if (Files.FileOperations.has_trash_files (mount)) {
-                menu_builder
-                    .add_separator ()
-                    .add_empty_mount_trash (() => {
-                        Files.FileOperations.empty_trash_for_mount (this, mount);
-                    })
-                ;
+                // FIXME: any way to make destructive?
+                menu_section.append (_("Permanently Delete Trash on this Mount"), "mountable.empty-trash");
             }
 
             if (mount.can_unmount ()) {
-                menu_builder.add_with_action_name (_("_Unmount"), "mountable.unmount");
+                menu_section.append (_("_Unmount"), "mountable.unmount");
             }
+
+            menu.append_section (null, menu_section);
         }
 
-        menu_builder.add_separator ();
-        menu_builder.add_with_action_name (_("Properties"), "mountable.properties"); // This will mount if necessary
+        var properties_section = new GLib.Menu ();
+        properties_section.append (_("Properties"), "mountable.properties"); // This will mount if necessary
+
+        menu.append_section (null, properties_section);
     }
 
     protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {

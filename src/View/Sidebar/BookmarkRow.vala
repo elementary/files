@@ -314,35 +314,40 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     protected virtual void popup_context_menu () {
-        var menu_builder = new PopupMenuBuilder ();
-        menu_builder.add_with_action_name (_("Open"), "bookmark.open");
-        menu_builder.add_separator ();
-        menu_builder.add_with_action_name (_("Open in New _Tab"), "bookmark.open-tab");
-        menu_builder.add_with_action_name (_("Open in New _Window"), "bookmark.open-window");
+        var open_section = new GLib.Menu ();
+        open_section.append (_("Open in New _Tab"), "bookmark.open-tab");
+        open_section.append (_("Open in New _Window"), "bookmark.open-window");
 
-        add_extra_menu_items (menu_builder);
+        var glib_menu = new GLib.Menu ();
+        glib_menu.append (_("Open"), "bookmark.open");
+        glib_menu.append_section (null, open_section);
+
+        add_extra_menu_items (glib_menu);
+
+        var popupmenu = new Gtk.Menu.from_model (glib_menu) {
+            attach_widget = this
+        };
 
         if (menu_model != null) {
-            menu_builder
-                .build_from_model (menu_model, action_group_namespace, action_group)
-                .popup_at_pointer (null);
-        } else {
-            menu_builder
-                .build (this)
-                .popup_at_pointer (null);
+            popupmenu.insert_action_group (action_group_namespace, action_group);
+            glib_menu.append_section (null, menu_model);
         }
+
+        popupmenu.popup_at_pointer (null);
     }
 
-    protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+    protected override void add_extra_menu_items (GLib.Menu menu) {
     /* Rows under "Bookmarks" can be removed or renamed */
+        var menu_section = new GLib.Menu ();
         if (!permanent) {
-            menu_builder.add_separator ();
-            menu_builder.add_with_action_name (_("Remove"), "bookmark.remove");
+            menu_section.append (_("Remove"), "bookmark.remove");
         }
 
         if (!pinned) {
-            menu_builder.add_with_action_name (_("Rename"), "bookmark.rename");
+            menu_section.append (_("Rename"), "bookmark.rename");
         }
+
+        menu.append_section (null, menu_section);
 
         if (Uri.parse_scheme (uri) == "trash") {
             var volume_monitor = VolumeMonitor.@get ();
@@ -355,14 +360,11 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
             var text = mounts_with_trash > 0 ? _("Permanently Delete All Trash") : _("Permanently Delete Trash");
 
-            var menu_item = new Gtk.MenuItem.with_mnemonic (text);
-            menu_item.set_detailed_action_name (
-                Action.print_detailed_name ("bookmark.empty-all-trash", null)
-            );
-            menu_item.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+            var trash_section = new GLib.Menu ();
+            // FIXME: any way to make destructive?
+            trash_section.append (text, "bookmark.empty-all-trash");
 
-            menu_builder.add_separator ();
-            menu_builder.add_item (menu_item);
+            menu.append_section (null, trash_section);
 
             empty_all_trash_action.set_enabled (!Files.TrashMonitor.get_default ().is_empty);
         }

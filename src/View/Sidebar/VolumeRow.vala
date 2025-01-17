@@ -83,6 +83,14 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
 
     construct {
         volume_monitor.volume_removed.connect (on_volume_removed);
+
+        var mount_action = new SimpleAction ("mount", null);
+        mount_action.activate.connect (() => mount_volume ());
+
+        var action_group = new SimpleActionGroup ();
+        action_group.add_action (mount_action);
+
+        insert_action_group ("volume", action_group);
     }
 
     protected override void activated (Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
@@ -123,13 +131,13 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         }
     }
 
-    protected override void add_extra_menu_items (PopupMenuBuilder menu_builder) {
+    protected override void add_extra_menu_items (GLib.Menu menu) {
         if (working) {
             return;
         }
 
-        add_extra_menu_items_for_mount (volume.get_mount (), menu_builder);
-        add_extra_menu_items_for_drive (volume.get_drive (), menu_builder);
+        add_extra_menu_items_for_mount (volume.get_mount (), menu);
+        add_extra_menu_items_for_drive (volume.get_drive (), menu);
     }
 
     private void mount_volume (bool open = false, Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
@@ -157,28 +165,26 @@ public class Sidebar.VolumeRow : Sidebar.AbstractMountableRow, SidebarItemInterf
         );
     }
 
-    protected void add_extra_menu_items_for_drive (Drive? drive, PopupMenuBuilder menu_builder) {
+    protected void add_extra_menu_items_for_drive (Drive? drive, GLib.Menu menu) {
         if (drive == null) {
             return;
         }
 
         if (!is_mounted) {
-            var mount_item = new Gtk.MenuItem.with_mnemonic (_("Mount"));
-            mount_item.activate.connect (() => {
-                mount_volume ();
-            });
-            menu_builder.add_item (mount_item);
+            menu.append (_("Mount"), "volume.mount");
         }
+
+        var menu_section = new GLib.Menu ();
 
         var sort_key = drive.get_sort_key ();
         if (sort_key != null && sort_key.contains ("hotplug")) {
-            menu_builder.add_separator ();
-            menu_builder.add_safely_remove ();
+            menu_section.append (_("Safely Remove"), "mountable.safely-remove");
         } else if (mount == null && drive.can_eject ()) {
-            menu_builder.add_separator ();
             // Do we need different text for USB sticks and optical drives?
-            menu_builder.add_with_action_name (_("Eject Media"), "mountable.eject");
+            menu_section.append (_("Eject Media"), "mountable.eject");
         }
+
+        menu.append_section (null, menu_section);
     }
 
     protected override async bool get_filesystem_space (Cancellable? update_cancellable) {

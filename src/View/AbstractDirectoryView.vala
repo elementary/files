@@ -278,6 +278,7 @@ namespace Files {
 
         protected Gtk.EventControllerKey key_controller;
         protected Gtk.GestureMultiPress button_controller;
+        protected Gtk.EventControllerScroll scroll_controller;
         protected Gtk.EventControllerMotion motion_controller;
 
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
@@ -327,10 +328,18 @@ namespace Files {
                    schedule_thumbnail_color_tag_timeout ();
                 });
 
+                scroll_controller = new Gtk.EventControllerScroll (view, NONE);
+                scroll_controller.scroll.connect (on_scroll_event);
+
                 key_controller = new Gtk.EventControllerKey (view) {
                     propagation_phase = BUBBLE
                 };
                 key_controller.key_pressed.connect (on_view_key_press_event);
+                // Workaround for scroll events getting consumed by scroll controller
+                // Only handle scroll events when a key is pressed (for zooming), otherwise they will be handled
+                // by the native widget
+                key_controller.key_pressed.connect (() => {scroll_controller.flags = VERTICAL; return false;});
+                key_controller.key_released.connect (() => scroll_controller.flags = NONE);
 
                 // Hack required to suppress native behaviour when dragging
                 // multiple selected items with GestureMultiPress event controller
@@ -384,8 +393,6 @@ namespace Files {
                 clipboard.changed.connect (on_clipboard_changed);
                 on_clipboard_changed ();
             });
-
-            scroll_event.connect (on_scroll_event);
 
             get_vadjustment ().value_changed.connect_after (() => {
                 schedule_thumbnail_color_tag_timeout ();
@@ -496,6 +503,12 @@ namespace Files {
                 return;
             }
 
+            // Ensure focus file not overridden later
+            if (set_cursor_timeout_id > 0) {
+                Source.remove (set_cursor_timeout_id);
+                set_cursor_timeout_id = 0;
+            }
+
             if (select_source_handler > 0) {
                 disconnect (select_source_handler);
                 select_source_handler = 0;
@@ -506,12 +519,11 @@ namespace Files {
 
             uint count = 0;
             Gtk.TreeIter? iter;
-
             foreach (Files.File f in files_to_select) {
                 /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
-                if (model.get_first_iter_for_file (f, out iter)) {
+                var path = model.get_path_for_first_file (f);
+                if (path != null) {
                     count++;
-                    var path = model.get_path (iter);
                     /* Cursor follows if matches focus location*/
                     select_path (path, focus_file != null && focus_file.equal (f.location));
                 }
@@ -619,33 +631,17 @@ namespace Files {
         }
 
         public void select_gof_file (Files.File file) {
-            Gtk.TreeIter? iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
-            }
-
-            var path = model.get_path (iter);
+            var path = model.get_path_for_first_file (file);
             set_cursor (path, false, true, false);
         }
 
         protected void select_and_scroll_to_gof_file (Files.File file) {
-            Gtk.TreeIter iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
-            }
-
-            var path = model.get_path (iter);
+            var path = model.get_path_for_first_file (file);
             set_cursor (path, false, true, true);
         }
 
         protected void add_gof_file_to_selection (Files.File file) {
-            Gtk.TreeIter iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
-            }
-
-            var path = model.get_path (iter);
-            select_path (path); /* Cursor does not follow */
+            select_path (model.get_path_for_first_file (file)); /* Cursor does not follow */
         }
 
     /** Directory signal handlers. */
@@ -755,49 +751,6 @@ namespace Files {
             });
 
             return only_folders;
-        }
-
-    /** Handle scroll events */
-        protected bool handle_scroll_event (Gdk.EventScroll event) {
-            if (is_frozen) {
-                return true;
-            }
-
-            Gdk.ModifierType state;
-            event.get_state (out state);
-
-            if ((state & Gdk.ModifierType.CONTROL_MASK) > 0) {
-                Gdk.ScrollDirection direction;
-                double delta_x, delta_y;
-                if (event.get_scroll_direction (out direction)) { // Only true for discrete scrolling
-                    if (direction == Gdk.ScrollDirection.UP) {
-                        zoom_in ();
-                        return true;
-
-                    } else if (direction == Gdk.ScrollDirection.DOWN) {
-                        zoom_out ();
-                        return true;
-                    }
-
-                    return false;
-                } else if (event.get_scroll_deltas (out delta_x, out delta_y)) {
-                    /* try to emulate a normal scrolling event by summing deltas.
-                     * step size of 0.5 chosen to match sensitivity */
-                    total_delta_y += delta_y;
-
-                    if (total_delta_y >= 0.5) {
-                        total_delta_y = 0;
-                        zoom_out ();
-                    } else if (total_delta_y <= -0.5) {
-                        total_delta_y = 0;
-                        zoom_in ();
-                    }
-
-                    return true;
-                }
-            }
-
-            return false;
         }
 
         protected GLib.List<Files.File>
@@ -924,9 +877,7 @@ namespace Files {
                 });
             }
 
-            Gtk.TreeIter? iter = null;
-            model.get_first_iter_for_file (file_list.first ().data, out iter);
-            deleted_path = model.get_path (iter);
+            deleted_path = model.get_path_for_first_file (file_list.first ().data);
 
             if (locations != null) {
                 locations.reverse ();
@@ -2916,10 +2867,6 @@ namespace Files {
             }
 
             var event = Gtk.get_current_event ();
-            if (((Gdk.EventKey)event).is_modifier == 1) {
-                return true;
-            }
-
             cancel_hover ();
 
             Gdk.ModifierType consumed_mods;
@@ -3246,35 +3193,29 @@ namespace Files {
             hover_path = null;
         }
 
-        protected virtual bool on_scroll_event (Gdk.EventScroll event) {
-            Gdk.ScrollDirection direction;
-            event.get_scroll_direction (out direction);
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            if ((state & Gdk.ModifierType.CONTROL_MASK) == 0) {
-                double increment = 0.0;
-
-                switch (direction) {
-                    case Gdk.ScrollDirection.LEFT:
-                        increment = 5.0;
-                        break;
-
-                    case Gdk.ScrollDirection.RIGHT:
-                        increment = -5.0;
-                        break;
-
-                    case Gdk.ScrollDirection.SMOOTH:
-                        double delta_x;
-                        event.get_scroll_deltas (out delta_x, null);
-                        increment = delta_x * 10.0;
-                        break;
-
-                    default:
-                        break;
-                }
+        protected virtual void on_scroll_event (double dx, double dy) {
+            if (is_frozen) {
+                return;
             }
 
-            return handle_scroll_event (event);
+            Gdk.ModifierType state;
+            Gtk.get_current_event_state (out state);
+            if ((state & Gdk.ModifierType.CONTROL_MASK) > 0) {
+                /* try to emulate a normal scrolling event by summing deltas.
+                 * step size of 0.5 chosen to match sensitivity */
+                total_delta_y += dy;
+
+                if (total_delta_y >= 0.5) {
+                    total_delta_y = 0;
+                    zoom_out ();
+                } else if (total_delta_y <= -0.5) {
+                    total_delta_y = 0;
+                    zoom_in ();
+                }
+            } else {
+                // In case "key-released" signal was missed
+                scroll_controller.flags = NONE;
+            }
         }
 
     /** name renderer signals */
@@ -3555,6 +3496,7 @@ namespace Files {
                             /* on expanders (if any) or xpad. Handle ourselves so that clicking
                              * on xpad also expands/collapses row (accessibility). */
                             expand_collapse (path);
+                            button_controller.set_state (CLAIMED);
                             break;
 
                         default:
@@ -3573,6 +3515,10 @@ namespace Files {
                     break;
 
                 case Gdk.BUTTON_SECONDARY: // button 3
+                    // No native behaviours on secondary click that we want
+                    // ListView will cause unwanted deselections otherwise.
+                    button_controller.set_state (CLAIMED);
+
                     switch (click_zone) {
                         case ClickZone.BLANK_NO_PATH:
                         case ClickZone.INVALID:
@@ -3669,8 +3615,9 @@ namespace Files {
                 warning ("Trying to rename when frozen");
                 return;
             }
-            Gtk.TreeIter? iter = null;
-            if (!model.get_first_iter_for_file (file, out iter)) {
+
+            var path = model.get_path_for_first_file (file);
+            if (path == null) {
                 critical ("Failed to find rename file in model");
                 return;
             }
@@ -3679,8 +3626,6 @@ namespace Files {
             renaming = true;
             update_menu_actions ();
             is_frozen = true;
-            Gtk.TreePath path = model.get_path (iter);
-
             uint count = 0;
             bool ok_next_time = false;
             Gtk.TreePath? start_path = null;
