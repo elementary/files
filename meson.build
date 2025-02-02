@@ -1,7 +1,7 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '6.5.3',
+    version: '7.1.0',
     meson_version: '>= 0.59.0'
 )
 
@@ -48,6 +48,8 @@ gee_dep = dependency('gee-0.8')
 gtk_dep = dependency('gtk+-3.0', version: '>=3.22.25')
 granite_dep = dependency('granite', version: '>=6.1.0')
 handy_dep = dependency('libhandy-1', version: '>=0.83.0')
+portal_dep = dependency('libportal')
+portal_gtk3_dep = dependency('libportal-gtk3')
 
 common_deps = [
     glib_dep,

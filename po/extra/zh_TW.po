@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-13 19:10+0000\n"
-"PO-Revision-Date: 2019-05-22 16:03+0000\n"
-"Last-Translator: P.-H. Lin <cypressyew@gmail.com>\n"
+"POT-Creation-Date: 2024-10-21 21:48+0000\n"
+"PO-Revision-Date: 2024-11-06 11:17+0000\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
 "files/extra/zh_Hant/>\n"
 "Language: zh_TW\n"
@@ -17,31 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.6.1\n"
+"X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:3 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "檔案"
 
-#: data/io.elementary.files.desktop.in.in:4
+#: data/io.elementary.files.desktop.in.in:7
 msgid "Browse your files"
 msgstr "瀏覽您的檔案"
 
-#: data/io.elementary.files.desktop.in.in:5
+#: data/io.elementary.files.desktop.in.in:9
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
 "folder;manager;explore;disk;filesystem;資料夾;管理員;探索;磁碟;檔案系統;"
 
-#: data/io.elementary.files.desktop.in.in:6
-msgid "File Manager"
-msgstr "檔案管理員"
-
-#: data/io.elementary.files.desktop.in.in:20
+#: data/io.elementary.files.desktop.in.in:25
 msgid "New Window"
 msgstr "新視窗"
 
-#: data/io.elementary.files.desktop.in.in:24
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr "以管理員身份新開視窗"
 
@@ -63,91 +59,78 @@ msgstr ""
 
 #: data/files.metainfo.xml.in.in:18
 msgid "Quick access to settings like zoom levels and hidden files"
-msgstr ""
+msgstr "提供縮放層級與隱藏檔案等設定的快速存取"
 
 #: data/files.metainfo.xml.in.in:22
 msgid "See more metadata at a glance in List view"
-msgstr ""
+msgstr "在列表檢視提供更多中介資料以便概覽"
 
 #: data/files.metainfo.xml.in.in:26
 msgid "Browse complex trees faster with Column view"
-msgstr ""
+msgstr "用分欄檢視來更快速地瀏覽複雜目錄樹"
 
-#: data/files.metainfo.xml.in.in:58
-#, fuzzy
-msgid "elementary, Inc."
-msgstr "elementary LLC."
-
-#: data/files.metainfo.xml.in.in:65 data/files.metainfo.xml.in.in:88
-#: data/files.metainfo.xml.in.in:100 data/files.metainfo.xml.in.in:120
-#: data/files.metainfo.xml.in.in:138 data/files.metainfo.xml.in.in:154
-#: data/files.metainfo.xml.in.in:169 data/files.metainfo.xml.in.in:191
-#: data/files.metainfo.xml.in.in:207 data/files.metainfo.xml.in.in:222
-#, fuzzy
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:88
+#: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:129
+#: data/files.metainfo.xml.in.in:141 data/files.metainfo.xml.in.in:161
 msgid "Minor updates:"
-msgstr "小臭蟲修正"
-
-#: data/files.metainfo.xml.in.in:67
-msgid "Discontinue support for dragging bookmark out of sidebar"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:68
-msgid "Fix unexpected scrolling after renaming a folder"
-msgstr ""
+msgstr "小型更新："
 
 #: data/files.metainfo.xml.in.in:69
-msgid ""
-"Fixes a crash when switching to viewing as grid under rare circumstances"
-msgstr ""
+msgid "Redesign file permissions view"
+msgstr "重新設計檔案權限畫面"
 
 #: data/files.metainfo.xml.in.in:70
-msgid "Ensure the selection persists after refreshing the view"
-msgstr ""
+msgid "Focus sidebar by pressing Ctrl + Left"
+msgstr "按下 Ctrl + ← 來聚焦側邊欄"
 
-#: data/files.metainfo.xml.in.in:71
-msgid "Fix Files failing to open if trying to restore a disconnected location"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:72
-msgid "Fix the view continuing to show when a location is unmounted"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:73 data/files.metainfo.xml.in.in:90
-#: data/files.metainfo.xml.in.in:102 data/files.metainfo.xml.in.in:122
-#: data/files.metainfo.xml.in.in:157 data/files.metainfo.xml.in.in:171
-#: data/files.metainfo.xml.in.in:193 data/files.metainfo.xml.in.in:209
-#: data/files.metainfo.xml.in.in:224
-#, fuzzy
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:92
+#: data/files.metainfo.xml.in.in:114 data/files.metainfo.xml.in.in:131
+#: data/files.metainfo.xml.in.in:143 data/files.metainfo.xml.in.in:163
 msgid "Updated translations"
-msgstr "新翻譯"
+msgstr "翻譯更新"
 
-#: data/files.metainfo.xml.in.in:116 data/files.metainfo.xml.in.in:150
-#: data/files.metainfo.xml.in.in:187
+#: data/files.metainfo.xml.in.in:90
+msgid "Restoring tabs from last time is now optional"
+msgstr "復原上次使用分頁的功能現在可以選擇停用"
+
+#: data/files.metainfo.xml.in.in:91
+msgid "Drag and select can no longer be done with secondary pointer button"
+msgstr "讓拖曳選擇不能用次要指標按鈕進行"
+
+#: data/files.metainfo.xml.in.in:108
+msgid "Discontinue support for dragging bookmark out of sidebar"
+msgstr "停止支援把書籤拖到側邊欄外的功能"
+
+#: data/files.metainfo.xml.in.in:109
+msgid "Fix unexpected scrolling after renaming a folder"
+msgstr "修正重新命名資料夾後突然捲動畫面的問題"
+
+#: data/files.metainfo.xml.in.in:110
+msgid ""
+"Fixes a crash when switching to viewing as grid under rare circumstances"
+msgstr "修正切換為格狀檢視時偶爾會崩潰的問題"
+
+#: data/files.metainfo.xml.in.in:111
+msgid "Ensure the selection persists after refreshing the view"
+msgstr "確保畫面重新整理後選取範圍仍然不變"
+
+#: data/files.metainfo.xml.in.in:112
+msgid "Fix Files failing to open if trying to restore a disconnected location"
+msgstr "修正《檔案》嘗試復原已斷線位置而無法啟動的問題"
+
+#: data/files.metainfo.xml.in.in:113
+msgid "Fix the view continuing to show when a location is unmounted"
+msgstr "修正位置卸載後頁面仍然繼續顯示它的問題"
+
+#: data/files.metainfo.xml.in.in:157
 msgid "Improvements:"
-msgstr ""
+msgstr "改善項目："
 
-#: data/files.metainfo.xml.in.in:118
+#: data/files.metainfo.xml.in.in:159
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:140
-msgid "Design updates for Bulk Rename"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:152
-msgid "Implement a bulk rename functionality"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:156
-msgid "Use a colorful level bar to show disk usage in the properties dialog"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:189
-msgid ""
-"Move global settings from the context menu to an app menu in the headerbar"
-msgstr ""
+msgstr "新分頁列，提供改善的動畫、較滑順的拖放，並且整理分頁的內文選單"
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
@@ -156,6 +139,13 @@ msgstr "以管理員身份執行 Pantheon 檔案"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "若要以管理員身份執行必須通過身份核對"
+
+#, fuzzy
+#~ msgid "elementary, Inc."
+#~ msgstr "elementary LLC."
+
+#~ msgid "File Manager"
+#~ msgstr "檔案管理員"
 
 #, fuzzy
 #~| msgid "Fix a crash when restoring items from the Trash"

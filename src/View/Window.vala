@@ -43,8 +43,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
         {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"folders-before-files", null, null, "true", change_state_folders_before_files},
+        {"restore-tabs-on-startup", null, null, "true", change_state_restore_tabs_on_startup},
         {"forward", action_forward, "i"},
-        {"back", action_back, "i"}
+        {"back", action_back, "i"},
+        {"focus-sidebar", action_focus_sidebar}
     };
 
     public uint window_number { get; construct; }
@@ -162,8 +164,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.forward(1)", {"<Alt>Right", "XF86Forward"});
             marlin_app.set_accels_for_action ("win.back(1)", {"<Alt>Left", "XF86Back"});
             marlin_app.set_accels_for_action ("win.info::HELP", {"F1"});
-            marlin_app.set_accels_for_action ("win.tab::TAB", {"<Ctrl><Alt>T"});
+            marlin_app.set_accels_for_action ("win.tab::TAB", {"<Shift><Ctrl>K"});
             marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
+            marlin_app.set_accels_for_action ("win.focus-sidebar", {"<Ctrl>Left"});
         }
 
         build_window ();
@@ -281,6 +284,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
+        get_action ("restore-tabs-on-startup").set_state (app_settings.get_boolean ("restore-tabs"));
 
         /*/
         /* Connect and abstract signals to local ones
@@ -296,6 +300,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 case ViewMode.MILLER_COLUMNS:
                     app_menu.on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
                     break;
+                case ViewMode.PREFERRED:
+                case ViewMode.CURRENT:
+                case ViewMode.INVALID:
+                    assert_not_reached (); //The switcher should not generate these modes
             }
         });
 
@@ -336,14 +344,22 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         };
 
         key_controller.key_pressed.connect ((keyval, keycode, state) => {
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            /* Use find function instead of view interactive search */
-            if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
-                /* Use printable characters to initiate search */
-                var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
-                if (uc.isprint ()) {
-                    activate_action ("find", uc.to_string ());
-                    return Gdk.EVENT_STOP;
+            // Handle key press events when directoryview has focus except when it must retain
+            // focus because e.g.renaming
+            var focus_widget = get_focus ();
+            if (current_container != null && !current_container.locked_focus &&
+                focus_widget != null && focus_widget.is_ancestor (current_container)) {
+
+                var mods = state & Gtk.accelerator_get_default_mod_mask ();
+                /* Use find function instead of view interactive search */
+                if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
+                    /* Use printable characters (except space) to initiate search */
+                    /* Space is handled by directory view to open file items */
+                    var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
+                    if (uc.isprint () && !uc.isspace ()) {
+                        activate_action ("find", uc.to_string ());
+                        return Gdk.EVENT_STOP;
+                    }
                 }
             }
 
@@ -443,7 +459,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         add_action (action_move_to_new_window);
 
         marlin_app.set_accels_for_action ("win.tabmenu-close", {"<Ctrl>W"});
-        marlin_app.set_accels_for_action ("win.tabmenu-duplicate", {"<Ctrl><Alt>T"});
+        marlin_app.set_accels_for_action ("win.tabmenu-duplicate", {"<Shift><Ctrl>K"});
         marlin_app.set_accels_for_action ("win.tabmenu-move-to-window", {"<Ctrl><Alt>N"});
 
         var tab_menu = (Menu) tab_view.menu_model;
@@ -524,7 +540,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         ViewMode mode = default_mode,
         bool ignore_duplicate
     ) {
-
         // Always try to restore tabs
         var n_tabs_restored = yield restore_tabs ();
         if (n_tabs_restored < 1 &&
@@ -595,12 +610,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 ftype == FileType.DIRECTORY,
                 out is_child
             );
+
             if (existing_tab_position >= 0) {
                 tab_view.selected_page = tab_view.get_nth_page (existing_tab_position);
-
                 if (is_child) {
                     /* Select the child  */
-                    current_container.focus_location_if_in_current_directory (location);
+                    current_container.focus_location_if_in_current_directory (_location);
                 }
 
                 return false;
@@ -673,9 +688,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             string tab_uri = tab_location.get_uri ();
 
             if (FileUtils.same_location (uri, tab_uri)) {
-                return existing_position;
-            } else if (!is_folder && FileUtils.same_location (location.get_parent ().get_uri (), tab_uri)) {
-                is_child = true;
+                is_child = !is_folder;
                 return existing_position;
             }
 
@@ -797,7 +810,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void add_window (GLib.File location = default_location, ViewMode mode = default_mode) {
         var new_window = new Window (marlin_app);
-        new_window.add_tab (location, real_mode (mode), false);
+        new_window.add_tab.begin (location, real_mode (mode), false);
         new_window.present ();
     }
 
@@ -1038,6 +1051,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         });
     }
 
+    private void action_focus_sidebar () {
+        sidebar.focus ();
+    }
+
     private void before_undo_redo () {
         doing_undo_redo = true;
         update_undo_actions ();
@@ -1079,6 +1096,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
         Files.Preferences.get_default ().sort_directories_first = state;
+    }
+
+    public void change_state_restore_tabs_on_startup (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+        Files.app_settings.set_boolean ("restore-tabs", state);
     }
 
     private void connect_to_server () {
@@ -1310,6 +1333,22 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         var tip_location = FileUtils.get_file_for_path (unescaped_tip_uri);
         var root_location = FileUtils.get_file_for_path (unescaped_root_uri);
+
+        // If the root location no longer exists do not show the tab at all
+        if (!root_location.query_exists ()) {
+            warning ("Invalid root uri for Miller View");
+            return;
+        }
+
+        // If the tip location no longer exists search up the tree for existing folder
+        while (!tip_location.equal (root_location) && !tip_location.query_exists ()) {
+            tip_location = tip_location.get_parent ();
+            warning ("Invalid tip uri for Miller View - trying parent");
+            if (tip_location == null) {
+                tip_location = root_location.dup ();
+            }
+        }
+
         var relative_path = root_location.get_relative_path (tip_location);
         GLib.File gfile;
 

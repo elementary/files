@@ -119,19 +119,18 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
         set_tooltip_markup (custom_name);
     }
 
-    protected override void popup_context_menu (Gdk.Event event = Gtk.get_current_event ()) {
+    protected override void popup_context_menu () {
         // At present, this type of row only shows when there is no media or unformatted so there are no
         // usable actions.  In future, actions like "Format" might be added.
         var sort_key = drive.get_sort_key ();
         if (sort_key != null && sort_key.contains ("hotplug")) {
-             var menu_builder = new PopupMenuBuilder ()
-            .add_safely_remove (() => {
-                safely_remove_drive.begin (drive);
-            });
+            var menu = new GLib.Menu ();
+            menu.append (_("Safely Remove"), "mountable.safely-remove");
 
-            menu_builder
-            .build ()
-            .popup_at_pointer (event);
+            var gtk_menu = new Gtk.Menu.from_model (menu) {
+                attach_widget = this
+            };
+            gtk_menu.popup_at_pointer (null);
         }
     }
 }

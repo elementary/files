@@ -163,7 +163,6 @@ namespace Files {
 
             bool prelit = (flags & Gtk.CellRendererState.PRELIT) > 0;
             bool selected = (flags & Gtk.CellRendererState.SELECTED) > 0;
-            bool focused = (flags & Gtk.CellRendererState.FOCUSED) > 0;
             var state = Gtk.StateFlags.NORMAL;
 
             if (!widget.sensitive || !this.sensitive) {
@@ -174,18 +173,7 @@ namespace Files {
                     state |= widget.get_state_flags ();
                 }
 
-                if (focused) {
-                    var bg = style_context.get_property ("background-color", state);
-                    if (bg.holds (typeof (Gdk.RGBA))) {
-                        var color = (Gdk.RGBA) bg;
-                        /* if background-color is black something probably is wrong */
-                        if (color.red != 0 || color.green != 0 || color.blue != 0) {
-                            pb = PF.PixbufUtils.colorize (pb, color);
-                        }
-                    }
-                }
-
-                if (prelit || focused) {
+                if (prelit) {
                     pb = PF.PixbufUtils.lighten (pb);
                 }
             }

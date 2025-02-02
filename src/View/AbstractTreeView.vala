@@ -173,7 +173,7 @@ namespace Files {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        protected override uint get_event_position_info (Gdk.Event event,
+        protected override uint get_event_position_info (double wx, double wy,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
             Gtk.TreePath? p = null;
@@ -182,14 +182,9 @@ namespace Files {
             int cx, cy, depth;
             path = null;
 
-            var ewindow = event.get_window ();
-            if (ewindow != tree.get_bin_window ()) {
-                return ClickZone.INVALID;
-            }
-
-            double x, y;
-            event.get_coords (out x, out y);
-            tree.get_path_at_pos ((int)x, (int)y, out p, out c, out cx, out cy);
+            int x = 0, y = 0;
+            tree.convert_widget_to_bin_window_coords ((int) wx, (int) wy, out x, out y);
+            tree.get_path_at_pos (x, y, out p, out c, out cx, out cy);
             path = p;
             depth = p != null ? p.get_depth () : 0;
             /* Get rect for whole column; no simple way to get individual renderer sizes? */

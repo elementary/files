@@ -6,8 +6,8 @@
  */
 
 public interface Sidebar.SidebarListInterface : Object {
-    public abstract Files.SidebarInterface sidebar { get; construct; }
-    public abstract Gtk.ListBox list_box { get; internal set; }
+    public abstract Files.SidebarInterface sidebar { get; set construct; }
+    public abstract Gtk.ListBox list_box { get; set construct; }
 
     public abstract void select_item (Gtk.ListBoxRow? item);
     public abstract void unselect_all_items ();
@@ -91,5 +91,14 @@ public interface Sidebar.SidebarListInterface : Object {
     // Whether can drop rows or uris onto list itself (as opposed to onto rows in list)
     public virtual bool is_drop_target () {
         return false;
+    }
+
+    public void focus () {
+        var focus_row = list_box.get_selected_row ();
+        if (focus_row == null) {
+            focus_row = list_box.get_row_at_index (0);
+        }
+
+        focus_row.grab_focus ();
     }
 }

@@ -72,7 +72,7 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
                                                                    Files.File.IconFlags.USE_THUMBNAILS);
         });
 
-        thumbnailer.queue_file (destination, null, false);
+        thumbnailer.queue_file (destination, null);
         destination_size_label.label = destination.format_size;
         destination_time_label.label = destination.formated_modified;
 
