@@ -43,7 +43,15 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         is_move = true;
     }
 
-    protected void report_copy_move_count_progress (CommonJob.SourceInfo source_info) {
+    protected override unowned string get_scan_primary () {
+        if (is_move) {
+            return _("Error while moving.");
+        } else {
+            return _("Error while copying.");
+        }
+    }
+
+    protected override void report_count_progress (CommonJob.SourceInfo source_info) {
         string s;
         string num_bytes_format = GLib.format_size (source_info.num_bytes);
 
@@ -190,7 +198,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
             progress.take_status ((owned) s);
         }
 
-        var total_size = size_t.max (source_info.num_bytes, transfer_info.num_bytes);
+        var total_size = int64.max (source_info.num_bytes, transfer_info.num_bytes);
 
         double elapsed = time.elapsed ();
         double transfer_rate = 0;
