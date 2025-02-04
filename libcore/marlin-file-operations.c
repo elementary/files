@@ -319,7 +319,7 @@ delete_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_sk
 {
     GList *l;
     GFile *file;
-    SourceInfo *source_info;
+    SourceInfo *source_info = NULL;;
     TransferInfo transfer_info;
     gboolean skipped_file;
     FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
@@ -2041,7 +2041,7 @@ copy_job (GTask *task,
 {
     FilesFileOperationsCopyMoveJob *job = task_data;
     FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
-    SourceInfo *source_info;
+    SourceInfo *source_info = NULL;
     TransferInfo transfer_info;
     char *dest_fs_id = NULL;
     GFile *dest;
@@ -2480,7 +2480,7 @@ move_job (GTask *task,
     FilesFileOperationsCopyMoveJob *job = task_data;
     FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
     GList *fallbacks = NULL;
-    SourceInfo *source_info;
+    SourceInfo *source_info = NULL;
     TransferInfo transfer_info;
     char *dest_fs_id = NULL;
     char *dest_fs_type = NULL;
