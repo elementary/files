@@ -21,6 +21,7 @@
 
 namespace Files.View.Chrome {
     public class LocationBar : BasicLocationBar {
+        private Gtk.Revealer admin_revealer;
         private BreadcrumbsEntry bread;
         private SearchResults search_results;
         private GLib.File? search_location = null;
@@ -66,6 +67,24 @@ namespace Files.View.Chrome {
             show_refresh_icon ();
         }
 
+        construct {
+            var admin_image = new Gtk.Image.from_icon_name (
+                "dialog-warning",
+                Gtk.IconSize.LARGE_TOOLBAR) {
+                tooltip_text = _("Caution. Administrative rights will be granted after successful authentication")
+            };
+            admin_revealer = new Gtk.Revealer () {
+                child = admin_image,
+                reveal_child = false,
+                hexpand = false,
+                transition_type = SLIDE_RIGHT
+            };
+
+            add (admin_revealer);
+            notify["displayed-path"].connect (() => {
+                admin_revealer.reveal_child = displayed_path.has_prefix ("admin:/");
+            });
+        }
         private void connect_additional_signals () {
             bread.open_with_request.connect (on_bread_open_with_request);
             search_results.file_selected.connect (on_search_results_file_selected);
