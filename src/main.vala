@@ -25,29 +25,6 @@ public static int main (string[] args) {
 
     var application = new Files.Application ();
 
-// By default, profile whole app when profiling is enabled in meson_options.txt
-// These conditional statements can be moved to profile sections of code
-// The gperftools library must be installed (libgoogle-perftools-dev)
-// Amend the profile report paths as required
-#if PROFILING
-            // Visualize the cpu profile with e.g. google-pprof --functions --gv /usr/bin/io.elementary.files <profile_path>
-            // Use --focus=<regexp> and --ignore=<regexp> to filter/prune nodes displayed
-            var profile_path = Path.build_filename (Environment.get_home_dir (), "CPUProfileFilesApplication.prof");
-            // Start CPU profiling
-            Profiler.start (profile_path);
-            warning ("start cpu profiling - output to %s", profile_path);
-#endif
-#if HEAP_PROFILING
-            // NOTE: Heap profiling at this point slows the program down **a lot** It will take tens of seconds to load.
-            // The output path will have the suffix '.NNNN.heap' appended
-            // Visualize the profile with e.g. google-pprof --gv /usr/bin/io.elementary.files <profile_path>
-            // Use --focus=<regexp> and --ignore=<regexp> to filter/prune nodes displayed
-            var heap_profile_path = Path.build_filename (Environment.get_home_dir (), "HeapProfileFilesApplication");
-            // Start heap profiling
-            HeapProfiler.start (heap_profile_path);
-            warning ("start heap profiling - output to %s", heap_profile_path);
-#endif
-
     return application.run (args);
 
 #if PROFILING
