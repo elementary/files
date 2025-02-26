@@ -307,7 +307,6 @@ namespace Files {
 
             model = new Files.ListModel ();
 
-
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
               */
@@ -413,6 +412,7 @@ namespace Files {
                 "singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
             );
 
+            model.show_hidden_files = ((Files.Preferences) prefs).show_hidden_files;
             model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
