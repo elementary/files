@@ -1414,16 +1414,12 @@ warning ("tree thawed");
             cancel ();
             /* As directory may reload, for consistent behaviour always lose selection */
             unselect_all ();
-
-            if (!show) {
-                block_model ();
-                model.clear ();
-            }
-
-            directory_hidden_changed (slot.directory, show);
-
-            if (!show) {
-                unblock_model ();
+            /* May not be slot.directory - could be subdirectory */
+            // Hidden files are added/removed individually from model on the assumption
+            // that the numbers are relatively small.
+            slot.directory.add_delete_hiddens (show);
+            if (show) {
+                schedule_thumbnail_color_tag_timeout ();
             }
 
             foreach (Files.File file in slot.directory.get_files ()) {
@@ -1455,9 +1451,7 @@ warning ("tree thawed");
         }
 
         private void directory_hidden_changed (Directory dir, bool show) {
-            /* May not be slot.directory - could be subdirectory */
-            connect_directory_loading_handlers (dir);
-            dir.load_hiddens ();
+
         }
 
     /** Handle popup menu events */

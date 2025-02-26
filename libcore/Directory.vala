@@ -813,14 +813,27 @@ public class Files.Directory : Object {
         return file_hash.get_values ();
     }
 
-    public void load_hiddens () {
+    public void add_delete_hiddens (bool show) {
         if (!can_load) {
             return;
         }
+
         if (state != State.LOADED) {
             list_directory_async.begin (null, null);
         } else {
-            list_cached_files (null, null);
+            // Assume number of hiddens reasonably small so just add/remove individually
+            // ListModel throttles resorting so should only incur one sort
+            foreach (unowned Files.File gof in file_hash.get_values ()) {
+                if (gof != null && gof.is_hidden) {
+                    if (show) {
+                        file_added (gof, false); //Do not select
+                        displayed_files_count++;
+                    } else {
+                        file_deleted (gof);
+                        displayed_files_count--;
+                    }
+                }
+            }
         }
     }
 
