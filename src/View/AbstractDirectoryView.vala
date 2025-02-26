@@ -309,7 +309,6 @@ namespace Files {
 
             model = new Files.ListModel ();
 
-
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
               */
@@ -415,6 +414,7 @@ namespace Files {
                 "singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
             );
 
+            model.show_hidden_files = ((Files.Preferences) prefs).show_hidden_files;
             model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
@@ -656,13 +656,11 @@ namespace Files {
 
         protected void connect_directory_loading_handlers (Directory dir) {
             model.set_sorting_off ();
-            dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_directory_done_loading);
         }
 
         protected void disconnect_directory_loading_handlers (Directory dir) {
             model.set_sorting_on ();
-            dir.file_loaded.disconnect (on_directory_file_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);
         }
 
@@ -1319,11 +1317,6 @@ namespace Files {
             }
         }
 
-        private void on_directory_file_loaded (Directory dir, Files.File file) {
-            // Do not select or sort files added during initial load.
-            model.add_file (file, dir);
-        }
-
         private void on_directory_file_changed (Directory dir, Files.File file) {
             if (file.location.equal (dir.file.location)) {
                 /* The slot directory has changed - it can only be the properties */
@@ -1387,6 +1380,8 @@ namespace Files {
                 } else if (slot.directory.file.info != null) {
                     model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
                 }
+
+                model.load_directory (dir);
             } else {
                 is_writable = false;
             }
@@ -1412,16 +1407,12 @@ namespace Files {
             cancel ();
             /* As directory may reload, for consistent behaviour always lose selection */
             unselect_all ();
-
-            if (!show) {
-                block_model ();
-                model.clear ();
-            }
-
-            directory_hidden_changed (slot.directory, show);
-
-            if (!show) {
-                unblock_model ();
+            /* May not be slot.directory - could be subdirectory */
+            // Hidden files are added/removed individually from model on the assumption
+            // that the numbers are relatively small.
+            slot.directory.add_delete_hiddens (show);
+            if (show) {
+                schedule_thumbnail_color_tag_timeout ();
             }
 
             foreach (Files.File file in slot.directory.get_files ()) {
@@ -1450,12 +1441,6 @@ namespace Files {
         private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             var sort_directories_first = ((Files.Preferences) prefs).sort_directories_first;
             model.set_should_sort_directories_first (sort_directories_first);
-        }
-
-        private void directory_hidden_changed (Directory dir, bool show) {
-            /* May not be slot.directory - could be subdirectory */
-            connect_directory_loading_handlers (dir);
-            dir.load_hiddens ();
         }
 
     /** Handle popup menu events */
@@ -2643,7 +2628,9 @@ namespace Files {
              * all items have been added and we've perhaps scrolled to the file remembered
              * the last time */
 
-            assert (slot is Files.AbstractSlot && slot.directory != null);
+            if (!(slot is Files.AbstractSlot && slot.directory != null)) { // can happen during closing
+                return;
+            }
 
             /* Check all known conditions preventing thumbnailing at earliest possible stage */
             if (!slot.directory.can_open_files ||
@@ -3741,6 +3728,7 @@ namespace Files {
         }
 
         protected virtual void cancel () {
+            model.cancel ();
             grab_focus (); /* Cancel any renaming */
             cancel_hover ();
             cancel_thumbnailing ();

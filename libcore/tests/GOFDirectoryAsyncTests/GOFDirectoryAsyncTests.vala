@@ -115,7 +115,7 @@ Directory load_populated_local_test (string test_dir_path, MainLoop loop) {
         assert (dir.displayed_files_count == n_files);
         assert (dir.can_load);
         assert (dir.state == Directory.State.LOADED);
-        assert (file_loaded_signal_count == n_files);
+        assert (file_loaded_signal_count == 0); // Files added to model in one batch
 
         loop.quit ();
     });
@@ -143,7 +143,7 @@ Directory load_cached_local_test (string test_dir_path, MainLoop loop) {
             assert (dir.displayed_files_count == n_files);
             assert (dir.can_load);
             assert (dir.state == Directory.State.LOADED);
-            assert (file_loaded_signal_count == n_files);
+            assert (file_loaded_signal_count == 0);
             assert (dir.loaded_from_cache);
             loop.quit ();
         }
