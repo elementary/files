@@ -654,13 +654,13 @@ namespace Files {
 
         protected void connect_directory_loading_handlers (Directory dir) {
             model.set_sorting_off ();
-            dir.file_loaded.connect (on_directory_file_loaded);
+            // dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_directory_done_loading);
         }
 
         protected void disconnect_directory_loading_handlers (Directory dir) {
             model.set_sorting_on ();
-            dir.file_loaded.disconnect (on_directory_file_loaded);
+            // dir.file_loaded.disconnect (on_directory_file_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);
         }
 
@@ -1317,10 +1317,10 @@ namespace Files {
             }
         }
 
-        private void on_directory_file_loaded (Directory dir, Files.File file) {
-            // Do not select or sort files added during initial load.
-            model.add_file (file, dir);
-        }
+        // private void on_directory_file_loaded (Directory dir, Files.File file) {
+        //     // Do not select or sort files added during initial load.
+        //     model.add_file (file, dir);
+        // }
 
         private void on_directory_file_changed (Directory dir, Files.File file) {
             if (file.location.equal (dir.file.location)) {
@@ -1372,6 +1372,7 @@ namespace Files {
         }
 
         private void on_directory_done_loading (Directory dir) {
+warning ("directory done loading");
             /* Should only be called on directory creation or reload */
             disconnect_directory_loading_handlers (dir);
             in_trash = slot.directory.is_trash;
@@ -1394,6 +1395,7 @@ namespace Files {
             // Wait for view to draw so thumbnails and color tags displayed on first sight
             Idle.add (() => {
                 thaw_tree ();
+warning ("tree thawed");
                 schedule_thumbnail_color_tag_timeout ();
                 return Source.REMOVE;
             });

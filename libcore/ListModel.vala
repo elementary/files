@@ -73,6 +73,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     private bool sort_directories_first = true;
 
     private Gee.TreeMap<string?, Gtk.TreeRowReference> file_treerow_map;
+    private Cancellable? refresh_cancellable;
 
     construct {
         file_treerow_map = new Gee.TreeMap<string, Gtk.TreeRowReference> (null, null);
@@ -318,6 +319,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     }
 
     public void load_directory (Directory dir) requires (get_length () == 0) {
+        refresh_cancellable.cancel ();
         set_sorting_off ();
         Gtk.TreeIter child_iter;
         foreach (var file in dir.get_files ()) {
@@ -327,10 +329,34 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
             insert (out child_iter, null, -1); //TODO Quicker to prepend?
             @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
-
-            file_treerow_map.@set (file.uri, new Gtk.TreeRowReference (this, get_path (child_iter)));
         }
+
         set_sorting_on ();
+        refresh_cancellable = new Cancellable ();
+        refresh_map.begin (refresh_cancellable);
+    }
+
+    private async void refresh_map (Cancellable cancellable) {
+        lock (file_treerow_map) {
+            file_treerow_map.clear ();
+
+            Gtk.TreeIter? iter = null;
+            if (get_iter_first (out iter)) {
+                // Do each iter in sequential idles to avoid blocking the UI
+                do {
+                    Idle.add (() => {
+                        Value file_value;
+                        base.get_value (iter, ColumnID.FILE_COLUMN, out file_value);
+                        unowned Files.File? file = (Files.File) file_value.get_object ();
+                        file_treerow_map.@set (file.uri, new Gtk.TreeRowReference (this, get_path (iter)));
+                        refresh_map.callback ();
+                        return Source.REMOVE;
+                    });
+
+                    yield;
+                } while (iter_next (ref iter) && !cancellable.is_cancelled ());
+            }
+        }
     }
 
     public void load_subdirectory (Directory dir) {
@@ -484,6 +510,10 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     }
 
     public new void clear () {
+        if (refresh_cancellable != null && !refresh_cancellable.is_cancelled ()) {
+            refresh_cancellable.cancel ();
+        }
+
         file_treerow_map.clear ();
         base.clear ();
     }

@@ -662,7 +662,7 @@ public class Files.Directory : Object {
     }
 
     private async void list_directory_async (FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
-        debug ("list directory async");
+        warning ("list directory async");
         /* Should only be called after creation and if reloaded */
         if (!is_ready || file_hash.size () > 0) {
             critical ("(Re)load directory called when not cleared");
