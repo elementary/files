@@ -1385,6 +1385,8 @@ namespace Files {
                 } else if (slot.directory.file.info != null) {
                     model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
                 }
+
+                model.load_directory (dir);
             } else {
                 is_writable = false;
             }

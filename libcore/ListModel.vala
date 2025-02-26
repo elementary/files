@@ -317,6 +317,22 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         return dir != null;
     }
 
+    public void load_directory (Directory dir) requires (get_length () == 0) {
+        set_sorting_off ();
+        Gtk.TreeIter child_iter;
+        foreach (var file in dir.get_files ()) {
+            if (!show_hidden_files && file.is_hidden) {
+                continue;
+            }
+
+            insert (out child_iter, null, -1); //TODO Quicker to prepend?
+            @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+
+            file_treerow_map.@set (file.uri, new Gtk.TreeRowReference (this, get_path (child_iter)));
+        }
+        set_sorting_on ();
+    }
+
     public void load_subdirectory (Directory dir) {
         Gtk.TreeIter? parent_iter = null, child_iter = null;
         bool change_dummy = true; // Default to unloaded
