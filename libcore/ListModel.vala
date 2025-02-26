@@ -510,12 +510,14 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     }
 
     public new void clear () {
+        file_treerow_map.clear ();
+        base.clear ();
+    }
+
+    public void cancel () {
         if (refresh_cancellable != null && !refresh_cancellable.is_cancelled ()) {
             refresh_cancellable.cancel ();
         }
-
-        file_treerow_map.clear ();
-        base.clear ();
     }
 
     private int file_entry_compare_func (Gtk.TreeIter a, Gtk.TreeIter b) {

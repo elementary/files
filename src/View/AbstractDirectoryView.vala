@@ -2597,7 +2597,9 @@ namespace Files {
              * all items have been added and we've perhaps scrolled to the file remembered
              * the last time */
 
-            assert (slot is Files.AbstractSlot && slot.directory != null);
+            if (!(slot is Files.AbstractSlot && slot.directory != null)) { // can happen during closing
+                return;
+            }
 
             /* Check all known conditions preventing thumbnailing at earliest possible stage */
             if (!slot.directory.can_open_files ||
@@ -3696,6 +3698,7 @@ namespace Files {
         }
 
         protected virtual void cancel () {
+            model.cancel ();
             grab_focus (); /* Cancel any renaming */
             cancel_hover ();
             cancel_thumbnailing ();
