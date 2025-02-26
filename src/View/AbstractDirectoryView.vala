@@ -1372,7 +1372,6 @@ namespace Files {
         }
 
         private void on_directory_done_loading (Directory dir) {
-warning ("directory done loading");
             /* Should only be called on directory creation or reload */
             disconnect_directory_loading_handlers (dir);
             in_trash = slot.directory.is_trash;
@@ -1395,7 +1394,6 @@ warning ("directory done loading");
             // Wait for view to draw so thumbnails and color tags displayed on first sight
             Idle.add (() => {
                 thaw_tree ();
-warning ("tree thawed");
                 schedule_thumbnail_color_tag_timeout ();
                 return Source.REMOVE;
             });
