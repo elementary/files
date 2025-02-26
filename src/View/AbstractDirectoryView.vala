@@ -654,13 +654,11 @@ namespace Files {
 
         protected void connect_directory_loading_handlers (Directory dir) {
             model.set_sorting_off ();
-            // dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_directory_done_loading);
         }
 
         protected void disconnect_directory_loading_handlers (Directory dir) {
             model.set_sorting_on ();
-            // dir.file_loaded.disconnect (on_directory_file_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);
         }
 
@@ -1317,11 +1315,6 @@ namespace Files {
             }
         }
 
-        // private void on_directory_file_loaded (Directory dir, Files.File file) {
-        //     // Do not select or sort files added during initial load.
-        //     model.add_file (file, dir);
-        // }
-
         private void on_directory_file_changed (Directory dir, Files.File file) {
             if (file.location.equal (dir.file.location)) {
                 /* The slot directory has changed - it can only be the properties */
@@ -1446,10 +1439,6 @@ namespace Files {
         private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             var sort_directories_first = ((Files.Preferences) prefs).sort_directories_first;
             model.set_should_sort_directories_first (sort_directories_first);
-        }
-
-        private void directory_hidden_changed (Directory dir, bool show) {
-
         }
 
     /** Handle popup menu events */
