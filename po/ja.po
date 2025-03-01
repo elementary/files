@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-04 21:07+0000\n"
-"PO-Revision-Date: 2024-08-31 18:16+0000\n"
+"PO-Revision-Date: 2025-03-01 15:07+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.9.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:112
@@ -1722,7 +1722,7 @@ msgstr "内容:"
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] "%i 個のファイルが権限またはそのほかのエラーにより読み込めません。"
+msgstr[0] "%i 個のファイルが権限またはその他のエラーにより読み込めません。"
 
 #: src/Dialogs/PropertiesWindow.vala:282
 msgid "Actual Size Could Be Larger"
@@ -1776,7 +1776,7 @@ msgstr "元の場所:"
 #: src/Dialogs/PropertiesWindow.vala:653
 #: src/View/AbstractDirectoryView.vala:1947
 msgid "Other Application…"
-msgstr "ほかのアプリケーション…"
+msgstr "他のアプリケーション…"
 
 #: src/Dialogs/PropertiesWindow.vala:673
 msgid "Open with:"
@@ -2202,7 +2202,7 @@ msgstr "右側のタブを閉じる"
 
 #: src/View/Window.vala:480
 msgid "Close Other Tabs"
-msgstr "ほかのタブを閉じる"
+msgstr "他のタブを閉じる"
 
 #: src/View/Window.vala:481
 msgid "Close Tab"
@@ -2419,13 +2419,13 @@ msgstr "新しいタブで開く"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:452
 msgid "Open in Other Application…"
-msgstr "ほかのアプリケーションで開く…"
+msgstr "他のアプリケーションで開く…"
 
 #: src/View/Widgets/LocationBar.vala:74
 msgid ""
 "Caution. Administrative rights will be granted after successful "
 "authentication"
-msgstr ""
+msgstr "ご注意ください。認証成功後、管理者権限が付与されます"
 
 #: src/View/Widgets/LocationBar.vala:212
 msgid "Reload this folder"
@@ -2444,7 +2444,7 @@ msgstr "%u 個のフォルダー"
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] " と %u 個のほかの項目を選択 (%s)"
+msgstr[0] " と %u 個の他の項目を選択 (%s)"
 
 #: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
 msgid " selected"
