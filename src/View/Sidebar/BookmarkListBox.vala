@@ -195,12 +195,11 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                                        int pos = 0) {
 
         int pinned = 0; // Assume pinned items only at start and end of list
-        foreach (unowned var child in list_box.get_children ()) {
-            if (((BookmarkRow)child).pinned) {
-                pinned++;
-            } else {
-                break;
-            }
+        int index = 0;
+        Gtk.ListBoxRow? row = list_box.get_row_at_index (index++);
+        while (row != null && ((BookmarkRow) row).pinned) {
+            pinned++;
+            row = list_box.get_row_at_index (index++);
         }
 
         if (pos < pinned) {
