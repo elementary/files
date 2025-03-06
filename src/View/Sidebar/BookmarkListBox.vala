@@ -237,10 +237,6 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
     public SidebarItemInterface? get_item_at_index (int index) {
-        if (index < 0 || index > list_box.get_children ().length ()) {
-            return null;
-        }
-
         return (SidebarItemInterface?) list_box.get_row_at_index (index);
     }
 
