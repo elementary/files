@@ -127,7 +127,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         };
 
         label_stack = new Gtk.Stack () {
-            homogeneous = false
+            hhomogeneous = false,
+            vhomogeneous = false
         };
         label_stack.add_named (label, "label");
 
