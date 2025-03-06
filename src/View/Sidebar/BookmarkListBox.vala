@@ -217,16 +217,21 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
     public override bool remove_item_by_id (uint32 id) {
         bool removed = false;
-        list_box.@foreach ((child) => {
-            if (child is BookmarkRow) {
-                unowned var row = (BookmarkRow)child;
-               if (!row.permanent && row.id == id) {
+        int index = 0;
+        Gtk.ListBoxRow? row = list_box.get_row_at_index (index++);
+        while (row != null) {
+            if (row is BookmarkRow) {
+                unowned var bm = (BookmarkRow)row;
+                if (!bm.permanent && bm.id == id) {
                     list_box.remove (row);
-                    bookmark_list.delete_items_with_uri (row.uri); //Assumes no duplicates
+                    bookmark_list.delete_items_with_uri (bm.uri); //Assumes no duplicates
                     removed = true;
+                    break;
                 }
             }
-        });
+
+            row = list_box.get_row_at_index (index++);
+        }
 
         return removed;
     }
