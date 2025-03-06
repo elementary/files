@@ -322,16 +322,14 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         add_extra_menu_items (glib_menu);
 
-        var popupmenu = new Gtk.Menu.from_model (glib_menu) {
-            attach_widget = this
-        };
+        var popupmenu = new Gtk.Popover.from_model (this, glib_menu);
 
         if (menu_model != null) {
             popupmenu.insert_action_group (action_group_namespace, action_group);
             glib_menu.append_section (null, menu_model);
         }
 
-        popupmenu.popup_at_pointer (null);
+        popupmenu.popup ();
     }
 
     protected override void add_extra_menu_items (GLib.Menu menu) {
