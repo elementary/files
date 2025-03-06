@@ -82,7 +82,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         if (index >= 0) {
             list_box.insert (row, index);
         } else {
-            list_box.add (row);
+            list_box.insert (row, -1);
         }
 
         return row;
