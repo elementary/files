@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     Author: ammonkey <am.monkeyd@gmail.com>
-            Jeremy Wootten <jeremy@elementaryos.org>
+            Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 
 public class Files.Directory : Object {
