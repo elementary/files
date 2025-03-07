@@ -18,7 +18,7 @@
 
 namespace Files {
     public class SingleLineEditableLabel : AbstractEditableLabel {
-        protected Gtk.Entry textview;
+        private Gtk.Entry textview;
         private int select_start = 0;
         private int select_end = 0;
 
@@ -26,11 +26,8 @@ namespace Files {
             textview = new Gtk.Entry ();
             connect_editable_widget (textview);
             add (textview);
-        }
 
-        public override void set_text (string text) {
-            textview.set_text (text);
-            original_name = text;
+            bind_property ("text", textview, "text", BindingFlags.BIDIRECTIONAL);
         }
 
         public override void set_justify (Gtk.Justification jtype) {
@@ -51,10 +48,6 @@ namespace Files {
                     textview.set_alignment (0.5f);
                     break;
             }
-        }
-
-        public override string get_text () {
-            return textview.get_text ();
         }
 
         public override bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
