@@ -239,14 +239,17 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         var searched_uuid = uuid != null ? uuid : fallback;
 
         if (searched_uuid != null) {
-            foreach (unowned var child in list_box.get_children ()) {
-                row = null;
-                if (child is AbstractMountableRow) {
-                    row = (AbstractMountableRow)child;
-                    if (row.uuid == searched_uuid) {
-                        return true;
-                    }
+            int index = 0;
+            Gtk.ListBoxRow? child = list_box.get_row_at_index (index++);
+            while (child != null) {
+                if (child is AbstractMountableRow &&
+                    ((AbstractMountableRow) child).uuid == searched_uuid) {
+
+                    row = (AbstractMountableRow) child;
+                    return true;
                 }
+
+                child = list_box.get_row_at_index (index++);
             }
         }
 
