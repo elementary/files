@@ -263,10 +263,14 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
     public void unselect_all_items () {
-        foreach (unowned var child in list_box.get_children ()) {
+        int index = 0;
+        Gtk.ListBoxRow? child = list_box.get_row_at_index (index++);
+        while (child != null) {
             if (child is AbstractMountableRow) {
-                list_box.unselect_row ((AbstractMountableRow)child);
+                list_box.unselect_row (child);
             }
+
+            child = list_box.get_row_at_index (index++);
         }
     }
 
