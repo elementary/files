@@ -111,7 +111,7 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
                 );
             }
 
-            list_box.add (new_bm);
+            list_box.insert (new_bm, -1);
 
             show_all ();
             bm = new_bm;
