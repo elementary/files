@@ -173,11 +173,15 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
     public override void refresh_info () {
-        list_box.get_children ().@foreach ((item) => {
-            if (item is AbstractMountableRow) {
-                ((AbstractMountableRow)item).update_free_space ();
+        int index = 0;
+        Gtk.ListBoxRow? row = list_box.get_row_at_index (index++);
+        while (row != null) {
+            if (row is AbstractMountableRow) {
+                ((AbstractMountableRow)row).update_free_space ();
             }
-        });
+
+            row = list_box.get_row_at_index (index++);
+        }
     }
 
     private void bookmark_drive (Drive drive) {
