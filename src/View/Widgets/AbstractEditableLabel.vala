@@ -20,7 +20,6 @@ namespace Files {
     public abstract class AbstractEditableLabel : Gtk.Frame, Gtk.Editable, Gtk.CellEditable {
         public virtual void set_line_wrap (bool wrap) {}
         public virtual void set_line_wrap_mode (Pango.WrapMode mode) {}
-        public virtual void set_justify (Gtk.Justification jtype) {}
         public virtual void set_padding (int xpad, int ypad) {}
         public abstract new void set_size_request (int width, int height);
 

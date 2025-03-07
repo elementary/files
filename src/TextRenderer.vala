@@ -82,11 +82,11 @@ namespace Files {
         public TextRenderer (ViewMode viewmode) {
             if (viewmode == ViewMode.ICON) {
                 entry = new MultiLineEditableLabel ();
-                entry.set_justify (Gtk.Justification.CENTER);
+                entry.xalign = 0.5f;
                 is_list_view = false;
             } else {
                 entry = new SingleLineEditableLabel ();
-                entry.set_justify (Gtk.Justification.LEFT);
+                entry.xalign = 0.0f;
                 is_list_view = true;
             }
 

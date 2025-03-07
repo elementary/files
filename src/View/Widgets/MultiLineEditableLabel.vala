@@ -30,6 +30,20 @@ namespace Files {
             add (scrolled_window);
 
             bind_property ("text", textview.get_buffer (), "text", BindingFlags.BIDIRECTIONAL);
+            // Currently this widget is always center aligned but allow for other values nevertheless
+            notify["xalign"].connect (() => {
+                switch ((int) (xalign * 2.0)) {
+                    case 0:
+                        textview.justification = LEFT;
+                        break;
+                    case 1:
+                        textview.justification = CENTER;
+                        break;
+                    default:
+                        textview.justification = RIGHT;
+                        break;
+                }
+            });
         }
 
         public override void set_line_wrap (bool wrap) {
@@ -57,10 +71,6 @@ namespace Files {
                 default:
                     break;
             }
-        }
-
-        public override void set_justify (Gtk.Justification jtype) {
-            textview.justification = jtype;
         }
 
         public override void set_padding (int xpad, int ypad) {

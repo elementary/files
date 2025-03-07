@@ -28,26 +28,7 @@ namespace Files {
             add (textview);
 
             bind_property ("text", textview, "text", BindingFlags.BIDIRECTIONAL);
-        }
-
-        public override void set_justify (Gtk.Justification jtype) {
-            switch (jtype) {
-                case Gtk.Justification.LEFT:
-                    textview.set_alignment (0.0f);
-                    break;
-
-                case Gtk.Justification.CENTER:
-                    textview.set_alignment (0.5f);
-                    break;
-
-                case Gtk.Justification.RIGHT:
-                    textview.set_alignment (1.0f);
-                    break;
-
-                default:
-                    textview.set_alignment (0.5f);
-                    break;
-            }
+            bind_property ("xalign", textview, "xalign", BindingFlags.DEFAULT);
         }
 
         public override bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
