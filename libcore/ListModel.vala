@@ -318,6 +318,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         return dir != null;
     }
 
+    // Only for initial loading of the root directory
     public void load_directory (Directory dir) requires (get_length () == 0) {
         refresh_cancellable.cancel ();
         set_sorting_off ();
@@ -329,6 +330,10 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
             insert (out child_iter, null, -1); //TODO Quicker to prepend?
             @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+            if (file.is_folder ()) {
+                // Append a dummy child so expander will show even when folder is empty.
+                insert_with_values (out child_iter, child_iter, -1, PrivColumnID.DUMMY, true);
+            }
         }
 
         set_sorting_on ();
