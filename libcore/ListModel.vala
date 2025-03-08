@@ -357,7 +357,10 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
 
         set_sorting_on ();
         refresh_cancellable = new Cancellable ();
-        refresh_map.begin (parent_iter, refresh_cancellable);
+        // There are only new file rows to add to map if there is no dummy row
+        if (!change_dummy) {
+            refresh_map.begin (parent_iter, refresh_cancellable);
+        }
     }
 
     private async void refresh_map (Gtk.TreeIter? parent_iter, Cancellable cancellable) {
