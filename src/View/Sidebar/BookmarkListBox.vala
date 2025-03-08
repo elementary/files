@@ -196,10 +196,10 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
         int pinned = 0; // Assume pinned items only at start and end of list
         int index = 0;
-        Gtk.ListBoxRow? row = list_box.get_row_at_index (index++);
+        Gtk.ListBoxRow? row = list_box.get_row_at_index (index);
         while (row != null && ((BookmarkRow) row).pinned) {
             pinned++;
-            row = list_box.get_row_at_index (index++);
+            row = list_box.get_row_at_index (++index);
         }
 
         if (pos < pinned) {
@@ -218,7 +218,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     public override bool remove_item_by_id (uint32 id) {
         bool removed = false;
         int index = 0;
-        Gtk.ListBoxRow? row = list_box.get_row_at_index (index++);
+        Gtk.ListBoxRow? row = list_box.get_row_at_index (index);
         while (row != null) {
             if (row is BookmarkRow) {
                 unowned var bm = (BookmarkRow)row;
@@ -230,7 +230,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                 }
             }
 
-            row = list_box.get_row_at_index (index++);
+            row = list_box.get_row_at_index (++index);
         }
 
         return removed;
