@@ -174,13 +174,13 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
     public override void refresh_info () {
         int index = 0;
-        Gtk.ListBoxRow? row = list_box.get_row_at_index (index++);
+        Gtk.ListBoxRow? row = list_box.get_row_at_index (index);
         while (row != null) {
             if (row is AbstractMountableRow) {
                 ((AbstractMountableRow)row).update_free_space ();
             }
 
-            row = list_box.get_row_at_index (index++);
+            row = list_box.get_row_at_index (++index);
         }
     }
 
@@ -240,7 +240,7 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
         if (searched_uuid != null) {
             int index = 0;
-            Gtk.ListBoxRow? child = list_box.get_row_at_index (index++);
+            Gtk.ListBoxRow? child = list_box.get_row_at_index (index);
             while (child != null) {
                 if (child is AbstractMountableRow &&
                     ((AbstractMountableRow) child).uuid == searched_uuid) {
@@ -249,7 +249,7 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
                     return true;
                 }
 
-                child = list_box.get_row_at_index (index++);
+                child = list_box.get_row_at_index (++index);
             }
         }
 
@@ -264,13 +264,13 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
     public void unselect_all_items () {
         int index = 0;
-        Gtk.ListBoxRow? child = list_box.get_row_at_index (index++);
+        Gtk.ListBoxRow? child = list_box.get_row_at_index (index);
         while (child != null) {
             if (child is AbstractMountableRow) {
                 list_box.unselect_row (child);
             }
 
-            child = list_box.get_row_at_index (index++);
+            child = list_box.get_row_at_index (++index);
         }
     }
 
