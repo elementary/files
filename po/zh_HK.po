@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-09 13:57+0000\n"
 "PO-Revision-Date: 2018-01-20 00:04+0000\n"
 "Last-Translator: Wendel Hime <wendelhime@hotmail.com>\n"
 "Language-Team: zh (generated) <https://weblate.elementary.io/projects/files/"
@@ -14,6 +14,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr ""
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr ""
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -71,6 +79,10 @@ msgstr ""
 
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
+msgstr ""
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:32
@@ -374,10 +386,6 @@ msgstr ""
 
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
-msgstr ""
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
 msgstr ""
 
 #: libcore/FileConflictDialog.vala:293
@@ -2173,14 +2181,6 @@ msgstr ""
 
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
-msgstr ""
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr ""
-
-#: src/View/Window.vala:201
-msgid "Next"
 msgstr ""
 
 #: src/View/Window.vala:216

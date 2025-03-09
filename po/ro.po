@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-09 13:57+0000\n"
 "PO-Revision-Date: 2017-01-24 11:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -19,6 +19,14 @@ msgstr ""
 "== 0) && (n != 0))) ? 2: 1));\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Anterior"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Următor"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -81,6 +89,10 @@ msgstr "Înlocuiți fișierul „%s”?"
 #, fuzzy
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Înlocuirea va suprascrie conținutul."
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Înlocuiește"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -395,10 +407,6 @@ msgstr ""
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr ""
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Înlocuiește"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2336,14 +2344,6 @@ msgstr "Fișierul nu a fost găsit"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "Fișierul selectat nu mai există."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Anterior"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Următor"
 
 #: src/View/Window.vala:216
 msgid "Menu"

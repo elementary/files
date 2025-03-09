@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-09 13:57+0000\n"
 "PO-Revision-Date: 2016-12-12 07:21+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -18,6 +18,14 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "ئالدىنقىسى"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "كىيىنكىسى"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -80,6 +88,10 @@ msgstr "ھۆججەت «%s» نى ئالماشتۇرۇۋېتەمسىز؟"
 #, fuzzy
 msgid "Replacing this file will overwrite its current contents"
 msgstr "ئۇ ئالماشتۇرۇلسا ئۇنىڭ مەزمۇنى قاپلىنىپ كېتىدۇ."
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "ئالماشتۇرۇش"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -392,10 +404,6 @@ msgstr ""
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr ""
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "ئالماشتۇرۇش"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2272,14 +2280,6 @@ msgstr "ھۆججەت تىپىلمىدى"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "تاللانغان ھۆججەت مەۋجۇت ئەمەس."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "ئالدىنقىسى"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "كىيىنكىسى"
 
 #: src/View/Window.vala:216
 msgid "Menu"

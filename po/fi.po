@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-09 13:57+0000\n"
 "PO-Revision-Date: 2024-12-02 00:14+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
@@ -19,6 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Edellinen"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Seuraava"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -78,6 +86,10 @@ msgstr "Korvataanko “%s”?"
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Tämän tiedoston korvaaminen ylikirjoittaa sen nykyisen sisällön."
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Korvaa"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -371,10 +383,6 @@ msgstr "Säilytä uusin"
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "Ohita jos alkuperäistä on muokattu lähempänä nykyhetkeä"
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Korvaa"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2216,14 +2224,6 @@ msgstr "Tiedostoa ei löytynyt"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "Valittua tiedostoa ei ole enää olemassa."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Edellinen"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Seuraava"
 
 #: src/View/Window.vala:216
 msgid "Menu"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-09 13:57+0000\n"
 "PO-Revision-Date: 2024-09-13 00:01+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://l10n.elementary.io/projects/files/files/ka/"
@@ -19,6 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "წინა"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "შემდეგი"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -77,6 +85,10 @@ msgstr "ჩავანაცვლო \"%s\"?"
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr ""
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "ჩანაცვლება"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -369,10 +381,6 @@ msgstr "უახლესის შენარჩუნება"
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr ""
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "ჩანაცვლება"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2145,14 +2153,6 @@ msgstr "ფაილი ვერ მოიძებნა"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "მონიშნული ფაილი აღარ არსებობს."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "წინა"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "შემდეგი"
 
 #: src/View/Window.vala:216
 msgid "Menu"

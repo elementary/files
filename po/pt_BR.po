@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-09 13:57+0000\n"
 "PO-Revision-Date: 2024-11-04 20:16+0000\n"
 "Last-Translator: Guilherme Faura <guilhermefaura@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
@@ -19,6 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Anterior"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Próximo"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -78,6 +86,10 @@ msgstr "Substituir \"%s\"?"
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "A substituição deste arquivo irá sobrescrever seu conteúdo atual"
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Substituir"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -371,10 +383,6 @@ msgstr "Mantenha o mais recente"
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "Pular se o original foi modificado recentemente"
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Substituir"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2225,14 +2233,6 @@ msgstr "Arquivo não encontrado"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "O arquivo selecionado não existe mais."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Anterior"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Próximo"
 
 #: src/View/Window.vala:216
 msgid "Menu"

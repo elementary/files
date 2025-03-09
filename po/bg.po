@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-09 13:57+0000\n"
 "PO-Revision-Date: 2017-04-09 19:04+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Bulgarian\n"
@@ -21,6 +21,14 @@ msgstr ""
 "X-Poedit-Country: bulgaria\n"
 "X-Poedit-Language: bg\n"
 "X-Poedit-SourceCharset: utf-8\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Предишен"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Следващ"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -83,6 +91,10 @@ msgstr "Да се замени ли файла „%s“?"
 #, fuzzy
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Замяната им ще презапише съдържанието им"
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Заместване"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -396,10 +408,6 @@ msgstr ""
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr ""
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Заместване"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2298,14 +2306,6 @@ msgstr "Файлът не е намерен"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "Избраният файл вече не съществува."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Предишен"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Следващ"
 
 #: src/View/Window.vala:216
 msgid "Menu"

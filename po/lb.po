@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-09 13:57+0000\n"
 "PO-Revision-Date: 2024-05-18 18:13+0000\n"
 "Last-Translator: Arno <arnoant21@gmail.com>\n"
 "Language-Team: Luxembourgish <https://l10n.elementary.io/projects/files/"
@@ -19,6 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr ""
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr ""
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -77,6 +85,10 @@ msgstr "»%s« ersetzen?"
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Wann Dir dës Datei ersetzt, gëtt hiren aktuellen Inhalt iwwerschriwwen"
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Ersetzen"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -370,10 +382,6 @@ msgstr "Neisten halen"
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "Iwwersprangen, wann d'Original méi viru kuerzem geännert gouf"
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Ersetzen"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2185,14 +2193,6 @@ msgstr ""
 
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
-msgstr ""
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr ""
-
-#: src/View/Window.vala:201
-msgid "Next"
 msgstr ""
 
 #: src/View/Window.vala:216

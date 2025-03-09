@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-09 13:57+0000\n"
 "PO-Revision-Date: 2017-12-30 00:08+0000\n"
 "Last-Translator: Hải Hồ <hochihai1997@gmail.com>\n"
 "Language-Team: Vietnamese <https://weblate.elementary.io/projects/files/"
@@ -20,6 +20,14 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Trước đó"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Kế tiếp"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -80,6 +88,10 @@ msgstr "Thay thế tệp tin \"%s\"?"
 #, fuzzy
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Thay thế nó sẽ ghi đè lên nội dung của nó."
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Thay thế"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -390,10 +402,6 @@ msgstr ""
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr ""
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Thay thế"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2237,14 +2245,6 @@ msgstr ""
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr ""
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Trước đó"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Kế tiếp"
 
 #: src/View/Window.vala:216
 msgid "Menu"
