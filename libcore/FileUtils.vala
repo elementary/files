@@ -74,33 +74,39 @@ namespace Files.FileUtils {
         return parent_path;
     }
 
-    public void restore_files_from_trash (GLib.List<Files.File> files, Gtk.Widget? widget) {
-        GLib.List<Files.File>? unhandled_files = null;
-        var original_dirs_hash = get_trashed_files_original_directories (files, out unhandled_files);
-
+    public async void restore_files_from_trash (GLib.List<Files.File> files, Gtk.Widget? widget) {
+        GLib.List<Files.File>? unhandled_files;
+        var original_dirs_hash = yield get_trashed_files_original_directories (files, out unhandled_files);
         foreach (Files.File goffile in unhandled_files) {
             var message = _("Could not determine original location of \"%s\"").printf (goffile.get_display_name ());
-            PF.Dialogs.show_warning_dialog (message, _("The item cannot be restored from trash"),
-                                            (widget is Gtk.Window) ? widget as Gtk.Window : null );
+            PF.Dialogs.show_warning_dialog (
+                message,
+                _("The item cannot be restored from trash"),
+                (widget is Gtk.Window) ? widget as Gtk.Window : null
+            );
         }
 
-        original_dirs_hash.foreach ((original_dir, dir_files) => {
-                Files.FileOperations.copy_move_link.begin (dir_files,
-                                                            original_dir,
-                                                            Gdk.DragAction.MOVE,
-                                                            widget,
-                                                            null);
-        });
+        foreach (var original_dir in original_dirs_hash.get_keys ()) {
+            var dir_files = original_dirs_hash.take (original_dir);
+            Files.FileOperations.copy_move_link.begin (
+                (owned) dir_files,
+                original_dir,
+                Gdk.DragAction.MOVE,
+                widget,
+                null
+            );
+        }
     }
 
-    private GLib.HashTable<GLib.File, GLib.List<GLib.File>>
-    get_trashed_files_original_directories (GLib.List<Files.File> files, out GLib.List<Files.File> unhandled_files) {
+    private async GLib.HashTable<GLib.File, GLib.List<GLib.File>> get_trashed_files_original_directories (
+        GLib.List<Files.File> files,
+        out GLib.List<Files.File> unhandled_files) {
 
         var directories = new GLib.HashTable<GLib.File, GLib.List<GLib.File>> (GLib.File.hash, GLib.File.equal);
         unhandled_files = null;
 
         var exists_map = new Gee.HashMap<string, int> ();
-        foreach (unowned Files.File goffile in files) {
+        foreach (var goffile in files) {
             /* Check it is a valid file (e.g. not a dummy row from list view) */
             if (goffile == null || goffile.location == null) {
                 continue;
@@ -116,7 +122,7 @@ namespace Files.FileUtils {
                     if (exists_map.has_key (original_dir.get_path ())) {
                         exists = exists_map.@get (original_dir.get_path ());
                     }
-                    if (exists == 1 || (exists < 0 && ensure_exists (original_dir))) {
+                    if (exists == 1 || (exists < 0 && yield ensure_exists (original_dir))) {
                         if (exists < 0) {
                             exists_map.@set (original_dir.get_path (), 1); // Do not need to check this path again
                         }
@@ -168,11 +174,12 @@ namespace Files.FileUtils {
         }
     }
 
-    private bool ensure_exists (GLib.File file) {
+    private async bool ensure_exists (GLib.File file) {
         if (file.query_exists ()) {
             return true;
         }
 
+        bool created = false;
         var dialog = new Granite.MessageDialog.with_image_from_icon_name (
             _("The original folder %s no longer exists").printf (file.get_path ()),
             _("Would you like to recreate it?"),
@@ -187,32 +194,35 @@ namespace Files.FileUtils {
              _ ("The folder will be recreated and selected files that were originally there will be restored to it");
 
         dialog.set_default_response (Gtk.ResponseType.ACCEPT);
+        dialog.response.connect ((res) => {
+            switch (res) {
+                case Gtk.ResponseType.ACCEPT:
+                    try {
+                        file.make_directory_with_parents ();
+                        created = true;
+                    } catch (Error e) {
+                        var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                            _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
+                            e.message,
+                            "dialog-error",
+                            Gtk.ButtonsType.CLOSE
+                        );
 
-        var response = dialog.run ();
-        dialog.destroy ();
-        switch (response) {
-            case Gtk.ResponseType.ACCEPT:
-                try {
-                    file.make_directory_with_parents ();
-                    return true;
-                } catch (Error e) {
-                    var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
-                        _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
-                        e.message,
-                        "dialog-error",
-                        Gtk.ButtonsType.CLOSE
-                    );
+                        error_dialog.response.connect (error_dialog.destroy);
+                        error_dialog.present ();
+                    }
 
-                    error_dialog.run ();
-                    error_dialog.destroy ();
-                }
+                    break;
 
-                break;
+                default:
+                    break;
+            }
 
-            default:
-                break;
-        }
+            dialog.destroy ();
+        });
 
+        dialog.present ();
+        yield;
         return false;
     }
 

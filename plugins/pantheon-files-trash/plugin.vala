@@ -84,7 +84,7 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
                     }
 
                     unowned GLib.List<Files.File> selection = view.get_selected_files ();
-                    FileUtils.restore_files_from_trash (selection, window);
+                    FileUtils.restore_files_from_trash.begin (selection, window);
                 });
 
                 delete_button.clicked.connect (() => {
