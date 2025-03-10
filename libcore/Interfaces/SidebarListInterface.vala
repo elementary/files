@@ -24,11 +24,14 @@ public interface Sidebar.SidebarListInterface : Object {
     }
 
     public virtual void clear () {
-        foreach (Gtk.Widget child in list_box.get_children ()) {
-            list_box.remove (child);
-            if (child is SidebarItemInterface) {
-                ((SidebarItemInterface) child).destroy_bookmark ();
+        Gtk.ListBoxRow? row = list_box.get_row_at_index (0);
+        while (row != null) {
+            list_box.remove (row);
+            if (row is SidebarItemInterface) {
+                ((SidebarItemInterface)row).destroy_bookmark ();
             }
+
+            row = list_box.get_row_at_index (0);
         }
     }
 
