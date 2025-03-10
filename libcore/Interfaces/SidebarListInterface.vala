@@ -39,13 +39,17 @@ public interface Sidebar.SidebarListInterface : Object {
 
     public virtual bool has_uri (string uri, out unowned Gtk.ListBoxRow? row = null) {
         row = null;
-        foreach (unowned var child in list_box.get_children ()) {
+        int index = 0;
+        unowned var child = list_box.get_row_at_index (index);
+        while (child != null) {
             if (child is SidebarItemInterface) {
                 if (((SidebarItemInterface)child).uri == uri) {
                     row = (Gtk.ListBoxRow) child;
                     return true;
                 }
             }
+
+            child = list_box.get_row_at_index (++index);
         }
 
         return false;
