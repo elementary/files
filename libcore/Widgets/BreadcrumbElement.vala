@@ -71,7 +71,7 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
     public BreadcrumbElement (string text_, Gtk.Widget widget_, Gtk.StyleContext button_context) {
         text = text_;
         widget = widget_;
-        padding = button_context.get_padding (button_context.get_state ());
+        // padding = button_context.get_padding (button_context.get_state ());
         text_for_display = Uri.unescape_string (text);
     }
 
@@ -109,7 +109,7 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
             button_context.set_state (state);
         }
 
-        padding = button_context.get_padding (state);
+        // padding = button_context.get_padding (state);
         double line_width = cr.get_line_width ();
 
         cr.restore ();
@@ -244,9 +244,9 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
                     cr.save ();
                     double draw_scale = 1.0 / scale;
                     cr.scale (draw_scale, draw_scale);
-                    button_context.render_icon (cr, icon_to_draw,
-                                                Math.round ((x - ICON_MARGIN - icon_info.icon_width) * scale),
-                                                Math.round ((y_half_height - icon_info.icon_height / 2) * scale));
+                    // button_context.render_icon (cr, icon_to_draw,
+                    //                             Math.round ((x - ICON_MARGIN - icon_info.icon_width) * scale),
+                    //                             Math.round ((y_half_height - icon_info.icon_height / 2) * scale));
                     cr.restore ();
                 }
                 if (text_is_displayed && room_for_text) {
@@ -269,9 +269,9 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
                     cr.save ();
                     double draw_scale = 1.0 / scale;
                     cr.scale (draw_scale, draw_scale);
-                    button_context.render_icon (cr, icon_to_draw,
-                                                Math.round ((x + ICON_MARGIN) * scale),
-                                                Math.round ((y_half_height - icon_info.icon_height / 2) * scale));
+                    // button_context.render_icon (cr, icon_to_draw,
+                    //                             Math.round ((x + ICON_MARGIN) * scale),
+                    //                             Math.round ((y_half_height - icon_info.icon_height / 2) * scale));
                     cr.restore ();
                 }
                 if (text_is_displayed && room_for_text && x > 0) {

@@ -21,7 +21,7 @@
 
 namespace Files {
     public class DndHandler : GLib.Object {
-        Gdk.DragAction chosen = Gdk.DragAction.DEFAULT;
+        // Gdk.DragAction chosen = Gdk.DragAction.DEFAULT;
 
         public DndHandler () {}
 
@@ -57,31 +57,31 @@ namespace Files {
             return false;
         }
 
-        public Gdk.DragAction? drag_drop_action_ask (Gtk.Widget dest_widget,
-                                                     Gtk.ApplicationWindow win,
-                                                     Gdk.DragAction possible_actions) {
+        // public Gdk.DragAction? drag_drop_action_ask (Gtk.Widget dest_widget,
+        //                                              Gtk.ApplicationWindow win,
+        //                                              Gdk.DragAction possible_actions) {
 
-            this.chosen = Gdk.DragAction.DEFAULT;
-            add_action (win);
-            var ask_menu = build_menu (possible_actions);
-            ask_menu.set_screen (dest_widget.get_screen ());
-            ask_menu.show_all ();
-            var loop = new GLib.MainLoop (null, false);
+            // this.chosen = Gdk.DragAction.DEFAULT;
+            // add_action (win);
+            // var ask_menu = build_menu (possible_actions);
+            // ask_menu.set_screen (dest_widget.get_screen ());
+            // ask_menu.show_all ();
+            // var loop = new GLib.MainLoop (null, false);
 
-            ask_menu.deactivate.connect (() => {
-                if (loop.is_running ()) {
-                    loop.quit ();
-                }
+            // ask_menu.deactivate.connect (() => {
+            //     if (loop.is_running ()) {
+            //         loop.quit ();
+            //     }
 
-                remove_action ((Gtk.ApplicationWindow)win);
-            });
+            //     remove_action ((Gtk.ApplicationWindow)win);
+            // });
 
-            ask_menu.popup_at_pointer (null);
-            loop.run ();
-            Gtk.grab_remove (ask_menu);
+            // ask_menu.popup_at_pointer (null);
+            // loop.run ();
+            // Gtk.grab_remove (ask_menu);
 
-            return this.chosen;
-        }
+            // return this.chosen;
+        // }
 
         private void add_action (Gtk.ApplicationWindow win) {
             var action = new GLib.SimpleAction ("choice", GLib.VariantType.STRING);
@@ -94,32 +94,32 @@ namespace Files {
             win.remove_action ("choice");
         }
 
-        private Gtk.Menu build_menu (Gdk.DragAction possible_actions) {
-            var menu = new Gtk.Menu ();
+        // private Gtk.Menu build_menu (Gdk.DragAction possible_actions) {
+        //     var menu = new Gtk.Menu ();
 
-            build_and_append_menu_item (menu, _("Move Here"), Gdk.DragAction.MOVE, possible_actions);
-            build_and_append_menu_item (menu, _("Copy Here"), Gdk.DragAction.COPY, possible_actions);
-            build_and_append_menu_item (menu, _("Link Here"), Gdk.DragAction.LINK, possible_actions);
+        //     build_and_append_menu_item (menu, _("Move Here"), Gdk.DragAction.MOVE, possible_actions);
+        //     build_and_append_menu_item (menu, _("Copy Here"), Gdk.DragAction.COPY, possible_actions);
+        //     build_and_append_menu_item (menu, _("Link Here"), Gdk.DragAction.LINK, possible_actions);
 
-            menu.append (new Gtk.SeparatorMenuItem ());
-            menu.append (new Gtk.MenuItem.with_label (_("Cancel")));
+        //     menu.append (new Gtk.SeparatorMenuItem ());
+        //     menu.append (new Gtk.MenuItem.with_label (_("Cancel")));
 
-            return menu;
-        }
+        //     return menu;
+        // }
 
-        private void build_and_append_menu_item (Gtk.Menu menu, string label, Gdk.DragAction? action,
-                                                 Gdk.DragAction possible_actions) {
+        // private void build_and_append_menu_item (Gtk.Menu menu, string label, Gdk.DragAction? action,
+        //                                          Gdk.DragAction possible_actions) {
 
-            if ((possible_actions & action) != 0) {
-                var item = new Gtk.MenuItem.with_label (label);
+        //     if ((possible_actions & action) != 0) {
+        //         var item = new Gtk.MenuItem.with_label (label);
 
-                item.activate.connect (() => {
-                    this.chosen = action;
-                });
+        //         item.activate.connect (() => {
+        //             this.chosen = action;
+        //         });
 
-                menu.append (item);
-            }
-        }
+        //         menu.append (item);
+        //     }
+        // }
 
         public void on_choice (GLib.Variant? param) {
             if (param == null || !param.is_of_type (GLib.VariantType.STRING)) {
@@ -131,111 +131,111 @@ namespace Files {
 
             switch (choice) {
                 case "move":
-                    this.chosen = Gdk.DragAction.MOVE;
+                    // this.chosen = Gdk.DragAction.MOVE;
                     break;
                 case "copy":
-                    this.chosen = Gdk.DragAction.COPY;
+                    // this.chosen = Gdk.DragAction.COPY;
                     break;
                 case "link":
-                    this.chosen = Gdk.DragAction.LINK;
+                    // this.chosen = Gdk.DragAction.LINK;
                     break;
                 case "background": /* not implemented yet */
                 case "cancel":
                 default:
-                    this.chosen = Gdk.DragAction.DEFAULT;
+                    // this.chosen = Gdk.DragAction.DEFAULT;
                     break;
             }
         }
 
-        public string? get_source_filename (Gdk.Window source_window) {
-            uchar []? data = null;
-            Gdk.Atom property_name = Gdk.Atom.intern_static_string ("XdndDirectSave0");
-            Gdk.Atom property_type = Gdk.Atom.intern_static_string ("text/plain");
+        // public string? get_source_filename (Gdk.Window source_window) {
+        //     uchar []? data = null;
+        //     Gdk.Atom property_name = Gdk.Atom.intern_static_string ("XdndDirectSave0");
+        //     Gdk.Atom property_type = Gdk.Atom.intern_static_string ("text/plain");
 
-            bool exists = Gdk.property_get (source_window,
-                                            property_name,
-                                            property_type,
-                                            0, /* offset into property to start getting */
-                                            1024, /* max bytes of data to retrieve */
-                                            0, /* do not delete after retrieving */
-                                            null, null, /* actual property type and format got disregarded */
-                                            out data
-                                           );
+        //     bool exists = Gdk.property_get (source_window,
+        //                                     property_name,
+        //                                     property_type,
+        //                                     0, /* offset into property to start getting */
+        //                                     1024, /* max bytes of data to retrieve */
+        //                                     0, /* do not delete after retrieving */
+        //                                     null, null, /* actual property type and format got disregarded */
+        //                                     out data
+        //                                    );
 
-            if (exists && data != null) {
-                string name = DndHandler.data_to_string (data);
-                if (GLib.Path.DIR_SEPARATOR.to_string () in name) {
-                    warning ("invalid source filename");
-                    return null; /* not a valid filename */
-                } else {
-                    return name;
-                }
-            } else {
-                warning ("source file does not exist");
-                return null;
-            }
-        }
+        //     if (exists && data != null) {
+        //         string name = DndHandler.data_to_string (data);
+        //         if (GLib.Path.DIR_SEPARATOR.to_string () in name) {
+        //             warning ("invalid source filename");
+        //             return null; /* not a valid filename */
+        //         } else {
+        //             return name;
+        //         }
+        //     } else {
+        //         warning ("source file does not exist");
+        //         return null;
+        //     }
+        // }
 
-        public void set_source_uri (Gdk.Window source_window, string uri) {
-            debug ("DNDHANDLER: set source uri to %s", uri);
-            Gdk.Atom property_name = Gdk.Atom.intern_static_string ("XdndDirectSave0");
-            Gdk.Atom property_type = Gdk.Atom.intern_static_string ("text/plain");
-            Gdk.property_change (source_window,
-                                 property_name,
-                                 property_type,
-                                 8,
-                                 Gdk.PropMode.REPLACE,
-                                 uri.data,
-                                 uri.length);
-        }
+        // public void set_source_uri (Gdk.Window source_window, string uri) {
+        //     debug ("DNDHANDLER: set source uri to %s", uri);
+        //     Gdk.Atom property_name = Gdk.Atom.intern_static_string ("XdndDirectSave0");
+        //     Gdk.Atom property_type = Gdk.Atom.intern_static_string ("text/plain");
+        //     Gdk.property_change (source_window,
+        //                          property_name,
+        //                          property_type,
+        //                          8,
+        //                          Gdk.PropMode.REPLACE,
+        //                          uri.data,
+        //                          uri.length);
+        // }
 
-        public bool handle_xdnddirectsave (Gdk.Window source_window,
-                                           Files.File drop_target,
-                                           Gtk.SelectionData selection) {
-            bool success = false;
+        // public bool handle_xdnddirectsave (Gdk.Window source_window,
+        //                                    Files.File drop_target,
+        //                                    Gtk.SelectionData selection) {
+        //     bool success = false;
 
-            if (selection != null &&
-                selection.get_length () == 1 && //No other way to get length?
-                selection.get_format () == 8) {
-                uchar result = selection.get_data ()[0];
+        //     if (selection != null &&
+        //         selection.get_length () == 1 && //No other way to get length?
+        //         selection.get_format () == 8) {
+        //         uchar result = selection.get_data ()[0];
 
-                switch (result) {
-                    case 'F':
-                        /* No fallback for XdndDirectSave stage (3), result "F" ("Failed") yet */
-                        break;
-                    case 'E':
-                        /* No fallback for XdndDirectSave stage (3), result "E" ("Error") yet.
-                         * Note this result may be obtained even if the file was successfully saved */
-                        success = true;
-                        break;
-                    case 'S':
-                        /* XdndDirectSave "Success" */
-                        success = true;
-                        break;
-                    default:
-                        warning ("Unhandled XdndDirectSave result %s", result.to_string ());
-                        break;
-                }
-            }
+        //         switch (result) {
+        //             case 'F':
+        //                 /* No fallback for XdndDirectSave stage (3), result "F" ("Failed") yet */
+        //                 break;
+        //             case 'E':
+        //                 /* No fallback for XdndDirectSave stage (3), result "E" ("Error") yet.
+        //                  * Note this result may be obtained even if the file was successfully saved */
+        //                 success = true;
+        //                 break;
+        //             case 'S':
+        //                 /* XdndDirectSave "Success" */
+        //                 success = true;
+        //                 break;
+        //             default:
+        //                 warning ("Unhandled XdndDirectSave result %s", result.to_string ());
+        //                 break;
+        //         }
+        //     }
 
-            if (!success) {
-                set_source_uri (source_window, "");
-            }
+        //     if (!success) {
+        //         set_source_uri (source_window, "");
+        //     }
 
-            return success;
-        }
+        //     return success;
+        // }
 
-        public bool handle_netscape_url (Gdk.Window source_window, Files.File drop_target, Gtk.SelectionData selection) {
-            string [] parts = (selection.get_text ()).split ("\n");
+        // public bool handle_netscape_url (Gdk.Window source_window, Files.File drop_target, Gtk.SelectionData selection) {
+        //     string [] parts = (selection.get_text ()).split ("\n");
 
-            /* _NETSCAPE_URL looks like this: "$URL\n$TITLE" - should be 2 parts */
-            if (parts.length != 2) {
-                return false;
-            }
+        //     /* _NETSCAPE_URL looks like this: "$URL\n$TITLE" - should be 2 parts */
+        //     if (parts.length != 2) {
+        //         return false;
+        //     }
 
-            /* NETSCAPE URLs are not currently handled.  No current bug reports */
-            return false;
-        }
+        //     /* NETSCAPE URLs are not currently handled.  No current bug reports */
+        //     return false;
+        // }
 
         public bool handle_file_drag_actions (Gtk.Widget dest_widget,
                                               Files.File drop_target,
@@ -250,15 +250,15 @@ namespace Files {
 
             if (drop_file_list != null) {
                 if ((possible_actions & Gdk.DragAction.ASK) != 0) {
-                    action = drag_drop_action_ask (dest_widget, win, possible_actions);
+                    // action = drag_drop_action_ask (dest_widget, win, possible_actions);
                 }
 
-                if (action != Gdk.DragAction.DEFAULT) {
-                    success = dnd_perform (dest_widget,
-                                           drop_target,
-                                           drop_file_list,
-                                           action);
-                }
+                // if (action != Gdk.DragAction.DEFAULT) {
+                //     success = dnd_perform (dest_widget,
+                //                            drop_target,
+                //                            drop_file_list,
+                //                            action);
+                // }
 
             } else {
                 critical ("Attempt to drop null file list");
@@ -268,21 +268,21 @@ namespace Files {
         }
 
 
-        public static bool selection_data_is_uri_list (Gtk.SelectionData selection_data, uint info, out string? text) {
-            text = null;
+        // public static bool selection_data_is_uri_list (Gtk.SelectionData selection_data, uint info, out string? text) {
+        //     text = null;
 
-            if (info == Files.TargetType.TEXT_URI_LIST &&
-                selection_data != null &&
-                selection_data.get_length () > 0 && //No other way to get length?
-                selection_data.get_format () == 8) {
+        //     if (info == Files.TargetType.TEXT_URI_LIST &&
+        //         selection_data != null &&
+        //         selection_data.get_length () > 0 && //No other way to get length?
+        //         selection_data.get_format () == 8) {
 
-                /* selection_data.get_data () does not work for some reason (returns nothing) */
-                text = DndHandler.data_to_string (selection_data.get_data_with_length ());
-            }
+        //         /* selection_data.get_data () does not work for some reason (returns nothing) */
+        //         text = DndHandler.data_to_string (selection_data.get_data_with_length ());
+        //     }
 
-            debug ("DNDHANDLER selection data is uri list returning %s", (text != null).to_string ());
-            return (text != null);
-        }
+        //     debug ("DNDHANDLER selection data is uri list returning %s", (text != null).to_string ());
+        //     return (text != null);
+        // }
 
         public static string data_to_string (uchar [] cdata) {
             var sb = new StringBuilder ("");
@@ -294,27 +294,27 @@ namespace Files {
             return sb.str;
         }
 
-        public static void set_selection_data_from_file_list (Gtk.SelectionData selection_data,
-                                                              GLib.List<Files.File> file_list,
-                                                              string prefix = "") {
+        // public static void set_selection_data_from_file_list (Gtk.SelectionData selection_data,
+        //                                                       GLib.List<Files.File> file_list,
+        //                                                       string prefix = "") {
 
-            GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
-            set_stringbuilder_from_file_list (sb, file_list, prefix, false);  /* Use escaped paths */
-            selection_data.@set (selection_data.get_target (),
-                                 8,
-                                 sb.data);
+        //     GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
+        //     set_stringbuilder_from_file_list (sb, file_list, prefix, false);  /* Use escaped paths */
+        //     selection_data.@set (selection_data.get_target (),
+        //                          8,
+        //                          sb.data);
 
-        }
+        // }
 
-        public static void set_selection_text_from_file_list (Gtk.SelectionData selection_data,
-                                                              GLib.List<Files.File> file_list,
-                                                              string prefix = "") {
+        // public static void set_selection_text_from_file_list (Gtk.SelectionData selection_data,
+        //                                                       GLib.List<Files.File> file_list,
+        //                                                       string prefix = "") {
 
-            GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
-            set_stringbuilder_from_file_list (sb, file_list, prefix, true); /* Use sanitized paths */
-            sb.truncate (sb.len - 2);  /* Do not want "\r\n" at end when pasting into text*/
-            selection_data.set_text (sb.str, (int)(sb.len));
-        }
+        //     GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
+        //     set_stringbuilder_from_file_list (sb, file_list, prefix, true); /* Use sanitized paths */
+        //     sb.truncate (sb.len - 2);  /* Do not want "\r\n" at end when pasting into text*/
+        //     selection_data.set_text (sb.str, (int)(sb.len));
+        // }
 
         private static void set_stringbuilder_from_file_list (GLib.StringBuilder sb,
                                                               GLib.List<Files.File> file_list,
@@ -347,15 +347,15 @@ namespace Files {
             var actions = possible_actions;
             var suggested_action = selected_action;
             var target_location = dest.get_target_location ();
-            suggested_action_return = Gdk.DragAction.PRIVATE;
+            // suggested_action_return = Gdk.DragAction.PRIVATE;
 
-            if (drop_file_list == null || drop_file_list.data == null) {
-                return Gdk.DragAction.DEFAULT;
-            }
+            // if (drop_file_list == null || drop_file_list.data == null) {
+            //     return Gdk.DragAction.DEFAULT;
+            // }
 
             if (dest.is_folder ()) {
                 if (!dest.is_writable ()) {
-                    actions = Gdk.DragAction.DEFAULT;
+                    // actions = Gdk.DragAction.DEFAULT;
                 } else {
                     /* Modify actions and suggested_action according to source files */
                     actions &= valid_actions_for_file_list (target_location,
@@ -363,19 +363,19 @@ namespace Files {
                                                             ref suggested_action);
                 }
             } else if (dest.is_executable ()) {
-                actions |= (Gdk.DragAction.COPY |
-                           Gdk.DragAction.MOVE |
-                           Gdk.DragAction.LINK |
-                           Gdk.DragAction.PRIVATE);
+                // actions |= (Gdk.DragAction.COPY |
+                //            Gdk.DragAction.MOVE |
+                //            Gdk.DragAction.LINK |
+                //            Gdk.DragAction.PRIVATE);
             } else {
-                actions = Gdk.DragAction.DEFAULT;
+                // actions = Gdk.DragAction.DEFAULT;
             }
 
-            if (actions == Gdk.DragAction.DEFAULT) { // No point asking if no other valid actions
-                return Gdk.DragAction.DEFAULT;
-            } else if (FileUtils.location_is_in_trash (target_location)) { // cannot copy or link to trash
-                actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
-            }
+            // if (actions == Gdk.DragAction.DEFAULT) { // No point asking if no other valid actions
+            //     // return Gdk.DragAction.DEFAULT;
+            // } else if (FileUtils.location_is_in_trash (target_location)) { // cannot copy or link to trash
+            //     actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
+            // }
 
             if (suggested_action in actions) {
                 suggested_action_return = suggested_action;
@@ -397,10 +397,11 @@ namespace Files {
                                                             GLib.List<GLib.File> drop_file_list,
                                                             ref Gdk.DragAction suggested_action) {
 
-            var valid_actions = Gdk.DragAction.DEFAULT |
+            var valid_actions = Gdk.DragAction.ASK |
                                 Gdk.DragAction.COPY |
                                 Gdk.DragAction.MOVE |
                                 Gdk.DragAction.LINK;
+            
 
             /* Check the first MAX_FILES_CHECKED and let
              * the operation fail for file the same as target if it is
@@ -416,7 +417,7 @@ namespace Files {
                     from_trash = true;
 
                     if (FileUtils.location_is_in_trash (target_location)) {
-                        valid_actions = Gdk.DragAction.DEFAULT; // No DnD within trash
+                        // valid_actions = Gdk.DragAction.DEFAULT; // No DnD within trash
                     }
                 }
 
@@ -431,11 +432,11 @@ namespace Files {
                     valid_actions &= ~(Gdk.DragAction.LINK); // Can only LINK local files
                 }
 
-                if (++count > MAX_FILES_CHECKED ||
-                    valid_actions == Gdk.DragAction.DEFAULT) {
+                // if (++count > MAX_FILES_CHECKED ||
+                //     valid_actions == Gdk.DragAction.DEFAULT) {
 
                     break;
-                }
+                // }
             }
 
             /* Modify Gtk suggested COPY action to MOVE if source is trash or dest is in
@@ -449,9 +450,9 @@ namespace Files {
                 suggested_action = Gdk.DragAction.MOVE;
             }
 
-            if (valid_actions != Gdk.DragAction.DEFAULT) {
-                valid_actions |= Gdk.DragAction.ASK; // Allow ASK if there is a possible action
-            }
+            // if (valid_actions != Gdk.DragAction.DEFAULT) {
+            //     valid_actions |= Gdk.DragAction.ASK; // Allow ASK if there is a possible action
+            // }
 
             return valid_actions;
         }
