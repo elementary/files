@@ -67,7 +67,9 @@ public interface Sidebar.SidebarListInterface : Object {
     }
 
     public virtual bool remove_item_by_id (uint32 id) {
-        foreach (unowned var child in list_box.get_children ()) {
+        int index = 0;
+        unowned var child = list_box.get_row_at_index (index);
+        while (child != null) {
             if (child is SidebarItemInterface) {
                 unowned var row = (SidebarItemInterface)child;
                 if (row.permanent) {
@@ -80,6 +82,8 @@ public interface Sidebar.SidebarListInterface : Object {
                     return true;
                 }
             }
+
+            child = list_box.get_row_at_index (++index);
         }
 
         return false;
