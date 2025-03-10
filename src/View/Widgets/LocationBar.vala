@@ -142,25 +142,25 @@ namespace Files.View.Chrome {
             }
         }
 
-        protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
-            if (search_results.is_active) {
-                bread.hide_breadcrumbs = true;
-            } else {
-                base.after_bread_focus_out_event (event);
-                search_mode = false;
-                show_refresh_icon ();
-                focus_out_event (event);
-                check_home ();
-            }
+        // protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
+        //     if (search_results.is_active) {
+        //         bread.hide_breadcrumbs = true;
+        //     } else {
+        //         base.after_bread_focus_out_event (event);
+        //         search_mode = false;
+        //         show_refresh_icon ();
+        //         focus_out_event (event);
+        //         check_home ();
+        //     }
 
-            return true;
-        }
-        protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
-            base.after_bread_focus_in_event (event);
-            focus_in_event (event);
-            search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
-            return true;
-        }
+        //     return true;
+        // }
+        // protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
+        //     base.after_bread_focus_in_event (event);
+        //     focus_in_event (event);
+        //     search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
+        //     return true;
+        // }
 
         private void on_bread_open_with_request (GLib.File file, AppInfo? app) {
             Files.MimeActions.open_glib_file_request (file, this, app);

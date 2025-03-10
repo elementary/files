@@ -133,7 +133,7 @@ namespace Files.View.Chrome {
         Gtk.TreeModelFilter filter;
         Gtk.ScrolledWindow scroll;
         public Gtk.Widget delegate_widget { get; construct; }
-        private Gtk.GestureMultiPress search_tree_view_button_controller;
+        // private Gtk.GestureMultiPress search_tree_view_button_controller;
         private Gtk.EventControllerKey key_controller;
 
         public SearchResults (Gtk.Widget _delegate_widget) {
@@ -244,29 +244,29 @@ namespace Files.View.Chrome {
 #endif
             child = scroll;
 
-            search_tree_view_button_controller = new Gtk.GestureMultiPress (search_tree_view) {
-                button = 0,
-                propagation_phase = BUBBLE
-            };
-            search_tree_view_button_controller.pressed.connect ((n_press, x, y) => {
-                Gtk.TreePath path;
-                Gtk.TreeIter iter;
+        //     search_tree_view_button_controller = new Gtk.GestureMultiPress (search_tree_view) {
+        //         button = 0,
+        //         propagation_phase = BUBBLE
+        //     };
+        //     search_tree_view_button_controller.pressed.connect ((n_press, x, y) => {
+        //         Gtk.TreePath path;
+        //         Gtk.TreeIter iter;
 
-                search_tree_view.get_path_at_pos ((int) x, (int) y, out path, null, null, null);
-                if (path != null && path.get_depth () > 1) {
-                    filter.get_iter (out iter, path);
-                    filter.convert_iter_to_child_iter (out iter, iter);
-                    /* This will call cancel () */
-                    accept (iter, search_tree_view_button_controller.get_current_button () > 1);
-                } else {
-                    Gdk.beep ();
-                }
-            });
+        //         search_tree_view.get_path_at_pos ((int) x, (int) y, out path, null, null, null);
+        //         if (path != null && path.get_depth () > 1) {
+        //             filter.get_iter (out iter, path);
+        //             filter.convert_iter_to_child_iter (out iter, iter);
+        //             /* This will call cancel () */
+        //             accept (iter, search_tree_view_button_controller.get_current_button () > 1);
+        //         } else {
+        //             Gdk.beep ();
+        //         }
+        //     });
 
-            key_controller = new Gtk.EventControllerKey (this) {
-                propagation_phase = CAPTURE
-            };
-            key_controller.key_pressed.connect (on_key_pressed_event);
+        //     key_controller = new Gtk.EventControllerKey (this) {
+        //         propagation_phase = CAPTURE
+        //     };
+        //     key_controller.key_pressed.connect (on_key_pressed_event);
         }
 
         private void update_category_headers () {
