@@ -21,7 +21,7 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.View.Window : Hdy.ApplicationWindow {
+public class Files.View.Window : Adw.ApplicationWindow {
     static uint window_id = 0;
 
     const GLib.ActionEntry [] WIN_ENTRIES = {
@@ -82,10 +82,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     public Gtk.Builder ui;
     public Files.Application marlin_app { get; construct; }
     private unowned UndoManager undo_manager;
-    public Hdy.HeaderBar headerbar;
+    public Adw.HeaderBar headerbar;
     public Chrome.ViewSwitcher view_switcher;
-    public Hdy.TabView tab_view;
-    public Hdy.TabBar tab_bar;
+    public Adw.TabView tab_view;
+    public Adw.TabBar tab_bar;
     private Gtk.Paned lside_pane;
     public SidebarInterface sidebar;
     private Chrome.ButtonWithMenu button_forward;
@@ -113,7 +113,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     static construct {
-        Hdy.init ();
+        Adw.init ();
     }
 
     construct {
@@ -216,7 +216,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             tooltip_text = _("Menu")
         };
 
-        headerbar = new Hdy.HeaderBar () {
+        headerbar = new Adw.HeaderBar () {
             show_close_button = true,
             custom_title = new Gtk.Label (null)
         };
@@ -226,7 +226,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         headerbar.pack_start (location_bar);
         headerbar.pack_end (menu_button);
 
-        tab_view = new Hdy.TabView () {
+        tab_view = new Adw.TabView () {
             menu_model = new Menu ()
         };
 
@@ -247,7 +247,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             use_popover = false
         };
 
-        tab_bar = new Hdy.TabBar () {
+        tab_bar = new Adw.TabBar () {
             autohide = false,
             expand_tabs = false,
             inverted = true,
@@ -412,7 +412,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         sidebar.path_change_request.connect (uri_path_change_request);
     }
 
-    private bool tab_view_close_page (Hdy.TabPage page) {
+    private bool tab_view_close_page (Adw.TabPage page) {
         var view_container = (ViewContainer) page.child;
 
         if (tab_history_button.menu_model == null) {
@@ -446,7 +446,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         return Gdk.EVENT_STOP;
     }
 
-    private void tab_view_setup_menu (Hdy.TabPage? page) {
+    private void tab_view_setup_menu (Adw.TabPage? page) {
         if (page == null) {
             return;
         }
@@ -688,7 +688,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         int existing_position = 0;
 
         for (int i = 0; i < tab_view.n_pages; i++) {
-            var tab = (Hdy.TabPage) tab_view.get_nth_page (i);
+            var tab = (Adw.TabPage) tab_view.get_nth_page (i);
             var tab_location = ((ViewContainer) tab.child).location;
             string tab_uri = tab_location.get_uri ();
 
@@ -706,7 +706,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     /** Compare every tab label with every other and resolve ambiguities **/
     private void check_for_tabs_with_same_name () {
         for (int i = 0; i < tab_view.n_pages; i++) {
-            var tab = (Hdy.TabPage) tab_view.get_nth_page (i);
+            var tab = (Adw.TabPage) tab_view.get_nth_page (i);
             unowned var content = (ViewContainer) tab.child;
             if (content.tab_name == Files.INVALID_TAB_NAME) {
                 set_tab_label (content.tab_name, tab, content.tab_name);
@@ -731,7 +731,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
             // Compare with every other tab for same label
             for (int j = 0; j < tab_view.n_pages; j++) {
-                var tab2 = (Hdy.TabPage) tab_view.get_nth_page (j);
+                var tab2 = (Adw.TabPage) tab_view.get_nth_page (j);
                 unowned var content2 = (ViewContainer) tab2.child;
                 if (content2 == content || content2.tab_name == Files.INVALID_TAB_NAME) {
                     continue;
@@ -759,7 +759,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     /* Just to append "as Administrator" when appropriate */
-    private void set_tab_label (string label, Hdy.TabPage tab, string? tooltip = null) {
+    private void set_tab_label (string label, Adw.TabPage tab, string? tooltip = null) {
 
         string lab = label;
         if (Files.is_admin ()) {
@@ -803,7 +803,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    private void remove_tab (Hdy.TabPage? tab) {
+    private void remove_tab (Adw.TabPage? tab) {
         if (tab != null) {
             /* Use Idle in case of rapid closing of multiple tabs during restore */
             Idle.add_full (Priority.LOW, () => {
@@ -1165,7 +1165,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_view.notify["selected-page"].disconnect (change_tab);
 
         for (int i = 0; i < tab_view.n_pages; i++) {
-            var tab_page = (Hdy.TabPage) tab_view.get_nth_page (i);
+            var tab_page = (Adw.TabPage) tab_view.get_nth_page (i);
             ((View.ViewContainer) tab_page.child).close ();
         }
 
@@ -1215,7 +1215,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
         for (int i = 0; i < tab_view.n_pages; i++) {
-            var tab = (Hdy.TabPage) tab_view.get_nth_page (i);
+            var tab = (Adw.TabPage) tab_view.get_nth_page (i);
             var view_container = (ViewContainer) tab.child;
 
             /* Do not save if "File does not exist" or "Does not belong to you" */
