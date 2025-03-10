@@ -1,7 +1,7 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '7.1.0',
+    version: '8.0.0',
     meson_version: '>= 0.59.0'
 )
 
@@ -18,15 +18,21 @@ plugin_dir = join_paths(get_option('prefix'), get_option('libdir'), meson.projec
 
 add_project_arguments(
     ['-DGETTEXT_PACKAGE="' + meson.project_name() + '"',
-    '-DHANDY_USE_UNSTABLE_API',
     '-w'],
     language:'c'
+)
+
+# To be removed before completing and merging Gtk4 port
+# This is to help fix essential errors first
+add_project_arguments(
+    ['--disable-warnings', '--keep-going'],
+    language:'vala'
 )
 
 #
 # Define Vala minimal version
 #
-vala_version_required = '0.50.0'
+vala_version_required = '0.56.0'
 vala = meson.get_compiler('vala')
 cc = meson.get_compiler('c')
 
@@ -37,19 +43,20 @@ endif
 #
 # Project dependencies
 #
-min_glib_version = '2.64.6'
+min_glib_version = '>=2.80.0'
+min_libportal_version = '>=0.7.1'
 
-glib_dep = dependency('glib-2.0', version: '>='+min_glib_version)
-gobject_dep = dependency('gobject-2.0', version: '>='+min_glib_version)
+glib_dep = dependency('glib-2.0', version: min_glib_version)
+gobject_dep = dependency('gobject-2.0', version: min_glib_version)
 gio_dep = dependency('gio-2.0', version: '>='+min_glib_version)
 gio_unix_dep = dependency('gio-unix-2.0', version: '>='+min_glib_version)
 gmodule_dep = dependency('gmodule-2.0', version: '>='+min_glib_version)
-gee_dep = dependency('gee-0.8')
-gtk_dep = dependency('gtk+-3.0', version: '>=3.22.25')
-granite_dep = dependency('granite', version: '>=6.1.0')
-handy_dep = dependency('libhandy-1', version: '>=0.83.0')
-portal_dep = dependency('libportal')
-portal_gtk3_dep = dependency('libportal-gtk3')
+gee_dep = dependency('gee-0.8', version: '>=0.20.6')
+gtk_dep = dependency('gtk4', version: '>=4.14')
+granite_dep = dependency('granite-7', version: '>=7.7')
+adwaita_dep = dependency('libadwaita-1', version: '>=1.5')
+portal_dep = dependency('libportal', version: min_libportal_version)
+portal_gtk3_dep = dependency('libportal-gtk4', version: min_libportal_version)
 
 common_deps = [
     glib_dep,

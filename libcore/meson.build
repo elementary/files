@@ -18,7 +18,7 @@ pantheon_files_core_vala_files = files(
     'ConnectServerOperation.vala',
     'ConnectServerDialog.vala',
     'Directory.vala',
-    'DndHandler.vala',
+    # 'DndHandler.vala',
     'Enums.vala',
     'File.vala',
     'FileChanges.vala',
@@ -52,12 +52,12 @@ pantheon_files_core_vala_files = files(
     'Interfaces/SearchableInterface.vala',
     'Interfaces/SidebarListInterface.vala',
     'Interfaces/SidebarItemInterface.vala',
-    'Widgets/BasicBreadcrumbsEntry.vala',
-    'Widgets/BasicLocationBar.vala',
-    'Widgets/BreadcrumbElement.vala',
-    'Widgets/BreadcrumbIconList.vala',
-    'Widgets/ButtonWithMenu.vala',
-    'Widgets/ViewSwitcher.vala'
+    # 'Widgets/BasicBreadcrumbsEntry.vala',
+    # 'Widgets/BasicLocationBar.vala',
+    # 'Widgets/BreadcrumbElement.vala',
+    # 'Widgets/BreadcrumbIconList.vala',
+    # 'Widgets/ButtonWithMenu.vala',
+    # 'Widgets/ViewSwitcher.vala'
 )
 
 pantheon_files_core_c_files = files(
