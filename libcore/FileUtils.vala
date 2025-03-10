@@ -188,30 +188,30 @@ namespace Files.FileUtils {
 
         dialog.set_default_response (Gtk.ResponseType.ACCEPT);
 
-        var response = dialog.run ();
+        // var response = dialog.run ();
         dialog.destroy ();
-        switch (response) {
-            case Gtk.ResponseType.ACCEPT:
-                try {
-                    file.make_directory_with_parents ();
-                    return true;
-                } catch (Error e) {
-                    var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
-                        _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
-                        e.message,
-                        "dialog-error",
-                        Gtk.ButtonsType.CLOSE
-                    );
+        // switch (response) {
+        //     case Gtk.ResponseType.ACCEPT:
+        //         try {
+        //             file.make_directory_with_parents ();
+        //             return true;
+        //         } catch (Error e) {
+        //             var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+        //                 _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
+        //                 e.message,
+        //                 "dialog-error",
+        //                 Gtk.ButtonsType.CLOSE
+        //             );
 
-                    error_dialog.run ();
-                    error_dialog.destroy ();
-                }
+        //             error_dialog.run ();
+        //             error_dialog.destroy ();
+        //         }
 
-                break;
+        //         break;
 
-            default:
-                break;
-        }
+        //     default:
+        //         break;
+        // }
 
         return false;
     }
