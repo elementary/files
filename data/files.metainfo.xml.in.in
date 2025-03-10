@@ -77,7 +77,6 @@
       </issues>
     </release>
 
-  <releases>
     <release version="7.1.0" date="2024-10-21" urgency="medium">
       <description>
         <p>Minor updates:</p>
