@@ -13,7 +13,7 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    Authors : Jeremy Wootten <jeremy@elementaryos.org>
+    Authors : Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 namespace Files.FileUtils {
     /**
@@ -389,7 +389,8 @@ namespace Files.FileUtils {
             /* ROOT_FS, TRASH and RECENT must have 3 separators after protocol, other protocols have 2 */
             if (!scheme.has_prefix (Files.ROOT_FS_URI) &&
                 !scheme.has_prefix (Files.TRASH_URI) &&
-                !scheme.has_prefix (Files.RECENT_URI)) {
+                !scheme.has_prefix (Files.RECENT_URI) &&
+                !scheme.has_prefix (Files.ADMIN_URI)) {
 
                 new_path = new_path.replace ("///", "//");
             }
@@ -1196,6 +1197,7 @@ namespace Files.FileUtils {
 
 namespace Files {
     public const string ROOT_FS_URI = "file://";
+    public const string ADMIN_URI = "admin://";
     public const string TRASH_URI = "trash://";
     public const string NETWORK_URI = "network://";
     public const string RECENT_URI = "recent://";

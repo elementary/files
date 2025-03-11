@@ -7,18 +7,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-03 12:18+0000\n"
-"PO-Revision-Date: 2024-11-13 13:40+0000\n"
-"Last-Translator: rom <rmel@ikmail.com>\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
+"PO-Revision-Date: 2025-02-07 16:16+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.9.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 "X-Poedit-SourceCharset: utf-8\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Précédent"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Suivant"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -79,6 +87,10 @@ msgstr "Remplacer « %s » ?"
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Remplacer ce fichier écrasera son contenu actuel"
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Remplacer"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -189,7 +201,7 @@ msgstr "Connexion en cours…"
 msgid "Please verify your user details."
 msgstr "Veuillez vérifier vos paramètres utilisateur."
 
-#: libcore/Directory.vala:736
+#: libcore/Directory.vala:738
 msgid "Server did not respond within time limit"
 msgstr "Le serveur n'a pas répondu dans le temps imparti"
 
@@ -373,10 +385,6 @@ msgstr "Conserver le plus récent"
 msgid "Skip if original was modified more recently"
 msgstr "Ignorer si l'original a été modifié plus récemment"
 
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Remplacer"
-
 #: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "Merge folder \"%s\"?"
@@ -492,37 +500,37 @@ msgstr ""
 "Impossible de créer le dossier %s à nouveau. Tous les fichiers de ce dossier "
 "seront ignorés"
 
-#: libcore/FileUtils.vala:566
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Impossible de renommer en « %s »"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:657
+#: libcore/FileUtils.vala:658
 #, c-format
 msgid "Today at %s"
 msgstr "Aujourd'hui à %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:665
+#: libcore/FileUtils.vala:666
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Hier à %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:673
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A à %s"
 
-#: libcore/FileUtils.vala:898
+#: libcore/FileUtils.vala:899
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d seconde"
 msgstr[1] "%'d secondes"
 
-#: libcore/FileUtils.vala:902 libcore/FileUtils.vala:910
+#: libcore/FileUtils.vala:903 libcore/FileUtils.vala:911
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -531,19 +539,19 @@ msgstr[1] "%'d minutes"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1253
+#: libcore/FileUtils.vala:910 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:909
+#: libcore/FileUtils.vala:910
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d heure"
 msgstr[1] "%'d heures"
 
-#: libcore/FileUtils.vala:913
+#: libcore/FileUtils.vala:914
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -551,22 +559,22 @@ msgstr[0] "environ %'d heure"
 msgstr[1] "environ %'d heures"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:921
+#: libcore/FileUtils.vala:922
 msgid "copy"
 msgstr "copie"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:924
 msgid "link"
 msgstr "lien"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:925
+#: libcore/FileUtils.vala:926
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:928
 msgid ")"
 msgstr ")"
 
@@ -2237,14 +2245,6 @@ msgstr "Fichier introuvable"
 msgid "The file selected no longer exists."
 msgstr "Le fichier sélectionné n'existe plus."
 
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Précédent"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Suivant"
-
 #: src/View/Window.vala:216
 msgid "Menu"
 msgstr "Menu"
@@ -2253,28 +2253,28 @@ msgstr "Menu"
 msgid "Closed Tabs"
 msgstr "Onglets fermés"
 
-#: src/View/Window.vala:469 src/View/Widgets/BreadcrumbsEntry.vala:409
+#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:409
 msgid "Open in New Window"
 msgstr "Ouvrir dans une nouvelle fenêtre"
 
-#: src/View/Window.vala:470
+#: src/View/Window.vala:475
 msgid "Duplicate Tab"
 msgstr "Dupliquer l'onglet"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:474
+#: src/View/Window.vala:479
 msgid "Close Tabs to the Right"
 msgstr "Fermer les onglets à droite"
 
-#: src/View/Window.vala:475
+#: src/View/Window.vala:480
 msgid "Close Other Tabs"
 msgstr "Fermer les autres onglets"
 
-#: src/View/Window.vala:476
+#: src/View/Window.vala:481
 msgid "Close Tab"
 msgstr "Fermer l'onglet"
 
-#: src/View/Window.vala:761 src/View/Window.vala:771
+#: src/View/Window.vala:766 src/View/Window.vala:776
 msgid "(as Administrator)"
 msgstr "(en tant qu'administrateur)"
 
@@ -2386,7 +2386,7 @@ msgid "Browse the contents of the network"
 msgstr "Parcourir le réseau"
 
 #: src/View/Sidebar/SidebarWindow.vala:30
-#: src/View/Widgets/SearchResults.vala:304
+#: src/View/Widgets/SearchResults.vala:300
 msgid "Bookmarks"
 msgstr "Favoris"
 
@@ -2478,7 +2478,7 @@ msgid "No operation to redo"
 msgstr "Aucune opération à rétablir"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:141
-#: src/View/Widgets/LocationBar.vala:193
+#: src/View/Widgets/LocationBar.vala:216
 msgid "Search or Type Path"
 msgstr "Recherchez ou entrez un chemin"
 
@@ -2490,11 +2490,19 @@ msgstr "Ouvrir dans un nouvel onglet"
 msgid "Open in Other Application…"
 msgstr "Ouvrir dans une autre application…"
 
-#: src/View/Widgets/LocationBar.vala:189
+#: src/View/Widgets/LocationBar.vala:74
+msgid ""
+"Caution. Administrative rights will be granted after successful "
+"authentication"
+msgstr ""
+"Attention. Les droits d'administration seront accordés après une "
+"authentification réussie"
+
+#: src/View/Widgets/LocationBar.vala:212
 msgid "Reload this folder"
 msgstr "Actualiser ce dossier"
 
-#: src/View/Widgets/LocationBar.vala:202
+#: src/View/Widgets/LocationBar.vala:225
 msgid "Searching…"
 msgstr "Recherche…"
 
@@ -2570,15 +2578,15 @@ msgstr "Exécution"
 msgid "More Results …"
 msgstr "Plus de résultats…"
 
-#: src/View/Widgets/SearchResults.vala:296
+#: src/View/Widgets/SearchResults.vala:292
 msgid "In This Folder"
 msgstr "Dans ce dossier"
 
-#: src/View/Widgets/SearchResults.vala:300
+#: src/View/Widgets/SearchResults.vala:296
 msgid "Below This Folder"
 msgstr "À l'intérieur de ce dossier"
 
-#: src/View/Widgets/SearchResults.vala:309
+#: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Utilisé récemment"
 

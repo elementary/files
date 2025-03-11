@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-03 12:18+0000\n"
-"PO-Revision-Date: 2024-09-04 09:49+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
+"PO-Revision-Date: 2025-02-07 16:16+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/files/hu/"
 ">\n"
@@ -18,8 +18,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.9.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Előző"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Következő"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -80,6 +88,10 @@ msgstr "Felülírja a(z) \"%s\" fájlt?"
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "A fájl cseréjével annak tartalma felülíródik"
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Felülírás"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -190,7 +202,7 @@ msgstr "Kapcsolódás…"
 msgid "Please verify your user details."
 msgstr "Ellenőrizze a felhasználói adatait."
 
-#: libcore/Directory.vala:736
+#: libcore/Directory.vala:738
 msgid "Server did not respond within time limit"
 msgstr "A szerver nem válaszolt határidőn belül"
 
@@ -374,10 +386,6 @@ msgstr "Legújabb megtartása"
 msgid "Skip if original was modified more recently"
 msgstr "Kihagyás, ha az eredeti módosításai frissebbek"
 
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Felülírás"
-
 #: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "Merge folder \"%s\"?"
@@ -493,37 +501,37 @@ msgstr ""
 "A(z) %s mappa újbóli létrehozása sikertelen. A mappában lévő összes fájl "
 "kihagyásra kerül"
 
-#: libcore/FileUtils.vala:566
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Nem lehet átnevezni erre: '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:657
+#: libcore/FileUtils.vala:658
 #, c-format
 msgid "Today at %s"
 msgstr "Ma ekkor: %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:665
+#: libcore/FileUtils.vala:666
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Tegnap ekkor: %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:673
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A ekkor: %s"
 
-#: libcore/FileUtils.vala:898
+#: libcore/FileUtils.vala:899
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d másodperc"
 msgstr[1] "%'d másodperc"
 
-#: libcore/FileUtils.vala:902 libcore/FileUtils.vala:910
+#: libcore/FileUtils.vala:903 libcore/FileUtils.vala:911
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -532,19 +540,19 @@ msgstr[1] "%'d perc"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1253
+#: libcore/FileUtils.vala:910 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:909
+#: libcore/FileUtils.vala:910
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d óra"
 msgstr[1] "%'d óra"
 
-#: libcore/FileUtils.vala:913
+#: libcore/FileUtils.vala:914
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -552,22 +560,22 @@ msgstr[0] "megközelítőleg %'d óra"
 msgstr[1] "megközelítőleg %'d óra"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:921
+#: libcore/FileUtils.vala:922
 msgid "copy"
 msgstr "másolat"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:924
 msgid "link"
 msgstr "hivatkozás"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:925
+#: libcore/FileUtils.vala:926
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:928
 msgid ")"
 msgstr ")"
 
@@ -2200,14 +2208,6 @@ msgstr "Fájl nem található"
 msgid "The file selected no longer exists."
 msgstr "A kiválasztott fájl már nem létezik."
 
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Előző"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Következő"
-
 #: src/View/Window.vala:216
 msgid "Menu"
 msgstr "Menü"
@@ -2216,28 +2216,28 @@ msgstr "Menü"
 msgid "Closed Tabs"
 msgstr "Bezárt lapok"
 
-#: src/View/Window.vala:469 src/View/Widgets/BreadcrumbsEntry.vala:409
+#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:409
 msgid "Open in New Window"
 msgstr "Megnyitás új ablakban"
 
-#: src/View/Window.vala:470
+#: src/View/Window.vala:475
 msgid "Duplicate Tab"
 msgstr "Lap megkettőzése"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:474
+#: src/View/Window.vala:479
 msgid "Close Tabs to the Right"
 msgstr "A jobbra lévő lapok bezárása"
 
-#: src/View/Window.vala:475
+#: src/View/Window.vala:480
 msgid "Close Other Tabs"
 msgstr "A többi lap bezárása"
 
-#: src/View/Window.vala:476
+#: src/View/Window.vala:481
 msgid "Close Tab"
 msgstr "Lap bezárása"
 
-#: src/View/Window.vala:761 src/View/Window.vala:771
+#: src/View/Window.vala:766 src/View/Window.vala:776
 msgid "(as Administrator)"
 msgstr "(Rendszergazdaként)"
 
@@ -2348,7 +2348,7 @@ msgid "Browse the contents of the network"
 msgstr "A hálózat tartalmának böngészése"
 
 #: src/View/Sidebar/SidebarWindow.vala:30
-#: src/View/Widgets/SearchResults.vala:304
+#: src/View/Widgets/SearchResults.vala:300
 msgid "Bookmarks"
 msgstr "Könyvjelzők"
 
@@ -2438,7 +2438,7 @@ msgid "No operation to redo"
 msgstr "Nincs újra végrehajtható művelet"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:141
-#: src/View/Widgets/LocationBar.vala:193
+#: src/View/Widgets/LocationBar.vala:216
 msgid "Search or Type Path"
 msgstr "Keresés vagy útvonal megadása"
 
@@ -2450,11 +2450,19 @@ msgstr "Megnyitás új lapon"
 msgid "Open in Other Application…"
 msgstr "Megnyitás másik alkalmazással…"
 
-#: src/View/Widgets/LocationBar.vala:189
+#: src/View/Widgets/LocationBar.vala:74
+msgid ""
+"Caution. Administrative rights will be granted after successful "
+"authentication"
+msgstr ""
+"Vigyázat: a sikeres hitelesítést követően rendszergazdai jogok kerülnek "
+"megadásra"
+
+#: src/View/Widgets/LocationBar.vala:212
 msgid "Reload this folder"
 msgstr "A mappa újratöltése"
 
-#: src/View/Widgets/LocationBar.vala:202
+#: src/View/Widgets/LocationBar.vala:225
 msgid "Searching…"
 msgstr "Keresés…"
 
@@ -2530,15 +2538,15 @@ msgstr "Végrehajtás"
 msgid "More Results …"
 msgstr "További eredmények…"
 
-#: src/View/Widgets/SearchResults.vala:296
+#: src/View/Widgets/SearchResults.vala:292
 msgid "In This Folder"
 msgstr "Ebben a mappában"
 
-#: src/View/Widgets/SearchResults.vala:300
+#: src/View/Widgets/SearchResults.vala:296
 msgid "Below This Folder"
 msgstr "Ezen mappa alatt"
 
-#: src/View/Widgets/SearchResults.vala:309
+#: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Mostanában használt"
 

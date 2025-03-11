@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-03 12:18+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2023-05-21 06:06+0000\n"
 "Last-Translator: Faisal Rachmadin <frachmadin@users.noreply.l10n.elementary."
 "io>\n"
@@ -19,6 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Sebelumnya"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Selanjutnya"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -77,6 +85,10 @@ msgstr "Ganti \"%s\"?"
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Mengganti file ini akan menimpa isinya saat ini"
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Ganti"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -187,7 +199,7 @@ msgstr "Menghubungkan…"
 msgid "Please verify your user details."
 msgstr "Silakan periksa rincian pengguna Anda."
 
-#: libcore/Directory.vala:736
+#: libcore/Directory.vala:738
 msgid "Server did not respond within time limit"
 msgstr "Server tidak merespon dalam batas waktu"
 
@@ -370,10 +382,6 @@ msgstr "Tetap Terbaru"
 msgid "Skip if original was modified more recently"
 msgstr "Lewati jika berkas asli dimodifikasi lebih terkini"
 
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Ganti"
-
 #: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "Merge folder \"%s\"?"
@@ -493,36 +501,36 @@ msgstr ""
 "Tidak dapat membuat ulang folder %s. Akan mengabaikan semua berkas di folder "
 "ini"
 
-#: libcore/FileUtils.vala:566
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Tidak dapat mengganti nama menjadi '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:657
+#: libcore/FileUtils.vala:658
 #, c-format
 msgid "Today at %s"
 msgstr "Hari ini pada %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:665
+#: libcore/FileUtils.vala:666
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Kemarin pada %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:673
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A pada %s"
 
-#: libcore/FileUtils.vala:898
+#: libcore/FileUtils.vala:899
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d detik"
 
-#: libcore/FileUtils.vala:902 libcore/FileUtils.vala:910
+#: libcore/FileUtils.vala:903 libcore/FileUtils.vala:911
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -530,40 +538,40 @@ msgstr[0] "%'d menit"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1253
+#: libcore/FileUtils.vala:910 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:909
+#: libcore/FileUtils.vala:910
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d jam"
 
-#: libcore/FileUtils.vala:913
+#: libcore/FileUtils.vala:914
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "sekitar %'d jam"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:921
+#: libcore/FileUtils.vala:922
 msgid "copy"
 msgstr "copy"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:924
 msgid "link"
 msgstr "link"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:925
+#: libcore/FileUtils.vala:926
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:928
 msgid ")"
 msgstr ")"
 
@@ -2200,14 +2208,6 @@ msgstr "Berkas tidak ditemukan"
 msgid "The file selected no longer exists."
 msgstr "Berkas yang dipilih sudah tidak ada lagi."
 
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Sebelumnya"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Selanjutnya"
-
 #: src/View/Window.vala:216
 msgid "Menu"
 msgstr "Menu"
@@ -2218,30 +2218,30 @@ msgstr "Menu"
 msgid "Closed Tabs"
 msgstr "Tutup Tab"
 
-#: src/View/Window.vala:469 src/View/Widgets/BreadcrumbsEntry.vala:409
+#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:409
 msgid "Open in New Window"
 msgstr "Buka di Jendela Baru"
 
-#: src/View/Window.vala:470
+#: src/View/Window.vala:475
 msgid "Duplicate Tab"
 msgstr "Gandakan Tab"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:474
+#: src/View/Window.vala:479
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:475
+#: src/View/Window.vala:480
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Close Other Tabs"
 msgstr "Tutup Tab"
 
-#: src/View/Window.vala:476
+#: src/View/Window.vala:481
 msgid "Close Tab"
 msgstr "Tutup Tab"
 
-#: src/View/Window.vala:761 src/View/Window.vala:771
+#: src/View/Window.vala:766 src/View/Window.vala:776
 msgid "(as Administrator)"
 msgstr "(sebagai Administrator)"
 
@@ -2352,7 +2352,7 @@ msgid "Browse the contents of the network"
 msgstr "Jelajahi isi jaringan"
 
 #: src/View/Sidebar/SidebarWindow.vala:30
-#: src/View/Widgets/SearchResults.vala:304
+#: src/View/Widgets/SearchResults.vala:300
 msgid "Bookmarks"
 msgstr "Penanda Taut"
 
@@ -2444,7 +2444,7 @@ msgid "No operation to redo"
 msgstr "Tidak ada operasi untuk diulang"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:141
-#: src/View/Widgets/LocationBar.vala:193
+#: src/View/Widgets/LocationBar.vala:216
 msgid "Search or Type Path"
 msgstr "Cari atau Ketik Jalur"
 
@@ -2456,11 +2456,17 @@ msgstr "Buka di Tab Baru"
 msgid "Open in Other Application…"
 msgstr "Buka dengan Aplikasi Lain…"
 
-#: src/View/Widgets/LocationBar.vala:189
+#: src/View/Widgets/LocationBar.vala:74
+msgid ""
+"Caution. Administrative rights will be granted after successful "
+"authentication"
+msgstr ""
+
+#: src/View/Widgets/LocationBar.vala:212
 msgid "Reload this folder"
 msgstr "Muat ulang folder ini"
 
-#: src/View/Widgets/LocationBar.vala:202
+#: src/View/Widgets/LocationBar.vala:225
 msgid "Searching…"
 msgstr "Mencari…"
 
@@ -2532,15 +2538,15 @@ msgstr "Jalankan"
 msgid "More Results …"
 msgstr "Hasil Lebih …"
 
-#: src/View/Widgets/SearchResults.vala:296
+#: src/View/Widgets/SearchResults.vala:292
 msgid "In This Folder"
 msgstr "Dalam Folder ini"
 
-#: src/View/Widgets/SearchResults.vala:300
+#: src/View/Widgets/SearchResults.vala:296
 msgid "Below This Folder"
 msgstr "Di bawah Folder Ini"
 
-#: src/View/Widgets/SearchResults.vala:309
+#: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Terkini Digunakan"
 

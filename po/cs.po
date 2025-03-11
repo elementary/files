@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-03 12:18+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2023-08-30 12:08+0000\n"
 "Last-Translator: Jan <sebek_jan@yahoo.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/files/cs/>\n"
@@ -18,6 +18,14 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Předchozí"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Následující"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -76,6 +84,10 @@ msgstr "Nahradit „%s“?"
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Nahrazením tohoto souboru přepíšete jeho aktuální obsah"
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Nahradit"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -186,7 +198,7 @@ msgstr "Připojování…"
 msgid "Please verify your user details."
 msgstr "Zkontrolujte prosím své uživatelské údaje."
 
-#: libcore/Directory.vala:736
+#: libcore/Directory.vala:738
 msgid "Server did not respond within time limit"
 msgstr "Server neodpověděl v časovém limitu"
 
@@ -371,10 +383,6 @@ msgstr "Ponechat novější"
 msgid "Skip if original was modified more recently"
 msgstr "Přeskočit pokud byl původní soubor nedávno změněn"
 
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Nahradit"
-
 #: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "Merge folder \"%s\"?"
@@ -490,30 +498,30 @@ msgstr ""
 "Nedaří se znovu vytvořit složku %s. Veškeré soubory v této složce budou "
 "ignorovány"
 
-#: libcore/FileUtils.vala:566
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Přejmenování na „%s“ se nezdařilo"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:657
+#: libcore/FileUtils.vala:658
 #, c-format
 msgid "Today at %s"
 msgstr "Dnes v %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:665
+#: libcore/FileUtils.vala:666
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Včera v %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:673
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A v %s"
 
-#: libcore/FileUtils.vala:898
+#: libcore/FileUtils.vala:899
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -521,7 +529,7 @@ msgstr[0] "%'d sekunda"
 msgstr[1] "%'d sekundy"
 msgstr[2] "%'d sekund"
 
-#: libcore/FileUtils.vala:902 libcore/FileUtils.vala:910
+#: libcore/FileUtils.vala:903 libcore/FileUtils.vala:911
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -531,12 +539,12 @@ msgstr[2] "%'d minut"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1253
+#: libcore/FileUtils.vala:910 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:909
+#: libcore/FileUtils.vala:910
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -544,7 +552,7 @@ msgstr[0] "%'d hodina"
 msgstr[1] "%'d hodiny"
 msgstr[2] "%'d hodin"
 
-#: libcore/FileUtils.vala:913
+#: libcore/FileUtils.vala:914
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -553,22 +561,22 @@ msgstr[1] "přibližně %'d hodiny"
 msgstr[2] "přibližně %'d hodin"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:921
+#: libcore/FileUtils.vala:922
 msgid "copy"
 msgstr "kopie"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:924
 msgid "link"
 msgstr "odkaz"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:925
+#: libcore/FileUtils.vala:926
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:928
 msgid ")"
 msgstr ")"
 
@@ -2234,14 +2242,6 @@ msgstr "Soubor nenalezen"
 msgid "The file selected no longer exists."
 msgstr "Vybraný soubor už neexistuje."
 
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Předchozí"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Následující"
-
 #: src/View/Window.vala:216
 msgid "Menu"
 msgstr "Nabídka"
@@ -2250,28 +2250,28 @@ msgstr "Nabídka"
 msgid "Closed Tabs"
 msgstr "Zavřené panely"
 
-#: src/View/Window.vala:469 src/View/Widgets/BreadcrumbsEntry.vala:409
+#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:409
 msgid "Open in New Window"
 msgstr "Otevřít v novém okně"
 
-#: src/View/Window.vala:470
+#: src/View/Window.vala:475
 msgid "Duplicate Tab"
 msgstr "Zduplikovat panel"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:474
+#: src/View/Window.vala:479
 msgid "Close Tabs to the Right"
 msgstr "Zavřít panely napravo"
 
-#: src/View/Window.vala:475
+#: src/View/Window.vala:480
 msgid "Close Other Tabs"
 msgstr "Zavřít ostatní panely"
 
-#: src/View/Window.vala:476
+#: src/View/Window.vala:481
 msgid "Close Tab"
 msgstr "Zavřít panel"
 
-#: src/View/Window.vala:761 src/View/Window.vala:771
+#: src/View/Window.vala:766 src/View/Window.vala:776
 msgid "(as Administrator)"
 msgstr "(jako správce)"
 
@@ -2382,7 +2382,7 @@ msgid "Browse the contents of the network"
 msgstr "Procházet obsah sítě"
 
 #: src/View/Sidebar/SidebarWindow.vala:30
-#: src/View/Widgets/SearchResults.vala:304
+#: src/View/Widgets/SearchResults.vala:300
 msgid "Bookmarks"
 msgstr "Záložky"
 
@@ -2474,7 +2474,7 @@ msgid "No operation to redo"
 msgstr "Žádná operace k opakování"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:141
-#: src/View/Widgets/LocationBar.vala:193
+#: src/View/Widgets/LocationBar.vala:216
 msgid "Search or Type Path"
 msgstr "Hledat nebo zadat popis umístění"
 
@@ -2486,11 +2486,17 @@ msgstr "Otevřít v nové kartě"
 msgid "Open in Other Application…"
 msgstr "Otevřít v jiné aplikaci…"
 
-#: src/View/Widgets/LocationBar.vala:189
+#: src/View/Widgets/LocationBar.vala:74
+msgid ""
+"Caution. Administrative rights will be granted after successful "
+"authentication"
+msgstr ""
+
+#: src/View/Widgets/LocationBar.vala:212
 msgid "Reload this folder"
 msgstr "Znovu načíst tuto složku"
 
-#: src/View/Widgets/LocationBar.vala:202
+#: src/View/Widgets/LocationBar.vala:225
 msgid "Searching…"
 msgstr "Hledání…"
 
@@ -2570,15 +2576,15 @@ msgstr "Spouštění"
 msgid "More Results …"
 msgstr "Další výsledky…"
 
-#: src/View/Widgets/SearchResults.vala:296
+#: src/View/Widgets/SearchResults.vala:292
 msgid "In This Folder"
 msgstr "V této složce"
 
-#: src/View/Widgets/SearchResults.vala:300
+#: src/View/Widgets/SearchResults.vala:296
 msgid "Below This Folder"
 msgstr "Pod touto složkou"
 
-#: src/View/Widgets/SearchResults.vala:309
+#: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Nedávno použité"
 

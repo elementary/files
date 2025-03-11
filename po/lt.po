@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-03 12:18+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
@@ -20,6 +20,14 @@ msgstr ""
 "n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
 "X-Generator: Weblate 3.7.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Ankstesnis"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Kitas"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -82,6 +90,10 @@ msgstr "Pakeisti failą „%s“?"
 #, fuzzy
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Pakeitus failą, bus perrašytas jo turinys."
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Pakeisti"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -194,7 +206,7 @@ msgstr "Jungiamasi…"
 msgid "Please verify your user details."
 msgstr "Patvirtinkite savo naudotojo informaciją."
 
-#: libcore/Directory.vala:736
+#: libcore/Directory.vala:738
 msgid "Server did not respond within time limit"
 msgstr "Serveris neatsakė per tam tikrą laiko terminą"
 
@@ -388,10 +400,6 @@ msgstr "Palikti naujausią"
 msgid "Skip if original was modified more recently"
 msgstr "Praleisti, jei pradinis failas buvo modifikuotas vėlesniu laiku"
 
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Pakeisti"
-
 #: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "Merge folder \"%s\"?"
@@ -504,30 +512,30 @@ msgstr ""
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
 
-#: libcore/FileUtils.vala:566
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Nepavyko pervadinti į \"%s\""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:657
+#: libcore/FileUtils.vala:658
 #, c-format
 msgid "Today at %s"
 msgstr "Šiandien ties %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:665
+#: libcore/FileUtils.vala:666
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Vakar ties %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:673
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A ties %s"
 
-#: libcore/FileUtils.vala:898
+#: libcore/FileUtils.vala:899
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -536,7 +544,7 @@ msgstr[1] "%'d sekundės"
 msgstr[2] "%'d sekundžių"
 msgstr[3] "%'d sekundė"
 
-#: libcore/FileUtils.vala:902 libcore/FileUtils.vala:910
+#: libcore/FileUtils.vala:903 libcore/FileUtils.vala:911
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -547,12 +555,12 @@ msgstr[3] "%'d minutė"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1253
+#: libcore/FileUtils.vala:910 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:909
+#: libcore/FileUtils.vala:910
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -561,7 +569,7 @@ msgstr[1] "%'d valandos"
 msgstr[2] "%'d valandų"
 msgstr[3] "%'d valanda"
 
-#: libcore/FileUtils.vala:913
+#: libcore/FileUtils.vala:914
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -571,24 +579,24 @@ msgstr[2] "maždaug %'d valandų"
 msgstr[3] "maždaug %'d valanda"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:921
+#: libcore/FileUtils.vala:922
 #, fuzzy
 msgid "copy"
 msgstr " (kopija)"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:924
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:925
+#: libcore/FileUtils.vala:926
 #, fuzzy
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:928
 msgid ")"
 msgstr ""
 
@@ -2324,14 +2332,6 @@ msgstr "Failas nerastas"
 msgid "The file selected no longer exists."
 msgstr "Pasirinkto failo daugiau nebėra."
 
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Ankstesnis"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Kitas"
-
 #: src/View/Window.vala:216
 msgid "Menu"
 msgstr ""
@@ -2341,31 +2341,31 @@ msgstr ""
 msgid "Closed Tabs"
 msgstr "Užverti"
 
-#: src/View/Window.vala:469 src/View/Widgets/BreadcrumbsEntry.vala:409
+#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:409
 msgid "Open in New Window"
 msgstr "Atverti naujame lange"
 
-#: src/View/Window.vala:470
+#: src/View/Window.vala:475
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Kuriama „%s“ kopija"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:474
+#: src/View/Window.vala:479
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:475
+#: src/View/Window.vala:480
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "Užverti"
 
-#: src/View/Window.vala:476
+#: src/View/Window.vala:481
 #, fuzzy
 msgid "Close Tab"
 msgstr "Užverti"
 
-#: src/View/Window.vala:761 src/View/Window.vala:771
+#: src/View/Window.vala:766 src/View/Window.vala:776
 msgid "(as Administrator)"
 msgstr "(kaip administratorius)"
 
@@ -2481,7 +2481,7 @@ msgid "Browse the contents of the network"
 msgstr "Naršyti tinklo turinį"
 
 #: src/View/Sidebar/SidebarWindow.vala:30
-#: src/View/Widgets/SearchResults.vala:304
+#: src/View/Widgets/SearchResults.vala:300
 msgid "Bookmarks"
 msgstr "Žymelės"
 
@@ -2583,7 +2583,7 @@ msgid "No operation to redo"
 msgstr "Pasibaigė operacijai skirtas laikas."
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:141
-#: src/View/Widgets/LocationBar.vala:193
+#: src/View/Widgets/LocationBar.vala:216
 msgid "Search or Type Path"
 msgstr "Atlikite paiešką arba įrašykite kelią"
 
@@ -2595,11 +2595,17 @@ msgstr "Atverti naujoje kortelėje"
 msgid "Open in Other Application…"
 msgstr "Atverti naudojant kitą programą…"
 
-#: src/View/Widgets/LocationBar.vala:189
+#: src/View/Widgets/LocationBar.vala:74
+msgid ""
+"Caution. Administrative rights will be granted after successful "
+"authentication"
+msgstr ""
+
+#: src/View/Widgets/LocationBar.vala:212
 msgid "Reload this folder"
 msgstr "Įkelti šį aplanką iš naujo"
 
-#: src/View/Widgets/LocationBar.vala:202
+#: src/View/Widgets/LocationBar.vala:225
 msgid "Searching…"
 msgstr "Ieškoma…"
 
@@ -2683,15 +2689,15 @@ msgstr "Vykdyti"
 msgid "More Results …"
 msgstr "Daugiau rezultatų …"
 
-#: src/View/Widgets/SearchResults.vala:296
+#: src/View/Widgets/SearchResults.vala:292
 msgid "In This Folder"
 msgstr "Šiame aplanke"
 
-#: src/View/Widgets/SearchResults.vala:300
+#: src/View/Widgets/SearchResults.vala:296
 msgid "Below This Folder"
 msgstr "Žemiau šio aplanko"
 
-#: src/View/Widgets/SearchResults.vala:309
+#: src/View/Widgets/SearchResults.vala:305
 #, fuzzy
 msgid "Recently Used"
 msgstr "Paskiausiai naudoti"

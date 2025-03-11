@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-03 12:18+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2024-05-18 18:13+0000\n"
 "Last-Translator: Arno <arnoant21@gmail.com>\n"
 "Language-Team: Luxembourgish <https://l10n.elementary.io/projects/files/"
@@ -19,6 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr ""
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr ""
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -77,6 +85,10 @@ msgstr "»%s« ersetzen?"
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Wann Dir dës Datei ersetzt, gëtt hiren aktuellen Inhalt iwwerschriwwen"
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Ersetzen"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -187,7 +199,7 @@ msgstr "Verbannen…"
 msgid "Please verify your user details."
 msgstr "Iwwerpréift Är Detailer w.e.g. ."
 
-#: libcore/Directory.vala:736
+#: libcore/Directory.vala:738
 msgid "Server did not respond within time limit"
 msgstr "De Server huet net innerhalb der Zäitlimit geäntwert"
 
@@ -371,10 +383,6 @@ msgstr "Neisten halen"
 msgid "Skip if original was modified more recently"
 msgstr "Iwwersprangen, wann d'Original méi viru kuerzem geännert gouf"
 
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Ersetzen"
-
 #: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "Merge folder \"%s\"?"
@@ -490,37 +498,37 @@ msgstr ""
 "Konnt den Dossier %s net nei schafen. All Dateien an dësem Dossier ginn "
 "ignoréiert"
 
-#: libcore/FileUtils.vala:566
+#: libcore/FileUtils.vala:567
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Konnt net op '%s' ëmbenennen"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:657
+#: libcore/FileUtils.vala:658
 #, c-format
 msgid "Today at %s"
 msgstr "Haut um %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:665
+#: libcore/FileUtils.vala:666
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Gëschter um %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:673
+#: libcore/FileUtils.vala:674
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A um %s"
 
-#: libcore/FileUtils.vala:898
+#: libcore/FileUtils.vala:899
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d Sekonn"
 msgstr[1] "%'d Sekonnen"
 
-#: libcore/FileUtils.vala:902 libcore/FileUtils.vala:910
+#: libcore/FileUtils.vala:903 libcore/FileUtils.vala:911
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -529,19 +537,19 @@ msgstr[1] "%'d Minutten"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:909 src/Dialogs/PropertiesWindow.vala:1253
+#: libcore/FileUtils.vala:910 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:909
+#: libcore/FileUtils.vala:910
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d Stonn"
 msgstr[1] "%'d Stonnen"
 
-#: libcore/FileUtils.vala:913
+#: libcore/FileUtils.vala:914
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -549,22 +557,22 @@ msgstr[0] "ongeféier %'d Stonn"
 msgstr[1] "ongeféier %'d Stonnen"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:921
+#: libcore/FileUtils.vala:922
 msgid "copy"
 msgstr "kopéieren"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:924
 msgid "link"
 msgstr "link"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:925
+#: libcore/FileUtils.vala:926
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:928
 msgid ")"
 msgstr ")"
 
@@ -2187,14 +2195,6 @@ msgstr ""
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr ""
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr ""
-
 #: src/View/Window.vala:216
 msgid "Menu"
 msgstr ""
@@ -2203,28 +2203,28 @@ msgstr ""
 msgid "Closed Tabs"
 msgstr ""
 
-#: src/View/Window.vala:469 src/View/Widgets/BreadcrumbsEntry.vala:409
+#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:409
 msgid "Open in New Window"
 msgstr ""
 
-#: src/View/Window.vala:470
+#: src/View/Window.vala:475
 msgid "Duplicate Tab"
 msgstr ""
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:474
+#: src/View/Window.vala:479
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:475
+#: src/View/Window.vala:480
 msgid "Close Other Tabs"
 msgstr ""
 
-#: src/View/Window.vala:476
+#: src/View/Window.vala:481
 msgid "Close Tab"
 msgstr ""
 
-#: src/View/Window.vala:761 src/View/Window.vala:771
+#: src/View/Window.vala:766 src/View/Window.vala:776
 msgid "(as Administrator)"
 msgstr ""
 
@@ -2335,7 +2335,7 @@ msgid "Browse the contents of the network"
 msgstr "Browst den Inhalt vum Netzwierk"
 
 #: src/View/Sidebar/SidebarWindow.vala:30
-#: src/View/Widgets/SearchResults.vala:304
+#: src/View/Widgets/SearchResults.vala:300
 msgid "Bookmarks"
 msgstr "Bookmarken"
 
@@ -2425,7 +2425,7 @@ msgid "No operation to redo"
 msgstr "Keng Operatioun fir ze redoen"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:141
-#: src/View/Widgets/LocationBar.vala:193
+#: src/View/Widgets/LocationBar.vala:216
 msgid "Search or Type Path"
 msgstr ""
 
@@ -2437,11 +2437,17 @@ msgstr "An engem neien Tab opmaachen"
 msgid "Open in Other Application…"
 msgstr "An enger anerer Uwendung opmaachen…"
 
-#: src/View/Widgets/LocationBar.vala:189
+#: src/View/Widgets/LocationBar.vala:74
+msgid ""
+"Caution. Administrative rights will be granted after successful "
+"authentication"
+msgstr ""
+
+#: src/View/Widgets/LocationBar.vala:212
 msgid "Reload this folder"
 msgstr "Luet dësen Dossier nei"
 
-#: src/View/Widgets/LocationBar.vala:202
+#: src/View/Widgets/LocationBar.vala:225
 msgid "Searching…"
 msgstr "Sichen…"
 
@@ -2517,15 +2523,15 @@ msgstr "Ausféieren"
 msgid "More Results …"
 msgstr "Méi Resultater …"
 
-#: src/View/Widgets/SearchResults.vala:296
+#: src/View/Widgets/SearchResults.vala:292
 msgid "In This Folder"
 msgstr "An dësem Dossier"
 
-#: src/View/Widgets/SearchResults.vala:300
+#: src/View/Widgets/SearchResults.vala:296
 msgid "Below This Folder"
 msgstr "Ënnert dësem Dossier"
 
-#: src/View/Widgets/SearchResults.vala:309
+#: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Viru kuerzem benotzt"
 

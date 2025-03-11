@@ -17,7 +17,7 @@
     Authors: Alexander Larsson <alexl@redhat.com>
              Cosimo Cecchi <cosimoc@redhat.com>
              Julián Unrrein <junrrein@gmail.com>
-             Jeremy Wootten <jeremy@elementaryos.org>
+             Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 
 /*** One instance of this class is owned by the application and handles UI for file transfers initiated by

@@ -2,7 +2,7 @@
  * SPDX-License-Identifier: GPL-2.0+
  * SPDX-FileCopyrightText: 2020-2023 elementary, Inc. (https://elementary.io)
  *
- * Authors : Jeremy Wootten <jeremy@elementaryos.org>
+ * Authors : Jeremy Wootten <jeremywootten@gmail.com>
  */
 
 
