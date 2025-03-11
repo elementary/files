@@ -13,7 +13,7 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    Authors: Jeremy Wootten <jeremy@elementaryos.org>
+    Authors: Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 
 [DBus (name = "org.freedesktop.FileManager1")]
