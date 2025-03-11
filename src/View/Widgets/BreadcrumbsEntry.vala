@@ -163,7 +163,7 @@ namespace Files.View.Chrome {
                     return; // Nothing typed yet
                 }
 
-                GLib.File? file = FileUtils.get_file_for_path (FileUtils.sanitize_path (path, current_dir_path, false));
+                GLib.File? file = FileUtils.get_file_for_path (FileUtils.sanitize_path (path, current_dir_path, true));
                 if (file == null) {
                     return;
                 }

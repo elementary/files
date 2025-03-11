@@ -48,7 +48,7 @@ namespace Files.FileUtils {
     }
 
     public GLib.File? get_file_for_path (string? path) {
-        string? new_path = sanitize_path (path, null, false);
+        string? new_path = sanitize_path (path, null, true);
 
         if (new_path != null && new_path.length > 0) {
             return GLib.File.new_for_commandline_arg (new_path);

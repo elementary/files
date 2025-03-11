@@ -232,7 +232,7 @@ public class Files.FileChooserPortal : Object {
 
         if ("current_folder" in options) {
             dialog.set_current_folder (
-                FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, false)
+                FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, true)
             );
         }
 
@@ -241,7 +241,7 @@ public class Files.FileChooserPortal : Object {
             supplied_uri = FileUtils.sanitize_path (
                 options["current_file"].get_bytestring (),
                 Environment.get_home_dir (),
-                false
+                true
             );
 
             if (supplied_uri != "") {
@@ -385,7 +385,7 @@ public class Files.FileChooserPortal : Object {
 
         if ("current_folder" in options) {
             dialog.set_current_folder (
-                FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, false)
+                FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, true)
             );
         }
 

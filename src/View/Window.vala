@@ -1329,7 +1329,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void expand_miller_view (Miller miller_view, string tip_uri, string unescaped_root_uri) {
         /* It might be more elegant for Miller.vala to handle this */
-        var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri, null, false);
+        var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri, null, true);
 
         if (unescaped_tip_uri == null) {
             warning ("Invalid tip uri for Miller View");

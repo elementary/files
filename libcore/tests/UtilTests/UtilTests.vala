@@ -37,7 +37,7 @@ void add_file_utils_tests () {
 
     Test.add_func ("/FileUtils/afc_device_root_no_colon", () => {
         string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb";
-        assert (Files.FileUtils.sanitize_path (afc_device, null, false) == afc_device);
+        assert (Files.FileUtils.sanitize_path (afc_device, null, true) == afc_device);
     });
 
     Test.add_func ("/FileUtils/afc_path_strip_colon", () => {
@@ -50,7 +50,7 @@ void add_file_utils_tests () {
     Test.add_func ("/FileUtils/afc_device_do_not_strip_colon", () => {
         /* Do not remove colon-nonnumber from afc device name */
         string afc_device = "afc://028fd2b08554adf7c3aaf66e6ecb9af7d40daeeb:b";
-        assert (Files.FileUtils.sanitize_path (afc_device, null, false) == afc_device);
+        assert (Files.FileUtils.sanitize_path (afc_device, null, true) == afc_device);
     });
 
     Test.add_func ("/FileUtils/sanitize_null_rel_path", () => {
@@ -106,12 +106,12 @@ void add_file_utils_tests () {
 
     Test.add_func ("/FileUtils/sanitize_remove_excess_slash1", () => {
         string cp = "network:///";
-        assert (Files.FileUtils.sanitize_path ("", cp, false) == "network://");
+        assert (Files.FileUtils.sanitize_path ("", cp, true) == "network://");
     });
 
     Test.add_func ("/FileUtils/sanitize_remove_excess_slash2", () => {
         string p = "home//Documents";
-        assert (Files.FileUtils.sanitize_path (p, null, false) == "home/Documents");
+        assert (Files.FileUtils.sanitize_path (p, null, true) == "home/Documents");
     });
 
     Test.add_func ("/FileUtils/sanitize_remove_excess_slash3", () => {
