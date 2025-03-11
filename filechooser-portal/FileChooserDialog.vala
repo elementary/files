@@ -86,13 +86,13 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         location_bar = new View.Chrome.BasicLocationBar ();
 
         var previous_button = new Gtk.Button.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR) {
-            tooltip_markup = "Previous",
+            tooltip_markup = _("Previous"),
             sensitive = false
         };
         previous_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         var next_button = new Gtk.Button.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR) {
-            tooltip_markup = "Next",
+            tooltip_markup = _("Next"),
             sensitive = false
         };
         next_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
