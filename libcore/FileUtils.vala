@@ -24,9 +24,14 @@ namespace Files.FileUtils {
     public GLib.List<GLib.File> files_from_uris (string uris) {
         var result = new GLib.List<GLib.File> ();
         var uri_list = GLib.Uri.list_extract_uris (uris);
+        string unquoted_uri;
         foreach (unowned string uri in uri_list) {
-            var unquoted_uri = Shell.unquote (uri); // Extracted uri may be quoted
-            result.append (GLib.File.new_for_uri (unquoted_uri));
+            try {
+                unquoted_uri = Shell.unquote (uri); // Extracted uri may be quoted
+                result.append (GLib.File.new_for_uri (unquoted_uri));
+            } catch (Error e) {
+                warning ("Error when unquoting %s. %s", uri, e.message);
+            }
         }
 
         return result;
