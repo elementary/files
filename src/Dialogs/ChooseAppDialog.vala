@@ -16,7 +16,7 @@
 * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1335 USA.
 *
-* Authored by: Jeremy Wootten <jeremy@elementaryos.org>
+* Authored by: Jeremy Wootten <jeremywootten@gmail.com>
 */
 
 class PF.ChooseAppDialog : Object {

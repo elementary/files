@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-10 18:21+0000\n"
-"PO-Revision-Date: 2024-05-21 23:13+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
+"PO-Revision-Date: 2024-10-22 02:15+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/files/extra/hu/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
@@ -71,58 +71,68 @@ msgstr "Több metaadat megjelenítése a Listanézetben"
 msgid "Browse complex trees faster with Column view"
 msgstr "Bonyolult szerkezetek böngészése az Oszlopnézettel"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:85
-#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:120
-#: data/files.metainfo.xml.in.in:140
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:82
+#: data/files.metainfo.xml.in.in:104 data/files.metainfo.xml.in.in:122
+#: data/files.metainfo.xml.in.in:145 data/files.metainfo.xml.in.in:157
+#: data/files.metainfo.xml.in.in:177
 msgid "Minor updates:"
 msgstr "Kisebb frissítések:"
 
-#: data/files.metainfo.xml.in.in:69
-msgid "Restoring tabs from last time is now optional"
-msgstr "A legutóbbi megnyitott lapok visszaállítása opcionális"
-
-#: data/files.metainfo.xml.in.in:70
-msgid "Drag and select can no longer be done with secondary pointer button"
-msgstr "Nyomva tartás és kiválasztás már nem működik a másodlagos egérgombbal"
-
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:93
-#: data/files.metainfo.xml.in.in:110 data/files.metainfo.xml.in.in:122
-#: data/files.metainfo.xml.in.in:142
+#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:86
+#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:130
+#: data/files.metainfo.xml.in.in:147 data/files.metainfo.xml.in.in:159
+#: data/files.metainfo.xml.in.in:179
 msgid "Updated translations"
 msgstr "Frissített fordítások"
 
-#: data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:84
+msgid "Redesign file permissions view"
+msgstr "Fájlengedély-nézet újratervezve"
+
+#: data/files.metainfo.xml.in.in:85
+msgid "Focus sidebar by pressing Ctrl + Left"
+msgstr "Az oldalsó sáv fókuszálása a Ctrl + Bal billentyűkkel"
+
+#: data/files.metainfo.xml.in.in:106
+msgid "Restoring tabs from last time is now optional"
+msgstr "A legutóbbi megnyitott lapok visszaállítása opcionális"
+
+#: data/files.metainfo.xml.in.in:107
+msgid "Drag and select can no longer be done with secondary pointer button"
+msgstr "Nyomva tartás és kiválasztás már nem működik a másodlagos egérgombbal"
+
+#: data/files.metainfo.xml.in.in:124
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr "Könyvjelzők az oldalsávról való kihúzásának támogatása megszüntetve"
 
-#: data/files.metainfo.xml.in.in:88
+#: data/files.metainfo.xml.in.in:125
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr "Mappa átnevezése utáni váratlan görgetés javítása"
 
-#: data/files.metainfo.xml.in.in:89
+#: data/files.metainfo.xml.in.in:126
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr "Rácsnézetbe váltáskor ritkán előforduló összeomlás javítva"
 
-#: data/files.metainfo.xml.in.in:90
+#: data/files.metainfo.xml.in.in:127
 msgid "Ensure the selection persists after refreshing the view"
 msgstr "A nézet újratöltése után is megmarad a kijelölés"
 
-#: data/files.metainfo.xml.in.in:91
+#: data/files.metainfo.xml.in.in:128
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "A Fájlkezelő megnyitása javítva akkor, ha megpróbál visszaállítani egy "
 "lecsatlakoztatott távoli tárhelyet"
 
-#: data/files.metainfo.xml.in.in:92
+#: data/files.metainfo.xml.in.in:129
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr "Ne mutassa tovább a nézetet, ha egy tárhely leválasztásra kerül"
 
-#: data/files.metainfo.xml.in.in:136
+#: data/files.metainfo.xml.in.in:173
 msgid "Improvements:"
 msgstr "Fejlesztések:"
 
-#: data/files.metainfo.xml.in.in:138
+#: data/files.metainfo.xml.in.in:175
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"

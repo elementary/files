@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-10 18:21+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2018-10-21 09:01+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/extra/"
@@ -69,58 +69,68 @@ msgstr ""
 msgid "Browse complex trees faster with Column view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:85
-#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:120
-#: data/files.metainfo.xml.in.in:140
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:82
+#: data/files.metainfo.xml.in.in:104 data/files.metainfo.xml.in.in:122
+#: data/files.metainfo.xml.in.in:145 data/files.metainfo.xml.in.in:157
+#: data/files.metainfo.xml.in.in:177
 #, fuzzy
 msgid "Minor updates:"
 msgstr "Mindre buggfixar"
 
-#: data/files.metainfo.xml.in.in:69
-msgid "Restoring tabs from last time is now optional"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:70
-msgid "Drag and select can no longer be done with secondary pointer button"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:93
-#: data/files.metainfo.xml.in.in:110 data/files.metainfo.xml.in.in:122
-#: data/files.metainfo.xml.in.in:142
+#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:86
+#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:130
+#: data/files.metainfo.xml.in.in:147 data/files.metainfo.xml.in.in:159
+#: data/files.metainfo.xml.in.in:179
 #, fuzzy
 msgid "Updated translations"
 msgstr "Nya översättningar"
 
-#: data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:84
+msgid "Redesign file permissions view"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:85
+msgid "Focus sidebar by pressing Ctrl + Left"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:106
+msgid "Restoring tabs from last time is now optional"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:107
+msgid "Drag and select can no longer be done with secondary pointer button"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:124
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:88
+#: data/files.metainfo.xml.in.in:125
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:89
+#: data/files.metainfo.xml.in.in:126
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:90
+#: data/files.metainfo.xml.in.in:127
 msgid "Ensure the selection persists after refreshing the view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:91
+#: data/files.metainfo.xml.in.in:128
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:92
+#: data/files.metainfo.xml.in.in:129
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:136
+#: data/files.metainfo.xml.in.in:173
 msgid "Improvements:"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:138
+#: data/files.metainfo.xml.in.in:175
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"

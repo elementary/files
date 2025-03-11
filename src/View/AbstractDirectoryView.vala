@@ -16,7 +16,7 @@
 * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301 USA
 *
-* Authored by: Jeremy Wootten <jeremy@elementaryos.org>
+* Authored by: Jeremy Wootten <jeremywootten@gmail.com>
 */
 
 /* Implementations of AbstractDirectoryView are
@@ -521,9 +521,9 @@ namespace Files {
             Gtk.TreeIter? iter;
             foreach (Files.File f in files_to_select) {
                 /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
-                if (model.get_first_iter_for_file (f, out iter)) {
+                var path = model.get_path_for_first_file (f);
+                if (path != null) {
                     count++;
-                    var path = model.get_path (iter);
                     /* Cursor follows if matches focus location*/
                     select_path (path, focus_file != null && focus_file.equal (f.location));
                 }
@@ -631,33 +631,17 @@ namespace Files {
         }
 
         public void select_gof_file (Files.File file) {
-            Gtk.TreeIter? iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
-            }
-
-            var path = model.get_path (iter);
+            var path = model.get_path_for_first_file (file);
             set_cursor (path, false, true, false);
         }
 
         protected void select_and_scroll_to_gof_file (Files.File file) {
-            Gtk.TreeIter iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
-            }
-
-            var path = model.get_path (iter);
+            var path = model.get_path_for_first_file (file);
             set_cursor (path, false, true, true);
         }
 
         protected void add_gof_file_to_selection (Files.File file) {
-            Gtk.TreeIter iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
-            }
-
-            var path = model.get_path (iter);
-            select_path (path); /* Cursor does not follow */
+            select_path (model.get_path_for_first_file (file)); /* Cursor does not follow */
         }
 
     /** Directory signal handlers. */
@@ -893,9 +877,7 @@ namespace Files {
                 });
             }
 
-            Gtk.TreeIter? iter = null;
-            model.get_first_iter_for_file (file_list.first ().data, out iter);
-            deleted_path = model.get_path (iter);
+            deleted_path = model.get_path_for_first_file (file_list.first ().data);
 
             if (locations != null) {
                 locations.reverse ();
@@ -3212,10 +3194,13 @@ namespace Files {
         }
 
         protected virtual void on_scroll_event (double dx, double dy) {
+            if (is_frozen) {
+                return;
+            }
+
             Gdk.ModifierType state;
             Gtk.get_current_event_state (out state);
-
-            if (!is_frozen && (state & Gdk.ModifierType.CONTROL_MASK) > 0) {
+            if ((state & Gdk.ModifierType.CONTROL_MASK) > 0) {
                 /* try to emulate a normal scrolling event by summing deltas.
                  * step size of 0.5 chosen to match sensitivity */
                 total_delta_y += dy;
@@ -3227,9 +3212,10 @@ namespace Files {
                     total_delta_y = 0;
                     zoom_in ();
                 }
+            } else {
+                // In case "key-released" signal was missed
+                scroll_controller.flags = NONE;
             }
-
-
         }
 
     /** name renderer signals */
@@ -3629,8 +3615,9 @@ namespace Files {
                 warning ("Trying to rename when frozen");
                 return;
             }
-            Gtk.TreeIter? iter = null;
-            if (!model.get_first_iter_for_file (file, out iter)) {
+
+            var path = model.get_path_for_first_file (file);
+            if (path == null) {
                 critical ("Failed to find rename file in model");
                 return;
             }
@@ -3639,8 +3626,6 @@ namespace Files {
             renaming = true;
             update_menu_actions ();
             is_frozen = true;
-            Gtk.TreePath path = model.get_path (iter);
-
             uint count = 0;
             bool ok_next_time = false;
             Gtk.TreePath? start_path = null;

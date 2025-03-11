@@ -146,7 +146,7 @@ namespace Files.View.Chrome {
     /****************************/
         public void completion_needed () {
             string? path = this.text;
-            if (path == null || path.length < 1) {
+            if (path == null || path.length < 1 || path.has_prefix ("admin:/")) {
                 return;
             }
 

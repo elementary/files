@@ -473,7 +473,7 @@ public class Files.FileChooserPortal : Object {
                 transient_for = parent
             };
 
-        var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
+        var replace_button = replace_dialog.add_button (_("Replace"), Gtk.ResponseType.YES);
         replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
         return replace_dialog;

@@ -320,7 +320,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         location_bar.path_change_request.connect ((path, flag) => {
             current_container.is_frozen = false;
-            uri_path_change_request (path, flag);
+            // Put in an Idle so that any resulting authentication dialog
+            // is able to grab focus *after* the view does
+            Idle.add (() => {
+                uri_path_change_request (path, flag);
+                return Source.REMOVE;
+            });
         });
 
         location_bar.focus_file_request.connect ((loc) => {

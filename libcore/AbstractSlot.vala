@@ -14,7 +14,7 @@
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
     Authors : Lucas Baudin <xapantu@gmail.com>
-              Jeremy Wootten <jeremy@elementaryos.org>
+              Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 
 namespace Files {
