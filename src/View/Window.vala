@@ -1482,7 +1482,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             current_uri = current_container.location.get_uri ();
         }
 
-        string path = FileUtils.sanitize_path (uri, current_uri, false);
+        string path = FileUtils.sanitize_path (uri, current_uri, true);
         if (path.length > 0) {
             return GLib.File.new_for_uri (FileUtils.escape_uri (path));
         } else {
