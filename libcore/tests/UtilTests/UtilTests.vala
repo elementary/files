@@ -111,7 +111,7 @@ void add_file_utils_tests () {
 
     Test.add_func ("/FileUtils/sanitize_remove_excess_slash2", () => {
         string p = "home//Documents";
-        assert (Files.FileUtils.sanitize_path (p, null, true) == "home/Documents");
+        assert (Files.FileUtils.sanitize_path (p, null, false) == "home/Documents");
     });
 
     Test.add_func ("/FileUtils/sanitize_remove_excess_slash3", () => {
