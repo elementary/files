@@ -1329,7 +1329,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void expand_miller_view (Miller miller_view, string tip_uri, string unescaped_root_uri) {
         /* It might be more elegant for Miller.vala to handle this */
-        var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri);
+        var unescaped_tip_uri = FileUtils.sanitize_path (tip_uri, null, true);
 
         if (unescaped_tip_uri == null) {
             warning ("Invalid tip uri for Miller View");
@@ -1482,7 +1482,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             current_uri = current_container.location.get_uri ();
         }
 
-        string path = FileUtils.sanitize_path (uri, current_uri);
+        string path = FileUtils.sanitize_path (uri, current_uri, true);
         if (path.length > 0) {
             return GLib.File.new_for_uri (FileUtils.escape_uri (path));
         } else {
