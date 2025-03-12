@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2016-06-30 19:08+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -18,6 +18,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:24+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Aurrekoa"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr ""
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -80,6 +88,10 @@ msgstr "Ordeztu \"%s\" fitxategia?"
 #, fuzzy
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Hau ordeztean bere edukia gainidatziko da."
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Ordeztu"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -393,10 +405,6 @@ msgstr ""
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr ""
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Ordeztu"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2278,14 +2286,6 @@ msgstr ""
 
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
-msgstr ""
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Aurrekoa"
-
-#: src/View/Window.vala:201
-msgid "Next"
 msgstr ""
 
 #: src/View/Window.vala:216

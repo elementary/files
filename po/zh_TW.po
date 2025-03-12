@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2024-09-19 08:57+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
@@ -19,6 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "上一個"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "下一個"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -77,6 +85,10 @@ msgstr "要取代「%s」嗎？"
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "取代此檔案會覆寫它目前的內容"
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "取代"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -369,10 +381,6 @@ msgstr "保留最新者"
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "若原始檔案更近期有修改過則略過"
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "取代"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2146,14 +2154,6 @@ msgstr "找不到檔案"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "選取的檔案不再存在。"
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "上一個"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "下一個"
 
 #: src/View/Window.vala:216
 msgid "Menu"

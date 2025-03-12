@@ -231,13 +231,17 @@ public class Files.FileChooserPortal : Object {
         }
 
         if ("current_folder" in options) {
-            dialog.set_current_folder (FileUtils.sanitize_path (options["current_folder"].get_bytestring ()));
+            dialog.set_current_folder (
+                FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, true)
+            );
         }
 
         var supplied_uri = "";
         if ("current_file" in options) {
             supplied_uri = FileUtils.sanitize_path (
-                options["current_file"].get_bytestring (), Environment.get_home_dir ()
+                options["current_file"].get_bytestring (),
+                Environment.get_home_dir (),
+                true
             );
 
             if (supplied_uri != "") {
@@ -380,7 +384,9 @@ public class Files.FileChooserPortal : Object {
         }
 
         if ("current_folder" in options) {
-            dialog.set_current_folder (FileUtils.sanitize_path (options["current_folder"].get_bytestring ()));
+            dialog.set_current_folder (
+                FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, true)
+            );
         }
 
         if ("choices" in options) {
@@ -467,7 +473,7 @@ public class Files.FileChooserPortal : Object {
                 transient_for = parent
             };
 
-        var replace_button = replace_dialog.add_button ("Replace", Gtk.ResponseType.YES);
+        var replace_button = replace_dialog.add_button (_("Replace"), Gtk.ResponseType.YES);
         replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
         return replace_dialog;

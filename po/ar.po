@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2022-11-09 14:29+0000\n"
 "Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -19,6 +19,14 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Weblate 4.14.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:24+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "السابق"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "التالي"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -81,6 +89,10 @@ msgstr "أأستبدل الملف \"%s\"؟"
 #, fuzzy
 msgid "Replacing this file will overwrite its current contents"
 msgstr "استبداله سيستبدل محتواه."
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "إستبدل"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -389,10 +401,6 @@ msgstr "ابق الاجدد"
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "تخطى اذا الاصلي قد تم التعديل عليه كثيرا مؤخرا"
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "إستبدل"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2364,14 +2372,6 @@ msgstr "لم يتم ايجاد الملف"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "الملف المختار لم يعد موجودا."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "السابق"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "التالي"
 
 #: src/View/Window.vala:216
 msgid "Menu"

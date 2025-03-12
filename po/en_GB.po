@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2025-02-16 03:16+0000\n"
 "Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
@@ -19,6 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.9.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Previous"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Next"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -78,6 +86,10 @@ msgstr "Replace “%s”?"
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Replacing this file will overwrite its current contents"
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Replace"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -371,10 +383,6 @@ msgstr "Keep Newest"
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "Skip if original was modified more recently"
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Replace"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2213,14 +2221,6 @@ msgstr "File not Found"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "The file selected no longer exists."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Previous"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Next"
 
 #: src/View/Window.vala:216
 msgid "Menu"

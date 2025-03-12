@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2021-02-28 00:55+0000\n"
 "Last-Translator: david <dcardelleg@gmail.com>\n"
 "Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/"
@@ -19,6 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Anterior"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Seguinte"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -81,6 +89,10 @@ msgstr "Substituír por «%s»?"
 #, fuzzy
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Ao substituílo sobrescribirase o seu contido."
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Substituír"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -382,10 +394,6 @@ msgstr "Manter máis recente"
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "Saltar se o orixinal se modificou máis recentemente"
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Substituír"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2275,14 +2283,6 @@ msgstr "Non se atopou o ficheiro"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "O ficheiro seleccionado xa non existe."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Anterior"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Seguinte"
 
 #: src/View/Window.vala:216
 msgid "Menu"

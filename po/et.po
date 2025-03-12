@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2016-08-03 23:51+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -18,6 +18,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Eelmine"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Järgmine"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -80,6 +88,10 @@ msgstr "Kas asendada fail \"%s\"?"
 #, fuzzy
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Asendamine kirjutab selle sisu üle."
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Asenda"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -393,10 +405,6 @@ msgstr ""
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr ""
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Asenda"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2300,14 +2308,6 @@ msgstr "Faili ei leitud"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "Valitud faili ei eksisteeri enam."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Eelmine"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Järgmine"
 
 #: src/View/Window.vala:216
 msgid "Menu"

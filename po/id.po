@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2023-05-21 06:06+0000\n"
 "Last-Translator: Faisal Rachmadin <frachmadin@users.noreply.l10n.elementary."
 "io>\n"
@@ -19,6 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Sebelumnya"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Selanjutnya"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -77,6 +85,10 @@ msgstr "Ganti \"%s\"?"
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Mengganti file ini akan menimpa isinya saat ini"
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Ganti"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -369,10 +381,6 @@ msgstr "Tetap Terbaru"
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "Lewati jika berkas asli dimodifikasi lebih terkini"
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Ganti"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2199,14 +2207,6 @@ msgstr "Berkas tidak ditemukan"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "Berkas yang dipilih sudah tidak ada lagi."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Sebelumnya"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Selanjutnya"
 
 #: src/View/Window.vala:216
 msgid "Menu"
