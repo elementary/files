@@ -1,10 +1,18 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr ""
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr ""
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -62,6 +70,10 @@ msgstr ""
 
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
+msgstr ""
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:32
@@ -355,10 +367,6 @@ msgstr ""
 
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
-msgstr ""
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
 msgstr ""
 
 #: libcore/FileConflictDialog.vala:293
@@ -2149,14 +2157,6 @@ msgstr ""
 
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
-msgstr ""
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr ""
-
-#: src/View/Window.vala:201
-msgid "Next"
 msgstr ""
 
 #: src/View/Window.vala:216

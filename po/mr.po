@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2021-06-19 20:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -14,6 +14,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "मागील"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "पुढील"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -76,6 +84,10 @@ msgstr "\"%s\" फाइल पुनर्स्थित करायची?"
 #, fuzzy
 msgid "Replacing this file will overwrite its current contents"
 msgstr "त्यास पुनर्स्थित केल्याने त्याची सामग्री अधिलिखित होईल."
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "बदला"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -377,10 +389,6 @@ msgstr "नवीनतम ठेवा"
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "मूळ फाईल अलीकडे सुधारित केली असल्यास वगळा"
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "बदला"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2248,14 +2256,6 @@ msgstr "फाइल सापडली नाही"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "निवडलेली फाइल यापुढे विद्यमान नाही."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "मागील"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "पुढील"
 
 #: src/View/Window.vala:216
 msgid "Menu"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -12,6 +12,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.18\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Anterior"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Înainte"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -74,6 +82,10 @@ msgstr "Înlocuiți fișierul \"%s \"?"
 #, fuzzy
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Înlocuirea acestuia va schimba conținutul."
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Înlocuește"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -386,10 +398,6 @@ msgstr ""
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr ""
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Înlocuește"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2302,14 +2310,6 @@ msgstr "Fișierul nu a fost găsit"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "Fișierul selectat nu mai există."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Anterior"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Înainte"
 
 #: src/View/Window.vala:216
 msgid "Menu"

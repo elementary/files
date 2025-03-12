@@ -24,8 +24,14 @@ namespace Files.FileUtils {
     public GLib.List<GLib.File> files_from_uris (string uris) {
         var result = new GLib.List<GLib.File> ();
         var uri_list = GLib.Uri.list_extract_uris (uris);
+        string unquoted_uri;
         foreach (unowned string uri in uri_list) {
-            result.append (GLib.File.new_for_uri (uri));
+            try {
+                unquoted_uri = Shell.unquote (uri); // Extracted uri may be quoted
+                result.append (GLib.File.new_for_uri (unquoted_uri));
+            } catch (Error e) {
+                warning ("Error when unquoting %s. %s", uri, e.message);
+            }
         }
 
         return result;
@@ -47,7 +53,7 @@ namespace Files.FileUtils {
     }
 
     public GLib.File? get_file_for_path (string? path) {
-        string? new_path = sanitize_path (path);
+        string? new_path = sanitize_path (path, null, true);
 
         if (new_path != null && new_path.length > 0) {
             return GLib.File.new_for_commandline_arg (new_path);
@@ -280,8 +286,8 @@ namespace Files.FileUtils {
       **/
 
     public string sanitize_path (string? input_uri,
-                                 string? input_current_uri = null,
-                                 bool include_file_protocol = true) {
+                                 string? input_current_uri,
+                                 bool include_file_protocol) {
         string unsanitized_uri;
         string unsanitized_current_uri;
         string path = "";

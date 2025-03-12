@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2021-03-21 17:09+0000\n"
 "Last-Translator: Shukrullo Turgunov <shookrullo@gmail.com>\n"
 "Language-Team: Uzbek <https://l10n.elementary.io/projects/files/files/uz/>\n"
@@ -13,6 +13,14 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Orqaga"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Oldinga"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -74,6 +82,10 @@ msgstr "\"%s\" fayl almashtirilsinmi?"
 #, fuzzy
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Almashtirilayotganda faylning tarkibi qayta yoziladi."
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "ALmashtirish"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -375,10 +387,6 @@ msgstr "Yangisini qoldirish"
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "Agar asli yaqin orada o'zgartirilgan bo'lsa, tashlab ketilsin"
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "ALmashtirish"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2191,14 +2199,6 @@ msgstr "Fayl topilmadi"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "Tanlangan fayl endi mavjud emas."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Orqaga"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Oldinga"
 
 #: src/View/Window.vala:216
 msgid "Menu"

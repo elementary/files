@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2023-08-30 12:08+0000\n"
 "Last-Translator: Jan <sebek_jan@yahoo.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/files/files/cs/>\n"
@@ -18,6 +18,14 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Předchozí"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Následující"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -76,6 +84,10 @@ msgstr "Nahradit „%s“?"
 #: filechooser-portal/Main.vala:457
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Nahrazením tohoto souboru přepíšete jeho aktuální obsah"
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Nahradit"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -370,10 +382,6 @@ msgstr "Ponechat novější"
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "Přeskočit pokud byl původní soubor nedávno změněn"
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Nahradit"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2233,14 +2241,6 @@ msgstr "Soubor nenalezen"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "Vybraný soubor už neexistuje."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Předchozí"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Následující"
 
 #: src/View/Window.vala:216
 msgid "Menu"

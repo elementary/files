@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-04 21:07+0000\n"
+"POT-Creation-Date: 2025-03-10 20:34+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
@@ -20,6 +20,14 @@ msgstr ""
 "n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
 "X-Generator: Weblate 3.7.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
+
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+msgid "Previous"
+msgstr "Ankstesnis"
+
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+msgid "Next"
+msgstr "Kitas"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -82,6 +90,10 @@ msgstr "Pakeisti failą „%s“?"
 #, fuzzy
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Pakeitus failą, bus perrašytas jo turinys."
+
+#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+msgid "Replace"
+msgstr "Pakeisti"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
@@ -387,10 +399,6 @@ msgstr "Palikti naujausią"
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
 msgstr "Praleisti, jei pradinis failas buvo modifikuotas vėlesniu laiku"
-
-#: libcore/FileConflictDialog.vala:187
-msgid "Replace"
-msgstr "Pakeisti"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -2323,14 +2331,6 @@ msgstr "Failas nerastas"
 #: src/View/ViewContainer.vala:429
 msgid "The file selected no longer exists."
 msgstr "Pasirinkto failo daugiau nebėra."
-
-#: src/View/Window.vala:196
-msgid "Previous"
-msgstr "Ankstesnis"
-
-#: src/View/Window.vala:201
-msgid "Next"
-msgstr "Kitas"
 
 #: src/View/Window.vala:216
 msgid "Menu"
