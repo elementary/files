@@ -77,7 +77,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     protected Gtk.Revealer drop_revealer;
 
     private Gtk.Image icon;
-    private Files.File target_file;
+    protected Files.File target_file;
     private List<GLib.File> drop_file_list = null;
     private Gdk.DragAction? current_suggested_action = Gdk.DragAction.DEFAULT;
     private Gtk.EventControllerKey key_controller;
@@ -515,7 +515,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                               y > row_height - 1;
 
                     // When dropping onto a row, determine what actions are possible
-                    if (!reveal && drop_file_list != null) {
+                    if (target_file != null && !reveal && drop_file_list != null) {
                         Files.DndHandler.file_accepts_drop (
                             target_file,
                             drop_file_list,
