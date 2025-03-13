@@ -971,9 +971,9 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         permission_box.get_style_context ().add_class ("rich-list");
         permission_box.get_style_context ().add_class ("boxed-list");
         permission_box.get_style_context ().add_class ("separators");
-        permission_box.add (perm_button_user);
-        permission_box.add (perm_button_group);
-        permission_box.add (perm_button_other);
+        permission_box.insert (perm_button_user, -1);
+        permission_box.insert (perm_button_group, -1);
+        permission_box.insert (perm_button_other, -1);
 
         var perm_grid = new Gtk.Grid () {
             column_spacing = 6,
