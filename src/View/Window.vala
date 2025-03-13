@@ -93,7 +93,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private Chrome.LocationBar? location_bar;
     private Gtk.MenuButton tab_history_button;
 
-    private bool locked_focus { get; set; default = false; }
     private bool tabs_restored = false;
     private int restoring_tabs = 0;
     private bool doing_undo_redo = false;
@@ -332,16 +331,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             current_container.focus_location_if_in_current_directory (loc, true);
         });
 
-        headerbar.focus_in_event.connect ((event) => {
-            locked_focus = true;
-            return focus_in_event (event);
-        });
-
-        headerbar.focus_out_event.connect ((event) => {
-            locked_focus = false;
-            return focus_out_event (event);
-        });
-
         undo_manager.request_menu_update.connect (update_undo_actions);
 
         key_controller = new Gtk.EventControllerKey (this) {
@@ -402,7 +391,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
 
         sidebar.request_focus.connect (() => {
-            return !current_container.locked_focus && !locked_focus;
+            return !current_container.locked_focus;
         });
 
         sidebar.sync_needed.connect (() => {
