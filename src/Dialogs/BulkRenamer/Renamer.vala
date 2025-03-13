@@ -66,7 +66,9 @@ public class Files.Renamer : Object {
     }
 
     public void rename_files () {
-        listbox.get_children ().@foreach ((child) => {
+        int index = 0;
+        var child = listbox.get_row_at_index (index);
+        while (child != null) {
             var row = (RenamerListRow)child;
             unowned string output_name = row.new_name;
             var file = row.file;
@@ -84,7 +86,9 @@ public class Files.Renamer : Object {
                     }
                 );
             }
-        });
+
+            child = listbox.get_row_at_index (++index);
+        }
     }
 
     private string strip_extension (string filename, out string extension) {
