@@ -155,7 +155,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         };
 
         icon_label_grid.attach (icon, 0, 0, 1, 2);
-        icon_label_grid.add (label_stack);
+        icon_label_grid.attach (label_stack, 1, 0);
 
         content_grid = new Gtk.Grid ();
         content_grid.attach (icon_label_grid, 0, 0);
