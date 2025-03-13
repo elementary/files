@@ -389,11 +389,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             view_container.window = this;
         });
 
-
-        sidebar.request_focus.connect (() => {
-            return !current_container.locked_focus;
-        });
-
         sidebar.sync_needed.connect (() => {
             loading_uri (current_container.uri);
         });
