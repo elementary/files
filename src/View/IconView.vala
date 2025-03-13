@@ -158,7 +158,7 @@ public class Files.IconView : Files.AbstractDirectoryView {
         path = null;
 
         int x = 0, y = 0;
-        tree.convert_widget_to_bin_window_coords ((int) wx, (int) wy, out x, out y);
+        // tree.convert_widget_to_bin_window_coords ((int) wx, (int) wy, out x, out y);
         tree.get_item_at_pos (x, y, out path, out cell_renderer);
         zone = (path != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
 
@@ -309,27 +309,27 @@ public class Files.IconView : Files.AbstractDirectoryView {
      * Views are not displayed until fully loaded */
     protected override void freeze_tree () {
         tree_frozen = true;
-        tree.freeze_child_notify ();
+        // tree.freeze_child_notify ();
         tree.set_model (null);
     }
 
     protected override void thaw_tree () {
         if (tree_frozen) {
             tree.set_model (model);
-            tree.thaw_child_notify ();
+            // tree.thaw_child_notify ();
             tree_frozen = false;
         }
     }
 
     // For scrolling
     protected override void freeze_child_notify () {
-        tree.freeze_child_notify ();
+        // tree.freeze_child_notify ();
     }
 
     protected override void thaw_child_notify () {
         //Do not prematurely thaw tree while loading
         if (!tree_frozen) {
-            tree.thaw_child_notify ();
+            // tree.thaw_child_notify ();
         }
     }
 

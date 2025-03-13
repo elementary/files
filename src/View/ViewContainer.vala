@@ -105,8 +105,8 @@ namespace Files.View {
                 content_item = value;
 
                 if (content_item != null) {
-                    add (content_item);
-                    content_item.show_all ();
+                    // add (content_item);
+                    // content_item.show_all ();
                 }
             }
             get {
@@ -135,7 +135,7 @@ namespace Files.View {
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
-        private Gtk.GestureMultiPress button_controller;
+        // private Gtk.GestureMultiPress button_controller;
 
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
@@ -150,12 +150,12 @@ namespace Files.View {
             });
 
             // Capture special mouse buttons before propagating to DirectorVview and Gtk.TreeView
-            button_controller = new Gtk.GestureMultiPress (this) {
-                button = 0,
-                propagation_phase = CAPTURE
-            };
+            // button_controller = new Gtk.GestureMultiPress (this) {
+            //     button = 0,
+            //     propagation_phase = CAPTURE
+            // };
 
-            button_controller.pressed.connect (on_button_pressed_event);
+            // button_controller.pressed.connect (on_button_pressed_event);
         }
 
         ~ViewContainer () {
@@ -247,7 +247,7 @@ namespace Files.View {
             view.selection_changed.connect (on_slot_selection_changed);
             view.directory_loaded.connect (on_slot_directory_loaded);
 
-            show_all ();
+            // show_all ();
 
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
              * The slot becomes active when the tab becomes current */
@@ -328,7 +328,7 @@ namespace Files.View {
 
         private void directory_is_loading (GLib.File loc) {
             overlay_statusbar.cancel ();
-            overlay_statusbar.halign = Gtk.Align.END;
+            // overlay_statusbar.halign = Gtk.Align.END;
             refresh_slot_info (loc);
 
             can_show_folder = false;
@@ -359,7 +359,7 @@ namespace Files.View {
             }
 
             this.tab_name = tab_name;
-            overlay_statusbar.hide ();
+            // overlay_statusbar.hide ();
         }
 
 
@@ -599,30 +599,30 @@ namespace Files.View {
             overlay_statusbar.selection_changed (files);
         }
 
-        private void on_button_pressed_event (int n_press, double x, double y) {
-            Gdk.ModifierType state;
-            var button = button_controller.get_current_button ();
-            Gtk.get_current_event_state (out state);
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            switch (button) {
-                /* Extra mouse button actions */
-                case 6:
-                case 8:
-                    if (mods == 0) {
-                        go_back ();
-                    }
-                    break;
+    //     private void on_button_pressed_event (int n_press, double x, double y) {
+    //         Gdk.ModifierType state;
+    //         var button = button_controller.get_current_button ();
+    //         Gtk.get_current_event_state (out state);
+    //         var mods = state & Gtk.accelerator_get_default_mod_mask ();
+    //         switch (button) {
+    //             /* Extra mouse button actions */
+    //             case 6:
+    //             case 8:
+    //                 if (mods == 0) {
+    //                     go_back ();
+    //                 }
+    //                 break;
 
-                case 7:
-                case 9:
-                    if (mods == 0) {
-                        go_forward ();
-                    }
-                    break;
+    //             case 7:
+    //             case 9:
+    //                 if (mods == 0) {
+    //                     go_forward ();
+    //                 }
+    //                 break;
 
-                default:
-                    break;
-            }
-        }
+    //             default:
+    //                 break;
+    //         }
+    //     }
     }
 }
