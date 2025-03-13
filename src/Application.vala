@@ -206,7 +206,7 @@ public class Files.Application : Gtk.Application {
             GLib.File[] files = new GLib.File[GLib.strv_length (uris)];
 
             for (var i = 0; uris[i] != null; ++i) {
-                var uri = FileUtils.sanitize_path (uris[i], working_directory);
+                var uri = FileUtils.sanitize_path (uris[i], working_directory, true);
                 files[i] = GLib.File.new_for_uri (FileUtils.escape_uri (uri));
             }
 

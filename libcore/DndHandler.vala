@@ -303,7 +303,6 @@ namespace Files {
         //     selection_data.@set (selection_data.get_target (),
         //                          8,
         //                          sb.data);
-
         // }
 
         // public static void set_selection_text_from_file_list (Gtk.SelectionData selection_data,
@@ -318,19 +317,17 @@ namespace Files {
 
         private static void set_stringbuilder_from_file_list (GLib.StringBuilder sb,
                                                               GLib.List<Files.File> file_list,
-                                                              string prefix,
-                                                              bool sanitize_path = false) {
+                                                              bool keep_protocol) {
 
             if (file_list != null && file_list.data != null && file_list.data is Files.File) {
                 bool in_recent = file_list.data.is_recent_uri_scheme ();
 
                 file_list.@foreach ((file) => {
                     var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
-                    if (sanitize_path) {
-                        target = FileUtils.sanitize_path (target, null, false);
-                    }
+                    target = FileUtils.sanitize_path (target, null, keep_protocol);
 
-                    sb.append (target);
+
+                    sb.append (Shell.quote (target)); //Alway quote urls
                     sb.append ("\r\n"); /* Drop onto Filezilla does not work without the "\r" */
                 });
             } else {

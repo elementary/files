@@ -39,7 +39,7 @@ namespace Files {
             INVALID
         }
 
-        const int MAX_TEMPLATES = 32;
+        const int MAX_TEMPLATES = 2048;
 
         // const Gtk.TargetEntry [] DRAG_TARGETS = {
         //     {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.STRING},
@@ -212,8 +212,6 @@ namespace Files {
             count of the file object.*/
         protected GLib.List<Files.File> selected_files = null;
         private bool selected_files_invalid = true;
-
-        private static GLib.List<GLib.File> templates = null;
 
         private GLib.AppInfo default_app;
         private Gtk.TreePath? hover_path = null;
@@ -1185,8 +1183,8 @@ namespace Files {
         }
 
         private void on_background_action_create_from (GLib.SimpleAction action, GLib.Variant? param) {
-            int index = int.parse (param.get_string ());
-            create_from_template (templates.nth_data ((uint)index));
+            var path = param.get_string ();
+            create_from_template (path);
         }
 
         private void on_background_action_sort_by_changed (GLib.SimpleAction action, GLib.Variant? val) {
@@ -1826,8 +1824,6 @@ namespace Files {
          * drag (with #GDK_ACTION_ASK) will be started
          * instead.
         **/
-
-
 
         // protected void show_context_menu (Gdk.Event event) requires (window != null) {
         //     /* select selection or background context menu */
@@ -2512,56 +2508,6 @@ namespace Files {
             critical ("Action name not found: %s - cannot set state", name);
         }
 
-        private static void load_templates_from_folder (GLib.File template_folder) {
-            GLib.List<GLib.File> file_list = null;
-            GLib.List<GLib.File> folder_list = null;
-
-            GLib.FileEnumerator enumerator;
-            var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
-            try {
-                enumerator = template_folder.enumerate_children ("standard::*", flags, null);
-                uint count = templates.length (); //Assume to be limited in size
-                GLib.File location;
-                GLib.FileInfo? info = enumerator.next_file (null);
-
-                while (count < MAX_TEMPLATES && (info != null)) {
-                    if (!info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_HIDDEN) &&
-                        !info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_BACKUP)) {
-                        location = template_folder.get_child (info.get_name ());
-                        if (info.get_file_type () == GLib.FileType.DIRECTORY) {
-                            folder_list.prepend (location);
-                        } else {
-                            file_list.prepend (location);
-                            count ++;
-                        }
-                    }
-
-                    info = enumerator.next_file (null);
-                }
-            } catch (GLib.Error error) {
-                return;
-            }
-
-            if (file_list.length () > 0) { // Can assumed to be limited in length
-                file_list.sort ((a, b) => {
-                    return strcmp (a.get_basename ().down (), b.get_basename ().down ());
-                });
-
-                foreach (var file in file_list) {
-                    templates.append (file);
-                }
-
-                templates.append (template_folder);
-            }
-
-            if (folder_list.length () > 0) { //Can be assumed to be limited in length
-                /* recursively load templates from subdirectories */
-                folder_list.@foreach ((folder) => {
-                    load_templates_from_folder (folder);
-                });
-            }
-        }
-
         private void filter_this_app_from_open_with_apps () {
             unowned GLib.List<AppInfo> l = open_with_apps;
 
@@ -2615,9 +2561,10 @@ namespace Files {
 
         /** Menu action functions */
 
-        private void create_from_template (GLib.File template) {
+        private void create_from_template (string path) {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
+            var template = GLib.File.new_for_path (path);
             var new_name = (_("Untitled %s")).printf (template.get_basename ());
             FileOperations.new_file_from_template.begin (
                 this,

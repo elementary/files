@@ -27,7 +27,7 @@ namespace Files {
             get {
                 return mytext;
             }
-            
+
             set {
                 mytext = value;
             }
