@@ -26,9 +26,10 @@ namespace Files {
                 return mytext;
             }
             
-            set {
-                mytext = value;
-            }
+            set {}
+            // set {
+            //     mytext = value;
+            // }
         }
 
         construct {

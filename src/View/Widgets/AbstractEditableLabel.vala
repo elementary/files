@@ -17,12 +17,10 @@
 ***/
 
 namespace Files {
-    public abstract class AbstractEditableLabel : Gtk.Frame, Gtk.Editable, Gtk.CellEditable {
+    public abstract class AbstractEditableLabel : Gtk.Frame, Gtk.CellEditable {
         public bool editing_canceled { get; set; }
         public string original_name;
         private Gtk.EventControllerKey key_controller;
-        
-        public string temp_text {get; set; default = "";} //Temporary to get to compile
 
         protected void connect_editable_widget (Gtk.Widget editable_widget) {
             // key_controller = new Gtk.EventControllerKey (editable_widget);
@@ -90,7 +88,8 @@ namespace Files {
 
         /** Gtk4 Editable interface **/
         public abstract string text { get; set; }
-        public unowned string get_text () {return "";}
+        // public override unowned string get_text () {return "";}
+        // public virtual void set_text (string text) {}
         public int cursor_position { get; }
         public bool editable { get; set; }
         public bool enable_undo { get; set; }

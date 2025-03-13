@@ -26,7 +26,8 @@
 */
 
 namespace Files {
-    public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
+    // public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
+    public abstract class AbstractDirectoryView : Gtk.Box {
 
         protected enum ClickZone {
             EXPANDER,
@@ -319,7 +320,8 @@ namespace Files {
             view = create_view ();
 
             if (view != null) {
-                child = view;
+                append (view);
+                // child = view;
                 // show_all ();
                 connect_drag_drop_signals (view);
 
@@ -381,7 +383,7 @@ namespace Files {
         }
 
         private void set_up_directory_view () {
-            set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
+            // set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             // set_shadow_type (Gtk.ShadowType.NONE);
 
             // popup_menu.connect (on_popup_menu);
@@ -395,15 +397,15 @@ namespace Files {
                 on_clipboard_changed ();
             });
 
-            get_vadjustment ().value_changed.connect_after (() => {
-                schedule_thumbnail_color_tag_timeout ();
-            });
+            // get_vadjustment ().value_changed.connect_after (() => {
+            //     schedule_thumbnail_color_tag_timeout ();
+            // });
 
             notify["renaming"].connect (() => {
                 // Suppress ability to scroll with the scrollbar while renaming
                 // No obvious way to disable it so just hide it
-                var vscroll_bar = get_vscrollbar ();
-                vscroll_bar.visible = !renaming;
+                // var vscroll_bar = get_vscrollbar ();
+                // vscroll_bar.visible = !renaming;
             });
 
 
@@ -1511,10 +1513,10 @@ namespace Files {
         // }
 
         /* Signal emitted on source after a DND move operation */
-        private void on_drag_data_delete () {
-            /* block real_view default handler because handled in on_drag_end */
-            GLib.Signal.stop_emission_by_name (get_child (), "drag-data-delete");
-        }
+        // private void on_drag_data_delete () {
+        //     /* block real_view default handler because handled in on_drag_end */
+        //     GLib.Signal.stop_emission_by_name (get_child (), "drag-data-delete");
+        // }
 
         /* Signal emitted on source after completion of DnD. */
         private void on_drag_end () {
@@ -2792,7 +2794,8 @@ namespace Files {
             drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                           50,
                                                           () => {
-                Gtk.Widget? widget = get_child ();
+                Gtk.Widget? widget = view;
+                // Gtk.Widget? widget = get_child ();
                 if (widget != null) {
                     // Gdk.Window window = widget.get_window ();
                     // int x, y, w, h;
@@ -2801,8 +2804,8 @@ namespace Files {
                     // window.get_device_position (pointer, out x, out y, null);
                     // window.get_geometry (null, null, out w, out h);
 
-                    scroll_if_near_edge (y, h, 20, get_vadjustment ());
-                    scroll_if_near_edge (x, w, 20, get_hadjustment ());
+                    // scroll_if_near_edge (y, h, 20, get_vadjustment ());
+                    // scroll_if_near_edge (x, w, 20, get_hadjustment ());
                     return GLib.Source.CONTINUE;
                 } else {
                     return GLib.Source.REMOVE;
@@ -2820,13 +2823,13 @@ namespace Files {
 
                 if (offset != 0) {
                     /* change the adjustment appropriately */
-                    var val = adj.get_value ();
-                    var lower = adj.get_lower ();
-                    var upper = adj.get_upper ();
-                    var page = adj.get_page_size ();
+                    // var val = adj.get_value ();
+                    // var lower = adj.get_lower ();
+                    // var upper = adj.get_upper ();
+                    // var page = adj.get_page_size ();
 
-                    val = (val + 2 * offset).clamp (lower, upper - page);
-                    adj.set_value (val);
+                    // val = (val + 2 * offset).clamp (lower, upper - page);
+                    // adj.set_value (val);
                 }
         }
 
@@ -3577,7 +3580,8 @@ namespace Files {
             // slot.active (button == Gdk.BUTTON_SECONDARY);
 
             /* Only take action if pointer has not moved */
-            if (!Gtk.drag_check_threshold (get_child (), (int)drag_x, (int)drag_y, (int)x, (int)y)) {
+            // if (!Gtk.drag_check_threshold (get_child (), (int)drag_x, (int)drag_y, (int)x, (int)y)) {
+            if (!Gtk.drag_check_threshold (view, (int)drag_x, (int)drag_y, (int)x, (int)y)) {
                 if (should_activate) {
                     /* Need Idle else can crash with rapid clicking (avoid nested signals) */
                     Idle.add (() => {

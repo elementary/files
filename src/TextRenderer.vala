@@ -226,7 +226,7 @@ namespace Files {
             }
 
 
-            entry.set_text (text);
+            entry.text = text;
             entry.set_line_wrap_mode (wrap_mode);
             entry.set_size_request (wrap_width, -1);
             entry.set_position (-1);
@@ -299,7 +299,7 @@ namespace Files {
             entry.hide ();
 
             if (!cancelled) {
-                string text = entry.get_text ();
+                string text = entry.text;
                 string path = entry.get_data ("marlin-text-renderer-path");
                 edited (path, text);
             }

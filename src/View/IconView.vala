@@ -96,7 +96,7 @@ public class Files.IconView : Files.AbstractDirectoryView {
     public override Gtk.TreePath? get_path_at_pos (int win_x, int win_y) {
         /* Supplied coords are drag coords - need IconView bin window coords */
         /* Icon view does not scroll horizontally so no adjustment needed for x coord*/
-        return tree.get_path_at_pos (win_x, win_y + (int)(get_vadjustment ().get_value ()));
+        return tree.get_path_at_pos (win_x, win_y);// + (int)(get_vadjustment ().get_value ()));
     }
 
     public override void tree_select_all () {
@@ -172,7 +172,7 @@ public class Files.IconView : Files.AbstractDirectoryView {
                 /* rectangles are in bin window coordinates - need to adjust event y coordinate
                  * for vertical scrolling in order to accurately detect which area of TextRenderer was
                  * clicked on */
-                y -= (int)(get_vadjustment ().value);
+                // y -= (int)(get_vadjustment ().value);
                 Gtk.TreeIter iter;
                 model.get_iter (out iter, path);
                 string? text = null;
