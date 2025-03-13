@@ -401,7 +401,7 @@ namespace Files {
                                 Gdk.DragAction.COPY |
                                 Gdk.DragAction.MOVE |
                                 Gdk.DragAction.LINK;
-            
+
 
             /* Check the first MAX_FILES_CHECKED and let
              * the operation fail for file the same as target if it is

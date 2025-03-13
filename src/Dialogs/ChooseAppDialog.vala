@@ -48,30 +48,30 @@ class PF.ChooseAppDialog : Object {
 
         check_default.show ();
 
-        dialog.get_content_area ().add (check_default);
+        // dialog.get_content_area ().add (check_default);
 
         dialog.show ();
     }
 
     public AppInfo? get_app_info () {
         AppInfo? app = null;
-        int response = dialog.run ();
+        // int response = dialog.run ();
 
-        if (response == Gtk.ResponseType.OK) {
-            app = dialog.get_app_info ();
-            if (check_default.get_active ()) {
-                try {
-                    var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
-                                                        FileQueryInfoFlags.NONE, null);
+        // if (response == Gtk.ResponseType.OK) {
+        //     app = dialog.get_app_info ();
+        //     if (check_default.get_active ()) {
+        //         try {
+        //             var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
+        //                                                 FileQueryInfoFlags.NONE, null);
 
-                    app.set_as_default_for_type (info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE));
-                }
-                catch (GLib.Error error) {
-                    critical ("Could not set as default: %s", error.message);
-                }
-            }
-        }
-        dialog.destroy ();
+        //             app.set_as_default_for_type (info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE));
+        //         }
+        //         catch (GLib.Error error) {
+        //             critical ("Could not set as default: %s", error.message);
+        //         }
+        //     }
+        // }
+        // dialog.destroy ();
         return app;
     }
 }

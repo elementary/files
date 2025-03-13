@@ -21,47 +21,49 @@ namespace Files {
         public bool editing_canceled { get; set; }
         public string original_name;
         private Gtk.EventControllerKey key_controller;
+        
+        public string temp_text {get; set; default = "";} //Temporary to get to compile
 
         protected void connect_editable_widget (Gtk.Widget editable_widget) {
-            key_controller = new Gtk.EventControllerKey (editable_widget);
-            key_controller.key_pressed.connect (on_key_press_event);
-            editable_widget.button_press_event.connect_after (() => { return true; });
+            // key_controller = new Gtk.EventControllerKey (editable_widget);
+            // key_controller.key_pressed.connect (on_key_press_event);
+            // editable_widget.button_press_event.connect_after (() => { return true; });
         }
 
-        protected virtual bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
-            switch (keyval) {
-                case Gdk.Key.Return:
-                case Gdk.Key.KP_Enter:
-                    /*  Only end rename with unmodified Enter. This is to allow use of Ctrl-Enter
-                     *  to commit Chinese/Japanese characters when using some input methods, without ending rename.
-                     */
-                    if (mods == 0) {
-                        end_editing (false);
-                        return true;
-                    }
+        // protected virtual bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
+        //     var mods = state & Gtk.accelerator_get_default_mod_mask ();
+        //     bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
+        //     switch (keyval) {
+        //         case Gdk.Key.Return:
+        //         case Gdk.Key.KP_Enter:
+        //             /*  Only end rename with unmodified Enter. This is to allow use of Ctrl-Enter
+        //              *  to commit Chinese/Japanese characters when using some input methods, without ending rename.
+        //              */
+        //             if (mods == 0) {
+        //                 end_editing (false);
+        //                 return true;
+        //             }
 
-                    break;
+        //             break;
 
-                case Gdk.Key.Escape:
-                    end_editing (true);
-                    return true;
+        //         case Gdk.Key.Escape:
+        //             end_editing (true);
+        //             return true;
 
-                case Gdk.Key.z:
-                    /* Undo with Ctrl-Z only */
-                    if (only_control_pressed) {
-                        set_text (original_name);
-                        return true;
-                    }
-                    break;
+        //         case Gdk.Key.z:
+        //             /* Undo with Ctrl-Z only */
+        //             if (only_control_pressed) {
+        //                 set_text (original_name);
+        //                 return true;
+        //             }
+        //             break;
 
-                default:
-                    break;
-            }
+        //         default:
+        //             break;
+        //     }
 
-            return false;
-        }
+        //     return false;
+        // }
 
         public void end_editing (bool cancelled) {
             editing_canceled = cancelled;
@@ -69,9 +71,9 @@ namespace Files {
             editing_done ();
         }
 
-        public virtual void set_text (string text) {
-            original_name = text;
-        }
+        // public virtual void set_text (string text) {
+        //     original_name = text;
+        // }
 
         public virtual void set_line_wrap (bool wrap) {}
         public virtual void set_line_wrap_mode (Pango.WrapMode mode) {}
@@ -79,15 +81,28 @@ namespace Files {
         public virtual void set_padding (int xpad, int ypad) {}
 
         public abstract new void set_size_request (int width, int height);
-        public abstract string get_text ();
-        public abstract void select_region (int start_pos, int end_pos);
+
         public abstract void do_delete_text (int start_pos, int end_pos);
         public abstract void do_insert_text (string new_text, int new_text_length, ref int position);
         public abstract string get_chars (int start_pos, int end_pos);
         public abstract int get_position ();
-        public abstract bool get_selection_bounds (out int start_pos, out int end_pos);
         public abstract void set_position (int position);
 
+        /** Gtk4 Editable interface **/
+        public abstract string text { get; set; }
+        public unowned string get_text () {return "";}
+        public int cursor_position { get; }
+        public bool editable { get; set; }
+        public bool enable_undo { get; set; }
+        public int max_width_chars { get; set; }
+        public int selection_bound { get; }
+        public int width_chars { get; set; }
+        public float xalign { get; set;}
+        public virtual unowned Gtk.Editable? get_delegate () { return null; }
+        /** Uncomment for Gtk4 port **/
+
+        public abstract bool get_selection_bounds (out int start_pos, out int end_pos);
+        public abstract void select_region (int start_pos, int end_pos);
         /** CellEditable interface */
         public virtual void start_editing (Gdk.Event? event) {}
     }

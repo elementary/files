@@ -20,20 +20,31 @@ namespace Files {
     public class MultiLineEditableLabel : AbstractEditableLabel {
         protected Gtk.ScrolledWindow scrolled_window;
         public Gtk.TextView textview { get; construct; }
+        private string mytext = "";
+        public override string text {
+            get {
+                return mytext;
+            }
+            
+            set {
+                mytext = value;
+            }
+        }
 
         construct {
             textview = new Gtk.TextView ();
             connect_editable_widget (textview);
-            scrolled_window = new Gtk.ScrolledWindow (null, null) {
+            scrolled_window = new Gtk.ScrolledWindow () {
+            // scrolled_window = new Gtk.ScrolledWindow (null, null) {
                 child = textview
             };
-            add (scrolled_window);
+            // add (scrolled_window);
         }
 
-        public override void set_text (string text) {
-            textview.get_buffer ().set_text (text);
-            original_name = text;
-        }
+        // public override void set_text (string text) {
+        //     textview.get_buffer ().set_text (text);
+        //     original_name = text;
+        // }
 
         public override void set_line_wrap (bool wrap) {
             if (!wrap) {
@@ -73,14 +84,15 @@ namespace Files {
             textview.set_margin_bottom (ypad);
         }
 
-        public override string get_text () {
-            var buffer = textview.get_buffer ();
-            Gtk.TextIter? start = null;
-            Gtk.TextIter? end = null;
-            buffer.get_start_iter (out start);
-            buffer.get_end_iter (out end);
-            return buffer.get_text (start, end, false);
-        }
+        // public override unowned string get_text () {
+            // var buffer = textview.get_buffer ();
+            // Gtk.TextIter? start = null;
+            // Gtk.TextIter? end = null;
+            // buffer.get_start_iter (out start);
+            // buffer.get_end_iter (out end);
+            // return buffer.get_text (start, end, false);
+            // return temp_text;
+        // }
 
         /** Gtk.Editable interface */
         public override void select_region (int start_pos, int end_pos) {
@@ -169,21 +181,21 @@ namespace Files {
             buffer.place_cursor (iter);
         }
 
-        public override bool draw (Cairo.Context cr) {
-            bool result = base.draw (cr);
-            Gtk.Allocation allocation;
-            Gdk.RGBA color;
-            Gdk.Rectangle outline;
+        // public override bool draw (Cairo.Context cr) {
+        //     bool result = base.draw (cr);
+        //     Gtk.Allocation allocation;
+        //     Gdk.RGBA color;
+        //     Gdk.Rectangle outline;
 
-            get_allocation (out allocation);
-            color = get_style_context ().get_color (get_state_flags ());
-            Gdk.cairo_set_source_rgba (cr, color);
-            cr.set_line_width (1.0);
-            outline = {0, 0, allocation.width, allocation.height};
-            Gdk.cairo_rectangle (cr, outline);
-            cr.stroke ();
-            return result;
-        }
+        //     get_allocation (out allocation);
+        //     color = get_style_context ().get_color (get_state_flags ());
+        //     Gdk.cairo_set_source_rgba (cr, color);
+        //     cr.set_line_width (1.0);
+        //     outline = {0, 0, allocation.width, allocation.height};
+        //     Gdk.cairo_rectangle (cr, outline);
+        //     cr.stroke ();
+        //     return result;
+        // }
 
         public override void set_size_request (int width, int height) {
             textview.set_size_request (width, height);

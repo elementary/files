@@ -2795,7 +2795,8 @@ namespace Files {
                 Gtk.Widget? widget = get_child ();
                 if (widget != null) {
                     // Gdk.Window window = widget.get_window ();
-                    int x, y, w, h;
+                    // int x, y, w, h;
+                    int x = 0, y = 0, w = 0, h = 0;
 
                     // window.get_device_position (pointer, out x, out y, null);
                     // window.get_geometry (null, null, out w, out h);
@@ -3398,7 +3399,8 @@ namespace Files {
             //Only rubberband with primary button
             // click_zone = get_event_position_info (x, y, out path, button == Gdk.BUTTON_PRIMARY);
             click_path = path;
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
+            // var mods = state & Gtk.accelerator_get_default_mod_mask ();
+            var mods = 0;
             bool no_mods = (mods == 0);
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
