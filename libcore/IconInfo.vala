@@ -18,32 +18,24 @@
 
 public class Files.IconInfo : GLib.Object {
     private int64 last_use_time;
-    public Gdk.Pixbuf? pixbuf { get; set; }
+    public Gdk.Texture? pix { get; set; }
     private string icon_name;
 
-    public Files.IconInfo.for_pixbuf (Gdk.Pixbuf? pixbuf) {
-        this.pixbuf = pixbuf;
+    public IconInfo (Gdk.Texture? pix) {
+        Object (
+            pix: pix
+        );
     }
 
-    // public Files.IconInfo.for_icon_info (Gtk.IconInfo icon_info) {
-    //     try {
-    //         pixbuf = icon_info.load_icon ();
-    //     } catch (Error e) {
-    //         critical (e.message);
-    //     }
-
-    //     var filename = icon_info.get_filename ();
-    //     if (filename != null) {
-    //         filename = GLib.Path.get_basename (filename);
-    //         var last = filename.last_index_of_char ('.');
-    //         icon_name = filename.substring (0, last);
-    //     }
-    // }
+    public IconInfo.for_icon_paintable (Gtk.IconPaintable icon_paintable) {
+        pix = (Gdk.Texture?) icon_paintable;
+        icon_name = icon_paintable.get_icon_name ();
+    }
 
     construct {
         last_use_time = GLib.get_monotonic_time ();
         schedule_reap_cache ();
-        pixbuf = null;
+        pix = null;
     }
 
     public static Files.IconInfo? lookup (
@@ -53,77 +45,73 @@ public class Files.IconInfo : GLib.Object {
         bool cache_loadable = false
     ) {
         return null;
-        // size = int.max (1, size);
+        size = int.max (1, size);
+        Gdk.Texture? texture = null;
 
-        // IconInfo? icon_info = null;
-        // if (icon is GLib.LoadableIcon) {
-        //     if (cache_loadable) {
-        //         if (loadable_icon_cache == null) {
-        //             loadable_icon_cache = new GLib.HashTable<LoadableIconKey, Files.IconInfo> (
-        //                 LoadableIconKey.hash,
-        //                 LoadableIconKey.equal
-        //             );
-        //         } else {
-        //             icon_info = loadable_icon_cache.lookup (new LoadableIconKey (icon, size, scale));
-        //             if (icon_info != null) {
-        //                 return icon_info;
-        //             }
-        //         }
-        //     }
+        if (icon is GLib.FileIcon) { // Thumbnails
+            if (cache_loadable) {
+                if (loadable_icon_cache == null) {
+                    loadable_icon_cache = new GLib.HashTable<LoadableIconKey, Files.IconInfo> (
+                        LoadableIconKey.hash,
+                        LoadableIconKey.equal
+                    );
+                } else {
+                    var icon_info = loadable_icon_cache.lookup (
+                        new LoadableIconKey (icon, size, scale)
+                    );
 
-        //     var str_icon = icon.to_string ();
-        //     int width;
-        //     int height;
-        //     Gdk.Pixbuf.get_file_info (str_icon, out width, out height);
-        //     Gdk.Pixbuf pixbuf = null;
-        //     if ((width >= 1 || width == -1) && (height >= 1 || height == -1)) {
-        //         try {
-        //             pixbuf = new Gdk.Pixbuf.from_file_at_scale (str_icon, int.min (size, width) * scale,
-        //                                                         int.min (size, height) * scale, true);
-        //         } catch (Error e) {
-        //             critical (e.message);
-        //         }
-        //     }
+                    if (icon_info != null) {
+                        return icon_info;
+                    }
+                }
+            }
 
-        //     if (pixbuf != null) {
-        //         icon_info = new IconInfo.for_pixbuf (pixbuf);
-        //         if (cache_loadable) {
-        //             loadable_icon_cache.insert (new LoadableIconKey (icon, size, scale), icon_info);
-        //         }
-        //     }
+            try {
+                texture = Gdk.Texture.from_file (icon.file);
+            } catch (Error e) {
+                warning ("Error creating texture for %s", icon.file.get_uri ());
+            }
 
-        //     return icon_info;
-        // } else if (icon is GLib.ThemedIcon) {
-        //     var theme = get_icon_theme ();
-        //     Gtk.IconInfo? gtkicon_info = null;
-        //     // lookup_by_gicon_for_scale is treating all the icons equally, keep using the first found one before any fallback one
-        //     foreach (unowned string name in ((GLib.ThemedIcon) icon).get_names ()) {
-        //         gtkicon_info = theme.lookup_icon_for_scale (name, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
-        //         if (gtkicon_info != null)
-        //             break;
-        //     }
+            if (texture != null) {
+                var icon_info = new IconInfo (texture);
+                if (cache_loadable) {
+                    loadable_icon_cache.insert (
+                        new LoadableIconKey (icon, size, scale),
+                        icon_info
+                    );
+                }
+            }
+        }
 
-        //     if (gtkicon_info != null) {
-        //         icon_info = new Files.IconInfo.for_icon_info (gtkicon_info);
-        //     }
+        var theme = get_icon_theme ();
+        Gtk.IconPaintable icon_paintable;
+        if (icon is GLib.ThemedIcon) { // ThemedIcons
+            icon_paintable = theme.lookup_icon (
+                icon.names[0],
+                icon.names,
+                size,
+                scale,
+                Gtk.TextDirection.NONE, //TODO Use text direction?
+                Gtk.IconLookupFlags.PRELOAD //TODO Preload needed?
+            );
+            // icon_paintable is guaranteed non-null
+        } else { // Rarely used if ever TODO: Do we need both?
+            icon_paintable = theme.lookup_by_gicon (
+                icon,
+                size,
+                scale,
+                Gtk.TextDirection.NONE,
+                Gtk.IconLookupFlags.PRELOAD
+            );
+            // icon_paintable is guaranteed non-null
+        }
 
-        //     return icon_info;
-        // } else {
-        //     var theme = get_icon_theme ();
-        //     try {
-        //         var gtk_icon_info = theme.lookup_by_gicon_for_scale (icon, size, scale,
-        //                                                              Gtk.IconLookupFlags.GENERIC_FALLBACK);
-        //         var pixbuf = gtk_icon_info.load_icon ();
-        //         return new Files.IconInfo.for_pixbuf (pixbuf);
-        //     } catch (Error e) {
-        //         critical (e.message);
-        //         return new Files.IconInfo.for_pixbuf (null);
-        //     }
-        // }
+        return new IconInfo.for_icon_paintable (icon_paintable);
     }
 
     public static Files.IconInfo? get_generic_icon (int size, int scale) {
         var generic_icon = new GLib.ThemedIcon ("text-x-generic");
+debug ("loookup FilesIconInfo for generic icon");
         return IconInfo.lookup (generic_icon, size, scale);
     }
 
@@ -133,6 +121,7 @@ public class Files.IconInfo : GLib.Object {
     }
 
     public static Files.IconInfo? lookup_from_path (string? path, int size, int scale, bool is_remote = false) {
+debug ("Files.Iconinfo lookup from path %s", path);
         if (path != null) {
             var file_icon = new GLib.FileIcon (GLib.File.new_for_path (path));
             return Files.IconInfo.lookup (file_icon, size, scale, is_remote);
@@ -141,13 +130,9 @@ public class Files.IconInfo : GLib.Object {
         return null;
     }
 
-    public bool is_fallback () {
-        return pixbuf == null;
-    }
-
-    public Gdk.Pixbuf? get_pixbuf_nodefault () {
+    public Gdk.Texture? get_pixbuf_nodefault () {
         last_use_time = GLib.get_monotonic_time ();
-        return pixbuf;
+        return pix;
     }
 
     /*
@@ -275,7 +260,7 @@ public class Files.IconInfo : GLib.Object {
         if (loadable_icon_cache != null) {
             // Only reap cached icons that are no longer referenced by any other object
             loadable_icon_cache.foreach_remove ((loadableicon, icon_info) => {
-                if (icon_info.pixbuf != null && icon_info.pixbuf.ref_count == 1) {
+                if (icon_info.pix != null && icon_info.pix.ref_count == 1) {
                     if ((time_now - icon_info.last_use_time) > reap_time_extended) {
                         return true;
                     }
@@ -289,7 +274,7 @@ public class Files.IconInfo : GLib.Object {
 
         if (themed_icon_cache != null) {
             themed_icon_cache.foreach_remove ((themedicon, icon_info) => {
-                if (icon_info.pixbuf != null && icon_info.pixbuf.ref_count == 1) {
+                if (icon_info.pix != null && icon_info.pix.ref_count == 1) {
                     if ((time_now - icon_info.last_use_time) > reap_time_extended) {
                         return true;
                     }

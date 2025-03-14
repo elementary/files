@@ -65,7 +65,7 @@ public class Files.File : GLib.Object {
     public string formated_modified = null;
     public string formated_type = null;
     public string tagstype = null;
-    public Gdk.Pixbuf? pix = null;
+    public Gdk.Texture? pix = null;
     public string? custom_icon_name = null;
     public int pix_size = 16;
     public int pix_scale = 1;
@@ -429,7 +429,7 @@ public class Files.File : GLib.Object {
     }
 
     //TODO Is it necessary to refetch the icon if have pix at requested size? 
-    public Gdk.Pixbuf? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
+    public Gdk.Texture? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
         return get_icon (
             _size.clamp (16, 512),
             scale,
@@ -485,9 +485,10 @@ public class Files.File : GLib.Object {
             iconinfo = Files.IconInfo.lookup_from_path (thumbnail_path, requested_size, scale, is_remote);
         }
 
-        if (iconinfo == null || iconinfo.pixbuf == null) {
+        if (iconinfo == null || iconinfo.pix == null) {
             GLib.Icon? gicon = null;
             if (awaiting_thumbnail) {
+debug ("using image loading");
                 gicon = new GLib.ThemedIcon ("image-loading");
                 pix_is_final = false;
             } else {
@@ -496,10 +497,11 @@ public class Files.File : GLib.Object {
 
             if (gicon != null) {
                 iconinfo = Files.IconInfo.lookup (gicon, requested_size, scale, is_remote);
-                if (iconinfo == null || iconinfo.pixbuf == null) {
+                if (iconinfo == null || iconinfo.pix == null) {
                     iconinfo = Files.IconInfo.get_generic_icon (requested_size, scale);
                 }
             } else {
+debug ("using generic icon");
                 iconinfo = Files.IconInfo.get_generic_icon (requested_size, scale);
             }
         }

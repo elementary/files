@@ -67,7 +67,7 @@ namespace Files {
         private Files.File? _file;
         private Files.IconSize icon_size;
         private int icon_scale = 1;
-        private unowned Gdk.Pixbuf? pixbuf {
+        private unowned Gdk.Texture? pix {
             get {
                 return _file != null ? _file.pix : null;
             }
