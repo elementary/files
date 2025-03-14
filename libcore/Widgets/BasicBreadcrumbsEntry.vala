@@ -618,7 +618,7 @@ namespace Files.View.Chrome {
                                      double initial_offset,
                                      double final_offset,
                                      uint64 time_usec) {
-            if (!get_settings ().gtk_enable_animations) {
+            if (!get_settings ().gtk_enable_animations || get_frame_clock () == null) {
                 prepare_to_animate (els, final_offset);
                 return 0;
             }

@@ -241,7 +241,7 @@ namespace Files {
                         update_menu_actions ();
                     }
 
-                    key_controller.propagation_phase = value ? Gtk.PropagationPhase.NONE : Gtk.PropagationPhase.BUBBLE;
+                    // key_controller.propagation_phase = value ? Gtk.PropagationPhase.NONE : Gtk.PropagationPhase.BUBBLE;
                 }
             }
 
@@ -339,8 +339,8 @@ namespace Files {
                 // Workaround for scroll events getting consumed by scroll controller
                 // Only handle scroll events when a key is pressed (for zooming), otherwise they will be handled
                 // by the native widget
-                key_controller.key_pressed.connect (() => {scroll_controller.flags = VERTICAL; return false;});
-                key_controller.key_released.connect (() => scroll_controller.flags = NONE);
+                // key_controller.key_pressed.connect (() => {scroll_controller.flags = VERTICAL; return false;});
+                // key_controller.key_released.connect (() => scroll_controller.flags = NONE);
 
                 // Hack required to suppress native behaviour when dragging
                 // multiple selected items with GestureMultiPress event controller

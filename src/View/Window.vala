@@ -186,7 +186,6 @@ public class Files.View.Window : Adw.ApplicationWindow {
         }
 
         loading_uri.connect (update_labels);
-        present ();
     }
 
     private void build_window () {
