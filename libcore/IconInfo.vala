@@ -154,13 +154,13 @@ public class Files.IconInfo : GLib.Object {
      * the "hicolor" theme.
      */
     public static Gtk.IconTheme get_icon_theme () {
-        // if (Gdk.Screen.get_default () != null) {
-        //     return Gtk.IconTheme.get_default ();
-        // } else {
+        if (Gdk.Display.get_default () != null) {
+            return Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
+        } else {
             var theme = new Gtk.IconTheme ();
-            // theme.set_custom_theme ("hicolor");
+            theme.set_theme_name ("hicolor");
             return theme;
-        // }
+        }
     }
 
     public static uint loadable_icon_cache_info () {
