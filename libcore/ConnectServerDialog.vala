@@ -106,8 +106,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             message_type = Gtk.MessageType.INFO,
             revealed = false
         };
-        info_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FRAME);
-        info_bar.get_content_area ().add (info_label);
+        // info_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FRAME);
+        // info_bar.get_content_area ().add (info_label);
 
         var server_header_label = new Granite.HeaderLabel (_("Server Details"));
 
@@ -133,8 +133,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         var port_box = new Gtk.Box (HORIZONTAL, 6) {
             margin_start = 6
         };
-        port_box.add (port_label);
-        port_box.add (port_spinbutton);
+        // port_box.add (port_label);
+        // port_box.add (port_spinbutton);
 
         port_revealer = new Gtk.Revealer () {
             child = port_box,
@@ -142,8 +142,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         };
 
         var server_port_box = new Gtk.Box (HORIZONTAL, 0);
-        server_port_box.add (server_entry);
-        server_port_box.add (port_revealer);
+        // server_port_box.add (server_entry);
+        // server_port_box.add (port_revealer);
 
         var type_store = new Gtk.ListStore (2, typeof (MethodInfo), typeof (string));
 
@@ -207,17 +207,17 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         cancel_button.clicked.connect (on_cancel_clicked);
 
         connect_button = new Gtk.Button.with_label (_("Connect")) {
-             can_default = true,
-             no_show_all = true
+             // can_default = true,
+             // no_show_all = true
          };
-        connect_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        // connect_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         connect_button.clicked.connect (on_connect_clicked);
 
         continue_button = new Gtk.Button.with_label (_("Continue")) {
-            can_default = true,
-            no_show_all = true
+            // can_default = true,
+            // no_show_all = true
         };
-        continue_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        // continue_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         continue_button.clicked.connect (on_continue_clicked);
 
         var button_box = new Gtk.Box (HORIZONTAL, 6) {
@@ -225,9 +225,9 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             homogeneous = true,
             margin_top = 24
         };
-        button_box.add (cancel_button);
-        button_box.add (connect_button);
-        button_box.add (continue_button);
+        // button_box.add (cancel_button);
+        // button_box.add (connect_button);
+        // button_box.add (continue_button);
 
         var grid = new Gtk.Grid () {
             row_spacing = 6,
@@ -269,8 +269,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             halign = CENTER,
             valign = CENTER
         };
-        connecting_box.add (connecting_label);
-        connecting_box.add (connecting_spinner);
+        // connecting_box.add (connecting_label);
+        // connecting_box.add (connecting_spinner);
 
         stack = new Gtk.Stack () {
             transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
@@ -280,12 +280,12 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         stack.add_named (connecting_box, "connecting");
 
         var content_area = get_content_area ();
-        content_area.border_width = 0;
+        // content_area.border_width = 0;
         content_area.margin_end = content_area.margin_start = 12;
         content_area.margin_bottom = 2;
-        content_area.add (stack);
-        content_area.add (button_box);
-        content_area.show_all ();
+        // content_area.add (stack);
+        // content_area.add (button_box);
+        // content_area.show_all ();
 
         default_width = 400;
 
@@ -362,7 +362,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         connect_button.visible = true;
         continue_button.visible = false;
         connect_button.sensitive = valid_entries ();
-        connect_button.grab_default ();
+        // connect_button.grab_default ();
     }
 
     private void verify_details () {
@@ -375,7 +375,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
 
         continue_button.visible = true;
         continue_button.sensitive = false; /* something has to change */
-        continue_button.grab_default ();
+        // continue_button.grab_default ();
 
         show_info ();
         loop.run ();

@@ -133,7 +133,7 @@ namespace Files.View.Chrome {
         Gtk.TreeModelFilter filter;
         Gtk.ScrolledWindow scroll;
         public Gtk.Widget delegate_widget { get; construct; }
-        private Gtk.GestureMultiPress search_tree_view_button_controller;
+        // private Gtk.GestureMultiPress search_tree_view_button_controller;
         private Gtk.EventControllerKey key_controller;
 
         public SearchResults (Gtk.Widget _delegate_widget) {
@@ -143,7 +143,7 @@ namespace Files.View.Chrome {
         }
 
         construct {
-            relative_to = delegate_widget;
+            // relative_to = delegate_widget;
             position = Gtk.PositionType.BOTTOM;
             // Gtk4 can remove the arrow with:
             // has_arrow = false;
@@ -175,7 +175,8 @@ namespace Files.View.Chrome {
                 return path.get_depth () != 0;
             });
 
-            scroll = new Gtk.ScrolledWindow (null, null) {
+            scroll = new Gtk.ScrolledWindow () {
+            // scroll = new Gtk.ScrolledWindow (null, null) {
                 child = search_tree_view,
                 hscrollbar_policy = Gtk.PolicyType.NEVER,
                 propagate_natural_height = true,
@@ -244,29 +245,29 @@ namespace Files.View.Chrome {
 #endif
             child = scroll;
 
-            search_tree_view_button_controller = new Gtk.GestureMultiPress (search_tree_view) {
-                button = 0,
-                propagation_phase = BUBBLE
-            };
-            search_tree_view_button_controller.pressed.connect ((n_press, x, y) => {
-                Gtk.TreePath path;
-                Gtk.TreeIter iter;
+        //     search_tree_view_button_controller = new Gtk.GestureMultiPress (search_tree_view) {
+        //         button = 0,
+        //         propagation_phase = BUBBLE
+        //     };
+        //     search_tree_view_button_controller.pressed.connect ((n_press, x, y) => {
+        //         Gtk.TreePath path;
+        //         Gtk.TreeIter iter;
 
-                search_tree_view.get_path_at_pos ((int) x, (int) y, out path, null, null, null);
-                if (path != null && path.get_depth () > 1) {
-                    filter.get_iter (out iter, path);
-                    filter.convert_iter_to_child_iter (out iter, iter);
-                    /* This will call cancel () */
-                    accept (iter, search_tree_view_button_controller.get_current_button () > 1);
-                } else {
-                    Gdk.beep ();
-                }
-            });
+        //         search_tree_view.get_path_at_pos ((int) x, (int) y, out path, null, null, null);
+        //         if (path != null && path.get_depth () > 1) {
+        //             filter.get_iter (out iter, path);
+        //             filter.convert_iter_to_child_iter (out iter, iter);
+        //             /* This will call cancel () */
+        //             accept (iter, search_tree_view_button_controller.get_current_button () > 1);
+        //         } else {
+        //             Gdk.beep ();
+        //         }
+        //     });
 
-            key_controller = new Gtk.EventControllerKey (this) {
-                propagation_phase = CAPTURE
-            };
-            key_controller.key_pressed.connect (on_key_pressed_event);
+        //     key_controller = new Gtk.EventControllerKey (this) {
+        //         propagation_phase = CAPTURE
+        //     };
+        //     key_controller.key_pressed.connect (on_key_pressed_event);
         }
 
         private void update_category_headers () {
@@ -459,73 +460,73 @@ namespace Files.View.Chrome {
             }
         }
 
-        bool on_key_pressed_event (uint keyval, uint kecode, Gdk.ModifierType state) {
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
-            bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
-            bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
-            bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
-            bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
-            if (mods != 0 && !only_shift_pressed) {
-                if (only_control_pressed) {
-                    if (keyval == Gdk.Key.l) {
-                        cancel (); /* release any grab */
-                        exit (false); /* Do not exit navigate mode */
-                        return true;
-                        //TODO CLAIM?
-                    } else {
-                        return key_controller.forward (delegate_widget);
-                    }
-                } else if (only_alt_pressed &&
-                           keyval == Gdk.Key.Return ||
-                           keyval == Gdk.Key.KP_Enter ||
-                           keyval == Gdk.Key.ISO_Enter) {
+        // bool on_key_pressed_event (uint keyval, uint kecode, Gdk.ModifierType state) {
+        //     var mods = state & Gtk.accelerator_get_default_mod_mask ();
+        //     bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
+        //     bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
+        //     bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
+        //     bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
+        //     bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
+        //     if (mods != 0 && !only_shift_pressed) {
+        //         if (only_control_pressed) {
+        //             if (keyval == Gdk.Key.l) {
+        //                 cancel (); /* release any grab */
+        //                 exit (false); /* Do not exit navigate mode */
+        //                 return true;
+        //                 //TODO CLAIM?
+        //             } else {
+        //                 return key_controller.forward (delegate_widget);
+        //             }
+        //         } else if (only_alt_pressed &&
+        //                    keyval == Gdk.Key.Return ||
+        //                    keyval == Gdk.Key.KP_Enter ||
+        //                    keyval == Gdk.Key.ISO_Enter) {
 
-                    accept (null, true); // Open the selected file in default app
-                    return true;
-                }
-            }
+        //             accept (null, true); // Open the selected file in default app
+        //             return true;
+        //         }
+        //     }
 
-            switch (keyval) {
-                case Gdk.Key.Return:
-                case Gdk.Key.KP_Enter:
-                case Gdk.Key.ISO_Enter:
-                    accept (null, false); // Navigate to the selected file
-                    return true;
+        //     switch (keyval) {
+        //         case Gdk.Key.Return:
+        //         case Gdk.Key.KP_Enter:
+        //         case Gdk.Key.ISO_Enter:
+        //             accept (null, false); // Navigate to the selected file
+        //             return true;
 
-                case Gdk.Key.Up:
-                case Gdk.Key.Down:
-                case Gdk.Key.Tab:
-                case Gdk.Key.ISO_Left_Tab:
-                    if (list_empty ()) {
-                        return true;
-                    }
+        //         case Gdk.Key.Up:
+        //         case Gdk.Key.Down:
+        //         case Gdk.Key.Tab:
+        //         case Gdk.Key.ISO_Left_Tab:
+        //             if (list_empty ()) {
+        //                 return true;
+        //             }
 
-                    var up = (keyval == Gdk.Key.Up) ||
-                             (keyval == Gdk.Key.ISO_Left_Tab);
+        //             var up = (keyval == Gdk.Key.Up) ||
+        //                      (keyval == Gdk.Key.ISO_Left_Tab);
 
-                    if (search_tree_view.get_selection ().count_selected_rows () < 1) {
-                        if (up) {
-                            select_last ();
-                        } else {
-                            select_first ();
-                        }
+        //             if (search_tree_view.get_selection ().count_selected_rows () < 1) {
+        //                 if (up) {
+        //                     select_last ();
+        //                 } else {
+        //                     select_first ();
+        //                 }
 
-                        return true;
-                    }
+        //                 return true;
+        //             }
 
-                    select_adjacent (up);
-                    return true;
-                case Gdk.Key.Escape:
-                    cancel ();
-                    exit ();
-                    return true;
-                default:
-                    break;
-            }
+        //             select_adjacent (up);
+        //             return true;
+        //         case Gdk.Key.Escape:
+        //             cancel ();
+        //             exit ();
+        //             return true;
+        //         default:
+        //             break;
+        //     }
 
-            return key_controller.forward (delegate_widget);
-        }
+        //     return key_controller.forward (delegate_widget);
+        // }
 
         void select_first () {
             Gtk.TreeIter iter;
@@ -625,11 +626,11 @@ namespace Files.View.Chrome {
                 disconnect_view_cursor_changed_signal ();
                 popdown ();
             } else {
-                show_all ();
+                // show_all ();
                 connect_view_cursor_changed_signal ();
-                Gtk.Window toplevel = (Gtk.Window)(get_relative_to ().get_ancestor (typeof (Gtk.Window)));
-                scroll.min_content_height = int.min (toplevel.get_allocated_height (), (items + headers) * 24);
-                scroll.width_request = int.max (200, get_relative_to ().get_allocated_width ());
+                // Gtk.Window toplevel = (Gtk.Window)(get_relative_to ().get_ancestor (typeof (Gtk.Window)));
+                // scroll.min_content_height = int.min (toplevel.get_allocated_height (), (items + headers) * 24);
+                // scroll.width_request = int.max (200, get_relative_to ().get_allocated_width ());
                 popup ();
             }
         }

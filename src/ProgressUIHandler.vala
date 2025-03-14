@@ -105,7 +105,7 @@ public class Files.Progress.UIHandler : Object {
         ensure_window ();
 
         var progress_widget = new Progress.InfoWidget (info);
-        window_vbox.add (progress_widget);
+        // window_vbox.add (progress_widget);
 
         progress_widget.cancelled.connect ((info) => {
             progress_info_finished_cb (info);
@@ -132,13 +132,13 @@ public class Files.Progress.UIHandler : Object {
                 icon_name = "system-file-manager",
                 transient_for = application.get_active_window ()
             };
-            progress_window.get_content_area ().add (window_vbox);
+            // progress_window.get_content_area ().add (window_vbox);
             window_vbox.show ();
 
-            progress_window.delete_event.connect ((widget, event) => {
-                widget.hide ();
-                return true;
-            });
+            // progress_window.delete_event.connect ((widget, event) => {
+            //     widget.hide ();
+            //     return true;
+            // });
         }
     }
 
@@ -158,9 +158,9 @@ public class Files.Progress.UIHandler : Object {
             if (!info.is_cancelled) {
                 var title = info.title;  /* Do not keep ref to info */
                 Timeout.add (100, () => {
-                    if (!application.get_active_window ().has_toplevel_focus) {
+                    // if (!application.get_active_window ().has_toplevel_focus) {
                         show_operation_complete_notification (title, active_infos < 1);
-                    }
+                    // }
 
                     return GLib.Source.REMOVE;
                 });

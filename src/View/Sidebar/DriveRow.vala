@@ -53,7 +53,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
     }
 
     construct {
-        no_show_all = true;
+        // no_show_all = true;
         visible = false;
         set_visibility ();
         sort_key = drive.get_sort_key ();
@@ -127,10 +127,10 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
             var menu = new GLib.Menu ();
             menu.append (_("Safely Remove"), "mountable.safely-remove");
 
-            var gtk_menu = new Gtk.Menu.from_model (menu) {
-                attach_widget = this
-            };
-            gtk_menu.popup_at_pointer (null);
+            // var gtk_menu = new Gtk.Menu.from_model (menu) {
+            //     attach_widget = this
+            // };
+            // gtk_menu.popup_at_pointer (null);
         }
     }
 }

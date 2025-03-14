@@ -20,28 +20,28 @@
 
 ***/
 
-namespace Files.View {
-    public class Welcome : Granite.Widgets.Welcome {
+// namespace Files.View {
+//     public class Welcome : Granite.Widgets.Welcome {
 
-        public Welcome (string primary, string secondary) {
-            base (primary, secondary);
-            this.button_press_event.connect (on_button_press_event);
-            show_all ();
-        }
+//         public Welcome (string primary, string secondary) {
+//             base (primary, secondary);
+//             this.button_press_event.connect (on_button_press_event);
+//             show_all ();
+//         }
 
-        public bool on_button_press_event (Gdk.EventButton event) {
-            /* Pass Back and Forward button events to toplevel window */
-            uint button;
-            event.get_button (out button);
-            switch (button) {
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                    return get_toplevel ().button_press_event (event);
-                default:
-                    return base.button_press_event (event);
-            }
-        }
-    }
-}
+//         public bool on_button_press_event (Gdk.EventButton event) {
+//             /* Pass Back and Forward button events to toplevel window */
+//             uint button;
+//             event.get_button (out button);
+//             switch (button) {
+//                 case 6:
+//                 case 7:
+//                 case 8:
+//                 case 9:
+//                     return get_toplevel ().button_press_event (event);
+//                 default:
+//                     return base.button_press_event (event);
+//             }
+//         }
+//     }
+// }

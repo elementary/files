@@ -34,7 +34,7 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             selection_mode = Gtk.SelectionMode.SINGLE
         };
 
-        add (list_box);
+        // add (list_box);
 
         var volume_monitor = VolumeMonitor.@get ();
         volume_monitor.mount_added.connect (bookmark_mount_if_not_shadowed);
@@ -76,7 +76,7 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                 mount
             );
 
-            list_box.add (row);
+            // list_box.add (row);
         }
 
         return (BookmarkRow) row;

@@ -178,20 +178,20 @@ public class Files.PluginManager : Object {
     }
 
     public void hook_context_menu (Gtk.Widget menu, List<Files.File> files) {
-        drop_menu_references (menu);
+        // drop_menu_references (menu);
 
-        if (menu is Gtk.Menu) {
-            drop_plugin_menuitems ();
-        }
+        // if (menu is Gtk.Menu) {
+        //     drop_plugin_menuitems ();
+        // }
 
-        foreach (var plugin in plugin_hash.values) {
-            plugin.context_menu (menu, files);
-        }
+        // foreach (var plugin in plugin_hash.values) {
+        //     plugin.context_menu (menu, files);
+        // }
     }
 
     private void drop_plugin_menuitems () {
         foreach (var menu_item in menuitem_references) {
-            menu_item.parent.remove (menu_item);
+            // menu_item.parent.remove (menu_item);
         }
 
         menuitem_references.clear ();

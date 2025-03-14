@@ -41,7 +41,8 @@ public class Files.RenamerListRow : Gtk.ListBoxRow {
         size_group.add_widget (newname_label);
         size_group.add_widget (oldname_label);
 
-        var arrow_image = new Gtk.Image.from_icon_name ("go-next-symbolic", Gtk.IconSize.MENU) {
+        // var arrow_image = new Gtk.Image.from_icon_name ("go-next-symbolic", Gtk.IconSize.MENU) {
+        var arrow_image = new Gtk.Image.from_icon_name ("go-next-symbolic") {
             hexpand = true
         };
 
@@ -53,13 +54,13 @@ public class Files.RenamerListRow : Gtk.ListBoxRow {
             margin_bottom = 6,
             margin_start = 6
         };
-        box.add (oldname_label);
-        box.add (arrow_image);
-        box.add (newname_label);
-        box.add (status_image);
+        // box.add (oldname_label);
+        // box.add (arrow_image);
+        // box.add (newname_label);
+        // box.add (status_image);
 
         child = box;
-        show_all ();
+        // show_all ();
 
         bind_property ("new-name", newname_label, "label");
 

@@ -291,9 +291,9 @@ namespace Files {
                     uris.reverse (); // Deleting must be done in reverse
                     if (uris != null && confirm_delete) {
                         try {
-                            yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, false, cancellable
-                                  );
+                            // yield Files.FileOperations.@delete (
+                            //           uris, widget.get_toplevel () as Gtk.Window, false, cancellable
+                            //       );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;
@@ -344,9 +344,9 @@ namespace Files {
                     uris.prepend (GLib.File.new_for_uri (action.target_uri));
                     if (uris != null && confirm_delete) {
                         try {
-                            yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, false, cancellable
-                                  );
+                            // yield Files.FileOperations.@delete (
+                            //           uris, widget.get_toplevel () as Gtk.Window, false, cancellable
+                            //       );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;
@@ -377,9 +377,9 @@ namespace Files {
 
                         Files.FileChanges.consume_changes (true);
                     } else {
-                        PF.Dialogs.show_error_dialog (_("Original location could not be determined"),
-                                                      _("Open trash folder and restore manually"),
-                                                      widget.get_toplevel () as Gtk.Window);
+                        // PF.Dialogs.show_error_dialog (_("Original location could not be determined"),
+                        //                               _("Open trash folder and restore manually"),
+                        //                               widget.get_toplevel () as Gtk.Window);
                     }
 
                     undo_redo_done_transfer (action);
@@ -389,9 +389,9 @@ namespace Files {
                     action.destinations.foreach ((uri) => uris.prepend (action.dest_dir.get_child (uri)));
                     if (uris != null ) {
                         try {
-                            yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, true, cancellable
-                                  );
+                            // yield Files.FileOperations.@delete (
+                            //           uris, widget.get_toplevel () as Gtk.Window, true, cancellable
+                            //       );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;
@@ -494,8 +494,8 @@ namespace Files {
                     var p_uri = GLib.File.new_for_uri (action.target_uri).get_parent ().get_uri ();
                     var new_name = GLib.Path.get_basename (Uri.unescape_string (action.target_uri));
                     try {
-                        yield Files.FileOperations.new_file (widget.get_toplevel () as Gtk.Window, p_uri,
-                                                              new_name, action.template, 0, cancellable);
+                        // yield Files.FileOperations.new_file (widget.get_toplevel () as Gtk.Window, p_uri,
+                        //                                       new_name, action.template, 0, cancellable);
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
                         throw e;
@@ -506,9 +506,9 @@ namespace Files {
                 case Files.UndoActionType.CREATEFOLDER:
                     var fparent = GLib.File.new_for_uri (action.target_uri).get_parent ();
                     try {
-                        yield Files.FileOperations.new_folder (
-                                  widget.get_toplevel () as Gtk.Window, fparent, cancellable
-                              );
+                        // yield Files.FileOperations.new_folder (
+                        //           widget.get_toplevel () as Gtk.Window, fparent, cancellable
+                        //       );
                     } catch (Error e) {
                         undo_redo_done_transfer (action);
                         throw e;
@@ -523,9 +523,9 @@ namespace Files {
                         uri_to_trash.foreach ((uri) => uris.prepend (GLib.File.new_for_uri (uri)));
 
                         try {
-                            yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, true, cancellable
-                                  );
+                            // yield Files.FileOperations.@delete (
+                            //           uris, widget.get_toplevel () as Gtk.Window, true, cancellable
+                            //       );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;

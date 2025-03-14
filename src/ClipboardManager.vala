@@ -33,14 +33,15 @@ namespace Files {
         }
 
         private static GLib.Quark marlin_clipboard_manager_quark;
-        private static Gdk.Atom x_special_gnome_copied_files;
-        private const Gtk.TargetEntry[] CLIPBOARD_TARGETS = {
-            {"x-special/gnome-copied-files", 0, ClipboardTarget.GNOME_COPIED_FILES},
-            {"image/png", 0, ClipboardTarget.PNG_IMAGE},
-            {"UTF8_STRING", 0, ClipboardTarget.UTF8_STRING}
-        };
+        // private static Gdk.Atom x_special_gnome_copied_files;
+        // private const Gtk.TargetEntry[] CLIPBOARD_TARGETS = {
+        //     {"x-special/gnome-copied-files", 0, ClipboardTarget.GNOME_COPIED_FILES},
+        //     {"image/png", 0, ClipboardTarget.PNG_IMAGE},
+        //     {"UTF8_STRING", 0, ClipboardTarget.UTF8_STRING}
+        // };
 
-        private Gtk.Clipboard clipboard;
+        // private Gtk.Clipboard clipboard;
+        private Gdk.Clipboard clipboard;
         private GLib.List<Files.File> files = null;
         private bool files_cutted = false;
         public bool files_linked {get; private set; default = false;}
@@ -53,14 +54,15 @@ namespace Files {
 
         static construct {
             marlin_clipboard_manager_quark = GLib.Quark.from_string ("marlin-clipboard-manager");
-            x_special_gnome_copied_files = Gdk.Atom.intern_static_string ("x-special/gnome-copied-files");
+            // x_special_gnome_copied_files = Gdk.Atom.intern_static_string ("x-special/gnome-copied-files");
         }
 
-        private ClipboardManager (Gtk.Clipboard _clipboard) {
+        private ClipboardManager (Gdk.Clipboard _clipboard) {
+        // private ClipboardManager (Gtk.Clipboard _clipboard) {
             clipboard = _clipboard;
             clipboard.set_qdata (marlin_clipboard_manager_quark, this);
 
-            clipboard.owner_change.connect (owner_changed);
+            // clipboard.owner_change.connect (owner_changed);
         }
 
         public static ClipboardManager? get_for_display (Gdk.Display? display = Gdk.Display.get_default ()) {
@@ -69,7 +71,8 @@ namespace Files {
                 assert_not_reached ();
             }
 
-            var clipboard = Gtk.Clipboard.get_for_display (display, Gdk.SELECTION_CLIPBOARD);
+            // var clipboard = Gtk.Clipboard.get_for_display (display, Gdk.SELECTION_CLIPBOARD);
+            var clipboard = display.get_clipboard ();
             ClipboardManager? manager = clipboard.get_qdata (marlin_clipboard_manager_quark);
 
             if (manager != null) {
@@ -81,7 +84,7 @@ namespace Files {
 
         ~ClipboardManager () {
             release_pending_files ();
-            clipboard.owner_change.disconnect (owner_changed);
+            // clipboard.owner_change.disconnect (owner_changed);
         }
 
         /** If @file is null, returns whether there are ANY cut files
@@ -127,96 +130,96 @@ namespace Files {
              *  @cb the clipboard.
              *  @sd selection_data returned from the clipboard.
             **/
-            clipboard.request_contents (x_special_gnome_copied_files, (cb, sd) => {
-                contents_received.begin (sd, target_file, widget, (obj, res) => {
-                    try {
-                        contents_received.end (res);
-                    } catch (Error e) {
-                        debug (e.message);
-                    }
+            // clipboard.request_contents (x_special_gnome_copied_files, (cb, sd) => {
+            //     contents_received.begin (sd, target_file, widget, (obj, res) => {
+            //         try {
+            //             contents_received.end (res);
+            //         } catch (Error e) {
+            //             debug (e.message);
+            //         }
 
-                    paste_files.callback ();
-                });
-            });
+            //         paste_files.callback ();
+            //     });
+            // });
             yield;
         }
 
-        private async void contents_received (Gtk.SelectionData sd,
-                                              GLib.File target_file,
-                                              Gtk.Widget? widget = null) throws GLib.Error {
+        // private async void contents_received (Gtk.SelectionData sd,
+        //                                       GLib.File target_file,
+        //                                       Gtk.Widget? widget = null) throws GLib.Error {
 
-            /* check whether the retrieval worked */
-            string? text;
-            if (!DndHandler.selection_data_is_uri_list (sd, Files.TargetType.TEXT_URI_LIST, out text)) {
-                warning ("Selection data not uri_list in Files.ClipboardManager contents_received");
-                return;
-            }
+        //     /* check whether the retrieval worked */
+        //     string? text;
+        //     if (!DndHandler.selection_data_is_uri_list (sd, Files.TargetType.TEXT_URI_LIST, out text)) {
+        //         warning ("Selection data not uri_list in Files.ClipboardManager contents_received");
+        //         return;
+        //     }
 
-            if (text == null) {
-                warning ("Empty selection data in Files.ClipboardManager contents_received");
-                return;
-            }
+        //     if (text == null) {
+        //         warning ("Empty selection data in Files.ClipboardManager contents_received");
+        //         return;
+        //     }
 
-            Gdk.DragAction action = 0;
-            if (text.has_prefix ("copy")) {
-                action = Gdk.DragAction.COPY;
-                text = text.substring (4);
-            } else if (text.has_prefix ("cut")) {
-                action = Gdk.DragAction.MOVE;
-                text = text.substring (3);
-            } else if (text.has_prefix ("link")) {
-                action = Gdk.DragAction.LINK;
-                text = text.substring (4);
-            } else {
-                warning ("Invalid selection data in Files.ClipboardManager contents_received");
-                return;
-            }
+        //     Gdk.DragAction action = 0;
+        //     if (text.has_prefix ("copy")) {
+        //         action = Gdk.DragAction.COPY;
+        //         text = text.substring (4);
+        //     } else if (text.has_prefix ("cut")) {
+        //         action = Gdk.DragAction.MOVE;
+        //         text = text.substring (3);
+        //     } else if (text.has_prefix ("link")) {
+        //         action = Gdk.DragAction.LINK;
+        //         text = text.substring (4);
+        //     } else {
+        //         warning ("Invalid selection data in Files.ClipboardManager contents_received");
+        //         return;
+        //     }
 
-            var file_list = FileUtils.files_from_uris (text);
+        //     var file_list = FileUtils.files_from_uris (text);
 
-            if (file_list != null) {
-                try {
-                    yield FileOperations.copy_move_link (file_list,
-                                                         target_file,
-                                                         action,
-                                                         widget);
-                } catch (Error e) {
-                    throw e;
-                }
-            }
+        //     if (file_list != null) {
+        //         try {
+        //             yield FileOperations.copy_move_link (file_list,
+        //                                                  target_file,
+        //                                                  action,
+        //                                                  widget);
+        //         } catch (Error e) {
+        //             throw e;
+        //         }
+        //     }
 
-            /* clear the clipboard if it contained "cutted data"
-             * (gtk_clipboard_clear takes care of not clearing
-             * the selection if we don't own it)
-             */
-            if (action != Gdk.DragAction.COPY) {
-                clipboard.clear ();
-            }
-            /* check the contents of the clipboard again if either the Xserver or
-             * our GTK+ version doesn't support the XFixes extension */
-            if (!clipboard.get_display ().supports_selection_notification ()) {
-                owner_changed (null);
-            }
-        }
+        //     /* clear the clipboard if it contained "cutted data"
+        //      * (gtk_clipboard_clear takes care of not clearing
+        //      * the selection if we don't own it)
+        //      */
+        //     if (action != Gdk.DragAction.COPY) {
+        //         clipboard.clear ();
+        //     }
+        //     /* check the contents of the clipboard again if either the Xserver or
+        //      * our GTK+ version doesn't support the XFixes extension */
+        //     if (!clipboard.get_display ().supports_selection_notification ()) {
+        //         owner_changed (null);
+        //     }
+        // }
 
-        private void owner_changed (Gdk.Event? owner_change_event) {
-            clipboard.request_contents (Gdk.Atom.intern_static_string ("TARGETS"), (cb, sd) => {
-                can_paste = false;
-                Gdk.Atom[] targets = null;
+        // private void owner_changed (Gdk.Event? owner_change_event) {
+            // clipboard.request_contents (Gdk.Atom.intern_static_string ("TARGETS"), (cb, sd) => {
+            //     can_paste = false;
+            //     Gdk.Atom[] targets = null;
 
-                sd.get_targets (out targets);
-                foreach (var target in targets) {
-                    if (target == x_special_gnome_copied_files) {
-                        can_paste = true;
-                        break;
-                    }
-                }
+            //     sd.get_targets (out targets);
+            //     foreach (var target in targets) {
+            //         if (target == x_special_gnome_copied_files) {
+            //             can_paste = true;
+            //             break;
+            //         }
+            //     }
 
-                /* notify listeners that we have a new clipboard state */
-                changed ();
-                notify_property ("can-paste");
-            });
-        }
+            //     /* notify listeners that we have a new clipboard state */
+            //     changed ();
+            //     notify_property ("can-paste");
+            // });
+        // }
 
         /**
          * Sets the clipboard to contain @files_for_transfer and marks them to be copied
@@ -234,12 +237,12 @@ namespace Files {
             }
 
             /* acquire the Clipboard ownership */
-            clipboard.set_with_owner (CLIPBOARD_TARGETS, get_callback, clear_callback, this);
+            // clipboard.set_with_owner (CLIPBOARD_TARGETS, get_callback, clear_callback, this);
 
             /* Need to fake a "owner-change" event here if the Xserver doesn't support clipboard notification */
-            if (!clipboard.get_display ().supports_selection_notification ()) {
-                owner_changed (null);
-            }
+            // if (!clipboard.get_display ().supports_selection_notification ()) {
+            //     owner_changed (null);
+            // }
         }
 
         private void on_file_destroyed (Files.File file) {
@@ -247,44 +250,46 @@ namespace Files {
             files.remove (file);
         }
 
-        public static void get_callback (Gtk.Clipboard cb, Gtk.SelectionData sd, uint target_info, void* parent) {
-            var manager = parent as ClipboardManager;
-            if (manager == null || manager.clipboard != cb) {
-                return;
-            }
+        // public static void get_callback (Gtk.Clipboard cb, Gtk.SelectionData sd, uint target_info, void* parent) {
+        // public static void get_callback (Gdk.Clipboard cb, Gtk.SelectionData sd, uint target_info, void* parent) {
+        //     var manager = parent as ClipboardManager;
+        //     if (manager == null || manager.clipboard != cb) {
+        //         return;
+        //     }
 
-            switch (target_info) {
-                case ClipboardTarget.GNOME_COPIED_FILES: /* Pasting into a file handler */
-                    string prefix = manager.files_cutted ? "cut" : (manager.files_linked ? "link" : "copy");
-                    DndHandler.set_selection_data_from_file_list (sd,
-                                                                  manager.files,
-                                                                  prefix);
-                    break;
+        //     switch (target_info) {
+        //         case ClipboardTarget.GNOME_COPIED_FILES: /* Pasting into a file handler */
+        //             string prefix = manager.files_cutted ? "cut" : (manager.files_linked ? "link" : "copy");
+        //             DndHandler.set_selection_data_from_file_list (sd,
+        //                                                           manager.files,
+        //                                                           prefix);
+        //             break;
 
-                case ClipboardTarget.PNG_IMAGE: /* Pasting into a (single) image handler */
-                    if (manager.files == null) {
-                        break;
-                    }
+        //         case ClipboardTarget.PNG_IMAGE: /* Pasting into a (single) image handler */
+        //             if (manager.files == null) {
+        //                 break;
+        //             }
 
-                    var filename = manager.files.data.location.get_path ();
-                    try {
-                        var pixbuf = new Gdk.Pixbuf.from_file (filename);
-                        sd.set_pixbuf (pixbuf);
-                    } catch (Error e) {
-                        warning ("failed to get pixbuf from file %s ", filename);
-                    }
+        //             var filename = manager.files.data.location.get_path ();
+        //             try {
+        //                 var pixbuf = new Gdk.Pixbuf.from_file (filename);
+        //                 sd.set_pixbuf (pixbuf);
+        //             } catch (Error e) {
+        //                 warning ("failed to get pixbuf from file %s ", filename);
+        //             }
 
-                    break;
+        //             break;
 
-                case ClipboardTarget.UTF8_STRING: /* Pasting into a text handler */
-                    DndHandler.set_selection_text_from_file_list (sd, manager.files, "");
-                    break;
-                default:
-                    break;
-            }
-        }
+        //         case ClipboardTarget.UTF8_STRING: /* Pasting into a text handler */
+        //             DndHandler.set_selection_text_from_file_list (sd, manager.files, "");
+        //             break;
+        //         default:
+        //             break;
+        //     }
+        // }
 
-        public static void clear_callback (Gtk.Clipboard cb, void* parent) {
+        // public static void clear_callback (Gtk.Clipboard cb, void* parent) {
+        public static void clear_callback (Gdk.Clipboard cb, void* parent) {
             var manager = (ClipboardManager)parent;
             if (manager == null || manager.clipboard != cb) {
                 return;

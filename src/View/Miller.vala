@@ -63,11 +63,12 @@ namespace Files.View {
             colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
 
             viewport = new Gtk.Viewport (null, null) {
-                shadow_type = Gtk.ShadowType.NONE
+                // shadow_type = Gtk.ShadowType.NONE
             };
-            viewport.add (colpane);
+            // viewport.add (colpane);
 
-            scrolled_window = new Gtk.ScrolledWindow (null, null) {
+            scrolled_window = new Gtk.ScrolledWindow () {
+            // scrolled_window = new Gtk.ScrolledWindow (null, null) {
                 child = viewport,
                 hscrollbar_policy = Gtk.PolicyType.AUTOMATIC,
                 vscrollbar_policy = Gtk.PolicyType.NEVER
@@ -77,7 +78,7 @@ namespace Files.View {
 
             add_overlay (scrolled_window);
 
-            content_box.show_all ();
+            // content_box.show_all ();
 
             current_slot = null;
             add_location (root_location, null); /* current slot gets set by this */
@@ -102,19 +103,19 @@ namespace Files.View {
                 hexpand = true
             };
 
-            guest.hpane.pack1 (guest.get_directory_view (), false, false);
-            guest.hpane.pack2 (guest.colpane, true, true);
-            guest.hpane.show_all ();
+            // guest.hpane.pack1 (guest.get_directory_view (), false, false);
+            // guest.hpane.pack2 (guest.colpane, true, true);
+            // guest.hpane.show_all ();
 
             connect_slot_signals (guest);
 
             if (host != null) {
                 truncate_list_after_slot (host);
                 host.select_gof_file (guest.file);
-                host.colpane.add (guest.hpane);
+                // host.colpane.add (guest.hpane);
                 guest.initialize_directory ();
             } else {
-                this.colpane.add (guest.hpane);
+                // this.colpane.add (guest.hpane);
             }
 
             slot_list.append (guest); // Must add to list before scrolling
@@ -138,9 +139,9 @@ namespace Files.View {
                 }
             });
 
-            ((View.Slot)(slot)).colpane.@foreach ((w) => {
-                w.destroy ();
-            });
+            // ((View.Slot)(slot)).colpane.@foreach ((w) => {
+            //     w.destroy ();
+            // });
 
             slot_list.nth (n).next = null;
             calculate_total_width ();
@@ -475,7 +476,7 @@ namespace Files.View {
                     hadj_value += offset;
                 }
 
-                offset = total_width_before + slot.width - hadj_value - viewport.get_view_window ().get_width ();
+                // offset = total_width_before + slot.width - hadj_value - viewport.get_view_window ().get_width ();
                 if (offset > 0) { /*scroll  until right hand edge of active slot is in view*/
                     hadj_value += offset;
                 }

@@ -128,11 +128,11 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         view = _view;
 
         /* Connect signal before creating any DeepCount directories */
-        this.destroy.connect (() => {
-            foreach (var dir in deep_count_directories) {
-                dir.cancel ();
-            }
-        });
+        // this.destroy.connect (() => {
+        //     foreach (var dir in deep_count_directories) {
+        //         dir.cancel ();
+        //     }
+        // });
 
         /* The properties window may outlive the passed-in file object
            lifetimes. The objects must be referenced as a precaution.
@@ -186,7 +186,8 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         /* create some widgets first (may be hidden by update_selection_size ()) */
         var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), Files.File.IconFlags.NONE);
         if (file_pix != null) {
-            var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG) {
+            // var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG) {
+            var file_icon = new Gtk.Image.from_gicon (file_pix) {
                 pixel_size = 48
             };
             overlay_emblems (file_icon, goffile.emblems_list);
@@ -206,10 +207,10 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
                 rename_file (goffile, entry.get_text ());
             });
 
-            entry.focus_out_event.connect (() => {
-                rename_file (goffile, entry.get_text ());
-                return false;
-            });
+            // entry.focus_out_event.connect (() => {
+            //     rename_file (goffile, entry.get_text ());
+            //     return false;
+            // });
 
             header_title = entry;
         }
@@ -220,13 +221,13 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         stack.add_titled (construct_perm_panel (), PanelType.PERMISSIONS.to_string (), _("Permissions"));
 
         var stack_switcher = new Gtk.StackSwitcher () {
-            homogeneous = true,
+            // homogeneous = true,
             margin_top = 12,
             stack = stack
         };
 
         layout.attach (stack_switcher, 0, 1, 2);
-        layout.show_all ();
+        // layout.show_all ();
 
         present ();
     }
@@ -268,7 +269,8 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         }
 
         if (size_warning > 0) {
-            var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", MENU) {
+            // var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", MENU) {
+            var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic") {
                 halign = START,
                 hexpand = true
             };
@@ -284,7 +286,7 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
             info_grid.attach_next_to (size_warning_image, size_value, RIGHT);
         }
 
-        info_grid.show_all ();
+        // info_grid.show_all ();
     }
 
     private void update_selection_size () {
@@ -971,9 +973,12 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         permission_box.get_style_context ().add_class ("rich-list");
         permission_box.get_style_context ().add_class ("boxed-list");
         permission_box.get_style_context ().add_class ("separators");
-        permission_box.add (perm_button_user);
-        permission_box.add (perm_button_group);
-        permission_box.add (perm_button_other);
+        permission_box.insert (perm_button_user, -1);
+        permission_box.insert (perm_button_group, -1);
+        permission_box.insert (perm_button_other, -1);
+        // permission_box.add (perm_button_user);
+        // permission_box.add (perm_button_group);
+        // permission_box.add (perm_button_other);
 
         var perm_grid = new Gtk.Grid () {
             column_spacing = 6,

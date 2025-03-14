@@ -49,7 +49,7 @@ public class PermissionButton : Gtk.ListBoxRow {
 
         btn_read = new Gtk.ToggleButton () {
             hexpand = true,
-            image = new Gtk.Image.from_icon_name ("permission-read-symbolic", BUTTON),
+            // image = new Gtk.Image.from_icon_name ("permission-read-symbolic", BUTTON),
             tooltip_text = _("Read")
         };
         btn_read.set_data ("permissiontype", permission_type);
@@ -57,7 +57,7 @@ public class PermissionButton : Gtk.ListBoxRow {
 
         btn_write = new Gtk.ToggleButton () {
             hexpand = true,
-            image = new Gtk.Image.from_icon_name ("permission-write-symbolic", BUTTON),
+            // image = new Gtk.Image.from_icon_name ("permission-write-symbolic", BUTTON),
             tooltip_text = _("Write")
         };
         btn_write.set_data ("permissiontype", permission_type);
@@ -65,17 +65,17 @@ public class PermissionButton : Gtk.ListBoxRow {
 
         btn_exe = new Gtk.ToggleButton () {
             hexpand = true,
-            image = new Gtk.Image.from_icon_name ("permission-execute-symbolic", BUTTON),
+            // image = new Gtk.Image.from_icon_name ("permission-execute-symbolic", BUTTON),
             tooltip_text = _("Execute")
         };
         btn_exe.set_data ("permissiontype", permission_type);
         btn_exe.set_data ("permissionvalue", Permissions.Value.EXE);
 
         var box = new Gtk.Box (HORIZONTAL, 6);
-        box.add (label);
-        box.add (btn_read);
-        box.add (btn_write);
-        box.add (btn_exe);
+        // box.add (label);
+        // box.add (btn_read);
+        // box.add (btn_write);
+        // box.add (btn_exe);
 
         child = box;
         selectable = false;
@@ -85,26 +85,26 @@ public class PermissionButton : Gtk.ListBoxRow {
     public void update_buttons (uint32 permissions) {
         if ((permissions & vfs_perms[permission_type, 0]) != 0) {
             btn_read.active = true;
-            ((Gtk.Image) btn_read.image).icon_name = "permission-read-symbolic";
+            // ((Gtk.Image) btn_read.image).icon_name = "permission-read-symbolic";
         } else {
             btn_read.active = false;
-            ((Gtk.Image) btn_read.image).icon_name = "permission-read-prevent-symbolic";
+            // ((Gtk.Image) btn_read.image).icon_name = "permission-read-prevent-symbolic";
         }
 
         if ((permissions & vfs_perms[permission_type, 1]) != 0) {
             btn_write.active = true;
-            ((Gtk.Image) btn_write.image).icon_name = "permission-write-symbolic";
+            // ((Gtk.Image) btn_write.image).icon_name = "permission-write-symbolic";
         } else {
             btn_write.active = false;
-            ((Gtk.Image) btn_write.image).icon_name = "permission-write-prevent-symbolic";
+            // ((Gtk.Image) btn_write.image).icon_name = "permission-write-prevent-symbolic";
         }
 
         if ((permissions & vfs_perms[permission_type, 2]) != 0) {
             btn_exe.active = true;
-            ((Gtk.Image) btn_exe.image).icon_name = "permission-execute-symbolic";
+            // ((Gtk.Image) btn_exe.image).icon_name = "permission-execute-symbolic";
         } else {
             btn_exe.active = false;
-            ((Gtk.Image) btn_exe.image).icon_name = "permission-execute-prevent-symbolic";
+            // ((Gtk.Image) btn_exe.image).icon_name = "permission-execute-prevent-symbolic";
         }
     }
 }
