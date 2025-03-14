@@ -44,7 +44,7 @@ public class Files.IconInfo : GLib.Object {
             8,
             tx.width,
             tx.height,
-            (int) stride 
+            (int) stride
         );
     }
 
