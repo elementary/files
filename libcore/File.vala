@@ -488,7 +488,6 @@ public class Files.File : GLib.Object {
         if (iconinfo == null || iconinfo.pixbuf == null) {
             GLib.Icon? gicon = null;
             if (awaiting_thumbnail) {
-debug ("using image loading");
                 gicon = new GLib.ThemedIcon ("image-loading");
                 pix_is_final = false;
             } else {
@@ -501,7 +500,6 @@ debug ("using image loading");
                     iconinfo = Files.IconInfo.get_generic_icon (requested_size, scale);
                 }
             } else {
-debug ("using generic icon");
                 iconinfo = Files.IconInfo.get_generic_icon (requested_size, scale);
             }
         }
