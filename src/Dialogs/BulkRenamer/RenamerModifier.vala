@@ -115,8 +115,8 @@ public class Files.RenamerModifier : Object {
                                               RenameDateFormat.ISO_DATETIME.to_string ());
 
                     var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
-                    // box.add (date_source_combo);
-                    // box.add (date_format_combo);
+                    box.append (date_source_combo);
+                    box.append (date_format_combo);
                     controls = box;
 
                     date_source_combo.active = modifier.source;

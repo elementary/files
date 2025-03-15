@@ -255,8 +255,8 @@ public class Files.View.Window : Adw.ApplicationWindow {
         };
 
         var tab_box = new Gtk.Box (VERTICAL, 0);
-        // tab_box.add (tab_bar);
-        // tab_box.add (tab_view);
+        tab_box.append (tab_bar);
+        tab_box.append (tab_view);
 
         sidebar = new Sidebar.SidebarWindow ();
         free_space_change.connect (sidebar.on_free_space_change);

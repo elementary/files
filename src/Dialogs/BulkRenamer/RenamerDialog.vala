@@ -89,8 +89,8 @@ public class Files.RenamerDialog : Granite.Dialog {
         suffix_menumodel.append (_("Fixed Text"), Action.print_detailed_name ("renamer.add-text", suffix_var));
 
         var prefix_button_box = new Gtk.Box (HORIZONTAL, 0);
-        // prefix_button_box.add (new Gtk.Image.from_icon_name ("list-add-symbolic", BUTTON));
-        // prefix_button_box.add (new Gtk.Label (_("Add Prefix…")));
+        prefix_button_box.append (new Gtk.Image.from_icon_name ("list-add-symbolic"));
+        prefix_button_box.append (new Gtk.Label (_("Add Prefix…")));
 
         var prefix_button = new Gtk.MenuButton () {
             child = prefix_button_box,
@@ -105,11 +105,11 @@ public class Files.RenamerDialog : Granite.Dialog {
         };
 
         prefix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-        // prefix_box.add (prefix_revealer);
+        prefix_box.append (prefix_revealer);
 
         var suffix_button_box = new Gtk.Box (HORIZONTAL, 0);
-        // suffix_button_box.add (new Gtk.Image.from_icon_name ("list-add-symbolic", BUTTON));
-        // suffix_button_box.add (new Gtk.Label (_("Add Suffix…")));
+        suffix_button_box.append (new Gtk.Image.from_icon_name ("list-add-symbolic"));
+        suffix_button_box.append (new Gtk.Label (_("Add Suffix…")));
 
         var suffix_button = new Gtk.MenuButton () {
             child = suffix_button_box,
@@ -124,7 +124,7 @@ public class Files.RenamerDialog : Granite.Dialog {
         };
 
         suffix_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-        // suffix_box.add (suffix_revealer);
+        suffix_box.append (suffix_revealer);
 
         var basename_label = new Gtk.Label (_("Basename:"));
         // In Gtk4 replace RadioButtons with linked ToggleButtons
@@ -146,9 +146,9 @@ public class Files.RenamerDialog : Granite.Dialog {
 
         var toggle_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         // toggle_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
-        // toggle_box.add (original_basename_toggle);
-        // toggle_box.add (new_basename_toggle);
-        // toggle_box.add (modify_basename_toggle);
+        // toggle_box.append (original_basename_toggle);
+        // toggle_box.append (new_basename_toggle);
+        // toggle_box.append (modify_basename_toggle);
 
         var basename_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
             halign = Gtk.Align.CENTER,
@@ -212,8 +212,8 @@ public class Files.RenamerDialog : Granite.Dialog {
         };
 
         var list_box = new Gtk.Box (VERTICAL, 0);
-        // list_box.add (sortby_revealer);
-        // list_box.add (frame);
+        list_box.append (sortby_revealer);
+        list_box.append (frame);
 
         /* Assemble content */
         controls_grid = new Gtk.Grid () {
@@ -227,12 +227,12 @@ public class Files.RenamerDialog : Granite.Dialog {
         controls_grid.attach (replacement_entry_revealer, 1, 1);
 
         var content_box = get_content_area ();
-        // content_box.add (basename_box);
-        // content_box.add (controls_grid);
-        // content_box.add (list_box);
-        // content_box.margin_start = 10;
-        // content_box.margin_end = 10;
-        // content_box.margin_bottom = 10;
+        content_box.append (basename_box);
+        content_box.append (controls_grid);
+        content_box.append (list_box);
+        content_box.margin_start = 10;
+        content_box.margin_end = 10;
+        content_box.margin_bottom = 10;
         // content_box.show_all ();
 
         replacement_entry_revealer.reveal_child = false;
@@ -340,8 +340,8 @@ public class Files.RenamerDialog : Granite.Dialog {
         // button_box.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         var edit_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
-        // edit_box.pack_start (mod.get_modifier_widget ());
-        // edit_box.pack_start (button_box);
+        edit_box.append (mod.get_modifier_widget ());
+        edit_box.append (button_box);
         // edit_box.show_all ();
 
         var mod_popover = new Gtk.Popover () {
@@ -397,10 +397,9 @@ public class Files.RenamerDialog : Granite.Dialog {
         });
 
         if (mod.pos == RenamePosition.PREFIX) {
-            // prefix_box.add (mod_button);
+            prefix_box.append (mod_button);
         } else {
-            // Gtk4: replace with prepend
-            // suffix_box.add (mod_button);
+            suffix_box.append (mod_button);
             // suffix_box.reorder_child (suffix_revealer, -1);
         }
 

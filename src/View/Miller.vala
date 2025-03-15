@@ -63,12 +63,10 @@ namespace Files.View {
             colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
 
             viewport = new Gtk.Viewport (null, null) {
-                // shadow_type = Gtk.ShadowType.NONE
+                child = colpane
             };
-            // viewport.add (colpane);
 
             scrolled_window = new Gtk.ScrolledWindow () {
-            // scrolled_window = new Gtk.ScrolledWindow (null, null) {
                 child = viewport,
                 hscrollbar_policy = Gtk.PolicyType.AUTOMATIC,
                 vscrollbar_policy = Gtk.PolicyType.NEVER
@@ -112,10 +110,10 @@ namespace Files.View {
             if (host != null) {
                 truncate_list_after_slot (host);
                 host.select_gof_file (guest.file);
-                // host.colpane.add (guest.hpane);
+                host.colpane.append (guest.hpane);
                 guest.initialize_directory ();
             } else {
-                // this.colpane.add (guest.hpane);
+                this.colpane.append (guest.hpane);
             }
 
             slot_list.append (guest); // Must add to list before scrolling

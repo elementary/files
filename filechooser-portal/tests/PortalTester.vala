@@ -11,22 +11,19 @@ public class PortalTester : Gtk.Application {
         window.set_default_size (400, 400);
         window.title = "Files Portal Tester";
 
-        var grid = new Gtk.Grid () {
+        var grid = new Gtk.Box (VERTICAL, 6) {
             halign = Gtk.Align.CENTER,
-            valign = Gtk.Align.CENTER,
-            orientation = Gtk.Orientation.VERTICAL,
-            row_spacing = 6,
-            margin = 6
+            valign = Gtk.Align.CENTER
         };
         var open_file_button = new Gtk.Button.with_label ("Open File");
         var open_folder_button = new Gtk.Button.with_label ("Open Folder");
         var save_button = new Gtk.Button.with_label ("Save");
 
-        grid.add (open_file_button);
-        grid.add (open_folder_button);
-        grid.add (save_button);
+        grid.append (open_file_button);
+        grid.append (open_folder_button);
+        grid.append (save_button);
 
-        window.add (grid);
+        window.child = grid;
 
         open_file_button.clicked.connect (() => {
             var filechooser = new Gtk.FileChooserNative ("Custom Title", window, Gtk.FileChooserAction.OPEN, "Open", "Not Open");

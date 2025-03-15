@@ -107,7 +107,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             revealed = false
         };
         // info_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FRAME);
-        // info_bar.get_content_area ().add (info_label);
+        info_bar.add_child (info_label);
 
         var server_header_label = new Granite.HeaderLabel (_("Server Details"));
 
@@ -133,8 +133,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         var port_box = new Gtk.Box (HORIZONTAL, 6) {
             margin_start = 6
         };
-        // port_box.add (port_label);
-        // port_box.add (port_spinbutton);
+        port_box.append (port_label);
+        port_box.append (port_spinbutton);
 
         port_revealer = new Gtk.Revealer () {
             child = port_box,
@@ -142,8 +142,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         };
 
         var server_port_box = new Gtk.Box (HORIZONTAL, 0);
-        // server_port_box.add (server_entry);
-        // server_port_box.add (port_revealer);
+        server_port_box.append (server_entry);
+        server_port_box.append (port_revealer);
 
         var type_store = new Gtk.ListStore (2, typeof (MethodInfo), typeof (string));
 
@@ -225,9 +225,9 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             homogeneous = true,
             margin_top = 24
         };
-        // button_box.add (cancel_button);
-        // button_box.add (connect_button);
-        // button_box.add (continue_button);
+        button_box.append (cancel_button);
+        button_box.append (connect_button);
+        button_box.append (continue_button);
 
         var grid = new Gtk.Grid () {
             row_spacing = 6,
@@ -269,8 +269,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             halign = CENTER,
             valign = CENTER
         };
-        // connecting_box.add (connecting_label);
-        // connecting_box.add (connecting_spinner);
+        connecting_box.append (connecting_label);
+        connecting_box.append (connecting_spinner);
 
         stack = new Gtk.Stack () {
             transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
@@ -283,8 +283,8 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         // content_area.border_width = 0;
         content_area.margin_end = content_area.margin_start = 12;
         content_area.margin_bottom = 2;
-        // content_area.add (stack);
-        // content_area.add (button_box);
+        content_area.append (stack);
+        content_area.append (button_box);
         // content_area.show_all ();
 
         default_width = 400;

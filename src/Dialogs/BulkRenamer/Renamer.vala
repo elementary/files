@@ -59,7 +59,7 @@ public class Files.Renamer : Object {
             if (dir == directory) {
                 f.ensure_query_info ();
                 var row = new RenamerListRow (f);
-                // listbox.add (row);
+                listbox.insert (row, -1);
                 row.new_name = Path.get_basename (path);
             }
         }

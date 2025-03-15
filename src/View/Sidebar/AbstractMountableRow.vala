@@ -130,8 +130,8 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             transition_type = Gtk.StackTransitionType.CROSSFADE
         };
 
-        // unmount_eject_working_stack.add (unmount_eject_revealer);
-        // unmount_eject_working_stack.add (working_spinner);
+        unmount_eject_working_stack.add_child (unmount_eject_revealer);
+        unmount_eject_working_stack.add_child (working_spinner);
 
         content_grid.attach (unmount_eject_working_stack, 1, 0);
 
