@@ -105,8 +105,7 @@ namespace Files.View {
                 content_item = value;
 
                 if (content_item != null) {
-                    // add (content_item);
-                    // content_item.show_all ();
+                    append (content_item);
                 }
             }
             get {

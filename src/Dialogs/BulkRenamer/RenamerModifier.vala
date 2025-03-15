@@ -157,8 +157,7 @@ public class Files.RenamerModifier : Object {
             grid.attach (separator_label, 0, 0);
             grid.attach (separator_entry, 1, 0);
             grid.attach (controls, 0, 1, 2, 1);
-            // add (grid);
-            // show_all ();
+            append (grid);
         }
     }
 
