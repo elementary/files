@@ -215,7 +215,7 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         box.append (expander);
         box.append (apply_all_checkbutton);
 
-        custom_bin.append = box;
+        custom_bin.append (box);
 
         source_type_label.bind_property ("visible", source_type_title_label, "visible");
         destination_type_label.bind_property ("visible", destination_type_title_label, "visible");

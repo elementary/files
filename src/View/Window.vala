@@ -272,7 +272,7 @@ public class Files.View.Window : Adw.ApplicationWindow {
         grid.attach (headerbar, 0, 0);
         grid.attach (lside_pane, 0, 1);
 
-        child = grid;
+        content = grid;
 
         /** Apply preferences */
         var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
