@@ -285,7 +285,6 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         content_area.margin_bottom = 2;
         content_area.append (stack);
         content_area.append (button_box);
-        // content_area.show_all ();
 
         default_width = 400;
 

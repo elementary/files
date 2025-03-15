@@ -76,8 +76,6 @@ namespace Files.View {
 
             add_overlay (scrolled_window);
 
-            // content_box.show_all ();
-
             current_slot = null;
             add_location (root_location, null); /* current slot gets set by this */
 
@@ -103,7 +101,6 @@ namespace Files.View {
 
             // guest.hpane.pack1 (guest.get_directory_view (), false, false);
             // guest.hpane.pack2 (guest.colpane, true, true);
-            // guest.hpane.show_all ();
 
             connect_slot_signals (guest);
 

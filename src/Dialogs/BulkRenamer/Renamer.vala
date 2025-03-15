@@ -39,7 +39,6 @@ public class Files.Renamer : Object {
         };
         listbox.set_sort_func (sort_func);
         listbox.invalidate_sort ();
-        // listbox.show_all ();
 
         notify["sortby"].connect (listbox.invalidate_sort);
     }

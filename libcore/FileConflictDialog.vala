@@ -324,7 +324,7 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
             source_type_label.label = src_ftype;
         } else {
             source_type_label.visible = false;
-            // source_type_label.no_show_all = true;
+            //TODO Replace no_show_all behaviour
         }
 
         if (should_show_type && dest_ftype != null) {

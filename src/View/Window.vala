@@ -271,7 +271,6 @@ public class Files.View.Window : Adw.ApplicationWindow {
         var grid = new Gtk.Grid ();
         grid.attach (headerbar, 0, 0);
         grid.attach (lside_pane, 0, 1);
-        // grid.show_all ();
 
         child = grid;
 

@@ -37,7 +37,6 @@ public class PortalTester : Gtk.Application {
                         "This file has been opened: %s",
                         filechooser.get_file ().get_path ()
                     );
-                    message_dialog.show_all ();
                 } else {
                     warning ("Ooops, operation cancelled!");
                 }
@@ -59,7 +58,6 @@ public class PortalTester : Gtk.Application {
                         "These files have been opened: %s",
                         paths
                     );
-                    message_dialog.show_all ();
                 } else {
                     warning ("Ooops, operation cancelled!");
                 }
@@ -79,15 +77,12 @@ public class PortalTester : Gtk.Application {
                         "This file has been saved: %s",
                         filechooser.get_file ().get_path ()
                     );
-                    message_dialog.show_all ();
                 } else {
                     warning ("Ooops, operation cancelled!");
                 }
             });
             filechooser.show ();
         });
-
-        window.show_all ();
     }
 
     public static int main (string[] args) {

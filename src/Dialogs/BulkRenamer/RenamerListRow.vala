@@ -60,7 +60,6 @@ public class Files.RenamerListRow : Gtk.ListBoxRow {
         box.append (status_image);
 
         child = box;
-        // show_all ();
 
         bind_property ("new-name", newname_label, "label");
 

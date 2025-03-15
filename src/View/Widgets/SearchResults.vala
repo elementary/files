@@ -626,7 +626,6 @@ namespace Files.View.Chrome {
                 disconnect_view_cursor_changed_signal ();
                 popdown ();
             } else {
-                // show_all ();
                 connect_view_cursor_changed_signal ();
                 // Gtk.Window toplevel = (Gtk.Window)(get_relative_to ().get_ancestor (typeof (Gtk.Window)));
                 // scroll.min_content_height = int.min (toplevel.get_allocated_height (), (items + headers) * 24);

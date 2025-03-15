@@ -424,7 +424,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             child = drop_revealer_child,
             transition_type = Gtk.RevealerTransitionType.SLIDE_UP
         };
-        // drop_revealer.show_all ();
 
         content_grid.attach (drop_revealer, 0, 1);
 

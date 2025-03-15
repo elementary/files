@@ -46,8 +46,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
 
         var network_expander = new SidebarExpander (_("Network")) {
             tooltip_text = _("Devices and places available via a network")
-            // no_show_all = Files.is_admin ()
-        };
+        }; //TODO Replace no_show_all behaviour
 
         var network_revealer = new Gtk.Revealer () {
             child = network_listbox
@@ -99,8 +98,6 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         plugins.sidebar_loaded (this);
 
         reload ();
-
-        // show_all ();
 
         Files.app_settings.bind (
             "sidebar-cat-personal-expander", bookmark_expander, "active", SettingsBindFlags.DEFAULT

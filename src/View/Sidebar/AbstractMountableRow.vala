@@ -138,7 +138,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         storage_levelbar = new Gtk.LevelBar () {
             value = 0.5,
             hexpand = true
-            // no_show_all = true
+            //TODO replace no_show_all behaviour
         };
         storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, 0.9);
         storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, 0.95);
@@ -160,8 +160,6 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                 unmount_mount.begin ();
             }
         });
-
-        // show_all ();
 
         add_mountable_tooltip.begin ();
 

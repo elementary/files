@@ -233,7 +233,6 @@ public class Files.RenamerDialog : Granite.Dialog {
         content_box.margin_start = 10;
         content_box.margin_end = 10;
         content_box.margin_bottom = 10;
-        // content_box.show_all ();
 
         replacement_entry_revealer.reveal_child = false;
 
@@ -342,7 +341,6 @@ public class Files.RenamerDialog : Granite.Dialog {
         var edit_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
         edit_box.append (mod.get_modifier_widget ());
         edit_box.append (button_box);
-        // edit_box.show_all ();
 
         var mod_popover = new Gtk.Popover () {
         // var mod_popover = new Gtk.Popover (null) {
@@ -403,7 +401,6 @@ public class Files.RenamerDialog : Granite.Dialog {
             // suffix_box.reorder_child (suffix_revealer, -1);
         }
 
-        // controls_grid.show_all ();
         controls_grid.queue_draw ();
         schedule_view_update ();
     }

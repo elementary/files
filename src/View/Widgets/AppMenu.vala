@@ -127,7 +127,6 @@ public class Files.AppMenu : Gtk.Popover {
         menu_box.append (show_hidden_button);
         menu_box.append (show_local_thumbnails);
         menu_box.append (show_remote_thumbnails);
-        // menu_box.show_all ();
 
         child = menu_box;
 

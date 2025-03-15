@@ -26,7 +26,6 @@
 //         public Welcome (string primary, string secondary) {
 //             base (primary, secondary);
 //             this.button_press_event.connect (on_button_press_event);
-//             show_all ();
 //         }
 
 //         public bool on_button_press_event (Gdk.EventButton event) {

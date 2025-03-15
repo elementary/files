@@ -320,7 +320,6 @@ namespace Files {
             if (view != null) {
                 append (view);
                 // child = view;
-                // show_all ();
                 connect_drag_drop_signals (view);
 
                 // view.draw.connect (on_view_draw);
@@ -2263,7 +2262,6 @@ namespace Files {
         //         menu.get_style_context ().add_class (Gtk.STYLE_CLASS_CONTEXT_MENU);
         //     }
 
-        //     menu.show_all ();
         //     menu.popup_at_pointer (event);
         // }
 
