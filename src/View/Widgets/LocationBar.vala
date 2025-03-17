@@ -36,7 +36,7 @@ namespace Files.View.Chrome {
                 if (!value) {
                     bread.set_primary_icon_name (null);
                 } else {
-                    bread.get_style_context ().remove_class ("spin");
+                    remove_css_class ("spin");
                     bread.set_primary_icon_name (Files.ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC);
                     hide_navigate_icon ();
                 }
@@ -206,7 +206,7 @@ namespace Files.View.Chrome {
             return txt.contains (Path.DIR_SEPARATOR_S) || txt.contains (":");
         }
         protected void show_refresh_icon () {
-            bread.get_style_context ().remove_class ("spin");
+            bread.remove_css_class ("spin");
             bread.action_icon_name = Files.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC;
             bread.set_action_icon_tooltip (Granite.markup_accel_tooltip ({"F5", "<Ctrl>R"}, _("Reload this folder")));
         }
@@ -226,7 +226,7 @@ namespace Files.View.Chrome {
         }
 
         private void hide_working_icon () {
-            bread.get_style_context ().remove_class ("spin");
+            bread.remove_css_class ("spin");
             bread.action_icon_name = null;
         }
 

@@ -119,7 +119,11 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             tooltip_text = (can_eject ? _("Eject '%s'") : _("Unmount '%s'")).printf (custom_name)
         };
 
-        unmount_eject_button.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        Gtk.StyleContext.add_provider_for_display (
+            Gdk.Display.get_default (),
+            devicerow_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        );
 
         working_spinner = new Gtk.Spinner ();
 

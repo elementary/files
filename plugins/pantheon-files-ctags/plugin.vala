@@ -238,7 +238,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     //             return true;
     //         }
 
-    //         if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
+            // if (Gtk.TextDirection.RTL in get_direction ())
     //             var width = get_allocated_width ();
     //             int x = width - 27;
     //             for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
