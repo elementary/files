@@ -18,8 +18,15 @@
 
 public class Files.IconInfo : GLib.Object {
     private int64 last_use_time;
-    public Gdk.Paintable? paintable { get; construct; default = null; }
-    public string icon_name {get; construct; }
+    private Gdk.Paintable? _paintable = null;
+    public Gdk.Paintable? paintable {
+        get {
+            last_use_time = GLib.get_monotonic_time ();
+            return _paintable;
+        }
+    }
+
+    public string icon_name { get; construct; }
 
     public IconInfo (Gdk.Paintable paintable, string name) {
         Object (
@@ -34,102 +41,68 @@ public class Files.IconInfo : GLib.Object {
         schedule_reap_cache ();
     }
 
-    public static Files.IconInfo? lookup (
-        GLib.Icon icon,
+    public static Files.IconInfo? lookup_by_gicon (
+        GLib.Icon gicon,
         int size,
         int scale,
-        bool cache_loadable = false
+        bool is_remote
     ) {
-        size = int.max (1, size);
-        Gdk.Paintable? pix = null;
-        if (icon is FileIcon) { // Thumbnails
-            var dl_icon = (FileIcon) icon;
-            if (cache_loadable) {
-                if (loadable_icon_cache == null) {
-                    loadable_icon_cache = new GLib.HashTable<LoadableIconKey, Files.IconInfo> (
-                        LoadableIconKey.hash,
-                        LoadableIconKey.equal
-                    );
-                } else {
-                    var icon_info = loadable_icon_cache.lookup (
-                        new LoadableIconKey (icon, size, scale)
-                    );
-
-                    if (icon_info != null) {
-                        return icon_info;
-                    }
-                }
-            }
-
-            try {
-                pix = Gdk.Texture.from_file (dl_icon.file);
-            } catch (Error e) {
-                warning ("Error creating texture for %s", dl_icon.file.get_uri ());
-            }
-
-            if (pix != null) {
-                var icon_info = new IconInfo (pix, dl_icon.file.get_basename ());
-                if (cache_loadable) {
-                debug ("insert loadable icon %s", dl_icon.file.get_basename ());
-                    loadable_icon_cache.insert (
-                        new LoadableIconKey (icon, size, scale),
-                        icon_info
-                    );
-                }
-
-                return icon_info;
-            }
-        }
-
-        var theme = get_icon_theme ();
-        Gtk.IconPaintable icon_paintable;
-        if (icon is GLib.ThemedIcon) { // ThemedIcons
-            pix = theme.lookup_icon (
-                icon.names[0],
-                icon.names,
-                size,
-                scale,
-                Gtk.TextDirection.NONE, //TODO Use text direction?
-                Gtk.IconLookupFlags.PRELOAD //TODO Preload needed?
-            );
-            // icon_paintable is guaranteed non-null
-        } else { // Rarely used if ever TODO: Do we need both?
-            pix = theme.lookup_by_gicon (
-                icon,
+        if (gicon is FileIcon) {
+            return lookup_fileicon ((FileIcon) gicon, size, scale, is_remote);
+        } else {
+            var theme = get_icon_theme ();
+            var icon_paintable = theme.lookup_by_gicon (
+                gicon,
                 size,
                 scale,
                 Gtk.TextDirection.NONE,
                 Gtk.IconLookupFlags.PRELOAD
             );
-            // icon_paintable is guaranteed non-null
+
+            assert_nonnull (icon_paintable);
+            return new IconInfo (icon_paintable, icon_paintable.icon_name);
+        }
+    }
+
+    private static Files.IconInfo lookup_fileicon (
+        FileIcon ficon,
+        int size,
+        int scale,
+        bool is_remote
+    ) {
+        size = int.max (1, size);
+        Gdk.Paintable? tx = null;
+        Files.IconInfo? icon_info = null;
+
+        if (is_remote) {
+            icon_info = lookup_cache (ficon, size, scale );
         }
 
-        return new IconInfo (pix, ((Gtk.IconPaintable) pix).icon_name);
+        if (icon_info == null) {
+            try {
+                tx = Gdk.Texture.from_file (ficon.file);
+            } catch (Error e) {
+                debug ("Error creating texture for %s", ficon.file.get_uri ());
+            }
+
+            if (tx != null) {
+                icon_info = new IconInfo (tx, ficon.file.get_basename ());
+                if (is_remote) {
+                    loadable_icon_cache.insert (
+                        new LoadableIconKey (ficon, size, scale),
+                        icon_info
+                    );
+                }
+            }
+        }
+
+        return icon_info;
     }
 
     public static Files.IconInfo? get_generic_icon (int size, int scale) {
         var generic_icon = new GLib.ThemedIcon ("text-x-generic");
-        return IconInfo.lookup (generic_icon, size, scale);
+        return IconInfo.lookup_by_gicon (generic_icon, size, scale, false);
     }
-
-    public static Files.IconInfo? lookup_from_name (string icon_name, int size, int scale) {
-        var themed_icon = new GLib.ThemedIcon (icon_name);
-        return Files.IconInfo.lookup (themed_icon, size, scale);
-    }
-
-    public static Files.IconInfo? lookup_from_path (string? path, int size, int scale, bool is_remote = false) {
-        if (path != null) {
-            var file_icon = new GLib.FileIcon (GLib.File.new_for_path (path));
-            return Files.IconInfo.lookup (file_icon, size, scale, is_remote);
-        }
-
-        return null;
-    }
-
-    // public Gdk.Pixbuf? get_pixbuf_nodefault () {
-    //     last_use_time = GLib.get_monotonic_time ();
-    //     return pixbuf;
-    // }
 
     /*
      * Use for testing only
@@ -159,21 +132,12 @@ public class Files.IconInfo : GLib.Object {
         return size;
     }
 
-    public static uint themed_icon_cache_info () {
-        uint size = 0u;
-        if (themed_icon_cache != null) {
-            size = themed_icon_cache.size ();
-        }
-
-        return size;
-    }
-
     /*
      * This is the part of the icon cache
      */
 
     private static GLib.HashTable<LoadableIconKey, Files.IconInfo> loadable_icon_cache;
-    private static GLib.HashTable<ThemedIconKey, Files.IconInfo> themed_icon_cache;
+    // private static GLib.HashTable<ThemedIconKey, Files.IconInfo> themed_icon_cache;
     private static uint reap_cache_timeout = 0;
     private static uint reap_time = 5000;
 
@@ -204,16 +168,16 @@ public class Files.IconInfo : GLib.Object {
         }
     }
 
-    [Compact]
-    private class ThemedIconKey {
-        public GLib.ThemedIcon icon;
-        public int size;
-        public int scale;
+    private static Files.IconInfo? lookup_cache (FileIcon ficon, int size, int scale) {
+        if (loadable_icon_cache == null) {
+            loadable_icon_cache = new GLib.HashTable<LoadableIconKey, Files.IconInfo> (
+                LoadableIconKey.hash,
+                LoadableIconKey.equal
+            );
 
-        public ThemedIconKey (GLib.ThemedIcon _icon, int _size, int _scale) {
-            icon = _icon;
-            size = _size;
-            scale = _scale;
+            return null;
+        } else {
+            return loadable_icon_cache.lookup (new LoadableIconKey (ficon, size, scale));
         }
     }
 
@@ -268,20 +232,6 @@ public class Files.IconInfo : GLib.Object {
             reapable_icons_left |= (loadable_icon_cache.size () > 0);
         }
 
-        if (themed_icon_cache != null) {
-            themed_icon_cache.foreach_remove ((themedicon, icon_info) => {
-                if (icon_info.paintable != null && icon_info.paintable.ref_count == 1) {
-                    if ((time_now - icon_info.last_use_time) > reap_time_extended) {
-                        return true;
-                    }
-                }
-
-                return false;
-            });
-
-            reapable_icons_left |= (themed_icon_cache.size () > 0);
-        }
-
         if (reapable_icons_left) {
             return GLib.Source.CONTINUE;
         } else {
@@ -293,10 +243,6 @@ public class Files.IconInfo : GLib.Object {
     public static void clear_caches () {
         if (loadable_icon_cache != null) {
             loadable_icon_cache.remove_all ();
-        }
-
-        if (themed_icon_cache != null) {
-            themed_icon_cache.remove_all ();
         }
     }
 

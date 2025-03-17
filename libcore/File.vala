@@ -49,6 +49,7 @@ public class Files.File : GLib.Object {
     public GLib.File target_location = null;
     public Files.File target_gof = null;
 
+    public GLib.Icon? icon = null;
     public GLib.List<string>? emblems_list = null;
     public uint n_emblems = 0;
     public GLib.FileInfo? info = null;
@@ -64,8 +65,6 @@ public class Files.File : GLib.Object {
     public string formated_modified = null;
     public string formated_type = null;
     public string tagstype = null;
-    // public Gdk.Pixbuf? pix = null;
-    public GLib.Icon? icon { get; private set; default = null; }
     public Gdk.Paintable? pix = null;
     public string? custom_icon_name = null;
     public int pix_size = 16;
@@ -467,7 +466,6 @@ public class Files.File : GLib.Object {
     // This re-fetches the icon even if we already have pixbuf of the same size.
     // Assume dimensions are valid as it is private function
     // Return iconinfo may not be used for view display so do not update pix etc
-    // private Files.IconInfo get_icon (Files.File.IconFlags flags) {
     private Files.IconInfo get_iconinfo (int requested_size, int scale, Files.File.IconFlags flags) {
         pix_is_final = true;
         Files.IconInfo? iconinfo = null;
@@ -479,15 +477,19 @@ public class Files.File : GLib.Object {
 
         // Get "special" icon - custom icons or thumbnails
         if (custom_icon_name != null) {
+            GLib.Icon gicon;
             if (GLib.Path.is_absolute (custom_icon_name)) {
-                iconinfo = Files.IconInfo.lookup_from_path (custom_icon_name, requested_size, scale);
+                gicon = new FileIcon (GLib.File.new_for_path (custom_icon_name));
             } else {
-                iconinfo = Files.IconInfo.lookup_from_name (custom_icon_name, requested_size, scale);
+                gicon = new ThemedIcon (custom_icon_name);
             }
+
+            iconinfo = Files.IconInfo.lookup_by_gicon (gicon, requested_size, scale, is_remote);
         }
 
         if (iconinfo == null && thumbnail_ready) {
-            iconinfo = Files.IconInfo.lookup_from_path (thumbnail_path, requested_size, scale, is_remote);
+            var gicon = new FileIcon (GLib.File.new_for_path (thumbnail_path));
+            iconinfo = Files.IconInfo.lookup_by_gicon (gicon, requested_size, scale, is_remote);
         }
 
         if (iconinfo == null || iconinfo.paintable == null) {
@@ -500,7 +502,7 @@ public class Files.File : GLib.Object {
             }
 
             if (gicon != null) {
-                iconinfo = Files.IconInfo.lookup (gicon, requested_size, scale, is_remote);
+                iconinfo = Files.IconInfo.lookup_by_gicon (gicon, requested_size, scale, is_remote);
                 if (iconinfo == null || iconinfo.paintable == null) {
                     iconinfo = Files.IconInfo.get_generic_icon (requested_size, scale);
                 }
