@@ -100,14 +100,14 @@ public class Files.FileChooserDialog : Adw.Window, Xdp.Request {
             tooltip_markup = _("Next"),
             sensitive = false
         };
-        next_button.add_css_class (Gtk.STYLE_CLASS_FLAT);
+        next_button.add_css_class (Granite.STYLE_CLASS_FLAT);
 
         header = new Adw.HeaderBar () {
         // header = new Hdy.HeaderBar () { 
             // custom_title = location_bar,
             // title = title
         };
-        header.add_css_class (Gtk.STYLE_CLASS_FLAT);
+        header.add_css_class (Granite.STYLE_CLASS_FLAT);
         // header.pack_start (previous_button);
         // header.pack_start (next_button);
 
