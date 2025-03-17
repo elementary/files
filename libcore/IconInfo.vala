@@ -42,7 +42,6 @@ public class Files.IconInfo : GLib.Object {
     ) {
         size = int.max (1, size);
         Gdk.Paintable? pix = null;
-
         if (icon is FileIcon) { // Thumbnails
             var dl_icon = (FileIcon) icon;
             if (cache_loadable) {
@@ -77,6 +76,8 @@ public class Files.IconInfo : GLib.Object {
                         icon_info
                     );
                 }
+
+                return icon_info;
             }
         }
 
