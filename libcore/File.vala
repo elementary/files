@@ -731,6 +731,7 @@ public class Files.File : GLib.Object {
         }
 
         var iconinfo = get_iconinfo (requested_size, requested_scale, Files.File.IconFlags.USE_THUMBNAILS);
+        pix = iconinfo.paintable;
         pix_size = requested_size;
         pix_scale = requested_scale;
     }
