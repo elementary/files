@@ -17,12 +17,17 @@
  */
 
 public class Files.IconInfo : GLib.Object {
+    public static bool is_testing_remote = false;
+
     private int64 last_use_time;
     private Gdk.Paintable? _paintable = null;
     public Gdk.Paintable? paintable {
         get {
-            last_use_time = GLib.get_monotonic_time ();
             return _paintable;
+        }
+
+        set {
+            _paintable = value;
         }
     }
 
@@ -48,7 +53,12 @@ public class Files.IconInfo : GLib.Object {
         bool is_remote
     ) {
         if (gicon is FileIcon) {
-            return lookup_fileicon ((FileIcon) gicon, size, scale, is_remote);
+            return lookup_fileicon (
+                (FileIcon) gicon,
+                size,
+                scale,
+                is_remote || is_testing_remote
+            );
         } else {
             var theme = get_icon_theme ();
             var icon_paintable = theme.lookup_by_gicon (
@@ -96,6 +106,10 @@ public class Files.IconInfo : GLib.Object {
             }
         }
 
+        if (icon_info != null) {
+            icon_info.last_use_time = get_monotonic_time ();
+        }
+
         return icon_info;
     }
 
@@ -137,9 +151,8 @@ public class Files.IconInfo : GLib.Object {
      */
 
     private static GLib.HashTable<LoadableIconKey, Files.IconInfo> loadable_icon_cache;
-    // private static GLib.HashTable<ThemedIconKey, Files.IconInfo> themed_icon_cache;
     private static uint reap_cache_timeout = 0;
-    private static uint reap_time = 5000;
+    private static int64 reap_time = 5000 * 1000;
 
     [Compact]
     private class LoadableIconKey {
@@ -200,13 +213,13 @@ public class Files.IconInfo : GLib.Object {
 
     private static void schedule_reap_cache () {
         if (reap_cache_timeout == 0) {
-            reap_cache_timeout = GLib.Timeout.add (reap_time, reap_cache);
+            reap_cache_timeout = GLib.Timeout.add ((int) reap_time, reap_cache);
         }
     }
 
-    public static void set_reap_time (uint milliseconds) {
+    public static void set_reap_time (int milliseconds) {
         if (milliseconds > 10 && milliseconds < 100000) {
-            reap_time = milliseconds;
+            reap_time = milliseconds; // Convert to microseconds
             if (end_reap_cache_timeout ()) {
                 schedule_reap_cache ();
             }
@@ -216,11 +229,11 @@ public class Files.IconInfo : GLib.Object {
     private static bool reap_cache () {
         bool reapable_icons_left = false;
         var time_now = GLib.get_monotonic_time ();
-        var reap_time_extended = reap_time * 6;
+        int64 reap_time_extended = (int64) (reap_time * 6000);
         if (loadable_icon_cache != null) {
             // Only reap cached icons that are no longer referenced by any other object
             loadable_icon_cache.foreach_remove ((loadableicon, icon_info) => {
-                if (icon_info.paintable != null && icon_info.paintable.ref_count == 1) {
+                if (icon_info.paintable != null && icon_info.paintable.ref_count <= 2) {
                     if ((time_now - icon_info.last_use_time) > reap_time_extended) {
                         return true;
                     }
