@@ -75,7 +75,7 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
     }
 
     protected void create_header_title () {
-        header_title.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+        header_title.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
         header_title.hexpand = true;
         header_title.margin_top = 6;
         header_title.valign = CENTER;
@@ -138,7 +138,7 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
             storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_LOW, 0.6 * fs_capacity);
             storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, 0.9 * fs_capacity);
             storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_FULL, fs_capacity);
-            storage_levelbar.get_style_context ().add_class ("inverted");
+            storage_levelbar.add_css_class ("inverted");
 
             var storage_label = new Gtk.Label (
                 _("%s free out of %s").printf (format_size (fs_capacity - fs_used + fs_reserved), format_size (fs_capacity))

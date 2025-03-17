@@ -52,11 +52,11 @@ namespace Files.View.Chrome {
             text_displayed = mount.get_name ();
         }
 
-        public Gdk.Pixbuf? render_icon (Gtk.StyleContext context) {
+        public Gdk.Pixbuf? render_icon (Gtk.Widget widget) {
             // var theme = Gtk.IconTheme.get_default ();
             Gdk.Pixbuf? icon = null;
             // Gtk.IconInfo? gtk_icon_info = null;
-            var scale = context.get_scale ();
+            var scale = widget.get_scale_factor ();
 
             if (gicon == null) {
                 gicon = new ThemedIcon.with_default_fallbacks ("image-missing");
@@ -93,18 +93,18 @@ namespace Files.View.Chrome {
 
     public class BreadcrumbIconList : Object {
         private Gee.ArrayList<BreadcrumbIconInfo> icon_info_list;
-        public unowned Gtk.StyleContext context { get; construct; }
+        public Gtk.Widget widget { get; construct; }
 
-        public BreadcrumbIconList (Gtk.StyleContext context) {
-            Object (context: context);
+        public BreadcrumbIconList (Gtk.Widget widget) {
+            Object (widget: widget);
         }
 
         public int scale {
             get {
-                return context.get_scale ();
+                return widget.get_scale_factor ();
             }
             set {
-                context.set_scale (value);
+                widget.set_scale_factor (value);
             }
         }
 
@@ -162,8 +162,8 @@ namespace Files.View.Chrome {
         }
 
         public void add_mounted_volumes () {
-            context.save ();
-            context.set_state (Gtk.StateFlags.NORMAL);
+            var flags = widget.get_state_flags ();
+            widget.set_state_flags (Gtk.StateFlags.NORMAL, false);
 
             /* Add every mounted volume in our BreadcrumbIcon in order to load them properly in the pathbar if needed */
             var volume_monitor = VolumeMonitor.get ();
@@ -176,7 +176,7 @@ namespace Files.View.Chrome {
                 }
             });
 
-            context.restore ();
+            widget.set_state_flags (flags, true);
         }
 
         public void truncate_to_length (int new_length) {

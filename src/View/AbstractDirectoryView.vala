@@ -3285,9 +3285,9 @@ namespace Files {
             if (slot.directory.is_empty ()) {
                 Pango.Layout layout = create_pango_layout (null);
 
-                if (!style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
-                    style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
-                    // style_context.add_class (Gtk.STYLE_CLASS_VIEW);
+                if (!has_css_class (Granite.STYLE_CLASS_H2_LABEL)) {
+                    add_css_class (Granite.STYLE_CLASS_H2_LABEL);
+                    add_css_class (Granite.STYLE_CLASS_VIEW);
                 }
 
                 layout.set_markup (slot.get_empty_message (), -1);

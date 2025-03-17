@@ -70,7 +70,7 @@ public class Files.RenamerDialog : Granite.Dialog {
         var cancel_button = add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
 
         var rename_button = add_button (_("Rename"), Gtk.ResponseType.APPLY);
-        // rename_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        rename_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
         renamer.bind_property (
             "can-rename", rename_button, "sensitive", DEFAULT | SYNC_CREATE
         );
@@ -145,10 +145,10 @@ public class Files.RenamerDialog : Granite.Dialog {
         // modify_basename_toggle.set_mode (false);
 
         var toggle_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        // toggle_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
-        // toggle_box.add (original_basename_toggle);
-        // toggle_box.add (new_basename_toggle);
-        // toggle_box.add (modify_basename_toggle);
+        toggle_box.add_css_class (Granite.STYLE_CLASS_LINKED);
+        // toggle_box.append (original_basename_toggle);
+        // toggle_box.append (new_basename_toggle);
+        // toggle_box.append (modify_basename_toggle);
 
         var basename_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
             halign = Gtk.Align.CENTER,
@@ -327,7 +327,7 @@ public class Files.RenamerDialog : Granite.Dialog {
         renamer.modifier_chain.add (mod);
 
         var apply_button = new Gtk.Button.with_label (_("Apply"));
-        // apply_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        apply_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
 
         var cancel_button = new Gtk.Button.with_label (_("Cancel"));
 
@@ -337,7 +337,7 @@ public class Files.RenamerDialog : Granite.Dialog {
         button_box.pack_start (delete_button);
         button_box.pack_end (apply_button);
         button_box.pack_end (cancel_button);
-        // button_box.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        button_box.add_css_class (Granite.STYLE_CLASS_FLAT);
 
         var edit_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
         // edit_box.pack_start (mod.get_modifier_widget ());

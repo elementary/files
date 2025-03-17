@@ -222,7 +222,7 @@ namespace Files.View.Chrome {
         private void show_working_icon () {
             bread.action_icon_name = Files.ICON_PATHBAR_SECONDARY_WORKING_SYMBOLIC;
             bread.set_action_icon_tooltip (_("Searching…"));
-            bread.get_style_context ().add_class ("spin");
+            bread.add_css_class ("spin");
         }
 
         private void hide_working_icon () {

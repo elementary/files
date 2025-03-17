@@ -97,16 +97,15 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
         return mask;
     }
 
+    //TODO Rewrite using snapshot
     public double draw (Cairo.Context cr, double x, double y, double height, Gtk.Widget widget) {
-        weak Gtk.StyleContext button_context = widget.get_style_context ();
-        var state = button_context.get_state ();
+        var state = widget.get_state_flags ();
+        var orig_state = state;
         var is_rtl = Gtk.StateFlags.DIR_RTL in state;
         var scale = widget.scale_factor;
 
-        button_context.save ();
         if (pressed) {
-            state |= Gtk.StateFlags.ACTIVE;
-            button_context.set_state (state);
+            widget.set_state_flags (Gtk.StateFlags.ACTIVE, false);
         }
 
         // padding = button_context.get_padding (state);

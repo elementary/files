@@ -147,6 +147,11 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         static construct {
             css_provider = new Gtk.CssProvider ();
             css_provider.load_from_resource ("io/elementary/files/ColorButton.css");
+            Gtk.StyleContext.add_provider_for_display (
+                Gdk.Display.get_default (),
+                css_provider,
+                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            );
         }
 
         public ColorButton (string color_name) {
@@ -154,10 +159,8 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         }
 
         construct {
-            var style_context = get_style_context ();
-            style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            style_context.add_class (Granite.STYLE_CLASS_COLOR_BUTTON);
-            style_context.add_class (color_name);
+            add_css_class (Granite.STYLE_CLASS_COLOR_BUTTON);
+            add_css_class (color_name);
         }
     }
 
@@ -200,9 +203,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     //             var css_provider = new Gtk.CssProvider ();
     //             css_provider.load_from_data (css, -1);
 
-    //             var style_context = get_style_context ();
-    //             style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-    //             style_context.add_class ("nohover");
+    //             add_css_class ("nohover");
     //         } catch (GLib.Error e) {
     //             warning ("Failed to parse css style : %s", e.message);
     //         }
