@@ -65,7 +65,8 @@ public class Files.File : GLib.Object {
     public string formated_modified = null;
     public string formated_type = null;
     public string tagstype = null;
-    public Gdk.Pixbuf? pix = null;
+    // public Gdk.Pixbuf? pix = null;
+    public Gdk.Paintable? pix = null;
     public string? custom_icon_name = null;
     public int pix_size = 16;
     public int pix_scale = 1;
@@ -428,13 +429,24 @@ public class Files.File : GLib.Object {
         return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
-    //TODO Is it necessary to refetch the icon if have pix at requested size? 
-    public Gdk.Pixbuf? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
+    // //TODO Is it necessary to refetch the icon if have pix at requested size?
+    // public Gdk.Pixbuf? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
+    //     return get_icon (
+    //         _size.clamp (16, 512),
+    //         scale,
+    //         flags
+    //     ).get_pixbuf_nodefault ();
+    // }
+    public Gdk.Paintable? get_icon_paintable (
+        int _size,
+        int scale,
+        IconFlags flags = IconFlags.USE_THUMBNAILS
+    ) {
         return get_icon (
             _size.clamp (16, 512),
             scale,
             flags
-        ).get_pixbuf_nodefault ();
+        ).paintable;
     }
 
     public void get_folder_icon_from_uri_or_path () {
@@ -463,6 +475,7 @@ public class Files.File : GLib.Object {
     // This re-fetches the icon even if we already have pixbuf of the same size.
     // Assume dimensions are valid as it is private function
     // Return iconinfo may not be used for view display so do not update pix etc
+    // private Files.IconInfo get_icon (Files.File.IconFlags flags) {
     private Files.IconInfo get_icon (int requested_size, int scale, Files.File.IconFlags flags) {
         pix_is_final = true;
         Files.IconInfo? iconinfo = null;
@@ -485,7 +498,7 @@ public class Files.File : GLib.Object {
             iconinfo = Files.IconInfo.lookup_from_path (thumbnail_path, requested_size, scale, is_remote);
         }
 
-        if (iconinfo == null || iconinfo.pixbuf == null) {
+        if (iconinfo == null || iconinfo.paintable == null) {
             GLib.Icon? gicon = null;
             if (awaiting_thumbnail) {
                 gicon = new GLib.ThemedIcon ("image-loading");
@@ -496,7 +509,7 @@ public class Files.File : GLib.Object {
 
             if (gicon != null) {
                 iconinfo = Files.IconInfo.lookup (gicon, requested_size, scale, is_remote);
-                if (iconinfo == null || iconinfo.pixbuf == null) {
+                if (iconinfo == null || iconinfo.paintable == null) {
                     iconinfo = Files.IconInfo.get_generic_icon (requested_size, scale);
                 }
             } else {
@@ -726,7 +739,7 @@ public class Files.File : GLib.Object {
         }
 
         var iconinfo = get_icon (requested_size, requested_scale, Files.File.IconFlags.USE_THUMBNAILS);
-        pix = iconinfo.get_pixbuf_nodefault ();
+        pix = iconinfo.paintable;
         pix_size = requested_size;
         pix_scale = requested_scale;
     }

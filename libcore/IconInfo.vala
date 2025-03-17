@@ -18,13 +18,22 @@
 
 public class Files.IconInfo : GLib.Object {
     private int64 last_use_time;
-    public Gdk.Texture tx { get; construct; }
-    public Gdk.Pixbuf pixbuf { get; construct; }
+    // public Gdk.Texture? tx { get; construct; default = null; }
+    public Gdk.Paintable? paintable { get; construct; default = null; }
+    // public Gdk.Pixbuf pixbuf { get; construct; }
     public string icon_name {get; construct; }
 
-    public IconInfo (Gdk.Texture tx, string name) {
+    // public IconInfo (Gdk.Texture tx, string name) {
+    //     Object (
+    //         tx: tx,
+    //         icon_name: name
+    //     );
+
+    // }
+
+    public IconInfo (Gdk.Paintable paintable, string name) {
         Object (
-            tx: tx,
+            paintable: paintable,
             icon_name: name
         );
 
@@ -33,19 +42,23 @@ public class Files.IconInfo : GLib.Object {
     construct {
         last_use_time = GLib.get_monotonic_time ();
         schedule_reap_cache ();
-        var downloader = new Gdk.TextureDownloader (tx);
-        downloader.set_format (Gdk.MemoryFormat.R8G8B8A8);
-        size_t stride;
-        var data = downloader.download_bytes (out stride);
-        pixbuf = new Gdk.Pixbuf.from_bytes (
-            data,
-            RGB,
-            true,
-            8,
-            tx.width,
-            tx.height,
-            (int) stride
-        );
+        // if (tx != null) {
+        //     var downloader = new Gdk.TextureDownloader (tx);
+        //     downloader.set_format (Gdk.MemoryFormat.R8G8B8A8);
+        //     size_t stride;
+        //     var data = downloader.download_bytes (out stride);
+        //     pixbuf = new Gdk.Pixbuf.from_bytes (
+        //         data,
+        //         RGB,
+        //         true,
+        //         8,
+        //         tx.width,
+        //         tx.height,
+        //         (int) stride
+        //     );
+        // } else if (paintable != null) {
+
+        // }
     }
 
     public static Files.IconInfo? lookup (
@@ -54,9 +67,8 @@ public class Files.IconInfo : GLib.Object {
         int scale,
         bool cache_loadable = false
     ) {
-        return null;
         size = int.max (1, size);
-        Gdk.Texture? texture = null;
+        Gdk.Paintable? pix = null;
 
         if (icon is FileIcon) { // Thumbnails
             var dl_icon = (FileIcon) icon;
@@ -78,13 +90,13 @@ public class Files.IconInfo : GLib.Object {
             }
 
             try {
-                texture = Gdk.Texture.from_file (dl_icon.file);
+                pix = Gdk.Texture.from_file (dl_icon.file);
             } catch (Error e) {
                 warning ("Error creating texture for %s", dl_icon.file.get_uri ());
             }
 
-            if (texture != null) {
-                var icon_info = new IconInfo (texture, dl_icon.file.get_basename ());
+            if (pix != null) {
+                var icon_info = new IconInfo (pix, dl_icon.file.get_basename ());
                 if (cache_loadable) {
                     loadable_icon_cache.insert (
                         new LoadableIconKey (icon, size, scale),
@@ -97,7 +109,7 @@ public class Files.IconInfo : GLib.Object {
         var theme = get_icon_theme ();
         Gtk.IconPaintable icon_paintable;
         if (icon is GLib.ThemedIcon) { // ThemedIcons
-            icon_paintable = theme.lookup_icon (
+            pix = theme.lookup_icon (
                 icon.names[0],
                 icon.names,
                 size,
@@ -107,7 +119,7 @@ public class Files.IconInfo : GLib.Object {
             );
             // icon_paintable is guaranteed non-null
         } else { // Rarely used if ever TODO: Do we need both?
-            icon_paintable = theme.lookup_by_gicon (
+            pix = theme.lookup_by_gicon (
                 icon,
                 size,
                 scale,
@@ -117,7 +129,7 @@ public class Files.IconInfo : GLib.Object {
             // icon_paintable is guaranteed non-null
         }
 
-        return new IconInfo ((Gdk.Texture) icon_paintable, icon_paintable.icon_name);
+        return new IconInfo (pix, ((Gtk.IconPaintable) pix).icon_name);
     }
 
     public static Files.IconInfo? get_generic_icon (int size, int scale) {
@@ -139,10 +151,10 @@ public class Files.IconInfo : GLib.Object {
         return null;
     }
 
-    public Gdk.Pixbuf? get_pixbuf_nodefault () {
-        last_use_time = GLib.get_monotonic_time ();
-        return pixbuf;
-    }
+    // public Gdk.Pixbuf? get_pixbuf_nodefault () {
+    //     last_use_time = GLib.get_monotonic_time ();
+    //     return pixbuf;
+    // }
 
     /*
      * Use for testing only
@@ -151,14 +163,14 @@ public class Files.IconInfo : GLib.Object {
     /*
      * This is required for testing themed icon functions under ctest when there is no default screen and
      * we have to set the icon theme manually.  We assume that any system being used for testing will have
-     * the "hicolor" theme.
+     * the "Adwaita" theme.
      */
     public static Gtk.IconTheme get_icon_theme () {
         if (Gdk.Display.get_default () != null) {
             return Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
         } else {
             var theme = new Gtk.IconTheme ();
-            theme.set_theme_name ("hicolor");
+            theme.set_theme_name ("Adwaita");
             return theme;
         }
     }
@@ -269,7 +281,7 @@ public class Files.IconInfo : GLib.Object {
         if (loadable_icon_cache != null) {
             // Only reap cached icons that are no longer referenced by any other object
             loadable_icon_cache.foreach_remove ((loadableicon, icon_info) => {
-                if (icon_info.pixbuf != null && icon_info.pixbuf.ref_count == 1) {
+                if (icon_info.paintable != null && icon_info.paintable.ref_count == 1) {
                     if ((time_now - icon_info.last_use_time) > reap_time_extended) {
                         return true;
                     }
@@ -283,7 +295,7 @@ public class Files.IconInfo : GLib.Object {
 
         if (themed_icon_cache != null) {
             themed_icon_cache.foreach_remove ((themedicon, icon_info) => {
-                if (icon_info.pixbuf != null && icon_info.pixbuf.ref_count == 1) {
+                if (icon_info.paintable != null && icon_info.paintable.ref_count == 1) {
                     if ((time_now - icon_info.last_use_time) > reap_time_extended) {
                         return true;
                     }
