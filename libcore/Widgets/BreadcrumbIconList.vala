@@ -103,9 +103,9 @@ namespace Files.View.Chrome {
             get {
                 return widget.get_scale_factor ();
             }
-            set {
-                widget.set_scale_factor (value);
-            }
+            // set {
+            //     widget.set_scale_factor (value);
+            // }
         }
 
         construct {

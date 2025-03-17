@@ -124,9 +124,9 @@ namespace Files.View.Chrome {
             // motion_controller.motion.connect (on_motion_event);
 
             minimum_width = 100;
-            notify["scale-factor"].connect (() => {
-                breadcrumb_icons.scale = scale_factor;
-            });
+            // notify["scale-factor"].connect (() => {
+            //     breadcrumb_icons.scale = scale_factor;
+            // });
         }
 
     /** Navigatable Interface **/
@@ -424,7 +424,7 @@ namespace Files.View.Chrome {
             var l = (int)displayed_breadcrumbs.length (); //can assumed to be limited in length
             var w = displayed_breadcrumbs.first ().data.natural_width;
             if (l > 1) {
-                w += (l - 1) * (MINIMUM_BREADCRUMB_WIDTH;
+                w += (l - 1) * (MINIMUM_BREADCRUMB_WIDTH);
 
                 /* Allow extra space for last breadcrumb */
                 w += 3 * (MINIMUM_BREADCRUMB_WIDTH);
@@ -476,7 +476,7 @@ namespace Files.View.Chrome {
         protected BreadcrumbElement? get_element_from_coordinates (double x) {
             double width = get_allocated_width () - ICON_WIDTH;
             double height = get_allocated_height ();
-            var is_rtl = get_direction == TextDirection.RTL;
+            var is_rtl = get_direction () == Gtk.TextDirection.RTL;
             double x_render = is_rtl ? width : 0;
             foreach (BreadcrumbElement element in elements) {
                 if (element.display) {
@@ -519,7 +519,7 @@ namespace Files.View.Chrome {
             /* Ensure the breadcrumb texts are escaped strings whether or not
              * the parameter newpath was supplied escaped */
             string newpath = FileUtils.escape_uri (Uri.unescape_string (path) ?? path);
-            newelements.add (new BreadcrumbElement (protocol, this);
+            newelements.add (new BreadcrumbElement (protocol, this));
             foreach (string dir in newpath.split (Path.DIR_SEPARATOR_S)) {
                 if (dir != "") {
                     newelements.add (new BreadcrumbElement (dir, this));
@@ -673,15 +673,15 @@ namespace Files.View.Chrome {
             double width = get_allocated_width ();
 
             int scale = get_scale_factor ();
-            if (breadcrumb_icons.scale != scale) {
-                breadcrumb_icons.scale = scale;
+            // if (breadcrumb_icons.scale != scale) {
+            //     breadcrumb_icons.scale = scale;
 
-                string protocol = "";
-                if (elements.size > 0) {
-                    protocol = elements[0].text;
-                }
-                set_element_icons (protocol, elements);
-            }
+            //     string protocol = "";
+            //     if (elements.size > 0) {
+            //         protocol = elements[0].text;
+            //     }
+            //     set_element_icons (protocol, elements);
+            // }
 
             //TODO Set state flags if required
 

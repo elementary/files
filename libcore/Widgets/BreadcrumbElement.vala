@@ -68,7 +68,7 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
     private Pango.Layout layout;
     private Gtk.Widget widget;
 
-    public BreadcrumbElement (string text_, Gtk.Widget widget_, Gtk.StyleContext button_context) {
+    public BreadcrumbElement (string text_, Gtk.Widget widget_) {
         text = text_;
         widget = widget_;
         // padding = button_context.get_padding (button_context.get_state ());
@@ -185,8 +185,8 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
             cr.close_path ();
 
             cr.clip ();
-            button_context.render_background (cr, left_x, y, width + height + 2 * line_width, height);
-            button_context.render_frame (cr, 0, y, widget.get_allocated_width (), height);
+            // button_context.render_background (cr, left_x, y, width + height + 2 * line_width, height);
+            // button_context.render_frame (cr, 0, y, widget.get_allocated_width (), height);
             cr.restore ();
         }
 
@@ -222,7 +222,7 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
         }
 
         /* Get icon pixbuf and fade if appropriate */
-        Gdk.Pixbuf? icon_to_draw = icon_info != null ? icon_info.render_icon (button_context) : null;
+        Gdk.Pixbuf? icon_to_draw = icon_info != null ? icon_info.render_icon (widget) : null;
         if (icon_to_draw != null && (state & Gtk.StateFlags.BACKDROP) > 0) {
             icon_to_draw = PF.PixbufUtils.lucent (icon_to_draw, 50);
         }
@@ -235,8 +235,8 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
         if (is_rtl) {
             if (icon_to_draw == null) {
                 if (room_for_text) {
-                    button_context.render_layout (cr, x - width,
-                                                  y_half_height - text_half_height, layout);
+                    // button_context.render_layout (cr, x - width,
+                                                  // y_half_height - text_half_height, layout);
                 }
             } else {
                 if (room_for_icon) {
@@ -250,8 +250,8 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
                 }
                 if (text_is_displayed && room_for_text) {
                     /* text_width already includes icon_width */
-                    button_context.render_layout (cr, x - width,
-                                                  y_half_height - text_half_height, layout);
+                    // button_context.render_layout (cr, x - width,
+                                                  // y_half_height - text_half_height, layout);
                 }
             }
         } else {
@@ -260,8 +260,8 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
 
             if (icon_to_draw == null) {
                 if (room_for_text) {
-                    button_context.render_layout (cr, x,
-                                                  y_half_height - text_half_height, layout);
+                    // button_context.render_layout (cr, x,
+                    //                               y_half_height - text_half_height, layout);
                 }
             } else {
                 if (room_for_icon) {
@@ -274,8 +274,8 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
                     cr.restore ();
                 }
                 if (text_is_displayed && room_for_text && x > 0) {
-                    button_context.render_layout (cr, x + iw,
-                                                  y_half_height - text_half_height, layout);
+                    // button_context.render_layout (cr, x + iw,
+                                                  // y_half_height - text_half_height, layout);
                 }
             }
 
@@ -306,10 +306,10 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
             cr.rectangle (0, -height / 2 + line_width, -height, height - 2 * line_width);
             cr.clip ();
             cr.rotate (Math.PI_4);
-            button_context.save ();
-            button_context.add_class ("noradius-button");
-            button_context.render_frame (cr, -height / 2, -height / 2, height, height);
-            button_context.restore ();
+            // button_context.save ();
+            // button_context.add_class ("noradius-button");
+            // button_context.render_frame (cr, -height / 2, -height / 2, height, height);
+            // button_context.restore ();
             cr.restore ();
         } else {
             cr.save ();
@@ -317,10 +317,10 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
             cr.rectangle (0, -height / 2 + line_width, height, height - 2 * line_width);
             cr.clip ();
             cr.rotate (Math.PI_4);
-            button_context.save ();
-            button_context.add_class ("noradius-button");
-            button_context.render_frame (cr, -height / 2, -height / 2, height, height);
-            button_context.restore ();
+            // button_context.save ();
+            // button_context.add_class ("noradius-button");
+            // button_context.render_frame (cr, -height / 2, -height / 2, height, height);
+            // button_context.restore ();
             cr.restore ();
         }
 
@@ -331,7 +331,7 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
             x += half_height;
         }
 
-        button_context.restore ();
+        // button_context.restore ();
         return x;
     }
 
