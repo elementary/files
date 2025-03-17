@@ -3,9 +3,9 @@ pantheon_files_deps = [
     adwaita_dep,
     pantheon_files_core_dep,
     zeitgeist_dep,
-    project_config_dep,
-    portal_dep,
-    portal_gtk3_dep
+    project_config_dep
+    # portal_dep,
+    # portal_gtk4_dep
 ]
 
 pantheon_files_exec = executable (

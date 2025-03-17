@@ -56,7 +56,7 @@ gtk_dep = dependency('gtk4', version: '>=4.14')
 granite_dep = dependency('granite-7', version: '>=7.6')
 adwaita_dep = dependency('libadwaita-1', version: '>=1.5')
 portal_dep = dependency('libportal', version: min_libportal_version)
-portal_gtk3_dep = dependency('libportal-gtk4', version: min_libportal_version)
+# portal_gtk4_dep = dependency('libportal-gtk4', version: min_libportal_version)
 
 common_deps = [
     glib_dep,

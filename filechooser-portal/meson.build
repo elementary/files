@@ -11,6 +11,8 @@ executable(
         pantheon_files_core_dep,
         dependency('gtk4-wayland'),
         dependency('gtk4-x11'),
+        portal_dep,
+        # portal_gtk4_dep
         adwaita_dep,
         project_config_dep
     ],
