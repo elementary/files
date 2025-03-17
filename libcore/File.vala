@@ -49,7 +49,7 @@ public class Files.File : GLib.Object {
     public GLib.File target_location = null;
     public Files.File target_gof = null;
 
-    public GLib.Icon? icon = null;
+    public GLib.ThemedIcon? icon = null;
     public GLib.List<string>? emblems_list = null;
     public uint n_emblems = 0;
     public GLib.FileInfo? info = null;
@@ -65,11 +65,13 @@ public class Files.File : GLib.Object {
     public string formated_modified = null;
     public string formated_type = null;
     public string tagstype = null;
-    public Gdk.Pixbuf? pix = null;
+
+    public unowned Gdk.Paintable? pix = null;
     public string? custom_icon_name = null;
     public int pix_size = 16;
     public int pix_scale = 1;
     private bool pix_is_final = false;
+
     public int width = 0;
     public int height = 0;
     public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
@@ -428,13 +430,16 @@ public class Files.File : GLib.Object {
         return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
-    //TODO Is it necessary to refetch the icon if have pix at requested size? 
-    public Gdk.Pixbuf? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
-        return get_icon (
+    public unowned Gdk.Paintable? get_icon_paintable (
+        int _size,
+        int scale,
+        IconFlags flags = IconFlags.USE_THUMBNAILS
+    ) {
+        return get_iconinfo (
             _size.clamp (16, 512),
             scale,
             flags
-        ).get_pixbuf_nodefault ();
+        ).paintable;
     }
 
     public void get_folder_icon_from_uri_or_path () {
@@ -463,7 +468,7 @@ public class Files.File : GLib.Object {
     // This re-fetches the icon even if we already have pixbuf of the same size.
     // Assume dimensions are valid as it is private function
     // Return iconinfo may not be used for view display so do not update pix etc
-    private Files.IconInfo get_icon (int requested_size, int scale, Files.File.IconFlags flags) {
+    private Files.IconInfo get_iconinfo (int requested_size, int scale, Files.File.IconFlags flags) {
         pix_is_final = true;
         Files.IconInfo? iconinfo = null;
         var use_thumbnails = IconFlags.USE_THUMBNAILS in flags;
@@ -474,18 +479,22 @@ public class Files.File : GLib.Object {
 
         // Get "special" icon - custom icons or thumbnails
         if (custom_icon_name != null) {
+            GLib.Icon gicon;
             if (GLib.Path.is_absolute (custom_icon_name)) {
-                iconinfo = Files.IconInfo.lookup_from_path (custom_icon_name, requested_size, scale);
+                gicon = new FileIcon (GLib.File.new_for_path (custom_icon_name));
             } else {
-                iconinfo = Files.IconInfo.lookup_from_name (custom_icon_name, requested_size, scale);
+                gicon = new ThemedIcon (custom_icon_name);
             }
+
+            iconinfo = Files.IconInfo.lookup_by_gicon (gicon, requested_size, scale, is_remote);
         }
 
         if (iconinfo == null && thumbnail_ready) {
-            iconinfo = Files.IconInfo.lookup_from_path (thumbnail_path, requested_size, scale, is_remote);
+            var gicon = new FileIcon (GLib.File.new_for_path (thumbnail_path));
+            iconinfo = Files.IconInfo.lookup_by_gicon (gicon, requested_size, scale, is_remote);
         }
 
-        if (iconinfo == null || iconinfo.pixbuf == null) {
+        if (iconinfo == null || iconinfo.paintable == null) {
             GLib.Icon? gicon = null;
             if (awaiting_thumbnail) {
                 gicon = new GLib.ThemedIcon ("image-loading");
@@ -495,8 +504,8 @@ public class Files.File : GLib.Object {
             }
 
             if (gicon != null) {
-                iconinfo = Files.IconInfo.lookup (gicon, requested_size, scale, is_remote);
-                if (iconinfo == null || iconinfo.pixbuf == null) {
+                iconinfo = Files.IconInfo.lookup_by_gicon (gicon, requested_size, scale, is_remote);
+                if (iconinfo == null || iconinfo.paintable == null) {
                     iconinfo = Files.IconInfo.get_generic_icon (requested_size, scale);
                 }
             } else {
@@ -536,7 +545,7 @@ public class Files.File : GLib.Object {
         }
 
         if (info.has_attribute (GLib.FileAttribute.STANDARD_ICON)) {
-            icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
+            icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as ThemedIcon;
         }
 
         unowned string target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
@@ -624,7 +633,7 @@ public class Files.File : GLib.Object {
         } else {
             unowned string? ftype = get_ftype ();
             if (ftype != null && icon == null) {
-                icon = GLib.ContentType.get_icon (ftype);
+                icon = GLib.ContentType.get_icon (ftype) as ThemedIcon;
             }
         }
 
@@ -674,7 +683,7 @@ public class Files.File : GLib.Object {
 
         unowned string? ftype = get_ftype ();
         if (ftype != null) {
-            icon = GLib.ContentType.get_icon (ftype);
+            icon = GLib.ContentType.get_icon (ftype) as ThemedIcon;
         }
 
         if (pix_size > 1 && pix_scale > 0) {
@@ -725,8 +734,8 @@ public class Files.File : GLib.Object {
             return;
         }
 
-        var iconinfo = get_icon (requested_size, requested_scale, Files.File.IconFlags.USE_THUMBNAILS);
-        pix = iconinfo.get_pixbuf_nodefault ();
+        var iconinfo = get_iconinfo (requested_size, requested_scale, Files.File.IconFlags.USE_THUMBNAILS);
+        pix = iconinfo.paintable;
         pix_size = requested_size;
         pix_scale = requested_scale;
     }
@@ -1222,7 +1231,7 @@ public class Files.File : GLib.Object {
         }
     }
 
-    public GLib.Icon? get_icon_user_special_dirs (string path) {
+    public ThemedIcon? get_icon_user_special_dirs (string path) {
         if (path == GLib.Environment.get_home_dir ()) {
             return new GLib.ThemedIcon ("user-home");
         } else if (path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.DESKTOP)) {
