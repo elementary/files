@@ -49,7 +49,7 @@ public class Files.File : GLib.Object {
     public GLib.File target_location = null;
     public Files.File target_gof = null;
 
-    public GLib.Icon? icon = null;
+    public GLib.ThemedIcon? icon = null;
     public GLib.List<string>? emblems_list = null;
     public uint n_emblems = 0;
     public GLib.FileInfo? info = null;
@@ -65,11 +65,13 @@ public class Files.File : GLib.Object {
     public string formated_modified = null;
     public string formated_type = null;
     public string tagstype = null;
-    public Gdk.Paintable? pix = null;
+
+    public unowned Gdk.Paintable? pix = null;
     public string? custom_icon_name = null;
     public int pix_size = 16;
     public int pix_scale = 1;
     private bool pix_is_final = false;
+
     public int width = 0;
     public int height = 0;
     public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
@@ -428,7 +430,7 @@ public class Files.File : GLib.Object {
         return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
-    public Gdk.Paintable? get_icon_paintable (
+    public unowned Gdk.Paintable? get_icon_paintable (
         int _size,
         int scale,
         IconFlags flags = IconFlags.USE_THUMBNAILS
@@ -543,7 +545,7 @@ public class Files.File : GLib.Object {
         }
 
         if (info.has_attribute (GLib.FileAttribute.STANDARD_ICON)) {
-            icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
+            icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as ThemedIcon;
         }
 
         unowned string target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
@@ -631,7 +633,7 @@ public class Files.File : GLib.Object {
         } else {
             unowned string? ftype = get_ftype ();
             if (ftype != null && icon == null) {
-                icon = GLib.ContentType.get_icon (ftype);
+                icon = GLib.ContentType.get_icon (ftype) as ThemedIcon;
             }
         }
 
@@ -681,7 +683,7 @@ public class Files.File : GLib.Object {
 
         unowned string? ftype = get_ftype ();
         if (ftype != null) {
-            icon = GLib.ContentType.get_icon (ftype);
+            icon = GLib.ContentType.get_icon (ftype) as ThemedIcon;
         }
 
         if (pix_size > 1 && pix_scale > 0) {
@@ -1229,7 +1231,7 @@ public class Files.File : GLib.Object {
         }
     }
 
-    public GLib.Icon? get_icon_user_special_dirs (string path) {
+    public ThemedIcon? get_icon_user_special_dirs (string path) {
         if (path == GLib.Environment.get_home_dir ()) {
             return new GLib.ThemedIcon ("user-home");
         } else if (path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.DESKTOP)) {
