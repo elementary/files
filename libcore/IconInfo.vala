@@ -18,18 +18,8 @@
 
 public class Files.IconInfo : GLib.Object {
     private int64 last_use_time;
-    // public Gdk.Texture? tx { get; construct; default = null; }
     public Gdk.Paintable? paintable { get; construct; default = null; }
-    // public Gdk.Pixbuf pixbuf { get; construct; }
     public string icon_name {get; construct; }
-
-    // public IconInfo (Gdk.Texture tx, string name) {
-    //     Object (
-    //         tx: tx,
-    //         icon_name: name
-    //     );
-
-    // }
 
     public IconInfo (Gdk.Paintable paintable, string name) {
         Object (
@@ -42,23 +32,6 @@ public class Files.IconInfo : GLib.Object {
     construct {
         last_use_time = GLib.get_monotonic_time ();
         schedule_reap_cache ();
-        // if (tx != null) {
-        //     var downloader = new Gdk.TextureDownloader (tx);
-        //     downloader.set_format (Gdk.MemoryFormat.R8G8B8A8);
-        //     size_t stride;
-        //     var data = downloader.download_bytes (out stride);
-        //     pixbuf = new Gdk.Pixbuf.from_bytes (
-        //         data,
-        //         RGB,
-        //         true,
-        //         8,
-        //         tx.width,
-        //         tx.height,
-        //         (int) stride
-        //     );
-        // } else if (paintable != null) {
-
-        // }
     }
 
     public static Files.IconInfo? lookup (
@@ -98,6 +71,7 @@ public class Files.IconInfo : GLib.Object {
             if (pix != null) {
                 var icon_info = new IconInfo (pix, dl_icon.file.get_basename ());
                 if (cache_loadable) {
+                debug ("insert loadable icon %s", dl_icon.file.get_basename ());
                     loadable_icon_cache.insert (
                         new LoadableIconKey (icon, size, scale),
                         icon_info

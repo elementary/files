@@ -49,7 +49,6 @@ public class Files.File : GLib.Object {
     public GLib.File target_location = null;
     public Files.File target_gof = null;
 
-    public GLib.Icon? icon = null;
     public GLib.List<string>? emblems_list = null;
     public uint n_emblems = 0;
     public GLib.FileInfo? info = null;
@@ -66,6 +65,7 @@ public class Files.File : GLib.Object {
     public string formated_type = null;
     public string tagstype = null;
     // public Gdk.Pixbuf? pix = null;
+    public GLib.Icon? icon { get; private set; default = null; }
     public Gdk.Paintable? pix = null;
     public string? custom_icon_name = null;
     public int pix_size = 16;
@@ -429,20 +429,12 @@ public class Files.File : GLib.Object {
         return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
-    // //TODO Is it necessary to refetch the icon if have pix at requested size?
-    // public Gdk.Pixbuf? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
-    //     return get_icon (
-    //         _size.clamp (16, 512),
-    //         scale,
-    //         flags
-    //     ).get_pixbuf_nodefault ();
-    // }
     public Gdk.Paintable? get_icon_paintable (
         int _size,
         int scale,
         IconFlags flags = IconFlags.USE_THUMBNAILS
     ) {
-        return get_icon (
+        return get_iconinfo (
             _size.clamp (16, 512),
             scale,
             flags
@@ -476,7 +468,7 @@ public class Files.File : GLib.Object {
     // Assume dimensions are valid as it is private function
     // Return iconinfo may not be used for view display so do not update pix etc
     // private Files.IconInfo get_icon (Files.File.IconFlags flags) {
-    private Files.IconInfo get_icon (int requested_size, int scale, Files.File.IconFlags flags) {
+    private Files.IconInfo get_iconinfo (int requested_size, int scale, Files.File.IconFlags flags) {
         pix_is_final = true;
         Files.IconInfo? iconinfo = null;
         var use_thumbnails = IconFlags.USE_THUMBNAILS in flags;
@@ -738,8 +730,7 @@ public class Files.File : GLib.Object {
             return;
         }
 
-        var iconinfo = get_icon (requested_size, requested_scale, Files.File.IconFlags.USE_THUMBNAILS);
-        pix = iconinfo.paintable;
+        var iconinfo = get_iconinfo (requested_size, requested_scale, Files.File.IconFlags.USE_THUMBNAILS);
         pix_size = requested_size;
         pix_scale = requested_scale;
     }
