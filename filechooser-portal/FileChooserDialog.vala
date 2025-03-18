@@ -8,7 +8,6 @@ public interface Xdp.Request : Object {
     public abstract void close () throws DBusError, IOError;
 }
 
-// public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 public class Files.FileChooserDialog : Adw.Window, Xdp.Request {
     public signal void response (Gtk.ResponseType response);
 
@@ -48,7 +47,6 @@ public class Files.FileChooserDialog : Adw.Window, Xdp.Request {
         }
     }
 
-    // private Hdy.HeaderBar header;
     private Adw.HeaderBar header;
     private View.Chrome.BasicLocationBar location_bar;
     private Gtk.FileChooserWidget chooser;
@@ -84,7 +82,6 @@ public class Files.FileChooserDialog : Adw.Window, Xdp.Request {
         previous_paths = new Queue<string> ();
         next_paths = new Queue<string> ();
         Adw.init ();
-        // Hdy.init ();
 
         location_bar = new View.Chrome.BasicLocationBar ();
 
@@ -103,7 +100,6 @@ public class Files.FileChooserDialog : Adw.Window, Xdp.Request {
         // next_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         header = new Adw.HeaderBar () {
-        // header = new Hdy.HeaderBar () {
             // custom_title = location_bar,
             // title = title
         };
