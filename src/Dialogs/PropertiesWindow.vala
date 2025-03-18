@@ -184,10 +184,14 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         update_selection_size (); /* Start counting first to get number of selected files and folders */
 
         /* create some widgets first (may be hidden by update_selection_size ()) */
-        var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), Files.File.IconFlags.NONE);
+        var file_pix = goffile.get_icon_paintable (
+            48,
+            get_scale_factor (),
+            Files.File.IconFlags.NONE
+        );
         if (file_pix != null) {
             // var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG) {
-            var file_icon = new Gtk.Image.from_gicon (file_pix) {
+            var file_icon = new Gtk.Image.from_paintable (file_pix) {
                 pixel_size = 48
             };
             overlay_emblems (file_icon, goffile.emblems_list);
