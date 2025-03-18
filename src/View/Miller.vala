@@ -96,11 +96,14 @@ namespace Files.View {
             guest.colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             guest.colpane.set_size_request (guest.width, -1);
             guest.hpane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-                hexpand = true
+                hexpand = true,
+                start_child = guest.get_directory_view (),
+                resize_start_child = false,
+                shrink_start_child = false,
+                end_child = guest.colpane,
+                resize_end_child = true,
+                shrink_end_child = true
             };
-
-            // guest.hpane.pack1 (guest.get_directory_view (), false, false);
-            // guest.hpane.pack2 (guest.colpane, true, true);
 
             connect_slot_signals (guest);
 

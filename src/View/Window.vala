@@ -262,11 +262,15 @@ public class Files.View.Window : Adw.ApplicationWindow {
         free_space_change.connect (sidebar.on_free_space_change);
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-            // expand = true,
+            hexpand = true,
+            start_child = sidebar,
+            resize_start_child = false,
+            shrink_start_child = false,
+            end_child = tab_box,
+            resize_end_child = true,
+            shrink_end_child = true,
             position = Files.app_settings.get_int ("sidebar-width")
         };
-        // lside_pane.pack1 (sidebar, false, false);
-        // lside_pane.pack2 (tab_box, true, true);
 
         var grid = new Gtk.Grid ();
         grid.attach (headerbar, 0, 0);
