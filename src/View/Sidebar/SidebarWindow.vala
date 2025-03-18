@@ -82,12 +82,12 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         };
 
         var action_bar = new Gtk.ActionBar ();
-        // action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        action_bar.add_css_class (Granite.STYLE_CLASS_FLAT);
         action_bar.pack_start (connect_server_button);
 
         orientation = Gtk.Orientation.VERTICAL;
         width_request = Files.app_settings.get_int ("minimum-sidebar-width");
-        // get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
+        add_css_class (Granite.STYLE_CLASS_SIDEBAR);
         // add (scrolled_window);
 
         //For now hide action bar when admin. This might need revisiting if other actions are added
@@ -242,6 +242,11 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         static construct {
             expander_provider = new Gtk.CssProvider ();
             expander_provider.load_from_resource ("/io/elementary/files/SidebarExpander.css");
+            Gtk.StyleContext.add_provider_for_display (
+                Gdk.Display.get_default (),
+                expander_provider,
+                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            );
         }
 
         construct {
@@ -251,10 +256,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
             };
 
             var arrow = new Gtk.Spinner ();
-
-            unowned Gtk.StyleContext arrow_style_context = arrow.get_style_context ();
-            // arrow_style_context.add_class (Gtk.STYLE_CLASS_ARROW);
-            arrow_style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            arrow.add_css_class ("arrow");
 
             var box = new Gtk.Box (HORIZONTAL, 0);
             box.append (title);
@@ -262,10 +264,8 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
 
             child = box;
 
-            unowned Gtk.StyleContext style_context = get_style_context ();
-            style_context.add_class (Granite.STYLE_CLASS_H4_LABEL);
-            // style_context.add_class (Gtk.STYLE_CLASS_EXPANDER);
-            style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            add_css_class (Granite.STYLE_CLASS_H4_LABEL);
+            add_css_class ("expander");
         }
     }
 }

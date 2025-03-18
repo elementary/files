@@ -574,12 +574,13 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         // });
     }
 
+    //TODO Review correct style class
     protected void highlight (bool show) {
-        // if (show && !get_style_context ().has_class (Gtk.STYLE_CLASS_HIGHLIGHT)) {
-        //     get_style_context ().add_class (Gtk.STYLE_CLASS_HIGHLIGHT);
-        // } else if (!show && get_style_context ().has_class (Gtk.STYLE_CLASS_HIGHLIGHT)) {
-        //     get_style_context ().remove_class (Gtk.STYLE_CLASS_HIGHLIGHT);
-        // }
+        if (show && !has_css_class (Granite.STYLE_CLASS_ACCENT)) {
+            add_css_class (Granite.STYLE_CLASS_ACCENT);
+        } else if (!show && has_css_class (Granite.STYLE_CLASS_ACCENT)) {
+            remove_css_class (Granite.STYLE_CLASS_ACCENT);
+        }
     }
 
     private void reset_drag_drop () {

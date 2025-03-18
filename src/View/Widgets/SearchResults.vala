@@ -182,7 +182,7 @@ namespace Files.View.Chrome {
                 propagate_natural_height = true,
             };
 
-            get_style_context ().add_class ("completion-popup");
+            add_css_class ("completion-popup");
 
             var column = new Gtk.TreeViewColumn () {
                 sizing = Gtk.TreeViewColumnSizing.FIXED

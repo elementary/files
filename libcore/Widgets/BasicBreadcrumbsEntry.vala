@@ -82,18 +82,21 @@ namespace Files.View.Chrome {
 
         construct {
             truncate_multiline = true;
-            weak Gtk.StyleContext style_context = get_style_context ();
-            style_context.add_class ("pathbar");
+            add_css_class ("pathbar");
 
             var css_provider = new Gtk.CssProvider ();
             try {
                 css_provider.load_from_data (".noradius-button { border-radius: 0; }".data);
-                style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+                Gtk.StyleContext.add_provider_for_display (
+                    Gdk.Display.get_default (),
+                    css_provider,
+                    Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+                );
             } catch (Error e) {
                 critical ("Unable to style pathbar button: %s", e.message);
             }
 
-            breadcrumb_icons = new BreadcrumbIconList (style_context);
+            breadcrumb_icons = new BreadcrumbIconList (this);
 
             elements = new Gee.ArrayList<BreadcrumbElement> ();
             old_elements = new Gee.ArrayList<BreadcrumbElement> ();
@@ -121,9 +124,9 @@ namespace Files.View.Chrome {
             // motion_controller.motion.connect (on_motion_event);
 
             minimum_width = 100;
-            notify["scale-factor"].connect (() => {
-                breadcrumb_icons.scale = scale_factor;
-            });
+            // notify["scale-factor"].connect (() => {
+            //     breadcrumb_icons.scale = scale_factor;
+            // });
         }
 
     /** Navigatable Interface **/
@@ -421,12 +424,10 @@ namespace Files.View.Chrome {
             var l = (int)displayed_breadcrumbs.length (); //can assumed to be limited in length
             var w = displayed_breadcrumbs.first ().data.natural_width;
             if (l > 1) {
-                weak Gtk.StyleContext style_context = get_style_context ();
-                // var padding = style_context.get_padding (style_context.get_state ());
-                // w += (l - 1) * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
+                w += (l - 1) * (MINIMUM_BREADCRUMB_WIDTH);
 
                 /* Allow extra space for last breadcrumb */
-                // w += 3 * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
+                w += 3 * (MINIMUM_BREADCRUMB_WIDTH);
             }
 
             /* Allow enough space after the breadcrumbs for secondary icon and entry */
@@ -475,7 +476,7 @@ namespace Files.View.Chrome {
         protected BreadcrumbElement? get_element_from_coordinates (double x) {
             double width = get_allocated_width () - ICON_WIDTH;
             double height = get_allocated_height ();
-            var is_rtl = Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ();
+            var is_rtl = get_direction () == Gtk.TextDirection.RTL;
             double x_render = is_rtl ? width : 0;
             foreach (BreadcrumbElement element in elements) {
                 if (element.display) {
@@ -518,10 +519,10 @@ namespace Files.View.Chrome {
             /* Ensure the breadcrumb texts are escaped strings whether or not
              * the parameter newpath was supplied escaped */
             string newpath = FileUtils.escape_uri (Uri.unescape_string (path) ?? path);
-            newelements.add (new BreadcrumbElement (protocol, this, get_style_context ()));
+            newelements.add (new BreadcrumbElement (protocol, this));
             foreach (string dir in newpath.split (Path.DIR_SEPARATOR_S)) {
                 if (dir != "") {
-                    newelements.add (new BreadcrumbElement (dir, this, get_style_context ()));
+                    newelements.add (new BreadcrumbElement (dir, this));
                 }
             }
 
@@ -661,33 +662,28 @@ namespace Files.View.Chrome {
 
         public bool draw (Cairo.Context cr) {
         // public override bool draw (Cairo.Context cr) {
-            weak Gtk.StyleContext style_context = get_style_context ();
             // if (button_context_active == null) {
             //     button_context_active = new Gtk.StyleContext ();
             //     button_context_active.set_path (style_context.get_path ());
             //     button_context_active.set_state (Gtk.StateFlags.ACTIVE);
             // }
-            var is_rtl = Gtk.StateFlags.DIR_RTL in style_context.get_state ();
-            // var padding = style_context.get_padding (style_context.get_state ());
+            var is_rtl = get_direction () == Gtk.TextDirection.RTL;
             // base.draw (cr);
             double height = get_allocated_height ();
             double width = get_allocated_width ();
 
-            int scale = style_context.get_scale ();
-            if (breadcrumb_icons.scale != scale) {
-                breadcrumb_icons.scale = scale;
+            int scale = get_scale_factor ();
+            // if (breadcrumb_icons.scale != scale) {
+            //     breadcrumb_icons.scale = scale;
 
-                string protocol = "";
-                if (elements.size > 0) {
-                    protocol = elements[0].text;
-                }
-                set_element_icons (protocol, elements);
-            }
+            //     string protocol = "";
+            //     if (elements.size > 0) {
+            //         protocol = elements[0].text;
+            //     }
+            //     set_element_icons (protocol, elements);
+            // }
 
-            style_context.save ();
-            style_context.set_state (Gtk.StateFlags.ACTIVE);
-            // Gtk.Border border = style_context.get_margin (style_context.get_state ());
-            style_context.restore ();
+            //TODO Set state flags if required
 
             if (!is_focus () && !hide_breadcrumbs) {
                 // double margin = border.top;

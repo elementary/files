@@ -106,7 +106,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
             message_type = Gtk.MessageType.INFO,
             revealed = false
         };
-        // info_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FRAME);
+        info_bar.add_css_class (Granite.STYLE_CLASS_FRAME);
         info_bar.add_child (info_label);
 
         var server_header_label = new Granite.HeaderLabel (_("Server Details"));
@@ -210,14 +210,14 @@ public class PF.ConnectServerDialog : Granite.Dialog {
              // can_default = true,
              // no_show_all = true
          };
-        // connect_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        connect_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
         connect_button.clicked.connect (on_connect_clicked);
 
         continue_button = new Gtk.Button.with_label (_("Continue")) {
             // can_default = true,
             // no_show_all = true
         };
-        // continue_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        continue_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
         continue_button.clicked.connect (on_continue_clicked);
 
         var button_box = new Gtk.Box (HORIZONTAL, 6) {

@@ -90,20 +90,20 @@ public class Files.FileChooserDialog : Adw.Window, Xdp.Request {
             tooltip_markup = _("Previous"),
             sensitive = false
         };
-        // previous_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        previous_button.add_css_class (Granite.STYLE_CLASS_FLAT);
 
         // var next_button = new Gtk.Button.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR) {
         var next_button = new Gtk.Button.from_icon_name ("go-next-symbolic") {
             tooltip_markup = _("Next"),
             sensitive = false
         };
-        // next_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        next_button.add_css_class (Granite.STYLE_CLASS_FLAT);
 
         header = new Adw.HeaderBar () {
             // custom_title = location_bar,
             // title = title
         };
-        // header.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        header.add_css_class (Granite.STYLE_CLASS_FLAT);
         // header.pack_start (previous_button);
         // header.pack_start (next_button);
 
@@ -116,7 +116,7 @@ public class Files.FileChooserDialog : Adw.Window, Xdp.Request {
             use_underline = true,
             // can_default = true
         };
-        // accept_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        accept_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
 
         filter_box = new Gtk.ComboBoxText ();
 
