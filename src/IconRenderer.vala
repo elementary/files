@@ -179,8 +179,8 @@ namespace Files {
         //     }
 
         //     if (file.is_image ()) {
-        //         style_context.add_class (Granite.STYLE_CLASS_CHECKERBOARD);
-        //         style_context.add_class (Granite.STYLE_CLASS_CARD);
+        //         widget.get_parent ().add_css_class (Granite.STYLE_CLASS_CHECKERBOARD);
+        //         widget.get_parent ().add_css_class (Granite.STYLE_CLASS_CARD);
         //     }
 
         //     cr.scale (1.0 / icon_scale, 1.0 / icon_scale);

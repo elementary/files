@@ -30,7 +30,7 @@ namespace Files.View.Chrome {
         }
 
         construct {
-            // get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
+            add_css_class (Granite.STYLE_CLASS_LINKED);
 
             /* Grid View item */
             var id = (uint32)ViewMode.ICON;

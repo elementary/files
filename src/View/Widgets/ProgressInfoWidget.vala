@@ -64,7 +64,7 @@ public class Files.Progress.InfoWidget : Gtk.Grid {
             tooltip_text = _("Cancel")
         };
 
-        // button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        button.add_css_class (Granite.STYLE_CLASS_FLAT);
 
         column_spacing = 6;
         attach (status, 0, 0, 2);

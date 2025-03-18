@@ -969,10 +969,10 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
             selection_mode = NONE
         };
         // FIXME: use constants in Gtk4
-        permission_box.get_style_context ().add_class ("frame");
-        permission_box.get_style_context ().add_class ("rich-list");
-        permission_box.get_style_context ().add_class ("boxed-list");
-        permission_box.get_style_context ().add_class ("separators");
+        permission_box.add_css_class (Granite.STYLE_CLASS_FRAME);
+        permission_box.add_css_class (Granite.STYLE_CLASS_RICH_LIST);
+        permission_box.add_css_class ("boxed-list");
+        permission_box.add_css_class ("separators");
         permission_box.insert (perm_button_user, -1);
         permission_box.insert (perm_button_group, -1);
         permission_box.insert (perm_button_other, -1);

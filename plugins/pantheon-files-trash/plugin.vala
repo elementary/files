@@ -58,8 +58,7 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
             /* Only add actionbar once */
             if (actionbar == null) {
                 actionbar = new Gtk.ActionBar ();
-                // actionbar.get_style_context ().add_class (Gtk.STYLE_CLASS_INLINE_TOOLBAR);
-
+                //TODO Consider if css style to replace inline-toolbar needed
                 restore_button = new Gtk.Button.with_label (_(RESTORE_ALL)) {
                     valign = Gtk.Align.CENTER
                 };
@@ -69,7 +68,7 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
                     margin_start = 0
                 };
 
-                // delete_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                delete_button.add_css_class (Granite.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
                 var size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
                 size_group.add_widget (restore_button);
