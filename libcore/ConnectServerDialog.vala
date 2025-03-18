@@ -108,7 +108,7 @@ public class PF.ConnectServerDialog : Granite.Dialog {
         };
 
         info_bar.add_css_class (Granite.STYLE_CLASS_FRAME);
-        info_bar.add_child (info_label);
+        // info_bar.get_content_area ()add (info_label);
 
         var server_header_label = new Granite.HeaderLabel (_("Server Details"));
 

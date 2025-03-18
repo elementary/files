@@ -84,7 +84,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
 
         var action_bar = new Gtk.ActionBar ();
         action_bar.add_css_class (Granite.STYLE_CLASS_FLAT);
-        action_bar.pack_start (connect_server_button);
+        // action_bar.add (connect_server_button);
 
         orientation = Gtk.Orientation.VERTICAL;
         width_request = Files.app_settings.get_int ("minimum-sidebar-width");

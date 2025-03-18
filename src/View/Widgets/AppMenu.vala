@@ -55,9 +55,9 @@ public class Files.AppMenu : Gtk.Popover {
         };
 
         icon_size_box.add_css_class (Granite.STYLE_CLASS_LINKED);
-        icon_size_box.append (zoom_out_button);
-        icon_size_box.append (zoom_default_button);
-        icon_size_box.append (zoom_in_button);
+        // icon_size_box.add (zoom_out_button);
+        // icon_size_box.add (zoom_default_button);
+        // icon_size_box.add (zoom_in_button);
 
         var undo_redo_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
             homogeneous = true,

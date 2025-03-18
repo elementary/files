@@ -146,9 +146,9 @@ public class Files.RenamerDialog : Granite.Dialog {
 
         var toggle_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         toggle_box.add_css_class (Granite.STYLE_CLASS_LINKED);
-        // toggle_box.append (original_basename_toggle);
-        // toggle_box.append (new_basename_toggle);
-        // toggle_box.append (modify_basename_toggle);
+        // toggle_box.add (original_basename_toggle);
+        // toggle_box.add (new_basename_toggle);
+        // toggle_box.add (modify_basename_toggle);
 
         var basename_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
             halign = Gtk.Align.CENTER,
