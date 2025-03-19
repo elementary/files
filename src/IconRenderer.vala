@@ -83,229 +83,237 @@ namespace Files {
         }
 
 
-        // public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
-        //                              Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
+        public override void snapshot (Gtk.Snapshot snapshot, Gtk.Widget widget, Gdk.Rectangle background_area,
+                                     Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
 
-        //     if (file == null || pixbuf == null) {
-        //         return;
-        //     }
+            if (file == null || pixbuf == null) {
+                return;
+            }
 
-        //     if (widget.get_scale_factor () != icon_scale) {
-        //         icon_scale = widget.get_scale_factor ();
-        //         file.update_icon (icon_size, icon_scale);
-        //     }
+            var gr = Graphene.Rect.alloc ().init (
+                    (float) cell_area.x,
+                    (float) cell_area.y,
+                    (float) cell_area.width,
+                    (float) cell_area.height
+                );
+            var cr = snapshot.append_cairo (gr);
 
-        //     bool is_rtl = widget.get_direction () == Gtk.TextDirection.RTL;
-        //     Gdk.Pixbuf? pb = pixbuf;
+            if (widget.get_scale_factor () != icon_scale) {
+                icon_scale = widget.get_scale_factor ();
+                file.update_icon (icon_size, icon_scale);
+            }
 
-        //     var pix_rect = Gdk.Rectangle ();
+            bool is_rtl = widget.get_direction () == Gtk.TextDirection.RTL;
+            Gdk.Pixbuf? pb = pixbuf;
 
-        //     pix_rect.width = pixbuf.width / icon_scale;
-        //     pix_rect.height = pixbuf.height / icon_scale;
-        //     pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
-        //     pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
+            var pix_rect = Gdk.Rectangle ();
 
-        //     var draw_rect = Gdk.Rectangle ();
-        //     if (!cell_area.intersect (pix_rect, out draw_rect)) {
-        //         return;
-        //     }
+            pix_rect.width = pixbuf.width / icon_scale;
+            pix_rect.height = pixbuf.height / icon_scale;
+            pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
+            pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
 
-        //     string? special_icon_name = null;
-        //     string suffix = "";
-        //     bool is_drop_file = (file == drop_file);
+            var draw_rect = Gdk.Rectangle ();
+            if (!cell_area.intersect (pix_rect, out draw_rect)) {
+                return;
+            }
 
-        //     if (file.is_directory) {
-        //         var names = ((GLib.ThemedIcon) file.icon).get_names ();
-        //         if (names.length > 0) {
-        //             special_icon_name = names[0];
-        //         } else {
-        //             special_icon_name = "folder";
-        //         }
+            string? special_icon_name = null;
+            string suffix = "";
+            bool is_drop_file = (file == drop_file);
 
-        //         bool expanded = (flags & Gtk.CellRendererState.EXPANDED) > 0 || file.is_expanded;
+            if (file.is_directory) {
+                var names = ((GLib.ThemedIcon) file.icon).get_names ();
+                if (names.length > 0) {
+                    special_icon_name = names[0];
+                } else {
+                    special_icon_name = "folder";
+                }
 
-        //         if (expanded) {
-        //             suffix = "-open";
-        //         } else if (is_drop_file) {
-        //             suffix = "-drag-accept";
-        //         }
-        //     } else if (is_drop_file) {
-        //         special_icon_name = "system-run";
-        //     }
+                bool expanded = (flags & Gtk.CellRendererState.EXPANDED) > 0 || file.is_expanded;
 
-        //     if (is_drop_file) {
-        //         flags |= Gtk.CellRendererState.PRELIT;
-        //     }
+                if (expanded) {
+                    suffix = "-open";
+                } else if (is_drop_file) {
+                    suffix = "-drag-accept";
+                }
+            } else if (is_drop_file) {
+                special_icon_name = "system-run";
+            }
 
-        //     if (special_icon_name != null) {
-        //         special_icon_name = special_icon_name + suffix;
-        //         var nicon = Files.IconInfo.lookup_from_name (special_icon_name, icon_size, icon_scale);
-        //         if (nicon != null) {
-        //             pb = nicon.get_pixbuf_nodefault ();
-        //         } else {
-        //             special_icon_name = null;
-        //         }
-        //     }
+            if (is_drop_file) {
+                flags |= Gtk.CellRendererState.PRELIT;
+            }
 
-        //     if (clipboard.has_cutted_file (file)) {
-        //         /* 50% translucent for cutted files */
-        //         pb = PF.PixbufUtils.lucent (pixbuf, 50);
-        //     }
+            if (special_icon_name != null) {
+                special_icon_name = special_icon_name + suffix;
+                var nicon = Files.IconInfo.lookup_from_name (special_icon_name, icon_size, icon_scale);
+                if (nicon != null) {
+                    pb = nicon.get_pixbuf_nodefault ();
+                } else {
+                    special_icon_name = null;
+                }
+            }
 
-        //     if (file.is_hidden) {
-        //         /* 75% translucent for hidden files */
-        //         pb = PF.PixbufUtils.lucent (pixbuf, 75);
-        //         pb = PF.PixbufUtils.darken (pb, 150, 200);
-        //     }
+            if (clipboard.has_cutted_file (file)) {
+                /* 50% translucent for cutted files */
+                pb = PF.PixbufUtils.lucent (pixbuf, 50);
+            }
 
-        //     var style_context = widget.get_parent ().get_style_context ();
-        //     style_context.save ();
+            if (file.is_hidden) {
+                /* 75% translucent for hidden files */
+                pb = PF.PixbufUtils.lucent (pixbuf, 75);
+                pb = PF.PixbufUtils.darken (pb, 150, 200);
+            }
 
-        //     bool prelit = (flags & Gtk.CellRendererState.PRELIT) > 0;
-        //     bool selected = (flags & Gtk.CellRendererState.SELECTED) > 0;
-        //     var state = Gtk.StateFlags.NORMAL;
+            var style_context = widget.get_parent ().get_style_context ();
+            style_context.save ();
 
-        //     if (!widget.sensitive || !this.sensitive) {
-        //         state |= Gtk.StateFlags.INSENSITIVE;
-        //     } else {
-        //         if (selected) {
-        //             state = Gtk.StateFlags.SELECTED;
-        //             state |= widget.get_state_flags ();
-        //         }
+            bool prelit = (flags & Gtk.CellRendererState.PRELIT) > 0;
+            bool selected = (flags & Gtk.CellRendererState.SELECTED) > 0;
+            var state = Gtk.StateFlags.NORMAL;
 
-        //         if (prelit) {
-        //             pb = PF.PixbufUtils.lighten (pb);
-        //         }
-        //     }
+            if (!widget.sensitive || !this.sensitive) {
+                state |= Gtk.StateFlags.INSENSITIVE;
+            } else {
+                if (selected) {
+                    state = Gtk.StateFlags.SELECTED;
+                    state |= widget.get_state_flags ();
+                }
 
-        //     if (file.is_image ()) {
-        //         style_context.add_class (Granite.STYLE_CLASS_CHECKERBOARD);
-        //         style_context.add_class (Granite.STYLE_CLASS_CARD);
-        //     }
+                if (prelit) {
+                    pb = PF.PixbufUtils.lighten (pb);
+                }
+            }
 
-        //     cr.scale (1.0 / icon_scale, 1.0 / icon_scale);
+            if (file.is_image ()) {
+                style_context.add_class (Granite.STYLE_CLASS_CHECKERBOARD);
+                style_context.add_class (Granite.STYLE_CLASS_CARD);
+            }
 
-        //     var x_pad = ((int) icon_size - draw_rect.width) / 2;
-        //     var y_pad = ((int) icon_size - draw_rect.height) / 2;
+            cr.scale (1.0 / icon_scale, 1.0 / icon_scale);
 
-        //     style_context.render_background (
-        //         cr,
-        //         (draw_rect.x - x_pad) * icon_scale,
-        //         (draw_rect.y - y_pad) * icon_scale,
-        //         (int) icon_size * icon_scale, (int) icon_size * icon_scale
-        //     );
+            var x_pad = ((int) icon_size - draw_rect.width) / 2;
+            var y_pad = ((int) icon_size - draw_rect.height) / 2;
 
-        //     // style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
+            style_context.render_background (
+                cr,
+                (draw_rect.x - x_pad) * icon_scale,
+                (draw_rect.y - y_pad) * icon_scale,
+                (int) icon_size * icon_scale, (int) icon_size * icon_scale
+            );
 
-        //     style_context.restore ();
+            // style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
 
-        //     if ((selected || prelit) && file != drop_file) {
-        //         special_icon_name = null;
-        //         if (selected && prelit) {
-        //             special_icon_name = "selection-remove";
-        //         } else if (selected) {
-        //             special_icon_name = "selection-checked";
-        //         } else if (prelit) {
-        //             special_icon_name = "selection-add";
-        //         }
+            style_context.restore ();
 
-        //         Gdk.Rectangle helper_rect = {0, 0, 1, 1};
-        //         if (special_icon_name != null) {
-        //             helper_rect.width = helper_size;
-        //             helper_rect.height = helper_size;
+            if ((selected || prelit) && file != drop_file) {
+                special_icon_name = null;
+                if (selected && prelit) {
+                    special_icon_name = "selection-remove";
+                } else if (selected) {
+                    special_icon_name = "selection-checked";
+                } else if (prelit) {
+                    special_icon_name = "selection-add";
+                }
 
-        //             var nicon = Files.IconInfo.lookup_from_name (special_icon_name, helper_size, icon_scale);
-        //             Gdk.Pixbuf? pix = null;
+                Gdk.Rectangle helper_rect = {0, 0, 1, 1};
+                if (special_icon_name != null) {
+                    helper_rect.width = helper_size;
+                    helper_rect.height = helper_size;
 
-        //             if (nicon != null) {
-        //                 pix = nicon.get_pixbuf_nodefault ();
-        //             }
+                    var nicon = Files.IconInfo.lookup_from_name (special_icon_name, helper_size, icon_scale);
+                    Gdk.Pixbuf? pix = null;
 
-        //             if (pix != null) {
-        //                 // Align at start of background
-        //                 if (is_rtl) {
-        //                     helper_rect.x = int.min (
-        //                         cell_area.x + cell_area.width - helper_size,
-        //                         draw_rect.x + draw_rect.width + x_pad - h_overlap
-        //                     );
-        //                 } else {
-        //                     helper_rect.x = int.max (
-        //                         cell_area.x,
-        //                         draw_rect.x - x_pad - helper_size + h_overlap
-        //                     );
-        //                 }
+                    if (nicon != null) {
+                        pix = nicon.get_pixbuf_nodefault ();
+                    }
 
-        //                 // Align at top of background
-        //                 helper_rect.y = int.max (
-        //                     cell_area.y,
-        //                     draw_rect.y - y_pad - helper_size + v_overlap
-        //                 );
+                    if (pix != null) {
+                        // Align at start of background
+                        if (is_rtl) {
+                            helper_rect.x = int.min (
+                                cell_area.x + cell_area.width - helper_size,
+                                draw_rect.x + draw_rect.width + x_pad - h_overlap
+                            );
+                        } else {
+                            helper_rect.x = int.max (
+                                cell_area.x,
+                                draw_rect.x - x_pad - helper_size + h_overlap
+                            );
+                        }
 
-        //                 // style_context.render_icon (
-        //                 //     cr, pix, helper_rect.x * icon_scale, helper_rect.y * icon_scale
-        //                 // );
-        //             }
-        //         }
+                        // Align at top of background
+                        helper_rect.y = int.max (
+                            cell_area.y,
+                            draw_rect.y - y_pad - helper_size + v_overlap
+                        );
 
-        //         if (prelit) {
-        //             /* Save position of icon that is being hovered */
-        //             hover_rect = cell_area;
-        //             hover_helper_rect = helper_rect;
-        //         }
-        //     }
+                        // style_context.render_icon (
+                        //     cr, pix, helper_rect.x * icon_scale, helper_rect.y * icon_scale
+                        // );
+                    }
+                }
 
-        //     if (show_emblems) {
-        //         int emblem_size = (int) Files.IconSize.EMBLEM;
-        //         int pos = 0;
-        //         var emblem_area = Gdk.Rectangle ();
+                if (prelit) {
+                    /* Save position of icon that is being hovered */
+                    hover_rect = cell_area;
+                    hover_helper_rect = helper_rect;
+                }
+            }
 
-        //         foreach (string emblem in file.emblems_list) {
-        //             if (pos - 1 > zoom_level) {
-        //                 break;
-        //             }
+            if (show_emblems) {
+                int emblem_size = (int) Files.IconSize.EMBLEM;
+                int pos = 0;
+                var emblem_area = Gdk.Rectangle ();
 
-        //             Gdk.Pixbuf? pix = null;
-        //             var nicon = Files.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
+                foreach (string emblem in file.emblems_list) {
+                    if (pos - 1 > zoom_level) {
+                        break;
+                    }
 
-        //             if (nicon == null) {
-        //                 continue;
-        //             }
+                    Gdk.Pixbuf? pix = null;
+                    var nicon = Files.IconInfo.lookup_from_name (emblem, emblem_size, icon_scale);
 
-        //             pix = nicon.get_pixbuf_nodefault ();
+                    if (nicon == null) {
+                        continue;
+                    }
 
-        //             if (pix == null) {
-        //                 continue;
-        //             }
+                    pix = nicon.get_pixbuf_nodefault ();
 
-        //             // Align at end of background (code mirrors that for helper)
-        //             if (!is_rtl) {
-        //                 emblem_area.x = int.min (
-        //                     cell_area.x + cell_area.width - helper_size,
-        //                     draw_rect.x + draw_rect.width + x_pad - h_overlap
-        //                 );
-        //             } else {
-        //                 emblem_area.x = int.max (
-        //                     cell_area.x,
-        //                     draw_rect.x - x_pad - helper_size + h_overlap
-        //                 );
-        //             }
+                    if (pix == null) {
+                        continue;
+                    }
 
-        //             // Align at bottom of background
-        //             emblem_area.y = int.min (
-        //                 cell_area.y + cell_area.height - emblem_size,
-        //                 draw_rect.y + draw_rect.height + y_pad - v_overlap
-        //             );
+                    // Align at end of background (code mirrors that for helper)
+                    if (!is_rtl) {
+                        emblem_area.x = int.min (
+                            cell_area.x + cell_area.width - helper_size,
+                            draw_rect.x + draw_rect.width + x_pad - h_overlap
+                        );
+                    } else {
+                        emblem_area.x = int.max (
+                            cell_area.x,
+                            draw_rect.x - x_pad - helper_size + h_overlap
+                        );
+                    }
+
+                    // Align at bottom of background
+                    emblem_area.y = int.min (
+                        cell_area.y + cell_area.height - emblem_size,
+                        draw_rect.y + draw_rect.height + y_pad - v_overlap
+                    );
 
 
-        //             emblem_area.y = int.max (
-        //                 cell_area.y, emblem_area.y - emblem_size * pos
-        //             );
+                    emblem_area.y = int.max (
+                        cell_area.y, emblem_area.y - emblem_size * pos
+                    );
 
-        //             // style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
-        //             pos++;
-        //         }
-        //     }
-        // }
+                    // style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
+                    pos++;
+                }
+            }
+        }
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
             minimum_size = (int) (icon_size) + Files.IconSize.EMBLEM - h_overlap + lpad;
@@ -316,22 +324,5 @@ namespace Files {
             natural_size = (int) (icon_size) + Files.IconSize.EMBLEM - v_overlap;
             minimum_size = natural_size;
         }
-
-        /* We still have to implement this even though it is deprecated, else compiler complains.
-         * It is not called (in Juno)  */
-        // public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
-        //                                out int x_offset, out int y_offset,
-        //                                out int width, out int height) {
-
-        //     /* Just return some default values for offsets */
-        //     x_offset = 0;
-        //     y_offset = 0;
-        //     int mw, nw, mh, nh;
-        //     get_preferred_width (widget, out mw, out nw);
-        //     get_preferred_height (widget, out mh, out nh);
-
-        //     width = nw;
-        //     height = nh;
-        // }
     }
 }
