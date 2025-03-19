@@ -348,7 +348,6 @@ namespace Files {
                 // show_all ();
                 connect_drag_drop_signals (view);
 
-                // view.draw.connect (on_view_draw);
                 view.realize.connect (() => {
                    schedule_thumbnail_color_tag_timeout ();
                 });
@@ -3308,39 +3307,6 @@ namespace Files {
                     }
                 });
             }
-        }
-
-        public virtual bool on_view_draw (Cairo.Context cr) {
-            /* If folder is empty, draw the empty message in the middle of the view
-             * otherwise pass on event */
-            var style_context = get_style_context ();
-            if (slot.directory.is_empty ()) {
-                Pango.Layout layout = create_pango_layout (null);
-
-                if (!style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
-                    style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
-                    // style_context.add_class (Gtk.STYLE_CLASS_VIEW);
-                }
-
-                layout.set_markup (slot.get_empty_message (), -1);
-
-                Pango.Rectangle? extents = null;
-                layout.get_extents (null, out extents);
-
-                double width = Pango.units_to_double (extents.width);
-                double height = Pango.units_to_double (extents.height);
-
-                double x = (double) get_allocated_width () / 2 - width / 2;
-                double y = (double) get_allocated_height () / 2 - height / 2;
-                get_style_context ().render_layout (cr, x, y, layout);
-
-                return true;
-            } else if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
-                style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
-                // style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
-            }
-
-            return false;
         }
 
         protected virtual bool handle_primary_button_click (uint n_press, Gdk.ModifierType mods, Gtk.TreePath? path) {
