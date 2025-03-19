@@ -161,7 +161,7 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        dialog.show_all ();
+        // dialog.show_all ();
         yield;
 
         dialogs.remove (parent_window);
@@ -321,7 +321,7 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        dialog.show_all ();
+        // dialog.show_all ();
         yield;
 
         dialogs.remove (parent_window);
@@ -436,7 +436,7 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        dialog.show_all ();
+        // dialog.show_all ();
         yield;
 
         dialogs.remove (parent_window);
@@ -474,7 +474,7 @@ public class Files.FileChooserPortal : Object {
             };
 
         var replace_button = replace_dialog.add_button (_("Replace"), Gtk.ResponseType.YES);
-        replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+        // replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
         return replace_dialog;
     }
@@ -497,7 +497,8 @@ public class Files.FileChooserPortal : Object {
         /* Avoid pointless and confusing recursion */
         Environment.unset_variable ("GTK_USE_PORTAL");
 
-        Gtk.init (ref args);
+        Gtk.init ();
+        // Gtk.init (ref args);
 
         var context = new OptionContext ("- FileChooser portal");
         context.add_main_entries (ENTRIES, null);

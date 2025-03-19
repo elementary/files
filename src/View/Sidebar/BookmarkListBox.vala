@@ -37,7 +37,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             selection_mode = Gtk.SelectionMode.SINGLE
         };
 
-        add (list_box);
+        // add (list_box);
 
         trash_monitor = Files.TrashMonitor.get_default ();
         bookmark_list = Files.BookmarkList.get_instance ();

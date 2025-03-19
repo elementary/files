@@ -52,7 +52,8 @@ namespace Files.View.Chrome {
             }
         }
 
-        public override void get_preferred_width (out int minimum_width, out int natural_width) {
+        // public override void get_preferred_width (out int minimum_width, out int natural_width) {
+        public void get_preferred_width (out int minimum_width, out int natural_width) {
             minimum_width = this.minimum_width;
             natural_width = 3000;
         }
@@ -70,7 +71,7 @@ namespace Files.View.Chrome {
             }
 
             widget = _bread as Gtk.Widget;
-            pack_start (bread, true, true, 0);
+            // pack_start (bread, true, true, 0);
             connect_signals ();
             can_focus = false;
         }
@@ -79,8 +80,8 @@ namespace Files.View.Chrome {
             bread.entry_text_changed.connect_after (after_bread_text_changed);
             bread.activate_path.connect (on_bread_activate_path);
             bread.action_icon_press.connect (on_bread_action_icon_press);
-            bread.focus_in_event.connect_after (after_bread_focus_in_event);
-            bread.focus_out_event.connect_after (after_bread_focus_out_event);
+            // bread.focus_in_event.connect_after (after_bread_focus_in_event);
+            // bread.focus_out_event.connect_after (after_bread_focus_out_event);
         }
 
         protected virtual void after_bread_text_changed (string txt) {
@@ -94,14 +95,14 @@ namespace Files.View.Chrome {
             }
         }
 
-        protected virtual bool after_bread_focus_in_event (Gdk.EventFocus event) {
-            show_navigate_icon ();
-            return true;
-        }
-        protected virtual bool after_bread_focus_out_event (Gdk.EventFocus event) {
-            hide_navigate_icon ();
-            return true;
-        }
+        // protected virtual bool after_bread_focus_in_event (Gdk.EventFocus event) {
+        //     show_navigate_icon ();
+        //     return true;
+        // }
+        // protected virtual bool after_bread_focus_out_event (Gdk.EventFocus event) {
+        //     hide_navigate_icon ();
+        //     return true;
+        // }
 
         protected virtual void on_bread_action_icon_press () {
             bread.activate ();

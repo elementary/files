@@ -16,7 +16,8 @@ public class Files.AppMenu : Gtk.Popover {
     construct {
         var app_instance = (Gtk.Application)(GLib.Application.get_default ());
 
-        zoom_out_button = new Gtk.Button.from_icon_name ("zoom-out-symbolic", Gtk.IconSize.MENU) {
+        // zoom_out_button = new Gtk.Button.from_icon_name ("zoom-out-symbolic", Gtk.IconSize.MENU) {
+        zoom_out_button = new Gtk.Button.from_icon_name ("zoom-out-symbolic") {
             action_name = "win.zoom",
             action_target = "ZOOM_OUT"
         };
@@ -34,7 +35,8 @@ public class Files.AppMenu : Gtk.Popover {
             _("Zoom 1:1")
         );
 
-        zoom_in_button = new Gtk.Button.from_icon_name ("zoom-in-symbolic", Gtk.IconSize.MENU) {
+        // zoom_in_button = new Gtk.Button.from_icon_name ("zoom-in-symbolic", Gtk.IconSize.MENU) {
+        zoom_in_button = new Gtk.Button.from_icon_name ("zoom-in-symbolic") {
             action_name = "win.zoom",
             action_target = "ZOOM_IN"
         };
@@ -51,10 +53,10 @@ public class Files.AppMenu : Gtk.Popover {
             margin_bottom = 6,
             margin_start = 12
         };
-        icon_size_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
-        icon_size_box.add (zoom_out_button);
-        icon_size_box.add (zoom_default_button);
-        icon_size_box.add (zoom_in_button);
+        // icon_size_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
+        // icon_size_box.add (zoom_out_button);
+        // icon_size_box.add (zoom_default_button);
+        // icon_size_box.add (zoom_in_button);
 
         var undo_redo_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
             homogeneous = true,
@@ -62,18 +64,20 @@ public class Files.AppMenu : Gtk.Popover {
             margin_bottom = 12,
             margin_start = 12
         };
-        undo_redo_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
+        // undo_redo_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
 
-        undo_button = new Gtk.Button.from_icon_name ("edit-undo-symbolic", Gtk.IconSize.MENU) {
+        // undo_button = new Gtk.Button.from_icon_name ("edit-undo-symbolic", Gtk.IconSize.MENU) {
+        undo_button = new Gtk.Button.from_icon_name ("edit-undo-symbolic") {
             action_name = "win.undo"
         };
 
-        redo_button = new Gtk.Button.from_icon_name ("edit-redo-symbolic", Gtk.IconSize.MENU) {
+        // redo_button = new Gtk.Button.from_icon_name ("edit-redo-symbolic", Gtk.IconSize.MENU) {
+        redo_button = new Gtk.Button.from_icon_name ("edit-redo-symbolic") {
             action_name = "win.redo"
         };
 
-        undo_redo_box.add (undo_button);
-        undo_redo_box.add (redo_button);
+        // undo_redo_box.add (undo_button);
+        // undo_redo_box.add (redo_button);
 
         undo_accels = app_instance.get_accels_for_action ("win.undo");
         redo_accels = app_instance.get_accels_for_action ("win.redo");
@@ -96,37 +100,37 @@ public class Files.AppMenu : Gtk.Popover {
         var show_hidden_button = new Gtk.CheckButton () {
             action_name = "win.show-hidden"
         };
-        show_hidden_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
-        show_hidden_button.add (new Granite.AccelLabel (
-            _("Hidden Files"),
-            "<Ctrl>h"
-        ));
+        // show_hidden_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
+        // show_hidden_button.add (new Granite.AccelLabel (
+        //     _("Hidden Files"),
+        //     "<Ctrl>h"
+        // ));
 
         var show_local_thumbnails = new Gtk.CheckButton.with_label (_("Local Thumbnails")) {
             action_name = "win.show-local-thumbnails"
         };
-        show_local_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
+        // show_local_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
         var show_remote_thumbnails = new Gtk.CheckButton.with_label (_("Remote Thumbnails")) {
             action_name = "win.show-remote-thumbnails"
         };
-        show_remote_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
+        // show_remote_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
         var menu_box = new Gtk.Box (VERTICAL, 0) {
             margin_bottom = 6
         };
-        menu_box.add (icon_size_box);
-        menu_box.add (undo_redo_box);
-        menu_box.add (new Gtk.Separator (HORIZONTAL) { margin_bottom = 3 });
-        menu_box.add (double_click_button);
-        menu_box.add (folders_before_files);
-        menu_box.add (restore_tabs);
-        menu_box.add (new Gtk.Separator (HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
-        menu_box.add (show_header);
-        menu_box.add (show_hidden_button);
-        menu_box.add (show_local_thumbnails);
-        menu_box.add (show_remote_thumbnails);
-        menu_box.show_all ();
+        // menu_box.add (icon_size_box);
+        // menu_box.add (undo_redo_box);
+        // menu_box.add (new Gtk.Separator (HORIZONTAL) { margin_bottom = 3 });
+        // menu_box.add (double_click_button);
+        // menu_box.add (folders_before_files);
+        // menu_box.add (restore_tabs);
+        // menu_box.add (new Gtk.Separator (HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
+        // menu_box.add (show_header);
+        // menu_box.add (show_hidden_button);
+        // menu_box.add (show_local_thumbnails);
+        // menu_box.add (show_remote_thumbnails);
+        // menu_box.show_all ();
 
         child = menu_box;
 

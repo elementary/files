@@ -20,7 +20,7 @@ You'll need the following dependencies:
 * libhandy-1-dev >= 1.2.0
 * libpango1.0-dev
 * libportal-dev
-* libportal-gtk3-dev
+<!--* libportal-gtk4-dev-->
 * libsqlite3-dev
 * libunity-dev
 * libzeitgeist-2.0-dev
