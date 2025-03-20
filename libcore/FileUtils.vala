@@ -181,7 +181,7 @@ namespace Files.FileUtils {
 
         var dialog = new Granite.MessageDialog.with_image_from_icon_name (
             _("The original folder %s no longer exists").printf (file.get_path ()),
-            _("The folder can be recreated and selected files that were originally there will be restored to it. Otherwise, no files that were in this folder will be restored."),
+            _("The folder can be recreated and selected files that were originally there will be restored to it. Otherwise, files that were in this folder will not be restored."),
             "dialog-question",
             Gtk.ButtonsType.NONE
         );
