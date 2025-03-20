@@ -161,6 +161,7 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
+        dialog.present ();
         yield;
 
         dialogs.remove (parent_window);

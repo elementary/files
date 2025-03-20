@@ -397,8 +397,7 @@ public class Files.RenamerDialog : Granite.Dialog {
         if (mod.pos == RenamePosition.PREFIX) {
             prefix_box.append (mod_button);
         } else {
-            suffix_box.append (mod_button);
-            // suffix_box.reorder_child (suffix_revealer, -1);
+            suffix_box.prepend (mod_button);
         }
 
         controls_grid.queue_draw ();
