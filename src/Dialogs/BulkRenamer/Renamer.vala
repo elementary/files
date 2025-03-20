@@ -28,6 +28,8 @@ public class Files.Renamer : Object {
     public Gtk.ListBox listbox { get; private set; }
     public SortBy sortby { get; set; default = SortBy.NAME; }
 
+    private uint n_rows = 0;
+
     construct {
         modifier_chain = new Gee.ArrayList<RenamerModifier> ();
 
@@ -60,6 +62,7 @@ public class Files.Renamer : Object {
                 f.ensure_query_info ();
                 var row = new RenamerListRow (f);
                 listbox.add (row);
+                n_rows++;
                 row.new_name = Path.get_basename (path);
             }
         }
@@ -151,15 +154,14 @@ public class Files.Renamer : Object {
         };
 
         /* Apply each modifier to each item (in required order) */
-        var n_children = listbox.get_children ().length ();
         foreach (var mod in modifier_chain) {
-            uint index = mod.is_reversed ? n_children - 1 : 0;
+            uint index = mod.is_reversed ? n_rows - 1 : 0;
             int incr = mod.is_reversed ? -1 : 1;
-            listbox.get_children ().@foreach ((child) => {
-                var row = (RenamerListRow)child;
+            for (int i = 0; listbox.get_row_at_index (i) != null; i++) {
+                var row = (RenamerListRow) listbox.get_row_at_index (i);
                 row.new_name = mod.rename (row.new_name, index, row.file);
                 index += incr;
-            });
+            }
         }
 
         /* Reapply extension and check validity */
