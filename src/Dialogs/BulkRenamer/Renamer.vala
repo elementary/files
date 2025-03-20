@@ -66,8 +66,8 @@ public class Files.Renamer : Object {
     }
 
     public void rename_files () {
-        listbox.get_children ().@foreach ((child) => {
-            var row = (RenamerListRow)child;
+        for (int i = 0; listbox.get_row_at_index (i) != null; i++) {
+            var row = (RenamerListRow) listbox.get_row_at_index (i);
             unowned string output_name = row.new_name;
             var file = row.file;
 
@@ -84,7 +84,7 @@ public class Files.Renamer : Object {
                     }
                 );
             }
-        });
+        }
     }
 
     private string strip_extension (string filename, out string extension) {
@@ -132,8 +132,8 @@ public class Files.Renamer : Object {
         bool has_invalid = false;
 
         /* Apply basename to each item */
-        listbox.get_children ().@foreach ((child) => {
-            var row = (RenamerListRow)child;
+        for (int i = 0; listbox.get_row_at_index (i) != null; i++) {
+            var row = (RenamerListRow) listbox.get_row_at_index (i);
             string input_name = "";
             string extension = "";
             if (custom_basename != null && replacement_text == null) {
@@ -163,8 +163,8 @@ public class Files.Renamer : Object {
         }
 
         /* Reapply extension and check validity */
-        listbox.get_children ().@foreach ((child) => {
-            var row = (RenamerListRow)child;
+        for (int i = 0; listbox.get_row_at_index (i) != null; i++) {
+            var row = (RenamerListRow) listbox.get_row_at_index (i);
             row.new_name = row.new_name.concat (row.extension);
             if (row.new_name == previous_final_name ||
                 invalid_name (row.new_name, row.file)) {
