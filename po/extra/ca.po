@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-10 20:34+0000\n"
+"POT-Creation-Date: 2025-03-20 17:19+0000\n"
 "PO-Revision-Date: 2024-10-23 15:05+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
@@ -70,75 +70,75 @@ msgstr "Vegeu més metadades d'un cop d'ull a la vista de llista"
 msgid "Browse complex trees faster with Column view"
 msgstr "Exploreu arbres complexos més ràpidament amb la vista de columna"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:82
-#: data/files.metainfo.xml.in.in:104 data/files.metainfo.xml.in.in:122
-#: data/files.metainfo.xml.in.in:145 data/files.metainfo.xml.in.in:157
-#: data/files.metainfo.xml.in.in:177
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:83
+#: data/files.metainfo.xml.in.in:105 data/files.metainfo.xml.in.in:123
+#: data/files.metainfo.xml.in.in:146 data/files.metainfo.xml.in.in:158
+#: data/files.metainfo.xml.in.in:178
 msgid "Minor updates:"
 msgstr "Actualitzacions menors:"
 
-#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:86
-#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:130
-#: data/files.metainfo.xml.in.in:147 data/files.metainfo.xml.in.in:159
-#: data/files.metainfo.xml.in.in:179
+#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:109 data/files.metainfo.xml.in.in:131
+#: data/files.metainfo.xml.in.in:148 data/files.metainfo.xml.in.in:160
+#: data/files.metainfo.xml.in.in:180
 msgid "Updated translations"
 msgstr "Traduccions actualitzades"
 
-#: data/files.metainfo.xml.in.in:84
+#: data/files.metainfo.xml.in.in:85
 msgid "Redesign file permissions view"
 msgstr "Redisseny de la vista de permisos dels fitxers"
 
-#: data/files.metainfo.xml.in.in:85
+#: data/files.metainfo.xml.in.in:86
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr "Centreu la barra lateral prement Ctrl + Esquerra"
 
-#: data/files.metainfo.xml.in.in:106
+#: data/files.metainfo.xml.in.in:107
 msgid "Restoring tabs from last time is now optional"
 msgstr "La restauració de les pestanyes de l'última vegada és ara opcional."
 
-#: data/files.metainfo.xml.in.in:107
+#: data/files.metainfo.xml.in.in:108
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr ""
 "Arrossegar i seleccionar ja no es pot fer amb el botó del punter secundari."
 
-#: data/files.metainfo.xml.in.in:124
+#: data/files.metainfo.xml.in.in:125
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 "Suspensió del suport per arrossegar l'adreça d'interès fora de la barra "
 "lateral"
 
-#: data/files.metainfo.xml.in.in:125
+#: data/files.metainfo.xml.in.in:126
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr ""
 "Correcció del desplaçament inesperat després de canviar el nom d'una carpeta"
 
-#: data/files.metainfo.xml.in.in:126
+#: data/files.metainfo.xml.in.in:127
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 "Solució d'un error en canviar a la visualització com a quadrícula en rares "
 "circumstàncies"
 
-#: data/files.metainfo.xml.in.in:127
+#: data/files.metainfo.xml.in.in:128
 msgid "Ensure the selection persists after refreshing the view"
 msgstr "S'assegura que la selecció persisteixi després d'actualitzar la vista."
 
-#: data/files.metainfo.xml.in.in:128
+#: data/files.metainfo.xml.in.in:129
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "Correcció dels fitxers que no s'obren si s'intenta restaurar una ubicació "
 "desconnectada"
 
-#: data/files.metainfo.xml.in.in:129
+#: data/files.metainfo.xml.in.in:130
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 "Correcció de la vista que es continua mostrant quan es desmunta una ubicació"
 
-#: data/files.metainfo.xml.in.in:173
+#: data/files.metainfo.xml.in.in:174
 msgid "Improvements:"
 msgstr "Millores:"
 
-#: data/files.metainfo.xml.in.in:175
+#: data/files.metainfo.xml.in.in:176
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
