@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-10 20:34+0000\n"
+"POT-Creation-Date: 2025-03-20 17:19+0000\n"
 "PO-Revision-Date: 2023-05-19 08:06+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
@@ -55,41 +55,41 @@ msgstr "Yeni dosya adı girin"
 msgid "Select"
 msgstr "Seç"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:320
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:311
 msgid "Open"
 msgstr "Aç"
 
-#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:375
+#: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:379
 msgid "Save"
 msgstr "Kaydet"
 
-#: filechooser-portal/Main.vala:448
+#: filechooser-portal/Main.vala:454
 #, c-format
 msgid "This file is a link to “%s”"
 msgstr "Bu dosya “%s” için bir bağlantıdır"
 
-#: filechooser-portal/Main.vala:451
+#: filechooser-portal/Main.vala:457
 msgid "This file is a link."
 msgstr "Bu dosya bir bağlantıdır."
 
-#: filechooser-portal/Main.vala:454
+#: filechooser-portal/Main.vala:460
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
 msgstr ""
 "Bir bağlantının değiştirilmesi, hedefin içeriğinin üzerine yazılmasına neden "
 "olur. Bağlantı kalacaktır"
 
-#: filechooser-portal/Main.vala:456
+#: filechooser-portal/Main.vala:462
 #, c-format
 msgid "Replace “%s”?"
 msgstr "“%s” değiştirilsin mi?"
 
-#: filechooser-portal/Main.vala:457
+#: filechooser-portal/Main.vala:463
 msgid "Replacing this file will overwrite its current contents"
 msgstr ""
 "Bu dosyayı değiştirmek, var olan içeriğin üzerine yazılmasına neden olacak"
 
-#: filechooser-portal/Main.vala:470 libcore/FileConflictDialog.vala:187
+#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:187
 msgid "Replace"
 msgstr "Yerine Koy"
 
@@ -223,7 +223,7 @@ msgstr "Buraya Kopyala"
 msgid "Link Here"
 msgstr "Bağlantı Oluştur"
 
-#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2272
+#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2270
 msgid "Name"
 msgstr "Ad"
 
@@ -236,7 +236,7 @@ msgstr "Oluşturma Tarihi"
 msgid "Last modification date"
 msgstr "Son değiştirme tarihi"
 
-#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2277
+#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2275
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Boyut"
@@ -249,7 +249,7 @@ msgstr "Numara serisi"
 msgid "Text"
 msgstr "Metin"
 
-#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2287
+#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2285
 msgid "Date"
 msgstr "Tarih"
 
@@ -456,45 +456,42 @@ msgstr "\"%s\" içinde aynı ada sahip başka bir dosya zaten var."
 msgid "Merge"
 msgstr "Birleştir"
 
-#: libcore/FileUtils.vala:82
+#: libcore/FileUtils.vala:88
 #, c-format
 msgid "Could not determine original location of \"%s\""
 msgstr "\"%s\" dosyasının özgün konumu belirlenemedi"
 
-#: libcore/FileUtils.vala:83
+#: libcore/FileUtils.vala:89
 msgid "The item cannot be restored from trash"
 msgstr "Öğe çöpten geri yüklenemez"
 
-#: libcore/FileUtils.vala:177
+#: libcore/FileUtils.vala:183
 #, c-format
 msgid "The original folder %s no longer exists"
 msgstr "Özgün klasör %s artık yok"
 
-#: libcore/FileUtils.vala:178
-msgid "Would you like to recreate it?"
-msgstr "Klasörü yeniden oluşturmak istiyor musunuz?"
-
-#: libcore/FileUtils.vala:183
-msgid "Ignore"
-msgstr "Yoksay"
-
 #: libcore/FileUtils.vala:184
-msgid "No files that were in this folder will be restored"
-msgstr "Bu klasörde bulunan hiçbir dosya geri yüklenmeyecek"
-
-#: libcore/FileUtils.vala:185
-msgid "Recreate"
-msgstr "Yeniden Oluştur"
-
-#: libcore/FileUtils.vala:187
+#, fuzzy
+#| msgid ""
+#| "The folder will be recreated and selected files that were originally "
+#| "there will be restored to it"
 msgid ""
-"The folder will be recreated and selected files that were originally there "
-"will be restored to it"
+"The folder can be recreated and selected files that were originally there "
+"will be restored to it. Otherwise, files that were in this folder will not "
+"be restored."
 msgstr ""
 "Klasör yeniden oluşturulacak ve orijinal olarak orada bulunan seçilen "
 "dosyalar geri yüklenecektir"
 
-#: libcore/FileUtils.vala:200
+#: libcore/FileUtils.vala:188
+msgid "Ignore"
+msgstr "Yoksay"
+
+#: libcore/FileUtils.vala:189
+msgid "Recreate"
+msgstr "Yeniden Oluştur"
+
+#: libcore/FileUtils.vala:201
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
@@ -1538,8 +1535,8 @@ msgstr "Uygulamanın sürümünü göster"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Her biri kendi sekmesinde olmak üzere bir veya daha fazla URI aç"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1860
-#: src/View/AbstractDirectoryView.vala:1866
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1858
+#: src/View/AbstractDirectoryView.vala:1864
 msgid "New Window"
 msgstr "Yeni Pencere"
 
@@ -1653,7 +1650,7 @@ msgid "Bulk Rename"
 msgstr "Toplu Yeniden Adlandır"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:345
+#: src/View/Sidebar/BookmarkRow.vala:336
 msgid "Rename"
 msgstr "Yeniden Adlandır"
 
@@ -1750,7 +1747,7 @@ msgid "Set as default"
 msgstr "Varsayılan olarak ayarla"
 
 #: src/Dialogs/PropertiesWindow.vala:116
-#: src/View/AbstractDirectoryView.vala:1979
+#: src/View/AbstractDirectoryView.vala:1977
 #: src/View/Sidebar/AbstractMountableRow.vala:277
 msgid "Properties"
 msgstr "Özellikler"
@@ -1820,7 +1817,7 @@ msgid "Original Location:"
 msgstr "Özgün Konum:"
 
 #: src/Dialogs/PropertiesWindow.vala:653
-#: src/View/AbstractDirectoryView.vala:1947
+#: src/View/AbstractDirectoryView.vala:1945
 msgid "Other Application…"
 msgstr "Diğer Uygulamalar…"
 
@@ -1921,18 +1918,18 @@ msgstr "Grup:"
 msgid "Everyone"
 msgstr "Herkes:"
 
-#: src/View/AbstractDirectoryView.vala:809
-#: src/View/AbstractDirectoryView.vala:1134
+#: src/View/AbstractDirectoryView.vala:807
+#: src/View/AbstractDirectoryView.vala:1132
 msgid "Cannot execute this file"
 msgstr "Bu dosya çalıştırılamıyor"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:819
+#: src/View/AbstractDirectoryView.vala:817
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "\"%s\" açılmadan önce Çöpten çıkarılmalıdır"
 
-#: src/View/AbstractDirectoryView.vala:820
+#: src/View/AbstractDirectoryView.vala:818
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -1940,174 +1937,174 @@ msgstr ""
 "Çöpteki dosyalar açılamıyor. Bu dosyayı açmak için başka bir yere taşınması "
 "gerekir."
 
-#: src/View/AbstractDirectoryView.vala:835
+#: src/View/AbstractDirectoryView.vala:833
 msgid "Cannot open this file"
 msgstr "Bu dosya açılamıyor"
 
-#: src/View/AbstractDirectoryView.vala:848
+#: src/View/AbstractDirectoryView.vala:846
 msgid "Cannot identify file type to open"
 msgstr "Açmaya çalışılan dosya türü tanımlanamıyor"
 
-#: src/View/AbstractDirectoryView.vala:1569
+#: src/View/AbstractDirectoryView.vala:1567
 msgid "Cannot drop this file"
 msgstr "Bu dosya bırakılamaz"
 
-#: src/View/AbstractDirectoryView.vala:1570
+#: src/View/AbstractDirectoryView.vala:1568
 msgid "Invalid file name provided"
 msgstr "Belirtilen dosya adı geçersiz"
 
-#: src/View/AbstractDirectoryView.vala:1843
-#: src/View/AbstractDirectoryView.vala:1849 src/View/Window.vala:241
+#: src/View/AbstractDirectoryView.vala:1841
+#: src/View/AbstractDirectoryView.vala:1847 src/View/Window.vala:241
 msgid "New Tab"
 msgstr "Yeni Sekme"
 
-#: src/View/AbstractDirectoryView.vala:1883
+#: src/View/AbstractDirectoryView.vala:1881
 msgid "Run"
 msgstr "Çalıştır"
 
-#: src/View/AbstractDirectoryView.vala:1890
+#: src/View/AbstractDirectoryView.vala:1888
 #, c-format
 msgid "Open in %s"
 msgstr "%s ile aç"
 
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/View/AbstractDirectoryView.vala:1957
 msgid "Open in"
 msgstr "İçinde aç"
 
-#: src/View/AbstractDirectoryView.vala:1961
+#: src/View/AbstractDirectoryView.vala:1959
 #: src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open with"
 msgstr "Birlikte aç"
 
-#: src/View/AbstractDirectoryView.vala:1972
+#: src/View/AbstractDirectoryView.vala:1970
 msgid "Add to Bookmarks"
 msgstr "Yer İmlerine Ekle"
 
-#: src/View/AbstractDirectoryView.vala:1992
+#: src/View/AbstractDirectoryView.vala:1990
 msgid "Select All"
 msgstr "Tümünü Seç"
 
-#: src/View/AbstractDirectoryView.vala:2001
+#: src/View/AbstractDirectoryView.vala:1999
 msgid "Invert Selection"
 msgstr "Diğerlerini Seç"
 
-#: src/View/AbstractDirectoryView.vala:2010
+#: src/View/AbstractDirectoryView.vala:2008
 msgid "Deselect All"
 msgstr "Tüm Seçimi Kaldır"
 
-#: src/View/AbstractDirectoryView.vala:2018
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Cut"
 msgstr "Kes"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2026
+#: src/View/AbstractDirectoryView.vala:2024
 msgid "Copy"
 msgstr "Kopyala"
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2031
 msgid "Move to Trash"
 msgstr "Çöpe Taşı"
 
-#: src/View/AbstractDirectoryView.vala:2038
+#: src/View/AbstractDirectoryView.vala:2036
 msgid "Delete Permanently"
 msgstr "Kalıcı Olarak Sil"
 
-#: src/View/AbstractDirectoryView.vala:2045
+#: src/View/AbstractDirectoryView.vala:2043
 msgid "Restore from Trash"
 msgstr "Çöpten Geri Yükle"
 
-#: src/View/AbstractDirectoryView.vala:2068
+#: src/View/AbstractDirectoryView.vala:2066
 msgid "Open Parent Folder"
 msgstr "Bulunduğu Klasörü Aç"
 
-#: src/View/AbstractDirectoryView.vala:2071
+#: src/View/AbstractDirectoryView.vala:2069
 msgid "Remove from History"
 msgstr "Geçmişten Sil"
 
-#: src/View/AbstractDirectoryView.vala:2097
+#: src/View/AbstractDirectoryView.vala:2095
 msgid "Rename…"
 msgstr "Yeniden Adlandır…"
 
-#: src/View/AbstractDirectoryView.vala:2104
+#: src/View/AbstractDirectoryView.vala:2102
 msgid "Copy as Link"
 msgstr "Bağlantı Olarak Kopyala"
 
-#: src/View/AbstractDirectoryView.vala:2127
-#: src/View/AbstractDirectoryView.vala:2207
+#: src/View/AbstractDirectoryView.vala:2125
+#: src/View/AbstractDirectoryView.vala:2205
 msgid "Paste Link into Folder"
 msgstr "Bağlantıyı Klasöre Yapıştır"
 
-#: src/View/AbstractDirectoryView.vala:2132
-#: src/View/AbstractDirectoryView.vala:2184
+#: src/View/AbstractDirectoryView.vala:2130
+#: src/View/AbstractDirectoryView.vala:2182
 msgid "Paste into Folder"
 msgstr "Klasöre Yapıştır"
 
-#: src/View/AbstractDirectoryView.vala:2142
-#: src/View/AbstractDirectoryView.vala:2212
+#: src/View/AbstractDirectoryView.vala:2140
+#: src/View/AbstractDirectoryView.vala:2210
 msgid "Paste"
 msgstr "Yapıştır"
 
-#: src/View/AbstractDirectoryView.vala:2250
+#: src/View/AbstractDirectoryView.vala:2248
 #, fuzzy
 #| msgid "Set as default"
 msgid "Set as Wallpaper"
 msgstr "Varsayılan olarak ayarla"
 
-#: src/View/AbstractDirectoryView.vala:2282 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2280 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Tür"
 
-#: src/View/AbstractDirectoryView.vala:2292
+#: src/View/AbstractDirectoryView.vala:2290
 msgid "Reversed Order"
 msgstr "Tersine Sırala"
 
-#: src/View/AbstractDirectoryView.vala:2295
+#: src/View/AbstractDirectoryView.vala:2293
 msgid "Folders Before Files"
 msgstr "Dosyalardan Önce Klasörler"
 
-#: src/View/AbstractDirectoryView.vala:2307
+#: src/View/AbstractDirectoryView.vala:2305
 msgid "Sort by"
 msgstr "Sıralama ölçütü"
 
-#: src/View/AbstractDirectoryView.vala:2315
+#: src/View/AbstractDirectoryView.vala:2313
 msgid "Folder"
 msgstr "Klasör"
 
-#: src/View/AbstractDirectoryView.vala:2321
+#: src/View/AbstractDirectoryView.vala:2319
 msgid "Empty File"
 msgstr "Boş Dosya"
 
-#: src/View/AbstractDirectoryView.vala:2372
+#: src/View/AbstractDirectoryView.vala:2332
 msgid "New"
 msgstr "Yeni"
 
-#: src/View/AbstractDirectoryView.vala:2617
+#: src/View/AbstractDirectoryView.vala:2586
 #, c-format
 msgid "Untitled %s"
 msgstr "Adsız %s"
 
-#: src/View/AbstractDirectoryView.vala:2908
-#: src/View/AbstractDirectoryView.vala:3111
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3080
 msgid "Cannot remove files from here"
 msgstr "Dosyalar buradan silinemez"
 
-#: src/View/AbstractDirectoryView.vala:2909
-#: src/View/AbstractDirectoryView.vala:3084
-#: src/View/AbstractDirectoryView.vala:3095
-#: src/View/AbstractDirectoryView.vala:3112
+#: src/View/AbstractDirectoryView.vala:2878
+#: src/View/AbstractDirectoryView.vala:3053
+#: src/View/AbstractDirectoryView.vala:3064
+#: src/View/AbstractDirectoryView.vala:3081
 msgid "You do not have permission to change this location"
 msgstr "Bu yolu değiştirebilmek için gereken yetkiye sahip değilsiniz"
 
-#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3021
 msgid "Cannot copy files that are in the trash"
 msgstr "Çöpün içindeki dosyalar kopyalanamaz"
 
-#: src/View/AbstractDirectoryView.vala:3053
+#: src/View/AbstractDirectoryView.vala:3022
 msgid "Cutting the selection instead"
 msgstr "Onun yerine seçilen kesiliyor"
 
-#: src/View/AbstractDirectoryView.vala:3083
-#: src/View/AbstractDirectoryView.vala:3094
+#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3063
 msgid "Cannot paste files here"
 msgstr "Dosyalar buraya yapıştırılamaz"
 
@@ -2320,23 +2317,23 @@ msgstr "Son kullanılan dosyaların listesini görüntüle"
 msgid "Open the Trash"
 msgstr "Çöp Kutusunu Aç"
 
-#: src/View/Sidebar/BookmarkRow.vala:316
+#: src/View/Sidebar/BookmarkRow.vala:307
 msgid "Open in New _Tab"
 msgstr "Yeni _Sekmede Aç"
 
-#: src/View/Sidebar/BookmarkRow.vala:317
+#: src/View/Sidebar/BookmarkRow.vala:308
 msgid "Open in New _Window"
 msgstr "Yeni _Pencerede Aç"
 
-#: src/View/Sidebar/BookmarkRow.vala:341
+#: src/View/Sidebar/BookmarkRow.vala:332
 msgid "Remove"
 msgstr "Sil"
 
-#: src/View/Sidebar/BookmarkRow.vala:359
+#: src/View/Sidebar/BookmarkRow.vala:350
 msgid "Permanently Delete All Trash"
 msgstr "Tüm Çöpleri Kalıcı Olarak Sil"
 
-#: src/View/Sidebar/BookmarkRow.vala:359
+#: src/View/Sidebar/BookmarkRow.vala:350
 msgid "Permanently Delete Trash"
 msgstr "Çöpleri Kalıcı Olarak Sil"
 
@@ -2360,7 +2357,7 @@ msgstr ""
 msgid "Unformatted or no media"
 msgstr "Biçimlendirilmemiş veya medya yok"
 
-#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:181
+#: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:188
 msgid "Safely Remove"
 msgstr "Güvenle Kaldır"
 
@@ -2398,11 +2395,11 @@ msgstr "Bir ağ üzerinden kullanılabilen cihazlar ve yerler"
 msgid "Connect Server…"
 msgstr "Sunucuya Bağlan…"
 
-#: src/View/Sidebar/VolumeRow.vala:174
+#: src/View/Sidebar/VolumeRow.vala:181
 msgid "Mount"
 msgstr "Bağla"
 
-#: src/View/Sidebar/VolumeRow.vala:184
+#: src/View/Sidebar/VolumeRow.vala:191
 msgid "Eject Media"
 msgstr "Medyayı Çıkar"
 
@@ -2577,6 +2574,12 @@ msgstr "Bu Klasörün Altında"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Son Kullanılan"
+
+#~ msgid "Would you like to recreate it?"
+#~ msgstr "Klasörü yeniden oluşturmak istiyor musunuz?"
+
+#~ msgid "No files that were in this folder will be restored"
+#~ msgstr "Bu klasörde bulunan hiçbir dosya geri yüklenmeyecek"
 
 #~ msgid "_Mount"
 #~ msgstr "_Bağla"
