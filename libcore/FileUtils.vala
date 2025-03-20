@@ -208,9 +208,8 @@ namespace Files.FileUtils {
                         "dialog-error",
                         Gtk.ButtonsType.CLOSE
                     );
-
-                    error_dialog.run ();
-                    error_dialog.destroy ();
+                    error_dialog.response.connect (() => error_dialog.close ());
+                    error_dialog.present ();
                 }
 
                 break;
