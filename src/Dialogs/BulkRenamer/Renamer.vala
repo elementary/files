@@ -148,7 +148,7 @@ public class Files.Renamer : Object {
             }
 
             row.new_name = input_name;
-        });
+        };
 
         /* Apply each modifier to each item (in required order) */
         var n_children = listbox.get_children ().length ();
@@ -178,7 +178,7 @@ public class Files.Renamer : Object {
             }
 
             previous_final_name = row.new_name;
-        });
+        };
 
         can_rename = !has_invalid;
         updating = false;
