@@ -154,16 +154,15 @@ public class Files.FileChooserDialog : Adw.Window, Xdp.Request {
             // margin = 6
         };
 
-        var grid = new Gtk.Grid () {
-            orientation = Gtk.Orientation.VERTICAL
-        };
-        // grid.add (header);
-        // grid.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-        // grid.add (chooser);
-        // grid.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-        // grid.add (choices_box);
-        // grid.add (action_box);
-        // add (grid);
+        var grid = new Gtk.Box (VERTICAL, 0);
+
+        grid.append (header);
+        grid.append (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
+        grid.append (chooser);
+        grid.append (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
+        grid.append (choices_box);
+        // grid.append (action_box);
+        child = grid;
 
         setup_chooser ();
 

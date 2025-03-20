@@ -43,7 +43,6 @@ namespace Files.View {
 //                 }
 //             });
 
-//             show_all ();
 //         }
 //     }
 }

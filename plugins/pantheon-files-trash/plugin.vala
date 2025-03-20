@@ -129,8 +129,7 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
         delete_button.sensitive = !trash_is_empty;
 
         bar.set_visible (!trash_is_empty);
-        // bar.no_show_all = trash_is_empty;
-        // bar.show_all ();
+        //TODO Replace bar.no_show_all = trash_is_empty;
     }
 }
 

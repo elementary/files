@@ -196,7 +196,6 @@ namespace Files.View {
 
                 size_change ();
                 hpane.set_position (width);
-                // colpane.show_all ();
 
                 if (colpane.get_realized ()) {
                     colpane.queue_draw ();

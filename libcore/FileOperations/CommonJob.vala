@@ -501,6 +501,7 @@ public class Files.FileOperations.CommonJob {
             // which breaks the current implementation in marlin-file-operation.c
             // as the dialog is being created in a thread but presented in the
             // Gtk thread. Remove the Idle.add once everything is done in the Gtk thread.
+            //TODO Review for Gtk4
             if (details_text != null) {
                 dialog.show_error_details (details_text);
             }

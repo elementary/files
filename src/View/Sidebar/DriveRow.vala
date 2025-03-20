@@ -53,7 +53,7 @@ public class Sidebar.DriveRow : Sidebar.AbstractMountableRow, SidebarItemInterfa
     }
 
     construct {
-        // no_show_all = true;
+        //TODO Replace no_show_all behaviour
         visible = false;
         set_visibility ();
         sort_key = drive.get_sort_key ();

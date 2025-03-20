@@ -231,7 +231,6 @@ namespace Files {
             entry.set_size_request (wrap_width, -1);
             entry.set_position (-1);
             entry.set_data ("marlin-text-renderer-path", path.dup ());
-            // entry.show_all ();
 
             base.start_editing (event, widget, path, background_area, cell_area, flags);
             return entry;

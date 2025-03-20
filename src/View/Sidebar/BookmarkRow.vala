@@ -164,8 +164,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         content_grid = new Gtk.Grid ();
         content_grid.attach (icon_label_grid, 0, 0);
 
-        // add (content_grid);
-        // show_all ();
+        child = content_grid;
 
         // key_controller = new Gtk.EventControllerKey (this) {
         //     propagation_phase = BUBBLE
@@ -425,7 +424,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             child = drop_revealer_child,
             transition_type = Gtk.RevealerTransitionType.SLIDE_UP
         };
-        // drop_revealer.show_all ();
 
         content_grid.attach (drop_revealer, 0, 1);
 

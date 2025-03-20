@@ -54,13 +54,12 @@ public class Files.RenamerListRow : Gtk.ListBoxRow {
             margin_bottom = 6,
             margin_start = 6
         };
-        // box.add (oldname_label);
-        // box.add (arrow_image);
-        // box.add (newname_label);
-        // box.add (status_image);
+        // box.append (oldname_label);
+        box.append (arrow_image);
+        box.append (newname_label);
+        box.append (status_image);
 
         child = box;
-        // show_all ();
 
         bind_property ("new-name", newname_label, "label");
 

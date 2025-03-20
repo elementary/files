@@ -94,6 +94,5 @@ public class Files.View.VolumePropertiesWindow : AbstractPropertiesDialog {
         }
 
         create_storage_bar (info, 3);
-        // show_all ();
     }
 }

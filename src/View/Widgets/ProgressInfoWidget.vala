@@ -72,8 +72,6 @@ public class Files.Progress.InfoWidget : Gtk.Grid {
         attach (button, 1, 1);
         attach (details, 0, 2, 2);
 
-        // show_all ();
-
         update_data ();
         update_progress ();
 

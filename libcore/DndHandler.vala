@@ -65,7 +65,6 @@ namespace Files {
             // add_action (win);
             // var ask_menu = build_menu (possible_actions);
             // ask_menu.set_screen (dest_widget.get_screen ());
-            // ask_menu.show_all ();
             // var loop = new GLib.MainLoop (null, false);
 
             // ask_menu.deactivate.connect (() => {

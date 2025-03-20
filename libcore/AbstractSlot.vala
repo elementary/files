@@ -81,9 +81,10 @@ namespace Files {
         }
 
         public void add_overlay (Gtk.Widget widget) {
-            overlay = new Gtk.Overlay ();
-            // content_box.pack_start (overlay, true, true, 0);
-            // overlay.add (widget);
+            overlay = new Gtk.Overlay () {
+                child = widget
+            };
+            content_box.append (overlay);
         }
 
         construct {

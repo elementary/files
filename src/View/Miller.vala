@@ -63,12 +63,10 @@ namespace Files.View {
             colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
 
             viewport = new Gtk.Viewport (null, null) {
-                // shadow_type = Gtk.ShadowType.NONE
+                child = colpane
             };
-            // viewport.add (colpane);
 
             scrolled_window = new Gtk.ScrolledWindow () {
-            // scrolled_window = new Gtk.ScrolledWindow (null, null) {
                 child = viewport,
                 hscrollbar_policy = Gtk.PolicyType.AUTOMATIC,
                 vscrollbar_policy = Gtk.PolicyType.NEVER
@@ -77,8 +75,6 @@ namespace Files.View {
             hadj = scrolled_window.get_hadjustment ();
 
             add_overlay (scrolled_window);
-
-            // content_box.show_all ();
 
             current_slot = null;
             add_location (root_location, null); /* current slot gets set by this */
@@ -100,22 +96,24 @@ namespace Files.View {
             guest.colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             guest.colpane.set_size_request (guest.width, -1);
             guest.hpane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-                hexpand = true
+                hexpand = true,
+                start_child = guest.get_directory_view (),
+                resize_start_child = false,
+                shrink_start_child = false,
+                end_child = guest.colpane,
+                resize_end_child = true,
+                shrink_end_child = true
             };
-
-            // guest.hpane.pack1 (guest.get_directory_view (), false, false);
-            // guest.hpane.pack2 (guest.colpane, true, true);
-            // guest.hpane.show_all ();
 
             connect_slot_signals (guest);
 
             if (host != null) {
                 truncate_list_after_slot (host);
                 host.select_gof_file (guest.file);
-                // host.colpane.add (guest.hpane);
+                host.colpane.append (guest.hpane);
                 guest.initialize_directory ();
             } else {
-                // this.colpane.add (guest.hpane);
+                this.colpane.append (guest.hpane);
             }
 
             slot_list.append (guest); // Must add to list before scrolling

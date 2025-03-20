@@ -46,8 +46,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
 
         var network_expander = new SidebarExpander (_("Network")) {
             tooltip_text = _("Devices and places available via a network")
-            // no_show_all = Files.is_admin ()
-        };
+        }; //TODO Replace no_show_all behaviour
 
         var network_revealer = new Gtk.Revealer () {
             child = network_listbox
@@ -56,12 +55,12 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         var bookmarklists_box = new Gtk.Box (VERTICAL, 0) {
             vexpand = true
         };
-        // bookmarklists_box.add (bookmark_expander);
-        // bookmarklists_box.add (bookmark_revealer);
-        // bookmarklists_box.add (device_expander);
-        // bookmarklists_box.add (device_revealer);
-        // bookmarklists_box.add (network_expander);
-        // bookmarklists_box.add (network_revealer);
+        bookmarklists_box.append (bookmark_expander);
+        bookmarklists_box.append (bookmark_revealer);
+        bookmarklists_box.append (device_expander);
+        bookmarklists_box.append (device_revealer);
+        bookmarklists_box.append (network_expander);
+        bookmarklists_box.append (network_revealer);
 
         // scrolled_window = new Gtk.ScrolledWindow (null, null) {
         //     child = bookmarklists_box,
@@ -69,8 +68,8 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         // };
 
         var connect_server_box = new Gtk.Box (HORIZONTAL, 0);
-        // connect_server_box.add (new Gtk.Image.from_icon_name ("network-server-symbolic", MENU));
-        // connect_server_box.add (new Gtk.Label (_("Connect Server…")));
+        connect_server_box.append (new Gtk.Image.from_icon_name ("network-server-symbolic"));
+        connect_server_box.append (new Gtk.Label (_("Connect Server…")));
 
         var connect_server_button = new Gtk.Button () {
             action_name = "win.go-to",
@@ -84,7 +83,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
 
         var action_bar = new Gtk.ActionBar ();
         // action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        // action_bar.add (connect_server_button);
+        action_bar.pack_start (connect_server_button);
 
         orientation = Gtk.Orientation.VERTICAL;
         width_request = Files.app_settings.get_int ("minimum-sidebar-width");
@@ -99,8 +98,6 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         plugins.sidebar_loaded (this);
 
         reload ();
-
-        // show_all ();
 
         Files.app_settings.bind (
             "sidebar-cat-personal-expander", bookmark_expander, "active", SettingsBindFlags.DEFAULT
@@ -260,8 +257,8 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
             arrow_style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
             var box = new Gtk.Box (HORIZONTAL, 0);
-            // box.add (title);
-            // box.add (arrow);
+            box.append (title);
+            box.append (arrow);
 
             child = box;
 
