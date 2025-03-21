@@ -304,12 +304,13 @@ namespace Files {
             };
             stack.add (scrolled_window);
 
-            var empty_label = new Gtk.Label (slot.get_empty_message ()) {
+            empty_label = new Gtk.Label (slot.get_empty_message ()) {
                 halign = CENTER,
                 valign = CENTER,
                 wrap = true
             };
             empty_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+            empty_label.show_all ();
             stack.add (empty_label);
 
             var app = (Files.Application)(GLib.Application.get_default ());
@@ -1416,6 +1417,10 @@ namespace Files {
                 }
             } else {
                 is_writable = false;
+            }
+
+            if (slot.directory.is_empty ()) {
+                stack.visible_child = empty_label;
             }
 
             // Wait for view to draw so thumbnails and color tags displayed on first sight
