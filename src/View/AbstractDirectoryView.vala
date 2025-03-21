@@ -1420,12 +1420,14 @@ namespace Files {
                 is_writable = false;
             }
 
-            if (slot.directory.is_empty ()) {
-                stack.visible_child = empty_label;
-            }
-
             // Wait for view to draw so thumbnails and color tags displayed on first sight
             Idle.add (() => {
+                if (slot.directory.is_empty ()) {
+                    stack.visible_child = empty_label;
+                } else {
+                    stack.visible_child = scrolled_window;
+                }
+
                 thaw_tree ();
                 schedule_thumbnail_color_tag_timeout ();
                 return Source.REMOVE;
