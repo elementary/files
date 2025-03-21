@@ -303,6 +303,7 @@ namespace Files {
                 window_placement = TOP_LEFT
             };
             stack.add (scrolled_window);
+            stack.add_events (Gdk.EventMask.ALL_EVENTS_MASK);
 
             empty_label = new Gtk.Label (slot.get_empty_message ()) {
                 halign = CENTER,
@@ -369,7 +370,7 @@ namespace Files {
                     return button_press_disabled;
                 });
 
-                button_controller = new Gtk.GestureMultiPress (view) {
+                button_controller = new Gtk.GestureMultiPress (this) {
                     propagation_phase = CAPTURE,
                     button = 0
                 };
@@ -3535,7 +3536,7 @@ namespace Files {
              * View may lose focus during a drag if another tab is hovered, in which case
              * we do not want to refocus this view.
              * Under both these circumstances, 'should_activate' will be false */
-            if (renaming || !view_has_focus ()) {
+            if (renaming || (stack.visible_child == view && !view_has_focus ())) {
                 return;
             }
 
