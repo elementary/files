@@ -26,7 +26,7 @@
 */
 
 namespace Files {
-    public abstract class AbstractDirectoryView : Gtk.Box {
+    public abstract class AbstractDirectoryView : Gtk.Widget {
     //TODO Reorder property declarations
         protected enum ClickZone {
             EXPANDER,
@@ -262,6 +262,8 @@ namespace Files {
 
         private Gtk.Widget view;
         private Gtk.ScrolledWindow scrolled_window;
+        private Gtk.Label empty_label;
+        private Gtk.Stack stack;
         private unowned ClipboardManager clipboard;
         protected Files.ListModel model;
         protected Files.IconRenderer icon_renderer;
@@ -283,6 +285,10 @@ namespace Files {
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
+        static construct {
+            set_layout_manager_type (typeof (Gtk.BinLayout));
+        }
+
         //TODO Rewrite in Object (), construct {} style
         protected AbstractDirectoryView (View.Slot _slot) {
             slot = _slot;
@@ -290,13 +296,23 @@ namespace Files {
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
 
+            stack = new Gtk.Stack ();
+            stack.set_parent (this);
             scrolled_window = new Gtk.ScrolledWindow () {
                 has_frame = false,
                 kinetic_scrolling = true,
                 overlay_scrolling = true,
                 window_placement = TOP_LEFT
             };
-            append (scrolled_window);
+            stack.add_child (scrolled_window);
+
+            var empty_label = new Gtk.Label (slot.get_empty_message ()) {
+                halign = CENTER,
+                valign = CENTER,
+                wrap = true
+            };
+            empty_label.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
+            stack.add_child (empty_label);
 
             var app = (Files.Application)(GLib.Application.get_default ());
             clipboard = app.get_clipboard_manager ();
@@ -915,6 +931,7 @@ namespace Files {
         // Only called after initial loading finished, in response to files added due to internal or external
         // file operations
         private void add_file (Files.File file, Directory dir, bool is_internal = true) {
+            stack.visible_child = scrolled_window;
             model.insert_sorted (file, dir);
             if (is_internal) { /* This true once view finished loading */
                 // Do not select until the model has resorted else wrong file is selected
@@ -1028,6 +1045,9 @@ namespace Files {
         public void after_trash_or_delete () {
             /* Need to use Idle else cursor gets reset to null after setting to delete_path */
             Idle.add (() => {
+                if (slot.directory.is_empty ()) {
+                    stack.visible_child = empty_label;
+                }
                 set_cursor (deleted_path, false, false, false);
                 unblock_directory_monitor ();
                 return GLib.Source.REMOVE;
@@ -1327,6 +1347,7 @@ namespace Files {
 
         private void on_directory_file_loaded (Directory dir, Files.File file) {
             // Do not select or sort files added during initial load.
+            stack.visible_child = scrolled_window;
             model.add_file (file, dir);
         }
 
@@ -1361,6 +1382,9 @@ namespace Files {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
             file.exists = false;
+            if (dir.is_empty ()) {
+                stack.visible_child = empty_label;
+            }
             model.remove_file (file, dir);
 
             if (plugins != null) {
