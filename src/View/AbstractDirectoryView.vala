@@ -26,7 +26,7 @@
 */
 
 namespace Files {
-    public abstract class AbstractDirectoryView : Gtk.Widget {
+    public abstract class AbstractDirectoryView : Gtk.Box {
     //TODO Reorder property declarations
         protected enum ClickZone {
             EXPANDER,
@@ -261,7 +261,7 @@ namespace Files {
         private bool all_selected = false;
 
         private Gtk.Widget view;
-        private Gtk.ScrolledWindow scrolled_window;
+        protected Gtk.ScrolledWindow scrolled_window;
         private Gtk.Label empty_label;
         private Gtk.Stack stack;
         private unowned ClipboardManager clipboard;
@@ -285,10 +285,6 @@ namespace Files {
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
-        static construct {
-            set_layout_manager_type (typeof (Gtk.BinLayout));
-        }
-
         //TODO Rewrite in Object (), construct {} style
         protected AbstractDirectoryView (View.Slot _slot) {
             slot = _slot;
@@ -296,23 +292,25 @@ namespace Files {
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
 
-            stack = new Gtk.Stack ();
-            stack.set_parent (this);
-            scrolled_window = new Gtk.ScrolledWindow () {
-                has_frame = false,
+            stack = new Gtk.Stack () {
+                hexpand = true,
+                vexpand = true
+            };
+            add (stack);
+            scrolled_window = new Gtk.ScrolledWindow (null, null) {
                 kinetic_scrolling = true,
                 overlay_scrolling = true,
                 window_placement = TOP_LEFT
             };
-            stack.add_child (scrolled_window);
+            stack.add (scrolled_window);
 
             var empty_label = new Gtk.Label (slot.get_empty_message ()) {
                 halign = CENTER,
                 valign = CENTER,
                 wrap = true
             };
-            empty_label.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
-            stack.add_child (empty_label);
+            empty_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+            stack.add (empty_label);
 
             var app = (Files.Application)(GLib.Application.get_default ());
             clipboard = app.get_clipboard_manager ();
@@ -422,7 +420,7 @@ namespace Files {
             notify["renaming"].connect (() => {
                 // Suppress ability to scroll with the scrollbar while renaming
                 // No obvious way to disable it so just hide it
-                var vscroll_bar = get_vscrollbar ();
+                var vscroll_bar = scrolled_window.get_vscrollbar ();
                 vscroll_bar.visible = !renaming;
             });
 
@@ -1541,7 +1539,7 @@ namespace Files {
         /* Signal emitted on source after a DND move operation */
         private void on_drag_data_delete () {
             /* block real_view default handler because handled in on_drag_end */
-            GLib.Signal.stop_emission_by_name (get_child (), "drag-data-delete");
+            GLib.Signal.stop_emission_by_name (scrolled_window.get_child (), "drag-data-delete");
         }
 
         /* Signal emitted on source after completion of DnD. */
@@ -1584,7 +1582,7 @@ namespace Files {
             string? uri = null;
             drop_occurred = true;
 
-            Gdk.Atom target = Gtk.drag_dest_find_target (get_child (), context, list);
+            Gdk.Atom target = Gtk.drag_dest_find_target (scrolled_window.get_child (), context, list);
             if (target == Gdk.Atom.intern_static_string ("XdndDirectSave0")) {
                 Files.File? target_file = get_drop_target_file (x, y);
                 /* get XdndDirectSave file name from DnD source window */
@@ -1604,7 +1602,7 @@ namespace Files {
 
             /* request the drag data from the source (initiates
              * saving in case of XdndDirectSave).*/
-            Gtk.drag_get_data (get_child (), context, target, timestamp);
+            Gtk.drag_get_data (scrolled_window.get_child (), context, target, timestamp);
 
             return true;
         }
@@ -1656,7 +1654,7 @@ namespace Files {
                         }
 
                         success = dnd_handler.handle_file_drag_actions (
-                            get_child (),
+                            scrolled_window.get_child (),
                             drop_target_file,
                             destination_drop_file_list,
                             current_actions,
@@ -1743,7 +1741,7 @@ namespace Files {
         /* Called by destination during drag motion */
         private void get_drag_data (Gdk.DragContext context, int x, int y, uint timestamp) {
             Gtk.TargetList? list = null;
-            Gdk.Atom target = Gtk.drag_dest_find_target (get_child (), context, list);
+            Gdk.Atom target = Gtk.drag_dest_find_target (scrolled_window.get_child (), context, list);
             current_target_type = target;
 
             /* Check if we can handle it yet */
@@ -1762,7 +1760,7 @@ namespace Files {
             } else if (target != Gdk.Atom.NONE && destination_drop_file_list == null) {
                 /* request the drag data from the source.
                  * See {Source]on_drag_data_get () and [Destination]on_drag_data_received () */
-                Gtk.drag_get_data (get_child (), context, target, timestamp);
+                Gtk.drag_get_data (scrolled_window.get_child (), context, target, timestamp);
             }
         }
 
@@ -2790,7 +2788,7 @@ namespace Files {
             drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                           50,
                                                           () => {
-                Gtk.Widget? widget = get_child ();
+                Gtk.Widget? widget = scrolled_window.get_child ();
                 if (widget != null) {
                     Gdk.Window window = widget.get_window ();
                     int x, y, w, h;
@@ -3540,7 +3538,7 @@ namespace Files {
             slot.active (button == Gdk.BUTTON_SECONDARY);
 
             /* Only take action if pointer has not moved */
-            if (!Gtk.drag_check_threshold (get_child (), (int)drag_x, (int)drag_y, (int)x, (int)y)) {
+            if (!Gtk.drag_check_threshold (scrolled_window.get_child (), (int)drag_x, (int)drag_y, (int)x, (int)y)) {
                 if (should_activate) {
                     /* Need Idle else can crash with rapid clicking (avoid nested signals) */
                     Idle.add (() => {
