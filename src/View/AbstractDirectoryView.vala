@@ -26,8 +26,8 @@
 */
 
 namespace Files {
-    public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
-
+    public abstract class AbstractDirectoryView : Gtk.Box {
+    //TODO Reorder property declarations
         protected enum ClickZone {
             EXPANDER,
             HELPER,
@@ -261,6 +261,7 @@ namespace Files {
         private bool all_selected = false;
 
         private Gtk.Widget view;
+        private Gtk.ScrolledWindow scrolled_window;
         private unowned ClipboardManager clipboard;
         protected Files.ListModel model;
         protected Files.IconRenderer icon_renderer;
@@ -282,11 +283,20 @@ namespace Files {
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
+        //TODO Rewrite in Object (), construct {} style
         protected AbstractDirectoryView (View.Slot _slot) {
             slot = _slot;
             editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
+
+            scrolled_window = new Gtk.ScrolledWindow () {
+                has_frame = false,
+                kinetic_scrolling = true,
+                overlay_scrolling = true,
+                window_placement = TOP_LEFT
+            };
+            append (scrolled_window);
 
             var app = (Files.Application)(GLib.Application.get_default ());
             clipboard = app.get_clipboard_manager ();
@@ -317,8 +327,7 @@ namespace Files {
             view = create_view ();
 
             if (view != null) {
-                child = view;
-                show_all ();
+                scrolled_window.child = view;
                 connect_drag_drop_signals (view);
 
                 view.draw.connect (on_view_draw);
@@ -378,8 +387,7 @@ namespace Files {
         }
 
         private void set_up_directory_view () {
-            set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-            set_shadow_type (Gtk.ShadowType.NONE);
+            scrolled_window.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
 
             popup_menu.connect (on_popup_menu);
 
@@ -392,7 +400,7 @@ namespace Files {
                 on_clipboard_changed ();
             });
 
-            get_vadjustment ().value_changed.connect_after (() => {
+            scrolled_window.get_vadjustment ().value_changed.connect_after (() => {
                 schedule_thumbnail_color_tag_timeout ();
             });
 
@@ -2767,8 +2775,8 @@ namespace Files {
                     window.get_device_position (pointer, out x, out y, null);
                     window.get_geometry (null, null, out w, out h);
 
-                    scroll_if_near_edge (y, h, 20, get_vadjustment ());
-                    scroll_if_near_edge (x, w, 20, get_hadjustment ());
+                    scroll_if_near_edge (y, h, 20, scrolled_window.get_vadjustment ());
+                    scroll_if_near_edge (x, w, 20, scrolled_window.get_hadjustment ());
                     return GLib.Source.CONTINUE;
                 } else {
                     return GLib.Source.REMOVE;
