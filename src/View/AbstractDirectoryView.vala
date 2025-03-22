@@ -263,7 +263,7 @@ namespace Files {
         private Gtk.Widget view;
         protected Gtk.ScrolledWindow scrolled_window;
         private Gtk.Label empty_label;
-        private Gtk.Stack stack;
+        private Gtk.Overlay overlay;
         private unowned ClipboardManager clipboard;
         protected Files.ListModel model;
         protected Files.IconRenderer icon_renderer;
@@ -292,27 +292,30 @@ namespace Files {
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
 
-            stack = new Gtk.Stack () {
+            overlay = new Gtk.Overlay () {
                 hexpand = true,
                 vexpand = true
             };
-            add (stack);
+            add (overlay);
             scrolled_window = new Gtk.ScrolledWindow (null, null) {
                 kinetic_scrolling = true,
                 overlay_scrolling = true,
                 window_placement = TOP_LEFT
             };
-            stack.add (scrolled_window);
-            stack.add_events (Gdk.EventMask.ALL_EVENTS_MASK);
+            overlay.add (scrolled_window);
+            overlay.add_events (Gdk.EventMask.ALL_EVENTS_MASK);
 
             empty_label = new Gtk.Label (slot.get_empty_message ()) {
                 halign = CENTER,
                 valign = CENTER,
+                hexpand = false,
+                vexpand = false,
                 wrap = true
             };
             empty_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
             empty_label.show_all ();
-            stack.add (empty_label);
+            overlay.add_overlay (empty_label);
+            overlay.set_overlay_pass_through (empty_label, true);
 
             var app = (Files.Application)(GLib.Application.get_default ());
             clipboard = app.get_clipboard_manager ();
@@ -930,7 +933,7 @@ namespace Files {
         // Only called after initial loading finished, in response to files added due to internal or external
         // file operations
         private void add_file (Files.File file, Directory dir, bool is_internal = true) {
-            stack.visible_child = scrolled_window;
+            empty_label.visible = false;
             model.insert_sorted (file, dir);
             if (is_internal) { /* This true once view finished loading */
                 // Do not select until the model has resorted else wrong file is selected
@@ -1044,9 +1047,7 @@ namespace Files {
         public void after_trash_or_delete () {
             /* Need to use Idle else cursor gets reset to null after setting to delete_path */
             Idle.add (() => {
-                if (slot.directory.is_empty ()) {
-                    stack.visible_child = empty_label;
-                }
+                empty_label.visible = slot.directory.is_empty ();
                 set_cursor (deleted_path, false, false, false);
                 unblock_directory_monitor ();
                 return GLib.Source.REMOVE;
@@ -1346,7 +1347,7 @@ namespace Files {
 
         private void on_directory_file_loaded (Directory dir, Files.File file) {
             // Do not select or sort files added during initial load.
-            stack.visible_child = scrolled_window;
+            empty_label.visible = false;
             model.add_file (file, dir);
         }
 
@@ -1381,9 +1382,7 @@ namespace Files {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
             file.exists = false;
-            if (dir.is_empty ()) {
-                stack.visible_child = empty_label;
-            }
+            empty_label.visible = dir.is_empty ();
             model.remove_file (file, dir);
 
             if (plugins != null) {
@@ -1422,11 +1421,8 @@ namespace Files {
 
             // Wait for view to draw so thumbnails and color tags displayed on first sight
             Idle.add (() => {
-                if (slot.directory.is_empty ()) {
-                    stack.visible_child = empty_label;
-                } else {
-                    stack.visible_child = scrolled_window;
-                }
+                empty_label.visible = slot.directory.is_empty ();
+
 
                 thaw_tree ();
                 schedule_thumbnail_color_tag_timeout ();
@@ -3538,7 +3534,7 @@ namespace Files {
              * View may lose focus during a drag if another tab is hovered, in which case
              * we do not want to refocus this view.
              * Under both these circumstances, 'should_activate' will be false */
-            if (renaming || (stack.visible_child == view && !view_has_focus ())) {
+            if (renaming || !view_has_focus ()) {
                 return;
             }
 
