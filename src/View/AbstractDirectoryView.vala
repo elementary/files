@@ -26,7 +26,7 @@
 */
 
 namespace Files {
-    public abstract class AbstractDirectoryView : Gtk.Box {
+    public abstract class AbstractDirectoryView : Gtk.Bin {
     //TODO Reorder property declarations
         protected enum ClickZone {
             EXPANDER,
@@ -300,7 +300,9 @@ namespace Files {
             scrolled_window = new Gtk.ScrolledWindow (null, null) {
                 kinetic_scrolling = true,
                 overlay_scrolling = true,
-                window_placement = TOP_LEFT
+                window_placement = TOP_LEFT,
+                hscrollbar_policy = NEVER,
+                shadow_type = NONE
             };
             overlay.add (scrolled_window);
             overlay.add_events (Gdk.EventMask.ALL_EVENTS_MASK);
@@ -405,8 +407,6 @@ namespace Files {
         }
 
         private void set_up_directory_view () {
-            scrolled_window.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-
             popup_menu.connect (on_popup_menu);
 
             unrealize.connect (() => {
