@@ -26,8 +26,8 @@
 */
 
 namespace Files {
-    public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
-
+    public abstract class AbstractDirectoryView : Gtk.Widget {
+    //TODO Reorder property declarations
         protected enum ClickZone {
             EXPANDER,
             HELPER,
@@ -261,6 +261,9 @@ namespace Files {
         private bool all_selected = false;
 
         private Gtk.Widget view;
+        private Gtk.ScrolledWindow scrolled_window;
+        private Gtk.Label empty_label;
+        private Gtk.Stack stack;
         private unowned ClipboardManager clipboard;
         protected Files.ListModel model;
         protected Files.IconRenderer icon_renderer;
@@ -282,11 +285,34 @@ namespace Files {
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
+        static construct {
+            set_layout_manager_type (typeof (Gtk.BinLayout));
+        }
+
+        //TODO Rewrite in Object (), construct {} style
         protected AbstractDirectoryView (View.Slot _slot) {
             slot = _slot;
             editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
+
+            stack = new Gtk.Stack ();
+            stack.set_parent (this);
+            scrolled_window = new Gtk.ScrolledWindow () {
+                has_frame = false,
+                kinetic_scrolling = true,
+                overlay_scrolling = true,
+                window_placement = TOP_LEFT
+            };
+            stack.add_child (scrolled_window);
+
+            var empty_label = new Gtk.Label (slot.get_empty_message ()) {
+                halign = CENTER,
+                valign = CENTER,
+                wrap = true
+            };
+            empty_label.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
+            stack.add_child (empty_label);
 
             var app = (Files.Application)(GLib.Application.get_default ());
             clipboard = app.get_clipboard_manager ();
@@ -317,11 +343,9 @@ namespace Files {
             view = create_view ();
 
             if (view != null) {
-                child = view;
-                show_all ();
+                scrolled_window.child = view;
                 connect_drag_drop_signals (view);
 
-                view.draw.connect (on_view_draw);
                 view.realize.connect (() => {
                    schedule_thumbnail_color_tag_timeout ();
                 });
@@ -378,8 +402,7 @@ namespace Files {
         }
 
         private void set_up_directory_view () {
-            set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-            set_shadow_type (Gtk.ShadowType.NONE);
+            scrolled_window.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
 
             popup_menu.connect (on_popup_menu);
 
@@ -392,7 +415,7 @@ namespace Files {
                 on_clipboard_changed ();
             });
 
-            get_vadjustment ().value_changed.connect_after (() => {
+            scrolled_window.get_vadjustment ().value_changed.connect_after (() => {
                 schedule_thumbnail_color_tag_timeout ();
             });
 
@@ -907,6 +930,7 @@ namespace Files {
         // Only called after initial loading finished, in response to files added due to internal or external
         // file operations
         private void add_file (Files.File file, Directory dir, bool is_internal = true) {
+            stack.visible_child = scrolled_window;
             model.insert_sorted (file, dir);
             if (is_internal) { /* This true once view finished loading */
                 // Do not select until the model has resorted else wrong file is selected
@@ -1020,6 +1044,9 @@ namespace Files {
         public void after_trash_or_delete () {
             /* Need to use Idle else cursor gets reset to null after setting to delete_path */
             Idle.add (() => {
+                if (slot.directory.is_empty ()) {
+                    stack.visible_child = empty_label;
+                }
                 set_cursor (deleted_path, false, false, false);
                 unblock_directory_monitor ();
                 return GLib.Source.REMOVE;
@@ -1319,6 +1346,7 @@ namespace Files {
 
         private void on_directory_file_loaded (Directory dir, Files.File file) {
             // Do not select or sort files added during initial load.
+            stack.visible_child = scrolled_window;
             model.add_file (file, dir);
         }
 
@@ -1353,6 +1381,9 @@ namespace Files {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
             file.exists = false;
+            if (dir.is_empty ()) {
+                stack.visible_child = empty_label;
+            }
             model.remove_file (file, dir);
 
             if (plugins != null) {
@@ -2767,8 +2798,8 @@ namespace Files {
                     window.get_device_position (pointer, out x, out y, null);
                     window.get_geometry (null, null, out w, out h);
 
-                    scroll_if_near_edge (y, h, 20, get_vadjustment ());
-                    scroll_if_near_edge (x, w, 20, get_hadjustment ());
+                    scroll_if_near_edge (y, h, 20, scrolled_window.get_vadjustment ());
+                    scroll_if_near_edge (x, w, 20, scrolled_window.get_hadjustment ());
                     return GLib.Source.CONTINUE;
                 } else {
                     return GLib.Source.REMOVE;
@@ -3292,39 +3323,6 @@ namespace Files {
                     }
                 });
             }
-        }
-
-        public virtual bool on_view_draw (Cairo.Context cr) {
-            /* If folder is empty, draw the empty message in the middle of the view
-             * otherwise pass on event */
-            var style_context = get_style_context ();
-            if (slot.directory.is_empty ()) {
-                Pango.Layout layout = create_pango_layout (null);
-
-                if (!style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
-                    style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
-                    style_context.add_class (Gtk.STYLE_CLASS_VIEW);
-                }
-
-                layout.set_markup (slot.get_empty_message (), -1);
-
-                Pango.Rectangle? extents = null;
-                layout.get_extents (null, out extents);
-
-                double width = Pango.units_to_double (extents.width);
-                double height = Pango.units_to_double (extents.height);
-
-                double x = (double) get_allocated_width () / 2 - width / 2;
-                double y = (double) get_allocated_height () / 2 - height / 2;
-                get_style_context ().render_layout (cr, x, y, layout);
-
-                return true;
-            } else if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
-                style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
-                style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
-            }
-
-            return false;
         }
 
         protected virtual bool handle_primary_button_click (uint n_press, Gdk.ModifierType mods, Gtk.TreePath? path) {
