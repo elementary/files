@@ -41,7 +41,7 @@ public class PortalTester : Gtk.Application {
                     warning ("Ooops, operation cancelled!");
                 }
             });
-            filechooser.show ();
+            filechooser.present ();
         });
 
         open_folder_button.clicked.connect (() => {
@@ -61,8 +61,10 @@ public class PortalTester : Gtk.Application {
                 } else {
                     warning ("Ooops, operation cancelled!");
                 }
+
+                message_dialog.present ();
             });
-            filechooser.show ();
+            filechooser.present ();
         });
 
         save_button.clicked.connect (() => {
@@ -81,7 +83,7 @@ public class PortalTester : Gtk.Application {
                     warning ("Ooops, operation cancelled!");
                 }
             });
-            filechooser.show ();
+            filechooser.present ();
         });
     }
 

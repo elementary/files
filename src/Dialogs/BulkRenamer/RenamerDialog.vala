@@ -283,8 +283,8 @@ public class Files.RenamerDialog : Granite.Dialog {
                             e.message,
                             new ThemedIcon ("dialog-error")
                         );
-                        dlg.present ();
                         dlg.response.connect (dlg.destroy);
+                        dlg.present ();
                     }
                 }
             }

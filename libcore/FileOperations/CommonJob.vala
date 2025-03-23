@@ -512,7 +512,7 @@ public class Files.FileOperations.CommonJob {
                 dialog.destroy ();
             });
 
-            dialog.show ();
+            dialog.present ();
             return Source.REMOVE;
         });
 
@@ -587,7 +587,7 @@ public class Files.FileOperations.CommonJob {
                 dialog.destroy ();
             });
 
-            dialog.show ();
+            dialog.present ();
             return Source.REMOVE;
         });
 

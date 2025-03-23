@@ -1099,12 +1099,15 @@ public class Files.View.Window : Adw.ApplicationWindow {
         var dialog = new PF.ConnectServerDialog ((Gtk.Window) this);
         string server_uri = "";
 
-        // if (dialog.run () == Gtk.ResponseType.OK) {
-        //     server_uri = dialog.server_uri;
-        // }
+        dialog.response.connect ((res) => {
+            if (res == Gtk.ResponseType.OK) {
+                server_uri = dialog.server_uri;
+            }
 
-        dialog.destroy ();
+            dialog.destroy ();
+        });
 
+        dialog.present ();
         if (server_uri != "") {
             uri_path_change_request (dialog.server_uri, Files.OpenFlag.DEFAULT);
         }
