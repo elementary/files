@@ -179,6 +179,7 @@ namespace Files.FileUtils {
             return true;
         }
 
+        bool success = false;
         var dialog = new Granite.MessageDialog.with_image_from_icon_name (
             _("The original folder %s no longer exists").printf (file.get_path ()),
             _("The folder can be recreated and selected files that were originally there will be restored to it. Otherwise, files that were in this folder will not be restored."),
@@ -189,31 +190,35 @@ namespace Files.FileUtils {
         dialog.add_button (_("Recreate"), Gtk.ResponseType.ACCEPT);
         dialog.set_default_response (Gtk.ResponseType.ACCEPT);
 
-        var response = dialog.run ();
-        dialog.destroy ();
-        switch (response) {
-            case Gtk.ResponseType.ACCEPT:
-                try {
-                    file.make_directory_with_parents ();
-                    return true;
-                } catch (Error e) {
-                    var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
-                        _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
-                        e.message,
-                        "dialog-error",
-                        Gtk.ButtonsType.CLOSE
-                    );
-                    error_dialog.response.connect (() => error_dialog.close ());
-                    error_dialog.present ();
-                }
+        dialog.response.connect ((res) => {
+            switch (res) {
+                case Gtk.ResponseType.ACCEPT:
+                    try {
+                        success = file.make_directory_with_parents ();
+                    } catch (Error e) {
+                        var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                            _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
+                            e.message,
+                            "dialog-error",
+                            Gtk.ButtonsType.CLOSE
+                        );
+                        error_dialog.response.connect (() => error_dialog.close ());
+                        error_dialog.present ();
+                    }
 
-                break;
+                    break;
 
-            default:
-                break;
-        }
+                default:
+                    break;
+            }
 
-        return false;
+            dialog.destroy ();
+        });
+
+        // Need to continue to use run () in Gtk3 in order to get modal dialog as
+        // we need to return a result
+        dialog.run ();
+        return success;
     }
 
     public string? get_path_for_symlink (GLib.File file) {
