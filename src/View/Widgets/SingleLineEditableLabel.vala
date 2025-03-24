@@ -22,16 +22,27 @@ namespace Files {
         private int select_start = 0;
         private int select_end = 0;
 
+        private string mytext = "";
+        public override string text {
+            get {
+                return mytext;
+            }
+
+            set {
+                mytext = value;
+            }
+        }
+
         construct {
             textview = new Gtk.Entry ();
             connect_editable_widget (textview);
-            add (textview);
+            // add (textview);
         }
 
-        public override void set_text (string text) {
-            textview.set_text (text);
-            original_name = text;
-        }
+        // public override void set_text (string text) {
+        //     textview.set_text (text);
+        //     original_name = text;
+        // }
 
         public override void set_justify (Gtk.Justification jtype) {
             switch (jtype) {
@@ -53,24 +64,25 @@ namespace Files {
             }
         }
 
-        public override string get_text () {
-            return textview.get_text ();
-        }
+        // public override unowned string get_text () {
+            // return textview.get_text ();
+            // return temp_text;
+        // }
 
-        public override bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
-            /* Ensure rename cancelled on cursor Up/Down */
-            switch (keyval) {
-                case Gdk.Key.Up:
-                case Gdk.Key.Down:
-                    end_editing (true);
-                    return true;
+        // public override bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
+        //     /* Ensure rename cancelled on cursor Up/Down */
+        //     switch (keyval) {
+        //         case Gdk.Key.Up:
+        //         case Gdk.Key.Down:
+        //             end_editing (true);
+        //             return true;
 
-                default:
-                    break;
-            }
+        //         default:
+        //             break;
+        //     }
 
-            return base.on_key_press_event (keyval, keycode, state);
-        }
+        //     return base.on_key_press_event (keyval, keycode, state);
+        // }
 
         /** Gtk.Editable interface */
         public override void select_region (int start_pos, int end_pos) {

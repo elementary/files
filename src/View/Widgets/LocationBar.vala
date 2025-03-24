@@ -69,8 +69,7 @@ namespace Files.View.Chrome {
 
         construct {
             var admin_image = new Gtk.Image.from_icon_name (
-                "dialog-warning",
-                Gtk.IconSize.LARGE_TOOLBAR) {
+                "dialog-warning") {
                 tooltip_text = _("Caution. Administrative rights will be granted after successful authentication")
             };
             admin_revealer = new Gtk.Revealer () {
@@ -80,7 +79,7 @@ namespace Files.View.Chrome {
                 transition_type = SLIDE_RIGHT
             };
 
-            add (admin_revealer);
+            // add (admin_revealer);
             notify["displayed-path"].connect (() => {
                 admin_revealer.reveal_child = displayed_path.has_prefix ("admin:/");
             });
@@ -142,25 +141,25 @@ namespace Files.View.Chrome {
             }
         }
 
-        protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
-            if (search_results.is_active) {
-                bread.hide_breadcrumbs = true;
-            } else {
-                base.after_bread_focus_out_event (event);
-                search_mode = false;
-                show_refresh_icon ();
-                focus_out_event (event);
-                check_home ();
-            }
+        // protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
+        //     if (search_results.is_active) {
+        //         bread.hide_breadcrumbs = true;
+        //     } else {
+        //         base.after_bread_focus_out_event (event);
+        //         search_mode = false;
+        //         show_refresh_icon ();
+        //         focus_out_event (event);
+        //         check_home ();
+        //     }
 
-            return true;
-        }
-        protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
-            base.after_bread_focus_in_event (event);
-            focus_in_event (event);
-            search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
-            return true;
-        }
+        //     return true;
+        // }
+        // protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
+        //     base.after_bread_focus_in_event (event);
+        //     focus_in_event (event);
+        //     search_location = FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
+        //     return true;
+        // }
 
         private void on_bread_open_with_request (GLib.File file, AppInfo? app) {
             Files.MimeActions.open_glib_file_request (file, this, app);
@@ -170,7 +169,7 @@ namespace Files.View.Chrome {
             if (has_focus) {
                 bread.activate ();
             } else {
-                get_action_group ("win").activate_action ("refresh", null);
+                // get_action_group ("win").activate_action ("refresh", null);
             }
         }
 
@@ -301,9 +300,9 @@ namespace Files.View.Chrome {
         }
 
         private void check_home () {
-            if (!((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
-                return;
-            }
+            // if (!((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
+            //     return;
+            // }
 
             try {
                 bread.hide_breadcrumbs = GLib.Filename.from_uri (displayed_path) == Environment.get_home_dir ();

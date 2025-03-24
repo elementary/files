@@ -152,42 +152,42 @@ namespace Files {
             }
         }
 
-        protected override bool on_view_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
-            bool control_pressed = ((state & Gdk.ModifierType.CONTROL_MASK) != 0);
-            bool shift_pressed = ((state & Gdk.ModifierType.SHIFT_MASK) != 0);
-            if (!control_pressed && !shift_pressed) {
-                switch (keyval) {
-                    case Gdk.Key.Right:
-                        Gtk.TreePath? path = null;
-                        tree.get_cursor (out path, null);
+        // protected override bool on_view_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
+        //     bool control_pressed = ((state & Gdk.ModifierType.CONTROL_MASK) != 0);
+        //     bool shift_pressed = ((state & Gdk.ModifierType.SHIFT_MASK) != 0);
+        //     if (!control_pressed && !shift_pressed) {
+        //         switch (keyval) {
+        //             case Gdk.Key.Right:
+        //                 Gtk.TreePath? path = null;
+        //                 tree.get_cursor (out path, null);
 
-                        if (path != null) {
-                            tree.expand_row (path, false);
-                        }
+        //                 if (path != null) {
+        //                     tree.expand_row (path, false);
+        //                 }
 
-                        return true;
+        //                 return true;
 
-                    case Gdk.Key.Left:
-                        Gtk.TreePath? path = null;
-                        tree.get_cursor (out path, null);
+        //             case Gdk.Key.Left:
+        //                 Gtk.TreePath? path = null;
+        //                 tree.get_cursor (out path, null);
 
-                        if (path != null) {
-                            if (tree.is_row_expanded (path)) {
-                                tree.collapse_row (path);
-                            } else if (path.up ()) {
-                                tree.collapse_row (path);
-                            }
-                        }
+        //                 if (path != null) {
+        //                     if (tree.is_row_expanded (path)) {
+        //                         tree.collapse_row (path);
+        //                     } else if (path.up ()) {
+        //                         tree.collapse_row (path);
+        //                     }
+        //                 }
 
-                        return true;
+        //                 return true;
 
-                    default:
-                        break;
-                }
-            }
+        //             default:
+        //                 break;
+        //         }
+        //     }
 
-            return base.on_view_key_press_event (keyval, keycode, state);
-        }
+        //     return base.on_view_key_press_event (keyval, keycode, state);
+        // }
 
         protected override Gtk.Widget? create_view () {
             model.has_child = true;

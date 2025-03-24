@@ -86,27 +86,27 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             return;
         }
 
-        var menu = widget as Gtk.Menu;
-        var color_menu_item = new ColorWidget ();
+        // var menu = widget as Gtk.Menu;
+        // var color_menu_item = new ColorWidget ();
         current_selected_files = selected_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
 
         /* Check the colors currently set */
         foreach (Files.File gof in current_selected_files) {
-            color_menu_item.check_color (gof.color);
+            // color_menu_item.check_color (gof.color);
         }
 
-        color_menu_item.color_changed.connect ((ncolor) => {
-            set_color.begin (current_selected_files, ncolor);
-        });
+        // color_menu_item.color_changed.connect ((ncolor) => {
+        //     set_color.begin (current_selected_files, ncolor);
+        // });
 
-        add_menuitem (menu, new Gtk.SeparatorMenuItem ());
-        add_menuitem (menu, color_menu_item);
+        // add_menuitem (menu, new Gtk.SeparatorMenuItem ());
+        // add_menuitem (menu, color_menu_item);
     }
 
-    private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
-        menu.append (menu_item);
-        menu_item.show ();
-    }
+    // private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
+    //     menu.append (menu_item);
+    //     menu_item.show ();
+    // }
 
     private async void set_color (GLib.List<Files.File> files, int n) throws Error {
         foreach (unowned Files.File file in files) {
@@ -161,112 +161,112 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         }
     }
 
-    private class ColorWidget : Gtk.MenuItem {
-        public signal void color_changed (int ncolor);
-        private Gee.ArrayList<ColorButton> color_buttons;
-        private const int COLORBOX_SPACING = 3;
+    // private class ColorWidget : Gtk.MenuItem {
+    //     public signal void color_changed (int ncolor);
+    //     private Gee.ArrayList<ColorButton> color_buttons;
+    //     private const int COLORBOX_SPACING = 3;
 
-        construct {
-            var color_button_remove = new ColorButton ("none");
-            color_buttons = new Gee.ArrayList<ColorButton> ();
-            color_buttons.add (new ColorButton ("blue"));
-            color_buttons.add (new ColorButton ("mint"));
-            color_buttons.add (new ColorButton ("green"));
-            color_buttons.add (new ColorButton ("yellow"));
-            color_buttons.add (new ColorButton ("orange"));
-            color_buttons.add (new ColorButton ("red"));
-            color_buttons.add (new ColorButton ("pink"));
-            color_buttons.add (new ColorButton ("purple"));
-            color_buttons.add (new ColorButton ("brown"));
-            color_buttons.add (new ColorButton ("slate"));
+    //     construct {
+    //         var color_button_remove = new ColorButton ("none");
+    //         color_buttons = new Gee.ArrayList<ColorButton> ();
+    //         color_buttons.add (new ColorButton ("blue"));
+    //         color_buttons.add (new ColorButton ("mint"));
+    //         color_buttons.add (new ColorButton ("green"));
+    //         color_buttons.add (new ColorButton ("yellow"));
+    //         color_buttons.add (new ColorButton ("orange"));
+    //         color_buttons.add (new ColorButton ("red"));
+    //         color_buttons.add (new ColorButton ("pink"));
+    //         color_buttons.add (new ColorButton ("purple"));
+    //         color_buttons.add (new ColorButton ("brown"));
+    //         color_buttons.add (new ColorButton ("slate"));
 
-            var colorbox = new Gtk.Grid () {
-                column_spacing = COLORBOX_SPACING,
-                margin_start = 3,
-                halign = Gtk.Align.START
-            };
+    //         var colorbox = new Gtk.Grid () {
+    //             column_spacing = COLORBOX_SPACING,
+    //             margin_start = 3,
+    //             halign = Gtk.Align.START
+    //         };
 
-            colorbox.add (color_button_remove);
+    //         colorbox.add (color_button_remove);
 
-            for (int i = 0; i < color_buttons.size; i++) {
-                colorbox.add (color_buttons[i]);
-            }
+    //         for (int i = 0; i < color_buttons.size; i++) {
+    //             colorbox.add (color_buttons[i]);
+    //         }
 
-            add (colorbox);
+    //         add (colorbox);
 
-            try {
-                string css = ".nohover { background: none; }";
+    //         try {
+    //             string css = ".nohover { background: none; }";
 
-                var css_provider = new Gtk.CssProvider ();
-                css_provider.load_from_data (css, -1);
+    //             var css_provider = new Gtk.CssProvider ();
+    //             css_provider.load_from_data (css, -1);
 
-                var style_context = get_style_context ();
-                style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-                style_context.add_class ("nohover");
-            } catch (GLib.Error e) {
-                warning ("Failed to parse css style : %s", e.message);
-            }
+    //             var style_context = get_style_context ();
+    //             style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    //             style_context.add_class ("nohover");
+    //         } catch (GLib.Error e) {
+    //             warning ("Failed to parse css style : %s", e.message);
+    //         }
 
-            show_all ();
+    //         show_all ();
 
-            // Cannot use this for every button due to this being a MenuItem
-            button_press_event.connect (button_pressed_cb);
-        }
+    //         // Cannot use this for every button due to this being a MenuItem
+    //         button_press_event.connect (button_pressed_cb);
+    //     }
 
-        private void clear_checks () {
-            color_buttons.foreach ((b) => { b.active = false; return true;});
-        }
+    //     private void clear_checks () {
+    //         color_buttons.foreach ((b) => { b.active = false; return true;});
+    //     }
 
-        public void check_color (int color) {
-            if (color <= 0 || color > color_buttons.size) {
-                return;
-            }
+    //     public void check_color (int color) {
+    //         if (color <= 0 || color > color_buttons.size) {
+    //             return;
+    //         }
 
-            color_buttons[color - 1].active = true;
-        }
+    //         color_buttons[color - 1].active = true;
+    //     }
 
-        private bool button_pressed_cb (Gdk.EventButton event) {
-            var color_button_width = color_buttons[0].get_allocated_width ();
+    //     private bool button_pressed_cb (Gdk.EventButton event) {
+    //         var color_button_width = color_buttons[0].get_allocated_width ();
 
-            int y0 = (get_allocated_height () - color_button_width) / 2;
-            int x0 = COLORBOX_SPACING + color_button_width;
+    //         int y0 = (get_allocated_height () - color_button_width) / 2;
+    //         int x0 = COLORBOX_SPACING + color_button_width;
 
-            double ex, ey;
-            event.get_coords (out ex, out ey);
-            if (ey < y0 || ey > y0 + color_button_width) {
-                return true;
-            }
+    //         double ex, ey;
+    //         event.get_coords (out ex, out ey);
+    //         if (ey < y0 || ey > y0 + color_button_width) {
+    //             return true;
+    //         }
 
-            if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
-                var width = get_allocated_width ();
-                int x = width - 27;
-                for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
-                    if (ex <= x && ex >= x - color_button_width) {
-                        color_changed (i);
-                        clear_checks ();
-                        check_color (i);
-                        break;
-                    }
+    //         if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
+    //             var width = get_allocated_width ();
+    //             int x = width - 27;
+    //             for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
+    //                 if (ex <= x && ex >= x - color_button_width) {
+    //                     color_changed (i);
+    //                     clear_checks ();
+    //                     check_color (i);
+    //                     break;
+    //                 }
 
-                    x -= x0;
-                }
-            } else {
-                int x = 27;
-                for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
-                    if (ex >= x && ex <= x + color_button_width) {
-                        color_changed (i);
-                        clear_checks ();
-                        check_color (i);
-                        break;
-                    }
+    //                 x -= x0;
+    //             }
+    //         } else {
+    //             int x = 27;
+    //             for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
+    //                 if (ex >= x && ex <= x + color_button_width) {
+    //                     color_changed (i);
+    //                     clear_checks ();
+    //                     check_color (i);
+    //                     break;
+    //                 }
 
-                    x += x0;
-                }
-            }
+    //                 x += x0;
+    //             }
+    //         }
 
-            return true;
-        }
-    }
+    //         return true;
+    //     }
+    // }
 }
 
 public Files.Plugins.Base module_init () {

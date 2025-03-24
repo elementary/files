@@ -311,27 +311,27 @@ namespace Files {
          * Views are not displayed until fully loaded */
         protected override void freeze_tree () {
             if (!tree_frozen) {
-                tree.freeze_child_notify ();
+                // tree.freeze_child_notify ();
                 tree_frozen = true;
             }
         }
 
         protected override void thaw_tree () {
             if (tree_frozen) {
-                tree.thaw_child_notify ();
+                // tree.thaw_child_notify ();
                 tree_frozen = false;
             }
         }
 
         // For scrolling
         protected override void freeze_child_notify () {
-            tree.freeze_child_notify ();
+            // tree.freeze_child_notify ();
         }
 
         protected override void thaw_child_notify () {
             // Do not prematurely thaw tree when loading
             if (!tree_frozen) {
-                tree.thaw_child_notify ();
+                // tree.thaw_child_notify ();
             }
 
         }

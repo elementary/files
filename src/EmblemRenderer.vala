@@ -34,63 +34,64 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
     private const int RIGHT_MARGIN = 12;
     private int icon_scale = 1;
 
-    public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
-                                 Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
+    // public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
+    //                              Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
 
-        if (file == null) {
-            return;
-        }
+    //     if (file == null) {
+    //         return;
+    //     }
 
-        if (widget.get_scale_factor () != icon_scale) {
-            icon_scale = widget.get_scale_factor ();
-        }
+    //     if (widget.get_scale_factor () != icon_scale) {
+    //         icon_scale = widget.get_scale_factor ();
+    //     }
 
-        var style_context = widget.get_parent ().get_style_context ();
+    //     var style_context = widget.get_parent ().get_style_context ();
 
-        int pos = 1;
-        var emblem_area = Gdk.Rectangle ();
+    //     int pos = 1;
+    //     var emblem_area = Gdk.Rectangle ();
 
-        foreach (string emblem in file.emblems_list) {
-            Gdk.Pixbuf? pix = null;
-            var key = emblem + "-symbolic";
+    //     foreach (string emblem in file.emblems_list) {
+    //         Gdk.Pixbuf? pix = null;
+    //         var key = emblem + "-symbolic";
 
-            if (emblem_pixbuf_map.has_key (key)) {
-                pix = emblem_pixbuf_map.@get (key);
-            } else {
-                pix = render_icon (key, style_context);
-                if (pix == null) {
-                    continue;
-                }
+    //         if (emblem_pixbuf_map.has_key (key)) {
+    //             pix = emblem_pixbuf_map.@get (key);
+    //         } else {
+    //             pix = render_icon (key, style_context);
+    //             if (pix == null) {
+    //                 continue;
+    //             }
 
-                emblem_pixbuf_map.@set (key, pix);
-            }
+    //             emblem_pixbuf_map.@set (key, pix);
+    //         }
 
-            emblem_area.y = cell_area.y + (cell_area.height - Files.IconSize.EMBLEM) / 2;
-            emblem_area.x = cell_area.x + cell_area.width - (pos * Files.IconSize.EMBLEM) - RIGHT_MARGIN;
+    //         emblem_area.y = cell_area.y + (cell_area.height - Files.IconSize.EMBLEM) / 2;
+    //         emblem_area.x = cell_area.x + cell_area.width - (pos * Files.IconSize.EMBLEM) - RIGHT_MARGIN;
 
-            style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
-            pos++;
-        }
-    }
+    //         // style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
+    //         pos++;
+    //     }
+    // }
 
     public Gdk.Pixbuf? render_icon (string icon_name, Gtk.StyleContext context) {
-        var theme = Gtk.IconTheme.get_default ();
+        // var theme = Gtk.IconTheme.get_default ();
         Gdk.Pixbuf? pix = null;
-        Gtk.IconInfo? gtk_icon_info = null;
+        // Gtk.IconInfo? gtk_icon_info = null;
         var scale = context.get_scale ();
 
         var gicon = new ThemedIcon.with_default_fallbacks (icon_name);
 
-        var flags = Gtk.IconLookupFlags.FORCE_SIZE | Gtk.IconLookupFlags.FORCE_SYMBOLIC;
-        gtk_icon_info = theme.lookup_by_gicon_for_scale (gicon, 16, scale, flags);
+        var flags = Gtk.IconLookupFlags.FORCE_SYMBOLIC;
+        // var flags = Gtk.IconLookupFlags.FORCE_SIZE | Gtk.IconLookupFlags.FORCE_SYMBOLIC;
+        // gtk_icon_info = theme.lookup_by_gicon_for_scale (gicon, 16, scale, flags);
 
-        if (gtk_icon_info != null) {
-            try {
-                pix = gtk_icon_info.load_symbolic_for_context (context);
-            } catch (Error e) {
-                warning ("Failed to load icon for %s: %s", icon_name, e.message);
-            }
-        }
+        // if (gtk_icon_info != null) {
+        //     try {
+        //         pix = gtk_icon_info.load_symbolic_for_context (context);
+        //     } catch (Error e) {
+        //         warning ("Failed to load icon for %s: %s", icon_name, e.message);
+        //     }
+        // }
 
         return pix;
     }
@@ -110,20 +111,20 @@ public class Files.EmblemRenderer : Gtk.CellRenderer {
         minimum_size = natural_size;
     }
 
-    /* We still have to implement this even though it is deprecated, else compiler complains.
-     * It is not called (in Juno)  */
-    public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
-                                   out int x_offset, out int y_offset,
-                                   out int width, out int height) {
+    // /* We still have to implement this even though it is deprecated, else compiler complains.
+    //  * It is not called (in Juno)  */
+    // public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
+    //                                out int x_offset, out int y_offset,
+    //                                out int width, out int height) {
 
-        /* Just return some default values for offsets */
-        x_offset = 0;
-        y_offset = 0;
-        int mw, nw, mh, nh;
-        get_preferred_width (widget, out mw, out nw);
-        get_preferred_height (widget, out mh, out nh);
+    //     /* Just return some default values for offsets */
+    //     x_offset = 0;
+    //     y_offset = 0;
+    //     int mw, nw, mh, nh;
+    //     get_preferred_width (widget, out mw, out nw);
+    //     get_preferred_height (widget, out mh, out nh);
 
-        width = nw;
-        height = nh;
-    }
+    //     width = nw;
+    //     height = nh;
+    // }
 }

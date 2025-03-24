@@ -18,6 +18,7 @@ public abstract class Files.AbstractSlot : GLib.Object {
             }
         }
 
+
         protected set { _directory = value; }
     }
 
@@ -61,11 +62,11 @@ public abstract class Files.AbstractSlot : GLib.Object {
     public signal void directory_loaded (Files.Directory dir);
 
     public void add_extra_widget (Gtk.Widget widget) {
-        extra_location_widgets.add (widget);
+        // extra_location_widgets.add (widget);
     }
 
     public void add_extra_action_widget (Gtk.Widget widget) {
-        extra_action_widgets.add (widget);
+        // extra_action_widgets.add (widget);
     }
 
     public void add_overlay (Gtk.Widget widget) {
@@ -74,7 +75,7 @@ public abstract class Files.AbstractSlot : GLib.Object {
             vexpand = true,
             child = widget
         };
-        content_box.add (overlay);
+        // content_box.add (overlay);
     }
 
     construct {
@@ -84,10 +85,10 @@ public abstract class Files.AbstractSlot : GLib.Object {
         };
 
         extra_location_widgets = new Gtk.Box (VERTICAL, 0);
-        content_box.add (extra_location_widgets);
+        // content_box.add (extra_location_widgets);
 
         extra_action_widgets = new Gtk.Box (VERTICAL, 0);
-        content_box.add (extra_action_widgets);
+        // content_box.add (extra_action_widgets);
         slot_number = -1;
     }
 

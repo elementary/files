@@ -2125,10 +2125,15 @@ marlin_file_operations_copy_finish (GAsyncResult  *result,
 }
 
 typedef struct {
+    gint x;
+    gint y;
+} Point;
+
+typedef struct {
     GFile *file;
     gboolean overwrite;
     gboolean has_position;
-    GdkPoint position;
+    Point position;
 } MoveFileCopyFallback;
 
 static MoveFileCopyFallback *

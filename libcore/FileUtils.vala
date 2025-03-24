@@ -189,7 +189,6 @@ namespace Files.FileUtils {
         dialog.add_button (_("Ignore"), Gtk.ResponseType.CANCEL);
         dialog.add_button (_("Recreate"), Gtk.ResponseType.ACCEPT);
         dialog.set_default_response (Gtk.ResponseType.ACCEPT);
-
         dialog.response.connect ((res) => {
             switch (res) {
                 case Gtk.ResponseType.ACCEPT:
@@ -215,9 +214,8 @@ namespace Files.FileUtils {
             dialog.destroy ();
         });
 
-        // Need to continue to use run () in Gtk3 in order to get modal dialog as
-        // we need to return a result
-        dialog.run ();
+        //TODO Block main loop while showing dialog
+        dialog.present ();
         return success;
     }
 

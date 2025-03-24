@@ -62,7 +62,7 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
         };
         layout.attach (stack, 0, 2, 2);
 
-        get_content_area ().add (layout);
+        // get_content_area ().add (layout);
 
         add_button (_("Close"), Gtk.ResponseType.CLOSE);
         response.connect ((source, type) => {
@@ -102,8 +102,9 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
             };
 
             foreach (string emblem_name in emblems_list) {
-                var emblem = new Gtk.Image.from_icon_name (emblem_name, Gtk.IconSize.BUTTON);
-                emblem_box.add (emblem);
+                // var emblem = new Gtk.Image.from_icon_name (emblem_name, Gtk.IconSize.BUTTON);
+                var emblem = new Gtk.Image.from_icon_name (emblem_name);
+                // emblem_box.add (emblem);
 
                 pos++;
                 if (pos > 3) { /* Only room for 3 emblems */

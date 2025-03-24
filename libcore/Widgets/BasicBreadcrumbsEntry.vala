@@ -73,9 +73,9 @@ namespace Files.View.Chrome {
         protected const int BREAD_SPACING = 12;
         protected const double YPAD = 0; /* y padding */
 
-        private Gdk.Window? entry_window = null;
+        // private Gdk.Window? entry_window = null;
         private Gtk.EventControllerKey key_controller;
-        protected Gtk.GestureMultiPress button_controller;
+        // protected Gtk.GestureMultiPress button_controller;
         private Gtk.EventControllerMotion motion_controller;
 
         protected bool context_menu_showing = false;
@@ -87,7 +87,7 @@ namespace Files.View.Chrome {
 
             var css_provider = new Gtk.CssProvider ();
             try {
-                css_provider.load_from_data (".noradius-button { border-radius: 0; }");
+                css_provider.load_from_data (".noradius-button { border-radius: 0; }".data);
                 style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             } catch (Error e) {
                 critical ("Unable to style pathbar button: %s", e.message);
@@ -101,24 +101,24 @@ namespace Files.View.Chrome {
             realize.connect_after (after_realize);
             activate.connect (on_activate);
             icon_press.connect (on_icon_press);
-            focus_in_event.connect (on_focus_in);
-            focus_out_event.connect (on_focus_out);
+            // focus_in_event.connect (on_focus_in);
+            // focus_out_event.connect (on_focus_out);
             changed.connect (on_entry_text_changed);
 
-            key_controller = new Gtk.EventControllerKey (this) {
-                propagation_phase = BUBBLE
-            };
-            key_controller.key_pressed.connect (on_key_press_event);
+            // key_controller = new Gtk.EventControllerKey (this) {
+            //     propagation_phase = BUBBLE
+            // };
+            // key_controller.key_pressed.connect (on_key_press_event);
 
-            button_controller = new Gtk.GestureMultiPress (this) {
-                button = 0,
-                propagation_phase = CAPTURE
-            };
-            button_controller.pressed.connect (on_button_pressed_event);
-            button_controller.released.connect (on_button_released_event);
+            // button_controller = new Gtk.GestureMultiPress (this) {
+            //     button = 0,
+            //     propagation_phase = CAPTURE
+            // };
+            // button_controller.pressed.connect (on_button_pressed_event);
+            // button_controller.released.connect (on_button_released_event);
 
-            motion_controller = new Gtk.EventControllerMotion (this);
-            motion_controller.motion.connect (on_motion_event);
+            // motion_controller = new Gtk.EventControllerMotion (this);
+            // motion_controller.motion.connect (on_motion_event);
 
             minimum_width = 100;
             notify["scale-factor"].connect (() => {
@@ -147,20 +147,20 @@ namespace Files.View.Chrome {
         }
 
         protected void set_action_icon_tooltip (string? tip) {
-            if (secondary_icon_pixbuf != null && tip != null && tip.length > 0) {
-                set_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY, tip);
-            }
+            // if (secondary_icon_pixbuf != null && tip != null && tip.length > 0) {
+            //     set_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY, tip);
+            // }
         }
         public string? get_action_icon_tooltip () {
-            if (secondary_icon_pixbuf != null) {
-                return get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
-            } else {
+            // if (secondary_icon_pixbuf != null) {
+            //     return get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
+            // } else {
                 return null;
-            }
+            // }
         }
 
         protected void hide_action_icon () {
-            secondary_icon_pixbuf = null;
+            // secondary_icon_pixbuf = null;
         }
 
         public void set_entry_text (string? txt) {
@@ -239,12 +239,12 @@ namespace Files.View.Chrome {
 
         protected virtual void on_button_pressed_event (int n_press, double x, double y) {
             if (has_focus) {
-                if (button_controller.get_current_button () == Gdk.BUTTON_SECONDARY) {
-                    context_menu_showing = true;
-                }
+                // if (button_controller.get_current_button () == Gdk.BUTTON_SECONDARY) {
+                //     context_menu_showing = true;
+                // }
             } else if (!is_icon_event (x)) {
                 // Block propagation when !has_focus unless icon pressed
-                button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
+                // button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
             }
         }
 
@@ -253,18 +253,18 @@ namespace Files.View.Chrome {
              * Note that in home directory, the breadcrumbs are hidden and a placeholder shown even when pathbar does
              * not have focus. */
 
-            if (button_controller.get_current_button () == Gdk.BUTTON_PRIMARY &&
-                !has_focus && !hide_breadcrumbs &&
-                !is_icon_event (x)) {
+            // if (button_controller.get_current_button () == Gdk.BUTTON_PRIMARY &&
+            //     !has_focus && !hide_breadcrumbs &&
+            //     !is_icon_event (x)) {
 
-                reset_elements_states ();
-                var el = get_element_from_coordinates (x);
-                if (el != null) {
-                    button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
-                    activate_path (get_path_from_element (el));
-                    return;
-                }
-            }
+            //     reset_elements_states ();
+            //     var el = get_element_from_coordinates (x);
+            //     if (el != null) {
+            //         button_controller.set_state (Gtk.EventSequenceState.CLAIMED);
+            //         activate_path (get_path_from_element (el));
+            //         return;
+            //     }
+            // }
 
             if (!has_focus) {
                 grab_focus (); // Hide breadcrumbs and behave as Gtk.Entry.
@@ -292,18 +292,18 @@ namespace Files.View.Chrome {
              * owning widget as the user data on a Gdk.Window. The required window
              * will be the first child of the entry.
              */
-            entry_window = get_window ().get_children_with_user_data (this).data;
+            // entry_window = get_window ().get_children_with_user_data (this).data;
         }
 
         void on_motion_event (double x, double y) {
-            if (is_focus) {
+            if (is_focus ()) {
                 return;
             }
 
             string? tip = null;
-            if (secondary_icon_pixbuf != null) {
-                tip = get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
-            }
+            // if (secondary_icon_pixbuf != null) {
+            //     tip = get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
+            // }
 
             set_tooltip_markup ("");
 
@@ -323,47 +323,47 @@ namespace Files.View.Chrome {
         }
 
         private uint focus_out_timeout_id = 0;
-        protected virtual bool on_focus_out (Gdk.EventFocus event) {
-            if (focus_out_timeout_id == 0) {
-                /* Delay acting on focus out - may be temporary, due to keyboard layout change */
-                focus_out_timeout_id = GLib.Timeout.add (10, () => {
-                    focus_out_event (event);
-                    return GLib.Source.REMOVE;
-                });
+        // protected virtual bool on_focus_out (Gdk.EventFocus event) {
+        //     if (focus_out_timeout_id == 0) {
+        //         /* Delay acting on focus out - may be temporary, due to keyboard layout change */
+        //         focus_out_timeout_id = GLib.Timeout.add (10, () => {
+        //             focus_out_event (event);
+        //             return GLib.Source.REMOVE;
+        //         });
 
-                return true;
-            } else {
-                /* This the delayed propagated event */
-                focus_out_timeout_id = 0;
-                base.focus_out_event (event);
+        //         return true;
+        //     } else {
+        //         /* This the delayed propagated event */
+        //         focus_out_timeout_id = 0;
+        //         base.focus_out_event (event);
 
-                if (context_menu_showing) {
-                    return true;
-                }
+        //         if (context_menu_showing) {
+        //             return true;
+        //         }
 
-                // Do not lose entry text if another window is focused
-                if (((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
-                    reset ();
-                }
+        //         // Do not lose entry text if another window is focused
+        //         if (((Gtk.Window)(get_toplevel ())).has_toplevel_focus) {
+        //             reset ();
+        //         }
 
-                return false;
-            }
-        }
+        //         return false;
+        //     }
+        // }
 
-        protected virtual bool on_focus_in (Gdk.EventFocus event) {
-            if (focus_out_timeout_id > 0) {
-                /* There was a temporary focus out due to keyboard layout change.
-                 * Cancel propagation of focus out event and ignore focus in event */
-                GLib.Source.remove (focus_out_timeout_id);
-                focus_out_timeout_id = 0;
-                return true;
-            } else {
-                context_menu_showing = false;
-                current_dir_path = get_breadcrumbs_path (false);
-                set_entry_text (current_dir_path);
-                return false;
-            }
-        }
+        // protected virtual bool on_focus_in (Gdk.EventFocus event) {
+        //     if (focus_out_timeout_id > 0) {
+        //         /* There was a temporary focus out due to keyboard layout change.
+        //          * Cancel propagation of focus out event and ignore focus in event */
+        //         GLib.Source.remove (focus_out_timeout_id);
+        //         focus_out_timeout_id = 0;
+        //         return true;
+        //     } else {
+        //         context_menu_showing = false;
+        //         current_dir_path = get_breadcrumbs_path (false);
+        //         set_entry_text (current_dir_path);
+        //         return false;
+        //     }
+        // }
 
         protected virtual void on_activate () {
             activate_path (FileUtils.sanitize_path (text, current_dir_path, true));
@@ -382,7 +382,7 @@ namespace Files.View.Chrome {
     /** Entry functions **/
     /****************************/
         public void set_entry_cursor (string cursor_name) {
-            entry_window.set_cursor (new Gdk.Cursor.from_name (entry_window.get_display (), cursor_name));
+            // entry_window.set_cursor (new Gdk.Cursor.from_name (entry_window.get_display (), cursor_name));
         }
 
         protected virtual void set_default_entry_tooltip () {
@@ -422,11 +422,11 @@ namespace Files.View.Chrome {
             var w = displayed_breadcrumbs.first ().data.natural_width;
             if (l > 1) {
                 weak Gtk.StyleContext style_context = get_style_context ();
-                var padding = style_context.get_padding (style_context.get_state ());
-                w += (l - 1) * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
+                // var padding = style_context.get_padding (style_context.get_state ());
+                // w += (l - 1) * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
 
                 /* Allow extra space for last breadcrumb */
-                w += 3 * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
+                // w += 3 * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
             }
 
             /* Allow enough space after the breadcrumbs for secondary icon and entry */
@@ -618,7 +618,7 @@ namespace Files.View.Chrome {
                                      double initial_offset,
                                      double final_offset,
                                      uint64 time_usec) {
-            if (!get_settings ().gtk_enable_animations) {
+            if (!get_settings ().gtk_enable_animations || get_frame_clock () == null) {
                 prepare_to_animate (els, final_offset);
                 return 0;
             }
@@ -659,16 +659,17 @@ namespace Files.View.Chrome {
             animation_timeout_id = make_animation (els, 0.0, 1.0, Files.LOCATION_BAR_ANIMATION_TIME_USEC);
         }
 
-        public override bool draw (Cairo.Context cr) {
+        public bool draw (Cairo.Context cr) {
+        // public override bool draw (Cairo.Context cr) {
             weak Gtk.StyleContext style_context = get_style_context ();
-            if (button_context_active == null) {
-                button_context_active = new Gtk.StyleContext ();
-                button_context_active.set_path (style_context.get_path ());
-                button_context_active.set_state (Gtk.StateFlags.ACTIVE);
-            }
+            // if (button_context_active == null) {
+            //     button_context_active = new Gtk.StyleContext ();
+            //     button_context_active.set_path (style_context.get_path ());
+            //     button_context_active.set_state (Gtk.StateFlags.ACTIVE);
+            // }
             var is_rtl = Gtk.StateFlags.DIR_RTL in style_context.get_state ();
-            var padding = style_context.get_padding (style_context.get_state ());
-            base.draw (cr);
+            // var padding = style_context.get_padding (style_context.get_state ());
+            // base.draw (cr);
             double height = get_allocated_height ();
             double width = get_allocated_width ();
 
@@ -685,59 +686,59 @@ namespace Files.View.Chrome {
 
             style_context.save ();
             style_context.set_state (Gtk.StateFlags.ACTIVE);
-            Gtk.Border border = style_context.get_margin (style_context.get_state ());
+            // Gtk.Border border = style_context.get_margin (style_context.get_state ());
             style_context.restore ();
 
-            if (!is_focus && !hide_breadcrumbs) {
-                double margin = border.top;
+            if (!is_focus () && !hide_breadcrumbs) {
+                // double margin = border.top;
 
                 /* Ensure there is an editable area to the right of the breadcrumbs */
-                double width_marged = width - 2 * margin - MINIMUM_LOCATION_BAR_ENTRY_WIDTH - ICON_WIDTH;
-                double height_marged = height - 2 * margin;
+                // double width_marged = width - 2 * margin - MINIMUM_LOCATION_BAR_ENTRY_WIDTH - ICON_WIDTH;
+                // double height_marged = height - 2 * margin;
                 double x_render;
-                if (is_rtl) {
-                    x_render = width - margin;
-                } else {
-                    x_render = margin;
-                }
+                // if (is_rtl) {
+                //     x_render = width - margin;
+                // } else {
+                //     x_render = margin;
+                // }
                 GLib.List<BreadcrumbElement> displayed_breadcrumbs = null;
-                double max_width = get_displayed_breadcrumbs_natural_width (out displayed_breadcrumbs);
-                /* each element must not be bigger than the width/breadcrumbs count */
-                double total_arrow_width = displayed_breadcrumbs.length () * (height_marged / 2 + padding.left);
-                width_marged -= total_arrow_width;
-                if (max_width > width_marged) { /* let's check if the breadcrumbs are bigger than the widget */
-                    var unfixed = displayed_breadcrumbs.length () - 2; //Can assumed to be limited in length
-                    if (unfixed > 0) {
-                        width_marged -= unfixed * MINIMUM_BREADCRUMB_WIDTH;
-                    }
-                    fix_displayed_widths (displayed_breadcrumbs, width_marged);
-                    distribute_shortfall (displayed_breadcrumbs, width_marged);
-                }
+                // double max_width = get_displayed_breadcrumbs_natural_width (out displayed_breadcrumbs);
+                // /* each element must not be bigger than the width/breadcrumbs count */
+                // double total_arrow_width = displayed_breadcrumbs.length () * (height_marged / 2 + padding.left);
+                // width_marged -= total_arrow_width;
+                // if (max_width > width_marged) { /* let's check if the breadcrumbs are bigger than the widget */
+                //     var unfixed = displayed_breadcrumbs.length () - 2; //Can assumed to be limited in length
+                //     if (unfixed > 0) {
+                //         width_marged -= unfixed * MINIMUM_BREADCRUMB_WIDTH;
+                //     }
+                //     fix_displayed_widths (displayed_breadcrumbs, width_marged);
+                //     distribute_shortfall (displayed_breadcrumbs, width_marged);
+                // }
                 cr.save ();
                 /* Really draw the elements */
-                foreach (BreadcrumbElement element in displayed_breadcrumbs) {
-                    x_render = element.draw (cr, x_render, margin, height_marged, this);
-                    /* save element x axis position */
-                    if (is_rtl) {
-                        element.x = x_render + element.real_width;
-                    } else {
-                        element.x = x_render - element.real_width;
-                    }
-                }
+                // foreach (BreadcrumbElement element in displayed_breadcrumbs) {
+                //     x_render = element.draw (cr, x_render, margin, height_marged, this);
+                //     /* save element x axis position */
+                //     if (is_rtl) {
+                //         element.x = x_render + element.real_width;
+                //     } else {
+                //         element.x = x_render - element.real_width;
+                //     }
+                // }
                 /* Draw animated removal of elements when shortening the breadcrumbs */
-                if (old_elements != null) {
-                    foreach (BreadcrumbElement element in old_elements) {
-                        if (element.display) {
-                            x_render = element.draw (cr, x_render, margin, height_marged, this);
-                            /* save element x axis position */
-                            if (is_rtl) {
-                                element.x = x_render + element.real_width;
-                            } else {
-                                element.x = x_render - element.real_width;
-                            }
-                        }
-                    }
-                }
+                // if (old_elements != null) {
+                //     foreach (BreadcrumbElement element in old_elements) {
+                //         if (element.display) {
+                //             x_render = element.draw (cr, x_render, margin, height_marged, this);
+                //             /* save element x axis position */
+                //             if (is_rtl) {
+                //                 element.x = x_render + element.real_width;
+                //             } else {
+                //                 element.x = x_render - element.real_width;
+                //             }
+                //         }
+                //     }
+                // }
                 cr.restore ();
             } else if (placeholder != "") {
                 assert (placeholder != null);
@@ -746,7 +747,8 @@ namespace Files.View.Chrome {
                 double text_width, text_height;
                 Pango.Layout layout;
                 /** TODO - Get offset due to margins from style context **/
-                int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 5 : 0;
+                // int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 5 : 0;
+                int icon_width = 0;
 
                 Gdk.RGBA rgba;
                 var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
@@ -755,7 +757,8 @@ namespace Files.View.Chrome {
                     if (!colored) {
                     /* If neither "placeholder_text_color" or "text_color" defined in theme (unlikely) fallback to a
                      *  color that is hopefully still visible in light and dark variants */
-                        rgba = {0.6, 0.6, 0.5, 1};
+                        rgba = {0.6f, 0.6f, 0.5f, 1};
+                        // rgba = {0.6, 0.6, 0.5, 1};
                     }
                 }
 

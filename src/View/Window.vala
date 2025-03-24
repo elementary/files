@@ -21,7 +21,7 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.View.Window : Hdy.ApplicationWindow {
+public class Files.View.Window : Adw.ApplicationWindow {
     static uint window_id = 0;
 
     const GLib.ActionEntry [] WIN_ENTRIES = {
@@ -82,10 +82,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     public Gtk.Builder ui;
     public Files.Application marlin_app { get; construct; }
     private unowned UndoManager undo_manager;
-    public Hdy.HeaderBar headerbar;
+    public Adw.HeaderBar headerbar;
     public Chrome.ViewSwitcher view_switcher;
-    public Hdy.TabView tab_view;
-    public Hdy.TabBar tab_bar;
+    public Adw.TabView tab_view;
+    public Adw.TabBar tab_bar;
     private Gtk.Paned lside_pane;
     public SidebarInterface sidebar;
     private Chrome.ButtonWithMenu button_forward;
@@ -93,7 +93,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private Chrome.LocationBar? location_bar;
     private Gtk.MenuButton tab_history_button;
 
-    private bool locked_focus { get; set; default = false; }
     private bool tabs_restored = false;
     private int restoring_tabs = 0;
     private bool doing_undo_redo = false;
@@ -113,7 +112,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     static construct {
-        Hdy.init ();
+        Adw.init ();
     }
 
     construct {
@@ -187,19 +186,18 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
 
         loading_uri.connect (update_labels);
-        present ();
     }
 
     private void build_window () {
         button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic");
 
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
-        button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        // button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         button_forward = new View.Chrome.ButtonWithMenu ("go-next-symbolic");
 
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
-        button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        // button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
             margin_end = 20
@@ -211,14 +209,14 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         var app_menu = new AppMenu ();
 
         var menu_button = new Gtk.MenuButton () {
-            image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR),
+            // image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR),
             popover = app_menu,
             tooltip_text = _("Menu")
         };
 
-        headerbar = new Hdy.HeaderBar () {
-            show_close_button = true,
-            custom_title = new Gtk.Label (null)
+        headerbar = new Adw.HeaderBar () {
+            // show_close_button = true,
+            // custom_title = new Gtk.Label (null)
         };
         headerbar.pack_start (button_back);
         headerbar.pack_start (button_forward);
@@ -226,7 +224,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         headerbar.pack_start (location_bar);
         headerbar.pack_end (menu_button);
 
-        tab_view = new Hdy.TabView () {
+        tab_view = new Adw.TabView () {
             menu_model = new Menu ()
         };
 
@@ -242,12 +240,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         );
 
         tab_history_button = new Gtk.MenuButton () {
-            image = new Gtk.Image.from_icon_name ("document-open-recent-symbolic", MENU),
-            tooltip_text = _("Closed Tabs"),
-            use_popover = false
+            // image = new Gtk.Image.from_icon_name ("document-open-recent-symbolic", MENU),
+            tooltip_text = _("Closed Tabs")
+            // use_popover = false
         };
 
-        tab_bar = new Hdy.TabBar () {
+        tab_bar = new Adw.TabBar () {
             autohide = false,
             expand_tabs = false,
             inverted = true,
@@ -257,25 +255,25 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         };
 
         var tab_box = new Gtk.Box (VERTICAL, 0);
-        tab_box.add (tab_bar);
-        tab_box.add (tab_view);
+        // tab_box.add (tab_bar);
+        // tab_box.add (tab_view);
 
         sidebar = new Sidebar.SidebarWindow ();
         free_space_change.connect (sidebar.on_free_space_change);
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-            expand = true,
+            // expand = true,
             position = Files.app_settings.get_int ("sidebar-width")
         };
-        lside_pane.pack1 (sidebar, false, false);
-        lside_pane.pack2 (tab_box, true, true);
+        // lside_pane.pack1 (sidebar, false, false);
+        // lside_pane.pack2 (tab_box, true, true);
 
         var grid = new Gtk.Grid ();
         grid.attach (headerbar, 0, 0);
         grid.attach (lside_pane, 0, 1);
-        grid.show_all ();
+        // grid.show_all ();
 
-        add (grid);
+        // add (grid);
 
         /** Apply preferences */
         var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
@@ -309,11 +307,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
 
         button_forward.slow_press.connect (() => {
-            get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
+            // get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
         });
 
         button_back.slow_press.connect (() => {
-            get_action_group ("win").activate_action ("back", new Variant.int32 (1));
+            // get_action_group ("win").activate_action ("back", new Variant.int32 (1));
         });
 
         location_bar.escape.connect (grab_focus);
@@ -332,58 +330,48 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             current_container.focus_location_if_in_current_directory (loc, true);
         });
 
-        headerbar.focus_in_event.connect ((event) => {
-            locked_focus = true;
-            return focus_in_event (event);
-        });
-
-        headerbar.focus_out_event.connect ((event) => {
-            locked_focus = false;
-            return focus_out_event (event);
-        });
-
         undo_manager.request_menu_update.connect (update_undo_actions);
 
-        key_controller = new Gtk.EventControllerKey (this) {
-            propagation_phase = CAPTURE
-        };
+        // key_controller = new Gtk.EventControllerKey (this) {
+        //     propagation_phase = CAPTURE
+        // };
 
-        key_controller.key_pressed.connect ((keyval, keycode, state) => {
-            // Handle key press events when directoryview has focus except when it must retain
-            // focus because e.g.renaming
-            var focus_widget = get_focus ();
-            if (current_container != null && !current_container.locked_focus &&
-                focus_widget != null && focus_widget.is_ancestor (current_container)) {
+        // key_controller.key_pressed.connect ((keyval, keycode, state) => {
+        //     // Handle key press events when directoryview has focus except when it must retain
+        //     // focus because e.g.renaming
+        //     var focus_widget = get_focus ();
+        //     if (current_container != null && !current_container.locked_focus &&
+        //         focus_widget != null && focus_widget.is_ancestor (current_container)) {
 
-                var mods = state & Gtk.accelerator_get_default_mod_mask ();
-                /* Use find function instead of view interactive search */
-                if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
-                    /* Use printable characters (except space) to initiate search */
-                    /* Space is handled by directory view to open file items */
-                    var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
-                    if (uc.isprint () && !uc.isspace ()) {
-                        activate_action ("find", uc.to_string ());
-                        return Gdk.EVENT_STOP;
-                    }
-                }
-            }
+        //         var mods = state & Gtk.accelerator_get_default_mod_mask ();
+        //         /* Use find function instead of view interactive search */
+        //         if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
+        //             /* Use printable characters (except space) to initiate search */
+        //             /* Space is handled by directory view to open file items */
+        //             var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
+        //             if (uc.isprint () && !uc.isspace ()) {
+        //                 activate_action ("find", uc.to_string ());
+        //                 return Gdk.EVENT_STOP;
+        //             }
+        //         }
+        //     }
 
-            return Gdk.EVENT_PROPAGATE;
-        });
+        //     return Gdk.EVENT_PROPAGATE;
+        // });
 
         //TODO Rewrite for Gtk4
-        window_state_event.connect ((event) => {
-            if (Gdk.WindowState.ICONIFIED in event.changed_mask) {
-                location_bar.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
-            }
+        // window_state_event.connect ((event) => {
+        //     if (Gdk.WindowState.ICONIFIED in event.changed_mask) {
+        //         location_bar.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
+        //     }
 
-            return false;
-        });
+        //     return false;
+        // });
 
-        delete_event.connect (() => {
-            quit ();
-            return false;
-        });
+        // delete_event.connect (() => {
+        //     quit ();
+        //     return false;
+        // });
 
         tab_view.setup_menu.connect (tab_view_setup_menu);
 
@@ -400,11 +388,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             view_container.window = this;
         });
 
-
-        sidebar.request_focus.connect (() => {
-            return !current_container.locked_focus && !locked_focus;
-        });
-
         sidebar.sync_needed.connect (() => {
             loading_uri (current_container.uri);
         });
@@ -412,7 +395,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         sidebar.path_change_request.connect (uri_path_change_request);
     }
 
-    private bool tab_view_close_page (Hdy.TabPage page) {
+    private bool tab_view_close_page (Adw.TabPage page) {
         var view_container = (ViewContainer) page.child;
 
         if (tab_history_button.menu_model == null) {
@@ -446,7 +429,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         return Gdk.EVENT_STOP;
     }
 
-    private void tab_view_setup_menu (Hdy.TabPage? page) {
+    private void tab_view_setup_menu (Adw.TabPage? page) {
         if (page == null) {
             return;
         }
@@ -688,7 +671,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         int existing_position = 0;
 
         for (int i = 0; i < tab_view.n_pages; i++) {
-            var tab = (Hdy.TabPage) tab_view.get_nth_page (i);
+            var tab = (Adw.TabPage) tab_view.get_nth_page (i);
             var tab_location = ((ViewContainer) tab.child).location;
             string tab_uri = tab_location.get_uri ();
 
@@ -706,7 +689,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     /** Compare every tab label with every other and resolve ambiguities **/
     private void check_for_tabs_with_same_name () {
         for (int i = 0; i < tab_view.n_pages; i++) {
-            var tab = (Hdy.TabPage) tab_view.get_nth_page (i);
+            var tab = (Adw.TabPage) tab_view.get_nth_page (i);
             unowned var content = (ViewContainer) tab.child;
             if (content.tab_name == Files.INVALID_TAB_NAME) {
                 set_tab_label (content.tab_name, tab, content.tab_name);
@@ -731,7 +714,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
             // Compare with every other tab for same label
             for (int j = 0; j < tab_view.n_pages; j++) {
-                var tab2 = (Hdy.TabPage) tab_view.get_nth_page (j);
+                var tab2 = (Adw.TabPage) tab_view.get_nth_page (j);
                 unowned var content2 = (ViewContainer) tab2.child;
                 if (content2 == content || content2.tab_name == Files.INVALID_TAB_NAME) {
                     continue;
@@ -759,7 +742,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     /* Just to append "as Administrator" when appropriate */
-    private void set_tab_label (string label, Hdy.TabPage tab, string? tooltip = null) {
+    private void set_tab_label (string label, Adw.TabPage tab, string? tooltip = null) {
 
         string lab = label;
         if (Files.is_admin ()) {
@@ -803,7 +786,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    private void remove_tab (Hdy.TabPage? tab) {
+    private void remove_tab (Adw.TabPage? tab) {
         if (tab != null) {
             /* Use Idle in case of rapid closing of multiple tabs during restore */
             Idle.add_full (Priority.LOW, () => {
@@ -1067,7 +1050,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     public void after_undo_redo () {
         if (current_container.slot.directory.is_recent) {
-            get_action_group ("win").activate_action ("refresh", null);
+            // get_action_group ("win").activate_action ("refresh", null);
         }
 
         doing_undo_redo = false;
@@ -1159,7 +1142,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     public void quit () {
-        save_geometries ();
+        // save_geometries ();
         save_tabs ();
 
         headerbar.destroy (); /* stop unwanted signals if quit while pathbar in focus */
@@ -1168,42 +1151,42 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_view.notify["selected-page"].disconnect (change_tab);
 
         for (int i = 0; i < tab_view.n_pages; i++) {
-            var tab_page = (Hdy.TabPage) tab_view.get_nth_page (i);
+            var tab_page = (Adw.TabPage) tab_view.get_nth_page (i);
             ((View.ViewContainer) tab_page.child).close ();
         }
 
         this.destroy ();
     }
 
-    private void save_geometries () {
-        if (!is_first_window) {
-            return; //TODO Save all windows
-        }
-        var sidebar_width = lside_pane.get_position ();
-        var min_width = Files.app_settings.get_int ("minimum-sidebar-width");
+    // private void save_geometries () {
+    //     if (!is_first_window) {
+    //         return; //TODO Save all windows
+    //     }
+    //     var sidebar_width = lside_pane.get_position ();
+    //     var min_width = Files.app_settings.get_int ("minimum-sidebar-width");
 
-        sidebar_width = int.max (sidebar_width, min_width);
-        Files.app_settings.set_int ("sidebar-width", sidebar_width);
+    //     sidebar_width = int.max (sidebar_width, min_width);
+    //     Files.app_settings.set_int ("sidebar-width", sidebar_width);
 
-        var state = get_window ().get_state ();
-        // TODO: replace with Gtk.Window.fullscreened in Gtk4
-        if (is_maximized || Gdk.WindowState.FULLSCREEN in state) {
-            Files.app_settings.set_enum (
-                "window-state", Files.WindowState.MAXIMIZED
-            );
-        } else {
-            Files.app_settings.set_enum (
-                "window-state", Files.WindowState.NORMAL
-            );
+    //     var state = get_window ().get_state ();
+    //     // TODO: replace with Gtk.Window.fullscreened in Gtk4
+    //     if (is_maximized || Gdk.WindowState.FULLSCREEN in state) {
+    //         Files.app_settings.set_enum (
+    //             "window-state", Files.WindowState.MAXIMIZED
+    //         );
+    //     } else {
+    //         Files.app_settings.set_enum (
+    //             "window-state", Files.WindowState.NORMAL
+    //         );
 
-            if (!(Gdk.WindowState.TILED in state)) {
-                int width, height;
-                // Includes shadow for normal windows (but not maximized or tiled)
-                get_size (out width, out height);
-                Files.app_settings.set ("window-size", "(ii)", width, height);
-            }
-        }
-    }
+    //         if (!(Gdk.WindowState.TILED in state)) {
+    //             int width, height;
+    //             // Includes shadow for normal windows (but not maximized or tiled)
+    //             get_size (out width, out height);
+    //             Files.app_settings.set ("window-size", "(ii)", width, height);
+    //         }
+    //     }
+    // }
 
     private void save_tabs () {
         /* Do not overwrite existing settings if history or restore-tabs is off
@@ -1218,7 +1201,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
         for (int i = 0; i < tab_view.n_pages; i++) {
-            var tab = (Hdy.TabPage) tab_view.get_nth_page (i);
+            var tab = (Adw.TabPage) tab_view.get_nth_page (i);
             var view_container = (ViewContainer) tab.child;
 
             /* Do not save if "File does not exist" or "Does not belong to you" */

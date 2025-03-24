@@ -18,7 +18,8 @@
 ***/
 
 namespace Files.View {
-    public class OverlayBar : Granite.Widgets.OverlayBar {
+    public class OverlayBar : Granite.OverlayBar {
+    // public class OverlayBar : Granite.Widgets.OverlayBar {
         const int IMAGE_LOADER_BUFFER_SIZE = 8192;
         const int STATUS_UPDATE_DELAY = 200;
         Cancellable? cancellable = null;
@@ -43,7 +44,7 @@ namespace Files.View {
             buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
             label = "";
             hide.connect (cancel);
-            show_all ();
+            // show_all ();
         }
 
         ~OverlayBar () {
@@ -52,7 +53,7 @@ namespace Files.View {
 
         public void selection_changed (GLib.List<unowned Files.File> files) {
             cancel ();
-            visible = false;
+            // visible = false;
 
             update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
                 if (files != null) {
@@ -84,7 +85,7 @@ namespace Files.View {
             }
 
             cancel_cancellable ();
-            active = false;
+            // active = false;
         }
 
         private void deep_count_cancel () {

@@ -39,7 +39,7 @@ public class Files.Renamer : Object {
         };
         listbox.set_sort_func (sort_func);
         listbox.invalidate_sort ();
-        listbox.show_all ();
+        // listbox.show_all ();
 
         notify["sortby"].connect (listbox.invalidate_sort);
     }
@@ -59,32 +59,32 @@ public class Files.Renamer : Object {
             if (dir == directory) {
                 f.ensure_query_info ();
                 var row = new RenamerListRow (f);
-                listbox.add (row);
+                // listbox.add (row);
                 row.new_name = Path.get_basename (path);
             }
         }
     }
 
     public void rename_files () {
-        listbox.get_children ().@foreach ((child) => {
-            var row = (RenamerListRow)child;
-            unowned string output_name = row.new_name;
-            var file = row.file;
+        // listbox.get_children ().@foreach ((child) => {
+            // var row = (RenamerListRow)child;
+            // unowned string output_name = row.new_name;
+            // var file = row.file;
 
-            /* Ignore files that will not be renamed */
-            if (file != null && file.location.get_basename () != output_name) {
-                Files.FileUtils.set_file_display_name.begin (
-                    file.location,
-                    output_name,
-                    null,
-                    (obj, res) => {
-                        try {
-                            Files.FileUtils.set_file_display_name.end (res);
-                        } catch (Error e) {} // Warning dialog already shown
-                    }
-                );
-            }
-        });
+            // /* Ignore files that will not be renamed */
+            // if (file != null && file.location.get_basename () != output_name) {
+            //     Files.FileUtils.set_file_display_name.begin (
+            //         file.location,
+            //         output_name,
+            //         null,
+            //         (obj, res) => {
+            //             try {
+            //                 Files.FileUtils.set_file_display_name.end (res);
+            //             } catch (Error e) {} // Warning dialog already shown
+            //         }
+            //     );
+            // }
+        // });
     }
 
     private string strip_extension (string filename, out string extension) {
@@ -132,53 +132,53 @@ public class Files.Renamer : Object {
         bool has_invalid = false;
 
         /* Apply basename to each item */
-        listbox.get_children ().@foreach ((child) => {
-            var row = (RenamerListRow)child;
-            string input_name = "";
-            string extension = "";
-            if (custom_basename != null && replacement_text == null) {
-                input_name = custom_basename;
-            } else {
-                input_name = strip_extension (row.old_name, out extension);
-                row.extension = extension;
-            }
+        // listbox.get_children ().@foreach ((child) => {
+            // var row = (RenamerListRow)child;
+            // string input_name = "";
+            // string extension = "";
+            // if (custom_basename != null && replacement_text == null) {
+            //     input_name = custom_basename;
+            // } else {
+            //     input_name = strip_extension (row.old_name, out extension);
+            //     row.extension = extension;
+            // }
 
-            if (replacement_text != null && custom_basename != null && custom_basename != "") {
-                input_name = input_name.replace (custom_basename, replacement_text);
-            }
+            // if (replacement_text != null && custom_basename != null && custom_basename != "") {
+            //     input_name = input_name.replace (custom_basename, replacement_text);
+            // }
 
-            row.new_name = input_name;
-        });
+            // row.new_name = input_name;
+        // });
 
         /* Apply each modifier to each item (in required order) */
-        var n_children = listbox.get_children ().length ();
+        // var n_children = listbox.get_children ().length ();
         foreach (var mod in modifier_chain) {
-            uint index = mod.is_reversed ? n_children - 1 : 0;
+            // uint index = mod.is_reversed ? n_children - 1 : 0;
             int incr = mod.is_reversed ? -1 : 1;
-            listbox.get_children ().@foreach ((child) => {
-                var row = (RenamerListRow)child;
-                row.new_name = mod.rename (row.new_name, index, row.file);
-                index += incr;
-            });
+            // listbox.get_children ().@foreach ((child) => {
+                // var row = (RenamerListRow)child;
+                // row.new_name = mod.rename (row.new_name, index, row.file);
+                // index += incr;
+            // });
         }
 
         /* Reapply extension and check validity */
-        listbox.get_children ().@foreach ((child) => {
-            var row = (RenamerListRow)child;
-            row.new_name = row.new_name.concat (row.extension);
-            if (row.new_name == previous_final_name ||
-                invalid_name (row.new_name, row.file)) {
+        // listbox.get_children ().@foreach ((child) => {
+            // var row = (RenamerListRow)child;
+            // row.new_name = row.new_name.concat (row.extension);
+            // if (row.new_name == previous_final_name ||
+            //     invalid_name (row.new_name, row.file)) {
 
-                row.status = RenameStatus.INVALID;
-                has_invalid = true;
-            } else if (row.new_name == row.old_name) {
-                row.status = RenameStatus.IGNORED;
-            } else {
-                row.status = RenameStatus.VALID;
-            }
+            //     row.status = RenameStatus.INVALID;
+            //     has_invalid = true;
+            // } else if (row.new_name == row.old_name) {
+            //     row.status = RenameStatus.IGNORED;
+            // } else {
+            //     row.status = RenameStatus.VALID;
+            // }
 
-            previous_final_name = row.new_name;
-        });
+            // previous_final_name = row.new_name;
+        // });
 
         can_rename = !has_invalid;
         updating = false;

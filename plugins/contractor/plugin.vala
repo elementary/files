@@ -21,96 +21,96 @@
     with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-public class Files.Plugins.ContractMenuItem : Gtk.MenuItem {
-    private Granite.Services.Contract contract;
-    private GLib.File[] files;
+// public class Files.Plugins.ContractMenuItem : Gtk.MenuItem {
+//     private Granite.Services.Contract contract;
+//     private GLib.File[] files;
 
-    public ContractMenuItem (Granite.Services.Contract contract, GLib.File[] files) {
-        this.contract = contract;
-        this.files = files;
+//     public ContractMenuItem (Granite.Services.Contract contract, GLib.File[] files) {
+//         this.contract = contract;
+//         this.files = files;
 
-        label = contract.get_display_name ();
-    }
+//         label = contract.get_display_name ();
+//     }
 
-    public override void activate () {
-        try {
-            contract.execute_with_files (files);
-        } catch (Error err) {
-            warning (err.message);
-        }
-    }
-}
+//     public override void activate () {
+//         try {
+//             contract.execute_with_files (files);
+//         } catch (Error err) {
+//             warning (err.message);
+//         }
+//     }
+// }
 
 public class Files.Plugins.Contractor : Files.Plugins.Base {
-    private Gtk.Menu menu;
+    // private Gtk.Menu menu;
     private Files.File current_directory = null;
 
     public Contractor () {
     }
 
     public override void context_menu (Gtk.Widget widget, List<Files.File> gof_files) {
-        menu = widget as Gtk.Menu;
+        // menu = widget as Gtk.Menu;
 
-        GLib.File[] files = null;
-        Gee.List<Granite.Services.Contract> contracts = null;
+        // GLib.File[] files = null;
+        // Gee.List<Granite.Services.Contract> contracts = null;
 
-        try {
-            if (gof_files == null) {
-                if (current_directory == null) {
-                    return;
-                }
+        // try {
+        //     if (gof_files == null) {
+        //         if (current_directory == null) {
+        //             return;
+        //         }
 
-                files = new GLib.File[0];
-                files += current_directory.location;
+        //         files = new GLib.File[0];
+        //         files += current_directory.location;
 
-                string? mimetype = current_directory.get_ftype ();
+        //         string? mimetype = current_directory.get_ftype ();
 
-                if (mimetype == null) {
-                    return;
-                }
+        //         if (mimetype == null) {
+        //             return;
+        //         }
 
-                contracts = Granite.Services.ContractorProxy.get_contracts_by_mime (mimetype);
-            } else {
-                files = get_file_array (gof_files);
-                var mimetypes = get_mimetypes (gof_files);
-                if (mimetypes.length > 0) {
-                    contracts = Granite.Services.ContractorProxy.get_contracts_by_mimelist (mimetypes);
-                }
-            }
+        //         contracts = Granite.Services.ContractorProxy.get_contracts_by_mime (mimetype);
+        //     } else {
+        //         files = get_file_array (gof_files);
+        //         var mimetypes = get_mimetypes (gof_files);
+        //         if (mimetypes.length > 0) {
+        //             contracts = Granite.Services.ContractorProxy.get_contracts_by_mimelist (mimetypes);
+        //         }
+        //     }
 
-            assert (files != null);
+        //     assert (files != null);
 
-            if (contracts == null) {
-                return;
-            }
+        //     if (contracts == null) {
+        //         return;
+        //     }
 
-            for (int i = 0; i < contracts.size; i++) {
-                var contract = contracts.get (i);
-                Gtk.MenuItem menu_item;
+        //     for (int i = 0; i < contracts.size; i++) {
+        //         var contract = contracts.get (i);
+        //         Gtk.MenuItem menu_item;
 
-                // insert separator if we got at least 1 contract
-                if (i == 0) {
-                    menu_item = new Gtk.SeparatorMenuItem ();
-                    add_menuitem (menu, menu_item);
-                }
+        //         // insert separator if we got at least 1 contract
+        //         if (i == 0) {
+        //             menu_item = new Gtk.SeparatorMenuItem ();
+        //             add_menuitem (menu, menu_item);
+        //         }
 
-                menu_item = new ContractMenuItem (contract, files);
-                add_menuitem (menu, menu_item);
-            }
-        } catch (Error e) {
-            warning (e.message);
-        }
+        //         menu_item = new ContractMenuItem (contract, files);
+        //         add_menuitem (menu, menu_item);
+        //     }
+        // } catch (Error e) {
+        //     warning (e.message);
+        // }
     }
 
     public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
         current_directory = directory;
     }
 
-    private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
-        menu.append (menu_item);
-        menu_item.show ();
-        plugins.menuitem_references.add (menu_item);
-    }
+    // private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
+    //     menu.append (menu_item);
+    //     menu_item.show ();
+    //     plugins.menuitem_references.add (menu_item);
+    // }
 
     private static string[] get_mimetypes (List<Files.File> files) {
         string[] mimetypes = new string[0];

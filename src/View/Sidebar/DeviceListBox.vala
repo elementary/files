@@ -36,7 +36,7 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
             selection_mode = Gtk.SelectionMode.SINGLE
         };
 
-        add (list_box);
+        // add (list_box);
 
         volume_monitor = VolumeMonitor.@get ();
         volume_monitor.drive_connected.connect (bookmark_drive);
@@ -113,7 +113,7 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
             list_box.insert (new_bm, -1);
 
-            show_all ();
+            // show_all ();
             bm = new_bm;
             bm.update_free_space ();
         }

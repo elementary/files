@@ -45,8 +45,8 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         };
 
         var network_expander = new SidebarExpander (_("Network")) {
-            tooltip_text = _("Devices and places available via a network"),
-            no_show_all = Files.is_admin ()
+            tooltip_text = _("Devices and places available via a network")
+            // no_show_all = Files.is_admin ()
         };
 
         var network_revealer = new Gtk.Revealer () {
@@ -56,21 +56,21 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         var bookmarklists_box = new Gtk.Box (VERTICAL, 0) {
             vexpand = true
         };
-        bookmarklists_box.add (bookmark_expander);
-        bookmarklists_box.add (bookmark_revealer);
-        bookmarklists_box.add (device_expander);
-        bookmarklists_box.add (device_revealer);
-        bookmarklists_box.add (network_expander);
-        bookmarklists_box.add (network_revealer);
+        // bookmarklists_box.add (bookmark_expander);
+        // bookmarklists_box.add (bookmark_revealer);
+        // bookmarklists_box.add (device_expander);
+        // bookmarklists_box.add (device_revealer);
+        // bookmarklists_box.add (network_expander);
+        // bookmarklists_box.add (network_revealer);
 
-        scrolled_window = new Gtk.ScrolledWindow (null, null) {
-            child = bookmarklists_box,
-            hscrollbar_policy = Gtk.PolicyType.NEVER
-        };
+        // scrolled_window = new Gtk.ScrolledWindow (null, null) {
+        //     child = bookmarklists_box,
+        //     hscrollbar_policy = Gtk.PolicyType.NEVER
+        // };
 
         var connect_server_box = new Gtk.Box (HORIZONTAL, 0);
-        connect_server_box.add (new Gtk.Image.from_icon_name ("network-server-symbolic", MENU));
-        connect_server_box.add (new Gtk.Label (_("Connect Server…")));
+        // connect_server_box.add (new Gtk.Image.from_icon_name ("network-server-symbolic", MENU));
+        // connect_server_box.add (new Gtk.Label (_("Connect Server…")));
 
         var connect_server_button = new Gtk.Button () {
             action_name = "win.go-to",
@@ -83,24 +83,24 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         };
 
         var action_bar = new Gtk.ActionBar ();
-        action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        action_bar.add (connect_server_button);
+        // action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        // action_bar.add (connect_server_button);
 
         orientation = Gtk.Orientation.VERTICAL;
         width_request = Files.app_settings.get_int ("minimum-sidebar-width");
-        get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
-        add (scrolled_window);
+        // get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
+        // add (scrolled_window);
 
         //For now hide action bar when admin. This might need revisiting if other actions are added
         if (!Files.is_admin ()) {
-            add (action_bar);
+            // add (action_bar);
         }
 
         plugins.sidebar_loaded (this);
 
         reload ();
 
-        show_all ();
+        // show_all ();
 
         Files.app_settings.bind (
             "sidebar-cat-personal-expander", bookmark_expander, "active", SettingsBindFlags.DEFAULT
@@ -256,18 +256,18 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
             var arrow = new Gtk.Spinner ();
 
             unowned Gtk.StyleContext arrow_style_context = arrow.get_style_context ();
-            arrow_style_context.add_class (Gtk.STYLE_CLASS_ARROW);
+            // arrow_style_context.add_class (Gtk.STYLE_CLASS_ARROW);
             arrow_style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
             var box = new Gtk.Box (HORIZONTAL, 0);
-            box.add (title);
-            box.add (arrow);
+            // box.add (title);
+            // box.add (arrow);
 
             child = box;
 
             unowned Gtk.StyleContext style_context = get_style_context ();
             style_context.add_class (Granite.STYLE_CLASS_H4_LABEL);
-            style_context.add_class (Gtk.STYLE_CLASS_EXPANDER);
+            // style_context.add_class (Gtk.STYLE_CLASS_EXPANDER);
             style_context.add_provider (expander_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         }
     }

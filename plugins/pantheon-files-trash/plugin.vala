@@ -66,14 +66,14 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
                     margin_top = 4,
                     margin_bottom = 3
                 };
-                delete_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+                // delete_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
                 var size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
                 size_group.add_widget (restore_button);
                 size_group.add_widget (delete_button);
 
                 actionbar = new Gtk.ActionBar ();
-                actionbar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+                // actionbar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
                 actionbar.pack_end (delete_button);
                 actionbar.pack_end (restore_button);
 
@@ -126,7 +126,10 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
     private void set_actionbar (Gtk.Widget bar) {
         restore_button.sensitive = !trash_is_empty;
         delete_button.sensitive = !trash_is_empty;
-        bar.show_all ();
+
+        bar.set_visible (!trash_is_empty);
+        // bar.no_show_all = trash_is_empty;
+        // bar.show_all ();
     }
 }
 

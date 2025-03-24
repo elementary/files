@@ -25,20 +25,20 @@ public class Files.IconInfo : GLib.Object {
         this.pixbuf = pixbuf;
     }
 
-    public Files.IconInfo.for_icon_info (Gtk.IconInfo icon_info) {
-        try {
-            pixbuf = icon_info.load_icon ();
-        } catch (Error e) {
-            critical (e.message);
-        }
+    // public Files.IconInfo.for_icon_info (Gtk.IconInfo icon_info) {
+    //     try {
+    //         pixbuf = icon_info.load_icon ();
+    //     } catch (Error e) {
+    //         critical (e.message);
+    //     }
 
-        var filename = icon_info.get_filename ();
-        if (filename != null) {
-            filename = GLib.Path.get_basename (filename);
-            var last = filename.last_index_of_char ('.');
-            icon_name = filename.substring (0, last);
-        }
-    }
+    //     var filename = icon_info.get_filename ();
+    //     if (filename != null) {
+    //         filename = GLib.Path.get_basename (filename);
+    //         var last = filename.last_index_of_char ('.');
+    //         icon_name = filename.substring (0, last);
+    //     }
+    // }
 
     construct {
         last_use_time = GLib.get_monotonic_time ();
@@ -52,73 +52,74 @@ public class Files.IconInfo : GLib.Object {
         int scale,
         bool cache_loadable = false
     ) {
-        size = int.max (1, size);
+        return null;
+        // size = int.max (1, size);
 
-        IconInfo? icon_info = null;
-        if (icon is GLib.LoadableIcon) {
-            if (cache_loadable) {
-                if (loadable_icon_cache == null) {
-                    loadable_icon_cache = new GLib.HashTable<LoadableIconKey, Files.IconInfo> (
-                        LoadableIconKey.hash,
-                        LoadableIconKey.equal
-                    );
-                } else {
-                    icon_info = loadable_icon_cache.lookup (new LoadableIconKey (icon, size, scale));
-                    if (icon_info != null) {
-                        return icon_info;
-                    }
-                }
-            }
+        // IconInfo? icon_info = null;
+        // if (icon is GLib.LoadableIcon) {
+        //     if (cache_loadable) {
+        //         if (loadable_icon_cache == null) {
+        //             loadable_icon_cache = new GLib.HashTable<LoadableIconKey, Files.IconInfo> (
+        //                 LoadableIconKey.hash,
+        //                 LoadableIconKey.equal
+        //             );
+        //         } else {
+        //             icon_info = loadable_icon_cache.lookup (new LoadableIconKey (icon, size, scale));
+        //             if (icon_info != null) {
+        //                 return icon_info;
+        //             }
+        //         }
+        //     }
 
-            var str_icon = icon.to_string ();
-            int width;
-            int height;
-            Gdk.Pixbuf.get_file_info (str_icon, out width, out height);
-            Gdk.Pixbuf pixbuf = null;
-            if ((width >= 1 || width == -1) && (height >= 1 || height == -1)) {
-                try {
-                    pixbuf = new Gdk.Pixbuf.from_file_at_scale (str_icon, int.min (size, width) * scale,
-                                                                int.min (size, height) * scale, true);
-                } catch (Error e) {
-                    critical (e.message);
-                }
-            }
+        //     var str_icon = icon.to_string ();
+        //     int width;
+        //     int height;
+        //     Gdk.Pixbuf.get_file_info (str_icon, out width, out height);
+        //     Gdk.Pixbuf pixbuf = null;
+        //     if ((width >= 1 || width == -1) && (height >= 1 || height == -1)) {
+        //         try {
+        //             pixbuf = new Gdk.Pixbuf.from_file_at_scale (str_icon, int.min (size, width) * scale,
+        //                                                         int.min (size, height) * scale, true);
+        //         } catch (Error e) {
+        //             critical (e.message);
+        //         }
+        //     }
 
-            if (pixbuf != null) {
-                icon_info = new IconInfo.for_pixbuf (pixbuf);
-                if (cache_loadable) {
-                    loadable_icon_cache.insert (new LoadableIconKey (icon, size, scale), icon_info);
-                }
-            }
+        //     if (pixbuf != null) {
+        //         icon_info = new IconInfo.for_pixbuf (pixbuf);
+        //         if (cache_loadable) {
+        //             loadable_icon_cache.insert (new LoadableIconKey (icon, size, scale), icon_info);
+        //         }
+        //     }
 
-            return icon_info;
-        } else if (icon is GLib.ThemedIcon) {
-            var theme = get_icon_theme ();
-            Gtk.IconInfo? gtkicon_info = null;
-            // lookup_by_gicon_for_scale is treating all the icons equally, keep using the first found one before any fallback one
-            foreach (unowned string name in ((GLib.ThemedIcon) icon).get_names ()) {
-                gtkicon_info = theme.lookup_icon_for_scale (name, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
-                if (gtkicon_info != null)
-                    break;
-            }
+        //     return icon_info;
+        // } else if (icon is GLib.ThemedIcon) {
+        //     var theme = get_icon_theme ();
+        //     Gtk.IconInfo? gtkicon_info = null;
+        //     // lookup_by_gicon_for_scale is treating all the icons equally, keep using the first found one before any fallback one
+        //     foreach (unowned string name in ((GLib.ThemedIcon) icon).get_names ()) {
+        //         gtkicon_info = theme.lookup_icon_for_scale (name, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
+        //         if (gtkicon_info != null)
+        //             break;
+        //     }
 
-            if (gtkicon_info != null) {
-                icon_info = new Files.IconInfo.for_icon_info (gtkicon_info);
-            }
+        //     if (gtkicon_info != null) {
+        //         icon_info = new Files.IconInfo.for_icon_info (gtkicon_info);
+        //     }
 
-            return icon_info;
-        } else {
-            var theme = get_icon_theme ();
-            try {
-                var gtk_icon_info = theme.lookup_by_gicon_for_scale (icon, size, scale,
-                                                                     Gtk.IconLookupFlags.GENERIC_FALLBACK);
-                var pixbuf = gtk_icon_info.load_icon ();
-                return new Files.IconInfo.for_pixbuf (pixbuf);
-            } catch (Error e) {
-                critical (e.message);
-                return new Files.IconInfo.for_pixbuf (null);
-            }
-        }
+        //     return icon_info;
+        // } else {
+        //     var theme = get_icon_theme ();
+        //     try {
+        //         var gtk_icon_info = theme.lookup_by_gicon_for_scale (icon, size, scale,
+        //                                                              Gtk.IconLookupFlags.GENERIC_FALLBACK);
+        //         var pixbuf = gtk_icon_info.load_icon ();
+        //         return new Files.IconInfo.for_pixbuf (pixbuf);
+        //     } catch (Error e) {
+        //         critical (e.message);
+        //         return new Files.IconInfo.for_pixbuf (null);
+        //     }
+        // }
     }
 
     public static Files.IconInfo? get_generic_icon (int size, int scale) {
@@ -159,13 +160,13 @@ public class Files.IconInfo : GLib.Object {
      * the "hicolor" theme.
      */
     public static Gtk.IconTheme get_icon_theme () {
-        if (Gdk.Screen.get_default () != null) {
-            return Gtk.IconTheme.get_default ();
-        } else {
+        // if (Gdk.Screen.get_default () != null) {
+        //     return Gtk.IconTheme.get_default ();
+        // } else {
             var theme = new Gtk.IconTheme ();
-            theme.set_custom_theme ("hicolor");
+            // theme.set_custom_theme ("hicolor");
             return theme;
-        }
+        // }
     }
 
     public static uint loadable_icon_cache_info () {

@@ -50,7 +50,9 @@ class PF.ChooseAppDialog : Object {
 
         check_default.show ();
 
-        dialog.get_content_area ().add (check_default);
+        // dialog.get_content_area ().add (check_default);
+
+        dialog.show ();
     }
 
     public AppInfo? get_app_info () {
@@ -74,9 +76,8 @@ class PF.ChooseAppDialog : Object {
             dialog.destroy ();
         });
 
-        // Need to continue to use run () in Gtk3 in order to get modal dialog - we need to return
-        // the chosen app from this function.
-        dialog.run ();
+        //TODO Ensure main loop blocked while dialog open
+        dialog.present ();
         return app;
     }
 }
