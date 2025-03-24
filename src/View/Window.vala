@@ -1096,15 +1096,18 @@ public class Files.View.Window : Adw.ApplicationWindow {
         var dialog = new PF.ConnectServerDialog ((Gtk.Window) this);
         string server_uri = "";
 
-        // if (dialog.run () == Gtk.ResponseType.OK) {
-        //     server_uri = dialog.server_uri;
-        // }
+        dialog.response.connect ((res) => {
+            if (res == Gtk.ResponseType.OK) {
+                server_uri = dialog.server_uri;
+                if (server_uri != "") {
+                    uri_path_change_request (dialog.server_uri, Files.OpenFlag.DEFAULT);
+                }
+            }
 
-        dialog.destroy ();
+            dialog.destroy ();
+        });
 
-        if (server_uri != "") {
-            uri_path_change_request (dialog.server_uri, Files.OpenFlag.DEFAULT);
-        }
+        dialog.present ();
     }
 
     void show_app_help () {
