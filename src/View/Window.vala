@@ -263,6 +263,7 @@ public class Files.View.Window : Adw.ApplicationWindow {
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             hexpand = true,
+            vexpand = true,
             start_child = sidebar,
             resize_start_child = false,
             shrink_start_child = false,
