@@ -161,7 +161,7 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        // dialog.show_all ();
+        dialog.present ();
         yield;
 
         dialogs.remove (parent_window);
@@ -321,7 +321,7 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        // dialog.show_all ();
+        dialog.present ();
         yield;
 
         dialogs.remove (parent_window);
@@ -436,7 +436,7 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        // dialog.show_all ();
+        dialog.present ();
         yield;
 
         dialogs.remove (parent_window);
