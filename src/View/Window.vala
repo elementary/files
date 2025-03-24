@@ -192,12 +192,12 @@ public class Files.View.Window : Adw.ApplicationWindow {
         button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic");
 
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
-        // button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        button_back.add_css_class (Granite.STYLE_CLASS_FLAT);
 
         button_forward = new View.Chrome.ButtonWithMenu ("go-next-symbolic");
 
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
-        // button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        button_forward.add_css_class (Granite.STYLE_CLASS_FLAT);
 
         view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
             margin_end = 20

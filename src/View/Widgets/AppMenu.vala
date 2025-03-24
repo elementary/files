@@ -53,7 +53,8 @@ public class Files.AppMenu : Gtk.Popover {
             margin_bottom = 6,
             margin_start = 12
         };
-        // icon_size_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
+
+        icon_size_box.add_css_class (Granite.STYLE_CLASS_LINKED);
         // icon_size_box.add (zoom_out_button);
         // icon_size_box.add (zoom_default_button);
         // icon_size_box.add (zoom_in_button);
@@ -64,7 +65,7 @@ public class Files.AppMenu : Gtk.Popover {
             margin_bottom = 12,
             margin_start = 12
         };
-        // undo_redo_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
+        undo_redo_box.add_css_class (Granite.STYLE_CLASS_LINKED);
 
         // undo_button = new Gtk.Button.from_icon_name ("edit-undo-symbolic", Gtk.IconSize.MENU) {
         undo_button = new Gtk.Button.from_icon_name ("edit-undo-symbolic") {
@@ -100,21 +101,18 @@ public class Files.AppMenu : Gtk.Popover {
         var show_hidden_button = new Gtk.CheckButton () {
             action_name = "win.show-hidden"
         };
-        // show_hidden_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
-        // show_hidden_button.add (new Granite.AccelLabel (
-        //     _("Hidden Files"),
-        //     "<Ctrl>h"
-        // ));
+
+        show_hidden_button.add_css_class (Granite.STYLE_CLASS_MENUITEM);
 
         var show_local_thumbnails = new Gtk.CheckButton.with_label (_("Local Thumbnails")) {
             action_name = "win.show-local-thumbnails"
         };
-        // show_local_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
+        show_local_thumbnails.add_css_class (Granite.STYLE_CLASS_MENUITEM);
 
         var show_remote_thumbnails = new Gtk.CheckButton.with_label (_("Remote Thumbnails")) {
             action_name = "win.show-remote-thumbnails"
         };
-        // show_remote_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
+        show_remote_thumbnails.add_css_class (Granite.STYLE_CLASS_MENUITEM);
 
         var menu_box = new Gtk.Box (VERTICAL, 0) {
             margin_bottom = 6

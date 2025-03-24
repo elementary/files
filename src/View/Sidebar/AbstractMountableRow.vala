@@ -106,6 +106,11 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         volume_monitor = VolumeMonitor.@get ();
         devicerow_provider = new Gtk.CssProvider ();
         devicerow_provider.load_from_resource ("/io/elementary/files/DiskRenderer.css");
+        Gtk.StyleContext.add_provider_for_display (
+            Gdk.Display.get_default (),
+            devicerow_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        );
     }
 
     construct {
@@ -114,7 +119,11 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             tooltip_text = (can_eject ? _("Eject '%s'") : _("Unmount '%s'")).printf (custom_name)
         };
 
-        unmount_eject_button.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        Gtk.StyleContext.add_provider_for_display (
+            Gdk.Display.get_default (),
+            devicerow_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        );
 
         working_spinner = new Gtk.Spinner ();
 
@@ -144,10 +153,8 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_HIGH, 0.95);
         storage_levelbar.add_offset_value (Gtk.LEVEL_BAR_OFFSET_FULL, 1);
 
-        unowned var storage_style_context = storage_levelbar.get_style_context ();
-        // storage_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
-        storage_style_context.add_class ("inverted");
-        storage_style_context.add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        storage_levelbar.add_css_class (Granite.STYLE_CLASS_FLAT);
+        storage_levelbar.add_css_class ("inverted");
 
         icon_label_grid.attach (storage_levelbar, 1, 1);
 
