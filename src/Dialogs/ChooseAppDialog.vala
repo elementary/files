@@ -31,9 +31,11 @@ class PF.ChooseAppDialog : Object {
     }
 
     construct {
-        dialog = new Gtk.AppChooserDialog (parent,
-                                             Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                             file_to_open) {
+        dialog = new Gtk.AppChooserDialog (
+            parent,
+            Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
+            file_to_open
+        ) {
             deletable = false
         };
 
@@ -55,23 +57,27 @@ class PF.ChooseAppDialog : Object {
 
     public AppInfo? get_app_info () {
         AppInfo? app = null;
-        // int response = dialog.run ();
+        dialog.response.connect ((res) => {
+            if (res == Gtk.ResponseType.OK) {
+                app = dialog.get_app_info ();
+                if (check_default.get_active ()) {
+                    try {
+                        var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
+                                                            FileQueryInfoFlags.NONE, null);
 
-        // if (response == Gtk.ResponseType.OK) {
-        //     app = dialog.get_app_info ();
-        //     if (check_default.get_active ()) {
-        //         try {
-        //             var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
-        //                                                 FileQueryInfoFlags.NONE, null);
+                        app.set_as_default_for_type (info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE));
+                    }
+                    catch (GLib.Error error) {
+                        critical ("Could not set as default: %s", error.message);
+                    }
+                }
+            }
 
-        //             app.set_as_default_for_type (info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE));
-        //         }
-        //         catch (GLib.Error error) {
-        //             critical ("Could not set as default: %s", error.message);
-        //         }
-        //     }
-        // }
-        // dialog.destroy ();
+            dialog.destroy ();
+        });
+
+        //TODO Ensure main loop blocked while dialog open
+        dialog.present ();
         return app;
     }
 }

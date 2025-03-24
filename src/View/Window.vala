@@ -1102,15 +1102,16 @@ public class Files.View.Window : Adw.ApplicationWindow {
         dialog.response.connect ((res) => {
             if (res == Gtk.ResponseType.OK) {
                 server_uri = dialog.server_uri;
+
+                if (server_uri != "") {
+                    uri_path_change_request (dialog.server_uri, Files.OpenFlag.DEFAULT);
+                }
             }
 
             dialog.destroy ();
         });
 
         dialog.present ();
-        if (server_uri != "") {
-            uri_path_change_request (dialog.server_uri, Files.OpenFlag.DEFAULT);
-        }
     }
 
     void show_app_help () {

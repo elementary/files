@@ -179,48 +179,44 @@ namespace Files.FileUtils {
             return true;
         }
 
+        bool success = false;
         var dialog = new Granite.MessageDialog.with_image_from_icon_name (
             _("The original folder %s no longer exists").printf (file.get_path ()),
-            _("Would you like to recreate it?"),
+            _("The folder can be recreated and selected files that were originally there will be restored to it. Otherwise, files that were in this folder will not be restored."),
             "dialog-question",
             Gtk.ButtonsType.NONE
         );
-
-        var ignore_button = dialog.add_button (_("Ignore"), Gtk.ResponseType.CANCEL);
-        ignore_button.tooltip_text = _("No files that were in this folder will be restored");
-        var recreate_button = dialog.add_button (_("Recreate"), Gtk.ResponseType.ACCEPT);
-        recreate_button.tooltip_text =
-             _ ("The folder will be recreated and selected files that were originally there will be restored to it");
-
+        dialog.add_button (_("Ignore"), Gtk.ResponseType.CANCEL);
+        dialog.add_button (_("Recreate"), Gtk.ResponseType.ACCEPT);
         dialog.set_default_response (Gtk.ResponseType.ACCEPT);
-
         dialog.response.connect ((res) => {
-            // switch (res) {
-                //     case Gtk.ResponseType.ACCEPT:
-                //         try {
-                //             file.make_directory_with_parents ();
-                //             return true;
-                //         } catch (Error e) {
-                //             var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
-                //                 _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
-                //                 e.message,
-                //                 "dialog-error",
-                //                 Gtk.ButtonsType.CLOSE
-                //             );
+            switch (res) {
+                case Gtk.ResponseType.ACCEPT:
+                    try {
+                        success = file.make_directory_with_parents ();
+                    } catch (Error e) {
+                        var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                            _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
+                            e.message,
+                            "dialog-error",
+                            Gtk.ButtonsType.CLOSE
+                        );
+                        error_dialog.response.connect (() => error_dialog.close ());
+                        error_dialog.present ();
+                    }
 
-                //             error_dialog.response.connect (error_dialog.destroy);
-                //         }
+                    break;
 
-                //         break;
+                default:
+                    break;
+            }
 
-                //     default:
-                //         break;
-            // }
             dialog.destroy ();
         });
-        dialog.present ();
 
-        return false;
+        //TODO Block main loop while showing dialog
+        dialog.present ();
+        return success;
     }
 
     public string? get_path_for_symlink (GLib.File file) {
