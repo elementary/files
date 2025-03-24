@@ -53,20 +53,3 @@ configure_file(
     install: true,
     install_dir: join_paths(get_option('prefix'), get_option('datadir'), 'dbus-1', 'services')
 )
-
-flatpak_builder = find_program('flatpak-builder', required: false)
-if (flatpak_builder.found())
-    custom_target(
-        'portal-tester',
-        command: [
-            flatpak_builder,
-            '--user',
-            '--install',
-            meson.current_build_dir() / 'tests' / 'builddir',
-            meson.current_source_dir() / 'tests' / 'io.elementary.Files.PortalTester.yml',
-            '--force-clean'
-        ],
-        capture: true,
-        output: 'io.elementary.Files.PortalTester'
-    )
-endif
