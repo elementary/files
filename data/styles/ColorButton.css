@@ -1,6 +1,6 @@
 .color-button.none check {
     background: @base_color;
-    color: mix (@text_color, @base_color, 0.5);
+    color: mix(@text_color, @base_color, 0.5);
     min-height: 14px;
     min-width: 14px;
     -gtk-icon-source: -gtk-icontheme("close-symbolic");
