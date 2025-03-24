@@ -108,82 +108,88 @@ namespace Files {
             minimum_size = natural_size;
         }
 
-        // public override void render (Cairo.Context cr,
-        //                              Gtk.Widget widget,
-        //                              Gdk.Rectangle background_area,
-        //                              Gdk.Rectangle cell_area,
-        //                              Gtk.CellRendererState flags) {
-        //     set_widget (widget);
-        //     Gtk.StateFlags state = widget.get_state_flags ();
+        public override void snapshot (
+            Gtk.Snapshot snapshot,
+            Gtk.Widget widget,
+            Gdk.Rectangle background_area,
+            Gdk.Rectangle cell_area,
+            Gtk.CellRendererState flags
+        ) {
+            var gr = Graphene.Rect.alloc ().init (
+                    (float) cell_area.x,
+                    (float) cell_area.y,
+                    (float) cell_area.width,
+                    (float) cell_area.height
+                );
+            var cr = snapshot.append_cairo (gr);
 
-        //     if ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED) {
-        //         state |= Gtk.StateFlags.SELECTED;
-        //     } else if ((flags & Gtk.CellRendererState.PRELIT) == Gtk.CellRendererState.PRELIT) {
-        //         state = Gtk.StateFlags.PRELIGHT;
-        //     } else {
-        //         state = widget.get_sensitive () ? Gtk.StateFlags.NORMAL : Gtk.StateFlags.INSENSITIVE;
-        //     }
+            set_widget (widget);
+            Gtk.StateFlags state = widget.get_state_flags ();
 
-        //     set_up_layout (text, cell_area.width);
+            if ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED) {
+                state |= Gtk.StateFlags.SELECTED;
+            } else if ((flags & Gtk.CellRendererState.PRELIT) == Gtk.CellRendererState.PRELIT) {
+                state = Gtk.StateFlags.PRELIGHT;
+            } else {
+                state = widget.get_sensitive () ? Gtk.StateFlags.NORMAL : Gtk.StateFlags.INSENSITIVE;
+            }
 
-        //     var style_context = widget.get_parent ().get_style_context ();
-        //     style_context.save ();
-        //     style_context.set_state (state);
+            set_up_layout (text, cell_area.width);
 
-        //     int focus_rect_width, focus_rect_height;
-        //     draw_focus (cr, cell_area, flags, style_context, state, out text_x_offset, out text_y_offset,
-        //                 out focus_rect_width, out focus_rect_height);
+            var style_context = widget.get_parent ().get_style_context ();
+            style_context.save ();
+            style_context.set_state (state);
 
-        //     /* Position text relative to the focus rectangle */
-        //     if (!is_list_view) {
-        //         text_x_offset += (focus_rect_width - wrap_width) / 2;
-        //         text_y_offset += (focus_rect_height - text_height) / 2;
-        //     } else {
-        //         text_y_offset = (cell_area.height - char_height) / 2;
-        //         text_x_offset += border_radius;
-        //     }
+            int focus_rect_width, focus_rect_height;
+            draw_focus (cr, cell_area, flags, style_context, state, out text_x_offset, out text_y_offset,
+                        out focus_rect_width, out focus_rect_height);
 
-        //     if (background_set) {
-        //         if (!background_rgba.equal (previous_background_rgba)) {
-        //             /* Using Gdk.RGBA copy () causes a segfault for some reason */
-        //             previous_background_rgba.red = background_rgba.red;
-        //             previous_background_rgba.green = background_rgba.green;
-        //             previous_background_rgba.blue = background_rgba.blue;
-        //             previous_background_rgba.alpha = background_rgba.alpha;
+            /* Position text relative to the focus rectangle */
+            if (!is_list_view) {
+                text_x_offset += (focus_rect_width - wrap_width) / 2;
+                text_y_offset += (focus_rect_height - text_height) / 2;
+            } else {
+                text_y_offset = (cell_area.height - char_height) / 2;
+                text_x_offset += border_radius;
+            }
 
-        //             var contrasting_foreground_rgba = Granite.contrasting_foreground_color (background_rgba);
-        //             if (!contrasting_foreground_rgba.equal (previous_contrasting_rgba)) {
-        //             /* Using Gdk.RGBA copy () causes a segfault for some reason */
-        //                 previous_contrasting_rgba.red = contrasting_foreground_rgba.red;
-        //                 previous_contrasting_rgba.green = contrasting_foreground_rgba.green;
-        //                 previous_contrasting_rgba.blue = contrasting_foreground_rgba.blue;
-        //                 previous_contrasting_rgba.alpha = contrasting_foreground_rgba.alpha;
-        //                 string data = "* {color: %s;}".printf (contrasting_foreground_rgba.to_string ());
-        //                 try {
-        //                     text_css.load_from_data (data);
-        //                 } catch (Error e) {
-        //                     critical (e.message);
-        //                 }
-        //             }
-        //         }
+            if (background_set) {
+                if (!background_rgba.equal (previous_background_rgba)) {
+                    /* Using Gdk.RGBA copy () causes a segfault for some reason */
+                    previous_background_rgba.red = background_rgba.red;
+                    previous_background_rgba.green = background_rgba.green;
+                    previous_background_rgba.blue = background_rgba.blue;
+                    previous_background_rgba.alpha = background_rgba.alpha;
 
-        //         style_context.add_provider (text_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-        //     }
+                    var contrasting_foreground_rgba = Granite.contrasting_foreground_color (background_rgba);
+                    if (!contrasting_foreground_rgba.equal (previous_contrasting_rgba)) {
+                    /* Using Gdk.RGBA copy () causes a segfault for some reason */
+                        previous_contrasting_rgba.red = contrasting_foreground_rgba.red;
+                        previous_contrasting_rgba.green = contrasting_foreground_rgba.green;
+                        previous_contrasting_rgba.blue = contrasting_foreground_rgba.blue;
+                        previous_contrasting_rgba.alpha = contrasting_foreground_rgba.alpha;
+                        string data = "* {color: %s;}".printf (contrasting_foreground_rgba.to_string ());
+                        try {
+                            text_css.load_from_data (data.data);
+                        } catch (Error e) {
+                            critical (e.message);
+                        }
+                    }
+                }
 
-        //     style_context.render_layout (cr,
-        //                                  cell_area.x + text_x_offset,
-        //                                  cell_area.y + text_y_offset,
-        //                                  layout);
+                style_context.add_provider (text_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            }
 
-        //     style_context.restore (); /* NOTE: This does not remove added classes */
-        //     style_context.remove_provider (text_css); /* No error if provider not added */
+            style_context.render_layout (cr,
+                                         cell_area.x + text_x_offset,
+                                         cell_area.y + text_y_offset,
+                                         layout);
 
+            style_context.restore (); /* NOTE: This does not remove added classes */
+            style_context.remove_provider (text_css); /* No error if provider not added */
 
-        //     /* The render call should always be preceded by a set_property call
-        //        from GTK. It should be safe to unreference or free the allocated
-        //        memory here. */
-        //     file = null;
-        // }
+            file = null;
+        }
 
         public void set_up_layout (string? text, int cell_width) {
             if (text == null) {
