@@ -76,7 +76,7 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                 mount
             );
 
-            // list_box.add (row);
+            list_box.insert (row, -1);
         }
 
         return (BookmarkRow) row;

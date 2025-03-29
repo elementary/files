@@ -105,8 +105,7 @@ namespace Files.View {
                 content_item = value;
 
                 if (content_item != null) {
-                    // add (content_item);
-                    // content_item.show_all ();
+                    append (content_item);
                 }
             }
             get {
@@ -237,17 +236,13 @@ namespace Files.View {
                 this.view = new Slot (loc, this, mode);
             }
 
-            overlay_statusbar = new View.OverlayBar (view.overlay) {
-                // no_show_all = true
-            };
+            overlay_statusbar = new View.OverlayBar (view.overlay);
 
             view.active.connect (on_slot_active);
             view.path_changed.connect (on_slot_path_changed);
             view.new_container_request.connect (on_slot_new_container_request);
             view.selection_changed.connect (on_slot_selection_changed);
             view.directory_loaded.connect (on_slot_directory_loaded);
-
-            // show_all ();
 
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
              * The slot becomes active when the tab becomes current */

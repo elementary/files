@@ -57,7 +57,7 @@ namespace PF.Dialogs {
             dialog.destroy ();
         });
 
-        dialog.show ();
+        dialog.present ();
         return dialog;
     }
 }

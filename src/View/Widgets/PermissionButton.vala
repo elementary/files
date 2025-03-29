@@ -72,10 +72,10 @@ public class PermissionButton : Gtk.ListBoxRow {
         btn_exe.set_data ("permissionvalue", Permissions.Value.EXE);
 
         var box = new Gtk.Box (HORIZONTAL, 6);
-        // box.add (label);
-        // box.add (btn_read);
-        // box.add (btn_write);
-        // box.add (btn_exe);
+        box.append (label);
+        box.append (btn_read);
+        box.append (btn_write);
+        box.append (btn_exe);
 
         child = box;
         selectable = false;

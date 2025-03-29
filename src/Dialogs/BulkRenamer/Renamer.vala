@@ -39,7 +39,6 @@ public class Files.Renamer : Object {
         };
         listbox.set_sort_func (sort_func);
         listbox.invalidate_sort ();
-        // listbox.show_all ();
 
         notify["sortby"].connect (listbox.invalidate_sort);
     }
@@ -59,7 +58,7 @@ public class Files.Renamer : Object {
             if (dir == directory) {
                 f.ensure_query_info ();
                 var row = new RenamerListRow (f);
-                // listbox.add (row);
+                listbox.append (row);
                 row.new_name = Path.get_basename (path);
             }
         }

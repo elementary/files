@@ -50,9 +50,9 @@ class PF.ChooseAppDialog : Object {
 
         check_default.show ();
 
-        // dialog.get_content_area ().add (check_default);
+        dialog.get_content_area ().append (check_default);
 
-        dialog.show ();
+        dialog.present ();
     }
 
     public AppInfo? get_app_info () {

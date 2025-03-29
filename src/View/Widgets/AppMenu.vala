@@ -54,9 +54,9 @@ public class Files.AppMenu : Gtk.Popover {
             margin_start = 12
         };
         // icon_size_box.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
-        // icon_size_box.add (zoom_out_button);
-        // icon_size_box.add (zoom_default_button);
-        // icon_size_box.add (zoom_in_button);
+        icon_size_box.append (zoom_out_button);
+        icon_size_box.append (zoom_default_button);
+        icon_size_box.append (zoom_in_button);
 
         var undo_redo_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
             homogeneous = true,
@@ -76,8 +76,8 @@ public class Files.AppMenu : Gtk.Popover {
             action_name = "win.redo"
         };
 
-        // undo_redo_box.add (undo_button);
-        // undo_redo_box.add (redo_button);
+        undo_redo_box.append (undo_button);
+        undo_redo_box.append (redo_button);
 
         undo_accels = app_instance.get_accels_for_action ("win.undo");
         redo_accels = app_instance.get_accels_for_action ("win.redo");
@@ -98,13 +98,10 @@ public class Files.AppMenu : Gtk.Popover {
         var show_header = new Granite.HeaderLabel (_("Show in View"));
 
         var show_hidden_button = new Gtk.CheckButton () {
-            action_name = "win.show-hidden"
+            action_name = "win.show-hidden",
+            child = new Granite.AccelLabel (_("Hidden Files"), "<Ctrl>h")
         };
         // show_hidden_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
-        // show_hidden_button.add (new Granite.AccelLabel (
-        //     _("Hidden Files"),
-        //     "<Ctrl>h"
-        // ));
 
         var show_local_thumbnails = new Gtk.CheckButton.with_label (_("Local Thumbnails")) {
             action_name = "win.show-local-thumbnails"
@@ -119,18 +116,17 @@ public class Files.AppMenu : Gtk.Popover {
         var menu_box = new Gtk.Box (VERTICAL, 0) {
             margin_bottom = 6
         };
-        // menu_box.add (icon_size_box);
-        // menu_box.add (undo_redo_box);
-        // menu_box.add (new Gtk.Separator (HORIZONTAL) { margin_bottom = 3 });
-        // menu_box.add (double_click_button);
-        // menu_box.add (folders_before_files);
-        // menu_box.add (restore_tabs);
-        // menu_box.add (new Gtk.Separator (HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
-        // menu_box.add (show_header);
-        // menu_box.add (show_hidden_button);
-        // menu_box.add (show_local_thumbnails);
-        // menu_box.add (show_remote_thumbnails);
-        // menu_box.show_all ();
+        menu_box.append (icon_size_box);
+        menu_box.append (undo_redo_box);
+        menu_box.append (new Gtk.Separator (HORIZONTAL) { margin_bottom = 3 });
+        menu_box.append (double_click_button);
+        menu_box.append (folders_before_files);
+        menu_box.append (restore_tabs);
+        menu_box.append (new Gtk.Separator (HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
+        menu_box.append (show_header);
+        menu_box.append (show_hidden_button);
+        menu_box.append (show_local_thumbnails);
+        menu_box.append (show_remote_thumbnails);
 
         child = menu_box;
 

@@ -227,7 +227,6 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         };
 
         layout.attach (stack_switcher, 0, 1, 2);
-        // layout.show_all ();
 
         present ();
     }
@@ -285,8 +284,6 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
                                                 ;
             info_grid.attach_next_to (size_warning_image, size_value, RIGHT);
         }
-
-        // info_grid.show_all ();
     }
 
     private void update_selection_size () {
@@ -976,9 +973,9 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         permission_box.insert (perm_button_user, -1);
         permission_box.insert (perm_button_group, -1);
         permission_box.insert (perm_button_other, -1);
-        // permission_box.add (perm_button_user);
-        // permission_box.add (perm_button_group);
-        // permission_box.add (perm_button_other);
+        permission_box.insert (perm_button_user, -1);
+        permission_box.insert (perm_button_group, -1);
+        permission_box.insert (perm_button_other, -1);
 
         var perm_grid = new Gtk.Grid () {
             column_spacing = 6,

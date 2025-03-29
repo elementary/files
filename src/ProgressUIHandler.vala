@@ -105,7 +105,7 @@ public class Files.Progress.UIHandler : Object {
         ensure_window ();
 
         var progress_widget = new Progress.InfoWidget (info);
-        // window_vbox.add (progress_widget);
+        window_vbox.append (progress_widget);
 
         progress_widget.cancelled.connect ((info) => {
             progress_info_finished_cb (info);
@@ -132,7 +132,7 @@ public class Files.Progress.UIHandler : Object {
                 icon_name = "system-file-manager",
                 transient_for = application.get_active_window ()
             };
-            // progress_window.get_content_area ().add (window_vbox);
+            progress_window.get_content_area ().append (window_vbox);
             window_vbox.show ();
 
             // progress_window.delete_event.connect ((widget, event) => {

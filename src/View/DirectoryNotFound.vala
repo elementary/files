@@ -48,17 +48,16 @@ namespace Files.View {
 //                             Gtk.ButtonsType.CLOSE
 //                         );
 
-                //         dialog.response.connect (dialog.destroy);
-                //         dialog.present ();
-                //     }
-                // }
+//                         dialog.response.connect (dialog.destroy);
+//                         dialog.present ();
+//                     }
+//                 }
 
 //                 if (success) {
 //                     get_action_group ("win").activate_action ("refresh", null);
 //                 }
 //             });
 
-//             show_all ();
 //         }
 //     }
 }

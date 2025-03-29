@@ -255,25 +255,29 @@ public class Files.View.Window : Adw.ApplicationWindow {
         };
 
         var tab_box = new Gtk.Box (VERTICAL, 0);
-        // tab_box.add (tab_bar);
-        // tab_box.add (tab_view);
+        tab_box.append (tab_bar);
+        tab_box.append (tab_view);
 
         sidebar = new Sidebar.SidebarWindow ();
         free_space_change.connect (sidebar.on_free_space_change);
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-            // expand = true,
+            hexpand = true,
+            vexpand = true,
+            start_child = sidebar,
+            resize_start_child = false,
+            shrink_start_child = false,
+            end_child = tab_box,
+            resize_end_child = true,
+            shrink_end_child = true,
             position = Files.app_settings.get_int ("sidebar-width")
         };
-        // lside_pane.pack1 (sidebar, false, false);
-        // lside_pane.pack2 (tab_box, true, true);
 
         var grid = new Gtk.Grid ();
         grid.attach (headerbar, 0, 0);
         grid.attach (lside_pane, 0, 1);
-        // grid.show_all ();
 
-        // add (grid);
+        content = grid;
 
         /** Apply preferences */
         var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
@@ -1099,6 +1103,7 @@ public class Files.View.Window : Adw.ApplicationWindow {
         dialog.response.connect ((res) => {
             if (res == Gtk.ResponseType.OK) {
                 server_uri = dialog.server_uri;
+
                 if (server_uri != "") {
                     uri_path_change_request (dialog.server_uri, Files.OpenFlag.DEFAULT);
                 }

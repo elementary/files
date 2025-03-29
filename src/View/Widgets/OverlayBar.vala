@@ -44,7 +44,6 @@ namespace Files.View {
             buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
             label = "";
             hide.connect (cancel);
-            // show_all ();
         }
 
         ~OverlayBar () {

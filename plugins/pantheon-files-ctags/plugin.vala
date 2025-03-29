@@ -207,7 +207,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     //             warning ("Failed to parse css style : %s", e.message);
     //         }
 
-    //         show_all ();
 
     //         // Cannot use this for every button due to this being a MenuItem
     //         button_press_event.connect (button_pressed_cb);
