@@ -347,7 +347,7 @@ namespace Files {
                 });
 
                 button_controller = new Gtk.GestureMultiPress (view) {
-                    propagation_phase = CAPTURE,
+                    propagation_phase = TARGET,  //Allow editable widget to receive button press event first
                     button = 0
                 };
                 button_controller.pressed.connect (on_view_button_press_event);
@@ -3348,6 +3348,7 @@ namespace Files {
 
         protected virtual void on_view_button_press_event (int n_press, double x, double y) {
             if (renaming) {
+                // Button press occurred outside editable widget - end editing.
                 /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
                 name_renderer.end_editing (false);
             }
