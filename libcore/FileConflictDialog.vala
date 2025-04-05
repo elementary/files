@@ -68,8 +68,11 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         destination.query_update ();
         var thumbnailer = Files.Thumbnailer.get ();
         thumbnailer.finished.connect (() => {
-            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   Files.File.IconFlags.USE_THUMBNAILS);
+            destination_image.paintable = destination.get_icon_paintable (
+                64,
+                get_scale_factor (),
+                Files.File.IconFlags.USE_THUMBNAILS
+            );
         });
 
         thumbnailer.queue_file (destination, null);
@@ -317,7 +320,11 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         }
 
         secondary_label.label = "%s %s".printf (message, message_extra);
-        source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), Files.File.IconFlags.USE_THUMBNAILS);
+        source_image.paintable = source.get_icon_paintable (
+            64,
+            get_scale_factor (),
+            Files.File.IconFlags.USE_THUMBNAILS
+        );
         source_size_label.label = source.format_size;
         source_time_label.label = source.formated_modified;
         if (should_show_type && src_ftype != null) {
@@ -342,12 +349,19 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         }
 
         source.changed.connect (() => {
-            source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), Files.File.IconFlags.USE_THUMBNAILS);
+            source_image.paintable = source.get_icon_paintable (
+                64,
+                get_scale_factor (),
+                Files.File.IconFlags.USE_THUMBNAILS
+            );
         });
 
         destination.changed.connect (() => {
-            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   Files.File.IconFlags.USE_THUMBNAILS);
+            destination_image.paintable = destination.get_icon_paintable (
+                64,
+                get_scale_factor (),
+                Files.File.IconFlags.USE_THUMBNAILS
+            );
         });
     }
 }

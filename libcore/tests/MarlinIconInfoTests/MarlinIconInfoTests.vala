@@ -20,8 +20,8 @@
 
 void add_icon_info_tests () {
     Test.add_func ("/MarlinIconInfo/goffile_icon_update", goffile_icon_update_test);
-    Test.add_func ("/MarlinIconInfo/themed_cache_and_ref", themed_cache_and_ref_test);
-    Test.add_func ("/MarlinIconInfo/loadable_cache_and_ref_local", loadable_cache_and_ref_test_local);
+    Test.add_func ("/MarlinIconInfo/themed_ref", themed_ref_test);
+    Test.add_func ("/MarlinIconInfo/loadable_ref_local", loadable_ref_test_local);
     Test.add_func ("/MarlinIconInfo/loadable_cache_and_ref_remote", loadable_cache_and_ref_test_remote);
 }
 
@@ -39,12 +39,8 @@ void goffile_icon_update_test () {
     assert (file.pix_size == 32);
 }
 
-void themed_cache_and_ref_test () {
-    Files.IconInfo.clear_caches ();
-    uint reap_time_msec = 20; //Must be higher than 10.
-    Files.IconInfo.set_reap_time (reap_time_msec);
-
-    string test_file_path = Path.build_filename (Config.TESTDATA_DIR, "images", "testimage.png");
+void themed_ref_test () {
+    string test_file_path = Path.build_filename (Config.TESTDATA_DIR, "images"); //Folder - Themed icon
     Files.File file = Files.File.get_by_uri (test_file_path);
     assert (file != null);
     file.query_update ();
@@ -52,16 +48,10 @@ void themed_cache_and_ref_test () {
     file.pix = null;
     file.update_icon (128, 1);
     assert (file.pix != null);
-    assert (file.pix.ref_count == 1); //themed icons are not cached
-
-    file.update_icon (32, 1);
+    assert (Files.IconInfo.loadable_icon_cache_info () == 0); //Themed icons not cached
 }
 
-void loadable_cache_and_ref_test_local () {
-    Files.IconInfo.clear_caches ();
-    uint reap_time_msec = 20; //Must be higher than 10.
-    Files.IconInfo.set_reap_time (reap_time_msec);
-
+void loadable_ref_test_local () {
     string test_file_path = Path.build_filename (Config.TESTDATA_DIR, "images", "testimage.jpg");
     Files.File file = Files.File.get_by_uri (test_file_path);
     /* file.pix might exist if tests run while Files instance was recently run and displayed test image */
@@ -73,14 +63,14 @@ void loadable_cache_and_ref_test_local () {
     file.thumbnail_path = Path.build_filename (Config.TESTDATA_DIR, "images", "testimage.jpg.thumb.png");
     file.update_icon (128, 1);
     assert (file.pix != null);
-    assert (file.pix.ref_count == 1); //Local thumbnails not cached
-
-    file.update_icon (32, 1);
+    assert (Files.IconInfo.loadable_icon_cache_info () == 0); //Local thumbnails not cached
 }
 
 void loadable_cache_and_ref_test_remote () {
     Files.IconInfo.clear_caches ();
-    uint reap_time_msec = 20; //Must be higher than 10.
+    Files.IconInfo.is_testing_remote = true; // Treat test file as remote
+
+    int reap_time_msec = 20;
     Files.IconInfo.set_reap_time (reap_time_msec);
 
     string test_file_path = Path.build_filename (Config.TESTDATA_DIR, "images", "testimage.jpg");
@@ -94,7 +84,7 @@ void loadable_cache_and_ref_test_remote () {
     file.thumbnail_path = Path.build_filename (Config.TESTDATA_DIR, "images", "testimage.jpg.thumb.png");
     file.update_icon (128, 1);
     assert (file.pix != null);
-    assert (file.pix.ref_count == 2); //Remote thumbnail is cached so an extra ref
+    assert (file.icon is ThemedIcon);
     assert (Files.IconInfo.loadable_icon_cache_info () == 1);
 
     file.update_icon (32, 1);
@@ -102,17 +92,19 @@ void loadable_cache_and_ref_test_remote () {
     /* A new cache entry is made for different size */
     assert (Files.IconInfo.loadable_icon_cache_info () == 2);
 
+    file.pix = null;
+
     /* IconInfo should remain in case for 6 * reap_time_msec */
     var loop = new MainLoop ();
     Timeout.add (reap_time_msec * 2, () => {
         /* Icons should NOT be reaped yet */
-        assert (Files.IconInfo.loadable_icon_cache_info () == 1);
+        assert (Files.IconInfo.loadable_icon_cache_info () == 2);
         loop.quit ();
         return GLib.Source.REMOVE;
     });
     loop.run ();
 
-     file.pix = null;
+
 
     loop = new MainLoop ();
     Timeout.add (reap_time_msec * 12, () => {
