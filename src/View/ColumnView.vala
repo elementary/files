@@ -46,7 +46,7 @@ namespace Files {
             }
         }
 
-        private bool not_double_click () {
+        private void not_double_click () {
             if (double_click_timeout_id != 0) {
                 awaiting_double_click = false;
                 double_click_timeout_id = 0;
@@ -56,8 +56,6 @@ namespace Files {
                     activate_selected_items ();
                 }
             }
-
-            return false;
         }
 
         public override Settings? get_view_settings () {
@@ -71,15 +69,27 @@ namespace Files {
             return tree as Gtk.Widget;
         }
 
+        protected override void on_view_button_release_event (int n_press, double x, double y) {
+            if (n_press != 2) {
+                if (awaiting_double_click) {
+                   // Ignore release - will handle in not double click ()
+                   return;
+                } else {
+                    base.on_view_button_release_event (n_press, x, y);
+                }
+            } else if (selected_folder != null) {
+                load_root_location (selected_folder.get_target_location ());
+            }
+        }
 
+        private Files.File? selected_folder = null;
         protected override bool handle_primary_button_click (
             uint n_press,
             Gdk.ModifierType mods,
             Gtk.TreePath? path
         ) {
-            Files.File? file = null;
-            Files.File? selected_folder = null;
             Gtk.TreeIter? iter = null;
+            Files.File? file = null;
 
             if (path != null) {
                 model.get_iter (out iter, path);
@@ -94,32 +104,29 @@ namespace Files {
             }
 
             selected_folder = file;
-            bool result = true;
             if (n_press == 1) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
                 if (awaiting_double_click) {
-                    result = true;
+                    return true;
                 } else {
                     /*  ... store clicked folder and start double-click timeout */
                     awaiting_double_click = true;
                     is_frozen = true;
+                    should_activate = false;
                     double_click_timeout_id = GLib.Timeout.add (300, () => {
                         not_double_click ();
                         return GLib.Source.REMOVE;
                     });
+
+                    return false; // Do not handle so that DND works
                 }
             } else if (n_press == 2) {
                 should_activate = false;
                 cancel_await_double_click ();
-
-                if (selected_folder != null) {
-                    load_root_location (selected_folder.get_target_location ());
-                }
-
-                result = true;
+                return true;
             }
 
-            return result;
+            return false;
         }
 
         protected override bool handle_default_button_click () {
