@@ -160,11 +160,13 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         content_grid = new Gtk.Grid ();
         content_grid.attach (icon_label_grid, 0, 0);
 
-        add (content_grid);
+        var event_box = new Gtk.EventBox ();
+        event_box.add (content_grid);
+        add (event_box);
         show_all ();
 
         key_controller = new Gtk.EventControllerKey (this) {
-            propagation_phase = BUBBLE
+            propagation_phase = CAPTURE
         };
         key_controller.key_pressed.connect (on_key_press_event);
 
