@@ -73,6 +73,7 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     private bool sort_directories_first = true;
 
     private Gee.TreeMap<string?, Gtk.TreeRowReference> file_treerow_map;
+    private Cancellable? refresh_cancellable;
 
     construct {
         file_treerow_map = new Gee.TreeMap<string, Gtk.TreeRowReference> (null, null);
@@ -317,7 +318,77 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
         return dir != null;
     }
 
-    public void load_subdirectory (Directory dir) {
+    // Only used for *initial* loading of root directory and subdirectories
+    public void load_directory (Directory dir) {
+        refresh_cancellable.cancel ();
+        set_sorting_off ();
+        Gtk.TreeIter child_iter, dummy_iter;
+        Gtk.TreeIter? parent_iter;
+        get_first_iter_for_file (dir.file, out parent_iter);
+        bool change_dummy = false;
+
+        // Get the first row which for unloaded subdirectories is a dummy row
+        if (iter_nth_child (out child_iter, parent_iter, 0)) {
+            get (child_iter, PrivColumnID.DUMMY, out change_dummy);
+        }
+
+        if (parent_iter != null && !change_dummy) { // subdirectory already loaded
+            return;
+        }
+
+        foreach (var file in dir.get_files ()) {
+            if (!show_hidden_files && file.is_hidden) {
+                continue;
+            }
+
+            if (change_dummy) { // Change the dummy row to a file row
+                @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+                change_dummy = false;
+            } else {
+                insert (out child_iter, parent_iter, -1); //TODO Quicker to prepend?
+                @set (child_iter, ColumnID.FILE_COLUMN, file, PrivColumnID.DUMMY, false, -1);
+            }
+
+            if (file.is_folder ()) {
+                // Append a dummy child so expander will show even when folder is empty.
+                insert_with_values (out dummy_iter, child_iter, -1, PrivColumnID.DUMMY, true);
+            }
+        }
+
+        set_sorting_on ();
+        refresh_cancellable = new Cancellable ();
+        // There are only new file rows to add to map if there is no dummy row
+        if (!change_dummy) {
+            refresh_map.begin (parent_iter, refresh_cancellable);
+        }
+    }
+
+    private async void refresh_map (Gtk.TreeIter? parent_iter, Cancellable cancellable) {
+        Gtk.TreeIter? iter = null;
+        lock (file_treerow_map) {
+            if (parent_iter == null) {
+                file_treerow_map.clear ();
+            }
+
+            if (this.iter_children (out iter, parent_iter)) {
+                // Do each iter in sequential idles to avoid blocking the UI
+                do {
+                    Idle.add (() => {
+                        Value file_value;
+                        base.get_value (iter, ColumnID.FILE_COLUMN, out file_value);
+                        unowned Files.File? file = (Files.File) file_value.get_object ();
+                        file_treerow_map.@set (file.uri, new Gtk.TreeRowReference (this, get_path (iter)));
+                        refresh_map.callback ();
+                        return Source.REMOVE;
+                    });
+
+                    yield;
+                } while (iter_next (ref iter) && !cancellable.is_cancelled ());
+            }
+        }
+    }
+
+    private void load_subdirectory (Directory dir) {
         Gtk.TreeIter? parent_iter = null, child_iter = null;
         bool change_dummy = true; // Default to unloaded
         if (get_first_iter_for_file (dir.file, out parent_iter)) {
@@ -470,6 +541,12 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     public new void clear () {
         file_treerow_map.clear ();
         base.clear ();
+    }
+
+    public void cancel () {
+        if (refresh_cancellable != null && !refresh_cancellable.is_cancelled ()) {
+            refresh_cancellable.cancel ();
+        }
     }
 
     private int file_entry_compare_func (Gtk.TreeIter a, Gtk.TreeIter b) {
