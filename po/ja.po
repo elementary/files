@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-20 17:19+0000\n"
-"PO-Revision-Date: 2025-03-21 18:55+0000\n"
+"PO-Revision-Date: 2025-05-21 22:55+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/files/"
 "ja/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
@@ -2375,7 +2375,7 @@ msgstr "ファイルの前にフォルダーを表示"
 
 #: src/View/Widgets/AppMenu.vala:90
 msgid "Restore Tabs from Last Time"
-msgstr "前回開いていたタブを復元"
+msgstr "前回開いていたタブを再度開く"
 
 #: src/View/Widgets/AppMenu.vala:94
 msgid "Show in View"
