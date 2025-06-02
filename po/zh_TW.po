@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-20 17:19+0000\n"
-"PO-Revision-Date: 2025-04-26 11:55+0000\n"
+"PO-Revision-Date: 2025-06-03 03:55+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
 "l10n.elementaryos.org/projects/files/files/zh_Hant/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
@@ -1881,7 +1881,7 @@ msgstr "提供的檔案名稱無效"
 #: src/View/AbstractDirectoryView.vala:1841
 #: src/View/AbstractDirectoryView.vala:1847 src/View/Window.vala:241
 msgid "New Tab"
-msgstr "新增標籤"
+msgstr "新增分頁"
 
 #: src/View/AbstractDirectoryView.vala:1881
 msgid "Run"
