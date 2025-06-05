@@ -8,10 +8,10 @@
 
 /* Override the success color */
 .sidebar levelbar block.filled.low {
-   background: alpha (@text_color, 0.6);
+   background: alpha(@text_color, 0.6);
 }
 
 .sidebar levelbar block.filled.low + .empty,
 .sidebar levelbar block.filled.low:backdrop {
-   background: alpha (@text_color, 0.2);
+   background: alpha(@text_color, 0.2);
 }

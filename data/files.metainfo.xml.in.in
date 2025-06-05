@@ -62,7 +62,7 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
-    <release version="7.1.1" date="2025-03-09" urgency="medium">
+    <release version="7.1.1" date="2025-03-13" urgency="medium">
       <description>
         <p>Minor updates:</p>
         <ul>
@@ -72,6 +72,7 @@
       <issues>
         <issue url="https://github.com/elementary/files/issues/2523">Entering a path into the pathbar no longer possible</issue>
         <issue url="https://github.com/elementary/files/issues/1844">Tab opened with gvfs-admin backend does not show "As Administrator"</issue>
+        <issue url="https://github.com/elementary/files/issues/2491">Templates folder: In "New >" menu, the hierarchy of templates is flattened</issue>
         <issue url="https://github.com/elementary/files/issues/2524">Open As Administrator: Files does not follow stylesheet</issue>
         <issue url="https://github.com/elementary/files/issues/2512">Scroll gesture stops working after permanently deleting a file</issue>
       </issues>
