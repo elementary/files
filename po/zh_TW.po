@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 17:19+0000\n"
+"POT-Creation-Date: 2025-06-06 14:04+0000\n"
 "PO-Revision-Date: 2025-06-03 03:55+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
@@ -47,7 +47,7 @@ msgstr "以唯讀模式開啟檔案"
 msgid "Open File as Read Only"
 msgstr "以唯讀模式開啟檔案"
 
-#: filechooser-portal/FileChooserDialog.vala:376
+#: filechooser-portal/FileChooserDialog.vala:378
 msgid "Enter new filename"
 msgstr "輸入新檔案名稱"
 
@@ -55,7 +55,7 @@ msgstr "輸入新檔案名稱"
 msgid "Select"
 msgstr "選取"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:311
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:313
 msgid "Open"
 msgstr "開啟"
 
@@ -461,62 +461,63 @@ msgstr "無法判定「%s」的原始位置"
 msgid "The item cannot be restored from trash"
 msgstr "無法從垃圾桶還原項目"
 
-#: libcore/FileUtils.vala:183
+#: libcore/FileUtils.vala:184
 #, c-format
 msgid "The original folder %s no longer exists"
 msgstr "原始資料夾 %s 已不復存在"
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:185
 msgid ""
 "The folder can be recreated and selected files that were originally there "
 "will be restored to it. Otherwise, files that were in this folder will not "
 "be restored."
-msgstr "重新建立資料夾來將已選而原本在該資料夾下的檔案還原至該處。若選擇不重新建立則"
+msgstr ""
+"重新建立資料夾來將已選而原本在該資料夾下的檔案還原至該處。若選擇不重新建立則"
 "原本在該資料夾的檔案就不會被還原。"
 
-#: libcore/FileUtils.vala:188
+#: libcore/FileUtils.vala:189
 msgid "Ignore"
 msgstr "忽略"
 
-#: libcore/FileUtils.vala:189
+#: libcore/FileUtils.vala:190
 msgid "Recreate"
 msgstr "重新建立"
 
-#: libcore/FileUtils.vala:201
+#: libcore/FileUtils.vala:200
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr "無法重新建立資料夾 %s。將會忽略此資料夾內的所有檔案"
 
-#: libcore/FileUtils.vala:567
+#: libcore/FileUtils.vala:572
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "無法重新命名為「%s」"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:658
+#: libcore/FileUtils.vala:663
 #, c-format
 msgid "Today at %s"
 msgstr "今日的 %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:666
+#: libcore/FileUtils.vala:671
 #, c-format
 msgid "Yesterday at %s"
 msgstr "昨日的 %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:674
+#: libcore/FileUtils.vala:679
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A的 %s"
 
-#: libcore/FileUtils.vala:899
+#: libcore/FileUtils.vala:904
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d 秒"
 
-#: libcore/FileUtils.vala:903 libcore/FileUtils.vala:911
+#: libcore/FileUtils.vala:908 libcore/FileUtils.vala:916
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -524,40 +525,40 @@ msgstr[0] "%'d 分鐘"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:910 src/Dialogs/PropertiesWindow.vala:1253
+#: libcore/FileUtils.vala:915 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr "%s，%s"
 
-#: libcore/FileUtils.vala:910
+#: libcore/FileUtils.vala:915
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d 小時"
 
-#: libcore/FileUtils.vala:914
+#: libcore/FileUtils.vala:919
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "預估還有 %'d 小時"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:922
+#: libcore/FileUtils.vala:927
 msgid "copy"
 msgstr "副本"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:929
 msgid "link"
 msgstr "連結"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:926
+#: libcore/FileUtils.vala:931
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:928
+#: libcore/FileUtils.vala:933
 msgid ")"
 msgstr ")"
 
@@ -1592,7 +1593,7 @@ msgid "Bulk Rename"
 msgstr "批次重新命名"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Rename"
 msgstr "重新命名"
 
@@ -1680,7 +1681,7 @@ msgstr "分隔符"
 msgid "%0*d,%0*d,%0*d…"
 msgstr "%0*d、%0*d、%0*d…"
 
-#: src/Dialogs/ChooseAppDialog.vala:43
+#: src/Dialogs/ChooseAppDialog.vala:45
 msgid "Set as default"
 msgstr "設為預設值"
 
@@ -2236,23 +2237,23 @@ msgstr "檢視最近使用檔案的清單"
 msgid "Open the Trash"
 msgstr "開啟垃圾桶"
 
-#: src/View/Sidebar/BookmarkRow.vala:307
+#: src/View/Sidebar/BookmarkRow.vala:309
 msgid "Open in New _Tab"
 msgstr "在新分頁中開啟(_T)"
 
-#: src/View/Sidebar/BookmarkRow.vala:308
+#: src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open in New _Window"
 msgstr "在新視窗中開啟(_W)"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:334
 msgid "Remove"
 msgstr "移除"
 
-#: src/View/Sidebar/BookmarkRow.vala:350
+#: src/View/Sidebar/BookmarkRow.vala:352
 msgid "Permanently Delete All Trash"
 msgstr "永久刪除垃圾桶中的所有項目"
 
-#: src/View/Sidebar/BookmarkRow.vala:350
+#: src/View/Sidebar/BookmarkRow.vala:352
 msgid "Permanently Delete Trash"
 msgstr "永久刪除垃圾桶中的項目"
 

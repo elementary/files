@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 17:19+0000\n"
+"POT-Creation-Date: 2025-06-06 14:04+0000\n"
 "PO-Revision-Date: 2016-08-03 23:51+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -46,7 +46,7 @@ msgstr ""
 msgid "Open File as Read Only"
 msgstr ""
 
-#: filechooser-portal/FileChooserDialog.vala:376
+#: filechooser-portal/FileChooserDialog.vala:378
 #, fuzzy
 msgid "Enter new filename"
 msgstr "uus fail"
@@ -56,7 +56,7 @@ msgstr "uus fail"
 msgid "Select"
 msgstr " on valitud"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:311
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:313
 msgid "Open"
 msgstr "Avamine rakendusega..."
 
@@ -485,63 +485,63 @@ msgstr "\"%s\" algset asukohta pole võimalik tuvastada "
 msgid "The item cannot be restored from trash"
 msgstr "Seda faili pole võimalik prügikastist taastada"
 
-#: libcore/FileUtils.vala:183
+#: libcore/FileUtils.vala:184
 #, fuzzy, c-format
 msgid "The original folder %s no longer exists"
 msgstr "Valitud faili ei eksisteeri enam."
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:185
 msgid ""
 "The folder can be recreated and selected files that were originally there "
 "will be restored to it. Otherwise, files that were in this folder will not "
 "be restored."
 msgstr ""
 
-#: libcore/FileUtils.vala:188
+#: libcore/FileUtils.vala:189
 msgid "Ignore"
 msgstr "Ära muuda"
 
-#: libcore/FileUtils.vala:189
+#: libcore/FileUtils.vala:190
 #, fuzzy
 msgid "Recreate"
 msgstr "Loo"
 
-#: libcore/FileUtils.vala:201
+#: libcore/FileUtils.vala:200
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
 
-#: libcore/FileUtils.vala:567
+#: libcore/FileUtils.vala:572
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "Ümbernimetamine kui '%s' ebaõnnestus"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:658
+#: libcore/FileUtils.vala:663
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Täna, kell %H:%M"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:666
+#: libcore/FileUtils.vala:671
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Eile, kell %H:%M"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:674
+#: libcore/FileUtils.vala:679
 #, c-format
 msgid "%%A at %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:899
+#: libcore/FileUtils.vala:904
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d sekund"
 msgstr[1] "%'d sekundit"
 
-#: libcore/FileUtils.vala:903 libcore/FileUtils.vala:911
+#: libcore/FileUtils.vala:908 libcore/FileUtils.vala:916
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -550,19 +550,19 @@ msgstr[1] "%'d minutit"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:910 src/Dialogs/PropertiesWindow.vala:1253
+#: libcore/FileUtils.vala:915 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:910
+#: libcore/FileUtils.vala:915
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d tund"
 msgstr[1] "%'d tundi"
 
-#: libcore/FileUtils.vala:914
+#: libcore/FileUtils.vala:919
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -570,24 +570,24 @@ msgstr[0] "ligikaudu %'d tund"
 msgstr[1] "ligikaudu %'d tundi"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:922
+#: libcore/FileUtils.vala:927
 #, fuzzy
 msgid "copy"
 msgstr " (koopia)"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:929
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:926
+#: libcore/FileUtils.vala:931
 #, fuzzy
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:928
+#: libcore/FileUtils.vala:933
 msgid ")"
 msgstr ""
 
@@ -1708,7 +1708,7 @@ msgid "Bulk Rename"
 msgstr "Muuda nime"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Rename"
 msgstr "Muuda nime"
 
@@ -1803,7 +1803,7 @@ msgstr ""
 msgid "%0*d,%0*d,%0*d…"
 msgstr ""
 
-#: src/Dialogs/ChooseAppDialog.vala:43
+#: src/Dialogs/ChooseAppDialog.vala:45
 msgid "Set as default"
 msgstr "Määra vaikimisi"
 
@@ -2399,24 +2399,24 @@ msgstr "Hiljuti kasutatud failide vaatamine"
 msgid "Open the Trash"
 msgstr "Vaata prügikastis olevaid faile"
 
-#: src/View/Sidebar/BookmarkRow.vala:307
+#: src/View/Sidebar/BookmarkRow.vala:309
 msgid "Open in New _Tab"
 msgstr "Ava uues _kaardis"
 
-#: src/View/Sidebar/BookmarkRow.vala:308
+#: src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open in New _Window"
 msgstr "Ava uues _aknas"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:334
 msgid "Remove"
 msgstr "Eemalda järjehoidjatest"
 
-#: src/View/Sidebar/BookmarkRow.vala:350
+#: src/View/Sidebar/BookmarkRow.vala:352
 #, fuzzy
 msgid "Permanently Delete All Trash"
 msgstr "Soovid kõik prügikastis olevad failid jäädavalt kustutada?"
 
-#: src/View/Sidebar/BookmarkRow.vala:350
+#: src/View/Sidebar/BookmarkRow.vala:352
 #, fuzzy
 msgid "Permanently Delete Trash"
 msgstr "Soovid kõik prügikastis olevad failid jäädavalt kustutada?"
