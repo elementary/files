@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 17:19+0000\n"
+"POT-Creation-Date: 2025-06-06 14:04+0000\n"
 "PO-Revision-Date: 2022-09-21 10:08+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
@@ -42,7 +42,7 @@ msgstr "کردنەوەی پەڕگەکان بەشێوەی تەنها بینین"
 msgid "Open File as Read Only"
 msgstr "کردنەوەی پەڕگە بە شێوەی تەنها بینین"
 
-#: filechooser-portal/FileChooserDialog.vala:376
+#: filechooser-portal/FileChooserDialog.vala:378
 #, fuzzy
 msgid "Enter new filename"
 msgstr "پەڕگەی تازە"
@@ -51,7 +51,7 @@ msgstr "پەڕگەی تازە"
 msgid "Select"
 msgstr "دیاریکردن"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:311
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:313
 msgid "Open"
 msgstr "کردنەوە"
 
@@ -463,12 +463,12 @@ msgstr "نەتوانرا شوێنی ڕەسەنی \"%s\" دیاریبکرێت"
 msgid "The item cannot be restored from trash"
 msgstr "دانەکە لە تەنەکە خۆڵەکەوە ناگەڕێندرێتەوە"
 
-#: libcore/FileUtils.vala:183
+#: libcore/FileUtils.vala:184
 #, c-format
 msgid "The original folder %s no longer exists"
 msgstr "چیتر بوخچە ڕەسەنەکە %s بوونی نییە"
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:185
 #, fuzzy
 #| msgid ""
 #| "The folder will be recreated and selected files that were originally "
@@ -481,51 +481,51 @@ msgstr ""
 "بوخچەکە دروست دەکرێتەوە و پەڕگە دیاریکراوەکان کە لە بنچینەدا لەوێ بوون "
 "دەگەڕێندرێنەوە ناوی"
 
-#: libcore/FileUtils.vala:188
+#: libcore/FileUtils.vala:189
 msgid "Ignore"
 msgstr "چەپاندن"
 
-#: libcore/FileUtils.vala:189
+#: libcore/FileUtils.vala:190
 msgid "Recreate"
 msgstr "دروستکردنەوە"
 
-#: libcore/FileUtils.vala:201
+#: libcore/FileUtils.vala:200
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
 "نەتوانرا بوخچە %s دروستبکرێتەوە. هەموو پەڕگەکان لەم بوخچەیەدا دەچەپێندرێن"
 
-#: libcore/FileUtils.vala:567
+#: libcore/FileUtils.vala:572
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "نەتوانرا ناوی بگۆڕدرێت بۆ '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:658
+#: libcore/FileUtils.vala:663
 #, c-format
 msgid "Today at %s"
 msgstr "ئەمڕۆ لە %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:666
+#: libcore/FileUtils.vala:671
 #, c-format
 msgid "Yesterday at %s"
 msgstr "دوێنێ لە %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:674
+#: libcore/FileUtils.vala:679
 #, c-format
 msgid "%%A at %s"
 msgstr "%% لە %s"
 
-#: libcore/FileUtils.vala:899
+#: libcore/FileUtils.vala:904
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d چرکە"
 msgstr[1] "%'d چرکە"
 
-#: libcore/FileUtils.vala:903 libcore/FileUtils.vala:911
+#: libcore/FileUtils.vala:908 libcore/FileUtils.vala:916
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -534,19 +534,19 @@ msgstr[1] "%'d خولەک"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:910 src/Dialogs/PropertiesWindow.vala:1253
+#: libcore/FileUtils.vala:915 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr "%s، %s"
 
-#: libcore/FileUtils.vala:910
+#: libcore/FileUtils.vala:915
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d کاتژمێر"
 msgstr[1] "%'d کاتژمێر"
 
-#: libcore/FileUtils.vala:914
+#: libcore/FileUtils.vala:919
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -554,22 +554,22 @@ msgstr[0] "بە نزیکەیی %'d کاتژمێر"
 msgstr[1] "بە نزیکەیی %'d کاتژمێر"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:922
+#: libcore/FileUtils.vala:927
 msgid "copy"
 msgstr "لەبەرگرتنەوە"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:929
 msgid "link"
 msgstr "لینک"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:926
+#: libcore/FileUtils.vala:931
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:928
+#: libcore/FileUtils.vala:933
 msgid ")"
 msgstr ")"
 
@@ -1658,7 +1658,7 @@ msgid "Bulk Rename"
 msgstr "ناوگۆڕین"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Rename"
 msgstr "ناوگۆڕین"
 
@@ -1753,7 +1753,7 @@ msgstr ""
 msgid "%0*d,%0*d,%0*d…"
 msgstr ""
 
-#: src/Dialogs/ChooseAppDialog.vala:43
+#: src/Dialogs/ChooseAppDialog.vala:45
 msgid "Set as default"
 msgstr "دانانی وەکو بنەڕەت"
 
@@ -2327,23 +2327,23 @@ msgstr "بینینی لیستی ئەو پەڕگانەی کە بەم دواییە
 msgid "Open the Trash"
 msgstr "کردنەوەی تەنەکە"
 
-#: src/View/Sidebar/BookmarkRow.vala:307
+#: src/View/Sidebar/BookmarkRow.vala:309
 msgid "Open in New _Tab"
 msgstr "کردنەوەی لە تابێکی نوێدا"
 
-#: src/View/Sidebar/BookmarkRow.vala:308
+#: src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open in New _Window"
 msgstr "کردنەوەی لە پەنجەرەیەکی نوێدا"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:334
 msgid "Remove"
 msgstr "سڕینەوە"
 
-#: src/View/Sidebar/BookmarkRow.vala:350
+#: src/View/Sidebar/BookmarkRow.vala:352
 msgid "Permanently Delete All Trash"
 msgstr "سڕینەوەی هەموو سەبەتەی خۆڵ بەیەکجاری"
 
-#: src/View/Sidebar/BookmarkRow.vala:350
+#: src/View/Sidebar/BookmarkRow.vala:352
 msgid "Permanently Delete Trash"
 msgstr "سڕینەوەی سەبەتە بەیەکجاری"
 

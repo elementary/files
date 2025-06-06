@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 17:19+0000\n"
+"POT-Creation-Date: 2025-06-06 14:04+0000\n"
 "PO-Revision-Date: 2024-09-13 00:01+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://l10n.elementary.io/projects/files/files/ka/"
@@ -47,7 +47,7 @@ msgstr "ფაილის მხოლოდ-წაკითხვად რე
 msgid "Open File as Read Only"
 msgstr "ფაილის მხოლოდ-წაკითხვად რეჟიმში გახსნა"
 
-#: filechooser-portal/FileChooserDialog.vala:376
+#: filechooser-portal/FileChooserDialog.vala:378
 msgid "Enter new filename"
 msgstr "შეიყვანეთ ახალი ფაილის სახელი"
 
@@ -55,7 +55,7 @@ msgstr "შეიყვანეთ ახალი ფაილის სახ
 msgid "Select"
 msgstr "აირჩიეთ"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:311
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:313
 msgid "Open"
 msgstr "გახსნა"
 
@@ -459,61 +459,61 @@ msgstr ""
 msgid "The item cannot be restored from trash"
 msgstr "ელემენტის ნაგვიდან აღდგენა შეუძლებელია"
 
-#: libcore/FileUtils.vala:183
+#: libcore/FileUtils.vala:184
 #, c-format
 msgid "The original folder %s no longer exists"
 msgstr ""
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:185
 msgid ""
 "The folder can be recreated and selected files that were originally there "
 "will be restored to it. Otherwise, files that were in this folder will not "
 "be restored."
 msgstr ""
 
-#: libcore/FileUtils.vala:188
+#: libcore/FileUtils.vala:189
 msgid "Ignore"
 msgstr "იგნორი"
 
-#: libcore/FileUtils.vala:189
+#: libcore/FileUtils.vala:190
 msgid "Recreate"
 msgstr "თავიდან შექმნა"
 
-#: libcore/FileUtils.vala:201
+#: libcore/FileUtils.vala:200
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
 
-#: libcore/FileUtils.vala:567
+#: libcore/FileUtils.vala:572
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "'%s'-ზე გადარქმევა ვერ მოხერხდა"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:658
+#: libcore/FileUtils.vala:663
 #, c-format
 msgid "Today at %s"
 msgstr "დღეს, %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:666
+#: libcore/FileUtils.vala:671
 #, c-format
 msgid "Yesterday at %s"
 msgstr "გუშინ, %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:674
+#: libcore/FileUtils.vala:679
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A, %s"
 
-#: libcore/FileUtils.vala:899
+#: libcore/FileUtils.vala:904
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d წამი"
 
-#: libcore/FileUtils.vala:903 libcore/FileUtils.vala:911
+#: libcore/FileUtils.vala:908 libcore/FileUtils.vala:916
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -521,40 +521,40 @@ msgstr[0] "%'d წუთი"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:910 src/Dialogs/PropertiesWindow.vala:1253
+#: libcore/FileUtils.vala:915 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:910
+#: libcore/FileUtils.vala:915
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d საათი"
 
-#: libcore/FileUtils.vala:914
+#: libcore/FileUtils.vala:919
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "დაახლ %'d საათი"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:922
+#: libcore/FileUtils.vala:927
 msgid "copy"
 msgstr "კოპირება"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:929
 msgid "link"
 msgstr "ბმული"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:926
+#: libcore/FileUtils.vala:931
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:928
+#: libcore/FileUtils.vala:933
 msgid ")"
 msgstr ")"
 
@@ -1589,7 +1589,7 @@ msgid "Bulk Rename"
 msgstr "მასობრივი გადარქმევა"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Rename"
 msgstr "გადარქმევა"
 
@@ -1677,7 +1677,7 @@ msgstr "გამყოფი"
 msgid "%0*d,%0*d,%0*d…"
 msgstr "%0*d,%0*d,%0*d…"
 
-#: src/Dialogs/ChooseAppDialog.vala:43
+#: src/Dialogs/ChooseAppDialog.vala:45
 msgid "Set as default"
 msgstr "ნაგულისხმებად დაყენება"
 
@@ -2234,23 +2234,23 @@ msgstr "ახლახანს გამოყენებული ფაი�
 msgid "Open the Trash"
 msgstr "ნაგვის გახსნა"
 
-#: src/View/Sidebar/BookmarkRow.vala:307
+#: src/View/Sidebar/BookmarkRow.vala:309
 msgid "Open in New _Tab"
 msgstr "ახ_ალ დაფაში გახსნა"
 
-#: src/View/Sidebar/BookmarkRow.vala:308
+#: src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open in New _Window"
 msgstr "ახალ ფან_ჯარაში გახსნა"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:334
 msgid "Remove"
 msgstr "_წაშლა"
 
-#: src/View/Sidebar/BookmarkRow.vala:350
+#: src/View/Sidebar/BookmarkRow.vala:352
 msgid "Permanently Delete All Trash"
 msgstr "ნაგავის სრულად, სამუდამოდ წაშლა"
 
-#: src/View/Sidebar/BookmarkRow.vala:350
+#: src/View/Sidebar/BookmarkRow.vala:352
 msgid "Permanently Delete Trash"
 msgstr "ნაგვის სამუდამოდ წაშლა"
 

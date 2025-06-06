@@ -161,6 +161,8 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         grid.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
         grid.add (choices_box);
         grid.add (action_box);
+        grid.show_all ();
+
         add (grid);
 
         setup_chooser ();
