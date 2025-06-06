@@ -64,20 +64,22 @@ public interface Sidebar.SidebarListInterface : Object {
         return false;
     }
 
+    // Returns true if item was both found and removed
     public virtual bool remove_item_by_id (uint32 id) {
         int index = 0;
         unowned var child = list_box.get_row_at_index (index);
         while (child != null) {
             if (child is SidebarItemInterface) {
                 unowned var row = (SidebarItemInterface)child;
-                if (row.permanent) {
-                    continue;
-                }
-
                 if (row.id == id) {
-                    list_box.remove (child);
-                    row.destroy_bookmark ();
-                    return true;
+                    if (row.permanent) {
+                        critical ("Attempt to remove permanent row ignored");
+                        return false;
+                    } else {
+                        list_box.remove (child);
+                        row.destroy_bookmark ();
+                        return true;
+                    }
                 }
             }
 
