@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-19 11:55+0000\n"
-"PO-Revision-Date: 2023-05-07 16:06+0000\n"
-"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
+"POT-Creation-Date: 2023-06-28 19:58+0000\n"
+"PO-Revision-Date: 2023-05-30 18:07+0000\n"
+"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -138,15 +138,15 @@ msgstr "Share:"
 
 #: libcore/ConnectServerDialog.vala:184
 msgid "Path of shared folder on server (Optional)"
-msgstr "Pad naar de gedeelde folder op de server (Optioneel)"
+msgstr "Pad naar de gedeelde map op de server (Optioneel)"
 
 #: libcore/ConnectServerDialog.vala:188
 msgid "Folder:"
-msgstr "Folder:"
+msgstr "Map:"
 
 #: libcore/ConnectServerDialog.vala:190
 msgid "User Details"
-msgstr "Gebruikersgegevens"
+msgstr "Gebruikerdetails"
 
 #: libcore/ConnectServerDialog.vala:195
 msgid "Name of Windows domain"
@@ -207,9 +207,9 @@ msgstr "Hierheen kopiëren"
 
 #: libcore/DndHandler.vala:102
 msgid "Link Here"
-msgstr "Hierheen een snelkoppeling maken"
+msgstr "Hier een snelkoppeling maken"
 
-#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2330
+#: libcore/Enums.vala:157 src/View/AbstractDirectoryView.vala:2336
 msgid "Name"
 msgstr "Naam"
 
@@ -222,7 +222,7 @@ msgstr "Aanmaakdatum"
 msgid "Last modification date"
 msgstr "Laatste wijzigingsdatum"
 
-#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2335
+#: libcore/Enums.vala:166 src/View/AbstractDirectoryView.vala:2341
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Grootte"
@@ -235,7 +235,7 @@ msgstr "Nummerreeks"
 msgid "Text"
 msgstr "Tekst"
 
-#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2345
+#: libcore/Enums.vala:195 src/View/AbstractDirectoryView.vala:2351
 msgid "Date"
 msgstr "Datum"
 
@@ -287,42 +287,40 @@ msgstr "Datum gewijzigd"
 msgid "Current Date"
 msgstr "Huidige datum"
 
-#: libcore/File.vala:547 libcore/File.vala:1103 libcore/File.vala:1122
+#: libcore/File.vala:550 libcore/File.vala:1113
 msgid "Inaccessible"
 msgstr "Ontoegankelijk"
 
-#: libcore/File.vala:888
+#: libcore/File.vala:891
 msgid "Failed to parse the desktop file"
 msgstr "Kon desktopbestand niet verwerken"
 
-#: libcore/File.vala:892
+#: libcore/File.vala:895
 msgid "Failed to parse the desktop file: "
 msgstr "Desktop-bestand verwerken is mislukt: "
 
-#: libcore/File.vala:904
+#: libcore/File.vala:907
 msgid "Failed to create command from file: "
 msgstr "Kon geen commando maken van het bestand: "
 
-#: libcore/File.vala:913
+#: libcore/File.vala:916
 msgid "Unable to Launch Desktop File: "
 msgstr "Kon desktop-bestand niet uitvoeren: "
 
-#: libcore/File.vala:1117
+#: libcore/File.vala:1106
 msgid "Empty"
 msgstr "Leeg"
 
-#: libcore/File.vala:1119
-#, c-format
-msgid "%i item"
-msgid_plural "%i items"
+#: libcore/File.vala:1108
+#, fuzzy, c-format
+#| msgid "%i item"
+#| msgid_plural "%i items"
+msgid "%'d item"
+msgid_plural "%'d items"
 msgstr[0] "%i item"
 msgstr[1] "%i items"
 
-#: libcore/File.vala:1126
-msgid "----"
-msgstr "----"
-
-#: libcore/File.vala:1133
+#: libcore/File.vala:1153
 #, c-format
 msgid "link to %s"
 msgstr "link naar %s"
@@ -383,7 +381,7 @@ msgstr "Vervang"
 #: libcore/FileConflictDialog.vala:299
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Folder \"%s\" samenvoegen?"
+msgstr "Map \"%s\" samenvoegen?"
 
 #: libcore/FileConflictDialog.vala:300
 msgid ""
@@ -391,37 +389,37 @@ msgid ""
 "that conflict with the files being copied."
 msgstr ""
 "Bij samenvoegen zal eerst om bevestiging gevraagd worden voordat bestanden "
-"in de folder die conflicteren met de verplaatste bestanden, vervangen worden."
+"in de map die conflicteren met de verplaatste bestanden, vervangen worden."
 
 #: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een oudere folder met dezelfde naam in \"%s\"."
+msgstr "Een oudere map met dezelfde naam bestaat al in \"%s\"."
 
 #: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een nieuwere folder met dezelfde naam in \"%s\"."
+msgstr "Een nieuwere map met dezelfde naam bestaat al in\"%s\"."
 
 #: libcore/FileConflictDialog.vala:306
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een andere folder met dezelfde naam in \"%s\"."
+msgstr "Er bestaat al een andere map met dezelfde naam in \"%s\"."
 
 #: libcore/FileConflictDialog.vala:309
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "Vervang folder \"%s\"?"
+msgstr "Vervang map \"%s\"?"
 
 #: libcore/FileConflictDialog.vala:310
 msgid "Replacing it will remove all files in the folder."
 msgstr ""
-"Bij het vervangen ervan zullen alle bestanden in de folder verwijderd worden."
+"Bij het vervangen ervan zullen alle bestanden in de map verwijderd worden."
 
 #: libcore/FileConflictDialog.vala:311
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een folder met dezelfde naam in \"%s\"."
+msgstr "Er bestaat al een map met dezelfde naam in \"%s\"."
 
 #: libcore/FileConflictDialog.vala:314
 #, c-format
@@ -463,7 +461,7 @@ msgstr "Het bestand kan niet uit de prullenbak teruggehaald worden"
 #: libcore/FileUtils.vala:177
 #, c-format
 msgid "The original folder %s no longer exists"
-msgstr "De originele folder %s bestaat niet meer"
+msgstr "De originele map %s bestaat niet meer"
 
 #: libcore/FileUtils.vala:178
 msgid "Would you like to recreate it?"
@@ -475,7 +473,7 @@ msgstr "Negeren"
 
 #: libcore/FileUtils.vala:184
 msgid "No files that were in this folder will be restored"
-msgstr "Geen van de bestanden in deze folder zullen worden hersteld"
+msgstr "Geen van de bestanden in deze map zullen worden hersteld"
 
 #: libcore/FileUtils.vala:185
 msgid "Recreate"
@@ -486,15 +484,14 @@ msgid ""
 "The folder will be recreated and selected files that were originally there "
 "will be restored to it"
 msgstr ""
-"De folder wordt opnieuw aangemaakt en de originele bestanden zullen worden "
+"De map wordt opnieuw aangemaakt en de originele bestanden zullen worden "
 "teruggezet"
 
 #: libcore/FileUtils.vala:200
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
-"Kon folder %s niet opnieuw aanmaken. Alle bestanden in deze folder worden "
-"genegeerd"
+"Kon map %s niet opnieuw aanmaken. Alle bestanden in deze map worden genegeerd"
 
 #: libcore/FileUtils.vala:566
 #, c-format
@@ -608,7 +605,7 @@ msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Bestanden in de folder \"%s\" kunnen niet worden gewist omdat u geen rechten "
+"Bestanden in de map \"%s\" kunnen niet worden gewist omdat u geen rechten "
 "heeft om ze te zien."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
@@ -620,7 +617,7 @@ msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr ""
 "Er is een fout opgetreden bij het ophalen van de informatie van de bestanden "
-"in de folder \"%s\"."
+"in de map \"%s\"."
 
 #: libcore/marlin-file-operations.c:243 libcore/marlin-file-operations.c:1749
 msgid "_Skip files"
@@ -634,8 +631,8 @@ msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"De folder \"%s\" kan niet verwijderd worden omdat u niet de rechten heeft om "
-"de folder te lezen."
+"De map \"%s\" kan niet verwijderd worden omdat u niet de rechten heeft om "
+"deze map te lezen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -643,13 +640,13 @@ msgstr ""
 #: libcore/marlin-file-operations.c:1791
 #, c-format
 msgid "There was an error reading the folder \"%s\"."
-msgstr "Er is een fout opgetreden bij het lezen van de folder \"%s\"."
+msgstr "Er is een fout opgetreden bij het lezen van de map \"%s\"."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:312
 #, c-format
 msgid "Could not remove the folder %s."
-msgstr "Kon de folder %s niet verwijderen."
+msgstr "Kon de map %s niet verwijderen."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:396
@@ -695,7 +692,7 @@ msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
-"Het is niet toegestaan om bestanden die in folders staan waarvoor u geen "
+"Het is niet toegestaan om bestanden die in mappen staan waarvoor u geen "
 "schrijfrechten heeft naar de prullenbak te verplaatsen of te verwijderen."
 
 #: libcore/marlin-file-operations.c:615
@@ -703,7 +700,7 @@ msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
-"Het is niet toegestaan om folders waarvoor u geen schrijfrechten heeft naar "
+"Het is niet toegestaan om mappen waarvoor u geen schrijfrechten heeft naar "
 "de prullenbak te verplaatsen of te verwijderen."
 
 #: libcore/marlin-file-operations.c:617
@@ -790,7 +787,7 @@ msgid ""
 "Files in the folder \"%s\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Bestanden in de folder \"%s\" kunnen niet worden afgehandeld omdat u geen "
+"Bestanden in de map \"%s\" kunnen niet worden afgehandeld omdat u geen "
 "rechten heeft om ze te zien."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
@@ -801,8 +798,8 @@ msgid ""
 "The folder \"%s\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"De folder \"%s\" kan niet worden afgehandeld omdat u er geen leesrechten "
-"voor heeft."
+"De map \"%s\" kan niet worden afgehandeld omdat u er geen leesrechten voor "
+"heeft."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -920,15 +917,15 @@ msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"Kan de folder \"%s\" niet kopiëren omdat u op de bestemming geen rechten "
-"heeft om deze aan te maken."
+"Kan de map \"%s\" niet kopiëren omdat u op de bestemming geen rechten heeft "
+"om deze aan te maken."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1598
 #, c-format
 msgid "There was an error creating the folder \"%s\"."
-msgstr "Er is een fout opgetreden bij het aanmaken van de folder \"%s\"."
+msgstr "Er is een fout opgetreden bij het aanmaken van de map \"%s\"."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -938,8 +935,8 @@ msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Kan bestanden in de folder \"%s\" niet kopiëren omdat u geen rechten heeft "
-"om ze te zien."
+"Kan bestanden in de map \"%s\" niet kopiëren omdat u geen rechten heeft om "
+"ze te zien."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -949,7 +946,7 @@ msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"Kan de folder \"%s\" niet kopiëren omdat u er geen leesrechten voor heeft."
+"Kan de map \"%s\" niet kopiëren omdat u er geen leesrechten voor heeft."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -963,7 +960,7 @@ msgstr "Fout bij het verplaatsen van “%s”."
 
 #: libcore/marlin-file-operations.c:1842
 msgid "Could not remove the source folder."
-msgstr "Kon de bronfolder niet verwijderen."
+msgstr "Kon de bronmap niet verwijderen."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -977,7 +974,7 @@ msgstr "Fout bij het kopiëren van “%s”."
 #: libcore/marlin-file-operations.c:1937
 #, c-format
 msgid "Could not remove files from the already existing folder %s."
-msgstr "Kon bestanden niet verwijderen uit de reeds bestaande folder %s."
+msgstr "Kon bestanden niet verwijderen uit de reeds bestaande map %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:1989
@@ -987,15 +984,15 @@ msgstr "Kon het reeds bestaande bestand %s niet verwijderen."
 
 #: libcore/marlin-file-operations.c:2221 libcore/marlin-file-operations.c:2860
 msgid "You cannot move a folder into itself."
-msgstr "Een folder kan niet naar zichzelf verplaatst worden."
+msgstr "Een map kan niet naar zichzelf verplaatst worden."
 
 #: libcore/marlin-file-operations.c:2222 libcore/marlin-file-operations.c:2861
 msgid "You cannot copy a folder into itself."
-msgstr "Een folder kan niet naar zichzelf gekopieerd worden."
+msgstr "Een map kan niet naar zichzelf gekopieerd worden."
 
 #: libcore/marlin-file-operations.c:2223 libcore/marlin-file-operations.c:2862
 msgid "The destination folder is inside the source folder."
-msgstr "De doelfolder bevindt zich binnenin de bronfolder."
+msgstr "De doelmap bevindt zich binnenin de bronmap."
 
 #: libcore/marlin-file-operations.c:2255
 msgid "You cannot move a file over itself."
@@ -1107,7 +1104,7 @@ msgstr "Het is niet toegestaan om bestanden te kopiëren naar de prullenbak"
 
 #: libcore/marlin-file-operations.c:3812
 msgid "untitled folder"
-msgstr "naamloze folder"
+msgstr "naamloze map"
 
 #: libcore/marlin-file-operations.c:3820
 msgid "new file"
@@ -1157,7 +1154,7 @@ msgid "_Unmount"
 msgstr "_Ontkoppelen"
 
 #: libcore/PopupMenuBuilder.vala:78 src/Dialogs/PropertiesWindow.vala:123
-#: src/View/AbstractDirectoryView.vala:2047
+#: src/View/AbstractDirectoryView.vala:2053
 msgid "Properties"
 msgstr "Eigenschappen"
 
@@ -1169,7 +1166,7 @@ msgstr "Media Uitwerpen"
 msgid "Safely Remove"
 msgstr "Veilig Verwijderen"
 
-#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2040
+#: libcore/PopupMenuBuilder.vala:92 src/View/AbstractDirectoryView.vala:2046
 msgid "Add to Bookmarks"
 msgstr "Aan bladwijzers toevoegen"
 
@@ -1317,7 +1314,7 @@ msgstr "Bestand van sjabloon maken ongedaan maken"
 
 #: libcore/UndoManager.vala:34
 msgid "Undo Create Folder"
-msgstr "Folder aanmaken ongedaan maken"
+msgstr "Map aanmaken ongedaan maken"
 
 #: libcore/UndoManager.vala:36
 msgid "Undo Move to Trash"
@@ -1373,7 +1370,7 @@ msgstr "Opnieuw bestand aanmaken van sjabloon"
 
 #: libcore/UndoManager.vala:69
 msgid "Redo Create Folder"
-msgstr "Opnieuw folder aanmaken"
+msgstr "Opnieuw map aanmaken"
 
 #: libcore/UndoManager.vala:71
 msgid "Redo Move to Trash"
@@ -1423,11 +1420,11 @@ msgstr "Fout bij het kopiëren naar \"%s\"."
 
 #: libcore/FileOperations/CommonJob.vala:119
 msgid "The destination is not a folder."
-msgstr "De bestemming is geen folder."
+msgstr "De bestemming is geen map."
 
 #: libcore/FileOperations/CommonJob.vala:144
 msgid "You do not have permissions to access the destination folder."
-msgstr "U heeft geen rechten om toegang te nemen tot deze folder."
+msgstr "U bezit niet de rechten om toegang te nemen tot deze map."
 
 #: libcore/FileOperations/CommonJob.vala:146
 msgid "There was an error getting information about the destination."
@@ -1610,8 +1607,8 @@ msgstr "Toon programmaversie"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Open 1 of meerdere URI('s), elk in hun eigen tab"
 
-#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1928
-#: src/View/AbstractDirectoryView.vala:1934
+#: src/Application.vala:158 src/View/AbstractDirectoryView.vala:1934
+#: src/View/AbstractDirectoryView.vala:1940
 msgid "New Window"
 msgstr "Nieuw venster"
 
@@ -1749,22 +1746,17 @@ msgstr "Basisnaam:"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:132
 msgctxt "bulk-rename"
 msgid "Keep"
-msgstr ""
+msgstr "Behouden"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:138
-#, fuzzy
-#| msgid "Replace"
 msgctxt "bulk-rename"
 msgid "Replace"
-msgstr "Vervang"
+msgstr "Vervangen"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:143
-#, fuzzy
-#| msgctxt "bulk-rename"
-#| msgid "Modified"
 msgctxt "bulk-rename"
 msgid "Modify"
-msgstr "Gewijzigd"
+msgstr "Aanpassen"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:161
 msgid "Original Basename"
@@ -1927,7 +1919,7 @@ msgid "Original Location:"
 msgstr "Oorspronkelijke locatie:"
 
 #: src/Dialogs/PropertiesWindow.vala:648
-#: src/View/AbstractDirectoryView.vala:2015
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Other Application…"
 msgstr "Andere applicaties…"
 
@@ -1951,8 +1943,8 @@ msgstr "Iedereen:"
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] "%u subfolder"
-msgstr[1] "%u subfolders"
+msgstr[0] "%u submap"
+msgstr[1] "%u submappen"
 
 #: src/Dialogs/PropertiesWindow.vala:1236
 #: src/Dialogs/PropertiesWindow.vala:1258
@@ -1966,8 +1958,8 @@ msgstr[1] "%u bestanden"
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] "%u folder"
-msgstr[1] "%u folders"
+msgstr[0] "%u map"
+msgstr[1] "%u mappen"
 
 #: src/Dialogs/PropertiesWindow.vala:1263
 #, c-format
@@ -2039,167 +2031,167 @@ msgstr "Kan dit bestand niet openen"
 msgid "Cannot identify file type to open"
 msgstr "Kan het te openen bestandstype niet identificeren"
 
-#: src/View/AbstractDirectoryView.vala:1626
+#: src/View/AbstractDirectoryView.vala:1632
 msgid "Cannot drop this file"
 msgstr "Dit bestand kan niet neergezet worden"
 
-#: src/View/AbstractDirectoryView.vala:1627
+#: src/View/AbstractDirectoryView.vala:1633
 msgid "Invalid file name provided"
 msgstr "Ongeldige bestandsnaam opgegeven"
 
-#: src/View/AbstractDirectoryView.vala:1911
-#: src/View/AbstractDirectoryView.vala:1917 src/View/Window.vala:183
+#: src/View/AbstractDirectoryView.vala:1917
+#: src/View/AbstractDirectoryView.vala:1923 src/View/Window.vala:183
 msgid "New Tab"
 msgstr "Nieuwe tab"
 
-#: src/View/AbstractDirectoryView.vala:1951
+#: src/View/AbstractDirectoryView.vala:1957
 msgid "Run"
 msgstr "Uitvoeren"
 
-#: src/View/AbstractDirectoryView.vala:1958
+#: src/View/AbstractDirectoryView.vala:1964
 #, c-format
 msgid "Open in %s"
 msgstr "Openen in %s"
 
-#: src/View/AbstractDirectoryView.vala:2027
+#: src/View/AbstractDirectoryView.vala:2033
 msgid "Open in"
 msgstr "Openen in"
 
-#: src/View/AbstractDirectoryView.vala:2029
+#: src/View/AbstractDirectoryView.vala:2035
 #: src/View/Widgets/BreadcrumbsEntry.vala:493
 msgid "Open with"
 msgstr "Openen met"
 
-#: src/View/AbstractDirectoryView.vala:2060
+#: src/View/AbstractDirectoryView.vala:2066
 msgid "Select All"
 msgstr "Alles Selecteren"
 
-#: src/View/AbstractDirectoryView.vala:2069
+#: src/View/AbstractDirectoryView.vala:2075
 msgid "Invert Selection"
 msgstr "Selectie Omdraaien"
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2084
 msgid "Deselect All"
 msgstr "Alles Deselecteren"
 
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2092
 msgid "Cut"
 msgstr "Knippen"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2094
+#: src/View/AbstractDirectoryView.vala:2100
 msgid "Copy"
 msgstr "Kopiëren"
 
-#: src/View/AbstractDirectoryView.vala:2101
+#: src/View/AbstractDirectoryView.vala:2107
 msgid "Move to Trash"
 msgstr "Verplaats naar prullenbak"
 
-#: src/View/AbstractDirectoryView.vala:2106
+#: src/View/AbstractDirectoryView.vala:2112
 msgid "Delete Permanently"
 msgstr "Permanent Verwijderen"
 
-#: src/View/AbstractDirectoryView.vala:2113
+#: src/View/AbstractDirectoryView.vala:2119
 msgid "Restore from Trash"
 msgstr "Herstel uit prullenbak"
 
-#: src/View/AbstractDirectoryView.vala:2136
+#: src/View/AbstractDirectoryView.vala:2142
 msgid "Open Parent Folder"
-msgstr "Open de bovenliggende folder"
+msgstr "Open de bovenliggende map"
 
-#: src/View/AbstractDirectoryView.vala:2139
+#: src/View/AbstractDirectoryView.vala:2145
 msgid "Remove from History"
 msgstr "Verwijderen uit geschiedenis"
 
-#: src/View/AbstractDirectoryView.vala:2165
+#: src/View/AbstractDirectoryView.vala:2171
 msgid "Rename…"
 msgstr "Hernoemen…"
 
-#: src/View/AbstractDirectoryView.vala:2172
+#: src/View/AbstractDirectoryView.vala:2178
 msgid "Copy as Link"
 msgstr "Kopieer als link"
 
-#: src/View/AbstractDirectoryView.vala:2195
-#: src/View/AbstractDirectoryView.vala:2275
+#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2281
 msgid "Paste Link into Folder"
-msgstr "Link plakken in folder"
+msgstr "Link plakken in map"
 
-#: src/View/AbstractDirectoryView.vala:2200
-#: src/View/AbstractDirectoryView.vala:2252
+#: src/View/AbstractDirectoryView.vala:2206
+#: src/View/AbstractDirectoryView.vala:2258
 msgid "Paste into Folder"
-msgstr "Plakken in folder"
+msgstr "Plakken in map"
 
-#: src/View/AbstractDirectoryView.vala:2210
-#: src/View/AbstractDirectoryView.vala:2280
+#: src/View/AbstractDirectoryView.vala:2216
+#: src/View/AbstractDirectoryView.vala:2286
 msgid "Paste"
 msgstr "Plakken"
 
-#: src/View/AbstractDirectoryView.vala:2340 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2346 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Type"
 
-#: src/View/AbstractDirectoryView.vala:2350
+#: src/View/AbstractDirectoryView.vala:2356
 msgid "Reversed Order"
 msgstr "Omgekeerde volgorde"
 
-#: src/View/AbstractDirectoryView.vala:2353
+#: src/View/AbstractDirectoryView.vala:2359
 msgid "Folders Before Files"
-msgstr "Folders voor bestanden"
+msgstr "Mappen voor bestanden"
 
-#: src/View/AbstractDirectoryView.vala:2365
+#: src/View/AbstractDirectoryView.vala:2371
 msgid "Sort by"
 msgstr "Sorteer op"
 
-#: src/View/AbstractDirectoryView.vala:2373
-msgid "Folder"
-msgstr "Folder"
-
 #: src/View/AbstractDirectoryView.vala:2379
+msgid "Folder"
+msgstr "Map"
+
+#: src/View/AbstractDirectoryView.vala:2385
 msgid "Empty File"
 msgstr "Leeg bestand"
 
-#: src/View/AbstractDirectoryView.vala:2430
+#: src/View/AbstractDirectoryView.vala:2436
 msgid "New"
 msgstr "Nieuw"
 
-#: src/View/AbstractDirectoryView.vala:2673
+#: src/View/AbstractDirectoryView.vala:2679
 #, c-format
 msgid "Untitled %s"
 msgstr "%s zonder naam"
 
-#: src/View/AbstractDirectoryView.vala:2991
-#: src/View/AbstractDirectoryView.vala:3184
+#: src/View/AbstractDirectoryView.vala:2997
+#: src/View/AbstractDirectoryView.vala:3190
 msgid "Cannot remove files from here"
 msgstr "Kan de bestanden hier niet verwijderen"
 
-#: src/View/AbstractDirectoryView.vala:2992
-#: src/View/AbstractDirectoryView.vala:3157
-#: src/View/AbstractDirectoryView.vala:3168
-#: src/View/AbstractDirectoryView.vala:3185
+#: src/View/AbstractDirectoryView.vala:2998
+#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3174
+#: src/View/AbstractDirectoryView.vala:3191
 msgid "You do not have permission to change this location"
 msgstr "U heeft geen toestemming om hier wijzigingen aan te brengen"
 
-#: src/View/AbstractDirectoryView.vala:3125
+#: src/View/AbstractDirectoryView.vala:3131
 msgid "Cannot copy files that are in the trash"
 msgstr "Bestanden in de prullenbak kunnen niet gekopieerd worden"
 
-#: src/View/AbstractDirectoryView.vala:3126
+#: src/View/AbstractDirectoryView.vala:3132
 msgid "Cutting the selection instead"
 msgstr "De selectie wordt in plaats daarvan geknipt"
 
-#: src/View/AbstractDirectoryView.vala:3156
-#: src/View/AbstractDirectoryView.vala:3167
+#: src/View/AbstractDirectoryView.vala:3162
+#: src/View/AbstractDirectoryView.vala:3173
 msgid "Cannot paste files here"
 msgstr "Kan bestanden hier niet plakken"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:374
 msgid "This Folder Does Not Exist"
-msgstr "Deze folder bestaat niet"
+msgstr "Deze map bestaat niet"
 
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr "De folder \"%s\" kan niet gevonden worden."
+msgstr "De map \"%s\" kan niet gevonden worden."
 
 #: src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -2208,11 +2200,11 @@ msgstr "Aanmaken"
 #: src/View/DirectoryNotFound.vala:30
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr "Maak de folder \"%s\" aan"
+msgstr "Maak de map \"%s\" aan"
 
 #: src/View/DirectoryNotFound.vala:45
 msgid "Failed to create the folder"
-msgstr "Kon de folder niet aanmaken"
+msgstr "Kon de map niet aanmaken"
 
 #: src/View/ListView.vala:26
 msgid "Filename"
@@ -2240,7 +2232,7 @@ msgstr "Open de systeembeveiliging- en privacy instellingen app"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
-msgstr "Deze folder is leeg"
+msgstr "Deze map is leeg"
 
 #: src/View/Slot.vala:32
 msgid "Trash Is Empty"
@@ -2260,7 +2252,7 @@ msgstr "Persoonlijke map"
 
 #: src/View/ViewContainer.vala:375
 msgid "You cannot create a folder here."
-msgstr "U kan hier geen folder aanmaken."
+msgstr "U kan hier geen map aanmaken."
 
 #: src/View/ViewContainer.vala:378
 msgid "The network is unavailable"
@@ -2268,28 +2260,27 @@ msgstr "Het netwerk is niet beschikbaar"
 
 #: src/View/ViewContainer.vala:379
 msgid "A working network is needed to reach this folder"
-msgstr ""
-"Een functionerend netwerk is nodig om toegang tot deze folder te krijgen"
+msgstr "Een functionerend netwerk is nodig om toegang tot deze map te krijgen"
 
 #: src/View/ViewContainer.vala:382
 msgid "This Folder Does Not Belong to You"
-msgstr "Deze folder is niet van u"
+msgstr "Deze map is niet van u"
 
 #: src/View/ViewContainer.vala:383
 msgid "You don't have permission to view this folder."
-msgstr "U heeft niet de rechten om deze folder te bekijken."
+msgstr "U bezit niet de rechten om deze map te bekijken."
 
 #: src/View/ViewContainer.vala:385
 msgid "Unable to Mount Folder"
-msgstr "De folder kan niet aangekoppeld worden"
+msgstr "De map kon niet aangekoppeld worden"
 
 #: src/View/ViewContainer.vala:386
 msgid "Could not connect to the server for this folder."
-msgstr "Kon niet met de server verbinden voor deze folder."
+msgstr "Kon niet met de server verbinden voor deze map."
 
 #: src/View/ViewContainer.vala:389
 msgid "Unable to Display Folder Contents"
-msgstr "De inhoud van de folder kan niet weergeven worden"
+msgstr "De inhoud van de map kan niet weergeven worden"
 
 #: src/View/ViewContainer.vala:390
 msgid "The operation timed out."
@@ -2297,11 +2288,11 @@ msgstr "De bewerking duurde te lang."
 
 #: src/View/ViewContainer.vala:392
 msgid "Unable to Show Folder"
-msgstr "De folder kan niet worden weergegeven"
+msgstr "De map kan niet worden weergegeven"
 
 #: src/View/ViewContainer.vala:393
 msgid "The server for this folder could not be located."
-msgstr "De server voor deze folder kon niet gevonden worden."
+msgstr "De server voor deze map kon niet gevonden worden."
 
 #: src/View/ViewContainer.vala:404
 msgid "File not Found"
@@ -2367,7 +2358,7 @@ msgstr "Niet aangekoppeld"
 
 #: src/View/Sidebar/BookmarkListBox.vala:129
 msgid "View the home folder"
-msgstr "Bekijk de persoonlijke folder"
+msgstr "Bekijk de persoonlijke map"
 
 #: src/View/Sidebar/BookmarkListBox.vala:146
 msgid "View the list of recently used files"
@@ -2412,7 +2403,7 @@ msgstr "Bladwijzers"
 
 #: src/View/Sidebar/SidebarWindow.vala:46
 msgid "Common places plus saved folders and files"
-msgstr "Algemene plaatsen en bewaarde folders en bestanden"
+msgstr "Algemene plaatsen en bewaarde mappen en bestanden"
 
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
 #: src/View/Sidebar/SidebarWindow.vala:53
@@ -2478,11 +2469,11 @@ msgstr "Dubbelklik om te navigeren"
 
 #: src/View/Widgets/HeaderBar.vala:155
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr "Dubbelklik op een folder opent het, enkelklik selecteert het"
+msgstr "Dubbelklik op een map om het te openen, enkelklik selecteert het"
 
 #: src/View/Widgets/HeaderBar.vala:160
 msgid "Sort Folders before Files"
-msgstr "Folder sorteren voor bestanden"
+msgstr "Mappen sorteren voor bestanden"
 
 #: src/View/Widgets/HeaderBar.vala:164
 msgid "Show in View"
@@ -2514,7 +2505,7 @@ msgstr "Er is geen opdracht op opnieuw uit te voeren"
 
 #: src/View/Widgets/LocationBar.vala:196
 msgid "Reload this folder"
-msgstr "Herlaad deze folder"
+msgstr "Herlaad deze map"
 
 #: src/View/Widgets/LocationBar.vala:209
 msgid "Searching…"
@@ -2523,7 +2514,7 @@ msgstr "Zoeken…"
 #: src/View/Widgets/OverlayBar.vala:162
 #, c-format
 msgid "%u folders"
-msgstr "%u folders"
+msgstr "%u mappen"
 
 #: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
 #, c-format
@@ -2546,8 +2537,8 @@ msgstr "%u items geselecteerd (%s)"
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
-msgstr[0] "%u ondergelegen folder, "
-msgstr[1] "%u ondergelegen folders, "
+msgstr[0] "%u submap, "
+msgstr[1] "%u submappen, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:232
@@ -2594,15 +2585,18 @@ msgstr "Meer resultaten…"
 
 #: src/View/Widgets/SearchResults.vala:281
 msgid "In This Folder"
-msgstr "In deze folder"
+msgstr "In deze map"
 
 #: src/View/Widgets/SearchResults.vala:285
 msgid "Below This Folder"
-msgstr "Onder deze folder"
+msgstr "Onder deze map"
 
 #: src/View/Widgets/SearchResults.vala:294
 msgid "Recently Used"
 msgstr "Recent gebruikt"
+
+#~ msgid "----"
+#~ msgstr "----"
 
 #~ msgctxt "bulk-rename"
 #~ msgid "Unchanged"
