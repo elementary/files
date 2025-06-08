@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 17:19+0000\n"
+"POT-Creation-Date: 2025-06-06 14:04+0000\n"
 "PO-Revision-Date: 2021-06-19 20:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -42,7 +42,7 @@ msgstr ""
 msgid "Open File as Read Only"
 msgstr ""
 
-#: filechooser-portal/FileChooserDialog.vala:376
+#: filechooser-portal/FileChooserDialog.vala:378
 #, fuzzy
 msgid "Enter new filename"
 msgstr "नवीन फाइल"
@@ -52,7 +52,7 @@ msgstr "नवीन फाइल"
 msgid "Select"
 msgstr " निवडले"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:311
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:313
 msgid "Open"
 msgstr "उघडा"
 
@@ -469,12 +469,12 @@ msgstr "\"%s\" ची मूळ स्थान निर्धारित क�
 msgid "The item cannot be restored from trash"
 msgstr "आयटम कचर्यामधून पुनर्संचयित केला जाऊ शकत नाही"
 
-#: libcore/FileUtils.vala:183
+#: libcore/FileUtils.vala:184
 #, c-format
 msgid "The original folder %s no longer exists"
 msgstr "मूळ फोल्डर %s आता अस्तित्त्वात नाही"
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:185
 #, fuzzy
 #| msgid ""
 #| "The folder will be recreated and selected files that were originally "
@@ -486,51 +486,51 @@ msgid ""
 msgstr ""
 "हे फोल्डर पुन्हा तयार केले जाईल आणि निवडलेल्या फायली त्यामध्ये पुनर्संचयित केल्या जातील"
 
-#: libcore/FileUtils.vala:188
+#: libcore/FileUtils.vala:189
 msgid "Ignore"
 msgstr "दुर्लक्ष करा"
 
-#: libcore/FileUtils.vala:189
+#: libcore/FileUtils.vala:190
 msgid "Recreate"
 msgstr "पुन्हा तयार करा"
 
-#: libcore/FileUtils.vala:201
+#: libcore/FileUtils.vala:200
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
 "%s फोल्डर पुन्हा तयार करणे शक्य झाले नाही. या फोल्डरमधील सर्व फायलींकडे दुर्लक्ष होईल"
 
-#: libcore/FileUtils.vala:567
+#: libcore/FileUtils.vala:572
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "'%s' या नावाने पुनर्नामित करणे शक्य नाही"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:658
+#: libcore/FileUtils.vala:663
 #, c-format
 msgid "Today at %s"
 msgstr "आज %s वाजता"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:666
+#: libcore/FileUtils.vala:671
 #, c-format
 msgid "Yesterday at %s"
 msgstr "काल %s वाजता"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:674
+#: libcore/FileUtils.vala:679
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A %s वाजता"
 
-#: libcore/FileUtils.vala:899
+#: libcore/FileUtils.vala:904
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d सेकंद"
 msgstr[1] "%'d सेकंद"
 
-#: libcore/FileUtils.vala:903 libcore/FileUtils.vala:911
+#: libcore/FileUtils.vala:908 libcore/FileUtils.vala:916
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -539,19 +539,19 @@ msgstr[1] "%'d मिनिटे"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:910 src/Dialogs/PropertiesWindow.vala:1253
+#: libcore/FileUtils.vala:915 src/Dialogs/PropertiesWindow.vala:1253
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:910
+#: libcore/FileUtils.vala:915
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d तास"
 msgstr[1] "%'d तास"
 
-#: libcore/FileUtils.vala:914
+#: libcore/FileUtils.vala:919
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -559,22 +559,22 @@ msgstr[0] "अंदाजे %'d तास"
 msgstr[1] "अंदाजे %'d तास"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:922
+#: libcore/FileUtils.vala:927
 msgid "copy"
 msgstr "प्रतिकृती"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:929
 msgid "link"
 msgstr "दुवा"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:926
+#: libcore/FileUtils.vala:931
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:928
+#: libcore/FileUtils.vala:933
 msgid ")"
 msgstr ")"
 
@@ -1674,7 +1674,7 @@ msgid "Bulk Rename"
 msgstr "पुनर्नामित करा"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Rename"
 msgstr "पुनर्नामित करा"
 
@@ -1769,7 +1769,7 @@ msgstr ""
 msgid "%0*d,%0*d,%0*d…"
 msgstr ""
 
-#: src/Dialogs/ChooseAppDialog.vala:43
+#: src/Dialogs/ChooseAppDialog.vala:45
 msgid "Set as default"
 msgstr "डीफॉल्ट म्हणून सेट करा"
 
@@ -2346,23 +2346,23 @@ msgstr "अलीकडे वापरलेल्या फायलींच�
 msgid "Open the Trash"
 msgstr "कचरा उघडा"
 
-#: src/View/Sidebar/BookmarkRow.vala:307
+#: src/View/Sidebar/BookmarkRow.vala:309
 msgid "Open in New _Tab"
 msgstr "(_T)नवीन टॅब मध्ये उघडा"
 
-#: src/View/Sidebar/BookmarkRow.vala:308
+#: src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open in New _Window"
 msgstr "(_W)नवीन विंडो मध्ये उघडा"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:334
 msgid "Remove"
 msgstr "काढा"
 
-#: src/View/Sidebar/BookmarkRow.vala:350
+#: src/View/Sidebar/BookmarkRow.vala:352
 msgid "Permanently Delete All Trash"
 msgstr "कचरापेटीमधून सर्व आयटम कायमचे हटवा"
 
-#: src/View/Sidebar/BookmarkRow.vala:350
+#: src/View/Sidebar/BookmarkRow.vala:352
 #, fuzzy
 msgid "Permanently Delete Trash"
 msgstr "कचरापेटीमधून सर्व आयटम कायमचे हटवा"
