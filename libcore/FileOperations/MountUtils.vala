@@ -81,32 +81,17 @@ namespace Files.FileOperations {
     }
 
     public static async void safely_remove_drive (Drive drive, Gtk.Window? parent) {
-        // First unmount any mounted volumes
-        bool stopped = false;
-        if (drive.can_stop ()) {
-            foreach (var vol in drive.get_volumes ()) {
-                var mount = vol.get_mount ();
-                if (mount != null && !yield unmount_mount (mount, parent)) {
-                    return;
-                }
-            }
+        yield eject_drive (drive, parent);
 
-            var mount_op = new Gtk.MountOperation (parent);
-            try {
-                yield drive.stop (
-                    GLib.MountUnmountFlags.NONE,
-                    mount_op,
-                    null
-                );
-
-                stopped = true;
-            } catch (Error e) {
-                warning ("Unable to stop drive %s: %s", drive.get_name (), e.message);
-            }
-        }
-
-        if (!stopped && drive.can_eject ()) {
-            yield eject_drive (drive, parent);
+        var mount_op = new Gtk.MountOperation (parent);
+        try {
+            yield drive.stop (
+                GLib.MountUnmountFlags.NONE,
+                mount_op,
+                null
+            );
+        } catch (Error e) {
+            warning ("Unable to stop drive %s: %s", drive.get_name (), e.message);
         }
     }
 
