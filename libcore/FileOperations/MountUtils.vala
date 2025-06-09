@@ -83,14 +83,14 @@ namespace Files.FileOperations {
     public static async void safely_remove_drive (Drive drive, Gtk.Window? parent) {
         // First unmount any mounted volumes
         bool stopped = false;
-        if (drive.can_stop ()) {
-            foreach (var vol in drive.get_volumes ()) {
-                var mount = vol.get_mount ();
-                if (mount != null && !yield unmount_mount (mount, parent)) {
-                    return;
-                }
+        foreach (var vol in drive.get_volumes ()) {
+            var mount = vol.get_mount ();
+            if (mount != null && !yield unmount_mount (mount, parent)) {
+                return;
             }
+        }
 
+        if (drive.can_stop ()) {
             var mount_op = new Gtk.MountOperation (parent);
             try {
                 yield drive.stop (
