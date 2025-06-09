@@ -13,7 +13,7 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    Authors : Jeremy Wootten <jeremy@elementaryos.org>
+    Authors : Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 namespace Files.FileUtils {
     /**
@@ -24,8 +24,14 @@ namespace Files.FileUtils {
     public GLib.List<GLib.File> files_from_uris (string uris) {
         var result = new GLib.List<GLib.File> ();
         var uri_list = GLib.Uri.list_extract_uris (uris);
+        string unquoted_uri;
         foreach (unowned string uri in uri_list) {
-            result.append (GLib.File.new_for_uri (uri));
+            try {
+                unquoted_uri = Shell.unquote (uri); // Extracted uri may be quoted
+                result.append (GLib.File.new_for_uri (unquoted_uri));
+            } catch (Error e) {
+                warning ("Error when unquoting %s. %s", uri, e.message);
+            }
         }
 
         return result;
@@ -47,7 +53,7 @@ namespace Files.FileUtils {
     }
 
     public GLib.File? get_file_for_path (string? path) {
-        string? new_path = sanitize_path (path);
+        string? new_path = sanitize_path (path, null, true);
 
         if (new_path != null && new_path.length > 0) {
             return GLib.File.new_for_commandline_arg (new_path);
@@ -173,47 +179,46 @@ namespace Files.FileUtils {
             return true;
         }
 
+        bool success = false;
         var dialog = new Granite.MessageDialog.with_image_from_icon_name (
             _("The original folder %s no longer exists").printf (file.get_path ()),
-            _("Would you like to recreate it?"),
+            _("The folder can be recreated and selected files that were originally there will be restored to it. Otherwise, files that were in this folder will not be restored."),
             "dialog-question",
             Gtk.ButtonsType.NONE
         );
-
-        var ignore_button = dialog.add_button (_("Ignore"), Gtk.ResponseType.CANCEL);
-        ignore_button.tooltip_text = _("No files that were in this folder will be restored");
-        var recreate_button = dialog.add_button (_("Recreate"), Gtk.ResponseType.ACCEPT);
-        recreate_button.tooltip_text =
-             _ ("The folder will be recreated and selected files that were originally there will be restored to it");
-
+        dialog.add_button (_("Ignore"), Gtk.ResponseType.CANCEL);
+        dialog.add_button (_("Recreate"), Gtk.ResponseType.ACCEPT);
         dialog.set_default_response (Gtk.ResponseType.ACCEPT);
 
-        var response = dialog.run ();
-        dialog.destroy ();
-        switch (response) {
-            case Gtk.ResponseType.ACCEPT:
-                try {
-                    file.make_directory_with_parents ();
-                    return true;
-                } catch (Error e) {
-                    var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
-                        _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
-                        e.message,
-                        "dialog-error",
-                        Gtk.ButtonsType.CLOSE
-                    );
+        dialog.response.connect ((res) => {
+            switch (res) {
+                case Gtk.ResponseType.ACCEPT:
+                    try {
+                        success = file.make_directory_with_parents ();
+                    } catch (Error e) {
+                        var error_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+                            _("Could not recreate folder %s. Will ignore all files in this folder").printf (file.get_path ()),
+                            e.message,
+                            "dialog-error",
+                            Gtk.ButtonsType.CLOSE
+                        );
+                        error_dialog.response.connect (() => error_dialog.close ());
+                        error_dialog.present ();
+                    }
 
-                    error_dialog.run ();
-                    error_dialog.destroy ();
-                }
+                    break;
 
-                break;
+                default:
+                    break;
+            }
 
-            default:
-                break;
-        }
+            dialog.destroy ();
+        });
 
-        return false;
+        // Need to continue to use run () in Gtk3 in order to get modal dialog as
+        // we need to return a result
+        dialog.run ();
+        return success;
     }
 
     public string? get_path_for_symlink (GLib.File file) {
@@ -280,8 +285,8 @@ namespace Files.FileUtils {
       **/
 
     public string sanitize_path (string? input_uri,
-                                 string? input_current_uri = null,
-                                 bool include_file_protocol = true) {
+                                 string? input_current_uri,
+                                 bool include_file_protocol) {
         string unsanitized_uri;
         string unsanitized_current_uri;
         string path = "";
@@ -389,7 +394,8 @@ namespace Files.FileUtils {
             /* ROOT_FS, TRASH and RECENT must have 3 separators after protocol, other protocols have 2 */
             if (!scheme.has_prefix (Files.ROOT_FS_URI) &&
                 !scheme.has_prefix (Files.TRASH_URI) &&
-                !scheme.has_prefix (Files.RECENT_URI)) {
+                !scheme.has_prefix (Files.RECENT_URI) &&
+                !scheme.has_prefix (Files.ADMIN_URI)) {
 
                 new_path = new_path.replace ("///", "//");
             }
@@ -1196,6 +1202,7 @@ namespace Files.FileUtils {
 
 namespace Files {
     public const string ROOT_FS_URI = "file://";
+    public const string ADMIN_URI = "admin://";
     public const string TRASH_URI = "trash://";
     public const string NETWORK_URI = "network://";
     public const string RECENT_URI = "recent://";

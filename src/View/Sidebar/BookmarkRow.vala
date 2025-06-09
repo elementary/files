@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301, USA.
  *
- * Authors: Jeremy Wootten <jeremy@elementaryos.org>
+ * Authors: Jeremy Wootten <jeremywootten@gmail.com>
  */
 
 public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
@@ -27,7 +27,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     static Gtk.TargetEntry[] source_targets = {
         {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.BOOKMARK_ROW}
     };
-
     /* Targets accepted when dropped onto movable BookmarkRow
      * Either BookmarkRow id as text or a list of uris as text is accepted at the moment
      * Depending on where it is dropped (edge or middle) it will either be used to create a
@@ -36,7 +35,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
         {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.BOOKMARK_ROW},
     };
-
     static Gdk.Atom text_data_atom = Gdk.Atom.intern_static_string ("text/plain");
 
     /* Each row gets a unique id.  The methods relating to this are in the SidebarItemInterface */
@@ -49,23 +47,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         item_id_map = new Gee.HashMap<uint32, SidebarItemInterface> ();
     }
 
-    private bool valid = true; //Set to false if scheduled for removal
-    private Gtk.Image icon;
-    private Files.File target_file;
-    private List<GLib.File> drop_file_list = null;
-    private string? drop_text = null;
-    private bool drop_occurred = false;
-    private Gdk.DragAction? current_suggested_action = Gdk.DragAction.DEFAULT;
-    private Gtk.EventControllerKey key_controller;
-    private Gtk.GestureMultiPress button_controller;
-
-    protected Gtk.Grid content_grid;
-    protected Gtk.Grid icon_label_grid;
-    protected Gtk.Stack label_stack;
-    protected Gtk.Entry editable;
-    protected Gtk.Label label;
-    protected Gtk.Revealer drop_revealer;
-
+    public SidebarListInterface list { get; set construct; }
+    public Icon gicon { get; set construct; }
+    public string uri { get; set construct; }
     public string custom_name { get; set; default = "";}
     public string display_name {
         get {
@@ -76,21 +60,32 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             }
         }
     }
-
-    public SidebarListInterface list { get; set construct; }
     public uint32 id { get; set construct; }
-    public string uri { get; set construct; }
-    public Icon gicon { get; set construct; }
     public bool pinned { get; set construct; } // Cannot be dragged
     public bool permanent { get; set construct; } // Cannot be removed
     public bool can_insert_before { get; set; default = true; }
     public bool can_insert_after { get; set; default = true; }
-
     public MenuModel? menu_model {get; set; default = null;}
     public ActionGroup? action_group {get; set; default = null;}
     public string? action_group_namespace { get; set; default = null;}
 
+    protected Gtk.Grid content_grid;
+    protected Gtk.Grid icon_label_grid;
+    protected Gtk.Stack label_stack;
+    protected Gtk.Entry editable;
+    protected Gtk.Label label;
+    protected Gtk.Revealer drop_revealer;
+
+    private Gtk.Image icon;
+    protected Files.File target_file;
+    private List<GLib.File> drop_file_list = null;
+    private Gdk.DragAction? current_suggested_action = Gdk.DragAction.DEFAULT;
+    private Gtk.EventControllerKey key_controller;
+    private Gtk.GestureMultiPress button_controller;
     private SimpleAction empty_all_trash_action;
+    private string? drop_text = null;
+    private bool drop_occurred = false;
+    private bool valid = true; //Set to false if scheduled for removal
 
     public BookmarkRow (string _custom_name,
                         string uri,
@@ -132,7 +127,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         };
 
         label_stack = new Gtk.Stack () {
-            homogeneous = false
+            hhomogeneous = false,
+            vhomogeneous = false
         };
         label_stack.add_named (label, "label");
 
@@ -154,26 +150,23 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         label_stack.visible_child_name = "label";
 
         icon = new Gtk.Image.from_gicon (gicon, Gtk.IconSize.MENU);
-
         icon_label_grid = new Gtk.Grid () {
             column_spacing = 6
         };
+
         icon_label_grid.attach (icon, 0, 0, 1, 2);
         icon_label_grid.add (label_stack);
 
-        var event_box = new Gtk.EventBox () {
-            above_child = false
-        };
-        event_box.add (icon_label_grid);
-
         content_grid = new Gtk.Grid ();
-        content_grid.attach (event_box, 0, 0);
+        content_grid.attach (icon_label_grid, 0, 0);
 
-        add (content_grid);
+        var event_box = new Gtk.EventBox ();
+        event_box.add (content_grid);
+        add (event_box);
         show_all ();
 
         key_controller = new Gtk.EventControllerKey (this) {
-            propagation_phase = BUBBLE
+            propagation_phase = CAPTURE
         };
         key_controller.key_pressed.connect (on_key_press_event);
 
@@ -524,7 +517,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                               y > row_height - 1;
 
                     // When dropping onto a row, determine what actions are possible
-                    if (!reveal && drop_file_list != null) {
+                    if (target_file != null && !reveal && drop_file_list != null) {
                         Files.DndHandler.file_accepts_drop (
                             target_file,
                             drop_file_list,

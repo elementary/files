@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301, USA.
  *
- * Authors : Jeremy Wootten <jeremy@elementaryos.org>
+ * Authors : Jeremy Wootten <jeremywootten@gmail.com>
  */
 
 public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
@@ -82,7 +82,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         if (index >= 0) {
             list_box.insert (row, index);
         } else {
-            list_box.add (row);
+            list_box.insert (row, -1);
         }
 
         return row;
@@ -195,12 +195,11 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
                                        int pos = 0) {
 
         int pinned = 0; // Assume pinned items only at start and end of list
-        foreach (unowned var child in list_box.get_children ()) {
-            if (((BookmarkRow)child).pinned) {
-                pinned++;
-            } else {
-                break;
-            }
+        int index = 0;
+        Gtk.ListBoxRow? row = list_box.get_row_at_index (index);
+        while (row != null && ((BookmarkRow) row).pinned) {
+            pinned++;
+            row = list_box.get_row_at_index (++index);
         }
 
         if (pos < pinned) {
@@ -218,25 +217,26 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
     public override bool remove_item_by_id (uint32 id) {
         bool removed = false;
-        list_box.@foreach ((child) => {
-            if (child is BookmarkRow) {
-                unowned var row = (BookmarkRow)child;
-               if (!row.permanent && row.id == id) {
+        int index = 0;
+        Gtk.ListBoxRow? row = list_box.get_row_at_index (index);
+        while (row != null) {
+            if (row is BookmarkRow) {
+                unowned var bm = (BookmarkRow)row;
+                if (!bm.permanent && bm.id == id) {
                     list_box.remove (row);
-                    bookmark_list.delete_items_with_uri (row.uri); //Assumes no duplicates
+                    bookmark_list.delete_items_with_uri (bm.uri); //Assumes no duplicates
                     removed = true;
+                    break;
                 }
             }
-        });
+
+            row = list_box.get_row_at_index (++index);
+        }
 
         return removed;
     }
 
     public SidebarItemInterface? get_item_at_index (int index) {
-        if (index < 0 || index > list_box.get_children ().length ()) {
-            return null;
-        }
-
         return (SidebarItemInterface?) list_box.get_row_at_index (index);
     }
 

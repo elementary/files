@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     Author: ammonkey <am.monkeyd@gmail.com>
-            Jeremy Wootten <jeremy@elementaryos.org>
+            Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 
 public class Files.Directory : Object {
@@ -92,6 +92,7 @@ public class Files.Directory : Object {
     public bool is_trash {get; private set;}
     public bool is_network {get; private set;}
     public bool is_recent {get; private set;}
+    public bool is_admin {get; private set;}
     public bool is_no_info {get; private set;}
     public bool has_mounts {get; private set;}
     public bool has_trash_dirs {get; private set;}
@@ -170,6 +171,7 @@ public class Files.Directory : Object {
         scheme = location.get_uri_scheme ();
         is_trash = FileUtils.location_is_in_trash (location);
         is_recent = (scheme == "recent");
+        is_admin = (scheme == "admin");
         //Try lifting requirement for info on remote connections
         //TODO Not sure whether the afc protocol (i-phone) is appropriate here. Safer to assume it is.
         is_no_info = ("cdda mtp gphoto2 ssh sftp afp afc dav davs".contains (scheme));

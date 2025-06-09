@@ -16,7 +16,7 @@
 
     Authors: Jordi Puigdellívol <jordi@gloobus.net>
              ammonkey <am.monkeyd@gmail.com>
-             Jeremy Wootten <jeremy@elementaryos.org>
+             Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 
     void on_bus_aquired (DBusConnection conn, string n) {

@@ -91,10 +91,6 @@ namespace Files.View.Chrome {
             get {
                 return search_term != "";
             }
-
-            set {
-                search_term = "";
-            }
         }
 
         private new Gtk.Widget parent;
@@ -359,6 +355,8 @@ namespace Files.View.Chrome {
             }
 
             clear ();
+
+            search_term = "";
         }
 
         private uint search_timeout_id = 0;

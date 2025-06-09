@@ -15,7 +15,7 @@
     this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street,
     Fifth Floor Boston, MA 02110-1335 USA.
 
-    Authors : Jeremy Wootten <jeremy@elementaryos.org>
+    Authors : Jeremy Wootten <jeremywootten@gmail.com>
 
     Some convenience wrappers around libcanberra for using sounds within io.elementary.files.
 
@@ -46,6 +46,7 @@ namespace PF {
             if (ca_context != null) {
                 ca_context.change_props (Canberra.PROP_APPLICATION_NAME, _(PF.Sound.APP_TITLE),
                                          Canberra.PROP_APPLICATION_ID, PF.Sound.APP_ID,
+                                         Canberra.PROP_CANBERRA_XDG_THEME_NAME, PF.Sound.THEME,
                                          Canberra.PROP_APPLICATION_ICON_NAME, PF.Sound.APP_LOGO);
                 ca_context.open ();
             }
@@ -72,7 +73,7 @@ namespace PF {
         const string APP_TITLE = "Files";
         const string APP_ID = "io.elementary.files";
         const string APP_LOGO = "system-file-manager";
-        public const string THEME = "freedesktop";
+        public const string THEME = "elementary";
         public const string DELETE = "trash-empty";
         public const string EMPTY_TRASH = "trash-empty";
     }

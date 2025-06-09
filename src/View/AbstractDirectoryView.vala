@@ -16,7 +16,7 @@
 * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301 USA
 *
-* Authored by: Jeremy Wootten <jeremy@elementaryos.org>
+* Authored by: Jeremy Wootten <jeremywootten@gmail.com>
 */
 
 /* Implementations of AbstractDirectoryView are
@@ -38,7 +38,7 @@ namespace Files {
             INVALID
         }
 
-        const int MAX_TEMPLATES = 32;
+        const int MAX_TEMPLATES = 2048;
 
         const Gtk.TargetEntry [] DRAG_TARGETS = {
             {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.STRING},
@@ -212,8 +212,6 @@ namespace Files {
         protected GLib.List<Files.File> selected_files = null;
         private bool selected_files_invalid = true;
 
-        private static GLib.List<GLib.File> templates = null;
-
         private GLib.AppInfo default_app;
         private Gtk.TreePath? hover_path = null;
 
@@ -278,6 +276,7 @@ namespace Files {
 
         protected Gtk.EventControllerKey key_controller;
         protected Gtk.GestureMultiPress button_controller;
+        protected Gtk.EventControllerScroll scroll_controller;
         protected Gtk.EventControllerMotion motion_controller;
 
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
@@ -327,10 +326,18 @@ namespace Files {
                    schedule_thumbnail_color_tag_timeout ();
                 });
 
+                scroll_controller = new Gtk.EventControllerScroll (view, NONE);
+                scroll_controller.scroll.connect (on_scroll_event);
+
                 key_controller = new Gtk.EventControllerKey (view) {
                     propagation_phase = BUBBLE
                 };
                 key_controller.key_pressed.connect (on_view_key_press_event);
+                // Workaround for scroll events getting consumed by scroll controller
+                // Only handle scroll events when a key is pressed (for zooming), otherwise they will be handled
+                // by the native widget
+                key_controller.key_pressed.connect (() => {scroll_controller.flags = VERTICAL; return false;});
+                key_controller.key_released.connect (() => scroll_controller.flags = NONE);
 
                 // Hack required to suppress native behaviour when dragging
                 // multiple selected items with GestureMultiPress event controller
@@ -340,7 +347,7 @@ namespace Files {
                 });
 
                 button_controller = new Gtk.GestureMultiPress (view) {
-                    propagation_phase = CAPTURE,
+                    propagation_phase = TARGET,  //Allow editable widget to receive button press event first
                     button = 0
                 };
                 button_controller.pressed.connect (on_view_button_press_event);
@@ -384,8 +391,6 @@ namespace Files {
                 clipboard.changed.connect (on_clipboard_changed);
                 on_clipboard_changed ();
             });
-
-            scroll_event.connect (on_scroll_event);
 
             get_vadjustment ().value_changed.connect_after (() => {
                 schedule_thumbnail_color_tag_timeout ();
@@ -514,9 +519,9 @@ namespace Files {
             Gtk.TreeIter? iter;
             foreach (Files.File f in files_to_select) {
                 /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
-                if (model.get_first_iter_for_file (f, out iter)) {
+                var path = model.get_path_for_first_file (f);
+                if (path != null) {
                     count++;
-                    var path = model.get_path (iter);
                     /* Cursor follows if matches focus location*/
                     select_path (path, focus_file != null && focus_file.equal (f.location));
                 }
@@ -624,33 +629,17 @@ namespace Files {
         }
 
         public void select_gof_file (Files.File file) {
-            Gtk.TreeIter? iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
-            }
-
-            var path = model.get_path (iter);
+            var path = model.get_path_for_first_file (file);
             set_cursor (path, false, true, false);
         }
 
         protected void select_and_scroll_to_gof_file (Files.File file) {
-            Gtk.TreeIter iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
-            }
-
-            var path = model.get_path (iter);
+            var path = model.get_path_for_first_file (file);
             set_cursor (path, false, true, true);
         }
 
         protected void add_gof_file_to_selection (Files.File file) {
-            Gtk.TreeIter iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
-            }
-
-            var path = model.get_path (iter);
-            select_path (path); /* Cursor does not follow */
+            select_path (model.get_path_for_first_file (file)); /* Cursor does not follow */
         }
 
     /** Directory signal handlers. */
@@ -760,49 +749,6 @@ namespace Files {
             });
 
             return only_folders;
-        }
-
-    /** Handle scroll events */
-        protected bool handle_scroll_event (Gdk.EventScroll event) {
-            if (is_frozen) {
-                return true;
-            }
-
-            Gdk.ModifierType state;
-            event.get_state (out state);
-
-            if ((state & Gdk.ModifierType.CONTROL_MASK) > 0) {
-                Gdk.ScrollDirection direction;
-                double delta_x, delta_y;
-                if (event.get_scroll_direction (out direction)) { // Only true for discrete scrolling
-                    if (direction == Gdk.ScrollDirection.UP) {
-                        zoom_in ();
-                        return true;
-
-                    } else if (direction == Gdk.ScrollDirection.DOWN) {
-                        zoom_out ();
-                        return true;
-                    }
-
-                    return false;
-                } else if (event.get_scroll_deltas (out delta_x, out delta_y)) {
-                    /* try to emulate a normal scrolling event by summing deltas.
-                     * step size of 0.5 chosen to match sensitivity */
-                    total_delta_y += delta_y;
-
-                    if (total_delta_y >= 0.5) {
-                        total_delta_y = 0;
-                        zoom_out ();
-                    } else if (total_delta_y <= -0.5) {
-                        total_delta_y = 0;
-                        zoom_in ();
-                    }
-
-                    return true;
-                }
-            }
-
-            return false;
         }
 
         protected GLib.List<Files.File>
@@ -929,9 +875,7 @@ namespace Files {
                 });
             }
 
-            Gtk.TreeIter? iter = null;
-            model.get_first_iter_for_file (file_list.first ().data, out iter);
-            deleted_path = model.get_path (iter);
+            deleted_path = model.get_path_for_first_file (file_list.first ().data);
 
             if (locations != null) {
                 locations.reverse ();
@@ -1236,8 +1180,8 @@ namespace Files {
         }
 
         private void on_background_action_create_from (GLib.SimpleAction action, GLib.Variant? param) {
-            int index = int.parse (param.get_string ());
-            create_from_template (templates.nth_data ((uint)index));
+            var path = param.get_string ();
+            create_from_template (path);
         }
 
         private void on_background_action_sort_by_changed (GLib.SimpleAction action, GLib.Variant? val) {
@@ -2380,50 +2324,70 @@ namespace Files {
                 submenu.add (folder_menuitem);
                 submenu.add (file_menuitem);
 
-                /* Potential optimisation - do just once when app starts or view created */
-                templates = null;
                 unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
                 if (template_path != null) {
-                    var template_folder = GLib.File.new_for_path (template_path);
-                    load_templates_from_folder (template_folder);
-
-                    if (templates.length () > 0) { //Can be assumed to be limited length
-                        submenu.add (new Gtk.SeparatorMenuItem ());
-
-                        // We need to get directories first
-                        templates.reverse ();
-
-                        var active_submenu = submenu;
-                        int index = 0;
-                        foreach (unowned GLib.File template in templates) {
-                            var label = template.get_basename ();
-                            var ftype = template.query_file_type (GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
-                            if (ftype == GLib.FileType.DIRECTORY) {
-                                if (template == template_folder) {
-                                    active_submenu = submenu;
-                                } else {
-                                    active_submenu = new Gtk.Menu ();
-
-                                    var submenu_item = new Gtk.MenuItem.with_label (label);
-                                    submenu_item.submenu = active_submenu;
-
-                                    submenu.add (submenu_item);
-                                }
-                            } else {
-                                var template_menuitem = new Gtk.MenuItem.with_label (label);
-                                template_menuitem.set_detailed_action_name ("background.create-from::" +
-                                                                            index.to_string ());
-
-                                active_submenu.add (template_menuitem);
-
-                            }
-
-                            index++;
-                        }
-                    }
+                    load_templates_from_folder (GLib.File.new_for_path (template_path), submenu);
                 }
 
                 label = _("New");
+            }
+
+            private void load_templates_from_folder (GLib.File template_folder, Gtk.Menu submenu, uint count = 0) {
+                GLib.List<GLib.File> file_list = null;
+                GLib.List<GLib.File> folder_list = null;
+
+                GLib.FileEnumerator enumerator;
+                var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
+                try {
+                    enumerator = template_folder.enumerate_children ("standard::*", flags, null);
+                    GLib.File location;
+                    GLib.FileInfo? info = enumerator.next_file (null);
+
+                    while (count < MAX_TEMPLATES && (info != null)) {
+                        if (!info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_BACKUP)) {
+                            location = template_folder.get_child (info.get_name ());
+                            if (info.get_file_type () == GLib.FileType.DIRECTORY) {
+                                folder_list.prepend (location);
+                            } else {
+                                file_list.prepend (location);
+                                count ++;
+                            }
+                        }
+
+                        info = enumerator.next_file (null);
+                    }
+                } catch (GLib.Error error) {
+                    return;
+                }
+
+                if (folder_list.length () > 0) {
+                    folder_list.sort ((a, b) => {
+                        return strcmp (a.get_basename ().down (), b.get_basename ().down ());
+                    });
+
+                    folder_list.@foreach ((folder) => {
+                        var folder_menu = new Gtk.Menu ();
+                        var folder_menuitem = new Gtk.MenuItem.with_label (folder.get_basename ());
+                        folder_menuitem.submenu = folder_menu;
+                        submenu.add (folder_menuitem);
+                        load_templates_from_folder (folder, folder_menu);
+                    });
+                }
+
+                if (file_list.length () > 0) {
+                    file_list.sort ((a, b) => {
+                        return strcmp (a.get_basename ().down (), b.get_basename ().down ());
+                    });
+
+                    file_list.@foreach ((file) => {
+                        var template_menuitem = new Gtk.MenuItem.with_label (file.get_basename ()) {
+                            action_name = "background.create-from",
+                            action_target = file.get_path ()
+                        };
+
+                        submenu.add (template_menuitem);
+                    });
+                }
             }
         }
 
@@ -2562,56 +2526,6 @@ namespace Files {
             critical ("Action name not found: %s - cannot set state", name);
         }
 
-        private static void load_templates_from_folder (GLib.File template_folder) {
-            GLib.List<GLib.File> file_list = null;
-            GLib.List<GLib.File> folder_list = null;
-
-            GLib.FileEnumerator enumerator;
-            var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
-            try {
-                enumerator = template_folder.enumerate_children ("standard::*", flags, null);
-                uint count = templates.length (); //Assume to be limited in size
-                GLib.File location;
-                GLib.FileInfo? info = enumerator.next_file (null);
-
-                while (count < MAX_TEMPLATES && (info != null)) {
-                    if (!info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_HIDDEN) &&
-                        !info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_BACKUP)) {
-                        location = template_folder.get_child (info.get_name ());
-                        if (info.get_file_type () == GLib.FileType.DIRECTORY) {
-                            folder_list.prepend (location);
-                        } else {
-                            file_list.prepend (location);
-                            count ++;
-                        }
-                    }
-
-                    info = enumerator.next_file (null);
-                }
-            } catch (GLib.Error error) {
-                return;
-            }
-
-            if (file_list.length () > 0) { // Can assumed to be limited in length
-                file_list.sort ((a, b) => {
-                    return strcmp (a.get_basename ().down (), b.get_basename ().down ());
-                });
-
-                foreach (var file in file_list) {
-                    templates.append (file);
-                }
-
-                templates.append (template_folder);
-            }
-
-            if (folder_list.length () > 0) { //Can be assumed to be limited in length
-                /* recursively load templates from subdirectories */
-                folder_list.@foreach ((folder) => {
-                    load_templates_from_folder (folder);
-                });
-            }
-        }
-
         private void filter_this_app_from_open_with_apps () {
             unowned GLib.List<AppInfo> l = open_with_apps;
 
@@ -2665,9 +2579,10 @@ namespace Files {
 
         /** Menu action functions */
 
-        private void create_from_template (GLib.File template) {
+        private void create_from_template (string path) {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
+            var template = GLib.File.new_for_path (path);
             var new_name = (_("Untitled %s")).printf (template.get_basename ());
             FileOperations.new_file_from_template.begin (
                 this,
@@ -2921,10 +2836,6 @@ namespace Files {
             }
 
             var event = Gtk.get_current_event ();
-            if (((Gdk.EventKey)event).is_modifier == 1) {
-                return true;
-            }
-
             cancel_hover ();
 
             Gdk.ModifierType consumed_mods;
@@ -3251,35 +3162,29 @@ namespace Files {
             hover_path = null;
         }
 
-        protected virtual bool on_scroll_event (Gdk.EventScroll event) {
-            Gdk.ScrollDirection direction;
-            event.get_scroll_direction (out direction);
-            Gdk.ModifierType state;
-            event.get_state (out state);
-            if ((state & Gdk.ModifierType.CONTROL_MASK) == 0) {
-                double increment = 0.0;
-
-                switch (direction) {
-                    case Gdk.ScrollDirection.LEFT:
-                        increment = 5.0;
-                        break;
-
-                    case Gdk.ScrollDirection.RIGHT:
-                        increment = -5.0;
-                        break;
-
-                    case Gdk.ScrollDirection.SMOOTH:
-                        double delta_x;
-                        event.get_scroll_deltas (out delta_x, null);
-                        increment = delta_x * 10.0;
-                        break;
-
-                    default:
-                        break;
-                }
+        protected virtual void on_scroll_event (double dx, double dy) {
+            if (is_frozen) {
+                return;
             }
 
-            return handle_scroll_event (event);
+            Gdk.ModifierType state;
+            Gtk.get_current_event_state (out state);
+            if ((state & Gdk.ModifierType.CONTROL_MASK) > 0) {
+                /* try to emulate a normal scrolling event by summing deltas.
+                 * step size of 0.5 chosen to match sensitivity */
+                total_delta_y += dy;
+
+                if (total_delta_y >= 0.5) {
+                    total_delta_y = 0;
+                    zoom_out ();
+                } else if (total_delta_y <= -0.5) {
+                    total_delta_y = 0;
+                    zoom_in ();
+                }
+            } else {
+                // In case "key-released" signal was missed
+                scroll_controller.flags = NONE;
+            }
         }
 
     /** name renderer signals */
@@ -3443,6 +3348,7 @@ namespace Files {
 
         protected virtual void on_view_button_press_event (int n_press, double x, double y) {
             if (renaming) {
+                // Button press occurred outside editable widget - end editing.
                 /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
                 name_renderer.end_editing (false);
             }
@@ -3679,8 +3585,9 @@ namespace Files {
                 warning ("Trying to rename when frozen");
                 return;
             }
-            Gtk.TreeIter? iter = null;
-            if (!model.get_first_iter_for_file (file, out iter)) {
+
+            var path = model.get_path_for_first_file (file);
+            if (path == null) {
                 critical ("Failed to find rename file in model");
                 return;
             }
@@ -3689,8 +3596,6 @@ namespace Files {
             renaming = true;
             update_menu_actions ();
             is_frozen = true;
-            Gtk.TreePath path = model.get_path (iter);
-
             uint count = 0;
             bool ok_next_time = false;
             Gtk.TreePath? start_path = null;

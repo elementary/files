@@ -13,7 +13,7 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    Authors : Jeremy Wootten <jeremy@elementaryos.org>
+    Authors : Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 
 namespace Files {
@@ -45,4 +45,5 @@ public interface Files.SidebarInterface : Gtk.Widget {
         public abstract void sync_uri (string uri);
         public abstract void reload ();
         public abstract void on_free_space_change ();
+        public abstract void focus ();
 }

@@ -2,7 +2,7 @@
  * SPDX-License-Identifier: GPL-2.0+
  * SPDX-FileCopyrightText: 2020-2023 elementary, Inc. (https://elementary.io)
  *
- * Authors : Jeremy Wootten <jeremy@elementaryos.org>
+ * Authors : Jeremy Wootten <jeremywootten@gmail.com>
  */
 
 
@@ -228,6 +228,10 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     public void on_free_space_change () {
         /* We cannot be sure which devices will experience a freespace change so refresh all */
         device_listbox.refresh_info ();
+    }
+
+    public void focus () {
+        bookmark_listbox.focus ();
     }
 
     private class SidebarExpander : Gtk.ToggleButton {

@@ -146,7 +146,7 @@ namespace Files.View.Chrome {
     /****************************/
         public void completion_needed () {
             string? path = this.text;
-            if (path == null || path.length < 1) {
+            if (path == null || path.length < 1 || path.has_prefix ("admin:/")) {
                 return;
             }
 
@@ -163,7 +163,7 @@ namespace Files.View.Chrome {
                     return; // Nothing typed yet
                 }
 
-                var file = FileUtils.get_file_for_path (path);
+                GLib.File? file = FileUtils.get_file_for_path (FileUtils.sanitize_path (path, current_dir_path, true));
                 if (file == null) {
                     return;
                 }

@@ -17,25 +17,32 @@
  */
 
 public class Files.FileOperations.CommonJob {
+    protected const int NSEC_PER_MSEC = 1000000;
+    protected const int SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE = 15;
+
     [Compact]
     [CCode (cname = "SourceInfo")]
     protected class SourceInfo {
-        [CCode (has_target = false, cname = "CountProgressCallback")]
-        protected delegate void CountProgressCallback (Files.FileOperations.CommonJob job, Files.FileOperations.CommonJob.SourceInfo info);
+        internal int num_files;
+        internal int64 num_bytes;
+        internal int num_files_since_progress;
 
-        protected int num_files;
-        protected size_t num_bytes;
-        protected int num_files_since_progress;
-        protected weak CountProgressCallback count_callback;
+        public SourceInfo copy () {
+            return new SourceInfo () {
+                num_files = this.num_files,
+                num_bytes = this.num_bytes,
+                num_files_since_progress = this.num_files_since_progress,
+            };
+        }
     }
 
     [Compact]
     [CCode (cname = "TransferInfo")]
     protected class TransferInfo {
-        protected int num_files;
-        protected size_t num_bytes;
-        protected uint64 last_report_time;
-        protected int last_reported_files_left;
+        internal int num_files;
+        internal int64 num_bytes;
+        internal uint64 last_report_time;
+        internal int last_reported_files_left;
     }
 
     protected unowned Gtk.Window? parent_window;
@@ -62,6 +69,15 @@ public class Files.FileOperations.CommonJob {
         if (undo_redo_data != null) {
             Files.UndoManager.instance ().add_action ((owned) undo_redo_data);
         }
+    }
+
+    protected virtual unowned string get_scan_primary () {
+        GLib.warn_if_reached ();
+        return _("Error while copying.");
+    }
+
+    protected virtual void report_count_progress (CommonJob.SourceInfo source_info) {
+        GLib.warn_if_reached ();
     }
 
     protected void inhibit_power_manager (string message) {
@@ -253,6 +269,181 @@ public class Files.FileOperations.CommonJob {
             return;
         }
     }
+
+    private void count_file (GLib.FileInfo info, SourceInfo source_info) {
+        source_info.num_files += 1;
+        source_info.num_bytes += info.get_size ();
+        if (source_info.num_files_since_progress++ > 100) {
+            report_count_progress (source_info);
+            source_info.num_files_since_progress = 0;
+        }
+    }
+
+    private void scan_dir (GLib.File dir, SourceInfo source_info, GLib.Queue<GLib.File> dirs) {
+        var saved_source_info = source_info.copy ();
+        GLib.FileEnumerator? enumerator = null;
+        try {
+            enumerator = dir.enumerate_children (GLib.FileAttribute.STANDARD_NAME + "," +
+                                                 GLib.FileAttribute.STANDARD_TYPE + "," +
+                                                 GLib.FileAttribute.STANDARD_SIZE,
+                                                 GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                                                 cancellable);
+        } catch (Error e) {
+            if (e is GLib.IOError.CANCELLED) {
+                // Do nothing
+            } else {
+                var dir_basename = FileUtils.custom_basename_from_file (dir);
+                unowned string primary = get_scan_primary ();
+                string secondary;
+                string? details = null;
+                if (e is GLib.IOError.PERMISSION_DENIED) {
+                    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+                    secondary = _("The folder \"%s\" cannot be handled because you do not have permissions to read it.").printf (dir_basename);
+                } else {
+                    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+                    secondary = _("There was an error reading the folder \"%s\".").printf (dir_basename);
+                    details = e.message;
+                }
+
+                var response = run_warning (primary, secondary, details, false, CANCEL, RETRY, SKIP);
+
+                if (response == 0 || response == Gtk.ResponseType.DELETE_EVENT) {
+                    abort_job ();
+                } else if (response == 1) {
+                    source_info.num_files = saved_source_info.num_files;
+                    source_info.num_bytes = saved_source_info.num_bytes;
+                    source_info.num_files_since_progress = saved_source_info.num_files_since_progress;
+                    scan_dir (dir, source_info, dirs);
+                } else if (response == 2) {
+                    skip_readdir_error (dir);
+                } else {
+                    GLib.assert_not_reached ();
+                }
+            }
+
+            return;
+        }
+
+        try {
+            unowned GLib.FileInfo? info = null;
+            while ((info = enumerator.next_file (cancellable)) != null) {
+                count_file (info, source_info);
+                if (info.get_file_type () == FileType.DIRECTORY) {
+                    /* Push to head, since we want depth-first */
+                    var subdir = dir.get_child (info.get_name ());
+                    dirs.push_head (subdir);
+                }
+            }
+        } catch (Error e) {
+            if (e is GLib.IOError.CANCELLED) {
+                // Do nothing
+            } else {
+                var dir_basename = FileUtils.custom_basename_from_file (dir);
+                unowned string primary = get_scan_primary ();
+                string secondary;
+                string? details = null;
+                if (e is GLib.IOError.PERMISSION_DENIED) {
+                    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+                    secondary = _("Files in the folder \"%s\" cannot be handled because you do not have permissions to see them.").printf (dir_basename);
+                } else {
+                    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+                    secondary = _("There was an error getting information about the files in the folder \"%s\".").printf (dir_basename);
+                    details = e.message;
+                }
+
+                var response = run_warning (primary, secondary, details, false, CANCEL, SKIP_ALL, SKIP, RETRY);
+
+                if (response == 0 || response == Gtk.ResponseType.DELETE_EVENT) {
+                    abort_job ();
+                } else if (response == 1) {
+                    source_info = saved_source_info;
+                    scan_dir (dir, source_info, dirs);
+                } else if (response == 2) {
+                    skip_readdir_error (dir);
+                } else {
+                    GLib.assert_not_reached ();
+                }
+            }
+        }
+    }
+
+    private void scan_file (GLib.File file, SourceInfo source_info, GLib.Queue<GLib.File> dirs = new GLib.Queue<GLib.File> ()) {
+        try {
+            var info = file.query_info (GLib.FileAttribute.STANDARD_TYPE + "," + GLib.FileAttribute.STANDARD_SIZE, NOFOLLOW_SYMLINKS, cancellable);
+            count_file (info, source_info);
+            if (info.get_file_type () == GLib.FileType.DIRECTORY) {
+                dirs.push_head (file);
+            }
+        } catch (Error e) {
+            if (skip_all_error) {
+                skip_file (file);
+            } else if (e is GLib.IOError.CANCELLED) {
+                // Do nothing
+            } else {
+                var file_basename = FileUtils.custom_basename_from_file (file);
+                unowned string? primary = get_scan_primary ();
+                string secondary;
+                string? details = null;
+
+                if (e is GLib.IOError.PERMISSION_DENIED) {
+                    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+                    secondary = _("The file \"%s\" cannot be handled because you do not have permissions to read it.").printf (file_basename);
+                } else {
+                    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+                    secondary = _("There was an error getting information about \"%s\".").printf (file_basename);
+                    details = e.message;
+                }
+
+                /* set show_all to TRUE here, as we don't know how many
+                 * files we'll end up processing yet.
+                 */
+                var response = run_warning (primary, secondary, details, true, CANCEL, SKIP_ALL, SKIP, RETRY);
+
+                if (response == 0 || response == Gtk.ResponseType.DELETE_EVENT) {
+                    abort_job ();
+                } else if (response == 1 || response == 2) {
+                    if (response == 1) {
+                        skip_all_error = true;
+                    }
+
+                    skip_file (file);
+                } else if (response == 3) {
+                    scan_file (file, source_info, dirs);
+                } else {
+                    GLib.assert_not_reached ();
+                }
+            }
+        }
+
+        GLib.File? dir = null;
+        while (!aborted () && (dir = dirs.pop_head ()) != null) {
+            scan_dir (dir, source_info, dirs);
+        }
+    }
+
+    protected SourceInfo scan_sources (GLib.List<GLib.File> files) {
+        var source_info = new SourceInfo ();
+
+        report_count_progress (source_info);
+        foreach (var file in files) {
+            if (aborted ()) {
+                return source_info;
+            }
+
+            scan_file (file, source_info);
+        }
+
+        /* Make sure we report the final count */
+        report_count_progress (source_info);
+        return source_info;
+    }
+
 
     private int run_simple_dialog_va (Gtk.MessageType message_type,
                                       owned string primary_text,

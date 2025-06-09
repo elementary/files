@@ -16,15 +16,15 @@
   <screenshots>
     <screenshot type="default">
       <caption>Quick access to settings like zoom levels and hidden files</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/7.0.0/data/screenshot-grid.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/7.1.2/data/screenshot-grid.png</image>
     </screenshot>
     <screenshot>
       <caption>See more metadata at a glance in List view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/7.0.0/data/screenshot-list.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/7.1.2/data/screenshot-list.png</image>
     </screenshot>
     <screenshot>
       <caption>Browse complex trees faster with Column view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/7.0.0/data/screenshot-column.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/7.1.2/data/screenshot-column.png</image>
     </screenshot>
   </screenshots>
 
@@ -62,6 +62,59 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="7.1.2" date="2025-06-09" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Further preparation for porting to Gtk4</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/2581">Files hangs on unplugging unmounted drive</issue>
+        <issue url="https://github.com/elementary/files/issues/2574">Context menu for Storage items only shows if secondary click on eject icon</issue>
+        <issue url="https://github.com/elementary/files/issues/2570">Cannot select part of text with mouse when renaming</issue>
+      </issues>
+    </release>
+
+    <release version="7.1.1" date="2025-03-13" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/2523">Entering a path into the pathbar no longer possible</issue>
+        <issue url="https://github.com/elementary/files/issues/1844">Tab opened with gvfs-admin backend does not show "As Administrator"</issue>
+        <issue url="https://github.com/elementary/files/issues/2491">Templates folder: In "New >" menu, the hierarchy of templates is flattened</issue>
+        <issue url="https://github.com/elementary/files/issues/2524">Open As Administrator: Files does not follow stylesheet</issue>
+        <issue url="https://github.com/elementary/files/issues/2512">Scroll gesture stops working after permanently deleting a file</issue>
+      </issues>
+    </release>
+
+    <release version="7.1.0" date="2024-10-21" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Redesign file permissions view</li>
+          <li>Focus sidebar by pressing Ctrl + Left</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/2214">When opened with specific file to select, the view is not showing that file</issue>
+        <issue url="https://github.com/elementary/files/issues/2327">The thumbnail does not update</issue>
+        <issue url="https://github.com/elementary/files/issues/2439">Build Failures</issue>
+        <issue url="https://github.com/elementary/files/issues/2451">pressing spacebar no longer opens selected file</issue>
+        <issue url="https://github.com/elementary/files/issues/2455">No large thumbnails</issue>
+        <issue url="https://github.com/elementary/files/issues/2483">With multiple files selected, clicking the right mouse button deselects everything</issue>
+        <issue url="https://github.com/elementary/files/issues/2492">List view : Cannot close subfolder view for a folder</issue>
+        <issue url="https://github.com/elementary/files/issues/2495">Segfault when opening folders that have just been pasted into an empty folder</issue>
+        <issue url="https://github.com/elementary/files/issues/2498">Cannot use search at all in Wayland session</issue>
+      </issues>
+    </release>
+
     <release version="7.0.0" date="2024-08-02" urgency="medium">
       <description>
         <p>Minor updates:</p>
