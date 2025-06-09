@@ -16,7 +16,7 @@
 
     Authors : John Sullivan <sullivan@eazel.com>
               ammonkey <am.monkeyd@gmail.com>
-              Jeremy Wootten <jeremy@elementaryos.org>
+              Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 
 namespace Files {

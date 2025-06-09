@@ -15,7 +15,7 @@
     You should have received a copy of the GNU General Public License along
     with Pantheon Files. If not, see <http://www.gnu.org/licenses/>.
 
-    Authored by: Jeremy Wootten <jeremy@elementaryos.org>
+    Authored by: Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 
 void add_icon_info_tests () {

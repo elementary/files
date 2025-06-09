@@ -15,7 +15,7 @@
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
     Authors : John Sullivan <sullivan@eazel.com>
-              Jeremy Wootten <jeremy@elementaryos.org>
+              Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 
 namespace Files {

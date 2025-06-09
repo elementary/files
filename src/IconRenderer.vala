@@ -22,7 +22,7 @@
     write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
     Boston, MA 02110-1335 USA.
 
-    Author(s):  Jeremy Wootten <jeremy@elementaryos.org>
+    Author(s):  Jeremy Wootten <jeremywootten@gmail.com>
 
 ***/
 

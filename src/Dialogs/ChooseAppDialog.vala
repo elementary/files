@@ -16,7 +16,7 @@
 * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1335 USA.
 *
-* Authored by: Jeremy Wootten <jeremy@elementaryos.org>
+* Authored by: Jeremy Wootten <jeremywootten@gmail.com>
 */
 
 class PF.ChooseAppDialog : Object {
@@ -31,9 +31,11 @@ class PF.ChooseAppDialog : Object {
     }
 
     construct {
-        dialog = new Gtk.AppChooserDialog (parent,
-                                             Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                             file_to_open) {
+        dialog = new Gtk.AppChooserDialog (
+            parent,
+            Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
+            file_to_open
+        ) {
             deletable = false
         };
 
@@ -49,29 +51,32 @@ class PF.ChooseAppDialog : Object {
         check_default.show ();
 
         dialog.get_content_area ().add (check_default);
-
-        dialog.show ();
     }
 
     public AppInfo? get_app_info () {
         AppInfo? app = null;
-        int response = dialog.run ();
+        dialog.response.connect ((res) => {
+            if (res == Gtk.ResponseType.OK) {
+                app = dialog.get_app_info ();
+                if (check_default.get_active ()) {
+                    try {
+                        var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
+                                                            FileQueryInfoFlags.NONE, null);
 
-        if (response == Gtk.ResponseType.OK) {
-            app = dialog.get_app_info ();
-            if (check_default.get_active ()) {
-                try {
-                    var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
-                                                        FileQueryInfoFlags.NONE, null);
-
-                    app.set_as_default_for_type (info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE));
-                }
-                catch (GLib.Error error) {
-                    critical ("Could not set as default: %s", error.message);
+                        app.set_as_default_for_type (info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE));
+                    }
+                    catch (GLib.Error error) {
+                        critical ("Could not set as default: %s", error.message);
+                    }
                 }
             }
-        }
-        dialog.destroy ();
+
+            dialog.destroy ();
+        });
+
+        // Need to continue to use run () in Gtk3 in order to get modal dialog - we need to return
+        // the chosen app from this function.
+        dialog.run ();
         return app;
     }
 }

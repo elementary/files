@@ -15,7 +15,7 @@
     this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street,
     Fifth Floor Boston, MA 02110-1335 USA.
 
-    Authors : Jeremy Wootten <jeremy@elementaryos.org>
+    Authors : Jeremy Wootten <jeremywootten@gmail.com>
 
     Some convenience wrappers around libcanberra for using sounds within io.elementary.files.
 
