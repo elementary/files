@@ -117,7 +117,6 @@ namespace Files.FileUtils {
             if (goffile == null || goffile.location == null) {
                 continue;
             }
-
             /* Check that file is in root of trash.  If not, do not try to restore
              * (it will be restored with its parent anyway) */
             if (Path.get_dirname (goffile.uri) == "trash:") {
@@ -130,10 +129,11 @@ namespace Files.FileUtils {
                     }
 
                     if (exists == 1 || (exists < 0 && yield ensure_exists (original_dir))) {
-                        if (exists < 0) {
+                        if (exists < 0) { // original existed or was created
                             exists_map.@set (original_dir.get_path (), 1); // Do not need to check this path again
                         }
-                        GLib.List<GLib.File>? dir_files = directories.take (original_dir);
+
+                        List<GLib.File>? dir_files = directories.take (original_dir);
                         dir_files.prepend (goffile.location);
                         directories.insert (original_dir, (owned)dir_files);
                     } else {
@@ -221,6 +221,7 @@ namespace Files.FileUtils {
             }
 
             dialog.destroy ();
+            ensure_exists.callback ();
         });
 
         dialog.present ();
