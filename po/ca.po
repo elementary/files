@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-06 14:04+0000\n"
-"PO-Revision-Date: 2025-03-21 18:55+0000\n"
+"PO-Revision-Date: 2025-06-07 14:55+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementaryos.org/projects/files/files/"
 "ca/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
@@ -701,7 +701,7 @@ msgstr "Es mouen els fitxers a la paperera"
 
 #: libcore/marlin-file-operations.c:643
 msgid "Deleting Files"
-msgstr "Se suprimeixen els fitxers"
+msgstr "Se suprimeixen fitxers"
 
 #: libcore/marlin-file-operations.c:944 libcore/marlin-file-operations.c:1083
 #: libcore/marlin-file-operations.c:1136
@@ -1442,7 +1442,7 @@ msgstr[1] "queden %'d fitxers per suprimir"
 
 #: libcore/FileOperations/DeleteJob.vala:114
 msgid "Deleting files"
-msgstr "Se suprimeixen els fitxers"
+msgstr "Se suprimeixen fitxers"
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
