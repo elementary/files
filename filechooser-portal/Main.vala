@@ -161,7 +161,7 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        dialog.show_all ();
+        dialog.present ();
         yield;
 
         dialogs.remove (parent_window);
@@ -231,13 +231,17 @@ public class Files.FileChooserPortal : Object {
         }
 
         if ("current_folder" in options) {
-            dialog.set_current_folder (FileUtils.sanitize_path (options["current_folder"].get_bytestring ()));
+            dialog.set_current_folder (
+                FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, true)
+            );
         }
 
         var supplied_uri = "";
         if ("current_file" in options) {
             supplied_uri = FileUtils.sanitize_path (
-                options["current_file"].get_bytestring (), Environment.get_home_dir ()
+                options["current_file"].get_bytestring (),
+                Environment.get_home_dir (),
+                true
             );
 
             if (supplied_uri != "") {
@@ -317,7 +321,7 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        dialog.show_all ();
+        dialog.present ();
         yield;
 
         dialogs.remove (parent_window);
@@ -380,7 +384,9 @@ public class Files.FileChooserPortal : Object {
         }
 
         if ("current_folder" in options) {
-            dialog.set_current_folder (FileUtils.sanitize_path (options["current_folder"].get_bytestring ()));
+            dialog.set_current_folder (
+                FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, true)
+            );
         }
 
         if ("choices" in options) {
@@ -430,7 +436,7 @@ public class Files.FileChooserPortal : Object {
         });
 
         dialogs[parent_window] = dialog;
-        dialog.show_all ();
+        dialog.present ();
         yield;
 
         dialogs.remove (parent_window);

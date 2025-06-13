@@ -24,8 +24,14 @@ namespace Files.FileUtils {
     public GLib.List<GLib.File> files_from_uris (string uris) {
         var result = new GLib.List<GLib.File> ();
         var uri_list = GLib.Uri.list_extract_uris (uris);
+        string unquoted_uri;
         foreach (unowned string uri in uri_list) {
-            result.append (GLib.File.new_for_uri (uri));
+            try {
+                unquoted_uri = Shell.unquote (uri); // Extracted uri may be quoted
+                result.append (GLib.File.new_for_uri (unquoted_uri));
+            } catch (Error e) {
+                warning ("Error when unquoting %s. %s", uri, e.message);
+            }
         }
 
         return result;
@@ -47,7 +53,7 @@ namespace Files.FileUtils {
     }
 
     public GLib.File? get_file_for_path (string? path) {
-        string? new_path = sanitize_path (path);
+        string? new_path = sanitize_path (path, null, true);
 
         if (new_path != null && new_path.length > 0) {
             return GLib.File.new_for_commandline_arg (new_path);
@@ -122,6 +128,7 @@ namespace Files.FileUtils {
                     if (exists_map.has_key (original_dir.get_path ())) {
                         exists = exists_map.@get (original_dir.get_path ());
                     }
+
                     if (exists == 1 || (exists < 0 && yield ensure_exists (original_dir))) {
                         if (exists < 0) {
                             exists_map.@set (original_dir.get_path (), 1); // Do not need to check this path again
@@ -182,17 +189,12 @@ namespace Files.FileUtils {
         bool created = false;
         var dialog = new Granite.MessageDialog.with_image_from_icon_name (
             _("The original folder %s no longer exists").printf (file.get_path ()),
-            _("Would you like to recreate it?"),
+            _("The folder can be recreated and selected files that were originally there will be restored to it. Otherwise, files that were in this folder will not be restored."),
             "dialog-question",
             Gtk.ButtonsType.NONE
         );
-
-        var ignore_button = dialog.add_button (_("Ignore"), Gtk.ResponseType.CANCEL);
-        ignore_button.tooltip_text = _("No files that were in this folder will be restored");
-        var recreate_button = dialog.add_button (_("Recreate"), Gtk.ResponseType.ACCEPT);
-        recreate_button.tooltip_text =
-             _ ("The folder will be recreated and selected files that were originally there will be restored to it");
-
+        dialog.add_button (_("Ignore"), Gtk.ResponseType.CANCEL);
+        dialog.add_button (_("Recreate"), Gtk.ResponseType.ACCEPT);
         dialog.set_default_response (Gtk.ResponseType.ACCEPT);
         dialog.response.connect ((res) => {
             switch (res) {
@@ -223,7 +225,7 @@ namespace Files.FileUtils {
 
         dialog.present ();
         yield;
-        return false;
+        return created;
     }
 
     public string? get_path_for_symlink (GLib.File file) {
@@ -290,8 +292,8 @@ namespace Files.FileUtils {
       **/
 
     public string sanitize_path (string? input_uri,
-                                 string? input_current_uri = null,
-                                 bool include_file_protocol = true) {
+                                 string? input_current_uri,
+                                 bool include_file_protocol) {
         string unsanitized_uri;
         string unsanitized_current_uri;
         string path = "";

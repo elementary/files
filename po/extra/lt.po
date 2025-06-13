@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-09 13:57+0000\n"
+"POT-Creation-Date: 2025-06-06 14:04+0000\n"
 "PO-Revision-Date: 2019-07-25 12:24+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/extra/"
@@ -71,65 +71,71 @@ msgstr ""
 msgid "Browse complex trees faster with Column view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:89
-#: data/files.metainfo.xml.in.in:107 data/files.metainfo.xml.in.in:130
-#: data/files.metainfo.xml.in.in:142 data/files.metainfo.xml.in.in:162
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:82
+#: data/files.metainfo.xml.in.in:98 data/files.metainfo.xml.in.in:120
+#: data/files.metainfo.xml.in.in:138 data/files.metainfo.xml.in.in:161
+#: data/files.metainfo.xml.in.in:173 data/files.metainfo.xml.in.in:193
 #, fuzzy
 msgid "Minor updates:"
 msgstr "Smulkių klaidų pataisymai"
 
 #: data/files.metainfo.xml.in.in:69
-msgid "Redesign file permissions view"
+msgid "Further preparation for porting to Gtk4"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:70
-msgid "Focus sidebar by pressing Ctrl + Left"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:93
-#: data/files.metainfo.xml.in.in:115 data/files.metainfo.xml.in.in:132
-#: data/files.metainfo.xml.in.in:144 data/files.metainfo.xml.in.in:164
+#: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:84
+#: data/files.metainfo.xml.in.in:102 data/files.metainfo.xml.in.in:124
+#: data/files.metainfo.xml.in.in:146 data/files.metainfo.xml.in.in:163
+#: data/files.metainfo.xml.in.in:175 data/files.metainfo.xml.in.in:195
 msgid "Updated translations"
 msgstr "Atnaujinti vertimai"
 
-#: data/files.metainfo.xml.in.in:91
+#: data/files.metainfo.xml.in.in:100
+msgid "Redesign file permissions view"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:101
+msgid "Focus sidebar by pressing Ctrl + Left"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:122
 msgid "Restoring tabs from last time is now optional"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:92
+#: data/files.metainfo.xml.in.in:123
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:109
+#: data/files.metainfo.xml.in.in:140
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:110
+#: data/files.metainfo.xml.in.in:141
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:111
+#: data/files.metainfo.xml.in.in:142
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:112
+#: data/files.metainfo.xml.in.in:143
 msgid "Ensure the selection persists after refreshing the view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:113
+#: data/files.metainfo.xml.in.in:144
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:114
+#: data/files.metainfo.xml.in.in:145
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:158
+#: data/files.metainfo.xml.in.in:189
 msgid "Improvements:"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:160
+#: data/files.metainfo.xml.in.in:191
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"

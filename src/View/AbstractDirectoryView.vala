@@ -38,7 +38,7 @@ namespace Files {
             INVALID
         }
 
-        const int MAX_TEMPLATES = 32;
+        const int MAX_TEMPLATES = 2048;
 
         const Gtk.TargetEntry [] DRAG_TARGETS = {
             {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.STRING},
@@ -212,8 +212,6 @@ namespace Files {
         protected GLib.List<Files.File> selected_files = null;
         private bool selected_files_invalid = true;
 
-        private static GLib.List<GLib.File> templates = null;
-
         private GLib.AppInfo default_app;
         private Gtk.TreePath? hover_path = null;
 
@@ -349,7 +347,7 @@ namespace Files {
                 });
 
                 button_controller = new Gtk.GestureMultiPress (view) {
-                    propagation_phase = CAPTURE,
+                    propagation_phase = TARGET,  //Allow editable widget to receive button press event first
                     button = 0
                 };
                 button_controller.pressed.connect (on_view_button_press_event);
@@ -1181,8 +1179,8 @@ namespace Files {
         }
 
         private void on_background_action_create_from (GLib.SimpleAction action, GLib.Variant? param) {
-            int index = int.parse (param.get_string ());
-            create_from_template (templates.nth_data ((uint)index));
+            var path = param.get_string ();
+            create_from_template (path);
         }
 
         private void on_background_action_sort_by_changed (GLib.SimpleAction action, GLib.Variant? val) {
@@ -2325,50 +2323,70 @@ namespace Files {
                 submenu.add (folder_menuitem);
                 submenu.add (file_menuitem);
 
-                /* Potential optimisation - do just once when app starts or view created */
-                templates = null;
                 unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
                 if (template_path != null) {
-                    var template_folder = GLib.File.new_for_path (template_path);
-                    load_templates_from_folder (template_folder);
-
-                    if (templates.length () > 0) { //Can be assumed to be limited length
-                        submenu.add (new Gtk.SeparatorMenuItem ());
-
-                        // We need to get directories first
-                        templates.reverse ();
-
-                        var active_submenu = submenu;
-                        int index = 0;
-                        foreach (unowned GLib.File template in templates) {
-                            var label = template.get_basename ();
-                            var ftype = template.query_file_type (GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
-                            if (ftype == GLib.FileType.DIRECTORY) {
-                                if (template == template_folder) {
-                                    active_submenu = submenu;
-                                } else {
-                                    active_submenu = new Gtk.Menu ();
-
-                                    var submenu_item = new Gtk.MenuItem.with_label (label);
-                                    submenu_item.submenu = active_submenu;
-
-                                    submenu.add (submenu_item);
-                                }
-                            } else {
-                                var template_menuitem = new Gtk.MenuItem.with_label (label);
-                                template_menuitem.set_detailed_action_name ("background.create-from::" +
-                                                                            index.to_string ());
-
-                                active_submenu.add (template_menuitem);
-
-                            }
-
-                            index++;
-                        }
-                    }
+                    load_templates_from_folder (GLib.File.new_for_path (template_path), submenu);
                 }
 
                 label = _("New");
+            }
+
+            private void load_templates_from_folder (GLib.File template_folder, Gtk.Menu submenu, uint count = 0) {
+                GLib.List<GLib.File> file_list = null;
+                GLib.List<GLib.File> folder_list = null;
+
+                GLib.FileEnumerator enumerator;
+                var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
+                try {
+                    enumerator = template_folder.enumerate_children ("standard::*", flags, null);
+                    GLib.File location;
+                    GLib.FileInfo? info = enumerator.next_file (null);
+
+                    while (count < MAX_TEMPLATES && (info != null)) {
+                        if (!info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_BACKUP)) {
+                            location = template_folder.get_child (info.get_name ());
+                            if (info.get_file_type () == GLib.FileType.DIRECTORY) {
+                                folder_list.prepend (location);
+                            } else {
+                                file_list.prepend (location);
+                                count ++;
+                            }
+                        }
+
+                        info = enumerator.next_file (null);
+                    }
+                } catch (GLib.Error error) {
+                    return;
+                }
+
+                if (folder_list.length () > 0) {
+                    folder_list.sort ((a, b) => {
+                        return strcmp (a.get_basename ().down (), b.get_basename ().down ());
+                    });
+
+                    folder_list.@foreach ((folder) => {
+                        var folder_menu = new Gtk.Menu ();
+                        var folder_menuitem = new Gtk.MenuItem.with_label (folder.get_basename ());
+                        folder_menuitem.submenu = folder_menu;
+                        submenu.add (folder_menuitem);
+                        load_templates_from_folder (folder, folder_menu);
+                    });
+                }
+
+                if (file_list.length () > 0) {
+                    file_list.sort ((a, b) => {
+                        return strcmp (a.get_basename ().down (), b.get_basename ().down ());
+                    });
+
+                    file_list.@foreach ((file) => {
+                        var template_menuitem = new Gtk.MenuItem.with_label (file.get_basename ()) {
+                            action_name = "background.create-from",
+                            action_target = file.get_path ()
+                        };
+
+                        submenu.add (template_menuitem);
+                    });
+                }
             }
         }
 
@@ -2507,56 +2525,6 @@ namespace Files {
             critical ("Action name not found: %s - cannot set state", name);
         }
 
-        private static void load_templates_from_folder (GLib.File template_folder) {
-            GLib.List<GLib.File> file_list = null;
-            GLib.List<GLib.File> folder_list = null;
-
-            GLib.FileEnumerator enumerator;
-            var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
-            try {
-                enumerator = template_folder.enumerate_children ("standard::*", flags, null);
-                uint count = templates.length (); //Assume to be limited in size
-                GLib.File location;
-                GLib.FileInfo? info = enumerator.next_file (null);
-
-                while (count < MAX_TEMPLATES && (info != null)) {
-                    if (!info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_HIDDEN) &&
-                        !info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_BACKUP)) {
-                        location = template_folder.get_child (info.get_name ());
-                        if (info.get_file_type () == GLib.FileType.DIRECTORY) {
-                            folder_list.prepend (location);
-                        } else {
-                            file_list.prepend (location);
-                            count ++;
-                        }
-                    }
-
-                    info = enumerator.next_file (null);
-                }
-            } catch (GLib.Error error) {
-                return;
-            }
-
-            if (file_list.length () > 0) { // Can assumed to be limited in length
-                file_list.sort ((a, b) => {
-                    return strcmp (a.get_basename ().down (), b.get_basename ().down ());
-                });
-
-                foreach (var file in file_list) {
-                    templates.append (file);
-                }
-
-                templates.append (template_folder);
-            }
-
-            if (folder_list.length () > 0) { //Can be assumed to be limited in length
-                /* recursively load templates from subdirectories */
-                folder_list.@foreach ((folder) => {
-                    load_templates_from_folder (folder);
-                });
-            }
-        }
-
         private void filter_this_app_from_open_with_apps () {
             unowned GLib.List<AppInfo> l = open_with_apps;
 
@@ -2610,9 +2578,10 @@ namespace Files {
 
         /** Menu action functions */
 
-        private void create_from_template (GLib.File template) {
+        private void create_from_template (string path) {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
+            var template = GLib.File.new_for_path (path);
             var new_name = (_("Untitled %s")).printf (template.get_basename ());
             FileOperations.new_file_from_template.begin (
                 this,
@@ -3378,6 +3347,7 @@ namespace Files {
 
         protected virtual void on_view_button_press_event (int n_press, double x, double y) {
             if (renaming) {
+                // Button press occurred outside editable widget - end editing.
                 /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
                 name_renderer.end_editing (false);
             }
