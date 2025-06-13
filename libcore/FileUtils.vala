@@ -196,6 +196,7 @@ namespace Files.FileUtils {
         dialog.add_button (_("Ignore"), Gtk.ResponseType.CANCEL);
         dialog.add_button (_("Recreate"), Gtk.ResponseType.ACCEPT);
         dialog.set_default_response (Gtk.ResponseType.ACCEPT);
+        dialog.set_modal (true);
         dialog.response.connect ((res) => {
             switch (res) {
                 case Gtk.ResponseType.ACCEPT:
@@ -221,7 +222,7 @@ namespace Files.FileUtils {
             }
 
             dialog.destroy ();
-            ensure_exists.callback ();
+            ensure_exists.callback (); // Continue from after yield statement
         });
 
         dialog.present ();
