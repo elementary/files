@@ -55,6 +55,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
     private Gtk.Button accept_button;
     private Gtk.ComboBoxText filter_box;
     private Granite.ValidatedEntry validated_entry;
+    private Gtk.Entry gtk_entry;
 
     private Gtk.Box choices_box;
     private Gtk.Box extra_box;
@@ -374,20 +375,24 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             extra_box.pack_start (grid);
 
             // bind the accept_button sensitivity with the entry text
-            Gtk.Entry entry = find_child_by_name (grid, "<GtkFileChooserEntry>");
-            var entry_parent = entry.get_parent ();
-            entry_parent.remove (entry);
+            gtk_entry = find_child_by_name (grid, "<GtkFileChooserEntry>");
+            var entry_parent = gtk_entry.get_parent ();
+            entry_parent.remove (gtk_entry);
             validated_entry = new Granite.ValidatedEntry ();
             validated_entry.set_placeholder_text (_("Enter new filename"));
+            validated_entry.bind_property ("text", gtk_entry, "text", BindingFlags.SYNC_CREATE);
             validated_entry.bind_property ("text-length", accept_button, "sensitive", BindingFlags.SYNC_CREATE);
-            validated_entry.activate.connect (() => {
-                if (accept_button.sensitive) {
-                    response (Gtk.ResponseType.OK);
-                }
-            });
+
+            //Mirror the validated entry to the original entry to ensure behaviour unaffected
             validated_entry.changed.connect (() => {
                 validated_entry.is_valid = !validated_entry.text.contains (Path.DIR_SEPARATOR_S);
+                gtk_entry.text = validated_entry.text;
                 //TODO Check for null and other control codes?
+            });
+            validated_entry.activate.connect (() => {
+                if (validated_entry.is_valid) {
+                    gtk_entry.activate ();
+                }
             });
 
             validated_entry.bind_property ("is-valid", accept_button, "sensitive");
