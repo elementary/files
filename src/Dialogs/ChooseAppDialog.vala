@@ -53,7 +53,7 @@ class PF.ChooseAppDialog : Object {
         dialog.get_content_area ().add (check_default);
     }
 
-    public AppInfo? get_app_info () {
+    public async AppInfo? get_app_info () {
         AppInfo? app = null;
         dialog.response.connect ((res) => {
             if (res == Gtk.ResponseType.OK) {
@@ -72,11 +72,11 @@ class PF.ChooseAppDialog : Object {
             }
 
             dialog.destroy ();
+            get_app_info.callback (); //Continue after yield statement
         });
 
-        // Need to continue to use run () in Gtk3 in order to get modal dialog - we need to return
-        // the chosen app from this function.
-        dialog.run ();
+        dialog.present ();
+        yield;
         return app;
     }
 }

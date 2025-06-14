@@ -824,7 +824,7 @@ namespace Files {
         /* Open all files through this */
         private void open_file (Files.File file, Gdk.Screen? screen, GLib.AppInfo? app_info) {
             if (can_open_file (file, true)) {
-                MimeActions.open_glib_file_request (file.location, this, app_info);
+                MimeActions.open_glib_file_request.begin (file.location, this, app_info);
             }
         }
 
