@@ -1192,15 +1192,21 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
                         AppsColumn.APP_INFO, out app);
 
         if (app == null) {
-            var app_chosen = MimeActions.choose_app_for_glib_file (goffile.location, this);
-            if (app_chosen != null) {
-                store_apps.prepend (out iter);
-                store_apps.set (iter,
-                                AppsColumn.APP_INFO, app_chosen,
-                                AppsColumn.LABEL, app_chosen.get_name (),
-                                AppsColumn.ICON, ensure_icon (app_chosen));
-                combo.set_active (0);
-            }
+            MimeActions.choose_app_for_glib_file.begin (
+                goffile.location,
+                this,
+                (obj, res) => {
+                    var app_chosen = MimeActions.choose_app_for_glib_file.end (res);
+                    if (app_chosen != null) {
+                        store_apps.prepend (out iter);
+                        store_apps.set (iter,
+                                        AppsColumn.APP_INFO, app_chosen,
+                                        AppsColumn.LABEL, app_chosen.get_name (),
+                                        AppsColumn.ICON, ensure_icon (app_chosen));
+                        combo.set_active (0);
+                    }
+                }
+            );
         } else {
             try {
                 foreach (var mime in mimes) {

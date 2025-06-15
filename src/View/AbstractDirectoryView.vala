@@ -850,7 +850,7 @@ namespace Files {
         /* Open all files through this */
         private void open_file (Files.File file, Gdk.Screen? screen, GLib.AppInfo? app_info) {
             if (can_open_file (file, true)) {
-                MimeActions.open_glib_file_request (file.location, this, app_info);
+                MimeActions.open_glib_file_request.begin (file.location, this, app_info);
             }
         }
 
@@ -1147,8 +1147,7 @@ namespace Files {
 
         private void on_selection_action_restore (GLib.SimpleAction action, GLib.Variant? param) {
             GLib.List<Files.File> selection = get_selected_files_for_transfer ();
-            FileUtils.restore_files_from_trash (selection, window);
-
+            FileUtils.restore_files_from_trash.begin (selection, window);
         }
 
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
