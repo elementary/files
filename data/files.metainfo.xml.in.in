@@ -66,7 +66,6 @@
       <description>
         <p>Minor updates:</p>
         <ul>
-          <li>Use a validated entry in the filechooser</li>
           <li>Improve safe ejection of drives</li>
           <li>Fix regression in drag and drop</li>
           <li>Updated translations</li>
@@ -75,7 +74,6 @@
       <issues>
         <issue url="https://github.com/elementary/files/issues/2594">Drag and drop a file from Files to another app somehow broke</issue>
         <issue url="https://github.com/elementary/files/issues/2203">Drive does not stop on "Safely Remove"</issue>
-        <issue url="https://github.com/elementary/files/issues/2016">FileChooser: Directory separator in the filename entry is passed to the caller without validation.</issue>
       </issues>
     </release>
     <release version="7.1.2" date="2025-06-09" urgency="medium">
