@@ -328,9 +328,8 @@ namespace Files {
                 file_list.@foreach ((file) => {
                     var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
                     target = FileUtils.sanitize_path (target, null, keep_protocol);
-
-
-                    sb.append (Shell.quote (target)); //Alway quote urls
+                    //Leave it to recipient to quote if required when receiving a uri list by DnD
+                    //Terminal app applies quotes but not text entries for example
                     sb.append ("\r\n"); /* Drop onto Filezilla does not work without the "\r" */
                 });
             } else {
