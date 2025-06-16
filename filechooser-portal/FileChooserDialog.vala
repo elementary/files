@@ -54,7 +54,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
     private Gtk.Button accept_button;
     private Gtk.ComboBoxText filter_box;
-    private Granite.ValidatedEntry validated_entry;
+    private Gtk.Entry entry;
 
     private Gtk.Box choices_box;
     private Gtk.Box extra_box;
@@ -294,7 +294,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         chooser.set_current_folder_uri (settings.get_string ("last-folder-uri"));
 
         if (action == Gtk.FileChooserAction.SAVE) {
-            validated_entry.grab_focus ();
+            entry.grab_focus ();
         } else {
             tree_view.grab_focus ();
         }
@@ -374,25 +374,15 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             extra_box.pack_start (grid);
 
             // bind the accept_button sensitivity with the entry text
-            Gtk.Entry entry = find_child_by_name (grid, "<GtkFileChooserEntry>");
-            var entry_parent = entry.get_parent ();
-            entry_parent.remove (entry);
-            validated_entry = new Granite.ValidatedEntry ();
-            validated_entry.set_placeholder_text (_("Enter new filename"));
-            validated_entry.bind_property ("text-length", accept_button, "sensitive", BindingFlags.SYNC_CREATE);
-            validated_entry.activate.connect (() => {
+            entry = find_child_by_name (grid, "<GtkFileChooserEntry>");
+            entry.set_placeholder_text (_("Enter new filename"));
+            entry.bind_property ("text-length", accept_button, "sensitive", BindingFlags.SYNC_CREATE);
+            entry.activate.connect (() => {
                 if (accept_button.sensitive) {
                     response (Gtk.ResponseType.OK);
                 }
             });
-            validated_entry.changed.connect (() => {
-                validated_entry.is_valid = !validated_entry.text.contains (Path.DIR_SEPARATOR_S);
-                //TODO Check for null and other control codes?
-            });
 
-            validated_entry.bind_property ("is-valid", accept_button, "sensitive");
-            validated_entry.show ();
-            entry_parent.add (validated_entry);
             chooser.remove (find_child_by_name (chooser, "<GtkBox>"));
         }
 
