@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-06 14:04+0000\n"
+"POT-Creation-Date: 2025-06-16 19:02+0000\n"
 "PO-Revision-Date: 2024-09-13 00:01+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://l10n.elementary.io/projects/files/files/ka/"
@@ -220,7 +220,7 @@ msgstr "აქ ჩაკოპირება"
 msgid "Link Here"
 msgstr "აქ ბმულის შექმნა"
 
-#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2270
+#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2269
 msgid "Name"
 msgstr "სახელი"
 
@@ -233,7 +233,7 @@ msgstr "შექმნის თარიღი"
 msgid "Last modification date"
 msgstr "ბოლო ცვლილების თარიღი"
 
-#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2275
+#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2274
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "ზომა"
@@ -246,7 +246,7 @@ msgstr "რიცხვების მიმდევრობა"
 msgid "Text"
 msgstr "ტექსტი"
 
-#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2285
+#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2284
 msgid "Date"
 msgstr "თარიღი"
 
@@ -450,70 +450,70 @@ msgstr ""
 msgid "Merge"
 msgstr "გაერთიანება"
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:87
 #, c-format
 msgid "Could not determine original location of \"%s\""
 msgstr ""
 
-#: libcore/FileUtils.vala:89
+#: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
 msgstr "ელემენტის ნაგვიდან აღდგენა შეუძლებელია"
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:191
 #, c-format
 msgid "The original folder %s no longer exists"
 msgstr ""
 
-#: libcore/FileUtils.vala:185
+#: libcore/FileUtils.vala:192
 msgid ""
 "The folder can be recreated and selected files that were originally there "
 "will be restored to it. Otherwise, files that were in this folder will not "
 "be restored."
 msgstr ""
 
-#: libcore/FileUtils.vala:189
+#: libcore/FileUtils.vala:196
 msgid "Ignore"
 msgstr "იგნორი"
 
-#: libcore/FileUtils.vala:190
+#: libcore/FileUtils.vala:197
 msgid "Recreate"
 msgstr "თავიდან შექმნა"
 
-#: libcore/FileUtils.vala:200
+#: libcore/FileUtils.vala:208
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
 
-#: libcore/FileUtils.vala:572
+#: libcore/FileUtils.vala:581
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "'%s'-ზე გადარქმევა ვერ მოხერხდა"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:663
+#: libcore/FileUtils.vala:672
 #, c-format
 msgid "Today at %s"
 msgstr "დღეს, %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:671
+#: libcore/FileUtils.vala:680
 #, c-format
 msgid "Yesterday at %s"
 msgstr "გუშინ, %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:679
+#: libcore/FileUtils.vala:688
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A, %s"
 
-#: libcore/FileUtils.vala:904
+#: libcore/FileUtils.vala:913
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d წამი"
 
-#: libcore/FileUtils.vala:908 libcore/FileUtils.vala:916
+#: libcore/FileUtils.vala:917 libcore/FileUtils.vala:925
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -521,40 +521,40 @@ msgstr[0] "%'d წუთი"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:915 src/Dialogs/PropertiesWindow.vala:1253
+#: libcore/FileUtils.vala:924 src/Dialogs/PropertiesWindow.vala:1259
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:915
+#: libcore/FileUtils.vala:924
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d საათი"
 
-#: libcore/FileUtils.vala:919
+#: libcore/FileUtils.vala:928
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "დაახლ %'d საათი"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:936
 msgid "copy"
 msgstr "კოპირება"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:929
+#: libcore/FileUtils.vala:938
 msgid "link"
 msgstr "ბმული"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:931
+#: libcore/FileUtils.vala:940
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:933
+#: libcore/FileUtils.vala:942
 msgid ")"
 msgstr ")"
 
@@ -1203,7 +1203,7 @@ msgstr "%s-ის მოხსნის შეცდომა"
 msgid "Unable to eject '%s'"
 msgstr "\"%s\"-ის გამოღება შეუძლებელია"
 
-#: libcore/FileOperations/MountUtils.vala:104
+#: libcore/FileOperations/MountUtils.vala:119
 #, c-format
 msgid "Unable to mount '%s'"
 msgstr "'%s'-ის მიმაგრების შეცდომა"
@@ -1476,8 +1476,8 @@ msgstr "პროგრამის ვერსიის ჩვენება"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "ერთი ან მეტი URI-ის, თითოეულის თავის საკუთარ ჩანართში გახსნა"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1858
-#: src/View/AbstractDirectoryView.vala:1864
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1857
+#: src/View/AbstractDirectoryView.vala:1863
 msgid "New Window"
 msgstr "ახალი ფანჯარა"
 
@@ -1682,7 +1682,7 @@ msgid "Set as default"
 msgstr "ნაგულისხმებად დაყენება"
 
 #: src/Dialogs/PropertiesWindow.vala:116
-#: src/View/AbstractDirectoryView.vala:1977
+#: src/View/AbstractDirectoryView.vala:1976
 #: src/View/Sidebar/AbstractMountableRow.vala:277
 msgid "Properties"
 msgstr "_თვისებები"
@@ -1752,7 +1752,7 @@ msgid "Original Location:"
 msgstr "საწყისი მდებარეობა:"
 
 #: src/Dialogs/PropertiesWindow.vala:653
-#: src/View/AbstractDirectoryView.vala:1945
+#: src/View/AbstractDirectoryView.vala:1944
 msgid "Other Application…"
 msgstr "სხვა აპლიკაცია…"
 
@@ -1772,33 +1772,33 @@ msgstr "მფლობელი:"
 msgid "Group:"
 msgstr "ჯგუფი:"
 
-#: src/Dialogs/PropertiesWindow.vala:1244
+#: src/Dialogs/PropertiesWindow.vala:1250
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u ქვესაქაღალდე"
 
-#: src/Dialogs/PropertiesWindow.vala:1248
-#: src/Dialogs/PropertiesWindow.vala:1270
+#: src/Dialogs/PropertiesWindow.vala:1254
+#: src/Dialogs/PropertiesWindow.vala:1276
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "%u ფაილი"
 
-#: src/Dialogs/PropertiesWindow.vala:1266 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1272 src/View/Widgets/OverlayBar.vala:171
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u საქაღალდე"
 
-#: src/Dialogs/PropertiesWindow.vala:1275
+#: src/Dialogs/PropertiesWindow.vala:1281
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
 msgstr[0] "%u მონიშნული ელემენტი"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1277
+#: src/Dialogs/PropertiesWindow.vala:1283
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
@@ -1844,7 +1844,7 @@ msgid "Everyone"
 msgstr "ყველა"
 
 #: src/View/AbstractDirectoryView.vala:807
-#: src/View/AbstractDirectoryView.vala:1132
+#: src/View/AbstractDirectoryView.vala:1131
 msgid "Cannot execute this file"
 msgstr "ამ ფაილს ვერ გაუშვებთ"
 
@@ -1868,164 +1868,164 @@ msgstr "ამ ფაილს ვერ გახსნით"
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1567
+#: src/View/AbstractDirectoryView.vala:1566
 msgid "Cannot drop this file"
 msgstr "ამ ფაილს ვერ დააგდებთ"
 
-#: src/View/AbstractDirectoryView.vala:1568
+#: src/View/AbstractDirectoryView.vala:1567
 msgid "Invalid file name provided"
 msgstr "მითითებული ფაილის სახელი არასწორია"
 
-#: src/View/AbstractDirectoryView.vala:1841
-#: src/View/AbstractDirectoryView.vala:1847 src/View/Window.vala:241
+#: src/View/AbstractDirectoryView.vala:1840
+#: src/View/AbstractDirectoryView.vala:1846 src/View/Window.vala:241
 msgid "New Tab"
 msgstr "ახალი ჩანართი"
 
-#: src/View/AbstractDirectoryView.vala:1881
+#: src/View/AbstractDirectoryView.vala:1880
 msgid "Run"
 msgstr "გაშვება"
 
-#: src/View/AbstractDirectoryView.vala:1888
+#: src/View/AbstractDirectoryView.vala:1887
 #, c-format
 msgid "Open in %s"
 msgstr "%s-ით გახსნა"
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:1956
 msgid "Open in"
 msgstr "გახსნა პროგრამაში"
 
-#: src/View/AbstractDirectoryView.vala:1959
+#: src/View/AbstractDirectoryView.vala:1958
 #: src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open with"
 msgstr "გამხსნელი პროგრამა"
 
-#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/AbstractDirectoryView.vala:1969
 msgid "Add to Bookmarks"
 msgstr "სანიშნეებში დამატება"
 
-#: src/View/AbstractDirectoryView.vala:1990
+#: src/View/AbstractDirectoryView.vala:1989
 msgid "Select All"
 msgstr "ყველას მონიშვნა"
 
-#: src/View/AbstractDirectoryView.vala:1999
+#: src/View/AbstractDirectoryView.vala:1998
 msgid "Invert Selection"
 msgstr "მონიშვნის ინვერსია"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2007
 msgid "Deselect All"
 msgstr "მონიშვნის მოხსნა"
 
-#: src/View/AbstractDirectoryView.vala:2016
+#: src/View/AbstractDirectoryView.vala:2015
 msgid "Cut"
 msgstr "ამოჭრა"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2024
+#: src/View/AbstractDirectoryView.vala:2023
 msgid "Copy"
 msgstr "კოპირება"
 
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:2030
 msgid "Move to Trash"
 msgstr "ნაგავში გადატანა"
 
-#: src/View/AbstractDirectoryView.vala:2036
+#: src/View/AbstractDirectoryView.vala:2035
 msgid "Delete Permanently"
 msgstr "სამუდამოდ წაშლა"
 
-#: src/View/AbstractDirectoryView.vala:2043
+#: src/View/AbstractDirectoryView.vala:2042
 msgid "Restore from Trash"
 msgstr "სანაგვე ყუთიდან აღდგენა"
 
-#: src/View/AbstractDirectoryView.vala:2066
+#: src/View/AbstractDirectoryView.vala:2065
 msgid "Open Parent Folder"
 msgstr "მშობელი საქაღალდის გახსნა"
 
-#: src/View/AbstractDirectoryView.vala:2069
+#: src/View/AbstractDirectoryView.vala:2068
 msgid "Remove from History"
 msgstr "ისტორიიდან წაშლა"
 
-#: src/View/AbstractDirectoryView.vala:2095
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Rename…"
 msgstr "სახელის გადარქმევა…"
 
-#: src/View/AbstractDirectoryView.vala:2102
+#: src/View/AbstractDirectoryView.vala:2101
 msgid "Copy as Link"
 msgstr "ბმულის სახით ჩსმა"
 
-#: src/View/AbstractDirectoryView.vala:2125
-#: src/View/AbstractDirectoryView.vala:2205
+#: src/View/AbstractDirectoryView.vala:2124
+#: src/View/AbstractDirectoryView.vala:2204
 msgid "Paste Link into Folder"
 msgstr "ბმულის საქაღალდეში ჩასმა"
 
-#: src/View/AbstractDirectoryView.vala:2130
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2129
+#: src/View/AbstractDirectoryView.vala:2181
 msgid "Paste into Folder"
 msgstr "საქაღალდეში ჩასმა"
 
-#: src/View/AbstractDirectoryView.vala:2140
-#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2139
+#: src/View/AbstractDirectoryView.vala:2209
 msgid "Paste"
 msgstr "ჩასმა"
 
-#: src/View/AbstractDirectoryView.vala:2248
+#: src/View/AbstractDirectoryView.vala:2247
 msgid "Set as Wallpaper"
 msgstr "ფონის სურათად დაყენება"
 
-#: src/View/AbstractDirectoryView.vala:2280 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2279 src/View/ListView.vala:28
 msgid "Type"
 msgstr "ტიპი"
 
-#: src/View/AbstractDirectoryView.vala:2290
+#: src/View/AbstractDirectoryView.vala:2289
 msgid "Reversed Order"
 msgstr "შებრუნებული წყობა"
 
-#: src/View/AbstractDirectoryView.vala:2293
+#: src/View/AbstractDirectoryView.vala:2292
 msgid "Folders Before Files"
 msgstr "საქაღალდეების ფაილებამდე ჩვენება"
 
-#: src/View/AbstractDirectoryView.vala:2305
+#: src/View/AbstractDirectoryView.vala:2304
 msgid "Sort by"
 msgstr "დალაგება"
 
-#: src/View/AbstractDirectoryView.vala:2313
+#: src/View/AbstractDirectoryView.vala:2312
 msgid "Folder"
 msgstr "საქაღალდე"
 
-#: src/View/AbstractDirectoryView.vala:2319
+#: src/View/AbstractDirectoryView.vala:2318
 msgid "Empty File"
 msgstr "ცარიელი ფაილი"
 
-#: src/View/AbstractDirectoryView.vala:2332
+#: src/View/AbstractDirectoryView.vala:2331
 msgid "New"
 msgstr "ახალი"
 
-#: src/View/AbstractDirectoryView.vala:2586
+#: src/View/AbstractDirectoryView.vala:2585
 #, c-format
 msgid "Untitled %s"
 msgstr "უსათაურო %s"
 
-#: src/View/AbstractDirectoryView.vala:2877
-#: src/View/AbstractDirectoryView.vala:3080
+#: src/View/AbstractDirectoryView.vala:2876
+#: src/View/AbstractDirectoryView.vala:3079
 msgid "Cannot remove files from here"
 msgstr "აქედან ფაილებს ვერ წაშლით"
 
-#: src/View/AbstractDirectoryView.vala:2878
-#: src/View/AbstractDirectoryView.vala:3053
-#: src/View/AbstractDirectoryView.vala:3064
-#: src/View/AbstractDirectoryView.vala:3081
+#: src/View/AbstractDirectoryView.vala:2877
+#: src/View/AbstractDirectoryView.vala:3052
+#: src/View/AbstractDirectoryView.vala:3063
+#: src/View/AbstractDirectoryView.vala:3080
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3021
+#: src/View/AbstractDirectoryView.vala:3020
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3022
+#: src/View/AbstractDirectoryView.vala:3021
 msgid "Cutting the selection instead"
 msgstr "სამაგიეროდ მონიშნული ამოიჭრება"
 
-#: src/View/AbstractDirectoryView.vala:3052
-#: src/View/AbstractDirectoryView.vala:3063
+#: src/View/AbstractDirectoryView.vala:3051
+#: src/View/AbstractDirectoryView.vala:3062
 msgid "Cannot paste files here"
 msgstr "ფაილებს აქ ვერ ჩასვამთ"
 
