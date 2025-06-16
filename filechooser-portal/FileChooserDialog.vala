@@ -380,7 +380,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             entry_parent.remove (gtk_entry);
             validated_entry = new Granite.ValidatedEntry ();
             validated_entry.set_placeholder_text (_("Enter new filename"));
-            validated_entry.bind_property ("text", gtk_entry, "text", BindingFlags.SYNC_CREATE);
+            validated_entry.bind_property ("text", gtk_entry, "text", SYNC_CREATE | BIDIRECTIONAL);
             validated_entry.bind_property ("text-length", accept_button, "sensitive", BindingFlags.SYNC_CREATE);
 
             //Mirror the validated entry to the original entry to ensure behaviour unaffected
