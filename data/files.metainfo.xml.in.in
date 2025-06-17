@@ -62,7 +62,7 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
-    <release version="7.1.3" date="2025-06-19" urgency="medium">
+    <release version="7.1.3" date="2025-06-17" urgency="medium">
       <description>
         <p>Minor updates:</p>
         <ul>
