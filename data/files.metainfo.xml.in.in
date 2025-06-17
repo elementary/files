@@ -66,8 +66,6 @@
       <description>
         <p>Minor updates:</p>
         <ul>
-          <li>Improve safe ejection of drives</li>
-          <li>Fix regression in drag and drop</li>
           <li>Updated translations</li>
         </ul>
       </description>
