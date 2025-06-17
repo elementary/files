@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-16 19:02+0000\n"
-"PO-Revision-Date: 2025-06-07 14:55+0000\n"
+"PO-Revision-Date: 2025-06-17 10:04+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementaryos.org/projects/files/extra/"
 "ca/>\n"
@@ -80,11 +80,11 @@ msgstr "Actualitzacions menors:"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "Improve safe ejection of drives"
-msgstr ""
+msgstr "Millora de l'expulsió segura de les unitats"
 
 #: data/files.metainfo.xml.in.in:70
 msgid "Fix regression in drag and drop"
-msgstr ""
+msgstr "Correcció de la regressió en arrossegar i deixar anar"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:84
 #: data/files.metainfo.xml.in.in:98 data/files.metainfo.xml.in.in:116
