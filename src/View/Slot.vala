@@ -177,6 +177,7 @@ namespace Files.View {
 
             /*  Column View requires slots to determine their own width (other views' width determined by Window */
             if (mode == ViewMode.MILLER_COLUMNS) {
+                //TODO See if need to adjust width now using stack to show empty message
                 if (dir.is_empty ()) { /* No files in the file cache */
                     Pango.Rectangle extents;
                     var layout = dir_view.create_pango_layout (null);
