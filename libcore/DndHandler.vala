@@ -330,6 +330,7 @@ namespace Files {
                     target = FileUtils.sanitize_path (target, null, keep_protocol);
                     //Leave it to recipient to quote if required when receiving a uri list by DnD
                     //Terminal app applies quotes but not text entries for example
+                    sb.append (target);
                     sb.append ("\r\n"); /* Drop onto Filezilla does not work without the "\r" */
                 });
             } else {
