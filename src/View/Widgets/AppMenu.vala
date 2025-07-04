@@ -112,6 +112,21 @@ public class Files.AppMenu : Gtk.Popover {
         };
         show_remote_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
+        ///TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
+        var datetimeformat_label = new Gtk.Label (_("Date & Time Format"));
+        var datetimeformat_combo = new Gtk.ComboBoxText ();
+        datetimeformat_combo.append_text (DateFormatMode.ISO.to_string ());
+        datetimeformat_combo.append_text (DateFormatMode.LOCALE.to_string ());
+        datetimeformat_combo.append_text (DateFormatMode.INFORMAL.to_string ());
+        //TODO Add a custom format wizard? Or a detailed informat format? Or "days ago" format?
+        datetimeformat_combo.active = (int) DateFormatMode.from_string (Files.Preferences.get_default ().date_format.down ());
+
+        var datetimeformat_box = new Gtk.Box (HORIZONTAL, 6);
+        datetimeformat_box.add (datetimeformat_label);
+        datetimeformat_box.add (datetimeformat_combo);
+
+        datetimeformat_box.get_style_context ().add_class ("menuitem");
+
         var menu_box = new Gtk.Box (VERTICAL, 0) {
             margin_bottom = 6
         };
@@ -126,6 +141,8 @@ public class Files.AppMenu : Gtk.Popover {
         menu_box.add (show_hidden_button);
         menu_box.add (show_local_thumbnails);
         menu_box.add (show_remote_thumbnails);
+        menu_box.add (new Gtk.Separator (HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
+        menu_box.add (datetimeformat_box);
         menu_box.show_all ();
 
         child = menu_box;
