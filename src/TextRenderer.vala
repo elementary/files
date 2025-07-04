@@ -79,19 +79,41 @@ namespace Files {
             previous_contrasting_rgba = { 0, 0, 0, 0 };
         }
 
-        public TextRenderer (ViewMode viewmode) {
+        public TextRenderer (ViewMode viewmode, uint col = 0) {
+            is_list_view = true;
             if (viewmode == ViewMode.ICON) {
                 entry = new MultiLineEditableLabel ();
                 entry.set_justify (Gtk.Justification.CENTER);
                 is_list_view = false;
-            } else {
+            } else if (col == 0) {
                 entry = new SingleLineEditableLabel ();
                 entry.set_justify (Gtk.Justification.LEFT);
-                is_list_view = true;
+
             }
 
-            entry.set_line_wrap (true);
-            entry.editing_done.connect (on_entry_editing_done);
+            if (is_list_view && Files.Preferences.get_default ().date_format == DateFormatMode.COMPACT) {
+                this.font = gnome_interface_settings.get_string ("monospace-font-name");
+            }
+
+            Files.Preferences.get_default ().notify["date-format"].connect (update_font_setting);
+            update_font_setting ();
+
+            if (entry != null) {
+                entry.set_line_wrap (true);
+                entry.editing_done.connect (on_entry_editing_done);
+            }
+        }
+
+        private void update_font_setting () {
+            if (is_list_view && Files.Preferences.get_default ().date_format == DateFormatMode.COMPACT) {
+                this.font = gnome_interface_settings.get_string ("monospace-font-name");
+            } else {
+                this.font = gnome_interface_settings.get_string ("font-name");
+            }
+
+            if (layout != null) {
+                layout.set_font_description (Pango.FontDescription.from_string (this.font));
+            }
         }
 
         public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
@@ -260,8 +282,12 @@ namespace Files {
                 attr.insert (Pango.attr_insert_hyphens_new (false));
                 layout.set_attributes (attr);
 
+
                 layout.set_auto_dir (false);
                 layout.set_single_paragraph_mode (true);
+
+                update_font_setting ();
+
                 metrics = context.get_metrics (layout.get_font_description (), context.get_language ());
                 char_height = (metrics.get_ascent () + metrics.get_descent () + 512) >> 10;
             } else {
