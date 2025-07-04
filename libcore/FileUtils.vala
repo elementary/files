@@ -631,10 +631,10 @@ namespace Files.FileUtils {
             return "";
         }
 
-        switch (Files.Preferences.get_default ().date_format.down ()) {
-            case "locale":
+        switch (Files.Preferences.get_default ().date_format) {
+            case DateFormatMode.LOCALE:
                 return dt.format ("%c");
-            case "iso" :
+            case DateFormatMode.ISO :
                 return dt.format ("%Y-%m-%d %H:%M:%S");
             default:
                 return get_informal_date_time (dt);

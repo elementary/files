@@ -120,7 +120,7 @@ public class Files.AppMenu : Gtk.Popover {
         datetimeformat_combo.append_text (DateFormatMode.LOCALE.to_string ());
         datetimeformat_combo.append_text (DateFormatMode.INFORMAL.to_string ());
         //TODO Add a custom format wizard? Or a detailed informat format? Or "days ago" format?
-        datetimeformat_combo.active = (int) DateFormatMode.from_string (Files.Preferences.get_default ().date_format.down ());
+        datetimeformat_combo.active = (int) Files.Preferences.get_default ().date_format;
 
         var datetimeformat_box = new Gtk.Box (HORIZONTAL, 6);
         datetimeformat_box.add (datetimeformat_label);
