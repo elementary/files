@@ -258,7 +258,9 @@ namespace Files {
     public enum DateFormatMode {
         ISO,
         LOCALE,
-        INFORMAL;
+        INFORMAL,
+        COMPACT,
+        INVALID;
 
         public string to_string () {
             switch (this) {
@@ -269,6 +271,8 @@ namespace Files {
                     return _("Locale");
                 case INFORMAL:
                     return _("Informal");
+                case COMPACT:
+                    return _("Compact");
                 default:
                     assert_not_reached ();
             }

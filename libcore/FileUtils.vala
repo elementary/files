@@ -636,6 +636,9 @@ namespace Files.FileUtils {
                 return dt.format ("%c");
             case DateFormatMode.ISO :
                 return dt.format ("%Y-%m-%d %H:%M:%S");
+            case DateFormatMode.COMPACT :
+                var locale_format_string = Posix.nl_langinfo (D_FMT);
+                return dt.format (locale_format_string.down ());
             default:
                 return get_informal_date_time (dt);
         }

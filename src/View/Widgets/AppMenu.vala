@@ -116,9 +116,10 @@ public class Files.AppMenu : Gtk.Popover {
         ///TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
         var datetimeformat_label = new Gtk.Label (_("Date & Time Format"));
         datetimeformat_combo = new Gtk.ComboBoxText ();
-        datetimeformat_combo.append_text (DateFormatMode.ISO.to_string ());
-        datetimeformat_combo.append_text (DateFormatMode.LOCALE.to_string ());
-        datetimeformat_combo.append_text (DateFormatMode.INFORMAL.to_string ());
+        for (uint dfm = 0; dfm < DateFormatMode.INVALID; dfm++) {
+            datetimeformat_combo.append_text (((DateFormatMode) dfm).to_string ());
+        }
+
         //TODO Add a custom format wizard? Or a detailed informat format? Or "days ago" format?
         datetimeformat_combo.active = (int) Files.Preferences.get_default ().date_format;
 
