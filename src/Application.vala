@@ -26,6 +26,7 @@ namespace Files {
     public Settings icon_view_settings;
     public Settings list_view_settings;
     public Settings column_view_settings;
+    public Settings gnome_interface_settings;
 }
 
 public class Files.Application : Gtk.Application {
@@ -38,7 +39,7 @@ public class Files.Application : Gtk.Application {
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
     private const uint MAX_WINDOWS = 25;
 
-    public Settings gnome_interface_settings { get; construct; }
+
     public Settings gnome_privacy_settings { get; construct; }
     public Settings gtk_file_chooser_settings { get; construct; }
 
@@ -50,10 +51,11 @@ public class Files.Application : Gtk.Application {
         icon_view_settings = new Settings ("io.elementary.files.icon-view");
         list_view_settings = new Settings ("io.elementary.files.list-view");
         column_view_settings = new Settings ("io.elementary.files.column-view");
+        gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
     }
 
     construct {
-        gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
+
         gnome_privacy_settings = new Settings ("org.gnome.desktop.privacy");
         gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
 

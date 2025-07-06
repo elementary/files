@@ -58,7 +58,7 @@ namespace Files {
                     name_column.set_title (column_titles [0]);
                     name_column.min_width = preferred_column_width;
                 } else {
-                    var renderer = new Gtk.CellRendererText ();
+                    var renderer = new Files.TextRenderer (LIST, k);
                     var col = new Gtk.TreeViewColumn.with_attributes (column_titles [k - fnc],
                                                                         renderer,
                                                                         "text", k) {
