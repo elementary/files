@@ -327,6 +327,7 @@ namespace Files {
 
                 file_list.@foreach ((file) => {
                     var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
+                    // Sanitize path so can paste into text document
                     target = FileUtils.sanitize_path (target, null, keep_protocol);
                     //Leave it to recipient to quote if required when receiving a uri list by DnD
                     //Terminal app applies quotes but not text entries for example

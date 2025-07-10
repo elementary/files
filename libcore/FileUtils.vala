@@ -21,14 +21,15 @@ namespace Files.FileUtils {
      **/
     const string RESERVED_CHARS = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
                                    GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
+
     public GLib.List<GLib.File> files_from_uris (string uris) {
         var result = new GLib.List<GLib.File> ();
         var uri_list = GLib.Uri.list_extract_uris (uris);
-        string unquoted_uri;
         foreach (unowned string uri in uri_list) {
             try {
-                unquoted_uri = Shell.unquote (uri); // Extracted uri may be quoted
-                result.append (GLib.File.new_for_uri (unquoted_uri));
+                var unquoted_uri = Shell.unquote (uri); // Extracted uri may be quoted
+                var escaped_uri = escape_uri (unquoted_uri); // Uris from clipboard or DNDHandler are unescaped/sanitized
+                result.append (GLib.File.new_for_uri (escaped_uri)); // Escape uri so can be used in file operations
             } catch (Error e) {
                 warning ("Error when unquoting %s. %s", uri, e.message);
             }
