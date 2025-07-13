@@ -89,12 +89,41 @@ namespace Files {
                 model.@get (iter, ListModel.ColumnID.FILE_COLUMN, out file, -1);
             }
 
-            if (file == null || !file.is_folder ()) {
+            if (file == null) {
                 return base.handle_primary_button_click (n_press, mods, path);
             }
 
+            if(!file.is_folder()) {
+                bool result = false;
+                if (n_press == 1) {
+                    /* Ignore second GDK_BUTTON_PRESS event of double-click */
+                    if (awaiting_double_click) {
+                        result = true;
+                    } else {
+                        /*  ... store clicked folder and start double-click timeout.
+                            Show Properties if it expires prior to a second click
+                        */
+                        awaiting_double_click = true;
+                        double_click_timeout_id = GLib.Timeout.add (300, () => {
+                            not_double_click ();
+
+                            GLib.List<Files.File> the_file_in_a_list = new GLib.List<Files.File> ();
+                            the_file_in_a_list.append(file);
+                            new View.PropertiesWindow (the_file_in_a_list, this, window);
+
+                            return GLib.Source.REMOVE;
+                        });
+                    }
+                } else if (n_press == 2) {
+                    cancel_await_double_click ();
+                    return base.handle_primary_button_click (n_press, mods, path);
+                }
+
+                return result;
+            }
+
             selected_folder = file;
-            bool result = true;
+            bool result = false;
             if (n_press == 1) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
                 if (awaiting_double_click) {
