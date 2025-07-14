@@ -62,6 +62,17 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="7.1.5" date="2025-07-14" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/2615">Files with names containing # characters are not transferred correctly</issue>
+      </issues>
+    </release>
     <release version="7.1.4" date="2025-06-20" urgency="medium">
       <description>
         <p>Minor updates:</p>
