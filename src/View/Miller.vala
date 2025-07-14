@@ -124,6 +124,64 @@ namespace Files.View {
             update_total_width ();
         }
 
+        /** Creates a new slot that shows the File's properties **/
+        public void show_properties (Files.File file, View.Slot? host = null) {
+
+// REF: how to draw info
+// var style_context = get_style_context ();
+// Pango.Layout layout = create_pango_layout (null);
+
+// if (!style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
+//     style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
+//     style_context.add_class (Gtk.STYLE_CLASS_VIEW);
+// }
+
+// layout.set_markup (slot.get_empty_message (), -1);
+
+// Pango.Rectangle? extents = null;
+// layout.get_extents (null, out extents);
+
+// double width = Pango.units_to_double (extents.width);
+// double height = Pango.units_to_double (extents.height);
+
+// double x = (double) get_allocated_width () / 2 - width / 2;
+// double y = (double) get_allocated_height () / 2 - height / 2;
+// get_style_context ().render_layout (cr, x, y, layout);
+
+// REF: how to size slot
+// Pango.Rectangle extents;
+// var layout = dir_view.create_pango_layout (null);
+// layout.set_markup (get_empty_message (), -1);
+// layout.get_extents (null, out extents);
+// width = (int) Pango.units_to_double (extents.width);
+            View.Slot info_panel = new View.Slot(file.location, ctab, ViewMode.MILLER_COLUMNS);
+
+            info_panel.slot_number = (host != null) ? host.slot_number + 1 : 0;
+            info_panel.colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            info_panel.colpane.set_size_request (info_panel.width, -1);
+            info_panel.hpane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+                hexpand = true
+            };
+
+            info_panel.hpane.pack1 (info_panel.get_directory_view (), false, false);
+            info_panel.hpane.pack2 (info_panel.colpane, true, true);
+            info_panel.hpane.show_all ();
+
+            connect_slot_signals (info_panel);
+
+            if (host != null) {
+                truncate_list_after_slot (host);
+                host.select_gof_file (info_panel.file);
+                host.colpane.add (info_panel.hpane);
+                info_panel.initialize_directory ();
+            } else {
+                this.colpane.add (info_panel.hpane);
+            }
+            slot_list.append (info_panel);
+            info_panel.active (true, true);
+            update_total_width ();
+        }
+
         private void truncate_list_after_slot (View.Slot slot) {
             if (slot_list.length () <= 0) { //Can be assumed to limited in length
                 return;

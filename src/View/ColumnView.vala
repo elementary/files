@@ -107,9 +107,12 @@ namespace Files {
                         double_click_timeout_id = GLib.Timeout.add (300, () => {
                             not_double_click ();
 
-                            GLib.List<Files.File> the_file_in_a_list = new GLib.List<Files.File> ();
-                            the_file_in_a_list.append(file);
-                            new View.PropertiesWindow (the_file_in_a_list, this, window);
+                            Files.AbstractSlot slot = base.slot.ctab.get_view ();
+                            if(slot is View.Miller) {
+                                slot.show_properties (file, base.slot);
+                            } else {
+                                //throw error?
+                            }
 
                             return GLib.Source.REMOVE;
                         });
