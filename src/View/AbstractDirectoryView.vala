@@ -3329,11 +3329,13 @@ namespace Files {
         public bool on_details_draw () {
             unowned GLib.List<Files.File> selection = get_selected_files ();
 
-                if (selection == null ||
-                    selection.first ().next != null ||
-                    !selection.data.is_folder ()) {
-warning ("=-=-=- ");
-                }
+            if (selection != null &&
+                selection.first ().next == null &&
+                selection.data.is_folder ()) {
+                warning("Called on_details_draw from not-a-file");
+                return false;
+            }
+
             // var style_context = get_style_context ();
             // if (slot.directory.is_empty ()) {
             //     Pango.Layout layout = create_pango_layout (null);
