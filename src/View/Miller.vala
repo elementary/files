@@ -124,6 +124,86 @@ namespace Files.View {
             update_total_width ();
         }
 
+        public void draw_file_details (Files.File file) {
+
+            // unowned GLib.List<Files.File> selection = get_selected_files ();
+
+            // if (selection != null &&
+            //     selection.first ().next == null &&
+            //     selection.data.is_folder ()) {
+            //     warning("Called on_details_draw from not-a-file");
+            //     return false;
+            // }
+warning("=-=-=- file: %s", file.basename);
+
+            if (file == null) {
+                warning("Ionno");
+                return;
+            }
+
+            View.Slot details_panel = new View.Slot(file.location, current_slot.ctab, ViewMode.MILLER_COLUMNS);
+
+            details_panel.slot_number = current_slot.slot_number + 1;
+            details_panel.colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            details_panel.colpane.set_size_request (details_panel.width, -1);
+            details_panel.hpane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+                hexpand = true
+            };
+
+            details_panel.hpane.pack1 (details_panel.get_directory_view (), false, false);
+            details_panel.hpane.pack2 (details_panel.colpane, true, true);
+            details_panel.hpane.show_all ();
+
+            connect_slot_signals (details_panel);
+
+ //            if (host != null) {
+                // truncate_list_after_slot (host);
+                // current_slot.select_gof_file (details_panel.file);
+                // current_slot.colpane.add (details_panel.hpane);
+                // details_panel.initialize_directory ();
+ //            } else {
+                this.colpane.add (details_panel.hpane);
+ //            }
+            slot_list.append (details_panel);
+            details_panel.active (true, true);
+            update_total_width ();
+
+
+            // var style_context = get_style_context ();
+            // // if (slot.directory.is_empty ()) {
+            //     Pango.Layout layout = create_pango_layout (null);
+
+            //     if (!style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
+            //         style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
+            //         style_context.add_class (Gtk.STYLE_CLASS_VIEW);
+            //     }
+
+            //     layout.set_markup (slot.get_empty_message (), -1);
+
+            //     Pango.Rectangle? extents = null;
+            //     layout.get_extents (null, out extents);
+
+            //     double width = Pango.units_to_double (extents.width);
+            //     double height = Pango.units_to_double (extents.height);
+
+            //     double x = (double) get_allocated_width () / 2 - width / 2;
+            //     double y = (double) get_allocated_height () / 2 - height / 2;
+
+            // Gtk.Allocation alloc;
+            // get_allocation (out alloc);
+            // var surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, alloc.width, alloc.height);
+            // var cr = new Cairo.Context (surface);
+            //     get_style_context ().render_layout (cr, x, y, layout);
+
+                // return true;
+            // } else if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
+            //     style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
+            //     style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
+            // }
+
+            // return false;
+        }
+
         private void truncate_list_after_slot (View.Slot slot) {
             if (slot_list.length () <= 0) { //Can be assumed to limited in length
                 return;
@@ -401,10 +481,10 @@ namespace Files.View {
                         return true;
                     }
 
-                    Files.AbstractDirectoryView? view = current_slot.get_directory_view ();
-                    if(view is Files.AbstractDirectoryView) {
-                        view.on_details_draw ();
-                    }
+                    // Files.AbstractDirectoryView? view = current_slot.get_directory_view ();
+                    // if(view is Files.AbstractDirectoryView) {
+                        draw_file_details (selected_file);
+                    // }
                     break;
 
                 case Gdk.Key.BackSpace:

@@ -109,7 +109,7 @@ namespace Files {
 
                             Files.AbstractSlot slot = base.slot.ctab.get_view ();
                             if(slot is View.Miller) {
-                                base.on_details_draw ();
+                                slot.draw_file_details (file);
                             } else {
                                 //throw error?
                             }
