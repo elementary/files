@@ -7,7 +7,17 @@
 
 public class Files.View.DetailsColumn : Gtk.Box {
     private Gtk.ScrolledWindow details_window;
+    private GLib.Cancellable? cancellable;
     private Gtk.Box details_container;
+    private Gtk.Spinner spinner;
+    private Gtk.Label size_value;
+    private Gtk.Label resolution_value;
+    private Files.File goffile;
+
+    public Gtk.Grid info_grid = new Gtk.Grid () {
+        column_spacing = 6,
+        row_spacing = 6
+    };
 
     public new bool has_focus {
         get {
@@ -24,13 +34,98 @@ public class Files.View.DetailsColumn : Gtk.Box {
             vexpand = true
         };
 
-        var title = new Gtk.Label (file.basename)  {
-            hexpand = true,
-            xalign = 0
-        };
+        /** begin copy-pasta from PropertiesWindow.construct_info_panel **/
 
-        details_box.add (title);
+        var size_key_label = make_key_label (_("Size:"));
 
+        spinner = new Gtk.Spinner ();
+        spinner.halign = Gtk.Align.START;
+
+        size_value = make_value_label ("");
+
+        info_grid.attach (size_key_label, 0, 1);
+        info_grid.attach_next_to (spinner, size_key_label, RIGHT);
+        info_grid.attach_next_to (size_value, size_key_label, RIGHT);
+
+        int n = 4;
+
+        /* Note most Linux filesystem do not store file creation time */
+        var time_created = FileUtils.get_formatted_time_attribute_from_info (file.info,
+                                                                             FileAttribute.TIME_CREATED);
+        if (time_created != "") {
+            var key_label = make_key_label (_("Created:"));
+            var value_label = make_value_label (time_created);
+            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            n++;
+        }
+
+        var time_modified = FileUtils.get_formatted_time_attribute_from_info (file.info,
+                                                                              FileAttribute.TIME_MODIFIED);
+
+        if (time_modified != "") {
+            var key_label = make_key_label (_("Modified:"));
+            var value_label = make_value_label (time_modified);
+            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            n++;
+        }
+
+        if (file.is_trashed ()) {
+            var deletion_date = FileUtils.get_formatted_time_attribute_from_info (file.info,
+                                                                                  FileAttribute.TRASH_DELETION_DATE);
+            if (deletion_date != "") {
+                var key_label = make_key_label (_("Deleted:"));
+                var value_label = make_value_label (deletion_date);
+                info_grid.attach (key_label, 0, n, 1, 1);
+                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+                n++;
+            }
+        }
+
+        var ftype = filetype (file);
+
+        var mimetype_key = make_key_label (_("Media type:"));
+        var mimetype_value = make_value_label (ftype);
+        info_grid.attach (mimetype_key, 0, n, 1, 1);
+        info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
+        n++;
+
+        // if ("image" in ftype) {
+        //     var resolution_key = make_key_label (_("Resolution:"));
+        //     resolution_value = make_value_label (resolution (file));
+        //     info_grid.attach (resolution_key, 0, n, 1, 1);
+        //     info_grid.attach_next_to (resolution_value, resolution_key, Gtk.PositionType.RIGHT, 3, 1);
+        //     n++;
+        // }
+
+        var location_key = make_key_label (_("Location:"));
+        var location_value = make_value_label (location (file));
+        location_value.ellipsize = Pango.EllipsizeMode.MIDDLE;
+        location_value.max_width_chars = 32;
+        info_grid.attach (location_key, 0, n, 1, 1);
+        info_grid.attach_next_to (location_value, location_key, Gtk.PositionType.RIGHT, 3, 1);
+        n++;
+
+        if (file.info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_SYMLINK)) {
+            var key_label = make_key_label (_("Target:"));
+            var value_label = make_value_label (file.info.get_attribute_byte_string (GLib.FileAttribute.STANDARD_SYMLINK_TARGET));
+            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            n++;
+        }
+
+        if (file.is_trashed ()) {
+            var key_label = make_key_label (_("Original Location:"));
+            var value_label = make_value_label (original_location (file));
+            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            n++;
+        }
+
+        /** end copy-pasta from PropertiesWindow.construct_info_panel **/
+
+        details_box.add (info_grid);
 
         details_container = new Gtk.Box (VERTICAL, 0) {
             vexpand = true
@@ -52,39 +147,110 @@ public class Files.View.DetailsColumn : Gtk.Box {
         show_all ();
     }
 
-// REFS:
-            // var style_context = get_style_context ();
-            // // if (slot.directory.is_empty ()) {
-            //     Pango.Layout layout = create_pango_layout (null);
+    /** Also from PropertiesWindow **/
+    public static string location (Files.File file) {
+        // if (view.in_recent) {
+        //     string original_location = file.get_display_target_uri ().replace ("%20", " ");
+        //     string file_name = file.get_display_name ().replace ("%20", " ");
+        //     string location_folder = original_location.slice (0, -file_name.length).replace ("%20", " ");
+        //     string location_name = location_folder.slice (7, -1);
 
-            //     if (!style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
-            //         style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
-            //         style_context.add_class (Gtk.STYLE_CLASS_VIEW);
-            //     }
+        //     return "<a href=\"" + Markup.escape_text (location_folder) +
+        //            "\">" + Markup.escape_text (location_name) + "</a>";
+        // } else {
+            return "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) +
+                   "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>";
+        // }
+    }
 
-            //     layout.set_markup (slot.get_empty_message (), -1);
+    public static string original_location (Files.File file) {
+        /* print orig location of trashed files */
+        if (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH) != null) {
+            var trash_orig_loc = get_common_trash_orig (file);
+            if (trash_orig_loc != null) {
+                var orig_pth = file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH);
+                return "<a href=\"" + get_parent_loc (orig_pth).get_uri () + "\">" + trash_orig_loc + "</a>";
+            }
+        }
+        return _("Unknown");
+    }
 
-            //     Pango.Rectangle? extents = null;
-            //     layout.get_extents (null, out extents);
+    public static string filetype (Files.File file) {
+        string ftype = file.get_ftype ();
+        if (ftype != null) {
+            return ftype;
+        } else {
+            /* show list of mimetypes only if we got a default application in common */
+            if (MimeActions.get_default_application_for_file (file) != null) {
+                return file.get_ftype ();
+            }
+        }
+        return _("Unknown");
+    }
 
-            //     double width = Pango.units_to_double (extents.width);
-            //     double height = Pango.units_to_double (extents.height);
+    private async void get_resolution (Files.File goffile) {
+        GLib.FileInputStream? stream = null;
+        GLib.File file = goffile.location;
+        string resolution = _("Could not be determined");
 
-            //     double x = (double) get_allocated_width () / 2 - width / 2;
-            //     double y = (double) get_allocated_height () / 2 - height / 2;
+        try {
+            stream = yield file.read_async (0, cancellable);
+            if (stream == null) {
+                error ("Could not read image file's size data");
+            } else {
+                var pixbuf = yield new Gdk.Pixbuf.from_stream_async (stream, cancellable);
+                goffile.width = pixbuf.get_width ();
+                goffile.height = pixbuf.get_height ();
+                resolution = goffile.width.to_string () + " × " + goffile.height.to_string () + " px";
+            }
+        } catch (Error e) {
+            warning ("Error loading image resolution in PropertiesWindow: %s", e.message);
+        }
+        try {
+            stream.close ();
+        } catch (GLib.Error e) {
+            debug ("Error closing stream in get_resolution: %s", e.message);
+        }
 
-            // Gtk.Allocation alloc;
-            // get_allocation (out alloc);
-            // var surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, alloc.width, alloc.height);
-            // var cr = new Cairo.Context (surface);
-            //     get_style_context ().render_layout (cr, x, y, layout);
+        resolution_value.label = resolution;
+    }
 
-                // return true;
-            // } else if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
-            //     style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
-            //     style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
-            // }
+    private string resolution (Files.File file) {
+        if (file.width > 0) { /* resolution has already been determined */
+            return goffile.width.to_string () + " × " + goffile.height.to_string () + " px";
+        } else {
+            /* Async function will update info when resolution determined */
+            get_resolution.begin (file);
+            return _("Loading…");
+        }
+    }
 
-            // return false;
+    public static string get_common_trash_orig (Files.File file) {
+        GLib.File loc = null;
+        string path = null;
 
+        // if (loc == null && file != null) {
+        //     loc = get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH));
+        //     continue;
+        // }
+
+        // if (file != null &&
+        //     !loc.equal (get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH)))) {
+
+        //     return null;
+        // }
+
+        // if (loc == null) {
+            path = "/";
+        // } else {
+        //     path = loc.get_parse_name ();
+        // }
+
+        return path;
+    }
+
+    public static GLib.File? get_parent_loc (string path) {
+        var loc = GLib.File.new_for_path (path);
+        return loc.get_parent ();
+    }
 }
