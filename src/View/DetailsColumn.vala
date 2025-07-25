@@ -5,158 +5,86 @@
  * Authors : Andres Mendez <shiruken@gmail.com>
  */
 
-
 public class Files.View.DetailsColumn : Gtk.Box {
-    protected Gtk.Grid info_grid;
+    private Gtk.ScrolledWindow details_window;
+    private Gtk.Box details_container;
 
-    construct {
+    public new bool has_focus {
+        get {
+            return details_container.has_focus;
+        }
     }
 
+    public DetailsColumn (Files.File file) {
+        var preview_box = new Gtk.Box (VERTICAL, 0) {
+            vexpand = true
+        };
 
-    // private void construct_info_panel (Files.File file) {
-    //     /* Have to have these separate as size call is async */
-    //     var size_key_label = make_key_label (_("Size:"));
+        var details_box = new Gtk.Box (VERTICAL, 0) {
+            vexpand = true
+        };
 
-    //     spinner = new Gtk.Spinner ();
-    //     spinner.halign = Gtk.Align.START;
+        var title = new Gtk.Label (file.basename)  {
+            hexpand = true,
+            xalign = 0
+        };
 
-    //     size_value = make_value_label ("");
+        details_box.add (title);
 
-    //     info_grid.attach (size_key_label, 0, 1);
-    //     info_grid.attach_next_to (spinner, size_key_label, RIGHT);
-    //     info_grid.attach_next_to (size_value, size_key_label, RIGHT);
 
-    //     int n = 4;
+        details_container = new Gtk.Box (VERTICAL, 0) {
+            vexpand = true
+        };
 
-    //     if (only_one) {
-    //         /* Note most Linux filesystem do not store file creation time */
-    //         var time_created = FileUtils.get_formatted_time_attribute_from_info (file.info,
-    //                                                                              FileAttribute.TIME_CREATED);
-    //         if (time_created != "") {
-    //             var key_label = make_key_label (_("Created:"));
-    //             var value_label = make_value_label (time_created);
-    //             info_grid.attach (key_label, 0, n, 1, 1);
-    //             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-    //             n++;
-    //         }
+        details_container.add (preview_box);
+        details_container.add (details_box);
 
-    //         var time_modified = FileUtils.get_formatted_time_attribute_from_info (file.info,
-    //                                                                               FileAttribute.TIME_MODIFIED);
+        details_window = new Gtk.ScrolledWindow (null, null) {
+            child = details_container,
+            hscrollbar_policy = Gtk.PolicyType.NEVER
+        };
 
-    //         if (time_modified != "") {
-    //             var key_label = make_key_label (_("Modified:"));
-    //             var value_label = make_value_label (time_modified);
-    //             info_grid.attach (key_label, 0, n, 1, 1);
-    //             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-    //             n++;
-    //         }
-    //     }
+        orientation = Gtk.Orientation.VERTICAL;
+        width_request = Files.app_settings.get_int ("minimum-sidebar-width");
+        get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
+        add (details_window);
 
-    //     if (only_one && file.is_trashed ()) {
-    //         var deletion_date = FileUtils.get_formatted_time_attribute_from_info (file.info,
-    //                                                                               FileAttribute.TRASH_DELETION_DATE);
-    //         if (deletion_date != "") {
-    //             var key_label = make_key_label (_("Deleted:"));
-    //             var value_label = make_value_label (deletion_date);
-    //             info_grid.attach (key_label, 0, n, 1, 1);
-    //             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-    //             n++;
-    //         }
-    //     }
+        show_all ();
+    }
 
-    //     var ftype = filetype (file);
+// REFS:
+            // var style_context = get_style_context ();
+            // // if (slot.directory.is_empty ()) {
+            //     Pango.Layout layout = create_pango_layout (null);
 
-    //     var mimetype_key = make_key_label (_("Media type:"));
-    //     var mimetype_value = make_value_label (ftype);
-    //     info_grid.attach (mimetype_key, 0, n, 1, 1);
-    //     info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
-    //     n++;
+            //     if (!style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
+            //         style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
+            //         style_context.add_class (Gtk.STYLE_CLASS_VIEW);
+            //     }
 
-    //     if (only_one && "image" in ftype) {
-    //         var resolution_key = make_key_label (_("Resolution:"));
-    //         resolution_value = make_value_label (resolution (file));
-    //         info_grid.attach (resolution_key, 0, n, 1, 1);
-    //         info_grid.attach_next_to (resolution_value, resolution_key, Gtk.PositionType.RIGHT, 3, 1);
-    //         n++;
-    //     }
+            //     layout.set_markup (slot.get_empty_message (), -1);
 
-    //     if (got_common_location ()) {
-    //         var location_key = make_key_label (_("Location:"));
-    //         var location_value = make_value_label (location (file));
-    //         location_value.ellipsize = Pango.EllipsizeMode.MIDDLE;
-    //         location_value.max_width_chars = 32;
-    //         info_grid.attach (location_key, 0, n, 1, 1);
-    //         info_grid.attach_next_to (location_value, location_key, Gtk.PositionType.RIGHT, 3, 1);
-    //         n++;
-    //     }
+            //     Pango.Rectangle? extents = null;
+            //     layout.get_extents (null, out extents);
 
-    //     if (only_one && file.info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_SYMLINK)) {
-    //         var key_label = make_key_label (_("Target:"));
-    //         var value_label = make_value_label (file.info.get_attribute_byte_string (GLib.FileAttribute.STANDARD_SYMLINK_TARGET));
-    //         info_grid.attach (key_label, 0, n, 1, 1);
-    //         info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-    //         n++;
-    //     }
+            //     double width = Pango.units_to_double (extents.width);
+            //     double height = Pango.units_to_double (extents.height);
 
-    //     if (file.is_trashed ()) {
-    //         var key_label = make_key_label (_("Original Location:"));
-    //         var value_label = make_value_label (original_location (file));
-    //         info_grid.attach (key_label, 0, n, 1, 1);
-    //         info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-    //         n++;
-    //     }
+            //     double x = (double) get_allocated_width () / 2 - width / 2;
+            //     double y = (double) get_allocated_height () / 2 - height / 2;
 
-    //     /* Open with */
-    //     if (view.get_default_app () != null && !goffile.is_directory) {
-    //         Gtk.TreeIter iter;
+            // Gtk.Allocation alloc;
+            // get_allocation (out alloc);
+            // var surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, alloc.width, alloc.height);
+            // var cr = new Cairo.Context (surface);
+            //     get_style_context ().render_layout (cr, x, y, layout);
 
-    //         AppInfo default_app = view.get_default_app ();
-    //         store_apps = new Gtk.ListStore (3, typeof (AppInfo), typeof (string), typeof (Icon));
-    //         unowned List<AppInfo> apps = view.get_open_with_apps ();
-    //         foreach (var app in apps) {
-    //             store_apps.append (out iter);
-    //             store_apps.set (iter,
-    //                             AppsColumn.APP_INFO, app,
-    //                             AppsColumn.LABEL, app.get_name (),
-    //                             AppsColumn.ICON, ensure_icon (app));
-    //         }
-    //         store_apps.append (out iter);
-    //         store_apps.set (iter,
-    //                         AppsColumn.LABEL, _("Other Application…"));
-    //         store_apps.prepend (out iter);
-    //         store_apps.set (iter,
-    //                         AppsColumn.APP_INFO, default_app,
-    //                         AppsColumn.LABEL, default_app.get_name (),
-    //                         AppsColumn.ICON, ensure_icon (default_app));
+                // return true;
+            // } else if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
+            //     style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
+            //     style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
+            // }
 
-    //         var renderer = new Gtk.CellRendererText ();
-    //         var pix_renderer = new Gtk.CellRendererPixbuf ();
+            // return false;
 
-    //         var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_apps);
-    //         combo.active = 0;
-    //         combo.valign = Gtk.Align.CENTER;
-    //         combo.pack_start (pix_renderer, false);
-    //         combo.pack_start (renderer, true);
-    //         combo.add_attribute (renderer, "text", AppsColumn.LABEL);
-    //         combo.add_attribute (pix_renderer, "gicon", AppsColumn.ICON);
-
-    //         combo.changed.connect (combo_open_with_changed);
-
-    //         var key_label = make_key_label (_("Open with:"));
-
-    //         info_grid.attach (key_label, 0, n, 1, 1);
-    //         info_grid.attach_next_to (combo, key_label, Gtk.PositionType.RIGHT);
-    //         n++;
-    //     }
-
-    //     /* Device Usage */
-    //     if (should_show_device_usage ()) {
-    //         try {
-    //             var info = goffile.get_target_location ().query_filesystem_info ("filesystem::*");
-    //             create_storage_bar (info, n);
-    //         } catch (Error e) {
-    //             warning ("error: %s", e.message);
-    //         }
-    //     }
-    // }
 }

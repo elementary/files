@@ -21,6 +21,7 @@ namespace Files {
         /** Miller View support */
         bool awaiting_double_click = false;
         uint double_click_timeout_id = 0;
+        bool showing_file_details = false;
 
         public ColumnView (View.Slot _slot) {
             base (_slot);
@@ -101,23 +102,26 @@ namespace Files {
                         result = true;
                     } else {
                         /*  ... store clicked folder and start double-click timeout.
-                            Show Properties if it expires prior to a second click
+                            Show DetailsColumn if it expires prior to a second click
                         */
                         awaiting_double_click = true;
                         double_click_timeout_id = GLib.Timeout.add (300, () => {
                             not_double_click ();
 
-                            Files.AbstractSlot slot = base.slot.ctab.get_view ();
-                            if(slot is View.Miller) {
-                                slot.draw_file_details (file);
-                            } else {
-                                //throw error?
+                            View.Miller slot = (View.Miller)base.slot.ctab.get_view ();
+                            if(showing_file_details) {
+                                slot.clear_file_details ();
+                                showing_file_details = false;
                             }
+
+                            slot.draw_file_details (file);
+                            showing_file_details = true;
 
                             return GLib.Source.REMOVE;
                         });
                     }
                 } else if (n_press == 2) {
+                    showing_file_details = false;
                     cancel_await_double_click ();
                     return base.handle_primary_button_click (n_press, mods, path);
                 }

@@ -35,6 +35,9 @@ namespace Files.View {
         public GLib.List<View.Slot> slot_list = null;
         public int total_width = 0;
 
+        bool showing_file_details = false;
+        private View.DetailsColumn details;
+
         public override bool is_frozen {
             set {
                 if (current_slot != null) {
@@ -125,83 +128,24 @@ namespace Files.View {
         }
 
         public void draw_file_details (Files.File file) {
+            details = new View.DetailsColumn (file);
 
-            // unowned GLib.List<Files.File> selection = get_selected_files ();
+            View.Slot last_slot = slot_list.last ().data;
+            last_slot.colpane.pack_start (details, true, true);
+            last_slot.hpane.show_all ();
+            last_slot.active (true, true);
 
-            // if (selection != null &&
-            //     selection.first ().next == null &&
-            //     selection.data.is_folder ()) {
-            //     warning("Called on_details_draw from not-a-file");
-            //     return false;
-            // }
-warning("=-=-=- file: %s", file.basename);
-
-            if (file == null) {
-                warning("Ionno");
-                return;
-            }
-
-            View.Slot details_panel = new View.Slot(file.location, current_slot.ctab, ViewMode.MILLER_COLUMNS);
-
-            details_panel.slot_number = current_slot.slot_number + 1;
-            details_panel.colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            details_panel.colpane.set_size_request (details_panel.width, -1);
-            details_panel.hpane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-                hexpand = true
-            };
-
-            details_panel.hpane.pack1 (details_panel.get_directory_view (), false, false);
-            details_panel.hpane.pack2 (details_panel.colpane, true, true);
-            details_panel.hpane.show_all ();
-
-            connect_slot_signals (details_panel);
-
- //            if (host != null) {
-                // truncate_list_after_slot (host);
-                // current_slot.select_gof_file (details_panel.file);
-                // current_slot.colpane.add (details_panel.hpane);
-                // details_panel.initialize_directory ();
- //            } else {
-                this.colpane.add (details_panel.hpane);
- //            }
-            slot_list.append (details_panel);
-            details_panel.active (true, true);
             update_total_width ();
+        }
 
+        public void clear_file_details () {
+            View.Slot last_slot = slot_list.last ().data;
 
-            // var style_context = get_style_context ();
-            // // if (slot.directory.is_empty ()) {
-            //     Pango.Layout layout = create_pango_layout (null);
+            last_slot.colpane.remove (details);
+            last_slot.hpane.show_all ();
+            last_slot.active (true, true);
 
-            //     if (!style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
-            //         style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
-            //         style_context.add_class (Gtk.STYLE_CLASS_VIEW);
-            //     }
-
-            //     layout.set_markup (slot.get_empty_message (), -1);
-
-            //     Pango.Rectangle? extents = null;
-            //     layout.get_extents (null, out extents);
-
-            //     double width = Pango.units_to_double (extents.width);
-            //     double height = Pango.units_to_double (extents.height);
-
-            //     double x = (double) get_allocated_width () / 2 - width / 2;
-            //     double y = (double) get_allocated_height () / 2 - height / 2;
-
-            // Gtk.Allocation alloc;
-            // get_allocation (out alloc);
-            // var surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, alloc.width, alloc.height);
-            // var cr = new Cairo.Context (surface);
-            //     get_style_context ().render_layout (cr, x, y, layout);
-
-                // return true;
-            // } else if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
-            //     style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
-            //     style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
-            // }
-
-            // return false;
+            update_total_width ();
         }
 
         private void truncate_list_after_slot (View.Slot slot) {
@@ -452,6 +396,8 @@ warning("=-=-=- file: %s", file.basename);
             switch (keyval) {
                 case Gdk.Key.Left:
                     if (current_position > 0) {
+                        clear_file_details ();
+                        showing_file_details = false;
                         to_activate = slot_list.nth_data (current_position - 1);
                     }
 
@@ -481,10 +427,12 @@ warning("=-=-=- file: %s", file.basename);
                         return true;
                     }
 
-                    // Files.AbstractDirectoryView? view = current_slot.get_directory_view ();
-                    // if(view is Files.AbstractDirectoryView) {
-                        draw_file_details (selected_file);
-                    // }
+                    if(showing_file_details) {
+                        clear_file_details ();
+                    }
+
+                    draw_file_details (selected_file);
+                    showing_file_details = true;
                     break;
 
                 case Gdk.Key.BackSpace:
@@ -493,6 +441,11 @@ warning("=-=-=- file: %s", file.basename);
                         } else {
                             ctab.go_up ();
                             return true;
+                        }
+
+                        if(showing_file_details) {
+                            clear_file_details ();
+                            showing_file_details = false;
                         }
 
                     break;
