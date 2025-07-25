@@ -23,7 +23,8 @@ namespace Files.FileChanges {
         INITIAL,
         ADDED,
         CHANGED,
-        REMOVED,
+        FILE_REMOVED,
+        FOLDER_REMOVED,
         MOVED
     }
 
@@ -86,7 +87,18 @@ namespace Files.FileChanges {
 
     public static void queue_file_removed (GLib.File location) {
         var new_item = new Change () {
-            kind = Kind.REMOVED,
+            kind = Kind.FILE_REMOVED,
+            from = location,
+            is_internal = true
+        };
+
+        queue_add_common ((owned) new_item);
+    }
+
+    // Only called for permanent deletion of folder
+    public static void queue_folder_removed (GLib.File location) {
+        var new_item = new Change () {
+            kind = Kind.FOLDER_REMOVED,
             from = location,
             is_internal = true
         };
@@ -110,7 +122,8 @@ namespace Files.FileChanges {
         uint chunk_count;
         bool flush_needed;
         GLib.List<GLib.File>? changes = null;
-        GLib.List<GLib.File>? deletions = null;
+        GLib.List<GLib.File>? file_deletions = null;
+        GLib.List<GLib.File>? folder_deletions = null;
         GLib.List<GLib.Array<GLib.File>>? moves = null;
         GLib.List<Change>? additions = null;
 
@@ -139,8 +152,11 @@ namespace Files.FileChanges {
                 flush_needed |= moves != null
                     && change.kind != Files.FileChanges.Kind.MOVED;
 
-                flush_needed |= deletions != null
-                    && change.kind != Files.FileChanges.Kind.REMOVED;
+                flush_needed |= file_deletions != null
+                    && change.kind != Files.FileChanges.Kind.FILE_REMOVED;
+
+                flush_needed |= folder_deletions != null
+                    && change.kind != Files.FileChanges.Kind.FOLDER_REMOVED;
 
                 flush_needed |= !consume_all && chunk_count >= CONSUME_CHANGES_MAX_CHUNK;
                 /* we have reached the chunk maximum */
@@ -152,10 +168,18 @@ namespace Files.FileChanges {
                  * contain changes.
                  */
 
-                if (deletions != null) {
-                    deletions.reverse ();
-                    Files.Directory.notify_files_removed (deletions);
-                    deletions = null;
+                if (file_deletions != null) {
+                    file_deletions.reverse ();
+                    warning ("FileCHanges notifying files removed");
+                    Files.Directory.notify_files_removed (file_deletions);
+                    file_deletions = null;
+                }
+
+                if (folder_deletions != null) {
+                    folder_deletions.reverse ();
+                    warning ("FileCHanges notifying files removed");
+                    Files.Directory.notify_files_removed (folder_deletions);
+                    folder_deletions = null;
                 }
 
                 if (moves != null) {
@@ -200,12 +224,20 @@ namespace Files.FileChanges {
                     changes.prepend (change.from);
                     break;
 
-                case Files.FileChanges.Kind.REMOVED:
-                    if (deletions == null) {
-                        deletions = new GLib.List<GLib.File> ();
+                case Files.FileChanges.Kind.FILE_REMOVED:
+                    if (file_deletions == null) {
+                        file_deletions = new GLib.List<GLib.File> ();
                     }
 
-                    deletions.prepend (change.from);
+                    file_deletions.prepend (change.from);
+                    break;
+
+                case Files.FileChanges.Kind.FOLDER_REMOVED:
+                    if (folder_deletions == null) {
+                        folder_deletions = new GLib.List<GLib.File> ();
+                    }
+
+                    folder_deletions.prepend (change.from);
                     break;
 
                 case Files.FileChanges.Kind.MOVED:
