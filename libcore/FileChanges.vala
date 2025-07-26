@@ -170,14 +170,12 @@ namespace Files.FileChanges {
 
                 if (file_deletions != null) {
                     file_deletions.reverse ();
-                    warning ("FileCHanges notifying files removed");
                     Files.Directory.notify_files_removed (file_deletions);
                     file_deletions = null;
                 }
 
                 if (folder_deletions != null) {
                     folder_deletions.reverse ();
-                    warning ("FileCHanges notifying files removed");
                     Files.Directory.notify_files_removed (folder_deletions);
                     folder_deletions = null;
                 }
