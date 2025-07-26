@@ -12,7 +12,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
     private Gtk.Spinner spinner;
     private Gtk.Label size_value;
     private Gtk.Label resolution_value;
-    private Files.File goffile;
 
     public Gtk.Grid info_grid = new Gtk.Grid () {
         column_spacing = 6,
@@ -33,6 +32,40 @@ public class Files.View.DetailsColumn : Gtk.Box {
             vexpand = true
         };
 
+        var file_pix = file.get_icon_pixbuf (48, get_scale_factor (), Files.File.IconFlags.NONE);
+        if (file_pix != null) {
+            var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG) {
+                pixel_size = 48
+            };
+
+            var file_overlay = new Gtk.Overlay () {
+                child = file_icon
+            };
+
+            preview_box.pack_start (file_overlay, false, false);
+
+            if (file.emblems_list != null) {
+                int pos = 0;
+                var emblem_box = new Gtk.Box (VERTICAL, 0) {
+                    halign = Gtk.Align.END,
+                    valign = Gtk.Align.END
+                };
+
+                foreach (string emblem_name in file.emblems_list) {
+                    var emblem = new Gtk.Image.from_icon_name (emblem_name, Gtk.IconSize.BUTTON);
+                    emblem_box.add (emblem);
+
+                    pos++;
+                    if (pos > 3) { /* Only room for 3 emblems */
+                        break;
+                    }
+                }
+
+
+                file_overlay.add_overlay (emblem_box);
+            }
+        }
+
         var details_box = new Gtk.Box (VERTICAL, 0) {
             vexpand = true
         };
@@ -43,7 +76,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
         info_grid.attach (name_key_label, 0, 1);
         info_grid.attach_next_to (name_value, name_key_label, RIGHT);
 
-        /** begin copy-pasta from PropertiesWindow.construct_info_panel **/
+        /** begin adapted copy-pasta from PropertiesWindow.construct_info_panel **/
 
         var size_key_label = make_key_label (_("Size:"));
 
@@ -58,7 +91,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
 
         int n = 5;
 
-        /* Note most Linux filesystem do not store file creation time */
         var time_created = FileUtils.get_formatted_time_attribute_from_info (file.info,
                                                                              FileAttribute.TIME_CREATED);
         if (time_created != "") {
@@ -163,7 +195,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
         show_all ();
     }
 
-    /** Also from PropertiesWindow **/
+    /** Also an adjusted copy from PropertiesWindow **/
     public static string location (Files.File file, Files.AbstractDirectoryView view) {
         if (view.in_recent) {
             string original_location = file.get_display_target_uri ().replace ("%20", " ");
@@ -233,7 +265,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
 
     private string resolution (Files.File file) {
         if (file.width > 0) { /* resolution has already been determined */
-            return goffile.width.to_string () + " × " + goffile.height.to_string () + " px";
+            return file.width.to_string () + " × " + file.height.to_string () + " px";
         } else {
             /* Async function will update info when resolution determined */
             get_resolution.begin (file);
