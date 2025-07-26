@@ -127,8 +127,8 @@ namespace Files.View {
             update_total_width ();
         }
 
-        public void draw_file_details (Files.File file) {
-            details = new View.DetailsColumn (file);
+        public void draw_file_details (Files.File file, Files.AbstractDirectoryView view) {
+            details = new View.DetailsColumn (file, view);
 
             View.Slot last_slot = slot_list.last ().data;
             last_slot.colpane.pack_start (details, true, true);
@@ -431,7 +431,7 @@ namespace Files.View {
                         clear_file_details ();
                     }
 
-                    draw_file_details (selected_file);
+                    draw_file_details (selected_file, current_slot.get_directory_view ());
                     showing_file_details = true;
                     break;
 

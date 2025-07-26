@@ -109,12 +109,13 @@ namespace Files {
                             not_double_click ();
 
                             View.Miller slot = (View.Miller)base.slot.ctab.get_view ();
+                            Files.AbstractDirectoryView view = base.slot.get_directory_view ();
                             if(showing_file_details) {
                                 slot.clear_file_details ();
                                 showing_file_details = false;
                             }
 
-                            slot.draw_file_details (file);
+                            slot.draw_file_details (file, view);
                             showing_file_details = true;
 
                             return GLib.Source.REMOVE;

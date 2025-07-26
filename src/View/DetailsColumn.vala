@@ -25,7 +25,10 @@ public class Files.View.DetailsColumn : Gtk.Box {
         }
     }
 
-    public DetailsColumn (Files.File file) {
+    public DetailsColumn (Files.File file, Files.AbstractDirectoryView view) {
+        GLib.List<Files.File> the_file_in_a_list = new GLib.List<Files.File> ();
+        the_file_in_a_list.append(file);
+
         var preview_box = new Gtk.Box (VERTICAL, 0) {
             vexpand = true
         };
@@ -34,6 +37,12 @@ public class Files.View.DetailsColumn : Gtk.Box {
             vexpand = true
         };
 
+        Gtk.Label name_key_label = make_key_label (_("Name:"));
+        Gtk.Label name_value = make_value_label (file.get_display_name ());
+
+        info_grid.attach (name_key_label, 0, 1);
+        info_grid.attach_next_to (name_value, name_key_label, RIGHT);
+
         /** begin copy-pasta from PropertiesWindow.construct_info_panel **/
 
         var size_key_label = make_key_label (_("Size:"));
@@ -41,13 +50,13 @@ public class Files.View.DetailsColumn : Gtk.Box {
         spinner = new Gtk.Spinner ();
         spinner.halign = Gtk.Align.START;
 
-        size_value = make_value_label ("");
+        Gtk.Label size_value = make_value_label ("");
 
-        info_grid.attach (size_key_label, 0, 1);
+        info_grid.attach (size_key_label, 0, 2, 1);
         info_grid.attach_next_to (spinner, size_key_label, RIGHT);
         info_grid.attach_next_to (size_value, size_key_label, RIGHT);
 
-        int n = 4;
+        int n = 5;
 
         /* Note most Linux filesystem do not store file creation time */
         var time_created = FileUtils.get_formatted_time_attribute_from_info (file.info,
@@ -100,7 +109,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
         // }
 
         var location_key = make_key_label (_("Location:"));
-        var location_value = make_value_label (location (file));
+        var location_value = make_value_label (location (file, view));
         location_value.ellipsize = Pango.EllipsizeMode.MIDDLE;
         location_value.max_width_chars = 32;
         info_grid.attach (location_key, 0, n, 1, 1);
@@ -127,6 +136,13 @@ public class Files.View.DetailsColumn : Gtk.Box {
 
         details_box.add (info_grid);
 
+        Gtk.Button more_info_button = new Gtk.Button.with_label (_("More Info"));
+
+        more_info_button.clicked.connect (() => {
+            new View.PropertiesWindow (the_file_in_a_list, view, Files.get_active_window ());
+        });
+        details_box.add (more_info_button);
+
         details_container = new Gtk.Box (VERTICAL, 0) {
             vexpand = true
         };
@@ -148,19 +164,19 @@ public class Files.View.DetailsColumn : Gtk.Box {
     }
 
     /** Also from PropertiesWindow **/
-    public static string location (Files.File file) {
-        // if (view.in_recent) {
-        //     string original_location = file.get_display_target_uri ().replace ("%20", " ");
-        //     string file_name = file.get_display_name ().replace ("%20", " ");
-        //     string location_folder = original_location.slice (0, -file_name.length).replace ("%20", " ");
-        //     string location_name = location_folder.slice (7, -1);
+    public static string location (Files.File file, Files.AbstractDirectoryView view) {
+        if (view.in_recent) {
+            string original_location = file.get_display_target_uri ().replace ("%20", " ");
+            string file_name = file.get_display_name ().replace ("%20", " ");
+            string location_folder = original_location.slice (0, -file_name.length).replace ("%20", " ");
+            string location_name = location_folder.slice (7, -1);
 
-        //     return "<a href=\"" + Markup.escape_text (location_folder) +
-        //            "\">" + Markup.escape_text (location_name) + "</a>";
-        // } else {
+            return "<a href=\"" + Markup.escape_text (location_folder) +
+                   "\">" + Markup.escape_text (location_name) + "</a>";
+        } else {
             return "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) +
                    "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>";
-        // }
+        }
     }
 
     public static string original_location (Files.File file) {
@@ -226,25 +242,14 @@ public class Files.View.DetailsColumn : Gtk.Box {
     }
 
     public static string get_common_trash_orig (Files.File file) {
-        GLib.File loc = null;
+        GLib.File loc = get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH));
         string path = null;
 
-        // if (loc == null && file != null) {
-        //     loc = get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH));
-        //     continue;
-        // }
-
-        // if (file != null &&
-        //     !loc.equal (get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH)))) {
-
-        //     return null;
-        // }
-
-        // if (loc == null) {
+        if (loc == null) {
             path = "/";
-        // } else {
-        //     path = loc.get_parse_name ();
-        // }
+        } else {
+            path = loc.get_parse_name ();
+        }
 
         return path;
     }
