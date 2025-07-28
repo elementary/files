@@ -28,7 +28,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
         GLib.List<Files.File> the_file_in_a_list = new GLib.List<Files.File> ();
         the_file_in_a_list.append(file);
 
-        var preview_box = new Gtk.Box (VERTICAL, 0) {
+        var preview_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             vexpand = true
         };
 
@@ -42,11 +42,11 @@ public class Files.View.DetailsColumn : Gtk.Box {
                 child = file_icon
             };
 
-            preview_box.pack_start (file_overlay, false, false);
+            preview_box.pack_end (file_overlay, false, false);
 
             if (file.emblems_list != null) {
                 int pos = 0;
-                var emblem_box = new Gtk.Box (VERTICAL, 0) {
+                var emblem_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
                     halign = Gtk.Align.END,
                     valign = Gtk.Align.END
                 };
@@ -66,7 +66,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
             }
         }
 
-        var details_box = new Gtk.Box (VERTICAL, 0) {
+        var details_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             vexpand = true
         };
 
@@ -175,7 +175,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
         });
         details_box.add (more_info_button);
 
-        details_container = new Gtk.Box (VERTICAL, 0) {
+        details_container = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             vexpand = true
         };
 
