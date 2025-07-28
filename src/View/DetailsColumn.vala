@@ -79,11 +79,11 @@ public class Files.View.DetailsColumn : Gtk.Box {
         /** begin adapted copy-pasta from PropertiesWindow.construct_info_panel **/
 
         var size_key_label = make_key_label (_("Size:"));
-
         spinner = new Gtk.Spinner ();
         spinner.halign = Gtk.Align.START;
 
         Gtk.Label size_value = make_value_label ("");
+        size_value.label = GLib.format_size (PropertiesWindow.file_real_size (file));
 
         info_grid.attach (size_key_label, 0, 2, 1);
         info_grid.attach_next_to (spinner, size_key_label, RIGHT);
