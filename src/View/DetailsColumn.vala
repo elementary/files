@@ -132,13 +132,13 @@ public class Files.View.DetailsColumn : Gtk.Box {
         info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
         n++;
 
-        // if ("image" in ftype) {
-        //     var resolution_key = make_key_label (_("Resolution:"));
-        //     resolution_value = make_value_label (resolution (file));
-        //     info_grid.attach (resolution_key, 0, n, 1, 1);
-        //     info_grid.attach_next_to (resolution_value, resolution_key, Gtk.PositionType.RIGHT, 3, 1);
-        //     n++;
-        // }
+        if ("image" in ftype) {
+            var resolution_key = make_key_label (_("Resolution:"));
+            resolution_value = make_value_label (resolution (file));
+            info_grid.attach (resolution_key, 0, n, 1, 1);
+            info_grid.attach_next_to (resolution_value, resolution_key, Gtk.PositionType.RIGHT, 3, 1);
+            n++;
+        }
 
         var location_key = make_key_label (_("Location:"));
         var location_value = make_value_label (location (file, view));
