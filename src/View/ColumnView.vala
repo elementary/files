@@ -21,7 +21,6 @@ namespace Files {
         /** Miller View support */
         bool awaiting_double_click = false;
         uint double_click_timeout_id = 0;
-        bool showing_file_details = false;
 
         public ColumnView (View.Slot _slot) {
             base (_slot);
@@ -109,20 +108,15 @@ namespace Files {
                             not_double_click ();
 
                             View.Miller slot = (View.Miller)base.slot.ctab.get_view ();
-                            Files.AbstractDirectoryView view = base.slot.get_directory_view ();
-                            if(showing_file_details) {
-                                slot.clear_file_details ();
-                                showing_file_details = false;
-                            }
+                            slot.clear_file_details ();
 
+                            Files.AbstractDirectoryView view = base.slot.get_directory_view ();
                             slot.draw_file_details (file, view);
-                            showing_file_details = true;
 
                             return GLib.Source.REMOVE;
                         });
                     }
                 } else if (n_press == 2) {
-                    showing_file_details = false;
                     cancel_await_double_click ();
                     return base.handle_primary_button_click (n_press, mods, path);
                 }

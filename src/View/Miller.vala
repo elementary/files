@@ -35,7 +35,6 @@ namespace Files.View {
         public GLib.List<View.Slot> slot_list = null;
         public int total_width = 0;
 
-        bool showing_file_details = false;
         private View.DetailsColumn details;
 
         public override bool is_frozen {
@@ -397,7 +396,6 @@ namespace Files.View {
                 case Gdk.Key.Left:
                     if (current_position > 0) {
                         clear_file_details ();
-                        showing_file_details = false;
                         to_activate = slot_list.nth_data (current_position - 1);
                     }
 
@@ -427,12 +425,8 @@ namespace Files.View {
                         return true;
                     }
 
-                    if(showing_file_details) {
-                        clear_file_details ();
-                    }
-
+                    clear_file_details ();
                     draw_file_details (selected_file, current_slot.get_directory_view ());
-                    showing_file_details = true;
                     break;
 
                 case Gdk.Key.BackSpace:
@@ -443,10 +437,7 @@ namespace Files.View {
                             return true;
                         }
 
-                        if(showing_file_details) {
-                            clear_file_details ();
-                            showing_file_details = false;
-                        }
+                        clear_file_details ();
 
                     break;
 
