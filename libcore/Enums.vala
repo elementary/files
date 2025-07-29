@@ -253,4 +253,45 @@ namespace Files {
             }
         }
     }
+
+    // Matches settings enum for format of datetimes in view
+    public enum DateFormatMode {
+        ISO,
+        LOCALE,
+        INFORMAL,
+        COMPACT,
+        INVALID;
+
+        public string to_string () {
+            switch (this) {
+                case ISO:
+                    ///TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
+                    return _("ISO");
+                case LOCALE:
+                    return _("Locale");
+                case INFORMAL:
+                    return _("Informal");
+                case COMPACT:
+                    return _("Compact");
+                default:
+                    assert_not_reached ();
+            }
+        }
+
+        public static DateFormatMode from_string (string format) {
+            var fmt = format.down ();
+            switch (fmt) {
+                case "iso":
+                    ///TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
+                    return ISO;
+                case "locale":
+                    return LOCALE;
+                case "informal":
+                    return INFORMAL;
+                default:
+                    assert_not_reached ();
+            }
+        }
+    }
+
 }
