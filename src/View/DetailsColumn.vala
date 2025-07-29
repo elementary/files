@@ -10,7 +10,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
     private GLib.Cancellable? cancellable;
     private Gtk.Box details_container;
     private Gtk.Spinner spinner;
-    private Gtk.Label size_value;
     private Gtk.Label resolution_value;
 
     public Gtk.Grid info_grid = new Gtk.Grid () {
@@ -27,43 +26,47 @@ public class Files.View.DetailsColumn : Gtk.Box {
     public DetailsColumn (Files.File file, Files.AbstractDirectoryView view) {
         GLib.List<Files.File> the_file_in_a_list = new GLib.List<Files.File> ();
         the_file_in_a_list.append(file);
+        var ftype = filetype (file);
 
         var preview_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             vexpand = true
         };
 
-        var file_pix = file.get_icon_pixbuf (48, get_scale_factor (), Files.File.IconFlags.NONE);
-        if (file_pix != null) {
-            var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG) {
-                pixel_size = 48
-            };
+        Gtk.Image file_image = new Gtk.Image ();
+        Gtk.Overlay file_overlay = new Gtk.Overlay ();
+        if ("image" in ftype) {
+            file_image.set_from_file (file.uri);
 
-            var file_overlay = new Gtk.Overlay () {
-                child = file_icon
-            };
-
-            preview_box.pack_end (file_overlay, false, false);
-
-            if (file.emblems_list != null) {
-                int pos = 0;
-                var emblem_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
-                    halign = Gtk.Align.END,
-                    valign = Gtk.Align.END
-                };
-
-                foreach (string emblem_name in file.emblems_list) {
-                    var emblem = new Gtk.Image.from_icon_name (emblem_name, Gtk.IconSize.BUTTON);
-                    emblem_box.add (emblem);
-
-                    pos++;
-                    if (pos > 3) { /* Only room for 3 emblems */
-                        break;
-                    }
-                }
-
-
-                file_overlay.add_overlay (emblem_box);
+        } else {
+            Gdk.Pixbuf? file_pix = file.get_icon_pixbuf (48, get_scale_factor (), Files.File.IconFlags.NONE);
+            if (file_pix != null) {
+                file_image.pixel_size = 48;
+                file_image.set_from_gicon (file_pix, Gtk.IconSize.DIALOG);
             }
+        }
+
+        file_overlay.child = file_image;
+        preview_box.pack_end (file_overlay, false, false);
+
+        if (file.emblems_list != null) {
+            int pos = 0;
+            var emblem_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
+                halign = Gtk.Align.END,
+                valign = Gtk.Align.END
+            };
+
+            foreach (string emblem_name in file.emblems_list) {
+                var emblem = new Gtk.Image.from_icon_name (emblem_name, Gtk.IconSize.BUTTON);
+                emblem_box.add (emblem);
+
+                pos++;
+                if (pos > 3) { /* Only room for 3 emblems */
+                    break;
+                }
+            }
+
+
+            file_overlay.add_overlay (emblem_box);
         }
 
         var details_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
@@ -124,8 +127,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
             }
         }
 
-        var ftype = filetype (file);
-
         var mimetype_key = make_key_label (_("Media type:"));
         var mimetype_value = make_value_label (ftype);
         info_grid.attach (mimetype_key, 0, n, 1, 1);
@@ -139,14 +140,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
             info_grid.attach_next_to (resolution_value, resolution_key, Gtk.PositionType.RIGHT, 3, 1);
             n++;
         }
-
-        var location_key = make_key_label (_("Location:"));
-        var location_value = make_value_label (location (file, view));
-        location_value.ellipsize = Pango.EllipsizeMode.MIDDLE;
-        location_value.max_width_chars = 32;
-        info_grid.attach (location_key, 0, n, 1, 1);
-        info_grid.attach_next_to (location_value, location_key, Gtk.PositionType.RIGHT, 3, 1);
-        n++;
 
         if (file.info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_SYMLINK)) {
             var key_label = make_key_label (_("Target:"));
@@ -196,21 +189,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
     }
 
     /** Also an adjusted copy from PropertiesWindow **/
-    public static string location (Files.File file, Files.AbstractDirectoryView view) {
-        if (view.in_recent) {
-            string original_location = file.get_display_target_uri ().replace ("%20", " ");
-            string file_name = file.get_display_name ().replace ("%20", " ");
-            string location_folder = original_location.slice (0, -file_name.length).replace ("%20", " ");
-            string location_name = location_folder.slice (7, -1);
-
-            return "<a href=\"" + Markup.escape_text (location_folder) +
-                   "\">" + Markup.escape_text (location_name) + "</a>";
-        } else {
-            return "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) +
-                   "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>";
-        }
-    }
-
     public static string original_location (Files.File file) {
         /* print orig location of trashed files */
         if (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH) != null) {
