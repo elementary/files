@@ -11,7 +11,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
     private Gtk.Box details_container;
     private Gtk.Spinner spinner;
     private Gtk.Label resolution_value;
-
+    public Gtk.Image file_image = new Gtk.Image ();
     public Gtk.Grid info_grid = new Gtk.Grid () {
         column_spacing = 6,
         row_spacing = 6
@@ -32,11 +32,19 @@ public class Files.View.DetailsColumn : Gtk.Box {
             vexpand = true
         };
 
-        Gtk.Image file_image = new Gtk.Image ();
-        file_image.pixel_size = 128;
+        file_image.clear ();
         Gtk.Overlay file_overlay = new Gtk.Overlay ();
         if ("image" in ftype) {
-            file_image.set_from_file (file.uri);
+            string filename = file.location.get_path ();
+            // file_image.set_from_file (filename);
+
+            Gdk.Pixbuf? file_pix = new Gdk.Pixbuf.from_file (filename);
+            // Gdk.Pixbuf? file_pix_scaled = file_pix.scale_simple (128, -1, Gdk.Pixbuf.NEAREST);
+            // file_pix.set_width(128);
+            // file_pix.set_height(-1);
+            // file_image.set_from_pixbuf (file_pix_scaled);
+            file_image.set_from_pixbuf (file_pix);
+
 
         } else {
             Gdk.Pixbuf? file_pix = file.get_icon_pixbuf (128, get_scale_factor (), Files.File.IconFlags.NONE);
