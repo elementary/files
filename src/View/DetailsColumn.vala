@@ -33,14 +33,14 @@ public class Files.View.DetailsColumn : Gtk.Box {
         };
 
         Gtk.Image file_image = new Gtk.Image ();
+        file_image.pixel_size = 128;
         Gtk.Overlay file_overlay = new Gtk.Overlay ();
         if ("image" in ftype) {
             file_image.set_from_file (file.uri);
 
         } else {
-            Gdk.Pixbuf? file_pix = file.get_icon_pixbuf (48, get_scale_factor (), Files.File.IconFlags.NONE);
+            Gdk.Pixbuf? file_pix = file.get_icon_pixbuf (128, get_scale_factor (), Files.File.IconFlags.NONE);
             if (file_pix != null) {
-                file_image.pixel_size = 48;
                 file_image.set_from_gicon (file_pix, Gtk.IconSize.DIALOG);
             }
         }
