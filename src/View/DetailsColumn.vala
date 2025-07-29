@@ -36,15 +36,8 @@ public class Files.View.DetailsColumn : Gtk.Box {
         Gtk.Overlay file_overlay = new Gtk.Overlay ();
         if ("image" in ftype) {
             string filename = file.location.get_path ();
-            // file_image.set_from_file (filename);
-
-            Gdk.Pixbuf? file_pix = new Gdk.Pixbuf.from_file (filename);
-            // Gdk.Pixbuf? file_pix_scaled = file_pix.scale_simple (128, -1, Gdk.Pixbuf.NEAREST);
-            // file_pix.set_width(128);
-            // file_pix.set_height(-1);
-            // file_image.set_from_pixbuf (file_pix_scaled);
+            Gdk.Pixbuf? file_pix = new Gdk.Pixbuf.from_file_at_scale (filename, 512, 512, true);
             file_image.set_from_pixbuf (file_pix);
-
 
         } else {
             Gdk.Pixbuf? file_pix = file.get_icon_pixbuf (128, get_scale_factor (), Files.File.IconFlags.NONE);
