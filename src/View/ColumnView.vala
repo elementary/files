@@ -93,7 +93,7 @@ namespace Files {
                 return base.handle_primary_button_click (n_press, mods, path);
             }
 
-            if(!file.is_folder()) {
+            if (!file.is_folder ()) {
                 bool result = false;
                 if (n_press == 1) {
                     /* Ignore second GDK_BUTTON_PRESS event of double-click */

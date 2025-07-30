@@ -1146,7 +1146,8 @@ namespace Files {
             open_file (file, null, null);
         }
 
-        private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) requires (window != null) {
+        private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param)
+            requires (window != null) {
             GLib.File location;
             if (selected_files != null) {
                 location = selected_files.data.get_target_location ();
@@ -2460,7 +2461,11 @@ namespace Files {
             action_set_enabled (common_actions, "open-in", !renaming & only_folders);
             action_set_enabled (selection_actions, "rename", !renaming & is_selected && can_rename);
             action_set_enabled (selection_actions, "view-in-location", !renaming & is_selected);
-            action_set_enabled (selection_actions, "open", !renaming && is_selected && !more_than_one_selected && can_open);
+            action_set_enabled (
+                selection_actions,
+                "open",
+                !renaming && is_selected && !more_than_one_selected && can_open
+            );
             action_set_enabled (selection_actions, "open-with-app", !renaming && can_open);
             action_set_enabled (selection_actions, "open-with-default", !renaming && can_open);
             action_set_enabled (selection_actions, "open-with-other-app", !renaming && can_open);
@@ -3412,7 +3417,8 @@ namespace Files {
                             /* Determine whether should activate on key release (unless pointer moved)*/
                             /* Only activate single files with unmodified button when not on blank unless double-clicked */
                             if (no_mods && one_or_less) {
-                                should_activate = (on_directory && !on_blank && !singleclick_select) || double_click_event;
+                                should_activate = (on_directory && !on_blank && !singleclick_select)
+                                    || double_click_event;
                             }
 
                             /* We need to decide whether to rubberband or drag&drop.

@@ -25,7 +25,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
 
     public DetailsColumn (Files.File file, Files.AbstractDirectoryView view) {
         GLib.List<Files.File> the_file_in_a_list = new GLib.List<Files.File> ();
-        the_file_in_a_list.append(file);
+        the_file_in_a_list.append (file);
         var ftype = filetype (file);
 
         var preview_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
@@ -144,7 +144,9 @@ public class Files.View.DetailsColumn : Gtk.Box {
 
         if (file.info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_SYMLINK)) {
             var key_label = make_key_label (_("Target:"));
-            var value_label = make_value_label (file.info.get_attribute_byte_string (GLib.FileAttribute.STANDARD_SYMLINK_TARGET));
+            var value_label = make_value_label (
+                file.info.get_attribute_byte_string (GLib.FileAttribute.STANDARD_SYMLINK_TARGET)
+            );
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;
