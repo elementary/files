@@ -5,77 +5,76 @@
  * Authors : Andres Mendez <shiruken@gmail.com>
  */
 
+// public class Files.View.DetailsColumn : Gtk.Box {
 public class Files.View.DetailsColumn : Gtk.Box {
-    private Gtk.ScrolledWindow details_window;
+    private const int PREVIEW_SIZE = 512;
+    private const int PREVIEW_H_MARGIN = 24;
     private GLib.Cancellable? cancellable;
-    private Gtk.Box details_container;
-    private Gtk.Spinner spinner;
     private Gtk.Label resolution_value;
-    public Gtk.Image file_image = new Gtk.Image ();
-    public Gtk.Grid info_grid = new Gtk.Grid () {
-        column_spacing = 6,
-        row_spacing = 6
-    };
 
-    public new bool has_focus {
+
+    public int width {
         get {
-            return details_container.has_focus;
+            return PREVIEW_SIZE + 2 * PREVIEW_H_MARGIN;
         }
     }
 
-    public DetailsColumn (Files.File file, Files.AbstractDirectoryView view) {
-        GLib.List<Files.File> the_file_in_a_list = new GLib.List<Files.File> ();
-        the_file_in_a_list.append (file);
-        var ftype = filetype (file);
+    public Files.File file { get; construct; }
+    public Files.AbstractDirectoryView view { get; construct; }
 
-        var preview_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
-            vexpand = true
+    public DetailsColumn (Files.File file, Files.AbstractDirectoryView view) {
+        Object (
+            file: file,
+            view: view
+        );
+    }
+
+    construct {
+        orientation = VERTICAL;
+        spacing = 12;
+        margin_top = 12;
+        margin_bottom = 12;
+        margin_start = 24;
+        margin_end = 24;
+
+        var info_grid = new Gtk.Grid () {
+            column_spacing = 6,
+            row_spacing = 6
         };
 
-        file_image.clear ();
-        Gtk.Overlay file_overlay = new Gtk.Overlay ();
+        var file_image = new Gtk.Image () {
+            halign = START,
+            valign = CENTER,
+            width_request = PREVIEW_SIZE,
+            height_request = PREVIEW_SIZE
+        };
+
+        var ftype = filetype (file);
+
         if ("image" in ftype) {
             string filename = file.location.get_path ();
-            Gdk.Pixbuf? file_pix = new Gdk.Pixbuf.from_file_at_scale (filename, 512, 512, true);
+            Gdk.Pixbuf? file_pix = new Gdk.Pixbuf.from_file_at_scale (filename, PREVIEW_SIZE, PREVIEW_SIZE, true);
             file_image.set_from_pixbuf (file_pix);
 
         } else {
-            Gdk.Pixbuf? file_pix = file.get_icon_pixbuf (128, get_scale_factor (), Files.File.IconFlags.NONE);
+            Gdk.Pixbuf? file_pix = file.get_icon_pixbuf (PREVIEW_SIZE, get_scale_factor (), Files.File.IconFlags.NONE);
             if (file_pix != null) {
                 file_image.set_from_gicon (file_pix, Gtk.IconSize.DIALOG);
             }
         }
 
-        file_overlay.child = file_image;
-        preview_box.pack_end (file_overlay, false, false);
-
-        if (file.emblems_list != null) {
-            int pos = 0;
-            var emblem_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
-                halign = Gtk.Align.END,
-                valign = Gtk.Align.END
-            };
-
-            foreach (string emblem_name in file.emblems_list) {
-                var emblem = new Gtk.Image.from_icon_name (emblem_name, Gtk.IconSize.BUTTON);
-                emblem_box.add (emblem);
-
-                pos++;
-                if (pos > 3) { /* Only room for 3 emblems */
-                    break;
-                }
-            }
 
 
-            file_overlay.add_overlay (emblem_box);
-        }
+
+
+
 
         var details_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             vexpand = true
         };
 
-        Gtk.Label name_key_label = make_key_label (_("Name:"));
-        Gtk.Label name_value = make_value_label (file.get_display_name ());
+        var name_key_label = make_key_label (_("Name:"));
+        var name_value = make_value_label (file.get_display_name ());
 
         info_grid.attach (name_key_label, 0, 1);
         info_grid.attach_next_to (name_value, name_key_label, RIGHT);
@@ -83,10 +82,11 @@ public class Files.View.DetailsColumn : Gtk.Box {
         /** begin adapted copy-pasta from PropertiesWindow.construct_info_panel **/
 
         var size_key_label = make_key_label (_("Size:"));
-        spinner = new Gtk.Spinner ();
-        spinner.halign = Gtk.Align.START;
+        var spinner = new Gtk.Spinner () {
+            halign = START
+        };
 
-        Gtk.Label size_value = make_value_label ("");
+        var size_value = make_value_label ("");
         size_value.label = GLib.format_size (PropertiesWindow.file_real_size (file));
 
         info_grid.attach (size_key_label, 0, 2, 1);
@@ -160,33 +160,27 @@ public class Files.View.DetailsColumn : Gtk.Box {
             n++;
         }
 
-        /** end copy-pasta from PropertiesWindow.construct_info_panel **/
-
-        details_box.add (info_grid);
-
-        Gtk.Button more_info_button = new Gtk.Button.with_label (_("More Info"));
-
-        more_info_button.clicked.connect (() => {
-            new View.PropertiesWindow (the_file_in_a_list, view, Files.get_active_window ());
-        });
-        details_box.add (more_info_button);
-
-        details_container = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
-            vexpand = true
+        Gtk.Button more_info_button = new Gtk.Button.with_label (_("More Details…")) {
+            halign = END
         };
 
-        details_container.add (preview_box);
-        details_container.add (details_box);
+        more_info_button.clicked.connect (() => {
+            var the_file_in_a_list = new GLib.List<Files.File> ();
+            the_file_in_a_list.append (file);
+            new View.PropertiesWindow (the_file_in_a_list, view, Files.get_active_window ());
+        });
 
-        details_window = new Gtk.ScrolledWindow (null, null) {
-            child = details_container,
+
+
+        var info_window = new Gtk.ScrolledWindow (null, null) {
+            child = info_grid,
+            propagate_natural_height = true,
             hscrollbar_policy = Gtk.PolicyType.NEVER
         };
 
-        orientation = Gtk.Orientation.VERTICAL;
-        width_request = Files.app_settings.get_int ("minimum-sidebar-width");
-        get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
-        add (details_window);
+        add (file_image);
+        add (info_window);
+        add (more_info_button);
 
         show_all ();
     }
