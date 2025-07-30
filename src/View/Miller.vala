@@ -130,8 +130,9 @@ namespace Files.View {
             details = new View.DetailsColumn (file, view);
 
             View.Slot last_slot = slot_list.last ().data;
-            last_slot.colpane.pack_start (details, true, true);
+            last_slot.colpane.pack_start (details, false, false);
             last_slot.hpane.show_all ();
+            last_slot.width += details.width;
             last_slot.active (true, true);
 
             update_total_width ();
