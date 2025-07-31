@@ -5,10 +5,10 @@
  * Authors : Andres Mendez <shiruken@gmail.com>
  */
 
-// public class Files.View.DetailsColumn : Gtk.Box {
 public class Files.View.DetailsColumn : Gtk.Box {
     private const int PREVIEW_SIZE = 512;
     private const int PREVIEW_H_MARGIN = 24;
+    private const int MAX_TEXT_SIZE = 8 * 1024 * 1024; // 1MB
     private GLib.Cancellable? cancellable;
     private Gtk.Label resolution_value;
 
@@ -37,6 +37,8 @@ public class Files.View.DetailsColumn : Gtk.Box {
         margin_start = 24;
         margin_end = 24;
 
+        var file_real_size = PropertiesWindow.file_real_size (file);
+
         var info_grid = new Gtk.Grid () {
             column_spacing = 6,
             row_spacing = 6
@@ -49,12 +51,45 @@ public class Files.View.DetailsColumn : Gtk.Box {
             height_request = PREVIEW_SIZE
         };
 
-        var ftype = filetype (file);
-
-        if ("image" in ftype) {
+        if (file.is_readable () && file.is_image ()) { // TODO: MAX_IMAGE_SIZE?
             string filename = file.location.get_path ();
             Gdk.Pixbuf? file_pix = new Gdk.Pixbuf.from_file_at_scale (filename, PREVIEW_SIZE, PREVIEW_SIZE, true);
             file_image.set_from_pixbuf (file_pix);
+
+        } else if (file.is_readable () && file.is_text() && file_real_size < MAX_TEXT_SIZE) {
+            string filename = file.location.get_path ();
+
+            try {
+                uint8[] contents;
+                string etag_out;
+
+                file.location.load_contents (null, out contents, out etag_out);
+
+                Gtk.TextView text_view = new Gtk.TextView () {
+                    cursor_visible = false,
+                    editable = false,
+                    top_margin = 12,
+                    bottom_margin = 12,
+                    left_margin = 12,
+                    right_margin = 12,
+                };
+
+                var buffer = text_view.get_buffer ();
+                buffer.set_text ((string) contents);
+
+                var text_window = new Gtk.ScrolledWindow (null, null) {
+                    child = text_view,
+                    hscrollbar_policy = Gtk.PolicyType.NEVER,
+                    width_request = PREVIEW_SIZE,
+                    height_request = PREVIEW_SIZE
+                };
+
+                add (text_window);
+                // TODO destroy file_image
+            } catch (Error e) {
+                warning ("Error: %s\n", e.message);
+            }
+
 
         } else {
             Gdk.Pixbuf? file_pix = file.get_icon_pixbuf (PREVIEW_SIZE, get_scale_factor (), Files.File.IconFlags.NONE);
@@ -62,12 +97,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
                 file_image.set_from_gicon (file_pix, Gtk.IconSize.DIALOG);
             }
         }
-
-
-
-
-
-
 
         var details_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             vexpand = true
@@ -87,7 +116,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
         };
 
         var size_value = make_value_label ("");
-        size_value.label = GLib.format_size (PropertiesWindow.file_real_size (file));
+        size_value.label = GLib.format_size (file_real_size);
 
         info_grid.attach (size_key_label, 0, 2, 1);
         info_grid.attach_next_to (spinner, size_key_label, RIGHT);
@@ -128,13 +157,14 @@ public class Files.View.DetailsColumn : Gtk.Box {
             }
         }
 
+        var ftype = filetype (file);
         var mimetype_key = make_key_label (_("Media type:"));
         var mimetype_value = make_value_label (ftype);
         info_grid.attach (mimetype_key, 0, n, 1, 1);
         info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
         n++;
 
-        if ("image" in ftype) {
+        if (file.is_image ()) {
             var resolution_key = make_key_label (_("Resolution:"));
             resolution_value = make_value_label (resolution (file));
             info_grid.attach (resolution_key, 0, n, 1, 1);
