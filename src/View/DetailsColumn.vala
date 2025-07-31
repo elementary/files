@@ -56,7 +56,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
             Gdk.Pixbuf? file_pix = new Gdk.Pixbuf.from_file_at_scale (filename, PREVIEW_SIZE, PREVIEW_SIZE, true);
             file_image.set_from_pixbuf (file_pix);
 
-        } else if (file.is_readable () && file.is_text() && file_real_size < MAX_TEXT_SIZE) {
+        } else if (file.is_readable () && file.is_text () && file_real_size < MAX_TEXT_SIZE) {
             string filename = file.location.get_path ();
 
             try {
