@@ -185,7 +185,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
         }
 
         Gtk.Button more_info_button = new Gtk.Button.with_label (_("More Details…")) {
-            halign = END
+            halign = CENTER
         };
 
         more_info_button.clicked.connect (() => {
