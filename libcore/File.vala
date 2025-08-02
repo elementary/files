@@ -300,6 +300,21 @@ public class Files.File : GLib.Object {
         return is_image;
     }
 
+    public bool is_text () {
+        if (info == null) {
+            return false;
+        }
+
+        bool is_text = false;
+        unowned string? content_type = get_ftype ();
+        if (content_type != null) {
+            is_text = GLib.ContentType.is_mime_type (content_type, "text/*") ||
+                GLib.ContentType.is_mime_type (content_type, "application/sql");
+        }
+
+        return is_text;
+    }
+
     public bool is_trashed () {
         return FileUtils.location_is_in_trash (get_target_location ());
     }
