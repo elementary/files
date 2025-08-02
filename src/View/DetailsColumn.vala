@@ -8,9 +8,10 @@
 public class Files.View.DetailsColumn : Gtk.Box {
     private const int PREVIEW_SIZE = 512;
     private const int PREVIEW_H_MARGIN = 24;
-    private const int MAX_TEXT_SIZE = 8 * 1024 * 1024; // 1MB
+    private const int MAX_TEXT_SIZE = 2 * 8 * 1024 * 1024; // 2MB
     private GLib.Cancellable? cancellable;
     private Gtk.Label resolution_value;
+    private bool previewing_text = false;
 
 
     public int width {
@@ -51,6 +52,15 @@ public class Files.View.DetailsColumn : Gtk.Box {
             height_request = PREVIEW_SIZE
         };
 
+        Gtk.TextView file_text = new Gtk.TextView () {
+            cursor_visible = false,
+            editable = false,
+            top_margin = 12,
+            bottom_margin = 12,
+            left_margin = 12,
+            right_margin = 12,
+        };
+
         if (file.is_readable () && file.is_image ()) { // TODO: MAX_IMAGE_SIZE?
             string filename = file.location.get_path ();
             Gdk.Pixbuf? file_pix = new Gdk.Pixbuf.from_file_at_scale (filename, PREVIEW_SIZE, PREVIEW_SIZE, true);
@@ -60,31 +70,15 @@ public class Files.View.DetailsColumn : Gtk.Box {
             string filename = file.location.get_path ();
 
             try {
+                previewing_text = true;
                 uint8[] contents;
                 string etag_out;
 
                 file.location.load_contents (null, out contents, out etag_out);
 
-                Gtk.TextView text_view = new Gtk.TextView () {
-                    cursor_visible = false,
-                    editable = false,
-                    top_margin = 12,
-                    bottom_margin = 12,
-                    left_margin = 12,
-                    right_margin = 12,
-                };
-
-                var buffer = text_view.get_buffer ();
+                var buffer = file_text.get_buffer ();
                 buffer.set_text ((string) contents);
 
-                var text_window = new Gtk.ScrolledWindow (null, null) {
-                    child = text_view,
-                    hscrollbar_policy = Gtk.PolicyType.NEVER,
-                    width_request = PREVIEW_SIZE,
-                    height_request = PREVIEW_SIZE
-                };
-
-                add (text_window);
                 // TODO destroy file_image
             } catch (Error e) {
                 warning ("Error: %s\n", e.message);
@@ -200,15 +194,27 @@ public class Files.View.DetailsColumn : Gtk.Box {
             new View.PropertiesWindow (the_file_in_a_list, view, Files.get_active_window ());
         });
 
-
-
         var info_window = new Gtk.ScrolledWindow (null, null) {
             child = info_grid,
             propagate_natural_height = true,
             hscrollbar_policy = Gtk.PolicyType.NEVER
         };
 
-        add (file_image);
+
+
+        if (previewing_text) {
+            var text_window = new Gtk.ScrolledWindow (null, null) {
+                child = file_text,
+                width_request = PREVIEW_SIZE,
+                height_request = PREVIEW_SIZE,
+                max_content_height = PREVIEW_SIZE,
+                max_content_width = PREVIEW_SIZE
+            };
+
+            add (text_window);
+        } else {
+            add (file_image);
+        }
         add (info_window);
         add (more_info_button);
 
