@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-17 10:04+0000\n"
-"PO-Revision-Date: 2022-10-13 04:38+0000\n"
-"Last-Translator: colindemian <colindemian@outlook.com>\n"
-"Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
-"files/files/zh_Hans/>\n"
+"PO-Revision-Date: 2025-08-03 08:55+0000\n"
+"Last-Translator: JieXu <xujie0739@qq.com>\n"
+"Language-Team: Chinese (Simplified Han script) <https://"
+"l10n.elementaryos.org/projects/files/files/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
@@ -48,9 +48,8 @@ msgid "Open File as Read Only"
 msgstr "只读打开文件"
 
 #: filechooser-portal/FileChooserDialog.vala:378
-#, fuzzy
 msgid "Enter new filename"
-msgstr "新文件"
+msgstr "输入新文件名称"
 
 #: filechooser-portal/Main.vala:107
 msgid "Select"
@@ -74,10 +73,9 @@ msgid "This file is a link."
 msgstr ""
 
 #: filechooser-portal/Main.vala:460
-#, fuzzy
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr "若选择替换，其内容将被覆盖。"
+msgstr "若选择替换，其内容将被覆盖"
 
 #: filechooser-portal/Main.vala:462
 #, c-format
@@ -228,9 +226,8 @@ msgstr "名称"
 
 #: libcore/Enums.vala:136 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
-#, fuzzy
 msgid "Creation Date"
-msgstr "创建"
+msgstr "创建日期"
 
 #: libcore/Enums.vala:139
 #, fuzzy
@@ -256,11 +253,11 @@ msgstr "日期"
 
 #: libcore/Enums.vala:187
 msgid "Suffix"
-msgstr ""
+msgstr "后缀"
 
 #: libcore/Enums.vala:190
 msgid "Prefix"
-msgstr ""
+msgstr "前缀"
 
 #: libcore/Enums.vala:200
 msgid "Text to put at the end"
@@ -291,14 +288,12 @@ msgid "ISO 8601 Format - Date and Time"
 msgstr ""
 
 #: libcore/Enums.vala:246
-#, fuzzy
 msgid "Date created"
-msgstr "重新创建"
+msgstr "创建日期"
 
 #: libcore/Enums.vala:248
-#, fuzzy
 msgid "Date Modified"
-msgstr "修改时间"
+msgstr "修改日期"
 
 #: libcore/Enums.vala:250
 msgid "Current Date"
@@ -1676,7 +1671,7 @@ msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:328
 msgid "Apply"
-msgstr ""
+msgstr "应用"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 #, fuzzy
@@ -1883,16 +1878,12 @@ msgid "Owner"
 msgstr "所有者："
 
 #: src/Utils/Permissions.vala:31
-#, fuzzy
-#| msgid "Group:"
 msgid "Group"
-msgstr "群组："
+msgstr "群组"
 
 #: src/Utils/Permissions.vala:34
-#, fuzzy
-#| msgid "Everyone:"
 msgid "Everyone"
-msgstr "任何人："
+msgstr "任何人"
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1131
@@ -2019,10 +2010,8 @@ msgid "Paste"
 msgstr "粘贴"
 
 #: src/View/AbstractDirectoryView.vala:2247
-#, fuzzy
-#| msgid "Set as default"
 msgid "Set as Wallpaper"
-msgstr "设为默认"
+msgstr "设为墙纸"
 
 #: src/View/AbstractDirectoryView.vala:2279 src/View/ListView.vala:28
 msgid "Type"
@@ -2202,13 +2191,11 @@ msgstr "选中的文件已不存在。"
 
 #: src/View/Window.vala:216
 msgid "Menu"
-msgstr ""
+msgstr "菜单"
 
 #: src/View/Window.vala:246
-#, fuzzy
-#| msgid "Close Tab"
 msgid "Closed Tabs"
-msgstr "关闭标签"
+msgstr "已关闭的标签页"
 
 #: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:409
 msgid "Open in New Window"
@@ -2221,7 +2208,7 @@ msgstr "重复标签"
 #. TRANSLATORS: For RTL this should be "to the left"
 #: src/View/Window.vala:479
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "关闭右边的标签页"
 
 #: src/View/Window.vala:480
 #, fuzzy
@@ -2368,7 +2355,6 @@ msgid "Connect Server…"
 msgstr "服务器…"
 
 #: src/View/Sidebar/VolumeRow.vala:181
-#, fuzzy
 msgid "Mount"
 msgstr "挂载"
 
@@ -2382,28 +2368,27 @@ msgstr "绑定挂载"
 
 #: src/View/Widgets/AppMenu.vala:25
 msgid "Zoom Out"
-msgstr ""
+msgstr "缩小"
 
 #: src/View/Widgets/AppMenu.vala:34
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "缩放 1:1"
 
 #: src/View/Widgets/AppMenu.vala:43
 msgid "Zoom In"
-msgstr ""
+msgstr "放大"
 
 #: src/View/Widgets/AppMenu.vala:81
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "双击浏览"
 
 #: src/View/Widgets/AppMenu.vala:82
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "双击文件夹以打开它，单击则是选择"
 
 #: src/View/Widgets/AppMenu.vala:86
-#, fuzzy
 msgid "Sort Folders before Files"
-msgstr "文件夹在前"
+msgstr "将文件夹排序于文件之前"
 
 #: src/View/Widgets/AppMenu.vala:90
 #, fuzzy
@@ -2417,29 +2402,24 @@ msgid "Show in View"
 msgstr "显示隐藏文件"
 
 #: src/View/Widgets/AppMenu.vala:101
-#, fuzzy
 msgid "Hidden Files"
-msgstr "显示隐藏文件"
+msgstr "隐藏文件"
 
 #: src/View/Widgets/AppMenu.vala:105
-#, fuzzy
 msgid "Local Thumbnails"
-msgstr "隐藏缩略图"
+msgstr "本地缩略图"
 
 #: src/View/Widgets/AppMenu.vala:110
-#, fuzzy
 msgid "Remote Thumbnails"
-msgstr "显示远程缩略图"
+msgstr "远程缩略图"
 
 #: src/View/Widgets/AppMenu.vala:152
-#, fuzzy
 msgid "No operation to undo"
-msgstr "操作超时。"
+msgstr "没有可复原的操作"
 
 #: src/View/Widgets/AppMenu.vala:159
-#, fuzzy
 msgid "No operation to redo"
-msgstr "操作超时。"
+msgstr "没有可重做的操作"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:141
 #: src/View/Widgets/LocationBar.vala:216
