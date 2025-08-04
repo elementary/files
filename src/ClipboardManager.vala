@@ -256,9 +256,9 @@ namespace Files {
             switch (target_info) {
                 case ClipboardTarget.GNOME_COPIED_FILES: /* Pasting into a file handler */
                     string prefix = manager.files_cutted ? "cut" : (manager.files_linked ? "link" : "copy");
-                    DndHandler.set_selection_data_from_file_list (sd,
-                                                                  manager.files,
-                                                                  prefix);
+                    DndHandler.set_selection_data_as_file_list (sd,
+                                                                manager.files,
+                                                                prefix);
                     break;
 
                 case ClipboardTarget.PNG_IMAGE: /* Pasting into a (single) image handler */
@@ -277,7 +277,7 @@ namespace Files {
                     break;
 
                 case ClipboardTarget.UTF8_STRING: /* Pasting into a text handler */
-                    DndHandler.set_selection_text_from_file_list (sd, manager.files, "");
+                    DndHandler.set_selection_data_as_text (sd, manager.files, "");
                     break;
                 default:
                     break;

@@ -42,7 +42,9 @@ namespace Files {
 
         const Gtk.TargetEntry [] DRAG_TARGETS = {
             {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.STRING},
-            {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST}
+            {"text/plain", Gtk.TargetFlags.OTHER_APP, Files.TargetType.STRING},
+            {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
+            {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Files.TargetType.TEXT_URI_LIST}
         };
 
         const Gtk.TargetEntry [] DROP_TARGETS = {
@@ -1503,7 +1505,18 @@ namespace Files {
                 Gtk.drag_set_icon_name (context, "stock-file", 0, 0);
             }
 
-            DndHandler.set_selection_data_from_file_list (selection_data, source_drag_file_list);
+            switch (info) {
+                case TargetType.STRING:
+                    DndHandler.set_selection_data_as_text (selection_data, source_drag_file_list);
+                    break;
+                case TargetType.TEXT_URI_LIST:
+                    DndHandler.set_selection_data_as_file_list (selection_data, source_drag_file_list);
+                    break;
+                default:
+                    warning ("ignored info %u", info);
+                    break;
+            }
+
         }
 
         /* Signal emitted on source after a DND move operation */
