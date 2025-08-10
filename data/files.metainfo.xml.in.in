@@ -66,11 +66,13 @@
       <description>
         <p>Minor updates:</p>
         <ul>
+          <li>The Properties Window now shows the exact date and time the file was last modified
           <li>Updated translations</li>
         </ul>
       </description>
       <issues>
         <issue url="https://github.com/elementary/files/issues/2615">Files with names containing # characters are not transferred correctly</issue>
+        <issue url="https://github.com/elementary/files/issues/2608">File information should show *exact* time of change</issue>
       </issues>
     </release>
     <release version="7.1.4" date="2025-06-20" urgency="medium">
