@@ -1423,8 +1423,6 @@ namespace Files {
             // Wait for view to draw so thumbnails and color tags displayed on first sight
             Idle.add (() => {
                 empty_label.visible = slot.directory.is_empty ();
-
-
                 thaw_tree ();
                 schedule_thumbnail_color_tag_timeout ();
                 return Source.REMOVE;
