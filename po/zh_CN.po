@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-17 10:04+0000\n"
-"PO-Revision-Date: 2025-08-03 08:55+0000\n"
+"PO-Revision-Date: 2025-08-10 16:55+0000\n"
 "Last-Translator: JieXu <xujie0739@qq.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://"
 "l10n.elementaryos.org/projects/files/files/zh_Hans/>\n"
@@ -230,9 +230,8 @@ msgid "Creation Date"
 msgstr "创建日期"
 
 #: libcore/Enums.vala:139
-#, fuzzy
 msgid "Last modification date"
-msgstr "上次修改："
+msgstr "上次修改日期"
 
 #: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2274
 #: src/View/ListView.vala:27
@@ -245,7 +244,7 @@ msgstr ""
 
 #: libcore/Enums.vala:168 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "文字"
 
 #: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2284
 msgid "Date"
@@ -989,9 +988,8 @@ msgid "Undo Duplicate"
 msgstr "重复标签"
 
 #: libcore/UndoManager.vala:26
-#, fuzzy
 msgid "Undo Move"
-msgstr "还原关闭的标签"
+msgstr "复原「移动」"
 
 #: libcore/UndoManager.vala:28
 #, fuzzy
@@ -1657,9 +1655,8 @@ msgid "Original Basename"
 msgstr "原文件"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:168
-#, fuzzy
 msgid "Replacement text"
-msgstr "替换为"
+msgstr "替换文字"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
@@ -1716,7 +1713,7 @@ msgstr ""
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:310
 #, c-format
 msgid "%0*d,%0*d,%0*d…"
-msgstr ""
+msgstr "%0*d、%0*d、%0*d…"
 
 #: src/Dialogs/ChooseAppDialog.vala:45
 msgid "Set as default"
@@ -1872,10 +1869,8 @@ msgid "Could not open files or URIs with this app"
 msgstr "无法使用此应用打开文件或 URI"
 
 #: src/Utils/Permissions.vala:29
-#, fuzzy
-#| msgid "Owner:"
 msgid "Owner"
-msgstr "所有者："
+msgstr "所有者"
 
 #: src/Utils/Permissions.vala:31
 msgid "Group"
@@ -2211,10 +2206,8 @@ msgid "Close Tabs to the Right"
 msgstr "关闭右边的标签页"
 
 #: src/View/Window.vala:480
-#, fuzzy
-#| msgid "Close Tab"
 msgid "Close Other Tabs"
-msgstr "关闭标签"
+msgstr "关闭其他标签页"
 
 #: src/View/Window.vala:481
 msgid "Close Tab"
@@ -2391,15 +2384,12 @@ msgid "Sort Folders before Files"
 msgstr "将文件夹排序于文件之前"
 
 #: src/View/Widgets/AppMenu.vala:90
-#, fuzzy
-#| msgid "Restore '%s' from trash"
 msgid "Restore Tabs from Last Time"
-msgstr "从回收站恢复“%s”"
+msgstr "还原上次打开的标签页"
 
 #: src/View/Widgets/AppMenu.vala:94
-#, fuzzy
 msgid "Show in View"
-msgstr "显示隐藏文件"
+msgstr "在面板中显示"
 
 #: src/View/Widgets/AppMenu.vala:101
 msgid "Hidden Files"
@@ -2438,7 +2428,7 @@ msgstr "用其他应用打开…"
 msgid ""
 "Caution. Administrative rights will be granted after successful "
 "authentication"
-msgstr ""
+msgstr "请注意。成功认证后将会赋予管理者权限"
 
 #: src/View/Widgets/LocationBar.vala:212
 msgid "Reload this folder"
