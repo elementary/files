@@ -296,8 +296,8 @@ namespace Files {
 
         // Used when TargetType is TEXT_URI_LIST
         public static void set_selection_data_as_file_list (Gtk.SelectionData selection_data,
-                                                              GLib.List<Files.File> file_list,
-                                                              string prefix = "") {
+                                                            GLib.List<Files.File> file_list,
+                                                            string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
             set_stringbuilder_from_file_list (
