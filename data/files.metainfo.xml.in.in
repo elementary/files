@@ -71,7 +71,6 @@
         </ul>
       </description>
       <issues>
-        <issue url="https://github.com/elementary/files/issues/2615">Files with names containing # characters are not transferred correctly</issue>
         <issue url="https://github.com/elementary/files/issues/2608">File information should show *exact* time of change</issue>
       </issues>
     </release>
