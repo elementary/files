@@ -313,8 +313,8 @@ namespace Files {
 
         // Used when TargetType is STRING
         public static void set_selection_data_as_text (Gtk.SelectionData selection_data,
-                                                              GLib.List<Files.File> file_list,
-                                                              string prefix = "") {
+                                                       GLib.List<Files.File> file_list,
+                                                       string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
             set_stringbuilder_from_file_list (
