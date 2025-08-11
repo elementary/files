@@ -292,11 +292,6 @@ namespace Files {
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
 
-            overlay = new Gtk.Overlay () {
-                hexpand = true,
-                vexpand = true
-            };
-            add (overlay);
             scrolled_window = new Gtk.ScrolledWindow (null, null) {
                 kinetic_scrolling = true,
                 overlay_scrolling = true,
@@ -304,8 +299,6 @@ namespace Files {
                 hscrollbar_policy = NEVER,
                 shadow_type = NONE
             };
-            overlay.add (scrolled_window);
-            overlay.add_events (Gdk.EventMask.ALL_EVENTS_MASK);
 
             empty_label = new Gtk.Label (slot.get_empty_message ()) {
                 halign = CENTER,
@@ -316,8 +309,17 @@ namespace Files {
             };
             empty_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
             empty_label.show_all ();
+
+            overlay = new Gtk.Overlay () {
+                hexpand = true,
+                vexpand = true,
+                child = scrolled_window
+            };
             overlay.add_overlay (empty_label);
             overlay.set_overlay_pass_through (empty_label, true);
+            overlay.add_events (Gdk.EventMask.ALL_EVENTS_MASK);
+
+            child = overlay;
 
             var app = (Files.Application)(GLib.Application.get_default ());
             clipboard = app.get_clipboard_manager ();
