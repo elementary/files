@@ -594,9 +594,8 @@ namespace Files.FileUtils {
         return new_location;
     }
 
-    public string get_formatted_time_attribute_from_info (GLib.FileInfo info, string attr) {
+    public string get_formatted_time_attribute_from_info (GLib.FileInfo info, string attr, string? dateformatmode = null) {
         DateTime? dt = null;
-
         switch (attr) {
             case FileAttribute.TIME_MODIFIED:
             case FileAttribute.TIME_CREATED:
@@ -624,15 +623,22 @@ namespace Files.FileUtils {
                 break;
         }
 
-        return get_formatted_date_time (dt);
+        return get_formatted_date_time (dt, dateformatmode);
     }
 
-    public string get_formatted_date_time (DateTime? dt) {
+    public string get_formatted_date_time (DateTime? dt, string? dateformatmode = null ) {
         if (dt == null) {
             return "";
         }
 
-        switch (Files.Preferences.get_default ().date_format.down ()) {
+        string format;
+        if (dateformatmode == null) {
+            format = Files.Preferences.get_default ().date_format.down ();
+        } else {
+            format = dateformatmode;
+        }
+
+         switch (format) {
             case "locale":
                 return dt.format ("%c");
             case "iso" :
