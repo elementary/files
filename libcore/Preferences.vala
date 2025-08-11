@@ -34,7 +34,7 @@ namespace Files {
         public bool sort_directories_first { get; set; default = true; }
         public bool remember_history { get; set; default = true; }
 
-        public string date_format {set; get; default = "iso";}
+        public DateFormatMode date_format {set; get; default = DateFormatMode.ISO;}
         public string clock_format {set; get; default = "24h";}
 
         public static Preferences get_default () {

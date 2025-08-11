@@ -9,6 +9,7 @@ public class Files.AppMenu : Gtk.Popover {
     private Gtk.Button zoom_default_button;
     private Gtk.Button zoom_in_button;
     private Gtk.Button zoom_out_button;
+    private Gtk.ComboBoxText datetimeformat_combo;
     private string[] redo_accels;
     private string[] undo_accels;
     private unowned UndoManager undo_manager;
@@ -112,6 +113,21 @@ public class Files.AppMenu : Gtk.Popover {
         };
         show_remote_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
+        ///TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
+        var datetimeformat_label = new Gtk.Label (_("Date & Time Format"));
+        datetimeformat_combo = new Gtk.ComboBoxText ();
+        datetimeformat_combo.append_text (DateFormatMode.ISO.to_string ());
+        datetimeformat_combo.append_text (DateFormatMode.LOCALE.to_string ());
+        datetimeformat_combo.append_text (DateFormatMode.INFORMAL.to_string ());
+        //TODO Add a custom format wizard? Or a detailed informat format? Or "days ago" format?
+        datetimeformat_combo.active = (int) Files.Preferences.get_default ().date_format;
+
+        var datetimeformat_box = new Gtk.Box (HORIZONTAL, 6);
+        datetimeformat_box.add (datetimeformat_label);
+        datetimeformat_box.add (datetimeformat_combo);
+
+        datetimeformat_box.get_style_context ().add_class ("menuitem");
+
         var menu_box = new Gtk.Box (VERTICAL, 0) {
             margin_bottom = 6
         };
@@ -126,6 +142,8 @@ public class Files.AppMenu : Gtk.Popover {
         menu_box.add (show_hidden_button);
         menu_box.add (show_local_thumbnails);
         menu_box.add (show_remote_thumbnails);
+        menu_box.add (new Gtk.Separator (HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
+        menu_box.add (datetimeformat_box);
         menu_box.show_all ();
 
         child = menu_box;
@@ -139,6 +157,11 @@ public class Files.AppMenu : Gtk.Popover {
         Files.icon_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
         Files.list_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
         Files.column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
+        app_settings.changed["date-format"].connect (on_dateformat_setting_changed);
+
+        datetimeformat_combo.changed.connect (() => {
+            app_settings.set_enum ("date-format", datetimeformat_combo.active);
+        });
     }
 
     private void set_undo_redo_tooltips () {
@@ -176,5 +199,9 @@ public class Files.AppMenu : Gtk.Popover {
 
         zoom_in_button.sensitive = zoom_level < max_zoom;
         zoom_out_button.sensitive = zoom_level > min_zoom;
+    }
+
+    private void on_dateformat_setting_changed (Settings settings, string key) {
+        datetimeformat_combo.active = settings.get_enum (key);
     }
 }
