@@ -408,6 +408,7 @@ namespace Files {
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
             prefs.notify["show-local-thumbnails"].connect (on_show_thumbnails_changed);
+            prefs.notify["show-file-preview"].connect (on_show_file_preview_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
             prefs.bind_property (
                 "singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
@@ -1443,6 +1444,12 @@ namespace Files {
         private void on_show_thumbnails_changed () {
             set_should_thumbnail ();
             slot.reload ();
+        }
+
+        private void on_show_file_preview_changed () {
+            var prefs = Files.Preferences.get_default ();
+warning ("=-=- draw: %s", prefs.show_local_thumbnails.to_string());
+
         }
 
         private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {

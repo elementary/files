@@ -127,6 +127,9 @@ namespace Files.View {
         }
 
         public void draw_file_details (Files.File file, Files.AbstractDirectoryView view) {
+            var prefs = Files.Preferences.get_default ();
+
+warning ("=-=- draw: %s", prefs.show_local_thumbnails.to_string());
             details = new View.DetailsColumn (file, view);
 
             View.Slot last_slot = slot_list.last ().data;
