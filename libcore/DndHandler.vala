@@ -336,7 +336,7 @@ namespace Files {
                 file_list.@foreach ((file) => {
                     var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
                     // Unescape uri and remove `file://` protocol so suitable for text document
-                    if (info == TargetType.STRING) {
+                    if (type == TargetType.STRING) {
                         target = FileUtils.sanitize_path (target, null, false);
                     }
                     //Leave it to recipient to quote if required when receiving a uri list by DnD
