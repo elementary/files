@@ -127,9 +127,6 @@ namespace Files.View {
         }
 
         public void draw_file_details (Files.File file, Files.AbstractDirectoryView view) {
-            var prefs = Files.Preferences.get_default ();
-
-warning ("=-=- draw: %s", prefs.show_local_thumbnails.to_string());
             details = new View.DetailsColumn (file, view);
 
             View.Slot last_slot = slot_list.last ().data;
@@ -430,7 +427,11 @@ warning ("=-=- draw: %s", prefs.show_local_thumbnails.to_string());
                     }
 
                     clear_file_details ();
-                    draw_file_details (selected_file, current_slot.get_directory_view ());
+                    var prefs = Files.Preferences.get_default ();
+                    if (prefs.show_file_preview) {
+                        draw_file_details (selected_file, current_slot.get_directory_view ());
+                    }
+
                     break;
 
                 case Gdk.Key.BackSpace:

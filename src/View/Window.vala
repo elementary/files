@@ -1099,7 +1099,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         Files.app_settings.set_boolean ("show-local-thumbnails", state);
     }
 
-    public void change_state_show_file_preview  (GLib.SimpleAction action) {
+    public void change_state_show_file_preview (GLib.SimpleAction action) {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
         Files.app_settings.set_boolean ("show-file-preview", state);

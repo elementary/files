@@ -1447,9 +1447,8 @@ namespace Files {
         }
 
         private void on_show_file_preview_changed () {
-            var prefs = Files.Preferences.get_default ();
-warning ("=-=- draw: %s", prefs.show_local_thumbnails.to_string());
-
+            slot.reload ();
+            // var prefs = Files.Preferences.get_default ();
         }
 
         private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
