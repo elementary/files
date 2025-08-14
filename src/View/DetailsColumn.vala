@@ -118,10 +118,8 @@ public class Files.View.DetailsColumn : Gtk.Box {
 
         int n = 5;
 
-        var time_created = FileUtils.get_formatted_time_attribute_from_info (
-            file.info,
-            FileAttribute.TIME_CREATED
-        );
+        var time_created = FileUtils.get_formatted_time_attribute_from_info (file.info,
+                                                                             FileAttribute.TIME_CREATED);
 
         if (time_created != "") {
             var key_label = make_key_label (_("Created:"));
@@ -131,10 +129,8 @@ public class Files.View.DetailsColumn : Gtk.Box {
             n++;
         }
 
-        var time_modified = FileUtils.get_formatted_time_attribute_from_info (
-            file.info,
-            FileAttribute.TIME_MODIFIED
-        );
+        var time_modified = FileUtils.get_formatted_time_attribute_from_info (file.info,
+                                                                              FileAttribute.TIME_MODIFIED);
 
         if (time_modified != "") {
             var key_label = make_key_label (_("Modified:"));
