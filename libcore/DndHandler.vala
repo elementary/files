@@ -328,7 +328,7 @@ namespace Files {
 
         private static void set_stringbuilder_from_file_list (GLib.StringBuilder sb,
                                                               GLib.List<Files.File> file_list,
-                                                              uint info) {
+                                                              TargetType type) {
 
             if (file_list != null && file_list.data != null && file_list.data is Files.File) {
                 bool in_recent = file_list.data.is_recent_uri_scheme ();
