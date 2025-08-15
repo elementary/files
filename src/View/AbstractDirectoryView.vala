@@ -1638,7 +1638,8 @@ namespace Files {
             if (info == Files.TargetType.TEXT_URI_LIST && destination_drop_file_list == null) {
                 string? text;
                 if (DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
-                    destination_drop_file_list = FileUtils.files_from_uris (text);
+                    // We require that dropped uri lists have been escaped
+                    destination_drop_file_list = FileUtils.files_from_escaped_uris (text);
                     destination_data_ready = true;
                 }
             }

@@ -172,7 +172,8 @@ namespace Files {
                 return;
             }
 
-            var file_list = FileUtils.files_from_uris (text);
+            //We require that TEXT_URI_LIST data has been escaped by the source.
+            var file_list = FileUtils.files_from_escaped_uris (text);
 
             if (file_list != null) {
                 try {
