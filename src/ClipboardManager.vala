@@ -172,7 +172,8 @@ namespace Files {
                 return;
             }
 
-            var file_list = FileUtils.files_from_uris (text);
+            //We require that TEXT_URI_LIST data has been escaped by the source.
+            var file_list = FileUtils.files_from_escaped_uris (text);
 
             if (file_list != null) {
                 try {
@@ -256,9 +257,9 @@ namespace Files {
             switch (target_info) {
                 case ClipboardTarget.GNOME_COPIED_FILES: /* Pasting into a file handler */
                     string prefix = manager.files_cutted ? "cut" : (manager.files_linked ? "link" : "copy");
-                    DndHandler.set_selection_data_from_file_list (sd,
-                                                                  manager.files,
-                                                                  prefix);
+                    DndHandler.set_selection_data_as_file_list (sd,
+                                                                manager.files,
+                                                                prefix);
                     break;
 
                 case ClipboardTarget.PNG_IMAGE: /* Pasting into a (single) image handler */
@@ -277,7 +278,7 @@ namespace Files {
                     break;
 
                 case ClipboardTarget.UTF8_STRING: /* Pasting into a text handler */
-                    DndHandler.set_selection_text_from_file_list (sd, manager.files, "");
+                    DndHandler.set_selection_data_as_text (sd, manager.files, "");
                     break;
                 default:
                     break;

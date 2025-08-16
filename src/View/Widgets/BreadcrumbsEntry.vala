@@ -294,7 +294,8 @@ namespace Files.View.Chrome {
                 /* We don't have the drop data - extract uri list from selection data */
                 string? text;
                 if (DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
-                    drop_file_list = FileUtils.files_from_uris (text);
+                    // We require that dropped uris have been escaped by the source.
+                    drop_file_list = FileUtils.files_from_escaped_uris (text);
                     drop_data_ready = true;
                 }
             }
