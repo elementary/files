@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-14 15:23+0000\n"
-"PO-Revision-Date: 2025-08-10 16:55+0000\n"
+"PO-Revision-Date: 2025-08-15 17:55+0000\n"
 "Last-Translator: JieXu <xujie0739@qq.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://"
 "l10n.elementaryos.org/projects/files/files/zh_Hans/>\n"
@@ -296,7 +296,7 @@ msgstr "修改日期"
 
 #: libcore/Enums.vala:250
 msgid "Current Date"
-msgstr ""
+msgstr "目前日期"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
@@ -323,10 +323,10 @@ msgid "Empty"
 msgstr "清空"
 
 #: libcore/File.vala:1171
-#, fuzzy, c-format
+#, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
-msgstr[0] "%i 项"
+msgstr[0] "%'d 个项目"
 
 #: libcore/File.vala:1216
 #, c-format
@@ -978,43 +978,36 @@ msgid "Empty _Trash"
 msgstr "清空回收站"
 
 #: libcore/UndoManager.vala:22
-#, fuzzy
 msgid "Undo Copy"
-msgstr "复制"
+msgstr "撤销「复制」"
 
 #: libcore/UndoManager.vala:24
-#, fuzzy
 msgid "Undo Duplicate"
-msgstr "重复标签"
+msgstr "撤销「建立副本」"
 
 #: libcore/UndoManager.vala:26
 msgid "Undo Move"
 msgstr "复原「移动」"
 
 #: libcore/UndoManager.vala:28
-#, fuzzy
 msgid "Undo Rename"
-msgstr "重命名"
+msgstr "撤销「重命名」"
 
 #: libcore/UndoManager.vala:30
-#, fuzzy
 msgid "Undo Create Empty File"
-msgstr "撤销空文件的创建( _U )"
+msgstr "撤销「创建空白文件」"
 
 #: libcore/UndoManager.vala:32
-#, fuzzy
 msgid "Undo Create File from Template"
-msgstr "撤销从模板创建的文件( _U )"
+msgstr "撤销「从模板创建的文件」"
 
 #: libcore/UndoManager.vala:34
-#, fuzzy
 msgid "Undo Create Folder"
-msgstr "撤销创建 %d 个文件夹( _U )"
+msgstr "撤销「创建文件夹」"
 
 #: libcore/UndoManager.vala:36
-#, fuzzy
 msgid "Undo Move to Trash"
-msgstr "移至回收站"
+msgstr "撤销「移至回收站」"
 
 #: libcore/UndoManager.vala:38
 #, fuzzy
@@ -1022,14 +1015,12 @@ msgid "Undo Create Link"
 msgstr "撤销创建到 %d 个文件的链接( _U )"
 
 #: libcore/UndoManager.vala:40
-#, fuzzy
 msgid "Undo Restore from Trash"
-msgstr "从回收站恢复"
+msgstr "撤销「从回收站还原」"
 
 #: libcore/UndoManager.vala:42
-#, fuzzy
 msgid "Undo Set Permissions"
-msgstr "正在设置权限"
+msgstr "撤销「设置权限」"
 
 #: libcore/UndoManager.vala:44
 #, fuzzy
@@ -1037,48 +1028,40 @@ msgid "Undo Set Permissions Recursively"
 msgstr "撤销改变 %d 个项目的权限( _U )"
 
 #: libcore/UndoManager.vala:46
-#, fuzzy
 msgid "Undo Change Owner"
-msgstr "撤销改变 %d 个项目的所有者( _U )"
+msgstr "撤销「更改所有者」"
 
 #: libcore/UndoManager.vala:48
-#, fuzzy
 msgid "Undo Change Group"
-msgstr "撤销改变 %d 个项目的群组( _U )"
+msgstr "撤销「更改群组」"
 
 #: libcore/UndoManager.vala:57
-#, fuzzy
 msgid "Redo Copy"
-msgstr "复制"
+msgstr "重做「复制」"
 
 #: libcore/UndoManager.vala:59
-#, fuzzy
 msgid "Redo Duplicate"
-msgstr "重复标签"
+msgstr "重做「建立副本」"
 
 #: libcore/UndoManager.vala:61
 msgid "Redo Move"
-msgstr ""
+msgstr "重做「移动」"
 
 #: libcore/UndoManager.vala:63
-#, fuzzy
 msgid "Redo Rename"
-msgstr "重命名"
+msgstr "重做「重命名」"
 
 #: libcore/UndoManager.vala:65
-#, fuzzy
 msgid "Redo Create Empty File"
-msgstr "重新创建新文件"
+msgstr "重做「创建空白文件」"
 
 #: libcore/UndoManager.vala:67
-#, fuzzy
 msgid "Redo Create File from Template"
-msgstr "重新从模板创建文件"
+msgstr "重做「从模板创建文件」"
 
 #: libcore/UndoManager.vala:69
-#, fuzzy
 msgid "Redo Create Folder"
-msgstr "创建文件夹失败"
+msgstr "重做「创建文件夹」"
 
 #: libcore/UndoManager.vala:71
 #, fuzzy
@@ -1091,14 +1074,12 @@ msgid "Redo Create Link"
 msgstr "重新创建链接到 %d 个项目( _R )"
 
 #: libcore/UndoManager.vala:75
-#, fuzzy
 msgid "Redo Restore from Trash"
-msgstr "从回收站恢复"
+msgstr "重做「移至回收站」"
 
 #: libcore/UndoManager.vala:77
-#, fuzzy
 msgid "Redo Set Permissions"
-msgstr "正在设置权限"
+msgstr "重做「设置权限」"
 
 #: libcore/UndoManager.vala:79
 #, fuzzy
@@ -1111,9 +1092,8 @@ msgid "Redo Change Owner"
 msgstr "重新改变 %d 个项目的所有者"
 
 #: libcore/UndoManager.vala:83
-#, fuzzy
 msgid "Redo Change Group"
-msgstr "重新改变 %d 个项目的群组"
+msgstr "重做「更改群组」"
 
 #: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
@@ -1523,7 +1503,7 @@ msgstr "[URI…]"
 
 #: src/Application.vala:89
 msgid "Error: Running Files as root using sudo is not possible."
-msgstr ""
+msgstr "错误：不能用 sudo 以 root 身份运行文件。"
 
 #: src/Application.vala:90
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
@@ -1671,27 +1651,24 @@ msgid "Apply"
 msgstr "应用"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
-#, fuzzy
 msgid "Ignored"
-msgstr "忽略"
+msgstr "已忽略"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 msgid "Name is not changed"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
-#, fuzzy
 msgid "Cannot rename"
-msgstr "重命名"
+msgstr "无法重命名"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 msgid "Name is invalid or already exists"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:78
-#, fuzzy
 msgid "Will be renamed"
-msgstr "文件名"
+msgstr "会被重命名"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
 #, fuzzy
@@ -1704,7 +1681,7 @@ msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
 msgid "Digits"
-msgstr ""
+msgstr "数字"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
 msgid "Separator"
