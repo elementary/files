@@ -16,18 +16,16 @@
     Authors : Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 namespace Files.FileUtils {
-    /**
-     * Gets a properly escaped GLib.File for the given path
-     **/
     const string RESERVED_CHARS = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
                                    GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
-    public GLib.List<GLib.File> files_from_uris (string uris) {
+
+    public GLib.List<GLib.File> files_from_escaped_uris (string escaped_uris) {
         var result = new GLib.List<GLib.File> ();
-        var uri_list = GLib.Uri.list_extract_uris (uris);
-        string unquoted_uri;
+        var uri_list = GLib.Uri.list_extract_uris (escaped_uris);
         foreach (unowned string uri in uri_list) {
             try {
-                unquoted_uri = Shell.unquote (uri); // Extracted uri may be quoted
+                var unquoted_uri = Shell.unquote (uri); // Extracted uri may be quoted
+                // We require that this function be called with escaped uris
                 result.append (GLib.File.new_for_uri (unquoted_uri));
             } catch (Error e) {
                 warning ("Error when unquoting %s. %s", uri, e.message);
