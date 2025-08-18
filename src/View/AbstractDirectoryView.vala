@@ -1482,8 +1482,20 @@ namespace Files {
         }
 
         private void on_show_file_preview_changed () {
-            slot.reload ();
-            // var prefs = Files.Preferences.get_default ();
+            if (!(this is ColumnView)) {
+                return;
+            }
+            bool state = Files.Preferences.get_default ().show_file_preview;
+            if (state == false) {
+                ((Files.View.Miller)(slot.ctab.view)).clear_file_details ();
+            } else {
+                if (slot.get_selected_files () != null) {
+                    Files.File? selected_file = slot.get_selected_files ().data;
+                    if (selected_file != null) {
+                        ((Files.View.Miller)(slot.ctab.view)).draw_file_details (selected_file, this);
+                    }
+                }
+            }
         }
 
         private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
