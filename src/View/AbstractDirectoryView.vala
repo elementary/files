@@ -310,7 +310,7 @@ namespace Files {
                 wrap = true
             };
             empty_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-            empty_label.show_all ();
+            empty_label.no_show_all = true;
 
             overlay = new Gtk.Overlay () {
                 hexpand = true,
