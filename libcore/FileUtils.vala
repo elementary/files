@@ -23,13 +23,8 @@ namespace Files.FileUtils {
         var result = new GLib.List<GLib.File> ();
         var uri_list = GLib.Uri.list_extract_uris (escaped_uris);
         foreach (unowned string uri in uri_list) {
-            try {
-                var unquoted_uri = Shell.unquote (uri); // Extracted uri may be quoted
-                // We require that this function be called with escaped uris
-                result.append (GLib.File.new_for_uri (unquoted_uri));
-            } catch (Error e) {
-                warning ("Error when unquoting %s. %s", uri, e.message);
-            }
+            // We can assume that uris received do not need to be unquoted
+            result.append (GLib.File.new_for_uri (uri));
         }
 
         return result;
