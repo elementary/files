@@ -5,10 +5,12 @@
  * Authors : Andres Mendez <shiruken@gmail.com>
  */
 
+using Cairo;
+
 public class Files.View.DetailsColumn : Gtk.Box {
     private const int PREVIEW_SIZE = 512;
     private const int PREVIEW_H_MARGIN = 24;
-    private const int MAX_TEXT_SIZE = 2 * 8 * 1024 * 1024; // 2MB
+    private const int MAX_PREVIEW_FILE_SIZE = 2 * 8 * 1024 * 1024; // 2MB
     private GLib.Cancellable? cancellable;
     private Gtk.Label resolution_value;
     private bool previewing_text = false;
@@ -61,34 +63,53 @@ public class Files.View.DetailsColumn : Gtk.Box {
             right_margin = 12,
         };
 
-        if (file.is_readable () && file.is_image ()) { // TODO: MAX_IMAGE_SIZE?
+        Gdk.Pixbuf? ico_pix = file.get_icon_pixbuf (PREVIEW_SIZE, get_scale_factor (), Files.File.IconFlags.NONE);
+        if (ico_pix != null) {
+            file_image.set_from_gicon (ico_pix, Gtk.IconSize.DIALOG);
+        }
+
+        if (file.is_readable () && file_real_size <= MAX_PREVIEW_FILE_SIZE) {
             string filename = file.location.get_path ();
-            Gdk.Pixbuf? file_pix = new Gdk.Pixbuf.from_file_at_scale (filename, PREVIEW_SIZE, PREVIEW_SIZE, true);
-            file_image.set_from_pixbuf (file_pix);
 
-        } else if (file.is_readable () && file.is_text () && file_real_size < MAX_TEXT_SIZE) {
-            string filename = file.location.get_path ();
+            if (file.is_image ()) {
+                Gdk.Pixbuf? file_pix = new Gdk.Pixbuf.from_file_at_scale (filename, PREVIEW_SIZE, PREVIEW_SIZE, true);
+                file_image.set_from_pixbuf (file_pix);
 
-            try {
-                previewing_text = true;
-                uint8[] contents;
-                string etag_out;
+            // thanks to https://wiki.gnome.org/Projects/Vala/PopplerSample
+            } else if (file.is_pdf ()) {
+                Poppler.Document doc = new Poppler.Document.from_file(Filename.to_uri (filename), null);
 
-                file.location.load_contents (null, out contents, out etag_out);
+                var page = doc.get_page(0); //TODO: multi-page?
 
-                var buffer = file_text.get_buffer ();
-                buffer.set_text ((string) contents);
+                var surface = new ImageSurface(Format.ARGB32, PREVIEW_SIZE, PREVIEW_SIZE);
+                var ctx = new Context(surface); // take me back, WebGL... take me back
 
-                // TODO destroy file_image
-            } catch (Error e) {
-                warning ("Error: %s\n", e.message);
-            }
+                ctx.set_source_rgb(255, 255, 255);
+                ctx.paint();
 
+                ctx.scale(0.5, 0.5); //TODO: I just eye-balled this
+                page.render(ctx);
+                ctx.restore();
 
-        } else {
-            Gdk.Pixbuf? file_pix = file.get_icon_pixbuf (PREVIEW_SIZE, get_scale_factor (), Files.File.IconFlags.NONE);
-            if (file_pix != null) {
-                file_image.set_from_gicon (file_pix, Gtk.IconSize.DIALOG);
+                var pdf_pix = Gdk.pixbuf_get_from_surface(surface, 0, 0, PREVIEW_SIZE, PREVIEW_SIZE);
+                file_image.set_from_pixbuf (pdf_pix);
+
+            } else if (file.is_text ()) {
+
+                try {
+                    previewing_text = true;
+                    uint8[] contents;
+                    string etag_out;
+
+                    file.location.load_contents (null, out contents, out etag_out);
+
+                    var buffer = file_text.get_buffer ();
+                    buffer.set_text ((string) contents);
+
+                    // TODO destroy file_image
+                } catch (Error e) {
+                    warning ("Error: %s\n", e.message);
+                }
             }
         }
 
@@ -200,7 +221,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
             propagate_natural_height = true,
             hscrollbar_policy = Gtk.PolicyType.NEVER
         };
-
 
 
         if (previewing_text) {
