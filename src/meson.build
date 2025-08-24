@@ -48,6 +48,7 @@ pantheon_files_exec = executable (
     'View/Slot.vala',
     'View/ViewContainer.vala',
     'View/Window.vala',
+    'View/DetailsColumn.vala',
 
     'View/Widgets/AbstractEditableLabel.vala',
     'View/Widgets/AppMenu.vala',
