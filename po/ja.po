@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-14 15:23+0000\n"
-"PO-Revision-Date: 2025-05-21 22:55+0000\n"
+"PO-Revision-Date: 2025-09-02 12:55+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/files/"
 "ja/>\n"
@@ -2494,7 +2494,7 @@ msgstr "実行"
 
 #: src/View/Widgets/SearchResults.vala:76
 msgid "More Results …"
-msgstr "検索結果をさらに表示…"
+msgstr "結果をさらに表示…"
 
 #: src/View/Widgets/SearchResults.vala:292
 msgid "In This Folder"
