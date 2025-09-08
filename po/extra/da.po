@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-17 10:04+0000\n"
+"POT-Creation-Date: 2025-08-14 15:23+0000\n"
 "PO-Revision-Date: 2020-11-01 18:47+0000\n"
 "Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
 "Language-Team: Danish <https://l10n.elementary.io/projects/files/extra/da/>\n"
@@ -68,72 +68,80 @@ msgstr ""
 msgid "Browse complex trees faster with Column view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:79
-#: data/files.metainfo.xml.in.in:94 data/files.metainfo.xml.in.in:110
-#: data/files.metainfo.xml.in.in:132 data/files.metainfo.xml.in.in:150
-#: data/files.metainfo.xml.in.in:173 data/files.metainfo.xml.in.in:185
-#: data/files.metainfo.xml.in.in:205
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:80
+#: data/files.metainfo.xml.in.in:91 data/files.metainfo.xml.in.in:103
+#: data/files.metainfo.xml.in.in:118 data/files.metainfo.xml.in.in:134
+#: data/files.metainfo.xml.in.in:156 data/files.metainfo.xml.in.in:174
+#: data/files.metainfo.xml.in.in:197 data/files.metainfo.xml.in.in:209
+#: data/files.metainfo.xml.in.in:229
 msgid "Minor updates:"
 msgstr "Mindre fejlrettelser:"
 
-#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:82
-#: data/files.metainfo.xml.in.in:96 data/files.metainfo.xml.in.in:114
-#: data/files.metainfo.xml.in.in:136 data/files.metainfo.xml.in.in:158
-#: data/files.metainfo.xml.in.in:175 data/files.metainfo.xml.in.in:187
-#: data/files.metainfo.xml.in.in:207
+#: data/files.metainfo.xml.in.in:69
+msgid ""
+"The Properties Window now shows the exact date and time the file was last "
+"modified"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:82
+#: data/files.metainfo.xml.in.in:93 data/files.metainfo.xml.in.in:106
+#: data/files.metainfo.xml.in.in:120 data/files.metainfo.xml.in.in:138
+#: data/files.metainfo.xml.in.in:160 data/files.metainfo.xml.in.in:182
+#: data/files.metainfo.xml.in.in:199 data/files.metainfo.xml.in.in:211
+#: data/files.metainfo.xml.in.in:231
 msgid "Updated translations"
 msgstr "Opdaterede oversættelser"
 
-#: data/files.metainfo.xml.in.in:81
+#: data/files.metainfo.xml.in.in:105
 msgid "Further preparation for porting to Gtk4"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:112
+#: data/files.metainfo.xml.in.in:136
 msgid "Redesign file permissions view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:113
+#: data/files.metainfo.xml.in.in:137
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:134
+#: data/files.metainfo.xml.in.in:158
 msgid "Restoring tabs from last time is now optional"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:135
+#: data/files.metainfo.xml.in.in:159
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:152
+#: data/files.metainfo.xml.in.in:176
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:153
+#: data/files.metainfo.xml.in.in:177
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:154
+#: data/files.metainfo.xml.in.in:178
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:155
+#: data/files.metainfo.xml.in.in:179
 msgid "Ensure the selection persists after refreshing the view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:156
+#: data/files.metainfo.xml.in.in:180
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:157
+#: data/files.metainfo.xml.in.in:181
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:201
+#: data/files.metainfo.xml.in.in:225
 msgid "Improvements:"
 msgstr "Forbedringer:"
 
-#: data/files.metainfo.xml.in.in:203
+#: data/files.metainfo.xml.in.in:227
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"

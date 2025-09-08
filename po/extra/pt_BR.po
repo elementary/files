@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-17 10:04+0000\n"
-"PO-Revision-Date: 2024-11-06 01:05+0000\n"
-"Last-Translator: Diogo Pessoa <diogopessoabr@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
+"POT-Creation-Date: 2025-08-14 15:23+0000\n"
+"PO-Revision-Date: 2025-07-28 23:55+0000\n"
+"Last-Translator: Guilherme Faura <guilhermefaura@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://l10n.elementaryos.org/projects/"
 "files/extra/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
@@ -70,78 +70,86 @@ msgid "Browse complex trees faster with Column view"
 msgstr ""
 "Navegue por árvores complexas mais rapidamente com a Visualização em Colunas"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:79
-#: data/files.metainfo.xml.in.in:94 data/files.metainfo.xml.in.in:110
-#: data/files.metainfo.xml.in.in:132 data/files.metainfo.xml.in.in:150
-#: data/files.metainfo.xml.in.in:173 data/files.metainfo.xml.in.in:185
-#: data/files.metainfo.xml.in.in:205
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:80
+#: data/files.metainfo.xml.in.in:91 data/files.metainfo.xml.in.in:103
+#: data/files.metainfo.xml.in.in:118 data/files.metainfo.xml.in.in:134
+#: data/files.metainfo.xml.in.in:156 data/files.metainfo.xml.in.in:174
+#: data/files.metainfo.xml.in.in:197 data/files.metainfo.xml.in.in:209
+#: data/files.metainfo.xml.in.in:229
 msgid "Minor updates:"
 msgstr "Pequenas atualizações:"
 
-#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:82
-#: data/files.metainfo.xml.in.in:96 data/files.metainfo.xml.in.in:114
-#: data/files.metainfo.xml.in.in:136 data/files.metainfo.xml.in.in:158
-#: data/files.metainfo.xml.in.in:175 data/files.metainfo.xml.in.in:187
-#: data/files.metainfo.xml.in.in:207
+#: data/files.metainfo.xml.in.in:69
+msgid ""
+"The Properties Window now shows the exact date and time the file was last "
+"modified"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:82
+#: data/files.metainfo.xml.in.in:93 data/files.metainfo.xml.in.in:106
+#: data/files.metainfo.xml.in.in:120 data/files.metainfo.xml.in.in:138
+#: data/files.metainfo.xml.in.in:160 data/files.metainfo.xml.in.in:182
+#: data/files.metainfo.xml.in.in:199 data/files.metainfo.xml.in.in:211
+#: data/files.metainfo.xml.in.in:231
 msgid "Updated translations"
 msgstr "Traduções atualizadas"
 
-#: data/files.metainfo.xml.in.in:81
+#: data/files.metainfo.xml.in.in:105
 msgid "Further preparation for porting to Gtk4"
-msgstr ""
+msgstr "Preparação adicional para portabilidade para Gtk4"
 
-#: data/files.metainfo.xml.in.in:112
+#: data/files.metainfo.xml.in.in:136
 msgid "Redesign file permissions view"
 msgstr "Redesenhar a visualização de permissões de arquivo"
 
-#: data/files.metainfo.xml.in.in:113
+#: data/files.metainfo.xml.in.in:137
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr "Foque na barra lateral pressionando Ctrl + Esquerda"
 
-#: data/files.metainfo.xml.in.in:134
+#: data/files.metainfo.xml.in.in:158
 msgid "Restoring tabs from last time is now optional"
 msgstr "Restaurar as abas da última vez agora é opcional"
 
-#: data/files.metainfo.xml.in.in:135
+#: data/files.metainfo.xml.in.in:159
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr ""
 "Arrastar e selecionar não pode mais ser feito com o botão secundário do mouse"
 
-#: data/files.metainfo.xml.in.in:152
+#: data/files.metainfo.xml.in.in:176
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 "Descontinuar suporte para arrastar favoritos para fora da barra lateral"
 
-#: data/files.metainfo.xml.in.in:153
+#: data/files.metainfo.xml.in.in:177
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr "Corrigir rolagem inesperada após renomear uma pasta"
 
-#: data/files.metainfo.xml.in.in:154
+#: data/files.metainfo.xml.in.in:178
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 "Corrige uma falha ao alternar para visualização em grade em circunstâncias "
 "raras"
 
-#: data/files.metainfo.xml.in.in:155
+#: data/files.metainfo.xml.in.in:179
 msgid "Ensure the selection persists after refreshing the view"
 msgstr "Garante que a seleção persista após atualizar a visualização"
 
-#: data/files.metainfo.xml.in.in:156
+#: data/files.metainfo.xml.in.in:180
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "Corrige Arquivos que não abrem ao tentar restaurar um local desconectado"
 
-#: data/files.metainfo.xml.in.in:157
+#: data/files.metainfo.xml.in.in:181
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 "Corrige a exibição que continua a aparecer quando um local é desmontado"
 
-#: data/files.metainfo.xml.in.in:201
+#: data/files.metainfo.xml.in.in:225
 msgid "Improvements:"
 msgstr "Melhorias:"
 
-#: data/files.metainfo.xml.in.in:203
+#: data/files.metainfo.xml.in.in:227
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
