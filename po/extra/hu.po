@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-14 15:23+0000\n"
-"PO-Revision-Date: 2025-06-19 11:55+0000\n"
+"PO-Revision-Date: 2025-09-12 11:55+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementaryos.org/projects/files/extra/"
 "hu/>\n"
@@ -85,6 +85,8 @@ msgid ""
 "The Properties Window now shows the exact date and time the file was last "
 "modified"
 msgstr ""
+"A Tulajdonságok ablak mostmár megjeleníti az utolsó módosítás pontos dátumát "
+"és idejét"
 
 #: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:82
 #: data/files.metainfo.xml.in.in:93 data/files.metainfo.xml.in.in:106
