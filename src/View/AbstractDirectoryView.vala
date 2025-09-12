@@ -2353,6 +2353,7 @@ namespace Files {
         }
 
         private class NewSubMenuItem : Gtk.MenuItem {
+            private uint total_item_count = 0;
             construct {
                 var folder_menuitem = new Gtk.MenuItem ();
                 folder_menuitem.add (new Granite.AccelLabel (
@@ -2372,16 +2373,29 @@ namespace Files {
 
                 unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
                 if (template_path != null) {
-                    load_templates_from_folder (GLib.File.new_for_path (template_path), submenu);
+                    var template_item = new Gtk.MenuItem.with_label (_("Template"));
+                    var template_menu = new Gtk.Menu ();
+                    template_item.submenu = template_menu;
+                    load_templates_from_folder (GLib.File.new_for_path (template_path), template_menu);
+
+                    if (total_item_count > 0) {
+                        submenu.add (template_item);
+                        if (total_item_count > MAX_TEMPLATES) {
+                            template_menu.add (new Gtk.MenuItem.with_label (_("…too many templates")));
+                        }
+                    }
                 }
 
                 label = _("New");
             }
 
-            private void load_templates_from_folder (GLib.File template_folder, Gtk.Menu submenu, uint count = 0) {
+            private bool load_templates_from_folder (GLib.File template_folder, Gtk.Menu submenu) {
+                if (total_item_count >= MAX_TEMPLATES) {
+                    return false;
+                }
+
                 GLib.List<GLib.File> file_list = null;
                 GLib.List<GLib.File> folder_list = null;
-
                 GLib.FileEnumerator enumerator;
                 var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
                 try {
@@ -2389,35 +2403,44 @@ namespace Files {
                     GLib.File location;
                     GLib.FileInfo? info = enumerator.next_file (null);
 
-                    while (count < MAX_TEMPLATES && (info != null)) {
+                    while (info != null) {
                         if (!info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_BACKUP)) {
                             location = template_folder.get_child (info.get_name ());
                             if (info.get_file_type () == GLib.FileType.DIRECTORY) {
                                 folder_list.prepend (location);
                             } else {
                                 file_list.prepend (location);
-                                count ++;
                             }
                         }
 
                         info = enumerator.next_file (null);
                     }
                 } catch (GLib.Error error) {
-                    return;
+                    return false;
                 }
 
+                bool has_nonempty_items = false;
                 if (folder_list.length () > 0) {
                     folder_list.sort ((a, b) => {
                         return strcmp (a.get_basename ().down (), b.get_basename ().down ());
                     });
 
-                    folder_list.@foreach ((folder) => {
+                    foreach (var folder in folder_list) {
                         var folder_menu = new Gtk.Menu ();
-                        var folder_menuitem = new Gtk.MenuItem.with_label (folder.get_basename ());
-                        folder_menuitem.submenu = folder_menu;
-                        submenu.add (folder_menuitem);
-                        load_templates_from_folder (folder, folder_menu);
-                    });
+                        total_item_count++;
+                        if (load_templates_from_folder (folder, folder_menu)) {
+                            has_nonempty_items = true;
+                            var folder_menuitem = new Gtk.MenuItem.with_label (folder.get_basename ());
+                            folder_menuitem.submenu = folder_menu;
+                            submenu.add (folder_menuitem);
+                        } else {
+                            total_item_count--;
+                        }
+
+                        if (total_item_count > MAX_TEMPLATES) {
+                            break;
+                        }
+                    }
                 }
 
                 if (file_list.length () > 0) {
@@ -2425,15 +2448,23 @@ namespace Files {
                         return strcmp (a.get_basename ().down (), b.get_basename ().down ());
                     });
 
-                    file_list.@foreach ((file) => {
+                    foreach (var file in file_list) {
+                        has_nonempty_items = true;
+                        total_item_count++;
+                        if (total_item_count > MAX_TEMPLATES) {
+                            break;
+                        }
+
                         var template_menuitem = new Gtk.MenuItem.with_label (file.get_basename ()) {
                             action_name = "background.create-from",
                             action_target = file.get_path ()
                         };
 
                         submenu.add (template_menuitem);
-                    });
+                    };
                 }
+
+                return has_nonempty_items;
             }
         }
 
