@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-14 15:23+0000\n"
-"PO-Revision-Date: 2025-06-15 15:55+0000\n"
+"PO-Revision-Date: 2025-09-14 18:55+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <italo@gp-mail.com>\n"
 "Language-Team: Spanish <https://l10n.elementaryos.org/projects/files/extra/"
 "es/>\n"
@@ -86,6 +86,8 @@ msgid ""
 "The Properties Window now shows the exact date and time the file was last "
 "modified"
 msgstr ""
+"La ventana de propiedades ahora muestra la fecha y hora exactas de la última "
+"modificación de un archivo"
 
 #: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:82
 #: data/files.metainfo.xml.in.in:93 data/files.metainfo.xml.in.in:106
