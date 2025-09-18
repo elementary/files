@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-14 15:23+0000\n"
-"PO-Revision-Date: 2025-03-21 18:55+0000\n"
+"PO-Revision-Date: 2025-09-18 22:15+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementaryos.org/projects/files/files/de/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-14 06:05+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
@@ -459,7 +459,7 @@ msgstr "Zusammenführen"
 #: libcore/FileUtils.vala:87
 #, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr "Ursprünglicher Ort von »%s« konnte nicht ermittelt werden"
+msgstr "Ursprünglicher Speicherort von »%s« konnte nicht ermittelt werden"
 
 #: libcore/FileUtils.vala:90
 msgid "The item cannot be restored from trash"
@@ -1840,7 +1840,7 @@ msgstr "Ziel:"
 
 #: src/Dialogs/PropertiesWindow.vala:637
 msgid "Original Location:"
-msgstr "Ursprünglicher Ort:"
+msgstr "Ursprünglicher Speicherort:"
 
 #: src/Dialogs/PropertiesWindow.vala:660
 #: src/View/AbstractDirectoryView.vala:1977
@@ -2114,8 +2114,8 @@ msgstr "Dateien können von diesem Ort nicht entfernt werden"
 #: src/View/AbstractDirectoryView.vala:3113
 msgid "You do not have permission to change this location"
 msgstr ""
-"Sie haben nicht die notwendigen Zugriffsrechte, an diesem Ort Änderungen "
-"vorzunehmen."
+"Sie haben nicht die notwendigen Zugriffsrechte, an diesem Speicherort "
+"Änderungen vorzunehmen."
 
 #: src/View/AbstractDirectoryView.vala:3053
 msgid "Cannot copy files that are in the trash"
