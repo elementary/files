@@ -274,20 +274,6 @@ namespace Files {
             }
         }
 
-        public static DateFormatMode from_string (string format) {
-            var fmt = format.down ();
-            switch (fmt) {
-                case "iso":
-                    ///TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
-                    return ISO;
-                case "locale":
-                    return LOCALE;
-                case "informal":
-                    return INFORMAL;
-                default:
-                    assert_not_reached ();
-            }
-        }
     }
 
 }
