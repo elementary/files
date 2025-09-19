@@ -16,22 +16,15 @@
     Authors : Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 namespace Files.FileUtils {
-    /**
-     * Gets a properly escaped GLib.File for the given path
-     **/
     const string RESERVED_CHARS = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
                                    GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
-    public GLib.List<GLib.File> files_from_uris (string uris) {
+
+    public GLib.List<GLib.File> files_from_escaped_uris (string escaped_uris) {
         var result = new GLib.List<GLib.File> ();
-        var uri_list = GLib.Uri.list_extract_uris (uris);
-        string unquoted_uri;
+        var uri_list = GLib.Uri.list_extract_uris (escaped_uris);
         foreach (unowned string uri in uri_list) {
-            try {
-                unquoted_uri = Shell.unquote (uri); // Extracted uri may be quoted
-                result.append (GLib.File.new_for_uri (unquoted_uri));
-            } catch (Error e) {
-                warning ("Error when unquoting %s. %s", uri, e.message);
-            }
+            // We can assume that uris received do not need to be unquoted
+            result.append (GLib.File.new_for_uri (uri));
         }
 
         return result;
@@ -593,9 +586,12 @@ namespace Files.FileUtils {
         return new_location;
     }
 
-    public string get_formatted_time_attribute_from_info (GLib.FileInfo info, string attr) {
+    public string get_formatted_time_attribute_from_info (
+        FileInfo info,
+        string attr,
+        DateFormatMode format = Files.Preferences.get_default ().date_format
+    ) {
         DateTime? dt = null;
-
         switch (attr) {
             case FileAttribute.TIME_MODIFIED:
             case FileAttribute.TIME_CREATED:
@@ -623,15 +619,15 @@ namespace Files.FileUtils {
                 break;
         }
 
-        return get_formatted_date_time (dt);
+        return get_formatted_date_time (dt, format);
     }
 
-    public string get_formatted_date_time (DateTime? dt) {
+    private string get_formatted_date_time (DateTime? dt, DateFormatMode format) {
         if (dt == null) {
             return "";
         }
 
-        switch (Files.Preferences.get_default ().date_format) {
+        switch (format) {
             case DateFormatMode.LOCALE:
                 return dt.format ("%c");
             case DateFormatMode.ISO :
