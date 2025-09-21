@@ -77,21 +77,21 @@ public class Files.View.DetailsColumn : Gtk.Box {
 
             // thanks to https://wiki.gnome.org/Projects/Vala/PopplerSample
             } else if (file.is_pdf ()) {
-                Poppler.Document doc = new Poppler.Document.from_file(Filename.to_uri (filename), null);
+                Poppler.Document doc = new Poppler.Document.from_file (Filename.to_uri ( filename ), null);
 
-                var page = doc.get_page(0); //TODO: multi-page?
+                var page = doc.get_page (0); //TODO: multi-page?
 
-                var surface = new ImageSurface(Format.ARGB32, PREVIEW_SIZE, PREVIEW_SIZE);
-                var ctx = new Context(surface); // take me back, WebGL... take me back
+                var surface = new ImageSurface (Format.ARGB32, PREVIEW_SIZE, PREVIEW_SIZE);
+                var ctx = new Context (surface); // take me back, WebGL... take me back
 
-                ctx.set_source_rgb(255, 255, 255);
-                ctx.paint();
+                ctx.set_source_rgb (255, 255, 255);
+                ctx.paint ();
 
-                ctx.scale(0.5, 0.5); //TODO: I just eye-balled this
-                page.render(ctx);
-                ctx.restore();
+                ctx.scale (0.5, 0.5); //TODO: I just eye-balled this
+                page.render (ctx);
+                ctx.restore ();
 
-                var pdf_pix = Gdk.pixbuf_get_from_surface(surface, 0, 0, PREVIEW_SIZE, PREVIEW_SIZE);
+                var pdf_pix = Gdk.pixbuf_get_from_surface (surface, 0, 0, PREVIEW_SIZE, PREVIEW_SIZE);
                 file_image.set_from_pixbuf (pdf_pix);
 
             } else if (file.is_text ()) {
