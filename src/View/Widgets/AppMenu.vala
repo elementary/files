@@ -172,21 +172,21 @@ public class Files.AppMenu : Gtk.Popover {
                 assert_not_reached ();
         }
 
-        // Using a local function to avoid making radiobuttons class members
-        void on_dateformat_changed () {
+        iso_button.toggled.connect (() => {
             if (iso_button.active) {
                 app_settings.set_enum ("date-format", DateFormatMode.ISO);
-            } else if (locale_button.active) {
+            }
+        });
+        locale_button.toggled.connect (() => {
+            if (locale_button.active) {
                 app_settings.set_enum ("date-format", DateFormatMode.LOCALE);
-            } else {
+            }
+        });
+        informal_button.toggled.connect (() => {
+            if (informal_button.active) {
                 app_settings.set_enum ("date-format", DateFormatMode.INFORMAL);
             }
-        }
-
-        iso_button.toggled.connect (() => on_dateformat_changed ());
-        locale_button.toggled.connect (() => on_dateformat_changed () );
-        informal_button.toggled.connect (() => on_dateformat_changed ());
-
+        });
     }
 
     private void set_undo_redo_tooltips () {
