@@ -9,7 +9,6 @@ public class Files.AppMenu : Gtk.Popover {
     private Gtk.Button zoom_default_button;
     private Gtk.Button zoom_in_button;
     private Gtk.Button zoom_out_button;
-    private Gtk.ComboBoxText datetimeformat_combo;
     private string[] redo_accels;
     private string[] undo_accels;
     private unowned UndoManager undo_manager;
