@@ -273,7 +273,5 @@ namespace Files {
                     assert_not_reached ();
             }
         }
-
     }
-
 }
