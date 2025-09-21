@@ -630,7 +630,7 @@ namespace Files.FileUtils {
         switch (format) {
             case DateFormatMode.LOCALE:
                 return dt.format ("%c");
-            case DateFormatMode.ISO :
+            case DateFormatMode.ISO:
                 return dt.format ("%Y-%m-%d %H:%M:%S");
             default:
                 return get_informal_date_time (dt);
