@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 15:23+0000\n"
+"POT-Creation-Date: 2025-09-22 21:34+0000\n"
 "PO-Revision-Date: 2024-10-27 06:56+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
@@ -62,12 +62,12 @@ msgstr "הצגת נתוני על רבים יותר במבט חטוף בתצוג�
 msgid "Browse complex trees faster with Column view"
 msgstr "עיון בעצים מורכבים מהר יותר עם תצוגת עמודות"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:80
-#: data/files.metainfo.xml.in.in:91 data/files.metainfo.xml.in.in:103
-#: data/files.metainfo.xml.in.in:118 data/files.metainfo.xml.in.in:134
-#: data/files.metainfo.xml.in.in:156 data/files.metainfo.xml.in.in:174
-#: data/files.metainfo.xml.in.in:197 data/files.metainfo.xml.in.in:209
-#: data/files.metainfo.xml.in.in:229
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:82
+#: data/files.metainfo.xml.in.in:93 data/files.metainfo.xml.in.in:105
+#: data/files.metainfo.xml.in.in:120 data/files.metainfo.xml.in.in:136
+#: data/files.metainfo.xml.in.in:158 data/files.metainfo.xml.in.in:176
+#: data/files.metainfo.xml.in.in:199 data/files.metainfo.xml.in.in:211
+#: data/files.metainfo.xml.in.in:231
 msgid "Minor updates:"
 msgstr "תיקונים מזעריים:"
 
@@ -77,66 +77,66 @@ msgid ""
 "modified"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:82
-#: data/files.metainfo.xml.in.in:93 data/files.metainfo.xml.in.in:106
-#: data/files.metainfo.xml.in.in:120 data/files.metainfo.xml.in.in:138
-#: data/files.metainfo.xml.in.in:160 data/files.metainfo.xml.in.in:182
-#: data/files.metainfo.xml.in.in:199 data/files.metainfo.xml.in.in:211
-#: data/files.metainfo.xml.in.in:231
+#: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:84
+#: data/files.metainfo.xml.in.in:95 data/files.metainfo.xml.in.in:108
+#: data/files.metainfo.xml.in.in:122 data/files.metainfo.xml.in.in:140
+#: data/files.metainfo.xml.in.in:162 data/files.metainfo.xml.in.in:184
+#: data/files.metainfo.xml.in.in:201 data/files.metainfo.xml.in.in:213
+#: data/files.metainfo.xml.in.in:233
 msgid "Updated translations"
 msgstr "התרגומים עודכנו"
 
-#: data/files.metainfo.xml.in.in:105
+#: data/files.metainfo.xml.in.in:107
 msgid "Further preparation for porting to Gtk4"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:136
+#: data/files.metainfo.xml.in.in:138
 msgid "Redesign file permissions view"
 msgstr "תצוגת הרשאות הקבצים עוצבה מחדש"
 
-#: data/files.metainfo.xml.in.in:137
+#: data/files.metainfo.xml.in.in:139
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr "התמקדות על סרגל הצד בלחיצה על Ctrl + שמאלה"
 
-#: data/files.metainfo.xml.in.in:158
+#: data/files.metainfo.xml.in.in:160
 msgid "Restoring tabs from last time is now optional"
 msgstr "שחזור לשוניות מהפעם האחרונה היא בגדר רשות מעתה"
 
-#: data/files.metainfo.xml.in.in:159
+#: data/files.metainfo.xml.in.in:161
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr "לא ניתן לבצע עוד גרירה ובחירה עם הכפתור המשני"
 
-#: data/files.metainfo.xml.in.in:176
+#: data/files.metainfo.xml.in.in:178
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr "הופסקה התמיכה בגרירת סימניות אל מחוץ לסרגל הצד"
 
-#: data/files.metainfo.xml.in.in:177
+#: data/files.metainfo.xml.in.in:179
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr "תוקנה גלילה לא צפויה לאחר שינוי שם תיקייה"
 
-#: data/files.metainfo.xml.in.in:178
+#: data/files.metainfo.xml.in.in:180
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr "תוקנה קריסה בעת מעבר לתצוגת רשת במצבים נדירים במיוחד"
 
-#: data/files.metainfo.xml.in.in:179
+#: data/files.metainfo.xml.in.in:181
 msgid "Ensure the selection persists after refreshing the view"
 msgstr "וידוא שהבחירה נשארת אחרי רענון התצוגה"
 
-#: data/files.metainfo.xml.in.in:180
+#: data/files.metainfo.xml.in.in:182
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "תוקנה הבעיה שיישום הקבצים לא מצליח לפתוח אם מתבצע ניסיון לשחזר מקום מנותק"
 
-#: data/files.metainfo.xml.in.in:181
+#: data/files.metainfo.xml.in.in:183
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr "תוקנה התצוגה שממשיכה להופיע כאשר המקום מנותק"
 
-#: data/files.metainfo.xml.in.in:225
+#: data/files.metainfo.xml.in.in:227
 msgid "Improvements:"
 msgstr "שיפורים:"
 
-#: data/files.metainfo.xml.in.in:227
+#: data/files.metainfo.xml.in.in:229
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
