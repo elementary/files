@@ -121,7 +121,6 @@ public class Files.AppMenu : Gtk.Popover {
         locale_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
         var informal_button = new Gtk.RadioButton.with_label_from_widget (iso_button, DateFormatMode.INFORMAL.to_string ());
         informal_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
-        //TODO Add a custom format wizard? Or a detailed informat format? Or "days ago" format?
 
         var menu_box = new Gtk.Box (VERTICAL, 0) {
             margin_bottom = 6
