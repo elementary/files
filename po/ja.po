@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-09-22 21:34+0000\n"
-"PO-Revision-Date: 2025-09-02 12:55+0000\n"
+"PO-Revision-Date: 2025-09-23 01:18+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/files/"
 "ja/>\n"
@@ -303,17 +303,15 @@ msgstr "現在時刻"
 #. TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
 #: libcore/Enums.vala:267
 msgid "ISO"
-msgstr ""
+msgstr "ISO"
 
 #: libcore/Enums.vala:269
 msgid "Locale"
-msgstr ""
+msgstr "ロケール"
 
 #: libcore/Enums.vala:271
-#, fuzzy
-#| msgid "Info"
 msgid "Informal"
-msgstr "情報"
+msgstr "略式"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
@@ -2411,7 +2409,7 @@ msgstr "リモートファイルのサムネイル"
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
 #: src/View/Widgets/AppMenu.vala:116
 msgid "Date & Time Format"
-msgstr ""
+msgstr "日付と時刻の書式"
 
 #: src/View/Widgets/AppMenu.vala:199
 msgid "No operation to undo"
