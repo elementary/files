@@ -562,7 +562,7 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
             var time_created = FileUtils.get_formatted_time_attribute_from_info (
                 file.info,
                 FileAttribute.TIME_CREATED,
-                "iso"
+                DateFormatMode.ISO
             );
             if (time_created != "") {
                 var key_label = make_key_label (_("Created:"));
@@ -575,7 +575,7 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
             var time_modified = FileUtils.get_formatted_time_attribute_from_info (
                 file.info,
                 FileAttribute.TIME_MODIFIED,
-                "iso"
+                DateFormatMode.ISO
             );
 
             if (time_modified != "") {
@@ -588,8 +588,12 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         }
 
         if (only_one && file.is_trashed ()) {
-            var deletion_date = FileUtils.get_formatted_time_attribute_from_info (file.info,
-                                                                                  FileAttribute.TRASH_DELETION_DATE);
+            var deletion_date = FileUtils.get_formatted_time_attribute_from_info (
+                file.info,
+                FileAttribute.TRASH_DELETION_DATE,
+                DateFormatMode.ISO
+            );
+
             if (deletion_date != "") {
                 var key_label = make_key_label (_("Deleted:"));
                 var value_label = make_value_label (deletion_date);

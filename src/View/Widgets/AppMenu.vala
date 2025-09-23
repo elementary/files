@@ -117,6 +117,16 @@ public class Files.AppMenu : Gtk.Popover {
         };
         show_file_preview.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
+        ///TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
+        var datetimeformat_header = new Granite.HeaderLabel (_("Date & Time Format"));
+
+        var iso_button = new Gtk.RadioButton.with_label (null, DateFormatMode.ISO.to_string ());
+        iso_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
+        var locale_button = new Gtk.RadioButton.with_label_from_widget (iso_button, DateFormatMode.LOCALE.to_string ());
+        locale_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
+        var informal_button = new Gtk.RadioButton.with_label_from_widget (iso_button, DateFormatMode.INFORMAL.to_string ());
+        informal_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
+
         var menu_box = new Gtk.Box (VERTICAL, 0) {
             margin_bottom = 6
         };
@@ -132,6 +142,13 @@ public class Files.AppMenu : Gtk.Popover {
         menu_box.add (show_local_thumbnails);
         menu_box.add (show_remote_thumbnails);
         menu_box.add (show_file_preview);
+
+        menu_box.add (new Gtk.Separator (HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
+        menu_box.add (datetimeformat_header);
+        menu_box.add (iso_button);
+        menu_box.add (locale_button);
+        menu_box.add (informal_button);
+
         menu_box.show_all ();
 
         child = menu_box;
@@ -145,6 +162,37 @@ public class Files.AppMenu : Gtk.Popover {
         Files.icon_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
         Files.list_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
         Files.column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
+
+        // Initialize and connect dateformat buttons
+        switch (app_settings.get_enum ("date-format")) {
+            case DateFormatMode.ISO:
+                iso_button.active = true;
+                break;
+            case DateFormatMode.LOCALE:
+                locale_button.active = true;
+                break;
+            case DateFormatMode.INFORMAL:
+                informal_button.active= true;
+                break;
+            default:
+                assert_not_reached ();
+        }
+
+        iso_button.toggled.connect (() => {
+            if (iso_button.active) {
+                app_settings.set_enum ("date-format", DateFormatMode.ISO);
+            }
+        });
+        locale_button.toggled.connect (() => {
+            if (locale_button.active) {
+                app_settings.set_enum ("date-format", DateFormatMode.LOCALE);
+            }
+        });
+        informal_button.toggled.connect (() => {
+            if (informal_button.active) {
+                app_settings.set_enum ("date-format", DateFormatMode.INFORMAL);
+            }
+        });
     }
 
     private void set_undo_redo_tooltips () {
