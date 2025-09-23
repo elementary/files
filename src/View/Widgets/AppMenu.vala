@@ -121,7 +121,7 @@ public class Files.AppMenu : Gtk.Popover {
         locale_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
         var informal_button = new Gtk.RadioButton.with_label_from_widget (iso_button, DateFormatMode.INFORMAL.to_string ());
         informal_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
-        var compact_button = new Gtk.RadioButton.with_label_from_widget (iso_button, DateFormatMode.INFORMAL.to_string ());
+        var compact_button = new Gtk.RadioButton.with_label_from_widget (iso_button, DateFormatMode.COMPACT.to_string ());
         compact_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
         var menu_box = new Gtk.Box (VERTICAL, 0) {
