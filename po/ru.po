@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-09-22 21:34+0000\n"
-"PO-Revision-Date: 2025-03-25 16:55+0000\n"
+"PO-Revision-Date: 2025-09-24 07:00+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/files/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
@@ -270,23 +270,23 @@ msgstr "Текст, который будет добавлен в начало"
 
 #: libcore/Enums.vala:222
 msgid "Default Format - Date only"
-msgstr "Стандартный формат - Только дата"
+msgstr "Стандартный формат — Только дата"
 
 #: libcore/Enums.vala:224
 msgid "Default Format - Date and Time"
-msgstr "Стандартный формат - Дата и время"
+msgstr "Стандартный формат — Дата и время"
 
 #: libcore/Enums.vala:226
 msgid "Locale Format - Date and Time"
-msgstr "Формат локали - Дата и время"
+msgstr "Формат локали — Дата и время"
 
 #: libcore/Enums.vala:228
 msgid "ISO 8601 Format - Date only"
-msgstr "Формат ISO 8601 - Только дата"
+msgstr "Формат ISO 8601 — Только дата"
 
 #: libcore/Enums.vala:230
 msgid "ISO 8601 Format - Date and Time"
-msgstr "Формат ISO 8601 - Дата а время"
+msgstr "Формат ISO 8601 — Дата и время"
 
 #: libcore/Enums.vala:246
 msgid "Date created"
@@ -303,17 +303,15 @@ msgstr "Текущая дата"
 #. TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
 #: libcore/Enums.vala:267
 msgid "ISO"
-msgstr ""
+msgstr "ISO"
 
 #: libcore/Enums.vala:269
 msgid "Locale"
-msgstr ""
+msgstr "По локали"
 
 #: libcore/Enums.vala:271
-#, fuzzy
-#| msgid "Info"
 msgid "Informal"
-msgstr "Сведения"
+msgstr "Разговорный"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
@@ -2477,7 +2475,7 @@ msgstr "Удалённые миниатюры"
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
 #: src/View/Widgets/AppMenu.vala:116
 msgid "Date & Time Format"
-msgstr ""
+msgstr "Формат даты и времени"
 
 #: src/View/Widgets/AppMenu.vala:199
 msgid "No operation to undo"
