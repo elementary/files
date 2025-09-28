@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-09-22 21:34+0000\n"
-"PO-Revision-Date: 2024-12-02 00:14+0000\n"
+"PO-Revision-Date: 2025-09-29 18:55+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
-"Language-Team: Finnish <https://l10n.elementary.io/projects/files/files/fi/"
-">\n"
+"Language-Team: Finnish <https://l10n.elementaryos.org/projects/files/files/"
+"fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
@@ -302,7 +302,7 @@ msgstr "Nykyinen päivä"
 #. TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
 #: libcore/Enums.vala:267
 msgid "ISO"
-msgstr ""
+msgstr "ISO"
 
 #: libcore/Enums.vala:269
 msgid "Locale"
@@ -2461,7 +2461,7 @@ msgstr "Etäpikkukuvat"
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
 #: src/View/Widgets/AppMenu.vala:116
 msgid "Date & Time Format"
-msgstr ""
+msgstr "Päivän ja ajan muoto"
 
 #: src/View/Widgets/AppMenu.vala:199
 msgid "No operation to undo"
@@ -2488,7 +2488,7 @@ msgstr "Avaa muussa sovelluksessa…"
 msgid ""
 "Caution. Administrative rights will be granted after successful "
 "authentication"
-msgstr ""
+msgstr "Huomio. Ylläpitäjän oikeudet myönnetään onnistuneen todennuksen jälkeen"
 
 #: src/View/Widgets/LocationBar.vala:212
 msgid "Reload this folder"
