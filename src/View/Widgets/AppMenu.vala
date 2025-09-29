@@ -112,7 +112,7 @@ public class Files.AppMenu : Gtk.Popover {
         };
         show_remote_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
-        var show_file_preview = new Gtk.CheckButton.with_label (_("File Preview")) {
+        var show_file_preview = new Gtk.CheckButton.with_label (_("File Preview (Column View)")) {
             action_name = "win.show-file-preview"
         };
         show_file_preview.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
