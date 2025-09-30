@@ -152,7 +152,13 @@ public class Files.Directory : Object {
     }
 
     public static Directory from_file (Files.File gof) {
-        return from_gfile (gof.get_target_location ());
+        if (gof.is_trashed ()) {
+            // We need to keep `trash://` scheme, not follow link else expanding
+            // rows in ListView does not work properly
+            return from_gfile (gof.location);
+        } else {
+            return from_gfile (gof.get_target_location ());
+        }
     }
 
     private Directory (GLib.File _file) {
