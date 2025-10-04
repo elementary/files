@@ -2359,6 +2359,7 @@ namespace Files {
 
         private class NewSubMenuItem : Gtk.MenuItem {
             private uint total_item_count = 0;
+
             construct {
                 var folder_menuitem = new Gtk.MenuItem ();
                 folder_menuitem.add (new Granite.AccelLabel (
