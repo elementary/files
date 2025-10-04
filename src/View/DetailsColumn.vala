@@ -68,31 +68,43 @@ public class Files.View.DetailsColumn : Gtk.Box {
             file_image.set_from_gicon (ico_pix, Gtk.IconSize.DIALOG);
         }
 
+        // overwriting, yes, but easier on the boolean
         if (file.is_readable () && file_real_size <= MAX_PREVIEW_FILE_SIZE) {
             string filename = file.location.get_path ();
 
             if (file.is_image ()) {
-                Gdk.Pixbuf? file_pix = new Gdk.Pixbuf.from_file_at_scale (filename, PREVIEW_SIZE, PREVIEW_SIZE, true);
-                file_image.set_from_pixbuf (file_pix);
+                try {
+                    Gdk.Pixbuf? file_pix = new Gdk.Pixbuf
+                        .from_file_at_scale (filename, PREVIEW_SIZE, PREVIEW_SIZE, true);
+
+                    file_image.set_from_pixbuf (file_pix);
+                } catch (Error e) {
+                    warning ("Error: %s\n", e.message);
+                }
 
             // thanks to https://wiki.gnome.org/Projects/Vala/PopplerSample
             } else if (file.is_pdf ()) {
-                Poppler.Document doc = new Poppler.Document.from_file (Filename.to_uri ( filename ), null);
+                try {
 
-                var page = doc.get_page (0); //TODO: multi-page?
+                    Poppler.Document doc = new Poppler.Document.from_file (Filename.to_uri ( filename ), null);
 
-                var surface = new ImageSurface (Format.ARGB32, PREVIEW_SIZE, PREVIEW_SIZE);
-                var ctx = new Context (surface); // take me back, WebGL... take me back
+                    var page = doc.get_page (0); //TODO: multi-page?
 
-                ctx.set_source_rgb (255, 255, 255);
-                ctx.paint ();
+                    var surface = new ImageSurface (Format.ARGB32, PREVIEW_SIZE, PREVIEW_SIZE);
+                    var ctx = new Context (surface); // take me back, WebGL... take me back
 
-                ctx.scale (0.5, 0.5); //TODO: I just eye-balled this
-                page.render (ctx);
-                ctx.restore ();
+                    ctx.set_source_rgb (255, 255, 255);
+                    ctx.paint ();
 
-                var pdf_pix = Gdk.pixbuf_get_from_surface (surface, 0, 0, PREVIEW_SIZE, PREVIEW_SIZE);
-                file_image.set_from_pixbuf (pdf_pix);
+                    ctx.scale (0.5, 0.5); //TODO: I just eye-balled this
+                    page.render (ctx);
+                    ctx.restore ();
+
+                    var pdf_pix = Gdk.pixbuf_get_from_surface (surface, 0, 0, PREVIEW_SIZE, PREVIEW_SIZE);
+                    file_image.set_from_pixbuf (pdf_pix);
+                } catch (Error e) {
+                    warning ("Error: %s\n", e.message);
+                }
 
             } else if (file.is_text ()) {
 
@@ -124,7 +136,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
         info_grid.attach_next_to (name_value, name_key_label, RIGHT);
 
         /** begin adapted copy-pasta from PropertiesWindow.construct_info_panel **/
-
         var size_key_label = make_key_label (_("Size:"));
         var spinner = new Gtk.Spinner () {
             halign = START
