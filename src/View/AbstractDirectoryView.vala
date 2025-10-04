@@ -438,6 +438,7 @@ namespace Files {
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
             prefs.notify["show-local-thumbnails"].connect (on_show_thumbnails_changed);
+            prefs.notify["show-file-preview"].connect (on_show_file_preview_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
             prefs.notify["date-format"].connect (on_dateformat_changed);
             prefs.bind_property (
@@ -547,7 +548,7 @@ namespace Files {
             unselect_all ();
 
             uint count = 0;
-            Gtk.TreeIter? iter;
+            // Gtk.TreeIter? iter;
             foreach (Files.File f in files_to_select) {
                 /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
                 var path = model.get_path_for_first_file (f);
@@ -1179,7 +1180,8 @@ namespace Files {
             open_file (file, null, null);
         }
 
-        private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) requires (window != null) {
+        private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param)
+            requires (window != null) {
             GLib.File location;
             if (selected_files != null) {
                 location = selected_files.data.get_target_location ();
@@ -1478,6 +1480,23 @@ namespace Files {
         private void on_show_thumbnails_changed () {
             set_should_thumbnail ();
             slot.reload ();
+        }
+
+        private void on_show_file_preview_changed () {
+            if (!(this is ColumnView)) {
+                return;
+            }
+            bool state = Files.Preferences.get_default ().show_file_preview;
+            if (state == false) {
+                ((Files.View.Miller)(slot.ctab.view)).clear_file_details ();
+            } else {
+                if (slot.get_selected_files () != null) {
+                    Files.File? selected_file = slot.get_selected_files ().data;
+                    if (selected_file != null) {
+                        ((Files.View.Miller)(slot.ctab.view)).draw_file_details (selected_file, this);
+                    }
+                }
+            }
         }
 
         private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
@@ -2544,7 +2563,11 @@ namespace Files {
             action_set_enabled (common_actions, "open-in", !renaming & only_folders);
             action_set_enabled (selection_actions, "rename", !renaming & is_selected && can_rename);
             action_set_enabled (selection_actions, "view-in-location", !renaming & is_selected);
-            action_set_enabled (selection_actions, "open", !renaming && is_selected && !more_than_one_selected && can_open);
+            action_set_enabled (
+                selection_actions,
+                "open",
+                !renaming && is_selected && !more_than_one_selected && can_open
+            );
             action_set_enabled (selection_actions, "open-with-app", !renaming && can_open);
             action_set_enabled (selection_actions, "open-with-default", !renaming && can_open);
             action_set_enabled (selection_actions, "open-with-other-app", !renaming && can_open);
@@ -3463,7 +3486,8 @@ namespace Files {
                             /* Determine whether should activate on key release (unless pointer moved)*/
                             /* Only activate single files with unmodified button when not on blank unless double-clicked */
                             if (no_mods && one_or_less) {
-                                should_activate = (on_directory && !on_blank && !singleclick_select) || double_click_event;
+                                should_activate = (on_directory && !on_blank && !singleclick_select)
+                                    || double_click_event;
                             }
 
                             /* We need to decide whether to rubberband or drag&drop.
