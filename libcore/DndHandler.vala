@@ -294,43 +294,54 @@ namespace Files {
             return sb.str;
         }
 
-        // Used when dragging a file item
-        public static void set_selection_data_from_file_list (Gtk.SelectionData selection_data,
-                                                              GLib.List<Files.File> file_list,
-                                                              string prefix = "") {
+        // Used when TargetType is TEXT_URI_LIST
+        public static void set_selection_data_as_file_list (Gtk.SelectionData selection_data,
+                                                            GLib.List<Files.File> file_list,
+                                                            string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
-            set_stringbuilder_from_file_list (sb, file_list, true); // This will keep the "file://" protocol
+            set_stringbuilder_from_file_list (
+                sb,
+                file_list,
+                TargetType.TEXT_URI_LIST
+            );
             selection_data.@set (selection_data.get_target (),
                                  8,
                                  sb.data);
 
         }
 
-        // Used when copying a file item
-        public static void set_selection_text_from_file_list (Gtk.SelectionData selection_data,
-                                                              GLib.List<Files.File> file_list,
-                                                              string prefix = "") {
+        // Used when TargetType is STRING
+        public static void set_selection_data_as_text (Gtk.SelectionData selection_data,
+                                                       GLib.List<Files.File> file_list,
+                                                       string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
-            set_stringbuilder_from_file_list (sb, file_list, false); // This remove the "file://" protocol
+            set_stringbuilder_from_file_list (
+                sb,
+                file_list,
+                TargetType.STRING
+            );
             sb.truncate (sb.len - 2);  /* Do not want "\r\n" at end when pasting into text*/
             selection_data.set_text (sb.str, (int)(sb.len));
         }
 
         private static void set_stringbuilder_from_file_list (GLib.StringBuilder sb,
                                                               GLib.List<Files.File> file_list,
-                                                              bool keep_protocol) {
+                                                              TargetType type) {
 
             if (file_list != null && file_list.data != null && file_list.data is Files.File) {
                 bool in_recent = file_list.data.is_recent_uri_scheme ();
 
                 file_list.@foreach ((file) => {
                     var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
-                    target = FileUtils.sanitize_path (target, null, keep_protocol);
 
-
-                    sb.append (Shell.quote (target)); //Alway quote urls
+                    if (type == TargetType.STRING) {
+                        target = FileUtils.sanitize_path (target, null, false);
+                    }
+                    //Leave it to recipient to quote if required when receiving a uri list by DnD
+                    //Terminal app applies quotes for uris but not text entries for example
+                    sb.append (target);
                     sb.append ("\r\n"); /* Drop onto Filezilla does not work without the "\r" */
                 });
             } else {

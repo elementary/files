@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 17:19+0000\n"
-"PO-Revision-Date: 2022-10-13 04:38+0000\n"
-"Last-Translator: colindemian <colindemian@outlook.com>\n"
-"Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
-"files/files/zh_Hans/>\n"
+"POT-Creation-Date: 2025-10-04 15:38+0000\n"
+"PO-Revision-Date: 2025-08-15 17:55+0000\n"
+"Last-Translator: JieXu <xujie0739@qq.com>\n"
+"Language-Team: Chinese (Simplified Han script) <https://"
+"l10n.elementaryos.org/projects/files/files/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
@@ -47,16 +47,15 @@ msgstr "只读打开文件"
 msgid "Open File as Read Only"
 msgstr "只读打开文件"
 
-#: filechooser-portal/FileChooserDialog.vala:376
-#, fuzzy
+#: filechooser-portal/FileChooserDialog.vala:378
 msgid "Enter new filename"
-msgstr "新文件"
+msgstr "输入新文件名称"
 
 #: filechooser-portal/Main.vala:107
 msgid "Select"
 msgstr "选中"
 
-#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:311
+#: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:313
 msgid "Open"
 msgstr "打开"
 
@@ -74,10 +73,9 @@ msgid "This file is a link."
 msgstr ""
 
 #: filechooser-portal/Main.vala:460
-#, fuzzy
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr "若选择替换，其内容将被覆盖。"
+msgstr "若选择替换，其内容将被覆盖"
 
 #: filechooser-portal/Main.vala:462
 #, c-format
@@ -222,22 +220,20 @@ msgstr "复制至此处"
 msgid "Link Here"
 msgstr "链接到此处"
 
-#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2270
+#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2321
 msgid "Name"
 msgstr "名称"
 
 #: libcore/Enums.vala:136 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
-#, fuzzy
 msgid "Creation Date"
-msgstr "创建"
+msgstr "创建日期"
 
 #: libcore/Enums.vala:139
-#, fuzzy
 msgid "Last modification date"
-msgstr "上次修改："
+msgstr "上次修改日期"
 
-#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2275
+#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2326
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "大小"
@@ -248,19 +244,19 @@ msgstr ""
 
 #: libcore/Enums.vala:168 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "文字"
 
-#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2285
+#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2336
 msgid "Date"
 msgstr "日期"
 
 #: libcore/Enums.vala:187
 msgid "Suffix"
-msgstr ""
+msgstr "后缀"
 
 #: libcore/Enums.vala:190
 msgid "Prefix"
-msgstr ""
+msgstr "前缀"
 
 #: libcore/Enums.vala:200
 msgid "Text to put at the end"
@@ -291,18 +287,31 @@ msgid "ISO 8601 Format - Date and Time"
 msgstr ""
 
 #: libcore/Enums.vala:246
-#, fuzzy
 msgid "Date created"
-msgstr "重新创建"
+msgstr "创建日期"
 
 #: libcore/Enums.vala:248
-#, fuzzy
 msgid "Date Modified"
-msgstr "修改时间"
+msgstr "修改日期"
 
 #: libcore/Enums.vala:250
 msgid "Current Date"
+msgstr "目前日期"
+
+#. TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
+#: libcore/Enums.vala:267
+msgid "ISO"
 msgstr ""
+
+#: libcore/Enums.vala:269
+msgid "Locale"
+msgstr ""
+
+#: libcore/Enums.vala:271
+#, fuzzy
+#| msgid "Info"
+msgid "Informal"
+msgstr "信息"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
@@ -329,10 +338,10 @@ msgid "Empty"
 msgstr "清空"
 
 #: libcore/File.vala:1171
-#, fuzzy, c-format
+#, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
-msgstr[0] "%i 项"
+msgstr[0] "%'d 个项目"
 
 #: libcore/File.vala:1216
 #, c-format
@@ -456,21 +465,21 @@ msgstr "“%s”中已经存在一个同名的文件。"
 msgid "Merge"
 msgstr "合并"
 
-#: libcore/FileUtils.vala:88
+#: libcore/FileUtils.vala:80
 #, c-format
 msgid "Could not determine original location of \"%s\""
 msgstr "无法确定“%s”的原始位置"
 
-#: libcore/FileUtils.vala:89
+#: libcore/FileUtils.vala:83
 msgid "The item cannot be restored from trash"
 msgstr "此项目无法从回收站中恢复"
 
-#: libcore/FileUtils.vala:183
+#: libcore/FileUtils.vala:184
 #, c-format
 msgid "The original folder %s no longer exists"
 msgstr "原始文件夹 %s 已不存在"
 
-#: libcore/FileUtils.vala:184
+#: libcore/FileUtils.vala:185
 #, fuzzy
 #| msgid ""
 #| "The folder will be recreated and selected files that were originally "
@@ -481,11 +490,11 @@ msgid ""
 "be restored."
 msgstr "将会重新创建该文件夹，并恢复其中已选中的文件"
 
-#: libcore/FileUtils.vala:188
+#: libcore/FileUtils.vala:189
 msgid "Ignore"
 msgstr "忽略"
 
-#: libcore/FileUtils.vala:189
+#: libcore/FileUtils.vala:190
 msgid "Recreate"
 msgstr "重新创建"
 
@@ -494,36 +503,36 @@ msgstr "重新创建"
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr "无法重建 %s，将忽略此文件夹中的所有文件"
 
-#: libcore/FileUtils.vala:567
+#: libcore/FileUtils.vala:574
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr "无法重命名为 '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:658
+#: libcore/FileUtils.vala:668
 #, c-format
 msgid "Today at %s"
 msgstr "今天 %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:666
+#: libcore/FileUtils.vala:676
 #, c-format
 msgid "Yesterday at %s"
 msgstr "昨天 %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:674
+#: libcore/FileUtils.vala:684
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A %s"
 
-#: libcore/FileUtils.vala:899
+#: libcore/FileUtils.vala:909
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d 秒"
 
-#: libcore/FileUtils.vala:903 libcore/FileUtils.vala:911
+#: libcore/FileUtils.vala:913 libcore/FileUtils.vala:921
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -531,40 +540,40 @@ msgstr[0] "%'d 分钟"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:910 src/Dialogs/PropertiesWindow.vala:1253
+#: libcore/FileUtils.vala:920 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
 msgstr "%s %s"
 
-#: libcore/FileUtils.vala:910
+#: libcore/FileUtils.vala:920
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d 小时"
 
-#: libcore/FileUtils.vala:914
+#: libcore/FileUtils.vala:924
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "约 %'d 小时"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:922
+#: libcore/FileUtils.vala:932
 msgid "copy"
 msgstr "副本"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:934
 msgid "link"
 msgstr "链接"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:926
+#: libcore/FileUtils.vala:936
 msgid "("
 msgstr "（"
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:928
+#: libcore/FileUtils.vala:938
 msgid ")"
 msgstr "）"
 
@@ -984,44 +993,36 @@ msgid "Empty _Trash"
 msgstr "清空回收站"
 
 #: libcore/UndoManager.vala:22
-#, fuzzy
 msgid "Undo Copy"
-msgstr "复制"
+msgstr "撤销「复制」"
 
 #: libcore/UndoManager.vala:24
-#, fuzzy
 msgid "Undo Duplicate"
-msgstr "重复标签"
+msgstr "撤销「建立副本」"
 
 #: libcore/UndoManager.vala:26
-#, fuzzy
 msgid "Undo Move"
-msgstr "还原关闭的标签"
+msgstr "复原「移动」"
 
 #: libcore/UndoManager.vala:28
-#, fuzzy
 msgid "Undo Rename"
-msgstr "重命名"
+msgstr "撤销「重命名」"
 
 #: libcore/UndoManager.vala:30
-#, fuzzy
 msgid "Undo Create Empty File"
-msgstr "撤销空文件的创建( _U )"
+msgstr "撤销「创建空白文件」"
 
 #: libcore/UndoManager.vala:32
-#, fuzzy
 msgid "Undo Create File from Template"
-msgstr "撤销从模板创建的文件( _U )"
+msgstr "撤销「从模板创建的文件」"
 
 #: libcore/UndoManager.vala:34
-#, fuzzy
 msgid "Undo Create Folder"
-msgstr "撤销创建 %d 个文件夹( _U )"
+msgstr "撤销「创建文件夹」"
 
 #: libcore/UndoManager.vala:36
-#, fuzzy
 msgid "Undo Move to Trash"
-msgstr "移至回收站"
+msgstr "撤销「移至回收站」"
 
 #: libcore/UndoManager.vala:38
 #, fuzzy
@@ -1029,14 +1030,12 @@ msgid "Undo Create Link"
 msgstr "撤销创建到 %d 个文件的链接( _U )"
 
 #: libcore/UndoManager.vala:40
-#, fuzzy
 msgid "Undo Restore from Trash"
-msgstr "从回收站恢复"
+msgstr "撤销「从回收站还原」"
 
 #: libcore/UndoManager.vala:42
-#, fuzzy
 msgid "Undo Set Permissions"
-msgstr "正在设置权限"
+msgstr "撤销「设置权限」"
 
 #: libcore/UndoManager.vala:44
 #, fuzzy
@@ -1044,48 +1043,40 @@ msgid "Undo Set Permissions Recursively"
 msgstr "撤销改变 %d 个项目的权限( _U )"
 
 #: libcore/UndoManager.vala:46
-#, fuzzy
 msgid "Undo Change Owner"
-msgstr "撤销改变 %d 个项目的所有者( _U )"
+msgstr "撤销「更改所有者」"
 
 #: libcore/UndoManager.vala:48
-#, fuzzy
 msgid "Undo Change Group"
-msgstr "撤销改变 %d 个项目的群组( _U )"
+msgstr "撤销「更改群组」"
 
 #: libcore/UndoManager.vala:57
-#, fuzzy
 msgid "Redo Copy"
-msgstr "复制"
+msgstr "重做「复制」"
 
 #: libcore/UndoManager.vala:59
-#, fuzzy
 msgid "Redo Duplicate"
-msgstr "重复标签"
+msgstr "重做「建立副本」"
 
 #: libcore/UndoManager.vala:61
 msgid "Redo Move"
-msgstr ""
+msgstr "重做「移动」"
 
 #: libcore/UndoManager.vala:63
-#, fuzzy
 msgid "Redo Rename"
-msgstr "重命名"
+msgstr "重做「重命名」"
 
 #: libcore/UndoManager.vala:65
-#, fuzzy
 msgid "Redo Create Empty File"
-msgstr "重新创建新文件"
+msgstr "重做「创建空白文件」"
 
 #: libcore/UndoManager.vala:67
-#, fuzzy
 msgid "Redo Create File from Template"
-msgstr "重新从模板创建文件"
+msgstr "重做「从模板创建文件」"
 
 #: libcore/UndoManager.vala:69
-#, fuzzy
 msgid "Redo Create Folder"
-msgstr "创建文件夹失败"
+msgstr "重做「创建文件夹」"
 
 #: libcore/UndoManager.vala:71
 #, fuzzy
@@ -1098,14 +1089,12 @@ msgid "Redo Create Link"
 msgstr "重新创建链接到 %d 个项目( _R )"
 
 #: libcore/UndoManager.vala:75
-#, fuzzy
 msgid "Redo Restore from Trash"
-msgstr "从回收站恢复"
+msgstr "重做「移至回收站」"
 
 #: libcore/UndoManager.vala:77
-#, fuzzy
 msgid "Redo Set Permissions"
-msgstr "正在设置权限"
+msgstr "重做「设置权限」"
 
 #: libcore/UndoManager.vala:79
 #, fuzzy
@@ -1118,9 +1107,8 @@ msgid "Redo Change Owner"
 msgstr "重新改变 %d 个项目的所有者"
 
 #: libcore/UndoManager.vala:83
-#, fuzzy
 msgid "Redo Change Group"
-msgstr "重新改变 %d 个项目的群组"
+msgstr "重做「更改群组」"
 
 #: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
@@ -1240,7 +1228,7 @@ msgstr "无法卸载“%s”"
 msgid "Unable to eject '%s'"
 msgstr "无法弹出“%s”"
 
-#: libcore/FileOperations/MountUtils.vala:104
+#: libcore/FileOperations/MountUtils.vala:119
 #, c-format
 msgid "Unable to mount '%s'"
 msgstr "无法挂载 “%s”"
@@ -1511,8 +1499,8 @@ msgstr "显示程序版本"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "在独立标签中分别打开一个或多个 URI"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1858
-#: src/View/AbstractDirectoryView.vala:1864
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1909
+#: src/View/AbstractDirectoryView.vala:1915
 msgid "New Window"
 msgstr "新建窗口"
 
@@ -1530,7 +1518,7 @@ msgstr "[URI…]"
 
 #: src/Application.vala:89
 msgid "Error: Running Files as root using sudo is not possible."
-msgstr ""
+msgstr "错误：不能用 sudo 以 root 身份运行文件。"
 
 #: src/Application.vala:90
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
@@ -1628,7 +1616,7 @@ msgid "Bulk Rename"
 msgstr "重命名"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
-#: src/View/Sidebar/BookmarkRow.vala:336
+#: src/View/Sidebar/BookmarkRow.vala:338
 msgid "Rename"
 msgstr "重命名"
 
@@ -1662,9 +1650,8 @@ msgid "Original Basename"
 msgstr "原文件"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:168
-#, fuzzy
 msgid "Replacement text"
-msgstr "替换为"
+msgstr "替换文字"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:186
 msgid "Number in order of:"
@@ -1676,30 +1663,27 @@ msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:328
 msgid "Apply"
-msgstr ""
+msgstr "应用"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
-#, fuzzy
 msgid "Ignored"
-msgstr "忽略"
+msgstr "已忽略"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 msgid "Name is not changed"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
-#, fuzzy
 msgid "Cannot rename"
-msgstr "重命名"
+msgstr "无法重命名"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 msgid "Name is invalid or already exists"
 msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:78
-#, fuzzy
 msgid "Will be renamed"
-msgstr "文件名"
+msgstr "会被重命名"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
 #, fuzzy
@@ -1712,7 +1696,7 @@ msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
 msgid "Digits"
-msgstr ""
+msgstr "数字"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
 msgid "Separator"
@@ -1721,14 +1705,14 @@ msgstr ""
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:310
 #, c-format
 msgid "%0*d,%0*d,%0*d…"
-msgstr ""
+msgstr "%0*d、%0*d、%0*d…"
 
-#: src/Dialogs/ChooseAppDialog.vala:43
+#: src/Dialogs/ChooseAppDialog.vala:45
 msgid "Set as default"
 msgstr "设为默认"
 
 #: src/Dialogs/PropertiesWindow.vala:116
-#: src/View/AbstractDirectoryView.vala:1977
+#: src/View/AbstractDirectoryView.vala:2028
 #: src/View/Sidebar/AbstractMountableRow.vala:277
 msgid "Properties"
 msgstr "属性"
@@ -1763,87 +1747,87 @@ msgstr "正在载入…"
 msgid "Could not be determined"
 msgstr "无法确定"
 
-#: src/Dialogs/PropertiesWindow.vala:564
+#: src/Dialogs/PropertiesWindow.vala:568
 msgid "Created:"
 msgstr "创建时间："
 
-#: src/Dialogs/PropertiesWindow.vala:575
+#: src/Dialogs/PropertiesWindow.vala:582
 msgid "Modified:"
 msgstr "修改时间："
 
-#: src/Dialogs/PropertiesWindow.vala:587
+#: src/Dialogs/PropertiesWindow.vala:598
 msgid "Deleted:"
 msgstr "删除时间："
 
-#: src/Dialogs/PropertiesWindow.vala:597
+#: src/Dialogs/PropertiesWindow.vala:608
 msgid "Media type:"
 msgstr "文件类型："
 
-#: src/Dialogs/PropertiesWindow.vala:604
+#: src/Dialogs/PropertiesWindow.vala:615
 msgid "Resolution:"
 msgstr "图像尺寸："
 
-#: src/Dialogs/PropertiesWindow.vala:612
+#: src/Dialogs/PropertiesWindow.vala:623
 #: src/Dialogs/VolumePropertiesWindow.vala:76
 msgid "Location:"
 msgstr "存储目录："
 
-#: src/Dialogs/PropertiesWindow.vala:622
+#: src/Dialogs/PropertiesWindow.vala:633
 msgid "Target:"
 msgstr "目标位置："
 
-#: src/Dialogs/PropertiesWindow.vala:630
+#: src/Dialogs/PropertiesWindow.vala:641
 msgid "Original Location:"
 msgstr "原始位置："
 
-#: src/Dialogs/PropertiesWindow.vala:653
-#: src/View/AbstractDirectoryView.vala:1945
+#: src/Dialogs/PropertiesWindow.vala:664
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Other Application…"
 msgstr "其他应用…"
 
-#: src/Dialogs/PropertiesWindow.vala:673
+#: src/Dialogs/PropertiesWindow.vala:684
 msgid "Open with:"
 msgstr "打开方式："
 
-#: src/Dialogs/PropertiesWindow.vala:940
+#: src/Dialogs/PropertiesWindow.vala:951
 msgid "Unable to determine file ownership and permissions"
 msgstr "无法确定文件所有权和权限"
 
-#: src/Dialogs/PropertiesWindow.vala:947
+#: src/Dialogs/PropertiesWindow.vala:958
 msgid "Owner:"
 msgstr "所有者："
 
-#: src/Dialogs/PropertiesWindow.vala:948
+#: src/Dialogs/PropertiesWindow.vala:959
 msgid "Group:"
 msgstr "群组："
 
-#: src/Dialogs/PropertiesWindow.vala:1244
+#: src/Dialogs/PropertiesWindow.vala:1261
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u 个子文件夹"
 
-#: src/Dialogs/PropertiesWindow.vala:1248
-#: src/Dialogs/PropertiesWindow.vala:1270
+#: src/Dialogs/PropertiesWindow.vala:1265
+#: src/Dialogs/PropertiesWindow.vala:1287
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "%u 个文件"
 
-#: src/Dialogs/PropertiesWindow.vala:1266 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:171
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u 个文件夹"
 
-#: src/Dialogs/PropertiesWindow.vala:1275
+#: src/Dialogs/PropertiesWindow.vala:1292
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
 msgstr[0] "%u 个选中项"
 
 #. TRANSLATORS: total (folders, files)
-#: src/Dialogs/PropertiesWindow.vala:1277
+#: src/Dialogs/PropertiesWindow.vala:1294
 #, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s，%s)"
@@ -1877,208 +1861,210 @@ msgid "Could not open files or URIs with this app"
 msgstr "无法使用此应用打开文件或 URI"
 
 #: src/Utils/Permissions.vala:29
-#, fuzzy
-#| msgid "Owner:"
 msgid "Owner"
-msgstr "所有者："
+msgstr "所有者"
 
 #: src/Utils/Permissions.vala:31
-#, fuzzy
-#| msgid "Group:"
 msgid "Group"
-msgstr "群组："
+msgstr "群组"
 
 #: src/Utils/Permissions.vala:34
-#, fuzzy
-#| msgid "Everyone:"
 msgid "Everyone"
-msgstr "任何人："
+msgstr "任何人"
 
-#: src/View/AbstractDirectoryView.vala:807
-#: src/View/AbstractDirectoryView.vala:1132
+#: src/View/AbstractDirectoryView.vala:838
+#: src/View/AbstractDirectoryView.vala:1164
 msgid "Cannot execute this file"
 msgstr "不能执行此文件"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:817
+#: src/View/AbstractDirectoryView.vala:848
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "在打开 “%s” 前需要将其移出回收站"
 
-#: src/View/AbstractDirectoryView.vala:818
+#: src/View/AbstractDirectoryView.vala:849
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr "无法直接打开回收站中的文件。要打开此文件，请将其移出回收站。"
 
-#: src/View/AbstractDirectoryView.vala:833
+#: src/View/AbstractDirectoryView.vala:864
 msgid "Cannot open this file"
 msgstr "不能打开此文件"
 
-#: src/View/AbstractDirectoryView.vala:846
+#: src/View/AbstractDirectoryView.vala:877
 msgid "Cannot identify file type to open"
 msgstr "不能识别文件类型并打开"
 
-#: src/View/AbstractDirectoryView.vala:1567
+#: src/View/AbstractDirectoryView.vala:1617
 msgid "Cannot drop this file"
 msgstr "无法放置此文件"
 
-#: src/View/AbstractDirectoryView.vala:1568
+#: src/View/AbstractDirectoryView.vala:1618
 msgid "Invalid file name provided"
 msgstr "提供的文件名无效"
 
-#: src/View/AbstractDirectoryView.vala:1841
-#: src/View/AbstractDirectoryView.vala:1847 src/View/Window.vala:241
+#: src/View/AbstractDirectoryView.vala:1892
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:241
 msgid "New Tab"
 msgstr "新标签"
 
-#: src/View/AbstractDirectoryView.vala:1881
+#: src/View/AbstractDirectoryView.vala:1932
 msgid "Run"
 msgstr "运行"
 
-#: src/View/AbstractDirectoryView.vala:1888
+#: src/View/AbstractDirectoryView.vala:1939
 #, c-format
 msgid "Open in %s"
 msgstr "在 %s 中打开"
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:2008
 msgid "Open in"
 msgstr "打开方式"
 
-#: src/View/AbstractDirectoryView.vala:1959
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/AbstractDirectoryView.vala:2010
+#: src/View/Widgets/BreadcrumbsEntry.vala:446
 msgid "Open with"
 msgstr "打开方式"
 
-#: src/View/AbstractDirectoryView.vala:1970
+#: src/View/AbstractDirectoryView.vala:2021
 msgid "Add to Bookmarks"
 msgstr "加入书签"
 
-#: src/View/AbstractDirectoryView.vala:1990
+#: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
 msgstr "全选"
 
-#: src/View/AbstractDirectoryView.vala:1999
+#: src/View/AbstractDirectoryView.vala:2050
 msgid "Invert Selection"
 msgstr "反向选择"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2059
 msgid "Deselect All"
 msgstr "取消全选"
 
-#: src/View/AbstractDirectoryView.vala:2016
+#: src/View/AbstractDirectoryView.vala:2067
 msgid "Cut"
 msgstr "剪切"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2024
+#: src/View/AbstractDirectoryView.vala:2075
 msgid "Copy"
 msgstr "复制"
 
-#: src/View/AbstractDirectoryView.vala:2031
+#: src/View/AbstractDirectoryView.vala:2082
 msgid "Move to Trash"
 msgstr "移至回收站"
 
-#: src/View/AbstractDirectoryView.vala:2036
+#: src/View/AbstractDirectoryView.vala:2087
 msgid "Delete Permanently"
 msgstr "永久删除"
 
-#: src/View/AbstractDirectoryView.vala:2043
+#: src/View/AbstractDirectoryView.vala:2094
 msgid "Restore from Trash"
 msgstr "从回收站恢复"
 
-#: src/View/AbstractDirectoryView.vala:2066
+#: src/View/AbstractDirectoryView.vala:2117
 msgid "Open Parent Folder"
 msgstr "打开上级文件夹"
 
-#: src/View/AbstractDirectoryView.vala:2069
+#: src/View/AbstractDirectoryView.vala:2120
 msgid "Remove from History"
 msgstr "从历史中删除"
 
-#: src/View/AbstractDirectoryView.vala:2095
+#: src/View/AbstractDirectoryView.vala:2146
 msgid "Rename…"
 msgstr "重命名…"
 
-#: src/View/AbstractDirectoryView.vala:2102
+#: src/View/AbstractDirectoryView.vala:2153
 msgid "Copy as Link"
 msgstr "复制为链接"
 
-#: src/View/AbstractDirectoryView.vala:2125
-#: src/View/AbstractDirectoryView.vala:2205
+#: src/View/AbstractDirectoryView.vala:2176
+#: src/View/AbstractDirectoryView.vala:2256
 msgid "Paste Link into Folder"
 msgstr "粘贴链接到文件夹"
 
-#: src/View/AbstractDirectoryView.vala:2130
-#: src/View/AbstractDirectoryView.vala:2182
+#: src/View/AbstractDirectoryView.vala:2181
+#: src/View/AbstractDirectoryView.vala:2233
 msgid "Paste into Folder"
 msgstr "粘贴到文件夹中"
 
-#: src/View/AbstractDirectoryView.vala:2140
-#: src/View/AbstractDirectoryView.vala:2210
+#: src/View/AbstractDirectoryView.vala:2191
+#: src/View/AbstractDirectoryView.vala:2261
 msgid "Paste"
 msgstr "粘贴"
 
-#: src/View/AbstractDirectoryView.vala:2248
-#, fuzzy
-#| msgid "Set as default"
+#: src/View/AbstractDirectoryView.vala:2299
 msgid "Set as Wallpaper"
-msgstr "设为默认"
+msgstr "设为墙纸"
 
-#: src/View/AbstractDirectoryView.vala:2280 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2331 src/View/ListView.vala:28
 msgid "Type"
 msgstr "类型"
 
-#: src/View/AbstractDirectoryView.vala:2290
+#: src/View/AbstractDirectoryView.vala:2341
 msgid "Reversed Order"
 msgstr "倒序"
 
-#: src/View/AbstractDirectoryView.vala:2293
+#: src/View/AbstractDirectoryView.vala:2344
 msgid "Folders Before Files"
 msgstr "文件夹在前"
 
-#: src/View/AbstractDirectoryView.vala:2305
+#: src/View/AbstractDirectoryView.vala:2356
 msgid "Sort by"
 msgstr "排序方式"
 
-#: src/View/AbstractDirectoryView.vala:2313
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Folder"
 msgstr "文件夹"
 
-#: src/View/AbstractDirectoryView.vala:2319
+#: src/View/AbstractDirectoryView.vala:2372
 msgid "Empty File"
 msgstr "空白文件"
 
-#: src/View/AbstractDirectoryView.vala:2332
+#: src/View/AbstractDirectoryView.vala:2382
+#, fuzzy
+#| msgid "Templates"
+msgid "Template"
+msgstr "模板"
+
+#: src/View/AbstractDirectoryView.vala:2390
+msgid "…too many templates"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2395
 msgid "New"
 msgstr "新建"
 
-#: src/View/AbstractDirectoryView.vala:2586
+#: src/View/AbstractDirectoryView.vala:2669
 #, c-format
 msgid "Untitled %s"
 msgstr "未命名 %s"
 
-#: src/View/AbstractDirectoryView.vala:2877
-#: src/View/AbstractDirectoryView.vala:3080
+#: src/View/AbstractDirectoryView.vala:2960
+#: src/View/AbstractDirectoryView.vala:3163
 msgid "Cannot remove files from here"
 msgstr "无法从此处删除文件"
 
-#: src/View/AbstractDirectoryView.vala:2878
-#: src/View/AbstractDirectoryView.vala:3053
-#: src/View/AbstractDirectoryView.vala:3064
-#: src/View/AbstractDirectoryView.vala:3081
+#: src/View/AbstractDirectoryView.vala:2961
+#: src/View/AbstractDirectoryView.vala:3136
+#: src/View/AbstractDirectoryView.vala:3147
+#: src/View/AbstractDirectoryView.vala:3164
 msgid "You do not have permission to change this location"
 msgstr "您没有更改此位置的权限"
 
-#: src/View/AbstractDirectoryView.vala:3021
+#: src/View/AbstractDirectoryView.vala:3104
 msgid "Cannot copy files that are in the trash"
 msgstr "无法复制回收站中的文件"
 
-#: src/View/AbstractDirectoryView.vala:3022
+#: src/View/AbstractDirectoryView.vala:3105
 msgid "Cutting the selection instead"
 msgstr "更改选中项为剪切"
 
-#: src/View/AbstractDirectoryView.vala:3052
-#: src/View/AbstractDirectoryView.vala:3063
+#: src/View/AbstractDirectoryView.vala:3135
+#: src/View/AbstractDirectoryView.vala:3146
 msgid "Cannot paste files here"
 msgstr "无法在此处粘贴文件"
 
@@ -2202,15 +2188,13 @@ msgstr "选中的文件已不存在。"
 
 #: src/View/Window.vala:216
 msgid "Menu"
-msgstr ""
+msgstr "菜单"
 
 #: src/View/Window.vala:246
-#, fuzzy
-#| msgid "Close Tab"
 msgid "Closed Tabs"
-msgstr "关闭标签"
+msgstr "已关闭的标签页"
 
-#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:409
+#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "在新窗口中打开"
 
@@ -2221,13 +2205,11 @@ msgstr "重复标签"
 #. TRANSLATORS: For RTL this should be "to the left"
 #: src/View/Window.vala:479
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "关闭右边的标签页"
 
 #: src/View/Window.vala:480
-#, fuzzy
-#| msgid "Close Tab"
 msgid "Close Other Tabs"
-msgstr "关闭标签"
+msgstr "关闭其他标签页"
 
 #: src/View/Window.vala:481
 msgid "Close Tab"
@@ -2291,23 +2273,23 @@ msgstr "查看最近使用的文件列表"
 msgid "Open the Trash"
 msgstr "打开回收站"
 
-#: src/View/Sidebar/BookmarkRow.vala:307
+#: src/View/Sidebar/BookmarkRow.vala:309
 msgid "Open in New _Tab"
 msgstr "在新标签中打开"
 
-#: src/View/Sidebar/BookmarkRow.vala:308
+#: src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open in New _Window"
 msgstr "在新窗口中打开"
 
-#: src/View/Sidebar/BookmarkRow.vala:332
+#: src/View/Sidebar/BookmarkRow.vala:334
 msgid "Remove"
 msgstr "删除"
 
-#: src/View/Sidebar/BookmarkRow.vala:350
+#: src/View/Sidebar/BookmarkRow.vala:352
 msgid "Permanently Delete All Trash"
 msgstr "清空回收站"
 
-#: src/View/Sidebar/BookmarkRow.vala:350
+#: src/View/Sidebar/BookmarkRow.vala:352
 msgid "Permanently Delete Trash"
 msgstr "清空回收站"
 
@@ -2368,7 +2350,6 @@ msgid "Connect Server…"
 msgstr "服务器…"
 
 #: src/View/Sidebar/VolumeRow.vala:181
-#, fuzzy
 msgid "Mount"
 msgstr "挂载"
 
@@ -2382,75 +2363,71 @@ msgstr "绑定挂载"
 
 #: src/View/Widgets/AppMenu.vala:25
 msgid "Zoom Out"
-msgstr ""
+msgstr "缩小"
 
 #: src/View/Widgets/AppMenu.vala:34
 msgid "Zoom 1:1"
-msgstr ""
+msgstr "缩放 1:1"
 
 #: src/View/Widgets/AppMenu.vala:43
 msgid "Zoom In"
-msgstr ""
+msgstr "放大"
 
 #: src/View/Widgets/AppMenu.vala:81
 msgid "Double-click to Navigate"
-msgstr ""
+msgstr "双击浏览"
 
 #: src/View/Widgets/AppMenu.vala:82
 msgid "Double-click on a folder opens it, single-click selects it"
-msgstr ""
+msgstr "双击文件夹以打开它，单击则是选择"
 
 #: src/View/Widgets/AppMenu.vala:86
-#, fuzzy
 msgid "Sort Folders before Files"
-msgstr "文件夹在前"
+msgstr "将文件夹排序于文件之前"
 
 #: src/View/Widgets/AppMenu.vala:90
-#, fuzzy
-#| msgid "Restore '%s' from trash"
 msgid "Restore Tabs from Last Time"
-msgstr "从回收站恢复“%s”"
+msgstr "还原上次打开的标签页"
 
 #: src/View/Widgets/AppMenu.vala:94
-#, fuzzy
 msgid "Show in View"
-msgstr "显示隐藏文件"
+msgstr "在面板中显示"
 
 #: src/View/Widgets/AppMenu.vala:101
-#, fuzzy
 msgid "Hidden Files"
-msgstr "显示隐藏文件"
+msgstr "隐藏文件"
 
 #: src/View/Widgets/AppMenu.vala:105
-#, fuzzy
 msgid "Local Thumbnails"
-msgstr "隐藏缩略图"
+msgstr "本地缩略图"
 
 #: src/View/Widgets/AppMenu.vala:110
-#, fuzzy
 msgid "Remote Thumbnails"
-msgstr "显示远程缩略图"
+msgstr "远程缩略图"
 
-#: src/View/Widgets/AppMenu.vala:152
-#, fuzzy
+#. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
+#: src/View/Widgets/AppMenu.vala:116
+msgid "Date & Time Format"
+msgstr ""
+
+#: src/View/Widgets/AppMenu.vala:199
 msgid "No operation to undo"
-msgstr "操作超时。"
+msgstr "没有可复原的操作"
 
-#: src/View/Widgets/AppMenu.vala:159
-#, fuzzy
+#: src/View/Widgets/AppMenu.vala:206
 msgid "No operation to redo"
-msgstr "操作超时。"
+msgstr "没有可重做的操作"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:141
 #: src/View/Widgets/LocationBar.vala:216
 msgid "Search or Type Path"
 msgstr "搜索或输入路径"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:402
+#: src/View/Widgets/BreadcrumbsEntry.vala:403
 msgid "Open in New Tab"
 msgstr "在新标签中打开"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:453
 msgid "Open in Other Application…"
 msgstr "用其他应用打开…"
 
@@ -2458,7 +2435,7 @@ msgstr "用其他应用打开…"
 msgid ""
 "Caution. Administrative rights will be granted after successful "
 "authentication"
-msgstr ""
+msgstr "请注意。成功认证后将会赋予管理者权限"
 
 #: src/View/Widgets/LocationBar.vala:212
 msgid "Reload this folder"
@@ -2896,9 +2873,6 @@ msgstr "最近"
 
 #~ msgid "Invalid"
 #~ msgstr "无效"
-
-#~ msgid "Templates"
-#~ msgstr "模板"
 
 #~ msgid "Unable to unmount %V"
 #~ msgstr "无法卸载 %V"

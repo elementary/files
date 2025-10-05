@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 17:19+0000\n"
-"PO-Revision-Date: 2024-10-23 15:05+0000\n"
+"POT-Creation-Date: 2025-10-04 15:38+0000\n"
+"PO-Revision-Date: 2025-08-19 08:55+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/extra/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementaryos.org/projects/files/extra/"
+"ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
@@ -70,75 +70,91 @@ msgstr "Vegeu més metadades d'un cop d'ull a la vista de llista"
 msgid "Browse complex trees faster with Column view"
 msgstr "Exploreu arbres complexos més ràpidament amb la vista de columna"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:83
-#: data/files.metainfo.xml.in.in:105 data/files.metainfo.xml.in.in:123
-#: data/files.metainfo.xml.in.in:146 data/files.metainfo.xml.in.in:158
-#: data/files.metainfo.xml.in.in:178
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:82
+#: data/files.metainfo.xml.in.in:93 data/files.metainfo.xml.in.in:105
+#: data/files.metainfo.xml.in.in:120 data/files.metainfo.xml.in.in:136
+#: data/files.metainfo.xml.in.in:158 data/files.metainfo.xml.in.in:176
+#: data/files.metainfo.xml.in.in:199 data/files.metainfo.xml.in.in:211
+#: data/files.metainfo.xml.in.in:231
 msgid "Minor updates:"
 msgstr "Actualitzacions menors:"
 
-#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:87
-#: data/files.metainfo.xml.in.in:109 data/files.metainfo.xml.in.in:131
-#: data/files.metainfo.xml.in.in:148 data/files.metainfo.xml.in.in:160
-#: data/files.metainfo.xml.in.in:180
+#: data/files.metainfo.xml.in.in:69
+msgid ""
+"The Properties Window now shows the exact date and time the file was last "
+"modified"
+msgstr ""
+"La finestra de propietats ara mostra la data i l'hora exactes en què es va "
+"modificar l'arxiu per última vegada."
+
+#: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:84
+#: data/files.metainfo.xml.in.in:95 data/files.metainfo.xml.in.in:108
+#: data/files.metainfo.xml.in.in:122 data/files.metainfo.xml.in.in:140
+#: data/files.metainfo.xml.in.in:162 data/files.metainfo.xml.in.in:184
+#: data/files.metainfo.xml.in.in:201 data/files.metainfo.xml.in.in:213
+#: data/files.metainfo.xml.in.in:233
 msgid "Updated translations"
 msgstr "Traduccions actualitzades"
 
-#: data/files.metainfo.xml.in.in:85
+#: data/files.metainfo.xml.in.in:107
+msgid "Further preparation for porting to Gtk4"
+msgstr "Més preparació per a la migració a Gtk4"
+
+#: data/files.metainfo.xml.in.in:138
 msgid "Redesign file permissions view"
 msgstr "Redisseny de la vista de permisos dels fitxers"
 
-#: data/files.metainfo.xml.in.in:86
+#: data/files.metainfo.xml.in.in:139
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr "Centreu la barra lateral prement Ctrl + Esquerra"
 
-#: data/files.metainfo.xml.in.in:107
+#: data/files.metainfo.xml.in.in:160
 msgid "Restoring tabs from last time is now optional"
 msgstr "La restauració de les pestanyes de l'última vegada és ara opcional."
 
-#: data/files.metainfo.xml.in.in:108
+#: data/files.metainfo.xml.in.in:161
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr ""
 "Arrossegar i seleccionar ja no es pot fer amb el botó del punter secundari."
 
-#: data/files.metainfo.xml.in.in:125
+#: data/files.metainfo.xml.in.in:178
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 "Suspensió del suport per arrossegar l'adreça d'interès fora de la barra "
 "lateral"
 
-#: data/files.metainfo.xml.in.in:126
+#: data/files.metainfo.xml.in.in:179
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr ""
 "Correcció del desplaçament inesperat després de canviar el nom d'una carpeta"
 
-#: data/files.metainfo.xml.in.in:127
+#: data/files.metainfo.xml.in.in:180
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 "Solució d'un error en canviar a la visualització com a quadrícula en rares "
 "circumstàncies"
 
-#: data/files.metainfo.xml.in.in:128
+#: data/files.metainfo.xml.in.in:181
 msgid "Ensure the selection persists after refreshing the view"
 msgstr "S'assegura que la selecció persisteixi després d'actualitzar la vista."
 
-#: data/files.metainfo.xml.in.in:129
+#: data/files.metainfo.xml.in.in:182
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "Correcció dels fitxers que no s'obren si s'intenta restaurar una ubicació "
 "desconnectada"
 
-#: data/files.metainfo.xml.in.in:130
+#: data/files.metainfo.xml.in.in:183
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 "Correcció de la vista que es continua mostrant quan es desmunta una ubicació"
 
-#: data/files.metainfo.xml.in.in:174
+#: data/files.metainfo.xml.in.in:227
 msgid "Improvements:"
 msgstr "Millores:"
 
-#: data/files.metainfo.xml.in.in:176
+#: data/files.metainfo.xml.in.in:229
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
@@ -153,6 +169,12 @@ msgstr "Executa el Fitxers del Pantheon com a administrador"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "Cal autenticació per executar el Fitxers com a administrador."
+
+#~ msgid "Improve safe ejection of drives"
+#~ msgstr "Millora de l'expulsió segura de les unitats"
+
+#~ msgid "Fix regression in drag and drop"
+#~ msgstr "Correcció de la regressió en arrossegar i deixar anar"
 
 #~ msgid "Design updates for Bulk Rename"
 #~ msgstr "Actualitzacions de disseny per al canvi de nom massiu"

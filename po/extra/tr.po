@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 17:19+0000\n"
+"POT-Creation-Date: 2025-10-04 15:38+0000\n"
 "PO-Revision-Date: 2022-11-08 00:58+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/extra/tr/"
@@ -69,66 +69,80 @@ msgstr ""
 msgid "Browse complex trees faster with Column view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:83
-#: data/files.metainfo.xml.in.in:105 data/files.metainfo.xml.in.in:123
-#: data/files.metainfo.xml.in.in:146 data/files.metainfo.xml.in.in:158
-#: data/files.metainfo.xml.in.in:178
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:82
+#: data/files.metainfo.xml.in.in:93 data/files.metainfo.xml.in.in:105
+#: data/files.metainfo.xml.in.in:120 data/files.metainfo.xml.in.in:136
+#: data/files.metainfo.xml.in.in:158 data/files.metainfo.xml.in.in:176
+#: data/files.metainfo.xml.in.in:199 data/files.metainfo.xml.in.in:211
+#: data/files.metainfo.xml.in.in:231
 msgid "Minor updates:"
 msgstr "Küçük güncellemeler:"
 
-#: data/files.metainfo.xml.in.in:69 data/files.metainfo.xml.in.in:87
-#: data/files.metainfo.xml.in.in:109 data/files.metainfo.xml.in.in:131
-#: data/files.metainfo.xml.in.in:148 data/files.metainfo.xml.in.in:160
-#: data/files.metainfo.xml.in.in:180
+#: data/files.metainfo.xml.in.in:69
+msgid ""
+"The Properties Window now shows the exact date and time the file was last "
+"modified"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:84
+#: data/files.metainfo.xml.in.in:95 data/files.metainfo.xml.in.in:108
+#: data/files.metainfo.xml.in.in:122 data/files.metainfo.xml.in.in:140
+#: data/files.metainfo.xml.in.in:162 data/files.metainfo.xml.in.in:184
+#: data/files.metainfo.xml.in.in:201 data/files.metainfo.xml.in.in:213
+#: data/files.metainfo.xml.in.in:233
 msgid "Updated translations"
 msgstr "Çeviriler güncellendi"
 
-#: data/files.metainfo.xml.in.in:85
+#: data/files.metainfo.xml.in.in:107
+msgid "Further preparation for porting to Gtk4"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:138
 msgid "Redesign file permissions view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:86
+#: data/files.metainfo.xml.in.in:139
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:107
+#: data/files.metainfo.xml.in.in:160
 msgid "Restoring tabs from last time is now optional"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:108
+#: data/files.metainfo.xml.in.in:161
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:125
+#: data/files.metainfo.xml.in.in:178
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:126
+#: data/files.metainfo.xml.in.in:179
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:127
+#: data/files.metainfo.xml.in.in:180
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:128
+#: data/files.metainfo.xml.in.in:181
 msgid "Ensure the selection persists after refreshing the view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:129
+#: data/files.metainfo.xml.in.in:182
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:130
+#: data/files.metainfo.xml.in.in:183
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:174
+#: data/files.metainfo.xml.in.in:227
 msgid "Improvements:"
 msgstr "İyileştirmeler:"
 
-#: data/files.metainfo.xml.in.in:176
+#: data/files.metainfo.xml.in.in:229
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"

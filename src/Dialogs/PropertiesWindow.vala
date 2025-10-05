@@ -557,9 +557,13 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         int n = 4;
 
         if (only_one) {
+            // Use the most detailed format for showing date-times
             /* Note most Linux filesystem do not store file creation time */
-            var time_created = FileUtils.get_formatted_time_attribute_from_info (file.info,
-                                                                                 FileAttribute.TIME_CREATED);
+            var time_created = FileUtils.get_formatted_time_attribute_from_info (
+                file.info,
+                FileAttribute.TIME_CREATED,
+                DateFormatMode.ISO
+            );
             if (time_created != "") {
                 var key_label = make_key_label (_("Created:"));
                 var value_label = make_value_label (time_created);
@@ -568,8 +572,11 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
                 n++;
             }
 
-            var time_modified = FileUtils.get_formatted_time_attribute_from_info (file.info,
-                                                                                  FileAttribute.TIME_MODIFIED);
+            var time_modified = FileUtils.get_formatted_time_attribute_from_info (
+                file.info,
+                FileAttribute.TIME_MODIFIED,
+                DateFormatMode.ISO
+            );
 
             if (time_modified != "") {
                 var key_label = make_key_label (_("Modified:"));
@@ -581,8 +588,12 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         }
 
         if (only_one && file.is_trashed ()) {
-            var deletion_date = FileUtils.get_formatted_time_attribute_from_info (file.info,
-                                                                                  FileAttribute.TRASH_DELETION_DATE);
+            var deletion_date = FileUtils.get_formatted_time_attribute_from_info (
+                file.info,
+                FileAttribute.TRASH_DELETION_DATE,
+                DateFormatMode.ISO
+            );
+
             if (deletion_date != "") {
                 var key_label = make_key_label (_("Deleted:"));
                 var value_label = make_value_label (deletion_date);
@@ -1192,15 +1203,21 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
                         AppsColumn.APP_INFO, out app);
 
         if (app == null) {
-            var app_chosen = MimeActions.choose_app_for_glib_file (goffile.location, this);
-            if (app_chosen != null) {
-                store_apps.prepend (out iter);
-                store_apps.set (iter,
-                                AppsColumn.APP_INFO, app_chosen,
-                                AppsColumn.LABEL, app_chosen.get_name (),
-                                AppsColumn.ICON, ensure_icon (app_chosen));
-                combo.set_active (0);
-            }
+            MimeActions.choose_app_for_glib_file.begin (
+                goffile.location,
+                this,
+                (obj, res) => {
+                    var app_chosen = MimeActions.choose_app_for_glib_file.end (res);
+                    if (app_chosen != null) {
+                        store_apps.prepend (out iter);
+                        store_apps.set (iter,
+                                        AppsColumn.APP_INFO, app_chosen,
+                                        AppsColumn.LABEL, app_chosen.get_name (),
+                                        AppsColumn.ICON, ensure_icon (app_chosen));
+                        combo.set_active (0);
+                    }
+                }
+            );
         } else {
             try {
                 foreach (var mime in mimes) {

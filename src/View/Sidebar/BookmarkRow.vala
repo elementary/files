@@ -445,7 +445,8 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                         warning ("sel data not uri list");
                         drop_text = null;
                     } else {
-                        drop_file_list = Files.FileUtils.files_from_uris (drop_text);
+                        // we require that dropped uris have been escaped by the source
+                        drop_file_list = Files.FileUtils.files_from_escaped_uris (drop_text);
                     }
 
                     break;
