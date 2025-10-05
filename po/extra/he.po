@@ -2,15 +2,16 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-04 15:38+0000\n"
-"PO-Revision-Date: 2024-10-27 06:56+0000\n"
+"PO-Revision-Date: 2025-10-05 16:54+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://l10n.elementary.io/projects/files/extra/he/>\n"
+"Language-Team: Hebrew <https://l10n.elementaryos.org/projects/files/extra/he/"
+">\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
 msgid "Files"
@@ -76,6 +77,7 @@ msgid ""
 "The Properties Window now shows the exact date and time the file was last "
 "modified"
 msgstr ""
+"חלון המאפיינים מציג את התאריך והשעה המדויקים שבהם הקובץ נערך בפעם האחרונה"
 
 #: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:84
 #: data/files.metainfo.xml.in.in:95 data/files.metainfo.xml.in.in:108
@@ -88,7 +90,7 @@ msgstr "התרגומים עודכנו"
 
 #: data/files.metainfo.xml.in.in:107
 msgid "Further preparation for porting to Gtk4"
-msgstr ""
+msgstr "הכנות נוספות להסבה ל־Gtk4"
 
 #: data/files.metainfo.xml.in.in:138
 msgid "Redesign file permissions view"
