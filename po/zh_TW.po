@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-22 21:34+0000\n"
+"POT-Creation-Date: 2025-10-04 15:38+0000\n"
 "PO-Revision-Date: 2025-06-03 03:55+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
@@ -2005,45 +2005,55 @@ msgstr "資料夾放在檔案前"
 msgid "Sort by"
 msgstr "排序方式"
 
-#: src/View/AbstractDirectoryView.vala:2364
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Folder"
 msgstr "資料夾"
 
-#: src/View/AbstractDirectoryView.vala:2370
+#: src/View/AbstractDirectoryView.vala:2372
 msgid "Empty File"
 msgstr "空白檔案"
 
-#: src/View/AbstractDirectoryView.vala:2383
+#: src/View/AbstractDirectoryView.vala:2382
+#, fuzzy
+#| msgid "Templates"
+msgid "Template"
+msgstr "模本"
+
+#: src/View/AbstractDirectoryView.vala:2390
+msgid "…too many templates"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2395
 msgid "New"
 msgstr "新增"
 
-#: src/View/AbstractDirectoryView.vala:2637
+#: src/View/AbstractDirectoryView.vala:2669
 #, c-format
 msgid "Untitled %s"
 msgstr "未命名 %s"
 
-#: src/View/AbstractDirectoryView.vala:2928
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:2960
+#: src/View/AbstractDirectoryView.vala:3163
 msgid "Cannot remove files from here"
 msgstr "無法從此處移除檔案"
 
-#: src/View/AbstractDirectoryView.vala:2929
-#: src/View/AbstractDirectoryView.vala:3104
-#: src/View/AbstractDirectoryView.vala:3115
-#: src/View/AbstractDirectoryView.vala:3132
+#: src/View/AbstractDirectoryView.vala:2961
+#: src/View/AbstractDirectoryView.vala:3136
+#: src/View/AbstractDirectoryView.vala:3147
+#: src/View/AbstractDirectoryView.vala:3164
 msgid "You do not have permission to change this location"
 msgstr "您沒有權限更改此位置"
 
-#: src/View/AbstractDirectoryView.vala:3072
+#: src/View/AbstractDirectoryView.vala:3104
 msgid "Cannot copy files that are in the trash"
 msgstr "無法複製垃圾桶中的檔案"
 
-#: src/View/AbstractDirectoryView.vala:3073
+#: src/View/AbstractDirectoryView.vala:3105
 msgid "Cutting the selection instead"
 msgstr "改剪下選取項目"
 
-#: src/View/AbstractDirectoryView.vala:3103
-#: src/View/AbstractDirectoryView.vala:3114
+#: src/View/AbstractDirectoryView.vala:3135
+#: src/View/AbstractDirectoryView.vala:3146
 msgid "Cannot paste files here"
 msgstr "無法在此處貼上檔案"
 
@@ -2842,9 +2852,6 @@ msgstr "最近使用"
 
 #~ msgid "Invalid"
 #~ msgstr "無效"
-
-#~ msgid "Templates"
-#~ msgstr "模本"
 
 #~ msgid "Unable to unmount %V"
 #~ msgstr "無法卸載 %V"

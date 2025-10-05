@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-22 21:34+0000\n"
+"POT-Creation-Date: 2025-10-04 15:38+0000\n"
 "PO-Revision-Date: 2024-09-02 20:05+0000\n"
 "Last-Translator: Aefgh Threenine <aefgh39622@gmail.com>\n"
 "Language-Team: Thai <https://l10n.elementary.io/projects/files/files/th/>\n"
@@ -2061,45 +2061,53 @@ msgstr "โฟลเดอร์อยู่ก่อนไฟล์"
 msgid "Sort by"
 msgstr "เรียงลำดับโดย"
 
-#: src/View/AbstractDirectoryView.vala:2364
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Folder"
 msgstr "โฟลเดอร์"
 
-#: src/View/AbstractDirectoryView.vala:2370
+#: src/View/AbstractDirectoryView.vala:2372
 msgid "Empty File"
 msgstr "ไฟล์เปล่า"
 
-#: src/View/AbstractDirectoryView.vala:2383
+#: src/View/AbstractDirectoryView.vala:2382
+msgid "Template"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2390
+msgid "…too many templates"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2395
 msgid "New"
 msgstr "สร้างใหม่"
 
-#: src/View/AbstractDirectoryView.vala:2637
+#: src/View/AbstractDirectoryView.vala:2669
 #, c-format
 msgid "Untitled %s"
 msgstr "%s ไม่มีชื่อ"
 
-#: src/View/AbstractDirectoryView.vala:2928
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:2960
+#: src/View/AbstractDirectoryView.vala:3163
 msgid "Cannot remove files from here"
 msgstr "ไม่สามารถเอาไฟล์ออกจากที่นี่ได้"
 
-#: src/View/AbstractDirectoryView.vala:2929
-#: src/View/AbstractDirectoryView.vala:3104
-#: src/View/AbstractDirectoryView.vala:3115
-#: src/View/AbstractDirectoryView.vala:3132
+#: src/View/AbstractDirectoryView.vala:2961
+#: src/View/AbstractDirectoryView.vala:3136
+#: src/View/AbstractDirectoryView.vala:3147
+#: src/View/AbstractDirectoryView.vala:3164
 msgid "You do not have permission to change this location"
 msgstr "คุณไม่มีสิทธิ์ในการเปลี่ยนแปลงตำแหน่งนี้"
 
-#: src/View/AbstractDirectoryView.vala:3072
+#: src/View/AbstractDirectoryView.vala:3104
 msgid "Cannot copy files that are in the trash"
 msgstr "ไม่สามารถคัดลอกไฟล์ที่อยู่ในถังขยะได้"
 
-#: src/View/AbstractDirectoryView.vala:3073
+#: src/View/AbstractDirectoryView.vala:3105
 msgid "Cutting the selection instead"
 msgstr "กำลังตัดรายการที่เลือกแทน"
 
-#: src/View/AbstractDirectoryView.vala:3103
-#: src/View/AbstractDirectoryView.vala:3114
+#: src/View/AbstractDirectoryView.vala:3135
+#: src/View/AbstractDirectoryView.vala:3146
 msgid "Cannot paste files here"
 msgstr "ไม่สามารถวางไฟล์ที่นี่ได้"
 

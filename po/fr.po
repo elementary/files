@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-22 21:34+0000\n"
+"POT-Creation-Date: 2025-10-04 15:38+0000\n"
 "PO-Revision-Date: 2025-09-23 08:44+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementaryos.org/projects/files/files/fr/"
@@ -2093,45 +2093,55 @@ msgstr "Dossiers avant les fichiers"
 msgid "Sort by"
 msgstr "Trier par"
 
-#: src/View/AbstractDirectoryView.vala:2364
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Folder"
 msgstr "Dossier"
 
-#: src/View/AbstractDirectoryView.vala:2370
+#: src/View/AbstractDirectoryView.vala:2372
 msgid "Empty File"
 msgstr "Fichier vide"
 
-#: src/View/AbstractDirectoryView.vala:2383
+#: src/View/AbstractDirectoryView.vala:2382
+#, fuzzy
+#| msgid "Templates"
+msgid "Template"
+msgstr "Modèles"
+
+#: src/View/AbstractDirectoryView.vala:2390
+msgid "…too many templates"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2395
 msgid "New"
 msgstr "Nouveau"
 
-#: src/View/AbstractDirectoryView.vala:2637
+#: src/View/AbstractDirectoryView.vala:2669
 #, c-format
 msgid "Untitled %s"
 msgstr "Sans titre %s"
 
-#: src/View/AbstractDirectoryView.vala:2928
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:2960
+#: src/View/AbstractDirectoryView.vala:3163
 msgid "Cannot remove files from here"
 msgstr "Impossible de supprimer les fichiers d'ici"
 
-#: src/View/AbstractDirectoryView.vala:2929
-#: src/View/AbstractDirectoryView.vala:3104
-#: src/View/AbstractDirectoryView.vala:3115
-#: src/View/AbstractDirectoryView.vala:3132
+#: src/View/AbstractDirectoryView.vala:2961
+#: src/View/AbstractDirectoryView.vala:3136
+#: src/View/AbstractDirectoryView.vala:3147
+#: src/View/AbstractDirectoryView.vala:3164
 msgid "You do not have permission to change this location"
 msgstr "Vous n'avez pas l'autorisation de modifier ce répertoire"
 
-#: src/View/AbstractDirectoryView.vala:3072
+#: src/View/AbstractDirectoryView.vala:3104
 msgid "Cannot copy files that are in the trash"
 msgstr "Impossible de copier des fichiers qui sont dans la corbeille"
 
-#: src/View/AbstractDirectoryView.vala:3073
+#: src/View/AbstractDirectoryView.vala:3105
 msgid "Cutting the selection instead"
 msgstr "Couper la sélection à la place"
 
-#: src/View/AbstractDirectoryView.vala:3103
-#: src/View/AbstractDirectoryView.vala:3114
+#: src/View/AbstractDirectoryView.vala:3135
+#: src/View/AbstractDirectoryView.vala:3146
 msgid "Cannot paste files here"
 msgstr "Impossible de coller des fichiers ici"
 
@@ -2967,9 +2977,6 @@ msgstr "Utilisé récemment"
 
 #~ msgid "Invalid"
 #~ msgstr "Invalide"
-
-#~ msgid "Templates"
-#~ msgstr "Modèles"
 
 #~ msgid "Unable to unmount %V"
 #~ msgstr "Impossible de démonter %V"

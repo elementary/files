@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-22 21:34+0000\n"
+"POT-Creation-Date: 2025-10-04 15:38+0000\n"
 "PO-Revision-Date: 2025-09-23 01:18+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/files/"
@@ -2025,45 +2025,55 @@ msgstr "ファイルの前にフォルダーを表示"
 msgid "Sort by"
 msgstr "並べ替え"
 
-#: src/View/AbstractDirectoryView.vala:2364
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Folder"
 msgstr "フォルダー"
 
-#: src/View/AbstractDirectoryView.vala:2370
+#: src/View/AbstractDirectoryView.vala:2372
 msgid "Empty File"
 msgstr "空ファイル"
 
-#: src/View/AbstractDirectoryView.vala:2383
+#: src/View/AbstractDirectoryView.vala:2382
+#, fuzzy
+#| msgid "Templates"
+msgid "Template"
+msgstr "テンプレート"
+
+#: src/View/AbstractDirectoryView.vala:2390
+msgid "…too many templates"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2395
 msgid "New"
 msgstr "新規作成"
 
-#: src/View/AbstractDirectoryView.vala:2637
+#: src/View/AbstractDirectoryView.vala:2669
 #, c-format
 msgid "Untitled %s"
 msgstr "名称未設定 %s"
 
-#: src/View/AbstractDirectoryView.vala:2928
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:2960
+#: src/View/AbstractDirectoryView.vala:3163
 msgid "Cannot remove files from here"
 msgstr "ここからファイルを移動できません"
 
-#: src/View/AbstractDirectoryView.vala:2929
-#: src/View/AbstractDirectoryView.vala:3104
-#: src/View/AbstractDirectoryView.vala:3115
-#: src/View/AbstractDirectoryView.vala:3132
+#: src/View/AbstractDirectoryView.vala:2961
+#: src/View/AbstractDirectoryView.vala:3136
+#: src/View/AbstractDirectoryView.vala:3147
+#: src/View/AbstractDirectoryView.vala:3164
 msgid "You do not have permission to change this location"
 msgstr "この場所を変更する権限がありません"
 
-#: src/View/AbstractDirectoryView.vala:3072
+#: src/View/AbstractDirectoryView.vala:3104
 msgid "Cannot copy files that are in the trash"
 msgstr "ゴミ箱内のファイルをコピーできません"
 
-#: src/View/AbstractDirectoryView.vala:3073
+#: src/View/AbstractDirectoryView.vala:3105
 msgid "Cutting the selection instead"
 msgstr "代わりに選択項目を切り取る"
 
-#: src/View/AbstractDirectoryView.vala:3103
-#: src/View/AbstractDirectoryView.vala:3114
+#: src/View/AbstractDirectoryView.vala:3135
+#: src/View/AbstractDirectoryView.vala:3146
 msgid "Cannot paste files here"
 msgstr "ここにファイルを貼り付けできません"
 
@@ -2872,9 +2882,6 @@ msgstr "最近使用した項目"
 
 #~ msgid "Invalid"
 #~ msgstr "無効"
-
-#~ msgid "Templates"
-#~ msgstr "テンプレート"
 
 #~ msgid "Unable to unmount %V"
 #~ msgstr "%V をアンマウントできません"
