@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-22 21:34+0000\n"
+"POT-Creation-Date: 2025-10-04 15:38+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
@@ -2180,45 +2180,55 @@ msgstr "Pirma aplankai, po to failai"
 msgid "Sort by"
 msgstr "Rikiuoti pagal"
 
-#: src/View/AbstractDirectoryView.vala:2364
+#: src/View/AbstractDirectoryView.vala:2366
 msgid "Folder"
 msgstr "Aplankas"
 
-#: src/View/AbstractDirectoryView.vala:2370
+#: src/View/AbstractDirectoryView.vala:2372
 msgid "Empty File"
 msgstr "Tuščias failas"
 
-#: src/View/AbstractDirectoryView.vala:2383
+#: src/View/AbstractDirectoryView.vala:2382
+#, fuzzy
+#| msgid "Templates"
+msgid "Template"
+msgstr "Šablonai"
+
+#: src/View/AbstractDirectoryView.vala:2390
+msgid "…too many templates"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2395
 msgid "New"
 msgstr "Naujas"
 
-#: src/View/AbstractDirectoryView.vala:2637
+#: src/View/AbstractDirectoryView.vala:2669
 #, c-format
 msgid "Untitled %s"
 msgstr "Be pavadinimo %s"
 
-#: src/View/AbstractDirectoryView.vala:2928
-#: src/View/AbstractDirectoryView.vala:3131
+#: src/View/AbstractDirectoryView.vala:2960
+#: src/View/AbstractDirectoryView.vala:3163
 msgid "Cannot remove files from here"
 msgstr "Failai negali būti iš čia pašalinti"
 
-#: src/View/AbstractDirectoryView.vala:2929
-#: src/View/AbstractDirectoryView.vala:3104
-#: src/View/AbstractDirectoryView.vala:3115
-#: src/View/AbstractDirectoryView.vala:3132
+#: src/View/AbstractDirectoryView.vala:2961
+#: src/View/AbstractDirectoryView.vala:3136
+#: src/View/AbstractDirectoryView.vala:3147
+#: src/View/AbstractDirectoryView.vala:3164
 msgid "You do not have permission to change this location"
 msgstr "Jūs neturite leidimų keisti šios vietos"
 
-#: src/View/AbstractDirectoryView.vala:3072
+#: src/View/AbstractDirectoryView.vala:3104
 msgid "Cannot copy files that are in the trash"
 msgstr "Nepavyksta nukopijuoti failų, kurie yra šiukšlinėje"
 
-#: src/View/AbstractDirectoryView.vala:3073
+#: src/View/AbstractDirectoryView.vala:3105
 msgid "Cutting the selection instead"
 msgstr "Vietoj to, iškerpamas pasirinkimas"
 
-#: src/View/AbstractDirectoryView.vala:3103
-#: src/View/AbstractDirectoryView.vala:3114
+#: src/View/AbstractDirectoryView.vala:3135
+#: src/View/AbstractDirectoryView.vala:3146
 msgid "Cannot paste files here"
 msgstr "Failai negali būti čia įdėti"
 
@@ -3082,9 +3092,6 @@ msgstr "Paskiausiai naudoti"
 
 #~ msgid "Invalid"
 #~ msgstr "Neteisingas"
-
-#~ msgid "Templates"
-#~ msgstr "Šablonai"
 
 #~ msgid "Unable to unmount %V"
 #~ msgstr "Nepavyko atjungti %V"
