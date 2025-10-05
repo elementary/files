@@ -19,7 +19,7 @@
 namespace Files {
     public class MultiLineEditableLabel : AbstractEditableLabel {
         protected Gtk.ScrolledWindow scrolled_window;
-        public Gtk.TextView textview { get; construct; }
+        private Gtk.TextView textview;
 
         construct {
             textview = new Gtk.TextView ();
@@ -28,11 +28,22 @@ namespace Files {
                 child = textview
             };
             add (scrolled_window);
-        }
 
-        public override void set_text (string text) {
-            textview.get_buffer ().set_text (text);
-            original_name = text;
+            bind_property ("text", textview.get_buffer (), "text", BindingFlags.BIDIRECTIONAL);
+            // Currently this widget is always center aligned but allow for other values nevertheless
+            notify["xalign"].connect (() => {
+                switch ((int) (xalign * 2.0)) {
+                    case 0:
+                        textview.justification = LEFT;
+                        break;
+                    case 1:
+                        textview.justification = CENTER;
+                        break;
+                    default:
+                        textview.justification = RIGHT;
+                        break;
+                }
+            });
         }
 
         public override void set_line_wrap (bool wrap) {
@@ -62,24 +73,11 @@ namespace Files {
             }
         }
 
-        public override void set_justify (Gtk.Justification jtype) {
-            textview.justification = jtype;
-        }
-
         public override void set_padding (int xpad, int ypad) {
             textview.set_margin_start (xpad);
             textview.set_margin_end (xpad);
             textview.set_margin_top (ypad);
             textview.set_margin_bottom (ypad);
-        }
-
-        public override string get_text () {
-            var buffer = textview.get_buffer ();
-            Gtk.TextIter? start = null;
-            Gtk.TextIter? end = null;
-            buffer.get_start_iter (out start);
-            buffer.get_end_iter (out end);
-            return buffer.get_text (start, end, false);
         }
 
         /** Gtk.Editable interface */
