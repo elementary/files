@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-05 16:54+0000\n"
-"PO-Revision-Date: 2025-09-23 08:44+0000\n"
+"PO-Revision-Date: 2025-10-07 07:55+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementaryos.org/projects/files/files/fr/"
 ">\n"
@@ -2102,14 +2102,12 @@ msgid "Empty File"
 msgstr "Fichier vide"
 
 #: src/View/AbstractDirectoryView.vala:2382
-#, fuzzy
-#| msgid "Templates"
 msgid "Template"
-msgstr "Modèles"
+msgstr "Modèle"
 
 #: src/View/AbstractDirectoryView.vala:2390
 msgid "…too many templates"
-msgstr ""
+msgstr "…trop de modèles"
 
 #: src/View/AbstractDirectoryView.vala:2395
 msgid "New"
