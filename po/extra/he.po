@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-05 16:54+0000\n"
-"PO-Revision-Date: 2025-10-05 16:54+0000\n"
+"PO-Revision-Date: 2025-10-07 07:55+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementaryos.org/projects/files/extra/he/"
 ">\n"
@@ -74,12 +74,12 @@ msgstr "תיקונים מזעריים:"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "Navigation within the Trash folder now works properly"
-msgstr ""
+msgstr "הניווט בתיקיית האשפה עובדת מעתה כראוי"
 
 #: data/files.metainfo.xml.in.in:70
 msgid ""
 "The number of template items displayed in the context menu is now limited"
-msgstr ""
+msgstr "מספר פריטי התבנית שמוצגים בתפריט ההקשר מוגבל כעת"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:86
 #: data/files.metainfo.xml.in.in:100 data/files.metainfo.xml.in.in:111
