@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 15:38+0000\n"
+"POT-Creation-Date: 2025-10-05 16:54+0000\n"
 "PO-Revision-Date: 2022-12-26 20:25+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
@@ -201,7 +201,7 @@ msgstr "Pripája sa…"
 msgid "Please verify your user details."
 msgstr "Skontrolujte prosím svoje používateľské údaje."
 
-#: libcore/Directory.vala:738
+#: libcore/Directory.vala:744
 msgid "Server did not respond within time limit"
 msgstr "Server neodpovedal v časovom limite"
 

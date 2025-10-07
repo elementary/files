@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 15:38+0000\n"
+"POT-Creation-Date: 2025-10-05 16:54+0000\n"
 "PO-Revision-Date: 2022-11-09 14:29+0000\n"
 "Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -205,7 +205,7 @@ msgstr "يتصل…"
 msgid "Please verify your user details."
 msgstr "من فضلك راجع تفاصيل المستخدم."
 
-#: libcore/Directory.vala:738
+#: libcore/Directory.vala:744
 msgid "Server did not respond within time limit"
 msgstr "الخادم لم يستجب في الوقت المحدد"
 

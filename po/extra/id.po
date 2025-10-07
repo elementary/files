@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 15:38+0000\n"
+"POT-Creation-Date: 2025-10-05 16:54+0000\n"
 "PO-Revision-Date: 2023-05-27 14:06+0000\n"
 "Last-Translator: Faisal Rachmadin "
 "<frachmadin@users.noreply.l10n.elementary.io>\n"
@@ -70,80 +70,89 @@ msgstr "Lihat lebih banyak metadata sekilas dalam tampilan Daftar"
 msgid "Browse complex trees faster with Column view"
 msgstr "Jelajahi pohon kompleks lebih cepat dengan tampilan Kolom"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:82
-#: data/files.metainfo.xml.in.in:93 data/files.metainfo.xml.in.in:105
-#: data/files.metainfo.xml.in.in:120 data/files.metainfo.xml.in.in:136
-#: data/files.metainfo.xml.in.in:158 data/files.metainfo.xml.in.in:176
-#: data/files.metainfo.xml.in.in:199 data/files.metainfo.xml.in.in:211
-#: data/files.metainfo.xml.in.in:231
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:83
+#: data/files.metainfo.xml.in.in:98 data/files.metainfo.xml.in.in:109
+#: data/files.metainfo.xml.in.in:121 data/files.metainfo.xml.in.in:136
+#: data/files.metainfo.xml.in.in:152 data/files.metainfo.xml.in.in:174
+#: data/files.metainfo.xml.in.in:192 data/files.metainfo.xml.in.in:215
+#: data/files.metainfo.xml.in.in:227 data/files.metainfo.xml.in.in:247
 msgid "Minor updates:"
 msgstr "Pembaruan kecil:"
 
 #: data/files.metainfo.xml.in.in:69
+msgid "Navigation within the Trash folder now works properly"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:70
+msgid ""
+"The number of template items displayed in the context menu is now limited"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:86
+#: data/files.metainfo.xml.in.in:100 data/files.metainfo.xml.in.in:111
+#: data/files.metainfo.xml.in.in:124 data/files.metainfo.xml.in.in:138
+#: data/files.metainfo.xml.in.in:156 data/files.metainfo.xml.in.in:178
+#: data/files.metainfo.xml.in.in:200 data/files.metainfo.xml.in.in:217
+#: data/files.metainfo.xml.in.in:229 data/files.metainfo.xml.in.in:249
+msgid "Updated translations"
+msgstr "Pembaruan terjemahan"
+
+#: data/files.metainfo.xml.in.in:85
 msgid ""
 "The Properties Window now shows the exact date and time the file was last "
 "modified"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:84
-#: data/files.metainfo.xml.in.in:95 data/files.metainfo.xml.in.in:108
-#: data/files.metainfo.xml.in.in:122 data/files.metainfo.xml.in.in:140
-#: data/files.metainfo.xml.in.in:162 data/files.metainfo.xml.in.in:184
-#: data/files.metainfo.xml.in.in:201 data/files.metainfo.xml.in.in:213
-#: data/files.metainfo.xml.in.in:233
-msgid "Updated translations"
-msgstr "Pembaruan terjemahan"
-
-#: data/files.metainfo.xml.in.in:107
+#: data/files.metainfo.xml.in.in:123
 msgid "Further preparation for porting to Gtk4"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:138
+#: data/files.metainfo.xml.in.in:154
 msgid "Redesign file permissions view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:139
+#: data/files.metainfo.xml.in.in:155
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:160
+#: data/files.metainfo.xml.in.in:176
 msgid "Restoring tabs from last time is now optional"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:161
+#: data/files.metainfo.xml.in.in:177
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:178
+#: data/files.metainfo.xml.in.in:194
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:179
+#: data/files.metainfo.xml.in.in:195
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:180
+#: data/files.metainfo.xml.in.in:196
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:181
+#: data/files.metainfo.xml.in.in:197
 msgid "Ensure the selection persists after refreshing the view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:182
+#: data/files.metainfo.xml.in.in:198
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:183
+#: data/files.metainfo.xml.in.in:199
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:227
+#: data/files.metainfo.xml.in.in:243
 msgid "Improvements:"
 msgstr "Perbaikan:"
 
-#: data/files.metainfo.xml.in.in:229
+#: data/files.metainfo.xml.in.in:245
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"

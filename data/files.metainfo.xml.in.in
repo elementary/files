@@ -62,6 +62,22 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="7.1.6" date="2025-10-06" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Navigation within the Trash folder now works properly</li>
+          <li>The number of template items displayed in the context menu is now limited</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/2647">Directory "unrolling" broken in Trash folder</issue>
+        <issue url="https://github.com/elementary/files/issues/2643">Right-clicking on the white space in the home folder freezes Files when XDG_TEMPLATES_DIR="$HOME/" </issue>
+        <issue url="https://github.com/elementary/files/issues/241">Entering a folder in trash loses the trash:// scheme</issue>
+
+      </issues>
+    </release>
     <release version="7.1.5" date="2025-09-06" urgency="medium">
       <description>
         <p>Minor updates:</p>

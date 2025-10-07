@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 15:38+0000\n"
+"POT-Creation-Date: 2025-10-05 16:54+0000\n"
 "PO-Revision-Date: 2020-04-26 23:10+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
@@ -206,7 +206,7 @@ msgstr "Povezovanje …"
 msgid "Please verify your user details."
 msgstr "Preverite uporabniško ime in geslo."
 
-#: libcore/Directory.vala:738
+#: libcore/Directory.vala:744
 msgid "Server did not respond within time limit"
 msgstr "Strežnik ni odgovoril dovolj hitro"
 
