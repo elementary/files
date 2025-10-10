@@ -218,9 +218,10 @@ public class Files.View.DetailsColumn : Gtk.Box {
         }
 
         Gtk.Button more_info_button = new Gtk.Button.with_label (_("More Details…")) {
-            halign = CENTER
+            halign = Gtk.Align.START
         };
 
+        more_info_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
         more_info_button.clicked.connect (() => {
             var the_file_in_a_list = new GLib.List<Files.File> ();
             the_file_in_a_list.append (file);
