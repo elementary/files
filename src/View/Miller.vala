@@ -35,6 +35,8 @@ namespace Files.View {
         public GLib.List<View.Slot> slot_list = null;
         public int total_width = 0;
 
+        private View.DetailsColumn details;
+
         public override bool is_frozen {
             set {
                 if (current_slot != null) {
@@ -120,6 +122,27 @@ namespace Files.View {
             slot_list.append (guest); // Must add to list before scrolling
             // Must set the new slot to be  activehere as the tab does not change (which normally sets its slot active)
             guest.active (true, true);
+
+            update_total_width ();
+        }
+
+        public void draw_file_details (Files.File file, Files.AbstractDirectoryView view) {
+            details = new View.DetailsColumn (file, view);
+
+            View.Slot last_slot = slot_list.last ().data;
+            last_slot.colpane.pack_start (details, false, false);
+            last_slot.hpane.show_all ();
+            last_slot.active (true, true);
+
+            update_total_width ();
+        }
+
+        public void clear_file_details () {
+            View.Slot last_slot = slot_list.last ().data;
+
+            last_slot.colpane.remove (details);
+            last_slot.hpane.show_all ();
+            last_slot.active (true, true);
 
             update_total_width ();
         }
@@ -372,6 +395,7 @@ namespace Files.View {
             switch (keyval) {
                 case Gdk.Key.Left:
                     if (current_position > 0) {
+                        clear_file_details ();
                         to_activate = slot_list.nth_data (current_position - 1);
                     }
 
@@ -387,6 +411,7 @@ namespace Files.View {
                         return true;
                     }
 
+
                     GLib.File current_location = selected_file.location;
                     GLib.File? next_location = null;
                     if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
@@ -400,6 +425,12 @@ namespace Files.View {
                         return true;
                     }
 
+                    clear_file_details ();
+                    var prefs = Files.Preferences.get_default ();
+                    if (prefs.show_file_preview) {
+                        draw_file_details (selected_file, current_slot.get_directory_view ());
+                    }
+
                     break;
 
                 case Gdk.Key.BackSpace:
@@ -409,6 +440,8 @@ namespace Files.View {
                             ctab.go_up ();
                             return true;
                         }
+
+                        clear_file_details ();
 
                     break;
 
