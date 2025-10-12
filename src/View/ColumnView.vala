@@ -95,6 +95,7 @@ namespace Files {
 
             if (!file.is_folder ()) {
                 bool result = false;
+                var prefs = Files.Preferences.get_default ();
                 if (n_press == 1) {
                     /* Ignore second GDK_BUTTON_PRESS event of double-click */
                     if (awaiting_double_click) {
@@ -107,7 +108,6 @@ namespace Files {
                         double_click_timeout_id = GLib.Timeout.add (300, () => {
                             not_double_click ();
 
-                            var prefs = Files.Preferences.get_default ();
                             if (prefs.show_file_preview) {
                                 View.Miller slot = (View.Miller)base.slot.ctab.get_view ();
                                 slot.clear_file_details ();
@@ -121,6 +121,11 @@ namespace Files {
                     }
                 } else if (n_press == 2) {
                     cancel_await_double_click ();
+                    if (prefs.show_file_preview) {
+                        View.Miller slot = (View.Miller)base.slot.ctab.get_view ();
+                        slot.clear_file_details ();
+                    }
+
                     return base.handle_primary_button_click (n_press, mods, path);
                 }
 
