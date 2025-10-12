@@ -477,14 +477,14 @@ namespace Files.View {
 
         private void on_slot_selection_changed (GLib.List<Files.File> files) {
             var prefs = Files.Preferences.get_default ();
-            if(prefs.show_file_preview) {
+            if (prefs.show_file_preview) {
 
-                if(current_slot.get_selected_files () != null) {
+                if (current_slot.get_selected_files () != null) {
                     Files.File? selected_file_after_delay = current_slot.get_selected_files ().data;
 
                     if (selected_file_after_delay != null && !selected_file_after_delay.is_folder ()) {
                         keypress_timeout_check_id = GLib.Timeout.add (125, () => {
-                            if(keypress_timeout_expired) {
+                            if (keypress_timeout_expired) {
                                 clear_file_details ();
                                 draw_file_details (selected_file_after_delay, current_slot.get_directory_view ());
 
