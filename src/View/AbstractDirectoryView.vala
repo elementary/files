@@ -3086,6 +3086,10 @@ namespace Files {
                     }
 
                     res = move_cursor (keyval, only_shift_pressed, control_pressed);
+
+                    if ((this is ColumnView) && no_mods) {
+                        ((Files.View.Miller)(slot.ctab.view)).on_miller_key_pressed (keyval, keycode, state);
+                    }
                     break;
 
                 case Gdk.Key.Left:
