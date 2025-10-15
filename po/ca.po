@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-05 16:54+0000\n"
-"PO-Revision-Date: 2025-09-23 10:43+0000\n"
+"PO-Revision-Date: 2025-10-07 07:55+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementaryos.org/projects/files/files/"
 "ca/>\n"
@@ -2083,14 +2083,12 @@ msgid "Empty File"
 msgstr "Fitxer buit"
 
 #: src/View/AbstractDirectoryView.vala:2382
-#, fuzzy
-#| msgid "Templates"
 msgid "Template"
-msgstr "Plantilles"
+msgstr "Plantilla"
 
 #: src/View/AbstractDirectoryView.vala:2390
 msgid "…too many templates"
-msgstr ""
+msgstr "... massa plantilles"
 
 #: src/View/AbstractDirectoryView.vala:2395
 msgid "New"
