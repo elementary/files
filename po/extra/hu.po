@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-05 16:54+0000\n"
-"PO-Revision-Date: 2025-09-12 11:55+0000\n"
+"PO-Revision-Date: 2025-10-16 13:55+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementaryos.org/projects/files/extra/"
 "hu/>\n"
@@ -82,12 +82,12 @@ msgstr "Kisebb frissítések:"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "Navigation within the Trash folder now works properly"
-msgstr ""
+msgstr "A navigáció a Kuka mappával már rendesen működik"
 
 #: data/files.metainfo.xml.in.in:70
 msgid ""
 "The number of template items displayed in the context menu is now limited"
-msgstr ""
+msgstr "A menüben megjelenített sablonok száma korlátozva"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:86
 #: data/files.metainfo.xml.in.in:100 data/files.metainfo.xml.in.in:111

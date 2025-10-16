@@ -229,7 +229,7 @@ retry:
 skip:
             g_error_free (error);
         } else {
-            files_file_changes_queue_file_removed (dir);
+            files_file_changes_queue_folder_removed (dir);
             transfer_info->num_files ++;
             marlin_file_operations_delete_job_report_delete_progress (del_job, source_info, transfer_info);
             return;
