@@ -100,9 +100,7 @@ namespace Files {
                     if (awaiting_double_click) {
                         result = true;
                     } else {
-                        /*  ... store clicked folder and start double-click timeout.
-                            Show DetailsColumn if it expires prior to a second click
-                        */
+                        /*  ... store clicked folder and start double-click timeout */
                         awaiting_double_click = true;
                         double_click_timeout_id = GLib.Timeout.add (300, () => {
                             not_double_click ();
