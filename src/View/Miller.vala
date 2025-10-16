@@ -41,6 +41,9 @@ namespace Files.View {
         public int total_width = 0;
 
         private View.DetailsColumn details;
+        private uint keypress_timeout_id = 0;
+        private uint keypress_timeout_check_id = 0;
+        private bool keypress_timeout_expired = true;
 
         public override bool is_frozen {
             set {
@@ -397,16 +400,27 @@ namespace Files.View {
             }
 
             View.Slot? to_activate = null;
+
+            var prefs = Files.Preferences.get_default ();
             switch (keyval) {
                 case Gdk.Key.Left:
                     if (current_position > 0) {
-                        clear_file_details ();
+                        if (prefs.show_file_preview) {
+                            clear_file_details ();
+                        }
+
                         to_activate = slot_list.nth_data (current_position - 1);
                     }
 
                     break;
 
+                case Gdk.Key.Up:
+                case Gdk.Key.Down:
                 case Gdk.Key.Right:
+                    GLib.Source.remove (keypress_timeout_id);
+                    GLib.Source.remove (keypress_timeout_check_id);
+                    keypress_timeout_expired = false;
+
                     if (current_slot.get_selected_files () == null) {
                         return true;
                     }
@@ -415,7 +429,6 @@ namespace Files.View {
                     if (selected_file == null) {
                         return true;
                     }
-
 
                     GLib.File current_location = selected_file.location;
                     GLib.File? next_location = null;
@@ -440,7 +453,9 @@ namespace Files.View {
                             return true;
                         }
 
-                        clear_file_details ();
+                        if (prefs.show_file_preview) {
+                            clear_file_details ();
+                        }
 
                     break;
 
