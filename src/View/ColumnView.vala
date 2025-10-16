@@ -101,21 +101,10 @@ namespace Files {
                     if (awaiting_double_click) {
                         result = true;
                     } else {
-                        /*  ... store clicked folder and start double-click timeout.
-                            Show DetailsColumn if it expires prior to a second click
-                        */
+                        /*  ... store clicked folder and start double-click timeout */
                         awaiting_double_click = true;
                         double_click_timeout_id = GLib.Timeout.add (300, () => {
                             not_double_click ();
-
-                            if (prefs.show_file_preview) {
-                                View.Miller slot = (View.Miller)base.slot.ctab.get_view ();
-                                slot.clear_file_details ();
-
-                                Files.AbstractDirectoryView view = base.slot.get_directory_view ();
-                                slot.draw_file_details (file, view);
-                            }
-
                             return GLib.Source.REMOVE;
                         });
                     }
