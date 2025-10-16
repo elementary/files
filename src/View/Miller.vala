@@ -458,6 +458,13 @@ namespace Files.View {
         }
 
         private void on_slot_selection_changed (GLib.List<Files.File> files) {
+            var prefs = Files.Preferences.get_default ();
+            clear_file_details ();
+            if (prefs.show_file_preview && files.length () == 1) {
+                var selected_file = files.data;
+                draw_file_details (selected_file, current_slot.get_directory_view ());
+            }
+
             selection_changed (files);
         }
 

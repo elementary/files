@@ -106,16 +106,6 @@ namespace Files {
                         awaiting_double_click = true;
                         double_click_timeout_id = GLib.Timeout.add (300, () => {
                             not_double_click ();
-
-                            var prefs = Files.Preferences.get_default ();
-                            if (prefs.show_file_preview) {
-                                View.Miller slot = (View.Miller)base.slot.ctab.get_view ();
-                                slot.clear_file_details ();
-
-                                Files.AbstractDirectoryView view = base.slot.get_directory_view ();
-                                slot.draw_file_details (file, view);
-                            }
-
                             return GLib.Source.REMOVE;
                         });
                     }
