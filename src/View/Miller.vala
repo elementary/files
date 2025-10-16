@@ -58,8 +58,13 @@ namespace Files.View {
         }
 
         construct {
-            (Files.Preferences.get_default ()).notify["show-hidden-files"].connect ((s, p) => {
+            var prefs = (Files.Preferences.get_default ());
+            prefs.notify["show-hidden-files"].connect ((s, p) => {
                 show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
+            });
+
+            prefs.notify["show-file-preview"].connect (() => {
+                on_slot_selection_changed (current_slot.get_selected_files ());
             });
 
             colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);

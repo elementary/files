@@ -438,7 +438,6 @@ namespace Files {
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
             prefs.notify["show-local-thumbnails"].connect (on_show_thumbnails_changed);
-            prefs.notify["show-file-preview"].connect (on_show_file_preview_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
             prefs.notify["date-format"].connect (on_dateformat_changed);
             prefs.bind_property (
@@ -1480,23 +1479,6 @@ namespace Files {
         private void on_show_thumbnails_changed () {
             set_should_thumbnail ();
             slot.reload ();
-        }
-
-        private void on_show_file_preview_changed () {
-            if (!(this is ColumnView)) {
-                return;
-            }
-            bool state = Files.Preferences.get_default ().show_file_preview;
-            if (state == false) {
-                ((Files.View.Miller)(slot.ctab.view)).clear_file_details ();
-            } else {
-                if (slot.get_selected_files () != null) {
-                    Files.File? selected_file = slot.get_selected_files ().data;
-                    if (selected_file != null) {
-                        ((Files.View.Miller)(slot.ctab.view)).draw_file_details (selected_file, this);
-                    }
-                }
-            }
         }
 
         private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
