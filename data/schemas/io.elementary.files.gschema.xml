@@ -20,6 +20,7 @@
     <value value="0" nick="iso"/>
     <value value="1" nick="locale"/>
     <value value="2" nick="informal"/>
+    <value value="3" nick="compact"/>
   </enum>
   <enum id="windowstate">
     <value value="0" nick="normal"/>
