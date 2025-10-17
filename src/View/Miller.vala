@@ -136,12 +136,22 @@ namespace Files.View {
             update_total_width ();
         }
 
+        private uint draw_file_details_timeout_id = 0;
         public void draw_file_details (Files.File file, Files.AbstractDirectoryView view) {
+            if (draw_file_details_timeout_id > 0) {
+                Source.remove (draw_file_details_timeout_id);
+                draw_file_details_timeout_id = 0;
+            }
+
             if (!file.is_folder ()) {
-                details = new View.DetailsColumn (file, view);
-                last_slot.colpane.pack_start (details, false, false);
-                last_slot.hpane.show_all ();
-                update_total_width ();
+                draw_file_details_timeout_id = Timeout.add (200, () => {
+                    draw_file_details_timeout_id = 0;
+                    details = new View.DetailsColumn (file, view);
+                    last_slot.colpane.pack_start (details, false, false);
+                    last_slot.hpane.show_all ();
+                    update_total_width ();
+                    return Source.REMOVE;
+                });
             }
         }
 
