@@ -41,9 +41,6 @@ namespace Files.View {
         public int total_width = 0;
 
         private View.DetailsColumn details;
-        private uint keypress_timeout_id = 0;
-        private uint keypress_timeout_check_id = 0;
-        private bool keypress_timeout_expired = true;
 
         public override bool is_frozen {
             set {
@@ -133,8 +130,8 @@ namespace Files.View {
             }
 
             slot_list.append (guest); // Must add to list before scrolling
-            // Must set the new slot to be  activehere as the tab does not change (which normally sets its slot active)
-            guest.active (true, true);
+            // Must set the new slot to be  active here as the tab does not change (which normally sets its slot active)
+            guest.set_active_state (true, true);
 
             update_total_width ();
         }
@@ -414,13 +411,7 @@ namespace Files.View {
 
                     break;
 
-                case Gdk.Key.Up:
-                case Gdk.Key.Down:
                 case Gdk.Key.Right:
-                    GLib.Source.remove (keypress_timeout_id);
-                    GLib.Source.remove (keypress_timeout_check_id);
-                    keypress_timeout_expired = false;
-
                     if (current_slot.get_selected_files () == null) {
                         return true;
                     }
