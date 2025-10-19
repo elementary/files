@@ -295,6 +295,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
         } catch (Error e) {
             warning ("Error loading image resolution in PropertiesWindow: %s", e.message);
         }
+    
 
         try {
             stream.close ();
