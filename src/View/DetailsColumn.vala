@@ -12,7 +12,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
     private GLib.Cancellable? cancellable;
     private Gtk.Label resolution_value;
     private bool previewing_text = false;
-
     public int width {
         get {
             return PREVIEW_SIZE + 2 * PREVIEW_H_MARGIN;
