@@ -272,6 +272,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
                 return file.get_ftype ();
             }
         }
+    
 
         return _("Unknown");
     }
