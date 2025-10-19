@@ -239,7 +239,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
         } else {
             add (file_image);
         }
-    
 
         add (info_window);
         add (more_info_button);
@@ -257,7 +256,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
                 return "<a href=\"" + get_parent_loc (orig_pth).get_uri () + "\">" + trash_orig_loc + "</a>";
             }
         }
-    
 
         return _("Unknown");
     }
@@ -272,7 +270,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
                 return file.get_ftype ();
             }
         }
-    
 
         return _("Unknown");
     }
@@ -295,7 +292,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
         } catch (Error e) {
             warning ("Error loading image resolution in PropertiesWindow: %s", e.message);
         }
-    
 
         try {
             stream.close ();
