@@ -239,6 +239,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
         } else {
             add (file_image);
         }
+    
 
         add (info_window);
         add (more_info_button);
