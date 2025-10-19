@@ -226,7 +226,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
             propagate_natural_height = true,
             hscrollbar_policy = Gtk.PolicyType.NEVER
         };
-
         if (previewing_text) {
             var text_window = new Gtk.ScrolledWindow (null, null) {
                 child = file_text,
