@@ -93,7 +93,7 @@ namespace Files.View.Chrome {
             }
         }
 
-        // private new Gtk.Widget parent;
+        private new Gtk.Widget parent;
         protected int n_results { get; private set; default = 0; }
 
         GLib.File current_root;

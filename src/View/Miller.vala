@@ -407,7 +407,6 @@ namespace Files.View {
             }
 
             View.Slot? to_activate = null;
-
             var prefs = Files.Preferences.get_default ();
             switch (keyval) {
                 case Gdk.Key.Left:

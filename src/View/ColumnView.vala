@@ -94,7 +94,7 @@ namespace Files {
             }
 
             if (!file.is_folder ()) {
-                bool result = false;
+                var result = false;
                 var prefs = Files.Preferences.get_default ();
                 if (n_press == 1) {
                     /* Ignore second GDK_BUTTON_PRESS event of double-click */
@@ -111,7 +111,7 @@ namespace Files {
                 } else if (n_press == 2) {
                     cancel_await_double_click ();
                     if (prefs.show_file_preview) {
-                        View.Miller slot = (View.Miller)base.slot.ctab.get_view ();
+                        var slot = (View.Miller)base.slot.ctab.get_view ();
                         slot.clear_file_details ();
                     }
 

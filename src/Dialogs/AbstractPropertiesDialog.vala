@@ -140,10 +140,7 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
             storage_levelbar.get_style_context ().add_class ("inverted");
 
             var storage_label = new Gtk.Label (
-                _("%s free out of %s").printf (
-                    format_size (fs_capacity - fs_used + fs_reserved),
-                    format_size (fs_capacity)
-                )
+                _("%s free out of %s").printf (format_size (fs_capacity - fs_used + fs_reserved), format_size (fs_capacity))
             );
 
             info_grid.attach (storage_levelbar, 0, line + 1, 4);

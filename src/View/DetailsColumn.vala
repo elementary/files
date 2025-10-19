@@ -5,8 +5,6 @@
  * Authors : Andres Mendez <shiruken@gmail.com>
  */
 
-using Cairo;
-
 public class Files.View.DetailsColumn : Gtk.Box {
     private const int PREVIEW_SIZE = 512;
     private const int PREVIEW_H_MARGIN = 24;
@@ -14,7 +12,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
     private GLib.Cancellable? cancellable;
     private Gtk.Label resolution_value;
     private bool previewing_text = false;
-
 
     public int width {
         get {
@@ -70,11 +67,11 @@ public class Files.View.DetailsColumn : Gtk.Box {
 
         // overwriting, yes, but easier on the boolean
         if (file.is_readable () && file_real_size <= MAX_PREVIEW_FILE_SIZE) {
-            string filename = file.location.get_path ();
+            var filename = file.location.get_path ();
 
             if (file.is_image ()) {
                 try {
-                    Gdk.Pixbuf? file_pix = new Gdk.Pixbuf
+                    var file_pix = new Gdk.Pixbuf
                         .from_file_at_scale (filename, PREVIEW_SIZE, PREVIEW_SIZE, true);
 
                     file_image.set_from_pixbuf (file_pix);
@@ -85,34 +82,27 @@ public class Files.View.DetailsColumn : Gtk.Box {
             // thanks to https://wiki.gnome.org/Projects/Vala/PopplerSample
             } else if (file.is_pdf ()) {
                 try {
-
                     Poppler.Document doc = new Poppler.Document.from_file (Filename.to_uri ( filename ), null);
 
                     var page = doc.get_page (0); //TODO: multi-page?
 
-                    var surface = new ImageSurface (Format.ARGB32, PREVIEW_SIZE, PREVIEW_SIZE);
-                    var ctx = new Context (surface); // take me back, WebGL... take me back
-
+                    var surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, PREVIEW_SIZE, PREVIEW_SIZE);
+                    var ctx = new Cairo.Context (surface);
                     ctx.set_source_rgb (255, 255, 255);
                     ctx.paint ();
-
                     ctx.scale (0.5, 0.5); //TODO: I just eye-balled this
                     page.render (ctx);
                     ctx.restore ();
-
                     var pdf_pix = Gdk.pixbuf_get_from_surface (surface, 0, 0, PREVIEW_SIZE, PREVIEW_SIZE);
                     file_image.set_from_pixbuf (pdf_pix);
                 } catch (Error e) {
                     warning ("Error: %s\n", e.message);
                 }
-
             } else if (file.is_text ()) {
-
                 try {
                     previewing_text = true;
                     uint8[] contents;
                     string etag_out;
-
                     file.location.load_contents (null, out contents, out etag_out);
 
                     var buffer = file_text.get_buffer ();
@@ -148,11 +138,12 @@ public class Files.View.DetailsColumn : Gtk.Box {
         info_grid.attach_next_to (spinner, size_key_label, RIGHT);
         info_grid.attach_next_to (size_value, size_key_label, RIGHT);
 
+        var time_created = FileUtils.get_formatted_time_attribute_from_info (
+            file.info,
+            FileAttribute.TIME_CREATED
+        );
+
         int n = 5;
-
-        var time_created = FileUtils.get_formatted_time_attribute_from_info (file.info,
-                                                                             FileAttribute.TIME_CREATED);
-
         if (time_created != "") {
             var key_label = make_key_label (_("Created:"));
             var value_label = make_value_label (time_created);
@@ -161,8 +152,10 @@ public class Files.View.DetailsColumn : Gtk.Box {
             n++;
         }
 
-        var time_modified = FileUtils.get_formatted_time_attribute_from_info (file.info,
-                                                                              FileAttribute.TIME_MODIFIED);
+        var time_modified = FileUtils.get_formatted_time_attribute_from_info (
+            file.info,
+            FileAttribute.TIME_MODIFIED
+        );
 
         if (time_modified != "") {
             var key_label = make_key_label (_("Modified:"));
@@ -173,8 +166,11 @@ public class Files.View.DetailsColumn : Gtk.Box {
         }
 
         if (file.is_trashed ()) {
-            var deletion_date = FileUtils.get_formatted_time_attribute_from_info (file.info,
-                                                                                  FileAttribute.TRASH_DELETION_DATE);
+            var deletion_date = FileUtils.get_formatted_time_attribute_from_info (
+                file.info,
+                FileAttribute.TRASH_DELETION_DATE
+            );
+
             if (deletion_date != "") {
                 var key_label = make_key_label (_("Deleted:"));
                 var value_label = make_value_label (deletion_date);
@@ -234,7 +230,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
             hscrollbar_policy = Gtk.PolicyType.NEVER
         };
 
-
         if (previewing_text) {
             var text_window = new Gtk.ScrolledWindow (null, null) {
                 child = file_text,
@@ -248,6 +243,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
         } else {
             add (file_image);
         }
+
         add (info_window);
         add (more_info_button);
 
@@ -264,6 +260,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
                 return "<a href=\"" + get_parent_loc (orig_pth).get_uri () + "\">" + trash_orig_loc + "</a>";
             }
         }
+
         return _("Unknown");
     }
 
@@ -277,13 +274,14 @@ public class Files.View.DetailsColumn : Gtk.Box {
                 return file.get_ftype ();
             }
         }
+
         return _("Unknown");
     }
 
     private async void get_resolution (Files.File goffile) {
         GLib.FileInputStream? stream = null;
-        GLib.File file = goffile.location;
-        string resolution = _("Could not be determined");
+        var file = goffile.location;
+        var resolution = _("Could not be determined");
 
         try {
             stream = yield file.read_async (0, cancellable);
@@ -298,6 +296,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
         } catch (Error e) {
             warning ("Error loading image resolution in PropertiesWindow: %s", e.message);
         }
+
         try {
             stream.close ();
         } catch (GLib.Error e) {

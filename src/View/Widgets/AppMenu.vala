@@ -142,7 +142,6 @@ public class Files.AppMenu : Gtk.Popover {
         menu_box.add (show_local_thumbnails);
         menu_box.add (show_remote_thumbnails);
         menu_box.add (show_file_preview);
-
         menu_box.add (new Gtk.Separator (HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
         menu_box.add (datetimeformat_header);
         menu_box.add (iso_button);
