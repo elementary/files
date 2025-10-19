@@ -107,8 +107,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
 
                     var buffer = file_text.get_buffer ();
                     buffer.set_text ((string) contents);
-
-                    // TODO destroy file_image
                 } catch (Error e) {
                     warning ("Error: %s\n", e.message);
                 }
