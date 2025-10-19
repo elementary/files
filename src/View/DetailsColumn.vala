@@ -257,6 +257,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
                 return "<a href=\"" + get_parent_loc (orig_pth).get_uri () + "\">" + trash_orig_loc + "</a>";
             }
         }
+    
 
         return _("Unknown");
     }
