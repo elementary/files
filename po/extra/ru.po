@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-18 16:44+0000\n"
-"PO-Revision-Date: 2025-10-07 07:55+0000\n"
+"PO-Revision-Date: 2025-10-22 08:07+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/extra/"
 "ru/>\n"
@@ -90,6 +90,8 @@ msgstr "Навигация внутри папки корзины теперь �
 #: data/files.metainfo.xml.in.in:70
 msgid "The view now refreshes properly after permanent deletion of a folder"
 msgstr ""
+"Представление теперь корректно обновляется после безвозвратного удаления "
+"папки"
 
 #: data/files.metainfo.xml.in.in:71
 msgid ""
