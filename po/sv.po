@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-18 16:44+0000\n"
-"PO-Revision-Date: 2025-10-22 08:07+0000\n"
+"PO-Revision-Date: 2025-10-22 10:00+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <https://l10n.elementaryos.org/projects/files/files/"
 "sv/>\n"
@@ -242,7 +242,7 @@ msgstr "Storlek"
 
 #: libcore/Enums.vala:165
 msgid "Number sequence"
-msgstr "Nummerföljd"
+msgstr "Nummersekvens"
 
 #: libcore/Enums.vala:168 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
@@ -338,11 +338,11 @@ msgid "Empty"
 msgstr "Tomt"
 
 #: libcore/File.vala:1171
-#, fuzzy, c-format
+#, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
-msgstr[0] "%'d minut"
-msgstr[1] "%'d minuter"
+msgstr[0] "%'d objekt"
+msgstr[1] "%'d poster"
 
 #: libcore/File.vala:1216
 #, c-format
@@ -1270,22 +1270,22 @@ msgstr "Det går inte att montera '%s'"
 #. So this represents something like "Preparing to copy 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/FileOperations/CopyMoveJob.vala:64
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] "Förbereder att kopiera %'d fil (%S)"
-msgstr[1] "Förbereder att kopiera %'d filer (%S)"
+msgstr[0] "Förbereder kopiering av %'d-fil (%s)"
+msgstr[1] "Förbereder kopiering av %'d-filer (%s)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to move 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/FileOperations/CopyMoveJob.vala:74
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
-msgstr[0] "Förbereder att flytta %'d fil (%S)"
-msgstr[1] "Förbereder att flytta %'d filer (%S)"
+msgstr[0] "Förbereder för att flytta %'d-fil (%s)"
+msgstr[1] "Förbereder för att flytta %'d filer (%s)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1321,41 +1321,41 @@ msgid "Duplicating \"%s\""
 msgstr "Duplicering av \"%s\""
 
 #: libcore/FileOperations/CopyMoveJob.vala:152
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file (in \"%s\") to \"%s\""
 msgid_plural "Moving %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Flyttar %'d fil (i \"%B\") till \"%B\""
-msgstr[1] "Flyttar %'d filer (i \"%B\") till \"%B\""
+msgstr[0] "Flyttar %'d fil (i \"%s\") till \"%s\""
+msgstr[1] "Flyttar %'d filer (i \"%s\") till \"%s\""
 
 #: libcore/FileOperations/CopyMoveJob.vala:157
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file (in \"%s\") to \"%s\""
 msgid_plural "Copying %'d files (in \"%s\") to \"%s\""
-msgstr[0] "Kopierar %'d fil (i \"%B\") till \"%B\""
-msgstr[1] "Kopierar %'d filer (i \"%B\") till \"%B\""
+msgstr[0] "Kopierar %'d fil (i \"%s\") till \"%s\""
+msgstr[1] "Kopierar %'d filer (i \"%s\") till \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/FileOperations/CopyMoveJob.vala:166
-#, fuzzy, c-format
+#, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "Duplicerar %'d fil (i \"%B\")"
-msgstr[1] "Duplicerar %'d filer (i \"%B\")"
+msgstr[0] "Duplicering av %'d-fil (i \"%s\")"
+msgstr[1] "Duplicering av %'d-filer (i \"%s\")"
 
 #: libcore/FileOperations/CopyMoveJob.vala:179
-#, fuzzy, c-format
+#, c-format
 msgid "Moving %'d file to \"%s\""
 msgid_plural "Moving %'d files to \"%s\""
-msgstr[0] "Flyttar %'d fil till \"%B\""
-msgstr[1] "Flyttar %'d filer till \"%B\""
+msgstr[0] "Flyttar %'d fil till \"%s\""
+msgstr[1] "Flyttar %'d filer till \"%s\""
 
 #: libcore/FileOperations/CopyMoveJob.vala:184
-#, fuzzy, c-format
+#, c-format
 msgid "Copying %'d file to \"%s\""
 msgid_plural "Copying %'d files to \"%s\""
-msgstr[0] "Kopierar %'d fil till \"%B\""
-msgstr[1] "Kopierar %'d filer till \"%B\""
+msgstr[0] "Kopierar %'d fil till \"%s\""
+msgstr[1] "Kopierar %'d filer till \"%s\""
 
 #: libcore/FileOperations/CopyMoveJob.vala:191
 #, c-format
@@ -1377,11 +1377,11 @@ msgstr "%s av %s"
 #. The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
 #. The order in which %s appear can be changed by using the right positional specifier.
 #: libcore/FileOperations/CopyMoveJob.vala:231
-#, fuzzy, c-format
+#, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
-msgstr[0] "%S av %S — %T återstår (%S/s)"
-msgstr[1] "%S av %S — %T återstår (%S/s)"
+msgstr[0] "%s av %s - %s kvar (%s/s)"
+msgstr[1] "%s av %s - %s kvar (%s/s)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1405,15 +1405,19 @@ msgid "Are you sure you want to permanently delete \"%s\" from the trash?"
 msgstr "Är du säker på att du vill ta bort \"%s\" permanent från papperskorgen?"
 
 #: libcore/FileOperations/DeleteJob.vala:57
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
 "trash?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] "Vill du radera det markerade objektet permanent?"
-msgstr[1] "Vill du radera de markerade objekten permanent?"
+msgstr[0] ""
+"Är du säker på att du vill ta bort det %'d valt objekt permanent från "
+"papperskorgen?"
+msgstr[1] ""
+"Är du säker på att du vill ta bort de %'d valda objekt permanent från "
+"papperskorgen?"
 
 #: libcore/FileOperations/DeleteJob.vala:63
 msgid "If you delete an item, it will be permanently lost."
@@ -1454,22 +1458,22 @@ msgstr "Raderar filer"
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
 #: libcore/FileOperations/DeleteJob.vala:127
-#, fuzzy, c-format
+#, c-format
 msgid "%s left"
 msgid_plural "%s left"
-msgstr[0] "%T återstår"
-msgstr[1] "%T återstår"
+msgstr[0] "%s kvar"
+msgstr[1] "%s kvar"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
 #. So this represents something like "Preparing to delete 100 files (200 MB)"
 #. The order in which %'d and %s appear can be changed by using the right positional specifier.
 #: libcore/FileOperations/DeleteJob.vala:144
-#, fuzzy, c-format
+#, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
-msgstr[0] "Förbereder att radera %'d fil (%S)"
-msgstr[1] "Förbereder att radera %'d filer (%S)"
+msgstr[0] "Förbereder för att radera %'d-filen (%s)"
+msgstr[1] "Förbereder för att radera %'d-filer (%s)"
 
 #: libcore/FileOperations/DeleteJob.vala:155
 msgid "Moving files to trash"
@@ -1670,7 +1674,7 @@ msgstr "Byt namn"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
-msgstr "Nummerföljd"
+msgstr "Nummersekvens"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:89
@@ -2460,7 +2464,7 @@ msgstr "Fjärrstyrda miniatyrbilder"
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
 #: src/View/Widgets/AppMenu.vala:116
 msgid "Date & Time Format"
-msgstr ""
+msgstr "Datum & tids format"
 
 #: src/View/Widgets/AppMenu.vala:199
 msgid "No operation to undo"
@@ -2505,11 +2509,11 @@ msgid "%u folders"
 msgstr "%u mappar"
 
 #: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
-#, fuzzy, c-format
+#, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] " och %u andra objekt (%s) är valda"
-msgstr[1] " och %u andra objekt (%s) är valda"
+msgstr[0] " och %u annat objekt (%s) valt"
+msgstr[1] " och %u andra objekt (%s) valda"
 
 #: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
 msgid " selected"
@@ -2522,19 +2526,19 @@ msgstr "%u objekt valda (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:226
-#, fuzzy, c-format
+#, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u undermapp, "
-msgstr[1] "%u undermapp, "
+msgstr[1] "%u undermappar, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:232
-#, fuzzy, c-format
+#, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u fil, "
-msgstr[1] "%u fil, "
+msgstr[1] "%u filer, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:242
@@ -2549,11 +2553,11 @@ msgstr "okänd storlek"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:249
-#, fuzzy, c-format
+#, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
-msgstr[0] "%u fil är inte läsbar"
-msgstr[1] "%u fil är inte läsbar"
+msgstr[0] "%u filen är inte läsbar"
+msgstr[1] "%u filer är inte läsbara"
 
 #: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"
