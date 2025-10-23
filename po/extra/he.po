@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-18 16:44+0000\n"
-"PO-Revision-Date: 2025-10-07 07:55+0000\n"
+"PO-Revision-Date: 2025-10-24 07:55+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementaryos.org/projects/files/extra/he/"
 ">\n"
@@ -78,7 +78,7 @@ msgstr "הניווט בתיקיית האשפה עובדת מעתה כראוי"
 
 #: data/files.metainfo.xml.in.in:70
 msgid "The view now refreshes properly after permanent deletion of a folder"
-msgstr ""
+msgstr "התצוגה מתרעננת כעת כראוי לאחר מחיקה של תיקייה לצמיתות"
 
 #: data/files.metainfo.xml.in.in:71
 msgid ""
