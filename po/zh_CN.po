@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-18 16:44+0000\n"
-"PO-Revision-Date: 2025-08-15 17:55+0000\n"
+"PO-Revision-Date: 2025-10-27 07:55+0000\n"
 "Last-Translator: JieXu <xujie0739@qq.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://"
-"l10n.elementaryos.org/projects/files/files/zh_Hans/>\n"
+"l10n.elementaryos.org/projects/files/files/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,11 +66,11 @@ msgstr "保存"
 #: filechooser-portal/Main.vala:454
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr ""
+msgstr "这个文件是目标为「%s」的链接"
 
 #: filechooser-portal/Main.vala:457
 msgid "This file is a link."
-msgstr ""
+msgstr "这个文件是链接。"
 
 #: filechooser-portal/Main.vala:460
 msgid ""
@@ -1084,9 +1084,8 @@ msgid "Redo Move to Trash"
 msgstr "移至回收站"
 
 #: libcore/UndoManager.vala:73
-#, fuzzy
 msgid "Redo Create Link"
-msgstr "重新创建链接到 %d 个项目( _R )"
+msgstr "重做「创建链接」"
 
 #: libcore/UndoManager.vala:75
 msgid "Redo Restore from Trash"
@@ -1097,14 +1096,12 @@ msgid "Redo Set Permissions"
 msgstr "重做「设置权限」"
 
 #: libcore/UndoManager.vala:79
-#, fuzzy
 msgid "Redo Set Permissions Recursively"
-msgstr "重新改变 %d 个项目的权限"
+msgstr "重做「递回设定权限」"
 
 #: libcore/UndoManager.vala:81
-#, fuzzy
 msgid "Redo Change Owner"
-msgstr "重新改变 %d 个项目的所有者"
+msgstr "重做「变更拥有者」"
 
 #: libcore/UndoManager.vala:83
 msgid "Redo Change Group"
@@ -1595,25 +1592,21 @@ msgid "Used:"
 msgstr "已用："
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:21
-#, fuzzy
 msgid "Original filename"
-msgstr "原文件"
+msgstr "原始文件名"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:23
-#, fuzzy
 msgid "Modified original"
-msgstr "修改时间"
+msgstr "修改原版"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:25
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:252
-#, fuzzy
 msgid "New basename"
-msgstr "重命名"
+msgstr "新的基本名称"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
-#, fuzzy
 msgid "Bulk Rename"
-msgstr "重命名"
+msgstr "批量重命名"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 #: src/View/Sidebar/BookmarkRow.vala:338
@@ -1623,16 +1616,16 @@ msgstr "重命名"
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:81
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:87
 msgid "Number Sequence"
-msgstr ""
+msgstr "数字编号顺序"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:83
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:89
 msgid "Fixed Text"
-msgstr ""
+msgstr "固定文字"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:93
 msgid "Add Prefix…"
-msgstr ""
+msgstr "增加前缀…"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:112
 msgid "Add Suffix…"
@@ -1645,9 +1638,8 @@ msgstr "用户名："
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:163
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:243
-#, fuzzy
 msgid "Original Basename"
-msgstr "原文件"
+msgstr "原始基本名称"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:168
 msgid "Replacement text"
@@ -1659,7 +1651,7 @@ msgstr ""
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:261
 msgid "Text to be replaced"
-msgstr ""
+msgstr "要取代的文字"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:328
 msgid "Apply"
@@ -1671,7 +1663,7 @@ msgstr "已忽略"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:70
 msgid "Name is not changed"
-msgstr ""
+msgstr "名称未变更"
 
 #: src/Dialogs/BulkRenamer/RenamerListRow.vala:74
 msgid "Cannot rename"
@@ -1686,7 +1678,6 @@ msgid "Will be renamed"
 msgstr "会被重命名"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:43
-#, fuzzy
 msgid "Reverse Order"
 msgstr "倒序"
 
@@ -2408,7 +2399,7 @@ msgstr "远程缩略图"
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
 #: src/View/Widgets/AppMenu.vala:116
 msgid "Date & Time Format"
-msgstr ""
+msgstr "日期和时间格式"
 
 #: src/View/Widgets/AppMenu.vala:199
 msgid "No operation to undo"
