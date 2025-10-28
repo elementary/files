@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-18 16:44+0000\n"
-"PO-Revision-Date: 2025-10-22 10:00+0000\n"
+"PO-Revision-Date: 2025-10-26 04:34+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <https://l10n.elementaryos.org/projects/files/files/"
 "sv/>\n"
@@ -1790,7 +1790,7 @@ msgstr "okänt"
 
 #: src/Dialogs/PropertiesWindow.vala:486
 msgid "Loading…"
-msgstr "Laddar…"
+msgstr "Läser in…"
 
 #: src/Dialogs/PropertiesWindow.vala:520
 msgid "Could not be determined"
@@ -2497,7 +2497,7 @@ msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:212
 msgid "Reload this folder"
-msgstr "Ladda om den här mappen"
+msgstr "Uppdatera denna mapp"
 
 #: src/View/Widgets/LocationBar.vala:225
 msgid "Searching…"
