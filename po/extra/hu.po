@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-18 16:44+0000\n"
-"PO-Revision-Date: 2025-10-16 13:55+0000\n"
+"PO-Revision-Date: 2025-10-30 16:55+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementaryos.org/projects/files/extra/"
 "hu/>\n"
@@ -86,7 +86,7 @@ msgstr "A navigáció a Kuka mappával már rendesen működik"
 
 #: data/files.metainfo.xml.in.in:70
 msgid "The view now refreshes properly after permanent deletion of a folder"
-msgstr ""
+msgstr "A nézet már rendesen frissül, ha véglegesen töröl egy mappát"
 
 #: data/files.metainfo.xml.in.in:71
 msgid ""
