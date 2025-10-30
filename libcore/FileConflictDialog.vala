@@ -69,8 +69,6 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
     }
 
     construct {
-        destination.query_update ();
-
         image_icon = new ThemedIcon ("dialog-warning");
 
         destination_image = new Gtk.Image () {
@@ -262,16 +260,6 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
     }
 
     private void file_list_ready_cb (GLib.List<Files.File> files) {
-        var thumbnailer = Files.Thumbnailer.get ();
-        thumbnailer.finished.connect (() => {
-            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   Files.File.IconFlags.USE_THUMBNAILS);
-        });
-
-        thumbnailer.queue_file (destination, null);
-        destination_size_label.label = destination.format_size;
-        destination_time_label.label = destination.formated_modified;
-
         unowned string src_ftype = source.get_ftype ();
         unowned string dest_ftype = destination.get_ftype ();
         if (src_ftype == null) {
@@ -319,9 +307,15 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         }
 
         secondary_label.label = "%s %s".printf (message, message_extra);
+
         source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), Files.File.IconFlags.USE_THUMBNAILS);
         source_size_label.label = source.format_size;
         source_time_label.label = source.formated_modified;
+
+        destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (), Files.File.IconFlags.USE_THUMBNAILS);
+        destination_size_label.label = destination.format_size;
+        destination_time_label.label = destination.formated_modified;
+
         if (should_show_type && src_ftype != null) {
             source_type_label.label = src_ftype;
         } else {
