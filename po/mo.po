@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 15:38+0000\n"
+"POT-Creation-Date: 2025-10-18 16:44+0000\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -207,7 +207,7 @@ msgstr "Conectare..."
 msgid "Please verify your user details."
 msgstr "Verificați detaliile utilizatorului."
 
-#: libcore/Directory.vala:738
+#: libcore/Directory.vala:744
 msgid "Server did not respond within time limit"
 msgstr "Serverul nu a răspuns în limita de timp"
 

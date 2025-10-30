@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 15:38+0000\n"
+"POT-Creation-Date: 2025-10-18 16:44+0000\n"
 "PO-Revision-Date: 2024-05-18 18:13+0000\n"
 "Last-Translator: Arno <arnoant21@gmail.com>\n"
 "Language-Team: Luxembourgish <https://l10n.elementary.io/projects/files/"
@@ -199,7 +199,7 @@ msgstr "Verbannen…"
 msgid "Please verify your user details."
 msgstr "Iwwerpréift Är Detailer w.e.g. ."
 
-#: libcore/Directory.vala:738
+#: libcore/Directory.vala:744
 msgid "Server did not respond within time limit"
 msgstr "De Server huet net innerhalb der Zäitlimit geäntwert"
 

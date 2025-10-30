@@ -16,15 +16,15 @@
   <screenshots>
     <screenshot type="default">
       <caption>Quick access to settings like zoom levels and hidden files</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/7.1.5/data/screenshot-grid.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/7.1.6/data/screenshot-grid.png</image>
     </screenshot>
     <screenshot>
       <caption>See more metadata at a glance in List view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/7.1.5/data/screenshot-list.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/7.1.6/data/screenshot-list.png</image>
     </screenshot>
     <screenshot>
       <caption>Browse complex trees faster with Column view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/7.1.5/data/screenshot-column.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/7.1.6/data/screenshot-column.png</image>
     </screenshot>
   </screenshots>
 
@@ -62,6 +62,24 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="7.1.6" date="2025-10-24" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Navigation within the Trash folder now works properly</li>
+          <li>The view now refreshes properly after permanent deletion of a folder</li>
+          <li>The number of template items displayed in the context menu is now limited</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/2647">Directory "unrolling" broken in Trash folder</issue>
+        <issue url="https://github.com/elementary/files/issues/2643">Right-clicking on the white space in the home folder freezes Files when XDG_TEMPLATES_DIR="$HOME/" </issue>
+        <issue url="https://github.com/elementary/files/issues/2623">File Manager does not refresh state of the current path automatically</issue>
+        <issue url="https://github.com/elementary/files/issues/241">Entering a folder in trash loses the trash:// scheme</issue>
+
+      </issues>
+    </release>
     <release version="7.1.5" date="2025-09-06" urgency="medium">
       <description>
         <p>Minor updates:</p>

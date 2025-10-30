@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 15:38+0000\n"
+"POT-Creation-Date: 2025-10-18 16:44+0000\n"
 "PO-Revision-Date: 2022-09-19 03:03+0000\n"
 "Last-Translator: Issa1553 <fairfull.playing@gmail.com>\n"
 "Language-Team: Bosnian <https://l10n.elementary.io/projects/files/files/bs/"
@@ -206,7 +206,7 @@ msgstr "Povezivanje…"
 msgid "Please verify your user details."
 msgstr "Provjerite vaše podatke za ovaj nalog."
 
-#: libcore/Directory.vala:738
+#: libcore/Directory.vala:744
 msgid "Server did not respond within time limit"
 msgstr "Server nije odgovorio u zadanom vremenskom roku"
 

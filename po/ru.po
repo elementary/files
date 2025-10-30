@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 15:38+0000\n"
-"PO-Revision-Date: 2025-09-24 07:00+0000\n"
-"Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
+"POT-Creation-Date: 2025-10-18 16:44+0000\n"
+"PO-Revision-Date: 2025-10-07 07:55+0000\n"
+"Last-Translator: ProgramCrafter <pythonhunter146@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/files/"
 "ru/>\n"
 "Language: ru\n"
@@ -201,7 +201,7 @@ msgstr "Подключение…"
 msgid "Please verify your user details."
 msgstr "Проверьте данные пользователя."
 
-#: libcore/Directory.vala:738
+#: libcore/Directory.vala:744
 msgid "Server did not respond within time limit"
 msgstr "Сервер не ответил в течение срока"
 
@@ -341,7 +341,7 @@ msgstr "Пустой"
 #, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
-msgstr[0] "%'dобъект"
+msgstr[0] "%'d объект"
 msgstr[1] "%'d объекта"
 msgstr[2] "%'d объектов"
 
@@ -2100,14 +2100,12 @@ msgid "Empty File"
 msgstr "Пустой файл"
 
 #: src/View/AbstractDirectoryView.vala:2382
-#, fuzzy
-#| msgid "Templates"
 msgid "Template"
-msgstr "Шаблоны"
+msgstr "Шаблон"
 
 #: src/View/AbstractDirectoryView.vala:2390
 msgid "…too many templates"
-msgstr ""
+msgstr "…слишком много шаблонов"
 
 #: src/View/AbstractDirectoryView.vala:2395
 msgid "New"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 15:38+0000\n"
+"POT-Creation-Date: 2025-10-18 16:44+0000\n"
 "PO-Revision-Date: 2017-11-17 05:55+0000\n"
 "Last-Translator: Subhadeep Jasu <subhajasu@gmail.com>\n"
 "Language-Team: Bengali <https://weblate.elementary.io/projects/files/files/"
@@ -205,7 +205,7 @@ msgstr "সংযোগ স্থাপন করছে..."
 msgid "Please verify your user details."
 msgstr "আপনি আপনার ব্যবহারকারী-বৃত্যান্ত যাচাই করুন।"
 
-#: libcore/Directory.vala:738
+#: libcore/Directory.vala:744
 msgid "Server did not respond within time limit"
 msgstr ""
 

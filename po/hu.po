@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-04 15:38+0000\n"
-"PO-Revision-Date: 2025-04-23 09:55+0000\n"
+"POT-Creation-Date: 2025-10-18 16:44+0000\n"
+"PO-Revision-Date: 2025-10-16 13:55+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementaryos.org/projects/files/files/"
 "hu/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
@@ -202,7 +202,7 @@ msgstr "Kapcsolódás…"
 msgid "Please verify your user details."
 msgstr "Ellenőrizze a felhasználói adatait."
 
-#: libcore/Directory.vala:738
+#: libcore/Directory.vala:744
 msgid "Server did not respond within time limit"
 msgstr "A szerver nem válaszolt határidőn belül"
 
@@ -304,17 +304,15 @@ msgstr "Jelenlegi dátum"
 #. TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
 #: libcore/Enums.vala:267
 msgid "ISO"
-msgstr ""
+msgstr "ISO"
 
 #: libcore/Enums.vala:269
 msgid "Locale"
-msgstr ""
+msgstr "Lokalizáció"
 
 #: libcore/Enums.vala:271
-#, fuzzy
-#| msgid "Info"
 msgid "Informal"
-msgstr "Infó"
+msgstr "Informális"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
@@ -2067,11 +2065,11 @@ msgstr "Üres fájl"
 
 #: src/View/AbstractDirectoryView.vala:2382
 msgid "Template"
-msgstr ""
+msgstr "Sablon"
 
 #: src/View/AbstractDirectoryView.vala:2390
 msgid "…too many templates"
-msgstr ""
+msgstr "...túl sok sablon"
 
 #: src/View/AbstractDirectoryView.vala:2395
 msgid "New"
@@ -2449,7 +2447,7 @@ msgstr "Távoli előnézetek"
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
 #: src/View/Widgets/AppMenu.vala:116
 msgid "Date & Time Format"
-msgstr ""
+msgstr "Dátum- és időformátum"
 
 #: src/View/Widgets/AppMenu.vala:199
 msgid "No operation to undo"
