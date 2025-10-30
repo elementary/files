@@ -416,7 +416,8 @@ namespace Files.FileUtils {
         return new_path;
     }
 
-    // Removes the unwanted `:3` from some Apple device addresses without full sanitizing
+    // Removes the unwanted `:3` from some Apple device root addresses without full sanitizing
+    // Used only when creating a mount row in the sidebar in order to provide access to all folders
     public string fix_afc_uri (string uri) {
         if (Uri.parse_scheme (uri).has_prefix ("afc")) {
             var colon_parts = uri.split (":", 3);
@@ -426,13 +427,11 @@ namespace Files.FileUtils {
                 var separator_parts = colon_parts[2].split (Path.DIR_SEPARATOR_S, 2);
                 var device_name_end = separator_parts[0];
                 if (uint64.try_parse (device_name_end)) {
-                    /* Device ends in e.g. `:3`. Need to strip this suffix to successfully browse */
-                    var fixed_uri = string.join (":", colon_parts[0], colon_parts[1]);
-                    if (separator_parts.length > 1) {
-                        fixed_uri = string.join (Path.DIR_SEPARATOR_S, fixed_uri, separator_parts[1]);
+                    /* Device ends in e.g. `:3`. Need to strip this suffix to browse all folders */
+                    if (separator_parts.length == 1 || separator_parts[1].strip () == "") {
+                        return string.join (":", colon_parts[0], colon_parts[1]);
                     }
 
-                    return fixed_uri;
                 }
             }
         }
