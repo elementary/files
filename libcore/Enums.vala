@@ -258,7 +258,8 @@ namespace Files {
     public enum DateFormatMode {
         ISO,
         LOCALE,
-        INFORMAL;
+        INFORMAL,
+        COMPACT;
 
         public string to_string () {
             switch (this) {
@@ -269,6 +270,9 @@ namespace Files {
                     return _("Locale");
                 case INFORMAL:
                     return _("Informal");
+                case COMPACT:
+                    ///TRANSLATORS Adjective applied to datetime format
+                    return _("Compact");
                 default:
                     assert_not_reached ();
             }
