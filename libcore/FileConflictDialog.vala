@@ -66,16 +66,6 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
             transient_for: parent,
             resizable: false
         );
-
-        var thumbnailer = Files.Thumbnailer.get ();
-        thumbnailer.finished.connect (() => {
-            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   Files.File.IconFlags.USE_THUMBNAILS);
-        });
-
-        thumbnailer.queue_file (destination, null);
-        destination_size_label.label = destination.format_size;
-        destination_time_label.label = destination.formated_modified;
     }
 
     construct {
@@ -272,6 +262,16 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
     }
 
     private void file_list_ready_cb (GLib.List<Files.File> files) {
+        var thumbnailer = Files.Thumbnailer.get ();
+        thumbnailer.finished.connect (() => {
+            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
+                                                                   Files.File.IconFlags.USE_THUMBNAILS);
+        });
+
+        thumbnailer.queue_file (destination, null);
+        destination_size_label.label = destination.format_size;
+        destination_time_label.label = destination.formated_modified;
+
         unowned string src_ftype = source.get_ftype ();
         unowned string dest_ftype = destination.get_ftype ();
         if (src_ftype == null) {
