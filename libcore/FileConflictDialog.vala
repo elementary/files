@@ -38,6 +38,7 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
 
     public Files.File source { get; construct; }
     public Files.File destination { get; construct; }
+    public Files.File dest_dir { get; construct; }
 
     private string conflict_name;
     private Gtk.Entry rename_entry;
@@ -50,7 +51,7 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
     private Gtk.Label source_type_label;
     private Gtk.Label source_time_label;
 
-    private Files.File dest_dir;
+
     private Gtk.Image destination_image;
     private Gtk.Label destination_size_label;
     private Gtk.Label destination_type_label;
@@ -60,12 +61,12 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         Object (
             source: Files.File.@get (_source),
             destination: Files.File.@get (_destination),
+            dest_dir: Files.File.@get (_dest_dir),
             title: _("File conflict"),
             transient_for: parent,
             resizable: false
         );
 
-        destination.query_update ();
         var thumbnailer = Files.Thumbnailer.get ();
         thumbnailer.finished.connect (() => {
             destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
@@ -75,18 +76,11 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         thumbnailer.queue_file (destination, null);
         destination_size_label.label = destination.format_size;
         destination_time_label.label = destination.formated_modified;
-
-        dest_dir = Files.File.@get (_dest_dir);
-
-        var files = new GLib.List<Files.File> ();
-        files.prepend (source);
-        files.prepend (destination);
-        files.prepend (dest_dir);
-
-        new Files.CallWhenReady (files, file_list_ready_cb);
     }
 
     construct {
+        destination.query_update ();
+
         image_icon = new ThemedIcon ("dialog-warning");
 
         destination_image = new Gtk.Image () {
@@ -268,6 +262,13 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
                 replace_button.show ();
             }
         });
+
+        var files = new GLib.List<Files.File> ();
+        files.prepend (source);
+        files.prepend (destination);
+        files.prepend (dest_dir);
+
+        new Files.CallWhenReady (files, file_list_ready_cb);
     }
 
     private void file_list_ready_cb (GLib.List<Files.File> files) {
