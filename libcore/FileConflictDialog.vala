@@ -36,21 +36,21 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         NEWEST
     }
 
+    public Files.File source { get; construct; }
+    public Files.File destination { get; construct; }
+
     private string conflict_name;
     private Gtk.Entry rename_entry;
     private Gtk.Button replace_button;
     private Gtk.Button keep_newest_button;
     private Gtk.CheckButton apply_all_checkbutton;
 
-    private Files.File source;
-    private Files.File destination;
-    private Files.File dest_dir;
-
     private Gtk.Image source_image;
     private Gtk.Label source_size_label;
     private Gtk.Label source_type_label;
     private Gtk.Label source_time_label;
 
+    private Files.File dest_dir;
     private Gtk.Image destination_image;
     private Gtk.Label destination_size_label;
     private Gtk.Label destination_type_label;
@@ -58,13 +58,13 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
 
     public FileConflictDialog (Gtk.Window parent, GLib.File _source, GLib.File _destination, GLib.File _dest_dir) {
         Object (
+            source: Files.File.@get (_source),
+            destination: Files.File.@get (_destination),
             title: _("File conflict"),
             transient_for: parent,
             resizable: false
         );
 
-        source = Files.File.@get (_source);
-        destination = Files.File.@get (_destination);
         destination.query_update ();
         var thumbnailer = Files.Thumbnailer.get ();
         thumbnailer.finished.connect (() => {
