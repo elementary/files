@@ -93,7 +93,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
                          string? _uuid) {
         Object (
             custom_name: name,
-            uri: Files.FileUtils.fix_afc_uri (uri),
+            uri: uri,
             gicon: gicon,
             list: list,
             pinned: pinned,
