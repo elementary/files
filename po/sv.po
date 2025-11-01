@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-18 16:44+0000\n"
-"PO-Revision-Date: 2025-10-26 04:34+0000\n"
+"PO-Revision-Date: 2025-10-30 16:55+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <https://l10n.elementaryos.org/projects/files/files/"
 "sv/>\n"
@@ -94,7 +94,7 @@ msgstr "Ersätt"
 
 #: libcore/ConnectServerDialog.vala:32
 msgid "Public FTP"
-msgstr "Offentlig FTP"
+msgstr "Publik FTP"
 
 #: libcore/ConnectServerDialog.vala:38
 msgid "FTP (with login)"
@@ -139,19 +139,19 @@ msgstr "Port:"
 #: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
 #: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:242
 msgid "Type:"
-msgstr "Filtyp:"
+msgstr "Typ:"
 
 #: libcore/ConnectServerDialog.vala:161
 msgid "Name of share on server (Optional)"
-msgstr "Namn på delning på server (valfritt)"
+msgstr "Namn på utdelning på server (valfritt)"
 
 #: libcore/ConnectServerDialog.vala:164
 msgid "Share:"
-msgstr "Delad resurs:"
+msgstr "Utdelning:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Path of shared folder on server (Optional)"
-msgstr "Sökväg till delad mapp på server (valfritt)"
+msgstr "Sökväg till utdelad mapp på server (valfritt)"
 
 #: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
@@ -266,7 +266,7 @@ msgstr "Text att lägga till i slutet"
 
 #: libcore/Enums.vala:203
 msgid "Text to put at the start"
-msgstr "Text att skriva i början"
+msgstr "Text att lägga till i början"
 
 #: libcore/Enums.vala:222
 msgid "Default Format - Date only"
@@ -282,7 +282,7 @@ msgstr "Lokalt format - Datum och tid"
 
 #: libcore/Enums.vala:228
 msgid "ISO 8601 Format - Date only"
-msgstr "ISO 8601-format - endast datum"
+msgstr "ISO 8601-format - Endast datum"
 
 #: libcore/Enums.vala:230
 msgid "ISO 8601 Format - Date and Time"
@@ -294,7 +294,7 @@ msgstr "Skapad datum"
 
 #: libcore/Enums.vala:248
 msgid "Date Modified"
-msgstr "Modifierad datum"
+msgstr "Ändringsdatum"
 
 #: libcore/Enums.vala:250
 msgid "Current Date"
@@ -307,7 +307,7 @@ msgstr "ISO"
 
 #: libcore/Enums.vala:269
 msgid "Locale"
-msgstr "Plats"
+msgstr "Lokalanpassning"
 
 #: libcore/Enums.vala:271
 msgid "Informal"
@@ -319,7 +319,7 @@ msgstr "Otillgänglig"
 
 #: libcore/File.vala:955
 msgid "Failed to parse the desktop file"
-msgstr "Misslyckades att läsa filen"
+msgstr "Misslyckades att tolka skrivbordsfilen"
 
 #: libcore/File.vala:959
 msgid "Failed to parse the desktop file: "
@@ -335,14 +335,14 @@ msgstr "Det går inte att starta skrivbordsfilen: "
 
 #: libcore/File.vala:1169
 msgid "Empty"
-msgstr "Tomt"
+msgstr "Tom"
 
 #: libcore/File.vala:1171
 #, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d objekt"
-msgstr[1] "%'d poster"
+msgstr[1] "%'d objekt"
 
 #: libcore/File.vala:1216
 #, c-format
@@ -396,7 +396,7 @@ msgstr "Behåll nyaste"
 
 #: libcore/FileConflictDialog.vala:183
 msgid "Skip if original was modified more recently"
-msgstr "Hoppa över om originalet var modifierat mer nyligen"
+msgstr "Hoppa över om originalet var ändrat mer nyligen"
 
 #: libcore/FileConflictDialog.vala:293
 #, c-format
@@ -510,25 +510,25 @@ msgstr ""
 #: libcore/FileUtils.vala:574
 #, c-format
 msgid "Could not rename to '%s'"
-msgstr "Kunde inte döpa om till '%s'"
+msgstr "Kunde inte byta namn till '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:668
 #, c-format
 msgid "Today at %s"
-msgstr "Idag på %s"
+msgstr "Idag klockan %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:676
 #, c-format
 msgid "Yesterday at %s"
-msgstr "Igår vid %s"
+msgstr "Igår klockan %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:684
 #, c-format
 msgid "%%A at %s"
-msgstr "%%A på %s"
+msgstr "%%A klockan %s"
 
 #: libcore/FileUtils.vala:909
 #, c-format
@@ -568,7 +568,7 @@ msgstr[1] "ungefär %'d timmar"
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
 #: libcore/FileUtils.vala:932
 msgid "copy"
-msgstr "kopiera"
+msgstr "kopia"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:934
@@ -589,7 +589,7 @@ msgstr ")"
 #: libcore/marlin-file-operations.c:201 libcore/marlin-file-operations.c:285
 #: libcore/FileOperations/DeleteJob.vala:43
 msgid "Error while deleting."
-msgstr "Ett fel uppstod vid raderingen."
+msgstr "Ett fel uppstod vid borttagning."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -654,7 +654,7 @@ msgstr "Kan inte flytta filen till papperskorgen eller ta bort den"
 #: libcore/marlin-file-operations.c:453
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
-"Det är inte tillåtet att flytta filer till papperskorgen eller radera filer "
+"Det är inte tillåtet att flytta filer till papperskorgen eller ta bort filer "
 "på ett skrivskyddat filsystem."
 
 #: libcore/marlin-file-operations.c:456
@@ -662,8 +662,8 @@ msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
-"Det är inte tillåtet att flytta filer till papperskorgen eller radera filer "
-"i en mapp som du inte har skrivrättigheter till."
+"Det är inte tillåtet att flytta filer till papperskorgen eller ta bort filer "
+"i mappar som du inte har skrivrättigheter till."
 
 #: libcore/marlin-file-operations.c:459
 msgid ""
@@ -675,7 +675,7 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:461
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr "Kan inte flytta filen till papperskorgen. Vill du radera den direkt?"
+msgstr "Kan inte flytta filen till papperskorgen. Vill du ta bort den direkt?"
 
 #: libcore/marlin-file-operations.c:462
 msgid ""
@@ -696,7 +696,7 @@ msgid ""
 "either."
 msgstr ""
 "Denna fil kunde inte flyttas till papperskorgen. Du kan kanske inte heller "
-"radera den."
+"ta bort den."
 
 #: libcore/marlin-file-operations.c:473
 msgid ""
@@ -704,7 +704,7 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" Att radera en fil tar bort den permanent"
+" Borttagning av en fil tar bort den permanent"
 
 #: libcore/marlin-file-operations.c:641
 msgid "Trashing Files"
@@ -712,7 +712,7 @@ msgstr "Kastar filer"
 
 #: libcore/marlin-file-operations.c:643
 msgid "Deleting Files"
-msgstr "Raderar filer"
+msgstr "Tar bort filer"
 
 #: libcore/marlin-file-operations.c:944 libcore/marlin-file-operations.c:1083
 #: libcore/marlin-file-operations.c:1136
@@ -730,7 +730,7 @@ msgid ""
 "create it in the destination."
 msgstr ""
 "Mappen \"%s\" kan inte kopieras eftersom du inte har behörighet att skapa "
-"den i destinationen."
+"den i målet."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -791,7 +791,7 @@ msgstr "Fel vid kopiering av \"%s\"."
 #: libcore/marlin-file-operations.c:1295
 #, c-format
 msgid "Could not remove files from the already existing folder %s."
-msgstr "Det gick inte att ta bort filer från en redan befintlig mapp %s."
+msgstr "Det gick inte att ta bort filer från den redan befintliga mappen %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:1347
@@ -875,7 +875,7 @@ msgstr "Målet saknar stöd för symboliska länkar."
 #: libcore/marlin-file-operations.c:2693
 #, c-format
 msgid "There was an error creating the symlink in %s."
-msgstr "Det uppstod ett fel när symlänken i %s skapades."
+msgstr "Det uppstod ett fel när symboliska länken i %s skapades."
 
 #: libcore/marlin-file-operations.c:2991
 msgid "Zero files to process"
@@ -901,13 +901,13 @@ msgstr "ny fil"
 #: libcore/marlin-file-operations.c:3299
 #, c-format
 msgid "Error while creating directory %s."
-msgstr "Fel vid skapande av katalog %s."
+msgstr "Fel vid skapande av katalogen %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3302
 #, c-format
 msgid "Error while creating file %s."
-msgstr "Fel vid skapande av fil %s."
+msgstr "Fel vid skapande av filen %s."
 
 #. TRANSLATORS: %s is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3308
@@ -995,7 +995,7 @@ msgstr "_Försök igen"
 
 #: libcore/StockDialogs.vala:25
 msgid "Delete _All"
-msgstr "Radera _alla"
+msgstr "Ta bort _alla"
 
 #: libcore/StockDialogs.vala:26
 msgid "_Replace"
@@ -1015,7 +1015,7 @@ msgstr "Slå samman _alla"
 
 #: libcore/StockDialogs.vala:30
 msgid "Copy _Anyway"
-msgstr "Kopiera _ändå"
+msgstr "Ko_piera ändå"
 
 #: libcore/StockDialogs.vala:31
 msgid "Empty _Trash"
@@ -1023,11 +1023,11 @@ msgstr "Töm _papperskorgen"
 
 #: libcore/UndoManager.vala:22
 msgid "Undo Copy"
-msgstr "Ångra kopia"
+msgstr "Ångra kopiering"
 
 #: libcore/UndoManager.vala:24
 msgid "Undo Duplicate"
-msgstr "Ångra duplikat"
+msgstr "Ångra duplicering"
 
 #: libcore/UndoManager.vala:26
 msgid "Undo Move"
@@ -1035,7 +1035,7 @@ msgstr "Ångra flyttning"
 
 #: libcore/UndoManager.vala:28
 msgid "Undo Rename"
-msgstr "Ångra byte av namn"
+msgstr "Ångra namnbyte"
 
 #: libcore/UndoManager.vala:30
 msgid "Undo Create Empty File"
@@ -1059,27 +1059,27 @@ msgstr "Ångra Skapa länk"
 
 #: libcore/UndoManager.vala:40
 msgid "Undo Restore from Trash"
-msgstr "Ångra återställning från papperskorgen"
+msgstr "Ångra Återställ från papperskorgen"
 
 #: libcore/UndoManager.vala:42
 msgid "Undo Set Permissions"
-msgstr "Ångra inställda behörigheter"
+msgstr "Ångra Ställ in behörigheter"
 
 #: libcore/UndoManager.vala:44
 msgid "Undo Set Permissions Recursively"
-msgstr "Ångra inställda behörigheter rekursivt"
+msgstr "Ångra Ställ in behörigheter rekursivt"
 
 #: libcore/UndoManager.vala:46
 msgid "Undo Change Owner"
-msgstr "Ångra ändring av ägare"
+msgstr "Ångra Ändra ägare"
 
 #: libcore/UndoManager.vala:48
 msgid "Undo Change Group"
-msgstr "Ångra ändring grupp"
+msgstr "Ångra Ändra grupp"
 
 #: libcore/UndoManager.vala:57
 msgid "Redo Copy"
-msgstr "Gör om kopia"
+msgstr "Gör om Kopiera"
 
 #: libcore/UndoManager.vala:59
 msgid "Redo Duplicate"
@@ -1087,7 +1087,7 @@ msgstr "Gör om Duplicera"
 
 #: libcore/UndoManager.vala:61
 msgid "Redo Move"
-msgstr "Gör om rörelsen"
+msgstr "Gör om Flyttning"
 
 #: libcore/UndoManager.vala:63
 msgid "Redo Rename"
@@ -1115,15 +1115,15 @@ msgstr "Gör om Skapa länk"
 
 #: libcore/UndoManager.vala:75
 msgid "Redo Restore from Trash"
-msgstr "Gör om återställning från papperskorgen"
+msgstr "Gör om Återställ från papperskorgen"
 
 #: libcore/UndoManager.vala:77
 msgid "Redo Set Permissions"
-msgstr "Återupprätta inställda behörigheter"
+msgstr "Gör om Ställ in behörigheter"
 
 #: libcore/UndoManager.vala:79
 msgid "Redo Set Permissions Recursively"
-msgstr "Återupprätta inställda behörigheter rekursivt"
+msgstr "Gör om Ställ in behörigheter rekursivt"
 
 #: libcore/UndoManager.vala:81
 msgid "Redo Change Owner"
@@ -1131,7 +1131,7 @@ msgstr "Gör om Ändra ägare"
 
 #: libcore/UndoManager.vala:83
 msgid "Redo Change Group"
-msgstr "Redo Förändringsgrupp"
+msgstr "Gör om Ändra grupp"
 
 #: libcore/UndoManager.vala:380
 msgid "Original location could not be determined"
@@ -1157,7 +1157,7 @@ msgstr "Målet är inte en mapp."
 
 #: libcore/FileOperations/CommonJob.vala:181
 msgid "You do not have permissions to access the destination folder."
-msgstr "Du saknar de nödvändiga rättigheterna för att komma åt målmappen."
+msgstr "Du saknar nödvändig behörighet för att komma åt målmappen."
 
 #: libcore/FileOperations/CommonJob.vala:183
 msgid "There was an error getting information about the destination."
@@ -1168,7 +1168,7 @@ msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
-"Det finns inte tillräckligt med utrymme på målet. Försök att radera något "
+"Det finns inte tillräckligt med utrymme på målet. Försök att ta bort något "
 "för att skapa mer ledigt utrymme."
 
 #. TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1231,24 +1231,24 @@ msgstr "Tömmer papperskorgen"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:85
 msgid "Permanently delete all items from Trash?"
-msgstr "Radera alla objekt i papperskorgen permanent?"
+msgstr "Ta bort alla objekt i papperskorgen permanent?"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:86
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
-"Alla föremål i alla papperskorgar, inklusive de på monterade externa "
+"Alla objekt i alla papperskorgskataloger, inklusive de på monterade externa "
 "enheter, kommer att tas bort permanent."
 
 #: libcore/FileOperations/EmptyTrashJob.vala:89
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr "Radera alla objekt i papperskorgen permanent på denna enhet?"
+msgstr "Ta bort alla objekt i papperskorgen permanent på denna montering?"
 
 #: libcore/FileOperations/EmptyTrashJob.vala:90
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
-"Alla objekt i papperskorgen på denna enhet kommer att raderas permanent."
+"Alla objekt i papperskorgen på denna montering kommer att tas bort permanent."
 
 #: libcore/FileOperations/MountUtils.vala:31
 #, c-format
@@ -1273,8 +1273,8 @@ msgstr "Det går inte att montera '%s'"
 #, c-format
 msgid "Preparing to copy %'d file (%s)"
 msgid_plural "Preparing to copy %'d files (%s)"
-msgstr[0] "Förbereder kopiering av %'d-fil (%s)"
-msgstr[1] "Förbereder kopiering av %'d-filer (%s)"
+msgstr[0] "Förbereder kopiering av %'d fil (%s)"
+msgstr[1] "Förbereder kopiering av %'d filer (%s)"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1284,7 +1284,7 @@ msgstr[1] "Förbereder kopiering av %'d-filer (%s)"
 #, c-format
 msgid "Preparing to move %'d file (%s)"
 msgid_plural "Preparing to move %'d files (%s)"
-msgstr[0] "Förbereder för att flytta %'d-fil (%s)"
+msgstr[0] "Förbereder för att flytta %'d fil (%s)"
 msgstr[1] "Förbereder för att flytta %'d filer (%s)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
@@ -1292,7 +1292,7 @@ msgstr[1] "Förbereder för att flytta %'d filer (%s)"
 #: libcore/FileOperations/CopyMoveJob.vala:87
 #, c-format
 msgid "Creating links in \"%s\""
-msgstr "Skapa länkar i \"%s\""
+msgstr "Skapar länkar i \"%s\""
 
 #: libcore/FileOperations/CopyMoveJob.vala:92
 #, c-format
@@ -1306,19 +1306,19 @@ msgstr[1] "Skapar länkar till %'d filer"
 #: libcore/FileOperations/CopyMoveJob.vala:138
 #, c-format
 msgid "Moving \"%s\" to \"%s\""
-msgstr "Flytta \"%s\" till \"%s\""
+msgstr "Flyttar \"%s\" till \"%s\""
 
 #: libcore/FileOperations/CopyMoveJob.vala:138
 #, c-format
 msgid "Copying \"%s\" to \"%s\""
-msgstr "Kopiera \"%s\" till \"%s\""
+msgstr "Kopierar \"%s\" till \"%s\""
 
 #. TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
 #. \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
 #: libcore/FileOperations/CopyMoveJob.vala:142
 #, c-format
 msgid "Duplicating \"%s\""
-msgstr "Duplicering av \"%s\""
+msgstr "Duplicerar \"%s\""
 
 #: libcore/FileOperations/CopyMoveJob.vala:152
 #, c-format
@@ -1340,8 +1340,8 @@ msgstr[1] "Kopierar %'d filer (i \"%s\") till \"%s\""
 #, c-format
 msgid "Duplicating %'d file (in \"%s\")"
 msgid_plural "Duplicating %'d files (in \"%s\")"
-msgstr[0] "Duplicering av %'d-fil (i \"%s\")"
-msgstr[1] "Duplicering av %'d-filer (i \"%s\")"
+msgstr[0] "Duplicerar %'d fil (i \"%s\")"
+msgstr[1] "Duplicerar %'d filer (i \"%s\")"
 
 #: libcore/FileOperations/CopyMoveJob.vala:179
 #, c-format
@@ -1380,8 +1380,8 @@ msgstr "%s av %s"
 #, c-format
 msgid "%s of %s — %s left (%s/sec)"
 msgid_plural "%s of %s — %s left (%s/sec)"
-msgstr[0] "%s av %s - %s kvar (%s/s)"
-msgstr[1] "%s av %s - %s kvar (%s/s)"
+msgstr[0] "%s av %s - %s återstår (%s/s)"
+msgstr[1] "%s av %s - %s återstår (%s/s)"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1421,7 +1421,7 @@ msgstr[1] ""
 
 #: libcore/FileOperations/DeleteJob.vala:63
 msgid "If you delete an item, it will be permanently lost."
-msgstr "Om du raderar ett objekt så är det borta för alltid."
+msgstr "Om du tar bort ett objekt så är det borta för alltid."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -1435,9 +1435,8 @@ msgstr "Ta bort \"%s\" permanent?"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Är du säker på att du vill ta bort %'d markerat objekt permanent ?"
-msgstr[1] ""
-"Är du säker att du vill ta bort de %'d markerade objekten permanent?"
+msgstr[0] "Är du säker på att du vill ta bort %'d markerat objekt permanent?"
+msgstr[1] "Är du säker att du vill ta bort %'d markerade objekt permanent?"
 
 #: libcore/FileOperations/DeleteJob.vala:86
 msgid "Deleted items are not sent to Trash and are not recoverable."
@@ -1453,7 +1452,7 @@ msgstr[1] "%'d filer återstår att ta bort"
 
 #: libcore/FileOperations/DeleteJob.vala:114
 msgid "Deleting files"
-msgstr "Raderar filer"
+msgstr "Tar bort filer"
 
 #. TRANSLATORS: %s will expand to a time like "2 minutes". It must not be translated or removed.
 #. The singular/plural form will be used depending on the remaining time (i.e. the %s argument).
@@ -1461,8 +1460,8 @@ msgstr "Raderar filer"
 #, c-format
 msgid "%s left"
 msgid_plural "%s left"
-msgstr[0] "%s kvar"
-msgstr[1] "%s kvar"
+msgstr[0] "%s återstår"
+msgstr[1] "%s återstår"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1472,8 +1471,8 @@ msgstr[1] "%s kvar"
 #, c-format
 msgid "Preparing to delete %'d file (%s)"
 msgid_plural "Preparing to delete %'d files (%s)"
-msgstr[0] "Förbereder för att radera %'d-filen (%s)"
-msgstr[1] "Förbereder för att radera %'d-filer (%s)"
+msgstr[0] "Förbereder för att ta bort %'d fil (%s)"
+msgstr[1] "Förbereder för att ta bort %'d filer (%s)"
 
 #: libcore/FileOperations/DeleteJob.vala:155
 msgid "Moving files to trash"
@@ -1483,8 +1482,8 @@ msgstr "Flyttar filer till papperskorgen"
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "%'d fil återstår att kasta"
-msgstr[1] "%'d filer återstår att kasta"
+msgstr[0] "%'d fil återstår att kasta i papperskorgen"
+msgstr[1] "%'d filer återstår att kasta i papperskorgen"
 
 #: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
 #, c-format
@@ -1498,11 +1497,11 @@ msgstr "Gå till %s"
 
 #: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
 msgid "Type Path"
-msgstr "Typ Sökväg"
+msgstr "Skriv sökväg"
 
 #: libcore/Widgets/BasicLocationBar.vala:88
 msgid "Type a path"
-msgstr "Skriv sökväg"
+msgstr "Skriv en sökväg"
 
 #: libcore/Widgets/ViewSwitcher.vala:39
 msgid "View as Grid"
@@ -1526,11 +1525,11 @@ msgstr "Töm papperskorgen"
 
 #: plugins/pantheon-files-trash/plugin.vala:21
 msgid "Restore Selected"
-msgstr "Återställ valda"
+msgstr "Återställ markerade"
 
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
-msgstr "Radera valda"
+msgstr "Ta bort markerade"
 
 #: plugins/send-by-email/plugin.vala:26
 msgid "Send by Email"
@@ -1552,7 +1551,7 @@ msgstr "Visa programversionen"
 
 #: src/Application.vala:71
 msgid "Open one or more URIs, each in their own tab"
-msgstr "Öppna en eller flera URI:er, var och en på sin egen flik"
+msgstr "Öppna en eller flera URI:er, var och en i sin egen flik"
 
 #: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1909
 #: src/View/AbstractDirectoryView.vala:1915
@@ -1565,7 +1564,7 @@ msgstr "Avsluta Filer"
 
 #: src/Application.vala:74
 msgid "Enable debug logging"
-msgstr "Aktivera felsöknings-loggning"
+msgstr "Aktivera felsökningsloggning"
 
 #: src/Application.vala:77
 msgid "[URI…]"
@@ -1573,11 +1572,11 @@ msgstr "[URI...]"
 
 #: src/Application.vala:89
 msgid "Error: Running Files as root using sudo is not possible."
-msgstr "Felmeddelande: Det är inte möjligt att köra Files som root med sudo."
+msgstr "Fel: Det är inte möjligt att köra Filer som root med sudo."
 
 #: src/Application.vala:90
 msgid "Please use the command: io.elementary.files-pkexec [folder]"
-msgstr "Använd kommandot: io.elementary.files-pkexec [folder]"
+msgstr "Använd kommandot: io.elementary.files-pkexec [mapp]"
 
 #: src/Application.vala:107
 msgid "--quit cannot be used with URIs."
@@ -1585,7 +1584,7 @@ msgstr "--quit kan inte användas med URI:er."
 
 #: src/DesktopLauncher.vala:21
 msgid "Browse your files"
-msgstr "Bläddra genom dina filer"
+msgstr "Bläddra bland dina filer"
 
 #: src/DesktopLauncher.vala:22
 msgid "File Manager"
@@ -1628,7 +1627,7 @@ msgstr "Enhetsanvändning"
 #: src/Dialogs/AbstractPropertiesDialog.vala:143
 #, c-format
 msgid "%s free out of %s"
-msgstr "%s fri från %s"
+msgstr "%s ledigt av %s"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:151
 msgid "Capacity:"
@@ -1643,11 +1642,11 @@ msgstr "Okänd"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:154
 msgid "Available:"
-msgstr "Tillgängliga:"
+msgstr "Tillgängligt:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:157
 msgid "Used:"
-msgstr "Använd:"
+msgstr "Använt:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:21
 msgid "Original filename"
@@ -1655,7 +1654,7 @@ msgstr "Ursprungligt filnamn"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:23
 msgid "Modified original"
-msgstr "Modifierat original"
+msgstr "Ändrat original"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:25
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:252
@@ -1664,7 +1663,7 @@ msgstr "Nytt basnamn"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
 msgid "Bulk Rename"
-msgstr "Omdöpa i bulk"
+msgstr "Massnamnbyte"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 #: src/View/Sidebar/BookmarkRow.vala:338
@@ -1748,7 +1747,7 @@ msgstr "Siffror"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
 msgid "Separator"
-msgstr "Avskiljare"
+msgstr "Avgränsare"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:310
 #, c-format
@@ -1757,7 +1756,7 @@ msgstr "%0*d,%0*d,%0*d…"
 
 #: src/Dialogs/ChooseAppDialog.vala:45
 msgid "Set as default"
-msgstr "Använd som standard"
+msgstr "Ange som standard"
 
 #: src/Dialogs/PropertiesWindow.vala:116
 #: src/View/AbstractDirectoryView.vala:2028
@@ -1767,7 +1766,7 @@ msgstr "Egenskaper"
 
 #: src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
-msgstr "Rättigheter"
+msgstr "Behörigheter"
 
 #: src/Dialogs/PropertiesWindow.vala:263
 msgid "Contains:"
@@ -1777,8 +1776,8 @@ msgstr "Innehåller:"
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] "%i fil kunde inte läsas på grund av rättigheter eller andra fel."
-msgstr[1] "%i filer kunde inte läsas på grund av rättigheter eller andra fel."
+msgstr[0] "%i fil kunde inte läsas på grund av behörigheter eller andra fel."
+msgstr[1] "%i filer kunde inte läsas på grund av behörigheter eller andra fel."
 
 #: src/Dialogs/PropertiesWindow.vala:282
 msgid "Actual Size Could Be Larger"
@@ -1794,7 +1793,7 @@ msgstr "Läser in…"
 
 #: src/Dialogs/PropertiesWindow.vala:520
 msgid "Could not be determined"
-msgstr "Kunde inte uppskattas"
+msgstr "Kunde inte fastställas"
 
 #: src/Dialogs/PropertiesWindow.vala:568
 msgid "Created:"
@@ -1806,11 +1805,11 @@ msgstr "Ändrad:"
 
 #: src/Dialogs/PropertiesWindow.vala:598
 msgid "Deleted:"
-msgstr "Raderad:"
+msgstr "Borttagen:"
 
 #: src/Dialogs/PropertiesWindow.vala:608
 msgid "Media type:"
-msgstr "Typ av media:"
+msgstr "Mediatyp:"
 
 #: src/Dialogs/PropertiesWindow.vala:615
 msgid "Resolution:"
@@ -1840,7 +1839,7 @@ msgstr "Öppna med:"
 
 #: src/Dialogs/PropertiesWindow.vala:951
 msgid "Unable to determine file ownership and permissions"
-msgstr "Det går inte att fastställa filägande och behörigheter"
+msgstr "Det går inte att fastställa filägarskap och behörigheter"
 
 #: src/Dialogs/PropertiesWindow.vala:958
 msgid "Owner:"
@@ -1876,8 +1875,8 @@ msgstr[1] "%u mappar"
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] "%u valt objekt"
-msgstr[1] "%u valda objekt"
+msgstr[0] "%u markerat objekt"
+msgstr[1] "%u markerade objekt"
 
 #. TRANSLATORS: total (folders, files)
 #: src/Dialogs/PropertiesWindow.vala:1294
@@ -1895,7 +1894,7 @@ msgstr "Format:"
 
 #: src/Utils/MimeActions.vala:282
 msgid "Multiple file types selected"
-msgstr "Multipla filtyper valda"
+msgstr "Flera filtyper markerade"
 
 #: src/Utils/MimeActions.vala:283
 msgid "No single app can open all these types of file"
@@ -1907,7 +1906,7 @@ msgstr "Misslyckades att öppna filer"
 
 #: src/Utils/MimeActions.vala:321
 msgid "Could not open URIs"
-msgstr "Kunde inte öppna URI:erna"
+msgstr "Kunde inte öppna URI:er"
 
 #: src/Utils/MimeActions.vala:324
 msgid "Could not open files or URIs with this app"
@@ -1923,7 +1922,7 @@ msgstr "Grupp"
 
 #: src/Utils/Permissions.vala:34
 msgid "Everyone"
-msgstr "Vem som helst"
+msgstr "Alla andra"
 
 #: src/View/AbstractDirectoryView.vala:838
 #: src/View/AbstractDirectoryView.vala:1164
@@ -1958,7 +1957,7 @@ msgstr "Kan inte släppa denna fil"
 
 #: src/View/AbstractDirectoryView.vala:1618
 msgid "Invalid file name provided"
-msgstr "Ogiltigt filnamn angivit"
+msgstr "Ogiltigt filnamn angivet"
 
 #: src/View/AbstractDirectoryView.vala:1892
 #: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:241
@@ -1972,11 +1971,11 @@ msgstr "Kör"
 #: src/View/AbstractDirectoryView.vala:1939
 #, c-format
 msgid "Open in %s"
-msgstr "Öppna med %s"
+msgstr "Öppna i %s"
 
 #: src/View/AbstractDirectoryView.vala:2008
 msgid "Open in"
-msgstr "Öppna med"
+msgstr "Öppna i"
 
 #: src/View/AbstractDirectoryView.vala:2010
 #: src/View/Widgets/BreadcrumbsEntry.vala:446
@@ -1989,11 +1988,11 @@ msgstr "Lägg till i bokmärken"
 
 #: src/View/AbstractDirectoryView.vala:2041
 msgid "Select All"
-msgstr "Välj alla"
+msgstr "Markera alla"
 
 #: src/View/AbstractDirectoryView.vala:2050
 msgid "Invert Selection"
-msgstr "Val av inverterare"
+msgstr "Invertera markering"
 
 #: src/View/AbstractDirectoryView.vala:2059
 msgid "Deselect All"
@@ -2014,7 +2013,7 @@ msgstr "Flytta till papperskorgen"
 
 #: src/View/AbstractDirectoryView.vala:2087
 msgid "Delete Permanently"
-msgstr "Radera permanent"
+msgstr "Ta bort permanent"
 
 #: src/View/AbstractDirectoryView.vala:2094
 msgid "Restore from Trash"
@@ -2022,11 +2021,11 @@ msgstr "Återställ från papperskorgen"
 
 #: src/View/AbstractDirectoryView.vala:2117
 msgid "Open Parent Folder"
-msgstr "Öppna mappen ovan"
+msgstr "Öppna överliggande mapp"
 
 #: src/View/AbstractDirectoryView.vala:2120
 msgid "Remove from History"
-msgstr "Ta bort från historiken"
+msgstr "Ta bort från historik"
 
 #: src/View/AbstractDirectoryView.vala:2146
 msgid "Rename…"
@@ -2053,11 +2052,11 @@ msgstr "Klistra in"
 
 #: src/View/AbstractDirectoryView.vala:2299
 msgid "Set as Wallpaper"
-msgstr "Ställ in som bakgrundsbild"
+msgstr "Ange som bakgrundsbild"
 
 #: src/View/AbstractDirectoryView.vala:2331 src/View/ListView.vala:28
 msgid "Type"
-msgstr "Filtyp"
+msgstr "Typ"
 
 #: src/View/AbstractDirectoryView.vala:2341
 msgid "Reversed Order"
@@ -2119,7 +2118,7 @@ msgstr "Klipper ut markeringen istället"
 #: src/View/AbstractDirectoryView.vala:3135
 #: src/View/AbstractDirectoryView.vala:3146
 msgid "Cannot paste files here"
-msgstr "Kan inte kopiera filer hit"
+msgstr "Kan inte klistra in filer här"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2153,11 +2152,11 @@ msgstr "Ändrad"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr "Sekretessläget är aktiverat"
+msgstr "Integritetsläget är aktiverat"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr "Inga nya filer sparas i minnet"
+msgstr "Inga tidigare filer blir ihågkomna"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
@@ -2165,7 +2164,7 @@ msgstr "Ändra säkerhetsinställningar"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr "Öppna appen för systemets säkerhets- och sekretessinställningar"
+msgstr "Öppna appen för systemets säkerhets- och integritetsinställningar"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -2177,7 +2176,7 @@ msgstr "Papperskorgen är tom"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
-msgstr "Det finns inga nyligen använda filer"
+msgstr "Det finns inga tidigare filer"
 
 #: src/View/Slot.vala:34
 msgid "Access Denied"
@@ -2205,7 +2204,7 @@ msgstr "Den här mappen tillhör inte dig"
 
 #: src/View/ViewContainer.vala:392
 msgid "You don't have permission to view this folder."
-msgstr "Du saknar rättigheter för att se innehållet i denna mapp."
+msgstr "Du saknar behörighet för att se innehållet i denna mapp."
 
 #: src/View/ViewContainer.vala:396
 msgid "Unable to Mount Folder"
@@ -2213,11 +2212,11 @@ msgstr "Kunde inte montera mappen"
 
 #: src/View/ViewContainer.vala:398
 msgid "Could not connect to the server for this folder."
-msgstr "Kunde inte ansluta till den här mappens server."
+msgstr "Kunde inte ansluta till servern för den här mappen."
 
 #: src/View/ViewContainer.vala:404
 msgid "Unable to Display Folder Contents"
-msgstr "Kan inte visa mappinnehåll"
+msgstr "Kan inte visa mappinnehållet"
 
 #: src/View/ViewContainer.vala:406
 msgid "The operation timed out."
@@ -2253,7 +2252,7 @@ msgstr "Öppna i nytt fönster"
 
 #: src/View/Window.vala:475
 msgid "Duplicate Tab"
-msgstr "Fliken Duplicera"
+msgstr "Duplicera flik"
 
 #. TRANSLATORS: For RTL this should be "to the left"
 #: src/View/Window.vala:479
@@ -2262,11 +2261,11 @@ msgstr "Stäng flikarna till höger"
 
 #: src/View/Window.vala:480
 msgid "Close Other Tabs"
-msgstr "Stäng andra flikar"
+msgstr "Stäng övriga flikar"
 
 #: src/View/Window.vala:481
 msgid "Close Tab"
-msgstr "Stäng fliken"
+msgstr "Stäng flik"
 
 #: src/View/Window.vala:766 src/View/Window.vala:776
 msgid "(as Administrator)"
@@ -2276,7 +2275,7 @@ msgstr "(som administratör)"
 #: src/View/Sidebar/AbstractMountableRow.vala:196
 #, c-format
 msgid "Eject '%s'"
-msgstr "Skjut ut '%s'"
+msgstr "Mata ut '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:113
 #: src/View/Sidebar/AbstractMountableRow.vala:196
@@ -2286,7 +2285,7 @@ msgstr "Avmontera '%s'"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:266
 msgid "Permanently Delete Trash on this Mount"
-msgstr "Ta bort papperskorgen permanent på detta berg"
+msgstr "Ta bort papperskorgen permanent på denna montering"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:270
 msgid "_Unmount"
@@ -2295,12 +2294,12 @@ msgstr "_Avmontera"
 #: src/View/Sidebar/AbstractMountableRow.vala:331
 #, c-format
 msgid "%s free"
-msgstr "%s gratis"
+msgstr "%s ledigt"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:332
 #, c-format
 msgid "%s used of %s"
-msgstr "%s används av %s"
+msgstr "%s använt av %s"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:362
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
@@ -2312,7 +2311,7 @@ msgstr "%s (%s)"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:362
 msgid "Not mounted"
-msgstr "Ej monterad"
+msgstr "Inte monterad"
 
 #: src/View/Sidebar/BookmarkListBox.vala:135
 msgid "View the home folder"
@@ -2332,7 +2331,7 @@ msgstr "Öppna i ny _flik"
 
 #: src/View/Sidebar/BookmarkRow.vala:310
 msgid "Open in New _Window"
-msgstr "Öppna i nytt _fönster"
+msgstr "Öppna i _nytt fönster"
 
 #: src/View/Sidebar/BookmarkRow.vala:334
 msgid "Remove"
@@ -2340,15 +2339,15 @@ msgstr "Ta bort"
 
 #: src/View/Sidebar/BookmarkRow.vala:352
 msgid "Permanently Delete All Trash"
-msgstr "Permanent ta bort alla papperskorgen"
+msgstr "Ta permanent bort alla papperskorgar"
 
 #: src/View/Sidebar/BookmarkRow.vala:352
 msgid "Permanently Delete Trash"
-msgstr "Permanent ta bort papperskorgen"
+msgstr "Ta permanent bort papperskorgen"
 
 #: src/View/Sidebar/DeviceListBox.vala:158
 msgid "View the root of the local filesystem"
-msgstr "Visa roten till det lokala filsystemet"
+msgstr "Visa roten i det lokala filsystemet"
 
 #: src/View/Sidebar/DriveRow.vala:70
 #, c-format
@@ -2359,12 +2358,12 @@ msgstr "%s innehåller inga tillgängliga data."
 msgid ""
 "To use this drive you may need to replug it, or insert media or format it."
 msgstr ""
-"För att använda den här enheten kan du behöva koppla in den igen, sätta in "
+"För att använda den här enheten kan du behöva ansluta den igen, mata in "
 "media eller formatera den."
 
 #: src/View/Sidebar/DriveRow.vala:102
 msgid "Unformatted or no media"
-msgstr "Oformaterad eller ingen media"
+msgstr "Oformaterad eller inget media"
 
 #: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:188
 msgid "Safely Remove"
@@ -2414,7 +2413,7 @@ msgstr "Mata ut media"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 msgid "Bind mount"
-msgstr "Bindfäste"
+msgstr "Bind-montering"
 
 #: src/View/Widgets/AppMenu.vala:25
 msgid "Zoom Out"
@@ -2422,7 +2421,7 @@ msgstr "Zooma ut"
 
 #: src/View/Widgets/AppMenu.vala:34
 msgid "Zoom 1:1"
-msgstr "Zoom 1:1"
+msgstr "Zooma 1:1"
 
 #: src/View/Widgets/AppMenu.vala:43
 msgid "Zoom In"
@@ -2435,7 +2434,7 @@ msgstr "Dubbelklicka för att navigera"
 #: src/View/Widgets/AppMenu.vala:82
 msgid "Double-click on a folder opens it, single-click selects it"
 msgstr ""
-"Dubbelklicka på en mapp för att öppna den, enkelklicka för att välja den"
+"Dubbelklicka på en mapp för att öppna den, enkelklicka för att markera den"
 
 #: src/View/Widgets/AppMenu.vala:86
 msgid "Sort Folders before Files"
@@ -2459,12 +2458,12 @@ msgstr "Lokala miniatyrbilder"
 
 #: src/View/Widgets/AppMenu.vala:110
 msgid "Remote Thumbnails"
-msgstr "Fjärrstyrda miniatyrbilder"
+msgstr "Fjärrserverns miniatyrbilder"
 
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
 #: src/View/Widgets/AppMenu.vala:116
 msgid "Date & Time Format"
-msgstr "Datum & tids format"
+msgstr "Datum- och tidsformat"
 
 #: src/View/Widgets/AppMenu.vala:199
 msgid "No operation to undo"
@@ -2472,7 +2471,7 @@ msgstr "Ingen åtgärd att ångra"
 
 #: src/View/Widgets/AppMenu.vala:206
 msgid "No operation to redo"
-msgstr "Ingen operation att göra om"
+msgstr "Ingen åtgärd att göra om"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:141
 #: src/View/Widgets/LocationBar.vala:216
@@ -2492,8 +2491,8 @@ msgid ""
 "Caution. Administrative rights will be granted after successful "
 "authentication"
 msgstr ""
-"Varning för detta. Administrativa rättigheter kommer att beviljas efter "
-"framgångsrik autentisering"
+"Försiktigt. Administrativa rättigheter kommer att beviljas efter lyckad "
+"autentisering"
 
 #: src/View/Widgets/LocationBar.vala:212
 msgid "Reload this folder"
@@ -2512,17 +2511,17 @@ msgstr "%u mappar"
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
-msgstr[0] " och %u annat objekt (%s) valt"
-msgstr[1] " och %u andra objekt (%s) valda"
+msgstr[0] " och %u annat objekt (%s) markerat"
+msgstr[1] " och %u andra objekt (%s) markerade"
 
 #: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
 msgid " selected"
-msgstr " valda"
+msgstr " markerade"
 
 #: src/View/Widgets/OverlayBar.vala:181
 #, c-format
 msgid "%u items selected (%s)"
-msgstr "%u objekt valda (%s)"
+msgstr "%u objekt markerade (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:226
@@ -2585,7 +2584,7 @@ msgstr "Under denna mapp"
 
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
-msgstr "Nyligen använt"
+msgstr "Nyligen använda"
 
 #~ msgid "_Mount"
 #~ msgstr "_Montera"
