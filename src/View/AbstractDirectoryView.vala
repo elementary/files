@@ -265,7 +265,6 @@ namespace Files {
         private Gtk.Widget view;
         protected Gtk.ScrolledWindow scrolled_window;
         private Gtk.Label empty_label;
-        private Gtk.Label hidden_label;
         private Gtk.Overlay overlay;
         private unowned ClipboardManager clipboard;
         protected Files.ListModel model;
@@ -304,33 +303,22 @@ namespace Files {
             };
 
             empty_label = new Gtk.Label (slot.get_empty_message ()) {
-                wrap = true
-            };
-            empty_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-            empty_label.no_show_all = true;
-
-            hidden_label = new Gtk.Label (_("Hidden files are present")) {
-                wrap = true
-            };
-            hidden_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
-            hidden_label.no_show_all = true;
-
-            var empty_box = new Gtk.Box (VERTICAL, 0) {
                 halign = CENTER,
                 valign = CENTER,
                 hexpand = false,
                 vexpand = false,
+                wrap = true
             };
-            empty_box.add (empty_label);
-            empty_box.add (hidden_label);
+            empty_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+            empty_label.no_show_all = true;
 
             overlay = new Gtk.Overlay () {
                 hexpand = true,
                 vexpand = true,
                 child = scrolled_window
             };
-            overlay.add_overlay (empty_box);
-            overlay.set_overlay_pass_through (empty_box, true);
+            overlay.add_overlay (empty_label);
+            overlay.set_overlay_pass_through (empty_label, true);
             overlay.add_events (Gdk.EventMask.ALL_EVENTS_MASK);
 
             child = overlay;
@@ -1064,7 +1052,7 @@ namespace Files {
         public void after_trash_or_delete () {
             /* Need to use Idle else cursor gets reset to null after setting to delete_path */
             Idle.add (() => {
-                update_empty_labels ();
+                empty_label.visible = slot.directory.is_empty ();
                 set_cursor (deleted_path, false, false, false);
                 unblock_directory_monitor ();
                 return GLib.Source.REMOVE;
@@ -1363,11 +1351,8 @@ namespace Files {
 
         private void on_directory_file_loaded (Directory dir, Files.File file) {
             // Do not select or sort files added during initial load.
+            empty_label.visible = false;
             model.add_file (file, dir);
-            if (empty_label.visible) {
-                update_empty_labels ();
-            }
-
         }
 
         private void on_directory_file_changed (Directory dir, Files.File file) {
@@ -1401,9 +1386,8 @@ namespace Files {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
             file.exists = false;
+            empty_label.visible = dir.is_empty ();
             model.remove_file (file, dir);
-
-            update_empty_labels ();
 
             if (plugins != null) {
                 plugins.update_file_info (file);
@@ -1441,7 +1425,7 @@ namespace Files {
 
             // Wait for view to draw so thumbnails and color tags displayed on first sight
             Idle.add (() => {
-                update_empty_labels ();
+                empty_label.visible = slot.directory.is_empty ();
                 thaw_tree ();
                 schedule_thumbnail_color_tag_timeout ();
                 return Source.REMOVE;
