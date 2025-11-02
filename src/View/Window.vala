@@ -1375,6 +1375,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
 
         update_browser_buttons ();
+        location_bar.set_display_path (current_container.uri);
 
         /* Update viewmode switch, action state and settings */
         var mode = current_container.view_mode;
@@ -1382,7 +1383,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         view_switcher.sensitive = current_container.can_show_folder;
         get_action ("view-mode").change_state (new Variant.uint32 (mode));
         Files.app_settings.set_enum ("default-viewmode", mode);
-        update_location_bar (current_container.uri);
     }
 
     public void update_browser_buttons () {
@@ -1420,12 +1420,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
 
         button_forward.menu = forward_menu;
-    }
-
-    private void update_location_bar (string new_path, bool with_animation = true) {
-        location_bar.with_animation = with_animation;
-        location_bar.set_display_path (new_path);
-        location_bar.with_animation = true;
     }
 
     private void update_labels (string uri) {
