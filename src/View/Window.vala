@@ -533,10 +533,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             return;
         }
 
-        loading_uri (current_container.uri);
-        current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
         sidebar.sync_uri (current_container.uri);
-        location_bar.sensitive = !current_container.is_frozen;
+        update_headerbar ();
         save_active_tab_position ();
     }
 
@@ -555,7 +553,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             add_tab.begin (default_location, mode, false, () => {
                 // We can assume adding default tab always succeeds
                 // Ensure default tab's slot is active so it can be focused
-                current_container.set_active_state (true, false);
             });
 
         } else {
@@ -648,13 +645,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     public void connect_content_signals (ViewContainer content) {
         content.tab_name_changed.connect (check_for_tabs_with_same_name);
         content.loading.connect (on_content_loading);
-        content.active.connect (update_headerbar);
     }
 
     public void disconnect_content_signals (ViewContainer content) {
         content.tab_name_changed.disconnect (check_for_tabs_with_same_name);
         content.loading.disconnect (on_content_loading);
-        content.active.disconnect (update_headerbar);
     }
 
     private void on_content_loading (ViewContainer content, bool is_loading) {
@@ -669,10 +664,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             }
         }
 
-        tab_view.get_page (content).loading = is_loading;
+        tab_view.get_page (content).loading = is_loading; // Switches spinner
 
-        check_for_tabs_with_same_name ();
-        update_headerbar ();
+        if (is_loading) {
+            check_for_tabs_with_same_name ();
+        }
 
         if (restoring_tabs == 0 && !is_loading) {
             save_tabs ();
@@ -1325,8 +1321,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             }
         }
 
-        /* Render the final path in the location bar without animation */
-        update_location_bar (path, false);
         return restoring_tabs;
     }
 
@@ -1375,17 +1369,13 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    private void update_headerbar () {
+    public void update_headerbar () {
         if (restoring_tabs > 0 || current_container == null) {
             return;
         }
 
-        /* Update browser buttons */
-        set_back_menu (current_container.get_go_back_path_list ());
-        set_forward_menu (current_container.get_go_forward_path_list ());
-        button_back.sensitive = current_container.can_go_back;
-        button_forward.sensitive = (current_container.can_show_folder && current_container.can_go_forward);
-        location_bar.sensitive = !current_container.is_loading;
+        update_browser_buttons ();
+        location_bar.set_display_path (current_container.uri);
 
         /* Update viewmode switch, action state and settings */
         var mode = current_container.view_mode;
@@ -1393,6 +1383,13 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         view_switcher.sensitive = current_container.can_show_folder;
         get_action ("view-mode").change_state (new Variant.uint32 (mode));
         Files.app_settings.set_enum ("default-viewmode", mode);
+    }
+
+    public void update_browser_buttons () {
+        set_back_menu (current_container.get_go_back_path_list ());
+        set_forward_menu (current_container.get_go_forward_path_list ());
+        button_back.sensitive = current_container.can_go_back;
+        button_forward.sensitive = (current_container.can_show_folder && current_container.can_go_forward);
     }
 
     private void set_back_menu (Gee.List<string> path_list) {
@@ -1425,16 +1422,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         button_forward.menu = forward_menu;
     }
 
-    private void update_location_bar (string new_path, bool with_animation = true) {
-        location_bar.with_animation = with_animation;
-        location_bar.set_display_path (new_path);
-        location_bar.with_animation = true;
-    }
-
     private void update_labels (string uri) {
         if (current_container != null) { /* Can happen during restore */
             set_title (current_container.tab_name); /* Not actually visible on elementaryos */
-            update_location_bar (uri);
             sidebar.sync_uri (uri);
         }
     }
