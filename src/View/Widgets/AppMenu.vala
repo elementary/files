@@ -121,6 +121,8 @@ public class Files.AppMenu : Gtk.Popover {
         locale_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
         var informal_button = new Gtk.RadioButton.with_label_from_widget (iso_button, DateFormatMode.INFORMAL.to_string ());
         informal_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
+        var compact_button = new Gtk.RadioButton.with_label_from_widget (iso_button, DateFormatMode.COMPACT.to_string ());
+        compact_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
         var menu_box = new Gtk.Box (VERTICAL, 0) {
             margin_bottom = 6
@@ -141,6 +143,7 @@ public class Files.AppMenu : Gtk.Popover {
         menu_box.add (iso_button);
         menu_box.add (locale_button);
         menu_box.add (informal_button);
+        menu_box.add (compact_button);
 
         menu_box.show_all ();
 
@@ -167,6 +170,9 @@ public class Files.AppMenu : Gtk.Popover {
             case DateFormatMode.INFORMAL:
                 informal_button.active= true;
                 break;
+            case DateFormatMode.COMPACT:
+                compact_button.active= true;
+                break;
             default:
                 assert_not_reached ();
         }
@@ -184,6 +190,11 @@ public class Files.AppMenu : Gtk.Popover {
         informal_button.toggled.connect (() => {
             if (informal_button.active) {
                 app_settings.set_enum ("date-format", DateFormatMode.INFORMAL);
+            }
+        });
+        compact_button.toggled.connect (() => {
+            if (compact_button.active) {
+                app_settings.set_enum ("date-format", DateFormatMode.COMPACT);
             }
         });
     }
