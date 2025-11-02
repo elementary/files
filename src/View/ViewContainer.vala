@@ -330,7 +330,7 @@ namespace Files.View {
         private void directory_is_loading (GLib.File loc) {
             overlay_statusbar.cancel ();
             overlay_statusbar.halign = Gtk.Align.END;
-            refresh_slot_info (loc); //Not needed?
+            refresh_slot_info (loc);
 
             can_show_folder = false;
             loading (true);
@@ -361,7 +361,6 @@ namespace Files.View {
             this.tab_name = tab_name;
             overlay_statusbar.hide ();
         }
-
 
         public void on_slot_directory_loaded (Directory dir) {
             can_show_folder = dir.can_load;
