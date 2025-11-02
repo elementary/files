@@ -1321,8 +1321,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             }
         }
 
-        /* Render the final path in the location bar without animation */
-        update_location_bar (path, false);
         return restoring_tabs;
     }
 
