@@ -2601,9 +2601,28 @@ namespace Files {
             return;
         }
 
+        // We need to throttle this for when e.g. pasting a large number of files into an empty folder
+        // or deleting a large number of files from a folder
+        private uint empty_label_timeout_id = 0;
+        private bool empty_label_wait;
         private void update_empty_labels () {
-            empty_label.visible = model.is_empty;
-            hidden_label.visible = empty_label.visible && !slot.directory.is_empty ();
+            if (empty_label_timeout_id == 0) {
+                empty_label_wait = false;
+                empty_label_timeout_id = Timeout.add (200, () => {
+                    if (empty_label_wait) {
+                        empty_label_wait = false;
+                        return Source.CONTINUE;
+                    } else {
+                        empty_label_timeout_id = 0;
+                        empty_label.visible = model.is_empty;
+                        hidden_label.visible = empty_label.visible && !slot.directory.is_empty ();
+                        return Source.REMOVE;
+                    }
+                });
+            } else {
+                empty_label_wait = true;
+                return;
+            }
         }
 
     /** Menu helpers */
