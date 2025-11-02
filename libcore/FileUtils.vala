@@ -436,7 +436,7 @@ namespace Files.FileUtils {
             }
         }
 
-        return new_path;
+        return uri;
     }
 
     /** Splits the path into a protocol ending in '://"  and a path beginning "/". **/
