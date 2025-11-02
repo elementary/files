@@ -536,7 +536,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         loading_uri (current_container.uri);
         current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
         sidebar.sync_uri (current_container.uri);
-        location_bar.sensitive = !current_container.is_frozen;
         save_active_tab_position ();
     }
 
