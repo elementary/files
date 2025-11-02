@@ -950,8 +950,8 @@ namespace Files {
         // Only called after initial loading finished, in response to files added due to internal or external
         // file operations
         private void add_file (Files.File file, Directory dir, bool is_internal = true) {
-            empty_box.visible = false;
             model.insert_sorted (file, dir);
+            update_empty_labels ();
             if (is_internal) { /* This true once view finished loading */
                 // Do not select until the model has resorted else wrong file is selected
                 ulong model_resorted = 0;
