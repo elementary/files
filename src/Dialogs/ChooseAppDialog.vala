@@ -42,8 +42,11 @@ class PF.ChooseAppDialog : Object {
         var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
         app_chooser.show_recommended = true;
 
-        var file_type = file_to_open.query_file_type (NOFOLLOW_SYMLINKS, null);
-        if (file_type == FileType.REGULAR) {
+        // We do not want to offer to change the default app for DIRECTORY types
+        // see https://github.com/elementary/files/issues/1463
+        // Symlinks are followed so the default app applies to whatever the link points to
+        var file_type = file_to_open.query_file_type (NONE, null); 
+        if (file_type != FileType.DIRECTORY) {
             check_default = new Gtk.CheckButton.with_label (_("Set as default")) {
                 active = true,
                 margin_start = 12,
@@ -64,11 +67,11 @@ class PF.ChooseAppDialog : Object {
                     try {
                         var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
                                                             FileQueryInfoFlags.NONE, null);
-
                         app.set_as_default_for_type (info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE));
                     }
                     catch (GLib.Error error) {
                         critical ("Could not set as default: %s", error.message);
+                        // Do we need to indicate in the UI that this operation failed?
                     }
                 }
             }
