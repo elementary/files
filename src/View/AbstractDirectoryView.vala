@@ -1628,6 +1628,18 @@ namespace Files {
             return true;
         }
 
+        public void handle_drop_on_tab (
+            Gdk.DragContext ctx,
+            Gtk.SelectionData data,
+            uint info,
+            uint time
+        ) {
+            drop_occurred = true;
+            drop_target_file = slot.file;
+            current_actions = Gdk.DragAction.COPY;
+            current_suggested_action = Gdk.DragAction.COPY;
+            on_drag_data_received (ctx, 0, 0, data, info, time);
+        }
 
         /* Signal emitted on destination when selection data received from source
          * either during drag motion or on dropping */

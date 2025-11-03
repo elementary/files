@@ -423,5 +423,14 @@ namespace Files.View {
 
             return msg;
         }
+
+        public override void handle_drop_on_tab (
+            Gdk.DragContext ctx,
+            Gtk.SelectionData data,
+            uint info,
+            uint time) {
+
+            dir_view.handle_drop_on_tab (ctx, data, info, time);
+        }
     }
 }

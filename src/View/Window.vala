@@ -256,6 +256,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             view = tab_view
         };
 
+        Gtk.TargetEntry uris = {"text/uri-list", 0, Files.TargetType.TEXT_URI_LIST};
+        // Handle Drag-and-drop of directory files onto tab to open in that tab
+        tab_bar.extra_drag_dest_targets = new Gtk.TargetList ({uris});
+        tab_bar.extra_drag_data_received.connect (on_extra_drag_data_received);
+
         var tab_box = new Gtk.Box (VERTICAL, 0);
         tab_box.add (tab_bar);
         tab_box.add (tab_view);
@@ -410,6 +415,22 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         });
 
         sidebar.path_change_request.connect (uri_path_change_request);
+    }
+
+    private void on_extra_drag_data_received (
+        Hdy.TabBar tab_bar,
+        Hdy.TabPage page,
+        Gdk.DragContext ctx,
+        Gtk.SelectionData data,
+        uint info,
+        uint time) {
+
+        var child = page.get_child ();
+        if (child is ViewContainer) {
+            ((ViewContainer)child).slot.handle_drop_on_tab (ctx, data, info, time);
+        }
+
+        Gtk.drag_finish (ctx, true, false, time);
     }
 
     private bool tab_view_close_page (Hdy.TabPage page) {
