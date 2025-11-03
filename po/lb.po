@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-18 16:44+0000\n"
+"POT-Creation-Date: 2025-11-02 12:13+0000\n"
 "PO-Revision-Date: 2024-05-18 18:13+0000\n"
 "Last-Translator: Arno <arnoant21@gmail.com>\n"
 "Language-Team: Luxembourgish <https://l10n.elementary.io/projects/files/"
@@ -299,16 +299,21 @@ msgid "Current Date"
 msgstr "Aktuell Datum"
 
 #. TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
-#: libcore/Enums.vala:267
+#: libcore/Enums.vala:268
 msgid "ISO"
 msgstr ""
 
-#: libcore/Enums.vala:269
+#: libcore/Enums.vala:270
 msgid "Locale"
 msgstr ""
 
-#: libcore/Enums.vala:271
+#: libcore/Enums.vala:272
 msgid "Informal"
+msgstr ""
+
+#. TRANSLATORS Adjective applied to datetime format
+#: libcore/Enums.vala:275
+msgid "Compact"
 msgstr ""
 
 #: libcore/File.vala:616 libcore/File.vala:1176
@@ -514,31 +519,31 @@ msgid "Could not rename to '%s'"
 msgstr "Konnt net op '%s' ëmbenennen"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:668
+#: libcore/FileUtils.vala:671
 #, c-format
 msgid "Today at %s"
 msgstr "Haut um %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:676
+#: libcore/FileUtils.vala:679
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Gëschter um %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:684
+#: libcore/FileUtils.vala:687
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A um %s"
 
-#: libcore/FileUtils.vala:909
+#: libcore/FileUtils.vala:912
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d Sekonn"
 msgstr[1] "%'d Sekonnen"
 
-#: libcore/FileUtils.vala:913 libcore/FileUtils.vala:921
+#: libcore/FileUtils.vala:916 libcore/FileUtils.vala:924
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -547,19 +552,19 @@ msgstr[1] "%'d Minutten"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:920 src/Dialogs/PropertiesWindow.vala:1270
+#: libcore/FileUtils.vala:923 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:920
+#: libcore/FileUtils.vala:923
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d Stonn"
 msgstr[1] "%'d Stonnen"
 
-#: libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:927
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -567,22 +572,22 @@ msgstr[0] "ongeféier %'d Stonn"
 msgstr[1] "ongeféier %'d Stonnen"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:932
+#: libcore/FileUtils.vala:935
 msgid "copy"
 msgstr "kopéieren"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:934
+#: libcore/FileUtils.vala:937
 msgid "link"
 msgstr "link"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:936
+#: libcore/FileUtils.vala:939
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:938
+#: libcore/FileUtils.vala:941
 msgid ")"
 msgstr ")"
 
@@ -2439,11 +2444,11 @@ msgstr "Remote Thumbnails"
 msgid "Date & Time Format"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:199
+#: src/View/Widgets/AppMenu.vala:210
 msgid "No operation to undo"
 msgstr "Keng Operatioun fir ze undoen"
 
-#: src/View/Widgets/AppMenu.vala:206
+#: src/View/Widgets/AppMenu.vala:217
 msgid "No operation to redo"
 msgstr "Keng Operatioun fir ze redoen"
 
