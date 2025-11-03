@@ -42,15 +42,17 @@ class PF.ChooseAppDialog : Object {
         var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
         app_chooser.show_recommended = true;
 
-        check_default = new Gtk.CheckButton.with_label (_("Set as default")) {
-            active = true,
-            margin_start = 12,
-            margin_bottom = 6
-        };
+        var file_type = file_to_open.query_file_type (NOFOLLOW_SYMLINKS, null);
+        if (file_type == FileType.REGULAR) {
+            check_default = new Gtk.CheckButton.with_label (_("Set as default")) {
+                active = true,
+                margin_start = 12,
+                margin_bottom = 6
+            };
 
-        check_default.show ();
-
-        dialog.get_content_area ().add (check_default);
+            check_default.show ();
+            dialog.get_content_area ().add (check_default);
+        }
     }
 
     public async AppInfo? get_app_info () {
