@@ -622,6 +622,9 @@ namespace Files.FileUtils {
         return get_formatted_date_time (dt, format);
     }
 
+    // We add a space as both prefix and suffix to ensure date is not obscured by the scrollbar (unless hovered)
+    // regardless of the text direction
+    // See https://github.com/elementary/files/issues/1538
     private string get_formatted_date_time (DateTime? dt, DateFormatMode format) {
         if (dt == null) {
             return "";
@@ -629,12 +632,12 @@ namespace Files.FileUtils {
 
         switch (format) {
             case DateFormatMode.LOCALE:
-                return dt.format ("%c");
+                return dt.format (" %c ");
             case DateFormatMode.ISO:
-                return dt.format ("%Y-%m-%d %H:%M:%S");
+                return dt.format (" %Y-%m-%d %H:%M:%S ");
             case DateFormatMode.COMPACT :
                 var locale_format_string = Posix.nl_langinfo (D_FMT);
-                return dt.format (string.join (" ", locale_format_string.down (), "%H:%M"));
+                return string.join (" ", dt.format (string.join (" ", locale_format_string.down (), "%H:%M")), " ");
             default:
                 return get_informal_date_time (dt);
         }
@@ -689,7 +692,7 @@ namespace Files.FileUtils {
                 break;
         }
 
-        return dt.format (format_string);
+        return string.join (" ", dt.format (format_string), " ");
     }
 
     private bool can_browse_scheme (string scheme) {

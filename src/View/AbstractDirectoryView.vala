@@ -350,7 +350,6 @@ namespace Files {
             set_up__menu_actions ();
             set_up_directory_view ();
             view = create_view ();
-            view.margin_end = 6; //Space for scrollbar overlay to avoid obscuring date
 
             if (view != null) {
                 scrolled_window.child = view;
