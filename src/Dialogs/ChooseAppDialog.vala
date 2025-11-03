@@ -45,7 +45,7 @@ class PF.ChooseAppDialog : Object {
         // We do not want to offer to change the default app for DIRECTORY types
         // see https://github.com/elementary/files/issues/1463
         // Symlinks are followed so the default app applies to whatever the link points to
-        var file_type = file_to_open.query_file_type (NONE, null); 
+        var file_type = file_to_open.query_file_type (NONE, null);
         if (file_type != FileType.DIRECTORY) {
             check_default = new Gtk.CheckButton.with_label (_("Set as default")) {
                 active = true,
