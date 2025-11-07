@@ -35,7 +35,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"tab", action_tab, "s"},
         {"go-to", action_go_to, "s"},
         {"zoom", action_zoom, "s"},
-        {"info", action_info, "s"},
         {"view-mode", action_view_mode, "u", "0" },
         {"show-hidden", null, null, "false", change_state_show_hidden},
         {"singleclick-select", null, null, "false", change_state_single_click_select},
@@ -163,7 +162,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.go-to::UP", {"<Alt>Up"});
             marlin_app.set_accels_for_action ("win.forward(1)", {"<Alt>Right", "XF86Forward"});
             marlin_app.set_accels_for_action ("win.back(1)", {"<Alt>Left", "XF86Back"});
-            marlin_app.set_accels_for_action ("win.info::HELP", {"F1"});
             marlin_app.set_accels_for_action ("win.tab::TAB", {"<Shift><Ctrl>K"});
             marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
             marlin_app.set_accels_for_action ("win.focus-sidebar", {"<Ctrl>Left"});
@@ -536,7 +534,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         loading_uri (current_container.uri);
         current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
         sidebar.sync_uri (current_container.uri);
-        location_bar.sensitive = !current_container.is_frozen;
         save_active_tab_position ();
     }
 
@@ -1015,16 +1012,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    private void action_info (GLib.SimpleAction action, GLib.Variant? param) {
-        switch (param.get_string ()) {
-            case "HELP":
-                show_app_help ();
-                break;
 
-            default:
-                break;
-        }
-    }
 
     private void action_undo (GLib.SimpleAction action, GLib.Variant? param) {
         if (doing_undo_redo) { /* Guard against rapid pressing of Ctrl-Z */
@@ -1127,15 +1115,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         dialog.present ();
     }
 
-    void show_app_help () {
-        AppInfo.launch_default_for_uri_async.begin (Files.HELP_URL, null, null, (obj, res) => {
-            try {
-                AppInfo.launch_default_for_uri_async.end (res);
-            } catch (Error e) {
-                warning ("Could not open help: %s", e.message);
-            }
-        });
-    }
 
     public GLib.SimpleAction? get_action (string action_name) {
         return (GLib.SimpleAction?)(lookup_action (action_name));
@@ -1385,7 +1364,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         set_forward_menu (current_container.get_go_forward_path_list ());
         button_back.sensitive = current_container.can_go_back;
         button_forward.sensitive = (current_container.can_show_folder && current_container.can_go_forward);
-        location_bar.sensitive = !current_container.is_loading;
 
         /* Update viewmode switch, action state and settings */
         var mode = current_container.view_mode;
