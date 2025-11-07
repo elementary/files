@@ -622,9 +622,6 @@ namespace Files.FileUtils {
         return get_formatted_date_time (dt, format);
     }
 
-    // We add a space as both prefix and suffix to ensure date is not obscured by the scrollbar (unless hovered)
-    // regardless of the text direction
-    // See https://github.com/elementary/files/issues/1538
     private string get_formatted_date_time (DateTime? dt, DateFormatMode format) {
         if (dt == null) {
             return "";
@@ -632,15 +629,26 @@ namespace Files.FileUtils {
 
         switch (format) {
             case DateFormatMode.LOCALE:
-                return dt.format (" %c ");
+                return emspace_pad (dt.format ("%c"));
             case DateFormatMode.ISO:
-                return dt.format (" %Y-%m-%d %H:%M:%S ");
+                return emspace_pad (dt.format ("%Y-%m-%d %H:%M:%S"));
             case DateFormatMode.COMPACT :
                 var locale_format_string = Posix.nl_langinfo (D_FMT);
-                return string.join (" ", dt.format (string.join (" ", locale_format_string.down (), "%H:%M")), " ");
+                var compact_format = string.join (" ", locale_format_string.down (), "%H:%M");
+                return emspace_pad (dt.format (compact_format));
             default:
-                return get_informal_date_time (dt);
+                return emspace_pad (get_informal_date_time (dt));
         }
+    }
+
+    // We add a fixed-width space as both prefix and suffix to ensure date is not obscured by the scrollbar (unless hovered)
+    // regardless of the text direction
+    // See https://github.com/elementary/files/issues/1538
+    private string emspace_pad (string s) {
+        var sb = new StringBuilder (s);
+        sb.prepend_unichar (' '); //Unichar emspace (U2003);
+        sb.append_unichar (' '); //Unichar emspace (U2003);
+        return sb.str;
     }
 
     private string get_informal_date_time (DateTime dt) {
