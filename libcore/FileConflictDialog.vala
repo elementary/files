@@ -36,9 +36,9 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         NEWEST
     }
 
-    public Files.File source { get; construct; }
-    public Files.File destination { get; construct; }
-    public Files.File dest_dir { get; construct; }
+    public Files.File source { private get; construct; }
+    public Files.File destination { private get; construct; }
+    public Files.File dest_dir { private get; construct; }
 
     private string conflict_name;
     private Gtk.Entry rename_entry;
