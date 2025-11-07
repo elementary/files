@@ -700,7 +700,7 @@ namespace Files.FileUtils {
                 break;
         }
 
-        return string.join (" ", dt.format (format_string), " ");
+        return dt.format (format_string);
     }
 
     private bool can_browse_scheme (string scheme) {
