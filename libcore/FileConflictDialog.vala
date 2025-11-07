@@ -51,7 +51,6 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
     private Gtk.Label source_type_label;
     private Gtk.Label source_time_label;
 
-
     private Gtk.Image destination_image;
     private Gtk.Label destination_size_label;
     private Gtk.Label destination_type_label;
