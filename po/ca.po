@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-02 12:13+0000\n"
-"PO-Revision-Date: 2025-10-07 07:55+0000\n"
+"PO-Revision-Date: 2025-11-04 06:55+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementaryos.org/projects/files/files/"
 "ca/>\n"
@@ -316,7 +316,7 @@ msgstr "Informal"
 #. TRANSLATORS Adjective applied to datetime format
 #: libcore/Enums.vala:275
 msgid "Compact"
-msgstr ""
+msgstr "Compacte"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
