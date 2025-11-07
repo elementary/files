@@ -111,4 +111,5 @@ public abstract class Files.AbstractSlot : GLib.Object {
     public virtual string? get_root_uri () { return directory.file.uri; }
     public virtual string? get_tip_uri () { return null; }
     public virtual bool get_realized () { return content_box.get_realized (); }
+    public virtual void handle_drop_on_tab (Gdk.DragContext ctx, Gtk.SelectionData data, uint info, uint time) {}
 }
