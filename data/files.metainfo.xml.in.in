@@ -62,6 +62,30 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="7.2.0" date="2025-11-28" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>A compact date format is introduced</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>The file conflict dialog now shows a missing icon</li>
+          <li>Flickering of the pathbar with some navigation methods is fixed</li>
+          <li>The option to set a default app for folders is no longer offered</li>
+          <li>The scrollbar no longer overlays the modification date in List view</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/2665">Only allow setting default app for regular files, not folders</issue>
+        <issue url="https://github.com/elementary/files/issues/1602">Path bar sometimes flickers when changing folders</issue>
+        <issue url="https://github.com/elementary/files/issues/1538">Listview Vertical scrollbar is on top of modified date column information</issue>
+        <issue url="https://github.com/elementary/files/issues/1475">F1 sending people to StackExchange feels… weird</issue>
+        <issue url="https://github.com/elementary/files/issues/1219">Option to make the list view more compact</issue>
+        <issue url="https://github.com/elementary/files/issues/695">No icon of original file in replace dialog</issue>
+      </issues>
+    </release>
     <release version="7.1.6" date="2025-10-24" urgency="medium">
       <description>
         <p>Minor updates:</p>
