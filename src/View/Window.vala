@@ -534,7 +534,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         loading_uri (current_container.uri);
         current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
         sidebar.sync_uri (current_container.uri);
-        location_bar.sensitive = !current_container.is_frozen;
         save_active_tab_position ();
     }
 
@@ -1365,7 +1364,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         set_forward_menu (current_container.get_go_forward_path_list ());
         button_back.sensitive = current_container.can_go_back;
         button_forward.sensitive = (current_container.can_show_folder && current_container.can_go_forward);
-        location_bar.sensitive = !current_container.is_loading;
 
         /* Update viewmode switch, action state and settings */
         var mode = current_container.view_mode;
