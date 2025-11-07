@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-02 12:13+0000\n"
+"POT-Creation-Date: 2025-11-07 22:13+0000\n"
 "PO-Revision-Date: 2025-10-05 16:54+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementaryos.org/projects/files/files/he/"
@@ -20,17 +20,17 @@ msgstr ""
 "X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:194
 msgid "Previous"
 msgstr "הקודם"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:199
 msgid "Next"
 msgstr "הבא"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -86,7 +86,7 @@ msgstr "להחליף את „%s”?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "החלפת הקובץ הזה תשכתב את התוכן הנוכחי שלו"
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:187
+#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "החלפה"
 
@@ -134,8 +134,8 @@ msgstr "שרת:"
 msgid "Port:"
 msgstr "פתחה:"
 
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
-#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:242
+#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
+#: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
 msgid "Type:"
 msgstr "סוג:"
 
@@ -352,61 +352,61 @@ msgstr[1] "%'d פריטים"
 msgid "link to %s"
 msgstr "קישור אל %s"
 
-#: libcore/FileConflictDialog.vala:61
+#: libcore/FileConflictDialog.vala:64
 msgid "File conflict"
 msgstr "התנגשות קובץ"
 
-#: libcore/FileConflictDialog.vala:96
+#: libcore/FileConflictDialog.vala:77
 msgid "Original file"
 msgstr "קובץ המקור"
 
-#: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
+#: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
 #: src/Dialogs/PropertiesWindow.vala:546
 msgid "Size:"
 msgstr "גודל:"
 
-#: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
+#: libcore/FileConflictDialog.vala:97 libcore/FileConflictDialog.vala:131
 msgid "Last modified:"
 msgstr "שונה לאחרונה:"
 
-#: libcore/FileConflictDialog.vala:130
+#: libcore/FileConflictDialog.vala:111
 msgid "Replace with"
 msgstr "החלפה ב־"
 
-#: libcore/FileConflictDialog.vala:164
+#: libcore/FileConflictDialog.vala:145
 msgid "Reset"
 msgstr "איפוס"
 
-#: libcore/FileConflictDialog.vala:173
+#: libcore/FileConflictDialog.vala:154
 msgid "_Select a new name for the destination"
 msgstr "יש ל_בחור בשם חדש עבור היעד"
 
-#: libcore/FileConflictDialog.vala:177
+#: libcore/FileConflictDialog.vala:158
 msgid "Apply this action to all files"
 msgstr "יש להחיל פעולה זו על כל הקבצים"
 
-#: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:160 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_דילוג"
 
-#: libcore/FileConflictDialog.vala:180
+#: libcore/FileConflictDialog.vala:161
 msgid "Re_name"
 msgstr "שינוי _שם"
 
-#: libcore/FileConflictDialog.vala:182
+#: libcore/FileConflictDialog.vala:163
 msgid "Keep Newest"
 msgstr "להשאיר את החדש ביותר"
 
-#: libcore/FileConflictDialog.vala:183
+#: libcore/FileConflictDialog.vala:164
 msgid "Skip if original was modified more recently"
 msgstr "לדלג אם המקור השתנה לאחר מכן"
 
-#: libcore/FileConflictDialog.vala:293
+#: libcore/FileConflictDialog.vala:281
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "למזג את התיקייה „%s”?"
 
-#: libcore/FileConflictDialog.vala:294
+#: libcore/FileConflictDialog.vala:282
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -414,60 +414,60 @@ msgstr ""
 "פעולת המיזוג תבקש אישור בטרם החלפת קבצים כלשהם בתיקייה המתנגשים עם הקבצים "
 "המועתקים."
 
-#: libcore/FileConflictDialog.vala:296
+#: libcore/FileConflictDialog.vala:284
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "תיקייה ישנה יותר בעלת שם זהה קיימת תחת „%s”."
 
-#: libcore/FileConflictDialog.vala:298
+#: libcore/FileConflictDialog.vala:286
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "תיקייה חדשה יותר בעלת שם זהה קיימת תחת „%s”."
 
-#: libcore/FileConflictDialog.vala:300
+#: libcore/FileConflictDialog.vala:288
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "תיקייה אחרת בעלת שם זהה קיימת תחת „%s”."
 
-#: libcore/FileConflictDialog.vala:303
+#: libcore/FileConflictDialog.vala:291
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "להחליף את התיקייה „%s”?"
 
-#: libcore/FileConflictDialog.vala:304
+#: libcore/FileConflictDialog.vala:292
 msgid "Replacing it will remove all files in the folder."
 msgstr "פעולת ההחלפה תסיר את כל הקבצים בתיקייה."
 
-#: libcore/FileConflictDialog.vala:305
+#: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "תיקייה בעלת שם זהה קיימת תחת „%s”."
 
-#: libcore/FileConflictDialog.vala:308
+#: libcore/FileConflictDialog.vala:296
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "להחליף את הקובץ „%s”?"
 
-#: libcore/FileConflictDialog.vala:309
+#: libcore/FileConflictDialog.vala:297
 msgid "Replacing it will overwrite its content."
 msgstr "ההחלפה תשכתב את התוכן."
 
-#: libcore/FileConflictDialog.vala:312
+#: libcore/FileConflictDialog.vala:300
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "קובץ ישן יותר בעל שם זהה קיים תחת „%s”."
 
-#: libcore/FileConflictDialog.vala:314
+#: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "קובץ חדש יותר בעל שם זהה קיים תחת „%s”."
 
-#: libcore/FileConflictDialog.vala:316
+#: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "קובץ אחר בעל שם זהה קיים תחת „%s”."
 
-#: libcore/FileConflictDialog.vala:342
+#: libcore/FileConflictDialog.vala:336
 msgid "Merge"
 msgstr "מיזוג"
 
@@ -513,31 +513,31 @@ msgid "Could not rename to '%s'"
 msgstr "לא ניתן לשנות את השם ל־‚%s’"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:671
+#: libcore/FileUtils.vala:682
 #, c-format
 msgid "Today at %s"
 msgstr "היום ב־%s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:679
+#: libcore/FileUtils.vala:690
 #, c-format
 msgid "Yesterday at %s"
 msgstr "אתמול ב־%s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:687
+#: libcore/FileUtils.vala:698
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A ב־%s"
 
-#: libcore/FileUtils.vala:912
+#: libcore/FileUtils.vala:923
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "שנייה אחת"
 msgstr[1] "%'d שניות"
 
-#: libcore/FileUtils.vala:916 libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:927 libcore/FileUtils.vala:935
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -546,19 +546,19 @@ msgstr[1] "%'d דקות"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:923 src/Dialogs/PropertiesWindow.vala:1270
+#: libcore/FileUtils.vala:934 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:934
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "שעה אחת"
 msgstr[1] "%'d שעות"
 
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:938
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -566,22 +566,22 @@ msgstr[0] "בסביבות שעה אחת"
 msgstr[1] "בסביבות %'d שעות"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:935
+#: libcore/FileUtils.vala:946
 msgid "copy"
 msgstr "עותק"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:937
+#: libcore/FileUtils.vala:948
 msgid "link"
 msgstr "קישור"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:939
+#: libcore/FileUtils.vala:950
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:941
+#: libcore/FileUtils.vala:952
 msgid ")"
 msgstr ")"
 
@@ -908,55 +908,55 @@ msgstr "בהכנה לביצוע"
 msgid "Files"
 msgstr "קבצים"
 
-#: libcore/Resources.vala:61
+#: libcore/Resources.vala:60
 msgid "AFP"
 msgstr "AFP"
 
-#: libcore/Resources.vala:62
+#: libcore/Resources.vala:61
 msgid "AFC"
 msgstr "AFC"
 
-#: libcore/Resources.vala:63
+#: libcore/Resources.vala:62
 msgid "DAV"
 msgstr "DAV"
 
-#: libcore/Resources.vala:64
+#: libcore/Resources.vala:63
 msgid "DAVS"
 msgstr "DAVS"
 
-#: libcore/Resources.vala:65
+#: libcore/Resources.vala:64
 msgid "FTP"
 msgstr "FTP"
 
-#: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:47
+#: libcore/Resources.vala:65 src/View/Sidebar/SidebarWindow.vala:47
 msgid "Network"
 msgstr "רשת"
 
-#: libcore/Resources.vala:67
+#: libcore/Resources.vala:66
 msgid "SFTP"
 msgstr "SFTP"
 
-#: libcore/Resources.vala:68
+#: libcore/Resources.vala:67
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
+#: libcore/Resources.vala:68 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "סל האשפה"
 
-#: libcore/Resources.vala:70
+#: libcore/Resources.vala:69
 msgid "Recent"
 msgstr "אחרונים"
 
-#: libcore/Resources.vala:71
+#: libcore/Resources.vala:70
 msgid "MTP"
 msgstr "התקן מדיה"
 
-#: libcore/Resources.vala:72
+#: libcore/Resources.vala:71
 msgid "GPHOTO2"
 msgstr "GPHOTO2"
 
-#: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
+#: libcore/Resources.vala:72 src/Dialogs/VolumePropertiesWindow.vala:41
 #: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "מערכת קבצים"
@@ -1727,7 +1727,7 @@ msgstr "מפריד"
 msgid "%0*d,%0*d,%0*d…"
 msgstr "‎%0*d,%0*d,%0*d…"
 
-#: src/Dialogs/ChooseAppDialog.vala:45
+#: src/Dialogs/ChooseAppDialog.vala:50
 msgid "Set as default"
 msgstr "הגדרה כבררת מחדל"
 
@@ -1933,7 +1933,7 @@ msgid "Invalid file name provided"
 msgstr "שם הקובץ שסופק שגוי"
 
 #: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:241
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "לשונית חדשה"
 
@@ -2211,36 +2211,36 @@ msgstr "קובץ לא נמצא"
 msgid "The file selected no longer exists."
 msgstr "הקובץ שנבחר לא קיים עוד."
 
-#: src/View/Window.vala:216
+#: src/View/Window.vala:214
 msgid "Menu"
 msgstr "תפריט"
 
-#: src/View/Window.vala:246
+#: src/View/Window.vala:244
 msgid "Closed Tabs"
 msgstr "לשוניות סגורות"
 
-#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:472 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "פתיחה בחלון חדש"
 
-#: src/View/Window.vala:475
+#: src/View/Window.vala:473
 msgid "Duplicate Tab"
 msgstr "שכפול לשונית"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:479
+#: src/View/Window.vala:477
 msgid "Close Tabs to the Right"
 msgstr "סגירת לשוניות לימין"
 
-#: src/View/Window.vala:480
+#: src/View/Window.vala:478
 msgid "Close Other Tabs"
 msgstr "סגירת הלשוניות האחרות"
 
-#: src/View/Window.vala:481
+#: src/View/Window.vala:479
 msgid "Close Tab"
 msgstr "סגירת לשונית"
 
-#: src/View/Window.vala:766 src/View/Window.vala:776
+#: src/View/Window.vala:763 src/View/Window.vala:773
 msgid "(as Administrator)"
 msgstr "(כמנהל)"
 
