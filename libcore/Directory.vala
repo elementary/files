@@ -54,6 +54,7 @@ public class Files.Directory : Object {
 
     private HashTable<GLib.File,Files.File> file_hash;
     public uint displayed_files_count {get; private set;}
+    public bool show_hidden_override { get; set; default = false;}
 
     public bool permission_denied = false;
     public bool network_available = true;
@@ -645,6 +646,10 @@ public class Files.Directory : Object {
         }
     }
 
+    private bool get_show_hidden () {
+        return show_hidden_override || is_trash || Preferences.get_default ().show_hidden_files;
+    }
+
     private void list_cached_files (FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
         debug ("list cached files");
         if (state != State.LOADED) {
@@ -654,7 +659,7 @@ public class Files.Directory : Object {
 
         state = State.LOADING;
         displayed_files_count = 0;
-        bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
+        bool show_hidden = get_show_hidden ();
         foreach (unowned Files.File gof in file_hash.get_values ()) {
             if (gof != null) {
                 after_load_file (gof, show_hidden, file_loaded_func);
@@ -694,8 +699,7 @@ public class Files.Directory : Object {
         can_load = true;
         displayed_files_count = 0;
         state = State.LOADING;
-        bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
-
+        bool show_hidden = get_show_hidden ();
         try {
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
             debug ("Obtained file enumerator for location %s", location.get_uri ());
