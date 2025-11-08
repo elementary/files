@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-02 12:13+0000\n"
+"POT-Creation-Date: 2025-11-07 22:13+0000\n"
 "PO-Revision-Date: 2025-07-28 23:55+0000\n"
 "Last-Translator: Guilherme Faura <guilhermefaura@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementaryos.org/projects/"
@@ -70,99 +70,121 @@ msgid "Browse complex trees faster with Column view"
 msgstr ""
 "Navegue por árvores complexas mais rapidamente com a Visualização em Colunas"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:85
-#: data/files.metainfo.xml.in.in:100 data/files.metainfo.xml.in.in:111
-#: data/files.metainfo.xml.in.in:123 data/files.metainfo.xml.in.in:138
-#: data/files.metainfo.xml.in.in:154 data/files.metainfo.xml.in.in:176
-#: data/files.metainfo.xml.in.in:194 data/files.metainfo.xml.in.in:217
-#: data/files.metainfo.xml.in.in:229 data/files.metainfo.xml.in.in:249
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:269
+msgid "Improvements:"
+msgstr "Melhorias:"
+
+#: data/files.metainfo.xml.in.in:69
+msgid "A compact date format is introduced"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:91
+#: data/files.metainfo.xml.in.in:109 data/files.metainfo.xml.in.in:124
+#: data/files.metainfo.xml.in.in:135 data/files.metainfo.xml.in.in:147
+#: data/files.metainfo.xml.in.in:162 data/files.metainfo.xml.in.in:178
+#: data/files.metainfo.xml.in.in:200 data/files.metainfo.xml.in.in:218
+#: data/files.metainfo.xml.in.in:241 data/files.metainfo.xml.in.in:253
+#: data/files.metainfo.xml.in.in:273
 msgid "Minor updates:"
 msgstr "Pequenas atualizações:"
 
-#: data/files.metainfo.xml.in.in:69
+#: data/files.metainfo.xml.in.in:73
+msgid "The file conflict dialog now shows a missing icon"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:74
+msgid "Flickering of the pathbar with some navigation methods is fixed"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:75
+msgid "The option to set a default app for folders is no longer offered"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:76
+msgid "The scrollbar no longer overlays the modification date in List view"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:77 data/files.metainfo.xml.in.in:96
+#: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:126
+#: data/files.metainfo.xml.in.in:137 data/files.metainfo.xml.in.in:150
+#: data/files.metainfo.xml.in.in:164 data/files.metainfo.xml.in.in:182
+#: data/files.metainfo.xml.in.in:204 data/files.metainfo.xml.in.in:226
+#: data/files.metainfo.xml.in.in:243 data/files.metainfo.xml.in.in:255
+#: data/files.metainfo.xml.in.in:275
+msgid "Updated translations"
+msgstr "Traduções atualizadas"
+
+#: data/files.metainfo.xml.in.in:93
 msgid "Navigation within the Trash folder now works properly"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:70
+#: data/files.metainfo.xml.in.in:94
 msgid "The view now refreshes properly after permanent deletion of a folder"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:71
+#: data/files.metainfo.xml.in.in:95
 msgid ""
 "The number of template items displayed in the context menu is now limited"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:88
-#: data/files.metainfo.xml.in.in:102 data/files.metainfo.xml.in.in:113
-#: data/files.metainfo.xml.in.in:126 data/files.metainfo.xml.in.in:140
-#: data/files.metainfo.xml.in.in:158 data/files.metainfo.xml.in.in:180
-#: data/files.metainfo.xml.in.in:202 data/files.metainfo.xml.in.in:219
-#: data/files.metainfo.xml.in.in:231 data/files.metainfo.xml.in.in:251
-msgid "Updated translations"
-msgstr "Traduções atualizadas"
-
-#: data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:111
 msgid ""
 "The Properties Window now shows the exact date and time the file was last "
 "modified"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:125
+#: data/files.metainfo.xml.in.in:149
 msgid "Further preparation for porting to Gtk4"
 msgstr "Preparação adicional para portabilidade para Gtk4"
 
-#: data/files.metainfo.xml.in.in:156
+#: data/files.metainfo.xml.in.in:180
 msgid "Redesign file permissions view"
 msgstr "Redesenhar a visualização de permissões de arquivo"
 
-#: data/files.metainfo.xml.in.in:157
+#: data/files.metainfo.xml.in.in:181
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr "Foque na barra lateral pressionando Ctrl + Esquerda"
 
-#: data/files.metainfo.xml.in.in:178
+#: data/files.metainfo.xml.in.in:202
 msgid "Restoring tabs from last time is now optional"
 msgstr "Restaurar as abas da última vez agora é opcional"
 
-#: data/files.metainfo.xml.in.in:179
+#: data/files.metainfo.xml.in.in:203
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr ""
 "Arrastar e selecionar não pode mais ser feito com o botão secundário do mouse"
 
-#: data/files.metainfo.xml.in.in:196
+#: data/files.metainfo.xml.in.in:220
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 "Descontinuar suporte para arrastar favoritos para fora da barra lateral"
 
-#: data/files.metainfo.xml.in.in:197
+#: data/files.metainfo.xml.in.in:221
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr "Corrigir rolagem inesperada após renomear uma pasta"
 
-#: data/files.metainfo.xml.in.in:198
+#: data/files.metainfo.xml.in.in:222
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 "Corrige uma falha ao alternar para visualização em grade em circunstâncias "
 "raras"
 
-#: data/files.metainfo.xml.in.in:199
+#: data/files.metainfo.xml.in.in:223
 msgid "Ensure the selection persists after refreshing the view"
 msgstr "Garante que a seleção persista após atualizar a visualização"
 
-#: data/files.metainfo.xml.in.in:200
+#: data/files.metainfo.xml.in.in:224
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "Corrige Arquivos que não abrem ao tentar restaurar um local desconectado"
 
-#: data/files.metainfo.xml.in.in:201
+#: data/files.metainfo.xml.in.in:225
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 "Corrige a exibição que continua a aparecer quando um local é desmontado"
 
-#: data/files.metainfo.xml.in.in:245
-msgid "Improvements:"
-msgstr "Melhorias:"
-
-#: data/files.metainfo.xml.in.in:247
+#: data/files.metainfo.xml.in.in:271
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"

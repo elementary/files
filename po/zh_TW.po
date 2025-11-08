@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-02 12:13+0000\n"
+"POT-Creation-Date: 2025-11-07 22:13+0000\n"
 "PO-Revision-Date: 2025-06-03 03:55+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
@@ -20,17 +20,17 @@ msgstr ""
 "X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:194
 msgid "Previous"
 msgstr "上一個"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:199
 msgid "Next"
 msgstr "下一個"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -86,7 +86,7 @@ msgstr "要取代「%s」嗎？"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "取代此檔案會覆寫它目前的內容"
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:187
+#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "取代"
 
@@ -134,8 +134,8 @@ msgstr "伺服器："
 msgid "Port:"
 msgstr "連接埠："
 
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
-#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:242
+#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
+#: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
 msgid "Type:"
 msgstr "類型："
 
@@ -353,61 +353,61 @@ msgstr[0] "%'d 個項目"
 msgid "link to %s"
 msgstr "連結到 %s"
 
-#: libcore/FileConflictDialog.vala:61
+#: libcore/FileConflictDialog.vala:64
 msgid "File conflict"
 msgstr "檔案發生衝突"
 
-#: libcore/FileConflictDialog.vala:96
+#: libcore/FileConflictDialog.vala:77
 msgid "Original file"
 msgstr "原始檔案"
 
-#: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
+#: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
 #: src/Dialogs/PropertiesWindow.vala:546
 msgid "Size:"
 msgstr "大小："
 
-#: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
+#: libcore/FileConflictDialog.vala:97 libcore/FileConflictDialog.vala:131
 msgid "Last modified:"
 msgstr "上次日期："
 
-#: libcore/FileConflictDialog.vala:130
+#: libcore/FileConflictDialog.vala:111
 msgid "Replace with"
 msgstr "替換為"
 
-#: libcore/FileConflictDialog.vala:164
+#: libcore/FileConflictDialog.vala:145
 msgid "Reset"
 msgstr "重設"
 
-#: libcore/FileConflictDialog.vala:173
+#: libcore/FileConflictDialog.vala:154
 msgid "_Select a new name for the destination"
 msgstr "為目的端選取新的名稱(_S)"
 
-#: libcore/FileConflictDialog.vala:177
+#: libcore/FileConflictDialog.vala:158
 msgid "Apply this action to all files"
 msgstr "將這個動作套用至所有檔案"
 
-#: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:160 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "略過(_S)"
 
-#: libcore/FileConflictDialog.vala:180
+#: libcore/FileConflictDialog.vala:161
 msgid "Re_name"
 msgstr "重新命名(_N)"
 
-#: libcore/FileConflictDialog.vala:182
+#: libcore/FileConflictDialog.vala:163
 msgid "Keep Newest"
 msgstr "保留最新者"
 
-#: libcore/FileConflictDialog.vala:183
+#: libcore/FileConflictDialog.vala:164
 msgid "Skip if original was modified more recently"
 msgstr "若原始檔案更近期有修改過則略過"
 
-#: libcore/FileConflictDialog.vala:293
+#: libcore/FileConflictDialog.vala:281
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "合併資料夾「%s」？"
 
-#: libcore/FileConflictDialog.vala:294
+#: libcore/FileConflictDialog.vala:282
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -415,60 +415,60 @@ msgstr ""
 "合併功能會在替換掉該資料夾中任何與正被複製過來但發生衝突的檔案之前，先尋求確"
 "認。"
 
-#: libcore/FileConflictDialog.vala:296
+#: libcore/FileConflictDialog.vala:284
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "在「%s」已有一個相同名稱的較舊資料夾。"
 
-#: libcore/FileConflictDialog.vala:298
+#: libcore/FileConflictDialog.vala:286
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "在「%s」已有一個相同名稱的較新資料夾。"
 
-#: libcore/FileConflictDialog.vala:300
+#: libcore/FileConflictDialog.vala:288
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "在「%s」已有另一個相同名稱的資料夾。"
 
-#: libcore/FileConflictDialog.vala:303
+#: libcore/FileConflictDialog.vala:291
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "取代資料夾「%s」？"
 
-#: libcore/FileConflictDialog.vala:304
+#: libcore/FileConflictDialog.vala:292
 msgid "Replacing it will remove all files in the folder."
 msgstr "取代它將會移除該資料夾中所有的檔案。"
 
-#: libcore/FileConflictDialog.vala:305
+#: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "在「%s」已有一個相同名稱的資料夾。"
 
-#: libcore/FileConflictDialog.vala:308
+#: libcore/FileConflictDialog.vala:296
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "取代檔案「%s」？"
 
-#: libcore/FileConflictDialog.vala:309
+#: libcore/FileConflictDialog.vala:297
 msgid "Replacing it will overwrite its content."
 msgstr "取代它將會覆蓋其內容。"
 
-#: libcore/FileConflictDialog.vala:312
+#: libcore/FileConflictDialog.vala:300
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "在「%s」中已有一個相同名稱的較舊檔案。"
 
-#: libcore/FileConflictDialog.vala:314
+#: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "在「%s」中已有一個相同名稱的較新檔案。"
 
-#: libcore/FileConflictDialog.vala:316
+#: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "在「%s」中已有另一個相同名稱的檔案。"
 
-#: libcore/FileConflictDialog.vala:342
+#: libcore/FileConflictDialog.vala:336
 msgid "Merge"
 msgstr "合併"
 
@@ -514,30 +514,30 @@ msgid "Could not rename to '%s'"
 msgstr "無法重新命名為「%s」"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:671
+#: libcore/FileUtils.vala:682
 #, c-format
 msgid "Today at %s"
 msgstr "今日的 %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:679
+#: libcore/FileUtils.vala:690
 #, c-format
 msgid "Yesterday at %s"
 msgstr "昨日的 %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:687
+#: libcore/FileUtils.vala:698
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A的 %s"
 
-#: libcore/FileUtils.vala:912
+#: libcore/FileUtils.vala:923
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d 秒"
 
-#: libcore/FileUtils.vala:916 libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:927 libcore/FileUtils.vala:935
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -545,40 +545,40 @@ msgstr[0] "%'d 分鐘"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:923 src/Dialogs/PropertiesWindow.vala:1270
+#: libcore/FileUtils.vala:934 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
 msgstr "%s，%s"
 
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:934
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d 小時"
 
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:938
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "預估還有 %'d 小時"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:935
+#: libcore/FileUtils.vala:946
 msgid "copy"
 msgstr "副本"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:937
+#: libcore/FileUtils.vala:948
 msgid "link"
 msgstr "連結"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:939
+#: libcore/FileUtils.vala:950
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:941
+#: libcore/FileUtils.vala:952
 msgid ")"
 msgstr ")"
 
@@ -900,55 +900,55 @@ msgstr "準備中"
 msgid "Files"
 msgstr "檔案"
 
-#: libcore/Resources.vala:61
+#: libcore/Resources.vala:60
 msgid "AFP"
 msgstr "AFP"
 
-#: libcore/Resources.vala:62
+#: libcore/Resources.vala:61
 msgid "AFC"
 msgstr "AFC"
 
-#: libcore/Resources.vala:63
+#: libcore/Resources.vala:62
 msgid "DAV"
 msgstr "DAV"
 
-#: libcore/Resources.vala:64
+#: libcore/Resources.vala:63
 msgid "DAVS"
 msgstr "DAVS"
 
-#: libcore/Resources.vala:65
+#: libcore/Resources.vala:64
 msgid "FTP"
 msgstr "FTP"
 
-#: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:47
+#: libcore/Resources.vala:65 src/View/Sidebar/SidebarWindow.vala:47
 msgid "Network"
 msgstr "網路"
 
-#: libcore/Resources.vala:67
+#: libcore/Resources.vala:66
 msgid "SFTP"
 msgstr "SFTP"
 
-#: libcore/Resources.vala:68
+#: libcore/Resources.vala:67
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
+#: libcore/Resources.vala:68 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "垃圾"
 
-#: libcore/Resources.vala:70
+#: libcore/Resources.vala:69
 msgid "Recent"
 msgstr "最近"
 
-#: libcore/Resources.vala:71
+#: libcore/Resources.vala:70
 msgid "MTP"
 msgstr "MTP"
 
-#: libcore/Resources.vala:72
+#: libcore/Resources.vala:71
 msgid "GPHOTO2"
 msgstr "GPHOTO2"
 
-#: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
+#: libcore/Resources.vala:72 src/Dialogs/VolumePropertiesWindow.vala:41
 #: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "檔案系統"
@@ -1701,7 +1701,7 @@ msgstr "分隔符"
 msgid "%0*d,%0*d,%0*d…"
 msgstr "%0*d、%0*d、%0*d…"
 
-#: src/Dialogs/ChooseAppDialog.vala:45
+#: src/Dialogs/ChooseAppDialog.vala:50
 msgid "Set as default"
 msgstr "設為預設值"
 
@@ -1900,7 +1900,7 @@ msgid "Invalid file name provided"
 msgstr "提供的檔案名稱無效"
 
 #: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:241
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "新增分頁"
 
@@ -2180,36 +2180,36 @@ msgstr "找不到檔案"
 msgid "The file selected no longer exists."
 msgstr "選取的檔案不再存在。"
 
-#: src/View/Window.vala:216
+#: src/View/Window.vala:214
 msgid "Menu"
 msgstr "選單"
 
-#: src/View/Window.vala:246
+#: src/View/Window.vala:244
 msgid "Closed Tabs"
 msgstr "已關閉的分頁"
 
-#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:472 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "在新視窗中開啟"
 
-#: src/View/Window.vala:475
+#: src/View/Window.vala:473
 msgid "Duplicate Tab"
 msgstr "建立分頁副本"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:479
+#: src/View/Window.vala:477
 msgid "Close Tabs to the Right"
 msgstr "關閉右方的分頁"
 
-#: src/View/Window.vala:480
+#: src/View/Window.vala:478
 msgid "Close Other Tabs"
 msgstr "關閉其他分頁"
 
-#: src/View/Window.vala:481
+#: src/View/Window.vala:479
 msgid "Close Tab"
 msgstr "關閉分頁"
 
-#: src/View/Window.vala:766 src/View/Window.vala:776
+#: src/View/Window.vala:763 src/View/Window.vala:773
 msgid "(as Administrator)"
 msgstr "（以管理員身份）"
 
