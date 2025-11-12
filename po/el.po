@@ -8,8 +8,9 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-11-12 20:20+0000\n"
-"Last-Translator: Yiannos Kryos <johnkrios13@gmail.com>\n"
+"PO-Revision-Date: 2025-11-12 20:24+0000\n"
+"Last-Translator: Orionas Kakomoiroglou "
+"<209243298+OrionasKakomoiroglou@users.noreply.github.com>\n"
 "Language-Team: Greek <https://l10n.elementaryos.org/projects/files/files/el/>"
 "\n"
 "Language: el\n"
@@ -66,11 +67,11 @@ msgstr "Αποθήκευση"
 #: filechooser-portal/Main.vala:454
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr "Το αρχείο είναι σύνδεσμος για το \"%s\""
+msgstr "Αυτό το αρχείο είναι σύνδεσμος για το \"%s\""
 
 #: filechooser-portal/Main.vala:457
 msgid "This file is a link."
-msgstr "Αυτό το αρχείο είναι σύνδεσμος"
+msgstr "Αυτό το αρχείο είναι σύνδεσμος."
 
 #: filechooser-portal/Main.vala:460
 #, fuzzy
@@ -79,9 +80,9 @@ msgid ""
 msgstr "Η αντικατάστασή του θα αντικαταστήσει το περιεχόμενό του."
 
 #: filechooser-portal/Main.vala:462
-#, fuzzy, c-format
+#, c-format
 msgid "Replace “%s”?"
-msgstr "Αντικατάσταση αρχείου \"%s\";"
+msgstr "Αντικατάσταση \"%s\";"
 
 #: filechooser-portal/Main.vala:463
 #, fuzzy
