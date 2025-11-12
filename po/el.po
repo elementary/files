@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-11-12 21:18+0000\n"
+"PO-Revision-Date: 2025-11-12 21:19+0000\n"
 "Last-Translator: Orionas Kakomoiroglou "
 "<209243298+OrionasKakomoiroglou@users.noreply.github.com>\n"
 "Language-Team: Greek <https://l10n.elementaryos.org/projects/files/files/el/>"
@@ -338,7 +338,7 @@ msgstr "Αποτυχία δημιουργίας εντολής από αρχεί
 
 #: libcore/File.vala:980
 msgid "Unable to Launch Desktop File: "
-msgstr "Αποτυχία ανοίγματος αρχείου επιφάνειας εργασίας: %s "
+msgstr "Αποτυχία ανοίγματος αρχείου desktop: "
 
 #: libcore/File.vala:1169
 #, fuzzy
