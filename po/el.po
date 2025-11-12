@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-11-12 20:30+0000\n"
+"PO-Revision-Date: 2025-11-12 21:15+0000\n"
 "Last-Translator: Yiannos Kryos <johnkrios13@gmail.com>\n"
 "Language-Team: Greek <https://l10n.elementaryos.org/projects/files/files/el/>"
 "\n"
@@ -155,47 +155,40 @@ msgid "Path of shared folder on server (Optional)"
 msgstr "Διαδρομή διαμοιρασμένου αρχείου στο διακομιστή (Προαιρετικό)"
 
 #: libcore/ConnectServerDialog.vala:171
-#, fuzzy
 msgid "Folder:"
-msgstr "_Φάκελος:"
+msgstr "Φάκελος:"
 
 #: libcore/ConnectServerDialog.vala:175
 msgid "User Details"
 msgstr "Λεπτομέρειες χρήστη"
 
 #: libcore/ConnectServerDialog.vala:180
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "Νέο παράθυρο ως _διαχειριστής"
+msgstr "Όνομα διευθύνσης Windows"
 
 #: libcore/ConnectServerDialog.vala:182
-#, fuzzy
 msgid "Domain name:"
-msgstr "_Όνομα τομέα:"
+msgstr "Όνομα τομέα:"
 
 #: libcore/ConnectServerDialog.vala:187
 msgid "Name of user on server"
-msgstr ""
+msgstr "Όνομα χρήστη στο διακομιστή"
 
 #: libcore/ConnectServerDialog.vala:189
-#, fuzzy
 msgid "User name:"
-msgstr "_Όνομα χρήστη:"
+msgstr "Όνομα χρήστη:"
 
 #: libcore/ConnectServerDialog.vala:197
-#, fuzzy
 msgid "Password:"
-msgstr "Συνθη_ματικό:"
+msgstr "Συνθηματικό:"
 
 #: libcore/ConnectServerDialog.vala:199
-#, fuzzy
 msgid "Remember this password"
-msgstr "_Απομνημόνευση αυτού του συνθηματικού"
+msgstr "Απομνημόνευση αυτού του συνθηματικού"
 
 #: libcore/ConnectServerDialog.vala:209
-#, fuzzy
 msgid "Connect"
-msgstr "_Σύνδεση"
+msgstr "Σύνδεση"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Continue"
@@ -212,7 +205,7 @@ msgstr "Παρακαλώ επαληθεύστε τις πληροφορίες χ
 
 #: libcore/Directory.vala:744
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Ο διακομιστής δεν ανταποκρίθηκε εντός του χρονικού ορίου"
 
 #: libcore/DndHandler.vala:50
 #, c-format
@@ -229,7 +222,7 @@ msgstr "Αντιγραφή εδώ"
 
 #: libcore/DndHandler.vala:102
 msgid "Link Here"
-msgstr ""
+msgstr "Σύνδεσμος Εδώ"
 
 #: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2321
 msgid "Name"
@@ -237,14 +230,12 @@ msgstr "Όνομα"
 
 #: libcore/Enums.vala:136 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
-#, fuzzy
 msgid "Creation Date"
-msgstr "Δημιουργία"
+msgstr "Hμερομηνία Δημιουργίας"
 
 #: libcore/Enums.vala:139
-#, fuzzy
 msgid "Last modification date"
-msgstr "Τελευταία τροποποίηση:"
+msgstr "Τελευταία τροποποίηση"
 
 #: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2326
 #: src/View/ListView.vala:27
@@ -253,11 +244,11 @@ msgstr "Μέγεθος"
 
 #: libcore/Enums.vala:165
 msgid "Number sequence"
-msgstr ""
+msgstr "Αλληλουχία Αριθμού"
 
 #: libcore/Enums.vala:168 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "Κείμενο"
 
 #: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2336
 msgid "Date"
@@ -273,19 +264,19 @@ msgstr ""
 
 #: libcore/Enums.vala:200
 msgid "Text to put at the end"
-msgstr ""
+msgstr "Κείμενο για το τέλος"
 
 #: libcore/Enums.vala:203
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Κείμενο για την αρχή"
 
 #: libcore/Enums.vala:222
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "Προεπιλεγμένη Μορφή - Μόνο ημερομηνία"
 
 #: libcore/Enums.vala:224
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "Προεπιλεγμένη Μορφή - Ημερομηνία και Ώρα"
 
 #: libcore/Enums.vala:226
 msgid "Locale Format - Date and Time"
@@ -293,16 +284,15 @@ msgstr ""
 
 #: libcore/Enums.vala:228
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "Μορφή ISO 8601 - Μόνο ημερομηνία"
 
 #: libcore/Enums.vala:230
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "Μορφή ISO 8601 - Ημερομηνία και Ώρα"
 
 #: libcore/Enums.vala:246
-#, fuzzy
 msgid "Date created"
-msgstr "Δημιουργία"
+msgstr "Ημερομηνία Δημιουργίας"
 
 #: libcore/Enums.vala:248
 #, fuzzy
@@ -311,7 +301,7 @@ msgstr "Τροποποιήθηκε"
 
 #: libcore/Enums.vala:250
 msgid "Current Date"
-msgstr ""
+msgstr "Τρέχουσα Ημερομηνία"
 
 #. TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
 #: libcore/Enums.vala:268
@@ -335,7 +325,7 @@ msgstr ""
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
-msgstr ""
+msgstr "Μη προσβάσιμος"
 
 #: libcore/File.vala:955
 #, fuzzy
