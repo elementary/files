@@ -9,7 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
 "PO-Revision-Date: 2025-11-12 21:18+0000\n"
-"Last-Translator: Yiannos Kryos <johnkrios13@gmail.com>\n"
+"Last-Translator: Orionas Kakomoiroglou "
+"<209243298+OrionasKakomoiroglou@users.noreply.github.com>\n"
 "Language-Team: Greek <https://l10n.elementaryos.org/projects/files/files/el/>"
 "\n"
 "Language: el\n"
@@ -321,22 +322,19 @@ msgstr "Συμπαγής"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
-msgstr "Μη προσβάσιμος"
+msgstr "Μη προσβάσιμη"
 
 #: libcore/File.vala:955
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Αποτυχία ανάλυσης αρχείου επιφάνειας εργασίας: %s"
+msgstr "Αποτυχία ανάλυσης αρχείου desktop"
 
 #: libcore/File.vala:959
-#, fuzzy
 msgid "Failed to parse the desktop file: "
-msgstr "Αποτυχία ανάλυσης αρχείου επιφάνειας εργασίας: %s"
+msgstr "Αποτυχία ανάλυσης αρχείου desktop: "
 
 #: libcore/File.vala:971
-#, fuzzy
 msgid "Failed to create command from file: "
-msgstr "Αποτυχία ανάλυσης αρχείου επιφάνειας εργασίας: %s"
+msgstr "Αποτυχία δημιουργίας εντολής από αρχείο: "
 
 #: libcore/File.vala:980
 msgid "Unable to Launch Desktop File: "
