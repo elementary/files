@@ -8,8 +8,9 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-11-12 19:05+0000\n"
-"Last-Translator: Yiannos Kryos <johnkrios13@gmail.com>\n"
+"PO-Revision-Date: 2025-11-12 20:20+0000\n"
+"Last-Translator: Orionas Kakomoiroglou "
+"<209243298+OrionasKakomoiroglou@users.noreply.github.com>\n"
 "Language-Team: Greek <https://l10n.elementaryos.org/projects/files/files/el/>"
 "\n"
 "Language: el\n"
@@ -40,7 +41,7 @@ msgstr "Ακύρωση"
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open Files as Read Only"
-msgstr "Άνοιγμα αρχείων για Ανάγνωση-μόνο"
+msgstr "Άνοιγμα αρχείων για μόνο για ανάγνωση"
 
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
