@@ -9,8 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
 "PO-Revision-Date: 2025-11-12 20:24+0000\n"
-"Last-Translator: Orionas Kakomoiroglou "
-"<209243298+OrionasKakomoiroglou@users.noreply.github.com>\n"
+"Last-Translator: Yiannos Kryos <johnkrios13@gmail.com>\n"
 "Language-Team: Greek <https://l10n.elementaryos.org/projects/files/files/el/>"
 "\n"
 "Language: el\n"
@@ -74,10 +73,11 @@ msgid "This file is a link."
 msgstr "Αυτό το αρχείο είναι σύνδεσμος."
 
 #: filechooser-portal/Main.vala:460
-#, fuzzy
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr "Η αντικατάστασή του θα αντικαταστήσει το περιεχόμενό του."
+msgstr ""
+"Η αντικατάστασή του θα αντικαταστήσει το περιεχόμενό του. Ο σύνδεσμος θα "
+"παραμείνει"
 
 #: filechooser-portal/Main.vala:462
 #, c-format
@@ -85,9 +85,9 @@ msgid "Replace “%s”?"
 msgstr "Αντικατάσταση \"%s\";"
 
 #: filechooser-portal/Main.vala:463
-#, fuzzy
 msgid "Replacing this file will overwrite its current contents"
-msgstr "Η αντικατάστασή του θα αντικαταστήσει το περιεχόμενό του."
+msgstr ""
+"Η αντικατάστασή του αρχείου θα αντικαταστήσει το τρέχον περιεχόμενό του."
 
 #: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
 msgid "Replace"
@@ -127,17 +127,15 @@ msgstr "Λεπτομέρειες διακομιστή"
 
 #: libcore/ConnectServerDialog.vala:116
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Όνομα διακομιστή ή Διεύθυνση IP"
 
 #: libcore/ConnectServerDialog.vala:119
-#, fuzzy
 msgid "Server:"
-msgstr "_Διακομιστής:"
+msgstr "Διακομιστής:"
 
 #: libcore/ConnectServerDialog.vala:129
-#, fuzzy
 msgid "Port:"
-msgstr "_Θύρα:"
+msgstr "Θύρα:"
 
 #: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
 #: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
@@ -146,7 +144,7 @@ msgstr "Τύπος:"
 
 #: libcore/ConnectServerDialog.vala:161
 msgid "Name of share on server (Optional)"
-msgstr ""
+msgstr "Όνομα διαμοιρασμένου αρχείου στο διακομιστή (Προαιρετικό)"
 
 #: libcore/ConnectServerDialog.vala:164
 #, fuzzy
