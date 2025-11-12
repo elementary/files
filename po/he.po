@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-10-05 16:54+0000\n"
+"PO-Revision-Date: 2025-11-12 19:05+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementaryos.org/projects/files/files/he/"
 ">\n"
@@ -314,7 +314,7 @@ msgstr "בלתי רשמי"
 #. TRANSLATORS Adjective applied to datetime format
 #: libcore/Enums.vala:275
 msgid "Compact"
-msgstr ""
+msgstr "מצומצם"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
