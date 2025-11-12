@@ -9,7 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
 "PO-Revision-Date: 2025-11-12 21:15+0000\n"
-"Last-Translator: Yiannos Kryos <johnkrios13@gmail.com>\n"
+"Last-Translator: Orionas Kakomoiroglou "
+"<209243298+OrionasKakomoiroglou@users.noreply.github.com>\n"
 "Language-Team: Greek <https://l10n.elementaryos.org/projects/files/files/el/>"
 "\n"
 "Language: el\n"
@@ -152,7 +153,7 @@ msgstr "Κοινή χρήση:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Path of shared folder on server (Optional)"
-msgstr "Διαδρομή διαμοιρασμένου αρχείου στο διακομιστή (Προαιρετικό)"
+msgstr "Διαδρομή διαμοιρασμένου φακέλου στο διακομιστή (Προαιρετικό)"
 
 #: libcore/ConnectServerDialog.vala:171
 msgid "Folder:"
@@ -195,9 +196,8 @@ msgid "Continue"
 msgstr "Συνέχεια"
 
 #: libcore/ConnectServerDialog.vala:266
-#, fuzzy
 msgid "Connecting…"
-msgstr "Γίνεται σύνδεση..."
+msgstr "Γίνεται σύνδεση…"
 
 #: libcore/ConnectServerDialog.vala:373
 msgid "Please verify your user details."
@@ -256,11 +256,11 @@ msgstr "Ημερομηνία"
 
 #: libcore/Enums.vala:187
 msgid "Suffix"
-msgstr ""
+msgstr "Κατάληξη"
 
 #: libcore/Enums.vala:190
 msgid "Prefix"
-msgstr ""
+msgstr "Πρόθημα"
 
 #: libcore/Enums.vala:200
 msgid "Text to put at the end"
@@ -280,7 +280,7 @@ msgstr "Προεπιλεγμένη Μορφή - Ημερομηνία και Ώρ
 
 #: libcore/Enums.vala:226
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "Μορφή καθορισμένη από τη γλώσσα - Ημερομηνία και Ώρα"
 
 #: libcore/Enums.vala:228
 msgid "ISO 8601 Format - Date only"
@@ -295,9 +295,8 @@ msgid "Date created"
 msgstr "Ημερομηνία Δημιουργίας"
 
 #: libcore/Enums.vala:248
-#, fuzzy
 msgid "Date Modified"
-msgstr "Τροποποιήθηκε"
+msgstr "Ημερομηνία τροποποίησης"
 
 #: libcore/Enums.vala:250
 msgid "Current Date"
@@ -306,22 +305,20 @@ msgstr "Τρέχουσα Ημερομηνία"
 #. TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
 #: libcore/Enums.vala:268
 msgid "ISO"
-msgstr ""
+msgstr "ISO"
 
 #: libcore/Enums.vala:270
 msgid "Locale"
-msgstr ""
+msgstr "Γλώσσα"
 
 #: libcore/Enums.vala:272
-#, fuzzy
-#| msgid "Info"
 msgid "Informal"
-msgstr "Πληροφορίες"
+msgstr "Ανεπίσημο"
 
 #. TRANSLATORS Adjective applied to datetime format
 #: libcore/Enums.vala:275
 msgid "Compact"
-msgstr ""
+msgstr "Συμπαγής"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
