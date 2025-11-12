@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-11-12 21:19+0000\n"
+"PO-Revision-Date: 2025-11-13 21:55+0000\n"
 "Last-Translator: Yiannos Kryos <johnkrios13@gmail.com>\n"
 "Language-Team: Greek <https://l10n.elementaryos.org/projects/files/files/el/>"
 "\n"
@@ -398,11 +398,11 @@ msgstr "_Μετονομασία"
 
 #: libcore/FileConflictDialog.vala:163
 msgid "Keep Newest"
-msgstr ""
+msgstr "Διατήρηση Νεότερου"
 
 #: libcore/FileConflictDialog.vala:164
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Παράλειψη αν το αρχικό αρχείο τροποποιήθηκε πιο πρόσφατα"
 
 #: libcore/FileConflictDialog.vala:281
 #, c-format
@@ -512,25 +512,25 @@ msgstr ""
 #: libcore/FileUtils.vala:574
 #, c-format
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Αδύνατη η μετονομασία σε \"%s\""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:682
-#, fuzzy, c-format
+#, c-format
 msgid "Today at %s"
-msgstr "Σήμερα στις %-I:%M %p"
+msgstr "Σήμερα στις %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:690
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
-msgstr "Χθες στις %-I:%M %p"
+msgstr "Χθες στις %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:698
 #, c-format
 msgid "%%A at %s"
-msgstr ""
+msgstr "%% στις %s"
 
 #: libcore/FileUtils.vala:923
 #, c-format
@@ -569,14 +569,13 @@ msgstr[1] "περίπου %'d ώρες"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
 #: libcore/FileUtils.vala:946
-#, fuzzy
 msgid "copy"
-msgstr " (αντίγραφο)"
+msgstr "αντίγραφο"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:948
 msgid "link"
-msgstr ""
+msgstr "σύνδεσμος"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:950
@@ -610,12 +609,12 @@ msgstr ""
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:124 libcore/marlin-file-operations.c:1096
 #: libcore/FileOperations/CommonJob.vala:354
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
 msgstr ""
 "Παρουσιάστηκε σφάλμα κατά τη λήψη πληροφοριών για τα αρχεία του φακέλου "
-"\"%B\"."
+"\"%s\"."
 
 #: libcore/marlin-file-operations.c:135 libcore/marlin-file-operations.c:1107
 msgid "_Skip files"
@@ -624,33 +623,33 @@ msgstr "_Παράλειψη αρχείων"
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:159
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"Ο φάκελος \"%B\" δεν μπορεί να διαγραφεί διότι δεν έχετε δικαίωμα ανάγνωσής "
+"Ο φάκελος \"%s\" δεν μπορεί να διαγραφεί διότι δεν έχετε δικαίωμα ανάγνωσής "
 "του."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:164 libcore/marlin-file-operations.c:1149
 #: libcore/FileOperations/CommonJob.vala:306
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error reading the folder \"%s\"."
-msgstr "Παρουσιάστηκε σφάλμα κατά την ανάγνωση του φακέλου \"%B\"."
+msgstr "Παρουσιάστηκε σφάλμα κατά την ανάγνωση του φακέλου \"%s\"."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:204
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the folder %s."
-msgstr "Αδυναμία διαγραφής του φακέλου %B."
+msgstr "Αδυναμία διαγραφής του φακέλου %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:288
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error deleting %s."
-msgstr "Παρουσιάστηκε σφάλμα κατά τη διαγραφή του %B."
+msgstr "Παρουσιάστηκε σφάλμα κατά τη διαγραφή του %s."
 
 #: libcore/marlin-file-operations.c:452 libcore/marlin-file-operations.c:455
 #: libcore/marlin-file-operations.c:458
