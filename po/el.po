@@ -9,8 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
 "PO-Revision-Date: 2025-11-12 20:30+0000\n"
-"Last-Translator: Orionas Kakomoiroglou "
-"<209243298+OrionasKakomoiroglou@users.noreply.github.com>\n"
+"Last-Translator: Yiannos Kryos <johnkrios13@gmail.com>\n"
 "Language-Team: Greek <https://l10n.elementaryos.org/projects/files/files/el/>"
 "\n"
 "Language: el\n"
@@ -148,13 +147,12 @@ msgid "Name of share on server (Optional)"
 msgstr "Όνομα κοινοποίησης στο διακομιστή (Προαιρετικό)"
 
 #: libcore/ConnectServerDialog.vala:164
-#, fuzzy
 msgid "Share:"
-msgstr "_Κοινή χρήση:"
+msgstr "Κοινή χρήση:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Path of shared folder on server (Optional)"
-msgstr ""
+msgstr "Διαδρομή διαμοιρασμένου αρχείου στο διακομιστή (Προαιρετικό)"
 
 #: libcore/ConnectServerDialog.vala:171
 #, fuzzy
