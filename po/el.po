@@ -9,8 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
 "PO-Revision-Date: 2025-11-12 20:20+0000\n"
-"Last-Translator: Orionas Kakomoiroglou "
-"<209243298+OrionasKakomoiroglou@users.noreply.github.com>\n"
+"Last-Translator: Yiannos Kryos <johnkrios13@gmail.com>\n"
 "Language-Team: Greek <https://l10n.elementaryos.org/projects/files/files/el/>"
 "\n"
 "Language: el\n"
@@ -49,14 +48,12 @@ msgid "Open File as Read Only"
 msgstr "Άνοιγμα αρχείου μόνο για ανάγνωση"
 
 #: filechooser-portal/FileChooserDialog.vala:378
-#, fuzzy
 msgid "Enter new filename"
-msgstr "νέο αρχείο"
+msgstr "Εισάγετε νέο όνομα αρχείου"
 
 #: filechooser-portal/Main.vala:107
-#, fuzzy
 msgid "Select"
-msgstr " επιλέχτηκε"
+msgstr "Επιλέξτε"
 
 #: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:313
 msgid "Open"
@@ -64,16 +61,16 @@ msgstr "Άνοιγμα"
 
 #: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:379
 msgid "Save"
-msgstr ""
+msgstr "Αποθήκευση"
 
 #: filechooser-portal/Main.vala:454
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr ""
+msgstr "Το αρχείο είναι σύνδεσμος για το \"%s\""
 
 #: filechooser-portal/Main.vala:457
 msgid "This file is a link."
-msgstr ""
+msgstr "Αυτό το αρχείο είναι σύνδεσμος"
 
 #: filechooser-portal/Main.vala:460
 #, fuzzy
