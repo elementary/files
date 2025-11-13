@@ -7,29 +7,30 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-02 12:13+0000\n"
-"PO-Revision-Date: 2017-02-14 10:17+0000\n"
-"Last-Translator: Cody Garver <cody@elementaryos.org>\n"
-"Language-Team: Greek <el@li.org>\n"
+"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"PO-Revision-Date: 2025-11-12 21:19+0000\n"
+"Last-Translator: Yiannos Kryos <johnkrios13@gmail.com>\n"
+"Language-Team: Greek <https://l10n.elementaryos.org/projects/files/files/el/>"
+"\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:194
 msgid "Previous"
 msgstr "Προηγούμενο"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:199
 msgid "Next"
 msgstr "Επόμενο"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -39,22 +40,20 @@ msgstr "Ακύρωση"
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Άνοιγμα αρχείων για μόνο για ανάγνωση"
 
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Άνοιγμα αρχείου μόνο για ανάγνωση"
 
 #: filechooser-portal/FileChooserDialog.vala:378
-#, fuzzy
 msgid "Enter new filename"
-msgstr "νέο αρχείο"
+msgstr "Εισάγετε νέο όνομα αρχείου"
 
 #: filechooser-portal/Main.vala:107
-#, fuzzy
 msgid "Select"
-msgstr " επιλέχτηκε"
+msgstr "Επιλέξτε"
 
 #: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:313
 msgid "Open"
@@ -62,34 +61,35 @@ msgstr "Άνοιγμα"
 
 #: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:379
 msgid "Save"
-msgstr ""
+msgstr "Αποθήκευση"
 
 #: filechooser-portal/Main.vala:454
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr ""
+msgstr "Αυτό το αρχείο είναι σύνδεσμος για το \"%s\""
 
 #: filechooser-portal/Main.vala:457
 msgid "This file is a link."
-msgstr ""
+msgstr "Αυτό το αρχείο είναι σύνδεσμος."
 
 #: filechooser-portal/Main.vala:460
-#, fuzzy
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr "Η αντικατάστασή του θα αντικαταστήσει το περιεχόμενό του."
+msgstr ""
+"Η αντικατάστασή του θα αντικαταστήσει το περιεχόμενό του. Ο σύνδεσμος θα "
+"παραμείνει"
 
 #: filechooser-portal/Main.vala:462
-#, fuzzy, c-format
+#, c-format
 msgid "Replace “%s”?"
-msgstr "Αντικατάσταση αρχείου \"%s\";"
+msgstr "Αντικατάσταση \"%s\";"
 
 #: filechooser-portal/Main.vala:463
-#, fuzzy
 msgid "Replacing this file will overwrite its current contents"
-msgstr "Η αντικατάστασή του θα αντικαταστήσει το περιεχόμενό του."
+msgstr ""
+"Η αντικατάστασή του αρχείου θα αντικαταστήσει το τρέχον περιεχόμενό του."
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:187
+#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "Αντικατάσταση"
 
@@ -127,87 +127,76 @@ msgstr "Λεπτομέρειες διακομιστή"
 
 #: libcore/ConnectServerDialog.vala:116
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Όνομα διακομιστή ή Διεύθυνση IP"
 
 #: libcore/ConnectServerDialog.vala:119
-#, fuzzy
 msgid "Server:"
-msgstr "_Διακομιστής:"
+msgstr "Διακομιστής:"
 
 #: libcore/ConnectServerDialog.vala:129
-#, fuzzy
 msgid "Port:"
-msgstr "_Θύρα:"
+msgstr "Θύρα:"
 
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
-#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:242
+#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
+#: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
 msgid "Type:"
 msgstr "Τύπος:"
 
 #: libcore/ConnectServerDialog.vala:161
 msgid "Name of share on server (Optional)"
-msgstr ""
+msgstr "Όνομα κοινοποίησης στο διακομιστή (Προαιρετικό)"
 
 #: libcore/ConnectServerDialog.vala:164
-#, fuzzy
 msgid "Share:"
-msgstr "_Κοινή χρήση:"
+msgstr "Κοινή χρήση:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Path of shared folder on server (Optional)"
-msgstr ""
+msgstr "Διαδρομή διαμοιρασμένου φακέλου στο διακομιστή (Προαιρετικό)"
 
 #: libcore/ConnectServerDialog.vala:171
-#, fuzzy
 msgid "Folder:"
-msgstr "_Φάκελος:"
+msgstr "Φάκελος:"
 
 #: libcore/ConnectServerDialog.vala:175
 msgid "User Details"
 msgstr "Λεπτομέρειες χρήστη"
 
 #: libcore/ConnectServerDialog.vala:180
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "Νέο παράθυρο ως _διαχειριστής"
+msgstr "Όνομα διευθύνσης Windows"
 
 #: libcore/ConnectServerDialog.vala:182
-#, fuzzy
 msgid "Domain name:"
-msgstr "_Όνομα τομέα:"
+msgstr "Όνομα τομέα:"
 
 #: libcore/ConnectServerDialog.vala:187
 msgid "Name of user on server"
-msgstr ""
+msgstr "Όνομα χρήστη στο διακομιστή"
 
 #: libcore/ConnectServerDialog.vala:189
-#, fuzzy
 msgid "User name:"
-msgstr "_Όνομα χρήστη:"
+msgstr "Όνομα χρήστη:"
 
 #: libcore/ConnectServerDialog.vala:197
-#, fuzzy
 msgid "Password:"
-msgstr "Συνθη_ματικό:"
+msgstr "Συνθηματικό:"
 
 #: libcore/ConnectServerDialog.vala:199
-#, fuzzy
 msgid "Remember this password"
-msgstr "_Απομνημόνευση αυτού του συνθηματικού"
+msgstr "Απομνημόνευση αυτού του συνθηματικού"
 
 #: libcore/ConnectServerDialog.vala:209
-#, fuzzy
 msgid "Connect"
-msgstr "_Σύνδεση"
+msgstr "Σύνδεση"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Continue"
 msgstr "Συνέχεια"
 
 #: libcore/ConnectServerDialog.vala:266
-#, fuzzy
 msgid "Connecting…"
-msgstr "Γίνεται σύνδεση..."
+msgstr "Γίνεται σύνδεση…"
 
 #: libcore/ConnectServerDialog.vala:373
 msgid "Please verify your user details."
@@ -215,7 +204,7 @@ msgstr "Παρακαλώ επαληθεύστε τις πληροφορίες χ
 
 #: libcore/Directory.vala:744
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Ο διακομιστής δεν ανταποκρίθηκε εντός του χρονικού ορίου"
 
 #: libcore/DndHandler.vala:50
 #, c-format
@@ -232,7 +221,7 @@ msgstr "Αντιγραφή εδώ"
 
 #: libcore/DndHandler.vala:102
 msgid "Link Here"
-msgstr ""
+msgstr "Σύνδεσμος Εδώ"
 
 #: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2321
 msgid "Name"
@@ -240,14 +229,12 @@ msgstr "Όνομα"
 
 #: libcore/Enums.vala:136 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
-#, fuzzy
 msgid "Creation Date"
-msgstr "Δημιουργία"
+msgstr "Hμερομηνία Δημιουργίας"
 
 #: libcore/Enums.vala:139
-#, fuzzy
 msgid "Last modification date"
-msgstr "Τελευταία τροποποίηση:"
+msgstr "Τελευταία τροποποίηση"
 
 #: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2326
 #: src/View/ListView.vala:27
@@ -256,11 +243,11 @@ msgstr "Μέγεθος"
 
 #: libcore/Enums.vala:165
 msgid "Number sequence"
-msgstr ""
+msgstr "Αλληλουχία Αριθμού"
 
 #: libcore/Enums.vala:168 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "Κείμενο"
 
 #: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2336
 msgid "Date"
@@ -268,102 +255,93 @@ msgstr "Ημερομηνία"
 
 #: libcore/Enums.vala:187
 msgid "Suffix"
-msgstr ""
+msgstr "Κατάληξη"
 
 #: libcore/Enums.vala:190
 msgid "Prefix"
-msgstr ""
+msgstr "Πρόθημα"
 
 #: libcore/Enums.vala:200
 msgid "Text to put at the end"
-msgstr ""
+msgstr "Κείμενο για το τέλος"
 
 #: libcore/Enums.vala:203
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Κείμενο για την αρχή"
 
 #: libcore/Enums.vala:222
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "Προεπιλεγμένη Μορφή - Μόνο ημερομηνία"
 
 #: libcore/Enums.vala:224
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "Προεπιλεγμένη Μορφή - Ημερομηνία και Ώρα"
 
 #: libcore/Enums.vala:226
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "Μορφή καθορισμένη από τη γλώσσα - Ημερομηνία και Ώρα"
 
 #: libcore/Enums.vala:228
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "Μορφή ISO 8601 - Μόνο ημερομηνία"
 
 #: libcore/Enums.vala:230
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "Μορφή ISO 8601 - Ημερομηνία και Ώρα"
 
 #: libcore/Enums.vala:246
-#, fuzzy
 msgid "Date created"
-msgstr "Δημιουργία"
+msgstr "Ημερομηνία Δημιουργίας"
 
 #: libcore/Enums.vala:248
-#, fuzzy
 msgid "Date Modified"
-msgstr "Τροποποιήθηκε"
+msgstr "Ημερομηνία τροποποίησης"
 
 #: libcore/Enums.vala:250
 msgid "Current Date"
-msgstr ""
+msgstr "Τρέχουσα Ημερομηνία"
 
 #. TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
 #: libcore/Enums.vala:268
 msgid "ISO"
-msgstr ""
+msgstr "ISO"
 
 #: libcore/Enums.vala:270
 msgid "Locale"
-msgstr ""
+msgstr "Γλώσσα"
 
 #: libcore/Enums.vala:272
-#, fuzzy
-#| msgid "Info"
 msgid "Informal"
-msgstr "Πληροφορίες"
+msgstr "Ανεπίσημο"
 
 #. TRANSLATORS Adjective applied to datetime format
 #: libcore/Enums.vala:275
 msgid "Compact"
-msgstr ""
+msgstr "Συμπαγής"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
-msgstr ""
+msgstr "Μη προσβάσιμη"
 
 #: libcore/File.vala:955
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Αποτυχία ανάλυσης αρχείου επιφάνειας εργασίας: %s"
+msgstr "Αποτυχία ανάλυσης αρχείου desktop"
 
 #: libcore/File.vala:959
-#, fuzzy
 msgid "Failed to parse the desktop file: "
-msgstr "Αποτυχία ανάλυσης αρχείου επιφάνειας εργασίας: %s"
+msgstr "Αποτυχία ανάλυσης αρχείου desktop: "
 
 #: libcore/File.vala:971
-#, fuzzy
 msgid "Failed to create command from file: "
-msgstr "Αποτυχία ανάλυσης αρχείου επιφάνειας εργασίας: %s"
+msgstr "Αποτυχία δημιουργίας εντολής από αρχείο: "
 
 #: libcore/File.vala:980
-#, fuzzy
 msgid "Unable to Launch Desktop File: "
-msgstr "Αποτυχία ανάλυσης αρχείου επιφάνειας εργασίας: %s"
+msgstr "Αποτυχία ανοίγματος αρχείου desktop: "
 
 #: libcore/File.vala:1169
-#, fuzzy
 msgid "Empty"
-msgstr "Κενό αρχείο"
+msgstr "Κενό"
 
 #: libcore/File.vala:1171
 #, fuzzy, c-format
@@ -377,61 +355,61 @@ msgstr[1] "%'d λεπτά"
 msgid "link to %s"
 msgstr "σύνδεσμος προς το %s"
 
-#: libcore/FileConflictDialog.vala:61
+#: libcore/FileConflictDialog.vala:64
 msgid "File conflict"
 msgstr "Σύγκρουση αρχείων"
 
-#: libcore/FileConflictDialog.vala:96
+#: libcore/FileConflictDialog.vala:77
 msgid "Original file"
 msgstr "Αρχικό αρχείο"
 
-#: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
+#: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
 #: src/Dialogs/PropertiesWindow.vala:546
 msgid "Size:"
 msgstr "Μέγεθος:"
 
-#: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
+#: libcore/FileConflictDialog.vala:97 libcore/FileConflictDialog.vala:131
 msgid "Last modified:"
 msgstr "Τελευταία τροποποίηση:"
 
-#: libcore/FileConflictDialog.vala:130
+#: libcore/FileConflictDialog.vala:111
 msgid "Replace with"
 msgstr "Αντικατάσταση με"
 
-#: libcore/FileConflictDialog.vala:164
+#: libcore/FileConflictDialog.vala:145
 msgid "Reset"
 msgstr "Επαναφορά"
 
-#: libcore/FileConflictDialog.vala:173
+#: libcore/FileConflictDialog.vala:154
 msgid "_Select a new name for the destination"
 msgstr "_Επιλέξτε ένα νέο όνομα για τον προορισμό"
 
-#: libcore/FileConflictDialog.vala:177
+#: libcore/FileConflictDialog.vala:158
 msgid "Apply this action to all files"
 msgstr "Εφαρμογή αυτής της ενέργειας σε όλα τα αρχεία"
 
-#: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:160 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_Παράλειψη"
 
-#: libcore/FileConflictDialog.vala:180
+#: libcore/FileConflictDialog.vala:161
 msgid "Re_name"
 msgstr "_Μετονομασία"
 
-#: libcore/FileConflictDialog.vala:182
+#: libcore/FileConflictDialog.vala:163
 msgid "Keep Newest"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:183
+#: libcore/FileConflictDialog.vala:164
 msgid "Skip if original was modified more recently"
 msgstr ""
 
-#: libcore/FileConflictDialog.vala:293
+#: libcore/FileConflictDialog.vala:281
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Συγχώνευση φακέλου \"%s\";"
 
-#: libcore/FileConflictDialog.vala:294
+#: libcore/FileConflictDialog.vala:282
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -439,60 +417,60 @@ msgstr ""
 "Η συγχώνευση θα ζητήσει επιβεβαίωση προτού αντικαταστήσει αρχεία στο φάκελο "
 "που συγκρούονται με τα αρχεία που αντιγράφονται."
 
-#: libcore/FileConflictDialog.vala:296
+#: libcore/FileConflictDialog.vala:284
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένας παλαιότερος φάκελος με το ίδιο όνομα στο \"%s\"."
 
-#: libcore/FileConflictDialog.vala:298
+#: libcore/FileConflictDialog.vala:286
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένας νεότερος φάκελος με το ίδιο όνομα στο \"%s\"."
 
-#: libcore/FileConflictDialog.vala:300
+#: libcore/FileConflictDialog.vala:288
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένας φάκελος με το ίδιο όνομα στο \"%s\"."
 
-#: libcore/FileConflictDialog.vala:303
+#: libcore/FileConflictDialog.vala:291
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Αντικατάσταση φακέλου \"%s\";"
 
-#: libcore/FileConflictDialog.vala:304
+#: libcore/FileConflictDialog.vala:292
 msgid "Replacing it will remove all files in the folder."
 msgstr "Η αντικατάστασή του θα διαγράψει όλα τα αρχεία του φακέλου."
 
-#: libcore/FileConflictDialog.vala:305
+#: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένας φάκελος με το ίδιο όνομα στο \"%s\"."
 
-#: libcore/FileConflictDialog.vala:308
+#: libcore/FileConflictDialog.vala:296
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Αντικατάσταση αρχείου \"%s\";"
 
-#: libcore/FileConflictDialog.vala:309
+#: libcore/FileConflictDialog.vala:297
 msgid "Replacing it will overwrite its content."
 msgstr "Η αντικατάστασή του θα αντικαταστήσει το περιεχόμενό του."
 
-#: libcore/FileConflictDialog.vala:312
+#: libcore/FileConflictDialog.vala:300
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένα παλαιότερο αρχείο με το ίδιο όνομα στο \"%s\"."
 
-#: libcore/FileConflictDialog.vala:314
+#: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένα νεότερο αρχείο με το ίδιο όνομα στο \"%s\"."
 
-#: libcore/FileConflictDialog.vala:316
+#: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Υπάρχει ήδη ένα αρχείο με το ίδιο όνομα στο \"%s\"."
 
-#: libcore/FileConflictDialog.vala:342
+#: libcore/FileConflictDialog.vala:336
 msgid "Merge"
 msgstr "Συγχώνευση"
 
@@ -537,31 +515,31 @@ msgid "Could not rename to '%s'"
 msgstr ""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:671
+#: libcore/FileUtils.vala:682
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Σήμερα στις %-I:%M %p"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:679
+#: libcore/FileUtils.vala:690
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Χθες στις %-I:%M %p"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:687
+#: libcore/FileUtils.vala:698
 #, c-format
 msgid "%%A at %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:912
+#: libcore/FileUtils.vala:923
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d δευτερόλεπτο"
 msgstr[1] "%'d δευτερόλεπτα"
 
-#: libcore/FileUtils.vala:916 libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:927 libcore/FileUtils.vala:935
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -570,19 +548,19 @@ msgstr[1] "%'d λεπτά"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:923 src/Dialogs/PropertiesWindow.vala:1270
+#: libcore/FileUtils.vala:934 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:934
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d ώρα"
 msgstr[1] "%'d ώρες"
 
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:938
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -590,24 +568,24 @@ msgstr[0] "περίπου %'d ώρα"
 msgstr[1] "περίπου %'d ώρες"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:935
+#: libcore/FileUtils.vala:946
 #, fuzzy
 msgid "copy"
 msgstr " (αντίγραφο)"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:937
+#: libcore/FileUtils.vala:948
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:939
+#: libcore/FileUtils.vala:950
 #, fuzzy
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:941
+#: libcore/FileUtils.vala:952
 msgid ")"
 msgstr ""
 
@@ -961,56 +939,56 @@ msgstr "Γίνεται προετοιμασία"
 msgid "Files"
 msgstr "Αρχεία"
 
-#: libcore/Resources.vala:61
+#: libcore/Resources.vala:60
 msgid "AFP"
 msgstr "AFP"
 
-#: libcore/Resources.vala:62
+#: libcore/Resources.vala:61
 #, fuzzy
 msgid "AFC"
 msgstr "AFP"
 
-#: libcore/Resources.vala:63
+#: libcore/Resources.vala:62
 msgid "DAV"
 msgstr "DAV"
 
-#: libcore/Resources.vala:64
+#: libcore/Resources.vala:63
 msgid "DAVS"
 msgstr "DAVS"
 
-#: libcore/Resources.vala:65
+#: libcore/Resources.vala:64
 msgid "FTP"
 msgstr "FTP"
 
-#: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:47
+#: libcore/Resources.vala:65 src/View/Sidebar/SidebarWindow.vala:47
 msgid "Network"
 msgstr "Δίκτυο"
 
-#: libcore/Resources.vala:67
+#: libcore/Resources.vala:66
 msgid "SFTP"
 msgstr "SFTP"
 
-#: libcore/Resources.vala:68
+#: libcore/Resources.vala:67
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
+#: libcore/Resources.vala:68 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Κάδος"
 
-#: libcore/Resources.vala:70
+#: libcore/Resources.vala:69
 msgid "Recent"
 msgstr "Πρόσφατα"
 
-#: libcore/Resources.vala:71
+#: libcore/Resources.vala:70
 msgid "MTP"
 msgstr "MTP"
 
-#: libcore/Resources.vala:72
+#: libcore/Resources.vala:71
 msgid "GPHOTO2"
 msgstr ""
 
-#: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
+#: libcore/Resources.vala:72 src/Dialogs/VolumePropertiesWindow.vala:41
 #: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Σύστημα αρχείων"
@@ -1849,7 +1827,7 @@ msgstr ""
 msgid "%0*d,%0*d,%0*d…"
 msgstr ""
 
-#: src/Dialogs/ChooseAppDialog.vala:45
+#: src/Dialogs/ChooseAppDialog.vala:50
 msgid "Set as default"
 msgstr "Ορισμός ως προεπιλογή"
 
@@ -2060,7 +2038,7 @@ msgid "Invalid file name provided"
 msgstr "Δόθηκε μη έγκυρο όνομα αρχείου"
 
 #: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:241
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "Νέα καρτέλα"
 
@@ -2351,40 +2329,40 @@ msgstr "Το αρχείο δεν βρέθηκε"
 msgid "The file selected no longer exists."
 msgstr "Το επιλεγμένο αρχείο δεν υπάρχει πλέον."
 
-#: src/View/Window.vala:216
+#: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:246
+#: src/View/Window.vala:244
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "Κλείσιμο"
 
-#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:472 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "Άνοιγμα σε νέο παράθυρο"
 
-#: src/View/Window.vala:475
+#: src/View/Window.vala:473
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Δημιουργείται αντίγραφο του \"%B\""
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:479
+#: src/View/Window.vala:477
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:480
+#: src/View/Window.vala:478
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "Κλείσιμο"
 
-#: src/View/Window.vala:481
+#: src/View/Window.vala:479
 #, fuzzy
 msgid "Close Tab"
 msgstr "Κλείσιμο"
 
-#: src/View/Window.vala:766 src/View/Window.vala:776
+#: src/View/Window.vala:763 src/View/Window.vala:773
 msgid "(as Administrator)"
 msgstr "(ως διαχειριστής)"
 
