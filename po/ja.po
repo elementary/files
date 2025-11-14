@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-10-07 07:55+0000\n"
+"PO-Revision-Date: 2025-11-12 19:05+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/files/"
 "ja/>\n"
@@ -316,7 +316,7 @@ msgstr "略式"
 #. TRANSLATORS Adjective applied to datetime format
 #: libcore/Enums.vala:275
 msgid "Compact"
-msgstr ""
+msgstr "コンパクト"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"

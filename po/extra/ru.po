@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-10-22 08:07+0000\n"
+"PO-Revision-Date: 2025-11-09 09:55+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/extra/"
 "ru/>\n"
@@ -80,7 +80,7 @@ msgstr "Улучшения:"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "A compact date format is introduced"
-msgstr ""
+msgstr "Добавлен компактный формат даты"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:91
 #: data/files.metainfo.xml.in.in:109 data/files.metainfo.xml.in.in:124
@@ -94,19 +94,21 @@ msgstr "Незначительные обновления:"
 
 #: data/files.metainfo.xml.in.in:73
 msgid "The file conflict dialog now shows a missing icon"
-msgstr ""
+msgstr "Диалог конфликта файлов теперь отображает отсутствующие значки"
 
 #: data/files.metainfo.xml.in.in:74
 msgid "Flickering of the pathbar with some navigation methods is fixed"
-msgstr ""
+msgstr "Исправлено моргание адресной строки при некоторых способах навигации"
 
 #: data/files.metainfo.xml.in.in:75
 msgid "The option to set a default app for folders is no longer offered"
 msgstr ""
+"Больше не предлагается возможность установить приложение по умолчанию для "
+"папок"
 
 #: data/files.metainfo.xml.in.in:76
 msgid "The scrollbar no longer overlays the modification date in List view"
-msgstr ""
+msgstr "В виде списка полоса прокрутки больше не закрывает собой даты изменения"
 
 #: data/files.metainfo.xml.in.in:77 data/files.metainfo.xml.in.in:96
 #: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:126

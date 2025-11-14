@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-10-24 07:55+0000\n"
+"PO-Revision-Date: 2025-11-12 19:05+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementaryos.org/projects/files/extra/he/"
 ">\n"
@@ -69,7 +69,7 @@ msgstr "שיפורים:"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "A compact date format is introduced"
-msgstr ""
+msgstr "תבנית תאריך מצומצמת נוספה"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:91
 #: data/files.metainfo.xml.in.in:109 data/files.metainfo.xml.in.in:124
@@ -83,19 +83,19 @@ msgstr "תיקונים מזעריים:"
 
 #: data/files.metainfo.xml.in.in:73
 msgid "The file conflict dialog now shows a missing icon"
-msgstr ""
+msgstr "חלונית סתירת קבצים מציג מעתה סמל שהיה חסר"
 
 #: data/files.metainfo.xml.in.in:74
 msgid "Flickering of the pathbar with some navigation methods is fixed"
-msgstr ""
+msgstr "הבהוב של סרגל הנתיב עם כמה שיטות ניווט עבר תיקון"
 
 #: data/files.metainfo.xml.in.in:75
 msgid "The option to set a default app for folders is no longer offered"
-msgstr ""
+msgstr "האפשרות להגדרת יישום ברירת מחדל לא מוצעת יותר"
 
 #: data/files.metainfo.xml.in.in:76
 msgid "The scrollbar no longer overlays the modification date in List view"
-msgstr ""
+msgstr "פס הגלילה לא חופף יותר עם תאריך השינוי בתצוגת הרשימה"
 
 #: data/files.metainfo.xml.in.in:77 data/files.metainfo.xml.in.in:96
 #: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:126
