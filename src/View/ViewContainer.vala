@@ -421,15 +421,7 @@ namespace Files.View {
                 view.select_glib_files (selected_locations, selected_locations.first ().data);
                 selected_locations = null;
             } else if (dir.selected_file != null) {
-                if (dir.selected_file.query_exists ()) {
                     focus_location_if_in_current_directory (dir.selected_file);
-                } else {
-                    content = new Welcome (
-                        _("File not Found"),
-                        _("The file selected no longer exists.")
-                    );
-                    can_show_folder = false;
-                }
             } else {
                 view.focus_first_for_empty_selection (false); /* Does not select */
             }

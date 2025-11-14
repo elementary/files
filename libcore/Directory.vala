@@ -146,6 +146,8 @@ public class Files.Directory : Object {
          * selected in the loaded view*/
         if (!creation_key.equal (gfile)) {
             dir.selected_file = file;
+        } else {
+            dir.selected_file = null;
         }
 
         return dir;
