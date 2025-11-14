@@ -420,8 +420,8 @@ namespace Files.View {
             } else if (selected_locations != null) {
                 view.select_glib_files (selected_locations, selected_locations.first ().data);
                 selected_locations = null;
-            } else if (dir.selected_file != null) {
-                    focus_location_if_in_current_directory (dir.selected_file);
+            } else if (dir.initial_selected_file != null) {
+                    focus_location_if_in_current_directory (dir.initial_selected_file);
             } else {
                 view.focus_first_for_empty_selection (false); /* Does not select */
             }
