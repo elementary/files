@@ -112,6 +112,11 @@ public class Files.AppMenu : Gtk.Popover {
         };
         show_remote_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
+        var show_file_preview = new Gtk.CheckButton.with_label (_("File Preview (Column View)")) {
+            action_name = "win.show-file-preview"
+        };
+        show_file_preview.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
+
         ///TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
         var datetimeformat_header = new Granite.HeaderLabel (_("Date & Time Format"));
 
@@ -138,6 +143,7 @@ public class Files.AppMenu : Gtk.Popover {
         menu_box.add (show_hidden_button);
         menu_box.add (show_local_thumbnails);
         menu_box.add (show_remote_thumbnails);
+        menu_box.add (show_file_preview);
         menu_box.add (new Gtk.Separator (HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
         menu_box.add (datetimeformat_header);
         menu_box.add (iso_button);

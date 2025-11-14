@@ -40,6 +40,11 @@
       <summary>Thumbnail local files</summary>
       <description>Show thumbnail files on the local filesystem</description>
     </key>
+    <key type="b" name="show-file-preview">
+      <default>false</default>
+      <summary>Show file preview</summary>
+      <description>Show file preview on selection</description>
+    </key>
     <key type="b" name="show-sidebar">
       <default>true</default>
       <summary>Show the sidebar</summary>
