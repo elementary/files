@@ -60,6 +60,11 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
     }
 
     public bool show_hidden_files { get; set; default = false; }
+    public bool is_empty {
+        get {
+            return file_treerow_map.size == 0;
+        }
+    }
 
     private enum PrivColumnID {
         DUMMY = ColumnID.NUM_COLUMNS
