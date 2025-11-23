@@ -21,13 +21,6 @@
              Julián Unrrein <junrrein@gmail.com>
 ***/
 
-namespace Files {
-    public Settings app_settings;
-    public Settings icon_view_settings;
-    public Settings list_view_settings;
-    public Settings column_view_settings;
-}
-
 public class Files.Application : Gtk.Application {
 
     private VolumeMonitor volume_monitor;
@@ -43,14 +36,6 @@ public class Files.Application : Gtk.Application {
     public Settings gtk_file_chooser_settings { get; construct; }
 
     bool quitting = false;
-
-    static construct {
-        /* GSettings parameters */
-        app_settings = new Settings ("io.elementary.files.preferences");
-        icon_view_settings = new Settings ("io.elementary.files.icon-view");
-        list_view_settings = new Settings ("io.elementary.files.list-view");
-        column_view_settings = new Settings ("io.elementary.files.column-view");
-    }
 
     construct {
         gnome_interface_settings = new Settings ("org.gnome.desktop.interface");

@@ -8,13 +8,18 @@ pantheon_files_core_deps = [
     pango_dep,
     sqlite3_dep,
     libcanberra_dep,
+    handy_dep,
+    zeitgeist_dep
 ]
 
 pantheon_files_core_vala_files = files(
     'AbstractSlot.vala',
+    'BasicAbstractDirectoryView.vala',
+    'BasicAbstractTreeView.vala',
     'Bookmark.vala',
     'BookmarkList.vala',
     'CallWhenReady.vala',
+    'ClipboardManager.vala',
     'ConnectServerOperation.vala',
     'ConnectServerDialog.vala',
     'Directory.vala',
@@ -40,6 +45,10 @@ pantheon_files_core_vala_files = files(
     'TrashMonitor.vala',
     'UserUtils.vala',
     'UndoManager.vala',
+    'EmblemRenderer.vala',
+    'IconRenderer.vala',
+    'BasicTextRenderer.vala',
+    'ZeitgeistManager.vala',
     'FileOperations/CommonJob.vala',
     'FileOperations/CopyMoveJob.vala',
     'FileOperations/CreateJob.vala',
@@ -53,11 +62,26 @@ pantheon_files_core_vala_files = files(
     'Interfaces/SidebarListInterface.vala',
     'Interfaces/SidebarItemInterface.vala',
     'Widgets/BasicBreadcrumbsEntry.vala',
+    'View/BasicListView.vala',
+    'View/BasicSlot.vala',
+    'View/BasicViewContainer.vala',
+    'View/BasicWindow.vala',
+    'View/BasicSidebarWindow.vala',
+    'Widgets/BasicBookmarkListBox.vala',
+    'Widgets/BasicDeviceListBox.vala',
+    'Widgets/BasicBookmarkRow.vala',
+    'Widgets/BasicAbstractMountableRow.vala',
+    'Widgets/BasicDriveRow.vala',
+    'Widgets/BasicVolumelessMountRow.vala',
+    'Widgets/BasicVolumeRow.vala',
     'Widgets/BasicLocationBar.vala',
     'Widgets/BreadcrumbElement.vala',
     'Widgets/BreadcrumbIconList.vala',
     'Widgets/ButtonWithMenu.vala',
-    'Widgets/ViewSwitcher.vala'
+    'Widgets/BasicDirectoryNotFound.vala',
+    'Widgets/BasicWelcome.vala',
+    'Widgets/ViewSwitcher.vala',
+    'Widgets/Browser.vala'
 )
 
 pantheon_files_core_c_files = files(

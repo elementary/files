@@ -138,5 +138,9 @@ namespace Files.View.Chrome {
             bread.grab_focus ();
             return bread.has_focus;
         }
+
+        public void enter_navigate_mode () {
+            bread.grab_focus ();
+        }
     }
 }

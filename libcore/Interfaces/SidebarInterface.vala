@@ -34,8 +34,8 @@ namespace Files {
 
 public interface Files.SidebarInterface : Gtk.Widget {
         /* Plugin interface */
-        public abstract uint32 add_plugin_item (Files.SidebarPluginItem item, Files.PlaceType category);
-        public abstract bool update_plugin_item (Files.SidebarPluginItem item, uint32 item_id);
+        public virtual uint32 add_plugin_item (Files.SidebarPluginItem item, Files.PlaceType category) { return -1; }
+        public virtual bool update_plugin_item (Files.SidebarPluginItem item, uint32 item_id) { return false; }
         /* Window interface */
         public signal bool request_focus ();
         public signal void sync_needed ();
