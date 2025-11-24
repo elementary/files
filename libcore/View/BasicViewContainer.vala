@@ -23,7 +23,7 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1335 USA.
 ***/
 
-namespace Files.View {
+namespace Files {
     public class BasicViewContainer : Gtk.Box {
         public Gtk.Widget? content_item;
         public bool can_show_folder { get; private set; default = false; }

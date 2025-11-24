@@ -267,8 +267,8 @@ namespace Files {
         private unowned ClipboardManager clipboard;
         protected Files.ListModel model;
         protected Files.IconRenderer icon_renderer;
-        protected unowned View.BasicSlot slot; // Must be unowned else cyclic reference stops destruction
-        protected unowned View.BasicWindow? window {
+        protected unowned BasicSlot slot; // Must be unowned else cyclic reference stops destruction
+        protected unowned BasicWindow? window {
             get {
                 return slot.ctab.window;
             }
@@ -286,7 +286,7 @@ namespace Files {
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
         //TODO Rewrite in Object (), construct {} style
-        protected BasicAbstractDirectoryView (View.BasicSlot _slot) {
+        protected BasicAbstractDirectoryView (BasicSlot _slot) {
             slot = _slot;
             editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
@@ -611,50 +611,50 @@ namespace Files {
                 return;
             }
 
-            unowned Gdk.Screen screen = get_screen ();
+            // unowned Gdk.Screen screen = get_screen ();
 
-            if (selection.first ().next == null) { // Only one selected
-                activate_file (selection.data, screen, flag, true);
-                return;
-            }
+            // if (selection.first ().next == null) { // Only one selected
+            //     activate_file (selection.data, screen, flag, true);
+            //     return;
+            // }
 
-            if (!in_trash) {
-                /* launch each selected file individually ignoring selections greater than 10
-                 * Do not launch with new instances of this app - open according to flag instead
-                 */
-                if (selection.nth_data (11) == null && // Less than 10 items
-                   (default_app == null || app_is_this_app (default_app))) {
+            // if (!in_trash) {
+            //     /* launch each selected file individually ignoring selections greater than 10
+            //      * Do not launch with new instances of this app - open according to flag instead
+            //      */
+            //     if (selection.nth_data (11) == null && // Less than 10 items
+            //        (default_app == null || app_is_this_app (default_app))) {
 
-                    foreach (Files.File file in selection) {
-                        /* Prevent too rapid activation of files - causes New Tab to crash for example */
-                        if (file.is_folder ()) {
-                            /* By default, multiple folders open in new tabs */
-                            if (flag == Files.OpenFlag.DEFAULT) {
-                                flag = Files.OpenFlag.NEW_TAB;
-                            }
+            //         foreach (Files.File file in selection) {
+            //             /* Prevent too rapid activation of files - causes New Tab to crash for example */
+            //             if (file.is_folder ()) {
+            //                 /* By default, multiple folders open in new tabs */
+            //                 if (flag == Files.OpenFlag.DEFAULT) {
+            //                     flag = Files.OpenFlag.NEW_TAB;
+            //                 }
 
-                            GLib.Idle.add (() => {
-                                activate_file (file, screen, flag, false);
-                                return GLib.Source.REMOVE;
-                            });
-                        } else {
-                            GLib.Idle.add (() => {
-                                open_file (file, screen, null);
-                                return GLib.Source.REMOVE;
-                            });
-                        }
-                    }
-                } else if (default_app != null) {
-                    /* Because this is in another thread we need to copy the selection to ensure it remains valid */
-                    var files_to_open = selection.copy_deep ((GLib.CopyFunc)(GLib.Object.ref));
-                    GLib.Idle.add (() => {
-                        open_files_with (default_app, files_to_open);
-                        return GLib.Source.REMOVE;
-                    });
-                }
-            } else {
-                warning ("Cannot open files in trash");
-            }
+            //                 GLib.Idle.add (() => {
+            //                     activate_file (file, screen, flag, false);
+            //                     return GLib.Source.REMOVE;
+            //                 });
+            //             } else {
+            //                 GLib.Idle.add (() => {
+            //                     open_file (file, screen, null);
+            //                     return GLib.Source.REMOVE;
+            //                 });
+            //             }
+            //         }
+            //     } else if (default_app != null) {
+            //         /* Because this is in another thread we need to copy the selection to ensure it remains valid */
+            //         var files_to_open = selection.copy_deep ((GLib.CopyFunc)(GLib.Object.ref));
+            //         GLib.Idle.add (() => {
+            //             open_files_with (default_app, files_to_open);
+            //             return GLib.Source.REMOVE;
+            //         });
+            //     }
+            // } else {
+            //     warning ("Cannot open files in trash");
+            // }
         }
 
         public void select_gof_file (Files.File file) {
@@ -1570,10 +1570,10 @@ namespace Files {
 /** DRAG AND DROP DESTINATION */
 
         /* Signal emitted on destination while drag moving over it */
-        private bool on_drag_motion (Gdk.DragContext context,
-                                     int x,
-                                     int y,
-                                     uint timestamp) {
+        // private bool on_drag_motion (Gdk.DragContext context,
+        //                              int x,
+        //                              int y,
+        //                              uint timestamp) {
 
             // if (destination_data_ready) {
             //     /* We have the drop data - check whether we can drop here*/
@@ -1590,7 +1590,7 @@ namespace Files {
 
             // Gdk.drag_status (context, current_suggested_action, timestamp);
             // return true;
-        }
+        // }
 
         /* Signal emitted on destination when drag button released */
         private bool on_drag_drop (Gdk.DragContext context,
@@ -1731,7 +1731,7 @@ namespace Files {
             // cancel_timeout (ref drag_scroll_timer_id);
         }
 
-        private Files.File? get_drop_target_file (int win_x, int win_y) {
+        // private Files.File? get_drop_target_file (int win_x, int win_y) {
             // Gtk.TreePath? path = get_path_at_pos (win_x, win_y);
             // Files.File? file = null;
 
@@ -1757,7 +1757,7 @@ namespace Files {
             // }
 
             // return file;
-        }
+        // }
 
         /* Called by destination during drag motion */
         private void get_drag_data (Gdk.DragContext context, int x, int y, uint timestamp) {
@@ -2393,8 +2393,9 @@ namespace Files {
 
                 label = _("New");
             }
+        }
 
-            private bool load_templates_from_folder (GLib.File template_folder, Gtk.Menu submenu) {
+        // private bool load_templates_from_folder (GLib.File template_folder, Gtk.Menu submenu) {
             //     if (total_item_count >= MAX_TEMPLATES) {
             //         return false;
             //     }
@@ -2471,7 +2472,7 @@ namespace Files {
 
             //     return has_nonempty_items;
             // }
-        }
+        // }
 
         private bool valid_selection_for_edit () {
             foreach (unowned Files.File file in get_selected_files ()) {
@@ -2608,56 +2609,56 @@ namespace Files {
             critical ("Action name not found: %s - cannot set state", name);
         }
 
-        private void filter_this_app_from_open_with_apps () {
-            unowned GLib.List<AppInfo> l = open_with_apps;
+        // private void filter_this_app_from_open_with_apps () {
+        //     unowned GLib.List<AppInfo> l = open_with_apps;
 
-            while (l != null) {
-                if (l.data is AppInfo) {
-                    if (app_is_this_app (l.data)) {
-                        open_with_apps.delete_link (l);
-                        break;
-                    }
-                } else {
-                    open_with_apps.delete_link (l);
-                    l = open_with_apps;
-                    if (l == null) {
-                        break;
-                    }
-                }
+        //     while (l != null) {
+        //         if (l.data is AppInfo) {
+        //             if (app_is_this_app (l.data)) {
+        //                 open_with_apps.delete_link (l);
+        //                 break;
+        //             }
+        //         } else {
+        //             open_with_apps.delete_link (l);
+        //             l = open_with_apps;
+        //             if (l == null) {
+        //                 break;
+        //             }
+        //         }
 
-                l = l.next;
-            }
-        }
+        //         l = l.next;
+        //     }
+        // }
 
-        private bool app_is_this_app (AppInfo ai) {
-            string exec_name = ai.get_executable ();
+        // private bool app_is_this_app (AppInfo ai) {
+        //     string exec_name = ai.get_executable ();
 
-            return (exec_name == Config.APP_NAME);
-        }
+        //     return (exec_name == Config.APP_NAME);
+        // }
 
-        private void filter_default_app_from_open_with_apps () {
-            if (default_app == null) {
-                return;
-            }
+        // private void filter_default_app_from_open_with_apps () {
+        //     if (default_app == null) {
+        //         return;
+        //     }
 
-            string? id1, id2;
-            id2 = default_app.get_id ();
+        //     string? id1, id2;
+        //     id2 = default_app.get_id ();
 
-            if (id2 != null) {
-                unowned GLib.List<AppInfo> l = open_with_apps;
+        //     if (id2 != null) {
+        //         unowned GLib.List<AppInfo> l = open_with_apps;
 
-                while (l != null && l.data is AppInfo) {
-                    id1 = l.data.get_id ();
+        //         while (l != null && l.data is AppInfo) {
+        //             id1 = l.data.get_id ();
 
-                    if (id1 != null && id1 == id2) {
-                        open_with_apps.delete_link (l);
-                        break;
-                    }
+        //             if (id1 != null && id1 == id2) {
+        //                 open_with_apps.delete_link (l);
+        //                 break;
+        //             }
 
-                    l = l.next;
-                }
-            }
-        }
+        //             l = l.next;
+        //         }
+        //     }
+        // }
 
         /** Menu action functions */
 

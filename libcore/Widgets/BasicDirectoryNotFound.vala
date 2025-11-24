@@ -18,8 +18,8 @@
 
 ***/
 
-namespace Files.View {
-    public class BasicDirectoryNotFound : Files.View.BasicWelcome {
+namespace Files {
+    public class BasicDirectoryNotFound : BasicWelcome {
         public Directory dir_saved;
         public BasicViewContainer ctab;
 

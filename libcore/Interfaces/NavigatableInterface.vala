@@ -15,7 +15,7 @@
 
     Authors : Jeremy Wootten <jeremywootten@gmail.com>
 ***/
-namespace Files.View.Chrome {
+namespace Files {
     /* Interface implemented by BasicBreadcrumbsEntry and BreadCrumbsEntry */
     public interface Navigatable : Gtk.Widget {
         public abstract string? action_icon_name { get; set; }

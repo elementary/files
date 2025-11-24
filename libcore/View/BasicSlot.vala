@@ -17,7 +17,7 @@
 ***/
 
 
-namespace Files.View {
+namespace Files {
     public class BasicSlot : Files.AbstractSlot {
         public unowned BasicViewContainer ctab { get; construct; }
         public ViewMode mode { get; construct; }

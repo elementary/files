@@ -34,7 +34,7 @@ namespace Files {
         private GLib.List<Gtk.TreeRowReference> subdirectories_to_unload = null;
         private GLib.List<Directory> loaded_subdirectories = null;
 
-        public BasicListView (View.BasicSlot _slot) {
+        public BasicListView (BasicSlot _slot) {
             base (_slot);
         }
 

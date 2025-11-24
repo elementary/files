@@ -19,7 +19,7 @@
 * Boston, MA 02110-1301 USA
 */
 
-namespace Files.View.Chrome {
+namespace Files.View {
     public class LocationBar : BasicLocationBar {
         private Gtk.Revealer admin_revealer;
         private BreadcrumbsEntry bread;

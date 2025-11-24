@@ -21,11 +21,11 @@
  */
 
 // Used to determine first level sort order.
-public enum MountableType {
-    VOLUMELESS_MOUNT,
-    VOLUME,
-    EMPTY_DRIVE
-}
+// public enum MountableType {
+//     VOLUMELESS_MOUNT,
+//     VOLUME,
+//     EMPTY_DRIVE
+// }
 
 public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, SidebarItemInterface {
     private double storage_capacity = 0;

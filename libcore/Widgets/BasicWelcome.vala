@@ -20,7 +20,7 @@
 
 ***/
 
-namespace Files.View {
+namespace Files {
     public class BasicWelcome : Granite.Widgets.Welcome {
 
         public BasicWelcome (string primary, string secondary) {

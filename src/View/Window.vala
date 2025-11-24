@@ -82,14 +82,14 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     public Files.Application marlin_app { get; construct; }
     private unowned UndoManager undo_manager;
     public Hdy.HeaderBar headerbar;
-    public Chrome.ViewSwitcher view_switcher;
+    public ViewSwitcher view_switcher;
     public Hdy.TabView tab_view;
     public Hdy.TabBar tab_bar;
     private Gtk.Paned lside_pane;
     public SidebarInterface sidebar;
-    private Chrome.ButtonWithMenu button_forward;
-    private Chrome.ButtonWithMenu button_back;
-    private Chrome.LocationBar? location_bar;
+    private ButtonWithMenu button_forward;
+    private ButtonWithMenu button_back;
+    private LocationBar? location_bar;
     private Gtk.MenuButton tab_history_button;
 
     private bool locked_focus { get; set; default = false; }
@@ -189,22 +189,22 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void build_window () {
-        button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic");
+        button_back = new ButtonWithMenu ("go-previous-symbolic");
 
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
-        button_forward = new View.Chrome.ButtonWithMenu ("go-next-symbolic");
+        button_forward = new ButtonWithMenu ("go-next-symbolic");
 
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
-        view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
+        view_switcher = new ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
             margin_end = 20
         };
         view_switcher.set_mode (Files.app_settings.get_enum ("default-viewmode"));
 
-        location_bar = new Chrome.LocationBar ();
+        location_bar = new View.LocationBar ();
 
         var app_menu = new AppMenu ();
 

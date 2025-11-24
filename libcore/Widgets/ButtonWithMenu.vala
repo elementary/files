@@ -13,7 +13,7 @@
  * - activate a GtkAction if any or popup a menu
  * (used in history navigation buttons)
  */
-public class Files.View.Chrome.ButtonWithMenu : Gtk.ToggleButton {
+public class Files.ButtonWithMenu : Gtk.ToggleButton {
     public signal void slow_press ();
 
     private Gtk.Menu gtk_menu;

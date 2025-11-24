@@ -21,7 +21,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-namespace Files.View.Chrome {
+namespace Files {
     public class ViewSwitcher : Gtk.Box {
         public GLib.SimpleAction action { get; construct; }
 

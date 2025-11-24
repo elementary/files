@@ -20,10 +20,10 @@ namespace Files {
     /* Implement common features of BasicListView */
     //TODO Merge into Basic ListView
     public abstract class BasicAbstractTreeView : BasicAbstractDirectoryView {
-        protected Files.TreeView tree;
+        protected BasicTreeView tree;
         protected Gtk.TreeViewColumn name_column;
 
-        protected BasicAbstractTreeView (View.BasicSlot _slot) {
+        protected BasicAbstractTreeView (BasicSlot _slot) {
             base (_slot);
         }
 
@@ -42,7 +42,7 @@ namespace Files {
         }
 
         protected override Gtk.Widget? create_view () {
-            tree = new Files.TreeView () {
+            tree = new Files.BasicTreeView () {
                 model = model,
                 headers_visible = false,
                 rubber_banding = true
@@ -338,7 +338,7 @@ namespace Files {
         }
     }
 
-    protected class TreeView : Gtk.TreeView {
+    protected class BasicTreeView : Gtk.TreeView {
         private ZoomLevel _zoom_level = ZoomLevel.INVALID;
         public ZoomLevel zoom_level {
             set {
