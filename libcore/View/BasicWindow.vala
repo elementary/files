@@ -255,6 +255,8 @@ public class Files.BasicWindow : Gtk.ApplicationWindow {
         free_space_change.connect (sidebar.on_free_space_change);
 
         content = new BasicViewContainer ();
+        content.add_view (LIST, default_location);
+        content.window = this;
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             expand = true,

@@ -137,6 +137,7 @@ public class Files.FileChooserPortal : Object {
         uint _response = 2;
 
         dialog.response.connect ((id) => {
+        warning ("got dialog response");
             switch (id) {
                 case Gtk.ResponseType.OK:
                     _results["uris"] = dialog.get_uris ();

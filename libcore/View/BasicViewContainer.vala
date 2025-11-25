@@ -222,6 +222,7 @@ namespace Files {
 
         // the locations in @to_select must be children of @loc
         public void add_view (ViewMode mode, GLib.File loc, GLib.File[]? to_select = null) {
+        warning ("BasicVC add view");
             view_mode = mode;
 
             if (to_select != null) {

@@ -83,7 +83,7 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
     construct {
         // previous_paths = new Queue<string> ();
         // next_paths = new Queue<string> ();
-        Hdy.init ();
+        // Hdy.init ();
 
         // chooser = new Files.FileChooserWidget (action) {
         //     vexpand = true
