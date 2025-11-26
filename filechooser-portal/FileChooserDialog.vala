@@ -25,15 +25,17 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
         }
     }
 
-    public bool select_multiple { get; set; }
-    //     get {
-    //         return chooser.select_multiple;
-    //     }
+    public bool select_multiple {
+        get {
+            return content.dir_view.get_selection_mode () == Gtk.SelectionMode.MULTIPLE;
+        }
 
-    //     set {
-    //         chooser.select_multiple = value;
-    //     }
-    // }
+        set {
+            // FileChooser is expected to select at least one item
+            var mode = value ? Gtk.SelectionMode.MULTIPLE : Gtk.SelectionMode.SINGLE;
+            content.dir_view.set_selection_mode (mode);
+        }
+    }
 
     private Gtk.FileFilter _filter;
     public Gtk.FileFilter filter {
@@ -47,6 +49,8 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
             }
         }
     }
+
+    private SList<unowned Gtk.FileFilter> filter_list;
 
     // private Hdy.HeaderBar header;
     // private View.Chrome.BasicLocationBar location_bar;
@@ -272,7 +276,16 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
         //     location_bar.set_display_path (current_path);
         // });
 
-        file_activated.connect (() => {
+        // protected override void activate_selected_items (
+        //     Files.OpenFlag flag = Files.OpenFlag.DEFAULT,
+        //     GLib.List<Files.File> selection = get_selected_files ()
+        // ) {
+        //      if (!GLib.FileUtils.test (get_filename (), FileTest.IS_DIR)) {
+        //          response (Gtk.ResponseType.OK);
+        //      }
+        // }
+
+        content.dir_view.file_activated.connect (() => {
              if (!GLib.FileUtils.test (get_filename (), FileTest.IS_DIR)) {
                  response (Gtk.ResponseType.OK);
              }
@@ -420,38 +433,6 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
         window.focus (Gdk.CURRENT_TIME);
     }
 
-    public void set_current_folder (string? uri) {
-        set_current_folder_uri (uri ?? Environment.get_home_dir ());
-    }
-
-    public void set_current_name (string text) {
-        set_current_name (text);
-    }
-
-    public string get_uri () {
-        // chooser.get_uri ();
-        return "";
-    }
-
-    public void set_uri (string uri) {
-        // set_uri (uri);
-    }
-
-    public string[] get_uris () {
-        string[] uris = {};
-
-        // chooser.get_uris ().foreach ((uri) => {
-        //     uris += uri;
-        // });
-
-        return uris;
-    }
-
-    public GLib.File get_file () {
-        // return chooser.get_file ();
-        return GLib.File.new_for_uri (get_uri ());
-    }
-
     public void add_choice (FileChooserChoice choice) {
         choices_box.add (choice);
     }
@@ -505,23 +486,66 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
         base.dispose ();
     }
 
-    public signal void file_activated ();
+    public GLib.File? get_file () {
+        return content.dir_view.get_selected_files ().first ().data.location;
 
-
-    public void set_current_folder_uri (string uri) {
-
-    }
-
-    public string? get_filename () {
-        return null;
-    }
-
-    public SList<unowned Gtk.FileFilter> list_filters () {
-        return new SList<unowned Gtk.FileFilter>();
     }
 
     public string? get_current_folder_uri () {
-        return null;
+        return content.dir_view.slot.uri;
     }
+
+
+    public string? get_filename () {
+        var selected_file = content.dir_view.get_selected_files ().first ().data;
+        if (selected_file != null) {
+            try {
+                return Filename.from_uri (selected_file.uri);
+            } catch (Error e) {
+                return null;
+            }
+        }
+
+        return null;
+
+    }
+
+    public void set_current_folder (string filename) {
+        try {
+            set_current_folder_uri (filename.to_uri ());
+        } catch (Error e) {
+            set_current_folder_uri (Environment.get_home_dir ());
+        }
+    }
+
+    public void set_current_name (string text) {
+        set_current_name (text);
+    }
+
+    public string get_uri () {
+        var file = get_file ();
+        return file != null ? file.uri : null;
+    }
+
+    public void set_uri (string uri) {
+        content.focus_location (GLib.File.new_for_uri);
+    }
+
+    public string[] get_uris () {
+        string[] uris = {};
+
+        var selection = content.dir.get_selection ();
+        selection.foreach ((file) => {
+            uris += file.uri;
+        });
+
+        return uris;
+    }
+
+
+    // public SList<unowned Gtk.FileFilter> list_filters () {
+    //     return new SList<unowned Gtk.FileFilter>();
+    // }
+
 
 }

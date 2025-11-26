@@ -101,35 +101,35 @@ public class Files.FileChooserPortal : Object {
             dialog.select_multiple = options["multiple"].get_boolean ();
         }
 
-        if ("accept_label" in options) {
-            dialog.accept_label = options["accept_label"].get_string ();
-        } else {
-            dialog.accept_label = dialog.select_multiple ? _("Select") : _("Open");
-        }
+        // if ("accept_label" in options) {
+        //     dialog.accept_label = options["accept_label"].get_string ();
+        // } else {
+        //     dialog.accept_label = dialog.select_multiple ? _("Select") : _("Open");
+        // }
 
-        if ("filters" in options) {
-            var filters = options["filters"].iterator ();
-            Variant filter_variant;
+        // if ("filters" in options) {
+        //     var filters = options["filters"].iterator ();
+        //     Variant filter_variant;
 
-            while ((filter_variant = filters.next_value ()) != null) {
-                var filter = new Gtk.FileFilter.from_gvariant (filter_variant);
-                dialog.add_filter (filter);
-            }
-        }
+        //     while ((filter_variant = filters.next_value ()) != null) {
+        //         var filter = new Gtk.FileFilter.from_gvariant (filter_variant);
+        //         dialog.add_filter (filter);
+        //     }
+        // }
 
-        if ("current_filter" in options) {
-            dialog.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
-        }
+        // if ("current_filter" in options) {
+        //     dialog.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
+        // }
 
-        if ("choices" in options) {
-            var choices = options["choices"].iterator ();
-            Variant choice_variant;
+        // if ("choices" in options) {
+        //     var choices = options["choices"].iterator ();
+        //     Variant choice_variant;
 
-            while ((choice_variant = choices.next_value ()) != null) {
-                var choice = new FileChooserChoice.from_variant (choice_variant);
-                dialog.add_choice (choice);
-            }
-        }
+        //     while ((choice_variant = choices.next_value ()) != null) {
+        //         var choice = new FileChooserChoice.from_variant (choice_variant);
+        //         dialog.add_choice (choice);
+        //     }
+        // }
 
         dialog.register_object (connection, handle);
 
@@ -141,11 +141,11 @@ public class Files.FileChooserPortal : Object {
             switch (id) {
                 case Gtk.ResponseType.OK:
                     _results["uris"] = dialog.get_uris ();
-                    _results["choices"] = dialog.get_choices ();
-                    _results["writable"] = !dialog.read_only;
-                    if (dialog.filter != null) {
-                        _results["current_filter"] = dialog.filter.to_gvariant ();
-                    }
+                    // _results["choices"] = dialog.get_choices ();
+                    // _results["writable"] = !dialog.read_only;
+                    // if (dialog.filter != null) {
+                    //     _results["current_filter"] = dialog.filter.to_gvariant ();
+                    // }
 
                     _response = 0;
                     break;
@@ -260,19 +260,19 @@ public class Files.FileChooserPortal : Object {
             }
         }
 
-        if ("current_filter" in options) {
-            dialog.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
-        }
+        // if ("current_filter" in options) {
+        //     dialog.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
+        // }
 
-        if ("choices" in options) {
-            var choices = options["choices"].iterator ();
-            Variant choice_variant;
+        // if ("choices" in options) {
+        //     var choices = options["choices"].iterator ();
+        //     Variant choice_variant;
 
-            while ((choice_variant = choices.next_value ()) != null) {
-                var choice = new FileChooserChoice.from_variant (choice_variant);
-                dialog.add_choice (choice);
-            }
-        }
+        //     while ((choice_variant = choices.next_value ()) != null) {
+        //         var choice = new FileChooserChoice.from_variant (choice_variant);
+        //         dialog.add_choice (choice);
+        //     }
+        // }
 
         dialog.register_object (connection, handle); // Dialog will unregister itself when disposed
 
@@ -283,10 +283,10 @@ public class Files.FileChooserPortal : Object {
             switch (id) {
                 case Gtk.ResponseType.OK:
                     _results["uris"] = dialog.get_uris ();
-                    _results["choices"] = dialog.get_choices ();
-                    if (dialog.filter != null) {
-                        _results["current_filter"] = dialog.filter.to_gvariant ();
-                    }
+                    // _results["choices"] = dialog.get_choices ();
+                    // if (dialog.filter != null) {
+                    //     _results["current_filter"] = dialog.filter.to_gvariant ();
+                    // }
 
                    _response = 0;
 
@@ -390,15 +390,15 @@ public class Files.FileChooserPortal : Object {
             );
         }
 
-        if ("choices" in options) {
-            var choices = options["choices"].iterator ();
-            Variant choice_variant;
+        // if ("choices" in options) {
+        //     var choices = options["choices"].iterator ();
+        //     Variant choice_variant;
 
-            while ((choice_variant = choices.next_value ()) != null) {
-                var choice = new FileChooserChoice.from_variant (choice_variant);
-                dialog.add_choice (choice);
-            }
-        }
+        //     while ((choice_variant = choices.next_value ()) != null) {
+        //         var choice = new FileChooserChoice.from_variant (choice_variant);
+        //         dialog.add_choice (choice);
+        //     }
+        // }
 
         //TODO Handle failed registration?
         dialog.register_object (connection, handle); // Dialog will unregister itself when disposed
@@ -421,7 +421,7 @@ public class Files.FileChooserPortal : Object {
                     }
 
                     _results["uris"] = uris;
-                    _results["choices"] = dialog.get_choices ();
+                    // _results["choices"] = dialog.get_choices ();
                     _response = 0;
                     break;
                 case Gtk.ResponseType.CANCEL:

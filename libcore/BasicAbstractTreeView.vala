@@ -96,6 +96,14 @@ namespace Files {
             return tree as Gtk.Widget;
         }
 
+        public override void set_selection_mode (Gtk.SelectionMode selection_mode) {
+            tree.get_selection ().mode = selection_mode;
+        }
+
+        public override Gtk.SelectionMode get_selection_mode () {
+            return tree.get_selection ().mode;
+        }
+
         public override void change_zoom_level () {
             if (tree != null) {
                 base.change_zoom_level ();

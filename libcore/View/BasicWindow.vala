@@ -56,7 +56,7 @@ public class Files.BasicWindow : Gtk.ApplicationWindow {
     //     }
     // }
 
-    private BasicViewContainer? content;
+    protected BasicViewContainer? content { get; private set; }
 
     public ViewMode default_mode {
         get {

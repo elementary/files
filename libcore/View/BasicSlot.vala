@@ -21,9 +21,9 @@ namespace Files {
     public class BasicSlot : Files.AbstractSlot {
         public unowned BasicViewContainer ctab { get; construct; }
         public ViewMode mode { get; construct; }
+        public BasicAbstractDirectoryView? dir_view { get; private set; }
 
         private int preferred_column_width;
-        private BasicAbstractDirectoryView? dir_view = null;
         private uint reload_timeout_id = 0;
         private uint path_change_timeout_id = 0;
         private bool original_reload_request = false;
@@ -48,24 +48,24 @@ namespace Files {
             get { return ctab.window; }
         }
 
-        public override bool is_frozen {
-            set {
-                dir_view.is_frozen = value;
-                frozen_changed (value);
-            }
+        // public override bool is_frozen {
+        //     set {
+        //         dir_view.is_frozen = value;
+        //         frozen_changed (value);
+        //     }
 
-            get {
-                return dir_view == null || dir_view.is_frozen;
-            }
-        }
+        //     get {
+        //         return dir_view == null;
+        //     }
+        // }
 
-        public override bool locked_focus {
-            get {
-                return dir_view.renaming;
-            }
-        }
+        // public override bool locked_focus {
+        //     get {
+        //         return dir_view.renaming;
+        //     }
+        // }
 
-        public signal void frozen_changed (bool freeze);
+        // public signal void frozen_changed (bool freeze);
         public signal void folder_deleted (Files.File file, Directory parent);
 
         /* Support for multi-slot view (Miller)*/

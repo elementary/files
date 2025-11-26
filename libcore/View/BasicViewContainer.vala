@@ -60,6 +60,12 @@ namespace Files {
             }
         }
 
+        public Files.BasicAbstractDirectoryView? dir_view {
+            get {
+                return slot != null ? ((BasicSlot)slot).dir_view : null;
+            }
+        }
+
         public Files.AbstractSlot? slot {
             get {
                 return view != null ? view.get_current_slot () : null;
