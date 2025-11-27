@@ -24,6 +24,16 @@
 */
 
 namespace Files {
+    [CCode (cheader_filename = "gtk/gtk.h", has_type_id = false)]
+    [Compact]
+    private class FileFilterInfo {
+        public Gtk.FileFilterFlags contains;
+        public unowned string display_name;
+        public unowned string filename;
+        public unowned string mime_type;
+        public unowned string uri;
+    }
+
     public abstract class BasicAbstractDirectoryView : Gtk.Bin {
     //TODO Reorder property declarations
         protected enum ClickZone {
@@ -266,6 +276,7 @@ namespace Files {
         private Gtk.Overlay overlay;
         private unowned ClipboardManager clipboard;
         protected Files.ListModel model;
+        protected Gtk.TreeModelFilter filter_model;
         protected Files.IconRenderer icon_renderer;
         protected unowned BasicSlot slot; // Must be unowned else cyclic reference stops destruction
         protected unowned BasicWindow? window {
@@ -340,6 +351,7 @@ namespace Files {
             set_should_thumbnail ();
 
             model = new Files.ListModel ();
+            filter_model = new Gtk.TreeModelFilter (model, null);
 
 
              /* Currently, "single-click rename" is disabled, matching existing UI
@@ -461,6 +473,42 @@ namespace Files {
             common_actions = new GLib.SimpleActionGroup ();
             common_actions.add_action_entries (COMMON_ENTRIES, this);
             insert_action_group ("common", common_actions);
+        }
+
+        public void set_filter (Gtk.FileFilter? filter) {
+            if (filter != null) {
+                // For some reason constructing Gtk.FileFilterInfo directly does not work.
+                var info = new Files.FileFilterInfo ();
+                var flags = filter.get_needed ();
+                info.contains = flags;
+                filter_model.set_visible_func ((model, iter) => {
+                    var file = ((Files.ListModel)model).file_for_iter (iter);
+                    if (file != null) {
+                        if (DISPLAY_NAME in flags) {
+                            info.display_name = file.get_display_name ();
+                        }
+                        if (FILENAME in flags) {
+                            info.filename = file.filename;
+                        }
+                        if (MIME_TYPE in flags) {
+                            // info.mime_type = ContentType.get_mime_type (file.get_ftype ());
+                            info.mime_type = file.mime_type;
+                        }
+                        if (URI in flags) {
+                            info.uri = file.uri;
+                        }
+                        info.contains = flags;
+
+                        return filter.filter ((Gtk.FileFilterInfo)info);
+                    } else {
+                        return false;
+                    }
+                });
+            } else {
+                filter_model.set_visible_func (null);
+            }
+
+            filter_model.refilter ();
         }
 
         public void zoom_in () {

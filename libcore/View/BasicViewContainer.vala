@@ -54,6 +54,7 @@ namespace Files {
                 return slot != null ? slot.location : null;
             }
         }
+
         public string uri {
             get {
                 return slot != null ? slot.uri : "";

@@ -1146,7 +1146,7 @@ public class Files.BasicWindow : Gtk.ApplicationWindow {
     //     return (ViewMode)(Files.app_settings.get_enum ("default-viewmode"));
     // }
 
-    public void quit () {
+    public virtual void quit () {
         // save_geometries ();
         // save_tabs ();
 
@@ -1160,7 +1160,7 @@ public class Files.BasicWindow : Gtk.ApplicationWindow {
         //     ((BasicViewContainer) tab_page.child).close ();
         // }
 
-        this.destroy ();
+        // this.destroy ();
     }
 
     // private void save_geometries () {
