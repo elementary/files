@@ -340,6 +340,7 @@ namespace Files {
             // app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
 
             thumbnailer = Thumbnailer.get ();
+            warning ("connect thumbnailer");
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
                     thumbnail_request = -1;
@@ -366,7 +367,9 @@ namespace Files {
                 scrolled_window.child = view;
                 connect_drag_drop_signals (view);
 
+                warning ("ADV view realize onnect");
                 view.realize.connect (() => {
+                    warning ("View on realize");
                    schedule_thumbnail_color_tag_timeout ();
                 });
 
@@ -394,6 +397,8 @@ namespace Files {
                     propagation_phase = TARGET,  //Allow editable widget to receive button press event first
                     button = 0
                 };
+
+                warning ("connecct button events");
                 button_controller.pressed.connect (on_view_button_press_event);
                 button_controller.released.connect (on_view_button_release_event);
 
@@ -422,16 +427,24 @@ namespace Files {
         }
 
         private void set_up_directory_view () {
+        warning ("ADV popup connect");
             popup_menu.connect (on_popup_menu);
+        // warning ("ADV unrealize connect");
+        //     unrealize.connect (() => {
+        //         warning ("ADV unrealize");
+        //         if (clipboard == null) {
+        //             critical ("ADV - clipboard null");
+        //             return;
+        //         }
+        //         clipboard.changed.disconnect (on_clipboard_changed);
+        //     });
 
-            unrealize.connect (() => {
-                clipboard.changed.disconnect (on_clipboard_changed);
-            });
+            // realize.connect (() => {
+            //     warning ("on ADV realize connect - clipboard");
 
-            realize.connect (() => {
-                clipboard.changed.connect (on_clipboard_changed);
-                on_clipboard_changed ();
-            });
+            //     clipboard.changed.connect (on_clipboard_changed);
+            //     on_clipboard_changed ();
+            // });
 
             scrolled_window.get_vadjustment ().value_changed.connect_after (() => {
                 schedule_thumbnail_color_tag_timeout ();
@@ -445,6 +458,7 @@ namespace Files {
             });
 
 
+            warning ("ADV connect prefs");
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
@@ -455,6 +469,7 @@ namespace Files {
                 "singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
             );
 
+            warning ("ADV connect model");
             model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
@@ -499,9 +514,12 @@ namespace Files {
                         }
                         info.contains = flags;
 
-                        return filter.filter ((Gtk.FileFilterInfo)info);
+                        return ContentType.is_mime_type (file.get_ftype (), "text");
+                        return ContentType.is_mime_type (file.get_ftype (), "text");
+                        return true;
+                        // return filter.filter ((Gtk.FileFilterInfo)info);
                     } else {
-                        return false;
+                        return true;
                     }
                 });
             } else {
@@ -725,6 +743,7 @@ namespace Files {
     /** Directory signal handlers. */
         /* Signal could be from subdirectory as well as slot directory */
         protected void connect_directory_handlers (Directory dir) {
+            warning ("ADV connect dir handlers");
             dir.file_added.connect (on_directory_file_added);
             dir.file_changed.connect (on_directory_file_changed);
             dir.file_deleted.connect (on_directory_file_deleted);
@@ -733,12 +752,14 @@ namespace Files {
         }
 
         protected void connect_directory_loading_handlers (Directory dir) {
+            warning ("ADV connect dir loading handlers");
             model.set_sorting_off ();
             dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_directory_done_loading);
         }
 
         protected void disconnect_directory_loading_handlers (Directory dir) {
+            warning ("disconnect dir loading");
             model.set_sorting_on ();
             dir.file_loaded.disconnect (on_directory_file_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);
@@ -1480,6 +1501,8 @@ namespace Files {
                 schedule_thumbnail_color_tag_timeout ();
                 return Source.REMOVE;
             });
+
+            warning ("after ACV on dir done loading");
         }
 
     /** Handle zoom level change */
@@ -2887,6 +2910,7 @@ namespace Files {
         }
 
         protected void unblock_model () {
+        warning ("ADV connect model");
             model.row_deleted.connect (on_row_deleted);
         }
 
@@ -3406,6 +3430,7 @@ namespace Files {
                                                        GLib.Cancellable? cancellable = null) throws GLib.Error {
 
             /* Wait for the file to be added to the model before trying to select and scroll to it */
+            warning ("ADV connect file added");
             slot.directory.file_added.connect_after (after_renamed_file_added);
             try {
                 return yield FileUtils.set_file_display_name (old_location, new_name, cancellable);
@@ -3450,10 +3475,11 @@ namespace Files {
         // }
 
         protected virtual void on_view_button_press_event (int n_press, double x, double y) {
+warning ("view button press");
             // if (renaming) {
-            //     // Button press occurred outside editable widget - end editing.
-            //     /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
-            //     name_renderer.end_editing (false);
+                // Button press occurred outside editable widget - end editing.
+                /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
+                // name_renderer.end_editing (false);
             // }
             cancel_hover (); /* cancel overlay statusbar cancellables */
             grab_focus ();
@@ -3517,6 +3543,7 @@ namespace Files {
                             /* Only activate single files with unmodified button when not on blank unless double-clicked */
                             if (no_mods && one_or_less) {
                                 should_activate = (on_directory && !on_blank && !singleclick_select) || double_click_event;
+                                warning ("should activate %s", should_activate.to_string ());
                             }
 
                             /* We need to decide whether to rubberband or drag&drop.
@@ -3632,6 +3659,7 @@ namespace Files {
         }
 
         protected virtual void on_view_button_release_event (int n_press, double x, double y) {
+        warning ("button release");
             // unblock_drag_and_drop ();
             button_press_disabled = false;
             /* Ignore button release from click that started renaming.
@@ -3652,6 +3680,7 @@ namespace Files {
                     /* Need Idle else can crash with rapid clicking (avoid nested signals) */
                     Idle.add (() => {
                         var flag = button == Gdk.BUTTON_MIDDLE ? Files.OpenFlag.NEW_TAB : Files.OpenFlag.DEFAULT;
+                        warning ("activate selected");
                         activate_selected_items (flag);
                         return GLib.Source.REMOVE;
                     });

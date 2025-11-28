@@ -20,7 +20,7 @@ pantheon_files_exec = executable (
     'main.vala',
     'ProgressUIHandler.vala',
 
-    # 'ZeitgeistManager.vala',
+    'ZeitgeistManager.vala',
 
     'Dialogs/AbstractPropertiesDialog.vala',
     'Dialogs/ChooseAppDialog.vala',
@@ -38,7 +38,6 @@ pantheon_files_exec = executable (
 
     'View/AbstractDirectoryView.vala',
     'View/AbstractTreeView.vala',
-    # 'View/Browser.vala',
     'View/ColumnView.vala',
     'View/DirectoryNotFound.vala',
     'View/IconView.vala',
@@ -52,6 +51,7 @@ pantheon_files_exec = executable (
     # 'View/Widgets/AbstractEditableLabel.vala',
     'View/Widgets/AppMenu.vala',
     'View/Widgets/BreadcrumbsEntry.vala',
+    'View/Widgets/Browser.vala',
     'View/Widgets/LocationBar.vala',
     'View/Widgets/MultiLineEditableLabel.vala',
     'View/Widgets/OverlayBar.vala',

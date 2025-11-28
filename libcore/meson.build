@@ -9,7 +9,9 @@ pantheon_files_core_deps = [
     sqlite3_dep,
     libcanberra_dep,
     handy_dep,
-    zeitgeist_dep
+    zeitgeist_dep,
+        dependency('gdk-x11-3.0'),
+        dependency('gdk-wayland-3.0')
 ]
 
 pantheon_files_core_vala_files = files(
@@ -49,7 +51,7 @@ pantheon_files_core_vala_files = files(
     'EmblemRenderer.vala',
     'IconRenderer.vala',
     'BasicTextRenderer.vala',
-    'ZeitgeistManager.vala',
+    # 'ZeitgeistManager.vala',
     'FileOperations/CommonJob.vala',
     'FileOperations/CopyMoveJob.vala',
     'FileOperations/CreateJob.vala',
@@ -82,7 +84,10 @@ pantheon_files_core_vala_files = files(
     'Widgets/BasicDirectoryNotFound.vala',
     'Widgets/BasicWelcome.vala',
     'Widgets/ViewSwitcher.vala',
-    'Widgets/Browser.vala'
+    'Widgets/BasicBrowser.vala',
+    'Widgets/FileChooserDialog.vala',
+    'Widgets/FileChooserChoice.vala',
+    'Widgets/ExternalWindow.vala'
 )
 
 pantheon_files_core_c_files = files(

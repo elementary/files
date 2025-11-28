@@ -201,6 +201,11 @@ public class Files.Application : Gtk.Application {
         }
 
         window.present ();
+
+        var dialog = new FileChooserDialog (Gtk.FileChooserAction.OPEN, "", "Test");
+        dialog.modal = true;
+        dialog.present ();
+
         return Posix.EXIT_SUCCESS;
     }
 

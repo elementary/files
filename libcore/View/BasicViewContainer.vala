@@ -25,7 +25,6 @@
 
 namespace Files {
     public class BasicViewContainer : Gtk.Box {
-        public Gtk.Widget? content_item;
         public bool can_show_folder { get; private set; default = false; }
         private BasicWindow? _window = null;
         public BasicWindow window {
@@ -43,6 +42,7 @@ namespace Files {
                 _window.connect_content_signals (this);
                 _window.loading_uri (slot.location.get_uri ());
                 load_directory ();
+                warning ("VC: after set window");
             }
         }
 
@@ -103,17 +103,25 @@ namespace Files {
             }
         }
 
+        public Gtk.Widget? content_item = null;
         public Gtk.Widget? content {
             set {
                 if (content_item != null) {
-                    remove (content_item);
+                    // remove (content_item);
+                    return;
                 }
 
                 content_item = value;
 
                 if (content_item != null) {
+                    Timeout.add (1000, () => {
+                    warning ("add content item");
                     add (content_item);
+                    warning ("show all");
                     content_item.show_all ();
+                    // warning ("added content item");
+                    return Source.REMOVE;
+                    });
                 }
             }
             get {
@@ -139,7 +147,7 @@ namespace Files {
         public bool is_loading {get; private set; default = false;}
 
         // private View.OverlayBar overlay_statusbar;
-        private Browser browser;
+        private BasicBrowser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
         private Gtk.GestureMultiPress button_controller;
@@ -151,7 +159,7 @@ namespace Files {
         /* Initial location now set by Window.make_tab after connecting signals.
          * Window property set when tab is attached to a tab_view (See Window.vala) */
         construct {
-            browser = new Browser ();
+            browser = new BasicBrowser ();
             loading.connect ((loading) => {
                 is_loading = loading;
             });
@@ -170,6 +178,7 @@ namespace Files {
         }
 
         private void disconnect_window_signals () {
+            warning ("VC disconnect window");
             if (window != null) {
                 window.folder_deleted.disconnect (on_folder_deleted);
                 window.disconnect_content_signals (this);
@@ -228,8 +237,8 @@ namespace Files {
         }
 
         // the locations in @to_select must be children of @loc
-        public void add_view (ViewMode mode, GLib.File loc, GLib.File[]? to_select = null) {
-        warning ("BasicVC add view");
+        public void add_view (ViewMode mode, GLib.File loc,  GLib.File[]? to_select = null) {
+        warning ("BasicVC add view %s ", loc.get_path ());
             view_mode = mode;
 
             if (to_select != null) {
@@ -251,7 +260,7 @@ namespace Files {
 
             view.active.connect (on_slot_active);
             view.path_changed.connect (on_slot_path_changed);
-            view.new_container_request.connect (on_slot_new_container_request);
+            // view.new_container_request.connect (on_slot_new_container_request);
             view.selection_changed.connect (on_slot_selection_changed);
             view.directory_loaded.connect (on_slot_directory_loaded);
 
@@ -291,9 +300,10 @@ namespace Files {
         }
 
         private void disconnect_slot_signals (Files.AbstractSlot aslot) {
+        warning ("VC: disconnect slot");
             aslot.active.disconnect (on_slot_active);
             aslot.path_changed.disconnect (on_slot_path_changed);
-            aslot.new_container_request.disconnect (on_slot_new_container_request);
+            // aslot.new_container_request.disconnect (on_slot_new_container_request);
             aslot.selection_changed.disconnect (on_slot_selection_changed);
             aslot.directory_loaded.disconnect (on_slot_directory_loaded);
         }
@@ -304,31 +314,34 @@ namespace Files {
 
         private void open_location (
             GLib.File loc,
-            Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT
+            Files.OpenFlag flag = Files.OpenFlag.DEFAULT
         ) requires (window != null) {
             switch ((Files.OpenFlag)flag) {
-                case Files.OpenFlag.NEW_TAB:
-                case Files.OpenFlag.NEW_WINDOW:
-                    /* Must pass through this function in order to properly handle unusual characters properly */
-                    window.uri_path_change_request (loc.get_uri (), flag);
-                    break;
+                // case Files.OpenFlag.NEW_TAB:
+                // case Files.OpenFlag.NEW_WINDOW:
+                //     /* Must pass through this function in order to properly handle unusual characters properly */
+                //     window.uri_path_change_request (loc.get_uri (), flag);
+                //     break;
 
-                case Files.OpenFlag.NEW_ROOT:
-                    view.user_path_change_request (loc, true);
+                // case Files.OpenFlag.NEW_ROOT:
+                //     view.user_path_change_request (loc, true);
+                //     break;
+
+                case Files.OpenFlag.DEFAULT:
+                    view.user_path_change_request (loc, false);
                     break;
 
                 default:
-                    view.user_path_change_request (loc, false);
-                    break;
+                    assert_not_reached ();
             }
         }
 
-        private void on_slot_new_container_request (
-            GLib.File loc,
-            Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT
-        ) {
-            open_location (loc, flag);
-        }
+        // private void on_slot_new_container_request (
+        //     GLib.File loc,
+        //     Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT
+        // ) {
+        //     open_location (loc, flag);
+        // }
 
         public void on_slot_path_changed (Files.AbstractSlot slot) {
             directory_is_loading (slot.location);
@@ -375,6 +388,7 @@ namespace Files {
             can_show_folder = dir.can_load;
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
+                critical ("VC: Cannot show folder");
                 // if (dir.is_recent && !Files.Preferences.get_default ().remember_history) {
                 //     content = new View.PrivacyModeOn (this);
                 // } else
@@ -444,9 +458,11 @@ namespace Files {
             }
 
             if (can_show_folder) {
+                warning ("VC: can show folder");
                 content = view.get_content_box ();
+                warning ("get dir file");
                 var directory = dir.file;
-
+                warning ("dir.file %s", directory.uri);
                 /* Only record valid folders (will also log Zeitgeist event) */
                 browser.record_uri (directory.uri); /* will ignore null changes i.e reloading*/
 
@@ -459,6 +475,7 @@ namespace Files {
             }
 
             loading (false); /* Will cause topmenu to update */
+            warning ("after loading");
         }
 
         private void store_selection () {
@@ -500,6 +517,9 @@ namespace Files {
             bool no_path_change = false,
             bool unselect_others = false
         ) {
+
+        warning ("focus location %s", loc != null ? loc.get_path () : null);
+
             /* This function navigates to another folder if necessary if
              * select_in_current_only is not set to true.
              */
@@ -599,7 +619,7 @@ namespace Files {
             is_frozen = false;
             if (can_show_folder && view != null) {
                 view.grab_focus ();
-            } else {
+            } else if (content != null) {
                 content.grab_focus ();
             }
         }

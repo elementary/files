@@ -287,6 +287,7 @@ namespace Files {
         }
 
         void after_realize () {
+            warning ("after BBE realize");
             /* After realizing, we take a reference on the Gdk.Window of the Entry so
              * we can set the cursor icon as needed. This relies on Gtk storing the
              * owning widget as the user data on a Gdk.Window. The required window

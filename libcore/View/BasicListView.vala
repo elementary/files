@@ -43,6 +43,7 @@ namespace Files {
         }
 
         private void connect_additional_signals () {
+            warning ("List connect additional signals");
             tree.row_expanded.connect (on_row_expanded);
             tree.row_collapsed.connect (on_row_collapsed);
             model.subdirectory_unloaded.connect (on_model_subdirectory_unloaded);

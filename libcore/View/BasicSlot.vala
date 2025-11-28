@@ -122,13 +122,18 @@ namespace Files {
         }
 
         private void connect_slot_signals () {
+            warning ("SLOT: connect slot signals");
             active.connect (() => {
                 if (is_active) {
                     return;
                 }
 
                 is_active = true;
-                dir_view.grab_focus ();
+                if (dir_view != null) {
+                    dir_view.grab_focus ();
+                } else {
+                    critical ("SLOT: grab focus when dir_view null");
+                }
             });
 
             inactive.connect (() => {
@@ -143,12 +148,23 @@ namespace Files {
         }
 
         private void connect_dir_view_signals () {
+            warning ("Slot: connect dir view signals");
+            if (dir_view == null) {
+                critical ("SLOT: connect to null dir view");
+                return;
+            }
+
             dir_view.path_change_request.connect (on_dir_view_path_change_request);
             dir_view.size_allocate.connect (on_dir_view_size_allocate);
             dir_view.selection_changed.connect (on_dir_view_selection_changed);
         }
 
         private void disconnect_dir_view_signals () {
+            warning ("Slot: disconnect dir view signals");
+            if (dir_view == null) {
+                critical ("SLOT: disconnect null dir view");
+                return;
+            }
             dir_view.path_change_request.disconnect (on_dir_view_path_change_request);
             dir_view.size_allocate.disconnect (on_dir_view_size_allocate);
             dir_view.selection_changed.disconnect (on_dir_view_selection_changed);
@@ -163,6 +179,7 @@ namespace Files {
         }
 
         private void connect_dir_signals () {
+            warning ("SLOT connect dir signals");
             directory.done_loading.connect (on_directory_done_loading);
             directory.need_reload.connect (on_directory_need_reload);
         }
@@ -243,16 +260,16 @@ namespace Files {
             });
         }
 
-        private void on_dir_view_path_change_request (GLib.File loc, Files.OpenFlag flag, bool make_root) {
-            if (flag == 0) { /* make view in existing container */
-                if (mode == ViewMode.MILLER_COLUMNS) {
-                    miller_slot_request (loc, make_root); /* signal to parent MillerView */
-                } else {
+        private void on_dir_view_path_change_request (GLib.File loc, Files.OpenFlag flag = DEFAULT, bool make_root = true) {
+            // if (flag == 0) { /* make view in existing container */
+            //     if (mode == ViewMode.MILLER_COLUMNS) {
+            //         miller_slot_request (loc, make_root); /* signal to parent MillerView */
+            //     } else {
                     user_path_change_request (loc, make_root); /* Handle ourselves */
-                }
-            } else {
-                new_container_request (loc, flag);
-            }
+            //     }
+            // } else {
+            //     new_container_request (loc, flag);
+            // }
         }
 
         public override void user_path_change_request (GLib.File loc, bool make_root = true) {

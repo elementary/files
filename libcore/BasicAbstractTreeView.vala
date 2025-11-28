@@ -34,6 +34,7 @@ namespace Files {
         protected abstract void set_up_icon_renderer ();
 
         protected override void connect_tree_signals () {
+            warning ("ATV connect tree");
             tree.get_selection ().changed.connect (on_view_selection_changed);
         }
 
@@ -87,7 +88,9 @@ namespace Files {
 
             tree.append_column (name_column);
             connect_tree_signals ();
+            warning ("ATV realize connect");
             tree.realize.connect ((w) => {
+                warning ("ATV on realize");
                 tree.grab_focus ();
                 tree.columns_autosize ();
                 tree.zoom_level = zoom_level;
@@ -342,7 +345,6 @@ namespace Files {
             if (!tree_frozen) {
                 tree.thaw_child_notify ();
             }
-
         }
     }
 
