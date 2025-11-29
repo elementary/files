@@ -107,16 +107,15 @@ namespace Files {
             set {
                 if (content_item != null) {
                     remove (content_item);
-                    return;
+                    content_item = null;
                 }
+
+                add (value);
+                value.show_all ();  //Shouldn't need this - but do!
 
                 content_item = value;
-
-                if (content_item != null) {
-                    add (content_item);
-                    content_item.show_all ();
-                }
             }
+
             get {
                 return content_item;
             }
