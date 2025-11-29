@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-08-22 15:58+0000\n"
+"PO-Revision-Date: 2025-11-30 18:55+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
-"l10n.elementaryos.org/projects/files/extra/zh_Hant/>\n"
+"l10n.elementaryos.org/projects/files/extra/zh_TW/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -75,7 +75,7 @@ msgstr "改善項目："
 
 #: data/files.metainfo.xml.in.in:69
 msgid "A compact date format is introduced"
-msgstr ""
+msgstr "提供簡潔的日期格式"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:91
 #: data/files.metainfo.xml.in.in:109 data/files.metainfo.xml.in.in:124
@@ -89,19 +89,19 @@ msgstr "小型更新："
 
 #: data/files.metainfo.xml.in.in:73
 msgid "The file conflict dialog now shows a missing icon"
-msgstr ""
+msgstr "檔案衝突對話框現在會顯示缺乏的圖示"
 
 #: data/files.metainfo.xml.in.in:74
 msgid "Flickering of the pathbar with some navigation methods is fixed"
-msgstr ""
+msgstr "修正路徑列在使用某些瀏覽方式時會發生的閃爍情況"
 
 #: data/files.metainfo.xml.in.in:75
 msgid "The option to set a default app for folders is no longer offered"
-msgstr ""
+msgstr "不再為資料夾提供設定預設應用程式的選項"
 
 #: data/files.metainfo.xml.in.in:76
 msgid "The scrollbar no longer overlays the modification date in List view"
-msgstr ""
+msgstr "修正在列表檢視中捲軸列會蓋住修改日期的問題"
 
 #: data/files.metainfo.xml.in.in:77 data/files.metainfo.xml.in.in:96
 #: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:126
@@ -115,16 +115,16 @@ msgstr "翻譯更新"
 
 #: data/files.metainfo.xml.in.in:93
 msgid "Navigation within the Trash folder now works properly"
-msgstr ""
+msgstr "垃圾桶資料夾內的瀏覽現在能夠正常運作了"
 
 #: data/files.metainfo.xml.in.in:94
 msgid "The view now refreshes properly after permanent deletion of a folder"
-msgstr ""
+msgstr "在資料夾永久刪除之後畫面現在會正確重新整理"
 
 #: data/files.metainfo.xml.in.in:95
 msgid ""
 "The number of template items displayed in the context menu is now limited"
-msgstr ""
+msgstr "內文選單中顯示的模本項目數量現在不再是無限的"
 
 #: data/files.metainfo.xml.in.in:111
 msgid ""
