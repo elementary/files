@@ -24,15 +24,21 @@
 */
 
 namespace Files {
-    [CCode (cheader_filename = "gtk/gtk.h", has_type_id = false)]
-    [Compact]
-    private class FileFilterInfo {
-        public Gtk.FileFilterFlags contains;
-        public unowned string display_name;
-        public unowned string filename;
-        public unowned string mime_type;
-        public unowned string uri;
-    }
+    // [CCode (cname = "GtkFileFilterInfo", destroy_function = "", has_type_id = false)]
+    // public struct Foo {
+    //     int a;
+    //     int *b; // We can do better later
+    //     [CCode (cname = "foo_init")]
+    //     public Foo ();
+    // }
+    // public struct Gtk.FileFilterInfo {
+    //     Gtk.FileFilterFlags contains;
+    //     string display_name;
+    //     string filename;
+    //     string mime_type;
+    //     string uri;
+    //     // public Gtk.FileFilterInfo ();
+    // }
 
     public abstract class BasicAbstractDirectoryView : Gtk.Bin {
     //TODO Reorder property declarations
@@ -353,7 +359,10 @@ namespace Files {
 
             model = new Files.ListModel ();
             filter_model = new Gtk.TreeModelFilter (model, null);
-
+            filter_model.set_visible_func ((model, iter) => {
+                var file = ((ListModel)model).file_for_iter (iter);
+                return filter_file (file);
+            });
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
@@ -417,6 +426,51 @@ namespace Files {
 
         ~BasicAbstractDirectoryView () {
             debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
+        }
+
+        private Gtk.FileFilterFlags filter_flags = 0;
+        private Gtk.FileFilterInfo filter_info = {};
+        private Gtk.FileFilter? filter;
+        public void set_filter (Gtk.FileFilter? filter) {
+            this.filter = filter;
+            if (filter != null) {
+                var v = filter.to_gvariant ();
+                warning ("Filter variant type string %s", v.get_type_string ());
+                warning ("Filter string :  %s", v.print (true));
+                // For some reason constructing Gtk.FileFilterInfo directly does not work.
+                filter_flags = filter.get_needed ();
+                filter_info.contains = filter_flags;
+            } else {
+                filter_flags = 0;
+                filter_info = {0, };
+            }
+
+            filter_model.refilter ();
+        }
+
+        private bool filter_file (Files.File? file) {
+            if (file == null) {
+                return false;
+            } else if (file.is_folder ()) {
+                return true;
+            } else {
+                if (DISPLAY_NAME in filter_flags) {
+                    filter_info.display_name = file.get_display_name ();
+                }
+                if (FILENAME in filter_flags) {
+                    filter_info.filename = file.filename;
+                }
+                if (MIME_TYPE in filter_flags) {
+                    // info.mime_type = ContentType.get_mime_type (file.get_ftype ());
+                    filter_info.mime_type = file.get_ftype ();
+                }
+                if (URI in filter_flags) {
+                    filter_info.uri = file.uri;
+                }
+
+                var res = filter.filter (filter_info);
+                return res;
+            }
         }
 
         protected void set_up_name_renderer () {
@@ -488,45 +542,6 @@ namespace Files {
             common_actions = new GLib.SimpleActionGroup ();
             common_actions.add_action_entries (COMMON_ENTRIES, this);
             insert_action_group ("common", common_actions);
-        }
-
-        public void set_filter (Gtk.FileFilter? filter) {
-            if (filter != null) {
-                // For some reason constructing Gtk.FileFilterInfo directly does not work.
-                var info = new Files.FileFilterInfo ();
-                var flags = filter.get_needed ();
-                info.contains = flags;
-                filter_model.set_visible_func ((model, iter) => {
-                    var file = ((Files.ListModel)model).file_for_iter (iter);
-                    if (file != null) {
-                        if (DISPLAY_NAME in flags) {
-                            info.display_name = file.get_display_name ();
-                        }
-                        if (FILENAME in flags) {
-                            info.filename = file.filename;
-                        }
-                        if (MIME_TYPE in flags) {
-                            // info.mime_type = ContentType.get_mime_type (file.get_ftype ());
-                            info.mime_type = file.mime_type;
-                        }
-                        if (URI in flags) {
-                            info.uri = file.uri;
-                        }
-                        info.contains = flags;
-
-                        return ContentType.is_mime_type (file.get_ftype (), "text");
-                        return ContentType.is_mime_type (file.get_ftype (), "text");
-                        return true;
-                        // return filter.filter ((Gtk.FileFilterInfo)info);
-                    } else {
-                        return true;
-                    }
-                });
-            } else {
-                filter_model.set_visible_func (null);
-            }
-
-            filter_model.refilter ();
         }
 
         public void zoom_in () {

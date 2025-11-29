@@ -37,22 +37,25 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
         }
     }
 
-    private Gtk.FileFilter _filter;
-    public Gtk.FileFilter filter {
+    private Gtk.FileFilter? _filter;
+    public Gtk.FileFilter? filter {
         get {
             return _filter;
         }
 
         set {
+            warning ("SET FILTER");
             if (value != null) {
                 add_filter (filter);
-
+            } else {
+                warning ("null filter set");
             }
 
             _filter = value;
             filter_box.set_active_id (value != null ? value.get_filter_name () : null);
-            // content.dir_view.set_filter (value);
-            message_label.label = value.get_filter_name ();
+            content.dir_view.set_filter (value);
+
+            message_label.label = value != null ? value.to_gvariant ().print (false) : "Null filter";
         }
     }
 
@@ -208,6 +211,7 @@ warning ("FD connect realize");
             }
 
             if (list_filters ().length () == 0) {
+                warning ("List of filters > 0");
                 filter_box.visible = false;
             } else if (filter_box.active_id == null) {
                 filter_box.active = 0;
@@ -233,10 +237,23 @@ warning ("FD connect realize");
         // });
 
         filter_box.changed.connect (() => {
-            filter = filter_list.search<string> (
-                filter_box.active_id,
-                (a, b) => strcmp (a.get_filter_name (), b)
-            ).data;
+            warning ("filter box changed");
+            Gtk.FileFilter? f = null;
+            if (filter_box.active_id != null) {
+                f = filter_list.search<string> (
+                    filter_box.active_id,
+                    (a, b) => strcmp (a.get_filter_name (), b)
+                ).data;
+            } else {
+                critical ("Active id is null");
+                filter = null;
+            }
+
+            if (f == null) {
+                warning ("Filter box active filter is null, active id is %s", filter_box.active_id);
+            }
+
+            filter = f;
         });
 
         // tree_view.button_release_event.connect ((w, e) => {
@@ -470,14 +487,23 @@ warning ("FD connect realize");
         return choices;
     }
 
-    public void add_filter (Gtk.FileFilter filter) {
-        var name = filter.get_filter_name ();
+    public void add_filter (Gtk.FileFilter? new_filter) {
+    warning ("add filter");
+    if (new_filter == null) {
+        critical ("Attempt to add null filder ignored");
+        return;
+    }
+        var name = new_filter.get_filter_name ();
 
         if (filter_list.search<string> (name, (a, b) => strcmp (a.get_filter_name (), b)) == null) {
             //TODO filter the view;
+            warning ("appending %s", name);
             filter_box.append (name, name);
-            filter_list.append (filter);
-            this.filter = filter;
+            filter_list.append (new_filter);
+            if (new_filter == null) {
+                critical ("Appended null filter");
+            }
+            filter = new_filter;
         }
     }
 

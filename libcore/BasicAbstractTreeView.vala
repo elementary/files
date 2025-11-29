@@ -272,6 +272,11 @@ namespace Files {
         }
 
         protected override void scroll_to_path (Gtk.TreePath path, bool scroll_to_top) {
+            if (tree.model == null) {
+                warning ("scrolling tree with null model");
+
+                return;
+            }
             tree.scroll_to_cell (path, name_column, scroll_to_top, 0.5f, 0.5f);
         }
 

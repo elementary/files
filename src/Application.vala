@@ -202,11 +202,37 @@ public class Files.Application : Gtk.Application {
 
         window.present ();
 
-        var dialog = new FileChooserDialog (Gtk.FileChooserAction.OPEN, "", "Test");
-        dialog.modal = true;
-        dialog.present ();
+        present_filechooser.begin (Gtk.FileChooserAction.OPEN, (obj, res) => {
+
+        });
+
 
         return Posix.EXIT_SUCCESS;
+    }
+
+    private async void present_filechooser (Gtk.FileChooserAction action) {
+        var dialog = new FileChooserDialog (action, "", "Test");
+        warning ("made filechooser dialog");
+        dialog.modal = true;
+        dialog.select_multiple = false;
+        dialog.accept_label = "Test Open";
+        var filter = new Gtk.FileFilter ();
+        filter.add_pattern ("*.txt");
+        filter.add_pattern ("*.pdf");
+        filter.add_pattern ("*.doc");
+        filter.set_filter_name ("TestGlob");
+        dialog.add_filter (filter);
+
+        filter = new Gtk.FileFilter ();
+        filter.add_pattern ("*.*");
+        filter.set_filter_name ("All Files");
+        dialog.add_filter (filter);
+
+        filter = new Gtk.FileFilter ();
+        filter.add_mime_type ("text/*");
+        filter.set_filter_name ("TestMime");
+        dialog.add_filter (filter);
+        dialog.present ();
     }
 
     protected override void window_added (Gtk.Window window) {
