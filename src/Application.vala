@@ -212,7 +212,6 @@ public class Files.Application : Gtk.Application {
 
     private async void present_filechooser (Gtk.FileChooserAction action) {
         var dialog = new FileChooserDialog (action, "", "Test");
-        warning ("made filechooser dialog");
         dialog.modal = true;
         dialog.select_multiple = false;
         dialog.accept_label = "Test Open";

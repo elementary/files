@@ -34,7 +34,6 @@ namespace Files {
         protected abstract void set_up_icon_renderer ();
 
         protected override void connect_tree_signals () {
-            warning ("ATV connect tree");
             tree.get_selection ().changed.connect (on_view_selection_changed);
         }
 
@@ -88,9 +87,7 @@ namespace Files {
 
             tree.append_column (name_column);
             connect_tree_signals ();
-            warning ("ATV realize connect");
             tree.realize.connect ((w) => {
-                warning ("ATV on realize");
                 tree.grab_focus ();
                 tree.columns_autosize ();
                 tree.zoom_level = zoom_level;
@@ -273,8 +270,6 @@ namespace Files {
 
         protected override void scroll_to_path (Gtk.TreePath path, bool scroll_to_top) {
             if (tree.model == null) {
-                warning ("scrolling tree with null model");
-
                 return;
             }
             tree.scroll_to_cell (path, name_column, scroll_to_top, 0.5f, 0.5f);

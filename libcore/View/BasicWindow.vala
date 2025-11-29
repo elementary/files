@@ -326,7 +326,6 @@ public class Files.BasicWindow : Gtk.ApplicationWindow {
         // });
 
         location_bar.path_change_request.connect ((path) => {
-            warning ("location path change request");
             content.focus_location_if_in_current_directory (GLib.File.new_for_path (path), true);
         });
 
@@ -408,7 +407,6 @@ public class Files.BasicWindow : Gtk.ApplicationWindow {
         });
 
         sidebar.path_change_request.connect ((loc) => {
-            warning ("Sidebar path change request");
             uri_path_change_request (loc);
         });
     }
@@ -653,7 +651,6 @@ public class Files.BasicWindow : Gtk.ApplicationWindow {
 
     // Called by content when associated with tab view.
     public void connect_content_signals (BasicViewContainer content) {
-        warning ("WINDOW connect sig");
         // content.tab_name_changed.connect (check_for_tabs_with_same_name);
         if (content == null) {
             critical ("WINDOW: connect to null content");
@@ -1456,7 +1453,6 @@ public class Files.BasicWindow : Gtk.ApplicationWindow {
     // }
 
     public void uri_path_change_request (string p, Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
-warning ("uri path change request");
         /* Make a sanitized file from the uri */
         var file = get_file_from_uri (p);
         if (file != null) {

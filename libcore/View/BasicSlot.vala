@@ -122,7 +122,6 @@ namespace Files {
         }
 
         private void connect_slot_signals () {
-            warning ("SLOT: connect slot signals");
             active.connect (() => {
                 if (is_active) {
                     return;
@@ -148,7 +147,6 @@ namespace Files {
         }
 
         private void connect_dir_view_signals () {
-            warning ("Slot: connect dir view signals");
             if (dir_view == null) {
                 critical ("SLOT: connect to null dir view");
                 return;
@@ -160,7 +158,6 @@ namespace Files {
         }
 
         private void disconnect_dir_view_signals () {
-            warning ("Slot: disconnect dir view signals");
             if (dir_view == null) {
                 critical ("SLOT: disconnect null dir view");
                 return;
@@ -179,7 +176,6 @@ namespace Files {
         }
 
         private void connect_dir_signals () {
-            warning ("SLOT connect dir signals");
             directory.done_loading.connect (on_directory_done_loading);
             directory.need_reload.connect (on_directory_need_reload);
         }

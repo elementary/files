@@ -42,7 +42,6 @@ namespace Files {
                 _window.connect_content_signals (this);
                 _window.loading_uri (slot.location.get_uri ());
                 load_directory ();
-                warning ("VC: after set window");
             }
         }
 
@@ -107,21 +106,15 @@ namespace Files {
         public Gtk.Widget? content {
             set {
                 if (content_item != null) {
-                    // remove (content_item);
+                    remove (content_item);
                     return;
                 }
 
                 content_item = value;
 
                 if (content_item != null) {
-                    Timeout.add (1000, () => {
-                    warning ("add content item");
                     add (content_item);
-                    warning ("show all");
                     content_item.show_all ();
-                    // warning ("added content item");
-                    return Source.REMOVE;
-                    });
                 }
             }
             get {
@@ -178,7 +171,6 @@ namespace Files {
         }
 
         private void disconnect_window_signals () {
-            warning ("VC disconnect window");
             if (window != null) {
                 window.folder_deleted.disconnect (on_folder_deleted);
                 window.disconnect_content_signals (this);
@@ -238,7 +230,6 @@ namespace Files {
 
         // the locations in @to_select must be children of @loc
         public void add_view (ViewMode mode, GLib.File loc,  GLib.File[]? to_select = null) {
-        warning ("BasicVC add view %s ", loc.get_path ());
             view_mode = mode;
 
             if (to_select != null) {
@@ -300,7 +291,6 @@ namespace Files {
         }
 
         private void disconnect_slot_signals (Files.AbstractSlot aslot) {
-        warning ("VC: disconnect slot");
             aslot.active.disconnect (on_slot_active);
             aslot.path_changed.disconnect (on_slot_path_changed);
             // aslot.new_container_request.disconnect (on_slot_new_container_request);
@@ -458,11 +448,8 @@ namespace Files {
             }
 
             if (can_show_folder) {
-                warning ("VC: can show folder");
                 content = view.get_content_box ();
-                warning ("get dir file");
                 var directory = dir.file;
-                warning ("dir.file %s", directory.uri);
                 /* Only record valid folders (will also log Zeitgeist event) */
                 browser.record_uri (directory.uri); /* will ignore null changes i.e reloading*/
 
@@ -475,7 +462,6 @@ namespace Files {
             }
 
             loading (false); /* Will cause topmenu to update */
-            warning ("after loading");
         }
 
         private void store_selection () {
@@ -517,8 +503,6 @@ namespace Files {
             bool no_path_change = false,
             bool unselect_others = false
         ) {
-
-        warning ("focus location %s", loc != null ? loc.get_path () : null);
 
             /* This function navigates to another folder if necessary if
              * select_in_current_only is not set to true.

@@ -44,11 +44,8 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
         }
 
         set {
-            warning ("SET FILTER");
             if (value != null) {
                 add_filter (filter);
-            } else {
-                warning ("null filter set");
             }
 
             _filter = value;
@@ -150,7 +147,6 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
                 margin_start = 6
             };
 
-warning ("FD connect selevt multiple");
             notify["select-multiple"].connect (() => {
                 read_only_check.label = select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only");
             });
@@ -199,7 +195,6 @@ warning ("FD connect selevt multiple");
         default_width = width;
         can_focus = true;
 
-warning ("FD connect realize");
         realize.connect (() => {
             if (parent_window != "") {
                 var parent = ExternalWindow.from_handle (parent_window);
@@ -211,7 +206,6 @@ warning ("FD connect realize");
             }
 
             if (list_filters ().length () == 0) {
-                warning ("List of filters > 0");
                 filter_box.visible = false;
             } else if (filter_box.active_id == null) {
                 filter_box.active = 0;
@@ -237,20 +231,12 @@ warning ("FD connect realize");
         // });
 
         filter_box.changed.connect (() => {
-            warning ("filter box changed");
             Gtk.FileFilter? f = null;
             if (filter_box.active_id != null) {
                 f = filter_list.search<string> (
                     filter_box.active_id,
                     (a, b) => strcmp (a.get_filter_name (), b)
                 ).data;
-            } else {
-                critical ("Active id is null");
-                filter = null;
-            }
-
-            if (f == null) {
-                warning ("Filter box active filter is null, active id is %s", filter_box.active_id);
             }
 
             filter = f;
@@ -306,7 +292,6 @@ warning ("FD connect realize");
         //     location_bar.set_display_path (current_path);
         // });
 
-        warning ("FD connect dir view");
         content.dir_view.file_activated.connect (() => {
             activate_selected_items ();
         });
@@ -333,16 +318,11 @@ warning ("FD connect realize");
     }
 
     private void activate_selected_items () {
-        warning ("file activated handler");
         var filename = get_filename ();
         var only_one = (content.dir_view.get_selected_files ().first ().next )== null;
-        warning ("only one %s", only_one.to_string ());
-        warning ("filename %s", filename);
         if (only_one && GLib.FileUtils.test (filename, FileTest.IS_DIR)) {
-        warning ("is dir");
             content.dir_view.path_change_request (get_file (), Files.OpenFlag.DEFAULT, false);
         } else if (only_one || select_multiple) {
-            warning ("OK");
             response (Gtk.ResponseType.OK);
         }
     }
@@ -488,21 +468,16 @@ warning ("FD connect realize");
     }
 
     public void add_filter (Gtk.FileFilter? new_filter) {
-    warning ("add filter");
-    if (new_filter == null) {
-        critical ("Attempt to add null filder ignored");
-        return;
-    }
+        if (new_filter == null) {
+            return;
+        }
+
         var name = new_filter.get_filter_name ();
 
         if (filter_list.search<string> (name, (a, b) => strcmp (a.get_filter_name (), b)) == null) {
             //TODO filter the view;
-            warning ("appending %s", name);
             filter_box.append (name, name);
             filter_list.append (new_filter);
-            if (new_filter == null) {
-                critical ("Appended null filter");
-            }
             filter = new_filter;
         }
     }
