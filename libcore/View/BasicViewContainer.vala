@@ -111,7 +111,7 @@ namespace Files {
                 }
 
                 add (value);
-                value.show_all ();  //Shouldn't need this - but do!
+                value.show_all ();  // Show all here to avoid doing it for component widgets
 
                 content_item = value;
             }
