@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-02-05 22:16+0000\n"
-"Last-Translator: DutchVipperloid <svenroelof@e.email>\n"
-"Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
+"PO-Revision-Date: 2025-11-30 18:55+0000\n"
+"Last-Translator: Bas Ernst <bas@ernstgenova.it>\n"
+"Language-Team: Dutch <https://l10n.elementaryos.org/projects/files/files/nl/>"
+"\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:194
@@ -302,22 +303,20 @@ msgstr "Huidige datum"
 #. TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
 #: libcore/Enums.vala:268
 msgid "ISO"
-msgstr ""
+msgstr "ISO"
 
 #: libcore/Enums.vala:270
 msgid "Locale"
-msgstr ""
+msgstr "Locatie"
 
 #: libcore/Enums.vala:272
-#, fuzzy
-#| msgid "Info"
 msgid "Informal"
-msgstr "Info"
+msgstr "Informeel"
 
 #. TRANSLATORS Adjective applied to datetime format
 #: libcore/Enums.vala:275
 msgid "Compact"
-msgstr ""
+msgstr "Compact"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
@@ -490,17 +489,14 @@ msgid "The original folder %s no longer exists"
 msgstr "De originele map %s bestaat niet meer"
 
 #: libcore/FileUtils.vala:185
-#, fuzzy
-#| msgid ""
-#| "The folder will be recreated and selected files that were originally "
-#| "there will be restored to it"
 msgid ""
 "The folder can be recreated and selected files that were originally there "
 "will be restored to it. Otherwise, files that were in this folder will not "
 "be restored."
 msgstr ""
-"De map wordt opnieuw aangemaakt en de originele bestanden zullen worden "
-"teruggezet"
+"De map kan opnieuw worden aangemaakt en de geselecteerde originele bestanden "
+"zullen worden teruggezet. Anders worden de bestanden die zich in deze map "
+"bevonden niet hersteld."
 
 #: libcore/FileUtils.vala:189
 msgid "Ignore"
@@ -999,7 +995,7 @@ msgstr "_Annuleren"
 
 #: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
 msgid "Delete"
-msgstr "Verwijderen"
+msgstr "Verwijder"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
@@ -2111,14 +2107,12 @@ msgid "Empty File"
 msgstr "Leeg bestand"
 
 #: src/View/AbstractDirectoryView.vala:2382
-#, fuzzy
-#| msgid "Templates"
 msgid "Template"
-msgstr "Sjablonen"
+msgstr "Sjabloon"
 
 #: src/View/AbstractDirectoryView.vala:2390
 msgid "…too many templates"
-msgstr ""
+msgstr "---te veel sjablonen"
 
 #: src/View/AbstractDirectoryView.vala:2395
 msgid "New"
@@ -2369,7 +2363,7 @@ msgstr "Open in nieuw _venster"
 
 #: src/View/Sidebar/BookmarkRow.vala:334
 msgid "Remove"
-msgstr "Verwijderen"
+msgstr "Verwijder"
 
 #: src/View/Sidebar/BookmarkRow.vala:352
 msgid "Permanently Delete All Trash"
@@ -2496,7 +2490,7 @@ msgstr "Externe miniaturen"
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
 #: src/View/Widgets/AppMenu.vala:116
 msgid "Date & Time Format"
-msgstr ""
+msgstr "Datum & Tijd Formaat"
 
 #: src/View/Widgets/AppMenu.vala:210
 msgid "No operation to undo"
