@@ -95,6 +95,7 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
     construct {
         modal = true;
         set_default_size (600, 400);
+        headerbar.decoration_layout = "close:";
         // previous_paths = new Queue<string> ();
         // next_paths = new Queue<string> ();
         // Hdy.init ();
