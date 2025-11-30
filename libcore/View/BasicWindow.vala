@@ -21,7 +21,7 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.BasicWindow : Gtk.ApplicationWindow {
+public class Files.BasicWindow : Hdy.ApplicationWindow {
     // static uint window_id = 0;
 
     const GLib.ActionEntry [] WIN_ENTRIES = {
@@ -104,9 +104,9 @@ public class Files.BasicWindow : Gtk.ApplicationWindow {
     //     );
     // }
 
-    // static construct {
-    //     Hdy.init ();
-    // }
+    static construct {
+        Hdy.init ();
+    }
 
     construct {
         height_request = 300;
@@ -163,7 +163,7 @@ public class Files.BasicWindow : Gtk.ApplicationWindow {
         build_window ();
 
         int width, height;
-        // Files.app_settings.get ("window-size", "(ii)", out width, out height);
+        Files.app_settings.get ("window-size", "(ii)", out width, out height);
         default_width = width;
         default_height = height;
 
@@ -207,14 +207,17 @@ public class Files.BasicWindow : Gtk.ApplicationWindow {
         //     tooltip_text = _("Menu")
         // };
 
+        var title = new Gtk.Box (HORIZONTAL, 0) { hexpand = false };
         headerbar = new Hdy.HeaderBar () {
             show_close_button = true,
-            custom_title = new Gtk.Label (null)
+            custom_title = location_bar,
+            centering_policy = LOOSE
         };
+
         headerbar.pack_start (button_back);
         headerbar.pack_start (button_forward);
         // headerbar.pack_start (view_switcher);
-        headerbar.pack_start (location_bar);
+        // headerbar.pack_start (location_bar);
         // headerbar.pack_end (menu_button);
 
         // tab_view = new Hdy.TabView () {
