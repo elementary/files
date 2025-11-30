@@ -203,7 +203,7 @@ public class Files.Application : Gtk.Application {
         window.present ();
 
         present_filechooser.begin (Gtk.FileChooserAction.OPEN, (obj, res) => {
-
+warning ("present file chooser finished");
         });
 
 
@@ -231,7 +231,37 @@ public class Files.Application : Gtk.Application {
         filter.add_mime_type ("text/*");
         filter.set_filter_name ("TestMime");
         dialog.add_filter (filter);
+        var _results = new HashTable<string, Variant> (str_hash, str_equal);
+        uint _response = 2;
+        dialog.response.connect ((id) => {
+            switch (id) {
+                case Gtk.ResponseType.OK:
+                    warning ("ok pressed");
+                    _results["uris"] = dialog.get_uris ();
+                    _results["choices"] = dialog.get_choices ();
+                    // _results["writable"] = !dialog.read_only;
+                    if (dialog.filter != null) {
+                        _results["current_filter"] = dialog.filter.to_gvariant ();
+                    }
+
+                    _response = 0;
+                    break;
+                case Gtk.ResponseType.CANCEL:
+                warning ("cancel pressed");
+                    _response = 1;
+                    break;
+                case Gtk.ResponseType.DELETE_EVENT:
+                default:
+                    _response = 2;
+                    break;
+            }
+
+            present_filechooser.callback ();
+        });
         dialog.present ();
+        yield;
+        dialog.destroy ();
+
     }
 
     protected override void window_added (Gtk.Window window) {
