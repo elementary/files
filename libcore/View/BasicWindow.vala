@@ -315,19 +315,19 @@ public class Files.BasicWindow : Gtk.ApplicationWindow {
 
         // location_bar.escape.connect (grab_focus);
 
-        // location_bar.path_change_request.connect ((path, flag) => {
-        //     content.is_frozen = false;
-        //     // Put in an Idle so that any resulting authentication dialog
-        //     // is able to grab focus *after* the view does
-        //     Idle.add (() => {
-        //         uri_path_change_request (path, flag);
-        //         return Source.REMOVE;
-        //     });
-        // });
-
-        location_bar.path_change_request.connect ((path) => {
-            content.focus_location_if_in_current_directory (GLib.File.new_for_path (path), true);
+        location_bar.path_change_request.connect ((path, flag) => {
+            content.is_frozen = false;
+            // Put in an Idle so that any resulting authentication dialog
+            // is able to grab focus *after* the view does
+            Idle.add (() => {
+                uri_path_change_request (path, flag);
+                return Source.REMOVE;
+            });
         });
+
+        // location_bar.path_change_request.connect ((path) => {
+        //     content.focus_location_if_in_current_directory (GLib.File.new_for_path (path), true);
+        // });
 
         headerbar.focus_in_event.connect ((event) => {
             locked_focus = true;
