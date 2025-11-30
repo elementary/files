@@ -23,7 +23,7 @@ namespace Files {
         public ViewMode mode { get; construct; }
         public BasicAbstractDirectoryView? dir_view { get; private set; }
 
-        private int preferred_column_width;
+        // private int preferred_column_width;
         private uint reload_timeout_id = 0;
         private uint path_change_timeout_id = 0;
         private bool original_reload_request = false;
@@ -71,8 +71,8 @@ namespace Files {
         /* Support for multi-slot view (Miller)*/
         public Gtk.Box colpane;
         public Gtk.Paned hpane;
-        public signal void miller_slot_request (GLib.File file, bool make_root);
-        public signal void size_change ();
+        // public signal void miller_slot_request (GLib.File file, bool make_root);
+        // public signal void size_change ();
 
         public BasicSlot (GLib.File _location, BasicViewContainer _ctab, ViewMode _mode) {
             Object (
@@ -111,8 +111,8 @@ namespace Files {
 
             is_active = false;
             is_frozen = true;
-            preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
-            width = preferred_column_width;
+            // preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
+            // width = preferred_column_width;
         }
 
         ~BasicSlot () {
@@ -153,7 +153,7 @@ namespace Files {
             }
 
             dir_view.path_change_request.connect (on_dir_view_path_change_request);
-            dir_view.size_allocate.connect (on_dir_view_size_allocate);
+            // dir_view.size_allocate.connect (on_dir_view_size_allocate);
             dir_view.selection_changed.connect (on_dir_view_selection_changed);
         }
 
@@ -163,13 +163,13 @@ namespace Files {
                 return;
             }
             dir_view.path_change_request.disconnect (on_dir_view_path_change_request);
-            dir_view.size_allocate.disconnect (on_dir_view_size_allocate);
+            // dir_view.size_allocate.disconnect (on_dir_view_size_allocate);
             dir_view.selection_changed.disconnect (on_dir_view_selection_changed);
         }
 
-        private void on_dir_view_size_allocate (Gtk.Allocation alloc) {
-            width = alloc.width;
-        }
+        // private void on_dir_view_size_allocate (Gtk.Allocation alloc) {
+        //     width = alloc.width;
+        // }
 
         private void on_dir_view_selection_changed (GLib.List<Files.File> files) {
             selection_changed (files);
@@ -188,34 +188,34 @@ namespace Files {
         private void on_directory_done_loading (Directory dir) {
             directory_loaded (dir);
 
-            /*  Column View requires slots to determine their own width (other views' width determined by Window */
-            if (mode == ViewMode.MILLER_COLUMNS) {
-                //TODO See if need to adjust width now using stack to show empty message
-                if (dir.is_empty ()) { /* No files in the file cache */
-                    Pango.Rectangle extents;
-                    var layout = dir_view.create_pango_layout (null);
-                    layout.set_markup (get_empty_message (), -1);
-                    layout.get_extents (null, out extents);
-                    width = (int) Pango.units_to_double (extents.width);
-                } else {
-                    width = preferred_column_width;
-                }
+            // /*  Column View requires slots to determine their own width (other views' width determined by Window */
+            // if (mode == ViewMode.MILLER_COLUMNS) {
+            //     //TODO See if need to adjust width now using stack to show empty message
+            //     if (dir.is_empty ()) { /* No files in the file cache */
+            //         Pango.Rectangle extents;
+            //         var layout = dir_view.create_pango_layout (null);
+            //         layout.set_markup (get_empty_message (), -1);
+            //         layout.get_extents (null, out extents);
+            //         width = (int) Pango.units_to_double (extents.width);
+            //     } else {
+            //         width = preferred_column_width;
+            //     }
 
-                width += dir_view.icon_size + 64; /* allow some extra room for icon padding and right margin*/
+            //     width += dir_view.icon_size + 64; /* allow some extra room for icon padding and right margin*/
 
-                /* Allow extra room for MESSAGE_CLASS styling of special messages */
-                if (dir.is_empty () || dir.permission_denied) {
-                    width += width;
-                }
+            //     /* Allow extra room for MESSAGE_CLASS styling of special messages */
+            //     if (dir.is_empty () || dir.permission_denied) {
+            //         width += width;
+            //     }
 
-                size_change ();
-                hpane.set_position (width);
-                colpane.show_all ();
+            //     size_change ();
+            //     hpane.set_position (width);
+            //     colpane.show_all ();
 
-                if (colpane.get_realized ()) {
-                    colpane.queue_draw ();
-                }
-            }
+            //     if (colpane.get_realized ()) {
+            //         colpane.queue_draw ();
+            //     }
+            // }
 
             is_frozen = false;
         }
