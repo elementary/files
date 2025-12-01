@@ -202,7 +202,7 @@ public class Files.Application : Gtk.Application {
 
         window.present ();
 
-        present_filechooser.begin (Gtk.FileChooserAction.OPEN, (obj, res) => {
+        present_filechooser.begin (Gtk.FileChooserAction.OPEN, window.default_location, (obj, res) => {
 warning ("present file chooser finished");
         });
 
@@ -210,8 +210,8 @@ warning ("present file chooser finished");
         return Posix.EXIT_SUCCESS;
     }
 
-    private async void present_filechooser (Gtk.FileChooserAction action) {
-        var dialog = new FileChooserDialog (action, "", "Test");
+    private async void present_filechooser (Gtk.FileChooserAction action, GLib.File? initial_location) {
+        var dialog = new FileChooserDialog (action, "", "Test", initial_location);
         dialog.modal = true;
         dialog.select_multiple = false;
         dialog.accept_label = action.to_string ();

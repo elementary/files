@@ -62,7 +62,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
     // private Hdy.HeaderBar header;
     // private View.Chrome.BasicLocationBar location_bar;
-    private BasicWindow chooser;
+    public BasicWindow chooser { get; construct; }
     // private FileChooserWidget chooser;
     // private Gtk.TreeView tree_view;
     // private BasicWindow window;
@@ -87,11 +87,12 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
     private Settings settings;
 
-    public FileChooserDialog (Gtk.FileChooserAction action, string? parent_window, string title) {
+    public FileChooserDialog (Gtk.FileChooserAction action, string? parent_window, string title, GLib.File? initial_location) {
         Object (
             parent_window: parent_window,
             action: action,
-            title: title
+            title: title,
+            chooser: new BasicWindow (initial_location)
         );
     }
 
@@ -101,7 +102,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         decorated=false;
         modal = true;
         set_default_size (600, 400);
-        chooser = new BasicWindow ();
         get_content_area ().add (chooser);
         // previous_paths = new Queue<string> ();
         // next_paths = new Queue<string> ();

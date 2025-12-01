@@ -85,13 +85,26 @@ public class Files.FileChooserPortal : Object {
             return;
         }
 
+       GLib.File? initial_location = null;
+        if ("current_folder" in options) {
+            var current_folder = FileUtils.sanitize_path (
+                options["current_folder"].get_bytestring (),
+                null,
+                true
+            );
+
+            if (current_folder != "") {
+                initial_location = GLib.File.new_for_uri (current_folder);
+            }
+        }
+
+
+
         var directory = "directory" in options && options["directory"].get_boolean ();
 
-        var dialog = new FileChooserDialog (
-            directory ? Gtk.FileChooserAction.SELECT_FOLDER : Gtk.FileChooserAction.OPEN,
-            parent_window,
-            title
-        );
+        var dialog = new FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title, initial_location) {
+            accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
+        };
 
         if ("modal" in options) {
             dialog.modal = options["modal"].get_boolean ();
@@ -218,7 +231,20 @@ public class Files.FileChooserPortal : Object {
             return;
         }
 
-        var dialog = new FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title) {
+        GLib.File? initial_location = null;
+        if ("current_folder" in options) {
+            var current_folder = FileUtils.sanitize_path (
+                options["current_folder"].get_bytestring (),
+                null,
+                true
+            );
+
+            if (current_folder != "") {
+                initial_location = GLib.File.new_for_uri (current_folder);
+            }
+        }
+
+        var dialog = new FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title, initial_location) {
             accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
         };
 
@@ -230,11 +256,7 @@ public class Files.FileChooserPortal : Object {
             dialog.set_current_name (options["current_name"].get_string ());
         }
 
-        if ("current_folder" in options) {
-            dialog.set_current_folder (
-                FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, true)
-            );
-        }
+
 
         var supplied_uri = "";
         if ("current_file" in options) {
@@ -374,7 +396,20 @@ public class Files.FileChooserPortal : Object {
             return;
         }
 
-        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SELECT_FOLDER, parent_window, title) {
+        GLib.File? initial_location = null;
+        if ("current_folder" in options) {
+            var current_folder = FileUtils.sanitize_path (
+                options["current_folder"].get_bytestring (),
+                null,
+                true
+            );
+
+            if (current_folder != "") {
+                initial_location = GLib.File.new_for_uri (current_folder);
+            }
+        }
+
+        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SELECT_FOLDER, parent_window, title, initial_location) {
             accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
         };
 
@@ -382,11 +417,11 @@ public class Files.FileChooserPortal : Object {
             dialog.modal = options["modal"].get_boolean ();
         }
 
-        if ("current_folder" in options) {
-            dialog.set_current_folder (
-                FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, true)
-            );
-        }
+        // if ("current_folder" in options) {
+        //     dialog.set_current_folder (
+        //         FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, true)
+        //     );
+        // }
 
         if ("choices" in options) {
             var choices = options["choices"].iterator ();
