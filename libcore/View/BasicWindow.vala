@@ -57,7 +57,7 @@ public class Files.BasicWindow : Gtk.Box {
     // }
 
     public string title { get; private set; default = "";}
-    private BasicViewContainer? content { get; private set; }
+    public BasicViewContainer? content { get; private set; }
 
     public ViewMode default_mode {
         get {
@@ -71,7 +71,7 @@ public class Files.BasicWindow : Gtk.Box {
         }
     }
 
-    public GLib.File? location { get; set construct; default = null; }
+    // public GLib.File? location { get; default = null; }
     // public Gtk.Builder ui;
     // public Files.Application marlin_app { get; construct; }
     // private unowned UndoManager undo_manager;
@@ -99,9 +99,9 @@ public class Files.BasicWindow : Gtk.Box {
     public signal void folder_deleted (GLib.File location);
     public signal void free_space_change ();
 
-    public BasicWindow (GLib.File? initial_location = null) {
-        create_content.begin (initial_location, default_mode);
-    }
+    // public BasicWindow (GLib.File? initial_location = null) {
+    //     create_content.begin (initial_location, default_mode);
+    // }
     // public Window (Files.Application _application) {
     //     Object (
     //         application: (Gtk.Application)_application,
@@ -118,7 +118,7 @@ public class Files.BasicWindow : Gtk.Box {
         // height_request = 300;
         // width_request = 500;
         // icon_name = "system-file-manager";
-        title = _("Elementary File Browser Widget");
+        // title = _("Elementary File Browser Widget");
 
         // add_action_entries (WIN_ENTRIES, this);
         // undo_actions_set_insensitive ();
@@ -187,6 +187,8 @@ public class Files.BasicWindow : Gtk.Box {
         main_grid.show_all ();
 
         add (main_grid);
+
+        warning ("added grid");
         /** Apply preferences */
         var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
 
@@ -202,6 +204,7 @@ public class Files.BasicWindow : Gtk.Box {
 
         sidebar.path_change_request.connect (content.on_path_change_request);
 
+        connect_content_signals (content);
         // int width, height;
         // Files.app_settings.get ("window-size", "(ii)", out width, out height);
         // default_width = width;
@@ -217,8 +220,15 @@ public class Files.BasicWindow : Gtk.Box {
         //     }
         // }
 
+        realize.connect (() => {
+            Timeout.add (1000, () => {
+                headerbar.update_location_bar (content.uri, false);
+                return Source.REMOVE;
+            });
+        });
 
         // present ();
+        warning ("donw construct BasicWindow");
     }
 
     private void build_window () {
@@ -622,24 +632,31 @@ public class Files.BasicWindow : Gtk.Box {
     //     }
     // }
 
+    // public bool set_initial_location (GLib.File initial_location) {
+    //     assert (content != null && content.dir_view == null);
+    //     if (set_location (initial_location, default_mode)) {
+    //         connect_content_signals (content);
+    //     }
+    // }
+
     // Alway operates on (or creates) this.content
-    private async bool create_content (
+    public bool set_location (
         GLib.File _location,
         ViewMode mode) {
-
+warning ("BW set location");
             GLib.File location;
             GLib.FileType ftype;
 
             // For simplicity we do not use cancellable. If issues arise may need to do this.
             try {
-                var info = yield _location.query_info_async (
+                var info = _location.query_info (
                     FileAttribute.STANDARD_TYPE,
                     FileQueryInfoFlags.NONE
                 );
 
                 ftype = info.get_file_type ();
             } catch (Error e) {
-                debug ("No info for requested location - abandon loading");
+                warning ("No info for requested location - abandon loading");
                 return false;
             }
 
@@ -650,17 +667,11 @@ public class Files.BasicWindow : Gtk.Box {
                 location = _location.dup ();
             }
 
-            if (content == null) {
-                content = new BasicViewContainer ();
-            }
-
             if (!location.equal (_location)) {
                 content.add_view (mode, location, {_location});
             } else {
                 content.add_view (mode, location);
             }
-
-            connect_content_signals (content);
 
             return true;
     }
@@ -766,7 +777,9 @@ public class Files.BasicWindow : Gtk.Box {
 
         // check_for_tabs_with_same_name ();
         if (!is_loading) {
-            update_headerbar ();
+            // update_headerbar ();
+            headerbar.set_back_menu (content.get_go_back_path_list (), content.can_go_back);
+            headerbar.set_forward_menu (content.get_go_forward_path_list (), content.can_go_forward);
         }
 
         // if (restoring_tabs == 0 && !is_loading) {
@@ -1459,13 +1472,13 @@ public class Files.BasicWindow : Gtk.Box {
 
     private void update_headerbar () {
         // if (restoring_tabs > 0 || content == null) {
-        if (content == null) {
-            return;
-        }
+        // if (content == null) {
+            // return;
+        // }
 
         /* Update browser buttons */
-        headerbar.set_back_menu (content.get_go_back_path_list (), content.can_go_back);
-        headerbar.set_forward_menu (content.get_go_forward_path_list (), content.can_go_forward);
+        // headerbar.set_back_menu (content.get_go_back_path_list (), content.can_go_back);
+        // headerbar.set_forward_menu (content.get_go_forward_path_list (), content.can_go_forward);
         // headerbar.button_back.sensitive = content.can_go_back;
         // headerbar.button_forward.sensitive = (content.can_show_folder && content.can_go_forward);
 

@@ -44,7 +44,9 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
         button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         location_bar = new BasicLocationBar ();
+        warning ("setting custom title");
         custom_title = location_bar;
+        warning ("done");
         centering_policy = LOOSE;
         show_close_button = true;
 
@@ -107,6 +109,7 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
     }
 
     public void update_location_bar (string new_path, bool with_animation = true) {
+        warning ("update location bar path %s", new_path);
         location_bar.with_animation = with_animation;
         location_bar.set_display_path (new_path);
         location_bar.with_animation = true;

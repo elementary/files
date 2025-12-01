@@ -60,6 +60,18 @@ namespace Files {
             }
         }
 
+        public Gtk.SelectionMode selection_mode {
+            get {
+                return dir_view != null ? dir_view.get_selection_mode () : Gtk.SelectionMode.NONE;
+            }
+
+            set {
+                if (dir_view != null) {
+                    dir_view.set_selection_mode (value);
+                }
+            }
+        }
+
         public Files.BasicAbstractDirectoryView? dir_view {
             get {
                 return slot != null ? ((BasicSlot)slot).dir_view : null;
@@ -250,6 +262,7 @@ namespace Files {
 
         // the locations in @to_select must be children of @loc
         public void add_view (ViewMode mode, GLib.File loc,  GLib.File[]? to_select = null) {
+        warning ("VC add view at %s", loc.get_uri ());
             view_mode = mode;
 
             if (to_select != null) {
@@ -325,7 +338,7 @@ namespace Files {
         private void open_location (
             GLib.File loc,
             Files.OpenFlag flag = Files.OpenFlag.DEFAULT
-        ) requires (window != null) {
+        ) {
             switch ((Files.OpenFlag)flag) {
                 // case Files.OpenFlag.NEW_TAB:
                 // case Files.OpenFlag.NEW_WINDOW:
@@ -494,6 +507,10 @@ namespace Files {
                     selected_locations.prepend (file.location);
                 });
             }
+        }
+
+        public unowned GLib.List<Files.File> get_selected_files () {
+            return view != null ? view.get_selected_files () : null;
         }
 
         public unowned Files.AbstractSlot? get_current_slot () {

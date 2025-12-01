@@ -98,13 +98,13 @@ public class Files.FileChooserPortal : Object {
             }
         }
 
-
-
         var directory = "directory" in options && options["directory"].get_boolean ();
 
-        var dialog = new FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title, initial_location) {
+        var dialog = new FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title) {
             accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
         };
+
+        dialog.set_initial_location (initial_location);
 
         if ("modal" in options) {
             dialog.modal = options["modal"].get_boolean ();
@@ -244,9 +244,11 @@ public class Files.FileChooserPortal : Object {
             }
         }
 
-        var dialog = new FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title, initial_location) {
+        var dialog = new FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title) {
             accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
         };
+
+        dialog.set_initial_location (initial_location);
 
         if ("modal" in options) {
             dialog.modal = options["modal"].get_boolean ();
@@ -409,7 +411,7 @@ public class Files.FileChooserPortal : Object {
             }
         }
 
-        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SELECT_FOLDER, parent_window, title, initial_location) {
+        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SELECT_FOLDER, parent_window, title) {
             accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
         };
 

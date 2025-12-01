@@ -211,7 +211,8 @@ warning ("present file chooser finished");
     }
 
     private async void present_filechooser (Gtk.FileChooserAction action, GLib.File? initial_location) {
-        var dialog = new FileChooserDialog (action, "", "Test", initial_location);
+        var dialog = new FileChooserDialog (action, "", "Test");
+        dialog.set_initial_location (initial_location);
         dialog.modal = true;
         dialog.select_multiple = false;
         dialog.accept_label = action.to_string ();
@@ -236,8 +237,7 @@ warning ("present file chooser finished");
 
         if (action == SAVE) {
             dialog.set_current_name ("Untitled Doc");
-            dialog.set_current_folder ("/home/jeremy/Documents");
-            dialog.set_uri ("/home/jeremy/Documents/TestDoc.txt");
+            dialog.set_uri ("");
         }
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
@@ -267,6 +267,8 @@ warning ("present file chooser finished");
 
             present_filechooser.callback ();
         });
+
+        dialog.show_all ();
         dialog.present ();
         yield;
         dialog.destroy ();

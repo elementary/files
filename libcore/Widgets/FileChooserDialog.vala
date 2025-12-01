@@ -12,7 +12,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     // public signal void response (Gtk.ResponseType response);
 
     public string? parent_window { get; construct; }
-    public BasicViewContainer content { get; construct; }
+    // public BasicViewContainer content { get; construct; }
     public Hdy.HeaderBar headerbar;
     public Gtk.FileChooserAction action { get; construct; }
     public bool read_only { get; set; default = false; }
@@ -29,13 +29,13 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
     public bool select_multiple {
         get {
-            return content.dir_view.get_selection_mode () == Gtk.SelectionMode.MULTIPLE;
+            return chooser.content.selection_mode == Gtk.SelectionMode.MULTIPLE;
         }
 
         set {
             // FileChooser is expected to select at least one item
             var mode = value ? Gtk.SelectionMode.MULTIPLE : Gtk.SelectionMode.SINGLE;
-            content.dir_view.set_selection_mode (mode);
+            chooser.content.selection_mode = mode;
         }
     }
 
@@ -52,7 +52,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
             _filter = value;
             filter_box.set_active_id (value != null ? value.get_filter_name () : null);
-            content.dir_view.set_filter (value);
+            chooser.content.dir_view.set_filter (value);
 
             // message_label.label = value != null ? value.to_gvariant ().print (false) : "Null filter";
         }
@@ -87,21 +87,22 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
     private Settings settings;
 
-    public FileChooserDialog (Gtk.FileChooserAction action, string? parent_window, string title, GLib.File? initial_location) {
+    public FileChooserDialog (Gtk.FileChooserAction action, string? parent_window, string title) {
         Object (
             parent_window: parent_window,
             action: action,
-            title: title,
-            chooser: new BasicWindow (initial_location)
+            title: title
         );
     }
 
 
     construct {
         Hdy.init ();
-        decorated=false;
+        decorated = false;
         modal = true;
+        use_header_bar = 1; // Stop native action area showing as action widgets are put in content area
         set_default_size (600, 400);
+        chooser = new BasicWindow ();
         get_content_area ().add (chooser);
         // previous_paths = new Queue<string> ();
         // next_paths = new Queue<string> ();
@@ -227,6 +228,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         can_focus = true;
 
         realize.connect (() => {
+            warning ("dialog realozed");
             if (parent_window != "") {
                 var parent = ExternalWindow.from_handle (parent_window);
                 if (parent == null) {
@@ -329,9 +331,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         //     location_bar.set_display_path (current_path);
         // });
 
-        content.dir_view.file_activated.connect (() => {
-            activate_selected_items ();
-        });
+
 
         cancel_button.clicked.connect (() => response (Gtk.ResponseType.CANCEL));
         accept_button.clicked.connect (() => response (Gtk.ResponseType.OK));
@@ -347,18 +347,23 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
         set_current_folder_uri (settings.get_string ("last-folder-uri"));
 
-        show_all ();
+        // show_all ();
+        warning ("done construct FilesDialog");
     }
 
-    private void activate_selected_items () {
-        var filename = get_filename ();
-        var only_one = (content.dir_view.get_selected_files ().first ().next )== null;
-        if (only_one && GLib.FileUtils.test (filename, FileTest.IS_DIR)) {
-            content.dir_view.path_change_request (get_file (), Files.OpenFlag.DEFAULT, false);
-        } else if (only_one || select_multiple) {
-            response (Gtk.ResponseType.OK);
-        }
+    public bool set_initial_location (GLib.File loc) {
+        return chooser.set_location (loc, ViewMode.LIST); //TODO Make setting and implement other modes
     }
+
+    // private void activate_selected_items () {
+    //     var filename = get_filename ();
+    //     var only_one = (chooser.content.dir_view.get_selected_files ().first ().next )== null;
+    //     if (only_one && GLib.FileUtils.test (filename, FileTest.IS_DIR)) {
+    //         chooser.content.dir_view.path_change_request (get_file (), Files.OpenFlag.DEFAULT, false);
+    //     } else if (only_one || select_multiple) {
+    //         response (Gtk.ResponseType.OK);
+    //     }
+    // }
 
     // private static T find_child_by_name<T> (Gtk.Widget root, string path) requires (root is Gtk.Container) {
     //     var paths = path.has_prefix ("/") ? path[1 : path.length].split ("/") : path.split ("/");
@@ -550,7 +555,14 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public GLib.File? get_file () {
-        return content.dir_view.get_selected_files ().first ().data.location;
+    warning ("FCD get file");
+        unowned var selected_files = chooser.content.get_selected_files ();
+        GLib.File? gfile = null;
+        if (selected_files != null) {
+            gfile = selected_files.first ().data.location;
+        }
+
+        return gfile;
     }
 
     //TODO Complete
@@ -559,18 +571,19 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public string? get_current_folder_uri () {
-        return content.uri;
+        return chooser.content.uri;
     }
 
     public GLib.File? get_current_folder_file () {
-        return content.location;
+        return chooser.content.location;
     }
 
     public string? get_filename () {
-        var selected_file = content.dir_view.get_selected_files ().first ().data;
-        if (selected_file != null) {
+    warning ("FCD get filename");
+        unowned var selected_files = chooser.content.get_selected_files ();
+        if (selected_files != null) {
             try {
-                return Filename.from_uri (selected_file.uri);
+                return Filename.from_uri (selected_files.first ().data.uri);
             } catch (Error e) {
                 return null;
             }
@@ -580,7 +593,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public SList<string> get_filenames () {
-        unowned var selected_files = content.dir_view.get_selected_files ();
+        unowned var selected_files = chooser.content.get_selected_files ();
         var return_list = new SList<string> ();
         if (selected_files != null) {
             foreach (File file in selected_files) {
@@ -599,10 +612,12 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     public string[] get_uris () {
         string[] uris = {};
 
-        unowned var selection = content.dir_view.get_selected_files ();
-        selection.foreach ((file) => {
-            uris += file.uri;
-        });
+        unowned var selection = chooser.content.get_selected_files ();
+        if (selection != null) {
+            selection.foreach ((file) => {
+                uris += file.uri;
+            });
+        }
 
         return uris;
     }
@@ -621,12 +636,12 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         }
     }
 
-    public void set_current_folder (string filename) {
-        try {
-            set_current_folder_uri (filename);
-        } catch (Error e) {
-            set_current_folder_uri (Environment.get_home_dir ());
-        }
+    public void set_current_folder (GLib.File folder) {
+        // try {
+            set_current_folder_uri (folder.get_uri ());
+        // } catch (Error e) {
+        //     set_current_folder_uri (Environment.get_home_dir ());
+        // }
     }
 
     public SList<unowned Gtk.FileFilter> list_filters () {
