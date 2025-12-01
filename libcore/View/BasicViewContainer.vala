@@ -288,6 +288,8 @@ namespace Files {
             view.selection_changed.connect (on_slot_selection_changed);
             view.directory_loaded.connect (on_slot_directory_loaded);
 
+            load_directory ();
+
             show_all ();
 
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
@@ -314,7 +316,7 @@ namespace Files {
              * to have received a change mode instruction */
             set_active_state (true);
             /* Do not update top menu (or record uri) unless folder loads successfully */
-            load_directory ();
+            // load_directory ();
 
         }
 

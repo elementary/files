@@ -229,6 +229,7 @@ public class Files.BasicWindow : Gtk.Box {
 
         // present ();
         warning ("donw construct BasicWindow");
+        show_all ();
     }
 
     private void build_window () {
@@ -641,30 +642,34 @@ public class Files.BasicWindow : Gtk.Box {
 
     // Alway operates on (or creates) this.content
     public bool set_location (
-        GLib.File _location,
+        GLib.File? _location,
         ViewMode mode) {
 warning ("BW set location");
             GLib.File location;
             GLib.FileType ftype;
 
-            // For simplicity we do not use cancellable. If issues arise may need to do this.
-            try {
-                var info = _location.query_info (
-                    FileAttribute.STANDARD_TYPE,
-                    FileQueryInfoFlags.NONE
-                );
-
-                ftype = info.get_file_type ();
-            } catch (Error e) {
-                warning ("No info for requested location - abandon loading");
-                return false;
-            }
-
-
-            if (ftype == FileType.REGULAR) {
-                location = _location.get_parent ();
+            if (_location == null) {
+                location = this.default_location;
             } else {
-                location = _location.dup ();
+            // For simplicity we do not use cancellable. If issues arise may need to do this.
+                try {
+                    var info = _location.query_info (
+                        FileAttribute.STANDARD_TYPE,
+                        FileQueryInfoFlags.NONE
+                    );
+
+                    ftype = info.get_file_type ();
+                } catch (Error e) {
+                    warning ("No info for requested location - abandon loading");
+                    return false;
+                }
+
+
+                if (ftype == FileType.REGULAR) {
+                    location = _location.get_parent ();
+                } else {
+                    location = _location.dup ();
+                }
             }
 
             if (!location.equal (_location)) {
@@ -751,6 +756,7 @@ warning ("BW set location");
         //     critical ("WINDOW: connect to null content");
         // }
         // content.loading.connect (update_labels);
+        warning ("connected loading");
         content.loading.connect (on_content_loading);
         // content.active.connect (update_headerbar);
     }
@@ -776,10 +782,12 @@ warning ("BW set location");
         // tab_view.get_page (content).loading = is_loading;
 
         // check_for_tabs_with_same_name ();
+        warning  ("on content loading %s", is_loading.to_string ());
         if (!is_loading) {
             // update_headerbar ();
             headerbar.set_back_menu (content.get_go_back_path_list (), content.can_go_back);
             headerbar.set_forward_menu (content.get_go_forward_path_list (), content.can_go_forward);
+            headerbar.update_location_bar (uri, true);
         }
 
         // if (restoring_tabs == 0 && !is_loading) {

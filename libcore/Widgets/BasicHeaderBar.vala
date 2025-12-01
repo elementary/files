@@ -62,6 +62,8 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
                 return Source.REMOVE;
             });
         });
+
+        show_all ();
     }
 
     public void set_back_menu (Gee.List<string> path_list, bool can_go_back) {

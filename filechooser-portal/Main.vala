@@ -100,7 +100,7 @@ public class Files.FileChooserPortal : Object {
 
         var directory = "directory" in options && options["directory"].get_boolean ();
 
-        var dialog = new FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title) {
+        var dialog = new FileChooserDialog (Gtk.FileChooserAction.OPEN, parent_window, title) {
             accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
         };
 

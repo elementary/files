@@ -102,6 +102,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         modal = true;
         use_header_bar = 1; // Stop native action area showing as action widgets are put in content area
         set_default_size (600, 400);
+        resizable = true;
         chooser = new BasicWindow ();
         get_content_area ().add (chooser);
         // previous_paths = new Queue<string> ();
@@ -347,11 +348,11 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
         set_current_folder_uri (settings.get_string ("last-folder-uri"));
 
-        // show_all ();
+        show_all ();
         warning ("done construct FilesDialog");
     }
 
-    public bool set_initial_location (GLib.File loc) {
+    public bool set_initial_location (GLib.File? loc) {
         return chooser.set_location (loc, ViewMode.LIST); //TODO Make setting and implement other modes
     }
 
@@ -515,6 +516,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         if (filter_list.search<string> (name, (a, b) => strcmp (a.get_filter_name (), b)) == null) {
             //TODO filter the view;
             filter_box.append (name, name);
+            filter_box.visible = true;
             filter_list.append (new_filter);
             filter = new_filter;
         }
@@ -540,18 +542,18 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         return true;
     }
 
-    public void save_and_unregister () {
-    // public override void dispose () {
+    // public void save_and_unregister () {
+    public override void dispose () {
         int w, h;
         get_size (out w, out h);
         settings.set_string ("last-folder-uri", get_current_folder_uri ());
         settings.set ("window-size", "(ii)", w, h);
 
-        // if (register_id != 0 && dbus_connection != null) {
+        if (register_id != 0 && dbus_connection != null) {
             dbus_connection.unregister_object (register_id);
-        // }
+        }
 
-        // base.dispose ();
+        base.dispose ();
     }
 
     public GLib.File? get_file () {
