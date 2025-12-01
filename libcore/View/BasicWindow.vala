@@ -21,10 +21,10 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.BasicWindow : Hdy.ApplicationWindow {
+public class Files.BasicWindow : Gtk.Box {
     // static uint window_id = 0;
 
-    const GLib.ActionEntry [] WIN_ENTRIES = {
+    // const GLib.ActionEntry [] WIN_ENTRIES = {
     //     // {"new-window", action_new_window},
     //     // {"refresh", action_reload},
     //     // {"undo", action_undo},
@@ -35,7 +35,7 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
     //     // {"tab", action_tab, "s"},
     //     {"go-to", action_go_to, "s"},
     //     {"zoom", action_zoom, "s"},
-        {"view-mode", action_view_mode, "u", "0" },
+        // {"view-mode", action_view_mode, "u", "0" },
     //     {"show-hidden", null, null, "false", change_state_show_hidden},
     //     {"singleclick-select", null, null, "false", change_state_single_click_select},
     //     {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
@@ -43,10 +43,10 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
     //     // {"tabhistory-restore", action_tabhistory_restore, "s" },
     //     {"folders-before-files", null, null, "true", change_state_folders_before_files},
     //     // {"restore-tabs-on-startup", null, null, "true", change_state_restore_tabs_on_startup},
-        {"forward", action_forward, "i"},
-        {"back", action_back, "i"},
+        // {"forward", action_forward, "i"},
+        // {"back", action_back, "i"},
     //     {"focus-sidebar", action_focus_sidebar}
-    };
+    // };
 
     // public uint window_number { get; construct; }
 
@@ -56,7 +56,8 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
     //     }
     // }
 
-    protected BasicViewContainer? content { get; private set; }
+    public string title { get; private set; default = "";}
+    private BasicViewContainer? content { get; private set; }
 
     public ViewMode default_mode {
         get {
@@ -70,18 +71,20 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         }
     }
 
+    public GLib.File? location { get; set construct; default = null; }
     // public Gtk.Builder ui;
     // public Files.Application marlin_app { get; construct; }
     // private unowned UndoManager undo_manager;
-    public Hdy.HeaderBar headerbar;
+    public Files.BasicHeaderBar headerbar;
+    // public Hdy.HeaderBar headerbar;
     // public ViewSwitcher view_switcher;
     // public Hdy.TabView tab_view;
     // public Hdy.TabBar tab_bar;
     private Gtk.Paned lside_pane;
     public SidebarInterface sidebar;
-    private ButtonWithMenu button_forward;
-    private ButtonWithMenu button_back;
-    private BasicLocationBar? location_bar;
+    // private ButtonWithMenu button_forward;
+    // private ButtonWithMenu button_back;
+    // private BasicLocationBar? location_bar;
     private Gtk.Box extra_widget_box;
     // private Gtk.MenuButton tab_history_button;
 
@@ -92,10 +95,13 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
 
     private Gtk.EventControllerKey key_controller; //[Gtk3] Does not work unless we keep this ref
 
-    public signal void loading_uri (string location);
+    // public signal void loading_uri (string location);
     public signal void folder_deleted (GLib.File location);
     public signal void free_space_change ();
 
+    public BasicWindow (GLib.File? initial_location = null) {
+        create_content.begin (initial_location, default_mode);
+    }
     // public Window (Files.Application _application) {
     //     Object (
     //         application: (Gtk.Application)_application,
@@ -104,17 +110,17 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
     //     );
     // }
 
-    static construct {
-        Hdy.init ();
-    }
+    // static construct {
+    //     Hdy.init ();
+    // }
 
     construct {
-        height_request = 300;
-        width_request = 500;
-        icon_name = "system-file-manager";
-        title = _("Elementary File Chooser");
+        // height_request = 300;
+        // width_request = 500;
+        // icon_name = "system-file-manager";
+        title = _("Elementary File Browser Widget");
 
-        add_action_entries (WIN_ENTRIES, this);
+        // add_action_entries (WIN_ENTRIES, this);
         // undo_actions_set_insensitive ();
 
         // undo_manager = UndoManager.instance ();
@@ -160,12 +166,46 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         //     marlin_app.set_accels_for_action ("win.focus-sidebar", {"<Ctrl>Left"});
         // }
 
-        build_window ();
+        // build_window ();
+        headerbar = new Files.BasicHeaderBar ();
+        sidebar = new Sidebar.BasicSidebarWindow ();
+        // free_space_change.connect (sidebar.on_free_space_change);
+        content = new BasicViewContainer ();
 
-        int width, height;
-        Files.app_settings.get ("window-size", "(ii)", out width, out height);
-        default_width = width;
-        default_height = height;
+        lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+            expand = true,
+            position = Files.app_settings.get_int ("sidebar-width")
+        };
+        lside_pane.pack1 (sidebar, false, false);
+        lside_pane.pack2 (content, true, true);
+
+        // extra_widget_box = new Gtk.Box (HORIZONTAL, 0);
+        var main_grid = new Gtk.Grid ();
+        main_grid.attach (headerbar, 0, 0, 1, 1);
+        main_grid.attach (lside_pane, 0, 1, 1, 1);
+        // main_grid.attach (extra_widget_box, 0, 2, 1, 1);
+        main_grid.show_all ();
+
+        add (main_grid);
+        /** Apply preferences */
+        var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
+
+        headerbar.path_change_request.connect (content.on_path_change_request);
+
+        sidebar.request_focus.connect (() => {
+            // return !content.locked_focus && !locked_focus; //NOT USED???
+        });
+
+        sidebar.sync_needed.connect (() => {
+            // loading_uri (content.uri);  // NOT USED????
+        });
+
+        sidebar.path_change_request.connect (content.on_path_change_request);
+
+        // int width, height;
+        // Files.app_settings.get ("window-size", "(ii)", out width, out height);
+        // default_width = width;
+        // default_height = height;
 
         // if (is_first_window) {
         //     Files.app_settings.bind ("sidebar-width", lside_pane,
@@ -177,27 +217,27 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         //     }
         // }
 
-        loading_uri.connect (update_labels);
-        present ();
+
+        // present ();
     }
 
     private void build_window () {
-        button_back = new ButtonWithMenu ("go-previous-symbolic");
+        // button_back = new ButtonWithMenu ("go-previous-symbolic");
 
-        button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
-        button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        // button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
+        // button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
-        button_forward = new ButtonWithMenu ("go-next-symbolic");
+        // button_forward = new ButtonWithMenu ("go-next-symbolic");
 
-        button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
-        button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        // button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
+        // button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         // view_switcher = new ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
         //     margin_end = 20
         // };
         // view_switcher.set_mode (Files.app_settings.get_enum ("default-viewmode"));
 
-        location_bar = new BasicLocationBar ();
+        // location_bar = new BasicLocationBar ();
 
         // var app_menu = new AppMenu ();
 
@@ -207,15 +247,16 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         //     tooltip_text = _("Menu")
         // };
 
-        var title = new Gtk.Box (HORIZONTAL, 0) { hexpand = false };
-        headerbar = new Hdy.HeaderBar () {
-            show_close_button = true,
-            custom_title = location_bar,
-            centering_policy = LOOSE
-        };
+        // var title = new Gtk.Box (HORIZONTAL, 0) { hexpand = false };
+        // headerbar = new Files.HeaderBar ();
+        // headerbar = new Hdy.HeaderBar () {
+        //     show_close_button = true,
+        //     custom_title = location_bar,
+        //     centering_policy = LOOSE
+        // };
 
-        headerbar.pack_start (button_back);
-        headerbar.pack_start (button_forward);
+        // headerbar.pack_start (button_back);
+        // headerbar.pack_start (button_forward);
         // headerbar.pack_start (view_switcher);
         // headerbar.pack_start (location_bar);
         // headerbar.pack_end (menu_button);
@@ -254,31 +295,31 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         // tab_box.add (tab_bar);
         // tab_box.add (tab_view);
 
-        sidebar = new Sidebar.BasicSidebarWindow ();
-        free_space_change.connect (sidebar.on_free_space_change);
+        // sidebar = new Sidebar.BasicSidebarWindow ();
+        // free_space_change.connect (sidebar.on_free_space_change);
 
-        content = new BasicViewContainer ();
-        content.add_view (LIST, default_location);
-        content.window = this;
+        // content = new BasicViewContainer ();
+        // content.add_view (LIST, default_location);
+        // content.window = this;
 
-        lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-            expand = true,
-            position = Files.app_settings.get_int ("sidebar-width")
-        };
-        lside_pane.pack1 (sidebar, false, false);
-        lside_pane.pack2 (content, true, true);
+        // lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+        //     expand = true,
+        //     position = Files.app_settings.get_int ("sidebar-width")
+        // };
+        // lside_pane.pack1 (sidebar, false, false);
+        // lside_pane.pack2 (content, true, true);
 
-        extra_widget_box = new Gtk.Box (HORIZONTAL, 0);
-        var main_grid = new Gtk.Grid ();
-        main_grid.attach (headerbar, 0, 0, 1, 1);
-        main_grid.attach (lside_pane, 0, 1, 1, 1);
-        main_grid.attach (extra_widget_box, 0, 2, 1, 1);
-        main_grid.show_all ();
+        // extra_widget_box = new Gtk.Box (HORIZONTAL, 0);
+        // var main_grid = new Gtk.Grid ();
+        // main_grid.attach (headerbar, 0, 0, 1, 1);
+        // main_grid.attach (lside_pane, 0, 1, 1, 1);
+        // main_grid.attach (extra_widget_box, 0, 2, 1, 1);
+        // main_grid.show_all ();
 
-        add (main_grid);
+        // add (main_grid);
 
         /** Apply preferences */
-        var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
+        // var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
         // get_action ("show-hidden").set_state (prefs.show_hidden_files);
         // get_action ("show-local-thumbnails").set_state (prefs.show_local_thumbnails);
         // get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
@@ -308,40 +349,41 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         // });
 
 
-        button_forward.slow_press.connect (() => {
-            get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
-        });
+        // button_forward.slow_press.connect (() => {
+        //     get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
+        // });
 
-        button_back.slow_press.connect (() => {
-            get_action_group ("win").activate_action ("back", new Variant.int32 (1));
-        });
+        // button_back.slow_press.connect (() => {
+        //     get_action_group ("win").activate_action ("back", new Variant.int32 (1));
+        // });
 
         // location_bar.escape.connect (grab_focus);
 
-        location_bar.path_change_request.connect ((path, flag) => {
-            content.is_frozen = false;
-            // Put in an Idle so that any resulting authentication dialog
-            // is able to grab focus *after* the view does
-            Idle.add (() => {
-                uri_path_change_request (path, flag);
-                return Source.REMOVE;
-            });
-        });
+        // location_bar.path_change_request.connect ((path, flag) => {
+        //     content.is_frozen = false;
+        //     // Put in an Idle so that any resulting authentication dialog
+        //     // is able to grab focus *after* the view does
+        //     Idle.add (() => {
+        //         uri_path_change_request (path, flag);
+        //         return Source.REMOVE;
+        //     });
+        // });
 
         // location_bar.path_change_request.connect ((path) => {
         //     content.focus_location_if_in_current_directory (GLib.File.new_for_path (path), true);
         // });
 
-        headerbar.focus_in_event.connect ((event) => {
-            locked_focus = true;
-            return focus_in_event (event);
-        });
+        // headerbar.focus_in_event.connect ((event) => {
+        //     locked_focus = true;
+        //     return focus_in_event (event);
+        // });
 
-        headerbar.focus_out_event.connect ((event) => {
-            locked_focus = false;
-            return focus_out_event (event);
-        });
+        // headerbar.focus_out_event.connect ((event) => {
+        //     locked_focus = false;
+        //     return focus_out_event (event);
+        // });
 
+        // headerbar.uri_path_change_reuest.connect (content.on_path_change_request);
         // undo_manager.request_menu_update.connect (update_undo_actions);
 
         // key_controller = new Gtk.EventControllerKey (this) {
@@ -380,10 +422,10 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         //     return false;
         // });
 
-        delete_event.connect (() => {
-            quit ();
-            return false;
-        });
+        // delete_event.connect (() => {
+        //     quit ();
+        //     return false;
+        // });
 
         // tab_view.setup_menu.connect (tab_view_setup_menu);
 
@@ -401,23 +443,21 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         // });
 
 
-        sidebar.request_focus.connect (() => {
-            return !content.locked_focus && !locked_focus;
-        });
+        // sidebar.request_focus.connect (() => {
+        //     return !content.locked_focus && !locked_focus;
+        // });
 
-        sidebar.sync_needed.connect (() => {
-            loading_uri (content.uri);
-        });
+        // sidebar.sync_needed.connect (() => {
+        //     loading_uri (content.uri);
+        // });
 
-        sidebar.path_change_request.connect ((loc) => {
-            uri_path_change_request (loc);
-        });
+        // sidebar.path_change_request.connect (content.on_path_change_request);
     }
 
-    public void add_extra_widget (Gtk.Widget widget) {
-        extra_widget_box.add (widget);
-        extra_widget_box.show_all ();
-    }
+    // public void add_extra_widget (Gtk.Widget widget) {
+    //     extra_widget_box.add (widget);
+    //     extra_widget_box.show_all ();
+    // }
 
     // private bool tab_view_close_page (Hdy.TabPage page) {
     //     var view_container = (BasicViewContainer) page.child;
@@ -530,9 +570,9 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         // });
     // }
 
-    public new void set_title (string title) {
-        this.title = title;
-    }
+    // public void set_title (string title) {
+    //     this.title = title;
+    // }
 
     // private void change_tab () {
     //     //Ignore if some restored tabs still loading
@@ -582,72 +622,113 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
     //     }
     // }
 
-    // private async bool add_tab (
+    // Alway operates on (or creates) this.content
+    private async bool create_content (
+        GLib.File _location,
+        ViewMode mode) {
+
+            GLib.File location;
+            GLib.FileType ftype;
+
+            // For simplicity we do not use cancellable. If issues arise may need to do this.
+            try {
+                var info = yield _location.query_info_async (
+                    FileAttribute.STANDARD_TYPE,
+                    FileQueryInfoFlags.NONE
+                );
+
+                ftype = info.get_file_type ();
+            } catch (Error e) {
+                debug ("No info for requested location - abandon loading");
+                return false;
+            }
+
+
+            if (ftype == FileType.REGULAR) {
+                location = _location.get_parent ();
+            } else {
+                location = _location.dup ();
+            }
+
+            if (content == null) {
+                content = new BasicViewContainer ();
+            }
+
+            if (!location.equal (_location)) {
+                content.add_view (mode, location, {_location});
+            } else {
+                content.add_view (mode, location);
+            }
+
+            connect_content_signals (content);
+
+            return true;
+    }
+
+    // public  async bool add_tab (
     //     GLib.File _location = default_location,
     //     ViewMode mode = default_mode,
     //     bool ignore_duplicate
     // ) {
 
     // warning ("WINDOW: Add tab");
-    //     // Do not try to restore locations that we cannot determine the filetype. This will
-    //     // include deleted and other non-existent locations.  Note however, that disconnected remote
-    //     // location may still give correct result, presumably due to caching by gvfs, so such
-    //     // locations will still attempt to load.  Files.Directory must handle that.
+        // Do not try to restore locations that we cannot determine the filetype. This will
+        // include deleted and other non-existent locations.  Note however, that disconnected remote
+        // location may still give correct result, presumably due to caching by gvfs, so such
+        // locations will still attempt to load.  Files.Directory must handle that.
 
-    //     GLib.File location;
-    //     GLib.FileType ftype;
-    //     // For simplicity we do not use cancellable. If issues arise may need to do this.
-    //     try {
-    //         var info = yield _location.query_info_async (
-    //             FileAttribute.STANDARD_TYPE,
-    //             FileQueryInfoFlags.NONE
-    //         );
+        // GLib.File location;
+        // GLib.FileType ftype;
+        // // For simplicity we do not use cancellable. If issues arise may need to do this.
+        // try {
+        //     var info = yield _location.query_info_async (
+        //         FileAttribute.STANDARD_TYPE,
+        //         FileQueryInfoFlags.NONE
+        //     );
 
-    //         ftype = info.get_file_type ();
-    //     } catch (Error e) {
-    //         debug ("No info for requested location - abandon loading");
-    //         return false;
-    //     }
+        //     ftype = info.get_file_type ();
+        // } catch (Error e) {
+        //     debug ("No info for requested location - abandon loading");
+        //     return false;
+        // }
 
 
-    //     if (ftype == FileType.REGULAR) {
-    //         location = _location.get_parent ();
-    //     } else {
-    //         location = _location.dup ();
-    //     }
+        // if (ftype == FileType.REGULAR) {
+        //     location = _location.get_parent ();
+        // } else {
+        //     location = _location.dup ();
+        // }
 
-    //     // if (ignore_duplicate) {
-    //     //     bool is_child;
-    //     //     var existing_tab_position = location_is_duplicate (
-    //     //         location,
-    //     //         ftype == FileType.DIRECTORY,
-    //     //         out is_child
-    //     //     );
+        // if (ignore_duplicate) {
+        //     bool is_child;
+        //     var existing_tab_position = location_is_duplicate (
+        //         location,
+        //         ftype == FileType.DIRECTORY,
+        //         out is_child
+        //     );
 
-    //     //     if (existing_tab_position >= 0) {
-    //     //         tab_view.selected_page = tab_view.get_nth_page (existing_tab_position);
-    //     //         if (is_child) {
-    //     //             /* Select the child  */
-    //     //             content.focus_location_if_in_current_directory (_location);
-    //     //         }
+        //     if (existing_tab_position >= 0) {
+        //         tab_view.selected_page = tab_view.get_nth_page (existing_tab_position);
+        //         if (is_child) {
+        //             /* Select the child  */
+        //             content.focus_location_if_in_current_directory (_location);
+        //         }
 
-    //     //         return false;
-    //     //     }
-    //     // }
+        //         return false;
+        //     }
+        // }
 
-    //     // mode = real_mode (mode);
-    //     // var content = new View.BasicViewContainer ();
+        // mode = real_mode (mode);
+        // var content = new View.BasicViewContainer ();
 
-    //     if (!location.equal (_location)) {
-    //         content.add_view (mode, location, {_location});
-    //     } else {
-    //         content.add_view (mode, location);
-    //     }
+        // if (!location.equal (_location)) {
+        //     content.add_view (mode, location, {_location});
+        // } else {
+        //     content.add_view (mode, location);
+        // }
 
-    //     // var page = tab_view.append (content);
-    //     // tab_view.selected_page = page;
-
-    //     connect_content_signals (content);
+        // var page = tab_view.append (content);
+        // tab_view.selected_page = page;
 
     //     return true;
     // }
@@ -655,9 +736,10 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
     // Called by content when associated with tab view.
     public void connect_content_signals (BasicViewContainer content) {
         // content.tab_name_changed.connect (check_for_tabs_with_same_name);
-        if (content == null) {
-            critical ("WINDOW: connect to null content");
-        }
+        // if (content == null) {
+        //     critical ("WINDOW: connect to null content");
+        // }
+        // content.loading.connect (update_labels);
         content.loading.connect (on_content_loading);
         // content.active.connect (update_headerbar);
     }
@@ -668,7 +750,7 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         // content.active.disconnect (update_headerbar);
     }
 
-    private void on_content_loading (BasicViewContainer content, bool is_loading) {
+    private void on_content_loading (BasicViewContainer content, string uri, bool is_loading) {
         // if (restoring_tabs > 0 && !is_loading) {
         //     restoring_tabs--;
         //     /* Each restored tab must signal with is_loading false once */
@@ -683,7 +765,9 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         // tab_view.get_page (content).loading = is_loading;
 
         // check_for_tabs_with_same_name ();
-        update_headerbar ();
+        if (!is_loading) {
+            update_headerbar ();
+        }
 
         // if (restoring_tabs == 0 && !is_loading) {
         //     save_tabs ();
@@ -849,9 +933,9 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
     //     action.set_enabled (undo_manager.can_redo ());
     // }
 
-    private void action_edit_path () {
-        location_bar.enter_navigate_mode ();
-    }
+    // private void action_edit_path () {
+    //     location_bar.enter_navigate_mode ();
+    // }
 
     // private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
     //     /* Note: Duplicate bookmarks will not be created by BookmarkList */
@@ -934,13 +1018,13 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         /* BasicViewContainer takes care of changing appearance */
     }
 
-    private void action_back (SimpleAction action, Variant? param) {
-        content.go_back (param.get_int32 ());
-    }
+    // private void action_back (SimpleAction action, Variant? param) {
+    //     content.go_back (param.get_int32 ());
+    // }
 
-    private void action_forward (SimpleAction action, Variant? param) {
-        content.go_forward (param.get_int32 ());
-    }
+    // private void action_forward (SimpleAction action, Variant? param) {
+    //     content.go_forward (param.get_int32 ());
+    // }
 
     // private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
     //     switch (param.get_string ()) {
@@ -1135,9 +1219,9 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
     // }
 
 
-    public GLib.SimpleAction? get_action (string action_name) {
-        return (GLib.SimpleAction?)(lookup_action (action_name));
-    }
+    // public GLib.SimpleAction? get_action (string action_name) {
+    //     return (GLib.SimpleAction?)(lookup_action (action_name));
+    // }
 
     // private ViewMode real_mode (ViewMode mode) {
     //     switch (mode) {
@@ -1170,7 +1254,7 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         //     ((BasicViewContainer) tab_page.child).close ();
         // }
 
-        // this.destroy ();
+        this.destroy ();
     }
 
     // private void save_geometries () {
@@ -1380,10 +1464,10 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         }
 
         /* Update browser buttons */
-        set_back_menu (content.get_go_back_path_list ());
-        set_forward_menu (content.get_go_forward_path_list ());
-        button_back.sensitive = content.can_go_back;
-        button_forward.sensitive = (content.can_show_folder && content.can_go_forward);
+        headerbar.set_back_menu (content.get_go_back_path_list (), content.can_go_back);
+        headerbar.set_forward_menu (content.get_go_forward_path_list (), content.can_go_forward);
+        // headerbar.button_back.sensitive = content.can_go_back;
+        // headerbar.button_forward.sensitive = (content.can_show_folder && content.can_go_forward);
 
         /* Update viewmode switch, action state and settings */
         // var mode = content.view_mode;
@@ -1393,48 +1477,51 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
         // Files.app_settings.set_enum ("default-viewmode", mode);
     }
 
-    private void set_back_menu (Gee.List<string> path_list) {
-        /* Clear the back menu and re-add the correct entries. */
-        var back_menu = new Menu ();
-        for (int i = 0; i < path_list.size; i++) {
-            var path = path_list.@get (i);
-            var item = new MenuItem (
-                FileUtils.sanitize_path (path, null, false),
-                Action.print_detailed_name ("win.back", new Variant.int32 (i + 1))
-            );
-            back_menu.append_item (item);
-        }
+    // private void set_back_menu (Gee.List<string> path_list) {
+    //     /* Clear the back menu and re-add the correct entries. */
+    //     var back_menu = new Menu ();
+    //     for (int i = 0; i < path_list.size; i++) {
+    //         var path = path_list.@get (i);
+    //         var item = new MenuItem (
+    //             FileUtils.sanitize_path (path, null, false),
+    //             Action.print_detailed_name ("win.back", new Variant.int32 (i + 1))
+    //         );
+    //         back_menu.append_item (item);
+    //     }
 
-        button_back.menu = back_menu;
-    }
+    //     button_back.menu = back_menu;
+    // }
 
-    private void set_forward_menu (Gee.List<string> path_list) {
-        /* Same for the forward menu */
-        var forward_menu = new Menu ();
-        for (int i = 0; i < path_list.size; i++) {
-            var path = path_list.@get (i);
-            var item = new MenuItem (
-                FileUtils.sanitize_path (path, null, false),
-                Action.print_detailed_name ("win.forward", new Variant.int32 (i + 1))
-            );
-            forward_menu.append_item (item);
-        }
+    // private void set_forward_menu (Gee.List<string> path_list) {
+    //     /* Same for the forward menu */
+    //     var forward_menu = new Menu ();
+    //     for (int i = 0; i < path_list.size; i++) {
+    //         var path = path_list.@get (i);
+    //         var item = new MenuItem (
+    //             FileUtils.sanitize_path (path, null, false),
+    //             Action.print_detailed_name ("win.forward", new Variant.int32 (i + 1))
+    //         );
+    //         forward_menu.append_item (item);
+    //     }
 
-        button_forward.menu = forward_menu;
-    }
+    //     button_forward.menu = forward_menu;
+    // }
 
-    private void update_location_bar (string new_path, bool with_animation = true) {
-        location_bar.with_animation = with_animation;
-        location_bar.set_display_path (new_path);
-        location_bar.with_animation = true;
-    }
+    // private void update_location_bar (string new_path, bool with_animation = true) {
+    //     location_bar.with_animation = with_animation;
+    //     location_bar.set_display_path (new_path);
+    //     location_bar.with_animation = true;
+    // }
 
-    private void update_labels (string uri) {
-        if (content != null) { /* Can happen during restore */
-            set_title (content.tab_name); /* Not actually visible on elementaryos */
-            update_location_bar (uri);
+    private void update_labels (string uri, bool is_loading) {
+    // private void update_labels (string uri) {
+        // if (content != null) { /* Can happen during restore */
+        if (is_loading) {
+            this.title = content.tab_name; /* Not actually visible on elementaryos */
+            headerbar.update_location_bar (uri);
             sidebar.sync_uri (uri);
         }
+        // }
     }
 
     // public void mount_removed (Mount mount) {
@@ -1455,26 +1542,27 @@ public class Files.BasicWindow : Hdy.ApplicationWindow {
     //     }
     // }
 
-    public void uri_path_change_request (string p, Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
-        /* Make a sanitized file from the uri */
-        var file = get_file_from_uri (p);
-        if (file != null) {
-            // switch (flag) {
-                // case Files.OpenFlag.NEW_TAB:
-                    // add_tab.begin (file, content.view_mode, false);
-                    // break;
-                // case Files.OpenFlag.NEW_WINDOW:
-                    // add_window (file, content.view_mode);
-                    // break;
-                // default:
-                    grab_focus ();
-                    content.focus_location (file);
-                    // break;
-            // }
-        } else {
-            warning ("Cannot browse %s", p);
-        }
-    }
+    // public void on_uri_path_change_request (string p, Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
+    // public void on_path_change_request (string p, Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
+    //     /* Make a sanitized file from the uri */
+    //     var file = get_file_from_uri (p);
+    //     if (file != null) {
+    //         // switch (flag) {
+    //             // case Files.OpenFlag.NEW_TAB:
+    //                 // add_tab.begin (file, content.view_mode, false);
+    //                 // break;
+    //             // case Files.OpenFlag.NEW_WINDOW:
+    //                 // add_window (file, content.view_mode);
+    //                 // break;
+    //             // default:
+    //                 // grab_focus ();
+    //                 content.focus_location (file);
+    //                 // break;
+    //         // }
+    //     } else {
+    //         warning ("Cannot browse %s", p);
+    //     }
+    // }
 
     /** Use this function to standardise how locations are generated from uris **/
     private GLib.File? get_file_from_uri (string uri) {

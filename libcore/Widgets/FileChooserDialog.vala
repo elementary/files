@@ -8,10 +8,12 @@ public interface Xdp.Request : Object {
     public abstract void close () throws DBusError, IOError;
 }
 
-public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
-    public signal void response (Gtk.ResponseType response);
+public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
+    // public signal void response (Gtk.ResponseType response);
 
     public string? parent_window { get; construct; }
+    public BasicViewContainer content { get; construct; }
+    public Hdy.HeaderBar headerbar;
     public Gtk.FileChooserAction action { get; construct; }
     public bool read_only { get; set; default = false; }
 
@@ -52,7 +54,7 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
             filter_box.set_active_id (value != null ? value.get_filter_name () : null);
             content.dir_view.set_filter (value);
 
-            message_label.label = value != null ? value.to_gvariant ().print (false) : "Null filter";
+            // message_label.label = value != null ? value.to_gvariant ().print (false) : "Null filter";
         }
     }
 
@@ -60,6 +62,7 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
 
     // private Hdy.HeaderBar header;
     // private View.Chrome.BasicLocationBar location_bar;
+    private BasicWindow chooser;
     // private FileChooserWidget chooser;
     // private Gtk.TreeView tree_view;
     // private BasicWindow window;
@@ -71,7 +74,7 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
     private Gtk.Box choices_box;
     private Gtk.Box extra_box;
 
-    private Gtk.Label message_label;
+    public Gtk.Label message_label;
 
     // private Queue<string> previous_paths;
     // private Queue<string> next_paths;
@@ -92,10 +95,14 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
         );
     }
 
+
     construct {
+        Hdy.init ();
+        decorated=false;
         modal = true;
         set_default_size (600, 400);
-        headerbar.decoration_layout = "close:";
+        chooser = new BasicWindow ();
+        get_content_area ().add (chooser);
         // previous_paths = new Queue<string> ();
         // next_paths = new Queue<string> ();
         // Hdy.init ();
@@ -138,8 +145,28 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
 
         filter_box = new Gtk.ComboBoxText ();
 
-        extra_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+        extra_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
+            hexpand = true,
+            halign = START,
+            margin = 6
+        };
         extra_box.pack_start (filter_box);
+        if (action == SAVE) {
+            entry = new Gtk.Entry () {
+                placeholder_text = _("Enter name of file to save"),
+                width_chars = 50,
+                input_purpose = URL
+            };
+
+            var entry_label = new Gtk.Label (_("Name:")) {
+                hexpand = false,
+                halign = CENTER
+            };
+            entry_label.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
+
+            extra_box.add (entry_label);
+            extra_box.add (entry);
+        }
 
         if (action == Gtk.FileChooserAction.OPEN) {
             var read_only_check = new Gtk.CheckButton.with_label (
@@ -162,10 +189,11 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
             margin = 6
         };
 
-        action_box.pack_start (cancel_button);
-        action_box.pack_start (accept_button);
-        action_box.pack_start (extra_box);
-        action_box.set_child_secondary (extra_box, true);
+        // action_box.pack_start (extra_box);
+        // action_box.set_child_secondary (extra_box, true);
+        action_box.pack_end (cancel_button);
+        action_box.pack_end (accept_button);
+
 
         choices_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12) {
             halign = Gtk.Align.START,
@@ -180,10 +208,12 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
         // grid.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
         grid.add (message_label);
         grid.add (choices_box);
+        grid.add (extra_box);
         grid.add (action_box);
         grid.show_all ();
 
-        add_extra_widget (grid);
+        get_content_area ().add (grid);
+        // add_extra_widget (grid);
 
         // setup_chooser ();
 
@@ -214,6 +244,12 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
 
             if (choices_box.get_children ().length () == 0) {
                 choices_box.visible = false;
+            }
+
+            if (action == Gtk.FileChooserAction.SAVE) {
+                entry.grab_focus ();
+            } else {
+                grab_focus ();
             }
         });
 
@@ -311,11 +347,7 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
 
         set_current_folder_uri (settings.get_string ("last-folder-uri"));
 
-        if (action == Gtk.FileChooserAction.SAVE) {
-            entry.grab_focus ();
-        } else {
-            grab_focus ();
-        }
+        show_all ();
     }
 
     private void activate_selected_items () {
@@ -438,9 +470,9 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
         return base.key_press_event (event);
     }
 
-    protected override void quit () {
-        response (Gtk.ResponseType.DELETE_EVENT);
-    }
+    // protected override void quit () {
+    //     response (Gtk.ResponseType.DELETE_EVENT);
+    // }
 
     protected override void show () {
         base.show ();
@@ -503,17 +535,18 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
         return true;
     }
 
-    public override void dispose () {
+    public void save_and_unregister () {
+    // public override void dispose () {
         int w, h;
         get_size (out w, out h);
         settings.set_string ("last-folder-uri", get_current_folder_uri ());
         settings.set ("window-size", "(ii)", w, h);
 
-        if (register_id != 0 && dbus_connection != null) {
+        // if (register_id != 0 && dbus_connection != null) {
             dbus_connection.unregister_object (register_id);
-        }
+        // }
 
-        base.dispose ();
+        // base.dispose ();
     }
 
     public GLib.File? get_file () {
@@ -575,15 +608,17 @@ public class Files.FileChooserDialog : Files.BasicWindow, Xdp.Request {
     }
 
     public void set_uri (string uri) {
-        uri_path_change_request (uri);
+        // uri_path_change_request (uri);
     }
 
     public void set_current_folder_uri (string uri) {
-        uri_path_change_request (uri);
+        // uri_path_change_request (uri);
     }
 
     public void set_current_name (string text) {
-        set_current_name (text);
+        if (action == SAVE) {
+            entry.text = text;
+        }
     }
 
     public void set_current_folder (string filename) {

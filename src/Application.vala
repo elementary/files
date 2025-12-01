@@ -214,23 +214,32 @@ warning ("present file chooser finished");
         var dialog = new FileChooserDialog (action, "", "Test");
         dialog.modal = true;
         dialog.select_multiple = false;
-        dialog.accept_label = "Test Open";
-        var filter = new Gtk.FileFilter ();
-        filter.add_pattern ("*.txt");
-        filter.add_pattern ("*.pdf");
-        filter.add_pattern ("*.doc");
-        filter.set_filter_name ("TestGlob");
-        dialog.add_filter (filter);
+        dialog.accept_label = action.to_string ();
+        var filter1 = new Gtk.FileFilter ();
+        filter1.add_pattern ("*.txt");
+        filter1.add_pattern ("*.pdf");
+        filter1.add_pattern ("*.doc");
+        filter1.set_filter_name ("TestGlob");
+        dialog.add_filter (filter1);
 
-        filter = new Gtk.FileFilter ();
-        filter.add_pattern ("*.*");
-        filter.set_filter_name ("All Files");
-        dialog.add_filter (filter);
+        var filter2 = new Gtk.FileFilter ();
+        filter2.add_pattern ("*.*");
+        filter2.set_filter_name ("All Files");
+        dialog.add_filter (filter2);
 
-        filter = new Gtk.FileFilter ();
-        filter.add_mime_type ("text/*");
-        filter.set_filter_name ("TestMime");
-        dialog.add_filter (filter);
+        var filter3 = new Gtk.FileFilter ();
+        filter3.add_mime_type ("text/*");
+        filter3.set_filter_name ("TestMime");
+        dialog.add_filter (filter3);
+
+        dialog.filter = filter1;
+
+        if (action == SAVE) {
+            dialog.set_current_name ("Untitled Doc");
+            dialog.set_current_folder ("/home/jeremy/Documents");
+            dialog.set_uri ("/home/jeremy/Documents/TestDoc.txt");
+        }
+
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
         dialog.response.connect ((id) => {

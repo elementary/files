@@ -2,6 +2,7 @@ libexec_dir = join_paths(get_option('prefix'), get_option ('libexecdir'))
 
 executable(
     'io.elementary.files.xdg-desktop-portal',
+    #Moved to libcore for testing
     # 'ExternalWindow.vala',
     # 'FileChooserChoice.vala',
     # 'FileChooserDialog.vala',

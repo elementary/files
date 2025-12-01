@@ -34,13 +34,13 @@ namespace Files {
 
             set {
                 if (_window != null) {
-                    disconnect_window_signals ();
+                    // disconnect_window_signals ();
                 }
 
                 _window = value;
                 // _window.folder_deleted.connect (on_folder_deleted);
-                _window.connect_content_signals (this);
-                _window.loading_uri (slot.location.get_uri ());
+                // _window.connect_content_signals (this);
+                // _window.loading_uri (slot.location.get_uri ());
                 load_directory ();
             }
         }
@@ -145,14 +145,14 @@ namespace Files {
         private Gtk.GestureMultiPress button_controller;
 
         public signal void tab_name_changed (string tab_name);
-        public signal void loading (bool is_loading);
+        public signal void loading (string uri, bool is_loading);
         public signal void active ();
 
         /* Initial location now set by Window.make_tab after connecting signals.
          * Window property set when tab is attached to a tab_view (See Window.vala) */
         construct {
             browser = new BasicBrowser ();
-            loading.connect ((loading) => {
+            loading.connect ((uri, loading) => {
                 is_loading = loading;
             });
 
@@ -227,6 +227,27 @@ namespace Files {
             }
         }
 
+        public void on_path_change_request (string p, Files.OpenFlag flag = DEFAULT) {
+            /* Make a sanitized file from the uri */
+            var file = FileUtils.get_file_for_path (p);
+            if (file != null) {
+                // switch (flag) {
+                    // case Files.OpenFlag.NEW_TAB:
+                        // add_tab.begin (file, content.view_mode, false);
+                        // break;
+                    // case Files.OpenFlag.NEW_WINDOW:
+                        // add_window (file, content.view_mode);
+                        // break;
+                    // default:
+                        // grab_focus ();
+                        focus_location (file);
+                        // break;
+                // }
+            } else {
+                warning ("Cannot browse %s", p);
+            }
+        }
+
         // the locations in @to_select must be children of @loc
         public void add_view (ViewMode mode, GLib.File loc,  GLib.File[]? to_select = null) {
             view_mode = mode;
@@ -271,7 +292,7 @@ namespace Files {
 
             aslot.close ();
             view_mode = mode;
-            loading (false);
+            // loading (false);
             store_selection ();
             /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
             disconnect_slot_signals (view);
@@ -342,7 +363,7 @@ namespace Files {
             refresh_slot_info (loc);
 
             can_show_folder = false;
-            loading (true);
+            loading (loc.get_uri (), true);
         }
 
         private void refresh_slot_info (GLib.File loc) {
@@ -351,7 +372,8 @@ namespace Files {
                 return;
             }
 
-            window.loading_uri (loc.get_uri ()); /* Updates labels as well */
+            loading (loc.get_uri (), false);
+            // window.loading_uri (loc.get_uri ()); /* Updates labels as well */
             /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
@@ -460,7 +482,7 @@ namespace Files {
                 browser.record_uri (null);
             }
 
-            loading (false); /* Will cause topmenu to update */
+            loading (dir.file.uri, false); /* Will cause topmenu to update */
         }
 
         private void store_selection () {
