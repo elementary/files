@@ -204,6 +204,8 @@ public class Files.BasicWindow : Gtk.Box {
 
         sidebar.path_change_request.connect (content.on_path_change_request);
 
+        headerbar.go_back.connect (content.go_back);
+        headerbar.go_forward.connect (content.go_forward);
         connect_content_signals (content);
         // int width, height;
         // Files.app_settings.get ("window-size", "(ii)", out width, out height);
@@ -758,6 +760,7 @@ warning ("BW set location");
         // content.loading.connect (update_labels);
         warning ("connected loading");
         content.loading.connect (on_content_loading);
+
         // content.active.connect (update_headerbar);
     }
 

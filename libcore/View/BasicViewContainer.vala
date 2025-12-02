@@ -159,6 +159,7 @@ namespace Files {
         public signal void tab_name_changed (string tab_name);
         public signal void loading (string uri, bool is_loading);
         public signal void active ();
+        public signal void file_activated ();
 
         /* Initial location now set by Window.make_tab after connecting signals.
          * Window property set when tab is attached to a tab_view (See Window.vala) */
@@ -181,23 +182,23 @@ namespace Files {
             debug ("BasicViewContainer destruct");
         }
 
-        private void disconnect_window_signals () {
-            if (window != null) {
-                window.folder_deleted.disconnect (on_folder_deleted);
-                window.disconnect_content_signals (this);
-            }
-        }
+        // private void disconnect_window_signals () {
+        //     if (window != null) {
+        //         window.folder_deleted.disconnect (on_folder_deleted);
+        //         window.disconnect_content_signals (this);
+        //     }
+        // }
 
-        private void on_folder_deleted (GLib.File deleted) requires (window != null) {
-            if (deleted.equal (this.location) && !go_up ()) {
-                close ();
-                window.remove_content (this);
-            }
-        }
+        // private void on_folder_deleted (GLib.File deleted) requires (window != null) {
+        //     if (deleted.equal (this.location) && !go_up ()) {
+        //         close ();
+        //         window.remove_content (this);
+        //     }
+        // }
 
         public void close () {
             disconnect_slot_signals (view);
-            disconnect_window_signals ();
+            // disconnect_window_signals ();
             view.close ();
         }
 
@@ -222,6 +223,7 @@ namespace Files {
         }
 
         public void go_back (int n = 1) {
+        warning ("VC go back");
             string? path = browser.go_back (n);
 
             if (path != null) {
@@ -232,6 +234,7 @@ namespace Files {
         }
 
         public void go_forward (int n = 1) {
+        warning ("VC go forward");
             string? path = browser.go_forward (n);
 
             if (path != null) {

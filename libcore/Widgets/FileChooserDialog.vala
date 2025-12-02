@@ -16,6 +16,11 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     public Hdy.HeaderBar headerbar;
     public Gtk.FileChooserAction action { get; construct; }
     public bool read_only { get; set; default = false; }
+    public ViewMode view_mode {
+        get {
+            return chooser.content.view_mode;
+        }
+    }
 
     public string accept_label {
         get {
@@ -254,6 +259,8 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             } else {
                 grab_focus ();
             }
+
+            chooser.content.file_activated.connect (activate_selected_items);
         });
 
         // previous_button.clicked.connect (() => {
@@ -266,8 +273,8 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         //     chooser.set_current_folder_uri (next_paths.pop_head ());
         // });
 
-        // location_bar.path_change_request.connect ((path) => {
-        //     chooser.set_current_folder_uri (path);
+        // chooser.headerbar.path_change_request.connect ((path) => {
+        //     set_current_folder_uri (path);
         // });
 
         filter_box.changed.connect (() => {
@@ -356,15 +363,15 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         return chooser.set_location (loc, ViewMode.LIST); //TODO Make setting and implement other modes
     }
 
-    // private void activate_selected_items () {
-    //     var filename = get_filename ();
-    //     var only_one = (chooser.content.dir_view.get_selected_files ().first ().next )== null;
-    //     if (only_one && GLib.FileUtils.test (filename, FileTest.IS_DIR)) {
-    //         chooser.content.dir_view.path_change_request (get_file (), Files.OpenFlag.DEFAULT, false);
-    //     } else if (only_one || select_multiple) {
-    //         response (Gtk.ResponseType.OK);
-    //     }
-    // }
+    private void activate_selected_items () {
+        var filename = get_filename ();
+        var only_one = (chooser.content.dir_view.get_selected_files ().first ().next )== null;
+        if (only_one && GLib.FileUtils.test (filename, FileTest.IS_DIR)) {
+            chooser.content.dir_view.path_change_request (get_file (), Files.OpenFlag.DEFAULT, false);
+        } else if (only_one || select_multiple) {
+            response (Gtk.ResponseType.OK);
+        }
+    }
 
     // private static T find_child_by_name<T> (Gtk.Widget root, string path) requires (root is Gtk.Container) {
     //     var paths = path.has_prefix ("/") ? path[1 : path.length].split ("/") : path.split ("/");
@@ -625,11 +632,11 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public void set_uri (string uri) {
-        // uri_path_change_request (uri);
+        chooser.set_location (GLib.File.new_for_uri (uri), view_mode);
     }
 
     public void set_current_folder_uri (string uri) {
-        // uri_path_change_request (uri);
+        chooser.set_location (GLib.File.new_for_uri (uri), view_mode);
     }
 
     public void set_current_name (string text) {

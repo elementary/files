@@ -285,7 +285,7 @@ namespace Files {
 
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
-        public signal void file_activated (); // So can use in FileChooser widget
+        // public signal void file_activated (); // So can use in FileChooser widget
 
         //TODO Rewrite in Object (), construct {} style
         protected BasicAbstractDirectoryView (BasicSlot _slot) {
@@ -663,7 +663,8 @@ namespace Files {
     /** Operations on selections */
         protected virtual void activate_selected_items (Files.OpenFlag flag = Files.OpenFlag.DEFAULT,
                                                 GLib.List<Files.File> selection = get_selected_files ()) {
-            file_activated ();
+            warning ("activate selected items");
+            slot.ctab.file_activated ();
         }
 
             // if (is_frozen || selection == null) {
@@ -3463,6 +3464,7 @@ namespace Files {
                 /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
                 // name_renderer.end_editing (false);
             // }
+            warning ("on view button press");
             cancel_hover (); /* cancel overlay statusbar cancellables */
             grab_focus ();
 
@@ -3526,6 +3528,8 @@ namespace Files {
                             if (no_mods && one_or_less) {
                                 should_activate = (on_directory && !on_blank && !singleclick_select) || double_click_event;
                             }
+
+                            warning ("should activate %s", should_activate.to_string ());
 
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
@@ -3642,14 +3646,15 @@ namespace Files {
         protected virtual void on_view_button_release_event (int n_press, double x, double y) {
             // unblock_drag_and_drop ();
             button_press_disabled = false;
+            warning ("on view button release");
             /* Ignore button release from click that started renaming.
              * View may lose focus during a drag if another tab is hovered, in which case
              * we do not want to refocus this view.
              * Under both these circumstances, 'should_activate' will be false */
             // if (renaming || !view_has_focus ()) {
-            if (!view_has_focus ()) {
-                return;
-            }
+            // if (!view_has_focus ()) {
+            //     return;
+            // }
 
             var button = button_controller.get_current_button ();
             slot.active (button == Gdk.BUTTON_SECONDARY);
@@ -3657,6 +3662,7 @@ namespace Files {
             /* Only take action if pointer has not moved */
             // if (!Gtk.drag_check_threshold (scrolled_window.get_child (), (int)drag_x, (int)drag_y, (int)x, (int)y)) {
                 if (should_activate) {
+                warning ("on release should activate %s", should_activate.to_string ());
                     /* Need Idle else can crash with rapid clicking (avoid nested signals) */
                     Idle.add (() => {
                         var flag = button == Gdk.BUTTON_MIDDLE ? Files.OpenFlag.NEW_TAB : Files.OpenFlag.DEFAULT;

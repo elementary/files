@@ -23,6 +23,7 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
     public BasicLocationBar location_bar { get; construct; }
     public ButtonWithMenu button_back { get; construct; }
     public ButtonWithMenu button_forward { get; construct; }
+    public SimpleActionGroup actions { get; private set; }
 
     public signal void path_change_request (string uri, Files.OpenFlag flag);
     public signal void go_back (int steps);
@@ -33,13 +34,27 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
     }
 
     construct {
-        button_back = new ButtonWithMenu ("go-previous-symbolic");
+        var back_action = new SimpleAction ("back", VariantType.INT32);
+        back_action.activate.connect (action_back);
+        var forward_action = new SimpleAction ("forward", VariantType.INT32);
+        forward_action.activate.connect (action_forward);
+        actions = new SimpleActionGroup ();
+        actions.add_action (back_action);
+        actions.add_action (forward_action);
+        insert_action_group ("header", actions);
 
+        button_back = new ButtonWithMenu ("go-previous-symbolic");
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        button_back.clicked.connect (() => {
+            warning ("back clicked");
+            go_back (1);
+        });
+        button_forward.clicked.connect (() => {
+            go_forward (1);
+        });
 
         button_forward = new ButtonWithMenu ("go-next-symbolic");
-
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
