@@ -202,7 +202,7 @@ public class Files.Application : Gtk.Application {
 
         window.present ();
 
-        present_filechooser.begin (Gtk.FileChooserAction.OPEN, window.default_location, (obj, res) => {
+        present_filechooser.begin (Gtk.FileChooserAction.OPEN, GLib.File.new_for_path ("/home/jeremy/Pictures"), (obj, res) => {
 warning ("present file chooser finished");
         });
 

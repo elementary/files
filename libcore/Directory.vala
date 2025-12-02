@@ -646,7 +646,7 @@ public class Files.Directory : Object {
     }
 
     private void list_cached_files (FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
-        debug ("list cached files");
+        message ("list cached files");
         if (state != State.LOADED) {
             critical ("list cached files called in %s state - not expected to happen", state.to_string ());
             return;
@@ -668,7 +668,7 @@ public class Files.Directory : Object {
     }
 
     private async void list_directory_async (FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
-        debug ("list directory async");
+        message ("list directory async");
         /* Should only be called after creation and if reloaded */
         if (!is_ready || file_hash.size () > 0) {
             critical ("(Re)load directory called when not cleared");

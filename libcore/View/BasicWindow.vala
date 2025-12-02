@@ -55,10 +55,15 @@ public class Files.BasicWindow : Gtk.Box {
     //         return (window_number == 0);
     //     }
     // }
+    //TODO Introduce BrowserManager?
+    private BasicBrowser _browser;
+    public BasicBrowser browser {
+        get {
+            return _browser;
+        }
+    }
 
     public string title { get; private set; default = "";}
-    public BasicViewContainer? content { get; private set; }
-
     public ViewMode default_mode {
         get {
             return ViewMode.PREFERRED;
@@ -82,6 +87,51 @@ public class Files.BasicWindow : Gtk.Box {
     // public Hdy.TabBar tab_bar;
     private Gtk.Paned lside_pane;
     public SidebarInterface sidebar;
+    public BasicSlot slot { get; construct; }
+    public Gtk.SelectionMode selection_mode {
+        get {
+            return slot.dir_view.get_selection_mode ();
+        }
+
+        set {
+            slot.dir_view.set_selection_mode (value);
+        }
+    }
+
+    public Files.ViewMode view_mode {
+        get {
+            return slot.mode;
+        }
+    }
+
+    public Gtk.FileFilter filter {
+        get {
+            return slot.dir_view.filter;
+        }
+
+        set {
+            slot.dir_view.filter = value;
+        }
+    }
+
+    public List<Files.File> selected_files {
+        get {
+            return slot.dir_view.get_selected_files ();
+        }
+    }
+
+    public string uri { // The current displayed uri
+        get {
+            return slot.uri;
+        }
+    }
+
+    public GLib.File? location { // The currently displayed folder
+        get {
+            return slot.location;
+        }
+    }
+
     // private ButtonWithMenu button_forward;
     // private ButtonWithMenu button_back;
     // private BasicLocationBar? location_bar;
@@ -98,6 +148,7 @@ public class Files.BasicWindow : Gtk.Box {
     // public signal void loading_uri (string location);
     public signal void folder_deleted (GLib.File location);
     public signal void free_space_change ();
+    public signal void file_activated ();
 
     // public BasicWindow (GLib.File? initial_location = null) {
     //     create_content.begin (initial_location, default_mode);
@@ -115,6 +166,8 @@ public class Files.BasicWindow : Gtk.Box {
     // }
 
     construct {
+        _browser = new BasicBrowser ();
+        warning ("BasicWindow construct");
         // height_request = 300;
         // width_request = 500;
         // icon_name = "system-file-manager";
@@ -170,29 +223,32 @@ public class Files.BasicWindow : Gtk.Box {
         headerbar = new Files.BasicHeaderBar ();
         sidebar = new Sidebar.BasicSidebarWindow ();
         // free_space_change.connect (sidebar.on_free_space_change);
-        content = new BasicViewContainer ();
+        // content = new BasicViewContainer ();
+        slot = new BasicSlot (default_location, LIST);
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             expand = true,
             position = Files.app_settings.get_int ("sidebar-width")
         };
         lside_pane.pack1 (sidebar, false, false);
-        lside_pane.pack2 (content, true, true);
+        lside_pane.pack2 (slot.get_content_box (), true, true);
+        // lside_pane.pack2 (content, true, true);
 
         // extra_widget_box = new Gtk.Box (HORIZONTAL, 0);
-        var main_grid = new Gtk.Grid ();
-        main_grid.attach (headerbar, 0, 0, 1, 1);
-        main_grid.attach (lside_pane, 0, 1, 1, 1);
-        // main_grid.attach (extra_widget_box, 0, 2, 1, 1);
-        main_grid.show_all ();
+        // main_grid = new Gtk.Grid ();
+        // main_grid.attach (headerbar, 0, 0, 1, 1);
+        // main_grid.attach (lside_pane, 0, 1, 1, 1);
+        // // main_grid.attach (extra_widget_box, 0, 2, 1, 1);
+        // main_grid.show_all ();
 
-        add (main_grid);
+        add (lside_pane);
 
         warning ("added grid");
         /** Apply preferences */
         var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
 
-        headerbar.path_change_request.connect (content.on_path_change_request);
+        // headerbar.path_change_request.connect (content.on_path_change_request);
+        headerbar.path_change_request.connect (slot.on_path_change_request);
 
         sidebar.request_focus.connect (() => {
             // return !content.locked_focus && !locked_focus; //NOT USED???
@@ -202,11 +258,22 @@ public class Files.BasicWindow : Gtk.Box {
             // loading_uri (content.uri);  // NOT USED????
         });
 
-        sidebar.path_change_request.connect (content.on_path_change_request);
+        // sidebar.path_change_request.connect (content.on_path_change_request);
+        sidebar.path_change_request.connect (slot.on_path_change_request);
 
-        headerbar.go_back.connect (content.go_back);
-        headerbar.go_forward.connect (content.go_forward);
-        connect_content_signals (content);
+        headerbar.go_back.connect ((steps) => {
+            string? path = browser.go_back (steps);
+            if (path != null) {
+                path_change (GLib.File.new_for_commandline_arg (path));
+            }
+        });
+        headerbar.go_forward.connect ((steps) => {
+            string? path = browser.go_forward (steps);
+            if (path != null) {
+                path_change (GLib.File.new_for_commandline_arg (path));
+            }
+        });
+        // connect_content_signals (content);
         // int width, height;
         // Files.app_settings.get ("window-size", "(ii)", out width, out height);
         // default_width = width;
@@ -224,7 +291,7 @@ public class Files.BasicWindow : Gtk.Box {
 
         realize.connect (() => {
             Timeout.add (1000, () => {
-                headerbar.update_location_bar (content.uri, false);
+                headerbar.update_location_bar (uri, false);
                 return Source.REMOVE;
             });
         });
@@ -233,6 +300,11 @@ public class Files.BasicWindow : Gtk.Box {
         warning ("donw construct BasicWindow");
         show_all ();
     }
+
+    // public unowned Gtk.Widget remove_headerbar () {
+    //     main_grid.remove (headbar);
+    //     return headbar;
+    // }
 
     private void build_window () {
         // button_back = new ButtonWithMenu ("go-previous-symbolic");
@@ -674,13 +746,25 @@ warning ("BW set location");
                 }
             }
 
-            if (!location.equal (_location)) {
-                content.add_view (mode, location, {_location});
-            } else {
-                content.add_view (mode, location);
-            }
-
+            // if (!location.equal (_location)) {
+            //     content.add_view (mode, location, {_location});
+            // } else {
+            //     content.add_view (mode, location);
+            // }
+warning ("got location of folder");
+            path_change (location);
             return true;
+    }
+
+    public void path_change (GLib.File loc) {
+    warning ("ADV path change %s", loc.get_uri ());
+        slot.user_path_change_request (loc, true);
+    }
+
+    public void set_selected_location (GLib.File loc) {
+        List<GLib.File> list = null;
+        list.append (loc);
+        slot.select_glib_files (list, loc);
     }
 
     // public  async bool add_tab (
@@ -752,25 +836,28 @@ warning ("BW set location");
     // }
 
     // Called by content when associated with tab view.
-    public void connect_content_signals (BasicViewContainer content) {
+    // public void connect_content_signals (BasicViewContainer content) {
+    public void connect_content_signals (BasicSlot slot) {
         // content.tab_name_changed.connect (check_for_tabs_with_same_name);
         // if (content == null) {
         //     critical ("WINDOW: connect to null content");
         // }
         // content.loading.connect (update_labels);
         warning ("connected loading");
-        content.loading.connect (on_content_loading);
+        // slot.directory_loaded.connect (on_content_loading);
+        slot.directory_loaded.connect (on_directory_loaded);
+        // content.loading.connect (on_content_loading);
 
         // content.active.connect (update_headerbar);
     }
 
-    public void disconnect_content_signals (BasicViewContainer content) {
+    // public void disconnect_content_signals (BasicViewContainer content) {
         // content.tab_name_changed.disconnect (check_for_tabs_with_same_name);
-        content.loading.disconnect (on_content_loading);
+        // content.loading.disconnect (on_content_loading);
         // content.active.disconnect (update_headerbar);
-    }
+    // }
 
-    private void on_content_loading (BasicViewContainer content, string uri, bool is_loading) {
+    // private void on_content_loading (BasicViewContainer content, string uri, bool is_loading) {
         // if (restoring_tabs > 0 && !is_loading) {
         //     restoring_tabs--;
         //     /* Each restored tab must signal with is_loading false once */
@@ -785,19 +872,26 @@ warning ("BW set location");
         // tab_view.get_page (content).loading = is_loading;
 
         // check_for_tabs_with_same_name ();
-        warning  ("on content loading %s", is_loading.to_string ());
-        if (!is_loading) {
-            // update_headerbar ();
-            headerbar.set_back_menu (content.get_go_back_path_list (), content.can_go_back);
-            headerbar.set_forward_menu (content.get_go_forward_path_list (), content.can_go_forward);
-            headerbar.update_location_bar (uri, true);
-        }
+        // warning  ("on content loading %s", is_loading.to_string ());
+        // if (!is_loading) {
+        //     // update_headerbar ();
+        //     headerbar.set_back_menu (content.get_go_back_path_list (), content.can_go_back);
+        //     headerbar.set_forward_menu (content.get_go_forward_path_list (), content.can_go_forward);
+        //     headerbar.update_location_bar (uri, true);
+        // }
 
         // if (restoring_tabs == 0 && !is_loading) {
         //     save_tabs ();
         // }
-    }
+    // }
 
+    private void on_directory_loaded () {
+        headerbar.set_back_menu (browser.go_back_list (), browser.can_go_back);
+        headerbar.set_forward_menu (browser.go_forward_list (), browser.can_go_forward);
+        headerbar.update_location_bar (uri, true);
+
+        //TODO Handle dir cannot load
+    }
     // private int location_is_duplicate (GLib.File location, bool is_folder, out bool is_child) {
     //     is_child = false;
     //     string parent_path = "";
@@ -912,7 +1006,7 @@ warning ("BW set location");
     //     remove_content (view_container);
     // }
 
-    public void remove_content (BasicViewContainer view_container) {
+    // public void remove_content (BasicViewContainer view_container) {
         // for (int n = 0; n < tab_view.n_pages; n++) {
         //     var tab = tab_view.get_nth_page (n);
         //     if (tab.get_child () == view_container) {
@@ -922,8 +1016,8 @@ warning ("BW set location");
         // }
 
         //TODO Cancel the FileChooser (close window)
-        assert_not_reached ();
-    }
+        // assert_not_reached ();
+    // }
 
     // private void remove_tab (Hdy.TabPage? tab) {
     //     if (tab != null) {
@@ -1032,13 +1126,13 @@ warning ("BW set location");
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
         // if (tab_view == null || content == null) { // can occur during startup
-        if (content == null) { // can occur during startup
-            return;
-        }
+        // if (content == null) { // can occur during startup
+        //     return;
+        // }
 
         // ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
-        ViewMode mode = (ViewMode)(param.get_uint32 ());
-        content.change_view_mode (mode);
+        // ViewMode mode = (ViewMode)(param.get_uint32 ());
+        // content.change_view_mode (mode);
         /* BasicViewContainer takes care of changing appearance */
     }
 
@@ -1269,7 +1363,8 @@ warning ("BW set location");
         // save_tabs ();
 
         headerbar.destroy (); /* stop unwanted signals if quit while pathbar in focus */
-        content.close ();
+        slot.close ();
+        // content.close ();
         // Prevent saved focused tab changing
         // tab_view.notify["selected-page"].disconnect (change_tab);
 
@@ -1537,14 +1632,15 @@ warning ("BW set location");
     //     location_bar.with_animation = true;
     // }
 
-    private void update_labels (string uri, bool is_loading) {
+    private void update_labels (string uri) {
+    // private void update_labels (string uri, bool is_loading) {
     // private void update_labels (string uri) {
         // if (content != null) { /* Can happen during restore */
-        if (is_loading) {
-            this.title = content.tab_name; /* Not actually visible on elementaryos */
+        // if (is_loading) {
+            // this.title = content.tab_name; /* Not actually visible on elementaryos */
             headerbar.update_location_bar (uri);
             sidebar.sync_uri (uri);
-        }
+        // }
         // }
     }
 
@@ -1589,25 +1685,26 @@ warning ("BW set location");
     // }
 
     /** Use this function to standardise how locations are generated from uris **/
-    private GLib.File? get_file_from_uri (string uri) {
-        string? current_uri = null;
-        if (content != null && content.location != null) {
-            current_uri = content.location.get_uri ();
-        }
+    private GLib.File? get_file_from_uri (string _uri) {
+        // string? current_uri = null;
+        // if (content != null && content.location != null) {
+            // current_uri = content.location.get_uri ();
+        // }
 
-        string path = FileUtils.sanitize_path (uri, current_uri, true);
+        string path = FileUtils.sanitize_path (_uri, this.uri, true);
         if (path.length > 0) {
-            return GLib.File.new_for_uri (FileUtils.escape_uri (path));
+            return GLib.File.new_for_uri (FileUtils.escape_uri (_uri));
         } else {
             return null;
         }
     }
 
     public new void grab_focus () {
-        if (content == null) {
-            return;
-        }
+        // if (content == null) {
+        //     return;
+        // }
 
-        content.grab_focus ();
+        // content.grab_focus ();
+        slot.grab_focus ();
     }
 }

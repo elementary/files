@@ -21,16 +21,17 @@
 namespace Files {
     public class BasicDirectoryNotFound : BasicWelcome {
         public Directory dir_saved;
-        public BasicViewContainer ctab;
+        // public BasicViewContainer ctab;
 
-        public BasicDirectoryNotFound (Directory dir, BasicViewContainer tab) {
+        public BasicDirectoryNotFound (Directory dir) {
+        // public BasicDirectoryNotFound (Directory dir, BasicViewContainer tab) {
             base (_("This Folder Does Not Exist"),
                   _("The folder \"%s\" can't be found.").printf (dir.location.get_basename ()));
 
             append ("folder-new", _("Create"), _("Create the folder \"%s\"").printf (dir.location.get_basename ()));
 
             dir_saved = dir;
-            ctab = tab;
+            // ctab = tab;
 
             this.activated.connect ((index) => {
                 bool success = false;

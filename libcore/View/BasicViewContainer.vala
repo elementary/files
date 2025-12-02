@@ -222,46 +222,46 @@ namespace Files {
             }
         }
 
-        public void go_back (int n = 1) {
-        warning ("VC go back");
-            string? path = browser.go_back (n);
+        // public void go_back (int n = 1) {
+        // warning ("VC go back");
+        //     string? path = browser.go_back (n);
 
-            if (path != null) {
-                selected_locations = null;
-                selected_locations.append (this.location);
-                open_location (GLib.File.new_for_commandline_arg (path));
-            }
-        }
+        //     if (path != null) {
+        //         selected_locations = null;
+        //         selected_locations.append (this.location);
+        //         open_location (GLib.File.new_for_commandline_arg (path));
+        //     }
+        // }
 
-        public void go_forward (int n = 1) {
-        warning ("VC go forward");
-            string? path = browser.go_forward (n);
+        // public void go_forward (int n = 1) {
+        // warning ("VC go forward");
+        //     string? path = browser.go_forward (n);
 
-            if (path != null) {
-                open_location (GLib.File.new_for_commandline_arg (path));
-            }
-        }
+        //     if (path != null) {
+        //         open_location (GLib.File.new_for_commandline_arg (path));
+        //     }
+        // }
 
-        public void on_path_change_request (string p, Files.OpenFlag flag = DEFAULT) {
-            /* Make a sanitized file from the uri */
-            var file = FileUtils.get_file_for_path (p);
-            if (file != null) {
-                // switch (flag) {
-                    // case Files.OpenFlag.NEW_TAB:
-                        // add_tab.begin (file, content.view_mode, false);
-                        // break;
-                    // case Files.OpenFlag.NEW_WINDOW:
-                        // add_window (file, content.view_mode);
-                        // break;
-                    // default:
-                        // grab_focus ();
-                        focus_location (file);
-                        // break;
-                // }
-            } else {
-                warning ("Cannot browse %s", p);
-            }
-        }
+        // public void on_path_change_request (string p, Files.OpenFlag flag = DEFAULT) {
+        //     /* Make a sanitized file from the uri */
+        //     var file = FileUtils.get_file_for_path (p);
+        //     if (file != null) {
+        //         // switch (flag) {
+        //             // case Files.OpenFlag.NEW_TAB:
+        //                 // add_tab.begin (file, content.view_mode, false);
+        //                 // break;
+        //             // case Files.OpenFlag.NEW_WINDOW:
+        //                 // add_window (file, content.view_mode);
+        //                 // break;
+        //             // default:
+        //                 // grab_focus ();
+        //                 focus_location (file);
+        //                 // break;
+        //         // }
+        //     } else {
+        //         warning ("Cannot browse %s", p);
+        //     }
+        // }
 
         // the locations in @to_select must be children of @loc
         public void add_view (ViewMode mode, GLib.File loc,  GLib.File[]? to_select = null) {

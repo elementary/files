@@ -100,11 +100,13 @@ public class Files.FileChooserPortal : Object {
 
         var directory = "directory" in options && options["directory"].get_boolean ();
 
-        var dialog = new FileChooserDialog (Gtk.FileChooserAction.OPEN, parent_window, title) {
-            accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
-        };
+        var dialog = new FileChooserDialog (Gtk.FileChooserAction.OPEN, parent_window, title);
 
         dialog.set_initial_location (initial_location);
+
+        if ("accept_label" in options) {
+            dialog.accept_label = (options["accept_label"].get_string ());
+        }
 
         if ("modal" in options) {
             dialog.modal = options["modal"].get_boolean ();
@@ -534,6 +536,7 @@ public class Files.FileChooserPortal : Object {
         Environment.unset_variable ("GTK_USE_PORTAL");
 
         Gtk.init (ref args);
+        Hdy.init ();
 
         var context = new OptionContext ("- FileChooser portal");
         context.add_main_entries (ENTRIES, null);

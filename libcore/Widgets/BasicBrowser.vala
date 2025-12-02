@@ -95,12 +95,16 @@ namespace Files {
             }
         }
 
-        public bool get_can_go_back () {
-            return !back_stack.is_empty ();
+        public bool can_go_back {
+            get {
+                return !back_stack.is_empty ();
+            }
         }
 
-        public bool get_can_go_forward () {
-            return !forward_stack.is_empty ();
+        public bool can_go_forward {
+            get {
+                return !forward_stack.is_empty ();
+            }
         }
     } /* End: Browser class */
 

@@ -32,7 +32,9 @@ public abstract class Files.AbstractSlot : GLib.Object {
         }
 
         set construct {
-            directory = Directory.from_gfile (value);
+            // if (value != null) {
+                directory = Directory.from_gfile (value);
+
         }
     }
 
@@ -59,6 +61,7 @@ public abstract class Files.AbstractSlot : GLib.Object {
     public signal void new_container_request (GLib.File loc, Files.OpenFlag flag);
     public signal void selection_changed (GLib.List<Files.File> files);
     public signal void directory_loaded (Files.Directory dir);
+    public signal void file_activated ();
 
     public void add_extra_widget (Gtk.Widget widget) {
         extra_location_widgets.add (widget);
@@ -97,7 +100,7 @@ public abstract class Files.AbstractSlot : GLib.Object {
     public abstract unowned AbstractSlot? get_current_slot ();
     public abstract void reload (bool non_local_only = false);
     public abstract void grab_focus ();
-    public abstract void user_path_change_request (GLib.File loc, bool make_root);
+    public abstract void user_path_change_request (GLib.File loc, bool make_root = true);
     public abstract void focus_first_for_empty_selection (bool select);
     public abstract void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location);
     public abstract void close ();

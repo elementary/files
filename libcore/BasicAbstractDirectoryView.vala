@@ -123,6 +123,31 @@ namespace Files {
         protected ZoomLevel minimum_zoom = ZoomLevel.SMALLEST;
         protected ZoomLevel maximum_zoom = ZoomLevel.LARGEST;
 
+        private Gtk.FileFilterFlags filter_flags = 0;
+        private Gtk.FileFilterInfo filter_info = {};
+        // public Gtk.FileFilter? filter { get; set; default = null; }
+        // private Gtk.FileFilter? _filter = null;
+
+        private Gtk.FileFilter? _filter = null;
+        public Gtk.FileFilter? filter {
+            get {
+                return _filter;
+            }
+
+            set {
+                if (value != null) {
+                    var v = value.to_gvariant ();
+                    // For some reason constructing Gtk.FileFilterInfo directly does not work.
+                    filter_flags = value.get_needed ();
+                    filter_info.contains = filter_flags;
+                } else {
+                    filter_flags = 0;
+                    filter_info = {0, };
+                }
+                schedule_refilter ();
+                _filter = value;
+            }
+        }
         // /* Used only when acting as drag source */
         // double drag_x = 0;
         // double drag_y = 0;
@@ -269,11 +294,11 @@ namespace Files {
         protected Gtk.TreeModelFilter filter_model;
         protected Files.IconRenderer icon_renderer;
         protected unowned BasicSlot slot; // Must be unowned else cyclic reference stops destruction
-        protected unowned BasicWindow? window {
-            get {
-                return slot.ctab.window;
-            }
-        }
+        // protected unowned BasicWindow? window {
+        //     get {
+        //         return slot.ctab.window;
+        //     }
+        // }
         // protected static DndHandler dnd_handler = new DndHandler ();
 
         protected unowned Gtk.RecentManager recent;
@@ -344,7 +369,7 @@ namespace Files {
             filter_model = new Gtk.TreeModelFilter (model, null);
             filter_model.set_visible_func ((model, iter) => {
                 var file = ((ListModel)model).file_for_iter (iter);
-                return filter_file (file);
+                return file != null ? filter_file (file) : false;
             });
 
              /* Currently, "single-click rename" is disabled, matching existing UI
@@ -408,28 +433,24 @@ namespace Files {
             debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
         }
 
-        private Gtk.FileFilterFlags filter_flags = 0;
-        private Gtk.FileFilterInfo filter_info = {};
-        private Gtk.FileFilter? filter;
-        public void set_filter (Gtk.FileFilter? filter) {
-            this.filter = filter;
-            if (filter != null) {
-                var v = filter.to_gvariant ();
-                // For some reason constructing Gtk.FileFilterInfo directly does not work.
-                filter_flags = filter.get_needed ();
-                filter_info.contains = filter_flags;
+        private uint refilter_timeout_id = 0;
+        private void schedule_refilter () {
+            if (refilter_timeout_id > 0) {
+                return;
             } else {
-                filter_flags = 0;
-                filter_info = {0, };
+                refilter_timeout_id = Timeout.add (100, () => {
+                    refilter_timeout_id = 0;
+                    filter_model.refilter ();
+                    draw_when_idle ();
+                    return Source.REMOVE;
+                });
             }
-
-            filter_model.refilter ();
         }
 
         private bool filter_file (Files.File? file) {
             if (file == null) {
                 return false;
-            } else if (file.is_folder ()) {
+            } else if (filter_flags == 0 || file.is_folder ()) {
                 return true;
             } else {
                 if (DISPLAY_NAME in filter_flags) {
@@ -439,7 +460,6 @@ namespace Files {
                     filter_info.filename = file.filename;
                 }
                 if (MIME_TYPE in filter_flags) {
-                    // info.mime_type = ContentType.get_mime_type (file.get_ftype ());
                     filter_info.mime_type = file.get_ftype ();
                 }
                 if (URI in filter_flags) {
@@ -664,7 +684,8 @@ namespace Files {
         protected virtual void activate_selected_items (Files.OpenFlag flag = Files.OpenFlag.DEFAULT,
                                                 GLib.List<Files.File> selection = get_selected_files ()) {
             warning ("activate selected items");
-            slot.ctab.file_activated ();
+            slot.file_activated ();
+            // slot.ctab.file_activated ();
         }
 
             // if (is_frozen || selection == null) {
@@ -742,12 +763,14 @@ namespace Files {
         }
 
         protected void connect_directory_loading_handlers (Directory dir) {
+            warning ("connect dir loading handlers");
             model.set_sorting_off ();
             dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_directory_done_loading);
         }
 
         protected void disconnect_directory_loading_handlers (Directory dir) {
+            warning ("disconnect dir loading handlers");
             model.set_sorting_on ();
             dir.file_loaded.disconnect (on_directory_file_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);
@@ -767,7 +790,7 @@ namespace Files {
             dir.done_loading.disconnect (on_directory_done_loading);
         }
 
-        public void change_directory (Directory old_dir, Directory new_dir) {
+        public void change_directory (Directory? old_dir, Directory new_dir) {
             var style_context = get_style_context ();
             if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
                 style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
@@ -776,7 +799,11 @@ namespace Files {
 
             cancel ();
             clear ();
-            disconnect_directory_handlers (old_dir);
+
+            if (old_dir != null) {
+                disconnect_directory_handlers (old_dir);
+            }
+
             connect_directory_handlers (new_dir);
         }
 
@@ -786,9 +813,9 @@ namespace Files {
             connect_directory_loading_handlers (dir);
         }
 
-        private void clear () {
             /* after calling this (prior to reloading), the directory must be re-initialised so
              * we reconnect the file_loaded and done_loading signals */
+        private void clear () {
             freeze_tree ();
             block_model ();
             model.clear ();
@@ -1009,24 +1036,24 @@ namespace Files {
             }
         }
 
-        private void handle_free_space_change () requires (window != null) {
-            /* Wait at least 250 mS after last space change before signalling to avoid unnecessary updates*/
-            if (add_remove_file_timeout_id == 0) {
-                signal_free_space_change = false;
-                add_remove_file_timeout_id = GLib.Timeout.add (250, () => {
-                    if (signal_free_space_change) {
-                        add_remove_file_timeout_id = 0;
-                        window.free_space_change ();
-                        return GLib.Source.REMOVE;
-                    } else {
-                        signal_free_space_change = true;
-                        return GLib.Source.CONTINUE;
-                    }
-                });
-            } else {
-                signal_free_space_change = false;
-            }
-        }
+        // private void handle_free_space_change () requires (window != null) {
+        //     /* Wait at least 250 mS after last space change before signalling to avoid unnecessary updates*/
+        //     if (add_remove_file_timeout_id == 0) {
+        //         signal_free_space_change = false;
+        //         add_remove_file_timeout_id = GLib.Timeout.add (250, () => {
+        //             if (signal_free_space_change) {
+        //                 add_remove_file_timeout_id = 0;
+        //                 slot.free_space_change ();
+        //                 return GLib.Source.REMOVE;
+        //             } else {
+        //                 signal_free_space_change = true;
+        //                 return GLib.Source.CONTINUE;
+        //             }
+        //         });
+        //     } else {
+        //         signal_free_space_change = false;
+        //     }
+        // }
 
         private void new_empty_file (string? parent_uri = null) {
             if (parent_uri == null) {
@@ -1238,7 +1265,7 @@ namespace Files {
             // open_file (file, null, null);
         }
 
-        private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) requires (window != null) {
+        private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
             GLib.File location;
             if (selected_files != null) {
                 location = selected_files.data.get_target_location ();
@@ -1246,13 +1273,14 @@ namespace Files {
                 location = slot.directory.file.get_target_location ();
             }
 
-            window.bookmark_uri (location.get_uri ());
+            // window.bookmark_uri (location.get_uri ());
+            //TODO Move to slot?
         }
 
         /** Background actions */
-
-        private void change_state_show_hidden (GLib.SimpleAction action) requires (window != null) {
-            window.change_state_show_hidden (action);
+        private void change_state_show_hidden (GLib.SimpleAction action) {
+            // window.change_state_show_hidden (action);
+            //TODO Move to slot?
         }
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1398,7 +1426,7 @@ namespace Files {
         private void on_directory_file_added (Directory dir, Files.File? file, bool is_internal) {
             if (file != null) {
                 add_file (file, dir, is_internal); /* Only select files added to view by this app */
-                handle_free_space_change ();
+                // handle_free_space_change ();
                 Idle.add (() => {
                     update_icon_and_plugins (file);
                     return Source.REMOVE;
@@ -1461,10 +1489,11 @@ namespace Files {
                 }
             }
 
-            handle_free_space_change ();
+            // handle_free_space_change ();
         }
 
         private void on_directory_done_loading (Directory dir) {
+        warning ("ADV directory done loading");
             /* Should only be called on directory creation or reload */
             disconnect_directory_loading_handlers (dir);
             in_trash = slot.directory.is_trash;
@@ -1933,7 +1962,8 @@ namespace Files {
 
 
 
-        protected void show_context_menu (Gdk.Event event) requires (window != null) {
+        // protected void show_context_menu (Gdk.Event event) requires (window != null) {
+        protected void show_context_menu (Gdk.Event event) {
             /* select selection or background context menu */
             update_menu_actions ();
 

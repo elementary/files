@@ -19,7 +19,7 @@
 
 namespace Files {
     public class BasicSlot : Files.AbstractSlot {
-        public unowned BasicViewContainer ctab { get; construct; }
+        // public unowned BasicViewContainer ctab { get; construct; }
         public ViewMode mode { get; construct; }
         public BasicAbstractDirectoryView? dir_view { get; private set; }
 
@@ -44,9 +44,9 @@ namespace Files {
             }
         }
 
-        public unowned BasicWindow? window {
-            get { return ctab.window; }
-        }
+        // public unowned BasicWindow? window {
+        //     get { return ctab.window; }
+        // }
 
         // public override bool is_frozen {
         //     set {
@@ -74,15 +74,17 @@ namespace Files {
         // public signal void miller_slot_request (GLib.File file, bool make_root);
         // public signal void size_change ();
 
-        public BasicSlot (GLib.File _location, BasicViewContainer _ctab, ViewMode _mode) {
+        // public BasicSlot (GLib.File _location, BasicViewContainer _ctab, ViewMode _mode) {
+        public BasicSlot (GLib.File? _location = null, ViewMode _mode = LIST) {
             Object (
-                ctab: _ctab,
+                // ctab: _ctab,
                 mode: _mode,
                 location: _location
             );
         }
 
         construct {
+            warning ("Basic Slot construct");
             switch (mode) {
                 // case ViewMode.MILLER_COLUMNS:
                 //     dir_view = new Files.ColumnView (this);
@@ -120,6 +122,8 @@ namespace Files {
             // Ensure dir view does not redraw with invalid slot, causing a crash
             dir_view.destroy ();
         }
+
+        //TODO Implement change view mode (LIST <-> ICON)
 
         private void connect_slot_signals () {
             active.connect (() => {
@@ -175,17 +179,17 @@ namespace Files {
             selection_changed (files);
         }
 
-        private void connect_dir_signals () {
+        private void connect_dir_signals () requires (directory != null) {
             directory.done_loading.connect (on_directory_done_loading);
             directory.need_reload.connect (on_directory_need_reload);
         }
 
-        private void disconnect_dir_signals () {
+        private void disconnect_dir_signals () requires (directory != null)  {
             directory.done_loading.disconnect (on_directory_done_loading);
             directory.need_reload.disconnect (on_directory_need_reload);
         }
 
-        private void on_directory_done_loading (Directory dir) {
+        private void on_directory_done_loading (Directory dir) requires (dir != null) {
             directory_loaded (dir);
 
             // /*  Column View requires slots to determine their own width (other views' width determined by Window */
@@ -220,11 +224,14 @@ namespace Files {
             is_frozen = false;
         }
 
-        private void on_directory_need_reload (Directory dir, bool original_request) {
+        private void on_directory_need_reload (Directory dir, bool original_request) requires (dir != null) {
             if (!is_frozen) {
-                ctab.prepare_reload (); // Save selection
+                // ctab.prepare_reload (); // Save selection
+                //TODO Save selection here
+
                 dir_view.prepare_reload (dir); /* clear model but do not change directory */
                 /* view and slot are unfrozen when done loading signal received */
+
                 is_frozen = true;
                 path_changed ();
                 /* if original_request false, leave original_load_request as it is (it may already be true
@@ -241,7 +248,7 @@ namespace Files {
             }
         }
 
-        private void schedule_reload () {
+        private void schedule_reload () requires (directory != null) {
             /* Allow time for other slots showing this directory to prepare for reload.
              * Also a delay is needed when a mount is added and trash reloads. */
             if (reload_timeout_id > 0) {
@@ -268,14 +275,19 @@ namespace Files {
             // }
         }
 
-        public override void user_path_change_request (GLib.File loc, bool make_root = true) {
+        // For FileChooser
+        public void on_path_change_request (string _uri) {
+            user_path_change_request (GLib.File.new_for_uri (_uri));
+        }
+
+        public override void user_path_change_request (GLib.File _loc, bool make_root = true) {
         /** Only this function must be used to change or reload the path **/
             var old_dir = directory;
             if (directory != null) {
                 disconnect_dir_signals ();
             }
 
-            location = loc;
+            location = _loc; // Sets directory to new directory or null
             connect_dir_signals ();
             path_changed ();
             /* ViewContainer listens to this signal takes care of updating appearance */
@@ -284,17 +296,23 @@ namespace Files {
         }
 
         public override void initialize_directory () {
+            if (directory == null) {
+                warning ("Cannot init null directory");
+                return;
+            }
+
             if (directory.is_loading ()) {
                 /* This can happen when restoring duplicate tabs */
-                debug ("Slot.initialize_directory () called when directory already loading - ignoring");
+                message ("Slot.initialize_directory () called when directory already loading - ignoring");
                 return;
             }
             /* view and slot are unfrozen when done loading signal received */
             is_frozen = true;
+            warning ("init dir %s", directory.file.uri);
             directory.init ();
         }
 
-        public override void reload (bool non_local_only = false) {
+        public override void reload (bool non_local_only = false) requires (directory != null) {
             if (!non_local_only || !directory.is_local) {
                 original_reload_request = true;
                 /* Propagate reload signal to any other slot showing this directory indicating it is not
@@ -425,7 +443,12 @@ namespace Files {
         }
 
         public string get_empty_message () {
+        warning ("get empty message");
             string msg = EMPTY_MESSAGE;
+            if (directory == null) {
+                return msg;
+            }
+
             if (directory.is_recent) {
                 msg = EMPTY_RECENT_MESSAGE;
             } else if (directory.is_trash && (uri == Files.TRASH_URI + Path.DIR_SEPARATOR_S)) {
