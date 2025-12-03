@@ -64,6 +64,8 @@ public class Files.BasicWindow : Gtk.EventBox {
     }
 
     public string title { get; private set; default = "";}
+    public bool can_select_zero { get; construct; }
+
     public ViewMode default_mode {
         get {
             return ViewMode.PREFERRED;
@@ -164,7 +166,11 @@ public class Files.BasicWindow : Gtk.EventBox {
     // static construct {
     //     Hdy.init ();
     // }
-
+    public BasicWindow (bool _can_select_zero) {
+        Object (
+            can_select_zero: _can_select_zero
+        );
+    }
     construct {
         add_events (Gdk.EventMask.ALL_EVENTS_MASK);
         var back_action = new SimpleAction ("back", null);
@@ -957,6 +963,7 @@ public class Files.BasicWindow : Gtk.EventBox {
         headerbar.set_back_menu (browser.go_back_list (), browser.can_go_back);
         headerbar.set_forward_menu (browser.go_forward_list (), browser.can_go_forward);
         headerbar.update_location_bar (uri, true);
+        slot.focus_first_for_empty_selection (!can_select_zero);
 
         //TODO Handle dir cannot load
     }

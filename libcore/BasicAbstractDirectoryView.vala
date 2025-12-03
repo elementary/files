@@ -313,7 +313,7 @@ namespace Files {
         // public signal void file_activated (); // So can use in FileChooser widget
 
         //TODO Rewrite in Object (), construct {} style
-        protected BasicAbstractDirectoryView (BasicSlot _slot) {
+        protected BasicAbstractDirectoryView (BasicSlot _slot, Gtk.SelectionMode selection_mode) {
             slot = _slot;
             editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
@@ -609,6 +609,7 @@ namespace Files {
 
         private uint set_cursor_timeout_id = 0;
         public void focus_first_for_empty_selection (bool select) {
+        warning ("focus first for empty - select %s", select.to_string ());
             if (selected_files == null) {
                 set_cursor_timeout_id = Idle.add_full (GLib.Priority.LOW, () => {
                     if (!tree_frozen) {

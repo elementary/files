@@ -107,7 +107,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         use_header_bar = 1; // Stop native action area showing as action widgets are put in content area
         // set_default_size (600, 400);
         resizable = true;
-        chooser = new BasicWindow ();
+        chooser = new BasicWindow (false); // Cannot have nothing selected
         // var headerbar = chooser.take_headerbar ();
         this.set_titlebar (chooser.headerbar);
         get_content_area ().add (chooser);

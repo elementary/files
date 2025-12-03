@@ -21,6 +21,7 @@ namespace Files {
     public class BasicSlot : Files.AbstractSlot {
         // public unowned BasicViewContainer ctab { get; construct; }
         public ViewMode mode { get; construct; }
+        public Gtk.SelectionMode selection_mode { get; construct; }
         public BasicAbstractDirectoryView? dir_view { get; private set; }
 
         // private int preferred_column_width;
@@ -78,11 +79,12 @@ namespace Files {
         // public signal void size_change ();
 
         // public BasicSlot (GLib.File _location, BasicViewContainer _ctab, ViewMode _mode) {
-        public BasicSlot (GLib.File? _location = null, ViewMode _mode = LIST) {
+        public BasicSlot (GLib.File? _location = null, ViewMode _mode = LIST, Gtk.SelectionMode _selection_mode = BROWSE) {
             Object (
                 // ctab: _ctab,
                 mode: _mode,
-                location: _location
+                location: _location,
+                selection_mode: _selection_mode
             );
         }
 
@@ -92,8 +94,8 @@ namespace Files {
                 //     dir_view = new Files.ColumnView (this);
                 //     break;
 
-                case ViewMode.LIST:;
-                    dir_view = new Files.BasicListView (this);
+                case ViewMode.LIST:
+                    dir_view = new Files.BasicListView (this, selection_mode);
                     break;
 
                 // case ViewMode.ICON:
