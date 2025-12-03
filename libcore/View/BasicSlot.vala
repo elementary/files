@@ -67,7 +67,7 @@ namespace Files {
 
         // public signal void frozen_changed (bool freeze);
         public signal void folder_deleted (Files.File file, Directory parent);
-
+        public signal bool key_press (uint keyval, bool control_pressed, bool alt_pressed, bool shift_pressed);
         /* Support for multi-slot view (Miller)*/
         public Gtk.Box colpane;
         public Gtk.Paned hpane;

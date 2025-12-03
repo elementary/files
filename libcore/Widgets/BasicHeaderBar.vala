@@ -20,6 +20,9 @@
 ***/
 
 public class Files.BasicHeaderBar : Hdy.HeaderBar {
+    public const string GO_BACK_ACCEL = "<Alt>Left";
+    public const string GO_FORWARD_ACCEL = "<Alt>Right";
+
     public BasicLocationBar location_bar { get; construct; }
     public ButtonWithMenu button_back { get; construct; }
     public ButtonWithMenu button_forward { get; construct; }
@@ -43,7 +46,7 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
         actions.add_action (forward_action);
         insert_action_group ("header", actions);
         button_back = new ButtonWithMenu ("go-previous-symbolic");
-        button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
+        button_back.tooltip_markup = Granite.markup_accel_tooltip ({GO_BACK_ACCEL}, _("Previous"));
         button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
         button_back.slow_press.connect (() => {
             warning ("back clicked");
@@ -51,7 +54,7 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
         });
 
         button_forward = new ButtonWithMenu ("go-next-symbolic");
-        button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
+        button_forward.tooltip_markup = Granite.markup_accel_tooltip ({GO_FORWARD_ACCEL}, _("Next"));
         button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
         button_forward.slow_press.connect (() => {
             go_forward (1);

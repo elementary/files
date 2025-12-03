@@ -260,6 +260,47 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         default_width = width;
         can_focus = true;
 
+        var key_controller = new Gtk.EventControllerKey (this) {
+            propagation_phase = BUBBLE
+        };
+
+        key_controller.key_pressed.connect ((keyval, keycode, state) => {
+        warning ("WIN key press");
+            // Handle key press events when directoryview has focus except when it must retain
+            // focus because e.g.renaming
+            // var focus_widget = get_focus ();
+            // if (content != null && !content.locked_focus &&
+            //     focus_widget != null && focus_widget.is_ancestor (content)) {
+
+                var mods = state & Gtk.accelerator_get_default_mod_mask ();
+                var alt_pressed = MOD1_MASK in mods;
+                var shift_pressed = SHIFT_MASK in mods;
+                // /* Use find function instead of view interactive search */
+                // if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
+                //     /* Use printable characters (except space) to initiate search */
+                //     /* Space is handled by directory view to open file items */
+                //     var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
+                //     if (uc.isprint () && !uc.isspace ()) {
+                //         activate_action ("find", uc.to_string ());
+                //         return Gdk.EVENT_STOP;
+                //     }
+                // }
+
+                switch (keyval) {
+                    case Gdk.Key.Left:
+                        if (alt_pressed) {
+                            warning ("go back");
+                        }
+
+                        break;
+                    default:
+                        break;
+                }
+            // }
+
+            return Gdk.EVENT_PROPAGATE;
+        });
+
         realize.connect (() => {
             warning ("dialog realozed");
             if (parent_window != "") {

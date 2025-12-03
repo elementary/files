@@ -388,18 +388,60 @@ namespace Files {
                    schedule_thumbnail_color_tag_timeout ();
                 });
 
-                scroll_controller = new Gtk.EventControllerScroll (view, NONE);
-                scroll_controller.scroll.connect (on_scroll_event);
+                // scroll_controller = new Gtk.EventControllerScroll (scrolled_window, NONE);
+                // scroll_controller = new Gtk.EventControllerScroll (view, NONE);
+                // scroll_controller.scroll.connect (on_scroll_event);
 
                 key_controller = new Gtk.EventControllerKey (view) {
                     propagation_phase = BUBBLE
                 };
                 key_controller.key_pressed.connect (on_view_key_press_event);
+                // key_controller.key_pressed.connect (() => {
+                //     warning ("Controller pressed");
+                //     return false;
+                // });
                 // Workaround for scroll events getting consumed by scroll controller
                 // Only handle scroll events when a key is pressed (for zooming), otherwise they will be handled
                 // by the native widget
-                key_controller.key_pressed.connect (() => {scroll_controller.flags = VERTICAL; return false;});
-                key_controller.key_released.connect (() => scroll_controller.flags = NONE);
+                // key_controller.key_pressed.connect (() => {warning ("Controller press"); scroll_controller.flags = VERTICAL; return false;});
+                // key_controller.key_released.connect (() => {warning ("Controller release"); scroll_controller.flags = NONE;});
+
+                view.scroll_event.connect ((event) => {
+                    warning ("view scroll event");
+                    return on_scroll_event (event.delta_x, event.delta_y);
+                });
+
+                view.key_press_event.connect ((event) => {
+                    warning ("view legacy key press");
+                    if (event.is_modifier == 0) {
+                        // Check for shortcuts
+                        var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+                        var keyval = event.keyval;
+                        var shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
+                        var control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
+                        var alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
+                        return slot.key_press (keyval, control_pressed, alt_pressed, shift_pressed);
+                    }
+
+                    return false;
+                    //     switch (keyval) {
+                    //         case Gdk.Key.Left:
+                    //             if (alt_pressed) {
+                    //                 warning ("Alt left");
+                    //             }
+
+                    //             break;
+
+                    //         default:
+                    //              break;
+                    //     }
+
+
+                    // }
+
+                    // return true;
+                });
+
 
                 // Hack required to suppress native behaviour when dragging
                 // multiple selected items with GestureMultiPress event controller
@@ -407,6 +449,10 @@ namespace Files {
                 view.button_press_event.connect (() => {
                     return button_press_disabled;
                 });
+
+                // view.key_press_event.connect (() => {
+                //     slot.
+                // });
 
                 button_controller = new Gtk.GestureMultiPress (view) {
                     propagation_phase = TARGET,  //Allow editable widget to receive button press event first
@@ -3003,20 +3049,25 @@ namespace Files {
         }
 
 /** Keyboard event handling **/
+        protected virtual bool on_legacy_key_press (Gdk.EventKey event) {
+            warning ("Legacy key press ");
+            return false;
+        }
+
         protected virtual bool on_view_key_press_event (uint original_keyval, uint keycode, Gdk.ModifierType state) {
             // if (is_frozen) {
             //     return true;
             // }
-
+warning ("BADV key[ress");
             var event = Gtk.get_current_event ();
             cancel_hover ();
 
             Gdk.ModifierType consumed_mods;
             var keyval = map_key (original_keyval, keycode, out consumed_mods);
-
             var mods = (state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
-            bool no_mods = (mods == 0);
+
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
+            bool no_mods = (mods == 0);
             bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
@@ -3029,6 +3080,7 @@ namespace Files {
 
             switch (keyval) {
                 case Gdk.Key.F10:
+                    warning (" F10");
                     if (only_control_pressed) {
                         show_context_menu (event);
                         res = true;
@@ -3041,6 +3093,7 @@ namespace Files {
                     //     rename_selection ();
                     //     res = true;
                     // }
+                    warning ("Rename");
 
                     break;
 
@@ -3083,6 +3136,9 @@ namespace Files {
                     //     break;
                     // }
 
+                    if (no_mods) {
+                        activate_selected_items (DEFAULT);
+                    }
                     res = true;
                     break;
 
@@ -3120,6 +3176,7 @@ namespace Files {
 
                 case Gdk.Key.Menu:
                 case Gdk.Key.MenuKB:
+                warning ("Menu");
                     if (no_mods) {
                         show_context_menu (event);
                         res = true;
@@ -3163,8 +3220,9 @@ namespace Files {
                     //     res = true;
                     //     break;
                     // }
-
-                    res = move_cursor (keyval, only_shift_pressed, control_pressed);
+                    if (no_mods) {
+                        res = move_cursor (keyval, only_shift_pressed, control_pressed);
+                    }
                     break;
 
                 case Gdk.Key.Home:
@@ -3197,6 +3255,7 @@ namespace Files {
 
                             //     selection_actions.activate_action ("cut", null);
                             // } else {
+                        warning ("Copy");
                         common_actions.activate_action ("copy", null);
                             // }
                         // }
@@ -3241,7 +3300,7 @@ namespace Files {
                     //         res = true;
                     //     }
                     // }
-
+warning ("Paste");
                     break;
 
                 case Gdk.Key.x:
@@ -3259,7 +3318,7 @@ namespace Files {
                     // }
 
                     break;
-
+warning ("Cut");
                 default:
                     break;
             }
@@ -3336,7 +3395,8 @@ namespace Files {
             hover_path = null;
         }
 
-        protected virtual void on_scroll_event (double dx, double dy) {
+        protected virtual bool on_scroll_event (double dx, double dy) {
+warning ("on scroll event");
             // if (is_frozen) {
             //     return;
             // }
@@ -3355,10 +3415,15 @@ namespace Files {
                     total_delta_y = 0;
                     zoom_in ();
                 }
-            } else {
-                // In case "key-released" signal was missed
-                scroll_controller.flags = NONE;
+
+                return true;
             }
+            // else {
+            //     // In case "key-released" signal was missed
+            //     scroll_controller.flags = NONE;
+            // }
+
+            return false;
         }
 
     // /** name renderer signals */

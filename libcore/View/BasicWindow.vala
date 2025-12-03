@@ -21,7 +21,7 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.BasicWindow : Gtk.Box {
+public class Files.BasicWindow : Gtk.EventBox {
     // static uint window_id = 0;
 
     // const GLib.ActionEntry [] WIN_ENTRIES = {
@@ -144,7 +144,7 @@ public class Files.BasicWindow : Gtk.Box {
     // private bool doing_undo_redo = false;
 
     private Gtk.EventControllerKey key_controller; //[Gtk3] Does not work unless we keep this ref
-
+    private SimpleActionGroup actions;
     // public signal void loading_uri (string location);
     public signal void folder_deleted (GLib.File location);
     public signal void free_space_change ();
@@ -166,6 +166,20 @@ public class Files.BasicWindow : Gtk.Box {
     // }
 
     construct {
+        add_events (Gdk.EventMask.ALL_EVENTS_MASK);
+        var back_action = new SimpleAction ("back", null);
+        back_action.activate.connect (() => {
+            headerbar.go_back (1);
+        });
+        var forward_action = new SimpleAction ("forward", null);
+        forward_action.activate.connect (() => {
+            headerbar.go_forward (1);
+        });
+        actions = new SimpleActionGroup ();
+        actions.add_action (back_action);
+        actions.add_action (forward_action);
+        insert_action_group ("win", actions);
+
         _browser = new BasicBrowser ();
         // height_request = 300;
         // width_request = 500;
@@ -294,6 +308,47 @@ public class Files.BasicWindow : Gtk.Box {
         //     }
         // }
 
+        // key_controller = new Gtk.EventControllerKey (this) {
+        //     propagation_phase = CAPTURE
+        // };
+
+        // key_controller.key_pressed.connect ((keyval, keycode, state) => {
+        // warning ("WIN key press");
+        //     // Handle key press events when directoryview has focus except when it must retain
+        //     // focus because e.g.renaming
+        //     // var focus_widget = get_focus ();
+        //     // if (content != null && !content.locked_focus &&
+        //     //     focus_widget != null && focus_widget.is_ancestor (content)) {
+
+        //         var mods = state & Gtk.accelerator_get_default_mod_mask ();
+        //         var alt_pressed = MOD1_MASK in mods;
+        //         var shift_pressed = SHIFT_MASK in mods;
+        //         // /* Use find function instead of view interactive search */
+        //         // if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
+        //         //     /* Use printable characters (except space) to initiate search */
+        //         //     /* Space is handled by directory view to open file items */
+        //         //     var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
+        //         //     if (uc.isprint () && !uc.isspace ()) {
+        //         //         activate_action ("find", uc.to_string ());
+        //         //         return Gdk.EVENT_STOP;
+        //         //     }
+        //         // }
+
+        //         switch (keyval) {
+        //             case Gdk.Key.Left:
+        //                 if (alt_pressed) {
+        //                     warning ("go back");
+        //                 }
+
+        //                 break;
+        //             default:
+        //                 break;
+        //         }
+        //     // }
+
+        //     return Gdk.EVENT_PROPAGATE;
+        // });
+
         realize.connect (() => {
             Timeout.add (1000, () => {
                 headerbar.update_location_bar (uri, false);
@@ -305,9 +360,39 @@ public class Files.BasicWindow : Gtk.Box {
             update_labels (slot.uri);
         });
         // present ();
+
+        slot.key_press.connect (check_shortcuts);
         show_all ();
     }
 
+    private bool check_shortcuts (uint keyval, bool control_pressed, bool alt_pressed, bool shift_pressed) {
+    warning ("slot key press");
+        switch (keyval) {
+            case Gdk.Key.Left:
+            warning ("Key left");
+                if (alt_pressed) {
+                    warning ("go back");
+                    headerbar.go_back (1);
+                    return true;
+                }
+
+                break;
+            case Gdk.Key.Right:
+            warning ("Key Right");
+                if (alt_pressed) {
+                    warning ("go back");
+                    headerbar.go_forward (1);
+                    return true;
+                }
+
+                break;
+
+            default:
+                break;
+        }
+
+        return false;
+    }
     // public unowned Gtk.Widget remove_headerbar () {
     //     main_grid.remove (headbar);
     //     return headbar;
@@ -478,32 +563,7 @@ public class Files.BasicWindow : Gtk.Box {
         // headerbar.uri_path_change_reuest.connect (content.on_path_change_request);
         // undo_manager.request_menu_update.connect (update_undo_actions);
 
-        // key_controller = new Gtk.EventControllerKey (this) {
-        //     propagation_phase = CAPTURE
-        // };
 
-        // key_controller.key_pressed.connect ((keyval, keycode, state) => {
-        //     // Handle key press events when directoryview has focus except when it must retain
-        //     // focus because e.g.renaming
-        //     var focus_widget = get_focus ();
-        //     if (content != null && !content.locked_focus &&
-        //         focus_widget != null && focus_widget.is_ancestor (content)) {
-
-        //         var mods = state & Gtk.accelerator_get_default_mod_mask ();
-        //         /* Use find function instead of view interactive search */
-        //         if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
-        //             /* Use printable characters (except space) to initiate search */
-        //             /* Space is handled by directory view to open file items */
-        //             var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
-        //             if (uc.isprint () && !uc.isspace ()) {
-        //                 activate_action ("find", uc.to_string ());
-        //                 return Gdk.EVENT_STOP;
-        //             }
-        //         }
-        //     }
-
-        //     return Gdk.EVENT_PROPAGATE;
-        // });
 
         // //TODO Rewrite for Gtk4
         // window_state_event.connect ((event) => {
