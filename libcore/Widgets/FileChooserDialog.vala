@@ -273,8 +273,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
             if (list_filters ().length () == 0) {
                 filter_box.visible = false;
-            } else if (filter_box.active_id == null) {
-                filter_box.active = 0;
             }
 
             if (choices_box.get_children ().length () == 0) {
@@ -382,6 +380,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             if (filter != f) {
                 warning ("set filter to %s", f.get_filter_name ());
                 filter = f;
+                message_label.label = f.get_filter_name ();
             } else {
                 warning ("filter not changed - current %s", filter != null ? filter.get_filter_name () : "null");
             }
@@ -592,6 +591,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             filter_box.visible = true;
             // filter_list.append (new_filter);
             warning ("added filter %s", name);
+            filter_box.active = 0;
         }
     }
 

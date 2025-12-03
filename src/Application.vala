@@ -240,6 +240,10 @@ warning ("present file chooser finished");
             dialog.set_uri ("");
         }
 
+        var list = dialog.list_filters ();
+        foreach (var f in list) {
+            warning ("got filter %s", f.get_filter_name ());
+        }
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
         dialog.response.connect ((id) => {
