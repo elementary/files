@@ -688,6 +688,7 @@ namespace Files {
             // slot.ctab.file_activated ();
         }
 
+            //TODO Move up heirarchy
             // if (is_frozen || selection == null) {
             //     return;
             // }

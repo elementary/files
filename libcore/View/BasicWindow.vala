@@ -224,7 +224,9 @@ public class Files.BasicWindow : Gtk.Box {
         // free_space_change.connect (sidebar.on_free_space_change);
         // content = new BasicViewContainer ();
         slot = new BasicSlot (default_location, LIST);
-
+        slot.file_activated.connect (() => {
+            file_activated ();
+        });
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             expand = true,
             position = Files.app_settings.get_int ("sidebar-width")

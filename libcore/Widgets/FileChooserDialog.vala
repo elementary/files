@@ -430,6 +430,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         var file = selected.first ().data;
         var only_one = (selected.first ().next)== null;
         if (only_one && file.is_folder ()) {
+            warning ("FD activate sleected items");
             set_current_folder (file.location);
             // chooser.content.dir_view.path_change_request (get_file (), Files.OpenFlag.DEFAULT, false);
         } else if (only_one || select_multiple) {
