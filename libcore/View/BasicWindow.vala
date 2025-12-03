@@ -167,7 +167,6 @@ public class Files.BasicWindow : Gtk.Box {
 
     construct {
         _browser = new BasicBrowser ();
-        warning ("BasicWindow construct");
         // height_request = 300;
         // width_request = 500;
         // icon_name = "system-file-manager";
@@ -243,7 +242,6 @@ public class Files.BasicWindow : Gtk.Box {
 
         add (lside_pane);
 
-        warning ("added grid");
         /** Apply preferences */
         var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
 
@@ -297,7 +295,6 @@ public class Files.BasicWindow : Gtk.Box {
         });
 
         // present ();
-        warning ("donw construct BasicWindow");
         show_all ();
     }
 
@@ -718,7 +715,6 @@ public class Files.BasicWindow : Gtk.Box {
     public bool set_location (
         GLib.File? _location,
         ViewMode mode) {
-warning ("BW set location");
             GLib.File location;
             GLib.FileType ftype;
 
@@ -751,13 +747,11 @@ warning ("BW set location");
             // } else {
             //     content.add_view (mode, location);
             // }
-warning ("got location of folder");
             path_change (location);
             return true;
     }
 
     public void path_change (GLib.File loc) {
-    warning ("ADV path change %s", loc.get_uri ());
         slot.user_path_change_request (loc, true);
     }
 

@@ -34,7 +34,6 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
     }
 
     construct {
-    warning ("Basic HeadBar construct");
         var back_action = new SimpleAction ("back", VariantType.INT32);
         back_action.activate.connect (action_back);
         var forward_action = new SimpleAction ("forward", VariantType.INT32);
@@ -43,7 +42,6 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
         actions.add_action (back_action);
         actions.add_action (forward_action);
         insert_action_group ("header", actions);
-warning ("inserted actions");
         button_back = new ButtonWithMenu ("go-previous-symbolic");
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
@@ -52,19 +50,15 @@ warning ("inserted actions");
             go_back (1);
         });
 
-warning ("constructed back button");
         button_forward = new ButtonWithMenu ("go-next-symbolic");
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
         button_forward.clicked.connect (() => {
             go_forward (1);
         });
-warning ("constructed buttons");
 
         location_bar = new BasicLocationBar ();
-        warning ("setting custom title");
         custom_title = location_bar;
-        warning ("done");
         centering_policy = LOOSE;
         show_close_button = true;
 
@@ -129,7 +123,6 @@ warning ("constructed buttons");
     }
 
     public void update_location_bar (string new_path, bool with_animation = true) {
-        warning ("update location bar path %s", new_path);
         location_bar.with_animation = with_animation;
         location_bar.set_display_path (new_path);
         location_bar.with_animation = true;

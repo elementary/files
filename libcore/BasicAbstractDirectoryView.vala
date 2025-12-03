@@ -763,14 +763,12 @@ namespace Files {
         }
 
         protected void connect_directory_loading_handlers (Directory dir) {
-            warning ("connect dir loading handlers");
             model.set_sorting_off ();
             dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_directory_done_loading);
         }
 
         protected void disconnect_directory_loading_handlers (Directory dir) {
-            warning ("disconnect dir loading handlers");
             model.set_sorting_on ();
             dir.file_loaded.disconnect (on_directory_file_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);

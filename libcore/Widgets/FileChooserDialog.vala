@@ -35,7 +35,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         }
     }
 
-    private Gtk.FileFilter? _filter;
+    private Gtk.FileFilter? _filter = null;
     public Gtk.FileFilter? filter {
         get {
             return _filter;
@@ -49,6 +49,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             _filter = value;
             filter_box.set_active_id (value != null ? value.get_filter_name () : null);
             chooser.filter = _filter;
+            // warning ("set filter %s", value.get_filter_name ());
         }
     }
 
@@ -58,12 +59,13 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         }
 
         set {
+            warning ("set accept label");
             accept_button.label = value;
         }
     }
 
-    private SList<Gtk.FileFilter> filter_list;
-
+    // private SList<Gtk.FileFilter> filter_list;
+    private Gtk.TreeStore filter_model;
     // private Hdy.HeaderBar header;
     // private View.Chrome.BasicLocationBar location_bar;
 
@@ -72,7 +74,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     // private BasicWindow window;
 
     private Gtk.Button accept_button;
-    private Gtk.ComboBoxText filter_box;
+    private Gtk.ComboBox filter_box;
     private Gtk.Entry entry;
 
     private Gtk.Box choices_box;
@@ -143,6 +145,13 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         // };
 
         var cancel_button = new Gtk.Button.with_label (_("Cancel"));
+
+        accept_button = new Gtk.Button () {
+            use_underline = true,
+            can_default = true
+        };
+        accept_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+
         switch (action) {
             case OPEN:
                 accept_label = _("Open");
@@ -160,13 +169,15 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
                 assert_not_reached ();
         }
 
-        accept_button = new Gtk.Button.with_label (accept_label) {
-            use_underline = true,
-            can_default = true
+        filter_model = new Gtk.TreeStore (2, typeof (string), typeof (Gtk.FileFilter));
+        filter_box = new Gtk.ComboBox.with_model (filter_model) {
+            id_column = 0
         };
-        accept_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
-        filter_box = new Gtk.ComboBoxText ();
+		var renderer = new Gtk.CellRendererText ();
+		filter_box.pack_start (renderer, true);
+		filter_box.add_attribute (renderer, "text", 0);
+		filter_box.active = 0;
 
         extra_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
             hexpand = true,
@@ -293,21 +304,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         //     set_current_folder_uri (path);
         // });
 
-        filter_box.changed.connect (() => {
-            warning ("filter box chaged - active id %s", filter_box.active_id);
-            Gtk.FileFilter? f = null;
-            if (filter_box.active_id != null) {
-                f = filter_list.search<string> (
-                    filter_box.active_id,
-                    (a, b) => strcmp (a.get_filter_name (), b)
-                ).data;
-            }
-
-            if (filter != f) {
-                filter = f;
-            }
-        });
-
         // tree_view.button_release_event.connect ((w, e) => {
         //     unowned var tv = (Gtk.TreeView) w;
         //     if (e.type == Gdk.EventType.@2BUTTON_PRESS) {
@@ -358,8 +354,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         //     location_bar.set_display_path (current_path);
         // });
 
-
-
         cancel_button.clicked.connect (() => response (Gtk.ResponseType.CANCEL));
         accept_button.clicked.connect (() => response (Gtk.ResponseType.OK));
 
@@ -374,8 +368,58 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
         set_current_folder_uri (settings.get_string ("last-folder-uri"));
 
+
+        filter_box.changed.connect (() => {
+            warning ("filter box chaged - active id %s", filter_box.active_id);
+            Gtk.FileFilter? f = filter_from_id (filter_box.active_id);
+            // if (filter_box.active_id != null) {
+            //     f = filter_list.search<string> (
+            //         filter_box.active_id,
+            //         (a, b) => strcmp (a.get_filter_name (), b)
+            //     ).data;
+            // }
+
+            if (filter != f) {
+                warning ("set filter to %s", f.get_filter_name ());
+                filter = f;
+            } else {
+                warning ("filter not changed - current %s", filter != null ? filter.get_filter_name () : "null");
+            }
+        });
+
         show_all ();
-        warning ("done construct FilesDialog");
+    }
+
+    private Gtk.FileFilter? filter_from_id (string id) {
+        // Gtk.FileFilter? _filter = null;
+        // string? _id;
+        // Gtk.TreeIter? iter;
+        // filter_model.get_iter_first (out iter);
+        // filter_model.@get (iter, 0, out _id);
+        // while (id != _id && filter_model.iter_next (ref iter)) {
+        //     filter_model.@get (iter, 0, out _id);
+        // }
+
+        // if (iter != null) {
+        //     filter_model.@get (iter, 1, out _filter);
+        // }
+
+        // return _filter;
+
+        Gtk.FileFilter? return_filter = null;
+        Gtk.FileFilter? _filter = null;
+        string? _id = null;
+        filter_model.@foreach ((model, path, iter) => {
+            model.@get (iter, 0, out _id, 1, out _filter);
+            if (id == _id) {
+                return_filter = _filter;
+                return true;
+            }
+
+            return false;
+        });
+
+        return return_filter;
     }
 
     public bool set_initial_location (GLib.File? loc) {
@@ -541,11 +585,13 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
         var name = new_filter.get_filter_name ();
 
-        if (filter_list.search<string> (name, (a, b) => strcmp (a.get_filter_name (), b)) == null) {
-            //TODO filter the view;
-            filter_box.append (name, name);
+        if (filter_from_id (name) == null) {
+            Gtk.TreeIter? iter = null;
+            filter_model.append (out iter, null);
+            filter_model.@set (iter, 0, name, 1, new_filter);
             filter_box.visible = true;
-            filter_list.append (new_filter);
+            // filter_list.append (new_filter);
+            warning ("added filter %s", name);
         }
     }
 
@@ -571,6 +617,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
     // public void save_and_unregister () {
     public override void dispose () {
+    warning ("dialog dispose");
         int w, h;
         get_size (out w, out h);
         settings.set_string ("last-folder-uri", get_current_folder_uri ());
@@ -674,7 +721,15 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public SList<unowned Gtk.FileFilter> list_filters () {
-        return filter_list.copy ();
+        SList<unowned Gtk.FileFilter> list = null;
+        filter_model.@foreach ((model, path, iter) => {
+            Gtk.FileFilter? _filter;
+            model.@get (iter, 1, out _filter);
+            list.append (_filter);
+            return false;
+        });
+
+        return list.copy ();
     }
 }
     /* Unimplemented FileChooser interface */

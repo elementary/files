@@ -84,7 +84,6 @@ namespace Files {
         }
 
         construct {
-            warning ("Basic Slot construct");
             switch (mode) {
                 // case ViewMode.MILLER_COLUMNS:
                 //     dir_view = new Files.ColumnView (this);
@@ -443,7 +442,6 @@ namespace Files {
         }
 
         public string get_empty_message () {
-        warning ("get empty message");
             string msg = EMPTY_MESSAGE;
             if (directory == null) {
                 return msg;

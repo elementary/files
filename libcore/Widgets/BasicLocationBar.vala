@@ -63,7 +63,6 @@ namespace Files {
         }
 
         public BasicLocationBar (Navigatable? _bread = null) {
-        warning ("create BasicLocationBar");
             if (_bread == null) {
                 bread = new BasicBreadcrumbsEntry ();
             } else {
