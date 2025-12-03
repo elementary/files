@@ -189,6 +189,7 @@ namespace Files {
         }
 
         private void on_directory_done_loading (Directory dir) requires (dir != null) {
+        warning ("on dir done loading");
             directory_loaded (dir);
 
             // /*  Column View requires slots to determine their own width (other views' width determined by Window */
@@ -274,7 +275,6 @@ namespace Files {
             // }
         }
 
-        // For FileChooser
         public void on_path_change_request (string _uri) {
             user_path_change_request (GLib.File.new_for_uri (_uri));
         }

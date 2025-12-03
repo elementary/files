@@ -704,7 +704,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public void set_current_folder_uri (string uri) { //Navigate to this folder
-        chooser.path_change (GLib.File.new_for_uri (uri));
+        chooser.path_change (uri);
     }
 
     public void set_current_name (string text) {

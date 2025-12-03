@@ -45,7 +45,7 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
         button_back = new ButtonWithMenu ("go-previous-symbolic");
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        button_back.clicked.connect (() => {
+        button_back.slow_press.connect (() => {
             warning ("back clicked");
             go_back (1);
         });
@@ -53,7 +53,7 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
         button_forward = new ButtonWithMenu ("go-next-symbolic");
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        button_forward.clicked.connect (() => {
+        button_forward.slow_press.connect (() => {
             go_forward (1);
         });
 
@@ -79,6 +79,7 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
     }
 
     public void set_back_menu (Gee.List<string> path_list, bool can_go_back) {
+    warning ("set back menu");
         /* Clear the back menu and re-add the correct entries. */
         var back_menu = new Menu ();
         for (int i = 0; i < path_list.size; i++) {

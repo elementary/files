@@ -43,6 +43,7 @@ public class Files.ButtonWithMenu : Gtk.ToggleButton {
             button = Gdk.BUTTON_PRIMARY
         };
         press_gesture.released.connect (() => {
+        warning ("press gesture release");
             slow_press ();
             press_gesture.set_state (CLAIMED);
         });

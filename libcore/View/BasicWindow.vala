@@ -227,6 +227,8 @@ public class Files.BasicWindow : Gtk.Box {
         slot.file_activated.connect (() => {
             file_activated ();
         });
+        slot.directory_loaded.connect (on_directory_loaded);
+
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             expand = true,
             position = Files.app_settings.get_int ("sidebar-width")
@@ -248,7 +250,7 @@ public class Files.BasicWindow : Gtk.Box {
         var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
 
         // headerbar.path_change_request.connect (content.on_path_change_request);
-        headerbar.path_change_request.connect (slot.on_path_change_request);
+        headerbar.path_change_request.connect (path_change);
 
         sidebar.request_focus.connect (() => {
             // return !content.locked_focus && !locked_focus; //NOT USED???
@@ -259,18 +261,21 @@ public class Files.BasicWindow : Gtk.Box {
         });
 
         // sidebar.path_change_request.connect (content.on_path_change_request);
-        sidebar.path_change_request.connect (slot.on_path_change_request);
+        sidebar.path_change_request.connect (path_change);
 
         headerbar.go_back.connect ((steps) => {
-            string? path = browser.go_back (steps);
-            if (path != null) {
-                path_change (GLib.File.new_for_commandline_arg (path));
+            string? uri = browser.go_back (steps);
+            warning ("new path %s", uri);
+            if (uri != null) {
+                path_change (uri);
+            } else {
+                warning ("Null path");
             }
         });
         headerbar.go_forward.connect ((steps) => {
-            string? path = browser.go_forward (steps);
-            if (path != null) {
-                path_change (GLib.File.new_for_commandline_arg (path));
+            string? uri = browser.go_forward (steps);
+            if (uri != null) {
+                path_change (uri);
             }
         });
         // connect_content_signals (content);
@@ -296,6 +301,9 @@ public class Files.BasicWindow : Gtk.Box {
             });
         });
 
+        slot.notify["uri"].connect (() => {
+            update_labels (slot.uri);
+        });
         // present ();
         show_all ();
     }
@@ -749,12 +757,14 @@ public class Files.BasicWindow : Gtk.Box {
             // } else {
             //     content.add_view (mode, location);
             // }
-            path_change (location);
+            path_change (location.get_uri ());
             return true;
     }
 
-    public void path_change (GLib.File loc) {
-        slot.user_path_change_request (loc, true);
+    public void path_change (string uri) {
+        warning ("slot path change");
+        slot.on_path_change_request (uri);
+        browser.record_uri (uri);
     }
 
     public void set_selected_location (GLib.File loc) {
@@ -882,6 +892,7 @@ public class Files.BasicWindow : Gtk.Box {
     // }
 
     private void on_directory_loaded () {
+        warning ("on dir loaded");
         headerbar.set_back_menu (browser.go_back_list (), browser.can_go_back);
         headerbar.set_forward_menu (browser.go_forward_list (), browser.can_go_forward);
         headerbar.update_location_bar (uri, true);

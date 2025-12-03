@@ -34,7 +34,7 @@ public abstract class Files.AbstractSlot : GLib.Object {
         set construct {
             // if (value != null) {
                 directory = Directory.from_gfile (value);
-
+                notify_property ("uri");
         }
     }
 
