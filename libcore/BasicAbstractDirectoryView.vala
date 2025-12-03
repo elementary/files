@@ -2008,7 +2008,7 @@ namespace Files {
 
 
         // protected void show_context_menu (Gdk.Event event) requires (window != null) {
-        protected void show_context_menu (Gdk.Event event) {
+        protected virtual void show_context_menu (Gdk.Event event) {
             /* select selection or background context menu */
             update_menu_actions ();
 
@@ -2150,12 +2150,12 @@ namespace Files {
             // var paste_menuitem = new Gtk.MenuItem ();
             // paste_menuitem.action_name = "common.paste";
 
-            var bookmark_menuitem = new Gtk.MenuItem ();
-            bookmark_menuitem.add (new Granite.AccelLabel (
-                _("Add to Bookmarks"),
-                "<Ctrl>d"
-            ));
-            bookmark_menuitem.action_name = "common.bookmark";
+            // var bookmark_menuitem = new Gtk.MenuItem ();
+            // bookmark_menuitem.add (new Granite.AccelLabel (
+            //     _("Add to Bookmarks"),
+            //     "<Ctrl>d"
+            // ));
+            // bookmark_menuitem.action_name = "common.bookmark";
 
             // var properties_menuitem = new Gtk.MenuItem ();
             // properties_menuitem.add (new Granite.AccelLabel (
@@ -2164,38 +2164,38 @@ namespace Files {
             // ));
             // properties_menuitem.action_name = "common.properties";
 
-            Gtk.MenuItem? select_all_menuitem = null;
-            Gtk.MenuItem? deselect_all_menuitem = null;
-            Gtk.MenuItem? invert_selection_menuitem = null;
-            if (!all_selected) {
-                select_all_menuitem = new Gtk.MenuItem () {
-                    action_name = "common.select-all"
-                };
-                select_all_menuitem.add (new Granite.AccelLabel.from_action_name (
-                    _("Select All"),
-                    select_all_menuitem.action_name
-                ));
+            // Gtk.MenuItem? select_all_menuitem = null;
+            // Gtk.MenuItem? deselect_all_menuitem = null;
+            // Gtk.MenuItem? invert_selection_menuitem = null;
+            // if (!all_selected) {
+            //     select_all_menuitem = new Gtk.MenuItem () {
+            //         action_name = "common.select-all"
+            //     };
+            //     select_all_menuitem.add (new Granite.AccelLabel.from_action_name (
+            //         _("Select All"),
+            //         select_all_menuitem.action_name
+            //     ));
 
-                if (get_selected_files () != null) {
-                    invert_selection_menuitem = new Gtk.MenuItem () {
-                        action_name = "selection.invert-selection"
-                    };
-                    invert_selection_menuitem.add (new Granite.AccelLabel.from_action_name (
-                        _("Invert Selection"),
-                        invert_selection_menuitem.action_name
-                    ));
-                }
-            } else {
-                deselect_all_menuitem = new Gtk.MenuItem () {
-                    action_name = "common.select-all"
-                };
-                deselect_all_menuitem.add (new Granite.AccelLabel.from_action_name (
-                    _("Deselect All"),
-                    deselect_all_menuitem.action_name
-                ));
-            }
+            //     if (get_selected_files () != null) {
+            //         invert_selection_menuitem = new Gtk.MenuItem () {
+            //             action_name = "selection.invert-selection"
+            //         };
+            //         invert_selection_menuitem.add (new Granite.AccelLabel.from_action_name (
+            //             _("Invert Selection"),
+            //             invert_selection_menuitem.action_name
+            //         ));
+            //     }
+            // } else {
+            //     deselect_all_menuitem = new Gtk.MenuItem () {
+            //         action_name = "common.select-all"
+            //     };
+            //     deselect_all_menuitem.add (new Granite.AccelLabel.from_action_name (
+            //         _("Deselect All"),
+            //         deselect_all_menuitem.action_name
+            //     ));
+            // }
 
-            if (get_selected_files () != null) { // Add selection actions
+            // if (get_selected_files () != null) { // Add selection actions
                 // var cut_menuitem = new Gtk.MenuItem ();
                 // cut_menuitem.add (new Granite.AccelLabel (
                 //     _("Cut"),
@@ -2203,13 +2203,13 @@ namespace Files {
                 // ));
                 // cut_menuitem.action_name = "selection.cut";
 
-                var copy_menuitem = new Gtk.MenuItem ();
-                ///TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-                copy_menuitem.add (new Granite.AccelLabel (
-                    _("Copy"),
-                    "<Ctrl>c"
-                ));
-                copy_menuitem.action_name = "common.copy";
+                // var copy_menuitem = new Gtk.MenuItem ();
+                // ///TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
+                // copy_menuitem.add (new Granite.AccelLabel (
+                //     _("Copy"),
+                //     "<Ctrl>c"
+                // ));
+                // copy_menuitem.action_name = "common.copy";
 
                 // var trash_menuitem = new Gtk.MenuItem ();
                 // trash_menuitem.add (new Granite.AccelLabel (
@@ -2274,91 +2274,91 @@ namespace Files {
             //         menu.add (new Gtk.SeparatorMenuItem ());
             //         menu.add (properties_menuitem);
             //     } else {
-            //         if (valid_selection_for_edit ()) {
-            //             var rename_menuitem = new Gtk.MenuItem ();
-            //             rename_menuitem.add (new Granite.AccelLabel (
-            //                 _("Rename…"),
-            //                 "F2"
-            //             ));
-            //             rename_menuitem.action_name = "selection.rename";
+                    // if (valid_selection_for_edit ()) {
+                    //     var rename_menuitem = new Gtk.MenuItem ();
+                    //     rename_menuitem.add (new Granite.AccelLabel (
+                    //         _("Rename…"),
+                    //         "F2"
+                    //     ));
+                    //     rename_menuitem.action_name = "selection.rename";
 
-            //             var copy_link_menuitem = new Gtk.MenuItem ();
-            //             copy_link_menuitem.add (new Granite.AccelLabel (
-            //                 _("Copy as Link"),
-            //                 "<Shift><Ctrl>c"
-            //             ));
-            //             copy_link_menuitem.action_name = "common.copy-link";
+                    //     var copy_link_menuitem = new Gtk.MenuItem ();
+                    //     copy_link_menuitem.add (new Granite.AccelLabel (
+                    //         _("Copy as Link"),
+                    //         "<Shift><Ctrl>c"
+                    //     ));
+                    //     copy_link_menuitem.action_name = "common.copy-link";
 
-            //             if (menu.get_children ().find (open_submenu_item) != null) {
-            //                 menu.add (new Gtk.SeparatorMenuItem ());
-            //             }
+                        // if (menu.get_children ().find (open_submenu_item) != null) {
+                        //     menu.add (new Gtk.SeparatorMenuItem ());
+                        // }
 
-            //             menu.add (cut_menuitem);
-            //             menu.add (copy_menuitem);
-            //             menu.add (copy_link_menuitem);
+                        // menu.add (cut_menuitem);
+                        // menu.add (copy_menuitem);
+                        // menu.add (copy_link_menuitem);
 
-            //             // Do not display the 'Paste into' menuitem if nothing to paste
-            //             // Do not display 'Paste' menuitem if there is a selected folder ('Paste into' enabled)
-            //             if (common_actions.get_action_enabled ("paste-into") &&
-            //                 clipboard != null && clipboard.can_paste) {
-            //                 var paste_into_menuitem = new Gtk.MenuItem () {
-            //                     action_name = "common.paste-into"
-            //                 };
+                        // Do not display the 'Paste into' menuitem if nothing to paste
+                        // Do not display 'Paste' menuitem if there is a selected folder ('Paste into' enabled)
+                        // if (common_actions.get_action_enabled ("paste-into") &&
+                        //     clipboard != null && clipboard.can_paste) {
+                        //     var paste_into_menuitem = new Gtk.MenuItem () {
+                        //         action_name = "common.paste-into"
+                        //     };
 
-            //                 if (clipboard.files_linked) {
-            //                     paste_into_menuitem.add (new Granite.AccelLabel (
-            //                         _("Paste Link into Folder"),
-            //                         "<Shift><Ctrl>v"
-            //                     ));
-            //                 } else {
-            //                     paste_into_menuitem.add (new Granite.AccelLabel (
-            //                         _("Paste into Folder"),
-            //                         "<Shift><Ctrl>v"
-            //                     ));
-            //                 }
+                        //     if (clipboard.files_linked) {
+                        //         paste_into_menuitem.add (new Granite.AccelLabel (
+                        //             _("Paste Link into Folder"),
+                        //             "<Shift><Ctrl>v"
+                        //         ));
+                        //     } else {
+                        //         paste_into_menuitem.add (new Granite.AccelLabel (
+                        //             _("Paste into Folder"),
+                        //             "<Shift><Ctrl>v"
+                        //         ));
+                        //     }
 
-            //                 menu.add (paste_into_menuitem);
-            //             } else if (common_actions.get_action_enabled ("paste") &&
-            //                 clipboard != null && clipboard.can_paste) {
+                        //     menu.add (paste_into_menuitem);
+                        // } else if (common_actions.get_action_enabled ("paste") &&
+                        //     clipboard != null && clipboard.can_paste) {
 
-            //                 paste_menuitem.add (new Granite.AccelLabel (
-            //                     _("Paste"),
-            //                     "<Ctrl>v"
-            //                 ));
-            //                 menu.add (paste_menuitem);
-            //             }
+                            // paste_menuitem.add (new Granite.AccelLabel (
+                            //     _("Paste"),
+                            //     "<Ctrl>v"
+                            // ));
+                            // menu.add (paste_menuitem);
+                        // }
 
-            //             if (select_all_menuitem != null) {
-            //                 menu.add (select_all_menuitem);
-            //             }
+                        // if (select_all_menuitem != null) {
+                        //     menu.add (select_all_menuitem);
+                        // }
 
-            //             if (deselect_all_menuitem != null) {
-            //                 menu.add (deselect_all_menuitem);
-            //             }
+                        // if (deselect_all_menuitem != null) {
+                        //     menu.add (deselect_all_menuitem);
+                        // }
 
-            //             if (invert_selection_menuitem != null) {
-            //                 menu.add (invert_selection_menuitem);
-            //             }
+                        // if (invert_selection_menuitem != null) {
+                        //     menu.add (invert_selection_menuitem);
+                        // }
 
-            //             menu.add (new Gtk.SeparatorMenuItem ());
-            //             if (slot.directory.has_trash_dirs && !Files.is_admin ()) {
-            //                 menu.add (trash_menuitem);
-            //             } else {
-            //                 menu.add (delete_menuitem);
-            //             }
+                        // menu.add (new Gtk.SeparatorMenuItem ());
+                        // if (slot.directory.has_trash_dirs && !Files.is_admin ()) {
+                        //     menu.add (trash_menuitem);
+                        // } else {
+                        //     menu.add (delete_menuitem);
+                        // }
 
-            //             menu.add (rename_menuitem);
-            //         }
+                        // menu.add (rename_menuitem);
+                    // }
 
             //         /* Do  not offer to bookmark if location is already bookmarked */
             //         if (common_actions.get_action_enabled ("bookmark") &&
             //             window.can_bookmark_uri (selected_files.data.uri)) {
 
-            //             menu.add (bookmark_menuitem);
+                        // menu.add (bookmark_menuitem);
             //         }
 
-            //         menu.add (new Gtk.SeparatorMenuItem ());
-            //         menu.add (properties_menuitem);
+                    // menu.add (new Gtk.SeparatorMenuItem ());
+                    // menu.add (properties_menuitem);
             //     }
             // } else { // Add background folder actions
             //     if (in_trash) {
@@ -2436,8 +2436,15 @@ namespace Files {
 
             //         menu.add (wallpaper_menuitem);
             //     }
-            }
+            // }
 
+            // if () {
+
+            // } else () {
+
+            // }
+
+            menu.add (new SortSubMenuItem ());
             menu.set_screen (null);
             menu.attach_to_widget (this, null);
 
@@ -2446,9 +2453,13 @@ namespace Files {
                 menu.get_style_context ().add_class (Gtk.STYLE_CLASS_CONTEXT_MENU);
             }
 
+
+warning ("showing menu");
             menu.show_all ();
             menu.popup_at_pointer (event);
         }
+
+
 
         private class SortSubMenuItem : Gtk.MenuItem {
             construct {
