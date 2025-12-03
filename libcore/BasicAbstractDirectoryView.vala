@@ -409,12 +409,10 @@ namespace Files {
                 // key_controller.key_released.connect (() => {warning ("Controller release"); scroll_controller.flags = NONE;});
 
                 view.scroll_event.connect ((event) => {
-                    warning ("view scroll event");
                     return on_scroll_event (event.delta_x, event.delta_y);
                 });
 
                 view.key_press_event.connect ((event) => {
-                    warning ("view legacy key press");
                     if (event.is_modifier == 0) {
                         // Check for shortcuts
                         var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
@@ -622,6 +620,8 @@ namespace Files {
                     }
                 });
             }
+
+            update_selected_files_and_menu ();
         }
 
         /* This function is only called by BasicSlot in order to select a file item after loading has completed.
@@ -3109,21 +3109,20 @@ warning ("showing menu");
         }
 
         protected void on_view_selection_changed () {
+        warning ("BADV on view selection changed");
             selected_files_invalid = true;
             one_or_less = (selected_files == null || selected_files.next == null);
         }
 
 /** Keyboard event handling **/
-        protected virtual bool on_legacy_key_press (Gdk.EventKey event) {
-            warning ("Legacy key press ");
-            return false;
-        }
+        // protected virtual bool on_legacy_key_press (Gdk.EventKey event) {
+        //     return false;
+        // }
 
         protected virtual bool on_view_key_press_event (uint original_keyval, uint keycode, Gdk.ModifierType state) {
             // if (is_frozen) {
             //     return true;
             // }
-warning ("BADV key[ress");
             var event = Gtk.get_current_event ();
             cancel_hover ();
 
@@ -3461,7 +3460,6 @@ warning ("Cut");
         }
 
         protected virtual bool on_scroll_event (double dx, double dy) {
-warning ("on scroll event");
             // if (is_frozen) {
             //     return;
             // }

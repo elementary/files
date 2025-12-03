@@ -151,6 +151,7 @@ public class Files.BasicWindow : Gtk.EventBox {
     public signal void folder_deleted (GLib.File location);
     public signal void free_space_change ();
     public signal void file_activated ();
+    public signal void selection_changed ();
 
     // public BasicWindow (GLib.File? initial_location = null) {
     //     create_content.begin (initial_location, default_mode);
@@ -250,6 +251,9 @@ public class Files.BasicWindow : Gtk.EventBox {
         slot.directory_loaded.connect (on_directory_loaded);
         slot.bookmark_uri_request.connect (bookmark_uri);
         slot.key_press.connect (check_shortcuts);
+        slot.selection_changed.connect (() => {
+            selection_changed ();
+        });
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             expand = true,
@@ -370,6 +374,21 @@ public class Files.BasicWindow : Gtk.EventBox {
         // present ();
 
         show_all ();
+    }
+
+    public void get_selection_details (out uint n_selected, out bool folder_selected, out bool file_selected) {
+        n_selected = 0;
+        folder_selected = false;
+        file_selected = false;
+        uint n = 0;
+        foreach (var f in selected_files) {
+            n_selected++;
+            if (f.is_folder ()) {
+                folder_selected = true;
+            } else {
+                file_selected = true;
+            }
+        }
     }
 
     private bool check_shortcuts (uint keyval, bool control_pressed, bool alt_pressed, bool shift_pressed) {

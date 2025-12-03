@@ -327,6 +327,29 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             }
 
             chooser.file_activated.connect (activate_selected_items);
+            chooser.selection_changed.connect (() => {
+                uint n_selected = 0;
+                bool folder_selected = false, file_selected = false, can_accept = false;
+                chooser.get_selection_details (out n_selected, out folder_selected, out file_selected);
+                can_accept = n_selected == 1 || select_multiple;
+                if (can_accept) {
+                    switch (action) {
+                        case OPEN:
+                            can_accept = file_selected && !folder_selected;
+                            break;
+                        case SAVE:
+                            can_accept = file_selected && !folder_selected;
+                            break;
+                        case SELECT_FOLDER:
+                            can_accept = !file_selected && folder_selected;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                accept_button.sensitive = can_accept;
+            });
         });
 
         // previous_button.clicked.connect (() => {
