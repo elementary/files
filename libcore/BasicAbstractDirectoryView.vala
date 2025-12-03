@@ -313,7 +313,7 @@ namespace Files {
         // public signal void file_activated (); // So can use in FileChooser widget
 
         //TODO Rewrite in Object (), construct {} style
-        protected BasicAbstractDirectoryView (BasicSlot _slot, Gtk.SelectionMode selection_mode) {
+        protected BasicAbstractDirectoryView (BasicSlot _slot, Gtk.SelectionMode _selection_mode) {
             slot = _slot;
             editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
@@ -382,6 +382,7 @@ namespace Files {
             view = create_view ();
 
             if (view != null) {
+                set_selection_mode (_selection_mode);
                 scrolled_window.child = view;
                 connect_drag_drop_signals (view);
 

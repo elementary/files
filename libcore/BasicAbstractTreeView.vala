@@ -48,7 +48,7 @@ namespace Files {
                 rubber_banding = true
             };
 
-            tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
+            // tree.get_selection ().set_mode (selection_mode);
 
             name_column = new Gtk.TreeViewColumn () {
                 sort_column_id = Files.ListModel.ColumnID.FILENAME,
