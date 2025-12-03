@@ -289,7 +289,7 @@ namespace Files {
         protected Gtk.ScrolledWindow scrolled_window;
         private Gtk.Label empty_label;
         private Gtk.Overlay overlay;
-        private unowned ClipboardManager clipboard;
+        private ClipboardManager clipboard;
         protected Files.ListModel model;
         protected Gtk.TreeModelFilter filter_model;
         protected Files.IconRenderer icon_renderer;
@@ -349,6 +349,7 @@ namespace Files {
             child = overlay;
 
             // var app = (Files.Application)(GLib.Application.get_default ());
+            clipboard = ClipboardManager.get_for_display ();
             // clipboard = app.get_clipboard_manager ();
             // recent = app.get_recent_manager ();
             // app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
@@ -1421,6 +1422,7 @@ namespace Files {
         // }
 
         private void on_common_action_copy (GLib.SimpleAction action, GLib.Variant? param) {
+        warning ("comman action copy");
             clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
         }
 
@@ -2451,7 +2453,50 @@ namespace Files {
             ));
             bookmark_menuitem.action_name = "common.bookmark";
 
+            var n_selected = selected_files.length ();
+            // var selected_file = selected_files.data;
+            Files.File? selected_folder = null;
+
+            if (n_selected == 0) {
+                selected_folder = slot.file;
+            } else if (n_selected == 1 && selected_file.is_folder ()) {
+                selected_folder = selected_file;
+            }
+
+            if (n_selected > 0) {
+                var copy_menuitem = new Gtk.MenuItem ();
+                ///TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
+                copy_menuitem.add (new Granite.AccelLabel (
+                    _("Copy"),
+                    "<Ctrl>c"
+                ));
+                copy_menuitem.action_name = "common.copy";
+                menu.add (copy_menuitem);
+            }
+
+
+            if (selected_folder != null) {
+                var open_with_menuitem = new Gtk.MenuItem ();
+                open_with_menuitem.add (new Granite.AccelLabel (
+                    _("Open in FileManager"),
+                    ""
+                ));
+
+                //TODO Use action
+                open_with_menuitem.activate.connect (() => {
+                    try {
+                        Gtk.show_uri_on_window (null, selected_folder.uri, Gdk.CURRENT_TIME);
+                    } catch (Error e) {
+
+                    }
+
+                });
+
+                menu.add (open_with_menuitem);
+            }
+
             menu.add (bookmark_menuitem);
+            menu.add (new Gtk.SeparatorMenuItem ());
             menu.add (new SortSubMenuItem ());
             menu.set_screen (null);
             menu.attach_to_widget (this, null);
