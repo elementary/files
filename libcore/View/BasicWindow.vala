@@ -242,6 +242,8 @@ public class Files.BasicWindow : Gtk.EventBox {
             file_activated ();
         });
         slot.directory_loaded.connect (on_directory_loaded);
+        slot.bookmark_uri_request.connect (bookmark_uri);
+        slot.key_press.connect (check_shortcuts);
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             expand = true,
@@ -361,7 +363,6 @@ public class Files.BasicWindow : Gtk.EventBox {
         });
         // present ();
 
-        slot.key_press.connect (check_shortcuts);
         show_all ();
     }
 
@@ -911,7 +912,7 @@ public class Files.BasicWindow : Gtk.EventBox {
         // content.loading.connect (update_labels);
         warning ("connected loading");
         // slot.directory_loaded.connect (on_content_loading);
-        slot.directory_loaded.connect (on_directory_loaded);
+        // slot.directory_loaded.connect (on_directory_loaded);
         // content.loading.connect (on_content_loading);
 
         // content.active.connect (update_headerbar);

@@ -1318,7 +1318,7 @@ namespace Files {
                 location = slot.directory.file.get_target_location ();
             }
 
-            // window.bookmark_uri (location.get_uri ());
+            slot.bookmark_uri_request (location.get_uri ());
             //TODO Move to slot?
         }
 
@@ -2444,6 +2444,14 @@ namespace Files {
 
             // }
 
+            var bookmark_menuitem = new Gtk.MenuItem ();
+            bookmark_menuitem.add (new Granite.AccelLabel (
+                _("Add to Bookmarks"),
+                "<Ctrl>d"
+            ));
+            bookmark_menuitem.action_name = "common.bookmark";
+
+            menu.add (bookmark_menuitem);
             menu.add (new SortSubMenuItem ());
             menu.set_screen (null);
             menu.attach_to_widget (this, null);
@@ -2458,7 +2466,6 @@ warning ("showing menu");
             menu.show_all ();
             menu.popup_at_pointer (event);
         }
-
 
 
         private class SortSubMenuItem : Gtk.MenuItem {
@@ -2701,7 +2708,7 @@ warning ("showing menu");
             // action_set_enabled (selection_actions, "invert-selection", !renaming && is_selected);
             // action_set_enabled (common_actions, "select-all", !renaming && is_selected);
             // action_set_enabled (common_actions, "properties", !renaming && can_show_properties);
-            // action_set_enabled (common_actions, "bookmark", !renaming && can_bookmark);
+            action_set_enabled (common_actions, "bookmark", !renaming && can_bookmark);
             // action_set_enabled (common_actions, "copy", !renaming && !in_trash && can_copy);
             // action_set_enabled (common_actions, "copy-link", !renaming && !in_trash && !in_recent && can_copy);
             // action_set_enabled (common_actions, "bookmark", !renaming && !more_than_one_selected);
