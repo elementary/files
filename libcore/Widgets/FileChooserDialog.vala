@@ -47,7 +47,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             }
 
             _filter = value;
-            filter_box.set_active_id (value != null ? value.get_filter_name () : null);
+            filter_combo.set_active_id (value != null ? value.get_filter_name () : null);
             chooser.filter = _filter;
             // warning ("set filter %s", value.get_filter_name ());
         }
@@ -74,11 +74,11 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     // private BasicWindow window;
 
     private Gtk.Button accept_button;
-    private Gtk.ComboBox filter_box;
+    private Gtk.ComboBox filter_combo;
     private Gtk.Entry entry;
 
     private Gtk.Box choices_box;
-    private Gtk.Box extra_box;
+    private Gtk.Box filter_box;
 
     public Gtk.Label message_label;
 
@@ -169,22 +169,25 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
                 assert_not_reached ();
         }
 
-        filter_model = new Gtk.TreeStore (2, typeof (string), typeof (Gtk.FileFilter));
-        filter_box = new Gtk.ComboBox.with_model (filter_model) {
-            id_column = 0
-        };
+        // if (action != SELECT_FOLDER) {
+            filter_model = new Gtk.TreeStore (2, typeof (string), typeof (Gtk.FileFilter));
+            filter_combo = new Gtk.ComboBox.with_model (filter_model) {
+                id_column = 0
+            };
 
-		var renderer = new Gtk.CellRendererText ();
-		filter_box.pack_start (renderer, true);
-		filter_box.add_attribute (renderer, "text", 0);
-		filter_box.active = 0;
+		    var renderer = new Gtk.CellRendererText ();
+		    filter_combo.pack_start (renderer, true);
+		    filter_combo.add_attribute (renderer, "text", 0);
+		    filter_combo.active = 0;
 
-        extra_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
-            hexpand = true,
-            halign = START,
-            margin = 6
-        };
-        extra_box.pack_start (filter_box);
+            filter_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
+                hexpand = true,
+                halign = START,
+                margin = 6
+            };
+            filter_box.pack_start (filter_combo);
+        // }
+
         if (action == SAVE) {
             entry = new Gtk.Entry () {
                 placeholder_text = _("Enter name of file to save"),
@@ -198,8 +201,8 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             };
             entry_label.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
 
-            extra_box.add (entry_label);
-            extra_box.add (entry);
+            choices_box.pack_end (entry_label);
+            choices_box.pack_end (entry);
 
             entry.changed.connect (check_can_accept);
         }
@@ -216,7 +219,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             });
 
             read_only_check.bind_property ("active", this, "read-only");
-            extra_box.pack_end (read_only_check);
+            choices_box.pack_start (read_only_check);
         }
 
         var action_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
@@ -225,8 +228,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             margin = 6
         };
 
-        // action_box.pack_start (extra_box);
-        // action_box.set_child_secondary (extra_box, true);
         action_box.pack_end (cancel_button);
         action_box.pack_end (accept_button);
 
@@ -238,20 +239,13 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
         message_label = new Gtk.Label ("No Message");
         var grid = new Gtk.Box (HORIZONTAL, 6);
-        // grid.add (header);
-        // grid.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-        // grid.add (chooser);
-        // grid.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
         grid.add (message_label);
+        grid.add (filter_box);
         grid.add (choices_box);
-        grid.add (extra_box);
         grid.add (action_box);
         grid.show_all ();
 
         get_content_area ().add (grid);
-        // add_extra_widget (grid);
-
-        // setup_chooser ();
 
         settings = new Settings ("io.elementary.files.file-chooser");
         int width, height;
@@ -261,47 +255,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         default_height = height;
         default_width = width;
         can_focus = true;
-
-        var key_controller = new Gtk.EventControllerKey (this) {
-            propagation_phase = BUBBLE
-        };
-
-        key_controller.key_pressed.connect ((keyval, keycode, state) => {
-        warning ("WIN key press");
-            // Handle key press events when directoryview has focus except when it must retain
-            // focus because e.g.renaming
-            // var focus_widget = get_focus ();
-            // if (content != null && !content.locked_focus &&
-            //     focus_widget != null && focus_widget.is_ancestor (content)) {
-
-                var mods = state & Gtk.accelerator_get_default_mod_mask ();
-                var alt_pressed = MOD1_MASK in mods;
-                var shift_pressed = SHIFT_MASK in mods;
-                // /* Use find function instead of view interactive search */
-                // if (mods == 0 || mods == Gdk.ModifierType.SHIFT_MASK) {
-                //     /* Use printable characters (except space) to initiate search */
-                //     /* Space is handled by directory view to open file items */
-                //     var uc = (unichar)(Gdk.keyval_to_unicode (keyval));
-                //     if (uc.isprint () && !uc.isspace ()) {
-                //         activate_action ("find", uc.to_string ());
-                //         return Gdk.EVENT_STOP;
-                //     }
-                // }
-
-                switch (keyval) {
-                    case Gdk.Key.Left:
-                        if (alt_pressed) {
-                            warning ("go back");
-                        }
-
-                        break;
-                    default:
-                        break;
-                }
-            // }
-
-            return Gdk.EVENT_PROPAGATE;
-        });
 
         realize.connect (() => {
             warning ("dialog realozed");
@@ -316,6 +269,15 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
             if (list_filters ().length () == 0) {
                 filter_box.visible = false;
+                if (action == SELECT_FOLDER) {
+                    // Only show folders
+                    var filter_folder = new Gtk.FileFilter ();
+                    filter_folder.add_mime_type ("inode/directory");
+                    filter_folder.set_filter_name ("Folders");
+                    add_filter (filter_folder);
+                }
+            } else {
+                // We honor the user requested filters
             }
 
             if (choices_box.get_children ().length () == 0) {
@@ -411,9 +373,9 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         set_current_folder_uri (settings.get_string ("last-folder-uri"));
 
 
-        filter_box.changed.connect (() => {
-            warning ("filter box chaged - active id %s", filter_box.active_id);
-            Gtk.FileFilter? f = filter_from_id (filter_box.active_id);
+        filter_combo.changed.connect (() => {
+            warning ("filter box chaged - active id %s", filter_combo.active_id);
+            Gtk.FileFilter? f = filter_from_id (filter_combo.active_id);
             // if (filter_box.active_id != null) {
             //     f = filter_list.search<string> (
             //         filter_box.active_id,
@@ -445,15 +407,14 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
                 // Do not need to select anything to save
                 if (n_selected == 1 && file_selected) {
                     entry.text = get_file ().get_basename ();
-                } else {
-                    entry.text = "";
                 }
 
                 can_accept = n_selected <= 1 && !folder_selected && entry.text != "";
                 warning ("SAVE accept %s", can_accept.to_string ());
                 break;
             case SELECT_FOLDER:
-                can_accept = !file_selected && folder_selected;
+                can_accept = n_selected == 0 ||
+                            (n_selected == 1 && !file_selected && folder_selected);
                 break;
             default:
                 break;
@@ -582,7 +543,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         //     grid.border_width = 0;
         //     grid.margin_top = 2;  // seems to have a better result than using Gtk.Align.CENTER
 
-        //     extra_box.pack_start (grid);
+        //     filter_box.pack_start (grid);
 
         //     // bind the accept_button sensitivity with the entry text
         //     entry = find_child_by_name (grid, "<GtkFileChooserEntry>");
@@ -665,7 +626,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             filter_box.visible = true;
             // filter_list.append (new_filter);
             warning ("added filter %s", name);
-            filter_box.active = 0;
+            filter_combo.active = 0;
         }
     }
 

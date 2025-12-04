@@ -156,7 +156,7 @@ public class Files.FileChooserPortal : Object {
                 case Gtk.ResponseType.OK:
                     _results["uris"] = dialog.get_uris ();
                     _results["choices"] = dialog.get_choices ();
-                    // _results["writable"] = !dialog.read_only;
+                    _results["writable"] = !dialog.read_only;
                     if (dialog.filter != null) {
                         _results["current_filter"] = dialog.filter.to_gvariant ();
                     }

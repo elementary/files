@@ -202,7 +202,7 @@ public class Files.Application : Gtk.Application {
 
         window.present ();
 
-        present_filechooser.begin (Gtk.FileChooserAction.SAVE, GLib.File.new_for_path ("/home/jeremy/Pictures"), (obj, res) => {
+        present_filechooser.begin (Gtk.FileChooserAction.SELECT_FOLDER, GLib.File.new_for_path ("/home/jeremy/Pictures"), (obj, res) => {
 warning ("present file chooser finished");
         });
 
@@ -216,25 +216,33 @@ warning ("present file chooser finished");
         dialog.modal = true;
         dialog.select_multiple = false;
         dialog.accept_label = action.to_string ();
-        var filter1 = new Gtk.FileFilter ();
-        filter1.add_pattern ("*.txt");
-        filter1.add_pattern ("*.pdf");
-        filter1.add_pattern ("*.doc");
-        filter1.set_filter_name ("TestGlob");
-        dialog.add_filter (filter1);
 
-        var filter2 = new Gtk.FileFilter ();
-        filter2.add_pattern ("*.*");
-        filter2.add_pattern ("*");
-        filter2.set_filter_name ("All Files");
-        dialog.add_filter (filter2);
+        if (action == SELECT_FOLDER) {
+            // var filter4 = new Gtk.FileFilter ();
+            // filter4.add_mime_type ("inode/directory");
+            // filter4.set_filter_name ("Folders");
+            // dialog.add_filter (filter4);
+            // dialog.filter = filter4;
+        } else {
+            var filter1 = new Gtk.FileFilter ();
+            filter1.add_pattern ("*.txt");
+            filter1.add_pattern ("*.pdf");
+            filter1.add_pattern ("*.doc");
+            filter1.set_filter_name ("TestGlob");
+            dialog.add_filter (filter1);
 
-        var filter3 = new Gtk.FileFilter ();
-        filter3.add_mime_type ("text/*");
-        filter3.set_filter_name ("TestMime");
-        dialog.add_filter (filter3);
+            var filter2 = new Gtk.FileFilter ();
+            filter2.add_pattern ("*.*");
+            filter2.add_pattern ("*");
+            filter2.set_filter_name ("All Files");
+            dialog.add_filter (filter2);
 
-        dialog.filter = filter1;
+            var filter3 = new Gtk.FileFilter ();
+            filter3.add_mime_type ("text/*");
+            filter3.set_filter_name ("TestMime");
+            dialog.add_filter (filter3);
+            dialog.filter = filter1;
+        }
 
         if (action == SAVE) {
             dialog.set_current_name ("Untitled Doc");

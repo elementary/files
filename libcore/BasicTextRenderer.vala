@@ -70,7 +70,7 @@ namespace Files {
 
         Pango.Layout layout;
         Gtk.Widget widget;
-        // AbstractEditableLabel entry;
+        AbstractEditableLabel entry;
 
         construct {
             this.mode = Gtk.CellRendererMode.EDITABLE;
@@ -81,17 +81,18 @@ namespace Files {
 
         public BasicTextRenderer (ViewMode viewmode) {
             if (viewmode == ViewMode.ICON) {
+                //TODO Implement for FileChooser
                 // entry = new MultiLineEditableLabel ();
                 // entry.set_justify (Gtk.Justification.CENTER);
                 is_list_view = false;
             } else {
-                // entry = new SingleLineEditableLabel ();
-                // entry.set_justify (Gtk.Justification.LEFT);
+                entry = new BasicSingleLineEditableLabel ();
+                entry.set_justify (Gtk.Justification.LEFT);
                 is_list_view = true;
             }
 
-            // entry.set_line_wrap (true);
-            // entry.editing_done.connect (on_entry_editing_done);
+            entry.set_line_wrap (true);
+            entry.editing_done.connect (on_entry_editing_done);
         }
 
         public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
@@ -208,32 +209,32 @@ namespace Files {
             text_height = height;
         }
 
-        // public override unowned Gtk.CellEditable? start_editing (Gdk.Event? event,
-        //                                                          Gtk.Widget widget,
-        //                                                          string path,
-        //                                                          Gdk.Rectangle background_area,
-        //                                                          Gdk.Rectangle cell_area,
-        //                                                          Gtk.CellRendererState flags) {
+        public override unowned Gtk.CellEditable? start_editing (Gdk.Event? event,
+                                                                 Gtk.Widget widget,
+                                                                 string path,
+                                                                 Gdk.Rectangle background_area,
+                                                                 Gdk.Rectangle cell_area,
+                                                                 Gtk.CellRendererState flags) {
 
-        //     if (!visible || mode != Gtk.CellRendererMode.EDITABLE) {
-        //         return null;
-        //     }
+            if (!visible || mode != Gtk.CellRendererMode.EDITABLE) {
+                return null;
+            }
 
 
-        //     // entry.set_text (text);
-        //     // entry.set_line_wrap_mode (wrap_mode);
-        //     // entry.set_size_request (wrap_width, -1);
-        //     // entry.set_position (-1);
-        //     // entry.set_data ("marlin-text-renderer-path", path.dup ());
-        //     // entry.show_all ();
+            entry.set_text (text);
+            entry.set_line_wrap_mode (wrap_mode);
+            entry.set_size_request (wrap_width, -1);
+            entry.set_position (-1);
+            entry.set_data ("marlin-text-renderer-path", path.dup ());
+            entry.show_all ();
 
-        //     base.start_editing (event, widget, path, background_area, cell_area, flags);
-        //     return entry;
-        // }
+            base.start_editing (event, widget, path, background_area, cell_area, flags);
+            return entry;
+        }
 
-        // public void end_editing (bool cancel) {
-        //     entry.end_editing (cancel);
-        // }
+        public void end_editing (bool cancel) {
+            entry.end_editing (cancel);
+        }
 
         private void set_widget (Gtk.Widget? _widget) {
             Pango.FontMetrics metrics;
@@ -286,19 +287,19 @@ namespace Files {
             file = null;
         }
 
-        // private void on_entry_editing_done () {
-        //     bool cancelled = entry.editing_canceled;
-        //     base.stop_editing (cancelled);
+        private void on_entry_editing_done () {
+            bool cancelled = entry.editing_canceled;
+            base.stop_editing (cancelled);
 
-        //     entry.hide ();
+            entry.hide ();
 
-        //     if (!cancelled) {
-        //         string text = entry.get_text ();
-        //         string path = entry.get_data ("marlin-text-renderer-path");
-        //         edited (path, text);
-        //     }
-        //     file = null;
-        // }
+            if (!cancelled) {
+                string text = entry.get_text ();
+                string path = entry.get_data ("marlin-text-renderer-path");
+                edited (path, text);
+            }
+            file = null;
+        }
 
         private void draw_focus (Cairo.Context cr,
                                  Gdk.Rectangle cell_area,

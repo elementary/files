@@ -19,12 +19,10 @@
 
 namespace Files {
     public class BasicSlot : Files.AbstractSlot {
-        // public unowned BasicViewContainer ctab { get; construct; }
         public ViewMode mode { get; construct; }
         public Gtk.SelectionMode selection_mode { get; construct; }
         public BasicAbstractDirectoryView? dir_view { get; private set; }
 
-        // private int preferred_column_width;
         private uint reload_timeout_id = 0;
         private uint path_change_timeout_id = 0;
         private bool original_reload_request = false;
@@ -45,41 +43,17 @@ namespace Files {
             }
         }
 
-        // public unowned BasicWindow? window {
-        //     get { return ctab.window; }
-        // }
-
-        // public override bool is_frozen {
-        //     set {
-        //         dir_view.is_frozen = value;
-        //         frozen_changed (value);
-        //     }
-
-        //     get {
-        //         return dir_view == null;
-        //     }
-        // }
-
-        // public override bool locked_focus {
-        //     get {
-        //         return dir_view.renaming;
-        //     }
-        // }
-
-        // public signal void frozen_changed (bool freeze);
         public signal void folder_deleted (Files.File file, Directory parent);
-        public signal bool key_press (uint keyval, bool control_pressed, bool alt_pressed, bool shift_pressed);
-
         public signal void bookmark_uri_request (string uri, string custom = "");
 
         /* Support for multi-slot view (Miller)*/
         public Gtk.Box colpane;
         public Gtk.Paned hpane;
-        // public signal void miller_slot_request (GLib.File file, bool make_root);
-        // public signal void size_change ();
-
-        // public BasicSlot (GLib.File _location, BasicViewContainer _ctab, ViewMode _mode) {
-        public BasicSlot (GLib.File? _location = null, ViewMode _mode = LIST, Gtk.SelectionMode _selection_mode = BROWSE) {
+        public BasicSlot (
+            GLib.File? _location = null,
+            ViewMode _mode = LIST,
+            Gtk.SelectionMode _selection_mode = BROWSE
+        ) {
             Object (
                 // ctab: _ctab,
                 mode: _mode,
@@ -90,10 +64,6 @@ namespace Files {
 
         construct {
             switch (mode) {
-                // case ViewMode.MILLER_COLUMNS:
-                //     dir_view = new Files.ColumnView (this);
-                //     break;
-
                 case ViewMode.LIST:
                     dir_view = new Files.BasicListView (this, selection_mode);
                     break;
@@ -106,10 +76,7 @@ namespace Files {
                     break;
             }
 
-            // /* Miller View creates its own overlay and handles packing of the directory view */
-            // if (mode != ViewMode.MILLER_COLUMNS) {
-                add_overlay (dir_view);
-            // }
+            add_overlay (dir_view);
 
             connect_dir_signals ();
             connect_dir_view_signals ();
@@ -117,8 +84,6 @@ namespace Files {
 
             is_active = false;
             is_frozen = true;
-            // preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
-            // width = preferred_column_width;
         }
 
         ~BasicSlot () {
@@ -146,12 +111,6 @@ namespace Files {
             inactive.connect (() => {
                 is_active = false;
             });
-
-            // folder_deleted.connect ((file, dir) => {
-            //     if (window != null) {
-            //         ((Files.Application)(window.application)).folder_deleted (file.location);
-            //     }
-            // });
         }
 
         private void connect_dir_view_signals () {
@@ -161,7 +120,6 @@ namespace Files {
             }
 
             dir_view.path_change_request.connect (on_dir_view_path_change_request);
-            // dir_view.size_allocate.connect (on_dir_view_size_allocate);
             dir_view.selection_changed.connect (on_dir_view_selection_changed);
         }
 
@@ -171,13 +129,8 @@ namespace Files {
                 return;
             }
             dir_view.path_change_request.disconnect (on_dir_view_path_change_request);
-            // dir_view.size_allocate.disconnect (on_dir_view_size_allocate);
             dir_view.selection_changed.disconnect (on_dir_view_selection_changed);
         }
-
-        // private void on_dir_view_size_allocate (Gtk.Allocation alloc) {
-        //     width = alloc.width;
-        // }
 
         private void on_dir_view_selection_changed (GLib.List<Files.File> files) {
             selection_changed (files);
@@ -195,47 +148,13 @@ namespace Files {
 
         private void on_directory_done_loading (Directory dir) requires (dir != null) {
             directory_loaded (dir);
-
-            // /*  Column View requires slots to determine their own width (other views' width determined by Window */
-            // if (mode == ViewMode.MILLER_COLUMNS) {
-            //     //TODO See if need to adjust width now using stack to show empty message
-            //     if (dir.is_empty ()) { /* No files in the file cache */
-            //         Pango.Rectangle extents;
-            //         var layout = dir_view.create_pango_layout (null);
-            //         layout.set_markup (get_empty_message (), -1);
-            //         layout.get_extents (null, out extents);
-            //         width = (int) Pango.units_to_double (extents.width);
-            //     } else {
-            //         width = preferred_column_width;
-            //     }
-
-            //     width += dir_view.icon_size + 64; /* allow some extra room for icon padding and right margin*/
-
-            //     /* Allow extra room for MESSAGE_CLASS styling of special messages */
-            //     if (dir.is_empty () || dir.permission_denied) {
-            //         width += width;
-            //     }
-
-            //     size_change ();
-            //     hpane.set_position (width);
-            //     colpane.show_all ();
-
-            //     if (colpane.get_realized ()) {
-            //         colpane.queue_draw ();
-            //     }
-            // }
-
             is_frozen = false;
         }
 
         private void on_directory_need_reload (Directory dir, bool original_request) requires (dir != null) {
             if (!is_frozen) {
-                // ctab.prepare_reload (); // Save selection
-                //TODO Save selection here
-
                 dir_view.prepare_reload (dir); /* clear model but do not change directory */
                 /* view and slot are unfrozen when done loading signal received */
-
                 is_frozen = true;
                 path_changed ();
                 /* if original_request false, leave original_load_request as it is (it may already be true
@@ -267,16 +186,12 @@ namespace Files {
             });
         }
 
-        private void on_dir_view_path_change_request (GLib.File loc, Files.OpenFlag flag = DEFAULT, bool make_root = true) {
-            // if (flag == 0) { /* make view in existing container */
-            //     if (mode == ViewMode.MILLER_COLUMNS) {
-            //         miller_slot_request (loc, make_root); /* signal to parent MillerView */
-            //     } else {
-                    user_path_change_request (loc, make_root); /* Handle ourselves */
-            //     }
-            // } else {
-            //     new_container_request (loc, flag);
-            // }
+        private void on_dir_view_path_change_request (
+            GLib.File loc,
+            Files.OpenFlag flag = DEFAULT,
+            bool make_root = true
+        ) {
+            user_path_change_request (loc, make_root); /* Handle ourselves */
         }
 
         public void on_path_change_request (string _uri) {
@@ -323,18 +238,18 @@ namespace Files {
             }
         }
 
-        public override bool set_all_selected (bool select_all) {
-            if (dir_view != null) {
-                if (select_all) {
-                    dir_view.select_all ();
-                } else {
-                    dir_view.unselect_all ();
-                }
-                return true;
-            } else {
-                return false;
-            }
-        }
+        // public override bool set_all_selected (bool select_all) {
+        //     if (dir_view != null) {
+        //         if (select_all) {
+        //             dir_view.select_all ();
+        //         } else {
+        //             dir_view.unselect_all ();
+        //         }
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
 
         public override unowned GLib.List<Files.File>? get_selected_files () {
             if (dir_view != null) {
