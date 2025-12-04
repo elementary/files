@@ -260,8 +260,6 @@ public class Files.FileChooserPortal : Object {
             dialog.set_current_name (options["current_name"].get_string ());
         }
 
-
-
         var supplied_uri = "";
         if ("current_file" in options) {
             supplied_uri = FileUtils.sanitize_path (

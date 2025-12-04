@@ -107,7 +107,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         use_header_bar = 1; // Stop native action area showing as action widgets are put in content area
         // set_default_size (600, 400);
         resizable = true;
-        chooser = new BasicWindow (false); // Cannot have nothing selected
+        chooser = new BasicWindow (action == SAVE); // Cannot have nothing selected
         // var headerbar = chooser.take_headerbar ();
         this.set_titlebar (chooser.headerbar);
         get_content_area ().add (chooser);
@@ -200,6 +200,8 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
             extra_box.add (entry_label);
             extra_box.add (entry);
+
+            entry.changed.connect (check_can_accept);
         }
 
         if (action == Gtk.FileChooserAction.OPEN) {
@@ -327,29 +329,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             }
 
             chooser.file_activated.connect (activate_selected_items);
-            chooser.selection_changed.connect (() => {
-                uint n_selected = 0;
-                bool folder_selected = false, file_selected = false, can_accept = false;
-                chooser.get_selection_details (out n_selected, out folder_selected, out file_selected);
-                can_accept = n_selected == 1 || select_multiple;
-                if (can_accept) {
-                    switch (action) {
-                        case OPEN:
-                            can_accept = file_selected && !folder_selected;
-                            break;
-                        case SAVE:
-                            can_accept = file_selected && !folder_selected;
-                            break;
-                        case SELECT_FOLDER:
-                            can_accept = !file_selected && folder_selected;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-
-                accept_button.sensitive = can_accept;
-            });
+            chooser.selection_changed.connect (check_can_accept);
         });
 
         // previous_button.clicked.connect (() => {
@@ -451,6 +431,35 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         });
 
         show_all ();
+    }
+
+    private void check_can_accept () {
+        uint n_selected = 0;
+        bool folder_selected = false, file_selected = false, can_accept = false;
+        chooser.get_selection_details (out n_selected, out folder_selected, out file_selected);
+        switch (action) {
+            case OPEN:
+                can_accept = file_selected && !folder_selected;
+                break;
+            case SAVE:
+                // Do not need to select anything to save
+                if (n_selected == 1 && file_selected) {
+                    entry.text = get_file ().get_basename ();
+                } else {
+                    entry.text = "";
+                }
+
+                can_accept = n_selected <= 1 && !folder_selected && entry.text != "";
+                warning ("SAVE accept %s", can_accept.to_string ());
+                break;
+            case SELECT_FOLDER:
+                can_accept = !file_selected && folder_selected;
+                break;
+            default:
+                break;
+        }
+
+        accept_button.sensitive = can_accept;
     }
 
     private Gtk.FileFilter? filter_from_id (string id) {
@@ -746,19 +755,40 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public string get_uri () { // Uri of selected file
-        var file = get_file ();
-        return file != null ? file.get_uri () : null;
+        string uri = "";
+        switch (action) {
+            case OPEN:
+                var file = get_file ();
+                uri = file != null ? file.get_uri () : null;
+                break;
+            case SAVE:
+                uri = Path.build_filename (get_current_folder_uri (), entry.text);
+                break;
+            case SELECT_FOLDER:
+                break;
+        }
+
+        return uri;
     }
 
     public string[] get_uris () { // Selected uris
         string[] uris = {};
-
-        unowned var selection = chooser.selected_files;
-        if (selection != null) {
-            selection.foreach ((file) => {
-                uris += file.uri;
-            });
+        switch (action) {
+            case OPEN:
+                unowned var selection = chooser.selected_files;
+                if (selection != null) {
+                    selection.foreach ((file) => {
+                        uris += file.uri;
+                    });
+                }
+                break;
+            case SAVE:
+                uris += get_uri ();
+                break;
+            case SELECT_FOLDER:
+                break;
         }
+
 
         return uris;
     }
@@ -772,6 +802,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public void set_current_name (string text) {
+    warning ("set current name %s", text);
         if (action == SAVE) {
             entry.text = text;
         }

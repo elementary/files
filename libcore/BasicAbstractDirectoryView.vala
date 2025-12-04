@@ -487,6 +487,7 @@ namespace Files {
                 refilter_timeout_id = Timeout.add (100, () => {
                     refilter_timeout_id = 0;
                     filter_model.refilter ();
+                    update_selected_files_and_menu ();
                     draw_when_idle ();
                     return Source.REMOVE;
                 });
@@ -3109,7 +3110,6 @@ warning ("showing menu");
         }
 
         protected void on_view_selection_changed () {
-        warning ("BADV on view selection changed");
             selected_files_invalid = true;
             one_or_less = (selected_files == null || selected_files.next == null);
         }
@@ -3621,7 +3621,6 @@ warning ("Cut");
                 /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
                 // name_renderer.end_editing (false);
             // }
-            warning ("on view button press");
             cancel_hover (); /* cancel overlay statusbar cancellables */
             grab_focus ();
 
@@ -3685,8 +3684,6 @@ warning ("Cut");
                             if (no_mods && one_or_less) {
                                 should_activate = (on_directory && !on_blank && !singleclick_select) || double_click_event;
                             }
-
-                            warning ("should activate %s", should_activate.to_string ());
 
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
@@ -3803,7 +3800,6 @@ warning ("Cut");
         protected virtual void on_view_button_release_event (int n_press, double x, double y) {
             // unblock_drag_and_drop ();
             button_press_disabled = false;
-            warning ("on view button release");
             /* Ignore button release from click that started renaming.
              * View may lose focus during a drag if another tab is hovered, in which case
              * we do not want to refocus this view.
@@ -3819,7 +3815,6 @@ warning ("Cut");
             /* Only take action if pointer has not moved */
             // if (!Gtk.drag_check_threshold (scrolled_window.get_child (), (int)drag_x, (int)drag_y, (int)x, (int)y)) {
                 if (should_activate) {
-                warning ("on release should activate %s", should_activate.to_string ());
                     /* Need Idle else can crash with rapid clicking (avoid nested signals) */
                     Idle.add (() => {
                         var flag = button == Gdk.BUTTON_MIDDLE ? Files.OpenFlag.NEW_TAB : Files.OpenFlag.DEFAULT;
@@ -4045,7 +4040,7 @@ warning ("Cut");
             uint count = 0;
             var selected_paths = get_selected_paths ();
             foreach (var path in selected_paths) {
-                var file = model.file_for_path (path);
+                var file = model.file_for_path (filter_model.convert_path_to_child_path (path));
                 if (file != null) {
                     list.prepend ((owned)file);
                     count++;

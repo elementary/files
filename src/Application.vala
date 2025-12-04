@@ -202,7 +202,7 @@ public class Files.Application : Gtk.Application {
 
         window.present ();
 
-        present_filechooser.begin (Gtk.FileChooserAction.OPEN, GLib.File.new_for_path ("/home/jeremy/Pictures"), (obj, res) => {
+        present_filechooser.begin (Gtk.FileChooserAction.SAVE, GLib.File.new_for_path ("/home/jeremy/Pictures"), (obj, res) => {
 warning ("present file chooser finished");
         });
 
@@ -225,6 +225,7 @@ warning ("present file chooser finished");
 
         var filter2 = new Gtk.FileFilter ();
         filter2.add_pattern ("*.*");
+        filter2.add_pattern ("*");
         filter2.set_filter_name ("All Files");
         dialog.add_filter (filter2);
 
@@ -248,6 +249,12 @@ warning ("present file chooser finished");
                 case Gtk.ResponseType.OK:
                     warning ("ok pressed");
                     _results["uris"] = dialog.get_uris ();
+                    var sv = _results["uris"].get_strv ();
+                    warning ("%u uris", sv.length);
+foreach (var s in _results["uris"].get_strv ()) {
+
+warning ("result uri %s", s);
+}
                     _results["choices"] = dialog.get_choices ();
                     // _results["writable"] = !dialog.read_only;
                     if (dialog.filter != null) {

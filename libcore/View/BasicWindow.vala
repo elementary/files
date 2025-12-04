@@ -848,7 +848,6 @@ public class Files.BasicWindow : Gtk.EventBox {
     }
 
     public void path_change (string uri) {
-        warning ("slot path change");
         slot.on_path_change_request (uri);
         browser.record_uri (uri);
     }

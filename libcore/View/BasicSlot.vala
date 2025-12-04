@@ -194,7 +194,6 @@ namespace Files {
         }
 
         private void on_directory_done_loading (Directory dir) requires (dir != null) {
-        warning ("on dir done loading");
             directory_loaded (dir);
 
             // /*  Column View requires slots to determine their own width (other views' width determined by Window */
@@ -312,7 +311,6 @@ namespace Files {
             }
             /* view and slot are unfrozen when done loading signal received */
             is_frozen = true;
-            warning ("init dir %s", directory.file.uri);
             directory.init ();
         }
 
