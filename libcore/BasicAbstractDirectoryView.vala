@@ -100,7 +100,6 @@ namespace Files {
 
             set {
                 if (value != null) {
-                    var v = value.to_gvariant ();
                     filter_flags = value.get_needed ();
                     filter_info.contains = filter_flags;
                 } else {
@@ -131,7 +130,7 @@ namespace Files {
         private double total_delta_y = 0.0;
 
         /* Support for keeping cursor position after delete */
-        private Gtk.TreePath deleted_path;
+        // private Gtk.TreePath deleted_path;
 
         /* UI options for button press handling */
         protected bool right_margin_unselects_all = false;
@@ -490,7 +489,7 @@ namespace Files {
             unselect_all ();
 
             uint count = 0;
-            Gtk.TreeIter? iter;
+            // Gtk.TreeIter? iter;
             foreach (Files.File f in files_to_select) {
                 /* Not all files selected in previous view  (e.g. expanded tree view)
                  * may appear in this one. */
@@ -683,30 +682,30 @@ namespace Files {
             }
         }
 
-        private void new_empty_file (string? parent_uri = null) {
-            if (parent_uri == null) {
-                parent_uri = slot.directory.file.uri;
-            }
+        // private void new_empty_file (string? parent_uri = null) {
+        //     if (parent_uri == null) {
+        //         parent_uri = slot.directory.file.uri;
+        //     }
 
-            /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
-            slot.directory.block_monitor ();
-            FileOperations.new_file.begin (
-                this,
-                parent_uri,
-                null,
-                null,
-                0,
-                null,
-                (obj, res) => {
-                    try {
-                        var file = FileOperations.new_file.end (res);
-                        create_file_done (file);
-                    } catch (Error e) {
-                        critical (e.message);
-                    }
-                }
-            );
-        }
+        //     /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
+        //     slot.directory.block_monitor ();
+        //     FileOperations.new_file.begin (
+        //         this,
+        //         parent_uri,
+        //         null,
+        //         null,
+        //         0,
+        //         null,
+        //         (obj, res) => {
+        //             try {
+        //                 var file = FileOperations.new_file.end (res);
+        //                 create_file_done (file);
+        //             } catch (Error e) {
+        //                 critical (e.message);
+        //             }
+        //         }
+        //     );
+        // }
 
         private void new_empty_folder () {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
@@ -858,9 +857,9 @@ namespace Files {
         }
 
         /** Common actions */
-        private void on_common_action_properties (GLib.SimpleAction action, GLib.Variant? param) {
+        // private void on_common_action_properties (GLib.SimpleAction action, GLib.Variant? param) {
             // new View.PropertiesWindow (get_files_for_action (), this, window);
-        }
+        // }
 
         private void on_common_action_copy (GLib.SimpleAction action, GLib.Variant? param) {
             clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
@@ -1161,8 +1160,6 @@ namespace Files {
         }
 
         private class NewSubMenuItem : Gtk.MenuItem {
-            private uint total_item_count = 0;
-
             construct {
                 var folder_menuitem = new Gtk.MenuItem ();
                 folder_menuitem.add (new Granite.AccelLabel (
@@ -1179,15 +1176,15 @@ namespace Files {
             }
         }
 
-        private bool valid_selection_for_edit () {
-            foreach (unowned Files.File file in get_selected_files ()) {
-                if (file.is_root_network_folder ()) {
-                    return false;
-                }
-            }
+        // private bool valid_selection_for_edit () {
+        //     foreach (unowned Files.File file in get_selected_files ()) {
+        //         if (file.is_root_network_folder ()) {
+        //             return false;
+        //         }
+        //     }
 
-            return true;
-        }
+        //     return true;
+        // }
 
         private void update_menu_actions () {
             if (slot.directory.can_load) {
@@ -1200,11 +1197,11 @@ namespace Files {
             bool is_selected = selection != null;
             bool more_than_one_selected = (is_selected && selection.first ().next != null);
             bool single_folder = false;
-            bool only_folders = selection_only_contains_folders (selection);
+            // bool only_folders = selection_only_contains_folders (selection);
             bool can_rename = false;
             bool can_show_properties = false;
             bool can_copy = false;
-            bool can_open = false;
+            // bool can_open = false;
             bool can_paste_into = false;
             bool can_bookmark = false;
 
@@ -1294,27 +1291,6 @@ namespace Files {
         }
 
         /** Menu action functions */
-
-        private void create_from_template (string path) {
-            /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
-            slot.directory.block_monitor ();
-            var template = GLib.File.new_for_path (path);
-            var new_name = (_("Untitled %s")).printf (template.get_basename ());
-            FileOperations.new_file_from_template.begin (
-                this,
-                slot.location,
-                new_name,
-                template,
-                null,
-                (obj, res) => {
-                    try {
-                        var file = FileOperations.new_file_from_template.end (res);
-                        create_file_done (file);
-                    } catch (Error e) {
-                        critical (e.message);
-                    }
-                });
-        }
 
         // private void open_files_with (GLib.AppInfo app, GLib.List<Files.File> files) {
         //     // MimeActions.open_multiple_gof_files_request (files, this, app);
@@ -1510,16 +1486,15 @@ namespace Files {
             var keyval = map_key (original_keyval, keycode, out consumed_mods);
             var mods = (state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
 
-            bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
             bool no_mods = (mods == 0);
-            bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
+            // bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
             bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
             bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
-            bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
-            bool in_trash = slot.location.has_uri_scheme ("trash");
-            bool in_recent = slot.location.has_uri_scheme ("recent");
+            // bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
+            // bool in_trash = slot.location.has_uri_scheme ("trash");
+            // bool in_recent = slot.location.has_uri_scheme ("recent");
             bool res = false;
 
             switch (keyval) {
@@ -1627,8 +1602,8 @@ namespace Files {
                 case Gdk.Key.C:
                     if (only_control_pressed) {
                         /* Caps Lock interferes with `shift_pressed` boolean so use another way */
-                        var caps_on = Gdk.Keymap.get_for_display (get_display ()).get_caps_lock_state ();
-                        var cap_c = keyval == Gdk.Key.C;
+                        // var caps_on = Gdk.Keymap.get_for_display (get_display ()).get_caps_lock_state ();
+                        // var cap_c = keyval == Gdk.Key.C;
 
                         // if (caps_on != cap_c) { /* Shift key pressed */
                         //     common_actions.activate_action ("copy-link", null);
@@ -1692,6 +1667,7 @@ warning ("ADV key Paste");
 
                 case Gdk.Key.x:
                 case Gdk.Key.X:
+warning ("Cut");
                     // if (only_control_pressed) {
                     //     if (is_writable) {
                     //         selection_actions.activate_action ("cut", null);
@@ -1705,7 +1681,7 @@ warning ("ADV key Paste");
                     // }
 
                     break;
-warning ("Cut");
+
                 default:
                     break;
             }

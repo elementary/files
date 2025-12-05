@@ -93,7 +93,6 @@ public class Files.BasicWindow : Gtk.EventBox {
         }
     }
 
-    private Gtk.Box extra_widget_box;
     private bool locked_focus { get; set; default = false; }
 
     public signal void folder_deleted (GLib.File location);
@@ -160,7 +159,6 @@ public class Files.BasicWindow : Gtk.EventBox {
         n_selected = 0;
         folder_selected = false;
         file_selected = false;
-        uint n = 0;
         foreach (var f in selected_files) {
             n_selected++;
             if (f.is_folder ()) {
@@ -232,13 +230,9 @@ public class Files.BasicWindow : Gtk.EventBox {
         return !sidebar.has_favorite_uri (uri);
     }
 
-    private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
-        //TODO Allow FileChooser to change view mode
-    }
-
-    private void action_focus_sidebar () {
-        sidebar.focus ();
-    }
+    // private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
+    //     //TODO Allow FileChooser to change view mode
+    // }
 
     public void change_state_show_hidden (GLib.SimpleAction action) {
         bool state = !action.state.get_boolean ();
@@ -266,22 +260,6 @@ public class Files.BasicWindow : Gtk.EventBox {
         action.set_state (new GLib.Variant.boolean (state));
     }
 
-
-    private ViewMode real_mode (ViewMode mode) {
-        switch (mode) {
-            case ViewMode.ICON:
-            case ViewMode.LIST:
-            case ViewMode.MILLER_COLUMNS:
-                return mode;
-
-            case ViewMode.CURRENT:
-                return slot.mode;
-
-            default:
-                return ViewMode.LIST;
-        }
-    }
-
     public virtual void quit () {
         headerbar.destroy (); /* stop unwanted signals if quit while pathbar in focus */
         slot.close ();
@@ -291,16 +269,6 @@ public class Files.BasicWindow : Gtk.EventBox {
     private void update_labels (string uri) {
         headerbar.update_location_bar (uri);
         sidebar.sync_uri (uri);
-    }
-
-    /** Use this function to standardise how locations are generated from uris **/
-    private GLib.File? get_file_from_uri (string _uri) {
-        string path = FileUtils.sanitize_path (_uri, this.uri, true);
-        if (path.length > 0) {
-            return GLib.File.new_for_uri (FileUtils.escape_uri (_uri));
-        } else {
-            return null;
-        }
     }
 
     public new void grab_focus () {

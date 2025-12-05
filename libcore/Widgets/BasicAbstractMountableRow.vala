@@ -109,30 +109,30 @@ public abstract class Sidebar.BasicAbstractMountableRow : Sidebar.BasicBookmarkR
     }
 
     construct {
-        // unmount_eject_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
-        //     tooltip_text = (can_eject ? _("Eject '%s'") : _("Unmount '%s'")).printf (custom_name)
-        // };
+        unmount_eject_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
+            tooltip_text = (can_eject ? _("Eject '%s'") : _("Unmount '%s'")).printf (custom_name)
+        };
 
-        // unmount_eject_button.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        unmount_eject_button.get_style_context ().add_provider (devicerow_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         working_spinner = new Gtk.Spinner ();
 
-        // unmount_eject_revealer = new Gtk.Revealer () {
-        //     child = unmount_eject_button,
-        //     transition_type = Gtk.RevealerTransitionType.SLIDE_LEFT,
-        //     valign = Gtk.Align.CENTER,
-        //     reveal_child = false
-        // };
+        unmount_eject_revealer = new Gtk.Revealer () {
+            child = unmount_eject_button,
+            transition_type = Gtk.RevealerTransitionType.SLIDE_LEFT,
+            valign = Gtk.Align.CENTER,
+            reveal_child = false
+        };
 
-        // unmount_eject_working_stack = new Gtk.Stack () {
-        //     margin_start = 6,
-        //     transition_type = Gtk.StackTransitionType.CROSSFADE
-        // };
+        unmount_eject_working_stack = new Gtk.Stack () {
+            margin_start = 6,
+            transition_type = Gtk.StackTransitionType.CROSSFADE
+        };
 
-        // unmount_eject_working_stack.add (unmount_eject_revealer);
-        // unmount_eject_working_stack.add (working_spinner);
+        unmount_eject_working_stack.add (unmount_eject_revealer);
+        unmount_eject_working_stack.add (working_spinner);
 
-        // content_grid.attach (unmount_eject_working_stack, 1, 0);
+        content_grid.attach (unmount_eject_working_stack, 1, 0);
 
         storage_levelbar = new Gtk.LevelBar () {
             value = 0.5,
@@ -152,13 +152,13 @@ public abstract class Sidebar.BasicAbstractMountableRow : Sidebar.BasicBookmarkR
 
         volume_monitor.mount_removed.connect (on_mount_removed);
         volume_monitor.mount_added.connect (on_mount_added);
-        // unmount_eject_button.clicked.connect (() => {
-        //     if (can_eject) {
-        //         eject_mount.begin ();
-        //     } else {
-        //         unmount_mount.begin ();
-        //     }
-        // });
+        unmount_eject_button.clicked.connect (() => {
+            if (can_eject) {
+                eject_mount.begin ();
+            } else {
+                unmount_mount.begin ();
+            }
+        });
 
         show_all ();
 
@@ -166,35 +166,35 @@ public abstract class Sidebar.BasicAbstractMountableRow : Sidebar.BasicBookmarkR
 
         update_visibilities ();
 
-        // var safely_remove_action = new SimpleAction ("safely-remove", null);
-        // safely_remove_action.activate.connect (() => safely_remove_drive.begin ());
+        var safely_remove_action = new SimpleAction ("safely-remove", null);
+        safely_remove_action.activate.connect (() => safely_remove_drive.begin ());
 
-        // var eject_action = new SimpleAction ("eject", null);
-        // eject_action.activate.connect (() => eject_drive.begin ());
+        var eject_action = new SimpleAction ("eject", null);
+        eject_action.activate.connect (() => eject_drive.begin ());
 
         var properties_action = new SimpleAction ("properties", null);
         properties_action.activate.connect (show_mount_info);
 
-        // var unmount_action = new SimpleAction ("unmount", null);
-        // unmount_action.activate.connect (() => unmount_mount.begin ());
+        var unmount_action = new SimpleAction ("unmount", null);
+        unmount_action.activate.connect (() => unmount_mount.begin ());
 
         // var empty_trash_action = new SimpleAction ("empty-trash", null);
         // empty_trash_action.activate.connect (() => Files.FileOperations.empty_trash_for_mount (this, mount));
 
         var action_group = new SimpleActionGroup ();
-        // action_group.add_action (safely_remove_action);
-        // action_group.add_action (eject_action);
+        action_group.add_action (safely_remove_action);
+        action_group.add_action (eject_action);
         action_group.add_action (properties_action);
-        // action_group.add_action (unmount_action);
+        action_group.add_action (unmount_action);
         // action_group.add_action (empty_trash_action);
 
         insert_action_group ("mountable", action_group);
     }
 
     protected void update_visibilities () {
-        // unmount_eject_button.tooltip_text =
-        //     (can_eject ? _("Eject '%s'") : _("Unmount '%s'")).printf (custom_name);
-        // unmount_eject_revealer.reveal_child = can_unmount;
+        unmount_eject_button.tooltip_text =
+            (can_eject ? _("Eject '%s'") : _("Unmount '%s'")).printf (custom_name);
+        unmount_eject_revealer.reveal_child = can_unmount;
         storage_levelbar.visible = is_mounted;
     }
 
@@ -203,81 +203,81 @@ public abstract class Sidebar.BasicAbstractMountableRow : Sidebar.BasicBookmarkR
     //     working = item.show_spinner;
     // }
 
-    // protected async bool unmount_mount () {
-    //     if (working || !valid || permanent) {
-    //         return false;
-    //     }
+    protected async bool unmount_mount () {
+        if (working || !valid || permanent) {
+            return false;
+        }
 
-    //     working = true;
-    //     var success = yield Files.FileOperations.unmount_mount (mount, Files.get_active_window ());
-    //     working = false;
-    //     update_visibilities ();
-    //     return success;
-    // }
+        working = true;
+        var success = yield Files.FileOperations.unmount_mount (mount, get_toplevel_window ());
+        working = false;
+        update_visibilities ();
+        return success;
+    }
 
-    // protected async bool eject_mount () {
-    //     if (working || !valid || permanent) {
-    //         return false;
-    //     }
+    protected async bool eject_mount () {
+        if (working || !valid || permanent) {
+            return false;
+        }
 
-    //     working = true;
-    //     var success = yield Files.FileOperations.eject_mount (mount, Files.get_active_window ());
-    //     working = false;
-    //     update_visibilities ();
-    //     return success;
-    // }
+        working = true;
+        var success = yield Files.FileOperations.eject_mount (mount, get_toplevel_window ());
+        working = false;
+        update_visibilities ();
+        return success;
+    }
 
-    // protected async void safely_remove_drive () {
-    //     if (working || !valid || drive == null) {
-    //         return;
-    //     }
+    protected async void safely_remove_drive () {
+        if (working || !valid || drive == null) {
+            return;
+        }
 
-    //     debug ("Eject/stop drive %s: can_eject %s, can_stop %s, can start %s, can start degraded %s, media_removable %s, drive removable %s",
-    //         drive.get_name (), drive.can_eject ().to_string (), drive.can_stop ().to_string (), drive.can_start ().to_string (),
-    //         drive.can_start_degraded ().to_string (), drive.is_media_removable ().to_string (), drive.is_removable ().to_string ());
+        debug ("Eject/stop drive %s: can_eject %s, can_stop %s, can start %s, can start degraded %s, media_removable %s, drive removable %s",
+            drive.get_name (), drive.can_eject ().to_string (), drive.can_stop ().to_string (), drive.can_start ().to_string (),
+            drive.can_start_degraded ().to_string (), drive.is_media_removable ().to_string (), drive.is_removable ().to_string ());
 
-    //     working = true;
-    //     yield Files.FileOperations.safely_remove_drive (drive, Files.get_active_window ());
-    //     working = false;
-    //     update_visibilities ();
-    // }
+        working = true;
+        yield Files.FileOperations.safely_remove_drive (drive, get_toplevel_window ());
+        working = false;
+        update_visibilities ();
+    }
 
-    // protected async void eject_drive () {
-    //     if (working || !valid || drive == null) {
-    //         return;
-    //     }
-    //     working = true;
-    //     yield Files.FileOperations.eject_drive (drive, Files.get_active_window ());
-    //     working = false;
-    //     update_visibilities ();
-    // }
+    protected async void eject_drive () {
+        if (working || !valid || drive == null) {
+            return;
+        }
+        working = true;
+        yield Files.FileOperations.eject_drive (drive, get_toplevel_window ());
+        working = false;
+        update_visibilities ();
+    }
 
-    // protected void add_extra_menu_items_for_mount (Mount? mount, GLib.Menu menu) {
-    //     // Do not add items for a volume that is in the middle of being mounted or unmounted
-    //     if (working) {
-    //         return;
-    //     }
+    protected void add_extra_menu_items_for_mount (Mount? mount, GLib.Menu menu) {
+        // Do not add items for a volume that is in the middle of being mounted or unmounted
+        if (working) {
+            return;
+        }
 
-    //     if (mount != null) {
-    //         var menu_section = new GLib.Menu ();
+        if (mount != null) {
+            var menu_section = new GLib.Menu ();
 
-    //         if (Files.FileOperations.has_trash_files (mount)) {
-    //             // FIXME: any way to make destructive?
-    //             menu_section.append (_("Permanently Delete Trash on this Mount"), "mountable.empty-trash");
-    //         }
+            // if (Files.FileOperations.has_trash_files (mount)) {
+            //     // FIXME: any way to make destructive?
+            //     menu_section.append (_("Permanently Delete Trash on this Mount"), "mountable.empty-trash");
+            // }
 
-    //         if (mount.can_unmount ()) {
-    //             menu_section.append (_("_Unmount"), "mountable.unmount");
-    //         }
+            if (mount.can_unmount ()) {
+                menu_section.append (_("_Unmount"), "mountable.unmount");
+            }
 
-    //         menu.append_section (null, menu_section);
-    //     }
+            menu.append_section (null, menu_section);
+        }
 
-    //     var properties_section = new GLib.Menu ();
-    //     properties_section.append (_("Properties"), "mountable.properties"); // This will mount if necessary
+        var properties_section = new GLib.Menu ();
+        properties_section.append (_("Properties"), "mountable.properties"); // This will mount if necessary
 
-    //     menu.append_section (null, properties_section);
-    // }
+        menu.append_section (null, properties_section);
+    }
 
     protected async bool get_filesystem_space_for_root (File root, Cancellable? update_cancellable) {
         storage_capacity = 0;
@@ -363,6 +363,15 @@ public abstract class Sidebar.BasicAbstractMountableRow : Sidebar.BasicBookmarkR
         }
 
         set_tooltip_markup (mount_text + storage_text);
+    }
+
+    public Gtk.Window? get_toplevel_window () {
+        var toplevel = this.get_toplevel ();
+        if (toplevel is Gtk.Window) {
+            return (Gtk.Window)toplevel;
+        } else {
+            return null;
+        }
     }
 
     protected virtual void on_mount_removed (Mount removed_mount) {}

@@ -5,8 +5,9 @@
 
 public class Files.FileChooserChoice : Gtk.Box {
     public Variant? options { get; construct; }
-    public string label { get; set; }
-    public string selected { get; set; }
+    public string label { get; construct; }
+    public string selected { get; construct; }
+    public string id { get; construct; }
 
     public FileChooserChoice.from_variant (Variant variant) requires (
         variant.is_of_type (new VariantType ("(ssa(ss)s)"))

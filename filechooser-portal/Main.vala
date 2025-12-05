@@ -99,8 +99,8 @@ public class Files.FileChooserPortal : Object {
         }
 
         var directory = "directory" in options && options["directory"].get_boolean ();
-
-        var dialog = new FileChooserDialog (Gtk.FileChooserAction.OPEN, parent_window, title);
+        var action = directory ? Gtk.FileChooserAction.SELECT_FOLDER : Gtk.FileChooserAction.OPEN;
+        var dialog = new FileChooserDialog (action, parent_window, title);
 
         dialog.set_initial_location (initial_location);
 
@@ -279,6 +279,7 @@ public class Files.FileChooserPortal : Object {
 
             while ((filter_variant = filters.next_value ()) != null) {
                 var filter = new Gtk.FileFilter.from_gvariant (filter_variant);
+                dialog.add_filter (filter);
             }
         }
 

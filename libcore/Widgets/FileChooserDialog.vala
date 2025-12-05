@@ -8,12 +8,16 @@ public interface Xdp.Request : Object {
     public abstract void close () throws DBusError, IOError;
 }
 
+/*
+ * Implements functions supported by org.freedesktop.portal.FileChooser and in addition
+ * Results keys:
+ * OPEN: "writable" - as indicated by a "Read Only" checkbox. It is up to the user to honor this
+ */
 public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     public string? parent_window { get; construct; }
-    public Hdy.HeaderBar headerbar;
-    public Gtk.FileChooserAction action { get; construct; }
-    public bool read_only { get; set; default = false; }
     public BasicWindow file_view { get; construct; }
+
+    public Gtk.FileChooserAction action { get; set construct; }
     public ViewMode view_mode {
         get {
             return file_view.view_mode;
@@ -59,6 +63,8 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         }
     }
 
+    public bool read_only { get; set; default = false; }
+
     private Gtk.TreeStore filter_model;
     private Gtk.Button accept_button;
     private Gtk.ComboBox filter_combo;
@@ -84,10 +90,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     construct {
-        // modal = true;
-        use_header_bar = 1; // Stop native action area showing because action widgets are put in content area
-        // resizable = true;
-
+        use_header_bar = 1; // Stop native action area showing
         settings = new Settings ("io.elementary.files.file-chooser");
         int width, height;
         settings.get ("window-size", "(ii)", out width, out height);
@@ -306,12 +309,12 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         return return_filter;
     }
 
+    //TODO Pass on with "file activated"?
     private void activate_selected_items () {
         unowned var selected = file_view.selected_files;
         var file = selected.first ().data;
         var only_one = (selected.first ().next)== null;
         if (only_one && file.is_folder ()) {
-            warning ("FD activate sleected items");
             set_current_folder (file.location);
         } else if (only_one || select_multiple) {
             response (Gtk.ResponseType.OK);
@@ -373,9 +376,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         base.dispose ();
     }
 
-    //TODO Complete FileChooser interface
     public GLib.File? get_file () {
-    warning ("FCD get file");
         unowned var selected_files = file_view.selected_files;
         GLib.File? gfile = null;
         if (selected_files != null) {
@@ -387,6 +388,17 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
     public void add_choice (FileChooserChoice choice) {
         choices_box.add (choice);
+    }
+
+    public unowned string get_choice (string id) {
+        foreach (var w in choices_box.get_children ()) {
+            unowned var c = (FileChooserChoice) w;
+            if (c.id == id) {
+                return c.selected;
+            }
+        }
+
+        return null;
     }
 
     public Variant[] get_choices () {
@@ -415,42 +427,50 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         }
     }
 
-    public GLib.File? get_preview_file () {
-        return null;
+    public string get_current_name () {
+        if (entry != null) {
+            return entry.text;
+        } else {
+            return "";
+        }
     }
+
+    // public string get_current_folder () {
+    //     return Filename.from_uri (get_current_folder_uri ());
+    // }
 
     public string? get_current_folder_uri () {
         return file_view.uri;
     }
 
-    public GLib.File? get_current_folder_file () {
-        return file_view.location;
-    }
+    // public GLib.File? get_current_folder_file () {
+    //     return file_view.location;
+    // }
 
-    public string? get_filename () {
-        unowned var selected_files = file_view.selected_files;
-        if (selected_files != null) {
-            try {
-                return Filename.from_uri (selected_files.first ().data.uri);
-            } catch (Error e) {
-                return null;
-            }
-        }
+    // public string? get_filename () {
+    //     unowned var selected_files = file_view.selected_files;
+    //     if (selected_files != null) {
+    //         try {
+    //             return Filename.from_uri (selected_files.first ().data.uri);
+    //         } catch (Error e) {
+    //             return null;
+    //         }
+    //     }
 
-        return null;
-    }
+    //     return null;
+    // }
 
-    public SList<string> get_filenames () {
-        unowned var selected_files = file_view.selected_files;
-        var return_list = new SList<string> ();
-        if (selected_files != null) {
-            foreach (File file in selected_files) {
-                return_list.append (file.location.get_path ());
-            }
-        }
+    // public SList<string> get_filenames () {
+    //     unowned var selected_files = file_view.selected_files;
+    //     var return_list = new SList<string> ();
+    //     if (selected_files != null) {
+    //         foreach (File file in selected_files) {
+    //             return_list.append (Filename.from_uri (file.uri));
+    //         }
+    //     }
 
-        return return_list;
-    }
+    //     return return_list;
+    // }
 
     public string get_uri () { // Uri of selected file
         string uri = "";
@@ -463,9 +483,12 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
                 uri = Path.build_filename (get_current_folder_uri (), entry.text);
                 break;
             case SELECT_FOLDER:
+                var file = get_file ();
+                uri = file != null ? file.get_uri () : get_current_folder_uri ();
                 //TODO return uri of selected folder or current folder if none selected (?)
                 break;
             case CREATE_FOLDER:
+                //TODO What should return here?
                 break;
         }
 
@@ -487,6 +510,10 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
                 uris += get_uri ();
                 break;
             case SELECT_FOLDER:
+                uris += get_uri ();
+                break;
+            case CREATE_FOLDER:
+                //TODO What should return here?
                 break;
         }
 
