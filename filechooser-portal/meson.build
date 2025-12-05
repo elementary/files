@@ -66,7 +66,8 @@ if (flatpak_builder.found())
             '--force-clean'
         ],
         capture: true,
-        output: 'io.elementary.Files.PortalTester'
+        output: 'io.elementary.Files.PortalTester',
+        build_by_default: true
     )
 endif
 
