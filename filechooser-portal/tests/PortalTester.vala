@@ -28,8 +28,27 @@ public class PortalTester : Gtk.Application {
 
         window.add (grid);
 
+        var filter1 = new Gtk.FileFilter ();
+        filter1.add_pattern ("*.txt");
+        filter1.add_pattern ("*.pdf");
+        filter1.add_pattern ("*.doc");
+        filter1.set_filter_name ("TextGlob");
+
+        var filter2 = new Gtk.FileFilter ();
+        filter2.add_mime_type ("text/*");
+        filter2.set_filter_name ("TextMime");
+
+        var filter3 = new Gtk.FileFilter ();
+        filter3.add_pattern ("*.*");
+        filter3.add_pattern ("*");
+        filter3.set_filter_name ("All Files");
+
         open_file_button.clicked.connect (() => {
             var filechooser = new Gtk.FileChooserNative ("Custom Title", window, Gtk.FileChooserAction.OPEN, "Open", "Not Open");
+            filechooser.add_filter (filter1);
+            filechooser.add_filter (filter2);
+            filechooser.add_filter (filter3);
+            filechooser.filter = filter1;
             filechooser.response.connect ((id) => {
                 if (id == Gtk.ResponseType.ACCEPT) {
                     var message_dialog = new Gtk.MessageDialog (
@@ -40,11 +59,13 @@ public class PortalTester : Gtk.Application {
                         "This file has been opened: %s",
                         filechooser.get_file ().get_path ()
                     );
-                    message_dialog.show_all ();
+                    message_dialog.run ();
+                    message_dialog.destroy ();
                 } else {
                     warning ("Ooops, operation cancelled!");
                 }
             });
+
             filechooser.show ();
         });
 
@@ -62,11 +83,13 @@ public class PortalTester : Gtk.Application {
                         "These files have been opened: %s",
                         paths
                     );
-                    message_dialog.show_all ();
+                    message_dialog.run ();
+                    message_dialog.destroy ();
                 } else {
                     warning ("Ooops, operation cancelled!");
                 }
             });
+
             filechooser.show ();
         });
 
@@ -81,12 +104,16 @@ public class PortalTester : Gtk.Application {
                         Gtk.ButtonsType.CLOSE,
                         "This file has been saved: %s",
                         filechooser.get_file ().get_path ()
-                    );
+                    ) {
+                        modal = true
+                    };
                     message_dialog.show_all ();
+                    message_dialog.destroy ();
                 } else {
                     warning ("Ooops, operation cancelled!");
                 }
             });
+
             filechooser.show ();
         });
 
