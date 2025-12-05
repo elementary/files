@@ -64,6 +64,8 @@ public class PortalTester : Gtk.Application {
                 } else {
                     warning ("Ooops, operation cancelled!");
                 }
+
+                warning ("current folder is %s", filechooser.get_current_folder_uri ());
             });
 
             filechooser.show ();
@@ -95,6 +97,28 @@ public class PortalTester : Gtk.Application {
 
         save_button.clicked.connect (() => {
             var filechooser = new Gtk.FileChooserNative ("Custom Title", window, Gtk.FileChooserAction.SAVE, "Save", "No thanks!");
+            string basename = "save-this.txt";
+            string parent_path = Path.build_filename ("/", "tmp", "filechooser-portal-test" + get_real_time ().to_string ());
+            string path = Path.build_filename (parent_path, basename);
+
+            Posix.system ("mkdir " + parent_path);
+            Posix.system ("touch " + path);
+            try {
+                filechooser.set_filename (Filename.from_uri (path));
+            } catch {
+                var message_dialog = new Gtk.MessageDialog (
+                        window,
+                        Gtk.DialogFlags.MODAL,
+                        Gtk.MessageType.INFO,
+                        Gtk.ButtonsType.CLOSE,
+                        "Error getting filename from  %s",
+                        path
+                    );
+                    message_dialog.show_all ();
+                    message_dialog.destroy ();
+                    return;
+            }
+
             filechooser.response.connect ((id) => {
                 if (id == Gtk.ResponseType.ACCEPT) {
                     var message_dialog = new Gtk.MessageDialog (
@@ -104,9 +128,7 @@ public class PortalTester : Gtk.Application {
                         Gtk.ButtonsType.CLOSE,
                         "This file has been saved: %s",
                         filechooser.get_file ().get_path ()
-                    ) {
-                        modal = true
-                    };
+                    );
                     message_dialog.show_all ();
                     message_dialog.destroy ();
                 } else {
