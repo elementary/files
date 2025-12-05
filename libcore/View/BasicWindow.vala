@@ -203,15 +203,17 @@ public class Files.BasicWindow : Gtk.EventBox {
             return true;
     }
 
+    /*
+     * If folder shows that with nothing selected
+     * If file shows parent folder with the file selected
+     */
     public void path_change (string uri) {
         slot.on_path_change_request (uri);
         browser.record_uri (uri);
     }
 
     public void set_selected_location (GLib.File loc) {
-        List<GLib.File> list = null;
-        list.append (loc);
-        slot.select_glib_files (list, loc);
+        path_change (loc.get_uri ());
     }
 
     private void on_directory_loaded () {

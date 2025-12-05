@@ -202,94 +202,92 @@ public class Files.Application : Gtk.Application {
 
         window.present ();
 
-//         present_filechooser.begin (Gtk.FileChooserAction.SELECT_FOLDER, GLib.File.new_for_path ("/home/jeremy/Pictures"), (obj, res) => {
-// warning ("present file chooser finished");
-//         });
+        present_filechooser.begin (Gtk.FileChooserAction.OPEN, GLib.File.new_for_path ("/home/jeremy/Pictures"), (obj, res) => {
+warning ("present file chooser finished");
+        });
 
 
         return Posix.EXIT_SUCCESS;
     }
 
-//     private async void present_filechooser (Gtk.FileChooserAction action, GLib.File? initial_location) {
-//         var dialog = new FileChooserDialog (action, "", "Test");
-//         dialog.set_initial_location (initial_location);
-//         dialog.modal = true;
-//         dialog.select_multiple = false;
-//         dialog.accept_label = action.to_string ();
+    private async void present_filechooser (Gtk.FileChooserAction action, GLib.File? initial_location) {
+        var dialog = new FileChooserDialog (action, "", "Test");
+        dialog.modal = true;
+        dialog.select_multiple = false;
+        dialog.accept_label = action.to_string ();
+        // dialog.set_uri (initial_location.get_uri ());
 
-//         if (action == SELECT_FOLDER) {
-//             // var filter4 = new Gtk.FileFilter ();
-//             // filter4.add_mime_type ("inode/directory");
-//             // filter4.set_filter_name ("Folders");
-//             // dialog.add_filter (filter4);
-//             // dialog.filter = filter4;
-//         } else {
-//             var filter1 = new Gtk.FileFilter ();
-//             filter1.add_pattern ("*.txt");
-//             filter1.add_pattern ("*.pdf");
-//             filter1.add_pattern ("*.doc");
-//             filter1.set_filter_name ("TestGlob");
-//             dialog.add_filter (filter1);
+        if (action == SELECT_FOLDER) {
+            // var filter4 = new Gtk.FileFilter ();
+            // filter4.add_mime_type ("inode/directory");
+            // filter4.set_filter_name ("Folders");
+            // dialog.add_filter (filter4);
+            // dialog.filter = filter4;
+        } else {
+            var filter1 = new Gtk.FileFilter ();
+            filter1.add_pattern ("*.txt");
+            filter1.add_pattern ("*.pdf");
+            filter1.add_pattern ("*.doc");
+            filter1.set_filter_name ("TestGlob");
+            dialog.add_filter (filter1);
 
-//             var filter2 = new Gtk.FileFilter ();
-//             filter2.add_pattern ("*.*");
-//             filter2.add_pattern ("*");
-//             filter2.set_filter_name ("All Files");
-//             dialog.add_filter (filter2);
+            var filter2 = new Gtk.FileFilter ();
+            filter2.add_pattern ("*.*");
+            filter2.add_pattern ("*");
+            filter2.set_filter_name ("All Files");
+            dialog.add_filter (filter2);
 
-//             var filter3 = new Gtk.FileFilter ();
-//             filter3.add_mime_type ("text/*");
-//             filter3.set_filter_name ("TestMime");
-//             dialog.add_filter (filter3);
-//             dialog.filter = filter1;
-//         }
+            var filter3 = new Gtk.FileFilter ();
+            filter3.add_mime_type ("text/*");
+            filter3.set_filter_name ("TestMime");
+            dialog.add_filter (filter3);
+            dialog.filter = filter1;
+        }
 
-//         if (action == SAVE) {
-//             dialog.set_current_name ("Untitled Doc");
-//             dialog.set_uri ("");
-//         }
+        if (action == SAVE) {
+            dialog.set_current_name ("Untitled Doc");
+        }
 
-//         dialog.select_multiple = false;
-//         var _results = new HashTable<string, Variant> (str_hash, str_equal);
-//         uint _response = 2;
-//         dialog.response.connect ((id) => {
-//             switch (id) {
-//                 case Gtk.ResponseType.OK:
-//                     warning ("ok pressed");
-//                     _results["uris"] = dialog.get_uris ();
-//                     var sv = _results["uris"].get_strv ();
-//                     warning ("%u uris", sv.length);
-// foreach (var s in _results["uris"].get_strv ()) {
+        var _results = new HashTable<string, Variant> (str_hash, str_equal);
+        uint _response = 2;
+        dialog.response.connect ((id) => {
+            switch (id) {
+                case Gtk.ResponseType.OK:
+                    warning ("ok pressed");
+                    _results["uris"] = dialog.get_uris ();
+                    var sv = _results["uris"].get_strv ();
+                    warning ("%u uris", sv.length);
+foreach (var s in _results["uris"].get_strv ()) {
 
-// warning ("result uri %s", s);
-// }
-//                     _results["choices"] = dialog.get_choices ();
-//                     // _results["writable"] = !dialog.read_only;
-//                     if (dialog.filter != null) {
-//                         _results["current_filter"] = dialog.filter.to_gvariant ();
-//                     }
+warning ("result uri %s", s);
+}
+                    _results["choices"] = dialog.get_choices ();
+                    // _results["writable"] = !dialog.read_only;
+                    if (dialog.filter != null) {
+                        _results["current_filter"] = dialog.filter.to_gvariant ();
+                    }
 
-//                     _response = 0;
-//                     break;
-//                 case Gtk.ResponseType.CANCEL:
-//                 warning ("cancel pressed");
-//                     _response = 1;
-//                     break;
-//                 case Gtk.ResponseType.DELETE_EVENT:
-//                 default:
-//                     _response = 2;
-//                     break;
-//             }
+                    _response = 0;
+                    break;
+                case Gtk.ResponseType.CANCEL:
+                warning ("cancel pressed");
+                    _response = 1;
+                    break;
+                case Gtk.ResponseType.DELETE_EVENT:
+                default:
+                    _response = 2;
+                    break;
+            }
 
-//             present_filechooser.callback ();
-//         });
+            present_filechooser.callback ();
+        });
 
-//         dialog.show_all ();
-//         dialog.present ();
-//         yield;
-//         dialog.destroy ();
+        dialog.show_all ();
+        dialog.present ();
+        yield;
+        dialog.destroy ();
 
-//     }
+    }
 
     protected override void window_added (Gtk.Window window) {
         plugins.interface_loaded (window);
