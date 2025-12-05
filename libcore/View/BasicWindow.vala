@@ -31,7 +31,7 @@ public class Files.BasicWindow : Gtk.EventBox {
     }
 
     public string title { get; private set; default = "";}
-    public bool can_select_zero { get; construct; }
+    public bool can_select_zero { get; set; default = true; }
 
     public ViewMode default_mode {
         get {
@@ -96,22 +96,16 @@ public class Files.BasicWindow : Gtk.EventBox {
     private Gtk.Box extra_widget_box;
     private bool locked_focus { get; set; default = false; }
 
-    // private Gtk.EventControllerKey key_controller; //[Gtk3] Does not work unless we keep this ref
-    // public signal void loading_uri (string location);
     public signal void folder_deleted (GLib.File location);
     public signal void free_space_change ();
     public signal void file_activated ();
     public signal void selection_changed ();
 
-    public BasicWindow (bool _can_select_zero) {
-        Object (
-            can_select_zero: _can_select_zero
-        );
-    }
     construct {
         _browser = new BasicBrowser ();
-        headerbar = new Files.BasicHeaderBar ();
+
         sidebar = new Sidebar.BasicSidebarWindow ();
+
         slot = new BasicSlot (default_location, LIST);
         slot.file_activated.connect (() => {
             file_activated ();
@@ -130,9 +124,9 @@ public class Files.BasicWindow : Gtk.EventBox {
         lside_pane.pack2 (slot.get_content_box (), true, true);
         add (lside_pane);
 
+        //We create and connect headerbar but leave to the parent where to put it.
+        headerbar = new Files.BasicHeaderBar ();
         headerbar.path_change_request.connect (path_change);
-
-        sidebar.path_change_request.connect (path_change);
 
         headerbar.go_back.connect ((steps) => {
             string? uri = browser.go_back (steps);
@@ -149,12 +143,14 @@ public class Files.BasicWindow : Gtk.EventBox {
             }
         });
 
-        realize.connect (() => {
-            headerbar.update_location_bar (uri, false);
-        });
+        sidebar.path_change_request.connect (path_change);
 
         slot.notify["uri"].connect (() => {
             update_labels (slot.uri);
+        });
+
+        realize.connect (() => {
+            headerbar.update_location_bar (uri, false);
         });
 
         show_all ();
