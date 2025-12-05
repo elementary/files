@@ -85,67 +85,10 @@ public class Files.FileChooserPortal : Object {
             return;
         }
 
-       GLib.File? initial_location = null;
-        if ("current_folder" in options) {
-            var current_folder = FileUtils.sanitize_path (
-                options["current_folder"].get_bytestring (),
-                null,
-                true
-            );
-
-            if (current_folder != "") {
-                initial_location = GLib.File.new_for_uri (current_folder);
-            }
-        }
-
         var directory = "directory" in options && options["directory"].get_boolean ();
         var action = directory ? Gtk.FileChooserAction.SELECT_FOLDER : Gtk.FileChooserAction.OPEN;
-        var dialog = new FileChooserDialog (action, parent_window, title);
 
-        dialog.set_initial_location (initial_location);
-
-        if ("accept_label" in options) {
-            dialog.accept_label = (options["accept_label"].get_string ());
-        }
-
-        if ("modal" in options) {
-            dialog.modal = options["modal"].get_boolean ();
-        }
-
-        if ("multiple" in options) {
-            dialog.select_multiple = options["multiple"].get_boolean ();
-        }
-
-        if ("accept_label" in options) {
-            dialog.accept_label = options["accept_label"].get_string ();
-        } else {
-            dialog.accept_label = dialog.select_multiple ? _("Select") : _("Open");
-        }
-
-        if ("filters" in options) {
-            var filters = options["filters"].iterator ();
-            Variant filter_variant;
-
-            while ((filter_variant = filters.next_value ()) != null) {
-                var filter = new Gtk.FileFilter.from_gvariant (filter_variant);
-                dialog.add_filter (filter);
-            }
-        }
-
-        if ("current_filter" in options) {
-            dialog.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
-        }
-
-        if ("choices" in options) {
-            var choices = options["choices"].iterator ();
-            Variant choice_variant;
-
-            while ((choice_variant = choices.next_value ()) != null) {
-                var choice = new FileChooserChoice.from_variant (choice_variant);
-                dialog.add_choice (choice);
-            }
-        }
-
+        var dialog = create_dialog (parent_window, title, action, options);
         dialog.register_object (connection, handle);
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
@@ -233,71 +176,9 @@ public class Files.FileChooserPortal : Object {
             return;
         }
 
-        GLib.File? initial_location = null;
-        if ("current_folder" in options) {
-            var current_folder = FileUtils.sanitize_path (
-                options["current_folder"].get_bytestring (),
-                null,
-                true
-            );
 
-            if (current_folder != "") {
-                initial_location = GLib.File.new_for_uri (current_folder);
-            }
-        }
-
-        var dialog = new FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title) {
-            accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
-        };
-
-        dialog.set_initial_location (initial_location);
-
-        if ("modal" in options) {
-            dialog.modal = options["modal"].get_boolean ();
-        }
-
-        if ("current_name" in options) {
-            dialog.set_current_name (options["current_name"].get_string ());
-        }
-
-        var supplied_uri = "";
-        if ("current_file" in options) {
-            supplied_uri = FileUtils.sanitize_path (
-                options["current_file"].get_bytestring (),
-                Environment.get_home_dir (),
-                true
-            );
-
-            if (supplied_uri != "") {
-                dialog.set_uri (supplied_uri);
-            }
-        }
-
-        if ("filters" in options) {
-            var filters = options["filters"].iterator ();
-            Variant filter_variant;
-
-            while ((filter_variant = filters.next_value ()) != null) {
-                var filter = new Gtk.FileFilter.from_gvariant (filter_variant);
-                dialog.add_filter (filter);
-            }
-        }
-
-        if ("current_filter" in options) {
-            dialog.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
-        }
-
-        if ("choices" in options) {
-            var choices = options["choices"].iterator ();
-            Variant choice_variant;
-
-            while ((choice_variant = choices.next_value ()) != null) {
-                var choice = new FileChooserChoice.from_variant (choice_variant);
-                dialog.add_choice (choice);
-            }
-        }
-
-        dialog.register_object (connection, handle); // Dialog will unregister itself when disposed
+        var dialog = create_dialog (parent_window, title, Gtk.FileChooserAction.SAVE, options);
+        dialog.register_object (connection, handle);
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
@@ -314,7 +195,7 @@ public class Files.FileChooserPortal : Object {
                    _response = 0;
 
                     var chosen_file = dialog.get_file ();
-                    if (!chosen_file.query_exists () || chosen_file.get_uri () == supplied_uri) {
+                    if (!chosen_file.query_exists () || chosen_file.get_uri () == dialog.supplied_uri) {
                         break; // No need to check full uri supplied by calling app
                     }
 
@@ -399,45 +280,8 @@ public class Files.FileChooserPortal : Object {
             return;
         }
 
-        GLib.File? initial_location = null;
-        if ("current_folder" in options) {
-            var current_folder = FileUtils.sanitize_path (
-                options["current_folder"].get_bytestring (),
-                null,
-                true
-            );
-
-            if (current_folder != "") {
-                initial_location = GLib.File.new_for_uri (current_folder);
-            }
-        }
-
-        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SELECT_FOLDER, parent_window, title) {
-            accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
-        };
-
-        if ("modal" in options) {
-            dialog.modal = options["modal"].get_boolean ();
-        }
-
-        // if ("current_folder" in options) {
-        //     dialog.set_current_folder (
-        //         FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, true)
-        //     );
-        // }
-
-        if ("choices" in options) {
-            var choices = options["choices"].iterator ();
-            Variant choice_variant;
-
-            while ((choice_variant = choices.next_value ()) != null) {
-                var choice = new FileChooserChoice.from_variant (choice_variant);
-                dialog.add_choice (choice);
-            }
-        }
-
-        //TODO Handle failed registration?
-        dialog.register_object (connection, handle); // Dialog will unregister itself when disposed
+        var dialog = create_dialog (parent_window, title, Gtk.FileChooserAction.SELECT_FOLDER, options);
+        dialog.register_object (connection, handle);
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
@@ -457,7 +301,7 @@ public class Files.FileChooserPortal : Object {
                     }
 
                     _results["uris"] = uris;
-                    // _results["choices"] = dialog.get_choices ();
+                    _results["choices"] = dialog.get_choices ();
                     _response = 0;
                     break;
                 case Gtk.ResponseType.CANCEL:
@@ -481,6 +325,82 @@ public class Files.FileChooserPortal : Object {
 
         response = _response;
         results = _results;
+    }
+
+    private Files.FileChooserDialog create_dialog (
+        string parent_window,
+        string title,
+        Gtk.FileChooserAction action,
+        HashTable<string, Variant> options
+    ) {
+        var dialog = new FileChooserDialog (action, parent_window, title);
+        var current_folder = "";
+
+        var supplied_uri = "";
+        if ("current_file" in options) {
+            supplied_uri = FileUtils.sanitize_path (
+                options["current_file"].get_bytestring (),
+                Environment.get_home_dir (),
+                true
+            );
+
+            if (supplied_uri != "") {
+                dialog.set_uri (supplied_uri); // Will also set current folder
+                dialog.supplied_uri = supplied_uri; // Remember for later
+            }
+        } else if ("current_folder" in options) {
+            current_folder = FileUtils.sanitize_path (
+                options["current_folder"].get_bytestring (),
+                null,
+                true
+            );
+
+            dialog.set_current_folder_uri (current_folder);
+        }
+
+        if ("accept_label" in options) {
+            dialog.accept_label = (options["accept_label"].get_string ());
+        }
+
+        if ("modal" in options) {
+            dialog.modal = options["modal"].get_boolean ();
+        }
+
+        if ("multiple" in options) {
+            dialog.select_multiple = options["multiple"].get_boolean ();
+        }
+
+        if ("accept_label" in options) {
+            dialog.accept_label = options["accept_label"].get_string ();
+        } else {
+            dialog.accept_label = dialog.select_multiple ? _("Select") : _("Open");
+        }
+
+        if ("filters" in options) {
+            var filters = options["filters"].iterator ();
+            Variant filter_variant;
+
+            while ((filter_variant = filters.next_value ()) != null) {
+                var filter = new Gtk.FileFilter.from_gvariant (filter_variant);
+                dialog.add_filter (filter);
+            }
+        }
+
+        if ("current_filter" in options) {
+            dialog.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
+        }
+
+        if ("choices" in options) {
+            var choices = options["choices"].iterator ();
+            Variant choice_variant;
+
+            while ((choice_variant = choices.next_value ()) != null) {
+                var choice = new FileChooserChoice.from_variant (choice_variant);
+                dialog.add_choice (choice);
+            }
+        }
+
+        return dialog;
     }
 
     private Gtk.Dialog create_overwrite_dialog (Gtk.Window parent, GLib.File file) {
