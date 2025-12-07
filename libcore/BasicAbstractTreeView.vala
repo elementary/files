@@ -48,15 +48,13 @@ namespace Files {
                 rubber_banding = true
             };
 
-            // tree.get_selection ().set_mode (selection_mode);
-
             name_column = new Gtk.TreeViewColumn () {
                 sort_column_id = Files.ListModel.ColumnID.FILENAME,
                 expand = true,
                 resizable = true
             };
 
-            name_renderer = new Files.BasicTextRenderer (ViewMode.LIST) {
+            name_renderer = new Files.TextRenderer (ViewMode.LIST) {
                 wrap_width = -1,
                 zoom_level = ZoomLevel.NORMAL,
                 ellipsize_set = true,

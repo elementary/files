@@ -121,7 +121,7 @@ namespace Files {
         Thumbnailer thumbnailer = null;
 
         /* Rename support */
-        protected Files.BasicTextRenderer? name_renderer = null;
+        protected Files.TextRenderer? name_renderer = null;
         public string original_name = "";
         public string proposed_name = "";
         public bool renaming {get; protected set; default = false;}

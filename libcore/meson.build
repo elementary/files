@@ -52,7 +52,7 @@ pantheon_files_core_vala_files = files(
     'UndoManager.vala',
     'EmblemRenderer.vala',
     'IconRenderer.vala',
-    'BasicTextRenderer.vala',
+    'TextRenderer.vala',
     # 'ZeitgeistManager.vala',
     'FileOperations/CommonJob.vala',
     'FileOperations/CopyMoveJob.vala',
@@ -84,7 +84,8 @@ pantheon_files_core_vala_files = files(
     'Widgets/BreadcrumbIconList.vala',
     'Widgets/ButtonWithMenu.vala',
     'Widgets/BasicDirectoryNotFound.vala',
-    'Widgets/BasicSingleLineEditableLabel.vala',
+    'Widgets/SingleLineEditableLabel.vala',
+    'Widgets/MultiLineEditableLabel.vala',
     'Widgets/BasicWelcome.vala',
     'Widgets/ViewSwitcher.vala',
     'Widgets/BasicHeaderBar.vala'
