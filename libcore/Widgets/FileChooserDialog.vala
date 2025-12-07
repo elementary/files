@@ -72,6 +72,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     private Gtk.ComboBox filter_combo;
     private Gtk.Entry entry;
     private Gtk.Box choices_box;
+    private Gtk.Box user_choices_box;
     private Gtk.Box filter_box;
 
     private uint register_id = 0;
@@ -158,6 +159,10 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             halign = Gtk.Align.START,
             margin = 6
         };
+        user_choices_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12) {
+            halign = Gtk.Align.START,
+            margin = 6
+        };
 
         if (action == SAVE) {
             entry = new Gtk.Entry () {
@@ -172,6 +177,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             };
             entry_label.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
 
+            choices_box.pack_start (user_choices_box);
             choices_box.pack_start (entry_label);
             choices_box.pack_start (entry);
 
@@ -253,6 +259,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         cancel_button.clicked.connect (() => response (Gtk.ResponseType.CANCEL));
         accept_button.clicked.connect (() => response (Gtk.ResponseType.OK));
 
+
         var granite_settings = Granite.Settings.get_default ();
         var gtk_settings = Gtk.Settings.get_default ();
 
@@ -332,7 +339,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         uint keyval;
         event.get_keyval (out keyval);
         if (keyval == Gdk.Key.Escape) {
-            response (Gtk.ResponseType.DELETE_EVENT);
+            response (Gtk.ResponseType.CANCEL);
             return Gdk.EVENT_STOP;
         }
 
@@ -407,10 +414,12 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     public Variant[] get_choices () {
         Variant[] choices = {};
 
-        choices_box.get_children ().foreach ((w) => {
-            unowned var c = (FileChooserChoice) w;
-            choices += new Variant ("(ss)", c.name, c.selected);
-        });
+        if (choices_box.visible) {
+            user_choices_box.get_children ().foreach ((w) => {
+                unowned var c = (FileChooserChoice) w;
+                choices += new Variant ("(ss)", c.name, c.selected);
+            });
+        }
 
         return choices;
     }
