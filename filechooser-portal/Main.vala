@@ -176,7 +176,6 @@ public class Files.FileChooserPortal : Object {
             return;
         }
 
-
         var dialog = create_dialog (parent_window, title, Gtk.FileChooserAction.SAVE, options);
         dialog.register_object (connection, handle);
 
@@ -340,7 +339,7 @@ public class Files.FileChooserPortal : Object {
         if ("current_file" in options) {
             supplied_uri = FileUtils.sanitize_path (
                 options["current_file"].get_bytestring (),
-                Environment.get_home_dir (),
+                null,
                 true
             );
 
@@ -356,10 +355,11 @@ public class Files.FileChooserPortal : Object {
             );
 
             dialog.set_current_folder_uri (current_folder);
+            dialog.set_current_folder_uri (current_folder);
         }
 
-        if ("accept_label" in options) {
-            dialog.accept_label = (options["accept_label"].get_string ());
+        if ("current_name" in options) {
+            dialog.set_current_name (options["current_name"].get_string ());
         }
 
         if ("modal" in options) {
@@ -372,8 +372,6 @@ public class Files.FileChooserPortal : Object {
 
         if ("accept_label" in options) {
             dialog.accept_label = options["accept_label"].get_string ();
-        } else {
-            dialog.accept_label = dialog.select_multiple ? _("Select") : _("Open");
         }
 
         if ("filters" in options) {
