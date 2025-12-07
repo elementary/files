@@ -518,6 +518,10 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         }
     }
 
+    public void set_current_folder (string path) {
+        set_current_folder_uri (path);
+    }
+
     public void set_current_name (string text) {
         if (action == SAVE) {
             entry.text = text;
