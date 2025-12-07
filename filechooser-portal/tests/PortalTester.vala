@@ -33,7 +33,7 @@ public class PortalTester : Gtk.Application {
         window.add (grid);
 
         open_file_button.clicked.connect (on_open_file);
-        open_file_button.clicked.connect (on_open_files);
+        open_files_button.clicked.connect (on_open_files);
         select_folder_button.clicked.connect (on_select_folder);
         save_button.clicked.connect (on_save_file);
 
@@ -49,6 +49,80 @@ public class PortalTester : Gtk.Application {
     }
 
     private void on_open_file_or_files (bool multiple) {
+        var filechooser = new Gtk.FileChooserNative (
+            "Files Portal Tester - OPEN", //Honored by freedesktop portal as window title
+            window,
+            Gtk.FileChooserAction.OPEN,
+            "TestOpen",  // Honored freedesktop portal
+            "TestCancel" // Ignored by freedesktop portal
+        );
+
+        filechooser_add_filters (filechooser);
+        filechooser.set_select_multiple (multiple);
+
+        filechooser.response.connect (on_filechooser_response);
+        filechooser.show ();
+    }
+
+    private void on_select_folder () {
+        var filechooser = new Gtk.FileChooserNative (
+            "Files Portal Tester - SELECT FOLDER",
+            window,
+            Gtk.FileChooserAction.SELECT_FOLDER,
+            "TestSelect",
+            "TestCancel"
+        );
+
+        // Filechooser should only display folders, single selection
+        filechooser.response.connect (on_filechooser_response);
+        filechooser.show ();
+    }
+
+    private void on_save_file () {
+        var filechooser = new Gtk.FileChooserNative (
+            "Files Portal Tester - SAVE",
+            window,
+            Gtk.FileChooserAction.SAVE,
+            "TestSave",
+            "TestCancel"
+        );
+
+        filechooser.set_current_name ("TestDoc.txt");
+        filechooser.set_current_folder (Environment.get_home_dir ());
+
+        filechooser.response.connect (on_filechooser_response);
+        filechooser.show ();
+    }
+
+    private void on_filechooser_response (Gtk.NativeDialog filechooser, int id) {
+        switch ((Gtk.ResponseType)id) {
+            case ACCEPT:
+            case OK:
+                var uris = ((Gtk.FileChooser)filechooser).get_uris ();
+                var uri_list = "\n";
+                foreach (var uri in uris) {
+                    uri_list += uri + "\n";
+                }
+                var message_dialog = new Gtk.MessageDialog (
+                    window,
+                    Gtk.DialogFlags.MODAL,
+                    Gtk.MessageType.INFO,
+                    Gtk.ButtonsType.CLOSE,
+                    "Selected: %s",
+                    uri_list
+                );
+                message_dialog.run ();
+                message_dialog.destroy ();
+                break;
+            default:
+                warning ("Ooops, Save operation cancelled! - response was %s", ((Gtk.ResponseType)id).to_string ());
+                break;
+        }
+
+        filechooser.destroy ();
+    }
+
+    private void filechooser_add_filters (Gtk.FileChooserNative filechooser) {
         var filter1 = new Gtk.FileFilter ();
         filter1.add_pattern ("*.txt");
         filter1.add_pattern ("*.pdf");
@@ -64,118 +138,11 @@ public class PortalTester : Gtk.Application {
         filter3.add_pattern ("*");
         filter3.set_filter_name ("All Files");
 
-        var filechooser = new Gtk.FileChooserNative (
-            "Files Portal Tester - OPEN", //Honored by freedesktop portal as window title
-            window,
-            Gtk.FileChooserAction.OPEN,
-            "TestOpen",  // Honored freedesktop portal
-            "TestCancel" // Ignored by freedesktop portal
-        );
-
-        filechooser.set_select_multiple (multiple);
         filechooser.add_filter (filter1);
         filechooser.add_filter (filter2);
         filechooser.add_filter (filter3);
         filechooser.filter = filter1;
-        filechooser.response.connect ((id) => {
-            if (id == Gtk.ResponseType.ACCEPT) {
-                warning ("OPEN response accept");
-                var path = filechooser.get_file ().get_path ();
-                var message_dialog = new Gtk.MessageDialog (
-                    window,
-                    Gtk.DialogFlags.MODAL,
-                    Gtk.MessageType.INFO,
-                    Gtk.ButtonsType.CLOSE,
-                    "This file has been selected: %s",
-                    path
-                );
-                message_dialog.run ();
-                message_dialog.destroy ();
-            } else {
-                warning ("Ooops, operation cancelled! - OPEN response was %s", ((Gtk.ResponseType)id).to_string ());
-            }
-            filechooser.destroy ();
-        });
-
-        filechooser.show ();
     }
-
-    private void on_select_folder () {
-        var filechooser = new Gtk.FileChooserNative (
-            "Files Portal Tester - SELECT FOLDER",
-            window,
-            Gtk.FileChooserAction.SELECT_FOLDER,
-            "TestSelect",
-            "TestCancel"
-        );
-
-        // Filechooser should only display folders, single selection
-
-        filechooser.response.connect ((id) => {
-            if (id == Gtk.ResponseType.ACCEPT) {
-                warning ("SELECT response accept");
-                var message_dialog = new Gtk.MessageDialog (
-                    window,
-                    Gtk.DialogFlags.MODAL,
-                    Gtk.MessageType.INFO,
-                    Gtk.ButtonsType.CLOSE,
-                    "This folder has been selected: %s",
-                    filechooser.get_file ().get_path ()
-                );
-                message_dialog.run ();
-                message_dialog.destroy ();
-            } else {
-                warning ("Ooops, Select operation cancelled! - response was %s", id.to_string ());
-            }
-
-            filechooser.destroy ();
-        });
-
-        filechooser.show ();
-    }
-
-    private void on_save_file () {
-        var filechooser = new Gtk.FileChooserNative (
-            "Files Portal Tester - SAVE",
-            window,
-            Gtk.FileChooserAction.SAVE,
-            "TestSave",
-            "TestCancel"
-        );
-
-        filechooser.set_current_name ("TestDoc.txt");
-        //TODO Allow entry of file basename
-        var current_folder = Environment.get_home_dir ();
-        //TODO Allow entry of folder path
-        filechooser.set_current_folder (current_folder);
-
-        filechooser.response.connect ((id) => {
-            switch ((Gtk.ResponseType)id) {
-                case ACCEPT:
-                case OK:
-                    warning ("Save response ACCEPT");
-                    var message_dialog = new Gtk.MessageDialog (
-                        window,
-                        Gtk.DialogFlags.MODAL,
-                        Gtk.MessageType.INFO,
-                        Gtk.ButtonsType.CLOSE,
-                        "This file has been saved: %s",
-                        filechooser.get_file ().get_path ()
-                    );
-                    message_dialog.run ();
-                    message_dialog.destroy ();
-                    break;
-                default:
-                    warning ("Ooops, Save operation cancelled! - response was %s", ((Gtk.ResponseType)id).to_string ());
-                    break;
-            }
-
-            filechooser.destroy ();
-        });
-
-        filechooser.show ();
-    }
-
 
     public static int main (string[] args) {
         var app = new PortalTester ();
