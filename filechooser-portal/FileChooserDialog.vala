@@ -164,6 +164,8 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             margin = 6
         };
 
+        choices_box.pack_start (user_choices_box);
+
         if (action == SAVE) {
             entry = new Gtk.Entry () {
                 placeholder_text = _("Enter name of file to save"),
@@ -177,7 +179,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             };
             entry_label.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
 
-            choices_box.pack_start (user_choices_box);
             choices_box.pack_start (entry_label);
             choices_box.pack_start (entry);
 
@@ -238,10 +239,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
                 }
             } else {
                 // We honor the user requested filters
-            }
-
-            if (choices_box.get_children ().length () == 0) {
-                choices_box.visible = false;
             }
 
             if (action == Gtk.FileChooserAction.SAVE) {
@@ -395,7 +392,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public void add_choice (FileChooserChoice choice) {
-        choices_box.add (choice);
+        user_choices_box.add (choice);
     }
 
     public unowned string get_choice (string id) {

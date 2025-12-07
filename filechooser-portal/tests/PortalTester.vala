@@ -137,6 +137,21 @@ public class PortalTester : Gtk.Application {
     }
 
     private void filechooser_add_choices (Gtk.FileChooserNative filechooser) {
+        filechooser.add_choice (
+            "1",
+            "Combo choice",
+            {"1a", "1b", "1c"},
+            {"Choice 1a", "Choice 1b", "Choice 1c"}
+        );
+        filechooser.set_choice ("1", "1a");
+
+        filechooser.add_choice (
+            "2",
+            "Boolean choice",
+            null,
+            null
+        );
+        filechooser.set_choice ("2", "true");
 
     }
 

@@ -54,6 +54,7 @@ pantheon_files_core_vala_files = files(
     'EmblemRenderer.vala',
     'IconRenderer.vala',
     'TextRenderer.vala',
+
     'FileOperations/CommonJob.vala',
     'FileOperations/CopyMoveJob.vala',
     'FileOperations/CreateJob.vala',
@@ -66,10 +67,12 @@ pantheon_files_core_vala_files = files(
     'Interfaces/SearchableInterface.vala',
     'Interfaces/SidebarListInterface.vala',
     'Interfaces/SidebarItemInterface.vala',
-    'Widgets/BasicBreadcrumbsEntry.vala',
+
     'View/BasicListView.vala',
     'View/BasicWindow.vala',
     'View/BasicSidebarWindow.vala',
+
+    'Widgets/BasicBreadcrumbsEntry.vala',
     'Widgets/BasicBookmarkListBox.vala',
     'Widgets/BasicDeviceListBox.vala',
     'Widgets/BasicBookmarkRow.vala',
