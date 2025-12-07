@@ -50,7 +50,7 @@ namespace Files {
         public Gtk.Box colpane;
         public Gtk.Paned hpane;
         public BasicSlot (
-            GLib.File? _location = null,
+            GLib.File _location,
             ViewMode _mode = LIST,
             Gtk.SelectionMode _selection_mode = BROWSE
         ) {
@@ -84,6 +84,8 @@ namespace Files {
 
             is_active = false;
             is_frozen = true;
+
+            initialize_directory ();
         }
 
         ~BasicSlot () {
