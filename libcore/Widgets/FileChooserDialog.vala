@@ -252,8 +252,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
             file_view.file_activated.connect (activate_selected_items);
             file_view.selection_changed.connect (check_can_accept);
-
-
         });
 
         cancel_button.clicked.connect (() => response (Gtk.ResponseType.CANCEL));

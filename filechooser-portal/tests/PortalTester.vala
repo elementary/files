@@ -1,5 +1,8 @@
 public class PortalTester : Gtk.Application {
     private Gtk.ApplicationWindow window;
+    public bool set_filters { get; set; }
+    public bool set_choices { get; set; }
+    public bool set_multiple { get; set; }
 
     public PortalTester () {
         Object (
@@ -13,42 +16,60 @@ public class PortalTester : Gtk.Application {
         window.set_default_size (400, 400);
         window.title = "Files Portal Tester";
 
-        var grid = new Gtk.Grid () {
-            halign = Gtk.Align.CENTER,
-            valign = Gtk.Align.CENTER,
-            orientation = Gtk.Orientation.VERTICAL,
-            row_spacing = 6,
-            margin = 6
-        };
+
         var open_file_button = new Gtk.Button.with_label ("Open File"); //FileChooserAction.OPEN
         var open_files_button = new Gtk.Button.with_label ("Open Files"); //FileChooserAction.OPEN with select-multiple
         var select_folder_button = new Gtk.Button.with_label ("Select Folder"); //FileChooserAction.SELECT_FOLDER
         var save_button = new Gtk.Button.with_label ("Save"); //FileChooserAction.SAVE
 
+        var grid = new Gtk.Grid () {
+            orientation = Gtk.Orientation.VERTICAL,
+            row_spacing = 6,
+            margin = 6
+        };
         grid.add (open_file_button);
         grid.add (open_files_button);
         grid.add (select_folder_button);
         grid.add (save_button);
 
-        window.add (grid);
+        var filters_option = new Gtk.CheckButton.with_label ("Set Filters");
+        var choices_option = new Gtk.CheckButton.with_label ("Set Choices");
+        var multiple_option = new Gtk.CheckButton.with_label ("Select Multiple");
+
+        filters_option.bind_property ("active", this, "set-filters");
+        choices_option.bind_property ("active", this, "set-choices");
+        multiple_option.bind_property ("active", this, "set-multiple");
+
+        bind_property ("set-choices", choices_option, "active");
+        bind_property ("set-multiple", multiple_option, "active");
+
+        var option_grid = new Gtk.Grid () {
+            orientation = Gtk.Orientation.VERTICAL,
+            row_spacing = 6,
+            margin = 6
+        };
+
+        option_grid.add (filters_option);
+        option_grid.add (choices_option);
+        option_grid.add (multiple_option);
+
+
+        var main_box = new Gtk.Box (VERTICAL, 24) {
+            halign = Gtk.Align.CENTER,
+            valign = Gtk.Align.CENTER,
+        };
+        main_box.add (grid);
+        main_box.add (option_grid);
+        window.add (main_box);
 
         open_file_button.clicked.connect (on_open_file);
-        open_files_button.clicked.connect (on_open_files);
         select_folder_button.clicked.connect (on_select_folder);
         save_button.clicked.connect (on_save_file);
 
         window.show_all ();
     }
 
-    private void on_open_files () {
-        on_open_file_or_files (true);
-    }
-
     private void on_open_file () {
-        on_open_file_or_files (false);
-    }
-
-    private void on_open_file_or_files (bool multiple) {
         var filechooser = new Gtk.FileChooserNative (
             "Files Portal Tester - OPEN", //Honored by freedesktop portal as window title
             window,
@@ -57,11 +78,7 @@ public class PortalTester : Gtk.Application {
             "TestCancel" // Ignored by freedesktop portal
         );
 
-        filechooser_add_filters (filechooser);
-        filechooser.set_select_multiple (multiple);
-
-        filechooser.response.connect (on_filechooser_response);
-        filechooser.show ();
+        show_filechooser (filechooser);
     }
 
     private void on_select_folder () {
@@ -73,9 +90,7 @@ public class PortalTester : Gtk.Application {
             "TestCancel"
         );
 
-        // Filechooser should only display folders, single selection
-        filechooser.response.connect (on_filechooser_response);
-        filechooser.show ();
+        show_filechooser (filechooser);
     }
 
     private void on_save_file () {
@@ -90,8 +105,7 @@ public class PortalTester : Gtk.Application {
         filechooser.set_current_name ("TestDoc.txt");
         filechooser.set_current_folder (Environment.get_home_dir ());
 
-        filechooser.response.connect (on_filechooser_response);
-        filechooser.show ();
+        show_filechooser (filechooser);
     }
 
     private void on_filechooser_response (Gtk.NativeDialog filechooser, int id) {
@@ -122,6 +136,11 @@ public class PortalTester : Gtk.Application {
         filechooser.destroy ();
     }
 
+    private void filechooser_add_choices (Gtk.FileChooserNative filechooser) {
+
+    }
+
+    private void show_filechooser (Gtk.FileChooserNative filechooser) {
     private void filechooser_add_filters (Gtk.FileChooserNative filechooser) {
         var filter1 = new Gtk.FileFilter ();
         filter1.add_pattern ("*.txt");
@@ -142,6 +161,20 @@ public class PortalTester : Gtk.Application {
         filechooser.add_filter (filter2);
         filechooser.add_filter (filter3);
         filechooser.filter = filter1;
+    }
+
+    private void show_filechooser (Gtk.FileChooserNative filechooser) {
+        if (set_filters) {
+            filechooser_add_filters (filechooser);
+        }
+
+        if (set_choices) {
+            filechooser_add_choices (filechooser);
+        }
+
+        filechooser.set_select_multiple (set_multiple);
+        filechooser.response.connect (on_filechooser_response);
+        filechooser.show ();
     }
 
     public static int main (string[] args) {
