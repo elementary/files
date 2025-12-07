@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-10-21 00:55+0000\n"
+"PO-Revision-Date: 2025-11-20 21:55+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <italo@gp-mail.com>\n"
 "Language-Team: Spanish <https://l10n.elementaryos.org/projects/files/extra/"
 "es/>\n"
@@ -78,7 +78,7 @@ msgstr "Mejoras:"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "A compact date format is introduced"
-msgstr ""
+msgstr "Se ha introducido un formato de fecha compacto"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:91
 #: data/files.metainfo.xml.in.in:109 data/files.metainfo.xml.in.in:124
@@ -92,19 +92,23 @@ msgstr "Actualizaciones menores:"
 
 #: data/files.metainfo.xml.in.in:73
 msgid "The file conflict dialog now shows a missing icon"
-msgstr ""
+msgstr "El diálogo de conflictos de archivo ahora muestra un icono faltante"
 
 #: data/files.metainfo.xml.in.in:74
 msgid "Flickering of the pathbar with some navigation methods is fixed"
 msgstr ""
+"Se ha corregido el parpadeo de la barra de la ruta que ocurría con algunos "
+"métodos de navegación"
 
 #: data/files.metainfo.xml.in.in:75
 msgid "The option to set a default app for folders is no longer offered"
-msgstr ""
+msgstr "Ya no se ofrece una aplicación por defecto para el manejo de carpetas"
 
 #: data/files.metainfo.xml.in.in:76
 msgid "The scrollbar no longer overlays the modification date in List view"
 msgstr ""
+"La barra de desplazamiento ya no se superpone a las fechas de modificación "
+"en la vista de lista"
 
 #: data/files.metainfo.xml.in.in:77 data/files.metainfo.xml.in.in:96
 #: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:126
