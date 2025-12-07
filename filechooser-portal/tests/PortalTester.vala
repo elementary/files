@@ -117,13 +117,19 @@ public class PortalTester : Gtk.Application {
                 foreach (var uri in uris) {
                     uri_list += uri + "\n";
                 }
+
+                var choice1 = ((Gtk.FileChooser)filechooser).get_choice ("1");
+                var choice2 = ((Gtk.FileChooser)filechooser).get_choice ("2");
+                //FIXME FileCooserNative returns the choices originally set!!!
+                var choice_list = "Choice 1: %s".printf (choice1) + "\n" + "Choice 2: %s".printf (choice2);
+
                 var message_dialog = new Gtk.MessageDialog (
                     window,
                     Gtk.DialogFlags.MODAL,
                     Gtk.MessageType.INFO,
                     Gtk.ButtonsType.CLOSE,
-                    "Selected: %s",
-                    uri_list
+                    "Selected: %s \nChoices: %s\n",
+                    uri_list, choice_list
                 );
                 message_dialog.run ();
                 message_dialog.destroy ();
@@ -136,6 +142,10 @@ public class PortalTester : Gtk.Application {
         filechooser.destroy ();
     }
 
+    /* Note:  Gtk.FileChooserNative supports adding choices and sends through portal but does NOT
+     * support retrieving the current user choice from the portal again!!  Just returns the value
+     * originally set
+     */
     private void filechooser_add_choices (Gtk.FileChooserNative filechooser) {
         filechooser.add_choice (
             "1",
@@ -143,7 +153,7 @@ public class PortalTester : Gtk.Application {
             {"1a", "1b", "1c"},
             {"Choice 1a", "Choice 1b", "Choice 1c"}
         );
-        filechooser.set_choice ("1", "1a");
+        filechooser.set_choice ("1", "1c");
 
         filechooser.add_choice (
             "2",
@@ -151,7 +161,7 @@ public class PortalTester : Gtk.Application {
             null,
             null
         );
-        filechooser.set_choice ("2", "true");
+        filechooser.set_choice ("2", "false");
 
     }
 
