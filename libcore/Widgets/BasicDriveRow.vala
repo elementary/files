@@ -58,7 +58,7 @@ public class Sidebar.BasicDriveRow : Sidebar.BasicAbstractMountableRow, SidebarI
         set_visibility ();
         sort_key = drive.get_sort_key ();
         if (sort_key == null) {
-            sort_key = MountableType.EMPTY_DRIVE.to_string () + custom_name;
+            sort_key = BasicMountableType.EMPTY_DRIVE.to_string () + custom_name;
         }
 
         volume_monitor.drive_disconnected.connect (drive_removed);

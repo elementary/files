@@ -44,7 +44,7 @@ public class Sidebar.BasicVolumelessMountRow : Sidebar.BasicAbstractMountableRow
             if (mount_sort_key != null) {
                 sort_key = mount_sort_key + custom_name;
             } else {
-                sort_key = MountableType.VOLUMELESS_MOUNT.to_string () + custom_name;
+                sort_key = BasicMountableType.VOLUMELESS_MOUNT.to_string () + custom_name;
             }
         } else {
             sort_key = ""; // Used for "FileSystem" entry which is always first.

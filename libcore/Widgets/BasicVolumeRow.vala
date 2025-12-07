@@ -73,7 +73,7 @@ public class Sidebar.BasicVolumeRow : Sidebar.BasicAbstractMountableRow, Sidebar
         sort_key += volume_sort_key != null ? volume_sort_key : "";
 
         if (sort_key.length == 0) {
-            sort_key = MountableType.VOLUME.to_string () + name;
+            sort_key = BasicMountableType.VOLUME.to_string () + name;
         }
 
         if (drive_name != null && drive_name != "") {

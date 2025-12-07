@@ -22,14 +22,7 @@
 */
 
 public class Files.BasicWindow : Gtk.EventBox {
-    //TODO Introduce BrowserManager?
-    private BasicBrowser _browser;
-    public BasicBrowser browser {
-        get {
-            return _browser;
-        }
-    }
-
+    public Browser browser { get; private set; }
     public string title { get; private set; default = "";}
     public bool can_select_zero { get; set; default = true; }
 
@@ -101,7 +94,7 @@ public class Files.BasicWindow : Gtk.EventBox {
     public signal void selection_changed ();
 
     construct {
-        _browser = new BasicBrowser ();
+        browser = new Browser ();
 
         sidebar = new Sidebar.BasicSidebarWindow ();
 
@@ -217,8 +210,8 @@ public class Files.BasicWindow : Gtk.EventBox {
     }
 
     private void on_directory_loaded () {
-        headerbar.set_back_menu (browser.go_back_list (), browser.can_go_back);
-        headerbar.set_forward_menu (browser.go_forward_list (), browser.can_go_forward);
+        headerbar.set_back_menu (browser.go_back_list (), browser.get_can_go_back ());
+        headerbar.set_forward_menu (browser.go_forward_list (), browser.get_can_go_forward ());
         headerbar.update_location_bar (uri, true);
         slot.focus_first_for_empty_selection (!can_select_zero);
         //TODO Handle dir cannot load

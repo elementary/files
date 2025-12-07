@@ -21,7 +21,7 @@
  */
 
 // Used to determine first level sort order.
-public enum MountableType {
+public enum BasicMountableType {
     VOLUMELESS_MOUNT,
     VOLUME,
     EMPTY_DRIVE
