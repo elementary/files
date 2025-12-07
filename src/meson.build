@@ -14,9 +14,6 @@ pantheon_files_exec = executable (
 
     'Application.vala',
     'DeepCount.vala',
-    # 'EmblemRenderer.vala',
-    # 'IconRenderer.vala',
-    # 'TextRenderer.vala',
     'main.vala',
     'ProgressUIHandler.vala',
 
@@ -48,15 +45,12 @@ pantheon_files_exec = executable (
     'View/ViewContainer.vala',
     'View/Window.vala',
 
-    # 'View/Widgets/AbstractEditableLabel.vala',
     'View/Widgets/AppMenu.vala',
     'View/Widgets/BreadcrumbsEntry.vala',
     'View/Widgets/LocationBar.vala',
-    # 'View/Widgets/MultiLineEditableLabel.vala',
     'View/Widgets/OverlayBar.vala',
     'View/Widgets/PermissionButton.vala',
     'View/Widgets/ProgressInfoWidget.vala',
-    # 'View/Widgets/SingleLineEditableLabel.vala',
     'View/Widgets/SearchResults.vala',
     'View/Widgets/Welcome.vala',
 
