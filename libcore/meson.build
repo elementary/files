@@ -87,10 +87,7 @@ pantheon_files_core_vala_files = files(
     'Widgets/BasicSingleLineEditableLabel.vala',
     'Widgets/BasicWelcome.vala',
     'Widgets/ViewSwitcher.vala',
-    'Widgets/BasicHeaderBar.vala',
-    'Widgets/FileChooserDialog.vala',
-    'Widgets/FileChooserChoice.vala',
-    'Widgets/ExternalWindow.vala'
+    'Widgets/BasicHeaderBar.vala'
 )
 
 pantheon_files_core_c_files = files(
