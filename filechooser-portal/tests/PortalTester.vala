@@ -140,7 +140,6 @@ public class PortalTester : Gtk.Application {
 
     }
 
-    private void show_filechooser (Gtk.FileChooserNative filechooser) {
     private void filechooser_add_filters (Gtk.FileChooserNative filechooser) {
         var filter1 = new Gtk.FileFilter ();
         filter1.add_pattern ("*.txt");
