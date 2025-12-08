@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-08-17 12:55+0000\n"
+"PO-Revision-Date: 2025-12-09 11:55+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/extra/"
 "ja/>\n"
@@ -77,7 +77,7 @@ msgstr "改善点:"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "A compact date format is introduced"
-msgstr ""
+msgstr "日付書式に“コンパクト”を追加"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:91
 #: data/files.metainfo.xml.in.in:109 data/files.metainfo.xml.in.in:124
@@ -91,19 +91,20 @@ msgstr "マイナーアップデート:"
 
 #: data/files.metainfo.xml.in.in:73
 msgid "The file conflict dialog now shows a missing icon"
-msgstr ""
+msgstr "ファイルの重複ダイアログでアイコンが表示されない問題を修正"
 
 #: data/files.metainfo.xml.in.in:74
 msgid "Flickering of the pathbar with some navigation methods is fixed"
-msgstr ""
+msgstr "一部のナビゲーション方法でパスバーがちらつく問題を修正"
 
 #: data/files.metainfo.xml.in.in:75
 msgid "The option to set a default app for folders is no longer offered"
-msgstr ""
+msgstr "フォルダーに対してはデフォルトアプリに設定するオプションを表示しないように修"
+"正"
 
 #: data/files.metainfo.xml.in.in:76
 msgid "The scrollbar no longer overlays the modification date in List view"
-msgstr ""
+msgstr "スクロールバーがリストビュー内の更新日時に重なって表示されないように修正"
 
 #: data/files.metainfo.xml.in.in:77 data/files.metainfo.xml.in.in:96
 #: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:126
@@ -117,16 +118,16 @@ msgstr "翻訳の更新"
 
 #: data/files.metainfo.xml.in.in:93
 msgid "Navigation within the Trash folder now works properly"
-msgstr ""
+msgstr "ゴミ箱フォルダーでも適切にナビゲーションできるように修正"
 
 #: data/files.metainfo.xml.in.in:94
 msgid "The view now refreshes properly after permanent deletion of a folder"
-msgstr ""
+msgstr "フォルダーを完全に削除した後にビューが適切に更新されるように修正"
 
 #: data/files.metainfo.xml.in.in:95
 msgid ""
 "The number of template items displayed in the context menu is now limited"
-msgstr ""
+msgstr "コンテキストメニューに表示するテンプレートの数を制限するように修正"
 
 #: data/files.metainfo.xml.in.in:111
 msgid ""
