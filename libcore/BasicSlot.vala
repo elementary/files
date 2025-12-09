@@ -143,7 +143,7 @@ namespace Files {
             directory.need_reload.connect (on_directory_need_reload);
         }
 
-        private void disconnect_dir_signals () requires (directory != null)  {
+        private void disconnect_dir_signals () requires (directory != null) {
             directory.done_loading.disconnect (on_directory_done_loading);
             directory.need_reload.disconnect (on_directory_need_reload);
         }

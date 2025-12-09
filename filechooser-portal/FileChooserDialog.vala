@@ -135,10 +135,10 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             id_column = 0
         };
 
-	    var renderer = new Gtk.CellRendererText ();
-	    filter_combo.pack_start (renderer, true);
-	    filter_combo.add_attribute (renderer, "text", 0);
-	    filter_combo.active = 0;
+        var renderer = new Gtk.CellRendererText ();
+        filter_combo.pack_start (renderer, true);
+        filter_combo.add_attribute (renderer, "text", 0);
+        filter_combo.active = 0;
 
         filter_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
             hexpand = true,
@@ -318,7 +318,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     private void activate_selected_items () {
         unowned var selected = file_view.selected_files;
         var file = selected.first ().data;
-        var only_one = (selected.first ().next)== null;
+        var only_one = (selected.first ().next) == null;
         if (only_one && file.is_folder ()) {
             set_current_folder_uri (file.uri);
         } else if (only_one || select_multiple) {
