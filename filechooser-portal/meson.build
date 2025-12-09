@@ -66,7 +66,7 @@ if (flatpak_builder.found())
         ],
         capture: true,
         output: 'io.elementary.Files.PortalTester',
-        build_by_default: true
+        build_by_default: false
     )
 endif
 
