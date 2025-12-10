@@ -16,11 +16,6 @@
 ***/
 
 namespace Files {
-    public Settings app_settings;
-    public Settings icon_view_settings;
-    public Settings list_view_settings;
-    public Settings column_view_settings;
-
     public static Preferences? preferences = null;
 
     public class Preferences : Object {
@@ -47,14 +42,6 @@ namespace Files {
             }
 
             return preferences;
-        }
-
-        static construct {
-            /* GSettings parameters */
-            app_settings = new Settings ("io.elementary.files.preferences");
-            icon_view_settings = new Settings ("io.elementary.files.icon-view");
-            list_view_settings = new Settings ("io.elementary.files.list-view");
-            column_view_settings = new Settings ("io.elementary.files.column-view");
         }
     }
 }
