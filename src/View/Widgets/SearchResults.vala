@@ -290,20 +290,20 @@ namespace Files.View.Chrome {
             /* Update the headers */
             list.@set (local_results,
                         0, header_markup.printf (_("In This Folder")),
-                        5, Category.CURRENT_HEADER.to_string ());
+                        5, Category.CURRENT_HEADER.to_string () + "0");
 
             list.@set (deep_results,
                         0, header_markup.printf (_("Below This Folder")),
-                        5, Category.CURRENT_HEADER.to_string ());
+                        5, Category.CURRENT_HEADER.to_string () + "1");
 
             list.@set (bookmark_results,
                         0, header_markup.printf (_("Bookmarks")),
-                        5, Category.CURRENT_HEADER.to_string ());
+                        5, Category.CURRENT_HEADER.to_string () + "2");
 
 #if HAVE_ZEITGEIST
             list.@set (zeitgeist_results,
                         0, header_markup.printf (_("Recently Used")),
-                        5, Category.CURRENT_HEADER.to_string ());
+                        5, Category.CURRENT_HEADER.to_string () + "4");
 #endif
         }
 
