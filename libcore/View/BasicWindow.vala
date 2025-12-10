@@ -109,8 +109,8 @@ public class Files.BasicWindow : Gtk.EventBox {
         });
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-            expand = true,
-            position = Files.app_settings.get_int ("sidebar-width")
+            expand = true
+            // position = Files.app_settings.get_int ("sidebar-width")
         };
         lside_pane.pack1 (sidebar, false, false);
         lside_pane.pack2 (slot.get_content_box (), true, true);

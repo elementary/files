@@ -51,12 +51,12 @@ namespace Files {
         private void append_extra_tree_columns () {
             int fnc = ListModel.ColumnID.FILENAME;
 
-            int preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
+            // int preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
             for (int k = fnc; k < ListModel.ColumnID.NUM_COLUMNS; k++) {
                 if (k == fnc) {
                     /* name_column already created by AbstractTreeVIew */
                     name_column.set_title (column_titles [0]);
-                    name_column.min_width = preferred_column_width;
+                    // name_column.min_width = preferred_column_width;
                 } else {
                     var renderer = new Gtk.CellRendererText ();
                     var col = new Gtk.TreeViewColumn.with_attributes (column_titles [k - fnc],
@@ -201,9 +201,9 @@ namespace Files {
             return tree as Gtk.Widget;
         }
 
-        public override Settings? get_view_settings () {
-            return Files.list_view_settings;
-        }
+        // public override Settings? get_view_settings () {
+        //     return Files.list_view_settings;
+        // }
 
         private void add_subdirectory_at_path (Gtk.TreePath path) {
             /* If a new subdirectory is loaded, connect it, load it
