@@ -383,29 +383,32 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public void add_choice (FileChooserChoice choice) {
+    warning ("Chooser add choice");
         user_choices_box.add (choice);
     }
 
     public unowned string get_choice (string id) {
-        foreach (var w in choices_box.get_children ()) {
-            unowned var c = (FileChooserChoice) w;
-            if (c.id == id) {
-                return c.selected;
-            }
-        }
+    warning ("Chooser get choice");
+        // foreach (var w in choices_box.get_children ()) {
+        //     unowned var c = (FileChooserChoice) w;
+        //     if (c.id == id) {
+        //         return c.selected;
+        //     }
+        // }
 
         return null;
     }
 
     public Variant[] get_choices () {
+    warning ("FileCHooser get choices");
         Variant[] choices = {};
 
-        if (choices_box.visible) {
-            user_choices_box.get_children ().foreach ((w) => {
-                unowned var c = (FileChooserChoice) w;
-                choices += new Variant ("(ss)", c.name, c.selected);
-            });
-        }
+        // if (choices_box.visible) {
+        //     user_choices_box.get_children ().foreach ((w) => {
+        //         unowned var c = (FileChooserChoice) w;
+        //         choices += new Variant ("(ss)", c.name, c.selected);
+        //     });
+        // }
 
         return choices;
     }

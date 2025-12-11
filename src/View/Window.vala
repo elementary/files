@@ -1052,12 +1052,117 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void action_test_filechooser () {
         warning ("test filechooser");
-        var dialog = new Gtk.FileChooserNative ("Open File Test", this, Gtk.FileChooserAction.OPEN, "TestOpen", "TestCancel");
-        // var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.OPEN, "TestOpen");
-        Gtk.ResponseType response = dialog.run ();
-        warning ("Response %s", response.to_string ());
+        // var dialog = new Gtk.FileChooserNative ("Open File Test", this, Gtk.FileChooserAction.OPEN, "TestOpen", "TestCancel");
+        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.OPEN, "TestOpen");
+        // Gtk.ResponseType response = dialog.run ();
+        // warning ("Response %s", response.to_string ());
+        // dialog.destroy ();
+        do_open_file.begin (dialog);
+    }
+
+    private async void do_open_file (Files.FileChooserDialog dialog) {
+    // private async void do_open_file (Gtk.FileChooserNative dialog) {
+        // var dialog = new FileChooserDialog (
+        //     directory ? Gtk.FileChooserAction.SELECT_FOLDER : Gtk.FileChooserAction.OPEN,
+        //     title
+        // );
+
+        // dialog.realize.connect (() => {
+        //     if (parent_window != "") {
+        //         var parent = ExternalWindow.from_handle (parent_window);
+        //         if (parent == null) {
+        //             warning ("Failed to associate portal window with parent window %s", parent_window);
+        //         } else {
+        //             parent.set_parent_of (dialog.get_window ());
+        //         }
+        //     }
+        // });
+
+        // if ("modal" in options) {
+            dialog.modal = true;
+        // }
+
+        // if ("multiple" in options) {
+            dialog.select_multiple = false;
+        // }
+
+        // if ("accept_label" in options) {
+            dialog.accept_label = "AcceptLabel";
+        // } else {
+        //     dialog.accept_label = dialog.select_multiple ? _("Select") : _("Open");
+        // }
+
+        // if ("filters" in options) {
+            // var filters = options["filters"].iterator ();
+            // Variant filter_variant;
+
+            // while ((filter_variant = filters.next_value ()) != null) {
+            //     var filter = new Gtk.FileFilter.from_gvariant (filter_variant);
+
+            var filter1 = new Gtk.FileFilter ();
+            filter1.set_filter_name ("TestFilterText");
+            filter1.add_pattern ("*.txt");
+            dialog.add_filter (filter1);
+            var filter2 = new Gtk.FileFilter ();
+            filter2.set_filter_name ("TestFilterAll");
+            filter2.add_pattern ("*.*");
+            dialog.add_filter (filter2);
+            // }
+        // }
+
+        // if ("current_filter" in options) {
+            // dialog.filter = filter2;
+        // }
+
+        // if ("choices" in options) {
+        //     var choices = options["choices"].iterator ();
+        //     Variant choice_variant;
+
+        //     while ((choice_variant = choices.next_value ()) != null) {
+        //         var choice = new FileChooserChoice.from_variant (choice_variant);
+        //         dialog.add_choice (choice);
+        //     }
+        // }
+
+        // dialog.register_object (connection, handle);
+
+        // var _results = new HashTable<string, Variant> (str_hash, str_equal);
+        // uint _response = 2;
+
+        dialog.response.connect ((id) => {
+            switch (id) {
+                case Gtk.ResponseType.OK:
+                    // _results["uris"] = dialog.get_uris ();
+                    // _results["choices"] = dialog.get_choices ();
+                    // _results["writable"] = !dialog.read_only;
+                    // if (dialog.filter != null) {
+                    //     _results["current_filter"] = dialog.filter.to_gvariant ();
+                    // }
+
+                    // _response = 0;
+                    warning ("OK");
+                    break;
+                case Gtk.ResponseType.CANCEL:
+                    // _response = 1;
+                    warning ("CANCEL");
+                    break;
+                case Gtk.ResponseType.DELETE_EVENT:
+                    warning ("DELETE");
+                    break;
+                default:
+                    // _response = 2;
+                    warning ("res = %s", ((Gtk.ResponseType)id).to_string ());
+                    break;
+            }
+        });
+
+        // dialogs[parent_window] = dialog;
+        dialog.show ();
+        yield;
+
         dialog.destroy ();
     }
+
 
     private void before_undo_redo () {
         doing_undo_redo = true;

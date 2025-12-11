@@ -85,12 +85,17 @@ public class Files.FileChooserPortal : Object {
             return;
         }
 
+// warning ("Main open file");
+
+
         var directory = "directory" in options && options["directory"].get_boolean ();
 
         var dialog = new FileChooserDialog (
             directory ? Gtk.FileChooserAction.SELECT_FOLDER : Gtk.FileChooserAction.OPEN,
             title
         );
+
+        show_message_dialog (dialog, "Main open file");
 
         dialog.realize.connect (() => {
             if (parent_window != "") {
@@ -131,15 +136,16 @@ public class Files.FileChooserPortal : Object {
             dialog.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
         }
 
-        if ("choices" in options) {
-            var choices = options["choices"].iterator ();
-            Variant choice_variant;
+        // if ("choices" in options) {
+        //     warning ("Main handle choices");
+        //     var choices = options["choices"].iterator ();
+        //     Variant choice_variant;
 
-            while ((choice_variant = choices.next_value ()) != null) {
-                var choice = new FileChooserChoice.from_variant (choice_variant);
-                dialog.add_choice (choice);
-            }
-        }
+        //     while ((choice_variant = choices.next_value ()) != null) {
+        //         var choice = new FileChooserChoice.from_variant (choice_variant);
+        //         dialog.add_choice (choice);
+        //     }
+        // }
 
         dialog.register_object (connection, handle);
 
@@ -150,7 +156,7 @@ public class Files.FileChooserPortal : Object {
             switch (id) {
                 case Gtk.ResponseType.OK:
                     _results["uris"] = dialog.get_uris ();
-                    _results["choices"] = dialog.get_choices ();
+                    // _results["choices"] = dialog.get_choices ();
                     _results["writable"] = !dialog.read_only;
                     if (dialog.filter != null) {
                         _results["current_filter"] = dialog.filter.to_gvariant ();
@@ -232,17 +238,6 @@ public class Files.FileChooserPortal : Object {
             accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
         };
 
-        dialog.realize.connect (() => {
-            if (parent_window != "") {
-                var parent = ExternalWindow.from_handle (parent_window);
-                if (parent == null) {
-                    warning ("Failed to associate portal window with parent window %s", parent_window);
-                } else {
-                    parent.set_parent_of (dialog.get_window ());
-                }
-            }
-        });
-
         if ("modal" in options) {
             dialog.modal = options["modal"].get_boolean ();
         }
@@ -284,17 +279,27 @@ public class Files.FileChooserPortal : Object {
             dialog.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
         }
 
-        if ("choices" in options) {
-            var choices = options["choices"].iterator ();
-            Variant choice_variant;
+        // if ("choices" in options) {
+        //     var choices = options["choices"].iterator ();
+        //     Variant choice_variant;
 
-            while ((choice_variant = choices.next_value ()) != null) {
-                var choice = new FileChooserChoice.from_variant (choice_variant);
-                dialog.add_choice (choice);
-            }
-        }
+        //     while ((choice_variant = choices.next_value ()) != null) {
+        //         var choice = new FileChooserChoice.from_variant (choice_variant);
+        //         dialog.add_choice (choice);
+        //     }
+        // }
 
         dialog.register_object (connection, handle); // Dialog will unregister itself when disposed
+        dialog.realize.connect (() => {
+            if (parent_window != "") {
+                var parent = ExternalWindow.from_handle (parent_window);
+                if (parent == null) {
+                    warning ("Failed to associate portal window with parent window %s", parent_window);
+                } else {
+                    parent.set_parent_of (dialog.get_window ());
+                }
+            }
+        });
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
@@ -477,6 +482,24 @@ public class Files.FileChooserPortal : Object {
         response = _response;
         results = _results;
     }
+
+    private void show_message_dialog (Gtk.Window parent, string  message) {
+        string primary = "DEBUG";
+        string secondary = message;
+        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+            primary,
+            secondary,
+            "dialog-warning",
+            Gtk.ButtonsType.CLOSE
+        ) {
+            modal = true,
+            transient_for = parent
+        };
+
+        message_dialog.run ();
+        message_dialog.destroy ();
+    }
+
 
     private Gtk.Dialog create_overwrite_dialog (Gtk.Window parent, GLib.File file) {
         string primary, secondary;
