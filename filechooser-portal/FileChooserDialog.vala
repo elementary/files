@@ -4,11 +4,11 @@
  */
 
 [DBus (name = "org.freedesktop.impl.portal.Request")]
-public interface Xdp.Request : Object {
+public interface FileChooser.Xdp.Request : Object {
     public abstract void close () throws DBusError, IOError;
 }
 
-public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
+public class FileChooser.FileChooserDialog : Hdy.Window, FileChooser.Xdp.Request {
     public signal void response (Gtk.ResponseType response);
 
     public string parent_window { get; construct; }
@@ -179,7 +179,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
 
         realize.connect (() => {
             if (parent_window != "") {
-                var parent = ExternalWindow.from_handle (parent_window);
+                var parent = FileChooser.ExternalWindow.from_handle (parent_window);
                 if (parent == null) {
                     warning ("Failed to associate portal window with parent window %s", parent_window);
                 } else {
@@ -451,7 +451,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         return chooser.get_file ();
     }
 
-    public void add_choice (FileChooserChoice choice) {
+    public void add_choice (FileChooser.FileChooserChoice choice) {
         choices_box.add (choice);
     }
 
@@ -459,7 +459,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         Variant[] choices = {};
 
         choices_box.get_children ().foreach ((w) => {
-            unowned var c = (FileChooserChoice) w;
+            unowned var c = (FileChooser.FileChooserChoice) w;
             choices += new Variant ("(ss)", c.name, c.selected);
         });
 

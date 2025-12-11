@@ -19,24 +19,24 @@
  * Authored by: David Hewitt <davidmhewitt@gmail.com>
  */
 
-public interface FileChooser.ExternalWindow : GLib.Object {
+public interface ExternalWindow : GLib.Object {
     public abstract void set_parent_of (Gdk.Window child_window);
 
-    public static FileChooser.ExternalWindow? from_handle (string handle) {
+    public static ExternalWindow? from_handle (string handle) {
         const string X11_PREFIX = "x11:";
         const string WAYLAND_PREFIX = "wayland:";
-        FileChooser.ExternalWindow? external_window = null;
+        ExternalWindow? external_window = null;
 
         if (handle.has_prefix (X11_PREFIX)) {
             try {
-                external_window = new FileChooser.ExternalWindowX11 (handle.substring (X11_PREFIX.length));
+                external_window = new ExternalWindowX11 (handle.substring (X11_PREFIX.length));
             } catch (Error e) {
                 warning ("Error getting external X11 window: %s", e.message);
                 return null;
             }
         } else if (handle.has_prefix (WAYLAND_PREFIX)) {
             try {
-                external_window = new FileChooser.ExternalWindowWayland (handle.substring (WAYLAND_PREFIX.length));
+                external_window = new ExternalWindowWayland (handle.substring (WAYLAND_PREFIX.length));
             } catch (Error e) {
                 warning ("Error getting external Wayland window: %s", e.message);
                 return null;
@@ -49,7 +49,7 @@ public interface FileChooser.ExternalWindow : GLib.Object {
     }
 }
 
-public class FileChooser.ExternalWindowX11 : FileChooser.ExternalWindow, GLib.Object {
+public class ExternalWindowX11 : ExternalWindow, GLib.Object {
     private static Gdk.Display? x11_display = null;
 
     private Gdk.Window foreign_gdk_window;
@@ -92,7 +92,7 @@ public class FileChooser.ExternalWindowX11 : FileChooser.ExternalWindow, GLib.Ob
     }
 }
 
-public class FileChooser.ExternalWindowWayland : FileChooser.ExternalWindow, GLib.Object {
+public class ExternalWindowWayland : ExternalWindow, GLib.Object {
     private static Gdk.Display? wayland_display = null;
 
     private string handle;

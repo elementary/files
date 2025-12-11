@@ -1052,16 +1052,16 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void action_test_filechooser () {
         warning ("test filechooser");
-        // var dialog = new Gtk.FileChooserNative ("Open File Test", this, Gtk.FileChooserAction.OPEN, "TestOpen", "TestCancel");
-        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.OPEN, "TestOpen");
+        var dialog = new Gtk.FileChooserNative ("Open File Test", this, Gtk.FileChooserAction.OPEN, "TestOpen", "TestCancel");
+        // var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.OPEN, null, "TestOpen");
         // Gtk.ResponseType response = dialog.run ();
         // warning ("Response %s", response.to_string ());
         // dialog.destroy ();
         do_open_file.begin (dialog);
     }
 
-    private async void do_open_file (Files.FileChooserDialog dialog) {
-    // private async void do_open_file (Gtk.FileChooserNative dialog) {
+    // private async void do_open_file (Files.FileChooserDialog dialog) {
+    private async void do_open_file (Gtk.FileChooserNative dialog) {
         // var dialog = new FileChooserDialog (
         //     directory ? Gtk.FileChooserAction.SELECT_FOLDER : Gtk.FileChooserAction.OPEN,
         //     title

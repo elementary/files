@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-2.1-or-later
  */
 
-public class Files.FileChooserChoice : Gtk.Box {
+public class FileChooser.FileChooserChoice : Gtk.Box {
     public Variant? options { get; construct; }
     public string label { get; set; }
     public string selected { get; set; }
