@@ -45,7 +45,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"restore-tabs-on-startup", null, null, "true", change_state_restore_tabs_on_startup},
         {"forward", action_forward, "i"},
         {"back", action_back, "i"},
-        {"focus-sidebar", action_focus_sidebar}
+        {"focus-sidebar", action_focus_sidebar},
+        {"test-filechooser", action_test_filechooser}
     };
 
     public uint window_number { get; construct; }
@@ -155,7 +156,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
             marlin_app.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
             marlin_app.set_accels_for_action ("win.go-to::RECENT", {"<Alt>R"});
-            marlin_app.set_accels_for_action ("win.go-to::TRASH", {"<Alt>T"});
+            // marlin_app.set_accels_for_action ("win.go-to::TRASH", {"<Alt>T"});
             marlin_app.set_accels_for_action ("win.go-to::ROOT", {"<Alt>slash"});
             marlin_app.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
             marlin_app.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});
@@ -165,6 +166,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.tab::TAB", {"<Shift><Ctrl>K"});
             marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
             marlin_app.set_accels_for_action ("win.focus-sidebar", {"<Ctrl>Left"});
+            marlin_app.set_accels_for_action ("win.test-filechooser", {"<Alt>T"});
         }
 
         build_window ();
@@ -1046,6 +1048,15 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void action_focus_sidebar () {
         sidebar.focus ();
+    }
+
+    private void action_test_filechooser () {
+        warning ("test filechooser");
+        var dialog = new Gtk.FileChooserNative ("Open File Test", this, Gtk.FileChooserAction.OPEN, "TestOpen", "TestCancel");
+        // var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.OPEN, "TestOpen");
+        Gtk.ResponseType response = dialog.run ();
+        warning ("Response %s", response.to_string ());
+        dialog.destroy ();
     }
 
     private void before_undo_redo () {

@@ -89,9 +89,19 @@ public class Files.FileChooserPortal : Object {
 
         var dialog = new FileChooserDialog (
             directory ? Gtk.FileChooserAction.SELECT_FOLDER : Gtk.FileChooserAction.OPEN,
-            parent_window,
             title
         );
+
+        dialog.realize.connect (() => {
+            if (parent_window != "") {
+                var parent = ExternalWindow.from_handle (parent_window);
+                if (parent == null) {
+                    warning ("Failed to associate portal window with parent window %s", parent_window);
+                } else {
+                    parent.set_parent_of (dialog.get_window ());
+                }
+            }
+        });
 
         if ("modal" in options) {
             dialog.modal = options["modal"].get_boolean ();
@@ -218,9 +228,20 @@ public class Files.FileChooserPortal : Object {
             return;
         }
 
-        var dialog = new FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title) {
+        var dialog = new FileChooserDialog (Gtk.FileChooserAction.SAVE, title) {
             accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
         };
+
+        dialog.realize.connect (() => {
+            if (parent_window != "") {
+                var parent = ExternalWindow.from_handle (parent_window);
+                if (parent == null) {
+                    warning ("Failed to associate portal window with parent window %s", parent_window);
+                } else {
+                    parent.set_parent_of (dialog.get_window ());
+                }
+            }
+        });
 
         if ("modal" in options) {
             dialog.modal = options["modal"].get_boolean ();
@@ -375,9 +396,20 @@ public class Files.FileChooserPortal : Object {
             return;
         }
 
-        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SELECT_FOLDER, parent_window, title) {
+        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SELECT_FOLDER, title) {
             accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
         };
+
+        dialog.realize.connect (() => {
+            if (parent_window != "") {
+                var parent = ExternalWindow.from_handle (parent_window);
+                if (parent == null) {
+                    warning ("Failed to associate portal window with parent window %s", parent_window);
+                } else {
+                    parent.set_parent_of (dialog.get_window ());
+                }
+            }
+        });
 
         if ("modal" in options) {
             dialog.modal = options["modal"].get_boolean ();
