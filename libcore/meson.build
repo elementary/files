@@ -1,5 +1,11 @@
 pantheon_files_core_name = 'pantheon-files-core'
 
+resources = gnome.compile_resources(
+    'files-resources',
+    meson.project_source_root() / 'data' / 'files.gresource.xml',
+    source_dir: meson.project_source_root() / 'data'
+)
+
 pantheon_files_core_deps = [
     common_deps,
     posix_dep,
@@ -114,6 +120,7 @@ pantheon_file_core_c_dep = vala.find_library('pantheon-files-core-C', dirs: join
 pantheon_files_core_library = shared_library(
     pantheon_files_core_name,
     pantheon_files_core_files,
+    resources,
     dependencies : [ pantheon_files_core_deps, pantheon_file_core_c_dep ],
     install: true,
     install_dir: [true, join_paths(get_option('prefix'), get_option('includedir'), pantheon_files_core_name), true],
