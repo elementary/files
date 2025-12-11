@@ -24,7 +24,7 @@ public class Files.FileChooserPortal : Object {
     private static bool opt_replace = false;
     private static bool show_version = false;
 
-    private HashTable<string, FileChooser.FileChooserDialog> dialogs;
+    private HashTable<string, Gtk.Widget> dialogs;
     private DBusConnection connection;
 
     private const OptionEntry[] ENTRIES = {
@@ -35,7 +35,7 @@ public class Files.FileChooserPortal : Object {
 
     public FileChooserPortal (DBusConnection connection) {
         this.connection = connection;
-        dialogs = new HashTable<string, FileChooser.FileChooserDialog> (str_hash, str_equal);
+        dialogs = new HashTable<string, Gtk.Widget> (str_hash, str_equal);
     }
 
     /**
@@ -87,7 +87,7 @@ public class Files.FileChooserPortal : Object {
 
         var directory = "directory" in options && options["directory"].get_boolean ();
 
-        var dialog = new FileChooser.FileChooserDialog (
+        var dialog = new Files.FileChooserDialog (
             directory ? Gtk.FileChooserAction.SELECT_FOLDER : Gtk.FileChooserAction.OPEN,
             parent_window,
             title
@@ -126,7 +126,7 @@ public class Files.FileChooserPortal : Object {
             Variant choice_variant;
 
             while ((choice_variant = choices.next_value ()) != null) {
-                var choice = new FileChooser.FileChooserChoice.from_variant (choice_variant);
+                var choice = new Files.FileChooserChoice.from_variant (choice_variant);
                 dialog.add_choice (choice);
             }
         }
@@ -218,7 +218,7 @@ public class Files.FileChooserPortal : Object {
             return;
         }
 
-        var dialog = new FileChooser.FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title) {
+        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title) {
             accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
         };
 
@@ -268,7 +268,7 @@ public class Files.FileChooserPortal : Object {
             Variant choice_variant;
 
             while ((choice_variant = choices.next_value ()) != null) {
-                var choice = new FileChooser.FileChooserChoice.from_variant (choice_variant);
+                var choice = new Files.FileChooserChoice.from_variant (choice_variant);
                 dialog.add_choice (choice);
             }
         }
@@ -375,7 +375,7 @@ public class Files.FileChooserPortal : Object {
             return;
         }
 
-        var dialog = new FileChooser.FileChooserDialog (Gtk.FileChooserAction.SELECT_FOLDER, parent_window, title) {
+        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SELECT_FOLDER, parent_window, title) {
             accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
         };
 
@@ -394,7 +394,7 @@ public class Files.FileChooserPortal : Object {
             Variant choice_variant;
 
             while ((choice_variant = choices.next_value ()) != null) {
-                var choice = new FileChooser.FileChooserChoice.from_variant (choice_variant);
+                var choice = new Files.FileChooserChoice.from_variant (choice_variant);
                 dialog.add_choice (choice);
             }
         }

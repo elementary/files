@@ -8,12 +8,51 @@ public interface Xdp.Request : Object {
     public abstract void close () throws DBusError, IOError;
 }
 
-public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
-    public signal void response (Gtk.ResponseType response);
+/*
+ * Implements functions supported by org.freedesktop.portal.FileChooser and in addition
+ * Results keys:
+ * OPEN: "writable" - as indicated by a "Read Only" checkbox. It is up to the user to honor this
+ */
+public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
+    public string? parent_window { get; construct; }
+    public BasicWindow file_view { get; construct; }
 
-    public string parent_window { get; construct; }
-    public Gtk.FileChooserAction action { get; construct; }
-    public bool read_only { get; set; default = false; }
+    public string supplied_uri { get; set; default = ""; } //used by Main.vala
+
+    public Gtk.FileChooserAction action { get; set construct; }
+    public ViewMode view_mode {
+        get {
+            return file_view.view_mode;
+        }
+    }
+
+    public bool select_multiple {
+        get {
+            return file_view.selection_mode == Gtk.SelectionMode.MULTIPLE;
+        }
+
+        set {
+            var mode = value ? Gtk.SelectionMode.MULTIPLE : Gtk.SelectionMode.SINGLE;
+            file_view.selection_mode = mode;
+        }
+    }
+
+    private Gtk.FileFilter? _filter = null;
+    public Gtk.FileFilter? filter {
+        get {
+            return _filter;
+        }
+
+        set {
+            if (value != null) {
+                add_filter (filter);
+            }
+
+            _filter = value;
+            filter_combo.set_active_id (value != null ? value.get_filter_name () : null);
+            file_view.filter = _filter;
+        }
+    }
 
     public string accept_label {
         get {
@@ -21,56 +60,31 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         }
 
         set {
+            warning ("set accept label");
             accept_button.label = value;
         }
     }
 
-    public bool select_multiple {
-        get {
-            return chooser.select_multiple;
-        }
+    public bool read_only { get; set; default = false; }
 
-        set {
-            chooser.select_multiple = value;
-        }
-    }
-
-    public Gtk.FileFilter filter {
-        get {
-            return chooser.filter;
-        }
-
-        set {
-            if (!filter_box.set_active_id (value.get_filter_name ())) {
-                chooser.filter = value;
-            }
-        }
-    }
-
-    private Hdy.HeaderBar header;
-    private Files.BasicLocationBar location_bar;
-    private Gtk.FileChooserWidget chooser;
-    private Gtk.TreeView tree_view;
-
+    private Gtk.TreeStore filter_model;
     private Gtk.Button accept_button;
-    private Gtk.ComboBoxText filter_box;
+    private Gtk.ComboBox filter_combo;
     private Gtk.Entry entry;
-
     private Gtk.Box choices_box;
-    private Gtk.Box extra_box;
-
-    private Queue<string> previous_paths;
-    private Queue<string> next_paths;
-    private string? current_path = null;
-    private bool previous_button_clicked = false;
-    private bool next_button_clicked = false;
+    private Gtk.Box user_choices_box;
+    private Gtk.Box filter_box;
 
     private uint register_id = 0;
     private DBusConnection? dbus_connection = null;
 
     private Settings settings;
 
-    public FileChooserDialog (Gtk.FileChooserAction action, string parent_window, string title) {
+    public FileChooserDialog (
+        Gtk.FileChooserAction action,
+        string? parent_window,
+        string title
+    ) {
         Object (
             parent_window: parent_window,
             action: action,
@@ -79,49 +93,97 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
     }
 
     construct {
-        previous_paths = new Queue<string> ();
-        next_paths = new Queue<string> ();
-        Hdy.init ();
+        use_header_bar = 1; // Stop native action area showing
+        settings = new Settings ("io.elementary.files.file-chooser");
+        int width, height;
+        settings.get ("window-size", "(ii)", out width, out height);
 
-        location_bar = new Files.BasicLocationBar ();
+        default_height = height;
+        default_width = width;
 
-        var previous_button = new Gtk.Button.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR) {
-            tooltip_markup = _("Previous"),
-            sensitive = false
-        };
-        previous_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-
-        var next_button = new Gtk.Button.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR) {
-            tooltip_markup = _("Next"),
-            sensitive = false
-        };
-        next_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-
-        header = new Hdy.HeaderBar () {
-            custom_title = location_bar,
-            title = title
-        };
-        header.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        header.pack_start (previous_button);
-        header.pack_start (next_button);
-
-        chooser = new Gtk.FileChooserWidget (action) {
-            vexpand = true
-        };
+        file_view = new BasicWindow ();
+        this.set_titlebar (file_view.headerbar);
+        get_content_area ().add (file_view);
 
         var cancel_button = new Gtk.Button.with_label (_("Cancel"));
+
         accept_button = new Gtk.Button () {
             use_underline = true,
             can_default = true
         };
         accept_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
-        filter_box = new Gtk.ComboBoxText ();
+        switch (action) {
+            case OPEN:
+                accept_label = _("Open");
+                break;
+            case SAVE:
+                accept_label = _("Save");
+                break;
+            case SELECT_FOLDER:
+                accept_label = _("Select");
+                break;
+            case CREATE_FOLDER:
+                accept_label = _("Create Folder");
+                break;
+            default:
+                assert_not_reached ();
+        }
 
-        extra_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-        extra_box.pack_start (filter_box);
+        filter_model = new Gtk.TreeStore (2, typeof (string), typeof (Gtk.FileFilter));
+        filter_combo = new Gtk.ComboBox.with_model (filter_model) {
+            id_column = 0
+        };
 
-        if (action == Gtk.FileChooserAction.OPEN) {
+        var renderer = new Gtk.CellRendererText ();
+        filter_combo.pack_start (renderer, true);
+        filter_combo.add_attribute (renderer, "text", 0);
+        filter_combo.active = 0;
+
+        filter_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
+            hexpand = true,
+            halign = START,
+            margin = 6
+        };
+        filter_box.pack_start (filter_combo);
+
+        filter_combo.changed.connect (() => {
+            Gtk.FileFilter? f = filter_from_id (filter_combo.active_id);
+            if (filter != f) {
+                filter = f;
+            }
+        });
+
+        //Also used to hold entry and read-only checkbox
+        choices_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12) {
+            halign = Gtk.Align.START,
+            margin = 6
+        };
+        user_choices_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12) {
+            halign = Gtk.Align.START,
+            margin = 6
+        };
+
+        choices_box.pack_start (user_choices_box);
+
+        if (action == SAVE) {
+            entry = new Gtk.Entry () {
+                placeholder_text = _("Enter name of file to save"),
+                width_chars = 50,
+                input_purpose = URL
+            };
+
+            var entry_label = new Gtk.Label (_("Name:")) {
+                hexpand = false,
+                halign = CENTER
+            };
+            entry_label.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
+
+            choices_box.pack_start (entry_label);
+            choices_box.pack_start (entry);
+
+            entry.changed.connect (check_can_accept);
+        } else if (action == Gtk.FileChooserAction.OPEN) {
             var read_only_check = new Gtk.CheckButton.with_label (
                 select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only")
             ) {
@@ -133,49 +195,28 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             });
 
             read_only_check.bind_property ("active", this, "read-only");
-            extra_box.pack_end (read_only_check);
+            choices_box.pack_start (read_only_check);
         }
+
+        //TODO Add choices from options
 
         var action_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
             layout_style = Gtk.ButtonBoxStyle.END,
             spacing = 6,
-            margin = 6
+            margin = 6,
+            hexpand = true,
         };
 
-        action_box.pack_start (cancel_button);
-        action_box.pack_start (accept_button);
-        action_box.pack_start (extra_box);
-        action_box.set_child_secondary (extra_box, true);
+        action_box.pack_end (cancel_button);
+        action_box.pack_end (accept_button);
 
-        choices_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12) {
-            halign = Gtk.Align.START,
-            margin = 6
-        };
-
-        var grid = new Gtk.Grid () {
-            orientation = Gtk.Orientation.VERTICAL
-        };
-        grid.add (header);
-        grid.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-        grid.add (chooser);
-        grid.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
+        var grid = new Gtk.Box (HORIZONTAL, 6);
+        grid.add (filter_box);
         grid.add (choices_box);
         grid.add (action_box);
         grid.show_all ();
 
-        add (grid);
-
-        setup_chooser ();
-
-        settings = new Settings ("io.elementary.files.file-chooser");
-        int width, height;
-        settings.get ("window-size", "(ii)", out width, out height);
-
-        type_hint = Gdk.WindowTypeHint.DIALOG;
-        default_height = height;
-        default_width = width;
-        can_focus = true;
-        modal = true;
+        get_content_area ().add (grid);
 
         realize.connect (() => {
             if (parent_window != "") {
@@ -187,100 +228,32 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
                 }
             }
 
-            if (chooser.list_filters ().length () == 0) {
+            if (list_filters ().length () == 0) {
                 filter_box.visible = false;
-            } else if (filter_box.active_id == null) {
-                filter_box.active = 0;
-            }
-
-            if (choices_box.get_children ().length () == 0) {
-                choices_box.visible = false;
-            }
-        });
-
-        previous_button.clicked.connect (() => {
-            previous_button_clicked = true;
-            chooser.set_current_folder_uri (previous_paths.pop_head ());
-        });
-
-        next_button.clicked.connect (() => {
-            next_button_clicked = true;
-            chooser.set_current_folder_uri (next_paths.pop_head ());
-        });
-
-        location_bar.path_change_request.connect ((path) => {
-            chooser.set_current_folder_uri (path);
-        });
-
-        filter_box.changed.connect (() => {
-            var filter = chooser.list_filters ().search<string> (
-                filter_box.active_id,
-                (a, b) => strcmp (a.get_filter_name (), b)
-            ).data;
-
-            if (filter != null) {
-                chooser.filter = filter;
-            }
-        });
-
-        tree_view.button_release_event.connect ((w, e) => {
-            unowned var tv = (Gtk.TreeView) w;
-            if (e.type == Gdk.EventType.@2BUTTON_PRESS) {
-                return false;
-            }
-
-            tv.activate_on_single_click = false;
-            Gtk.TreePath? path = null;
-            Gtk.TreeViewColumn? column = null;
-
-            if (tv.get_path_at_pos ((int) e.x, (int) e.y, out path, out column, null, null)) {
-                var model = tv.get_model ();
-                Gtk.TreeIter? iter = null;
-
-                if (model.get_iter (out iter, path)) {
-                    bool is_folder;
-
-                    model.get (iter, 6, out is_folder);
-                    if (is_folder) {
-                        tv.activate_on_single_click = true;
-                    }
+                if (action == SELECT_FOLDER) {
+                    // Only show folders
+                    var filter_folder = new Gtk.FileFilter ();
+                    filter_folder.add_mime_type ("inode/directory");
+                    filter_folder.set_filter_name ("Folders");
+                    add_filter (filter_folder);
                 }
+            } else {
+                // We honor the user requested filters
             }
 
-            return false;
-        });
-
-        chooser.current_folder_changed.connect_after (() => {
-            var previous_path = current_path;
-            current_path = chooser.get_current_folder_uri () ?? Environment.get_home_dir ();
-
-            if (previous_path != null && previous_path != current_path) {
-                if (previous_button_clicked) {
-                    next_paths.push_head (previous_path);
-                } else {
-                    previous_paths.push_head (previous_path);
-                    if (!next_button_clicked) {
-                        next_paths.clear ();
-                    }
-                }
+            if (action == Gtk.FileChooserAction.SAVE) {
+                entry.grab_focus ();
+            } else {
+                grab_focus ();
             }
 
-            previous_button.sensitive = !previous_paths.is_empty ();
-            next_button.sensitive = !next_paths.is_empty ();
-            previous_button_clicked = false;
-            next_button_clicked = false;
-
-            location_bar.set_display_path (current_path);
-        });
-
-        chooser.file_activated.connect (() => {
-             if (!GLib.FileUtils.test (chooser.get_filename (), FileTest.IS_DIR)) {
-                 response (Gtk.ResponseType.OK);
-             }
+            file_view.file_activated.connect (activate_selected_items);
+            file_view.selection_changed.connect (check_can_accept);
         });
 
         cancel_button.clicked.connect (() => response (Gtk.ResponseType.CANCEL));
         accept_button.clicked.connect (() => response (Gtk.ResponseType.OK));
+
 
         var granite_settings = Granite.Settings.get_default ();
         var gtk_settings = Gtk.Settings.get_default ();
@@ -291,119 +264,77 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
             gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
         });
 
-        chooser.set_current_folder_uri (settings.get_string ("last-folder-uri"));
+        warning ("after construct, current folder uri is %s", get_current_folder_uri ());
 
-        if (action == Gtk.FileChooserAction.SAVE) {
-            entry.grab_focus ();
-        } else {
-            tree_view.grab_focus ();
-        }
+        show_all ();
     }
 
-    private static T find_child_by_name<T> (Gtk.Widget root, string path) requires (root is Gtk.Container) {
-        var paths = path.has_prefix ("/") ? path[1 : path.length].split ("/") : path.split ("/");
-        Gtk.Widget? widget = null;
-        string name = paths[0];
-
-        /* `find_custom ()` and `search ()` do not work if the element is unowned */
-        ((Gtk.Container) root).get_children ().foreach ((w) => {
-            if (widget == null) {
-                if (name.has_prefix ("<")) {
-                    var c_type = Type.from_name (name[1 : name.length - 1]);
-                    var w_type = w.get_type ();
-
-                    widget = w_type.is_a (c_type) ? w : null;
-                } else if (w is Gtk.Buildable) {
-                    widget = ((Gtk.Buildable) w).get_name () == name ? w : null;
-                } else {
-                    widget = w.name == name ? w : null;
+    private void check_can_accept () {
+        uint n_selected = 0;
+        bool folder_selected = false, file_selected = false, can_accept = false;
+        file_view.get_selection_details (out n_selected, out folder_selected, out file_selected);
+        switch (action) {
+            case OPEN:
+                can_accept = file_selected && !folder_selected;
+                break;
+            case SAVE:
+                // Do not need to select anything to save
+                if (n_selected == 1 && file_selected) {
+                    entry.text = get_file ().get_basename ();
                 }
+
+                can_accept = n_selected <= 1 && !folder_selected && entry.text != "";
+                warning ("SAVE accept %s", can_accept.to_string ());
+                break;
+            case SELECT_FOLDER:
+                can_accept = n_selected == 0 ||
+                            (n_selected == 1 && !file_selected && folder_selected);
+                break;
+            default:
+                break;
+        }
+
+        accept_button.sensitive = can_accept;
+    }
+
+    private Gtk.FileFilter? filter_from_id (string id) {
+        Gtk.FileFilter? return_filter = null;
+        Gtk.FileFilter? _filter = null;
+        string? _id = null;
+        filter_model.@foreach ((model, path, iter) => {
+            model.@get (iter, 0, out _id, 1, out _filter);
+            if (id == _id) {
+                return_filter = _filter;
+                return true;
             }
+
+            return false;
         });
 
-        if (widget != null) {
-            if (paths.length > 1) {
-                return find_child_by_name (widget, string.joinv ("/", paths[1 : paths.length]));
-            } else {
-                return (T) widget;
-            }
-        }
-
-        warning ("cannot find child with name \"%s\" in \"%s\"", name, root.get_type ().name ());
-        return null;
+        return return_filter;
     }
 
-    private void setup_chooser () {
-        Gtk.Revealer revealer = find_child_by_name (
-            chooser,
-            "browse_widgets_box/browse_widgets_hpaned/<GtkBox>/browse_header_revealer"
-        );
-
-        /* move the new folder button to HeaderBar and remove the chooser header */
-        Gtk.Stack stack = find_child_by_name (revealer.get_child (), "browse_header_stack");
-        Gtk.MenuButton new_folder_button = find_child_by_name (stack, "<GtkBox>/browse_new_folder_button");
-        new_folder_button.image = new Gtk.Image.from_icon_name ("folder-new", Gtk.IconSize.LARGE_TOOLBAR);
-        new_folder_button.parent.remove (new_folder_button);
-        header.pack_end (new_folder_button);
-
-        /* hide the revealer when not searching, for this to work:
-         * 1. we need to set reveal_child during realize.
-         * 2. we need to connect the signals after we set `reveal_child`
-         */
-        realize.connect (() => {
-            revealer.reveal_child = false;
-
-            revealer.notify["reveal-child"].connect (() => {
-                if (revealer.reveal_child) {
-                    revealer.reveal_child = stack.visible_child_name == "search";
-                }
-            });
-
-            stack.notify["visible-child"].connect (() => {
-                revealer.reveal_child = stack.visible_child_name == "search";
-            });
-        });
-
-        /* move the filename entry from the chooser to the action_box */
-        if (action == Gtk.FileChooserAction.SAVE) {
-            Gtk.Grid grid = find_child_by_name (chooser, "<GtkBox>/<GtkGrid>");
-            grid.parent.remove (grid);
-            grid.border_width = 0;
-            grid.margin_top = 2;  // seems to have a better result than using Gtk.Align.CENTER
-
-            extra_box.pack_start (grid);
-
-            // bind the accept_button sensitivity with the entry text
-            entry = find_child_by_name (grid, "<GtkFileChooserEntry>");
-            entry.set_placeholder_text (_("Enter new filename"));
-            entry.bind_property ("text-length", accept_button, "sensitive", BindingFlags.SYNC_CREATE);
-            entry.activate.connect (() => {
-                if (accept_button.sensitive) {
-                    response (Gtk.ResponseType.OK);
-                }
-            });
-
-            chooser.remove (find_child_by_name (chooser, "<GtkBox>"));
+    //TODO Pass on with "file activated"?
+    private void activate_selected_items () {
+        unowned var selected = file_view.selected_files;
+        var file = selected.first ().data;
+        var only_one = (selected.first ().next) == null;
+        if (only_one && file.is_folder ()) {
+            set_current_folder_uri (file.uri);
+        } else if (only_one || select_multiple) {
+            response (Gtk.ResponseType.OK);
         }
-
-        /* get a reference of the tree view, so we can grab focus later */
-        Gtk.Stack view_stack = find_child_by_name (revealer.parent, "list_and_preview_box/browse_files_stack");
-
-        tree_view = find_child_by_name (
-            view_stack.get_child_by_name ("list"),
-            "browse_files_swin/browse_files_tree_view"
-        );
-
-        /* remove extra unneeded widgets */
-        view_stack.parent.remove (find_child_by_name (view_stack.parent, "preview_box"));
-        chooser.remove (find_child_by_name (chooser, "extra_and_filters"));
     }
+
+    // public bool set_initial_location (GLib.File? loc) {
+    //     return file_view.set_location (loc, ViewMode.LIST); //TODO Make setting and implement other modes
+    // }
 
     protected override bool key_press_event (Gdk.EventKey event) { // Match conflict dialog
         uint keyval;
         event.get_keyval (out keyval);
         if (keyval == Gdk.Key.Escape) {
-            response (Gtk.ResponseType.DELETE_EVENT);
+            response (Gtk.ResponseType.CANCEL);
             return Gdk.EVENT_STOP;
         }
 
@@ -419,60 +350,6 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         }
 
         window.focus (Gdk.CURRENT_TIME);
-    }
-
-    public void set_current_folder (string? uri) {
-        chooser.set_current_folder_uri (uri ?? Environment.get_home_dir ());
-    }
-
-    public void set_current_name (string text) {
-        chooser.set_current_name (text);
-    }
-
-    public string get_uri () {
-        return chooser.get_uri ();
-    }
-
-    public void set_uri (string uri) {
-        chooser.set_uri (uri);
-    }
-
-    public string[] get_uris () {
-        string[] uris = {};
-
-        chooser.get_uris ().foreach ((uri) => {
-            uris += uri;
-        });
-
-        return uris;
-    }
-
-    public GLib.File get_file () {
-        return chooser.get_file ();
-    }
-
-    public void add_choice (FileChooserChoice choice) {
-        choices_box.add (choice);
-    }
-
-    public Variant[] get_choices () {
-        Variant[] choices = {};
-
-        choices_box.get_children ().foreach ((w) => {
-            unowned var c = (FileChooserChoice) w;
-            choices += new Variant ("(ss)", c.name, c.selected);
-        });
-
-        return choices;
-    }
-
-    public void add_filter (Gtk.FileFilter filter) {
-        var name = filter.get_filter_name ();
-
-        if (chooser.list_filters ().search<string> (name, (a, b) => strcmp (a.get_filter_name (), b)) == null) {
-            chooser.add_filter (filter);
-            filter_box.append (name, name);
-        }
     }
 
     public new void close () throws DBusError, IOError {
@@ -494,7 +371,7 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
     public override void dispose () {
         int w, h;
         get_size (out w, out h);
-        settings.set_string ("last-folder-uri", chooser.get_current_folder_uri ());
+        settings.set_string ("last-folder-uri", get_current_folder_uri ());
         settings.set ("window-size", "(ii)", w, h);
 
         if (register_id != 0 && dbus_connection != null) {
@@ -502,5 +379,172 @@ public class Files.FileChooserDialog : Hdy.Window, Xdp.Request {
         }
 
         base.dispose ();
+    }
+
+    public GLib.File? get_file () {
+        unowned var selected_files = file_view.selected_files;
+        GLib.File? gfile = null;
+        if (selected_files != null) {
+            gfile = selected_files.first ().data.location;
+        }
+
+        return gfile;
+    }
+
+    public void add_choice (FileChooserChoice choice) {
+        user_choices_box.add (choice);
+    }
+
+    public unowned string? get_choice (string id) {
+        foreach (var w in choices_box.get_children ()) {
+            unowned var c = (FileChooserChoice) w;
+            if (c.id == id) {
+                return c.selected;
+            }
+        }
+
+        return null;
+    }
+
+    public Variant[] get_choices () {
+        Variant[] choices = {};
+
+        if (choices_box.visible) {
+            user_choices_box.get_children ().foreach ((w) => {
+                unowned var c = (FileChooserChoice) w;
+                choices += new Variant ("(ss)", c.name, c.selected);
+            });
+        }
+
+        return choices;
+    }
+
+    public void add_filter (Gtk.FileFilter? new_filter) {
+        if (new_filter == null) {
+            return;
+        }
+
+        var name = new_filter.get_filter_name ();
+        if (filter_from_id (name) == null) {
+            Gtk.TreeIter? iter = null;
+            filter_model.append (out iter, null);
+            filter_model.@set (iter, 0, name, 1, new_filter);
+            filter_box.visible = true;
+            filter_combo.active = 0;
+        }
+    }
+
+    public string get_current_name () {
+        if (entry != null) {
+            return entry.text;
+        } else {
+            return "";
+        }
+    }
+
+    public string? get_current_folder_uri () {
+        return file_view.uri;
+    }
+
+    public string get_uri () { // Uri of selected file
+        string uri = "";
+        switch (action) {
+            case OPEN:
+                var file = get_file ();
+                uri = file != null ? file.get_uri () : null;
+                break;
+            case SAVE:
+                uri = Path.build_filename (get_current_folder_uri (), entry.text);
+                break;
+            case SELECT_FOLDER:
+                var file = get_file ();
+                uri = file != null ? file.get_uri () : get_current_folder_uri ();
+                //TODO return uri of selected folder or current folder if none selected (?)
+                break;
+            case CREATE_FOLDER:
+                //TODO What should return here?
+                break;
+        }
+
+        return uri;
+    }
+
+    public string[] get_uris () { // Selected uris
+        string[] uris = {};
+        switch (action) {
+            case OPEN:
+                unowned var selection = file_view.selected_files;
+                if (selection != null) {
+                    selection.foreach ((file) => {
+                        uris += file.uri;
+                    });
+                }
+                break;
+            case SAVE:
+                uris += get_uri ();
+                break;
+            case SELECT_FOLDER:
+                uris += get_uri ();
+                break;
+            case CREATE_FOLDER:
+                //TODO What should return here?
+                break;
+        }
+
+
+        return uris;
+    }
+
+    public void set_uri (string uri) { // Select file at uri
+    warning ("FCD set uri to %s", uri);
+        var file = GLib.File.new_for_uri (uri);
+        if (file.query_exists ()) {
+            file_view.set_selected_location (file);
+            warning ("exists");
+        } else {
+            set_current_folder_uri (""); // default location
+            warning ("not exists");
+        }
+    }
+
+    public void set_current_folder_uri (string uri) { //Navigate to this folder
+    warning ("setting current folder uri to %s", uri);
+        if (uri == "") {
+            var last_uri = settings.get_string ("last-folder-uri");
+            if (last_uri == "") {
+                last_uri = Environment.get_home_dir ();
+            }
+
+            warning ("using fallback");
+            file_view.path_change (last_uri);
+        } else {
+            file_view.path_change (uri);
+        }
+    }
+
+    public void set_current_folder (string path) {
+        set_current_folder_uri (path);
+    }
+
+    public void set_current_name (string text) {
+        if (action == SAVE) {
+            entry.text = text;
+        }
+    }
+
+    // public void set_current_folder (GLib.File folder) {
+    //     set_current_folder_uri (folder.get_uri ());
+    // }
+
+    public SList<unowned Gtk.FileFilter> list_filters () {
+        SList<unowned Gtk.FileFilter> list = null;
+        filter_model.@foreach ((model, path, iter) => {
+            Gtk.FileFilter? _filter;
+            model.@get (iter, 1, out _filter);
+            list.append (_filter);
+            return false;
+        });
+
+        return list.copy ();
     }
 }
