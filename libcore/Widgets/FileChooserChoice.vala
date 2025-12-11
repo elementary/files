@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2021 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: LGPL-2.1-or-later
@@ -70,4 +69,3 @@ public class Files.FileChooserChoice : Gtk.Box {
         show_all ();
     }
 }
-

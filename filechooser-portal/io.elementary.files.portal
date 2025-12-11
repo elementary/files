@@ -2,4 +2,3 @@
 DBusName=org.freedesktop.impl.portal.desktop.elementary.files
 Interfaces=org.freedesktop.impl.portal.FileChooser
 UseIn=pantheon
-

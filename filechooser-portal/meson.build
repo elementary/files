@@ -48,4 +48,3 @@ configure_file(
     install: true,
     install_dir: join_paths(get_option('prefix'), get_option('datadir'), 'dbus-1', 'services')
 )
-
