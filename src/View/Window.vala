@@ -1012,8 +1012,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-
-
     private void action_undo (GLib.SimpleAction action, GLib.Variant? param) {
         if (doing_undo_redo) { /* Guard against rapid pressing of Ctrl-Z */
             return;

@@ -395,7 +395,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         user_choices_box.add (choice);
     }
 
-    public unowned string get_choice (string id) {
+    public unowned string? get_choice (string id) {
         foreach (var w in choices_box.get_children ()) {
             unowned var c = (FileChooserChoice) w;
             if (c.id == id) {
