@@ -54,6 +54,9 @@ public class Files.File : GLib.Object {
     public uint n_emblems = 0;
     public GLib.FileInfo? info = null;
     public string basename { get; construct; }
+    public string filename { get; private set; }
+    public string mime_type { get; private set; }
+
     public string? custom_display_name = null;
     public string uri { get; construct; }
     public uint64 size = 0;
@@ -146,6 +149,7 @@ public class Files.File : GLib.Object {
         var file = Files.File.cache_lookup (location);
         if (file == null) {
             file = new Files.File (location, parent);
+            file.filename = file.get_target_location ().get_path ();
             lock (file_cache) {
                 file_cache.insert (location, file);
             }
@@ -428,7 +432,7 @@ public class Files.File : GLib.Object {
         return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
-    //TODO Is it necessary to refetch the icon if have pix at requested size? 
+    //TODO Is it necessary to refetch the icon if have pix at requested size?
     public Gdk.Pixbuf? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
         return get_icon (
             _size.clamp (16, 512),
@@ -675,6 +679,7 @@ public class Files.File : GLib.Object {
         unowned string? ftype = get_ftype ();
         if (ftype != null) {
             icon = GLib.ContentType.get_icon (ftype);
+            mime_type = GLib.ContentType.get_mime_type (ftype);
         }
 
         if (pix_size > 1 && pix_scale > 0) {

@@ -16,7 +16,6 @@
 ***/
 
 namespace Files {
-
     public static Preferences? preferences = null;
 
     public class Preferences : Object {

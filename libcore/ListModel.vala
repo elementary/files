@@ -17,6 +17,7 @@
  */
 
 public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
+// public class Files.ListModel : Gtk.TreeStore {
     public enum ColumnID {
         FILE_COLUMN,
         COLOR,
