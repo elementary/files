@@ -211,7 +211,6 @@ public class Sidebar.BasicSidebarWindow : Gtk.Box, Files.SidebarInterface {
             reload_timeout_id = 0;
             refresh ();
 
-            plugins.update_sidebar (this);
             sync_uri (selected_uri);
             return false;
         });
