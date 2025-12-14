@@ -40,6 +40,15 @@ public class Files.BasicWindow : Gtk.EventBox {
 
     public Files.BasicHeaderBar headerbar;
     private Gtk.Paned lside_pane;
+    public int sidebar_width {
+        get {
+            return lside_pane.position;
+        }
+
+        set {
+            lside_pane.position = value;
+        }
+    }
     public SidebarInterface sidebar;
     public BasicSlot slot { get; construct; }
     public Gtk.SelectionMode selection_mode {
@@ -115,8 +124,6 @@ public class Files.BasicWindow : Gtk.EventBox {
             expand = true,
             position = basic_app_settings.get_int ("sidebar-width")
         };
-
-        warning ("got sidebar width %i", lside_pane.position);
 
         lside_pane.pack1 (sidebar, false, false);
         lside_pane.pack2 (slot.get_content_box (), true, true);

@@ -78,7 +78,8 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     private uint register_id = 0;
     private DBusConnection? dbus_connection = null;
 
-    private Settings settings;
+    // private Settings settings;
+    // private Settings basic_app_settings;
 
     public FileChooserDialog (
         Gtk.FileChooserAction action,
@@ -94,12 +95,9 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
     construct {
         use_header_bar = 1; // Stop native action area showing
-        settings = new Settings ("io.elementary.files.file-chooser");
-        int width, height;
-        settings.get ("window-size", "(ii)", out width, out height);
+        // settings = new Settings ("io.elementary.files.file-chooser");
+        // basic_app_settings = new Settings ("io.elementary.files.preferences");
 
-        default_height = height;
-        default_width = width;
 
         file_view = new BasicWindow ();
         this.set_titlebar (file_view.headerbar);
@@ -369,10 +367,9 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public override void dispose () {
-        int w, h;
-        get_size (out w, out h);
-        settings.set_string ("last-folder-uri", get_current_folder_uri ());
-        settings.set ("window-size", "(ii)", w, h);
+        // int w, h;
+        // get_size (out w, out h);
+        // basic_app_settings.set_int ("sidebar-width", file_view.sidebar_width);
 
         if (register_id != 0 && dbus_connection != null) {
             dbus_connection.unregister_object (register_id);
@@ -396,7 +393,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public unowned string? get_choice (string id) {
-    warning ("get choice id %s", id);
         foreach (var w in user_choices_box.get_children ()) {
             if (w is FileChooserChoice) {
                 unowned var c = (FileChooserChoice) w;
@@ -513,13 +509,15 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     public void set_current_folder_uri (string uri) { //Navigate to this folder
     warning ("setting current folder uri to %s", uri);
         if (uri == "") {
-            var last_uri = settings.get_string ("last-folder-uri");
-            if (last_uri == "") {
-                last_uri = Environment.get_home_dir ();
-            }
+            // var last_uri = settings.get_string ("last-folder-uri");
+            // if (last_uri == "") {
+                // last_uri = Environment.get_home_dir ();
+                file_view.path_change (Environment.get_home_dir ());
+            // }
 
             warning ("using fallback");
-            file_view.path_change (last_uri);
+            // file_view.path_change (last_uri);
+            // file_view.path_change (fallback);
         } else {
             file_view.path_change (uri);
         }

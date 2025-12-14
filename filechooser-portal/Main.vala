@@ -33,9 +33,15 @@ public class Files.FileChooserPortal : Object {
         { null }
     };
 
+    private Settings settings;
+
     public FileChooserPortal (DBusConnection connection) {
         this.connection = connection;
         dialogs = new HashTable<string, Gtk.Widget> (str_hash, str_equal);
+    }
+
+    construct {
+        settings = new Settings ("io.elementary.files.file-chooser");
     }
 
     /**
@@ -136,6 +142,7 @@ public class Files.FileChooserPortal : Object {
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
 
+        set_up_dialog (dialog);
         dialog.response.connect ((id) => {
             switch (id) {
                 case Gtk.ResponseType.OK:
@@ -157,15 +164,16 @@ public class Files.FileChooserPortal : Object {
                     break;
             }
 
+            close_dialog (dialog);
             open_file.callback ();
         });
 
         dialogs[parent_window] = dialog;
+
         dialog.present ();
         yield;
 
         dialogs.remove (parent_window);
-        dialog.destroy ();
 
         response = _response;
         results = _results;
@@ -278,6 +286,7 @@ public class Files.FileChooserPortal : Object {
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
 
+        set_up_dialog (dialog);
         dialog.response.connect ((id) => {
             switch (id) {
                 case Gtk.ResponseType.OK:
@@ -317,6 +326,7 @@ public class Files.FileChooserPortal : Object {
                     break;
             }
 
+            close_dialog (dialog);
             save_file.callback ();
         });
 
@@ -325,7 +335,7 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
-        dialog.destroy ();
+        close_dialog (dialog);
 
         response = _response;
         results = _results;
@@ -405,6 +415,7 @@ public class Files.FileChooserPortal : Object {
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
 
+        set_up_dialog (dialog);
         dialog.response.connect ((id) => {
             switch (id) {
                 case Gtk.ResponseType.OK:
@@ -432,6 +443,7 @@ public class Files.FileChooserPortal : Object {
                     break;
             }
 
+            close_dialog (dialog);
             save_files.callback ();
         });
 
@@ -440,7 +452,7 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
-        dialog.destroy ();
+        close_dialog (dialog);
 
         response = _response;
         results = _results;
@@ -477,6 +489,22 @@ public class Files.FileChooserPortal : Object {
         replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
         return replace_dialog;
+    }
+
+    private void set_up_dialog (Files.FileChooserDialog filechooser) {
+        var last_uri = settings.get_string ("last-folder-uri");
+        filechooser.set_current_folder_uri (last_uri);
+        int width, height;
+        settings.get ("window-size", "(ii)", out width, out height);
+        filechooser.resize (width, height); //Using default-width property does not seem to work in this context.
+    }
+
+    private void close_dialog (Files.FileChooserDialog filechooser) {
+        settings.set_string ("last-folder-uri", filechooser.get_current_folder_uri ());
+        int w, h;
+        filechooser.get_size (out w, out h);
+        settings.set ("window-size", "(ii)", w, h);
+        filechooser.destroy ();
     }
 
     private static void on_bus_acquired (DBusConnection connection, string name) {

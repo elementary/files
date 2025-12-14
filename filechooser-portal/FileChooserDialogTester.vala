@@ -1,20 +1,24 @@
-public class PortalTester : Gtk.Application {
+public class FileChooserDialogTester : Gtk.Application {
     private Gtk.ApplicationWindow window;
     public bool set_filters { get; set; }
     public bool set_choices { get; set; }
     public bool set_multiple { get; set; }
 
-    public PortalTester () {
+    private Settings settings;
+
+    public FileChooserDialogTester () {
         Object (
-            application_id: "io.elementary.Files.PortalTester",
+            application_id: "io.elementary.files.filechooserdialog-tester",
             flags: ApplicationFlags.FLAGS_NONE
         );
+
+        settings = new Settings ("io.elementary.files.file-chooser");
     }
 
     protected override void activate () {
         window = new Gtk.ApplicationWindow (this);
         window.set_default_size (400, 400);
-        window.title = "Files Portal Tester";
+        window.title = "Files Dialog Widget Tester";
 
 
         var open_file_button = new Gtk.Button.with_label ("Open File"); //FileChooserAction.OPEN
@@ -66,56 +70,36 @@ public class PortalTester : Gtk.Application {
     }
 
     private void on_open_file () {
-        var filechooser = new Gtk.FileChooserNative (
-            "Files Portal Tester - OPEN", //Honored by freedesktop portal as window title
-            window,
-            Gtk.FileChooserAction.OPEN,
-            "TestOpen",  // Honored freedesktop portal
-            "TestCancel" // Ignored by freedesktop portal
-        );
-
-        show_filechooser (filechooser);
+        var filechooser = new Files.FileChooserDialog (Gtk.FileChooserAction.OPEN, "", "TestOpenWidget");
+        show_filechooser_widget (filechooser);
     }
 
     private void on_select_folder () {
-        var filechooser = new Gtk.FileChooserNative (
-            "Files Portal Tester - SELECT FOLDER",
-            window,
-            Gtk.FileChooserAction.SELECT_FOLDER,
-            "TestSelect",
-            "TestCancel"
-        );
-
-        show_filechooser (filechooser);
+        var filechooser = new Files.FileChooserDialog (Gtk.FileChooserAction.SELECT_FOLDER, "", "TestSelectFolderWidget");
+        show_filechooser_widget (filechooser);
     }
 
     private void on_save_file () {
-        var filechooser = new Gtk.FileChooserNative (
-            "Files Portal Tester - SAVE",
-            window,
-            Gtk.FileChooserAction.SAVE,
-            "TestSave",
-            "TestCancel"
-        );
+        var filechooser = new Files.FileChooserDialog (Gtk.FileChooserAction.SAVE, "", "TestSaveWidget");
 
         filechooser.set_current_name ("TestDoc.txt");
         filechooser.set_current_folder (Environment.get_home_dir ());
 
-        show_filechooser (filechooser);
+        show_filechooser_widget (filechooser);
     }
 
-    private void on_filechooser_response (Gtk.NativeDialog filechooser, int id) {
+    private void on_filechooser_widget_response (Gtk.Dialog filechooser, int id) {
         switch ((Gtk.ResponseType)id) {
             case ACCEPT:
             case OK:
-                var uris = ((Gtk.FileChooser)filechooser).get_uris ();
+                var uris = ((Files.FileChooserDialog)filechooser).get_uris ();
                 var uri_list = "\n";
                 foreach (var uri in uris) {
                     uri_list += uri + "\n";
                 }
 
-                var choice1 = ((Gtk.FileChooser)filechooser).get_choice ("1");
-                var choice2 = ((Gtk.FileChooser)filechooser).get_choice ("2");
+                var choice1 = ((Files.FileChooserDialog)filechooser).get_choice ("1");
+                var choice2 = ((Files.FileChooserDialog)filechooser).get_choice ("2");
                 //FIXME FileCooserNative returns the choices originally set!!!
                 var choice_list = "Choice 1: %s".printf (choice1) + "\n" + "Choice 2: %s".printf (choice2);
 
@@ -135,33 +119,31 @@ public class PortalTester : Gtk.Application {
                 break;
         }
 
-        filechooser.destroy ();
+        close_dialog ((Files.FileChooserDialog)filechooser);
     }
 
-    /* Note:  Gtk.FileChooserNative supports adding choices and sends through portal but does NOT
-     * support retrieving the current user choice from the portal again!!  Just returns the value
-     * originally set
-     */
-    private void filechooser_add_choices (Gtk.FileChooserNative filechooser) {
-        filechooser.add_choice (
+    private void filechooser_widget_add_choices (Files.FileChooserDialog filechooser) {
+        var vb = new VariantBuilder (new VariantType ("a(ss)"));
+        vb.add ("(ss)", "1a", "Choice 1a");
+        vb.add ("(ss)", "1b", "Choice 1b");
+        vb.add ("(ss)", "1c", "Choice 1c");
+
+        filechooser.add_choice (new Files.FileChooserChoice (
             "1",
             "Combo choice",
-            {"1a", "1b", "1c"},
-            {"Choice 1a", "Choice 1b", "Choice 1c"}
-        );
-        filechooser.set_choice ("1", "1c");
+            vb.end (),
+            "1c"
+        ));
 
-        filechooser.add_choice (
+        filechooser.add_choice (new Files.FileChooserChoice (
             "2",
             "Boolean choice",
             null,
-            null
-        );
-        filechooser.set_choice ("2", "false");
-
+            "true"
+        ));
     }
 
-    private void filechooser_add_filters (Gtk.FileChooserNative filechooser) {
+    private void filechooser_widget_add_filters (Files.FileChooserDialog filechooser) {
         var filter1 = new Gtk.FileFilter ();
         filter1.add_pattern ("*.txt");
         filter1.add_pattern ("*.pdf");
@@ -183,22 +165,39 @@ public class PortalTester : Gtk.Application {
         filechooser.filter = filter1;
     }
 
-    private void show_filechooser (Gtk.FileChooserNative filechooser) {
+    private void show_filechooser_widget (Files.FileChooserDialog filechooser_widget) {
+        set_up_dialog (filechooser_widget);
         if (set_filters) {
-            filechooser_add_filters (filechooser);
+            filechooser_widget_add_filters (filechooser_widget);
         }
 
         if (set_choices) {
-            filechooser_add_choices (filechooser);
+            filechooser_widget_add_choices (filechooser_widget);
         }
 
-        filechooser.set_select_multiple (set_multiple);
-        filechooser.response.connect (on_filechooser_response);
-        filechooser.show ();
+        filechooser_widget.select_multiple = set_multiple;
+        filechooser_widget.response.connect (on_filechooser_widget_response);
+        filechooser_widget.run ();
+    }
+
+    private void set_up_dialog (Files.FileChooserDialog filechooser) {
+        var last_uri = settings.get_string ("last-folder-uri");
+        filechooser.set_current_folder_uri (last_uri);
+        int width, height;
+        settings.get ("window-size", "(ii)", out width, out height);
+        filechooser.resize (width, height);
+    }
+
+    private void close_dialog (Files.FileChooserDialog filechooser) {
+        settings.set_string ("last-folder-uri", filechooser.get_current_folder_uri ());
+        int w, h;
+        filechooser.get_size (out w, out h);
+        settings.set ("window-size", "(ii)", w, h);
+        filechooser.destroy ();
     }
 
     public static int main (string[] args) {
-        var app = new PortalTester ();
+        var app = new FileChooserDialogTester ();
         return app.run (args);
     }
 }
