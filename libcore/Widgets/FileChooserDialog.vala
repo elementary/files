@@ -396,10 +396,13 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public unowned string? get_choice (string id) {
-        foreach (var w in choices_box.get_children ()) {
-            unowned var c = (FileChooserChoice) w;
-            if (c.id == id) {
-                return c.selected;
+    warning ("get choice id %s", id);
+        foreach (var w in user_choices_box.get_children ()) {
+            if (w is FileChooserChoice) {
+                unowned var c = (FileChooserChoice) w;
+                if (c.id == id) {
+                    return c.selected;
+                }
             }
         }
 

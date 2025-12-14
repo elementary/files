@@ -6,12 +6,12 @@
 public class Files.FileChooserChoice : Gtk.Box {
     public Variant variant { get; construct; }
 
-    public Variant? options { get; private set; }
-    public string label { get; private set; }
-    public string id { get; private set; }
-    public string selected { get; set; }
+    public Variant? options { get; set construct; default = null; }
+    public string label { get; set construct; }
+    public string id { get; set construct; }
+    public string selected { get; set construct; }
 
-    private Gtk.Widget choice_widget;
+    private Gtk.Widget? choice_widget;
 
     public FileChooserChoice.from_variant (Variant variant) requires (
         variant.is_of_type (new VariantType ("(ssa(ss)s)"))
@@ -19,26 +19,39 @@ public class Files.FileChooserChoice : Gtk.Box {
         Object (variant: variant);
     }
 
+    public FileChooserChoice (string id, string label, Variant? options, string selected) {
+        Object (
+            id: id,
+            label: label,
+            options: options,
+            selected: selected
+        );
+    }
+
     construct {
         orientation = Gtk.Orientation.HORIZONTAL;
         halign = Gtk.Align.START;
         spacing = 6;
 
-        string _id, _label, _selected;
-        Variant? _options;
+        if (variant != null) {
+            string _id, _label, _selected;
+            Variant? _options;
 
-        variant.get ("(ss@a(ss)s)", out _id, out _label, out _options, out _selected);
+            variant.get ("(ss@a(ss)s)", out _id, out _label, out _options, out _selected);
 
-        id = _id;
-        label = _label;
-        selected = _selected;
-        options = _options;
+            id = _id;
+            label = _label;
+            selected = _selected;
+            options = _options;
+        } else {
+            // Assume other constructor used
+        }
 
         var label = new Gtk.Label (label);
         bind_property ("label", label, "label", BindingFlags.DEFAULT);
         add (label);
 
-        if (options.n_children () == 0) {
+        if (options == null || options.n_children () == 0) {
             var check = new Gtk.CheckButton ();
             bind_property (
                 "selected", check, "active", BIDIRECTIONAL | SYNC_CREATE,
@@ -52,7 +65,7 @@ public class Files.FileChooserChoice : Gtk.Box {
                 }
             );
             choice_widget = check;
-        } else {
+        } else if (options != null) {
             var combo = new Gtk.ComboBoxText ();
             var iter = options.iterator ();
             string key, val;
@@ -65,7 +78,7 @@ public class Files.FileChooserChoice : Gtk.Box {
             choice_widget = combo;
         }
 
-        add (choice_widget);
+        if (choice_widget != null) { add (choice_widget); }
         show_all ();
     }
 }

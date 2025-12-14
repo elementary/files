@@ -3,6 +3,7 @@ public class PortalTester : Gtk.Application {
     public bool set_filters { get; set; }
     public bool set_choices { get; set; }
     public bool set_multiple { get; set; }
+    public bool use_widget { get; set; }
 
     public PortalTester () {
         Object (
@@ -35,13 +36,15 @@ public class PortalTester : Gtk.Application {
         var filters_option = new Gtk.CheckButton.with_label ("Set Filters");
         var choices_option = new Gtk.CheckButton.with_label ("Set Choices");
         var multiple_option = new Gtk.CheckButton.with_label ("Select Multiple");
+        var widget_option = new Gtk.CheckButton.with_label ("Use Widget not Portal");
 
         filters_option.bind_property ("active", this, "set-filters");
         choices_option.bind_property ("active", this, "set-choices");
         multiple_option.bind_property ("active", this, "set-multiple");
+        widget_option.bind_property ("active", this, "use-widget");
 
-        bind_property ("set-choices", choices_option, "active");
-        bind_property ("set-multiple", multiple_option, "active");
+        // bind_property ("set-choices", choices_option, "active");
+        // bind_property ("set-multiple", multiple_option, "active");
 
         var option_grid = new Gtk.Grid () {
             orientation = Gtk.Orientation.VERTICAL,
@@ -52,7 +55,7 @@ public class PortalTester : Gtk.Application {
         option_grid.add (filters_option);
         option_grid.add (choices_option);
         option_grid.add (multiple_option);
-
+        option_grid.add (widget_option);
 
         var main_box = new Gtk.Box (VERTICAL, 24) {
             halign = Gtk.Align.CENTER,
@@ -70,15 +73,20 @@ public class PortalTester : Gtk.Application {
     }
 
     private void on_open_file () {
-        var filechooser = new Gtk.FileChooserNative (
-            "Files Portal Tester - OPEN", //Honored by freedesktop portal as window title
-            window,
-            Gtk.FileChooserAction.OPEN,
-            "TestOpen",  // Honored freedesktop portal
-            "TestCancel" // Ignored by freedesktop portal
-        );
+        if (!use_widget) {
+            var filechooser = new Gtk.FileChooserNative (
+                "Files Portal Tester - OPEN", //Honored by freedesktop portal as window title
+                window,
+                Gtk.FileChooserAction.OPEN,
+                "TestOpen",  // Honored freedesktop portal
+                "TestCancel" // Ignored by freedesktop portal
+            );
 
-        show_filechooser (filechooser);
+            show_filechooser (filechooser);
+        } else {
+            var filechooser = new Files.FileChooserDialog (Gtk.FileChooserAction.OPEN, "", "TestOpenWidget");
+            show_filechooser_widget (filechooser);
+        }
     }
 
     private void on_select_folder () {
@@ -142,6 +150,40 @@ public class PortalTester : Gtk.Application {
         filechooser.destroy ();
     }
 
+    private void on_filechooser_widget_response (Gtk.Dialog filechooser, int id) {
+        switch ((Gtk.ResponseType)id) {
+            case ACCEPT:
+            case OK:
+                var uris = ((Files.FileChooserDialog)filechooser).get_uris ();
+                var uri_list = "\n";
+                foreach (var uri in uris) {
+                    uri_list += uri + "\n";
+                }
+
+                var choice1 = ((Files.FileChooserDialog)filechooser).get_choice ("1");
+                var choice2 = ((Files.FileChooserDialog)filechooser).get_choice ("2");
+                //FIXME FileCooserNative returns the choices originally set!!!
+                var choice_list = "Choice 1: %s".printf (choice1) + "\n" + "Choice 2: %s".printf (choice2);
+
+                var message_dialog = new Gtk.MessageDialog (
+                    window,
+                    Gtk.DialogFlags.MODAL,
+                    Gtk.MessageType.INFO,
+                    Gtk.ButtonsType.CLOSE,
+                    "Selected: %s \nChoices: %s\n",
+                    uri_list, choice_list
+                );
+                message_dialog.run ();
+                message_dialog.destroy ();
+                break;
+            default:
+                warning ("Ooops, Save operation cancelled! - response was %s", ((Gtk.ResponseType)id).to_string ());
+                break;
+        }
+
+        filechooser.destroy ();
+    }
+
     /* Note:  Gtk.FileChooserNative supports adding choices and sends through portal but does NOT
      * support retrieving the current user choice from the portal again!!  Just returns the value
      * originally set
@@ -164,8 +206,50 @@ public class PortalTester : Gtk.Application {
         filechooser.set_choice ("2", "false");
 
     }
+    private void filechooser_widget_add_choices (Files.FileChooserDialog filechooser) {
+        var vb = new VariantBuilder (new VariantType ("a(ss)"));
+        vb.add ("(ss)", "1a", "Choice 1a");
+        vb.add ("(ss)", "1b", "Choice 1b");
+        vb.add ("(ss)", "1c", "Choice 1c");
+
+        filechooser.add_choice (new Files.FileChooserChoice (
+            "1",
+            "Combo choice",
+            vb.end (),
+            "1c"
+        ));
+
+        filechooser.add_choice (new Files.FileChooserChoice (
+            "2",
+            "Boolean choice",
+            null,
+            "true"
+        ));
+    }
 
     private void filechooser_add_filters (Gtk.FileChooserNative filechooser) {
+        var filter1 = new Gtk.FileFilter ();
+        filter1.add_pattern ("*.txt");
+        filter1.add_pattern ("*.pdf");
+        filter1.add_pattern ("*.doc");
+        filter1.set_filter_name ("TextGlob");
+
+        var filter2 = new Gtk.FileFilter ();
+        filter2.add_mime_type ("text/*");
+        filter2.set_filter_name ("TextMime");
+
+        var filter3 = new Gtk.FileFilter ();
+        filter3.add_pattern ("*.*");
+        filter3.add_pattern ("*");
+        filter3.set_filter_name ("All Files");
+
+        filechooser.add_filter (filter1);
+        filechooser.add_filter (filter2);
+        filechooser.add_filter (filter3);
+        filechooser.filter = filter1;
+    }
+
+    private void filechooser_widget_add_filters (Files.FileChooserDialog filechooser) {
         var filter1 = new Gtk.FileFilter ();
         filter1.add_pattern ("*.txt");
         filter1.add_pattern ("*.pdf");
@@ -199,6 +283,22 @@ public class PortalTester : Gtk.Application {
         filechooser.set_select_multiple (set_multiple);
         filechooser.response.connect (on_filechooser_response);
         filechooser.show ();
+    }
+
+    private void show_filechooser_widget (Files.FileChooserDialog filechooser_widget) {
+    warning ("show filechooser widget");
+        if (set_filters) {
+            filechooser_widget_add_filters (filechooser_widget);
+        }
+
+        if (set_choices) {
+            filechooser_widget_add_choices (filechooser_widget);
+        }
+
+        filechooser_widget.select_multiple = set_multiple;
+        filechooser_widget.response.connect (on_filechooser_widget_response);
+        filechooser_widget.run ();
+        filechooser_widget.destroy ();
     }
 
     public static int main (string[] args) {
