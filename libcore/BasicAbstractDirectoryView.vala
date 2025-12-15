@@ -369,7 +369,6 @@ namespace Files {
             });
 
 
-            //TODO Move to toplevel
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
@@ -804,6 +803,7 @@ namespace Files {
         }
 
         /** Background actions */
+        // Signal window app menu (not needed for filechooser)
         private void change_state_show_hidden (GLib.SimpleAction action) {
             // window.change_state_show_hidden (action);
             //TODO Move to slot?
@@ -1061,6 +1061,19 @@ namespace Files {
             ));
             bookmark_menuitem.action_name = "common.bookmark";
 
+            var show_hidden_menuitem = new Gtk.CheckMenuItem () {
+                action_name = "background.show-hidden"
+            };
+
+            show_hidden_menuitem.add (new Granite.AccelLabel (
+                _("Show Hidden Files"),
+                "<Ctrl>h"
+            ));
+
+            show_hidden_menuitem.toggled.connect (() => {
+                Files.Preferences.get_default ().show_hidden_files = show_hidden_menuitem.active;
+            });
+
             var n_selected = selected_files.length ();
             Files.File? selected_folder = null;
 
@@ -1103,6 +1116,7 @@ namespace Files {
             }
 
             menu.add (bookmark_menuitem);
+            menu.add (show_hidden_menuitem);
             menu.add (new Gtk.SeparatorMenuItem ());
             menu.add (new SortSubMenuItem ());
             menu.set_screen (null);
