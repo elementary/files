@@ -1522,6 +1522,19 @@ namespace Files {
                     }
 
                     break;
+
+                case Gdk.Key.d:
+                    warning ("d pressed");
+                    // Handle here so works in FileChooserDialog
+                    //TODO Use Gtk.Shortcut in Gtk4
+                    if (only_control_pressed) {
+                        on_common_action_bookmark (
+                            (SimpleAction)common_actions.lookup_action ("bookmark"),
+                            null
+                        );
+                    }
+
+                    break;
                 case Gdk.Key.F10:
                     warning (" F10");
                     if (only_control_pressed) {
