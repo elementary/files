@@ -34,6 +34,8 @@ public class Files.FileChooserPortal : Object {
     };
 
     private Settings settings; // Settings specific for the filechooser
+    private Settings app_settings; // Settings from the files app (read only)
+    private Files.Preferences prefs; // Note this gets a separate instance to the app
 
     public FileChooserPortal (DBusConnection connection) {
         this.connection = connection;
@@ -42,6 +44,8 @@ public class Files.FileChooserPortal : Object {
 
     construct {
         settings = new Settings ("io.elementary.files.file-chooser");
+        app_settings = new Settings ("io.elementary.files.preferences");
+        prefs = Files.Preferences.get_default ();
     }
 
     /**
@@ -498,6 +502,7 @@ public class Files.FileChooserPortal : Object {
         settings.get ("window-size", "(ii)", out width, out height);
         filechooser.resize (width, height); //Using default-width property does not seem to work in this context.
         filechooser.file_view.sidebar_width = settings.get_int ("sidebar-width");
+        prefs.show_hidden_files = app_settings.get_boolean ("show-hiddenfiles");
     }
 
     private void close_dialog (Files.FileChooserDialog filechooser) {

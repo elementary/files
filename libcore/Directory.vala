@@ -695,6 +695,7 @@ public class Files.Directory : Object {
         displayed_files_count = 0;
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
+        message ("Show hidden %s", show_hidden.to_string ());
 
         try {
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
