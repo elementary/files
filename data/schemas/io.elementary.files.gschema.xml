@@ -194,11 +194,6 @@
   </schema>
 
   <schema path="/io/elementary/files/file-chooser/" id="io.elementary.files.file-chooser">
-    <key type="s" name="last-folder-uri">
-      <default>''</default>
-      <summary>Last folder uri</summary>
-      <description>Uri of the last folder shown by the filechooser</description>
-    </key>
     <key type="(ii)" name="window-size">
       <default>(800, 450)</default>
       <summary>Window size</summary>
@@ -207,8 +202,21 @@
     <key type="i" name="sidebar-width">
       <default>191</default>
       <summary>Width of the side pane</summary>
-      <description>The default width of the side pane in the filechooser.</description>
+      <description>The default width of the side pane in the filechooser</description>
     </key>
   </schema>
-
+  <schema path="/io/elementary/files/file-chooser/open/" id="io.elementary.files.file-chooser.open">
+    <key type="s" name="last-folder-uri">
+      <default>''</default>
+      <summary>Last folder uri</summary>
+      <description>Uri of the last folder shown by the filechooser when opening files</description>
+    </key>
+  </schema>
+  <schema path="/io/elementary/files/file-chooser/save/" id="io.elementary.files.file-chooser.save">
+    <key type="s" name="last-folder-uri">
+      <default>''</default>
+      <summary>Last folder uri</summary>
+      <description>Uri of the last folder shown by the filechooser when saving files</description>
+    </key>
+  </schema>
 </schemalist>

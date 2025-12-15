@@ -33,7 +33,9 @@ public class Files.FileChooserPortal : Object {
         { null }
     };
 
-    private Settings settings; // Settings specific for the filechooser
+    private Settings filechooser_settings; // Settings specific for the filechooser
+    private Settings open_settings; // Settings specific for the filechooser when opening
+    private Settings save_settings; // Settings specific for the filechooser when saving
     private Settings app_settings; // Settings from the files app (read only)
     private Settings gnome_interface_settings;
     private Settings gnome_privacy_settings;
@@ -47,7 +49,9 @@ public class Files.FileChooserPortal : Object {
     }
 
     construct {
-        settings = new Settings ("io.elementary.files.file-chooser"); //Rename to match DBus name?
+        filechooser_settings = new Settings ("io.elementary.files.file-chooser"); //Rename to match DBus name?
+        open_settings = new Settings ("io.elementary.files.file-chooser.open"); //Rename to match DBus name?
+        save_settings = new Settings ("io.elementary.files.file-chooser.save"); //Rename to match DBus name?
         app_settings = new Settings ("io.elementary.files.preferences");
         gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
         gnome_privacy_settings = new Settings ("org.gnome.desktop.privacy");
@@ -338,6 +342,7 @@ public class Files.FileChooserPortal : Object {
             }
 
             close_dialog (dialog);
+
             save_file.callback ();
         });
 
@@ -346,7 +351,6 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
-        close_dialog (dialog);
 
         response = _response;
         results = _results;
@@ -463,7 +467,6 @@ public class Files.FileChooserPortal : Object {
         yield;
 
         dialogs.remove (parent_window);
-        close_dialog (dialog);
 
         response = _response;
         results = _results;
@@ -504,18 +507,21 @@ public class Files.FileChooserPortal : Object {
 
     private void set_up_dialog (Files.FileChooserDialog filechooser) {
         //FileChooser settings
+        var open = filechooser.action in (Gtk.FileChooserAction.OPEN | Gtk.FileChooserAction.SELECT_FOLDER);
+        var settings = open ? open_settings : save_settings;
         var last_uri = settings.get_string ("last-folder-uri");
         filechooser.set_current_folder_uri (last_uri);
+
         int width, height;
-        settings.get ("window-size", "(ii)", out width, out height);
+        filechooser_settings.get ("window-size", "(ii)", out width, out height);
         filechooser.resize (width, height); //Using default-width property does not seem to work in this context.
-        settings.bind ("sidebar-width", filechooser.file_view, "sidebar-width", DEFAULT);
+        filechooser_settings.bind ("sidebar-width", filechooser.file_view, "sidebar-width", DEFAULT);
 
         //Files app settings (read-only)
         app_settings.bind ("singleclick-select", prefs, "singleclick-select", GET);
         app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GET);
         app_settings.bind ("show-remote-thumbnails", prefs, "show-remote-thumbnails", GET);
-        app_settings.bind ("show-local-thumbnails",prefs, "show-local-thumbnails", GET);
+        app_settings.bind ("show-local-thumbnails", prefs, "show-local-thumbnails", GET);
         app_settings.bind ("date-format", prefs, "date-format", GET);
         // System settings (read-only)
         gnome_interface_settings.bind ("clock-format", prefs, "clock-format", GET);
@@ -526,10 +532,13 @@ public class Files.FileChooserPortal : Object {
     }
 
     private void close_dialog (Files.FileChooserDialog filechooser) {
+        var open = filechooser.action in (Gtk.FileChooserAction.OPEN | Gtk.FileChooserAction.SELECT_FOLDER);
+        var settings = open ? open_settings : save_settings;
         settings.set_string ("last-folder-uri", filechooser.get_current_folder_uri ());
+
         int w, h;
         filechooser.get_size (out w, out h);
-        settings.set ("window-size", "(ii)", w, h);
+        filechooser_settings.set ("window-size", "(ii)", w, h);
         filechooser.destroy ();
     }
 
