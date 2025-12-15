@@ -40,6 +40,7 @@ namespace Files {
 
         /* Menu Handling */
         const GLib.ActionEntry [] SELECTION_ENTRIES = {
+            {"rename", on_selection_action_rename}
         };
 
         const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
@@ -243,7 +244,7 @@ namespace Files {
                 return file != null ? filter_file (file) : false;
             });
 
-            set_up__menu_actions ();
+            set_up_menu_actions ();
             set_up_directory_view ();
             view = create_view ();
 
@@ -337,9 +338,9 @@ namespace Files {
 
         protected void set_up_name_renderer () {
             name_renderer.editable = false;
-            // // name_renderer.edited.connect (on_name_edited);
-            // name_renderer.editing_canceled.connect (on_name_editing_canceled);
-            // name_renderer.editing_started.connect (on_name_editing_started);
+            name_renderer.edited.connect (on_name_edited);
+            name_renderer.editing_canceled.connect (on_name_editing_canceled);
+            name_renderer.editing_started.connect (on_name_editing_started);
         }
 
         private void set_up_directory_view () {
@@ -385,7 +386,7 @@ namespace Files {
             model.sort_column_changed.connect (on_sort_column_changed);
         }
 
-        private void set_up__menu_actions () {
+        private void set_up_menu_actions () {
             selection_actions = new GLib.SimpleActionGroup ();
             selection_actions.add_action_entries (SELECTION_ENTRIES, this);
             insert_action_group ("selection", selection_actions);
@@ -731,6 +732,7 @@ namespace Files {
                 warning ("already renaming %s", file_to_rename.basename);
                 return;
             }
+
             /* Assume writability on remote locations */
             /**TODO** Reliably determine writability with various remote protocols.*/
             if (is_writable || !slot.directory.is_local) {
@@ -766,14 +768,15 @@ namespace Files {
         /** Selection actions */
 
 
-        // private void on_selection_action_rename (GLib.SimpleAction action, GLib.Variant? param) {
-            // rename_selection ();
-        // }
+        private void on_selection_action_rename (GLib.SimpleAction action, GLib.Variant? param) {
+            rename_selection ();
+        }
 
-        // private void rename_selection () {
-            // if (selected_files == null) {
-            //     return;
-            // }
+        private void rename_selection () {
+        warning ("rename selection");
+            if (selected_files == null) {
+                return;
+            }
 
             // if (selected_files.next != null) {
             //     var rename_dialog = new Files.RenamerDialog (selected_files) {
@@ -781,9 +784,9 @@ namespace Files {
             //     };
             //     rename_dialog.present ();
             // } else {
-            //     rename_file (selected_files.data);
+                rename_file (selected_files.data);
             // }
-        // }
+        }
 
         // private void on_selection_action_cut (GLib.SimpleAction action, GLib.Variant? param) {
             // GLib.List<Files.File> selection = get_selected_files_for_transfer ();
@@ -1074,6 +1077,12 @@ namespace Files {
                 "<Ctrl>h"
             ));
 
+            var rename_menuitem = new Gtk.MenuItem ();
+            rename_menuitem.add (new Granite.AccelLabel (
+                _("Rename"),
+                "F2"
+            ));
+            rename_menuitem.action_name = "selection.rename";
 
             var n_selected = selected_files.length ();
             Files.File? selected_folder = null;
@@ -1116,6 +1125,7 @@ namespace Files {
                 menu.add (open_with_menuitem);
             }
 
+            menu.add (rename_menuitem);
             menu.add (bookmark_menuitem);
             menu.add (show_hidden_menuitem);
             menu.add (new Gtk.SeparatorMenuItem ());
@@ -1202,7 +1212,7 @@ namespace Files {
         // }
 
         private void update_menu_actions () {
-            if (slot.directory.can_load) {
+            if (!slot.directory.can_load) {
                 return;
             }
 
@@ -1511,6 +1521,7 @@ namespace Files {
             // bool in_recent = slot.location.has_uri_scheme ("recent");
             bool res = false;
 
+        warning ("view key pressed %s", Gdk.keyval_name (keyval));
             switch (keyval) {
                 case Gdk.Key.h:
                     // Handle here so works in FileChooserDialog
@@ -1535,6 +1546,7 @@ namespace Files {
                     }
 
                     break;
+
                 case Gdk.Key.F10:
                     warning (" F10");
                     if (only_control_pressed) {
@@ -1545,12 +1557,12 @@ namespace Files {
                     break;
 
                 case Gdk.Key.F2:
-                //TODO Implement in FileChooser
-                    // if (no_mods && selection_actions.get_action_enabled ("rename")) {
-                    //     rename_selection ();
-                    //     res = true;
-                    // }
-                    warning ("Rename");
+                warning ("F2 pressed");
+                    update_menu_actions ();
+                    if (no_mods && selection_actions.get_action_enabled ("rename")) {
+                        rename_selection ();
+                        res = true;
+                    }
 
                     break;
 
@@ -1611,6 +1623,11 @@ namespace Files {
                 case Gdk.Key.Escape:
                     if (no_mods) {
                         unselect_all ();
+                    }
+
+                    if (renaming) {
+                        on_name_editing_canceled ();
+                        res = true;
                     }
 
                     break;

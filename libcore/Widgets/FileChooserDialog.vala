@@ -328,7 +328,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     protected override bool key_press_event (Gdk.EventKey event) { // Match conflict dialog
         uint keyval;
         event.get_keyval (out keyval);
-        if (keyval == Gdk.Key.Escape) {
+        if (!file_view.is_renaming && keyval == Gdk.Key.Escape) {
             response (Gtk.ResponseType.CANCEL);
             return Gdk.EVENT_STOP;
         }

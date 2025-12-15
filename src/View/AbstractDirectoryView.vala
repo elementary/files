@@ -1241,6 +1241,7 @@ namespace Files {
                 if (reverse) {
                     if (sort_order == Gtk.SortType.ASCENDING) {
                         sort_order = Gtk.SortType.DESCENDING;
+                        sort_order = Gtk.SortType.DESCENDING;
                     } else {
                         sort_order = Gtk.SortType.ASCENDING;
                     }

@@ -95,6 +95,11 @@ public class Files.BasicWindow : Gtk.EventBox {
         }
     }
 
+    public bool is_renaming {
+        get {
+            return slot.dir_view.renaming;
+        }
+    }
     private bool locked_focus { get; set; default = false; }
 
     public signal void folder_deleted (GLib.File location);
