@@ -805,6 +805,10 @@ namespace Files {
         /** Background actions */
         // Signal window app menu (not needed for filechooser)
         private void change_state_show_hidden (GLib.SimpleAction action) {
+        warning ("change state show hidden");
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+        Files.Preferences.get_default ().show_hidden_files = state;
             // window.change_state_show_hidden (action);
             //TODO Move to slot?
         }
@@ -1070,9 +1074,6 @@ namespace Files {
                 "<Ctrl>h"
             ));
 
-            show_hidden_menuitem.toggled.connect (() => {
-                Files.Preferences.get_default ().show_hidden_files = show_hidden_menuitem.active;
-            });
 
             var n_selected = selected_files.length ();
             Files.File? selected_folder = null;
@@ -1515,8 +1516,9 @@ namespace Files {
                     // Handle here so works in FileChooserDialog
                     //TODO Use Gtk.Shortcut in Gtk4
                     if (only_control_pressed) {
-                        var showing = Files.Preferences.get_default ().show_hidden_files;
-                        Files.Preferences.get_default ().show_hidden_files = !showing;
+                        change_state_show_hidden (
+                            (SimpleAction)background_actions.lookup_action ("show-hidden")
+                        );
                     }
 
                     break;
