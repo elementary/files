@@ -1499,7 +1499,6 @@ namespace Files {
             Gdk.ModifierType consumed_mods;
             var keyval = map_key (original_keyval, keycode, out consumed_mods);
             var mods = (state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
-
             bool no_mods = (mods == 0);
             // bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
@@ -1512,6 +1511,15 @@ namespace Files {
             bool res = false;
 
             switch (keyval) {
+                case Gdk.Key.h:
+                    // Handle here so works in FileChooserDialog
+                    //TODO Use Gtk.Shortcut in Gtk4
+                    if (only_control_pressed) {
+                        var showing = Files.Preferences.get_default ().show_hidden_files;
+                        Files.Preferences.get_default ().show_hidden_files = !showing;
+                    }
+
+                    break;
                 case Gdk.Key.F10:
                     warning (" F10");
                     if (only_control_pressed) {
