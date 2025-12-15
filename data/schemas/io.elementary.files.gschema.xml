@@ -204,6 +204,11 @@
       <summary>Window size</summary>
       <description>Most recent window size (width, height)</description>
     </key>
+    <key type="i" name="sidebar-width">
+      <default>191</default>
+      <summary>Width of the side pane</summary>
+      <description>The default width of the side pane in the filechooser.</description>
+    </key>
   </schema>
 
 </schemalist>

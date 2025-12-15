@@ -78,9 +78,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     private uint register_id = 0;
     private DBusConnection? dbus_connection = null;
 
-    // private Settings settings;
-    // private Settings basic_app_settings;
-
     public FileChooserDialog (
         Gtk.FileChooserAction action,
         string? parent_window,

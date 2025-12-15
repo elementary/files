@@ -33,7 +33,7 @@ public class Files.FileChooserPortal : Object {
         { null }
     };
 
-    private Settings settings;
+    private Settings settings; // Settings specific for the filechooser
 
     public FileChooserPortal (DBusConnection connection) {
         this.connection = connection;
@@ -497,6 +497,7 @@ public class Files.FileChooserPortal : Object {
         int width, height;
         settings.get ("window-size", "(ii)", out width, out height);
         filechooser.resize (width, height); //Using default-width property does not seem to work in this context.
+        filechooser.file_view.sidebar_width = settings.get_int ("sidebar-width");
     }
 
     private void close_dialog (Files.FileChooserDialog filechooser) {
@@ -504,6 +505,7 @@ public class Files.FileChooserPortal : Object {
         int w, h;
         filechooser.get_size (out w, out h);
         settings.set ("window-size", "(ii)", w, h);
+        settings.set_int ("sidebar-width", filechooser.file_view.sidebar_width);
         filechooser.destroy ();
     }
 
