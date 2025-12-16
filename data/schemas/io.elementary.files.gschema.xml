@@ -204,12 +204,12 @@
       <summary>Width of the side pane</summary>
       <description>The default width of the side pane in the filechooser</description>
     </key>
-    <key name="zoom-level-listview" enum="io.elementary.files.ZoomLevel">
+    <key name="zoomlevel-list-view" enum="io.elementary.files.ZoomLevel">
       <default>'small'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used when using list view.</description>
     </key>
-    <key name="zoom-level-iconview" enum="io.elementary.files.ZoomLevel">
+    <key name="zoomlevel-icon-view" enum="io.elementary.files.ZoomLevel">
       <default>'normal'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used when using icon view.</description>

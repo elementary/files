@@ -56,7 +56,6 @@ namespace Files {
 
             name_renderer = new Files.TextRenderer (ViewMode.LIST) {
                 wrap_width = -1,
-                zoom_level = ZoomLevel.NORMAL,
                 ellipsize_set = true,
                 ellipsize = Pango.EllipsizeMode.END,
                 xalign = 0.0f,

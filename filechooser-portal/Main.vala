@@ -516,6 +516,8 @@ public class Files.FileChooserPortal : Object {
         filechooser_settings.get ("window-size", "(ii)", out width, out height);
         filechooser.resize (width, height); //Using default-width property does not seem to work in this context.
         filechooser_settings.bind ("sidebar-width", filechooser.file_view, "sidebar-width", DEFAULT);
+        filechooser_settings.bind ("zoomlevel-icon-view", prefs, "zoomlevel-icon-view", DEFAULT);
+        filechooser_settings.bind ("zoomlevel-list-view", prefs, "zoomlevel-list-view", DEFAULT);
 
         //Files app settings (read-only)
         app_settings.bind ("singleclick-select", prefs, "singleclick-select", GET);

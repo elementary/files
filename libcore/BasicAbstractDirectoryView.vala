@@ -78,13 +78,13 @@ namespace Files {
                     _zoom_level = value;
                 }
 
-                on_zoom_level_changed (_zoom_level);
+                on_zoom_level_changed ();
             }
         }
 
         public int icon_size {
             get {
-                return _zoom_level.to_icon_size ();
+                return zoom_level.to_icon_size ();
             }
         }
 
@@ -972,7 +972,7 @@ namespace Files {
         }
 
     /** Handle zoom level change */
-        private void on_zoom_level_changed (ZoomLevel zoom) {
+        private void on_zoom_level_changed () {
             model.icon_size = icon_size;
             change_zoom_level ();
         }
@@ -2372,12 +2372,28 @@ warning ("Cut");
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
         protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
         // protected virtual Settings? get_view_settings () { return null; }
-        protected virtual void set_up_zoom_level () {
+        private void set_up_zoom_level () {
+            var prefs = Files.Preferences.get_default ();
+            switch (slot.mode) {
+                case ViewMode.ICON:
+                    minimum_zoom = prefs.minimum_zoomlevel_icon_view;
+                    maximum_zoom = prefs.maximum_zoomlevel_icon_view;
+                    prefs.bind_property ("zoomlevel-icon-view", this, "zoom-level", BIDIRECTIONAL | SYNC_CREATE);
+                    // zoom_level = prefs.zoomlevel_icon_view;
+                    break;
+                case ViewMode.LIST:
+                case ViewMode.MILLER_COLUMNS:
+                    minimum_zoom = prefs.minimum_zoomlevel_list_view;
+                    maximum_zoom = prefs.maximum_zoomlevel_list_view;
+                    prefs.bind_property ("zoomlevel-list-view", this, "zoom-level", BIDIRECTIONAL | SYNC_CREATE);
+                    // zoom_level = prefs.zoomlevel_list_view;
+                    break;
+                default:
+                    break;
+            }
             // var view_settings = get_view_settings ();
             // if (view_settings == null) {
-                minimum_zoom = ZoomLevel.SMALLEST;
-                maximum_zoom = ZoomLevel.LARGEST;
-                zoom_level = ZoomLevel.NORMAL;
+
             // } else {
             //     minimum_zoom = (ZoomLevel)view_settings.get_enum ("minimum-zoom-level");
             //     maximum_zoom = (ZoomLevel)view_settings.get_enum ("maximum-zoom-level");
