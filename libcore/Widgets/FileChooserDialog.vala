@@ -20,11 +20,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     public string supplied_uri { get; set; default = ""; } //used by Main.vala
 
     public Gtk.FileChooserAction action { get; set construct; }
-    public ViewMode view_mode {
-        get {
-            return file_view.view_mode;
-        }
-    }
 
     public bool select_multiple {
         get {
