@@ -68,9 +68,9 @@ namespace Files {
                     dir_view = new Files.BasicListView (this, selection_mode);
                     break;
 
-                // case ViewMode.ICON:
-                //     dir_view = new Files.IconView (this);
-                //     break;
+                case ViewMode.ICON:
+                    dir_view = new Files.BasicIconView (this, selection_mode);
+                    break;
 
                 default:
                     break;
@@ -89,7 +89,7 @@ namespace Files {
         }
 
         ~BasicSlot () {
-            debug ("Slot %i destruct", slot_number);
+            critical ("Slot %i destruct", slot_number);
             // Ensure dir view does not redraw with invalid slot, causing a crash
             dir_view.destroy ();
         }
@@ -320,7 +320,7 @@ namespace Files {
         }
 
         public override void close () {
-            debug ("SLOT close %s", uri);
+            warning ("SLOT close %s", uri);
             cancel_timeouts ();
 
             if (directory != null) {

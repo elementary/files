@@ -506,15 +506,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     public void set_current_folder_uri (string uri) { //Navigate to this folder
     warning ("setting current folder uri to %s", uri);
         if (uri == "") {
-            // var last_uri = settings.get_string ("last-folder-uri");
-            // if (last_uri == "") {
-                // last_uri = Environment.get_home_dir ();
-                file_view.path_change (Environment.get_home_dir ());
-            // }
-
-            warning ("using fallback");
-            // file_view.path_change (last_uri);
-            // file_view.path_change (fallback);
+            file_view.path_change (Environment.get_home_dir ());
         } else {
             file_view.path_change (uri);
         }

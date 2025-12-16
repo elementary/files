@@ -23,6 +23,7 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
     public const string GO_BACK_ACCEL = "<Alt>Left";
     public const string GO_FORWARD_ACCEL = "<Alt>Right";
 
+    public ViewSwitcher view_switcher { get; construct; }
     public BasicLocationBar location_bar { get; construct; }
     public ButtonWithMenu button_back { get; construct; }
     public ButtonWithMenu button_forward { get; construct; }
@@ -31,6 +32,7 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
     public signal void path_change_request (string uri, Files.OpenFlag flag);
     public signal void go_back (int steps);
     public signal void go_forward (int steps);
+    public signal void change_view_mode (ViewMode mode);
 
     public BasicHeaderBar () {
         Object ();
@@ -41,10 +43,15 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
         back_action.activate.connect (action_back);
         var forward_action = new SimpleAction ("forward", VariantType.INT32);
         forward_action.activate.connect (action_forward);
+        var view_mode_action = new SimpleAction ("view-mode", VariantType.UINT32);
+        view_mode_action.activate.connect (action_view_mode);
+
         actions = new SimpleActionGroup ();
         actions.add_action (back_action);
         actions.add_action (forward_action);
+        actions.add_action (view_mode_action);
         insert_action_group ("header", actions);
+
         button_back = new ButtonWithMenu ("go-previous-symbolic");
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({GO_BACK_ACCEL}, _("Previous"));
         button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
@@ -65,8 +72,13 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
         centering_policy = LOOSE;
         show_close_button = true;
 
+        view_switcher = new ViewSwitcher (view_mode_action, false) {
+            margin_end = 20
+        };
+
         pack_start (button_back);
         pack_start (button_forward);
+        pack_start (view_switcher);
 
         location_bar.path_change_request.connect ((path, flag) => {
             // content.is_frozen = false;
@@ -124,6 +136,10 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
 
     private void action_edit_path () {
         location_bar.enter_navigate_mode ();
+    }
+
+    private void action_view_mode (SimpleAction action, Variant? param) {
+        change_view_mode ((ViewMode)param.get_uint32 ());
     }
 
     public void update_location_bar (string new_path, bool with_animation = true) {

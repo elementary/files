@@ -23,6 +23,12 @@
 
 public class Files.BasicWindow : Gtk.EventBox {
     public Browser browser { get; private set; }
+    public Files.BasicHeaderBar headerbar;
+    public SidebarInterface sidebar { get; private set; }
+    public BasicSlot slot { get; private set; }
+    private Gtk.Paned lside_pane;
+    private Gtk.Box slot_container;
+
     public string title { get; private set; default = "";}
     public bool can_select_zero { get; set; default = true; }
 
@@ -38,8 +44,6 @@ public class Files.BasicWindow : Gtk.EventBox {
         }
     }
 
-    public Files.BasicHeaderBar headerbar;
-    private Gtk.Paned lside_pane;
     public int sidebar_width {
         get {
             return lside_pane.position;
@@ -49,8 +53,7 @@ public class Files.BasicWindow : Gtk.EventBox {
             lside_pane.position = value;
         }
     }
-    public SidebarInterface sidebar;
-    public BasicSlot slot { get; construct; }
+
     public Gtk.SelectionMode selection_mode {
         get {
             return slot.dir_view.get_selection_mode ();
@@ -114,16 +117,8 @@ public class Files.BasicWindow : Gtk.EventBox {
         basic_app_settings = new Settings ("io.elementary.files.preferences");
 
         sidebar = new Sidebar.BasicSidebarWindow ();
-
-        slot = new BasicSlot (default_location, LIST);
-        slot.file_activated.connect (() => {
-            file_activated ();
-        });
-        slot.directory_loaded.connect (on_directory_loaded);
-        slot.bookmark_uri_request.connect (bookmark_uri);
-        slot.selection_changed.connect (() => {
-            selection_changed ();
-        });
+        slot_container = new Gtk.Box (HORIZONTAL, 0); //Potential for extra widgets e.g. preview
+        add_slot (default_location, ViewMode.LIST); //TODO Get initial mode from settings
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             expand = true,
@@ -131,12 +126,13 @@ public class Files.BasicWindow : Gtk.EventBox {
         };
 
         lside_pane.pack1 (sidebar, false, false);
-        lside_pane.pack2 (slot.get_content_box (), true, true);
+        lside_pane.pack2 (slot_container, false, false);
         add (lside_pane);
 
         //We create and connect headerbar but leave to the parent where to put it.
         headerbar = new Files.BasicHeaderBar ();
         headerbar.path_change_request.connect (path_change);
+        headerbar.change_view_mode.connect (on_change_view_mode_request);
 
         headerbar.go_back.connect ((steps) => {
             string? uri = browser.go_back (steps);
@@ -164,6 +160,27 @@ public class Files.BasicWindow : Gtk.EventBox {
         });
 
         show_all ();
+    }
+
+    private void add_slot (GLib.File location, ViewMode mode) {
+        if (slot != null) {
+            slot.close ();
+            slot_container.remove (slot.get_content_box ());
+            slot = null; //TODO check slot is destructed
+        }
+
+        slot = new BasicSlot (location, mode);
+        slot.file_activated.connect (() => {
+            file_activated ();
+        });
+        slot.directory_loaded.connect (on_directory_loaded);
+        slot.bookmark_uri_request.connect (bookmark_uri);
+        slot.selection_changed.connect (() => {
+            selection_changed ();
+        });
+
+        slot_container.add (slot.get_content_box ());
+        slot_container.show_all ();
     }
 
     public void get_selection_details (out uint n_selected, out bool folder_selected, out bool file_selected) {
@@ -243,9 +260,26 @@ public class Files.BasicWindow : Gtk.EventBox {
         return !sidebar.has_favorite_uri (uri);
     }
 
-    // private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
-    //     //TODO Allow FileChooser to change view mode
-    // }
+    private void on_change_view_mode_request (ViewMode mode) {
+        add_slot (slot.location, mode);
+    }
+
+    private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
+        //TODO Allow Slot to change view mode rather than create new slot?
+        on_change_view_mode_request ((ViewMode)param.get_uint32 ());
+        // add_slot (slot.location, (ViewMode)(param.get_uint32 ())); //Closes and destroys old slot
+        // view_mode = mode;
+        // loading (false);
+        // store_selection ();
+        /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
+        // disconnect_slot_signals (view);
+        // add_view (mode, loc ?? location);
+        /* Slot is created inactive so we activate now since we must be the current tab
+         * to have received a change mode instruction */
+        // set_active_state (true);
+        /* Do not update top menu (or record uri) unless folder loads successfully */
+        // load_directory ();
+    }
 
     public void change_state_show_hidden (GLib.SimpleAction action) {
         bool state = !action.state.get_boolean ();

@@ -75,6 +75,7 @@ pantheon_files_core_vala_files = files(
     'Interfaces/SidebarItemInterface.vala',
 
     'View/BasicListView.vala',
+    'View/BasicIconView.vala',
     'View/BasicWindow.vala',
     'View/BasicSidebarWindow.vala',
 
