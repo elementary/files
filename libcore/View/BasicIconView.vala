@@ -73,10 +73,6 @@ public class Files.BasicIconView : Files.BasicAbstractDirectoryView {
         return tree as Gtk.Widget;
     }
 
-    // public override Settings? get_view_settings () {
-    //     return Files.icon_view_settings;
-    // }
-
     public override void change_zoom_level () {
         tree.column_spacing = (int)(icon_size * (0.4 - zoom_level * 0.03));
         tree.row_spacing = tree.column_spacing;

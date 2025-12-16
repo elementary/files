@@ -110,19 +110,15 @@ public class Files.BasicWindow : Gtk.EventBox {
     public signal void file_activated ();
     public signal void selection_changed ();
 
-    private Settings basic_app_settings;
-
     construct {
         browser = new Browser ();
-        basic_app_settings = new Settings ("io.elementary.files.preferences");
 
         sidebar = new Sidebar.BasicSidebarWindow ();
         slot_container = new Gtk.Box (HORIZONTAL, 0); //Potential for extra widgets e.g. preview
-        add_slot (default_location, ViewMode.LIST); //TODO Get initial mode from settings
+        add_slot (default_location, ViewMode.LIST);
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             expand = true,
-            position = basic_app_settings.get_int ("sidebar-width")
         };
 
         lside_pane.pack1 (sidebar, false, false);
@@ -308,12 +304,6 @@ public class Files.BasicWindow : Gtk.EventBox {
     }
 
     public virtual void quit () {
-        var sidebar_width = lside_pane.get_position ();
-        var min_width = basic_app_settings.get_int ("minimum-sidebar-width");
-
-        sidebar_width = int.max (sidebar_width, min_width);
-        basic_app_settings.set_int ("sidebar-width", sidebar_width);
-
         headerbar.destroy (); /* stop unwanted signals if quit while pathbar in focus */
         slot.close ();
         this.destroy ();

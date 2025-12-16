@@ -92,9 +92,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
     construct {
         use_header_bar = 1; // Stop native action area showing
-        // settings = new Settings ("io.elementary.files.file-chooser");
-        // basic_app_settings = new Settings ("io.elementary.files.preferences");
-
 
         file_view = new BasicWindow ();
         this.set_titlebar (file_view.headerbar);
@@ -364,10 +361,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public override void dispose () {
-        // int w, h;
-        // get_size (out w, out h);
-        // basic_app_settings.set_int ("sidebar-width", file_view.sidebar_width);
-
         if (register_id != 0 && dbus_connection != null) {
             dbus_connection.unregister_object (register_id);
         }
