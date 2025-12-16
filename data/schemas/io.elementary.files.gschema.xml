@@ -204,6 +204,16 @@
       <summary>Width of the side pane</summary>
       <description>The default width of the side pane in the filechooser</description>
     </key>
+    <key name="zoom-level-listview" enum="io.elementary.files.ZoomLevel">
+      <default>'small'</default>
+      <summary>icon zoom level</summary>
+      <description>Zoom level used when using list view.</description>
+    </key>
+    <key name="zoom-level-iconview" enum="io.elementary.files.ZoomLevel">
+      <default>'normal'</default>
+      <summary>icon zoom level</summary>
+      <description>Zoom level used when using icon view.</description>
+    </key>
   </schema>
   <schema path="/io/elementary/files/file-chooser/open/" id="io.elementary.files.file-chooser.open">
     <key type="s" name="last-folder-uri">
@@ -211,12 +221,26 @@
       <summary>Last folder uri</summary>
       <description>Uri of the last folder shown by the filechooser when opening files</description>
     </key>
+    <key name="viewmode" enum="viewmode">
+      <default>'icon'</default>
+      <summary>viewmode when opening files</summary>
+      <description>
+        The viewmode to be used when the filechooser is opening files
+      </description>
+    </key>
   </schema>
   <schema path="/io/elementary/files/file-chooser/save/" id="io.elementary.files.file-chooser.save">
     <key type="s" name="last-folder-uri">
       <default>''</default>
       <summary>Last folder uri</summary>
       <description>Uri of the last folder shown by the filechooser when saving files</description>
+    </key>
+    <key name="viewmode" enum="viewmode">
+      <default>'list'</default>
+      <summary>viewmode when opening files</summary>
+      <description>
+        The viewmode to be used when the filechooser is saving files
+      </description>
     </key>
   </schema>
 </schemalist>
