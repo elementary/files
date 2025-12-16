@@ -89,11 +89,11 @@ namespace Files {
             action.activate (source.get_data<uint32> ("id"));
         }
 
+        // Does not activate action to prevent infinite loop
         public void set_mode (uint32 mode) {
             this.@foreach ((child) => {
                 if (child.get_data<uint32> ("id") == mode) {
                     ((Gtk.RadioButton)child).active = true;
-                    action.activate (child.get_data<uint32> ("id"));
                 }
             });
         }

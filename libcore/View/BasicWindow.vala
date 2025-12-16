@@ -64,12 +64,6 @@ public class Files.BasicWindow : Gtk.EventBox {
         }
     }
 
-    public Files.ViewMode view_mode {
-        get {
-            return slot.mode;
-        }
-    }
-
     public Gtk.FileFilter filter {
         get {
             return slot.dir_view.filter;
@@ -113,18 +107,6 @@ public class Files.BasicWindow : Gtk.EventBox {
     construct {
         browser = new Browser ();
 
-        sidebar = new Sidebar.BasicSidebarWindow ();
-        slot_container = new Gtk.Box (HORIZONTAL, 0); //Potential for extra widgets e.g. preview
-        add_slot (default_location, ViewMode.LIST);
-
-        lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-            expand = true,
-        };
-
-        lside_pane.pack1 (sidebar, false, false);
-        lside_pane.pack2 (slot_container, false, false);
-        add (lside_pane);
-
         //We create and connect headerbar but leave to the parent where to put it.
         headerbar = new Files.BasicHeaderBar ();
         headerbar.path_change_request.connect (path_change);
@@ -145,7 +127,21 @@ public class Files.BasicWindow : Gtk.EventBox {
             }
         });
 
+        slot_container = new Gtk.Box (HORIZONTAL, 0); //Potential for extra widgets e.g. preview
+
+        lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+            expand = true,
+        };
+
+        sidebar = new Sidebar.BasicSidebarWindow ();
         sidebar.path_change_request.connect (path_change);
+
+        lside_pane.pack1 (sidebar, false, false);
+        lside_pane.pack2 (slot_container, false, false);
+        add (lside_pane);
+
+        //Must create headerbar and slot container first
+        add_slot (default_location, ViewMode.LIST);
 
         slot.notify["uri"].connect (() => {
             update_labels (slot.uri);
@@ -159,6 +155,10 @@ public class Files.BasicWindow : Gtk.EventBox {
     }
 
     private void add_slot (GLib.File location, ViewMode mode) {
+        if (slot.mode == mode) {
+            return;
+        }
+
         if (slot != null) {
             slot.close ();
             slot_container.remove (slot.get_content_box ());
@@ -177,6 +177,8 @@ public class Files.BasicWindow : Gtk.EventBox {
 
         slot_container.add (slot.get_content_box ());
         slot_container.show_all ();
+
+        headerbar.set_view_mode (slot.mode);
     }
 
     public void get_selection_details (out uint n_selected, out bool folder_selected, out bool file_selected) {

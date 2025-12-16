@@ -126,6 +126,10 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
         button_forward.sensitive = can_go_forward;
     }
 
+    public void set_view_mode (ViewMode mode) {
+        view_switcher.set_mode (mode);
+    }
+
     private void action_back (SimpleAction action, Variant? param) {
         go_back (param.get_int32 ());
     }
