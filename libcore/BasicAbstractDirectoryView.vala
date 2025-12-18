@@ -1594,26 +1594,34 @@ namespace Files {
                     break;
 
                 case Gdk.Key.minus:
-                    if (alt_pressed && control_pressed) {
-                        Gtk.TreePath? path = get_path_at_cursor ();
-                        if (path != null && path_is_selected (path)) {
-                            unselect_path (path);
-                        }
+                    if (control_pressed) {
+                        if (alt_pressed) {
+                            Gtk.TreePath? path = get_path_at_cursor ();
+                            if (path != null && path_is_selected (path)) {
+                                unselect_path (path);
+                            }
 
-                        res = true;
+                            res = true;
+                        } else {
+                            zoom_out ();
+                        }
                     }
 
                     break;
 
                 case Gdk.Key.plus:
                 case Gdk.Key.equal: /* Do not require Shift as well (otherwise 4 key shortcut)  */
-                    if (alt_pressed && control_pressed) {
-                        Gtk.TreePath? path = get_path_at_cursor ();
-                        if (path != null && !path_is_selected (path)) {
-                            select_path (path);
-                        }
+                    if (control_pressed) {
+                        if (alt_pressed) {
+                            Gtk.TreePath? path = get_path_at_cursor ();
+                            if (path != null && !path_is_selected (path)) {
+                                select_path (path);
+                            }
 
-                        res = true;
+                            res = true;
+                        } else {
+                            zoom_in ();
+                        }
                     }
 
                     break;

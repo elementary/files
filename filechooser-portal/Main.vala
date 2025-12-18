@@ -505,7 +505,6 @@ public class Files.FileChooserPortal : Object {
         gnome_privacy_settings.bind ("remember-recent-files", prefs, "remember-history", GET);
         // Gtk Filechooser settings (sync)
         gtk_file_chooser_settings.bind ("sort-directories-first", prefs, "sort-directories-first", DEFAULT);
-
     }
 
     private void close_dialog (Files.FileChooserDialog filechooser) {
