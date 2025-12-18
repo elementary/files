@@ -56,44 +56,48 @@ public class Files.BasicWindow : Gtk.EventBox {
 
     public Gtk.SelectionMode selection_mode {
         get {
-            return slot.dir_view.get_selection_mode ();
+            return slot != null ? slot.dir_view.get_selection_mode () : Gtk.SelectionMode.NONE;
         }
 
         set {
+            assert (slot != null);
             slot.dir_view.set_selection_mode (value);
         }
     }
 
-    public Gtk.FileFilter filter {
+    public Gtk.FileFilter? filter {
         get {
-            return slot.dir_view.filter;
+            return slot != null ? slot.dir_view.filter : null;
         }
 
         set {
+            assert (slot != null);
             slot.dir_view.filter = value;
         }
     }
 
     public List<Files.File> selected_files {
         get {
+            assert (slot != null);
             return slot.dir_view.get_selected_files ();
         }
     }
 
-    public string uri { // The current displayed uri
+    public string? uri { // The current displayed uri
         get {
-            return slot.uri;
+            return slot != null ? slot.uri : null;
         }
     }
 
     public GLib.File? location { // The currently displayed folder
         get {
-            return slot.location;
+            return slot != null ? slot.location : null;
         }
     }
 
     public bool is_renaming {
         get {
+            assert (slot != null);
             return slot.dir_view.renaming;
         }
     }
@@ -106,7 +110,6 @@ public class Files.BasicWindow : Gtk.EventBox {
 
     construct {
         browser = new Browser ();
-
         //We create and connect headerbar but leave to the parent where to put it.
         headerbar = new Files.BasicHeaderBar ();
         headerbar.path_change_request.connect (path_change);
@@ -141,31 +144,22 @@ public class Files.BasicWindow : Gtk.EventBox {
         add (lside_pane);
 
         //Must create headerbar and slot container first
-        add_slot (default_location, ViewMode.LIST);
-
-        slot.notify["uri"].connect (() => {
-            update_labels (slot.uri);
-        });
-
-        realize.connect (() => {
-            headerbar.update_location_bar (uri, false);
-        });
 
         show_all ();
     }
 
-    private void add_slot (GLib.File location, ViewMode mode) {
-        if (slot.mode == mode) {
-            return;
-        }
-
+    public void add_slot (string uri, ViewMode mode) {
         if (slot != null) {
+            if (slot.mode == mode) {
+                return;
+            }
+
             slot.close ();
             slot_container.remove (slot.get_content_box ());
             slot = null; //TODO check slot is destructed
         }
 
-        slot = new BasicSlot (location, mode);
+        slot = new BasicSlot (GLib.File.new_for_uri (uri), mode);
         slot.file_activated.connect (() => {
             file_activated ();
         });
@@ -173,6 +167,10 @@ public class Files.BasicWindow : Gtk.EventBox {
         slot.bookmark_uri_request.connect (bookmark_uri);
         slot.selection_changed.connect (() => {
             selection_changed ();
+        });
+
+        slot.notify["uri"].connect (() => {
+            update_labels (slot.uri);
         });
 
         slot_container.add (slot.get_content_box ());
@@ -258,8 +256,9 @@ public class Files.BasicWindow : Gtk.EventBox {
         return !sidebar.has_favorite_uri (uri);
     }
 
-    private void on_change_view_mode_request (ViewMode mode) {
-        add_slot (slot.location, mode);
+    public void on_change_view_mode_request (ViewMode mode) {
+        warning ("on change view mode request");
+        add_slot (slot.uri, mode);
     }
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {

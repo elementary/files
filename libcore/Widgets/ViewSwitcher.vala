@@ -77,7 +77,11 @@ namespace Files {
         private string get_tooltip_for_id (uint32 id, string description) {
             var app = (Gtk.Application)Application.get_default ();
             var detailed_name = Action.print_detailed_name ("win." + action.name, new Variant.uint32 (id));
-            var accels = app.get_accels_for_action (detailed_name);
+            string[] accels = {};
+            if (app != null) {
+                accels = app.get_accels_for_action (detailed_name);
+            }
+
             return Granite.markup_accel_tooltip (accels, description);
         }
 

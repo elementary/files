@@ -1256,7 +1256,6 @@ namespace Files {
             can_copy = file.is_readable ();
             can_show_properties = !(in_recent && more_than_one_selected);
 
-            action_set_enabled (common_actions, "paste", !in_recent && is_writable);
             // action_set_enabled (common_actions, "paste-into", !renaming & can_paste_into);
             // action_set_enabled (common_actions, "open-in", !renaming & only_folders);
             action_set_enabled (selection_actions, "rename", !renaming & is_selected && can_rename);
@@ -1265,8 +1264,6 @@ namespace Files {
             // action_set_enabled (selection_actions, "open-with-default", !renaming && can_open);
             // action_set_enabled (selection_actions, "open-with-other-app", !renaming && can_open);
             // action_set_enabled (selection_actions, "cut", !renaming && is_writable && is_selected);
-            action_set_enabled (selection_actions, "trash", !renaming && is_writable && slot.directory.has_trash_dirs);
-            action_set_enabled (selection_actions, "delete", !renaming && is_writable);
             action_set_enabled (common_actions, "bookmark", !renaming && can_bookmark);
             action_set_enabled (common_actions, "copy", !renaming && !in_trash && can_copy);
             // action_set_enabled (common_actions, "copy-link", !renaming && !in_trash && !in_recent && can_copy);

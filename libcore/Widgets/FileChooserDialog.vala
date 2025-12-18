@@ -55,12 +55,12 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         }
 
         set {
-            warning ("set accept label");
             accept_button.label = value;
         }
     }
 
     public bool read_only { get; set; default = false; }
+    public ViewMode view_mode { get; set; default = ViewMode.LIST; }
 
     private Gtk.TreeStore filter_model;
     private Gtk.Button accept_button;
@@ -171,16 +171,13 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
             entry.changed.connect (check_can_accept);
         } else if (action == Gtk.FileChooserAction.OPEN) {
-            var read_only_check = new Gtk.CheckButton.with_label (
-                select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only")
-            ) {
+            var read_only_check = new Gtk.CheckButton () {
                 margin_start = 6
             };
 
-            notify["select-multiple"].connect (() => {
+            read_only_check.notify["select-multiple"].connect (() => {
                 read_only_check.label = select_multiple ? _("Open Files as Read Only") : _("Open File as Read Only");
             });
-
             read_only_check.bind_property ("active", this, "read-only");
             choices_box.pack_start (read_only_check);
         }
@@ -251,7 +248,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
         });
 
-        warning ("after construct, current folder uri is %s", get_current_folder_uri ());
 
         show_all ();
     }
@@ -491,12 +487,13 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         }
     }
 
+    // Only to be used on initializing dialog
     public void set_current_folder_uri (string uri) { //Navigate to this folder
     warning ("setting current folder uri to %s", uri);
         if (uri == "") {
-            file_view.path_change (Environment.get_home_dir ());
+            file_view.add_slot (Environment.get_home_dir (), view_mode);
         } else {
-            file_view.path_change (uri);
+            file_view.add_slot (uri, view_mode);
         }
     }
 
