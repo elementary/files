@@ -84,7 +84,7 @@ public class Files.FileChooserPortal : Object {
      * @param options
      *    Dictionary of extra options. valid keys are: "accept_label",
      *    "choices", "current_filter", "directory", "filters", "multiple"
-     *    and "modal".
+     *    and "modal", "current_folder".
      * @param response
      *    User response, 0 on success, 1 if cancelled, 2 on fail.
      * @param results
@@ -114,50 +114,13 @@ public class Files.FileChooserPortal : Object {
             title
         );
 
-        if ("modal" in options) {
-            dialog.modal = options["modal"].get_boolean ();
-        }
-
-        if ("multiple" in options) {
-            dialog.select_multiple = options["multiple"].get_boolean ();
-        }
-
-        if ("accept_label" in options) {
-            dialog.accept_label = options["accept_label"].get_string ();
-        } else {
-            dialog.accept_label = dialog.select_multiple ? _("Select") : _("Open");
-        }
-
-        if ("filters" in options) {
-            var filters = options["filters"].iterator ();
-            Variant filter_variant;
-
-            while ((filter_variant = filters.next_value ()) != null) {
-                var filter = new Gtk.FileFilter.from_gvariant (filter_variant);
-                dialog.add_filter (filter);
-            }
-        }
-
-        if ("current_filter" in options) {
-            dialog.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
-        }
-
-        if ("choices" in options) {
-            var choices = options["choices"].iterator ();
-            Variant choice_variant;
-
-            while ((choice_variant = choices.next_value ()) != null) {
-                var choice = new Files.FileChooserChoice.from_variant (choice_variant);
-                dialog.add_choice (choice);
-            }
-        }
+        set_up_dialog (dialog, options);
 
         dialog.register_object (connection, handle);
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
 
-        set_up_dialog (dialog);
         dialog.response.connect ((id) => {
             switch (id) {
                 case Gtk.ResponseType.OK:
@@ -241,67 +204,17 @@ public class Files.FileChooserPortal : Object {
             return;
         }
 
-        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title) {
-            accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
-        };
+        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SAVE, parent_window, title);
 
-        if ("modal" in options) {
-            dialog.modal = options["modal"].get_boolean ();
-        }
+        set_up_dialog (dialog, options);
 
-        if ("current_name" in options) {
-            dialog.set_current_name (options["current_name"].get_string ());
-        }
-
-        if ("current_folder" in options) {
-            dialog.set_current_folder (
-                FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, true)
-            );
-        }
-
-        var supplied_uri = "";
-        if ("current_file" in options) {
-            supplied_uri = FileUtils.sanitize_path (
-                options["current_file"].get_bytestring (),
-                Environment.get_home_dir (),
-                true
-            );
-
-            if (supplied_uri != "") {
-                dialog.set_uri (supplied_uri);
-            }
-        }
-
-        if ("filters" in options) {
-            var filters = options["filters"].iterator ();
-            Variant filter_variant;
-
-            while ((filter_variant = filters.next_value ()) != null) {
-                var filter = new Gtk.FileFilter.from_gvariant (filter_variant);
-                dialog.add_filter (filter);
-            }
-        }
-
-        if ("current_filter" in options) {
-            dialog.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
-        }
-
-        if ("choices" in options) {
-            var choices = options["choices"].iterator ();
-            Variant choice_variant;
-
-            while ((choice_variant = choices.next_value ()) != null) {
-                var choice = new Files.FileChooserChoice.from_variant (choice_variant);
-                dialog.add_choice (choice);
-            }
-        }
+        var supplied_uri = dialog.get_uri ();
 
         dialog.register_object (connection, handle); // Dialog will unregister itself when disposed
 
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
 
-        set_up_dialog (dialog);
         dialog.response.connect ((id) => {
             switch (id) {
                 case Gtk.ResponseType.OK:
@@ -400,18 +313,12 @@ public class Files.FileChooserPortal : Object {
             return;
         }
 
-        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SELECT_FOLDER, parent_window, title) {
-            accept_label = "accept_label" in options ? options["accept_label"].get_string () : _("Save")
-        };
+        var dialog = new Files.FileChooserDialog (Gtk.FileChooserAction.SELECT_FOLDER, parent_window, title);
+
+        set_up_dialog (dialog, options);
 
         if ("modal" in options) {
             dialog.modal = options["modal"].get_boolean ();
-        }
-
-        if ("current_folder" in options) {
-            dialog.set_current_folder (
-                FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, true)
-            );
         }
 
         if ("choices" in options) {
@@ -430,7 +337,6 @@ public class Files.FileChooserPortal : Object {
         var _results = new HashTable<string, Variant> (str_hash, str_equal);
         uint _response = 2;
 
-        set_up_dialog (dialog);
         dialog.response.connect ((id) => {
             switch (id) {
                 case Gtk.ResponseType.OK:
@@ -505,12 +411,81 @@ public class Files.FileChooserPortal : Object {
         return replace_dialog;
     }
 
-    private void set_up_dialog (Files.FileChooserDialog filechooser) {
+    private void set_up_dialog (Files.FileChooserDialog filechooser, HashTable<string, Variant> options) {
         //FileChooser settings
         var open = filechooser.action in (Gtk.FileChooserAction.OPEN | Gtk.FileChooserAction.SELECT_FOLDER);
         var settings = open ? open_settings : save_settings;
-        var last_uri = settings.get_string ("last-folder-uri");
-        filechooser.set_current_folder_uri (last_uri);
+
+        //Must create initial slot first
+        string current_folder = "";
+        if ("current_folder" in options) {
+            current_folder = FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, true);
+        } else {
+            current_folder = settings.get_string ("last-folder-uri");
+        }
+
+        var view_mode = settings.get_enum ("viewmode");
+        filechooser.view_mode = view_mode; //Does not create a slot
+        warning ("about to set current folder uri");
+        filechooser.set_current_folder_uri (current_folder); //Creates a slot with set viewmode and location
+        warning ("after set current folder uri");
+
+        if ("current_name" in options) {
+            filechooser.set_current_name (options["current_name"].get_string ());
+        }
+
+        var supplied_uri = "";
+        if ("current_file" in options) {
+            supplied_uri = FileUtils.sanitize_path (
+                options["current_file"].get_bytestring (),
+                Environment.get_home_dir (),
+                true
+            );
+
+            if (supplied_uri != "") {
+                filechooser.set_uri (supplied_uri);
+            }
+        }
+
+        if ("modal" in options) {
+            filechooser.modal = options["modal"].get_boolean ();
+        }
+
+        if ("multiple" in options) {
+            warning ("Main setting select multiple");
+            filechooser.select_multiple = options["multiple"].get_boolean ();
+        }
+
+        if ("accept_label" in options) {
+            filechooser.accept_label = options["accept_label"].get_string ();
+        } else {
+            filechooser.accept_label = filechooser.select_multiple ? _("Select") :
+                                  filechooser.action == Gtk.FileChooserAction.OPEN ? _("Open") : _("Save");
+        }
+
+        if ("filters" in options) {
+            var filters = options["filters"].iterator ();
+            Variant filter_variant;
+
+            while ((filter_variant = filters.next_value ()) != null) {
+                var filter = new Gtk.FileFilter.from_gvariant (filter_variant);
+                filechooser.add_filter (filter);
+            }
+        }
+
+        if ("current_filter" in options) {
+            filechooser.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
+        }
+
+        if ("choices" in options) {
+            var choices = options["choices"].iterator ();
+            Variant choice_variant;
+
+            while ((choice_variant = choices.next_value ()) != null) {
+                var choice = new Files.FileChooserChoice.from_variant (choice_variant);
+                filechooser.add_choice (choice);
+            }
+        }
 
         int width, height;
         filechooser_settings.get ("window-size", "(ii)", out width, out height);
@@ -537,6 +512,7 @@ public class Files.FileChooserPortal : Object {
         var open = filechooser.action in (Gtk.FileChooserAction.OPEN | Gtk.FileChooserAction.SELECT_FOLDER);
         var settings = open ? open_settings : save_settings;
         settings.set_string ("last-folder-uri", filechooser.get_current_folder_uri ());
+        settings.set_enum ("viewmode", filechooser.view_mode);
 
         int w, h;
         filechooser.get_size (out w, out h);
