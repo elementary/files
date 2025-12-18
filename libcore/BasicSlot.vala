@@ -45,6 +45,7 @@ namespace Files {
 
         public signal void folder_deleted (Files.File file, Directory parent);
         public signal void bookmark_uri_request (string uri, string custom = "");
+        public signal void change_viewmode_request (ViewMode mode);
 
         /* Support for multi-slot view (Miller)*/
         public Gtk.Box colpane;

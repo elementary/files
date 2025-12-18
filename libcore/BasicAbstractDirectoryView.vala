@@ -1742,6 +1742,20 @@ warning ("Cut");
 
                     break;
 
+                case Gdk.Key.@1:
+                    if (only_control_pressed) {
+                        slot.change_viewmode_request (ViewMode.ICON);
+                    }
+
+                    break;
+
+                case Gdk.Key.@2:
+                    if (only_control_pressed) {
+                        slot.change_viewmode_request (ViewMode.LIST);
+                    }
+
+                    break;
+
                 default:
                     break;
             }

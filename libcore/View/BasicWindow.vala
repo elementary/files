@@ -165,6 +165,9 @@ public class Files.BasicWindow : Gtk.EventBox {
         });
         slot.directory_loaded.connect (on_directory_loaded);
         slot.bookmark_uri_request.connect (bookmark_uri);
+        slot.change_viewmode_request.connect ((mode) => {
+            add_slot (slot.uri, mode);
+        });
         slot.selection_changed.connect (() => {
             selection_changed ();
         });
