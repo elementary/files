@@ -237,7 +237,6 @@ public class Files.BasicWindow : Gtk.EventBox {
      */
     public void path_change (string uri) {
         slot.on_path_change_request (uri);
-        browser.record_uri (uri);
     }
 
     public void set_selected_location (GLib.File loc) {
@@ -245,6 +244,7 @@ public class Files.BasicWindow : Gtk.EventBox {
     }
 
     private void on_directory_loaded () {
+        browser.record_uri (uri);
         headerbar.set_back_menu (browser.go_back_list (), browser.get_can_go_back ());
         headerbar.set_forward_menu (browser.go_forward_list (), browser.get_can_go_forward ());
         headerbar.update_location_bar (uri, true);

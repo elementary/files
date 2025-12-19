@@ -102,7 +102,6 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
     }
 
     public void set_back_menu (Gee.List<string> path_list, bool can_go_back) {
-    warning ("set back menu");
         /* Clear the back menu and re-add the correct entries. */
         var back_menu = new Menu ();
         for (int i = 0; i < path_list.size; i++) {
