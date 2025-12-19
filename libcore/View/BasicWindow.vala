@@ -105,7 +105,7 @@ public class Files.BasicWindow : Gtk.EventBox {
 
     public signal void folder_deleted (GLib.File location);
     public signal void free_space_change ();
-    public signal void file_activated ();
+    public signal void file_activated (bool only_one);
     public signal void selection_changed ();
 
     construct {
@@ -161,7 +161,13 @@ public class Files.BasicWindow : Gtk.EventBox {
 
         slot = new BasicSlot (GLib.File.new_for_uri (uri), mode);
         slot.file_activated.connect (() => {
-            file_activated ();
+            var file = selected_files.first ().data;
+            var only_one = (selected_files.first ().next) == null;
+            if (only_one && file.is_folder ()) {
+                path_change (file.uri); //Handle navigation here
+            } else {
+                file_activated (only_one); // Pass on to parent (filechooser)
+            }
         });
         slot.directory_loaded.connect (on_directory_loaded);
         slot.bookmark_uri_request.connect (bookmark_uri);

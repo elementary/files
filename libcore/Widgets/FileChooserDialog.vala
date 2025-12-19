@@ -308,14 +308,8 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         return return_filter;
     }
 
-    //TODO Pass on with "file activated"?
-    private void activate_selected_items () {
-        unowned var selected = file_view.selected_files;
-        var file = selected.first ().data;
-        var only_one = (selected.first ().next) == null;
-        if (only_one && file.is_folder ()) {
-            file_view.path_change (file.uri);
-        } else if (only_one || select_multiple) {
+    private void activate_selected_items (bool only_one) {
+        if (only_one || select_multiple) {
             response (Gtk.ResponseType.OK);
         }
     }
