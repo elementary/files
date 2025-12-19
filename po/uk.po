@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-03-21 18:55+0000\n"
+"PO-Revision-Date: 2025-12-18 23:55+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementaryos.org/projects/files/files/"
 "uk/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-12 06:02+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:194
@@ -302,7 +302,7 @@ msgstr "Поточна дата"
 #. TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
 #: libcore/Enums.vala:268
 msgid "ISO"
-msgstr ""
+msgstr "ISO"
 
 #: libcore/Enums.vala:270
 msgid "Locale"
@@ -2116,11 +2116,11 @@ msgstr "Порожній файл"
 
 #: src/View/AbstractDirectoryView.vala:2382
 msgid "Template"
-msgstr ""
+msgstr "Шаблон"
 
 #: src/View/AbstractDirectoryView.vala:2390
 msgid "…too many templates"
-msgstr ""
+msgstr "…забагато шаблонів"
 
 #: src/View/AbstractDirectoryView.vala:2395
 msgid "New"
@@ -2498,7 +2498,7 @@ msgstr "Віддалені ескізи"
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
 #: src/View/Widgets/AppMenu.vala:116
 msgid "Date & Time Format"
-msgstr ""
+msgstr "Формат дати й часу"
 
 #: src/View/Widgets/AppMenu.vala:210
 msgid "No operation to undo"
