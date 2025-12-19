@@ -97,8 +97,8 @@ public class FileChooserDialogTester : Gtk.Application {
     private void on_save_file () {
         var filechooser = new Files.FileChooserDialog (Gtk.FileChooserAction.SAVE, "", "TestSaveWidget");
 
-        filechooser.set_current_name ("TestDoc.txt");
         filechooser.set_current_folder (Environment.get_home_dir ());
+        filechooser.set_current_name ("TestDoc.txt");
 
         show_filechooser_widget (filechooser);
     }
