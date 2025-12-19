@@ -411,7 +411,7 @@ public class Files.FileChooserPortal : Object {
         }
 
         var view_mode = settings.get_enum ("viewmode");
-        filechooser.view_mode = view_mode; //Does not create a slot
+        filechooser.view_mode = view_mode; //Does not create a slot, sets initial mode
         filechooser.set_current_folder_uri (current_folder); //Creates a slot with set viewmode and location
 
         if ("current_name" in options) {

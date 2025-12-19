@@ -32,11 +32,6 @@ public class Files.BasicWindow : Gtk.EventBox {
     public string title { get; private set; default = "";}
     public bool can_select_zero { get; set; default = true; }
 
-    public ViewMode default_mode {
-        get {
-            return ViewMode.PREFERRED;
-        }
-    }
 
     public GLib.File default_location {
         owned get {

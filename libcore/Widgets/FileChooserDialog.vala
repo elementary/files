@@ -60,7 +60,24 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     }
 
     public bool read_only { get; set; default = false; }
-    public ViewMode view_mode { get; set; default = ViewMode.LIST; }
+    private ViewMode initial_mode = ViewMode.LIST;
+    public ViewMode view_mode {
+        get {
+            if (file_view != null && file_view.slot != null) {
+                return file_view.slot.mode;
+            } else {
+                return initial_mode;
+            }
+        }
+
+        set {
+            if (file_view != null && file_view.slot != null) {
+                assert_not_reached (); //Once the view is created the mode is handled internally
+            } else {
+               initial_mode = value;
+            }
+        }
+    }
 
     private Gtk.TreeStore filter_model;
     private Gtk.Button accept_button;
