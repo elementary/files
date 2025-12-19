@@ -317,20 +317,6 @@ public class Files.FileChooserPortal : Object {
 
         set_up_dialog (dialog, options);
 
-        if ("modal" in options) {
-            dialog.modal = options["modal"].get_boolean ();
-        }
-
-        if ("choices" in options) {
-            var choices = options["choices"].iterator ();
-            Variant choice_variant;
-
-            while ((choice_variant = choices.next_value ()) != null) {
-                var choice = new Files.FileChooserChoice.from_variant (choice_variant);
-                dialog.add_choice (choice);
-            }
-        }
-
         //TODO Handle failed registration?
         dialog.register_object (connection, handle); // Dialog will unregister itself when disposed
 
@@ -426,9 +412,7 @@ public class Files.FileChooserPortal : Object {
 
         var view_mode = settings.get_enum ("viewmode");
         filechooser.view_mode = view_mode; //Does not create a slot
-        warning ("about to set current folder uri");
         filechooser.set_current_folder_uri (current_folder); //Creates a slot with set viewmode and location
-        warning ("after set current folder uri");
 
         if ("current_name" in options) {
             filechooser.set_current_name (options["current_name"].get_string ());
