@@ -25,7 +25,6 @@ public class Sidebar.BasicSidebarWindow : Gtk.Box, Files.SidebarInterface {
     construct {
         bookmark_listbox = new BasicBookmarkListBox (this);
         device_listbox = new BasicDeviceListBox (this);
-        // network_listbox = new NetworkListBox (this);
 
         var bookmark_expander = new SidebarExpander (_("Bookmarks")) {
             tooltip_text = _("Common places plus saved folders and files")
@@ -44,15 +43,6 @@ public class Sidebar.BasicSidebarWindow : Gtk.Box, Files.SidebarInterface {
             child = device_listbox
         };
 
-        // var network_expander = new SidebarExpander (_("Network")) {
-        //     tooltip_text = _("Devices and places available via a network"),
-        //     no_show_all = Files.is_admin ()
-        // };
-
-        // var network_revealer = new Gtk.Revealer () {
-        //     child = network_listbox
-        // };
-
         var bookmarklists_box = new Gtk.Box (VERTICAL, 0) {
             vexpand = true
         };
@@ -60,50 +50,25 @@ public class Sidebar.BasicSidebarWindow : Gtk.Box, Files.SidebarInterface {
         bookmarklists_box.add (bookmark_revealer);
         bookmarklists_box.add (device_expander);
         bookmarklists_box.add (device_revealer);
-        // bookmarklists_box.add (network_expander);
-        // bookmarklists_box.add (network_revealer);
 
         scrolled_window = new Gtk.ScrolledWindow (null, null) {
             child = bookmarklists_box,
             hscrollbar_policy = Gtk.PolicyType.NEVER
         };
 
-        // var connect_server_box = new Gtk.Box (HORIZONTAL, 0);
-        // connect_server_box.add (new Gtk.Image.from_icon_name ("network-server-symbolic", MENU));
-        // connect_server_box.add (new Gtk.Label (_("Connect Server…")));
-
-        // var connect_server_button = new Gtk.Button () {
-        //     action_name = "win.go-to",
-        //     action_target = "SERVER",
-        //     child = connect_server_box,
-        //     hexpand = true,
-        //     tooltip_markup = Granite.markup_accel_tooltip (
-        //         ((Gtk.Application) GLib.Application.get_default ()).get_accels_for_action ("win.go-to::SERVER")
-        //     )
-        // };
-
-        // var action_bar = new Gtk.ActionBar ();
-        // action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        // action_bar.add (connect_server_button);
-
         orientation = Gtk.Orientation.VERTICAL;
         get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
         add (scrolled_window);
-
-        //For now hide action bar when admin. This might need revisiting if other actions are added
-        // if (!Files.is_admin ()) {
-        //     add (action_bar);
-        // }
-
-        // plugins.sidebar_loaded (this);
 
         reload ();
 
         show_all ();
 
-        bookmark_expander.bind_property ("active", bookmark_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
-        device_expander.bind_property ("active", device_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
-        // network_expander.bind_property ("active", network_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
+        var prefs = Files.Preferences.get_default ();
+        prefs.bind_property ("sidebar-bookmarks-expanded", bookmark_revealer, "reveal-child", BIDIRECTIONAL);
+        prefs.bind_property ("sidebar-storage-expanded", device_revealer, "reveal-child", BIDIRECTIONAL);
+        bookmark_expander.bind_property ("active", bookmark_revealer, "reveal-child", BIDIRECTIONAL);
+        device_expander.bind_property ("active", device_revealer, "reveal-child", BIDIRECTIONAL);
     }
 
     private void refresh (bool bookmarks = true, bool devices = true, bool network = true) {
@@ -122,50 +87,8 @@ public class Sidebar.BasicSidebarWindow : Gtk.Box, Files.SidebarInterface {
             device_listbox.refresh ();
         }
 
-        // if (network) {
-        //     network_listbox.refresh ();
-        // }
-
         loading = false;
     }
-
-    /* SidebarInterface */
-    // public uint32 add_plugin_item (Files.SidebarPluginItem plugin_item, Files.PlaceType category) {
-    //     uint32 id = 0;
-    //     switch (category) {
-    //         case Files.PlaceType.BOOKMARKS_CATEGORY:
-    //             id = bookmark_listbox.add_plugin_item (plugin_item);
-    //             break;
-
-    //         case Files.PlaceType.STORAGE_CATEGORY:
-    //             id = device_listbox.add_plugin_item (plugin_item);
-    //             break;
-
-    //         case Files.PlaceType.NETWORK_CATEGORY:
-    //             id = network_listbox.add_plugin_item (plugin_item);
-    //             break;
-
-    //         default:
-    //             break;
-    //     }
-
-    //     return id;
-    // }
-
-    // public bool update_plugin_item (Files.SidebarPluginItem item, uint32 item_id) {
-    //     if (item_id == 0) {
-    //         return false;
-    //     }
-
-    //     SidebarItemInterface? row = SidebarItemInterface.get_item (item_id);
-    //     if (row == null) {
-    //         return false;
-    //     }
-
-    //     row.update_plugin_data (item);
-
-    //     return true;
-    // }
 
     uint sync_timeout_id = 0;
     public void sync_uri (string location) {

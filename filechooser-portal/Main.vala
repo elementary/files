@@ -493,6 +493,8 @@ public class Files.FileChooserPortal : Object {
         filechooser_settings.bind ("sidebar-width", filechooser.file_view, "sidebar-width", DEFAULT);
         filechooser_settings.bind ("zoomlevel-icon-view", prefs, "zoomlevel-icon-view", DEFAULT);
         filechooser_settings.bind ("zoomlevel-list-view", prefs, "zoomlevel-list-view", DEFAULT);
+        filechooser_settings.bind ("sidebar-bookmarks-expanded", prefs, "sidebar-bookmarks-expanded", DEFAULT);
+        filechooser_settings.bind ("sidebar-storage-expanded", prefs, "sidebar-storage-expanded", DEFAULT);
 
         //Files app settings (read-only)
         app_settings.bind ("singleclick-select", prefs, "singleclick-select", GET);

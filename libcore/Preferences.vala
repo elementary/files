@@ -32,6 +32,9 @@ namespace Files {
         public bool force_icon_size {set; get; default = true;}
         public bool sort_directories_first { get; set; default = true; }
         public bool remember_history { get; set; default = true; }
+        public bool sidebar_bookmarks_expanded { get; set; default = true; }
+        public bool sidebar_storage_expanded { get; set; default = true; }
+        public bool sidebar_network_expanded { get; set; default = true; }
 
         public ZoomLevel zoomlevel_icon_view { get; set; default = ZoomLevel.NORMAL; }
         public ZoomLevel zoomlevel_list_view { get; set; default = ZoomLevel.SMALL; }

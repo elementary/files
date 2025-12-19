@@ -204,6 +204,16 @@
       <summary>Width of the side pane</summary>
       <description>The default width of the side pane in the filechooser</description>
     </key>
+    <key type="b" name="sidebar-bookmarks-expanded">
+      <default>true</default>
+      <summary>Bookmark category expander</summary>
+      <description>Expand/Collapse the Bookmark category in the sidebar</description>
+    </key>
+    <key type="b" name="sidebar-storage-expanded">
+      <default>true</default>
+      <summary>Storage category expander</summary>
+      <description>Expand/Collapse the Storage category in the sidebar</description>
+    </key>
     <key name="zoomlevel-list-view" enum="io.elementary.files.ZoomLevel">
       <default>'small'</default>
       <summary>icon zoom level</summary>
