@@ -708,7 +708,7 @@ namespace Files {
         //     );
         // }
 
-        private void new_empty_folder () {
+        public void new_empty_folder () {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
             FileOperations.new_folder.begin (this, slot.location, null, (obj, res) => {
@@ -1509,7 +1509,8 @@ namespace Files {
             var keyval = map_key (original_keyval, keycode, out consumed_mods);
             var mods = (state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
-            // bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
+            bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
+            bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
             bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
             bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
@@ -1555,7 +1556,6 @@ namespace Files {
                     break;
 
                 case Gdk.Key.F2:
-                warning ("F2 pressed");
                     update_menu_actions ();
                     if (no_mods && selection_actions.get_action_enabled ("rename")) {
                         rename_selection ();
@@ -1648,7 +1648,7 @@ namespace Files {
                     break;
 
                 case Gdk.Key.N:
-                    if (control_pressed) {
+                    if (shift_pressed && control_pressed) {
                         //TODO In FileCHooser need view refresh/redraw?
                         new_empty_folder ();
                         res = true;

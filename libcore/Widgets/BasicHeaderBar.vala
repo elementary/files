@@ -110,6 +110,14 @@ public class Files.BasicHeaderBar : Hdy.HeaderBar {
         button_back.sensitive = can_go_back;
     }
 
+    public void add_extra_widget (Gtk.Widget widget, Gtk.PositionType pos) {
+        if (pos == LEFT) {
+            pack_start (widget);
+        } else {
+            pack_end (widget);
+        }
+    }
+
     public void set_forward_menu (Gee.List<string> path_list, bool can_go_forward) {
         /* Same for the forward menu */
         var forward_menu = new Menu ();

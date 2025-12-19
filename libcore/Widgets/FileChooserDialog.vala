@@ -64,6 +64,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
     private Gtk.TreeStore filter_model;
     private Gtk.Button accept_button;
+    private Gtk.Button? new_folder_button = null;
     private Gtk.ComboBox filter_combo;
     private Gtk.Entry entry;
     private Gtk.Box choices_box;
@@ -90,6 +91,16 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
         file_view = new BasicWindow ();
         this.set_titlebar (file_view.headerbar);
+        if (action == SAVE) {
+            new_folder_button = new Gtk.Button.from_icon_name ("folder-new", LARGE_TOOLBAR);
+            new_folder_button.clicked.connect (() => {
+                if (file_view.slot != null && file_view.slot.dir_view != null) {
+                    file_view.slot.dir_view.new_empty_folder ();
+                }
+            });
+            file_view.headerbar.add_extra_widget (new_folder_button, RIGHT);
+        }
+
         get_content_area ().add (file_view);
 
         var cancel_button = new Gtk.Button.with_label (_("Cancel"));
