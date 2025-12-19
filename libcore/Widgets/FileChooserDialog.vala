@@ -314,15 +314,11 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
         var file = selected.first ().data;
         var only_one = (selected.first ().next) == null;
         if (only_one && file.is_folder ()) {
-            set_current_folder_uri (file.uri);
+            file_view.path_change (file.uri);
         } else if (only_one || select_multiple) {
             response (Gtk.ResponseType.OK);
         }
     }
-
-    // public bool set_initial_location (GLib.File? loc) {
-    //     return file_view.set_location (loc, ViewMode.LIST); //TODO Make setting and implement other modes
-    // }
 
     protected override bool key_press_event (Gdk.EventKey event) { // Match conflict dialog
         uint keyval;
@@ -517,10 +513,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
             entry.text = text;
         }
     }
-
-    // public void set_current_folder (GLib.File folder) {
-    //     set_current_folder_uri (folder.get_uri ());
-    // }
 
     public SList<unowned Gtk.FileFilter> list_filters () {
         SList<unowned Gtk.FileFilter> list = null;
