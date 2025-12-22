@@ -45,6 +45,7 @@ namespace Files {
 
         const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
             {"new", on_background_action_new, "s"},
+            {"create-from", on_background_action_create_from, "s"},
             {"sort-by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"},
             {"folders-first", on_background_action_folders_first_changed, null, "true"},
@@ -58,6 +59,8 @@ namespace Files {
             // {"open-in", on_common_action_open_in, "s"},
             {"bookmark", on_common_action_bookmark}
         };
+
+        const int MAX_TEMPLATES = 2048;
 
         GLib.SimpleActionGroup common_actions;
         GLib.SimpleActionGroup selection_actions;
@@ -682,31 +685,51 @@ namespace Files {
                 });
             }
         }
+        private void create_from_template (string path) {
+            /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
+            slot.directory.block_monitor ();
+            var template = GLib.File.new_for_path (path);
+            var new_name = (_("Untitled %s")).printf (template.get_basename ());
+            FileOperations.new_file_from_template.begin (
+                this,
+                slot.location,
+                new_name,
+                template,
+                null,
+                (obj, res) => {
+                    try {
+                        var file = FileOperations.new_file_from_template.end (res);
+                        create_file_done (file);
+                    } catch (Error e) {
+                        critical (e.message);
+                    }
+                });
+        }
 
-        // private void new_empty_file (string? parent_uri = null) {
-        //     if (parent_uri == null) {
-        //         parent_uri = slot.directory.file.uri;
-        //     }
+        private void new_empty_file (string? parent_uri = null) {
+            if (parent_uri == null) {
+                parent_uri = slot.directory.file.uri;
+            }
 
-        //     /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
-        //     slot.directory.block_monitor ();
-        //     FileOperations.new_file.begin (
-        //         this,
-        //         parent_uri,
-        //         null,
-        //         null,
-        //         0,
-        //         null,
-        //         (obj, res) => {
-        //             try {
-        //                 var file = FileOperations.new_file.end (res);
-        //                 create_file_done (file);
-        //             } catch (Error e) {
-        //                 critical (e.message);
-        //             }
-        //         }
-        //     );
-        // }
+            /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
+            slot.directory.block_monitor ();
+            FileOperations.new_file.begin (
+                this,
+                parent_uri,
+                null,
+                null,
+                0,
+                null,
+                (obj, res) => {
+                    try {
+                        var file = FileOperations.new_file.end (res);
+                        create_file_done (file);
+                    } catch (Error e) {
+                        critical (e.message);
+                    }
+                }
+            );
+        }
 
         public void new_empty_folder () {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
@@ -764,10 +787,8 @@ namespace Files {
         }
 
 /** Signal Handlers */
-
     /** Menu actions */
         /** Selection actions */
-
 
         private void on_selection_action_rename (GLib.SimpleAction action, GLib.Variant? param) {
             rename_selection ();
@@ -809,7 +830,6 @@ namespace Files {
         /** Background actions */
         // Signal window app menu (not needed for filechooser)
         private void change_state_show_hidden (GLib.SimpleAction action) {
-        warning ("change state show hidden");
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
         Files.Preferences.get_default ().show_hidden_files = state;
@@ -823,9 +843,18 @@ namespace Files {
                     new_empty_folder ();
                     break;
 
+                case "FILE":
+                    new_empty_file ();
+                    break;
+
                 default:
                     break;
             }
+        }
+
+        private void on_background_action_create_from (GLib.SimpleAction action, GLib.Variant? param) {
+            var path = param.get_string ();
+            create_from_template (path);
         }
 
         private void on_background_action_sort_by_changed (GLib.SimpleAction action, GLib.Variant? val) {
@@ -1129,6 +1158,7 @@ namespace Files {
             menu.add (rename_menuitem);
             menu.add (bookmark_menuitem);
             menu.add (show_hidden_menuitem);
+            menu.add (new NewSubMenuItem ());
             menu.add (new Gtk.SeparatorMenuItem ());
             menu.add (new SortSubMenuItem ());
             menu.set_screen (null);
@@ -1186,6 +1216,8 @@ namespace Files {
         }
 
         private class NewSubMenuItem : Gtk.MenuItem {
+            private uint total_item_count = 0;
+
             construct {
                 var folder_menuitem = new Gtk.MenuItem ();
                 folder_menuitem.add (new Granite.AccelLabel (
@@ -1195,10 +1227,108 @@ namespace Files {
                 folder_menuitem.action_name = "background.new";
                 folder_menuitem.action_target = "FOLDER";
 
+                var file_menuitem = new Gtk.MenuItem.with_label (_("Empty File"));
+                file_menuitem.action_name = "background.new";
+                file_menuitem.action_target = "FILE";
+
                 submenu = new Gtk.Menu ();
                 submenu.add (folder_menuitem);
+                submenu.add (file_menuitem);
+
+                unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
+                if (template_path != null) {
+                    var template_item = new Gtk.MenuItem.with_label (_("Template"));
+                    var template_menu = new Gtk.Menu ();
+                    template_item.submenu = template_menu;
+                    load_templates_from_folder (GLib.File.new_for_path (template_path), template_menu);
+
+                    if (total_item_count > 0) {
+                        submenu.add (template_item);
+                        if (total_item_count > MAX_TEMPLATES) {
+                            template_menu.add (new Gtk.MenuItem.with_label (_("…too many templates")));
+                        }
+                    }
+                }
 
                 label = _("New");
+            }
+
+            private bool load_templates_from_folder (GLib.File template_folder, Gtk.Menu submenu) {
+                if (total_item_count >= MAX_TEMPLATES) {
+                    return false;
+                }
+
+                GLib.List<GLib.File> file_list = null;
+                GLib.List<GLib.File> folder_list = null;
+                GLib.FileEnumerator enumerator;
+                var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
+                try {
+                    enumerator = template_folder.enumerate_children ("standard::*", flags, null);
+                    GLib.File location;
+                    GLib.FileInfo? info = enumerator.next_file (null);
+
+                    while (info != null) {
+                        if (!info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_BACKUP)) {
+                            location = template_folder.get_child (info.get_name ());
+                            if (info.get_file_type () == GLib.FileType.DIRECTORY) {
+                                folder_list.prepend (location);
+                            } else {
+                                file_list.prepend (location);
+                            }
+                        }
+
+                        info = enumerator.next_file (null);
+                    }
+                } catch (GLib.Error error) {
+                    return false;
+                }
+
+                bool has_nonempty_items = false;
+                if (folder_list.length () > 0) {
+                    folder_list.sort ((a, b) => {
+                        return strcmp (a.get_basename ().down (), b.get_basename ().down ());
+                    });
+
+                    foreach (var folder in folder_list) {
+                        var folder_menu = new Gtk.Menu ();
+                        total_item_count++;
+                        if (load_templates_from_folder (folder, folder_menu)) {
+                            has_nonempty_items = true;
+                            var folder_menuitem = new Gtk.MenuItem.with_label (folder.get_basename ());
+                            folder_menuitem.submenu = folder_menu;
+                            submenu.add (folder_menuitem);
+                        } else {
+                            total_item_count--;
+                        }
+
+                        if (total_item_count > MAX_TEMPLATES) {
+                            break;
+                        }
+                    }
+                }
+
+                if (file_list.length () > 0) {
+                    file_list.sort ((a, b) => {
+                        return strcmp (a.get_basename ().down (), b.get_basename ().down ());
+                    });
+
+                    foreach (var file in file_list) {
+                        has_nonempty_items = true;
+                        total_item_count++;
+                        if (total_item_count > MAX_TEMPLATES) {
+                            break;
+                        }
+
+                        var template_menuitem = new Gtk.MenuItem.with_label (file.get_basename ()) {
+                            action_name = "background.create-from",
+                            action_target = file.get_path ()
+                        };
+
+                        submenu.add (template_menuitem);
+                    };
+                }
+
+                return has_nonempty_items;
             }
         }
 
