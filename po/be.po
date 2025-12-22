@@ -8,25 +8,26 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2016-04-13 16:24+0000\n"
-"Last-Translator: Mikel <mishkasta@gmail.com>\n"
-"Language-Team: Belarusian <be@li.org>\n"
+"PO-Revision-Date: 2025-12-12 10:55+0000\n"
+"Last-Translator: lenify <lenify@tutanota.com>\n"
+"Language-Team: Belarusian <https://l10n.elementaryos.org/projects/files/"
+"files/be/>\n"
 "Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:24+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:194
 msgid "Previous"
-msgstr ""
+msgstr "Папярэдні"
 
 #: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:199
 msgid "Next"
-msgstr ""
+msgstr "Наступны"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
@@ -35,58 +36,56 @@ msgstr ""
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
 msgid "Cancel"
-msgstr ""
+msgstr "Скасваць"
 
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Адкрыць файлы толькі для чытання"
 
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Адкрыць файл толькі для чытання"
 
 #: filechooser-portal/FileChooserDialog.vala:378
 msgid "Enter new filename"
-msgstr ""
+msgstr "Увядзіце новую назву файла"
 
 #: filechooser-portal/Main.vala:107
 msgid "Select"
-msgstr ""
+msgstr "Выбраць"
 
 #: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:313
 msgid "Open"
-msgstr ""
+msgstr "Адкрыць"
 
 #: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:379
 msgid "Save"
-msgstr ""
+msgstr "Захаваць"
 
 #: filechooser-portal/Main.vala:454
 #, c-format
 msgid "This file is a link to “%s”"
-msgstr ""
+msgstr "Гэты файл — спасылка на «%s»"
 
 #: filechooser-portal/Main.vala:457
 msgid "This file is a link."
-msgstr ""
+msgstr "Гэты файл з'яўляецца спасылкай."
 
 #: filechooser-portal/Main.vala:460
-#, fuzzy
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr "Пры замене яго змесціва будзе перапісана."
+msgstr "Змена спасылкі зменіць змесціва яе мэты. Спасылка застанецца"
 
 #: filechooser-portal/Main.vala:462
-#, fuzzy, c-format
+#, c-format
 msgid "Replace “%s”?"
-msgstr "Замяніць файл \"%s\"?"
+msgstr "Замяніць «%s»?"
 
 #: filechooser-portal/Main.vala:463
-#, fuzzy
 msgid "Replacing this file will overwrite its current contents"
-msgstr "Пры замене яго змесціва будзе перапісана."
+msgstr "Замена гэтага файла перазапіша яго бягучае змесціва"
 
 #: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
 msgid "Replace"
@@ -126,17 +125,15 @@ msgstr "Падрабязнасці аб серверы"
 
 #: libcore/ConnectServerDialog.vala:116
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Назва сервера або адрас IP"
 
 #: libcore/ConnectServerDialog.vala:119
-#, fuzzy
 msgid "Server:"
-msgstr "_Сервер:"
+msgstr "Сервер:"
 
 #: libcore/ConnectServerDialog.vala:129
-#, fuzzy
 msgid "Port:"
-msgstr "_Порт:"
+msgstr "Порт:"
 
 #: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
 #: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
@@ -145,21 +142,19 @@ msgstr "Тып:"
 
 #: libcore/ConnectServerDialog.vala:161
 msgid "Name of share on server (Optional)"
-msgstr ""
+msgstr "Назва агульнага рэсурсу на серверы (неабавязкова)"
 
 #: libcore/ConnectServerDialog.vala:164
-#, fuzzy
 msgid "Share:"
-msgstr "Па_дзяліцца"
+msgstr "Агульны рэсурс:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Path of shared folder on server (Optional)"
-msgstr ""
+msgstr "Пуць да агульнай папкі на серверы (неабавязкова)"
 
 #: libcore/ConnectServerDialog.vala:171
-#, fuzzy
 msgid "Folder:"
-msgstr "Стварыць _тэчку"
+msgstr "Папка:"
 
 #: libcore/ConnectServerDialog.vala:175
 msgid "User Details"
@@ -167,84 +162,77 @@ msgstr "Звесткі пра карыстальніка"
 
 #: libcore/ConnectServerDialog.vala:180
 msgid "Name of Windows domain"
-msgstr ""
+msgstr "Назва дамена Windows"
 
 #: libcore/ConnectServerDialog.vala:182
-#, fuzzy
 msgid "Domain name:"
-msgstr "Назва _дамена:"
+msgstr "Дамен:"
 
 #: libcore/ConnectServerDialog.vala:187
 msgid "Name of user on server"
-msgstr ""
+msgstr "Імя карыстальніка на серверы"
 
 #: libcore/ConnectServerDialog.vala:189
-#, fuzzy
 msgid "User name:"
-msgstr "_Імя карыстальніка:"
+msgstr "Імя карыстальніка:"
 
 #: libcore/ConnectServerDialog.vala:197
-#, fuzzy
 msgid "Password:"
-msgstr "Пар_оль:"
+msgstr "Пароль:"
 
 #: libcore/ConnectServerDialog.vala:199
-#, fuzzy
 msgid "Remember this password"
-msgstr "_Запомніць гэты пароль"
+msgstr "Запомніць гэты пароль"
 
 #: libcore/ConnectServerDialog.vala:209
-#, fuzzy
 msgid "Connect"
-msgstr "Дал_учыцца"
+msgstr "Злучыцца"
 
 #: libcore/ConnectServerDialog.vala:216
 msgid "Continue"
-msgstr "Далей"
+msgstr "Працягнуць"
 
 #: libcore/ConnectServerDialog.vala:266
-#, fuzzy
 msgid "Connecting…"
-msgstr "Злучэнне..."
+msgstr "Злучэнне…"
 
 #: libcore/ConnectServerDialog.vala:373
 msgid "Please verify your user details."
-msgstr "Спраўдзіце параметры ўваходу."
+msgstr "Спраўдзіце карыстальніцкія даныя."
 
 #: libcore/Directory.vala:744
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Сервер не адказаў за тэрмін часу"
 
 #: libcore/DndHandler.vala:50
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Не ўдалося запусціць «%s»"
 
 #: libcore/DndHandler.vala:100
 msgid "Move Here"
-msgstr ""
+msgstr "Перамясціць сюды"
 
 #: libcore/DndHandler.vala:101
 msgid "Copy Here"
-msgstr ""
+msgstr "Скапіраваць сюды"
 
 #: libcore/DndHandler.vala:102
 msgid "Link Here"
-msgstr ""
+msgstr "Стварыць тут спасылку"
 
 #: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2321
 msgid "Name"
-msgstr ""
+msgstr "Назва"
 
 #: libcore/Enums.vala:136 src/Dialogs/BulkRenamer/RenamerDialog.vala:82
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:88
 msgid "Creation Date"
-msgstr ""
+msgstr "Дата стварэння"
 
 #: libcore/Enums.vala:139
-#, fuzzy
 msgid "Last modification date"
-msgstr "Апошняя змена:"
+msgstr "Дата апошняй змены"
 
 #: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2326
 #: src/View/ListView.vala:27
@@ -253,117 +241,113 @@ msgstr "Памер"
 
 #: libcore/Enums.vala:165
 msgid "Number sequence"
-msgstr ""
+msgstr "Паслядоўнасць лічбаў"
 
 #: libcore/Enums.vala:168 src/Dialogs/BulkRenamer/RenamerModifier.vala:314
 msgid "Text"
-msgstr ""
+msgstr "Тэкст"
 
 #: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2336
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #: libcore/Enums.vala:187
 msgid "Suffix"
-msgstr ""
+msgstr "Суфікс"
 
 #: libcore/Enums.vala:190
 msgid "Prefix"
-msgstr ""
+msgstr "Прэфікс"
 
 #: libcore/Enums.vala:200
 msgid "Text to put at the end"
-msgstr ""
+msgstr "Тэкст, які будзе даданы ў канцы"
 
 #: libcore/Enums.vala:203
 msgid "Text to put at the start"
-msgstr ""
+msgstr "Тэкст, які будзе даданы ў пачатку"
 
 #: libcore/Enums.vala:222
 msgid "Default Format - Date only"
-msgstr ""
+msgstr "Прадвызначаны фармат — Толькі дата"
 
 #: libcore/Enums.vala:224
 msgid "Default Format - Date and Time"
-msgstr ""
+msgstr "Прадвызначаны фармат — Дата і час"
 
 #: libcore/Enums.vala:226
 msgid "Locale Format - Date and Time"
-msgstr ""
+msgstr "Фармат лакалі — Дата і час"
 
 #: libcore/Enums.vala:228
 msgid "ISO 8601 Format - Date only"
-msgstr ""
+msgstr "Фармат ISO 8601 — Толькі дата"
 
 #: libcore/Enums.vala:230
 msgid "ISO 8601 Format - Date and Time"
-msgstr ""
+msgstr "Фармат ISO 8601 — Дата і час"
 
 #: libcore/Enums.vala:246
 msgid "Date created"
-msgstr ""
+msgstr "Дата стварэння"
 
 #: libcore/Enums.vala:248
-#, fuzzy
 msgid "Date Modified"
-msgstr "Апошняя змена:"
+msgstr "Дата змены"
 
 #: libcore/Enums.vala:250
 msgid "Current Date"
-msgstr ""
+msgstr "Бягучая дата"
 
 #. TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
 #: libcore/Enums.vala:268
 msgid "ISO"
-msgstr ""
+msgstr "ISO"
 
 #: libcore/Enums.vala:270
 msgid "Locale"
-msgstr ""
+msgstr "Па лакалі"
 
 #: libcore/Enums.vala:272
 msgid "Informal"
-msgstr ""
+msgstr "Неафіцыйны"
 
 #. TRANSLATORS Adjective applied to datetime format
 #: libcore/Enums.vala:275
 msgid "Compact"
-msgstr ""
+msgstr "Кампактны"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
-msgstr ""
+msgstr "Недаступна"
 
 #: libcore/File.vala:955
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Не атрымалася разлажыць файл рабочага стала: %s"
+msgstr "Не ўдалося апрацаваць файл працоўнага стала"
 
 #: libcore/File.vala:959
-#, fuzzy
 msgid "Failed to parse the desktop file: "
-msgstr "Не атрымалася разлажыць файл рабочага стала: %s"
+msgstr "Не ўдалося апрацаваць файл працоўнага стала: "
 
 #: libcore/File.vala:971
-#, fuzzy
 msgid "Failed to create command from file: "
-msgstr "Не атрымалася разлажыць файл рабочага стала: %s"
+msgstr "Не ўдалося стварыць каманду з файла: "
 
 #: libcore/File.vala:980
-#, fuzzy
 msgid "Unable to Launch Desktop File: "
-msgstr "Не атрымалася разлажыць файл рабочага стала: %s"
+msgstr "Немагчыма запусціць файл Desktop: "
 
 #: libcore/File.vala:1169
 msgid "Empty"
-msgstr ""
+msgstr "Пусты"
 
 #: libcore/File.vala:1171
-#, fuzzy, c-format
+#, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
-msgstr[0] "%'d хвіліна"
-msgstr[1] "%'d хвілінаў"
+msgstr[0] "%'d элемент"
+msgstr[1] "%'d элемента"
+msgstr[2] "%'d элементаў"
 
 #: libcore/File.vala:1216
 #, c-format
@@ -376,7 +360,7 @@ msgstr "Канфлікт файлаў"
 
 #: libcore/FileConflictDialog.vala:77
 msgid "Original file"
-msgstr "Арыгінальны файл"
+msgstr "Зыходны файл"
 
 #: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
 #: src/Dialogs/PropertiesWindow.vala:546
@@ -397,11 +381,11 @@ msgstr "Скінуць"
 
 #: libcore/FileConflictDialog.vala:154
 msgid "_Select a new name for the destination"
-msgstr "_Выберыце іншую назву для месца прызначэння"
+msgstr "_Выберыце новую назву для месца прызначэння"
 
 #: libcore/FileConflictDialog.vala:158
 msgid "Apply this action to all files"
-msgstr "Учыніць гэтае дзеянне для ўсіх файлаў"
+msgstr "Прымяніць гэта дзеянне для ўсіх файлаў"
 
 #: libcore/FileConflictDialog.vala:160 libcore/StockDialogs.vala:22
 msgid "_Skip"
@@ -409,48 +393,48 @@ msgstr "_Прапусціць"
 
 #: libcore/FileConflictDialog.vala:161
 msgid "Re_name"
-msgstr "Пера_назваць"
+msgstr "Пера_йменаваць"
 
 #: libcore/FileConflictDialog.vala:163
 msgid "Keep Newest"
-msgstr ""
+msgstr "Пакінуць найноўшы"
 
 #: libcore/FileConflictDialog.vala:164
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Прапусціць, калі зыходны файл быў адрэдагаваны нядаўна"
 
 #: libcore/FileConflictDialog.vala:281
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Аб'яднаць змесціва папак \"%s\"?"
+msgstr "Аб'яднаць папку «%s»?"
 
 #: libcore/FileConflictDialog.vala:282
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"Пры аб'яднанні ні адзін канфліктны файл у папцы не будзе заменены іншым без "
-"пацвярджэння ад карыстальніка."
+"Пры аб'яднанні, калі падчас капіравання файлаў будуць выяўленыя канфлікты, у "
+"вас спытаюць, што зрабіць."
 
 #: libcore/FileConflictDialog.vala:284
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Старэйшая папка з такой самай назвай ужо існуе ў \"%s\"."
+msgstr "Больш старая папка з такой жа назвай ужо існуе ў «%s»."
 
 #: libcore/FileConflictDialog.vala:286
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Навейшая папка з такой самай назвай ужо існуе ў \"%s\"."
+msgstr "Больш новая папка з такой жа назвай ужо існуе ў «%s»."
 
 #: libcore/FileConflictDialog.vala:288
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Іншая папка з такой самай назвай ужо існуе ў \"%s\"."
+msgstr "Іншая папка з такой жа назвай ужо існуе ў «%s»."
 
 #: libcore/FileConflictDialog.vala:291
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "Замяніць папку \"%s\"?"
+msgstr "Замяніць папку «%s»?"
 
 #: libcore/FileConflictDialog.vala:292
 msgid "Replacing it will remove all files in the folder."
@@ -459,40 +443,40 @@ msgstr "Пры замене ўсе файлы папкі будуць выдал
 #: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Папка з такой самай назвай ужо існуе ў \"%s\"."
+msgstr "Папка з такой жа назвай ужо існуе ў «%s»."
 
 #: libcore/FileConflictDialog.vala:296
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "Замяніць файл \"%s\"?"
+msgstr "Замяніць файл «%s»?"
 
 #: libcore/FileConflictDialog.vala:297
 msgid "Replacing it will overwrite its content."
-msgstr "Пры замене яго змесціва будзе перапісана."
+msgstr "Пры замене яго змесціва будзе перазапісана."
 
 #: libcore/FileConflictDialog.vala:300
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Старэйшы файл з такой самай назвай ужо існуе ў \"%s\"."
+msgstr "Больш стары файл з такой жа назвай ужо існуе ў «%s»."
 
 #: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Навейшы файл з такой самай назвай ужо існуе ў \"%s\"."
+msgstr "Больш новы файл з такой жа назвай ужо існуе ў «%s»."
 
 #: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Іншы файл з такой самай назвай ужо існуе ў \"%s\"."
+msgstr "Іншы файл з такой жа назвай ужо існуе ў «%s»."
 
 #: libcore/FileConflictDialog.vala:336
 msgid "Merge"
 msgstr "Аб'яднаць"
 
 #: libcore/FileUtils.vala:80
-#, fuzzy, c-format
+#, c-format
 msgid "Could not determine original location of \"%s\""
-msgstr "Не ўдалося вызначыць арыгінальнае размяшчэнне \"%s\" "
+msgstr "Не ўдалося вызначыць зыходнае размяшчэнне «%s»"
 
 #: libcore/FileUtils.vala:83
 msgid "The item cannot be restored from trash"
@@ -501,7 +485,7 @@ msgstr "Не ўдалося аднавіць элемент са сметніц�
 #: libcore/FileUtils.vala:184
 #, c-format
 msgid "The original folder %s no longer exists"
-msgstr ""
+msgstr "Зыходнай папкі «%s» больш не існуе"
 
 #: libcore/FileUtils.vala:185
 msgid ""
@@ -509,42 +493,46 @@ msgid ""
 "will be restored to it. Otherwise, files that were in this folder will not "
 "be restored."
 msgstr ""
+"Папку можна стварыць ізноў, выбраныя файлы, якія былі тым спачатку, будуць "
+"адноўлены. У адваротным выпадку, файлы, якія былі ў папцы, адноўлены не "
+"будуць."
 
 #: libcore/FileUtils.vala:189
 msgid "Ignore"
-msgstr ""
+msgstr "Ігнараваць"
 
 #: libcore/FileUtils.vala:190
 msgid "Recreate"
-msgstr ""
+msgstr "Стварыць нанова"
 
 #: libcore/FileUtils.vala:201
 #, c-format
 msgid "Could not recreate folder %s. Will ignore all files in this folder"
 msgstr ""
+"Не ўдалося стварыць папку «%s». Усе файлы ў гэтай папцы будуць праігнараваныя"
 
 #: libcore/FileUtils.vala:574
 #, c-format
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Не ўдалося перайменаваць у «%s»"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:682
-#, fuzzy, c-format
+#, c-format
 msgid "Today at %s"
-msgstr "Сёння у %-I:%M %p"
+msgstr "Сёння а %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
 #: libcore/FileUtils.vala:690
-#, fuzzy, c-format
+#, c-format
 msgid "Yesterday at %s"
-msgstr "Учора ў %-I:%M %p"
+msgstr "Учора а %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
 #: libcore/FileUtils.vala:698
 #, c-format
 msgid "%%A at %s"
-msgstr ""
+msgstr "%%A а %s"
 
 #: libcore/FileUtils.vala:923
 #, c-format
@@ -559,14 +547,15 @@ msgstr[2] "%'d секунд"
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d хвіліна"
-msgstr[1] "%'d хвілінаў"
+msgstr[1] "%'d хвіліны"
+msgstr[2] "%'d хвілін"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
 #: libcore/FileUtils.vala:934 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: libcore/FileUtils.vala:934
 #, c-format
@@ -587,28 +576,28 @@ msgstr[2] "прыблізна %'d гадзін"
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
 #: libcore/FileUtils.vala:946
 msgid "copy"
-msgstr ""
+msgstr "копія"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
 #: libcore/FileUtils.vala:948
 msgid "link"
-msgstr ""
+msgstr "спасылка"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:950
 msgid "("
-msgstr ""
+msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
 #: libcore/FileUtils.vala:952
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: libcore/marlin-file-operations.c:113 libcore/marlin-file-operations.c:154
 #: libcore/marlin-file-operations.c:201 libcore/marlin-file-operations.c:285
 #: libcore/FileOperations/DeleteJob.vala:43
 msgid "Error while deleting."
-msgstr ""
+msgstr "Памылка выдалення."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -618,6 +607,8 @@ msgid ""
 "Files in the folder \"%s\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"Немагчыма выдаліць файлы з папцы «%s», таму што ў вас няма дазволу на іх "
+"прагляд."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -626,12 +617,11 @@ msgstr ""
 #, c-format
 msgid ""
 "There was an error getting information about the files in the folder \"%s\"."
-msgstr ""
+msgstr "Падчас атрымання інфармацыі аб файлах у папцы «%s» паўстала памылка."
 
 #: libcore/marlin-file-operations.c:135 libcore/marlin-file-operations.c:1107
-#, fuzzy
 msgid "_Skip files"
-msgstr "_Прапусціць"
+msgstr "_Прапусціць файлы"
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -641,6 +631,7 @@ msgid ""
 "The folder \"%s\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
+"Немагчыма выдаліць папку «%s», таму што ў вас няма дазволу на яе чытанне."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -648,81 +639,93 @@ msgstr ""
 #: libcore/FileOperations/CommonJob.vala:306
 #, c-format
 msgid "There was an error reading the folder \"%s\"."
-msgstr ""
+msgstr "Падчас чытання папцы «%s» паўстала памылка."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:204
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the folder %s."
-msgstr "Папка з такой самай назвай ужо існуе ў \"%s\"."
+msgstr "Не ўдалося выдаліць папку %s."
 
 #. TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:288
 #, c-format
 msgid "There was an error deleting %s."
-msgstr ""
+msgstr "Падчас выдалення %s паўстала памылка."
 
 #: libcore/marlin-file-operations.c:452 libcore/marlin-file-operations.c:455
 #: libcore/marlin-file-operations.c:458
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Не ўдалося перамясціць файл у сметніцу або выдаліць яго"
 
 #: libcore/marlin-file-operations.c:453
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Нельга перамяшчаць у сметніцу або выдаляць файлы ў сістэме толькі для "
+"чытання."
 
 #: libcore/marlin-file-operations.c:456
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Нельга перамяшчаць у сметніцу або выдаляць файлы, да якіх у вас няма дазволу "
+"на запіс."
 
 #: libcore/marlin-file-operations.c:459
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"Нельга перамяшчаць у сметніцу або выдаляць папкі, да якіх у вас няма дазволу "
+"на запіс."
 
 #: libcore/marlin-file-operations.c:461
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
+"Не ўдалося перамясціць файл у сметніцу. Паспрабаваць адразу яго выдаліць?"
 
 #: libcore/marlin-file-operations.c:462
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Гэты файл не ўдаецца перамясціць у сметніцу. Падрабязнасці глядзіце ніжэй."
 
 #: libcore/marlin-file-operations.c:466
 msgid "Cannot move file to trash. Try to delete it?"
-msgstr ""
+msgstr "Не ўдалося перамясціць файл у сметніцу. Паспрабаваць яго выдаліць?"
 
 #: libcore/marlin-file-operations.c:467
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Гэты файл не ўдаецца перамясціць у сметніцу. Магчыма, вы таксама не зможаце "
+"выдаліць яго."
 
 #: libcore/marlin-file-operations.c:473
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Пасля выдалення файл прападзе назаўсёды"
 
 #: libcore/marlin-file-operations.c:641
 msgid "Trashing Files"
-msgstr ""
+msgstr "Перамяшчэнне файлаў у сметніцу"
 
 #: libcore/marlin-file-operations.c:643
 msgid "Deleting Files"
-msgstr ""
+msgstr "Выдаленне файлаў"
 
 #: libcore/marlin-file-operations.c:944 libcore/marlin-file-operations.c:1083
 #: libcore/marlin-file-operations.c:1136
 #: libcore/FileOperations/CommonJob.vala:76
 #: libcore/FileOperations/CopyMoveJob.vala:50
 msgid "Error while copying."
-msgstr ""
+msgstr "Памылка пры капіраванні."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -732,18 +735,20 @@ msgid ""
 "The folder \"%s\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
+"Немагчыма скапіраваць папку «%s», таму што ў вас няма дазволу на яе "
+"стварэнне ў гэтым месцы."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:956
 #, c-format
 msgid "There was an error creating the folder \"%s\"."
-msgstr ""
+msgstr "Пры стварэнні папцы «%s» паўстала памылка."
 
 #: libcore/marlin-file-operations.c:1081 libcore/marlin-file-operations.c:1134
 #: libcore/FileOperations/CopyMoveJob.vala:48
 msgid "Error while moving."
-msgstr ""
+msgstr "Памылка пры перамяшчэнні."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
@@ -753,6 +758,8 @@ msgid ""
 "Files in the folder \"%s\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
+"Немагчыма скапіраваць файлы з папцы «%s», таму што ў вас няма дазволу на іх "
+"прагляд."
 
 #. TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)

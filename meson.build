@@ -1,7 +1,7 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '7.1.6',
+    version: '7.2.0',
     meson_version: '>= 0.59.0'
 )
 
@@ -105,11 +105,6 @@ project_config_dep = declare_dependency(
 )
 
 gnome = import('gnome')
-resources = gnome.compile_resources(
-    'files-resources', 'data/files.gresource.xml',
-    source_dir: 'data',
-    c_name: 'files'
-)
 
 subdir('libcore')
 subdir('src')

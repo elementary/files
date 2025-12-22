@@ -10,7 +10,6 @@ pantheon_files_deps = [
 
 pantheon_files_exec = executable (
     meson.project_name (),
-    resources,
 
     'Application.vala',
     'ClipboardManager.vala',
