@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2025-11-11 13:55+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementaryos.org/projects/files/"
@@ -202,7 +202,7 @@ msgstr "A ligar…"
 msgid "Please verify your user details."
 msgstr "Por favor, verifique os seus detalhes."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "O servidor não respondeu no tempo esperado"
 
@@ -2244,14 +2244,6 @@ msgstr "Não é possível mostrar a pasta"
 msgid "The server for this folder could not be located."
 msgstr "O servidor para esta pasta não foi localizado."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Ficheiro não encontrado"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "O ficheiro selecionado já não existe."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr "Menu"
@@ -2598,6 +2590,12 @@ msgstr "Abaixo desta pasta"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Utilizados Recentemente"
+
+#~ msgid "File not Found"
+#~ msgstr "Ficheiro não encontrado"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "O ficheiro selecionado já não existe."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "Gostaria de a recriar?"

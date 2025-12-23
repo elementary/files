@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2025-03-30 11:55+0000\n"
 "Last-Translator: Marcin Serwin <marcin@serwin.dev>\n"
 "Language-Team: Polish <https://l10n.elementaryos.org/projects/files/files/pl/"
@@ -202,7 +202,7 @@ msgstr "Łączenie…"
 msgid "Please verify your user details."
 msgstr "Sprawdź swoje dane użytkownika."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Serwer nie odpowiedział w określonym przedziale czasu"
 
@@ -2271,14 +2271,6 @@ msgstr "Nie można wyświetlić katalogu"
 msgid "The server for this folder could not be located."
 msgstr "Serwer dla tego katalogu nie mógł zostać zlokalizowany."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Plik nie istnieje"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Wybrany plik nie istnieje."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr "Menu"
@@ -2628,6 +2620,12 @@ msgstr "Poniżej tego katalogu"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Ostatnio używane"
+
+#~ msgid "File not Found"
+#~ msgstr "Plik nie istnieje"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Wybrany plik nie istnieje."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "Czy chciałbyś to odtworzyć?"

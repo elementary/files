@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2021-06-19 20:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -198,7 +198,7 @@ msgstr "जोडत आहे…"
 msgid "Please verify your user details."
 msgstr "कृपया तुमचा वापरकर्ता तपशील पुन्हा तपासा."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "सर्व्हरने वेळ मर्यादेत प्रतिसाद दिला नाही"
 
@@ -2276,14 +2276,6 @@ msgstr "फोल्डर दाखविण्यास अक्षम"
 msgid "The server for this folder could not be located."
 msgstr "या फोल्डरसाठी सर्व्हर शोधता आला नाही."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "फाइल सापडली नाही"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "निवडलेली फाइल यापुढे विद्यमान नाही."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2644,6 +2636,12 @@ msgstr "या फोल्डर खाली"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "अलीकडे वापरलेले"
+
+#~ msgid "File not Found"
+#~ msgstr "फाइल सापडली नाही"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "निवडलेली फाइल यापुढे विद्यमान नाही."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "आपण तो पुन्हा तयार करू इच्छिता?"

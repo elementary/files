@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2024-09-13 00:01+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://l10n.elementary.io/projects/files/files/ka/"
@@ -199,7 +199,7 @@ msgstr "დაკავშირება…"
 msgid "Please verify your user details."
 msgstr "გთხოვთ დაადასტუროთ მომხმარებლის დეტალები."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr ""
 
@@ -2167,14 +2167,6 @@ msgstr "საქაღალდის ჩვენების შეცდო�
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "ფაილი ვერ მოიძებნა"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "მონიშნული ფაილი აღარ არსებობს."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr "მენიუ"
@@ -2515,6 +2507,12 @@ msgstr "ამ საქაღალდის ქვემოთ"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "ახლახანს _გამოყენებული"
+
+#~ msgid "File not Found"
+#~ msgstr "ფაილი ვერ მოიძებნა"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "მონიშნული ფაილი აღარ არსებობს."
 
 #~ msgid "_Mount"
 #~ msgstr "ტო_მის მიერთება"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2025-11-04 06:55+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <https://l10n.elementaryos.org/projects/files/files/"
@@ -201,7 +201,7 @@ msgstr "Ansluter…"
 msgid "Please verify your user details."
 msgstr "Kontrollera dina användaruppgifter."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Servern svarade inte inom tidsgränsen"
 
@@ -2236,14 +2236,6 @@ msgstr "Det går inte att visa mappen"
 msgid "The server for this folder could not be located."
 msgstr "Servern för den här mappen kunde inte hittas."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Filen hittades inte"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Den valda filen finns inte längre."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr "Meny"
@@ -2591,6 +2583,12 @@ msgstr "Under denna mapp"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Nyligen använda"
+
+#~ msgid "File not Found"
+#~ msgstr "Filen hittades inte"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Den valda filen finns inte längre."
 
 #~ msgid "_Mount"
 #~ msgstr "_Montera"

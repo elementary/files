@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2021-02-28 00:55+0000\n"
 "Last-Translator: david <dcardelleg@gmail.com>\n"
 "Language-Team: Galician <https://l10n.elementary.io/projects/files/files/gl/"
@@ -203,7 +203,7 @@ msgstr "Conectando…"
 msgid "Please verify your user details."
 msgstr "Comprobe a súa información de usuario."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "O servidor non respondeu dentro do tempo límite"
 
@@ -2299,14 +2299,6 @@ msgstr "Non é posíbel amosar o cartafol"
 msgid "The server for this folder could not be located."
 msgstr "Non se atopou o servidor que aloxa estr cartafol."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Non se atopou o ficheiro"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "O ficheiro seleccionado xa non existe."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2669,6 +2661,12 @@ msgstr "Dentro deste cartafol"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Usados recentemente"
+
+#~ msgid "File not Found"
+#~ msgstr "Non se atopou o ficheiro"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "O ficheiro seleccionado xa non existe."
 
 #~ msgid "_Mount"
 #~ msgstr "_Montar"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2023-09-17 12:08+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/files/"
@@ -202,7 +202,7 @@ msgstr "Kobler til…"
 msgid "Please verify your user details."
 msgstr "Kontroller brukerdata."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Tjeneren svarte ikke i tide"
 
@@ -2300,14 +2300,6 @@ msgstr "Kunne ikke vise mappe"
 msgid "The server for this folder could not be located."
 msgstr "Tjeneren for denne mappen kunne ikke bli funnet."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Finner ikke fil"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Den valgte filen finnes ikke lenger."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr "Meny"
@@ -2669,6 +2661,12 @@ msgstr "Under denne mappen"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Nylig brukt"
+
+#~ msgid "File not Found"
+#~ msgstr "Finner ikke fil"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Den valgte filen finnes ikke lenger."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "Ønsker du å gjenskape den?"

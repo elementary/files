@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2017-01-24 11:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -214,7 +214,7 @@ msgstr "Se conectează..."
 msgid "Please verify your user details."
 msgstr "Verifică detaliile de utilizator."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr ""
 
@@ -2358,14 +2358,6 @@ msgstr "Nu se poate afişa acest dosar"
 msgid "The server for this folder could not be located."
 msgstr "Serverul pentru acest dosar nu a putut fi localizat."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Fișierul nu a fost găsit"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Fișierul selectat nu mai există."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2737,6 +2729,12 @@ msgstr "În acest dosar"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Recent"
+
+#~ msgid "File not Found"
+#~ msgstr "Fișierul nu a fost găsit"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Fișierul selectat nu mai există."
 
 #~ msgid "_Mount"
 #~ msgstr "Montează"

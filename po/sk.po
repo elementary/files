@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2022-12-26 20:25+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/files/files/sk/>\n"
@@ -201,7 +201,7 @@ msgstr "Pripája sa…"
 msgid "Please verify your user details."
 msgstr "Skontrolujte prosím svoje používateľské údaje."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Server neodpovedal v časovom limite"
 
@@ -2318,14 +2318,6 @@ msgstr "Priečinok sa nedá zobraziť"
 msgid "The server for this folder could not be located."
 msgstr "Server pre tento priečinok sa nepodarilo nájsť."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Súbor nebol nájdený"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Vybraný súbor už neexistuje."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2688,6 +2680,12 @@ msgstr "Pod týmto priečinkom"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Nedávno použité"
+
+#~ msgid "File not Found"
+#~ msgstr "Súbor nebol nájdený"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Vybraný súbor už neexistuje."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "Chceli by ste ho znovu vytvoriť?"

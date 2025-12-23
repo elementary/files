@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2025-12-09 11:55+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/extra/"
@@ -99,12 +99,14 @@ msgstr "一部のナビゲーション方法でパスバーがちらつく問題
 
 #: data/files.metainfo.xml.in.in:75
 msgid "The option to set a default app for folders is no longer offered"
-msgstr "フォルダーに対してはデフォルトアプリに設定するオプションを表示しないように修"
+msgstr ""
+"フォルダーに対してはデフォルトアプリに設定するオプションを表示しないように修"
 "正"
 
 #: data/files.metainfo.xml.in.in:76
 msgid "The scrollbar no longer overlays the modification date in List view"
-msgstr "スクロールバーがリストビュー内の更新日時に重なって表示されないように修正"
+msgstr ""
+"スクロールバーがリストビュー内の更新日時に重なって表示されないように修正"
 
 #: data/files.metainfo.xml.in.in:77 data/files.metainfo.xml.in.in:96
 #: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:126

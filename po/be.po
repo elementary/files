@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2025-12-12 10:55+0000\n"
 "Last-Translator: lenify <lenify@tutanota.com>\n"
 "Language-Team: Belarusian <https://l10n.elementaryos.org/projects/files/"
@@ -200,7 +200,7 @@ msgstr "Злучэнне…"
 msgid "Please verify your user details."
 msgstr "Спраўдзіце карыстальніцкія даныя."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Сервер не адказаў за тэрмін часу"
 
@@ -2251,14 +2251,6 @@ msgstr ""
 
 #: src/View/ViewContainer.vala:414
 msgid "The server for this folder could not be located."
-msgstr ""
-
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr ""
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
 msgstr ""
 
 #: src/View/Window.vala:214

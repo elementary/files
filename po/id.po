@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2023-05-21 06:06+0000\n"
 "Last-Translator: Faisal Rachmadin "
 "<frachmadin@users.noreply.l10n.elementary.io>\n"
@@ -199,7 +199,7 @@ msgstr "Menghubungkan…"
 msgid "Please verify your user details."
 msgstr "Silakan periksa rincian pengguna Anda."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Server tidak merespon dalam batas waktu"
 
@@ -2227,14 +2227,6 @@ msgstr "Tidak dapat Menampilkan Folder"
 msgid "The server for this folder could not be located."
 msgstr "Server untuk folder ini tidak dapat ditemukan."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Berkas tidak ditemukan"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Berkas yang dipilih sudah tidak ada lagi."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr "Menu"
@@ -2581,6 +2573,12 @@ msgstr "Di bawah Folder Ini"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Terkini Digunakan"
+
+#~ msgid "File not Found"
+#~ msgstr "Berkas tidak ditemukan"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Berkas yang dipilih sudah tidak ada lagi."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "Apakah Anda mau membuat ulang kembali?"
