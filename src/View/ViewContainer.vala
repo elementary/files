@@ -459,6 +459,10 @@ namespace Files.View {
            return view != null ? view.get_current_slot () : null;
         }
 
+        public unowned Files.AbstractSlot? get_view () {
+           return this.view != null ? this.view : null;
+        }
+
         public void set_active_state (bool is_active, bool animate = true) {
             var aslot = get_current_slot ();
             if (aslot != null) {
