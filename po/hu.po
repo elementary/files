@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2025-11-11 13:55+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementaryos.org/projects/files/files/"
@@ -202,7 +202,7 @@ msgstr "Kapcsolódás…"
 msgid "Please verify your user details."
 msgstr "Ellenőrizze a felhasználói adatait."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "A szerver nem válaszolt határidőn belül"
 
@@ -2220,14 +2220,6 @@ msgstr "Nem lehet a mappát megjeleníteni"
 msgid "The server for this folder could not be located."
 msgstr "Nem található a mappához tartozó szerver."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Fájl nem található"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "A kiválasztott fájl már nem létezik."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr "Menü"
@@ -2574,6 +2566,12 @@ msgstr "Ezen mappa alatt"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Mostanában használt"
+
+#~ msgid "File not Found"
+#~ msgstr "Fájl nem található"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "A kiválasztott fájl már nem létezik."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "Szeretné újra létrehozni?"

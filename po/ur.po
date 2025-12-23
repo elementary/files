@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2016-10-16 09:51+0000\n"
 "Last-Translator: Waqar Ahmed <waqar.17a@gmail.com>\n"
 "Language-Team: Urdu <ur@li.org>\n"
@@ -213,7 +213,7 @@ msgstr "جڑ رہا ہے۔۔۔"
 msgid "Please verify your user details."
 msgstr "صارف کی تفصیلات کی تصدیق کریں۔"
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr ""
 
@@ -2298,14 +2298,6 @@ msgstr "فولڈر دکھانے میں ناکام"
 msgid "The server for this folder could not be located."
 msgstr "اس فولڈر کا سرور نہیں مل سکا."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "فائل نہیں پائی گئی"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "منتخب کردہ فائل اب موجود نہیں"
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2670,6 +2662,12 @@ msgstr "اس فولڈر مِں"
 #, fuzzy
 msgid "Recently Used"
 msgstr "حالیہ"
+
+#~ msgid "File not Found"
+#~ msgstr "فائل نہیں پائی گئی"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "منتخب کردہ فائل اب موجود نہیں"
 
 #~ msgid "_Mount"
 #~ msgstr "_ماؤنٹ کریں"

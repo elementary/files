@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2021-01-26 01:51+0000\n"
 "Last-Translator: ohcpp <cioppa10@gmail.com>\n"
 "Language-Team: Italian <https://l10n.elementary.io/projects/files/files/it/"
@@ -205,7 +205,7 @@ msgstr "Collegamento in corso…"
 msgid "Please verify your user details."
 msgstr "Verifica i tuoi dettagli utente."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Il server non ha risposto entro il limite di tempo"
 
@@ -2306,14 +2306,6 @@ msgstr "Impossibile mostrare la cartella"
 msgid "The server for this folder could not be located."
 msgstr "Non è stato possibile individuare il server per questa cartella."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "File non trovato"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Il file selezionato non esiste più."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2678,6 +2670,12 @@ msgstr "In questa cartella"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Utilizzati di recente"
+
+#~ msgid "File not Found"
+#~ msgstr "File non trovato"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Il file selezionato non esiste più."
 
 #~ msgid "_Mount"
 #~ msgstr "_Monta"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2021-08-16 13:30+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/files/pa/"
@@ -203,7 +203,7 @@ msgstr "ਜੁਡ਼ ਰਿਹੈ…"
 msgid "Please verify your user details."
 msgstr "ਮਿਹਰਬਾਨੀ ਕਰਕੇ ਵਰਤੋਂਕਾਰ ਵੇਰਵਾ ਤਸਦੀਕ ਕਰੋ।"
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "ਸਰਵਰ ਨੇ ਸਮਾਂ-ਹੱਦ ਅੰਦਰ ਜਵਾਬ ਨਹੀਂ ਦਿੱਤਾ"
 
@@ -2276,14 +2276,6 @@ msgstr "ਫ਼ੋਲਡਰ ਵਿਖਾ ਨਹੀਂ ਸਕਦੇ"
 msgid "The server for this folder could not be located."
 msgstr "ਇਸ ਫ਼ੋਲਡਰ ਦੇ ਸਰਵਰ ਦਾ ਟਿਕਾਣਾ ਨਹੀਂ ਮਿਲਿਆ।"
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "ਫ਼ਾਇਲ ਨਹੀਂ ਮਿਲੀ"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "ਚੁਣੀ ਹੋਈ ਫ਼ਾਇਲ ਮੌਜੂਦ ਨਹੀਂ ਰਹੀ।"
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2643,6 +2635,12 @@ msgstr "ਇਸ ਫ਼ੋਲਡਰ ਦੇ ਹੇਠਾਂ"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "ਹਾਲੀਆ ਵਰਤੇ ਗਏ"
+
+#~ msgid "File not Found"
+#~ msgstr "ਫ਼ਾਇਲ ਨਹੀਂ ਮਿਲੀ"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "ਚੁਣੀ ਹੋਈ ਫ਼ਾਇਲ ਮੌਜੂਦ ਨਹੀਂ ਰਹੀ।"
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "ਕੀ ਤੁਸੀਂ ਇਸਨੂੰ ਦੁਬਾਰਾ ਬਣਾਉਣਾ ਚਾਹੋਗੇ?"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2020-03-17 15:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
@@ -205,7 +205,7 @@ msgstr "Konektanta…"
 msgid "Please verify your user details."
 msgstr "Bonvolu kontroli viajn uzanto-detalojn."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Servilo ne respondis en la tempolimo"
 
@@ -2288,14 +2288,6 @@ msgstr "Neeblas montri la dosierujon"
 msgid "The server for this folder could not be located."
 msgstr "Neeblas lokigi la servilon de ĉi dosierujo."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Netrovita dosiero"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "La elektita dosiero ne plu ekzistas."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2661,6 +2653,12 @@ msgstr "Sub ĉi dosierujo"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Freŝdate uzitaj"
+
+#~ msgid "File not Found"
+#~ msgstr "Netrovita dosiero"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "La elektita dosiero ne plu ekzistas."
 
 #~ msgid "_Mount"
 #~ msgstr "_Munti"

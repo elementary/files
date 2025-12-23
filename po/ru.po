@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2025-11-09 09:55+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/files/"
@@ -201,7 +201,7 @@ msgstr "Подключение…"
 msgid "Please verify your user details."
 msgstr "Проверьте данные пользователя."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Сервер не ответил в течение срока"
 
@@ -2256,14 +2256,6 @@ msgstr "Невозможно отобразить папку"
 msgid "The server for this folder could not be located."
 msgstr "Невозможно определить сервер для указанной папки."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Файл не найден"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Выбранный файл больше не существует."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr "Меню"
@@ -2613,6 +2605,12 @@ msgstr "Ниже этой папки"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Недавно использованные"
+
+#~ msgid "File not Found"
+#~ msgstr "Файл не найден"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Выбранный файл больше не существует."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "Хотите её пересоздать?"

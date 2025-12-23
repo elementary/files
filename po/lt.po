@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
@@ -206,7 +206,7 @@ msgstr "Jungiamasi…"
 msgid "Please verify your user details."
 msgstr "Patvirtinkite savo naudotojo informaciją."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Serveris neatsakė per tam tikrą laiko terminą"
 
@@ -2347,14 +2347,6 @@ msgstr "Nepavyko rodyti aplanko"
 msgid "The server for this folder could not be located."
 msgstr "Nepavyko nustatyti šio aplanko serverio."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Failas nerastas"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Pasirinkto failo daugiau nebėra."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2729,6 +2721,12 @@ msgstr "Žemiau šio aplanko"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Paskiausiai naudoti"
+
+#~ msgid "File not Found"
+#~ msgstr "Failas nerastas"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Pasirinkto failo daugiau nebėra."
 
 #~ msgid "_Mount"
 #~ msgstr "Pri_jungti"

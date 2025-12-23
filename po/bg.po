@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2017-04-09 19:04+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Bulgarian\n"
@@ -216,7 +216,7 @@ msgstr "Свързване"
 msgid "Please verify your user details."
 msgstr "Моля, проверете Вашите потребителски детайли"
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Сървърът не успя да отговори за времевия лимит."
 
@@ -2320,14 +2320,6 @@ msgstr "Не може да се покаже папката."
 msgid "The server for this folder could not be located."
 msgstr "Сървърът за тази папка не може да бъде намерен."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Файлът не е намерен"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Избраният файл вече не съществува."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2699,6 +2691,12 @@ msgstr "В тази папка"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Скорошни"
+
+#~ msgid "File not Found"
+#~ msgstr "Файлът не е намерен"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Избраният файл вече не съществува."
 
 #~ msgid "_Mount"
 #~ msgstr "_Монтиране"

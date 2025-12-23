@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2020-04-26 23:10+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
@@ -206,7 +206,7 @@ msgstr "Povezovanje …"
 msgid "Please verify your user details."
 msgstr "Preverite uporabniško ime in geslo."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Strežnik ni odgovoril dovolj hitro"
 
@@ -2343,14 +2343,6 @@ msgstr "Ni mogoče prikazati mape"
 msgid "The server for this folder could not be located."
 msgstr "Strežnika za to mapo ni bilo mogoče najti."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Datoteka ni najdena"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Izbrana datoteka več ne obstaja."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2724,6 +2716,12 @@ msgstr "Pod to mapo"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Nedavne datoteke"
+
+#~ msgid "File not Found"
+#~ msgstr "Datoteka ni najdena"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Izbrana datoteka več ne obstaja."
 
 #~ msgid "_Mount"
 #~ msgstr "_Priklopi"

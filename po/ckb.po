@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2022-09-21 10:08+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/files/"
@@ -196,7 +196,7 @@ msgstr "پەیوەستبوون…"
 msgid "Please verify your user details."
 msgstr "تکایە زانیارییەکانی بەکارهێنەرت دڵنیا بکەوە."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "ڕاژە لە کاتی سنوورداردا وەڵامی نەدایەوە"
 
@@ -2256,14 +2256,6 @@ msgstr "نەتوانرا بوخچە پشان بدرێت"
 msgid "The server for this folder could not be located."
 msgstr "شوێنی ڕاژە بۆ ئەم بوخچەیە نادۆزرێتەوە."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "پەڕگە نەدۆزرایەوە"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "پەڕگەی دیاریکراو چیتر بوونی نییە."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2622,6 +2614,12 @@ msgstr "لەخوار ئەم بوخچەیەوە"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "بەکارهاتووی ئەم دواییە"
+
+#~ msgid "File not Found"
+#~ msgstr "پەڕگە نەدۆزرایەوە"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "پەڕگەی دیاریکراو چیتر بوونی نییە."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "حەز دەکەیت دروستی بکەیتەوە؟"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2017-12-30 00:08+0000\n"
 "Last-Translator: Hải Hồ <hochihai1997@gmail.com>\n"
 "Language-Team: Vietnamese <https://weblate.elementary.io/projects/files/"
@@ -212,7 +212,7 @@ msgstr "Đang kết nối..."
 msgid "Please verify your user details."
 msgstr "Xin hãy kiểm tra lại chi tiết đăng nhập."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr ""
 
@@ -2257,14 +2257,6 @@ msgstr ""
 
 #: src/View/ViewContainer.vala:414
 msgid "The server for this folder could not be located."
-msgstr ""
-
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr ""
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
 msgstr ""
 
 #: src/View/Window.vala:214

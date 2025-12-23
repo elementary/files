@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2022-11-09 14:29+0000\n"
 "Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
@@ -205,7 +205,7 @@ msgstr "يتصل…"
 msgid "Please verify your user details."
 msgstr "من فضلك راجع تفاصيل المستخدم."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "الخادم لم يستجب في الوقت المحدد"
 
@@ -2386,14 +2386,6 @@ msgstr "لم نتمكن من عرض المجلد"
 msgid "The server for this folder could not be located."
 msgstr "لم يتم العثور على مكان الخادم لهذا المجلد."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "لم يتم ايجاد الملف"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "الملف المختار لم يعد موجودا."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2775,6 +2767,12 @@ msgstr "تحت هذا المجلد"
 #, fuzzy
 msgid "Recently Used"
 msgstr "تم استخدامه مؤخرا"
+
+#~ msgid "File not Found"
+#~ msgstr "لم يتم ايجاد الملف"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "الملف المختار لم يعد موجودا."
 
 #~ msgid "_Mount"
 #~ msgstr "أو_صل"

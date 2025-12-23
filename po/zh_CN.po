@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2025-10-27 07:55+0000\n"
 "Last-Translator: JieXu <xujie0739@qq.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://"
@@ -199,7 +199,7 @@ msgstr "正在连接…"
 msgid "Please verify your user details."
 msgstr "请验检查您的用户信息。"
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "服务器响应超时"
 
@@ -2174,14 +2174,6 @@ msgstr "无法显示文件夹"
 msgid "The server for this folder could not be located."
 msgstr "无法定位此文件夹的位置。"
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "文件未找到"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "选中的文件已不存在。"
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr "菜单"
@@ -2520,6 +2512,12 @@ msgstr "在此文件夹下"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "最近"
+
+#~ msgid "File not Found"
+#~ msgstr "文件未找到"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "选中的文件已不存在。"
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "您想要重新创建该文件夹吗？"

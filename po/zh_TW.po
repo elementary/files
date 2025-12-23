@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2025-11-30 18:55+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
@@ -199,7 +199,7 @@ msgstr "正在連接…"
 msgid "Please verify your user details."
 msgstr "請檢驗您的使用者詳細資料。"
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "伺服器在時限內沒有回應"
 
@@ -2168,14 +2168,6 @@ msgstr "無法顯示資料夾"
 msgid "The server for this folder could not be located."
 msgstr "無法定位此資料夾的伺服器。"
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "找不到檔案"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "選取的檔案不再存在。"
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr "選單"
@@ -2514,6 +2506,12 @@ msgstr "在此資料夾下"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "最近使用"
+
+#~ msgid "File not Found"
+#~ msgstr "找不到檔案"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "選取的檔案不再存在。"
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "要重新建立它嗎？"

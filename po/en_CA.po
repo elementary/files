@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2022-11-08 12:49+0000\n"
 "Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: English (Canada) <https://l10n.elementary.io/projects/files/"
@@ -214,7 +214,7 @@ msgstr "Connecting..."
 msgid "Please verify your user details."
 msgstr "Please verify your user details."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Server did not respond within time limit"
 
@@ -2323,14 +2323,6 @@ msgstr "Unable to Show Folder"
 msgid "The server for this folder could not be located."
 msgstr "The server for this folder could not be located."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "File not Found"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "The file selected no longer exists."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2699,6 +2691,12 @@ msgstr "Below This Folder"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Recently used"
+
+#~ msgid "File not Found"
+#~ msgstr "File not Found"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "The file selected no longer exists."
 
 #~ msgid "_Mount"
 #~ msgstr "_Mount"

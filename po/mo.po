@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -207,7 +207,7 @@ msgstr "Conectare..."
 msgid "Please verify your user details."
 msgstr "Verificați detaliile utilizatorului."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Serverul nu a răspuns în limita de timp"
 
@@ -2324,14 +2324,6 @@ msgstr "Folderul nu poate fi afișat"
 msgid "The server for this folder could not be located."
 msgstr "Serverul pentru acest dosar nu a putut fi localizat."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Fișierul nu a fost găsit"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Fișierul selectat nu mai există."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2703,6 +2695,12 @@ msgstr "Sub acest dosar"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Folosit recent"
+
+#~ msgid "File not Found"
+#~ msgstr "Fișierul nu a fost găsit"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Fișierul selectat nu mai există."
 
 #~ msgid "_Mount"
 #~ msgstr "_Montează"

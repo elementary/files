@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: Grzegorz Kulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/files/files/szl/"
@@ -199,7 +199,7 @@ msgstr "Łōnczynie…"
 msgid "Please verify your user details."
 msgstr "Zweryfikuj swoje dane używocza."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Serwer niy ôdpedzioł w ôkryślōnym limicie czasu"
 
@@ -2311,14 +2311,6 @@ msgstr "Niy idzie pokozać katalogu"
 msgid "The server for this folder could not be located."
 msgstr "Serwer dlo tego katalogu niy mōg być zlokalizowany."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Niy szło znojś zbioru"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Ôbrany zbiōr już niy istniyje."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2688,6 +2680,12 @@ msgstr "Pod tym katalogym"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Ôstatnio używane"
+
+#~ msgid "File not Found"
+#~ msgstr "Niy szło znojś zbioru"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Ôbrany zbiōr już niy istniyje."
 
 #~ msgid "_Mount"
 #~ msgstr "Za_mōntuj"

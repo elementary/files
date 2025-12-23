@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2022-09-19 03:03+0000\n"
 "Last-Translator: Issa1553 <fairfull.playing@gmail.com>\n"
 "Language-Team: Bosnian <https://l10n.elementary.io/projects/files/files/bs/"
@@ -206,7 +206,7 @@ msgstr "Povezivanje…"
 msgid "Please verify your user details."
 msgstr "Provjerite vaše podatke za ovaj nalog."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Server nije odgovorio u zadanom vremenskom roku"
 
@@ -2339,14 +2339,6 @@ msgstr "Nemoguće prikazati fasciklu"
 msgid "The server for this folder could not be located."
 msgstr "Server za ovu fasciklu nije mogao biti lociran."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Datoteka nije pronađena"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Odabrana datoteka ne postoji više."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
@@ -2719,6 +2711,12 @@ msgstr "Ispod ove fascikle"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Nedavno korišteno"
+
+#~ msgid "File not Found"
+#~ msgstr "Datoteka nije pronađena"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Odabrana datoteka ne postoji više."
 
 #~ msgid "_Mount"
 #~ msgstr "_Montiraj"

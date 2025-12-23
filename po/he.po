@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2025-11-12 19:05+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementaryos.org/projects/files/files/he/"
@@ -199,7 +199,7 @@ msgstr "מתבצעת החברות…"
 msgid "Please verify your user details."
 msgstr "נא לוודא את פרטי המשתמש."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "השרת לא הגיב בזמן המוקצב"
 
@@ -2203,14 +2203,6 @@ msgstr "לא ניתן להציג את התיקייה"
 msgid "The server for this folder could not be located."
 msgstr "לא ניתן לאתר את השרת עבור תיקייה זו."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "קובץ לא נמצא"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "הקובץ שנבחר לא קיים עוד."
-
 #: src/View/Window.vala:214
 msgid "Menu"
 msgstr "תפריט"
@@ -2555,6 +2547,12 @@ msgstr "מתחת לתיקייה זו"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "בשימוש לאחרונה"
+
+#~ msgid "File not Found"
+#~ msgstr "קובץ לא נמצא"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "הקובץ שנבחר לא קיים עוד."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "ליצור אותה מחדש?"

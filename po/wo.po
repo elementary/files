@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2016-08-02 15:47+0000\n"
 "Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -193,7 +193,7 @@ msgstr ""
 msgid "Please verify your user details."
 msgstr ""
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr ""
 
@@ -2176,14 +2176,6 @@ msgstr ""
 
 #: src/View/ViewContainer.vala:414
 msgid "The server for this folder could not be located."
-msgstr ""
-
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr ""
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
 msgstr ""
 
 #: src/View/Window.vala:214
