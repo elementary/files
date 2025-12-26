@@ -20,7 +20,6 @@
              Darin Adler <darin@bentspoon.com>,
              Julián Unrrein <junrrein@gmail.com>
 ***/
-
 namespace Files {
     public Settings app_settings;
     public Settings icon_view_settings;
@@ -216,6 +215,7 @@ public class Files.Application : Gtk.Application {
         }
 
         window.present ();
+
         return Posix.EXIT_SUCCESS;
     }
 

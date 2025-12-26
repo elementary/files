@@ -16,7 +16,6 @@
 ***/
 
 namespace Files {
-
     public static Preferences? preferences = null;
 
     public class Preferences : Object {
@@ -34,6 +33,16 @@ namespace Files {
         public bool force_icon_size {set; get; default = true;}
         public bool sort_directories_first { get; set; default = true; }
         public bool remember_history { get; set; default = true; }
+        public bool sidebar_bookmarks_expanded { get; set; default = true; }
+        public bool sidebar_storage_expanded { get; set; default = true; }
+        public bool sidebar_network_expanded { get; set; default = true; }
+
+        public ZoomLevel zoomlevel_icon_view { get; set; default = ZoomLevel.NORMAL; }
+        public ZoomLevel zoomlevel_list_view { get; set; default = ZoomLevel.SMALL; }
+        public ZoomLevel minimum_zoomlevel_icon_view { get; set; default = ZoomLevel.NORMAL; }
+        public ZoomLevel minimum_zoomlevel_list_view { get; set; default = ZoomLevel.SMALLEST; }
+        public ZoomLevel maximum_zoomlevel_icon_view { get; set; default = ZoomLevel.LARGEST; }
+        public ZoomLevel maximum_zoomlevel_list_view { get; set; default = ZoomLevel.LARGE; }
 
         public DateFormatMode date_format {set; get; default = DateFormatMode.ISO;}
         public string clock_format {set; get; default = "24h";}

@@ -16,6 +16,13 @@
  * Boston, MA 02110-1301, USA.
  */
 
+// Moved here so it can be accessed by FileChooser
+namespace Files {
+    public static bool is_admin () {
+        return Posix.getuid () == 0;
+    }
+}
+
 namespace PF.UserUtils {
     [CCode (cname="NGROUPS_MAX")]
     public extern const int NGROUPS_MAX;

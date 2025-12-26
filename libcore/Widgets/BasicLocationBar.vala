@@ -19,7 +19,7 @@
 
 ***/
 
-namespace Files.View.Chrome {
+namespace Files {
     public class BasicLocationBar : Gtk.Box, Locatable {
         private Navigatable bread;
         protected Gtk.Widget widget;
@@ -137,6 +137,10 @@ namespace Files.View.Chrome {
         public bool set_focussed () {
             bread.grab_focus ();
             return bread.has_focus;
+        }
+
+        public void enter_navigate_mode () {
+            bread.grab_focus ();
         }
     }
 }

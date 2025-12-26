@@ -18,7 +18,7 @@
 
 ***/
 
-namespace Files.View.Chrome {
+namespace Files.View {
     public class BreadcrumbsEntry : BasicBreadcrumbsEntry {
         /** Breadcrumb context menu support **/
         ulong files_menu_dir_handler_id = 0;

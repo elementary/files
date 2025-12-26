@@ -14,13 +14,24 @@ pantheon_files_core_deps = [
     pango_dep,
     sqlite3_dep,
     libcanberra_dep,
+    handy_dep,
+    zeitgeist_dep,
+        dependency('gdk-x11-3.0'),
+        dependency('gdk-wayland-3.0')
 ]
 
 pantheon_files_core_vala_files = files(
     'AbstractSlot.vala',
+    'AbstractEditableLabel.vala',
+    'BasicAbstractDirectoryView.vala',
+    'BasicAbstractTreeView.vala',
+    'BasicSlot.vala',
     'Bookmark.vala',
     'BookmarkList.vala',
+    'Browser.vala',
+    'BrowserStack.vala',
     'CallWhenReady.vala',
+    'ClipboardManager.vala',
     'ConnectServerOperation.vala',
     'ConnectServerDialog.vala',
     'Directory.vala',
@@ -46,6 +57,10 @@ pantheon_files_core_vala_files = files(
     'TrashMonitor.vala',
     'UserUtils.vala',
     'UndoManager.vala',
+    'EmblemRenderer.vala',
+    'IconRenderer.vala',
+    'TextRenderer.vala',
+
     'FileOperations/CommonJob.vala',
     'FileOperations/CopyMoveJob.vala',
     'FileOperations/CreateJob.vala',
@@ -58,12 +73,33 @@ pantheon_files_core_vala_files = files(
     'Interfaces/SearchableInterface.vala',
     'Interfaces/SidebarListInterface.vala',
     'Interfaces/SidebarItemInterface.vala',
+
+    'View/BasicListView.vala',
+    'View/BasicIconView.vala',
+    'View/BasicWindow.vala',
+    'View/BasicSidebarWindow.vala',
+
     'Widgets/BasicBreadcrumbsEntry.vala',
+    'Widgets/BasicBookmarkListBox.vala',
+    'Widgets/BasicDeviceListBox.vala',
+    'Widgets/BasicBookmarkRow.vala',
+    'Widgets/BasicAbstractMountableRow.vala',
+    'Widgets/BasicDriveRow.vala',
+    'Widgets/BasicVolumelessMountRow.vala',
+    'Widgets/BasicVolumeRow.vala',
     'Widgets/BasicLocationBar.vala',
     'Widgets/BreadcrumbElement.vala',
     'Widgets/BreadcrumbIconList.vala',
     'Widgets/ButtonWithMenu.vala',
-    'Widgets/ViewSwitcher.vala'
+    'Widgets/BasicDirectoryNotFound.vala',
+    'Widgets/SingleLineEditableLabel.vala',
+    'Widgets/MultiLineEditableLabel.vala',
+    'Widgets/BasicWelcome.vala',
+    'Widgets/ViewSwitcher.vala',
+    'Widgets/BasicHeaderBar.vala',
+    'Widgets/FileChooserDialog.vala',
+    'Widgets/FileChooserChoice.vala',
+    'Widgets/ExternalWindow.vala',
 )
 
 pantheon_files_core_c_files = files(
