@@ -303,7 +303,7 @@ namespace Files.View.Chrome {
 #if HAVE_ZEITGEIST
             list.@set (zeitgeist_results,
                         0, header_markup.printf (_("Recently Used")),
-                        5, Category.CURRENT_HEADER.to_string () + "4");
+                        5, Category.CURRENT_HEADER.to_string () + "3");
 #endif
         }
 
