@@ -7,29 +7,30 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-02 12:13+0000\n"
-"PO-Revision-Date: 2025-02-05 22:16+0000\n"
-"Last-Translator: DutchVipperloid <svenroelof@e.email>\n"
-"Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
+"PO-Revision-Date: 2025-11-30 18:55+0000\n"
+"Last-Translator: Bas Ernst <bas@ernstgenova.it>\n"
+"Language-Team: Dutch <https://l10n.elementaryos.org/projects/files/files/nl/"
+">\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:194
 msgid "Previous"
 msgstr "Vorige"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:199
 msgid "Next"
 msgstr "Volgende"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -87,7 +88,7 @@ msgstr "“%s” vervangen?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Door dit bestand te vervangen zal de inhoud worden overschreven"
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:187
+#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "Vervang"
 
@@ -135,8 +136,8 @@ msgstr "Server:"
 msgid "Port:"
 msgstr "Poort:"
 
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
-#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:242
+#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
+#: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
 msgid "Type:"
 msgstr "Type:"
 
@@ -200,7 +201,7 @@ msgstr "Verbinden…"
 msgid "Please verify your user details."
 msgstr "Controleer de gebruikersgegevens."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "De server heeft niet binnen het tijdslimiet gereageerd"
 
@@ -302,22 +303,20 @@ msgstr "Huidige datum"
 #. TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
 #: libcore/Enums.vala:268
 msgid "ISO"
-msgstr ""
+msgstr "ISO"
 
 #: libcore/Enums.vala:270
 msgid "Locale"
-msgstr ""
+msgstr "Locatie"
 
 #: libcore/Enums.vala:272
-#, fuzzy
-#| msgid "Info"
 msgid "Informal"
-msgstr "Info"
+msgstr "Informeel"
 
 #. TRANSLATORS Adjective applied to datetime format
 #: libcore/Enums.vala:275
 msgid "Compact"
-msgstr ""
+msgstr "Compact"
 
 #: libcore/File.vala:616 libcore/File.vala:1176
 msgid "Inaccessible"
@@ -355,61 +354,61 @@ msgstr[1] "%'d items"
 msgid "link to %s"
 msgstr "link naar %s"
 
-#: libcore/FileConflictDialog.vala:61
+#: libcore/FileConflictDialog.vala:64
 msgid "File conflict"
 msgstr "Bestandsconflict"
 
-#: libcore/FileConflictDialog.vala:96
+#: libcore/FileConflictDialog.vala:77
 msgid "Original file"
 msgstr "Origineel bestand"
 
-#: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
+#: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
 #: src/Dialogs/PropertiesWindow.vala:546
 msgid "Size:"
 msgstr "Grootte:"
 
-#: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
+#: libcore/FileConflictDialog.vala:97 libcore/FileConflictDialog.vala:131
 msgid "Last modified:"
 msgstr "Laatst bewerkt:"
 
-#: libcore/FileConflictDialog.vala:130
+#: libcore/FileConflictDialog.vala:111
 msgid "Replace with"
 msgstr "Vervang met"
 
-#: libcore/FileConflictDialog.vala:164
+#: libcore/FileConflictDialog.vala:145
 msgid "Reset"
 msgstr "Herstel"
 
-#: libcore/FileConflictDialog.vala:173
+#: libcore/FileConflictDialog.vala:154
 msgid "_Select a new name for the destination"
 msgstr "_Selecteer een nieuwe naam voor de bestemming"
 
-#: libcore/FileConflictDialog.vala:177
+#: libcore/FileConflictDialog.vala:158
 msgid "Apply this action to all files"
 msgstr "Pas deze actie toe op alle bestanden"
 
-#: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:160 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_Overslaan"
 
-#: libcore/FileConflictDialog.vala:180
+#: libcore/FileConflictDialog.vala:161
 msgid "Re_name"
 msgstr "Her_noemen"
 
-#: libcore/FileConflictDialog.vala:182
+#: libcore/FileConflictDialog.vala:163
 msgid "Keep Newest"
 msgstr "Nieuwste behouden"
 
-#: libcore/FileConflictDialog.vala:183
+#: libcore/FileConflictDialog.vala:164
 msgid "Skip if original was modified more recently"
 msgstr "Overslaan als het origineel recenter gewijzigd is"
 
-#: libcore/FileConflictDialog.vala:293
+#: libcore/FileConflictDialog.vala:281
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Map \"%s\" samenvoegen?"
 
-#: libcore/FileConflictDialog.vala:294
+#: libcore/FileConflictDialog.vala:282
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -417,61 +416,61 @@ msgstr ""
 "Bij samenvoegen zal eerst om bevestiging gevraagd worden voordat bestanden "
 "in de map die conflicteren met de verplaatste bestanden, vervangen worden."
 
-#: libcore/FileConflictDialog.vala:296
+#: libcore/FileConflictDialog.vala:284
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Een oudere map met dezelfde naam bestaat al in \"%s\"."
 
-#: libcore/FileConflictDialog.vala:298
+#: libcore/FileConflictDialog.vala:286
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Een nieuwere map met dezelfde naam bestaat al in\"%s\"."
 
-#: libcore/FileConflictDialog.vala:300
+#: libcore/FileConflictDialog.vala:288
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Er bestaat al een andere map met dezelfde naam in \"%s\"."
 
-#: libcore/FileConflictDialog.vala:303
+#: libcore/FileConflictDialog.vala:291
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Vervang map \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:304
+#: libcore/FileConflictDialog.vala:292
 msgid "Replacing it will remove all files in the folder."
 msgstr ""
 "Bij het vervangen ervan zullen alle bestanden in de map verwijderd worden."
 
-#: libcore/FileConflictDialog.vala:305
+#: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Er bestaat al een map met dezelfde naam in \"%s\"."
 
-#: libcore/FileConflictDialog.vala:308
+#: libcore/FileConflictDialog.vala:296
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Vervang bestand \"%s\"?"
 
-#: libcore/FileConflictDialog.vala:309
+#: libcore/FileConflictDialog.vala:297
 msgid "Replacing it will overwrite its content."
 msgstr "Vervangen zal de inhoud overschrijven."
 
-#: libcore/FileConflictDialog.vala:312
+#: libcore/FileConflictDialog.vala:300
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Er bestaat al een ouder bestand met dezelfde naam in \"%s\"."
 
-#: libcore/FileConflictDialog.vala:314
+#: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Er bestaat al een nieuwer bestand met dezelfde naam in \"%s\"."
 
-#: libcore/FileConflictDialog.vala:316
+#: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Er bestaat al een ander bestand met dezelfde naam in \"%s\"."
 
-#: libcore/FileConflictDialog.vala:342
+#: libcore/FileConflictDialog.vala:336
 msgid "Merge"
 msgstr "Samenvoegen"
 
@@ -490,17 +489,14 @@ msgid "The original folder %s no longer exists"
 msgstr "De originele map %s bestaat niet meer"
 
 #: libcore/FileUtils.vala:185
-#, fuzzy
-#| msgid ""
-#| "The folder will be recreated and selected files that were originally "
-#| "there will be restored to it"
 msgid ""
 "The folder can be recreated and selected files that were originally there "
 "will be restored to it. Otherwise, files that were in this folder will not "
 "be restored."
 msgstr ""
-"De map wordt opnieuw aangemaakt en de originele bestanden zullen worden "
-"teruggezet"
+"De map kan opnieuw worden aangemaakt en de geselecteerde originele bestanden "
+"zullen worden teruggezet. Anders worden de bestanden die zich in deze map "
+"bevonden niet hersteld."
 
 #: libcore/FileUtils.vala:189
 msgid "Ignore"
@@ -522,31 +518,31 @@ msgid "Could not rename to '%s'"
 msgstr "Kan niet hernoemen naar '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:671
+#: libcore/FileUtils.vala:682
 #, c-format
 msgid "Today at %s"
 msgstr "Vandaag om %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:679
+#: libcore/FileUtils.vala:690
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Gisteren om %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:687
+#: libcore/FileUtils.vala:698
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A om %s"
 
-#: libcore/FileUtils.vala:912
+#: libcore/FileUtils.vala:923
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d seconde"
 msgstr[1] "%'d seconden"
 
-#: libcore/FileUtils.vala:916 libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:927 libcore/FileUtils.vala:935
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -555,19 +551,19 @@ msgstr[1] "%'d minuten"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:923 src/Dialogs/PropertiesWindow.vala:1270
+#: libcore/FileUtils.vala:934 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:934
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d uur"
 msgstr[1] "%'d uren"
 
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:938
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -575,22 +571,22 @@ msgstr[0] "ongeveer %'d uur"
 msgstr[1] "ongeveer %'d uren"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:935
+#: libcore/FileUtils.vala:946
 msgid "copy"
 msgstr "kopie"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:937
+#: libcore/FileUtils.vala:948
 msgid "link"
 msgstr "link"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:939
+#: libcore/FileUtils.vala:950
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:941
+#: libcore/FileUtils.vala:952
 msgid ")"
 msgstr ")"
 
@@ -940,55 +936,55 @@ msgstr "Bezig met voorbereiden"
 msgid "Files"
 msgstr "Bestanden"
 
-#: libcore/Resources.vala:61
+#: libcore/Resources.vala:60
 msgid "AFP"
 msgstr "AFP"
 
-#: libcore/Resources.vala:62
+#: libcore/Resources.vala:61
 msgid "AFC"
 msgstr "AFC"
 
-#: libcore/Resources.vala:63
+#: libcore/Resources.vala:62
 msgid "DAV"
 msgstr "DAV"
 
-#: libcore/Resources.vala:64
+#: libcore/Resources.vala:63
 msgid "DAVS"
 msgstr "DAVS"
 
-#: libcore/Resources.vala:65
+#: libcore/Resources.vala:64
 msgid "FTP"
 msgstr "FTP"
 
-#: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:47
+#: libcore/Resources.vala:65 src/View/Sidebar/SidebarWindow.vala:47
 msgid "Network"
 msgstr "Netwerk"
 
-#: libcore/Resources.vala:67
+#: libcore/Resources.vala:66
 msgid "SFTP"
 msgstr "SFTP"
 
-#: libcore/Resources.vala:68
+#: libcore/Resources.vala:67
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
+#: libcore/Resources.vala:68 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Prullenbak"
 
-#: libcore/Resources.vala:70
+#: libcore/Resources.vala:69
 msgid "Recent"
 msgstr "Recent"
 
-#: libcore/Resources.vala:71
+#: libcore/Resources.vala:70
 msgid "MTP"
 msgstr "MTP"
 
-#: libcore/Resources.vala:72
+#: libcore/Resources.vala:71
 msgid "GPHOTO2"
 msgstr "GPHOTO2"
 
-#: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
+#: libcore/Resources.vala:72 src/Dialogs/VolumePropertiesWindow.vala:41
 #: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Bestandssysteem"
@@ -999,7 +995,7 @@ msgstr "_Annuleren"
 
 #: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
 msgid "Delete"
-msgstr "Verwijderen"
+msgstr "Verwijder"
 
 #: libcore/StockDialogs.vala:23
 msgid "S_kip All"
@@ -1781,7 +1777,7 @@ msgstr "Scheider"
 msgid "%0*d,%0*d,%0*d…"
 msgstr "%0*d,%0*d,%0*d…"
 
-#: src/Dialogs/ChooseAppDialog.vala:45
+#: src/Dialogs/ChooseAppDialog.vala:50
 msgid "Set as default"
 msgstr "Instellen als standaard"
 
@@ -1992,7 +1988,7 @@ msgid "Invalid file name provided"
 msgstr "Ongeldige bestandsnaam opgegeven"
 
 #: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:241
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "Nieuwe tab"
 
@@ -2111,14 +2107,12 @@ msgid "Empty File"
 msgstr "Leeg bestand"
 
 #: src/View/AbstractDirectoryView.vala:2382
-#, fuzzy
-#| msgid "Templates"
 msgid "Template"
-msgstr "Sjablonen"
+msgstr "Sjabloon"
 
 #: src/View/AbstractDirectoryView.vala:2390
 msgid "…too many templates"
-msgstr ""
+msgstr "---te veel sjablonen"
 
 #: src/View/AbstractDirectoryView.vala:2395
 msgid "New"
@@ -2264,44 +2258,36 @@ msgstr "De map kan niet worden weergegeven"
 msgid "The server for this folder could not be located."
 msgstr "De server voor deze map kon niet gevonden worden."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Bestand niet gevonden"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Het gekozen bestand bestaat niet meer."
-
-#: src/View/Window.vala:216
+#: src/View/Window.vala:214
 msgid "Menu"
 msgstr "Menu"
 
-#: src/View/Window.vala:246
+#: src/View/Window.vala:244
 msgid "Closed Tabs"
 msgstr "Gesloten tabbladen"
 
-#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:472 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "Openen in nieuw venster"
 
-#: src/View/Window.vala:475
+#: src/View/Window.vala:473
 msgid "Duplicate Tab"
 msgstr "Tab Dupliceren"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:479
+#: src/View/Window.vala:477
 msgid "Close Tabs to the Right"
 msgstr "Sluit tabblad naar rechts"
 
-#: src/View/Window.vala:480
+#: src/View/Window.vala:478
 msgid "Close Other Tabs"
 msgstr "Sluit andere tabbladen"
 
-#: src/View/Window.vala:481
+#: src/View/Window.vala:479
 msgid "Close Tab"
 msgstr "Tab Sluiten"
 
-#: src/View/Window.vala:766 src/View/Window.vala:776
+#: src/View/Window.vala:763 src/View/Window.vala:773
 msgid "(as Administrator)"
 msgstr "(als Beheerder)"
 
@@ -2369,7 +2355,7 @@ msgstr "Open in nieuw _venster"
 
 #: src/View/Sidebar/BookmarkRow.vala:334
 msgid "Remove"
-msgstr "Verwijderen"
+msgstr "Verwijder"
 
 #: src/View/Sidebar/BookmarkRow.vala:352
 msgid "Permanently Delete All Trash"
@@ -2496,7 +2482,7 @@ msgstr "Externe miniaturen"
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
 #: src/View/Widgets/AppMenu.vala:116
 msgid "Date & Time Format"
-msgstr ""
+msgstr "Datum & Tijd Formaat"
 
 #: src/View/Widgets/AppMenu.vala:210
 msgid "No operation to undo"
@@ -2618,6 +2604,12 @@ msgstr "Onder deze map"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Recent gebruikt"
+
+#~ msgid "File not Found"
+#~ msgstr "Bestand niet gevonden"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Het gekozen bestand bestaat niet meer."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "Wil u dit opnieuw aanmaken?"

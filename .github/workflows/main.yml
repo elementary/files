@@ -20,13 +20,14 @@ jobs:
       image: ghcr.io/elementary/docker:${{ matrix.version }}
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - name: Install Dependencies
       run: |
         apt update
         apt install -y libgee-0.8-dev libglib2.0-dev libgranite-dev libgtk-3-dev libhandy-1-dev libcanberra-dev libportal-gtk3-dev
         apt install -y libcloudproviders-dev libdbus-glib-1-dev libpango1.0-dev
         apt install -y libsqlite3-dev libunity-dev libzeitgeist-2.0-dev policykit-1 libgit2-glib-1.0-dev
+        apt install -y gir1.2-poppler-0.18 libpoppler-glib-dev
         apt install -y meson valac
     - name: Build
       env:
@@ -51,6 +52,6 @@ jobs:
       image: valalang/lint
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - name: Lint
       run: io.elementary.vala-lint -d .

@@ -10,7 +10,6 @@ pantheon_files_deps = [
 
 pantheon_files_exec = executable (
     meson.project_name (),
-    resources,
 
     'Application.vala',
     'ClipboardManager.vala',
@@ -48,6 +47,7 @@ pantheon_files_exec = executable (
     'View/Slot.vala',
     'View/ViewContainer.vala',
     'View/Window.vala',
+    'View/DetailsColumn.vala',
 
     'View/Widgets/AbstractEditableLabel.vala',
     'View/Widgets/AppMenu.vala',

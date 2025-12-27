@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-02 12:13+0000\n"
+"POT-Creation-Date: 2025-12-23 15:00+0000\n"
 "PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: Grzegorz Kulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/files/files/szl/"
@@ -14,17 +14,17 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 3.9.1\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:194
 msgid "Previous"
 msgstr "Piyrwyjszy"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:199
 msgid "Next"
 msgstr "Dalszy"
 
 #: filechooser-portal/FileChooserDialog.vala:112
 #: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:185
+#: libcore/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -84,7 +84,7 @@ msgstr "Zamiynić zbiōr „%s”?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Zamiyniynie go nadpisze jego zawartość."
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:187
+#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "Zastōmp"
 
@@ -132,8 +132,8 @@ msgstr "Serwer:"
 msgid "Port:"
 msgstr "Port:"
 
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
-#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:242
+#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
+#: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
 msgid "Type:"
 msgstr "Zorta:"
 
@@ -199,7 +199,7 @@ msgstr "Łōnczynie…"
 msgid "Please verify your user details."
 msgstr "Zweryfikuj swoje dane używocza."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Serwer niy ôdpedzioł w ôkryślōnym limicie czasu"
 
@@ -364,61 +364,61 @@ msgstr[2] "%d minut"
 msgid "link to %s"
 msgstr "Link do %s"
 
-#: libcore/FileConflictDialog.vala:61
+#: libcore/FileConflictDialog.vala:64
 msgid "File conflict"
 msgstr "Kōnflikt zbiorōw"
 
-#: libcore/FileConflictDialog.vala:96
+#: libcore/FileConflictDialog.vala:77
 msgid "Original file"
 msgstr "Ôryginalny zbiōr"
 
-#: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
+#: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
 #: src/Dialogs/PropertiesWindow.vala:546
 msgid "Size:"
 msgstr "Miara:"
 
-#: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
+#: libcore/FileConflictDialog.vala:97 libcore/FileConflictDialog.vala:131
 msgid "Last modified:"
 msgstr "Ôstatnio modyfikacyjo:"
 
-#: libcore/FileConflictDialog.vala:130
+#: libcore/FileConflictDialog.vala:111
 msgid "Replace with"
 msgstr "Zastōmp"
 
-#: libcore/FileConflictDialog.vala:164
+#: libcore/FileConflictDialog.vala:145
 msgid "Reset"
 msgstr "Prziwrōć"
 
-#: libcore/FileConflictDialog.vala:173
+#: libcore/FileConflictDialog.vala:154
 msgid "_Select a new name for the destination"
 msgstr "_Nowe miano ôd zbioru cylowego"
 
-#: libcore/FileConflictDialog.vala:177
+#: libcore/FileConflictDialog.vala:158
 msgid "Apply this action to all files"
 msgstr "Wykōnej ta czynność dlo wszyjskich zbiorōw"
 
-#: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
+#: libcore/FileConflictDialog.vala:160 libcore/StockDialogs.vala:22
 msgid "_Skip"
 msgstr "_Pōmiń"
 
-#: libcore/FileConflictDialog.vala:180
+#: libcore/FileConflictDialog.vala:161
 msgid "Re_name"
 msgstr "Przemia_nuj"
 
-#: libcore/FileConflictDialog.vala:182
+#: libcore/FileConflictDialog.vala:163
 msgid "Keep Newest"
 msgstr "Zachow nojnowsze"
 
-#: libcore/FileConflictDialog.vala:183
+#: libcore/FileConflictDialog.vala:164
 msgid "Skip if original was modified more recently"
 msgstr "Pōmiń, jeźli ôryginalny zbiōr bōł niydowno zmodyfikowany"
 
-#: libcore/FileConflictDialog.vala:293
+#: libcore/FileConflictDialog.vala:281
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Połōnczyć katalog „%s”?"
 
-#: libcore/FileConflictDialog.vala:294
+#: libcore/FileConflictDialog.vala:282
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -426,60 +426,60 @@ msgstr ""
 "Połōnczynie spyto ô potwierdzynie przed zmianōm kożdego zbioru, co może być "
 "w kōnflikcie z kopiowanymi zbiorami."
 
-#: libcore/FileConflictDialog.vala:296
+#: libcore/FileConflictDialog.vala:284
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Starszy katalog z tym samym mianym już je w „%s”."
 
-#: libcore/FileConflictDialog.vala:298
+#: libcore/FileConflictDialog.vala:286
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Nowszy katalog z tym samym mianym już je w „%s”."
 
-#: libcore/FileConflictDialog.vala:300
+#: libcore/FileConflictDialog.vala:288
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Inkszy katalog z tym samym mianym już je w „%s”."
 
-#: libcore/FileConflictDialog.vala:303
+#: libcore/FileConflictDialog.vala:291
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Zamiynić katalog „%s”?"
 
-#: libcore/FileConflictDialog.vala:304
+#: libcore/FileConflictDialog.vala:292
 msgid "Replacing it will remove all files in the folder."
 msgstr "Zamiyniynie go skasuje wszyjske zbiory we katalogu."
 
-#: libcore/FileConflictDialog.vala:305
+#: libcore/FileConflictDialog.vala:293
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Katalog ze tym samym mianym już je we „%s”."
 
-#: libcore/FileConflictDialog.vala:308
+#: libcore/FileConflictDialog.vala:296
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Zamiynić zbiōr „%s”?"
 
-#: libcore/FileConflictDialog.vala:309
+#: libcore/FileConflictDialog.vala:297
 msgid "Replacing it will overwrite its content."
 msgstr "Zamiyniynie go nadpisze jego zawartość."
 
-#: libcore/FileConflictDialog.vala:312
+#: libcore/FileConflictDialog.vala:300
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Starszy zbiōr z tym samym mianym już je w „%s”."
 
-#: libcore/FileConflictDialog.vala:314
+#: libcore/FileConflictDialog.vala:302
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Nowszy zbiōr z tym samym mianym już je w „%s”."
 
-#: libcore/FileConflictDialog.vala:316
+#: libcore/FileConflictDialog.vala:304
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Inkszy zbiōr z tym samym mianym już je w „%s”."
 
-#: libcore/FileConflictDialog.vala:342
+#: libcore/FileConflictDialog.vala:336
 msgid "Merge"
 msgstr "Połōncz"
 
@@ -524,24 +524,24 @@ msgid "Could not rename to '%s'"
 msgstr "Niy idzie przemianować na „%s”"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:671
+#: libcore/FileUtils.vala:682
 #, c-format
 msgid "Today at %s"
 msgstr "Dzisiej ô %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:679
+#: libcore/FileUtils.vala:690
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Wczorej ô %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:687
+#: libcore/FileUtils.vala:698
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A ô %s"
 
-#: libcore/FileUtils.vala:912
+#: libcore/FileUtils.vala:923
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -549,7 +549,7 @@ msgstr[0] "%d sekunda"
 msgstr[1] "%d sekundy"
 msgstr[2] "%d sekund"
 
-#: libcore/FileUtils.vala:916 libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:927 libcore/FileUtils.vala:935
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -559,12 +559,12 @@ msgstr[2] "%d minut"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:923 src/Dialogs/PropertiesWindow.vala:1270
+#: libcore/FileUtils.vala:934 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:934
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -572,7 +572,7 @@ msgstr[0] "%d godzina"
 msgstr[1] "%d godziny"
 msgstr[2] "%d godzin"
 
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:938
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -581,23 +581,23 @@ msgstr[1] "w przibliżyniu %'d godziny"
 msgstr[2] "w przibliżyniu %'d godzin"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:935
+#: libcore/FileUtils.vala:946
 msgid "copy"
 msgstr ""
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:937
+#: libcore/FileUtils.vala:948
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:939
+#: libcore/FileUtils.vala:950
 #, fuzzy
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:941
+#: libcore/FileUtils.vala:952
 msgid ")"
 msgstr ""
 
@@ -942,56 +942,56 @@ msgstr "Rychtowanie"
 msgid "Files"
 msgstr "Zbiory"
 
-#: libcore/Resources.vala:61
+#: libcore/Resources.vala:60
 msgid "AFP"
 msgstr "AFP"
 
-#: libcore/Resources.vala:62
+#: libcore/Resources.vala:61
 #, fuzzy
 msgid "AFC"
 msgstr "AFP"
 
-#: libcore/Resources.vala:63
+#: libcore/Resources.vala:62
 msgid "DAV"
 msgstr "DAV"
 
-#: libcore/Resources.vala:64
+#: libcore/Resources.vala:63
 msgid "DAVS"
 msgstr "DAVS"
 
-#: libcore/Resources.vala:65
+#: libcore/Resources.vala:64
 msgid "FTP"
 msgstr "FTP"
 
-#: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:47
+#: libcore/Resources.vala:65 src/View/Sidebar/SidebarWindow.vala:47
 msgid "Network"
 msgstr "Nec"
 
-#: libcore/Resources.vala:67
+#: libcore/Resources.vala:66
 msgid "SFTP"
 msgstr "SFTP"
 
-#: libcore/Resources.vala:68
+#: libcore/Resources.vala:67
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
+#: libcore/Resources.vala:68 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Hasiok"
 
-#: libcore/Resources.vala:70
+#: libcore/Resources.vala:69
 msgid "Recent"
 msgstr "Niydowno używane"
 
-#: libcore/Resources.vala:71
+#: libcore/Resources.vala:70
 msgid "MTP"
 msgstr "MTP"
 
-#: libcore/Resources.vala:72
+#: libcore/Resources.vala:71
 msgid "GPHOTO2"
 msgstr ""
 
-#: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
+#: libcore/Resources.vala:72 src/Dialogs/VolumePropertiesWindow.vala:41
 #: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Systym zbiorōw"
@@ -1818,7 +1818,7 @@ msgstr ""
 msgid "%0*d,%0*d,%0*d…"
 msgstr ""
 
-#: src/Dialogs/ChooseAppDialog.vala:45
+#: src/Dialogs/ChooseAppDialog.vala:50
 msgid "Set as default"
 msgstr "Nasztaluj za wychodno"
 
@@ -2036,7 +2036,7 @@ msgid "Invalid file name provided"
 msgstr "Było podano niynoleżne miano zbioru"
 
 #: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:241
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "Nowo karta"
 
@@ -2311,48 +2311,40 @@ msgstr "Niy idzie pokozać katalogu"
 msgid "The server for this folder could not be located."
 msgstr "Serwer dlo tego katalogu niy mōg być zlokalizowany."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Niy szło znojś zbioru"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Ôbrany zbiōr już niy istniyje."
-
-#: src/View/Window.vala:216
+#: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:246
+#: src/View/Window.vala:244
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "Zawrzij"
 
-#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:472 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "Ôtwōrz w nowym ôknie"
 
-#: src/View/Window.vala:475
+#: src/View/Window.vala:473
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Tuplowanie „%s”"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:479
+#: src/View/Window.vala:477
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:480
+#: src/View/Window.vala:478
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "Zawrzij"
 
-#: src/View/Window.vala:481
+#: src/View/Window.vala:479
 #, fuzzy
 msgid "Close Tab"
 msgstr "Zawrzij"
 
-#: src/View/Window.vala:766 src/View/Window.vala:776
+#: src/View/Window.vala:763 src/View/Window.vala:773
 msgid "(as Administrator)"
 msgstr "(za administratora)"
 
@@ -2688,6 +2680,12 @@ msgstr "Pod tym katalogym"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Ôstatnio używane"
+
+#~ msgid "File not Found"
+#~ msgstr "Niy szło znojś zbioru"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Ôbrany zbiōr już niy istniyje."
 
 #~ msgid "_Mount"
 #~ msgstr "Za_mōntuj"

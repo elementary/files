@@ -1,7 +1,7 @@
 project(
     'io.elementary.files',
     'vala', 'c',
-    version: '7.1.6',
+    version: '7.2.0',
     meson_version: '>= 0.59.0'
 )
 
@@ -50,6 +50,7 @@ granite_dep = dependency('granite', version: '>=6.1.0')
 handy_dep = dependency('libhandy-1', version: '>=0.83.0')
 portal_dep = dependency('libportal')
 portal_gtk3_dep = dependency('libportal-gtk3')
+poppler_glib_dep = dependency('poppler-glib')
 
 common_deps = [
     glib_dep,
@@ -59,7 +60,8 @@ common_deps = [
     gmodule_dep,
     gee_dep,
     gtk_dep,
-    granite_dep
+    granite_dep,
+    poppler_glib_dep
 ]
 
 pango_dep = dependency('pango', version: '>=1.1.2')
@@ -103,11 +105,6 @@ project_config_dep = declare_dependency(
 )
 
 gnome = import('gnome')
-resources = gnome.compile_resources(
-    'files-resources', 'data/files.gresource.xml',
-    source_dir: 'data',
-    c_name: 'files'
-)
 
 subdir('libcore')
 subdir('src')
