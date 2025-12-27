@@ -17,14 +17,14 @@ namespace Files.View.Chrome {
             DEEP_BEGINS,
             DEEP_CONTAINS,
             DEEP_ELLIPSIS,
-            ZEITGEIST_HEADER,
-            ZEITGEIST_BEGINS,
-            ZEITGEIST_CONTAINS,
-            ZEITGEIST_ELLIPSIS,
             BOOKMARK_HEADER,
             BOOKMARK_BEGINS,
             BOOKMARK_CONTAINS,
-            BOOKMARK_ELLIPSIS;
+            BOOKMARK_ELLIPSIS,
+            ZEITGEIST_HEADER,
+            ZEITGEIST_BEGINS,
+            ZEITGEIST_CONTAINS,
+            ZEITGEIST_ELLIPSIS;
 
             /* This function converts a Category enum to a letter which can be prefixed to the match
              * name to form a sort key.  This ensures that the categories appear in the list in the
@@ -290,20 +290,20 @@ namespace Files.View.Chrome {
             /* Update the headers */
             list.@set (local_results,
                         0, header_markup.printf (_("In This Folder")),
-                        5, Category.CURRENT_HEADER.to_string () + "0");
+                        5, Category.CURRENT_HEADER.to_string ());
 
             list.@set (deep_results,
                         0, header_markup.printf (_("Below This Folder")),
-                        5, Category.CURRENT_HEADER.to_string () + "1");
+                        5, Category.DEEP_HEADER.to_string ());
 
             list.@set (bookmark_results,
                         0, header_markup.printf (_("Bookmarks")),
-                        5, Category.CURRENT_HEADER.to_string () + "2");
+                        5, Category.BOOKMARK_HEADER.to_string ());
 
 #if HAVE_ZEITGEIST
             list.@set (zeitgeist_results,
                         0, header_markup.printf (_("Recently Used")),
-                        5, Category.CURRENT_HEADER.to_string () + "3");
+                        5, Category.ZEITGEIST_HEADER.to_string ());
 #endif
         }
 
