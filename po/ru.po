@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-30 14:58+0000\n"
-"PO-Revision-Date: 2025-11-09 09:55+0000\n"
+"PO-Revision-Date: 2025-12-31 04:09+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/files/"
 "ru/>\n"
@@ -2479,7 +2479,7 @@ msgstr "Удалённые миниатюры"
 
 #: src/View/Widgets/AppMenu.vala:115
 msgid "File Preview (Column View)"
-msgstr ""
+msgstr "Предпросмотр файлов в виде колонок"
 
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
 #: src/View/Widgets/AppMenu.vala:121
