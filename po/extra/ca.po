@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-31 04:08+0000\n"
-"PO-Revision-Date: 2025-11-09 09:55+0000\n"
+"PO-Revision-Date: 2026-01-01 04:55+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementaryos.org/projects/files/extra/"
 "ca/>\n"
@@ -78,6 +78,8 @@ msgstr "Millores:"
 #: data/files.metainfo.xml.in.in:69
 msgid "An option to show a preview pane in Column view is introduced"
 msgstr ""
+"Una opció nova per mostrar un panell de previsualització i una vista en "
+"columna"
 
 #: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:87
 #: data/files.metainfo.xml.in.in:107 data/files.metainfo.xml.in.in:125
