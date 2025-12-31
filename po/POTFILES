@@ -74,6 +74,7 @@ src/View/AbstractDirectoryView.vala
 src/View/AbstractTreeView.vala
 src/View/Browser.vala
 src/View/ColumnView.vala
+src/View/DetailsColumn.vala
 src/View/DirectoryNotFound.vala
 src/View/IconView.vala
 src/View/ListView.vala
