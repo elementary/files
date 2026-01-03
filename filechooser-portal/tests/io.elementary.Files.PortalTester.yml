@@ -1,0 +1,20 @@
+app-id: io.elementary.Files.PortalTester
+runtime: io.elementary.Platform
+runtime-version: '8.1'
+sdk: io.elementary.Sdk
+command: io.elementary.Files.PortalTester
+finish-args:
+  # X11 + XShm access
+  - --share=ipc
+  - --socket=x11
+  - --filesystem=home
+  # Wayland access
+  - --socket=wayland
+modules:
+  - name: tester
+    buildsystem: meson
+    sources:
+      - type: file
+        path: meson.build
+      - type: file
+        path: PortalTester.vala

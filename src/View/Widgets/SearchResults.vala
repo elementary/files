@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-namespace Files.View.Chrome {
+namespace Files.View {
     public class SearchResults : Gtk.Popover, Searchable {
         private const string ELLIPSIS_NAME = "ELLIPSIS";
         /* The order of these categories governs the order in which matches appear in the search search_tree_view.

@@ -648,7 +648,7 @@ public class Files.Directory : Object {
     }
 
     private void list_cached_files (FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
-        debug ("list cached files");
+        message ("list cached files");
         if (state != State.LOADED) {
             critical ("list cached files called in %s state - not expected to happen", state.to_string ());
             return;
@@ -670,7 +670,7 @@ public class Files.Directory : Object {
     }
 
     private async void list_directory_async (FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
-        debug ("list directory async");
+        message ("list directory async");
         /* Should only be called after creation and if reloaded */
         if (!is_ready || file_hash.size () > 0) {
             critical ("(Re)load directory called when not cleared");
@@ -697,6 +697,7 @@ public class Files.Directory : Object {
         displayed_files_count = 0;
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
+        message ("Show hidden %s", show_hidden.to_string ());
 
         try {
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);

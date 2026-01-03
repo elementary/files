@@ -49,8 +49,8 @@ public interface Sidebar.SidebarItemInterface : Object {
     public abstract Icon gicon { get; set construct; }
     public abstract bool pinned { get; set construct; } // Whether can be dragged
     public abstract bool permanent { get; set construct; } // Whether can be deleted
-    public abstract bool can_insert_before { get; set; default = true; }
-    public abstract bool can_insert_after { get; set; default = true; }
+    public virtual bool can_insert_before { get { return false; } set {} }
+    public virtual bool can_insert_after { get { return false; } set {} }
     public abstract int get_index ();
 
     /* Provision of plugin items with additional menu options */
