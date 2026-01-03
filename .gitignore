@@ -2,3 +2,4 @@ build
 *~
 .buildconfig
 *.flatpak-builder*
+*.flatpak*
