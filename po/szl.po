@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-31 04:08+0000\n"
 "PO-Revision-Date: 2020-06-13 05:11+0000\n"
 "Last-Translator: Grzegorz Kulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/files/files/szl/"
@@ -14,11 +14,11 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 3.9.1\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:194
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:195
 msgid "Previous"
 msgstr "Piyrwyjszy"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:199
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:200
 msgid "Next"
 msgstr "Dalszy"
 
@@ -199,7 +199,7 @@ msgstr "Łōnczynie…"
 msgid "Please verify your user details."
 msgstr "Zweryfikuj swoje dane używocza."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Serwer niy ôdpedzioł w ôkryślōnym limicie czasu"
 
@@ -322,36 +322,36 @@ msgstr "Informacyje"
 msgid "Compact"
 msgstr ""
 
-#: libcore/File.vala:616 libcore/File.vala:1176
+#: libcore/File.vala:647 libcore/File.vala:1207
 msgid "Inaccessible"
 msgstr ""
 
-#: libcore/File.vala:955
+#: libcore/File.vala:986
 #, fuzzy
 msgid "Failed to parse the desktop file"
 msgstr "Niy szło stworzić katalogu"
 
-#: libcore/File.vala:959
+#: libcore/File.vala:990
 #, fuzzy
 msgid "Failed to parse the desktop file: "
 msgstr "Niy szło stworzić katalogu"
 
-#: libcore/File.vala:971
+#: libcore/File.vala:1002
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "Niy szło stworzić katalogu"
 
-#: libcore/File.vala:980
+#: libcore/File.vala:1011
 #, fuzzy
 msgid "Unable to Launch Desktop File: "
 msgstr "Niy idzie zamōntować katalogu"
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1200
 #, fuzzy
 msgid "Empty"
 msgstr "Prōzny zbiōr"
 
-#: libcore/File.vala:1171
+#: libcore/File.vala:1202
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
@@ -359,7 +359,7 @@ msgstr[0] "%d minuta"
 msgstr[1] "%d minuty"
 msgstr[2] "%d minut"
 
-#: libcore/File.vala:1216
+#: libcore/File.vala:1247
 #, fuzzy, c-format
 msgid "link to %s"
 msgstr "Link do %s"
@@ -373,7 +373,7 @@ msgid "Original file"
 msgstr "Ôryginalny zbiōr"
 
 #: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:126
 msgid "Size:"
 msgstr "Miara:"
 
@@ -1691,6 +1691,7 @@ msgstr "Pojymność:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
+#: src/View/DetailsColumn.vala:260 src/View/DetailsColumn.vala:274
 msgid "Unknown"
 msgstr "Niyznōme"
 
@@ -1852,31 +1853,31 @@ msgstr "Prowdziwo miara może być srogszo"
 msgid "unknown"
 msgstr "niyznōmo"
 
-#: src/Dialogs/PropertiesWindow.vala:486
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:311
 msgid "Loading…"
 msgstr "Wgrowanie…"
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:280
 msgid "Could not be determined"
 msgstr "Niy szło ôbsztalować"
 
-#: src/Dialogs/PropertiesWindow.vala:568
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
 msgid "Created:"
 msgstr "Utworzōne:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:158
 msgid "Modified:"
 msgstr "Modyfikacyjo:"
 
-#: src/Dialogs/PropertiesWindow.vala:598
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:172
 msgid "Deleted:"
 msgstr "Skasowane:"
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:181
 msgid "Media type:"
 msgstr "Zorta medium:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:188
 msgid "Resolution:"
 msgstr "Rozdzielczość:"
 
@@ -1885,11 +1886,11 @@ msgstr "Rozdzielczość:"
 msgid "Location:"
 msgstr "Położynie:"
 
-#: src/Dialogs/PropertiesWindow.vala:633
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:196
 msgid "Target:"
 msgstr "Cyl:"
 
-#: src/Dialogs/PropertiesWindow.vala:641
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:206
 msgid "Original Location:"
 msgstr "Ôryginalne położynie:"
 
@@ -2036,7 +2037,7 @@ msgid "Invalid file name provided"
 msgstr "Było podano niynoleżne miano zbioru"
 
 #: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:239
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:240
 msgid "New Tab"
 msgstr "Nowo karta"
 
@@ -2177,29 +2178,41 @@ msgid "Untitled %s"
 msgstr "Niynazwany %s"
 
 #: src/View/AbstractDirectoryView.vala:2960
-#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3166
 msgid "Cannot remove files from here"
 msgstr "Niy idzie skasować stōnd zbiorōw"
 
 #: src/View/AbstractDirectoryView.vala:2961
-#: src/View/AbstractDirectoryView.vala:3136
-#: src/View/AbstractDirectoryView.vala:3147
-#: src/View/AbstractDirectoryView.vala:3164
+#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:3167
 msgid "You do not have permission to change this location"
 msgstr "Niy styko ci uprawniyń, coby zmiynić to położynie"
 
-#: src/View/AbstractDirectoryView.vala:3104
+#: src/View/AbstractDirectoryView.vala:3107
 msgid "Cannot copy files that are in the trash"
 msgstr "Niy idzie skopiować zbiorōw, co sōm w hasioku"
 
-#: src/View/AbstractDirectoryView.vala:3105
+#: src/View/AbstractDirectoryView.vala:3108
 msgid "Cutting the selection instead"
 msgstr "Wytnij ôbiōr"
 
-#: src/View/AbstractDirectoryView.vala:3135
-#: src/View/AbstractDirectoryView.vala:3146
+#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3149
 msgid "Cannot paste files here"
 msgstr "Niy idzie wrazić sam zbiorōw"
+
+#: src/View/DetailsColumn.vala:119
+#, fuzzy
+#| msgid "Name"
+msgid "Name:"
+msgstr "Miana"
+
+#: src/View/DetailsColumn.vala:213
+#, fuzzy
+#| msgid "More Results …"
+msgid "More Details…"
+msgstr "Wiyncyj wynikōw …"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2311,48 +2324,40 @@ msgstr "Niy idzie pokozać katalogu"
 msgid "The server for this folder could not be located."
 msgstr "Serwer dlo tego katalogu niy mōg być zlokalizowany."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Niy szło znojś zbioru"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Ôbrany zbiōr już niy istniyje."
-
-#: src/View/Window.vala:214
+#: src/View/Window.vala:215
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:244
+#: src/View/Window.vala:245
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "Zawrzij"
 
-#: src/View/Window.vala:472 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "Ôtwōrz w nowym ôknie"
 
-#: src/View/Window.vala:473
+#: src/View/Window.vala:475
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Tuplowanie „%s”"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:477
+#: src/View/Window.vala:479
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:478
+#: src/View/Window.vala:480
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "Zawrzij"
 
-#: src/View/Window.vala:479
+#: src/View/Window.vala:481
 #, fuzzy
 msgid "Close Tab"
 msgstr "Zawrzij"
 
-#: src/View/Window.vala:763 src/View/Window.vala:773
+#: src/View/Window.vala:765 src/View/Window.vala:775
 msgid "(as Administrator)"
 msgstr "(za administratora)"
 
@@ -2558,17 +2563,21 @@ msgstr "Skryj miniatury"
 msgid "Remote Thumbnails"
 msgstr "Pokoż miniaturki we zdalnym zasobie"
 
+#: src/View/Widgets/AppMenu.vala:115
+msgid "File Preview (Column View)"
+msgstr ""
+
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
-#: src/View/Widgets/AppMenu.vala:116
+#: src/View/Widgets/AppMenu.vala:121
 msgid "Date & Time Format"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:210
+#: src/View/Widgets/AppMenu.vala:216
 #, fuzzy
 msgid "No operation to undo"
 msgstr "Limit czasu ôperacyje bōł przekroczōny."
 
-#: src/View/Widgets/AppMenu.vala:217
+#: src/View/Widgets/AppMenu.vala:223
 #, fuzzy
 msgid "No operation to redo"
 msgstr "Limit czasu ôperacyje bōł przekroczōny."
@@ -2688,6 +2697,12 @@ msgstr "Pod tym katalogym"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Ôstatnio używane"
+
+#~ msgid "File not Found"
+#~ msgstr "Niy szło znojś zbioru"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Ôbrany zbiōr już niy istniyje."
 
 #~ msgid "_Mount"
 #~ msgstr "Za_mōntuj"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-31 04:08+0000\n"
 "PO-Revision-Date: 2025-11-04 06:55+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementaryos.org/projects/files/files/fr/"
@@ -21,11 +21,11 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:194
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:195
 msgid "Previous"
 msgstr "Précédent"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:199
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:200
 msgid "Next"
 msgstr "Suivant"
 
@@ -202,7 +202,7 @@ msgstr "Connexion en cours…"
 msgid "Please verify your user details."
 msgstr "Veuillez vérifier vos paramètres utilisateur."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Le serveur n'a pas répondu dans le temps imparti"
 
@@ -319,38 +319,38 @@ msgstr "Informel"
 msgid "Compact"
 msgstr "Compact"
 
-#: libcore/File.vala:616 libcore/File.vala:1176
+#: libcore/File.vala:647 libcore/File.vala:1207
 msgid "Inaccessible"
 msgstr "Inaccessible"
 
-#: libcore/File.vala:955
+#: libcore/File.vala:986
 msgid "Failed to parse the desktop file"
 msgstr "Impossible d'interpréter le fichier desktop"
 
-#: libcore/File.vala:959
+#: libcore/File.vala:990
 msgid "Failed to parse the desktop file: "
 msgstr "Échec d'analyse du fichier desktop : "
 
-#: libcore/File.vala:971
+#: libcore/File.vala:1002
 msgid "Failed to create command from file: "
 msgstr "Erreur lors de la création de la commande à partir du fichier : "
 
-#: libcore/File.vala:980
+#: libcore/File.vala:1011
 msgid "Unable to Launch Desktop File: "
 msgstr "Impossible de lancer le fichier desktop : "
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1200
 msgid "Empty"
 msgstr "Vide"
 
-#: libcore/File.vala:1171
+#: libcore/File.vala:1202
 #, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d élément"
 msgstr[1] "%'d éléments"
 
-#: libcore/File.vala:1216
+#: libcore/File.vala:1247
 #, c-format
 msgid "link to %s"
 msgstr "lien vers %s"
@@ -364,7 +364,7 @@ msgid "Original file"
 msgstr "Fichier original"
 
 #: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:126
 msgid "Size:"
 msgstr "Taille :"
 
@@ -1661,6 +1661,7 @@ msgstr "Capacité :"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
+#: src/View/DetailsColumn.vala:260 src/View/DetailsColumn.vala:274
 msgid "Unknown"
 msgstr "Inconnu"
 
@@ -1815,31 +1816,31 @@ msgstr "La taille réelle peut être plus grande"
 msgid "unknown"
 msgstr "inconnu"
 
-#: src/Dialogs/PropertiesWindow.vala:486
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:311
 msgid "Loading…"
 msgstr "Chargement…"
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:280
 msgid "Could not be determined"
 msgstr "Ne peut être déterminé"
 
-#: src/Dialogs/PropertiesWindow.vala:568
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
 msgid "Created:"
 msgstr "Créé :"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:158
 msgid "Modified:"
 msgstr "Modifié :"
 
-#: src/Dialogs/PropertiesWindow.vala:598
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:172
 msgid "Deleted:"
 msgstr "Supprimé :"
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:181
 msgid "Media type:"
 msgstr "Type de média :"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:188
 msgid "Resolution:"
 msgstr "Résolution :"
 
@@ -1848,11 +1849,11 @@ msgstr "Résolution :"
 msgid "Location:"
 msgstr "Emplacement :"
 
-#: src/Dialogs/PropertiesWindow.vala:633
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:196
 msgid "Target:"
 msgstr "Destination :"
 
-#: src/Dialogs/PropertiesWindow.vala:641
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:206
 msgid "Original Location:"
 msgstr "Emplacement d'origine :"
 
@@ -1988,7 +1989,7 @@ msgid "Invalid file name provided"
 msgstr "Nom de fichier fourni invalide"
 
 #: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:239
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:240
 msgid "New Tab"
 msgstr "Nouvel onglet"
 
@@ -2124,29 +2125,41 @@ msgid "Untitled %s"
 msgstr "Sans titre %s"
 
 #: src/View/AbstractDirectoryView.vala:2960
-#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3166
 msgid "Cannot remove files from here"
 msgstr "Impossible de supprimer les fichiers d'ici"
 
 #: src/View/AbstractDirectoryView.vala:2961
-#: src/View/AbstractDirectoryView.vala:3136
-#: src/View/AbstractDirectoryView.vala:3147
-#: src/View/AbstractDirectoryView.vala:3164
+#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:3167
 msgid "You do not have permission to change this location"
 msgstr "Vous n'avez pas l'autorisation de modifier ce répertoire"
 
-#: src/View/AbstractDirectoryView.vala:3104
+#: src/View/AbstractDirectoryView.vala:3107
 msgid "Cannot copy files that are in the trash"
 msgstr "Impossible de copier des fichiers qui sont dans la corbeille"
 
-#: src/View/AbstractDirectoryView.vala:3105
+#: src/View/AbstractDirectoryView.vala:3108
 msgid "Cutting the selection instead"
 msgstr "Couper la sélection à la place"
 
-#: src/View/AbstractDirectoryView.vala:3135
-#: src/View/AbstractDirectoryView.vala:3146
+#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3149
 msgid "Cannot paste files here"
 msgstr "Impossible de coller des fichiers ici"
+
+#: src/View/DetailsColumn.vala:119
+#, fuzzy
+#| msgid "Name"
+msgid "Name:"
+msgstr "Nom"
+
+#: src/View/DetailsColumn.vala:213
+#, fuzzy
+#| msgid "More Results …"
+msgid "More Details…"
+msgstr "Plus de résultats…"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2258,44 +2271,36 @@ msgstr "Impossible d'afficher le dossier"
 msgid "The server for this folder could not be located."
 msgstr "Le serveur de ce dossier n'a pas pu être localisé."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Fichier introuvable"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Le fichier sélectionné n'existe plus."
-
-#: src/View/Window.vala:214
+#: src/View/Window.vala:215
 msgid "Menu"
 msgstr "Menu"
 
-#: src/View/Window.vala:244
+#: src/View/Window.vala:245
 msgid "Closed Tabs"
 msgstr "Onglets fermés"
 
-#: src/View/Window.vala:472 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "Ouvrir dans une nouvelle fenêtre"
 
-#: src/View/Window.vala:473
+#: src/View/Window.vala:475
 msgid "Duplicate Tab"
 msgstr "Dupliquer l'onglet"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:477
+#: src/View/Window.vala:479
 msgid "Close Tabs to the Right"
 msgstr "Fermer les onglets à droite"
 
-#: src/View/Window.vala:478
+#: src/View/Window.vala:480
 msgid "Close Other Tabs"
 msgstr "Fermer les autres onglets"
 
-#: src/View/Window.vala:479
+#: src/View/Window.vala:481
 msgid "Close Tab"
 msgstr "Fermer l'onglet"
 
-#: src/View/Window.vala:763 src/View/Window.vala:773
+#: src/View/Window.vala:765 src/View/Window.vala:775
 msgid "(as Administrator)"
 msgstr "(en tant qu'administrateur)"
 
@@ -2490,16 +2495,20 @@ msgstr "Miniatures locales"
 msgid "Remote Thumbnails"
 msgstr "Miniatures distantes"
 
+#: src/View/Widgets/AppMenu.vala:115
+msgid "File Preview (Column View)"
+msgstr ""
+
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
-#: src/View/Widgets/AppMenu.vala:116
+#: src/View/Widgets/AppMenu.vala:121
 msgid "Date & Time Format"
 msgstr "Format de date et heure"
 
-#: src/View/Widgets/AppMenu.vala:210
+#: src/View/Widgets/AppMenu.vala:216
 msgid "No operation to undo"
 msgstr "Aucune opération à annuler"
 
-#: src/View/Widgets/AppMenu.vala:217
+#: src/View/Widgets/AppMenu.vala:223
 msgid "No operation to redo"
 msgstr "Aucune opération à rétablir"
 
@@ -2615,6 +2624,12 @@ msgstr "À l'intérieur de ce dossier"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Utilisé récemment"
+
+#~ msgid "File not Found"
+#~ msgstr "Fichier introuvable"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Le fichier sélectionné n'existe plus."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "Voulez-vous le créer à nouveau ?"

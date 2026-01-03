@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-11-20 21:55+0000\n"
+"POT-Creation-Date: 2025-12-31 04:08+0000\n"
+"PO-Revision-Date: 2026-01-01 04:55+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <italo@gp-mail.com>\n"
 "Language-Team: Spanish <https://l10n.elementaryos.org/projects/files/extra/"
 "es/>\n"
@@ -72,74 +72,81 @@ msgid "Browse complex trees faster with Column view"
 msgstr ""
 "Explore árboles de directorios complejos más rápido con vista de columna"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:269
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:83
+#: data/files.metainfo.xml.in.in:285
 msgid "Improvements:"
 msgstr "Mejoras:"
 
 #: data/files.metainfo.xml.in.in:69
-msgid "A compact date format is introduced"
-msgstr "Se ha introducido un formato de fecha compacto"
+msgid "An option to show a preview pane in Column view is introduced"
+msgstr ""
+"Se ha introducido una opción para mostrar un panel de vista previa en la "
+"vista de columna"
 
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:91
-#: data/files.metainfo.xml.in.in:109 data/files.metainfo.xml.in.in:124
-#: data/files.metainfo.xml.in.in:135 data/files.metainfo.xml.in.in:147
-#: data/files.metainfo.xml.in.in:162 data/files.metainfo.xml.in.in:178
-#: data/files.metainfo.xml.in.in:200 data/files.metainfo.xml.in.in:218
-#: data/files.metainfo.xml.in.in:241 data/files.metainfo.xml.in.in:253
-#: data/files.metainfo.xml.in.in:273
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:107 data/files.metainfo.xml.in.in:125
+#: data/files.metainfo.xml.in.in:140 data/files.metainfo.xml.in.in:151
+#: data/files.metainfo.xml.in.in:163 data/files.metainfo.xml.in.in:178
+#: data/files.metainfo.xml.in.in:194 data/files.metainfo.xml.in.in:216
+#: data/files.metainfo.xml.in.in:234 data/files.metainfo.xml.in.in:257
+#: data/files.metainfo.xml.in.in:269 data/files.metainfo.xml.in.in:289
 msgid "Minor updates:"
 msgstr "Actualizaciones menores:"
 
-#: data/files.metainfo.xml.in.in:73
+#: data/files.metainfo.xml.in.in:73 data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:128
+#: data/files.metainfo.xml.in.in:142 data/files.metainfo.xml.in.in:153
+#: data/files.metainfo.xml.in.in:166 data/files.metainfo.xml.in.in:180
+#: data/files.metainfo.xml.in.in:198 data/files.metainfo.xml.in.in:220
+#: data/files.metainfo.xml.in.in:242 data/files.metainfo.xml.in.in:259
+#: data/files.metainfo.xml.in.in:271 data/files.metainfo.xml.in.in:291
+msgid "Updated translations"
+msgstr "Traducciones actualizadas"
+
+#: data/files.metainfo.xml.in.in:85
+msgid "A compact date format is introduced"
+msgstr "Se ha introducido un formato de fecha compacto"
+
+#: data/files.metainfo.xml.in.in:89
 msgid "The file conflict dialog now shows a missing icon"
 msgstr "El diálogo de conflictos de archivo ahora muestra un icono faltante"
 
-#: data/files.metainfo.xml.in.in:74
+#: data/files.metainfo.xml.in.in:90
 msgid "Flickering of the pathbar with some navigation methods is fixed"
 msgstr ""
 "Se ha corregido el parpadeo de la barra de la ruta que ocurría con algunos "
 "métodos de navegación"
 
-#: data/files.metainfo.xml.in.in:75
+#: data/files.metainfo.xml.in.in:91
 msgid "The option to set a default app for folders is no longer offered"
 msgstr "Ya no se ofrece una aplicación por defecto para el manejo de carpetas"
 
-#: data/files.metainfo.xml.in.in:76
+#: data/files.metainfo.xml.in.in:92
 msgid "The scrollbar no longer overlays the modification date in List view"
 msgstr ""
 "La barra de desplazamiento ya no se superpone a las fechas de modificación "
 "en la vista de lista"
 
-#: data/files.metainfo.xml.in.in:77 data/files.metainfo.xml.in.in:96
-#: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:126
-#: data/files.metainfo.xml.in.in:137 data/files.metainfo.xml.in.in:150
-#: data/files.metainfo.xml.in.in:164 data/files.metainfo.xml.in.in:182
-#: data/files.metainfo.xml.in.in:204 data/files.metainfo.xml.in.in:226
-#: data/files.metainfo.xml.in.in:243 data/files.metainfo.xml.in.in:255
-#: data/files.metainfo.xml.in.in:275
-msgid "Updated translations"
-msgstr "Traducciones actualizadas"
-
-#: data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:109
 msgid "Navigation within the Trash folder now works properly"
 msgstr ""
 "La navegación dentro de la carpeta de la papelera ahora funciona "
 "correctamente"
 
-#: data/files.metainfo.xml.in.in:94
+#: data/files.metainfo.xml.in.in:110
 msgid "The view now refreshes properly after permanent deletion of a folder"
 msgstr ""
 "La vista ahora se refresca apropiadamente al borrar una carpeta de manera "
 "permanente"
 
-#: data/files.metainfo.xml.in.in:95
+#: data/files.metainfo.xml.in.in:111
 msgid ""
 "The number of template items displayed in the context menu is now limited"
 msgstr ""
 "El número de items de plantilla desplegados en el menú contextual está ahora "
 "limitado"
 
-#: data/files.metainfo.xml.in.in:111
+#: data/files.metainfo.xml.in.in:127
 msgid ""
 "The Properties Window now shows the exact date and time the file was last "
 "modified"
@@ -147,61 +154,61 @@ msgstr ""
 "La ventana de propiedades ahora muestra la fecha y hora exactas de la última "
 "modificación de un archivo"
 
-#: data/files.metainfo.xml.in.in:149
+#: data/files.metainfo.xml.in.in:165
 msgid "Further preparation for porting to Gtk4"
 msgstr "Se realizaron preparaciones para portar a Gtk4"
 
-#: data/files.metainfo.xml.in.in:180
+#: data/files.metainfo.xml.in.in:196
 msgid "Redesign file permissions view"
 msgstr "Se rediseñó la vista de permisos de archivos"
 
-#: data/files.metainfo.xml.in.in:181
+#: data/files.metainfo.xml.in.in:197
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr ""
 "Ahora se puede enfocar la barra lateral presionando Ctrl + Flecha izquierda"
 
-#: data/files.metainfo.xml.in.in:202
+#: data/files.metainfo.xml.in.in:218
 msgid "Restoring tabs from last time is now optional"
 msgstr "Restaurar pestañas desde la última vez es ahora opcional"
 
-#: data/files.metainfo.xml.in.in:203
+#: data/files.metainfo.xml.in.in:219
 msgid "Drag and select can no longer be done with secondary pointer button"
-msgstr "Ya no es posible arrastrar y soltar con el botón secundario"
+msgstr "Ya no es posible arrastrar y seleccionar con el botón secundario"
 
-#: data/files.metainfo.xml.in.in:220
+#: data/files.metainfo.xml.in.in:236
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr "Se ha deshabilitado el arrastrar un marcador fuera de la barra lateral"
 
-#: data/files.metainfo.xml.in.in:221
+#: data/files.metainfo.xml.in.in:237
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr ""
 "Se corrigió un desplazamiento inesperado al cambiar de nombre de una carpeta"
 
-#: data/files.metainfo.xml.in.in:222
+#: data/files.metainfo.xml.in.in:238
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 "Se corrigió un error grave al cambiar a vista de cuadrícula en "
 "circunstancias específicas"
 
-#: data/files.metainfo.xml.in.in:223
+#: data/files.metainfo.xml.in.in:239
 msgid "Ensure the selection persists after refreshing the view"
 msgstr ""
 "Se garantiza que los elementos seleccionados persistan al refrescar la "
 "ventana"
 
-#: data/files.metainfo.xml.in.in:224
+#: data/files.metainfo.xml.in.in:240
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "Se corrigió que Archivos no pudiese ejecutar al tratar de restaurar una "
 "ubicación en una red desconectada"
 
-#: data/files.metainfo.xml.in.in:225
+#: data/files.metainfo.xml.in.in:241
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 "Se corrige que la ventana seguía activa cuando una ubicación se desmontaba"
 
-#: data/files.metainfo.xml.in.in:271
+#: data/files.metainfo.xml.in.in:287
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-31 04:08+0000\n"
 "PO-Revision-Date: 2025-11-30 18:55+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
@@ -69,115 +69,120 @@ msgstr "在列表檢視提供更多中介資料以便概覽"
 msgid "Browse complex trees faster with Column view"
 msgstr "用分欄檢視來更快速地瀏覽複雜目錄樹"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:269
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:83
+#: data/files.metainfo.xml.in.in:285
 msgid "Improvements:"
 msgstr "改善項目："
 
 #: data/files.metainfo.xml.in.in:69
-msgid "A compact date format is introduced"
-msgstr "提供簡潔的日期格式"
+msgid "An option to show a preview pane in Column view is introduced"
+msgstr ""
 
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:91
-#: data/files.metainfo.xml.in.in:109 data/files.metainfo.xml.in.in:124
-#: data/files.metainfo.xml.in.in:135 data/files.metainfo.xml.in.in:147
-#: data/files.metainfo.xml.in.in:162 data/files.metainfo.xml.in.in:178
-#: data/files.metainfo.xml.in.in:200 data/files.metainfo.xml.in.in:218
-#: data/files.metainfo.xml.in.in:241 data/files.metainfo.xml.in.in:253
-#: data/files.metainfo.xml.in.in:273
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:107 data/files.metainfo.xml.in.in:125
+#: data/files.metainfo.xml.in.in:140 data/files.metainfo.xml.in.in:151
+#: data/files.metainfo.xml.in.in:163 data/files.metainfo.xml.in.in:178
+#: data/files.metainfo.xml.in.in:194 data/files.metainfo.xml.in.in:216
+#: data/files.metainfo.xml.in.in:234 data/files.metainfo.xml.in.in:257
+#: data/files.metainfo.xml.in.in:269 data/files.metainfo.xml.in.in:289
 msgid "Minor updates:"
 msgstr "小型更新："
 
-#: data/files.metainfo.xml.in.in:73
-msgid "The file conflict dialog now shows a missing icon"
-msgstr "檔案衝突對話框現在會顯示缺乏的圖示"
-
-#: data/files.metainfo.xml.in.in:74
-msgid "Flickering of the pathbar with some navigation methods is fixed"
-msgstr "修正路徑列在使用某些瀏覽方式時會發生的閃爍情況"
-
-#: data/files.metainfo.xml.in.in:75
-msgid "The option to set a default app for folders is no longer offered"
-msgstr "不再為資料夾提供設定預設應用程式的選項"
-
-#: data/files.metainfo.xml.in.in:76
-msgid "The scrollbar no longer overlays the modification date in List view"
-msgstr "修正在列表檢視中捲軸列會蓋住修改日期的問題"
-
-#: data/files.metainfo.xml.in.in:77 data/files.metainfo.xml.in.in:96
-#: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:126
-#: data/files.metainfo.xml.in.in:137 data/files.metainfo.xml.in.in:150
-#: data/files.metainfo.xml.in.in:164 data/files.metainfo.xml.in.in:182
-#: data/files.metainfo.xml.in.in:204 data/files.metainfo.xml.in.in:226
-#: data/files.metainfo.xml.in.in:243 data/files.metainfo.xml.in.in:255
-#: data/files.metainfo.xml.in.in:275
+#: data/files.metainfo.xml.in.in:73 data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:128
+#: data/files.metainfo.xml.in.in:142 data/files.metainfo.xml.in.in:153
+#: data/files.metainfo.xml.in.in:166 data/files.metainfo.xml.in.in:180
+#: data/files.metainfo.xml.in.in:198 data/files.metainfo.xml.in.in:220
+#: data/files.metainfo.xml.in.in:242 data/files.metainfo.xml.in.in:259
+#: data/files.metainfo.xml.in.in:271 data/files.metainfo.xml.in.in:291
 msgid "Updated translations"
 msgstr "翻譯更新"
 
-#: data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:85
+msgid "A compact date format is introduced"
+msgstr "提供簡潔的日期格式"
+
+#: data/files.metainfo.xml.in.in:89
+msgid "The file conflict dialog now shows a missing icon"
+msgstr "檔案衝突對話框現在會顯示缺乏的圖示"
+
+#: data/files.metainfo.xml.in.in:90
+msgid "Flickering of the pathbar with some navigation methods is fixed"
+msgstr "修正路徑列在使用某些瀏覽方式時會發生的閃爍情況"
+
+#: data/files.metainfo.xml.in.in:91
+msgid "The option to set a default app for folders is no longer offered"
+msgstr "不再為資料夾提供設定預設應用程式的選項"
+
+#: data/files.metainfo.xml.in.in:92
+msgid "The scrollbar no longer overlays the modification date in List view"
+msgstr "修正在列表檢視中捲軸列會蓋住修改日期的問題"
+
+#: data/files.metainfo.xml.in.in:109
 msgid "Navigation within the Trash folder now works properly"
 msgstr "垃圾桶資料夾內的瀏覽現在能夠正常運作了"
 
-#: data/files.metainfo.xml.in.in:94
+#: data/files.metainfo.xml.in.in:110
 msgid "The view now refreshes properly after permanent deletion of a folder"
 msgstr "在資料夾永久刪除之後畫面現在會正確重新整理"
 
-#: data/files.metainfo.xml.in.in:95
+#: data/files.metainfo.xml.in.in:111
 msgid ""
 "The number of template items displayed in the context menu is now limited"
 msgstr "內文選單中顯示的模本項目數量現在不再是無限的"
 
-#: data/files.metainfo.xml.in.in:111
+#: data/files.metainfo.xml.in.in:127
 msgid ""
 "The Properties Window now shows the exact date and time the file was last "
 "modified"
 msgstr "屬性視窗現在會顯示檔案上次修改的精準日期與時間"
 
-#: data/files.metainfo.xml.in.in:149
+#: data/files.metainfo.xml.in.in:165
 msgid "Further preparation for porting to Gtk4"
 msgstr "更多移植到 Gtk4 前的準備"
 
-#: data/files.metainfo.xml.in.in:180
+#: data/files.metainfo.xml.in.in:196
 msgid "Redesign file permissions view"
 msgstr "重新設計檔案權限畫面"
 
-#: data/files.metainfo.xml.in.in:181
+#: data/files.metainfo.xml.in.in:197
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr "按下 Ctrl + ← 來聚焦側邊欄"
 
-#: data/files.metainfo.xml.in.in:202
+#: data/files.metainfo.xml.in.in:218
 msgid "Restoring tabs from last time is now optional"
 msgstr "復原上次使用分頁的功能現在可以選擇停用"
 
-#: data/files.metainfo.xml.in.in:203
+#: data/files.metainfo.xml.in.in:219
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr "讓拖曳選擇不能用次要指標按鈕進行"
 
-#: data/files.metainfo.xml.in.in:220
+#: data/files.metainfo.xml.in.in:236
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr "停止支援把書籤拖到側邊欄外的功能"
 
-#: data/files.metainfo.xml.in.in:221
+#: data/files.metainfo.xml.in.in:237
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr "修正重新命名資料夾後突然捲動畫面的問題"
 
-#: data/files.metainfo.xml.in.in:222
+#: data/files.metainfo.xml.in.in:238
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr "修正切換為格狀檢視時偶爾會崩潰的問題"
 
-#: data/files.metainfo.xml.in.in:223
+#: data/files.metainfo.xml.in.in:239
 msgid "Ensure the selection persists after refreshing the view"
 msgstr "確保畫面重新整理後選取範圍仍然不變"
 
-#: data/files.metainfo.xml.in.in:224
+#: data/files.metainfo.xml.in.in:240
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr "修正《檔案》嘗試復原已斷線位置而無法啟動的問題"
 
-#: data/files.metainfo.xml.in.in:225
+#: data/files.metainfo.xml.in.in:241
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr "修正位置卸載後頁面仍然繼續顯示它的問題"
 
-#: data/files.metainfo.xml.in.in:271
+#: data/files.metainfo.xml.in.in:287
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"

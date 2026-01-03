@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-31 04:08+0000\n"
 "PO-Revision-Date: 2020-04-26 23:10+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
@@ -21,11 +21,11 @@ msgstr ""
 "X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:194
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:195
 msgid "Previous"
 msgstr "Naprej"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:199
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:200
 msgid "Next"
 msgstr "Nazaj"
 
@@ -206,7 +206,7 @@ msgstr "Povezovanje …"
 msgid "Please verify your user details."
 msgstr "Preverite uporabniško ime in geslo."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Strežnik ni odgovoril dovolj hitro"
 
@@ -329,35 +329,35 @@ msgstr "Informacije"
 msgid "Compact"
 msgstr ""
 
-#: libcore/File.vala:616 libcore/File.vala:1176
+#: libcore/File.vala:647 libcore/File.vala:1207
 msgid "Inaccessible"
 msgstr "Nedostopno"
 
-#: libcore/File.vala:955
+#: libcore/File.vala:986
 msgid "Failed to parse the desktop file"
 msgstr "Branje datoteke namizja je spodletelo"
 
-#: libcore/File.vala:959
+#: libcore/File.vala:990
 #, fuzzy
 msgid "Failed to parse the desktop file: "
 msgstr "Razčlenitev datoteke namizja je spodletelo: %s"
 
-#: libcore/File.vala:971
+#: libcore/File.vala:1002
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "Ni bilo mogoče ustvariti ukaza z datoteke: %s"
 
-#: libcore/File.vala:980
+#: libcore/File.vala:1011
 #, fuzzy
 msgid "Unable to Launch Desktop File: "
 msgstr "Ni bilo možno pognati datoteke: %s"
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1200
 #, fuzzy
 msgid "Empty"
 msgstr "Prazna datoteka"
 
-#: libcore/File.vala:1171
+#: libcore/File.vala:1202
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
@@ -366,7 +366,7 @@ msgstr[1] "%'d minuta"
 msgstr[2] "%'d minuti"
 msgstr[3] "%'d minute"
 
-#: libcore/File.vala:1216
+#: libcore/File.vala:1247
 #, c-format
 msgid "link to %s"
 msgstr "povezava do %s"
@@ -380,7 +380,7 @@ msgid "Original file"
 msgstr "Izvirna datoteka"
 
 #: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:126
 msgid "Size:"
 msgstr "Velikost:"
 
@@ -1714,6 +1714,7 @@ msgstr "Kapaciteta:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
+#: src/View/DetailsColumn.vala:260 src/View/DetailsColumn.vala:274
 msgid "Unknown"
 msgstr "Neznano"
 
@@ -1881,31 +1882,31 @@ msgstr "Dejanska velikost je lahko večja"
 msgid "unknown"
 msgstr "neznano"
 
-#: src/Dialogs/PropertiesWindow.vala:486
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:311
 msgid "Loading…"
 msgstr "Nalaganje…"
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:280
 msgid "Could not be determined"
 msgstr "Ni bilo mogoče določiti"
 
-#: src/Dialogs/PropertiesWindow.vala:568
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
 msgid "Created:"
 msgstr "Ustvarjeno:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:158
 msgid "Modified:"
 msgstr "Spremenjeno:"
 
-#: src/Dialogs/PropertiesWindow.vala:598
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:172
 msgid "Deleted:"
 msgstr "Izbrisano:"
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:181
 msgid "Media type:"
 msgstr "Tip:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:188
 msgid "Resolution:"
 msgstr "Ločljivost:"
 
@@ -1914,11 +1915,11 @@ msgstr "Ločljivost:"
 msgid "Location:"
 msgstr "Lokacija:"
 
-#: src/Dialogs/PropertiesWindow.vala:633
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:196
 msgid "Target:"
 msgstr "Cilj:"
 
-#: src/Dialogs/PropertiesWindow.vala:641
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:206
 msgid "Original Location:"
 msgstr "Izvorna lokacija:"
 
@@ -2066,7 +2067,7 @@ msgid "Invalid file name provided"
 msgstr "Ime datoteke je napačno"
 
 #: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:239
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:240
 msgid "New Tab"
 msgstr "Nov zavihek"
 
@@ -2209,29 +2210,41 @@ msgid "Untitled %s"
 msgstr "Neimenovana %s"
 
 #: src/View/AbstractDirectoryView.vala:2960
-#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3166
 msgid "Cannot remove files from here"
 msgstr "Od tu ni mogoče odstraniti datotek"
 
 #: src/View/AbstractDirectoryView.vala:2961
-#: src/View/AbstractDirectoryView.vala:3136
-#: src/View/AbstractDirectoryView.vala:3147
-#: src/View/AbstractDirectoryView.vala:3164
+#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:3167
 msgid "You do not have permission to change this location"
 msgstr "Nimate dovoljenja za spreminjanje te lokacije"
 
-#: src/View/AbstractDirectoryView.vala:3104
+#: src/View/AbstractDirectoryView.vala:3107
 msgid "Cannot copy files that are in the trash"
 msgstr "Datotek v smeteh ni mogoče kopirati"
 
-#: src/View/AbstractDirectoryView.vala:3105
+#: src/View/AbstractDirectoryView.vala:3108
 msgid "Cutting the selection instead"
 msgstr "Režem izbrane predmete"
 
-#: src/View/AbstractDirectoryView.vala:3135
-#: src/View/AbstractDirectoryView.vala:3146
+#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3149
 msgid "Cannot paste files here"
 msgstr "Datotek ni mogoče prilepiti sem"
+
+#: src/View/DetailsColumn.vala:119
+#, fuzzy
+#| msgid "Name"
+msgid "Name:"
+msgstr "Imenu"
+
+#: src/View/DetailsColumn.vala:213
+#, fuzzy
+#| msgid "More Results …"
+msgid "More Details…"
+msgstr "Več rezultatov…"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2343,48 +2356,40 @@ msgstr "Ni mogoče prikazati mape"
 msgid "The server for this folder could not be located."
 msgstr "Strežnika za to mapo ni bilo mogoče najti."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Datoteka ni najdena"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Izbrana datoteka več ne obstaja."
-
-#: src/View/Window.vala:214
+#: src/View/Window.vala:215
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:244
+#: src/View/Window.vala:245
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "Zapri"
 
-#: src/View/Window.vala:472 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "Odpri v novem oknu"
 
-#: src/View/Window.vala:473
+#: src/View/Window.vala:475
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Podvajanje \"%s\""
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:477
+#: src/View/Window.vala:479
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:478
+#: src/View/Window.vala:480
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "Zapri"
 
-#: src/View/Window.vala:479
+#: src/View/Window.vala:481
 #, fuzzy
 msgid "Close Tab"
 msgstr "Zapri"
 
-#: src/View/Window.vala:763 src/View/Window.vala:773
+#: src/View/Window.vala:765 src/View/Window.vala:775
 msgid "(as Administrator)"
 msgstr "Kot administrator"
 
@@ -2590,17 +2595,21 @@ msgstr "Skrij predogled za datoteke"
 msgid "Remote Thumbnails"
 msgstr "Prikaži predogled za datoteke na omrežju"
 
+#: src/View/Widgets/AppMenu.vala:115
+msgid "File Preview (Column View)"
+msgstr ""
+
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
-#: src/View/Widgets/AppMenu.vala:116
+#: src/View/Widgets/AppMenu.vala:121
 msgid "Date & Time Format"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:210
+#: src/View/Widgets/AppMenu.vala:216
 #, fuzzy
 msgid "No operation to undo"
 msgstr "Časovna omejitev operacije je potekla."
 
-#: src/View/Widgets/AppMenu.vala:217
+#: src/View/Widgets/AppMenu.vala:223
 #, fuzzy
 msgid "No operation to redo"
 msgstr "Časovna omejitev operacije je potekla."
@@ -2724,6 +2733,12 @@ msgstr "Pod to mapo"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Nedavne datoteke"
+
+#~ msgid "File not Found"
+#~ msgstr "Datoteka ni najdena"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Izbrana datoteka več ne obstaja."
 
 #~ msgid "_Mount"
 #~ msgstr "_Priklopi"

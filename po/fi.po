@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2025-12-31 04:08+0000\n"
 "PO-Revision-Date: 2025-09-29 18:55+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementaryos.org/projects/files/files/"
@@ -20,11 +20,11 @@ msgstr ""
 "X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:194
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:195
 msgid "Previous"
 msgstr "Edellinen"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:199
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:200
 msgid "Next"
 msgstr "Seuraava"
 
@@ -200,7 +200,7 @@ msgstr "Yhdistetään…"
 msgid "Please verify your user details."
 msgstr "Tarkista käyttäjätietosi."
 
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Palvelin ei vastannut aikarajan sisällä"
 
@@ -319,38 +319,38 @@ msgstr "Tiedot"
 msgid "Compact"
 msgstr ""
 
-#: libcore/File.vala:616 libcore/File.vala:1176
+#: libcore/File.vala:647 libcore/File.vala:1207
 msgid "Inaccessible"
 msgstr "Ei käytettävissä"
 
-#: libcore/File.vala:955
+#: libcore/File.vala:986
 msgid "Failed to parse the desktop file"
 msgstr "Desktop-tiedoston jäsentäminen epäonnistui"
 
-#: libcore/File.vala:959
+#: libcore/File.vala:990
 msgid "Failed to parse the desktop file: "
 msgstr "Desktop-tiedoston jäsennys epäonnistui: "
 
-#: libcore/File.vala:971
+#: libcore/File.vala:1002
 msgid "Failed to create command from file: "
 msgstr "Komennon luominen tiedostosta epäonnistui: "
 
-#: libcore/File.vala:980
+#: libcore/File.vala:1011
 msgid "Unable to Launch Desktop File: "
 msgstr "Desktop-tiedoston käynnistäminen epäonnistui: "
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1200
 msgid "Empty"
 msgstr "Tyhjä"
 
-#: libcore/File.vala:1171
+#: libcore/File.vala:1202
 #, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d kohde"
 msgstr[1] "%'d kohdetta"
 
-#: libcore/File.vala:1216
+#: libcore/File.vala:1247
 #, c-format
 msgid "link to %s"
 msgstr "linkki kohteeseen %s"
@@ -364,7 +364,7 @@ msgid "Original file"
 msgstr "Alkuperäinen tiedosto"
 
 #: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:126
 msgid "Size:"
 msgstr "Koko:"
 
@@ -1647,6 +1647,7 @@ msgstr "Tallennustila:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
+#: src/View/DetailsColumn.vala:260 src/View/DetailsColumn.vala:274
 msgid "Unknown"
 msgstr "Tuntematon"
 
@@ -1799,31 +1800,31 @@ msgstr "Todellinen koko voi olla suurempi"
 msgid "unknown"
 msgstr "tuntematon"
 
-#: src/Dialogs/PropertiesWindow.vala:486
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:311
 msgid "Loading…"
 msgstr "Ladataan…"
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:280
 msgid "Could not be determined"
 msgstr "Ei voitu määrittää"
 
-#: src/Dialogs/PropertiesWindow.vala:568
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
 msgid "Created:"
 msgstr "Luotu:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:158
 msgid "Modified:"
 msgstr "Muokattu:"
 
-#: src/Dialogs/PropertiesWindow.vala:598
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:172
 msgid "Deleted:"
 msgstr "Poistettu:"
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:181
 msgid "Media type:"
 msgstr "Mediatyyppi:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:188
 msgid "Resolution:"
 msgstr "Resoluutio:"
 
@@ -1832,11 +1833,11 @@ msgstr "Resoluutio:"
 msgid "Location:"
 msgstr "Sijainti:"
 
-#: src/Dialogs/PropertiesWindow.vala:633
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:196
 msgid "Target:"
 msgstr "Kohde:"
 
-#: src/Dialogs/PropertiesWindow.vala:641
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:206
 msgid "Original Location:"
 msgstr "Alkuperäinen sijainti:"
 
@@ -1972,7 +1973,7 @@ msgid "Invalid file name provided"
 msgstr "Virheellinen tiedostonimi"
 
 #: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:239
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:240
 msgid "New Tab"
 msgstr "Uusi välilehti"
 
@@ -2110,29 +2111,41 @@ msgid "Untitled %s"
 msgstr "Nimetön %s"
 
 #: src/View/AbstractDirectoryView.vala:2960
-#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3166
 msgid "Cannot remove files from here"
 msgstr "Tiedostojen poistaminen täältä ei onnistu"
 
 #: src/View/AbstractDirectoryView.vala:2961
-#: src/View/AbstractDirectoryView.vala:3136
-#: src/View/AbstractDirectoryView.vala:3147
-#: src/View/AbstractDirectoryView.vala:3164
+#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:3167
 msgid "You do not have permission to change this location"
 msgstr "Sinulla ei ole käyttöoikeutta muuttaa tätä sijaintia"
 
-#: src/View/AbstractDirectoryView.vala:3104
+#: src/View/AbstractDirectoryView.vala:3107
 msgid "Cannot copy files that are in the trash"
 msgstr "Roskakorissa olevia tiedostoja ei voi kopioida"
 
-#: src/View/AbstractDirectoryView.vala:3105
+#: src/View/AbstractDirectoryView.vala:3108
 msgid "Cutting the selection instead"
 msgstr "Sen sijaan leikataan valinta"
 
-#: src/View/AbstractDirectoryView.vala:3135
-#: src/View/AbstractDirectoryView.vala:3146
+#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3149
 msgid "Cannot paste files here"
 msgstr "Tiedostoja ei voi liittää tänne"
+
+#: src/View/DetailsColumn.vala:119
+#, fuzzy
+#| msgid "Name"
+msgid "Name:"
+msgstr "Nimi"
+
+#: src/View/DetailsColumn.vala:213
+#, fuzzy
+#| msgid "More Results …"
+msgid "More Details…"
+msgstr "Lisää tuloksia…"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2244,44 +2257,36 @@ msgstr "Kansion näyttäminen ei onnistu"
 msgid "The server for this folder could not be located."
 msgstr "Tämän kansion palvelinta ei voitu paikantaa."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Tiedostoa ei löytynyt"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Valittua tiedostoa ei ole enää olemassa."
-
-#: src/View/Window.vala:214
+#: src/View/Window.vala:215
 msgid "Menu"
 msgstr "Valikko"
 
-#: src/View/Window.vala:244
+#: src/View/Window.vala:245
 msgid "Closed Tabs"
 msgstr "Suljetut välilehdet"
 
-#: src/View/Window.vala:472 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "Avaa uudessa ikkunassa"
 
-#: src/View/Window.vala:473
+#: src/View/Window.vala:475
 msgid "Duplicate Tab"
 msgstr "Kahdenna välilehti"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:477
+#: src/View/Window.vala:479
 msgid "Close Tabs to the Right"
 msgstr "Sulje välilehdet tästä oikealle"
 
-#: src/View/Window.vala:478
+#: src/View/Window.vala:480
 msgid "Close Other Tabs"
 msgstr "Sulje muut välilehdet"
 
-#: src/View/Window.vala:479
+#: src/View/Window.vala:481
 msgid "Close Tab"
 msgstr "Sulje välilehti"
 
-#: src/View/Window.vala:763 src/View/Window.vala:773
+#: src/View/Window.vala:765 src/View/Window.vala:775
 msgid "(as Administrator)"
 msgstr "(ylläpitäjänä)"
 
@@ -2473,16 +2478,20 @@ msgstr "Paikalliset pikkukuvat"
 msgid "Remote Thumbnails"
 msgstr "Etäpikkukuvat"
 
+#: src/View/Widgets/AppMenu.vala:115
+msgid "File Preview (Column View)"
+msgstr ""
+
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
-#: src/View/Widgets/AppMenu.vala:116
+#: src/View/Widgets/AppMenu.vala:121
 msgid "Date & Time Format"
 msgstr "Päivän ja ajan muoto"
 
-#: src/View/Widgets/AppMenu.vala:210
+#: src/View/Widgets/AppMenu.vala:216
 msgid "No operation to undo"
 msgstr "Ei kumottavaa toimintoa"
 
-#: src/View/Widgets/AppMenu.vala:217
+#: src/View/Widgets/AppMenu.vala:223
 msgid "No operation to redo"
 msgstr "Ei uudelleentehtävää toimintoa"
 
@@ -2597,6 +2606,12 @@ msgstr "Tämän kansion alapuolella"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Äskettäin käytetty"
+
+#~ msgid "File not Found"
+#~ msgstr "Tiedostoa ei löytynyt"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Valittua tiedostoa ei ole enää olemassa."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "Haluatko luoda sen uudelleen?"

@@ -304,6 +304,37 @@ public class Files.File : GLib.Object {
         return is_image;
     }
 
+    public bool is_text () {
+        if (info == null) {
+            return false;
+        }
+
+        bool is_text = false;
+        unowned string? content_type = get_ftype ();
+        if (content_type != null) {
+            is_text = GLib.ContentType.is_mime_type (content_type, "text/*") ||
+                GLib.ContentType.is_mime_type (content_type, "application/sql");
+        }
+
+        return is_text;
+    }
+
+    public bool is_pdf () {
+        if (info == null) {
+            return false;
+        }
+
+        bool is_pdf = false;
+        unowned string? content_type = get_ftype ();
+        if (content_type != null) {
+            // https://stackoverflow.com/questions/312230/proper-mime-media-type-for-pdf-files#312258
+            is_pdf = GLib.ContentType.is_mime_type (content_type, "application/pdf") ||
+                GLib.ContentType.is_mime_type (content_type, "application/x-pdf");
+        }
+
+        return is_pdf;
+    }
+
     public bool is_trashed () {
         return FileUtils.location_is_in_trash (get_target_location ());
     }
