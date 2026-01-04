@@ -58,12 +58,12 @@ pantheon_files_core_vala_files = files(
     'Interfaces/SearchableInterface.vala',
     'Interfaces/SidebarListInterface.vala',
     'Interfaces/SidebarItemInterface.vala',
-    'Widgets/BasicBreadcrumbsEntry.vala',
-    'Widgets/BasicLocationBar.vala',
-    'Widgets/BreadcrumbElement.vala',
-    'Widgets/BreadcrumbIconList.vala',
-    'Widgets/ButtonWithMenu.vala',
-    'Widgets/ViewSwitcher.vala'
+    'View/HeaderBar/BasicBreadcrumbsEntry.vala',
+    'View/HeaderBar/BasicLocationBar.vala',
+    'View/HeaderBar/BreadcrumbElement.vala',
+    'View/HeaderBar/BreadcrumbIconList.vala',
+    'View/HeaderBar/ButtonWithMenu.vala',
+    'View/HeaderBar/ViewSwitcher.vala'
 )
 
 pantheon_files_core_c_files = files(
