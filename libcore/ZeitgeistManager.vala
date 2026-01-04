@@ -24,13 +24,12 @@ namespace Files {
         public static void report_event (string uri, string interpretation) {
 #if HAVE_ZEITGEIST
             var file = GLib.File.new_for_commandline_arg (uri);
-
             file.query_info_async.begin (ATTRS, 0, Priority.DEFAULT, null, (obj, res) => {
                 FileInfo info;
                 try {
                     info = file.query_info_async.end (res);
                 } catch (Error e) {
-                    debug ("Fetching file info folder loggin to zeitgeist failed: %s", e.message);
+                    warning ("Fetching file info folder loggin to zeitgeist failed: %s", e.message);
                     return;
                 }
                 var log = Zeitgeist.Log.get_default ();
