@@ -24,6 +24,7 @@ pantheon_files_core_vala_files = files(
     'CallWhenReady.vala',
     'ConnectServerOperation.vala',
     'ConnectServerDialog.vala',
+    'ClipboardManager.vala',
     'Directory.vala',
     'DndHandler.vala',
     'Enums.vala',
@@ -66,7 +67,13 @@ pantheon_files_core_vala_files = files(
     'View/HeaderBar/BreadcrumbIconList.vala',
     'View/HeaderBar/ButtonWithMenu.vala',
     'View/HeaderBar/ViewSwitcher.vala',
-    'View/HeaderBar/Browser.vala'
+    'View/HeaderBar/Browser.vala',
+    'View/Renderers/EmblemRenderer.vala',
+    'View/Renderers/IconRenderer.vala',
+    'View/Renderers/TextRenderer.vala',
+    'View/Widgets/AbstractEditableLabel.vala',
+    'View/Widgets/MultiLineEditableLabel.vala',
+    'View/Widgets/SingleLineEditableLabel.vala'
 )
 
 pantheon_files_core_c_files = files(

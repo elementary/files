@@ -12,14 +12,9 @@ pantheon_files_exec = executable (
     meson.project_name (),
 
     'Application.vala',
-    'ClipboardManager.vala',
     'DeepCount.vala',
-    'EmblemRenderer.vala',
-    'IconRenderer.vala',
     'main.vala',
     'ProgressUIHandler.vala',
-    'TextRenderer.vala',
-    # 'ZeitgeistManager.vala',
 
     'Dialogs/AbstractPropertiesDialog.vala',
     'Dialogs/ChooseAppDialog.vala',
@@ -37,7 +32,6 @@ pantheon_files_exec = executable (
 
     'View/AbstractDirectoryView.vala',
     'View/AbstractTreeView.vala',
-    # 'View/Browser.vala',
     'View/ColumnView.vala',
     'View/DirectoryNotFound.vala',
     'View/IconView.vala',
@@ -49,15 +43,12 @@ pantheon_files_exec = executable (
     'View/Window.vala',
     'View/DetailsColumn.vala',
 
-    'View/Widgets/AbstractEditableLabel.vala',
     'View/Widgets/AppMenu.vala',
     'View/Widgets/BreadcrumbsEntry.vala',
     'View/Widgets/LocationBar.vala',
-    'View/Widgets/MultiLineEditableLabel.vala',
     'View/Widgets/OverlayBar.vala',
     'View/Widgets/PermissionButton.vala',
     'View/Widgets/ProgressInfoWidget.vala',
-    'View/Widgets/SingleLineEditableLabel.vala',
     'View/Widgets/SearchResults.vala',
     'View/Widgets/Welcome.vala',
 
