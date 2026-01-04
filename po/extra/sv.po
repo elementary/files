@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-23 15:00+0000\n"
-"PO-Revision-Date: 2025-11-09 09:55+0000\n"
+"POT-Creation-Date: 2025-12-31 04:08+0000\n"
+"PO-Revision-Date: 2026-01-01 04:55+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <https://l10n.elementaryos.org/projects/files/extra/"
 "sv/>\n"
@@ -69,65 +69,71 @@ msgstr "Få en överblick över mer metadata i listvyn"
 msgid "Browse complex trees faster with Column view"
 msgstr "Bläddra bland komplexa träd snabbare med kolumnvy"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:269
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:83
+#: data/files.metainfo.xml.in.in:285
 msgid "Improvements:"
 msgstr "Förbättringar:"
 
 #: data/files.metainfo.xml.in.in:69
-msgid "A compact date format is introduced"
-msgstr "Ett kompakt datumformat är introducerat"
+msgid "An option to show a preview pane in Column view is introduced"
+msgstr ""
+"Ett alternativ till att visa en förhandsvisningspanel i Kolumnvy introduceras"
 
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:91
-#: data/files.metainfo.xml.in.in:109 data/files.metainfo.xml.in.in:124
-#: data/files.metainfo.xml.in.in:135 data/files.metainfo.xml.in.in:147
-#: data/files.metainfo.xml.in.in:162 data/files.metainfo.xml.in.in:178
-#: data/files.metainfo.xml.in.in:200 data/files.metainfo.xml.in.in:218
-#: data/files.metainfo.xml.in.in:241 data/files.metainfo.xml.in.in:253
-#: data/files.metainfo.xml.in.in:273
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:107 data/files.metainfo.xml.in.in:125
+#: data/files.metainfo.xml.in.in:140 data/files.metainfo.xml.in.in:151
+#: data/files.metainfo.xml.in.in:163 data/files.metainfo.xml.in.in:178
+#: data/files.metainfo.xml.in.in:194 data/files.metainfo.xml.in.in:216
+#: data/files.metainfo.xml.in.in:234 data/files.metainfo.xml.in.in:257
+#: data/files.metainfo.xml.in.in:269 data/files.metainfo.xml.in.in:289
 msgid "Minor updates:"
 msgstr "Mindre uppdateringar:"
 
-#: data/files.metainfo.xml.in.in:73
+#: data/files.metainfo.xml.in.in:73 data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:128
+#: data/files.metainfo.xml.in.in:142 data/files.metainfo.xml.in.in:153
+#: data/files.metainfo.xml.in.in:166 data/files.metainfo.xml.in.in:180
+#: data/files.metainfo.xml.in.in:198 data/files.metainfo.xml.in.in:220
+#: data/files.metainfo.xml.in.in:242 data/files.metainfo.xml.in.in:259
+#: data/files.metainfo.xml.in.in:271 data/files.metainfo.xml.in.in:291
+msgid "Updated translations"
+msgstr "Uppdaterade översättningar"
+
+#: data/files.metainfo.xml.in.in:85
+msgid "A compact date format is introduced"
+msgstr "Ett kompakt datumformat är introducerat"
+
+#: data/files.metainfo.xml.in.in:89
 msgid "The file conflict dialog now shows a missing icon"
 msgstr "Dialogen för filkonflikt visar nu en saknad ikon"
 
-#: data/files.metainfo.xml.in.in:74
+#: data/files.metainfo.xml.in.in:90
 msgid "Flickering of the pathbar with some navigation methods is fixed"
 msgstr "Flimmer för sökvägsfältet med några navigeringsmetoder är fixat"
 
-#: data/files.metainfo.xml.in.in:75
+#: data/files.metainfo.xml.in.in:91
 msgid "The option to set a default app for folders is no longer offered"
 msgstr ""
 "Alternativet att ställa in en standardapp för mappar erbjuds inte längre"
 
-#: data/files.metainfo.xml.in.in:76
+#: data/files.metainfo.xml.in.in:92
 msgid "The scrollbar no longer overlays the modification date in List view"
 msgstr "Rullningslisten överlägger inte längre ändringsdatum i listvyn"
 
-#: data/files.metainfo.xml.in.in:77 data/files.metainfo.xml.in.in:96
-#: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:126
-#: data/files.metainfo.xml.in.in:137 data/files.metainfo.xml.in.in:150
-#: data/files.metainfo.xml.in.in:164 data/files.metainfo.xml.in.in:182
-#: data/files.metainfo.xml.in.in:204 data/files.metainfo.xml.in.in:226
-#: data/files.metainfo.xml.in.in:243 data/files.metainfo.xml.in.in:255
-#: data/files.metainfo.xml.in.in:275
-msgid "Updated translations"
-msgstr "Uppdaterade översättningar"
-
-#: data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:109
 msgid "Navigation within the Trash folder now works properly"
 msgstr "Navigering i mappen Papperskorgen fungerar nu korrekt"
 
-#: data/files.metainfo.xml.in.in:94
+#: data/files.metainfo.xml.in.in:110
 msgid "The view now refreshes properly after permanent deletion of a folder"
 msgstr "Vyn uppdateras nu korrekt efter permanent borttagning av en mapp"
 
-#: data/files.metainfo.xml.in.in:95
+#: data/files.metainfo.xml.in.in:111
 msgid ""
 "The number of template items displayed in the context menu is now limited"
 msgstr "Antalet mallobjekt som visas i snabbmenyn är nu begränsat"
 
-#: data/files.metainfo.xml.in.in:111
+#: data/files.metainfo.xml.in.in:127
 msgid ""
 "The Properties Window now shows the exact date and time the file was last "
 "modified"
@@ -135,55 +141,55 @@ msgstr ""
 "I fönstret Egenskaper visas nu exakt datum och tid för senaste ändring av "
 "filen"
 
-#: data/files.metainfo.xml.in.in:149
+#: data/files.metainfo.xml.in.in:165
 msgid "Further preparation for porting to Gtk4"
 msgstr "Ytterligare förberedelser för portning till Gtk4"
 
-#: data/files.metainfo.xml.in.in:180
+#: data/files.metainfo.xml.in.in:196
 msgid "Redesign file permissions view"
 msgstr "Omarbeta vyn för filbehörigheter"
 
-#: data/files.metainfo.xml.in.in:181
+#: data/files.metainfo.xml.in.in:197
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr "Fokusera sidofältet genom att trycka på Ctrl + vänster"
 
-#: data/files.metainfo.xml.in.in:202
+#: data/files.metainfo.xml.in.in:218
 msgid "Restoring tabs from last time is now optional"
 msgstr "Återställning av flikar från förra gången är nu valfritt"
 
-#: data/files.metainfo.xml.in.in:203
+#: data/files.metainfo.xml.in.in:219
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr "Dra och välj kan inte längre göras med den sekundära pekarknappen"
 
-#: data/files.metainfo.xml.in.in:220
+#: data/files.metainfo.xml.in.in:236
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr "Avveckla stödet för att dra ut bokmärken från sidofältet"
 
-#: data/files.metainfo.xml.in.in:221
+#: data/files.metainfo.xml.in.in:237
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr "Fixa oväntad rullning vid namnbyte på en mapp"
 
-#: data/files.metainfo.xml.in.in:222
+#: data/files.metainfo.xml.in.in:238
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 "Åtgärdar en krasch vid växling till visning som rutnät under sällsynta "
 "omständigheter"
 
-#: data/files.metainfo.xml.in.in:223
+#: data/files.metainfo.xml.in.in:239
 msgid "Ensure the selection persists after refreshing the view"
 msgstr "Se till att markeringen kvarstår efter uppdatering av vyn"
 
-#: data/files.metainfo.xml.in.in:224
+#: data/files.metainfo.xml.in.in:240
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "Fixa att Filer inte öppnas om man försöker återställa en frånkopplad plats"
 
-#: data/files.metainfo.xml.in.in:225
+#: data/files.metainfo.xml.in.in:241
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr "Åtgärda att vyn fortsätter att visas när en plats avmonteras"
 
-#: data/files.metainfo.xml.in.in:271
+#: data/files.metainfo.xml.in.in:287
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
