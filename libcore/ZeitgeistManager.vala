@@ -29,7 +29,7 @@ namespace Files {
                 try {
                     info = file.query_info_async.end (res);
                 } catch (Error e) {
-                    warning ("Fetching file info folder loggin to zeitgeist failed: %s", e.message);
+                    debug ("Fetching file info folder loggin to zeitgeist failed: %s", e.message);
                     return;
                 }
                 var log = Zeitgeist.Log.get_default ();

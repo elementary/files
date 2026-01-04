@@ -2,7 +2,6 @@ pantheon_files_deps = [
     common_deps,
     handy_dep,
     pantheon_files_core_dep,
-    # zeitgeist_dep,
     project_config_dep,
     portal_dep,
     portal_gtk3_dep
