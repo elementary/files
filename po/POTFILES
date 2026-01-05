@@ -39,12 +39,12 @@ libcore/FileOperations/CopyMoveJob.vala
 libcore/FileOperations/CreateJob.vala
 libcore/FileOperations/DeleteJob.vala
 
-libcore/Widgets/BasicBreadcrumbsEntry.vala
-libcore/Widgets/BasicLocationBar.vala
-libcore/Widgets/BreadcrumbElement.vala
-libcore/Widgets/BreadcrumbIconList.vala
-libcore/Widgets/ButtonWithMenu.vala
-libcore/Widgets/ViewSwitcher.vala
+libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala
+libcore/View/HeaderBar//BasicLocationBar.vala
+libcore/View/HeaderBar/BreadcrumbElement.vala
+libcore/View/HeaderBar/BreadcrumbIconList.vala
+libcore/View/HeaderBar/ButtonWithMenu.vala
+libcore/View/HeaderBar/ViewSwitcher.vala
 
 plugins/pantheon-files-trash/plugin.vala
 plugins/send-by-email/plugin.vala
