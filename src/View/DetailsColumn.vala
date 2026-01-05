@@ -6,12 +6,6 @@
  */
 
 public class Files.View.DetailsColumn : Gtk.Box {
-    private const int PREVIEW_SIZE = 512;
-    private const int PREVIEW_H_MARGIN = 24;
-    private const int MAX_PREVIEW_FILE_SIZE = 2 * 8 * 1024 * 1024; // 2MB
-    private GLib.Cancellable? cancellable;
-    private Gtk.Label resolution_value;
-    private bool previewing_text = false;
     public int width {
         get {
             return PREVIEW_SIZE + 2 * PREVIEW_H_MARGIN;
@@ -20,6 +14,13 @@ public class Files.View.DetailsColumn : Gtk.Box {
 
     public Files.File file { get; construct; }
     public Files.AbstractDirectoryView view { get; construct; }
+
+    private const int PREVIEW_SIZE = 512;
+    private const int PREVIEW_H_MARGIN = 24;
+    private const int MAX_PREVIEW_FILE_SIZE = 2 * 8 * 1024 * 1024; // 2MB
+    private GLib.Cancellable? cancellable;
+    private Gtk.Label resolution_value;
+    private bool previewing_text = false;
 
     public DetailsColumn (Files.File file, Files.AbstractDirectoryView view) {
         Object (
@@ -50,7 +51,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
             height_request = PREVIEW_SIZE
         };
 
-        Gtk.TextView file_text = new Gtk.TextView () {
+        var file_text = new Gtk.TextView () {
             cursor_visible = false,
             editable = false,
             top_margin = 12,
@@ -59,7 +60,10 @@ public class Files.View.DetailsColumn : Gtk.Box {
             right_margin = 12,
         };
 
-        Gdk.Pixbuf? ico_pix = file.get_icon_pixbuf (PREVIEW_SIZE, get_scale_factor (), Files.File.IconFlags.NONE);
+        Gdk.Pixbuf? ico_pix = file.get_icon_pixbuf (
+            PREVIEW_SIZE, get_scale_factor (), Files.File.IconFlags.NONE
+        );
+
         if (ico_pix != null) {
             file_image.set_from_gicon (ico_pix, Gtk.IconSize.DIALOG);
         }
@@ -70,8 +74,9 @@ public class Files.View.DetailsColumn : Gtk.Box {
 
             if (file.is_image ()) {
                 try {
-                    var file_pix = new Gdk.Pixbuf
-                        .from_file_at_scale (filename, PREVIEW_SIZE, PREVIEW_SIZE, true);
+                    var file_pix = new Gdk.Pixbuf.from_file_at_scale (
+                        filename, PREVIEW_SIZE, PREVIEW_SIZE, true
+                    );
 
                     file_image.set_from_pixbuf (file_pix);
                 } catch (Error e) {
@@ -81,18 +86,27 @@ public class Files.View.DetailsColumn : Gtk.Box {
             // thanks to https://wiki.gnome.org/Projects/Vala/PopplerSample
             } else if (file.is_pdf ()) {
                 try {
-                    Poppler.Document doc = new Poppler.Document.from_file (Filename.to_uri ( filename ), null);
+                    var doc = new Poppler.Document.from_file (
+                        Filename.to_uri (filename), null
+                    );
 
                     var page = doc.get_page (0); //TODO: multi-page?
 
-                    var surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, PREVIEW_SIZE, PREVIEW_SIZE);
+                    var surface = new Cairo.ImageSurface (
+                        Cairo.Format.ARGB32, PREVIEW_SIZE, PREVIEW_SIZE
+                    );
+
                     var ctx = new Cairo.Context (surface);
                     ctx.set_source_rgb (255, 255, 255);
                     ctx.paint ();
                     ctx.scale (0.5, 0.5); //TODO: I just eye-balled this
                     page.render (ctx);
                     ctx.restore ();
-                    var pdf_pix = Gdk.pixbuf_get_from_surface (surface, 0, 0, PREVIEW_SIZE, PREVIEW_SIZE);
+
+                    var pdf_pix = Gdk.pixbuf_get_from_surface (
+                        surface, 0, 0, PREVIEW_SIZE, PREVIEW_SIZE
+                    );
+
                     file_image.set_from_pixbuf (pdf_pix);
                 } catch (Error e) {
                     warning ("Error: %s\n", e.message);
@@ -115,9 +129,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
         var name_key_label = make_key_label (_("Name:"));
         var name_value = make_value_label (file.get_display_name ());
 
-        info_grid.attach (name_key_label, 0, 1);
-        info_grid.attach_next_to (name_value, name_key_label, RIGHT);
-
         /** begin adapted copy-pasta from PropertiesWindow.construct_info_panel **/
         var size_key_label = make_key_label (_("Size:"));
         var spinner = new Gtk.Spinner () {
@@ -127,6 +138,8 @@ public class Files.View.DetailsColumn : Gtk.Box {
         var size_value = make_value_label ("");
         size_value.label = GLib.format_size (file_real_size);
 
+        info_grid.attach (name_key_label, 0, 1);
+        info_grid.attach_next_to (name_value, name_key_label, RIGHT);
         info_grid.attach (size_key_label, 0, 2, 1);
         info_grid.attach_next_to (spinner, size_key_label, RIGHT);
         info_grid.attach_next_to (size_value, size_key_label, RIGHT);
@@ -141,7 +154,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
             var key_label = make_key_label (_("Created:"));
             var value_label = make_value_label (time_created);
             info_grid.attach (key_label, 0, n, 1, 1);
-            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            info_grid.attach_next_to (value_label, key_label, RIGHT, 3, 1);
             n++;
         }
 
@@ -154,7 +167,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
             var key_label = make_key_label (_("Modified:"));
             var value_label = make_value_label (time_modified);
             info_grid.attach (key_label, 0, n, 1, 1);
-            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            info_grid.attach_next_to (value_label, key_label, RIGHT, 3, 1);
             n++;
         }
 
@@ -168,7 +181,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
                 var key_label = make_key_label (_("Deleted:"));
                 var value_label = make_value_label (deletion_date);
                 info_grid.attach (key_label, 0, n, 1, 1);
-                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+                info_grid.attach_next_to (value_label, key_label, RIGHT, 3, 1);
                 n++;
             }
         }
@@ -177,14 +190,14 @@ public class Files.View.DetailsColumn : Gtk.Box {
         var mimetype_key = make_key_label (_("Media type:"));
         var mimetype_value = make_value_label (ftype);
         info_grid.attach (mimetype_key, 0, n, 1, 1);
-        info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
+        info_grid.attach_next_to (mimetype_value, mimetype_key, RIGHT, 3, 1);
         n++;
 
         if (file.is_image ()) {
             var resolution_key = make_key_label (_("Resolution:"));
             resolution_value = make_value_label (resolution (file));
             info_grid.attach (resolution_key, 0, n, 1, 1);
-            info_grid.attach_next_to (resolution_value, resolution_key, Gtk.PositionType.RIGHT, 3, 1);
+            info_grid.attach_next_to (resolution_value, resolution_key, RIGHT, 3, 1);
             n++;
         }
 
@@ -194,7 +207,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
                 file.info.get_attribute_byte_string (GLib.FileAttribute.STANDARD_SYMLINK_TARGET)
             );
             info_grid.attach (key_label, 0, n, 1, 1);
-            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            info_grid.attach_next_to (value_label, key_label, RIGHT, 3, 1);
             n++;
         }
 
@@ -202,7 +215,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
             var key_label = make_key_label (_("Original Location:"));
             var value_label = make_value_label (original_location (file));
             info_grid.attach (key_label, 0, n, 1, 1);
-            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            info_grid.attach_next_to (value_label, key_label, RIGHT, 3, 1);
             n++;
         }
 
@@ -210,17 +223,12 @@ public class Files.View.DetailsColumn : Gtk.Box {
             halign = END
         };
 
-        more_info_button.clicked.connect (() => {
-            var the_file_in_a_list = new GLib.List<Files.File> ();
-            the_file_in_a_list.append (file);
-            new View.PropertiesWindow (the_file_in_a_list, view, Files.get_active_window ());
-        });
-
         var info_window = new Gtk.ScrolledWindow (null, null) {
             child = info_grid,
             propagate_natural_height = true,
             hscrollbar_policy = Gtk.PolicyType.NEVER
         };
+
         if (previewing_text) {
             var text_window = new Gtk.ScrolledWindow (null, null) {
                 child = file_text,
@@ -239,6 +247,12 @@ public class Files.View.DetailsColumn : Gtk.Box {
         add (more_info_button);
 
         show_all ();
+
+        more_info_button.clicked.connect (() => {
+            var the_file_in_a_list = new GLib.List<Files.File> ();
+            the_file_in_a_list.append (file);
+            new View.PropertiesWindow (the_file_in_a_list, view, Files.get_active_window ());
+        });
     }
 
     /** Also an adjusted copy from PropertiesWindow **/
