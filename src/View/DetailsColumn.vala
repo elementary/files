@@ -38,11 +38,13 @@ public class Files.View.DetailsColumn : Gtk.Box {
         };
 
         var file_image = new Gtk.Image () {
-            halign = START,
-            valign = CENTER,
-            width_request = PREVIEW_SIZE,
-            height_request = PREVIEW_SIZE
+            hexpand = true,
+            vexpand = true,
+            halign = CENTER,
+            valign = CENTER
         };
+        file_image.get_style_context ().add_class (Granite.STYLE_CLASS_CARD);
+        file_image.get_style_context ().add_class (Granite.STYLE_CLASS_CHECKERBOARD);
 
         var file_text = new Gtk.TextView () {
             cursor_visible = false,
@@ -58,7 +60,8 @@ public class Files.View.DetailsColumn : Gtk.Box {
         );
 
         if (ico_pix != null) {
-            file_image.set_from_gicon (ico_pix, Gtk.IconSize.DIALOG);
+            file_image.gicon = ico_pix;
+            file_image.pixel_size = 48;
         }
 
         // overwriting, yes, but easier on the boolean
@@ -66,15 +69,8 @@ public class Files.View.DetailsColumn : Gtk.Box {
             var filename = file.location.get_path ();
 
             if (file.is_image ()) {
-                try {
-                    var file_pix = new Gdk.Pixbuf.from_file_at_scale (
-                        filename, PREVIEW_SIZE, PREVIEW_SIZE, true
-                    );
-
-                    file_image.set_from_pixbuf (file_pix);
-                } catch (Error e) {
-                    warning ("Error: %s\n", e.message);
-                }
+                file_image.gicon = new FileIcon (file.location);
+                file_image.pixel_size = PREVIEW_SIZE;
 
             // thanks to https://wiki.gnome.org/Projects/Vala/PopplerSample
             } else if (file.is_pdf ()) {
