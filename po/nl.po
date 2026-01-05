@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-31 04:08+0000\n"
+"POT-Creation-Date: 2026-01-05 23:31+0000\n"
 "PO-Revision-Date: 2026-01-01 04:55+0000\n"
 "Last-Translator: Bas Ernst <50556177+ErnstBas@users.noreply.github.com>\n"
-"Language-Team: Dutch <https://l10n.elementaryos.org/projects/files/files/nl/>"
-"\n"
+"Language-Team: Dutch <https://l10n.elementaryos.org/projects/files/files/nl/"
+">\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -363,7 +363,7 @@ msgid "Original file"
 msgstr "Origineel bestand"
 
 #: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:126
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
 msgid "Size:"
 msgstr "Grootte:"
 
@@ -1508,33 +1508,33 @@ msgid_plural "%'d files left to trash"
 msgstr[0] "%'d bestand over om in de prullenbak te gooien"
 msgstr[1] "%'d bestanden over om in de prullenbak te gooien"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
 msgstr "Navigeer naar %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:312
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:312
 #, c-format
 msgid "Go to %s"
 msgstr "Ga naar %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:389
 msgid "Type Path"
 msgstr "Type pad"
 
-#: libcore/Widgets/BasicLocationBar.vala:88
+#: libcore/View/HeaderBar/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr "Geef een pad op"
 
-#: libcore/Widgets/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "Raster-weergave"
 
-#: libcore/Widgets/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "Lijst-weergave"
 
-#: libcore/Widgets/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "Kolom-weergave"
 
@@ -1660,7 +1660,7 @@ msgstr "Capaciteit:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:260 src/View/DetailsColumn.vala:274
+#: src/View/DetailsColumn.vala:255 src/View/DetailsColumn.vala:269
 msgid "Unknown"
 msgstr "Onbekend"
 
@@ -1814,31 +1814,31 @@ msgstr "De daadwerkelijke grootte kan groter zijn"
 msgid "unknown"
 msgstr "onbekend"
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:311
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:306
 msgid "Loading…"
 msgstr "Laden…"
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:280
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:275
 msgid "Could not be determined"
 msgstr "Kon niet bepaald worden"
 
-#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:141
 msgid "Created:"
 msgstr "Gemaakt:"
 
-#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:158
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:154
 msgid "Modified:"
 msgstr "Gewijzigd:"
 
-#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:172
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:168
 msgid "Deleted:"
 msgstr "Verwijderd:"
 
-#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:181
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:177
 msgid "Media type:"
 msgstr "Mediatype:"
 
-#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:188
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:184
 msgid "Resolution:"
 msgstr "Resolutie:"
 
@@ -1847,11 +1847,11 @@ msgstr "Resolutie:"
 msgid "Location:"
 msgstr "Locatie:"
 
-#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:196
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:192
 msgid "Target:"
 msgstr "Doel:"
 
-#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:206
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:202
 msgid "Original Location:"
 msgstr "Oorspronkelijke locatie:"
 
@@ -2149,13 +2149,15 @@ msgstr "De selectie wordt in plaats daarvan geknipt"
 msgid "Cannot paste files here"
 msgstr "Kan bestanden hier niet plakken"
 
-#: src/View/DetailsColumn.vala:119
+#: src/View/DetailsColumn.vala:115
 msgid "Name:"
 msgstr "Naam:"
 
-#: src/View/DetailsColumn.vala:213
-msgid "More Details…"
-msgstr "Meer details…"
+#: src/View/DetailsColumn.vala:209
+#, fuzzy
+#| msgid "Properties"
+msgid "Properties…"
+msgstr "Eigenschappen"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2617,6 +2619,9 @@ msgstr "Onder deze map"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Recent gebruikt"
+
+#~ msgid "More Details…"
+#~ msgstr "Meer details…"
 
 #~ msgid "File not Found"
 #~ msgstr "Bestand niet gevonden"

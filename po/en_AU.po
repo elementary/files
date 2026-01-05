@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-31 04:08+0000\n"
+"POT-Creation-Date: 2026-01-05 23:31+0000\n"
 "PO-Revision-Date: 2022-04-20 10:20+0000\n"
 "Last-Translator: Joel Jose <joel750jose@gmail.com>\n"
 "Language-Team: English (Australia) <https://l10n.elementary.io/projects/"
@@ -387,7 +387,7 @@ msgid "Original file"
 msgstr "Original file"
 
 #: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:126
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
 msgid "Size:"
 msgstr "Size:"
 
@@ -1548,34 +1548,34 @@ msgid_plural "%'d files left to trash"
 msgstr[0] "%'d file left to trash"
 msgstr[1] "%'d files left to trash"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
 msgstr "Navigate to %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:312
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:312
 #, c-format
 msgid "Go to %s"
 msgstr "Go to %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:389
 #, fuzzy
 msgid "Type Path"
 msgstr "Type a path"
 
-#: libcore/Widgets/BasicLocationBar.vala:88
+#: libcore/View/HeaderBar/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr "Type a path"
 
-#: libcore/Widgets/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "View as Grid"
 
-#: libcore/Widgets/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "View as List"
 
-#: libcore/Widgets/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "View in Columns"
 
@@ -1705,7 +1705,7 @@ msgstr "Capacity:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:260 src/View/DetailsColumn.vala:274
+#: src/View/DetailsColumn.vala:255 src/View/DetailsColumn.vala:269
 msgid "Unknown"
 msgstr "Unknown"
 
@@ -1867,32 +1867,32 @@ msgstr "Actual Size Could Be Larger"
 msgid "unknown"
 msgstr "unknown"
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:311
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:306
 msgid "Loading…"
 msgstr "Loading…"
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:280
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:275
 msgid "Could not be determined"
 msgstr "Could not be determined"
 
-#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:141
 msgid "Created:"
 msgstr "Created:"
 
-#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:158
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:154
 msgid "Modified:"
 msgstr "Modified:"
 
-#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:172
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:168
 msgid "Deleted:"
 msgstr "Deleted:"
 
-#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:181
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:177
 #, fuzzy
 msgid "Media type:"
 msgstr "Mimetype:"
 
-#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:188
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:184
 msgid "Resolution:"
 msgstr "Resolution:"
 
@@ -1901,11 +1901,11 @@ msgstr "Resolution:"
 msgid "Location:"
 msgstr "Location:"
 
-#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:196
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:192
 msgid "Target:"
 msgstr "Target:"
 
-#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:206
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:202
 msgid "Original Location:"
 msgstr "Original Location:"
 
@@ -2216,17 +2216,17 @@ msgstr "Cutting the selection instead"
 msgid "Cannot paste files here"
 msgstr "Cannot paste files here"
 
-#: src/View/DetailsColumn.vala:119
+#: src/View/DetailsColumn.vala:115
 #, fuzzy
 #| msgid "Name"
 msgid "Name:"
 msgstr "Name"
 
-#: src/View/DetailsColumn.vala:213
+#: src/View/DetailsColumn.vala:209
 #, fuzzy
-#| msgid "Server Details"
-msgid "More Details…"
-msgstr "Server Details"
+#| msgid "Properties"
+msgid "Properties…"
+msgstr "Properties"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2714,6 +2714,11 @@ msgstr "Below This Folder"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Recently used"
+
+#, fuzzy
+#~| msgid "Server Details"
+#~ msgid "More Details…"
+#~ msgstr "Server Details"
 
 #~ msgid "File not Found"
 #~ msgstr "File not Found"

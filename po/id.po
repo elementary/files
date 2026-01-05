@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-31 04:08+0000\n"
+"POT-Creation-Date: 2026-01-05 23:31+0000\n"
 "PO-Revision-Date: 2023-05-21 06:06+0000\n"
 "Last-Translator: Faisal Rachmadin "
 "<frachmadin@users.noreply.l10n.elementary.io>\n"
@@ -362,7 +362,7 @@ msgid "Original file"
 msgstr "Berkas asli"
 
 #: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:126
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
 msgid "Size:"
 msgstr "Ukuran:"
 
@@ -1475,33 +1475,33 @@ msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d berkas tersisa dibuang ke keranjang sampah"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
 msgstr "Navigasikan ke %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:312
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:312
 #, c-format
 msgid "Go to %s"
 msgstr "Pergi ke %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:389
 msgid "Type Path"
 msgstr "Ketik Jalur"
 
-#: libcore/Widgets/BasicLocationBar.vala:88
+#: libcore/View/HeaderBar/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr "Ketikkan sebuah jalur"
 
-#: libcore/Widgets/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "Lihat sebagai Grid"
 
-#: libcore/Widgets/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "Lihat sebagai Daftar"
 
-#: libcore/Widgets/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "Lihat sebagai Kolom"
 
@@ -1627,7 +1627,7 @@ msgstr "Kapasitas:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:260 src/View/DetailsColumn.vala:274
+#: src/View/DetailsColumn.vala:255 src/View/DetailsColumn.vala:269
 msgid "Unknown"
 msgstr "Tidak Diketahui"
 
@@ -1779,31 +1779,31 @@ msgstr "Ukuran Sebenarnya Bisa Lebih Besar"
 msgid "unknown"
 msgstr "tidak diketahui"
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:311
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:306
 msgid "Loading…"
 msgstr "Memuat…"
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:280
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:275
 msgid "Could not be determined"
 msgstr "Tidak bisa ditentukan"
 
-#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:141
 msgid "Created:"
 msgstr "Dibuat:"
 
-#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:158
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:154
 msgid "Modified:"
 msgstr "Diubah:"
 
-#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:172
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:168
 msgid "Deleted:"
 msgstr "Dihapus:"
 
-#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:181
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:177
 msgid "Media type:"
 msgstr "Jenis media:"
 
-#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:188
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:184
 msgid "Resolution:"
 msgstr "Resolusi:"
 
@@ -1812,11 +1812,11 @@ msgstr "Resolusi:"
 msgid "Location:"
 msgstr "Lokasi:"
 
-#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:196
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:192
 msgid "Target:"
 msgstr "Sasaran:"
 
-#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:206
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:202
 msgid "Original Location:"
 msgstr "Lokasi Asli:"
 
@@ -2118,17 +2118,17 @@ msgstr "Potong seleksi sebagai gantinya"
 msgid "Cannot paste files here"
 msgstr "Tidak dapat menempelkan berkas kesini"
 
-#: src/View/DetailsColumn.vala:119
+#: src/View/DetailsColumn.vala:115
 #, fuzzy
 #| msgid "Name"
 msgid "Name:"
 msgstr "Nama"
 
-#: src/View/DetailsColumn.vala:213
+#: src/View/DetailsColumn.vala:209
 #, fuzzy
-#| msgid "More Results …"
-msgid "More Details…"
-msgstr "Hasil Lebih …"
+#| msgid "Properties"
+msgid "Properties…"
+msgstr "Properti"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2590,6 +2590,11 @@ msgstr "Di bawah Folder Ini"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Terkini Digunakan"
+
+#, fuzzy
+#~| msgid "More Results …"
+#~ msgid "More Details…"
+#~ msgstr "Hasil Lebih …"
 
 #~ msgid "File not Found"
 #~ msgstr "Berkas tidak ditemukan"
