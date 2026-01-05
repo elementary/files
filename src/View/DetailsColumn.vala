@@ -30,13 +30,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
     }
 
     construct {
-        orientation = VERTICAL;
-        spacing = 12;
-        margin_top = 12;
-        margin_bottom = 12;
-        margin_start = 24;
-        margin_end = 24;
-
         var file_real_size = PropertiesWindow.file_real_size (file);
 
         var info_grid = new Gtk.Grid () {
@@ -243,6 +236,12 @@ public class Files.View.DetailsColumn : Gtk.Box {
             add (file_image);
         }
 
+        orientation = VERTICAL;
+        spacing = 12;
+        margin_top = 12;
+        margin_bottom = 12;
+        margin_start = 12;
+        margin_end = 12;
         add (info_window);
         add (more_info_button);
 
