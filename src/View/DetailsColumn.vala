@@ -112,10 +112,6 @@ public class Files.View.DetailsColumn : Gtk.Box {
             }
         }
 
-        var details_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
-            vexpand = true
-        };
-
         var name_key_label = make_key_label (_("Name:"));
         var name_value = make_value_label (file.get_display_name ());
 
@@ -210,11 +206,10 @@ public class Files.View.DetailsColumn : Gtk.Box {
             n++;
         }
 
-        Gtk.Button more_info_button = new Gtk.Button.with_label (_("More Details…")) {
-            halign = Gtk.Align.START
+        var more_info_button = new Gtk.Button.with_label (_("Properties…")) {
+            halign = END
         };
 
-        more_info_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
         more_info_button.clicked.connect (() => {
             var the_file_in_a_list = new GLib.List<Files.File> ();
             the_file_in_a_list.append (file);
