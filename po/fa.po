@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-31 04:08+0000\n"
+"POT-Creation-Date: 2026-01-05 23:31+0000\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Persian <fa@li.org>\n"
@@ -383,7 +383,7 @@ msgid "Original file"
 msgstr "پرونده اصلی"
 
 #: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:126
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
 msgid "Size:"
 msgstr "اندازه:"
 
@@ -1492,34 +1492,34 @@ msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d پرونده در زباله‌دان باقی مانده است."
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
 msgstr ""
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:312
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:312
 #, c-format
 msgid "Go to %s"
 msgstr "برو به %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:389
 #, fuzzy
 msgid "Type Path"
 msgstr "نوع"
 
-#: libcore/Widgets/BasicLocationBar.vala:88
+#: libcore/View/HeaderBar/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr ""
 
-#: libcore/Widgets/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "نمایش جدولی"
 
-#: libcore/Widgets/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "نمایش فهرستی"
 
-#: libcore/Widgets/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "نمایش ستونی"
 
@@ -1649,7 +1649,7 @@ msgstr ""
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:260 src/View/DetailsColumn.vala:274
+#: src/View/DetailsColumn.vala:255 src/View/DetailsColumn.vala:269
 msgid "Unknown"
 msgstr ""
 
@@ -1810,31 +1810,31 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:311
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:306
 msgid "Loading…"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:280
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:275
 msgid "Could not be determined"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:141
 msgid "Created:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:158
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:154
 msgid "Modified:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:172
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:168
 msgid "Deleted:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:181
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:177
 msgid "Media type:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:188
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:184
 msgid "Resolution:"
 msgstr ""
 
@@ -1843,11 +1843,11 @@ msgstr ""
 msgid "Location:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:196
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:192
 msgid "Target:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:206
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:202
 msgid "Original Location:"
 msgstr ""
 
@@ -2152,15 +2152,15 @@ msgstr ""
 msgid "Cannot paste files here"
 msgstr ""
 
-#: src/View/DetailsColumn.vala:119
+#: src/View/DetailsColumn.vala:115
 msgid "Name:"
 msgstr ""
 
-#: src/View/DetailsColumn.vala:213
+#: src/View/DetailsColumn.vala:209
 #, fuzzy
-#| msgid "Server Details"
-msgid "More Details…"
-msgstr "جزئیات کارگزار"
+#| msgid "Properties"
+msgid "Properties…"
+msgstr "ویژگی‌ها"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2639,6 +2639,11 @@ msgstr ""
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Server Details"
+#~ msgid "More Details…"
+#~ msgstr "جزئیات کارگزار"
 
 #~ msgid "_Mount"
 #~ msgstr "_سوار کردن"

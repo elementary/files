@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-31 04:08+0000\n"
+"POT-Creation-Date: 2026-01-05 23:31+0000\n"
 "PO-Revision-Date: 2026-01-01 04:55+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <italo@gp-mail.com>\n"
 "Language-Team: Spanish <https://l10n.elementaryos.org/projects/files/files/"
@@ -363,7 +363,7 @@ msgid "Original file"
 msgstr "Archivo original"
 
 #: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:126
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
 msgid "Size:"
 msgstr "Tamaño:"
 
@@ -1498,33 +1498,33 @@ msgid_plural "%'d files left to trash"
 msgstr[0] "Queda %'d archivo por mover a la papelera"
 msgstr[1] "Quedan %'d archivos por mover a la papelera"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
 msgstr "Navegar a %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:312
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:312
 #, c-format
 msgid "Go to %s"
 msgstr "Ir a %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:389
 msgid "Type Path"
 msgstr "Escribir una ruta"
 
-#: libcore/Widgets/BasicLocationBar.vala:88
+#: libcore/View/HeaderBar/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr "Escriba una ruta"
 
-#: libcore/Widgets/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "Ver como cuadrícula"
 
-#: libcore/Widgets/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "Ver como lista"
 
-#: libcore/Widgets/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "Ver en columnas"
 
@@ -1651,7 +1651,7 @@ msgstr "Capacidad:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:260 src/View/DetailsColumn.vala:274
+#: src/View/DetailsColumn.vala:255 src/View/DetailsColumn.vala:269
 msgid "Unknown"
 msgstr "Desconocido"
 
@@ -1804,31 +1804,31 @@ msgstr "El tamaño real podría ser mayor"
 msgid "unknown"
 msgstr "desconocido"
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:311
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:306
 msgid "Loading…"
 msgstr "Cargando…"
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:280
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:275
 msgid "Could not be determined"
 msgstr "No se pudo determinar"
 
-#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:141
 msgid "Created:"
 msgstr "Creado:"
 
-#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:158
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:154
 msgid "Modified:"
 msgstr "Modificado:"
 
-#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:172
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:168
 msgid "Deleted:"
 msgstr "Eliminado:"
 
-#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:181
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:177
 msgid "Media type:"
 msgstr "Tipo de medio:"
 
-#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:188
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:184
 msgid "Resolution:"
 msgstr "Resolución:"
 
@@ -1837,11 +1837,11 @@ msgstr "Resolución:"
 msgid "Location:"
 msgstr "Ubicación:"
 
-#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:196
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:192
 msgid "Target:"
 msgstr "Objetivo:"
 
-#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:206
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:202
 msgid "Original Location:"
 msgstr "Ubicación original:"
 
@@ -2137,13 +2137,15 @@ msgstr "Se cortó la selección en su lugar"
 msgid "Cannot paste files here"
 msgstr "No se pueden pegar archivos aquí"
 
-#: src/View/DetailsColumn.vala:119
+#: src/View/DetailsColumn.vala:115
 msgid "Name:"
 msgstr "Nombre:"
 
-#: src/View/DetailsColumn.vala:213
-msgid "More Details…"
-msgstr "Más detalles…"
+#: src/View/DetailsColumn.vala:209
+#, fuzzy
+#| msgid "Properties"
+msgid "Properties…"
+msgstr "Propiedades"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2605,6 +2607,9 @@ msgstr "Adentro de esta carpeta"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Utilizados recientemente"
+
+#~ msgid "More Details…"
+#~ msgstr "Más detalles…"
 
 #~ msgid "File not Found"
 #~ msgstr "No se encontró el archivo"
