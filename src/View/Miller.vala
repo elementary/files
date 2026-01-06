@@ -40,7 +40,7 @@ namespace Files.View {
         public GLib.List<View.Slot> slot_list = null;
         public int total_width = 0;
 
-        private View.DetailsColumn details;
+        private View.DetailsColumn? details = null;
 
         public override bool is_frozen {
             set {
@@ -149,7 +149,10 @@ namespace Files.View {
                     details = new View.DetailsColumn (file, view);
                     last_slot.colpane.pack_start (details, false, false);
                     last_slot.hpane.show_all ();
+                    last_slot.width += details.width;
                     update_total_width ();
+                    schedule_scroll_to_slot (last_slot, true);
+
                     return Source.REMOVE;
                 });
             }
@@ -157,9 +160,12 @@ namespace Files.View {
 
         public void clear_file_details () {
             if (details is Gtk.Widget) {
+                last_slot.width -= details.width;
                 last_slot.colpane.remove (details);
                 last_slot.hpane.show_all ();
+                details = null;
                 update_total_width ();
+                schedule_scroll_to_slot (last_slot, true);
             }
         }
 
