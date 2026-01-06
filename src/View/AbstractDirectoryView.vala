@@ -1492,7 +1492,10 @@ namespace Files {
         }
 
         private void on_dateformat_changed () {
-            slot.reload ();
+            //Only need to reload where date is displayed
+            if (slot.mode == ViewMode.LIST) {
+                slot.reload ();
+            }
         }
 
     /** Handle popup menu events */
