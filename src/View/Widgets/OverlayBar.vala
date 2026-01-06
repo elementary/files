@@ -90,7 +90,6 @@ namespace Files.View {
             deep_count_cancel ();
 
             if (update_timeout_id > 0) {
-                warning ("remove source %u", update_timeout_id);
                 GLib.Source.remove (update_timeout_id);
                 update_timeout_id = 0;
             }
