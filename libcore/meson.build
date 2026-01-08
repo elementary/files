@@ -19,8 +19,6 @@ pantheon_files_core_deps = [
 
 pantheon_files_core_vala_files = files(
     'AbstractSlot.vala',
-    'Bookmark.vala',
-    'BookmarkList.vala',
     'CallWhenReady.vala',
     'ConnectServerOperation.vala',
     'ConnectServerDialog.vala',
@@ -41,7 +39,6 @@ pantheon_files_core_vala_files = files(
     'ProgressInfo.vala',
     'ProgressInfoManager.vala',
     'Resources.vala',
-    'SidebarPluginItem.vala',
     'SoundManager.vala',
     'StockDialogs.vala',
     'Thumbnailer.vala',
@@ -71,6 +68,9 @@ pantheon_files_core_vala_files = files(
     'View/Renderers/EmblemRenderer.vala',
     'View/Renderers/IconRenderer.vala',
     'View/Renderers/TextRenderer.vala',
+    'View/Sidebar/Bookmark.vala',
+    'View/Sidebar/BookmarkList.vala',
+    'View/Sidebar/SidebarPluginItem.vala',
     'View/Widgets/AbstractEditableLabel.vala',
     'View/Widgets/MultiLineEditableLabel.vala',
     'View/Widgets/SingleLineEditableLabel.vala'
