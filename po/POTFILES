@@ -3,14 +3,11 @@ filechooser-portal/Main.vala
 
 libcore/AbstractSlot.vala
 libcore/CallWhenReady.vala
-libcore/ConnectServerDialog.vala
-libcore/ConnectServerOperation.vala
 libcore/Directory.vala
 libcore/DndHandler.vala
 libcore/Enums.vala
 libcore/File.vala
 libcore/FileChanges.vala
-libcore/FileConflictDialog.vala
 libcore/FileUtils.vala
 libcore/IconInfo.vala
 libcore/ListModel.vala
@@ -23,7 +20,6 @@ libcore/ProgressInfoManager.vala
 libcore/ProgressInfo.vala
 libcore/Resources.vala
 libcore/SoundManager.vala
-libcore/StockDialogs.vala
 libcore/Thumbnailer.vala
 libcore/TrashMonitor.vala
 libcore/UndoManager.vala
@@ -37,6 +33,11 @@ libcore/FileOperations/MountUtils.vala
 libcore/FileOperations/CopyMoveJob.vala
 libcore/FileOperations/CreateJob.vala
 libcore/FileOperations/DeleteJob.vala
+
+libcore/View/Dialogs/ConnectServerOperation.vala,
+libcore/View/Dialogs/ConnectServerDialog.vala,
+libcore/View/Dialogs/FileConflictDialog.vala,
+libcore/View/Dialogs/StockDialogs.vala,
 
 libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala
 libcore/View/HeaderBar/BasicLocationBar.vala
