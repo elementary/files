@@ -14,6 +14,7 @@ pantheon_files_core_deps = [
     pango_dep,
     sqlite3_dep,
     libcanberra_dep,
+    zeitgeist_dep
 ]
 
 pantheon_files_core_vala_files = files(
@@ -23,6 +24,7 @@ pantheon_files_core_vala_files = files(
     'CallWhenReady.vala',
     'ConnectServerOperation.vala',
     'ConnectServerDialog.vala',
+    'ClipboardManager.vala',
     'Directory.vala',
     'DndHandler.vala',
     'Enums.vala',
@@ -46,6 +48,7 @@ pantheon_files_core_vala_files = files(
     'TrashMonitor.vala',
     'UserUtils.vala',
     'UndoManager.vala',
+    'ZeitgeistManager.vala',
     'FileOperations/CommonJob.vala',
     'FileOperations/CopyMoveJob.vala',
     'FileOperations/CreateJob.vala',
@@ -63,7 +66,14 @@ pantheon_files_core_vala_files = files(
     'View/HeaderBar/BreadcrumbElement.vala',
     'View/HeaderBar/BreadcrumbIconList.vala',
     'View/HeaderBar/ButtonWithMenu.vala',
-    'View/HeaderBar/ViewSwitcher.vala'
+    'View/HeaderBar/ViewSwitcher.vala',
+    'View/HeaderBar/Browser.vala',
+    'View/Renderers/EmblemRenderer.vala',
+    'View/Renderers/IconRenderer.vala',
+    'View/Renderers/TextRenderer.vala',
+    'View/Widgets/AbstractEditableLabel.vala',
+    'View/Widgets/MultiLineEditableLabel.vala',
+    'View/Widgets/SingleLineEditableLabel.vala'
 )
 
 pantheon_files_core_c_files = files(

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-05 23:31+0000\n"
-"PO-Revision-Date: 2026-01-01 04:55+0000\n"
+"PO-Revision-Date: 2026-01-08 12:55+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <https://l10n.elementaryos.org/projects/files/files/"
 "sv/>\n"
@@ -2132,10 +2132,8 @@ msgid "Name:"
 msgstr "Namn:"
 
 #: src/View/DetailsColumn.vala:209
-#, fuzzy
-#| msgid "Properties"
 msgid "Properties…"
-msgstr "Egenskaper"
+msgstr "Egenskaper…"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"

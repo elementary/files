@@ -31,6 +31,8 @@ libcore/Thumbnailer.vala
 libcore/TrashMonitor.vala
 libcore/UndoManager.vala
 libcore/UserUtils.vala
+libcore/ZeitgeistManager.vala
+libcore/ClipboardManager.vala
 
 libcore/FileOperations/CommonJob.vala
 libcore/FileOperations/EmptyTrashJob.vala
@@ -43,8 +45,16 @@ libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala
 libcore/View/HeaderBar/BasicLocationBar.vala
 libcore/View/HeaderBar/BreadcrumbElement.vala
 libcore/View/HeaderBar/BreadcrumbIconList.vala
+libcore/View/HeaderBar/Browser.vala
 libcore/View/HeaderBar/ButtonWithMenu.vala
 libcore/View/HeaderBar/ViewSwitcher.vala
+
+libcore/View/Renderers/TextRenderer.vala
+libcore/View/Renderers/IconRenderer.vala
+
+libcore/View/Widgets/AbstractEditableLabel.vala
+libcore/View/Widgets/MultiLineEditableLabel.vala
+libcore/View/Widgets/SingleLineEditableLabel.vala
 
 plugins/pantheon-files-trash/plugin.vala
 plugins/send-by-email/plugin.vala
@@ -54,10 +64,6 @@ src/DeepCount.vala
 src/DesktopLauncher.vala
 src/main.vala
 src/ProgressUIHandler.vala
-src/TextRenderer.vala
-src/ClipboardManager.vala
-src/IconRenderer.vala
-src/ZeitgeistManager.vala
 
 src/Dialogs/AbstractPropertiesDialog.vala
 src/Dialogs/BulkRenamer/RenamerDialog.vala
@@ -72,7 +78,6 @@ src/Utils/Permissions.vala
 
 src/View/AbstractDirectoryView.vala
 src/View/AbstractTreeView.vala
-src/View/Browser.vala
 src/View/ColumnView.vala
 src/View/DetailsColumn.vala
 src/View/DirectoryNotFound.vala
@@ -95,15 +100,12 @@ src/View/Sidebar/SidebarWindow.vala
 src/View/Sidebar/VolumeRow.vala
 src/View/Sidebar/VolumelessMountRow.vala
 
-src/View/Widgets/AbstractEditableLabel.vala
 src/View/Widgets/AppMenu.vala
 src/View/Widgets/BreadcrumbsEntry.vala
 src/View/Widgets/LocationBar.vala
-src/View/Widgets/MultiLineEditableLabel.vala
 src/View/Widgets/OverlayBar.vala
 src/View/Widgets/PermissionButton.vala
 src/View/Widgets/ProgressInfoWidget.vala
 src/View/Widgets/SearchResults.vala
-src/View/Widgets/SingleLineEditableLabel.vala
 src/View/Widgets/Welcome.vala
 
