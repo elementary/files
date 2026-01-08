@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-05 23:31+0000\n"
-"PO-Revision-Date: 2025-12-31 04:09+0000\n"
+"PO-Revision-Date: 2026-01-08 12:55+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/files/"
 "ru/>\n"
@@ -2148,16 +2148,12 @@ msgid "Cannot paste files here"
 msgstr "Не удалось вставить файлы сюда"
 
 #: src/View/DetailsColumn.vala:115
-#, fuzzy
-#| msgid "Name"
 msgid "Name:"
-msgstr "Имя"
+msgstr "Имя:"
 
 #: src/View/DetailsColumn.vala:209
-#, fuzzy
-#| msgid "Properties"
 msgid "Properties…"
-msgstr "Свойства"
+msgstr "Свойства…"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
