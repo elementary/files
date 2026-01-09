@@ -18,7 +18,6 @@ pantheon_files_core_deps = [
 ]
 
 pantheon_files_core_vala_files = files(
-    'AbstractSlot.vala',
     'Bookmark.vala',
     'BookmarkList.vala',
     'CallWhenReady.vala',
@@ -61,6 +60,11 @@ pantheon_files_core_vala_files = files(
     'Interfaces/SearchableInterface.vala',
     'Interfaces/SidebarListInterface.vala',
     'Interfaces/SidebarItemInterface.vala',
+
+    'View/AbstractSlot.vala',
+    'View/BasicAbstractDirectoryView.vala',
+    'View/BasicSlot.vala',
+
     'View/HeaderBar/BasicBreadcrumbsEntry.vala',
     'View/HeaderBar/BasicLocationBar.vala',
     'View/HeaderBar/BreadcrumbElement.vala',

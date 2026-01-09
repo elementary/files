@@ -1,7 +1,6 @@
 filechooser-portal/FileChooserDialog.vala
 filechooser-portal/Main.vala
 
-libcore/AbstractSlot.vala
 libcore/BookmarkList.vala
 libcore/Bookmark.vala
 libcore/CallWhenReady.vala
@@ -40,6 +39,10 @@ libcore/FileOperations/MountUtils.vala
 libcore/FileOperations/CopyMoveJob.vala
 libcore/FileOperations/CreateJob.vala
 libcore/FileOperations/DeleteJob.vala
+
+libcore/View/AbstractSlot.vala
+libcore/View/BasicAbstractDirectoryView.vala
+libcore/View/BasicSlot.vala
 
 libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala
 libcore/View/HeaderBar/BasicLocationBar.vala
