@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-05 23:31+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2021-07-28 00:16+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/extra/pa/"
@@ -29,7 +29,7 @@ msgstr "ਫ਼ੋਲਡਰ;ਮੈਨੇਜਰ;ਫਰੋਲੋ;ਡਿਸਕ; ਫ�
 msgid "New Window"
 msgstr "ਨਵੀਂ ਵਿੰਡੋ"
 
-#: data/io.elementary.files.desktop.in.in:29
+#: data/io.elementary.files.desktop.in.in:30
 msgid "New Window As Administrator"
 msgstr "ਨਵੀਂ ਵਿੰਡੋ ਬਤੌਰ ਐਡਮਿਨ"
 

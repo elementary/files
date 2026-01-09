@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-05 23:31+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2020-07-16 16:16+0000\n"
 "Last-Translator: Martin Myrvold <myrvold.martin@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://l10n.elementary.io/projects/files/"
@@ -28,9 +28,9 @@ msgstr "Førre"
 msgid "Next"
 msgstr "Neste"
 
-#: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:166
+#: filechooser-portal/FileChooserDialog.vala:112 libcore/DndHandler.vala:105
+#: libcore/View/Dialogs/ConnectServerDialog.vala:206
+#: libcore/View/Dialogs/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -90,120 +90,10 @@ msgstr "Erstatt fil «%s»?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Erstatting vil overskrive innhaldet."
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
+#: filechooser-portal/Main.vala:476
+#: libcore/View/Dialogs/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "Erstatt"
-
-#: libcore/ConnectServerDialog.vala:32
-msgid "Public FTP"
-msgstr "Offentleg FTP"
-
-#: libcore/ConnectServerDialog.vala:38
-msgid "FTP (with login)"
-msgstr "FTP (med innlogging)"
-
-#: libcore/ConnectServerDialog.vala:45
-msgid "SSH"
-msgstr "SSH"
-
-#: libcore/ConnectServerDialog.vala:51
-msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Filing Protocol)"
-
-#: libcore/ConnectServerDialog.vala:57
-msgid "Windows share"
-msgstr "Delt Windows-disk"
-
-#: libcore/ConnectServerDialog.vala:63
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: libcore/ConnectServerDialog.vala:70
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Sikker WebDAV (HTTPS)"
-
-#: libcore/ConnectServerDialog.vala:112
-msgid "Server Details"
-msgstr "Tenardetaljar"
-
-#: libcore/ConnectServerDialog.vala:116
-msgid "Server name or IP address"
-msgstr "Tenarnamn eller IP-adresse"
-
-#: libcore/ConnectServerDialog.vala:119
-msgid "Server:"
-msgstr "Tenar:"
-
-#: libcore/ConnectServerDialog.vala:129
-msgid "Port:"
-msgstr "Port:"
-
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
-#: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
-msgid "Type:"
-msgstr "Type:"
-
-#: libcore/ConnectServerDialog.vala:161
-#, fuzzy
-msgid "Name of share on server (Optional)"
-msgstr "Namn på delt ressurs på tenaren"
-
-#: libcore/ConnectServerDialog.vala:164
-msgid "Share:"
-msgstr "Delt ressurs:"
-
-#: libcore/ConnectServerDialog.vala:167
-#, fuzzy
-msgid "Path of shared folder on server (Optional)"
-msgstr "Sti til delt mappe på tenaren"
-
-#: libcore/ConnectServerDialog.vala:171
-msgid "Folder:"
-msgstr "Mappe:"
-
-#: libcore/ConnectServerDialog.vala:175
-msgid "User Details"
-msgstr "Brukardetaljar"
-
-#: libcore/ConnectServerDialog.vala:180
-msgid "Name of Windows domain"
-msgstr "Namn på Windows-domene"
-
-#: libcore/ConnectServerDialog.vala:182
-msgid "Domain name:"
-msgstr "Domenenamn:"
-
-#: libcore/ConnectServerDialog.vala:187
-msgid "Name of user on server"
-msgstr "Brukaren sitt namn på tenaren"
-
-#: libcore/ConnectServerDialog.vala:189
-msgid "User name:"
-msgstr "Brukarnamn:"
-
-#: libcore/ConnectServerDialog.vala:197
-msgid "Password:"
-msgstr "Passord:"
-
-#: libcore/ConnectServerDialog.vala:199
-msgid "Remember this password"
-msgstr "Hugs dette passordet"
-
-#: libcore/ConnectServerDialog.vala:209
-msgid "Connect"
-msgstr "Kople til"
-
-#: libcore/ConnectServerDialog.vala:216
-msgid "Continue"
-msgstr "Hald fram"
-
-#: libcore/ConnectServerDialog.vala:266
-msgid "Connecting…"
-msgstr "Koplar til…"
-
-#: libcore/ConnectServerDialog.vala:373
-msgid "Please verify your user details."
-msgstr "Kontroller brukardata."
 
 #: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
@@ -368,124 +258,6 @@ msgstr[1] "%'d minutt"
 #, c-format
 msgid "link to %s"
 msgstr "lenke til %s"
-
-#: libcore/FileConflictDialog.vala:64
-msgid "File conflict"
-msgstr "Filkonflikt"
-
-#: libcore/FileConflictDialog.vala:77
-msgid "Original file"
-msgstr "Originalfil"
-
-#: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
-msgid "Size:"
-msgstr "Storleik:"
-
-#: libcore/FileConflictDialog.vala:97 libcore/FileConflictDialog.vala:131
-msgid "Last modified:"
-msgstr "Sist endra:"
-
-#: libcore/FileConflictDialog.vala:111
-msgid "Replace with"
-msgstr "Erstatt med"
-
-#: libcore/FileConflictDialog.vala:145
-msgid "Reset"
-msgstr "Nullstill"
-
-#: libcore/FileConflictDialog.vala:154
-msgid "_Select a new name for the destination"
-msgstr "_Vel eit namn for målet"
-
-#: libcore/FileConflictDialog.vala:158
-msgid "Apply this action to all files"
-msgstr "Bruk denne handlinga på alle filer"
-
-#: libcore/FileConflictDialog.vala:160 libcore/StockDialogs.vala:22
-msgid "_Skip"
-msgstr "_Hopp over"
-
-#: libcore/FileConflictDialog.vala:161
-msgid "Re_name"
-msgstr "Gje _nytt namn"
-
-#: libcore/FileConflictDialog.vala:163
-msgid "Keep Newest"
-msgstr "Behald den nyaste"
-
-#: libcore/FileConflictDialog.vala:164
-msgid "Skip if original was modified more recently"
-msgstr "Hopp over om originalen er nyare"
-
-#: libcore/FileConflictDialog.vala:281
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Slå saman mappe «%s»?"
-
-#: libcore/FileConflictDialog.vala:282
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Samanslåinga vil be om stadfesting før konflikterande filer vert overskrivne."
-
-#: libcore/FileConflictDialog.vala:284
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Ei eldre mappe med same namn eksisterer allereie i «%s»."
-
-#: libcore/FileConflictDialog.vala:286
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Ei nyare mappe med same namn eksisterer allereie i «%s»."
-
-#: libcore/FileConflictDialog.vala:288
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Ei anna mappe med same namn eksisterer allereie i «%s»."
-
-#: libcore/FileConflictDialog.vala:291
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Erstatt mappe «%s»?"
-
-#: libcore/FileConflictDialog.vala:292
-msgid "Replacing it will remove all files in the folder."
-msgstr "Viss du erstattar den vil alle filer i mappa verte sletta."
-
-#: libcore/FileConflictDialog.vala:293
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Ei mappe med same namn eksisterer allereie i «%s»."
-
-#: libcore/FileConflictDialog.vala:296
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Erstatt fil «%s»?"
-
-#: libcore/FileConflictDialog.vala:297
-msgid "Replacing it will overwrite its content."
-msgstr "Erstatting vil overskrive innhaldet."
-
-#: libcore/FileConflictDialog.vala:300
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Ei eldre fil med same namn eksisterer allereie i «%s»."
-
-#: libcore/FileConflictDialog.vala:302
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Ei nyare fil med same namn eksisterer allereie i «%s»."
-
-#: libcore/FileConflictDialog.vala:304
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Ei anna fil med same namn eksisterer allereie i «%s»."
-
-#: libcore/FileConflictDialog.vala:336
-msgid "Merge"
-msgstr "Slå saman"
 
 #: libcore/FileUtils.vala:80
 #, fuzzy, c-format
@@ -995,50 +767,6 @@ msgstr ""
 msgid "File System"
 msgstr "Filsystem"
 
-#: libcore/StockDialogs.vala:20
-msgid "_Cancel"
-msgstr "_Avbryt"
-
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
-msgid "Delete"
-msgstr "Slett"
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr "H_opp over alle"
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr "_Prøv på nytt"
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr "Slett _alle"
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr "_Erstatt"
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr "Erstatt _alle"
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr "_Slå saman"
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr "Slå saman _alle"
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr "Kopier _likevel"
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "Tøm _papirkorga"
-
 #: libcore/UndoManager.vala:22
 #, fuzzy
 msgid "Undo Copy"
@@ -1525,6 +1253,285 @@ msgid_plural "%'d files left to trash"
 msgstr[0] "%'d fil att å slette"
 msgstr[1] "%'d filer att å slette"
 
+#: libcore/View/Dialogs/ConnectServerDialog.vala:32
+msgid "Public FTP"
+msgstr "Offentleg FTP"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:38
+msgid "FTP (with login)"
+msgstr "FTP (med innlogging)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:45
+msgid "SSH"
+msgstr "SSH"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:51
+msgid "AFP (Apple Filing Protocol)"
+msgstr "AFP (Apple Filing Protocol)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:57
+msgid "Windows share"
+msgstr "Delt Windows-disk"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:63
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:70
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Sikker WebDAV (HTTPS)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:112
+msgid "Server Details"
+msgstr "Tenardetaljar"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:116
+msgid "Server name or IP address"
+msgstr "Tenarnamn eller IP-adresse"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:119
+msgid "Server:"
+msgstr "Tenar:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:129
+msgid "Port:"
+msgstr "Port:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:156
+#: libcore/View/Dialogs/FileConflictDialog.vala:89
+#: libcore/View/Dialogs/FileConflictDialog.vala:123
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Type:"
+msgstr "Type:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:161
+#, fuzzy
+msgid "Name of share on server (Optional)"
+msgstr "Namn på delt ressurs på tenaren"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:164
+msgid "Share:"
+msgstr "Delt ressurs:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:167
+#, fuzzy
+msgid "Path of shared folder on server (Optional)"
+msgstr "Sti til delt mappe på tenaren"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:171
+msgid "Folder:"
+msgstr "Mappe:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:175
+msgid "User Details"
+msgstr "Brukardetaljar"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:180
+msgid "Name of Windows domain"
+msgstr "Namn på Windows-domene"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:182
+msgid "Domain name:"
+msgstr "Domenenamn:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:187
+msgid "Name of user on server"
+msgstr "Brukaren sitt namn på tenaren"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:189
+msgid "User name:"
+msgstr "Brukarnamn:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:197
+msgid "Password:"
+msgstr "Passord:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:199
+msgid "Remember this password"
+msgstr "Hugs dette passordet"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:209
+msgid "Connect"
+msgstr "Kople til"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:216
+msgid "Continue"
+msgstr "Hald fram"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:266
+msgid "Connecting…"
+msgstr "Koplar til…"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:373
+msgid "Please verify your user details."
+msgstr "Kontroller brukardata."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:64
+msgid "File conflict"
+msgstr "Filkonflikt"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:77
+msgid "Original file"
+msgstr "Originalfil"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:79
+#: libcore/View/Dialogs/FileConflictDialog.vala:113
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
+msgid "Size:"
+msgstr "Storleik:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:97
+#: libcore/View/Dialogs/FileConflictDialog.vala:131
+msgid "Last modified:"
+msgstr "Sist endra:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:111
+msgid "Replace with"
+msgstr "Erstatt med"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:145
+msgid "Reset"
+msgstr "Nullstill"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:154
+msgid "_Select a new name for the destination"
+msgstr "_Vel eit namn for målet"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:158
+msgid "Apply this action to all files"
+msgstr "Bruk denne handlinga på alle filer"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:160
+#: libcore/View/Dialogs/StockDialogs.vala:22
+msgid "_Skip"
+msgstr "_Hopp over"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:161
+msgid "Re_name"
+msgstr "Gje _nytt namn"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:163
+msgid "Keep Newest"
+msgstr "Behald den nyaste"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:164
+msgid "Skip if original was modified more recently"
+msgstr "Hopp over om originalen er nyare"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:281
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Slå saman mappe «%s»?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:282
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Samanslåinga vil be om stadfesting før konflikterande filer vert overskrivne."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:284
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Ei eldre mappe med same namn eksisterer allereie i «%s»."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:286
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Ei nyare mappe med same namn eksisterer allereie i «%s»."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:288
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Ei anna mappe med same namn eksisterer allereie i «%s»."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:291
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Erstatt mappe «%s»?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:292
+msgid "Replacing it will remove all files in the folder."
+msgstr "Viss du erstattar den vil alle filer i mappa verte sletta."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:293
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Ei mappe med same namn eksisterer allereie i «%s»."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:296
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Erstatt fil «%s»?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:297
+msgid "Replacing it will overwrite its content."
+msgstr "Erstatting vil overskrive innhaldet."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:300
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Ei eldre fil med same namn eksisterer allereie i «%s»."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:302
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Ei nyare fil med same namn eksisterer allereie i «%s»."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:304
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Ei anna fil med same namn eksisterer allereie i «%s»."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:336
+msgid "Merge"
+msgstr "Slå saman"
+
+#: libcore/View/Dialogs/StockDialogs.vala:20
+msgid "_Cancel"
+msgstr "_Avbryt"
+
+#: libcore/View/Dialogs/StockDialogs.vala:21
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:333
+msgid "Delete"
+msgstr "Slett"
+
+#: libcore/View/Dialogs/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "H_opp over alle"
+
+#: libcore/View/Dialogs/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "_Prøv på nytt"
+
+#: libcore/View/Dialogs/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "Slett _alle"
+
+#: libcore/View/Dialogs/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "_Erstatt"
+
+#: libcore/View/Dialogs/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "Erstatt _alle"
+
+#: libcore/View/Dialogs/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "_Slå saman"
+
+#: libcore/View/Dialogs/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "Slå saman _alle"
+
+#: libcore/View/Dialogs/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "Kopier _likevel"
+
+#: libcore/View/Dialogs/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "Tøm _papirkorga"
+
 #: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
@@ -1680,7 +1687,7 @@ msgstr "Kapasitet:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:255 src/View/DetailsColumn.vala:269
+#: src/View/DetailsColumn.vala:264 src/View/DetailsColumn.vala:278
 msgid "Unknown"
 msgstr "Ukjend"
 
@@ -1844,31 +1851,31 @@ msgstr "Faktisk storleik kan vere større"
 msgid "unknown"
 msgstr "ukjend"
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:306
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:315
 msgid "Loading…"
 msgstr "Lastar…"
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:275
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:284
 msgid "Could not be determined"
 msgstr "Kunne ikkje bestemmast"
 
-#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:141
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:143
 msgid "Created:"
 msgstr "Oppretta:"
 
-#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:154
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:156
 msgid "Modified:"
 msgstr "Endra:"
 
-#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:168
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:170
 msgid "Deleted:"
 msgstr "Sletta:"
 
-#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:177
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:179
 msgid "Media type:"
 msgstr "Type media:"
 
-#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:184
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:186
 msgid "Resolution:"
 msgstr "Oppløysing:"
 
@@ -1877,11 +1884,11 @@ msgstr "Oppløysing:"
 msgid "Location:"
 msgstr "Plassering:"
 
-#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:192
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:194
 msgid "Target:"
 msgstr "Mål:"
 
-#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:202
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:204
 msgid "Original Location:"
 msgstr "Opprinneleg plassering:"
 
@@ -1921,7 +1928,7 @@ msgid_plural "%u files"
 msgstr[0] "%u fil"
 msgstr[1] "%u filer"
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:182
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -2190,13 +2197,13 @@ msgstr "Klipper ut utvalet i staden"
 msgid "Cannot paste files here"
 msgstr "Filer kan ikkje limast inn her"
 
-#: src/View/DetailsColumn.vala:115
+#: src/View/DetailsColumn.vala:118
 #, fuzzy
 #| msgid "Name"
 msgid "Name:"
 msgstr "Namn"
 
-#: src/View/DetailsColumn.vala:209
+#: src/View/DetailsColumn.vala:211
 #, fuzzy
 #| msgid "Properties"
 msgid "Properties…"
@@ -2597,29 +2604,29 @@ msgstr "Last inn mappa på nytt"
 msgid "Searching…"
 msgstr "Søker…"
 
-#: src/View/Widgets/OverlayBar.vala:162
+#: src/View/Widgets/OverlayBar.vala:173
 #, c-format
 msgid "%u folders"
 msgstr "%u mapper"
 
-#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
+#: src/View/Widgets/OverlayBar.vala:175 src/View/Widgets/OverlayBar.vala:185
 #, fuzzy, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " og %u andre einingar (%s) valt"
 msgstr[1] " og %u andre einingar (%s) valt"
 
-#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
+#: src/View/Widgets/OverlayBar.vala:179 src/View/Widgets/OverlayBar.vala:189
 msgid " selected"
 msgstr " valt"
 
-#: src/View/Widgets/OverlayBar.vala:181
+#: src/View/Widgets/OverlayBar.vala:192
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u element valde (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:237
 #, fuzzy, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -2627,7 +2634,7 @@ msgstr[0] "%u undermappe, "
 msgstr[1] "%u undermappe, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:243
 #, fuzzy, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -2635,18 +2642,18 @@ msgstr[0] "%u fil, "
 msgstr[1] "%u fil, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:242
+#: src/View/Widgets/OverlayBar.vala:253
 #, c-format
 msgid "%s approx."
 msgstr "%s omlag."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:245
+#: src/View/Widgets/OverlayBar.vala:256
 msgid "unknown size"
 msgstr "ukjend storleik"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:249
+#: src/View/Widgets/OverlayBar.vala:260
 #, fuzzy, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
