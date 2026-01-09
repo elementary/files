@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-05 23:31+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2019-10-05 11:23+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
@@ -29,9 +29,9 @@ msgstr "Ankstesnis"
 msgid "Next"
 msgstr "Kitas"
 
-#: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:166
+#: filechooser-portal/FileChooserDialog.vala:112 libcore/DndHandler.vala:105
+#: libcore/View/Dialogs/ConnectServerDialog.vala:206
+#: libcore/View/Dialogs/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -91,120 +91,10 @@ msgstr "Pakeisti failą „%s“?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Pakeitus failą, bus perrašytas jo turinys."
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
+#: filechooser-portal/Main.vala:476
+#: libcore/View/Dialogs/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "Pakeisti"
-
-#: libcore/ConnectServerDialog.vala:32
-msgid "Public FTP"
-msgstr "Viešasis FTP"
-
-#: libcore/ConnectServerDialog.vala:38
-msgid "FTP (with login)"
-msgstr "FTP (su prisijungimu)"
-
-#: libcore/ConnectServerDialog.vala:45
-msgid "SSH"
-msgstr "SSH"
-
-#: libcore/ConnectServerDialog.vala:51
-msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple failų persiuntimo protokolas)"
-
-#: libcore/ConnectServerDialog.vala:57
-msgid "Windows share"
-msgstr "Windows viešinys"
-
-#: libcore/ConnectServerDialog.vala:63
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: libcore/ConnectServerDialog.vala:70
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Saugus WebDAV (HTTPS)"
-
-#: libcore/ConnectServerDialog.vala:112
-msgid "Server Details"
-msgstr "Serverio informacija"
-
-#: libcore/ConnectServerDialog.vala:116
-msgid "Server name or IP address"
-msgstr "Serverio pavadinimas ar IP adresas"
-
-#: libcore/ConnectServerDialog.vala:119
-msgid "Server:"
-msgstr "Serveris:"
-
-#: libcore/ConnectServerDialog.vala:129
-msgid "Port:"
-msgstr "Prievadas:"
-
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
-#: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
-msgid "Type:"
-msgstr "Tipas:"
-
-#: libcore/ConnectServerDialog.vala:161
-#, fuzzy
-msgid "Name of share on server (Optional)"
-msgstr "Viešinio serveryje pavadinimas"
-
-#: libcore/ConnectServerDialog.vala:164
-msgid "Share:"
-msgstr "Viešinys:"
-
-#: libcore/ConnectServerDialog.vala:167
-#, fuzzy
-msgid "Path of shared folder on server (Optional)"
-msgstr "Kelias į bendrinamą aplanką serveryje"
-
-#: libcore/ConnectServerDialog.vala:171
-msgid "Folder:"
-msgstr "Aplankas:"
-
-#: libcore/ConnectServerDialog.vala:175
-msgid "User Details"
-msgstr "Naudotojo informacija"
-
-#: libcore/ConnectServerDialog.vala:180
-msgid "Name of Windows domain"
-msgstr "Windows srities pavadinimas"
-
-#: libcore/ConnectServerDialog.vala:182
-msgid "Domain name:"
-msgstr "Srities pavadinimas:"
-
-#: libcore/ConnectServerDialog.vala:187
-msgid "Name of user on server"
-msgstr "Naudotojo serveryje vardas"
-
-#: libcore/ConnectServerDialog.vala:189
-msgid "User name:"
-msgstr "Naudotojo vardas:"
-
-#: libcore/ConnectServerDialog.vala:197
-msgid "Password:"
-msgstr "Slaptažodis:"
-
-#: libcore/ConnectServerDialog.vala:199
-msgid "Remember this password"
-msgstr "Prisiminti šį slaptažodį"
-
-#: libcore/ConnectServerDialog.vala:209
-msgid "Connect"
-msgstr "Prisijungti"
-
-#: libcore/ConnectServerDialog.vala:216
-msgid "Continue"
-msgstr "Tęsti"
-
-#: libcore/ConnectServerDialog.vala:266
-msgid "Connecting…"
-msgstr "Jungiamasi…"
-
-#: libcore/ConnectServerDialog.vala:373
-msgid "Please verify your user details."
-msgstr "Patvirtinkite savo naudotojo informaciją."
 
 #: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
@@ -370,125 +260,6 @@ msgstr[3] "%'d minutė"
 #, c-format
 msgid "link to %s"
 msgstr "nuoroda į %s"
-
-#: libcore/FileConflictDialog.vala:64
-msgid "File conflict"
-msgstr "Konfliktuojantys failai"
-
-#: libcore/FileConflictDialog.vala:77
-msgid "Original file"
-msgstr "Pradinis failas"
-
-#: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
-msgid "Size:"
-msgstr "Dydis:"
-
-#: libcore/FileConflictDialog.vala:97 libcore/FileConflictDialog.vala:131
-msgid "Last modified:"
-msgstr "Paskutinis pakeitimas:"
-
-#: libcore/FileConflictDialog.vala:111
-msgid "Replace with"
-msgstr "Pakeisti į"
-
-#: libcore/FileConflictDialog.vala:145
-msgid "Reset"
-msgstr "Atstatyti"
-
-#: libcore/FileConflictDialog.vala:154
-msgid "_Select a new name for the destination"
-msgstr "_Pasirinkti naują pavadinimą paskirties elementui"
-
-#: libcore/FileConflictDialog.vala:158
-msgid "Apply this action to all files"
-msgstr "Taikyti šį veiksmą visiems failams"
-
-#: libcore/FileConflictDialog.vala:160 libcore/StockDialogs.vala:22
-msgid "_Skip"
-msgstr "_Praleisti"
-
-#: libcore/FileConflictDialog.vala:161
-msgid "Re_name"
-msgstr "Per_vadinti"
-
-#: libcore/FileConflictDialog.vala:163
-msgid "Keep Newest"
-msgstr "Palikti naujausią"
-
-#: libcore/FileConflictDialog.vala:164
-msgid "Skip if original was modified more recently"
-msgstr "Praleisti, jei pradinis failas buvo modifikuotas vėlesniu laiku"
-
-#: libcore/FileConflictDialog.vala:281
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Sulieti aplanką „%s“?"
-
-#: libcore/FileConflictDialog.vala:282
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Suliejant bus prašoma patvirtinti, ar norite perrašyti tame aplanke esančius "
-"failus, kurie konfliktuoja su perkeliamais, taip pat pavadintais failais."
-
-#: libcore/FileConflictDialog.vala:284
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Senesnis aplankas tuo pačiu pavadinimu jau yra ties „%s“."
-
-#: libcore/FileConflictDialog.vala:286
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Naujesnis aplankas tuo pačiu pavadinimu jau yra ties „%s“."
-
-#: libcore/FileConflictDialog.vala:288
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Kitas aplankas tuo pačiu pavadinimu jau yra ties „%s“."
-
-#: libcore/FileConflictDialog.vala:291
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Pakeisti aplanką „%s“?"
-
-#: libcore/FileConflictDialog.vala:292
-msgid "Replacing it will remove all files in the folder."
-msgstr "Jį pakeitus, bus pašalinti visi tame aplanke esantys failai."
-
-#: libcore/FileConflictDialog.vala:293
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Aplankas tuo pačiu pavadinimu jau yra aplanke „%s“."
-
-#: libcore/FileConflictDialog.vala:296
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Pakeisti failą „%s“?"
-
-#: libcore/FileConflictDialog.vala:297
-msgid "Replacing it will overwrite its content."
-msgstr "Pakeitus failą, bus perrašytas jo turinys."
-
-#: libcore/FileConflictDialog.vala:300
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Senesnis failas tuo pačiu pavadinimu jau yra aplanke „%s“."
-
-#: libcore/FileConflictDialog.vala:302
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Naujesnis failas tuo pačiu pavadinimu jau yra aplanke „%s“."
-
-#: libcore/FileConflictDialog.vala:304
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Kitas failas tuo pačiu pavadinimu jau yra aplanke „%s“."
-
-#: libcore/FileConflictDialog.vala:336
-msgid "Merge"
-msgstr "Sulieti"
 
 #: libcore/FileUtils.vala:80
 #, fuzzy, c-format
@@ -1007,51 +778,6 @@ msgstr ""
 #: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Failų sistema"
-
-#: libcore/StockDialogs.vala:20
-msgid "_Cancel"
-msgstr "_Atsisakyti"
-
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
-#, fuzzy
-msgid "Delete"
-msgstr "_Ištrinti"
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr "Praleisti _visus"
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr "_Bandyti vėl"
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr "Ištrinti _visus"
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr "Pa_keisti"
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr "Pakeisti _visus"
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr "_Sulieti"
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr "Sulieti _visus"
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr "_Vis tiek kopijuoti"
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "Iš_valyti šiukšlinę"
 
 #: libcore/UndoManager.vala:22
 #, fuzzy
@@ -1573,6 +1299,287 @@ msgstr[0] "Į šiukšlinę liko perkelti %'d failą"
 msgstr[1] "Į šiukšlinę liko perkelti %'d failus"
 msgstr[2] "Į šiukšlinę liko perkelti %'d failų"
 
+#: libcore/View/Dialogs/ConnectServerDialog.vala:32
+msgid "Public FTP"
+msgstr "Viešasis FTP"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:38
+msgid "FTP (with login)"
+msgstr "FTP (su prisijungimu)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:45
+msgid "SSH"
+msgstr "SSH"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:51
+msgid "AFP (Apple Filing Protocol)"
+msgstr "AFP (Apple failų persiuntimo protokolas)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:57
+msgid "Windows share"
+msgstr "Windows viešinys"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:63
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:70
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Saugus WebDAV (HTTPS)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:112
+msgid "Server Details"
+msgstr "Serverio informacija"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:116
+msgid "Server name or IP address"
+msgstr "Serverio pavadinimas ar IP adresas"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:119
+msgid "Server:"
+msgstr "Serveris:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:129
+msgid "Port:"
+msgstr "Prievadas:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:156
+#: libcore/View/Dialogs/FileConflictDialog.vala:89
+#: libcore/View/Dialogs/FileConflictDialog.vala:123
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Type:"
+msgstr "Tipas:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:161
+#, fuzzy
+msgid "Name of share on server (Optional)"
+msgstr "Viešinio serveryje pavadinimas"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:164
+msgid "Share:"
+msgstr "Viešinys:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:167
+#, fuzzy
+msgid "Path of shared folder on server (Optional)"
+msgstr "Kelias į bendrinamą aplanką serveryje"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:171
+msgid "Folder:"
+msgstr "Aplankas:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:175
+msgid "User Details"
+msgstr "Naudotojo informacija"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:180
+msgid "Name of Windows domain"
+msgstr "Windows srities pavadinimas"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:182
+msgid "Domain name:"
+msgstr "Srities pavadinimas:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:187
+msgid "Name of user on server"
+msgstr "Naudotojo serveryje vardas"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:189
+msgid "User name:"
+msgstr "Naudotojo vardas:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:197
+msgid "Password:"
+msgstr "Slaptažodis:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:199
+msgid "Remember this password"
+msgstr "Prisiminti šį slaptažodį"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:209
+msgid "Connect"
+msgstr "Prisijungti"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:216
+msgid "Continue"
+msgstr "Tęsti"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:266
+msgid "Connecting…"
+msgstr "Jungiamasi…"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:373
+msgid "Please verify your user details."
+msgstr "Patvirtinkite savo naudotojo informaciją."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:64
+msgid "File conflict"
+msgstr "Konfliktuojantys failai"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:77
+msgid "Original file"
+msgstr "Pradinis failas"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:79
+#: libcore/View/Dialogs/FileConflictDialog.vala:113
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
+msgid "Size:"
+msgstr "Dydis:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:97
+#: libcore/View/Dialogs/FileConflictDialog.vala:131
+msgid "Last modified:"
+msgstr "Paskutinis pakeitimas:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:111
+msgid "Replace with"
+msgstr "Pakeisti į"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:145
+msgid "Reset"
+msgstr "Atstatyti"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:154
+msgid "_Select a new name for the destination"
+msgstr "_Pasirinkti naują pavadinimą paskirties elementui"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:158
+msgid "Apply this action to all files"
+msgstr "Taikyti šį veiksmą visiems failams"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:160
+#: libcore/View/Dialogs/StockDialogs.vala:22
+msgid "_Skip"
+msgstr "_Praleisti"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:161
+msgid "Re_name"
+msgstr "Per_vadinti"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:163
+msgid "Keep Newest"
+msgstr "Palikti naujausią"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:164
+msgid "Skip if original was modified more recently"
+msgstr "Praleisti, jei pradinis failas buvo modifikuotas vėlesniu laiku"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:281
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Sulieti aplanką „%s“?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:282
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Suliejant bus prašoma patvirtinti, ar norite perrašyti tame aplanke esančius "
+"failus, kurie konfliktuoja su perkeliamais, taip pat pavadintais failais."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:284
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Senesnis aplankas tuo pačiu pavadinimu jau yra ties „%s“."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:286
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Naujesnis aplankas tuo pačiu pavadinimu jau yra ties „%s“."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:288
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Kitas aplankas tuo pačiu pavadinimu jau yra ties „%s“."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:291
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Pakeisti aplanką „%s“?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:292
+msgid "Replacing it will remove all files in the folder."
+msgstr "Jį pakeitus, bus pašalinti visi tame aplanke esantys failai."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:293
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Aplankas tuo pačiu pavadinimu jau yra aplanke „%s“."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:296
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Pakeisti failą „%s“?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:297
+msgid "Replacing it will overwrite its content."
+msgstr "Pakeitus failą, bus perrašytas jo turinys."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:300
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Senesnis failas tuo pačiu pavadinimu jau yra aplanke „%s“."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:302
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Naujesnis failas tuo pačiu pavadinimu jau yra aplanke „%s“."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:304
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Kitas failas tuo pačiu pavadinimu jau yra aplanke „%s“."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:336
+msgid "Merge"
+msgstr "Sulieti"
+
+#: libcore/View/Dialogs/StockDialogs.vala:20
+msgid "_Cancel"
+msgstr "_Atsisakyti"
+
+#: libcore/View/Dialogs/StockDialogs.vala:21
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:333
+#, fuzzy
+msgid "Delete"
+msgstr "_Ištrinti"
+
+#: libcore/View/Dialogs/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "Praleisti _visus"
+
+#: libcore/View/Dialogs/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "_Bandyti vėl"
+
+#: libcore/View/Dialogs/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "Ištrinti _visus"
+
+#: libcore/View/Dialogs/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "Pa_keisti"
+
+#: libcore/View/Dialogs/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "Pakeisti _visus"
+
+#: libcore/View/Dialogs/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "_Sulieti"
+
+#: libcore/View/Dialogs/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "Sulieti _visus"
+
+#: libcore/View/Dialogs/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "_Vis tiek kopijuoti"
+
+#: libcore/View/Dialogs/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "Iš_valyti šiukšlinę"
+
 #: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
@@ -1725,7 +1732,7 @@ msgstr "Talpa:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:255 src/View/DetailsColumn.vala:269
+#: src/View/DetailsColumn.vala:264 src/View/DetailsColumn.vala:278
 msgid "Unknown"
 msgstr "Nežinoma"
 
@@ -1888,31 +1895,31 @@ msgstr "Tikrasis dydis gali būti didesnis"
 msgid "unknown"
 msgstr "nežinoma"
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:306
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:315
 msgid "Loading…"
 msgstr "Įkeliama…"
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:275
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:284
 msgid "Could not be determined"
 msgstr "Nepavyko nustatyti"
 
-#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:141
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:143
 msgid "Created:"
 msgstr "Sukurta:"
 
-#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:154
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:156
 msgid "Modified:"
 msgstr "Keista:"
 
-#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:168
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:170
 msgid "Deleted:"
 msgstr "Ištrinta:"
 
-#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:177
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:179
 msgid "Media type:"
 msgstr "Medijos tipas:"
 
-#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:184
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:186
 msgid "Resolution:"
 msgstr "Raiška:"
 
@@ -1921,11 +1928,11 @@ msgstr "Raiška:"
 msgid "Location:"
 msgstr "Vieta:"
 
-#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:192
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:194
 msgid "Target:"
 msgstr "Paskirtis:"
 
-#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:202
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:204
 msgid "Original Location:"
 msgstr "Pradinė vieta:"
 
@@ -1967,7 +1974,7 @@ msgstr[0] "%u failas"
 msgstr[1] "%u failai"
 msgstr[2] "%u failų"
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:182
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -2238,13 +2245,13 @@ msgstr "Vietoj to, iškerpamas pasirinkimas"
 msgid "Cannot paste files here"
 msgstr "Failai negali būti čia įdėti"
 
-#: src/View/DetailsColumn.vala:115
+#: src/View/DetailsColumn.vala:118
 #, fuzzy
 #| msgid "Name"
 msgid "Name:"
 msgstr "Pavadinimas"
 
-#: src/View/DetailsColumn.vala:209
+#: src/View/DetailsColumn.vala:211
 #, fuzzy
 #| msgid "Properties"
 msgid "Properties…"
@@ -2646,12 +2653,12 @@ msgstr "Įkelti šį aplanką iš naujo"
 msgid "Searching…"
 msgstr "Ieškoma…"
 
-#: src/View/Widgets/OverlayBar.vala:162
+#: src/View/Widgets/OverlayBar.vala:173
 #, c-format
 msgid "%u folders"
 msgstr "%u aplankai"
 
-#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
+#: src/View/Widgets/OverlayBar.vala:175 src/View/Widgets/OverlayBar.vala:185
 #, fuzzy, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
@@ -2660,17 +2667,17 @@ msgstr[1] " ir %u kitas elementas (%s) pasirinktas"
 msgstr[2] " ir %u kitas elementas (%s) pasirinktas"
 msgstr[3] " ir %u kitas elementas (%s) pasirinktas"
 
-#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
+#: src/View/Widgets/OverlayBar.vala:179 src/View/Widgets/OverlayBar.vala:189
 msgid " selected"
 msgstr " pasirinkta"
 
-#: src/View/Widgets/OverlayBar.vala:181
+#: src/View/Widgets/OverlayBar.vala:192
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u elementai pasirinkti (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:237
 #, fuzzy, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -2680,7 +2687,7 @@ msgstr[2] "%u poaplankis, "
 msgstr[3] "%u poaplankis, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:243
 #, fuzzy, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -2690,18 +2697,18 @@ msgstr[2] "%u failas, "
 msgstr[3] "%u failas, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:242
+#: src/View/Widgets/OverlayBar.vala:253
 #, c-format
 msgid "%s approx."
 msgstr "Maždaug %s"
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:245
+#: src/View/Widgets/OverlayBar.vala:256
 msgid "unknown size"
 msgstr "nežinomas dydis"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:249
+#: src/View/Widgets/OverlayBar.vala:260
 #, fuzzy, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"

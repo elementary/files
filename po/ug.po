@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-05 23:31+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2016-12-12 07:21+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -27,9 +27,9 @@ msgstr "ئالدىنقىسى"
 msgid "Next"
 msgstr "كىيىنكىسى"
 
-#: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:166
+#: filechooser-portal/FileChooserDialog.vala:112 libcore/DndHandler.vala:105
+#: libcore/View/Dialogs/ConnectServerDialog.vala:206
+#: libcore/View/Dialogs/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -89,129 +89,10 @@ msgstr "ھۆججەت «%s» نى ئالماشتۇرۇۋېتەمسىز؟"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "ئۇ ئالماشتۇرۇلسا ئۇنىڭ مەزمۇنى قاپلىنىپ كېتىدۇ."
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
+#: filechooser-portal/Main.vala:476
+#: libcore/View/Dialogs/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "ئالماشتۇرۇش"
-
-#: libcore/ConnectServerDialog.vala:32
-msgid "Public FTP"
-msgstr "ئاممىۋى FTP"
-
-#: libcore/ConnectServerDialog.vala:38
-msgid "FTP (with login)"
-msgstr "FTP (كىرىش زۆرۈر)"
-
-#: libcore/ConnectServerDialog.vala:45
-msgid "SSH"
-msgstr "SSH"
-
-#: libcore/ConnectServerDialog.vala:51
-msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (ئالما ھۆججەت كىلىشىمى)"
-
-#: libcore/ConnectServerDialog.vala:57
-msgid "Windows share"
-msgstr "Windows ھەمبەھىرى"
-
-#: libcore/ConnectServerDialog.vala:63
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: libcore/ConnectServerDialog.vala:70
-msgid "Secure WebDAV (HTTPS)"
-msgstr "بىخەتەر WebDAV (HTTPS)"
-
-#: libcore/ConnectServerDialog.vala:112
-msgid "Server Details"
-msgstr "مۇلازىمېتىر تەپسىلاتى"
-
-#: libcore/ConnectServerDialog.vala:116
-msgid "Server name or IP address"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:119
-#, fuzzy
-msgid "Server:"
-msgstr "مۇلازىمېتىر(_S):"
-
-#: libcore/ConnectServerDialog.vala:129
-#, fuzzy
-msgid "Port:"
-msgstr "پورت(_P):"
-
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
-#: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
-msgid "Type:"
-msgstr "تىپى:"
-
-#: libcore/ConnectServerDialog.vala:161
-msgid "Name of share on server (Optional)"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:164
-#, fuzzy
-msgid "Share:"
-msgstr "ھەمبەھىر(_H):"
-
-#: libcore/ConnectServerDialog.vala:167
-msgid "Path of shared folder on server (Optional)"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:171
-#, fuzzy
-msgid "Folder:"
-msgstr "مۇندەرىجە(_F):"
-
-#: libcore/ConnectServerDialog.vala:175
-msgid "User Details"
-msgstr "ئابونت تەپسىلاتى"
-
-#: libcore/ConnectServerDialog.vala:180
-#, fuzzy
-msgid "Name of Windows domain"
-msgstr "باشقۇرغۇچىلىق سالاھىيىتىدە يىڭى كۆزنەك قۇرۇش"
-
-#: libcore/ConnectServerDialog.vala:182
-#, fuzzy
-msgid "Domain name:"
-msgstr "دائىرە ئىسىمى(_D):"
-
-#: libcore/ConnectServerDialog.vala:187
-msgid "Name of user on server"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:189
-#, fuzzy
-msgid "User name:"
-msgstr "ئابونت ئىسمى(_U):"
-
-#: libcore/ConnectServerDialog.vala:197
-#, fuzzy
-msgid "Password:"
-msgstr "پارول(_W):"
-
-#: libcore/ConnectServerDialog.vala:199
-#, fuzzy
-msgid "Remember this password"
-msgstr "پارولنى ئىسىڭىزدە ساقلاڭ(_R)"
-
-#: libcore/ConnectServerDialog.vala:209
-#, fuzzy
-msgid "Connect"
-msgstr "ئۇلاش"
-
-#: libcore/ConnectServerDialog.vala:216
-msgid "Continue"
-msgstr "داۋاملاشتۇرۇش"
-
-#: libcore/ConnectServerDialog.vala:266
-#, fuzzy
-msgid "Connecting…"
-msgstr "ئۇلىنىۋاتىدۇ...."
-
-#: libcore/ConnectServerDialog.vala:373
-msgid "Please verify your user details."
-msgstr "ئابونت تەپسىلاتىڭىزنى دەلىللەڭ."
 
 #: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
@@ -375,126 +256,6 @@ msgstr[0] "%'d مىنۇت"
 #, c-format
 msgid "link to %s"
 msgstr "%s غا ئۇلاش"
-
-#: libcore/FileConflictDialog.vala:64
-msgid "File conflict"
-msgstr "ھۆججەت توقۇنۇشى"
-
-#: libcore/FileConflictDialog.vala:77
-msgid "Original file"
-msgstr "ئورىگىنال ھۆججەت"
-
-#: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
-msgid "Size:"
-msgstr "چوڭلۇقى:"
-
-#: libcore/FileConflictDialog.vala:97 libcore/FileConflictDialog.vala:131
-msgid "Last modified:"
-msgstr "ئاخىرقى ئۆزگەرتىلگەن ۋاقىت:"
-
-#: libcore/FileConflictDialog.vala:111
-msgid "Replace with"
-msgstr "ئالماشتۇرۇش"
-
-#: libcore/FileConflictDialog.vala:145
-msgid "Reset"
-msgstr "قايتا بىكىتىش"
-
-#: libcore/FileConflictDialog.vala:154
-msgid "_Select a new name for the destination"
-msgstr "نىشانغا يېڭى ئىسىم تاللا(_S)"
-
-#: libcore/FileConflictDialog.vala:158
-msgid "Apply this action to all files"
-msgstr "بۇ مەشغۇلاتنى ھەممە ھۆججەتكە قوللىنىش"
-
-#: libcore/FileConflictDialog.vala:160 libcore/StockDialogs.vala:22
-msgid "_Skip"
-msgstr "ئاتلاپ ئۆتۈش(_S)"
-
-#: libcore/FileConflictDialog.vala:161
-msgid "Re_name"
-msgstr "ئىسىمىنى ئۆزگەرتىش(_N)"
-
-#: libcore/FileConflictDialog.vala:163
-msgid "Keep Newest"
-msgstr ""
-
-#: libcore/FileConflictDialog.vala:164
-msgid "Skip if original was modified more recently"
-msgstr ""
-
-#: libcore/FileConflictDialog.vala:281
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "مۇندەرىجە «%s» نى بىرلەشتۈرەمسىز؟"
-
-#: libcore/FileConflictDialog.vala:282
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"بىرلەشتۈرگەندە كۆچۈرۈلىدىغان ھۆججەت بۇ مۇندەرىجەتىكى ھەر قانداق ھۆججەت بىلەن "
-"توقۇنۇشسا ئۇلارنى ئالماشتۇرۇشتىن ئىلگىرى بىرلەشتۈرۈشنى جەزملەش ئىلتىماسى "
-"كۆرۈنىدۇ."
-
-#: libcore/FileConflictDialog.vala:284
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "«%s» دا ئوخشاش ئىسىملىك كونا مۇندەرىجە مەۋجۇت."
-
-#: libcore/FileConflictDialog.vala:286
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "«%s» دا ئوخشاش ئىسىملىك يېڭى مۇندەرىجە مەۋجۇت."
-
-#: libcore/FileConflictDialog.vala:288
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "«%s» دا ئوخشاش ئىسىملىك باشقا مۇندەرىجە مەۋجۇت."
-
-#: libcore/FileConflictDialog.vala:291
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "مۇندەرىجە «%s» نى ئالماشتۇرۇۋېتەمسىز؟"
-
-#: libcore/FileConflictDialog.vala:292
-msgid "Replacing it will remove all files in the folder."
-msgstr "ئۇ ئالماشتۇرۇلسا بۇ مۇندەرىجىدىكى ھەممە ھۆججەتلەر يۆتكىۋېتىلىدۇ."
-
-#: libcore/FileConflictDialog.vala:293
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "«%s» دا ئوخشاش ئسىملىك مۇندەرىجە مەۋجۇت."
-
-#: libcore/FileConflictDialog.vala:296
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "ھۆججەت «%s» نى ئالماشتۇرۇۋېتەمسىز؟"
-
-#: libcore/FileConflictDialog.vala:297
-msgid "Replacing it will overwrite its content."
-msgstr "ئۇ ئالماشتۇرۇلسا ئۇنىڭ مەزمۇنى قاپلىنىپ كېتىدۇ."
-
-#: libcore/FileConflictDialog.vala:300
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "«%s» دا ئوخشاش ئسىملىك كونا ھۆججەت مەۋجۇت."
-
-#: libcore/FileConflictDialog.vala:302
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "«%s» دا ئوخشاش ئىسىملىك يېڭى ھۆججەت مەۋجۇت."
-
-#: libcore/FileConflictDialog.vala:304
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "«%s» دا ئوخشاش ئىسىملىك باشقا ھۆججەت مەۋجۇت."
-
-#: libcore/FileConflictDialog.vala:336
-msgid "Merge"
-msgstr "بىرىكتۈرۈش"
 
 #: libcore/FileUtils.vala:80
 #, fuzzy, c-format
@@ -997,52 +758,6 @@ msgstr ""
 msgid "File System"
 msgstr "ھۆججەت سىستېمىسى"
 
-#: libcore/StockDialogs.vala:20
-#, fuzzy
-msgid "_Cancel"
-msgstr "ئەمەلدىن قالدۇرۇش"
-
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
-#, fuzzy
-msgid "Delete"
-msgstr "ئۆچۈرۈلگەن ۋاقتى:"
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr "ھەممىسىنى ئاتلاپ ئۆتۈش(_K)"
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr "قايتا سىناش(_R)"
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr "ھەممىنى ئۆچۈرۈش(_A)"
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr "ئالماشتۇرۇش(_R)"
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr "ھەممىنى ئالماشتۇرۇش(_A)"
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr "بىرلەشتۈرۈش(_M)"
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr "ھەممىنى بىرلەشتۈرۈش(_A)"
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr "كۆچۈرۈۋىرىش(_A)"
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "ئەخلەت چېلىكىنى تازىلاش(_T)"
-
 #: libcore/UndoManager.vala:22
 #, fuzzy
 msgid "Undo Copy"
@@ -1513,6 +1228,298 @@ msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "ئەخلەت چېلىكىغا يۆتكەيدىغان %'d ھۆججەت قالدى"
 
+#: libcore/View/Dialogs/ConnectServerDialog.vala:32
+msgid "Public FTP"
+msgstr "ئاممىۋى FTP"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:38
+msgid "FTP (with login)"
+msgstr "FTP (كىرىش زۆرۈر)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:45
+msgid "SSH"
+msgstr "SSH"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:51
+msgid "AFP (Apple Filing Protocol)"
+msgstr "AFP (ئالما ھۆججەت كىلىشىمى)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:57
+msgid "Windows share"
+msgstr "Windows ھەمبەھىرى"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:63
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:70
+msgid "Secure WebDAV (HTTPS)"
+msgstr "بىخەتەر WebDAV (HTTPS)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:112
+msgid "Server Details"
+msgstr "مۇلازىمېتىر تەپسىلاتى"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:116
+msgid "Server name or IP address"
+msgstr ""
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:119
+#, fuzzy
+msgid "Server:"
+msgstr "مۇلازىمېتىر(_S):"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:129
+#, fuzzy
+msgid "Port:"
+msgstr "پورت(_P):"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:156
+#: libcore/View/Dialogs/FileConflictDialog.vala:89
+#: libcore/View/Dialogs/FileConflictDialog.vala:123
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Type:"
+msgstr "تىپى:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:161
+msgid "Name of share on server (Optional)"
+msgstr ""
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:164
+#, fuzzy
+msgid "Share:"
+msgstr "ھەمبەھىر(_H):"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:167
+msgid "Path of shared folder on server (Optional)"
+msgstr ""
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:171
+#, fuzzy
+msgid "Folder:"
+msgstr "مۇندەرىجە(_F):"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:175
+msgid "User Details"
+msgstr "ئابونت تەپسىلاتى"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:180
+#, fuzzy
+msgid "Name of Windows domain"
+msgstr "باشقۇرغۇچىلىق سالاھىيىتىدە يىڭى كۆزنەك قۇرۇش"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:182
+#, fuzzy
+msgid "Domain name:"
+msgstr "دائىرە ئىسىمى(_D):"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:187
+msgid "Name of user on server"
+msgstr ""
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:189
+#, fuzzy
+msgid "User name:"
+msgstr "ئابونت ئىسمى(_U):"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:197
+#, fuzzy
+msgid "Password:"
+msgstr "پارول(_W):"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:199
+#, fuzzy
+msgid "Remember this password"
+msgstr "پارولنى ئىسىڭىزدە ساقلاڭ(_R)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:209
+#, fuzzy
+msgid "Connect"
+msgstr "ئۇلاش"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:216
+msgid "Continue"
+msgstr "داۋاملاشتۇرۇش"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:266
+#, fuzzy
+msgid "Connecting…"
+msgstr "ئۇلىنىۋاتىدۇ...."
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:373
+msgid "Please verify your user details."
+msgstr "ئابونت تەپسىلاتىڭىزنى دەلىللەڭ."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:64
+msgid "File conflict"
+msgstr "ھۆججەت توقۇنۇشى"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:77
+msgid "Original file"
+msgstr "ئورىگىنال ھۆججەت"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:79
+#: libcore/View/Dialogs/FileConflictDialog.vala:113
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
+msgid "Size:"
+msgstr "چوڭلۇقى:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:97
+#: libcore/View/Dialogs/FileConflictDialog.vala:131
+msgid "Last modified:"
+msgstr "ئاخىرقى ئۆزگەرتىلگەن ۋاقىت:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:111
+msgid "Replace with"
+msgstr "ئالماشتۇرۇش"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:145
+msgid "Reset"
+msgstr "قايتا بىكىتىش"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:154
+msgid "_Select a new name for the destination"
+msgstr "نىشانغا يېڭى ئىسىم تاللا(_S)"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:158
+msgid "Apply this action to all files"
+msgstr "بۇ مەشغۇلاتنى ھەممە ھۆججەتكە قوللىنىش"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:160
+#: libcore/View/Dialogs/StockDialogs.vala:22
+msgid "_Skip"
+msgstr "ئاتلاپ ئۆتۈش(_S)"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:161
+msgid "Re_name"
+msgstr "ئىسىمىنى ئۆزگەرتىش(_N)"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:163
+msgid "Keep Newest"
+msgstr ""
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:164
+msgid "Skip if original was modified more recently"
+msgstr ""
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:281
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "مۇندەرىجە «%s» نى بىرلەشتۈرەمسىز؟"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:282
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"بىرلەشتۈرگەندە كۆچۈرۈلىدىغان ھۆججەت بۇ مۇندەرىجەتىكى ھەر قانداق ھۆججەت بىلەن "
+"توقۇنۇشسا ئۇلارنى ئالماشتۇرۇشتىن ئىلگىرى بىرلەشتۈرۈشنى جەزملەش ئىلتىماسى "
+"كۆرۈنىدۇ."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:284
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "«%s» دا ئوخشاش ئىسىملىك كونا مۇندەرىجە مەۋجۇت."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:286
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "«%s» دا ئوخشاش ئىسىملىك يېڭى مۇندەرىجە مەۋجۇت."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:288
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "«%s» دا ئوخشاش ئىسىملىك باشقا مۇندەرىجە مەۋجۇت."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:291
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "مۇندەرىجە «%s» نى ئالماشتۇرۇۋېتەمسىز؟"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:292
+msgid "Replacing it will remove all files in the folder."
+msgstr "ئۇ ئالماشتۇرۇلسا بۇ مۇندەرىجىدىكى ھەممە ھۆججەتلەر يۆتكىۋېتىلىدۇ."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:293
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "«%s» دا ئوخشاش ئسىملىك مۇندەرىجە مەۋجۇت."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:296
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "ھۆججەت «%s» نى ئالماشتۇرۇۋېتەمسىز؟"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:297
+msgid "Replacing it will overwrite its content."
+msgstr "ئۇ ئالماشتۇرۇلسا ئۇنىڭ مەزمۇنى قاپلىنىپ كېتىدۇ."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:300
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "«%s» دا ئوخشاش ئسىملىك كونا ھۆججەت مەۋجۇت."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:302
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "«%s» دا ئوخشاش ئىسىملىك يېڭى ھۆججەت مەۋجۇت."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:304
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "«%s» دا ئوخشاش ئىسىملىك باشقا ھۆججەت مەۋجۇت."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:336
+msgid "Merge"
+msgstr "بىرىكتۈرۈش"
+
+#: libcore/View/Dialogs/StockDialogs.vala:20
+#, fuzzy
+msgid "_Cancel"
+msgstr "ئەمەلدىن قالدۇرۇش"
+
+#: libcore/View/Dialogs/StockDialogs.vala:21
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:333
+#, fuzzy
+msgid "Delete"
+msgstr "ئۆچۈرۈلگەن ۋاقتى:"
+
+#: libcore/View/Dialogs/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "ھەممىسىنى ئاتلاپ ئۆتۈش(_K)"
+
+#: libcore/View/Dialogs/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "قايتا سىناش(_R)"
+
+#: libcore/View/Dialogs/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "ھەممىنى ئۆچۈرۈش(_A)"
+
+#: libcore/View/Dialogs/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "ئالماشتۇرۇش(_R)"
+
+#: libcore/View/Dialogs/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "ھەممىنى ئالماشتۇرۇش(_A)"
+
+#: libcore/View/Dialogs/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "بىرلەشتۈرۈش(_M)"
+
+#: libcore/View/Dialogs/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "ھەممىنى بىرلەشتۈرۈش(_A)"
+
+#: libcore/View/Dialogs/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "كۆچۈرۈۋىرىش(_A)"
+
+#: libcore/View/Dialogs/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "ئەخلەت چېلىكىنى تازىلاش(_T)"
+
 #: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
@@ -1670,7 +1677,7 @@ msgstr "سۈزۈكلۈكى:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:255 src/View/DetailsColumn.vala:269
+#: src/View/DetailsColumn.vala:264 src/View/DetailsColumn.vala:278
 msgid "Unknown"
 msgstr "نامەلۇم"
 
@@ -1832,32 +1839,32 @@ msgstr "ئەمەلىي چوڭلۇقى چوڭراق بولىشى مۇمكىن"
 msgid "unknown"
 msgstr "نامەلۇم"
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:306
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:315
 msgid "Loading…"
 msgstr "يۈكلەۋاتىدۇ...."
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:275
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:284
 msgid "Could not be determined"
 msgstr "جەزملەشتۈرگىلى بولمىدى"
 
-#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:141
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:143
 msgid "Created:"
 msgstr "قۇرۇلغان ۋاقتى:"
 
-#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:154
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:156
 msgid "Modified:"
 msgstr "ئۆزگەرتىلگەن ۋاقتى:"
 
-#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:168
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:170
 msgid "Deleted:"
 msgstr "ئۆچۈرۈلگەن ۋاقتى:"
 
-#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:177
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:179
 #, fuzzy
 msgid "Media type:"
 msgstr "ھۆججەت فورماتى:"
 
-#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:184
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:186
 msgid "Resolution:"
 msgstr "ئىنىقلىقى:"
 
@@ -1866,11 +1873,11 @@ msgstr "ئىنىقلىقى:"
 msgid "Location:"
 msgstr "ئورنى:"
 
-#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:192
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:194
 msgid "Target:"
 msgstr "نىشان:"
 
-#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:202
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:204
 msgid "Original Location:"
 msgstr "ئەسلى ئورنى:"
 
@@ -1910,7 +1917,7 @@ msgid_plural "%u files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:182
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -2181,13 +2188,13 @@ msgstr "تاللانغان مەزمۇننى كىسىش"
 msgid "Cannot paste files here"
 msgstr "ھۆججەتلەرنى بۇ يەرگە چاپلىغىلى بولمىدى"
 
-#: src/View/DetailsColumn.vala:115
+#: src/View/DetailsColumn.vala:118
 #, fuzzy
 #| msgid "Name"
 msgid "Name:"
 msgstr "ئىسىم"
 
-#: src/View/DetailsColumn.vala:209
+#: src/View/DetailsColumn.vala:211
 #, fuzzy
 #| msgid "Properties"
 msgid "Properties…"
@@ -2594,53 +2601,53 @@ msgstr "بۇ مۇندەرىجىنى قايتا يۈكلەش"
 msgid "Searching…"
 msgstr "يۈكلەۋاتىدۇ...."
 
-#: src/View/Widgets/OverlayBar.vala:162
+#: src/View/Widgets/OverlayBar.vala:173
 #, c-format
 msgid "%u folders"
 msgstr "%u مۇندەرىجە"
 
-#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
+#: src/View/Widgets/OverlayBar.vala:175 src/View/Widgets/OverlayBar.vala:185
 #, fuzzy, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " ۋە  %u باشقا تۈر  (%s) تاللاندى"
 
-#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
+#: src/View/Widgets/OverlayBar.vala:179 src/View/Widgets/OverlayBar.vala:189
 msgid " selected"
 msgstr " تاللاندى"
 
-#: src/View/Widgets/OverlayBar.vala:181
+#: src/View/Widgets/OverlayBar.vala:192
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u تۈر تاللاندى (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:237
 #, fuzzy, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] "%u بالا مۇندەرىجە، "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:243
 #, fuzzy, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] "%u ھۆججەت، "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:242
+#: src/View/Widgets/OverlayBar.vala:253
 #, c-format
 msgid "%s approx."
 msgstr "%s تەخمىنەن"
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:245
+#: src/View/Widgets/OverlayBar.vala:256
 msgid "unknown size"
 msgstr "چوڭلۇقى نامەلۇم"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:249
+#: src/View/Widgets/OverlayBar.vala:260
 #, fuzzy, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
