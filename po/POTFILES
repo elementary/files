@@ -34,10 +34,10 @@ libcore/FileOperations/CopyMoveJob.vala
 libcore/FileOperations/CreateJob.vala
 libcore/FileOperations/DeleteJob.vala
 
-libcore/View/Dialogs/ConnectServerOperation.vala,
-libcore/View/Dialogs/ConnectServerDialog.vala,
-libcore/View/Dialogs/FileConflictDialog.vala,
-libcore/View/Dialogs/StockDialogs.vala,
+libcore/View/Dialogs/ConnectServerOperation.vala
+libcore/View/Dialogs/ConnectServerDialog.vala
+libcore/View/Dialogs/FileConflictDialog.vala
+libcore/View/Dialogs/StockDialogs.vala
 
 libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala
 libcore/View/HeaderBar/BasicLocationBar.vala
