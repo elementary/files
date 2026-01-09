@@ -42,6 +42,9 @@ libcore/FileOperations/DeleteJob.vala
 
 libcore/View/AbstractSlot.vala
 libcore/View/BasicAbstractDirectoryView.vala
+libcore/View/BasicAbstractTreeView.vala
+libcore/View/BasicListView.vala
+libcore/View/BasicIconView.vala
 libcore/View/BasicSlot.vala
 
 libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala

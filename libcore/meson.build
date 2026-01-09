@@ -63,6 +63,9 @@ pantheon_files_core_vala_files = files(
 
     'View/AbstractSlot.vala',
     'View/BasicAbstractDirectoryView.vala',
+    'View/BasicAbstractTreeView.vala',
+    'View/BasicListView.vala',
+    'View/BasicIconView.vala',
     'View/BasicSlot.vala',
 
     'View/HeaderBar/BasicBreadcrumbsEntry.vala',

@@ -94,6 +94,8 @@ namespace Files {
         protected ZoomLevel minimum_zoom = ZoomLevel.SMALLEST;
         protected ZoomLevel maximum_zoom = ZoomLevel.LARGEST;
 
+        //File filter implemented for future use in Files.FileChooser
+        //but could also be used in main app
         private Gtk.FileFilterFlags filter_flags = 0;
         private Gtk.FileFilterInfo filter_info = {};
         private Gtk.FileFilter? _filter = null;
