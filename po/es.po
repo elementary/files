@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-09 08:35+0000\n"
-"PO-Revision-Date: 2026-01-01 04:55+0000\n"
+"PO-Revision-Date: 2026-01-13 13:55+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <italo@gp-mail.com>\n"
 "Language-Team: Spanish <https://l10n.elementaryos.org/projects/files/files/"
 "es/>\n"
@@ -2149,10 +2149,8 @@ msgid "Name:"
 msgstr "Nombre:"
 
 #: src/View/DetailsColumn.vala:211
-#, fuzzy
-#| msgid "Properties"
 msgid "Properties…"
-msgstr "Propiedades"
+msgstr "Propiedades…"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
