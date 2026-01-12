@@ -43,7 +43,7 @@ namespace Files {
 
         protected override Gtk.Widget? create_view () {
             tree = new Files.BasicTreeView () {
-                model = filter_model,
+                model = model,
                 headers_visible = false,
                 rubber_banding = true
             };

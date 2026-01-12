@@ -273,21 +273,6 @@ namespace Files {
             debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
         }
 
-        private uint refilter_timeout_id = 0;
-        private void schedule_refilter () {
-            if (refilter_timeout_id > 0) {
-                return;
-            } else {
-                refilter_timeout_id = Timeout.add (100, () => {
-                    refilter_timeout_id = 0;
-                    filter_model.refilter ();
-                    update_selected_files_and_menu ();
-                    draw_when_idle ();
-                    return Source.REMOVE;
-                });
-            }
-        }
-
         protected void set_up_name_renderer () {
             name_renderer.editable = false;
             name_renderer.edited.connect (on_name_edited);
@@ -2454,7 +2439,7 @@ warning ("Cut");
             uint count = 0;
             var selected_paths = get_selected_paths ();
             foreach (var path in selected_paths) {
-                var file = model.file_for_path (filter_model.convert_path_to_child_path (path));
+                var file = model.file_for_path (path);
                 if (file != null) {
                     list.prepend ((owned)file);
                     count++;

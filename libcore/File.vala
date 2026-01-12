@@ -54,8 +54,6 @@ public class Files.File : GLib.Object {
     public uint n_emblems = 0;
     public GLib.FileInfo? info = null;
     public string basename { get; construct; }
-    public string filename { get; private set; }
-    public string mime_type { get; private set; }
 
     public string? custom_display_name = null;
     public string uri { get; construct; }
@@ -149,7 +147,6 @@ public class Files.File : GLib.Object {
         var file = Files.File.cache_lookup (location);
         if (file == null) {
             file = new Files.File (location, parent);
-            file.filename = file.get_target_location ().get_path ();
             lock (file_cache) {
                 file_cache.insert (location, file);
             }
@@ -710,7 +707,6 @@ public class Files.File : GLib.Object {
         unowned string? ftype = get_ftype ();
         if (ftype != null) {
             icon = GLib.ContentType.get_icon (ftype);
-            mime_type = GLib.ContentType.get_mime_type (ftype);
         }
 
         if (pix_size > 1 && pix_scale > 0) {
