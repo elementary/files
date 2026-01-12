@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-05 23:31+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2017-04-05 20:24+0000\n"
 "Last-Translator: Borislav Asenov Krumov <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -34,7 +34,7 @@ msgstr "папка;мениджър;разглеждане;диск;файлов
 msgid "New Window"
 msgstr "Нов прозорец"
 
-#: data/io.elementary.files.desktop.in.in:29
+#: data/io.elementary.files.desktop.in.in:30
 msgid "New Window As Administrator"
 msgstr "Нов прозорец като администратор"
 

@@ -18,18 +18,13 @@ pantheon_files_core_deps = [
 ]
 
 pantheon_files_core_vala_files = files(
-    'Bookmark.vala',
-    'BookmarkList.vala',
     'CallWhenReady.vala',
-    'ConnectServerOperation.vala',
-    'ConnectServerDialog.vala',
     'ClipboardManager.vala',
     'Directory.vala',
     'DndHandler.vala',
     'Enums.vala',
     'File.vala',
     'FileChanges.vala',
-    'FileConflictDialog.vala',
     'FileUtils.vala',
     'IconInfo.vala',
     'ListModel.vala',
@@ -40,20 +35,20 @@ pantheon_files_core_vala_files = files(
     'ProgressInfo.vala',
     'ProgressInfoManager.vala',
     'Resources.vala',
-    'SidebarPluginItem.vala',
     'SoundManager.vala',
-    'StockDialogs.vala',
     'Thumbnailer.vala',
     'TrashMonitor.vala',
     'UserUtils.vala',
     'UndoManager.vala',
     'ZeitgeistManager.vala',
+
     'FileOperations/CommonJob.vala',
     'FileOperations/CopyMoveJob.vala',
     'FileOperations/CreateJob.vala',
     'FileOperations/DeleteJob.vala',
     'FileOperations/EmptyTrashJob.vala',
     'FileOperations/MountUtils.vala',
+
     'Interfaces/SidebarInterface.vala',
     'Interfaces/LocatableInterface.vala',
     'Interfaces/NavigatableInterface.vala',
@@ -68,6 +63,11 @@ pantheon_files_core_vala_files = files(
     'View/BasicIconView.vala',
     'View/BasicSlot.vala',
 
+    'View/Dialogs/ConnectServerOperation.vala',
+    'View/Dialogs/ConnectServerDialog.vala',
+    'View/Dialogs/FileConflictDialog.vala',
+    'View/Dialogs/StockDialogs.vala',
+
     'View/HeaderBar/BasicBreadcrumbsEntry.vala',
     'View/HeaderBar/BasicLocationBar.vala',
     'View/HeaderBar/BreadcrumbElement.vala',
@@ -78,6 +78,9 @@ pantheon_files_core_vala_files = files(
     'View/Renderers/EmblemRenderer.vala',
     'View/Renderers/IconRenderer.vala',
     'View/Renderers/TextRenderer.vala',
+    'View/Sidebar/Bookmark.vala',
+    'View/Sidebar/BookmarkList.vala',
+    'View/Sidebar/SidebarPluginItem.vala',
     'View/Widgets/AbstractEditableLabel.vala',
     'View/Widgets/MultiLineEditableLabel.vala',
     'View/Widgets/SingleLineEditableLabel.vala'
