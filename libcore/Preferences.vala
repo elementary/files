@@ -35,14 +35,6 @@ namespace Files {
         public bool sort_directories_first { get; set; default = true; }
         public bool remember_history { get; set; default = true; }
 
-
-        public ZoomLevel zoomlevel_icon_view { get; set; default = ZoomLevel.NORMAL; }
-        public ZoomLevel zoomlevel_list_view { get; set; default = ZoomLevel.SMALL; }
-        public ZoomLevel minimum_zoomlevel_icon_view { get; set; default = ZoomLevel.NORMAL; }
-        public ZoomLevel minimum_zoomlevel_list_view { get; set; default = ZoomLevel.SMALLEST; }
-        public ZoomLevel maximum_zoomlevel_icon_view { get; set; default = ZoomLevel.LARGEST; }
-        public ZoomLevel maximum_zoomlevel_list_view { get; set; default = ZoomLevel.LARGE; }
-
         public DateFormatMode date_format {set; get; default = DateFormatMode.ISO;}
         public string clock_format {set; get; default = "24h";}
 
