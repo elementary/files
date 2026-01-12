@@ -94,29 +94,6 @@ namespace Files {
         protected ZoomLevel minimum_zoom = ZoomLevel.SMALLEST;
         protected ZoomLevel maximum_zoom = ZoomLevel.LARGEST;
 
-        //File filter implemented for future use in Files.FileChooser
-        //but could also be used in main app
-        private Gtk.FileFilterFlags filter_flags = 0;
-        private Gtk.FileFilterInfo filter_info = {};
-        private Gtk.FileFilter? _filter = null;
-        public Gtk.FileFilter? filter {
-            get {
-                return _filter;
-            }
-
-            set {
-                if (value != null) {
-                    filter_flags = value.get_needed ();
-                    filter_info.contains = filter_flags;
-                } else {
-                    filter_flags = 0;
-                    filter_info = {0, };
-                }
-                schedule_refilter ();
-                _filter = value;
-            }
-        }
-
         /* Suppress native behavior when required */
         private bool button_press_disabled = false;
 
@@ -181,7 +158,6 @@ namespace Files {
         private Gtk.Overlay overlay;
         private ClipboardManager clipboard;
         protected Files.ListModel model;
-        protected Gtk.TreeModelFilter filter_model;
         protected Files.IconRenderer icon_renderer;
         protected unowned BasicSlot slot; // Must be unowned else cyclic reference stops destruction
 
@@ -243,11 +219,6 @@ namespace Files {
             set_should_thumbnail ();
 
             model = new Files.ListModel ();
-            filter_model = new Gtk.TreeModelFilter (model, null);
-            filter_model.set_visible_func ((model, iter) => {
-                var file = ((ListModel)model).file_for_iter (iter);
-                return file != null ? filter_file (file) : false;
-            });
 
             set_up_menu_actions ();
             set_up_directory_view ();
@@ -314,30 +285,6 @@ namespace Files {
                     draw_when_idle ();
                     return Source.REMOVE;
                 });
-            }
-        }
-
-        private bool filter_file (Files.File? file) {
-            if (file == null) {
-                return false;
-            } else if (filter_flags == 0 || file.is_folder ()) {
-                return true;
-            } else {
-                if (DISPLAY_NAME in filter_flags) {
-                    filter_info.display_name = file.get_display_name ();
-                }
-                if (FILENAME in filter_flags) {
-                    filter_info.filename = file.filename;
-                }
-                if (MIME_TYPE in filter_flags) {
-                    filter_info.mime_type = file.get_ftype ();
-                }
-                if (URI in filter_flags) {
-                    filter_info.uri = file.uri;
-                }
-
-                var res = filter.filter (filter_info);
-                return res;
             }
         }
 
