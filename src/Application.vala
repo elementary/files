@@ -246,12 +246,7 @@ public class Files.Application : Gtk.Application {
         base.quit ();
     }
 
-    public void folder_deleted (GLib.File file) {
-        unowned List<Gtk.Window> window_list = this.get_windows ();
-        window_list.@foreach ((window) => {
-            ((View.Window)window).folder_deleted (file);
-        });
-    }
+
 
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
         /* Notify each window */

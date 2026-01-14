@@ -22,8 +22,8 @@ namespace Files {
         protected Files.TreeView tree;
         protected Gtk.TreeViewColumn name_column;
 
-        protected AbstractTreeView (View.Slot _slot) {
-            base (_slot);
+        protected AbstractTreeView (View.Slot _slot, Gtk.SelectionMode _selection_mode) {
+            base (_slot, _selection_mode);
         }
 
         ~AbstractTreeView () {

@@ -21,7 +21,7 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.View.Window : Hdy.ApplicationWindow {
+public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     static uint window_id = 0;
 
     const GLib.ActionEntry [] WIN_ENTRIES = {
@@ -101,8 +101,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private Gtk.EventControllerKey key_controller; //[Gtk3] Does not work unless we keep this ref
 
     public signal void loading_uri (string location);
-    public signal void folder_deleted (GLib.File location);
-    public signal void free_space_change ();
+    // public signal void free_space_change ();
 
     public Window (Files.Application _application) {
         Object (
@@ -260,7 +259,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_box.add (tab_view);
 
         sidebar = new Sidebar.SidebarWindow ();
-        free_space_change.connect (sidebar.on_free_space_change);
+        // free_space_change.connect (sidebar.on_free_space_change);
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             expand = true,
@@ -792,7 +791,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         remove_content (view_container);
     }
 
-    public void remove_content (ViewContainer view_container) {
+    private void remove_content (ViewContainer view_container) {
         for (int n = 0; n < tab_view.n_pages; n++) {
             var tab = tab_view.get_nth_page (n);
             if (tab.get_child () == view_container) {
@@ -1481,5 +1480,51 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     public new void grab_focus () {
         current_container.grab_focus ();
+    }
+
+    public void on_folder_deleted (GLib.File deleted) {
+        for (int i = 0; i < tab_view.n_pages; i++) {
+            var tab = tab_view.get_nth_page (i);
+            var vc = (ViewContainer) tab.child;
+            if (deleted.equal (vc.location) && !vc.go_up ()) {
+                vc.close ();
+                remove_tab (tab);
+            }
+        }
+    }
+
+    public void on_free_space_change () {
+        sidebar.on_free_space_change ();
+    }
+
+    /*SlotToplevelInterface*/
+    public void folder_deleted (GLib.File location) {
+        if (marlin_app != null) {
+            unowned List<Gtk.Window> window_list = marlin_app.get_windows ();
+            window_list.@foreach ((window) => {
+                ((View.Window)window).on_folder_deleted (location);
+            });
+        } else {
+            this.on_folder_deleted (location);
+        }
+    }
+
+    public void free_space_change () {
+        if (marlin_app != null) {
+            unowned List<Gtk.Window> window_list = marlin_app.get_windows ();
+            window_list.@foreach ((window) => {
+                ((View.Window)window).on_free_space_change ();
+            });
+        } else {
+            on_free_space_change ();
+        }
+    }
+
+    public unowned AbstractSlot? get_view () {
+        return current_container.view;
+    }
+
+    public AbstractSlot? prepare_reload () {
+        return current_container.prepare_reload ();
     }
 }

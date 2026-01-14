@@ -19,18 +19,24 @@
 
 namespace Files {
     public class BasicSlot : Files.AbstractSlot {
+        protected const string EMPTY_MESSAGE = _("This Folder Is Empty");
+        protected const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
+        protected const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
+        protected const string DENIED_MESSAGE = _("Access Denied");
+
+    // public class Slot : Files.AbstractSlot {
+        // public unowned View.ViewContainer ctab { get; construct; }
+        public unowned SlotToplevelInterface? top_level { get; construct; }
+        // public ViewMode mode { get; construct; }
+
+        // private int preferred_column_width;
         public ViewMode mode { get; construct; }
         public Gtk.SelectionMode selection_mode { get; construct; }
-        public BasicAbstractDirectoryView? dir_view { get; private set; }
-
-        private uint reload_timeout_id = 0;
-        private uint path_change_timeout_id = 0;
-        private bool original_reload_request = false;
-
-        private const string EMPTY_MESSAGE = _("This Folder Is Empty");
-        private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
-        private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
-        private const string DENIED_MESSAGE = _("Access Denied");
+        protected Files.DirectoryViewInterface? dir_view = null;
+        // private Files.AbstractDirectoryView? dir_view = null;
+        protected uint reload_timeout_id = 0;
+        protected uint path_change_timeout_id = 0;
+        protected bool original_reload_request = false;
 
         public bool is_active {get; protected set;}
         public int displayed_files_count {
@@ -43,6 +49,26 @@ namespace Files {
             }
         }
 
+        public unowned Gtk.Window? window {
+            get { return top_level; }
+        }
+
+        public override bool is_frozen {
+            set {
+                dir_view.is_frozen = value;
+            }
+
+            get {
+                return dir_view == null || dir_view.is_frozen;
+            }
+        }
+
+        public override bool locked_focus {
+            get {
+                return dir_view.renaming;
+            }
+        }
+
         public signal void folder_deleted (Files.File file, Directory parent);
         public signal void bookmark_uri_request (string uri, string custom = "");
         public signal void change_viewmode_request (ViewMode mode);
@@ -50,22 +76,30 @@ namespace Files {
         /* Support for multi-slot view (Miller)*/
         public Gtk.Box colpane;
         public Gtk.Paned hpane;
+
+        // public signal void size_change ();
+
         public BasicSlot (
             GLib.File _location,
-            ViewMode _mode = LIST,
-            Gtk.SelectionMode _selection_mode = BROWSE
+            SlotToplevelInterface? _top_level,
+            ViewMode _mode,
+            Gtk.SelectionMode _selection_mode
         ) {
             Object (
-                // ctab: _ctab,
-                mode: _mode,
                 location: _location,
-                selection_mode: _selection_mode
+                selection_mode: _selection_mode,
+                top_level: _top_level,
+                mode: _mode
             );
         }
 
         construct {
             switch (mode) {
-                case ViewMode.LIST:
+                // case ViewMode.MILLER_COLUMNS:
+                //     dir_view = new Files.ColumnView (this);
+                //     break;
+
+                case ViewMode.LIST:;
                     dir_view = new Files.BasicListView (this, selection_mode);
                     break;
 
@@ -77,7 +111,10 @@ namespace Files {
                     break;
             }
 
-            add_overlay (dir_view);
+            /* Miller View creates its own overlay and handles packing of the directory view */
+            if (mode != ViewMode.MILLER_COLUMNS) {
+                add_overlay (dir_view);
+            }
 
             connect_dir_signals ();
             connect_dir_view_signals ();
@@ -85,77 +122,105 @@ namespace Files {
 
             is_active = false;
             is_frozen = true;
-
-            initialize_directory ();
+            // preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
+            // width = preferred_column_width;
         }
 
         ~BasicSlot () {
-            critical ("Slot %i destruct", slot_number);
+            debug ("Slot %i destruct", slot_number);
             // Ensure dir view does not redraw with invalid slot, causing a crash
             dir_view.destroy ();
         }
 
-        //TODO Implement change view mode (LIST <-> ICON)
-
-        private void connect_slot_signals () {
+        protected void connect_slot_signals () {
             active.connect (() => {
                 if (is_active) {
                     return;
                 }
 
                 is_active = true;
-                if (dir_view != null) {
-                    dir_view.grab_focus ();
-                } else {
-                    critical ("SLOT: grab focus when dir_view null");
-                }
+                dir_view.grab_focus ();
             });
 
             inactive.connect (() => {
                 is_active = false;
             });
+
+            folder_deleted.connect ((file, dir) => {
+                if (top_level != null) {
+                    top_level.folder_deleted (file.location);
+                }
+            });
         }
 
-        private void connect_dir_view_signals () {
-            if (dir_view == null) {
-                critical ("SLOT: connect to null dir view");
-                return;
-            }
-
+        protected void connect_dir_view_signals () {
             dir_view.path_change_request.connect (on_dir_view_path_change_request);
+            dir_view.size_allocate.connect (on_dir_view_size_allocate);
             dir_view.selection_changed.connect (on_dir_view_selection_changed);
         }
 
-        private void disconnect_dir_view_signals () {
-            if (dir_view == null) {
-                critical ("SLOT: disconnect null dir view");
-                return;
-            }
+        protected void disconnect_dir_view_signals () {
             dir_view.path_change_request.disconnect (on_dir_view_path_change_request);
+            dir_view.size_allocate.disconnect (on_dir_view_size_allocate);
             dir_view.selection_changed.disconnect (on_dir_view_selection_changed);
         }
 
-        private void on_dir_view_selection_changed (GLib.List<Files.File> files) {
+        protected void on_dir_view_size_allocate (Gtk.Allocation alloc) {
+            width = alloc.width;
+        }
+
+        protected void on_dir_view_selection_changed (GLib.List<Files.File> files) {
             selection_changed (files);
         }
 
-        private void connect_dir_signals () requires (directory != null) {
+        protected void connect_dir_signals () {
             directory.done_loading.connect (on_directory_done_loading);
             directory.need_reload.connect (on_directory_need_reload);
         }
 
-        private void disconnect_dir_signals () requires (directory != null) {
+        protected void disconnect_dir_signals () {
             directory.done_loading.disconnect (on_directory_done_loading);
             directory.need_reload.disconnect (on_directory_need_reload);
         }
 
-        private void on_directory_done_loading (Directory dir) requires (dir != null) {
+        protected virtual void on_directory_done_loading (Directory dir) {
             directory_loaded (dir);
+
+            /*  Column View requires slots to determine their own width (other views' width determined by Window */
+            // if (mode == ViewMode.MILLER_COLUMNS) {
+            //     //TODO See if need to adjust width now using stack to show empty message
+            //     if (dir.is_empty ()) { /* No files in the file cache */
+            //         Pango.Rectangle extents;
+            //         var layout = dir_view.create_pango_layout (null);
+            //         layout.set_markup (get_empty_message (), -1);
+            //         layout.get_extents (null, out extents);
+            //         width = (int) Pango.units_to_double (extents.width);
+            //     } else {
+            //         width = preferred_column_width;
+            //     }
+
+            //     width += dir_view.icon_size + 64; /* allow some extra room for icon padding and right margin*/
+
+            //     /* Allow extra room for MESSAGE_CLASS styling of special messages */
+            //     if (dir.is_empty () || dir.permission_denied) {
+            //         width += width;
+            //     }
+
+            //     size_change ();
+            //     hpane.set_position (width);
+            //     colpane.show_all ();
+
+            //     if (colpane.get_realized ()) {
+            //         colpane.queue_draw ();
+            //     }
+            // }
+
             is_frozen = false;
         }
 
-        private void on_directory_need_reload (Directory dir, bool original_request) requires (dir != null) {
+        protected void on_directory_need_reload (Directory dir, bool original_request) {
             if (!is_frozen) {
+                top_level.prepare_reload (); // Save selection
                 dir_view.prepare_reload (dir); /* clear model but do not change directory */
                 /* view and slot are unfrozen when done loading signal received */
                 is_frozen = true;
@@ -174,7 +239,7 @@ namespace Files {
             }
         }
 
-        private void schedule_reload () requires (directory != null) {
+        protected void schedule_reload () {
             /* Allow time for other slots showing this directory to prepare for reload.
              * Also a delay is needed when a mount is added and trash reloads. */
             if (reload_timeout_id > 0) {
@@ -189,26 +254,22 @@ namespace Files {
             });
         }
 
-        private void on_dir_view_path_change_request (
-            GLib.File loc,
-            Files.OpenFlag flag = DEFAULT,
-            bool make_root = true
-        ) {
-            user_path_change_request (loc, make_root); /* Handle ourselves */
+        protected virtual void on_dir_view_path_change_request (GLib.File loc, Files.OpenFlag flag, bool make_root) {
+            if (flag == 0) { /* make view in existing container */
+                user_path_change_request (loc, make_root); /* Handle ourselves */
+            } else {
+                warning ("Not implemented");
+            }
         }
 
-        public void on_path_change_request (string _uri) {
-            user_path_change_request (GLib.File.new_for_uri (_uri));
-        }
-
-        public override void user_path_change_request (GLib.File _loc, bool make_root = true) {
+        public override void user_path_change_request (GLib.File loc, bool make_root = true) {
         /** Only this function must be used to change or reload the path **/
             var old_dir = directory;
             if (directory != null) {
                 disconnect_dir_signals ();
             }
 
-            location = _loc; // Sets directory to new directory or null
+            location = loc;
             connect_dir_signals ();
             path_changed ();
             /* ViewContainer listens to this signal takes care of updating appearance */
@@ -217,14 +278,9 @@ namespace Files {
         }
 
         public override void initialize_directory () {
-            if (directory == null) {
-                warning ("Cannot init null directory");
-                return;
-            }
-
             if (directory.is_loading ()) {
                 /* This can happen when restoring duplicate tabs */
-                message ("Slot.initialize_directory () called when directory already loading - ignoring");
+                debug ("Slot.initialize_directory () called when directory already loading - ignoring");
                 return;
             }
             /* view and slot are unfrozen when done loading signal received */
@@ -232,7 +288,7 @@ namespace Files {
             directory.init ();
         }
 
-        public override void reload (bool non_local_only = false) requires (directory != null) {
+        public override void reload (bool non_local_only = false) {
             if (!non_local_only || !directory.is_local) {
                 original_reload_request = true;
                 /* Propagate reload signal to any other slot showing this directory indicating it is not
@@ -241,18 +297,18 @@ namespace Files {
             }
         }
 
-        // public override bool set_all_selected (bool select_all) {
-        //     if (dir_view != null) {
-        //         if (select_all) {
-        //             dir_view.select_all ();
-        //         } else {
-        //             dir_view.unselect_all ();
-        //         }
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }
-        // }
+        public override bool set_all_selected (bool select_all) {
+            if (dir_view != null) {
+                if (select_all) {
+                    dir_view.select_all ();
+                } else {
+                    dir_view.unselect_all ();
+                }
+                return true;
+            } else {
+                return false;
+            }
+        }
 
         public override unowned GLib.List<Files.File>? get_selected_files () {
             if (dir_view != null) {
@@ -292,7 +348,7 @@ namespace Files {
             return this as Files.AbstractSlot;
         }
 
-        public unowned Files.BasicAbstractDirectoryView? get_directory_view () {
+        public unowned Files.DirectoryViewInterface? get_directory_view () {
             return dir_view;
         }
 
@@ -321,7 +377,7 @@ namespace Files {
         }
 
         public override void close () {
-            warning ("SLOT close %s", uri);
+            debug ("SLOT close %s", uri);
             cancel_timeouts ();
 
             if (directory != null) {
@@ -350,12 +406,12 @@ namespace Files {
             }
         }
 
-        private void cancel_timeouts () {
+        protected void cancel_timeouts () {
             cancel_timeout (ref reload_timeout_id);
             cancel_timeout (ref path_change_timeout_id);
         }
 
-        private void cancel_timeout (ref uint id) {
+        protected void cancel_timeout (ref uint id) {
             if (id > 0) {
                 Source.remove (id);
                 id = 0;
@@ -364,10 +420,6 @@ namespace Files {
 
         public string get_empty_message () {
             string msg = EMPTY_MESSAGE;
-            if (directory == null) {
-                return msg;
-            }
-
             if (directory.is_recent) {
                 msg = EMPTY_RECENT_MESSAGE;
             } else if (directory.is_trash && (uri == Files.TRASH_URI + Path.DIR_SEPARATOR_S)) {

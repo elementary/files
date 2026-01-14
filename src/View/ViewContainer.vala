@@ -39,14 +39,14 @@ namespace Files.View {
                 }
 
                 _window = value;
-                _window.folder_deleted.connect (on_folder_deleted);
+                // _window.folder_deleted.connect (on_folder_deleted);
                 _window.connect_content_signals (this);
                 _window.loading_uri (slot.location.get_uri ());
                 load_directory ();
             }
         }
 
-        public Files.AbstractSlot? view = null;
+        public Files.AbstractSlot? view { get; private set; }
         public ViewMode view_mode = ViewMode.INVALID;
 
         public GLib.File? location {
@@ -164,17 +164,12 @@ namespace Files.View {
 
         private void disconnect_window_signals () {
             if (window != null) {
-                window.folder_deleted.disconnect (on_folder_deleted);
+                // window.folder_deleted.disconnect (on_folder_deleted);
                 window.disconnect_content_signals (this);
             }
         }
 
-        private void on_folder_deleted (GLib.File deleted) requires (window != null) {
-            if (deleted.equal (this.location) && !go_up ()) {
-                close ();
-                window.remove_content (this);
-            }
-        }
+
 
         public void close () {
             disconnect_slot_signals (view);
@@ -234,7 +229,7 @@ namespace Files.View {
             if (mode == ViewMode.MILLER_COLUMNS) {
                 this.view = new Miller (loc, this);
             } else {
-                this.view = new Slot (loc, this, mode);
+                this.view = new Slot (loc, this.window, mode);
             }
 
             overlay_statusbar = new View.OverlayBar (view.overlay) {

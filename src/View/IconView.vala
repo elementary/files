@@ -25,8 +25,8 @@ public class Files.IconView : Files.AbstractDirectoryView {
     protected bool linear_select_required = false;
     protected Gtk.TreePath? most_recently_selected = null;
 
-    public IconView (View.Slot _slot) {
-        base (_slot);
+    public IconView (View.Slot _slot, Gtk.SelectionMode _selection_mode) {
+        base (_slot, _selection_mode);
     }
 
     ~IconView () {
