@@ -62,9 +62,9 @@ namespace Files {
 
         const int MAX_TEMPLATES = 2048;
 
-        GLib.SimpleActionGroup common_actions;
-        GLib.SimpleActionGroup selection_actions;
-        GLib.SimpleActionGroup background_actions;
+        protected GLib.SimpleActionGroup common_actions;
+        protected GLib.SimpleActionGroup selection_actions;
+        protected GLib.SimpleActionGroup background_actions;
 
         protected ZoomLevel _zoom_level = ZoomLevel.NORMAL;
         public ZoomLevel zoom_level {

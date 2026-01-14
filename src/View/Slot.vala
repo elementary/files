@@ -94,9 +94,23 @@ namespace Files.View {
                 top_level: _top_level,
                 mode: _mode
             );
+
+            // Create dir_view here not in construct else both base and override methods run
+            create_dir_view ();
+            preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
+            width = preferred_column_width;
+
+            warning ("toplevel is null %s", top_level == null ? "TRUE" : "FALSE");
         }
 
-        construct {
+        ~Slot () {
+            debug ("Slot %i destruct", slot_number);
+            // Ensure dir view does not redraw with invalid slot, causing a crash
+            dir_view.destroy ();
+        }
+
+        protected override void create_dir_view () {
+warning ("Override create dir view");
             switch (mode) {
                 case ViewMode.MILLER_COLUMNS:
                     dir_view = new Files.ColumnView (this, selection_mode);
@@ -119,22 +133,9 @@ namespace Files.View {
                 add_overlay (dir_view);
             }
 
-            connect_dir_signals ();
             connect_dir_view_signals ();
-            connect_slot_signals ();
-
-            is_active = false;
             is_frozen = true;
-            preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
-            width = preferred_column_width;
         }
-
-        ~Slot () {
-            debug ("Slot %i destruct", slot_number);
-            // Ensure dir view does not redraw with invalid slot, causing a crash
-            dir_view.destroy ();
-        }
-
         // private void connect_slot_signals () {
         //     active.connect (() => {
         //         if (is_active) {

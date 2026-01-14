@@ -26,7 +26,7 @@ namespace Files {
 
     // public class Slot : Files.AbstractSlot {
         // public unowned View.ViewContainer ctab { get; construct; }
-        public unowned SlotToplevelInterface? top_level { get; construct; }
+        public unowned SlotToplevelInterface? top_level { get; set construct; }
         // public ViewMode mode { get; construct; }
 
         // private int preferred_column_width;
@@ -91,9 +91,31 @@ namespace Files {
                 top_level: _top_level,
                 mode: _mode
             );
+
+            create_dir_view ();
         }
 
         construct {
+            is_active = false;
+            warning ("Base connect dir signals");
+            connect_dir_signals ();
+            warning ("Base connect slot signals");
+            connect_slot_signals ();
+            warning ("done base construct");
+
+
+
+            // width = preferred_column_width;
+        }
+
+        ~BasicSlot () {
+            debug ("Slot %i destruct", slot_number);
+            // Ensure dir view does not redraw with invalid slot, causing a crash
+            dir_view.destroy ();
+        }
+
+        protected virtual void create_dir_view () {
+warning ("Basic create dir view");
             switch (mode) {
                 // case ViewMode.MILLER_COLUMNS:
                 //     dir_view = new Files.ColumnView (this);
@@ -116,20 +138,8 @@ namespace Files {
                 add_overlay (dir_view);
             }
 
-            connect_dir_signals ();
             connect_dir_view_signals ();
-            connect_slot_signals ();
-
-            is_active = false;
             is_frozen = true;
-            // preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
-            // width = preferred_column_width;
-        }
-
-        ~BasicSlot () {
-            debug ("Slot %i destruct", slot_number);
-            // Ensure dir view does not redraw with invalid slot, causing a crash
-            dir_view.destroy ();
         }
 
         protected void connect_slot_signals () {

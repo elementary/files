@@ -41,6 +41,10 @@ namespace Files.View {
                 _window = value;
                 // _window.folder_deleted.connect (on_folder_deleted);
                 _window.connect_content_signals (this);
+                warning ("set slot top_level");
+                if (slot is Slot) {
+                    ((Slot) slot).top_level = _window;
+                }
                 _window.loading_uri (slot.location.get_uri ());
                 load_directory ();
             }
@@ -169,8 +173,6 @@ namespace Files.View {
             }
         }
 
-
-
         public void close () {
             disconnect_slot_signals (view);
             disconnect_window_signals ();
@@ -229,6 +231,7 @@ namespace Files.View {
             if (mode == ViewMode.MILLER_COLUMNS) {
                 this.view = new Miller (loc, this);
             } else {
+                warning ("VC add view SLOT");
                 this.view = new Slot (loc, this.window, mode);
             }
 
@@ -452,10 +455,6 @@ namespace Files.View {
 
         public unowned Files.AbstractSlot? get_current_slot () {
            return view != null ? view.get_current_slot () : null;
-        }
-
-        public unowned Files.AbstractSlot? get_view () {
-           return this.view != null ? this.view : null;
         }
 
         public void set_active_state (bool is_active, bool animate = true) {
