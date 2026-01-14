@@ -41,7 +41,6 @@ namespace Files.View {
                 _window = value;
                 // _window.folder_deleted.connect (on_folder_deleted);
                 _window.connect_content_signals (this);
-                warning ("set slot top_level");
                 if (slot is Slot) {
                     ((Slot) slot).top_level = _window;
                 }
@@ -231,7 +230,6 @@ namespace Files.View {
             if (mode == ViewMode.MILLER_COLUMNS) {
                 this.view = new Miller (loc, this);
             } else {
-                warning ("VC add view SLOT");
                 this.view = new Slot (loc, this.window, mode);
             }
 

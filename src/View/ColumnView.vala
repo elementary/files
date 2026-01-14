@@ -22,8 +22,8 @@ namespace Files {
         bool awaiting_double_click = false;
         uint double_click_timeout_id = 0;
 
-        public ColumnView (View.Slot _slot, Gtk.SelectionMode _selection_mode) {
-            base (_slot, _selection_mode);
+        public ColumnView (View.Slot _slot) {
+            base (_slot);
             /* We do not need to load the directory - this is done by Miller View*/
             /* We do not need to connect to "row-activated" signal - we handle left-clicks ourselves */
         }

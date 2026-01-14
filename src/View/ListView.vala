@@ -34,8 +34,8 @@ namespace Files {
         private GLib.List<Gtk.TreeRowReference> subdirectories_to_unload = null;
         private GLib.List<Directory> loaded_subdirectories = null;
 
-        public ListView (View.Slot _slot, Gtk.SelectionMode _selection_mode) {
-            base (_slot, _selection_mode);
+        public ListView (View.Slot _slot) {
+            base (_slot);
         }
 
         protected override void set_up_icon_renderer () {

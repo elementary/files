@@ -97,15 +97,8 @@ namespace Files {
 
         construct {
             is_active = false;
-            warning ("Base connect dir signals");
             connect_dir_signals ();
-            warning ("Base connect slot signals");
             connect_slot_signals ();
-            warning ("done base construct");
-
-
-
-            // width = preferred_column_width;
         }
 
         ~BasicSlot () {
@@ -122,11 +115,11 @@ warning ("Basic create dir view");
                 //     break;
 
                 case ViewMode.LIST:;
-                    dir_view = new Files.BasicListView (this, selection_mode);
+                    dir_view = new Files.BasicListView (this);
                     break;
 
                 case ViewMode.ICON:
-                    dir_view = new Files.BasicIconView (this, selection_mode);
+                    dir_view = new Files.BasicIconView (this);
                     break;
 
                 default:

@@ -23,8 +23,8 @@ namespace Files {
         protected BasicTreeView tree;
         protected Gtk.TreeViewColumn name_column;
 
-        protected BasicAbstractTreeView (BasicSlot _slot, Gtk.SelectionMode selection_mode) {
-            base (_slot, selection_mode);
+        protected BasicAbstractTreeView (BasicSlot _slot) {
+            base (_slot);
         }
 
         ~BasicAbstractTreeView () {
@@ -95,10 +95,6 @@ namespace Files {
 
         public override void set_selection_mode (Gtk.SelectionMode selection_mode) {
             tree.get_selection ().mode = selection_mode;
-        }
-
-        public override Gtk.SelectionMode get_selection_mode () {
-            return tree.get_selection ().mode;
         }
 
         public override void change_zoom_level () {

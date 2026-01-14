@@ -25,8 +25,8 @@ public class Files.BasicIconView : Files.BasicAbstractDirectoryView {
     protected bool linear_select_required = false;
     protected Gtk.TreePath? most_recently_selected = null;
 
-    public BasicIconView (BasicSlot _slot, Gtk.SelectionMode _selection_mode) {
-        base (_slot, _selection_mode);
+    public BasicIconView (BasicSlot _slot) {
+        base (_slot);
     }
 
     ~BasicIconView () {
@@ -80,15 +80,6 @@ public class Files.BasicIconView : Files.BasicAbstractDirectoryView {
         name_renderer.item_width = tree.item_width;
         base.change_zoom_level (); /* Sets name_renderer zoom_level */
     }
-
-    public override void set_selection_mode (Gtk.SelectionMode selection_mode) {
-        tree.selection_mode = selection_mode;
-    }
-
-    public override Gtk.SelectionMode get_selection_mode () {
-        return tree.selection_mode;
-    }
-
 
     public override GLib.List<Gtk.TreePath> get_selected_paths () {
         return tree.get_selected_items ();

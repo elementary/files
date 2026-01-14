@@ -166,19 +166,25 @@ namespace Files {
         protected ClipboardManager clipboard;
         protected Files.ListModel model;
         protected Files.IconRenderer icon_renderer;
-        protected unowned BasicSlot slot; // Must be unowned else cyclic reference stops destruction
+        public BasicSlot slot { get; construct; }
 
         protected Gtk.EventControllerKey key_controller;
         protected Gtk.GestureMultiPress button_controller;
         // protected Gtk.EventControllerScroll scroll_controller;
         protected Gtk.EventControllerMotion motion_controller;
 
-        // public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
-        // public signal void selection_changed (GLib.List<Files.File> gof_file);
+        protected Gtk.SelectionMode selection_mode {
+            get {
+                return slot.selection_mode;
+            }
+        }
+        protected BasicAbstractDirectoryView (BasicSlot _slot) {
+            Object (
+                slot: _slot
+            );
+        }
 
-        //TODO Rewrite in Object (), construct {} style
-        protected BasicAbstractDirectoryView (BasicSlot _slot, Gtk.SelectionMode _selection_mode) {
-            slot = _slot;
+        construct {
             editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
@@ -232,7 +238,7 @@ namespace Files {
             view = create_view ();
 
             if (view != null) {
-                set_selection_mode (_selection_mode);
+                set_selection_mode (selection_mode);
                 scrolled_window.child = view;
 
                 view.realize.connect (() => {
@@ -458,7 +464,6 @@ namespace Files {
 
         public new void grab_focus () {
             if (view.get_realized ()) {
-                /* In Column View, maybe clicked on an inactive column */
                 if (!slot.is_active) {
                     set_active_slot ();
                 }
@@ -2603,7 +2608,7 @@ warning ("Cut");
         /* By default use the native widget cursor handling by returning false */
 
         public virtual Gtk.void set_selection_mode (Gtk.SelectionMode selection_mode) {}
-        public virtual Gtk.SelectionMode get_selection_mode () { return Gtk.SelectionMode.BROWSE; }
+        // public virtual Gtk.SelectionMode get_selection_mode () { return Gtk.SelectionMode.BROWSE; }
 
         protected virtual bool move_cursor (uint keyval, bool only_shift_pressed, bool control_pressed) {
             return false;
