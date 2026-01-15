@@ -1527,4 +1527,22 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     public AbstractSlot? prepare_reload () {
         return current_container.prepare_reload ();
     }
+
+    private ClipboardManager? clipboard_manager = null;
+    public unowned ClipboardManager get_clipboard_manager () {
+        if (clipboard_manager == null) {
+            clipboard_manager = ClipboardManager.get_for_display ();
+        }
+
+        return clipboard_manager;
+    }
+
+    private Gtk.RecentManager? recent_manager;
+    public unowned Gtk.RecentManager get_recent_manager () {
+        if (recent_manager == null) {
+            recent_manager = new Gtk.RecentManager ();
+        }
+
+        return recent_manager;
+    }
 }

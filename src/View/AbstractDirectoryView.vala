@@ -160,8 +160,6 @@ namespace Files {
             }
         }
 
-        protected unowned Gtk.RecentManager recent;
-
         protected AbstractDirectoryView (View.Slot _slot) {
             base (_slot);
         }
@@ -169,7 +167,6 @@ namespace Files {
         construct {
             set_up_additional_menu_actions ();
             var app = (Files.Application)(GLib.Application.get_default ());
-            recent = app.get_recent_manager ();
             app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
             app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
 

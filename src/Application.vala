@@ -32,7 +32,6 @@ public class Files.Application : Gtk.Application {
 
     private VolumeMonitor volume_monitor;
     private Progress.UIHandler progress_handler;
-    private Gtk.RecentManager recent;
 
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
     private const uint MAX_WINDOWS = 25;
@@ -135,7 +134,6 @@ public class Files.Application : Gtk.Application {
 
         progress_handler = new Progress.UIHandler ();
 
-        this.recent = new Gtk.RecentManager ();
 
         /* Global static variable "plugins" declared in PluginManager.vala */
         plugins = new PluginManager (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
@@ -172,9 +170,6 @@ public class Files.Application : Gtk.Application {
         set_accels_for_action ("app.quit", { "<Ctrl>Q" });
     }
 
-    public unowned Gtk.RecentManager get_recent_manager () {
-        return this.recent;
-    }
 
     public override int command_line (GLib.ApplicationCommandLine cmd) {
         unowned var options = cmd.get_options_dict ();

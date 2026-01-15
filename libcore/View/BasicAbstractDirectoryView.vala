@@ -173,7 +173,8 @@ namespace Files {
         protected Gtk.ScrolledWindow scrolled_window;
         protected Gtk.Label empty_label;
         protected Gtk.Overlay overlay;
-        protected ClipboardManager clipboard;
+        protected unowned ClipboardManager clipboard;
+        protected unowned Gtk.RecentManager recent;
         protected Files.ListModel model;
         protected Files.IconRenderer icon_renderer;
         public BasicSlot slot { get; construct; }
@@ -230,7 +231,8 @@ namespace Files {
 
             child = overlay;
 
-            clipboard = ClipboardManager.get_for_display ();
+            clipboard = slot.top_level.get_clipboard_manager ();
+            recent = slot.top_level.get_recent_manager ();
 
             thumbnailer = Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {
