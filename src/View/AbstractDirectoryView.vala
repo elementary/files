@@ -40,7 +40,7 @@ namespace Files {
 
         const int MAX_TEMPLATES = 2048;
 
-        const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
+        const Gdk.DragAction FILE_DRAG_ACTIONS = (COPY | MOVE | LINK);
 
         /* Menu Handling */
         // Actions not required in FileChooserWidget
@@ -95,8 +95,8 @@ namespace Files {
         private bool drop_occurred = false; /* whether the data was dropped */
         Files.File? drop_target_file = null;
         private GLib.List<GLib.File> destination_drop_file_list = null; /* the list of URIs that are contained in the drop data */
-        Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
-        Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
+        Gdk.DragAction current_suggested_action = DEFAULT;
+        Gdk.DragAction current_actions = DEFAULT;
         private DndHandler dnd_handler = new DndHandler ();
 
         bool _drop_highlight;
@@ -147,7 +147,11 @@ namespace Files {
                         update_menu_actions ();
                     }
 
-                    key_controller.propagation_phase = value ? Gtk.PropagationPhase.NONE : Gtk.PropagationPhase.BUBBLE;
+                    if (value) {
+                        key_controller.propagation_phase = Gtk.PropagationPhase.NONE;
+                    } else {
+                        key_controller.propagation_phase = Gtk.PropagationPhase.BUBBLE;
+                    }
                 }
             }
 
@@ -252,35 +256,19 @@ namespace Files {
             }
         }
 
-        private void connect_drag_drop_signals (Gtk.Widget widget) {
-            /* Set up as drop site */
-            Gtk.drag_dest_set (widget, Gtk.DestDefaults.MOTION, DROP_TARGETS, Gdk.DragAction.ASK | FILE_DRAG_ACTIONS);
-            widget.drag_drop.connect (on_drag_drop);
-            widget.drag_data_received.connect (on_drag_data_received);
-            widget.drag_leave.connect (on_drag_leave);
-            widget.drag_motion.connect (on_drag_motion);
-
-            /* Set up as drag source */
-            Gtk.drag_source_set (
-                widget,
-                Gdk.ModifierType.BUTTON1_MASK | Gdk.ModifierType.CONTROL_MASK,
-                DRAG_TARGETS,
-                FILE_DRAG_ACTIONS
-            );
-            widget.drag_begin.connect (on_drag_begin);
-            widget.drag_data_get.connect (on_drag_data_get);
-            widget.drag_data_delete.connect (on_drag_data_delete);
-            widget.drag_end.connect (on_drag_end);
-        }
-
 /*** Private methods */
     /** File operations */
-        protected override void activate_file (Files.File _file, Gdk.Screen? screen, Files.OpenFlag flag, bool only_one_file) {
+        protected override void activate_file (
+            Files.File _file,
+            Gdk.Screen? screen,
+            Files.OpenFlag flag,
+            bool only_one_file
+        ) {
             if (is_frozen) {
                 return;
             }
 
-            Files.File file = _file;
+            var file = _file;
             if (in_recent) {
                 file = Files.File.get_by_uri (file.get_display_target_uri ());
             }
@@ -357,9 +345,11 @@ namespace Files {
             if (content_type == null) {
                 bool result_uncertain = true;
                 content_type = ContentType.guess (file.basename, null, out result_uncertain);
-                debug ("Guessed content type to be %s from name - result_uncertain %s",
-                          content_type,
-                          result_uncertain.to_string ());
+                debug (
+                    "Guessed content type to be %s from name - result_uncertain %s",
+                    content_type,
+                    result_uncertain.to_string ()
+                );
             }
 
             if (content_type == null) {
@@ -380,10 +370,11 @@ namespace Files {
             return success;
         }
 
-        protected override void trash_or_delete_files (GLib.List<Files.File> file_list,
-                                            bool delete_if_already_in_trash,
-                                            bool delete_immediately) {
-
+        protected override void trash_or_delete_files (
+            GLib.List<Files.File> file_list,
+            bool delete_if_already_in_trash,
+            bool delete_immediately
+        ) {
             GLib.List<GLib.File> locations = null;
             if (in_recent) {
                 file_list.@foreach ((file) => {
@@ -527,7 +518,7 @@ namespace Files {
             portal.set_wallpaper.begin (parent, file.uri, NONE, null);
         }
 
-        private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) requires (param != null) {
+        private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) {
             default_app = null;
             activate_selected_items ((Files.OpenFlag) param, get_files_for_action ());
         }
@@ -579,11 +570,12 @@ namespace Files {
 
         /* Signal emitted on source when destination requests data, either to inspect
          * during motion or to process on dropping by calling Gdk.drag_data_get () */
-        private void on_drag_data_get (Gdk.DragContext context,
-                                       Gtk.SelectionData selection_data,
-                                       uint info,
-                                       uint timestamp) {
-
+        private void on_drag_data_get (
+            Gdk.DragContext context,
+            Gtk.SelectionData selection_data,
+            uint info,
+            uint timestamp
+        ) {
             if (source_drag_file_list == null) {
                 source_drag_file_list = get_selected_files_for_transfer ();
             }
@@ -627,11 +619,12 @@ namespace Files {
 
 /** DRAG AND DROP DESTINATION */
         /* Signal emitted on destination while drag moving over it */
-        private bool on_drag_motion (Gdk.DragContext context,
-                                     int x,
-                                     int y,
-                                     uint timestamp) {
-
+        private bool on_drag_motion (
+            Gdk.DragContext context,
+            int x,
+            int y,
+            uint timestamp
+        ) {
             if (destination_data_ready) {
                 /* We have the drop data - check whether we can drop here*/
                 check_destination_actions_and_target_file (context, x, y, timestamp);
@@ -650,16 +643,17 @@ namespace Files {
         }
 
         /* Signal emitted on destination when drag button released */
-        private bool on_drag_drop (Gdk.DragContext context,
-                                   int x,
-                                   int y,
-                                   uint timestamp) {
-
+        private bool on_drag_drop (
+            Gdk.DragContext context,
+            int x,
+            int y,
+            uint timestamp
+        ) {
             Gtk.TargetList list = null;
             string? uri = null;
             drop_occurred = true;
-
             Gdk.Atom target = Gtk.drag_dest_find_target (scrolled_window.get_child (), context, list);
+
             if (target == Gdk.Atom.intern_static_string ("XdndDirectSave0")) {
                 Files.File? target_file = get_drop_target_file (x, y);
                 /* get XdndDirectSave file name from DnD source window */
@@ -689,13 +683,14 @@ namespace Files {
 
         /* Signal emitted on destination when selection data received from source
          * either during drag motion or on dropping */
-        private void on_drag_data_received (Gdk.DragContext context,
-                                            int x,
-                                            int y,
-                                            Gtk.SelectionData selection_data,
-                                            uint info,
-                                            uint timestamp
-                                            ) {
+        private void on_drag_data_received (
+            Gdk.DragContext context,
+            int x,
+            int y,
+            Gtk.SelectionData selection_data,
+            uint info,
+            uint timestamp
+        ) {
             /* Annoyingly drag-leave is emitted before "drag-drop" and this clears the destination drag data.
              * So we have to reset some it here and clear it again after processing the drop. */
             if (info == Files.TargetType.TEXT_URI_LIST && destination_drop_file_list == null) {
@@ -713,15 +708,19 @@ namespace Files {
 
                 switch (info) {
                     case Files.TargetType.XDND_DIRECT_SAVE0:
-                        success = dnd_handler.handle_xdnddirectsave (context.get_source_window (),
-                                                                     drop_target_file,
-                                                                     selection_data);
+                        success = dnd_handler.handle_xdnddirectsave (
+                            context.get_source_window (),
+                            drop_target_file,
+                            selection_data
+                        );
                         break;
 
                     case Files.TargetType.NETSCAPE_URL:
-                        success = dnd_handler.handle_netscape_url (context.get_source_window (),
-                                                                   drop_target_file,
-                                                                   selection_data);
+                        success = dnd_handler.handle_netscape_url (
+                            context.get_source_window (),
+                            drop_target_file,
+                            selection_data
+                        );
                         break;
 
                     case Files.TargetType.TEXT_URI_LIST:
@@ -844,7 +843,12 @@ namespace Files {
         }
 
         /* Called by DnD destination during drag_motion */
-        private void check_destination_actions_and_target_file (Gdk.DragContext context, int x, int y, uint timestamp) {
+        private void check_destination_actions_and_target_file (
+            Gdk.DragContext context,
+            int x,
+            int y,
+            uint timestamp
+        ) {
             string current_uri = drop_target_file != null ? drop_target_file.uri : "";
             drop_target_file = get_drop_target_file (x, y);
             string uri = drop_target_file != null ? drop_target_file.uri : "";
@@ -873,14 +877,15 @@ namespace Files {
 
                     if (drop_target_file.is_folder () && is_valid_drop_folder (drop_target_file)) {
                         /* open the target folder after a short delay */
-                        drag_enter_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
-                                                                     1000,
-                                                                     () => {
-
-                            load_location (drop_target_file.get_target_location ());
-                            drag_enter_timer_id = 0;
-                            return GLib.Source.REMOVE;
-                        });
+                        drag_enter_timer_id = GLib.Timeout.add_full (
+                            GLib.Priority.LOW,
+                            1000,
+                            () => {
+                                load_location (drop_target_file.get_target_location ());
+                                drag_enter_timer_id = 0;
+                                return GLib.Source.REMOVE;
+                            }
+                        );
                     }
                 }
             }
@@ -898,7 +903,11 @@ namespace Files {
             }
         }
 
-        private void highlight_drop_file (Files.File drop_file, Gdk.DragAction action, Gtk.TreePath? path) {
+        private void highlight_drop_file (
+            Files.File drop_file,
+            Gdk.DragAction action,
+            Gtk.TreePath? path
+        ) {
             bool can_drop = (action > Gdk.DragAction.DEFAULT);
 
             if (drop_highlight != can_drop) {
@@ -914,69 +923,110 @@ namespace Files {
 
         /* Drag Scroll related functions */
         private void start_drag_scroll_timer (Gdk.Device pointer) requires (slot.top_level != null) {
-            drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
-                                                          50,
-                                                          () => {
-                Gtk.Widget? widget = scrolled_window.get_child ();
-                if (widget != null) {
-                    Gdk.Window window = widget.get_window ();
-                    int x, y, w, h;
+            drag_scroll_timer_id = GLib.Timeout.add_full (
+                GLib.Priority.LOW,
+                50,
+                () => {
+                    Gtk.Widget? widget = scrolled_window.get_child ();
+                    if (widget != null) {
+                        Gdk.Window window = widget.get_window ();
+                        int x, y, w, h;
 
-                    window.get_device_position (pointer, out x, out y, null);
-                    window.get_geometry (null, null, out w, out h);
+                        window.get_device_position (pointer, out x, out y, null);
+                        window.get_geometry (null, null, out w, out h);
 
-                    scroll_if_near_edge (y, h, 20, scrolled_window.get_vadjustment ());
-                    scroll_if_near_edge (x, w, 20, scrolled_window.get_hadjustment ());
-                    return GLib.Source.CONTINUE;
-                } else {
-                    return GLib.Source.REMOVE;
+                        scroll_if_near_edge (y, h, 20, scrolled_window.get_vadjustment ());
+                        scroll_if_near_edge (x, w, 20, scrolled_window.get_hadjustment ());
+                        return GLib.Source.CONTINUE;
+                    } else {
+                        return GLib.Source.REMOVE;
+                    }
                 }
-            });
+            );
         }
 
         private void scroll_if_near_edge (int pos, int dim, int threshold, Gtk.Adjustment adj) {
-                /* check if we are near the edge */
-                int band = 2 * threshold;
-                int offset = pos - band;
-                if (offset > 0) {
-                    offset = int.max (band - (dim - pos), 0);
-                }
+            /* check if we are near the edge */
+            int band = 2 * threshold;
+            int offset = pos - band;
+            if (offset > 0) {
+                offset = int.max (band - (dim - pos), 0);
+            }
 
-                if (offset != 0) {
-                    /* change the adjustment appropriately */
-                    var val = adj.get_value ();
-                    var lower = adj.get_lower ();
-                    var upper = adj.get_upper ();
-                    var page = adj.get_page_size ();
+            if (offset != 0) {
+                /* change the adjustment appropriately */
+                var val = adj.get_value ();
+                var lower = adj.get_lower ();
+                var upper = adj.get_upper ();
+                var page = adj.get_page_size ();
 
-                    val = (val + 2 * offset).clamp (lower, upper - page);
-                    adj.set_value (val);
-                }
+                val = (val + 2 * offset).clamp (lower, upper - page);
+                adj.set_value (val);
+            }
         }
 
 /** Other DnD related code **/
-        protected override bool handle_primary_button_click (uint n_press, Gdk.ModifierType mods, Gtk.TreePath? path) {
-            warning ("ADV handle primary");
+        private void connect_drag_drop_signals (Gtk.Widget widget) {
+            /* Set up as drop site */
+            Gtk.drag_dest_set (
+                widget,
+                Gtk.DestDefaults.MOTION,
+                DROP_TARGETS,
+                Gdk.DragAction.ASK | FILE_DRAG_ACTIONS
+            );
+            widget.drag_drop.connect (on_drag_drop);
+            widget.drag_data_received.connect (on_drag_data_received);
+            widget.drag_leave.connect (on_drag_leave);
+            widget.drag_motion.connect (on_drag_motion);
+
+            /* Set up as drag source */
+            Gtk.drag_source_set (
+                widget,
+                Gdk.ModifierType.BUTTON1_MASK | Gdk.ModifierType.CONTROL_MASK,
+                DRAG_TARGETS,
+                FILE_DRAG_ACTIONS
+            );
+            widget.drag_begin.connect (on_drag_begin);
+            widget.drag_data_get.connect (on_drag_data_get);
+            widget.drag_data_delete.connect (on_drag_data_delete);
+            widget.drag_end.connect (on_drag_end);
+        }
+
+        protected override bool handle_primary_button_click (
+            uint n_press,
+            Gdk.ModifierType mods,
+            Gtk.TreePath? path
+        ) {
             return false; // Allow drag'n'drop
         }
 
         protected override void block_drag_and_drop () {
             if (!dnd_disabled) {
                 drag_data = view.get_data ("gtk-site-data");
-                GLib.SignalHandler.block_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
+                GLib.SignalHandler.block_matched (
+                    view,
+                    GLib.SignalMatchType.DATA,
+                    0, 0, null, null,
+                    drag_data
+                );
                 dnd_disabled = true;
             }
         }
 
         protected override void unblock_drag_and_drop () {
             if (dnd_disabled) {
-                GLib.SignalHandler.unblock_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
+                GLib.SignalHandler.unblock_matched (
+                    view,
+                    GLib.SignalMatchType.DATA,
+                    0, 0, null, null,
+                    drag_data
+                );
                 dnd_disabled = false;
             }
         }
 
-
 /** MENU FUNCTIONS */
+        //TODO DRY
         protected override void show_context_menu (Gdk.Event event) requires (slot.top_level != null) {
             /* select selection or background context menu */
             update_menu_actions ();
@@ -1420,164 +1470,6 @@ namespace Files {
             menu.popup_at_pointer (event);
         }
 
-        // private class SortSubMenuItem : Gtk.MenuItem {
-        //     construct {
-        //         var name_radioitem = new Gtk.CheckMenuItem.with_label (_("Name"));
-        //         name_radioitem.action_name = "background.sort-by";
-        //         name_radioitem.action_target = "name";
-        //         name_radioitem.draw_as_radio = true;
-
-        //         var size_radioitem = new Gtk.CheckMenuItem.with_label (_("Size"));
-        //         size_radioitem.action_name = "background.sort-by";
-        //         size_radioitem.action_target = "size";
-        //         size_radioitem.draw_as_radio = true;
-
-        //         var type_radioitem = new Gtk.CheckMenuItem.with_label (_("Type"));
-        //         type_radioitem.action_name = "background.sort-by";
-        //         type_radioitem.action_target = "type";
-        //         type_radioitem.draw_as_radio = true;
-
-        //         var date_radioitem = new Gtk.CheckMenuItem.with_label (_("Date"));
-        //         date_radioitem.action_name = "background.sort-by";
-        //         date_radioitem.action_target = "modified";
-        //         date_radioitem.draw_as_radio = true;
-
-        //         var reversed_checkitem = new Gtk.CheckMenuItem.with_label (_("Reversed Order"));
-        //         reversed_checkitem.action_name = "background.reverse";
-
-        //         var folders_first_checkitem = new Gtk.CheckMenuItem.with_label (_("Folders Before Files"));
-        //         folders_first_checkitem.action_name = "background.folders-first";
-
-        //         submenu = new Gtk.Menu ();
-        //         submenu.add (name_radioitem);
-        //         submenu.add (size_radioitem);
-        //         submenu.add (type_radioitem);
-        //         submenu.add (date_radioitem);
-        //         submenu.add (new Gtk.SeparatorMenuItem ());
-        //         submenu.add (reversed_checkitem);
-        //         submenu.add (folders_first_checkitem);
-
-        //         label = _("Sort by");
-        //     }
-        // }
-
-        // private class NewSubMenuItem : Gtk.MenuItem {
-        //     private uint total_item_count = 0;
-
-        //     construct {
-        //         var folder_menuitem = new Gtk.MenuItem ();
-        //         folder_menuitem.add (new Granite.AccelLabel (
-        //             _("Folder"),
-        //             "<Ctrl><Shift>n"
-        //         ));
-        //         folder_menuitem.action_name = "background.new";
-        //         folder_menuitem.action_target = "FOLDER";
-
-        //         var file_menuitem = new Gtk.MenuItem.with_label (_("Empty File"));
-        //         file_menuitem.action_name = "background.new";
-        //         file_menuitem.action_target = "FILE";
-
-        //         submenu = new Gtk.Menu ();
-        //         submenu.add (folder_menuitem);
-        //         submenu.add (file_menuitem);
-
-        //         unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
-        //         if (template_path != null) {
-        //             var template_item = new Gtk.MenuItem.with_label (_("Template"));
-        //             var template_menu = new Gtk.Menu ();
-        //             template_item.submenu = template_menu;
-        //             load_templates_from_folder (GLib.File.new_for_path (template_path), template_menu);
-
-        //             if (total_item_count > 0) {
-        //                 submenu.add (template_item);
-        //                 if (total_item_count > MAX_TEMPLATES) {
-        //                     template_menu.add (new Gtk.MenuItem.with_label (_("…too many templates")));
-        //                 }
-        //             }
-        //         }
-
-        //         label = _("New");
-        //     }
-
-        //     private bool load_templates_from_folder (GLib.File template_folder, Gtk.Menu submenu) {
-        //         if (total_item_count >= MAX_TEMPLATES) {
-        //             return false;
-        //         }
-
-        //         GLib.List<GLib.File> file_list = null;
-        //         GLib.List<GLib.File> folder_list = null;
-        //         GLib.FileEnumerator enumerator;
-        //         var flags = GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS;
-        //         try {
-        //             enumerator = template_folder.enumerate_children ("standard::*", flags, null);
-        //             GLib.File location;
-        //             GLib.FileInfo? info = enumerator.next_file (null);
-
-        //             while (info != null) {
-        //                 if (!info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_BACKUP)) {
-        //                     location = template_folder.get_child (info.get_name ());
-        //                     if (info.get_file_type () == GLib.FileType.DIRECTORY) {
-        //                         folder_list.prepend (location);
-        //                     } else {
-        //                         file_list.prepend (location);
-        //                     }
-        //                 }
-
-        //                 info = enumerator.next_file (null);
-        //             }
-        //         } catch (GLib.Error error) {
-        //             return false;
-        //         }
-
-        //         bool has_nonempty_items = false;
-        //         if (folder_list.length () > 0) {
-        //             folder_list.sort ((a, b) => {
-        //                 return strcmp (a.get_basename ().down (), b.get_basename ().down ());
-        //             });
-
-        //             foreach (var folder in folder_list) {
-        //                 var folder_menu = new Gtk.Menu ();
-        //                 total_item_count++;
-        //                 if (load_templates_from_folder (folder, folder_menu)) {
-        //                     has_nonempty_items = true;
-        //                     var folder_menuitem = new Gtk.MenuItem.with_label (folder.get_basename ());
-        //                     folder_menuitem.submenu = folder_menu;
-        //                     submenu.add (folder_menuitem);
-        //                 } else {
-        //                     total_item_count--;
-        //                 }
-
-        //                 if (total_item_count > MAX_TEMPLATES) {
-        //                     break;
-        //                 }
-        //             }
-        //         }
-
-        //         if (file_list.length () > 0) {
-        //             file_list.sort ((a, b) => {
-        //                 return strcmp (a.get_basename ().down (), b.get_basename ().down ());
-        //             });
-
-        //             foreach (var file in file_list) {
-        //                 has_nonempty_items = true;
-        //                 total_item_count++;
-        //                 if (total_item_count > MAX_TEMPLATES) {
-        //                     break;
-        //                 }
-
-        //                 var template_menuitem = new Gtk.MenuItem.with_label (file.get_basename ()) {
-        //                     action_name = "background.create-from",
-        //                     action_target = file.get_path ()
-        //                 };
-
-        //                 submenu.add (template_menuitem);
-        //             };
-        //         }
-
-        //         return has_nonempty_items;
-        //     }
-        // }
-
         private bool valid_selection_for_restore () {
             foreach (unowned Files.File file in get_selected_files ()) {
                 if (!(file.directory.get_basename () == "/")) {
@@ -1601,11 +1493,10 @@ namespace Files {
             bool single_folder = false;
             bool only_folders = selection_only_contains_folders (selection);
             bool can_rename = false;
-            bool can_show_properties = false;
-            bool can_copy = false;
-            bool can_open = false;
+            // bool can_show_properties = false;
+            // bool can_copy = false;
+            // bool can_open = false;
             bool can_paste_into = false;
-            bool can_bookmark = false;
 
             if (is_selected) {
                 file = selection.data;
@@ -1624,33 +1515,35 @@ namespace Files {
 
             /* Both folder and file can be bookmarked if local, but only remote folders can be bookmarked
              * because remote file bookmarks do not work correctly for unmounted locations */
-            can_bookmark = (!more_than_one_selected || single_folder) &&
-                           (slot.directory.is_local ||
-                           (file.get_ftype () != null && file.get_ftype () == "inode/directory") ||
-                           file.is_smb_server ());
+            bool can_bookmark = (!more_than_one_selected || single_folder) &&
+                                (slot.directory.is_local ||
+                                (file.get_ftype () != null && file.get_ftype () == "inode/directory") ||
+                                file.is_smb_server ());
 
-            can_copy = file.is_readable ();
-            can_open = can_open_file (file);
-            can_show_properties = !(in_recent && more_than_one_selected);
+            bool can_copy = file.is_readable ();
+            bool can_open = !renaming && is_selected && !more_than_one_selected && can_open_file (file);
+            bool can_show_properties = !(in_recent && more_than_one_selected);
+            bool can_trash = !renaming && is_writable && slot.directory.has_trash_dirs;
+            bool can_copy_link = !renaming && !in_trash && !in_recent && can_copy;
 
             action_set_enabled (common_actions, "paste", !in_recent && is_writable);
             action_set_enabled (common_actions, "paste-into", !renaming & can_paste_into);
             action_set_enabled (common_actions, "open-in", !renaming & only_folders);
             action_set_enabled (selection_actions, "rename", !renaming & is_selected && can_rename);
             action_set_enabled (selection_actions, "view-in-location", !renaming & is_selected);
-            action_set_enabled (selection_actions, "open", !renaming && is_selected && !more_than_one_selected && can_open);
+            action_set_enabled (selection_actions, "open", can_open);
             action_set_enabled (selection_actions, "open-with-app", !renaming && can_open);
             action_set_enabled (selection_actions, "open-with-default", !renaming && can_open);
             action_set_enabled (selection_actions, "open-with-other-app", !renaming && can_open);
             action_set_enabled (selection_actions, "cut", !renaming && is_writable && is_selected);
-            action_set_enabled (selection_actions, "trash", !renaming && is_writable && slot.directory.has_trash_dirs);
+            action_set_enabled (selection_actions, "trash", can_trash);
             action_set_enabled (selection_actions, "delete", !renaming && is_writable);
             action_set_enabled (selection_actions, "invert-selection", !renaming && is_selected);
             action_set_enabled (common_actions, "select-all", !renaming && is_selected);
             action_set_enabled (common_actions, "properties", !renaming && can_show_properties);
             action_set_enabled (common_actions, "bookmark", !renaming && can_bookmark);
             action_set_enabled (common_actions, "copy", !renaming && !in_trash && can_copy);
-            action_set_enabled (common_actions, "copy-link", !renaming && !in_trash && !in_recent && can_copy);
+            action_set_enabled (common_actions, "copy-link", can_copy_link);
             action_set_enabled (common_actions, "bookmark", !renaming && !more_than_one_selected);
             action_set_enabled (common_actions, "set-wallpaper", !renaming && !more_than_one_selected);
 
@@ -1800,7 +1693,8 @@ namespace Files {
                         if (ki.shift_pressed) {  // Paste into selected folder if there is one
                             update_selected_files_and_menu ();
                             if (!in_recent && is_writable) {
-                                if (selected_files.first () != null && selected_files.first ().next != null) {
+                                if (selected_files.first () != null &&
+                                    selected_files.first ().next != null) {
                                     //Ignore if multiple files selected
                                     Gdk.beep ();
                                     warning ("Cannot paste into a multiple selection");
