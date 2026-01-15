@@ -18,7 +18,7 @@
 
 namespace Files.View {
     public class Miller : Files.AbstractSlot {
-        public unowned View.ViewContainer ctab { get; construct; }
+        public unowned ViewContainer ctab { get; construct; }
 
         /* Need private copy of initial location as Miller
          * does not have its own Asyncdirectory object */
@@ -104,7 +104,7 @@ namespace Files.View {
 
         /** Creates a new slot in the host slot hpane */
         public void add_location (GLib.File loc, View.Slot? host = null) {
-            var guest = new View.Slot (loc, ctab, ViewMode.MILLER_COLUMNS);
+            var guest = new View.Slot (loc, ctab.window, ViewMode.MILLER_COLUMNS);
             /* Notify view container of path change - will set tab to working and change pathbar */
             path_changed ();
             guest.slot_number = (host != null) ? host.slot_number + 1 : 0;
@@ -137,7 +137,8 @@ namespace Files.View {
         }
 
         private uint draw_file_details_timeout_id = 0;
-        public void draw_file_details (Files.File file, Files.AbstractDirectoryView view) {
+        public void draw_file_details (Files.File file, Files.DirectoryViewInterface view) {
+        // public void draw_file_details (Files.File file, Files.AbstractDirectoryView view) {
             if (draw_file_details_timeout_id > 0) {
                 Source.remove (draw_file_details_timeout_id);
                 draw_file_details_timeout_id = 0;
@@ -146,7 +147,7 @@ namespace Files.View {
             if (!file.is_folder ()) {
                 draw_file_details_timeout_id = Timeout.add (200, () => {
                     draw_file_details_timeout_id = 0;
-                    details = new View.DetailsColumn (file, view);
+                    details = new View.DetailsColumn (file, (AbstractDirectoryView) view);
                     last_slot.colpane.pack_start (details, false, false);
                     last_slot.hpane.show_all ();
                     update_total_width ();
@@ -163,7 +164,7 @@ namespace Files.View {
             }
         }
 
-        private void truncate_list_after_slot (View.Slot slot) {
+        private void truncate_list_after_slot (AbstractSlot slot) {
             if (slot_list.length () <= 0) { //Can be assumed to limited in length
                 return;
             }
@@ -177,14 +178,14 @@ namespace Files.View {
                 }
             });
 
-            ((View.Slot)(slot)).colpane.@foreach ((w) => {
+            current_slot = ((View.Slot)(slot));
+            current_slot.colpane.@foreach ((w) => {
                 w.destroy ();
             });
 
             slot_list.nth (n).next = null;
             calculate_total_width ();
-            current_slot = slot;
-            slot.active ();
+            current_slot.active ();
         }
 
         private void calculate_total_width () {
@@ -335,7 +336,7 @@ namespace Files.View {
             directory_loaded (dir);
         }
 
-        private void on_slot_folder_deleted (Slot slot, Files.File file, Directory dir) {
+        private void on_slot_folder_deleted (AbstractSlot slot, Files.File file, Directory dir) {
             Slot? next_slot = slot_list.nth_data (slot.slot_number + 1);
             if (next_slot != null && next_slot.directory == dir) {
                 truncate_list_after_slot (slot);

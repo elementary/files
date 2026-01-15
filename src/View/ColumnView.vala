@@ -111,7 +111,7 @@ namespace Files {
                 } else if (n_press == 2) {
                     cancel_await_double_click ();
                     if (prefs.show_file_preview) {
-                        var slot = (View.Miller)base.slot.ctab.get_view ();
+                        var slot = (View.Miller) (base.slot.top_level.get_view ());
                         slot.clear_file_details ();
                     }
 

@@ -32,8 +32,6 @@ public class Files.Application : Gtk.Application {
 
     private VolumeMonitor volume_monitor;
     private Progress.UIHandler progress_handler;
-    private ClipboardManager clipboard;
-    private Gtk.RecentManager recent;
 
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
     private const uint MAX_WINDOWS = 25;
@@ -136,8 +134,6 @@ public class Files.Application : Gtk.Application {
 
         progress_handler = new Progress.UIHandler ();
 
-        this.clipboard = ClipboardManager.get_for_display ();
-        this.recent = new Gtk.RecentManager ();
 
         /* Global static variable "plugins" declared in PluginManager.vala */
         plugins = new PluginManager (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
@@ -174,13 +170,6 @@ public class Files.Application : Gtk.Application {
         set_accels_for_action ("app.quit", { "<Ctrl>Q" });
     }
 
-    public unowned ClipboardManager get_clipboard_manager () {
-        return this.clipboard;
-    }
-
-    public unowned Gtk.RecentManager get_recent_manager () {
-        return this.recent;
-    }
 
     public override int command_line (GLib.ApplicationCommandLine cmd) {
         unowned var options = cmd.get_options_dict ();
@@ -244,13 +233,6 @@ public class Files.Application : Gtk.Application {
         });
 
         base.quit ();
-    }
-
-    public void folder_deleted (GLib.File file) {
-        unowned List<Gtk.Window> window_list = this.get_windows ();
-        window_list.@foreach ((window) => {
-            ((View.Window)window).folder_deleted (file);
-        });
     }
 
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {

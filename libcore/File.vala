@@ -54,6 +54,7 @@ public class Files.File : GLib.Object {
     public uint n_emblems = 0;
     public GLib.FileInfo? info = null;
     public string basename { get; construct; }
+
     public string? custom_display_name = null;
     public string uri { get; construct; }
     public uint64 size = 0;
@@ -459,7 +460,7 @@ public class Files.File : GLib.Object {
         return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
-    //TODO Is it necessary to refetch the icon if have pix at requested size? 
+    //TODO Is it necessary to refetch the icon if have pix at requested size?
     public Gdk.Pixbuf? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
         return get_icon (
             _size.clamp (16, 512),

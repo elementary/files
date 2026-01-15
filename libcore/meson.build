@@ -18,7 +18,6 @@ pantheon_files_core_deps = [
 ]
 
 pantheon_files_core_vala_files = files(
-    'AbstractSlot.vala',
     'CallWhenReady.vala',
     'ClipboardManager.vala',
     'Directory.vala',
@@ -56,6 +55,16 @@ pantheon_files_core_vala_files = files(
     'Interfaces/SearchableInterface.vala',
     'Interfaces/SidebarListInterface.vala',
     'Interfaces/SidebarItemInterface.vala',
+    'Interfaces/DirectoryViewInterface.vala',
+    'Interfaces/SlotToplevelInterface.vala',
+
+    'View/AbstractSlot.vala',
+    'View/BasicAbstractDirectoryView.vala',
+    'View/BasicAbstractTreeView.vala',
+    'View/BasicListView.vala',
+    'View/BasicIconView.vala',
+    'View/BasicSlot.vala',
+    # 'View/Slot.vala',
 
     'View/Dialogs/ConnectServerOperation.vala',
     'View/Dialogs/ConnectServerDialog.vala',
