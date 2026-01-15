@@ -1637,6 +1637,8 @@ namespace Files {
                     break;
 
                 case Gdk.Key.F10:
+                case Gdk.Key.Menu:
+                case Gdk.Key.MenuKB:
                     if (ki.only_control_pressed) {
                         show_context_menu (event);
                         res = true;
@@ -1652,8 +1654,6 @@ namespace Files {
                     }
 
                     break;
-
-
 
                 case Gdk.Key.space:
                     //In FileChooser we can assume we are never in trash
@@ -1715,14 +1715,6 @@ namespace Files {
 
                     break;
 
-                case Gdk.Key.Menu:
-                case Gdk.Key.MenuKB:
-                    if (ki.no_mods) {
-                        show_context_menu (event);
-                        res = true;
-                    }
-
-                    break;
 
                 case Gdk.Key.N:
                     if (ki.shift_pressed && ki.control_pressed) {

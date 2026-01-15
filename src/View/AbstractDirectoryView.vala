@@ -1736,21 +1736,21 @@ namespace Files {
             bool res = false;
 
             switch (ki.keyval) {
-                case Gdk.Key.F10:
-                    if (ki.only_control_pressed) {
-                        show_context_menu (Gtk.get_current_event ());
-                        res = true;
-                    }
+                // case Gdk.Key.F10:
+                //     if (ki.only_control_pressed) {
+                //         show_context_menu (Gtk.get_current_event ());
+                //         res = true;
+                //     }
 
-                    break;
+                //     break;
 
-                case Gdk.Key.F2:
-                    if (ki.no_mods && selection_actions.get_action_enabled ("rename")) {
-                        rename_selection ();
-                        res = true;
-                    }
+                // case Gdk.Key.F2:
+                //     if (ki.no_mods && selection_actions.get_action_enabled ("rename")) {
+                //         rename_selection ();
+                //         res = true;
+                //     }
 
-                    break;
+                //     break;
 
                 case Gdk.Key.Delete:
                 case Gdk.Key.KP_Delete:
@@ -1789,54 +1789,54 @@ namespace Files {
                     res = true;
                     break;
 
-                case Gdk.Key.minus:
-                    if (ki.alt_pressed && ki.control_pressed) {
-                        Gtk.TreePath? path = get_path_at_cursor ();
-                        if (path != null && path_is_selected (path)) {
-                            unselect_path (path);
-                        }
+                // case Gdk.Key.minus:
+                //     if (ki.alt_pressed && ki.control_pressed) {
+                //         Gtk.TreePath? path = get_path_at_cursor ();
+                //         if (path != null && path_is_selected (path)) {
+                //             unselect_path (path);
+                //         }
 
-                        res = true;
-                    }
+                //         res = true;
+                //     }
 
-                    break;
+                //     break;
 
-                case Gdk.Key.plus:
-                case Gdk.Key.equal: /* Do not require Shift as well (otherwise 4 key shortcut)  */
-                    if (ki.alt_pressed && ki.control_pressed) {
-                        Gtk.TreePath? path = get_path_at_cursor ();
-                        if (path != null && !path_is_selected (path)) {
-                            select_path (path);
-                        }
+                // case Gdk.Key.plus:
+                // case Gdk.Key.equal: /* Do not require Shift as well (otherwise 4 key shortcut)  */
+                //     if (ki.alt_pressed && ki.control_pressed) {
+                //         Gtk.TreePath? path = get_path_at_cursor ();
+                //         if (path != null && !path_is_selected (path)) {
+                //             select_path (path);
+                //         }
 
-                        res = true;
-                    }
+                //         res = true;
+                //     }
 
-                    break;
+                //     break;
 
-                case Gdk.Key.Escape:
-                    if (ki.no_mods) {
-                        unselect_all ();
-                    }
+                // case Gdk.Key.Escape:
+                //     if (ki.no_mods) {
+                //         unselect_all ();
+                //     }
 
-                    break;
+                //     break;
 
-                case Gdk.Key.Menu:
-                case Gdk.Key.MenuKB:
-                    if (ki.no_mods) {
-                        show_context_menu (Gtk.get_current_event ());
-                        res = true;
-                    }
+                // case Gdk.Key.Menu:
+                // case Gdk.Key.MenuKB:
+                //     if (ki.no_mods) {
+                //         show_context_menu (Gtk.get_current_event ());
+                //         res = true;
+                //     }
 
-                    break;
+                //     break;
 
-                case Gdk.Key.N:
-                    if (ki.control_pressed) {
-                        new_empty_folder ();
-                        res = true;
-                    }
+                // case Gdk.Key.N:
+                //     if (ki.control_pressed) {
+                //         new_empty_folder ();
+                //         res = true;
+                //     }
 
-                    break;
+                //     break;
 
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
