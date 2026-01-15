@@ -150,8 +150,8 @@ namespace Files {
         protected bool tree_frozen { get; set; default = false; }
 
         public bool in_recent { get; protected set; default = false; }
-        protected bool in_trash = false;
-        protected bool in_network_root = false;
+        protected bool in_trash = false; // FileChooser cannot enter trash folder
+        protected bool in_network_root = false; // FileChooser cannot enter trash folder
         protected bool is_writable = false;
         protected bool is_loading;
         protected bool helpers_shown;
@@ -1653,26 +1653,14 @@ namespace Files {
 
                     break;
 
-                case Gdk.Key.Delete:
-                case Gdk.Key.KP_Delete:
-                    //TODO Implement in FileChooser
-                    // if (!is_writable) {
-                    //     PF.Dialogs.show_warning_dialog (_("Cannot remove files from here"),
-                    //                                     _("You do not have permission to change this location"),
-                    //                                     window as Gtk.Window);
-                    // } else if (!renaming) {
-                    //     trash_or_delete_selected_files (in_trash || Files.is_admin () || only_shift_pressed);
-                    //     res = true;
-                    // }
 
-                    break;
 
                 case Gdk.Key.space:
-                //TODO Implement in FileChooser
-                    // if (view_has_focus () && !in_trash) {
-                    //     activate_selected_items (Files.OpenFlag.NEW_TAB);
-                    //     res = true;
-                    // }
+                    //In FileChooser we can assume we are never in trash
+                    if (view_has_focus () && !in_trash) {
+                        activate_selected_items (Files.OpenFlag.NEW_TAB);
+                        res = true;
+                    }
 
                     break;
 
@@ -2570,7 +2558,7 @@ warning ("Cut");
             }
         }
 
-
+        ki.keyval = keyval;
         ki.mods = (state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
         ki.no_mods = (ki.mods == 0);
         ki.shift_pressed = ((ki.mods & Gdk.ModifierType.SHIFT_MASK) != 0);

@@ -969,7 +969,6 @@ namespace Files {
 
         protected override void unblock_drag_and_drop () {
             if (dnd_disabled) {
-            warning ("unblock matched");
                 GLib.SignalHandler.unblock_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
                 dnd_disabled = false;
             }
@@ -1768,13 +1767,6 @@ namespace Files {
 
                     break;
 
-                case Gdk.Key.space:
-                    if (view_has_focus () && !in_trash) {
-                        activate_selected_items (Files.OpenFlag.NEW_TAB);
-                        res = true;
-                    }
-
-                    break;
 
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
