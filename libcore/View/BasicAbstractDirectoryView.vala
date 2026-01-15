@@ -36,8 +36,6 @@ namespace Files {
             INVALID
         }
 
-        const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
-
         /* Menu Handling */
         const GLib.ActionEntry [] SELECTION_ENTRIES = {
             {"rename", on_selection_action_rename}
@@ -96,10 +94,8 @@ namespace Files {
         protected ZoomLevel minimum_zoom = ZoomLevel.SMALLEST;
         protected ZoomLevel maximum_zoom = ZoomLevel.LARGEST;
 
-        /* Suppress native behavior when required */
+        /* Suppress native button press behavior when required */
         protected bool button_press_disabled = false;
-
-        /* Used for blocking and unblocking DnD */
         protected bool dnd_disabled = false;
         protected double drag_x = 0;
         protected double drag_y = 0;
@@ -2168,7 +2164,7 @@ warning ("Cut");
                                     button_controller.set_state (CLAIMED);
                                 }
 
-                                button_press_disabled = true;
+
                                 unblock_drag_and_drop ();
                             }
 

@@ -40,20 +40,6 @@ namespace Files {
 
         const int MAX_TEMPLATES = 2048;
 
-        const Gtk.TargetEntry [] DRAG_TARGETS = {
-            {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.STRING},
-            {"text/plain", Gtk.TargetFlags.OTHER_APP, Files.TargetType.STRING},
-            {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
-            {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Files.TargetType.TEXT_URI_LIST}
-        };
-
-        const Gtk.TargetEntry [] DROP_TARGETS = {
-            {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
-            {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Files.TargetType.TEXT_URI_LIST},
-            {"XdndDirectSave0", Gtk.TargetFlags.OTHER_APP, Files.TargetType.XDND_DIRECT_SAVE0},
-            {"_NETSCAPE_URL", Gtk.TargetFlags.OTHER_APP, Files.TargetType.NETSCAPE_URL}
-        };
-
         const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
 
         /* Menu Handling */
@@ -85,6 +71,20 @@ namespace Files {
             {"set-wallpaper", action_set_wallpaper}
         };
 
+        /* Drag and drop support */
+        const Gtk.TargetEntry [] DRAG_TARGETS = {
+            {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.STRING},
+            {"text/plain", Gtk.TargetFlags.OTHER_APP, Files.TargetType.STRING},
+            {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
+            {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Files.TargetType.TEXT_URI_LIST}
+        };
+
+        const Gtk.TargetEntry [] DROP_TARGETS = {
+            {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
+            {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Files.TargetType.TEXT_URI_LIST},
+            {"XdndDirectSave0", Gtk.TargetFlags.OTHER_APP, Files.TargetType.XDND_DIRECT_SAVE0},
+            {"_NETSCAPE_URL", Gtk.TargetFlags.OTHER_APP, Files.TargetType.NETSCAPE_URL}
+        };
         protected GLib.List<Files.File> source_drag_file_list = null;
         protected Gdk.Atom current_target_type = Gdk.Atom.NONE;
 
@@ -97,6 +97,8 @@ namespace Files {
         private GLib.List<GLib.File> destination_drop_file_list = null; /* the list of URIs that are contained in the drop data */
         Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
         Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
+        private DndHandler dnd_handler = new DndHandler ();
+
         bool _drop_highlight;
         bool drop_highlight {
             get {
@@ -115,11 +117,13 @@ namespace Files {
                 _drop_highlight = value;
             }
         }
-
         private void* drag_data;
+
+        /* Launching files in other apps */
         private GLib.List<GLib.AppInfo> open_with_apps;
         private GLib.AppInfo default_app;
 
+        /* Prevent certain behaviours while something else is happening */
         private bool _is_frozen = false;
         public bool is_frozen {
             set {
@@ -152,10 +156,8 @@ namespace Files {
             }
         }
 
-        protected static DndHandler dnd_handler = new DndHandler ();
         protected unowned Gtk.RecentManager recent;
 
-        //TODO Rewrite in Object (), construct {} style
         protected AbstractDirectoryView (View.Slot _slot) {
             base (_slot);
         }
@@ -949,6 +951,28 @@ namespace Files {
                     val = (val + 2 * offset).clamp (lower, upper - page);
                     adj.set_value (val);
                 }
+        }
+
+/** Other DnD related code **/
+        protected override bool handle_primary_button_click (uint n_press, Gdk.ModifierType mods, Gtk.TreePath? path) {
+            warning ("ADV handle primary");
+            return false; // Allow drag'n'drop
+        }
+
+        protected override void block_drag_and_drop () {
+            if (!dnd_disabled) {
+                drag_data = view.get_data ("gtk-site-data");
+                GLib.SignalHandler.block_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
+                dnd_disabled = true;
+            }
+        }
+
+        protected override void unblock_drag_and_drop () {
+            if (dnd_disabled) {
+            warning ("unblock matched");
+                GLib.SignalHandler.unblock_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
+                dnd_disabled = false;
+            }
         }
 
 
