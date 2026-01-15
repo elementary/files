@@ -1720,43 +1720,33 @@ namespace Files {
             MimeActions.open_multiple_gof_files_request (files, this, app);
         }
 
-
 /** Keyboard event handling **/
         protected override bool on_view_key_press_event (uint original_keyval, uint keycode, Gdk.ModifierType state) {
             if (is_frozen) {
                 return true;
             }
 
-            var event = Gtk.get_current_event ();
+            if (base.on_view_key_press_event (original_keyval, keycode, state)) {
+                return true;
+            }
+
             cancel_hover ();
 
-            Gdk.ModifierType consumed_mods;
-            var keyval = map_key (original_keyval, keycode, out consumed_mods);
-
-            var mods = (state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
-            bool no_mods = (mods == 0);
-            bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
-            bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
-            bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
-            bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
-            bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
-            bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
-            bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
             bool in_trash = slot.location.has_uri_scheme ("trash");
             bool in_recent = slot.location.has_uri_scheme ("recent");
             bool res = false;
 
-            switch (keyval) {
+            switch (ki.keyval) {
                 case Gdk.Key.F10:
-                    if (only_control_pressed) {
-                        show_context_menu (event);
+                    if (ki.only_control_pressed) {
+                        show_context_menu (Gtk.get_current_event ());
                         res = true;
                     }
 
                     break;
 
                 case Gdk.Key.F2:
-                    if (no_mods && selection_actions.get_action_enabled ("rename")) {
+                    if (ki.no_mods && selection_actions.get_action_enabled ("rename")) {
                         rename_selection ();
                         res = true;
                     }
@@ -1772,7 +1762,7 @@ namespace Files {
                             slot.top_level
                         );
                     } else if (!renaming) {
-                        trash_or_delete_selected_files (in_trash || Files.is_admin () || only_shift_pressed);
+                        trash_or_delete_selected_files (in_trash || Files.is_admin () || ki.only_shift_pressed);
                         res = true;
                     }
 
@@ -1792,13 +1782,13 @@ namespace Files {
                         break;
                     } else if (in_recent) {
                         activate_selected_items (Files.OpenFlag.DEFAULT);
-                    } else if (only_shift_pressed) {
+                    } else if (ki.only_shift_pressed) {
                         activate_selected_items (Files.OpenFlag.NEW_TAB);
-                    } else if (shift_pressed && control_pressed && !alt_pressed) {
+                    } else if (ki.shift_pressed && ki.control_pressed && !ki.alt_pressed) {
                         activate_selected_items (Files.OpenFlag.NEW_WINDOW);
-                    } else if (only_alt_pressed) {
+                    } else if (ki.only_alt_pressed) {
                         common_actions.activate_action ("properties", null);
-                    } else if (no_mods) {
+                    } else if (ki.no_mods) {
                          activate_selected_items (Files.OpenFlag.DEFAULT);
                     } else {
                         break;
@@ -1808,7 +1798,7 @@ namespace Files {
                     break;
 
                 case Gdk.Key.minus:
-                    if (alt_pressed && control_pressed) {
+                    if (ki.alt_pressed && ki.control_pressed) {
                         Gtk.TreePath? path = get_path_at_cursor ();
                         if (path != null && path_is_selected (path)) {
                             unselect_path (path);
@@ -1821,7 +1811,7 @@ namespace Files {
 
                 case Gdk.Key.plus:
                 case Gdk.Key.equal: /* Do not require Shift as well (otherwise 4 key shortcut)  */
-                    if (alt_pressed && control_pressed) {
+                    if (ki.alt_pressed && ki.control_pressed) {
                         Gtk.TreePath? path = get_path_at_cursor ();
                         if (path != null && !path_is_selected (path)) {
                             select_path (path);
@@ -1833,7 +1823,7 @@ namespace Files {
                     break;
 
                 case Gdk.Key.Escape:
-                    if (no_mods) {
+                    if (ki.no_mods) {
                         unselect_all ();
                     }
 
@@ -1841,15 +1831,15 @@ namespace Files {
 
                 case Gdk.Key.Menu:
                 case Gdk.Key.MenuKB:
-                    if (no_mods) {
-                        show_context_menu (event);
+                    if (ki.no_mods) {
+                        show_context_menu (Gtk.get_current_event ());
                         res = true;
                     }
 
                     break;
 
                 case Gdk.Key.N:
-                    if (control_pressed) {
+                    if (ki.control_pressed) {
                         new_empty_folder ();
                         res = true;
                     }
@@ -1859,7 +1849,7 @@ namespace Files {
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
                     unowned GLib.List<Files.File> selection = get_selected_files ();
-                    if (only_alt_pressed && keyval == Gdk.Key.Down) {
+                    if (ki.only_alt_pressed && ki.keyval == Gdk.Key.Down) {
                         /* Only open a single selected folder */
 
                         if (selection != null &&
@@ -1873,42 +1863,42 @@ namespace Files {
                         break;
                     }
 
-                    res = move_cursor (keyval, only_shift_pressed, control_pressed);
-                    if ((this is ColumnView) && no_mods) {
-                        ((Files.View.Miller)(slot.top_level.get_view ())).on_miller_key_pressed (keyval, keycode, state);
+                    res = move_cursor (ki.keyval, ki.only_shift_pressed, ki.control_pressed);
+                    if ((this is ColumnView) && ki.no_mods) {
+                        ((Files.View.Miller)(slot.top_level.get_view ())).on_miller_key_pressed (original_keyval, keycode, state);
                     }
                     break;
 
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
                 case Gdk.Key.BackSpace:
-                    if ((this is ColumnView) && no_mods) {
-                        ((Files.View.Miller)(slot.top_level.get_view ())).on_miller_key_pressed (keyval, keycode, state);
+                    if ((this is ColumnView) && ki.no_mods) {
+                        ((Files.View.Miller)(slot.top_level.get_view ())).on_miller_key_pressed (original_keyval, keycode, state);
                         res = true;
                         break;
                     }
 
-                    res = move_cursor (keyval, only_shift_pressed, control_pressed);
+                    res = move_cursor (ki.keyval, ki.only_shift_pressed, ki.control_pressed);
                     break;
 
                 case Gdk.Key.Home:
-                    res = only_shift_pressed &&
+                    res = ki.only_shift_pressed &&
                           handle_multi_select (new Gtk.TreePath.from_indices (0));
 
                     break;
 
                 case Gdk.Key.End:
-                    res = only_shift_pressed &&
+                    res = ki.only_shift_pressed &&
                           handle_multi_select (new Gtk.TreePath.from_indices (model.get_length ()));
 
                     break;
 
                 case Gdk.Key.c:
                 case Gdk.Key.C:
-                    if (only_control_pressed) {
+                    if (ki.only_control_pressed) {
                         /* Caps Lock interferes with `shift_pressed` boolean so use another way */
                         var caps_on = Gdk.Keymap.get_for_display (get_display ()).get_caps_lock_state ();
-                        var cap_c = keyval == Gdk.Key.C;
+                        var cap_c = ki.keyval == Gdk.Key.C;
 
                         if (caps_on != cap_c) { /* Shift key pressed */
                             common_actions.activate_action ("copy-link", null);
@@ -1934,8 +1924,8 @@ namespace Files {
 
                 case Gdk.Key.v:
                 case Gdk.Key.V:
-                    if (only_control_pressed) {
-                        if (shift_pressed) {  // Paste into selected folder if there is one
+                    if (ki.only_control_pressed) {
+                        if (ki.shift_pressed) {  // Paste into selected folder if there is one
                             update_selected_files_and_menu ();
                             if (!in_recent && is_writable) {
                                 if (selected_files.first () != null && selected_files.first ().next != null) {
@@ -1975,7 +1965,7 @@ namespace Files {
 
                 case Gdk.Key.x:
                 case Gdk.Key.X:
-                    if (only_control_pressed) {
+                    if (ki.only_control_pressed) {
                         if (is_writable) {
                             selection_actions.activate_action ("cut", null);
                         } else {

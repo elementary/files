@@ -19,9 +19,13 @@
 * Authored by: Jeremy Wootten <jeremywootten@gmail.com>
 */
 
-/* Implementations of BasicAbstractDirectoryView are
-     * BasicListView
-*/
+/* This class is intended to implement as many functions as possible that can work and make sense
+ * in a portal environment and is intended to be the basis of view widgets use in a FileCHooserDialog.
+ * In this environment we have no access to the Application nor information about
+ * the user such as whether they are an admin, recently used files, etc. Code specific to Miller view is
+ * not supported.  The AbstractDirectoryView used in the Files Application is subclassed from this and adds
+ * application specific code.
+ */
 
 namespace Files {
     public abstract class BasicAbstractDirectoryView : Gtk.Bin, DirectoryViewInterface {
@@ -52,9 +56,6 @@ namespace Files {
 
         const GLib.ActionEntry [] COMMON_ENTRIES = {
             {"copy", on_common_action_copy},
-            // {"paste-into", on_common_action_paste_into}, // Paste into selected folder
-            // {"paste", on_common_action_paste}, // Paste into background folder
-            // {"open-in", on_common_action_open_in, "s"},
             {"bookmark", on_common_action_bookmark}
         };
 
@@ -164,9 +165,11 @@ namespace Files {
         protected Files.IconRenderer icon_renderer;
         public BasicSlot slot { get; construct; }
 
+        /* Support DRY key press handling in subclasses */
+        protected KeyPressInfo ki = KeyPressInfo ();
         protected Gtk.EventControllerKey key_controller;
+
         protected Gtk.GestureMultiPress button_controller;
-        // protected Gtk.EventControllerScroll scroll_controller;
         protected Gtk.EventControllerMotion motion_controller;
 
         protected Gtk.SelectionMode selection_mode {
@@ -618,7 +621,7 @@ namespace Files {
                                             bool delete_if_already_in_trash,
                                             bool delete_immediately) {
 
-
+        //TODO Implement trash and delete in filechooser??
         }
 
         /* Only called after initial loading finished, in response to files added due
@@ -1605,27 +1608,15 @@ namespace Files {
             var event = Gtk.get_current_event ();
             cancel_hover ();
 
-            Gdk.ModifierType consumed_mods;
-            var keyval = map_key (original_keyval, keycode, out consumed_mods);
-            var mods = (state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
-            bool no_mods = (mods == 0);
-            bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
-            // bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
-            bool control_pressed = ((mods & Gdk.ModifierType.CONTROL_MASK) != 0);
-            bool alt_pressed = ((mods & Gdk.ModifierType.MOD1_MASK) != 0);
-            bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
-            bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
-            // bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
-            // bool in_trash = slot.location.has_uri_scheme ("trash");
-            // bool in_recent = slot.location.has_uri_scheme ("recent");
+            get_key_info (original_keyval, keycode, state);
             bool res = false;
 
-        warning ("view key pressed %s", Gdk.keyval_name (keyval));
-            switch (keyval) {
+        warning ("view key pressed %s", Gdk.keyval_name (ki.keyval));
+            switch (ki.keyval) {
                 case Gdk.Key.h:
                     // Handle here so works in FileChooserDialog
                     //TODO Use Gtk.Shortcut in Gtk4
-                    if (only_control_pressed) {
+                    if (ki.only_control_pressed) {
                         change_state_show_hidden (
                             (SimpleAction)background_actions.lookup_action ("show-hidden")
                         );
@@ -1634,10 +1625,9 @@ namespace Files {
                     break;
 
                 case Gdk.Key.d:
-                    warning ("d pressed");
                     // Handle here so works in FileChooserDialog
                     //TODO Use Gtk.Shortcut in Gtk4
-                    if (only_control_pressed) {
+                    if (ki.only_control_pressed) {
                         on_common_action_bookmark (
                             (SimpleAction)common_actions.lookup_action ("bookmark"),
                             null
@@ -1647,8 +1637,7 @@ namespace Files {
                     break;
 
                 case Gdk.Key.F10:
-                    warning (" F10");
-                    if (only_control_pressed) {
+                    if (ki.only_control_pressed) {
                         show_context_menu (event);
                         res = true;
                     }
@@ -1657,7 +1646,7 @@ namespace Files {
 
                 case Gdk.Key.F2:
                     update_menu_actions ();
-                    if (no_mods && selection_actions.get_action_enabled ("rename")) {
+                    if (ki.no_mods && selection_actions.get_action_enabled ("rename")) {
                         rename_selection ();
                         res = true;
                     }
@@ -1694,8 +1683,8 @@ namespace Files {
                     break;
 
                 case Gdk.Key.minus:
-                    if (control_pressed) {
-                        if (alt_pressed) {
+                    if (ki.control_pressed) {
+                        if (ki.alt_pressed) {
                             Gtk.TreePath? path = get_path_at_cursor ();
                             if (path != null && path_is_selected (path)) {
                                 unselect_path (path);
@@ -1711,8 +1700,8 @@ namespace Files {
 
                 case Gdk.Key.plus:
                 case Gdk.Key.equal: /* Do not require Shift as well (otherwise 4 key shortcut)  */
-                    if (control_pressed) {
-                        if (alt_pressed) {
+                    if (ki.control_pressed) {
+                        if (ki.alt_pressed) {
                             Gtk.TreePath? path = get_path_at_cursor ();
                             if (path != null && !path_is_selected (path)) {
                                 select_path (path);
@@ -1727,7 +1716,7 @@ namespace Files {
                     break;
 
                 case Gdk.Key.Escape:
-                    if (no_mods) {
+                    if (ki.no_mods) {
                         unselect_all ();
                     }
 
@@ -1740,7 +1729,7 @@ namespace Files {
 
                 case Gdk.Key.Menu:
                 case Gdk.Key.MenuKB:
-                    if (no_mods) {
+                    if (ki.no_mods) {
                         show_context_menu (event);
                         res = true;
                     }
@@ -1748,7 +1737,7 @@ namespace Files {
                     break;
 
                 case Gdk.Key.N:
-                    if (shift_pressed && control_pressed) {
+                    if (ki.shift_pressed && ki.control_pressed) {
                         //TODO In FileCHooser need view refresh/redraw?
                         new_empty_folder ();
                         res = true;
@@ -1760,7 +1749,7 @@ namespace Files {
                 //TODO In FileCHooser problem using keyboard cut copy paste?
                 case Gdk.Key.c:
                 case Gdk.Key.C:
-                    if (only_control_pressed) {
+                    if (ki.only_control_pressed) {
                         /* Caps Lock interferes with `shift_pressed` boolean so use another way */
                         // var caps_on = Gdk.Keymap.get_for_display (get_display ()).get_caps_lock_state ();
                         // var cap_c = keyval == Gdk.Key.C;
@@ -1843,14 +1832,14 @@ warning ("Cut");
                     break;
 
                 case Gdk.Key.@1:
-                    if (only_control_pressed) {
+                    if (ki.only_control_pressed) {
                         slot.change_viewmode_request (ViewMode.ICON);
                     }
 
                     break;
 
                 case Gdk.Key.@2:
-                    if (only_control_pressed) {
+                    if (ki.only_control_pressed) {
                         slot.change_viewmode_request (ViewMode.LIST);
                     }
 
@@ -2531,10 +2520,24 @@ warning ("Cut");
             scroll_to_path (path, scroll_to_top);
         }
 
+        protected struct KeyPressInfo {
+            uint keyval;
+            Gdk.ModifierType mods;
+            bool no_mods;
+            bool shift_pressed;
+            bool only_shift_pressed;
+            bool control_pressed;
+            bool only_control_pressed;
+            bool alt_pressed;
+            bool only_alt_pressed;
+            bool other_mod_pressed;
+        }
+
     //TODO Needs complete rewrite for Gtk4 so leaving some direct access of event struct
-    protected static uint map_key (uint original_keyval, uint keycode, out Gdk.ModifierType consumed_mods) {
+    // Puts details of key press in struct accessible by subclasses
+    protected void get_key_info (uint original_keyval, uint keycode, Gdk.ModifierType state) {
         uint keyval = original_keyval;
-        consumed_mods = 0;
+        Gdk.ModifierType consumed_mods = 0;
 
         if (keyval > 127) {
             int eff_grp, level;
@@ -2567,7 +2570,16 @@ warning ("Cut");
             }
         }
 
-        return keyval;
+
+        ki.mods = (state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
+        ki.no_mods = (ki.mods == 0);
+        ki.shift_pressed = ((ki.mods & Gdk.ModifierType.SHIFT_MASK) != 0);
+        ki.only_shift_pressed = ki.shift_pressed && ((ki.mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
+        ki.control_pressed = ((ki.mods & Gdk.ModifierType.CONTROL_MASK) != 0);
+        ki.alt_pressed = ((ki.mods & Gdk.ModifierType.MOD1_MASK) != 0);
+        ki.other_mod_pressed = (((ki.mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
+        ki.only_control_pressed = ki.control_pressed && !ki.other_mod_pressed; /* Shift can be pressed */
+        ki.only_alt_pressed = ki.alt_pressed && ((ki.mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
     }
 
     /** Returns true if the code parameter matches the keycode of the keyval parameter for
