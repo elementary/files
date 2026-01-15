@@ -1670,6 +1670,26 @@ namespace Files {
                     res = true;
                     break;
 
+                case Gdk.Key.Up:
+                case Gdk.Key.Down:
+                    unowned GLib.List<Files.File> selection = get_selected_files ();
+                    if (ki.only_alt_pressed && ki.keyval == Gdk.Key.Down) {
+                        /* Only open a single selected folder */
+
+                        if (selection != null &&
+                            selection.first ().next == null &&
+                            selection.data.is_folder ()) {
+
+                            load_location (selection.data.location);
+                            res = true;
+                        }
+
+                        break;
+                    }
+
+                    res = move_cursor (ki.keyval, ki.only_shift_pressed, ki.control_pressed);
+                    break;
+
                 case Gdk.Key.minus:
                     if (ki.control_pressed) {
                         if (ki.alt_pressed) {
