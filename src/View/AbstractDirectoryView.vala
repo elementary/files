@@ -1785,17 +1785,17 @@ namespace Files {
 
                     break;
 
-                case Gdk.Key.Home:
-                    res = ki.only_shift_pressed &&
-                          handle_multi_select (new Gtk.TreePath.from_indices (0));
+                // case Gdk.Key.Home:
+                //     res = ki.only_shift_pressed &&
+                //           handle_multi_select (new Gtk.TreePath.from_indices (0));
 
-                    break;
+                //     break;
 
-                case Gdk.Key.End:
-                    res = ki.only_shift_pressed &&
-                          handle_multi_select (new Gtk.TreePath.from_indices (model.get_length ()));
+                // case Gdk.Key.End:
+                //     res = ki.only_shift_pressed &&
+                //           handle_multi_select (new Gtk.TreePath.from_indices (model.get_length ()));
 
-                    break;
+                //     break;
 
                 case Gdk.Key.c:
                 case Gdk.Key.C:

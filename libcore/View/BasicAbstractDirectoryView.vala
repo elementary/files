@@ -1611,7 +1611,6 @@ namespace Files {
             get_key_info (original_keyval, keycode, state);
             bool res = false;
 
-        warning ("view key pressed %s", Gdk.keyval_name (ki.keyval));
             switch (ki.keyval) {
                 case Gdk.Key.h:
                     // Handle here so works in FileChooserDialog
@@ -1714,6 +1713,18 @@ namespace Files {
                     res = move_cursor (ki.keyval, ki.only_shift_pressed, ki.control_pressed);
                     break;
 
+
+                case Gdk.Key.Home:
+                    res = ki.only_shift_pressed &&
+                          handle_multi_select (new Gtk.TreePath.from_indices (0));
+
+                    break;
+
+                case Gdk.Key.End:
+                    res = ki.only_shift_pressed &&
+                          handle_multi_select (new Gtk.TreePath.from_indices (model.get_length ()));
+
+                    break;
 
                 case Gdk.Key.plus:
                 case Gdk.Key.equal: /* Do not require Shift as well (otherwise 4 key shortcut)  */
@@ -2649,8 +2660,8 @@ warning ("Cut");
         }
 
         // Multi-select could be by rubberbanding or modified clicking. Returning false
-        //  * invokes the default widget handler.  IconView requires special handler
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
+        //  * invokes the default widget handler.  IconView requires special handler
 
         protected abstract Gtk.Widget? create_view ();
 
