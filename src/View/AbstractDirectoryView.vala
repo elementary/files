@@ -198,8 +198,9 @@ namespace Files {
 
 /*** Protected Methods */
     /** Operations on selections */
-        protected override void activate_selected_items (Files.OpenFlag flag = Files.OpenFlag.DEFAULT,
-                                                GLib.List<Files.File> selection = get_selected_files ()) {
+        protected override void activate_selected_items (
+            Files.OpenFlag flag = Files.OpenFlag.DEFAULT,
+            GLib.List<Files.File> selection = get_selected_files ()) {
 
             if (is_frozen || selection == null) {
                 return;
@@ -1720,7 +1721,11 @@ namespace Files {
         }
 
 /** Keyboard event handling **/
-        protected override bool on_view_key_press_event (uint original_keyval, uint keycode, Gdk.ModifierType state) {
+        protected override bool on_view_key_press_event (
+            uint original_keyval,
+            uint keycode,
+            Gdk.ModifierType state
+        ) {
             if (is_frozen) {
                 return true;
             }
@@ -1751,28 +1756,6 @@ namespace Files {
 
                     break;
 
-
-                case Gdk.Key.Return:
-                case Gdk.Key.KP_Enter:
-                    if (in_trash) {
-                        break;
-                    } else if (in_recent) {
-                        activate_selected_items (Files.OpenFlag.DEFAULT);
-                    } else if (ki.only_shift_pressed) {
-                        activate_selected_items (Files.OpenFlag.NEW_TAB);
-                    } else if (ki.shift_pressed && ki.control_pressed && !ki.alt_pressed) {
-                        activate_selected_items (Files.OpenFlag.NEW_WINDOW);
-                    } else if (ki.only_alt_pressed) {
-                        common_actions.activate_action ("properties", null);
-                    } else if (ki.no_mods) {
-                         activate_selected_items (Files.OpenFlag.DEFAULT);
-                    } else {
-                        break;
-                    }
-
-                    res = true;
-                    break;
-
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
                 case Gdk.Key.BackSpace:
@@ -1784,18 +1767,6 @@ namespace Files {
                     }
 
                     break;
-
-                // case Gdk.Key.Home:
-                //     res = ki.only_shift_pressed &&
-                //           handle_multi_select (new Gtk.TreePath.from_indices (0));
-
-                //     break;
-
-                // case Gdk.Key.End:
-                //     res = ki.only_shift_pressed &&
-                //           handle_multi_select (new Gtk.TreePath.from_indices (model.get_length ()));
-
-                //     break;
 
                 case Gdk.Key.c:
                 case Gdk.Key.C:

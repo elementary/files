@@ -1665,7 +1665,24 @@ namespace Files {
 
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
-                    activate_selected_items (DEFAULT);
+                    // FileChooser is never in trash or recent; Base class ignores OpenFlag
+                    // when activating items
+                    if (in_trash) {
+                        break;
+                    } else if (in_recent) {
+                        activate_selected_items (Files.OpenFlag.DEFAULT);
+                    } else if (ki.only_shift_pressed) {
+                        activate_selected_items (Files.OpenFlag.NEW_TAB);
+                    } else if (ki.shift_pressed && ki.control_pressed && !ki.alt_pressed) {
+                        activate_selected_items (Files.OpenFlag.NEW_WINDOW);
+                    } else if (ki.only_alt_pressed) {
+                        common_actions.activate_action ("properties", null);
+                    } else if (ki.no_mods) {
+                         activate_selected_items (Files.OpenFlag.DEFAULT);
+                    } else {
+                        break;
+                    }
+
                     res = true;
                     break;
 
