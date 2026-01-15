@@ -169,7 +169,6 @@ namespace Files {
         construct {
             set_up_additional_menu_actions ();
             var app = (Files.Application)(GLib.Application.get_default ());
-            clipboard = app.get_clipboard_manager ();
             recent = app.get_recent_manager ();
             app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
             app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});

@@ -32,7 +32,6 @@ public class Files.Application : Gtk.Application {
 
     private VolumeMonitor volume_monitor;
     private Progress.UIHandler progress_handler;
-    private ClipboardManager clipboard;
     private Gtk.RecentManager recent;
 
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
@@ -136,7 +135,6 @@ public class Files.Application : Gtk.Application {
 
         progress_handler = new Progress.UIHandler ();
 
-        this.clipboard = ClipboardManager.get_for_display ();
         this.recent = new Gtk.RecentManager ();
 
         /* Global static variable "plugins" declared in PluginManager.vala */
@@ -172,10 +170,6 @@ public class Files.Application : Gtk.Application {
         add_action (quit_action);
 
         set_accels_for_action ("app.quit", { "<Ctrl>Q" });
-    }
-
-    public unowned ClipboardManager get_clipboard_manager () {
-        return this.clipboard;
     }
 
     public unowned Gtk.RecentManager get_recent_manager () {
@@ -245,8 +239,6 @@ public class Files.Application : Gtk.Application {
 
         base.quit ();
     }
-
-
 
     private void mount_removed_callback (VolumeMonitor monitor, Mount mount) {
         /* Notify each window */
