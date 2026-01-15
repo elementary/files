@@ -91,6 +91,7 @@ public class Files.Directory : Object {
     public bool is_local {get; private set;}
     public bool is_trash {get; private set;}
     public bool is_network {get; private set;}
+    public bool is_network_root {get; private set;}
     public bool is_recent {get; private set;}
     public bool is_admin {get; private set;}
     public bool is_no_info {get; private set;}
@@ -185,6 +186,7 @@ public class Files.Directory : Object {
         is_no_info = ("cdda mtp gphoto2 ssh sftp afp afc dav davs".contains (scheme));
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("smb ftp sftp afp dav davs".contains (scheme));
+        is_network_root = file.is_root_network_folder ();
         /* Previously, mtp protocol had problems launching files but this currently works
          * using newer devices such as Android phones so this restriction is lifted. The flag is
          * retained in case it needs reinstating or using for another protocol.

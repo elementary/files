@@ -149,9 +149,22 @@ namespace Files {
         protected bool all_selected = false;
         protected bool tree_frozen { get; set; default = false; }
 
-        public bool in_recent { get; protected set; default = false; }
-        protected bool in_trash = false; // FileChooser cannot enter trash folder
-        protected bool in_network_root = false; // FileChooser cannot enter trash folder
+        public bool in_recent {
+            get {
+                return slot.directory.is_recent;
+            }
+        }
+        protected bool in_trash {
+            get {
+                return slot.directory.is_trash;
+            }
+        }
+        protected bool in_network_root {
+            get {
+                return slot.directory.is_network_root;
+            }
+        }
+
         protected bool is_writable = false;
         protected bool is_loading;
         protected bool helpers_shown;
@@ -949,9 +962,6 @@ namespace Files {
         protected void on_directory_done_loading (Directory dir) {
             /* Should only be called on directory creation or reload */
             disconnect_directory_loading_handlers (dir);
-            in_trash = slot.directory.is_trash;
-            in_recent = slot.directory.is_recent;
-            in_network_root = slot.directory.file.is_root_network_folder ();
 
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();

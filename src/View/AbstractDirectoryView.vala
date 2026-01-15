@@ -1735,9 +1735,6 @@ namespace Files {
             }
 
             cancel_hover ();
-
-            bool in_trash = slot.location.has_uri_scheme ("trash");
-            bool in_recent = slot.location.has_uri_scheme ("recent");
             bool res = false;
 
             switch (ki.keyval) {
