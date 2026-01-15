@@ -1706,6 +1706,15 @@ namespace Files {
 
                     break;
 
+
+                case Gdk.Key.Left:
+                case Gdk.Key.Right:
+                case Gdk.Key.BackSpace:
+                    // Returns false for ColumnView (Miller) so will be handled by subclass
+                    res = move_cursor (ki.keyval, ki.only_shift_pressed, ki.control_pressed);
+                    break;
+
+
                 case Gdk.Key.plus:
                 case Gdk.Key.equal: /* Do not require Shift as well (otherwise 4 key shortcut)  */
                     if (ki.control_pressed) {

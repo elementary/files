@@ -1736,22 +1736,6 @@ namespace Files {
             bool res = false;
 
             switch (ki.keyval) {
-                // case Gdk.Key.F10:
-                //     if (ki.only_control_pressed) {
-                //         show_context_menu (Gtk.get_current_event ());
-                //         res = true;
-                //     }
-
-                //     break;
-
-                // case Gdk.Key.F2:
-                //     if (ki.no_mods && selection_actions.get_action_enabled ("rename")) {
-                //         rename_selection ();
-                //         res = true;
-                //     }
-
-                //     break;
-
                 case Gdk.Key.Delete:
                 case Gdk.Key.KP_Delete:
                     if (!is_writable) {
@@ -1792,13 +1776,13 @@ namespace Files {
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
                 case Gdk.Key.BackSpace:
+                    // Should only come here if ColumnView but check anyway
                     if ((this is ColumnView) && ki.no_mods) {
                         ((Files.View.Miller)(slot.top_level.get_view ())).on_miller_key_pressed (original_keyval, keycode, state);
                         res = true;
                         break;
                     }
 
-                    res = move_cursor (ki.keyval, ki.only_shift_pressed, ki.control_pressed);
                     break;
 
                 case Gdk.Key.Home:
