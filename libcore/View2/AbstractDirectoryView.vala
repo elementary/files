@@ -3055,16 +3055,13 @@ namespace Files {
                     }
 
                     res = move_cursor (keyval, only_shift_pressed, control_pressed);
-                    if ((this is ColumnView) && no_mods) {
-                        ((Files.View.Miller)(slot.ctab.view)).on_miller_key_pressed (keyval, keycode, state);
-                    }
                     break;
 
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
                 case Gdk.Key.BackSpace:
-                    if ((this is ColumnView) && no_mods) {
-                        ((Files.View.Miller)(slot.ctab.view)).on_miller_key_pressed (keyval, keycode, state);
+                    if (no_mods && (slot.top_level.get_view () is MultiSlotInterface)) {
+                        (slot.top_level.get_view ()).on_miller_key_pressed (keyval, keycode, state);
                         res = true;
                         break;
                     }
