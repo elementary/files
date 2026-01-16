@@ -44,10 +44,6 @@ namespace Files.View {
             }
         }
 
-        // public unowned View.Window? window {
-        //     get { return ctab.window; }
-        // }
-
         public override bool is_frozen {
             set {
                 dir_view.is_frozen = value;
@@ -209,7 +205,7 @@ namespace Files.View {
 
         private void on_directory_need_reload (Directory dir, bool original_request) {
             if (!is_frozen) {
-                ctab.prepare_reload (); // Save selection
+                top_level.prepare_reload (); // Save selection
                 dir_view.prepare_reload (dir); /* clear model but do not change directory */
                 /* view and slot are unfrozen when done loading signal received */
                 is_frozen = true;
