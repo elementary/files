@@ -77,7 +77,41 @@ pantheon_files_core_vala_files = files(
     'View/Sidebar/SidebarPluginItem.vala',
     'View/Widgets/AbstractEditableLabel.vala',
     'View/Widgets/MultiLineEditableLabel.vala',
-    'View/Widgets/SingleLineEditableLabel.vala'
+    'View/Widgets/SingleLineEditableLabel.vala',
+
+    'View2/AbstractDirectoryView.vala',
+    'View2/AbstractTreeView.vala',
+    'View2/ColumnView.vala',
+    'View2/DirectoryNotFound.vala',
+    'View2/IconView.vala',
+    'View2/ListView.vala',
+    'View2/Miller.vala',
+    'View2/PrivacyModeOn.vala',
+    'View2/Slot.vala',
+    'View2/ViewContainer.vala',
+    'View2/Window.vala',
+    'View2/DetailsColumn.vala',
+
+    'View2/Widgets/AppMenu.vala',
+    'View2/Widgets/BreadcrumbsEntry.vala',
+    'View2/Widgets/LocationBar.vala',
+    'View2/Widgets/OverlayBar.vala',
+    'View2/Widgets/PermissionButton.vala',
+    'View2/Widgets/ProgressInfoWidget.vala',
+    'View2/Widgets/SearchResults.vala',
+    'View2/Widgets/Welcome.vala',
+
+    'View2/Sidebar/AbstractMountableRow.vala',
+    'View2/Sidebar/BookmarkListBox.vala',
+    'View2/Sidebar/BookmarkRow.vala',
+    'View2/Sidebar/DeviceListBox.vala',
+    'View2/Sidebar/DriveRow.vala',
+    'View2/Sidebar/NetworkListBox.vala',
+    'View2/Sidebar/NetworkRow.vala',
+    'View2/Sidebar/SidebarWindow.vala',
+    'View2/Sidebar/VolumeRow.vala',
+    'View2/Sidebar/VolumelessMountRow.vala',
+
 )
 
 pantheon_files_core_c_files = files(
