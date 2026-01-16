@@ -136,7 +136,7 @@ namespace Files.View {
             });
 
             folder_deleted.connect ((file, dir) => {
-                if (window != null) {
+                if (top_level != null) {
                     top_level.folder_deleted (file.location);
                 }
             });
