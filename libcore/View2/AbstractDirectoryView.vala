@@ -323,11 +323,14 @@ namespace Files {
 
             child = overlay;
 
-            var app = (Files.Application)(GLib.Application.get_default ());
-            clipboard = app.get_clipboard_manager ();
-            recent = app.get_recent_manager ();
-            app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
-            app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
+            clipboard = ClipboardManager.get_for_display ();
+            recent = new Gtk.RecentManager ();
+
+            if (slot.top_level.is_application ()) {
+                var app = GLib.Application.get_default ();
+                app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
+                app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
+            }
 
             thumbnailer = Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {

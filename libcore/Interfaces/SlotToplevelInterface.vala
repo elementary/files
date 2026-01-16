@@ -24,6 +24,7 @@
 
 public interface Files.SlotToplevelInterface : Gtk.Window {
     public virtual void folder_deleted (GLib.File file) {}
+    public virtual bool is_application () { return GLib.Application.get_default () != null; }
     public abstract unowned AbstractSlot? get_view (); // Should return current slot
     public abstract AbstractSlot? prepare_reload ();
     public abstract void free_space_change ();
@@ -31,5 +32,5 @@ public interface Files.SlotToplevelInterface : Gtk.Window {
     public abstract bool can_bookmark_uri (string uri);
     public abstract unowned ClipboardManager get_clipboard_manager ();
     public abstract unowned Gtk.RecentManager get_recent_manager ();
-    public abstract bool is_application ();
+
 }
