@@ -56,6 +56,7 @@ pantheon_files_core_vala_files = files(
     'Interfaces/SearchableInterface.vala',
     'Interfaces/SidebarListInterface.vala',
     'Interfaces/SidebarItemInterface.vala',
+    'Interfaces/SlotToplevelInterface.vala',
 
     'View/Dialogs/ConnectServerOperation.vala',
     'View/Dialogs/ConnectServerDialog.vala',
@@ -85,10 +86,10 @@ pantheon_files_core_vala_files = files(
     'View2/DirectoryNotFound.vala',
     'View2/IconView.vala',
     'View2/ListView.vala',
-    'View2/Miller.vala',
+    # 'View2/Miller.vala',
     'View2/PrivacyModeOn.vala',
     'View2/Slot.vala',
-    'View2/ViewContainer.vala',
+    # 'View2/ViewContainer.vala',
     # 'View2/Window.vala',
     'View2/DetailsColumn.vala',
 
