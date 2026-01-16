@@ -21,7 +21,7 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.View.Window : Hdy.ApplicationWindow {
+public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     static uint window_id = 0;
 
     const GLib.ActionEntry [] WIN_ENTRIES = {

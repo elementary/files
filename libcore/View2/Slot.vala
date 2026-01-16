@@ -19,7 +19,7 @@
 
 namespace Files.View {
     public class Slot : Files.AbstractSlot {
-        public unowned View.ViewContainer ctab { get; construct; }
+        public unowned SlotToplevelInterface top_level { get; set construct; }
         public ViewMode mode { get; construct; }
 
         private int preferred_column_width;
@@ -44,9 +44,9 @@ namespace Files.View {
             }
         }
 
-        public unowned View.Window? window {
-            get { return ctab.window; }
-        }
+        // public unowned View.Window? window {
+        //     get { return ctab.window; }
+        // }
 
         public override bool is_frozen {
             set {
@@ -74,9 +74,9 @@ namespace Files.View {
         public signal void miller_slot_request (GLib.File file, bool make_root);
         public signal void size_change ();
 
-        public Slot (GLib.File _location, View.ViewContainer _ctab, ViewMode _mode) {
+        public Slot (GLib.File _location, SlotToplevelInterface _top_level, ViewMode _mode) {
             Object (
-                ctab: _ctab,
+                top_level: _top_level,
                 mode: _mode,
                 location: _location
             );
@@ -137,7 +137,7 @@ namespace Files.View {
 
             folder_deleted.connect ((file, dir) => {
                 if (window != null) {
-                    ((Files.Application)(window.application)).folder_deleted (file.location);
+                    top_level.folder_deleted (file.location);
                 }
             });
         }
