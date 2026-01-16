@@ -14,7 +14,11 @@ pantheon_files_core_deps = [
     pango_dep,
     sqlite3_dep,
     libcanberra_dep,
-    zeitgeist_dep
+    zeitgeist_dep,
+    dependency('gdk-x11-3.0'),
+    dependency('gdk-wayland-3.0'),
+    portal_dep,
+    portal_gtk3_dep
 ]
 
 pantheon_files_core_vala_files = files(

@@ -2,9 +2,7 @@ pantheon_files_deps = [
     common_deps,
     handy_dep,
     pantheon_files_core_dep,
-    project_config_dep,
-    portal_dep,
-    portal_gtk3_dep
+    project_config_dep
 ]
 
 pantheon_files_exec = executable (
@@ -14,7 +12,7 @@ pantheon_files_exec = executable (
     'Window.vala',
     'ViewContainer.vala',
     'Miller.vala',
-    'DeepCount.vala',
+    # 'DeepCount.vala',
     'main.vala',
     'ProgressUIHandler.vala',
 
