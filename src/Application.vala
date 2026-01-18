@@ -23,9 +23,6 @@
 
 namespace Files {
     public Settings app_settings;
-    public Settings icon_view_settings;
-    public Settings list_view_settings;
-    public Settings column_view_settings;
 }
 
 public class Files.Application : Gtk.Application {
@@ -47,9 +44,14 @@ public class Files.Application : Gtk.Application {
     static construct {
         /* GSettings parameters */
         app_settings = new Settings ("io.elementary.files.preferences");
-        icon_view_settings = new Settings ("io.elementary.files.icon-view");
-        list_view_settings = new Settings ("io.elementary.files.list-view");
-        column_view_settings = new Settings ("io.elementary.files.column-view");
+        var icon_view_settings = new Settings ("io.elementary.files.icon-view");
+        var list_view_settings = new Settings ("io.elementary.files.list-view");
+        var column_view_settings = new Settings ("io.elementary.files.column-view");
+        ViewPreferences.setup_view_preferences (
+            icon_view_settints,
+            list_view_settings,
+            column_view_settings
+        );
     }
 
     construct {

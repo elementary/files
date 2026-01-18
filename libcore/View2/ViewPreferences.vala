@@ -44,5 +44,75 @@ namespace Files {
 
             return view_preferences;
         }
+
+       public static void set_up_view_preferences (
+            Settings? icon_settings,
+            Settings? list_settings,
+            Settings? column_settings
+        ) {
+            var view_prefs = ViewPreferences.get_default ();
+            if (icon_settings != null) {
+                icon_settings.bind ("default-zoom-level", view_prefs, "icon-default-zoom-level", DEFAULT);
+                icon_settings.bind ("minimum-zoom-level", view_prefs, "icon-minimum-zoom-level", DEFAULT);
+                icon_settings.bind ("maximum-zoom-level", view_prefs, "icon-maximum-zoom-level", DEFAULT);
+                icon_settings.bind ("zoom-level", view_prefs, "icon-zoom-level", DEFAULT);
+            }
+
+            if (list_settings != null) {
+                list_settings.bind ("default-zoom-level", view_prefs, "list-default-zoom-level", DEFAULT);
+                list_settings.bind ("minimum-zoom-level", view_prefs, "list-minimum-zoom-level", DEFAULT);
+                list_settings.bind ("maximum-zoom-level", view_prefs, "list-maximum-zoom-level", DEFAULT);
+                list_settings.bind ("zoom-level", view_prefs, "list-zoom-level", DEFAULT);
+            }
+
+            if (column_settings != null) {
+                column_settings.bind ("default-zoom-level", view_prefs, "column-default-zoom-level", DEFAULT);
+                column_settings.bind ("minimum-zoom-level", view_prefs, "column-minimum-zoom-level", DEFAULT);
+                column_settings.bind ("maximum-zoom-level", view_prefs, "column-maximum-zoom-level", DEFAULT);
+                column_settings.bind ("zoom-level", view_prefs, "column-zoom-level", DEFAULT);
+                //TODO Separate preferred-col-width for list view
+                column_settings.bind ("preferred_column_width", view_prefs, "preferred_column_width", DEFAULT);
+            }
+        }
+
+        public static void get_zoom_levels (
+            ViewMode mode,
+            out ZoomLevel normal,
+            out ZoomLevel minimum,
+            out ZoomLevel maximum,
+            out ZoomLevel current
+        ) {
+
+            normal = ZoomLevel.NORMAL;
+            minimum = ZoomLevel.SMALLEST;
+            minimum = ZoomLevel.LARGEST;
+            current = ZoomLevel.NORMAL;
+
+            switch (mode) {
+                case ZoomLevel.ICON:
+                    normal = icon_default_zoom_level;
+                    minimum = icon_minimum_zoom_level;
+                    minimum = icon_maximum_zoom_level;
+                    current = icon_zoom_level;
+                    break;
+
+                case ZoomLevel.LIST:
+                    normal = list_default_zoom_level;
+                    minimum = list_minimum_zoom_level;
+                    minimum = list_maximum_zoom_level;
+                    current = list_zoom_level;
+                    break;
+
+                case ZoomLevel.MILLER_COLUMNS:
+                    normal = column_default_zoom_level;
+                    minimum = column_minimum_zoom_level;
+                    minimum = column_maximum_zoom_level;
+                    current = column_zoom_level;
+                    break;
+
+                default:
+                    assert_not_reached ();
+            }
+        }
     }
 }
