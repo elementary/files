@@ -853,7 +853,7 @@ namespace Files {
         /* Open all files through this */
         private void open_file (Files.File file, Gdk.Screen? screen, GLib.AppInfo? app_info) {
             if (can_open_file (file, true)) {
-                MimeActions.open_glib_file_request.begin (file.location, this, app_info);
+                MimeActions.open_glib_file_request.begin (file.location, slot.top_level, app_info);
             }
         }
 
@@ -1141,7 +1141,7 @@ namespace Files {
         }
 
         private void on_selection_action_trash (GLib.SimpleAction action, GLib.Variant? param) {
-            trash_or_delete_selected_files (Files.is_admin ());
+            trash_or_delete_selected_files (slot.top_level.is_admin ());
         }
 
         private void on_selection_action_delete (GLib.SimpleAction action, GLib.Variant? param) {
@@ -2194,7 +2194,7 @@ namespace Files {
                         }
 
                         menu.add (new Gtk.SeparatorMenuItem ());
-                        if (slot.directory.has_trash_dirs && !Files.is_admin ()) {
+                        if (slot.directory.has_trash_dirs && !slot.top_level.is_admin ()) {
                             menu.add (trash_menuitem);
                         } else {
                             menu.add (delete_menuitem);
@@ -2671,7 +2671,7 @@ namespace Files {
         }
 
         private void open_files_with (GLib.AppInfo app, GLib.List<Files.File> files) {
-            MimeActions.open_multiple_gof_files_request (files, this, app);
+            MimeActions.open_multiple_gof_files_request (files, slot.top_level, app);
         }
 
 
@@ -2948,7 +2948,7 @@ namespace Files {
                                                         _("You do not have permission to change this location"),
                                                         slot.top_level);
                     } else if (!renaming) {
-                        trash_or_delete_selected_files (in_trash || Files.is_admin () || only_shift_pressed);
+                        trash_or_delete_selected_files (in_trash || slot.top_level.is_admin () || only_shift_pressed);
                         res = true;
                     }
 
@@ -3671,7 +3671,7 @@ namespace Files {
             Gtk.SortType sort_order = 0;
 
             /* Setting file attributes fails when root */
-            if (Files.is_admin ()) {
+            if (slot.top_level.is_admin ()) {
                 return;
             }
 
@@ -3696,7 +3696,7 @@ namespace Files {
             dir.file.sort_column_id = sort_column_id;
             dir.file.sort_order = sort_order;
 
-            if (!Files.is_admin ()) {
+            if (!slot.top_level.is_admin ()) {
                 dir.location.set_attributes_async.begin (info,
                                                    GLib.FileQueryInfoFlags.NONE,
                                                    GLib.Priority.DEFAULT,
