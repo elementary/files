@@ -25,4 +25,6 @@
 public interface MultiSlotInterface : Gtk.Widget {
     // Special handling for certain keys
     public abstract bool on_miller_key_pressed (uint original_keyval, uint keycode, Gdk.ModifierType state);
+    // Implement preview (currently only in multislot)
+    public abstract void clear_file_details ();
 }

@@ -22,7 +22,7 @@ namespace Files {
         bool awaiting_double_click = false;
         uint double_click_timeout_id = 0;
 
-        public ColumnView (View.Slot _slot) {
+        public ColumnView ( View.Slot _slot) {
             base (_slot);
             /* We do not need to load the directory - this is done by Miller View*/
             /* We do not need to connect to "row-activated" signal - we handle left-clicks ourselves */
@@ -111,8 +111,8 @@ namespace Files {
                 } else if (n_press == 2) {
                     cancel_await_double_click ();
                     if (prefs.show_file_preview) {
-                        var slot = (View.Miller)base.slot.ctab.get_view ();
-                        slot.clear_file_details ();
+                        var multislot = (MultiSlotInterface) (slot.top_level.get_view ());
+                        multislot.clear_file_details ();
                     }
 
                     return base.handle_primary_button_click (n_press, mods, path);
