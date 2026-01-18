@@ -70,6 +70,10 @@ pantheon_files_core_vala_files = files(
     'View/Dialogs/ConnectServerDialog.vala',
     'View/Dialogs/FileConflictDialog.vala',
     'View/Dialogs/StockDialogs.vala',
+    'View/Dialogs/BulkRenamer/Renamer.vala',
+    'View/Dialogs/BulkRenamer/RenamerModifier.vala',
+    'View/Dialogs/BulkRenamer/RenamerDialog.vala',
+    'View/Dialogs/BulkRenamer/RenamerListRow.vala',
 
     'View/HeaderBar/BasicBreadcrumbsEntry.vala',
     'View/HeaderBar/BasicLocationBar.vala',
