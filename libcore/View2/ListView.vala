@@ -51,7 +51,7 @@ namespace Files {
         private void append_extra_tree_columns () {
             int fnc = ListModel.ColumnID.FILENAME;
 
-            int preferred_column_width = ViewPreferences.preferred_column_width;
+            int preferred_column_width = ViewPreferences.get_default ().preferred_column_width;
             for (int k = fnc; k < ListModel.ColumnID.NUM_COLUMNS; k++) {
                 if (k == fnc) {
                     /* name_column already created by AbstractTreeVIew */
@@ -211,13 +211,13 @@ namespace Files {
         public override void set_up_zoom_level () {
             var view_prefs = ViewPreferences.get_default ();
             minimum_zoom = view_prefs.list_minimum_zoom_level;
-            maximum_zoom = view_prefs.list_maximum-zoom_level;
+            maximum_zoom = view_prefs.list_maximum_zoom_level;
             zoom_level = view_prefs.list_zoom_level;
 
             view_prefs.bind_property (
                 "list-zoom-level",
                 this, "zoom-level",
-                GLib.SettingsBindFlags.SET
+                DEFAULT
             );
         }
 

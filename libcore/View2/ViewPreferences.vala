@@ -18,24 +18,30 @@
 namespace Files {
     public static ViewPreferences? view_preferences = null;
     public class ViewPreferences : Object {
-
         /* IconView Preferences */
-            ZoomLevel icon_default_zoom_level;
-            ZoomLevel icon_maximum_zoom_level;
-            ZoomLevel icon_minimum_zoom_level;
-            ZoomLevel icon_zoom_level;
+            public ZoomLevel icon_default_zoom_level;
+            public ZoomLevel icon_maximum_zoom_level;
+            public ZoomLevel icon_minimum_zoom_level;
+            public ZoomLevel icon_zoom_level;
         /* ListView Preferences */
-            ZoomLevel list_default_zoom_level;
-            ZoomLevel list_maximum_zoom_level;
-            ZoomLevel list_minimum_zoom_level;
-            ZoomLevel list_zoom_level;
+            public ZoomLevel list_default_zoom_level;
+            public ZoomLevel list_maximum_zoom_level;
+            public ZoomLevel list_minimum_zoom_level;
+            public ZoomLevel list_zoom_level;
         /* ColumnView Preferences */
-            ZoomLevel column_default_zoom_level;
-            ZoomLevel column_maximum_zoom_level;
-            ZoomLevel column_minimum_zoom_level;
-            ZoomLevel column_zoom_level;
+            public ZoomLevel column_default_zoom_level;
+            public ZoomLevel column_maximum_zoom_level;
+            public ZoomLevel column_minimum_zoom_level;
+            public ZoomLevel column_zoom_level;
 
-            uint preferred_column_width;
+            public int preferred_column_width;
+
+        /* Sidebar preferences */
+            public bool sidebar_cat_devices_expander;
+            public bool sidebar_cat_network_expander;
+            public bool sidebar_cat_personal_expander;
+            public int sidebar_width;
+            public int sidebar_minimum_width;
 
         public static ViewPreferences get_default () {
             if (view_preferences == null) {
@@ -48,7 +54,8 @@ namespace Files {
        public static void set_up_view_preferences (
             Settings? icon_settings,
             Settings? list_settings,
-            Settings? column_settings
+            Settings? column_settings,
+            Settings? sidebar_settings
         ) {
             var view_prefs = ViewPreferences.get_default ();
             if (icon_settings != null) {
@@ -73,6 +80,14 @@ namespace Files {
                 //TODO Separate preferred-col-width for list view
                 column_settings.bind ("preferred_column_width", view_prefs, "preferred_column_width", DEFAULT);
             }
+
+            if (sidebar_settings != null) {
+                sidebar_settings.bind ("sidebar-cat-devices-expander", view_prefs, "sidebar-cat-devices-expander", DEFAULT);
+                sidebar_settings.bind ("sidebar-cat-network-expander", view_prefs, "sidebar-cat-network-expander", DEFAULT);
+                sidebar_settings.bind ("sidebar-cat-personal-expander", view_prefs, "sidebar-cat-personal-expander", DEFAULT);
+                sidebar_settings.bind ("sidebar-width", view_prefs, "sidebar-width", DEFAULT);
+                sidebar_settings.bind ("minimum-sidebar-width", view_prefs, "sidebar-minimum-width", DEFAULT);
+            }
         }
 
         public static void get_zoom_levels (
@@ -88,26 +103,27 @@ namespace Files {
             minimum = ZoomLevel.LARGEST;
             current = ZoomLevel.NORMAL;
 
+            var view_prefs = ViewPreferences.get_default ();
             switch (mode) {
-                case ZoomLevel.ICON:
-                    normal = icon_default_zoom_level;
-                    minimum = icon_minimum_zoom_level;
-                    minimum = icon_maximum_zoom_level;
-                    current = icon_zoom_level;
+                case ViewMode.ICON:
+                    normal = view_prefs.icon_default_zoom_level;
+                    minimum = view_prefs.icon_minimum_zoom_level;
+                    minimum = view_prefs.icon_maximum_zoom_level;
+                    current = view_prefs.icon_zoom_level;
                     break;
 
-                case ZoomLevel.LIST:
-                    normal = list_default_zoom_level;
-                    minimum = list_minimum_zoom_level;
-                    minimum = list_maximum_zoom_level;
-                    current = list_zoom_level;
+                case ViewMode.LIST:
+                    normal = view_prefs.list_default_zoom_level;
+                    minimum = view_prefs.list_minimum_zoom_level;
+                    minimum = view_prefs.list_maximum_zoom_level;
+                    current = view_prefs.list_zoom_level;
                     break;
 
-                case ZoomLevel.MILLER_COLUMNS:
-                    normal = column_default_zoom_level;
-                    minimum = column_minimum_zoom_level;
-                    minimum = column_maximum_zoom_level;
-                    current = column_zoom_level;
+                case ViewMode.MILLER_COLUMNS:
+                    normal = view_prefs.column_default_zoom_level;
+                    minimum = view_prefs.column_minimum_zoom_level;
+                    minimum = view_prefs.column_maximum_zoom_level;
+                    current = view_prefs.column_zoom_level;
                     break;
 
                 default:

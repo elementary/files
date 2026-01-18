@@ -87,7 +87,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         action_bar.add (connect_server_button);
 
         orientation = Gtk.Orientation.VERTICAL;
-        width_request = Files.app_settings.get_int ("minimum-sidebar-width");
+        width_request = Files.ViewPreferences.get_default ().sidebar_minimum_width;
         get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
         add (scrolled_window);
 
@@ -102,14 +102,15 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
 
         show_all ();
 
-        Files.app_settings.bind (
-            "sidebar-cat-personal-expander", bookmark_expander, "active", SettingsBindFlags.DEFAULT
+        var view_prefs = Files.ViewPreferences.get_default ();
+        view_prefs.bind_property (
+            "sidebar-cat-personal-expander", bookmark_expander, "active", DEFAULT
         );
-        Files.app_settings.bind (
-            "sidebar-cat-devices-expander", device_expander, "active", SettingsBindFlags.DEFAULT
+        view_prefs.bind_property (
+            "sidebar-cat-devices-expander", device_expander, "active", DEFAULT
         );
-        Files.app_settings.bind (
-            "sidebar-cat-network-expander", network_expander, "active", SettingsBindFlags.DEFAULT
+        view_prefs.bind_property (
+            "sidebar-cat-network-expander", network_expander, "active", DEFAULT
         );
 
         bookmark_expander.bind_property ("active", bookmark_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
