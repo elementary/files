@@ -627,7 +627,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
                 real_action = dnd_handler.drag_drop_action_ask (
                     this,
-                    (Gtk.ApplicationWindow)(Files.get_active_window ()),
+                    get_toplevel (),
                     actions
                 );
             }

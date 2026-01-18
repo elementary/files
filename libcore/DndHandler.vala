@@ -58,40 +58,43 @@ namespace Files {
         }
 
         public Gdk.DragAction? drag_drop_action_ask (Gtk.Widget dest_widget,
-                                                     Gtk.ApplicationWindow win,
+                                                     Gtk.Widget toplevel,
                                                      Gdk.DragAction possible_actions) {
 
             this.chosen = Gdk.DragAction.DEFAULT;
-            add_action (win);
-            var ask_menu = build_menu (possible_actions);
-            ask_menu.set_screen (dest_widget.get_screen ());
-            ask_menu.show_all ();
-            var loop = new GLib.MainLoop (null, false);
+            if (toplevel is ActionMap) {
+                add_action ((ActionMap) toplevel);
+                var ask_menu = build_menu (possible_actions);
+                ask_menu.set_screen (dest_widget.get_screen ());
+                ask_menu.show_all ();
+                var loop = new GLib.MainLoop (null, false);
 
-            ask_menu.deactivate.connect (() => {
-                if (loop.is_running ()) {
-                    loop.quit ();
-                }
+                ask_menu.deactivate.connect (() => {
+                    if (loop.is_running ()) {
+                        loop.quit ();
+                    }
 
-                remove_action ((Gtk.ApplicationWindow)win);
-            });
+                    remove_action ((ActionMap) toplevel);
+                });
 
-            ask_menu.popup_at_pointer (null);
-            loop.run ();
-            Gtk.grab_remove (ask_menu);
+                ask_menu.popup_at_pointer (null);
+                loop.run ();
+                Gtk.grab_remove (ask_menu);
+            }
 
             return this.chosen;
         }
 
-        private void add_action (Gtk.ApplicationWindow win) {
+        private void add_action (ActionMap toplevel) {
             var action = new GLib.SimpleAction ("choice", GLib.VariantType.STRING);
             action.activate.connect (this.on_choice);
 
-            win.add_action (action);
+            // Ignored if toplevel is not an ActionMap
+            toplevel.add_action (action);
         }
 
-        private void remove_action (Gtk.ApplicationWindow win) {
-            win.remove_action ("choice");
+        private void remove_action (ActionMap toplevel) {
+            toplevel.remove_action ("choice");
         }
 
         private Gtk.Menu build_menu (Gdk.DragAction possible_actions) {

@@ -1660,7 +1660,7 @@ namespace Files {
                             destination_drop_file_list,
                             current_actions,
                             current_suggested_action,
-                            (Gtk.ApplicationWindow)Files.get_active_window (),
+                            slot.top_level,
                             timestamp
                         );
 
