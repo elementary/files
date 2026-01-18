@@ -106,7 +106,7 @@ namespace Files.View.Chrome {
         }
         private void on_search_results_file_activated (GLib.File file) {
             AppInfo? app = MimeActions.get_default_application_for_glib_file (file);
-            MimeActions.open_glib_file_request.begin (file, this, app);
+            MimeActions.open_glib_file_request.begin (file, (Gtk.Window) this.get_toplevel (), app);
             on_search_results_exit ();
         }
 
@@ -163,7 +163,7 @@ namespace Files.View.Chrome {
         }
 
         private void on_bread_open_with_request (GLib.File file, AppInfo? app) {
-            Files.MimeActions.open_glib_file_request.begin (file, this, app);
+            Files.MimeActions.open_glib_file_request.begin (file, (Gtk.Window) this.get_toplevel (), app);
         }
 
         protected override void on_bread_action_icon_press () {

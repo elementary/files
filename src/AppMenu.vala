@@ -161,9 +161,10 @@ public class Files.AppMenu : Gtk.Popover {
 
         // Connect to all view settings rather than try to connect and disconnect
         // continuously to current view mode setting.
-        Files.icon_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
-        Files.list_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
-        Files.column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
+        var view_prefs = ViewPreferences.get_default ();
+        view_prefs.notify["icon-zoom-level"].connect (on_zoom_setting_changed);
+        view_prefs.get_default ().notify["list-zoom-level"].connect (on_zoom_setting_changed);
+        view_prefs.get_default ().notify["column-zoom-level"].connect (on_zoom_setting_changed);
 
         // Initialize and connect dateformat buttons
         switch (app_settings.get_enum ("date-format")) {
@@ -224,21 +225,14 @@ public class Files.AppMenu : Gtk.Popover {
         );
     }
 
-    public void on_zoom_setting_changed (Settings settings, string key) {
-        if (settings == null) {
-            critical ("Zoom string from settinggs: Null settings");
-            zoom_default_button.label = "";
-            return;
-        }
+    public void on_zoom_setting_changed (ViewMode mode) {
+        var view_prefs = ViewPreferences.get_default ();
+        ZoomLevel normal, minimum, maximum, current;
+        view_prefs.get_zoom_levels (out normal, out minimum, out maximum, out current);
 
-        var default_zoom = (Files.ZoomLevel)(settings.get_enum ("default-zoom-level"));
-        var zoom_level = (Files.ZoomLevel)(settings.get_enum ("zoom-level"));
-        zoom_default_button.label = ("%.0f%%").printf ((double)(zoom_level.to_icon_size ()) / (double)(default_zoom.to_icon_size ()) * 100);
+        zoom_default_button.label = ("%.0f%%").printf ((double)(current.to_icon_size ()) / (double)(normal.to_icon_size ()) * 100);
 
-        var max_zoom = settings.get_enum ("maximum-zoom-level");
-        var min_zoom = settings.get_enum ("minimum-zoom-level");
-
-        zoom_in_button.sensitive = zoom_level < max_zoom;
-        zoom_out_button.sensitive = zoom_level > min_zoom;
+        zoom_in_button.sensitive = current < maximum;
+        zoom_out_button.sensitive = current > minimum;
     }
 }

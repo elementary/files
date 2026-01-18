@@ -252,21 +252,21 @@ public class Files.MimeActions {
         return get_default_application_for_file (Files.File.@get (file));
     }
 
-    public static async void open_glib_file_request (GLib.File file_to_open, Gtk.Widget parent, AppInfo? app = null) {
+    public static async void open_glib_file_request (GLib.File file_to_open, Gtk.Window toplevel, AppInfo? app = null) {
         /* Note: This function should be only called if file_to_open is not an executable or it is not
          * intended to execute it (AbstractDirectoryView takes care of this) */
         if (app == null) {
-            var choice = yield choose_app_for_glib_file (file_to_open, parent);
+            var choice = yield choose_app_for_glib_file (file_to_open, toplevel);
             if (choice != null) {
-                launch_glib_file_with_app (file_to_open, parent, choice);
+                launch_glib_file_with_app (file_to_open, toplevel, choice);
             }
         } else {
-            launch_glib_file_with_app (file_to_open, parent, app);
+            launch_glib_file_with_app (file_to_open, toplevel, app);
         }
     }
 
     public static void open_multiple_gof_files_request (GLib.List<Files.File> gofs_to_open,
-                                                        Gtk.Widget parent,
+                                                        Gtk.Window toplevel,
                                                         AppInfo? app = null) {
         /* Note: This function should be only called if files_to_open are not executables or it is not
          * intended to execute them (AbstractDirectoryView takes care of this) */
@@ -281,26 +281,26 @@ public class Files.MimeActions {
             PF.Dialogs.show_error_dialog (
                 _("Multiple file types selected"),
                 _("No single app can open all these types of file"),
-                Files.get_active_window ());
+                toplevel);
         } else {
             GLib.List<GLib.File> files_to_open = null;
             foreach (var gof in gofs_to_open) {
                 files_to_open.append (gof.location);
             }
 
-            launch_with_app (files_to_open, app_info, Files.get_active_window ());
+            launch_with_app (files_to_open, app_info, toplevel);
         }
     }
 
-    public static async AppInfo? choose_app_for_glib_file (GLib.File file_to_open, Gtk.Widget parent) {
-        var chooser = new PF.ChooseAppDialog (Files.get_active_window (), file_to_open);
+    public static async AppInfo? choose_app_for_glib_file (GLib.File file_to_open, Gtk.Window toplevel) {
+        var chooser = new PF.ChooseAppDialog (toplevel, file_to_open);
         return yield chooser.get_app_info ();
     }
 
-     private static void launch_glib_file_with_app (GLib.File file_to_open, Gtk.Widget parent, AppInfo app) {
+     private static void launch_glib_file_with_app (GLib.File file_to_open, Gtk.Window toplevel, AppInfo app) {
         GLib.List<GLib.File> files_to_open = null;
         files_to_open.append (file_to_open);
-        launch_with_app (files_to_open, app, Files.get_active_window ());
+        launch_with_app (files_to_open, app, toplevel);
      }
 
     private static void launch_with_app (GLib.List<GLib.File> files_to_open, AppInfo app, Gtk.Window? win) {

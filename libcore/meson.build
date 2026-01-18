@@ -14,7 +14,11 @@ pantheon_files_core_deps = [
     pango_dep,
     sqlite3_dep,
     libcanberra_dep,
-    zeitgeist_dep
+    zeitgeist_dep,
+    dependency('gdk-x11-3.0'),
+    dependency('gdk-wayland-3.0'),
+    portal_dep,
+    portal_gtk3_dep
 ]
 
 pantheon_files_core_vala_files = files(
@@ -29,6 +33,8 @@ pantheon_files_core_vala_files = files(
     'FileUtils.vala',
     'IconInfo.vala',
     'ListModel.vala',
+    'MimeActions.vala',
+    'Permissions.vala',
     'PixbufUtils.vala',
     'Preferences.vala',
     'PluginManager.vala',
@@ -56,7 +62,10 @@ pantheon_files_core_vala_files = files(
     'Interfaces/SearchableInterface.vala',
     'Interfaces/SidebarListInterface.vala',
     'Interfaces/SidebarItemInterface.vala',
+    'Interfaces/SlotToplevelInterface.vala',
+    'Interfaces/MultiSlotInterface.vala',
 
+    'View/Dialogs/ChooseAppDialog.vala',
     'View/Dialogs/ConnectServerOperation.vala',
     'View/Dialogs/ConnectServerDialog.vala',
     'View/Dialogs/FileConflictDialog.vala',
@@ -77,7 +86,43 @@ pantheon_files_core_vala_files = files(
     'View/Sidebar/SidebarPluginItem.vala',
     'View/Widgets/AbstractEditableLabel.vala',
     'View/Widgets/MultiLineEditableLabel.vala',
-    'View/Widgets/SingleLineEditableLabel.vala'
+    'View/Widgets/SingleLineEditableLabel.vala',
+
+    'View2/AbstractDirectoryView.vala',
+    'View2/AbstractTreeView.vala',
+    'View2/ColumnView.vala',
+    'View2/DirectoryNotFound.vala',
+    'View2/DeepCount.vala',
+    'View2/IconView.vala',
+    'View2/ListView.vala',
+    # 'View2/Miller.vala',
+    'View2/PrivacyModeOn.vala',
+    'View2/Slot.vala',
+    # 'View2/ViewContainer.vala',
+    # 'View2/Window.vala',
+    'View2/DetailsColumn.vala',
+    'View2/ViewPreferences.vala',
+
+    # 'View2/Widgets/AppMenu.vala',
+    'View2/Widgets/BreadcrumbsEntry.vala',
+    'View2/Widgets/LocationBar.vala',
+    'View2/Widgets/OverlayBar.vala',
+    'View2/Widgets/PermissionButton.vala',
+    'View2/Widgets/ProgressInfoWidget.vala',
+    'View2/Widgets/SearchResults.vala',
+    'View2/Widgets/Welcome.vala',
+
+    'View2/Sidebar/AbstractMountableRow.vala',
+    'View2/Sidebar/BookmarkListBox.vala',
+    'View2/Sidebar/BookmarkRow.vala',
+    'View2/Sidebar/DeviceListBox.vala',
+    'View2/Sidebar/DriveRow.vala',
+    'View2/Sidebar/NetworkListBox.vala',
+    'View2/Sidebar/NetworkRow.vala',
+    'View2/Sidebar/SidebarWindow.vala',
+    'View2/Sidebar/VolumeRow.vala',
+    'View2/Sidebar/VolumelessMountRow.vala',
+
 )
 
 pantheon_files_core_c_files = files(

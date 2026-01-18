@@ -209,7 +209,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         }
 
         working = true;
-        var success = yield Files.FileOperations.unmount_mount (mount, Files.get_active_window ());
+        var success = yield Files.FileOperations.unmount_mount (mount, get_toplevel ());
         working = false;
         update_visibilities ();
         return success;
@@ -221,7 +221,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
         }
 
         working = true;
-        var success = yield Files.FileOperations.eject_mount (mount, Files.get_active_window ());
+        var success = yield Files.FileOperations.eject_mount (mount, get_toplevel ());
         working = false;
         update_visibilities ();
         return success;
@@ -237,7 +237,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             drive.can_start_degraded ().to_string (), drive.is_media_removable ().to_string (), drive.is_removable ().to_string ());
 
         working = true;
-        yield Files.FileOperations.safely_remove_drive (drive, Files.get_active_window ());
+        yield Files.FileOperations.safely_remove_drive (drive, get_toplevel ());
         working = false;
         update_visibilities ();
     }
@@ -247,7 +247,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
             return;
         }
         working = true;
-        yield Files.FileOperations.eject_drive (drive, Files.get_active_window ());
+        yield Files.FileOperations.eject_drive (drive, get_toplevel ());
         working = false;
         update_visibilities ();
     }
