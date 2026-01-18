@@ -8,6 +8,7 @@ pantheon_files_deps = [
 pantheon_files_exec = executable (
     meson.project_name (),
 
+    'AppMenu.vala',
     'Application.vala',
     'Window.vala',
     'ViewContainer.vala',
@@ -43,7 +44,6 @@ pantheon_files_exec = executable (
 
     # 'View/DetailsColumn.vala',
 
-    # 'View/Widgets/AppMenu.vala',
     # 'View/Widgets/BreadcrumbsEntry.vala',
     # 'View/Widgets/LocationBar.vala',
     # 'View/Widgets/OverlayBar.vala',
