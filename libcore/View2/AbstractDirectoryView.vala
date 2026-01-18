@@ -3048,8 +3048,11 @@ namespace Files {
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
                 case Gdk.Key.BackSpace:
-                    if (no_mods && (slot.top_level.get_view () is MultiSlotInterface)) {
-                        (slot.top_level.get_view ()).on_miller_key_pressed (keyval, keycode, state);
+                    var toplevel_view = slot.top_level.get_view ();
+                    if (no_mods && (toplevel_view is MultiSlotInterface)) {
+                        ((MultiSlotInterface) (toplevel_view)).on_miller_key_pressed (
+                            keyval, keycode, state
+                        );
                         res = true;
                         break;
                     }
