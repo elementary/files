@@ -60,8 +60,26 @@ namespace Files {
             return false;
         }
 
-        public override Settings? get_view_settings () {
-            return Files.column_view_settings;
+        // //TODO make redundant
+        // public override Settings? get_view_settings () {
+        //     return Files.ViewPreferences.get_default ();
+        // }
+
+        public override void zoom_normal () {
+            zoom_level = ViewPreferences.get_default ().column_default_zoom_level;
+        }
+
+        public override void set_up_zoom_level () {
+            var view_prefs = ViewPreferences.get_default ();
+            minimum_zoom = view_prefs.column_minimum_zoom_level;
+            maximum_zoom = view_prefs.column_maximum-zoom_level;
+            zoom_level = view_prefs.column_zoom_level;
+
+            view_prefs.bind_property (
+                "column-zoom-level",
+                this, "zoom-level",
+                GLib.SettingsBindFlags.SET
+            );
         }
 
         protected override Gtk.Widget? create_view () {

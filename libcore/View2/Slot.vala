@@ -107,7 +107,7 @@ namespace Files.View {
 
             is_active = false;
             is_frozen = true;
-            preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
+            preferred_column_width = ViewPreferences.get_default ().preferred_column_width;
             width = preferred_column_width;
         }
 
