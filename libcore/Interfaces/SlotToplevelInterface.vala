@@ -25,6 +25,7 @@
 public interface Files.SlotToplevelInterface : Gtk.Window {
     public virtual void folder_deleted (GLib.File file) {}
     public virtual bool is_application () { return GLib.Application.get_default () != null; }
+    public virtual bool is_admin () { return false; }
     public abstract unowned AbstractSlot? get_view (); // Should return current slot
     public abstract AbstractSlot? prepare_reload ();
     public abstract void free_space_change ();
