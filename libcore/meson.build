@@ -101,6 +101,7 @@ pantheon_files_core_vala_files = files(
     # 'View2/ViewContainer.vala',
     # 'View2/Window.vala',
     'View2/DetailsColumn.vala',
+    'View2/ViewPreferences.vala',
 
     # 'View2/Widgets/AppMenu.vala',
     'View2/Widgets/BreadcrumbsEntry.vala',
