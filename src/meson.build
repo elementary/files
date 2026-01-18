@@ -13,7 +13,7 @@ pantheon_files_exec = executable (
     'Window.vala',
     'ViewContainer.vala',
     'Miller.vala',
-    'ColumnView.vala',
+    # 'ColumnView.vala',
     # 'DeepCount.vala',
     'main.vala',
     'ProgressUIHandler.vala',

@@ -90,7 +90,7 @@ pantheon_files_core_vala_files = files(
 
     'View2/AbstractDirectoryView.vala',
     'View2/AbstractTreeView.vala',
-    # 'View2/ColumnView.vala',
+    'View2/ColumnView.vala',
     'View2/DirectoryNotFound.vala',
     'View2/DeepCount.vala',
     'View2/IconView.vala',
