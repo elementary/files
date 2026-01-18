@@ -18,7 +18,7 @@ pantheon_files_exec = executable (
     'ProgressUIHandler.vala',
 
     'Dialogs/AbstractPropertiesDialog.vala',
-    'Dialogs/ChooseAppDialog.vala',
+    # 'Dialogs/ChooseAppDialog.vala',
     'Dialogs/PropertiesWindow.vala',
     'Dialogs/VolumePropertiesWindow.vala',
 

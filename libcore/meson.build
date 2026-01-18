@@ -65,6 +65,7 @@ pantheon_files_core_vala_files = files(
     'Interfaces/SlotToplevelInterface.vala',
     'Interfaces/MultiSlotInterface.vala',
 
+    'View/Dialogs/ChooseAppDialog.vala',
     'View/Dialogs/ConnectServerOperation.vala',
     'View/Dialogs/ConnectServerDialog.vala',
     'View/Dialogs/FileConflictDialog.vala',
