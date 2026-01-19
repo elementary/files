@@ -31,8 +31,6 @@ public interface Files.SlotToplevelInterface : Gtk.Window {
     public abstract AbstractSlot? prepare_reload ();
     public abstract void refresh (); // Reloads the current slot
     public abstract bool can_bookmark_uri (string uri);
-    // public abstract unowned ClipboardManager get_clipboard_manager ();
-    // public abstract unowned Gtk.RecentManager get_recent_manager ();
     public abstract void change_state_show_hidden (SimpleAction action);
     public abstract void bookmark_uri (string uri, string custom_name = "");
     public abstract Gtk.Application? get_files_application ();
