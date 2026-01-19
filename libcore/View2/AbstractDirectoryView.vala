@@ -323,10 +323,10 @@ namespace Files {
             clipboard = ClipboardManager.get_for_display ();
             recent = new Gtk.RecentManager ();
 
-            if (slot.top_level.is_application ()) {
-                var app = GLib.Application.get_default ();
-                app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
-                app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
+            var files_app = slot.top_level.get_files_application ();
+            if (files_app != null) {
+                files_app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
+                files_app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
             }
 
             thumbnailer = Thumbnailer.get ();
