@@ -1260,7 +1260,7 @@ namespace Files {
         }
 
         private void on_common_action_properties (GLib.SimpleAction action, GLib.Variant? param) {
-            new View.PropertiesWindow (get_files_for_action (), this, slot.top_level);
+            new View.PropertiesWindow (get_files_for_action (), this);
         }
 
         private void on_common_action_copy_link (GLib.SimpleAction action, GLib.Variant? param) {
