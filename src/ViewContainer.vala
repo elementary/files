@@ -280,6 +280,8 @@ namespace Files.View {
             /* Slot is created inactive so we activate now since we must be the current tab
              * to have received a change mode instruction */
             set_active_state (true);
+
+            load_directory ();
         }
 
         public void load_directory () {
