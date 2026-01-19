@@ -89,9 +89,18 @@ namespace Files {
             }
 
             if (app_settings != null) {
-                app_settings.bind ("sidebar-cat-devices-expander", view_prefs, "sidebar-cat-devices-expander", DEFAULT);
-                app_settings.bind ("sidebar-cat-network-expander", view_prefs, "sidebar-cat-network-expander", DEFAULT);
-                app_settings.bind ("sidebar-cat-personal-expander", view_prefs, "sidebar-cat-personal-expander", DEFAULT);
+                app_settings.bind (
+                    "sidebar-cat-devices-expander",
+                    view_prefs, "sidebar-cat-devices-expander", DEFAULT
+                );
+                app_settings.bind (
+                    "sidebar-cat-network-expander",
+                    view_prefs, "sidebar-cat-network-expander", DEFAULT
+                );
+                app_settings.bind (
+                    "sidebar-cat-personal-expander",
+                    view_prefs, "sidebar-cat-personal-expander", DEFAULT
+                );
                 app_settings.bind ("sidebar-width", view_prefs, "sidebar-width", DEFAULT);
                 app_settings.bind ("minimum-sidebar-width", view_prefs, "sidebar-minimum-width", DEFAULT);
                 app_settings.bind ("window-state", view_prefs, "window-state", DEFAULT);
