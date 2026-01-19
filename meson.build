@@ -85,24 +85,19 @@ add_project_arguments(
 
 #Configuration file
 
-config_data = configuration_data()
-config_data.set('plugin_dir', plugin_dir)
-config_data.set('version', meson.project_version())
-config_data.set('testdata_dir', join_paths(meson.project_source_root(), 'data', 'tests'))
-config_data.set('app_name', meson.project_name())
-config_data.set('gettext_package', meson.project_name())
-config_data.set('locale_dir', join_paths(get_option('prefix'), get_option('localedir')))
 
-config_file = configure_file(
-    input: 'config.h.in',
-    output: 'config.h',
-    configuration: config_data
-)
 
-project_config_dep = declare_dependency(
-    sources: config_file,
-    include_directories: include_directories('.', './libcore')
-)
+
+# config_file = configure_file(
+#     input: 'config.h.in',
+#     output: 'config.h',
+#     configuration: config_data
+# )
+
+# project_config_dep = declare_dependency(
+#     sources: config_file,
+#     include_directories: include_directories('.', './libcore')
+# )
 
 gnome = import('gnome')
 
