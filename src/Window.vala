@@ -102,7 +102,6 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
 
     public signal void loading_uri (string location);
     public signal void folder_deleted (GLib.File location);
-    // public signal void free_space_change ();
 
     public Window (Files.Application _application) {
         Object (
@@ -1459,12 +1458,15 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     public unowned AbstractSlot? get_view () {
         return current_container.slot;
     }  // Should return current slot
-    public  AbstractSlot? prepare_reload () {
+
+    public AbstractSlot? prepare_reload () {
         return current_container.prepare_reload ();
-    } // public abstract void free_space_change ();
+    }
+
     public void refresh () {
         action_reload ();
     } // Reloads the current slot
+
     public bool can_bookmark_uri (string uri) {
         return !sidebar.has_favorite_uri (uri);
     }
@@ -1473,10 +1475,6 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         sidebar.add_favorite_uri (uri, custom_name);
     }
 
-    // public unowned ClipboardManager get_clipboard_manager () {
-    //     return marlin_app.get_clipboard_manager ();
-    // };
-    // public abstract unowned Gtk.RecentManager get_recent_manager ();
     public void change_state_show_hidden (GLib.SimpleAction action) {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));

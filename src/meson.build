@@ -15,7 +15,6 @@ pantheon_files_exec = executable (
     'main.vala',
     'ProgressUIHandler.vala',
 
-
     dependencies : [
         pantheon_files_deps,
     ],

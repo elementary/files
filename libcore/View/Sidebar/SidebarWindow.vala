@@ -114,7 +114,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         );
 
         bookmark_expander.bind_property ("active", bookmark_revealer, "reveal-child", SYNC_CREATE);
-        device_expander.bind_property ("active", device_revealer, "reveal-child",  SYNC_CREATE);
+        device_expander.bind_property ("active", device_revealer, "reveal-child", SYNC_CREATE);
         network_expander.bind_property ("active", network_revealer, "reveal-child", SYNC_CREATE);
     }
 
