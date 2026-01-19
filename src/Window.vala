@@ -176,10 +176,10 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         default_height = height;
 
         if (is_first_window) {
-            Files.app_settings.bind ("sidebar-width", lside_pane,
+            ViewPreferences.get_default ().bind ("sidebar-width", lside_pane,
                                        "position", SettingsBindFlags.DEFAULT);
 
-            var state = (Files.WindowState)(Files.app_settings.get_enum ("window-state"));
+            var state = ViewPreferences.get_default ().window_state;
             if (state == Files.WindowState.MAXIMIZED) {
                 maximize ();
             }
@@ -190,6 +190,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     }
 
     private void build_window () {
+        var view_prefs = ViewPreferences.get_default ();
         button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic");
 
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
@@ -203,7 +204,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
             margin_end = 20
         };
-        view_switcher.set_mode (Files.app_settings.get_enum ("default-viewmode"));
+        view_switcher.set_mode (view_prefs.default_viewmode);
 
         location_bar = new Chrome.LocationBar ();
 
@@ -264,7 +265,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             expand = true,
-            position = Files.app_settings.get_int ("sidebar-width")
+            position = view_prefs.sidebar_width
         };
         lside_pane.pack1 (sidebar, false, false);
         lside_pane.pack2 (tab_box, true, true);
@@ -284,7 +285,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         get_action ("show-file-preview").set_state (prefs.show_file_preview);
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
-        get_action ("restore-tabs-on-startup").set_state (app_settings.get_boolean ("restore-tabs"));
+        get_action ("restore-tabs-on-startup").set_state (prefs.restore_tabs);
 
         /*/
         /* Connect and abstract signals to local ones
@@ -1066,7 +1067,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     public void change_state_show_hidden (GLib.SimpleAction action) {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("show-hiddenfiles", state);
+        Files.Preferences.get_default ().show_hidden_files = state;
     }
 
     public void change_state_single_click_select (GLib.SimpleAction action) {
@@ -1078,19 +1079,19 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     public void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("show-remote-thumbnails", state);
+        Files.Preferences.get_default ().show_remote_thumbnails = state;
     }
 
     public void change_state_show_local_thumbnails (GLib.SimpleAction action) {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("show-local-thumbnails", state);
+        Files.Preferences.get_default ().show_local_thumbnails = state;
     }
 
     public void change_state_show_file_preview (GLib.SimpleAction action) {
         var state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("show-file-preview", state);
+        Files.Preferences.get_default ().show_file_preview = state;
     }
 
     public void change_state_folders_before_files (GLib.SimpleAction action) {
@@ -1102,7 +1103,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     public void change_state_restore_tabs_on_startup (GLib.SimpleAction action) {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("restore-tabs", state);
+        Files.Preferences.get_default ().restore_tabs = state;
     }
 
     private void connect_to_server () {
@@ -1142,7 +1143,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
                 break;
         }
 
-        return (ViewMode)(Files.app_settings.get_enum ("default-viewmode"));
+        return Files.Preferences.get_default ().default_viewmode;
     }
 
     public void quit () {
@@ -1166,28 +1167,26 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         if (!is_first_window) {
             return; //TODO Save all windows
         }
+        var prefs = Files.Preferences.get_default ();
+        var view_prefs = ViewPreferences.get_default ();
         var sidebar_width = lside_pane.get_position ();
-        var min_width = Files.app_settings.get_int ("minimum-sidebar-width");
+        var min_width = view_prefs.minimum_sidebar_width;
 
-        sidebar_width = int.max (sidebar_width, min_width);
-        Files.app_settings.set_int ("sidebar-width", sidebar_width);
+        view_prefs.sidebar_width = int.max (sidebar_width, min_width);
 
         var state = get_window ().get_state ();
         // TODO: replace with Gtk.Window.fullscreened in Gtk4
         if (is_maximized || Gdk.WindowState.FULLSCREEN in state) {
-            Files.app_settings.set_enum (
-                "window-state", Files.WindowState.MAXIMIZED
-            );
+            view_prefs.window_state = WindowState.MAXIMIZED;
         } else {
-            Files.app_settings.set_enum (
-                "window-state", Files.WindowState.NORMAL
-            );
+            view_prefs.window_state = WindowState.NORMAL;
 
             if (!(Gdk.WindowState.TILED in state)) {
                 int width, height;
                 // Includes shadow for normal windows (but not maximized or tiled)
                 get_size (out width, out height);
-                Files.app_settings.set ("window-size", "(ii)", width, height);
+                view_prefs.window_width = width;
+                view_prefs.window_height = height;
             }
         }
     }

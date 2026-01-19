@@ -35,24 +35,18 @@ public class Files.Application : Gtk.Application {
     public Settings gnome_interface_settings { get; construct; }
     public Settings gnome_privacy_settings { get; construct; }
     public Settings gtk_file_chooser_settings { get; construct; }
+    private Settings app_settings;
+    private Settings icon_view_settings;
+    private Settings list_view_settings;
+    private Settings column_view_settings;
 
     bool quitting = false;
 
-    static construct {
-        /* GSettings parameters */
-        var app_settings = new Settings ("io.elementary.files.preferences");
-        var icon_view_settings = new Settings ("io.elementary.files.icon-view");
-        var list_view_settings = new Settings ("io.elementary.files.list-view");
-        var column_view_settings = new Settings ("io.elementary.files.column-view");
-        ViewPreferences.setup_view_preferences (
-            icon_view_settints,
-            list_view_settings,
-            column_view_settings,
-            app_settings
-        );
-    }
-
     construct {
+        app_settings = new Settings ("io.elementary.files.preferences");
+        icon_view_settings = new Settings ("io.elementary.files.icon-view");
+        list_view_settings = new Settings ("io.elementary.files.list-view");
+        column_view_settings = new Settings ("io.elementary.files.column-view");
         gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
         gnome_privacy_settings = new Settings ("org.gnome.desktop.privacy");
         gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
@@ -261,23 +255,31 @@ public class Files.Application : Gtk.Application {
     }
 
     private void init_schemas () {
+        ViewPreferences.set_up_view_preferences (
+            icon_view_settings,
+            list_view_settings,
+            column_view_settings,
+            app_settings
+        );
+
         /* Bind settings with GOFPreferences */
         var prefs = Files.Preferences.get_default ();
         if (app_settings.settings_schema.has_key ("singleclick-select")) {
             app_settings.bind ("singleclick-select", prefs, "singleclick-select", GLib.SettingsBindFlags.DEFAULT);
         }
 
-        Files.app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
+        app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
 
-        Files.app_settings.bind ("show-remote-thumbnails",
+        app_settings.bind ("show-remote-thumbnails",
                                    prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-        Files.app_settings.bind ("show-local-thumbnails",
+        app_settings.bind ("show-local-thumbnails",
                                    prefs, "show-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
 
-        Files.app_settings.bind ("show-file-preview",
+        app_settings.bind ("show-file-preview",
                                    prefs, "show-file-preview", GLib.SettingsBindFlags.DEFAULT);
 
-        Files.app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
+        app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
+        app_settings.bind ("restore-tabs", prefs, "restore-tabs", GLib.SettingsBindFlags.DEFAULT);
 
         gnome_interface_settings.bind ("clock-format",
                                        Files.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);

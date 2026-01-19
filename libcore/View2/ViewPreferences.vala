@@ -43,6 +43,12 @@ namespace Files {
             public int sidebar_width;
             public int sidebar_minimum_width;
 
+        /*Window preferences */
+            public WindowState window_state;
+            public ViewMode default_viewmode;
+            public int window_width;
+            public int window_height;
+
         public static ViewPreferences get_default () {
             if (view_preferences == null) {
                 view_preferences = new ViewPreferences ();
@@ -55,7 +61,7 @@ namespace Files {
             Settings? icon_settings,
             Settings? list_settings,
             Settings? column_settings,
-            Settings? sidebar_settings
+            Settings? app_settings
         ) {
             var view_prefs = ViewPreferences.get_default ();
             if (icon_settings != null) {
@@ -81,12 +87,16 @@ namespace Files {
                 column_settings.bind ("preferred_column_width", view_prefs, "preferred_column_width", DEFAULT);
             }
 
-            if (sidebar_settings != null) {
-                sidebar_settings.bind ("sidebar-cat-devices-expander", view_prefs, "sidebar-cat-devices-expander", DEFAULT);
-                sidebar_settings.bind ("sidebar-cat-network-expander", view_prefs, "sidebar-cat-network-expander", DEFAULT);
-                sidebar_settings.bind ("sidebar-cat-personal-expander", view_prefs, "sidebar-cat-personal-expander", DEFAULT);
-                sidebar_settings.bind ("sidebar-width", view_prefs, "sidebar-width", DEFAULT);
-                sidebar_settings.bind ("minimum-sidebar-width", view_prefs, "sidebar-minimum-width", DEFAULT);
+            if (app_settings != null) {
+                app_settings.bind ("sidebar-cat-devices-expander", view_prefs, "sidebar-cat-devices-expander", DEFAULT);
+                app_settings.bind ("sidebar-cat-network-expander", view_prefs, "sidebar-cat-network-expander", DEFAULT);
+                app_settings.bind ("sidebar-cat-personal-expander", view_prefs, "sidebar-cat-personal-expander", DEFAULT);
+                app_settings.bind ("sidebar-width", view_prefs, "sidebar-width", DEFAULT);
+                app_settings.bind ("minimum-sidebar-width", view_prefs, "sidebar-minimum-width", DEFAULT);
+                app_settings.bind ("window-state", view_prefs, "window-state", DEFAULT);
+                app_settings.bind ("window-width", view_prefs, "window-width", DEFAULT);
+                app_settings.bind ("window-height", view_prefs, "window-height", DEFAULT);
+                app_settings.bind ("default-viewmode", view_prefs, "default-viewmode", DEFAULT);
             }
         }
 
