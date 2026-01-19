@@ -264,22 +264,6 @@ public class Files.Application : Gtk.Application {
 
         /* Bind settings with GOFPreferences */
         var prefs = Files.Preferences.get_default ();
-        if (app_settings.settings_schema.has_key ("singleclick-select")) {
-            app_settings.bind ("singleclick-select", prefs, "singleclick-select", GLib.SettingsBindFlags.DEFAULT);
-        }
-
-        app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
-
-        app_settings.bind ("show-remote-thumbnails",
-                                   prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-        app_settings.bind ("show-local-thumbnails",
-                                   prefs, "show-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-
-        app_settings.bind ("show-file-preview",
-                                   prefs, "show-file-preview", GLib.SettingsBindFlags.DEFAULT);
-
-        app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
-        app_settings.bind ("restore-tabs", prefs, "restore-tabs", GLib.SettingsBindFlags.DEFAULT);
 
         gnome_interface_settings.bind ("clock-format",
                                        Files.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);

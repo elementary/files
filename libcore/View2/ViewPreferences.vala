@@ -17,6 +17,7 @@
 
 namespace Files {
     public static ViewPreferences? view_preferences = null;
+
     public class ViewPreferences : Object {
         /* IconView Preferences */
             public ZoomLevel icon_default_zoom_level;

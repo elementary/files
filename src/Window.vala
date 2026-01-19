@@ -171,12 +171,14 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         build_window ();
 
         int width, height;
-        Files.app_settings.get ("window-size", "(ii)", out width, out height);
-        default_width = width;
-        default_height = height;
+
+        ViewPreferences.get_window_size ();
+        var view_prefs = ViewPreferences.get_default ();
+        default_width = view_prefs.window_width;
+        default_height = view_prefs.window_height;
 
         if (is_first_window) {
-            ViewPreferences.get_default ().bind ("sidebar-width", lside_pane,
+            view_prefs.bind ("sidebar-width", lside_pane,
                                        "position", SettingsBindFlags.DEFAULT);
 
             var state = ViewPreferences.get_default ().window_state;
@@ -534,10 +536,12 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
             return;
         }
 
+        // Assume all changes of active tab pos are handled here
         loading_uri (current_container.uri);
         current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
         sidebar.sync_uri (current_container.uri);
-        save_active_tab_position ();
+        var pos = tab_view.selected_page;
+        ViewPreferences.active_tab_position = pos != null ? pos : 0;
     }
 
     public async void open_tabs (
@@ -1194,9 +1198,10 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     private void save_tabs () {
         /* Do not overwrite existing settings if history or restore-tabs is off
          * or is admin window */
+        var prefs = Files.Preferences.get_default ();
         if (
-            !Files.Preferences.get_default ().remember_history ||
-            !Files.app_settings.get_boolean ("restore-tabs") ||
+            !prefs.remember_history ||
+            !prefs.restore_tabs ||
             Files.is_admin ()
         ) {
             return;
@@ -1219,28 +1224,17 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
                    );
         }
 
-        Files.app_settings.set_value ("tab-info-list", vb.end ());
-        save_active_tab_position ();
-    }
-
-    private void save_active_tab_position () {
-        if (tab_view.selected_page == null) {
-            return;
-        }
-
-        Files.app_settings.set_int (
-            "active-tab-position",
-            tab_view.get_page_position (tab_view.selected_page)
-        );
+        prefs.save_tab_info (vb.end ()); // ("tab-info-list", vb.end ());
     }
 
     private async uint restore_tabs () {
         /* Do not restore tabs more than once or if various conditions not met */
+        var prefs = Files.Preferences.get_default ();
         if (
             tabs_restored ||
             !is_first_window ||
-            !Files.Preferences.get_default ().remember_history ||
-            !Files.app_settings.get_boolean ("restore-tabs") ||
+            !prefs.remember_history ||
+            !prefs.restore_tabs ||
             Files.is_admin ()
         ) {
             return 0;
@@ -1248,8 +1242,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
             tabs_restored = true;
         }
 
-        GLib.Variant tab_info_array = Files.app_settings.get_value ("tab-info-list");
-        GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
+        var iter = new GLib.VariantIter (prefs.get_tab_info ());
 
         ViewMode mode = ViewMode.INVALID;
         string? root_uri = null;
@@ -1297,7 +1290,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
             return 0;
         }
 
-        int active_tab_position = Files.app_settings.get_int ("active-tab-position");
+        int active_tab_position = prefs.active_tab_position;
         if (active_tab_position < 0 || active_tab_position >= restoring_tabs) {
             active_tab_position = 0;
         }
@@ -1377,7 +1370,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         view_switcher.set_mode (mode);
         view_switcher.sensitive = current_container.can_show_folder;
         get_action ("view-mode").change_state (new Variant.uint32 (mode));
-        Files.app_settings.set_enum ("default-viewmode", mode);
+        ViewPreferences.get_default ().default_viewmode = mode;
     }
 
     private void set_back_menu (Gee.List<string> path_list) {
