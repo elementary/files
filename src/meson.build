@@ -18,10 +18,10 @@ pantheon_files_exec = executable (
     'main.vala',
     'ProgressUIHandler.vala',
 
-    'Dialogs/AbstractPropertiesDialog.vala',
+    # 'Dialogs/AbstractPropertiesDialog.vala',
     # 'Dialogs/ChooseAppDialog.vala',
-    'Dialogs/PropertiesWindow.vala',
-    'Dialogs/VolumePropertiesWindow.vala',
+    # 'Dialogs/PropertiesWindow.vala',
+    # 'Dialogs/VolumePropertiesWindow.vala',
 
     # 'Dialogs/BulkRenamer/Renamer.vala',
     # 'Dialogs/BulkRenamer/RenamerModifier.vala',
