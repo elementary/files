@@ -28,12 +28,12 @@ namespace Files.View {
         public Gtk.Widget? content_item;
         public bool can_show_folder { get; private set; default = false; }
         private View.Window? _window = null;
-        public View.Window window {
+        public View.Window? window {
             get {
                 return _window;
             }
 
-            set {
+            set construct {
                 if (_window != null) {
                     disconnect_window_signals ();
                 }
@@ -41,8 +41,10 @@ namespace Files.View {
                 _window = value;
                 _window.folder_deleted.connect (on_folder_deleted);
                 _window.connect_content_signals (this);
-                _window.loading_uri (slot.location.get_uri ());
-                load_directory ();
+                if (slot != null) {
+                    _window.loading_uri (slot.location.get_uri ());
+                    load_directory ();
+                }
             }
         }
 
@@ -54,6 +56,7 @@ namespace Files.View {
                 return slot != null ? slot.location : null;
             }
         }
+
         public string uri {
             get {
                 return slot != null ? slot.uri : "";
@@ -143,6 +146,13 @@ namespace Files.View {
 
         /* Initial location now set by Window.make_tab after connecting signals.
          * Window property set when tab is attached to a tab_view (See Window.vala) */
+
+        public ViewContainer (View.Window window) {
+            Object (
+                window: window
+            );
+        }
+
         construct {
             browser = new Browser ();
             loading.connect ((loading) => {
@@ -223,7 +233,6 @@ namespace Files.View {
         // the locations in @to_select must be children of @loc
         public void add_view (ViewMode mode, GLib.File loc, GLib.File[]? to_select = null) {
             view_mode = mode;
-
             if (to_select != null) {
                 selected_locations = null;
                 foreach (GLib.File f in to_select) {
@@ -249,6 +258,8 @@ namespace Files.View {
 
             show_all ();
 
+            /* Do not update top menu (or record uri) unless folder loads successfully */
+            load_directory ();
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
              * The slot becomes active when the tab becomes current */
         }
@@ -272,9 +283,6 @@ namespace Files.View {
             /* Slot is created inactive so we activate now since we must be the current tab
              * to have received a change mode instruction */
             set_active_state (true);
-            /* Do not update top menu (or record uri) unless folder loads successfully */
-            load_directory ();
-
         }
 
         private void load_directory () {

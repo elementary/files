@@ -388,7 +388,9 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
 
         tab_view.page_attached.connect ((tab, pos) => {
             var view_container = (ViewContainer) tab.child;
-            view_container.window = this;
+            if (view_container.window != this) {
+                view_container.window = this;
+            }
         });
 
 
@@ -620,7 +622,8 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         }
 
         mode = real_mode (mode);
-        var content = new View.ViewContainer ();
+        var content = new View.ViewContainer (this);
+        connect_content_signals (content);
 
         if (!location.equal (_location)) {
             content.add_view (mode, location, {_location});
@@ -630,8 +633,6 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
 
         var page = tab_view.append (content);
         tab_view.selected_page = page;
-
-        connect_content_signals (content);
 
         return true;
     }
@@ -669,6 +670,8 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         if (restoring_tabs == 0 && !is_loading) {
             save_tabs ();
         }
+
+        warning ("on content loaded done");
     }
 
     private int location_is_duplicate (GLib.File location, bool is_folder, out bool is_child) {
@@ -893,6 +896,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     }
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
+    warning ("action view mode");
         if (tab_view == null || current_container == null) { // can occur during startup
             return;
         }
@@ -1202,6 +1206,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     }
 
     private async uint restore_tabs () {
+    warning ("restore tabs");
         /* Do not restore tabs more than once or if various conditions not met */
         var prefs = Files.Preferences.get_default ();
         if (
