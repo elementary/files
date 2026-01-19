@@ -102,7 +102,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
 
     public signal void loading_uri (string location);
     public signal void folder_deleted (GLib.File location);
-    public signal void free_space_change ();
+    // public signal void free_space_change ();
 
     public Window (Files.Application _application) {
         Object (
@@ -772,14 +772,6 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         }
     }
 
-    public void bookmark_uri (string uri, string custom_name = "") {
-        sidebar.add_favorite_uri (uri, custom_name);
-    }
-
-    public bool can_bookmark_uri (string uri) {
-        return !sidebar.has_favorite_uri (uri);
-    }
-
     private void move_content_to_new_window (ViewContainer view_container) {
         add_window (view_container.location, view_container.view_mode);
         remove_content (view_container);
@@ -876,7 +868,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
             return;
         }
 
-        var slot = current_container.prepare_reload ();
+        var slot = prepare_reload ();
         if (slot != null) {
             slot.reload (); // Initial reload request - will propagate to all alots showing same location
         }
@@ -1056,12 +1048,6 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         doing_undo_redo = false;
     }
 
-    public void change_state_show_hidden (GLib.SimpleAction action) {
-        bool state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.Preferences.get_default ().show_hidden_files = state;
-    }
-
     public void change_state_single_click_select (GLib.SimpleAction action) {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
@@ -1159,7 +1145,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         if (!is_first_window) {
             return; //TODO Save all windows
         }
-        var prefs = Files.Preferences.get_default ();
+
         var view_prefs = ViewPreferences.get_default ();
         var sidebar_width = lside_pane.get_position ();
         var min_width = view_prefs.sidebar_minimum_width;
@@ -1461,5 +1447,43 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
 
     public new void grab_focus () {
         current_container.grab_focus ();
+    }
+
+    /* SlotToplevelInterface methods */
+
+    // Methods are adapted for a multi-tab, multi-slot environment
+    public unowned AbstractSlot? get_view () {
+        return current_container.slot;
+    }  // Should return current slot
+    public  AbstractSlot? prepare_reload () {
+        return current_container.prepare_reload ();
+    } // public abstract void free_space_change ();
+    public void refresh () {
+        action_reload ();
+    } // Reloads the current slot
+    public bool can_bookmark_uri (string uri) {
+        return !sidebar.has_favorite_uri (uri);
+    }
+
+    public void bookmark_uri (string uri, string custom_name = "") {
+        sidebar.add_favorite_uri (uri, custom_name);
+    }
+
+    // public unowned ClipboardManager get_clipboard_manager () {
+    //     return marlin_app.get_clipboard_manager ();
+    // };
+    // public abstract unowned Gtk.RecentManager get_recent_manager ();
+    public void change_state_show_hidden (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+        Files.Preferences.get_default ().show_hidden_files = state;
+    }
+
+    public Gtk.Application? get_files_application () {
+        return marlin_app;
+    }
+
+    public void go_up () {
+        current_container.go_up ();
     }
 }

@@ -168,13 +168,13 @@ public class Files.Application : Gtk.Application {
         set_accels_for_action ("app.quit", { "<Ctrl>Q" });
     }
 
-    public unowned ClipboardManager get_clipboard_manager () {
-        return this.clipboard;
-    }
+    // public unowned ClipboardManager get_clipboard_manager () {
+    //     return this.clipboard;
+    // }
 
-    public unowned Gtk.RecentManager get_recent_manager () {
-        return this.recent;
-    }
+    // public unowned Gtk.RecentManager get_recent_manager () {
+    //     return this.recent;
+    // }
 
     public override int command_line (GLib.ApplicationCommandLine cmd) {
         unowned var options = cmd.get_options_dict ();
