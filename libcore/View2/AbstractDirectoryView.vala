@@ -266,13 +266,15 @@ namespace Files {
         protected Gtk.ScrolledWindow scrolled_window;
         private Gtk.Label empty_label;
         private Gtk.Overlay overlay;
-        private unowned ClipboardManager clipboard;
+        private ClipboardManager clipboard;
+        private Gtk.RecentManager recent;
+
         protected Files.ListModel model;
         protected Files.IconRenderer icon_renderer;
         protected unowned View.Slot slot; // Must be unowned else cyclic reference stops destruction
         protected static DndHandler dnd_handler = new DndHandler ();
 
-        protected unowned Gtk.RecentManager recent;
+
 
         protected Gtk.EventControllerKey key_controller;
         protected Gtk.GestureMultiPress button_controller;
