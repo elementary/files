@@ -17,7 +17,7 @@
 ***/
 
 namespace Files {
-    static bool is_admin () {
+    public static bool is_admin () {
         return Posix.getuid () == 0;
     }
 
