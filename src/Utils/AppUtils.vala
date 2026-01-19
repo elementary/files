@@ -18,9 +18,9 @@
 
 namespace Files {
 
-    static bool is_admin () {
-        return Posix.getuid () == 0;
-    }
+    // static bool is_admin () {
+    //     return Posix.getuid () == 0;
+    // }
 
     // public static Gtk.Label make_key_label (string label) {
     //     return new Gtk.Label (label) {
