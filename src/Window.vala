@@ -172,14 +172,17 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
 
         int width, height;
 
-        ViewPreferences.get_window_size ();
         var view_prefs = ViewPreferences.get_default ();
         default_width = view_prefs.window_width;
         default_height = view_prefs.window_height;
 
         if (is_first_window) {
-            view_prefs.bind ("sidebar-width", lside_pane,
-                                       "position", SettingsBindFlags.DEFAULT);
+            view_prefs.bind_property (
+                "sidebar-width",
+                lside_pane,
+                "position",
+                DEFAULT
+            );
 
             var state = ViewPreferences.get_default ().window_state;
             if (state == Files.WindowState.MAXIMIZED) {
@@ -540,8 +543,8 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         loading_uri (current_container.uri);
         current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
         sidebar.sync_uri (current_container.uri);
-        var pos = tab_view.selected_page;
-        ViewPreferences.active_tab_position = pos != null ? pos : 0;
+        var page = tab_view.selected_page;
+        Files.Preferences.get_default ().active_tab_position = page != null ? tab_view.get_page_position (page) : 0;
     }
 
     public async void open_tabs (
@@ -1147,7 +1150,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
                 break;
         }
 
-        return Files.Preferences.get_default ().default_viewmode;
+        return ViewPreferences.get_default ().default_viewmode;
     }
 
     public void quit () {
@@ -1174,7 +1177,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         var prefs = Files.Preferences.get_default ();
         var view_prefs = ViewPreferences.get_default ();
         var sidebar_width = lside_pane.get_position ();
-        var min_width = view_prefs.minimum_sidebar_width;
+        var min_width = view_prefs.sidebar_minimum_width;
 
         view_prefs.sidebar_width = int.max (sidebar_width, min_width);
 
@@ -1224,7 +1227,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
                    );
         }
 
-        prefs.save_tab_info (vb.end ()); // ("tab-info-list", vb.end ());
+        Files.Preferences.save_tab_info (vb.end ()); // ("tab-info-list", vb.end ());
     }
 
     private async uint restore_tabs () {
@@ -1242,7 +1245,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
             tabs_restored = true;
         }
 
-        var iter = new GLib.VariantIter (prefs.get_tab_info ());
+        var iter = new GLib.VariantIter (Files.Preferences.get_tab_info ());
 
         ViewMode mode = ViewMode.INVALID;
         string? root_uri = null;
