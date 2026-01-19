@@ -27,7 +27,7 @@ namespace Files.View {
         public PrivacyModeOn (SlotToplevelInterface top_level) {
             base (_("Privacy mode is on"), _("No recent files are remembered"));
 
-            if (top_level.is_application ()) {
+            if (top_level.get_files_application () != null) {
                 append ("preferences-system-privacy", _("Change security settings"),
                         _("Open the system security and privacy settings app"));
 

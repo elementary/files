@@ -245,7 +245,7 @@ namespace Files {
                                               GLib.List<GLib.File> drop_file_list,
                                               Gdk.DragAction possible_actions,
                                               Gdk.DragAction suggested_action,
-                                              Gtk.ApplicationWindow win,
+                                              Gtk.Widget toplevel,
                                               uint32 timestamp) {
 
             bool success = false;
@@ -253,7 +253,7 @@ namespace Files {
 
             if (drop_file_list != null) {
                 if ((possible_actions & Gdk.DragAction.ASK) != 0) {
-                    action = drag_drop_action_ask (dest_widget, win, possible_actions);
+                    action = drag_drop_action_ask (dest_widget, toplevel, possible_actions);
                 }
 
                 if (action != Gdk.DragAction.DEFAULT) {
