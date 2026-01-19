@@ -60,11 +60,6 @@ namespace Files {
             return false;
         }
 
-        // //TODO make redundant
-        // public override Settings? get_view_settings () {
-        //     return Files.ViewPreferences.get_default ();
-        // }
-
         public override void zoom_normal () {
             zoom_level = ViewPreferences.get_default ().column_default_zoom_level;
         }

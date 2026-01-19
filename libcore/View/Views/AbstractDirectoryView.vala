@@ -3823,23 +3823,9 @@ namespace Files {
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
         protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
         protected virtual void set_up_zoom_level () {
-            // var view_settings = get_view_settings ();
-            // if (view_settings == null) {
             minimum_zoom = ZoomLevel.SMALLEST;
             maximum_zoom = ZoomLevel.LARGEST;
             zoom_level = ZoomLevel.NORMAL;
-            // }
-            // } else {
-            //     minimum_zoom = (ZoomLevel)view_settings.get_enum ("minimum-zoom-level");
-            //     maximum_zoom = (ZoomLevel)view_settings.get_enum ("maximum-zoom-level");
-            //     zoom_level = (ZoomLevel)view_settings.get_enum ("zoom-level");
-
-            //     view_settings.bind (
-            //         "zoom-level",
-            //         this, "zoom-level",
-            //         GLib.SettingsBindFlags.SET
-            //     );
-            // }
         }
 
         protected virtual bool view_has_focus () {

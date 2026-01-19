@@ -201,9 +201,6 @@ namespace Files {
             return tree as Gtk.Widget;
         }
 
-        // public override Settings? get_view_settings () {
-        //     return Files.ViewPreferences.get_default ();
-        // }
         public override void zoom_normal () {
             zoom_level = ViewPreferences.get_default ().list_default_zoom_level;
         }

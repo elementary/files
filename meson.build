@@ -82,23 +82,6 @@ add_project_arguments(
     language: 'vala'
 )
 
-
-#Configuration file
-
-
-
-
-# config_file = configure_file(
-#     input: 'config.h.in',
-#     output: 'config.h',
-#     configuration: config_data
-# )
-
-# project_config_dep = declare_dependency(
-#     sources: config_file,
-#     include_directories: include_directories('.', './libcore')
-# )
-
 gnome = import('gnome')
 
 subdir('libcore')

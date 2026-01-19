@@ -87,11 +87,6 @@
       <summary>Categorie Network expander</summary>
       <description>Expand/Collapse categorie Network</description>
     </key>
-    <!--<key name="window-size" type="(ii)">-->
-    <!-- <default>(1000, 680)</default>-->
-    <!-- <summary>Most recent window size</summary>-->
-    <!-- <description>Most recent window size (width, height)</description>-->
-    <!--</key>-->
     <key name="window-width" type="i">
      <default>1000</default>
      <summary>Most recent window width</summary>
