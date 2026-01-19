@@ -257,9 +257,6 @@ namespace Files.View {
             view.directory_loaded.connect (on_slot_directory_loaded);
 
             show_all ();
-
-            /* Do not update top menu (or record uri) unless folder loads successfully */
-            load_directory ();
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
              * The slot becomes active when the tab becomes current */
         }
@@ -285,7 +282,7 @@ namespace Files.View {
             set_active_state (true);
         }
 
-        private void load_directory () {
+        public void load_directory () {
             directory_is_loading (slot.location);
             slot.initialize_directory ();
         }

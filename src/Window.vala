@@ -634,6 +634,9 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         var page = tab_view.append (content);
         tab_view.selected_page = page;
 
+        // Wait until attached to tab view before loading else terminal errors
+        content.load_directory ();
+
         return true;
     }
 
@@ -670,8 +673,6 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         if (restoring_tabs == 0 && !is_loading) {
             save_tabs ();
         }
-
-        warning ("on content loaded done");
     }
 
     private int location_is_duplicate (GLib.File location, bool is_folder, out bool is_child) {
@@ -896,7 +897,6 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     }
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
-    warning ("action view mode");
         if (tab_view == null || current_container == null) { // can occur during startup
             return;
         }
@@ -1206,7 +1206,6 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     }
 
     private async uint restore_tabs () {
-    warning ("restore tabs");
         /* Do not restore tabs more than once or if various conditions not met */
         var prefs = Files.Preferences.get_default ();
         if (
