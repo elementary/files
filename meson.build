@@ -101,7 +101,7 @@ config_file = configure_file(
 
 project_config_dep = declare_dependency(
     sources: config_file,
-    include_directories: include_directories('.')
+    include_directories: include_directories('.', './libcore')
 )
 
 gnome = import('gnome')
