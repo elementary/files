@@ -78,7 +78,7 @@ namespace Files {
             view_prefs.bind_property (
                 "column-zoom-level",
                 this, "zoom-level",
-                BindingFlags.DEFAULT
+                BIDIRECTIONAL | SYNC_CREATE
             );
         }
 

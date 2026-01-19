@@ -104,18 +104,18 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
 
         var view_prefs = Files.ViewPreferences.get_default ();
         view_prefs.bind_property (
-            "sidebar-cat-personal-expander", bookmark_expander, "active", DEFAULT
+            "sidebar-cat-personal-expander", bookmark_expander, "active", BIDIRECTIONAL | SYNC_CREATE
         );
         view_prefs.bind_property (
-            "sidebar-cat-devices-expander", device_expander, "active", DEFAULT
+            "sidebar-cat-devices-expander", device_expander, "active", BIDIRECTIONAL | SYNC_CREATE
         );
         view_prefs.bind_property (
-            "sidebar-cat-network-expander", network_expander, "active", DEFAULT
+            "sidebar-cat-network-expander", network_expander, "active", BIDIRECTIONAL | SYNC_CREATE
         );
 
-        bookmark_expander.bind_property ("active", bookmark_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
-        device_expander.bind_property ("active", device_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
-        network_expander.bind_property ("active", network_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
+        bookmark_expander.bind_property ("active", bookmark_revealer, "reveal-child", DEFAULT);
+        device_expander.bind_property ("active", device_revealer, "reveal-child", DEFAULT);
+        network_expander.bind_property ("active", network_revealer, "reveal-child", DEFAULT);
     }
 
     private void refresh (bool bookmarks = true, bool devices = true, bool network = true) {

@@ -181,7 +181,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
                 "sidebar-width",
                 lside_pane,
                 "position",
-                DEFAULT
+                BIDIRECTIONAL | SYNC_CREATE
             );
 
             var state = ViewPreferences.get_default ().window_state;

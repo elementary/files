@@ -217,7 +217,7 @@ namespace Files {
             view_prefs.bind_property (
                 "list-zoom-level",
                 this, "zoom-level",
-                DEFAULT
+                BIDIRECTIONAL | SYNC_CREATE
             );
         }
 
