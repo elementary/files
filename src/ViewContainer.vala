@@ -232,9 +232,9 @@ namespace Files.View {
             }
 
             if (mode == ViewMode.MILLER_COLUMNS) {
-                this.view = new Miller (loc, this);
+                this.view = new Miller (loc, this.window);
             } else {
-                this.view = new Slot (loc, this, mode);
+                this.view = new Slot (loc, this.window, mode);
             }
 
             overlay_statusbar = new View.OverlayBar (view.overlay) {
@@ -368,10 +368,10 @@ namespace Files.View {
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
                 if (dir.is_recent && !Files.Preferences.get_default ().remember_history) {
-                    content = new View.PrivacyModeOn (this);
+                    content = new View.PrivacyModeOn (this.window);
                 } else if (!dir.file.exists) {
                     if (!dir.is_trash) {
-                        content = new DirectoryNotFound (slot.directory, this);
+                        content = new DirectoryNotFound (slot.directory, this.window);
                     } else {
                         content = new Welcome (
                             _("This Folder Does Not Exist"),

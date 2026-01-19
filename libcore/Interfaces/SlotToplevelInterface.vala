@@ -35,5 +35,6 @@ public interface Files.SlotToplevelInterface : Gtk.Window {
     public abstract void change_state_show_hidden (SimpleAction action);
     public abstract void bookmark_uri (string uri);
     public abstract Gtk.Application? get_files_application ();
+    public abstract void go_up ();
 
 }

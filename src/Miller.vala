@@ -18,7 +18,7 @@
 
 namespace Files.View {
     public class Miller : Files.AbstractSlot {
-        public unowned View.ViewContainer ctab { get; construct; }
+        public unowned SlotToplevelInterface top_level { get; construct; }
 
         /* Need private copy of initial location as Miller
          * does not have its own Asyncdirectory object */
@@ -54,11 +54,11 @@ namespace Files.View {
             }
         }
 
-        public Miller (GLib.File loc, View.ViewContainer _ctab) {
+        public Miller (GLib.File loc, SlotToplevelInterface top_level) {
             Object (
                 location: loc,
                 root_location: loc,
-                ctab: _ctab
+                top_level: top_level
             );
         }
 
@@ -104,7 +104,7 @@ namespace Files.View {
 
         /** Creates a new slot in the host slot hpane */
         public void add_location (GLib.File loc, View.Slot? host = null) {
-            var guest = new View.Slot (loc, ctab, ViewMode.MILLER_COLUMNS);
+            var guest = new View.Slot (loc, top_level, ViewMode.MILLER_COLUMNS);
             /* Notify view container of path change - will set tab to working and change pathbar */
             path_changed ();
             guest.slot_number = (host != null) ? host.slot_number + 1 : 0;
@@ -449,7 +449,7 @@ namespace Files.View {
                         if (current_position > 0) {
                             truncate_list_after_slot (slot_list.nth_data (current_position - 1));
                         } else {
-                            ctab.go_up ();
+                            top_level.go_up ();
                             return true;
                         }
 
