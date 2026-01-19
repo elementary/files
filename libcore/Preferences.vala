@@ -74,7 +74,7 @@ namespace Files {
 
         //returns variant of type "a(ss)"
         public static Variant get_tab_info () {
-            return app_settings.get_value ("tab-info-list");
+            return Files.Preferences.app_settings.get_value ("tab-info-list");
         }
     }
 }

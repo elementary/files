@@ -20,35 +20,35 @@ namespace Files {
 
     public class ViewPreferences : Object {
         /* IconView Preferences */
-            public ZoomLevel icon_default_zoom_level;
-            public ZoomLevel icon_maximum_zoom_level;
-            public ZoomLevel icon_minimum_zoom_level;
-            public ZoomLevel icon_zoom_level;
+            public ZoomLevel icon_default_zoom_level { get; set; }
+            public ZoomLevel icon_maximum_zoom_level { get; set; }
+            public ZoomLevel icon_minimum_zoom_level { get; set; }
+            public ZoomLevel icon_zoom_level { get; set; }
         /* ListView Preferences */
-            public ZoomLevel list_default_zoom_level;
-            public ZoomLevel list_maximum_zoom_level;
-            public ZoomLevel list_minimum_zoom_level;
-            public ZoomLevel list_zoom_level;
+            public ZoomLevel list_default_zoom_level { get; set; }
+            public ZoomLevel list_maximum_zoom_level { get; set; }
+            public ZoomLevel list_minimum_zoom_level { get; set; }
+            public ZoomLevel list_zoom_level { get; set; }
         /* ColumnView Preferences */
-            public ZoomLevel column_default_zoom_level;
-            public ZoomLevel column_maximum_zoom_level;
-            public ZoomLevel column_minimum_zoom_level;
-            public ZoomLevel column_zoom_level;
+            public ZoomLevel column_default_zoom_level { get; set; }
+            public ZoomLevel column_maximum_zoom_level { get; set; }
+            public ZoomLevel column_minimum_zoom_level { get; set; }
+            public ZoomLevel column_zoom_level { get; set; }
 
-            public int preferred_column_width;
+            public int preferred_column_width { get; set; }
 
         /* Sidebar preferences */
-            public bool sidebar_cat_devices_expander;
-            public bool sidebar_cat_network_expander;
-            public bool sidebar_cat_personal_expander;
-            public int sidebar_width;
-            public int sidebar_minimum_width;
+            public bool sidebar_cat_devices_expander { get; set; }
+            public bool sidebar_cat_network_expander { get; set; }
+            public bool sidebar_cat_personal_expander { get; set; }
+            public int sidebar_width { get; set; }
+            public int sidebar_minimum_width { get; set; }
 
         /*Window preferences */
-            public WindowState window_state;
-            public ViewMode default_viewmode;
-            public int window_width;
-            public int window_height;
+            public WindowState window_state { get; set; }
+            public ViewMode default_viewmode { get; set; }
+            public int window_width { get; set; }
+            public int window_height { get; set; }
 
         public static ViewPreferences get_default () {
             if (view_preferences == null) {
@@ -85,7 +85,7 @@ namespace Files {
                 column_settings.bind ("maximum-zoom-level", view_prefs, "column-maximum-zoom-level", DEFAULT);
                 column_settings.bind ("zoom-level", view_prefs, "column-zoom-level", DEFAULT);
                 //TODO Separate preferred-col-width for list view
-                column_settings.bind ("preferred_column_width", view_prefs, "preferred_column_width", DEFAULT);
+                column_settings.bind ("preferred-column-width", view_prefs, "preferred-column-width", DEFAULT);
             }
 
             if (app_settings != null) {
@@ -111,7 +111,7 @@ namespace Files {
 
             normal = ZoomLevel.NORMAL;
             minimum = ZoomLevel.SMALLEST;
-            minimum = ZoomLevel.LARGEST;
+            maximum = ZoomLevel.LARGEST;
             current = ZoomLevel.NORMAL;
 
             var view_prefs = ViewPreferences.get_default ();

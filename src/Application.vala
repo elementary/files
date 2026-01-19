@@ -168,14 +168,6 @@ public class Files.Application : Gtk.Application {
         set_accels_for_action ("app.quit", { "<Ctrl>Q" });
     }
 
-    // public unowned ClipboardManager get_clipboard_manager () {
-    //     return this.clipboard;
-    // }
-
-    // public unowned Gtk.RecentManager get_recent_manager () {
-    //     return this.recent;
-    // }
-
     public override int command_line (GLib.ApplicationCommandLine cmd) {
         unowned var options = cmd.get_options_dict ();
 
@@ -264,6 +256,7 @@ public class Files.Application : Gtk.Application {
 
         /* Bind settings with GOFPreferences */
         var prefs = Files.Preferences.get_default ();
+        Files.Preferences.set_up_preferences (app_settings);
 
         gnome_interface_settings.bind ("clock-format",
                                        Files.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
