@@ -4,7 +4,7 @@
  */
 
 [DBus (name = "org.freedesktop.impl.portal.Request")]
-public interface Xdp.Request : Object {
+public interface Xdp.Request2 : Object {
     public abstract void close () throws DBusError, IOError;
 }
 
@@ -13,7 +13,7 @@ public interface Xdp.Request : Object {
  * Results keys:
  * OPEN: "writable" - as indicated by a "Read Only" checkbox. It is up to the user to honor this
  */
-public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
+public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
     public string? parent_window { get; construct; }
     public View.FileChooserWidget file_view { get; construct; }
 
@@ -45,7 +45,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
 
             _filter = value;
             filter_combo.set_active_id (value != null ? value.get_filter_name () : null);
-            file_view.filter = _filter;
+            // file_view.filter = _filter; //TODO Implement filter in view
         }
     }
 
@@ -360,7 +360,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request {
     public bool register_object (DBusConnection connection, ObjectPath handle) {
         dbus_connection = connection;
         try {
-            register_id = connection.register_object<Xdp.Request> (handle, this);
+            register_id = connection.register_object<Xdp.Request2> (handle, this);
         } catch (Error e) {
             critical (e.message);
             return false;

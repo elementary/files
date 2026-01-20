@@ -22,7 +22,7 @@
 /* Classes using this interface are BasicAbstractDirectoryView and AbstractDirectoryView
 */
 
-public interface Files.SlotToplevelInterface : Gtk.Window {
+public interface Files.SlotToplevelInterface : Gtk.Widget {
     public signal void free_space_change ();
 
     public virtual void folder_deleted (GLib.File file) {}
@@ -34,8 +34,9 @@ public interface Files.SlotToplevelInterface : Gtk.Window {
     public abstract void change_state_show_hidden (SimpleAction action);
     public abstract void bookmark_uri (string uri, string custom_name = "");
     public abstract Gtk.Application? get_files_application ();
+    public abstract Gtk.Window? get_gtk_window ();
     public abstract void go_up ();
     public abstract void files_activated (OpenFlag flag, List<Files.File> selected_files);
-    public abstract void path_change_request (string uri);
+    public abstract void uri_path_change_request (string uri, Files.OpenFlag flag = DEFAULT);
 
 }

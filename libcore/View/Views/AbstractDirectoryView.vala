@@ -911,7 +911,7 @@ namespace Files {
                 slot.directory.block_monitor ();
                 FileOperations.@delete.begin (
                     locations,
-                    slot.top_level,
+                    slot.top_level.get_gtk_window (),
                     !delete_immediately,
                     null,
                     (obj, res) => {
@@ -991,7 +991,8 @@ namespace Files {
             );
         }
 
-        private void new_empty_folder () {
+        // Called directly from FileChooserDialog
+        public void new_empty_folder () {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
             FileOperations.new_folder.begin (this, slot.location, null, (obj, res) => {
@@ -1126,7 +1127,7 @@ namespace Files {
 
             if (selected_files.next != null) {
                 var rename_dialog = new Files.RenamerDialog (selected_files) {
-                    transient_for = slot.top_level
+                    transient_for = slot.top_level.get_gtk_window ()
                 };
                 rename_dialog.present ();
             } else {
@@ -1149,7 +1150,7 @@ namespace Files {
 
         private void on_selection_action_restore (GLib.SimpleAction action, GLib.Variant? param) {
             GLib.List<Files.File> selection = get_selected_files_for_transfer ();
-            FileUtils.restore_files_from_trash.begin (selection, slot.top_level);
+            FileUtils.restore_files_from_trash.begin (selection, slot.top_level.get_gtk_window ());
         }
 
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1158,7 +1159,7 @@ namespace Files {
             try {
                 file.execute (null);
             } catch (Error e) {
-                PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, slot.top_level);
+                PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, slot.top_level.get_gtk_window ());
             }
         }
 
@@ -1600,7 +1601,7 @@ namespace Files {
                     dnd_handler.set_source_uri (context.get_source_window (), uri);
                 } else {
                     PF.Dialogs.show_error_dialog (_("Cannot drop this file"),
-                                                  _("Invalid file name provided"), slot.top_level);
+                                                  _("Invalid file name provided"), slot.top_level.get_gtk_window ());
 
                     return false;
                 }
@@ -1666,7 +1667,7 @@ namespace Files {
                             destination_drop_file_list,
                             current_actions,
                             current_suggested_action,
-                            slot.top_level,
+                            slot.top_level.get_gtk_window (),
                             timestamp
                         );
 
@@ -2600,7 +2601,7 @@ namespace Files {
 
             while (l != null) {
                 if (l.data is AppInfo) {
-                    if (app_is_this_app (l.data)) {
+                    if (FileUtils.app_is_this_app (l.data)) {
                         open_with_apps.delete_link (l);
                         break;
                     }
@@ -2614,12 +2615,6 @@ namespace Files {
 
                 l = l.next;
             }
-        }
-
-        private bool app_is_this_app (AppInfo ai) {
-            string exec_name = ai.get_executable ();
-
-            return (exec_name == Config.APP_NAME);
         }
 
         private void filter_default_app_from_open_with_apps () {
@@ -2941,7 +2936,7 @@ namespace Files {
                     if (!is_writable) {
                         PF.Dialogs.show_warning_dialog (_("Cannot remove files from here"),
                                                         _("You do not have permission to change this location"),
-                                                        slot.top_level);
+                                                        slot.top_level.get_gtk_window ());
                     } else if (!renaming) {
                         trash_or_delete_selected_files (in_trash || slot.top_level.is_admin () || only_shift_pressed);
                         res = true;
@@ -3088,7 +3083,7 @@ namespace Files {
                             if (in_trash) {
                                 PF.Dialogs.show_warning_dialog (_("Cannot copy files that are in the trash"),
                                                                 _("Cutting the selection instead"),
-                                                                slot.top_level);
+                                                                slot.top_level.get_gtk_window ());
 
                                 selection_actions.activate_action ("cut", null);
                             } else {
@@ -3119,7 +3114,7 @@ namespace Files {
                             } else {
                                 PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
                                                                 _("You do not have permission to change this location"),
-                                                                slot.top_level);
+                                                                slot.top_level.get_gtk_window ());
                             }
 
                             res = true;
@@ -3130,7 +3125,7 @@ namespace Files {
                             } else {
                                 PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
                                                                 _("You do not have permission to change this location"),
-                                                                slot.top_level);
+                                                                slot.top_level.get_gtk_window ());
                             }
 
                             res = true;
@@ -3147,7 +3142,7 @@ namespace Files {
                         } else {
                             PF.Dialogs.show_warning_dialog (_("Cannot remove files from here"),
                                                             _("You do not have permission to change this location"),
-                                                            slot.top_level);
+                                                            slot.top_level.get_gtk_window ());
                         }
 
                         res = true;
@@ -3953,6 +3948,9 @@ namespace Files {
         protected new abstract void thaw_child_notify ();
         protected abstract void connect_tree_signals ();
         protected abstract void disconnect_tree_signals ();
+
+        public abstract Gtk.SelectionMode get_selection_mode ();
+        public abstract void set_selection_mode (Gtk.SelectionMode selection_mode);
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear

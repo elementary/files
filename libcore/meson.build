@@ -73,6 +73,7 @@ pantheon_files_core_vala_files = files(
     'ViewUtils.vala',
     'ZeitgeistManager.vala',
 
+    'FileChooser/ExternalWindow.vala',
     'FileChooser/FileChooserDialog.vala',
     'FileChooser/FileChooserChoice.vala',
     'FileChooser/FileChooserWidget.vala',

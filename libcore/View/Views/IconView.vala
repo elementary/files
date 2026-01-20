@@ -511,4 +511,12 @@ public class Files.IconView : Files.AbstractDirectoryView {
         }
         return index;
     }
+
+    public override void set_selection_mode (Gtk.SelectionMode selection_mode) {
+        tree.selection_mode = selection_mode;
+    }
+
+    public override Gtk.SelectionMode get_selection_mode () {
+        return tree.selection_mode;
+    }
 }

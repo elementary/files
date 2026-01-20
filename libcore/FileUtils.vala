@@ -1223,13 +1223,13 @@ namespace Files.FileUtils {
     /* Open all files through this */
     public void open_file (Files.File file, Gdk.Screen? screen, GLib.AppInfo? app_info, Files.View.Slot slot) {
         if (can_open_file (file, slot, true)) {
-            MimeActions.open_glib_file_request.begin (file.location, slot.top_level, app_info);
+            MimeActions.open_glib_file_request.begin (file.location, slot.top_level.get_gtk_window (), app_info);
         }
     }
 
     // Moved from AbstractDirectoryView
     public void open_files_with (GLib.AppInfo app, GLib.List<Files.File> files, Files.View.Slot slot) {
-        MimeActions.open_multiple_gof_files_request (files, slot.top_level, app);
+        MimeActions.open_multiple_gof_files_request (files, slot.top_level.get_gtk_window (), app);
     }
 
     // Moved from AbstractDirectoryView
@@ -1258,10 +1258,16 @@ namespace Files.FileUtils {
 
         bool success = err_msg2.length < 1;
         if (!success && show_error_dialog) {
-            PF.Dialogs.show_warning_dialog (err_msg1, err_msg2, slot.top_level);
+            PF.Dialogs.show_warning_dialog (err_msg1, err_msg2, slot.top_level.get_gtk_window ());
         }
 
         return success;
+    }
+
+    public bool app_is_this_app (AppInfo ai) {
+        string exec_name = ai.get_executable ();
+
+        return (exec_name == Config.APP_NAME);
     }
 }
 

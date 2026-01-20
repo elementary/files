@@ -335,6 +335,14 @@ namespace Files {
             }
 
         }
+
+        public override void set_selection_mode (Gtk.SelectionMode selection_mode) {
+            tree.get_selection ().mode = selection_mode;
+        }
+
+        public override Gtk.SelectionMode get_selection_mode () {
+            return tree.get_selection ().mode;
+        }
     }
 
     protected class TreeView : Gtk.TreeView {

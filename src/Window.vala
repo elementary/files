@@ -1412,7 +1412,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         }
     }
 
-    public void uri_path_change_request (string p, Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
+    public void uri_path_change_request (string p, Files.OpenFlag flag = DEFAULT) {
         /* Make a sanitized file from the uri */
         var file = get_file_from_uri (p);
         if (file != null) {
@@ -1485,15 +1485,20 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         return marlin_app;
     }
 
+    public Gtk.Window? get_gtk_window () {
+        return (Gtk.Window) this;
+    }
+
     public void go_up () {
         current_container.go_up ();
     }
 
     /* Handle activated files - either change path, open in new container or open in app */
 
-    public void files_activated (OpenFlag flag, List<Files.File> selected_files) {
+    public void files_activated (OpenFlag flag, List<Files.File> selection) {
         // We can assume that this is called by the current slot
-        var in_trash = current_container.slot.directory.is_trash;
+        var slot = (Slot) current_container.slot;
+        var in_trash = slot.directory.is_trash;
 
         // Code moved over from AbstractDirectoryView
         unowned Gdk.Screen screen = get_screen ();
@@ -1503,12 +1508,13 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
             return;
         }
 
+        var default_app = MimeActions.get_default_application_for_file (selection.first ().data);
         if (!in_trash) {
             /* launch each selected file individually ignoring selections greater than 10
              * Do not launch with new instances of this app - open according to flag instead
              */
             if (selection.nth_data (11) == null && // Less than 10 items
-               (default_app == null || app_is_this_app (default_app))) {
+               (default_app == null || FileUtils.app_is_this_app (default_app))) {
 
                 foreach (Files.File file in selection) {
                     /* Prevent too rapid activation of files - causes New Tab to crash for example */
@@ -1524,7 +1530,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
                         });
                     } else {
                         GLib.Idle.add (() => {
-                            open_file (file, screen, null);
+                            FileUtils.open_file (file, screen, null, slot);
                             return GLib.Source.REMOVE;
                         });
                     }
@@ -1533,7 +1539,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
                 /* Because this is in another thread we need to copy the selection to ensure it remains valid */
                 var files_to_open = selection.copy_deep ((GLib.CopyFunc)(GLib.Object.ref));
                 GLib.Idle.add (() => {
-                    open_files_with (default_app, files_to_open);
+                    FileUtils.open_files_with (default_app, files_to_open, slot);
                     return GLib.Source.REMOVE;
                 });
             }
@@ -1545,12 +1551,15 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     // Moved from AbstractDirectoryView
     private void activate_file (Files.File _file, Gdk.Screen? screen, Files.OpenFlag flag, bool only_one_file) {
 
+        var in_trash = current_container.slot.directory.is_trash;
+        var in_recent = current_container.slot.directory.is_recent;
+        var slot = (Slot) current_container.slot;
+
         Files.File file = _file;
         if (in_recent) {
             file = Files.File.get_by_uri (file.get_display_target_uri ());
         }
 
-        default_app = MimeActions.get_default_application_for_file (file);
         GLib.File location = file.get_target_location ();
 
         if (screen == null) {
@@ -1561,35 +1570,38 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
             file.get_ftype () == "inode/directory" ||
             file.is_root_network_folder ())) {
 
-            switch (flag) {
-                case Files.OpenFlag.NEW_TAB:
-                case Files.OpenFlag.NEW_WINDOW:
-                    path_change_request (location, flag, true);
-                    break;
+            current_container.open_location (location, flag);
 
-                default:
-                    if (only_one_file) {
-                        load_location (location);
-                    }
+            // switch (flag) {
+            //     case Files.OpenFlag.NEW_TAB:
+            //     case Files.OpenFlag.NEW_WINDOW:
+            //         uri_path_change_request (location, flag);
+            //         break;
 
-                    break;
-            }
+            //     default:
+            //         if (only_one_file) {
+            //             load_location (location);
+            //         }
+
+            //         break;
+            // }
         } else if (!in_trash) {
             if (only_one_file) {
+                var default_app = MimeActions.get_default_application_for_file (file);
                 if (file.is_executable ()) {
                     var content_type = file.get_ftype ();
 
                     if (GLib.ContentType.is_a (content_type, "text/plain")) {
-                        open_file (file, screen, default_app);
+                        FileUtils.open_file (file, screen, default_app, slot);
                     } else {
                         try {
                             file.execute (null);
                         } catch (Error e) {
-                            PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, slot.top_level);
+                            PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, slot.top_level.get_gtk_window ());
                         }
                     }
                 } else {
-                    open_file (file, screen, default_app);
+                    FileUtils.open_file (file, screen, default_app, slot);
                 }
             }
         } else {
@@ -1597,7 +1609,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
                 ///TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
                 _("“%s” must be moved from Trash before opening").printf (file.basename),
                 _("Files inside Trash cannot be opened. To open this file, it must be moved elsewhere."),
-                slot.top_level
+                slot.top_level.get_gtk_window ()
             );
         }
     }

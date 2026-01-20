@@ -301,7 +301,8 @@ namespace Files.View {
             refresh_slot_info (slot.location);
         }
 
-        private void open_location (
+        // Accessed directly by Window
+        public void open_location (
             GLib.File loc,
             Files.OpenFlag flag = Files.OpenFlag.NEW_ROOT
         ) requires (window != null) {

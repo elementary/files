@@ -32,7 +32,6 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
     public string title { get; private set; default = "";}
     public bool can_select_zero { get; set; default = true; }
 
-
     public GLib.File default_location {
         owned get {
             return GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
@@ -60,16 +59,17 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
         }
     }
 
-    public Gtk.FileFilter? filter {
-        get {
-            return slot != null ? slot.dir_view.filter : null;
-        }
+    // TODO Implement filter model
+    // public Gtk.FileFilter? filter {
+    //     get {
+    //         return slot != null ? slot.dir_view.filter : null;
+    //     }
 
-        set {
-            assert (slot != null);
-            slot.dir_view.filter = value;
-        }
-    }
+    //     set {
+    //         assert (slot != null);
+    //         slot.dir_view.filter = value;
+    //     }
+    // }
 
     public List<Files.File> selected_files {
         get {
@@ -98,8 +98,8 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
     }
     private bool locked_focus { get; set; default = false; }
 
-    public signal void folder_deleted (GLib.File location);
-    public signal void free_space_change ();
+    // public signal void folder_deleted (GLib.File location);
+    // public signal void free_space_change ();
     public signal void file_activated (bool only_one);
     public signal void selection_changed ();
 
@@ -107,13 +107,13 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
         browser = new Browser ();
         //We create and connect headerbar but leave to the parent where to put it.
         headerbar = new HeaderBar ();
-        headerbar.path_change_request.connect (path_change);
+        headerbar.path_change_request.connect (uri_path_change_request);
         headerbar.change_view_mode.connect (on_change_view_mode_request);
 
         headerbar.go_back.connect ((steps) => {
             string? uri = browser.go_back (steps);
             if (uri != null) {
-                path_change (uri);
+                uri_path_change_request (uri);
             } else {
                 warning ("Null path");
             }
@@ -121,7 +121,7 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
         headerbar.go_forward.connect ((steps) => {
             string? uri = browser.go_forward (steps);
             if (uri != null) {
-                path_change (uri);
+                uri_path_change_request (uri);
             }
         });
 
@@ -131,8 +131,8 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
             expand = true,
         };
 
-        sidebar = new Sidebar.BasicSidebarWindow ();
-        sidebar.path_change_request.connect (path_change);
+        sidebar = new Sidebar.SidebarWindow ();
+        sidebar.path_change_request.connect (uri_path_change_request);
 
         lside_pane.pack1 (sidebar, false, false);
         lside_pane.pack2 (slot_container, false, false);
@@ -219,7 +219,7 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
                 }
             }
 
-            path_change (location.get_uri ());
+            path_change (location);
             return true;
     }
 
@@ -227,12 +227,12 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
      * If folder shows that with nothing selected
      * If file shows parent folder with the file selected
      */
-    public void path_change (string uri) {
-        slot.user_path_change_request (uri);
+    public void path_change (GLib.File location) {
+        slot.user_path_change_request (location);
     }
 
     public void set_selected_location (GLib.File loc) {
-        path_change (loc.get_uri ());
+        path_change (loc);
     }
 
     private void on_directory_loaded () {
@@ -335,6 +335,11 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
         return null;
     }
 
+    public Gtk.Window? get_gtk_window () {
+        var top_level = get_toplevel ();
+        return (top_level is Gtk.Window) ? ((Gtk.Window) top_level) : null;
+    }
+
     // Copied from ViewContainer with minor adjustments
     public void go_up () {
         var parent = slot.location;
@@ -351,8 +356,8 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
         }
     }
 
-    public void path_change_request (string uri) {
-        path_change (uri);
+    public void uri_path_change_request (string uri, Files.OpenFlag flag = DEFAULT) {
+        path_change (GLib.File.new_for_commandline_arg (uri));
     }
 
     public void files_activated (OpenFlag flag, List<Files.File> selected_files) {
@@ -362,7 +367,7 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
             var file = selected_files.first ().data;
             var only_one = (selected_files.first ().next) == null;
             if (only_one && file.is_folder ()) {
-                path_change (file.uri); //Handle navigation here
+                path_change (file.location); //Handle navigation here
             } else {
                 file_activated (only_one); // Pass on to parent (filechooser)
             }
