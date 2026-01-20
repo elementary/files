@@ -413,24 +413,30 @@ namespace Files.FileUtils {
             new_path = new_path.slice (Files.ROOT_FS_URI.length, new_path.length);
         }
 
-        if (scheme.has_prefix ("afc")) {
-            var colon_parts = new_path.split (":", 3);
+        return new_path;
+    }
+
+    // Removes the unwanted `:3` from some Apple device root addresses without full sanitizing
+    // Used only when creating a mount row in the sidebar in order to provide access to all folders
+    public string fix_afc_uri (string uri) {
+        if (Uri.parse_scheme (uri).has_prefix ("afc")) {
+            var colon_parts = uri.split (":", 3);
             if (colon_parts.length > 2) {
                 /* It may be enough to only process device addresses but we deal with all afc uris in case.
                  * We have to assume the true device name does not contain any colons */
                 var separator_parts = colon_parts[2].split (Path.DIR_SEPARATOR_S, 2);
                 var device_name_end = separator_parts[0];
                 if (uint64.try_parse (device_name_end)) {
-                    /* Device ends in e.g. `:3`. Need to strip this suffix to successfully browse */
-                    new_path = string.join (":", colon_parts[0], colon_parts[1]);
-                    if (separator_parts.length > 1) {
-                        new_path = string.join (Path.DIR_SEPARATOR_S, new_path, separator_parts[1]);
+                    /* Device ends in e.g. `:3`. Need to strip this suffix to browse all folders */
+                    if (separator_parts.length == 1 || separator_parts[1].strip () == "") {
+                        return string.join (":", colon_parts[0], colon_parts[1]);
                     }
+
                 }
             }
         }
 
-        return new_path;
+        return uri;
     }
 
     /** Splits the path into a protocol ending in '://"  and a path beginning "/". **/
