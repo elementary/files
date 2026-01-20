@@ -73,6 +73,9 @@ pantheon_files_core_vala_files = files(
     'ViewUtils.vala',
     'ZeitgeistManager.vala',
 
+    'FileChooser/FileChooserDialog.vala',
+    'FileChooser/FileChooserChoice.vala',
+    'FileChooser/FileChooserWidget.vala',
     'FileOperations/CommonJob.vala',
     'FileOperations/CopyMoveJob.vala',
     'FileOperations/CreateJob.vala',
@@ -107,6 +110,7 @@ pantheon_files_core_vala_files = files(
     'View/HeaderBar/BreadcrumbElement.vala',
     'View/HeaderBar/BreadcrumbIconList.vala',
     'View/HeaderBar/ButtonWithMenu.vala',
+    'View/HeaderBar/HeaderBar.vala',
     'View/HeaderBar/ViewSwitcher.vala',
     'View/HeaderBar/Browser.vala',
     'View/HeaderBar/BreadcrumbsEntry.vala',

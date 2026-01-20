@@ -1217,6 +1217,52 @@ namespace Files.FileUtils {
 
         return (prefix + basename);
     }
+
+
+    // Moved from AbstractDirectoryView
+    /* Open all files through this */
+    public void open_file (Files.File file, Gdk.Screen? screen, GLib.AppInfo? app_info, Files.View.Slot slot) {
+        if (can_open_file (file, slot, true)) {
+            MimeActions.open_glib_file_request.begin (file.location, slot.top_level, app_info);
+        }
+    }
+
+    // Moved from AbstractDirectoryView
+    public void open_files_with (GLib.AppInfo app, GLib.List<Files.File> files, Files.View.Slot slot) {
+        MimeActions.open_multiple_gof_files_request (files, slot.top_level, app);
+    }
+
+    // Moved from AbstractDirectoryView
+    public bool can_open_file (Files.File file, Files.View.Slot slot, bool show_error_dialog = false) {
+        string err_msg1 = _("Cannot open this file");
+        string err_msg2 = "";
+        var content_type = file.get_ftype ();
+
+        if (content_type == null) {
+            bool result_uncertain = true;
+            content_type = ContentType.guess (file.basename, null, out result_uncertain);
+            debug ("Guessed content type to be %s from name - result_uncertain %s",
+                      content_type,
+                      result_uncertain.to_string ());
+        }
+
+        if (content_type == null) {
+            err_msg2 = _("Cannot identify file type to open");
+        } else if (!slot.directory.can_open_files) {
+            err_msg2 = "Cannot open files with this protocol (%s)".printf (slot.directory.scheme);
+        } else if (!slot.directory.can_stream_files &&
+                   (content_type.contains ("video") || content_type.contains ("audio"))) {
+
+            err_msg2 = "Cannot stream from this protocol (%s)".printf (slot.directory.scheme);
+        }
+
+        bool success = err_msg2.length < 1;
+        if (!success && show_error_dialog) {
+            PF.Dialogs.show_warning_dialog (err_msg1, err_msg2, slot.top_level);
+        }
+
+        return success;
+    }
 }
 
 namespace Files {

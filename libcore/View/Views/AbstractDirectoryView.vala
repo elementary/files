@@ -273,15 +273,12 @@ namespace Files {
         protected Files.IconRenderer icon_renderer;
         protected unowned View.Slot slot; // Must be unowned else cyclic reference stops destruction
         protected static DndHandler dnd_handler = new DndHandler ();
-
-
-
         protected Gtk.EventControllerKey key_controller;
         protected Gtk.GestureMultiPress button_controller;
         protected Gtk.EventControllerScroll scroll_controller;
         protected Gtk.EventControllerMotion motion_controller;
 
-        public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
+        // public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
         //TODO Rewrite in Object (), construct {} style
@@ -593,11 +590,11 @@ namespace Files {
         }
 
         protected void load_location (GLib.File location) {
-            path_change_request (location, Files.OpenFlag.DEFAULT, false);
+            slot.on_dir_view_path_change_request (location, Files.OpenFlag.DEFAULT, false);
         }
 
         protected void load_root_location (GLib.File location) {
-            path_change_request (location, Files.OpenFlag.DEFAULT, true);
+            slot.on_dir_view_path_change_request (location, Files.OpenFlag.DEFAULT, true);
         }
 
     /** Operations on selections */
@@ -608,50 +605,54 @@ namespace Files {
                 return;
             }
 
-            unowned Gdk.Screen screen = get_screen ();
+            // Move handling of activated files to the toplevel - filechooser handles
+            // activated files very differently to filemanager
+            slot.top_level.files_activated (flag, selection);
 
-            if (selection.first ().next == null) { // Only one selected
-                activate_file (selection.data, screen, flag, true);
-                return;
-            }
+            // unowned Gdk.Screen screen = get_screen ();
 
-            if (!in_trash) {
-                /* launch each selected file individually ignoring selections greater than 10
-                 * Do not launch with new instances of this app - open according to flag instead
-                 */
-                if (selection.nth_data (11) == null && // Less than 10 items
-                   (default_app == null || app_is_this_app (default_app))) {
+            // if (selection.first ().next == null) { // Only one selected
+            //     activate_file (selection.data, screen, flag, true);
+            //     return;
+            // }
 
-                    foreach (Files.File file in selection) {
-                        /* Prevent too rapid activation of files - causes New Tab to crash for example */
-                        if (file.is_folder ()) {
-                            /* By default, multiple folders open in new tabs */
-                            if (flag == Files.OpenFlag.DEFAULT) {
-                                flag = Files.OpenFlag.NEW_TAB;
-                            }
+            // if (!in_trash) {
+            //     /* launch each selected file individually ignoring selections greater than 10
+            //      * Do not launch with new instances of this app - open according to flag instead
+            //      */
+            //     if (selection.nth_data (11) == null && // Less than 10 items
+            //        (default_app == null || app_is_this_app (default_app))) {
 
-                            GLib.Idle.add (() => {
-                                activate_file (file, screen, flag, false);
-                                return GLib.Source.REMOVE;
-                            });
-                        } else {
-                            GLib.Idle.add (() => {
-                                open_file (file, screen, null);
-                                return GLib.Source.REMOVE;
-                            });
-                        }
-                    }
-                } else if (default_app != null) {
-                    /* Because this is in another thread we need to copy the selection to ensure it remains valid */
-                    var files_to_open = selection.copy_deep ((GLib.CopyFunc)(GLib.Object.ref));
-                    GLib.Idle.add (() => {
-                        open_files_with (default_app, files_to_open);
-                        return GLib.Source.REMOVE;
-                    });
-                }
-            } else {
-                warning ("Cannot open files in trash");
-            }
+            //         foreach (Files.File file in selection) {
+            //             /* Prevent too rapid activation of files - causes New Tab to crash for example */
+            //             if (file.is_folder ()) {
+            //                 /* By default, multiple folders open in new tabs */
+            //                 if (flag == Files.OpenFlag.DEFAULT) {
+            //                     flag = Files.OpenFlag.NEW_TAB;
+            //                 }
+
+            //                 GLib.Idle.add (() => {
+            //                     activate_file (file, screen, flag, false);
+            //                     return GLib.Source.REMOVE;
+            //                 });
+            //             } else {
+            //                 GLib.Idle.add (() => {
+            //                     open_file (file, screen, null);
+            //                     return GLib.Source.REMOVE;
+            //                 });
+            //             }
+            //         }
+            //     } else if (default_app != null) {
+            //         /* Because this is in another thread we need to copy the selection to ensure it remains valid */
+            //         var files_to_open = selection.copy_deep ((GLib.CopyFunc)(GLib.Object.ref));
+            //         GLib.Idle.add (() => {
+            //             open_files_with (default_app, files_to_open);
+            //             return GLib.Source.REMOVE;
+            //         });
+            //     }
+            // } else {
+            //     warning ("Cannot open files in trash");
+            // }
         }
 
         public void select_gof_file (Files.File file) {
@@ -785,106 +786,107 @@ namespace Files {
 /*** Private methods */
     /** File operations */
 
-        private void activate_file (Files.File _file, Gdk.Screen? screen, Files.OpenFlag flag, bool only_one_file) {
-            if (is_frozen) {
-                return;
-            }
+        //TODO Move to toplevel
+        // private void activate_file (Files.File _file, Gdk.Screen? screen, Files.OpenFlag flag, bool only_one_file) {
+        //     if (is_frozen) {
+        //         return;
+        //     }
 
-            Files.File file = _file;
-            if (in_recent) {
-                file = Files.File.get_by_uri (file.get_display_target_uri ());
-            }
+        //     Files.File file = _file;
+        //     if (in_recent) {
+        //         file = Files.File.get_by_uri (file.get_display_target_uri ());
+        //     }
 
-            default_app = MimeActions.get_default_application_for_file (file);
-            GLib.File location = file.get_target_location ();
+        //     default_app = MimeActions.get_default_application_for_file (file);
+        //     GLib.File location = file.get_target_location ();
 
-            if (screen == null) {
-                screen = get_screen ();
-            }
+        //     if (screen == null) {
+        //         screen = get_screen ();
+        //     }
 
-            if (flag != Files.OpenFlag.APP && (file.is_folder () ||
-                file.get_ftype () == "inode/directory" ||
-                file.is_root_network_folder ())) {
+        //     if (flag != Files.OpenFlag.APP && (file.is_folder () ||
+        //         file.get_ftype () == "inode/directory" ||
+        //         file.is_root_network_folder ())) {
 
-                switch (flag) {
-                    case Files.OpenFlag.NEW_TAB:
-                    case Files.OpenFlag.NEW_WINDOW:
-                        path_change_request (location, flag, true);
-                        break;
+        //         switch (flag) {
+        //             case Files.OpenFlag.NEW_TAB:
+        //             case Files.OpenFlag.NEW_WINDOW:
+        //                 path_change_request (location, flag, true);
+        //                 break;
 
-                    default:
-                        if (only_one_file) {
-                            load_location (location);
-                        }
+        //             default:
+        //                 if (only_one_file) {
+        //                     load_location (location);
+        //                 }
 
-                        break;
-                }
-            } else if (!in_trash) {
-                if (only_one_file) {
-                    if (file.is_executable ()) {
-                        var content_type = file.get_ftype ();
+        //                 break;
+        //         }
+        //     } else if (!in_trash) {
+        //         if (only_one_file) {
+        //             if (file.is_executable ()) {
+        //                 var content_type = file.get_ftype ();
 
-                        if (GLib.ContentType.is_a (content_type, "text/plain")) {
-                            open_file (file, screen, default_app);
-                        } else {
-                            try {
-                                file.execute (null);
-                            } catch (Error e) {
-                                PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, slot.top_level);
-                            }
-                        }
-                    } else {
-                        open_file (file, screen, default_app);
-                    }
-                }
-            } else {
-                PF.Dialogs.show_error_dialog (
-                    ///TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-                    _("“%s” must be moved from Trash before opening").printf (file.basename),
-                    _("Files inside Trash cannot be opened. To open this file, it must be moved elsewhere."),
-                    slot.top_level
-                );
-            }
-        }
+        //                 if (GLib.ContentType.is_a (content_type, "text/plain")) {
+        //                     open_file (file, screen, default_app);
+        //                 } else {
+        //                     try {
+        //                         file.execute (null);
+        //                     } catch (Error e) {
+        //                         PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, slot.top_level);
+        //                     }
+        //                 }
+        //             } else {
+        //                 open_file (file, screen, default_app);
+        //             }
+        //         }
+        //     } else {
+        //         PF.Dialogs.show_error_dialog (
+        //             ///TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
+        //             _("“%s” must be moved from Trash before opening").printf (file.basename),
+        //             _("Files inside Trash cannot be opened. To open this file, it must be moved elsewhere."),
+        //             slot.top_level
+        //         );
+        //     }
+        // }
 
-        /* Open all files through this */
-        private void open_file (Files.File file, Gdk.Screen? screen, GLib.AppInfo? app_info) {
-            if (can_open_file (file, true)) {
-                MimeActions.open_glib_file_request.begin (file.location, slot.top_level, app_info);
-            }
-        }
+        // /* Open all files through this */
+        // private void open_file (Files.File file, Gdk.Screen? screen, GLib.AppInfo? app_info) {
+        //     if (can_open_file (file, true)) {
+        //         MimeActions.open_glib_file_request.begin (file.location, slot.top_level, app_info);
+        //     }
+        // }
 
-        /* Also used by build open menu */
-        private bool can_open_file (Files.File file, bool show_error_dialog = false) {
-            string err_msg1 = _("Cannot open this file");
-            string err_msg2 = "";
-            var content_type = file.get_ftype ();
+        // /* Also used by build open menu */
+        // private bool can_open_file (Files.File file, bool show_error_dialog = false) {
+        //     string err_msg1 = _("Cannot open this file");
+        //     string err_msg2 = "";
+        //     var content_type = file.get_ftype ();
 
-            if (content_type == null) {
-                bool result_uncertain = true;
-                content_type = ContentType.guess (file.basename, null, out result_uncertain);
-                debug ("Guessed content type to be %s from name - result_uncertain %s",
-                          content_type,
-                          result_uncertain.to_string ());
-            }
+        //     if (content_type == null) {
+        //         bool result_uncertain = true;
+        //         content_type = ContentType.guess (file.basename, null, out result_uncertain);
+        //         debug ("Guessed content type to be %s from name - result_uncertain %s",
+        //                   content_type,
+        //                   result_uncertain.to_string ());
+        //     }
 
-            if (content_type == null) {
-                err_msg2 = _("Cannot identify file type to open");
-            } else if (!slot.directory.can_open_files) {
-                err_msg2 = "Cannot open files with this protocol (%s)".printf (slot.directory.scheme);
-            } else if (!slot.directory.can_stream_files &&
-                       (content_type.contains ("video") || content_type.contains ("audio"))) {
+        //     if (content_type == null) {
+        //         err_msg2 = _("Cannot identify file type to open");
+        //     } else if (!slot.directory.can_open_files) {
+        //         err_msg2 = "Cannot open files with this protocol (%s)".printf (slot.directory.scheme);
+        //     } else if (!slot.directory.can_stream_files &&
+        //                (content_type.contains ("video") || content_type.contains ("audio"))) {
 
-                err_msg2 = "Cannot stream from this protocol (%s)".printf (slot.directory.scheme);
-            }
+        //         err_msg2 = "Cannot stream from this protocol (%s)".printf (slot.directory.scheme);
+        //     }
 
-            bool success = err_msg2.length < 1;
-            if (!success && show_error_dialog) {
-                PF.Dialogs.show_warning_dialog (err_msg1, err_msg2, slot.top_level);
-            }
+        //     bool success = err_msg2.length < 1;
+        //     if (!success && show_error_dialog) {
+        //         PF.Dialogs.show_warning_dialog (err_msg1, err_msg2, slot.top_level);
+        //     }
 
-            return success;
-        }
+        //     return success;
+        // }
 
         private void trash_or_delete_files (GLib.List<Files.File> file_list,
                                             bool delete_if_already_in_trash,
@@ -1091,7 +1093,7 @@ namespace Files {
 
             foreach (Files.File file in selected_files) {
                 var loc = GLib.File.new_for_uri (file.get_display_target_uri ());
-                path_change_request (loc, Files.OpenFlag.NEW_TAB, true);
+                slot.on_dir_view_path_change_request (loc, Files.OpenFlag.NEW_TAB, true);
             }
         }
 
@@ -1165,13 +1167,13 @@ namespace Files {
         }
 
         private void on_selection_action_open_with_app (GLib.SimpleAction action, GLib.Variant? param) {
-            open_files_with (open_with_apps.nth_data (param.get_uint32 ()), get_files_for_action ());
+            FileUtils.open_files_with (open_with_apps.nth_data (param.get_uint32 ()), get_files_for_action (), slot);
         }
 
         private void on_selection_action_open_with_other_app () {
             GLib.List<Files.File> selection = get_files_for_action ();
             Files.File file = selection.data as Files.File;
-            open_file (file, null, null);
+            FileUtils.open_file (file, null, null, slot);
         }
 
         private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) requires (slot.top_level != null) {
@@ -1910,7 +1912,7 @@ namespace Files {
 
             if (!selected_file.is_mountable () &&
                 !selected_file.is_root_network_folder () &&
-                can_open_file (selected_file)) {
+                FileUtils.can_open_file (selected_file, slot)) {
 
                 if (!selected_file.is_folder () && selected_file.is_executable ()) {
                     var run_menuitem = new Gtk.MenuItem.with_label (_("Run"));
@@ -2520,7 +2522,7 @@ namespace Files {
                            file.is_smb_server ());
 
             can_copy = file.is_readable ();
-            can_open = can_open_file (file);
+            can_open = FileUtils.can_open_file (file, slot);
             can_show_properties = !(in_recent && more_than_one_selected);
 
             action_set_enabled (common_actions, "paste", !in_recent && is_writable);
@@ -2665,10 +2667,6 @@ namespace Files {
                         critical (e.message);
                     }
                 });
-        }
-
-        private void open_files_with (GLib.AppInfo app, GLib.List<Files.File> files) {
-            MimeActions.open_multiple_gof_files_request (files, slot.top_level, app);
         }
 
 

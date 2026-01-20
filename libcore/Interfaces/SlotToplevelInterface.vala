@@ -35,5 +35,7 @@ public interface Files.SlotToplevelInterface : Gtk.Window {
     public abstract void bookmark_uri (string uri, string custom_name = "");
     public abstract Gtk.Application? get_files_application ();
     public abstract void go_up ();
+    public abstract void files_activated (OpenFlag flag, List<Files.File> selected_files);
+    public abstract void path_change_request (string uri);
 
 }

@@ -18,7 +18,6 @@
 ***/
 
 namespace Files.View {
-
     public class Browser : Object {
         private Stack<string> back_stack;
         private Stack<string> forward_stack;

@@ -60,6 +60,7 @@ common_deps = [
     gmodule_dep,
     gee_dep,
     gtk_dep,
+    handy_dep,
     granite_dep,
     poppler_glib_dep
 ]

@@ -23,7 +23,7 @@ namespace Files.View {
         public ViewMode mode { get; construct; }
 
         private int preferred_column_width;
-        private Files.AbstractDirectoryView? dir_view = null;
+        public Files.AbstractDirectoryView? dir_view = null;
         private uint reload_timeout_id = 0;
         private uint path_change_timeout_id = 0;
         private bool original_reload_request = false;
@@ -139,13 +139,13 @@ namespace Files.View {
         }
 
         private void connect_dir_view_signals () {
-            dir_view.path_change_request.connect (on_dir_view_path_change_request);
+            // dir_view.path_change_request.connect (on_dir_view_path_change_request);
             dir_view.size_allocate.connect (on_dir_view_size_allocate);
             dir_view.selection_changed.connect (on_dir_view_selection_changed);
         }
 
         private void disconnect_dir_view_signals () {
-            dir_view.path_change_request.disconnect (on_dir_view_path_change_request);
+            // dir_view.path_change_request.disconnect (on_dir_view_path_change_request);
             dir_view.size_allocate.disconnect (on_dir_view_size_allocate);
             dir_view.selection_changed.disconnect (on_dir_view_selection_changed);
         }
@@ -239,7 +239,7 @@ namespace Files.View {
             });
         }
 
-        private void on_dir_view_path_change_request (GLib.File loc, Files.OpenFlag flag, bool make_root) {
+        public void on_dir_view_path_change_request (GLib.File loc, Files.OpenFlag flag, bool make_root) {
             if (flag == 0) { /* make view in existing container */
                 if (mode == ViewMode.MILLER_COLUMNS) {
                     miller_slot_request (loc, make_root); /* signal to parent MillerView */
