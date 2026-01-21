@@ -3,7 +3,7 @@
   <enum id="io.elementary.files.viewmode">
     <value value="0" nick="icon"/>
     <value value="1" nick="list"/>
-    <value value="2" nick="miller_columns"/>
+    <value value="2" nick="miller-columns"/>
   </enum>
   <enum id="io.elementary.files.ZoomLevel">
     <value value="0" nick="smallest"/>
