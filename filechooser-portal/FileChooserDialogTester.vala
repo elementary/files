@@ -4,14 +4,6 @@ public class FileChooserDialogTester : Gtk.Application {
     public bool set_choices { get; set; }
     public bool set_multiple { get; set; }
 
-    // private Settings filechooser_settings; // Settings specific for the filechooser
-    // private Settings open_settings; // Settings specific for the filechooser when opening
-    // private Settings save_settings; // Settings specific for the filechooser when saving
-    // private Settings app_settings; // Settings from the files app (read only)
-    // private Settings gnome_interface_settings;
-    // private Settings gnome_privacy_settings;
-    // private Settings gtk_file_chooser_settings;
-
     private Files.Preferences prefs; // Note this gets a separate instance to the app
 
     public FileChooserDialogTester () {
@@ -19,34 +11,6 @@ public class FileChooserDialogTester : Gtk.Application {
             application_id: "io.elementary.files.filechooserdialog-tester",
             flags: ApplicationFlags.FLAGS_NONE
         );
-    }
-
-    construct {
-        // var app_settings = new Settings ("io.elementary.file-chooser.preferences");
-        // var icon_view_settings = new Settings ("io.elementary.file-chooser.icon-view");
-        // var list_view_settings = new Settings ("io.elementary.file-chooser.list-view");
-        // var column_view_settings = new Settings ("io.elementary.file-chooser.column-view");
-        // var gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
-        // var gnome_privacy_settings = new Settings ("org.gnome.desktop.privacy");
-        // var gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
-
-        // Files.ViewPreferences.set_up_view_preferences (
-        //     icon_view_settings,
-        //     list_view_settings,
-        //     column_view_settings,
-        //     app_settings
-        // );
-
-        // /* Bind settings with GOFPreferences */
-        // var prefs = Files.Preferences.get_default ();
-        // Files.Preferences.set_up_preferences (app_settings);
-
-        // gnome_interface_settings.bind ("clock-format",
-        //                                Files.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
-        // gnome_privacy_settings.bind ("remember-recent-files",
-        //                              Files.Preferences.get_default (), "remember-history", GLib.SettingsBindFlags.GET);
-        // gtk_file_chooser_settings.bind ("sort-directories-first",
-        //                                 prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 
     protected override void activate () {
