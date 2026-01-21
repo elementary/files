@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-09 08:35+0000\n"
-"PO-Revision-Date: 2025-11-04 06:55+0000\n"
+"PO-Revision-Date: 2026-01-20 13:55+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementaryos.org/projects/files/files/fr/"
 ">\n"
@@ -2157,16 +2157,12 @@ msgid "Cannot paste files here"
 msgstr "Impossible de coller des fichiers ici"
 
 #: src/View/DetailsColumn.vala:118
-#, fuzzy
-#| msgid "Name"
 msgid "Name:"
-msgstr "Nom"
+msgstr "Nom :"
 
 #: src/View/DetailsColumn.vala:211
-#, fuzzy
-#| msgid "Properties"
 msgid "Properties…"
-msgstr "Propriétés"
+msgstr "Propriétés…"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2504,7 +2500,7 @@ msgstr "Miniatures distantes"
 
 #: src/View/Widgets/AppMenu.vala:115
 msgid "File Preview (Column View)"
-msgstr ""
+msgstr "Aperçu du fichier (Vue colonne)"
 
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
 #: src/View/Widgets/AppMenu.vala:121
