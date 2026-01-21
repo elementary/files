@@ -19,9 +19,18 @@
     with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-public static Files.PluginManager plugins;
+public static Files.PluginManager? plugins;
+
+
 
 public class Files.PluginManager : Object {
+    public static Files.PluginManager get_default () {
+        if (plugins == null) {
+            plugins = new PluginManager ();
+        }
+
+        return plugins;
+    }
 
     delegate Plugins.Base ModuleInitFunc ();
     Gee.HashMap<string,Plugins.Base> plugin_hash;
@@ -37,12 +46,19 @@ public class Files.PluginManager : Object {
 
     private string[] plugin_dirs;
 
-    public PluginManager (string plugin_dir, uint user_id) {
-        is_admin = (user_id == 0);
+    private PluginManager () {}
+
+    construct {
         plugin_hash = new Gee.HashMap<string,Plugins.Base> ();
         names = new Gee.ArrayList<string> ();
         menuitem_references = new Gee.LinkedList<Gtk.Widget> ();
         plugin_dirs = new string[0];
+    }
+
+    // Only gets initialized in app.  Otherwise all other public methods do
+    // nothing as plugin list is empty.
+    public void initialize_plugins (string plugin_dir, uint user_id) {
+        is_admin = (user_id == 0);
 
         if (!is_admin) {
             plugin_dirs += Path.build_filename (plugin_dir, "core");
@@ -121,7 +137,7 @@ public class Files.PluginManager : Object {
         }
     }
 
-    void load_module (string file_path, string name) {
+    private void load_module (string file_path, string name) {
         if (plugin_hash.has_key (file_path)) {
             debug ("plugin for %s already loaded. Not adding again", file_path);
             return;
@@ -165,7 +181,7 @@ public class Files.PluginManager : Object {
         }
     }
 
-    void load_plugin_keyfile (string path, string parent) {
+    private void load_plugin_keyfile (string path, string parent) {
         var keyfile = new KeyFile ();
         try {
             keyfile.load_from_file (path, KeyFileFlags.NONE);

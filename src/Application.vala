@@ -134,7 +134,8 @@ public class Files.Application : Gtk.Application {
         this.recent = new Gtk.RecentManager ();
 
         /* Global static variable "plugins" declared in PluginManager.vala */
-        plugins = new PluginManager (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
+        plugins = PluginManager.get_default ();
+        plugins.initialize_plugins (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
 
         /**TODO** move the volume manager here? */
         /**TODO** gio: This should be using the UNMOUNTED feature of GFileMonitor instead */

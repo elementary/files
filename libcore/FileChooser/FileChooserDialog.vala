@@ -103,6 +103,11 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
         );
     }
 
+    static construct {
+        // Ensure global plugins object exists (but is left empty for now)
+        PluginManager.get_default ();
+    }
+
     construct {
         use_header_bar = 1; // Stop native action area showing
 
