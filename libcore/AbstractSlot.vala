@@ -7,19 +7,6 @@
  */
 
 public abstract class Files.AbstractSlot : GLib.Object {
-    private Files.Directory _directory;
-    public Files.Directory? directory {
-        get {
-            AbstractSlot? current = get_current_slot ();
-            if (current != null) {
-                return current._directory;
-            } else {
-                return null;
-            }
-        }
-
-        protected set { _directory = value; }
-    }
 
     // Directory may be destroyed before the slot so handle case that it is null
     public Files.File? file {

@@ -31,7 +31,7 @@ namespace Files.View {
         private Gtk.ScrolledWindow scrolled_window;
         private Gtk.Viewport viewport;
         public Gtk.Adjustment hadj;
-        public unowned View.Slot? current_slot;
+        public View.Slot? current_slot { get; private set; }
         public unowned View.Slot? last_slot {
             get {
                 return slot_list.last ().data;
@@ -92,6 +92,11 @@ namespace Files.View {
             content_box.show_all ();
 
             current_slot = null;
+            //Synchronize "directory" property with that of the current slot
+            this.notify ["current-slot"].connect (() => {
+                this.directory = current_slot != null ? current_slot.directory : null;
+            });
+
             add_location (root_location, null); /* current slot gets set by this */
 
             is_frozen = true;
