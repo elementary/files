@@ -289,23 +289,25 @@ namespace Files.FileUtils {
     public string sanitize_path (string? input_uri,
                                  string? input_current_uri = "",
                                  bool include_file_protocol = false) {
-        string unsanitized_uri;
-        string unsanitized_current_uri;
         string path = "";
         string scheme = "";
         string? current_path = null;
         string? current_scheme = null;
 
-        if (input_uri == null || input_uri == "") {
-            unsanitized_uri = input_current_uri; /* Sanitize current path */
-            unsanitized_current_uri = "";
+        string unsanitized_current_uri = input_current_uri ?? "";
+        string unsanitized_uri = input_uri ?? "";
+
+        debug ("unsanitized_current_uri '%s', unsanitized_uri '%s'", unsanitized_current_uri, unsanitized_uri);
+        if (unsanitized_uri == "") {
+            unsanitized_uri = unsanitized_current_uri; /* Sanitize current path */
         } else {
             unsanitized_uri = input_uri;
-            unsanitized_current_uri = input_current_uri;
         }
 
-        if (unsanitized_uri == null || unsanitized_uri == "") {
-            return include_file_protocol ? Files.ROOT_FS_URI + Path.DIR_SEPARATOR_S : "";
+        if (unsanitized_uri == "") {
+            var fallback = include_file_protocol ? Files.ROOT_FS_URI + Path.DIR_SEPARATOR_S : Path.DIR_SEPARATOR_S;
+            debug ("uri empty - returning %s", fallback);
+            return fallback;
         }
 
         string? unescaped_uri = Uri.unescape_string (unsanitized_uri, null);
@@ -321,8 +323,9 @@ namespace Files.FileUtils {
             path = "/";
         }
 
+        debug ("path now %s 1", path);
         StringBuilder sb = new StringBuilder (path);
-        if (unsanitized_current_uri != null) {
+        if (unsanitized_current_uri != "") {
             split_protocol_from_path (unsanitized_current_uri, out current_scheme, out current_path);
             /* current_path is assumed already sanitized */
 
@@ -372,7 +375,8 @@ namespace Files.FileUtils {
             }
         }
 
-        if (path.length > 0) {
+        debug ("path now %s 2", sb.str);
+        if (sb.str.length > 0) {
             if ((scheme == "" || scheme == Files.ROOT_FS_URI) &&
                 (path.has_prefix ("~/") || path.has_prefix ("/~") || path == "~")) {
 
@@ -386,13 +390,13 @@ namespace Files.FileUtils {
         }
 
         path = sb.str;
-
+        debug ("path now %s 3", path);
         do {
             path = path.replace ("//", "/");
         } while (path.contains ("//"));
 
         string new_path = (scheme + path).replace ("////", "///");
-
+        debug ("path now %s 4", path);
         if (new_path.length > 0) {
             /* ROOT_FS, TRASH and RECENT must have 3 separators after protocol, other protocols have 2 */
             if (!scheme.has_prefix (Files.ROOT_FS_URI) &&
@@ -409,7 +413,7 @@ namespace Files.FileUtils {
                 new_path = "";
             }
         }
-
+        debug ("path now %s 5", path);
         if (!include_file_protocol && new_path.has_prefix (Files.ROOT_FS_URI)) {
             new_path = new_path.slice (Files.ROOT_FS_URI.length, new_path.length);
         }
@@ -430,7 +434,7 @@ namespace Files.FileUtils {
                 }
             }
         }
-
+        debug ("return new sanitized path %s", new_path);
         return new_path;
     }
 
