@@ -99,6 +99,8 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
     }
     private bool locked_focus { get; set; default = false; }
 
+    private FileChooserPreferences chooser_prefs;
+
     // public signal void folder_deleted (GLib.File location);
     // public signal void free_space_change ();
     public signal void file_activated (bool only_one);
@@ -145,7 +147,7 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
         add (lside_pane);
 
 
-        var chooser_prefs = FileChooserPreferences.get_default (); // Should already be initialized
+        chooser_prefs = FileChooserPreferences.get_default (); // Should already be initialized
 
         if (action == Gtk.FileChooserAction.OPEN) {
             add_slot (chooser_prefs.open_last_folder_uri, chooser_prefs.open_viewmode);
@@ -163,8 +165,6 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
     }
 
     public void add_slot (string uri, ViewMode mode) {
-    warning ("add slot %s", uri);
-
         if (slot != null) {
             if (slot.mode == mode) {
                 return;
@@ -176,23 +176,33 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
         }
 
         var _uri = FileUtils.sanitize_path (uri, "", true);
-
-
-
+        slot = new Slot (GLib.File.new_for_uri (_uri), this, mode);
         slot.directory_loaded.connect (on_directory_loaded);
 
         slot.selection_changed.connect (() => {
             selection_changed ();
         });
 
-        slot.notify["uri"].connect (() => {
+        slot.notify ["directory"].connect (() => {
+            warning ("slot uri changed %s", slot.uri);
             update_labels (slot.uri);
+            if (action == Gtk.FileChooserAction.OPEN) {
+                chooser_prefs.open_last_folder_uri = slot.uri;
+            } else {
+                chooser_prefs.save_last_folder_uri = slot.uri;
+            }
         });
 
         slot_container.add (slot.get_content_box ());
         slot_container.show_all ();
 
         headerbar.set_view_mode (slot.mode);
+
+        if (action == Gtk.FileChooserAction.OPEN) {
+            chooser_prefs.open_viewmode = slot.mode;
+        } else {
+            chooser_prefs.save_viewmode = slot.mode;
+        }
 
         warning ("Initialize");
         slot.initialize_directory ();
@@ -277,18 +287,6 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
         //TODO Allow Slot to change view mode rather than create new slot?
         on_change_view_mode_request ((ViewMode)param.get_uint32 ());
-        // add_slot (slot.location, (ViewMode)(param.get_uint32 ())); //Closes and destroys old slot
-        // view_mode = mode;
-        // loading (false);
-        // store_selection ();
-        /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
-        // disconnect_slot_signals (view);
-        // add_view (mode, loc ?? location);
-        /* Slot is created inactive so we activate now since we must be the current tab
-         * to have received a change mode instruction */
-        // set_active_state (true);
-        /* Do not update top menu (or record uri) unless folder loads successfully */
-        // load_directory ();
     }
 
     public void change_state_single_click_select (GLib.SimpleAction action) {
@@ -397,5 +395,9 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
                 file_activated (only_one); // Pass on to parent (filechooser)
             }
         }
+    }
+
+    public void close () {
+        // Save any unsynced settings.
     }
 }
