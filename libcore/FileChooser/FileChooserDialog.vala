@@ -128,12 +128,15 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
         var prefs = Files.Preferences.get_default ();
         Files.Preferences.set_up_preferences (app_settings);
 
-        gnome_interface_settings.bind ("clock-format",
-                                       Files.Preferences.get_default (), "clock-format", GET);
-        gnome_privacy_settings.bind ("remember-recent-files",
-                                     Files.Preferences.get_default (), "remember-history", GET);
-        gtk_file_chooser_settings.bind ("sort-directories-first",
-                                        prefs, "sort-directories-first", DEFAULT);
+        gnome_interface_settings.bind (
+            "clock-format", Files.Preferences.get_default (), "clock-format", GET
+        );
+        gnome_privacy_settings.bind (
+            "remember-recent-files", Files.Preferences.get_default (), "remember-history", GET
+        );
+        gtk_file_chooser_settings.bind (
+            "sort-directories-first", prefs, "sort-directories-first", DEFAULT
+        );
 
         use_header_bar = 1; // Stop native action area showing
 
@@ -391,7 +394,8 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
     public new void close () throws DBusError, IOError {
         //TODO Save settings here
         warning ("dialog close");
-        // response (Gtk.ResponseType.DELETE_EVENT);
+        file_view.close (); // Save widget specific settings
+        //Save view preferences
     }
 
     public bool register_object (DBusConnection connection, ObjectPath handle) {
