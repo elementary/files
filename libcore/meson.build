@@ -70,6 +70,7 @@ pantheon_files_core_vala_files = files(
     'UserUtils.vala',
     'UndoManager.vala',
     'ViewPreferences.vala',
+    'FileChooserPreferences.vala',
     'ViewUtils.vala',
     'ZeitgeistManager.vala',
 

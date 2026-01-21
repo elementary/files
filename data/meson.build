@@ -76,6 +76,11 @@ i18n.merge_file(
 )
 
 install_data(
-    join_paths(meson.current_source_dir(),'schemas', meson.project_name() + '.gschema.xml'),
+    join_paths(meson.current_source_dir(),'schemas', 'io.elementary.files.gschema.xml'),
+    install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas')
+)
+
+install_data(
+    join_paths(meson.current_source_dir(),'schemas', 'io.elementary.file-chooser.gschema.xml'),
     install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas')
 )

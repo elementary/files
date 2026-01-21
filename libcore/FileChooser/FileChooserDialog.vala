@@ -103,15 +103,45 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
         );
     }
 
-    static construct {
+    construct {
         // Ensure global plugins object exists (but is left empty for now)
         PluginManager.get_default ();
-    }
 
-    construct {
+        var app_settings = new Settings ("io.elementary.file-chooser.preferences");
+        var icon_view_settings = new Settings ("io.elementary.file-chooser.icon-view");
+        var list_view_settings = new Settings ("io.elementary.file-chooser.list-view");
+        var column_view_settings = new Settings ("io.elementary.file-chooser.column-view");
+        var gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
+        var gnome_privacy_settings = new Settings ("org.gnome.desktop.privacy");
+        var gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
+
+        Files.ViewPreferences.set_up_view_preferences (
+            icon_view_settings,
+            list_view_settings,
+            column_view_settings,
+            app_settings
+        );
+
+        Files.FileChooserPreferences.set_up_file_chooser_preferences (app_settings);
+
+        /* Bind settings with GOFPreferences */
+        var prefs = Files.Preferences.get_default ();
+        Files.Preferences.set_up_preferences (app_settings);
+
+        gnome_interface_settings.bind ("clock-format",
+                                       Files.Preferences.get_default (), "clock-format", GET);
+        gnome_privacy_settings.bind ("remember-recent-files",
+                                     Files.Preferences.get_default (), "remember-history", GET);
+        gtk_file_chooser_settings.bind ("sort-directories-first",
+                                        prefs, "sort-directories-first", DEFAULT);
+
         use_header_bar = 1; // Stop native action area showing
 
-        file_view = new View.FileChooserWidget ();
+        var view_prefs = ViewPreferences.get_default ();
+        set_default_size (view_prefs.window_width, view_prefs.window_height);
+
+        file_view = new View.FileChooserWidget (action);
+
         this.set_titlebar (file_view.headerbar);
         if (action == SAVE) {
             new_folder_button = new Gtk.Button.from_icon_name ("folder-new", LARGE_TOOLBAR);
@@ -359,7 +389,9 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
     }
 
     public new void close () throws DBusError, IOError {
-        response (Gtk.ResponseType.DELETE_EVENT);
+        //TODO Save settings here
+        warning ("dialog close");
+        // response (Gtk.ResponseType.DELETE_EVENT);
     }
 
     public bool register_object (DBusConnection connection, ObjectPath handle) {

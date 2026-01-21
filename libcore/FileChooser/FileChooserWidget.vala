@@ -22,6 +22,7 @@
 */
 
 public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface {
+    public Gtk.FileChooserAction action { get; construct; }
     public Browser browser { get; private set; }
     public HeaderBar headerbar;
     public SidebarInterface sidebar { get; private set; }
@@ -103,6 +104,12 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
     public signal void file_activated (bool only_one);
     public signal void selection_changed ();
 
+    public FileChooserWidget (Gtk.FileChooserAction action) {
+        Object (
+            action: action
+        );
+    }
+
     construct {
         browser = new Browser ();
         //We create and connect headerbar but leave to the parent where to put it.
@@ -127,6 +134,7 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             expand = true,
+            position = ViewPreferences.get_default ().sidebar_width
         };
 
         sidebar = new Sidebar.SidebarWindow ();
@@ -136,7 +144,14 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
         lside_pane.pack2 (slot_container, false, false);
         add (lside_pane);
 
-        //Must create headerbar and slot container first
+
+        var chooser_prefs = FileChooserPreferences.get_default (); // Should already be initialized
+
+        if (action == Gtk.FileChooserAction.OPEN) {
+            add_slot (chooser_prefs.open_last_folder_uri, chooser_prefs.open_viewmode);
+        } else {
+            add_slot (chooser_prefs.save_last_folder_uri, chooser_prefs.save_viewmode);
+        }
 
         show_all ();
 
@@ -148,6 +163,8 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
     }
 
     public void add_slot (string uri, ViewMode mode) {
+    warning ("add slot %s", uri);
+
         if (slot != null) {
             if (slot.mode == mode) {
                 return;
@@ -158,7 +175,13 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
             slot = null; //TODO check slot is destructed
         }
 
-        slot = new Slot (GLib.File.new_for_uri (uri), this, mode);
+        if (uri == "") {
+            slot = new Slot (GLib.File.new_for_uri (Environment.get_home_dir ()), this, mode);
+        } else {
+            slot = new Slot (GLib.File.new_for_uri (FileUtils.sanitize_path (uri, "", false)), this, mode);
+        }
+
+
 
         slot.directory_loaded.connect (on_directory_loaded);
 
@@ -175,6 +198,7 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
 
         headerbar.set_view_mode (slot.mode);
 
+        warning ("Initialize");
         slot.initialize_directory ();
     }
 
@@ -239,6 +263,7 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
     }
 
     private void on_directory_loaded () {
+        warning ("directory loaded");
         browser.record_uri (uri);
         headerbar.set_back_menu (browser.go_back_list (), browser.get_can_go_back ());
         headerbar.set_forward_menu (browser.go_forward_list (), browser.get_can_go_forward ());

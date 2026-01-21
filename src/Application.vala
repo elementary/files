@@ -32,25 +32,17 @@ public class Files.Application : Gtk.Application {
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
     private const uint MAX_WINDOWS = 25;
 
-    public Settings gnome_interface_settings { get; construct; }
-    public Settings gnome_privacy_settings { get; construct; }
-    public Settings gtk_file_chooser_settings { get; construct; }
-    private Settings app_settings;
-    private Settings icon_view_settings;
-    private Settings list_view_settings;
-    private Settings column_view_settings;
+    // public Settings gnome_interface_settings { get; construct; }
+    // public Settings gnome_privacy_settings { get; construct; }
+    // public Settings gtk_file_chooser_settings { get; construct; }
+    // private Settings app_settings;
+    // private Settings icon_view_settings;
+    // private Settings list_view_settings;
+    // private Settings column_view_settings;
 
     bool quitting = false;
 
     construct {
-        app_settings = new Settings ("io.elementary.files.preferences");
-        icon_view_settings = new Settings ("io.elementary.files.icon-view");
-        list_view_settings = new Settings ("io.elementary.files.list-view");
-        column_view_settings = new Settings ("io.elementary.files.column-view");
-        gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
-        gnome_privacy_settings = new Settings ("org.gnome.desktop.privacy");
-        gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
-
         /* Needed by Glib.Application */
         this.application_id = APP_ID; //Ensures an unique instance.
         this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
@@ -248,6 +240,15 @@ public class Files.Application : Gtk.Application {
     }
 
     private void init_schemas () {
+
+        var app_settings = new Settings ("io.elementary.files.preferences");
+        var icon_view_settings = new Settings ("io.elementary.files.icon-view");
+        var list_view_settings = new Settings ("io.elementary.files.list-view");
+        var column_view_settings = new Settings ("io.elementary.files.column-view");
+        var gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
+        var gnome_privacy_settings = new Settings ("org.gnome.desktop.privacy");
+        var gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
+
         ViewPreferences.set_up_view_preferences (
             icon_view_settings,
             list_view_settings,

@@ -174,7 +174,6 @@ public class Files.AppMenu : Gtk.Popover {
         );
 
         // Initialize and connect dateformat buttons
-        // switch (app_settings.get_enum ("date-format")) {
         switch (prefs.date_format) {
             case DateFormatMode.ISO:
                 iso_button.active = true;
