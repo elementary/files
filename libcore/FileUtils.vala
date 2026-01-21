@@ -287,8 +287,8 @@ namespace Files.FileUtils {
       **/
 
     public string sanitize_path (string? input_uri,
-                                 string? input_current_uri,
-                                 bool include_file_protocol) {
+                                 string? input_current_uri = "",
+                                 bool include_file_protocol = false) {
         string unsanitized_uri;
         string unsanitized_current_uri;
         string path = "";
@@ -305,7 +305,7 @@ namespace Files.FileUtils {
         }
 
         if (unsanitized_uri == null || unsanitized_uri == "") {
-            return "";
+            return include_file_protocol ? Files.ROOT_FS_URI + Path.DIR_SEPARATOR_S : "";
         }
 
         string? unescaped_uri = Uri.unescape_string (unsanitized_uri, null);
@@ -392,6 +392,7 @@ namespace Files.FileUtils {
         } while (path.contains ("//"));
 
         string new_path = (scheme + path).replace ("////", "///");
+
         if (new_path.length > 0) {
             /* ROOT_FS, TRASH and RECENT must have 3 separators after protocol, other protocols have 2 */
             if (!scheme.has_prefix (Files.ROOT_FS_URI) &&

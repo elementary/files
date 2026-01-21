@@ -175,11 +175,7 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
             slot = null; //TODO check slot is destructed
         }
 
-        if (uri == "") {
-            slot = new Slot (GLib.File.new_for_uri (Environment.get_home_dir ()), this, mode);
-        } else {
-            slot = new Slot (GLib.File.new_for_uri (FileUtils.sanitize_path (uri, "", false)), this, mode);
-        }
+        var _uri = FileUtils.sanitize_path (uri, "", true);
 
 
 
