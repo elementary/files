@@ -39,7 +39,6 @@ namespace Files.View.Chrome {
                 tooltip_markup = get_tooltip_for_id (id, _("View as Grid"))
             };
             grid_view_btn.set_mode (false);
-            grid_view_btn.toggled.connect (on_mode_changed);
             grid_view_btn.set_data<uint32> ("id", id);
 
             /* List View */
@@ -49,7 +48,6 @@ namespace Files.View.Chrome {
                 tooltip_markup = get_tooltip_for_id (id, _("View as List"))
             };
             list_view_btn.set_mode (false);
-            list_view_btn.toggled.connect (on_mode_changed);
             list_view_btn.set_data<uint32> ("id", id);
 
 
@@ -60,13 +58,18 @@ namespace Files.View.Chrome {
                 tooltip_markup = get_tooltip_for_id (id, _("View in Columns"))
             };
             column_view_btn.set_mode (false);
-            column_view_btn.toggled.connect (on_mode_changed);
             column_view_btn.set_data<ViewMode> ("id", ViewMode.MILLER_COLUMNS);
 
             valign = Gtk.Align.CENTER;
             add (grid_view_btn);
             add (list_view_btn);
             add (column_view_btn);
+
+            realize.connect (() => {
+                grid_view_btn.toggled.connect (on_mode_changed);
+                list_view_btn.toggled.connect (on_mode_changed);
+                column_view_btn.toggled.connect (on_mode_changed);
+            });
         }
 
         private string get_tooltip_for_id (uint32 id, string description) {

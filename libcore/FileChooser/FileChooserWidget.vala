@@ -107,8 +107,6 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
         browser = new Browser ();
         //We create and connect headerbar but leave to the parent where to put it.
         headerbar = new HeaderBar ();
-        headerbar.path_change_request.connect (uri_path_change_request);
-        headerbar.change_view_mode.connect (on_change_view_mode_request);
 
         headerbar.go_back.connect ((steps) => {
             string? uri = browser.go_back (steps);
@@ -141,6 +139,12 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
         //Must create headerbar and slot container first
 
         show_all ();
+
+        // Connect some signals after realize to prevent unnecessary changes
+        realize.connect (() => {
+            headerbar.path_change_request.connect (uri_path_change_request);
+            headerbar.change_view_mode.connect (on_change_view_mode_request);
+        });
     }
 
     public void add_slot (string uri, ViewMode mode) {
@@ -157,10 +161,7 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
         slot = new Slot (GLib.File.new_for_uri (uri), this, mode);
 
         slot.directory_loaded.connect (on_directory_loaded);
-        // slot.bookmark_uri_request.connect (bookmark_uri);
-        // slot.change_viewmode_request.connect ((mode) => {
-        //     add_slot (slot.uri, mode);
-        // });
+
         slot.selection_changed.connect (() => {
             selection_changed ();
         });
@@ -173,6 +174,8 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
         slot_container.show_all ();
 
         headerbar.set_view_mode (slot.mode);
+
+        slot.initialize_directory ();
     }
 
     public void get_selection_details (out uint n_selected, out bool folder_selected, out bool file_selected) {
@@ -245,8 +248,9 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
     }
 
     public void on_change_view_mode_request (ViewMode mode) {
-        warning ("on change view mode request");
-        add_slot (slot.uri, mode);
+        if (slot.mode != mode) {
+            add_slot (slot.uri, mode);
+        }
     }
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
