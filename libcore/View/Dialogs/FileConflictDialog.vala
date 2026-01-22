@@ -259,8 +259,8 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
     }
 
     private void file_list_ready_cb (GLib.List<Files.File> files) {
-        unowned string src_ftype = source.get_ftype ();
-        unowned string dest_ftype = destination.get_ftype ();
+        unowned string src_ftype = source.get_content_type ();
+        unowned string dest_ftype = destination.get_content_type ();
         if (src_ftype == null) {
             critical ("Could not determine file type of source file: %s", source.uri);
         }

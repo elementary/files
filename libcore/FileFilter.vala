@@ -79,7 +79,7 @@
         var res = false;
         foreach (Rule rule in rules) {
             if (rule.type == MIME) {
-                if (ContentType.is_mime_type (file.get_ftype (), rule.text)) {
+                if (ContentType.is_mime_type (file.get_content_type (), rule.text)) {
                     res = true;
                     break;
                 }

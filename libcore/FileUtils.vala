@@ -1241,7 +1241,7 @@ namespace Files.FileUtils {
     public bool can_open_file (Files.File file, Files.View.Slot slot, bool show_error_dialog = false) {
         string err_msg1 = _("Cannot open this file");
         string err_msg2 = "";
-        var content_type = file.get_ftype ();
+        var content_type = file.get_content_type ();
 
         if (content_type == null) {
             bool result_uncertain = true;

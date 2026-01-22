@@ -75,6 +75,7 @@ public class Files.File : GLib.Object {
     public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
     public Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
     public GLib.FileType file_type;
+    public string? content_type = null;
     public bool is_hidden { get; construct; }
     public bool is_remote = false;
     public bool is_directory = false;
@@ -88,10 +89,10 @@ public class Files.File : GLib.Object {
         get {
             if (_thumbnail_path == null &&
                 info != null &&
-                info.has_attribute (GLib.FileAttribute.THUMBNAIL_PATH)) {
+                info.has_attribute (FileAttribute.THUMBNAIL_PATH)) {
 
                 // This attribute points to the largest available thumbnail (distro agnostic)
-                _thumbnail_path = info.get_attribute_byte_string (GLib.FileAttribute.THUMBNAIL_PATH);
+                _thumbnail_path = info.get_attribute_byte_string (FileAttribute.THUMBNAIL_PATH);
             }
 
             return _thumbnail_path;
@@ -252,7 +253,7 @@ public class Files.File : GLib.Object {
         }
 
         if (file_type == GLib.FileType.MOUNTABLE &&
-            info != null && info.get_attribute_boolean (GLib.FileAttribute.MOUNTABLE_CAN_MOUNT)) {
+            info != null && info.get_attribute_boolean (FileAttribute.MOUNTABLE_CAN_MOUNT)) {
 
             return true;
         }
@@ -269,7 +270,7 @@ public class Files.File : GLib.Object {
             return false;
         }
 
-        return info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_SYMLINK);
+        return info.get_attribute_boolean (FileAttribute.STANDARD_IS_SYMLINK);
     }
 
     public bool is_desktop_file () {
@@ -278,7 +279,7 @@ public class Files.File : GLib.Object {
         }
 
         bool is_desktop_file = false;
-        unowned string? content_type = get_ftype ();
+        // unowned string? content_type = get_content_type ();
         if (content_type != null) {
             is_desktop_file = GLib.ContentType.is_mime_type (content_type, "application/x-desktop");
         }
@@ -292,7 +293,7 @@ public class Files.File : GLib.Object {
         }
 
         bool is_image = false;
-        unowned string? content_type = get_ftype ();
+        // unowned string? content_type = get_content_type ();
         if (content_type != null) {
             is_image = GLib.ContentType.is_mime_type (content_type, "image/*");
         }
@@ -306,7 +307,7 @@ public class Files.File : GLib.Object {
         }
 
         bool is_text = false;
-        unowned string? content_type = get_ftype ();
+        // unowned string? content_type = get_content_type ();
         if (content_type != null) {
             is_text = GLib.ContentType.is_mime_type (content_type, "text/*") ||
                 GLib.ContentType.is_mime_type (content_type, "application/sql");
@@ -321,7 +322,7 @@ public class Files.File : GLib.Object {
         }
 
         bool is_pdf = false;
-        unowned string? content_type = get_ftype ();
+        // unowned string? content_type = get_content_type ();
         if (content_type != null) {
             // https://stackoverflow.com/questions/312230/proper-mime-media-type-for-pdf-files#312258
             is_pdf = GLib.ContentType.is_mime_type (content_type, "application/pdf") ||
@@ -338,8 +339,8 @@ public class Files.File : GLib.Object {
     public bool is_readable () {
         if (target_gof != null && !location.equal (target_gof.location)) {
             return target_gof.is_readable ();
-        } else if (info != null && info.has_attribute (GLib.FileAttribute.ACCESS_CAN_READ)) {
-            return info.get_attribute_boolean (GLib.FileAttribute.ACCESS_CAN_READ);
+        } else if (info != null && info.has_attribute (FileAttribute.ACCESS_CAN_READ)) {
+            return info.get_attribute_boolean (FileAttribute.ACCESS_CAN_READ);
         } else if (has_permissions) {
             return (permissions & Posix.S_IROTH) != 0 ||
                    (permissions & Posix.S_IRUSR) != 0 && (uid < 0 || uid == Posix.geteuid ()) ||
@@ -354,8 +355,8 @@ public class Files.File : GLib.Object {
             return target_gof.is_writable ();
         }
 
-        if (info != null && info.has_attribute (GLib.FileAttribute.ACCESS_CAN_WRITE)) {
-            return info.get_attribute_boolean (GLib.FileAttribute.ACCESS_CAN_WRITE);
+        if (info != null && info.has_attribute (FileAttribute.ACCESS_CAN_WRITE)) {
+            return info.get_attribute_boolean (FileAttribute.ACCESS_CAN_WRITE);
         }
 
         if (has_permissions) {
@@ -377,8 +378,8 @@ public class Files.File : GLib.Object {
             return false;
         }
 
-        if (info.get_attribute_boolean (GLib.FileAttribute.ACCESS_CAN_EXECUTE)) {
-            unowned string? content_type = get_ftype ();
+        if (info.get_attribute_boolean (FileAttribute.ACCESS_CAN_EXECUTE)) {
+            // unowned string? content_type = get_content_type ();
             if (content_type != null && GLib.ContentType.is_a (content_type, "application/x-executable")) {
                 return true;
             }
@@ -426,34 +427,31 @@ public class Files.File : GLib.Object {
             return null;
         }
 
-        return info.get_attribute_byte_string (GLib.FileAttribute.STANDARD_SYMLINK_TARGET);
+        return info.get_attribute_byte_string (FileAttribute.STANDARD_SYMLINK_TARGET);
     }
 
     //TODO Make immutable - contenttype does not change?
-    public unowned string? get_ftype () {
+    public unowned string? get_content_type () {
         if (info == null || is_location_uri_default ()) {
-            return null;
+            content_type = null;
+        } else if (content_type != null) {
+            return content_type;
+        } else if (is_directory) {
+            content_type = "inode/directory";
+        } else if (info.has_attribute (FileAttribute.STANDARD_CONTENT_TYPE)) {
+            content_type = info.get_attribute_string (FileAttribute.STANDARD_CONTENT_TYPE);
+        } else {
+            if (info.has_attribute (FileAttribute.STANDARD_FAST_CONTENT_TYPE)) {
+                content_type = info.get_attribute_string (FileAttribute.STANDARD_FAST_CONTENT_TYPE);
+            }
+
+            /* If octet-stream then check tagtype */
+            if (content_type == "application/octet-stream" && tagstype != null) {
+                content_type = tagstype;
+            }
         }
 
-        if (is_directory) {
-            return "inode/directory";
-        }
-
-        if (info.has_attribute (GLib.FileAttribute.STANDARD_CONTENT_TYPE)) {
-            return info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE);
-        }
-
-        unowned string ftype = null;
-        if (info.has_attribute (GLib.FileAttribute.STANDARD_FAST_CONTENT_TYPE)) {
-            ftype = info.get_attribute_string (GLib.FileAttribute.STANDARD_FAST_CONTENT_TYPE);
-        }
-
-        /* If octet-stream then check tagtype */
-        if (ftype == "application/octet-stream" && tagstype != null) {
-            return tagstype;
-        }
-
-        return ftype;
+        return content_type;
     }
 
     public string? get_formated_time (string attr) {
@@ -547,11 +545,12 @@ public class Files.File : GLib.Object {
 
         /* free previously allocated */
         clear_info ();
-        size = info.get_attribute_uint64 (GLib.FileAttribute.STANDARD_SIZE);
+        size = info.get_attribute_uint64 (FileAttribute.STANDARD_SIZE);
         file_type = info.get_file_type ();
+        content_type = get_content_type ();
         is_directory = (file_type == GLib.FileType.DIRECTORY);
-        modified = info.get_attribute_uint64 (GLib.FileAttribute.TIME_MODIFIED);
-        created = info.get_attribute_uint64 (GLib.FileAttribute.TIME_CREATED);
+        modified = info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED);
+        created = info.get_attribute_uint64 (FileAttribute.TIME_CREATED);
 
         /* metadata */
         if (is_directory) {
@@ -567,11 +566,11 @@ public class Files.File : GLib.Object {
             }
         }
 
-        if (info.has_attribute (GLib.FileAttribute.STANDARD_ICON)) {
-            icon = info.get_attribute_object (GLib.FileAttribute.STANDARD_ICON) as GLib.Icon;
+        if (info.has_attribute (FileAttribute.STANDARD_ICON)) {
+            icon = info.get_attribute_object (FileAttribute.STANDARD_ICON) as GLib.Icon;
         }
 
-        unowned string target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
+        unowned string target_uri = info.get_attribute_string (FileAttribute.STANDARD_TARGET_URI);
         if (target_uri != null) {
             if (Uri.parse_scheme (target_uri) == "afp") {
                 target_location = GLib.File.new_for_uri (FileUtils.get_afp_target_uri (target_uri, uri));
@@ -642,8 +641,8 @@ public class Files.File : GLib.Object {
         /* sizes */
         ensure_size ();
         /* modified date */
-        if (info.has_attribute (GLib.FileAttribute.TIME_MODIFIED)) {
-            formated_modified = get_formated_time (GLib.FileAttribute.TIME_MODIFIED);
+        if (info.has_attribute (FileAttribute.TIME_MODIFIED)) {
+            formated_modified = get_formated_time (FileAttribute.TIME_MODIFIED);
         } else {
             formated_modified = _("Inaccessible");
         }
@@ -654,9 +653,9 @@ public class Files.File : GLib.Object {
         } else if (info.get_file_type () == GLib.FileType.MOUNTABLE) {
             icon = new GLib.ThemedIcon.with_default_fallbacks ("folder-remote");
         } else {
-            unowned string? ftype = get_ftype ();
-            if (ftype != null && icon == null) {
-                icon = GLib.ContentType.get_icon (ftype);
+            // unowned string? ftype = get_content_type ();
+            if (content_type != null && icon == null) {
+                icon = GLib.ContentType.get_icon (content_type);
             }
         }
 
@@ -668,12 +667,12 @@ public class Files.File : GLib.Object {
         update_formated_type ();
 
         /* permissions */
-        has_permissions = info.has_attribute (GLib.FileAttribute.UNIX_MODE);
-        permissions = info.get_attribute_uint32 (GLib.FileAttribute.UNIX_MODE);
-        owner = info.get_attribute_string (GLib.FileAttribute.OWNER_USER);
-        group = info.get_attribute_string (GLib.FileAttribute.OWNER_GROUP);
-        if (info.has_attribute (GLib.FileAttribute.UNIX_UID)) {
-            uid = info.get_attribute_uint32 (GLib.FileAttribute.UNIX_UID);
+        has_permissions = info.has_attribute (FileAttribute.UNIX_MODE);
+        permissions = info.get_attribute_uint32 (FileAttribute.UNIX_MODE);
+        owner = info.get_attribute_string (FileAttribute.OWNER_USER);
+        group = info.get_attribute_string (FileAttribute.OWNER_GROUP);
+        if (info.has_attribute (FileAttribute.UNIX_UID)) {
+            uid = info.get_attribute_uint32 (FileAttribute.UNIX_UID);
             if (owner == null) {
                 owner = uid.to_string ();
             }
@@ -683,8 +682,8 @@ public class Files.File : GLib.Object {
             owner = null;
         }
 
-        if (info.has_attribute (GLib.FileAttribute.UNIX_GID)) {
-            gid = info.get_attribute_uint32 (GLib.FileAttribute.UNIX_GID);
+        if (info.has_attribute (FileAttribute.UNIX_GID)) {
+            gid = info.get_attribute_uint32 (FileAttribute.UNIX_GID);
             if (group == null) {
                 group = gid.to_string ();
             }
@@ -694,19 +693,18 @@ public class Files.File : GLib.Object {
             group = null;
         }
 
-        if (info.has_attribute (GLib.FileAttribute.MOUNTABLE_CAN_UNMOUNT)) {
-            _can_unmount = info.get_attribute_boolean (GLib.FileAttribute.MOUNTABLE_CAN_UNMOUNT);
+        if (info.has_attribute (FileAttribute.MOUNTABLE_CAN_UNMOUNT)) {
+            _can_unmount = info.get_attribute_boolean (FileAttribute.MOUNTABLE_CAN_UNMOUNT);
         }
 
         update_emblem ();
     }
 
     public void update_type () {
-        update_formated_type ();
+        update_formated_type (); // Also update content_type
 
-        unowned string? ftype = get_ftype ();
-        if (ftype != null) {
-            icon = GLib.ContentType.get_icon (ftype);
+        if (content_type != null) {
+            icon = GLib.ContentType.get_icon (content_type);
         }
 
         if (pix_size > 1 && pix_scale > 0) {
@@ -942,7 +940,7 @@ public class Files.File : GLib.Object {
     }
 
     public string get_display_target_uri () {
-        string? targ_uri = info.get_attribute_as_string (GLib.FileAttribute.STANDARD_TARGET_URI);
+        string? targ_uri = info.get_attribute_as_string (FileAttribute.STANDARD_TARGET_URI);
         if (targ_uri != null) {
             return targ_uri;
         }
@@ -951,7 +949,7 @@ public class Files.File : GLib.Object {
     }
 
     public GLib.AppInfo? get_default_handler () {
-        unowned string? content_type = get_ftype ();
+        // unowned string? content_type = get_content_type ();
         if (content_type != null) {
             return GLib.AppInfo.get_default_for_type (content_type, location.get_path () == null);
         }
@@ -1162,6 +1160,8 @@ public class Files.File : GLib.Object {
         owner = null;
         group = null;
         _can_unmount = false;
+
+        content_type = null;
     }
 
     private GLib.FileInfo? query_info () {
@@ -1202,7 +1202,7 @@ public class Files.File : GLib.Object {
             } else {
                 format_size = ngettext ("%'d item", "%'d items", count).printf (count);
             }
-        } else if (info.has_attribute (GLib.FileAttribute.STANDARD_SIZE)) {
+        } else if (info.has_attribute (FileAttribute.STANDARD_SIZE)) {
             format_size = GLib.format_size (size);
         } else {
             format_size = _("Inaccessible");
@@ -1242,12 +1242,12 @@ public class Files.File : GLib.Object {
     }
 
     private void update_formated_type () {
-        unowned string? ftype = get_ftype ();
-        if (ftype != null) {
+        content_type = get_content_type ();
+        if (content_type != null) {
             if (is_symlink ()) {
-                formated_type = _("link to %s").printf (GLib.ContentType.get_description (ftype));
+                formated_type = _("link to %s").printf (ContentType.get_description (content_type));
             } else {
-                formated_type = GLib.ContentType.get_description (ftype);
+                formated_type = GLib.ContentType.get_description (content_type);
             }
         } else {
             formated_type = "";
@@ -1281,7 +1281,7 @@ public class Files.File : GLib.Object {
     private uint get_number_of_uri_parts () {
         unowned string target_uri = null;
         if (info != null) {
-            target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
+            target_uri = info.get_attribute_string (FileAttribute.STANDARD_TARGET_URI);
         }
 
         if (target_uri == null) {
@@ -1293,7 +1293,7 @@ public class Files.File : GLib.Object {
 
     private bool is_location_uri_default () {
         GLib.return_val_if_fail (info != null, false);
-        unowned string? target_uri = info.get_attribute_string (GLib.FileAttribute.STANDARD_TARGET_URI);
+        unowned string? target_uri = info.get_attribute_string (FileAttribute.STANDARD_TARGET_URI);
         if (target_uri == null) {
             target_uri = uri;
         }

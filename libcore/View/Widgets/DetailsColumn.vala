@@ -265,13 +265,13 @@ public class Files.View.DetailsColumn : Gtk.Box {
     }
 
     public static string filetype (Files.File file) {
-        string ftype = file.get_ftype ();
+        string ftype = file.get_content_type ();
         if (ftype != null) {
             return ftype;
         } else {
             /* show list of mimetypes only if we got a default application in common */
             if (MimeActions.get_default_application_for_file (file) != null) {
-                return file.get_ftype ();
+                return file.get_content_type ();
             }
         }
 

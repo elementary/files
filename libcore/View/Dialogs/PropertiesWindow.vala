@@ -165,7 +165,7 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
                 return;
             }
 
-            var ftype = gof.get_ftype ();
+            var ftype = gof.get_content_type ();
             if (ftype != null) {
                 mimes.add (ftype);
             }
@@ -393,7 +393,7 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         }
 
         foreach (Files.File gof in files) {
-            var gof_ftype = gof.get_ftype ();
+            var gof_ftype = gof.get_content_type ();
             if (ftype == null && gof != null) {
                 ftype = gof_ftype;
                 continue;

@@ -1567,7 +1567,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
         }
 
         if (flag != Files.OpenFlag.APP && (file.is_folder () ||
-            file.get_ftype () == "inode/directory" ||
+            file.get_content_type () == "inode/directory" ||
             file.is_root_network_folder ())) {
 
             current_container.open_location (location, flag);
@@ -1589,7 +1589,7 @@ public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
             if (only_one_file) {
                 var default_app = MimeActions.get_default_application_for_file (file);
                 if (file.is_executable ()) {
-                    var content_type = file.get_ftype ();
+                    var content_type = file.get_content_type ();
 
                     if (GLib.ContentType.is_a (content_type, "text/plain")) {
                         FileUtils.open_file (file, screen, default_app, slot);

@@ -148,7 +148,7 @@ namespace Files.View {
                     str = goffile.get_display_target_uri ();
                 } else if (!goffile.is_folder ()) {
                     /* If we have an image, see if we can get its resolution. */
-                    string? type = goffile.get_ftype ();
+                    string? type = goffile.get_content_type ();
 
                     if (goffile.format_size == "" ) { /* No need to keep recalculating the formatted size. */
                         goffile.format_size = format_size (PropertiesWindow.file_real_size (goffile));
@@ -298,7 +298,7 @@ namespace Files.View {
                     error ("Could not read image file's size data");
                 }
 
-                loader = new Gdk.PixbufLoader.with_mime_type (goffile.get_ftype ());
+                loader = new Gdk.PixbufLoader.with_mime_type (goffile.get_content_type ());
                 loader.size_prepared.connect (on_size_prepared);
 
                 cancel_cancellable ();
@@ -345,7 +345,7 @@ namespace Files.View {
                         goffile.height = -1;
                         /* Note that Gdk.PixbufLoader seems to leak memory with some file types.
                          * Any file type that causes this error should be added to the Files.SKIP_IMAGES array. */
-                        critical ("Could not determine resolution of file type %s", goffile.get_ftype ());
+                        critical ("Could not determine resolution of file type %s", goffile.get_content_type ());
                         break;
                     }
 
