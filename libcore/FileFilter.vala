@@ -77,19 +77,20 @@
     //TODO decide whether should accept or reject by default
     public bool filter (Files.File file) {
         var res = false;
-        foreach (Rule rule in rules) {
-            if (rule.type == MIME) {
-                if (ContentType.is_mime_type (file.get_content_type (), rule.text)) {
-                    res = true;
+        if (file.is_folder ()) {
+            res = true; // Never filter folders
+        } else {
+            foreach (Rule rule in rules) {
+                if (rule.type == MIME) {
+                    if (ContentType.is_mime_type (file.get_content_type (), rule.text)) {
+                        res = true;
+                        break;
+                    }
+                } else {
+                    int posix_match_res = Posix.fnmatch (rule.text, file.basename);
+                    res = posix_match_res == 0;
                     break;
                 }
-            } else if (file.is_folder ()) {
-                res = true;
-                break;
-            } else {
-                int posix_match_res = Posix.fnmatch (rule.text, file.basename);
-                res = posix_match_res == 0;
-                break;
             }
         }
 
