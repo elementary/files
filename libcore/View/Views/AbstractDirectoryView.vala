@@ -251,6 +251,22 @@ namespace Files {
             }
         }
 
+        private Files.FileFilter? _filter = null;
+        public Files.FileFilter? filter {
+            get {
+                return _filter;
+            }
+
+            set {
+                if (value != null) {
+                    _filter = value;
+                }
+
+                schedule_refilter ();
+            }
+        }
+
+
         public bool in_recent { get; private set; default = false; }
 
         protected bool tree_frozen { get; set; default = false; }
@@ -270,6 +286,8 @@ namespace Files {
         private Gtk.RecentManager recent;
 
         protected Files.ListModel model;
+        protected Gtk.TreeModelFilter filter_model;
+
         protected Files.IconRenderer icon_renderer;
         protected unowned View.Slot slot; // Must be unowned else cyclic reference stops destruction
         protected static DndHandler dnd_handler = new DndHandler ();
@@ -338,7 +356,15 @@ namespace Files {
             set_should_thumbnail ();
 
             model = new Files.ListModel ();
-
+            filter_model = new Gtk.TreeModelFilter (model, null);
+            filter_model.set_visible_func ((model, iter) => {
+                warning ("vis func");
+                if (filter == null) {
+                    return true;
+                }
+                var file = ((ListModel)model).file_for_iter (iter);
+                return file != null ? filter.filter (file) : false;
+            });
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
@@ -582,6 +608,23 @@ namespace Files {
         public unowned GLib.List<Files.File> get_selected_files () {
             update_selected_files_and_menu ();
             return selected_files;
+        }
+
+        protected uint get_selected_files_from_model (out GLib.List<Files.File> selected_files) {
+            List<Files.File> list = null;
+            uint count = 0;
+            var selected_paths = get_selected_paths ();
+            foreach (var path in selected_paths) {
+                var file = model.file_for_path (filter_model.convert_path_to_child_path (path));
+                if (file != null) {
+                    list.prepend ((owned)file);
+                    count++;
+                } else {
+                    critical ("Null file in model");
+                }
+            }
+            selected_files = (owned)list;
+            return count;
         }
 
 /*** Protected Methods */
@@ -887,6 +930,23 @@ namespace Files {
 
         //     return success;
         // }
+
+        private uint refilter_timeout_id = 0;
+        private void schedule_refilter () {
+        warning ("schedule refilter");
+            if (refilter_timeout_id > 0) {
+                return;
+            } else {
+                refilter_timeout_id = Timeout.add (100, () => {
+                    refilter_timeout_id = 0;
+                    warning ("refilter model");
+                    filter_model.refilter ();
+                    update_selected_files_and_menu ();
+                    draw_when_idle ();
+                    return Source.REMOVE;
+                });
+            }
+        }
 
         private void trash_or_delete_files (GLib.List<Files.File> file_list,
                                             bool delete_if_already_in_trash,
@@ -3795,22 +3855,22 @@ namespace Files {
             update_selected_files_and_menu ();
         }
 
-        protected uint get_selected_files_from_model (out GLib.List<Files.File> selected_files) {
-            List<Files.File> list = null;
-            uint count = 0;
-            var selected_paths = get_selected_paths ();
-            foreach (var path in selected_paths) {
-                var file = model.file_for_path (path);
-                if (file != null) {
-                    list.prepend ((owned)file);
-                    count++;
-                } else {
-                    critical ("Null file in model");
-                }
-            }
-            selected_files = (owned)list;
-            return count;
-        }
+        // protected uint get_selected_files_from_model (out GLib.List<Files.File> selected_files) {
+        //     List<Files.File> list = null;
+        //     uint count = 0;
+        //     var selected_paths = get_selected_paths ();
+        //     foreach (var path in selected_paths) {
+        //         var file = model.file_for_path (path);
+        //         if (file != null) {
+        //             list.prepend ((owned)file);
+        //             count++;
+        //         } else {
+        //             critical ("Null file in model");
+        //         }
+        //     }
+        //     selected_files = (owned)list;
+        //     return count;
+        // }
 
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}

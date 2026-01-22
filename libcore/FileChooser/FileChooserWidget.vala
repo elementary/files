@@ -60,17 +60,17 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
         }
     }
 
-    // TODO Implement filter model
-    // public Gtk.FileFilter? filter {
-    //     get {
-    //         return slot != null ? slot.dir_view.filter : null;
-    //     }
+    //TODO Implement filter model
+    public Files.FileFilter? filter {
+        get {
+            return slot != null ? slot.dir_view.filter : null;
+        }
 
-    //     set {
-    //         assert (slot != null);
-    //         slot.dir_view.filter = value;
-    //     }
-    // }
+        set {
+            assert (slot != null);
+            slot.dir_view.filter = value;
+        }
+    }
 
     public List<Files.File> selected_files {
         get {

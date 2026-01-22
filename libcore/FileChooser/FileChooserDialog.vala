@@ -45,7 +45,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
 
             _filter = value;
             filter_combo.set_active_id (value != null ? value.name : null);
-            // file_view.filter = _filter; //TODO Implement filter in view
+            file_view.filter = _filter; //TODO Implement filter in view
         }
     }
 

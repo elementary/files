@@ -71,4 +71,30 @@
 
         return vb.end ();
     }
+
+    //TODO decide whether should accept or reject by default
+    public bool filter (Files.File file) {
+        var matcher = Posix.Glob ();
+        var res = false;
+        foreach (Pattern p in patterns) {
+            if (p.type == MIME) {
+                if (ContentType.is_mime_type (file.get_ftype (), p.text)) {
+                    res = true;
+                    break;
+                }
+            } else { // GLOB - only apply to display name for now
+                try {
+                    if (matcher.glob (p.text) == 0) {
+                        res = true;
+                        break;
+                    }
+                } catch (Error e) {
+                    return true;  // Maybe false?
+                }
+            }
+        }
+
+        warning ("filter %s", res.to_string ());
+        return res;
+    }
  }

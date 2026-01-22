@@ -42,7 +42,7 @@ public class Files.IconView : Files.AbstractDirectoryView {
     }
 
     protected override Gtk.Widget? create_view () {
-        tree = new Gtk.IconView.with_model (model) {
+        tree = new Gtk.IconView.with_model (filter_model) {
             selection_mode = MULTIPLE,
             columns = -1,
         };
