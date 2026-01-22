@@ -54,12 +54,6 @@ executable(
     'FileChooserDialogTester.vala',
     dependencies: [
         pantheon_files_core_dep,
-        # dependency('gdk-x11-3.0'),
-        # dependency('gdk-wayland-3.0'),
-        # handy_dep,
-        # project_config_dep
-        # dependency('gtk+-3.0', version: '>=3.20'),
-        # posix_dep,
     ],
     install: true
 )

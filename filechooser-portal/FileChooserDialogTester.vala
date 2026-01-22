@@ -18,7 +18,6 @@ public class FileChooserDialogTester : Gtk.Application {
         window.set_default_size (400, 400);
         window.title = "Files Dialog Widget Tester";
 
-
         var open_file_button = new Gtk.Button.with_label ("Open File"); //FileChooserAction.OPEN
         var open_files_button = new Gtk.Button.with_label ("Open Files"); //FileChooserAction.OPEN with select-multiple
         var select_folder_button = new Gtk.Button.with_label ("Select Folder"); //FileChooserAction.SELECT_FOLDER
