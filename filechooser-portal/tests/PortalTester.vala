@@ -1,5 +1,7 @@
 public class PortalTester : Gtk.Application {
     private Gtk.ApplicationWindow window;
+    private Gtk.FileChooserNative filechooser_native;
+
     public bool set_filters { get; set; }
     public bool set_choices { get; set; }
     public bool set_multiple { get; set; }
@@ -90,7 +92,7 @@ public class PortalTester : Gtk.Application {
     }
 
     private void on_save_file () {
-        var filechooser = new Gtk.FileChooserNative (
+        filechooser_native = new Gtk.FileChooserNative (
             "Files Portal Tester - SAVE",
             window,
             Gtk.FileChooserAction.SAVE,
@@ -98,24 +100,25 @@ public class PortalTester : Gtk.Application {
             "TestCancel"
         );
 
-        filechooser.set_current_name ("TestDoc.txt");
-        filechooser.set_current_folder (Environment.get_home_dir ());
+        filechooser_native.set_current_name ("TestDoc.txt");
+        filechooser_native.set_current_folder (Environment.get_home_dir ());
 
-        show_filechooser (filechooser);
+        var response = show_filechooser (filechooser_native);
+        on_filechooser_response (response);
     }
 
-    private void on_filechooser_response (Gtk.NativeDialog filechooser, int id) {
+    private void on_filechooser_response (int id) {
         switch ((Gtk.ResponseType)id) {
             case ACCEPT:
             case OK:
-                var uris = ((Gtk.FileChooser)filechooser).get_uris ();
+                var uris = filechooser_native.get_uris ();
                 var uri_list = "\n";
                 foreach (var uri in uris) {
                     uri_list += uri + "\n";
                 }
 
-                var choice1 = ((Gtk.FileChooser)filechooser).get_choice ("1");
-                var choice2 = ((Gtk.FileChooser)filechooser).get_choice ("2");
+                var choice1 = filechooser_native.get_choice ("1");
+                var choice2 = filechooser_native.get_choice ("2");
                 //FIXME FileCooserNative returns the choices originally set!!!
                 var choice_list = "Choice 1: %s".printf (choice1) + "\n" + "Choice 2: %s".printf (choice2);
 
@@ -183,7 +186,8 @@ public class PortalTester : Gtk.Application {
         filechooser.filter = filter1;
     }
 
-    private void show_filechooser (Gtk.FileChooserNative filechooser) {
+    private int show_filechooser (Gtk.FileChooserNative filechooser) {
+    warning ("show file chooser");
         if (set_filters) {
             filechooser_add_filters (filechooser);
         }
@@ -193,8 +197,7 @@ public class PortalTester : Gtk.Application {
         }
 
         filechooser.set_select_multiple (set_multiple);
-        filechooser.response.connect (on_filechooser_response);
-        filechooser.show ();
+        return filechooser.run ();
     }
 
     public static int main (string[] args) {
