@@ -32,8 +32,8 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
         }
     }
 
-    private Gtk.FileFilter? _filter = null;
-    public Gtk.FileFilter? filter {
+    private Files.FileFilter? _filter = null;
+    public Files.FileFilter? filter {
         get {
             return _filter;
         }
@@ -44,7 +44,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
             }
 
             _filter = value;
-            filter_combo.set_active_id (value != null ? value.get_filter_name () : null);
+            filter_combo.set_active_id (value != null ? value.name : null);
             // file_view.filter = _filter; //TODO Implement filter in view
         }
     }
@@ -183,7 +183,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
                 assert_not_reached ();
         }
 
-        filter_model = new Gtk.TreeStore (2, typeof (string), typeof (Gtk.FileFilter));
+        filter_model = new Gtk.TreeStore (2, typeof (string), typeof (Files.FileFilter));
         filter_combo = new Gtk.ComboBox.with_model (filter_model) {
             id_column = 0
         };
@@ -201,7 +201,7 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
         filter_box.pack_start (filter_combo);
 
         filter_combo.changed.connect (() => {
-            Gtk.FileFilter? f = filter_from_id (filter_combo.active_id);
+            Files.FileFilter? f = filter_from_id (filter_combo.active_id);
             if (filter != f) {
                 filter = f;
             }
@@ -282,9 +282,10 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
                 filter_box.visible = false;
                 if (action == SELECT_FOLDER) {
                     // Only show folders
-                    var filter_folder = new Gtk.FileFilter ();
+                    var filter_folder = new Files.FileFilter () {
+                        name = "Folders"
+                    };
                     filter_folder.add_mime_type ("inode/directory");
-                    filter_folder.set_filter_name ("Folders");
                     add_filter (filter_folder);
                 }
             } else {
@@ -346,9 +347,9 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
         accept_button.sensitive = can_accept;
     }
 
-    private Gtk.FileFilter? filter_from_id (string id) {
-        Gtk.FileFilter? return_filter = null;
-        Gtk.FileFilter? _filter = null;
+    private Files.FileFilter? filter_from_id (string id) {
+        Files.FileFilter? return_filter = null;
+        Files.FileFilter? _filter = null;
         string? _id = null;
         filter_model.@foreach ((model, path, iter) => {
             model.@get (iter, 0, out _id, 1, out _filter);
@@ -391,11 +392,9 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
         window.focus (Gdk.CURRENT_TIME);
     }
 
-    public new void close () throws DBusError, IOError {
-        //TODO Save settings here
-        warning ("dialog close");
+    public void close () throws DBusError, IOError {
+        //TODO Save unsynced settings here
         file_view.close (); // Save widget specific settings
-        //Save view preferences
     }
 
     public bool register_object (DBusConnection connection, ObjectPath handle) {
@@ -458,12 +457,12 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
         return choices;
     }
 
-    public void add_filter (Gtk.FileFilter? new_filter) {
+    public void add_filter (Files.FileFilter? new_filter) {
         if (new_filter == null) {
             return;
         }
 
-        var name = new_filter.get_filter_name ();
+        var name = new_filter.name;
         if (filter_from_id (name) == null) {
             Gtk.TreeIter? iter = null;
             filter_model.append (out iter, null);
@@ -566,10 +565,10 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
         }
     }
 
-    public SList<unowned Gtk.FileFilter> list_filters () {
-        SList<unowned Gtk.FileFilter> list = null;
+    public SList<unowned Files.FileFilter> list_filters () {
+        SList<unowned Files.FileFilter> list = null;
         filter_model.@foreach ((model, path, iter) => {
-            Gtk.FileFilter? _filter;
+            Files.FileFilter? _filter;
             model.@get (iter, 1, out _filter);
             list.append (_filter);
             return false;

@@ -143,20 +143,20 @@ public class FileChooserDialogTester : Gtk.Application {
     }
 
     private void filechooser_widget_add_filters (Files.FileChooserDialog filechooser) {
-        var filter1 = new Gtk.FileFilter ();
+        var filter1 = new Files.FileFilter ();
         filter1.add_pattern ("*.txt");
         filter1.add_pattern ("*.pdf");
         filter1.add_pattern ("*.doc");
-        filter1.set_filter_name ("TextGlob");
+        filter1.name = "TextGlob";
 
-        var filter2 = new Gtk.FileFilter ();
+        var filter2 = new Files.FileFilter ();
         filter2.add_mime_type ("text/*");
-        filter2.set_filter_name ("TextMime");
+        filter2.name = "TextMime";
 
-        var filter3 = new Gtk.FileFilter ();
+        var filter3 = new Files.FileFilter ();
         filter3.add_pattern ("*.*");
         filter3.add_pattern ("*");
-        filter3.set_filter_name ("All Files");
+        filter3.name = "All Files";
 
         filechooser.add_filter (filter1);
         filechooser.add_filter (filter2);
@@ -180,44 +180,10 @@ public class FileChooserDialogTester : Gtk.Application {
     }
 
     private void set_up_dialog (Files.FileChooserDialog filechooser) {
-        // Filechooser manages its own handler
-
-        // //FileChooser settings
-        // var open = filechooser.action in (Gtk.FileChooserAction.OPEN | Gtk.FileChooserAction.SELECT_FOLDER);
-        // var settings = open ? open_settings : save_settings;
-        // var last_uri = settings.get_string ("last-folder-uri");
-        // filechooser.set_current_folder_uri (last_uri);
-
-
-        // int width, height;
-        // filechooser_settings.get ("window-size", "(ii)", out width, out height);
-        // filechooser.resize (width, height); //Using default-width property does not seem to work in this context.
-        // filechooser_settings.bind ("sidebar-width", filechooser.file_view, "sidebar-width", DEFAULT);
-
-        // //Files app settings (read-only)
-        // app_settings.bind ("singleclick-select", prefs, "singleclick-select", GET);
-        // app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GET);
-        // app_settings.bind ("show-remote-thumbnails", prefs, "show-remote-thumbnails", GET);
-        // app_settings.bind ("show-local-thumbnails", prefs, "show-local-thumbnails", GET);
-        // app_settings.bind ("date-format", prefs, "date-format", GET);
-        // // System settings (read-only)
-        // gnome_interface_settings.bind ("clock-format", prefs, "clock-format", GET);
-        // gnome_privacy_settings.bind ("remember-recent-files", prefs, "remember-history", GET);
-        // // Gtk Filechooser settings (sync)
-        // gtk_file_chooser_settings.bind ("sort-directories-first", prefs, "sort-directories-first", DEFAULT);
 
     }
 
     private void close_dialog (Files.FileChooserDialog filechooser) {
-    warning ("close dialog");
-        // var open = filechooser.action in (Gtk.FileChooserAction.OPEN | Gtk.FileChooserAction.SELECT_FOLDER);
-        // var settings = open ? open_settings : save_settings;
-        // settings.set_string ("last-folder-uri", filechooser.get_current_folder_uri ());
-
-        // int w, h;
-        // filechooser.get_size (out w, out h);
-        // filechooser_settings.set ("window-size", "(ii)", w, h);
-        filechooser.close (); // Save settings
         filechooser.destroy ();
     }
 

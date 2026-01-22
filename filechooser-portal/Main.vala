@@ -382,22 +382,6 @@ public class Files.FileChooserPortal : Object {
     }
 
     private void set_up_dialog (Files.FileChooserDialog filechooser, HashTable<string, Variant> options) {
-        // //FileChooser settings
-        // var open = filechooser.action in (Gtk.FileChooserAction.OPEN | Gtk.FileChooserAction.SELECT_FOLDER);
-        // var settings = open ? open_settings : save_settings;
-
-        // //Must create initial slot first
-        // string current_folder = "";
-        // if ("current_folder" in options) {
-        //     current_folder = FileUtils.sanitize_path (options["current_folder"].get_bytestring (), null, true);
-        // } else {
-        //     current_folder = settings.get_string ("last-folder-uri");
-        // }
-
-        // var view_mode = settings.get_enum ("viewmode");
-        // filechooser.view_mode = view_mode; //Does not create a slot, sets initial mode
-        // filechooser.set_current_folder_uri (current_folder); //Creates a slot with set viewmode and location
-
         //FileChooser widget manages its own settings
         if ("current_name" in options) {
             filechooser.set_current_name (options["current_name"].get_string ());
@@ -437,13 +421,13 @@ public class Files.FileChooserPortal : Object {
             Variant filter_variant;
 
             while ((filter_variant = filters.next_value ()) != null) {
-                var filter = new Gtk.FileFilter.from_gvariant (filter_variant);
+                var filter = new Files.FileFilter.from_gvariant (filter_variant);
                 filechooser.add_filter (filter);
             }
         }
 
         if ("current_filter" in options) {
-            filechooser.filter = new Gtk.FileFilter.from_gvariant (options["current_filter"]);
+            filechooser.filter = new Files.FileFilter.from_gvariant (options["current_filter"]);
         }
 
         if ("choices" in options) {
@@ -458,15 +442,6 @@ public class Files.FileChooserPortal : Object {
     }
 
     private void close_dialog (Files.FileChooserDialog filechooser) {
-        // var open = filechooser.action in (Gtk.FileChooserAction.OPEN | Gtk.FileChooserAction.SELECT_FOLDER);
-        // var settings = open ? open_settings : save_settings;
-        // settings.set_string ("last-folder-uri", filechooser.get_current_folder_uri ());
-        // settings.set_enum ("viewmode", filechooser.view_mode);
-
-        // int w, h;
-        // filechooser.get_size (out w, out h);
-        // filechooser_settings.set ("window-size", "(ii)", w, h);
-
         filechooser.close (); // save settings
         filechooser.destroy ();
     }
