@@ -7,8 +7,8 @@
  */
 
 public abstract class Files.AbstractSlot : GLib.Object {
-
-    // Directory may be destroyed before the slot so handle case that it is null
+    public Directory directory { get; protected set; }
+        // Directory may be destroyed before the slot so handle case that it is null
     public Files.File? file {
         get { return directory != null ? directory.file : null; }
     }
