@@ -184,7 +184,6 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
         });
 
         slot.notify ["directory"].connect (() => {
-            warning ("slot uri changed %s", slot.uri);
             update_labels (slot.uri);
             if (action == Gtk.FileChooserAction.OPEN) {
                 chooser_prefs.open_last_folder_uri = slot.uri;
@@ -269,7 +268,6 @@ public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface 
     }
 
     private void on_directory_loaded () {
-        warning ("directory loaded");
         browser.record_uri (uri);
         headerbar.set_back_menu (browser.go_back_list (), browser.get_can_go_back ());
         headerbar.set_forward_menu (browser.go_forward_list (), browser.get_can_go_forward ());

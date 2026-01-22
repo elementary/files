@@ -429,6 +429,7 @@ public class Files.File : GLib.Object {
         return info.get_attribute_byte_string (GLib.FileAttribute.STANDARD_SYMLINK_TARGET);
     }
 
+    //TODO Make immutable - contenttype does not change?
     public unowned string? get_ftype () {
         if (info == null || is_location_uri_default ()) {
             return null;
@@ -459,7 +460,7 @@ public class Files.File : GLib.Object {
         return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
-    //TODO Is it necessary to refetch the icon if have pix at requested size? 
+    //TODO Is it necessary to refetch the icon if have pix at requested size?
     public Gdk.Pixbuf? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
         return get_icon (
             _size.clamp (16, 512),

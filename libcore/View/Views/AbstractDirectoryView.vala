@@ -358,7 +358,6 @@ namespace Files {
             model = new Files.ListModel ();
             filter_model = new Gtk.TreeModelFilter (model, null);
             filter_model.set_visible_func ((model, iter) => {
-                warning ("vis func");
                 if (filter == null) {
                     return true;
                 }
@@ -933,13 +932,11 @@ namespace Files {
 
         private uint refilter_timeout_id = 0;
         private void schedule_refilter () {
-        warning ("schedule refilter");
             if (refilter_timeout_id > 0) {
                 return;
             } else {
                 refilter_timeout_id = Timeout.add (100, () => {
                     refilter_timeout_id = 0;
-                    warning ("refilter model");
                     filter_model.refilter ();
                     update_selected_files_and_menu ();
                     draw_when_idle ();
